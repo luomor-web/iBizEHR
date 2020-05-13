@@ -1,4 +1,4 @@
-iBizEHR是iBiz企业级管理系统群的一个组成部分，iBiz将会把EHR、CRM、EAM、ERP等企业级管理系统群以全新理念、最新技术逐步开源，iBizEHR是 开源的第一步。
+iBizEHR是iBiz企业级管理系统群的一个组成部分，iBiz将会把EHR、CRM、EAM、ERP等企业级管理系统群以全新理念、最新技术逐步开源，iBizEHR是开源的第一步。
 
 iBiz企业级管理系统群全面采取中台模式、SpringBoot、MDD/MDA全方位建模技术，满足上万级用户的高性能需求，致力于提供高可用度、全业务覆盖的重度开源项目，iBizEHR覆盖了人力资源管理的六大模块。
 
