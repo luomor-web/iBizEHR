@@ -1,0 +1,76 @@
+.app-container {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    .index_view.crm-app-layout {
+
+        .app-header-left {
+            height: 100%;
+            display: flex;
+            align-items: center;
+
+            >img {
+                margin: 0px 6px;
+                margin-top: 2px;
+                height: 32px;
+            }
+
+            >.app-name {
+                font-size: 18px;
+                font-weight: 900;
+                color: black;
+                height: 32px;
+                line-height: 32px;
+                white-space: nowrap;
+                font-family: AlibabaPuHuiTiB, "Alibaba PuHuiTi";
+            }
+        }
+
+        .app-header-right {
+            height: 100%;
+        }
+
+        .crm-app-content {
+            height: 100%;
+            width: 100%;
+            display: flex;
+
+            >.inedx-app-menus {
+                width: 240px;
+                height: 100%;
+                background-color: white;
+                flex-shrink: 0;
+                overflow-y: auto;
+            }
+
+            >.content {
+                flex-grow: 1;
+            }
+        }
+
+        /***    BRGIN:滚动条样式    ***/
+        ::-webkit-scrollbar {
+            background: transparent;
+            width: 4px;
+            height: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            border-radius: 0;
+            box-shadow: none;
+            border: 0;
+            background-color: #cecece;
+        }
+
+        ::-webkit-scrollbar-track {
+            border-radius: 0;
+            box-shadow: none;
+            border: 0;
+        }
+    }
+}

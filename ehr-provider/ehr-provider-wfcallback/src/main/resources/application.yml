@@ -1,0 +1,5 @@
+spring:
+  profiles:
+    include: sys , wfcallback-prod
+  application:
+    name: ehr-wfcallback

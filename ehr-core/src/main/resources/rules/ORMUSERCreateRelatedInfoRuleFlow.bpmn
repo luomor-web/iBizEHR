@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+    <process id="cn.ibizlab.ehr.core.orm.service.logic.ormusercreaterelatedinfo" isClosed="false" isExecutable="true" name="ScoreRule" processType="Private" tns:packageName="cn.ibizlab.ehr.core.orm.service.logic.ormusercreaterelatedinfo">
+        <extensionElements>
+            <tns:import name="java.util.Map" />
+            <tns:import name="org.springframework.util.StringUtils"/>
+            <tns:import name="cn.ibizlab.ehr.util.helper.RuleUtils"/>
+        <tns:global identifier="ormusercreaterelatedinfodefault" type="cn.ibizlab.ehr.core.orm.domain.ORMUSER" />
+        <tns:global identifier="ormusercreaterelatedinfouserdict" type="cn.ibizlab.ehr.core.common.domain.UserDict" />
+        <tns:global identifier="ormusercreaterelatedinfouser" type="cn.ibizlab.ehr.core.common.domain.User" />
+        </extensionElements>
+     <startEvent id="43602287847000cb9ea1e3b992e3d3a3" isInterrupting="true"/>
+     <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ormusercreaterelatedinfoprepareparam2" id="0541098a1eda1d8c9238370d982ddb25" implementation="http://www.jboss.org/drools/rule" name="准备用户词典数据对象"/>
+     <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ormusercreaterelatedinfodeaction2" id="c1e7a8e54f952ccd6afae0c4e24a4e48" implementation="http://www.jboss.org/drools/rule" name="建立用户词典"/>
+     <endEvent id="c1e7a8e54f952ccd6afae0c4e24a4e48_End" name="End"/>
+     <sequenceFlow id="c1e7a8e54f952ccd6afae0c4e24a4e48_End_Line" sourceRef="c1e7a8e54f952ccd6afae0c4e24a4e48" targetRef="c1e7a8e54f952ccd6afae0c4e24a4e48_End"/>
+     <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ormusercreaterelatedinfodeaction1" id="5100e11435bdaacbf8b8b4c4b4f0f60f" implementation="http://www.jboss.org/drools/rule" name="保存用户"/>
+     <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ormusercreaterelatedinfoprepareparam1" id="b94af779d00d708ccd2fcfdcaafdca1e" implementation="http://www.jboss.org/drools/rule" name="准备用户对象参数"/>
+     <sequenceFlow id="b9c3e550f567fdda342a90f6018b887f" sourceRef="0541098a1eda1d8c9238370d982ddb25" targetRef="c1e7a8e54f952ccd6afae0c4e24a4e48">
+     </sequenceFlow>
+     <sequenceFlow id="98c064c417e32bb2ee49121a5c1ac538" sourceRef="43602287847000cb9ea1e3b992e3d3a3" targetRef="b94af779d00d708ccd2fcfdcaafdca1e">
+     </sequenceFlow>
+     <sequenceFlow id="fcb4d92e4d94755661307cd4a5bb2a12" sourceRef="5100e11435bdaacbf8b8b4c4b4f0f60f" targetRef="0541098a1eda1d8c9238370d982ddb25">
+     </sequenceFlow>
+     <sequenceFlow id="0c7df46db14b525f73e34831e5b742ee" sourceRef="b94af779d00d708ccd2fcfdcaafdca1e" targetRef="5100e11435bdaacbf8b8b4c4b4f0f60f">
+     </sequenceFlow>
+    </process>
+</definitions>
+

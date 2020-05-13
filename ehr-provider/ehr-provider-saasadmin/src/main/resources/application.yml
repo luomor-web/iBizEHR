@@ -1,0 +1,5 @@
+spring:
+  profiles:
+    include: sys , saasadmin-prod
+  application:
+    name: ehr-saasadmin

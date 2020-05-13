@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper	namespace="cn.ibizlab.ehr.core.wf.mapper.WFStepInstMapper">
+
+    <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
+	<select id="selectById"  resultMap="WFStepInstResultMap" databaseId="db2">
+        <![CDATA[select * from v_wfstepinst t1     where  wfstepinstid=#{id}]]>
+    </select>
+	<select id="selectById"  resultMap="WFStepInstResultMap" databaseId="mysql">
+        <![CDATA[select * from v_wfstepinst t1     where  wfstepinstid=#{id}]]>
+    </select>
+	<select id="selectById"  resultMap="WFStepInstResultMap" databaseId="oracle">
+        <![CDATA[select * from v_wfstepinst t1     where  wfstepinstid=#{id}]]>
+    </select>
+	<select id="selectById"  resultMap="WFStepInstResultMap" databaseId="postgresql">
+        <![CDATA[select * from v_wfstepinst t1     where  wfstepinstid=#{id}]]>
+    </select>
+	<select id="selectById"  resultMap="WFStepInstResultMap" databaseId="ppas">
+        <![CDATA[select * from v_wfstepinst t1     where  wfstepinstid=#{id}]]>
+    </select>
+	<select id="selectById"  resultMap="WFStepInstResultMap" databaseId="sqlserver">
+        <![CDATA[select * from v_wfstepinst t1     where  wfstepinstid=#{id}]]>
+    </select>
+
+    <!--通过mybatis将查询结果注入到entity中,通过配置autoMapping="true"由mybatis自动处理映射关系 -->
+    <resultMap id="WFStepInstResultMap" type="cn.ibizlab.ehr.core.wf.domain.WFStepInst" autoMapping="true">
+        <id property="wfstepinstid" column="wfstepinstid" /><!--主键字段映射-->
+		<result property="wfinstanceid" column="wfinstanceid" />
+		<result property="wfstepid" column="wfstepid" />
+            
+		
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="wfinstance" javaType="cn.ibizlab.ehr.core.wf.domain.WFInstance" column="wfinstanceid" select="cn.ibizlab.ehr.core.wf.mapper.WFInstanceMapper.selectById" fetchType="lazy"></association>
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="wfstep" javaType="cn.ibizlab.ehr.core.wf.domain.WFStep" column="wfstepid" select="cn.ibizlab.ehr.core.wf.mapper.WFStepMapper.selectById" fetchType="lazy"></association>
+    </resultMap>
+
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_WFSTEPINST_WFINSTANCE_WFINSTANCEID] -->
+	 <select id="selectByWfinstanceid" resultMap="WFStepInstResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  wfinstanceid=#{wfinstanceid}
+     </select>
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_WFSTEPINST_WFSTEP_WFSTEPID] -->
+	 <select id="selectByWfstepid" resultMap="WFStepInstResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  wfstepid=#{wfstepid}
+     </select>
+
+    <!--数据集合[Default]-->
+	 <select id="searchDefault"  parameterType="cn.ibizlab.ehr.core.wf.filter.WFStepInstSearchContext"  resultMap="WFStepInstResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="db2">
+       <![CDATA[	SELECT t1.CLOSEFLAG, t1.CREATEDATE, t1.CREATEMAN, t1.RETURNDATA, t1.UPDATEDATE, t1.UPDATEMAN, t1.WFINSTANCEID, t1.WFINSTANCENAME, t1.WFSTEPID, t1.WFSTEPINSTID, t1.WFSTEPINSTNAME, t1.WFSTEPLANRESTAG, t1.WFSTEPNAME FROM T_SRFWFSTEPINST t1  
+			]]>
+    </sql>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="mysql">
+       <![CDATA[	SELECT t1.`CLOSEFLAG`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`RETURNDATA`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`WFINSTANCEID`, t1.`WFINSTANCENAME`, t1.`WFSTEPID`, t1.`WFSTEPINSTID`, t1.`WFSTEPINSTNAME`, t1.`WFSTEPLANRESTAG`, t1.`WFSTEPNAME` FROM `T_SRFWFSTEPINST` t1  
+			]]>
+    </sql>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="oracle">
+       <![CDATA[	SELECT t1.CLOSEFLAG, t1.CREATEDATE, t1.CREATEMAN, t1.RETURNDATA, t1.UPDATEDATE, t1.UPDATEMAN, t1.WFINSTANCEID, t1.WFINSTANCENAME, t1.WFSTEPID, t1.WFSTEPINSTID, t1.WFSTEPINSTNAME, t1.WFSTEPLANRESTAG, t1.WFSTEPNAME FROM T_SRFWFSTEPINST t1  
+			]]>
+    </sql>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="postgresql">
+       <![CDATA[	SELECT t1.CLOSEFLAG, t1.CREATEDATE, t1.CREATEMAN, t1.RETURNDATA, t1.UPDATEDATE, t1.UPDATEMAN, t1.WFINSTANCEID, t1.WFINSTANCENAME, t1.WFSTEPID, t1.WFSTEPINSTID, t1.WFSTEPINSTNAME, t1.WFSTEPLANRESTAG, t1.WFSTEPNAME FROM T_SRFWFSTEPINST t1  
+			]]>
+    </sql>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="ppas">
+       <![CDATA[	SELECT t1.CLOSEFLAG, t1.CREATEDATE, t1.CREATEMAN, t1.RETURNDATA, t1.UPDATEDATE, t1.UPDATEMAN, t1.WFINSTANCEID, t1.WFINSTANCENAME, t1.WFSTEPID, t1.WFSTEPINSTID, t1.WFSTEPINSTNAME, t1.WFSTEPLANRESTAG, t1.WFSTEPNAME FROM T_SRFWFSTEPINST t1  
+			]]>
+    </sql>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="sqlserver">
+       <![CDATA[	SELECT t1.[CLOSEFLAG], t1.[CREATEDATE], t1.[CREATEMAN], t1.[RETURNDATA], t1.[UPDATEDATE], t1.[UPDATEMAN], t1.[WFINSTANCEID], t1.[WFINSTANCENAME], t1.[WFSTEPID], t1.[WFSTEPINSTID], t1.[WFSTEPINSTNAME], t1.[WFSTEPLANRESTAG], t1.[WFSTEPNAME] FROM [T_SRFWFSTEPINST] t1  
+			]]>
+    </sql>
+
+</mapper>
+

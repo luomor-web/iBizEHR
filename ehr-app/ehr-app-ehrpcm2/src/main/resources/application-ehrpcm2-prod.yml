@@ -1,0 +1,8 @@
+server:
+  port: 6092
+
+#zuul网关路由设置
+zuul:
+  routes:
+  sensitive-headers:
+    - Cookie,Set-Cookie,Authorization

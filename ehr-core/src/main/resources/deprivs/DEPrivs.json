@@ -1,0 +1,949 @@
+    {
+    "unires":[
+               
+       {
+            "unirescode":"OTHER",
+            "uniresname":"配置管理-标准化数据"
+       }
+        ,
+       {
+            "unirescode":"EXCITATION_XJGL",
+            "uniresname":"薪酬管理-休假管理"
+       }
+        ,
+       {
+            "unirescode":"STANDDATA",
+            "uniresname":"标准化数据"
+       }
+        ,
+       {
+            "unirescode":"CONTRACTYPE",
+            "uniresname":"合同类型"
+       }
+        ,
+       {
+            "unirescode":"ERRESS",
+            "uniresname":"基础管理-出（国）境管理"
+       }
+        ,
+       {
+            "unirescode":"GSBMJL",
+            "uniresname":"公司部门经理"
+       }
+        ,
+       {
+            "unirescode":"GXML",
+            "uniresname":"招聘-标准化数据-高校名录"
+       }
+        ,
+       {
+            "unirescode":"EXCITATION_BZHSJ",
+            "uniresname":"薪酬管理-标准化数据"
+       }
+        ,
+       {
+            "unirescode":"KQYCZKQSZ",
+            "uniresname":"薪酬管理-考勤管理-考勤设置（考勤员）"
+       }
+        ,
+       {
+            "unirescode":"ORGANIZATIONMAG",
+            "uniresname":"组织管理菜单"
+       }
+        ,
+       {
+            "unirescode":"PROBATIONPERIOD",
+            "uniresname":"试用期"
+       }
+        ,
+       {
+            "unirescode":"YPZBHQZ",
+            "uniresname":"招聘-标准化数据-应聘者编号前缀"
+       }
+        ,
+       {
+            "unirescode":"JGLYZPME",
+            "uniresname":"局管理员（读写招聘名额权限）"
+       }
+        ,
+       {
+            "unirescode":"LTXGL",
+            "uniresname":"离（退）休管理"
+       }
+        ,
+       {
+            "unirescode":"CONTRACT",
+            "uniresname":"基础管理-合同管理"
+       }
+        ,
+       {
+            "unirescode":"KQSZ",
+            "uniresname":"薪酬管理-考勤管理-考勤设置"
+       }
+        ,
+       {
+            "unirescode":"JGLYYPZSZYJTJ",
+            "uniresname":"局管理员（读写应聘者社招引进条件权限）"
+       }
+        ,
+       {
+            "unirescode":"RETIRESEL",
+            "uniresname":"退休年龄（查看）"
+       }
+        ,
+       {
+            "unirescode":"ANALYSIS",
+            "uniresname":"决策分析菜单"
+       }
+        ,
+       {
+            "unirescode":"SYSMANAGER",
+            "uniresname":"超级管理员可见"
+       }
+        ,
+       {
+            "unirescode":"JGLYRCXL",
+            "uniresname":"局管理员（读写人才序列权限）"
+       }
+        ,
+       {
+            "unirescode":"KQLX",
+            "uniresname":"薪酬管理-标准化数据-考勤类型"
+       }
+        ,
+       {
+            "unirescode":"JZBSH_FA",
+            "uniresname":"非A类员工转正-局总部审核"
+       }
+        ,
+       {
+            "unirescode":"YPZSPB",
+            "uniresname":"招聘-应聘者审批表"
+       }
+        ,
+       {
+            "unirescode":"SELCONTRACTYPE",
+            "uniresname":"合同类型（查看）"
+       }
+        ,
+       {
+            "unirescode":"NEWBUTTON",
+            "uniresname":"新建权限"
+       }
+        ,
+       {
+            "unirescode":"RLSB",
+            "uniresname":"招聘-人力上报"
+       }
+        ,
+       {
+            "unirescode":"APPOINTJZBJJR",
+            "uniresname":"引用局总部节假日"
+       }
+        ,
+       {
+            "unirescode":"EXCITATION_KQGL",
+            "uniresname":"薪酬管理-考勤管理"
+       }
+        ,
+       {
+            "unirescode":"ACHIEVEMENTS",
+            "uniresname":"绩效管理菜单"
+       }
+        ,
+       {
+            "unirescode":"QUALIFICATION",
+            "uniresname":"执业资格类别"
+       }
+        ,
+       {
+            "unirescode":"YGBHBG_FA",
+            "uniresname":"非A类员工转正-员工编号变更"
+       }
+        ,
+       {
+            "unirescode":"YRDWDSZSP_FA",
+            "uniresname":"非A类员工转正-用人单位董事长审批"
+       }
+        ,
+       {
+            "unirescode":"PROJECTCONFIG",
+            "uniresname":"项目人力资源配置菜单"
+       }
+        ,
+       {
+            "unirescode":"PIMZYXLLXSZ",
+            "uniresname":"标准化设置-专业序列类型设置"
+       }
+        ,
+       {
+            "unirescode":"JGLYGXXKTEMP",
+            "uniresname":"局管理员（读写高校学科中间表权限）"
+       }
+        ,
+       {
+            "unirescode":"JGLYKQLX",
+            "uniresname":"局管理员（读写考勤类型权限）"
+       }
+        ,
+       {
+            "unirescode":"XMRYXQ",
+            "uniresname":"项目人员需求"
+       }
+        ,
+       {
+            "unirescode":"BHSP",
+            "uniresname":"招聘-编号审批"
+       }
+        ,
+       {
+            "unirescode":"TRAINMANAGEMENT",
+            "uniresname":"培训管理菜单"
+       }
+        ,
+       {
+            "unirescode":"TITLECATALOGUE",
+            "uniresname":"职称目录"
+       }
+        ,
+       {
+            "unirescode":"JGLYXKML",
+            "uniresname":"局管理员（读写学科目录权限）"
+       }
+        ,
+       {
+            "unirescode":"JGLYZPMXME",
+            "uniresname":"局管理员（读写招聘名额明细权限）"
+       }
+        ,
+       {
+            "unirescode":"BASICMODULE",
+            "uniresname":"基础管理菜单"
+       }
+        ,
+       {
+            "unirescode":"EXCITATION",
+            "uniresname":"薪酬管理菜单"
+       }
+        ,
+       {
+            "unirescode":"YRDWDSZSP",
+            "uniresname":"招聘-用人单位董事长审批"
+       }
+        ,
+       {
+            "unirescode":"KQYB",
+            "uniresname":"薪酬管理-考勤管理-考勤月报"
+       }
+        ,
+       {
+            "unirescode":"RLSBCZAN",
+            "uniresname":"招聘-人力上报操作按钮"
+       }
+        ,
+       {
+            "unirescode":"JZBSP",
+            "uniresname":"招聘-局总部审批"
+       }
+        ,
+       {
+            "unirescode":"JADMIN",
+            "uniresname":"局系统管理员"
+       }
+        ,
+       {
+            "unirescode":"RETIRE",
+            "uniresname":"退休年龄"
+       }
+        ,
+       {
+            "unirescode":"JZBSP_FA",
+            "uniresname":"非A类员工转正-局总部审批"
+       }
+        ,
+       {
+            "unirescode":"RLSB_FA",
+            "uniresname":"非A类员工转正-人力上报"
+       }
+        ,
+       {
+            "unirescode":"XKML",
+            "uniresname":"招聘-标准化数据-学科目录"
+       }
+        ,
+       {
+            "unirescode":"JGLYXJLX",
+            "uniresname":"局管理员（读写休假类型权限）"
+       }
+        ,
+       {
+            "unirescode":"DAML",
+            "uniresname":"档案管理-档案目录"
+       }
+        ,
+       {
+            "unirescode":"EXCITATION_SAL",
+            "uniresname":"薪酬管理-薪酬管理"
+       }
+        ,
+       {
+            "unirescode":"SYSTEMMAG",
+            "uniresname":"系统管理菜单"
+       }
+        ,
+       {
+            "unirescode":"GSGBHMC",
+            "uniresname":"干部花名册（公司）"
+       }
+        ,
+       {
+            "unirescode":"ZPMEGL",
+            "uniresname":"招聘-标准化数据-招聘名额管理"
+       }
+        ,
+       {
+            "unirescode":"EMPLOYEESELFHELP",
+            "uniresname":"员工自助"
+       }
+        ,
+       {
+            "unirescode":"XJLX",
+            "uniresname":"薪酬管理-标准化数据-休假类型"
+       }
+        ,
+       {
+            "unirescode":"STAFF",
+            "uniresname":"基础管理-员工管理"
+       }
+        ,
+       {
+            "unirescode":"PERSONELTURNOVER",
+            "uniresname":"配置管理-人员异动"
+       }
+        ,
+       {
+            "unirescode":"ORMFRZTSZ",
+            "uniresname":"组织管理-法人主体设置"
+       }
+        ,
+       {
+            "unirescode":"STAFFTYPESEL",
+            "uniresname":"员工类型（查看）"
+       }
+        ,
+       {
+            "unirescode":"QUALIFICATIONMSEL",
+            "uniresname":"执业资格专业（查看）"
+       }
+        ,
+       {
+            "unirescode":"JLDSP",
+            "uniresname":"招聘-局领导审批"
+       }
+        ,
+       {
+            "unirescode":"YRDWCSCZAN",
+            "uniresname":"招聘-用人单位初审操作按钮"
+       }
+        ,
+       {
+            "unirescode":"YPZQSBH",
+            "uniresname":"招聘-应聘者审批意见原因（局管理员）"
+       }
+        ,
+       {
+            "unirescode":"FALPLZZ",
+            "uniresname":"非A类批量转正"
+       }
+        ,
+       {
+            "unirescode":"SOCIALSECURITY",
+            "uniresname":"社保福利菜单"
+       }
+        ,
+       {
+            "unirescode":"YRDWDSZSPCZAN",
+            "uniresname":"招聘-用人单位董事长审批操作按钮"
+       }
+        ,
+       {
+            "unirescode":"KQYCZKQYB",
+            "uniresname":"薪酬管理-考勤管理-考勤月报（考勤员）"
+       }
+        ,
+       {
+            "unirescode":"JGBHMC",
+            "uniresname":"干部花名册（局）"
+       }
+        ,
+       {
+            "unirescode":"PIMHTLXSZ",
+            "uniresname":"标准化数据-合同类型设置"
+       }
+        ,
+       {
+            "unirescode":"ARCHIVES",
+            "uniresname":"基础管理-档案管理"
+       }
+        ,
+       {
+            "unirescode":"CAMPUSREC",
+            "uniresname":"配置管理-校园招聘"
+       }
+        ,
+       {
+            "unirescode":"CERTIFICATE",
+            "uniresname":"基础管理-证书管理"
+       }
+        ,
+       {
+            "unirescode":"MHSY",
+            "uniresname":"门户首页"
+       }
+        ,
+       {
+            "unirescode":"JGLYZJGL",
+            "uniresname":"局管理员（读写职级管理权限）"
+       }
+        ,
+       {
+            "unirescode":"KQGZ",
+            "uniresname":"薪酬管理-标准化数据-考勤规则"
+       }
+        ,
+       {
+            "unirescode":"CONFIGURATIONMAG",
+            "uniresname":"配置管理菜单"
+       }
+        ,
+       {
+            "unirescode":"YPZXX",
+            "uniresname":"招聘-应聘者信息"
+       }
+        ,
+       {
+            "unirescode":"NLYRY",
+            "uniresname":"招聘-拟录用人员"
+       }
+        ,
+       {
+            "unirescode":"STAFFTYPE",
+            "uniresname":"员工类型"
+       }
+        ,
+       {
+            "unirescode":"JGLYXJDRQX",
+            "uniresname":"局人力（人员信息新建、导入权限）"
+       }
+        ,
+       {
+            "unirescode":"PROMANAGER",
+            "uniresname":"项目负责人（项目经理）"
+       }
+        ,
+       {
+            "unirescode":"JGLYQYBT",
+            "uniresname":"局管理员（读写区域补贴权限）"
+       }
+        ,
+       {
+            "unirescode":"XMRSSH",
+            "uniresname":"项目人力审核"
+       }
+        ,
+       {
+            "unirescode":"YRDWCS_FA",
+            "uniresname":"非A类员工转正-用人单位初审"
+       }
+        ,
+       {
+            "unirescode":"PROBATION",
+            "uniresname":"见习期"
+       }
+        ,
+       {
+            "unirescode":"JGLY_FAZZSH",
+            "uniresname":"局管理员（非A类员工转正审核）"
+       }
+        ,
+       {
+            "unirescode":"SELTITLECATALOGUE",
+            "uniresname":"职称目录（查看）"
+       }
+        ,
+       {
+            "unirescode":"YPZXXCZAN",
+            "uniresname":"招聘-应聘者信息操作按钮"
+       }
+        ,
+       {
+            "unirescode":"JGLYZW",
+            "uniresname":"局管理员（读写职务权限）"
+       }
+        ,
+       {
+            "unirescode":"JZBCS_FA",
+            "uniresname":"非A类员工转正-局总部初审"
+       }
+        ,
+       {
+            "unirescode":"TALENTREC",
+            "uniresname":"配置管理-成熟人才招聘"
+       }
+        ,
+       {
+            "unirescode":"PROBATIONPERIODSEL",
+            "uniresname":"试用期（查看）"
+       }
+        ,
+       {
+            "unirescode":"QXPZ",
+            "uniresname":"权限配置"
+       }
+        ,
+       {
+            "unirescode":"JGLYGXML",
+            "uniresname":"局管理员（读写高校名录权限）"
+       }
+        ,
+       {
+            "unirescode":"JGLYZWDQGZ",
+            "uniresname":"局管理员（读写职务到期规则权限）"
+       }
+        ,
+       {
+            "unirescode":"PROBATIONSEL",
+            "uniresname":"见习期（查看）"
+       }
+        ,
+       {
+            "unirescode":"ZPDWSH",
+            "uniresname":"招聘-用人单位初审"
+       }
+        ,
+       {
+            "unirescode":"QUALIFICATIONM",
+            "uniresname":"执业资格专业"
+       }
+        ,
+       {
+            "unirescode":"CADREADMIN",
+            "uniresname":"配置管理-干部管理"
+       }
+        ,
+       {
+            "unirescode":"SELQUALIFICATION",
+            "uniresname":"执业资格类别（查看）"
+       }
+        ,
+       {
+            "unirescode":"QYBT",
+            "uniresname":"薪酬管理-标准化数据-区域补贴"
+       }
+        ,
+       {
+            "unirescode":"JGLY_RZSP",
+            "uniresname":"招聘-局总部初审"
+       }
+        ,
+       {
+            "unirescode":"JRSGLY",
+            "uniresname":"局人事管理员"
+       }
+        ,
+       {
+            "unirescode":"GSRSGLY",
+            "uniresname":"公司人事管理员"
+       }
+        ,
+       {
+            "unirescode":"ZJSZ",
+            "uniresname":"职级设置"
+       }
+        ,
+       {
+            "unirescode":"HIDEN",
+            "uniresname":"隐藏菜单"
+       }
+    ],
+    "predefineddatarange":[{"id":"ALL","name":"全部数据"},{"id":"CURORG","name":"当前单位"},{"id":"PORG","name":"上级单位"},{"id":"SORG","name":"下级单位"},{"id":"CURORGDEPT","name":"当前部门"},{"id":"PORGDEPT","name":"上级部门"},{"id":"SORGDEPT","name":"下级部门"}],
+    "entities":[
+    {
+    "dename":"PCMNotice",
+    "delogicname":"提醒消息",
+    "sysmoudle":{"id":"PCM","name":"配置管理"},
+    "dedataset":[{"id":"NOTICE_DAGLYDQ" , "name":"档案管理员的提醒"},{"id":"NOTICE_XCZYDQ" , "name":"薪酬专员的提醒"},{"id":"NOTICE_KQZYDQ" , "name":"考勤专员的提醒"},{"id":"NOTICE_RSZYDQ" , "name":"人事专员的提醒"},{"id":"Default" , "name":"DEFAULT"},{"id":"NOTICE_SBFLZYDQ" , "name":"社保福利专员的提醒"}],
+    "deaction":[{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" }]
+     }
+    ,    {
+    "dename":"PIMTITLE",
+    "delogicname":"职称信息",
+    "sysmoudle":{"id":"PIM","name":"基础管理"},
+    "dedataset":[{"id":"Default" , "name":"DEFAULT"},{"id":"JLSS" , "name":"记录所属"},{"id":"AscriptionSys" , "name":"职称记录所属是管理员的"},{"id":"REP_TITLE" , "name":"职称分布"},{"id":"ZIZHU" , "name":"自助(职称信息)"}],
+    "deaction":[{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"EnsureHighestTech" , "name":"确认唯一最高职称" , "type":"USERCUSTOM" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" }]
+     }
+    ,    {
+    "dename":"PCMDDSQDMX",
+    "delogicname":"调动申请单明细",
+    "sysmoudle":{"id":"PCM","name":"配置管理"},
+    "dedataset":[{"id":"JZSQMX" , "name":"兼职申请明细（未审核完成）"},{"id":"JDSQGR" , "name":"借调申请（个人）"},{"id":"Default" , "name":"DEFAULT"},{"id":"JDSQMX" , "name":"借调申请明细（未审核完成）"},{"id":"DDJL" , "name":"调动记录"},{"id":"GBDDJL" , "name":"调动记录"},{"id":"DDSQGR" , "name":"调动申请（个人）"},{"id":"DDMX" , "name":"调动明细"},{"id":"JZSQGR" , "name":"兼职申请（个人）"}],
+    "deaction":[{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"DDUpdate" , "name":"调动更正" , "type":"USERCUSTOM" },{"id":"SQBTG" , "name":"申请不通过" , "type":"USERCUSTOM" },{"id":"JDCZ" , "name":"借调操作" , "type":"USERCUSTOM" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"DDCreate" , "name":"调动更新" , "type":"USERCUSTOM" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"ZZSQ" , "name":"自助申请" , "type":"USERCUSTOM" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"DDCZ" , "name":"调动操作" , "type":"USERCUSTOM" },{"id":"SQTG" , "name":"申请通过" , "type":"USERCUSTOM" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"JZCZ" , "name":"兼职操作" , "type":"USERCUSTOM" }]
+     }
+    ,    {
+    "dename":"PIMBYZZJLMX",
+    "delogicname":"B/Y类员工转正记录引用明细",
+    "sysmoudle":{"id":"PIM","name":"基础管理"},
+    "dedataset":[{"id":"ZZWSHDS" , "name":"转正未审核"},{"id":"UnApproved" , "name":"待公司初审"},{"id":"DDJZBSH" , "name":"待局总部审核"},{"id":"BYLZZJL" , "name":"B/Y类员工转正记录"},{"id":"DGSDSZSH" , "name":"待公司董事长审批"},{"id":"HTRY" , "name":"回退人员"},{"id":"DJZBSP" , "name":"待局总部审批"},{"id":"DSB" , "name":"待上报"},{"id":"FinishYGBH" , "name":"已变更员工编号名单"},{"id":"DJZBSH" , "name":"待局总部初审"},{"id":"Default" , "name":"DEFAULT"}],
+    "deaction":[{"id":"SHTG" , "name":"局总部初审通过" , "type":"USERCUSTOM" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"ReturnYPZ" , "name":"失效" , "type":"USERCUSTOM" },{"id":"JSPTG" , "name":"局总部审批通过" , "type":"USERCUSTOM" },{"id":"FillPersonInfo" , "name":"填充人员信息" , "type":"DELOGIC" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"JSHTG" , "name":"局总部审核通过" , "type":"USERCUSTOM" },{"id":"JSHBTG" , "name":"局总部审核不通过" , "type":"USERCUSTOM" },{"id":"Ensure" , "name":"确认" , "type":"USERCUSTOM" },{"id":"SHBTG" , "name":"局总部初审不通过" , "type":"USERCUSTOM" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"GSDSZSP" , "name":"公司董事长审批同意" , "type":"USERCUSTOM" },{"id":"ZZCZ" , "name":"转正操作" , "type":"USERCUSTOM" },{"id":"DSB" , "name":"待上报" , "type":"USERCUSTOM" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"JZBSHQR" , "name":"确认" , "type":"USERCUSTOM" },{"id":"GSDSZSPBTG" , "name":"公司董事长审批拒绝" , "type":"USERCUSTOM" },{"id":"GSCSBTG" , "name":"公司初审拒绝" , "type":"USERCUSTOM" },{"id":"JSPBTG" , "name":"局总部审批不通过" , "type":"USERCUSTOM" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"GSCS" , "name":"公司初审同意" , "type":"USERCUSTOM" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"UpdatePeopleNum" , "name":"刷新人数" , "type":"USERCUSTOM" },{"id":"JZBSPQR" , "name":"确认" , "type":"USERCUSTOM" }]
+     }
+    ,    {
+    "dename":"PIMCONTRACT",
+    "delogicname":"合同信息",
+    "sysmoudle":{"id":"PIM","name":"基础管理"},
+    "dedataset":[{"id":"RSTXDS" , "name":"人事提醒"},{"id":"JLSS" , "name":"记录所属和人员ID不符的"},{"id":"OrderByOrg" , "name":"按组织树过滤"},{"id":"StopContracts" , "name":"待终止合同"},{"id":"SignContracts" , "name":"待签订合同"},{"id":"Default" , "name":"DEFAULT"},{"id":"XYHT" , "name":"协议合同"},{"id":"ZIZHU" , "name":"自助(合同信息)"},{"id":"LDHT" , "name":"劳动合同"},{"id":"LWHT" , "name":"劳务合同"}],
+    "deaction":[{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"CalContractTime" , "name":"计算合同签订次数" , "type":"USERCUSTOM" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"StopContract" , "name":"终止合同" , "type":"USERCUSTOM" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" }]
+     }
+    ,    {
+    "dename":"VACLEAVEMANAGE",
+    "delogicname":"请假管理",
+    "sysmoudle":{"id":"VAC","name":"休假管理"},
+    "dedataset":[{"id":"FormType" , "name":"FormType"},{"id":"GR" , "name":"个人"},{"id":"MOBJLSS" , "name":"记录所属（移动端）"},{"id":"JLSS" , "name":"记录所属和人员ID不符的"},{"id":"Default" , "name":"DEFAULT"},{"id":"OnlySPTY" , "name":"只查看审批中、已同意的请假记录"}],
+    "deaction":[{"id":"UpdateQJMX" , "name":"更新请假明细" , "type":"USERCUSTOM" },{"id":"CB" , "name":"催办" , "type":"USERCUSTOM" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"CX" , "name":"撤销" , "type":"USERCUSTOM" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"GetFJSJofPerson" , "name":"获取员工附加数据" , "type":"USERCUSTOM" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"MobStart" , "name":"移动端启动流程" , "type":"USERCUSTOM" }]
+     }
+    ,    {
+    "dename":"PIMEXITANDENTRY",
+    "delogicname":"出入境管理",
+    "sysmoudle":{"id":"PIM","name":"基础管理"},
+    "dedataset":[{"id":"YGCGJ" , "name":"因公出国境"},{"id":"YGZZ" , "name":"员工自助"},{"id":"MOBJLSS" , "name":"记录所属（移动端）"},{"id":"YSCGJ" , "name":"因私出国境"},{"id":"FormType" , "name":"FormType"},{"id":"Default" , "name":"DEFAULT"}],
+    "deaction":[{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"CX" , "name":"撤销" , "type":"USERCUSTOM" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"MobStart" , "name":"移动端启动流程" , "type":"USERCUSTOM" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"CB" , "name":"催办" , "type":"USERCUSTOM" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Start" , "name":"启动流程" , "type":"USERCUSTOM" }]
+     }
+    ,    {
+    "dename":"PIMPERSONCHANGE",
+    "delogicname":"人员信息变更审核",
+    "sysmoudle":{"id":"PIM","name":"基础管理"},
+    "dedataset":[{"id":"HistoryRec" , "name":"历史审批记录"},{"id":"PIMCL_NOTAPPROVAL" , "name":"PIMCL_NOTAPPROVAL"},{"id":"HeadRed" , "name":"总部记录"},{"id":"Default" , "name":"DEFAULT"}],
+    "deaction":[{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"BH" , "name":"驳回" , "type":"USERCUSTOM" },{"id":"Ensure" , "name":"确认" , "type":"USERCUSTOM" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"QR" , "name":"确认" , "type":"USERCUSTOM" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" }]
+     }
+    ,    {
+    "dename":"OrgUser",
+    "delogicname":"组织人员",
+    "sysmoudle":{"id":"COMMON","name":"常规"},
+    "dedataset":[{"id":"CurOrg" , "name":"当前组织"},{"id":"Default" , "name":"DEFAULT"},{"id":"CurOrgSector" , "name":"当前部门"},{"id":"UserOrgSector" , "name":"用户所在部门用户"},{"id":"UserOrg" , "name":"用户所在组织范围"},{"id":"DQZZJXJZZ" , "name":"当前组织及下级组织"}],
+    "deaction":[{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"UpdateCurUser" , "name":"更新当前用户" , "type":"DELOGIC" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"GetCurUser" , "name":"获取当前用户" , "type":"DELOGIC" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" }]
+     }
+    ,    {
+    "dename":"PIMACHIEVEMENTS",
+    "delogicname":"绩效信息",
+    "sysmoudle":{"id":"PIM","name":"基础管理"},
+    "dedataset":[{"id":"JLSS" , "name":"记录所属和人员ID不符的"},{"id":"Default" , "name":"DEFAULT"},{"id":"ZIZHU" , "name":"自助(绩效信息)"}],
+    "deaction":[{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" }]
+     }
+    ,    {
+    "dename":"PIMLANGUAGEABILITY",
+    "delogicname":"语言能力",
+    "sysmoudle":{"id":"PIM","name":"基础管理"},
+    "dedataset":[{"id":"JLSSGR" , "name":"记录所属（个人）"},{"id":"Default" , "name":"DEFAULT"},{"id":"JLSS" , "name":"记录所属"},{"id":"ZIZHU" , "name":"自助(语言能力)"},{"id":"JLSSGLY" , "name":"记录所属（管理员）"}],
+    "deaction":[{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"CustRemove" , "name":"员工删除数据" , "type":"USERCUSTOM" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" }]
+     }
+    ,    {
+    "dename":"PIMPERSON",
+    "delogicname":"人员信息",
+    "sysmoudle":{"id":"PIM","name":"基础管理"},
+    "dedataset":[{"id":"KFPRY" , "name":"可返聘人员"},{"id":"YGXXGLY" , "name":"员工信息（管理员）"},{"id":"XMBRYCX" , "name":"项目部人员查询"},{"id":"CurOrgPerson" , "name":"当前组织实际可选人员"},{"id":"JLSSGR" , "name":"记录所属（个人）"},{"id":"CurLeader" , "name":"部门负责人选择范围"},{"id":"SFHMD" , "name":"是否黑名单"},{"id":"SSTRERSONINFO" , "name":"人员信息树视图"},{"id":"CurJHRY" , "name":"当前组织可选计划人员"},{"id":"KTXYG" , "name":"可退休人员"},{"id":"BYLYG" , "name":"非A类员工"},{"id":"GBHMC" , "name":"干部花名册"},{"id":"GZDQGL" , "name":"挂职到期管理"},{"id":"KQJRYCX" , "name":"可请假员工查询"},{"id":"LTXSTAFF" , "name":"离（退）休员工"},{"id":"REP_PERSONORGTYPE" , "name":"机关 项目人员分布"},{"id":"AuthPerson" , "name":"显示人员（权限控制）"},{"id":"Default" , "name":"DEFAULT"},{"id":"KGZRY" , "name":"可挂职人员"},{"id":"SELFHELPID" , "name":"员工自助登录人员ID"},{"id":"SYQYGCX" , "name":"试用期员工查询"},{"id":"LZRYHMC" , "name":"离职人员花名册"},{"id":"TitleUse" , "name":"头衔专用"},{"id":"JXQYGCX" , "name":"见习期员工查询"},{"id":"YXZFPRYDS" , "name":"存在有效分配的主分配的人员"},{"id":"RYZT_30" , "name":"在职人员"},{"id":"DTXYG" , "name":"待退休人员"},{"id":"XZKQRY" , "name":"新增考勤人员（考勤设置）"},{"id":"REP_PERSONAGE" , "name":"年龄分布"},{"id":"SYQKZZRY" , "name":"试用期可转正人员"},{"id":"JXQKZZRY" , "name":"见习期可转正人员"},{"id":"TXGB" , "name":"退休干部"},{"id":"KZJBDRY" , "name":"可进行职级变动的人员"},{"id":"CurOrgPimperson" , "name":"当前组织下人员"},{"id":"TXRYCX" , "name":"退休员工查询"},{"id":"KXZSYQKZZRYDS" , "name":"申请单可选择试用期可转正人员"}],
+    "deaction":[{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"YZSFYZFP" , "name":"验证是否有（有效的）主分配" , "type":"USERCUSTOM" },{"id":"ToggleLeader" , "name":"设置/取消为领导班子" , "type":"USERCUSTOM" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"PersonUpdateInfo" , "name":"根据证件号更改出生日期、性别、年龄" , "type":"USERCUSTOM" },{"id":"FillPersonType" , "name":"根据员工编号更新员工类型" , "type":"USERCUSTOM" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"GetJTLXRDH" , "name":"获取家庭联系人电话" , "type":"DELOGIC" },{"id":"SynPerson" , "name":"推送员工信息" , "type":"USERCUSTOM" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"QRTX" , "name":"确认退休" , "type":"USERCUSTOM" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"GeneratePersonFile" , "name":"生成人员档案" , "type":"USERCUSTOM" }]
+     }
+    ,    {
+    "dename":"PCMYDJZMX",
+    "delogicname":"异动兼职明细",
+    "sysmoudle":{"id":"PCM","name":"配置管理"},
+    "dedataset":[{"id":"GLDS" , "name":"管理查询"},{"id":"LSJLDS" , "name":"历史记录查看"},{"id":"Default" , "name":"DEFAULT"}],
+    "deaction":[{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"RYHG" , "name":"人员回归" , "type":"USERCUSTOM" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"FillPersonInfo" , "name":"填充员工信息" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" }]
+     }
+    ,    {
+    "dename":"ORMORGSECTOR",
+    "delogicname":"部门管理",
+    "sysmoudle":{"id":"ORM","name":"组织管理"},
+    "dedataset":[{"id":"CURORMORG" , "name":"通过当前组织过滤部门(ORMORGID)"},{"id":"XMBBZGL" , "name":"项目部编制管理"},{"id":"JSYXMB" , "name":"局所有项目部选择（第一版规则）"},{"id":"CurZZBM" , "name":"当前组织下的部门"},{"id":"CurZZBM_KQSZ" , "name":"当前组织部门（考勤设置）"},{"id":"CURORG" , "name":"通过当前组织过滤部门"},{"id":"CurOrgSector" , "name":"当前部门"},{"id":"Default" , "name":"DEFAULT"},{"id":"BaseInfo" , "name":"项目人员需求"},{"id":"DQZZXBM" , "name":"当前组织（及下级组织）下部门"},{"id":"RsshInfo" , "name":"设置项目负责人"},{"id":"SubOrgsector" , "name":"子组织部门/项目部（组织专用）"},{"id":"PimpersonInfoOrgsector" , "name":"子组织部门/项目部（人员信息专用）"},{"id":"HisInfo" , "name":"项目人员需求（历史版本）"},{"id":"SubZZBM" , "name":"子组织部门"},{"id":"ProExpandInfo" , "name":"项目拓展信息"},{"id":"BMBZGL" , "name":"部门编制管理"}],
+    "deaction":[{"id":"ChangeEdition" , "name":"设置为生效版本" , "type":"USERCUSTOM" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"SynOrgSectPro" , "name":"通过项目部选择计算项目信息" , "type":"USERCUSTOM" },{"id":"CLWC" , "name":"处理完成" , "type":"USERCUSTOM" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"TJ" , "name":"提交需求计划" , "type":"USERCUSTOM" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"SynOrgSectOderNum" , "name":"根据当前所选组织默认计算当前部门的排序" , "type":"USERCUSTOM" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"SynOrgSec" , "name":"计算当前部门默认所属区域" , "type":"USERCUSTOM" }]
+     }
+    ,    {
+    "dename":"PCMYDLZMX",
+    "delogicname":"异动离职明细",
+    "sysmoudle":{"id":"PCM","name":"配置管理"},
+    "dedataset":[{"id":"GLDQ" , "name":"管理查询"},{"id":"JLDQ" , "name":"记录查询"},{"id":"Default" , "name":"DEFAULT"}],
+    "deaction":[{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"FillPersonInfo" , "name":"填充人员信息" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"FinishLZ" , "name":"完成离职操作" , "type":"USERCUSTOM" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" }]
+     }
+    ,    {
+    "dename":"PIMARMYCADRES",
+    "delogicname":"军转干部",
+    "sysmoudle":{"id":"PIM","name":"基础管理"},
+    "dedataset":[{"id":"Default" , "name":"DEFAULT"},{"id":"JLSSGLY" , "name":"记录所属（管理员）"},{"id":"JLSSGR" , "name":"记录所属（个人）"}],
+    "deaction":[{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" }]
+     }
+    ,    {
+    "dename":"PCMJXSBDJL",
+    "delogicname":"见习生变动记录",
+    "sysmoudle":{"id":"PCM","name":"配置管理"},
+    "dedataset":[{"id":"Default" , "name":"DEFAULT"},{"id":"ZIZHU" , "name":"自助(见习记录)"},{"id":"JLSS" , "name":"记录所属和人员ID不符的"}],
+    "deaction":[{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" }]
+     }
+    ,    {
+    "dename":"PIMRESEARCHFINDINGS",
+    "delogicname":"科研成果",
+    "sysmoudle":{"id":"PIM","name":"基础管理"},
+    "dedataset":[{"id":"Default" , "name":"DEFAULT"},{"id":"JLSSGLY" , "name":"记录所属（管理员）"},{"id":"JLSSGR" , "name":"记录所属（个人）"}],
+    "deaction":[{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" }]
+     }
+    ,    {
+    "dename":"SALSALARY",
+    "delogicname":"员工薪酬",
+    "sysmoudle":{"id":"SAL","name":"激励管理"},
+    "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
+    "deaction":[{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" }]
+     }
+    ,    {
+    "dename":"PCMYDJPMX",
+    "delogicname":"异动解聘明细",
+    "sysmoudle":{"id":"PCM","name":"配置管理"},
+    "dedataset":[{"id":"JLDS" , "name":"记录查询"},{"id":"Default" , "name":"DEFAULT"},{"id":"GLDS" , "name":"管理查询"}],
+    "deaction":[{"id":"FillPersonInfo" , "name":"填充人员信息" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"JPWC" , "name":"解聘完成" , "type":"USERCUSTOM" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" }]
+     }
+    ,    {
+    "dename":"PIMDISTIRBUTION",
+    "delogicname":"分配信息",
+    "sysmoudle":{"id":"PIM","name":"基础管理"},
+    "dedataset":[{"id":"GBYXZFP" , "name":"干部可调动的分配"},{"id":"LGTX" , "name":"轮岗查询"},{"id":"ISOUTRECORD" , "name":"外单位履历为1的（支持增删改查）"},{"id":"YDCFP" , "name":"已调出分配"},{"id":"YXFP" , "name":"可调动的分配(有效分配)"},{"id":"ZPCJFP" , "name":"招聘创建分配"},{"id":"YDWQX" , "name":"原单位权限"},{"id":"DQYXFP" , "name":"当前有效用户分配"},{"id":"JDRYHMC" , "name":"借调人员花名册"},{"id":"JDDQ" , "name":"借调人员"},{"id":"EXPEREENCE" , "name":"是否主要经历（工作履历）"},{"id":"JLSS" , "name":"记录所属和人员ID不符的"},{"id":"ZIZHU" , "name":"自助(分配信息)"},{"id":"Default" , "name":"DEFAULT"},{"id":"DQFP" , "name":"当前分配"},{"id":"MobDefault" , "name":"移动端默认查询"},{"id":"KDDYXZFP" , "name":"可调动的有效主分配"}],
+    "deaction":[{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"DDCZC" , "name":"调动出操作" , "type":"USERCUSTOM" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" }]
+     }
+    ,    {
+    "dename":"PCMYDJDMX",
+    "delogicname":"异动借调明细",
+    "sysmoudle":{"id":"PCM","name":"配置管理"},
+    "dedataset":[{"id":"JDGLDQ" , "name":"借调管理查询"},{"id":"JDLSJLDQ" , "name":"借调历史记录查询"},{"id":"Default" , "name":"DEFAULT"}],
+    "deaction":[{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"FillPersonInfo" , "name":"填充员工信息" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"RYHG" , "name":"人员回归" , "type":"USERCUSTOM" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" }]
+     }
+    ,    {
+    "dename":"OrgSecUser",
+    "delogicname":"组织部门人员",
+    "sysmoudle":{"id":"COMMON","name":"常规"},
+    "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
+    "deaction":[{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"RemoveDefault" , "name":"删除默认关系" , "type":"USERCUSTOM" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" }]
+     }
+    ,    {
+    "dename":"ATTENSUMMARY",
+    "delogicname":"考勤汇总",
+    "sysmoudle":{"id":"ATT","name":"考勤管理"},
+    "dedataset":[{"id":"CurZZKQHZ" , "name":"当前组织考勤汇总"},{"id":"Default" , "name":"DEFAULT"}],
+    "deaction":[{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"ExportKQHZ" , "name":"导出考勤汇总" , "type":"USERCUSTOM" }]
+     }
+    ,    {
+    "dename":"PCMTXFPSQ",
+    "delogicname":"退休返聘申请",
+    "sysmoudle":{"id":"PCM","name":"配置管理"},
+    "dedataset":[{"id":"FPJL" , "name":"返聘记录"},{"id":"Default" , "name":"DEFAULT"},{"id":"YXSQDS" , "name":"未审核申请"},{"id":"FPGL" , "name":"返聘管理"}],
+    "deaction":[{"id":"FillPersonInfo" , "name":"填充用户信息" , "type":"DELOGIC" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"FPCZ" , "name":"返聘操作" , "type":"USERCUSTOM" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"FinishFP" , "name":"完成返聘" , "type":"USERCUSTOM" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"SHTG" , "name":"审核通过" , "type":"USERCUSTOM" },{"id":"SHBTG" , "name":"审核不通过" , "type":"USERCUSTOM" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" }]
+     }
+    ,    {
+    "dename":"PCMYDDGMX",
+    "delogicname":"异动待岗明细",
+    "sysmoudle":{"id":"PCM","name":"配置管理"},
+    "dedataset":[{"id":"Default" , "name":"DEFAULT"},{"id":"JLDS" , "name":"记录查询"},{"id":"GLDS" , "name":"管理查询"}],
+    "deaction":[{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"FillPersonInfo" , "name":"填充人员信息" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"QXDG" , "name":"取消待岗" , "type":"USERCUSTOM" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" }]
+     }
+    ,    {
+    "dename":"PCMRZGL",
+    "delogicname":"任职管理",
+    "sysmoudle":{"id":"PCM","name":"配置管理"},
+    "dedataset":[{"id":"Default" , "name":"DEFAULT"},{"id":"GBRZQXDQ" , "name":"干部任职期限查询"},{"id":"RQCX" , "name":"RQCX"}],
+    "deaction":[{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" }]
+     }
+    ,    {
+    "dename":"PIMREWARDPUNISHMENT",
+    "delogicname":"奖惩信息",
+    "sysmoudle":{"id":"PIM","name":"基础管理"},
+    "dedataset":[{"id":"ZIZHU" , "name":"自助(奖惩信息)"},{"id":"HONORARY" , "name":"公司及以上荣誉"},{"id":"Default" , "name":"DEFAULT"},{"id":"JLSS" , "name":"记录所属"}],
+    "deaction":[{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" }]
+     }
+    ,    {
+    "dename":"ATTENDANCERECORD",
+    "delogicname":"考勤记录",
+    "sysmoudle":{"id":"ATT","name":"考勤管理"},
+    "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
+    "deaction":[{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"ReflushPersonInfo" , "name":"刷新表单上的员工信息" , "type":"USERCUSTOM" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" }]
+     }
+    ,    {
+    "dename":"PIMPATENT",
+    "delogicname":"专利信息",
+    "sysmoudle":{"id":"PIM","name":"基础管理"},
+    "dedataset":[{"id":"JLSSGLY" , "name":"记录所属（管理员）"},{"id":"Default" , "name":"DEFAULT"},{"id":"JLSSGR" , "name":"记录所属（个人）"}],
+    "deaction":[{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" }]
+     }
+    ,    {
+    "dename":"TRMDUTYCADRES",
+    "delogicname":"优秀年轻干部梯队",
+    "sysmoudle":{"id":"TRM","name":"培训管理"},
+    "dedataset":[{"id":"CurCXFW" , "name":"数据范围选择"},{"id":"Default" , "name":"DEFAULT"}],
+    "deaction":[{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"SetNQGBXX" , "name":"设置年轻干部信息" , "type":"DELOGIC" },{"id":"SX" , "name":"生效" , "type":"DELOGIC" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"XX" , "name":"失效" , "type":"DELOGIC" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" }]
+     }
+    ,    {
+    "dename":"PCMYDNTMX",
+    "delogicname":"异动内退明细",
+    "sysmoudle":{"id":"PCM","name":"配置管理"},
+    "dedataset":[{"id":"JLDS" , "name":"记录查询"},{"id":"Default" , "name":"DEFAULT"},{"id":"GLDS" , "name":"管理查询"}],
+    "deaction":[{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"FillPersonInfo" , "name":"填充人员信息" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"FinishNT" , "name":"结束内退" , "type":"USERCUSTOM" }]
+     }
+    ,    {
+    "dename":"PCMYDGZMX",
+    "delogicname":"异动挂职明细",
+    "sysmoudle":{"id":"PCM","name":"配置管理"},
+    "dedataset":[{"id":"GZCRYDQ" , "name":"挂职出人员查询"},{"id":"GZJLSJLDQ" , "name":"挂职进历史记录查询"},{"id":"GZJRY" , "name":"挂职进人员"},{"id":"Default" , "name":"DEFAULT"},{"id":"GZCLSJLDQ" , "name":"挂职出历史记录查询"}],
+    "deaction":[{"id":"RYHG" , "name":"人员回归" , "type":"USERCUSTOM" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"FillPersonInfo" , "name":"填充人员信息" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" }]
+     }
+    ,    {
+    "dename":"PCMXYGZZJLMX",
+    "delogicname":"试用期员工转正记录引用明细",
+    "sysmoudle":{"id":"PCM","name":"配置管理"},
+    "dedataset":[{"id":"ZZWSHDS" , "name":"试用期转正申请未审核"},{"id":"ALLDS" , "name":"所有的试用期转正申请"},{"id":"SYQZZJL" , "name":"试用期转正记录"},{"id":"Default" , "name":"DEFAULT"}],
+    "deaction":[{"id":"XYGZZCZ" , "name":"新员工转正操作" , "type":"USERCUSTOM" },{"id":"GetDraftTemp" , "name":"GetDraftTemp" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"RemoveTemp" , "name":"RemoveTemp" , "type":"BUILTIN" },{"id":"SHTG" , "name":"审核通过" , "type":"USERCUSTOM" },{"id":"GetDraftTempMajor" , "name":"GetDraftTempMajor" , "type":"BUILTIN" },{"id":"CreateTempMajor" , "name":"CreateTempMajor" , "type":"BUILTIN" },{"id":"GetTemp" , "name":"GetTemp" , "type":"BUILTIN" },{"id":"FillPersonInfo" , "name":"设置人员信息" , "type":"DELOGIC" },{"id":"GetTempMajor" , "name":"GetTempMajor" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"UpdateTempMajor" , "name":"UpdateTempMajor" , "type":"BUILTIN" },{"id":"RemoveTempMajor" , "name":"RemoveTempMajor" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"UpdateTemp" , "name":"UpdateTemp" , "type":"BUILTIN" },{"id":"SHBTG" , "name":"审核不通过" , "type":"USERCUSTOM" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"CreateTemp" , "name":"CreateTemp" , "type":"BUILTIN" }]
+     }
+    ,    {
+    "dename":"PIMEDUCATION",
+    "delogicname":"教育信息",
+    "sysmoudle":{"id":"PIM","name":"基础管理"},
+    "dedataset":[{"id":"FAZZSY" , "name":"教育信息（非A转正专用）"},{"id":"JLSS" , "name":"记录所属"},{"id":"ZIZHU" , "name":"自助(教育信息)"},{"id":"ADMDYZG" , "name":"第一学历和最高学历（管理员）"},{"id":"PERSONAL" , "name":"记录所属（个人）"},{"id":"ADMSYSTEM" , "name":"记录所属（管理员）"},{"id":"Default" , "name":"DEFAULT"},{"id":"REP_EDU" , "name":"图表_学历分布统计"}],
+    "deaction":[{"id":"CheckHighestEdu" , "name":"检查最高学历" , "type":"USERCUSTOM" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" }]
+     }
+    ,    {
+    "dename":"OrgSector",
+    "delogicname":"组织部门",
+    "sysmoudle":{"id":"COMMON","name":"常规"},
+    "dedataset":[{"id":"CurChild" , "name":"当前部门子部门"},{"id":"CurOrgOrg" , "name":"当前组织下部门"},{"id":"UserOrgSector" , "name":"用户部门子部门"},{"id":"OrgRoot" , "name":"组织根部门"},{"id":"UserOrg" , "name":"用户组织部门"},{"id":"CurOrg" , "name":"当前组织"},{"id":"Default" , "name":"DEFAULT"}],
+    "deaction":[{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"InitUserObject" , "name":"初始化用户对象" , "type":"USERCUSTOM" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" }]
+     }
+    ,    {
+    "dename":"PCMBDSQDMX",
+    "delogicname":"职级变动明细",
+    "sysmoudle":{"id":"PCM","name":"配置管理"},
+    "dedataset":[{"id":"JPSQMX" , "name":"解聘申请（未审核）"},{"id":"NTSQMX" , "name":"内退申请明细（未审核）"},{"id":"NTSQMXGR" , "name":"内退申请明细（个人）"},{"id":"TXSQMX" , "name":"退休申请明细（未审核）"},{"id":"GZSQMX" , "name":"挂职申请明细（未审核）"},{"id":"ZJBDSQMX" , "name":"职级变动申请明细"},{"id":"DGSQMX" , "name":"待岗申请明细"},{"id":"CQBXSQMXDS" , "name":"长期病休申请明细"},{"id":"LZSQMX" , "name":"离职申请明细"},{"id":"LZSQMXGR" , "name":"离职申请明细（个人）"},{"id":"Default" , "name":"DEFAULT"}],
+    "deaction":[{"id":"ZJJSDMB" , "name":"职级晋升代码表" , "type":"DELOGIC" },{"id":"CQBXCZ" , "name":"长期病休操作" , "type":"USERCUSTOM" },{"id":"SXJSDMB" , "name":"SXJSDMB" , "type":"DELOGIC" },{"id":"PDZJ" , "name":"判断职级" , "type":"USERCUSTOM" },{"id":"SXJSDMB2" , "name":"刷新代码表" , "type":"DELOGIC" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"ZZSQ" , "name":"自助申请" , "type":"USERCUSTOM" },{"id":"SXDMB" , "name":"职级降职代码表" , "type":"DELOGIC" },{"id":"DGCZ" , "name":"待岗操作" , "type":"USERCUSTOM" },{"id":"SetPersonInfo" , "name":"设置人员相关信息" , "type":"DELOGIC" },{"id":"GZCZ" , "name":"挂职操作" , "type":"USERCUSTOM" },{"id":"JPCZ" , "name":"解聘操作" , "type":"USERCUSTOM" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"LZCZ" , "name":"离职操作" , "type":"USERCUSTOM" },{"id":"NTCZ" , "name":"内退操作" , "type":"USERCUSTOM" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"SHBTG" , "name":"审核不通过" , "type":"USERCUSTOM" },{"id":"ZJBDCZ" , "name":"职级变动操作" , "type":"USERCUSTOM" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"TXCZ" , "name":"退休操作" , "type":"USERCUSTOM" },{"id":"JZJJSDMB" , "name":"局职级晋升代码表" , "type":"DELOGIC" },{"id":"SHTG" , "name":"审核通过" , "type":"USERCUSTOM" }]
+     }
+    ,    {
+    "dename":"PCMJXSYGZZJLMX",
+    "delogicname":"见习生员工转正记录引用明细",
+    "sysmoudle":{"id":"PCM","name":"配置管理"},
+    "dedataset":[{"id":"Default" , "name":"DEFAULT"},{"id":"WSHSQ" , "name":"未审核完成的申请"},{"id":"JXSZZJL" , "name":"见习生转正记录"},{"id":"ALLDS" , "name":"所有的申请明细"}],
+    "deaction":[{"id":"SHBTG" , "name":"审核不通过" , "type":"USERCUSTOM" },{"id":"SHTG" , "name":"审核通过" , "type":"USERCUSTOM" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"FillPersonInfo" , "name":"FillPersonInfo" , "type":"DELOGIC" },{"id":"ZZCZ" , "name":"转正操作" , "type":"USERCUSTOM" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" }]
+     }
+    ,    {
+    "dename":"PCMYDBXMX",
+    "delogicname":"异动病休明细",
+    "sysmoudle":{"id":"PCM","name":"配置管理"},
+    "dedataset":[{"id":"GLDS" , "name":"管理查询"},{"id":"Default" , "name":"DEFAULT"},{"id":"JLDS" , "name":"记录查询"}],
+    "deaction":[{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"FillPersonInfo" , "name":"填充人员信息" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"FinishBX" , "name":"结束病休" , "type":"USERCUSTOM" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" }]
+     }
+    ,    {
+    "dename":"PIMPAPER",
+    "delogicname":"论文信息",
+    "sysmoudle":{"id":"PIM","name":"基础管理"},
+    "dedataset":[{"id":"Default" , "name":"DEFAULT"},{"id":"JLSSGR" , "name":"记录所属（个人）"},{"id":"JLSSGLY" , "name":"记录所属（管理员）"}],
+    "deaction":[{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" }]
+     }
+    ,    {
+    "dename":"PCMYDTXMX",
+    "delogicname":"异动退休明细",
+    "sysmoudle":{"id":"PCM","name":"配置管理"},
+    "dedataset":[{"id":"Default" , "name":"DEFAULT"},{"id":"GLDS" , "name":"管理查询"},{"id":"JLDS" , "name":"记录查询"}],
+    "deaction":[{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"FillPersonInfo" , "name":"填充人员信息" , "type":"BUILTIN" }]
+     }
+    ,    {
+    "dename":"PIMFAMINFO",
+    "delogicname":"家庭情况",
+    "sysmoudle":{"id":"PIM","name":"基础管理"},
+    "dedataset":[{"id":"JLSSGR" , "name":"记录所属（个人）"},{"id":"JTLXR" , "name":"查询该人员的家庭联系人"},{"id":"Default" , "name":"DEFAULT"},{"id":"JLSSGLY" , "name":"记录所属（管理员）"},{"id":"FAZZSY" , "name":"非A类员工转正使用"},{"id":"ZIZHU" , "name":"自助(家庭情况)"},{"id":"JLSS" , "name":"记录所属"}],
+    "deaction":[{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"UpdateInfo" , "name":"根据证件号更改出生日期、性别、年龄" , "type":"USERCUSTOM" },{"id":"UpdateContact" , "name":"更新紧急联络人" , "type":"USERCUSTOM" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" }]
+     }
+    ,    {
+    "dename":"PIMENCLOSURE",
+    "delogicname":"附件信息",
+    "sysmoudle":{"id":"PIM","name":"基础管理"},
+    "dedataset":[{"id":"PCMPROFILE_FJ" , "name":"应聘者附件预览"},{"id":"Default" , "name":"DEFAULT"}],
+    "deaction":[{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" }]
+     }
+    ,    {
+    "dename":"SOCWELFAREINFO",
+    "delogicname":"个人社保福利",
+    "sysmoudle":{"id":"SOC","name":"社保福利管理"},
+    "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
+    "deaction":[{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"GetFJSJofPerson" , "name":"获取人员的附加数据" , "type":"USERCUSTOM" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"GetCBDofSOCCOMPANYWEL" , "name":"获取单位社保账户的参保地" , "type":"USERCUSTOM" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" }]
+     }
+    ,    {
+    "dename":"ORMUSER",
+    "delogicname":"用户管理",
+    "sysmoudle":{"id":"ORM","name":"组织管理"},
+    "dedataset":[{"id":"DQZZJXJZZ" , "name":"当前组织及下级组织"},{"id":"Default" , "name":"DEFAULT"}],
+    "deaction":[{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" }]
+     }
+    ],
+    "appmenus":[
+            
+            {
+               "appid":"08c6ca9c0617a9304875da1ecb95a8e6",
+               "appname":"EHRHELP（员工自助）",
+               "appmenu":[{ "menu":"Shenqing", "menuitem":[birdle0{"id":"f9c0632fa3db06d04afeb51714781879" , "name":"menuitem2" , "caption":"休假申请" },birdle1{"id":"ff9d45832147ff50d470a607be7f6e62" , "name":"menuitem3" , "caption":"出（国）境申请" }]{"id":"6108aab41a25e333a764f2e4bba7e67f" , "name":"menuitem1" , "caption":"我的申请" , "items":[birdle0{"id":"f9c0632fa3db06d04afeb51714781879" , "name":"menuitem2" , "caption":"休假申请" },birdle1{"id":"ff9d45832147ff50d470a607be7f6e62" , "name":"menuitem3" , "caption":"出（国）境申请" }]}] },{ "menu":"Shp", "menuitem":[birdle0{"id":"4a271e5d4136a1b9f2dbc58b7ceec984" , "name":"menuitem17" , "caption":"休假申请" },birdle1{"id":"1867f3f0f64829397044eb7e964fb49e" , "name":"menuitem18" , "caption":"出（国）境申请" },birdle2{"id":"8f36c4fb3d23bc244e4abb5e8d548b8e" , "name":"menuitem19" , "caption":"附件预览" }]{"id":"20389940f9cc213b2859a7f12ad07eac" , "name":"menuitem3" , "caption":"我的申请" , "items":[birdle0{"id":"4a271e5d4136a1b9f2dbc58b7ceec984" , "name":"menuitem17" , "caption":"休假申请" },birdle1{"id":"1867f3f0f64829397044eb7e964fb49e" , "name":"menuitem18" , "caption":"出（国）境申请" },birdle2{"id":"8f36c4fb3d23bc244e4abb5e8d548b8e" , "name":"menuitem19" , "caption":"附件预览" }]}] },{ "menu":"ZIZHU", "menuitem":[birdle0{"id":"d671e001174c57d93b0ef6ca745a5d7d" , "name":"menuitem24" , "caption":"休假申请" },birdle1{"id":"ec65a10addc4342a9c641f9ff297060a" , "name":"menuitem25" , "caption":"出（国）境申请" }]{"id":"bdf73e2b2c360b764f26941d3dd69c59" , "name":"menuitem18" , "caption":"我的申请" , "items":[birdle0{"id":"d671e001174c57d93b0ef6ca745a5d7d" , "name":"menuitem24" , "caption":"休假申请" },birdle1{"id":"ec65a10addc4342a9c641f9ff297060a" , "name":"menuitem25" , "caption":"出（国）境申请" }]}] },{ "menu":"Chaxun", "menuitem":[birdle0{"id":"e05d5806472a372765a5c899ad572ebb" , "name":"menuitem2" , "caption":"分配信息" },birdle1{"id":"5a06df748ef5bbc54c481bb96ff96926" , "name":"menuitem3" , "caption":"档案信息" },birdle2{"id":"b035c56b82b0003d3c951f9537439e43" , "name":"menuitem4" , "caption":"绩效信息" },birdle3{"id":"0af53702c02e8e6d6f8b8291c7975cca" , "name":"menuitem5" , "caption":"合同信息" },birdle4{"id":"f80b9b6c28b2819a45f985fc62f80c83" , "name":"menuitem6" , "caption":"军转干部" }]{"id":"35d1dbda6d8c1c3bc72ab8a1b97f60e8" , "name":"menuitem1" , "caption":"我的查询" , "items":[birdle0{"id":"e05d5806472a372765a5c899ad572ebb" , "name":"menuitem2" , "caption":"分配信息" },birdle1{"id":"5a06df748ef5bbc54c481bb96ff96926" , "name":"menuitem3" , "caption":"档案信息" },birdle2{"id":"b035c56b82b0003d3c951f9537439e43" , "name":"menuitem4" , "caption":"绩效信息" },birdle3{"id":"0af53702c02e8e6d6f8b8291c7975cca" , "name":"menuitem5" , "caption":"合同信息" },birdle4{"id":"f80b9b6c28b2819a45f985fc62f80c83" , "name":"menuitem6" , "caption":"军转干部" }]}] },{ "menu":"Xinxi", "menuitem":[birdle0{"id":"7b26c743293b3dd3afdc89e8c1e7b1ea" , "name":"menuitem1" , "caption":"个人信息" },birdle1{"id":"b4b21bed951f0f7c4ca2f9eccc3802bb" , "name":"menuitem2" , "caption":"教育信息" },birdle2{"id":"9f868fc387dc8542065e95cfbcacd173" , "name":"menuitem3" , "caption":"语言能力" },birdle3{"id":"932e22e72939d3edfc18c3b26f9f9568" , "name":"menuitem4" , "caption":"家庭情况" },birdle4{"id":"c28f6d4d150d1c107c6a785d0fc5ce2f" , "name":"menuitem5" , "caption":"工作履历" },birdle5{"id":"d34d94dbfb3f999ea71a02f2d1666f70" , "name":"menuitem11" , "caption":"证书信息" },birdle6{"id":"d863c0411b5f5fd39efb4876ffe5b656" , "name":"menuitem12" , "caption":"职称信息" },birdle7{"id":"f5b31236db448b7917c3170155375a7f" , "name":"menuitem7" , "caption":"奖励惩罚" },birdle8{"id":"e058602a1b660dfe03079fd1166bd902" , "name":"menuitem14" , "caption":"科研成果" },birdle9{"id":"89311bb2091d73fdc27fb3c2a3aecfb1" , "name":"menuitem15" , "caption":"专利信息" },birdle10{"id":"01f5e617f0fe9c514be9c9de02d55a48" , "name":"menuitem13" , "caption":"论文信息" },birdle11{"id":"794302d819116dce3455ad30fa20329d" , "name":"menuitem6" , "caption":"附件预览" }]{"id":"eac2e0bb338b1527196d5ee5b63467b7" , "name":"menuitem10" , "caption":"我的信息" , "items":[birdle0{"id":"7b26c743293b3dd3afdc89e8c1e7b1ea" , "name":"menuitem1" , "caption":"个人信息" },birdle1{"id":"b4b21bed951f0f7c4ca2f9eccc3802bb" , "name":"menuitem2" , "caption":"教育信息" },birdle2{"id":"9f868fc387dc8542065e95cfbcacd173" , "name":"menuitem3" , "caption":"语言能力" },birdle3{"id":"932e22e72939d3edfc18c3b26f9f9568" , "name":"menuitem4" , "caption":"家庭情况" },birdle4{"id":"c28f6d4d150d1c107c6a785d0fc5ce2f" , "name":"menuitem5" , "caption":"工作履历" },birdle5{"id":"d34d94dbfb3f999ea71a02f2d1666f70" , "name":"menuitem11" , "caption":"证书信息" },birdle6{"id":"d863c0411b5f5fd39efb4876ffe5b656" , "name":"menuitem12" , "caption":"职称信息" },birdle7{"id":"f5b31236db448b7917c3170155375a7f" , "name":"menuitem7" , "caption":"奖励惩罚" },birdle8{"id":"e058602a1b660dfe03079fd1166bd902" , "name":"menuitem14" , "caption":"科研成果" },birdle9{"id":"89311bb2091d73fdc27fb3c2a3aecfb1" , "name":"menuitem15" , "caption":"专利信息" },birdle10{"id":"01f5e617f0fe9c514be9c9de02d55a48" , "name":"menuitem13" , "caption":"论文信息" },birdle11{"id":"794302d819116dce3455ad30fa20329d" , "name":"menuitem6" , "caption":"附件预览" }]}] }]
+            }
+            ,
+            {
+               "appid":"1522a775ace254939b906658e7521ca9",
+               "appname":"EHR（人力资源）",
+               "appmenu":[{ "menu":"tie", "menuitem":[birdle0{"id":"ee7f401461e5eacbed7b16498fccecaf" , "name":"menuitem8" , "caption":"职级设置" },birdle1{"id":"3d4c947bfd78c97b3587c811a44122fc" , "name":"menuitem9" , "caption":"职级到期规则设置" }]{"id":"b40df9daae9f9451c2d311530ddc99f6" , "name":"menuitem7" , "caption":"标准化数据设置" , "items":[birdle0{"id":"ee7f401461e5eacbed7b16498fccecaf" , "name":"menuitem8" , "caption":"职级设置" },birdle1{"id":"3d4c947bfd78c97b3587c811a44122fc" , "name":"menuitem9" , "caption":"职级到期规则设置" }]}] },{ "menu":"sal", "menuitem":[birdle0{"id":"012a3f86669ad6405d747c29c61110a1" , "name":"menuitem35" , "caption":"区域补贴" },birdle1{"id":"d3e6b8a0c591fef5a5f66bc24384d58d" , "name":"menuitem37" , "caption":"休假类型" },birdle2{"id":"cfcb708fb978ee00f8fadbe3e7042e9b" , "name":"menuitem30" , "caption":"考勤类型" },birdle3{"id":"96df827c6b7c2702bf976aada4225b9f" , "name":"menuitem44" , "caption":"考勤规则" }]{"id":"43e4ac16d6feabbdb00038778294d098" , "name":"menuitem45" , "caption":"标准化数据设置" , "items":[birdle0{"id":"012a3f86669ad6405d747c29c61110a1" , "name":"menuitem35" , "caption":"区域补贴" },birdle1{"id":"d3e6b8a0c591fef5a5f66bc24384d58d" , "name":"menuitem37" , "caption":"休假类型" },birdle2{"id":"cfcb708fb978ee00f8fadbe3e7042e9b" , "name":"menuitem30" , "caption":"考勤类型" },birdle3{"id":"96df827c6b7c2702bf976aada4225b9f" , "name":"menuitem44" , "caption":"考勤规则" }]}] },{ "menu":"orm", "menuitem":[birdle0{"id":"bc8900aebced760f125f35973e72689f" , "name":"menuitem16" , "caption":"职务设置" },birdle1{"id":"24a52a64c74d4d19adf37afb5b62a602" , "name":"menuitem6" , "caption":"标准岗位设置" },birdle2{"id":"3a7fbdc27d4b1af17569102a0d6e0709" , "name":"menuitem3" , "caption":"标准岗位查询" },birdle3{"id":"ec11314d5b4ee6f30e145752bf244820" , "name":"menuitem15" , "caption":"岗位集设置" },birdle4{"id":"1eab10ea27827a9ddab78e60160058ba" , "name":"menuitem18" , "caption":"头衔设置" },birdle5{"id":"54c19e58db567057899562b1cfd26a6a" , "name":"menuitem14" , "caption":"项目标签" },birdle6{"id":"0f3e595831442df0edf818b06cbc8c58" , "name":"menuitem10" , "caption":"ERP项目" },birdle7{"id":"25ecb669a4961d5b6753db5b5c8c9a05" , "name":"menuitem2" , "caption":"法人主体维护" },birdle8{"id":"531ad43aa69e12be1ba56db795ef82c7" , "name":"menuitem17" , "caption":"法人主体设置" }]{"id":"11737a7964c96e950d1e370df4e6fcad" , "name":"menuitem4" , "caption":"标准化数据设置" , "items":[birdle0{"id":"bc8900aebced760f125f35973e72689f" , "name":"menuitem16" , "caption":"职务设置" },birdle1{"id":"24a52a64c74d4d19adf37afb5b62a602" , "name":"menuitem6" , "caption":"标准岗位设置" },birdle2{"id":"3a7fbdc27d4b1af17569102a0d6e0709" , "name":"menuitem3" , "caption":"标准岗位查询" },birdle3{"id":"ec11314d5b4ee6f30e145752bf244820" , "name":"menuitem15" , "caption":"岗位集设置" },birdle4{"id":"1eab10ea27827a9ddab78e60160058ba" , "name":"menuitem18" , "caption":"头衔设置" },birdle5{"id":"54c19e58db567057899562b1cfd26a6a" , "name":"menuitem14" , "caption":"项目标签" },birdle6{"id":"0f3e595831442df0edf818b06cbc8c58" , "name":"menuitem10" , "caption":"ERP项目" },birdle7{"id":"25ecb669a4961d5b6753db5b5c8c9a05" , "name":"menuitem2" , "caption":"法人主体维护" },birdle8{"id":"531ad43aa69e12be1ba56db795ef82c7" , "name":"menuitem17" , "caption":"法人主体设置" }]}] },{ "menu":"par", "menuitem":[birdle0{"id":"6e07fb39c5e5653f933d4600339bbe94" , "name":"menuitem18" , "caption":"绩效面谈反馈" }]{"id":"39fc35a31ff65a48c4d883c64b5a6f59" , "name":"menuitem17" , "caption":"绩效应用" , "items":[birdle0{"id":"6e07fb39c5e5653f933d4600339bbe94" , "name":"menuitem18" , "caption":"绩效面谈反馈" }]}] },{ "menu":"pcn", "menuitem":[birdle0{"id":"324884112cb21952f6d853cb85459a73" , "name":"menuitem1" , "caption":"问题收集" }] },{ "menu":"ehr", "menuitem":[birdle0{"id":"2cb744d50bd8f43153b3a70dab1ea296" , "name":"menuitem5" , "caption":"门户首页" },birdle1{"id":"6102758811cd475eee1eaa2710e340de" , "name":"menuitem10" , "caption":"组织管理" },birdle2{"id":"9a7486c7e02074cce482ed51adf3539b" , "name":"menuitem64" , "caption":"基础管理" },birdle3{"id":"f077cff8bf5ae81c6ebcd3323a89195b" , "name":"menuitem75" , "caption":"配置管理" },birdle4{"id":"69bd132c53f8b15e935aee738977f5bb" , "name":"menuitem1" , "caption":"社保福利" },birdle5{"id":"4783d97a4a37c7937d54e40026d295e2" , "name":"menuitem78" , "caption":"薪酬管理" },birdle6{"id":"7003d8aedee40d4807718cb2ad83d414" , "name":"menuitem79" , "caption":"培训管理" },birdle7{"id":"5d440e97321b34125b5006f0a2cc7c79" , "name":"menuitem7" , "caption":"干部管理" },birdle8{"id":"6886c1c0d927d5b40a6b60375d2e914e" , "name":"menuitem3" , "caption":"系统管理" }] },{ "menu":"trm", "menuitem":[birdle0{"id":"1e8df3b977021d5b299fd8066d35db86" , "name":"menuitem15" , "caption":"培训费用登记" },birdle1{"id":"7210dc10712e98672e7cc9dce768458d" , "name":"menuitem16" , "caption":"内部讲师费" },birdle2{"id":"de547d0e86ae350276e061369649e105" , "name":"menuitem8" , "caption":"个人教育经费申请" }]{"id":"f69f7f21970379641c840e3305a74ae3" , "name":"menuitem14" , "caption":"培训费用" , "items":[birdle0{"id":"1e8df3b977021d5b299fd8066d35db86" , "name":"menuitem15" , "caption":"培训费用登记" },birdle1{"id":"7210dc10712e98672e7cc9dce768458d" , "name":"menuitem16" , "caption":"内部讲师费" },birdle2{"id":"de547d0e86ae350276e061369649e105" , "name":"menuitem8" , "caption":"个人教育经费申请" }]}] },{ "menu":"shp", "menuitem":[birdle0{"id":"cfa992970a6c5e82c7e3c567d996266b" , "name":"menuitem3" , "caption":"个人信息" },birdle1{"id":"ed792e01fbc0e13f35d7cf6f76892797" , "name":"menuitem4" , "caption":"休假申请" },birdle2{"id":"71629b006276f2b399321fc8d9e06433" , "name":"menuitem10" , "caption":"出（国）境申请" }]{"id":"dbc508d90d4dae9b0afb33f26ea7d25c" , "name":"menuitem2" , "caption":"员工自助" , "items":[birdle0{"id":"cfa992970a6c5e82c7e3c567d996266b" , "name":"menuitem3" , "caption":"个人信息" },birdle1{"id":"ed792e01fbc0e13f35d7cf6f76892797" , "name":"menuitem4" , "caption":"休假申请" },birdle2{"id":"71629b006276f2b399321fc8d9e06433" , "name":"menuitem10" , "caption":"出（国）境申请" }]}] },{ "menu":"smg", "menuitem":[birdle0{"id":"7cad7ce5cc85123ac8121b922958e243" , "name":"menuitem3" , "caption":"用户角色" },birdle1{"id":"6b2a3a74672cb25dce30eff760ca0f4b" , "name":"menuitem9" , "caption":"数据能力" },birdle2{"id":"fc6348067ee766ed0c3087ef8cce0c1c" , "name":"menuitem7" , "caption":"统一资源" },birdle3{"id":"35d0646a607d42ca753fc8feac5a45cb" , "name":"menuitem5" , "caption":"数据字典" },birdle4{"id":"86292df3f4043b08b88f7ac7749e5ee9" , "name":"menuitem37" , "caption":"员工能力模型" },birdle5{"id":"cf28aeb688f702d054eab5a6930982c1" , "name":"menuitem6" , "caption":"实体管理" },birdle6{"id":"b70eeb4afc13a47354ff6ae957082557" , "name":"menuitem43" , "caption":"组合查询条件" },birdle7{"id":"ca104c3cc2bca6b997c513ac27e3257e" , "name":"menuitem34" , "caption":"属性字典" },birdle8{"id":"80e34a9dcfb03af543a8896fe79296ae" , "name":"menuitem35" , "caption":"组合查询结果" },birdle9{"id":"834f1d2c9f7c954061948fea58dcbf2e" , "name":"menuitem29" , "caption":"用户角色实体属性" },birdle10{"id":"95568c6862548fcbfcaac133e8d3a1b4" , "name":"menuitem25" , "caption":"流程管理" },birdle11{"id":"3f60c2fd300e2ee1e3c8d12108211ef5" , "name":"menuitem4" , "caption":"系统服务" },birdle12{"id":"dcfd62c48f942bd776a51b3f91f4afbd" , "name":"menuitem2" , "caption":"登录账户" },birdle13{"id":"919baa83f489a5ef7f69e5a843a05d16" , "name":"menuitem15" , "caption":"微信公众号" },birdle14{"id":"238a17a8f7a2f2c9f30376fb30098331" , "name":"menuitem16" , "caption":"微信企业应用" },birdle15{"id":"73dc708d1282e86648b06aad4852263d" , "name":"menuitem19" , "caption":"问题收集" },birdle16{"id":"0aa46c0914beabdac8c9d7f49dc0b87a" , "name":"menuitem20" , "caption":"管理页面" },birdle17{"id":"ef46afb030cc81c401a66f5d0bb0db72" , "name":"menuitem18" , "caption":"管理页面" },birdle18{"id":"097afb2fd7126cea3b7ee8891b5c2163" , "name":"menuitem21" , "caption":"管理页面" },birdle19{"id":"e786b7ce53e56f0b410b4b856a6239e6" , "name":"menuitem26" , "caption":"管理页面" },birdle20{"id":"6c377a0d6407facda76cf3bca3eac0d6" , "name":"menuitem27" , "caption":"管理页面" },birdle21{"id":"4c78ddbc209899a40bb7f034ae7aea1a" , "name":"menuitem28" , "caption":"管理页面" },birdle22{"id":"783e028e35a06a116830df3127331c57" , "name":"menuitem39" , "caption":"管理页面" },birdle23{"id":"111668244a0f586c46c11b2d37e0ea9a" , "name":"menuitem22" , "caption":"附件预览" },birdle24{"id":"8aaec664aab67f3187f1747274679f8c" , "name":"menuitem23" , "caption":"用户词典" },birdle25{"id":"2af54713b4b05f07569e1da9cf1c3094" , "name":"menuitem24" , "caption":"用户词条" },birdle26{"id":"1e40c1e412671a1fe2c865930b321116" , "name":"menuitem30" , "caption":"校招在线填报" },birdle27{"id":"b8ad954a771935d08ec16cf8c50344df" , "name":"menuitem31" , "caption":"社招在线填报" },birdle28{"id":"5f7bd76fe6e31503bcf1c77b5fe450d1" , "name":"menuitem32" , "caption":"考勤设置临时" },birdle29{"id":"9eb7e84b39d0e0c51969f43211465fb6" , "name":"menuitem38" , "caption":"考勤规则临时" },birdle30{"id":"ebc93d8da248f55a9ce23ab963cecf97" , "name":"menuitem42" , "caption":"考勤日历临时" },birdle31{"id":"459c932e3c1a11ecdbc37724ca5cf12f" , "name":"menuitem44" , "caption":"学科目录临时" },birdle32{"id":"7c7ec7f22520c36d237bde0660977ee5" , "name":"menuitem33" , "caption":"统一身份库" }]{"id":"4a368aec20ed2570b7f4d43bd96db98d" , "name":"menuitem8" , "caption":"系统管理" , "items":[birdle0{"id":"7cad7ce5cc85123ac8121b922958e243" , "name":"menuitem3" , "caption":"用户角色" },birdle1{"id":"6b2a3a74672cb25dce30eff760ca0f4b" , "name":"menuitem9" , "caption":"数据能力" },birdle2{"id":"fc6348067ee766ed0c3087ef8cce0c1c" , "name":"menuitem7" , "caption":"统一资源" },birdle3{"id":"35d0646a607d42ca753fc8feac5a45cb" , "name":"menuitem5" , "caption":"数据字典" },birdle4{"id":"86292df3f4043b08b88f7ac7749e5ee9" , "name":"menuitem37" , "caption":"员工能力模型" },birdle5{"id":"cf28aeb688f702d054eab5a6930982c1" , "name":"menuitem6" , "caption":"实体管理" },birdle6{"id":"b70eeb4afc13a47354ff6ae957082557" , "name":"menuitem43" , "caption":"组合查询条件" },birdle7{"id":"ca104c3cc2bca6b997c513ac27e3257e" , "name":"menuitem34" , "caption":"属性字典" },birdle8{"id":"80e34a9dcfb03af543a8896fe79296ae" , "name":"menuitem35" , "caption":"组合查询结果" },birdle9{"id":"834f1d2c9f7c954061948fea58dcbf2e" , "name":"menuitem29" , "caption":"用户角色实体属性" },birdle10{"id":"95568c6862548fcbfcaac133e8d3a1b4" , "name":"menuitem25" , "caption":"流程管理" },birdle11{"id":"3f60c2fd300e2ee1e3c8d12108211ef5" , "name":"menuitem4" , "caption":"系统服务" },birdle12{"id":"dcfd62c48f942bd776a51b3f91f4afbd" , "name":"menuitem2" , "caption":"登录账户" },birdle13{"id":"919baa83f489a5ef7f69e5a843a05d16" , "name":"menuitem15" , "caption":"微信公众号" },birdle14{"id":"238a17a8f7a2f2c9f30376fb30098331" , "name":"menuitem16" , "caption":"微信企业应用" },birdle15{"id":"73dc708d1282e86648b06aad4852263d" , "name":"menuitem19" , "caption":"问题收集" },birdle16{"id":"0aa46c0914beabdac8c9d7f49dc0b87a" , "name":"menuitem20" , "caption":"管理页面" },birdle17{"id":"ef46afb030cc81c401a66f5d0bb0db72" , "name":"menuitem18" , "caption":"管理页面" },birdle18{"id":"097afb2fd7126cea3b7ee8891b5c2163" , "name":"menuitem21" , "caption":"管理页面" },birdle19{"id":"e786b7ce53e56f0b410b4b856a6239e6" , "name":"menuitem26" , "caption":"管理页面" },birdle20{"id":"6c377a0d6407facda76cf3bca3eac0d6" , "name":"menuitem27" , "caption":"管理页面" },birdle21{"id":"4c78ddbc209899a40bb7f034ae7aea1a" , "name":"menuitem28" , "caption":"管理页面" },birdle22{"id":"783e028e35a06a116830df3127331c57" , "name":"menuitem39" , "caption":"管理页面" },birdle23{"id":"111668244a0f586c46c11b2d37e0ea9a" , "name":"menuitem22" , "caption":"附件预览" },birdle24{"id":"8aaec664aab67f3187f1747274679f8c" , "name":"menuitem23" , "caption":"用户词典" },birdle25{"id":"2af54713b4b05f07569e1da9cf1c3094" , "name":"menuitem24" , "caption":"用户词条" },birdle26{"id":"1e40c1e412671a1fe2c865930b321116" , "name":"menuitem30" , "caption":"校招在线填报" },birdle27{"id":"b8ad954a771935d08ec16cf8c50344df" , "name":"menuitem31" , "caption":"社招在线填报" },birdle28{"id":"5f7bd76fe6e31503bcf1c77b5fe450d1" , "name":"menuitem32" , "caption":"考勤设置临时" },birdle29{"id":"9eb7e84b39d0e0c51969f43211465fb6" , "name":"menuitem38" , "caption":"考勤规则临时" },birdle30{"id":"ebc93d8da248f55a9ce23ab963cecf97" , "name":"menuitem42" , "caption":"考勤日历临时" },birdle31{"id":"459c932e3c1a11ecdbc37724ca5cf12f" , "name":"menuitem44" , "caption":"学科目录临时" },birdle32{"id":"7c7ec7f22520c36d237bde0660977ee5" , "name":"menuitem33" , "caption":"统一身份库" }]}] },{ "menu":"soc", "menuitem":[] },{ "menu":"pim", "menuitem":[birdle0{"id":"39d457ae9a3011dedd48cc77d367b32e" , "name":"menuitem5" , "caption":"员工类型设置" },birdle1{"id":"47ff14cf7e3bab7c9fbb682bc71a1d0a" , "name":"menuitem2" , "caption":"合同类别设置" },birdle2{"id":"a3a15981a258dbdde7b86efc04775b95" , "name":"menuitem18" , "caption":"合同类型设置" },birdle3{"id":"8231d16d133a7c497a7530eed4261ba2" , "name":"menuitem14" , "caption":"专业序列类型设置" },birdle4{"id":"b480ba85483285d15daa526ea4907a4e" , "name":"menuitem12" , "caption":"见习期" },birdle5{"id":"b28deebb0575902f1242095d8a860f23" , "name":"menuitem21" , "caption":"执业资格专业" },birdle6{"id":"4bc1081c4790c33d64807b5a898787ac" , "name":"menuitem20" , "caption":"岗位（技能）证书" },birdle7{"id":"0bbb7ceb976ac1c4386ec6fa93740aea" , "name":"menuitem3" , "caption":"档案类别" },birdle8{"id":"68361d6435178b48205d91faaeba9126" , "name":"menuitem31" , "caption":"职称目录" },birdle9{"id":"d8ab9e69e0c01448baa428a4b470b25c" , "name":"menuitem15" , "caption":"档案室设置" }]{"id":"a26290225b0944410780285d800d7875" , "name":"menuitem11" , "caption":"标准化数据设置" , "items":[birdle0{"id":"39d457ae9a3011dedd48cc77d367b32e" , "name":"menuitem5" , "caption":"员工类型设置" },birdle1{"id":"47ff14cf7e3bab7c9fbb682bc71a1d0a" , "name":"menuitem2" , "caption":"合同类别设置" },birdle2{"id":"a3a15981a258dbdde7b86efc04775b95" , "name":"menuitem18" , "caption":"合同类型设置" },birdle3{"id":"8231d16d133a7c497a7530eed4261ba2" , "name":"menuitem14" , "caption":"专业序列类型设置" },birdle4{"id":"b480ba85483285d15daa526ea4907a4e" , "name":"menuitem12" , "caption":"见习期" },birdle5{"id":"b28deebb0575902f1242095d8a860f23" , "name":"menuitem21" , "caption":"执业资格专业" },birdle6{"id":"4bc1081c4790c33d64807b5a898787ac" , "name":"menuitem20" , "caption":"岗位（技能）证书" },birdle7{"id":"0bbb7ceb976ac1c4386ec6fa93740aea" , "name":"menuitem3" , "caption":"档案类别" },birdle8{"id":"68361d6435178b48205d91faaeba9126" , "name":"menuitem31" , "caption":"职称目录" },birdle9{"id":"d8ab9e69e0c01448baa428a4b470b25c" , "name":"menuitem15" , "caption":"档案室设置" }]}] },{ "menu":"ydm", "menuitem":[birdle0{"id":"aad5e05def810c93cf16e2487bee3ce6" , "name":"menuitem2" , "caption":"调动管理" },birdle1{"id":"26e41d6614f52dba49fe6727c6ca8762" , "name":"menuitem5" , "caption":"借调管理" },birdle2{"id":"a846d5a375732d91d937493ec63ec012" , "name":"menuitem6" , "caption":"兼职管理" },birdle3{"id":"e169a8250bfaa87d42ceeb8b90d6fef0" , "name":"menuitem4" , "caption":"挂职出管理" },birdle4{"id":"1e872bd369869302d9ad45d7a853d9bd" , "name":"menuitem7" , "caption":"待岗管理" },birdle5{"id":"4fa80a44f69c969d5ec36b8f1b9ccd1e" , "name":"menuitem9" , "caption":"内退管理" },birdle6{"id":"c77b479f5fd5c5717e3e64bfdf99b144" , "name":"menuitem3" , "caption":"病休管理" },birdle7{"id":"566939d2573e85a834a84e01eae55c0c" , "name":"menuitem10" , "caption":"离职管理" },birdle8{"id":"a4d1f5a08d56422aece08984a112e57b" , "name":"menuitem13" , "caption":"解聘管理" },birdle9{"id":"78ac6a666ba424770e5d8a2befed7800" , "name":"menuitem20" , "caption":"退休管理" },birdle10{"id":"47946c7b5302a752895aa3712eb3bb16" , "name":"menuitem22" , "caption":"试用期转正管理" },birdle11{"id":"8c4a06614c551942c2d1fb721c2ed0dd" , "name":"menuitem24" , "caption":"见习期转正管理" },birdle12{"id":"8bb70df5c0faea8c35330511722617cf" , "name":"menuitem25" , "caption":"B/Y类转正管理" }]{"id":"0283e9e4034e7f8ad3001148bd9f2f2d" , "name":"menuitem1" , "caption":"人员异动" , "items":[birdle0{"id":"aad5e05def810c93cf16e2487bee3ce6" , "name":"menuitem2" , "caption":"调动管理" },birdle1{"id":"26e41d6614f52dba49fe6727c6ca8762" , "name":"menuitem5" , "caption":"借调管理" },birdle2{"id":"a846d5a375732d91d937493ec63ec012" , "name":"menuitem6" , "caption":"兼职管理" },birdle3{"id":"e169a8250bfaa87d42ceeb8b90d6fef0" , "name":"menuitem4" , "caption":"挂职出管理" },birdle4{"id":"1e872bd369869302d9ad45d7a853d9bd" , "name":"menuitem7" , "caption":"待岗管理" },birdle5{"id":"4fa80a44f69c969d5ec36b8f1b9ccd1e" , "name":"menuitem9" , "caption":"内退管理" },birdle6{"id":"c77b479f5fd5c5717e3e64bfdf99b144" , "name":"menuitem3" , "caption":"病休管理" },birdle7{"id":"566939d2573e85a834a84e01eae55c0c" , "name":"menuitem10" , "caption":"离职管理" },birdle8{"id":"a4d1f5a08d56422aece08984a112e57b" , "name":"menuitem13" , "caption":"解聘管理" },birdle9{"id":"78ac6a666ba424770e5d8a2befed7800" , "name":"menuitem20" , "caption":"退休管理" },birdle10{"id":"47946c7b5302a752895aa3712eb3bb16" , "name":"menuitem22" , "caption":"试用期转正管理" },birdle11{"id":"8c4a06614c551942c2d1fb721c2ed0dd" , "name":"menuitem24" , "caption":"见习期转正管理" },birdle12{"id":"8bb70df5c0faea8c35330511722617cf" , "name":"menuitem25" , "caption":"B/Y类转正管理" }]}] },{ "menu":"pcm", "menuitem":[birdle0{"id":"40469dfc12d741e645528b4df9a4e02b" , "name":"menuitem13" , "caption":"招聘名额管理" },birdle1{"id":"d09aba2554fb8f8e7c218cc09f0680eb" , "name":"menuitem33" , "caption":"高校名录" },birdle2{"id":"7317e77e411f3f12a33af2c608a493c5" , "name":"menuitem34" , "caption":"学科目录" },birdle3{"id":"29e7e08c9a1ac869ad6729fab7e2ca15" , "name":"menuitem3" , "caption":"人才序列设置" },birdle4{"id":"9920838268c60b13051b9e755ea92316" , "name":"menuitem75" , "caption":"应聘者编号前缀" },birdle5{"id":"fc39fe05dbd179863ff7798ad0f8f520" , "name":"menuitem82" , "caption":"应聘者审批原因" },birdle6{"id":"724a944f317a2fbcab4fc4e81dbaaf8a" , "name":"menuitem83" , "caption":"应聘者社招引进条件" }]{"id":"d4d3e4e01b02fbdc570cf4981edecaec" , "name":"menuitem10" , "caption":"标准化数据设置" , "items":[birdle0{"id":"40469dfc12d741e645528b4df9a4e02b" , "name":"menuitem13" , "caption":"招聘名额管理" },birdle1{"id":"d09aba2554fb8f8e7c218cc09f0680eb" , "name":"menuitem33" , "caption":"高校名录" },birdle2{"id":"7317e77e411f3f12a33af2c608a493c5" , "name":"menuitem34" , "caption":"学科目录" },birdle3{"id":"29e7e08c9a1ac869ad6729fab7e2ca15" , "name":"menuitem3" , "caption":"人才序列设置" },birdle4{"id":"9920838268c60b13051b9e755ea92316" , "name":"menuitem75" , "caption":"应聘者编号前缀" },birdle5{"id":"fc39fe05dbd179863ff7798ad0f8f520" , "name":"menuitem82" , "caption":"应聘者审批原因" },birdle6{"id":"724a944f317a2fbcab4fc4e81dbaaf8a" , "name":"menuitem83" , "caption":"应聘者社招引进条件" }]}] },{ "menu":"portal", "menuitem":[birdle0{"id":"f64d25914c17d3a71df81bc7d85db44a" , "name":"menuitem19" , "caption":"调动管理" },birdle1{"id":"6603709c7f49cfa0549c53a2fb24f5e8" , "name":"menuitem20" , "caption":"借调管理" },birdle2{"id":"9b96743e9d9f80e1750289da78d716db" , "name":"menuitem21" , "caption":"兼职管理" },birdle3{"id":"6c9ddbd14ecd5b52dbfb989fac75c8c9" , "name":"menuitem22" , "caption":"离职管理" },birdle4{"id":"596936b5622bf6d8ac737b769f9a3f4a" , "name":"menuitem23" , "caption":"解聘管理" },birdle5{"id":"11809758ff778734a042e9a147ef9caa" , "name":"menuitem24" , "caption":"退休管理" }]{"id":"d642cb10086c31a58ed66de44f3a3dd3" , "name":"menuitem4" , "caption":"配置管理" , "items":[birdle0{"id":"f64d25914c17d3a71df81bc7d85db44a" , "name":"menuitem19" , "caption":"调动管理" },birdle1{"id":"6603709c7f49cfa0549c53a2fb24f5e8" , "name":"menuitem20" , "caption":"借调管理" },birdle2{"id":"9b96743e9d9f80e1750289da78d716db" , "name":"menuitem21" , "caption":"兼职管理" },birdle3{"id":"6c9ddbd14ecd5b52dbfb989fac75c8c9" , "name":"menuitem22" , "caption":"离职管理" },birdle4{"id":"596936b5622bf6d8ac737b769f9a3f4a" , "name":"menuitem23" , "caption":"解聘管理" },birdle5{"id":"11809758ff778734a042e9a147ef9caa" , "name":"menuitem24" , "caption":"退休管理" }]},birdle3{"id":"85d28cdee0eea6f5643a448ea8b7a485" , "name":"menuitem5" , "caption":"绩效管理" },birdle4{"id":"0a39285d72026ffb6673f8617de1a77f" , "name":"menuitem6" , "caption":"社保福利" },birdle5{"id":"2905d445657df297422230b6c055359b" , "name":"menuitem7" , "caption":"薪酬管理" },birdle6{"id":"a388cc2a82ad4ce9aab3a4b2d8aa626b" , "name":"menuitem2" , "caption":"培训管理" },birdle7{"id":"553a9dd4c349d76ae62942972179dd37" , "name":"menuitem8" , "caption":"干部管理" },birdle8{"id":"d8365de4fe161622d94d74a2603ef9a2" , "name":"menuitem10" , "caption":"系统管理" }] }]
+            }
+            ,
+            {
+               "appid":"60efaeb9fdb73dfa68debb08d8231b23",
+               "appname":"EHRPCM2（人员异动）",
+               "appmenu":[]
+            }
+            ,
+            {
+               "appid":"78d2cbca82aac5b59d2f80e1a0b1f3a3",
+               "appname":"EHRMOB（移动端）",
+               "appmenu":[{ "menu":"ApplicationMenu", "menuitem":[birdle0{"id":"3791d2a8445f39d179c28a030e4a5db0" , "name":"menuitem4" , "caption":"休假申请" },birdle1{"id":"aa160751816ea2eba6ce0eed0047074b" , "name":"menuitem10" , "caption":"出(国)境申请" }]{"id":"f160e395aa351ccd4b7de9dfe038b711" , "name":"menuitem1" , "caption":"申请" , "items":[birdle0{"id":"3791d2a8445f39d179c28a030e4a5db0" , "name":"menuitem4" , "caption":"休假申请" },birdle1{"id":"aa160751816ea2eba6ce0eed0047074b" , "name":"menuitem10" , "caption":"出(国)境申请" }]}] },{ "menu":"MobApply", "menuitem":[birdle0{"id":"5b50b70161bb1f069de530f1d8b08e5d" , "name":"menuitem1" , "caption":"自助申请" }] },{ "menu":"MobDefault", "menuitem":[birdle0{"id":"437be8c9c2e96f222f9e08f81d2690a8" , "name":"menuitem2" , "caption":"自助服务" }] },{ "menu":"SelfServiceMenu", "menuitem":[birdle0{"id":"8da7b58b2dc430cdaeee16b1dd7447ca" , "name":"menuitem3" , "caption":"个人信息" },birdle1{"id":"548e995675a624cc3b06cbe79fcb8304" , "name":"menuitem15" , "caption":"合同信息" },birdle2{"id":"6a90720b4cfd8936b3283aeecef243ac" , "name":"menuitem11" , "caption":"工作履历" },birdle3{"id":"d4f97649a4b383afff65ffd4d748441f" , "name":"menuitem12" , "caption":"分配信息" },birdle4{"id":"1d550a20bbeceaa3f9fe957692def8b9" , "name":"menuitem13" , "caption":"档案信息" },birdle5{"id":"6b57b28232cee289eb618a3a61d31156" , "name":"menuitem14" , "caption":"绩效信息" },birdle6{"id":"b623943d6a3e762a1eb39bede0610048" , "name":"menuitem24" , "caption":"职称信息" },birdle7{"id":"fda030c96bbc19f468fc37d5e361c5f2" , "name":"menuitem20" , "caption":"奖惩信息" },birdle8{"id":"035df3295e9c72ea913a6f0425d33739" , "name":"menuitem25" , "caption":"证书信息" },birdle9{"id":"cec482ab288e2684b1c8dde1ac48f38a" , "name":"menuitem22" , "caption":"语言能力" },birdle10{"id":"a972f862a2af545d40006633dc0ee43b" , "name":"menuitem21" , "caption":"教育信息" },birdle11{"id":"646453e1c054b37f6b78c68aac687796" , "name":"menuitem23" , "caption":"家庭情况" }] }]
+            }
+            ,
+            {
+               "appid":"825c21ac5dcedd704c2c6b51924f0b87",
+               "appname":"EHRPCM（招聘管理）",
+               "appmenu":[{ "menu":"Index", "menuitem":[birdle0{"id":"d7cd6c0305b469dd469ed647293f2cd7" , "name":"menuitem1" , "caption":"校招应聘者" }] }]
+            }
+            ,
+            {
+               "appid":"8b1572d64af9e406cbc1fc8a31a744eb",
+               "appname":"EHRORM（组织管理）",
+               "appmenu":[{ "menu":"AppIndexView", "menuitem":[birdle0{"id":"184af6a08026aab3a9ca6d792da7869d" , "name":"menuitem5" , "caption":"职务设置" },birdle1{"id":"3ae2a28eb5cca8f73c5c7d8bb029d1a2" , "name":"menuitem6" , "caption":"标准岗位设置" },birdle2{"id":"d76622337119970e415ee5cc1bd56a97" , "name":"menuitem8" , "caption":"标准岗位查询" },birdle3{"id":"f77a8337aad1c2768a9c8a2af7938ced" , "name":"menuitem9" , "caption":"岗位集设置" },birdle4{"id":"2783327117d0981e84fb6292b1d007f0" , "name":"menuitem10" , "caption":"项目标签" },birdle5{"id":"16be6b27f7a61f221d9611022e605c10" , "name":"menuitem7" , "caption":"ERP项目" },birdle6{"id":"c5e4abc5f66a1415f842d99f2a1c2d44" , "name":"menuitem11" , "caption":"法人主体维护" },birdle7{"id":"20d9f2a7f789de9d60d600e2b1a01cd8" , "name":"menuitem12" , "caption":"法人主体设置" }]{"id":"beb0732833c61c3fb648340c5ca6587b" , "name":"menuitem4" , "caption":"标准化数据" , "items":[birdle0{"id":"184af6a08026aab3a9ca6d792da7869d" , "name":"menuitem5" , "caption":"职务设置" },birdle1{"id":"3ae2a28eb5cca8f73c5c7d8bb029d1a2" , "name":"menuitem6" , "caption":"标准岗位设置" },birdle2{"id":"d76622337119970e415ee5cc1bd56a97" , "name":"menuitem8" , "caption":"标准岗位查询" },birdle3{"id":"f77a8337aad1c2768a9c8a2af7938ced" , "name":"menuitem9" , "caption":"岗位集设置" },birdle4{"id":"2783327117d0981e84fb6292b1d007f0" , "name":"menuitem10" , "caption":"项目标签" },birdle5{"id":"16be6b27f7a61f221d9611022e605c10" , "name":"menuitem7" , "caption":"ERP项目" },birdle6{"id":"c5e4abc5f66a1415f842d99f2a1c2d44" , "name":"menuitem11" , "caption":"法人主体维护" },birdle7{"id":"20d9f2a7f789de9d60d600e2b1a01cd8" , "name":"menuitem12" , "caption":"法人主体设置" }]}] },{ "menu":"orm", "menuitem":[birdle0{"id":"28626b0f9d3c092c453a8c8e24b74f57" , "name":"menuitem5" , "caption":"职务设置" },birdle1{"id":"97d6f7e2d6023c01cb2a31af6eec10a4" , "name":"menuitem6" , "caption":"标准岗位设置" },birdle2{"id":"faab925550ba5b6bf10fcf0daccd4fa4" , "name":"menuitem7" , "caption":"标准岗位查询" },birdle3{"id":"dfb9b123bb669bf74b64f01b6d4a184e" , "name":"menuitem8" , "caption":"岗位集设置" },birdle4{"id":"30956d634cccaf6b3744e4c35331cb40" , "name":"menuitem9" , "caption":"补贴标准" },birdle5{"id":"6cbc448f3de24d3f96adbbbcb88b1f20" , "name":"menuitem10" , "caption":"头衔设置" },birdle6{"id":"9c7f027332a3005e8038e65925528b09" , "name":"menuitem11" , "caption":"项目标签" },birdle7{"id":"954b69e9951010793e972c1924ca49a4" , "name":"menuitem12" , "caption":"ERP项目" },birdle8{"id":"cc9746a4862f6eb577a09361ae2080cb" , "name":"menuitem13" , "caption":"法人主体" },birdle9{"id":"877fed3777ad3a1d8ea1e3c3901a5bb4" , "name":"menuitem14" , "caption":"法人主体设置" }]{"id":"a74ace2c6000e088ac96518356a6c504" , "name":"menuitem4" , "caption":"标准化数据设置" , "items":[birdle0{"id":"28626b0f9d3c092c453a8c8e24b74f57" , "name":"menuitem5" , "caption":"职务设置" },birdle1{"id":"97d6f7e2d6023c01cb2a31af6eec10a4" , "name":"menuitem6" , "caption":"标准岗位设置" },birdle2{"id":"faab925550ba5b6bf10fcf0daccd4fa4" , "name":"menuitem7" , "caption":"标准岗位查询" },birdle3{"id":"dfb9b123bb669bf74b64f01b6d4a184e" , "name":"menuitem8" , "caption":"岗位集设置" },birdle4{"id":"30956d634cccaf6b3744e4c35331cb40" , "name":"menuitem9" , "caption":"补贴标准" },birdle5{"id":"6cbc448f3de24d3f96adbbbcb88b1f20" , "name":"menuitem10" , "caption":"头衔设置" },birdle6{"id":"9c7f027332a3005e8038e65925528b09" , "name":"menuitem11" , "caption":"项目标签" },birdle7{"id":"954b69e9951010793e972c1924ca49a4" , "name":"menuitem12" , "caption":"ERP项目" },birdle8{"id":"cc9746a4862f6eb577a09361ae2080cb" , "name":"menuitem13" , "caption":"法人主体" },birdle9{"id":"877fed3777ad3a1d8ea1e3c3901a5bb4" , "name":"menuitem14" , "caption":"法人主体设置" }]}] }]
+            }
+            ,
+            {
+               "appid":"9daf2b09f50f26d4e868e186663ff745",
+               "appname":"EHRWEB",
+               "appmenu":[{ "menu":"ApplicationMenu", "menuitem":[] }]
+            }
+            ,
+            {
+               "appid":"ad107f384159c4d825b04527e42b0b08",
+               "appname":"EHRAPP",
+               "appmenu":[{ "menu":"default", "menuitem":[] }]
+            }
+            ,
+            {
+               "appid":"bc1f55f482a2df2bede07c661806c4eb",
+               "appname":"Web（工作流嵌入）",
+               "appmenu":[]
+            }
+            ,
+            {
+               "appid":"fdd45afd435a1f54116f714eebd8c31e",
+               "appname":"EHRPIM（基础管理）",
+               "appmenu":[{ "menu":"Index", "menuitem":[birdle0{"id":"7c48770b3cff54ca6c6c7dbbf1c000e6" , "name":"menuitem35" , "caption":"员工类型" },birdle1{"id":"8eedc5a8347eac073b4299fadb558a30" , "name":"menuitem36" , "caption":"合同类别" },birdle2{"id":"a60a3f3ccebb90b7a995e212f5f17468" , "name":"menuitem37" , "caption":"合同类型" },birdle3{"id":"5d9e028238da4f4ab6ffb65e788a6852" , "name":"menuitem38" , "caption":"专业序列类型" },birdle4{"id":"94a81f32c2232dc085f64892f8def1f8" , "name":"menuitem39" , "caption":"见习期" },birdle5{"id":"f2742bfcc2356ab52f0fee92d5afd18f" , "name":"menuitem40" , "caption":"执业资格证书" },birdle6{"id":"e57baa86399c1c9cb9292bcdfce8fea0" , "name":"menuitem41" , "caption":"岗位(技能)证书" },birdle7{"id":"2b1895b1f12f26eebabe4e273891e7f4" , "name":"menuitem43" , "caption":"职称目录" },birdle8{"id":"4fed58fa04a78c56232e7874bba7066a" , "name":"menuitem42" , "caption":"档案类别" },birdle9{"id":"9668ce150b60537b7bf2edec4881cbf7" , "name":"menuitem44" , "caption":"档案室" }]{"id":"a8bea59ad98ff35d0ef0dd1cea00f96f" , "name":"menuitem19" , "caption":"标准化数据设置" , "items":[birdle0{"id":"7c48770b3cff54ca6c6c7dbbf1c000e6" , "name":"menuitem35" , "caption":"员工类型" },birdle1{"id":"8eedc5a8347eac073b4299fadb558a30" , "name":"menuitem36" , "caption":"合同类别" },birdle2{"id":"a60a3f3ccebb90b7a995e212f5f17468" , "name":"menuitem37" , "caption":"合同类型" },birdle3{"id":"5d9e028238da4f4ab6ffb65e788a6852" , "name":"menuitem38" , "caption":"专业序列类型" },birdle4{"id":"94a81f32c2232dc085f64892f8def1f8" , "name":"menuitem39" , "caption":"见习期" },birdle5{"id":"f2742bfcc2356ab52f0fee92d5afd18f" , "name":"menuitem40" , "caption":"执业资格证书" },birdle6{"id":"e57baa86399c1c9cb9292bcdfce8fea0" , "name":"menuitem41" , "caption":"岗位(技能)证书" },birdle7{"id":"2b1895b1f12f26eebabe4e273891e7f4" , "name":"menuitem43" , "caption":"职称目录" },birdle8{"id":"4fed58fa04a78c56232e7874bba7066a" , "name":"menuitem42" , "caption":"档案类别" },birdle9{"id":"9668ce150b60537b7bf2edec4881cbf7" , "name":"menuitem44" , "caption":"档案室" }]}] }]
+            }
+            ]
+    }

@@ -1,0 +1,18 @@
+version: "3.2"
+services:
+  ehr-app-ehrpcm:
+    image: registry.cn-shanghai.aliyuncs.com/ibizsys/ehr-app-ehrpcm:latest
+    ports:
+      - "6092:6092"
+    networks:
+      - agent_network
+    environment:
+      SPRING_CLOUD_NACOS_DISCOVERY_IP: 172.16.240.110
+    deploy:
+      mode: replicated
+      replicas: 1
+
+networks:
+  agent_network:
+    driver: overlay
+    attachable: true

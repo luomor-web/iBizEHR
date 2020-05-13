@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper	namespace="cn.ibizlab.ehr.core.wf.mapper.WFInstanceMapper">
+
+    <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
+	<select id="selectById"  resultMap="WFInstanceResultMap" databaseId="db2">
+        <![CDATA[select * from v_wfinstance t1     where  wfinstanceid=#{id}]]>
+    </select>
+	<select id="selectById"  resultMap="WFInstanceResultMap" databaseId="mysql">
+        <![CDATA[select * from v_wfinstance t1     where  wfinstanceid=#{id}]]>
+    </select>
+	<select id="selectById"  resultMap="WFInstanceResultMap" databaseId="oracle">
+        <![CDATA[select * from v_wfinstance t1     where  wfinstanceid=#{id}]]>
+    </select>
+	<select id="selectById"  resultMap="WFInstanceResultMap" databaseId="postgresql">
+        <![CDATA[select * from v_wfinstance t1     where  wfinstanceid=#{id}]]>
+    </select>
+	<select id="selectById"  resultMap="WFInstanceResultMap" databaseId="ppas">
+        <![CDATA[select * from v_wfinstance t1     where  wfinstanceid=#{id}]]>
+    </select>
+	<select id="selectById"  resultMap="WFInstanceResultMap" databaseId="sqlserver">
+        <![CDATA[select * from v_wfinstance t1     where  wfinstanceid=#{id}]]>
+    </select>
+
+    <!--通过mybatis将查询结果注入到entity中,通过配置autoMapping="true"由mybatis自动处理映射关系 -->
+    <resultMap id="WFInstanceResultMap" type="cn.ibizlab.ehr.core.wf.domain.WFInstance" autoMapping="true">
+        <id property="wfinstanceid" column="wfinstanceid" /><!--主键字段映射-->
+		<result property="wfworkflowid" column="wfworkflowid" />
+		<result property="orgid" column="orgid" />
+		<result property="pwfinstanceid" column="pwfinstanceid" />
+            
+		
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="org" javaType="cn.ibizlab.ehr.core.common.domain.Org" column="orgid" select="cn.ibizlab.ehr.core.common.mapper.OrgMapper.selectById" fetchType="lazy"></association>
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="pwfinstance" javaType="cn.ibizlab.ehr.core.wf.domain.WFInstance" column="pwfinstanceid" select="cn.ibizlab.ehr.core.wf.mapper.WFInstanceMapper.selectById" fetchType="lazy"></association>
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="wfworkflow" javaType="cn.ibizlab.ehr.core.wf.domain.WFWorkflow" column="wfworkflowid" select="cn.ibizlab.ehr.core.wf.mapper.WFWorkflowMapper.selectById" fetchType="lazy"></association>
+    </resultMap>
+
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_WFINSTANCE_ORG_ORGID] -->
+	 <select id="selectByOrgid" resultMap="WFInstanceResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  orgid=#{orgid}
+     </select>
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_WFINSTANCE_WFINSTANCE_PWFINSTANCEID] -->
+	 <select id="selectByPwfinstanceid" resultMap="WFInstanceResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  pwfinstanceid=#{wfinstanceid}
+     </select>
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_WFINSTANCE_WFWORKFLOW_WFWORKFLOWID] -->
+	 <select id="selectByWfworkflowid" resultMap="WFInstanceResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  wfworkflowid=#{wfworkflowid}
+     </select>
+
+    <!--数据集合[Default]-->
+	 <select id="searchDefault"  parameterType="cn.ibizlab.ehr.core.wf.filter.WFInstanceSearchContext"  resultMap="WFInstanceResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="db2">
+       <![CDATA[	SELECT t1.ACTIVESTEPID, t1.ACTIVESTEPNAME, t1.CREATEDATE, t1.CREATEMAN, t1.ENABLE, t1.ENDTIME, t1.IMPORTANCEFLAG, t1.ISCANCEL, t1.ISCLOSE, t1.ISERROR, t1.ISFINISH, t1.LASTACTION, t1.LASTACTORID, t1.LASTWFSTEPID, t1.MEMO, t1.ORGID, t1.ORGNAME, t1.OWNER, t1.PARALLELINST, t1.PSTEPID, t1.PWFINSTANCEID, t11.WFINSTANCENAME AS PWFINSTANCENAME, t1.RESULT, t1.STARTTIME, t1.SUSPENDFLAG, t1.TRACESTEP, t1.UPDATEDATE, t1.UPDATEMAN, t1.USERDATA, t1.USERDATA2, t1.USERDATA3, t1.USERDATA4, t1.USERDATAINFO, t1.USERTAG, t1.USERTAG2, t1.WFINSTANCEID, t1.WFINSTANCENAME, t1.WFVERSION, t1.WFWORKFLOWID, t21.WFWORKFLOWNAME FROM T_SRFWFINSTANCE t1  LEFT JOIN T_SRFWFINSTANCE t11 ON t1.PWFINSTANCEID = t11.WFINSTANCEID  LEFT JOIN T_SRFWFWORKFLOW t21 ON t1.WFWORKFLOWID = t21.WFWORKFLOWID  
+				 WHERE 	t1.ENABLE = 1
+			]]>
+    </sql>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="mysql">
+       <![CDATA[	SELECT t1.`ACTIVESTEPID`, t1.`ACTIVESTEPNAME`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t1.`ENDTIME`, t1.`IMPORTANCEFLAG`, t1.`ISCANCEL`, t1.`ISCLOSE`, t1.`ISERROR`, t1.`ISFINISH`, t1.`LASTACTION`, t1.`LASTACTORID`, t1.`LASTWFSTEPID`, t1.`MEMO`, t1.`ORGID`, t1.`ORGNAME`, t1.`OWNER`, t1.`PARALLELINST`, t1.`PSTEPID`, t1.`PWFINSTANCEID`, t11.`WFINSTANCENAME` AS `PWFINSTANCENAME`, t1.`RESULT`, t1.`STARTTIME`, t1.`SUSPENDFLAG`, t1.`TRACESTEP`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`USERDATA`, t1.`USERDATA2`, t1.`USERDATA3`, t1.`USERDATA4`, t1.`USERDATAINFO`, t1.`USERTAG`, t1.`USERTAG2`, t1.`WFINSTANCEID`, t1.`WFINSTANCENAME`, t1.`WFVERSION`, t1.`WFWORKFLOWID`, t21.`WFWORKFLOWNAME` FROM `T_SRFWFINSTANCE` t1  LEFT JOIN T_SRFWFINSTANCE t11 ON t1.PWFINSTANCEID = t11.WFINSTANCEID  LEFT JOIN T_SRFWFWORKFLOW t21 ON t1.WFWORKFLOWID = t21.WFWORKFLOWID  
+				 WHERE 	t1.ENABLE = 1
+			]]>
+    </sql>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="oracle">
+       <![CDATA[	SELECT t1.ACTIVESTEPID, t1.ACTIVESTEPNAME, t1.CREATEDATE, t1.CREATEMAN, t1.ENABLE, t1.ENDTIME, t1.IMPORTANCEFLAG, t1.ISCANCEL, t1.ISCLOSE, t1.ISERROR, t1.ISFINISH, t1.LASTACTION, t1.LASTACTORID, t1.LASTWFSTEPID, t1.MEMO, t1.ORGID, t1.ORGNAME, t1.OWNER, t1.PARALLELINST, t1.PSTEPID, t1.PWFINSTANCEID, t11.WFINSTANCENAME AS PWFINSTANCENAME, t1.RESULT, t1.STARTTIME, t1.SUSPENDFLAG, t1.TRACESTEP, t1.UPDATEDATE, t1.UPDATEMAN, t1.USERDATA, t1.USERDATA2, t1.USERDATA3, t1.USERDATA4, t1.USERDATAINFO, t1.USERTAG, t1.USERTAG2, t1.WFINSTANCEID, t1.WFINSTANCENAME, t1.WFVERSION, t1.WFWORKFLOWID, t21.WFWORKFLOWNAME FROM T_SRFWFINSTANCE t1  LEFT JOIN T_SRFWFINSTANCE t11 ON t1.PWFINSTANCEID = t11.WFINSTANCEID  LEFT JOIN T_SRFWFWORKFLOW t21 ON t1.WFWORKFLOWID = t21.WFWORKFLOWID  
+				 WHERE 	t1.ENABLE = 1
+			]]>
+    </sql>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="postgresql">
+       <![CDATA[	SELECT t1.ACTIVESTEPID, t1.ACTIVESTEPNAME, t1.CREATEDATE, t1.CREATEMAN, t1.ENABLE, t1.ENDTIME, t1.IMPORTANCEFLAG, t1.ISCANCEL, t1.ISCLOSE, t1.ISERROR, t1.ISFINISH, t1.LASTACTION, t1.LASTACTORID, t1.LASTWFSTEPID, t1.MEMO, t1.ORGID, t1.ORGNAME, t1.OWNER, t1.PARALLELINST, t1.PSTEPID, t1.PWFINSTANCEID, t11.WFINSTANCENAME AS PWFINSTANCENAME, t1.RESULT, t1.STARTTIME, t1.SUSPENDFLAG, t1.TRACESTEP, t1.UPDATEDATE, t1.UPDATEMAN, t1.USERDATA, t1.USERDATA2, t1.USERDATA3, t1.USERDATA4, t1.USERDATAINFO, t1.USERTAG, t1.USERTAG2, t1.WFINSTANCEID, t1.WFINSTANCENAME, t1.WFVERSION, t1.WFWORKFLOWID, t21.WFWORKFLOWNAME FROM T_SRFWFINSTANCE t1  LEFT JOIN T_SRFWFINSTANCE t11 ON t1.PWFINSTANCEID = t11.WFINSTANCEID  LEFT JOIN T_SRFWFWORKFLOW t21 ON t1.WFWORKFLOWID = t21.WFWORKFLOWID  
+				 WHERE 	t1.ENABLE = 1
+			]]>
+    </sql>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="ppas">
+       <![CDATA[	SELECT t1.ACTIVESTEPID, t1.ACTIVESTEPNAME, t1.CREATEDATE, t1.CREATEMAN, t1.ENABLE, t1.ENDTIME, t1.IMPORTANCEFLAG, t1.ISCANCEL, t1.ISCLOSE, t1.ISERROR, t1.ISFINISH, t1.LASTACTION, t1.LASTACTORID, t1.LASTWFSTEPID, t1.MEMO, t1.ORGID, t1.ORGNAME, t1.OWNER, t1.PARALLELINST, t1.PSTEPID, t1.PWFINSTANCEID, t11.WFINSTANCENAME AS PWFINSTANCENAME, t1.RESULT, t1.STARTTIME, t1.SUSPENDFLAG, t1.TRACESTEP, t1.UPDATEDATE, t1.UPDATEMAN, t1.USERDATA, t1.USERDATA2, t1.USERDATA3, t1.USERDATA4, t1.USERDATAINFO, t1.USERTAG, t1.USERTAG2, t1.WFINSTANCEID, t1.WFINSTANCENAME, t1.WFVERSION, t1.WFWORKFLOWID, t21.WFWORKFLOWNAME FROM T_SRFWFINSTANCE t1  LEFT JOIN T_SRFWFINSTANCE t11 ON t1.PWFINSTANCEID = t11.WFINSTANCEID  LEFT JOIN T_SRFWFWORKFLOW t21 ON t1.WFWORKFLOWID = t21.WFWORKFLOWID  
+				 WHERE 	t1.ENABLE = 1
+			]]>
+    </sql>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="sqlserver">
+       <![CDATA[	SELECT t1.[ACTIVESTEPID], t1.[ACTIVESTEPNAME], t1.[CREATEDATE], t1.[CREATEMAN], t1.[ENABLE], t1.[ENDTIME], t1.[IMPORTANCEFLAG], t1.[ISCANCEL], t1.[ISCLOSE], t1.[ISERROR], t1.[ISFINISH], t1.[LASTACTION], t1.[LASTACTORID], t1.[LASTWFSTEPID], t1.[MEMO], t1.[ORGID], t1.[ORGNAME], t1.[OWNER], t1.[PARALLELINST], t1.[PSTEPID], t1.[PWFINSTANCEID], t11.[WFINSTANCENAME] AS [PWFINSTANCENAME], t1.[RESULT], t1.[STARTTIME], t1.[SUSPENDFLAG], t1.[TRACESTEP], t1.[UPDATEDATE], t1.[UPDATEMAN], t1.[USERDATA], t1.[USERDATA2], t1.[USERDATA3], t1.[USERDATA4], t1.[USERDATAINFO], t1.[USERTAG], t1.[USERTAG2], t1.[WFINSTANCEID], t1.[WFINSTANCENAME], t1.[WFVERSION], t1.[WFWORKFLOWID], t21.[WFWORKFLOWNAME] FROM [T_SRFWFINSTANCE] t1  LEFT JOIN T_SRFWFINSTANCE t11 ON t1.PWFINSTANCEID = t11.WFINSTANCEID  LEFT JOIN T_SRFWFWORKFLOW t21 ON t1.WFWORKFLOWID = t21.WFWORKFLOWID  
+				 WHERE 	t1.ENABLE = 1
+			]]>
+    </sql>
+
+</mapper>
+

@@ -1,0 +1,57 @@
+package cn.ibizlab.ehr.pim.logic.pimlanguageabilitylogic.generatefj;
+
+import java.util.Map;
+import java.util.HashMap;
+import com.alibaba.fastjson.JSONObject;
+global cn.ibizlab.ehr.core.pim.domain.PIMLANGUAGEABILITY pimlanguageabilitygeneratefjdefault;
+global cn.ibizlab.ehr.core.pim.domain.PIMENCLOSURE pimlanguageabilitygeneratefjenclosure;
+global cn.ibizlab.ehr.core.pim.service.IPIMENCLOSUREService pimenclosureservice;
+global cn.ibizlab.ehr.core.pim.service.IPIMLANGUAGEABILITYService iBzSysPimlanguageabilityDefaultService;
+global cn.ibizlab.ehr.util.security.AuthenticationUser curuser;
+
+no-loop
+
+//逻辑处理节点[保存附件信息]
+rule "deaction1"
+ruleflow-group "pimlanguageabilitygeneratefjdeaction1"
+    when
+    then
+    pimenclosureservice.save(pimlanguageabilitygeneratefjenclosure);
+    update(pimlanguageabilitygeneratefjdefault);//更新fact中变量值
+    update(pimlanguageabilitygeneratefjenclosure);//更新fact中变量值
+    end
+
+//逻辑处理节点[设置逻辑有效]
+rule "prepareparam2"
+ruleflow-group "pimlanguageabilitygeneratefjprepareparam2"
+    when
+    then
+    pimlanguageabilitygeneratefjenclosure.set("enable","0");
+    update(pimlanguageabilitygeneratefjdefault);//更新fact中变量值
+    update(pimlanguageabilitygeneratefjenclosure);//更新fact中变量值
+    end
+
+//逻辑处理节点[准备参数]
+rule "prepareparam1"
+ruleflow-group "pimlanguageabilitygeneratefjprepareparam1"
+    when
+    then
+    pimlanguageabilitygeneratefjenclosure.set("enable",pimlanguageabilitygeneratefjdefault.get("enable"));
+    pimlanguageabilitygeneratefjenclosure.set("fjkz",pimlanguageabilitygeneratefjdefault.get("fj"));
+    pimlanguageabilitygeneratefjenclosure.set("fj",pimlanguageabilitygeneratefjdefault.get("fj"));
+    pimlanguageabilitygeneratefjenclosure.set("pimenclosureid",pimlanguageabilitygeneratefjdefault.get("pimlanguageabilityid"));
+    pimlanguageabilitygeneratefjenclosure.set("pimenclosurename",pimlanguageabilitygeneratefjdefault.get("pimlanguageabilityname"));
+    pimlanguageabilitygeneratefjenclosure.set("pimpersonid",pimlanguageabilitygeneratefjdefault.get("pimpersonid"));
+    pimlanguageabilitygeneratefjenclosure.set("pimpersonname",pimlanguageabilitygeneratefjdefault.get("pimpersonname"));
+    pimlanguageabilitygeneratefjenclosure.set("fjfl","80");
+    update(pimlanguageabilitygeneratefjdefault);//更新fact中变量值
+    update(pimlanguageabilitygeneratefjenclosure);//更新fact中变量值
+    end
+
+//逻辑处理节点[开始]
+rule "begin"
+ruleflow-group "pimlanguageabilitygeneratefjbegin"
+    when
+    then
+    end
+

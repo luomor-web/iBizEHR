@@ -1,0 +1,5 @@
+spring:
+  profiles:
+    include: sys , parttimeperson-prod
+  application:
+    name: ehr-parttimeperson

@@ -1,0 +1,1336 @@
+server:
+  port: 6092
+
+#zuul网关路由设置
+zuul:
+  routes:
+    sallog:
+      path: /sallogs/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    trmdepart:
+      path: /trmdeparts/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    wfusergroupdetail:
+      path: /wfusergroupdetails/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    trmtrainplanterm:
+      path: /trmtrainplanterms/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    salschemeitem:
+      path: /salschemeitems/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    trmlgbcost:
+      path: /trmlgbcosts/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pcmjxsygzzsq:
+      path: /pcmjxsygzzsqs/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pcmrecruitment:
+      path: /pcmrecruitments/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pimcorrectionapply:
+      path: /pimcorrectionapplies/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    wfusergroup:
+      path: /wfusergroups/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    ormorg:
+      path: /ormorgs/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pcmnotice:
+      path: /pcmnotices/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    salstdgwgzrate:
+      path: /salstdgwgzrates/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pcmydmx:
+      path: /pcmydmxes/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pimqualtype:
+      path: /pimqualtypes/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    msgaccountdetail:
+      path: /msgaccountdetails/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pimmajorsetype:
+      path: /pimmajorsetypes/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    wzd0001:
+      path: /wzd0001s/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pimtitle:
+      path: /pimtitles/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    parlhmbkhmx:
+      path: /parlhmbkhmxes/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    userdictitem:
+      path: /userdictitems/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    attendencesetup:
+      path: /attendencesetups/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pcmddsqdmx:
+      path: /pcmddsqdmxes/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pcmschooloffice:
+      path: /pcmschooloffices/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pimtypecontract:
+      path: /pimtypecontracts/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    userdict:
+      path: /userdicts/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    trmteachercharge:
+      path: /trmteachercharges/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    salstdzc:
+      path: /salstdzcs/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pcmxygzzsq:
+      path: /pcmxygzzsqs/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    vacworkday:
+      path: /vacworkdays/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    attendencetype:
+      path: /attendencetypes/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pimoutput:
+      path: /pimoutputs/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    parjxzgpc:
+      path: /parjxzgpcs/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    vacsystemhistory:
+      path: /vacsystemhistories/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    attendancemreportmx:
+      path: /attendancemreportmxes/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    trmteachertrain:
+      path: /trmteachertrains/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    parjxkhjcsz:
+      path: /parjxkhjcszs/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    trmtrianperson:
+      path: /trmtrianpeople/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pimarchivesloanandreturn:
+      path: /pimarchivesloanandreturns/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pcmzjdyzw:
+      path: /pcmzjdyzws/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    userroledata:
+      path: /userroledata/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    wfassistwork:
+      path: /wfassistworks/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pcmrcxl:
+      path: /pcmrcxls/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pimbyzzjlmx:
+      path: /pimbyzzjlmxes/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    orgsecusertype:
+      path: /orgsecusertypes/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    ormbmgwbz:
+      path: /ormbmgwbzs/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pimcontract:
+      path: /pimcontracts/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    saltype:
+      path: /saltypes/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    userrole:
+      path: /userroles/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pcmprofileinitnumber:
+      path: /pcmprofileinitnumbers/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pcmworkresume:
+      path: /pcmworkresumes/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    trmtrainactment:
+      path: /trmtrainactments/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pimsocialsecurity:
+      path: /pimsocialsecurities/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    wfcustomprocess:
+      path: /wfcustomprocesses/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pimworkhistory:
+      path: /pimworkhistories/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    ormorgdz:
+      path: /ormorgdzs/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    parlhmbmx:
+      path: /parlhmbmxes/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pimpersonability:
+      path: /pimpersonabilities/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    trminvoice:
+      path: /trminvoices/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    ormtitle:
+      path: /ormtitles/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    vacleacetype:
+      path: /vacleacetypes/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    salstdgw:
+      path: /salstdgws/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pimarchiveschange:
+      path: /pimarchiveschanges/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pcmdetail:
+      path: /pcmdetails/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pimexpaccount:
+      path: /pimexpaccounts/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pcmsyqgz:
+      path: /pcmsyqgzs/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    vacholiday:
+      path: /vacholidays/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    salsalarydetail:
+      path: /salsalarydetails/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    parjxmtfk:
+      path: /parjxmtfks/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    attendancemreport:
+      path: /attendancemreports/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    trmtrainactapply:
+      path: /trmtrainactapplies/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pcmgxml:
+      path: /pcmgxmls/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    userroledefields:
+      path: /userroledefieldes/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pcmtxbz:
+      path: /pcmtxbzs/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    ormxmxqhz:
+      path: /ormxmxqhzs/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pimqualmajor:
+      path: /pimqualmajors/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pcmxygzzkhjgjl:
+      path: /pcmxygzzkhjgjls/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    parjxkhmbmx:
+      path: /parjxkhmbmxes/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    vacleavemanage:
+      path: /vacleavemanages/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pcmlog:
+      path: /pcmlogs/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    wfstepinst:
+      path: /wfstepinsts/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    wxaccesstoken:
+      path: /wxaccesstokens/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pimvacation:
+      path: /pimvacations/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pimexitandentry:
+      path: /pimexitandentries/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    trmplanformu:
+      path: /trmplanformus/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    loginlog:
+      path: /loginlogs/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    trmtraindemand:
+      path: /trmtraindemands/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pimpersonchange:
+      path: /pimpersonchanges/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pcmeducationexperience:
+      path: /pcmeducationexperiences/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    usergroup:
+      path: /usergroups/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    trmtrainplan:
+      path: /trmtrainplans/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    userroledetail:
+      path: /userroledetails/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    orguser:
+      path: /orgusers/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pimachievements:
+      path: /pimachievements/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pcmbdsqd:
+      path: /pcmbdsqds/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pcmxkml:
+      path: /pcmxkmls/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pimlanguageability:
+      path: /pimlanguageabilities/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    wxorgsector:
+      path: /wxorgsectors/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pimperson:
+      path: /pimpeople/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    userroledefield:
+      path: /userroledefields/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    userdgtheme:
+      path: /userdgthemes/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    msgsendqueue:
+      path: /msgsendqueues/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    trmtraffic:
+      path: /trmtraffics/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    wfuser:
+      path: /wfusers/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    userroledatadetail:
+      path: /userroledatadetails/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pimexaminationresults:
+      path: /pimexaminationresults/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pimarchives:
+      path: /pimarchives/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    vacleavesystemdetail:
+      path: /vacleavesystemdetails/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    parjxzgpcmx:
+      path: /parjxzgpcmxes/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    ormrank:
+      path: /ormranks/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    vacleavedetail:
+      path: /vacleavedetails/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    trmtraindata:
+      path: /trmtraindata/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pcmgbhmc:
+      path: /pcmgbhmcs/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    parjgbmpjbz:
+      path: /parjgbmpjbzs/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    wfuserassist:
+      path: /wfuserassists/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    parndlhmbkh:
+      path: /parndlhmbkhs/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    usergroupdetail:
+      path: /usergroupdetails/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    userdictcat:
+      path: /userdictcats/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pcmydjzmx:
+      path: /pcmydjzmxes/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    testresult:
+      path: /testresults/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    ormorginfo:
+      path: /ormorginfos/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    vacinitnxj:
+      path: /vacinitnxjs/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    salstdzx:
+      path: /salstdzxes/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pimworkflow:
+      path: /pimworkflows/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    salitem:
+      path: /salitems/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    trmagencyrecord:
+      path: /trmagencyrecords/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    ormbmkqdz:
+      path: /ormbmkqdzs/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    sgqmgr:
+      path: /sgqmgrs/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    trmdepartneeds:
+      path: /trmdepartneeds/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    salstdxmgz:
+      path: /salstdxmgzs/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pcmcsrcmspj:
+      path: /pcmcsrcmspjs/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    parkhzcmx:
+      path: /parkhzcmxes/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    salstdzyzg:
+      path: /salstdzyzgs/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pimarchivesrecord:
+      path: /pimarchivesrecords/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pcmreason:
+      path: /pcmreasons/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    ormorgsector:
+      path: /ormorgsectors/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    trmdemdeftion:
+      path: /trmdemdeftions/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    parjxjg:
+      path: /parjxjgs/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    salsubject:
+      path: /salsubjects/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pcmydlzmx:
+      path: /pcmydlzmxes/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pimtitlecatalogue:
+      path: /pimtitlecatalogues/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    parxmbpjbz:
+      path: /parxmbpjbzs/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    vacleavesystem:
+      path: /vacleavesystems/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pcmypzjkxx:
+      path: /pcmypzjkxxes/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    salstdgl:
+      path: /salstdgls/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pimarmycadres:
+      path: /pimarmycadres/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pimbyygzzsq:
+      path: /pimbyygzzsqs/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    trmtrainteacher:
+      path: /trmtrainteachers/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pcmjxsbdjl:
+      path: /pcmjxsbdjls/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    trmtrainbuapply:
+      path: /trmtrainbuapplies/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    codelist:
+      path: /codelist1s/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    querymodel:
+      path: /querymodels/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    trmtrainagency:
+      path: /trmtrainagencies/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pimresearchfindings:
+      path: /pimresearchfindings/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    msgsendqueuehis:
+      path: /msgsendqueuehis/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    salscheme:
+      path: /salschemes/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pimlwgz:
+      path: /pimlwgzs/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pimcontracttype:
+      path: /pimcontracttypes/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    salsalary:
+      path: /salsalaries/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pcmnorecyclinglibrary:
+      path: /pcmnorecyclinglibraries/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    attendancedate:
+      path: /attendancedates/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    nationmgr:
+      path: /nationmgrs/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    ormxmrypzxq:
+      path: /ormxmrypzxqs/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pcmydjpmx:
+      path: /pcmydjpmxes/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pimdistirbution:
+      path: /pimdistirbutions/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pimlabourcampany:
+      path: /pimlabourcampanies/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pcmydjdmx:
+      path: /pcmydjdmxes/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    tdzwxx:
+      path: /tdzwxxes/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    wfinstance:
+      path: /wfinstances/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    contractsignorg:
+      path: /contractsignorgs/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    parjxkhmb:
+      path: /parjxkhmbs/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    salpersonstd:
+      path: /salpersonstds/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    trmtraindemandsum:
+      path: /trmtraindemandsums/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    salsalarybill:
+      path: /salsalarybills/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    parznbmmx:
+      path: /parznbmmxes/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    trmemployeeretion:
+      path: /trmemployretions/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    parjxndkhjg:
+      path: /parjxndkhjgs/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    wfworklist:
+      path: /wfworklists/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    trmstaff:
+      path: /trmstaffs/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    ormxmbmx:
+      path: /ormxmbmxes/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    parldkhqz:
+      path: /parldkhqzs/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    questions:
+      path: /questions/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    salruledetail:
+      path: /salruledetails/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    orgsecuser:
+      path: /orgsecusers/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    salpersonstddetail:
+      path: /salpersonstddetails/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    trmstay:
+      path: /trmstays/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    trmcoursesystem:
+      path: /trmcoursesystems/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    attensummary:
+      path: /attensummaries/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    salrule:
+      path: /salrules/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    ormxmrlcb:
+      path: /ormxmrlcbs/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    wfuiwizard:
+      path: /wfuiwizards/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    personstatemgr:
+      path: /personstatemgrs/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    ormpostdetails:
+      path: /ormpostdetails/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    wfreminder:
+      path: /wfreminders/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pimstafftype:
+      path: /pimstafftypes/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pcmsgqmgr:
+      path: /pcmsgqmgrs/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    salitemsub:
+      path: /salitemsubs/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    wfusercandidate:
+      path: /wfusercandidates/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    wftmpstepactor:
+      path: /wftmpstepactors/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pimgwtype:
+      path: /pimgwtypes/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    ormpostlib:
+      path: /ormpostlibs/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    archivescenter:
+      path: /archivescenters/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    userroledatas:
+      path: /userroledatas/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    parjxbzgl:
+      path: /parjxbzgls/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    vacusenxjmx:
+      path: /vacusenxjmxes/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    vacsynjcx:
+      path: /vacsynjcxes/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pcmzpmegl:
+      path: /pcmzpmegls/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    attensummarymx:
+      path: /attendancesummarymxes/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    trmhmatser:
+      path: /trmhmatsers/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    userroleres:
+      path: /userroleres/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    userobject:
+      path: /userobjects/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    appcenter:
+      path: /appcenters/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pcmtxfpsq:
+      path: /pcmtxfpsqs/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    ormzwdqgz:
+      path: /ormzwdqgzs/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    msgaccount:
+      path: /msgaccounts/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pcmyddgmx:
+      path: /pcmyddgmxes/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    ormxmbq:
+      path: /ormxmbqs/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    wfsystemuser:
+      path: /wfsystemusers/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    attendancerecordtemp:
+      path: /attendancerecordtemps/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pcmgxxktemp:
+      path: /pcmgxxktemps/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pcmrzgl:
+      path: /pcmrzgls/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    trmtrainfillin:
+      path: /trmtrainfillins/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    user:
+      path: /users/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    salstdxmgzrate:
+      path: /salstdxmgzrates/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    vacdayoff:
+      path: /vacdayoffs/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    org:
+      path: /orgs/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    trmstaffnodes:
+      path: /trmstaffnodes/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    wfaction:
+      path: /wfactions/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pcmawardswons:
+      path: /pcmawardswons/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    trmcouarrange:
+      path: /trmcouarranges/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pimrewardpunishment:
+      path: /pimrewardpunishments/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    salstdzj:
+      path: /salstdzjs/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    orgtype:
+      path: /orgtypes/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    attendancerecord:
+      path: /attendancerecords/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pimpatent:
+      path: /pimpatents/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    trmtrainaddress:
+      path: /trmtrainaddresses/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    archivesmanage:
+      path: /archivesmanages/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pcmprofile:
+      path: /pcmprofiles/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    trmtrainoutapply:
+      path: /trmtrainoutapplies/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    archivalcatalogue:
+      path: /archivalcatalogues/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    orgunitcat:
+      path: /orgunitcats/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    parjxqdsz:
+      path: /parjxqdszs/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    vacsituationdetail:
+      path: /vacsituationdetails/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    wfstep:
+      path: /wfsteps/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    trmtraincourse:
+      path: /trmtraincourses/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    dataentity:
+      path: /dataentities/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    parkhfa:
+      path: /parkhfas/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    wxaccount:
+      path: /wxaccounts/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    attendenceormorgsector:
+      path: /attendenceormorgsectors/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    wfappsetting:
+      path: /wfappsettings/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    trmdutycadres:
+      path: /trmdutycadres/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    vacoveralltion:
+      path: /vacoveralltions/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    partzgg:
+      path: /partzggs/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pcmydntmx:
+      path: /pcmydntmxes/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    trmgradecadres:
+      path: /trmgradecadres/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    trmlgbdetail:
+      path: /trmlgbdetails/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    ormrelation:
+      path: /ormrelations/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    trmtrainfacies:
+      path: /trmtrainfacies/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    ormsignorg:
+      path: /ormsignorgs/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pcmydgzmx:
+      path: /pcmydgzmxes/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    attendancesettings:
+      path: /attendancesettings/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    salstddszn:
+      path: /salstddszns/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    ormdepestman:
+      path: /ormdepestmen/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    ormxmsfhz:
+      path: /ormxmsfhzs/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    ormduty:
+      path: /ormduties/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pcmmspjxx:
+      path: /pcmmspjxxes/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    wfdynamicuser:
+      path: /wfdynamicusers/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    codeitem:
+      path: /codeitems/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    daterule:
+      path: /daterules/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    ormqybzwh:
+      path: /ormqybzwhs/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    vacholidayrules:
+      path: /vacholidayrules/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    wxmessage:
+      path: /wxmessages/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pimworkflowref:
+      path: /pimworkflowrefs/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    parjxkhxhz:
+      path: /parjxkhxhzs/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pcmxygzzjlmx:
+      path: /pcmxygzzjlmxes/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    wfworkflow:
+      path: /wfworkflows/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    wfqj:
+      path: /wfqjs/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pcmjxszzkhjgjl:
+      path: /pcmjxszzkhjgjls/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    salsource:
+      path: /salsources/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    userroledataaction:
+      path: /userroledataactions/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pimeducation:
+      path: /pimeducations/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    ormqygl:
+      path: /ormqygls/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pcmjxsygzzsqmx:
+      path: /pcmjxsygzzsqmxes/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    wfstepactor:
+      path: /wfstepactors/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pimprovince:
+      path: /pimprovinces/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pcmzsgl:
+      path: /pcmzsgls/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    orgsector:
+      path: /orgsectors/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    wxentapp:
+      path: /wxentapps/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    wfactor:
+      path: /wfactors/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    wfiaaction:
+      path: /wfiaactions/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    ormpost:
+      path: /ormposts/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    salplan:
+      path: /salplans/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pcmzpmeglmx:
+      path: /pcmzpmeglmxes/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    parjxbzglmx:
+      path: /parjxbzglmxes/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    salstdgwgz:
+      path: /salstdgwgzs/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pimpersonabilitydetail:
+      path: /pimpersonabilitydetails/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    ormxmgl:
+      path: /ormxmgls/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    attenmembwes:
+      path: /attenmembwes/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    wfstepdata:
+      path: /wfstepdata/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    ormerporg:
+      path: /ormerporgs/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    loginaccount:
+      path: /loginaccounts/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    parbmfzjyx:
+      path: /parbmfzjyxes/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    orguserlevel:
+      path: /orguserlevels/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pcmddsqd:
+      path: /pcmddsqds/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pcmjxsgz:
+      path: /pcmjxsgzs/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    vacsituation:
+      path: /vacsituations/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pcmbdsqdmx:
+      path: /pcmbdsqdmxes/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    wxmedia:
+      path: /wxmedia/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pcmjxsygzzjlmx:
+      path: /pcmjxsygzzjlmxes/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    vacsystemapplication:
+      path: /vacsystemapplications/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    trmzzobm:
+      path: /trmzzobms/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pcmydbxmx:
+      path: /pcmydbxmxes/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pimpaper:
+      path: /pimpapers/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    attendrecorddetail:
+      path: /attendrecorddetails/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    unires:
+      path: /unires/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pcmxygzzjgwh:
+      path: /pcmxygzzjgwhs/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    salparam:
+      path: /salparams/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    parjxlhmb:
+      path: /parjxlhmbs/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pcmxygzzsqmx:
+      path: /pcmxygzzsqmxes/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    wfwfversion:
+      path: /wfversions/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pimvocationalcatalog:
+      path: /pimvocationalcatalogs/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pcmydtxmx:
+      path: /pcmydtxmxes/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pcmpracticeexperience:
+      path: /pcmpracticeexperiences/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    msgtemplate:
+      path: /msgtemplates/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    parfzsmx:
+      path: /parfzsmxes/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pimcity:
+      path: /pimcities/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    userroletype:
+      path: /userroletypes/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pimvocational:
+      path: /pimvocationals/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pimfaminfo:
+      path: /pimfaminfos/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pimenclosure:
+      path: /pimenclosures/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    trmtrainresment:
+      path: /trmtrainresments/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    wfcore:
+      path: /wfcore/**
+      serviceId: ibzwf-api
+      stripPrefix: true
+  sensitive-headers:
+    - Cookie,Set-Cookie,Authorization

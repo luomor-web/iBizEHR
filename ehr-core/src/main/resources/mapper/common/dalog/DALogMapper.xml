@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper	namespace="cn.ibizlab.ehr.core.common.mapper.DALogMapper">
+
+    <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
+	<select id="selectById"  resultMap="DALogResultMap" databaseId="db2">
+        <![CDATA[select * from v_dalog t1     where  dalog_id=#{id}]]>
+    </select>
+	<select id="selectById"  resultMap="DALogResultMap" databaseId="mysql">
+        <![CDATA[select * from v_dalog t1     where  dalog_id=#{id}]]>
+    </select>
+	<select id="selectById"  resultMap="DALogResultMap" databaseId="oracle">
+        <![CDATA[select * from v_dalog t1     where  dalog_id=#{id}]]>
+    </select>
+	<select id="selectById"  resultMap="DALogResultMap" databaseId="postgresql">
+        <![CDATA[select * from v_dalog t1     where  dalog_id=#{id}]]>
+    </select>
+	<select id="selectById"  resultMap="DALogResultMap" databaseId="ppas">
+        <![CDATA[select * from v_dalog t1     where  dalog_id=#{id}]]>
+    </select>
+	<select id="selectById"  resultMap="DALogResultMap" databaseId="sqlserver">
+        <![CDATA[select * from v_dalog t1     where  dalog_id=#{id}]]>
+    </select>
+
+    <!--通过mybatis将查询结果注入到entity中,通过配置autoMapping="true"由mybatis自动处理映射关系 -->
+    <resultMap id="DALogResultMap" type="cn.ibizlab.ehr.core.common.domain.DALog" autoMapping="true">
+        <id property="dalogId" column="dalog_id" /><!--主键字段映射-->
+		<result property="dalogName" column="dalog_name" />
+            
+		
+    </resultMap>
+
+
+    <!--数据集合[Default]-->
+	 <select id="searchDefault"  parameterType="cn.ibizlab.ehr.core.common.filter.DALogSearchContext"  resultMap="DALogResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="db2">
+       <![CDATA[	SELECT t1.CREATEDATE, t1.CREATEMAN, t1.DALOG_ID, t1.DALOG_NAME, t1.LOGINFO, t1.LOGSN, t1.LOGTYPE, t1.OBJECTID, t1.OBJECTTYPE, t1.REMOTEADDR, t1.UPDATEDATE, t1.UPDATEMAN FROM T_SRFDALOG t1  
+			]]>
+    </sql>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="mysql">
+       <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`DALOG_ID`, t1.`DALOG_NAME`, t1.`LOGINFO`, t1.`LOGSN`, t1.`LOGTYPE`, t1.`OBJECTID`, t1.`OBJECTTYPE`, t1.`REMOTEADDR`, t1.`UPDATEDATE`, t1.`UPDATEMAN` FROM `T_SRFDALOG` t1  
+			]]>
+    </sql>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="oracle">
+       <![CDATA[	SELECT t1.CREATEDATE, t1.CREATEMAN, t1.DALOG_ID, t1.DALOG_NAME, t1.LOGINFO, t1.LOGSN, t1.LOGTYPE, t1.OBJECTID, t1.OBJECTTYPE, t1.REMOTEADDR, t1.UPDATEDATE, t1.UPDATEMAN FROM T_SRFDALOG t1  
+			]]>
+    </sql>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="postgresql">
+       <![CDATA[	SELECT t1.CREATEDATE AS CREATEDATE, t1.CREATEMAN AS CREATEMAN, t1.DALOG_ID AS DALOG_ID, t1.DALOG_NAME AS DALOG_NAME, t1.LOGINFO AS LOGINFO, t1.LOGSN AS LOGSN, t1.LOGTYPE AS LOGTYPE, t1.OBJECTID AS OBJECTID, t1.OBJECTTYPE AS OBJECTTYPE, t1.REMOTEADDR AS REMOTEADDR, t1.UPDATEDATE AS UPDATEDATE, t1.UPDATEMAN AS UPDATEMAN FROM T_SRFDALOG t1  
+			]]>
+    </sql>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="ppas">
+       <![CDATA[	SELECT t1.CREATEDATE AS CREATEDATE, t1.CREATEMAN AS CREATEMAN, t1.DALOG_ID AS DALOG_ID, t1.DALOG_NAME AS DALOG_NAME, t1.LOGINFO AS LOGINFO, t1.LOGSN AS LOGSN, t1.LOGTYPE AS LOGTYPE, t1.OBJECTID AS OBJECTID, t1.OBJECTTYPE AS OBJECTTYPE, t1.REMOTEADDR AS REMOTEADDR, t1.UPDATEDATE AS UPDATEDATE, t1.UPDATEMAN AS UPDATEMAN FROM T_SRFDALOG t1  
+			]]>
+    </sql>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="sqlserver">
+       <![CDATA[	SELECT t1.[CREATEDATE], t1.[CREATEMAN], t1.[DALOG_ID], t1.[DALOG_NAME], t1.[LOGINFO], t1.[LOGSN], t1.[LOGTYPE], t1.[OBJECTID], t1.[OBJECTTYPE], t1.[REMOTEADDR], t1.[UPDATEDATE], t1.[UPDATEMAN] FROM [T_SRFDALOG] t1  
+			]]>
+    </sql>
+
+</mapper>
+

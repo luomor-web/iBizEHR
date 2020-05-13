@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper	namespace="cn.ibizlab.ehr.core.common.mapper.UserRoleDataMapper">
+
+    <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
+	<select id="selectById"  resultMap="UserRoleDataResultMap" databaseId="db2">
+        <![CDATA[select * from v_userroledata t1     where  userroledataid=#{id}]]>
+    </select>
+	<select id="selectById"  resultMap="UserRoleDataResultMap" databaseId="mysql">
+        <![CDATA[select * from v_userroledata t1     where  userroledataid=#{id}]]>
+    </select>
+	<select id="selectById"  resultMap="UserRoleDataResultMap" databaseId="oracle">
+        <![CDATA[select * from v_userroledata t1     where  userroledataid=#{id}]]>
+    </select>
+	<select id="selectById"  resultMap="UserRoleDataResultMap" databaseId="postgresql">
+        <![CDATA[select * from v_userroledata t1     where  userroledataid=#{id}]]>
+    </select>
+	<select id="selectById"  resultMap="UserRoleDataResultMap" databaseId="ppas">
+        <![CDATA[select * from v_userroledata t1     where  userroledataid=#{id}]]>
+    </select>
+	<select id="selectById"  resultMap="UserRoleDataResultMap" databaseId="sqlserver">
+        <![CDATA[select * from v_userroledata t1     where  userroledataid=#{id}]]>
+    </select>
+
+    <!--通过mybatis将查询结果注入到entity中,通过配置autoMapping="true"由mybatis自动处理映射关系 -->
+    <resultMap id="UserRoleDataResultMap" type="cn.ibizlab.ehr.core.common.domain.UserRoleData" autoMapping="true">
+        <id property="userroledataid" column="userroledataid" /><!--主键字段映射-->
+		<result property="dstorgsectorid" column="dstorgsectorid" />
+		<result property="dstorgid" column="dstorgid" />
+		<result property="deid" column="deid" />
+            
+		
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="de" javaType="cn.ibizlab.ehr.core.demodel.domain.DataEntity" column="deid" select="cn.ibizlab.ehr.core.demodel.mapper.DataEntityMapper.selectById" fetchType="lazy"></association>
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="dstorgsector" javaType="cn.ibizlab.ehr.core.common.domain.OrgSector" column="dstorgsectorid" select="cn.ibizlab.ehr.core.common.mapper.OrgSectorMapper.selectById" fetchType="lazy"></association>
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="dstorg" javaType="cn.ibizlab.ehr.core.common.domain.Org" column="dstorgid" select="cn.ibizlab.ehr.core.common.mapper.OrgMapper.selectById" fetchType="lazy"></association>
+    </resultMap>
+
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_USERROLEDATA_DATAENTITY_DEID] -->
+	 <select id="selectByDeid" resultMap="UserRoleDataResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  deid=#{deid}
+     </select>
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_USERROLEDATA_ORGSECTOR_DSTORGSECTORID] -->
+	 <select id="selectByDstorgsectorid" resultMap="UserRoleDataResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  dstorgsectorid=#{orgsectorid}
+     </select>
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_USERROLEDATA_ORG_DSTORGID] -->
+	 <select id="selectByDstorgid" resultMap="UserRoleDataResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  dstorgid=#{orgid}
+     </select>
+
+    <!--数据集合[Default]-->
+	 <select id="searchDefault"  parameterType="cn.ibizlab.ehr.core.common.filter.UserRoleDataSearchContext"  resultMap="UserRoleDataResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="db2">
+       <![CDATA[	SELECT t1.BCDR, t1.CREATEDATE, t1.CREATEMAN, t1.DEID, t11.DENAME, t1.DSTORGID, t21.ORGNAME AS DSTORGNAME, t1.DSTORGSECTORID, t31.ORGSECTORNAME AS DSTORGSECTORNAME, t1.DSTSECBC, t1.ISALLDATA, t1.MEMO, t1.ORGDR, t1.RESERVER, t1.RESERVER2, t1.RESERVER3, t1.RESERVER4, t1.SECDR, t1.SRFSYSPUB, t1.SRFUSERPUB, t1.UDVERSION, t1.UPDATEDATE, t1.UPDATEMAN, t1.USERDR, t1.USERROLEDATAID, t1.USERROLEDATANAME FROM T_SRFUSERROLEDATA t1  LEFT JOIN t_srfdataentity t11 ON t1.DEID = t11.DEID  LEFT JOIN T_SRFORG t21 ON t1.DSTORGID = t21.ORGID  LEFT JOIN T_SRFORGSECTOR t31 ON t1.DSTORGSECTORID = t31.ORGSECTORID  
+			]]>
+    </sql>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="mysql">
+       <![CDATA[	SELECT t1.`BCDR`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`DEID`, t11.`DENAME`, t1.`DSTORGID`, t21.`ORGNAME` AS `DSTORGNAME`, t1.`DSTORGSECTORID`, t31.`ORGSECTORNAME` AS `DSTORGSECTORNAME`, t1.`DSTSECBC`, t1.`ISALLDATA`, t1.`MEMO`, t1.`ORGDR`, t1.`RESERVER`, t1.`RESERVER2`, t1.`RESERVER3`, t1.`RESERVER4`, t1.`SECDR`, t1.`SRFSYSPUB`, t1.`SRFUSERPUB`, t1.`UDVERSION`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`USERDR`, t1.`USERROLEDATAID`, t1.`USERROLEDATANAME` FROM `T_SRFUSERROLEDATA` t1  LEFT JOIN t_srfdataentity t11 ON t1.DEID = t11.DEID  LEFT JOIN T_SRFORG t21 ON t1.DSTORGID = t21.ORGID  LEFT JOIN T_SRFORGSECTOR t31 ON t1.DSTORGSECTORID = t31.ORGSECTORID  
+			]]>
+    </sql>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="oracle">
+       <![CDATA[	SELECT t1.BCDR, t1.CREATEDATE, t1.CREATEMAN, t1.DEID, t11.DENAME, t1.DSTORGID, t31.ORGNAME AS DSTORGNAME, t1.DSTORGSECTORID, t21.ORGSECTORNAME AS DSTORGSECTORNAME, t1.DSTSECBC, t1.ISALLDATA, t1.MEMO, t1.ORGDR, t1.RESERVER, t1.RESERVER2, t1.RESERVER3, t1.RESERVER4, t1.SECDR, t1.SRFSYSPUB, t1.SRFUSERPUB, t1.UDVERSION, t1.UPDATEDATE, t1.UPDATEMAN, t1.USERDR, t1.USERROLEDATAID, t1.USERROLEDATANAME FROM T_SRFUSERROLEDATA t1  LEFT JOIN t_srfdataentity t11 ON t1.DEID = t11.DEID  LEFT JOIN T_SRFORGSECTOR t21 ON t1.DSTORGSECTORID = t21.ORGSECTORID  LEFT JOIN T_SRFORG t31 ON t1.DSTORGID = t31.ORGID  
+			]]>
+    </sql>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="postgresql">
+       <![CDATA[	SELECT t1.BCDR AS BCDR, t1.CREATEDATE AS CREATEDATE, t1.CREATEMAN AS CREATEMAN, t1.DEID AS DEID, t11.DENAME AS DENAME, t1.DSTORGID AS DSTORGID, t21.ORGNAME AS DSTORGNAME, t1.DSTORGSECTORID AS DSTORGSECTORID, t31.ORGSECTORNAME AS DSTORGSECTORNAME, t1.DSTSECBC AS DSTSECBC, t1.ISALLDATA AS ISALLDATA, t1.MEMO AS MEMO, t1.ORGDR AS ORGDR, t1.RESERVER AS RESERVER, t1.RESERVER2 AS RESERVER2, t1.RESERVER3 AS RESERVER3, t1.RESERVER4 AS RESERVER4, t1.SECDR AS SECDR, t1.SRFSYSPUB AS SRFSYSPUB, t1.SRFUSERPUB AS SRFUSERPUB, t1.UDVERSION AS UDVERSION, t1.UPDATEDATE AS UPDATEDATE, t1.UPDATEMAN AS UPDATEMAN, t1.USERDR AS USERDR, t1.USERROLEDATAID AS USERROLEDATAID, t1.USERROLEDATANAME AS USERROLEDATANAME FROM T_SRFUSERROLEDATA t1  LEFT JOIN t_srfdataentity t11 ON t1.DEID = t11.DEID  LEFT JOIN T_SRFORG t21 ON t1.DSTORGID = t21.ORGID  LEFT JOIN T_SRFORGSECTOR t31 ON t1.DSTORGSECTORID = t31.ORGSECTORID  
+			]]>
+    </sql>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="ppas">
+       <![CDATA[	SELECT t1.BCDR AS BCDR, t1.CREATEDATE AS CREATEDATE, t1.CREATEMAN AS CREATEMAN, t1.DEID AS DEID, t11.DENAME AS DENAME, t1.DSTORGID AS DSTORGID, t21.ORGNAME AS DSTORGNAME, t1.DSTORGSECTORID AS DSTORGSECTORID, t31.ORGSECTORNAME AS DSTORGSECTORNAME, t1.DSTSECBC AS DSTSECBC, t1.ISALLDATA AS ISALLDATA, t1.MEMO AS MEMO, t1.ORGDR AS ORGDR, t1.RESERVER AS RESERVER, t1.RESERVER2 AS RESERVER2, t1.RESERVER3 AS RESERVER3, t1.RESERVER4 AS RESERVER4, t1.SECDR AS SECDR, t1.SRFSYSPUB AS SRFSYSPUB, t1.SRFUSERPUB AS SRFUSERPUB, t1.UDVERSION AS UDVERSION, t1.UPDATEDATE AS UPDATEDATE, t1.UPDATEMAN AS UPDATEMAN, t1.USERDR AS USERDR, t1.USERROLEDATAID AS USERROLEDATAID, t1.USERROLEDATANAME AS USERROLEDATANAME FROM T_SRFUSERROLEDATA t1  LEFT JOIN t_srfdataentity t11 ON t1.DEID = t11.DEID  LEFT JOIN T_SRFORG t21 ON t1.DSTORGID = t21.ORGID  LEFT JOIN T_SRFORGSECTOR t31 ON t1.DSTORGSECTORID = t31.ORGSECTORID  
+			]]>
+    </sql>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="sqlserver">
+       <![CDATA[	SELECT t1.[BCDR], t1.[CREATEDATE], t1.[CREATEMAN], t1.[DEID], t11.[DENAME], t1.[DSTORGID], t21.[ORGNAME] AS [DSTORGNAME], t1.[DSTORGSECTORID], t31.[ORGSECTORNAME] AS [DSTORGSECTORNAME], t1.[DSTSECBC], t1.[ISALLDATA], t1.[MEMO], t1.[ORGDR], t1.[RESERVER], t1.[RESERVER2], t1.[RESERVER3], t1.[RESERVER4], t1.[SECDR], t1.[SRFSYSPUB], t1.[SRFUSERPUB], t1.[UDVERSION], t1.[UPDATEDATE], t1.[UPDATEMAN], t1.[USERDR], t1.[USERROLEDATAID], t1.[USERROLEDATANAME] FROM [T_SRFUSERROLEDATA] t1  LEFT JOIN t_srfdataentity t11 ON t1.DEID = t11.DEID  LEFT JOIN T_SRFORG t21 ON t1.DSTORGID = t21.ORGID  LEFT JOIN T_SRFORGSECTOR t31 ON t1.DSTORGSECTORID = t31.ORGSECTORID  
+			]]>
+    </sql>
+
+</mapper>
+

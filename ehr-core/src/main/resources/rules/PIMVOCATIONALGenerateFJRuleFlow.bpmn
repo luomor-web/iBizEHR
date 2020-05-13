@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+    <process id="cn.ibizlab.ehr.core.pim.service.logic.pimvocationalgeneratefj" isClosed="false" isExecutable="true" name="ScoreRule" processType="Private" tns:packageName="cn.ibizlab.ehr.core.pim.service.logic.pimvocationalgeneratefj">
+        <extensionElements>
+            <tns:import name="java.util.Map" />
+            <tns:import name="org.springframework.util.StringUtils"/>
+            <tns:import name="cn.ibizlab.ehr.util.helper.RuleUtils"/>
+        <tns:global identifier="pimvocationalgeneratefjdefault" type="cn.ibizlab.ehr.core.pim.domain.PIMVOCATIONAL" />
+        <tns:global identifier="pimvocationalgeneratefjenclosure" type="cn.ibizlab.ehr.core.pim.domain.PIMENCLOSURE" />
+        </extensionElements>
+     <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="pimvocationalgeneratefjprepareparam1" id="d3cfa01aaad1ab965c7deaa0baf85a1f" implementation="http://www.jboss.org/drools/rule" name="填充信息"/>
+     <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="pimvocationalgeneratefjprepareparam2" id="6171d64ab5b73400b4582d3810551945" implementation="http://www.jboss.org/drools/rule" name="附件为空时删除附件信息"/>
+     <startEvent id="59bbd0d4e55e776d094a982dd558095e" isInterrupting="true"/>
+     <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="pimvocationalgeneratefjdeaction1" id="3cb1a11ab89e4a677b35a23f747d8e9b" implementation="http://www.jboss.org/drools/rule" name="保存附件信息"/>
+     <endEvent id="3cb1a11ab89e4a677b35a23f747d8e9b_End" name="End"/>
+     <sequenceFlow id="3cb1a11ab89e4a677b35a23f747d8e9b_End_Line" sourceRef="3cb1a11ab89e4a677b35a23f747d8e9b" targetRef="3cb1a11ab89e4a677b35a23f747d8e9b_End"/>
+     <sequenceFlow id="77607074e7f6744055eb856a7fc524fd" sourceRef="59bbd0d4e55e776d094a982dd558095e" targetRef="d3cfa01aaad1ab965c7deaa0baf85a1f">
+     </sequenceFlow>
+     <sequenceFlow id="1ab7402ef31b90533e04c9d33bb412f2" sourceRef="6171d64ab5b73400b4582d3810551945" targetRef="3cb1a11ab89e4a677b35a23f747d8e9b">
+     </sequenceFlow>
+     <sequenceFlow id="41ebf4563f514909a25d0a321feb77b6" sourceRef="gateway-d3cfa01aaad1ab965c7deaa0baf85a1f" targetRef="6171d64ab5b73400b4582d3810551945">
+            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+            $pimvocationalgeneratefjdefault:PIMVOCATIONAL();
+            $pimvocationalgeneratefjenclosure:PIMENCLOSURE();
+            eval($pimvocationalgeneratefjdefault==pimvocationalgeneratefjdefault && $pimvocationalgeneratefjenclosure==pimvocationalgeneratefjenclosure);
+                eval((RuleUtils.test($pimvocationalgeneratefjenclosure.get("FJ"),"ISNULL","")))
+                ]]>
+            </conditionExpression>
+     </sequenceFlow>
+     <sequenceFlow id="6ffce7c2860a778b7ce9f3f24adb79f1" sourceRef="gateway-d3cfa01aaad1ab965c7deaa0baf85a1f" targetRef="3cb1a11ab89e4a677b35a23f747d8e9b">
+            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+            $pimvocationalgeneratefjdefault:PIMVOCATIONAL();
+            $pimvocationalgeneratefjenclosure:PIMENCLOSURE();
+            eval($pimvocationalgeneratefjdefault==pimvocationalgeneratefjdefault && $pimvocationalgeneratefjenclosure==pimvocationalgeneratefjenclosure);
+                eval((RuleUtils.test($pimvocationalgeneratefjenclosure.get("FJKZ"),"ISNOTNULL","")))
+                ]]>
+            </conditionExpression>
+     </sequenceFlow>
+    <exclusiveGateway id="gateway-d3cfa01aaad1ab965c7deaa0baf85a1f" name="Gateway" gatewayDirection="Diverging" default="gateway-d3cfa01aaad1ab965c7deaa0baf85a1f_End_Line"></exclusiveGateway>
+    <sequenceFlow id="41ebf4563f514909a25d0a321feb77b6-gatewayline" sourceRef="d3cfa01aaad1ab965c7deaa0baf85a1f" targetRef="gateway-d3cfa01aaad1ab965c7deaa0baf85a1f"></sequenceFlow>
+    <sequenceFlow id="gateway-d3cfa01aaad1ab965c7deaa0baf85a1f_End_Line" sourceRef="gateway-d3cfa01aaad1ab965c7deaa0baf85a1f" targetRef="gateway-d3cfa01aaad1ab965c7deaa0baf85a1f_End"/>
+    <endEvent id="gateway-d3cfa01aaad1ab965c7deaa0baf85a1f_End" name="End"/>
+    </process>
+</definitions>
+

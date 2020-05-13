@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+    <process id="cn.ibizlab.ehr.core.common.service.logic.orguserupdatecuruser" isClosed="false" isExecutable="true" name="ScoreRule" processType="Private" tns:packageName="cn.ibizlab.ehr.core.common.service.logic.orguserupdatecuruser">
+        <extensionElements>
+            <tns:import name="java.util.Map" />
+            <tns:import name="org.springframework.util.StringUtils"/>
+            <tns:import name="cn.ibizlab.ehr.util.helper.RuleUtils"/>
+        <tns:global identifier="orguserupdatecuruserdefault" type="cn.ibizlab.ehr.core.common.domain.OrgUser" />
+        </extensionElements>
+     <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="orguserupdatecuruserdeaction1" id="cb211def940eed1cb68ab7485daaaeeb" implementation="http://www.jboss.org/drools/rule" name="更新"/>
+     <endEvent id="cb211def940eed1cb68ab7485daaaeeb_End" name="End"/>
+     <sequenceFlow id="cb211def940eed1cb68ab7485daaaeeb_End_Line" sourceRef="cb211def940eed1cb68ab7485daaaeeb" targetRef="cb211def940eed1cb68ab7485daaaeeb_End"/>
+     <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="orguserupdatecuruserprepareparam1" id="9e1c047f612c1ead4749f7ef594f2555" implementation="http://www.jboss.org/drools/rule" name="修改当前用户标示"/>
+     <startEvent id="98a88926ff4adfc395aa8fab596235ba" isInterrupting="true"/>
+     <sequenceFlow id="8c855a856d00f501bdf767e03514784a" sourceRef="98a88926ff4adfc395aa8fab596235ba" targetRef="9e1c047f612c1ead4749f7ef594f2555">
+     </sequenceFlow>
+     <sequenceFlow id="438b7d64f49e6214fcb2598fcea0ba24" sourceRef="9e1c047f612c1ead4749f7ef594f2555" targetRef="cb211def940eed1cb68ab7485daaaeeb">
+     </sequenceFlow>
+    </process>
+</definitions>
+

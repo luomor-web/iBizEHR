@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper	namespace="cn.ibizlab.ehr.core.wf.mapper.WFActorMapper">
+
+    <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
+	<select id="selectById"  resultMap="WFActorResultMap" databaseId="db2">
+        <![CDATA[select * from v_wfactor t1     where  wfactorid=#{id}]]>
+    </select>
+	<select id="selectById"  resultMap="WFActorResultMap" databaseId="mysql">
+        <![CDATA[select * from v_wfactor t1     where  wfactorid=#{id}]]>
+    </select>
+	<select id="selectById"  resultMap="WFActorResultMap" databaseId="oracle">
+        <![CDATA[select * from v_wfactor t1     where  wfactorid=#{id}]]>
+    </select>
+	<select id="selectById"  resultMap="WFActorResultMap" databaseId="postgresql">
+        <![CDATA[select * from v_wfactor t1     where  wfactorid=#{id}]]>
+    </select>
+	<select id="selectById"  resultMap="WFActorResultMap" databaseId="ppas">
+        <![CDATA[select * from v_wfactor t1     where  wfactorid=#{id}]]>
+    </select>
+	<select id="selectById"  resultMap="WFActorResultMap" databaseId="sqlserver">
+        <![CDATA[select * from v_wfactor t1     where  wfactorid=#{id}]]>
+    </select>
+
+    <!--通过mybatis将查询结果注入到entity中,通过配置autoMapping="true"由mybatis自动处理映射关系 -->
+    <resultMap id="WFActorResultMap" type="cn.ibizlab.ehr.core.wf.domain.WFActor" autoMapping="true">
+        <id property="wfactorid" column="wfactorid" /><!--主键字段映射-->
+            
+		
+    </resultMap>
+
+
+    <!--数据集合[Default]-->
+	 <select id="searchDefault"  parameterType="cn.ibizlab.ehr.core.wf.filter.WFActorSearchContext"  resultMap="WFActorResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="db2">
+       <![CDATA[	SELECT t1.CREATEDATE, t1.CREATEMAN, t1.UPDATEDATE, t1.UPDATEMAN, t1.WFACTORID, t1.WFACTORNAME, t1.WFACTORPARAM, t1.WFACTORPARAM2, t1.WFACTORTYPE FROM T_SRFWFACTOR t1  
+			]]>
+    </sql>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="mysql">
+       <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`WFACTORID`, t1.`WFACTORNAME`, t1.`WFACTORPARAM`, t1.`WFACTORPARAM2`, t1.`WFACTORTYPE` FROM `T_SRFWFACTOR` t1  
+			]]>
+    </sql>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="oracle">
+       <![CDATA[	SELECT t1.CREATEDATE, t1.CREATEMAN, t1.UPDATEDATE, t1.UPDATEMAN, t1.WFACTORID, t1.WFACTORNAME, t1.WFACTORPARAM, t1.WFACTORPARAM2, t1.WFACTORTYPE FROM T_SRFWFACTOR t1  
+			]]>
+    </sql>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="postgresql">
+       <![CDATA[	SELECT t1.CREATEDATE, t1.CREATEMAN, t1.UPDATEDATE, t1.UPDATEMAN, t1.WFACTORID, t1.WFACTORNAME, t1.WFACTORPARAM, t1.WFACTORPARAM2, t1.WFACTORTYPE FROM T_SRFWFACTOR t1  
+			]]>
+    </sql>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="ppas">
+       <![CDATA[	SELECT t1.CREATEDATE, t1.CREATEMAN, t1.UPDATEDATE, t1.UPDATEMAN, t1.WFACTORID, t1.WFACTORNAME, t1.WFACTORPARAM, t1.WFACTORPARAM2, t1.WFACTORTYPE FROM T_SRFWFACTOR t1  
+			]]>
+    </sql>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="sqlserver">
+       <![CDATA[	SELECT t1.[CREATEDATE], t1.[CREATEMAN], t1.[UPDATEDATE], t1.[UPDATEMAN], t1.[WFACTORID], t1.[WFACTORNAME], t1.[WFACTORPARAM], t1.[WFACTORPARAM2], t1.[WFACTORTYPE] FROM [T_SRFWFACTOR] t1  
+			]]>
+    </sql>
+
+</mapper>
+

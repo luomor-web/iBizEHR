@@ -1,0 +1,36 @@
+server:
+  port: 6092
+
+#zuul网关路由设置
+zuul:
+  routes:
+    vacleavedetail:
+      path: /vacleavedetails/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    vacleavemanage:
+      path: /vacleavemanages/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pimexitandentry:
+      path: /pimexitandentries/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pimmajorsetype:
+      path: /pimmajorsetypes/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pimperson:
+      path: /pimpeople/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pcmbdsqdmx:
+      path: /pcmbdsqdmxes/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    wfcore:
+      path: /wfcore/**
+      serviceId: ibzwf-api
+      stripPrefix: true
+  sensitive-headers:
+    - Cookie,Set-Cookie,Authorization
