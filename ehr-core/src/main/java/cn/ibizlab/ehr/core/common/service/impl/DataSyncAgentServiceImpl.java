@@ -83,7 +83,7 @@ public class DataSyncAgentServiceImpl extends ServiceImpl<DataSyncAgentMapper, D
 
     @Override
     public void createBatch(List<DataSyncAgent> list) {
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

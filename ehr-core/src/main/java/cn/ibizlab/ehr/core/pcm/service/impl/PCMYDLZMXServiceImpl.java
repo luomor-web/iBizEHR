@@ -99,7 +99,7 @@ public class PCMYDLZMXServiceImpl extends ServiceImpl<PCMYDLZMXMapper, PCMYDLZMX
     @Override
     public void createBatch(List<PCMYDLZMX> list) {
         list.forEach(item->fillParentData(item));
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

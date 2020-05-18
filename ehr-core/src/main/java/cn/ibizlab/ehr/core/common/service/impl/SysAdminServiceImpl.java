@@ -80,7 +80,7 @@ public class SysAdminServiceImpl extends ServiceImpl<SysAdminMapper, SysAdmin> i
 
     @Override
     public void createBatch(List<SysAdmin> list) {
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

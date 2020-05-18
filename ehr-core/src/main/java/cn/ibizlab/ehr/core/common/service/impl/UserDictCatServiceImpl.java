@@ -135,7 +135,7 @@ public class UserDictCatServiceImpl extends ServiceImpl<UserDictCatMapper, UserD
 
     @Override
     public void createBatch(List<UserDictCat> list) {
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
 

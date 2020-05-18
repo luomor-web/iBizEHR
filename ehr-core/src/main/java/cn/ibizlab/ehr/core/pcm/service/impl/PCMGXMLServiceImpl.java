@@ -123,7 +123,7 @@ public class PCMGXMLServiceImpl extends ServiceImpl<PCMGXMLMapper, PCMGXML> impl
 
     @Override
     public void createBatch(List<PCMGXML> list) {
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

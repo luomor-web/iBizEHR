@@ -17,49 +17,49 @@ export default class PIMEXITANDENTRYUIServiceBase extends UIService {
      * 
      * @memberof  PIMEXITANDENTRYUIServiceBase
      */
-    protected isEnableWorkflow:boolean = false;
+    public isEnableWorkflow:boolean = false;
 
     /**
      * 当前UI服务对应的数据服务对象
      * 
      * @memberof  PIMEXITANDENTRYUIServiceBase
      */
-    protected dataService:PIMEXITANDENTRYService = new PIMEXITANDENTRYService();
+    public dataService:PIMEXITANDENTRYService = new PIMEXITANDENTRYService();
 
     /**
      * 所有关联视图
      * 
      * @memberof  PIMEXITANDENTRYUIServiceBase
      */ 
-    protected allViewMap: Map<string, Object> = new Map();
+    public allViewMap: Map<string, Object> = new Map();
 
     /**
      * 状态值
      * 
      * @memberof  PIMEXITANDENTRYUIServiceBase
      */ 
-    protected stateValue: number = 0;
+    public stateValue: number = 0;
 
     /**
      * 状态属性
      * 
      * @memberof  PIMEXITANDENTRYUIServiceBase
      */ 
-    protected stateField: string = "";
+    public stateField: string = "";
 
     /**
      * 主状态属性集合
      * 
      * @memberof  PIMEXITANDENTRYUIServiceBase
      */  
-    protected mainStateFields:Array<any> = [];
+    public mainStateFields:Array<any> = [];
 
     /**
      * 主状态集合Map
      * 
      * @memberof  PIMEXITANDENTRYUIServiceBase
      */  
-    protected allDeMainStateMap:Map<string,string> = new Map();
+    public allDeMainStateMap:Map<string,string> = new Map();
 
     /**
      * Creates an instance of  PIMEXITANDENTRYUIServiceBase.
@@ -581,7 +581,7 @@ export default class PIMEXITANDENTRYUIServiceBase extends UIService {
      * 
      * @memberof  PIMEXITANDENTRYUIServiceBase
 	 */
-	protected getRealDEType(entity:any){
+	public getRealDEType(entity:any){
 
     }
 
@@ -593,7 +593,7 @@ export default class PIMEXITANDENTRYUIServiceBase extends UIService {
      * @param bWFMode   是否工作流模式
      * @memberof  PIMEXITANDENTRYUIServiceBase
      */
-    protected async getDESDDEViewPDTParam(curData:any, bDataInWF:boolean, bWFMode:boolean){
+    public async getDESDDEViewPDTParam(curData:any, bDataInWF:boolean, bWFMode:boolean){
         let strPDTParam:string = '';
 		if (bDataInWF) {
 			// 判断数据是否在流程中
@@ -627,7 +627,7 @@ export default class PIMEXITANDENTRYUIServiceBase extends UIService {
      * @param curData 当前数据
      * @memberof  PIMEXITANDENTRYUIServiceBase
      */  
-    protected async getDEMainStateTag(curData:any){
+    public async getDEMainStateTag(curData:any){
         if(this.mainStateFields.length === 0) return null;
 
         this.mainStateFields.forEach((singleMainField:any) =>{

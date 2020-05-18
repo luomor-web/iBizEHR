@@ -68,7 +68,7 @@ public class VACINITNXJServiceImpl extends ServiceImpl<VACINITNXJMapper, VACINIT
     @Override
     public void createBatch(List<VACINITNXJ> list) {
         list.forEach(item->fillParentData(item));
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

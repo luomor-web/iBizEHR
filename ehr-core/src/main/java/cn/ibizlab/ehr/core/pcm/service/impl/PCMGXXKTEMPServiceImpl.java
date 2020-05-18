@@ -72,7 +72,7 @@ public class PCMGXXKTEMPServiceImpl extends ServiceImpl<PCMGXXKTEMPMapper, PCMGX
     @Override
     public void createBatch(List<PCMGXXKTEMP> list) {
         list.forEach(item->fillParentData(item));
-        saveBatch(list,batchSize);
+        this.saveOrUpdateBatch(list,batchSize);
     }
 
     @Override

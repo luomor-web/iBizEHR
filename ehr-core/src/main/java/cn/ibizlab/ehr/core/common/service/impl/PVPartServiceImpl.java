@@ -144,7 +144,7 @@ public class PVPartServiceImpl extends ServiceImpl<PVPartMapper, PVPart> impleme
     @Override
     public void createBatch(List<PVPart> list) {
         list.forEach(item->fillParentData(item));
-        saveBatch(list,batchSize);
+        this.saveOrUpdateBatch(list,batchSize);
     }
 
 

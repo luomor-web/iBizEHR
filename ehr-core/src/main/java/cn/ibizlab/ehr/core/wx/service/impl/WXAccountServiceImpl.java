@@ -78,7 +78,7 @@ public class WXAccountServiceImpl extends ServiceImpl<WXAccountMapper, WXAccount
     @Override
     public void createBatch(List<WXAccount> list) {
         list.forEach(item->fillParentData(item));
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

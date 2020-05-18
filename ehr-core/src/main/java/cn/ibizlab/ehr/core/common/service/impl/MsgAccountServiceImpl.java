@@ -135,7 +135,7 @@ public class MsgAccountServiceImpl extends ServiceImpl<MsgAccountMapper, MsgAcco
 
     @Override
     public void createBatch(List<MsgAccount> list) {
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
 

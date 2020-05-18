@@ -2,7 +2,7 @@
     <i-form :model="this.data" class='app-search-form' ref='searchform' style="">
   <input style="display:none;"/>
   <row>
-    <i-col span="20">
+    <i-col span="20" class="form-content">
       <row>
                     <i-col v-show="detailsModel.n_ygbh_like.visible" :style="{}"  :lg="{ span: 6, offset: 0 }">
               <app-form-item name='n_ygbh_like' :itemRules="this.rules.n_ygbh_like" class='' :caption="$t('entities.pimexitandentry.default_searchform.details.n_ygbh_like')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.n_ygbh_like.error" :isEmptyCaption="false" labelPos="LEFT"> 
@@ -30,7 +30,7 @@
           </i-col>
       </row>
     </i-col>
-    <i-col span="4">
+    <i-col span="4" class="search-button">
       <row v-show="Object.keys(data).length>0">
         <i-button class='search_reset'  size="default" type="primary"  @click="onSearch">{{$t('app.searchButton.search')}}</i-button>
         <i-button class='search_reset'  size="default"  @click="onReset">{{this.$t('app.searchButton.reset')}}</i-button>
@@ -65,7 +65,7 @@ export default class DefaultBase extends Vue implements ControlInterface {
      * @type {string}
      * @memberof Default
      */
-    @Prop() protected name?: string;
+    @Prop() public name?: string;
 
     /**
      * 视图通讯对象
@@ -73,7 +73,7 @@ export default class DefaultBase extends Vue implements ControlInterface {
      * @type {Subject<ViewState>}
      * @memberof Default
      */
-    @Prop() protected viewState!: Subject<ViewState>;
+    @Prop() public viewState!: Subject<ViewState>;
 
     /**
      * 应用上下文
@@ -81,7 +81,7 @@ export default class DefaultBase extends Vue implements ControlInterface {
      * @type {*}
      * @memberof Default
      */
-    @Prop() protected context: any;
+    @Prop() public context: any;
 
     /**
      * 视图参数
@@ -89,16 +89,16 @@ export default class DefaultBase extends Vue implements ControlInterface {
      * @type {*}
      * @memberof Default
      */
-    @Prop() protected viewparams: any;
+    @Prop() public viewparams: any;
 
     /**
      * 视图状态事件
      *
-     * @protected
+     * @public
      * @type {(Subscription | undefined)}
      * @memberof Default
      */
-    protected viewStateEvent: Subscription | undefined;
+    public viewStateEvent: Subscription | undefined;
 
     /**
      * 获取部件类型
@@ -106,7 +106,7 @@ export default class DefaultBase extends Vue implements ControlInterface {
      * @returns {string}
      * @memberof Default
      */
-    protected getControlType(): string {
+    public getControlType(): string {
         return 'SEARCHFORM'
     }
 
@@ -118,7 +118,7 @@ export default class DefaultBase extends Vue implements ControlInterface {
      * @type {Array<*>}
      * @memberof Default
      */    
-    protected counterServiceArray:Array<any> = [];
+    public counterServiceArray:Array<any> = [];
 
     /**
      * 建构部件服务对象
@@ -126,7 +126,7 @@ export default class DefaultBase extends Vue implements ControlInterface {
      * @type {DefaultService}
      * @memberof Default
      */
-    protected service: DefaultService = new DefaultService({ $store: this.$store });
+    public service: DefaultService = new DefaultService({ $store: this.$store });
 
     /**
      * 实体服务对象
@@ -134,7 +134,7 @@ export default class DefaultBase extends Vue implements ControlInterface {
      * @type {PIMEXITANDENTRYService}
      * @memberof Default
      */
-    protected appEntityService: PIMEXITANDENTRYService = new PIMEXITANDENTRYService({ $store: this.$store });
+    public appEntityService: PIMEXITANDENTRYService = new PIMEXITANDENTRYService({ $store: this.$store });
     
 
 
@@ -144,7 +144,7 @@ export default class DefaultBase extends Vue implements ControlInterface {
      * @param {any} args
      * @memberof Default
      */
-    protected closeView(args: any): void {
+    public closeView(args: any): void {
         let _this: any = this;
         _this.$emit('closeview', [args]);
     }
@@ -192,7 +192,7 @@ export default class DefaultBase extends Vue implements ControlInterface {
      * @type {boolean}
      * @memberof DefaultBase
      */
-    @Prop({ default: true }) protected showBusyIndicator?: boolean;
+    @Prop({ default: true }) public showBusyIndicator?: boolean;
     
     /**
      * 部件行为--loaddraft
@@ -200,7 +200,7 @@ export default class DefaultBase extends Vue implements ControlInterface {
      * @type {string}
      * @memberof DefaultBase
      */
-    @Prop() protected loaddraftAction!: string;
+    @Prop() public loaddraftAction!: string;
     
     /**
      * 部件行为--load
@@ -208,7 +208,7 @@ export default class DefaultBase extends Vue implements ControlInterface {
      * @type {string}
      * @memberof DefaultBase
      */
-    @Prop() protected loadAction!: string;
+    @Prop() public loadAction!: string;
 
     /**
      * 视图标识
@@ -216,7 +216,7 @@ export default class DefaultBase extends Vue implements ControlInterface {
      * @type {string}
      * @memberof DefaultBase
      */
-    @Prop() protected viewtag!: string;
+    @Prop() public viewtag!: string;
 
     /**
      * 表单状态
@@ -224,7 +224,7 @@ export default class DefaultBase extends Vue implements ControlInterface {
      * @type {Subject<any>}
      * @memberof DefaultBase
      */
-    protected formState: Subject<any> = new Subject();
+    public formState: Subject<any> = new Subject();
 
     /**
      * 忽略表单项值变化
@@ -232,34 +232,34 @@ export default class DefaultBase extends Vue implements ControlInterface {
      * @type {boolean}
      * @memberof DefaultBase
      */
-    protected ignorefieldvaluechange: boolean = false;
+    public ignorefieldvaluechange: boolean = false;
 
     /**
      * 数据变化
      *
-     * @private
+     * @public
      * @type {Subject<any>}
      * @memberof DefaultBase
      */
-    private dataChang: Subject<any> = new Subject();
+    public dataChang: Subject<any> = new Subject();
 
     /**
      * 视图状态事件
      *
-     * @private
+     * @public
      * @type {(Subscription | undefined)}
      * @memberof DefaultBase
      */
-    private dataChangEvent: Subscription | undefined;
+    public dataChangEvent: Subscription | undefined;
 
     /**
      * 原始数据
      *
-     * @private
+     * @public
      * @type {*}
      * @memberof DefaultBase
      */
-    private oldData: any = {};
+    public oldData: any = {};
 
     /**
      * 表单数据对象
@@ -267,7 +267,7 @@ export default class DefaultBase extends Vue implements ControlInterface {
      * @type {*}
      * @memberof DefaultBase
      */
-    protected data: any = {
+    public data: any = {
         n_ygbh_like: null,
         n_pimpersonname_like: null,
         n_lx_eq: null,
@@ -280,7 +280,7 @@ export default class DefaultBase extends Vue implements ControlInterface {
      * @type {*}
      * @memberof DefaultBase
      */
-    protected rules: any = {
+    public rules: any = {
         n_ygbh_like: [
             { type: 'string', message: '员工编号(%) 值必须为字符串类型', trigger: 'change' },
             { type: 'string', message: '员工编号(%) 值必须为字符串类型', trigger: 'blur' },
@@ -313,7 +313,7 @@ export default class DefaultBase extends Vue implements ControlInterface {
      * @type {*}
      * @memberof DefaultBase
      */
-    protected detailsModel: any = {
+    public detailsModel: any = {
         formpage1: new FormPageModel({ caption: '常规条件', detailType: 'FORMPAGE', name: 'formpage1', visible: true, isShowCaption: true, form: this })
 , 
         n_ygbh_like: new FormItemModel({ caption: '员工编号(%)', detailType: 'FORMITEM', name: 'n_ygbh_like', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
@@ -378,21 +378,21 @@ export default class DefaultBase extends Vue implements ControlInterface {
     /**
      * 重置表单项值
      *
-     * @private
+     * @public
      * @param {{ name: string, newVal: any, oldVal: any }} { name, newVal, oldVal }
      * @memberof DefaultBase
      */
-    private resetFormData({ name, newVal, oldVal }: { name: string, newVal: any, oldVal: any }): void {
+    public resetFormData({ name, newVal, oldVal }: { name: string, newVal: any, oldVal: any }): void {
     }
 
     /**
      * 表单逻辑
      *
-     * @private
+     * @public
      * @param {{ name: string, newVal: any, oldVal: any }} { name, newVal, oldVal }
      * @memberof DefaultBase
      */
-    private formLogic({ name, newVal, oldVal }: { name: string, newVal: any, oldVal: any }): void {
+    public formLogic({ name, newVal, oldVal }: { name: string, newVal: any, oldVal: any }): void {
                 
 
 
@@ -404,12 +404,12 @@ export default class DefaultBase extends Vue implements ControlInterface {
     /**
      * 表单值变化
      *
-     * @private
+     * @public
      * @param {{ name: string, newVal: any, oldVal: any }} { name, newVal, oldVal }
      * @returns {void}
      * @memberof DefaultBase
      */
-    private formDataChange({ name, newVal, oldVal }: { name: string, newVal: any, oldVal: any }): void {
+    public formDataChange({ name, newVal, oldVal }: { name: string, newVal: any, oldVal: any }): void {
         if (this.ignorefieldvaluechange) {
             return;
         }
@@ -421,11 +421,11 @@ export default class DefaultBase extends Vue implements ControlInterface {
     /**
      * 表单加载完成
      *
-     * @private
+     * @public
      * @param {*} [data={}]
      * @memberof DefaultBase
      */
-    private onFormLoad(data: any = {}): void {
+    public onFormLoad(data: any = {}): void {
         this.setFormEnableCond(data);
         this.fillForm(data);
         this.formLogic({ name: '', newVal: null, oldVal: null });
@@ -437,7 +437,7 @@ export default class DefaultBase extends Vue implements ControlInterface {
      * @param {*} [_datas={}]
      * @memberof DefaultBase
      */
-    protected fillForm(_datas: any = {}): void {
+    public fillForm(_datas: any = {}): void {
         this.ignorefieldvaluechange = true;
         Object.keys(_datas).forEach((name: string) => {
             if (this.data.hasOwnProperty(name)) {
@@ -452,11 +452,11 @@ export default class DefaultBase extends Vue implements ControlInterface {
     /**
      * 设置表单项是否启用
      *
-     * @protected
+     * @public
      * @param {*} data
      * @memberof DefaultBase
      */
-    protected setFormEnableCond(data: any): void {
+    public setFormEnableCond(data: any): void {
         Object.values(this.detailsModel).forEach((detail: any) => {
             if (!Object.is(detail.detailType, 'FORMITEM')) {
                 return;
@@ -469,10 +469,10 @@ export default class DefaultBase extends Vue implements ControlInterface {
     /**
      * 重置草稿表单状态
      *
-     * @private
+     * @public
      * @memberof DefaultBase
      */
-    private resetDraftFormStates(): void {
+    public resetDraftFormStates(): void {
         const form: any = this.$refs.form;
         if (form) {
             form.resetFields();
@@ -484,7 +484,7 @@ export default class DefaultBase extends Vue implements ControlInterface {
      *
      * @memberof DefaultBase
      */
-    protected resetValidates(): void {
+    public resetValidates(): void {
         Object.values(this.detailsModel).forEach((detail: any) => {
             if (!Object.is(detail.detailType, 'FORMITEM')) {
                 return;
@@ -500,7 +500,7 @@ export default class DefaultBase extends Vue implements ControlInterface {
      * @param {any[]} fieldErrors
      * @memberof DefaultBase
      */
-    protected fillValidates(fieldErrors: any[]): void {
+    public fillValidates(fieldErrors: any[]): void {
         fieldErrors.forEach((error: any) => {
             const formItem: FormItemModel = this.detailsModel[error.field];
             if (!formItem) {
@@ -518,7 +518,7 @@ export default class DefaultBase extends Vue implements ControlInterface {
      * @returns {boolean} 
      * @memberof DefaultBase
      */
-    protected formValidateStatus(): boolean {
+    public formValidateStatus(): boolean {
         const form: any = this.$refs.searchform;
         let validatestate: boolean = true;
         form.validate((valid: boolean) => {
@@ -533,7 +533,7 @@ export default class DefaultBase extends Vue implements ControlInterface {
      * @returns {*}
      * @memberof DefaultBase
      */
-    protected getValues(): any {
+    public getValues(): any {
         return this.data;
     }
 
@@ -544,7 +544,7 @@ export default class DefaultBase extends Vue implements ControlInterface {
      * @returns {void}
      * @memberof DefaultBase
      */
-    protected onFormItemValueChange($event: { name: string, value: any }): void {
+    public onFormItemValueChange($event: { name: string, value: any }): void {
         if (!$event) {
             return;
         }
@@ -562,7 +562,7 @@ export default class DefaultBase extends Vue implements ControlInterface {
      * @returns {void}
      * @memberof DefaultBase
      */
-    protected setDataItemValue(name: string, value: any): void {
+    public setDataItemValue(name: string, value: any): void {
         if (!name || Object.is(name, '') || !this.data.hasOwnProperty(name)) {
             return;
         }
@@ -580,7 +580,7 @@ export default class DefaultBase extends Vue implements ControlInterface {
      * @param {*} $event
      * @memberof DefaultBase
      */
-    protected groupUIActionClick($event: any): void {
+    public groupUIActionClick($event: any): void {
         if (!$event) {
             return;
         }
@@ -592,7 +592,7 @@ export default class DefaultBase extends Vue implements ControlInterface {
      *
      * @memberof DefaultBase
      */
-    protected created(): void {
+    public created(): void {
         this.afterCreated();
     }
 
@@ -601,7 +601,7 @@ export default class DefaultBase extends Vue implements ControlInterface {
      *
      *  @memberof DefaultBase
      */    
-    protected afterCreated(){
+    public afterCreated(){
         if (this.viewState) {
             this.viewStateEvent = this.viewState.subscribe(({ tag, action, data }) => {
                 if (!Object.is(tag, this.name)) {
@@ -625,7 +625,7 @@ export default class DefaultBase extends Vue implements ControlInterface {
      *
      * @memberof DefaultBase
      */
-    protected destroyed() {
+    public destroyed() {
         this.afterDestroy();
     }
 
@@ -634,7 +634,7 @@ export default class DefaultBase extends Vue implements ControlInterface {
      *
      * @memberof DefaultBase
      */
-    protected afterDestroy() {
+    public afterDestroy() {
         if (this.viewStateEvent) {
             this.viewStateEvent.unsubscribe();
         }
@@ -650,7 +650,7 @@ export default class DefaultBase extends Vue implements ControlInterface {
      * @returns {void}
      * @memberof DefaultBase
      */
-    protected autoLoad(arg: any = {}): void {
+    public autoLoad(arg: any = {}): void {
         if (arg.srfkey && !Object.is(arg.srfkey, '')) {
             Object.assign(arg, { srfkey: arg.srfkey });
             this.load(arg);
@@ -667,11 +667,11 @@ export default class DefaultBase extends Vue implements ControlInterface {
     /**
      * 加载
      *
-     * @private
+     * @public
      * @param {*} [opt={}]
      * @memberof DefaultBase
      */
-    private load(opt: any = {}): void {
+    public load(opt: any = {}): void {
         if(!this.loadAction){
             this.$Notice.error({ title: '错误', desc: 'PIMEXITANDENTRYYGCGJGridView视图搜索表单loadAction参数未配置' });
             return;
@@ -708,7 +708,7 @@ export default class DefaultBase extends Vue implements ControlInterface {
      * @param {*} [opt={}]
      * @memberof DefaultBase
      */
-    protected loadDraft(opt: any = {},mode?:string): void {
+    public loadDraft(opt: any = {},mode?:string): void {
         if(!this.loaddraftAction){
             this.$Notice.error({ title: '错误', desc: 'PIMEXITANDENTRYYGCGJGridView视图搜索表单loaddraftAction参数未配置' });
             return;
@@ -770,7 +770,7 @@ export default class DefaultBase extends Vue implements ControlInterface {
      * @returns {void}
      * @memberof DefaultBase
      */
-    protected updateFormItems(mode: string, data: any = {}, updateDetails: string[], showloading?: boolean): void {
+    public updateFormItems(mode: string, data: any = {}, updateDetails: string[], showloading?: boolean): void {
         
     }
 
@@ -780,11 +780,11 @@ export default class DefaultBase extends Vue implements ControlInterface {
      * @param {*} $event
      * @memberof DefaultBase
      */
-    protected onEnter($event: any): void {
+    public onEnter($event: any): void {
         if (!this.formValidateStatus()) {
             return;
         }
-        this.$emit('load', this.data);
+        this.$emit('search', this.data);
     }
 
     /**
@@ -792,11 +792,11 @@ export default class DefaultBase extends Vue implements ControlInterface {
      *
      * @memberof DefaultBase
      */
-    protected onSearch() {
+    public onSearch() {
         if (!this.formValidateStatus()) {
             return;
         }
-        this.$emit('load', this.data);
+        this.$emit('search', this.data);
     }
 
     /**
@@ -804,7 +804,7 @@ export default class DefaultBase extends Vue implements ControlInterface {
      *
      * @memberof DefaultBase
      */
-    protected onReset() {
+    public onReset() {
         this.loadDraft({},'RESET');
     }
 }

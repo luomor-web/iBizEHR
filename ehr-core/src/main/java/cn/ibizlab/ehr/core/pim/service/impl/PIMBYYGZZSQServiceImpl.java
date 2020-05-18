@@ -133,7 +133,7 @@ public class PIMBYYGZZSQServiceImpl extends ServiceImpl<PIMBYYGZZSQMapper, PIMBY
 
     @Override
     public void createBatch(List<PIMBYYGZZSQ> list) {
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

@@ -72,12 +72,12 @@ export default class NATIVEPLACE {
     /**
      * 处理数据
      *
-     * @private
+     * @public
      * @param {any[]} items
      * @returns {any[]}
      * @memberof NATIVEPLACE
      */
-    private doItems(items: any[]): any[] {
+    public doItems(items: any[]): any[] {
         let _items: any[] = [];
         items.forEach((item: any) => {
             let itemdata:any = {};

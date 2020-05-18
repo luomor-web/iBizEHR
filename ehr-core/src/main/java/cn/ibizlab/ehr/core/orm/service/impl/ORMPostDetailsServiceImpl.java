@@ -66,7 +66,7 @@ public class ORMPostDetailsServiceImpl extends ServiceImpl<ORMPostDetailsMapper,
     @Override
     public void createBatch(List<ORMPostDetails> list) {
         list.forEach(item->fillParentData(item));
-        saveBatch(list,batchSize);
+        this.saveOrUpdateBatch(list,batchSize);
     }
 
     @Override

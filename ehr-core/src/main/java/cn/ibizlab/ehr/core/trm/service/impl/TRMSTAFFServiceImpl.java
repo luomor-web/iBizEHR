@@ -102,7 +102,7 @@ public class TRMSTAFFServiceImpl extends ServiceImpl<TRMSTAFFMapper, TRMSTAFF> i
     @Override
     public void createBatch(List<TRMSTAFF> list) {
         list.forEach(item->fillParentData(item));
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

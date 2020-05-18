@@ -203,7 +203,7 @@ public class PIMBYZZJLMXServiceImpl extends ServiceImpl<PIMBYZZJLMXMapper, PIMBY
     @Override
     public void createBatch(List<PIMBYZZJLMX> list) {
         list.forEach(item->fillParentData(item));
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

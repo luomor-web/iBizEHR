@@ -119,10 +119,10 @@ export default class PIMARCHIVESLOANANDRETURNRedirectViewBase extends WizardView
     /**
      * 引擎初始化
      *
-     * @protected
+     * @public
      * @memberof PIMARCHIVESLOANANDRETURNRedirectViewBase
      */
-    protected engineInit(): void {
+    public engineInit(): void {
     }
 
 

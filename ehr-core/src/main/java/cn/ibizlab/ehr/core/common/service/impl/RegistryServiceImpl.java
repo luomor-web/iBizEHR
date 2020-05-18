@@ -85,7 +85,7 @@ public class RegistryServiceImpl extends ServiceImpl<RegistryMapper, Registry> i
 
     @Override
     public void createBatch(List<Registry> list) {
-        saveBatch(list,batchSize);
+        this.saveOrUpdateBatch(list,batchSize);
     }
 
     @Override

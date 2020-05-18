@@ -4,6 +4,7 @@ import cn.ibizlab.ehr.util.security.AuthenticationUser;
 import cn.ibizlab.ehr.util.security.AuthorizationLogin;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.*;
+import com.alibaba.fastjson.JSONObject;
 import java.util.Map;
 
 @FeignClient(value = "ibzuaa-api",fallback = IBZUAAFallback.class)
@@ -16,7 +17,7 @@ public interface IBZUAAFeignClient
 	 * @return
 	 */
 	@PostMapping("/uaa/permission/save")
-	Map<String,Object> pushSystemPermissionData(@RequestBody Map<String, Object> systemPermissionData,  @RequestParam("systemid") String systemId);
+	JSONObject pushSystemPermissionData(@RequestBody Map<String, Object> systemPermissionData,  @RequestParam("systemid") String systemId);
 
 	/**
 	 * 用户登录

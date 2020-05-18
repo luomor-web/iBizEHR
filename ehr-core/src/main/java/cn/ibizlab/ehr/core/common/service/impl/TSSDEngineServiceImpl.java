@@ -104,7 +104,7 @@ public class TSSDEngineServiceImpl extends ServiceImpl<TSSDEngineMapper, TSSDEng
 
     @Override
     public void createBatch(List<TSSDEngine> list) {
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

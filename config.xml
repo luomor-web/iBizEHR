@@ -35,14 +35,9 @@
       echo "registry.cn-shanghai.aliyuncs.com/ibizsys"
       source /etc/profile
       rm -rf ehr
-	  git clone -b master $para2 ehr/
+	  git clone -b dev $para2 ehr/
       export NODE_OPTIONS=--max-old-space-size=4096
       cd ehr/
-      mvn clean package -Pehrpim
-      cd ehr-app/ehr-app-ehrpim
-      mvn -Pehrpim docker:build
-      mvn -Pehrpim docker:push
-      docker -H $para1 stack deploy --compose-file=src/main/docker/ehr-app-ehrpim.yaml iBizEE --with-registry-auth
       </command>
     </hudson.tasks.Shell>
   </builders>

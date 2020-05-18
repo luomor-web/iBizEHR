@@ -11,6 +11,8 @@ import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.util.ObjectUtils;
+import org.springframework.util.DigestUtils;
 import cn.ibizlab.ehr.util.domain.EntityBase;
 import cn.ibizlab.ehr.util.annotation.DEField;
 import cn.ibizlab.ehr.util.enums.DEPredefinedFieldType;
@@ -22,6 +24,7 @@ import org.springframework.data.annotation.Transient;
 
 import com.baomidou.mybatisplus.annotation.*;
 import cn.ibizlab.ehr.util.domain.EntityMP;
+
 
 /**
  * 实体[部门职务编制]
@@ -191,10 +194,23 @@ public class ORMDepEstMan extends EntityMP implements Serializable {
         this.ormdutyid = ormdutyid ;
         this.modify("ormdutyid",ormdutyid);
     }
+
+    /**
+     * 获取 [部门编制管理标识]
+     */
+    public String getOrmdepestmanid(){
+        if(ObjectUtils.isEmpty(ormdepestmanid)){
+            ormdepestmanid=(String)getDefaultKey(true);
+        }
+        return ormdepestmanid;
+    }
+
+    @Override
+    public Serializable getDefaultKey(boolean gen) {
+        if((!ObjectUtils.isEmpty(this.getOrmzwbzid()))&&(!ObjectUtils.isEmpty(this.getOrmdutyid())))
+            return DigestUtils.md5DigestAsHex(String.format("%s||%s" ,this.getOrmzwbzid(),this.getOrmdutyid()).getBytes());
+        return null;
+    }
 }
-
-
-
-
 
 

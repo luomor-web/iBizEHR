@@ -58,7 +58,7 @@ public class ATTENDANCESUMMARYMXServiceImpl extends ServiceImpl<ATTENDANCESUMMAR
 
     @Override
     public void createBatch(List<ATTENDANCESUMMARYMX> list) {
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

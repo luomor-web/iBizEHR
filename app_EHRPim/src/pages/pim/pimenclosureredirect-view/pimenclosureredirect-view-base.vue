@@ -119,10 +119,10 @@ export default class PIMENCLOSURERedirectViewBase extends WizardViewBase {
     /**
      * 引擎初始化
      *
-     * @protected
+     * @public
      * @memberof PIMENCLOSURERedirectViewBase
      */
-    protected engineInit(): void {
+    public engineInit(): void {
     }
 
 

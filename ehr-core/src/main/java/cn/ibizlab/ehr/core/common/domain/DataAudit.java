@@ -11,6 +11,8 @@ import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.util.ObjectUtils;
+import org.springframework.util.DigestUtils;
 import cn.ibizlab.ehr.util.domain.EntityBase;
 import cn.ibizlab.ehr.util.annotation.DEField;
 import cn.ibizlab.ehr.util.enums.DEPredefinedFieldType;
@@ -22,6 +24,7 @@ import org.springframework.data.annotation.Transient;
 
 import com.baomidou.mybatisplus.annotation.*;
 import cn.ibizlab.ehr.util.domain.EntityMP;
+
 
 /**
  * 实体[数据审计]
@@ -203,10 +206,7 @@ public class DataAudit extends EntityMP implements Serializable {
         this.sessionid = sessionid ;
         this.modify("sessionid",sessionid);
     }
+
 }
-
-
-
-
 
 

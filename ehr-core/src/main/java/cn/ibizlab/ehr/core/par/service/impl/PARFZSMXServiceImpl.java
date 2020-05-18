@@ -100,7 +100,7 @@ public class PARFZSMXServiceImpl extends ServiceImpl<PARFZSMXMapper, PARFZSMX> i
     @Override
     public void createBatch(List<PARFZSMX> list) {
         list.forEach(item->fillParentData(item));
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

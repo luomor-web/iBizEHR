@@ -105,7 +105,7 @@ public class NationMGRServiceImpl extends ServiceImpl<NationMGRMapper, NationMGR
 
     @Override
     public void createBatch(List<NationMGR> list) {
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

@@ -63,7 +63,7 @@ public class PCMLOGServiceImpl extends ServiceImpl<PCMLOGMapper, PCMLOG> impleme
     @Override
     public void createBatch(List<PCMLOG> list) {
         list.forEach(item->fillParentData(item));
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

@@ -100,7 +100,7 @@ public class PCMXKMLServiceImpl extends ServiceImpl<PCMXKMLMapper, PCMXKML> impl
 
     @Override
     public void createBatch(List<PCMXKML> list) {
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

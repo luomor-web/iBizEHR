@@ -4,7 +4,7 @@ import com.github.benmanes.caffeine.cache.CaffeineSpec;
 import cn.ibizlab.ehr.util.cache.cacheManager.CaffeineCacheManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.cache.CacheProperties;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnExpression;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.EnableCaching;
@@ -19,7 +19,7 @@ import org.springframework.util.StringUtils;
 @EnableCaching
 @Configuration
 @EnableConfigurationProperties(CacheProperties.class)
-@ConditionalOnProperty("ibiz.enableCaffeineCache")
+@ConditionalOnExpression("'${ibiz.cacheLevel:None}'.equals('L1')")
 public class CaffeineCacheConfig {
 
     @Autowired

@@ -11,6 +11,8 @@ import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.util.ObjectUtils;
+import org.springframework.util.DigestUtils;
 import cn.ibizlab.ehr.util.domain.EntityBase;
 import cn.ibizlab.ehr.util.annotation.DEField;
 import cn.ibizlab.ehr.util.enums.DEPredefinedFieldType;
@@ -145,10 +147,5 @@ public class DynaChart extends EntityClient implements Serializable {
     }
 
 }
-
-
-
-
-
 
 

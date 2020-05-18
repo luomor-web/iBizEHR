@@ -144,7 +144,7 @@ public class TRMAGENCYRECORDServiceImpl extends ServiceImpl<TRMAGENCYRECORDMappe
     @Override
     public void createBatch(List<TRMAGENCYRECORD> list) {
         list.forEach(item->fillParentData(item));
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
 

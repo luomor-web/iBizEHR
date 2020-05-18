@@ -71,7 +71,7 @@ export default class TreeBase extends Vue implements ControlInterface {
      * @type {string}
      * @memberof Tree
      */
-    @Prop() protected name?: string;
+    @Prop() public name?: string;
 
     /**
      * 视图通讯对象
@@ -79,7 +79,7 @@ export default class TreeBase extends Vue implements ControlInterface {
      * @type {Subject<ViewState>}
      * @memberof Tree
      */
-    @Prop() protected viewState!: Subject<ViewState>;
+    @Prop() public viewState!: Subject<ViewState>;
 
     /**
      * 应用上下文
@@ -87,7 +87,7 @@ export default class TreeBase extends Vue implements ControlInterface {
      * @type {*}
      * @memberof Tree
      */
-    @Prop() protected context: any;
+    @Prop() public context: any;
 
     /**
      * 视图参数
@@ -95,16 +95,16 @@ export default class TreeBase extends Vue implements ControlInterface {
      * @type {*}
      * @memberof Tree
      */
-    @Prop() protected viewparams: any;
+    @Prop() public viewparams: any;
 
     /**
      * 视图状态事件
      *
-     * @protected
+     * @public
      * @type {(Subscription | undefined)}
      * @memberof Tree
      */
-    protected viewStateEvent: Subscription | undefined;
+    public viewStateEvent: Subscription | undefined;
 
     /**
      * 获取部件类型
@@ -112,7 +112,7 @@ export default class TreeBase extends Vue implements ControlInterface {
      * @returns {string}
      * @memberof Tree
      */
-    protected getControlType(): string {
+    public getControlType(): string {
         return 'TREEVIEW'
     }
 
@@ -124,7 +124,7 @@ export default class TreeBase extends Vue implements ControlInterface {
      * @type {Array<*>}
      * @memberof Tree
      */    
-    protected counterServiceArray:Array<any> = [];
+    public counterServiceArray:Array<any> = [];
 
     /**
      * 建构部件服务对象
@@ -132,7 +132,7 @@ export default class TreeBase extends Vue implements ControlInterface {
      * @type {TreeService}
      * @memberof Tree
      */
-    protected service: TreeService = new TreeService({ $store: this.$store });
+    public service: TreeService = new TreeService({ $store: this.$store });
 
     /**
      * 实体服务对象
@@ -140,7 +140,7 @@ export default class TreeBase extends Vue implements ControlInterface {
      * @type {PIMCONTRACTService}
      * @memberof Tree
      */
-    protected appEntityService: PIMCONTRACTService = new PIMCONTRACTService({ $store: this.$store });
+    public appEntityService: PIMCONTRACTService = new PIMCONTRACTService({ $store: this.$store });
     
 
 
@@ -150,7 +150,7 @@ export default class TreeBase extends Vue implements ControlInterface {
      * @param {any} args
      * @memberof Tree
      */
-    protected closeView(args: any): void {
+    public closeView(args: any): void {
         let _this: any = this;
         _this.$emit('closeview', [args]);
     }
@@ -198,7 +198,7 @@ export default class TreeBase extends Vue implements ControlInterface {
      * @type {boolean}
      * @memberof Tree
      */
-    @Prop({ default: true }) protected isSingleSelect!: boolean;
+    @Prop({ default: true }) public isSingleSelect!: boolean;
 
     /**
      * 是否默认选中第一条数据
@@ -206,7 +206,7 @@ export default class TreeBase extends Vue implements ControlInterface {
      * @type {boolean}
      * @memberof Tree
      */
-    @Prop({ default: false }) protected isSelectFirstDefault!: boolean;
+    @Prop({ default: false }) public isSelectFirstDefault!: boolean;
 
     /**
      * 枝干节点是否可用（具有数据能力，可抛出）
@@ -214,7 +214,7 @@ export default class TreeBase extends Vue implements ControlInterface {
      * @type {string}
      * @memberof Tree
      */
-    @Prop({default:true}) protected isBranchAvailable!: boolean;
+    @Prop({default:true}) public isBranchAvailable!: boolean;
 
     /**
      * 显示处理提示
@@ -222,7 +222,7 @@ export default class TreeBase extends Vue implements ControlInterface {
      * @type {boolean}
      * @memberof Tree
      */
-    @Prop({ default: true }) protected showBusyIndicator?: boolean;
+    @Prop({ default: true }) public showBusyIndicator?: boolean;
 
     /**
      * 初始化完成
@@ -230,7 +230,7 @@ export default class TreeBase extends Vue implements ControlInterface {
      * @type {boolean}
      * @memberof Tree
      */
-    protected inited: boolean = false;
+    public inited: boolean = false;
 
     /**
      * 已选中数据集合
@@ -238,7 +238,7 @@ export default class TreeBase extends Vue implements ControlInterface {
      * @type {*}
      * @memberof Tree
      */
-    protected selectedNodes: any = [];
+    public selectedNodes: any = [];
 
     /**
      * 当前选中数据项
@@ -246,7 +246,7 @@ export default class TreeBase extends Vue implements ControlInterface {
      * @type {*}
      * @memberof Tree
      */
-    protected currentselectedNode: any = {};
+    public currentselectedNode: any = {};
 
     /**
      * 选中数据字符串
@@ -254,7 +254,7 @@ export default class TreeBase extends Vue implements ControlInterface {
      * @type {string}
      * @memberof Tree
      */
-    @Prop() protected selectedData?: string;
+    @Prop() public selectedData?: string;
 
     /**
      * 选中值变化
@@ -285,7 +285,7 @@ export default class TreeBase extends Vue implements ControlInterface {
      * @type {*}
      * @memberof Tree
      */
-    protected echoselectedNodes:any[] = this.selectedData ? ( this.isSingleSelect ? [JSON.parse(this.selectedData)[0]] : JSON.parse(this.selectedData)) : [];
+    public echoselectedNodes:any[] = this.selectedData ? ( this.isSingleSelect ? [JSON.parse(this.selectedData)[0]] : JSON.parse(this.selectedData)) : [];
 
     /**
      * 部件行为--update
@@ -293,7 +293,7 @@ export default class TreeBase extends Vue implements ControlInterface {
      * @type {string}
      * @memberof Tree
      */
-    @Prop() protected updateAction!: string;
+    @Prop() public updateAction!: string;
 
     /**
      * 部件行为--fetch
@@ -301,7 +301,7 @@ export default class TreeBase extends Vue implements ControlInterface {
      * @type {string}
      * @memberof Tree
      */
-    @Prop() protected fetchAction!: string;
+    @Prop() public fetchAction!: string;
 
     /**
      * 部件行为--remove
@@ -309,7 +309,7 @@ export default class TreeBase extends Vue implements ControlInterface {
      * @type {string}
      * @memberof Tree
      */
-    @Prop() protected removeAction!: string;
+    @Prop() public removeAction!: string;
 
     /**
      * 部件行为--load
@@ -317,7 +317,7 @@ export default class TreeBase extends Vue implements ControlInterface {
      * @type {string}
      * @memberof Tree
      */
-    @Prop() protected loadAction!: string;
+    @Prop() public loadAction!: string;
 
     /**
      * 部件行为--create
@@ -325,7 +325,7 @@ export default class TreeBase extends Vue implements ControlInterface {
      * @type {string}
      * @memberof Tree
      */
-    @Prop() protected createAction!: string;
+    @Prop() public createAction!: string;
 
     /**
      * 过滤属性
@@ -333,7 +333,7 @@ export default class TreeBase extends Vue implements ControlInterface {
      * @type {string}
      * @memberof Tree
      */
-    protected srfnodefilter: string = '';
+    public srfnodefilter: string = '';
 
     /**
      * 默认输出图标
@@ -341,7 +341,7 @@ export default class TreeBase extends Vue implements ControlInterface {
      * @type {boolean}
      * @memberof Tree
      */
-    protected isOutputIconDefault: boolean = true;
+    public isOutputIconDefault: boolean = true;
 
 
     /**
@@ -351,18 +351,18 @@ export default class TreeBase extends Vue implements ControlInterface {
      * @memberof Tree
      */
     @Provide()
-    protected expandedKeys: string[] = [];
+    public expandedKeys: string[] = [];
 
     /**
      * 选中数据变更事件
      *
-     * @private
+     * @public
      * @param {*} data
      * @param {*} data 当前节点对应传入对象
      * @param {*} checkedState 树目前选中状态对象
      * @memberof Tree
      */
-    private onCheck(data: any, checkedState: any) {
+    public onCheck(data: any, checkedState: any) {
         // 处理多选数据
         if(!this.isSingleSelect){
             let leafNodes = checkedState.checkedNodes.filter((item:any) => item.leaf);
@@ -374,12 +374,12 @@ export default class TreeBase extends Vue implements ControlInterface {
     /**
      * 选中数据变更事件
      *
-     * @private
+     * @public
      * @param {*} data 节点对应传入对象
      * @param {*} node 节点对应node对象
      * @memberof Tree
      */
-    private selectionChange(data: any, node: any) {
+    public selectionChange(data: any, node: any) {
         // 禁用项处理
         if (data.disabled){
             node.isCurrent = false;
@@ -402,7 +402,7 @@ export default class TreeBase extends Vue implements ControlInterface {
      *
      * @memberof Tree
      */
-    protected created() {
+    public created() {
         this.afterCreated();
     }
 
@@ -411,7 +411,7 @@ export default class TreeBase extends Vue implements ControlInterface {
      *
      *  @memberof Tree
      */    
-    protected afterCreated(){
+    public afterCreated(){
         if (this.viewState) {
             this.viewStateEvent = this.viewState.subscribe(({ tag, action, data }) => {
                 if (!Object.is(tag, this.name)) {
@@ -438,7 +438,7 @@ export default class TreeBase extends Vue implements ControlInterface {
      * 对树节点进行筛选操作
      * @memberof OrderTree
      */
-    protected filterNode(value:any, data:any) {
+    public filterNode(value:any, data:any) {
         if (!value) return true;
         return data.text.indexOf(value) !== -1;
     }
@@ -449,7 +449,7 @@ export default class TreeBase extends Vue implements ControlInterface {
      *
      * @memberof Tree
      */
-    protected destroyed() {
+    public destroyed() {
         this.afterDestroy();
     }
 
@@ -458,7 +458,7 @@ export default class TreeBase extends Vue implements ControlInterface {
      *
      * @memberof Tree
      */
-    protected afterDestroy() {
+    public afterDestroy() {
         if (this.viewStateEvent) {
             this.viewStateEvent.unsubscribe();
         }
@@ -469,7 +469,7 @@ export default class TreeBase extends Vue implements ControlInterface {
      *
      * @memberof Tree
      */
-    protected refresh_all(): void {
+    public refresh_all(): void {
         this.inited = false;
         this.$nextTick(() => {
             this.inited = true;
@@ -481,7 +481,7 @@ export default class TreeBase extends Vue implements ControlInterface {
      *
      * @memberof Tree
      */
-    protected refresh_parent(): void {
+    public refresh_parent(): void {
         if (Object.keys(this.currentselectedNode).length === 0) {
             return;
         }
@@ -510,7 +510,7 @@ export default class TreeBase extends Vue implements ControlInterface {
      * @param {*} node
      * @memberof Tree
      */
-    protected load(node: any = {}, resolve?: any) {
+    public load(node: any = {}, resolve?: any) {
         if (node.data && node.data.children) {
             resolve(node.data.children);
             return;
@@ -519,10 +519,19 @@ export default class TreeBase extends Vue implements ControlInterface {
             srfnodeid: node.data && node.data.id ? node.data.id : "#",
             srfnodefilter: this.srfnodefilter
         };
-        Object.assign(params,{viewparams:this.viewparams});
+        let tempViewParams:any = JSON.parse(JSON.stringify(this.viewparams));
         let curNode:any = {}; 
         curNode = Util.deepObjectMerge(curNode,node);
         let tempContext:any = this.computecurNodeContext(curNode);
+        if(curNode.data && curNode.data.srfparentdename){
+            Object.assign(tempContext,{srfparentdename:curNode.data.srfparentdename});
+            Object.assign(tempViewParams,{srfparentdename:curNode.data.srfparentdename});
+        }
+        if(curNode.data && curNode.data.srfparentkey){
+            Object.assign(tempContext,{srfparentkey:curNode.data.srfparentkey});
+            Object.assign(tempViewParams,{srfparentkey:curNode.data.srfparentkey});
+        }
+        Object.assign(params,{viewparams:tempViewParams});
         this.service.getNodes(tempContext,params).then((response: any) => {
             if (!response || response.status !== 200) {
                 this.$Notice.error({ title: "错误", desc: response.info });
@@ -551,29 +560,12 @@ export default class TreeBase extends Vue implements ControlInterface {
      * @param {*} curNode 当前节点
      * @memberof Tree
      */
-    protected computecurNodeContext(curNode:any){
-        let tempContext:any = JSON.parse(JSON.stringify(this.context));
-        while(curNode){
-            if(curNode.data && curNode.data.id){
-                let strTreeNodeId:string = curNode.data.id;
-                let strNodeType:string = strTreeNodeId.substring(0, strTreeNodeId.indexOf(";")).toLowerCase();
-                let strRealNodeValue:string = curNode.data.srfkey;
-                let strNodeKey:string = curNode.data.srfappctxkey?curNode.data.srfappctxkey:strNodeType;
-                if(!tempContext[strNodeKey]){
-                    Object.defineProperty(tempContext, strNodeKey, {
-                        value: strRealNodeValue,
-                        writable: true,
-                        enumerable: true,
-                        configurable: true
-                    });
-                }
-                if(tempContext[strNodeKey]){
-                    curNode = null;
-                }
-            }
-            if(curNode){
-                curNode = curNode.parent;
-            }
+    public computecurNodeContext(curNode:any){
+        let tempContext:any = {};
+        if(curNode && curNode.data && curNode.data.srfappctx){
+            tempContext = JSON.parse(JSON.stringify(curNode.data.srfappctx));
+        }else{
+            tempContext = JSON.parse(JSON.stringify(this.context));
         }
         return tempContext;
     }
@@ -584,7 +576,7 @@ export default class TreeBase extends Vue implements ControlInterface {
      * @param {any[]} args
      * @memberof Tree
      */
-    protected refresh(args: any[]): void {
+    public refresh(args: any[]): void {
         if (Object.keys(this.currentselectedNode).length === 0) {
             return;
         }
@@ -609,13 +601,13 @@ export default class TreeBase extends Vue implements ControlInterface {
     /**
      * 刷新节点
      *
-     * @protected
+     * @public
      * @param {*} [curContext] 当前节点上下文
      * @param {*} [arg={}] 当前节点附加参数
      * @param {boolean} parentnode 是否是刷新父节点
      * @memberof Tree
      */
-    protected refresh_node(curContext:any,arg: any = {}, parentnode: boolean): void {
+    public refresh_node(curContext:any,arg: any = {}, parentnode: boolean): void {
         const { srfnodeid: id } = arg;
         Object.assign(arg,{viewparams:this.viewparams});
         const get: Promise<any> = this.service.getNodes(JSON.parse(JSON.stringify(this.context)),arg);
@@ -643,12 +635,12 @@ export default class TreeBase extends Vue implements ControlInterface {
     /**
      * 默认展开节点
      *
-     * @private
+     * @public
      * @param {any[]} items
      * @returns {any[]}
      * @memberof Tree
      */
-    protected formatExpanded(items: any[]): any[] {
+    public formatExpanded(items: any[]): any[] {
         const data: any[] = [];
         items.forEach((item) => {
             if (item.expanded || (item.children && item.children.length > 0)) {
@@ -666,7 +658,7 @@ export default class TreeBase extends Vue implements ControlInterface {
      * @param {boolean} isSelectedAll 是否选中所有子节点
      * @memberof MainTree
      */
-    protected setDefaultSelection(items: any[], isRoot: boolean = false, isSelectedAll: boolean = false): void {
+    public setDefaultSelection(items: any[], isRoot: boolean = false, isSelectedAll: boolean = false): void {
         if(items.length == 0){
             return;
         }
@@ -732,7 +724,7 @@ export default class TreeBase extends Vue implements ControlInterface {
      * @returns
      * @memberof Tree
      */
-    protected renderContextMenu(node: any) {
+    public renderContextMenu(node: any) {
         let content;
         if (node && node.data) {
             const data: any = JSON.parse(JSON.stringify(node.data));
@@ -748,7 +740,7 @@ export default class TreeBase extends Vue implements ControlInterface {
      * @param {*} data
      * @memberof Tree
      */
-    protected setTreeNodeHighLight(data: any): void {
+    public setTreeNodeHighLight(data: any): void {
         const tree: any = this.$refs.treeexpbar_tree;
         tree.setCurrentKey(data.id);
     }
@@ -759,7 +751,7 @@ export default class TreeBase extends Vue implements ControlInterface {
      * @param {*} node
      * @memberof AppView
      */
-    protected doDefaultAction(node: any) {
+    public doDefaultAction(node: any) {
         if (node && node.data) {
             const data: any = node.data;
             const tags: string[] = data.id.split(';');

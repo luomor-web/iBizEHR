@@ -104,7 +104,7 @@ public class OrgServiceImpl extends ServiceImpl<OrgMapper, Org> implements IOrgS
     @Override
     public void createBatch(List<Org> list) {
         list.forEach(item->fillParentData(item));
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

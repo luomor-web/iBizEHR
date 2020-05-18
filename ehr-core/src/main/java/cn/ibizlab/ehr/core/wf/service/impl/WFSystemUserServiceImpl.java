@@ -58,7 +58,7 @@ public class WFSystemUserServiceImpl extends ServiceImpl<WFSystemUserMapper, WFS
 
     @Override
     public void createBatch(List<WFSystemUser> list) {
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

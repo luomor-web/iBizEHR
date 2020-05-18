@@ -5,7 +5,7 @@ import cn.ibizlab.ehr.util.enums.RedisChannelTopic;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnExpression;
 import org.springframework.cache.Cache;
 import org.springframework.cache.CacheManager;
 import org.springframework.data.redis.connection.Message;
@@ -22,7 +22,7 @@ import java.util.Map;
  */
 
 @Component
-@ConditionalOnProperty("ibiz.enableRedisCache")
+@ConditionalOnExpression("'${ibiz.cacheLevel:None}'.equals('L2')")
 public class RedisMessageListener extends MessageListenerAdapter {
     private static final Logger logger = LoggerFactory.getLogger(RedisPublisher.class);
     @Autowired

@@ -33,7 +33,7 @@ export default class OrgPersonAgeBase extends Vue implements ControlInterface {
      * @type {string}
      * @memberof OrgPersonAge
      */
-    @Prop() protected name?: string;
+    @Prop() public name?: string;
 
     /**
      * 视图通讯对象
@@ -41,7 +41,7 @@ export default class OrgPersonAgeBase extends Vue implements ControlInterface {
      * @type {Subject<ViewState>}
      * @memberof OrgPersonAge
      */
-    @Prop() protected viewState!: Subject<ViewState>;
+    @Prop() public viewState!: Subject<ViewState>;
 
     /**
      * 应用上下文
@@ -49,7 +49,7 @@ export default class OrgPersonAgeBase extends Vue implements ControlInterface {
      * @type {*}
      * @memberof OrgPersonAge
      */
-    @Prop() protected context: any;
+    @Prop() public context: any;
 
     /**
      * 视图参数
@@ -57,16 +57,16 @@ export default class OrgPersonAgeBase extends Vue implements ControlInterface {
      * @type {*}
      * @memberof OrgPersonAge
      */
-    @Prop() protected viewparams: any;
+    @Prop() public viewparams: any;
 
     /**
      * 视图状态事件
      *
-     * @protected
+     * @public
      * @type {(Subscription | undefined)}
      * @memberof OrgPersonAge
      */
-    protected viewStateEvent: Subscription | undefined;
+    public viewStateEvent: Subscription | undefined;
 
     /**
      * 获取部件类型
@@ -74,7 +74,7 @@ export default class OrgPersonAgeBase extends Vue implements ControlInterface {
      * @returns {string}
      * @memberof OrgPersonAge
      */
-    protected getControlType(): string {
+    public getControlType(): string {
         return 'CHART'
     }
 
@@ -86,7 +86,7 @@ export default class OrgPersonAgeBase extends Vue implements ControlInterface {
      * @type {OrgPersonAgeService}
      * @memberof OrgPersonAge
      */
-    protected service: OrgPersonAgeService = new OrgPersonAgeService({ $store: this.$store });
+    public service: OrgPersonAgeService = new OrgPersonAgeService({ $store: this.$store });
 
     /**
      * 实体服务对象
@@ -94,7 +94,7 @@ export default class OrgPersonAgeBase extends Vue implements ControlInterface {
      * @type {PIMPERSONService}
      * @memberof OrgPersonAge
      */
-    protected appEntityService: PIMPERSONService = new PIMPERSONService({ $store: this.$store });
+    public appEntityService: PIMPERSONService = new PIMPERSONService({ $store: this.$store });
     
 
 
@@ -104,7 +104,7 @@ export default class OrgPersonAgeBase extends Vue implements ControlInterface {
      * @param {any} args
      * @memberof OrgPersonAge
      */
-    protected closeView(args: any): void {
+    public closeView(args: any): void {
         let _this: any = this;
         _this.$emit('closeview', [args]);
     }
@@ -152,7 +152,7 @@ export default class OrgPersonAgeBase extends Vue implements ControlInterface {
      * @type {boolean}
      * @memberof OrgPersonAge
      */
-    @Prop({ default: true }) protected showBusyIndicator!: boolean;
+    @Prop({ default: true }) public showBusyIndicator!: boolean;
 
     /**
      * 部件行为--fetch
@@ -160,7 +160,7 @@ export default class OrgPersonAgeBase extends Vue implements ControlInterface {
      * @type {string}
      * @memberof OrgPersonAge
      */
-    @Prop() protected fetchAction!: string;  
+    @Prop() public fetchAction!: string;  
 
     /**
     * Vue声明周期(组件初始化完毕)
@@ -194,7 +194,7 @@ export default class OrgPersonAgeBase extends Vue implements ControlInterface {
      *
      * @memberof OrgPersonAge
      */
-    protected destroyed() {
+    public destroyed() {
         this.afterDestroy();
     }
 
@@ -203,7 +203,7 @@ export default class OrgPersonAgeBase extends Vue implements ControlInterface {
      *
      * @memberof OrgPersonAge
      */
-    protected afterDestroy() {
+    public afterDestroy() {
         if (this.viewStateEvent) {
             this.viewStateEvent.unsubscribe();
         }
@@ -350,7 +350,7 @@ export default class OrgPersonAgeBase extends Vue implements ControlInterface {
      * @param {*} [opt={}]
      * @memberof Db_sysportlet4_chartBase
      */
-    protected refresh(opt: any = {}) {
+    public refresh(opt: any = {}) {
         this.load(opt);
     }
 
@@ -696,7 +696,7 @@ export default class OrgPersonAgeBase extends Vue implements ControlInterface {
             let curCodeList:Map<number,any> = allCodeList.get(groupField[0].codelist.tag);
             curCodeList.forEach((codelist:any) =>{
                 arr.forEach((item:any) =>{
-                    if(Object.is(item.planetype,codelist)){
+                    if(Object.is(item[groupField[0].name],codelist)){
                         returnArray.push(item);
                         item.hasused = true;
                     }
@@ -742,8 +742,8 @@ export default class OrgPersonAgeBase extends Vue implements ControlInterface {
     public handleSortGroupData(arr:Array<any>,groupField:any,label:string){
         arr.forEach((item:any) =>{
             let sortFieldValue:Array<any> = item[groupField[0].name].split("-");
-            Object.assign(item,{sortField:Number(sortFieldValue[0]+sortFieldValue[1])});
-            item[groupField[0].name] = sortFieldValue[0]+"年第"+sortFieldValue[1]+label;
+            Object.assign(item,{sortField:Number(sortFieldValue[0])*10000+Number(sortFieldValue[1])});
+            item[groupField[0].name] = sortFieldValue[0]+"年"+sortFieldValue[1]+label;
         })
         arr.sort((a:any, b:any) => {
             return Number(a.sortField) - Number(b.sortField);

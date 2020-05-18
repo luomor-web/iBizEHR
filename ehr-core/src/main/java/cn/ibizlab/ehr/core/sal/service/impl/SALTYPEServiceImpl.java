@@ -118,7 +118,7 @@ public class SALTYPEServiceImpl extends ServiceImpl<SALTYPEMapper, SALTYPE> impl
 
     @Override
     public void createBatch(List<SALTYPE> list) {
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

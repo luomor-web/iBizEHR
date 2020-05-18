@@ -73,7 +73,7 @@ public class PCMYDMXServiceImpl extends ServiceImpl<PCMYDMXMapper, PCMYDMX> impl
     @Override
     public void createBatch(List<PCMYDMX> list) {
         list.forEach(item->fillParentData(item));
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

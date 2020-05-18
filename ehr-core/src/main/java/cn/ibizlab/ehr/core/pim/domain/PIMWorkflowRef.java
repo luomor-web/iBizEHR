@@ -11,6 +11,8 @@ import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.util.ObjectUtils;
+import org.springframework.util.DigestUtils;
 import cn.ibizlab.ehr.util.domain.EntityBase;
 import cn.ibizlab.ehr.util.annotation.DEField;
 import cn.ibizlab.ehr.util.enums.DEPredefinedFieldType;
@@ -22,6 +24,7 @@ import org.springframework.data.annotation.Transient;
 
 import com.baomidou.mybatisplus.annotation.*;
 import cn.ibizlab.ehr.util.domain.EntityMP;
+
 
 /**
  * 实体[平台流程配置]
@@ -156,10 +159,23 @@ public class PIMWorkflowRef extends EntityMP implements Serializable {
         this.pimworkflowid = pimworkflowid ;
         this.modify("pimworkflowid",pimworkflowid);
     }
+
+    /**
+     * 获取 [平台流程配置标识]
+     */
+    public String getPimworkflowrefid(){
+        if(ObjectUtils.isEmpty(pimworkflowrefid)){
+            pimworkflowrefid=(String)getDefaultKey(true);
+        }
+        return pimworkflowrefid;
+    }
+
+    @Override
+    public Serializable getDefaultKey(boolean gen) {
+        if((!ObjectUtils.isEmpty(this.getWfworkflowid()))&&(!ObjectUtils.isEmpty(this.getPimworkflowid())))
+            return DigestUtils.md5DigestAsHex(String.format("%s||%s" ,this.getWfworkflowid(),this.getPimworkflowid()).getBytes());
+        return null;
+    }
 }
-
-
-
-
 
 

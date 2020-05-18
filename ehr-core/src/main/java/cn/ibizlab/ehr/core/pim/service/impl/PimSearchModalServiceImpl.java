@@ -90,7 +90,7 @@ public class PimSearchModalServiceImpl extends ServiceImpl<PimSearchModalMapper,
 
     @Override
     public void createBatch(List<PimSearchModal> list) {
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

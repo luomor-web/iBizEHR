@@ -83,7 +83,7 @@ public class ATTENDANCEDATEServiceImpl extends ServiceImpl<ATTENDANCEDATEMapper,
 
     @Override
     public void createBatch(List<ATTENDANCEDATE> list) {
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

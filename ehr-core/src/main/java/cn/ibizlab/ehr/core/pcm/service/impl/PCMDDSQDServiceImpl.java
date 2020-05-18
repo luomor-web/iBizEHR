@@ -66,7 +66,7 @@ public class PCMDDSQDServiceImpl extends ServiceImpl<PCMDDSQDMapper, PCMDDSQD> i
     @Override
     public void createBatch(List<PCMDDSQD> list) {
         list.forEach(item->fillParentData(item));
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

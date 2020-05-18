@@ -330,8 +330,9 @@ export default class DefaultService extends ControlService {
     public loadDraft(action: string,context: any = {}, data: any = {}, isloading?: boolean): Promise<any> {
         const {data:Data,context:Context} = this.handleRequestData(action,context,data);
         //仿真主键数据
-        Data.pimdistirbutionid = Util.createUUID();
-        Data.pimdistirbution = Data.pimdistirbutionid;
+        const PrimaryKey = Util.createUUID();
+        Data.pimdistirbutionid = PrimaryKey;
+        Data.pimdistirbution = PrimaryKey;
         return new Promise((resolve: any, reject: any) => {
             let result: Promise<any>;
             const _appEntityService: any = this.appEntityService;
@@ -341,6 +342,7 @@ export default class DefaultService extends ControlService {
                 result = this.appEntityService.GetDraft(Context,Data, isloading);
             }
             result.then((response) => {
+                response.data.pimdistirbutionid = PrimaryKey;
                 this.handleResponse(action, response, true);
                 resolve(response);
             }).catch(response => {

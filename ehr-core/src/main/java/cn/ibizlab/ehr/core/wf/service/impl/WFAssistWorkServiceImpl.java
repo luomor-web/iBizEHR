@@ -85,7 +85,7 @@ public class WFAssistWorkServiceImpl extends ServiceImpl<WFAssistWorkMapper, WFA
     @Override
     public void createBatch(List<WFAssistWork> list) {
         list.forEach(item->fillParentData(item));
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

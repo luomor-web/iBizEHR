@@ -130,7 +130,7 @@ public class SALSTDDSZNServiceImpl extends ServiceImpl<SALSTDDSZNMapper, SALSTDD
     @Override
     public void createBatch(List<SALSTDDSZN> list) {
         list.forEach(item->fillParentData(item));
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

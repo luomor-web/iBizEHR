@@ -89,7 +89,7 @@ public class ARCHIVESMANAGEServiceImpl extends ServiceImpl<ARCHIVESMANAGEMapper,
 
     @Override
     public void createBatch(List<ARCHIVESMANAGE> list) {
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

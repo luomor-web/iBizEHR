@@ -17,49 +17,49 @@ export default class PIMVOCATIONALUIServiceBase extends UIService {
      * 
      * @memberof  PIMVOCATIONALUIServiceBase
      */
-    protected isEnableWorkflow:boolean = false;
+    public isEnableWorkflow:boolean = false;
 
     /**
      * 当前UI服务对应的数据服务对象
      * 
      * @memberof  PIMVOCATIONALUIServiceBase
      */
-    protected dataService:PIMVOCATIONALService = new PIMVOCATIONALService();
+    public dataService:PIMVOCATIONALService = new PIMVOCATIONALService();
 
     /**
      * 所有关联视图
      * 
      * @memberof  PIMVOCATIONALUIServiceBase
      */ 
-    protected allViewMap: Map<string, Object> = new Map();
+    public allViewMap: Map<string, Object> = new Map();
 
     /**
      * 状态值
      * 
      * @memberof  PIMVOCATIONALUIServiceBase
      */ 
-    protected stateValue: number = 0;
+    public stateValue: number = 0;
 
     /**
      * 状态属性
      * 
      * @memberof  PIMVOCATIONALUIServiceBase
      */ 
-    protected stateField: string = "";
+    public stateField: string = "";
 
     /**
      * 主状态属性集合
      * 
      * @memberof  PIMVOCATIONALUIServiceBase
      */  
-    protected mainStateFields:Array<any> = [];
+    public mainStateFields:Array<any> = [];
 
     /**
      * 主状态集合Map
      * 
      * @memberof  PIMVOCATIONALUIServiceBase
      */  
-    protected allDeMainStateMap:Map<string,string> = new Map();
+    public allDeMainStateMap:Map<string,string> = new Map();
 
     /**
      * Creates an instance of  PIMVOCATIONALUIServiceBase.
@@ -143,7 +143,7 @@ export default class PIMVOCATIONALUIServiceBase extends UIService {
      * 
      * @memberof  PIMVOCATIONALUIServiceBase
 	 */
-	protected getRealDEType(entity:any){
+	public getRealDEType(entity:any){
 
     }
 
@@ -155,7 +155,7 @@ export default class PIMVOCATIONALUIServiceBase extends UIService {
      * @param bWFMode   是否工作流模式
      * @memberof  PIMVOCATIONALUIServiceBase
      */
-    protected async getDESDDEViewPDTParam(curData:any, bDataInWF:boolean, bWFMode:boolean){
+    public async getDESDDEViewPDTParam(curData:any, bDataInWF:boolean, bWFMode:boolean){
         let strPDTParam:string = '';
 		if (bDataInWF) {
 			// 判断数据是否在流程中
@@ -189,7 +189,7 @@ export default class PIMVOCATIONALUIServiceBase extends UIService {
      * @param curData 当前数据
      * @memberof  PIMVOCATIONALUIServiceBase
      */  
-    protected async getDEMainStateTag(curData:any){
+    public async getDEMainStateTag(curData:any){
         if(this.mainStateFields.length === 0) return null;
 
         this.mainStateFields.forEach((singleMainField:any) =>{

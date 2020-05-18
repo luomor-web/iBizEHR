@@ -132,7 +132,7 @@ public class TRMLGBDETAILServiceImpl extends ServiceImpl<TRMLGBDETAILMapper, TRM
     @Override
     public void createBatch(List<TRMLGBDETAIL> list) {
         list.forEach(item->fillParentData(item));
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

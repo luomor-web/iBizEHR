@@ -22,6 +22,7 @@
     v-show="isExpandSearchForm"
     loaddraftAction="FilterGetDraft"
     loadAction="FilterGet"
+
     name="searchform"  
     ref='searchform' 
     @save="searchform_save($event)"  
@@ -62,6 +63,7 @@
 
 </template>
 
+
 <script lang='tsx'>
 import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorator';
 import { Subject } from 'rxjs';
@@ -72,6 +74,8 @@ import PIMEXITANDENTRYService from '@/service/pimexitandentry/pimexitandentry-se
 import GridViewEngine from '@engine/view/grid-view-engine';
 
 import PIMEXITANDENTRYUIService from '@/uiservice/pimexitandentry/pimexitandentry-ui-service';
+import CodeListService from "@service/app/codelist-service";
+
 
 /**
  * 出入境管理实体表格视图（因私出国境）基类
@@ -200,23 +204,24 @@ export default class PIMEXITANDENTRYYSCGJGridViewBase extends GridViewBase {
 
 
 
+
     /**
      * 视图引擎
      *
-     * @protected
+     * @public
      * @type {Engine}
      * @memberof PIMEXITANDENTRYYSCGJGridViewBase
      */
-    protected engine: GridViewEngine = new GridViewEngine();
+    public engine: GridViewEngine = new GridViewEngine();
 	
 
     /**
      * 引擎初始化
      *
-     * @protected
+     * @public
      * @memberof PIMEXITANDENTRYYSCGJGridViewBase
      */
-    protected engineInit(): void {
+    public engineInit(): void {
         this.engine.init({
             view: this,
             opendata: (args: any[], params?: any, $event?: any, xData?: any) => {
@@ -377,7 +382,7 @@ export default class PIMEXITANDENTRYYSCGJGridViewBase extends GridViewBase {
      * @param {*} [$event]
      * @memberof 
      */
-    protected toolbar_tbitem1_newys_click(params: any = {}, tag?: any, $event?: any) {
+    public toolbar_tbitem1_newys_click(params: any = {}, tag?: any, $event?: any) {
         // 参数
         // 取数
         let datas: any[] = [];
@@ -404,7 +409,7 @@ export default class PIMEXITANDENTRYYSCGJGridViewBase extends GridViewBase {
      * @param {*} [$event]
      * @memberof 
      */
-    protected toolbar_tbitem1_ksccgj_click(params: any = {}, tag?: any, $event?: any) {
+    public toolbar_tbitem1_ksccgj_click(params: any = {}, tag?: any, $event?: any) {
         // 参数
         // 取数
         let datas: any[] = [];
@@ -431,7 +436,7 @@ export default class PIMEXITANDENTRYYSCGJGridViewBase extends GridViewBase {
      * @param {*} [$event]
      * @memberof 
      */
-    protected toolbar_tbitem5_click(params: any = {}, tag?: any, $event?: any) {
+    public toolbar_tbitem5_click(params: any = {}, tag?: any, $event?: any) {
         // 参数
         // 取数
         let datas: any[] = [];
@@ -457,7 +462,7 @@ export default class PIMEXITANDENTRYYSCGJGridViewBase extends GridViewBase {
      * @param {*} [$event]
      * @memberof 
      */
-    protected toolbar_tbitem11_click(params: any = {}, tag?: any, $event?: any) {
+    public toolbar_tbitem11_click(params: any = {}, tag?: any, $event?: any) {
         // 参数
         // 取数
         let datas: any[] = [];
@@ -483,7 +488,7 @@ export default class PIMEXITANDENTRYYSCGJGridViewBase extends GridViewBase {
      * @param {*} [$event]
      * @memberof 
      */
-    protected toolbar_tbitem23_click(params: any = {}, tag?: any, $event?: any) {
+    public toolbar_tbitem23_click(params: any = {}, tag?: any, $event?: any) {
         // 参数
         // 取数
         let datas: any[] = [];
@@ -509,7 +514,7 @@ export default class PIMEXITANDENTRYYSCGJGridViewBase extends GridViewBase {
      * @param {*} [$event]
      * @memberof 
      */
-    protected toolbar_tbitem13_click(params: any = {}, tag?: any, $event?: any) {
+    public toolbar_tbitem13_click(params: any = {}, tag?: any, $event?: any) {
         // 参数
         // 取数
         let datas: any[] = [];
@@ -535,7 +540,7 @@ export default class PIMEXITANDENTRYYSCGJGridViewBase extends GridViewBase {
      * @param {*} [$event]
      * @memberof 
      */
-    protected toolbar_tbitem19_click(params: any = {}, tag?: any, $event?: any) {
+    public toolbar_tbitem19_click(params: any = {}, tag?: any, $event?: any) {
         // 参数
         // 取数
         let datas: any[] = [];
@@ -561,7 +566,7 @@ export default class PIMEXITANDENTRYYSCGJGridViewBase extends GridViewBase {
      * @param {*} [$event]
      * @memberof 
      */
-    protected toolbar_deuiaction1_click(params: any = {}, tag?: any, $event?: any) {
+    public toolbar_deuiaction1_click(params: any = {}, tag?: any, $event?: any) {
         // 参数
         // 取数
         let datas: any[] = [];
@@ -587,7 +592,7 @@ export default class PIMEXITANDENTRYYSCGJGridViewBase extends GridViewBase {
      * @param {*} [$event]
      * @memberof 
      */
-    protected toolbar_tbitem18_click(params: any = {}, tag?: any, $event?: any) {
+    public toolbar_tbitem18_click(params: any = {}, tag?: any, $event?: any) {
         // 参数
         // 取数
         let datas: any[] = [];
@@ -615,7 +620,7 @@ export default class PIMEXITANDENTRYYSCGJGridViewBase extends GridViewBase {
      * @param {*} [xData]
      * @memberof PIMEXITANDENTRYYSCGJGridView
      */
-    protected newdata(args: any[],fullargs?:any[], params?: any, $event?: any, xData?: any) {
+    public newdata(args: any[],fullargs?:any[], params?: any, $event?: any, xData?: any) {
         this.$Notice.warning({ title: '错误', desc: '向导添加未实现' });
     }
 
@@ -630,7 +635,7 @@ export default class PIMEXITANDENTRYYSCGJGridViewBase extends GridViewBase {
      * @param {*} [xData]
      * @memberof PIMEXITANDENTRYYSCGJGridView
      */
-    protected opendata(args: any[],fullargs?:any[],params?: any, $event?: any, xData?: any) {
+    public opendata(args: any[],fullargs?:any[],params?: any, $event?: any, xData?: any) {
         const data: any = {};
         let curViewParam = JSON.parse(JSON.stringify(this.context));
         if(args.length >0){
@@ -666,7 +671,7 @@ export default class PIMEXITANDENTRYYSCGJGridViewBase extends GridViewBase {
      * @param {*} [actionContext]  执行行为上下文
      * @memberof PIMEXITANDENTRYYSCGJGridViewBase
      */
-    protected View(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
+    public View(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
         if (args.length === 0) {
             return;
         }
@@ -692,7 +697,7 @@ export default class PIMEXITANDENTRYYSCGJGridViewBase extends GridViewBase {
      * @param {*} [actionContext]  执行行为上下文
      * @memberof PIMEXITANDENTRYYSCGJGridViewBase
      */
-    protected Print(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
+    public Print(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
         let _this:any = this;
         if (!xData || !(xData.print instanceof Function) || !$event) {
             return ;
@@ -710,7 +715,7 @@ export default class PIMEXITANDENTRYYSCGJGridViewBase extends GridViewBase {
      * @param {*} [actionContext]  执行行为上下文
      * @memberof PIMEXITANDENTRYYSCGJGridViewBase
      */
-    protected Import(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
+    public Import(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
         const _this: any = this;
         if (!xData || !(xData.importExcel instanceof Function) || !$event) {
             return ;
@@ -728,7 +733,7 @@ export default class PIMEXITANDENTRYYSCGJGridViewBase extends GridViewBase {
      * @param {*} [actionContext]  执行行为上下文
      * @memberof PIMEXITANDENTRYYSCGJGridViewBase
      */
-    protected ExportExcel(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
+    public ExportExcel(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
         const _this: any = this;
         if (!xData || !(xData.exportExcel instanceof Function) || !$event) {
             return ;
@@ -746,7 +751,7 @@ export default class PIMEXITANDENTRYYSCGJGridViewBase extends GridViewBase {
      * @param {*} [actionContext]  执行行为上下文
      * @memberof PIMEXITANDENTRYYSCGJGridViewBase
      */
-    protected ToggleFilter(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
+    public ToggleFilter(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
         const _this: any = this;
         if (_this.hasOwnProperty('isExpandSearchForm')) {
             _this.isExpandSearchForm = !_this.isExpandSearchForm;
@@ -777,7 +782,7 @@ export default class PIMEXITANDENTRYYSCGJGridViewBase extends GridViewBase {
      * @param {*} [actionContext]  执行行为上下文
      * @memberof PIMEXITANDENTRYYSCGJGridViewBase
      */
-    protected Help(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
+    public Help(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
         this.$Notice.error({ title: '错误', desc: '帮助未支持' });
     }
 
@@ -808,6 +813,7 @@ export default class PIMEXITANDENTRYYSCGJGridViewBase extends GridViewBase {
      * @memberof PIMEXITANDENTRYYSCGJGridViewBase
      */
     public isSingleSelect: boolean = false;
+
 
     /**
      * Vue声明周期

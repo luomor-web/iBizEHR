@@ -58,7 +58,7 @@ public class ORMXMRLCBServiceImpl extends ServiceImpl<ORMXMRLCBMapper, ORMXMRLCB
 
     @Override
     public void createBatch(List<ORMXMRLCB> list) {
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

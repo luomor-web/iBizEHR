@@ -132,7 +132,7 @@ public class ORMXMXQHZServiceImpl extends ServiceImpl<ORMXMXQHZMapper, ORMXMXQHZ
 
     @Override
     public void createBatch(List<ORMXMXQHZ> list) {
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
 

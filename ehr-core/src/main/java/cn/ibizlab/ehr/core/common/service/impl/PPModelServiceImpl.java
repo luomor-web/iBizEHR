@@ -128,7 +128,7 @@ public class PPModelServiceImpl extends ServiceImpl<PPModelMapper, PPModel> impl
     @Override
     public void createBatch(List<PPModel> list) {
         list.forEach(item->fillParentData(item));
-        saveBatch(list,batchSize);
+        this.saveOrUpdateBatch(list,batchSize);
     }
 
     @Override

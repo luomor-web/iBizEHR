@@ -22,6 +22,7 @@
     v-show="isExpandSearchForm"
     loaddraftAction="FilterGetDraft"
     loadAction="FilterGet"
+
     name="searchform"  
     ref='searchform' 
     @save="searchform_save($event)"  
@@ -61,6 +62,7 @@
 
 </template>
 
+
 <script lang='tsx'>
 import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorator';
 import { Subject } from 'rxjs';
@@ -71,6 +73,8 @@ import PIMCONTRACTService from '@/service/pimcontract/pimcontract-service';
 import GridViewEngine from '@engine/view/grid-view-engine';
 
 import PIMCONTRACTUIService from '@/uiservice/pimcontract/pimcontract-ui-service';
+import CodeListService from "@service/app/codelist-service";
+
 
 /**
  * 合同信息表格视图（初签/续签提醒）基类
@@ -196,23 +200,24 @@ export default class PIMCONTRACTSignRemindGridViewBase extends GridViewBase {
 
 
 
+
     /**
      * 视图引擎
      *
-     * @protected
+     * @public
      * @type {Engine}
      * @memberof PIMCONTRACTSignRemindGridViewBase
      */
-    protected engine: GridViewEngine = new GridViewEngine();
+    public engine: GridViewEngine = new GridViewEngine();
 	
 
     /**
      * 引擎初始化
      *
-     * @protected
+     * @public
      * @memberof PIMCONTRACTSignRemindGridViewBase
      */
-    protected engineInit(): void {
+    public engineInit(): void {
         this.engine.init({
             view: this,
             opendata: (args: any[], params?: any, $event?: any, xData?: any) => {
@@ -361,7 +366,7 @@ export default class PIMCONTRACTSignRemindGridViewBase extends GridViewBase {
      * @param {*} [$event]
      * @memberof 
      */
-    protected toolbar_deuiaction3_click(params: any = {}, tag?: any, $event?: any) {
+    public toolbar_deuiaction3_click(params: any = {}, tag?: any, $event?: any) {
         // 参数
         // 取数
         let datas: any[] = [];
@@ -387,7 +392,7 @@ export default class PIMCONTRACTSignRemindGridViewBase extends GridViewBase {
      * @param {*} [$event]
      * @memberof 
      */
-    protected toolbar_deuiaction1_click(params: any = {}, tag?: any, $event?: any) {
+    public toolbar_deuiaction1_click(params: any = {}, tag?: any, $event?: any) {
         // 参数
         // 取数
         let datas: any[] = [];
@@ -413,7 +418,7 @@ export default class PIMCONTRACTSignRemindGridViewBase extends GridViewBase {
      * @param {*} [$event]
      * @memberof 
      */
-    protected toolbar_deuiaction2_click(params: any = {}, tag?: any, $event?: any) {
+    public toolbar_deuiaction2_click(params: any = {}, tag?: any, $event?: any) {
         // 参数
         // 取数
         let datas: any[] = [];
@@ -439,7 +444,7 @@ export default class PIMCONTRACTSignRemindGridViewBase extends GridViewBase {
      * @param {*} [$event]
      * @memberof 
      */
-    protected toolbar_tbitem18_click(params: any = {}, tag?: any, $event?: any) {
+    public toolbar_tbitem18_click(params: any = {}, tag?: any, $event?: any) {
         // 参数
         // 取数
         let datas: any[] = [];
@@ -465,7 +470,7 @@ export default class PIMCONTRACTSignRemindGridViewBase extends GridViewBase {
      * @param {*} [$event]
      * @memberof 
      */
-    protected toolbar_deuiaction4_click(params: any = {}, tag?: any, $event?: any) {
+    public toolbar_deuiaction4_click(params: any = {}, tag?: any, $event?: any) {
         // 参数
         // 取数
         let datas: any[] = [];
@@ -492,7 +497,7 @@ export default class PIMCONTRACTSignRemindGridViewBase extends GridViewBase {
      * @param {*} [$event]
      * @memberof 
      */
-    protected toolbar_deuiaction5_click(params: any = {}, tag?: any, $event?: any) {
+    public toolbar_deuiaction5_click(params: any = {}, tag?: any, $event?: any) {
         // 参数
         // 取数
         let datas: any[] = [];
@@ -521,7 +526,7 @@ export default class PIMCONTRACTSignRemindGridViewBase extends GridViewBase {
      * @param {*} [xData]
      * @memberof PIMCONTRACTSignRemindGridView
      */
-    protected opendata(args: any[],fullargs?:any[],params?: any, $event?: any, xData?: any) {
+    public opendata(args: any[],fullargs?:any[],params?: any, $event?: any, xData?: any) {
         const data: any = {};
         let curViewParam = JSON.parse(JSON.stringify(this.context));
         if(args.length >0){
@@ -571,7 +576,7 @@ export default class PIMCONTRACTSignRemindGridViewBase extends GridViewBase {
      * @param {*} [actionContext]  执行行为上下文
      * @memberof PIMCONTRACTSignRemindGridViewBase
      */
-    protected ToggleFilter(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
+    public ToggleFilter(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
         const _this: any = this;
         if (_this.hasOwnProperty('isExpandSearchForm')) {
             _this.isExpandSearchForm = !_this.isExpandSearchForm;
@@ -588,7 +593,7 @@ export default class PIMCONTRACTSignRemindGridViewBase extends GridViewBase {
      * @param {*} [actionContext]  执行行为上下文
      * @memberof PIMCONTRACTSignRemindGridViewBase
      */
-    protected Import(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
+    public Import(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
         const _this: any = this;
         if (!xData || !(xData.importExcel instanceof Function) || !$event) {
             return ;
@@ -606,7 +611,7 @@ export default class PIMCONTRACTSignRemindGridViewBase extends GridViewBase {
      * @param {*} [actionContext]  执行行为上下文
      * @memberof PIMCONTRACTSignRemindGridViewBase
      */
-    protected ExportExcel(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
+    public ExportExcel(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
         const _this: any = this;
         if (!xData || !(xData.exportExcel instanceof Function) || !$event) {
             return ;
@@ -624,7 +629,7 @@ export default class PIMCONTRACTSignRemindGridViewBase extends GridViewBase {
      * @param {*} [actionContext]  执行行为上下文
      * @memberof PIMCONTRACTSignRemindGridViewBase
      */
-    protected Help(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
+    public Help(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
         this.$Notice.error({ title: '错误', desc: '帮助未支持' });
     }
 
@@ -655,6 +660,7 @@ export default class PIMCONTRACTSignRemindGridViewBase extends GridViewBase {
      * @memberof PIMCONTRACTSignRemindGridViewBase
      */
     public isSingleSelect: boolean = false;
+
 
     /**
      * Vue声明周期

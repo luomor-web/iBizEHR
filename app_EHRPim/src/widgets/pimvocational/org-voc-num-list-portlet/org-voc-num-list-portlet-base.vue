@@ -42,7 +42,7 @@ export default class PIMVOCATIONALOrgVocNumListBase extends Vue implements Contr
      * @type {string}
      * @memberof OrgVocNumList
      */
-    @Prop() protected name?: string;
+    @Prop() public name?: string;
 
     /**
      * 视图通讯对象
@@ -50,7 +50,7 @@ export default class PIMVOCATIONALOrgVocNumListBase extends Vue implements Contr
      * @type {Subject<ViewState>}
      * @memberof OrgVocNumList
      */
-    @Prop() protected viewState!: Subject<ViewState>;
+    @Prop() public viewState!: Subject<ViewState>;
 
     /**
      * 应用上下文
@@ -58,7 +58,7 @@ export default class PIMVOCATIONALOrgVocNumListBase extends Vue implements Contr
      * @type {*}
      * @memberof OrgVocNumList
      */
-    @Prop() protected context: any;
+    @Prop() public context: any;
 
     /**
      * 视图参数
@@ -66,16 +66,16 @@ export default class PIMVOCATIONALOrgVocNumListBase extends Vue implements Contr
      * @type {*}
      * @memberof OrgVocNumList
      */
-    @Prop() protected viewparams: any;
+    @Prop() public viewparams: any;
 
     /**
      * 视图状态事件
      *
-     * @protected
+     * @public
      * @type {(Subscription | undefined)}
      * @memberof OrgVocNumList
      */
-    protected viewStateEvent: Subscription | undefined;
+    public viewStateEvent: Subscription | undefined;
 
     /**
      * 获取部件类型
@@ -83,7 +83,7 @@ export default class PIMVOCATIONALOrgVocNumListBase extends Vue implements Contr
      * @returns {string}
      * @memberof OrgVocNumList
      */
-    protected getControlType(): string {
+    public getControlType(): string {
         return 'PORTLET'
     }
 
@@ -95,7 +95,7 @@ export default class PIMVOCATIONALOrgVocNumListBase extends Vue implements Contr
      * @type {Array<*>}
      * @memberof OrgVocNumList
      */    
-    protected counterServiceArray:Array<any> = [];
+    public counterServiceArray:Array<any> = [];
 
     /**
      * 建构部件服务对象
@@ -103,7 +103,7 @@ export default class PIMVOCATIONALOrgVocNumListBase extends Vue implements Contr
      * @type {OrgVocNumListService}
      * @memberof OrgVocNumList
      */
-    protected service: OrgVocNumListService = new OrgVocNumListService({ $store: this.$store });
+    public service: OrgVocNumListService = new OrgVocNumListService({ $store: this.$store });
 
     /**
      * 实体服务对象
@@ -111,7 +111,7 @@ export default class PIMVOCATIONALOrgVocNumListBase extends Vue implements Contr
      * @type {PIMVOCATIONALService}
      * @memberof OrgVocNumList
      */
-    protected appEntityService: PIMVOCATIONALService = new PIMVOCATIONALService({ $store: this.$store });
+    public appEntityService: PIMVOCATIONALService = new PIMVOCATIONALService({ $store: this.$store });
     
 
 
@@ -121,7 +121,7 @@ export default class PIMVOCATIONALOrgVocNumListBase extends Vue implements Contr
      * @param {any} args
      * @memberof OrgVocNumList
      */
-    protected closeView(args: any): void {
+    public closeView(args: any): void {
         let _this: any = this;
         _this.$emit('closeview', [args]);
     }
@@ -177,7 +177,7 @@ export default class PIMVOCATIONALOrgVocNumListBase extends Vue implements Contr
      *
      * @memberof OrgVocNumList
      */
-    protected created() {
+    public created() {
         this.afterCreated();
     }
 
@@ -186,7 +186,7 @@ export default class PIMVOCATIONALOrgVocNumListBase extends Vue implements Contr
      *
      *  @memberof OrgVocNumList
      */    
-    protected afterCreated(){
+    public afterCreated(){
         if (this.viewState) {
             this.viewStateEvent = this.viewState.subscribe(({ tag, action, data }) => {
                 if (!Object.is(tag, this.name)) {
@@ -205,7 +205,7 @@ export default class PIMVOCATIONALOrgVocNumListBase extends Vue implements Contr
      *
      * @memberof OrgVocNumList
      */
-    protected destroyed() {
+    public destroyed() {
         this.afterDestroy();
     }
 
@@ -214,7 +214,7 @@ export default class PIMVOCATIONALOrgVocNumListBase extends Vue implements Contr
      *
      * @memberof OrgVocNumList
      */
-    protected afterDestroy() {
+    public afterDestroy() {
         if (this.viewStateEvent) {
             this.viewStateEvent.unsubscribe();
         }

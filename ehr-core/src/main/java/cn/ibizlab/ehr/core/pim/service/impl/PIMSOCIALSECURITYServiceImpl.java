@@ -110,7 +110,7 @@ public class PIMSOCIALSECURITYServiceImpl extends ServiceImpl<PIMSOCIALSECURITYM
 
     @Override
     public void createBatch(List<PIMSOCIALSECURITY> list) {
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

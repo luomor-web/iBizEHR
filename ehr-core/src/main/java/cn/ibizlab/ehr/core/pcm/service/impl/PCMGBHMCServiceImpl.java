@@ -95,7 +95,7 @@ public class PCMGBHMCServiceImpl extends ServiceImpl<PCMGBHMCMapper, PCMGBHMC> i
 
     @Override
     public void createBatch(List<PCMGBHMC> list) {
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

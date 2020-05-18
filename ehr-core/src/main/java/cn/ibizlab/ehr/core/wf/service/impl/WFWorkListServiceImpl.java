@@ -115,7 +115,7 @@ public class WFWorkListServiceImpl extends ServiceImpl<WFWorkListMapper, WFWorkL
     @Override
     public void createBatch(List<WFWorkList> list) {
         list.forEach(item->fillParentData(item));
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

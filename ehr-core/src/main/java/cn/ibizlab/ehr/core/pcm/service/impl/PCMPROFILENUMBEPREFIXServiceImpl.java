@@ -118,7 +118,7 @@ public class PCMPROFILENUMBEPREFIXServiceImpl extends ServiceImpl<PCMPROFILENUMB
     @Override
     public void createBatch(List<PCMPROFILENUMBEPREFIX> list) {
         list.forEach(item->fillParentData(item));
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

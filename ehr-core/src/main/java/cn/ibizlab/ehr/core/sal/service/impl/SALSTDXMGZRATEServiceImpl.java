@@ -100,7 +100,7 @@ public class SALSTDXMGZRATEServiceImpl extends ServiceImpl<SALSTDXMGZRATEMapper,
     @Override
     public void createBatch(List<SALSTDXMGZRATE> list) {
         list.forEach(item->fillParentData(item));
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

@@ -123,7 +123,7 @@ public class SysAdminFuncServiceImpl extends ServiceImpl<SysAdminFuncMapper, Sys
     @Override
     public void createBatch(List<SysAdminFunc> list) {
         list.forEach(item->fillParentData(item));
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

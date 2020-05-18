@@ -119,10 +119,10 @@ export default class ARCHIVESMANAGERedirectViewBase extends WizardViewBase {
     /**
      * 引擎初始化
      *
-     * @protected
+     * @public
      * @memberof ARCHIVESMANAGERedirectViewBase
      */
-    protected engineInit(): void {
+    public engineInit(): void {
     }
 
 

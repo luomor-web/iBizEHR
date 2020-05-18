@@ -105,7 +105,7 @@ public class PIMEXAMINATIONRESULTSServiceImpl extends ServiceImpl<PIMEXAMINATION
 
     @Override
     public void createBatch(List<PIMEXAMINATIONRESULTS> list) {
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

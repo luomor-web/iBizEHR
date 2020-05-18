@@ -22,6 +22,7 @@
     v-show="isExpandSearchForm"
     loaddraftAction="FilterGetDraft"
     loadAction="FilterGet"
+
     name="searchform"  
     ref='searchform' 
     @save="searchform_save($event)"  
@@ -62,6 +63,7 @@
 
 </template>
 
+
 <script lang='tsx'>
 import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorator';
 import { Subject } from 'rxjs';
@@ -70,6 +72,8 @@ import { VueLifeCycleProcessing, GridViewBase } from '@/crm-core';
 import PIMPERSONService from '@/service/pimperson/pimperson-service';
 
 import GridViewEngine from '@engine/view/grid-view-engine';
+
+import CodeListService from "@service/app/codelist-service";
 
 
 /**
@@ -188,23 +192,24 @@ export default class PIMPERSONGZRYHMCGridViewBase extends GridViewBase {
 
 
 
+
     /**
      * 视图引擎
      *
-     * @protected
+     * @public
      * @type {Engine}
      * @memberof PIMPERSONGZRYHMCGridViewBase
      */
-    protected engine: GridViewEngine = new GridViewEngine();
+    public engine: GridViewEngine = new GridViewEngine();
 	
 
     /**
      * 引擎初始化
      *
-     * @protected
+     * @public
      * @memberof PIMPERSONGZRYHMCGridViewBase
      */
-    protected engineInit(): void {
+    public engineInit(): void {
         this.engine.init({
             view: this,
             opendata: (args: any[], params?: any, $event?: any, xData?: any) => {
@@ -347,7 +352,7 @@ export default class PIMPERSONGZRYHMCGridViewBase extends GridViewBase {
      * @param {*} [$event]
      * @memberof 
      */
-    protected toolbar_deuiaction3_click(params: any = {}, tag?: any, $event?: any) {
+    public toolbar_deuiaction3_click(params: any = {}, tag?: any, $event?: any) {
         // 参数
         // 取数
         let datas: any[] = [];
@@ -373,7 +378,7 @@ export default class PIMPERSONGZRYHMCGridViewBase extends GridViewBase {
      * @param {*} [$event]
      * @memberof 
      */
-    protected toolbar_deuiaction6_click(params: any = {}, tag?: any, $event?: any) {
+    public toolbar_deuiaction6_click(params: any = {}, tag?: any, $event?: any) {
         // 参数
         // 取数
         let datas: any[] = [];
@@ -399,7 +404,7 @@ export default class PIMPERSONGZRYHMCGridViewBase extends GridViewBase {
      * @param {*} [$event]
      * @memberof 
      */
-    protected toolbar_deuiaction2_click(params: any = {}, tag?: any, $event?: any) {
+    public toolbar_deuiaction2_click(params: any = {}, tag?: any, $event?: any) {
         // 参数
         // 取数
         let datas: any[] = [];
@@ -427,7 +432,7 @@ export default class PIMPERSONGZRYHMCGridViewBase extends GridViewBase {
      * @param {*} [xData]
      * @memberof PIMPERSONGZRYHMCGridView
      */
-    protected newdata(args: any[],fullargs?:any[], params?: any, $event?: any, xData?: any) {
+    public newdata(args: any[],fullargs?:any[], params?: any, $event?: any, xData?: any) {
         const data: any = {};
         let curViewParam = JSON.parse(JSON.stringify(this.context));
         if(args.length >0){
@@ -459,7 +464,7 @@ export default class PIMPERSONGZRYHMCGridViewBase extends GridViewBase {
      * @param {*} [xData]
      * @memberof PIMPERSONGZRYHMCGridView
      */
-    protected opendata(args: any[],fullargs?:any[],params?: any, $event?: any, xData?: any) {
+    public opendata(args: any[],fullargs?:any[],params?: any, $event?: any, xData?: any) {
         const data: any = {};
         let curViewParam = JSON.parse(JSON.stringify(this.context));
         if(args.length >0){
@@ -504,7 +509,7 @@ export default class PIMPERSONGZRYHMCGridViewBase extends GridViewBase {
      * @param {*} [actionContext]  执行行为上下文
      * @memberof PIMPERSONGZRYHMCGridViewBase
      */
-    protected ExportExcel(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
+    public ExportExcel(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
         const _this: any = this;
         if (!xData || !(xData.exportExcel instanceof Function) || !$event) {
             return ;
@@ -522,7 +527,7 @@ export default class PIMPERSONGZRYHMCGridViewBase extends GridViewBase {
      * @param {*} [actionContext]  执行行为上下文
      * @memberof PIMPERSONGZRYHMCGridViewBase
      */
-    protected ToggleFilter(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
+    public ToggleFilter(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
         const _this: any = this;
         if (_this.hasOwnProperty('isExpandSearchForm')) {
             _this.isExpandSearchForm = !_this.isExpandSearchForm;
@@ -556,6 +561,7 @@ export default class PIMPERSONGZRYHMCGridViewBase extends GridViewBase {
      * @memberof PIMPERSONGZRYHMCGridViewBase
      */
     public isSingleSelect: boolean = false;
+
 
     /**
      * Vue声明周期

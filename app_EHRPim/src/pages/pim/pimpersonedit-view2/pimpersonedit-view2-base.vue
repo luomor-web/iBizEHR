@@ -138,20 +138,20 @@ export default class PIMPERSONEditView2Base extends EditView2Base {
     /**
      * 视图引擎
      *
-     * @protected
+     * @public
      * @type {Engine}
      * @memberof PIMPERSONEditView2Base
      */
-    protected engine: EditView2Engine = new EditView2Engine();
+    public engine: EditView2Engine = new EditView2Engine();
 	
 
     /**
      * 引擎初始化
      *
-     * @protected
+     * @public
      * @memberof PIMPERSONEditView2Base
      */
-    protected engineInit(): void {
+    public engineInit(): void {
         this.engine.init({
             view: this,
             drbar: this.$refs.drbar,

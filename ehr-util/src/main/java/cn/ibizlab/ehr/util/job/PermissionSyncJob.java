@@ -39,15 +39,20 @@ public class PermissionSyncJob implements ApplicationRunner {
     public void run(ApplicationArguments args) {
         if(enablePermissionValid){
             try {
-                InputStream permission= this.getClass().getResourceAsStream("/deprivs/DEPrivs.json"); //获取当前系统所有实体资源能力
+                InputStream permission= this.getClass().getResourceAsStream("/permission/systemResource.json"); //获取当前系统所有实体资源能力
                 String permissionResult = IOUtils.toString(permission,"UTF-8");
                 JSONObject jsonNodePermission = JSONObject.parseObject(permissionResult);
                 Map<String,Object> map=new HashMap<>();
                 map.put("permission",jsonNodePermission);
-                client.pushSystemPermissionData(map,systemId);
+                JSONObject syncResult=client.pushSystemPermissionData(map,systemId);
+                if(syncResult.getInteger("code")==1){
+                    log.info("向[UAA]同步系统资源成功");
+                }else{
+                    log.info(String.format("向[UAA]同步系统资源失败，失败原因为[%s]",syncResult.getString("msg")));
+                }
             }
             catch (Exception ex) {
-                log.error(String.format("向UAA同步数据发生错误，请检查UAA服务是否正常! [%s]",ex));
+                log.error(String.format("向[UAA]同步系统资源失败，请检查[UAA]服务是否正常! [%s]",ex));
             }
         }
     }

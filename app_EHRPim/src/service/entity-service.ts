@@ -587,12 +587,12 @@ export default class EntityService {
      * createBatch接口方法
      *
      * @param {*} [context={}]
-     * @param {*} [data={}]
+     * @param {*} [data]
      * @param {boolean} [isloading]
      * @returns {Promise<any>}
      * @memberof EntityService
      */
-    public async createBatch(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+    public async createBatch(context: any = {},data: any, isloading?: boolean): Promise<any> {
         return Http.getInstance().post(`/${this.APPDENAME}/batch`,data,isloading);
     }
 
@@ -600,12 +600,12 @@ export default class EntityService {
      * updateBatch接口方法
      *
      * @param {*} [context={}]
-     * @param {*} [data={}]
+     * @param {*} [data]
      * @param {boolean} [isloading]
      * @returns {Promise<any>}
      * @memberof EntityService
      */
-    public async updateBatch(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+    public async updateBatch(context: any = {},data: any, isloading?: boolean): Promise<any> {
         return Http.getInstance().put(`/${this.APPDENAME}/batch`,data,isloading);
     }
 
@@ -613,12 +613,12 @@ export default class EntityService {
      * removeBatch接口方法
      *
      * @param {*} [context={}]
-     * @param {*} [data={}]
+     * @param {*} [data]
      * @param {boolean} [isloading]
      * @returns {Promise<any>}
      * @memberof EntityService
      */
-    public async removeBatch(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+    public async removeBatch(context: any = {},data: any, isloading?: boolean): Promise<any> {
         return Http.getInstance().delete(`/${this.APPDENAME}/batch`,isloading,data);
     }
 

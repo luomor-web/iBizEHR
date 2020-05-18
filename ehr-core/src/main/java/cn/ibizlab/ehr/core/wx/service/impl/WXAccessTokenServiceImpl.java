@@ -123,7 +123,7 @@ public class WXAccessTokenServiceImpl extends ServiceImpl<WXAccessTokenMapper, W
     @Override
     public void createBatch(List<WXAccessToken> list) {
         list.forEach(item->fillParentData(item));
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

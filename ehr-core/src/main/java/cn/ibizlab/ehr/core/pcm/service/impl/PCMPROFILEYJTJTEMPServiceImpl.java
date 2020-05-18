@@ -77,7 +77,7 @@ public class PCMPROFILEYJTJTEMPServiceImpl extends ServiceImpl<PCMPROFILEYJTJTEM
 
     @Override
     public void createBatch(List<PCMPROFILEYJTJTEMP> list) {
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

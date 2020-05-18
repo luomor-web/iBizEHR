@@ -109,7 +109,7 @@ public class ORMDUTYServiceImpl extends ServiceImpl<ORMDUTYMapper, ORMDUTY> impl
 
     @Override
     public void createBatch(List<ORMDUTY> list) {
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

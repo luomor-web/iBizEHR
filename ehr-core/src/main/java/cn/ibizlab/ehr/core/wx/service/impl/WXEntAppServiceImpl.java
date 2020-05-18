@@ -133,7 +133,7 @@ public class WXEntAppServiceImpl extends ServiceImpl<WXEntAppMapper, WXEntApp> i
     @Override
     public void createBatch(List<WXEntApp> list) {
         list.forEach(item->fillParentData(item));
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

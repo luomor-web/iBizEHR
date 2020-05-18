@@ -119,10 +119,10 @@ export default class ContractSignORGRedirectViewBase extends WizardViewBase {
     /**
      * 引擎初始化
      *
-     * @protected
+     * @public
      * @memberof ContractSignORGRedirectViewBase
      */
-    protected engineInit(): void {
+    public engineInit(): void {
     }
 
 

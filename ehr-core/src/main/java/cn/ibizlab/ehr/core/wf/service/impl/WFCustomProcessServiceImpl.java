@@ -132,7 +132,7 @@ public class WFCustomProcessServiceImpl extends ServiceImpl<WFCustomProcessMappe
 
     @Override
     public void createBatch(List<WFCustomProcess> list) {
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
 

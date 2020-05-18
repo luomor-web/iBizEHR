@@ -58,7 +58,7 @@ public class PCMCSRCMSPJServiceImpl extends ServiceImpl<PCMCSRCMSPJMapper, PCMCS
 
     @Override
     public void createBatch(List<PCMCSRCMSPJ> list) {
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

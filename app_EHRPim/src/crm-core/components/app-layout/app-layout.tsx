@@ -116,7 +116,7 @@ export class AppLayout extends Vue {
         if (Object.is(this.layoutMode, 'VIEW') && Object.is(this.openMode, 'DEFAULT')) {
             Object.assign(this.className, { 'crm-app-view': true, 'no-caption-bar':  (!this.isShowCaptionBar && !this.isShowToolbar) });
             return <div class={this.className}>
-                {(!this.isShowCaptionBar && !this.isShowToolbar) ? null : <div class="crm-app-view-header-wrapper">
+                 {(!this.isShowCaptionBar && !this.isShowToolbar) ? null : <div class="crm-app-view-header-wrapper">
                     {this.isShowCaptionBar ? <div class="crm-app-view-header-left-wrapper">
                         {this.$slots.headerLeft}
                     </div> : null}

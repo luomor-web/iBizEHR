@@ -57,7 +57,7 @@ export default class ORMCL_LEVEL2ORG {
      * @memberof ORMCL_LEVEL2ORG
      */
     public queryParamNames:any ={
-        sort: 'px,asc'
+        sort: 'px,desc'
     }
 
     /**
@@ -72,12 +72,12 @@ export default class ORMCL_LEVEL2ORG {
     /**
      * 处理数据
      *
-     * @private
+     * @public
      * @param {any[]} items
      * @returns {any[]}
      * @memberof ORMCL_LEVEL2ORG
      */
-    private doItems(items: any[]): any[] {
+    public doItems(items: any[]): any[] {
         let _items: any[] = [];
         items.forEach((item: any) => {
             let itemdata:any = {};

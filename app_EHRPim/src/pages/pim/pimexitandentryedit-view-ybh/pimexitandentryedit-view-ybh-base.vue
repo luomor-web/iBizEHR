@@ -175,20 +175,20 @@ export default class PIMEXITANDENTRYEditView_YBHBase extends EditViewBase {
     /**
      * 视图引擎
      *
-     * @protected
+     * @public
      * @type {Engine}
      * @memberof PIMEXITANDENTRYEditView_YBHBase
      */
-    protected engine: EditViewEngine = new EditViewEngine();
+    public engine: EditViewEngine = new EditViewEngine();
 	
 
     /**
      * 引擎初始化
      *
-     * @protected
+     * @public
      * @memberof PIMEXITANDENTRYEditView_YBHBase
      */
-    protected engineInit(): void {
+    public engineInit(): void {
         this.engine.init({
             view: this,
             form: this.$refs.form,
@@ -268,7 +268,7 @@ export default class PIMEXITANDENTRYEditView_YBHBase extends EditViewBase {
      * @param {*} [$event]
      * @memberof 
      */
-    protected toolbar_tbitem3_click(params: any = {}, tag?: any, $event?: any) {
+    public toolbar_tbitem3_click(params: any = {}, tag?: any, $event?: any) {
         // 参数
         // 取数
         let datas: any[] = [];
@@ -294,7 +294,7 @@ export default class PIMEXITANDENTRYEditView_YBHBase extends EditViewBase {
      * @param {*} [$event]
      * @memberof 
      */
-    protected toolbar_tbitem4_click(params: any = {}, tag?: any, $event?: any) {
+    public toolbar_tbitem4_click(params: any = {}, tag?: any, $event?: any) {
         // 参数
         // 取数
         let datas: any[] = [];
@@ -320,7 +320,7 @@ export default class PIMEXITANDENTRYEditView_YBHBase extends EditViewBase {
      * @param {*} [$event]
      * @memberof 
      */
-    protected toolbar_tbitem5_click(params: any = {}, tag?: any, $event?: any) {
+    public toolbar_tbitem5_click(params: any = {}, tag?: any, $event?: any) {
         // 参数
         // 取数
         let datas: any[] = [];
@@ -346,7 +346,7 @@ export default class PIMEXITANDENTRYEditView_YBHBase extends EditViewBase {
      * @param {*} [$event]
      * @memberof 
      */
-    protected toolbar_tbitem22_click(params: any = {}, tag?: any, $event?: any) {
+    public toolbar_tbitem22_click(params: any = {}, tag?: any, $event?: any) {
         // 参数
         // 取数
         let datas: any[] = [];
@@ -375,7 +375,7 @@ export default class PIMEXITANDENTRYEditView_YBHBase extends EditViewBase {
      * @param {*} [actionContext]  执行行为上下文
      * @memberof PIMEXITANDENTRYEditView_YBHBase
      */
-    protected Save(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
+    public Save(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
         // 界面行为容器对象 _this
         const _this: any = this;
         if (xData && xData.save instanceof Function) {
@@ -401,7 +401,7 @@ export default class PIMEXITANDENTRYEditView_YBHBase extends EditViewBase {
      * @param {*} [actionContext]  执行行为上下文
      * @memberof PIMEXITANDENTRYEditView_YBHBase
      */
-    protected SaveAndNew(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
+    public SaveAndNew(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
         const _this: any = this;
         if (!xData || !(xData.saveAndNew instanceof Function)) {
             return;
@@ -428,7 +428,7 @@ export default class PIMEXITANDENTRYEditView_YBHBase extends EditViewBase {
      * @param {*} [actionContext]  执行行为上下文
      * @memberof PIMEXITANDENTRYEditView_YBHBase
      */
-    protected Exit(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
+    public Exit(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
         this.closeView(args);
         if(window.parent){
             window.parent.postMessage([{ ...args }],'*');
@@ -446,7 +446,7 @@ export default class PIMEXITANDENTRYEditView_YBHBase extends EditViewBase {
      * @param {*} [actionContext]  执行行为上下文
      * @memberof PIMEXITANDENTRYEditView_YBHBase
      */
-    protected Help(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
+    public Help(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
         this.$Notice.error({ title: '错误', desc: '帮助未支持' });
     }
 

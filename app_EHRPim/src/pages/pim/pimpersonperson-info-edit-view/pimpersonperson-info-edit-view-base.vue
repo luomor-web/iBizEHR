@@ -170,20 +170,20 @@ export default class PIMPERSONPersonInfoEditViewBase extends EditViewBase {
     /**
      * 视图引擎
      *
-     * @protected
+     * @public
      * @type {Engine}
      * @memberof PIMPERSONPersonInfoEditViewBase
      */
-    protected engine: EditViewEngine = new EditViewEngine();
+    public engine: EditViewEngine = new EditViewEngine();
 	
 
     /**
      * 引擎初始化
      *
-     * @protected
+     * @public
      * @memberof PIMPERSONPersonInfoEditViewBase
      */
-    protected engineInit(): void {
+    public engineInit(): void {
         this.engine.init({
             view: this,
             form: this.$refs.form,
@@ -257,7 +257,7 @@ export default class PIMPERSONPersonInfoEditViewBase extends EditViewBase {
      * @param {*} [$event]
      * @memberof 
      */
-    protected toolbar_tbitem3_click(params: any = {}, tag?: any, $event?: any) {
+    public toolbar_tbitem3_click(params: any = {}, tag?: any, $event?: any) {
         // 参数
         // 取数
         let datas: any[] = [];
@@ -283,7 +283,7 @@ export default class PIMPERSONPersonInfoEditViewBase extends EditViewBase {
      * @param {*} [$event]
      * @memberof 
      */
-    protected toolbar_tbitem5_click(params: any = {}, tag?: any, $event?: any) {
+    public toolbar_tbitem5_click(params: any = {}, tag?: any, $event?: any) {
         // 参数
         // 取数
         let datas: any[] = [];
@@ -312,7 +312,7 @@ export default class PIMPERSONPersonInfoEditViewBase extends EditViewBase {
      * @param {*} [actionContext]  执行行为上下文
      * @memberof PIMPERSONPersonInfoEditViewBase
      */
-    protected Save(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
+    public Save(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
         // 界面行为容器对象 _this
         const _this: any = this;
         if (xData && xData.save instanceof Function) {
@@ -338,7 +338,7 @@ export default class PIMPERSONPersonInfoEditViewBase extends EditViewBase {
      * @param {*} [actionContext]  执行行为上下文
      * @memberof PIMPERSONPersonInfoEditViewBase
      */
-    protected SaveAndExit(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
+    public SaveAndExit(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
         const _this: any = this;
         if (xData && xData.saveAndExit instanceof Function) {
             xData.saveAndExit().then((response: any) => {

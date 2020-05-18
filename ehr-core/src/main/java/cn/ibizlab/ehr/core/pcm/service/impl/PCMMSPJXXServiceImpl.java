@@ -63,7 +63,7 @@ public class PCMMSPJXXServiceImpl extends ServiceImpl<PCMMSPJXXMapper, PCMMSPJXX
 
     @Override
     public void createBatch(List<PCMMSPJXX> list) {
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

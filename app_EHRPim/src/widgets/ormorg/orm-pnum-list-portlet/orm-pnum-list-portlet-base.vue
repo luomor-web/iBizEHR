@@ -42,7 +42,7 @@ export default class ORMORGOrmPNumListBase extends Vue implements ControlInterfa
      * @type {string}
      * @memberof OrmPNumList
      */
-    @Prop() protected name?: string;
+    @Prop() public name?: string;
 
     /**
      * 视图通讯对象
@@ -50,7 +50,7 @@ export default class ORMORGOrmPNumListBase extends Vue implements ControlInterfa
      * @type {Subject<ViewState>}
      * @memberof OrmPNumList
      */
-    @Prop() protected viewState!: Subject<ViewState>;
+    @Prop() public viewState!: Subject<ViewState>;
 
     /**
      * 应用上下文
@@ -58,7 +58,7 @@ export default class ORMORGOrmPNumListBase extends Vue implements ControlInterfa
      * @type {*}
      * @memberof OrmPNumList
      */
-    @Prop() protected context: any;
+    @Prop() public context: any;
 
     /**
      * 视图参数
@@ -66,16 +66,16 @@ export default class ORMORGOrmPNumListBase extends Vue implements ControlInterfa
      * @type {*}
      * @memberof OrmPNumList
      */
-    @Prop() protected viewparams: any;
+    @Prop() public viewparams: any;
 
     /**
      * 视图状态事件
      *
-     * @protected
+     * @public
      * @type {(Subscription | undefined)}
      * @memberof OrmPNumList
      */
-    protected viewStateEvent: Subscription | undefined;
+    public viewStateEvent: Subscription | undefined;
 
     /**
      * 获取部件类型
@@ -83,7 +83,7 @@ export default class ORMORGOrmPNumListBase extends Vue implements ControlInterfa
      * @returns {string}
      * @memberof OrmPNumList
      */
-    protected getControlType(): string {
+    public getControlType(): string {
         return 'PORTLET'
     }
 
@@ -95,7 +95,7 @@ export default class ORMORGOrmPNumListBase extends Vue implements ControlInterfa
      * @type {Array<*>}
      * @memberof OrmPNumList
      */    
-    protected counterServiceArray:Array<any> = [];
+    public counterServiceArray:Array<any> = [];
 
     /**
      * 建构部件服务对象
@@ -103,7 +103,7 @@ export default class ORMORGOrmPNumListBase extends Vue implements ControlInterfa
      * @type {OrmPNumListService}
      * @memberof OrmPNumList
      */
-    protected service: OrmPNumListService = new OrmPNumListService({ $store: this.$store });
+    public service: OrmPNumListService = new OrmPNumListService({ $store: this.$store });
 
     /**
      * 实体服务对象
@@ -111,7 +111,7 @@ export default class ORMORGOrmPNumListBase extends Vue implements ControlInterfa
      * @type {ORMORGService}
      * @memberof OrmPNumList
      */
-    protected appEntityService: ORMORGService = new ORMORGService({ $store: this.$store });
+    public appEntityService: ORMORGService = new ORMORGService({ $store: this.$store });
     
 
 
@@ -121,7 +121,7 @@ export default class ORMORGOrmPNumListBase extends Vue implements ControlInterfa
      * @param {any} args
      * @memberof OrmPNumList
      */
-    protected closeView(args: any): void {
+    public closeView(args: any): void {
         let _this: any = this;
         _this.$emit('closeview', [args]);
     }
@@ -177,7 +177,7 @@ export default class ORMORGOrmPNumListBase extends Vue implements ControlInterfa
      *
      * @memberof OrmPNumList
      */
-    protected created() {
+    public created() {
         this.afterCreated();
     }
 
@@ -186,7 +186,7 @@ export default class ORMORGOrmPNumListBase extends Vue implements ControlInterfa
      *
      *  @memberof OrmPNumList
      */    
-    protected afterCreated(){
+    public afterCreated(){
         if (this.viewState) {
             this.viewStateEvent = this.viewState.subscribe(({ tag, action, data }) => {
                 if (!Object.is(tag, this.name)) {
@@ -205,7 +205,7 @@ export default class ORMORGOrmPNumListBase extends Vue implements ControlInterfa
      *
      * @memberof OrmPNumList
      */
-    protected destroyed() {
+    public destroyed() {
         this.afterDestroy();
     }
 
@@ -214,7 +214,7 @@ export default class ORMORGOrmPNumListBase extends Vue implements ControlInterfa
      *
      * @memberof OrmPNumList
      */
-    protected afterDestroy() {
+    public afterDestroy() {
         if (this.viewStateEvent) {
             this.viewStateEvent.unsubscribe();
         }

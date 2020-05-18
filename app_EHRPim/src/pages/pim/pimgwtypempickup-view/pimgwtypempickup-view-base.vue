@@ -19,6 +19,7 @@
         :isSingleSelect="isSingleSelect"
         :selectedData="selectedData"
         :isShowButton="isShowButton"
+        :openMode="openMode"
         name="pickupviewpanel"  
         ref='pickupviewpanel' 
         @selectionchange="pickupviewpanel_selectionchange($event)"  
@@ -189,20 +190,20 @@ export default class PIMGWTYPEMPickupViewBase extends MPickupViewBase {
     /**
      * 视图引擎
      *
-     * @protected
+     * @public
      * @type {Engine}
      * @memberof PIMGWTYPEMPickupViewBase
      */
-    protected engine: MPickupViewEngine = new MPickupViewEngine();
+    public engine: MPickupViewEngine = new MPickupViewEngine();
 	
 
     /**
      * 引擎初始化
      *
-     * @protected
+     * @public
      * @memberof PIMGWTYPEMPickupViewBase
      */
-    protected engineInit(): void {
+    public engineInit(): void {
         this.engine.init({
             view: this,
             pickupviewpanel: this.$refs.pickupviewpanel,
@@ -292,7 +293,7 @@ export default class PIMGWTYPEMPickupViewBase extends MPickupViewBase {
      * @type {string}
      * @memberof PIMGWTYPEMPickupView
      */
-    protected selectedData: string = "";
+    public selectedData: string = "";
 
     /**
      * 是否初始化已选中项
@@ -300,8 +301,8 @@ export default class PIMGWTYPEMPickupViewBase extends MPickupViewBase {
      * @type {any[]}
      * @memberof PIMGWTYPEMPickupView
      */
-    public isInitSelected: boolean = false;
-
+    public isInitSelected:boolean = false;
+    
     /**
      * 是否单选
      *
@@ -362,6 +363,7 @@ export default class PIMGWTYPEMPickupViewBase extends MPickupViewBase {
         }
         const removeSelect: boolean = this.viewSelections.some((selection: any) => selection._select);
         this.containerModel.view_leftbtn.disabled = !removeSelect;
+        this.selectedData = JSON.stringify(this.viewSelections);
     }
 
     /**
@@ -382,6 +384,7 @@ export default class PIMGWTYPEMPickupViewBase extends MPickupViewBase {
         });
         const removeSelect: boolean = this.viewSelections.some((selection: any) => selection._select);
         this.containerModel.view_leftbtn.disabled = !removeSelect;
+        this.selectedData = JSON.stringify(this.viewSelections);
     }
 
     /**
@@ -394,14 +397,18 @@ export default class PIMGWTYPEMPickupViewBase extends MPickupViewBase {
             if (!Object.is(model.type, 'PICKUPVIEWPANEL')) {
                 return;
             }
+            let newSelections:any[] = [];
             model.selections.forEach((item: any) => {
                 const index: number = this.viewSelections.findIndex((selection: any) => Object.is(item.srfkey, selection.srfkey));
                 if (index === -1) {
                     let _item: any = { ...JSON.parse(JSON.stringify(item)) };
                     Object.assign(_item, { _select: false })
-                    this.viewSelections.push(_item);
+                    newSelections.push(_item);
+                }else{
+                    newSelections.push(this.viewSelections[index]);
                 }
             });
+            this.viewSelections = newSelections;
         });
     }
 
@@ -413,6 +420,7 @@ export default class PIMGWTYPEMPickupViewBase extends MPickupViewBase {
     public onCLickAllLeft():void {
         this.viewSelections = [];
         this.containerModel.view_leftbtn.disabled = true;
+        this.selectedData = JSON.stringify(this.viewSelections);
     }
 
     /**

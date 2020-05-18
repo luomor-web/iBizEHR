@@ -132,7 +132,7 @@ public class PIMGWTYPEServiceImpl extends ServiceImpl<PIMGWTYPEMapper, PIMGWTYPE
 
     @Override
     public void createBatch(List<PIMGWTYPE> list) {
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
 

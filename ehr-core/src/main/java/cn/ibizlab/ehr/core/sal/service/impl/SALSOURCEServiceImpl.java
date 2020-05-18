@@ -125,7 +125,7 @@ public class SALSOURCEServiceImpl extends ServiceImpl<SALSOURCEMapper, SALSOURCE
 
     @Override
     public void createBatch(List<SALSOURCE> list) {
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

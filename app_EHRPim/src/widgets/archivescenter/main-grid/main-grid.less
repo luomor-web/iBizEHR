@@ -29,17 +29,13 @@
       display: inline;
     }
     .el-table {
-      th{
-        padding: 0px;
-        .cell{
-          font-size: 14px;
+      .quick-toolbar{
+          display: inline-block;
+          button{
+            background: #ebf3fb;
+            color: #2575ca;
+            border: 0;
         }
-      }
-      td{
-        padding: 3px 0;
-      }
-      tr .el-table-column--selection .cell{
-        padding: 0;
       }
       .el-tooltip{
         .ivu-form-item{
@@ -69,12 +65,23 @@
             position: absolute;
             left: 0;
         }
+        .batch-toolbar{
+            position: absolute;
+            left: 105px;
+          >.toolbar-container{
+              button  {
+                  font-size: 16px;
+                  min-width: 32px;
+                  height: 32px;
+                  margin-right: 4px;
+                  margin-top: 0;
+                  margin-bottom: 0;
+              }
+          }
+        }
     }
     .el-table__body-wrapper{
-      height: calc(100% - 36px) !important;
-    }
-    .el-table__empty-block{
-      height: auto !important;
+      height: calc(100% - 60px) !important;
     }
 }
 .ivu-modal-content{
@@ -84,6 +91,7 @@
         }
     }
 }
+
 
 
 // this is less

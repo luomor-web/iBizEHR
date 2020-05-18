@@ -125,7 +125,7 @@ public class WFUCPolicyServiceImpl extends ServiceImpl<WFUCPolicyMapper, WFUCPol
     @Override
     public void createBatch(List<WFUCPolicy> list) {
         list.forEach(item->fillParentData(item));
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

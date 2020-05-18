@@ -11,6 +11,8 @@ import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.util.ObjectUtils;
+import org.springframework.util.DigestUtils;
 import cn.ibizlab.ehr.util.domain.EntityBase;
 import cn.ibizlab.ehr.util.annotation.DEField;
 import cn.ibizlab.ehr.util.enums.DEPredefinedFieldType;
@@ -22,6 +24,7 @@ import org.springframework.data.annotation.Transient;
 
 import com.baomidou.mybatisplus.annotation.*;
 import cn.ibizlab.ehr.util.domain.EntityMP;
+
 
 /**
  * 实体[教育信息]
@@ -181,7 +184,7 @@ public class PIMEDUCATION extends EntityMP implements Serializable {
     @JsonProperty("xxxz")
     private String xxxz;
     /**
-     * 中建系统工作时间
+     * 建筑系统工作时间
      */
     @TableField(value = "tozjdate")
     @JsonFormat(pattern="yyyy-MM-dd", locale = "zh" , timezone="GMT+8")
@@ -316,7 +319,7 @@ public class PIMEDUCATION extends EntityMP implements Serializable {
     @JsonProperty("dbdwsj")
     private Timestamp dbdwsj;
     /**
-     * 中建系统工作年限
+     * 建筑系统工作年限
      */
     @TableField(value = "zjxtgznx")
     @JSONField(name = "zjxtgznx")
@@ -481,7 +484,7 @@ public class PIMEDUCATION extends EntityMP implements Serializable {
         this.modify("xxxz",xxxz);
     }
     /**
-     * 设置 [中建系统工作时间]
+     * 设置 [建筑系统工作时间]
      */
     public void setTozjdate(Timestamp tozjdate){
         this.tozjdate = tozjdate ;
@@ -579,7 +582,7 @@ public class PIMEDUCATION extends EntityMP implements Serializable {
         this.modify("dbdwsj",dbdwsj);
     }
     /**
-     * 设置 [中建系统工作年限]
+     * 设置 [建筑系统工作年限]
      */
     public void setZjxtgznx(Double zjxtgznx){
         this.zjxtgznx = zjxtgznx ;
@@ -613,10 +616,7 @@ public class PIMEDUCATION extends EntityMP implements Serializable {
         this.pimpersonid = pimpersonid ;
         this.modify("pimpersonid",pimpersonid);
     }
+
 }
-
-
-
-
 
 

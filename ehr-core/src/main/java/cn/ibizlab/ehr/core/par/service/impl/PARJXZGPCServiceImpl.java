@@ -61,7 +61,7 @@ public class PARJXZGPCServiceImpl extends ServiceImpl<PARJXZGPCMapper, PARJXZGPC
 
     @Override
     public void createBatch(List<PARJXZGPC> list) {
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

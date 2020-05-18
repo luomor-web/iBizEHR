@@ -25,6 +25,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 @Profile("specialrole-prod")
 @Configuration
 @EnableWebSecurity
+@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SpecialRoleSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired

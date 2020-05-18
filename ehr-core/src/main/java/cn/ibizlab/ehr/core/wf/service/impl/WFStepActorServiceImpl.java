@@ -134,7 +134,7 @@ public class WFStepActorServiceImpl extends ServiceImpl<WFStepActorMapper, WFSte
     @Override
     public void createBatch(List<WFStepActor> list) {
         list.forEach(item->fillParentData(item));
-        saveBatch(list,batchSize);
+        this.saveOrUpdateBatch(list,batchSize);
     }
 
     @Override

@@ -21,7 +21,7 @@ export const Environment = {
     uniteAddress: "http://172.16.100.202:8114",
     // 是否为开发模式
     devMode: true,
-    // 项目地址
+    // 项目模板地址
     ProjectUrl: "http://demo.ibizlab.cn/ibizr7pfstdtempl/ibizvuer7plus",
     // 配置平台地址
     StudioUrl: "http://neko.org.cn:3333/",
@@ -32,7 +32,7 @@ export const Environment = {
     // 前端应用标识
     AppId: "0df1f39e51db7152428a905a11c28a16",
     // 项目发布文件地址
-    PublishProjectUrl: 'http://oauth2:cTux_e7Aoz1PrasP5dDq@demo.ibizlab.cn/ibizehr/ehr.git',
+    PublishProjectUrl: 'https://oauth2:0fc5b56b52f5ad87efd3850b6536e034@gitee.com/ibizlab/iBizEHR.git',
     // ibiz开放平台地址
     ibizlabtUrl: 'https://www.ibizlab.cn',
     // ibiz论坛地址

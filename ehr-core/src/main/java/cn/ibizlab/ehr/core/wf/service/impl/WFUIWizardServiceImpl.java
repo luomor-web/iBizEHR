@@ -114,7 +114,7 @@ public class WFUIWizardServiceImpl extends ServiceImpl<WFUIWizardMapper, WFUIWiz
 
     @Override
     public void createBatch(List<WFUIWizard> list) {
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

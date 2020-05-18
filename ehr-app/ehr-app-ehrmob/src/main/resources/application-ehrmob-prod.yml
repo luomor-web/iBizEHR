@@ -1,6 +1,5 @@
 server:
-  port: 6092
-
+  port: 6070
 #zuul网关路由设置
 zuul:
   routes:

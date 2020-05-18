@@ -121,7 +121,7 @@ public class UserObjectServiceImpl extends ServiceImpl<UserObjectMapper, UserObj
 
     @Override
     public void createBatch(List<UserObject> list) {
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

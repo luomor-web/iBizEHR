@@ -107,7 +107,7 @@ public class PARJXNDKHJGServiceImpl extends ServiceImpl<PARJXNDKHJGMapper, PARJX
     @Override
     public void createBatch(List<PARJXNDKHJG> list) {
         list.forEach(item->fillParentData(item));
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

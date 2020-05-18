@@ -131,7 +131,7 @@ public class VACOVERALLTIONServiceImpl extends ServiceImpl<VACOVERALLTIONMapper,
     @Override
     public void createBatch(List<VACOVERALLTION> list) {
         list.forEach(item->fillParentData(item));
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

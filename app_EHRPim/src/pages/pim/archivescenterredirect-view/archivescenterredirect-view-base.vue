@@ -119,10 +119,10 @@ export default class ARCHIVESCENTERRedirectViewBase extends WizardViewBase {
     /**
      * 引擎初始化
      *
-     * @protected
+     * @public
      * @memberof ARCHIVESCENTERRedirectViewBase
      */
-    protected engineInit(): void {
+    public engineInit(): void {
     }
 
 

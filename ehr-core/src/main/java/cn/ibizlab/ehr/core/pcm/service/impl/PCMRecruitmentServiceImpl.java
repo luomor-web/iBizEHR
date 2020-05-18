@@ -117,7 +117,7 @@ public class PCMRecruitmentServiceImpl extends ServiceImpl<PCMRecruitmentMapper,
     @Override
     public void createBatch(List<PCMRecruitment> list) {
         list.forEach(item->fillParentData(item));
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

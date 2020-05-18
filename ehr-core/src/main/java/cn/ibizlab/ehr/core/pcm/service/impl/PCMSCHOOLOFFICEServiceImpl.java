@@ -141,7 +141,7 @@ public class PCMSCHOOLOFFICEServiceImpl extends ServiceImpl<PCMSCHOOLOFFICEMappe
     @Override
     public void createBatch(List<PCMSCHOOLOFFICE> list) {
         list.forEach(item->fillParentData(item));
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
 

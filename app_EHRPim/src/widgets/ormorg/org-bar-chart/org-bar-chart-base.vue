@@ -33,7 +33,7 @@ export default class OrgBarBase extends Vue implements ControlInterface {
      * @type {string}
      * @memberof OrgBar
      */
-    @Prop() protected name?: string;
+    @Prop() public name?: string;
 
     /**
      * 视图通讯对象
@@ -41,7 +41,7 @@ export default class OrgBarBase extends Vue implements ControlInterface {
      * @type {Subject<ViewState>}
      * @memberof OrgBar
      */
-    @Prop() protected viewState!: Subject<ViewState>;
+    @Prop() public viewState!: Subject<ViewState>;
 
     /**
      * 应用上下文
@@ -49,7 +49,7 @@ export default class OrgBarBase extends Vue implements ControlInterface {
      * @type {*}
      * @memberof OrgBar
      */
-    @Prop() protected context: any;
+    @Prop() public context: any;
 
     /**
      * 视图参数
@@ -57,16 +57,16 @@ export default class OrgBarBase extends Vue implements ControlInterface {
      * @type {*}
      * @memberof OrgBar
      */
-    @Prop() protected viewparams: any;
+    @Prop() public viewparams: any;
 
     /**
      * 视图状态事件
      *
-     * @protected
+     * @public
      * @type {(Subscription | undefined)}
      * @memberof OrgBar
      */
-    protected viewStateEvent: Subscription | undefined;
+    public viewStateEvent: Subscription | undefined;
 
     /**
      * 获取部件类型
@@ -74,7 +74,7 @@ export default class OrgBarBase extends Vue implements ControlInterface {
      * @returns {string}
      * @memberof OrgBar
      */
-    protected getControlType(): string {
+    public getControlType(): string {
         return 'CHART'
     }
 
@@ -86,7 +86,7 @@ export default class OrgBarBase extends Vue implements ControlInterface {
      * @type {OrgBarService}
      * @memberof OrgBar
      */
-    protected service: OrgBarService = new OrgBarService({ $store: this.$store });
+    public service: OrgBarService = new OrgBarService({ $store: this.$store });
 
     /**
      * 实体服务对象
@@ -94,7 +94,7 @@ export default class OrgBarBase extends Vue implements ControlInterface {
      * @type {ORMORGService}
      * @memberof OrgBar
      */
-    protected appEntityService: ORMORGService = new ORMORGService({ $store: this.$store });
+    public appEntityService: ORMORGService = new ORMORGService({ $store: this.$store });
     
 
 
@@ -104,7 +104,7 @@ export default class OrgBarBase extends Vue implements ControlInterface {
      * @param {any} args
      * @memberof OrgBar
      */
-    protected closeView(args: any): void {
+    public closeView(args: any): void {
         let _this: any = this;
         _this.$emit('closeview', [args]);
     }
@@ -152,7 +152,7 @@ export default class OrgBarBase extends Vue implements ControlInterface {
      * @type {boolean}
      * @memberof OrgBar
      */
-    @Prop({ default: true }) protected showBusyIndicator!: boolean;
+    @Prop({ default: true }) public showBusyIndicator!: boolean;
 
     /**
      * 部件行为--fetch
@@ -160,7 +160,7 @@ export default class OrgBarBase extends Vue implements ControlInterface {
      * @type {string}
      * @memberof OrgBar
      */
-    @Prop() protected fetchAction!: string;  
+    @Prop() public fetchAction!: string;  
 
     /**
     * Vue声明周期(组件初始化完毕)
@@ -194,7 +194,7 @@ export default class OrgBarBase extends Vue implements ControlInterface {
      *
      * @memberof OrgBar
      */
-    protected destroyed() {
+    public destroyed() {
         this.afterDestroy();
     }
 
@@ -203,7 +203,7 @@ export default class OrgBarBase extends Vue implements ControlInterface {
      *
      * @memberof OrgBar
      */
-    protected afterDestroy() {
+    public afterDestroy() {
         if (this.viewStateEvent) {
             this.viewStateEvent.unsubscribe();
         }
@@ -375,7 +375,7 @@ export default class OrgBarBase extends Vue implements ControlInterface {
      * @param {*} [opt={}]
      * @memberof Db_sysportlet1_chartBase
      */
-    protected refresh(opt: any = {}) {
+    public refresh(opt: any = {}) {
         this.load(opt);
     }
 
@@ -721,7 +721,7 @@ export default class OrgBarBase extends Vue implements ControlInterface {
             let curCodeList:Map<number,any> = allCodeList.get(groupField[0].codelist.tag);
             curCodeList.forEach((codelist:any) =>{
                 arr.forEach((item:any) =>{
-                    if(Object.is(item.planetype,codelist)){
+                    if(Object.is(item[groupField[0].name],codelist)){
                         returnArray.push(item);
                         item.hasused = true;
                     }
@@ -767,8 +767,8 @@ export default class OrgBarBase extends Vue implements ControlInterface {
     public handleSortGroupData(arr:Array<any>,groupField:any,label:string){
         arr.forEach((item:any) =>{
             let sortFieldValue:Array<any> = item[groupField[0].name].split("-");
-            Object.assign(item,{sortField:Number(sortFieldValue[0]+sortFieldValue[1])});
-            item[groupField[0].name] = sortFieldValue[0]+"年第"+sortFieldValue[1]+label;
+            Object.assign(item,{sortField:Number(sortFieldValue[0])*10000+Number(sortFieldValue[1])});
+            item[groupField[0].name] = sortFieldValue[0]+"年"+sortFieldValue[1]+label;
         })
         arr.sort((a:any, b:any) => {
             return Number(a.sortField) - Number(b.sortField);

@@ -94,7 +94,7 @@ public class MsgSendQueueServiceImpl extends ServiceImpl<MsgSendQueueMapper, Msg
 
     @Override
     public void createBatch(List<MsgSendQueue> list) {
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

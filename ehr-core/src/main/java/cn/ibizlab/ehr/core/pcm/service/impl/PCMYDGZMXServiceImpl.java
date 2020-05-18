@@ -104,7 +104,7 @@ public class PCMYDGZMXServiceImpl extends ServiceImpl<PCMYDGZMXMapper, PCMYDGZMX
 
     @Override
     public void createBatch(List<PCMYDGZMX> list) {
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

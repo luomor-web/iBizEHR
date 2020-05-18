@@ -118,7 +118,7 @@ public class WZD0002ServiceImpl extends ServiceImpl<WZD0002Mapper, WZD0002> impl
 
     @Override
     public void createBatch(List<WZD0002> list) {
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

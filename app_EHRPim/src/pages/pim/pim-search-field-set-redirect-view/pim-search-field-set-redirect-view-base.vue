@@ -119,10 +119,10 @@ export default class PimSearchFieldSetRedirectViewBase extends WizardViewBase {
     /**
      * 引擎初始化
      *
-     * @protected
+     * @public
      * @memberof PimSearchFieldSetRedirectViewBase
      */
-    protected engineInit(): void {
+    public engineInit(): void {
     }
 
 

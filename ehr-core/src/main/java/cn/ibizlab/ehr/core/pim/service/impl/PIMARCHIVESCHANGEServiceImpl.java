@@ -103,7 +103,7 @@ public class PIMARCHIVESCHANGEServiceImpl extends ServiceImpl<PIMARCHIVESCHANGEM
     @Override
     public void createBatch(List<PIMARCHIVESCHANGE> list) {
         list.forEach(item->fillParentData(item));
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

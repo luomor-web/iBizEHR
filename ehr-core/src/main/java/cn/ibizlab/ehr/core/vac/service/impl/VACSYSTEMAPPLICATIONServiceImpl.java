@@ -69,7 +69,7 @@ public class VACSYSTEMAPPLICATIONServiceImpl extends ServiceImpl<VACSYSTEMAPPLIC
     @Override
     public void createBatch(List<VACSYSTEMAPPLICATION> list) {
         list.forEach(item->fillParentData(item));
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

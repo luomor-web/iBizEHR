@@ -127,7 +127,7 @@ public class OrgTypeServiceImpl extends ServiceImpl<OrgTypeMapper, OrgType> impl
 
     @Override
     public void createBatch(List<OrgType> list) {
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

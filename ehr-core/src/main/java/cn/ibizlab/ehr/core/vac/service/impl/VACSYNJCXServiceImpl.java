@@ -142,7 +142,7 @@ public class VACSYNJCXServiceImpl extends ServiceImpl<VACSYNJCXMapper, VACSYNJCX
     @Override
     public void createBatch(List<VACSYNJCX> list) {
         list.forEach(item->fillParentData(item));
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

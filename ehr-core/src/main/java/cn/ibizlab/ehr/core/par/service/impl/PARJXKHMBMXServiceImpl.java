@@ -63,7 +63,7 @@ public class PARJXKHMBMXServiceImpl extends ServiceImpl<PARJXKHMBMXMapper, PARJX
     @Override
     public void createBatch(List<PARJXKHMBMX> list) {
         list.forEach(item->fillParentData(item));
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

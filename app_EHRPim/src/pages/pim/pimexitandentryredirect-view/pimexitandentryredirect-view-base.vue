@@ -120,10 +120,10 @@ export default class PIMEXITANDENTRYRedirectViewBase extends WizardViewBase {
     /**
      * 引擎初始化
      *
-     * @protected
+     * @public
      * @memberof PIMEXITANDENTRYRedirectViewBase
      */
-    protected engineInit(): void {
+    public engineInit(): void {
     }
 
 

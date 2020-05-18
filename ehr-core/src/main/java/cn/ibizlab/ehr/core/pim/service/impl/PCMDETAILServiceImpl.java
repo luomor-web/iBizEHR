@@ -94,7 +94,7 @@ public class PCMDETAILServiceImpl extends ServiceImpl<PCMDETAILMapper, PCMDETAIL
     @Override
     public void createBatch(List<PCMDETAIL> list) {
         list.forEach(item->fillParentData(item));
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

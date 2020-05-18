@@ -107,7 +107,7 @@ public class TRMTRAINRESMENTServiceImpl extends ServiceImpl<TRMTRAINRESMENTMappe
 
     @Override
     public void createBatch(List<TRMTRAINRESMENT> list) {
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

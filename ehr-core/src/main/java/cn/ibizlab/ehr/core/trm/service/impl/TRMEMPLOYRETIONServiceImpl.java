@@ -132,7 +132,7 @@ public class TRMEMPLOYRETIONServiceImpl extends ServiceImpl<TRMEMPLOYRETIONMappe
     @Override
     public void createBatch(List<TRMEMPLOYRETION> list) {
         list.forEach(item->fillParentData(item));
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

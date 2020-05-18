@@ -76,7 +76,7 @@ public class WFUserCandidateServiceImpl extends ServiceImpl<WFUserCandidateMappe
     @Override
     public void createBatch(List<WFUserCandidate> list) {
         list.forEach(item->fillParentData(item));
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

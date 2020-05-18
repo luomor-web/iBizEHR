@@ -108,7 +108,7 @@ public class TRMGRADECADRESServiceImpl extends ServiceImpl<TRMGRADECADRESMapper,
     @Override
     public void createBatch(List<TRMGRADECADRES> list) {
         list.forEach(item->fillParentData(item));
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

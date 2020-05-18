@@ -123,7 +123,7 @@ public class PARJXZGPCMXServiceImpl extends ServiceImpl<PARJXZGPCMXMapper, PARJX
     @Override
     public void createBatch(List<PARJXZGPCMX> list) {
         list.forEach(item->fillParentData(item));
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

@@ -80,7 +80,7 @@ public class OrgSectorServiceImpl extends ServiceImpl<OrgSectorMapper, OrgSector
     @Override
     public void createBatch(List<OrgSector> list) {
         list.forEach(item->fillParentData(item));
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

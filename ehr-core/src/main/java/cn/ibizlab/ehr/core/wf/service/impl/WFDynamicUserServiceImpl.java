@@ -58,7 +58,7 @@ public class WFDynamicUserServiceImpl extends ServiceImpl<WFDynamicUserMapper, W
 
     @Override
     public void createBatch(List<WFDynamicUser> list) {
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

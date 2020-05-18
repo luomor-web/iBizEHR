@@ -95,7 +95,7 @@ public class PCMTXBZServiceImpl extends ServiceImpl<PCMTXBZMapper, PCMTXBZ> impl
 
     @Override
     public void createBatch(List<PCMTXBZ> list) {
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

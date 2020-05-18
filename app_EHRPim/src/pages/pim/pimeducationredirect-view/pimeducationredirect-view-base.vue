@@ -119,10 +119,10 @@ export default class PIMEDUCATIONRedirectViewBase extends WizardViewBase {
     /**
      * 引擎初始化
      *
-     * @protected
+     * @public
      * @memberof PIMEDUCATIONRedirectViewBase
      */
-    protected engineInit(): void {
+    public engineInit(): void {
     }
 
 

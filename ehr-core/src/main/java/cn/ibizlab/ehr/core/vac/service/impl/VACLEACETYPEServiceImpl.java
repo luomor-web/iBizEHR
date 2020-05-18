@@ -84,7 +84,7 @@ public class VACLEACETYPEServiceImpl extends ServiceImpl<VACLEACETYPEMapper, VAC
 
     @Override
     public void createBatch(List<VACLEACETYPE> list) {
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

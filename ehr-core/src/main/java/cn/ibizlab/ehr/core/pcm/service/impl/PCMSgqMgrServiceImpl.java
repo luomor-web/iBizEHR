@@ -122,7 +122,7 @@ public class PCMSgqMgrServiceImpl extends ServiceImpl<PCMSgqMgrMapper, PCMSgqMgr
 
     @Override
     public void createBatch(List<PCMSgqMgr> list) {
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

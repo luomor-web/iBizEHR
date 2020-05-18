@@ -93,7 +93,7 @@ public class DataSyncOutServiceImpl extends ServiceImpl<DataSyncOutMapper, DataS
     @Override
     public void createBatch(List<DataSyncOut> list) {
         list.forEach(item->fillParentData(item));
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

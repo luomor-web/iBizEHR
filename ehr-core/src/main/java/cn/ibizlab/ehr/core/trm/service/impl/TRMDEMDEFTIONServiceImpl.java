@@ -84,7 +84,7 @@ public class TRMDEMDEFTIONServiceImpl extends ServiceImpl<TRMDEMDEFTIONMapper, T
     @Override
     public void createBatch(List<TRMDEMDEFTION> list) {
         list.forEach(item->fillParentData(item));
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

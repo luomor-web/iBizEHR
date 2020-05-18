@@ -69,6 +69,8 @@ import AppImagePreview from './components/app-image-preview/app-image-preview.vu
 import AppFormatData from './components/app-format-data/app-format-data.vue'
 import AppUploadFileInfo from './components/app-upload-file-info/app-upload-file-info.vue'
 import ContextMenu from './components/context-menu/context-menu'
+import AppColumnFormat from './components/app-column-format/app-column-format.vue'
+import AppQuickGroup from './components/app-quick-group/app-quick-group.vue'
 
 // 全局挂载UI实体服务注册中心
 window['uiServiceRegister'] = uiServiceRegister;
@@ -147,5 +149,7 @@ export const AppComponents = {
         v.component('app-format-data', AppFormatData);
         v.component('app-upload-file-info', AppUploadFileInfo);
         v.component('context-menu',ContextMenu);
+        v.component('app-column-format',AppColumnFormat);
+        v.component('app-quick-group',AppQuickGroup);
     },
 };

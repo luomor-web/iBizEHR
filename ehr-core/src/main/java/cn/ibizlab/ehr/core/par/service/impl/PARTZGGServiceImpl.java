@@ -109,7 +109,7 @@ public class PARTZGGServiceImpl extends ServiceImpl<PARTZGGMapper, PARTZGG> impl
 
     @Override
     public void createBatch(List<PARTZGG> list) {
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

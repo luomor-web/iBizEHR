@@ -64,6 +64,12 @@ export default class AppUser extends Vue {
                 _user.avatar = this.$store.getters.getAppData().context.srfusericonpath;
             }
         }
+        if(localStorage.getItem("user")){
+            let user:any = JSON.parse(localStorage.getItem("user") as string);
+            if(user && user.personname){
+                _user.name = user.personname;
+            }
+        }
         Object.assign(this.user,_user,{
             time: +new Date
         });

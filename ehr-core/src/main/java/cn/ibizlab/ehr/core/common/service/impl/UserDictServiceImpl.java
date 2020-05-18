@@ -78,7 +78,7 @@ public class UserDictServiceImpl extends ServiceImpl<UserDictMapper, UserDict> i
 
     @Override
     public void createBatch(List<UserDict> list) {
-        saveBatch(list,batchSize);
+        this.saveOrUpdateBatch(list,batchSize);
     }
 
     @Override

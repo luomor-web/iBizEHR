@@ -131,7 +131,7 @@ public class TRMTRAINDEMANDServiceImpl extends ServiceImpl<TRMTRAINDEMANDMapper,
     @Override
     public void createBatch(List<TRMTRAINDEMAND> list) {
         list.forEach(item->fillParentData(item));
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

@@ -66,7 +66,7 @@ public class WXMediaServiceImpl extends ServiceImpl<WXMediaMapper, WXMedia> impl
     @Override
     public void createBatch(List<WXMedia> list) {
         list.forEach(item->fillParentData(item));
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

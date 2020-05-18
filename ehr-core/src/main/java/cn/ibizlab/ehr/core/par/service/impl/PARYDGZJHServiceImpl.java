@@ -144,7 +144,7 @@ public class PARYDGZJHServiceImpl extends ServiceImpl<PARYDGZJHMapper, PARYDGZJH
     @Override
     public void createBatch(List<PARYDGZJH> list) {
         list.forEach(item->fillParentData(item));
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
 

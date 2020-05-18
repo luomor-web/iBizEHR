@@ -132,7 +132,7 @@ public class PCMPROFILEFJServiceImpl extends ServiceImpl<PCMPROFILEFJMapper, PCM
 
     @Override
     public void createBatch(List<PCMPROFILEFJ> list) {
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
 

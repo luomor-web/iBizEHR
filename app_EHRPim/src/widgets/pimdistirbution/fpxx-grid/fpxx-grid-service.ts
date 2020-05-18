@@ -63,12 +63,12 @@ export default class FPXXService extends ControlService {
     /**
      * 处理数据
      *
-     * @private
+     * @public
      * @param {Promise<any>} promise
      * @returns {Promise<any>}
      * @memberof FPXXService
      */
-    private doItems(promise: Promise<any>, deKeyField: string, deName: string): Promise<any> {
+    public doItems(promise: Promise<any>, deKeyField: string, deName: string): Promise<any> {
         return new Promise((resolve, reject) => {
             promise.then((response: any) => {
                 if (response && response.status === 200) {
@@ -288,7 +288,7 @@ export default class FPXXService extends ControlService {
                 if(response.data){
                     Object.assign(response.data,{srfuf:'0'});
                     //仿真主键数据
-                    response.data.pimdistirbution = Util.createUUID();
+                    response.data.pimdistirbutionid = Util.createUUID();
                 }
                 this.handleResponse(action, response, true);
                 this.mergeDefaults(response);

@@ -161,7 +161,7 @@ public class SOCWELFAREINFOServiceImpl extends ServiceImpl<SOCWELFAREINFOMapper,
     @Override
     public void createBatch(List<SOCWELFAREINFO> list) {
         list.forEach(item->fillParentData(item));
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
 

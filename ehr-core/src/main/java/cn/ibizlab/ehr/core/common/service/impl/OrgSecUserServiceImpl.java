@@ -106,7 +106,7 @@ public class OrgSecUserServiceImpl extends ServiceImpl<OrgSecUserMapper, OrgSecU
     @Override
     public void createBatch(List<OrgSecUser> list) {
         list.forEach(item->fillParentData(item));
-        saveBatch(list,batchSize);
+        this.saveOrUpdateBatch(list,batchSize);
     }
 
     @Override

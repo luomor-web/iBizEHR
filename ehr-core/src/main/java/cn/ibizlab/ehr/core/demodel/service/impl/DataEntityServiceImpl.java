@@ -140,7 +140,7 @@ public class DataEntityServiceImpl extends ServiceImpl<DataEntityMapper, DataEnt
     @Override
     public void createBatch(List<DataEntity> list) {
         list.forEach(item->fillParentData(item));
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

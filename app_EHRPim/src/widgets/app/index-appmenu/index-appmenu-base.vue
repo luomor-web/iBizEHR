@@ -179,7 +179,7 @@ export default class IndexBase extends AppMenusCtrlBase {
      * @param {*} [item={}]
      * @memberof Index
      */
-    protected clickAuto459(item: any = {}) {
+    public clickAuto459(item: any = {}) {
         const viewparam: any = {};
         Object.assign(viewparam, {});
         const deResParameters: any[] = [];
@@ -197,7 +197,7 @@ export default class IndexBase extends AppMenusCtrlBase {
      * @param {*} [item={}]
      * @memberof Index
      */
-    protected clickAuto470(item: any = {}) {
+    public clickAuto470(item: any = {}) {
         const viewparam: any = {};
         Object.assign(viewparam, {});
         const deResParameters: any[] = [];
@@ -215,7 +215,7 @@ export default class IndexBase extends AppMenusCtrlBase {
      * @param {*} [item={}]
      * @memberof Index
      */
-    protected clickAuto489(item: any = {}) {
+    public clickAuto489(item: any = {}) {
         const viewparam: any = {};
         Object.assign(viewparam, {});
         const deResParameters: any[] = [];
@@ -233,7 +233,7 @@ export default class IndexBase extends AppMenusCtrlBase {
      * @param {*} [item={}]
      * @memberof Index
      */
-    protected clickAuto462(item: any = {}) {
+    public clickAuto462(item: any = {}) {
         const viewparam: any = {};
         Object.assign(viewparam, {});
         const deResParameters: any[] = [];
@@ -251,7 +251,7 @@ export default class IndexBase extends AppMenusCtrlBase {
      * @param {*} [item={}]
      * @memberof Index
      */
-    protected clickAuto498(item: any = {}) {
+    public clickAuto498(item: any = {}) {
         const viewparam: any = {};
         Object.assign(viewparam, {});
         const deResParameters: any[] = [];
@@ -269,7 +269,7 @@ export default class IndexBase extends AppMenusCtrlBase {
      * @param {*} [item={}]
      * @memberof Index
      */
-    protected clickAuto479(item: any = {}) {
+    public clickAuto479(item: any = {}) {
         const viewparam: any = {};
         Object.assign(viewparam, {});
         const deResParameters: any[] = [];
@@ -286,7 +286,7 @@ export default class IndexBase extends AppMenusCtrlBase {
      * @param {*} [item={}]
      * @memberof Index
      */
-    protected clickAuto471(item: any = {}) {
+    public clickAuto471(item: any = {}) {
         const viewparam: any = {};
         Object.assign(viewparam, {});
         const deResParameters: any[] = [];
@@ -304,7 +304,7 @@ export default class IndexBase extends AppMenusCtrlBase {
      * @param {*} [item={}]
      * @memberof Index
      */
-    protected clickAuto492(item: any = {}) {
+    public clickAuto492(item: any = {}) {
         const viewparam: any = {};
         Object.assign(viewparam, {});
         const deResParameters: any[] = [];
@@ -322,7 +322,7 @@ export default class IndexBase extends AppMenusCtrlBase {
      * @param {*} [item={}]
      * @memberof Index
      */
-    protected clickAuto484(item: any = {}) {
+    public clickAuto484(item: any = {}) {
         const viewparam: any = {};
         Object.assign(viewparam, {});
         const deResParameters: any[] = [];
@@ -340,7 +340,7 @@ export default class IndexBase extends AppMenusCtrlBase {
      * @param {*} [item={}]
      * @memberof Index
      */
-    protected clickAuto451(item: any = {}) {
+    public clickAuto451(item: any = {}) {
         const viewparam: any = {};
         Object.assign(viewparam, {});
         const deResParameters: any[] = [];
@@ -358,7 +358,7 @@ export default class IndexBase extends AppMenusCtrlBase {
      * @param {*} [item={}]
      * @memberof Index
      */
-    protected clickAuto466(item: any = {}) {
+    public clickAuto466(item: any = {}) {
         const viewparam: any = {};
         Object.assign(viewparam, {});
         const deResParameters: any[] = [];
@@ -376,7 +376,7 @@ export default class IndexBase extends AppMenusCtrlBase {
      * @param {*} [item={}]
      * @memberof Index
      */
-    protected clickAuto488(item: any = {}) {
+    public clickAuto488(item: any = {}) {
         const viewparam: any = {};
         Object.assign(viewparam, {});
         const deResParameters: any[] = [];
@@ -394,7 +394,7 @@ export default class IndexBase extends AppMenusCtrlBase {
      * @param {*} [item={}]
      * @memberof Index
      */
-    protected clickAuto473(item: any = {}) {
+    public clickAuto473(item: any = {}) {
         const viewparam: any = {};
         Object.assign(viewparam, {});
         const deResParameters: any[] = [];
@@ -412,7 +412,7 @@ export default class IndexBase extends AppMenusCtrlBase {
      * @param {*} [item={}]
      * @memberof Index
      */
-    protected clickAuto481(item: any = {}) {
+    public clickAuto481(item: any = {}) {
         const viewparam: any = {};
         Object.assign(viewparam, {});
         const deResParameters: any[] = [];
@@ -430,7 +430,7 @@ export default class IndexBase extends AppMenusCtrlBase {
      * @param {*} [item={}]
      * @memberof Index
      */
-    protected clickAuto474(item: any = {}) {
+    public clickAuto474(item: any = {}) {
         const viewparam: any = {};
         Object.assign(viewparam, {});
         const deResParameters: any[] = [];
@@ -448,7 +448,7 @@ export default class IndexBase extends AppMenusCtrlBase {
      * @param {*} [item={}]
      * @memberof Index
      */
-    protected clickAuto454(item: any = {}) {
+    public clickAuto454(item: any = {}) {
         const viewparam: any = {};
         Object.assign(viewparam, {});
         const deResParameters: any[] = [];
@@ -466,7 +466,7 @@ export default class IndexBase extends AppMenusCtrlBase {
      * @param {*} [item={}]
      * @memberof Index
      */
-    protected clickAuto472(item: any = {}) {
+    public clickAuto472(item: any = {}) {
         const viewparam: any = {};
         Object.assign(viewparam, {});
         const deResParameters: any[] = [];
@@ -484,7 +484,7 @@ export default class IndexBase extends AppMenusCtrlBase {
      * @param {*} [item={}]
      * @memberof Index
      */
-    protected clickAuto460(item: any = {}) {
+    public clickAuto460(item: any = {}) {
         const viewparam: any = {};
         Object.assign(viewparam, {});
         const deResParameters: any[] = [];
@@ -502,7 +502,7 @@ export default class IndexBase extends AppMenusCtrlBase {
      * @param {*} [item={}]
      * @memberof Index
      */
-    protected clickAuto467(item: any = {}) {
+    public clickAuto467(item: any = {}) {
         const viewparam: any = {};
         Object.assign(viewparam, {});
         const deResParameters: any[] = [];
@@ -520,7 +520,7 @@ export default class IndexBase extends AppMenusCtrlBase {
      * @param {*} [item={}]
      * @memberof Index
      */
-    protected clickAuto490(item: any = {}) {
+    public clickAuto490(item: any = {}) {
         const viewparam: any = {};
         Object.assign(viewparam, {});
         const deResParameters: any[] = [];
@@ -538,7 +538,7 @@ export default class IndexBase extends AppMenusCtrlBase {
      * @param {*} [item={}]
      * @memberof Index
      */
-    protected clickAuto455(item: any = {}) {
+    public clickAuto455(item: any = {}) {
         const viewparam: any = {};
         Object.assign(viewparam, {});
         const deResParameters: any[] = [];
@@ -556,7 +556,7 @@ export default class IndexBase extends AppMenusCtrlBase {
      * @param {*} [item={}]
      * @memberof Index
      */
-    protected clickAuto480(item: any = {}) {
+    public clickAuto480(item: any = {}) {
         const viewparam: any = {};
         Object.assign(viewparam, {});
         const deResParameters: any[] = [];
@@ -574,7 +574,7 @@ export default class IndexBase extends AppMenusCtrlBase {
      * @param {*} [item={}]
      * @memberof Index
      */
-    protected clickAuto477(item: any = {}) {
+    public clickAuto477(item: any = {}) {
         const viewparam: any = {};
         Object.assign(viewparam, {"n_zgcode_eq":"10"});
         const deResParameters: any[] = [];
@@ -592,7 +592,7 @@ export default class IndexBase extends AppMenusCtrlBase {
      * @param {*} [item={}]
      * @memberof Index
      */
-    protected clickAuto463(item: any = {}) {
+    public clickAuto463(item: any = {}) {
         const viewparam: any = {};
         Object.assign(viewparam, {});
         const deResParameters: any[] = [];
@@ -610,7 +610,7 @@ export default class IndexBase extends AppMenusCtrlBase {
      * @param {*} [item={}]
      * @memberof Index
      */
-    protected clickAuto491(item: any = {}) {
+    public clickAuto491(item: any = {}) {
         const viewparam: any = {};
         Object.assign(viewparam, {});
         const deResParameters: any[] = [];
@@ -628,7 +628,7 @@ export default class IndexBase extends AppMenusCtrlBase {
      * @param {*} [item={}]
      * @memberof Index
      */
-    protected clickAuto457(item: any = {}) {
+    public clickAuto457(item: any = {}) {
         const viewparam: any = {};
         Object.assign(viewparam, {});
         const deResParameters: any[] = [];
@@ -646,7 +646,7 @@ export default class IndexBase extends AppMenusCtrlBase {
      * @param {*} [item={}]
      * @memberof Index
      */
-    protected clickAuto496(item: any = {}) {
+    public clickAuto496(item: any = {}) {
         const viewparam: any = {};
         Object.assign(viewparam, {});
         const deResParameters: any[] = [];
@@ -664,7 +664,7 @@ export default class IndexBase extends AppMenusCtrlBase {
      * @param {*} [item={}]
      * @memberof Index
      */
-    protected clickAuto494(item: any = {}) {
+    public clickAuto494(item: any = {}) {
         const viewparam: any = {};
         Object.assign(viewparam, {});
         const deResParameters: any[] = [];
@@ -682,7 +682,7 @@ export default class IndexBase extends AppMenusCtrlBase {
      * @param {*} [item={}]
      * @memberof Index
      */
-    protected clickAuto464(item: any = {}) {
+    public clickAuto464(item: any = {}) {
         const viewparam: any = {};
         Object.assign(viewparam, {});
         const deResParameters: any[] = [];
@@ -700,7 +700,7 @@ export default class IndexBase extends AppMenusCtrlBase {
      * @param {*} [item={}]
      * @memberof Index
      */
-    protected clickAuto469(item: any = {}) {
+    public clickAuto469(item: any = {}) {
         const viewparam: any = {};
         Object.assign(viewparam, {});
         const deResParameters: any[] = [];
@@ -718,7 +718,7 @@ export default class IndexBase extends AppMenusCtrlBase {
      * @param {*} [item={}]
      * @memberof Index
      */
-    protected clickAuto487(item: any = {}) {
+    public clickAuto487(item: any = {}) {
         const viewparam: any = {};
         Object.assign(viewparam, {});
         const deResParameters: any[] = [];
@@ -736,7 +736,7 @@ export default class IndexBase extends AppMenusCtrlBase {
      * @param {*} [item={}]
      * @memberof Index
      */
-    protected clickAuto475(item: any = {}) {
+    public clickAuto475(item: any = {}) {
         const viewparam: any = {};
         Object.assign(viewparam, {});
         const deResParameters: any[] = [];
@@ -754,7 +754,7 @@ export default class IndexBase extends AppMenusCtrlBase {
      * @param {*} [item={}]
      * @memberof Index
      */
-    protected clickAuto493(item: any = {}) {
+    public clickAuto493(item: any = {}) {
         const viewparam: any = {};
         Object.assign(viewparam, {});
         const deResParameters: any[] = [];
@@ -772,7 +772,7 @@ export default class IndexBase extends AppMenusCtrlBase {
      * @param {*} [item={}]
      * @memberof Index
      */
-    protected clickAuto458(item: any = {}) {
+    public clickAuto458(item: any = {}) {
         const viewparam: any = {};
         Object.assign(viewparam, {});
         const deResParameters: any[] = [];
@@ -790,7 +790,7 @@ export default class IndexBase extends AppMenusCtrlBase {
      * @param {*} [item={}]
      * @memberof Index
      */
-    protected clickAuto476(item: any = {}) {
+    public clickAuto476(item: any = {}) {
         const viewparam: any = {};
         Object.assign(viewparam, {});
         const deResParameters: any[] = [];

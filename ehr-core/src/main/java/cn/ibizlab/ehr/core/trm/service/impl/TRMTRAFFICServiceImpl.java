@@ -136,7 +136,7 @@ public class TRMTRAFFICServiceImpl extends ServiceImpl<TRMTRAFFICMapper, TRMTRAF
     @Override
     public void createBatch(List<TRMTRAFFIC> list) {
         list.forEach(item->fillParentData(item));
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

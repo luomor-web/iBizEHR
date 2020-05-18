@@ -83,7 +83,7 @@ public class AppCenterServiceImpl extends ServiceImpl<AppCenterMapper, AppCenter
 
     @Override
     public void createBatch(List<AppCenter> list) {
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

@@ -141,7 +141,7 @@ public class WFAppSettingServiceImpl extends ServiceImpl<WFAppSettingMapper, WFA
     @Override
     public void createBatch(List<WFAppSetting> list) {
         list.forEach(item->fillParentData(item));
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
 

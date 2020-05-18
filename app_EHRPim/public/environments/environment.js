@@ -2,11 +2,11 @@ window.Environment = {
     // 是否为开发模式
     devMode: true,
     // 配置平台地址
-    StudioUrl: "http://studio.ibizlab.cn/slnstudio/",
+    StudioUrl: "http://neko.org.cn:3335/",
     // 中心标识
-    SlnId: "72FD550D-7E58-48B1-A8C7-19BAB3E849BF",
+    SlnId: "AFFB70EF-A2CF-470A-B1AE-38156EAF4A50",
     // 系统标识
-    SysId: "C3D0D486-94AD-402E-A7DF-2E7D431D7C4E",
+    SysId: "8A26FD38-06D7-495C-88B1-77238F3AB96D",
     // 前端应用标识
-    AppId: "f2287a1d286267c2f76f84a46996da88"
+    AppId: "0df1f39e51db7152428a905a11c28a16"
 }

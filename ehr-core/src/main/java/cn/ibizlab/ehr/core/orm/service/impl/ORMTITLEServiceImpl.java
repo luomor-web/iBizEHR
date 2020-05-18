@@ -132,7 +132,7 @@ public class ORMTITLEServiceImpl extends ServiceImpl<ORMTITLEMapper, ORMTITLE> i
 
     @Override
     public void createBatch(List<ORMTITLE> list) {
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
 

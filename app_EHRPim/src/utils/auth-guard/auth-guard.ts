@@ -53,9 +53,21 @@ export class AuthGuard {
             const get: Promise<any> = Http.getInstance().get(url);
             get.then((response: any) => {
                 if (response && response.status === 200) {
-                    const { data }: { data: any } = response;
+                    let { data }: { data: any } = response;
                     if (data) {
+                        // token认证把用户信息放入应用级数据
+                        if(localStorage.getItem('user')){
+                            let user:any = JSON.parse(localStorage.getItem('user') as string);
+                            let localAppData:any = {};
+                            if(user.sessionParams){
+                                localAppData = {context:user.sessionParams};
+                                Object.assign(localAppData,data);
+                            }
+                            data = JSON.parse(JSON.stringify(localAppData));
+                        }
                         router.app.$store.commit('addAppData', data);
+                        // 提交统一资源数据
+                        router.app.$store.dispatch('unifiedresource/commitResourceData', data);
                     }
                 }
                 resolve(true);

@@ -144,7 +144,7 @@ public class QueryModelServiceImpl extends ServiceImpl<QueryModelMapper, QueryMo
     @Override
     public void createBatch(List<QueryModel> list) {
         list.forEach(item->fillParentData(item));
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
 

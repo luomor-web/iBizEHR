@@ -139,20 +139,20 @@ export default class PIMPERSONPersonInfoTreeExpViewBase extends TreeExpViewBase 
     /**
      * 视图引擎
      *
-     * @protected
+     * @public
      * @type {Engine}
      * @memberof PIMPERSONPersonInfoTreeExpViewBase
      */
-    protected engine: TreeExpViewEngine = new TreeExpViewEngine();
+    public engine: TreeExpViewEngine = new TreeExpViewEngine();
 	
 
     /**
      * 引擎初始化
      *
-     * @protected
+     * @public
      * @memberof PIMPERSONPersonInfoTreeExpViewBase
      */
-    protected engineInit(): void {
+    public engineInit(): void {
         this.engine.init({
             view: this,
             treeexpbar: this.$refs.treeexpbar,
@@ -210,7 +210,7 @@ export default class PIMPERSONPersonInfoTreeExpViewBase extends TreeExpViewBase 
      * @param {*} [xData]
      * @memberof PIMPERSONPersonInfoTreeExpView
      */
-    protected newdata(args: any[],fullargs?:any[], params?: any, $event?: any, xData?: any) {
+    public newdata(args: any[],fullargs?:any[], params?: any, $event?: any, xData?: any) {
     this.$Notice.warning({ title: '错误', desc: '未指定关系视图' });
     }
 
@@ -225,7 +225,7 @@ export default class PIMPERSONPersonInfoTreeExpViewBase extends TreeExpViewBase 
      * @param {*} [xData]
      * @memberof PIMPERSONPersonInfoTreeExpView
      */
-    protected opendata(args: any[],fullargs?:any[],params?: any, $event?: any, xData?: any) {
+    public opendata(args: any[],fullargs?:any[],params?: any, $event?: any, xData?: any) {
     this.$Notice.warning({ title: '错误', desc: '未指定关系视图' });
     }
 

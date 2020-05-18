@@ -66,7 +66,7 @@ public class ATTENDENCECALENDARServiceImpl extends ServiceImpl<ATTENDENCECALENDA
     @Override
     public void createBatch(List<ATTENDENCECALENDAR> list) {
         list.forEach(item->fillParentData(item));
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

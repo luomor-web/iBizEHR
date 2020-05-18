@@ -11,7 +11,7 @@ import cn.ibizlab.ehr.util.cache.redis.StringRedisSerializer;
 import cn.ibizlab.ehr.util.enums.RedisChannelTopic;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.cache.CacheProperties;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnExpression;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.EnableCaching;
@@ -36,7 +36,7 @@ import org.springframework.util.StringUtils;
 @EnableCaching
 @Configuration
 @EnableConfigurationProperties(CacheProperties.class)
-@ConditionalOnProperty("ibiz.enableRedisCache")
+@ConditionalOnExpression("'${ibiz.cacheLevel:None}'.equals('L2')")
 public class RedisCacheConfig {
 
     @Autowired

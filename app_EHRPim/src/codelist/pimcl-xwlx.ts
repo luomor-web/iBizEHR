@@ -72,12 +72,12 @@ export default class PIMCL_XWLX {
     /**
      * 处理数据
      *
-     * @private
+     * @public
      * @param {any[]} items
      * @returns {any[]}
      * @memberof PIMCL_XWLX
      */
-    private doItems(items: any[]): any[] {
+    public doItems(items: any[]): any[] {
         let _items: any[] = [];
         items.forEach((item: any) => {
             let itemdata:any = {};

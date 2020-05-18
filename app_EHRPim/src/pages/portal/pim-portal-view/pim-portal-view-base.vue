@@ -128,10 +128,10 @@ export default class PimPortalViewBase extends PortalViewBase {
     /**
      * 引擎初始化
      *
-     * @protected
+     * @public
      * @memberof PimPortalViewBase
      */
-    protected engineInit(): void {
+    public engineInit(): void {
     }
 
 

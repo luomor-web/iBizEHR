@@ -102,7 +102,7 @@ public class PCMReasonServiceImpl extends ServiceImpl<PCMReasonMapper, PCMReason
 
     @Override
     public void createBatch(List<PCMReason> list) {
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

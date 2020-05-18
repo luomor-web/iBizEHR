@@ -138,7 +138,7 @@ public class PIMEXITANDENTRYServiceImpl extends ServiceImpl<PIMEXITANDENTRYMappe
     @Override
     public void createBatch(List<PIMEXITANDENTRY> list) {
         list.forEach(item->fillParentData(item));
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

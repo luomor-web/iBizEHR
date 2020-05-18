@@ -26,86 +26,37 @@ const tinymceCode:any = tinymce;
 @Component({})
 export default class AppRichTextEditor extends Vue {
 
-
     /**
      * 传入值
+     * 
+     * @type {*}
+     * @memberof AppRichTextEditor
      */
     @Prop() value?: any;
-
-    /**
-     * 监听value值
-     */
-    @Watch('value', { immediate: true, deep: true })
-    oncurrentContent(newval: any, val: any) {
-        if (newval) {
-            if(this.editor){
-                tinymceCode.remove('#' + this.id);
-            }
-            this.init(newval);
-        }
-    }
-
     
     /**
      * 输入name
+     * 
+     * @type {string}
+     * @memberof AppRichTextEditor
      */
     @Prop() name?: string;
 
     /**
      * 输入高度
+     * 
+     * @type {*}
+     * @memberof AppRichTextEditor
      */
     @Prop() height?: any;
 
     /**
      * 是否禁用
+     * 
+     * @type {boolean}
+     * @memberof AppRichTextEditor
      */
-    @Prop() disabled?: any;
-
-    /**
-     * 当前语言,默认中文
-     */
-    public langu: any = localStorage.getItem('local') ? localStorage.getItem('local') : 'zh_CN' ;
-
-    /**
-     * 监听语言变化
-     */
-    @Watch('$i18n.locale')
-    onLocaleChange(newval: any, val: any) {
-      console.log("语言变更"+newval)
-        this.langu = newval;
-        if(this.editor){
-            tinymceCode.remove('#' + this.id);
-        }
-        this.init('');
-    }
-    
-    /**
-     * 语言映射文件
-     */
-    public languMap:any = {
-        'zh-CN': 'zh_CN',
-        'en-US': 'en_US',
-    };
-
-    /**
-     * 上传文件路径
-     */
-    public uploadUrl = Environment.BaseUrl + Environment.UploadFile;
-
-    /**
-     * 下载路径
-     */
-    public downloadUrl =  Environment.BaseUrl + Environment.ExportFile;
-
-    /**
-     * 当前富文本
-     */
-    public editor: any = null;
-
-    /**
-     *  当前富文本id
-     */
-    id: string = this.$util.createUUID();
+    @Prop() disabled?: boolean;
 
     /**
      * 表单状态
@@ -114,6 +65,73 @@ export default class AppRichTextEditor extends Vue {
      * @memberof AppRichTextEditor
      */
     @Prop() public formState?: Subject<any>;
+
+    /**
+     * 上传文件路径
+     * 
+     * @type {string}
+     * @memberof AppRichTextEditor
+     */
+    public uploadUrl = Environment.BaseUrl + Environment.UploadFile;
+
+    /**
+     * 下载路径
+     * 
+     * @type {string}
+     * @memberof AppRichTextEditor
+     */
+    public downloadUrl =  Environment.BaseUrl + Environment.ExportFile;
+
+    /**
+     * 当前富文本
+     * 
+     * @type {*}
+     * @memberof AppRichTextEditor
+     */
+    public editor: any = null;
+
+    /**
+     *  当前富文本id
+     * 
+     * @type {string}
+     * @memberof AppRichTextEditor
+     */
+    public id: string = this.$util.createUUID();
+
+    /**
+     * 当前语言,默认中文
+     * 
+     * @type {*}
+     * @memberof AppRichTextEditor
+     */
+    public langu: any = localStorage.getItem('local') ? localStorage.getItem('local') : 'zh_CN' ;
+    
+    /**
+     * 语言映射文件
+     * 
+     * @type {*}
+     * @memberof AppRichTextEditor
+     */
+    public languMap:any = {
+        'zh-CN': 'zh_CN',
+        'en-US': 'en_US',
+    };
+
+    /**
+     * 是否处于激活状态
+     * 
+     * @type {boolean}
+     * @memberof AppRichTextEditor
+     */
+    public isActived:boolean = true;
+
+    /**
+     * 是否需要初始化
+     * 
+     * @type {boolean}
+     * @memberof AppRichTextEditor
+     */
+    public isNeedInit:boolean = false;
 
     /**
      * 生命周期
@@ -125,40 +143,92 @@ export default class AppRichTextEditor extends Vue {
             this.formState.subscribe(({ type, data }) => {
                 if (Object.is('load', type)) {
                     if (!this.value) {
-                        if(this.editor){
-                            tinymceCode.remove('#' + this.id);
-                        }
-                        this.init(this.value);
+                        this.init();
                     }
                 }
             });
         }
     }
+    
+    /**
+     * 生命周期：激活
+     *
+     * @memberof AppRichTextEditor
+     */
+    public activated(){
+        this.isActived = true;
+        if(this.isNeedInit){
+            this.init();
+            this.isNeedInit = false;
+        }
+    }
 
     /**
-     * 初始化富文本
+     * 生命周期：缓存
+     *
+     * @memberof AppRichTextEditor
+     */
+    public deactivated(){
+        this.isActived = false;
+    }
+
+    /**
+     * 生命周期：初始化富文本
+     * 
+     * @memberof AppRichTextEditor
      */
     public mounted() {
-        this.init('');
+        this.init();
     }
     
     /**
-     * 销毁富文本
+     * 生命周期：销毁富文本
+     * 
+     * @memberof AppRichTextEditor
      */
     public destoryed(){
-        tinymceCode.remove(this.editor);
+        if(this.editor){
+            tinymceCode.remove('#' + this.id);
+        }
+    }
+
+    /**
+     * 监听value值
+     * 
+     * @memberof AppRichTextEditor
+     */
+    @Watch('value', { immediate: true, deep: true })
+    oncurrentContent(newval: any, val: any) {
+        if (newval) {
+            this.init();
+        }
+    }
+
+    /**
+     * 监听语言变化
+     */
+    @Watch('$i18n.locale')
+    onLocaleChange(newval: any, val: any) {
+        this.langu = newval;
+        if(this.isActived){
+            this.init();
+        }else{
+            this.isNeedInit = true;
+        }
     }
 
     /**
      * 初始化富文本
-     * @param val 
+     * 
+     * @memberof AppRichTextEditor
      */
-    public init(val: any) {
+    public init() {
+        this.destoryed();
         let richtexteditor = this;
         tinymceCode.init({
-            selector: '#' + this.id,
+            selector: '#' + richtexteditor.id,
             width: 'calc( 100% - 2px )',
-            height: this.height,
+            height: richtexteditor.height,
             min_height: 400,
             branding: false,
             plugins: ['link', 'paste', 'table', 'image', 'codesample', 'code', 'fullscreen', 'preview'],
@@ -177,13 +247,13 @@ export default class AppRichTextEditor extends Vue {
             paste_data_images: true,
             codesample_content_css: 'assets/tinymce/prism.css',
             skin_url: './assets/tinymce/skins/lightgray',
-            language_url: './assets/tinymce/langs/' + this.languMap[this.langu] + '.js',
-            language:this.languMap[this.langu],
+            language_url: './assets/tinymce/langs/' + richtexteditor.languMap[richtexteditor.langu] + '.js',
+            language:richtexteditor.languMap[richtexteditor.langu],
             setup: (editor: any) => {
-                this.editor = editor;
+                richtexteditor.editor = editor;
                 editor.on('blur', () => {
                     const content = editor.getContent();
-                    this.$emit('change', content);
+                    richtexteditor.$emit('change', content);
                 });
             },
             images_upload_handler: (bolbinfo: any, success: any, failure: any) => {
@@ -202,13 +272,13 @@ export default class AppRichTextEditor extends Vue {
                 });
             },
             init_instance_callback: (editor: any) => {
-                this.editor = editor;
-                let value = (this.value && this.value.length > 0) ? this.value : '';
-                if (this.editor) {
-                    this.editor.setContent(value);
+                richtexteditor.editor = editor;
+                let value = (richtexteditor.value && richtexteditor.value.length > 0) ? richtexteditor.value : '';
+                if (richtexteditor.editor) {
+                    richtexteditor.editor.setContent(value);
                 }
-                if (this.disabled) {
-                    this.editor.setMode('readonly');
+                if (richtexteditor.disabled) {
+                    richtexteditor.editor.setMode('readonly');
                 }
             }
         });
@@ -216,8 +286,10 @@ export default class AppRichTextEditor extends Vue {
 
     /**
      * 上传文件
-     * @param url 
-     * @param formData 
+     * 
+     * @param url 路径
+     * @param formData 文件对象 
+     * @memberof AppRichTextEditor
      */
     public uploadFile(url: string, formData: any) {
         let _this = this;

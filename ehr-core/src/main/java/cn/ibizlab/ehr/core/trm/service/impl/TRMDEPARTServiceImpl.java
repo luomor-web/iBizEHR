@@ -114,7 +114,7 @@ public class TRMDEPARTServiceImpl extends ServiceImpl<TRMDEPARTMapper, TRMDEPART
     @Override
     public void createBatch(List<TRMDEPART> list) {
         list.forEach(item->fillParentData(item));
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

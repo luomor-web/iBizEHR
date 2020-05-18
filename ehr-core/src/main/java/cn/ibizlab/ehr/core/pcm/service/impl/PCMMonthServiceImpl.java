@@ -109,7 +109,7 @@ public class PCMMonthServiceImpl extends ServiceImpl<PCMMonthMapper, PCMMonth> i
 
     @Override
     public void createBatch(List<PCMMonth> list) {
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

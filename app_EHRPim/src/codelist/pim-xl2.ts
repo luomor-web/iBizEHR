@@ -72,12 +72,12 @@ export default class PIM_XL2 {
     /**
      * 处理数据
      *
-     * @private
+     * @public
      * @param {any[]} items
      * @returns {any[]}
      * @memberof PIM_XL2
      */
-    private doItems(items: any[]): any[] {
+    public doItems(items: any[]): any[] {
         let _items: any[] = [];
         items.forEach((item: any) => {
             let itemdata:any = {};

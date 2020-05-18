@@ -168,20 +168,20 @@ export default class PIMPERSONCHANGEReadEditViewBase extends EditViewBase {
     /**
      * 视图引擎
      *
-     * @protected
+     * @public
      * @type {Engine}
      * @memberof PIMPERSONCHANGEReadEditViewBase
      */
-    protected engine: EditViewEngine = new EditViewEngine();
+    public engine: EditViewEngine = new EditViewEngine();
 	
 
     /**
      * 引擎初始化
      *
-     * @protected
+     * @public
      * @memberof PIMPERSONCHANGEReadEditViewBase
      */
-    protected engineInit(): void {
+    public engineInit(): void {
         this.engine.init({
             view: this,
             form: this.$refs.form,
@@ -252,7 +252,7 @@ export default class PIMPERSONCHANGEReadEditViewBase extends EditViewBase {
      * @param {*} [$event]
      * @memberof 
      */
-    protected toolbar_deuiaction1_click(params: any = {}, tag?: any, $event?: any) {
+    public toolbar_deuiaction1_click(params: any = {}, tag?: any, $event?: any) {
         // 参数
         // 取数
         let datas: any[] = [];
@@ -281,7 +281,7 @@ export default class PIMPERSONCHANGEReadEditViewBase extends EditViewBase {
      * @param {*} [actionContext]  执行行为上下文
      * @memberof PIMPERSONCHANGEReadEditViewBase
      */
-    protected Exit(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
+    public Exit(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
         this.closeView(args);
         if(window.parent){
             window.parent.postMessage([{ ...args }],'*');

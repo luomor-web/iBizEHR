@@ -70,7 +70,7 @@ public class ORMXMSFHZServiceImpl extends ServiceImpl<ORMXMSFHZMapper, ORMXMSFHZ
 
     @Override
     public void createBatch(List<ORMXMSFHZ> list) {
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

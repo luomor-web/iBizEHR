@@ -166,20 +166,20 @@ export default class PIMPERSONZHZCEditViewBase extends EditViewBase {
     /**
      * 视图引擎
      *
-     * @protected
+     * @public
      * @type {Engine}
      * @memberof PIMPERSONZHZCEditViewBase
      */
-    protected engine: EditViewEngine = new EditViewEngine();
+    public engine: EditViewEngine = new EditViewEngine();
 	
 
     /**
      * 引擎初始化
      *
-     * @protected
+     * @public
      * @memberof PIMPERSONZHZCEditViewBase
      */
-    protected engineInit(): void {
+    public engineInit(): void {
         this.engine.init({
             view: this,
             form: this.$refs.form,

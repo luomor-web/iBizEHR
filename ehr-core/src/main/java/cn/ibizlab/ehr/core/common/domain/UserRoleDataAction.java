@@ -11,6 +11,8 @@ import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.util.ObjectUtils;
+import org.springframework.util.DigestUtils;
 import cn.ibizlab.ehr.util.domain.EntityBase;
 import cn.ibizlab.ehr.util.annotation.DEField;
 import cn.ibizlab.ehr.util.enums.DEPredefinedFieldType;
@@ -22,6 +24,7 @@ import org.springframework.data.annotation.Transient;
 
 import com.baomidou.mybatisplus.annotation.*;
 import cn.ibizlab.ehr.util.domain.EntityMP;
+
 
 /**
  * 实体[用户角色数据操作]
@@ -191,10 +194,23 @@ public class UserRoleDataAction extends EntityMP implements Serializable {
         this.userroledataid = userroledataid ;
         this.modify("userroledataid",userroledataid);
     }
+
+    /**
+     * 获取 [用户角色数据操作标识]
+     */
+    public String getUserroledataactionid(){
+        if(ObjectUtils.isEmpty(userroledataactionid)){
+            userroledataactionid=(String)getDefaultKey(true);
+        }
+        return userroledataactionid;
+    }
+
+    @Override
+    public Serializable getDefaultKey(boolean gen) {
+        if((!ObjectUtils.isEmpty(this.getUserroledataid()))&&(!ObjectUtils.isEmpty(this.getUserroledataactionname())))
+            return DigestUtils.md5DigestAsHex(String.format("%s||%s" ,this.getUserroledataid(),this.getUserroledataactionname()).getBytes());
+        return null;
+    }
 }
-
-
-
-
 
 

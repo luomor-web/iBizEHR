@@ -70,7 +70,7 @@ public class ORMEDITIONServiceImpl extends ServiceImpl<ORMEDITIONMapper, ORMEDIT
 
     @Override
     public void createBatch(List<ORMEDITION> list) {
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

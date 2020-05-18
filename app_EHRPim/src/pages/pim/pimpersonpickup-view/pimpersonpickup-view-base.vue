@@ -16,6 +16,7 @@
                 :isSingleSelect="isSingleSelect"
                 :selectedData="selectedData"
                 :isShowButton="isShowButton"
+                :openMode="openMode"
                 name="pickupviewpanel"  
                 ref='pickupviewpanel' 
                 @selectionchange="pickupviewpanel_selectionchange($event)"  
@@ -155,20 +156,20 @@ export default class PIMPERSONPickupViewBase extends PickupViewBase {
     /**
      * 视图引擎
      *
-     * @protected
+     * @public
      * @type {Engine}
      * @memberof PIMPERSONPickupViewBase
      */
-    protected engine: PickupViewEngine = new PickupViewEngine();
+    public engine: PickupViewEngine = new PickupViewEngine();
 	
 
     /**
      * 引擎初始化
      *
-     * @protected
+     * @public
      * @memberof PIMPERSONPickupViewBase
      */
-    protected engineInit(): void {
+    public engineInit(): void {
         this.engine.init({
             view: this,
             pickupviewpanel: this.$refs.pickupviewpanel,
@@ -241,7 +242,7 @@ export default class PIMPERSONPickupViewBase extends PickupViewBase {
      * @type {string}
      * @memberof PIMPERSONPickupView
      */
-    protected selectedData: string = "";
+    public selectedData: string = "";
 
     /**
      * 视图选中数据

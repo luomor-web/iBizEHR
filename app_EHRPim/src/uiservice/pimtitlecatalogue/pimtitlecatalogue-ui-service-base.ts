@@ -17,49 +17,49 @@ export default class PIMTITLECATALOGUEUIServiceBase extends UIService {
      * 
      * @memberof  PIMTITLECATALOGUEUIServiceBase
      */
-    protected isEnableWorkflow:boolean = false;
+    public isEnableWorkflow:boolean = false;
 
     /**
      * 当前UI服务对应的数据服务对象
      * 
      * @memberof  PIMTITLECATALOGUEUIServiceBase
      */
-    protected dataService:PIMTITLECATALOGUEService = new PIMTITLECATALOGUEService();
+    public dataService:PIMTITLECATALOGUEService = new PIMTITLECATALOGUEService();
 
     /**
      * 所有关联视图
      * 
      * @memberof  PIMTITLECATALOGUEUIServiceBase
      */ 
-    protected allViewMap: Map<string, Object> = new Map();
+    public allViewMap: Map<string, Object> = new Map();
 
     /**
      * 状态值
      * 
      * @memberof  PIMTITLECATALOGUEUIServiceBase
      */ 
-    protected stateValue: number = 0;
+    public stateValue: number = 0;
 
     /**
      * 状态属性
      * 
      * @memberof  PIMTITLECATALOGUEUIServiceBase
      */ 
-    protected stateField: string = "";
+    public stateField: string = "";
 
     /**
      * 主状态属性集合
      * 
      * @memberof  PIMTITLECATALOGUEUIServiceBase
      */  
-    protected mainStateFields:Array<any> = [];
+    public mainStateFields:Array<any> = [];
 
     /**
      * 主状态集合Map
      * 
      * @memberof  PIMTITLECATALOGUEUIServiceBase
      */  
-    protected allDeMainStateMap:Map<string,string> = new Map();
+    public allDeMainStateMap:Map<string,string> = new Map();
 
     /**
      * Creates an instance of  PIMTITLECATALOGUEUIServiceBase.
@@ -139,7 +139,7 @@ export default class PIMTITLECATALOGUEUIServiceBase extends UIService {
      * 
      * @memberof  PIMTITLECATALOGUEUIServiceBase
 	 */
-	protected getRealDEType(entity:any){
+	public getRealDEType(entity:any){
 
     }
 
@@ -151,7 +151,7 @@ export default class PIMTITLECATALOGUEUIServiceBase extends UIService {
      * @param bWFMode   是否工作流模式
      * @memberof  PIMTITLECATALOGUEUIServiceBase
      */
-    protected async getDESDDEViewPDTParam(curData:any, bDataInWF:boolean, bWFMode:boolean){
+    public async getDESDDEViewPDTParam(curData:any, bDataInWF:boolean, bWFMode:boolean){
         let strPDTParam:string = '';
 		if (bDataInWF) {
 			// 判断数据是否在流程中
@@ -185,7 +185,7 @@ export default class PIMTITLECATALOGUEUIServiceBase extends UIService {
      * @param curData 当前数据
      * @memberof  PIMTITLECATALOGUEUIServiceBase
      */  
-    protected async getDEMainStateTag(curData:any){
+    public async getDEMainStateTag(curData:any){
         if(this.mainStateFields.length === 0) return null;
 
         this.mainStateFields.forEach((singleMainField:any) =>{

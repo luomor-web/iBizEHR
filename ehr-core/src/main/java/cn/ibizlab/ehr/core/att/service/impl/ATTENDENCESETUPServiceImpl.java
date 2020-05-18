@@ -158,7 +158,7 @@ public class ATTENDENCESETUPServiceImpl extends ServiceImpl<ATTENDENCESETUPMappe
     @Override
     public void createBatch(List<ATTENDENCESETUP> list) {
         list.forEach(item->fillParentData(item));
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

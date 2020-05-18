@@ -132,7 +132,7 @@ public class ATTENMEMBWESServiceImpl extends ServiceImpl<ATTENMEMBWESMapper, ATT
 
     @Override
     public void createBatch(List<ATTENMEMBWES> list) {
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
 

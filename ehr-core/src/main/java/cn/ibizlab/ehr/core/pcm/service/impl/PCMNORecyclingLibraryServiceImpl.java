@@ -58,7 +58,7 @@ public class PCMNORecyclingLibraryServiceImpl extends ServiceImpl<PCMNORecycling
 
     @Override
     public void createBatch(List<PCMNORecyclingLibrary> list) {
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

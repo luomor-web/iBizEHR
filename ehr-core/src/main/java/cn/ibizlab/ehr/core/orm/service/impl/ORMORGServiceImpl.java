@@ -394,7 +394,7 @@ public class ORMORGServiceImpl extends ServiceImpl<ORMORGMapper, ORMORG> impleme
     @Override
     public void createBatch(List<ORMORG> list) {
         list.forEach(item->fillParentData(item));
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

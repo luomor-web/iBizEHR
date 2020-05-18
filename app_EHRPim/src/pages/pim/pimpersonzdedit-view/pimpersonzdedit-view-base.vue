@@ -169,20 +169,20 @@ export default class PIMPERSONZDEditViewBase extends EditViewBase {
     /**
      * 视图引擎
      *
-     * @protected
+     * @public
      * @type {Engine}
      * @memberof PIMPERSONZDEditViewBase
      */
-    protected engine: EditViewEngine = new EditViewEngine();
+    public engine: EditViewEngine = new EditViewEngine();
 	
 
     /**
      * 引擎初始化
      *
-     * @protected
+     * @public
      * @memberof PIMPERSONZDEditViewBase
      */
-    protected engineInit(): void {
+    public engineInit(): void {
         this.engine.init({
             view: this,
             form: this.$refs.form,
@@ -253,7 +253,7 @@ export default class PIMPERSONZDEditViewBase extends EditViewBase {
      * @param {*} [$event]
      * @memberof 
      */
-    protected toolbar_deuiaction1_click(params: any = {}, tag?: any, $event?: any) {
+    public toolbar_deuiaction1_click(params: any = {}, tag?: any, $event?: any) {
         // 参数
         // 取数
         let datas: any[] = [];

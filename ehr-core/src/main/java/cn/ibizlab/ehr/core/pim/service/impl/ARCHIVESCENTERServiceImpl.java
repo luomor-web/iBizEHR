@@ -104,7 +104,7 @@ public class ARCHIVESCENTERServiceImpl extends ServiceImpl<ARCHIVESCENTERMapper,
     @Override
     public void createBatch(List<ARCHIVESCENTER> list) {
         list.forEach(item->fillParentData(item));
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

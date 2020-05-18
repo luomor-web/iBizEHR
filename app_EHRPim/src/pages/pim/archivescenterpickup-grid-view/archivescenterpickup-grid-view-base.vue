@@ -17,6 +17,7 @@
                 v-show="isExpandSearchForm"
                 loaddraftAction="FilterGetDraft"
                 loadAction="FilterGet"
+            
                 name="searchform"  
                 ref='searchform' 
                 @save="searchform_save($event)"  
@@ -164,20 +165,20 @@ export default class ARCHIVESCENTERPickupGridViewBase extends PickupViewBase {
     /**
      * 视图引擎
      *
-     * @protected
+     * @public
      * @type {Engine}
      * @memberof ARCHIVESCENTERPickupGridViewBase
      */
-    protected engine: PickupGridViewEngine = new PickupGridViewEngine();
+    public engine: PickupGridViewEngine = new PickupGridViewEngine();
 	
 
     /**
      * 引擎初始化
      *
-     * @protected
+     * @public
      * @memberof ARCHIVESCENTERPickupGridViewBase
      */
-    protected engineInit(): void {
+    public engineInit(): void {
         this.engine.init({
             view: this,
             grid: this.$refs.grid,
@@ -299,7 +300,7 @@ export default class ARCHIVESCENTERPickupGridViewBase extends PickupViewBase {
      * @type {string}
      * @memberof ARCHIVESCENTERPickupGridView
      */
-    @Prop() protected selectedData?: string;
+    @Prop() public selectedData?: string;
 
     /**
      * 是否单选
@@ -307,7 +308,7 @@ export default class ARCHIVESCENTERPickupGridViewBase extends PickupViewBase {
      * @type {boolean}
      * @memberof ARCHIVESCENTERPickupGridView
      */
-    @Prop() protected isSingleSelect?: boolean;
+    @Prop() public isSingleSelect?: boolean;
 
     /**
      * 搜索值
@@ -315,7 +316,7 @@ export default class ARCHIVESCENTERPickupGridViewBase extends PickupViewBase {
      * @type {string}
      * @memberof ARCHIVESCENTERPickupGridView
      */
-    protected query: string = '';
+    public query: string = '';
 
     /**
      * 是否展开搜索表单
@@ -323,7 +324,7 @@ export default class ARCHIVESCENTERPickupGridViewBase extends PickupViewBase {
      * @type {boolean}
      * @memberof ARCHIVESCENTERPickupGridView
      */
-    protected isExpandSearchForm: boolean = true;
+    public isExpandSearchForm: boolean = true;
 
     /**
      * 表格行数据默认激活模式
@@ -334,7 +335,7 @@ export default class ARCHIVESCENTERPickupGridViewBase extends PickupViewBase {
      * @type {(number | 0 | 1 | 2)}
      * @memberof ARCHIVESCENTERPickupGridView
      */
-    protected gridRowActiveMode: number | 0 | 1 | 2 = 2;
+    public gridRowActiveMode: number | 0 | 1 | 2 = 2;
 
     /**
      * 快速搜索
@@ -342,7 +343,7 @@ export default class ARCHIVESCENTERPickupGridViewBase extends PickupViewBase {
      * @param {*} $event
      * @memberof ARCHIVESCENTERPickupGridView
      */
-    protected onSearch($event: any): void {
+    public onSearch($event: any): void {
         const refs: any = this.$refs;
         if (refs.grid) {
             refs.grid.load({});

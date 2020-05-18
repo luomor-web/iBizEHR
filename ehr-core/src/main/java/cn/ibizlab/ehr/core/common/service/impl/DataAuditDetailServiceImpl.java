@@ -108,7 +108,7 @@ public class DataAuditDetailServiceImpl extends ServiceImpl<DataAuditDetailMappe
     @Override
     public void createBatch(List<DataAuditDetail> list) {
         list.forEach(item->fillParentData(item));
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

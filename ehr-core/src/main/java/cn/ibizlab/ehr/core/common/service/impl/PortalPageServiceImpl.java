@@ -108,7 +108,7 @@ public class PortalPageServiceImpl extends ServiceImpl<PortalPageMapper, PortalP
 
     @Override
     public void createBatch(List<PortalPage> list) {
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

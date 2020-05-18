@@ -101,7 +101,7 @@ public class ORMXMGLServiceImpl extends ServiceImpl<ORMXMGLMapper, ORMXMGL> impl
 
     @Override
     public void createBatch(List<ORMXMGL> list) {
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

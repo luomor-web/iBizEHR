@@ -11,6 +11,8 @@ import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.util.ObjectUtils;
+import org.springframework.util.DigestUtils;
 import cn.ibizlab.ehr.util.domain.EntityBase;
 import cn.ibizlab.ehr.util.annotation.DEField;
 import cn.ibizlab.ehr.util.enums.DEPredefinedFieldType;
@@ -22,6 +24,7 @@ import org.springframework.data.annotation.Transient;
 
 import com.baomidou.mybatisplus.annotation.*;
 import cn.ibizlab.ehr.util.domain.EntityMP;
+
 
 /**
  * 实体[工作流步骤子实例]
@@ -206,10 +209,23 @@ public class WFStepInst extends EntityMP implements Serializable {
         this.wfstepid = wfstepid ;
         this.modify("wfstepid",wfstepid);
     }
+
+    /**
+     * 获取 [工作流步骤子实例标识]
+     */
+    public String getWfstepinstid(){
+        if(ObjectUtils.isEmpty(wfstepinstid)){
+            wfstepinstid=(String)getDefaultKey(true);
+        }
+        return wfstepinstid;
+    }
+
+    @Override
+    public Serializable getDefaultKey(boolean gen) {
+        if((!ObjectUtils.isEmpty(this.getWfinstanceid()))&&(!ObjectUtils.isEmpty(this.getWfstepid())))
+            return DigestUtils.md5DigestAsHex(String.format("%s||%s" ,this.getWfinstanceid(),this.getWfstepid()).getBytes());
+        return null;
+    }
 }
-
-
-
-
 
 

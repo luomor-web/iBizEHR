@@ -147,7 +147,7 @@ public class ORMRANKServiceImpl extends ServiceImpl<ORMRANKMapper, ORMRANK> impl
 
     @Override
     public void createBatch(List<ORMRANK> list) {
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
 

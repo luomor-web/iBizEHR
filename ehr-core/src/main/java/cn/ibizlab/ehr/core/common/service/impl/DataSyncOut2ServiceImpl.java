@@ -111,7 +111,7 @@ public class DataSyncOut2ServiceImpl extends ServiceImpl<DataSyncOut2Mapper, Dat
     @Override
     public void createBatch(List<DataSyncOut2> list) {
         list.forEach(item->fillParentData(item));
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

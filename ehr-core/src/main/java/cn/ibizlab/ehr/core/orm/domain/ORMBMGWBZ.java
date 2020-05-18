@@ -11,6 +11,8 @@ import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.util.ObjectUtils;
+import org.springframework.util.DigestUtils;
 import cn.ibizlab.ehr.util.domain.EntityBase;
 import cn.ibizlab.ehr.util.annotation.DEField;
 import cn.ibizlab.ehr.util.enums.DEPredefinedFieldType;
@@ -22,6 +24,7 @@ import org.springframework.data.annotation.Transient;
 
 import com.baomidou.mybatisplus.annotation.*;
 import cn.ibizlab.ehr.util.domain.EntityMP;
+
 
 /**
  * 实体[部门岗位编制]
@@ -191,10 +194,23 @@ public class ORMBMGWBZ extends EntityMP implements Serializable {
         this.ormgwbzid = ormgwbzid ;
         this.modify("ormgwbzid",ormgwbzid);
     }
+
+    /**
+     * 获取 [部门岗位编制标识]
+     */
+    public String getOrmbmgwbzid(){
+        if(ObjectUtils.isEmpty(ormbmgwbzid)){
+            ormbmgwbzid=(String)getDefaultKey(true);
+        }
+        return ormbmgwbzid;
+    }
+
+    @Override
+    public Serializable getDefaultKey(boolean gen) {
+        if((!ObjectUtils.isEmpty(this.getOrmgwbzid()))&&(!ObjectUtils.isEmpty(this.getOrmpostid())))
+            return DigestUtils.md5DigestAsHex(String.format("%s||%s" ,this.getOrmgwbzid(),this.getOrmpostid()).getBytes());
+        return null;
+    }
 }
-
-
-
-
 
 

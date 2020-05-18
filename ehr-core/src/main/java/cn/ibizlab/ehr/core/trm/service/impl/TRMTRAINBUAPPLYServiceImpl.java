@@ -66,7 +66,7 @@ public class TRMTRAINBUAPPLYServiceImpl extends ServiceImpl<TRMTRAINBUAPPLYMappe
     @Override
     public void createBatch(List<TRMTRAINBUAPPLY> list) {
         list.forEach(item->fillParentData(item));
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

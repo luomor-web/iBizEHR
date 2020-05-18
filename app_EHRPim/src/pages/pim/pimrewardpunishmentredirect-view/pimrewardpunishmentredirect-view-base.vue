@@ -119,10 +119,10 @@ export default class PIMREWARDPUNISHMENTRedirectViewBase extends WizardViewBase 
     /**
      * 引擎初始化
      *
-     * @protected
+     * @public
      * @memberof PIMREWARDPUNISHMENTRedirectViewBase
      */
-    protected engineInit(): void {
+    public engineInit(): void {
     }
 
 

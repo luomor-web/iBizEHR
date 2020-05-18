@@ -82,7 +82,7 @@ public class SGQMgrServiceImpl extends ServiceImpl<SGQMgrMapper, SGQMgr> impleme
 
     @Override
     public void createBatch(List<SGQMgr> list) {
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

@@ -119,10 +119,10 @@ export default class PIMARCHIVESRECORDRedirectViewBase extends WizardViewBase {
     /**
      * 引擎初始化
      *
-     * @protected
+     * @public
      * @memberof PIMARCHIVESRECORDRedirectViewBase
      */
-    protected engineInit(): void {
+    public engineInit(): void {
     }
 
 

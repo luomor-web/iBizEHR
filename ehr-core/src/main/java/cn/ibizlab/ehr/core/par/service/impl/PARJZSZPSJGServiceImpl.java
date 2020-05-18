@@ -141,7 +141,7 @@ public class PARJZSZPSJGServiceImpl extends ServiceImpl<PARJZSZPSJGMapper, PARJZ
     @Override
     public void createBatch(List<PARJZSZPSJG> list) {
         list.forEach(item->fillParentData(item));
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
 

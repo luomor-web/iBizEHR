@@ -119,10 +119,10 @@ export default class PIMARCHIVESCHANGERedirectViewBase extends WizardViewBase {
     /**
      * 引擎初始化
      *
-     * @protected
+     * @public
      * @memberof PIMARCHIVESCHANGERedirectViewBase
      */
-    protected engineInit(): void {
+    public engineInit(): void {
     }
 
 

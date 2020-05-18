@@ -119,10 +119,10 @@ export default class PIMPERSONCHANGERedirectViewBase extends WizardViewBase {
     /**
      * 引擎初始化
      *
-     * @protected
+     * @public
      * @memberof PIMPERSONCHANGERedirectViewBase
      */
-    protected engineInit(): void {
+    public engineInit(): void {
     }
 
 

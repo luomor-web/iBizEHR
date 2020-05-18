@@ -132,7 +132,7 @@ public class PCMZSGLServiceImpl extends ServiceImpl<PCMZSGLMapper, PCMZSGL> impl
 
     @Override
     public void createBatch(List<PCMZSGL> list) {
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
 

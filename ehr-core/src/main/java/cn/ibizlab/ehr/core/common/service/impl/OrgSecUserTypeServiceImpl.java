@@ -125,7 +125,7 @@ public class OrgSecUserTypeServiceImpl extends ServiceImpl<OrgSecUserTypeMapper,
 
     @Override
     public void createBatch(List<OrgSecUserType> list) {
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

@@ -78,7 +78,7 @@ export class Http {
             axios({
                 method: 'post',
                 url: url,
-                data: { ...params },
+                data: params,
                 headers: { 'Content-Type': 'application/json;charset=UTF-8', 'Accept': 'application/json' },
                 // transformResponse: [(data: any) => {
                 //     let _data: any = null;

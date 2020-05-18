@@ -146,7 +146,7 @@ public class PCMYDBXMXServiceImpl extends ServiceImpl<PCMYDBXMXMapper, PCMYDBXMX
 
     @Override
     public void createBatch(List<PCMYDBXMX> list) {
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
 

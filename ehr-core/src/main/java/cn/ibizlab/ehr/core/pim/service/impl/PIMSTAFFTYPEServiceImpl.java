@@ -81,7 +81,7 @@ public class PIMSTAFFTYPEServiceImpl extends ServiceImpl<PIMSTAFFTYPEMapper, PIM
 
     @Override
     public void createBatch(List<PIMSTAFFTYPE> list) {
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

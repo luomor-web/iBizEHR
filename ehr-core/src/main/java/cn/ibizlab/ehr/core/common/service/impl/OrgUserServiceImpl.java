@@ -173,7 +173,7 @@ public class OrgUserServiceImpl extends ServiceImpl<OrgUserMapper, OrgUser> impl
     @Override
     public void createBatch(List<OrgUser> list) {
         list.forEach(item->fillParentData(item));
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

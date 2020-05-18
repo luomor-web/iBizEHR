@@ -134,7 +134,7 @@ public class ORMERPORGServiceImpl extends ServiceImpl<ORMERPORGMapper, ORMERPORG
 
     @Override
     public void createBatch(List<ORMERPORG> list) {
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

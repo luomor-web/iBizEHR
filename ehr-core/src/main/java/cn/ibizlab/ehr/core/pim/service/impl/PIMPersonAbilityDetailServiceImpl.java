@@ -66,7 +66,7 @@ public class PIMPersonAbilityDetailServiceImpl extends ServiceImpl<PIMPersonAbil
 
     @Override
     public void createBatch(List<PIMPersonAbilityDetail> list) {
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

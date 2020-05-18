@@ -167,7 +167,7 @@ public class PCMYDJDMXServiceImpl extends ServiceImpl<PCMYDJDMXMapper, PCMYDJDMX
     @Override
     public void createBatch(List<PCMYDJDMX> list) {
         list.forEach(item->fillParentData(item));
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
 

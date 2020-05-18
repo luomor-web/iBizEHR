@@ -11,6 +11,8 @@ import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.util.ObjectUtils;
+import org.springframework.util.DigestUtils;
 import cn.ibizlab.ehr.util.domain.EntityBase;
 import cn.ibizlab.ehr.util.annotation.DEField;
 import cn.ibizlab.ehr.util.enums.DEPredefinedFieldType;
@@ -22,6 +24,7 @@ import org.springframework.data.annotation.Transient;
 
 import com.baomidou.mybatisplus.annotation.*;
 import cn.ibizlab.ehr.util.domain.EntityMP;
+
 
 /**
  * 实体[门户视图部件]
@@ -162,10 +165,23 @@ public class PVPart extends EntityMP implements Serializable {
         this.portalpageid = portalpageid ;
         this.modify("portalpageid",portalpageid);
     }
+
+    /**
+     * 获取 [门户视图部件标识]
+     */
+    public String getPvpartid(){
+        if(ObjectUtils.isEmpty(pvpartid)){
+            pvpartid=(String)getDefaultKey(true);
+        }
+        return pvpartid;
+    }
+
+    @Override
+    public Serializable getDefaultKey(boolean gen) {
+        if((!ObjectUtils.isEmpty(this.getPortalpageid()))&&(!ObjectUtils.isEmpty(this.getCtrlid())))
+            return DigestUtils.md5DigestAsHex(String.format("%s||%s" ,this.getPortalpageid(),this.getCtrlid()).getBytes());
+        return null;
+    }
 }
-
-
-
-
 
 

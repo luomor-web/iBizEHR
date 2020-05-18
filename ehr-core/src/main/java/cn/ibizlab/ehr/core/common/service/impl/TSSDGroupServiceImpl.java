@@ -135,7 +135,7 @@ public class TSSDGroupServiceImpl extends ServiceImpl<TSSDGroupMapper, TSSDGroup
 
     @Override
     public void createBatch(List<TSSDGroup> list) {
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
 

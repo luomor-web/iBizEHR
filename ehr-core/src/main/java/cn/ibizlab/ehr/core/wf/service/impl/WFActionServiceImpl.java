@@ -116,7 +116,7 @@ public class WFActionServiceImpl extends ServiceImpl<WFActionMapper, WFAction> i
     @Override
     public void createBatch(List<WFAction> list) {
         list.forEach(item->fillParentData(item));
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

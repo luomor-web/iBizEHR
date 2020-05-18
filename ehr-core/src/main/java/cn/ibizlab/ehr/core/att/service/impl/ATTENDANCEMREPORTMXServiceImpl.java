@@ -147,7 +147,7 @@ public class ATTENDANCEMREPORTMXServiceImpl extends ServiceImpl<ATTENDANCEMREPOR
     @Override
     public void createBatch(List<ATTENDANCEMREPORTMX> list) {
         list.forEach(item->fillParentData(item));
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

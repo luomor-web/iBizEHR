@@ -88,7 +88,7 @@ public class PCMPROFILEAPPROVALServiceImpl extends ServiceImpl<PCMPROFILEAPPROVA
     @Override
     public void createBatch(List<PCMPROFILEAPPROVAL> list) {
         list.forEach(item->fillParentData(item));
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

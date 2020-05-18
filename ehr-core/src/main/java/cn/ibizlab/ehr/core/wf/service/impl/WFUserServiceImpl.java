@@ -100,7 +100,7 @@ public class WFUserServiceImpl extends ServiceImpl<WFUserMapper, WFUser> impleme
 
     @Override
     public void createBatch(List<WFUser> list) {
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

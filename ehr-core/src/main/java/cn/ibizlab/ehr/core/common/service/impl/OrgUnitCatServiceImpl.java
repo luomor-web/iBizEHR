@@ -72,7 +72,7 @@ public class OrgUnitCatServiceImpl extends ServiceImpl<OrgUnitCatMapper, OrgUnit
 
     @Override
     public void createBatch(List<OrgUnitCat> list) {
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

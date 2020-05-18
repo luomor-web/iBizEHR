@@ -147,7 +147,7 @@ public class SALITEMSUBServiceImpl extends ServiceImpl<SALITEMSUBMapper, SALITEM
     @Override
     public void createBatch(List<SALITEMSUB> list) {
         list.forEach(item->fillParentData(item));
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
 

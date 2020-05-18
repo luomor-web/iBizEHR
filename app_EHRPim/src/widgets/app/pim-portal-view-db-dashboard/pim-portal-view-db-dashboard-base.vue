@@ -6,7 +6,7 @@
     <row v-if="!isHasCustomized">
           <div style = ''>
       <i-col :xs="{ span: 8, offset: 0}" :sm="{ span: 8, offset: 0}" :md="{ span: 8, offset: 0 }" :lg="{ span: 8, offset: 0 }">
-        <card  class="portlet-card"  :bordered="false" dis-hover :padding="0">
+        <card class="portlet-card" :bordered="false" dis-hover :padding="0">
           <span>
           <view_db_sysportlet1 
               :viewState="viewState"  
@@ -20,7 +20,7 @@
         </card>
       </i-col>
       <i-col :xs="{ span: 16, offset: 0}" :sm="{ span: 16, offset: 0}" :md="{ span: 16, offset: 0 }" :lg="{ span: 16, offset: 0 }">
-        <card  class="portlet-card"  :bordered="false" dis-hover :padding="0">
+        <card class="portlet-card" :bordered="false" dis-hover :padding="0">
           <span>
           <view_db_sysportlet2 
               :viewState="viewState"  
@@ -34,7 +34,7 @@
         </card>
       </i-col>
       <i-col :xs="{ span: 8, offset: 0}" :sm="{ span: 8, offset: 0}" :md="{ span: 8, offset: 0 }" :lg="{ span: 8, offset: 0 }">
-        <card  class="portlet-card"  :bordered="false" dis-hover :padding="0">
+        <card class="portlet-card" :bordered="false" dis-hover :padding="0">
           <span>
           <view_db_sysportlet4 
               :viewState="viewState"  
@@ -48,7 +48,7 @@
         </card>
       </i-col>
       <i-col :xs="{ span: 8, offset: 0}" :sm="{ span: 8, offset: 0}" :md="{ span: 8, offset: 0 }" :lg="{ span: 8, offset: 0 }">
-        <card  class="portlet-card"  :bordered="false" dis-hover :padding="0">
+        <card class="portlet-card" :bordered="false" dis-hover :padding="0">
           <span>
           <view_db_sysportlet3 
               :viewState="viewState"  
@@ -62,7 +62,7 @@
         </card>
       </i-col>
       <i-col :xs="{ span: 8, offset: 0}" :sm="{ span: 8, offset: 0}" :md="{ span: 8, offset: 0 }" :lg="{ span: 8, offset: 0 }">
-        <card  class="portlet-card"  :bordered="false" dis-hover :padding="0">
+        <card class="portlet-card" :bordered="false" dis-hover :padding="0">
           <span>
           <view_db_sysportlet5 
               :viewState="viewState"  
@@ -112,7 +112,7 @@ export default class PimPortalView_dbBase extends Vue implements ControlInterfac
      * @type {string}
      * @memberof PimPortalView_db
      */
-    @Prop() protected name?: string;
+    @Prop() public name?: string;
 
     /**
      * 视图通讯对象
@@ -120,7 +120,7 @@ export default class PimPortalView_dbBase extends Vue implements ControlInterfac
      * @type {Subject<ViewState>}
      * @memberof PimPortalView_db
      */
-    @Prop() protected viewState!: Subject<ViewState>;
+    @Prop() public viewState!: Subject<ViewState>;
 
     /**
      * 应用上下文
@@ -128,7 +128,7 @@ export default class PimPortalView_dbBase extends Vue implements ControlInterfac
      * @type {*}
      * @memberof PimPortalView_db
      */
-    @Prop() protected context: any;
+    @Prop() public context: any;
 
     /**
      * 视图参数
@@ -136,16 +136,16 @@ export default class PimPortalView_dbBase extends Vue implements ControlInterfac
      * @type {*}
      * @memberof PimPortalView_db
      */
-    @Prop() protected viewparams: any;
+    @Prop() public viewparams: any;
 
     /**
      * 视图状态事件
      *
-     * @protected
+     * @public
      * @type {(Subscription | undefined)}
      * @memberof PimPortalView_db
      */
-    protected viewStateEvent: Subscription | undefined;
+    public viewStateEvent: Subscription | undefined;
 
     /**
      * 获取部件类型
@@ -153,7 +153,7 @@ export default class PimPortalView_dbBase extends Vue implements ControlInterfac
      * @returns {string}
      * @memberof PimPortalView_db
      */
-    protected getControlType(): string {
+    public getControlType(): string {
         return 'DASHBOARD'
     }
 
@@ -165,7 +165,7 @@ export default class PimPortalView_dbBase extends Vue implements ControlInterfac
      * @type {Array<*>}
      * @memberof PimPortalView_db
      */    
-    protected counterServiceArray:Array<any> = [];
+    public counterServiceArray:Array<any> = [];
 
     /**
      * 建构部件服务对象
@@ -173,7 +173,7 @@ export default class PimPortalView_dbBase extends Vue implements ControlInterfac
      * @type {PimPortalView_dbService}
      * @memberof PimPortalView_db
      */
-    protected service: PimPortalView_dbService = new PimPortalView_dbService({ $store: this.$store });
+    public service: PimPortalView_dbService = new PimPortalView_dbService({ $store: this.$store });
     
 
 
@@ -183,7 +183,7 @@ export default class PimPortalView_dbBase extends Vue implements ControlInterfac
      * @param {any} args
      * @memberof PimPortalView_db
      */
-    protected closeView(args: any): void {
+    public closeView(args: any): void {
         let _this: any = this;
         _this.$emit('closeview', [args]);
     }

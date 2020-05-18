@@ -13,6 +13,11 @@
         @row-class-name="onRowClassName($event)"  
         @row-dblclick="rowDBLClick($event)"  
         ref='multipleTable' :data="items" :show-header="!isHideHeader">
+            <template slot="empty">
+                无数据 
+                <span class="quick-toolbar">
+                </span>
+            </template>
             <template v-if="!isSingleSelect">
                 <el-table-column align="center" type='selection' :width="checkboxColWidth"></el-table-column>
             </template>
@@ -90,6 +95,8 @@
                         </div>
                     </poptip>
                 </span>
+                <span v-if="selections.length > 0" class="batch-toolbar">
+                </span>
                 <span class="page-button"><i-button icon="md-refresh" :title="$t('app.gridpage.refresh')" @click="pageRefresh()"></i-button></span>&nbsp;
                 <span>
                     {{$t('app.gridpage.show')}}&nbsp;
@@ -133,7 +140,7 @@ export default class BMXMJCBase extends Vue implements ControlInterface {
      * @type {string}
      * @memberof BMXMJC
      */
-    @Prop() protected name?: string;
+    @Prop() public name?: string;
 
     /**
      * 视图通讯对象
@@ -141,7 +148,7 @@ export default class BMXMJCBase extends Vue implements ControlInterface {
      * @type {Subject<ViewState>}
      * @memberof BMXMJC
      */
-    @Prop() protected viewState!: Subject<ViewState>;
+    @Prop() public viewState!: Subject<ViewState>;
 
     /**
      * 应用上下文
@@ -149,7 +156,7 @@ export default class BMXMJCBase extends Vue implements ControlInterface {
      * @type {*}
      * @memberof BMXMJC
      */
-    @Prop() protected context: any;
+    @Prop() public context: any;
 
     /**
      * 视图参数
@@ -157,16 +164,16 @@ export default class BMXMJCBase extends Vue implements ControlInterface {
      * @type {*}
      * @memberof BMXMJC
      */
-    @Prop() protected viewparams: any;
+    @Prop() public viewparams: any;
 
     /**
      * 视图状态事件
      *
-     * @protected
+     * @public
      * @type {(Subscription | undefined)}
      * @memberof BMXMJC
      */
-    protected viewStateEvent: Subscription | undefined;
+    public viewStateEvent: Subscription | undefined;
 
     /**
      * 获取部件类型
@@ -174,7 +181,7 @@ export default class BMXMJCBase extends Vue implements ControlInterface {
      * @returns {string}
      * @memberof BMXMJC
      */
-    protected getControlType(): string {
+    public getControlType(): string {
         return 'GRID'
     }
 
@@ -186,7 +193,7 @@ export default class BMXMJCBase extends Vue implements ControlInterface {
      * @type {Array<*>}
      * @memberof BMXMJC
      */    
-    protected counterServiceArray:Array<any> = [];
+    public counterServiceArray:Array<any> = [];
 
     /**
      * 建构部件服务对象
@@ -194,7 +201,7 @@ export default class BMXMJCBase extends Vue implements ControlInterface {
      * @type {BMXMJCService}
      * @memberof BMXMJC
      */
-    protected service: BMXMJCService = new BMXMJCService({ $store: this.$store });
+    public service: BMXMJCService = new BMXMJCService({ $store: this.$store });
 
     /**
      * 实体服务对象
@@ -202,7 +209,7 @@ export default class BMXMJCBase extends Vue implements ControlInterface {
      * @type {ORMORGSECTORService}
      * @memberof BMXMJC
      */
-    protected appEntityService: ORMORGSECTORService = new ORMORGSECTORService({ $store: this.$store });
+    public appEntityService: ORMORGSECTORService = new ORMORGSECTORService({ $store: this.$store });
     
 
 
@@ -212,7 +219,7 @@ export default class BMXMJCBase extends Vue implements ControlInterface {
      * @param {any} args
      * @memberof BMXMJC
      */
-    protected closeView(args: any): void {
+    public closeView(args: any): void {
         let _this: any = this;
         _this.$emit('closeview', [args]);
     }
@@ -269,7 +276,7 @@ export default class BMXMJCBase extends Vue implements ControlInterface {
      * @type {boolean}
      * @memberof BMXMJC
      */
-    @Prop({ default: true }) protected showBusyIndicator?: boolean;
+    @Prop({ default: true }) public showBusyIndicator?: boolean;
 
     /**
      * 部件行为--update
@@ -277,7 +284,7 @@ export default class BMXMJCBase extends Vue implements ControlInterface {
      * @type {string}
      * @memberof BMXMJC
      */
-    @Prop() protected updateAction!: string;
+    @Prop() public updateAction!: string;
     
     /**
      * 部件行为--fetch
@@ -285,7 +292,7 @@ export default class BMXMJCBase extends Vue implements ControlInterface {
      * @type {string}
      * @memberof BMXMJC
      */
-    @Prop() protected fetchAction!: string;
+    @Prop() public fetchAction!: string;
     
     /**
      * 部件行为--remove
@@ -293,7 +300,7 @@ export default class BMXMJCBase extends Vue implements ControlInterface {
      * @type {string}
      * @memberof BMXMJC
      */
-    @Prop() protected removeAction!: string;
+    @Prop() public removeAction!: string;
     
     /**
      * 部件行为--load
@@ -301,7 +308,7 @@ export default class BMXMJCBase extends Vue implements ControlInterface {
      * @type {string}
      * @memberof BMXMJC
      */
-    @Prop() protected loadAction!: string;
+    @Prop() public loadAction!: string;
     
     /**
      * 部件行为--loaddraft
@@ -309,7 +316,7 @@ export default class BMXMJCBase extends Vue implements ControlInterface {
      * @type {string}
      * @memberof BMXMJC
      */
-    @Prop() protected loaddraftAction!: string;
+    @Prop() public loaddraftAction!: string;
     
     /**
      * 部件行为--create
@@ -317,7 +324,7 @@ export default class BMXMJCBase extends Vue implements ControlInterface {
      * @type {string}
      * @memberof BMXMJC
      */
-    @Prop() protected createAction!: string;
+    @Prop() public createAction!: string;
 
     /**
      * 当前页
@@ -325,7 +332,7 @@ export default class BMXMJCBase extends Vue implements ControlInterface {
      * @type {number}
      * @memberof BMXMJC
      */
-    protected curPage: number = 1;
+    public curPage: number = 1;
 
     /**
      * 数据
@@ -333,7 +340,7 @@ export default class BMXMJCBase extends Vue implements ControlInterface {
      * @type {any[]}
      * @memberof BMXMJC
      */
-    protected items: any[] = [];
+    public items: any[] = [];
 
     /**
      * 是否支持分页
@@ -341,7 +348,7 @@ export default class BMXMJCBase extends Vue implements ControlInterface {
      * @type {boolean}
      * @memberof BMXMJC
      */
-    protected isEnablePagingBar: boolean = true;
+    public isEnablePagingBar: boolean = true;
 
     /**
      * 是否禁用排序
@@ -349,7 +356,7 @@ export default class BMXMJCBase extends Vue implements ControlInterface {
      * @type {boolean}
      * @memberof BMXMJC
      */
-    protected isNoSort: boolean = false;
+    public isNoSort: boolean = false;
 
     /**
      * 排序方向
@@ -357,7 +364,7 @@ export default class BMXMJCBase extends Vue implements ControlInterface {
      * @type {string}
      * @memberof BMXMJC
      */
-    protected minorSortDir: string = 'ASC';
+    public minorSortDir: string = 'ASC';
 
     /**
      * 排序字段
@@ -365,7 +372,7 @@ export default class BMXMJCBase extends Vue implements ControlInterface {
      * @type {string}
      * @memberof BMXMJC
      */
-    protected minorSortPSDEF: string = 'ordervalue';
+    public minorSortPSDEF: string = 'ordervalue';
 
     /**
      * 分页条数
@@ -373,7 +380,7 @@ export default class BMXMJCBase extends Vue implements ControlInterface {
      * @type {number}
      * @memberof BMXMJC
      */
-    protected limit: number = 20;
+    public limit: number = 20;
 
     /**
      * 是否显示标题
@@ -381,7 +388,7 @@ export default class BMXMJCBase extends Vue implements ControlInterface {
      * @type {boolean}
      * @memberof BMXMJC
      */
-    protected isHideHeader: boolean = false;
+    public isHideHeader: boolean = false;
 
     /**
      * 是否默认选中第一条数据
@@ -389,7 +396,7 @@ export default class BMXMJCBase extends Vue implements ControlInterface {
      * @type {boolean}
      * @memberof BMXMJC
      */
-    @Prop({ default: false }) protected isSelectFirstDefault!: boolean;
+    @Prop({ default: false }) public isSelectFirstDefault!: boolean;
 
     /**
      * 是否单选
@@ -397,7 +404,7 @@ export default class BMXMJCBase extends Vue implements ControlInterface {
      * @type {boolean}
      * @memberof BMXMJC
      */
-    @Prop() protected isSingleSelect?: boolean;
+    @Prop() public isSingleSelect?: boolean;
 
     /**
      * 选中数据字符串
@@ -405,7 +412,7 @@ export default class BMXMJCBase extends Vue implements ControlInterface {
      * @type {string}
      * @memberof BMXMJC
      */
-    @Prop() protected selectedData?: string;
+    @Prop() public selectedData?: string;
 
     /**
      * 选中值变化
@@ -442,7 +449,7 @@ export default class BMXMJCBase extends Vue implements ControlInterface {
      * @type {(number | 0 | 1 | 2)}
      * @memberof BMXMJC
      */
-    @Prop({default: 2}) protected gridRowActiveMode!: number;
+    @Prop({default: 2}) public gridRowActiveMode!: number;
 
     /**
      * 是否开启行编辑
@@ -450,7 +457,7 @@ export default class BMXMJCBase extends Vue implements ControlInterface {
      * @type {boolean}
      * @memberof BMXMJC
      */
-    @Prop({default: false}) protected isOpenEdit!: boolean;
+    @Prop({default: false}) public isOpenEdit!: boolean;
 
     /**
      * 实际是否开启行编辑
@@ -458,7 +465,7 @@ export default class BMXMJCBase extends Vue implements ControlInterface {
      * @type {boolean}
      * @memberof BMXMJC
      */
-    protected actualIsOpenEdit: boolean = this.isOpenEdit;
+    public actualIsOpenEdit: boolean = this.isOpenEdit;
 
     /**
      * 总条数
@@ -466,7 +473,7 @@ export default class BMXMJCBase extends Vue implements ControlInterface {
      * @type {number}
      * @memberof BMXMJC
      */
-    protected totalrow: number = 0;
+    public totalrow: number = 0;
 
     /**
      * 选中行数据
@@ -474,7 +481,7 @@ export default class BMXMJCBase extends Vue implements ControlInterface {
      * @type {any[]}
      * @memberof Main
      */
-    protected selections: any[] = [];
+    public selections: any[] = [];
 
     /**
      * 拦截行选中
@@ -482,7 +489,9 @@ export default class BMXMJCBase extends Vue implements ControlInterface {
      * @type {boolean}
      * @memberof Main
      */
-    protected stopRowClick: boolean = false;
+    public stopRowClick: boolean = false;
+
+
 
 
     /**
@@ -491,7 +500,7 @@ export default class BMXMJCBase extends Vue implements ControlInterface {
      * @type {boolean}
      * @memberof BMXMJC
      */
-    protected isDisplay:boolean = true;
+    public isDisplay:boolean = true;
 
     /**
      * 部件刷新
@@ -499,7 +508,7 @@ export default class BMXMJCBase extends Vue implements ControlInterface {
      * @param {any[]} args
      * @memberof BMXMJC
      */
-    protected refresh(args: any[]): void {
+    public refresh(args: any[]): void {
         this.load();
     }
 
@@ -517,7 +526,7 @@ export default class BMXMJCBase extends Vue implements ControlInterface {
      * @type {boolean}
      * @memberof AppEmbedPicker
      */
-    protected isDragendCol: boolean = false;
+    public isDragendCol: boolean = false;
 
     /**
      * 所有列成员
@@ -525,7 +534,7 @@ export default class BMXMJCBase extends Vue implements ControlInterface {
      * @type {any[]}
      * @memberof BMXMJC
      */
-    protected allColumns: any[] = [
+    public allColumns: any[] = [
         {
             name: 'ordervalue',
             label: '排序',
@@ -583,7 +592,7 @@ export default class BMXMJCBase extends Vue implements ControlInterface {
      * @type {*}
      * @memberof BMXMJC
      */
-    protected rules: any = {
+    public rules: any = {
         srfkey: [
              { required: false, validator: (rule:any, value:any, callback:any) => { return (rule.required && (value === null || value === undefined || value === "")) ? false : true;}, message: '部门标识 值不能为空', trigger: 'change' },
             { required: false, validator: (rule:any, value:any, callback:any) => { return (rule.required && (value === null || value === undefined || value === "")) ? false : true;}, message: '部门标识 值不能为空', trigger: 'blur' },
@@ -596,7 +605,7 @@ export default class BMXMJCBase extends Vue implements ControlInterface {
      * @param {*} [arg={}]
      * @memberof BMXMJC
      */
-    protected load(opt: any = {}, pageReset: boolean = false): void {
+    public load(opt: any = {}, pageReset: boolean = false): void {
         if(!this.fetchAction){
             this.$Notice.error({ title: '错误', desc: 'ORMORGSECTORFPXXPickupGridView视图表格fetchAction参数未配置' });
             return;
@@ -618,7 +627,9 @@ export default class BMXMJCBase extends Vue implements ControlInterface {
         const parentdata: any = {};
         this.$emit('beforeload', parentdata);
         Object.assign(arg, parentdata);
-        Object.assign(arg,{viewparams:this.viewparams});
+        let tempViewParams:any = parentdata.viewparams?parentdata.viewparams:{};
+        Object.assign(tempViewParams,JSON.parse(JSON.stringify(this.viewparams)));
+        Object.assign(arg,{viewparams:tempViewParams});
         const post: Promise<any> = this.service.search(this.fetchAction,JSON.parse(JSON.stringify(this.context)), arg, this.showBusyIndicator);
         post.then((response: any) => {
             if (!response.status || response.status !== 200) {
@@ -669,7 +680,7 @@ export default class BMXMJCBase extends Vue implements ControlInterface {
      * @returns {Promise<any>}
      * @memberof BMXMJC
      */
-    protected async remove(datas: any[]): Promise<any> {
+    public async remove(datas: any[]): Promise<any> {
         if(!this.removeAction){
             this.$Notice.error({ title: '错误', desc: 'ORMORGSECTORFPXXPickupGridView视图表格removeAction参数未配置' });
             return;
@@ -772,7 +783,7 @@ export default class BMXMJCBase extends Vue implements ControlInterface {
      * @param {*} [arg={}]
      * @memberof BMXMJC
      */
-    protected addBatch(arg: any = {}): void {
+    public addBatch(arg: any = {}): void {
         if(!this.fetchAction){
             this.$Notice.error({ title: '错误', desc: 'ORMORGSECTORFPXXPickupGridView视图表格fetchAction参数未配置' });
             return;
@@ -818,7 +829,7 @@ export default class BMXMJCBase extends Vue implements ControlInterface {
      * @param {*} data
      * @memberof BMXMJC
      */
-    protected exportExcel(data: any = {}): void {
+    public exportExcel(data: any = {}): void {
         // 导出Excel
         const doExport = async (_data:any) => {
             const tHeader: Array<any> = [];
@@ -897,7 +908,7 @@ export default class BMXMJCBase extends Vue implements ControlInterface {
             codelistType : 'DYNAMIC',
             renderMode: 'other',
             textSeparator: '、',
-            valueSeparator: ';',
+            valueSeparator: ',',
           },
           {
             name: 'qy',
@@ -931,13 +942,13 @@ export default class BMXMJCBase extends Vue implements ControlInterface {
     /**
      * 解析代码表和vlaue，设置items
      *
-     * @private
+     * @public
      * @param {any[]} items 代码表数据
      * @param {*} value
      * @returns {*}
      * @memberof BMXMJC
      */
-    private getCodelistValue(items: any[], value: any, codelist: any,){
+    public getCodelistValue(items: any[], value: any, codelist: any,){
         if(!value){
             return this.$t('codelist.'+codelist.srfkey+'.empty');
         }
@@ -984,13 +995,13 @@ export default class BMXMJCBase extends Vue implements ControlInterface {
     /**
      * 获取代码项
      *
-     * @private
+     * @public
      * @param {any[]} items
      * @param {*} value
      * @returns {*}
      * @memberof BMXMJC
      */
-    private getItem(items: any[], value: any, codelist: any): any {
+    public getItem(items: any[], value: any, codelist: any): any {
         const arr: Array<any> = items.filter(item => {return item.value == value});
         if (arr.length !== 1) {
             return undefined;
@@ -1007,7 +1018,7 @@ export default class BMXMJCBase extends Vue implements ControlInterface {
      *
      * @memberof BMXMJC
      */
-    protected created(): void {
+    public created(): void {
         this.afterCreated();
     }
 
@@ -1016,7 +1027,7 @@ export default class BMXMJCBase extends Vue implements ControlInterface {
      *
      *  @memberof BMXMJC
      */    
-    protected afterCreated(){
+    public afterCreated(){
         this.setColState();
         if (this.viewState) {
             this.viewStateEvent = this.viewState.subscribe(({ tag, action, data }) => {
@@ -1041,7 +1052,7 @@ export default class BMXMJCBase extends Vue implements ControlInterface {
      *
      * @memberof BMXMJC
      */
-    protected destroyed() {
+    public destroyed() {
         this.afterDestroy();
     }
 
@@ -1050,7 +1061,7 @@ export default class BMXMJCBase extends Vue implements ControlInterface {
      *
      * @memberof BMXMJC
      */
-    protected afterDestroy() {
+    public afterDestroy() {
         if (this.viewStateEvent) {
             this.viewStateEvent.unsubscribe();
         }
@@ -1062,7 +1073,7 @@ export default class BMXMJCBase extends Vue implements ControlInterface {
      * @returns {any[]}
      * @memberof BMXMJC
      */
-    protected getSelection(): any[] {
+    public getSelection(): any[] {
         return this.selections;
     }
 
@@ -1073,7 +1084,7 @@ export default class BMXMJCBase extends Vue implements ControlInterface {
      * @returns {void}
      * @memberof BMXMJC
      */
-    protected rowDBLClick($event: any): void {
+    public rowDBLClick($event: any): void {
         if (!$event || this.actualIsOpenEdit || Object.is(this.gridRowActiveMode,0)) {
             return;
         }
@@ -1097,7 +1108,7 @@ export default class BMXMJCBase extends Vue implements ControlInterface {
      * @returns {void}
      * @memberof  BMXMJC
      */
-    protected select($event: any): void {
+    public select($event: any): void {
         if (!$event) {
             return;
         }
@@ -1112,7 +1123,7 @@ export default class BMXMJCBase extends Vue implements ControlInterface {
      * @param {*} $event
      * @memberof  BMXMJC
      */
-    protected selectAll($event: any): void {
+    public selectAll($event: any): void {
         if (!$event) {
             return;
         }
@@ -1129,7 +1140,7 @@ export default class BMXMJCBase extends Vue implements ControlInterface {
      * @returns {void}
      * @memberof BMXMJC
      */
-    protected rowClick($event: any, ifAlways: boolean = false): void {
+    public rowClick($event: any, ifAlways: boolean = false): void {
         if (!ifAlways && (!$event || this.actualIsOpenEdit)) {
             return;
         }
@@ -1171,7 +1182,7 @@ export default class BMXMJCBase extends Vue implements ControlInterface {
      * @returns {void}
      * @memberof BMXMJC
      */
-    protected pageOnChange($event: any): void {
+    public pageOnChange($event: any): void {
         if (!$event) {
             return;
         }
@@ -1189,7 +1200,7 @@ export default class BMXMJCBase extends Vue implements ControlInterface {
      * @returns {void}
      * @memberof BMXMJC
      */
-    protected onPageSizeChange($event: any): void {
+    public onPageSizeChange($event: any): void {
         if (!$event) {
             return;
         }
@@ -1207,7 +1218,7 @@ export default class BMXMJCBase extends Vue implements ControlInterface {
      *
      * @memberof BMXMJC
      */
-    protected pageRefresh(): void {
+    public pageRefresh(): void {
         this.load({});
     }
 
@@ -1217,7 +1228,7 @@ export default class BMXMJCBase extends Vue implements ControlInterface {
      * @param {{ column: any, prop: any, order: any }} { column, prop, order }
      * @memberof BMXMJC
      */
-    protected onSortChange({ column, prop, order }: { column: any, prop: any, order: any }): void {
+    public onSortChange({ column, prop, order }: { column: any, prop: any, order: any }): void {
         const dir = Object.is(order, 'ascending') ? 'asc' : Object.is(order, 'descending') ? 'desc' : '';
         if (Object.is(dir, this.minorSortDir) && Object.is(this.minorSortPSDEF, prop)) {
             return;
@@ -1234,7 +1245,7 @@ export default class BMXMJCBase extends Vue implements ControlInterface {
      * @returns {string}
      * @memberof BMXMJC
      */
-    protected onRowClassName({ row, rowIndex }: { row: any, rowIndex: any }): string {
+    public onRowClassName({ row, rowIndex }: { row: any, rowIndex: any }): string {
         const index = this.selections.findIndex((select: any) => Object.is(select.srfkey, row.srfkey));
         return index !== -1 ? 'grid-row-select' : '';
     }
@@ -1249,7 +1260,7 @@ export default class BMXMJCBase extends Vue implements ControlInterface {
      * @param {*} $event
      * @memberof BMXMJC
      */
-	protected uiAction(row: any, tag: any, $event: any) {
+	public uiAction(row: any, tag: any, $event: any) {
         this.rowClick(row, true);
     }
 
@@ -1258,7 +1269,7 @@ export default class BMXMJCBase extends Vue implements ControlInterface {
      *
      * @memberof BMXMJC
      */
-    protected setColState() {
+    public setColState() {
 		const _data: any = localStorage.getItem('ormorgsector_bmxmjc_grid');
 		if (_data) {
 			let columns = JSON.parse(_data);
@@ -1276,7 +1287,7 @@ export default class BMXMJCBase extends Vue implements ControlInterface {
      *
      * @memberof BMXMJC
      */
-    protected onColChange() {
+    public onColChange() {
         localStorage.setItem('ormorgsector_bmxmjc_grid', JSON.stringify(this.allColumns));
     }
 
@@ -1287,7 +1298,7 @@ export default class BMXMJCBase extends Vue implements ControlInterface {
      * @returns {boolean}
      * @memberof BMXMJC
      */
-    protected getColumnState(name: string): boolean {
+    public getColumnState(name: string): boolean {
         let column = this.allColumns.find((col: any) =>
             Object.is(name, col.name)
         );
@@ -1312,7 +1323,7 @@ export default class BMXMJCBase extends Vue implements ControlInterface {
      * @returns {void}
      * @memberof BMXMJC
      */
-    protected save(args: any[], params?: any, $event?: any, xData?: any): void {
+    public save(args: any[], params?: any, $event?: any, xData?: any): void {
         let _this = this;
         let promises:any = [];
         _this.items.forEach((item:any)=>{
@@ -1354,7 +1365,7 @@ export default class BMXMJCBase extends Vue implements ControlInterface {
      * @returns {void}
      * @memberof BMXMJC
      */
-    protected getRowClassName(args:{row: any,rowIndex: number}){
+    public getRowClassName(args:{row: any,rowIndex: number}){
         let isSelected = this.selections.some((item:any)=>{
             return Object.is(item.ormorgsector,args.row.ormorgsector);
         });

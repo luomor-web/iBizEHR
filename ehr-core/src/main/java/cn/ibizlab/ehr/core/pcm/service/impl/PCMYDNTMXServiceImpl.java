@@ -81,7 +81,7 @@ public class PCMYDNTMXServiceImpl extends ServiceImpl<PCMYDNTMXMapper, PCMYDNTMX
 
     @Override
     public void createBatch(List<PCMYDNTMX> list) {
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

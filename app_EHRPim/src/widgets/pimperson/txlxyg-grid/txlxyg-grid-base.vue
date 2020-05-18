@@ -13,6 +13,11 @@
         @row-class-name="onRowClassName($event)"  
         @row-dblclick="rowDBLClick($event)"  
         ref='multipleTable' :data="items" :show-header="!isHideHeader">
+            <template slot="empty">
+                无数据 
+                <span class="quick-toolbar">
+                </span>
+            </template>
             <template v-if="!isSingleSelect">
                 <el-table-column align="center" type='selection' :width="checkboxColWidth"></el-table-column>
             </template>
@@ -171,6 +176,8 @@
                         </div>
                     </poptip>
                 </span>
+                <span v-if="selections.length > 0" class="batch-toolbar">
+                </span>
                 <span class="page-button"><i-button icon="md-refresh" :title="$t('app.gridpage.refresh')" @click="pageRefresh()"></i-button></span>&nbsp;
                 <span>
                     {{$t('app.gridpage.show')}}&nbsp;
@@ -214,7 +221,7 @@ export default class TXLXYGBase extends Vue implements ControlInterface {
      * @type {string}
      * @memberof TXLXYG
      */
-    @Prop() protected name?: string;
+    @Prop() public name?: string;
 
     /**
      * 视图通讯对象
@@ -222,7 +229,7 @@ export default class TXLXYGBase extends Vue implements ControlInterface {
      * @type {Subject<ViewState>}
      * @memberof TXLXYG
      */
-    @Prop() protected viewState!: Subject<ViewState>;
+    @Prop() public viewState!: Subject<ViewState>;
 
     /**
      * 应用上下文
@@ -230,7 +237,7 @@ export default class TXLXYGBase extends Vue implements ControlInterface {
      * @type {*}
      * @memberof TXLXYG
      */
-    @Prop() protected context: any;
+    @Prop() public context: any;
 
     /**
      * 视图参数
@@ -238,16 +245,16 @@ export default class TXLXYGBase extends Vue implements ControlInterface {
      * @type {*}
      * @memberof TXLXYG
      */
-    @Prop() protected viewparams: any;
+    @Prop() public viewparams: any;
 
     /**
      * 视图状态事件
      *
-     * @protected
+     * @public
      * @type {(Subscription | undefined)}
      * @memberof TXLXYG
      */
-    protected viewStateEvent: Subscription | undefined;
+    public viewStateEvent: Subscription | undefined;
 
     /**
      * 获取部件类型
@@ -255,7 +262,7 @@ export default class TXLXYGBase extends Vue implements ControlInterface {
      * @returns {string}
      * @memberof TXLXYG
      */
-    protected getControlType(): string {
+    public getControlType(): string {
         return 'GRID'
     }
 
@@ -267,7 +274,7 @@ export default class TXLXYGBase extends Vue implements ControlInterface {
      * @type {Array<*>}
      * @memberof TXLXYG
      */    
-    protected counterServiceArray:Array<any> = [];
+    public counterServiceArray:Array<any> = [];
 
     /**
      * 建构部件服务对象
@@ -275,7 +282,7 @@ export default class TXLXYGBase extends Vue implements ControlInterface {
      * @type {TXLXYGService}
      * @memberof TXLXYG
      */
-    protected service: TXLXYGService = new TXLXYGService({ $store: this.$store });
+    public service: TXLXYGService = new TXLXYGService({ $store: this.$store });
 
     /**
      * 实体服务对象
@@ -283,7 +290,7 @@ export default class TXLXYGBase extends Vue implements ControlInterface {
      * @type {PIMPERSONService}
      * @memberof TXLXYG
      */
-    protected appEntityService: PIMPERSONService = new PIMPERSONService({ $store: this.$store });
+    public appEntityService: PIMPERSONService = new PIMPERSONService({ $store: this.$store });
     
 
 
@@ -293,7 +300,7 @@ export default class TXLXYGBase extends Vue implements ControlInterface {
      * @param {any} args
      * @memberof TXLXYG
      */
-    protected closeView(args: any): void {
+    public closeView(args: any): void {
         let _this: any = this;
         _this.$emit('closeview', [args]);
     }
@@ -349,14 +356,14 @@ export default class TXLXYGBase extends Vue implements ControlInterface {
      * @type {any}
      * @memberof TXLXYG
      */
-    @Prop() protected newdata: any;
+    @Prop() public newdata: any;
     /**
      * 打开编辑数据视图
      *
      * @type {any}
      * @memberof TXLXYG
      */
-    @Prop() protected opendata: any;
+    @Prop() public opendata: any;
 
     /**
      * 显示处理提示
@@ -364,7 +371,7 @@ export default class TXLXYGBase extends Vue implements ControlInterface {
      * @type {boolean}
      * @memberof TXLXYG
      */
-    @Prop({ default: true }) protected showBusyIndicator?: boolean;
+    @Prop({ default: true }) public showBusyIndicator?: boolean;
 
     /**
      * 部件行为--update
@@ -372,7 +379,7 @@ export default class TXLXYGBase extends Vue implements ControlInterface {
      * @type {string}
      * @memberof TXLXYG
      */
-    @Prop() protected updateAction!: string;
+    @Prop() public updateAction!: string;
     
     /**
      * 部件行为--fetch
@@ -380,7 +387,7 @@ export default class TXLXYGBase extends Vue implements ControlInterface {
      * @type {string}
      * @memberof TXLXYG
      */
-    @Prop() protected fetchAction!: string;
+    @Prop() public fetchAction!: string;
     
     /**
      * 部件行为--remove
@@ -388,7 +395,7 @@ export default class TXLXYGBase extends Vue implements ControlInterface {
      * @type {string}
      * @memberof TXLXYG
      */
-    @Prop() protected removeAction!: string;
+    @Prop() public removeAction!: string;
     
     /**
      * 部件行为--load
@@ -396,7 +403,7 @@ export default class TXLXYGBase extends Vue implements ControlInterface {
      * @type {string}
      * @memberof TXLXYG
      */
-    @Prop() protected loadAction!: string;
+    @Prop() public loadAction!: string;
     
     /**
      * 部件行为--loaddraft
@@ -404,7 +411,7 @@ export default class TXLXYGBase extends Vue implements ControlInterface {
      * @type {string}
      * @memberof TXLXYG
      */
-    @Prop() protected loaddraftAction!: string;
+    @Prop() public loaddraftAction!: string;
     
     /**
      * 部件行为--create
@@ -412,7 +419,7 @@ export default class TXLXYGBase extends Vue implements ControlInterface {
      * @type {string}
      * @memberof TXLXYG
      */
-    @Prop() protected createAction!: string;
+    @Prop() public createAction!: string;
 
     /**
      * 当前页
@@ -420,7 +427,7 @@ export default class TXLXYGBase extends Vue implements ControlInterface {
      * @type {number}
      * @memberof TXLXYG
      */
-    protected curPage: number = 1;
+    public curPage: number = 1;
 
     /**
      * 数据
@@ -428,7 +435,7 @@ export default class TXLXYGBase extends Vue implements ControlInterface {
      * @type {any[]}
      * @memberof TXLXYG
      */
-    protected items: any[] = [];
+    public items: any[] = [];
 
     /**
      * 是否支持分页
@@ -436,7 +443,7 @@ export default class TXLXYGBase extends Vue implements ControlInterface {
      * @type {boolean}
      * @memberof TXLXYG
      */
-    protected isEnablePagingBar: boolean = true;
+    public isEnablePagingBar: boolean = true;
 
     /**
      * 是否禁用排序
@@ -444,7 +451,7 @@ export default class TXLXYGBase extends Vue implements ControlInterface {
      * @type {boolean}
      * @memberof TXLXYG
      */
-    protected isNoSort: boolean = false;
+    public isNoSort: boolean = false;
 
     /**
      * 排序方向
@@ -452,7 +459,7 @@ export default class TXLXYGBase extends Vue implements ControlInterface {
      * @type {string}
      * @memberof TXLXYG
      */
-    protected minorSortDir: string = 'DESC';
+    public minorSortDir: string = 'DESC';
 
     /**
      * 排序字段
@@ -460,7 +467,7 @@ export default class TXLXYGBase extends Vue implements ControlInterface {
      * @type {string}
      * @memberof TXLXYG
      */
-    protected minorSortPSDEF: string = 'txdq';
+    public minorSortPSDEF: string = 'txdq';
 
     /**
      * 分页条数
@@ -468,7 +475,7 @@ export default class TXLXYGBase extends Vue implements ControlInterface {
      * @type {number}
      * @memberof TXLXYG
      */
-    protected limit: number = 100;
+    public limit: number = 100;
 
     /**
      * 是否显示标题
@@ -476,7 +483,7 @@ export default class TXLXYGBase extends Vue implements ControlInterface {
      * @type {boolean}
      * @memberof TXLXYG
      */
-    protected isHideHeader: boolean = false;
+    public isHideHeader: boolean = false;
 
     /**
      * 是否默认选中第一条数据
@@ -484,7 +491,7 @@ export default class TXLXYGBase extends Vue implements ControlInterface {
      * @type {boolean}
      * @memberof TXLXYG
      */
-    @Prop({ default: false }) protected isSelectFirstDefault!: boolean;
+    @Prop({ default: false }) public isSelectFirstDefault!: boolean;
 
     /**
      * 是否单选
@@ -492,7 +499,7 @@ export default class TXLXYGBase extends Vue implements ControlInterface {
      * @type {boolean}
      * @memberof TXLXYG
      */
-    @Prop() protected isSingleSelect?: boolean;
+    @Prop() public isSingleSelect?: boolean;
 
     /**
      * 选中数据字符串
@@ -500,7 +507,7 @@ export default class TXLXYGBase extends Vue implements ControlInterface {
      * @type {string}
      * @memberof TXLXYG
      */
-    @Prop() protected selectedData?: string;
+    @Prop() public selectedData?: string;
 
     /**
      * 选中值变化
@@ -537,7 +544,7 @@ export default class TXLXYGBase extends Vue implements ControlInterface {
      * @type {(number | 0 | 1 | 2)}
      * @memberof TXLXYG
      */
-    @Prop({default: 2}) protected gridRowActiveMode!: number;
+    @Prop({default: 2}) public gridRowActiveMode!: number;
 
     /**
      * 是否开启行编辑
@@ -545,7 +552,7 @@ export default class TXLXYGBase extends Vue implements ControlInterface {
      * @type {boolean}
      * @memberof TXLXYG
      */
-    @Prop({default: false}) protected isOpenEdit!: boolean;
+    @Prop({default: false}) public isOpenEdit!: boolean;
 
     /**
      * 实际是否开启行编辑
@@ -553,7 +560,7 @@ export default class TXLXYGBase extends Vue implements ControlInterface {
      * @type {boolean}
      * @memberof TXLXYG
      */
-    protected actualIsOpenEdit: boolean = this.isOpenEdit;
+    public actualIsOpenEdit: boolean = this.isOpenEdit;
 
     /**
      * 总条数
@@ -561,7 +568,7 @@ export default class TXLXYGBase extends Vue implements ControlInterface {
      * @type {number}
      * @memberof TXLXYG
      */
-    protected totalrow: number = 0;
+    public totalrow: number = 0;
 
     /**
      * 选中行数据
@@ -569,7 +576,7 @@ export default class TXLXYGBase extends Vue implements ControlInterface {
      * @type {any[]}
      * @memberof Main
      */
-    protected selections: any[] = [];
+    public selections: any[] = [];
 
     /**
      * 拦截行选中
@@ -577,7 +584,9 @@ export default class TXLXYGBase extends Vue implements ControlInterface {
      * @type {boolean}
      * @memberof Main
      */
-    protected stopRowClick: boolean = false;
+    public stopRowClick: boolean = false;
+
+
 
 
     /**
@@ -586,7 +595,7 @@ export default class TXLXYGBase extends Vue implements ControlInterface {
      * @type {boolean}
      * @memberof TXLXYG
      */
-    protected isDisplay:boolean = true;
+    public isDisplay:boolean = true;
 
     /**
      * 部件刷新
@@ -594,7 +603,7 @@ export default class TXLXYGBase extends Vue implements ControlInterface {
      * @param {any[]} args
      * @memberof TXLXYG
      */
-    protected refresh(args: any[]): void {
+    public refresh(args: any[]): void {
         this.load();
     }
 
@@ -612,7 +621,7 @@ export default class TXLXYGBase extends Vue implements ControlInterface {
      * @type {boolean}
      * @memberof AppEmbedPicker
      */
-    protected isDragendCol: boolean = false;
+    public isDragendCol: boolean = false;
 
     /**
      * 所有列成员
@@ -620,7 +629,7 @@ export default class TXLXYGBase extends Vue implements ControlInterface {
      * @type {any[]}
      * @memberof TXLXYG
      */
-    protected allColumns: any[] = [
+    public allColumns: any[] = [
         {
             name: 'ygbh',
             label: '员工编号',
@@ -748,7 +757,7 @@ export default class TXLXYGBase extends Vue implements ControlInterface {
      * @type {*}
      * @memberof TXLXYG
      */
-    protected rules: any = {
+    public rules: any = {
         srfkey: [
              { required: false, validator: (rule:any, value:any, callback:any) => { return (rule.required && (value === null || value === undefined || value === "")) ? false : true;}, message: '人员信息标识 值不能为空', trigger: 'change' },
             { required: false, validator: (rule:any, value:any, callback:any) => { return (rule.required && (value === null || value === undefined || value === "")) ? false : true;}, message: '人员信息标识 值不能为空', trigger: 'blur' },
@@ -761,7 +770,7 @@ export default class TXLXYGBase extends Vue implements ControlInterface {
      * @param {*} [arg={}]
      * @memberof TXLXYG
      */
-    protected load(opt: any = {}, pageReset: boolean = false): void {
+    public load(opt: any = {}, pageReset: boolean = false): void {
         if(!this.fetchAction){
             this.$Notice.error({ title: '错误', desc: 'PIMPERSONLTXYGGridView视图表格fetchAction参数未配置' });
             return;
@@ -783,7 +792,9 @@ export default class TXLXYGBase extends Vue implements ControlInterface {
         const parentdata: any = {};
         this.$emit('beforeload', parentdata);
         Object.assign(arg, parentdata);
-        Object.assign(arg,{viewparams:this.viewparams});
+        let tempViewParams:any = parentdata.viewparams?parentdata.viewparams:{};
+        Object.assign(tempViewParams,JSON.parse(JSON.stringify(this.viewparams)));
+        Object.assign(arg,{viewparams:tempViewParams});
         const post: Promise<any> = this.service.search(this.fetchAction,JSON.parse(JSON.stringify(this.context)), arg, this.showBusyIndicator);
         post.then((response: any) => {
             if (!response.status || response.status !== 200) {
@@ -834,7 +845,7 @@ export default class TXLXYGBase extends Vue implements ControlInterface {
      * @returns {Promise<any>}
      * @memberof TXLXYG
      */
-    protected async remove(datas: any[]): Promise<any> {
+    public async remove(datas: any[]): Promise<any> {
         if(!this.removeAction){
             this.$Notice.error({ title: '错误', desc: 'PIMPERSONLTXYGGridView视图表格removeAction参数未配置' });
             return;
@@ -937,7 +948,7 @@ export default class TXLXYGBase extends Vue implements ControlInterface {
      * @param {*} [arg={}]
      * @memberof TXLXYG
      */
-    protected addBatch(arg: any = {}): void {
+    public addBatch(arg: any = {}): void {
         if(!this.fetchAction){
             this.$Notice.error({ title: '错误', desc: 'PIMPERSONLTXYGGridView视图表格fetchAction参数未配置' });
             return;
@@ -983,7 +994,7 @@ export default class TXLXYGBase extends Vue implements ControlInterface {
      * @param {*} data
      * @memberof TXLXYG
      */
-    protected exportExcel(data: any = {}): void {
+    public exportExcel(data: any = {}): void {
         // 导出Excel
         const doExport = async (_data:any) => {
             const tHeader: Array<any> = [];
@@ -1062,7 +1073,7 @@ export default class TXLXYGBase extends Vue implements ControlInterface {
             codelistType : 'DYNAMIC',
             renderMode: 'other',
             textSeparator: '、',
-            valueSeparator: ';',
+            valueSeparator: ',',
           },
           {
             name: 'rank',
@@ -1112,13 +1123,13 @@ export default class TXLXYGBase extends Vue implements ControlInterface {
     /**
      * 解析代码表和vlaue，设置items
      *
-     * @private
+     * @public
      * @param {any[]} items 代码表数据
      * @param {*} value
      * @returns {*}
      * @memberof TXLXYG
      */
-    private getCodelistValue(items: any[], value: any, codelist: any,){
+    public getCodelistValue(items: any[], value: any, codelist: any,){
         if(!value){
             return this.$t('codelist.'+codelist.srfkey+'.empty');
         }
@@ -1165,13 +1176,13 @@ export default class TXLXYGBase extends Vue implements ControlInterface {
     /**
      * 获取代码项
      *
-     * @private
+     * @public
      * @param {any[]} items
      * @param {*} value
      * @returns {*}
      * @memberof TXLXYG
      */
-    private getItem(items: any[], value: any, codelist: any): any {
+    public getItem(items: any[], value: any, codelist: any): any {
         const arr: Array<any> = items.filter(item => {return item.value == value});
         if (arr.length !== 1) {
             return undefined;
@@ -1188,7 +1199,7 @@ export default class TXLXYGBase extends Vue implements ControlInterface {
      *
      * @memberof TXLXYG
      */
-    protected created(): void {
+    public created(): void {
         this.afterCreated();
     }
 
@@ -1197,7 +1208,7 @@ export default class TXLXYGBase extends Vue implements ControlInterface {
      *
      *  @memberof TXLXYG
      */    
-    protected afterCreated(){
+    public afterCreated(){
         this.setColState();
         if (this.viewState) {
             this.viewStateEvent = this.viewState.subscribe(({ tag, action, data }) => {
@@ -1222,7 +1233,7 @@ export default class TXLXYGBase extends Vue implements ControlInterface {
      *
      * @memberof TXLXYG
      */
-    protected destroyed() {
+    public destroyed() {
         this.afterDestroy();
     }
 
@@ -1231,7 +1242,7 @@ export default class TXLXYGBase extends Vue implements ControlInterface {
      *
      * @memberof TXLXYG
      */
-    protected afterDestroy() {
+    public afterDestroy() {
         if (this.viewStateEvent) {
             this.viewStateEvent.unsubscribe();
         }
@@ -1243,7 +1254,7 @@ export default class TXLXYGBase extends Vue implements ControlInterface {
      * @returns {any[]}
      * @memberof TXLXYG
      */
-    protected getSelection(): any[] {
+    public getSelection(): any[] {
         return this.selections;
     }
 
@@ -1254,7 +1265,7 @@ export default class TXLXYGBase extends Vue implements ControlInterface {
      * @returns {void}
      * @memberof TXLXYG
      */
-    protected rowDBLClick($event: any): void {
+    public rowDBLClick($event: any): void {
         if (!$event || this.actualIsOpenEdit || Object.is(this.gridRowActiveMode,0)) {
             return;
         }
@@ -1278,7 +1289,7 @@ export default class TXLXYGBase extends Vue implements ControlInterface {
      * @returns {void}
      * @memberof  TXLXYG
      */
-    protected select($event: any): void {
+    public select($event: any): void {
         if (!$event) {
             return;
         }
@@ -1293,7 +1304,7 @@ export default class TXLXYGBase extends Vue implements ControlInterface {
      * @param {*} $event
      * @memberof  TXLXYG
      */
-    protected selectAll($event: any): void {
+    public selectAll($event: any): void {
         if (!$event) {
             return;
         }
@@ -1310,7 +1321,7 @@ export default class TXLXYGBase extends Vue implements ControlInterface {
      * @returns {void}
      * @memberof TXLXYG
      */
-    protected rowClick($event: any, ifAlways: boolean = false): void {
+    public rowClick($event: any, ifAlways: boolean = false): void {
         if (!ifAlways && (!$event || this.actualIsOpenEdit)) {
             return;
         }
@@ -1352,7 +1363,7 @@ export default class TXLXYGBase extends Vue implements ControlInterface {
      * @returns {void}
      * @memberof TXLXYG
      */
-    protected pageOnChange($event: any): void {
+    public pageOnChange($event: any): void {
         if (!$event) {
             return;
         }
@@ -1370,7 +1381,7 @@ export default class TXLXYGBase extends Vue implements ControlInterface {
      * @returns {void}
      * @memberof TXLXYG
      */
-    protected onPageSizeChange($event: any): void {
+    public onPageSizeChange($event: any): void {
         if (!$event) {
             return;
         }
@@ -1388,7 +1399,7 @@ export default class TXLXYGBase extends Vue implements ControlInterface {
      *
      * @memberof TXLXYG
      */
-    protected pageRefresh(): void {
+    public pageRefresh(): void {
         this.load({});
     }
 
@@ -1398,7 +1409,7 @@ export default class TXLXYGBase extends Vue implements ControlInterface {
      * @param {{ column: any, prop: any, order: any }} { column, prop, order }
      * @memberof TXLXYG
      */
-    protected onSortChange({ column, prop, order }: { column: any, prop: any, order: any }): void {
+    public onSortChange({ column, prop, order }: { column: any, prop: any, order: any }): void {
         const dir = Object.is(order, 'ascending') ? 'asc' : Object.is(order, 'descending') ? 'desc' : '';
         if (Object.is(dir, this.minorSortDir) && Object.is(this.minorSortPSDEF, prop)) {
             return;
@@ -1415,7 +1426,7 @@ export default class TXLXYGBase extends Vue implements ControlInterface {
      * @returns {string}
      * @memberof TXLXYG
      */
-    protected onRowClassName({ row, rowIndex }: { row: any, rowIndex: any }): string {
+    public onRowClassName({ row, rowIndex }: { row: any, rowIndex: any }): string {
         const index = this.selections.findIndex((select: any) => Object.is(select.srfkey, row.srfkey));
         return index !== -1 ? 'grid-row-select' : '';
     }
@@ -1430,7 +1441,7 @@ export default class TXLXYGBase extends Vue implements ControlInterface {
      * @param {*} $event
      * @memberof TXLXYG
      */
-	protected uiAction(row: any, tag: any, $event: any) {
+	public uiAction(row: any, tag: any, $event: any) {
         this.rowClick(row, true);
     }
 
@@ -1439,7 +1450,7 @@ export default class TXLXYGBase extends Vue implements ControlInterface {
      *
      * @memberof TXLXYG
      */
-    protected setColState() {
+    public setColState() {
 		const _data: any = localStorage.getItem('pimperson_txlxyg_grid');
 		if (_data) {
 			let columns = JSON.parse(_data);
@@ -1457,7 +1468,7 @@ export default class TXLXYGBase extends Vue implements ControlInterface {
      *
      * @memberof TXLXYG
      */
-    protected onColChange() {
+    public onColChange() {
         localStorage.setItem('pimperson_txlxyg_grid', JSON.stringify(this.allColumns));
     }
 
@@ -1468,7 +1479,7 @@ export default class TXLXYGBase extends Vue implements ControlInterface {
      * @returns {boolean}
      * @memberof TXLXYG
      */
-    protected getColumnState(name: string): boolean {
+    public getColumnState(name: string): boolean {
         let column = this.allColumns.find((col: any) =>
             Object.is(name, col.name)
         );
@@ -1493,7 +1504,7 @@ export default class TXLXYGBase extends Vue implements ControlInterface {
      * @returns {void}
      * @memberof TXLXYG
      */
-    protected save(args: any[], params?: any, $event?: any, xData?: any): void {
+    public save(args: any[], params?: any, $event?: any, xData?: any): void {
         let _this = this;
         let promises:any = [];
         _this.items.forEach((item:any)=>{
@@ -1535,7 +1546,7 @@ export default class TXLXYGBase extends Vue implements ControlInterface {
      * @returns {void}
      * @memberof TXLXYG
      */
-    protected getRowClassName(args:{row: any,rowIndex: number}){
+    public getRowClassName(args:{row: any,rowIndex: number}){
         let isSelected = this.selections.some((item:any)=>{
             return Object.is(item.pimperson,args.row.pimperson);
         });

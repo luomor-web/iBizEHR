@@ -183,7 +183,7 @@ public class ORMORGSECTORServiceImpl extends ServiceImpl<ORMORGSECTORMapper, ORM
     @Override
     public void createBatch(List<ORMORGSECTOR> list) {
         list.forEach(item->fillParentData(item));
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

@@ -14,3 +14,4 @@ networks:
   agent_network:
     driver: overlay
     attachable: true
+

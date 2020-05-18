@@ -77,7 +77,7 @@ public class PCMZJDYZWServiceImpl extends ServiceImpl<PCMZJDYZWMapper, PCMZJDYZW
     @Override
     public void createBatch(List<PCMZJDYZW> list) {
         list.forEach(item->fillParentData(item));
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

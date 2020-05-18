@@ -83,7 +83,7 @@ public class PCMPROFILESZYJTJServiceImpl extends ServiceImpl<PCMPROFILESZYJTJMap
 
     @Override
     public void createBatch(List<PCMPROFILESZYJTJ> list) {
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

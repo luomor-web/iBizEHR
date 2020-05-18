@@ -119,10 +119,10 @@ export default class PIMCONTRACTTYPERedirectViewBase extends WizardViewBase {
     /**
      * 引擎初始化
      *
-     * @protected
+     * @public
      * @memberof PIMCONTRACTTYPERedirectViewBase
      */
-    protected engineInit(): void {
+    public engineInit(): void {
     }
 
 

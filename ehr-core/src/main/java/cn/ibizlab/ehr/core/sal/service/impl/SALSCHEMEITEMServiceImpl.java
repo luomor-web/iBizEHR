@@ -147,7 +147,7 @@ public class SALSCHEMEITEMServiceImpl extends ServiceImpl<SALSCHEMEITEMMapper, S
     @Override
     public void createBatch(List<SALSCHEMEITEM> list) {
         list.forEach(item->fillParentData(item));
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

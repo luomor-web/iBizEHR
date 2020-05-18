@@ -78,7 +78,7 @@ public class WFReminderServiceImpl extends ServiceImpl<WFReminderMapper, WFRemin
     @Override
     public void createBatch(List<WFReminder> list) {
         list.forEach(item->fillParentData(item));
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

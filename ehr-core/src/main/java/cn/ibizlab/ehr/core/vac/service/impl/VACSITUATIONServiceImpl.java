@@ -79,7 +79,7 @@ public class VACSITUATIONServiceImpl extends ServiceImpl<VACSITUATIONMapper, VAC
     @Override
     public void createBatch(List<VACSITUATION> list) {
         list.forEach(item->fillParentData(item));
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

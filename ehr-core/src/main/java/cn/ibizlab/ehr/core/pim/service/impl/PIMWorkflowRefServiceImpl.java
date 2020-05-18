@@ -139,7 +139,7 @@ public class PIMWorkflowRefServiceImpl extends ServiceImpl<PIMWorkflowRefMapper,
     @Override
     public void createBatch(List<PIMWorkflowRef> list) {
         list.forEach(item->fillParentData(item));
-        saveBatch(list,batchSize);
+        this.saveOrUpdateBatch(list,batchSize);
     }
 
     @Override

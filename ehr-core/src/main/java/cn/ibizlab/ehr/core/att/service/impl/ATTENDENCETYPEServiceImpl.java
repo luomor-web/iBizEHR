@@ -83,7 +83,7 @@ public class ATTENDENCETYPEServiceImpl extends ServiceImpl<ATTENDENCETYPEMapper,
 
     @Override
     public void createBatch(List<ATTENDENCETYPE> list) {
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

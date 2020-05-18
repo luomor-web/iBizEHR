@@ -135,7 +135,7 @@ public class ORMZWDQGZServiceImpl extends ServiceImpl<ORMZWDQGZMapper, ORMZWDQGZ
     @Override
     public void createBatch(List<ORMZWDQGZ> list) {
         list.forEach(item->fillParentData(item));
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

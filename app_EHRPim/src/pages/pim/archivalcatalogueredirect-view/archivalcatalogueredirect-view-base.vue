@@ -119,10 +119,10 @@ export default class ARCHIVALCATALOGUERedirectViewBase extends WizardViewBase {
     /**
      * 引擎初始化
      *
-     * @protected
+     * @public
      * @memberof ARCHIVALCATALOGUERedirectViewBase
      */
-    protected engineInit(): void {
+    public engineInit(): void {
     }
 
 

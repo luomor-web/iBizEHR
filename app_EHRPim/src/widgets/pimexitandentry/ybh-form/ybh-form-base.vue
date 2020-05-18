@@ -108,7 +108,7 @@ export default class YBHBase extends Vue implements ControlInterface {
      * @type {string}
      * @memberof YBH
      */
-    @Prop() protected name?: string;
+    @Prop() public name?: string;
 
     /**
      * 视图通讯对象
@@ -116,7 +116,7 @@ export default class YBHBase extends Vue implements ControlInterface {
      * @type {Subject<ViewState>}
      * @memberof YBH
      */
-    @Prop() protected viewState!: Subject<ViewState>;
+    @Prop() public viewState!: Subject<ViewState>;
 
     /**
      * 应用上下文
@@ -124,7 +124,7 @@ export default class YBHBase extends Vue implements ControlInterface {
      * @type {*}
      * @memberof YBH
      */
-    @Prop() protected context: any;
+    @Prop() public context: any;
 
     /**
      * 视图参数
@@ -132,16 +132,16 @@ export default class YBHBase extends Vue implements ControlInterface {
      * @type {*}
      * @memberof YBH
      */
-    @Prop() protected viewparams: any;
+    @Prop() public viewparams: any;
 
     /**
      * 视图状态事件
      *
-     * @protected
+     * @public
      * @type {(Subscription | undefined)}
      * @memberof YBH
      */
-    protected viewStateEvent: Subscription | undefined;
+    public viewStateEvent: Subscription | undefined;
 
     /**
      * 获取部件类型
@@ -149,7 +149,7 @@ export default class YBHBase extends Vue implements ControlInterface {
      * @returns {string}
      * @memberof YBH
      */
-    protected getControlType(): string {
+    public getControlType(): string {
         return 'FORM'
     }
 
@@ -161,7 +161,7 @@ export default class YBHBase extends Vue implements ControlInterface {
      * @type {Array<*>}
      * @memberof YBH
      */    
-    protected counterServiceArray:Array<any> = [];
+    public counterServiceArray:Array<any> = [];
 
     /**
      * 建构部件服务对象
@@ -169,7 +169,7 @@ export default class YBHBase extends Vue implements ControlInterface {
      * @type {YBHService}
      * @memberof YBH
      */
-    protected service: YBHService = new YBHService({ $store: this.$store });
+    public service: YBHService = new YBHService({ $store: this.$store });
 
     /**
      * 实体服务对象
@@ -177,7 +177,7 @@ export default class YBHBase extends Vue implements ControlInterface {
      * @type {PIMEXITANDENTRYService}
      * @memberof YBH
      */
-    protected appEntityService: PIMEXITANDENTRYService = new PIMEXITANDENTRYService({ $store: this.$store });
+    public appEntityService: PIMEXITANDENTRYService = new PIMEXITANDENTRYService({ $store: this.$store });
     
 
 
@@ -187,7 +187,7 @@ export default class YBHBase extends Vue implements ControlInterface {
      * @param {any} args
      * @memberof YBH
      */
-    protected closeView(args: any): void {
+    public closeView(args: any): void {
         let _this: any = this;
         _this.$emit('closeview', [args]);
     }
@@ -236,7 +236,7 @@ export default class YBHBase extends Vue implements ControlInterface {
      * @type {boolean}
      * @memberof YBH
      */
-    @Prop({ default: false }) protected autosave?: boolean;
+    @Prop({ default: false }) public autosave?: boolean;
 
     /**
      * 显示处理提示
@@ -244,7 +244,7 @@ export default class YBHBase extends Vue implements ControlInterface {
      * @type {boolean}
      * @memberof YBH
      */
-    @Prop({ default: true }) protected showBusyIndicator?: boolean;
+    @Prop({ default: true }) public showBusyIndicator?: boolean;
 
     /**
      * 部件行为--submit
@@ -252,7 +252,7 @@ export default class YBHBase extends Vue implements ControlInterface {
      * @type {string}
      * @memberof YBH
      */
-    @Prop() protected WFSubmitAction!: string;
+    @Prop() public WFSubmitAction!: string;
     
     /**
      * 部件行为--start
@@ -260,7 +260,7 @@ export default class YBHBase extends Vue implements ControlInterface {
      * @type {string}
      * @memberof YBH
      */
-    @Prop() protected WFStartAction!: string;
+    @Prop() public WFStartAction!: string;
     
     /**
      * 部件行为--update
@@ -268,7 +268,7 @@ export default class YBHBase extends Vue implements ControlInterface {
      * @type {string}
      * @memberof YBH
      */
-    @Prop() protected updateAction!: string;
+    @Prop() public updateAction!: string;
     
     /**
      * 部件行为--remove
@@ -276,7 +276,7 @@ export default class YBHBase extends Vue implements ControlInterface {
      * @type {string}
      * @memberof YBH
      */
-    @Prop() protected removeAction!: string;
+    @Prop() public removeAction!: string;
     
     /**
      * 部件行为--loaddraft
@@ -284,7 +284,7 @@ export default class YBHBase extends Vue implements ControlInterface {
      * @type {string}
      * @memberof YBH
      */
-    @Prop() protected loaddraftAction!: string;
+    @Prop() public loaddraftAction!: string;
     
     /**
      * 部件行为--load
@@ -292,7 +292,7 @@ export default class YBHBase extends Vue implements ControlInterface {
      * @type {string}
      * @memberof YBH
      */
-    @Prop() protected loadAction!: string;
+    @Prop() public loadAction!: string;
     
     /**
      * 部件行为--create
@@ -300,7 +300,7 @@ export default class YBHBase extends Vue implements ControlInterface {
      * @type {string}
      * @memberof YBH
      */
-    @Prop() protected createAction!: string;
+    @Prop() public createAction!: string;
 
     /**
      * 部件行为--create
@@ -308,7 +308,7 @@ export default class YBHBase extends Vue implements ControlInterface {
      * @type {string}
      * @memberof YBH
      */
-    @Prop() protected searchAction!: string;
+    @Prop() public searchAction!: string;
 
     /**
      * 视图标识
@@ -316,7 +316,7 @@ export default class YBHBase extends Vue implements ControlInterface {
      * @type {string}
      * @memberof YBH
      */
-    @Prop() protected viewtag!: string;
+    @Prop() public viewtag!: string;
 
     /**
      * 表单状态
@@ -324,7 +324,7 @@ export default class YBHBase extends Vue implements ControlInterface {
      * @type {Subject<any>}
      * @memberof YBH
      */
-    protected formState: Subject<any> = new Subject();
+    public formState: Subject<any> = new Subject();
 
     /**
      * 忽略表单项值变化
@@ -332,34 +332,34 @@ export default class YBHBase extends Vue implements ControlInterface {
      * @type {boolean}
      * @memberof YBH
      */
-    protected ignorefieldvaluechange: boolean = false;
+    public ignorefieldvaluechange: boolean = false;
 
     /**
      * 数据变化
      *
-     * @private
+     * @public
      * @type {Subject<any>}
      * @memberof YBH
      */
-    private dataChang: Subject<any> = new Subject();
+    public dataChang: Subject<any> = new Subject();
 
     /**
      * 视图状态事件
      *
-     * @private
+     * @public
      * @type {(Subscription | undefined)}
      * @memberof YBH
      */
-    private dataChangEvent: Subscription | undefined;
+    public dataChangEvent: Subscription | undefined;
 
     /**
      * 原始数据
      *
-     * @private
+     * @public
      * @type {*}
      * @memberof YBH
      */
-    private oldData: any = {};
+    public oldData: any = {};
 
     /**
      * 表单数据对象
@@ -367,7 +367,7 @@ export default class YBHBase extends Vue implements ControlInterface {
      * @type {*}
      * @memberof YBH
      */
-    protected data: any = {
+    public data: any = {
         srfupdatedate: null,
         srforikey: null,
         srfkey: null,
@@ -397,7 +397,7 @@ export default class YBHBase extends Vue implements ControlInterface {
       * @type {string}
       * @memberof YBH
       */
-    protected currentAction: string = "";
+    public currentAction: string = "";
 
     /**
       * 关系界面计数器
@@ -405,7 +405,7 @@ export default class YBHBase extends Vue implements ControlInterface {
       * @type {number}
       * @memberof YBH
       */
-    protected drcounter: number = 0;
+    public drcounter: number = 0;
 
     /**
       * 需要等待关系界面保存时，第一次调用save参数的备份
@@ -413,7 +413,7 @@ export default class YBHBase extends Vue implements ControlInterface {
       * @type {number}
       * @memberof YBH
       */
-    protected drsaveopt: any = {};
+    public drsaveopt: any = {};
 
     /**
       * 表单保存回调存储对象
@@ -421,7 +421,7 @@ export default class YBHBase extends Vue implements ControlInterface {
       * @type {any}
       * @memberof YBH
       */
-    protected saveState:any ;
+    public saveState:any ;
 
     /**
      * 属性值规则
@@ -429,7 +429,7 @@ export default class YBHBase extends Vue implements ControlInterface {
      * @type {*}
      * @memberof YBH
      */
-    protected rules: any = {
+    public rules: any = {
         srfupdatedate: [
             { type: 'string', message: '更新时间 值必须为字符串类型', trigger: 'change' },
             { type: 'string', message: '更新时间 值必须为字符串类型', trigger: 'blur' },
@@ -558,7 +558,7 @@ export default class YBHBase extends Vue implements ControlInterface {
      * @type {*}
      * @memberof YBH
      */
-    protected detailsModel: any = {
+    public detailsModel: any = {
         group1: new FormGroupPanelModel({ caption: '出（国）境申请', detailType: 'GROUPPANEL', name: 'group1', visible: true, isShowCaption: false, form: this, uiActionGroup: { caption: '', langbase: 'entities.pimexitandentry.ybh_form', extractMode: 'ITEM', details: [] } })
 , 
         formpage1: new FormPageModel({ caption: '基本信息', detailType: 'FORMPAGE', name: 'formpage1', visible: true, isShowCaption: true, form: this })
@@ -849,11 +849,11 @@ export default class YBHBase extends Vue implements ControlInterface {
     /**
      * 重置表单项值
      *
-     * @private
+     * @public
      * @param {{ name: string, newVal: any, oldVal: any }} { name, newVal, oldVal }
      * @memberof YBH
      */
-    private resetFormData({ name, newVal, oldVal }: { name: string, newVal: any, oldVal: any }): void {
+    public resetFormData({ name, newVal, oldVal }: { name: string, newVal: any, oldVal: any }): void {
     }
 
     /**
@@ -862,7 +862,7 @@ export default class YBHBase extends Vue implements ControlInterface {
       * @param {any[]} args
       * @memberof EditForm
       */
-    protected ResetData(_datas:any){
+    public ResetData(_datas:any){
         if(Object.keys(_datas).length >0){
             Object.keys(_datas).forEach((name: string) => {
                 if (this.data.hasOwnProperty(name)) {
@@ -875,11 +875,11 @@ export default class YBHBase extends Vue implements ControlInterface {
     /**
      * 表单逻辑
      *
-     * @private
+     * @public
      * @param {{ name: string, newVal: any, oldVal: any }} { name, newVal, oldVal }
      * @memberof YBH
      */
-    private formLogic({ name, newVal, oldVal }: { name: string, newVal: any, oldVal: any }): void {
+    public formLogic({ name, newVal, oldVal }: { name: string, newVal: any, oldVal: any }): void {
                 
 
 
@@ -916,12 +916,12 @@ export default class YBHBase extends Vue implements ControlInterface {
     /**
      * 表单值变化
      *
-     * @private
+     * @public
      * @param {{ name: string, newVal: any, oldVal: any }} { name, newVal, oldVal }
      * @returns {void}
      * @memberof YBH
      */
-    private formDataChange({ name, newVal, oldVal }: { name: string, newVal: any, oldVal: any }): void {
+    public formDataChange({ name, newVal, oldVal }: { name: string, newVal: any, oldVal: any }): void {
         if (this.ignorefieldvaluechange) {
             return;
         }
@@ -933,13 +933,13 @@ export default class YBHBase extends Vue implements ControlInterface {
     /**
      * 表单加载完成
      *
-     * @private
+     * @public
      * @param {*} [data={}]
      * @param {string} [action]
      * @memberof YBH
      */
-    private onFormLoad(data: any = {},action:string): void {
-        if(Object.is(action,"save") || Object.is(action,"autoSave"))
+    public onFormLoad(data: any = {},action:string): void {
+        if(Object.is(action,"save") || Object.is(action,"autoSave") || Object.is(action,"submit"))
         // 更新context的实体主键
         if(data.pimexitandentry){
             Object.assign(this.context,{pimexitandentry:data.pimexitandentry})
@@ -959,7 +959,7 @@ export default class YBHBase extends Vue implements ControlInterface {
      * @param {string} [action]
      * @memberof YBH
      */
-    protected fillForm(_datas: any = {},action:string): void {
+    public fillForm(_datas: any = {},action:string): void {
         this.ignorefieldvaluechange = true;
         Object.keys(_datas).forEach((name: string) => {
             if (this.data.hasOwnProperty(name)) {
@@ -980,11 +980,11 @@ export default class YBHBase extends Vue implements ControlInterface {
     /**
      * 设置表单项是否启用
      *
-     * @protected
+     * @public
      * @param {*} data
      * @memberof YBH
      */
-    protected setFormEnableCond(data: any): void {
+    public setFormEnableCond(data: any): void {
         Object.values(this.detailsModel).forEach((detail: any) => {
             if (!Object.is(detail.detailType, 'FORMITEM')) {
                 return;
@@ -997,10 +997,10 @@ export default class YBHBase extends Vue implements ControlInterface {
     /**
      * 重置草稿表单状态
      *
-     * @private
+     * @public
      * @memberof YBH
      */
-    private resetDraftFormStates(): void {
+    public resetDraftFormStates(): void {
         const form: any = this.$refs.form;
         if (form) {
             form.resetFields();
@@ -1012,7 +1012,7 @@ export default class YBHBase extends Vue implements ControlInterface {
      *
      * @memberof YBH
      */
-    protected resetValidates(): void {
+    public resetValidates(): void {
         Object.values(this.detailsModel).forEach((detail: any) => {
             if (!Object.is(detail.detailType, 'FORMITEM')) {
                 return;
@@ -1028,7 +1028,7 @@ export default class YBHBase extends Vue implements ControlInterface {
      * @param {any[]} fieldErrors
      * @memberof YBH
      */
-    protected fillValidates(fieldErrors: any[]): void {
+    public fillValidates(fieldErrors: any[]): void {
         fieldErrors.forEach((error: any) => {
             const formItem: FormItemModel = this.detailsModel[error.field];
             if (!formItem) {
@@ -1046,7 +1046,7 @@ export default class YBHBase extends Vue implements ControlInterface {
      * @returns {boolean} 
      * @memberof YBH
      */
-    protected formValidateStatus(): boolean {
+    public formValidateStatus(): boolean {
         const form: any = this.$refs.form;
         let validatestate: boolean = true;
         form.validate((valid: boolean) => {
@@ -1061,7 +1061,7 @@ export default class YBHBase extends Vue implements ControlInterface {
      * @returns {*}
      * @memberof YBH
      */
-    protected getValues(): any {
+    public getValues(): any {
         return this.data;
     }
 
@@ -1072,7 +1072,7 @@ export default class YBHBase extends Vue implements ControlInterface {
      * @returns {void}
      * @memberof YBH
      */
-    protected onFormItemValueChange($event: { name: string, value: any }): void {
+    public onFormItemValueChange($event: { name: string, value: any }): void {
         if (!$event) {
             return;
         }
@@ -1090,7 +1090,7 @@ export default class YBHBase extends Vue implements ControlInterface {
      * @returns {void}
      * @memberof YBH
      */
-    protected setDataItemValue(name: string, value: any): void {
+    public setDataItemValue(name: string, value: any): void {
         if (!name || Object.is(name, '') || !this.data.hasOwnProperty(name)) {
             return;
         }
@@ -1108,7 +1108,7 @@ export default class YBHBase extends Vue implements ControlInterface {
      * @param {*} $event
      * @memberof YBH
      */
-    protected groupUIActionClick($event: any): void {
+    public groupUIActionClick($event: any): void {
         if (!$event) {
             return;
         }
@@ -1120,7 +1120,7 @@ export default class YBHBase extends Vue implements ControlInterface {
      *
      * @memberof YBH
      */
-    protected created(): void {
+    public created(): void {
         this.afterCreated();
     }
 
@@ -1129,7 +1129,7 @@ export default class YBHBase extends Vue implements ControlInterface {
      *
      *  @memberof YBH
      */    
-    protected afterCreated(){
+    public afterCreated(){
         if (this.viewState) {
             this.viewStateEvent = this.viewState.subscribe(({ tag, action, data }) => {
                 if (!Object.is(tag, this.name)) {
@@ -1182,7 +1182,7 @@ export default class YBHBase extends Vue implements ControlInterface {
      *
      * @memberof YBH
      */
-    protected destroyed() {
+    public destroyed() {
         this.afterDestroy();
     }
 
@@ -1191,7 +1191,7 @@ export default class YBHBase extends Vue implements ControlInterface {
      *
      * @memberof YBH
      */
-    protected afterDestroy() {
+    public afterDestroy() {
         if (this.viewStateEvent) {
             this.viewStateEvent.unsubscribe();
         }
@@ -1206,7 +1206,7 @@ export default class YBHBase extends Vue implements ControlInterface {
      * @param {*} [arg={}]
      * @memberof @memberof YBH
      */
-    protected copy(arg: any = {}): void {
+    public copy(arg: any = {}): void {
         this.loadDraft(arg);
     }
 
@@ -1214,7 +1214,7 @@ export default class YBHBase extends Vue implements ControlInterface {
      *打印
      *@memberof @memberof YBH
      */
-    protected print(){
+    public print(){
         let _this:any = this;
         _this.$print({id:'form',popTitle:'已驳回'});
     }
@@ -1225,7 +1225,7 @@ export default class YBHBase extends Vue implements ControlInterface {
      * @param {any[]} args
      * @memberof YBH
      */
-    protected refresh(args: any[]): void {
+    public refresh(args: any[]): void {
         let arg: any = {};
         Object.assign(arg,args[0]);
         if (this.data.srfkey && !Object.is(this.data.srfkey, '')) {
@@ -1247,7 +1247,7 @@ export default class YBHBase extends Vue implements ControlInterface {
      * @returns {void}
      * @memberof YBH
      */
-    protected autoLoad(arg: any = {}): void {
+    public autoLoad(arg: any = {}): void {
         if (arg.srfkey && !Object.is(arg.srfkey, '')) {
             Object.assign(arg, { srfkey: arg.srfkey });
             this.load(arg);
@@ -1264,11 +1264,11 @@ export default class YBHBase extends Vue implements ControlInterface {
     /**
      * 加载
      *
-     * @private
+     * @public
      * @param {*} [opt={}]
      * @memberof YBH
      */
-    private load(opt: any = {}): void {
+    public load(opt: any = {}): void {
         if(!this.loadAction){
             this.$Notice.error({ title: '错误', desc: 'PIMEXITANDENTRYEditView_YBH视图表单loadAction参数未配置' });
             return;
@@ -1303,7 +1303,7 @@ export default class YBHBase extends Vue implements ControlInterface {
      * @param {*} [opt={}]
      * @memberof YBH
      */
-    protected loadDraft(opt: any = {}): void {
+    public loadDraft(opt: any = {}): void {
         if(!this.loaddraftAction){
             this.$Notice.error({ title: '错误', desc: 'PIMEXITANDENTRYEditView_YBH视图表单loaddraftAction参数未配置' });
             return;
@@ -1357,7 +1357,7 @@ export default class YBHBase extends Vue implements ControlInterface {
      * @param {*} [opt={}]
      * @memberof YBH
      */
-    protected autoSave(opt: any = {}): void {
+    public autoSave(opt: any = {}): void {
         if (!this.formValidateStatus()) {
             return;
         }
@@ -1408,7 +1408,7 @@ export default class YBHBase extends Vue implements ControlInterface {
      * @returns {Promise<any>}
      * @memberof YBH
      */
-    protected async save(opt: any = {}, showResultInfo?: boolean, ifStateNext: boolean = true): Promise<any> {
+    public async save(opt: any = {}, showResultInfo?: boolean, ifStateNext: boolean = true): Promise<any> {
         return new Promise((resolve: any, reject: any) => {
             showResultInfo = showResultInfo === undefined ? true : false;
             if (!this.formValidateStatus()) {
@@ -1474,11 +1474,11 @@ export default class YBHBase extends Vue implements ControlInterface {
     /**
     * 删除
     *
-    * @private
+    * @public
     * @param {*} [opt={}]
     * @memberof EditForm
     */
-    private remove(opt:Array<any> = [],showResultInfo?: boolean): Promise<any> {
+    public remove(opt:Array<any> = [],showResultInfo?: boolean): Promise<any> {
         return new Promise((resolve: any, reject: any) => {
             if(!this.removeAction){
                 this.$Notice.error({ title: '错误', desc: 'PIMEXITANDENTRYEditView_YBH视图表单removeAction参数未配置' });
@@ -1512,12 +1512,10 @@ export default class YBHBase extends Vue implements ControlInterface {
      * @returns {Promise<any>}
      * @memberof YBH
      */
-    protected async wfstart(data: any,localdata?:any): Promise<any> {
+    public async wfstart(data: any,localdata?:any): Promise<any> {
         return new Promise((resolve: any, reject: any) => {
             const _this: any = this;
-            const arg: any = data[0];
-            Object.assign(arg,{viewparams:this.viewparams});
-            const post: Promise<any> = Object.is(arg.srfuf, '1')?this.service.update(this.updateAction, JSON.parse(JSON.stringify(this.context)),arg, this.showBusyIndicator):this.service.add(this.createAction,JSON.parse(JSON.stringify(this.context)),arg, this.showBusyIndicator);
+            const post: Promise<any> = _this.save({},false);
             post.then((response:any) =>{
                 const arg:any = response.data;
                 if(this.viewparams){
@@ -1570,7 +1568,7 @@ export default class YBHBase extends Vue implements ControlInterface {
      * @returns {Promise<any>}
      * @memberof YBH
      */
-    protected async wfsubmit(data: any,localdata?:any): Promise<any> {
+    public async wfsubmit(data: any,localdata?:any): Promise<any> {
         return new Promise((resolve: any, reject: any) => {
         const _this: any = this;
         const arg: any = data[0];
@@ -1581,6 +1579,13 @@ export default class YBHBase extends Vue implements ControlInterface {
         const post: Promise<any> = Object.is(arg.srfuf, '1')?this.service.update(this.updateAction, JSON.parse(JSON.stringify(this.context)),arg, this.showBusyIndicator):this.service.add(this.createAction,JSON.parse(JSON.stringify(this.context)),arg, this.showBusyIndicator);
         post.then((response:any) =>{
                 const arg:any = response.data;
+                // 保存完成UI处理
+                this.onFormLoad(arg,'save');
+                this.$emit('save', arg);
+                this.$nextTick(() => {
+                    this.formState.next({ type: 'save', data: arg });
+                });
+                // 准备提交参数
                 if(this.viewparams){
                     Object.assign(arg,{viewparams:this.viewparams});
                 }
@@ -1592,6 +1597,8 @@ export default class YBHBase extends Vue implements ControlInterface {
                         }
                         return;
                     }
+                    this.onFormLoad(arg,'submit');
+                    this.$store.dispatch('viewaction/datasaved', { viewtag: this.viewtag });
                     this.$Notice.info({ title: '', desc: '工作流提交成功' });
                     resolve(response);
             }).catch((response: any) => {
@@ -1633,7 +1640,7 @@ export default class YBHBase extends Vue implements ControlInterface {
      * @returns {void}
      * @memberof YBH
      */
-    protected updateFormItems(mode: string, data: any = {}, updateDetails: string[], showloading?: boolean): void {
+    public updateFormItems(mode: string, data: any = {}, updateDetails: string[], showloading?: boolean): void {
         if (!mode || (mode && Object.is(mode, ''))) {
             return;
         }
@@ -1678,7 +1685,7 @@ export default class YBHBase extends Vue implements ControlInterface {
      * @param {*} $event
      * @memberof YBH
      */
-    protected onEnter($event: any): void {
+    public onEnter($event: any): void {
     }
 
     /**
@@ -1687,7 +1694,7 @@ export default class YBHBase extends Vue implements ControlInterface {
      * @param {any[]} args
      * @memberof YBH
      */
-    protected saveAndExit(data:any[]):Promise<any>{
+    public saveAndExit(data:any[]):Promise<any>{
         let _this = this;
         return new Promise((resolve: any, reject: any) =>{
             let arg: any = {};
@@ -1712,7 +1719,7 @@ export default class YBHBase extends Vue implements ControlInterface {
      * @param {any[]} args
      * @memberof YBH
      */
-    protected saveAndNew(data:any[]):Promise<any>{
+    public saveAndNew(data:any[]):Promise<any>{
         let _this = this;
         return new Promise((resolve: any, reject: any) =>{
             let arg: any = {};
@@ -1735,7 +1742,7 @@ export default class YBHBase extends Vue implements ControlInterface {
      * @param {any[]} args
      * @memberof YBH
      */
-    protected removeAndExit(data:any[]):Promise<any>{
+    public removeAndExit(data:any[]):Promise<any>{
         let _this = this;
         return new Promise((resolve: any, reject: any) =>{
             let arg: any = {};
@@ -1759,7 +1766,7 @@ export default class YBHBase extends Vue implements ControlInterface {
     * @param {any} $event
     * @memberof YBH
     */
-    protected drdatasaved($event:any){
+    public drdatasaved($event:any){
         let _this = this;
         this.drcounter--;
         if(this.drcounter > 0){

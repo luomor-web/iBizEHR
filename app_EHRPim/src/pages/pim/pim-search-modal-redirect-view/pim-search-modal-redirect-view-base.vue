@@ -119,10 +119,10 @@ export default class PimSearchModalRedirectViewBase extends WizardViewBase {
     /**
      * 引擎初始化
      *
-     * @protected
+     * @public
      * @memberof PimSearchModalRedirectViewBase
      */
-    protected engineInit(): void {
+    public engineInit(): void {
     }
 
 

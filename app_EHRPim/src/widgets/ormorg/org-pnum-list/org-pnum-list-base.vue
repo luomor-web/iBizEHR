@@ -1,6 +1,6 @@
 <template>  
     <div :class="['app-list', this.items.length > 0 ? '' : 'app-list-empty' ]">
-            <div v-if="items.length > 0">
+            <div v-if="items.length > 0" style="height:100%;">
                                 <app-org-p-num :items="items"></app-org-p-num>
             </div>
             <div v-else>
@@ -32,7 +32,7 @@ export default class OrgPNumBase extends Vue implements ControlInterface {
      * @type {string}
      * @memberof OrgPNum
      */
-    @Prop() protected name?: string;
+    @Prop() public name?: string;
 
     /**
      * 视图通讯对象
@@ -40,7 +40,7 @@ export default class OrgPNumBase extends Vue implements ControlInterface {
      * @type {Subject<ViewState>}
      * @memberof OrgPNum
      */
-    @Prop() protected viewState!: Subject<ViewState>;
+    @Prop() public viewState!: Subject<ViewState>;
 
     /**
      * 应用上下文
@@ -48,7 +48,7 @@ export default class OrgPNumBase extends Vue implements ControlInterface {
      * @type {*}
      * @memberof OrgPNum
      */
-    @Prop() protected context: any;
+    @Prop() public context: any;
 
     /**
      * 视图参数
@@ -56,16 +56,16 @@ export default class OrgPNumBase extends Vue implements ControlInterface {
      * @type {*}
      * @memberof OrgPNum
      */
-    @Prop() protected viewparams: any;
+    @Prop() public viewparams: any;
 
     /**
      * 视图状态事件
      *
-     * @protected
+     * @public
      * @type {(Subscription | undefined)}
      * @memberof OrgPNum
      */
-    protected viewStateEvent: Subscription | undefined;
+    public viewStateEvent: Subscription | undefined;
 
     /**
      * 获取部件类型
@@ -73,7 +73,7 @@ export default class OrgPNumBase extends Vue implements ControlInterface {
      * @returns {string}
      * @memberof OrgPNum
      */
-    protected getControlType(): string {
+    public getControlType(): string {
         return 'LIST'
     }
 
@@ -85,7 +85,7 @@ export default class OrgPNumBase extends Vue implements ControlInterface {
      * @type {Array<*>}
      * @memberof OrgPNum
      */    
-    protected counterServiceArray:Array<any> = [];
+    public counterServiceArray:Array<any> = [];
 
     /**
      * 建构部件服务对象
@@ -93,7 +93,7 @@ export default class OrgPNumBase extends Vue implements ControlInterface {
      * @type {OrgPNumService}
      * @memberof OrgPNum
      */
-    protected service: OrgPNumService = new OrgPNumService({ $store: this.$store });
+    public service: OrgPNumService = new OrgPNumService({ $store: this.$store });
 
     /**
      * 实体服务对象
@@ -101,7 +101,7 @@ export default class OrgPNumBase extends Vue implements ControlInterface {
      * @type {ORMORGService}
      * @memberof OrgPNum
      */
-    protected appEntityService: ORMORGService = new ORMORGService({ $store: this.$store });
+    public appEntityService: ORMORGService = new ORMORGService({ $store: this.$store });
     
 
 
@@ -111,7 +111,7 @@ export default class OrgPNumBase extends Vue implements ControlInterface {
      * @param {any} args
      * @memberof OrgPNum
      */
-    protected closeView(args: any): void {
+    public closeView(args: any): void {
         let _this: any = this;
         _this.$emit('closeview', [args]);
     }
@@ -159,7 +159,7 @@ export default class OrgPNumBase extends Vue implements ControlInterface {
      * @type {boolean}
      * @memberof OrgPNum
      */
-    @Prop({ default: false }) protected isSelectFirstDefault!: boolean;
+    @Prop({ default: false }) public isSelectFirstDefault!: boolean;
 
     /**
      * 显示处理提示
@@ -167,7 +167,7 @@ export default class OrgPNumBase extends Vue implements ControlInterface {
      * @type {boolean}
      * @memberof OrgPNum
      */
-    @Prop({ default: true }) protected showBusyIndicator?: boolean;
+    @Prop({ default: true }) public showBusyIndicator?: boolean;
 
     /**
      * 部件行为--create
@@ -175,7 +175,7 @@ export default class OrgPNumBase extends Vue implements ControlInterface {
      * @type {string}
      * @memberof OrgPNum
      */
-    @Prop() protected createAction!: string;
+    @Prop() public createAction!: string;
 
     /**
      * 部件行为--remove
@@ -183,7 +183,7 @@ export default class OrgPNumBase extends Vue implements ControlInterface {
      * @type {string}
      * @memberof OrgPNum
      */
-    @Prop() protected removeAction!: string;
+    @Prop() public removeAction!: string;
 
     /**
      * 部件行为--update
@@ -191,7 +191,7 @@ export default class OrgPNumBase extends Vue implements ControlInterface {
      * @type {string}
      * @memberof OrgPNum
      */
-    @Prop() protected updateAction!: string;
+    @Prop() public updateAction!: string;
 
     /**
      * 部件行为--fetch
@@ -199,7 +199,7 @@ export default class OrgPNumBase extends Vue implements ControlInterface {
      * @type {string}
      * @memberof OrgPNum
      */
-    @Prop() protected fetchAction!: string;
+    @Prop() public fetchAction!: string;
 
     /**
      * 当前页
@@ -207,7 +207,7 @@ export default class OrgPNumBase extends Vue implements ControlInterface {
      * @type {number}
      * @memberof Main
      */
-    protected curPage: number = 1;
+    public curPage: number = 1;
 
     /**
      * 数据
@@ -215,7 +215,7 @@ export default class OrgPNumBase extends Vue implements ControlInterface {
      * @type {any[]}
      * @memberof OrgPNum
      */
-    protected items: any[] = [];
+    public items: any[] = [];
 
     /**
      * 是否支持分页
@@ -223,7 +223,7 @@ export default class OrgPNumBase extends Vue implements ControlInterface {
      * @type {boolean}
      * @memberof OrgPNum
      */
-    protected isEnablePagingBar: boolean = true;
+    public isEnablePagingBar: boolean = true;
 
     /**
      * 分页条数
@@ -231,7 +231,7 @@ export default class OrgPNumBase extends Vue implements ControlInterface {
      * @type {number}
      * @memberof OrgPNum
      */
-    protected limit: number = 20;
+    public limit: number = 20;
 
     /**
      * 总条数
@@ -239,21 +239,21 @@ export default class OrgPNumBase extends Vue implements ControlInterface {
      * @type {number}
      * @memberof OrgPNum
      */
-    protected totalRecord: number = 0;
+    public totalRecord: number = 0;
 
     /**
      * 选中数组
      * @type {Array<any>}
      * @memberof OrgPNum
      */
-    protected selections: Array<any> = [];
+    public selections: Array<any> = [];
 
      /**
      * Vue声明周期，组件挂载完毕
      *
      * @memberof OrgPNum
      */
-    protected mounted () {
+    public mounted () {
         this.afterMounted();
     }
 
@@ -262,7 +262,7 @@ export default class OrgPNumBase extends Vue implements ControlInterface {
      *
      * @memberof OrgPNum
      */
-    protected afterMounted () {
+    public afterMounted () {
         this.$el.addEventListener('scroll', ()=> {
             if( this.$el.scrollTop +  this.$el.clientHeight  >=  this.$el.scrollHeight) {
                 this.loadMore();
@@ -275,7 +275,7 @@ export default class OrgPNumBase extends Vue implements ControlInterface {
      *
      * @memberof OrgPNum
      */
-    protected created() {
+    public created() {
         this.afterCreated()
     }
 
@@ -284,7 +284,7 @@ export default class OrgPNumBase extends Vue implements ControlInterface {
      *
      *  @memberof OrgPNum
      */    
-    protected afterCreated(){
+    public afterCreated(){
         if (this.viewState) {
             this.viewStateEvent = this.viewState.subscribe(({ tag, action, data }) => {
                 if (!Object.is(this.name, tag)) {
@@ -302,7 +302,7 @@ export default class OrgPNumBase extends Vue implements ControlInterface {
      *
      * @memberof OrgPNum
      */
-    protected destroyed() {
+    public destroyed() {
         this.afterDestroy();
     }
 
@@ -311,7 +311,7 @@ export default class OrgPNumBase extends Vue implements ControlInterface {
      *
      * @memberof OrgPNum
      */
-    protected afterDestroy() {
+    public afterDestroy() {
         if (this.viewStateEvent) {
             this.viewStateEvent.unsubscribe();
         }
@@ -322,7 +322,7 @@ export default class OrgPNumBase extends Vue implements ControlInterface {
     *
     * @memberof Mob
     */
-    protected loadMore(){
+    public loadMore(){
         if(this.totalRecord>this.items.length)
         {
             this.curPage = ++this.curPage;
@@ -336,7 +336,7 @@ export default class OrgPNumBase extends Vue implements ControlInterface {
      * @param {*} [opt={}]
      * @memberof Main
      */
-    protected refresh(opt: any = {}) {
+    public refresh(opt: any = {}) {
         this.curPage = 1;
         this.items = [];
         this.load(opt);
@@ -345,11 +345,11 @@ export default class OrgPNumBase extends Vue implements ControlInterface {
     /**
      * 列表数据加载
      *
-     * @private
+     * @public
      * @param {*} [arg={}]
      * @memberof OrgPNum
      */
-    private load(opt: any = {}): void {
+    public load(opt: any = {}): void {
         if(!this.fetchAction){
             this.$Notice.error({ title: '错误', desc: 'AppPortletContainerView视图列表fetchAction参数未配置' });
             return;
@@ -401,7 +401,7 @@ export default class OrgPNumBase extends Vue implements ControlInterface {
      * @returns {Promise<any>}
      * @memberof OrgPNum
      */
-    protected async remove(datas: any[]): Promise<any> {
+    public async remove(datas: any[]): Promise<any> {
         if(!this.removeAction){
             this.$Notice.error({ title: '错误', desc: 'AppPortletContainerView视图表格removeAction参数未配置' });
             return;
@@ -487,7 +487,7 @@ export default class OrgPNumBase extends Vue implements ControlInterface {
      * @memberof OrgPNum
      *
      */
-    protected handleClick(args: any) {
+    public handleClick(args: any) {
         this.clearSelection();
         args.isselected = !args.isselected;
         this.selectchange();
@@ -498,7 +498,7 @@ export default class OrgPNumBase extends Vue implements ControlInterface {
      * @memberof OrgPNum
      *
      */
-    protected handleDblClick(args: any) {
+    public handleDblClick(args: any) {
         this.$emit('rowdblclick', args);
     }
 
@@ -507,7 +507,7 @@ export default class OrgPNumBase extends Vue implements ControlInterface {
      * @memberof OrgPNum
      *
      */
-    protected selectchange() {
+    public selectchange() {
         this.selections = [];
         this.items.map((item: any) => {
             if (item.isselected) {
@@ -522,7 +522,7 @@ export default class OrgPNumBase extends Vue implements ControlInterface {
      *
      * @memberof OrgPNum
      */
-    protected clearSelection(){
+    public clearSelection(){
         this.items.map((item: any) => {
             Object.assign(item, { isselected: false });
         }); 

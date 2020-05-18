@@ -143,7 +143,7 @@ public class PCMBDSQDMXServiceImpl extends ServiceImpl<PCMBDSQDMXMapper, PCMBDSQ
     @Override
     public void createBatch(List<PCMBDSQDMX> list) {
         list.forEach(item->fillParentData(item));
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

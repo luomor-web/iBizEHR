@@ -84,7 +84,7 @@ public class DataAuditServiceImpl extends ServiceImpl<DataAuditMapper, DataAudit
 
     @Override
     public void createBatch(List<DataAudit> list) {
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

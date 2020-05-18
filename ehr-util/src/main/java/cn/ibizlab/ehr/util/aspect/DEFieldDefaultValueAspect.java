@@ -32,11 +32,11 @@ public class DEFieldDefaultValueAspect
      * @param point
      * @throws Exception
      */
-    @Before(value = "execution(* com.cntmtech.support.core.*.service.*.create(..))")
+    @Before(value = "execution(* cn.ibizlab.ehr.core.*.service.*.create(..))")
     public void BeforeCreate(JoinPoint point) throws Exception {
         fillDEFieldDefaultValue(point);
     }
-    @Before(value = "execution(* com.cntmtech.support.core.*.service.*.createBatch(..))")
+    @Before(value = "execution(* cn.ibizlab.ehr.core.*.service.*.createBatch(..))")
     public void BeforeCreateBatch(JoinPoint point) throws Exception {
         fillDEFieldDefaultValue(point);
     }
@@ -46,11 +46,11 @@ public class DEFieldDefaultValueAspect
      * @param point
      * @throws Exception
      */
-    @Before(value = "execution(* com.cntmtech.support.core.*.service.*.update(..))")
+    @Before(value = "execution(* cn.ibizlab.ehr.core.*.service.*.update(..))")
     public void BeforeUpdate(JoinPoint point) throws Exception {
         fillDEFieldDefaultValue(point);
     }
-    @Before(value = "execution(* com.cntmtech.support.core.*.service.*.updateBatch(..))")
+    @Before(value = "execution(* cn.ibizlab.ehr.core.*.service.*.updateBatch(..))")
     public void BeforeUpdateBatch(JoinPoint point) throws Exception {
         fillDEFieldDefaultValue(point);
     }
@@ -60,11 +60,11 @@ public class DEFieldDefaultValueAspect
      * @param point
      * @throws Exception
      */
-    @Before(value = "execution(* com.cntmtech.support.core.*.service.*.save(..))")
+    @Before(value = "execution(* cn.ibizlab.ehr.core.*.service.*.save(..))")
     public void BeforeSave(JoinPoint point) throws Exception {
         fillDEFieldDefaultValue(point);
     }
-    @Before(value = "execution(* com.cntmtech.support.core.*.service.*.saveBatch(..))")
+    @Before(value = "execution(* cn.ibizlab.ehr.core.*.service.*.saveBatch(..))")
     public void BeforeSaveBatch(JoinPoint point) throws Exception {
         fillDEFieldDefaultValue(point);
     }

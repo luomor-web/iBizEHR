@@ -141,7 +141,7 @@ public class TSSDTaskLogServiceImpl extends ServiceImpl<TSSDTaskLogMapper, TSSDT
     @Override
     public void createBatch(List<TSSDTaskLog> list) {
         list.forEach(item->fillParentData(item));
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
 

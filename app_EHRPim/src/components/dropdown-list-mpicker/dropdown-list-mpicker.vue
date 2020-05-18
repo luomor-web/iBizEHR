@@ -60,7 +60,7 @@ export default class DropDownListMpicker extends Vue {
      * @type {string}
      * @memberof DropDownListMpicker
      */
-    @Prop({default:';'}) public valueSeparator?: string;
+    @Prop({default:','}) public valueSeparator?: string;
 
     /**
      * 是否禁用

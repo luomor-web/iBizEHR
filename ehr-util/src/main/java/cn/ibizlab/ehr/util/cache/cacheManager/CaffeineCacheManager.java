@@ -3,7 +3,7 @@ package cn.ibizlab.ehr.util.cache.cacheManager;
 import com.github.benmanes.caffeine.cache.Caffeine;
 import com.github.benmanes.caffeine.cache.CaffeineSpec;
 import lombok.Data;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnExpression;
 import org.springframework.cache.Cache;
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.caffeine.CaffeineCache;
@@ -22,7 +22,7 @@ import java.util.concurrent.TimeUnit;
  */
 @Data
 @Component
-@ConditionalOnProperty("ibiz.enableCaffeineCache")
+@ConditionalOnExpression("'${ibiz.cacheLevel:None}'.equals('L1')")
 public class CaffeineCacheManager implements CacheManager {
 
     private static final int DEFAULT_EXPIRE_AFTER_WRITE = 1;

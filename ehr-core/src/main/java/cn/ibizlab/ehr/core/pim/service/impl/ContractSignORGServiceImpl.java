@@ -115,7 +115,7 @@ public class ContractSignORGServiceImpl extends ServiceImpl<ContractSignORGMappe
     @Override
     public void createBatch(List<ContractSignORG> list) {
         list.forEach(item->fillParentData(item));
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

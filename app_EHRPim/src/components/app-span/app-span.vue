@@ -55,14 +55,14 @@ export default class AppSpan extends Vue {
      * @type {boolean}
      * @memberof AppSpan
      */
-    @Prop({default:"、"}) public textSeparator?: string;
+    @Prop({default:'、'}) public textSeparator?: string;
 
     /**
      * 值分隔符
      * @type {boolean}
      * @memberof AppSpan
      */
-    @Prop({default:";"}) public valueSeparator?: string;
+    @Prop({default:','}) public valueSeparator?: string;
 
     /**
      * 监控表单属性 data 值
@@ -108,6 +108,11 @@ export default class AppSpan extends Vue {
     public load(){
         if(!this.value || this.tag){
             return;  //代码表走codelist组件
+
+        }else if(this.editorType === "ADDRESSPICKUP"){
+            JSON.parse(this.value).forEach((item:any,index:number) => {
+              this.text += index === 0 ? item.srfmajortext : ","+item.srfmajortext;
+            });
         }else{
             this.text = this.value;
         }

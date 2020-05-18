@@ -43,7 +43,7 @@ export default class AppCheckBox extends Vue {
      * @type {string}
      * @memberof AppCheckBox
      */
-    @Prop({default:';'}) public valueSeparator?: string;
+    @Prop({default:','}) public valueSeparator?: string;
 
     /**
      * 是否禁用
@@ -94,28 +94,6 @@ export default class AppCheckBox extends Vue {
             return this.mode;
         } else {
             return 'str';
-        }
-    }
-
-    /**
-     * 分隔符
-     *
-     * @type {*}
-     * @memberof AppCheckBox
-     */
-    @Prop() separator: any;
-
-    /**
-     * 获取分隔符
-     *
-     * @readonly
-     * @memberof AppCheckBox
-     */
-    get currentseparator() {
-        if (this.separator) {
-            return this.separator;
-        } else {
-            return ';';
         }
     }
 

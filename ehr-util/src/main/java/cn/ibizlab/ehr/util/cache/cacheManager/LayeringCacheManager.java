@@ -5,7 +5,7 @@ import com.github.benmanes.caffeine.cache.CaffeineSpec;
 import lombok.Data;
 import cn.ibizlab.ehr.util.cache.cache.LayeringCache;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnExpression;
 import org.springframework.cache.Cache;
 import org.springframework.cache.CacheManager;
 import org.springframework.data.redis.cache.RedisCacheConfiguration;
@@ -27,7 +27,7 @@ import java.util.concurrent.TimeUnit;
  */
 @Data
 @Component
-@ConditionalOnProperty("ibiz.enableRedisCache")
+@ConditionalOnExpression("'${ibiz.cacheLevel:None}'.equals('L2')")
 public class LayeringCacheManager implements CacheManager {
 
     private static final int DEFAULT_EXPIRE_AFTER_WRITE = 1;

@@ -168,20 +168,20 @@ export default class PIMCONTRACTRenewEditViewBase extends EditViewBase {
     /**
      * 视图引擎
      *
-     * @protected
+     * @public
      * @type {Engine}
      * @memberof PIMCONTRACTRenewEditViewBase
      */
-    protected engine: EditViewEngine = new EditViewEngine();
+    public engine: EditViewEngine = new EditViewEngine();
 	
 
     /**
      * 引擎初始化
      *
-     * @protected
+     * @public
      * @memberof PIMCONTRACTRenewEditViewBase
      */
-    protected engineInit(): void {
+    public engineInit(): void {
         this.engine.init({
             view: this,
             form: this.$refs.form,
@@ -252,7 +252,7 @@ export default class PIMCONTRACTRenewEditViewBase extends EditViewBase {
      * @param {*} [$event]
      * @memberof 
      */
-    protected toolbar_tbitem5_click(params: any = {}, tag?: any, $event?: any) {
+    public toolbar_tbitem5_click(params: any = {}, tag?: any, $event?: any) {
         // 参数
         // 取数
         let datas: any[] = [];
@@ -281,7 +281,7 @@ export default class PIMCONTRACTRenewEditViewBase extends EditViewBase {
      * @param {*} [actionContext]  执行行为上下文
      * @memberof PIMCONTRACTRenewEditViewBase
      */
-    protected SaveAndExit(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
+    public SaveAndExit(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
         const _this: any = this;
         if (xData && xData.saveAndExit instanceof Function) {
             xData.saveAndExit().then((response: any) => {

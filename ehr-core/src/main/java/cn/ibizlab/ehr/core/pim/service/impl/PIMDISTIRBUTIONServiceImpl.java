@@ -156,7 +156,7 @@ public class PIMDISTIRBUTIONServiceImpl extends ServiceImpl<PIMDISTIRBUTIONMappe
     @Override
     public void createBatch(List<PIMDISTIRBUTION> list) {
         list.forEach(item->fillParentData(item));
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

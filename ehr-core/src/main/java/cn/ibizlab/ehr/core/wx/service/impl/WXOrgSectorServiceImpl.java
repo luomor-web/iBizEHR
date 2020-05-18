@@ -83,7 +83,7 @@ public class WXOrgSectorServiceImpl extends ServiceImpl<WXOrgSectorMapper, WXOrg
     @Override
     public void createBatch(List<WXOrgSector> list) {
         list.forEach(item->fillParentData(item));
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

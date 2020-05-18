@@ -79,7 +79,7 @@ public class PARPTRYNDLHMBServiceImpl extends ServiceImpl<PARPTRYNDLHMBMapper, P
     @Override
     public void createBatch(List<PARPTRYNDLHMB> list) {
         list.forEach(item->fillParentData(item));
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

@@ -72,7 +72,7 @@ public class SOCCOMPANYWELServiceImpl extends ServiceImpl<SOCCOMPANYWELMapper, S
     @Override
     public void createBatch(List<SOCCOMPANYWEL> list) {
         list.forEach(item->fillParentData(item));
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

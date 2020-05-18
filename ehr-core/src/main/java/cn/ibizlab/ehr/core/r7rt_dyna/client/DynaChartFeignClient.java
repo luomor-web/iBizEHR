@@ -19,52 +19,52 @@ import org.springframework.cloud.openfeign.FeignClient;
 @FeignClient(value = "r7rt-dyna", contextId = "DynaChart", fallback = DynaChartFallback.class)
 public interface DynaChartFeignClient {
 
-    @RequestMapping(method = RequestMethod.POST, value = "/r7rt_dyna/dynacharts/select")
+    @RequestMapping(method = RequestMethod.POST, value = "/dynacharts/select")
     Page<DynaChart> select();
 
 
-    @RequestMapping(method = RequestMethod.GET, value = "/r7rt_dyna/dynacharts/{dynachartid}")
+    @RequestMapping(method = RequestMethod.GET, value = "/dynacharts/{dynachartid}")
     DynaChart get(@PathVariable("dynachartid") String dynachartid);
 
 
-    @RequestMapping(method = RequestMethod.GET, value = "/r7rt_dyna/dynacharts/getdraft")
+    @RequestMapping(method = RequestMethod.GET, value = "/dynacharts/getdraft")
     DynaChart getDraft();
 
 
-    @RequestMapping(method = RequestMethod.POST, value = "/r7rt_dyna/dynacharts/checkkey")
+    @RequestMapping(method = RequestMethod.POST, value = "/dynacharts/checkkey")
     Boolean checkKey(@RequestBody DynaChart dynachart);
 
 
-    @RequestMapping(method = RequestMethod.PUT, value = "/r7rt_dyna/dynacharts/{dynachartid}")
+    @RequestMapping(method = RequestMethod.PUT, value = "/dynacharts/{dynachartid}")
     DynaChart update(@PathVariable("dynachartid") String dynachartid,@RequestBody DynaChart dynachart);
 
-    @RequestMapping(method = RequestMethod.PUT, value = "/r7rt_dyna/dynacharts/batch")
+    @RequestMapping(method = RequestMethod.PUT, value = "/dynacharts/batch")
     Boolean updateBatch(@RequestBody List<DynaChart> dynacharts);
 
 
-    @RequestMapping(method = RequestMethod.DELETE, value = "/r7rt_dyna/dynacharts/{dynachartid}")
+    @RequestMapping(method = RequestMethod.DELETE, value = "/dynacharts/{dynachartid}")
     Boolean remove(@PathVariable("dynachartid") String dynachartid);
 
-    @RequestMapping(method = RequestMethod.DELETE, value = "/r7rt_dyna/dynacharts/batch}")
+    @RequestMapping(method = RequestMethod.DELETE, value = "/dynacharts/batch}")
     Boolean removeBatch(@RequestBody Collection<String> idList);
 
 
-    @RequestMapping(method = RequestMethod.POST, value = "/r7rt_dyna/dynacharts")
+    @RequestMapping(method = RequestMethod.POST, value = "/dynacharts")
     DynaChart create(@RequestBody DynaChart dynachart);
 
-    @RequestMapping(method = RequestMethod.POST, value = "/r7rt_dyna/dynacharts/batch")
+    @RequestMapping(method = RequestMethod.POST, value = "/dynacharts/batch")
     Boolean createBatch(@RequestBody List<DynaChart> dynacharts);
 
 
-    @RequestMapping(method = RequestMethod.POST, value = "/r7rt_dyna/dynacharts/save")
+    @RequestMapping(method = RequestMethod.POST, value = "/dynacharts/save")
     Boolean save(@RequestBody DynaChart dynachart);
 
-    @RequestMapping(method = RequestMethod.POST, value = "/r7rt_dyna/dynacharts/save")
+    @RequestMapping(method = RequestMethod.POST, value = "/dynacharts/save")
     Boolean saveBatch(@RequestBody List<DynaChart> dynacharts);
 
 
 
-    @RequestMapping(method = RequestMethod.POST, value = "/r7rt_dyna/dynacharts/searchdefault")
+    @RequestMapping(method = RequestMethod.POST, value = "/dynacharts/searchdefault")
     Page<DynaChart> searchDefault(DynaChartSearchContext context);
 
 

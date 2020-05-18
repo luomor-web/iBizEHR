@@ -98,7 +98,7 @@ public class OrgUserLevelServiceImpl extends ServiceImpl<OrgUserLevelMapper, Org
 
     @Override
     public void createBatch(List<OrgUserLevel> list) {
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

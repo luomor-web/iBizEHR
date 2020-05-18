@@ -112,7 +112,7 @@ public class PIMCONTRACTTYPEServiceImpl extends ServiceImpl<PIMCONTRACTTYPEMappe
 
     @Override
     public void createBatch(List<PIMCONTRACTTYPE> list) {
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

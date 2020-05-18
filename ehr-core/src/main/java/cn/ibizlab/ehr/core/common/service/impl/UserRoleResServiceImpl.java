@@ -144,7 +144,7 @@ public class UserRoleResServiceImpl extends ServiceImpl<UserRoleResMapper, UserR
     @Override
     public void createBatch(List<UserRoleRes> list) {
         list.forEach(item->fillParentData(item));
-        saveBatch(list,batchSize);
+        this.saveOrUpdateBatch(list,batchSize);
     }
 
 

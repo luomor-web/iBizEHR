@@ -61,7 +61,7 @@ public class TSSDPolicyServiceImpl extends ServiceImpl<TSSDPolicyMapper, TSSDPol
 
     @Override
     public void createBatch(List<TSSDPolicy> list) {
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

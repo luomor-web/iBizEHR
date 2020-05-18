@@ -139,7 +139,7 @@ public class PimSearchFieldSetServiceImpl extends ServiceImpl<PimSearchFieldSetM
 
     @Override
     public void createBatch(List<PimSearchFieldSet> list) {
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
 

@@ -17,49 +17,49 @@ export default class PIMLANGUAGEABILITYUIServiceBase extends UIService {
      * 
      * @memberof  PIMLANGUAGEABILITYUIServiceBase
      */
-    protected isEnableWorkflow:boolean = false;
+    public isEnableWorkflow:boolean = false;
 
     /**
      * 当前UI服务对应的数据服务对象
      * 
      * @memberof  PIMLANGUAGEABILITYUIServiceBase
      */
-    protected dataService:PIMLANGUAGEABILITYService = new PIMLANGUAGEABILITYService();
+    public dataService:PIMLANGUAGEABILITYService = new PIMLANGUAGEABILITYService();
 
     /**
      * 所有关联视图
      * 
      * @memberof  PIMLANGUAGEABILITYUIServiceBase
      */ 
-    protected allViewMap: Map<string, Object> = new Map();
+    public allViewMap: Map<string, Object> = new Map();
 
     /**
      * 状态值
      * 
      * @memberof  PIMLANGUAGEABILITYUIServiceBase
      */ 
-    protected stateValue: number = 0;
+    public stateValue: number = 0;
 
     /**
      * 状态属性
      * 
      * @memberof  PIMLANGUAGEABILITYUIServiceBase
      */ 
-    protected stateField: string = "";
+    public stateField: string = "";
 
     /**
      * 主状态属性集合
      * 
      * @memberof  PIMLANGUAGEABILITYUIServiceBase
      */  
-    protected mainStateFields:Array<any> = [];
+    public mainStateFields:Array<any> = [];
 
     /**
      * 主状态集合Map
      * 
      * @memberof  PIMLANGUAGEABILITYUIServiceBase
      */  
-    protected allDeMainStateMap:Map<string,string> = new Map();
+    public allDeMainStateMap:Map<string,string> = new Map();
 
     /**
      * Creates an instance of  PIMLANGUAGEABILITYUIServiceBase.
@@ -198,7 +198,7 @@ export default class PIMLANGUAGEABILITYUIServiceBase extends UIService {
      * 
      * @memberof  PIMLANGUAGEABILITYUIServiceBase
 	 */
-	protected getRealDEType(entity:any){
+	public getRealDEType(entity:any){
 
     }
 
@@ -210,7 +210,7 @@ export default class PIMLANGUAGEABILITYUIServiceBase extends UIService {
      * @param bWFMode   是否工作流模式
      * @memberof  PIMLANGUAGEABILITYUIServiceBase
      */
-    protected async getDESDDEViewPDTParam(curData:any, bDataInWF:boolean, bWFMode:boolean){
+    public async getDESDDEViewPDTParam(curData:any, bDataInWF:boolean, bWFMode:boolean){
         let strPDTParam:string = '';
 		if (bDataInWF) {
 			// 判断数据是否在流程中
@@ -244,7 +244,7 @@ export default class PIMLANGUAGEABILITYUIServiceBase extends UIService {
      * @param curData 当前数据
      * @memberof  PIMLANGUAGEABILITYUIServiceBase
      */  
-    protected async getDEMainStateTag(curData:any){
+    public async getDEMainStateTag(curData:any){
         if(this.mainStateFields.length === 0) return null;
 
         this.mainStateFields.forEach((singleMainField:any) =>{

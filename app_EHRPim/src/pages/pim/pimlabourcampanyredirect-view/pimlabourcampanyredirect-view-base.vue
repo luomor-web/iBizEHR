@@ -119,10 +119,10 @@ export default class PIMLABOURCAMPANYRedirectViewBase extends WizardViewBase {
     /**
      * 引擎初始化
      *
-     * @protected
+     * @public
      * @memberof PIMLABOURCAMPANYRedirectViewBase
      */
-    protected engineInit(): void {
+    public engineInit(): void {
     }
 
 

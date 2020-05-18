@@ -61,14 +61,14 @@ export default class CodeList extends Vue {
      * @type {boolean}
      * @memberof SelectPicker
      */
-    @Prop({default:"、"}) public textSeparator?: string;
+    @Prop({default:'、'}) public textSeparator?: string;
 
     /**
      * 值分隔符
      * @type {boolean}
      * @memberof SelectPicker
      */
-    @Prop({default:";"}) public valueSeparator?: string;
+    @Prop({default:','}) public valueSeparator?: string;
 
     /**
      * 是否为空

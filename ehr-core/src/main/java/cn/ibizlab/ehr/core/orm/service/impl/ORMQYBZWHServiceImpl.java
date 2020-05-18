@@ -141,7 +141,7 @@ public class ORMQYBZWHServiceImpl extends ServiceImpl<ORMQYBZWHMapper, ORMQYBZWH
     @Override
     public void createBatch(List<ORMQYBZWH> list) {
         list.forEach(item->fillParentData(item));
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
 

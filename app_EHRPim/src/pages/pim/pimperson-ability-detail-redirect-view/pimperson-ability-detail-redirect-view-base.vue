@@ -119,10 +119,10 @@ export default class PIMPersonAbilityDetailRedirectViewBase extends WizardViewBa
     /**
      * 引擎初始化
      *
-     * @protected
+     * @public
      * @memberof PIMPersonAbilityDetailRedirectViewBase
      */
-    protected engineInit(): void {
+    public engineInit(): void {
     }
 
 

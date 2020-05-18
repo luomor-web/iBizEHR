@@ -70,7 +70,7 @@ public class ServiceRTServiceImpl extends ServiceImpl<ServiceRTMapper, ServiceRT
 
     @Override
     public void createBatch(List<ServiceRT> list) {
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

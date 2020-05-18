@@ -54,12 +54,12 @@ export default class MainService extends ControlService {
     /**
      * 处理数据
      *
-     * @private
+     * @public
      * @param {Promise<any>} promise
      * @returns {Promise<any>}
      * @memberof MainService
      */
-    private doItems(promise: Promise<any>, deKeyField: string, deName: string): Promise<any> {
+    public doItems(promise: Promise<any>, deKeyField: string, deName: string): Promise<any> {
         return new Promise((resolve, reject) => {
             promise.then((response: any) => {
                 if (response && response.status === 200) {
@@ -276,7 +276,7 @@ export default class MainService extends ControlService {
                 if(response.data){
                     Object.assign(response.data,{srfuf:'0'});
                     //仿真主键数据
-                    response.data.pimtitle = Util.createUUID();
+                    response.data.pimtitleid = Util.createUUID();
                 }
                 this.handleResponse(action, response, true);
                 this.mergeDefaults(response);

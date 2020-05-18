@@ -50,7 +50,7 @@ export default class YGCDBase extends Vue implements ControlInterface {
      * @type {string}
      * @memberof YGCD
      */
-    @Prop() protected name?: string;
+    @Prop() public name?: string;
 
     /**
      * 视图通讯对象
@@ -58,7 +58,7 @@ export default class YGCDBase extends Vue implements ControlInterface {
      * @type {Subject<ViewState>}
      * @memberof YGCD
      */
-    @Prop() protected viewState!: Subject<ViewState>;
+    @Prop() public viewState!: Subject<ViewState>;
 
     /**
      * 应用上下文
@@ -66,7 +66,7 @@ export default class YGCDBase extends Vue implements ControlInterface {
      * @type {*}
      * @memberof YGCD
      */
-    @Prop() protected context: any;
+    @Prop() public context: any;
 
     /**
      * 视图参数
@@ -74,16 +74,16 @@ export default class YGCDBase extends Vue implements ControlInterface {
      * @type {*}
      * @memberof YGCD
      */
-    @Prop() protected viewparams: any;
+    @Prop() public viewparams: any;
 
     /**
      * 视图状态事件
      *
-     * @protected
+     * @public
      * @type {(Subscription | undefined)}
      * @memberof YGCD
      */
-    protected viewStateEvent: Subscription | undefined;
+    public viewStateEvent: Subscription | undefined;
 
     /**
      * 获取部件类型
@@ -91,7 +91,7 @@ export default class YGCDBase extends Vue implements ControlInterface {
      * @returns {string}
      * @memberof YGCD
      */
-    protected getControlType(): string {
+    public getControlType(): string {
         return 'DRBAR'
     }
 
@@ -103,7 +103,7 @@ export default class YGCDBase extends Vue implements ControlInterface {
      * @type {Array<*>}
      * @memberof YGCD
      */    
-    protected counterServiceArray:Array<any> = [];
+    public counterServiceArray:Array<any> = [];
 
     /**
      * 建构部件服务对象
@@ -111,7 +111,7 @@ export default class YGCDBase extends Vue implements ControlInterface {
      * @type {YGCDService}
      * @memberof YGCD
      */
-    protected service: YGCDService = new YGCDService({ $store: this.$store });
+    public service: YGCDService = new YGCDService({ $store: this.$store });
 
     /**
      * 实体服务对象
@@ -119,7 +119,7 @@ export default class YGCDBase extends Vue implements ControlInterface {
      * @type {PIMPERSONService}
      * @memberof YGCD
      */
-    protected appEntityService: PIMPERSONService = new PIMPERSONService({ $store: this.$store });
+    public appEntityService: PIMPERSONService = new PIMPERSONService({ $store: this.$store });
     
 
 
@@ -129,7 +129,7 @@ export default class YGCDBase extends Vue implements ControlInterface {
      * @param {any} args
      * @memberof YGCD
      */
-    protected closeView(args: any): void {
+    public closeView(args: any): void {
         let _this: any = this;
         _this.$emit('closeview', [args]);
     }
@@ -319,11 +319,11 @@ export default class YGCDBase extends Vue implements ControlInterface {
     /**
      * 父数据
      *
-     * @private
+     * @public
      * @type {*}
      * @memberof YGCD
      */
-    private parentData: any = {};
+    public parentData: any = {};
 
     /**
      * 宽度
@@ -370,12 +370,12 @@ export default class YGCDBase extends Vue implements ControlInterface {
     /**
      * 获取关系项
      *
-     * @private
+     * @public
      * @param {*} [arg={}]
      * @returns {*}
      * @memberof YGCD
      */
-    private getDRBarItem(arg: any = {}): any {
+    public getDRBarItem(arg: any = {}): any {
         let expmode = arg.nodetype;
         if (!expmode) {
             expmode = '';
@@ -482,11 +482,11 @@ export default class YGCDBase extends Vue implements ControlInterface {
     /**
      * 处理数据
      *
-     * @private
+     * @public
      * @param {any[]} items
      * @memberof YGCD
      */
-    private dataProcess(items: any[]): void {
+    public dataProcess(items: any[]): void {
         items.forEach((_item: any) => {
             if (_item.expanded) {
                 this.defaultOpeneds.push(_item.id);

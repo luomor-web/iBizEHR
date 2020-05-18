@@ -17,49 +17,49 @@ export default class ATTENDANCEMREPORTMXUIServiceBase extends UIService {
      * 
      * @memberof  ATTENDANCEMREPORTMXUIServiceBase
      */
-    protected isEnableWorkflow:boolean = false;
+    public isEnableWorkflow:boolean = false;
 
     /**
      * 当前UI服务对应的数据服务对象
      * 
      * @memberof  ATTENDANCEMREPORTMXUIServiceBase
      */
-    protected dataService:ATTENDANCEMREPORTMXService = new ATTENDANCEMREPORTMXService();
+    public dataService:ATTENDANCEMREPORTMXService = new ATTENDANCEMREPORTMXService();
 
     /**
      * 所有关联视图
      * 
      * @memberof  ATTENDANCEMREPORTMXUIServiceBase
      */ 
-    protected allViewMap: Map<string, Object> = new Map();
+    public allViewMap: Map<string, Object> = new Map();
 
     /**
      * 状态值
      * 
      * @memberof  ATTENDANCEMREPORTMXUIServiceBase
      */ 
-    protected stateValue: number = 0;
+    public stateValue: number = 0;
 
     /**
      * 状态属性
      * 
      * @memberof  ATTENDANCEMREPORTMXUIServiceBase
      */ 
-    protected stateField: string = "";
+    public stateField: string = "";
 
     /**
      * 主状态属性集合
      * 
      * @memberof  ATTENDANCEMREPORTMXUIServiceBase
      */  
-    protected mainStateFields:Array<any> = [];
+    public mainStateFields:Array<any> = [];
 
     /**
      * 主状态集合Map
      * 
      * @memberof  ATTENDANCEMREPORTMXUIServiceBase
      */  
-    protected allDeMainStateMap:Map<string,string> = new Map();
+    public allDeMainStateMap:Map<string,string> = new Map();
 
     /**
      * Creates an instance of  ATTENDANCEMREPORTMXUIServiceBase.
@@ -147,7 +147,7 @@ export default class ATTENDANCEMREPORTMXUIServiceBase extends UIService {
      * 
      * @memberof  ATTENDANCEMREPORTMXUIServiceBase
 	 */
-	protected getRealDEType(entity:any){
+	public getRealDEType(entity:any){
 
     }
 
@@ -159,7 +159,7 @@ export default class ATTENDANCEMREPORTMXUIServiceBase extends UIService {
      * @param bWFMode   是否工作流模式
      * @memberof  ATTENDANCEMREPORTMXUIServiceBase
      */
-    protected async getDESDDEViewPDTParam(curData:any, bDataInWF:boolean, bWFMode:boolean){
+    public async getDESDDEViewPDTParam(curData:any, bDataInWF:boolean, bWFMode:boolean){
         let strPDTParam:string = '';
 		if (bDataInWF) {
 			// 判断数据是否在流程中
@@ -193,7 +193,7 @@ export default class ATTENDANCEMREPORTMXUIServiceBase extends UIService {
      * @param curData 当前数据
      * @memberof  ATTENDANCEMREPORTMXUIServiceBase
      */  
-    protected async getDEMainStateTag(curData:any){
+    public async getDEMainStateTag(curData:any){
         if(this.mainStateFields.length === 0) return null;
 
         this.mainStateFields.forEach((singleMainField:any) =>{

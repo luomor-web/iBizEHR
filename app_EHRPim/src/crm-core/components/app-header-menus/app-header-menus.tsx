@@ -192,6 +192,7 @@ export class AppHeaderMenus extends Vue {
      * @memberof AppHeaderMenus
      */
     protected renderMenuItem(item: any): any {
+        item.class = item.class ? item.class : "";
         if (Object.is(this.mode, 'default')) {
             if (item.caption && !Object.is(item.caption, '')) {
                 return <div class={"app-header-menu-item text"+item.class} disabled={item.disabled} on-click={() => this.menuClick(item)}>

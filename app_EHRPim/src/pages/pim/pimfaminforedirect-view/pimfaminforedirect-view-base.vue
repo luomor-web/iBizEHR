@@ -119,10 +119,10 @@ export default class PIMFAMINFORedirectViewBase extends WizardViewBase {
     /**
      * 引擎初始化
      *
-     * @protected
+     * @public
      * @memberof PIMFAMINFORedirectViewBase
      */
-    protected engineInit(): void {
+    public engineInit(): void {
     }
 
 

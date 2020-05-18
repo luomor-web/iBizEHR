@@ -42,6 +42,9 @@ public class EHRPcmSecurityConfig extends WebSecurityConfigurerAdapter {
     @Value("${ibiz.auth.path:v7/login}")
     private String loginPath;
 
+    @Value("${ibiz.auth.logoutpath:v7/logout}")
+    private String logoutPath;
+
     @Value("${ibiz.file.uploadpath:ibizutil/upload}")
     private String uploadpath;
 
@@ -107,6 +110,8 @@ public class EHRPcmSecurityConfig extends WebSecurityConfigurerAdapter {
                 ).permitAll()
                 //放行登录请求
                 .antMatchers( HttpMethod.POST,"/"+loginPath).permitAll()
+                //放行注销请求
+                .antMatchers( HttpMethod.GET,"/"+logoutPath).permitAll()
                 // 文件操作
                 .antMatchers("/"+downloadpath+"/**").permitAll()
                 .antMatchers("/"+uploadpath).permitAll()

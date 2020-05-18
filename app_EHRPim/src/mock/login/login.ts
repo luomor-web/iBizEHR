@@ -14,7 +14,7 @@ mock.onPost('v7/login').reply((config: any) => {
     } catch (error) {
         status = 400;
     }
-    if (!Object.is(user.loginname, 'ibzadmin') || !Object.is(user.password, '123456')) {
+    if (!Object.is(user.loginname, 'guest') || !Object.is(user.password, 'guest')) {
         status = 400;
     }
     if (status !== 200) {

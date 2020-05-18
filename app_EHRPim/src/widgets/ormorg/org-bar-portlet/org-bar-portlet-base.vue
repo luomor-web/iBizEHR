@@ -39,7 +39,7 @@ export default class ORMORGOrgBarBase extends Vue implements ControlInterface {
      * @type {string}
      * @memberof OrgBar
      */
-    @Prop() protected name?: string;
+    @Prop() public name?: string;
 
     /**
      * 视图通讯对象
@@ -47,7 +47,7 @@ export default class ORMORGOrgBarBase extends Vue implements ControlInterface {
      * @type {Subject<ViewState>}
      * @memberof OrgBar
      */
-    @Prop() protected viewState!: Subject<ViewState>;
+    @Prop() public viewState!: Subject<ViewState>;
 
     /**
      * 应用上下文
@@ -55,7 +55,7 @@ export default class ORMORGOrgBarBase extends Vue implements ControlInterface {
      * @type {*}
      * @memberof OrgBar
      */
-    @Prop() protected context: any;
+    @Prop() public context: any;
 
     /**
      * 视图参数
@@ -63,16 +63,16 @@ export default class ORMORGOrgBarBase extends Vue implements ControlInterface {
      * @type {*}
      * @memberof OrgBar
      */
-    @Prop() protected viewparams: any;
+    @Prop() public viewparams: any;
 
     /**
      * 视图状态事件
      *
-     * @protected
+     * @public
      * @type {(Subscription | undefined)}
      * @memberof OrgBar
      */
-    protected viewStateEvent: Subscription | undefined;
+    public viewStateEvent: Subscription | undefined;
 
     /**
      * 获取部件类型
@@ -80,7 +80,7 @@ export default class ORMORGOrgBarBase extends Vue implements ControlInterface {
      * @returns {string}
      * @memberof OrgBar
      */
-    protected getControlType(): string {
+    public getControlType(): string {
         return 'PORTLET'
     }
 
@@ -92,7 +92,7 @@ export default class ORMORGOrgBarBase extends Vue implements ControlInterface {
      * @type {Array<*>}
      * @memberof OrgBar
      */    
-    protected counterServiceArray:Array<any> = [];
+    public counterServiceArray:Array<any> = [];
 
     /**
      * 建构部件服务对象
@@ -100,7 +100,7 @@ export default class ORMORGOrgBarBase extends Vue implements ControlInterface {
      * @type {OrgBarService}
      * @memberof OrgBar
      */
-    protected service: OrgBarService = new OrgBarService({ $store: this.$store });
+    public service: OrgBarService = new OrgBarService({ $store: this.$store });
 
     /**
      * 实体服务对象
@@ -108,7 +108,7 @@ export default class ORMORGOrgBarBase extends Vue implements ControlInterface {
      * @type {ORMORGService}
      * @memberof OrgBar
      */
-    protected appEntityService: ORMORGService = new ORMORGService({ $store: this.$store });
+    public appEntityService: ORMORGService = new ORMORGService({ $store: this.$store });
     
 
 
@@ -118,7 +118,7 @@ export default class ORMORGOrgBarBase extends Vue implements ControlInterface {
      * @param {any} args
      * @memberof OrgBar
      */
-    protected closeView(args: any): void {
+    public closeView(args: any): void {
         let _this: any = this;
         _this.$emit('closeview', [args]);
     }
@@ -174,7 +174,7 @@ export default class ORMORGOrgBarBase extends Vue implements ControlInterface {
      *
      * @memberof OrgBar
      */
-    protected created() {
+    public created() {
         this.afterCreated();
     }
 
@@ -183,7 +183,7 @@ export default class ORMORGOrgBarBase extends Vue implements ControlInterface {
      *
      *  @memberof OrgBar
      */    
-    protected afterCreated(){
+    public afterCreated(){
         if (this.viewState) {
             this.viewStateEvent = this.viewState.subscribe(({ tag, action, data }) => {
                 if (!Object.is(tag, this.name)) {
@@ -202,7 +202,7 @@ export default class ORMORGOrgBarBase extends Vue implements ControlInterface {
      *
      * @memberof OrgBar
      */
-    protected destroyed() {
+    public destroyed() {
         this.afterDestroy();
     }
 
@@ -211,7 +211,7 @@ export default class ORMORGOrgBarBase extends Vue implements ControlInterface {
      *
      * @memberof OrgBar
      */
-    protected afterDestroy() {
+    public afterDestroy() {
         if (this.viewStateEvent) {
             this.viewStateEvent.unsubscribe();
         }

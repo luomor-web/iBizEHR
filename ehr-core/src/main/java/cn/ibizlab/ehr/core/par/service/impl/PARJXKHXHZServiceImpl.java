@@ -107,7 +107,7 @@ public class PARJXKHXHZServiceImpl extends ServiceImpl<PARJXKHXHZMapper, PARJXKH
 
     @Override
     public void createBatch(List<PARJXKHXHZ> list) {
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

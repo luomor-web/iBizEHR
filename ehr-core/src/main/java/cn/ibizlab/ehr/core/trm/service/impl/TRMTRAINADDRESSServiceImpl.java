@@ -122,7 +122,7 @@ public class TRMTRAINADDRESSServiceImpl extends ServiceImpl<TRMTRAINADDRESSMappe
     @Override
     public void createBatch(List<TRMTRAINADDRESS> list) {
         list.forEach(item->fillParentData(item));
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

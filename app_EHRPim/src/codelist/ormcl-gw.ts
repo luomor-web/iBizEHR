@@ -72,12 +72,12 @@ export default class ORMCL_GW {
     /**
      * 处理数据
      *
-     * @private
+     * @public
      * @param {any[]} items
      * @returns {any[]}
      * @memberof ORMCL_GW
      */
-    private doItems(items: any[]): any[] {
+    public doItems(items: any[]): any[] {
         let _items: any[] = [];
         items.forEach((item: any) => {
             let itemdata:any = {};

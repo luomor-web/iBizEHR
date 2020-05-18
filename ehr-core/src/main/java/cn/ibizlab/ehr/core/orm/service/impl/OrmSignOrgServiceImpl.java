@@ -129,7 +129,7 @@ public class OrmSignOrgServiceImpl extends ServiceImpl<OrmSignOrgMapper, OrmSign
 
     @Override
     public void createBatch(List<OrmSignOrg> list) {
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

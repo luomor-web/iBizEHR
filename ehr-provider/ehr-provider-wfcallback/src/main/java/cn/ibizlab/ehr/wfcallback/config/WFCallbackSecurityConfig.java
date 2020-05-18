@@ -25,6 +25,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 @Profile("wfcallback-prod")
 @Configuration
 @EnableWebSecurity
+@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class WFCallbackSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired

@@ -135,7 +135,7 @@ public class PIMCITYServiceImpl extends ServiceImpl<PIMCITYMapper, PIMCITY> impl
 
     @Override
     public void createBatch(List<PIMCITY> list) {
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
 

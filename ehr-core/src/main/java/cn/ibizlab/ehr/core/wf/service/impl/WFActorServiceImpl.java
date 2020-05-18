@@ -105,7 +105,7 @@ public class WFActorServiceImpl extends ServiceImpl<WFActorMapper, WFActor> impl
 
     @Override
     public void createBatch(List<WFActor> list) {
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

@@ -123,7 +123,7 @@ public class PIMVOCATIONALCATALOGServiceImpl extends ServiceImpl<PIMVOCATIONALCA
 
     @Override
     public void createBatch(List<PIMVOCATIONALCATALOG> list) {
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

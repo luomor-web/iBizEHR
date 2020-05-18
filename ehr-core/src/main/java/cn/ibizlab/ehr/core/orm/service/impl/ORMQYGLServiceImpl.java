@@ -92,7 +92,7 @@ public class ORMQYGLServiceImpl extends ServiceImpl<ORMQYGLMapper, ORMQYGL> impl
     @Override
     public void createBatch(List<ORMQYGL> list) {
         list.forEach(item->fillParentData(item));
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

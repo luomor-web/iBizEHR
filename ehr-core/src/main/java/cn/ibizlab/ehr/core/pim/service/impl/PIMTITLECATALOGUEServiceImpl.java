@@ -110,7 +110,7 @@ public class PIMTITLECATALOGUEServiceImpl extends ServiceImpl<PIMTITLECATALOGUEM
 
     @Override
     public void createBatch(List<PIMTITLECATALOGUE> list) {
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

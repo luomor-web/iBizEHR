@@ -11,6 +11,8 @@ import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.util.ObjectUtils;
+import org.springframework.util.DigestUtils;
 import cn.ibizlab.ehr.util.domain.EntityBase;
 import cn.ibizlab.ehr.util.annotation.DEField;
 import cn.ibizlab.ehr.util.enums.DEPredefinedFieldType;
@@ -22,6 +24,7 @@ import org.springframework.data.annotation.Transient;
 
 import com.baomidou.mybatisplus.annotation.*;
 import cn.ibizlab.ehr.util.domain.EntityMP;
+
 
 /**
  * 实体[人员信息]
@@ -858,7 +861,7 @@ public class PIMPERSON extends EntityMP implements Serializable {
     @JsonProperty("orgsectorid")
     private String orgsectorid;
     /**
-     * 到中建系统时间
+     * 到建筑系统时间
      */
     @TableField(value = "tozjdate")
     @JsonFormat(pattern="yyyy-MM-dd", locale = "zh" , timezone="GMT+8")
@@ -1915,7 +1918,7 @@ public class PIMPERSON extends EntityMP implements Serializable {
         this.modify("gwksrq",gwksrq);
     }
     /**
-     * 设置 [到中建系统时间]
+     * 设置 [到建筑系统时间]
      */
     public void setTozjdate(Timestamp tozjdate){
         this.tozjdate = tozjdate ;
@@ -2152,10 +2155,7 @@ public class PIMPERSON extends EntityMP implements Serializable {
         this.pimpersonid3 = pimpersonid3 ;
         this.modify("pimpersonid3",pimpersonid3);
     }
+
 }
-
-
-
-
 
 

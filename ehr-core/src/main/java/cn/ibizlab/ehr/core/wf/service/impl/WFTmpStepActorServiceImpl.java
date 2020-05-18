@@ -87,7 +87,7 @@ public class WFTmpStepActorServiceImpl extends ServiceImpl<WFTmpStepActorMapper,
     @Override
     public void createBatch(List<WFTmpStepActor> list) {
         list.forEach(item->fillParentData(item));
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

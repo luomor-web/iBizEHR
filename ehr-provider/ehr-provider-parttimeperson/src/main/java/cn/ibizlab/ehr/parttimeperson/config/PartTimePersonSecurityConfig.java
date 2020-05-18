@@ -25,6 +25,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 @Profile("parttimeperson-prod")
 @Configuration
 @EnableWebSecurity
+@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class PartTimePersonSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired

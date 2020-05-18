@@ -100,7 +100,7 @@ public class VACWORKDAYServiceImpl extends ServiceImpl<VACWORKDAYMapper, VACWORK
 
     @Override
     public void createBatch(List<VACWORKDAY> list) {
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

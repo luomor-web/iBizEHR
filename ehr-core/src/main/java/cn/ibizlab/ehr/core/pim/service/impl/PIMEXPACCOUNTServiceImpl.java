@@ -141,7 +141,7 @@ public class PIMEXPACCOUNTServiceImpl extends ServiceImpl<PIMEXPACCOUNTMapper, P
     @Override
     public void createBatch(List<PIMEXPACCOUNT> list) {
         list.forEach(item->fillParentData(item));
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
 

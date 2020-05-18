@@ -70,7 +70,7 @@ public class PCMYDTXMXServiceImpl extends ServiceImpl<PCMYDTXMXMapper, PCMYDTXMX
 
     @Override
     public void createBatch(List<PCMYDTXMX> list) {
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

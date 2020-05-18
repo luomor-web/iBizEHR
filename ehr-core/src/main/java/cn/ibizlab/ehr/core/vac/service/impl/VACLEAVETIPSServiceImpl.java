@@ -70,7 +70,7 @@ public class VACLEAVETIPSServiceImpl extends ServiceImpl<VACLEAVETIPSMapper, VAC
     @Override
     public void createBatch(List<VACLEAVETIPS> list) {
         list.forEach(item->fillParentData(item));
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

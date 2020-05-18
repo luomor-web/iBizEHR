@@ -119,10 +119,10 @@ export default class PIMWORKHISTORYRedirectViewBase extends WizardViewBase {
     /**
      * 引擎初始化
      *
-     * @protected
+     * @public
      * @memberof PIMWORKHISTORYRedirectViewBase
      */
-    protected engineInit(): void {
+    public engineInit(): void {
     }
 
 

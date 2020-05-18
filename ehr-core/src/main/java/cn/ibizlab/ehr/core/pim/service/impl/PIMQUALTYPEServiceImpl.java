@@ -64,7 +64,7 @@ public class PIMQUALTYPEServiceImpl extends ServiceImpl<PIMQUALTYPEMapper, PIMQU
 
     @Override
     public void createBatch(List<PIMQUALTYPE> list) {
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

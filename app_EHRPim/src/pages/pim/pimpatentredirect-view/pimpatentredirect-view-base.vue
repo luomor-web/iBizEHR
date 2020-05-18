@@ -119,10 +119,10 @@ export default class PIMPATENTRedirectViewBase extends WizardViewBase {
     /**
      * 引擎初始化
      *
-     * @protected
+     * @public
      * @memberof PIMPATENTRedirectViewBase
      */
-    protected engineInit(): void {
+    public engineInit(): void {
     }
 
 

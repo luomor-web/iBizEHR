@@ -63,7 +63,7 @@ public class WFIAActionServiceImpl extends ServiceImpl<WFIAActionMapper, WFIAAct
     @Override
     public void createBatch(List<WFIAAction> list) {
         list.forEach(item->fillParentData(item));
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

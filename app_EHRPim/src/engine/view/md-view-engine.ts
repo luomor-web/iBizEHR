@@ -117,6 +117,9 @@ export default class MDViewEngine extends ViewEngine {
         if (Object.is(eventName, 'load')) {
             this.onSearchFormLoad(args);
         }
+        if (Object.is(eventName, 'search')) {
+            this.onSearchFormLoad(args);
+        }
     }
 
     /**
@@ -150,6 +153,20 @@ export default class MDViewEngine extends ViewEngine {
      * @memberof MDViewEngine
      */
     public onSearchFormLoad(args: any = {}): void {
+        if (this.getMDCtrl() && this.isLoadDefault) {
+            const tag = this.getMDCtrl().name;
+            this.setViewState2({ tag: tag, action: 'load', viewdata: this.view.viewparams });
+        }
+        this.isLoadDefault = true;
+    }
+
+    /**
+     * 搜索表单搜索
+     *
+     * @param {*} [args={}]
+     * @memberof MDViewEngine
+     */
+    public onSearchFormSearch(args: any = {}): void {
         if (this.getMDCtrl() && this.isLoadDefault) {
             const tag = this.getMDCtrl().name;
             this.setViewState2({ tag: tag, action: 'load', viewdata: this.view.viewparams });
@@ -372,6 +389,15 @@ export default class MDViewEngine extends ViewEngine {
         if (this.view && !this.view.isExpandSearchForm) {
             Object.assign(arg, { query: this.view.query });
         }
+        // 快速分组和快速搜索栏
+        let otherQueryParam:any = {};
+        if(this.view && this.view.qucikGroupData){
+            Object.assign(otherQueryParam,this.view.qucikGroupData);
+        }
+        if(this.view && this.view.qucikFormData){
+            Object.assign(otherQueryParam,this.view.qucikFormData);
+        }
+        Object.assign(arg,{viewparams:otherQueryParam});
     }
 
     /**

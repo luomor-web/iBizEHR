@@ -159,7 +159,7 @@ public class TRMTRAINTEACHERServiceImpl extends ServiceImpl<TRMTRAINTEACHERMappe
     @Override
     public void createBatch(List<TRMTRAINTEACHER> list) {
         list.forEach(item->fillParentData(item));
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
 

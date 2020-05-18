@@ -95,7 +95,7 @@ public class PARKHFAServiceImpl extends ServiceImpl<PARKHFAMapper, PARKHFA> impl
 
     @Override
     public void createBatch(List<PARKHFA> list) {
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

@@ -76,7 +76,7 @@ public class ORMXMBQServiceImpl extends ServiceImpl<ORMXMBQMapper, ORMXMBQ> impl
     @Override
     public void createBatch(List<ORMXMBQ> list) {
         list.forEach(item->fillParentData(item));
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

@@ -123,12 +123,12 @@ export default class AppMpicker extends Vue {
      * @param newVal 
      * @param val 
      */
-    @Watch('curvalue', { deep: true })
+    @Watch('curvalue', {immediate:true, deep: true })
     oncurvalueChange(newVal: any, val: any) {
         this.value = [];
         this.selectItems = [];
         if (newVal) {
-            this.selectItems = JSON.parse(newVal);
+            this.selectItems = this.parseValue(JSON.parse(newVal));
             this.selectItems.forEach((item: any) => {
                 this.value.push(item[this.deKeyField]);
                 let index = this.items.findIndex((i) => Object.is(i[this.deKeyField], item[this.deKeyField]));
@@ -187,7 +187,7 @@ export default class AppMpicker extends Vue {
                 let index = this.items.findIndex((item) => Object.is(item[this.deKeyField], select));
                 if (index >= 0) {
                     let item = this.items[index];
-                    val.push({ [this.deKeyField]: item[this.deKeyField], [this.deMajorField]: item.text });
+                    val.push({ [this.deKeyField]: item[this.deKeyField], [this.deMajorField]: item[this.deMajorField] });
                 } else {
                     index = this.selectItems.findIndex((item: any) => Object.is(item[this.deKeyField], select));
                     if (index >= 0) {
@@ -196,7 +196,7 @@ export default class AppMpicker extends Vue {
                     }
                 }
             });
-            let value = val.length > 0 ? JSON.stringify(val) : '';
+            let value = val.length > 0 ? JSON.stringify(this.formatValue(val)) : '';
             this.$emit('formitemvaluechange', { name: this.name, value: value });
         }
     }
@@ -211,7 +211,7 @@ export default class AppMpicker extends Vue {
         let index = this.selectItems.findIndex((item: any) => Object.is(item[this.deKeyField], tag));
         if (index >= 0) {
             this.selectItems.splice(index, 1);
-            let value = this.selectItems.length > 0 ? JSON.stringify(this.selectItems) : '';
+            let value = this.selectItems.length > 0 ? JSON.stringify(this.formatValue(this.selectItems)) : '';
             this.$emit('formitemvaluechange', { name: this.name, value: value });
         }
     }
@@ -256,12 +256,49 @@ export default class AppMpicker extends Vue {
                     });
                 }
                 if (this.name && this.activeData) {
-                    let value = selects.length > 0 ? JSON.stringify(selects) : '';
+                    let value = selects.length > 0 ? JSON.stringify(this.formatValue(selects)) : '';
                     this.$emit('formitemvaluechange', { name: this.name, value: value });
                 }
             })
         }
     }
+
+    /**
+     * 解析值,把srfkey和srfmajortext解析成实体属性名
+     *
+     * @param {any[]} value 需要转换的数组
+     * @memberof AppMpicker
+     */
+    public parseValue(value: any[]){
+        let result = [];
+        if(this.deKeyField !== "srfkey" || this.deMajorField !== "srfmajortext"){
+            value.forEach((item: any) => {
+                result.push({[this.deMajorField]: item.srfmajortext, [this.deKeyField]: item.srfkey});
+            });
+        }else{
+            result = value;
+        }
+        return result;
+    }
+
+    /**
+     * 格式化值，把实体属性名格式化成srfkey和srfmajortext
+     *
+     * @param {any[]} value 需要转换的数组
+     * @memberof AppMpicker
+     */
+    public formatValue(value: any[]){
+        let result = [];
+        if(this.deKeyField !== "srfkey" || this.deMajorField !== "srfmajortext"){
+            value.forEach((item: any) => {
+                result.push({srfmajortext : item[this.deMajorField], srfkey : item[this.deKeyField]});
+            });
+        }else{
+            result = value;
+        }
+        return result;
+    }
+
 
 }
 </script>

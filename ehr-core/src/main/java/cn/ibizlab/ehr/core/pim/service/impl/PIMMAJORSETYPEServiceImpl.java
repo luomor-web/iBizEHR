@@ -116,7 +116,7 @@ public class PIMMAJORSETYPEServiceImpl extends ServiceImpl<PIMMAJORSETYPEMapper,
 
     @Override
     public void createBatch(List<PIMMAJORSETYPE> list) {
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

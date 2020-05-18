@@ -125,7 +125,7 @@ public class SALPARAMServiceImpl extends ServiceImpl<SALPARAMMapper, SALPARAM> i
     @Override
     public void createBatch(List<SALPARAM> list) {
         list.forEach(item->fillParentData(item));
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

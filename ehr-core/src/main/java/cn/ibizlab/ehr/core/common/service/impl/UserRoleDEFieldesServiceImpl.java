@@ -99,7 +99,7 @@ public class UserRoleDEFieldesServiceImpl extends ServiceImpl<UserRoleDEFieldesM
     @Override
     public void createBatch(List<UserRoleDEFieldes> list) {
         list.forEach(item->fillParentData(item));
-        saveBatch(list,batchSize);
+        this.saveOrUpdateBatch(list,batchSize);
     }
 
     @Override

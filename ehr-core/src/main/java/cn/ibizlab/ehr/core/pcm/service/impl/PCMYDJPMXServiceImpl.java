@@ -134,7 +134,7 @@ public class PCMYDJPMXServiceImpl extends ServiceImpl<PCMYDJPMXMapper, PCMYDJPMX
 
     @Override
     public void createBatch(List<PCMYDJPMX> list) {
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

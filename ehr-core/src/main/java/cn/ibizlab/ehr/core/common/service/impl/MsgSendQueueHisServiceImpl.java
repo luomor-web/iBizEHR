@@ -132,7 +132,7 @@ public class MsgSendQueueHisServiceImpl extends ServiceImpl<MsgSendQueueHisMappe
 
     @Override
     public void createBatch(List<MsgSendQueueHis> list) {
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
 

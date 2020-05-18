@@ -106,7 +106,7 @@ public class VACDAYOFFServiceImpl extends ServiceImpl<VACDAYOFFMapper, VACDAYOFF
 
     @Override
     public void createBatch(List<VACDAYOFF> list) {
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

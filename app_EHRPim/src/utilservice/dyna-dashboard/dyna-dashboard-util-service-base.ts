@@ -14,35 +14,35 @@ export default class DynaDashboardUtilServiceBase extends UtilService {
      * 
      * @memberof  DynaDashboardUtilServiceBase
      */ 
-    protected stoageDataService: DynaDashboardService = new DynaDashboardService();
+    public stoageDataService: DynaDashboardService = new DynaDashboardService();
 
     /**
      * 获取数据行为
      * 
      * @memberof  DynaDashboardUtilServiceBase
      */ 
-    protected loadAction: string = "Get";
+    public loadAction: string = "Get";
 
     /**
      * 建立数据行为
      * 
      * @memberof  DynaDashboardUtilServiceBase
      */ 
-    protected createAction: string = "Create";
+    public createAction: string = "Create";
 
     /**
      * 更新数据行为
      * 
      * @memberof  DynaDashboardUtilServiceBase
      */ 
-    protected updateAction: string = "Update";
+    public updateAction: string = "Update";
 
     /**
      * 删除数据行为
      * 
      * @memberof  DynaDashboardUtilServiceBase
      */ 
-    protected removeAction: string = "Remove";
+    public removeAction: string = "Remove";
 
     /**
      * Creates an instance of  DynaDashboardUtilServiceBase.
@@ -76,7 +76,7 @@ export default class DynaDashboardUtilServiceBase extends UtilService {
      * @param isloading 是否加载
      * @memberof  DynaDashboardUtilServiceBase
      */ 
-    protected loadModelData(context: any = {},data: any = {}, isloading?: boolean): Promise<any>{
+    public loadModelData(context: any = {},data: any = {}, isloading?: boolean): Promise<any>{
         return new Promise((resolve: any, reject: any) => {
             let dataStr = window.localStorage.getItem(data.modelid);
             if(dataStr) {
@@ -97,7 +97,7 @@ export default class DynaDashboardUtilServiceBase extends UtilService {
      * @param isloading 是否加载
      * @memberof  DynaDashboardUtilServiceBase
      */ 
-    protected saveModelData(context: any = {},action:string,data: any = {}, isloading?: boolean):Promise<any>{
+    public saveModelData(context: any = {},action:string,data: any = {}, isloading?: boolean):Promise<any>{
         return new Promise((resolve: any, reject: any) => {
             window.localStorage.setItem(data.modelid, JSON.stringify(data));
             resolve({status:200,data:data.model});
@@ -112,7 +112,7 @@ export default class DynaDashboardUtilServiceBase extends UtilService {
      * @param isloading 是否加载
      * @memberof  DynaDashboardUtilServiceBase
      */ 
-    protected createdModelData(context: any = {},data: any = {}, isloading?: boolean):Promise<any>{
+    public createdModelData(context: any = {},data: any = {}, isloading?: boolean):Promise<any>{
         const {context:contextResult,data:dataResult} = this.handlePreParam(context,data);
         return new Promise((resolve: any, reject: any) => {
             let result: Promise<any>;
@@ -134,7 +134,7 @@ export default class DynaDashboardUtilServiceBase extends UtilService {
      * @param isloading 是否加载
      * @memberof  DynaDashboardUtilServiceBase
      */     
-    protected updateModelData(context: any = {},data: any = {}, isloading?: boolean):Promise<any>{
+    public updateModelData(context: any = {},data: any = {}, isloading?: boolean):Promise<any>{
         const {context:contextResult,data:dataResult} = this.handlePreParam(context,data);
         return new Promise((resolve: any, reject: any) => {
             let result: Promise<any>;

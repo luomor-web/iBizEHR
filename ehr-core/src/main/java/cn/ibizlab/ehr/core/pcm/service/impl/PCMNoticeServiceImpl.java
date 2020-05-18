@@ -72,7 +72,7 @@ public class PCMNoticeServiceImpl extends ServiceImpl<PCMNoticeMapper, PCMNotice
     @Override
     public void createBatch(List<PCMNotice> list) {
         list.forEach(item->fillParentData(item));
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

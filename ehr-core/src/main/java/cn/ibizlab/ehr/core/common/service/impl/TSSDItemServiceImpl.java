@@ -61,7 +61,7 @@ public class TSSDItemServiceImpl extends ServiceImpl<TSSDItemMapper, TSSDItem> i
 
     @Override
     public void createBatch(List<TSSDItem> list) {
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

@@ -109,7 +109,7 @@ public class WFStepServiceImpl extends ServiceImpl<WFStepMapper, WFStep> impleme
     @Override
     public void createBatch(List<WFStep> list) {
         list.forEach(item->fillParentData(item));
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

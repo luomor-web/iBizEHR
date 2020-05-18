@@ -11,6 +11,8 @@ import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.util.ObjectUtils;
+import org.springframework.util.DigestUtils;
 import cn.ibizlab.ehr.util.domain.EntityBase;
 import cn.ibizlab.ehr.util.annotation.DEField;
 import cn.ibizlab.ehr.util.enums.DEPredefinedFieldType;
@@ -22,6 +24,7 @@ import org.springframework.data.annotation.Transient;
 
 import com.baomidou.mybatisplus.annotation.*;
 import cn.ibizlab.ehr.util.domain.EntityMP;
+
 
 /**
  * 实体[工作流步骤操作者]
@@ -333,10 +336,23 @@ public class WFStepActor extends EntityMP implements Serializable {
         this.wfstepid = wfstepid ;
         this.modify("wfstepid",wfstepid);
     }
+
+    /**
+     * 获取 [工作流步骤操作者标识]
+     */
+    public String getWfstepactorid(){
+        if(ObjectUtils.isEmpty(wfstepactorid)){
+            wfstepactorid=(String)getDefaultKey(true);
+        }
+        return wfstepactorid;
+    }
+
+    @Override
+    public Serializable getDefaultKey(boolean gen) {
+        if((!ObjectUtils.isEmpty(this.getWfstepid()))&&(!ObjectUtils.isEmpty(this.getActorid())))
+            return DigestUtils.md5DigestAsHex(String.format("%s||%s" ,this.getWfstepid(),this.getActorid()).getBytes());
+        return null;
+    }
 }
-
-
-
-
 
 

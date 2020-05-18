@@ -318,8 +318,9 @@ export default class LabServices_EditGridService extends ControlService {
     public loadDraft(action: string,context: any = {}, data: any = {}, isloading?: boolean): Promise<any> {
         const {data:Data,context:Context} = this.handleRequestData(action,context,data);
         //仿真主键数据
-        Data.pimcontractid = Util.createUUID();
-        Data.pimcontract = Data.pimcontractid;
+        const PrimaryKey = Util.createUUID();
+        Data.pimcontractid = PrimaryKey;
+        Data.pimcontract = PrimaryKey;
         return new Promise((resolve: any, reject: any) => {
             let result: Promise<any>;
             const _appEntityService: any = this.appEntityService;
@@ -329,6 +330,7 @@ export default class LabServices_EditGridService extends ControlService {
                 result = this.appEntityService.GetDraft(Context,Data, isloading);
             }
             result.then((response) => {
+                response.data.pimcontractid = PrimaryKey;
                 this.handleResponse(action, response, true);
                 resolve(response);
             }).catch(response => {

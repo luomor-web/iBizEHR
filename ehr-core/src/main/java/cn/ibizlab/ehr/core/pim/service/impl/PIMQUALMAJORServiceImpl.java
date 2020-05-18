@@ -70,7 +70,7 @@ public class PIMQUALMAJORServiceImpl extends ServiceImpl<PIMQUALMAJORMapper, PIM
 
     @Override
     public void createBatch(List<PIMQUALMAJOR> list) {
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

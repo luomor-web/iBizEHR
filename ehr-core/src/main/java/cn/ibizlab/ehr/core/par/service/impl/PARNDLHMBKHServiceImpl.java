@@ -85,7 +85,7 @@ public class PARNDLHMBKHServiceImpl extends ServiceImpl<PARNDLHMBKHMapper, PARND
 
     @Override
     public void createBatch(List<PARNDLHMBKH> list) {
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

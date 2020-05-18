@@ -11,6 +11,8 @@ import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.util.ObjectUtils;
+import org.springframework.util.DigestUtils;
 import cn.ibizlab.ehr.util.domain.EntityBase;
 import cn.ibizlab.ehr.util.annotation.DEField;
 import cn.ibizlab.ehr.util.enums.DEPredefinedFieldType;
@@ -22,6 +24,7 @@ import org.springframework.data.annotation.Transient;
 
 import com.baomidou.mybatisplus.annotation.*;
 import cn.ibizlab.ehr.util.domain.EntityMP;
+
 
 /**
  * 实体[注册表]
@@ -246,10 +249,23 @@ public class Registry extends EntityMP implements Serializable {
         this.param3 = param3 ;
         this.modify("param3",param3);
     }
+
+    /**
+     * 获取 [注册表标识]
+     */
+    public String getRegistryid(){
+        if(ObjectUtils.isEmpty(registryid)){
+            registryid=(String)getDefaultKey(true);
+        }
+        return registryid;
+    }
+
+    @Override
+    public Serializable getDefaultKey(boolean gen) {
+        if((!ObjectUtils.isEmpty(this.getRegistryname()))&&(!ObjectUtils.isEmpty(this.getSector())))
+            return DigestUtils.md5DigestAsHex(String.format("%s||%s" ,this.getRegistryname(),this.getSector()).getBytes());
+        return null;
+    }
 }
-
-
-
-
 
 

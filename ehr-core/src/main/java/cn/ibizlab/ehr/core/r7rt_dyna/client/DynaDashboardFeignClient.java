@@ -19,52 +19,52 @@ import org.springframework.cloud.openfeign.FeignClient;
 @FeignClient(value = "r7rt-dyna", contextId = "DynaDashboard", fallback = DynaDashboardFallback.class)
 public interface DynaDashboardFeignClient {
 
-    @RequestMapping(method = RequestMethod.POST, value = "/r7rt_dyna/dynadashboards/select")
+    @RequestMapping(method = RequestMethod.POST, value = "/dynadashboards/select")
     Page<DynaDashboard> select();
 
 
-    @RequestMapping(method = RequestMethod.POST, value = "/r7rt_dyna/dynadashboards/save")
+    @RequestMapping(method = RequestMethod.POST, value = "/dynadashboards/save")
     Boolean save(@RequestBody DynaDashboard dynadashboard);
 
-    @RequestMapping(method = RequestMethod.POST, value = "/r7rt_dyna/dynadashboards/save")
+    @RequestMapping(method = RequestMethod.POST, value = "/dynadashboards/save")
     Boolean saveBatch(@RequestBody List<DynaDashboard> dynadashboards);
 
 
-    @RequestMapping(method = RequestMethod.PUT, value = "/r7rt_dyna/dynadashboards/{dynadashboardid}")
+    @RequestMapping(method = RequestMethod.PUT, value = "/dynadashboards/{dynadashboardid}")
     DynaDashboard update(@PathVariable("dynadashboardid") String dynadashboardid,@RequestBody DynaDashboard dynadashboard);
 
-    @RequestMapping(method = RequestMethod.PUT, value = "/r7rt_dyna/dynadashboards/batch")
+    @RequestMapping(method = RequestMethod.PUT, value = "/dynadashboards/batch")
     Boolean updateBatch(@RequestBody List<DynaDashboard> dynadashboards);
 
 
-    @RequestMapping(method = RequestMethod.GET, value = "/r7rt_dyna/dynadashboards/{dynadashboardid}")
+    @RequestMapping(method = RequestMethod.GET, value = "/dynadashboards/{dynadashboardid}")
     DynaDashboard get(@PathVariable("dynadashboardid") String dynadashboardid);
 
 
-    @RequestMapping(method = RequestMethod.DELETE, value = "/r7rt_dyna/dynadashboards/{dynadashboardid}")
+    @RequestMapping(method = RequestMethod.DELETE, value = "/dynadashboards/{dynadashboardid}")
     Boolean remove(@PathVariable("dynadashboardid") String dynadashboardid);
 
-    @RequestMapping(method = RequestMethod.DELETE, value = "/r7rt_dyna/dynadashboards/batch}")
+    @RequestMapping(method = RequestMethod.DELETE, value = "/dynadashboards/batch}")
     Boolean removeBatch(@RequestBody Collection<String> idList);
 
 
-    @RequestMapping(method = RequestMethod.POST, value = "/r7rt_dyna/dynadashboards/checkkey")
+    @RequestMapping(method = RequestMethod.POST, value = "/dynadashboards/checkkey")
     Boolean checkKey(@RequestBody DynaDashboard dynadashboard);
 
 
-    @RequestMapping(method = RequestMethod.GET, value = "/r7rt_dyna/dynadashboards/getdraft")
+    @RequestMapping(method = RequestMethod.GET, value = "/dynadashboards/getdraft")
     DynaDashboard getDraft();
 
 
-    @RequestMapping(method = RequestMethod.POST, value = "/r7rt_dyna/dynadashboards")
+    @RequestMapping(method = RequestMethod.POST, value = "/dynadashboards")
     DynaDashboard create(@RequestBody DynaDashboard dynadashboard);
 
-    @RequestMapping(method = RequestMethod.POST, value = "/r7rt_dyna/dynadashboards/batch")
+    @RequestMapping(method = RequestMethod.POST, value = "/dynadashboards/batch")
     Boolean createBatch(@RequestBody List<DynaDashboard> dynadashboards);
 
 
 
-    @RequestMapping(method = RequestMethod.POST, value = "/r7rt_dyna/dynadashboards/searchdefault")
+    @RequestMapping(method = RequestMethod.POST, value = "/dynadashboards/searchdefault")
     Page<DynaDashboard> searchDefault(DynaDashboardSearchContext context);
 
 

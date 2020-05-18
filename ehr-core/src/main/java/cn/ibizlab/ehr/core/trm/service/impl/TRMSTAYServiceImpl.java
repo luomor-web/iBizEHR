@@ -136,7 +136,7 @@ public class TRMSTAYServiceImpl extends ServiceImpl<TRMSTAYMapper, TRMSTAY> impl
     @Override
     public void createBatch(List<TRMSTAY> list) {
         list.forEach(item->fillParentData(item));
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

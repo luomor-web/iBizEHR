@@ -118,7 +118,7 @@ public class FileServiceImpl extends ServiceImpl<FileMapper, File> implements IF
 
     @Override
     public void createBatch(List<File> list) {
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

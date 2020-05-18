@@ -9,11 +9,11 @@ export default class IndexModel {
     /**
      * 菜单项集合
      *
-     * @private
+     * @public
      * @type {any[]}
      * @memberof IndexModel
      */
-    private items: any[] = [
+    public items: any[] = [
         {
 	id: '0f50e185937758486cec3b68b642fb8a',
 	name: 'menuitem45',
@@ -847,11 +847,11 @@ export default class IndexModel {
 	/**
 	 * 应用功能集合
 	 *
-	 * @private
+	 * @public
 	 * @type {any[]}
 	 * @memberof IndexModel
 	 */
-	private funcs: any[] = [
+	public funcs: any[] = [
         {
             appfunctag: 'Auto459',
             appfuncyype: 'APPVIEW',

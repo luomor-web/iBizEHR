@@ -142,7 +142,7 @@ public class ATTENDANCERECORDTEMPServiceImpl extends ServiceImpl<ATTENDANCERECOR
     @Override
     public void createBatch(List<ATTENDANCERECORDTEMP> list) {
         list.forEach(item->fillParentData(item));
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

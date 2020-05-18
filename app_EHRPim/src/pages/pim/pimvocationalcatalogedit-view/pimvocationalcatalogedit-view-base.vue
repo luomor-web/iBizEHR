@@ -176,20 +176,20 @@ export default class PIMVOCATIONALCATALOGEditViewBase extends EditViewBase {
     /**
      * 视图引擎
      *
-     * @protected
+     * @public
      * @type {Engine}
      * @memberof PIMVOCATIONALCATALOGEditViewBase
      */
-    protected engine: EditViewEngine = new EditViewEngine();
+    public engine: EditViewEngine = new EditViewEngine();
 	
 
     /**
      * 引擎初始化
      *
-     * @protected
+     * @public
      * @memberof PIMVOCATIONALCATALOGEditViewBase
      */
-    protected engineInit(): void {
+    public engineInit(): void {
         this.engine.init({
             view: this,
             form: this.$refs.form,
@@ -278,7 +278,7 @@ export default class PIMVOCATIONALCATALOGEditViewBase extends EditViewBase {
      * @param {*} [$event]
      * @memberof 
      */
-    protected toolbar_tbitem3_click(params: any = {}, tag?: any, $event?: any) {
+    public toolbar_tbitem3_click(params: any = {}, tag?: any, $event?: any) {
         // 参数
         // 取数
         let datas: any[] = [];
@@ -304,7 +304,7 @@ export default class PIMVOCATIONALCATALOGEditViewBase extends EditViewBase {
      * @param {*} [$event]
      * @memberof 
      */
-    protected toolbar_tbitem4_click(params: any = {}, tag?: any, $event?: any) {
+    public toolbar_tbitem4_click(params: any = {}, tag?: any, $event?: any) {
         // 参数
         // 取数
         let datas: any[] = [];
@@ -330,7 +330,7 @@ export default class PIMVOCATIONALCATALOGEditViewBase extends EditViewBase {
      * @param {*} [$event]
      * @memberof 
      */
-    protected toolbar_tbitem5_click(params: any = {}, tag?: any, $event?: any) {
+    public toolbar_tbitem5_click(params: any = {}, tag?: any, $event?: any) {
         // 参数
         // 取数
         let datas: any[] = [];
@@ -356,7 +356,7 @@ export default class PIMVOCATIONALCATALOGEditViewBase extends EditViewBase {
      * @param {*} [$event]
      * @memberof 
      */
-    protected toolbar_tbitem7_click(params: any = {}, tag?: any, $event?: any) {
+    public toolbar_tbitem7_click(params: any = {}, tag?: any, $event?: any) {
         // 参数
         // 取数
         let datas: any[] = [];
@@ -382,7 +382,7 @@ export default class PIMVOCATIONALCATALOGEditViewBase extends EditViewBase {
      * @param {*} [$event]
      * @memberof 
      */
-    protected toolbar_tbitem10_click(params: any = {}, tag?: any, $event?: any) {
+    public toolbar_tbitem10_click(params: any = {}, tag?: any, $event?: any) {
         // 参数
         // 取数
         let datas: any[] = [];
@@ -408,7 +408,7 @@ export default class PIMVOCATIONALCATALOGEditViewBase extends EditViewBase {
      * @param {*} [$event]
      * @memberof 
      */
-    protected toolbar_tbitem15_click(params: any = {}, tag?: any, $event?: any) {
+    public toolbar_tbitem15_click(params: any = {}, tag?: any, $event?: any) {
         // 参数
         // 取数
         let datas: any[] = [];
@@ -434,7 +434,7 @@ export default class PIMVOCATIONALCATALOGEditViewBase extends EditViewBase {
      * @param {*} [$event]
      * @memberof 
      */
-    protected toolbar_tbitem22_click(params: any = {}, tag?: any, $event?: any) {
+    public toolbar_tbitem22_click(params: any = {}, tag?: any, $event?: any) {
         // 参数
         // 取数
         let datas: any[] = [];
@@ -463,7 +463,7 @@ export default class PIMVOCATIONALCATALOGEditViewBase extends EditViewBase {
      * @param {*} [actionContext]  执行行为上下文
      * @memberof PIMVOCATIONALCATALOGEditViewBase
      */
-    protected Save(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
+    public Save(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
         // 界面行为容器对象 _this
         const _this: any = this;
         if (xData && xData.save instanceof Function) {
@@ -489,7 +489,7 @@ export default class PIMVOCATIONALCATALOGEditViewBase extends EditViewBase {
      * @param {*} [actionContext]  执行行为上下文
      * @memberof PIMVOCATIONALCATALOGEditViewBase
      */
-    protected SaveAndNew(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
+    public SaveAndNew(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
         const _this: any = this;
         if (!xData || !(xData.saveAndNew instanceof Function)) {
             return;
@@ -516,7 +516,7 @@ export default class PIMVOCATIONALCATALOGEditViewBase extends EditViewBase {
      * @param {*} [actionContext]  执行行为上下文
      * @memberof PIMVOCATIONALCATALOGEditViewBase
      */
-    protected SaveAndExit(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
+    public SaveAndExit(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
         const _this: any = this;
         if (xData && xData.saveAndExit instanceof Function) {
             xData.saveAndExit().then((response: any) => {
@@ -549,7 +549,7 @@ export default class PIMVOCATIONALCATALOGEditViewBase extends EditViewBase {
      * @param {*} [actionContext]  执行行为上下文
      * @memberof PIMVOCATIONALCATALOGEditViewBase
      */
-    protected RemoveAndExit(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
+    public RemoveAndExit(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
         const _this: any = this;
         if (xData && xData.removeAndExit instanceof Function) {
             xData.removeAndExit().then((response: any) => {
@@ -582,7 +582,7 @@ export default class PIMVOCATIONALCATALOGEditViewBase extends EditViewBase {
      * @param {*} [actionContext]  执行行为上下文
      * @memberof PIMVOCATIONALCATALOGEditViewBase
      */
-    protected ViewWFStep(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
+    public ViewWFStep(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
         let _this:any = this;
         if (!xData || !(xData.wfsubmit instanceof Function)) {
             return;
@@ -612,7 +612,7 @@ export default class PIMVOCATIONALCATALOGEditViewBase extends EditViewBase {
      * @param {*} [actionContext]  执行行为上下文
      * @memberof PIMVOCATIONALCATALOGEditViewBase
      */
-    protected Print(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
+    public Print(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
         let _this:any = this;
         if (!xData || !(xData.print instanceof Function) || !$event) {
             return ;
@@ -630,7 +630,7 @@ export default class PIMVOCATIONALCATALOGEditViewBase extends EditViewBase {
      * @param {*} [actionContext]  执行行为上下文
      * @memberof PIMVOCATIONALCATALOGEditViewBase
      */
-    protected Help(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
+    public Help(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
         this.$Notice.error({ title: '错误', desc: '帮助未支持' });
     }
 

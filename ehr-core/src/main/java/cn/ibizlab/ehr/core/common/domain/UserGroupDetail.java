@@ -11,6 +11,8 @@ import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.util.ObjectUtils;
+import org.springframework.util.DigestUtils;
 import cn.ibizlab.ehr.util.domain.EntityBase;
 import cn.ibizlab.ehr.util.annotation.DEField;
 import cn.ibizlab.ehr.util.enums.DEPredefinedFieldType;
@@ -22,6 +24,7 @@ import org.springframework.data.annotation.Transient;
 
 import com.baomidou.mybatisplus.annotation.*;
 import cn.ibizlab.ehr.util.domain.EntityMP;
+
 
 /**
  * 实体[用户组成员]
@@ -177,10 +180,23 @@ public class UserGroupDetail extends EntityMP implements Serializable {
         this.userobjectid = userobjectid ;
         this.modify("userobjectid",userobjectid);
     }
+
+    /**
+     * 获取 [用户组成员标识]
+     */
+    public String getUsergroupdetailid(){
+        if(ObjectUtils.isEmpty(usergroupdetailid)){
+            usergroupdetailid=(String)getDefaultKey(true);
+        }
+        return usergroupdetailid;
+    }
+
+    @Override
+    public Serializable getDefaultKey(boolean gen) {
+        if((!ObjectUtils.isEmpty(this.getUsergroupid()))&&(!ObjectUtils.isEmpty(this.getUserobjectid())))
+            return DigestUtils.md5DigestAsHex(String.format("%s||%s" ,this.getUsergroupid(),this.getUserobjectid()).getBytes());
+        return null;
+    }
 }
-
-
-
-
 
 

@@ -63,7 +63,7 @@ public class TDZWXXServiceImpl extends ServiceImpl<TDZWXXMapper, TDZWXX> impleme
     @Override
     public void createBatch(List<TDZWXX> list) {
         list.forEach(item->fillParentData(item));
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

@@ -112,7 +112,7 @@ public class ORMPostLibServiceImpl extends ServiceImpl<ORMPostLibMapper, ORMPost
 
     @Override
     public void createBatch(List<ORMPostLib> list) {
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

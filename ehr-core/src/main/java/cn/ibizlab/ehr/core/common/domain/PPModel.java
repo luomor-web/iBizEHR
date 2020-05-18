@@ -11,6 +11,8 @@ import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.util.ObjectUtils;
+import org.springframework.util.DigestUtils;
 import cn.ibizlab.ehr.util.domain.EntityBase;
 import cn.ibizlab.ehr.util.annotation.DEField;
 import cn.ibizlab.ehr.util.enums.DEPredefinedFieldType;
@@ -22,6 +24,7 @@ import org.springframework.data.annotation.Transient;
 
 import com.baomidou.mybatisplus.annotation.*;
 import cn.ibizlab.ehr.util.domain.EntityMP;
+
 
 /**
  * 实体[门户页面模型]
@@ -800,10 +803,23 @@ public class PPModel extends EntityMP implements Serializable {
         this.c2pvpartid = c2pvpartid ;
         this.modify("c2pvpartid",c2pvpartid);
     }
+
+    /**
+     * 获取 [用户频道页标识]
+     */
+    public String getPpmodelid(){
+        if(ObjectUtils.isEmpty(ppmodelid)){
+            ppmodelid=(String)getDefaultKey(true);
+        }
+        return ppmodelid;
+    }
+
+    @Override
+    public Serializable getDefaultKey(boolean gen) {
+        if((!ObjectUtils.isEmpty(this.getPortalpageid()))&&(!ObjectUtils.isEmpty(this.getOwnerid())))
+            return DigestUtils.md5DigestAsHex(String.format("%s||%s" ,this.getPortalpageid(),this.getOwnerid()).getBytes());
+        return null;
+    }
 }
-
-
-
-
 
 

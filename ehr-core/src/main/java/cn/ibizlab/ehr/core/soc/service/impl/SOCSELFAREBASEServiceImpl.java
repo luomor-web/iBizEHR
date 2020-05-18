@@ -118,7 +118,7 @@ public class SOCSELFAREBASEServiceImpl extends ServiceImpl<SOCSELFAREBASEMapper,
     @Override
     public void createBatch(List<SOCSELFAREBASE> list) {
         list.forEach(item->fillParentData(item));
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

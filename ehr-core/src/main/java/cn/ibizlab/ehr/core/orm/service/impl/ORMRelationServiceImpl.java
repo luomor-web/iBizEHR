@@ -58,7 +58,7 @@ public class ORMRelationServiceImpl extends ServiceImpl<ORMRelationMapper, ORMRe
 
     @Override
     public void createBatch(List<ORMRelation> list) {
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

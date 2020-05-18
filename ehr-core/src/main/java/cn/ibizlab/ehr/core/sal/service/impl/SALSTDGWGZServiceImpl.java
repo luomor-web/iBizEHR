@@ -104,7 +104,7 @@ public class SALSTDGWGZServiceImpl extends ServiceImpl<SALSTDGWGZMapper, SALSTDG
     @Override
     public void createBatch(List<SALSTDGWGZ> list) {
         list.forEach(item->fillParentData(item));
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

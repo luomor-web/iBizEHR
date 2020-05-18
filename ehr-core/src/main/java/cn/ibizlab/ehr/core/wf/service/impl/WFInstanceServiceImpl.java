@@ -127,7 +127,7 @@ public class WFInstanceServiceImpl extends ServiceImpl<WFInstanceMapper, WFInsta
     @Override
     public void createBatch(List<WFInstance> list) {
         list.forEach(item->fillParentData(item));
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

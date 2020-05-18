@@ -118,7 +118,7 @@ public class ORMORGInfoServiceImpl extends ServiceImpl<ORMORGInfoMapper, ORMORGI
 
     @Override
     public void createBatch(List<ORMORGInfo> list) {
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

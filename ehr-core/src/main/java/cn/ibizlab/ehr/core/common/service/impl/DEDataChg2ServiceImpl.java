@@ -110,7 +110,7 @@ public class DEDataChg2ServiceImpl extends ServiceImpl<DEDataChg2Mapper, DEDataC
     @Override
     public void createBatch(List<DEDataChg2> list) {
         list.forEach(item->fillParentData(item));
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

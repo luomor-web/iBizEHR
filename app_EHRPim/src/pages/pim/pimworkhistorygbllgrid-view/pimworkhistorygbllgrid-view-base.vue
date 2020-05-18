@@ -22,6 +22,7 @@
     v-show="isExpandSearchForm"
     loaddraftAction="FilterGetDraft"
     loadAction="FilterGet"
+
     name="searchform"  
     ref='searchform' 
     @save="searchform_save($event)"  
@@ -62,6 +63,7 @@
 
 </template>
 
+
 <script lang='tsx'>
 import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorator';
 import { Subject } from 'rxjs';
@@ -70,6 +72,8 @@ import { VueLifeCycleProcessing, GridViewBase } from '@/crm-core';
 import PIMWORKHISTORYService from '@/service/pimworkhistory/pimworkhistory-service';
 
 import GridViewEngine from '@engine/view/grid-view-engine';
+
+import CodeListService from "@service/app/codelist-service";
 
 
 /**
@@ -184,23 +188,24 @@ export default class PIMWORKHISTORYGBLLGridViewBase extends GridViewBase {
 
 
 
+
     /**
      * 视图引擎
      *
-     * @protected
+     * @public
      * @type {Engine}
      * @memberof PIMWORKHISTORYGBLLGridViewBase
      */
-    protected engine: GridViewEngine = new GridViewEngine();
+    public engine: GridViewEngine = new GridViewEngine();
 	
 
     /**
      * 引擎初始化
      *
-     * @protected
+     * @public
      * @memberof PIMWORKHISTORYGBLLGridViewBase
      */
-    protected engineInit(): void {
+    public engineInit(): void {
         this.engine.init({
             view: this,
             opendata: (args: any[], params?: any, $event?: any, xData?: any) => {
@@ -325,7 +330,7 @@ export default class PIMWORKHISTORYGBLLGridViewBase extends GridViewBase {
      * @param {*} [xData]
      * @memberof PIMWORKHISTORYGBLLGridView
      */
-    protected newdata(args: any[],fullargs?:any[], params?: any, $event?: any, xData?: any) {
+    public newdata(args: any[],fullargs?:any[], params?: any, $event?: any, xData?: any) {
         const data: any = {};
         let curViewParam = JSON.parse(JSON.stringify(this.context));
         if(args.length >0){
@@ -362,7 +367,7 @@ export default class PIMWORKHISTORYGBLLGridViewBase extends GridViewBase {
      * @param {*} [xData]
      * @memberof PIMWORKHISTORYGBLLGridView
      */
-    protected opendata(args: any[],fullargs?:any[],params?: any, $event?: any, xData?: any) {
+    public opendata(args: any[],fullargs?:any[],params?: any, $event?: any, xData?: any) {
         const data: any = {};
         let curViewParam = JSON.parse(JSON.stringify(this.context));
         if(args.length >0){
@@ -415,6 +420,7 @@ export default class PIMWORKHISTORYGBLLGridViewBase extends GridViewBase {
      * @memberof PIMWORKHISTORYGBLLGridViewBase
      */
     public isSingleSelect: boolean = false;
+
 
     /**
      * Vue声明周期

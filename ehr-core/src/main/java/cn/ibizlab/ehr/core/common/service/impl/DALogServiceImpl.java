@@ -119,7 +119,7 @@ public class DALogServiceImpl extends ServiceImpl<DALogMapper, DALog> implements
 
     @Override
     public void createBatch(List<DALog> list) {
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

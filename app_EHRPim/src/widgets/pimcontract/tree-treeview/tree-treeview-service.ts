@@ -65,38 +65,38 @@ export default class TreeService extends ControlService {
     /**
      * 节点分隔符号
      *
-     * @private
+     * @public
      * @type {string}
      * @memberof TreeService
      */
-    private TREENODE_SEPARATOR: string = ';';
+    public TREENODE_SEPARATOR: string = ';';
 
     /**
      * 子组织节点节点分隔符号
      *
-     * @private
+     * @public
      * @type {string}
      * @memberof TreeService
      */
-	private TREENODE_SUBORG: string = 'SubORG';
+	public TREENODE_SUBORG: string = 'SubORG';
 
     /**
      * 根组织节点节点分隔符号
      *
-     * @private
+     * @public
      * @type {string}
      * @memberof TreeService
      */
-	private TREENODE_ORG: string = 'ORG';
+	public TREENODE_ORG: string = 'ORG';
 
     /**
      * 默认根节点节点分隔符号
      *
-     * @private
+     * @public
      * @type {string}
      * @memberof TreeService
      */
-	private TREENODE_ROOT: string = 'ROOT';
+	public TREENODE_ROOT: string = 'ROOT';
 
     /**
      * 获取节点数据
@@ -146,7 +146,8 @@ export default class TreeService extends ControlService {
                 srfnodefilter: srfnodefilter,
                 strRealNodeId: strRealNodeId,
                 srfnodeid: srfnodeid,
-                strNodeType: strNodeType
+                strNodeType: strNodeType,
+                viewparams: JSON.parse(JSON.stringify(data)).viewparams
             }
         );
 
@@ -189,15 +190,20 @@ export default class TreeService extends ControlService {
     /**
      * 填充 树视图节点[子组织节点]
      *
-     * @private
+     * @public
      * @param {any{}} context     
      * @param {*} filter
      * @param {any[]} list
+     * @param {*} rsNavContext   
+     * @param {*} rsNavParams
+     * @param {*} rsParams
      * @returns {Promise<any>}
      * @memberof TreeService
      */
     @Errorlog
-    private fillSuborgNodes(context:any={},filter: any, list: any[]): Promise<any> {
+    public fillSuborgNodes(context:any={},filter: any, list: any[],rsNavContext?:any,rsNavParams?:any,rsParams?:any): Promise<any> {
+        context = this.handleResNavContext(context,filter,rsNavContext);
+        filter = this.handleResNavParams(context,filter,rsNavParams,rsParams);
         return new Promise((resolve:any,reject:any) =>{
             let searchFilter: any = {};
             if (Object.is(filter.strNodeType, this.TREENODE_SUBORG)) {
@@ -221,8 +227,9 @@ export default class TreeService extends ControlService {
                         let strId: string = entity.orgid;
                         let strText: string = entity.shortname;
                         Object.assign(treeNode,{srfparentdename:'ORMORG',srfparentkey:entity.orgid});
-                        Object.assign(treeNode,{srfappctxkey:'ormorg'});
-                        Object.assign(treeNode,{srfappctx:{'ormorg':strId}});
+                        let tempContext:any = JSON.parse(JSON.stringify(context));
+                        Object.assign(tempContext,{srfparentdename:'ORMORG',srfparentkey:entity.orgid,ormorg:strId})
+                        Object.assign(treeNode,{srfappctx:tempContext});
                         Object.assign(treeNode,{'ormorg':strId});
                         Object.assign(treeNode, { srfkey: strId });
                         Object.assign(treeNode, { text: strText, srfmajortext: strText });
@@ -254,7 +261,7 @@ export default class TreeService extends ControlService {
     /**
      * 获取查询集合
      *
-     * @private
+     * @public
      * @param {any{}} context     
      * @param {*} searchFilter
      * @param {*} filter
@@ -262,13 +269,22 @@ export default class TreeService extends ControlService {
      * @memberof TestEnetityDatasService
      */
     @Errorlog
-    private searchSuborg(context:any={}, searchFilter: any, filter: any): Promise<any> {
+    public searchSuborg(context:any={}, searchFilter: any, filter: any): Promise<any> {
         return new Promise((resolve:any,reject:any) =>{
+            if(filter.viewparams){
+                Object.assign(searchFilter,filter.viewparams);
+            }
             if(!searchFilter.page){
                 Object.assign(searchFilter,{page:0});
             }
             if(!searchFilter.size){
                 Object.assign(searchFilter,{size:1000});
+            }
+            if(context && context.srfparentdename){
+                Object.assign(searchFilter,{srfparentdename:JSON.parse(JSON.stringify(context)).srfparentdename});
+            }
+            if(context && context.srfparentkey){
+                Object.assign(searchFilter,{srfparentkey:JSON.parse(JSON.stringify(context)).srfparentkey});
             }
             Object.assign(searchFilter,{sort: 'px,asc'})
             const _appEntityService: any = this.ormorgService;
@@ -277,7 +293,9 @@ export default class TreeService extends ControlService {
                 const response: Promise<any> = _appEntityService['FetchCurChild'](context, searchFilter, false);
                 response.then((response: any) => {
                     if (!response.status || response.status !== 200) {
-                        reject("数据集异常!");
+                        resolve([]);
+                        console.log(JSON.stringify(context));
+                        console.error('查询FetchCurChild数据集异常!');
                     }
                     const data: any = response.data;
                     if (Object.keys(data).length > 0) {
@@ -287,7 +305,9 @@ export default class TreeService extends ControlService {
                         resolve([]);
                     }
                 }).catch((response: any) => {
-                    reject("数据集异常!");
+                        resolve([]);
+                        console.log(JSON.stringify(context));
+                        console.error('查询FetchCurChild数据集异常!');
                 });
             }
         })
@@ -296,7 +316,7 @@ export default class TreeService extends ControlService {
     /**
      * 填充 树视图节点[子组织节点]子节点
      *
-     * @private
+     * @public
      * @param {any{}} context         
      * @param {*} filter
      * @param {any[]} list
@@ -304,28 +324,39 @@ export default class TreeService extends ControlService {
      * @memberof TreeService
      */
     @Errorlog
-    private async fillSuborgNodeChilds(context:any={}, filter: any, list: any[]): Promise<any> {
+    public async fillSuborgNodeChilds(context:any={}, filter: any, list: any[]): Promise<any> {
 		if (filter.srfnodefilter && !Object.is(filter.srfnodefilter,"")) {
 			// 填充子组织节点
-			await this.fillSuborgNodes(context, filter, list);
+            let SuborgRsNavContext:any = {};
+            let SuborgRsNavParams:any = {};
+            let SuborgRsParams:any = {};
+			await this.fillSuborgNodes(context, filter, list ,SuborgRsNavContext,SuborgRsNavParams,SuborgRsParams);
 		} else {
 			// 填充子组织节点
-			await this.fillSuborgNodes(context, filter, list);
+            let SuborgRsNavContext:any = {};
+            let SuborgRsNavParams:any = {};
+            let SuborgRsParams:any = {};
+			await this.fillSuborgNodes(context, filter, list ,SuborgRsNavContext,SuborgRsNavParams,SuborgRsParams);
 		}
 	}
 
     /**
      * 填充 树视图节点[根组织节点]
      *
-     * @private
+     * @public
      * @param {any{}} context     
      * @param {*} filter
      * @param {any[]} list
+     * @param {*} rsNavContext   
+     * @param {*} rsNavParams
+     * @param {*} rsParams
      * @returns {Promise<any>}
      * @memberof TreeService
      */
     @Errorlog
-    private fillOrgNodes(context:any={},filter: any, list: any[]): Promise<any> {
+    public fillOrgNodes(context:any={},filter: any, list: any[],rsNavContext?:any,rsNavParams?:any,rsParams?:any): Promise<any> {
+        context = this.handleResNavContext(context,filter,rsNavContext);
+        filter = this.handleResNavParams(context,filter,rsNavParams,rsParams);
         return new Promise((resolve:any,reject:any) =>{
             let searchFilter: any = {};
             Object.assign(searchFilter, { total: false });
@@ -341,8 +372,9 @@ export default class TreeService extends ControlService {
                         let strId: string = entity.orgid;
                         let strText: string = entity.shortname;
                         Object.assign(treeNode,{srfparentdename:'ORMORG',srfparentkey:entity.orgid});
-                        Object.assign(treeNode,{srfappctxkey:'ormorg'});
-                        Object.assign(treeNode,{srfappctx:{'ormorg':strId}});
+                        let tempContext:any = JSON.parse(JSON.stringify(context));
+                        Object.assign(tempContext,{srfparentdename:'ORMORG',srfparentkey:entity.orgid,ormorg:strId})
+                        Object.assign(treeNode,{srfappctx:tempContext});
                         Object.assign(treeNode,{'ormorg':strId});
                         Object.assign(treeNode, { srfkey: strId });
                         Object.assign(treeNode, { text: strText, srfmajortext: strText });
@@ -374,7 +406,7 @@ export default class TreeService extends ControlService {
     /**
      * 获取查询集合
      *
-     * @private
+     * @public
      * @param {any{}} context     
      * @param {*} searchFilter
      * @param {*} filter
@@ -382,13 +414,22 @@ export default class TreeService extends ControlService {
      * @memberof TestEnetityDatasService
      */
     @Errorlog
-    private searchOrg(context:any={}, searchFilter: any, filter: any): Promise<any> {
+    public searchOrg(context:any={}, searchFilter: any, filter: any): Promise<any> {
         return new Promise((resolve:any,reject:any) =>{
+            if(filter.viewparams){
+                Object.assign(searchFilter,filter.viewparams);
+            }
             if(!searchFilter.page){
                 Object.assign(searchFilter,{page:0});
             }
             if(!searchFilter.size){
                 Object.assign(searchFilter,{size:1000});
+            }
+            if(context && context.srfparentdename){
+                Object.assign(searchFilter,{srfparentdename:JSON.parse(JSON.stringify(context)).srfparentdename});
+            }
+            if(context && context.srfparentkey){
+                Object.assign(searchFilter,{srfparentkey:JSON.parse(JSON.stringify(context)).srfparentkey});
             }
             Object.assign(searchFilter,{sort: 'px,asc'})
             const _appEntityService: any = this.ormorgService;
@@ -397,7 +438,9 @@ export default class TreeService extends ControlService {
                 const response: Promise<any> = _appEntityService['FetchCurPorg'](context, searchFilter, false);
                 response.then((response: any) => {
                     if (!response.status || response.status !== 200) {
-                        reject("数据集异常!");
+                        resolve([]);
+                        console.log(JSON.stringify(context));
+                        console.error('查询FetchCurPorg数据集异常!');
                     }
                     const data: any = response.data;
                     if (Object.keys(data).length > 0) {
@@ -407,7 +450,9 @@ export default class TreeService extends ControlService {
                         resolve([]);
                     }
                 }).catch((response: any) => {
-                    reject("数据集异常!");
+                        resolve([]);
+                        console.log(JSON.stringify(context));
+                        console.error('查询FetchCurPorg数据集异常!');
                 });
             }
         })
@@ -416,7 +461,7 @@ export default class TreeService extends ControlService {
     /**
      * 填充 树视图节点[根组织节点]子节点
      *
-     * @private
+     * @public
      * @param {any{}} context         
      * @param {*} filter
      * @param {any[]} list
@@ -424,28 +469,39 @@ export default class TreeService extends ControlService {
      * @memberof TreeService
      */
     @Errorlog
-    private async fillOrgNodeChilds(context:any={}, filter: any, list: any[]): Promise<any> {
+    public async fillOrgNodeChilds(context:any={}, filter: any, list: any[]): Promise<any> {
 		if (filter.srfnodefilter && !Object.is(filter.srfnodefilter,"")) {
 			// 填充子组织节点
-			await this.fillSuborgNodes(context, filter, list);
+            let SuborgRsNavContext:any = {};
+            let SuborgRsNavParams:any = {};
+            let SuborgRsParams:any = {};
+			await this.fillSuborgNodes(context, filter, list ,SuborgRsNavContext,SuborgRsNavParams,SuborgRsParams);
 		} else {
 			// 填充子组织节点
-			await this.fillSuborgNodes(context, filter, list);
+            let SuborgRsNavContext:any = {};
+            let SuborgRsNavParams:any = {};
+            let SuborgRsParams:any = {};
+			await this.fillSuborgNodes(context, filter, list ,SuborgRsNavContext,SuborgRsNavParams,SuborgRsParams);
 		}
 	}
 
     /**
      * 填充 树视图节点[默认根节点]
      *
-     * @private
+     * @public
      * @param {any{}} context     
      * @param {*} filter
      * @param {any[]} list
+     * @param {*} rsNavContext   
+     * @param {*} rsNavParams
+     * @param {*} rsParams
      * @returns {Promise<any>}
      * @memberof TreeService
      */
     @Errorlog
-    private fillRootNodes(context:any={},filter: any, list: any[]): Promise<any> {
+    public fillRootNodes(context:any={},filter: any, list: any[],rsNavContext?:any,rsNavParams?:any,rsParams?:any): Promise<any> {
+        context = this.handleResNavContext(context,filter,rsNavContext);
+        filter = this.handleResNavParams(context,filter,rsNavParams,rsParams);
         return new Promise((resolve:any,reject:any) =>{
             let treeNode: any = {};
             Object.assign(treeNode, { text: 'entities.pimcontract.tree_treeview.nodes.root' });
@@ -473,7 +529,7 @@ export default class TreeService extends ControlService {
     /**
      * 填充 树视图节点[默认根节点]子节点
      *
-     * @private
+     * @public
      * @param {any{}} context         
      * @param {*} filter
      * @param {any[]} list
@@ -481,13 +537,19 @@ export default class TreeService extends ControlService {
      * @memberof TreeService
      */
     @Errorlog
-    private async fillRootNodeChilds(context:any={}, filter: any, list: any[]): Promise<any> {
+    public async fillRootNodeChilds(context:any={}, filter: any, list: any[]): Promise<any> {
 		if (filter.srfnodefilter && !Object.is(filter.srfnodefilter,"")) {
 			// 填充根组织节点
-			await this.fillOrgNodes(context, filter, list);
+            let OrgRsNavContext:any = {};
+            let OrgRsNavParams:any = {};
+            let OrgRsParams:any = {};
+			await this.fillOrgNodes(context, filter, list ,OrgRsNavContext,OrgRsNavParams,OrgRsParams);
 		} else {
 			// 填充根组织节点
-			await this.fillOrgNodes(context, filter, list);
+            let OrgRsNavContext:any = {};
+            let OrgRsNavParams:any = {};
+            let OrgRsParams:any = {};
+			await this.fillOrgNodes(context, filter, list ,OrgRsNavContext,OrgRsNavParams,OrgRsParams);
 		}
 	}
 
@@ -556,5 +618,126 @@ export default class TreeService extends ControlService {
             callBack(context,item);
         })
     }
+
+    /**
+     * 处理节点关系导航上下文
+     *
+     * @param context 应用上下文
+     * @param filter 参数 
+     * @param resNavContext 节点关系导航上下文
+     *
+     * @memberof TreeService
+     */
+    public handleResNavContext(context:any,filter:any,resNavContext:any){
+        if(resNavContext && Object.keys(resNavContext).length > 0){
+            let tempContextData:any = JSON.parse(JSON.stringify(context));
+            let tempViewParams:any = {};
+            if(filter && filter.viewparams){
+                tempViewParams = filter.viewparams;
+            }
+            Object.keys(resNavContext).forEach((item:any) =>{
+                let curDataObj:any = resNavContext[item];
+                this.handleCustomDataLogic(context,tempViewParams,curDataObj,tempContextData,item);
+            })
+            return tempContextData;
+        }else{
+            return context;
+        }
+    }
+
+    /**
+     * 处理关系导航参数
+     *
+     * @param context 应用上下文
+     * @param filter 参数 
+     * @param resNavParams 节点关系导航参数
+     * @param resParams 节点关系参数
+     *
+     * @memberof TreeService
+     */
+	public handleResNavParams(context:any,filter:any,resNavParams:any,resParams:any){
+        if((resNavParams && Object.keys(resNavParams).length >0) || (resParams && Object.keys(resParams).length >0)){
+            let tempViewParamData:any = {};
+            let tempViewParams:any = {};
+            if(filter && filter.viewparams){
+                tempViewParams = filter.viewparams;
+                tempViewParamData = JSON.parse(JSON.stringify(filter.viewparams));
+            }
+            if( Object.keys(resNavParams).length > 0){
+                Object.keys(resNavParams).forEach((item:any) =>{
+                    let curDataObj:any = resNavParams[item];
+                    this.handleCustomDataLogic(context,tempViewParams,curDataObj,tempViewParamData,item);
+                })
+            }
+            if( Object.keys(resParams).length > 0){
+                Object.keys(resParams).forEach((item:any) =>{
+                    let curDataObj:any = resParams[item];
+                    tempViewParamData[item.toLowerCase()] = curDataObj.value;
+                })
+            }
+            Object.assign(filter,{viewparams:tempViewParamData});
+            return filter;
+        }else{
+            return filter;
+        }
+    }
+    
+    /**
+     * 处理自定义节点关系导航数据
+     * 
+     * @param context 应用上下文
+     * @param viewparams 参数 
+     * @param curNavData 节点关系导航参数对象
+     * @param tempData 返回数据
+     * @param item 节点关系导航参数键值
+     *
+     * @memberof TreeService
+     */
+	public handleCustomDataLogic(context:any,viewparams:any,curNavData:any,tempData:any,item:string){
+		// 直接值直接赋值
+		if(curNavData.isRawValue){
+			if(Object.is(curNavData.value,"null") || Object.is(curNavData.value,"")){
+                Object.defineProperty(tempData, item.toLowerCase(), {
+                    value: null,
+                    writable : true,
+                    enumerable : true,
+                    configurable : true
+                });
+            }else{
+                Object.defineProperty(tempData, item.toLowerCase(), {
+                    value: curNavData.value,
+                    writable : true,
+                    enumerable : true,
+                    configurable : true
+                });
+            }
+		}else{
+			// 先从导航上下文取数，没有再从导航参数（URL）取数，如果导航上下文和导航参数都没有则为null
+			if(context[(curNavData.value).toLowerCase()]){
+				Object.defineProperty(tempData, item.toLowerCase(), {
+					value: context[(curNavData.value).toLowerCase()],
+					writable : true,
+					enumerable : true,
+					configurable : true
+				});
+			}else{
+				if(viewparams[(curNavData.value).toLowerCase()]){
+					Object.defineProperty(tempData, item.toLowerCase(), {
+						value: viewparams[(curNavData.value).toLowerCase()],
+						writable : true,
+						enumerable : true,
+						configurable : true
+					});
+				}else{
+					Object.defineProperty(tempData, item.toLowerCase(), {
+						value: null,
+						writable : true,
+						enumerable : true,
+						configurable : true
+					});
+				}
+			}
+		}
+	}
 
 }

@@ -66,7 +66,7 @@ public class WFUserAssistServiceImpl extends ServiceImpl<WFUserAssistMapper, WFU
     @Override
     public void createBatch(List<WFUserAssist> list) {
         list.forEach(item->fillParentData(item));
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

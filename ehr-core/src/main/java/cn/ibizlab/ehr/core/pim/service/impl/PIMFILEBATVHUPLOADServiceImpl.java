@@ -115,7 +115,7 @@ public class PIMFILEBATVHUPLOADServiceImpl extends ServiceImpl<PIMFILEBATVHUPLOA
 
     @Override
     public void createBatch(List<PIMFILEBATVHUPLOAD> list) {
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

@@ -4,6 +4,7 @@
           v-if="inited && view.viewname && !Object.is(view.viewname, '')" 
           :is="view.viewname"
           class="viewcontainer3"
+          :openMode="openMode"
           :viewdata="viewdata"
           :viewparam="viewparam"
           :viewDefaultUsage="false"
@@ -42,7 +43,7 @@ export default class OrmOrgSectorPickupViewpickupviewpanelBase extends Vue imple
      * @type {string}
      * @memberof OrmOrgSectorPickupViewpickupviewpanel
      */
-    @Prop() protected name?: string;
+    @Prop() public name?: string;
 
     /**
      * 视图通讯对象
@@ -50,7 +51,7 @@ export default class OrmOrgSectorPickupViewpickupviewpanelBase extends Vue imple
      * @type {Subject<ViewState>}
      * @memberof OrmOrgSectorPickupViewpickupviewpanel
      */
-    @Prop() protected viewState!: Subject<ViewState>;
+    @Prop() public viewState!: Subject<ViewState>;
 
     /**
      * 应用上下文
@@ -58,7 +59,7 @@ export default class OrmOrgSectorPickupViewpickupviewpanelBase extends Vue imple
      * @type {*}
      * @memberof OrmOrgSectorPickupViewpickupviewpanel
      */
-    @Prop() protected context: any;
+    @Prop() public context: any;
 
     /**
      * 视图参数
@@ -66,16 +67,16 @@ export default class OrmOrgSectorPickupViewpickupviewpanelBase extends Vue imple
      * @type {*}
      * @memberof OrmOrgSectorPickupViewpickupviewpanel
      */
-    @Prop() protected viewparams: any;
+    @Prop() public viewparams: any;
 
     /**
      * 视图状态事件
      *
-     * @protected
+     * @public
      * @type {(Subscription | undefined)}
      * @memberof OrmOrgSectorPickupViewpickupviewpanel
      */
-    protected viewStateEvent: Subscription | undefined;
+    public viewStateEvent: Subscription | undefined;
 
     /**
      * 获取部件类型
@@ -83,7 +84,7 @@ export default class OrmOrgSectorPickupViewpickupviewpanelBase extends Vue imple
      * @returns {string}
      * @memberof OrmOrgSectorPickupViewpickupviewpanel
      */
-    protected getControlType(): string {
+    public getControlType(): string {
         return 'PICKUPVIEWPANEL'
     }
 
@@ -95,7 +96,7 @@ export default class OrmOrgSectorPickupViewpickupviewpanelBase extends Vue imple
      * @type {OrmOrgSectorPickupViewpickupviewpanelService}
      * @memberof OrmOrgSectorPickupViewpickupviewpanel
      */
-    protected service: OrmOrgSectorPickupViewpickupviewpanelService = new OrmOrgSectorPickupViewpickupviewpanelService({ $store: this.$store });
+    public service: OrmOrgSectorPickupViewpickupviewpanelService = new OrmOrgSectorPickupViewpickupviewpanelService({ $store: this.$store });
 
     /**
      * 实体服务对象
@@ -103,7 +104,7 @@ export default class OrmOrgSectorPickupViewpickupviewpanelBase extends Vue imple
      * @type {ORMDUTYService}
      * @memberof OrmOrgSectorPickupViewpickupviewpanel
      */
-    protected appEntityService: ORMDUTYService = new ORMDUTYService({ $store: this.$store });
+    public appEntityService: ORMDUTYService = new ORMDUTYService({ $store: this.$store });
     
 
 
@@ -113,7 +114,7 @@ export default class OrmOrgSectorPickupViewpickupviewpanelBase extends Vue imple
      * @param {any} args
      * @memberof OrmOrgSectorPickupViewpickupviewpanel
      */
-    protected closeView(args: any): void {
+    public closeView(args: any): void {
         let _this: any = this;
         _this.$emit('closeview', [args]);
     }
@@ -133,6 +134,16 @@ export default class OrmOrgSectorPickupViewpickupviewpanelBase extends Vue imple
             })
         }
     }
+
+    /**
+     * 视图打开模式
+     *
+     * @protected
+     * @type {('DEFAULT' | 'MODAL')}
+     * @memberof OrmOrgSectorPickupViewpickupviewpanel
+     */
+    @Prop({ default: 'DEFAULT' })
+    protected openMode!: 'DEFAULT' | 'MODAL';
 
     /**
      * 选中数据字符串

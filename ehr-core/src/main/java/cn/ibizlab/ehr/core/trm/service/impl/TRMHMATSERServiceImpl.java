@@ -123,7 +123,7 @@ public class TRMHMATSERServiceImpl extends ServiceImpl<TRMHMATSERMapper, TRMHMAT
     @Override
     public void createBatch(List<TRMHMATSER> list) {
         list.forEach(item->fillParentData(item));
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

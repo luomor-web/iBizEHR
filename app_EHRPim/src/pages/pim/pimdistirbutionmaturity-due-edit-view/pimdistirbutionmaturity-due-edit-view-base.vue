@@ -168,20 +168,20 @@ export default class PIMDISTIRBUTIONMaturityDueEditViewBase extends EditViewBase
     /**
      * 视图引擎
      *
-     * @protected
+     * @public
      * @type {Engine}
      * @memberof PIMDISTIRBUTIONMaturityDueEditViewBase
      */
-    protected engine: EditViewEngine = new EditViewEngine();
+    public engine: EditViewEngine = new EditViewEngine();
 	
 
     /**
      * 引擎初始化
      *
-     * @protected
+     * @public
      * @memberof PIMDISTIRBUTIONMaturityDueEditViewBase
      */
-    protected engineInit(): void {
+    public engineInit(): void {
         this.engine.init({
             view: this,
             form: this.$refs.form,
@@ -258,7 +258,7 @@ export default class PIMDISTIRBUTIONMaturityDueEditViewBase extends EditViewBase
      * @param {*} [$event]
      * @memberof 
      */
-    protected toolbar_deuiaction3_click(params: any = {}, tag?: any, $event?: any) {
+    public toolbar_deuiaction3_click(params: any = {}, tag?: any, $event?: any) {
         // 参数
         // 取数
         let datas: any[] = [];
@@ -284,7 +284,7 @@ export default class PIMDISTIRBUTIONMaturityDueEditViewBase extends EditViewBase
      * @param {*} [$event]
      * @memberof 
      */
-    protected toolbar_deuiaction6_click(params: any = {}, tag?: any, $event?: any) {
+    public toolbar_deuiaction6_click(params: any = {}, tag?: any, $event?: any) {
         // 参数
         // 取数
         let datas: any[] = [];
@@ -310,7 +310,7 @@ export default class PIMDISTIRBUTIONMaturityDueEditViewBase extends EditViewBase
      * @param {*} [$event]
      * @memberof 
      */
-    protected toolbar_deuiaction2_click(params: any = {}, tag?: any, $event?: any) {
+    public toolbar_deuiaction2_click(params: any = {}, tag?: any, $event?: any) {
         // 参数
         // 取数
         let datas: any[] = [];
@@ -353,7 +353,7 @@ export default class PIMDISTIRBUTIONMaturityDueEditViewBase extends EditViewBase
      * @param {*} [actionContext]  执行行为上下文
      * @memberof PIMDISTIRBUTIONMaturityDueEditViewBase
      */
-    protected ExportExcel(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
+    public ExportExcel(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
         const _this: any = this;
         if (!xData || !(xData.exportExcel instanceof Function) || !$event) {
             return ;
@@ -371,7 +371,7 @@ export default class PIMDISTIRBUTIONMaturityDueEditViewBase extends EditViewBase
      * @param {*} [actionContext]  执行行为上下文
      * @memberof PIMDISTIRBUTIONMaturityDueEditViewBase
      */
-    protected ToggleFilter(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
+    public ToggleFilter(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
         const _this: any = this;
         if (_this.hasOwnProperty('isExpandSearchForm')) {
             _this.isExpandSearchForm = !_this.isExpandSearchForm;

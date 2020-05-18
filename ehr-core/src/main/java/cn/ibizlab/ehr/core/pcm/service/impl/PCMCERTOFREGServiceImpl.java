@@ -110,7 +110,7 @@ public class PCMCERTOFREGServiceImpl extends ServiceImpl<PCMCERTOFREGMapper, PCM
     @Override
     public void createBatch(List<PCMCERTOFREG> list) {
         list.forEach(item->fillParentData(item));
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

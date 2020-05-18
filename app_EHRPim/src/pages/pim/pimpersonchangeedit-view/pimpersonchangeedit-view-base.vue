@@ -173,20 +173,20 @@ export default class PIMPERSONCHANGEEditViewBase extends EditViewBase {
     /**
      * 视图引擎
      *
-     * @protected
+     * @public
      * @type {Engine}
      * @memberof PIMPERSONCHANGEEditViewBase
      */
-    protected engine: EditViewEngine = new EditViewEngine();
+    public engine: EditViewEngine = new EditViewEngine();
 	
 
     /**
      * 引擎初始化
      *
-     * @protected
+     * @public
      * @memberof PIMPERSONCHANGEEditViewBase
      */
-    protected engineInit(): void {
+    public engineInit(): void {
         this.engine.init({
             view: this,
             form: this.$refs.form,
@@ -263,7 +263,7 @@ export default class PIMPERSONCHANGEEditViewBase extends EditViewBase {
      * @param {*} [$event]
      * @memberof 
      */
-    protected toolbar_deuiaction2_qr_click(params: any = {}, tag?: any, $event?: any) {
+    public toolbar_deuiaction2_qr_click(params: any = {}, tag?: any, $event?: any) {
         // 参数
         // 取数
         let datas: any[] = [];
@@ -290,7 +290,7 @@ export default class PIMPERSONCHANGEEditViewBase extends EditViewBase {
      * @param {*} [$event]
      * @memberof 
      */
-    protected toolbar_deuiaction2_bh_click(params: any = {}, tag?: any, $event?: any) {
+    public toolbar_deuiaction2_bh_click(params: any = {}, tag?: any, $event?: any) {
         // 参数
         // 取数
         let datas: any[] = [];
@@ -317,7 +317,7 @@ export default class PIMPERSONCHANGEEditViewBase extends EditViewBase {
      * @param {*} [$event]
      * @memberof 
      */
-    protected toolbar_deuiaction1_click(params: any = {}, tag?: any, $event?: any) {
+    public toolbar_deuiaction1_click(params: any = {}, tag?: any, $event?: any) {
         // 参数
         // 取数
         let datas: any[] = [];
@@ -346,7 +346,7 @@ export default class PIMPERSONCHANGEEditViewBase extends EditViewBase {
      * @param {*} [actionContext]  执行行为上下文
      * @memberof PIMPERSONCHANGEEditViewBase
      */
-    protected Exit(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
+    public Exit(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
         this.closeView(args);
         if(window.parent){
             window.parent.postMessage([{ ...args }],'*');

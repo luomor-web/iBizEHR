@@ -135,7 +135,7 @@ public class UniResServiceImpl extends ServiceImpl<UniResMapper, UniRes> impleme
 
     @Override
     public void createBatch(List<UniRes> list) {
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
 

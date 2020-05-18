@@ -69,7 +69,7 @@ public class PARKHZCMXServiceImpl extends ServiceImpl<PARKHZCMXMapper, PARKHZCMX
     @Override
     public void createBatch(List<PARKHZCMX> list) {
         list.forEach(item->fillParentData(item));
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

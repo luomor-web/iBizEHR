@@ -116,7 +116,7 @@ public class PARLDNDLHMBServiceImpl extends ServiceImpl<PARLDNDLHMBMapper, PARLD
     @Override
     public void createBatch(List<PARLDNDLHMB> list) {
         list.forEach(item->fillParentData(item));
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

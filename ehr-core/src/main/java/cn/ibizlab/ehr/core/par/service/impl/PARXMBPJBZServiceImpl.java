@@ -111,7 +111,7 @@ public class PARXMBPJBZServiceImpl extends ServiceImpl<PARXMBPJBZMapper, PARXMBP
     @Override
     public void createBatch(List<PARXMBPJBZ> list) {
         list.forEach(item->fillParentData(item));
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

@@ -133,7 +133,7 @@ public class TRMTEACHERCHARGEServiceImpl extends ServiceImpl<TRMTEACHERCHARGEMap
     @Override
     public void createBatch(List<TRMTEACHERCHARGE> list) {
         list.forEach(item->fillParentData(item));
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

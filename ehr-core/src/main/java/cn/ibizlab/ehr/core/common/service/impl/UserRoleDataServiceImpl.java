@@ -83,7 +83,7 @@ public class UserRoleDataServiceImpl extends ServiceImpl<UserRoleDataMapper, Use
     @Override
     public void createBatch(List<UserRoleData> list) {
         list.forEach(item->fillParentData(item));
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

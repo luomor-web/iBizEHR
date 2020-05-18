@@ -100,7 +100,7 @@ public class SALRULEServiceImpl extends ServiceImpl<SALRULEMapper, SALRULE> impl
     @Override
     public void createBatch(List<SALRULE> list) {
         list.forEach(item->fillParentData(item));
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

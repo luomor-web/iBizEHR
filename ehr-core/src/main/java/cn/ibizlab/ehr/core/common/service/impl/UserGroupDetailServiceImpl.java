@@ -144,7 +144,7 @@ public class UserGroupDetailServiceImpl extends ServiceImpl<UserGroupDetailMappe
     @Override
     public void createBatch(List<UserGroupDetail> list) {
         list.forEach(item->fillParentData(item));
-        saveBatch(list,batchSize);
+        this.saveOrUpdateBatch(list,batchSize);
     }
 
 

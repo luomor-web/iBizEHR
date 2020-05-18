@@ -93,7 +93,7 @@ public class WXMessageServiceImpl extends ServiceImpl<WXMessageMapper, WXMessage
     @Override
     public void createBatch(List<WXMessage> list) {
         list.forEach(item->fillParentData(item));
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

@@ -119,10 +119,10 @@ export default class PCMDETAILRedirectViewBase extends WizardViewBase {
     /**
      * 引擎初始化
      *
-     * @protected
+     * @public
      * @memberof PCMDETAILRedirectViewBase
      */
-    protected engineInit(): void {
+    public engineInit(): void {
     }
 
 

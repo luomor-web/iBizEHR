@@ -77,7 +77,7 @@ public class WFQJServiceImpl extends ServiceImpl<WFQJMapper, WFQJ> implements IW
 
     @Override
     public void createBatch(List<WFQJ> list) {
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

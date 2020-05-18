@@ -131,7 +131,7 @@ public class ORMBMKQDZServiceImpl extends ServiceImpl<ORMBMKQDZMapper, ORMBMKQDZ
     @Override
     public void createBatch(List<ORMBMKQDZ> list) {
         list.forEach(item->fillParentData(item));
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

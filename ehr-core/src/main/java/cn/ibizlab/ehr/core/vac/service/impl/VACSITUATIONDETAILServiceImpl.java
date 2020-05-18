@@ -77,7 +77,7 @@ public class VACSITUATIONDETAILServiceImpl extends ServiceImpl<VACSITUATIONDETAI
 
     @Override
     public void createBatch(List<VACSITUATIONDETAIL> list) {
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

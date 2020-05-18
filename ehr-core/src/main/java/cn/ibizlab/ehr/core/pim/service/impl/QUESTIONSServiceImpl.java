@@ -169,7 +169,7 @@ public class QUESTIONSServiceImpl extends ServiceImpl<QUESTIONSMapper, QUESTIONS
 
     @Override
     public void createBatch(List<QUESTIONS> list) {
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

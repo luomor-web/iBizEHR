@@ -89,7 +89,7 @@ public class TSSDPolicyOwnerServiceImpl extends ServiceImpl<TSSDPolicyOwnerMappe
 
     @Override
     public void createBatch(List<TSSDPolicyOwner> list) {
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

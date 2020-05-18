@@ -22,6 +22,7 @@
     v-show="isExpandSearchForm"
     loaddraftAction="FilterGetDraft"
     loadAction="FilterGet"
+
     name="searchform"  
     ref='searchform' 
     @save="searchform_save($event)"  
@@ -62,6 +63,7 @@
 
 </template>
 
+
 <script lang='tsx'>
 import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorator';
 import { Subject } from 'rxjs';
@@ -70,6 +72,8 @@ import { VueLifeCycleProcessing, GridViewBase } from '@/crm-core';
 import PIMARCHIVESLOANANDRETURNService from '@/service/pimarchivesloanandreturn/pimarchivesloanandreturn-service';
 
 import GridViewEngine from '@engine/view/grid-view-engine';
+
+import CodeListService from "@service/app/codelist-service";
 
 
 /**
@@ -195,23 +199,24 @@ export default class PIMARCHIVESLOANANDRETURNGridViewBase extends GridViewBase {
 
 
 
+
     /**
      * 视图引擎
      *
-     * @protected
+     * @public
      * @type {Engine}
      * @memberof PIMARCHIVESLOANANDRETURNGridViewBase
      */
-    protected engine: GridViewEngine = new GridViewEngine();
+    public engine: GridViewEngine = new GridViewEngine();
 	
 
     /**
      * 引擎初始化
      *
-     * @protected
+     * @public
      * @memberof PIMARCHIVESLOANANDRETURNGridViewBase
      */
-    protected engineInit(): void {
+    public engineInit(): void {
         this.engine.init({
             view: this,
             opendata: (args: any[], params?: any, $event?: any, xData?: any) => {
@@ -380,7 +385,7 @@ export default class PIMARCHIVESLOANANDRETURNGridViewBase extends GridViewBase {
      * @param {*} [$event]
      * @memberof 
      */
-    protected toolbar2_deuiaction1_click(params: any = {}, tag?: any, $event?: any) {
+    public toolbar2_deuiaction1_click(params: any = {}, tag?: any, $event?: any) {
         // 参数
         // 取数
         let datas: any[] = [];
@@ -406,7 +411,7 @@ export default class PIMARCHIVESLOANANDRETURNGridViewBase extends GridViewBase {
      * @param {*} [$event]
      * @memberof 
      */
-    protected toolbar2_deuiaction2_click(params: any = {}, tag?: any, $event?: any) {
+    public toolbar2_deuiaction2_click(params: any = {}, tag?: any, $event?: any) {
         // 参数
         // 取数
         let datas: any[] = [];
@@ -432,7 +437,7 @@ export default class PIMARCHIVESLOANANDRETURNGridViewBase extends GridViewBase {
      * @param {*} [$event]
      * @memberof 
      */
-    protected toolbar2_deuiaction4_click(params: any = {}, tag?: any, $event?: any) {
+    public toolbar2_deuiaction4_click(params: any = {}, tag?: any, $event?: any) {
         // 参数
         // 取数
         let datas: any[] = [];
@@ -458,7 +463,7 @@ export default class PIMARCHIVESLOANANDRETURNGridViewBase extends GridViewBase {
      * @param {*} [$event]
      * @memberof 
      */
-    protected toolbar2_deuiaction3_click(params: any = {}, tag?: any, $event?: any) {
+    public toolbar2_deuiaction3_click(params: any = {}, tag?: any, $event?: any) {
         // 参数
         // 取数
         let datas: any[] = [];
@@ -484,7 +489,7 @@ export default class PIMARCHIVESLOANANDRETURNGridViewBase extends GridViewBase {
      * @param {*} [$event]
      * @memberof 
      */
-    protected toolbar_deuiaction1_click(params: any = {}, tag?: any, $event?: any) {
+    public toolbar_deuiaction1_click(params: any = {}, tag?: any, $event?: any) {
         // 参数
         // 取数
         let datas: any[] = [];
@@ -510,7 +515,7 @@ export default class PIMARCHIVESLOANANDRETURNGridViewBase extends GridViewBase {
      * @param {*} [$event]
      * @memberof 
      */
-    protected toolbar_tbitem23_click(params: any = {}, tag?: any, $event?: any) {
+    public toolbar_tbitem23_click(params: any = {}, tag?: any, $event?: any) {
         // 参数
         // 取数
         let datas: any[] = [];
@@ -536,7 +541,7 @@ export default class PIMARCHIVESLOANANDRETURNGridViewBase extends GridViewBase {
      * @param {*} [$event]
      * @memberof 
      */
-    protected toolbar_tbitem13_click(params: any = {}, tag?: any, $event?: any) {
+    public toolbar_tbitem13_click(params: any = {}, tag?: any, $event?: any) {
         // 参数
         // 取数
         let datas: any[] = [];
@@ -562,7 +567,7 @@ export default class PIMARCHIVESLOANANDRETURNGridViewBase extends GridViewBase {
      * @param {*} [$event]
      * @memberof 
      */
-    protected toolbar_tbitem18_click(params: any = {}, tag?: any, $event?: any) {
+    public toolbar_tbitem18_click(params: any = {}, tag?: any, $event?: any) {
         // 参数
         // 取数
         let datas: any[] = [];
@@ -590,7 +595,7 @@ export default class PIMARCHIVESLOANANDRETURNGridViewBase extends GridViewBase {
      * @param {*} [xData]
      * @memberof PIMARCHIVESLOANANDRETURNGridView
      */
-    protected newdata(args: any[],fullargs?:any[], params?: any, $event?: any, xData?: any) {
+    public newdata(args: any[],fullargs?:any[], params?: any, $event?: any, xData?: any) {
         const data: any = {};
         let curViewParam = JSON.parse(JSON.stringify(this.context));
         if(args.length >0){
@@ -627,7 +632,7 @@ export default class PIMARCHIVESLOANANDRETURNGridViewBase extends GridViewBase {
      * @param {*} [xData]
      * @memberof PIMARCHIVESLOANANDRETURNGridView
      */
-    protected opendata(args: any[],fullargs?:any[],params?: any, $event?: any, xData?: any) {
+    public opendata(args: any[],fullargs?:any[],params?: any, $event?: any, xData?: any) {
         const data: any = {};
         let curViewParam = JSON.parse(JSON.stringify(this.context));
         if(args.length >0){
@@ -663,11 +668,11 @@ export default class PIMARCHIVESLOANANDRETURNGridViewBase extends GridViewBase {
      * @param {*} [actionContext]  执行行为上下文
      * @memberof PIMARCHIVESLOANANDRETURNGridViewBase
      */
-    protected New(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
+    public New(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
          const _this: any = this;
         if (_this.newdata && _this.newdata instanceof Function) {
             const data: any = {};
-            _this.newdata([{ ...data }], params, $event, xData);
+            _this.newdata([{ ...data }],[{ ...data }], params, $event, xData);
         } else {
             _this.$Notice.error({ title: '错误', desc: 'newdata 视图处理逻辑不存在，请添加!' });
         }
@@ -697,7 +702,7 @@ export default class PIMARCHIVESLOANANDRETURNGridViewBase extends GridViewBase {
      * @param {*} [actionContext]  执行行为上下文
      * @memberof PIMARCHIVESLOANANDRETURNGridViewBase
      */
-    protected Remove(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
+    public Remove(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
         const _this: any = this;
         if (!xData || !(xData.remove instanceof Function)) {
             return ;
@@ -744,7 +749,7 @@ export default class PIMARCHIVESLOANANDRETURNGridViewBase extends GridViewBase {
      * @param {*} [actionContext]  执行行为上下文
      * @memberof PIMARCHIVESLOANANDRETURNGridViewBase
      */
-    protected Import(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
+    public Import(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
         const _this: any = this;
         if (!xData || !(xData.importExcel instanceof Function) || !$event) {
             return ;
@@ -762,7 +767,7 @@ export default class PIMARCHIVESLOANANDRETURNGridViewBase extends GridViewBase {
      * @param {*} [actionContext]  执行行为上下文
      * @memberof PIMARCHIVESLOANANDRETURNGridViewBase
      */
-    protected ExportExcel(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
+    public ExportExcel(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
         const _this: any = this;
         if (!xData || !(xData.exportExcel instanceof Function) || !$event) {
             return ;
@@ -780,7 +785,7 @@ export default class PIMARCHIVESLOANANDRETURNGridViewBase extends GridViewBase {
      * @param {*} [actionContext]  执行行为上下文
      * @memberof PIMARCHIVESLOANANDRETURNGridViewBase
      */
-    protected Help(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
+    public Help(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
         this.$Notice.error({ title: '错误', desc: '帮助未支持' });
     }
 
@@ -811,6 +816,7 @@ export default class PIMARCHIVESLOANANDRETURNGridViewBase extends GridViewBase {
      * @memberof PIMARCHIVESLOANANDRETURNGridViewBase
      */
     public isSingleSelect: boolean = false;
+
 
     /**
      * Vue声明周期

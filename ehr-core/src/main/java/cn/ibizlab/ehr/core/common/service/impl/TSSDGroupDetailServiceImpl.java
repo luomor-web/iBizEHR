@@ -72,7 +72,7 @@ public class TSSDGroupDetailServiceImpl extends ServiceImpl<TSSDGroupDetailMappe
     @Override
     public void createBatch(List<TSSDGroupDetail> list) {
         list.forEach(item->fillParentData(item));
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

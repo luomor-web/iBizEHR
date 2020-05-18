@@ -76,7 +76,7 @@ public class WFVersionServiceImpl extends ServiceImpl<WFVersionMapper, WFVersion
     @Override
     public void createBatch(List<WFVersion> list) {
         list.forEach(item->fillParentData(item));
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

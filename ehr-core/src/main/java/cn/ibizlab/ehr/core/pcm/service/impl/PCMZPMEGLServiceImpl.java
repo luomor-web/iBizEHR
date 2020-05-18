@@ -125,7 +125,7 @@ public class PCMZPMEGLServiceImpl extends ServiceImpl<PCMZPMEGLMapper, PCMZPMEGL
     @Override
     public void createBatch(List<PCMZPMEGL> list) {
         list.forEach(item->fillParentData(item));
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

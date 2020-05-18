@@ -113,7 +113,7 @@ public class CodeList1ServiceImpl extends ServiceImpl<CodeList1Mapper, CodeList1
     @Override
     public void createBatch(List<CodeList1> list) {
         list.forEach(item->fillParentData(item));
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

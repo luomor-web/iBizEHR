@@ -119,10 +119,10 @@ export default class PIMARMYCADRESRedirectViewBase extends WizardViewBase {
     /**
      * 引擎初始化
      *
-     * @protected
+     * @public
      * @memberof PIMARMYCADRESRedirectViewBase
      */
-    protected engineInit(): void {
+    public engineInit(): void {
     }
 
 

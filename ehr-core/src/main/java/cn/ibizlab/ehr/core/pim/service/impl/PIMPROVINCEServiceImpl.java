@@ -88,7 +88,7 @@ public class PIMPROVINCEServiceImpl extends ServiceImpl<PIMPROVINCEMapper, PIMPR
 
     @Override
     public void createBatch(List<PIMPROVINCE> list) {
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

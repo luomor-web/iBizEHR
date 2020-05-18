@@ -139,20 +139,20 @@ export default class PIMARCHIVESTreeExpViewBase extends TreeExpViewBase {
     /**
      * 视图引擎
      *
-     * @protected
+     * @public
      * @type {Engine}
      * @memberof PIMARCHIVESTreeExpViewBase
      */
-    protected engine: TreeExpViewEngine = new TreeExpViewEngine();
+    public engine: TreeExpViewEngine = new TreeExpViewEngine();
 	
 
     /**
      * 引擎初始化
      *
-     * @protected
+     * @public
      * @memberof PIMARCHIVESTreeExpViewBase
      */
-    protected engineInit(): void {
+    public engineInit(): void {
         this.engine.init({
             view: this,
             treeexpbar: this.$refs.treeexpbar,
@@ -210,7 +210,7 @@ export default class PIMARCHIVESTreeExpViewBase extends TreeExpViewBase {
      * @param {*} [xData]
      * @memberof PIMARCHIVESTreeExpView
      */
-    protected newdata(args: any[],fullargs?:any[], params?: any, $event?: any, xData?: any) {
+    public newdata(args: any[],fullargs?:any[], params?: any, $event?: any, xData?: any) {
     this.$Notice.warning({ title: '错误', desc: '未指定关系视图' });
     }
 
@@ -225,7 +225,7 @@ export default class PIMARCHIVESTreeExpViewBase extends TreeExpViewBase {
      * @param {*} [xData]
      * @memberof PIMARCHIVESTreeExpView
      */
-    protected opendata(args: any[],fullargs?:any[],params?: any, $event?: any, xData?: any) {
+    public opendata(args: any[],fullargs?:any[],params?: any, $event?: any, xData?: any) {
     this.$Notice.warning({ title: '错误', desc: '未指定关系视图' });
     }
 

@@ -106,7 +106,7 @@ public class UserDGThemeServiceImpl extends ServiceImpl<UserDGThemeMapper, UserD
 
     @Override
     public void createBatch(List<UserDGTheme> list) {
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

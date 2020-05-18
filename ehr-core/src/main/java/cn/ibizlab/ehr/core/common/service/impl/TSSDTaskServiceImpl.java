@@ -81,7 +81,7 @@ public class TSSDTaskServiceImpl extends ServiceImpl<TSSDTaskMapper, TSSDTask> i
     @Override
     public void createBatch(List<TSSDTask> list) {
         list.forEach(item->fillParentData(item));
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

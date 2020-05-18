@@ -105,7 +105,7 @@ public class SystemServiceImpl extends ServiceImpl<SystemMapper, System> impleme
 
     @Override
     public void createBatch(List<System> list) {
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

@@ -106,7 +106,7 @@ public class PersonStateMGRServiceImpl extends ServiceImpl<PersonStateMGRMapper,
 
     @Override
     public void createBatch(List<PersonStateMGR> list) {
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

@@ -106,7 +106,7 @@ public class PCMPROFILESPYYServiceImpl extends ServiceImpl<PCMPROFILESPYYMapper,
 
     @Override
     public void createBatch(List<PCMPROFILESPYY> list) {
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

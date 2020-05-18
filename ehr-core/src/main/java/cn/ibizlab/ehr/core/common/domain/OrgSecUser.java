@@ -11,6 +11,8 @@ import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.util.ObjectUtils;
+import org.springframework.util.DigestUtils;
 import cn.ibizlab.ehr.util.domain.EntityBase;
 import cn.ibizlab.ehr.util.annotation.DEField;
 import cn.ibizlab.ehr.util.enums.DEPredefinedFieldType;
@@ -22,6 +24,7 @@ import org.springframework.data.annotation.Transient;
 
 import com.baomidou.mybatisplus.annotation.*;
 import cn.ibizlab.ehr.util.domain.EntityMP;
+
 
 /**
  * 实体[组织部门人员]
@@ -707,10 +710,23 @@ public class OrgSecUser extends EntityMP implements Serializable {
         this.orguserid = orguserid ;
         this.modify("orguserid",orguserid);
     }
+
+    /**
+     * 获取 [组织部门人员标识]
+     */
+    public String getOrgsecuserid(){
+        if(ObjectUtils.isEmpty(orgsecuserid)){
+            orgsecuserid=(String)getDefaultKey(true);
+        }
+        return orgsecuserid;
+    }
+
+    @Override
+    public Serializable getDefaultKey(boolean gen) {
+        if((!ObjectUtils.isEmpty(this.getOrgsectorid()))&&(!ObjectUtils.isEmpty(this.getOrguserid())))
+            return DigestUtils.md5DigestAsHex(String.format("%s||%s" ,this.getOrgsectorid(),this.getOrguserid()).getBytes());
+        return null;
+    }
 }
-
-
-
-
 
 

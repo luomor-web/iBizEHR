@@ -82,7 +82,7 @@ public class PARLDNDLHMBMXServiceImpl extends ServiceImpl<PARLDNDLHMBMXMapper, P
     @Override
     public void createBatch(List<PARLDNDLHMBMX> list) {
         list.forEach(item->fillParentData(item));
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

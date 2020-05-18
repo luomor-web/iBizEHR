@@ -63,7 +63,7 @@ public class TRMINVOICEServiceImpl extends ServiceImpl<TRMINVOICEMapper, TRMINVO
     @Override
     public void createBatch(List<TRMINVOICE> list) {
         list.forEach(item->fillParentData(item));
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

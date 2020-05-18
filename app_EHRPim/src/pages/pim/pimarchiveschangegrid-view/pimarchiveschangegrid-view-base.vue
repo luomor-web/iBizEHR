@@ -22,6 +22,7 @@
     v-show="isExpandSearchForm"
     loaddraftAction="FilterGetDraft"
     loadAction="FilterGet"
+
     name="searchform"  
     ref='searchform' 
     @save="searchform_save($event)"  
@@ -62,6 +63,7 @@
 
 </template>
 
+
 <script lang='tsx'>
 import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorator';
 import { Subject } from 'rxjs';
@@ -70,6 +72,8 @@ import { VueLifeCycleProcessing, GridViewBase } from '@/crm-core';
 import PIMARCHIVESCHANGEService from '@/service/pimarchiveschange/pimarchiveschange-service';
 
 import GridViewEngine from '@engine/view/grid-view-engine';
+
+import CodeListService from "@service/app/codelist-service";
 
 
 /**
@@ -192,23 +196,24 @@ export default class PIMARCHIVESCHANGEGridViewBase extends GridViewBase {
 
 
 
+
     /**
      * 视图引擎
      *
-     * @protected
+     * @public
      * @type {Engine}
      * @memberof PIMARCHIVESCHANGEGridViewBase
      */
-    protected engine: GridViewEngine = new GridViewEngine();
+    public engine: GridViewEngine = new GridViewEngine();
 	
 
     /**
      * 引擎初始化
      *
-     * @protected
+     * @public
      * @memberof PIMARCHIVESCHANGEGridViewBase
      */
-    protected engineInit(): void {
+    public engineInit(): void {
         this.engine.init({
             view: this,
             opendata: (args: any[], params?: any, $event?: any, xData?: any) => {
@@ -354,7 +359,7 @@ export default class PIMARCHIVESCHANGEGridViewBase extends GridViewBase {
      * @param {*} [$event]
      * @memberof 
      */
-    protected toolbar_deuiaction1_click(params: any = {}, tag?: any, $event?: any) {
+    public toolbar_deuiaction1_click(params: any = {}, tag?: any, $event?: any) {
         // 参数
         // 取数
         let datas: any[] = [];
@@ -380,7 +385,7 @@ export default class PIMARCHIVESCHANGEGridViewBase extends GridViewBase {
      * @param {*} [$event]
      * @memberof 
      */
-    protected toolbar_tbitem23_click(params: any = {}, tag?: any, $event?: any) {
+    public toolbar_tbitem23_click(params: any = {}, tag?: any, $event?: any) {
         // 参数
         // 取数
         let datas: any[] = [];
@@ -406,7 +411,7 @@ export default class PIMARCHIVESCHANGEGridViewBase extends GridViewBase {
      * @param {*} [$event]
      * @memberof 
      */
-    protected toolbar_tbitem13_click(params: any = {}, tag?: any, $event?: any) {
+    public toolbar_tbitem13_click(params: any = {}, tag?: any, $event?: any) {
         // 参数
         // 取数
         let datas: any[] = [];
@@ -432,7 +437,7 @@ export default class PIMARCHIVESCHANGEGridViewBase extends GridViewBase {
      * @param {*} [$event]
      * @memberof 
      */
-    protected toolbar_tbitem18_click(params: any = {}, tag?: any, $event?: any) {
+    public toolbar_tbitem18_click(params: any = {}, tag?: any, $event?: any) {
         // 参数
         // 取数
         let datas: any[] = [];
@@ -460,7 +465,7 @@ export default class PIMARCHIVESCHANGEGridViewBase extends GridViewBase {
      * @param {*} [xData]
      * @memberof PIMARCHIVESCHANGEGridView
      */
-    protected newdata(args: any[],fullargs?:any[], params?: any, $event?: any, xData?: any) {
+    public newdata(args: any[],fullargs?:any[], params?: any, $event?: any, xData?: any) {
         const data: any = {};
         let curViewParam = JSON.parse(JSON.stringify(this.context));
         if(args.length >0){
@@ -497,7 +502,7 @@ export default class PIMARCHIVESCHANGEGridViewBase extends GridViewBase {
      * @param {*} [xData]
      * @memberof PIMARCHIVESCHANGEGridView
      */
-    protected opendata(args: any[],fullargs?:any[],params?: any, $event?: any, xData?: any) {
+    public opendata(args: any[],fullargs?:any[],params?: any, $event?: any, xData?: any) {
         const data: any = {};
         let curViewParam = JSON.parse(JSON.stringify(this.context));
         if(args.length >0){
@@ -547,7 +552,7 @@ export default class PIMARCHIVESCHANGEGridViewBase extends GridViewBase {
      * @param {*} [actionContext]  执行行为上下文
      * @memberof PIMARCHIVESCHANGEGridViewBase
      */
-    protected Import(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
+    public Import(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
         const _this: any = this;
         if (!xData || !(xData.importExcel instanceof Function) || !$event) {
             return ;
@@ -565,7 +570,7 @@ export default class PIMARCHIVESCHANGEGridViewBase extends GridViewBase {
      * @param {*} [actionContext]  执行行为上下文
      * @memberof PIMARCHIVESCHANGEGridViewBase
      */
-    protected ExportExcel(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
+    public ExportExcel(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
         const _this: any = this;
         if (!xData || !(xData.exportExcel instanceof Function) || !$event) {
             return ;
@@ -583,7 +588,7 @@ export default class PIMARCHIVESCHANGEGridViewBase extends GridViewBase {
      * @param {*} [actionContext]  执行行为上下文
      * @memberof PIMARCHIVESCHANGEGridViewBase
      */
-    protected Help(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
+    public Help(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
         this.$Notice.error({ title: '错误', desc: '帮助未支持' });
     }
 
@@ -614,6 +619,7 @@ export default class PIMARCHIVESCHANGEGridViewBase extends GridViewBase {
      * @memberof PIMARCHIVESCHANGEGridViewBase
      */
     public isSingleSelect: boolean = false;
+
 
     /**
      * Vue声明周期

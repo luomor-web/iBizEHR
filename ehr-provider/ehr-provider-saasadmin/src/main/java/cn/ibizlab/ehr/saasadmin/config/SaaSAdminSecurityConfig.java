@@ -25,6 +25,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 @Profile("saasadmin-prod")
 @Configuration
 @EnableWebSecurity
+@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SaaSAdminSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired

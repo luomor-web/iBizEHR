@@ -58,7 +58,7 @@ public class PARDJBZServiceImpl extends ServiceImpl<PARDJBZMapper, PARDJBZ> impl
 
     @Override
     public void createBatch(List<PARDJBZ> list) {
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

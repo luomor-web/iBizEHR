@@ -68,7 +68,7 @@ public class PARJXJGServiceImpl extends ServiceImpl<PARJXJGMapper, PARJXJG> impl
 
     @Override
     public void createBatch(List<PARJXJG> list) {
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

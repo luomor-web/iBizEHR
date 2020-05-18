@@ -39,7 +39,7 @@ export default class PIMTITLEOrgTitleBarBase extends Vue implements ControlInter
      * @type {string}
      * @memberof OrgTitleBar
      */
-    @Prop() protected name?: string;
+    @Prop() public name?: string;
 
     /**
      * 视图通讯对象
@@ -47,7 +47,7 @@ export default class PIMTITLEOrgTitleBarBase extends Vue implements ControlInter
      * @type {Subject<ViewState>}
      * @memberof OrgTitleBar
      */
-    @Prop() protected viewState!: Subject<ViewState>;
+    @Prop() public viewState!: Subject<ViewState>;
 
     /**
      * 应用上下文
@@ -55,7 +55,7 @@ export default class PIMTITLEOrgTitleBarBase extends Vue implements ControlInter
      * @type {*}
      * @memberof OrgTitleBar
      */
-    @Prop() protected context: any;
+    @Prop() public context: any;
 
     /**
      * 视图参数
@@ -63,16 +63,16 @@ export default class PIMTITLEOrgTitleBarBase extends Vue implements ControlInter
      * @type {*}
      * @memberof OrgTitleBar
      */
-    @Prop() protected viewparams: any;
+    @Prop() public viewparams: any;
 
     /**
      * 视图状态事件
      *
-     * @protected
+     * @public
      * @type {(Subscription | undefined)}
      * @memberof OrgTitleBar
      */
-    protected viewStateEvent: Subscription | undefined;
+    public viewStateEvent: Subscription | undefined;
 
     /**
      * 获取部件类型
@@ -80,7 +80,7 @@ export default class PIMTITLEOrgTitleBarBase extends Vue implements ControlInter
      * @returns {string}
      * @memberof OrgTitleBar
      */
-    protected getControlType(): string {
+    public getControlType(): string {
         return 'PORTLET'
     }
 
@@ -92,7 +92,7 @@ export default class PIMTITLEOrgTitleBarBase extends Vue implements ControlInter
      * @type {Array<*>}
      * @memberof OrgTitleBar
      */    
-    protected counterServiceArray:Array<any> = [];
+    public counterServiceArray:Array<any> = [];
 
     /**
      * 建构部件服务对象
@@ -100,7 +100,7 @@ export default class PIMTITLEOrgTitleBarBase extends Vue implements ControlInter
      * @type {OrgTitleBarService}
      * @memberof OrgTitleBar
      */
-    protected service: OrgTitleBarService = new OrgTitleBarService({ $store: this.$store });
+    public service: OrgTitleBarService = new OrgTitleBarService({ $store: this.$store });
 
     /**
      * 实体服务对象
@@ -108,7 +108,7 @@ export default class PIMTITLEOrgTitleBarBase extends Vue implements ControlInter
      * @type {PIMTITLEService}
      * @memberof OrgTitleBar
      */
-    protected appEntityService: PIMTITLEService = new PIMTITLEService({ $store: this.$store });
+    public appEntityService: PIMTITLEService = new PIMTITLEService({ $store: this.$store });
     
 
 
@@ -118,7 +118,7 @@ export default class PIMTITLEOrgTitleBarBase extends Vue implements ControlInter
      * @param {any} args
      * @memberof OrgTitleBar
      */
-    protected closeView(args: any): void {
+    public closeView(args: any): void {
         let _this: any = this;
         _this.$emit('closeview', [args]);
     }
@@ -174,7 +174,7 @@ export default class PIMTITLEOrgTitleBarBase extends Vue implements ControlInter
      *
      * @memberof OrgTitleBar
      */
-    protected created() {
+    public created() {
         this.afterCreated();
     }
 
@@ -183,7 +183,7 @@ export default class PIMTITLEOrgTitleBarBase extends Vue implements ControlInter
      *
      *  @memberof OrgTitleBar
      */    
-    protected afterCreated(){
+    public afterCreated(){
         if (this.viewState) {
             this.viewStateEvent = this.viewState.subscribe(({ tag, action, data }) => {
                 if (!Object.is(tag, this.name)) {
@@ -202,7 +202,7 @@ export default class PIMTITLEOrgTitleBarBase extends Vue implements ControlInter
      *
      * @memberof OrgTitleBar
      */
-    protected destroyed() {
+    public destroyed() {
         this.afterDestroy();
     }
 
@@ -211,7 +211,7 @@ export default class PIMTITLEOrgTitleBarBase extends Vue implements ControlInter
      *
      * @memberof OrgTitleBar
      */
-    protected afterDestroy() {
+    public afterDestroy() {
         if (this.viewStateEvent) {
             this.viewStateEvent.unsubscribe();
         }

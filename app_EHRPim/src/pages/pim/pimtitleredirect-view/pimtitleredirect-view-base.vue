@@ -119,10 +119,10 @@ export default class PIMTITLERedirectViewBase extends WizardViewBase {
     /**
      * 引擎初始化
      *
-     * @protected
+     * @public
      * @memberof PIMTITLERedirectViewBase
      */
-    protected engineInit(): void {
+    public engineInit(): void {
     }
 
 

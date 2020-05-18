@@ -132,7 +132,7 @@ public class UserRoleTypeServiceImpl extends ServiceImpl<UserRoleTypeMapper, Use
 
     @Override
     public void createBatch(List<UserRoleType> list) {
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
 

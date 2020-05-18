@@ -140,20 +140,20 @@ export default class PIMEXITANDENTRYFormPickupViewBase extends PickupViewBase {
     /**
      * 视图引擎
      *
-     * @protected
+     * @public
      * @type {Engine}
      * @memberof PIMEXITANDENTRYFormPickupViewBase
      */
-    protected engine: PickupViewEngine = new PickupViewEngine();
+    public engine: PickupViewEngine = new PickupViewEngine();
 	
 
     /**
      * 引擎初始化
      *
-     * @protected
+     * @public
      * @memberof PIMEXITANDENTRYFormPickupViewBase
      */
-    protected engineInit(): void {
+    public engineInit(): void {
         this.engine.init({
             view: this,
             keyPSDEField: 'pimexitandentry',
@@ -189,7 +189,7 @@ export default class PIMEXITANDENTRYFormPickupViewBase extends PickupViewBase {
      * @type {string}
      * @memberof PIMEXITANDENTRYFormPickupView
      */
-    protected selectedData: string = "";
+    public selectedData: string = "";
 
     /**
      * 视图选中数据

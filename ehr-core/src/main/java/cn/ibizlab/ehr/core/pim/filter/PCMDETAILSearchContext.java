@@ -267,7 +267,7 @@ public class PCMDETAILSearchContext extends QueryWrapperContext<PCMDETAIL> {
     }
     @JsonFormat(pattern="yyyy-MM-dd", timezone="GMT+8")
     @JSONField(format="yyyy-MM-dd")
-	private Timestamp n_tozjdate_like;//[中建系统工作时间]
+	private Timestamp n_tozjdate_like;//[建筑系统工作时间]
 	public void setN_tozjdate_like(Timestamp n_tozjdate_like) {
         this.n_tozjdate_like = n_tozjdate_like;
         if(!ObjectUtils.isEmpty(this.n_tozjdate_like)){
@@ -369,7 +369,7 @@ public class PCMDETAILSearchContext extends QueryWrapperContext<PCMDETAIL> {
             this.getSelectCond().like("pimmajorsetypename", n_pimmajorsetypename_like);
         }
     }
-	private Double n_zjxtgznx_like;//[中建系统工作年限]
+	private Double n_zjxtgznx_like;//[建筑系统工作年限]
 	public void setN_zjxtgznx_like(Double n_zjxtgznx_like) {
         this.n_zjxtgznx_like = n_zjxtgznx_like;
         if(!ObjectUtils.isEmpty(this.n_zjxtgznx_like)){

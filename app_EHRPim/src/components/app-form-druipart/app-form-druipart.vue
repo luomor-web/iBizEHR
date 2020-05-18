@@ -48,6 +48,14 @@ export default class AppFormDRUIPart extends Vue {
     @Prop({ default: '' }) public refreshitems!: string;
 
     /**
+     * 禁止加载
+     *
+     * @type {string}
+     * @memberof AppFormDRUIPart
+     */
+    @Prop({ default: false }) public isForbidLoad!: boolean;
+
+    /**
      * 关系视图类型
      *
      * @type {string}
@@ -254,7 +262,9 @@ export default class AppFormDRUIPart extends Vue {
                 this.blockUIStop();
             }
         }
-        this.formDruipart.next({action:'load',data:{srfparentdename:this.parentName,srfparentkey:_paramitem}});
+        if(!this.isForbidLoad){
+            this.formDruipart.next({action:'load',data:{srfparentdename:this.parentName,srfparentkey:_paramitem}});
+        }
     }
 
     /**

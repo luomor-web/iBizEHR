@@ -69,7 +69,7 @@ export default class PersonInfoTreeExpViewtreeexpbarBase extends Vue implements 
      * @type {string}
      * @memberof PersonInfoTreeExpViewtreeexpbar
      */
-    @Prop() protected name?: string;
+    @Prop() public name?: string;
 
     /**
      * 视图通讯对象
@@ -77,7 +77,7 @@ export default class PersonInfoTreeExpViewtreeexpbarBase extends Vue implements 
      * @type {Subject<ViewState>}
      * @memberof PersonInfoTreeExpViewtreeexpbar
      */
-    @Prop() protected viewState!: Subject<ViewState>;
+    @Prop() public viewState!: Subject<ViewState>;
 
     /**
      * 应用上下文
@@ -85,7 +85,7 @@ export default class PersonInfoTreeExpViewtreeexpbarBase extends Vue implements 
      * @type {*}
      * @memberof PersonInfoTreeExpViewtreeexpbar
      */
-    @Prop() protected context: any;
+    @Prop() public context: any;
 
     /**
      * 视图参数
@@ -93,16 +93,16 @@ export default class PersonInfoTreeExpViewtreeexpbarBase extends Vue implements 
      * @type {*}
      * @memberof PersonInfoTreeExpViewtreeexpbar
      */
-    @Prop() protected viewparams: any;
+    @Prop() public viewparams: any;
 
     /**
      * 视图状态事件
      *
-     * @protected
+     * @public
      * @type {(Subscription | undefined)}
      * @memberof PersonInfoTreeExpViewtreeexpbar
      */
-    protected viewStateEvent: Subscription | undefined;
+    public viewStateEvent: Subscription | undefined;
 
     /**
      * 获取部件类型
@@ -110,7 +110,7 @@ export default class PersonInfoTreeExpViewtreeexpbarBase extends Vue implements 
      * @returns {string}
      * @memberof PersonInfoTreeExpViewtreeexpbar
      */
-    protected getControlType(): string {
+    public getControlType(): string {
         return 'TREEEXPBAR'
     }
 
@@ -122,7 +122,7 @@ export default class PersonInfoTreeExpViewtreeexpbarBase extends Vue implements 
      * @type {Array<*>}
      * @memberof PersonInfoTreeExpViewtreeexpbar
      */    
-    protected counterServiceArray:Array<any> = [];
+    public counterServiceArray:Array<any> = [];
 
     /**
      * 建构部件服务对象
@@ -130,7 +130,7 @@ export default class PersonInfoTreeExpViewtreeexpbarBase extends Vue implements 
      * @type {PersonInfoTreeExpViewtreeexpbarService}
      * @memberof PersonInfoTreeExpViewtreeexpbar
      */
-    protected service: PersonInfoTreeExpViewtreeexpbarService = new PersonInfoTreeExpViewtreeexpbarService({ $store: this.$store });
+    public service: PersonInfoTreeExpViewtreeexpbarService = new PersonInfoTreeExpViewtreeexpbarService({ $store: this.$store });
 
     /**
      * 实体服务对象
@@ -138,7 +138,7 @@ export default class PersonInfoTreeExpViewtreeexpbarBase extends Vue implements 
      * @type {PIMPERSONService}
      * @memberof PersonInfoTreeExpViewtreeexpbar
      */
-    protected appEntityService: PIMPERSONService = new PIMPERSONService({ $store: this.$store });
+    public appEntityService: PIMPERSONService = new PIMPERSONService({ $store: this.$store });
 
     /**
      * treeexpbar_tree 部件 selectionchange 事件
@@ -147,7 +147,7 @@ export default class PersonInfoTreeExpViewtreeexpbarBase extends Vue implements 
      * @param {*} $event
      * @memberof PersonInfoTreeExpViewtreeexpbar
      */
-    protected treeexpbar_tree_selectionchange($event: any, $event2?: any) {
+    public treeexpbar_tree_selectionchange($event: any, $event2?: any) {
         this.treeexpbar_selectionchange($event, 'treeexpbar_tree', $event2);
     }
 
@@ -158,7 +158,7 @@ export default class PersonInfoTreeExpViewtreeexpbarBase extends Vue implements 
      * @param {*} $event
      * @memberof PersonInfoTreeExpViewtreeexpbar
      */
-    protected treeexpbar_tree_load($event: any, $event2?: any) {
+    public treeexpbar_tree_load($event: any, $event2?: any) {
         this.treeexpbar_load($event, 'treeexpbar_tree', $event2);
     }
     
@@ -170,7 +170,7 @@ export default class PersonInfoTreeExpViewtreeexpbarBase extends Vue implements 
      * @param {any} args
      * @memberof PersonInfoTreeExpViewtreeexpbar
      */
-    protected closeView(args: any): void {
+    public closeView(args: any): void {
         let _this: any = this;
         _this.$emit('closeview', [args]);
     }
@@ -198,7 +198,7 @@ export default class PersonInfoTreeExpViewtreeexpbarBase extends Vue implements 
      * @type {boolean}
      * @memberof PersonInfoTreeExpViewtreeexpbarBase
      */
-    @Prop() protected viewUID!:string;
+    @Prop() public viewUID!:string;
 
     /**
      * 获取多项数据
@@ -226,7 +226,7 @@ export default class PersonInfoTreeExpViewtreeexpbarBase extends Vue implements 
      * @type {*}
      * @memberof PersonInfoTreeExpViewtreeexpbarBase
      */
-    protected selection: any = {};
+    public selection: any = {};
 
     /**
      * 控件宽度
@@ -234,7 +234,7 @@ export default class PersonInfoTreeExpViewtreeexpbarBase extends Vue implements 
      * @type {number}
      * @memberof PersonInfoTreeExpViewtreeexpbarBase
      */
-    protected ctrlWidth:number = 250;
+    public ctrlWidth:number = 250;
 
     /**
      * 过滤值
@@ -242,25 +242,25 @@ export default class PersonInfoTreeExpViewtreeexpbarBase extends Vue implements 
      * @type {string}
      * @memberof PersonInfoTreeExpViewtreeexpbarBase
      */
-    protected srfnodefilter: string = '';
+    public srfnodefilter: string = '';
 
     /**
      * 刷新标识
      *
-     * @protected
+     * @public
      * @type {number}
      * @memberof PersonInfoTreeExpViewtreeexpbarBase
      */
-    protected counter:number = 0;
+    public counter:number = 0;
 
     /**
      * 是否加载默认关联视图
      *
-     * @protected
+     * @public
      * @type {boolean}
      * @memberof PersonInfoTreeExpViewtreeexpbarBase
      */
-    protected istLoadDefaultRefView: boolean = false;
+    public istLoadDefaultRefView: boolean = false;
 
     /**
      * 分割宽度
@@ -268,7 +268,7 @@ export default class PersonInfoTreeExpViewtreeexpbarBase extends Vue implements 
      * @type {number}
      * @memberof PersonInfoTreeExpViewtreeexpbarBase
      */
-    protected split: number = 0.2;
+    public split: number = 0.2;
 
     /**
      * split值变化事件
@@ -288,7 +288,7 @@ export default class PersonInfoTreeExpViewtreeexpbarBase extends Vue implements 
      * @returns {*}
      * @memberof PersonInfoTreeExpViewtreeexpbarBase
      */
-    protected getExpItemView(arg: any = {}): any {
+    public getExpItemView(arg: any = {}): any {
         let expmode = arg.nodetype.toUpperCase();
         if (!expmode) {
             expmode = '';
@@ -333,7 +333,7 @@ export default class PersonInfoTreeExpViewtreeexpbarBase extends Vue implements 
      * @returns {void}
      * @memberof PersonInfoTreeExpViewtreeexpbarBase
      */
-    protected treeexpbar_selectionchange(args: any [], tag?: string, $event2?: any): void {
+    public treeexpbar_selectionchange(args: any [], tag?: string, $event2?: any): void {
         if (args.length === 0) {
             return ;
         }
@@ -390,7 +390,6 @@ export default class PersonInfoTreeExpViewtreeexpbarBase extends Vue implements 
         if(arg.srfparentkey){
             Object.assign(tempContext,{srfparentkey:arg.srfparentkey});
         }
-        Object.assign(tempContext,this.context);
         this.selection = {};
         Object.assign(this.selection, { view: { viewname: refview.viewname } });
         Object.assign(this.selection,{'viewparam':tempViewparam,'context':tempContext});
@@ -407,7 +406,7 @@ export default class PersonInfoTreeExpViewtreeexpbarBase extends Vue implements 
      * @returns {void}
      * @memberof PersonInfoTreeExpViewtreeexpbarBase
      */
-    protected treeexpbar_load(args: any[], tag?: string, $event2?: any): void {
+    public treeexpbar_load(args: any[], tag?: string, $event2?: any): void {
         this.$emit('load',args);
     }
 
@@ -416,7 +415,7 @@ export default class PersonInfoTreeExpViewtreeexpbarBase extends Vue implements 
      *
      * @memberof PersonInfoTreeExpViewtreeexpbarBase
      */
-    protected onSearch(): void {
+    public onSearch(): void {
         if (!this.viewState) {
             return;
         }
@@ -429,7 +428,7 @@ export default class PersonInfoTreeExpViewtreeexpbarBase extends Vue implements 
      *
      * @memberof @memberof PersonInfoTreeExpViewtreeexpbarBase
      */
-    protected created() {
+    public created() {
         this.afterCreated();
     }
 
@@ -438,7 +437,7 @@ export default class PersonInfoTreeExpViewtreeexpbarBase extends Vue implements 
      *
      *  @memberof PersonInfoTreeExpViewtreeexpbarBase
      */    
-    protected afterCreated(){
+    public afterCreated(){
         if (this.viewState) {
             this.viewStateEvent = this.viewState.subscribe(({ tag, action, data }) => {
                 if (!Object.is(tag, this.name)) {
@@ -482,7 +481,7 @@ export default class PersonInfoTreeExpViewtreeexpbarBase extends Vue implements 
      *
      * @memberof PersonInfoTreeExpViewtreeexpbarBase
      */
-    protected destroyed() {
+    public destroyed() {
         this.afterDestroy();
     }
 
@@ -491,7 +490,7 @@ export default class PersonInfoTreeExpViewtreeexpbarBase extends Vue implements 
      *
      * @memberof PersonInfoTreeExpViewtreeexpbarBase
      */
-    protected afterDestroy() {
+    public afterDestroy() {
         if (this.viewStateEvent) {
             this.viewStateEvent.unsubscribe();
         }
@@ -503,7 +502,7 @@ export default class PersonInfoTreeExpViewtreeexpbarBase extends Vue implements 
      * @param {*} $event
      * @memberof PersonInfoTreeExpViewtreeexpbarBase
      */
-    protected onViewDatasChange($event: any): void {
+    public onViewDatasChange($event: any): void {
         this.$emit('selectionchange', $event);
     }
 
@@ -513,7 +512,7 @@ export default class PersonInfoTreeExpViewtreeexpbarBase extends Vue implements 
      * @param {*} $event
      * @memberof PersonInfoTreeExpViewtreeexpbarBase
      */
-    protected viewDatasActivated($event: any): void {
+    public viewDatasActivated($event: any): void {
         this.$emit('activated', $event);
     }
 
@@ -523,7 +522,7 @@ export default class PersonInfoTreeExpViewtreeexpbarBase extends Vue implements 
      * @param {*} $event
      * @memberof PersonInfoTreeExpViewtreeexpbarBase
      */
-    protected onViewLoad($event: any): void {
+    public onViewLoad($event: any): void {
         this.$emit('load', $event);
     }
     

@@ -89,7 +89,7 @@ public class DEDataChgDispServiceImpl extends ServiceImpl<DEDataChgDispMapper, D
 
     @Override
     public void createBatch(List<DEDataChgDisp> list) {
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

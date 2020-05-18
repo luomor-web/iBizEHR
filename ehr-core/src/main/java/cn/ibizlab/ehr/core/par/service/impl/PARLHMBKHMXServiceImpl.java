@@ -141,7 +141,7 @@ public class PARLHMBKHMXServiceImpl extends ServiceImpl<PARLHMBKHMXMapper, PARLH
     @Override
     public void createBatch(List<PARLHMBKHMX> list) {
         list.forEach(item->fillParentData(item));
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
 

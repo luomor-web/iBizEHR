@@ -22,6 +22,7 @@
     v-show="isExpandSearchForm"
     loaddraftAction="FilterGetDraft"
     loadAction="FilterGet"
+
     name="searchform"  
     ref='searchform' 
     @save="searchform_save($event)"  
@@ -61,6 +62,7 @@
 
 </template>
 
+
 <script lang='tsx'>
 import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorator';
 import { Subject } from 'rxjs';
@@ -69,6 +71,8 @@ import { VueLifeCycleProcessing, GridViewBase } from '@/crm-core';
 import PIMEDUCATIONService from '@/service/pimeducation/pimeducation-service';
 
 import GridViewEngine from '@engine/view/grid-view-engine';
+
+import CodeListService from "@service/app/codelist-service";
 
 
 /**
@@ -183,23 +187,24 @@ export default class PIMEDUCATIONZDXLGridViewBase extends GridViewBase {
 
 
 
+
     /**
      * 视图引擎
      *
-     * @protected
+     * @public
      * @type {Engine}
      * @memberof PIMEDUCATIONZDXLGridViewBase
      */
-    protected engine: GridViewEngine = new GridViewEngine();
+    public engine: GridViewEngine = new GridViewEngine();
 	
 
     /**
      * 引擎初始化
      *
-     * @protected
+     * @public
      * @memberof PIMEDUCATIONZDXLGridViewBase
      */
-    protected engineInit(): void {
+    public engineInit(): void {
         this.engine.init({
             view: this,
             opendata: (args: any[], params?: any, $event?: any, xData?: any) => {
@@ -321,7 +326,7 @@ export default class PIMEDUCATIONZDXLGridViewBase extends GridViewBase {
      * @param {*} [xData]
      * @memberof PIMEDUCATIONZDXLGridView
      */
-    protected opendata(args: any[],fullargs?:any[],params?: any, $event?: any, xData?: any) {
+    public opendata(args: any[],fullargs?:any[],params?: any, $event?: any, xData?: any) {
         const data: any = {};
         let curViewParam = JSON.parse(JSON.stringify(this.context));
         if(args.length >0){
@@ -374,6 +379,7 @@ export default class PIMEDUCATIONZDXLGridViewBase extends GridViewBase {
      * @memberof PIMEDUCATIONZDXLGridViewBase
      */
     public isSingleSelect: boolean = false;
+
 
     /**
      * Vue声明周期

@@ -80,7 +80,7 @@ public class VACUSENXJMXServiceImpl extends ServiceImpl<VACUSENXJMXMapper, VACUS
     @Override
     public void createBatch(List<VACUSENXJMX> list) {
         list.forEach(item->fillParentData(item));
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

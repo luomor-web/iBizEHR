@@ -294,8 +294,9 @@ export default class MainService extends ControlService {
     public loadDraft(action: string,context: any = {}, data: any = {}, isloading?: boolean): Promise<any> {
         const {data:Data,context:Context} = this.handleRequestData(action,context,data);
         //仿真主键数据
-        Data.pcmdetailid = Util.createUUID();
-        Data.pcmdetail = Data.pcmdetailid;
+        const PrimaryKey = Util.createUUID();
+        Data.pcmdetailid = PrimaryKey;
+        Data.pcmdetail = PrimaryKey;
         return new Promise((resolve: any, reject: any) => {
             let result: Promise<any>;
             const _appEntityService: any = this.appEntityService;
@@ -305,6 +306,7 @@ export default class MainService extends ControlService {
                 result = this.appEntityService.GetDraft(Context,Data, isloading);
             }
             result.then((response) => {
+                response.data.pcmdetailid = PrimaryKey;
                 this.handleResponse(action, response, true);
                 resolve(response);
             }).catch(response => {

@@ -69,7 +69,7 @@ export default class TreeExpViewtreeexpbarBase extends Vue implements ControlInt
      * @type {string}
      * @memberof TreeExpViewtreeexpbar
      */
-    @Prop() protected name?: string;
+    @Prop() public name?: string;
 
     /**
      * 视图通讯对象
@@ -77,7 +77,7 @@ export default class TreeExpViewtreeexpbarBase extends Vue implements ControlInt
      * @type {Subject<ViewState>}
      * @memberof TreeExpViewtreeexpbar
      */
-    @Prop() protected viewState!: Subject<ViewState>;
+    @Prop() public viewState!: Subject<ViewState>;
 
     /**
      * 应用上下文
@@ -85,7 +85,7 @@ export default class TreeExpViewtreeexpbarBase extends Vue implements ControlInt
      * @type {*}
      * @memberof TreeExpViewtreeexpbar
      */
-    @Prop() protected context: any;
+    @Prop() public context: any;
 
     /**
      * 视图参数
@@ -93,16 +93,16 @@ export default class TreeExpViewtreeexpbarBase extends Vue implements ControlInt
      * @type {*}
      * @memberof TreeExpViewtreeexpbar
      */
-    @Prop() protected viewparams: any;
+    @Prop() public viewparams: any;
 
     /**
      * 视图状态事件
      *
-     * @protected
+     * @public
      * @type {(Subscription | undefined)}
      * @memberof TreeExpViewtreeexpbar
      */
-    protected viewStateEvent: Subscription | undefined;
+    public viewStateEvent: Subscription | undefined;
 
     /**
      * 获取部件类型
@@ -110,7 +110,7 @@ export default class TreeExpViewtreeexpbarBase extends Vue implements ControlInt
      * @returns {string}
      * @memberof TreeExpViewtreeexpbar
      */
-    protected getControlType(): string {
+    public getControlType(): string {
         return 'TREEEXPBAR'
     }
 
@@ -122,7 +122,7 @@ export default class TreeExpViewtreeexpbarBase extends Vue implements ControlInt
      * @type {Array<*>}
      * @memberof TreeExpViewtreeexpbar
      */    
-    protected counterServiceArray:Array<any> = [];
+    public counterServiceArray:Array<any> = [];
 
     /**
      * 建构部件服务对象
@@ -130,7 +130,7 @@ export default class TreeExpViewtreeexpbarBase extends Vue implements ControlInt
      * @type {TreeExpViewtreeexpbarService}
      * @memberof TreeExpViewtreeexpbar
      */
-    protected service: TreeExpViewtreeexpbarService = new TreeExpViewtreeexpbarService({ $store: this.$store });
+    public service: TreeExpViewtreeexpbarService = new TreeExpViewtreeexpbarService({ $store: this.$store });
 
     /**
      * 实体服务对象
@@ -138,7 +138,7 @@ export default class TreeExpViewtreeexpbarBase extends Vue implements ControlInt
      * @type {PIMARCHIVESService}
      * @memberof TreeExpViewtreeexpbar
      */
-    protected appEntityService: PIMARCHIVESService = new PIMARCHIVESService({ $store: this.$store });
+    public appEntityService: PIMARCHIVESService = new PIMARCHIVESService({ $store: this.$store });
 
     /**
      * treeexpbar_tree 部件 selectionchange 事件
@@ -147,7 +147,7 @@ export default class TreeExpViewtreeexpbarBase extends Vue implements ControlInt
      * @param {*} $event
      * @memberof TreeExpViewtreeexpbar
      */
-    protected treeexpbar_tree_selectionchange($event: any, $event2?: any) {
+    public treeexpbar_tree_selectionchange($event: any, $event2?: any) {
         this.treeexpbar_selectionchange($event, 'treeexpbar_tree', $event2);
     }
 
@@ -158,7 +158,7 @@ export default class TreeExpViewtreeexpbarBase extends Vue implements ControlInt
      * @param {*} $event
      * @memberof TreeExpViewtreeexpbar
      */
-    protected treeexpbar_tree_load($event: any, $event2?: any) {
+    public treeexpbar_tree_load($event: any, $event2?: any) {
         this.treeexpbar_load($event, 'treeexpbar_tree', $event2);
     }
     
@@ -170,7 +170,7 @@ export default class TreeExpViewtreeexpbarBase extends Vue implements ControlInt
      * @param {any} args
      * @memberof TreeExpViewtreeexpbar
      */
-    protected closeView(args: any): void {
+    public closeView(args: any): void {
         let _this: any = this;
         _this.$emit('closeview', [args]);
     }
@@ -198,7 +198,7 @@ export default class TreeExpViewtreeexpbarBase extends Vue implements ControlInt
      * @type {boolean}
      * @memberof TreeExpViewtreeexpbarBase
      */
-    @Prop() protected viewUID!:string;
+    @Prop() public viewUID!:string;
 
     /**
      * 获取多项数据
@@ -226,7 +226,7 @@ export default class TreeExpViewtreeexpbarBase extends Vue implements ControlInt
      * @type {*}
      * @memberof TreeExpViewtreeexpbarBase
      */
-    protected selection: any = {};
+    public selection: any = {};
 
     /**
      * 控件宽度
@@ -234,7 +234,7 @@ export default class TreeExpViewtreeexpbarBase extends Vue implements ControlInt
      * @type {number}
      * @memberof TreeExpViewtreeexpbarBase
      */
-    protected ctrlWidth:number = 0;
+    public ctrlWidth:number = 0;
 
     /**
      * 过滤值
@@ -242,25 +242,25 @@ export default class TreeExpViewtreeexpbarBase extends Vue implements ControlInt
      * @type {string}
      * @memberof TreeExpViewtreeexpbarBase
      */
-    protected srfnodefilter: string = '';
+    public srfnodefilter: string = '';
 
     /**
      * 刷新标识
      *
-     * @protected
+     * @public
      * @type {number}
      * @memberof TreeExpViewtreeexpbarBase
      */
-    protected counter:number = 0;
+    public counter:number = 0;
 
     /**
      * 是否加载默认关联视图
      *
-     * @protected
+     * @public
      * @type {boolean}
      * @memberof TreeExpViewtreeexpbarBase
      */
-    protected istLoadDefaultRefView: boolean = false;
+    public istLoadDefaultRefView: boolean = false;
 
     /**
      * 分割宽度
@@ -268,7 +268,7 @@ export default class TreeExpViewtreeexpbarBase extends Vue implements ControlInt
      * @type {number}
      * @memberof TreeExpViewtreeexpbarBase
      */
-    protected split: number = 0.2;
+    public split: number = 0.2;
 
     /**
      * split值变化事件
@@ -288,7 +288,7 @@ export default class TreeExpViewtreeexpbarBase extends Vue implements ControlInt
      * @returns {*}
      * @memberof TreeExpViewtreeexpbarBase
      */
-    protected getExpItemView(arg: any = {}): any {
+    public getExpItemView(arg: any = {}): any {
         let expmode = arg.nodetype.toUpperCase();
         if (!expmode) {
             expmode = '';
@@ -319,7 +319,7 @@ export default class TreeExpViewtreeexpbarBase extends Vue implements ControlInt
      * @returns {void}
      * @memberof TreeExpViewtreeexpbarBase
      */
-    protected treeexpbar_selectionchange(args: any [], tag?: string, $event2?: any): void {
+    public treeexpbar_selectionchange(args: any [], tag?: string, $event2?: any): void {
         if (args.length === 0) {
             return ;
         }
@@ -376,7 +376,6 @@ export default class TreeExpViewtreeexpbarBase extends Vue implements ControlInt
         if(arg.srfparentkey){
             Object.assign(tempContext,{srfparentkey:arg.srfparentkey});
         }
-        Object.assign(tempContext,this.context);
         this.selection = {};
         Object.assign(this.selection, { view: { viewname: refview.viewname } });
         Object.assign(this.selection,{'viewparam':tempViewparam,'context':tempContext});
@@ -393,7 +392,7 @@ export default class TreeExpViewtreeexpbarBase extends Vue implements ControlInt
      * @returns {void}
      * @memberof TreeExpViewtreeexpbarBase
      */
-    protected treeexpbar_load(args: any[], tag?: string, $event2?: any): void {
+    public treeexpbar_load(args: any[], tag?: string, $event2?: any): void {
         this.$emit('load',args);
     }
 
@@ -402,7 +401,7 @@ export default class TreeExpViewtreeexpbarBase extends Vue implements ControlInt
      *
      * @memberof TreeExpViewtreeexpbarBase
      */
-    protected onSearch(): void {
+    public onSearch(): void {
         if (!this.viewState) {
             return;
         }
@@ -415,7 +414,7 @@ export default class TreeExpViewtreeexpbarBase extends Vue implements ControlInt
      *
      * @memberof @memberof TreeExpViewtreeexpbarBase
      */
-    protected created() {
+    public created() {
         this.afterCreated();
     }
 
@@ -424,7 +423,7 @@ export default class TreeExpViewtreeexpbarBase extends Vue implements ControlInt
      *
      *  @memberof TreeExpViewtreeexpbarBase
      */    
-    protected afterCreated(){
+    public afterCreated(){
         if (this.viewState) {
             this.viewStateEvent = this.viewState.subscribe(({ tag, action, data }) => {
                 if (!Object.is(tag, this.name)) {
@@ -468,7 +467,7 @@ export default class TreeExpViewtreeexpbarBase extends Vue implements ControlInt
      *
      * @memberof TreeExpViewtreeexpbarBase
      */
-    protected destroyed() {
+    public destroyed() {
         this.afterDestroy();
     }
 
@@ -477,7 +476,7 @@ export default class TreeExpViewtreeexpbarBase extends Vue implements ControlInt
      *
      * @memberof TreeExpViewtreeexpbarBase
      */
-    protected afterDestroy() {
+    public afterDestroy() {
         if (this.viewStateEvent) {
             this.viewStateEvent.unsubscribe();
         }
@@ -489,7 +488,7 @@ export default class TreeExpViewtreeexpbarBase extends Vue implements ControlInt
      * @param {*} $event
      * @memberof TreeExpViewtreeexpbarBase
      */
-    protected onViewDatasChange($event: any): void {
+    public onViewDatasChange($event: any): void {
         this.$emit('selectionchange', $event);
     }
 
@@ -499,7 +498,7 @@ export default class TreeExpViewtreeexpbarBase extends Vue implements ControlInt
      * @param {*} $event
      * @memberof TreeExpViewtreeexpbarBase
      */
-    protected viewDatasActivated($event: any): void {
+    public viewDatasActivated($event: any): void {
         this.$emit('activated', $event);
     }
 
@@ -509,7 +508,7 @@ export default class TreeExpViewtreeexpbarBase extends Vue implements ControlInt
      * @param {*} $event
      * @memberof TreeExpViewtreeexpbarBase
      */
-    protected onViewLoad($event: any): void {
+    public onViewLoad($event: any): void {
         this.$emit('load', $event);
     }
     

@@ -3,11 +3,9 @@ services:
   ehr-app-ehrorm:
     image: registry.cn-shanghai.aliyuncs.com/ibizsys/ehr-app-ehrorm:latest
     ports:
-      - "6092:6092"
+      - "8080:8080"
     networks:
       - agent_network
-    environment:
-      SPRING_CLOUD_NACOS_DISCOVERY_IP: 172.16.240.110
     deploy:
       mode: replicated
       replicas: 1
@@ -16,3 +14,4 @@ networks:
   agent_network:
     driver: overlay
     attachable: true
+

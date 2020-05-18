@@ -98,7 +98,7 @@ public class PARBMFZJYXServiceImpl extends ServiceImpl<PARBMFZJYXMapper, PARBMFZ
     @Override
     public void createBatch(List<PARBMFZJYX> list) {
         list.forEach(item->fillParentData(item));
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

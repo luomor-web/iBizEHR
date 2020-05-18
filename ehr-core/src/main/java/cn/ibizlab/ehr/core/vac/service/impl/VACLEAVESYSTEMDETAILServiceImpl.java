@@ -141,7 +141,7 @@ public class VACLEAVESYSTEMDETAILServiceImpl extends ServiceImpl<VACLEAVESYSTEMD
     @Override
     public void createBatch(List<VACLEAVESYSTEMDETAIL> list) {
         list.forEach(item->fillParentData(item));
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
 

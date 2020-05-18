@@ -107,7 +107,7 @@ public class UnitedPersonServiceImpl extends ServiceImpl<UnitedPersonMapper, Uni
 
     @Override
     public void createBatch(List<UnitedPerson> list) {
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

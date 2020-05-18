@@ -63,7 +63,7 @@ public class SALSTDGWServiceImpl extends ServiceImpl<SALSTDGWMapper, SALSTDGW> i
     @Override
     public void createBatch(List<SALSTDGW> list) {
         list.forEach(item->fillParentData(item));
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

@@ -147,7 +147,7 @@ public class TRMSTAFFNODESServiceImpl extends ServiceImpl<TRMSTAFFNODESMapper, T
     @Override
     public void createBatch(List<TRMSTAFFNODES> list) {
         list.forEach(item->fillParentData(item));
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
 

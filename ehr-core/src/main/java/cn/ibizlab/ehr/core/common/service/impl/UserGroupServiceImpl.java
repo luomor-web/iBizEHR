@@ -92,7 +92,7 @@ public class UserGroupServiceImpl extends ServiceImpl<UserGroupMapper, UserGroup
 
     @Override
     public void createBatch(List<UserGroup> list) {
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

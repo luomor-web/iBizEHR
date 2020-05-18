@@ -58,7 +58,7 @@ public class PIMLWGZServiceImpl extends ServiceImpl<PIMLWGZMapper, PIMLWGZ> impl
 
     @Override
     public void createBatch(List<PIMLWGZ> list) {
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

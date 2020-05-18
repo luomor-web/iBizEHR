@@ -88,7 +88,7 @@ public class TSSDTaskTypeServiceImpl extends ServiceImpl<TSSDTaskTypeMapper, TSS
 
     @Override
     public void createBatch(List<TSSDTaskType> list) {
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

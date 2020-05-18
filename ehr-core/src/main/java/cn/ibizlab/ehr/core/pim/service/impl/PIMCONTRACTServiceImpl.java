@@ -117,7 +117,7 @@ public class PIMCONTRACTServiceImpl extends ServiceImpl<PIMCONTRACTMapper, PIMCO
     @Override
     public void createBatch(List<PIMCONTRACT> list) {
         list.forEach(item->fillParentData(item));
-        saveBatch(list,batchSize);
+        this.saveBatch(list,batchSize);
     }
 
     @Override

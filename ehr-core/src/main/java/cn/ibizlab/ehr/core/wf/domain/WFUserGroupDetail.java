@@ -11,6 +11,8 @@ import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.util.ObjectUtils;
+import org.springframework.util.DigestUtils;
 import cn.ibizlab.ehr.util.domain.EntityBase;
 import cn.ibizlab.ehr.util.annotation.DEField;
 import cn.ibizlab.ehr.util.enums.DEPredefinedFieldType;
@@ -22,6 +24,7 @@ import org.springframework.data.annotation.Transient;
 
 import com.baomidou.mybatisplus.annotation.*;
 import cn.ibizlab.ehr.util.domain.EntityMP;
+
 
 /**
  * 实体[工作流用户组成员]
@@ -164,10 +167,23 @@ public class WFUserGroupDetail extends EntityMP implements Serializable {
         this.wfusergroupid = wfusergroupid ;
         this.modify("wfusergroupid",wfusergroupid);
     }
+
+    /**
+     * 获取 [工作流用户组成员标识]
+     */
+    public String getWfusergroupdetailid(){
+        if(ObjectUtils.isEmpty(wfusergroupdetailid)){
+            wfusergroupdetailid=(String)getDefaultKey(true);
+        }
+        return wfusergroupdetailid;
+    }
+
+    @Override
+    public Serializable getDefaultKey(boolean gen) {
+        if((!ObjectUtils.isEmpty(this.getWfusergroupid()))&&(!ObjectUtils.isEmpty(this.getWfuserid())))
+            return DigestUtils.md5DigestAsHex(String.format("%s||%s" ,this.getWfusergroupid(),this.getWfuserid()).getBytes());
+        return null;
+    }
 }
-
-
-
-
 
 
