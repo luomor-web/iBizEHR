@@ -25,7 +25,7 @@ export default class IndexModel {
 	separator: false,
 	hidden: false,
 	hidesidebar: false,
-	opendefault: false,
+	opendefault: true,
 	iconcls: '',
 	icon: '../../../img/zzgl/1/zuzhiguanli.png',
 	textcls: '',
