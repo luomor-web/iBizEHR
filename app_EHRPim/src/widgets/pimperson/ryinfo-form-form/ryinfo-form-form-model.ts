@@ -133,13 +133,13 @@ export default class RYInfoFormModel {
         dataType: 'LONGTEXT_1000',
       },
       {
-        name: 'dzyx',
-        prop: 'dzyx',
+        name: 'lxdh',
+        prop: 'lxdh',
         dataType: 'TEXT',
       },
       {
-        name: 'lxdh',
-        prop: 'lxdh',
+        name: 'dzyx',
+        prop: 'dzyx',
         dataType: 'TEXT',
       },
       {

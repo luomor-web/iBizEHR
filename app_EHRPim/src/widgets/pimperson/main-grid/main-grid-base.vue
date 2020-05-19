@@ -95,6 +95,13 @@
                     </template>
                 </el-table-column>
             </template>
+            <template v-if="getColumnState('lxdh')">
+                <el-table-column show-overflow-tooltip :prop="'lxdh'" :label="$t('entities.pimperson.main_grid.columns.lxdh')" :width="150" :align="'left'" :sortable="'custom'">
+                    <template v-slot="{row,column}">
+                        <span>{{row.lxdh}}</span>
+                    </template>
+                </el-table-column>
+            </template>
             <template v-if="getColumnState('ygzt')">
                 <el-table-column show-overflow-tooltip :prop="'ygzt'" :label="$t('entities.pimperson.main_grid.columns.ygzt')" :width="120" :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
@@ -104,10 +111,10 @@
                     </template>
                 </el-table-column>
             </template>
-            <template v-if="getColumnState('lxdh')">
-                <el-table-column show-overflow-tooltip :prop="'lxdh'" :label="$t('entities.pimperson.main_grid.columns.lxdh')" :width="150" :align="'left'" :sortable="'custom'">
+            <template v-if="getColumnState('ahtc')">
+                <el-table-column show-overflow-tooltip :prop="'ahtc'" :label="$t('entities.pimperson.main_grid.columns.ahtc')" :width="250" :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
-                        <span>{{row.lxdh}}</span>
+                        <span>{{row.ahtc}}</span>
                     </template>
                 </el-table-column>
             </template>
@@ -636,6 +643,13 @@ export default class MainBase extends Vue implements ControlInterface {
             util: 'PX'
         },
         {
+            name: 'lxdh',
+            label: '手机号码',
+            langtag: 'entities.pimperson.main_grid.columns.lxdh',
+            show: true,
+            util: 'px'
+        },
+        {
             name: 'ygzt',
             label: '员工状态',
             langtag: 'entities.pimperson.main_grid.columns.ygzt',
@@ -643,11 +657,11 @@ export default class MainBase extends Vue implements ControlInterface {
             util: 'PX'
         },
         {
-            name: 'lxdh',
-            label: '手机号码',
-            langtag: 'entities.pimperson.main_grid.columns.lxdh',
+            name: 'ahtc',
+            label: '爱好特长',
+            langtag: 'entities.pimperson.main_grid.columns.ahtc',
             show: true,
-            util: 'px'
+            util: 'PX'
         },
     ]
 
