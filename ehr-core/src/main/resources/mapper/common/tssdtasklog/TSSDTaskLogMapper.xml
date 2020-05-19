@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper	namespace="cn.ibizlab.ehr.core.common.mapper.TSSDTaskLogMapper">
+
+    <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
+	<select id="selectById"  resultMap="TSSDTaskLogResultMap" databaseId="db2">
+        <![CDATA[select * from v_tssdtasklog t1     where  tssdtasklogid=#{id}]]>
+    </select>
+	<select id="selectById"  resultMap="TSSDTaskLogResultMap" databaseId="mysql">
+        <![CDATA[select * from v_tssdtasklog t1     where  tssdtasklogid=#{id}]]>
+    </select>
+	<select id="selectById"  resultMap="TSSDTaskLogResultMap" databaseId="oracle">
+        <![CDATA[select * from v_tssdtasklog t1     where  tssdtasklogid=#{id}]]>
+    </select>
+	<select id="selectById"  resultMap="TSSDTaskLogResultMap" databaseId="postgresql">
+        <![CDATA[select * from v_tssdtasklog t1     where  tssdtasklogid=#{id}]]>
+    </select>
+	<select id="selectById"  resultMap="TSSDTaskLogResultMap" databaseId="ppas">
+        <![CDATA[select * from v_tssdtasklog t1     where  tssdtasklogid=#{id}]]>
+    </select>
+	<select id="selectById"  resultMap="TSSDTaskLogResultMap" databaseId="sqlserver">
+        <![CDATA[select * from v_tssdtasklog t1     where  tssdtasklogid=#{id}]]>
+    </select>
+
+    <!--通过mybatis将查询结果注入到entity中,通过配置autoMapping="true"由mybatis自动处理映射关系 -->
+    <resultMap id="TSSDTaskLogResultMap" type="cn.ibizlab.ehr.core.common.domain.TSSDTaskLog" autoMapping="true">
+        <id property="tssdtasklogid" column="tssdtasklogid" /><!--主键字段映射-->
+		<result property="tssdtaskid" column="tssdtaskid" />
+            
+		
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="tssdtask" javaType="cn.ibizlab.ehr.core.common.domain.TSSDTask" column="tssdtaskid" select="cn.ibizlab.ehr.core.common.mapper.TSSDTaskMapper.selectById" fetchType="lazy"></association>
+    </resultMap>
+
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_TSSDTASKLOG_TSSDTASK_TSSDTASKID] -->
+	 <select id="selectByTssdtaskid" resultMap="TSSDTaskLogResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  tssdtaskid=#{tssdtaskid}
+     </select>
+
+    <!--数据集合[Default]-->
+	 <select id="searchDefault"  parameterType="cn.ibizlab.ehr.core.common.filter.TSSDTaskLogSearchContext"  resultMap="TSSDTaskLogResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="db2">
+       <![CDATA[	SELECT t1.CREATEDATE, t1.CREATEMAN, t1.DURATION, t1.ENDTIME, t1.RETCODE, t1.RETINFO, t1.STARTTIME, t1.TSSDTASKID, t1.TSSDTASKLOGID, t1.TSSDTASKLOGNAME, t1.TSSDTASKNAME, t1.UPDATEDATE, t1.UPDATEMAN FROM T_SRFTSSDTASKLOG t1  
+			]]>
+    </sql>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="mysql">
+       <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`DURATION`, t1.`ENDTIME`, t1.`RETCODE`, t1.`RETINFO`, t1.`STARTTIME`, t1.`TSSDTASKID`, t1.`TSSDTASKLOGID`, t1.`TSSDTASKLOGNAME`, t1.`TSSDTASKNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN` FROM `T_SRFTSSDTASKLOG` t1  
+			]]>
+    </sql>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="oracle">
+       <![CDATA[	SELECT t1.CREATEDATE, t1.CREATEMAN, t1.DURATION, t1.ENDTIME, t1.RETCODE, t1.RETINFO, t1.STARTTIME, t1.TSSDTASKID, t1.TSSDTASKLOGID, t1.TSSDTASKLOGNAME, t1.TSSDTASKNAME, t1.UPDATEDATE, t1.UPDATEMAN FROM T_SRFTSSDTASKLOG t1  
+			]]>
+    </sql>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="postgresql">
+       <![CDATA[	SELECT t1.CREATEDATE AS CREATEDATE, t1.CREATEMAN AS CREATEMAN, t1.DURATION AS DURATION, t1.ENDTIME AS ENDTIME, t1.RETCODE AS RETCODE, t1.RETINFO AS RETINFO, t1.STARTTIME AS STARTTIME, t1.TSSDTASKID AS TSSDTASKID, t1.TSSDTASKLOGID AS TSSDTASKLOGID, t1.TSSDTASKLOGNAME AS TSSDTASKLOGNAME, t1.TSSDTASKNAME AS TSSDTASKNAME, t1.UPDATEDATE AS UPDATEDATE, t1.UPDATEMAN AS UPDATEMAN FROM T_SRFTSSDTASKLOG t1  
+			]]>
+    </sql>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="ppas">
+       <![CDATA[	SELECT t1.CREATEDATE AS CREATEDATE, t1.CREATEMAN AS CREATEMAN, t1.DURATION AS DURATION, t1.ENDTIME AS ENDTIME, t1.RETCODE AS RETCODE, t1.RETINFO AS RETINFO, t1.STARTTIME AS STARTTIME, t1.TSSDTASKID AS TSSDTASKID, t1.TSSDTASKLOGID AS TSSDTASKLOGID, t1.TSSDTASKLOGNAME AS TSSDTASKLOGNAME, t1.TSSDTASKNAME AS TSSDTASKNAME, t1.UPDATEDATE AS UPDATEDATE, t1.UPDATEMAN AS UPDATEMAN FROM T_SRFTSSDTASKLOG t1  
+			]]>
+    </sql>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="sqlserver">
+       <![CDATA[	SELECT t1.[CREATEDATE], t1.[CREATEMAN], t1.[DURATION], t1.[ENDTIME], t1.[RETCODE], t1.[RETINFO], t1.[STARTTIME], t1.[TSSDTASKID], t1.[TSSDTASKLOGID], t1.[TSSDTASKLOGNAME], t1.[TSSDTASKNAME], t1.[UPDATEDATE], t1.[UPDATEMAN] FROM [T_SRFTSSDTASKLOG] t1  
+			]]>
+    </sql>
+
+</mapper>
+

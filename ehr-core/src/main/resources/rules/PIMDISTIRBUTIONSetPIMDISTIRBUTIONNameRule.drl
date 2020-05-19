@@ -1,0 +1,27 @@
+package cn.ibizlab.ehr.pim.logic.pimdistirbutionlogic.setpimdistirbutionname;
+
+import java.util.Map;
+import java.util.HashMap;
+import com.alibaba.fastjson.JSONObject;
+global cn.ibizlab.ehr.core.pim.domain.PIMDISTIRBUTION pimdistirbutionsetpimdistirbutionnamedefault;
+global cn.ibizlab.ehr.core.pim.service.IPIMDISTIRBUTIONService iBzSysPimdistirbutionDefaultService;
+global cn.ibizlab.ehr.util.security.AuthenticationUser curuser;
+
+no-loop
+
+//逻辑处理节点[设置分配名称]
+rule "prepareparam1"
+ruleflow-group "pimdistirbutionsetpimdistirbutionnameprepareparam1"
+    when
+    then
+    pimdistirbutionsetpimdistirbutionnamedefault.set("pimdistirbutionname",pimdistirbutionsetpimdistirbutionnamedefault.get("pimpersonname"));
+    update(pimdistirbutionsetpimdistirbutionnamedefault);//更新fact中变量值
+    end
+
+//逻辑处理节点[开始]
+rule "begin"
+ruleflow-group "pimdistirbutionsetpimdistirbutionnamebegin"
+    when
+    then
+    end
+

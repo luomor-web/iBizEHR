@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper	namespace="cn.ibizlab.ehr.core.common.mapper.UserGroupMapper">
+
+    <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
+	<select id="selectById"  resultMap="UserGroupResultMap" databaseId="db2">
+        <![CDATA[select * from v_usergroup t1     where  usergroupid=#{id}]]>
+    </select>
+	<select id="selectById"  resultMap="UserGroupResultMap" databaseId="mysql">
+        <![CDATA[select * from v_usergroup t1     where  usergroupid=#{id}]]>
+    </select>
+	<select id="selectById"  resultMap="UserGroupResultMap" databaseId="oracle">
+        <![CDATA[select * from v_usergroup t1     where  usergroupid=#{id}]]>
+    </select>
+	<select id="selectById"  resultMap="UserGroupResultMap" databaseId="postgresql">
+        <![CDATA[select * from v_usergroup t1     where  usergroupid=#{id}]]>
+    </select>
+	<select id="selectById"  resultMap="UserGroupResultMap" databaseId="ppas">
+        <![CDATA[select * from v_usergroup t1     where  usergroupid=#{id}]]>
+    </select>
+	<select id="selectById"  resultMap="UserGroupResultMap" databaseId="sqlserver">
+        <![CDATA[select * from v_usergroup t1     where  usergroupid=#{id}]]>
+    </select>
+
+    <!--通过mybatis将查询结果注入到entity中,通过配置autoMapping="true"由mybatis自动处理映射关系 -->
+    <resultMap id="UserGroupResultMap" type="cn.ibizlab.ehr.core.common.domain.UserGroup" autoMapping="true">
+        <id property="usergroupid" column="usergroupid" /><!--主键字段映射-->
+            
+		
+    </resultMap>
+
+
+    <!--数据集合[Default]-->
+	 <select id="searchDefault"  parameterType="cn.ibizlab.ehr.core.common.filter.UserGroupSearchContext"  resultMap="UserGroupResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="db2">
+       <![CDATA[	SELECT t1.CREATEDATE, t1.CREATEMAN, t1.ENABLE, t11.MEMO, t11.OWNERID, t11.OWNERTYPE, t11.SUBTYPE, t1.UPDATEDATE, t1.UPDATEMAN, t11.USERDATA, t11.USERDATA2, t1.USERGROUPID, t1.USERGROUPNAME, t11.USEROBJECTLEVEL, t11.USEROBJECTTYPE FROM T_SRFUSERGROUP t1  LEFT JOIN T_SRFUSEROBJECT t11 ON t1.USERGROUPID = t11.USEROBJECTID  
+				 WHERE 	t1.ENABLE = 1
+			]]>
+    </sql>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="mysql">
+       <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t11.`MEMO`, t11.`OWNERID`, t11.`OWNERTYPE`, t11.`SUBTYPE`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t11.`USERDATA`, t11.`USERDATA2`, t1.`USERGROUPID`, t1.`USERGROUPNAME`, t11.`USEROBJECTLEVEL`, t11.`USEROBJECTTYPE` FROM `T_SRFUSERGROUP` t1  LEFT JOIN T_SRFUSEROBJECT t11 ON t1.USERGROUPID = t11.USEROBJECTID  
+				 WHERE 	t1.ENABLE = 1
+			]]>
+    </sql>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="oracle">
+       <![CDATA[	SELECT t1.CREATEDATE, t1.CREATEMAN, t1.ENABLE, t11.MEMO, t11.OWNERID, t11.OWNERTYPE, t11.SUBTYPE, t1.UPDATEDATE, t1.UPDATEMAN, t11.USERDATA, t11.USERDATA2, t1.USERGROUPID, t1.USERGROUPNAME, t11.USEROBJECTLEVEL, t11.USEROBJECTTYPE FROM T_SRFUSERGROUP t1  LEFT JOIN T_SRFUSEROBJECT t11 ON t1.USERGROUPID = t11.USEROBJECTID  
+				 WHERE 	t1.ENABLE = 1
+			]]>
+    </sql>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="postgresql">
+       <![CDATA[	SELECT t1.CREATEDATE AS CREATEDATE, t1.CREATEMAN AS CREATEMAN, t1.ENABLE AS ENABLE, t11.MEMO AS MEMO, t11.OWNERID AS OWNERID, t11.OWNERTYPE AS OWNERTYPE, t11.SUBTYPE AS SUBTYPE, t1.UPDATEDATE AS UPDATEDATE, t1.UPDATEMAN AS UPDATEMAN, t11.USERDATA AS USERDATA, t11.USERDATA2 AS USERDATA2, t1.USERGROUPID AS USERGROUPID, t1.USERGROUPNAME AS USERGROUPNAME, t11.USEROBJECTLEVEL AS USEROBJECTLEVEL, t11.USEROBJECTTYPE AS USEROBJECTTYPE FROM T_SRFUSERGROUP t1  LEFT JOIN T_SRFUSEROBJECT t11 ON t1.USERGROUPID = t11.USEROBJECTID  
+				 WHERE 	t1.ENABLE = 1
+			]]>
+    </sql>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="ppas">
+       <![CDATA[	SELECT t1.CREATEDATE AS CREATEDATE, t1.CREATEMAN AS CREATEMAN, t1.ENABLE AS ENABLE, t11.MEMO AS MEMO, t11.OWNERID AS OWNERID, t11.OWNERTYPE AS OWNERTYPE, t11.SUBTYPE AS SUBTYPE, t1.UPDATEDATE AS UPDATEDATE, t1.UPDATEMAN AS UPDATEMAN, t11.USERDATA AS USERDATA, t11.USERDATA2 AS USERDATA2, t1.USERGROUPID AS USERGROUPID, t1.USERGROUPNAME AS USERGROUPNAME, t11.USEROBJECTLEVEL AS USEROBJECTLEVEL, t11.USEROBJECTTYPE AS USEROBJECTTYPE FROM T_SRFUSERGROUP t1  LEFT JOIN T_SRFUSEROBJECT t11 ON t1.USERGROUPID = t11.USEROBJECTID  
+				 WHERE 	t1.ENABLE = 1
+			]]>
+    </sql>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="sqlserver">
+       <![CDATA[	SELECT t1.[CREATEDATE], t1.[CREATEMAN], t1.[ENABLE], t11.[MEMO], t11.[OWNERID], t11.[OWNERTYPE], t11.[SUBTYPE], t1.[UPDATEDATE], t1.[UPDATEMAN], t11.[USERDATA], t11.[USERDATA2], t1.[USERGROUPID], t1.[USERGROUPNAME], t11.[USEROBJECTLEVEL], t11.[USEROBJECTTYPE] FROM [T_SRFUSERGROUP] t1  LEFT JOIN T_SRFUSEROBJECT t11 ON t1.USERGROUPID = t11.USEROBJECTID  
+				 WHERE 	t1.ENABLE = 1
+			]]>
+    </sql>
+
+</mapper>
+

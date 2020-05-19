@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper	namespace="cn.ibizlab.ehr.core.common.mapper.UserDictItemMapper">
+
+    <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
+	<select id="selectById"  resultMap="UserDictItemResultMap" databaseId="db2">
+        <![CDATA[select * from v_userdictitem t1     where  userdictitemid=#{id}]]>
+    </select>
+	<select id="selectById"  resultMap="UserDictItemResultMap" databaseId="mysql">
+        <![CDATA[select * from v_userdictitem t1     where  userdictitemid=#{id}]]>
+    </select>
+	<select id="selectById"  resultMap="UserDictItemResultMap" databaseId="oracle">
+        <![CDATA[select * from v_userdictitem t1     where  userdictitemid=#{id}]]>
+    </select>
+	<select id="selectById"  resultMap="UserDictItemResultMap" databaseId="postgresql">
+        <![CDATA[select * from v_userdictitem t1     where  userdictitemid=#{id}]]>
+    </select>
+	<select id="selectById"  resultMap="UserDictItemResultMap" databaseId="ppas">
+        <![CDATA[select * from v_userdictitem t1     where  userdictitemid=#{id}]]>
+    </select>
+	<select id="selectById"  resultMap="UserDictItemResultMap" databaseId="sqlserver">
+        <![CDATA[select * from v_userdictitem t1     where  userdictitemid=#{id}]]>
+    </select>
+
+    <!--通过mybatis将查询结果注入到entity中,通过配置autoMapping="true"由mybatis自动处理映射关系 -->
+    <resultMap id="UserDictItemResultMap" type="cn.ibizlab.ehr.core.common.domain.UserDictItem" autoMapping="true">
+        <id property="userdictitemid" column="userdictitemid" /><!--主键字段映射-->
+		<result property="userdictid" column="userdictid" />
+		<result property="userdictcatid" column="userdictcatid" />
+            
+		
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="userdictcat" javaType="cn.ibizlab.ehr.core.common.domain.UserDictCat" column="userdictcatid" select="cn.ibizlab.ehr.core.common.mapper.UserDictCatMapper.selectById" fetchType="lazy"></association>
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="userdict" javaType="cn.ibizlab.ehr.core.common.domain.UserDict" column="userdictid" select="cn.ibizlab.ehr.core.common.mapper.UserDictMapper.selectById" fetchType="lazy"></association>
+    </resultMap>
+
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_USERDICTITEM_USERDICTCAT_USERDICTCATID] -->
+	 <select id="selectByUserdictcatid" resultMap="UserDictItemResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  userdictcatid=#{userdictcatid}
+     </select>
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_USERDICTITEM_USERDICT_USERDICTID] -->
+	 <select id="selectByUserdictid" resultMap="UserDictItemResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  userdictid=#{userdictid}
+     </select>
+
+    <!--数据集合[Default]-->
+	 <select id="searchDefault"  parameterType="cn.ibizlab.ehr.core.common.filter.UserDictItemSearchContext"  resultMap="UserDictItemResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="db2">
+       <![CDATA[	SELECT t1.CONTENT, t1.CREATEDATE, t1.CREATEMAN, t1.MARKFLAG, t1.MEMO, t1.RESERVER, t1.RESERVER2, t1.RESERVER3, t1.RESERVER4, t1.UPDATEDATE, t1.UPDATEMAN, t1.USERDICTCATID, t11.USERDICTCATNAME, t1.USERDICTID, t1.USERDICTITEMID, t1.USERDICTITEMNAME, t21.USERDICTNAME FROM T_SRFUSERDICTITEM t1  LEFT JOIN T_SRFUSERDICTCAT t11 ON t1.USERDICTCATID = t11.USERDICTCATID  LEFT JOIN T_SRFUSERDICT t21 ON t1.USERDICTID = t21.USERDICTID  
+			]]>
+    </sql>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="mysql">
+       <![CDATA[	SELECT t1.`CONTENT`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`MARKFLAG`, t1.`MEMO`, t1.`RESERVER`, t1.`RESERVER2`, t1.`RESERVER3`, t1.`RESERVER4`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`USERDICTCATID`, t11.`USERDICTCATNAME`, t1.`USERDICTID`, t1.`USERDICTITEMID`, t1.`USERDICTITEMNAME`, t21.`USERDICTNAME` FROM `T_SRFUSERDICTITEM` t1  LEFT JOIN T_SRFUSERDICTCAT t11 ON t1.USERDICTCATID = t11.USERDICTCATID  LEFT JOIN T_SRFUSERDICT t21 ON t1.USERDICTID = t21.USERDICTID  
+			]]>
+    </sql>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="oracle">
+       <![CDATA[	SELECT t1.CONTENT, t1.CREATEDATE, t1.CREATEMAN, t1.MARKFLAG, t1.MEMO, t1.RESERVER, t1.RESERVER2, t1.RESERVER3, t1.RESERVER4, t1.UPDATEDATE, t1.UPDATEMAN, t1.USERDICTCATID, t11.USERDICTCATNAME, t1.USERDICTID, t1.USERDICTITEMID, t1.USERDICTITEMNAME, t21.USERDICTNAME FROM T_SRFUSERDICTITEM t1  LEFT JOIN T_SRFUSERDICTCAT t11 ON t1.USERDICTCATID = t11.USERDICTCATID  LEFT JOIN T_SRFUSERDICT t21 ON t1.USERDICTID = t21.USERDICTID  
+			]]>
+    </sql>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="postgresql">
+       <![CDATA[	SELECT t1.CONTENT AS CONTENT, t1.CREATEDATE AS CREATEDATE, t1.CREATEMAN AS CREATEMAN, t1.MARKFLAG AS MARKFLAG, t1.MEMO AS MEMO, t1.RESERVER AS RESERVER, t1.RESERVER2 AS RESERVER2, t1.RESERVER3 AS RESERVER3, t1.RESERVER4 AS RESERVER4, t1.UPDATEDATE AS UPDATEDATE, t1.UPDATEMAN AS UPDATEMAN, t1.USERDICTCATID AS USERDICTCATID, t11.USERDICTCATNAME AS USERDICTCATNAME, t1.USERDICTID AS USERDICTID, t1.USERDICTITEMID AS USERDICTITEMID, t1.USERDICTITEMNAME AS USERDICTITEMNAME, t21.USERDICTNAME AS USERDICTNAME FROM T_SRFUSERDICTITEM t1  LEFT JOIN T_SRFUSERDICTCAT t11 ON t1.USERDICTCATID = t11.USERDICTCATID  LEFT JOIN T_SRFUSERDICT t21 ON t1.USERDICTID = t21.USERDICTID  
+			]]>
+    </sql>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="ppas">
+       <![CDATA[	SELECT t1.CONTENT AS CONTENT, t1.CREATEDATE AS CREATEDATE, t1.CREATEMAN AS CREATEMAN, t1.MARKFLAG AS MARKFLAG, t1.MEMO AS MEMO, t1.RESERVER AS RESERVER, t1.RESERVER2 AS RESERVER2, t1.RESERVER3 AS RESERVER3, t1.RESERVER4 AS RESERVER4, t1.UPDATEDATE AS UPDATEDATE, t1.UPDATEMAN AS UPDATEMAN, t1.USERDICTCATID AS USERDICTCATID, t11.USERDICTCATNAME AS USERDICTCATNAME, t1.USERDICTID AS USERDICTID, t1.USERDICTITEMID AS USERDICTITEMID, t1.USERDICTITEMNAME AS USERDICTITEMNAME, t21.USERDICTNAME AS USERDICTNAME FROM T_SRFUSERDICTITEM t1  LEFT JOIN T_SRFUSERDICTCAT t11 ON t1.USERDICTCATID = t11.USERDICTCATID  LEFT JOIN T_SRFUSERDICT t21 ON t1.USERDICTID = t21.USERDICTID  
+			]]>
+    </sql>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="sqlserver">
+       <![CDATA[	SELECT t1.[CONTENT], t1.[CREATEDATE], t1.[CREATEMAN], t1.[MARKFLAG], t1.[MEMO], t1.[RESERVER], t1.[RESERVER2], t1.[RESERVER3], t1.[RESERVER4], t1.[UPDATEDATE], t1.[UPDATEMAN], t1.[USERDICTCATID], t11.[USERDICTCATNAME], t1.[USERDICTID], t1.[USERDICTITEMID], t1.[USERDICTITEMNAME], t21.[USERDICTNAME] FROM [T_SRFUSERDICTITEM] t1  LEFT JOIN T_SRFUSERDICTCAT t11 ON t1.USERDICTCATID = t11.USERDICTCATID  LEFT JOIN T_SRFUSERDICT t21 ON t1.USERDICTID = t21.USERDICTID  
+			]]>
+    </sql>
+
+</mapper>
+

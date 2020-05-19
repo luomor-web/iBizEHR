@@ -1,0 +1,57 @@
+package cn.ibizlab.ehr.pim.logic.pimvocationallogic.generatefj;
+
+import java.util.Map;
+import java.util.HashMap;
+import com.alibaba.fastjson.JSONObject;
+global cn.ibizlab.ehr.core.pim.domain.PIMVOCATIONAL pimvocationalgeneratefjdefault;
+global cn.ibizlab.ehr.core.pim.domain.PIMENCLOSURE pimvocationalgeneratefjenclosure;
+global cn.ibizlab.ehr.core.pim.service.IPIMENCLOSUREService pimenclosureservice;
+global cn.ibizlab.ehr.core.pim.service.IPIMVOCATIONALService iBzSysPimvocationalDefaultService;
+global cn.ibizlab.ehr.util.security.AuthenticationUser curuser;
+
+no-loop
+
+//逻辑处理节点[填充信息]
+rule "prepareparam1"
+ruleflow-group "pimvocationalgeneratefjprepareparam1"
+    when
+    then
+    pimvocationalgeneratefjenclosure.set("enable",pimvocationalgeneratefjdefault.get("enable"));
+    pimvocationalgeneratefjenclosure.set("fjkz",pimvocationalgeneratefjdefault.get("fj"));
+    pimvocationalgeneratefjenclosure.set("fj",pimvocationalgeneratefjdefault.get("fj"));
+    pimvocationalgeneratefjenclosure.set("pimpersonid",pimvocationalgeneratefjdefault.get("pimpersonid"));
+    pimvocationalgeneratefjenclosure.set("pimpersonname",pimvocationalgeneratefjdefault.get("pimpersonname"));
+    pimvocationalgeneratefjenclosure.set("pimenclosureid",pimvocationalgeneratefjdefault.get("pimvocationalid"));
+    pimvocationalgeneratefjenclosure.set("pimenclosurename",pimvocationalgeneratefjdefault.get("pimvocationalname"));
+    pimvocationalgeneratefjenclosure.set("fjfl","30");
+    update(pimvocationalgeneratefjdefault);//更新fact中变量值
+    update(pimvocationalgeneratefjenclosure);//更新fact中变量值
+    end
+
+//逻辑处理节点[附件为空时删除附件信息]
+rule "prepareparam2"
+ruleflow-group "pimvocationalgeneratefjprepareparam2"
+    when
+    then
+    pimvocationalgeneratefjenclosure.set("enable","0");
+    update(pimvocationalgeneratefjdefault);//更新fact中变量值
+    update(pimvocationalgeneratefjenclosure);//更新fact中变量值
+    end
+
+//逻辑处理节点[开始]
+rule "begin"
+ruleflow-group "pimvocationalgeneratefjbegin"
+    when
+    then
+    end
+
+//逻辑处理节点[保存附件信息]
+rule "deaction1"
+ruleflow-group "pimvocationalgeneratefjdeaction1"
+    when
+    then
+    pimenclosureservice.save(pimvocationalgeneratefjenclosure);
+    update(pimvocationalgeneratefjdefault);//更新fact中变量值
+    update(pimvocationalgeneratefjenclosure);//更新fact中变量值
+    end
+

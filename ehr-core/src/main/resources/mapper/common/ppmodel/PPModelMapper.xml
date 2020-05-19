@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper	namespace="cn.ibizlab.ehr.core.common.mapper.PPModelMapper">
+
+    <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
+	<select id="selectById"  resultMap="PPModelResultMap" databaseId="db2">
+        <![CDATA[select * from v_ppmodel t1     where  ppmodelid=#{id}]]>
+    </select>
+	<select id="selectById"  resultMap="PPModelResultMap" databaseId="mysql">
+        <![CDATA[select * from v_ppmodel t1     where  ppmodelid=#{id}]]>
+    </select>
+	<select id="selectById"  resultMap="PPModelResultMap" databaseId="oracle">
+        <![CDATA[select * from v_ppmodel t1     where  ppmodelid=#{id}]]>
+    </select>
+	<select id="selectById"  resultMap="PPModelResultMap" databaseId="postgresql">
+        <![CDATA[select * from v_ppmodel t1     where  ppmodelid=#{id}]]>
+    </select>
+	<select id="selectById"  resultMap="PPModelResultMap" databaseId="ppas">
+        <![CDATA[select * from v_ppmodel t1     where  ppmodelid=#{id}]]>
+    </select>
+	<select id="selectById"  resultMap="PPModelResultMap" databaseId="sqlserver">
+        <![CDATA[select * from v_ppmodel t1     where  ppmodelid=#{id}]]>
+    </select>
+
+    <!--通过mybatis将查询结果注入到entity中,通过配置autoMapping="true"由mybatis自动处理映射关系 -->
+    <resultMap id="PPModelResultMap" type="cn.ibizlab.ehr.core.common.domain.PPModel" autoMapping="true">
+        <id property="ppmodelid" column="ppmodelid" /><!--主键字段映射-->
+		<result property="r1pvpartid" column="r1pvpartid" />
+		<result property="c3pvpartid" column="c3pvpartid" />
+		<result property="c1pvpartid" column="c1pvpartid" />
+		<result property="l1pvpartid" column="l1pvpartid" />
+		<result property="r4pvpartid" column="r4pvpartid" />
+		<result property="l4pvpartid" column="l4pvpartid" />
+		<result property="l2pvpartid" column="l2pvpartid" />
+		<result property="c4pvpartid" column="c4pvpartid" />
+		<result property="l3pvpartid" column="l3pvpartid" />
+		<result property="portalpageid" column="portalpageid" />
+		<result property="r3pvpartid" column="r3pvpartid" />
+		<result property="r2pvpartid" column="r2pvpartid" />
+		<result property="c2pvpartid" column="c2pvpartid" />
+            
+		
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="portalpage" javaType="cn.ibizlab.ehr.core.common.domain.PortalPage" column="portalpageid" select="cn.ibizlab.ehr.core.common.mapper.PortalPageMapper.selectById" fetchType="lazy"></association>
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="c1pvpart" javaType="cn.ibizlab.ehr.core.common.domain.PVPart" column="c1pvpartid" select="cn.ibizlab.ehr.core.common.mapper.PVPartMapper.selectById" fetchType="lazy"></association>
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="c2pvpart" javaType="cn.ibizlab.ehr.core.common.domain.PVPart" column="c2pvpartid" select="cn.ibizlab.ehr.core.common.mapper.PVPartMapper.selectById" fetchType="lazy"></association>
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="c3pvpart" javaType="cn.ibizlab.ehr.core.common.domain.PVPart" column="c3pvpartid" select="cn.ibizlab.ehr.core.common.mapper.PVPartMapper.selectById" fetchType="lazy"></association>
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="c4pvpart" javaType="cn.ibizlab.ehr.core.common.domain.PVPart" column="c4pvpartid" select="cn.ibizlab.ehr.core.common.mapper.PVPartMapper.selectById" fetchType="lazy"></association>
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="l1pvpart" javaType="cn.ibizlab.ehr.core.common.domain.PVPart" column="l1pvpartid" select="cn.ibizlab.ehr.core.common.mapper.PVPartMapper.selectById" fetchType="lazy"></association>
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="l2pvpart" javaType="cn.ibizlab.ehr.core.common.domain.PVPart" column="l2pvpartid" select="cn.ibizlab.ehr.core.common.mapper.PVPartMapper.selectById" fetchType="lazy"></association>
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="l3pvpart" javaType="cn.ibizlab.ehr.core.common.domain.PVPart" column="l3pvpartid" select="cn.ibizlab.ehr.core.common.mapper.PVPartMapper.selectById" fetchType="lazy"></association>
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="l4pvpart" javaType="cn.ibizlab.ehr.core.common.domain.PVPart" column="l4pvpartid" select="cn.ibizlab.ehr.core.common.mapper.PVPartMapper.selectById" fetchType="lazy"></association>
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="r1pvpart" javaType="cn.ibizlab.ehr.core.common.domain.PVPart" column="r1pvpartid" select="cn.ibizlab.ehr.core.common.mapper.PVPartMapper.selectById" fetchType="lazy"></association>
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="r2pvpart" javaType="cn.ibizlab.ehr.core.common.domain.PVPart" column="r2pvpartid" select="cn.ibizlab.ehr.core.common.mapper.PVPartMapper.selectById" fetchType="lazy"></association>
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="r3pvpart" javaType="cn.ibizlab.ehr.core.common.domain.PVPart" column="r3pvpartid" select="cn.ibizlab.ehr.core.common.mapper.PVPartMapper.selectById" fetchType="lazy"></association>
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="r4pvpart" javaType="cn.ibizlab.ehr.core.common.domain.PVPart" column="r4pvpartid" select="cn.ibizlab.ehr.core.common.mapper.PVPartMapper.selectById" fetchType="lazy"></association>
+    </resultMap>
+
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_PPMODEL_PORTALPAGE_PORTALPAGEID] -->
+	 <select id="selectByPortalpageid" resultMap="PPModelResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  portalpageid=#{portalpageid}
+     </select>
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_PPMODEL_PVPART_C1PVPARTID] -->
+	 <select id="selectByC1pvpartid" resultMap="PPModelResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  c1pvpartid=#{pvpartid}
+     </select>
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_PPMODEL_PVPART_C2PVPARTID] -->
+	 <select id="selectByC2pvpartid" resultMap="PPModelResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  c2pvpartid=#{pvpartid}
+     </select>
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_PPMODEL_PVPART_C3PVPARTID] -->
+	 <select id="selectByC3pvpartid" resultMap="PPModelResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  c3pvpartid=#{pvpartid}
+     </select>
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_PPMODEL_PVPART_C4PVPARTID] -->
+	 <select id="selectByC4pvpartid" resultMap="PPModelResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  c4pvpartid=#{pvpartid}
+     </select>
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_PPMODEL_PVPART_L1PVPARTID] -->
+	 <select id="selectByL1pvpartid" resultMap="PPModelResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  l1pvpartid=#{pvpartid}
+     </select>
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_PPMODEL_PVPART_L2PVPARTID] -->
+	 <select id="selectByL2pvpartid" resultMap="PPModelResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  l2pvpartid=#{pvpartid}
+     </select>
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_PPMODEL_PVPART_L3PVPARTID] -->
+	 <select id="selectByL3pvpartid" resultMap="PPModelResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  l3pvpartid=#{pvpartid}
+     </select>
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_PPMODEL_PVPART_L4PVPARTID] -->
+	 <select id="selectByL4pvpartid" resultMap="PPModelResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  l4pvpartid=#{pvpartid}
+     </select>
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_PPMODEL_PVPART_R1PVPARTID] -->
+	 <select id="selectByR1pvpartid" resultMap="PPModelResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  r1pvpartid=#{pvpartid}
+     </select>
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_PPMODEL_PVPART_R2PVPARTID] -->
+	 <select id="selectByR2pvpartid" resultMap="PPModelResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  r2pvpartid=#{pvpartid}
+     </select>
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_PPMODEL_PVPART_R3PVPARTID] -->
+	 <select id="selectByR3pvpartid" resultMap="PPModelResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  r3pvpartid=#{pvpartid}
+     </select>
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_PPMODEL_PVPART_R4PVPARTID] -->
+	 <select id="selectByR4pvpartid" resultMap="PPModelResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  r4pvpartid=#{pvpartid}
+     </select>
+
+    <!--数据集合[Default]-->
+	 <select id="searchDefault"  parameterType="cn.ibizlab.ehr.core.common.filter.PPModelSearchContext"  resultMap="PPModelResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="db2">
+       <![CDATA[	SELECT t1.C1PVPARTCTRLID, t1.C1PVPARTID, t1.C1PVPARTNAME, t1.C2PVPARTCTRLID, t1.C2PVPARTID, t1.C2PVPARTNAME, t1.C3PVPARTCTRLID, t1.C3PVPARTID, t1.C3PVPARTNAME, t1.C4PVPARTCTRLID, t1.C4PVPARTID, t1.C4PVPARTNAME, t1.CREATEDATE, t1.CREATEMAN, t1.ISSYSTEM, t1.L1PVPARTCTRLID, t1.L1PVPARTID, t1.L1PVPARTNAME, t1.L2PVPARTCTRLID, t1.L2PVPARTID, t1.L2PVPARTNAME, t1.L3PVPARTCTRLID, t1.L3PVPARTID, t1.L3PVPARTNAME, t1.L4PVPARTCTRLID, t1.L4PVPARTID, t1.L4PVPARTNAME, t1.OWNERID, t1.PORTALPAGEID, t1.PORTALPAGENAME, t1.PPMODEL, t1.PPMODELID, t1.PPMODELNAME, t1.PPMVERSION, t1.R1PVPARTCTRLID, t1.R1PVPARTID, t1.R1PVPARTNAME, t1.R2PVPARTCTRLID, t1.R2PVPARTID, t1.R2PVPARTNAME, t1.R3PVPARTCTRLID, t1.R3PVPARTID, t1.R3PVPARTNAME, t1.R4PVPARTCTRLID, t1.R4PVPARTID, t1.R4PVPARTNAME, t1.UPDATEDATE, t1.UPDATEMAN FROM T_SRFPPMODEL t1  
+			]]>
+    </sql>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="mysql">
+       <![CDATA[	SELECT t1.`C1PVPARTCTRLID`, t1.`C1PVPARTID`, t1.`C1PVPARTNAME`, t1.`C2PVPARTCTRLID`, t1.`C2PVPARTID`, t1.`C2PVPARTNAME`, t1.`C3PVPARTCTRLID`, t1.`C3PVPARTID`, t1.`C3PVPARTNAME`, t1.`C4PVPARTCTRLID`, t1.`C4PVPARTID`, t1.`C4PVPARTNAME`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ISSYSTEM`, t1.`L1PVPARTCTRLID`, t1.`L1PVPARTID`, t1.`L1PVPARTNAME`, t1.`L2PVPARTCTRLID`, t1.`L2PVPARTID`, t1.`L2PVPARTNAME`, t1.`L3PVPARTCTRLID`, t1.`L3PVPARTID`, t1.`L3PVPARTNAME`, t1.`L4PVPARTCTRLID`, t1.`L4PVPARTID`, t1.`L4PVPARTNAME`, t1.`OWNERID`, t1.`PORTALPAGEID`, t1.`PORTALPAGENAME`, t1.`PPMODEL`, t1.`PPMODELID`, t1.`PPMODELNAME`, t1.`PPMVERSION`, t1.`R1PVPARTCTRLID`, t1.`R1PVPARTID`, t1.`R1PVPARTNAME`, t1.`R2PVPARTCTRLID`, t1.`R2PVPARTID`, t1.`R2PVPARTNAME`, t1.`R3PVPARTCTRLID`, t1.`R3PVPARTID`, t1.`R3PVPARTNAME`, t1.`R4PVPARTCTRLID`, t1.`R4PVPARTID`, t1.`R4PVPARTNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN` FROM `T_SRFPPMODEL` t1  
+			]]>
+    </sql>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="oracle">
+       <![CDATA[	SELECT t1.C1PVPARTCTRLID, t1.C1PVPARTID, t1.C1PVPARTNAME, t1.C2PVPARTCTRLID, t1.C2PVPARTID, t1.C2PVPARTNAME, t1.C3PVPARTCTRLID, t1.C3PVPARTID, t1.C3PVPARTNAME, t1.C4PVPARTCTRLID, t1.C4PVPARTID, t1.C4PVPARTNAME, t1.CREATEDATE, t1.CREATEMAN, t1.ISSYSTEM, t1.L1PVPARTCTRLID, t1.L1PVPARTID, t1.L1PVPARTNAME, t1.L2PVPARTCTRLID, t1.L2PVPARTID, t1.L2PVPARTNAME, t1.L3PVPARTCTRLID, t1.L3PVPARTID, t1.L3PVPARTNAME, t1.L4PVPARTCTRLID, t1.L4PVPARTID, t1.L4PVPARTNAME, t1.OWNERID, t1.PORTALPAGEID, t1.PORTALPAGENAME, t1.PPMODEL, t1.PPMODELID, t1.PPMODELNAME, t1.PPMVERSION, t1.R1PVPARTCTRLID, t1.R1PVPARTID, t1.R1PVPARTNAME, t1.R2PVPARTCTRLID, t1.R2PVPARTID, t1.R2PVPARTNAME, t1.R3PVPARTCTRLID, t1.R3PVPARTID, t1.R3PVPARTNAME, t1.R4PVPARTCTRLID, t1.R4PVPARTID, t1.R4PVPARTNAME, t1.UPDATEDATE, t1.UPDATEMAN FROM T_SRFPPMODEL t1  
+			]]>
+    </sql>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="postgresql">
+       <![CDATA[	SELECT t1.C1PVPARTCTRLID AS C1PVPARTCTRLID, t1.C1PVPARTID AS C1PVPARTID, t1.C1PVPARTNAME AS C1PVPARTNAME, t1.C2PVPARTCTRLID AS C2PVPARTCTRLID, t1.C2PVPARTID AS C2PVPARTID, t1.C2PVPARTNAME AS C2PVPARTNAME, t1.C3PVPARTCTRLID AS C3PVPARTCTRLID, t1.C3PVPARTID AS C3PVPARTID, t1.C3PVPARTNAME AS C3PVPARTNAME, t1.C4PVPARTCTRLID AS C4PVPARTCTRLID, t1.C4PVPARTID AS C4PVPARTID, t1.C4PVPARTNAME AS C4PVPARTNAME, t1.CREATEDATE AS CREATEDATE, t1.CREATEMAN AS CREATEMAN, t1.ISSYSTEM AS ISSYSTEM, t1.L1PVPARTCTRLID AS L1PVPARTCTRLID, t1.L1PVPARTID AS L1PVPARTID, t1.L1PVPARTNAME AS L1PVPARTNAME, t1.L2PVPARTCTRLID AS L2PVPARTCTRLID, t1.L2PVPARTID AS L2PVPARTID, t1.L2PVPARTNAME AS L2PVPARTNAME, t1.L3PVPARTCTRLID AS L3PVPARTCTRLID, t1.L3PVPARTID AS L3PVPARTID, t1.L3PVPARTNAME AS L3PVPARTNAME, t1.L4PVPARTCTRLID AS L4PVPARTCTRLID, t1.L4PVPARTID AS L4PVPARTID, t1.L4PVPARTNAME AS L4PVPARTNAME, t1.OWNERID AS OWNERID, t1.PORTALPAGEID AS PORTALPAGEID, t1.PORTALPAGENAME AS PORTALPAGENAME, t1.PPMODEL AS PPMODEL, t1.PPMODELID AS PPMODELID, t1.PPMODELNAME AS PPMODELNAME, t1.PPMVERSION AS PPMVERSION, t1.R1PVPARTCTRLID AS R1PVPARTCTRLID, t1.R1PVPARTID AS R1PVPARTID, t1.R1PVPARTNAME AS R1PVPARTNAME, t1.R2PVPARTCTRLID AS R2PVPARTCTRLID, t1.R2PVPARTID AS R2PVPARTID, t1.R2PVPARTNAME AS R2PVPARTNAME, t1.R3PVPARTCTRLID AS R3PVPARTCTRLID, t1.R3PVPARTID AS R3PVPARTID, t1.R3PVPARTNAME AS R3PVPARTNAME, t1.R4PVPARTCTRLID AS R4PVPARTCTRLID, t1.R4PVPARTID AS R4PVPARTID, t1.R4PVPARTNAME AS R4PVPARTNAME, t1.UPDATEDATE AS UPDATEDATE, t1.UPDATEMAN AS UPDATEMAN FROM T_SRFPPMODEL t1  
+			]]>
+    </sql>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="ppas">
+       <![CDATA[	SELECT t1.C1PVPARTCTRLID AS C1PVPARTCTRLID, t1.C1PVPARTID AS C1PVPARTID, t1.C1PVPARTNAME AS C1PVPARTNAME, t1.C2PVPARTCTRLID AS C2PVPARTCTRLID, t1.C2PVPARTID AS C2PVPARTID, t1.C2PVPARTNAME AS C2PVPARTNAME, t1.C3PVPARTCTRLID AS C3PVPARTCTRLID, t1.C3PVPARTID AS C3PVPARTID, t1.C3PVPARTNAME AS C3PVPARTNAME, t1.C4PVPARTCTRLID AS C4PVPARTCTRLID, t1.C4PVPARTID AS C4PVPARTID, t1.C4PVPARTNAME AS C4PVPARTNAME, t1.CREATEDATE AS CREATEDATE, t1.CREATEMAN AS CREATEMAN, t1.ISSYSTEM AS ISSYSTEM, t1.L1PVPARTCTRLID AS L1PVPARTCTRLID, t1.L1PVPARTID AS L1PVPARTID, t1.L1PVPARTNAME AS L1PVPARTNAME, t1.L2PVPARTCTRLID AS L2PVPARTCTRLID, t1.L2PVPARTID AS L2PVPARTID, t1.L2PVPARTNAME AS L2PVPARTNAME, t1.L3PVPARTCTRLID AS L3PVPARTCTRLID, t1.L3PVPARTID AS L3PVPARTID, t1.L3PVPARTNAME AS L3PVPARTNAME, t1.L4PVPARTCTRLID AS L4PVPARTCTRLID, t1.L4PVPARTID AS L4PVPARTID, t1.L4PVPARTNAME AS L4PVPARTNAME, t1.OWNERID AS OWNERID, t1.PORTALPAGEID AS PORTALPAGEID, t1.PORTALPAGENAME AS PORTALPAGENAME, t1.PPMODEL AS PPMODEL, t1.PPMODELID AS PPMODELID, t1.PPMODELNAME AS PPMODELNAME, t1.PPMVERSION AS PPMVERSION, t1.R1PVPARTCTRLID AS R1PVPARTCTRLID, t1.R1PVPARTID AS R1PVPARTID, t1.R1PVPARTNAME AS R1PVPARTNAME, t1.R2PVPARTCTRLID AS R2PVPARTCTRLID, t1.R2PVPARTID AS R2PVPARTID, t1.R2PVPARTNAME AS R2PVPARTNAME, t1.R3PVPARTCTRLID AS R3PVPARTCTRLID, t1.R3PVPARTID AS R3PVPARTID, t1.R3PVPARTNAME AS R3PVPARTNAME, t1.R4PVPARTCTRLID AS R4PVPARTCTRLID, t1.R4PVPARTID AS R4PVPARTID, t1.R4PVPARTNAME AS R4PVPARTNAME, t1.UPDATEDATE AS UPDATEDATE, t1.UPDATEMAN AS UPDATEMAN FROM T_SRFPPMODEL t1  
+			]]>
+    </sql>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="sqlserver">
+       <![CDATA[	SELECT t1.[C1PVPARTCTRLID], t1.[C1PVPARTID], t1.[C1PVPARTNAME], t1.[C2PVPARTCTRLID], t1.[C2PVPARTID], t1.[C2PVPARTNAME], t1.[C3PVPARTCTRLID], t1.[C3PVPARTID], t1.[C3PVPARTNAME], t1.[C4PVPARTCTRLID], t1.[C4PVPARTID], t1.[C4PVPARTNAME], t1.[CREATEDATE], t1.[CREATEMAN], t1.[ISSYSTEM], t1.[L1PVPARTCTRLID], t1.[L1PVPARTID], t1.[L1PVPARTNAME], t1.[L2PVPARTCTRLID], t1.[L2PVPARTID], t1.[L2PVPARTNAME], t1.[L3PVPARTCTRLID], t1.[L3PVPARTID], t1.[L3PVPARTNAME], t1.[L4PVPARTCTRLID], t1.[L4PVPARTID], t1.[L4PVPARTNAME], t1.[OWNERID], t1.[PORTALPAGEID], t1.[PORTALPAGENAME], t1.[PPMODEL], t1.[PPMODELID], t1.[PPMODELNAME], t1.[PPMVERSION], t1.[R1PVPARTCTRLID], t1.[R1PVPARTID], t1.[R1PVPARTNAME], t1.[R2PVPARTCTRLID], t1.[R2PVPARTID], t1.[R2PVPARTNAME], t1.[R3PVPARTCTRLID], t1.[R3PVPARTID], t1.[R3PVPARTNAME], t1.[R4PVPARTCTRLID], t1.[R4PVPARTID], t1.[R4PVPARTNAME], t1.[UPDATEDATE], t1.[UPDATEMAN] FROM [T_SRFPPMODEL] t1  
+			]]>
+    </sql>
+
+</mapper>
+

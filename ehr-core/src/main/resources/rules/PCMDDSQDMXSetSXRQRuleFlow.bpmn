@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+    <process id="cn.ibizlab.ehr.core.pcm.service.logic.pcmddsqdmxsetsxrq" isClosed="false" isExecutable="true" name="ScoreRule" processType="Private" tns:packageName="cn.ibizlab.ehr.core.pcm.service.logic.pcmddsqdmxsetsxrq">
+        <extensionElements>
+            <tns:import name="java.util.Map" />
+            <tns:import name="org.springframework.util.StringUtils"/>
+            <tns:import name="cn.ibizlab.ehr.util.helper.RuleUtils"/>
+        <tns:global identifier="pcmddsqdmxsetsxrqdefault" type="cn.ibizlab.ehr.core.pcm.domain.PCMDDSQDMX" />
+        </extensionElements>
+     <startEvent id="72c59a5fff319093161043ea30ec14aa" isInterrupting="true"/>
+     <endEvent id="72c59a5fff319093161043ea30ec14aa_End" name="End"/>
+     <sequenceFlow id="72c59a5fff319093161043ea30ec14aa_End_Line" sourceRef="72c59a5fff319093161043ea30ec14aa" targetRef="72c59a5fff319093161043ea30ec14aa_End"/>
+     <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="pcmddsqdmxsetsxrqprepareparam1" id="ce676223b7e2f7addc02e4f842f8ee3c" implementation="http://www.jboss.org/drools/rule" name="设置生效日期"/>
+     <endEvent id="ce676223b7e2f7addc02e4f842f8ee3c_End" name="End"/>
+     <sequenceFlow id="ce676223b7e2f7addc02e4f842f8ee3c_End_Line" sourceRef="ce676223b7e2f7addc02e4f842f8ee3c" targetRef="ce676223b7e2f7addc02e4f842f8ee3c_End"/>
+    </process>
+</definitions>
+

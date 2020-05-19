@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper	namespace="cn.ibizlab.ehr.core.common.mapper.MsgSendQueueHisMapper">
+
+    <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
+	<select id="selectById"  resultMap="MsgSendQueueHisResultMap" databaseId="db2">
+        <![CDATA[select * from v_msgsendqueuehis t1     where  msgsendqueuehisid=#{id}]]>
+    </select>
+	<select id="selectById"  resultMap="MsgSendQueueHisResultMap" databaseId="mysql">
+        <![CDATA[select * from v_msgsendqueuehis t1     where  msgsendqueuehisid=#{id}]]>
+    </select>
+	<select id="selectById"  resultMap="MsgSendQueueHisResultMap" databaseId="oracle">
+        <![CDATA[select * from v_msgsendqueuehis t1     where  msgsendqueuehisid=#{id}]]>
+    </select>
+	<select id="selectById"  resultMap="MsgSendQueueHisResultMap" databaseId="postgresql">
+        <![CDATA[select * from v_msgsendqueuehis t1     where  msgsendqueuehisid=#{id}]]>
+    </select>
+	<select id="selectById"  resultMap="MsgSendQueueHisResultMap" databaseId="ppas">
+        <![CDATA[select * from v_msgsendqueuehis t1     where  msgsendqueuehisid=#{id}]]>
+    </select>
+	<select id="selectById"  resultMap="MsgSendQueueHisResultMap" databaseId="sqlserver">
+        <![CDATA[select * from v_msgsendqueuehis t1     where  msgsendqueuehisid=#{id}]]>
+    </select>
+
+    <!--通过mybatis将查询结果注入到entity中,通过配置autoMapping="true"由mybatis自动处理映射关系 -->
+    <resultMap id="MsgSendQueueHisResultMap" type="cn.ibizlab.ehr.core.common.domain.MsgSendQueueHis" autoMapping="true">
+        <id property="msgsendqueuehisid" column="msgsendqueuehisid" /><!--主键字段映射-->
+            
+		
+    </resultMap>
+
+
+    <!--数据集合[Default]-->
+	 <select id="searchDefault"  parameterType="cn.ibizlab.ehr.core.common.filter.MsgSendQueueHisSearchContext"  resultMap="MsgSendQueueHisResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="db2">
+       <![CDATA[	SELECT t1.CONTENTTYPE, t1.CREATEDATE, t1.CREATEMAN, t1.DSTADDRESSES, t1.DSTUSERS, t1.FILEAT, t1.FILEAT2, t1.FILEAT3, t1.FILEAT4, t1.IMPORTANCEFLAG, t1.ISERROR, t1.ISSEND, t1.MSGSENDQUEUEHISID, t1.MSGSENDQUEUEHISNAME, t1.MSGTYPE, t1.PLANSENDTIME, t1.PROCESSTIME, t1.SENDTAG, t1.SUBJECT, t1.TOTALDSTADDRESSES, t1.UPDATEDATE, t1.UPDATEMAN, t1.USERDATA, t1.USERDATA2, t1.USERDATA3, t1.USERDATA4 FROM T_SRFMSGSENDQUEUEHIS t1  
+			]]>
+    </sql>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="mysql">
+       <![CDATA[	SELECT t1.`CONTENTTYPE`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`DSTADDRESSES`, t1.`DSTUSERS`, t1.`FILEAT`, t1.`FILEAT2`, t1.`FILEAT3`, t1.`FILEAT4`, t1.`IMPORTANCEFLAG`, t1.`ISERROR`, t1.`ISSEND`, t1.`MSGSENDQUEUEHISID`, t1.`MSGSENDQUEUEHISNAME`, t1.`MSGTYPE`, t1.`PLANSENDTIME`, t1.`PROCESSTIME`, t1.`SENDTAG`, t1.`SUBJECT`, t1.`TOTALDSTADDRESSES`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`USERDATA`, t1.`USERDATA2`, t1.`USERDATA3`, t1.`USERDATA4` FROM `T_SRFMSGSENDQUEUEHIS` t1  
+			]]>
+    </sql>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="oracle">
+       <![CDATA[	SELECT t1.CONTENTTYPE, t1.CREATEDATE, t1.CREATEMAN, t1.DSTADDRESSES, t1.DSTUSERS, t1.FILEAT, t1.FILEAT2, t1.FILEAT3, t1.FILEAT4, t1.IMPORTANCEFLAG, t1.ISERROR, t1.ISSEND, t1.MSGSENDQUEUEHISID, t1.MSGSENDQUEUEHISNAME, t1.MSGTYPE, t1.PLANSENDTIME, t1.PROCESSTIME, t1.SENDTAG, t1.SUBJECT, t1.TOTALDSTADDRESSES, t1.UPDATEDATE, t1.UPDATEMAN, t1.USERDATA, t1.USERDATA2, t1.USERDATA3, t1.USERDATA4 FROM T_SRFMSGSENDQUEUEHIS t1  
+			]]>
+    </sql>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="postgresql">
+       <![CDATA[	SELECT t1.CONTENTTYPE, t1.CREATEDATE, t1.CREATEMAN, t1.DSTADDRESSES, t1.DSTUSERS, t1.FILEAT, t1.FILEAT2, t1.FILEAT3, t1.FILEAT4, t1.IMPORTANCEFLAG, t1.ISERROR, t1.ISSEND, t1.MSGSENDQUEUEHISID, t1.MSGSENDQUEUEHISNAME, t1.MSGTYPE, t1.PLANSENDTIME, t1.PROCESSTIME, t1.SENDTAG, t1.SUBJECT, t1.TOTALDSTADDRESSES, t1.UPDATEDATE, t1.UPDATEMAN, t1.USERDATA, t1.USERDATA2, t1.USERDATA3, t1.USERDATA4 FROM T_SRFMSGSENDQUEUEHIS t1  
+			]]>
+    </sql>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="ppas">
+       <![CDATA[	SELECT t1.CONTENTTYPE, t1.CREATEDATE, t1.CREATEMAN, t1.DSTADDRESSES, t1.DSTUSERS, t1.FILEAT, t1.FILEAT2, t1.FILEAT3, t1.FILEAT4, t1.IMPORTANCEFLAG, t1.ISERROR, t1.ISSEND, t1.MSGSENDQUEUEHISID, t1.MSGSENDQUEUEHISNAME, t1.MSGTYPE, t1.PLANSENDTIME, t1.PROCESSTIME, t1.SENDTAG, t1.SUBJECT, t1.TOTALDSTADDRESSES, t1.UPDATEDATE, t1.UPDATEMAN, t1.USERDATA, t1.USERDATA2, t1.USERDATA3, t1.USERDATA4 FROM T_SRFMSGSENDQUEUEHIS t1  
+			]]>
+    </sql>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="sqlserver">
+       <![CDATA[	SELECT t1.[CONTENTTYPE], t1.[CREATEDATE], t1.[CREATEMAN], t1.[DSTADDRESSES], t1.[DSTUSERS], t1.[FILEAT], t1.[FILEAT2], t1.[FILEAT3], t1.[FILEAT4], t1.[IMPORTANCEFLAG], t1.[ISERROR], t1.[ISSEND], t1.[MSGSENDQUEUEHISID], t1.[MSGSENDQUEUEHISNAME], t1.[MSGTYPE], t1.[PLANSENDTIME], t1.[PROCESSTIME], t1.[SENDTAG], t1.[SUBJECT], t1.[TOTALDSTADDRESSES], t1.[UPDATEDATE], t1.[UPDATEMAN], t1.[USERDATA], t1.[USERDATA2], t1.[USERDATA3], t1.[USERDATA4] FROM [T_SRFMSGSENDQUEUEHIS] t1  
+			]]>
+    </sql>
+
+</mapper>
+

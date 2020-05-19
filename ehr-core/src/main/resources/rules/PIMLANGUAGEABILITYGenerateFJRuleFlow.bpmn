@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+    <process id="cn.ibizlab.ehr.core.pim.service.logic.pimlanguageabilitygeneratefj" isClosed="false" isExecutable="true" name="ScoreRule" processType="Private" tns:packageName="cn.ibizlab.ehr.core.pim.service.logic.pimlanguageabilitygeneratefj">
+        <extensionElements>
+            <tns:import name="java.util.Map" />
+            <tns:import name="org.springframework.util.StringUtils"/>
+            <tns:import name="cn.ibizlab.ehr.util.helper.RuleUtils"/>
+        <tns:global identifier="pimlanguageabilitygeneratefjdefault" type="cn.ibizlab.ehr.core.pim.domain.PIMLANGUAGEABILITY" />
+        <tns:global identifier="pimlanguageabilitygeneratefjenclosure" type="cn.ibizlab.ehr.core.pim.domain.PIMENCLOSURE" />
+        </extensionElements>
+     <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="pimlanguageabilitygeneratefjdeaction1" id="6da75cb62fa244c208d54f6de4303e81" implementation="http://www.jboss.org/drools/rule" name="保存附件信息"/>
+     <endEvent id="6da75cb62fa244c208d54f6de4303e81_End" name="End"/>
+     <sequenceFlow id="6da75cb62fa244c208d54f6de4303e81_End_Line" sourceRef="6da75cb62fa244c208d54f6de4303e81" targetRef="6da75cb62fa244c208d54f6de4303e81_End"/>
+     <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="pimlanguageabilitygeneratefjprepareparam2" id="0870decff9c0b64551796e118f432d93" implementation="http://www.jboss.org/drools/rule" name="设置逻辑有效"/>
+     <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="pimlanguageabilitygeneratefjprepareparam1" id="c0045e3e9891699ed0ad8a7bf0fb4ff7" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
+     <startEvent id="9abc76bbf4463a4344b5d19f9db863cc" isInterrupting="true"/>
+     <sequenceFlow id="3f5c32eee7ce1ba701c20d4c9f3178eb" sourceRef="0870decff9c0b64551796e118f432d93" targetRef="6da75cb62fa244c208d54f6de4303e81">
+     </sequenceFlow>
+     <sequenceFlow id="77eccbee59385a64c4edec9ba6945948" sourceRef="9abc76bbf4463a4344b5d19f9db863cc" targetRef="c0045e3e9891699ed0ad8a7bf0fb4ff7">
+     </sequenceFlow>
+     <sequenceFlow id="609386b9109a8ab8157034663b056161" sourceRef="gateway-c0045e3e9891699ed0ad8a7bf0fb4ff7" targetRef="6da75cb62fa244c208d54f6de4303e81">
+            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+            $pimlanguageabilitygeneratefjdefault:PIMLANGUAGEABILITY();
+            $pimlanguageabilitygeneratefjenclosure:PIMENCLOSURE();
+            eval($pimlanguageabilitygeneratefjdefault==pimlanguageabilitygeneratefjdefault && $pimlanguageabilitygeneratefjenclosure==pimlanguageabilitygeneratefjenclosure);
+                eval((RuleUtils.test($pimlanguageabilitygeneratefjenclosure.get("FJ"),"ISNOTNULL","")))
+                ]]>
+            </conditionExpression>
+     </sequenceFlow>
+     <sequenceFlow id="bbc451ec922ea60cea2d080f1246444b" sourceRef="gateway-c0045e3e9891699ed0ad8a7bf0fb4ff7" targetRef="0870decff9c0b64551796e118f432d93">
+            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+            $pimlanguageabilitygeneratefjdefault:PIMLANGUAGEABILITY();
+            $pimlanguageabilitygeneratefjenclosure:PIMENCLOSURE();
+            eval($pimlanguageabilitygeneratefjdefault==pimlanguageabilitygeneratefjdefault && $pimlanguageabilitygeneratefjenclosure==pimlanguageabilitygeneratefjenclosure);
+                eval((RuleUtils.test($pimlanguageabilitygeneratefjenclosure.get("FJ"),"ISNULL","")))
+                ]]>
+            </conditionExpression>
+     </sequenceFlow>
+    <exclusiveGateway id="gateway-c0045e3e9891699ed0ad8a7bf0fb4ff7" name="Gateway" gatewayDirection="Diverging" default="gateway-c0045e3e9891699ed0ad8a7bf0fb4ff7_End_Line"></exclusiveGateway>
+    <sequenceFlow id="609386b9109a8ab8157034663b056161-gatewayline" sourceRef="c0045e3e9891699ed0ad8a7bf0fb4ff7" targetRef="gateway-c0045e3e9891699ed0ad8a7bf0fb4ff7"></sequenceFlow>
+    <sequenceFlow id="gateway-c0045e3e9891699ed0ad8a7bf0fb4ff7_End_Line" sourceRef="gateway-c0045e3e9891699ed0ad8a7bf0fb4ff7" targetRef="gateway-c0045e3e9891699ed0ad8a7bf0fb4ff7_End"/>
+    <endEvent id="gateway-c0045e3e9891699ed0ad8a7bf0fb4ff7_End" name="End"/>
+    </process>
+</definitions>
+

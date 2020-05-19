@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper	namespace="cn.ibizlab.ehr.core.orm.mapper.UnitedPersonMapper">
+
+    <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
+	<select id="selectById"  resultMap="UnitedPersonResultMap" databaseId="oracle">
+        <![CDATA[select * from v_unitedperson t1     where  unitedpersonid=#{id}]]>
+    </select>
+
+    <!--通过mybatis将查询结果注入到entity中,通过配置autoMapping="true"由mybatis自动处理映射关系 -->
+    <resultMap id="UnitedPersonResultMap" type="cn.ibizlab.ehr.core.orm.domain.UnitedPerson" autoMapping="true">
+        <id property="unitedpersonid" column="unitedpersonid" /><!--主键字段映射-->
+            
+		
+    </resultMap>
+
+
+    <!--数据集合[Default]-->
+	 <select id="searchDefault"  parameterType="cn.ibizlab.ehr.core.orm.filter.UnitedPersonSearchContext"  resultMap="UnitedPersonResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据集合[CXYH]-->
+	 <select id="searchCXYH"  parameterType="cn.ibizlab.ehr.core.orm.filter.UnitedPersonSearchContext"  resultMap="UnitedPersonResultMap">
+         select t1.* from (
+                <include refid="CXYH" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据集合[CurFQXJYH]-->
+	 <select id="searchCurFQXJYH"  parameterType="cn.ibizlab.ehr.core.orm.filter.UnitedPersonSearchContext"  resultMap="UnitedPersonResultMap">
+         select t1.* from (
+                <include refid="CurFQXJYH" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据查询[CurFQXJYH]-->
+    <sql id="CurFQXJYH" databaseId="oracle">
+       <![CDATA[	SELECT t1.CREATEDATE, t1.CREATEMAN, t1.EHREMPID, t1.EMPID, t1.EMPLOYEENAME, t1.EMPLOYEENUMBER, t1.ENABLE, t1.FULLNAME, t1.IDNUMBER, t1.ISEMPLOYEE, t1.REFERMARK, t1.SEX, t1.UNITEDPERSONID, t1.UNITEDPERSONNAME, t1.UPDATEDATE, t1.UPDATEMAN, t1.USERNAME FROM T_UNITEDPERSON t1  
+				 WHERE 	t1.ENABLE = 1
+					 AND ( t1.REFERMARK = '0' )
+			]]>
+    </sql>
+
+    <!--数据查询[CXYH]-->
+    <sql id="CXYH" databaseId="oracle">
+       <![CDATA[	SELECT t1.CREATEDATE, t1.CREATEMAN, t1.EHREMPID, t1.EMPID, t1.EMPLOYEENAME, t1.EMPLOYEENUMBER, t1.ENABLE, t1.FULLNAME, t1.IDNUMBER, t1.ISEMPLOYEE, t1.REFERMARK, t1.SEX, t1.UNITEDPERSONID, t1.UNITEDPERSONNAME, t1.UPDATEDATE, t1.UPDATEMAN, t1.USERNAME FROM T_UNITEDPERSON t1  
+				 WHERE 	t1.ENABLE = 1
+					 AND ( ( t1.employeenumber in (select ygbh from t_pimperson a where a.jlss='10' and   a.ormorgid in (select t.orgid from t_srforg t where instr(t.levelcode, ( select b.levelcode from t_srforg b where b.orgid = #{srf.sessioncontext.SRFORGID')} ))=1 ))  OR  'ibzadmin' = ( select t.loginaccountname from t_srfloginaccount t where t.loginaccountid  =  #{srf.sessioncontext.SRFPERSONID')} ) ) )
+			]]>
+    </sql>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="oracle">
+       <![CDATA[	SELECT t1.CREATEDATE, t1.CREATEMAN, t1.EHREMPID, t1.EMPID, t1.EMPLOYEENAME, t1.EMPLOYEENUMBER, t1.ENABLE, t1.FULLNAME, t1.IDNUMBER, t1.ISEMPLOYEE, t1.REFERMARK, t1.SEX, t1.UNITEDPERSONID, t1.UNITEDPERSONNAME, t1.UPDATEDATE, t1.UPDATEMAN, t1.USERNAME FROM T_UNITEDPERSON t1  
+				 WHERE 	t1.ENABLE = 1
+			]]>
+    </sql>
+
+</mapper>
+

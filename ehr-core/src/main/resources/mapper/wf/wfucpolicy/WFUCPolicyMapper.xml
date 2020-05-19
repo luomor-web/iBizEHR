@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper	namespace="cn.ibizlab.ehr.core.wf.mapper.WFUCPolicyMapper">
+
+    <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
+	<select id="selectById"  resultMap="WFUCPolicyResultMap" databaseId="db2">
+        <![CDATA[select * from v_wfucpolicy t1     where  wfucpolicyid=#{id}]]>
+    </select>
+	<select id="selectById"  resultMap="WFUCPolicyResultMap" databaseId="mysql">
+        <![CDATA[select * from v_wfucpolicy t1     where  wfucpolicyid=#{id}]]>
+    </select>
+	<select id="selectById"  resultMap="WFUCPolicyResultMap" databaseId="oracle">
+        <![CDATA[select * from v_wfucpolicy t1     where  wfucpolicyid=#{id}]]>
+    </select>
+	<select id="selectById"  resultMap="WFUCPolicyResultMap" databaseId="postgresql">
+        <![CDATA[select * from v_wfucpolicy t1     where  wfucpolicyid=#{id}]]>
+    </select>
+	<select id="selectById"  resultMap="WFUCPolicyResultMap" databaseId="ppas">
+        <![CDATA[select * from v_wfucpolicy t1     where  wfucpolicyid=#{id}]]>
+    </select>
+	<select id="selectById"  resultMap="WFUCPolicyResultMap" databaseId="sqlserver">
+        <![CDATA[select * from v_wfucpolicy t1     where  wfucpolicyid=#{id}]]>
+    </select>
+
+    <!--通过mybatis将查询结果注入到entity中,通过配置autoMapping="true"由mybatis自动处理映射关系 -->
+    <resultMap id="WFUCPolicyResultMap" type="cn.ibizlab.ehr.core.wf.domain.WFUCPolicy" autoMapping="true">
+        <id property="wfucpolicyid" column="wfucpolicyid" /><!--主键字段映射-->
+		<result property="minorwfuserid" column="minorwfuserid" />
+		<result property="majorwfuserid" column="majorwfuserid" />
+            
+		
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="majorwfuser" javaType="cn.ibizlab.ehr.core.wf.domain.WFUser" column="majorwfuserid" select="cn.ibizlab.ehr.core.wf.mapper.WFUserMapper.selectById" fetchType="lazy"></association>
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="minorwfuser" javaType="cn.ibizlab.ehr.core.wf.domain.WFUser" column="minorwfuserid" select="cn.ibizlab.ehr.core.wf.mapper.WFUserMapper.selectById" fetchType="lazy"></association>
+    </resultMap>
+
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_WFUCPOLICY_WFUSER_MAJORWFUSERID] -->
+	 <select id="selectByMajorwfuserid" resultMap="WFUCPolicyResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  majorwfuserid=#{wfuserid}
+     </select>
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_WFUCPOLICY_WFUSER_MINORWFUSERID] -->
+	 <select id="selectByMinorwfuserid" resultMap="WFUCPolicyResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  minorwfuserid=#{wfuserid}
+     </select>
+
+    <!--数据集合[Default]-->
+	 <select id="searchDefault"  parameterType="cn.ibizlab.ehr.core.wf.filter.WFUCPolicySearchContext"  resultMap="WFUCPolicyResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="db2">
+       <![CDATA[	SELECT t1.BEGINTIME, t1.CREATEDATE, t1.CREATEMAN, t1.ENDTIME, t1.MAJORWFUSERID, t11.WFUSERNAME AS MAJORWFUSERNAME, t1.MEMO, t1.MINORWFUSERID, t21.WFUSERNAME AS MINORWFUSERNAME, t1.POLICYSTATE, t1.UPDATEDATE, t1.UPDATEMAN, t1.USERDATA, t1.USERDATA2, t1.VALIDFLAG, t1.WFUCPOLICYID, t1.WFUCPOLICYNAME FROM T_SRFWFUCPOLICY t1  LEFT JOIN T_SRFWFUSER t11 ON t1.MAJORWFUSERID = t11.WFUSERID  LEFT JOIN T_SRFWFUSER t21 ON t1.MINORWFUSERID = t21.WFUSERID  
+			]]>
+    </sql>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="mysql">
+       <![CDATA[	SELECT t1.`BEGINTIME`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENDTIME`, t1.`MAJORWFUSERID`, t11.`WFUSERNAME` AS `MAJORWFUSERNAME`, t1.`MEMO`, t1.`MINORWFUSERID`, t21.`WFUSERNAME` AS `MINORWFUSERNAME`, t1.`POLICYSTATE`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`USERDATA`, t1.`USERDATA2`, t1.`VALIDFLAG`, t1.`WFUCPOLICYID`, t1.`WFUCPOLICYNAME` FROM `T_SRFWFUCPOLICY` t1  LEFT JOIN T_SRFWFUSER t11 ON t1.MAJORWFUSERID = t11.WFUSERID  LEFT JOIN T_SRFWFUSER t21 ON t1.MINORWFUSERID = t21.WFUSERID  
+			]]>
+    </sql>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="oracle">
+       <![CDATA[	SELECT t1.BEGINTIME, t1.CREATEDATE, t1.CREATEMAN, t1.ENDTIME, t1.MAJORWFUSERID, t21.WFUSERNAME AS MAJORWFUSERNAME, t1.MEMO, t1.MINORWFUSERID, t11.WFUSERNAME AS MINORWFUSERNAME, t1.POLICYSTATE, t1.UPDATEDATE, t1.UPDATEMAN, t1.USERDATA, t1.USERDATA2, t1.VALIDFLAG, t1.WFUCPOLICYID, t1.WFUCPOLICYNAME FROM T_SRFWFUCPOLICY t1  LEFT JOIN T_SRFWFUSER t11 ON t1.MINORWFUSERID = t11.WFUSERID  LEFT JOIN T_SRFWFUSER t21 ON t1.MAJORWFUSERID = t21.WFUSERID  
+			]]>
+    </sql>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="postgresql">
+       <![CDATA[	SELECT t1.BEGINTIME AS BEGINTIME, t1.CREATEDATE AS CREATEDATE, t1.CREATEMAN AS CREATEMAN, t1.ENDTIME AS ENDTIME, t1.MAJORWFUSERID AS MAJORWFUSERID, t11.WFUSERNAME AS MAJORWFUSERNAME, t1.MEMO AS MEMO, t1.MINORWFUSERID AS MINORWFUSERID, t21.WFUSERNAME AS MINORWFUSERNAME, t1.POLICYSTATE AS POLICYSTATE, t1.UPDATEDATE AS UPDATEDATE, t1.UPDATEMAN AS UPDATEMAN, t1.USERDATA AS USERDATA, t1.USERDATA2 AS USERDATA2, t1.VALIDFLAG AS VALIDFLAG, t1.WFUCPOLICYID AS WFUCPOLICYID, t1.WFUCPOLICYNAME AS WFUCPOLICYNAME FROM T_SRFWFUCPOLICY t1  LEFT JOIN T_SRFWFUSER t11 ON t1.MAJORWFUSERID = t11.WFUSERID  LEFT JOIN T_SRFWFUSER t21 ON t1.MINORWFUSERID = t21.WFUSERID  
+			]]>
+    </sql>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="ppas">
+       <![CDATA[	SELECT t1.BEGINTIME AS BEGINTIME, t1.CREATEDATE AS CREATEDATE, t1.CREATEMAN AS CREATEMAN, t1.ENDTIME AS ENDTIME, t1.MAJORWFUSERID AS MAJORWFUSERID, t11.WFUSERNAME AS MAJORWFUSERNAME, t1.MEMO AS MEMO, t1.MINORWFUSERID AS MINORWFUSERID, t21.WFUSERNAME AS MINORWFUSERNAME, t1.POLICYSTATE AS POLICYSTATE, t1.UPDATEDATE AS UPDATEDATE, t1.UPDATEMAN AS UPDATEMAN, t1.USERDATA AS USERDATA, t1.USERDATA2 AS USERDATA2, t1.VALIDFLAG AS VALIDFLAG, t1.WFUCPOLICYID AS WFUCPOLICYID, t1.WFUCPOLICYNAME AS WFUCPOLICYNAME FROM T_SRFWFUCPOLICY t1  LEFT JOIN T_SRFWFUSER t11 ON t1.MAJORWFUSERID = t11.WFUSERID  LEFT JOIN T_SRFWFUSER t21 ON t1.MINORWFUSERID = t21.WFUSERID  
+			]]>
+    </sql>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="sqlserver">
+       <![CDATA[	SELECT t1.[BEGINTIME], t1.[CREATEDATE], t1.[CREATEMAN], t1.[ENDTIME], t1.[MAJORWFUSERID], t11.[WFUSERNAME] AS [MAJORWFUSERNAME], t1.[MEMO], t1.[MINORWFUSERID], t21.[WFUSERNAME] AS [MINORWFUSERNAME], t1.[POLICYSTATE], t1.[UPDATEDATE], t1.[UPDATEMAN], t1.[USERDATA], t1.[USERDATA2], t1.[VALIDFLAG], t1.[WFUCPOLICYID], t1.[WFUCPOLICYNAME] FROM [T_SRFWFUCPOLICY] t1  LEFT JOIN T_SRFWFUSER t11 ON t1.MAJORWFUSERID = t11.WFUSERID  LEFT JOIN T_SRFWFUSER t21 ON t1.MINORWFUSERID = t21.WFUSERID  
+			]]>
+    </sql>
+
+</mapper>
+

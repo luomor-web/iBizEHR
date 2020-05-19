@@ -1,0 +1,5 @@
+spring:
+  profiles:
+    include: sys , ehrorm-prod
+  application:
+    name: ehr-ehrorm

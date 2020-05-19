@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper	namespace="cn.ibizlab.ehr.core.wx.mapper.WXMessageMapper">
+
+    <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
+	<select id="selectById"  resultMap="WXMessageResultMap" databaseId="db2">
+        <![CDATA[select * from v_wxmessage t1     where  wxmessageid=#{id}]]>
+    </select>
+	<select id="selectById"  resultMap="WXMessageResultMap" databaseId="mysql">
+        <![CDATA[select * from v_wxmessage t1     where  wxmessageid=#{id}]]>
+    </select>
+	<select id="selectById"  resultMap="WXMessageResultMap" databaseId="oracle">
+        <![CDATA[select * from v_wxmessage t1     where  wxmessageid=#{id}]]>
+    </select>
+	<select id="selectById"  resultMap="WXMessageResultMap" databaseId="postgresql">
+        <![CDATA[select * from v_wxmessage t1     where  wxmessageid=#{id}]]>
+    </select>
+	<select id="selectById"  resultMap="WXMessageResultMap" databaseId="ppas">
+        <![CDATA[select * from v_wxmessage t1     where  wxmessageid=#{id}]]>
+    </select>
+	<select id="selectById"  resultMap="WXMessageResultMap" databaseId="sqlserver">
+        <![CDATA[select * from v_wxmessage t1     where  wxmessageid=#{id}]]>
+    </select>
+
+    <!--通过mybatis将查询结果注入到entity中,通过配置autoMapping="true"由mybatis自动处理映射关系 -->
+    <resultMap id="WXMessageResultMap" type="cn.ibizlab.ehr.core.wx.domain.WXMessage" autoMapping="true">
+        <id property="wxmessageid" column="wxmessageid" /><!--主键字段映射-->
+		<result property="locationPrec" column="location_prec" />
+		<result property="locationY" column="location_y" />
+		<result property="locationX" column="location_x" />
+		<result property="wxentappid" column="wxentappid" />
+		<result property="wxaccountid" column="wxaccountid" />
+            
+		
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="wxaccount" javaType="cn.ibizlab.ehr.core.wx.domain.WXAccount" column="wxaccountid" select="cn.ibizlab.ehr.core.wx.mapper.WXAccountMapper.selectById" fetchType="lazy"></association>
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="wxentapp" javaType="cn.ibizlab.ehr.core.wx.domain.WXEntApp" column="wxentappid" select="cn.ibizlab.ehr.core.wx.mapper.WXEntAppMapper.selectById" fetchType="lazy"></association>
+    </resultMap>
+
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_WXMESSAGE_WXACCOUNT_WXACCOUNTID] -->
+	 <select id="selectByWxaccountid" resultMap="WXMessageResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  wxaccountid=#{wxaccountid}
+     </select>
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_WXMESSAGE_WXENTAPP_WXENTAPPID] -->
+	 <select id="selectByWxentappid" resultMap="WXMessageResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  wxentappid=#{wxentappid}
+     </select>
+
+    <!--数据集合[Default]-->
+	 <select id="searchDefault"  parameterType="cn.ibizlab.ehr.core.wx.filter.WXMessageSearchContext"  resultMap="WXMessageResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="db2">
+       <![CDATA[	SELECT t1.CNT, t1.CONTENT, t1.CREATEDATE, t1.CREATEMAN, t1.EVENT, t1.EVENTKEY, t1.FORMAT, t1.FROMUSERNAME, t1.INCOMETIME, t1.LOCATION_PREC, t1.LOCATION_X, t1.LOCATION_Y, t1.MEDIAID, t1.MSGTYPE, t1.PICURL, t1.RESERVER, t1.RESERVER2, t1.RESERVER3, t1.RESERVER4, t1.RESPARTICLECOUNT, t1.RESPDESC, t1.RESPMEDIAID, t1.RESPMSGTYPE, t1.RESPTIME, t1.RESPTITLE, t1.RESULT, t1.SCALE, t1.SCANCODEINFO, t1.SCANTYPE, t1.THUMBMEDIAID, t1.TOUSERNAME, t1.UPDATEDATE, t1.UPDATEMAN, t1.WXACCOUNTID, t1.WXACCOUNTNAME, t1.WXENTAPPID, t1.WXENTAPPNAME, t1.WXMESSAGEID, t1.WXMESSAGENAME FROM T_SRFWXMESSAGE t1
+			]]>
+    </sql>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="mysql">
+       <![CDATA[	SELECT t1.`CNT`, t1.`CONTENT`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`EVENT`, t1.`EVENTKEY`, t1.`FORMAT`, t1.`FROMUSERNAME`, t1.`INCOMETIME`, t1.`LOCATION_PREC`, t1.`LOCATION_X`, t1.`LOCATION_Y`, t1.`MEDIAID`, t1.`MSGTYPE`, t1.`PICURL`, t1.`RESERVER`, t1.`RESERVER2`, t1.`RESERVER3`, t1.`RESERVER4`, t1.`RESPARTICLECOUNT`, t1.`RESPDESC`, t1.`RESPMEDIAID`, t1.`RESPMSGTYPE`, t1.`RESPTIME`, t1.`RESPTITLE`, t1.`RESULT`, t1.`SCALE`, t1.`SCANCODEINFO`, t1.`SCANTYPE`, t1.`THUMBMEDIAID`, t1.`TOUSERNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`WXACCOUNTID`, t1.`WXACCOUNTNAME`, t1.`WXENTAPPID`, t1.`WXENTAPPNAME`, t1.`WXMESSAGEID`, t1.`WXMESSAGENAME` FROM `T_SRFWXMESSAGE` t1
+			]]>
+    </sql>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="oracle">
+       <![CDATA[	SELECT t1.CNT, t1.CONTENT, t1.CREATEDATE, t1.CREATEMAN, t1.EVENT, t1.EVENTKEY, t1.FORMAT, t1.FROMUSERNAME, t1.INCOMETIME, t1.LOCATION_PREC, t1.LOCATION_X, t1.LOCATION_Y, t1.MEDIAID, t1.MSGTYPE, t1.PICURL, t1.RESERVER, t1.RESERVER2, t1.RESERVER3, t1.RESERVER4, t1.RESPARTICLECOUNT, t1.RESPDESC, t1.RESPMEDIAID, t1.RESPMSGTYPE, t1.RESPTIME, t1.RESPTITLE, t1.RESULT, t1.SCALE, t1.SCANCODEINFO, t1.SCANTYPE, t1.THUMBMEDIAID, t1.TOUSERNAME, t1.UPDATEDATE, t1.UPDATEMAN, t1.WXACCOUNTID, t1.WXACCOUNTNAME, t1.WXENTAPPID, t1.WXENTAPPNAME, t1.WXMESSAGEID, t1.WXMESSAGENAME FROM T_SRFWXMESSAGE t1
+			]]>
+    </sql>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="postgresql">
+       <![CDATA[	SELECT t1.CNT, t1.CONTENT, t1.CREATEDATE, t1.CREATEMAN, t1.EVENT, t1.EVENTKEY, t1.FORMAT, t1.FROMUSERNAME, t1.INCOMETIME, t1.LOCATION_PREC, t1.LOCATION_X, t1.LOCATION_Y, t1.MEDIAID, t1.MSGTYPE, t1.PICURL, t1.RESERVER, t1.RESERVER2, t1.RESERVER3, t1.RESERVER4, t1.RESPARTICLECOUNT, t1.RESPDESC, t1.RESPMEDIAID, t1.RESPMSGTYPE, t1.RESPTIME, t1.RESPTITLE, t1.RESULT, t1.SCALE, t1.SCANCODEINFO, t1.SCANTYPE, t1.THUMBMEDIAID, t1.TOUSERNAME, t1.UPDATEDATE, t1.UPDATEMAN, t1.WXACCOUNTID, t1.WXACCOUNTNAME, t1.WXENTAPPID, t1.WXENTAPPNAME, t1.WXMESSAGEID, t1.WXMESSAGENAME FROM T_SRFWXMESSAGE t1
+			]]>
+    </sql>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="ppas">
+       <![CDATA[	SELECT t1.CNT, t1.CONTENT, t1.CREATEDATE, t1.CREATEMAN, t1.EVENT, t1.EVENTKEY, t1.FORMAT, t1.FROMUSERNAME, t1.INCOMETIME, t1.LOCATION_PREC, t1.LOCATION_X, t1.LOCATION_Y, t1.MEDIAID, t1.MSGTYPE, t1.PICURL, t1.RESERVER, t1.RESERVER2, t1.RESERVER3, t1.RESERVER4, t1.RESPARTICLECOUNT, t1.RESPDESC, t1.RESPMEDIAID, t1.RESPMSGTYPE, t1.RESPTIME, t1.RESPTITLE, t1.RESULT, t1.SCALE, t1.SCANCODEINFO, t1.SCANTYPE, t1.THUMBMEDIAID, t1.TOUSERNAME, t1.UPDATEDATE, t1.UPDATEMAN, t1.WXACCOUNTID, t1.WXACCOUNTNAME, t1.WXENTAPPID, t1.WXENTAPPNAME, t1.WXMESSAGEID, t1.WXMESSAGENAME FROM T_SRFWXMESSAGE t1
+			]]>
+    </sql>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="sqlserver">
+       <![CDATA[	SELECT t1.[CNT], t1.[CONTENT], t1.[CREATEDATE], t1.[CREATEMAN], t1.[EVENT], t1.[EVENTKEY], t1.[FORMAT], t1.[FROMUSERNAME], t1.[INCOMETIME], t1.[LOCATION_PREC], t1.[LOCATION_X], t1.[LOCATION_Y], t1.[MEDIAID], t1.[MSGTYPE], t1.[PICURL], t1.[RESERVER], t1.[RESERVER2], t1.[RESERVER3], t1.[RESERVER4], t1.[RESPARTICLECOUNT], t1.[RESPDESC], t1.[RESPMEDIAID], t1.[RESPMSGTYPE], t1.[RESPTIME], t1.[RESPTITLE], t1.[RESULT], t1.[SCALE], t1.[SCANCODEINFO], t1.[SCANTYPE], t1.[THUMBMEDIAID], t1.[TOUSERNAME], t1.[UPDATEDATE], t1.[UPDATEMAN], t1.[WXACCOUNTID], t1.[WXACCOUNTNAME], t1.[WXENTAPPID], t1.[WXENTAPPNAME], t1.[WXMESSAGEID], t1.[WXMESSAGENAME] FROM [T_SRFWXMESSAGE] t1
+			]]>
+    </sql>
+
+</mapper>
+

@@ -1,0 +1,19 @@
+server:
+  port: 8080
+#zuul网关路由设置
+zuul:
+  routes:
+    pcmeducationexperience:
+      path: /pcmeducationexperiences/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pcmprofile:
+      path: /pcmprofiles/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pcmcertofreg:
+      path: /pcmcertofregs/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+  sensitive-headers:
+    - Cookie,Set-Cookie,Authorization

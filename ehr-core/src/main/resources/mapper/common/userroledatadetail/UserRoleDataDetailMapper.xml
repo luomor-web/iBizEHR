@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper	namespace="cn.ibizlab.ehr.core.common.mapper.UserRoleDataDetailMapper">
+
+    <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
+	<select id="selectById"  resultMap="UserRoleDataDetailResultMap" databaseId="db2">
+        <![CDATA[select * from v_userroledatadetail t1     where  userroledatadetailid=#{id}]]>
+    </select>
+	<select id="selectById"  resultMap="UserRoleDataDetailResultMap" databaseId="mysql">
+        <![CDATA[select * from v_userroledatadetail t1     where  userroledatadetailid=#{id}]]>
+    </select>
+	<select id="selectById"  resultMap="UserRoleDataDetailResultMap" databaseId="oracle">
+        <![CDATA[select * from v_userroledatadetail t1     where  userroledatadetailid=#{id}]]>
+    </select>
+	<select id="selectById"  resultMap="UserRoleDataDetailResultMap" databaseId="postgresql">
+        <![CDATA[select * from v_userroledatadetail t1     where  userroledatadetailid=#{id}]]>
+    </select>
+	<select id="selectById"  resultMap="UserRoleDataDetailResultMap" databaseId="ppas">
+        <![CDATA[select * from v_userroledatadetail t1     where  userroledatadetailid=#{id}]]>
+    </select>
+	<select id="selectById"  resultMap="UserRoleDataDetailResultMap" databaseId="sqlserver">
+        <![CDATA[select * from v_userroledatadetail t1     where  userroledatadetailid=#{id}]]>
+    </select>
+
+    <!--通过mybatis将查询结果注入到entity中,通过配置autoMapping="true"由mybatis自动处理映射关系 -->
+    <resultMap id="UserRoleDataDetailResultMap" type="cn.ibizlab.ehr.core.common.domain.UserRoleDataDetail" autoMapping="true">
+        <id property="userroledatadetailid" column="userroledatadetailid" /><!--主键字段映射-->
+		<result property="userroledataid" column="userroledataid" />
+		<result property="querymodelid" column="querymodelid" />
+            
+		
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="querymodel" javaType="cn.ibizlab.ehr.core.demodel.domain.QueryModel" column="querymodelid" select="cn.ibizlab.ehr.core.demodel.mapper.QueryModelMapper.selectById" fetchType="lazy"></association>
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="userroledata" javaType="cn.ibizlab.ehr.core.common.domain.UserRoleData" column="userroledataid" select="cn.ibizlab.ehr.core.common.mapper.UserRoleDataMapper.selectById" fetchType="lazy"></association>
+    </resultMap>
+
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_USERROLEDATADETAIL_QUERYMODEL_QUERYMODELID] -->
+	 <select id="selectByQuerymodelid" resultMap="UserRoleDataDetailResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  querymodelid=#{querymodelid}
+     </select>
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_USERROLEDATADETAIL_USERROLEDATA_USERROLEDATAID] -->
+	 <select id="selectByUserroledataid" resultMap="UserRoleDataDetailResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  userroledataid=#{userroledataid}
+     </select>
+
+    <!--数据集合[Default]-->
+	 <select id="searchDefault"  parameterType="cn.ibizlab.ehr.core.common.filter.UserRoleDataDetailSearchContext"  resultMap="UserRoleDataDetailResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="db2">
+       <![CDATA[	SELECT t1.CREATEDATE, t1.CREATEMAN, t1.ISEXCLUDE, t1.MEMO, t1.QUERYMODELID, t11.QUERYMODELNAME, t1.RESERVER, t1.RESERVER2, t1.RESERVER3, t1.RESERVER4, t1.UPDATEDATE, t1.UPDATEMAN, t1.USERROLEDATADETAILID, t1.USERROLEDATADETAILNAME, t1.USERROLEDATAID, t21.USERROLEDATANAME FROM T_SRFUSERROLEDATADETAIL t1  LEFT JOIN T_SRFQUERYMODEL t11 ON t1.QUERYMODELID = t11.QUERYMODELID  LEFT JOIN T_SRFUSERROLEDATA t21 ON t1.USERROLEDATAID = t21.USERROLEDATAID  
+			]]>
+    </sql>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="mysql">
+       <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ISEXCLUDE`, t1.`MEMO`, t1.`QUERYMODELID`, t11.`QUERYMODELNAME`, t1.`RESERVER`, t1.`RESERVER2`, t1.`RESERVER3`, t1.`RESERVER4`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`USERROLEDATADETAILID`, t1.`USERROLEDATADETAILNAME`, t1.`USERROLEDATAID`, t21.`USERROLEDATANAME` FROM `T_SRFUSERROLEDATADETAIL` t1  LEFT JOIN T_SRFQUERYMODEL t11 ON t1.QUERYMODELID = t11.QUERYMODELID  LEFT JOIN T_SRFUSERROLEDATA t21 ON t1.USERROLEDATAID = t21.USERROLEDATAID  
+			]]>
+    </sql>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="oracle">
+       <![CDATA[	SELECT t1.CREATEDATE, t1.CREATEMAN, t1.ISEXCLUDE, t1.MEMO, t1.QUERYMODELID, t21.QUERYMODELNAME, t1.RESERVER, t1.RESERVER2, t1.RESERVER3, t1.RESERVER4, t1.UPDATEDATE, t1.UPDATEMAN, t1.USERROLEDATADETAILID, t1.USERROLEDATADETAILNAME, t1.USERROLEDATAID, t11.USERROLEDATANAME FROM T_SRFUSERROLEDATADETAIL t1  LEFT JOIN T_SRFUSERROLEDATA t11 ON t1.USERROLEDATAID = t11.USERROLEDATAID  LEFT JOIN T_SRFQUERYMODEL t21 ON t1.QUERYMODELID = t21.QUERYMODELID  
+			]]>
+    </sql>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="postgresql">
+       <![CDATA[	SELECT t1.CREATEDATE AS CREATEDATE, t1.CREATEMAN AS CREATEMAN, t1.ISEXCLUDE AS ISEXCLUDE, t1.MEMO AS MEMO, t1.QUERYMODELID AS QUERYMODELID, t11.QUERYMODELNAME AS QUERYMODELNAME, t1.RESERVER AS RESERVER, t1.RESERVER2 AS RESERVER2, t1.RESERVER3 AS RESERVER3, t1.RESERVER4 AS RESERVER4, t1.UPDATEDATE AS UPDATEDATE, t1.UPDATEMAN AS UPDATEMAN, t1.USERROLEDATADETAILID AS USERROLEDATADETAILID, t1.USERROLEDATADETAILNAME AS USERROLEDATADETAILNAME, t1.USERROLEDATAID AS USERROLEDATAID, t21.USERROLEDATANAME AS USERROLEDATANAME FROM T_SRFUSERROLEDATADETAIL t1  LEFT JOIN T_SRFQUERYMODEL t11 ON t1.QUERYMODELID = t11.QUERYMODELID  LEFT JOIN T_SRFUSERROLEDATA t21 ON t1.USERROLEDATAID = t21.USERROLEDATAID  
+			]]>
+    </sql>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="ppas">
+       <![CDATA[	SELECT t1.CREATEDATE AS CREATEDATE, t1.CREATEMAN AS CREATEMAN, t1.ISEXCLUDE AS ISEXCLUDE, t1.MEMO AS MEMO, t1.QUERYMODELID AS QUERYMODELID, t11.QUERYMODELNAME AS QUERYMODELNAME, t1.RESERVER AS RESERVER, t1.RESERVER2 AS RESERVER2, t1.RESERVER3 AS RESERVER3, t1.RESERVER4 AS RESERVER4, t1.UPDATEDATE AS UPDATEDATE, t1.UPDATEMAN AS UPDATEMAN, t1.USERROLEDATADETAILID AS USERROLEDATADETAILID, t1.USERROLEDATADETAILNAME AS USERROLEDATADETAILNAME, t1.USERROLEDATAID AS USERROLEDATAID, t21.USERROLEDATANAME AS USERROLEDATANAME FROM T_SRFUSERROLEDATADETAIL t1  LEFT JOIN T_SRFQUERYMODEL t11 ON t1.QUERYMODELID = t11.QUERYMODELID  LEFT JOIN T_SRFUSERROLEDATA t21 ON t1.USERROLEDATAID = t21.USERROLEDATAID  
+			]]>
+    </sql>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="sqlserver">
+       <![CDATA[	SELECT t1.[CREATEDATE], t1.[CREATEMAN], t1.[ISEXCLUDE], t1.[MEMO], t1.[QUERYMODELID], t11.[QUERYMODELNAME], t1.[RESERVER], t1.[RESERVER2], t1.[RESERVER3], t1.[RESERVER4], t1.[UPDATEDATE], t1.[UPDATEMAN], t1.[USERROLEDATADETAILID], t1.[USERROLEDATADETAILNAME], t1.[USERROLEDATAID], t21.[USERROLEDATANAME] FROM [T_SRFUSERROLEDATADETAIL] t1  LEFT JOIN T_SRFQUERYMODEL t11 ON t1.QUERYMODELID = t11.QUERYMODELID  LEFT JOIN T_SRFUSERROLEDATA t21 ON t1.USERROLEDATAID = t21.USERROLEDATAID  
+			]]>
+    </sql>
+
+</mapper>
+

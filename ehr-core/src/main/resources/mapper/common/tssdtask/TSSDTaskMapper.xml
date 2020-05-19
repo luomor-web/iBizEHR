@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper	namespace="cn.ibizlab.ehr.core.common.mapper.TSSDTaskMapper">
+
+    <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
+	<select id="selectById"  resultMap="TSSDTaskResultMap" databaseId="db2">
+        <![CDATA[select * from v_tssdtask t1     where  tssdtaskid=#{id}]]>
+    </select>
+	<select id="selectById"  resultMap="TSSDTaskResultMap" databaseId="mysql">
+        <![CDATA[select * from v_tssdtask t1     where  tssdtaskid=#{id}]]>
+    </select>
+	<select id="selectById"  resultMap="TSSDTaskResultMap" databaseId="oracle">
+        <![CDATA[select * from v_tssdtask t1     where  tssdtaskid=#{id}]]>
+    </select>
+	<select id="selectById"  resultMap="TSSDTaskResultMap" databaseId="postgresql">
+        <![CDATA[select * from v_tssdtask t1     where  tssdtaskid=#{id}]]>
+    </select>
+	<select id="selectById"  resultMap="TSSDTaskResultMap" databaseId="ppas">
+        <![CDATA[select * from v_tssdtask t1     where  tssdtaskid=#{id}]]>
+    </select>
+	<select id="selectById"  resultMap="TSSDTaskResultMap" databaseId="sqlserver">
+        <![CDATA[select * from v_tssdtask t1     where  tssdtaskid=#{id}]]>
+    </select>
+
+    <!--通过mybatis将查询结果注入到entity中,通过配置autoMapping="true"由mybatis自动处理映射关系 -->
+    <resultMap id="TSSDTaskResultMap" type="cn.ibizlab.ehr.core.common.domain.TSSDTask" autoMapping="true">
+        <id property="tssdtaskid" column="tssdtaskid" /><!--主键字段映射-->
+		<result property="tssdengineid" column="tssdengineid" />
+            
+		
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="tssdengine" javaType="cn.ibizlab.ehr.core.common.domain.TSSDEngine" column="tssdengineid" select="cn.ibizlab.ehr.core.common.mapper.TSSDEngineMapper.selectById" fetchType="lazy"></association>
+    </resultMap>
+
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_TSSDTASK_TSSDENGINE_TSSDENGINEID] -->
+	 <select id="selectByTssdengineid" resultMap="TSSDTaskResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  tssdengineid=#{tssdengineid}
+     </select>
+
+    <!--数据集合[Default]-->
+	 <select id="searchDefault"  parameterType="cn.ibizlab.ehr.core.common.filter.TSSDTaskSearchContext"  resultMap="TSSDTaskResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="db2">
+       <![CDATA[	SELECT t1.CREATEDATE, t1.CREATEMAN, t1.ENABLEFLAG, t1.TSSDENGINEID, t11.TSSDENGINENAME, t1.TSSDTASKID, t1.TSSDTASKNAME, t1.UPDATEDATE, t1.UPDATEMAN, t1.USERDATA, t1.USERDATA2, t1.USERDATA3, t1.USERDATA4, t1.VERSION FROM T_SRFTSSDTASK t1  LEFT JOIN T_SRFTSSDENGINE t11 ON t1.TSSDENGINEID = t11.TSSDENGINEID  
+			]]>
+    </sql>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="mysql">
+       <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLEFLAG`, t1.`TSSDENGINEID`, t11.`TSSDENGINENAME`, t1.`TSSDTASKID`, t1.`TSSDTASKNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`USERDATA`, t1.`USERDATA2`, t1.`USERDATA3`, t1.`USERDATA4`, t1.`VERSION` FROM `T_SRFTSSDTASK` t1  LEFT JOIN T_SRFTSSDENGINE t11 ON t1.TSSDENGINEID = t11.TSSDENGINEID  
+			]]>
+    </sql>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="oracle">
+       <![CDATA[	SELECT t1.CREATEDATE, t1.CREATEMAN, t1.ENABLEFLAG, t1.TSSDENGINEID, t11.TSSDENGINENAME, t1.TSSDTASKID, t1.TSSDTASKNAME, t1.UPDATEDATE, t1.UPDATEMAN, t1.USERDATA, t1.USERDATA2, t1.USERDATA3, t1.USERDATA4, t1.VERSION FROM T_SRFTSSDTASK t1  LEFT JOIN T_SRFTSSDENGINE t11 ON t1.TSSDENGINEID = t11.TSSDENGINEID  
+			]]>
+    </sql>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="postgresql">
+       <![CDATA[	SELECT t1.CREATEDATE AS CREATEDATE, t1.CREATEMAN AS CREATEMAN, t1.ENABLEFLAG AS ENABLEFLAG, t1.TSSDENGINEID AS TSSDENGINEID, t11.TSSDENGINENAME AS TSSDENGINENAME, t1.TSSDTASKID AS TSSDTASKID, t1.TSSDTASKNAME AS TSSDTASKNAME, t1.UPDATEDATE AS UPDATEDATE, t1.UPDATEMAN AS UPDATEMAN, t1.USERDATA AS USERDATA, t1.USERDATA2 AS USERDATA2, t1.USERDATA3 AS USERDATA3, t1.USERDATA4 AS USERDATA4, t1.VERSION AS VERSION FROM T_SRFTSSDTASK t1  LEFT JOIN T_SRFTSSDENGINE t11 ON t1.TSSDENGINEID = t11.TSSDENGINEID  
+			]]>
+    </sql>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="ppas">
+       <![CDATA[	SELECT t1.CREATEDATE AS CREATEDATE, t1.CREATEMAN AS CREATEMAN, t1.ENABLEFLAG AS ENABLEFLAG, t1.TSSDENGINEID AS TSSDENGINEID, t11.TSSDENGINENAME AS TSSDENGINENAME, t1.TSSDTASKID AS TSSDTASKID, t1.TSSDTASKNAME AS TSSDTASKNAME, t1.UPDATEDATE AS UPDATEDATE, t1.UPDATEMAN AS UPDATEMAN, t1.USERDATA AS USERDATA, t1.USERDATA2 AS USERDATA2, t1.USERDATA3 AS USERDATA3, t1.USERDATA4 AS USERDATA4, t1.VERSION AS VERSION FROM T_SRFTSSDTASK t1  LEFT JOIN T_SRFTSSDENGINE t11 ON t1.TSSDENGINEID = t11.TSSDENGINEID  
+			]]>
+    </sql>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="sqlserver">
+       <![CDATA[	SELECT t1.[CREATEDATE], t1.[CREATEMAN], t1.[ENABLEFLAG], t1.[TSSDENGINEID], t11.[TSSDENGINENAME], t1.[TSSDTASKID], t1.[TSSDTASKNAME], t1.[UPDATEDATE], t1.[UPDATEMAN], t1.[USERDATA], t1.[USERDATA2], t1.[USERDATA3], t1.[USERDATA4], t1.[VERSION] FROM [T_SRFTSSDTASK] t1  LEFT JOIN T_SRFTSSDENGINE t11 ON t1.TSSDENGINEID = t11.TSSDENGINEID  
+			]]>
+    </sql>
+
+</mapper>
+
