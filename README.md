@@ -83,7 +83,7 @@ iBizEHR划分为六大模块:
 * 员工首页
 ![输入图片说明](https://images.gitee.com/uploads/images/2020/0513/151506_91ff6a43_1181347.png "员工首页.png")
 * 档案信息
-![输入图片说明](https://images.gitee.com/uploads/images/2020/0513/151507_1fc4470c_1181347.png "档案信息.png")
+![输入图片说明](https://images.gitee.com/uploads/images/2020/0519/094414_07422bdb_7370452.png "档案信息.png")
 
 
 # 捐赠
