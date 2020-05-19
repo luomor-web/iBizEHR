@@ -1,7 +1,0 @@
-spring:
-  profiles:
-    include: sys , ehrhelp-dev,ehr-dev,ehrpcm2-dev,ehrmob-dev,ehrpcm-dev,ehrorm-dev,ehrweb-dev,ehrapp-dev,web-dev,ehrpim-dev,  saasadmin-dev,parttimeperson-dev,wfcallback-dev,specialrole-dev,webapi-dev,  dev
-  application:
-    name: ehr
-  main:
-    allow-bean-definition-overriding: true
