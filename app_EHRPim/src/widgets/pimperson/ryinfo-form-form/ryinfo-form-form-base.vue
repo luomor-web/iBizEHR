@@ -103,15 +103,15 @@
 <div v-show="detailsModel.grouppanel8.visible">
     <app-form-group layoutType="TABLE_12COL" titleStyle="" class='' uiActionGroup="detailsModel.grouppanel8.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.pimperson.ryinfoform_form.details.grouppanel8')" :isShowCaption="false" uiStyle="DEFAULT" :titleBarCloseMode="0" :isInfoGroupMode="false" >    
     <row>
-        <i-col v-show="detailsModel.lxdh.visible" :style="{}"  :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
-    <app-form-item name='lxdh' :itemRules="this.rules.lxdh" class='' :caption="$t('entities.pimperson.ryinfoform_form.details.lxdh')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.lxdh.error" :isEmptyCaption="false" labelPos="LEFT">
-    <input-box v-model="data.lxdh"  @enter="onEnter($event)"   unit=""  :disabled="detailsModel.lxdh.disabled" type='text'  style=""></input-box>
+        <i-col v-show="detailsModel.dzyx.visible" :style="{}"  :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
+    <app-form-item name='dzyx' :itemRules="this.rules.dzyx" class='' :caption="$t('entities.pimperson.ryinfoform_form.details.dzyx')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.dzyx.error" :isEmptyCaption="false" labelPos="LEFT">
+    <input-box v-model="data.dzyx"  @enter="onEnter($event)"   unit=""  :disabled="detailsModel.dzyx.disabled" type='text'  style=""></input-box>
 </app-form-item>
 
 </i-col>
-<i-col v-show="detailsModel.dzyx.visible" :style="{}"  :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
-    <app-form-item name='dzyx' :itemRules="this.rules.dzyx" class='' :caption="$t('entities.pimperson.ryinfoform_form.details.dzyx')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.dzyx.error" :isEmptyCaption="false" labelPos="LEFT">
-    <input-box v-model="data.dzyx"  @enter="onEnter($event)"   unit=""  :disabled="detailsModel.dzyx.disabled" type='text'  style=""></input-box>
+<i-col v-show="detailsModel.lxdh.visible" :style="{}"  :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
+    <app-form-item name='lxdh' :itemRules="this.rules.lxdh" class='' :caption="$t('entities.pimperson.ryinfoform_form.details.lxdh')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.lxdh.error" :isEmptyCaption="false" labelPos="LEFT">
+    <input-box v-model="data.lxdh"  @enter="onEnter($event)"   unit=""  :disabled="detailsModel.lxdh.disabled" type='text'  style=""></input-box>
 </app-form-item>
 
 </i-col>
@@ -822,8 +822,8 @@ export default class RYInfoFormBase extends Vue implements ControlInterface {
         nj: null,
         xx: null,
         zp: null,
-        lxdh: null,
         dzyx: null,
+        lxdh: null,
         hyzk: null,
         mz: null,
         hklx: null,
@@ -1064,17 +1064,17 @@ export default class RYInfoFormBase extends Vue implements ControlInterface {
             { required: false, type: 'string', message: '照片 值不能为空', trigger: 'change' },
             { required: false, type: 'string', message: '照片 值不能为空', trigger: 'blur' },
         ],
-        lxdh: [
-            { type: 'string', message: '手机号码 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '手机号码 值必须为字符串类型', trigger: 'blur' },
-            { required: true, type: 'string', message: '手机号码 值不能为空', trigger: 'change' },
-            { required: true, type: 'string', message: '手机号码 值不能为空', trigger: 'blur' },
-        ],
         dzyx: [
             { type: 'string', message: '电子邮箱 值必须为字符串类型', trigger: 'change' },
             { type: 'string', message: '电子邮箱 值必须为字符串类型', trigger: 'blur' },
             { required: false, type: 'string', message: '电子邮箱 值不能为空', trigger: 'change' },
             { required: false, type: 'string', message: '电子邮箱 值不能为空', trigger: 'blur' },
+        ],
+        lxdh: [
+            { type: 'string', message: '手机号码 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '手机号码 值必须为字符串类型', trigger: 'blur' },
+            { required: true, type: 'string', message: '手机号码 值不能为空', trigger: 'change' },
+            { required: true, type: 'string', message: '手机号码 值不能为空', trigger: 'blur' },
         ],
         hyzk: [
             { type: 'string', message: '婚姻状况 值必须为字符串类型', trigger: 'change' },
@@ -1445,9 +1445,9 @@ export default class RYInfoFormBase extends Vue implements ControlInterface {
 , 
         zp: new FormItemModel({ caption: '照片', detailType: 'FORMITEM', name: 'zp', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
-        lxdh: new FormItemModel({ caption: '手机号码', detailType: 'FORMITEM', name: 'lxdh', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
-, 
         dzyx: new FormItemModel({ caption: '电子邮箱', detailType: 'FORMITEM', name: 'dzyx', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+, 
+        lxdh: new FormItemModel({ caption: '手机号码', detailType: 'FORMITEM', name: 'lxdh', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
         hyzk: new FormItemModel({ caption: '婚姻状况', detailType: 'FORMITEM', name: 'hyzk', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
@@ -1848,18 +1848,6 @@ export default class RYInfoFormBase extends Vue implements ControlInterface {
     }
 
     /**
-     * 监控表单属性 lxdh 值
-     *
-     * @param {*} newVal
-     * @param {*} oldVal
-     * @memberof RYInfoForm
-     */
-    @Watch('data.lxdh')
-    onLxdhChange(newVal: any, oldVal: any) {
-        this.formDataChange({ name: 'lxdh', newVal: newVal, oldVal: oldVal });
-    }
-
-    /**
      * 监控表单属性 dzyx 值
      *
      * @param {*} newVal
@@ -1869,6 +1857,18 @@ export default class RYInfoFormBase extends Vue implements ControlInterface {
     @Watch('data.dzyx')
     onDzyxChange(newVal: any, oldVal: any) {
         this.formDataChange({ name: 'dzyx', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 lxdh 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof RYInfoForm
+     */
+    @Watch('data.lxdh')
+    onLxdhChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'lxdh', newVal: newVal, oldVal: oldVal });
     }
 
     /**

@@ -95,19 +95,19 @@
                     </template>
                 </el-table-column>
             </template>
-            <template v-if="getColumnState('lxdh')">
-                <el-table-column show-overflow-tooltip :prop="'lxdh'" :label="$t('entities.pimperson.main_grid.columns.lxdh')" :width="150" :align="'left'" :sortable="'custom'">
-                    <template v-slot="{row,column}">
-                        <span>{{row.lxdh}}</span>
-                    </template>
-                </el-table-column>
-            </template>
             <template v-if="getColumnState('ygzt')">
                 <el-table-column show-overflow-tooltip :prop="'ygzt'" :label="$t('entities.pimperson.main_grid.columns.ygzt')" :width="120" :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
             <codelist :value="row.ygzt" tag='PIMCL_YGZT' codelistType='DYNAMIC' ></codelist>
                         </template>
+                    </template>
+                </el-table-column>
+            </template>
+            <template v-if="getColumnState('lxdh')">
+                <el-table-column show-overflow-tooltip :prop="'lxdh'" :label="$t('entities.pimperson.main_grid.columns.lxdh')" :width="150" :align="'left'" :sortable="'custom'">
+                    <template v-slot="{row,column}">
+                        <span>{{row.lxdh}}</span>
                     </template>
                 </el-table-column>
             </template>
@@ -636,18 +636,18 @@ export default class MainBase extends Vue implements ControlInterface {
             util: 'PX'
         },
         {
-            name: 'lxdh',
-            label: '手机号码',
-            langtag: 'entities.pimperson.main_grid.columns.lxdh',
-            show: true,
-            util: 'px'
-        },
-        {
             name: 'ygzt',
             label: '员工状态',
             langtag: 'entities.pimperson.main_grid.columns.ygzt',
             show: true,
             util: 'PX'
+        },
+        {
+            name: 'lxdh',
+            label: '手机号码',
+            langtag: 'entities.pimperson.main_grid.columns.lxdh',
+            show: true,
+            util: 'px'
         },
     ]
 
