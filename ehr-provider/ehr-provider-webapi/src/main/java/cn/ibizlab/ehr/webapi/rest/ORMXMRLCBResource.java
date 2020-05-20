@@ -76,7 +76,7 @@ public class ORMXMRLCBResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#ormxmrlcb_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#ormxmrlcb_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"ORMXMRLCB" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/ormxmrlcbs/{ormxmrlcb_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class ORMXMRLCBResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMXMRLCB-CBCX-all')")
 	@ApiOperation(value = "fetch项目人工成本查询", tags = {"ORMXMRLCB" } ,notes = "fetch项目人工成本查询")
     @RequestMapping(method= RequestMethod.GET , value="/ormxmrlcbs/fetchcbcx")
 	public ResponseEntity<List<ORMXMRLCBDTO>> fetchCBCX(ORMXMRLCBSearchContext context) {
@@ -172,6 +173,7 @@ public class ORMXMRLCBResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMXMRLCB-CBCX-all')")
 	@ApiOperation(value = "search项目人工成本查询", tags = {"ORMXMRLCB" } ,notes = "search项目人工成本查询")
     @RequestMapping(method= RequestMethod.POST , value="/ormxmrlcbs/searchcbcx")
 	public ResponseEntity<Page<ORMXMRLCBDTO>> searchCBCX(@RequestBody ORMXMRLCBSearchContext context) {
@@ -180,6 +182,7 @@ public class ORMXMRLCBResource {
                 .body(new PageImpl(ormxmrlcbMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMXMRLCB-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"ORMXMRLCB" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/ormxmrlcbs/fetchdefault")
 	public ResponseEntity<List<ORMXMRLCBDTO>> fetchDefault(ORMXMRLCBSearchContext context) {
@@ -192,6 +195,7 @@ public class ORMXMRLCBResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMXMRLCB-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"ORMXMRLCB" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/ormxmrlcbs/searchdefault")
 	public ResponseEntity<Page<ORMXMRLCBDTO>> searchDefault(@RequestBody ORMXMRLCBSearchContext context) {

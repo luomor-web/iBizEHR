@@ -64,7 +64,7 @@
          )t1
          <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
          <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
-		 )
+		 ) groupinfo
 		 group by countnum,orgid
      </select>
 
@@ -130,7 +130,7 @@
          )t1
          <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
          <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
-		 )
+		 ) groupinfo
 		 group by orgname,countnum
      </select>
 

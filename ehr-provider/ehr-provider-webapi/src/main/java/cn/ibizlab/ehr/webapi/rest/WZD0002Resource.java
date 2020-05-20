@@ -55,7 +55,7 @@ public class WZD0002Resource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#wzd0002_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#wzd0002_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"WZD0002" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/wzd0002s/{wzd0002_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class WZD0002Resource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WZD0002-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"WZD0002" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/wzd0002s/fetchdefault")
 	public ResponseEntity<List<WZD0002DTO>> fetchDefault(WZD0002SearchContext context) {
@@ -172,6 +173,7 @@ public class WZD0002Resource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WZD0002-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"WZD0002" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/wzd0002s/searchdefault")
 	public ResponseEntity<Page<WZD0002DTO>> searchDefault(@RequestBody WZD0002SearchContext context) {

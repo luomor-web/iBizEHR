@@ -76,7 +76,7 @@ public class VACSYSTEMAPPLICATIONResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#vacsystemapplication_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#vacsystemapplication_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"VACSYSTEMAPPLICATION" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/vacsystemapplications/{vacsystemapplication_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class VACSYSTEMAPPLICATIONResource {
         return  ResponseEntity.status(HttpStatus.OK).body(vacsystemapplicationService.checkKey(vacsystemapplicationMapping.toDomain(vacsystemapplicationdto)));
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACSYSTEMAPPLICATION-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"VACSYSTEMAPPLICATION" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/vacsystemapplications/fetchdefault")
 	public ResponseEntity<List<VACSYSTEMAPPLICATIONDTO>> fetchDefault(VACSYSTEMAPPLICATIONSearchContext context) {
@@ -172,6 +173,7 @@ public class VACSYSTEMAPPLICATIONResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACSYSTEMAPPLICATION-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"VACSYSTEMAPPLICATION" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/vacsystemapplications/searchdefault")
 	public ResponseEntity<Page<VACSYSTEMAPPLICATIONDTO>> searchDefault(@RequestBody VACSYSTEMAPPLICATIONSearchContext context) {

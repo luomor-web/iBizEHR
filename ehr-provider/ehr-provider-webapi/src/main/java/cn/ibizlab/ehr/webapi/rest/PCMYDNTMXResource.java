@@ -122,7 +122,7 @@ public class PCMYDNTMXResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#pcmydntmx_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#pcmydntmx_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"PCMYDNTMX" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmydntmxes/{pcmydntmx_id}")
     @Transactional
@@ -186,6 +186,7 @@ public class PCMYDNTMXResource {
         return ResponseEntity.status(HttpStatus.OK).body(pcmydntmxdto);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMYDNTMX-JLDS-all')")
 	@ApiOperation(value = "fetch记录查询", tags = {"PCMYDNTMX" } ,notes = "fetch记录查询")
     @RequestMapping(method= RequestMethod.GET , value="/pcmydntmxes/fetchjlds")
 	public ResponseEntity<List<PCMYDNTMXDTO>> fetchJLDS(PCMYDNTMXSearchContext context) {
@@ -198,6 +199,7 @@ public class PCMYDNTMXResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMYDNTMX-JLDS-all')")
 	@ApiOperation(value = "search记录查询", tags = {"PCMYDNTMX" } ,notes = "search记录查询")
     @RequestMapping(method= RequestMethod.POST , value="/pcmydntmxes/searchjlds")
 	public ResponseEntity<Page<PCMYDNTMXDTO>> searchJLDS(@RequestBody PCMYDNTMXSearchContext context) {
@@ -206,6 +208,7 @@ public class PCMYDNTMXResource {
                 .body(new PageImpl(pcmydntmxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMYDNTMX-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PCMYDNTMX" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pcmydntmxes/fetchdefault")
 	public ResponseEntity<List<PCMYDNTMXDTO>> fetchDefault(PCMYDNTMXSearchContext context) {
@@ -218,6 +221,7 @@ public class PCMYDNTMXResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMYDNTMX-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PCMYDNTMX" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pcmydntmxes/searchdefault")
 	public ResponseEntity<Page<PCMYDNTMXDTO>> searchDefault(@RequestBody PCMYDNTMXSearchContext context) {
@@ -226,6 +230,7 @@ public class PCMYDNTMXResource {
                 .body(new PageImpl(pcmydntmxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMYDNTMX-GLDS-all')")
 	@ApiOperation(value = "fetch管理查询", tags = {"PCMYDNTMX" } ,notes = "fetch管理查询")
     @RequestMapping(method= RequestMethod.GET , value="/pcmydntmxes/fetchglds")
 	public ResponseEntity<List<PCMYDNTMXDTO>> fetchGLDS(PCMYDNTMXSearchContext context) {
@@ -238,6 +243,7 @@ public class PCMYDNTMXResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMYDNTMX-GLDS-all')")
 	@ApiOperation(value = "search管理查询", tags = {"PCMYDNTMX" } ,notes = "search管理查询")
     @RequestMapping(method= RequestMethod.POST , value="/pcmydntmxes/searchglds")
 	public ResponseEntity<Page<PCMYDNTMXDTO>> searchGLDS(@RequestBody PCMYDNTMXSearchContext context) {

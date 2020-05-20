@@ -115,7 +115,7 @@ public class PIMWorkflowRefResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#pimworkflowref_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#pimworkflowref_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"PIMWorkflowRef" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimworkflowrefs/{pimworkflowref_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class PIMWorkflowRefResource {
         return  ResponseEntity.status(HttpStatus.OK).body(pimworkflowrefService.checkKey(pimworkflowrefMapping.toDomain(pimworkflowrefdto)));
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMWorkflowRef-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PIMWorkflowRef" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimworkflowrefs/fetchdefault")
 	public ResponseEntity<List<PIMWorkflowRefDTO>> fetchDefault(PIMWorkflowRefSearchContext context) {
@@ -172,6 +173,7 @@ public class PIMWorkflowRefResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMWorkflowRef-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PIMWorkflowRef" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pimworkflowrefs/searchdefault")
 	public ResponseEntity<Page<PIMWorkflowRefDTO>> searchDefault(@RequestBody PIMWorkflowRefSearchContext context) {

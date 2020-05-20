@@ -71,7 +71,7 @@ public class ARCHIVESCENTERResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#archivescenter_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#archivescenter_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"ARCHIVESCENTER" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/archivescenters/{archivescenter_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class ARCHIVESCENTERResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ARCHIVESCENTER-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"ARCHIVESCENTER" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/archivescenters/fetchdefault")
 	public ResponseEntity<List<ARCHIVESCENTERDTO>> fetchDefault(ARCHIVESCENTERSearchContext context) {
@@ -172,6 +173,7 @@ public class ARCHIVESCENTERResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ARCHIVESCENTER-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"ARCHIVESCENTER" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/archivescenters/searchdefault")
 	public ResponseEntity<Page<ARCHIVESCENTERDTO>> searchDefault(@RequestBody ARCHIVESCENTERSearchContext context) {

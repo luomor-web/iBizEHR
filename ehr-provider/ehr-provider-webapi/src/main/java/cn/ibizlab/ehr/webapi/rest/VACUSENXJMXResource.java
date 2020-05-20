@@ -55,7 +55,7 @@ public class VACUSENXJMXResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#vacusenxjmx_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#vacusenxjmx_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"VACUSENXJMX" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/vacusenxjmxes/{vacusenxjmx_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class VACUSENXJMXResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACUSENXJMX-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"VACUSENXJMX" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/vacusenxjmxes/fetchdefault")
 	public ResponseEntity<List<VACUSENXJMXDTO>> fetchDefault(VACUSENXJMXSearchContext context) {
@@ -172,6 +173,7 @@ public class VACUSENXJMXResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACUSENXJMX-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"VACUSENXJMX" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/vacusenxjmxes/searchdefault")
 	public ResponseEntity<Page<VACUSENXJMXDTO>> searchDefault(@RequestBody VACUSENXJMXSearchContext context) {

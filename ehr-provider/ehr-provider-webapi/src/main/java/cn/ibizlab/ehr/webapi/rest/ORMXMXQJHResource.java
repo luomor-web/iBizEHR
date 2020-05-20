@@ -197,7 +197,7 @@ public class ORMXMXQJHResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#ormxmxqjh_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#ormxmxqjh_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"ORMXMXQJH" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/ormxmxqjhs/{ormxmxqjh_id}")
     @Transactional
@@ -212,6 +212,7 @@ public class ORMXMXQJHResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMXMXQJH-BaseInfo-all')")
 	@ApiOperation(value = "fetch项目人力需求（项目负责人）", tags = {"ORMXMXQJH" } ,notes = "fetch项目人力需求（项目负责人）")
     @RequestMapping(method= RequestMethod.GET , value="/ormxmxqjhs/fetchbaseinfo")
 	public ResponseEntity<List<ORMXMXQJHDTO>> fetchBaseInfo(ORMXMXQJHSearchContext context) {
@@ -224,6 +225,7 @@ public class ORMXMXQJHResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMXMXQJH-BaseInfo-all')")
 	@ApiOperation(value = "search项目人力需求（项目负责人）", tags = {"ORMXMXQJH" } ,notes = "search项目人力需求（项目负责人）")
     @RequestMapping(method= RequestMethod.POST , value="/ormxmxqjhs/searchbaseinfo")
 	public ResponseEntity<Page<ORMXMXQJHDTO>> searchBaseInfo(@RequestBody ORMXMXQJHSearchContext context) {
@@ -232,6 +234,7 @@ public class ORMXMXQJHResource {
                 .body(new PageImpl(ormxmxqjhMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMXMXQJH-XMTJQX-all')")
 	@ApiOperation(value = "fetch项目人力需求（保存、提交权限）", tags = {"ORMXMXQJH" } ,notes = "fetch项目人力需求（保存、提交权限）")
     @RequestMapping(method= RequestMethod.GET , value="/ormxmxqjhs/fetchxmtjqx")
 	public ResponseEntity<List<ORMXMXQJHDTO>> fetchXMTJQX(ORMXMXQJHSearchContext context) {
@@ -244,6 +247,7 @@ public class ORMXMXQJHResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMXMXQJH-XMTJQX-all')")
 	@ApiOperation(value = "search项目人力需求（保存、提交权限）", tags = {"ORMXMXQJH" } ,notes = "search项目人力需求（保存、提交权限）")
     @RequestMapping(method= RequestMethod.POST , value="/ormxmxqjhs/searchxmtjqx")
 	public ResponseEntity<Page<ORMXMXQJHDTO>> searchXMTJQX(@RequestBody ORMXMXQJHSearchContext context) {
@@ -252,6 +256,7 @@ public class ORMXMXQJHResource {
                 .body(new PageImpl(ormxmxqjhMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMXMXQJH-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"ORMXMXQJH" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/ormxmxqjhs/fetchdefault")
 	public ResponseEntity<List<ORMXMXQJHDTO>> fetchDefault(ORMXMXQJHSearchContext context) {
@@ -264,6 +269,7 @@ public class ORMXMXQJHResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMXMXQJH-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"ORMXMXQJH" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/ormxmxqjhs/searchdefault")
 	public ResponseEntity<Page<ORMXMXQJHDTO>> searchDefault(@RequestBody ORMXMXQJHSearchContext context) {
@@ -272,6 +278,7 @@ public class ORMXMXQJHResource {
                 .body(new PageImpl(ormxmxqjhMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMXMXQJH-RsshInfo-all')")
 	@ApiOperation(value = "fetch项目人力需求（人力审核）", tags = {"ORMXMXQJH" } ,notes = "fetch项目人力需求（人力审核）")
     @RequestMapping(method= RequestMethod.GET , value="/ormxmxqjhs/fetchrsshinfo")
 	public ResponseEntity<List<ORMXMXQJHDTO>> fetchRsshInfo(ORMXMXQJHSearchContext context) {
@@ -284,6 +291,7 @@ public class ORMXMXQJHResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMXMXQJH-RsshInfo-all')")
 	@ApiOperation(value = "search项目人力需求（人力审核）", tags = {"ORMXMXQJH" } ,notes = "search项目人力需求（人力审核）")
     @RequestMapping(method= RequestMethod.POST , value="/ormxmxqjhs/searchrsshinfo")
 	public ResponseEntity<Page<ORMXMXQJHDTO>> searchRsshInfo(@RequestBody ORMXMXQJHSearchContext context) {

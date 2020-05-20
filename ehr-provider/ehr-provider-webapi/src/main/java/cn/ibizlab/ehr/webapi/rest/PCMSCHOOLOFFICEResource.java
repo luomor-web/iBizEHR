@@ -67,7 +67,7 @@ public class PCMSCHOOLOFFICEResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#pcmschooloffice_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#pcmschooloffice_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"PCMSCHOOLOFFICE" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmschooloffices/{pcmschooloffice_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class PCMSCHOOLOFFICEResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMSCHOOLOFFICE-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PCMSCHOOLOFFICE" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pcmschooloffices/fetchdefault")
 	public ResponseEntity<List<PCMSCHOOLOFFICEDTO>> fetchDefault(PCMSCHOOLOFFICESearchContext context) {
@@ -172,6 +173,7 @@ public class PCMSCHOOLOFFICEResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMSCHOOLOFFICE-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PCMSCHOOLOFFICE" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pcmschooloffices/searchdefault")
 	public ResponseEntity<Page<PCMSCHOOLOFFICEDTO>> searchDefault(@RequestBody PCMSCHOOLOFFICESearchContext context) {

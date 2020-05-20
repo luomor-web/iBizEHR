@@ -136,7 +136,7 @@ public class PCMPROFILENUMBEPREFIXResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#pcmprofilenumbeprefix_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#pcmprofilenumbeprefix_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"PCMPROFILENUMBEPREFIX" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmprofilenumbeprefixes/{pcmprofilenumbeprefix_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class PCMPROFILENUMBEPREFIXResource {
         return ResponseEntity.status(HttpStatus.OK).body(pcmprofilenumbeprefixMapping.toDto(pcmprofilenumbeprefixService.getDraft(new PCMPROFILENUMBEPREFIX())));
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILENUMBEPREFIX-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PCMPROFILENUMBEPREFIX" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pcmprofilenumbeprefixes/fetchdefault")
 	public ResponseEntity<List<PCMPROFILENUMBEPREFIXDTO>> fetchDefault(PCMPROFILENUMBEPREFIXSearchContext context) {
@@ -172,6 +173,7 @@ public class PCMPROFILENUMBEPREFIXResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILENUMBEPREFIX-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PCMPROFILENUMBEPREFIX" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pcmprofilenumbeprefixes/searchdefault")
 	public ResponseEntity<Page<PCMPROFILENUMBEPREFIXDTO>> searchDefault(@RequestBody PCMPROFILENUMBEPREFIXSearchContext context) {

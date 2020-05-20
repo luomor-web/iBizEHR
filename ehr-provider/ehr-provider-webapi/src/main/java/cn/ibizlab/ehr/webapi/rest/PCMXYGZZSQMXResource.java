@@ -55,7 +55,7 @@ public class PCMXYGZZSQMXResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#pcmxygzzsqmx_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#pcmxygzzsqmx_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"PCMXYGZZSQMX" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmxygzzsqmxes/{pcmxygzzsqmx_id}")
     @Transactional
@@ -199,6 +199,7 @@ public class PCMXYGZZSQMXResource {
         return  ResponseEntity.status(HttpStatus.OK).body(pcmxygzzsqmxService.checkKey(pcmxygzzsqmxMapping.toDomain(pcmxygzzsqmxdto)));
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMXYGZZSQMX-WSHSQ-all')")
 	@ApiOperation(value = "fetch未完成审核的申请", tags = {"PCMXYGZZSQMX" } ,notes = "fetch未完成审核的申请")
     @RequestMapping(method= RequestMethod.GET , value="/pcmxygzzsqmxes/fetchwshsq")
 	public ResponseEntity<List<PCMXYGZZSQMXDTO>> fetchWSHSQ(PCMXYGZZSQMXSearchContext context) {
@@ -211,6 +212,7 @@ public class PCMXYGZZSQMXResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMXYGZZSQMX-WSHSQ-all')")
 	@ApiOperation(value = "search未完成审核的申请", tags = {"PCMXYGZZSQMX" } ,notes = "search未完成审核的申请")
     @RequestMapping(method= RequestMethod.POST , value="/pcmxygzzsqmxes/searchwshsq")
 	public ResponseEntity<Page<PCMXYGZZSQMXDTO>> searchWSHSQ(@RequestBody PCMXYGZZSQMXSearchContext context) {
@@ -219,6 +221,7 @@ public class PCMXYGZZSQMXResource {
                 .body(new PageImpl(pcmxygzzsqmxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMXYGZZSQMX-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PCMXYGZZSQMX" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pcmxygzzsqmxes/fetchdefault")
 	public ResponseEntity<List<PCMXYGZZSQMXDTO>> fetchDefault(PCMXYGZZSQMXSearchContext context) {
@@ -231,6 +234,7 @@ public class PCMXYGZZSQMXResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMXYGZZSQMX-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PCMXYGZZSQMX" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pcmxygzzsqmxes/searchdefault")
 	public ResponseEntity<Page<PCMXYGZZSQMXDTO>> searchDefault(@RequestBody PCMXYGZZSQMXSearchContext context) {

@@ -88,7 +88,7 @@ public class ORMUSERResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#ormuser_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#ormuser_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"ORMUSER" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/ormusers/{ormuser_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class ORMUSERResource {
         return ResponseEntity.status(HttpStatus.OK).body(ormuserMapping.toDto(ormuserService.getDraft(new ORMUSER())));
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMUSER-DQZZJXJZZ-all')")
 	@ApiOperation(value = "fetch当前组织及下级组织", tags = {"ORMUSER" } ,notes = "fetch当前组织及下级组织")
     @RequestMapping(method= RequestMethod.GET , value="/ormusers/fetchdqzzjxjzz")
 	public ResponseEntity<List<ORMUSERDTO>> fetchDQZZJXJZZ(ORMUSERSearchContext context) {
@@ -172,6 +173,7 @@ public class ORMUSERResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMUSER-DQZZJXJZZ-all')")
 	@ApiOperation(value = "search当前组织及下级组织", tags = {"ORMUSER" } ,notes = "search当前组织及下级组织")
     @RequestMapping(method= RequestMethod.POST , value="/ormusers/searchdqzzjxjzz")
 	public ResponseEntity<Page<ORMUSERDTO>> searchDQZZJXJZZ(@RequestBody ORMUSERSearchContext context) {
@@ -180,6 +182,7 @@ public class ORMUSERResource {
                 .body(new PageImpl(ormuserMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMUSER-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"ORMUSER" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/ormusers/fetchdefault")
 	public ResponseEntity<List<ORMUSERDTO>> fetchDefault(ORMUSERSearchContext context) {
@@ -192,6 +195,7 @@ public class ORMUSERResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMUSER-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"ORMUSER" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/ormusers/searchdefault")
 	public ResponseEntity<Page<ORMUSERDTO>> searchDefault(@RequestBody ORMUSERSearchContext context) {

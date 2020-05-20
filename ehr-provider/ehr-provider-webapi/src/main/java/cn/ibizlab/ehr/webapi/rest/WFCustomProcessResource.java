@@ -83,7 +83,7 @@ public class WFCustomProcessResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#wfcustomprocess_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#wfcustomprocess_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"WFCustomProcess" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/wfcustomprocesses/{wfcustomprocess_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class WFCustomProcessResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFCustomProcess-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"WFCustomProcess" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/wfcustomprocesses/fetchdefault")
 	public ResponseEntity<List<WFCustomProcessDTO>> fetchDefault(WFCustomProcessSearchContext context) {
@@ -172,6 +173,7 @@ public class WFCustomProcessResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFCustomProcess-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"WFCustomProcess" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/wfcustomprocesses/searchdefault")
 	public ResponseEntity<Page<WFCustomProcessDTO>> searchDefault(@RequestBody WFCustomProcessSearchContext context) {

@@ -104,7 +104,7 @@ public class TRMDEPARTResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#trmdepart_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#trmdepart_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"TRMDEPART" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/trmdeparts/{trmdepart_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class TRMDEPARTResource {
         return ResponseEntity.status(HttpStatus.OK).body(trmdepartMapping.toDto(trmdepartService.getDraft(new TRMDEPART())));
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMDEPART-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"TRMDEPART" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/trmdeparts/fetchdefault")
 	public ResponseEntity<List<TRMDEPARTDTO>> fetchDefault(TRMDEPARTSearchContext context) {
@@ -172,6 +173,7 @@ public class TRMDEPARTResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMDEPART-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"TRMDEPART" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/trmdeparts/searchdefault")
 	public ResponseEntity<Page<TRMDEPARTDTO>> searchDefault(@RequestBody TRMDEPARTSearchContext context) {

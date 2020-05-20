@@ -64,7 +64,7 @@ public class PIMPROVINCEResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#pimprovince_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#pimprovince_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"PIMPROVINCE" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimprovinces/{pimprovince_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class PIMPROVINCEResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMPROVINCE-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PIMPROVINCE" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimprovinces/fetchdefault")
 	public ResponseEntity<List<PIMPROVINCEDTO>> fetchDefault(PIMPROVINCESearchContext context) {
@@ -172,6 +173,7 @@ public class PIMPROVINCEResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMPROVINCE-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PIMPROVINCE" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pimprovinces/searchdefault")
 	public ResponseEntity<Page<PIMPROVINCEDTO>> searchDefault(@RequestBody PIMPROVINCESearchContext context) {

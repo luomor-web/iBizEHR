@@ -64,7 +64,7 @@ public class PPModelResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#ppmodel_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#ppmodel_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"PPModel" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/ppmodels/{ppmodel_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class PPModelResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PPModel-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PPModel" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/ppmodels/fetchdefault")
 	public ResponseEntity<List<PPModelDTO>> fetchDefault(PPModelSearchContext context) {
@@ -172,6 +173,7 @@ public class PPModelResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PPModel-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PPModel" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/ppmodels/searchdefault")
 	public ResponseEntity<Page<PPModelDTO>> searchDefault(@RequestBody PPModelSearchContext context) {

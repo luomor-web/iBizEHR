@@ -12,7 +12,7 @@ import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnExpression;
-
+import org.springframework.security.core.authority.AuthorityUtils;
 /**
  * 实体[IBZUSER] 服务对象接口实现
  */
@@ -44,6 +44,8 @@ public class SimpleUserService implements AuthenticationUserService{
 		user.setOrgid(domains);
 		user.setOrgcode(domains);
 		user.setOrgname(domains);
+		user.setSuperuser(1);
+		user.setAuthorities(AuthorityUtils.createAuthorityList("ROLE_SUPERADMIN"));
 
 		return user;
 	}

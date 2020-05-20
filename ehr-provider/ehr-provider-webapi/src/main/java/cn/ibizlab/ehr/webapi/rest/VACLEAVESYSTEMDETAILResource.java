@@ -103,7 +103,7 @@ public class VACLEAVESYSTEMDETAILResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#vacleavesystemdetail_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#vacleavesystemdetail_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"VACLEAVESYSTEMDETAIL" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/vacleavesystemdetails/{vacleavesystemdetail_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class VACLEAVESYSTEMDETAILResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACLEAVESYSTEMDETAIL-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"VACLEAVESYSTEMDETAIL" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/vacleavesystemdetails/fetchdefault")
 	public ResponseEntity<List<VACLEAVESYSTEMDETAILDTO>> fetchDefault(VACLEAVESYSTEMDETAILSearchContext context) {
@@ -172,6 +173,7 @@ public class VACLEAVESYSTEMDETAILResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACLEAVESYSTEMDETAIL-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"VACLEAVESYSTEMDETAIL" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/vacleavesystemdetails/searchdefault")
 	public ResponseEntity<Page<VACLEAVESYSTEMDETAILDTO>> searchDefault(@RequestBody VACLEAVESYSTEMDETAILSearchContext context) {

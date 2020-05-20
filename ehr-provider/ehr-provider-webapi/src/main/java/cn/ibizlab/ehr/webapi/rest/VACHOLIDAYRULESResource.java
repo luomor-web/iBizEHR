@@ -68,7 +68,7 @@ public class VACHOLIDAYRULESResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#vacholidayrules_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#vacholidayrules_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"VACHOLIDAYRULES" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/vacholidayrules/{vacholidayrules_id}")
     @Transactional
@@ -173,6 +173,7 @@ public class VACHOLIDAYRULESResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACHOLIDAYRULES-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"VACHOLIDAYRULES" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/vacholidayrules/fetchdefault")
 	public ResponseEntity<List<VACHOLIDAYRULESDTO>> fetchDefault(VACHOLIDAYRULESSearchContext context) {
@@ -185,6 +186,7 @@ public class VACHOLIDAYRULESResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACHOLIDAYRULES-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"VACHOLIDAYRULES" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/vacholidayrules/searchdefault")
 	public ResponseEntity<Page<VACHOLIDAYRULESDTO>> searchDefault(@RequestBody VACHOLIDAYRULESSearchContext context) {
@@ -193,6 +195,7 @@ public class VACHOLIDAYRULESResource {
                 .body(new PageImpl(vacholidayrulesMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACHOLIDAYRULES-CurOrmorg-all')")
 	@ApiOperation(value = "fetch当前组织下的假期规则", tags = {"VACHOLIDAYRULES" } ,notes = "fetch当前组织下的假期规则")
     @RequestMapping(method= RequestMethod.GET , value="/vacholidayrules/fetchcurormorg")
 	public ResponseEntity<List<VACHOLIDAYRULESDTO>> fetchCurOrmorg(VACHOLIDAYRULESSearchContext context) {
@@ -205,6 +208,7 @@ public class VACHOLIDAYRULESResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACHOLIDAYRULES-CurOrmorg-all')")
 	@ApiOperation(value = "search当前组织下的假期规则", tags = {"VACHOLIDAYRULES" } ,notes = "search当前组织下的假期规则")
     @RequestMapping(method= RequestMethod.POST , value="/vacholidayrules/searchcurormorg")
 	public ResponseEntity<Page<VACHOLIDAYRULESDTO>> searchCurOrmorg(@RequestBody VACHOLIDAYRULESSearchContext context) {

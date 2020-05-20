@@ -145,7 +145,7 @@ public class DataAuditDetailResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#dataauditdetail_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#dataauditdetail_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"DataAuditDetail" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/dataauditdetails/{dataauditdetail_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class DataAuditDetailResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DataAuditDetail-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"DataAuditDetail" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/dataauditdetails/fetchdefault")
 	public ResponseEntity<List<DataAuditDetailDTO>> fetchDefault(DataAuditDetailSearchContext context) {
@@ -172,6 +173,7 @@ public class DataAuditDetailResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DataAuditDetail-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"DataAuditDetail" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/dataauditdetails/searchdefault")
 	public ResponseEntity<Page<DataAuditDetailDTO>> searchDefault(@RequestBody DataAuditDetailSearchContext context) {

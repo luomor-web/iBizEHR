@@ -110,7 +110,7 @@ public class PCMPROFILESZYJTJResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#pcmprofileszyjtj_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#pcmprofileszyjtj_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"PCMPROFILESZYJTJ" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmprofileszyjtjs/{pcmprofileszyjtj_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class PCMPROFILESZYJTJResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILESZYJTJ-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PCMPROFILESZYJTJ" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pcmprofileszyjtjs/fetchdefault")
 	public ResponseEntity<List<PCMPROFILESZYJTJDTO>> fetchDefault(PCMPROFILESZYJTJSearchContext context) {
@@ -172,6 +173,7 @@ public class PCMPROFILESZYJTJResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILESZYJTJ-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PCMPROFILESZYJTJ" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pcmprofileszyjtjs/searchdefault")
 	public ResponseEntity<Page<PCMPROFILESZYJTJDTO>> searchDefault(@RequestBody PCMPROFILESZYJTJSearchContext context) {
@@ -180,6 +182,7 @@ public class PCMPROFILESZYJTJResource {
                 .body(new PageImpl(pcmprofileszyjtjMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILESZYJTJ-YGLX-all')")
 	@ApiOperation(value = "fetch通过申报类型过滤", tags = {"PCMPROFILESZYJTJ" } ,notes = "fetch通过申报类型过滤")
     @RequestMapping(method= RequestMethod.GET , value="/pcmprofileszyjtjs/fetchyglx")
 	public ResponseEntity<List<PCMPROFILESZYJTJDTO>> fetchYGLX(PCMPROFILESZYJTJSearchContext context) {
@@ -192,6 +195,7 @@ public class PCMPROFILESZYJTJResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILESZYJTJ-YGLX-all')")
 	@ApiOperation(value = "search通过申报类型过滤", tags = {"PCMPROFILESZYJTJ" } ,notes = "search通过申报类型过滤")
     @RequestMapping(method= RequestMethod.POST , value="/pcmprofileszyjtjs/searchyglx")
 	public ResponseEntity<Page<PCMPROFILESZYJTJDTO>> searchYGLX(@RequestBody PCMPROFILESZYJTJSearchContext context) {

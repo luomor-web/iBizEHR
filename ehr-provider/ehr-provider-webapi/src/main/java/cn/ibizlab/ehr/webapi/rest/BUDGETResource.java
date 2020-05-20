@@ -145,7 +145,7 @@ public class BUDGETResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#budget_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#budget_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"BUDGET" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/budgets/{budget_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class BUDGETResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-BUDGET-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"BUDGET" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/budgets/fetchdefault")
 	public ResponseEntity<List<BUDGETDTO>> fetchDefault(BUDGETSearchContext context) {
@@ -172,6 +173,7 @@ public class BUDGETResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-BUDGET-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"BUDGET" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/budgets/searchdefault")
 	public ResponseEntity<Page<BUDGETDTO>> searchDefault(@RequestBody BUDGETSearchContext context) {

@@ -55,7 +55,7 @@ public class PCMCERTOFREGResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#pcmcertofreg_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#pcmcertofreg_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"PCMCERTOFREG" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmcertofregs/{pcmcertofreg_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class PCMCERTOFREGResource {
         return  ResponseEntity.status(HttpStatus.OK).body(pcmcertofregService.checkKey(pcmcertofregMapping.toDomain(pcmcertofregdto)));
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMCERTOFREG-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PCMCERTOFREG" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pcmcertofregs/fetchdefault")
 	public ResponseEntity<List<PCMCERTOFREGDTO>> fetchDefault(PCMCERTOFREGSearchContext context) {
@@ -172,6 +173,7 @@ public class PCMCERTOFREGResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMCERTOFREG-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PCMCERTOFREG" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pcmcertofregs/searchdefault")
 	public ResponseEntity<Page<PCMCERTOFREGDTO>> searchDefault(@RequestBody PCMCERTOFREGSearchContext context) {

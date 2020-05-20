@@ -129,7 +129,7 @@ public class MsgTemplateResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#msgtemplate_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#msgtemplate_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"MsgTemplate" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/msgtemplates/{msgtemplate_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class MsgTemplateResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-MsgTemplate-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"MsgTemplate" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/msgtemplates/fetchdefault")
 	public ResponseEntity<List<MsgTemplateDTO>> fetchDefault(MsgTemplateSearchContext context) {
@@ -172,6 +173,7 @@ public class MsgTemplateResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-MsgTemplate-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"MsgTemplate" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/msgtemplates/searchdefault")
 	public ResponseEntity<Page<MsgTemplateDTO>> searchDefault(@RequestBody MsgTemplateSearchContext context) {

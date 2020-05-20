@@ -64,7 +64,7 @@ public class PCMJXSGZResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#pcmjxsgz_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#pcmjxsgz_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"PCMJXSGZ" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmjxsgzs/{pcmjxsgz_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class PCMJXSGZResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMJXSGZ-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PCMJXSGZ" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pcmjxsgzs/fetchdefault")
 	public ResponseEntity<List<PCMJXSGZDTO>> fetchDefault(PCMJXSGZSearchContext context) {
@@ -172,6 +173,7 @@ public class PCMJXSGZResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMJXSGZ-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PCMJXSGZ" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pcmjxsgzs/searchdefault")
 	public ResponseEntity<Page<PCMJXSGZDTO>> searchDefault(@RequestBody PCMJXSGZSearchContext context) {

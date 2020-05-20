@@ -90,7 +90,7 @@ public class SALLOGResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#sallog_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#sallog_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"SALLOG" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/sallogs/{sallog_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class SALLOGResource {
         return  ResponseEntity.status(HttpStatus.OK).body(sallogService.checkKey(sallogMapping.toDomain(sallogdto)));
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALLOG-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"SALLOG" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/sallogs/fetchdefault")
 	public ResponseEntity<List<SALLOGDTO>> fetchDefault(SALLOGSearchContext context) {
@@ -172,6 +173,7 @@ public class SALLOGResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALLOG-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"SALLOG" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/sallogs/searchdefault")
 	public ResponseEntity<Page<SALLOGDTO>> searchDefault(@RequestBody SALLOGSearchContext context) {

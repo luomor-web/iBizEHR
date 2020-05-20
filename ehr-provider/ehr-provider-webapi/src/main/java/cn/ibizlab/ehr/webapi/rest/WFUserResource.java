@@ -136,7 +136,7 @@ public class WFUserResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#wfuser_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#wfuser_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"WFUser" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/wfusers/{wfuser_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class WFUserResource {
         return  ResponseEntity.status(HttpStatus.OK).body(wfuserService.checkKey(wfuserMapping.toDomain(wfuserdto)));
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFUser-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"WFUser" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/wfusers/fetchdefault")
 	public ResponseEntity<List<WFUserDTO>> fetchDefault(WFUserSearchContext context) {
@@ -172,6 +173,7 @@ public class WFUserResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFUser-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"WFUser" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/wfusers/searchdefault")
 	public ResponseEntity<Page<WFUserDTO>> searchDefault(@RequestBody WFUserSearchContext context) {

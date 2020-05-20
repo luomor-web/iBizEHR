@@ -91,7 +91,7 @@ public class VACHOLIDAYResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#vacholiday_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#vacholiday_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"VACHOLIDAY" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/vacholidays/{vacholiday_id}")
     @Transactional
@@ -186,6 +186,7 @@ public class VACHOLIDAYResource {
         return ResponseEntity.status(HttpStatus.OK).body(vacholidaydto);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACHOLIDAY-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"VACHOLIDAY" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/vacholidays/fetchdefault")
 	public ResponseEntity<List<VACHOLIDAYDTO>> fetchDefault(VACHOLIDAYSearchContext context) {
@@ -198,6 +199,7 @@ public class VACHOLIDAYResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACHOLIDAY-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"VACHOLIDAY" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/vacholidays/searchdefault")
 	public ResponseEntity<Page<VACHOLIDAYDTO>> searchDefault(@RequestBody VACHOLIDAYSearchContext context) {

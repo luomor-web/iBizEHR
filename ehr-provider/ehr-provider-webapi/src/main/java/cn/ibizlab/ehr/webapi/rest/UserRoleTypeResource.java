@@ -115,7 +115,7 @@ public class UserRoleTypeResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#userroletype_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#userroletype_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"UserRoleType" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/userroletypes/{userroletype_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class UserRoleTypeResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UserRoleType-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"UserRoleType" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/userroletypes/fetchdefault")
 	public ResponseEntity<List<UserRoleTypeDTO>> fetchDefault(UserRoleTypeSearchContext context) {
@@ -172,6 +173,7 @@ public class UserRoleTypeResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UserRoleType-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"UserRoleType" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/userroletypes/searchdefault")
 	public ResponseEntity<Page<UserRoleTypeDTO>> searchDefault(@RequestBody UserRoleTypeSearchContext context) {

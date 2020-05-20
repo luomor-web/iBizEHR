@@ -145,7 +145,7 @@ public class TestResultResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#testresult_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#testresult_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"TestResult" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/testresults/{testresult_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class TestResultResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TestResult-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"TestResult" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/testresults/fetchdefault")
 	public ResponseEntity<List<TestResultDTO>> fetchDefault(TestResultSearchContext context) {
@@ -172,6 +173,7 @@ public class TestResultResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TestResult-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"TestResult" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/testresults/searchdefault")
 	public ResponseEntity<Page<TestResultDTO>> searchDefault(@RequestBody TestResultSearchContext context) {

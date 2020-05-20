@@ -145,7 +145,7 @@ public class WFDynamicUserResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#wfdynamicuser_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#wfdynamicuser_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"WFDynamicUser" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/wfdynamicusers/{wfdynamicuser_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class WFDynamicUserResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFDynamicUser-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"WFDynamicUser" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/wfdynamicusers/fetchdefault")
 	public ResponseEntity<List<WFDynamicUserDTO>> fetchDefault(WFDynamicUserSearchContext context) {
@@ -172,6 +173,7 @@ public class WFDynamicUserResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFDynamicUser-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"WFDynamicUser" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/wfdynamicusers/searchdefault")
 	public ResponseEntity<Page<WFDynamicUserDTO>> searchDefault(@RequestBody WFDynamicUserSearchContext context) {

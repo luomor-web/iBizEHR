@@ -55,7 +55,7 @@ public class PCMZPMEGLResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#pcmzpmegl_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#pcmzpmegl_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"PCMZPMEGL" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmzpmegls/{pcmzpmegl_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class PCMZPMEGLResource {
         return ResponseEntity.status(HttpStatus.OK).body(pcmzpmeglMapping.toDto(pcmzpmeglService.getDraft(new PCMZPMEGL())));
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMZPMEGL-CurND-all')")
 	@ApiOperation(value = "fetch当前年度招聘名额", tags = {"PCMZPMEGL" } ,notes = "fetch当前年度招聘名额")
     @RequestMapping(method= RequestMethod.GET , value="/pcmzpmegls/fetchcurnd")
 	public ResponseEntity<List<PCMZPMEGLDTO>> fetchCurND(PCMZPMEGLSearchContext context) {
@@ -172,6 +173,7 @@ public class PCMZPMEGLResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMZPMEGL-CurND-all')")
 	@ApiOperation(value = "search当前年度招聘名额", tags = {"PCMZPMEGL" } ,notes = "search当前年度招聘名额")
     @RequestMapping(method= RequestMethod.POST , value="/pcmzpmegls/searchcurnd")
 	public ResponseEntity<Page<PCMZPMEGLDTO>> searchCurND(@RequestBody PCMZPMEGLSearchContext context) {
@@ -180,6 +182,7 @@ public class PCMZPMEGLResource {
                 .body(new PageImpl(pcmzpmeglMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMZPMEGL-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PCMZPMEGL" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pcmzpmegls/fetchdefault")
 	public ResponseEntity<List<PCMZPMEGLDTO>> fetchDefault(PCMZPMEGLSearchContext context) {
@@ -192,6 +195,7 @@ public class PCMZPMEGLResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMZPMEGL-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PCMZPMEGL" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pcmzpmegls/searchdefault")
 	public ResponseEntity<Page<PCMZPMEGLDTO>> searchDefault(@RequestBody PCMZPMEGLSearchContext context) {

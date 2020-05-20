@@ -193,7 +193,7 @@ public class QUESTIONSResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#questions_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#questions_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"QUESTIONS" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/questions/{questions_id}")
     @Transactional
@@ -290,6 +290,7 @@ public class QUESTIONSResource {
         return ResponseEntity.status(HttpStatus.OK).body(questionsdto);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-QUESTIONS-QUERYcurrentQUESTION-all')")
 	@ApiOperation(value = "fetch查询当前页面问题", tags = {"QUESTIONS" } ,notes = "fetch查询当前页面问题")
     @RequestMapping(method= RequestMethod.GET , value="/questions/fetchquerycurrentquestion")
 	public ResponseEntity<List<QUESTIONSDTO>> fetchQUERYcurrentQUESTION(QUESTIONSSearchContext context) {
@@ -302,6 +303,7 @@ public class QUESTIONSResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-QUESTIONS-QUERYcurrentQUESTION-all')")
 	@ApiOperation(value = "search查询当前页面问题", tags = {"QUESTIONS" } ,notes = "search查询当前页面问题")
     @RequestMapping(method= RequestMethod.POST , value="/questions/searchquerycurrentquestion")
 	public ResponseEntity<Page<QUESTIONSDTO>> searchQUERYcurrentQUESTION(@RequestBody QUESTIONSSearchContext context) {
@@ -310,6 +312,7 @@ public class QUESTIONSResource {
                 .body(new PageImpl(questionsMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-QUESTIONS-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"QUESTIONS" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/questions/fetchdefault")
 	public ResponseEntity<List<QUESTIONSDTO>> fetchDefault(QUESTIONSSearchContext context) {
@@ -322,6 +325,7 @@ public class QUESTIONSResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-QUESTIONS-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"QUESTIONS" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/questions/searchdefault")
 	public ResponseEntity<Page<QUESTIONSDTO>> searchDefault(@RequestBody QUESTIONSSearchContext context) {

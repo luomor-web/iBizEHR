@@ -78,7 +78,7 @@ public class MsgSendQueueResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#msgsendqueue_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#msgsendqueue_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"MsgSendQueue" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/msgsendqueues/{msgsendqueue_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class MsgSendQueueResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-MsgSendQueue-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"MsgSendQueue" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/msgsendqueues/fetchdefault")
 	public ResponseEntity<List<MsgSendQueueDTO>> fetchDefault(MsgSendQueueSearchContext context) {
@@ -172,6 +173,7 @@ public class MsgSendQueueResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-MsgSendQueue-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"MsgSendQueue" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/msgsendqueues/searchdefault")
 	public ResponseEntity<Page<MsgSendQueueDTO>> searchDefault(@RequestBody MsgSendQueueSearchContext context) {

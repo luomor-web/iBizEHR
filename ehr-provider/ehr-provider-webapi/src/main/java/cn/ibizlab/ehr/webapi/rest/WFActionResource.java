@@ -133,7 +133,7 @@ public class WFActionResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#wfaction_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#wfaction_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"WFAction" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/wfactions/{wfaction_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class WFActionResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFAction-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"WFAction" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/wfactions/fetchdefault")
 	public ResponseEntity<List<WFActionDTO>> fetchDefault(WFActionSearchContext context) {
@@ -172,6 +173,7 @@ public class WFActionResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFAction-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"WFAction" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/wfactions/searchdefault")
 	public ResponseEntity<Page<WFActionDTO>> searchDefault(@RequestBody WFActionSearchContext context) {

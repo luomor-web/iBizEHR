@@ -158,7 +158,7 @@ public class PCMJXSYGZZSQMXResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#pcmjxsygzzsqmx_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#pcmjxsygzzsqmx_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"PCMJXSYGZZSQMX" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmjxsygzzsqmxes/{pcmjxsygzzsqmx_id}")
     @Transactional
@@ -173,6 +173,7 @@ public class PCMJXSYGZZSQMXResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMJXSYGZZSQMX-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PCMJXSYGZZSQMX" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pcmjxsygzzsqmxes/fetchdefault")
 	public ResponseEntity<List<PCMJXSYGZZSQMXDTO>> fetchDefault(PCMJXSYGZZSQMXSearchContext context) {
@@ -185,6 +186,7 @@ public class PCMJXSYGZZSQMXResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMJXSYGZZSQMX-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PCMJXSYGZZSQMX" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pcmjxsygzzsqmxes/searchdefault")
 	public ResponseEntity<Page<PCMJXSYGZZSQMXDTO>> searchDefault(@RequestBody PCMJXSYGZZSQMXSearchContext context) {
@@ -193,6 +195,7 @@ public class PCMJXSYGZZSQMXResource {
                 .body(new PageImpl(pcmjxsygzzsqmxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMJXSYGZZSQMX-DSHSQ-all')")
 	@ApiOperation(value = "fetch待审核申请", tags = {"PCMJXSYGZZSQMX" } ,notes = "fetch待审核申请")
     @RequestMapping(method= RequestMethod.GET , value="/pcmjxsygzzsqmxes/fetchdshsq")
 	public ResponseEntity<List<PCMJXSYGZZSQMXDTO>> fetchDSHSQ(PCMJXSYGZZSQMXSearchContext context) {
@@ -205,6 +208,7 @@ public class PCMJXSYGZZSQMXResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMJXSYGZZSQMX-DSHSQ-all')")
 	@ApiOperation(value = "search待审核申请", tags = {"PCMJXSYGZZSQMX" } ,notes = "search待审核申请")
     @RequestMapping(method= RequestMethod.POST , value="/pcmjxsygzzsqmxes/searchdshsq")
 	public ResponseEntity<Page<PCMJXSYGZZSQMXDTO>> searchDSHSQ(@RequestBody PCMJXSYGZZSQMXSearchContext context) {

@@ -85,7 +85,7 @@ public class UserRoleResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#userrole_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#userrole_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"UserRole" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/userroles/{userrole_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class UserRoleResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UserRole-LevelC-all')")
 	@ApiOperation(value = "fetch用户角色权限配置", tags = {"UserRole" } ,notes = "fetch用户角色权限配置")
     @RequestMapping(method= RequestMethod.GET , value="/userroles/fetchlevelc")
 	public ResponseEntity<List<UserRoleDTO>> fetchLevelC(UserRoleSearchContext context) {
@@ -172,6 +173,7 @@ public class UserRoleResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UserRole-LevelC-all')")
 	@ApiOperation(value = "search用户角色权限配置", tags = {"UserRole" } ,notes = "search用户角色权限配置")
     @RequestMapping(method= RequestMethod.POST , value="/userroles/searchlevelc")
 	public ResponseEntity<Page<UserRoleDTO>> searchLevelC(@RequestBody UserRoleSearchContext context) {
@@ -180,6 +182,7 @@ public class UserRoleResource {
                 .body(new PageImpl(userroleMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UserRole-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"UserRole" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/userroles/fetchdefault")
 	public ResponseEntity<List<UserRoleDTO>> fetchDefault(UserRoleSearchContext context) {
@@ -192,6 +195,7 @@ public class UserRoleResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UserRole-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"UserRole" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/userroles/searchdefault")
 	public ResponseEntity<Page<UserRoleDTO>> searchDefault(@RequestBody UserRoleSearchContext context) {

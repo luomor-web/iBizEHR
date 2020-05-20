@@ -55,7 +55,7 @@ public class PCMDETAILResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#pcmdetail_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#pcmdetail_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"PCMDETAIL" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmdetails/{pcmdetail_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class PCMDETAILResource {
         return ResponseEntity.status(HttpStatus.OK).body(pcmdetailMapping.toDto(pcmdetailService.getDraft(new PCMDETAIL())));
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMDETAIL-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PCMDETAIL" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pcmdetails/fetchdefault")
 	public ResponseEntity<List<PCMDETAILDTO>> fetchDefault(PCMDETAILSearchContext context) {
@@ -172,6 +173,7 @@ public class PCMDETAILResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMDETAIL-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PCMDETAIL" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pcmdetails/searchdefault")
 	public ResponseEntity<Page<PCMDETAILDTO>> searchDefault(@RequestBody PCMDETAILSearchContext context) {

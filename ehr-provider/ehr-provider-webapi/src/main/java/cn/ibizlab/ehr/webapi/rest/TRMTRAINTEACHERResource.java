@@ -55,7 +55,7 @@ public class TRMTRAINTEACHERResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#trmtrainteacher_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#trmtrainteacher_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"TRMTRAINTEACHER" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/trmtrainteachers/{trmtrainteacher_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class TRMTRAINTEACHERResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMTRAINTEACHER-NBJS-all')")
 	@ApiOperation(value = "fetch内部讲师", tags = {"TRMTRAINTEACHER" } ,notes = "fetch内部讲师")
     @RequestMapping(method= RequestMethod.GET , value="/trmtrainteachers/fetchnbjs")
 	public ResponseEntity<List<TRMTRAINTEACHERDTO>> fetchNBJS(TRMTRAINTEACHERSearchContext context) {
@@ -172,6 +173,7 @@ public class TRMTRAINTEACHERResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMTRAINTEACHER-NBJS-all')")
 	@ApiOperation(value = "search内部讲师", tags = {"TRMTRAINTEACHER" } ,notes = "search内部讲师")
     @RequestMapping(method= RequestMethod.POST , value="/trmtrainteachers/searchnbjs")
 	public ResponseEntity<Page<TRMTRAINTEACHERDTO>> searchNBJS(@RequestBody TRMTRAINTEACHERSearchContext context) {
@@ -180,6 +182,7 @@ public class TRMTRAINTEACHERResource {
                 .body(new PageImpl(trmtrainteacherMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMTRAINTEACHER-WBJS-all')")
 	@ApiOperation(value = "fetch外部讲师", tags = {"TRMTRAINTEACHER" } ,notes = "fetch外部讲师")
     @RequestMapping(method= RequestMethod.GET , value="/trmtrainteachers/fetchwbjs")
 	public ResponseEntity<List<TRMTRAINTEACHERDTO>> fetchWBJS(TRMTRAINTEACHERSearchContext context) {
@@ -192,6 +195,7 @@ public class TRMTRAINTEACHERResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMTRAINTEACHER-WBJS-all')")
 	@ApiOperation(value = "search外部讲师", tags = {"TRMTRAINTEACHER" } ,notes = "search外部讲师")
     @RequestMapping(method= RequestMethod.POST , value="/trmtrainteachers/searchwbjs")
 	public ResponseEntity<Page<TRMTRAINTEACHERDTO>> searchWBJS(@RequestBody TRMTRAINTEACHERSearchContext context) {
@@ -200,6 +204,7 @@ public class TRMTRAINTEACHERResource {
                 .body(new PageImpl(trmtrainteacherMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMTRAINTEACHER-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"TRMTRAINTEACHER" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/trmtrainteachers/fetchdefault")
 	public ResponseEntity<List<TRMTRAINTEACHERDTO>> fetchDefault(TRMTRAINTEACHERSearchContext context) {
@@ -212,6 +217,7 @@ public class TRMTRAINTEACHERResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMTRAINTEACHER-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"TRMTRAINTEACHER" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/trmtrainteachers/searchdefault")
 	public ResponseEntity<Page<TRMTRAINTEACHERDTO>> searchDefault(@RequestBody TRMTRAINTEACHERSearchContext context) {

@@ -78,7 +78,7 @@ public class PCMMonthResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#pcmmonth_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#pcmmonth_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"PCMMonth" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmmonths/{pcmmonth_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class PCMMonthResource {
         return ResponseEntity.status(HttpStatus.OK).body(pcmmonthMapping.toDto(pcmmonthService.getDraft(new PCMMonth())));
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMMonth-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PCMMonth" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pcmmonths/fetchdefault")
 	public ResponseEntity<List<PCMMonthDTO>> fetchDefault(PCMMonthSearchContext context) {
@@ -172,6 +173,7 @@ public class PCMMonthResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMMonth-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PCMMonth" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pcmmonths/searchdefault")
 	public ResponseEntity<Page<PCMMonthDTO>> searchDefault(@RequestBody PCMMonthSearchContext context) {

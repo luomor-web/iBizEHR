@@ -55,7 +55,7 @@ public class UserDictResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#userdict_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#userdict_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"UserDict" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/userdicts/{userdict_id}")
     @Transactional
@@ -173,6 +173,7 @@ public class UserDictResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UserDict-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"UserDict" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/userdicts/fetchdefault")
 	public ResponseEntity<List<UserDictDTO>> fetchDefault(UserDictSearchContext context) {
@@ -185,6 +186,7 @@ public class UserDictResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UserDict-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"UserDict" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/userdicts/searchdefault")
 	public ResponseEntity<Page<UserDictDTO>> searchDefault(@RequestBody UserDictSearchContext context) {

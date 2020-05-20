@@ -153,7 +153,7 @@ public class PIMPERSONCHANGEResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#pimpersonchange_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#pimpersonchange_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"PIMPERSONCHANGE" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimpersonchanges/{pimpersonchange_id}")
     @Transactional
@@ -199,6 +199,7 @@ public class PIMPERSONCHANGEResource {
         return ResponseEntity.status(HttpStatus.OK).body(pimpersonchangeMapping.toDto(pimpersonchangeService.getDraft(new PIMPERSONCHANGE())));
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMPERSONCHANGE-HistoryRec-all')")
 	@ApiOperation(value = "fetch历史审批记录", tags = {"PIMPERSONCHANGE" } ,notes = "fetch历史审批记录")
     @RequestMapping(method= RequestMethod.GET , value="/pimpersonchanges/fetchhistoryrec")
 	public ResponseEntity<List<PIMPERSONCHANGEDTO>> fetchHistoryRec(PIMPERSONCHANGESearchContext context) {
@@ -211,6 +212,7 @@ public class PIMPERSONCHANGEResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMPERSONCHANGE-HistoryRec-all')")
 	@ApiOperation(value = "search历史审批记录", tags = {"PIMPERSONCHANGE" } ,notes = "search历史审批记录")
     @RequestMapping(method= RequestMethod.POST , value="/pimpersonchanges/searchhistoryrec")
 	public ResponseEntity<Page<PIMPERSONCHANGEDTO>> searchHistoryRec(@RequestBody PIMPERSONCHANGESearchContext context) {
@@ -219,6 +221,7 @@ public class PIMPERSONCHANGEResource {
                 .body(new PageImpl(pimpersonchangeMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMPERSONCHANGE-PIMCL_NOTAPPROVAL-all')")
 	@ApiOperation(value = "fetchPIMCL_NOTAPPROVAL", tags = {"PIMPERSONCHANGE" } ,notes = "fetchPIMCL_NOTAPPROVAL")
     @RequestMapping(method= RequestMethod.GET , value="/pimpersonchanges/fetchpimcl_notapproval")
 	public ResponseEntity<List<PIMPERSONCHANGEDTO>> fetchPIMCL_NOTAPPROVAL(PIMPERSONCHANGESearchContext context) {
@@ -231,6 +234,7 @@ public class PIMPERSONCHANGEResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMPERSONCHANGE-PIMCL_NOTAPPROVAL-all')")
 	@ApiOperation(value = "searchPIMCL_NOTAPPROVAL", tags = {"PIMPERSONCHANGE" } ,notes = "searchPIMCL_NOTAPPROVAL")
     @RequestMapping(method= RequestMethod.POST , value="/pimpersonchanges/searchpimcl_notapproval")
 	public ResponseEntity<Page<PIMPERSONCHANGEDTO>> searchPIMCL_NOTAPPROVAL(@RequestBody PIMPERSONCHANGESearchContext context) {
@@ -239,6 +243,7 @@ public class PIMPERSONCHANGEResource {
                 .body(new PageImpl(pimpersonchangeMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMPERSONCHANGE-HeadRed-all')")
 	@ApiOperation(value = "fetch总部记录", tags = {"PIMPERSONCHANGE" } ,notes = "fetch总部记录")
     @RequestMapping(method= RequestMethod.GET , value="/pimpersonchanges/fetchheadred")
 	public ResponseEntity<List<PIMPERSONCHANGEDTO>> fetchHeadRed(PIMPERSONCHANGESearchContext context) {
@@ -251,6 +256,7 @@ public class PIMPERSONCHANGEResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMPERSONCHANGE-HeadRed-all')")
 	@ApiOperation(value = "search总部记录", tags = {"PIMPERSONCHANGE" } ,notes = "search总部记录")
     @RequestMapping(method= RequestMethod.POST , value="/pimpersonchanges/searchheadred")
 	public ResponseEntity<Page<PIMPERSONCHANGEDTO>> searchHeadRed(@RequestBody PIMPERSONCHANGESearchContext context) {
@@ -259,6 +265,7 @@ public class PIMPERSONCHANGEResource {
                 .body(new PageImpl(pimpersonchangeMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMPERSONCHANGE-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PIMPERSONCHANGE" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimpersonchanges/fetchdefault")
 	public ResponseEntity<List<PIMPERSONCHANGEDTO>> fetchDefault(PIMPERSONCHANGESearchContext context) {
@@ -271,6 +278,7 @@ public class PIMPERSONCHANGEResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMPERSONCHANGE-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PIMPERSONCHANGE" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pimpersonchanges/searchdefault")
 	public ResponseEntity<Page<PIMPERSONCHANGEDTO>> searchDefault(@RequestBody PIMPERSONCHANGESearchContext context) {

@@ -64,7 +64,7 @@ public class WXEntAppResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#wxentapp_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#wxentapp_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"WXEntApp" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/wxentapps/{wxentapp_id}")
     @Transactional
@@ -173,6 +173,7 @@ public class WXEntAppResource {
         return  ResponseEntity.status(HttpStatus.OK).body(wxentappService.checkKey(wxentappMapping.toDomain(wxentappdto)));
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WXEntApp-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"WXEntApp" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/wxentapps/fetchdefault")
 	public ResponseEntity<List<WXEntAppDTO>> fetchDefault(WXEntAppSearchContext context) {
@@ -185,6 +186,7 @@ public class WXEntAppResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WXEntApp-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"WXEntApp" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/wxentapps/searchdefault")
 	public ResponseEntity<Page<WXEntAppDTO>> searchDefault(@RequestBody WXEntAppSearchContext context) {

@@ -158,7 +158,7 @@ public class PIMTITLEResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#pimtitle_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#pimtitle_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"PIMTITLE" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimtitles/{pimtitle_id}")
     @Transactional
@@ -173,6 +173,7 @@ public class PIMTITLEResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMTITLE-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PIMTITLE" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimtitles/fetchdefault")
 	public ResponseEntity<List<PIMTITLEDTO>> fetchDefault(PIMTITLESearchContext context) {
@@ -185,6 +186,7 @@ public class PIMTITLEResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMTITLE-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PIMTITLE" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pimtitles/searchdefault")
 	public ResponseEntity<Page<PIMTITLEDTO>> searchDefault(@RequestBody PIMTITLESearchContext context) {
@@ -193,6 +195,7 @@ public class PIMTITLEResource {
                 .body(new PageImpl(pimtitleMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMTITLE-JLSS-all')")
 	@ApiOperation(value = "fetch记录所属", tags = {"PIMTITLE" } ,notes = "fetch记录所属")
     @RequestMapping(method= RequestMethod.GET , value="/pimtitles/fetchjlss")
 	public ResponseEntity<List<PIMTITLEDTO>> fetchJLSS(PIMTITLESearchContext context) {
@@ -205,6 +208,7 @@ public class PIMTITLEResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMTITLE-JLSS-all')")
 	@ApiOperation(value = "search记录所属", tags = {"PIMTITLE" } ,notes = "search记录所属")
     @RequestMapping(method= RequestMethod.POST , value="/pimtitles/searchjlss")
 	public ResponseEntity<Page<PIMTITLEDTO>> searchJLSS(@RequestBody PIMTITLESearchContext context) {
@@ -213,6 +217,7 @@ public class PIMTITLEResource {
                 .body(new PageImpl(pimtitleMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMTITLE-AscriptionSys-all')")
 	@ApiOperation(value = "fetch职称记录所属是管理员的", tags = {"PIMTITLE" } ,notes = "fetch职称记录所属是管理员的")
     @RequestMapping(method= RequestMethod.GET , value="/pimtitles/fetchascriptionsys")
 	public ResponseEntity<List<PIMTITLEDTO>> fetchAscriptionSys(PIMTITLESearchContext context) {
@@ -225,6 +230,7 @@ public class PIMTITLEResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMTITLE-AscriptionSys-all')")
 	@ApiOperation(value = "search职称记录所属是管理员的", tags = {"PIMTITLE" } ,notes = "search职称记录所属是管理员的")
     @RequestMapping(method= RequestMethod.POST , value="/pimtitles/searchascriptionsys")
 	public ResponseEntity<Page<PIMTITLEDTO>> searchAscriptionSys(@RequestBody PIMTITLESearchContext context) {
@@ -233,6 +239,7 @@ public class PIMTITLEResource {
                 .body(new PageImpl(pimtitleMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMTITLE-REP_TITLE-all')")
 	@ApiOperation(value = "fetch职称分布", tags = {"PIMTITLE" } ,notes = "fetch职称分布")
     @RequestMapping(method= RequestMethod.GET , value="/pimtitles/fetchrep_title")
 	public ResponseEntity<List<HashMap>> fetchREP_TITLE(PIMTITLESearchContext context) {
@@ -244,6 +251,7 @@ public class PIMTITLEResource {
                 .body(domains.getContent());
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMTITLE-REP_TITLE-all')")
 	@ApiOperation(value = "search职称分布", tags = {"PIMTITLE" } ,notes = "search职称分布")
     @RequestMapping(method= RequestMethod.POST , value="/pimtitles/searchrep_title")
 	public ResponseEntity<Page<HashMap>> searchREP_TITLE(@RequestBody PIMTITLESearchContext context) {
@@ -252,6 +260,7 @@ public class PIMTITLEResource {
                 .body(new PageImpl(domains.getContent(), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMTITLE-ZIZHU-all')")
 	@ApiOperation(value = "fetch自助(职称信息)", tags = {"PIMTITLE" } ,notes = "fetch自助(职称信息)")
     @RequestMapping(method= RequestMethod.GET , value="/pimtitles/fetchzizhu")
 	public ResponseEntity<List<PIMTITLEDTO>> fetchZIZHU(PIMTITLESearchContext context) {
@@ -264,6 +273,7 @@ public class PIMTITLEResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMTITLE-ZIZHU-all')")
 	@ApiOperation(value = "search自助(职称信息)", tags = {"PIMTITLE" } ,notes = "search自助(职称信息)")
     @RequestMapping(method= RequestMethod.POST , value="/pimtitles/searchzizhu")
 	public ResponseEntity<Page<PIMTITLEDTO>> searchZIZHU(@RequestBody PIMTITLESearchContext context) {

@@ -99,7 +99,7 @@ public class PCMLOGResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#pcmlog_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#pcmlog_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"PCMLOG" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmlogs/{pcmlog_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class PCMLOGResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMLOG-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PCMLOG" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pcmlogs/fetchdefault")
 	public ResponseEntity<List<PCMLOGDTO>> fetchDefault(PCMLOGSearchContext context) {
@@ -172,6 +173,7 @@ public class PCMLOGResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMLOG-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PCMLOG" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pcmlogs/searchdefault")
 	public ResponseEntity<Page<PCMLOGDTO>> searchDefault(@RequestBody PCMLOGSearchContext context) {

@@ -134,7 +134,7 @@ public class WXAccountResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#wxaccount_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#wxaccount_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"WXAccount" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/wxaccounts/{wxaccount_id}")
     @Transactional
@@ -199,6 +199,7 @@ public class WXAccountResource {
         return ResponseEntity.status(HttpStatus.OK).body(wxaccountMapping.toDto(wxaccountService.getDraft(new WXAccount())));
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WXAccount-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"WXAccount" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/wxaccounts/fetchdefault")
 	public ResponseEntity<List<WXAccountDTO>> fetchDefault(WXAccountSearchContext context) {
@@ -211,6 +212,7 @@ public class WXAccountResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WXAccount-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"WXAccount" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/wxaccounts/searchdefault")
 	public ResponseEntity<Page<WXAccountDTO>> searchDefault(@RequestBody WXAccountSearchContext context) {

@@ -71,7 +71,7 @@ public class TRMPLANFORMUResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#trmplanformu_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#trmplanformu_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"TRMPLANFORMU" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/trmplanformus/{trmplanformu_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class TRMPLANFORMUResource {
         return  ResponseEntity.status(HttpStatus.OK).body(trmplanformuService.checkKey(trmplanformuMapping.toDomain(trmplanformudto)));
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMPLANFORMU-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"TRMPLANFORMU" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/trmplanformus/fetchdefault")
 	public ResponseEntity<List<TRMPLANFORMUDTO>> fetchDefault(TRMPLANFORMUSearchContext context) {
@@ -172,6 +173,7 @@ public class TRMPLANFORMUResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMPLANFORMU-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"TRMPLANFORMU" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/trmplanformus/searchdefault")
 	public ResponseEntity<Page<TRMPLANFORMUDTO>> searchDefault(@RequestBody TRMPLANFORMUSearchContext context) {

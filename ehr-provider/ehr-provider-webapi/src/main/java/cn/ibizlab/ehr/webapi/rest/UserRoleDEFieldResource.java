@@ -124,7 +124,7 @@ public class UserRoleDEFieldResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#userroledefield_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#userroledefield_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"UserRoleDEField" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/userroledefields/{userroledefield_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class UserRoleDEFieldResource {
         return ResponseEntity.status(HttpStatus.OK).body(userroledefieldMapping.toDto(userroledefieldService.getDraft(new UserRoleDEField())));
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UserRoleDEField-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"UserRoleDEField" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/userroledefields/fetchdefault")
 	public ResponseEntity<List<UserRoleDEFieldDTO>> fetchDefault(UserRoleDEFieldSearchContext context) {
@@ -172,6 +173,7 @@ public class UserRoleDEFieldResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UserRoleDEField-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"UserRoleDEField" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/userroledefields/searchdefault")
 	public ResponseEntity<Page<UserRoleDEFieldDTO>> searchDefault(@RequestBody UserRoleDEFieldSearchContext context) {

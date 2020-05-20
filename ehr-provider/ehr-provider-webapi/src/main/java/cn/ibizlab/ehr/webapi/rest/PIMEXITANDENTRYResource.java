@@ -162,7 +162,7 @@ public class PIMEXITANDENTRYResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#pimexitandentry_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#pimexitandentry_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"PIMEXITANDENTRY" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimexitandentries/{pimexitandentry_id}")
     @Transactional
@@ -212,6 +212,7 @@ public class PIMEXITANDENTRYResource {
         return ResponseEntity.status(HttpStatus.OK).body(pimexitandentrydto);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMEXITANDENTRY-YGCGJ-all')")
 	@ApiOperation(value = "fetch因公出国境", tags = {"PIMEXITANDENTRY" } ,notes = "fetch因公出国境")
     @RequestMapping(method= RequestMethod.GET , value="/pimexitandentries/fetchygcgj")
 	public ResponseEntity<List<PIMEXITANDENTRYDTO>> fetchYGCGJ(PIMEXITANDENTRYSearchContext context) {
@@ -224,6 +225,7 @@ public class PIMEXITANDENTRYResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMEXITANDENTRY-YGCGJ-all')")
 	@ApiOperation(value = "search因公出国境", tags = {"PIMEXITANDENTRY" } ,notes = "search因公出国境")
     @RequestMapping(method= RequestMethod.POST , value="/pimexitandentries/searchygcgj")
 	public ResponseEntity<Page<PIMEXITANDENTRYDTO>> searchYGCGJ(@RequestBody PIMEXITANDENTRYSearchContext context) {
@@ -232,6 +234,7 @@ public class PIMEXITANDENTRYResource {
                 .body(new PageImpl(pimexitandentryMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMEXITANDENTRY-YGZZ-all')")
 	@ApiOperation(value = "fetch员工自助", tags = {"PIMEXITANDENTRY" } ,notes = "fetch员工自助")
     @RequestMapping(method= RequestMethod.GET , value="/pimexitandentries/fetchygzz")
 	public ResponseEntity<List<PIMEXITANDENTRYDTO>> fetchYGZZ(PIMEXITANDENTRYSearchContext context) {
@@ -244,6 +247,7 @@ public class PIMEXITANDENTRYResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMEXITANDENTRY-YGZZ-all')")
 	@ApiOperation(value = "search员工自助", tags = {"PIMEXITANDENTRY" } ,notes = "search员工自助")
     @RequestMapping(method= RequestMethod.POST , value="/pimexitandentries/searchygzz")
 	public ResponseEntity<Page<PIMEXITANDENTRYDTO>> searchYGZZ(@RequestBody PIMEXITANDENTRYSearchContext context) {
@@ -252,6 +256,7 @@ public class PIMEXITANDENTRYResource {
                 .body(new PageImpl(pimexitandentryMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMEXITANDENTRY-MOBJLSS-all')")
 	@ApiOperation(value = "fetch记录所属（移动端）", tags = {"PIMEXITANDENTRY" } ,notes = "fetch记录所属（移动端）")
     @RequestMapping(method= RequestMethod.GET , value="/pimexitandentries/fetchmobjlss")
 	public ResponseEntity<List<PIMEXITANDENTRYDTO>> fetchMOBJLSS(PIMEXITANDENTRYSearchContext context) {
@@ -264,6 +269,7 @@ public class PIMEXITANDENTRYResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMEXITANDENTRY-MOBJLSS-all')")
 	@ApiOperation(value = "search记录所属（移动端）", tags = {"PIMEXITANDENTRY" } ,notes = "search记录所属（移动端）")
     @RequestMapping(method= RequestMethod.POST , value="/pimexitandentries/searchmobjlss")
 	public ResponseEntity<Page<PIMEXITANDENTRYDTO>> searchMOBJLSS(@RequestBody PIMEXITANDENTRYSearchContext context) {
@@ -272,6 +278,7 @@ public class PIMEXITANDENTRYResource {
                 .body(new PageImpl(pimexitandentryMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMEXITANDENTRY-YSCGJ-all')")
 	@ApiOperation(value = "fetch因私出国境", tags = {"PIMEXITANDENTRY" } ,notes = "fetch因私出国境")
     @RequestMapping(method= RequestMethod.GET , value="/pimexitandentries/fetchyscgj")
 	public ResponseEntity<List<PIMEXITANDENTRYDTO>> fetchYSCGJ(PIMEXITANDENTRYSearchContext context) {
@@ -284,6 +291,7 @@ public class PIMEXITANDENTRYResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMEXITANDENTRY-YSCGJ-all')")
 	@ApiOperation(value = "search因私出国境", tags = {"PIMEXITANDENTRY" } ,notes = "search因私出国境")
     @RequestMapping(method= RequestMethod.POST , value="/pimexitandentries/searchyscgj")
 	public ResponseEntity<Page<PIMEXITANDENTRYDTO>> searchYSCGJ(@RequestBody PIMEXITANDENTRYSearchContext context) {
@@ -292,6 +300,7 @@ public class PIMEXITANDENTRYResource {
                 .body(new PageImpl(pimexitandentryMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMEXITANDENTRY-FormType-all')")
 	@ApiOperation(value = "fetchFormType", tags = {"PIMEXITANDENTRY" } ,notes = "fetchFormType")
     @RequestMapping(method= RequestMethod.GET , value="/pimexitandentries/fetchformtype")
 	public ResponseEntity<List<PIMEXITANDENTRYDTO>> fetchFormType(PIMEXITANDENTRYSearchContext context) {
@@ -304,6 +313,7 @@ public class PIMEXITANDENTRYResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMEXITANDENTRY-FormType-all')")
 	@ApiOperation(value = "searchFormType", tags = {"PIMEXITANDENTRY" } ,notes = "searchFormType")
     @RequestMapping(method= RequestMethod.POST , value="/pimexitandentries/searchformtype")
 	public ResponseEntity<Page<PIMEXITANDENTRYDTO>> searchFormType(@RequestBody PIMEXITANDENTRYSearchContext context) {
@@ -312,6 +322,7 @@ public class PIMEXITANDENTRYResource {
                 .body(new PageImpl(pimexitandentryMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMEXITANDENTRY-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PIMEXITANDENTRY" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimexitandentries/fetchdefault")
 	public ResponseEntity<List<PIMEXITANDENTRYDTO>> fetchDefault(PIMEXITANDENTRYSearchContext context) {
@@ -324,6 +335,7 @@ public class PIMEXITANDENTRYResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMEXITANDENTRY-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PIMEXITANDENTRY" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pimexitandentries/searchdefault")
 	public ResponseEntity<Page<PIMEXITANDENTRYDTO>> searchDefault(@RequestBody PIMEXITANDENTRYSearchContext context) {

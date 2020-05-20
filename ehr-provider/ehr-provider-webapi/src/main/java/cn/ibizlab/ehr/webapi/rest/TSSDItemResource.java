@@ -76,7 +76,7 @@ public class TSSDItemResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#tssditem_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#tssditem_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"TSSDItem" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/tssditems/{tssditem_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class TSSDItemResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TSSDItem-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"TSSDItem" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/tssditems/fetchdefault")
 	public ResponseEntity<List<TSSDItemDTO>> fetchDefault(TSSDItemSearchContext context) {
@@ -172,6 +173,7 @@ public class TSSDItemResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TSSDItem-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"TSSDItem" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/tssditems/searchdefault")
 	public ResponseEntity<Page<TSSDItemDTO>> searchDefault(@RequestBody TSSDItemSearchContext context) {

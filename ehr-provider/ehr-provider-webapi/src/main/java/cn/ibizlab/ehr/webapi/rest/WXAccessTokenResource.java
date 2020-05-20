@@ -136,7 +136,7 @@ public class WXAccessTokenResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#wxaccesstoken_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#wxaccesstoken_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"WXAccessToken" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/wxaccesstokens/{wxaccesstoken_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class WXAccessTokenResource {
         return ResponseEntity.status(HttpStatus.OK).body(wxaccesstokenMapping.toDto(wxaccesstokenService.getDraft(new WXAccessToken())));
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WXAccessToken-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"WXAccessToken" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/wxaccesstokens/fetchdefault")
 	public ResponseEntity<List<WXAccessTokenDTO>> fetchDefault(WXAccessTokenSearchContext context) {
@@ -172,6 +173,7 @@ public class WXAccessTokenResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WXAccessToken-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"WXAccessToken" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/wxaccesstokens/searchdefault")
 	public ResponseEntity<Page<WXAccessTokenDTO>> searchDefault(@RequestBody WXAccessTokenSearchContext context) {

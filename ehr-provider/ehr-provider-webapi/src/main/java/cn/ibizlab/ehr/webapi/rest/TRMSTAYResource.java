@@ -76,7 +76,7 @@ public class TRMSTAYResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#trmstay_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#trmstay_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"TRMSTAY" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/trmstays/{trmstay_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class TRMSTAYResource {
         return  ResponseEntity.status(HttpStatus.OK).body(trmstayService.checkKey(trmstayMapping.toDomain(trmstaydto)));
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMSTAY-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"TRMSTAY" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/trmstays/fetchdefault")
 	public ResponseEntity<List<TRMSTAYDTO>> fetchDefault(TRMSTAYSearchContext context) {
@@ -172,6 +173,7 @@ public class TRMSTAYResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMSTAY-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"TRMSTAY" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/trmstays/searchdefault")
 	public ResponseEntity<Page<TRMSTAYDTO>> searchDefault(@RequestBody TRMSTAYSearchContext context) {

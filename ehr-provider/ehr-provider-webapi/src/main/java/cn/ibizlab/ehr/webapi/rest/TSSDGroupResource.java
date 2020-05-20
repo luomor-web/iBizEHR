@@ -64,7 +64,7 @@ public class TSSDGroupResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#tssdgroup_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#tssdgroup_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"TSSDGroup" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/tssdgroups/{tssdgroup_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class TSSDGroupResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TSSDGroup-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"TSSDGroup" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/tssdgroups/fetchdefault")
 	public ResponseEntity<List<TSSDGroupDTO>> fetchDefault(TSSDGroupSearchContext context) {
@@ -172,6 +173,7 @@ public class TSSDGroupResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TSSDGroup-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"TSSDGroup" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/tssdgroups/searchdefault")
 	public ResponseEntity<Page<TSSDGroupDTO>> searchDefault(@RequestBody TSSDGroupSearchContext context) {

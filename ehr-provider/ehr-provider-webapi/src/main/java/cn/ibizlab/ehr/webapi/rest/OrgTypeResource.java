@@ -80,7 +80,7 @@ public class OrgTypeResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#orgtype_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#orgtype_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"OrgType" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/orgtypes/{orgtype_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class OrgTypeResource {
         return  ResponseEntity.status(HttpStatus.OK).body(orgtypeService.checkKey(orgtypeMapping.toDomain(orgtypedto)));
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrgType-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"OrgType" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/orgtypes/fetchdefault")
 	public ResponseEntity<List<OrgTypeDTO>> fetchDefault(OrgTypeSearchContext context) {
@@ -172,6 +173,7 @@ public class OrgTypeResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrgType-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"OrgType" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/orgtypes/searchdefault")
 	public ResponseEntity<Page<OrgTypeDTO>> searchDefault(@RequestBody OrgTypeSearchContext context) {

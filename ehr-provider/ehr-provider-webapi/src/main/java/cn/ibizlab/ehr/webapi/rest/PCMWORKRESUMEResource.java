@@ -145,7 +145,7 @@ public class PCMWORKRESUMEResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#pcmworkresume_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#pcmworkresume_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"PCMWORKRESUME" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmworkresumes/{pcmworkresume_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class PCMWORKRESUMEResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMWORKRESUME-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PCMWORKRESUME" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pcmworkresumes/fetchdefault")
 	public ResponseEntity<List<PCMWORKRESUMEDTO>> fetchDefault(PCMWORKRESUMESearchContext context) {
@@ -172,6 +173,7 @@ public class PCMWORKRESUMEResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMWORKRESUME-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PCMWORKRESUME" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pcmworkresumes/searchdefault")
 	public ResponseEntity<Page<PCMWORKRESUMEDTO>> searchDefault(@RequestBody PCMWORKRESUMESearchContext context) {

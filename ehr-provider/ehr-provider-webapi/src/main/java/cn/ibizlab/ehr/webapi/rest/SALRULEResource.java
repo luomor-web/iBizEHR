@@ -64,7 +64,7 @@ public class SALRULEResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#salrule_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#salrule_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"SALRULE" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/salrules/{salrule_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class SALRULEResource {
         return  ResponseEntity.status(HttpStatus.OK).body(salruleService.checkKey(salruleMapping.toDomain(salruledto)));
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALRULE-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"SALRULE" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/salrules/fetchdefault")
 	public ResponseEntity<List<SALRULEDTO>> fetchDefault(SALRULESearchContext context) {
@@ -172,6 +173,7 @@ public class SALRULEResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALRULE-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"SALRULE" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/salrules/searchdefault")
 	public ResponseEntity<Page<SALRULEDTO>> searchDefault(@RequestBody SALRULESearchContext context) {

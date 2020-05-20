@@ -85,7 +85,7 @@ public class TDZWXXResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#tdzwxx_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#tdzwxx_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"TDZWXX" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/tdzwxxes/{tdzwxx_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class TDZWXXResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TDZWXX-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"TDZWXX" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/tdzwxxes/fetchdefault")
 	public ResponseEntity<List<TDZWXXDTO>> fetchDefault(TDZWXXSearchContext context) {
@@ -172,6 +173,7 @@ public class TDZWXXResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TDZWXX-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"TDZWXX" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/tdzwxxes/searchdefault")
 	public ResponseEntity<Page<TDZWXXDTO>> searchDefault(@RequestBody TDZWXXSearchContext context) {

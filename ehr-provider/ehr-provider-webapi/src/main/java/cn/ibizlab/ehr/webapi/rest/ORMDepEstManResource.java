@@ -106,7 +106,7 @@ public class ORMDepEstManResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#ormdepestman_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#ormdepestman_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"ORMDepEstMan" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/ormdepestmen/{ormdepestman_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class ORMDepEstManResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMDepEstMan-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"ORMDepEstMan" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/ormdepestmen/fetchdefault")
 	public ResponseEntity<List<ORMDepEstManDTO>> fetchDefault(ORMDepEstManSearchContext context) {
@@ -172,6 +173,7 @@ public class ORMDepEstManResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMDepEstMan-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"ORMDepEstMan" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/ormdepestmen/searchdefault")
 	public ResponseEntity<Page<ORMDepEstManDTO>> searchDefault(@RequestBody ORMDepEstManSearchContext context) {

@@ -80,7 +80,7 @@ public class CodeItemResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#codeitem_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#codeitem_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"CodeItem" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/codeitems/{codeitem_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class CodeItemResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-CodeItem-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"CodeItem" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/codeitems/fetchdefault")
 	public ResponseEntity<List<CodeItemDTO>> fetchDefault(CodeItemSearchContext context) {
@@ -172,6 +173,7 @@ public class CodeItemResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-CodeItem-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"CodeItem" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/codeitems/searchdefault")
 	public ResponseEntity<Page<CodeItemDTO>> searchDefault(@RequestBody CodeItemSearchContext context) {
@@ -180,6 +182,7 @@ public class CodeItemResource {
                 .body(new PageImpl(codeitemMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-CodeItem-CurCL-all')")
 	@ApiOperation(value = "fetch当前代码表", tags = {"CodeItem" } ,notes = "fetch当前代码表")
     @RequestMapping(method= RequestMethod.GET , value="/codeitems/fetchcurcl")
 	public ResponseEntity<List<CodeItemDTO>> fetchCurCL(CodeItemSearchContext context) {
@@ -192,6 +195,7 @@ public class CodeItemResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-CodeItem-CurCL-all')")
 	@ApiOperation(value = "search当前代码表", tags = {"CodeItem" } ,notes = "search当前代码表")
     @RequestMapping(method= RequestMethod.POST , value="/codeitems/searchcurcl")
 	public ResponseEntity<Page<CodeItemDTO>> searchCurCL(@RequestBody CodeItemSearchContext context) {

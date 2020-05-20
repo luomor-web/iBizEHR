@@ -129,7 +129,7 @@ public class ORMXMGLResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#ormxmgl_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#ormxmgl_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"ORMXMGL" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/ormxmgls/{ormxmgl_id}")
     @Transactional
@@ -173,6 +173,7 @@ public class ORMXMGLResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMXMGL-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"ORMXMGL" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/ormxmgls/fetchdefault")
 	public ResponseEntity<List<ORMXMGLDTO>> fetchDefault(ORMXMGLSearchContext context) {
@@ -185,6 +186,7 @@ public class ORMXMGLResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMXMGL-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"ORMXMGL" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/ormxmgls/searchdefault")
 	public ResponseEntity<Page<ORMXMGLDTO>> searchDefault(@RequestBody ORMXMGLSearchContext context) {
@@ -193,6 +195,7 @@ public class ORMXMGLResource {
                 .body(new PageImpl(ormxmglMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMXMGL-ValidPro-all')")
 	@ApiOperation(value = "fetch有效项目", tags = {"ORMXMGL" } ,notes = "fetch有效项目")
     @RequestMapping(method= RequestMethod.GET , value="/ormxmgls/fetchvalidpro")
 	public ResponseEntity<List<ORMXMGLDTO>> fetchValidPro(ORMXMGLSearchContext context) {
@@ -205,6 +208,7 @@ public class ORMXMGLResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMXMGL-ValidPro-all')")
 	@ApiOperation(value = "search有效项目", tags = {"ORMXMGL" } ,notes = "search有效项目")
     @RequestMapping(method= RequestMethod.POST , value="/ormxmgls/searchvalidpro")
 	public ResponseEntity<Page<ORMXMGLDTO>> searchValidPro(@RequestBody ORMXMGLSearchContext context) {

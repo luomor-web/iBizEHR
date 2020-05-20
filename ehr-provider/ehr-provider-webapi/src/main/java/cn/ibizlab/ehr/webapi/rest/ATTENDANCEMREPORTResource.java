@@ -84,7 +84,7 @@ public class ATTENDANCEMREPORTResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#attendancemreport_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#attendancemreport_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"ATTENDANCEMREPORT" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/attendancemreports/{attendancemreport_id}")
     @Transactional
@@ -212,6 +212,7 @@ public class ATTENDANCEMREPORTResource {
         return ResponseEntity.status(HttpStatus.OK).body(attendancemreportMapping.toDto(attendancemreportService.getDraft(new ATTENDANCEMREPORT())));
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ATTENDANCEMREPORT-KQYBDY-all')")
 	@ApiOperation(value = "fetch考勤月报打印", tags = {"ATTENDANCEMREPORT" } ,notes = "fetch考勤月报打印")
     @RequestMapping(method= RequestMethod.GET , value="/attendancemreports/fetchkqybdy")
 	public ResponseEntity<List<ATTENDANCEMREPORTDTO>> fetchKQYBDY(ATTENDANCEMREPORTSearchContext context) {
@@ -224,6 +225,7 @@ public class ATTENDANCEMREPORTResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ATTENDANCEMREPORT-KQYBDY-all')")
 	@ApiOperation(value = "search考勤月报打印", tags = {"ATTENDANCEMREPORT" } ,notes = "search考勤月报打印")
     @RequestMapping(method= RequestMethod.POST , value="/attendancemreports/searchkqybdy")
 	public ResponseEntity<Page<ATTENDANCEMREPORTDTO>> searchKQYBDY(@RequestBody ATTENDANCEMREPORTSearchContext context) {
@@ -232,6 +234,7 @@ public class ATTENDANCEMREPORTResource {
                 .body(new PageImpl(attendancemreportMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ATTENDANCEMREPORT-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"ATTENDANCEMREPORT" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/attendancemreports/fetchdefault")
 	public ResponseEntity<List<ATTENDANCEMREPORTDTO>> fetchDefault(ATTENDANCEMREPORTSearchContext context) {
@@ -244,6 +247,7 @@ public class ATTENDANCEMREPORTResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ATTENDANCEMREPORT-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"ATTENDANCEMREPORT" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/attendancemreports/searchdefault")
 	public ResponseEntity<Page<ATTENDANCEMREPORTDTO>> searchDefault(@RequestBody ATTENDANCEMREPORTSearchContext context) {
@@ -252,6 +256,7 @@ public class ATTENDANCEMREPORTResource {
                 .body(new PageImpl(attendancemreportMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ATTENDANCEMREPORT-KQYCZKQYB-all')")
 	@ApiOperation(value = "fetch考勤员操作考勤月报", tags = {"ATTENDANCEMREPORT" } ,notes = "fetch考勤员操作考勤月报")
     @RequestMapping(method= RequestMethod.GET , value="/attendancemreports/fetchkqyczkqyb")
 	public ResponseEntity<List<ATTENDANCEMREPORTDTO>> fetchKQYCZKQYB(ATTENDANCEMREPORTSearchContext context) {
@@ -264,6 +269,7 @@ public class ATTENDANCEMREPORTResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ATTENDANCEMREPORT-KQYCZKQYB-all')")
 	@ApiOperation(value = "search考勤员操作考勤月报", tags = {"ATTENDANCEMREPORT" } ,notes = "search考勤员操作考勤月报")
     @RequestMapping(method= RequestMethod.POST , value="/attendancemreports/searchkqyczkqyb")
 	public ResponseEntity<Page<ATTENDANCEMREPORTDTO>> searchKQYCZKQYB(@RequestBody ATTENDANCEMREPORTSearchContext context) {
@@ -272,6 +278,7 @@ public class ATTENDANCEMREPORTResource {
                 .body(new PageImpl(attendancemreportMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ATTENDANCEMREPORT-CurORMORGKQYB-all')")
 	@ApiOperation(value = "fetch当前组织考勤月报", tags = {"ATTENDANCEMREPORT" } ,notes = "fetch当前组织考勤月报")
     @RequestMapping(method= RequestMethod.GET , value="/attendancemreports/fetchcurormorgkqyb")
 	public ResponseEntity<List<ATTENDANCEMREPORTDTO>> fetchCurORMORGKQYB(ATTENDANCEMREPORTSearchContext context) {
@@ -284,6 +291,7 @@ public class ATTENDANCEMREPORTResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ATTENDANCEMREPORT-CurORMORGKQYB-all')")
 	@ApiOperation(value = "search当前组织考勤月报", tags = {"ATTENDANCEMREPORT" } ,notes = "search当前组织考勤月报")
     @RequestMapping(method= RequestMethod.POST , value="/attendancemreports/searchcurormorgkqyb")
 	public ResponseEntity<Page<ATTENDANCEMREPORTDTO>> searchCurORMORGKQYB(@RequestBody ATTENDANCEMREPORTSearchContext context) {
@@ -292,6 +300,7 @@ public class ATTENDANCEMREPORTResource {
                 .body(new PageImpl(attendancemreportMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ATTENDANCEMREPORT-CurORMORGSECTORKQYB-all')")
 	@ApiOperation(value = "fetch当前组织下部门考勤月报", tags = {"ATTENDANCEMREPORT" } ,notes = "fetch当前组织下部门考勤月报")
     @RequestMapping(method= RequestMethod.GET , value="/attendancemreports/fetchcurormorgsectorkqyb")
 	public ResponseEntity<List<ATTENDANCEMREPORTDTO>> fetchCurORMORGSECTORKQYB(ATTENDANCEMREPORTSearchContext context) {
@@ -304,6 +313,7 @@ public class ATTENDANCEMREPORTResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ATTENDANCEMREPORT-CurORMORGSECTORKQYB-all')")
 	@ApiOperation(value = "search当前组织下部门考勤月报", tags = {"ATTENDANCEMREPORT" } ,notes = "search当前组织下部门考勤月报")
     @RequestMapping(method= RequestMethod.POST , value="/attendancemreports/searchcurormorgsectorkqyb")
 	public ResponseEntity<Page<ATTENDANCEMREPORTDTO>> searchCurORMORGSECTORKQYB(@RequestBody ATTENDANCEMREPORTSearchContext context) {

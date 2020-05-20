@@ -87,7 +87,7 @@ public class OrgSecUserResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#orgsecuser_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#orgsecuser_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"OrgSecUser" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/orgsecusers/{orgsecuser_id}")
     @Transactional
@@ -173,6 +173,7 @@ public class OrgSecUserResource {
         return  ResponseEntity.status(HttpStatus.OK).body(orgsecuserService.checkKey(orgsecuserMapping.toDomain(orgsecuserdto)));
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrgSecUser-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"OrgSecUser" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/orgsecusers/fetchdefault")
 	public ResponseEntity<List<OrgSecUserDTO>> fetchDefault(OrgSecUserSearchContext context) {
@@ -185,6 +186,7 @@ public class OrgSecUserResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrgSecUser-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"OrgSecUser" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/orgsecusers/searchdefault")
 	public ResponseEntity<Page<OrgSecUserDTO>> searchDefault(@RequestBody OrgSecUserSearchContext context) {

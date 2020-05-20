@@ -101,7 +101,7 @@ public class ARCHIVALCATALOGUEResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#archivalcatalogue_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#archivalcatalogue_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"ARCHIVALCATALOGUE" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/archivalcatalogues/{archivalcatalogue_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class ARCHIVALCATALOGUEResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ARCHIVALCATALOGUE-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"ARCHIVALCATALOGUE" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/archivalcatalogues/fetchdefault")
 	public ResponseEntity<List<ARCHIVALCATALOGUEDTO>> fetchDefault(ARCHIVALCATALOGUESearchContext context) {
@@ -172,6 +173,7 @@ public class ARCHIVALCATALOGUEResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ARCHIVALCATALOGUE-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"ARCHIVALCATALOGUE" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/archivalcatalogues/searchdefault")
 	public ResponseEntity<Page<ARCHIVALCATALOGUEDTO>> searchDefault(@RequestBody ARCHIVALCATALOGUESearchContext context) {

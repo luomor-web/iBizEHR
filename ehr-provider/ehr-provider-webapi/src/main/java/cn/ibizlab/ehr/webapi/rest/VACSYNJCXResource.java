@@ -55,7 +55,7 @@ public class VACSYNJCXResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#vacsynjcx_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#vacsynjcx_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"VACSYNJCX" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/vacsynjcxes/{vacsynjcx_id}")
     @Transactional
@@ -173,6 +173,7 @@ public class VACSYNJCXResource {
         return ResponseEntity.status(HttpStatus.OK).body(vacsynjcxMapping.toDto(vacsynjcxService.getDraft(new VACSYNJCX())));
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACSYNJCX-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"VACSYNJCX" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/vacsynjcxes/fetchdefault")
 	public ResponseEntity<List<VACSYNJCXDTO>> fetchDefault(VACSYNJCXSearchContext context) {
@@ -185,6 +186,7 @@ public class VACSYNJCXResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACSYNJCX-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"VACSYNJCX" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/vacsynjcxes/searchdefault")
 	public ResponseEntity<Page<VACSYNJCXDTO>> searchDefault(@RequestBody VACSYNJCXSearchContext context) {

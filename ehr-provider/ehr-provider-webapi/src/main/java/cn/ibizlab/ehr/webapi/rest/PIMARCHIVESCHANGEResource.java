@@ -158,7 +158,7 @@ public class PIMARCHIVESCHANGEResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#pimarchiveschange_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#pimarchiveschange_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"PIMARCHIVESCHANGE" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimarchiveschanges/{pimarchiveschange_id}")
     @Transactional
@@ -173,6 +173,7 @@ public class PIMARCHIVESCHANGEResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMARCHIVESCHANGE-DADCJL-all')")
 	@ApiOperation(value = "fetch档案调出记录", tags = {"PIMARCHIVESCHANGE" } ,notes = "fetch档案调出记录")
     @RequestMapping(method= RequestMethod.GET , value="/pimarchiveschanges/fetchdadcjl")
 	public ResponseEntity<List<PIMARCHIVESCHANGEDTO>> fetchDADCJL(PIMARCHIVESCHANGESearchContext context) {
@@ -185,6 +186,7 @@ public class PIMARCHIVESCHANGEResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMARCHIVESCHANGE-DADCJL-all')")
 	@ApiOperation(value = "search档案调出记录", tags = {"PIMARCHIVESCHANGE" } ,notes = "search档案调出记录")
     @RequestMapping(method= RequestMethod.POST , value="/pimarchiveschanges/searchdadcjl")
 	public ResponseEntity<Page<PIMARCHIVESCHANGEDTO>> searchDADCJL(@RequestBody PIMARCHIVESCHANGESearchContext context) {
@@ -193,6 +195,7 @@ public class PIMARCHIVESCHANGEResource {
                 .body(new PageImpl(pimarchiveschangeMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMARCHIVESCHANGE-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PIMARCHIVESCHANGE" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimarchiveschanges/fetchdefault")
 	public ResponseEntity<List<PIMARCHIVESCHANGEDTO>> fetchDefault(PIMARCHIVESCHANGESearchContext context) {
@@ -205,6 +208,7 @@ public class PIMARCHIVESCHANGEResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMARCHIVESCHANGE-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PIMARCHIVESCHANGE" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pimarchiveschanges/searchdefault")
 	public ResponseEntity<Page<PIMARCHIVESCHANGEDTO>> searchDefault(@RequestBody PIMARCHIVESCHANGESearchContext context) {

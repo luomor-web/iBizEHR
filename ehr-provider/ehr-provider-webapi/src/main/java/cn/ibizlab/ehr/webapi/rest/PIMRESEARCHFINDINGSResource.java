@@ -78,7 +78,7 @@ public class PIMRESEARCHFINDINGSResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#pimresearchfindings_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#pimresearchfindings_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"PIMRESEARCHFINDINGS" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimresearchfindings/{pimresearchfindings_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class PIMRESEARCHFINDINGSResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMRESEARCHFINDINGS-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PIMRESEARCHFINDINGS" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimresearchfindings/fetchdefault")
 	public ResponseEntity<List<PIMRESEARCHFINDINGSDTO>> fetchDefault(PIMRESEARCHFINDINGSSearchContext context) {
@@ -172,6 +173,7 @@ public class PIMRESEARCHFINDINGSResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMRESEARCHFINDINGS-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PIMRESEARCHFINDINGS" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pimresearchfindings/searchdefault")
 	public ResponseEntity<Page<PIMRESEARCHFINDINGSDTO>> searchDefault(@RequestBody PIMRESEARCHFINDINGSSearchContext context) {
@@ -180,6 +182,7 @@ public class PIMRESEARCHFINDINGSResource {
                 .body(new PageImpl(pimresearchfindingsMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMRESEARCHFINDINGS-JLSSGLY-all')")
 	@ApiOperation(value = "fetch记录所属（管理员）", tags = {"PIMRESEARCHFINDINGS" } ,notes = "fetch记录所属（管理员）")
     @RequestMapping(method= RequestMethod.GET , value="/pimresearchfindings/fetchjlssgly")
 	public ResponseEntity<List<PIMRESEARCHFINDINGSDTO>> fetchJLSSGLY(PIMRESEARCHFINDINGSSearchContext context) {
@@ -192,6 +195,7 @@ public class PIMRESEARCHFINDINGSResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMRESEARCHFINDINGS-JLSSGLY-all')")
 	@ApiOperation(value = "search记录所属（管理员）", tags = {"PIMRESEARCHFINDINGS" } ,notes = "search记录所属（管理员）")
     @RequestMapping(method= RequestMethod.POST , value="/pimresearchfindings/searchjlssgly")
 	public ResponseEntity<Page<PIMRESEARCHFINDINGSDTO>> searchJLSSGLY(@RequestBody PIMRESEARCHFINDINGSSearchContext context) {
@@ -200,6 +204,7 @@ public class PIMRESEARCHFINDINGSResource {
                 .body(new PageImpl(pimresearchfindingsMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMRESEARCHFINDINGS-JLSSGR-all')")
 	@ApiOperation(value = "fetch记录所属（个人）", tags = {"PIMRESEARCHFINDINGS" } ,notes = "fetch记录所属（个人）")
     @RequestMapping(method= RequestMethod.GET , value="/pimresearchfindings/fetchjlssgr")
 	public ResponseEntity<List<PIMRESEARCHFINDINGSDTO>> fetchJLSSGR(PIMRESEARCHFINDINGSSearchContext context) {
@@ -212,6 +217,7 @@ public class PIMRESEARCHFINDINGSResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMRESEARCHFINDINGS-JLSSGR-all')")
 	@ApiOperation(value = "search记录所属（个人）", tags = {"PIMRESEARCHFINDINGS" } ,notes = "search记录所属（个人）")
     @RequestMapping(method= RequestMethod.POST , value="/pimresearchfindings/searchjlssgr")
 	public ResponseEntity<Page<PIMRESEARCHFINDINGSDTO>> searchJLSSGR(@RequestBody PIMRESEARCHFINDINGSSearchContext context) {

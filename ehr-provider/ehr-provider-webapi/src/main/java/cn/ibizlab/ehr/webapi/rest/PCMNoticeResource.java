@@ -145,7 +145,7 @@ public class PCMNoticeResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#pcmnotice_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#pcmnotice_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"PCMNotice" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmnotices/{pcmnotice_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class PCMNoticeResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMNotice-NOTICE_DAGLYDQ-all')")
 	@ApiOperation(value = "fetch档案管理员的提醒", tags = {"PCMNotice" } ,notes = "fetch档案管理员的提醒")
     @RequestMapping(method= RequestMethod.GET , value="/pcmnotices/fetchnotice_daglydq")
 	public ResponseEntity<List<PCMNoticeDTO>> fetchNOTICE_DAGLYDQ(PCMNoticeSearchContext context) {
@@ -172,6 +173,7 @@ public class PCMNoticeResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMNotice-NOTICE_DAGLYDQ-all')")
 	@ApiOperation(value = "search档案管理员的提醒", tags = {"PCMNotice" } ,notes = "search档案管理员的提醒")
     @RequestMapping(method= RequestMethod.POST , value="/pcmnotices/searchnotice_daglydq")
 	public ResponseEntity<Page<PCMNoticeDTO>> searchNOTICE_DAGLYDQ(@RequestBody PCMNoticeSearchContext context) {
@@ -180,6 +182,7 @@ public class PCMNoticeResource {
                 .body(new PageImpl(pcmnoticeMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMNotice-NOTICE_XCZYDQ-all')")
 	@ApiOperation(value = "fetch薪酬专员的提醒", tags = {"PCMNotice" } ,notes = "fetch薪酬专员的提醒")
     @RequestMapping(method= RequestMethod.GET , value="/pcmnotices/fetchnotice_xczydq")
 	public ResponseEntity<List<PCMNoticeDTO>> fetchNOTICE_XCZYDQ(PCMNoticeSearchContext context) {
@@ -192,6 +195,7 @@ public class PCMNoticeResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMNotice-NOTICE_XCZYDQ-all')")
 	@ApiOperation(value = "search薪酬专员的提醒", tags = {"PCMNotice" } ,notes = "search薪酬专员的提醒")
     @RequestMapping(method= RequestMethod.POST , value="/pcmnotices/searchnotice_xczydq")
 	public ResponseEntity<Page<PCMNoticeDTO>> searchNOTICE_XCZYDQ(@RequestBody PCMNoticeSearchContext context) {
@@ -200,6 +204,7 @@ public class PCMNoticeResource {
                 .body(new PageImpl(pcmnoticeMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMNotice-NOTICE_KQZYDQ-all')")
 	@ApiOperation(value = "fetch考勤专员的提醒", tags = {"PCMNotice" } ,notes = "fetch考勤专员的提醒")
     @RequestMapping(method= RequestMethod.GET , value="/pcmnotices/fetchnotice_kqzydq")
 	public ResponseEntity<List<PCMNoticeDTO>> fetchNOTICE_KQZYDQ(PCMNoticeSearchContext context) {
@@ -212,6 +217,7 @@ public class PCMNoticeResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMNotice-NOTICE_KQZYDQ-all')")
 	@ApiOperation(value = "search考勤专员的提醒", tags = {"PCMNotice" } ,notes = "search考勤专员的提醒")
     @RequestMapping(method= RequestMethod.POST , value="/pcmnotices/searchnotice_kqzydq")
 	public ResponseEntity<Page<PCMNoticeDTO>> searchNOTICE_KQZYDQ(@RequestBody PCMNoticeSearchContext context) {
@@ -220,6 +226,7 @@ public class PCMNoticeResource {
                 .body(new PageImpl(pcmnoticeMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMNotice-NOTICE_RSZYDQ-all')")
 	@ApiOperation(value = "fetch人事专员的提醒", tags = {"PCMNotice" } ,notes = "fetch人事专员的提醒")
     @RequestMapping(method= RequestMethod.GET , value="/pcmnotices/fetchnotice_rszydq")
 	public ResponseEntity<List<PCMNoticeDTO>> fetchNOTICE_RSZYDQ(PCMNoticeSearchContext context) {
@@ -232,6 +239,7 @@ public class PCMNoticeResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMNotice-NOTICE_RSZYDQ-all')")
 	@ApiOperation(value = "search人事专员的提醒", tags = {"PCMNotice" } ,notes = "search人事专员的提醒")
     @RequestMapping(method= RequestMethod.POST , value="/pcmnotices/searchnotice_rszydq")
 	public ResponseEntity<Page<PCMNoticeDTO>> searchNOTICE_RSZYDQ(@RequestBody PCMNoticeSearchContext context) {
@@ -240,6 +248,7 @@ public class PCMNoticeResource {
                 .body(new PageImpl(pcmnoticeMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMNotice-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PCMNotice" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pcmnotices/fetchdefault")
 	public ResponseEntity<List<PCMNoticeDTO>> fetchDefault(PCMNoticeSearchContext context) {
@@ -252,6 +261,7 @@ public class PCMNoticeResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMNotice-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PCMNotice" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pcmnotices/searchdefault")
 	public ResponseEntity<Page<PCMNoticeDTO>> searchDefault(@RequestBody PCMNoticeSearchContext context) {
@@ -260,6 +270,7 @@ public class PCMNoticeResource {
                 .body(new PageImpl(pcmnoticeMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMNotice-NOTICE_SBFLZYDQ-all')")
 	@ApiOperation(value = "fetch社保福利专员的提醒", tags = {"PCMNotice" } ,notes = "fetch社保福利专员的提醒")
     @RequestMapping(method= RequestMethod.GET , value="/pcmnotices/fetchnotice_sbflzydq")
 	public ResponseEntity<List<PCMNoticeDTO>> fetchNOTICE_SBFLZYDQ(PCMNoticeSearchContext context) {
@@ -272,6 +283,7 @@ public class PCMNoticeResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMNotice-NOTICE_SBFLZYDQ-all')")
 	@ApiOperation(value = "search社保福利专员的提醒", tags = {"PCMNotice" } ,notes = "search社保福利专员的提醒")
     @RequestMapping(method= RequestMethod.POST , value="/pcmnotices/searchnotice_sbflzydq")
 	public ResponseEntity<Page<PCMNoticeDTO>> searchNOTICE_SBFLZYDQ(@RequestBody PCMNoticeSearchContext context) {

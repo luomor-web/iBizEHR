@@ -55,7 +55,7 @@ public class PIMMAJORSETYPEResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#pimmajorsetype_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#pimmajorsetype_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"PIMMAJORSETYPE" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimmajorsetypes/{pimmajorsetype_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class PIMMAJORSETYPEResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMMAJORSETYPE-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PIMMAJORSETYPE" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimmajorsetypes/fetchdefault")
 	public ResponseEntity<List<PIMMAJORSETYPEDTO>> fetchDefault(PIMMAJORSETYPESearchContext context) {
@@ -172,6 +173,7 @@ public class PIMMAJORSETYPEResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMMAJORSETYPE-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PIMMAJORSETYPE" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pimmajorsetypes/searchdefault")
 	public ResponseEntity<Page<PIMMAJORSETYPEDTO>> searchDefault(@RequestBody PIMMAJORSETYPESearchContext context) {

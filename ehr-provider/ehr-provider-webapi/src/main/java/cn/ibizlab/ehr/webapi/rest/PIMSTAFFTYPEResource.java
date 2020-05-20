@@ -106,7 +106,7 @@ public class PIMSTAFFTYPEResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#pimstafftype_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#pimstafftype_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"PIMSTAFFTYPE" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimstafftypes/{pimstafftype_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class PIMSTAFFTYPEResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMSTAFFTYPE-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PIMSTAFFTYPE" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimstafftypes/fetchdefault")
 	public ResponseEntity<List<PIMSTAFFTYPEDTO>> fetchDefault(PIMSTAFFTYPESearchContext context) {
@@ -172,6 +173,7 @@ public class PIMSTAFFTYPEResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMSTAFFTYPE-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PIMSTAFFTYPE" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pimstafftypes/searchdefault")
 	public ResponseEntity<Page<PIMSTAFFTYPEDTO>> searchDefault(@RequestBody PIMSTAFFTYPESearchContext context) {
@@ -180,6 +182,7 @@ public class PIMSTAFFTYPEResource {
                 .body(new PageImpl(pimstafftypeMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMSTAFFTYPE-YPZ-all')")
 	@ApiOperation(value = "fetch应聘者专用", tags = {"PIMSTAFFTYPE" } ,notes = "fetch应聘者专用")
     @RequestMapping(method= RequestMethod.GET , value="/pimstafftypes/fetchypz")
 	public ResponseEntity<List<PIMSTAFFTYPEDTO>> fetchYPZ(PIMSTAFFTYPESearchContext context) {
@@ -192,6 +195,7 @@ public class PIMSTAFFTYPEResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMSTAFFTYPE-YPZ-all')")
 	@ApiOperation(value = "search应聘者专用", tags = {"PIMSTAFFTYPE" } ,notes = "search应聘者专用")
     @RequestMapping(method= RequestMethod.POST , value="/pimstafftypes/searchypz")
 	public ResponseEntity<Page<PIMSTAFFTYPEDTO>> searchYPZ(@RequestBody PIMSTAFFTYPESearchContext context) {

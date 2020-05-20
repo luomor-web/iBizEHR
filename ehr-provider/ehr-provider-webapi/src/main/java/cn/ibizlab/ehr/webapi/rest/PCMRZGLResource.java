@@ -92,7 +92,7 @@ public class PCMRZGLResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#pcmrzgl_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#pcmrzgl_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"PCMRZGL" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmrzgls/{pcmrzgl_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class PCMRZGLResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMRZGL-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PCMRZGL" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pcmrzgls/fetchdefault")
 	public ResponseEntity<List<PCMRZGLDTO>> fetchDefault(PCMRZGLSearchContext context) {
@@ -172,6 +173,7 @@ public class PCMRZGLResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMRZGL-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PCMRZGL" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pcmrzgls/searchdefault")
 	public ResponseEntity<Page<PCMRZGLDTO>> searchDefault(@RequestBody PCMRZGLSearchContext context) {
@@ -180,6 +182,7 @@ public class PCMRZGLResource {
                 .body(new PageImpl(pcmrzglMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMRZGL-GBRZQXDQ-all')")
 	@ApiOperation(value = "fetch干部任职期限查询", tags = {"PCMRZGL" } ,notes = "fetch干部任职期限查询")
     @RequestMapping(method= RequestMethod.GET , value="/pcmrzgls/fetchgbrzqxdq")
 	public ResponseEntity<List<PCMRZGLDTO>> fetchGBRZQXDQ(PCMRZGLSearchContext context) {
@@ -192,6 +195,7 @@ public class PCMRZGLResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMRZGL-GBRZQXDQ-all')")
 	@ApiOperation(value = "search干部任职期限查询", tags = {"PCMRZGL" } ,notes = "search干部任职期限查询")
     @RequestMapping(method= RequestMethod.POST , value="/pcmrzgls/searchgbrzqxdq")
 	public ResponseEntity<Page<PCMRZGLDTO>> searchGBRZQXDQ(@RequestBody PCMRZGLSearchContext context) {
@@ -200,6 +204,7 @@ public class PCMRZGLResource {
                 .body(new PageImpl(pcmrzglMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMRZGL-RQCX-all')")
 	@ApiOperation(value = "fetchRQCX", tags = {"PCMRZGL" } ,notes = "fetchRQCX")
     @RequestMapping(method= RequestMethod.GET , value="/pcmrzgls/fetchrqcx")
 	public ResponseEntity<List<PCMRZGLDTO>> fetchRQCX(PCMRZGLSearchContext context) {
@@ -212,6 +217,7 @@ public class PCMRZGLResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMRZGL-RQCX-all')")
 	@ApiOperation(value = "searchRQCX", tags = {"PCMRZGL" } ,notes = "searchRQCX")
     @RequestMapping(method= RequestMethod.POST , value="/pcmrzgls/searchrqcx")
 	public ResponseEntity<Page<PCMRZGLDTO>> searchRQCX(@RequestBody PCMRZGLSearchContext context) {

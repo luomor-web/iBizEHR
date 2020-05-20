@@ -55,7 +55,7 @@ public class TRMHMATSERResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#trmhmatser_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#trmhmatser_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"TRMHMATSER" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/trmhmatsers/{trmhmatser_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class TRMHMATSERResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMHMATSER-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"TRMHMATSER" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/trmhmatsers/fetchdefault")
 	public ResponseEntity<List<TRMHMATSERDTO>> fetchDefault(TRMHMATSERSearchContext context) {
@@ -172,6 +173,7 @@ public class TRMHMATSERResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMHMATSER-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"TRMHMATSER" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/trmhmatsers/searchdefault")
 	public ResponseEntity<Page<TRMHMATSERDTO>> searchDefault(@RequestBody TRMHMATSERSearchContext context) {

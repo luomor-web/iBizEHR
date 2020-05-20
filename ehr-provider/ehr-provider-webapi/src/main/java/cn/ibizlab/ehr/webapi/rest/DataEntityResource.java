@@ -68,7 +68,7 @@ public class DataEntityResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#dataentity_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#dataentity_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"DataEntity" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/dataentities/{dataentity_id}")
     @Transactional
@@ -186,6 +186,7 @@ public class DataEntityResource {
         return  ResponseEntity.status(HttpStatus.OK).body(dataentityService.checkKey(dataentityMapping.toDomain(dataentitydto)));
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DataEntity-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"DataEntity" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/dataentities/fetchdefault")
 	public ResponseEntity<List<DataEntityDTO>> fetchDefault(DataEntitySearchContext context) {
@@ -198,6 +199,7 @@ public class DataEntityResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DataEntity-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"DataEntity" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/dataentities/searchdefault")
 	public ResponseEntity<Page<DataEntityDTO>> searchDefault(@RequestBody DataEntitySearchContext context) {

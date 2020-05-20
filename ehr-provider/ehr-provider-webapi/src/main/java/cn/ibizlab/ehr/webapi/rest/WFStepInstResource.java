@@ -145,7 +145,7 @@ public class WFStepInstResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#wfstepinst_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#wfstepinst_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"WFStepInst" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/wfstepinsts/{wfstepinst_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class WFStepInstResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFStepInst-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"WFStepInst" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/wfstepinsts/fetchdefault")
 	public ResponseEntity<List<WFStepInstDTO>> fetchDefault(WFStepInstSearchContext context) {
@@ -172,6 +173,7 @@ public class WFStepInstResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFStepInst-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"WFStepInst" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/wfstepinsts/searchdefault")
 	public ResponseEntity<Page<WFStepInstDTO>> searchDefault(@RequestBody WFStepInstSearchContext context) {

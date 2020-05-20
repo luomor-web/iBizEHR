@@ -145,7 +145,7 @@ public class AttendRecordDetailResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#attendrecorddetail_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#attendrecorddetail_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"AttendRecordDetail" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/attendrecorddetails/{attendrecorddetail_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class AttendRecordDetailResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-AttendRecordDetail-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"AttendRecordDetail" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/attendrecorddetails/fetchdefault")
 	public ResponseEntity<List<AttendRecordDetailDTO>> fetchDefault(AttendRecordDetailSearchContext context) {
@@ -172,6 +173,7 @@ public class AttendRecordDetailResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-AttendRecordDetail-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"AttendRecordDetail" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/attendrecorddetails/searchdefault")
 	public ResponseEntity<Page<AttendRecordDetailDTO>> searchDefault(@RequestBody AttendRecordDetailSearchContext context) {

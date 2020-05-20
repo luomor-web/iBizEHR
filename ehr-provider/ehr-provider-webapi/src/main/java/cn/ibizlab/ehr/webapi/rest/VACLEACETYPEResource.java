@@ -78,7 +78,7 @@ public class VACLEACETYPEResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#vacleacetype_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#vacleacetype_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"VACLEACETYPE" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/vacleacetypes/{vacleacetype_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class VACLEACETYPEResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACLEACETYPE-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"VACLEACETYPE" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/vacleacetypes/fetchdefault")
 	public ResponseEntity<List<VACLEACETYPEDTO>> fetchDefault(VACLEACETYPESearchContext context) {
@@ -172,6 +173,7 @@ public class VACLEACETYPEResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACLEACETYPE-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"VACLEACETYPE" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/vacleacetypes/searchdefault")
 	public ResponseEntity<Page<VACLEACETYPEDTO>> searchDefault(@RequestBody VACLEACETYPESearchContext context) {

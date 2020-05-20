@@ -145,7 +145,7 @@ public class ORMXMBMXResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#ormxmbmx_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#ormxmbmx_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"ORMXMBMX" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/ormxmbmxes/{ormxmbmx_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class ORMXMBMXResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMXMBMX-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"ORMXMBMX" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/ormxmbmxes/fetchdefault")
 	public ResponseEntity<List<ORMXMBMXDTO>> fetchDefault(ORMXMBMXSearchContext context) {
@@ -172,6 +173,7 @@ public class ORMXMBMXResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMXMBMX-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"ORMXMBMX" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/ormxmbmxes/searchdefault")
 	public ResponseEntity<Page<ORMXMBMXDTO>> searchDefault(@RequestBody ORMXMBMXSearchContext context) {

@@ -73,7 +73,7 @@ public class WFWorkListResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#wfworklist_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#wfworklist_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"WFWorkList" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/wfworklists/{wfworklist_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class WFWorkListResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFWorkList-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"WFWorkList" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/wfworklists/fetchdefault")
 	public ResponseEntity<List<WFWorkListDTO>> fetchDefault(WFWorkListSearchContext context) {
@@ -172,6 +173,7 @@ public class WFWorkListResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFWorkList-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"WFWorkList" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/wfworklists/searchdefault")
 	public ResponseEntity<Page<WFWorkListDTO>> searchDefault(@RequestBody WFWorkListSearchContext context) {

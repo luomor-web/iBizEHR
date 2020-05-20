@@ -145,7 +145,7 @@ public class UserDGThemeResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#userdgtheme_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#userdgtheme_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"UserDGTheme" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/userdgthemes/{userdgtheme_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class UserDGThemeResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UserDGTheme-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"UserDGTheme" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/userdgthemes/fetchdefault")
 	public ResponseEntity<List<UserDGThemeDTO>> fetchDefault(UserDGThemeSearchContext context) {
@@ -172,6 +173,7 @@ public class UserDGThemeResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UserDGTheme-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"UserDGTheme" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/userdgthemes/searchdefault")
 	public ResponseEntity<Page<UserDGThemeDTO>> searchDefault(@RequestBody UserDGThemeSearchContext context) {

@@ -71,7 +71,7 @@ public class NationMGRResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#nationmgr_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#nationmgr_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"NationMGR" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/nationmgrs/{nationmgr_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class NationMGRResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-NationMGR-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"NationMGR" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/nationmgrs/fetchdefault")
 	public ResponseEntity<List<NationMGRDTO>> fetchDefault(NationMGRSearchContext context) {
@@ -172,6 +173,7 @@ public class NationMGRResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-NationMGR-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"NationMGR" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/nationmgrs/searchdefault")
 	public ResponseEntity<Page<NationMGRDTO>> searchDefault(@RequestBody NationMGRSearchContext context) {

@@ -133,7 +133,7 @@ public class UserRoleDetailResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#userroledetail_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#userroledetail_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"UserRoleDetail" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/userroledetails/{userroledetail_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class UserRoleDetailResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UserRoleDetail-CurrentCompany-all')")
 	@ApiOperation(value = "fetch当前公司角色成员", tags = {"UserRoleDetail" } ,notes = "fetch当前公司角色成员")
     @RequestMapping(method= RequestMethod.GET , value="/userroledetails/fetchcurrentcompany")
 	public ResponseEntity<List<UserRoleDetailDTO>> fetchCurrentCompany(UserRoleDetailSearchContext context) {
@@ -172,6 +173,7 @@ public class UserRoleDetailResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UserRoleDetail-CurrentCompany-all')")
 	@ApiOperation(value = "search当前公司角色成员", tags = {"UserRoleDetail" } ,notes = "search当前公司角色成员")
     @RequestMapping(method= RequestMethod.POST , value="/userroledetails/searchcurrentcompany")
 	public ResponseEntity<Page<UserRoleDetailDTO>> searchCurrentCompany(@RequestBody UserRoleDetailSearchContext context) {
@@ -180,6 +182,7 @@ public class UserRoleDetailResource {
                 .body(new PageImpl(userroledetailMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UserRoleDetail-OrderByUserCX-all')")
 	@ApiOperation(value = "fetch根据用户查询角色", tags = {"UserRoleDetail" } ,notes = "fetch根据用户查询角色")
     @RequestMapping(method= RequestMethod.GET , value="/userroledetails/fetchorderbyusercx")
 	public ResponseEntity<List<UserRoleDetailDTO>> fetchOrderByUserCX(UserRoleDetailSearchContext context) {
@@ -192,6 +195,7 @@ public class UserRoleDetailResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UserRoleDetail-OrderByUserCX-all')")
 	@ApiOperation(value = "search根据用户查询角色", tags = {"UserRoleDetail" } ,notes = "search根据用户查询角色")
     @RequestMapping(method= RequestMethod.POST , value="/userroledetails/searchorderbyusercx")
 	public ResponseEntity<Page<UserRoleDetailDTO>> searchOrderByUserCX(@RequestBody UserRoleDetailSearchContext context) {
@@ -200,6 +204,7 @@ public class UserRoleDetailResource {
                 .body(new PageImpl(userroledetailMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UserRoleDetail-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"UserRoleDetail" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/userroledetails/fetchdefault")
 	public ResponseEntity<List<UserRoleDetailDTO>> fetchDefault(UserRoleDetailSearchContext context) {
@@ -212,6 +217,7 @@ public class UserRoleDetailResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UserRoleDetail-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"UserRoleDetail" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/userroledetails/searchdefault")
 	public ResponseEntity<Page<UserRoleDetailDTO>> searchDefault(@RequestBody UserRoleDetailSearchContext context) {
@@ -220,6 +226,7 @@ public class UserRoleDetailResource {
                 .body(new PageImpl(userroledetailMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UserRoleDetail-SysManager-all')")
 	@ApiOperation(value = "fetch系统管理员", tags = {"UserRoleDetail" } ,notes = "fetch系统管理员")
     @RequestMapping(method= RequestMethod.GET , value="/userroledetails/fetchsysmanager")
 	public ResponseEntity<List<UserRoleDetailDTO>> fetchSysManager(UserRoleDetailSearchContext context) {
@@ -232,6 +239,7 @@ public class UserRoleDetailResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UserRoleDetail-SysManager-all')")
 	@ApiOperation(value = "search系统管理员", tags = {"UserRoleDetail" } ,notes = "search系统管理员")
     @RequestMapping(method= RequestMethod.POST , value="/userroledetails/searchsysmanager")
 	public ResponseEntity<Page<UserRoleDetailDTO>> searchSysManager(@RequestBody UserRoleDetailSearchContext context) {

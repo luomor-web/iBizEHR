@@ -97,7 +97,7 @@ public class PCMRCXLResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#pcmrcxl_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#pcmrcxl_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"PCMRCXL" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmrcxls/{pcmrcxl_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class PCMRCXLResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMRCXL-Current-all')")
 	@ApiOperation(value = "fetch查询当前人才序列下的序列", tags = {"PCMRCXL" } ,notes = "fetch查询当前人才序列下的序列")
     @RequestMapping(method= RequestMethod.GET , value="/pcmrcxls/fetchcurrent")
 	public ResponseEntity<List<PCMRCXLDTO>> fetchCurrent(PCMRCXLSearchContext context) {
@@ -172,6 +173,7 @@ public class PCMRCXLResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMRCXL-Current-all')")
 	@ApiOperation(value = "search查询当前人才序列下的序列", tags = {"PCMRCXL" } ,notes = "search查询当前人才序列下的序列")
     @RequestMapping(method= RequestMethod.POST , value="/pcmrcxls/searchcurrent")
 	public ResponseEntity<Page<PCMRCXLDTO>> searchCurrent(@RequestBody PCMRCXLSearchContext context) {
@@ -180,6 +182,7 @@ public class PCMRCXLResource {
                 .body(new PageImpl(pcmrcxlMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMRCXL-RCXLPPXLLX-all')")
 	@ApiOperation(value = "fetch人才序列匹配人才序列类型", tags = {"PCMRCXL" } ,notes = "fetch人才序列匹配人才序列类型")
     @RequestMapping(method= RequestMethod.GET , value="/pcmrcxls/fetchrcxlppxllx")
 	public ResponseEntity<List<PCMRCXLDTO>> fetchRCXLPPXLLX(PCMRCXLSearchContext context) {
@@ -192,6 +195,7 @@ public class PCMRCXLResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMRCXL-RCXLPPXLLX-all')")
 	@ApiOperation(value = "search人才序列匹配人才序列类型", tags = {"PCMRCXL" } ,notes = "search人才序列匹配人才序列类型")
     @RequestMapping(method= RequestMethod.POST , value="/pcmrcxls/searchrcxlppxllx")
 	public ResponseEntity<Page<PCMRCXLDTO>> searchRCXLPPXLLX(@RequestBody PCMRCXLSearchContext context) {
@@ -200,6 +204,7 @@ public class PCMRCXLResource {
                 .body(new PageImpl(pcmrcxlMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMRCXL-ZiDQ-all')")
 	@ApiOperation(value = "fetch子查询", tags = {"PCMRCXL" } ,notes = "fetch子查询")
     @RequestMapping(method= RequestMethod.GET , value="/pcmrcxls/fetchzidq")
 	public ResponseEntity<List<PCMRCXLDTO>> fetchZiDQ(PCMRCXLSearchContext context) {
@@ -212,6 +217,7 @@ public class PCMRCXLResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMRCXL-ZiDQ-all')")
 	@ApiOperation(value = "search子查询", tags = {"PCMRCXL" } ,notes = "search子查询")
     @RequestMapping(method= RequestMethod.POST , value="/pcmrcxls/searchzidq")
 	public ResponseEntity<Page<PCMRCXLDTO>> searchZiDQ(@RequestBody PCMRCXLSearchContext context) {
@@ -220,6 +226,7 @@ public class PCMRCXLResource {
                 .body(new PageImpl(pcmrcxlMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMRCXL-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PCMRCXL" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pcmrcxls/fetchdefault")
 	public ResponseEntity<List<PCMRCXLDTO>> fetchDefault(PCMRCXLSearchContext context) {
@@ -232,6 +239,7 @@ public class PCMRCXLResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMRCXL-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PCMRCXL" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pcmrcxls/searchdefault")
 	public ResponseEntity<Page<PCMRCXLDTO>> searchDefault(@RequestBody PCMRCXLSearchContext context) {
@@ -240,6 +248,7 @@ public class PCMRCXLResource {
                 .body(new PageImpl(pcmrcxlMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMRCXL-GenDQ-all')")
 	@ApiOperation(value = "fetch根查询", tags = {"PCMRCXL" } ,notes = "fetch根查询")
     @RequestMapping(method= RequestMethod.GET , value="/pcmrcxls/fetchgendq")
 	public ResponseEntity<List<PCMRCXLDTO>> fetchGenDQ(PCMRCXLSearchContext context) {
@@ -252,6 +261,7 @@ public class PCMRCXLResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMRCXL-GenDQ-all')")
 	@ApiOperation(value = "search根查询", tags = {"PCMRCXL" } ,notes = "search根查询")
     @RequestMapping(method= RequestMethod.POST , value="/pcmrcxls/searchgendq")
 	public ResponseEntity<Page<PCMRCXLDTO>> searchGenDQ(@RequestBody PCMRCXLSearchContext context) {

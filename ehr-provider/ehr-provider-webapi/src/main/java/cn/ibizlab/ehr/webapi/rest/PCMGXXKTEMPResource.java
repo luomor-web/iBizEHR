@@ -85,7 +85,7 @@ public class PCMGXXKTEMPResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#pcmgxxktemp_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#pcmgxxktemp_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"PCMGXXKTEMP" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmgxxktemps/{pcmgxxktemp_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class PCMGXXKTEMPResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMGXXKTEMP-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PCMGXXKTEMP" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pcmgxxktemps/fetchdefault")
 	public ResponseEntity<List<PCMGXXKTEMPDTO>> fetchDefault(PCMGXXKTEMPSearchContext context) {
@@ -172,6 +173,7 @@ public class PCMGXXKTEMPResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMGXXKTEMP-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PCMGXXKTEMP" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pcmgxxktemps/searchdefault")
 	public ResponseEntity<Page<PCMGXXKTEMPDTO>> searchDefault(@RequestBody PCMGXXKTEMPSearchContext context) {

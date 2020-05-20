@@ -55,7 +55,7 @@ public class PIMARMYCADRESResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#pimarmycadres_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#pimarmycadres_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"PIMARMYCADRES" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimarmycadres/{pimarmycadres_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class PIMARMYCADRESResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMARMYCADRES-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PIMARMYCADRES" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimarmycadres/fetchdefault")
 	public ResponseEntity<List<PIMARMYCADRESDTO>> fetchDefault(PIMARMYCADRESSearchContext context) {
@@ -172,6 +173,7 @@ public class PIMARMYCADRESResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMARMYCADRES-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PIMARMYCADRES" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pimarmycadres/searchdefault")
 	public ResponseEntity<Page<PIMARMYCADRESDTO>> searchDefault(@RequestBody PIMARMYCADRESSearchContext context) {
@@ -180,6 +182,7 @@ public class PIMARMYCADRESResource {
                 .body(new PageImpl(pimarmycadresMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMARMYCADRES-JLSSGLY-all')")
 	@ApiOperation(value = "fetch记录所属（管理员）", tags = {"PIMARMYCADRES" } ,notes = "fetch记录所属（管理员）")
     @RequestMapping(method= RequestMethod.GET , value="/pimarmycadres/fetchjlssgly")
 	public ResponseEntity<List<PIMARMYCADRESDTO>> fetchJLSSGLY(PIMARMYCADRESSearchContext context) {
@@ -192,6 +195,7 @@ public class PIMARMYCADRESResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMARMYCADRES-JLSSGLY-all')")
 	@ApiOperation(value = "search记录所属（管理员）", tags = {"PIMARMYCADRES" } ,notes = "search记录所属（管理员）")
     @RequestMapping(method= RequestMethod.POST , value="/pimarmycadres/searchjlssgly")
 	public ResponseEntity<Page<PIMARMYCADRESDTO>> searchJLSSGLY(@RequestBody PIMARMYCADRESSearchContext context) {
@@ -200,6 +204,7 @@ public class PIMARMYCADRESResource {
                 .body(new PageImpl(pimarmycadresMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMARMYCADRES-JLSSGR-all')")
 	@ApiOperation(value = "fetch记录所属（个人）", tags = {"PIMARMYCADRES" } ,notes = "fetch记录所属（个人）")
     @RequestMapping(method= RequestMethod.GET , value="/pimarmycadres/fetchjlssgr")
 	public ResponseEntity<List<PIMARMYCADRESDTO>> fetchJLSSGR(PIMARMYCADRESSearchContext context) {
@@ -212,6 +217,7 @@ public class PIMARMYCADRESResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMARMYCADRES-JLSSGR-all')")
 	@ApiOperation(value = "search记录所属（个人）", tags = {"PIMARMYCADRES" } ,notes = "search记录所属（个人）")
     @RequestMapping(method= RequestMethod.POST , value="/pimarmycadres/searchjlssgr")
 	public ResponseEntity<Page<PIMARMYCADRESDTO>> searchJLSSGR(@RequestBody PIMARMYCADRESSearchContext context) {

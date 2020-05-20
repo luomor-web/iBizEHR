@@ -120,7 +120,7 @@ public class WFAssistWorkResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#wfassistwork_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#wfassistwork_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"WFAssistWork" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/wfassistworks/{wfassistwork_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class WFAssistWorkResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFAssistWork-CurUserAssistWork-all')")
 	@ApiOperation(value = "fetch当前用户代办工作", tags = {"WFAssistWork" } ,notes = "fetch当前用户代办工作")
     @RequestMapping(method= RequestMethod.GET , value="/wfassistworks/fetchcuruserassistwork")
 	public ResponseEntity<List<WFAssistWorkDTO>> fetchCurUserAssistWork(WFAssistWorkSearchContext context) {
@@ -172,6 +173,7 @@ public class WFAssistWorkResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFAssistWork-CurUserAssistWork-all')")
 	@ApiOperation(value = "search当前用户代办工作", tags = {"WFAssistWork" } ,notes = "search当前用户代办工作")
     @RequestMapping(method= RequestMethod.POST , value="/wfassistworks/searchcuruserassistwork")
 	public ResponseEntity<Page<WFAssistWorkDTO>> searchCurUserAssistWork(@RequestBody WFAssistWorkSearchContext context) {
@@ -180,6 +182,7 @@ public class WFAssistWorkResource {
                 .body(new PageImpl(wfassistworkMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFAssistWork-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"WFAssistWork" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/wfassistworks/fetchdefault")
 	public ResponseEntity<List<WFAssistWorkDTO>> fetchDefault(WFAssistWorkSearchContext context) {
@@ -192,6 +195,7 @@ public class WFAssistWorkResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFAssistWork-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"WFAssistWork" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/wfassistworks/searchdefault")
 	public ResponseEntity<Page<WFAssistWorkDTO>> searchDefault(@RequestBody WFAssistWorkSearchContext context) {

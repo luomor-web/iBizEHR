@@ -133,7 +133,7 @@ public class DataSyncOut2Resource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#datasyncout2_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#datasyncout2_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"DataSyncOut2" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/datasyncout2s/{datasyncout2_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class DataSyncOut2Resource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DataSyncOut2-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"DataSyncOut2" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/datasyncout2s/fetchdefault")
 	public ResponseEntity<List<DataSyncOut2DTO>> fetchDefault(DataSyncOut2SearchContext context) {
@@ -172,6 +173,7 @@ public class DataSyncOut2Resource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DataSyncOut2-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"DataSyncOut2" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/datasyncout2s/searchdefault")
 	public ResponseEntity<Page<DataSyncOut2DTO>> searchDefault(@RequestBody DataSyncOut2SearchContext context) {

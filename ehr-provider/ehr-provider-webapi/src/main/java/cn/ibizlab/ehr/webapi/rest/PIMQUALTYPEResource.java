@@ -124,7 +124,7 @@ public class PIMQUALTYPEResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#pimqualtype_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#pimqualtype_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"PIMQUALTYPE" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimqualtypes/{pimqualtype_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class PIMQUALTYPEResource {
         return ResponseEntity.status(HttpStatus.OK).body(pimqualtypeMapping.toDto(pimqualtypeService.getDraft(new PIMQUALTYPE())));
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMQUALTYPE-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PIMQUALTYPE" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimqualtypes/fetchdefault")
 	public ResponseEntity<List<PIMQUALTYPEDTO>> fetchDefault(PIMQUALTYPESearchContext context) {
@@ -172,6 +173,7 @@ public class PIMQUALTYPEResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMQUALTYPE-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PIMQUALTYPE" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pimqualtypes/searchdefault")
 	public ResponseEntity<Page<PIMQUALTYPEDTO>> searchDefault(@RequestBody PIMQUALTYPESearchContext context) {

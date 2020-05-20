@@ -111,7 +111,7 @@ public class WFIAActionResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#wfiaaction_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#wfiaaction_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"WFIAAction" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/wfiaactions/{wfiaaction_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class WFIAActionResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFIAAction-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"WFIAAction" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/wfiaactions/fetchdefault")
 	public ResponseEntity<List<WFIAActionDTO>> fetchDefault(WFIAActionSearchContext context) {
@@ -172,6 +173,7 @@ public class WFIAActionResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFIAAction-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"WFIAAction" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/wfiaactions/searchdefault")
 	public ResponseEntity<Page<WFIAActionDTO>> searchDefault(@RequestBody WFIAActionSearchContext context) {

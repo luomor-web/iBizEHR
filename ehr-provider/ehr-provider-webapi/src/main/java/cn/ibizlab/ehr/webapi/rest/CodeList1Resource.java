@@ -142,7 +142,7 @@ public class CodeList1Resource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#codelist1_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#codelist1_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"CodeList1" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/codelist1s/{codelist1_id}")
     @Transactional
@@ -173,6 +173,7 @@ public class CodeList1Resource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-CodeList1-PersonUse-all')")
 	@ApiOperation(value = "fetch用户使用", tags = {"CodeList1" } ,notes = "fetch用户使用")
     @RequestMapping(method= RequestMethod.GET , value="/codelist1s/fetchpersonuse")
 	public ResponseEntity<List<CodeList1DTO>> fetchPersonUse(CodeList1SearchContext context) {
@@ -185,6 +186,7 @@ public class CodeList1Resource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-CodeList1-PersonUse-all')")
 	@ApiOperation(value = "search用户使用", tags = {"CodeList1" } ,notes = "search用户使用")
     @RequestMapping(method= RequestMethod.POST , value="/codelist1s/searchpersonuse")
 	public ResponseEntity<Page<CodeList1DTO>> searchPersonUse(@RequestBody CodeList1SearchContext context) {
@@ -193,6 +195,7 @@ public class CodeList1Resource {
                 .body(new PageImpl(codelist1Mapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-CodeList1-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"CodeList1" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/codelist1s/fetchdefault")
 	public ResponseEntity<List<CodeList1DTO>> fetchDefault(CodeList1SearchContext context) {
@@ -205,6 +208,7 @@ public class CodeList1Resource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-CodeList1-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"CodeList1" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/codelist1s/searchdefault")
 	public ResponseEntity<Page<CodeList1DTO>> searchDefault(@RequestBody CodeList1SearchContext context) {

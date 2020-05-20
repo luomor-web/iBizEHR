@@ -99,7 +99,7 @@ public class OrgUnitCatResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#orgunitcat_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#orgunitcat_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"OrgUnitCat" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/orgunitcats/{orgunitcat_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class OrgUnitCatResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrgUnitCat-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"OrgUnitCat" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/orgunitcats/fetchdefault")
 	public ResponseEntity<List<OrgUnitCatDTO>> fetchDefault(OrgUnitCatSearchContext context) {
@@ -172,6 +173,7 @@ public class OrgUnitCatResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrgUnitCat-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"OrgUnitCat" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/orgunitcats/searchdefault")
 	public ResponseEntity<Page<OrgUnitCatDTO>> searchDefault(@RequestBody OrgUnitCatSearchContext context) {

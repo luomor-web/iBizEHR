@@ -145,7 +145,7 @@ public class WXMediaResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#wxmedia_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#wxmedia_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"WXMedia" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/wxmedia/{wxmedia_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class WXMediaResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WXMedia-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"WXMedia" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/wxmedia/fetchdefault")
 	public ResponseEntity<List<WXMediaDTO>> fetchDefault(WXMediaSearchContext context) {
@@ -172,6 +173,7 @@ public class WXMediaResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WXMedia-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"WXMedia" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/wxmedia/searchdefault")
 	public ResponseEntity<Page<WXMediaDTO>> searchDefault(@RequestBody WXMediaSearchContext context) {

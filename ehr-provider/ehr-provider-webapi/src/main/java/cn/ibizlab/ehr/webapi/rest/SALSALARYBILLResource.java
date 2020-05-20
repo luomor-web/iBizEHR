@@ -55,7 +55,7 @@ public class SALSALARYBILLResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#salsalarybill_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#salsalarybill_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"SALSALARYBILL" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/salsalarybills/{salsalarybill_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class SALSALARYBILLResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALSALARYBILL-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"SALSALARYBILL" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/salsalarybills/fetchdefault")
 	public ResponseEntity<List<SALSALARYBILLDTO>> fetchDefault(SALSALARYBILLSearchContext context) {
@@ -172,6 +173,7 @@ public class SALSALARYBILLResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALSALARYBILL-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"SALSALARYBILL" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/salsalarybills/searchdefault")
 	public ResponseEntity<Page<SALSALARYBILLDTO>> searchDefault(@RequestBody SALSALARYBILLSearchContext context) {

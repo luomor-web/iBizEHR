@@ -99,7 +99,7 @@ public class PCMJXSBDJLResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#pcmjxsbdjl_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#pcmjxsbdjl_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"PCMJXSBDJL" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmjxsbdjls/{pcmjxsbdjl_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class PCMJXSBDJLResource {
         return ResponseEntity.status(HttpStatus.OK).body(pcmjxsbdjlMapping.toDto(pcmjxsbdjlService.getDraft(new PCMJXSBDJL())));
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMJXSBDJL-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PCMJXSBDJL" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pcmjxsbdjls/fetchdefault")
 	public ResponseEntity<List<PCMJXSBDJLDTO>> fetchDefault(PCMJXSBDJLSearchContext context) {
@@ -172,6 +173,7 @@ public class PCMJXSBDJLResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMJXSBDJL-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PCMJXSBDJL" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pcmjxsbdjls/searchdefault")
 	public ResponseEntity<Page<PCMJXSBDJLDTO>> searchDefault(@RequestBody PCMJXSBDJLSearchContext context) {
@@ -180,6 +182,7 @@ public class PCMJXSBDJLResource {
                 .body(new PageImpl(pcmjxsbdjlMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMJXSBDJL-ZIZHU-all')")
 	@ApiOperation(value = "fetch自助(见习记录)", tags = {"PCMJXSBDJL" } ,notes = "fetch自助(见习记录)")
     @RequestMapping(method= RequestMethod.GET , value="/pcmjxsbdjls/fetchzizhu")
 	public ResponseEntity<List<PCMJXSBDJLDTO>> fetchZIZHU(PCMJXSBDJLSearchContext context) {
@@ -192,6 +195,7 @@ public class PCMJXSBDJLResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMJXSBDJL-ZIZHU-all')")
 	@ApiOperation(value = "search自助(见习记录)", tags = {"PCMJXSBDJL" } ,notes = "search自助(见习记录)")
     @RequestMapping(method= RequestMethod.POST , value="/pcmjxsbdjls/searchzizhu")
 	public ResponseEntity<Page<PCMJXSBDJLDTO>> searchZIZHU(@RequestBody PCMJXSBDJLSearchContext context) {
@@ -200,6 +204,7 @@ public class PCMJXSBDJLResource {
                 .body(new PageImpl(pcmjxsbdjlMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMJXSBDJL-JLSS-all')")
 	@ApiOperation(value = "fetch记录所属和人员ID不符的", tags = {"PCMJXSBDJL" } ,notes = "fetch记录所属和人员ID不符的")
     @RequestMapping(method= RequestMethod.GET , value="/pcmjxsbdjls/fetchjlss")
 	public ResponseEntity<List<PCMJXSBDJLDTO>> fetchJLSS(PCMJXSBDJLSearchContext context) {
@@ -212,6 +217,7 @@ public class PCMJXSBDJLResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMJXSBDJL-JLSS-all')")
 	@ApiOperation(value = "search记录所属和人员ID不符的", tags = {"PCMJXSBDJL" } ,notes = "search记录所属和人员ID不符的")
     @RequestMapping(method= RequestMethod.POST , value="/pcmjxsbdjls/searchjlss")
 	public ResponseEntity<Page<PCMJXSBDJLDTO>> searchJLSS(@RequestBody PCMJXSBDJLSearchContext context) {

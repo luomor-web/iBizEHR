@@ -124,7 +124,7 @@ public class PVPartResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#pvpart_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#pvpart_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"PVPart" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pvparts/{pvpart_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class PVPartResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PVPart-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PVPart" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pvparts/fetchdefault")
 	public ResponseEntity<List<PVPartDTO>> fetchDefault(PVPartSearchContext context) {
@@ -172,6 +173,7 @@ public class PVPartResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PVPart-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PVPart" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pvparts/searchdefault")
 	public ResponseEntity<Page<PVPartDTO>> searchDefault(@RequestBody PVPartSearchContext context) {
@@ -180,6 +182,7 @@ public class PVPartResource {
                 .body(new PageImpl(pvpartMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PVPart-CurPV-all')")
 	@ApiOperation(value = "fetch当前门户视图", tags = {"PVPart" } ,notes = "fetch当前门户视图")
     @RequestMapping(method= RequestMethod.GET , value="/pvparts/fetchcurpv")
 	public ResponseEntity<List<PVPartDTO>> fetchCurPV(PVPartSearchContext context) {
@@ -192,6 +195,7 @@ public class PVPartResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PVPart-CurPV-all')")
 	@ApiOperation(value = "search当前门户视图", tags = {"PVPart" } ,notes = "search当前门户视图")
     @RequestMapping(method= RequestMethod.POST , value="/pvparts/searchcurpv")
 	public ResponseEntity<Page<PVPartDTO>> searchCurPV(@RequestBody PVPartSearchContext context) {

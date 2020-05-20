@@ -55,7 +55,7 @@ public class WFUIWizardResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#wfuiwizard_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#wfuiwizard_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"WFUIWizard" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/wfuiwizards/{wfuiwizard_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class WFUIWizardResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFUIWizard-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"WFUIWizard" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/wfuiwizards/fetchdefault")
 	public ResponseEntity<List<WFUIWizardDTO>> fetchDefault(WFUIWizardSearchContext context) {
@@ -172,6 +173,7 @@ public class WFUIWizardResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFUIWizard-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"WFUIWizard" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/wfuiwizards/searchdefault")
 	public ResponseEntity<Page<WFUIWizardDTO>> searchDefault(@RequestBody WFUIWizardSearchContext context) {

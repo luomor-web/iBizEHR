@@ -85,7 +85,7 @@ public class ATTENSUMMARYResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#attensummary_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#attensummary_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"ATTENSUMMARY" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/attensummaries/{attensummary_id}")
     @Transactional
@@ -173,6 +173,7 @@ public class ATTENSUMMARYResource {
         return ResponseEntity.status(HttpStatus.OK).body(attensummarydto);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ATTENSUMMARY-CurZZKQHZ-all')")
 	@ApiOperation(value = "fetch当前组织考勤汇总", tags = {"ATTENSUMMARY" } ,notes = "fetch当前组织考勤汇总")
     @RequestMapping(method= RequestMethod.GET , value="/attensummaries/fetchcurzzkqhz")
 	public ResponseEntity<List<ATTENSUMMARYDTO>> fetchCurZZKQHZ(ATTENSUMMARYSearchContext context) {
@@ -185,6 +186,7 @@ public class ATTENSUMMARYResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ATTENSUMMARY-CurZZKQHZ-all')")
 	@ApiOperation(value = "search当前组织考勤汇总", tags = {"ATTENSUMMARY" } ,notes = "search当前组织考勤汇总")
     @RequestMapping(method= RequestMethod.POST , value="/attensummaries/searchcurzzkqhz")
 	public ResponseEntity<Page<ATTENSUMMARYDTO>> searchCurZZKQHZ(@RequestBody ATTENSUMMARYSearchContext context) {
@@ -193,6 +195,7 @@ public class ATTENSUMMARYResource {
                 .body(new PageImpl(attensummaryMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ATTENSUMMARY-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"ATTENSUMMARY" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/attensummaries/fetchdefault")
 	public ResponseEntity<List<ATTENSUMMARYDTO>> fetchDefault(ATTENSUMMARYSearchContext context) {
@@ -205,6 +208,7 @@ public class ATTENSUMMARYResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ATTENSUMMARY-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"ATTENSUMMARY" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/attensummaries/searchdefault")
 	public ResponseEntity<Page<ATTENSUMMARYDTO>> searchDefault(@RequestBody ATTENSUMMARYSearchContext context) {

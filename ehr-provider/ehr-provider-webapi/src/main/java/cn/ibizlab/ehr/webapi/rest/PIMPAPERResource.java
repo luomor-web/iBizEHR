@@ -87,7 +87,7 @@ public class PIMPAPERResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#pimpaper_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#pimpaper_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"PIMPAPER" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimpapers/{pimpaper_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class PIMPAPERResource {
         return  ResponseEntity.status(HttpStatus.OK).body(pimpaperService.checkKey(pimpaperMapping.toDomain(pimpaperdto)));
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMPAPER-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PIMPAPER" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimpapers/fetchdefault")
 	public ResponseEntity<List<PIMPAPERDTO>> fetchDefault(PIMPAPERSearchContext context) {
@@ -172,6 +173,7 @@ public class PIMPAPERResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMPAPER-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PIMPAPER" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pimpapers/searchdefault")
 	public ResponseEntity<Page<PIMPAPERDTO>> searchDefault(@RequestBody PIMPAPERSearchContext context) {
@@ -180,6 +182,7 @@ public class PIMPAPERResource {
                 .body(new PageImpl(pimpaperMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMPAPER-JLSSGR-all')")
 	@ApiOperation(value = "fetch记录所属（个人）", tags = {"PIMPAPER" } ,notes = "fetch记录所属（个人）")
     @RequestMapping(method= RequestMethod.GET , value="/pimpapers/fetchjlssgr")
 	public ResponseEntity<List<PIMPAPERDTO>> fetchJLSSGR(PIMPAPERSearchContext context) {
@@ -192,6 +195,7 @@ public class PIMPAPERResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMPAPER-JLSSGR-all')")
 	@ApiOperation(value = "search记录所属（个人）", tags = {"PIMPAPER" } ,notes = "search记录所属（个人）")
     @RequestMapping(method= RequestMethod.POST , value="/pimpapers/searchjlssgr")
 	public ResponseEntity<Page<PIMPAPERDTO>> searchJLSSGR(@RequestBody PIMPAPERSearchContext context) {
@@ -200,6 +204,7 @@ public class PIMPAPERResource {
                 .body(new PageImpl(pimpaperMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMPAPER-JLSSGLY-all')")
 	@ApiOperation(value = "fetch记录所属（管理员）", tags = {"PIMPAPER" } ,notes = "fetch记录所属（管理员）")
     @RequestMapping(method= RequestMethod.GET , value="/pimpapers/fetchjlssgly")
 	public ResponseEntity<List<PIMPAPERDTO>> fetchJLSSGLY(PIMPAPERSearchContext context) {
@@ -212,6 +217,7 @@ public class PIMPAPERResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMPAPER-JLSSGLY-all')")
 	@ApiOperation(value = "search记录所属（管理员）", tags = {"PIMPAPER" } ,notes = "search记录所属（管理员）")
     @RequestMapping(method= RequestMethod.POST , value="/pimpapers/searchjlssgly")
 	public ResponseEntity<Page<PIMPAPERDTO>> searchJLSSGLY(@RequestBody PIMPAPERSearchContext context) {

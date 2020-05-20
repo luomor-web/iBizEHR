@@ -64,7 +64,7 @@ public class PARTZGGResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#partzgg_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#partzgg_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"PARTZGG" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/partzggs/{partzgg_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class PARTZGGResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PARTZGG-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PARTZGG" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/partzggs/fetchdefault")
 	public ResponseEntity<List<PARTZGGDTO>> fetchDefault(PARTZGGSearchContext context) {
@@ -172,6 +173,7 @@ public class PARTZGGResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PARTZGG-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PARTZGG" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/partzggs/searchdefault")
 	public ResponseEntity<Page<PARTZGGDTO>> searchDefault(@RequestBody PARTZGGSearchContext context) {

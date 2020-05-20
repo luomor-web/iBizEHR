@@ -99,7 +99,7 @@ public class WFActorResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#wfactor_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#wfactor_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"WFActor" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/wfactors/{wfactor_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class WFActorResource {
         return ResponseEntity.status(HttpStatus.OK).body(wfactorMapping.toDto(wfactorService.getDraft(new WFActor())));
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFActor-IndexDER-all')")
 	@ApiOperation(value = "fetchIndexDER", tags = {"WFActor" } ,notes = "fetchIndexDER")
     @RequestMapping(method= RequestMethod.GET , value="/wfactors/fetchindexder")
 	public ResponseEntity<List<WFActorDTO>> fetchIndexDER(WFActorSearchContext context) {
@@ -172,6 +173,7 @@ public class WFActorResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFActor-IndexDER-all')")
 	@ApiOperation(value = "searchIndexDER", tags = {"WFActor" } ,notes = "searchIndexDER")
     @RequestMapping(method= RequestMethod.POST , value="/wfactors/searchindexder")
 	public ResponseEntity<Page<WFActorDTO>> searchIndexDER(@RequestBody WFActorSearchContext context) {
@@ -180,6 +182,7 @@ public class WFActorResource {
                 .body(new PageImpl(wfactorMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFActor-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"WFActor" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/wfactors/fetchdefault")
 	public ResponseEntity<List<WFActorDTO>> fetchDefault(WFActorSearchContext context) {
@@ -192,6 +195,7 @@ public class WFActorResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFActor-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"WFActor" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/wfactors/searchdefault")
 	public ResponseEntity<Page<WFActorDTO>> searchDefault(@RequestBody WFActorSearchContext context) {

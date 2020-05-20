@@ -55,7 +55,7 @@ public class SALSTDGLResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#salstdgl_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#salstdgl_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"SALSTDGL" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/salstdgls/{salstdgl_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class SALSTDGLResource {
         return ResponseEntity.status(HttpStatus.OK).body(salstdglMapping.toDto(salstdglService.getDraft(new SALSTDGL())));
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALSTDGL-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"SALSTDGL" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/salstdgls/fetchdefault")
 	public ResponseEntity<List<SALSTDGLDTO>> fetchDefault(SALSTDGLSearchContext context) {
@@ -172,6 +173,7 @@ public class SALSTDGLResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALSTDGL-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"SALSTDGL" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/salstdgls/searchdefault")
 	public ResponseEntity<Page<SALSTDGLDTO>> searchDefault(@RequestBody SALSTDGLSearchContext context) {

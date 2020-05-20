@@ -210,7 +210,7 @@ public class PCMTXFPSQResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#pcmtxfpsq_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#pcmtxfpsq_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"PCMTXFPSQ" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmtxfpsqs/{pcmtxfpsq_id}")
     @Transactional
@@ -225,6 +225,7 @@ public class PCMTXFPSQResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMTXFPSQ-FPJL-all')")
 	@ApiOperation(value = "fetch返聘记录", tags = {"PCMTXFPSQ" } ,notes = "fetch返聘记录")
     @RequestMapping(method= RequestMethod.GET , value="/pcmtxfpsqs/fetchfpjl")
 	public ResponseEntity<List<PCMTXFPSQDTO>> fetchFPJL(PCMTXFPSQSearchContext context) {
@@ -237,6 +238,7 @@ public class PCMTXFPSQResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMTXFPSQ-FPJL-all')")
 	@ApiOperation(value = "search返聘记录", tags = {"PCMTXFPSQ" } ,notes = "search返聘记录")
     @RequestMapping(method= RequestMethod.POST , value="/pcmtxfpsqs/searchfpjl")
 	public ResponseEntity<Page<PCMTXFPSQDTO>> searchFPJL(@RequestBody PCMTXFPSQSearchContext context) {
@@ -245,6 +247,7 @@ public class PCMTXFPSQResource {
                 .body(new PageImpl(pcmtxfpsqMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMTXFPSQ-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PCMTXFPSQ" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pcmtxfpsqs/fetchdefault")
 	public ResponseEntity<List<PCMTXFPSQDTO>> fetchDefault(PCMTXFPSQSearchContext context) {
@@ -257,6 +260,7 @@ public class PCMTXFPSQResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMTXFPSQ-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PCMTXFPSQ" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pcmtxfpsqs/searchdefault")
 	public ResponseEntity<Page<PCMTXFPSQDTO>> searchDefault(@RequestBody PCMTXFPSQSearchContext context) {
@@ -265,6 +269,7 @@ public class PCMTXFPSQResource {
                 .body(new PageImpl(pcmtxfpsqMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMTXFPSQ-YXSQDS-all')")
 	@ApiOperation(value = "fetch未审核申请", tags = {"PCMTXFPSQ" } ,notes = "fetch未审核申请")
     @RequestMapping(method= RequestMethod.GET , value="/pcmtxfpsqs/fetchyxsqds")
 	public ResponseEntity<List<PCMTXFPSQDTO>> fetchYXSQDS(PCMTXFPSQSearchContext context) {
@@ -277,6 +282,7 @@ public class PCMTXFPSQResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMTXFPSQ-YXSQDS-all')")
 	@ApiOperation(value = "search未审核申请", tags = {"PCMTXFPSQ" } ,notes = "search未审核申请")
     @RequestMapping(method= RequestMethod.POST , value="/pcmtxfpsqs/searchyxsqds")
 	public ResponseEntity<Page<PCMTXFPSQDTO>> searchYXSQDS(@RequestBody PCMTXFPSQSearchContext context) {
@@ -285,6 +291,7 @@ public class PCMTXFPSQResource {
                 .body(new PageImpl(pcmtxfpsqMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMTXFPSQ-FPGL-all')")
 	@ApiOperation(value = "fetch返聘管理", tags = {"PCMTXFPSQ" } ,notes = "fetch返聘管理")
     @RequestMapping(method= RequestMethod.GET , value="/pcmtxfpsqs/fetchfpgl")
 	public ResponseEntity<List<PCMTXFPSQDTO>> fetchFPGL(PCMTXFPSQSearchContext context) {
@@ -297,6 +304,7 @@ public class PCMTXFPSQResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMTXFPSQ-FPGL-all')")
 	@ApiOperation(value = "search返聘管理", tags = {"PCMTXFPSQ" } ,notes = "search返聘管理")
     @RequestMapping(method= RequestMethod.POST , value="/pcmtxfpsqs/searchfpgl")
 	public ResponseEntity<Page<PCMTXFPSQDTO>> searchFPGL(@RequestBody PCMTXFPSQSearchContext context) {

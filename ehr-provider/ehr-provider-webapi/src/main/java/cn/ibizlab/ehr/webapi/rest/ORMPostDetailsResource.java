@@ -145,7 +145,7 @@ public class ORMPostDetailsResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#ormpostdetails_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#ormpostdetails_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"ORMPostDetails" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/ormpostdetails/{ormpostdetails_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class ORMPostDetailsResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMPostDetails-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"ORMPostDetails" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/ormpostdetails/fetchdefault")
 	public ResponseEntity<List<ORMPostDetailsDTO>> fetchDefault(ORMPostDetailsSearchContext context) {
@@ -172,6 +173,7 @@ public class ORMPostDetailsResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMPostDetails-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"ORMPostDetails" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/ormpostdetails/searchdefault")
 	public ResponseEntity<Page<ORMPostDetailsDTO>> searchDefault(@RequestBody ORMPostDetailsSearchContext context) {

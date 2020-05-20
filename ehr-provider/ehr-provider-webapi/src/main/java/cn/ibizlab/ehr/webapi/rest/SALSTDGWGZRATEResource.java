@@ -76,7 +76,7 @@ public class SALSTDGWGZRATEResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#salstdgwgzrate_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#salstdgwgzrate_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"SALSTDGWGZRATE" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/salstdgwgzrates/{salstdgwgzrate_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class SALSTDGWGZRATEResource {
         return ResponseEntity.status(HttpStatus.OK).body(salstdgwgzrateMapping.toDto(salstdgwgzrateService.getDraft(new SALSTDGWGZRATE())));
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALSTDGWGZRATE-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"SALSTDGWGZRATE" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/salstdgwgzrates/fetchdefault")
 	public ResponseEntity<List<SALSTDGWGZRATEDTO>> fetchDefault(SALSTDGWGZRATESearchContext context) {
@@ -172,6 +173,7 @@ public class SALSTDGWGZRATEResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALSTDGWGZRATE-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"SALSTDGWGZRATE" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/salstdgwgzrates/searchdefault")
 	public ResponseEntity<Page<SALSTDGWGZRATEDTO>> searchDefault(@RequestBody SALSTDGWGZRATESearchContext context) {

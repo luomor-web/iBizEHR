@@ -78,7 +78,7 @@ public class PCMXKMLResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#pcmxkml_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#pcmxkml_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"PCMXKML" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmxkmls/{pcmxkml_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class PCMXKMLResource {
         return ResponseEntity.status(HttpStatus.OK).body(pcmxkmlMapping.toDto(pcmxkmlService.getDraft(new PCMXKML())));
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMXKML-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PCMXKML" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pcmxkmls/fetchdefault")
 	public ResponseEntity<List<PCMXKMLDTO>> fetchDefault(PCMXKMLSearchContext context) {
@@ -172,6 +173,7 @@ public class PCMXKMLResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMXKML-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PCMXKML" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pcmxkmls/searchdefault")
 	public ResponseEntity<Page<PCMXKMLDTO>> searchDefault(@RequestBody PCMXKMLSearchContext context) {
@@ -180,6 +182,7 @@ public class PCMXKMLResource {
                 .body(new PageImpl(pcmxkmlMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMXKML-CurND-all')")
 	@ApiOperation(value = "fetch当前年度", tags = {"PCMXKML" } ,notes = "fetch当前年度")
     @RequestMapping(method= RequestMethod.GET , value="/pcmxkmls/fetchcurnd")
 	public ResponseEntity<List<PCMXKMLDTO>> fetchCurND(PCMXKMLSearchContext context) {
@@ -192,6 +195,7 @@ public class PCMXKMLResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMXKML-CurND-all')")
 	@ApiOperation(value = "search当前年度", tags = {"PCMXKML" } ,notes = "search当前年度")
     @RequestMapping(method= RequestMethod.POST , value="/pcmxkmls/searchcurnd")
 	public ResponseEntity<Page<PCMXKMLDTO>> searchCurND(@RequestBody PCMXKMLSearchContext context) {

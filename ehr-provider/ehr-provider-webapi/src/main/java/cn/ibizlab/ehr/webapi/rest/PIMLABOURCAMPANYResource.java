@@ -124,7 +124,7 @@ public class PIMLABOURCAMPANYResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#pimlabourcampany_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#pimlabourcampany_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"PIMLABOURCAMPANY" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimlabourcampanies/{pimlabourcampany_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class PIMLABOURCAMPANYResource {
         return ResponseEntity.status(HttpStatus.OK).body(pimlabourcampanyMapping.toDto(pimlabourcampanyService.getDraft(new PIMLABOURCAMPANY())));
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMLABOURCAMPANY-AuthLab-all')")
 	@ApiOperation(value = "fetchAuthLab", tags = {"PIMLABOURCAMPANY" } ,notes = "fetchAuthLab")
     @RequestMapping(method= RequestMethod.GET , value="/pimlabourcampanies/fetchauthlab")
 	public ResponseEntity<List<PIMLABOURCAMPANYDTO>> fetchAuthLab(PIMLABOURCAMPANYSearchContext context) {
@@ -172,6 +173,7 @@ public class PIMLABOURCAMPANYResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMLABOURCAMPANY-AuthLab-all')")
 	@ApiOperation(value = "searchAuthLab", tags = {"PIMLABOURCAMPANY" } ,notes = "searchAuthLab")
     @RequestMapping(method= RequestMethod.POST , value="/pimlabourcampanies/searchauthlab")
 	public ResponseEntity<Page<PIMLABOURCAMPANYDTO>> searchAuthLab(@RequestBody PIMLABOURCAMPANYSearchContext context) {
@@ -180,6 +182,7 @@ public class PIMLABOURCAMPANYResource {
                 .body(new PageImpl(pimlabourcampanyMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMLABOURCAMPANY-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PIMLABOURCAMPANY" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimlabourcampanies/fetchdefault")
 	public ResponseEntity<List<PIMLABOURCAMPANYDTO>> fetchDefault(PIMLABOURCAMPANYSearchContext context) {
@@ -192,6 +195,7 @@ public class PIMLABOURCAMPANYResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMLABOURCAMPANY-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PIMLABOURCAMPANY" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pimlabourcampanies/searchdefault")
 	public ResponseEntity<Page<PIMLABOURCAMPANYDTO>> searchDefault(@RequestBody PIMLABOURCAMPANYSearchContext context) {

@@ -108,7 +108,7 @@ public class WFTmpStepActorResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#wftmpstepactor_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#wftmpstepactor_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"WFTmpStepActor" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/wftmpstepactors/{wftmpstepactor_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class WFTmpStepActorResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFTmpStepActor-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"WFTmpStepActor" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/wftmpstepactors/fetchdefault")
 	public ResponseEntity<List<WFTmpStepActorDTO>> fetchDefault(WFTmpStepActorSearchContext context) {
@@ -172,6 +173,7 @@ public class WFTmpStepActorResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFTmpStepActor-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"WFTmpStepActor" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/wftmpstepactors/searchdefault")
 	public ResponseEntity<Page<WFTmpStepActorDTO>> searchDefault(@RequestBody WFTmpStepActorSearchContext context) {

@@ -55,7 +55,7 @@ public class PARKHFAResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#parkhfa_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#parkhfa_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"PARKHFA" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/parkhfas/{parkhfa_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class PARKHFAResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PARKHFA-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PARKHFA" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/parkhfas/fetchdefault")
 	public ResponseEntity<List<PARKHFADTO>> fetchDefault(PARKHFASearchContext context) {
@@ -172,6 +173,7 @@ public class PARKHFAResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PARKHFA-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PARKHFA" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/parkhfas/searchdefault")
 	public ResponseEntity<Page<PARKHFADTO>> searchDefault(@RequestBody PARKHFASearchContext context) {

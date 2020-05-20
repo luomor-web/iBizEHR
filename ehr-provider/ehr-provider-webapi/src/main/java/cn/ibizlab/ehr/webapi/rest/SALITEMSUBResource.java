@@ -90,7 +90,7 @@ public class SALITEMSUBResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#salitemsub_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#salitemsub_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"SALITEMSUB" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/salitemsubs/{salitemsub_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class SALITEMSUBResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALITEMSUB-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"SALITEMSUB" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/salitemsubs/fetchdefault")
 	public ResponseEntity<List<SALITEMSUBDTO>> fetchDefault(SALITEMSUBSearchContext context) {
@@ -172,6 +173,7 @@ public class SALITEMSUBResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALITEMSUB-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"SALITEMSUB" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/salitemsubs/searchdefault")
 	public ResponseEntity<Page<SALITEMSUBDTO>> searchDefault(@RequestBody SALITEMSUBSearchContext context) {

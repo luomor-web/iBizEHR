@@ -145,7 +145,7 @@ public class PCMAWARDSWONSResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#pcmawardswons_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#pcmawardswons_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"PCMAWARDSWONS" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmawardswons/{pcmawardswons_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class PCMAWARDSWONSResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMAWARDSWONS-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PCMAWARDSWONS" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pcmawardswons/fetchdefault")
 	public ResponseEntity<List<PCMAWARDSWONSDTO>> fetchDefault(PCMAWARDSWONSSearchContext context) {
@@ -172,6 +173,7 @@ public class PCMAWARDSWONSResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMAWARDSWONS-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PCMAWARDSWONS" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pcmawardswons/searchdefault")
 	public ResponseEntity<Page<PCMAWARDSWONSDTO>> searchDefault(@RequestBody PCMAWARDSWONSSearchContext context) {

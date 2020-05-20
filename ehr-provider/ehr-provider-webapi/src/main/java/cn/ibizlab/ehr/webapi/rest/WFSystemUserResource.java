@@ -113,7 +113,7 @@ public class WFSystemUserResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#wfsystemuser_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#wfsystemuser_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"WFSystemUser" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/wfsystemusers/{wfsystemuser_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class WFSystemUserResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFSystemUser-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"WFSystemUser" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/wfsystemusers/fetchdefault")
 	public ResponseEntity<List<WFSystemUserDTO>> fetchDefault(WFSystemUserSearchContext context) {
@@ -172,6 +173,7 @@ public class WFSystemUserResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFSystemUser-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"WFSystemUser" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/wfsystemusers/searchdefault")
 	public ResponseEntity<Page<WFSystemUserDTO>> searchDefault(@RequestBody WFSystemUserSearchContext context) {

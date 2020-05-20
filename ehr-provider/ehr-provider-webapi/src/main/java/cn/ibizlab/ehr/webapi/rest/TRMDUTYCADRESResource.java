@@ -184,7 +184,7 @@ public class TRMDUTYCADRESResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#trmdutycadres_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#trmdutycadres_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"TRMDUTYCADRES" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/trmdutycadres/{trmdutycadres_id}")
     @Transactional
@@ -199,6 +199,7 @@ public class TRMDUTYCADRESResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMDUTYCADRES-CurCXFW-all')")
 	@ApiOperation(value = "fetch数据范围选择", tags = {"TRMDUTYCADRES" } ,notes = "fetch数据范围选择")
     @RequestMapping(method= RequestMethod.GET , value="/trmdutycadres/fetchcurcxfw")
 	public ResponseEntity<List<TRMDUTYCADRESDTO>> fetchCurCXFW(TRMDUTYCADRESSearchContext context) {
@@ -211,6 +212,7 @@ public class TRMDUTYCADRESResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMDUTYCADRES-CurCXFW-all')")
 	@ApiOperation(value = "search数据范围选择", tags = {"TRMDUTYCADRES" } ,notes = "search数据范围选择")
     @RequestMapping(method= RequestMethod.POST , value="/trmdutycadres/searchcurcxfw")
 	public ResponseEntity<Page<TRMDUTYCADRESDTO>> searchCurCXFW(@RequestBody TRMDUTYCADRESSearchContext context) {
@@ -219,6 +221,7 @@ public class TRMDUTYCADRESResource {
                 .body(new PageImpl(trmdutycadresMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMDUTYCADRES-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"TRMDUTYCADRES" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/trmdutycadres/fetchdefault")
 	public ResponseEntity<List<TRMDUTYCADRESDTO>> fetchDefault(TRMDUTYCADRESSearchContext context) {
@@ -231,6 +234,7 @@ public class TRMDUTYCADRESResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMDUTYCADRES-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"TRMDUTYCADRES" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/trmdutycadres/searchdefault")
 	public ResponseEntity<Page<TRMDUTYCADRESDTO>> searchDefault(@RequestBody TRMDUTYCADRESSearchContext context) {

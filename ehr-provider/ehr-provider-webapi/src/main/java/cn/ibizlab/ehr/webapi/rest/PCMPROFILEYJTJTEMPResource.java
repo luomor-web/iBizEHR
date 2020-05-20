@@ -117,7 +117,7 @@ public class PCMPROFILEYJTJTEMPResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#pcmprofileyjtjtemp_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#pcmprofileyjtjtemp_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"PCMPROFILEYJTJTEMP" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmprofileyjtjtemps/{pcmprofileyjtjtemp_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class PCMPROFILEYJTJTEMPResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILEYJTJTEMP-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PCMPROFILEYJTJTEMP" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pcmprofileyjtjtemps/fetchdefault")
 	public ResponseEntity<List<PCMPROFILEYJTJTEMPDTO>> fetchDefault(PCMPROFILEYJTJTEMPSearchContext context) {
@@ -172,6 +173,7 @@ public class PCMPROFILEYJTJTEMPResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILEYJTJTEMP-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PCMPROFILEYJTJTEMP" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pcmprofileyjtjtemps/searchdefault")
 	public ResponseEntity<Page<PCMPROFILEYJTJTEMPDTO>> searchDefault(@RequestBody PCMPROFILEYJTJTEMPSearchContext context) {

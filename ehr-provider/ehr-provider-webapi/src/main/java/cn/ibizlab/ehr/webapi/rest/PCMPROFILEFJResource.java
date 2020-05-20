@@ -96,7 +96,7 @@ public class PCMPROFILEFJResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#pcmprofilefj_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#pcmprofilefj_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"PCMPROFILEFJ" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmprofilefjs/{pcmprofilefj_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class PCMPROFILEFJResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILEFJ-PROFILEFJ-all')")
 	@ApiOperation(value = "fetch应聘者附件", tags = {"PCMPROFILEFJ" } ,notes = "fetch应聘者附件")
     @RequestMapping(method= RequestMethod.GET , value="/pcmprofilefjs/fetchprofilefj")
 	public ResponseEntity<List<PCMPROFILEFJDTO>> fetchPROFILEFJ(PCMPROFILEFJSearchContext context) {
@@ -172,6 +173,7 @@ public class PCMPROFILEFJResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILEFJ-PROFILEFJ-all')")
 	@ApiOperation(value = "search应聘者附件", tags = {"PCMPROFILEFJ" } ,notes = "search应聘者附件")
     @RequestMapping(method= RequestMethod.POST , value="/pcmprofilefjs/searchprofilefj")
 	public ResponseEntity<Page<PCMPROFILEFJDTO>> searchPROFILEFJ(@RequestBody PCMPROFILEFJSearchContext context) {
@@ -180,6 +182,7 @@ public class PCMPROFILEFJResource {
                 .body(new PageImpl(pcmprofilefjMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILEFJ-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PCMPROFILEFJ" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pcmprofilefjs/fetchdefault")
 	public ResponseEntity<List<PCMPROFILEFJDTO>> fetchDefault(PCMPROFILEFJSearchContext context) {
@@ -192,6 +195,7 @@ public class PCMPROFILEFJResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILEFJ-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PCMPROFILEFJ" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pcmprofilefjs/searchdefault")
 	public ResponseEntity<Page<PCMPROFILEFJDTO>> searchDefault(@RequestBody PCMPROFILEFJSearchContext context) {

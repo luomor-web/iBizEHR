@@ -55,7 +55,7 @@ public class WFAppSettingResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#wfappsetting_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#wfappsetting_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"WFAppSetting" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/wfappsettings/{wfappsetting_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class WFAppSettingResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFAppSetting-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"WFAppSetting" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/wfappsettings/fetchdefault")
 	public ResponseEntity<List<WFAppSettingDTO>> fetchDefault(WFAppSettingSearchContext context) {
@@ -172,6 +173,7 @@ public class WFAppSettingResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFAppSetting-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"WFAppSetting" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/wfappsettings/searchdefault")
 	public ResponseEntity<Page<WFAppSettingDTO>> searchDefault(@RequestBody WFAppSettingSearchContext context) {

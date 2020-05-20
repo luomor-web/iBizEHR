@@ -64,7 +64,7 @@ public class TRMTRAFFICResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#trmtraffic_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#trmtraffic_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"TRMTRAFFIC" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/trmtraffics/{trmtraffic_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class TRMTRAFFICResource {
         return  ResponseEntity.status(HttpStatus.OK).body(trmtrafficService.checkKey(trmtrafficMapping.toDomain(trmtrafficdto)));
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMTRAFFIC-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"TRMTRAFFIC" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/trmtraffics/fetchdefault")
 	public ResponseEntity<List<TRMTRAFFICDTO>> fetchDefault(TRMTRAFFICSearchContext context) {
@@ -172,6 +173,7 @@ public class TRMTRAFFICResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMTRAFFIC-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"TRMTRAFFIC" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/trmtraffics/searchdefault")
 	public ResponseEntity<Page<TRMTRAFFICDTO>> searchDefault(@RequestBody TRMTRAFFICSearchContext context) {

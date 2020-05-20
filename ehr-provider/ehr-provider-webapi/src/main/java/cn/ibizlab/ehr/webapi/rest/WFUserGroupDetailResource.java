@@ -136,7 +136,7 @@ public class WFUserGroupDetailResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#wfusergroupdetail_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#wfusergroupdetail_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"WFUserGroupDetail" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/wfusergroupdetails/{wfusergroupdetail_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class WFUserGroupDetailResource {
         return  ResponseEntity.status(HttpStatus.OK).body(wfusergroupdetailService.checkKey(wfusergroupdetailMapping.toDomain(wfusergroupdetaildto)));
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFUserGroupDetail-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"WFUserGroupDetail" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/wfusergroupdetails/fetchdefault")
 	public ResponseEntity<List<WFUserGroupDetailDTO>> fetchDefault(WFUserGroupDetailSearchContext context) {
@@ -172,6 +173,7 @@ public class WFUserGroupDetailResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFUserGroupDetail-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"WFUserGroupDetail" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/wfusergroupdetails/searchdefault")
 	public ResponseEntity<Page<WFUserGroupDetailDTO>> searchDefault(@RequestBody WFUserGroupDetailSearchContext context) {

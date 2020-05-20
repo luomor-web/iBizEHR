@@ -145,7 +145,7 @@ public class UserRoleDatasResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#userroledatas_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#userroledatas_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"UserRoleDatas" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/userroledatas/{userroledatas_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class UserRoleDatasResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UserRoleDatas-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"UserRoleDatas" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/userroledatas/fetchdefault")
 	public ResponseEntity<List<UserRoleDatasDTO>> fetchDefault(UserRoleDatasSearchContext context) {
@@ -172,6 +173,7 @@ public class UserRoleDatasResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UserRoleDatas-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"UserRoleDatas" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/userroledatas/searchdefault")
 	public ResponseEntity<Page<UserRoleDatasDTO>> searchDefault(@RequestBody UserRoleDatasSearchContext context) {

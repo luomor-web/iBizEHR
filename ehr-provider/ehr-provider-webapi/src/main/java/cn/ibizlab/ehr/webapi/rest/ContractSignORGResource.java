@@ -99,7 +99,7 @@ public class ContractSignORGResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#contractsignorg_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#contractsignorg_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"ContractSignORG" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/contractsignorgs/{contractsignorg_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class ContractSignORGResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ContractSignORG-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"ContractSignORG" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/contractsignorgs/fetchdefault")
 	public ResponseEntity<List<ContractSignORGDTO>> fetchDefault(ContractSignORGSearchContext context) {
@@ -172,6 +173,7 @@ public class ContractSignORGResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ContractSignORG-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"ContractSignORG" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/contractsignorgs/searchdefault")
 	public ResponseEntity<Page<ContractSignORGDTO>> searchDefault(@RequestBody ContractSignORGSearchContext context) {
@@ -180,6 +182,7 @@ public class ContractSignORGResource {
                 .body(new PageImpl(contractsignorgMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ContractSignORG-Default2-all')")
 	@ApiOperation(value = "fetchDEFAULT2", tags = {"ContractSignORG" } ,notes = "fetchDEFAULT2")
     @RequestMapping(method= RequestMethod.GET , value="/contractsignorgs/fetchdefault2")
 	public ResponseEntity<List<ContractSignORGDTO>> fetchDefault2(ContractSignORGSearchContext context) {
@@ -192,6 +195,7 @@ public class ContractSignORGResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ContractSignORG-Default2-all')")
 	@ApiOperation(value = "searchDEFAULT2", tags = {"ContractSignORG" } ,notes = "searchDEFAULT2")
     @RequestMapping(method= RequestMethod.POST , value="/contractsignorgs/searchdefault2")
 	public ResponseEntity<Page<ContractSignORGDTO>> searchDefault2(@RequestBody ContractSignORGSearchContext context) {

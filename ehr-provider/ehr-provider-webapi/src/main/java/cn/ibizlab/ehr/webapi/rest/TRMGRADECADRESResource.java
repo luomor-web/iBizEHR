@@ -87,7 +87,7 @@ public class TRMGRADECADRESResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#trmgradecadres_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#trmgradecadres_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"TRMGRADECADRES" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/trmgradecadres/{trmgradecadres_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class TRMGRADECADRESResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMGRADECADRES-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"TRMGRADECADRES" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/trmgradecadres/fetchdefault")
 	public ResponseEntity<List<TRMGRADECADRESDTO>> fetchDefault(TRMGRADECADRESSearchContext context) {
@@ -172,6 +173,7 @@ public class TRMGRADECADRESResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMGRADECADRES-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"TRMGRADECADRES" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/trmgradecadres/searchdefault")
 	public ResponseEntity<Page<TRMGRADECADRESDTO>> searchDefault(@RequestBody TRMGRADECADRESSearchContext context) {

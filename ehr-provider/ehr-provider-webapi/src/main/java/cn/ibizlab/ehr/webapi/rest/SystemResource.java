@@ -64,7 +64,7 @@ public class SystemResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#system_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#system_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"System" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/systems/{system_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class SystemResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-System-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"System" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/systems/fetchdefault")
 	public ResponseEntity<List<SystemDTO>> fetchDefault(SystemSearchContext context) {
@@ -172,6 +173,7 @@ public class SystemResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-System-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"System" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/systems/searchdefault")
 	public ResponseEntity<Page<SystemDTO>> searchDefault(@RequestBody SystemSearchContext context) {

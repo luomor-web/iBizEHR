@@ -64,7 +64,7 @@ public class SOCSELFAREBASEMXResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#socselfarebasemx_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#socselfarebasemx_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"SOCSELFAREBASEMX" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/socselfarebasemxes/{socselfarebasemx_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class SOCSELFAREBASEMXResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SOCSELFAREBASEMX-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"SOCSELFAREBASEMX" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/socselfarebasemxes/fetchdefault")
 	public ResponseEntity<List<SOCSELFAREBASEMXDTO>> fetchDefault(SOCSELFAREBASEMXSearchContext context) {
@@ -172,6 +173,7 @@ public class SOCSELFAREBASEMXResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SOCSELFAREBASEMX-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"SOCSELFAREBASEMX" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/socselfarebasemxes/searchdefault")
 	public ResponseEntity<Page<SOCSELFAREBASEMXDTO>> searchDefault(@RequestBody SOCSELFAREBASEMXSearchContext context) {

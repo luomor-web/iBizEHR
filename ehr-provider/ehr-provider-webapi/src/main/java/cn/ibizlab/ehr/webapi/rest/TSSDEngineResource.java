@@ -145,7 +145,7 @@ public class TSSDEngineResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#tssdengine_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#tssdengine_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"TSSDEngine" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/tssdengines/{tssdengine_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class TSSDEngineResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TSSDEngine-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"TSSDEngine" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/tssdengines/fetchdefault")
 	public ResponseEntity<List<TSSDEngineDTO>> fetchDefault(TSSDEngineSearchContext context) {
@@ -172,6 +173,7 @@ public class TSSDEngineResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TSSDEngine-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"TSSDEngine" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/tssdengines/searchdefault")
 	public ResponseEntity<Page<TSSDEngineDTO>> searchDefault(@RequestBody TSSDEngineSearchContext context) {

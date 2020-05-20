@@ -129,7 +129,7 @@ public class PIMOUTPUTResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#pimoutput_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#pimoutput_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"PIMOUTPUT" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimoutputs/{pimoutput_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class PIMOUTPUTResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMOUTPUT-CurOrg-all')")
 	@ApiOperation(value = "fetch当前组织范围", tags = {"PIMOUTPUT" } ,notes = "fetch当前组织范围")
     @RequestMapping(method= RequestMethod.GET , value="/pimoutputs/fetchcurorg")
 	public ResponseEntity<List<PIMOUTPUTDTO>> fetchCurOrg(PIMOUTPUTSearchContext context) {
@@ -172,6 +173,7 @@ public class PIMOUTPUTResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMOUTPUT-CurOrg-all')")
 	@ApiOperation(value = "search当前组织范围", tags = {"PIMOUTPUT" } ,notes = "search当前组织范围")
     @RequestMapping(method= RequestMethod.POST , value="/pimoutputs/searchcurorg")
 	public ResponseEntity<Page<PIMOUTPUTDTO>> searchCurOrg(@RequestBody PIMOUTPUTSearchContext context) {
@@ -180,6 +182,7 @@ public class PIMOUTPUTResource {
                 .body(new PageImpl(pimoutputMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMOUTPUT-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PIMOUTPUT" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimoutputs/fetchdefault")
 	public ResponseEntity<List<PIMOUTPUTDTO>> fetchDefault(PIMOUTPUTSearchContext context) {
@@ -192,6 +195,7 @@ public class PIMOUTPUTResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMOUTPUT-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PIMOUTPUT" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pimoutputs/searchdefault")
 	public ResponseEntity<Page<PIMOUTPUTDTO>> searchDefault(@RequestBody PIMOUTPUTSearchContext context) {
@@ -200,6 +204,7 @@ public class PIMOUTPUTResource {
                 .body(new PageImpl(pimoutputMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMOUTPUT-REP_OUTPUT-all')")
 	@ApiOperation(value = "fetch人均产值", tags = {"PIMOUTPUT" } ,notes = "fetch人均产值")
     @RequestMapping(method= RequestMethod.GET , value="/pimoutputs/fetchrep_output")
 	public ResponseEntity<List<HashMap>> fetchREP_OUTPUT(PIMOUTPUTSearchContext context) {
@@ -211,6 +216,7 @@ public class PIMOUTPUTResource {
                 .body(domains.getContent());
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMOUTPUT-REP_OUTPUT-all')")
 	@ApiOperation(value = "search人均产值", tags = {"PIMOUTPUT" } ,notes = "search人均产值")
     @RequestMapping(method= RequestMethod.POST , value="/pimoutputs/searchrep_output")
 	public ResponseEntity<Page<HashMap>> searchREP_OUTPUT(@RequestBody PIMOUTPUTSearchContext context) {

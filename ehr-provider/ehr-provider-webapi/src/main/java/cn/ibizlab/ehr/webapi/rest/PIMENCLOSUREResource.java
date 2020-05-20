@@ -112,7 +112,7 @@ public class PIMENCLOSUREResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#pimenclosure_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#pimenclosure_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"PIMENCLOSURE" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimenclosures/{pimenclosure_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class PIMENCLOSUREResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMENCLOSURE-PCMPROFILE_FJ-all')")
 	@ApiOperation(value = "fetch应聘者附件预览", tags = {"PIMENCLOSURE" } ,notes = "fetch应聘者附件预览")
     @RequestMapping(method= RequestMethod.GET , value="/pimenclosures/fetchpcmprofile_fj")
 	public ResponseEntity<List<PIMENCLOSUREDTO>> fetchPCMPROFILE_FJ(PIMENCLOSURESearchContext context) {
@@ -172,6 +173,7 @@ public class PIMENCLOSUREResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMENCLOSURE-PCMPROFILE_FJ-all')")
 	@ApiOperation(value = "search应聘者附件预览", tags = {"PIMENCLOSURE" } ,notes = "search应聘者附件预览")
     @RequestMapping(method= RequestMethod.POST , value="/pimenclosures/searchpcmprofile_fj")
 	public ResponseEntity<Page<PIMENCLOSUREDTO>> searchPCMPROFILE_FJ(@RequestBody PIMENCLOSURESearchContext context) {
@@ -180,6 +182,7 @@ public class PIMENCLOSUREResource {
                 .body(new PageImpl(pimenclosureMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMENCLOSURE-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PIMENCLOSURE" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimenclosures/fetchdefault")
 	public ResponseEntity<List<PIMENCLOSUREDTO>> fetchDefault(PIMENCLOSURESearchContext context) {
@@ -192,6 +195,7 @@ public class PIMENCLOSUREResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMENCLOSURE-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PIMENCLOSURE" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pimenclosures/searchdefault")
 	public ResponseEntity<Page<PIMENCLOSUREDTO>> searchDefault(@RequestBody PIMENCLOSURESearchContext context) {

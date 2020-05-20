@@ -145,7 +145,7 @@ public class PersonStateMGRResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#personstatemgr_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#personstatemgr_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"PersonStateMGR" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/personstatemgrs/{personstatemgr_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class PersonStateMGRResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PersonStateMGR-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PersonStateMGR" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/personstatemgrs/fetchdefault")
 	public ResponseEntity<List<PersonStateMGRDTO>> fetchDefault(PersonStateMGRSearchContext context) {
@@ -172,6 +173,7 @@ public class PersonStateMGRResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PersonStateMGR-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PersonStateMGR" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/personstatemgrs/searchdefault")
 	public ResponseEntity<Page<PersonStateMGRDTO>> searchDefault(@RequestBody PersonStateMGRSearchContext context) {

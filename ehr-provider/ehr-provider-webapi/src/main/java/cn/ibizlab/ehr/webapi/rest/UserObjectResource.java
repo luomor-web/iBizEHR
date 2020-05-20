@@ -145,7 +145,7 @@ public class UserObjectResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#userobject_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#userobject_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"UserObject" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/userobjects/{userobject_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class UserObjectResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UserObject-IndexDER-all')")
 	@ApiOperation(value = "fetchIndexDER", tags = {"UserObject" } ,notes = "fetchIndexDER")
     @RequestMapping(method= RequestMethod.GET , value="/userobjects/fetchindexder")
 	public ResponseEntity<List<UserObjectDTO>> fetchIndexDER(UserObjectSearchContext context) {
@@ -172,6 +173,7 @@ public class UserObjectResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UserObject-IndexDER-all')")
 	@ApiOperation(value = "searchIndexDER", tags = {"UserObject" } ,notes = "searchIndexDER")
     @RequestMapping(method= RequestMethod.POST , value="/userobjects/searchindexder")
 	public ResponseEntity<Page<UserObjectDTO>> searchIndexDER(@RequestBody UserObjectSearchContext context) {
@@ -180,6 +182,7 @@ public class UserObjectResource {
                 .body(new PageImpl(userobjectMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UserObject-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"UserObject" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/userobjects/fetchdefault")
 	public ResponseEntity<List<UserObjectDTO>> fetchDefault(UserObjectSearchContext context) {
@@ -192,6 +195,7 @@ public class UserObjectResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UserObject-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"UserObject" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/userobjects/searchdefault")
 	public ResponseEntity<Page<UserObjectDTO>> searchDefault(@RequestBody UserObjectSearchContext context) {

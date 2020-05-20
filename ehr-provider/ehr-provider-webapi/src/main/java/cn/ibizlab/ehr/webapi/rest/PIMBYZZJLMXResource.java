@@ -180,7 +180,7 @@ public class PIMBYZZJLMXResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#pimbyzzjlmx_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#pimbyzzjlmx_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"PIMBYZZJLMX" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimbyzzjlmxes/{pimbyzzjlmx_id}")
     @Transactional
@@ -394,6 +394,7 @@ public class PIMBYZZJLMXResource {
         return ResponseEntity.status(HttpStatus.OK).body(pimbyzzjlmxdto);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMBYZZJLMX-ZZWSHDS-all')")
 	@ApiOperation(value = "fetch转正未审核", tags = {"PIMBYZZJLMX" } ,notes = "fetch转正未审核")
     @RequestMapping(method= RequestMethod.GET , value="/pimbyzzjlmxes/fetchzzwshds")
 	public ResponseEntity<List<PIMBYZZJLMXDTO>> fetchZZWSHDS(PIMBYZZJLMXSearchContext context) {
@@ -406,6 +407,7 @@ public class PIMBYZZJLMXResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMBYZZJLMX-ZZWSHDS-all')")
 	@ApiOperation(value = "search转正未审核", tags = {"PIMBYZZJLMX" } ,notes = "search转正未审核")
     @RequestMapping(method= RequestMethod.POST , value="/pimbyzzjlmxes/searchzzwshds")
 	public ResponseEntity<Page<PIMBYZZJLMXDTO>> searchZZWSHDS(@RequestBody PIMBYZZJLMXSearchContext context) {
@@ -414,6 +416,7 @@ public class PIMBYZZJLMXResource {
                 .body(new PageImpl(pimbyzzjlmxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMBYZZJLMX-UnApproved-all')")
 	@ApiOperation(value = "fetch待公司初审", tags = {"PIMBYZZJLMX" } ,notes = "fetch待公司初审")
     @RequestMapping(method= RequestMethod.GET , value="/pimbyzzjlmxes/fetchunapproved")
 	public ResponseEntity<List<PIMBYZZJLMXDTO>> fetchUnApproved(PIMBYZZJLMXSearchContext context) {
@@ -426,6 +429,7 @@ public class PIMBYZZJLMXResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMBYZZJLMX-UnApproved-all')")
 	@ApiOperation(value = "search待公司初审", tags = {"PIMBYZZJLMX" } ,notes = "search待公司初审")
     @RequestMapping(method= RequestMethod.POST , value="/pimbyzzjlmxes/searchunapproved")
 	public ResponseEntity<Page<PIMBYZZJLMXDTO>> searchUnApproved(@RequestBody PIMBYZZJLMXSearchContext context) {
@@ -434,6 +438,7 @@ public class PIMBYZZJLMXResource {
                 .body(new PageImpl(pimbyzzjlmxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMBYZZJLMX-DDJZBSH-all')")
 	@ApiOperation(value = "fetch待局总部审核", tags = {"PIMBYZZJLMX" } ,notes = "fetch待局总部审核")
     @RequestMapping(method= RequestMethod.GET , value="/pimbyzzjlmxes/fetchddjzbsh")
 	public ResponseEntity<List<PIMBYZZJLMXDTO>> fetchDDJZBSH(PIMBYZZJLMXSearchContext context) {
@@ -446,6 +451,7 @@ public class PIMBYZZJLMXResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMBYZZJLMX-DDJZBSH-all')")
 	@ApiOperation(value = "search待局总部审核", tags = {"PIMBYZZJLMX" } ,notes = "search待局总部审核")
     @RequestMapping(method= RequestMethod.POST , value="/pimbyzzjlmxes/searchddjzbsh")
 	public ResponseEntity<Page<PIMBYZZJLMXDTO>> searchDDJZBSH(@RequestBody PIMBYZZJLMXSearchContext context) {
@@ -454,6 +460,7 @@ public class PIMBYZZJLMXResource {
                 .body(new PageImpl(pimbyzzjlmxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMBYZZJLMX-BYLZZJL-all')")
 	@ApiOperation(value = "fetchB/Y类员工转正记录", tags = {"PIMBYZZJLMX" } ,notes = "fetchB/Y类员工转正记录")
     @RequestMapping(method= RequestMethod.GET , value="/pimbyzzjlmxes/fetchbylzzjl")
 	public ResponseEntity<List<PIMBYZZJLMXDTO>> fetchBYLZZJL(PIMBYZZJLMXSearchContext context) {
@@ -466,6 +473,7 @@ public class PIMBYZZJLMXResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMBYZZJLMX-BYLZZJL-all')")
 	@ApiOperation(value = "searchB/Y类员工转正记录", tags = {"PIMBYZZJLMX" } ,notes = "searchB/Y类员工转正记录")
     @RequestMapping(method= RequestMethod.POST , value="/pimbyzzjlmxes/searchbylzzjl")
 	public ResponseEntity<Page<PIMBYZZJLMXDTO>> searchBYLZZJL(@RequestBody PIMBYZZJLMXSearchContext context) {
@@ -474,6 +482,7 @@ public class PIMBYZZJLMXResource {
                 .body(new PageImpl(pimbyzzjlmxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMBYZZJLMX-DGSDSZSH-all')")
 	@ApiOperation(value = "fetch待公司董事长审批", tags = {"PIMBYZZJLMX" } ,notes = "fetch待公司董事长审批")
     @RequestMapping(method= RequestMethod.GET , value="/pimbyzzjlmxes/fetchdgsdszsh")
 	public ResponseEntity<List<PIMBYZZJLMXDTO>> fetchDGSDSZSH(PIMBYZZJLMXSearchContext context) {
@@ -486,6 +495,7 @@ public class PIMBYZZJLMXResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMBYZZJLMX-DGSDSZSH-all')")
 	@ApiOperation(value = "search待公司董事长审批", tags = {"PIMBYZZJLMX" } ,notes = "search待公司董事长审批")
     @RequestMapping(method= RequestMethod.POST , value="/pimbyzzjlmxes/searchdgsdszsh")
 	public ResponseEntity<Page<PIMBYZZJLMXDTO>> searchDGSDSZSH(@RequestBody PIMBYZZJLMXSearchContext context) {
@@ -494,6 +504,7 @@ public class PIMBYZZJLMXResource {
                 .body(new PageImpl(pimbyzzjlmxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMBYZZJLMX-HTRY-all')")
 	@ApiOperation(value = "fetch回退人员", tags = {"PIMBYZZJLMX" } ,notes = "fetch回退人员")
     @RequestMapping(method= RequestMethod.GET , value="/pimbyzzjlmxes/fetchhtry")
 	public ResponseEntity<List<PIMBYZZJLMXDTO>> fetchHTRY(PIMBYZZJLMXSearchContext context) {
@@ -506,6 +517,7 @@ public class PIMBYZZJLMXResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMBYZZJLMX-HTRY-all')")
 	@ApiOperation(value = "search回退人员", tags = {"PIMBYZZJLMX" } ,notes = "search回退人员")
     @RequestMapping(method= RequestMethod.POST , value="/pimbyzzjlmxes/searchhtry")
 	public ResponseEntity<Page<PIMBYZZJLMXDTO>> searchHTRY(@RequestBody PIMBYZZJLMXSearchContext context) {
@@ -514,6 +526,7 @@ public class PIMBYZZJLMXResource {
                 .body(new PageImpl(pimbyzzjlmxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMBYZZJLMX-DJZBSP-all')")
 	@ApiOperation(value = "fetch待局总部审批", tags = {"PIMBYZZJLMX" } ,notes = "fetch待局总部审批")
     @RequestMapping(method= RequestMethod.GET , value="/pimbyzzjlmxes/fetchdjzbsp")
 	public ResponseEntity<List<PIMBYZZJLMXDTO>> fetchDJZBSP(PIMBYZZJLMXSearchContext context) {
@@ -526,6 +539,7 @@ public class PIMBYZZJLMXResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMBYZZJLMX-DJZBSP-all')")
 	@ApiOperation(value = "search待局总部审批", tags = {"PIMBYZZJLMX" } ,notes = "search待局总部审批")
     @RequestMapping(method= RequestMethod.POST , value="/pimbyzzjlmxes/searchdjzbsp")
 	public ResponseEntity<Page<PIMBYZZJLMXDTO>> searchDJZBSP(@RequestBody PIMBYZZJLMXSearchContext context) {
@@ -534,6 +548,7 @@ public class PIMBYZZJLMXResource {
                 .body(new PageImpl(pimbyzzjlmxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMBYZZJLMX-DSB-all')")
 	@ApiOperation(value = "fetch待上报", tags = {"PIMBYZZJLMX" } ,notes = "fetch待上报")
     @RequestMapping(method= RequestMethod.GET , value="/pimbyzzjlmxes/fetchdsb")
 	public ResponseEntity<List<PIMBYZZJLMXDTO>> fetchDSB(PIMBYZZJLMXSearchContext context) {
@@ -546,6 +561,7 @@ public class PIMBYZZJLMXResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMBYZZJLMX-DSB-all')")
 	@ApiOperation(value = "search待上报", tags = {"PIMBYZZJLMX" } ,notes = "search待上报")
     @RequestMapping(method= RequestMethod.POST , value="/pimbyzzjlmxes/searchdsb")
 	public ResponseEntity<Page<PIMBYZZJLMXDTO>> searchDSB(@RequestBody PIMBYZZJLMXSearchContext context) {
@@ -554,6 +570,7 @@ public class PIMBYZZJLMXResource {
                 .body(new PageImpl(pimbyzzjlmxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMBYZZJLMX-FinishYGBH-all')")
 	@ApiOperation(value = "fetch已变更员工编号名单", tags = {"PIMBYZZJLMX" } ,notes = "fetch已变更员工编号名单")
     @RequestMapping(method= RequestMethod.GET , value="/pimbyzzjlmxes/fetchfinishygbh")
 	public ResponseEntity<List<PIMBYZZJLMXDTO>> fetchFinishYGBH(PIMBYZZJLMXSearchContext context) {
@@ -566,6 +583,7 @@ public class PIMBYZZJLMXResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMBYZZJLMX-FinishYGBH-all')")
 	@ApiOperation(value = "search已变更员工编号名单", tags = {"PIMBYZZJLMX" } ,notes = "search已变更员工编号名单")
     @RequestMapping(method= RequestMethod.POST , value="/pimbyzzjlmxes/searchfinishygbh")
 	public ResponseEntity<Page<PIMBYZZJLMXDTO>> searchFinishYGBH(@RequestBody PIMBYZZJLMXSearchContext context) {
@@ -574,6 +592,7 @@ public class PIMBYZZJLMXResource {
                 .body(new PageImpl(pimbyzzjlmxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMBYZZJLMX-DJZBSH-all')")
 	@ApiOperation(value = "fetch待局总部初审", tags = {"PIMBYZZJLMX" } ,notes = "fetch待局总部初审")
     @RequestMapping(method= RequestMethod.GET , value="/pimbyzzjlmxes/fetchdjzbsh")
 	public ResponseEntity<List<PIMBYZZJLMXDTO>> fetchDJZBSH(PIMBYZZJLMXSearchContext context) {
@@ -586,6 +605,7 @@ public class PIMBYZZJLMXResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMBYZZJLMX-DJZBSH-all')")
 	@ApiOperation(value = "search待局总部初审", tags = {"PIMBYZZJLMX" } ,notes = "search待局总部初审")
     @RequestMapping(method= RequestMethod.POST , value="/pimbyzzjlmxes/searchdjzbsh")
 	public ResponseEntity<Page<PIMBYZZJLMXDTO>> searchDJZBSH(@RequestBody PIMBYZZJLMXSearchContext context) {
@@ -594,6 +614,7 @@ public class PIMBYZZJLMXResource {
                 .body(new PageImpl(pimbyzzjlmxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMBYZZJLMX-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PIMBYZZJLMX" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimbyzzjlmxes/fetchdefault")
 	public ResponseEntity<List<PIMBYZZJLMXDTO>> fetchDefault(PIMBYZZJLMXSearchContext context) {
@@ -606,6 +627,7 @@ public class PIMBYZZJLMXResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMBYZZJLMX-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PIMBYZZJLMX" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pimbyzzjlmxes/searchdefault")
 	public ResponseEntity<Page<PIMBYZZJLMXDTO>> searchDefault(@RequestBody PIMBYZZJLMXSearchContext context) {

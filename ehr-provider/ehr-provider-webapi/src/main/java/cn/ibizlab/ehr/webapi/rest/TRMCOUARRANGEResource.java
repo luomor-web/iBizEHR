@@ -88,7 +88,7 @@ public class TRMCOUARRANGEResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#trmcouarrange_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#trmcouarrange_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"TRMCOUARRANGE" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/trmcouarranges/{trmcouarrange_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class TRMCOUARRANGEResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMCOUARRANGE-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"TRMCOUARRANGE" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/trmcouarranges/fetchdefault")
 	public ResponseEntity<List<TRMCOUARRANGEDTO>> fetchDefault(TRMCOUARRANGESearchContext context) {
@@ -172,6 +173,7 @@ public class TRMCOUARRANGEResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMCOUARRANGE-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"TRMCOUARRANGE" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/trmcouarranges/searchdefault")
 	public ResponseEntity<Page<TRMCOUARRANGEDTO>> searchDefault(@RequestBody TRMCOUARRANGESearchContext context) {

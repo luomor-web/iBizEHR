@@ -76,7 +76,7 @@ public class WFWorkflowResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#wfworkflow_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#wfworkflow_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"WFWorkflow" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/wfworkflows/{wfworkflow_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class WFWorkflowResource {
         return  ResponseEntity.status(HttpStatus.OK).body(wfworkflowService.checkKey(wfworkflowMapping.toDomain(wfworkflowdto)));
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFWorkflow-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"WFWorkflow" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/wfworkflows/fetchdefault")
 	public ResponseEntity<List<WFWorkflowDTO>> fetchDefault(WFWorkflowSearchContext context) {
@@ -172,6 +173,7 @@ public class WFWorkflowResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFWorkflow-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"WFWorkflow" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/wfworkflows/searchdefault")
 	public ResponseEntity<Page<WFWorkflowDTO>> searchDefault(@RequestBody WFWorkflowSearchContext context) {

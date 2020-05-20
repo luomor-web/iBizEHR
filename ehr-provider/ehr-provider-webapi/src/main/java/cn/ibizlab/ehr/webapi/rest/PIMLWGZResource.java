@@ -88,7 +88,7 @@ public class PIMLWGZResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#pimlwgz_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#pimlwgz_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"PIMLWGZ" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimlwgzs/{pimlwgz_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class PIMLWGZResource {
         return  ResponseEntity.status(HttpStatus.OK).body(pimlwgzService.checkKey(pimlwgzMapping.toDomain(pimlwgzdto)));
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMLWGZ-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PIMLWGZ" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimlwgzs/fetchdefault")
 	public ResponseEntity<List<PIMLWGZDTO>> fetchDefault(PIMLWGZSearchContext context) {
@@ -172,6 +173,7 @@ public class PIMLWGZResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMLWGZ-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PIMLWGZ" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pimlwgzs/searchdefault")
 	public ResponseEntity<Page<PIMLWGZDTO>> searchDefault(@RequestBody PIMLWGZSearchContext context) {

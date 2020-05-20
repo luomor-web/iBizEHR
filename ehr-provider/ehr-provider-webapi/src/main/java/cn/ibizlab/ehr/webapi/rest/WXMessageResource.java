@@ -145,7 +145,7 @@ public class WXMessageResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#wxmessage_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#wxmessage_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"WXMessage" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/wxmessages/{wxmessage_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class WXMessageResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WXMessage-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"WXMessage" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/wxmessages/fetchdefault")
 	public ResponseEntity<List<WXMessageDTO>> fetchDefault(WXMessageSearchContext context) {
@@ -172,6 +173,7 @@ public class WXMessageResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WXMessage-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"WXMessage" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/wxmessages/searchdefault")
 	public ResponseEntity<Page<WXMessageDTO>> searchDefault(@RequestBody WXMessageSearchContext context) {

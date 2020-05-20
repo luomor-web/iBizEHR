@@ -55,7 +55,7 @@ public class PCMZSGLResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#pcmzsgl_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#pcmzsgl_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"PCMZSGL" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmzsgls/{pcmzsgl_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class PCMZSGLResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMZSGL-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PCMZSGL" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pcmzsgls/fetchdefault")
 	public ResponseEntity<List<PCMZSGLDTO>> fetchDefault(PCMZSGLSearchContext context) {
@@ -172,6 +173,7 @@ public class PCMZSGLResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMZSGL-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PCMZSGL" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pcmzsgls/searchdefault")
 	public ResponseEntity<Page<PCMZSGLDTO>> searchDefault(@RequestBody PCMZSGLSearchContext context) {

@@ -73,7 +73,7 @@ public class PIMWorkflowResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#pimworkflow_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#pimworkflow_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"PIMWorkflow" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimworkflows/{pimworkflow_id}")
     @Transactional
@@ -173,6 +173,7 @@ public class PIMWorkflowResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMWorkflow-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PIMWorkflow" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimworkflows/fetchdefault")
 	public ResponseEntity<List<PIMWorkflowDTO>> fetchDefault(PIMWorkflowSearchContext context) {
@@ -185,6 +186,7 @@ public class PIMWorkflowResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMWorkflow-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PIMWorkflow" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pimworkflows/searchdefault")
 	public ResponseEntity<Page<PIMWorkflowDTO>> searchDefault(@RequestBody PIMWorkflowSearchContext context) {

@@ -77,7 +77,7 @@ public class OrgResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#org_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#org_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"Org" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/orgs/{org_id}")
     @Transactional
@@ -186,6 +186,7 @@ public class OrgResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-Org-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"Org" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/orgs/fetchdefault")
 	public ResponseEntity<List<OrgDTO>> fetchDefault(OrgSearchContext context) {
@@ -198,6 +199,7 @@ public class OrgResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-Org-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"Org" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/orgs/searchdefault")
 	public ResponseEntity<Page<OrgDTO>> searchDefault(@RequestBody OrgSearchContext context) {
@@ -206,6 +208,7 @@ public class OrgResource {
                 .body(new PageImpl(orgMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-Org-CurCat-all')")
 	@ApiOperation(value = "fetch当前组织分类", tags = {"Org" } ,notes = "fetch当前组织分类")
     @RequestMapping(method= RequestMethod.GET , value="/orgs/fetchcurcat")
 	public ResponseEntity<List<OrgDTO>> fetchCurCat(OrgSearchContext context) {
@@ -218,6 +221,7 @@ public class OrgResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-Org-CurCat-all')")
 	@ApiOperation(value = "search当前组织分类", tags = {"Org" } ,notes = "search当前组织分类")
     @RequestMapping(method= RequestMethod.POST , value="/orgs/searchcurcat")
 	public ResponseEntity<Page<OrgDTO>> searchCurCat(@RequestBody OrgSearchContext context) {
@@ -226,6 +230,7 @@ public class OrgResource {
                 .body(new PageImpl(orgMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-Org-AllRoot-all')")
 	@ApiOperation(value = "fetch全部根组织", tags = {"Org" } ,notes = "fetch全部根组织")
     @RequestMapping(method= RequestMethod.GET , value="/orgs/fetchallroot")
 	public ResponseEntity<List<OrgDTO>> fetchAllRoot(OrgSearchContext context) {
@@ -238,6 +243,7 @@ public class OrgResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-Org-AllRoot-all')")
 	@ApiOperation(value = "search全部根组织", tags = {"Org" } ,notes = "search全部根组织")
     @RequestMapping(method= RequestMethod.POST , value="/orgs/searchallroot")
 	public ResponseEntity<Page<OrgDTO>> searchAllRoot(@RequestBody OrgSearchContext context) {
@@ -246,6 +252,7 @@ public class OrgResource {
                 .body(new PageImpl(orgMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-Org-CurChild-all')")
 	@ApiOperation(value = "fetch当前子组织", tags = {"Org" } ,notes = "fetch当前子组织")
     @RequestMapping(method= RequestMethod.GET , value="/orgs/fetchcurchild")
 	public ResponseEntity<List<OrgDTO>> fetchCurChild(OrgSearchContext context) {
@@ -258,6 +265,7 @@ public class OrgResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-Org-CurChild-all')")
 	@ApiOperation(value = "search当前子组织", tags = {"Org" } ,notes = "search当前子组织")
     @RequestMapping(method= RequestMethod.POST , value="/orgs/searchcurchild")
 	public ResponseEntity<Page<OrgDTO>> searchCurChild(@RequestBody OrgSearchContext context) {

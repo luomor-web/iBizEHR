@@ -55,7 +55,7 @@ public class PCMGBHMCResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#pcmgbhmc_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#pcmgbhmc_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"PCMGBHMC" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmgbhmcs/{pcmgbhmc_id}")
     @Transactional
@@ -199,6 +199,7 @@ public class PCMGBHMCResource {
         return ResponseEntity.status(HttpStatus.OK).body(pcmgbhmcdto);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMGBHMC-GBHMCNewTree-all')")
 	@ApiOperation(value = "fetch树视图的干部花名册（新）", tags = {"PCMGBHMC" } ,notes = "fetch树视图的干部花名册（新）")
     @RequestMapping(method= RequestMethod.GET , value="/pcmgbhmcs/fetchgbhmcnewtree")
 	public ResponseEntity<List<PCMGBHMCDTO>> fetchGBHMCNewTree(PCMGBHMCSearchContext context) {
@@ -211,6 +212,7 @@ public class PCMGBHMCResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMGBHMC-GBHMCNewTree-all')")
 	@ApiOperation(value = "search树视图的干部花名册（新）", tags = {"PCMGBHMC" } ,notes = "search树视图的干部花名册（新）")
     @RequestMapping(method= RequestMethod.POST , value="/pcmgbhmcs/searchgbhmcnewtree")
 	public ResponseEntity<Page<PCMGBHMCDTO>> searchGBHMCNewTree(@RequestBody PCMGBHMCSearchContext context) {
@@ -219,6 +221,7 @@ public class PCMGBHMCResource {
                 .body(new PageImpl(pcmgbhmcMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMGBHMC-GBHMCTree-all')")
 	@ApiOperation(value = "fetch树视图的干部花名册", tags = {"PCMGBHMC" } ,notes = "fetch树视图的干部花名册")
     @RequestMapping(method= RequestMethod.GET , value="/pcmgbhmcs/fetchgbhmctree")
 	public ResponseEntity<List<PCMGBHMCDTO>> fetchGBHMCTree(PCMGBHMCSearchContext context) {
@@ -231,6 +234,7 @@ public class PCMGBHMCResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMGBHMC-GBHMCTree-all')")
 	@ApiOperation(value = "search树视图的干部花名册", tags = {"PCMGBHMC" } ,notes = "search树视图的干部花名册")
     @RequestMapping(method= RequestMethod.POST , value="/pcmgbhmcs/searchgbhmctree")
 	public ResponseEntity<Page<PCMGBHMCDTO>> searchGBHMCTree(@RequestBody PCMGBHMCSearchContext context) {
@@ -239,6 +243,7 @@ public class PCMGBHMCResource {
                 .body(new PageImpl(pcmgbhmcMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMGBHMC-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PCMGBHMC" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pcmgbhmcs/fetchdefault")
 	public ResponseEntity<List<PCMGBHMCDTO>> fetchDefault(PCMGBHMCSearchContext context) {
@@ -251,6 +256,7 @@ public class PCMGBHMCResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMGBHMC-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PCMGBHMC" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pcmgbhmcs/searchdefault")
 	public ResponseEntity<Page<PCMGBHMCDTO>> searchDefault(@RequestBody PCMGBHMCSearchContext context) {
@@ -259,6 +265,7 @@ public class PCMGBHMCResource {
                 .body(new PageImpl(pcmgbhmcMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMGBHMC-ZJPD-all')")
 	@ApiOperation(value = "fetchZJPD", tags = {"PCMGBHMC" } ,notes = "fetchZJPD")
     @RequestMapping(method= RequestMethod.GET , value="/pcmgbhmcs/fetchzjpd")
 	public ResponseEntity<List<PCMGBHMCDTO>> fetchZJPD(PCMGBHMCSearchContext context) {
@@ -271,6 +278,7 @@ public class PCMGBHMCResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMGBHMC-ZJPD-all')")
 	@ApiOperation(value = "searchZJPD", tags = {"PCMGBHMC" } ,notes = "searchZJPD")
     @RequestMapping(method= RequestMethod.POST , value="/pcmgbhmcs/searchzjpd")
 	public ResponseEntity<Page<PCMGBHMCDTO>> searchZJPD(@RequestBody PCMGBHMCSearchContext context) {

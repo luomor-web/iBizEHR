@@ -158,7 +158,7 @@ public class PIMARCHIVESLOANANDRETURNResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#pimarchivesloanandreturn_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#pimarchivesloanandreturn_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"PIMARCHIVESLOANANDRETURN" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimarchivesloanandreturns/{pimarchivesloanandreturn_id}")
     @Transactional
@@ -186,6 +186,7 @@ public class PIMARCHIVESLOANANDRETURNResource {
         return ResponseEntity.status(HttpStatus.OK).body(pimarchivesloanandreturndto);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMARCHIVESLOANANDRETURN-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PIMARCHIVESLOANANDRETURN" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimarchivesloanandreturns/fetchdefault")
 	public ResponseEntity<List<PIMARCHIVESLOANANDRETURNDTO>> fetchDefault(PIMARCHIVESLOANANDRETURNSearchContext context) {
@@ -198,6 +199,7 @@ public class PIMARCHIVESLOANANDRETURNResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMARCHIVESLOANANDRETURN-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PIMARCHIVESLOANANDRETURN" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pimarchivesloanandreturns/searchdefault")
 	public ResponseEntity<Page<PIMARCHIVESLOANANDRETURNDTO>> searchDefault(@RequestBody PIMARCHIVESLOANANDRETURNSearchContext context) {

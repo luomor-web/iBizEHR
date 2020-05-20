@@ -145,7 +145,7 @@ public class PCMGXMLResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#pcmgxml_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#pcmgxml_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"PCMGXML" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmgxmls/{pcmgxml_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class PCMGXMLResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMGXML-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PCMGXML" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pcmgxmls/fetchdefault")
 	public ResponseEntity<List<PCMGXMLDTO>> fetchDefault(PCMGXMLSearchContext context) {
@@ -172,6 +173,7 @@ public class PCMGXMLResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMGXML-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PCMGXML" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pcmgxmls/searchdefault")
 	public ResponseEntity<Page<PCMGXMLDTO>> searchDefault(@RequestBody PCMGXMLSearchContext context) {
@@ -180,6 +182,7 @@ public class PCMGXMLResource {
                 .body(new PageImpl(pcmgxmlMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMGXML-CurND-all')")
 	@ApiOperation(value = "fetch当前年度高校名录", tags = {"PCMGXML" } ,notes = "fetch当前年度高校名录")
     @RequestMapping(method= RequestMethod.GET , value="/pcmgxmls/fetchcurnd")
 	public ResponseEntity<List<PCMGXMLDTO>> fetchCurND(PCMGXMLSearchContext context) {
@@ -192,6 +195,7 @@ public class PCMGXMLResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMGXML-CurND-all')")
 	@ApiOperation(value = "search当前年度高校名录", tags = {"PCMGXML" } ,notes = "search当前年度高校名录")
     @RequestMapping(method= RequestMethod.POST , value="/pcmgxmls/searchcurnd")
 	public ResponseEntity<Page<PCMGXMLDTO>> searchCurND(@RequestBody PCMGXMLSearchContext context) {

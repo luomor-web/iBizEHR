@@ -106,7 +106,7 @@ public class SALSOURCEResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#salsource_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#salsource_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"SALSOURCE" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/salsources/{salsource_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class SALSOURCEResource {
         return ResponseEntity.status(HttpStatus.OK).body(salsourceMapping.toDto(salsourceService.getDraft(new SALSOURCE())));
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALSOURCE-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"SALSOURCE" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/salsources/fetchdefault")
 	public ResponseEntity<List<SALSOURCEDTO>> fetchDefault(SALSOURCESearchContext context) {
@@ -172,6 +173,7 @@ public class SALSOURCEResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALSOURCE-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"SALSOURCE" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/salsources/searchdefault")
 	public ResponseEntity<Page<SALSOURCEDTO>> searchDefault(@RequestBody SALSOURCESearchContext context) {

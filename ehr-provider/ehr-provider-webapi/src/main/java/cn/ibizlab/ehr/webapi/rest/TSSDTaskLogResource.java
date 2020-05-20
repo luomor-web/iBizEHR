@@ -108,7 +108,7 @@ public class TSSDTaskLogResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#tssdtasklog_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#tssdtasklog_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"TSSDTaskLog" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/tssdtasklogs/{tssdtasklog_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class TSSDTaskLogResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TSSDTaskLog-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"TSSDTaskLog" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/tssdtasklogs/fetchdefault")
 	public ResponseEntity<List<TSSDTaskLogDTO>> fetchDefault(TSSDTaskLogSearchContext context) {
@@ -172,6 +173,7 @@ public class TSSDTaskLogResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TSSDTaskLog-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"TSSDTaskLog" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/tssdtasklogs/searchdefault")
 	public ResponseEntity<Page<TSSDTaskLogDTO>> searchDefault(@RequestBody TSSDTaskLogSearchContext context) {

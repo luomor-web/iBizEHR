@@ -171,7 +171,7 @@ public class LoginAccountResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#loginaccount_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#loginaccount_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"LoginAccount" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/loginaccounts/{loginaccount_id}")
     @Transactional
@@ -186,6 +186,7 @@ public class LoginAccountResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-LoginAccount-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"LoginAccount" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/loginaccounts/fetchdefault")
 	public ResponseEntity<List<LoginAccountDTO>> fetchDefault(LoginAccountSearchContext context) {
@@ -198,6 +199,7 @@ public class LoginAccountResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-LoginAccount-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"LoginAccount" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/loginaccounts/searchdefault")
 	public ResponseEntity<Page<LoginAccountDTO>> searchDefault(@RequestBody LoginAccountSearchContext context) {

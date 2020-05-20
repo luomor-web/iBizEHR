@@ -55,7 +55,7 @@ public class ORMPostLibResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#ormpostlib_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#ormpostlib_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"ORMPostLib" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/ormpostlibs/{ormpostlib_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class ORMPostLibResource {
         return  ResponseEntity.status(HttpStatus.OK).body(ormpostlibService.checkKey(ormpostlibMapping.toDomain(ormpostlibdto)));
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMPostLib-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"ORMPostLib" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/ormpostlibs/fetchdefault")
 	public ResponseEntity<List<ORMPostLibDTO>> fetchDefault(ORMPostLibSearchContext context) {
@@ -172,6 +173,7 @@ public class ORMPostLibResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMPostLib-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"ORMPostLib" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/ormpostlibs/searchdefault")
 	public ResponseEntity<Page<ORMPostLibDTO>> searchDefault(@RequestBody ORMPostLibSearchContext context) {

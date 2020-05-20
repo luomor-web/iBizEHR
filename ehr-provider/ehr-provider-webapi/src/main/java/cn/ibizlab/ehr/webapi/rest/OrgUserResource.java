@@ -55,7 +55,7 @@ public class OrgUserResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#orguser_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#orguser_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"OrgUser" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/orgusers/{orguser_id}")
     @Transactional
@@ -186,6 +186,7 @@ public class OrgUserResource {
         return  ResponseEntity.status(HttpStatus.OK).body(orguserService.checkKey(orguserMapping.toDomain(orguserdto)));
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrgUser-CurOrg-all')")
 	@ApiOperation(value = "fetch当前组织", tags = {"OrgUser" } ,notes = "fetch当前组织")
     @RequestMapping(method= RequestMethod.GET , value="/orgusers/fetchcurorg")
 	public ResponseEntity<List<OrgUserDTO>> fetchCurOrg(OrgUserSearchContext context) {
@@ -198,6 +199,7 @@ public class OrgUserResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrgUser-CurOrg-all')")
 	@ApiOperation(value = "search当前组织", tags = {"OrgUser" } ,notes = "search当前组织")
     @RequestMapping(method= RequestMethod.POST , value="/orgusers/searchcurorg")
 	public ResponseEntity<Page<OrgUserDTO>> searchCurOrg(@RequestBody OrgUserSearchContext context) {
@@ -206,6 +208,7 @@ public class OrgUserResource {
                 .body(new PageImpl(orguserMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrgUser-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"OrgUser" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/orgusers/fetchdefault")
 	public ResponseEntity<List<OrgUserDTO>> fetchDefault(OrgUserSearchContext context) {
@@ -218,6 +221,7 @@ public class OrgUserResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrgUser-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"OrgUser" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/orgusers/searchdefault")
 	public ResponseEntity<Page<OrgUserDTO>> searchDefault(@RequestBody OrgUserSearchContext context) {
@@ -226,6 +230,7 @@ public class OrgUserResource {
                 .body(new PageImpl(orguserMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrgUser-CurOrgSector-all')")
 	@ApiOperation(value = "fetch当前部门", tags = {"OrgUser" } ,notes = "fetch当前部门")
     @RequestMapping(method= RequestMethod.GET , value="/orgusers/fetchcurorgsector")
 	public ResponseEntity<List<OrgUserDTO>> fetchCurOrgSector(OrgUserSearchContext context) {
@@ -238,6 +243,7 @@ public class OrgUserResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrgUser-CurOrgSector-all')")
 	@ApiOperation(value = "search当前部门", tags = {"OrgUser" } ,notes = "search当前部门")
     @RequestMapping(method= RequestMethod.POST , value="/orgusers/searchcurorgsector")
 	public ResponseEntity<Page<OrgUserDTO>> searchCurOrgSector(@RequestBody OrgUserSearchContext context) {
@@ -246,6 +252,7 @@ public class OrgUserResource {
                 .body(new PageImpl(orguserMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrgUser-UserOrgSector-all')")
 	@ApiOperation(value = "fetch用户所在部门用户", tags = {"OrgUser" } ,notes = "fetch用户所在部门用户")
     @RequestMapping(method= RequestMethod.GET , value="/orgusers/fetchuserorgsector")
 	public ResponseEntity<List<OrgUserDTO>> fetchUserOrgSector(OrgUserSearchContext context) {
@@ -258,6 +265,7 @@ public class OrgUserResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrgUser-UserOrgSector-all')")
 	@ApiOperation(value = "search用户所在部门用户", tags = {"OrgUser" } ,notes = "search用户所在部门用户")
     @RequestMapping(method= RequestMethod.POST , value="/orgusers/searchuserorgsector")
 	public ResponseEntity<Page<OrgUserDTO>> searchUserOrgSector(@RequestBody OrgUserSearchContext context) {
@@ -266,6 +274,7 @@ public class OrgUserResource {
                 .body(new PageImpl(orguserMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrgUser-UserOrg-all')")
 	@ApiOperation(value = "fetch用户所在组织范围", tags = {"OrgUser" } ,notes = "fetch用户所在组织范围")
     @RequestMapping(method= RequestMethod.GET , value="/orgusers/fetchuserorg")
 	public ResponseEntity<List<OrgUserDTO>> fetchUserOrg(OrgUserSearchContext context) {
@@ -278,6 +287,7 @@ public class OrgUserResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrgUser-UserOrg-all')")
 	@ApiOperation(value = "search用户所在组织范围", tags = {"OrgUser" } ,notes = "search用户所在组织范围")
     @RequestMapping(method= RequestMethod.POST , value="/orgusers/searchuserorg")
 	public ResponseEntity<Page<OrgUserDTO>> searchUserOrg(@RequestBody OrgUserSearchContext context) {
@@ -286,6 +296,7 @@ public class OrgUserResource {
                 .body(new PageImpl(orguserMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrgUser-DQZZJXJZZ-all')")
 	@ApiOperation(value = "fetch当前组织及下级组织", tags = {"OrgUser" } ,notes = "fetch当前组织及下级组织")
     @RequestMapping(method= RequestMethod.GET , value="/orgusers/fetchdqzzjxjzz")
 	public ResponseEntity<List<OrgUserDTO>> fetchDQZZJXJZZ(OrgUserSearchContext context) {
@@ -298,6 +309,7 @@ public class OrgUserResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrgUser-DQZZJXJZZ-all')")
 	@ApiOperation(value = "search当前组织及下级组织", tags = {"OrgUser" } ,notes = "search当前组织及下级组织")
     @RequestMapping(method= RequestMethod.POST , value="/orgusers/searchdqzzjxjzz")
 	public ResponseEntity<Page<OrgUserDTO>> searchDQZZJXJZZ(@RequestBody OrgUserSearchContext context) {

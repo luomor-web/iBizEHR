@@ -145,7 +145,7 @@ public class VACDAYOFFResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#vacdayoff_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#vacdayoff_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"VACDAYOFF" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/vacdayoffs/{vacdayoff_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class VACDAYOFFResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACDAYOFF-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"VACDAYOFF" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/vacdayoffs/fetchdefault")
 	public ResponseEntity<List<VACDAYOFFDTO>> fetchDefault(VACDAYOFFSearchContext context) {
@@ -172,6 +173,7 @@ public class VACDAYOFFResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACDAYOFF-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"VACDAYOFF" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/vacdayoffs/searchdefault")
 	public ResponseEntity<Page<VACDAYOFFDTO>> searchDefault(@RequestBody VACDAYOFFSearchContext context) {

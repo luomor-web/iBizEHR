@@ -136,7 +136,7 @@ public class WFVersionResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#wfversion_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#wfversion_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"WFVersion" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/wfversions/{wfversion_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class WFVersionResource {
         return  ResponseEntity.status(HttpStatus.OK).body(wfversionService.checkKey(wfversionMapping.toDomain(wfversiondto)));
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFVersion-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"WFVersion" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/wfversions/fetchdefault")
 	public ResponseEntity<List<WFVersionDTO>> fetchDefault(WFVersionSearchContext context) {
@@ -172,6 +173,7 @@ public class WFVersionResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFVersion-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"WFVersion" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/wfversions/searchdefault")
 	public ResponseEntity<Page<WFVersionDTO>> searchDefault(@RequestBody WFVersionSearchContext context) {

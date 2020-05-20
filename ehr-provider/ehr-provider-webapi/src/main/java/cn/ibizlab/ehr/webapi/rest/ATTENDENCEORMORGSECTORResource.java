@@ -120,7 +120,7 @@ public class ATTENDENCEORMORGSECTORResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#attendenceormorgsector_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#attendenceormorgsector_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"ATTENDENCEORMORGSECTOR" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/attendenceormorgsectors/{attendenceormorgsector_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class ATTENDENCEORMORGSECTORResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ATTENDENCEORMORGSECTOR-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"ATTENDENCEORMORGSECTOR" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/attendenceormorgsectors/fetchdefault")
 	public ResponseEntity<List<ATTENDENCEORMORGSECTORDTO>> fetchDefault(ATTENDENCEORMORGSECTORSearchContext context) {
@@ -172,6 +173,7 @@ public class ATTENDENCEORMORGSECTORResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ATTENDENCEORMORGSECTOR-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"ATTENDENCEORMORGSECTOR" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/attendenceormorgsectors/searchdefault")
 	public ResponseEntity<Page<ATTENDENCEORMORGSECTORDTO>> searchDefault(@RequestBody ATTENDENCEORMORGSECTORSearchContext context) {

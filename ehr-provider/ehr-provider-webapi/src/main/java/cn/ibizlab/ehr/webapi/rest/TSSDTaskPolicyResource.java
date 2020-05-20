@@ -117,7 +117,7 @@ public class TSSDTaskPolicyResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#tssdtaskpolicy_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#tssdtaskpolicy_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"TSSDTaskPolicy" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/tssdtaskpolicies/{tssdtaskpolicy_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class TSSDTaskPolicyResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TSSDTaskPolicy-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"TSSDTaskPolicy" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/tssdtaskpolicies/fetchdefault")
 	public ResponseEntity<List<TSSDTaskPolicyDTO>> fetchDefault(TSSDTaskPolicySearchContext context) {
@@ -172,6 +173,7 @@ public class TSSDTaskPolicyResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TSSDTaskPolicy-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"TSSDTaskPolicy" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/tssdtaskpolicies/searchdefault")
 	public ResponseEntity<Page<TSSDTaskPolicyDTO>> searchDefault(@RequestBody TSSDTaskPolicySearchContext context) {

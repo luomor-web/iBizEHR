@@ -129,7 +129,7 @@ public class DataAuditResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#dataaudit_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#dataaudit_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"DataAudit" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/dataaudits/{dataaudit_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class DataAuditResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DataAudit-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"DataAudit" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/dataaudits/fetchdefault")
 	public ResponseEntity<List<DataAuditDTO>> fetchDefault(DataAuditSearchContext context) {
@@ -172,6 +173,7 @@ public class DataAuditResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DataAudit-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"DataAudit" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/dataaudits/searchdefault")
 	public ResponseEntity<Page<DataAuditDTO>> searchDefault(@RequestBody DataAuditSearchContext context) {

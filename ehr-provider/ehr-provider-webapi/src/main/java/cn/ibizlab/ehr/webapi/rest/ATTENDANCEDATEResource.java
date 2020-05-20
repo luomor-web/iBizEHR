@@ -67,7 +67,7 @@ public class ATTENDANCEDATEResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#attendancedate_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#attendancedate_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"ATTENDANCEDATE" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/attendancedates/{attendancedate_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class ATTENDANCEDATEResource {
         return  ResponseEntity.status(HttpStatus.OK).body(attendancedateService.checkKey(attendancedateMapping.toDomain(attendancedatedto)));
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ATTENDANCEDATE-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"ATTENDANCEDATE" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/attendancedates/fetchdefault")
 	public ResponseEntity<List<ATTENDANCEDATEDTO>> fetchDefault(ATTENDANCEDATESearchContext context) {
@@ -172,6 +173,7 @@ public class ATTENDANCEDATEResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ATTENDANCEDATE-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"ATTENDANCEDATE" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/attendancedates/searchdefault")
 	public ResponseEntity<Page<ATTENDANCEDATEDTO>> searchDefault(@RequestBody ATTENDANCEDATESearchContext context) {

@@ -136,7 +136,7 @@ public class SOCCOMPANYWELResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#soccompanywel_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#soccompanywel_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"SOCCOMPANYWEL" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/soccompanywels/{soccompanywel_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class SOCCOMPANYWELResource {
         return ResponseEntity.status(HttpStatus.OK).body(soccompanywelMapping.toDto(soccompanywelService.getDraft(new SOCCOMPANYWEL())));
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SOCCOMPANYWEL-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"SOCCOMPANYWEL" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/soccompanywels/fetchdefault")
 	public ResponseEntity<List<SOCCOMPANYWELDTO>> fetchDefault(SOCCOMPANYWELSearchContext context) {
@@ -172,6 +173,7 @@ public class SOCCOMPANYWELResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SOCCOMPANYWEL-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"SOCCOMPANYWEL" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/soccompanywels/searchdefault")
 	public ResponseEntity<Page<SOCCOMPANYWELDTO>> searchDefault(@RequestBody SOCCOMPANYWELSearchContext context) {

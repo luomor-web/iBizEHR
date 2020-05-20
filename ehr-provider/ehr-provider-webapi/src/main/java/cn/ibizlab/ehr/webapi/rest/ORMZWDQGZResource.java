@@ -145,7 +145,7 @@ public class ORMZWDQGZResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#ormzwdqgz_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#ormzwdqgz_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"ORMZWDQGZ" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/ormzwdqgzs/{ormzwdqgz_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class ORMZWDQGZResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMZWDQGZ-DQYHZZ-all')")
 	@ApiOperation(value = "fetch查看当前单位的职级到期规则", tags = {"ORMZWDQGZ" } ,notes = "fetch查看当前单位的职级到期规则")
     @RequestMapping(method= RequestMethod.GET , value="/ormzwdqgzs/fetchdqyhzz")
 	public ResponseEntity<List<ORMZWDQGZDTO>> fetchDQYHZZ(ORMZWDQGZSearchContext context) {
@@ -172,6 +173,7 @@ public class ORMZWDQGZResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMZWDQGZ-DQYHZZ-all')")
 	@ApiOperation(value = "search查看当前单位的职级到期规则", tags = {"ORMZWDQGZ" } ,notes = "search查看当前单位的职级到期规则")
     @RequestMapping(method= RequestMethod.POST , value="/ormzwdqgzs/searchdqyhzz")
 	public ResponseEntity<Page<ORMZWDQGZDTO>> searchDQYHZZ(@RequestBody ORMZWDQGZSearchContext context) {
@@ -180,6 +182,7 @@ public class ORMZWDQGZResource {
                 .body(new PageImpl(ormzwdqgzMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMZWDQGZ-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"ORMZWDQGZ" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/ormzwdqgzs/fetchdefault")
 	public ResponseEntity<List<ORMZWDQGZDTO>> fetchDefault(ORMZWDQGZSearchContext context) {
@@ -192,6 +195,7 @@ public class ORMZWDQGZResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMZWDQGZ-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"ORMZWDQGZ" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/ormzwdqgzs/searchdefault")
 	public ResponseEntity<Page<ORMZWDQGZDTO>> searchDefault(@RequestBody ORMZWDQGZSearchContext context) {

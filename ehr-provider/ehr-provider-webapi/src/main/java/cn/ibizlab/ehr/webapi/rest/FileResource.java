@@ -55,7 +55,7 @@ public class FileResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#file_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#file_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"File" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/files/{file_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class FileResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-File-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"File" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/files/fetchdefault")
 	public ResponseEntity<List<FileDTO>> fetchDefault(FileSearchContext context) {
@@ -172,6 +173,7 @@ public class FileResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-File-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"File" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/files/searchdefault")
 	public ResponseEntity<Page<FileDTO>> searchDefault(@RequestBody FileSearchContext context) {

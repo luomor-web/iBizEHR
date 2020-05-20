@@ -149,7 +149,7 @@ public class ORMPOSTResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#ormpost_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#ormpost_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"ORMPOST" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/ormposts/{ormpost_id}")
     @Transactional
@@ -173,6 +173,7 @@ public class ORMPOSTResource {
         return ResponseEntity.status(HttpStatus.OK).body(ormpostMapping.toDto(ormpostService.getDraft(new ORMPOST())));
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMPOST-EJZZGW-all')")
 	@ApiOperation(value = "fetch根据选择的组织所属的二级组织来获取岗位(ormorgid)", tags = {"ORMPOST" } ,notes = "fetch根据选择的组织所属的二级组织来获取岗位(ormorgid)")
     @RequestMapping(method= RequestMethod.GET , value="/ormposts/fetchejzzgw")
 	public ResponseEntity<List<ORMPOSTDTO>> fetchEJZZGW(ORMPOSTSearchContext context) {
@@ -185,6 +186,7 @@ public class ORMPOSTResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMPOST-EJZZGW-all')")
 	@ApiOperation(value = "search根据选择的组织所属的二级组织来获取岗位(ormorgid)", tags = {"ORMPOST" } ,notes = "search根据选择的组织所属的二级组织来获取岗位(ormorgid)")
     @RequestMapping(method= RequestMethod.POST , value="/ormposts/searchejzzgw")
 	public ResponseEntity<Page<ORMPOSTDTO>> searchEJZZGW(@RequestBody ORMPOSTSearchContext context) {
@@ -193,6 +195,7 @@ public class ORMPOSTResource {
                 .body(new PageImpl(ormpostMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMPOST-AuthPost-all')")
 	@ApiOperation(value = "fetchAuthPost", tags = {"ORMPOST" } ,notes = "fetchAuthPost")
     @RequestMapping(method= RequestMethod.GET , value="/ormposts/fetchauthpost")
 	public ResponseEntity<List<ORMPOSTDTO>> fetchAuthPost(ORMPOSTSearchContext context) {
@@ -205,6 +208,7 @@ public class ORMPOSTResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMPOST-AuthPost-all')")
 	@ApiOperation(value = "searchAuthPost", tags = {"ORMPOST" } ,notes = "searchAuthPost")
     @RequestMapping(method= RequestMethod.POST , value="/ormposts/searchauthpost")
 	public ResponseEntity<Page<ORMPOSTDTO>> searchAuthPost(@RequestBody ORMPOSTSearchContext context) {
@@ -213,6 +217,7 @@ public class ORMPOSTResource {
                 .body(new PageImpl(ormpostMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMPOST-CurOrg-all')")
 	@ApiOperation(value = "fetch根据当前操作人的身份选择岗位", tags = {"ORMPOST" } ,notes = "fetch根据当前操作人的身份选择岗位")
     @RequestMapping(method= RequestMethod.GET , value="/ormposts/fetchcurorg")
 	public ResponseEntity<List<ORMPOSTDTO>> fetchCurOrg(ORMPOSTSearchContext context) {
@@ -225,6 +230,7 @@ public class ORMPOSTResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMPOST-CurOrg-all')")
 	@ApiOperation(value = "search根据当前操作人的身份选择岗位", tags = {"ORMPOST" } ,notes = "search根据当前操作人的身份选择岗位")
     @RequestMapping(method= RequestMethod.POST , value="/ormposts/searchcurorg")
 	public ResponseEntity<Page<ORMPOSTDTO>> searchCurOrg(@RequestBody ORMPOSTSearchContext context) {
@@ -233,6 +239,7 @@ public class ORMPOSTResource {
                 .body(new PageImpl(ormpostMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMPOST-DQGW-all')")
 	@ApiOperation(value = "fetch根据当前组织过滤岗位", tags = {"ORMPOST" } ,notes = "fetch根据当前组织过滤岗位")
     @RequestMapping(method= RequestMethod.GET , value="/ormposts/fetchdqgw")
 	public ResponseEntity<List<ORMPOSTDTO>> fetchDQGW(ORMPOSTSearchContext context) {
@@ -245,6 +252,7 @@ public class ORMPOSTResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMPOST-DQGW-all')")
 	@ApiOperation(value = "search根据当前组织过滤岗位", tags = {"ORMPOST" } ,notes = "search根据当前组织过滤岗位")
     @RequestMapping(method= RequestMethod.POST , value="/ormposts/searchdqgw")
 	public ResponseEntity<Page<ORMPOSTDTO>> searchDQGW(@RequestBody ORMPOSTSearchContext context) {
@@ -253,6 +261,7 @@ public class ORMPOSTResource {
                 .body(new PageImpl(ormpostMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMPOST-DQORGGW-all')")
 	@ApiOperation(value = "fetch根据当前组织过滤岗位(orgid)", tags = {"ORMPOST" } ,notes = "fetch根据当前组织过滤岗位(orgid)")
     @RequestMapping(method= RequestMethod.GET , value="/ormposts/fetchdqorggw")
 	public ResponseEntity<List<ORMPOSTDTO>> fetchDQORGGW(ORMPOSTSearchContext context) {
@@ -265,6 +274,7 @@ public class ORMPOSTResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMPOST-DQORGGW-all')")
 	@ApiOperation(value = "search根据当前组织过滤岗位(orgid)", tags = {"ORMPOST" } ,notes = "search根据当前组织过滤岗位(orgid)")
     @RequestMapping(method= RequestMethod.POST , value="/ormposts/searchdqorggw")
 	public ResponseEntity<Page<ORMPOSTDTO>> searchDQORGGW(@RequestBody ORMPOSTSearchContext context) {
@@ -273,6 +283,7 @@ public class ORMPOSTResource {
                 .body(new PageImpl(ormpostMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMPOST-GWXH-all')")
 	@ApiOperation(value = "fetch岗位查询", tags = {"ORMPOST" } ,notes = "fetch岗位查询")
     @RequestMapping(method= RequestMethod.GET , value="/ormposts/fetchgwxh")
 	public ResponseEntity<List<ORMPOSTDTO>> fetchGWXH(ORMPOSTSearchContext context) {
@@ -285,6 +296,7 @@ public class ORMPOSTResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMPOST-GWXH-all')")
 	@ApiOperation(value = "search岗位查询", tags = {"ORMPOST" } ,notes = "search岗位查询")
     @RequestMapping(method= RequestMethod.POST , value="/ormposts/searchgwxh")
 	public ResponseEntity<Page<ORMPOSTDTO>> searchGWXH(@RequestBody ORMPOSTSearchContext context) {
@@ -293,6 +305,7 @@ public class ORMPOSTResource {
                 .body(new PageImpl(ormpostMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMPOST-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"ORMPOST" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/ormposts/fetchdefault")
 	public ResponseEntity<List<ORMPOSTDTO>> fetchDefault(ORMPOSTSearchContext context) {
@@ -305,6 +318,7 @@ public class ORMPOSTResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMPOST-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"ORMPOST" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/ormposts/searchdefault")
 	public ResponseEntity<Page<ORMPOSTDTO>> searchDefault(@RequestBody ORMPOSTSearchContext context) {
@@ -313,6 +327,7 @@ public class ORMPOSTResource {
                 .body(new PageImpl(ormpostMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMPOST-JZBGWCX-all')")
 	@ApiOperation(value = "fetch局总部岗位查询", tags = {"ORMPOST" } ,notes = "fetch局总部岗位查询")
     @RequestMapping(method= RequestMethod.GET , value="/ormposts/fetchjzbgwcx")
 	public ResponseEntity<List<ORMPOSTDTO>> fetchJZBGWCX(ORMPOSTSearchContext context) {
@@ -325,6 +340,7 @@ public class ORMPOSTResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMPOST-JZBGWCX-all')")
 	@ApiOperation(value = "search局总部岗位查询", tags = {"ORMPOST" } ,notes = "search局总部岗位查询")
     @RequestMapping(method= RequestMethod.POST , value="/ormposts/searchjzbgwcx")
 	public ResponseEntity<Page<ORMPOSTDTO>> searchJZBGWCX(@RequestBody ORMPOSTSearchContext context) {
@@ -333,6 +349,7 @@ public class ORMPOSTResource {
                 .body(new PageImpl(ormpostMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMPOST-CXGW-all')")
 	@ApiOperation(value = "fetch查询当前组织所属的二级单位岗位", tags = {"ORMPOST" } ,notes = "fetch查询当前组织所属的二级单位岗位")
     @RequestMapping(method= RequestMethod.GET , value="/ormposts/fetchcxgw")
 	public ResponseEntity<List<ORMPOSTDTO>> fetchCXGW(ORMPOSTSearchContext context) {
@@ -345,6 +362,7 @@ public class ORMPOSTResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMPOST-CXGW-all')")
 	@ApiOperation(value = "search查询当前组织所属的二级单位岗位", tags = {"ORMPOST" } ,notes = "search查询当前组织所属的二级单位岗位")
     @RequestMapping(method= RequestMethod.POST , value="/ormposts/searchcxgw")
 	public ResponseEntity<Page<ORMPOSTDTO>> searchCXGW(@RequestBody ORMPOSTSearchContext context) {

@@ -97,7 +97,7 @@ public class PCMNORecyclingLibraryResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#pcmnorecyclinglibrary_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#pcmnorecyclinglibrary_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"PCMNORecyclingLibrary" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmnorecyclinglibraries/{pcmnorecyclinglibrary_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class PCMNORecyclingLibraryResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMNORecyclingLibrary-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PCMNORecyclingLibrary" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pcmnorecyclinglibraries/fetchdefault")
 	public ResponseEntity<List<PCMNORecyclingLibraryDTO>> fetchDefault(PCMNORecyclingLibrarySearchContext context) {
@@ -172,6 +173,7 @@ public class PCMNORecyclingLibraryResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMNORecyclingLibrary-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PCMNORecyclingLibrary" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pcmnorecyclinglibraries/searchdefault")
 	public ResponseEntity<Page<PCMNORecyclingLibraryDTO>> searchDefault(@RequestBody PCMNORecyclingLibrarySearchContext context) {

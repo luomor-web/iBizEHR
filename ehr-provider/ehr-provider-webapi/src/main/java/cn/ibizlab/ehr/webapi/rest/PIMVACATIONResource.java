@@ -78,7 +78,7 @@ public class PIMVACATIONResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#pimvacation_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#pimvacation_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"PIMVACATION" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimvacations/{pimvacation_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class PIMVACATIONResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMVACATION-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PIMVACATION" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimvacations/fetchdefault")
 	public ResponseEntity<List<PIMVACATIONDTO>> fetchDefault(PIMVACATIONSearchContext context) {
@@ -172,6 +173,7 @@ public class PIMVACATIONResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMVACATION-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PIMVACATION" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pimvacations/searchdefault")
 	public ResponseEntity<Page<PIMVACATIONDTO>> searchDefault(@RequestBody PIMVACATIONSearchContext context) {

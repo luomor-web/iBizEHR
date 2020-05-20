@@ -67,7 +67,7 @@ public class QueryModelResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#querymodel_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#querymodel_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"QueryModel" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/querymodels/{querymodel_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class QueryModelResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-QueryModel-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"QueryModel" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/querymodels/fetchdefault")
 	public ResponseEntity<List<QueryModelDTO>> fetchDefault(QueryModelSearchContext context) {
@@ -172,6 +173,7 @@ public class QueryModelResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-QueryModel-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"QueryModel" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/querymodels/searchdefault")
 	public ResponseEntity<Page<QueryModelDTO>> searchDefault(@RequestBody QueryModelSearchContext context) {
@@ -180,6 +182,7 @@ public class QueryModelResource {
                 .body(new PageImpl(querymodelMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-QueryModel-CurDE-all')")
 	@ApiOperation(value = "fetch当前实体", tags = {"QueryModel" } ,notes = "fetch当前实体")
     @RequestMapping(method= RequestMethod.GET , value="/querymodels/fetchcurde")
 	public ResponseEntity<List<QueryModelDTO>> fetchCurDE(QueryModelSearchContext context) {
@@ -192,6 +195,7 @@ public class QueryModelResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-QueryModel-CurDE-all')")
 	@ApiOperation(value = "search当前实体", tags = {"QueryModel" } ,notes = "search当前实体")
     @RequestMapping(method= RequestMethod.POST , value="/querymodels/searchcurde")
 	public ResponseEntity<Page<QueryModelDTO>> searchCurDE(@RequestBody QueryModelSearchContext context) {

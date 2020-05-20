@@ -125,7 +125,7 @@ public class PimSearchFieldSetResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#pimsearchfieldset_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#pimsearchfieldset_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"PimSearchFieldSet" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimsearchfieldsets/{pimsearchfieldset_id}")
     @Transactional
@@ -173,6 +173,7 @@ public class PimSearchFieldSetResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimSearchFieldSet-AllDATA-all')")
 	@ApiOperation(value = "fetch全部数据", tags = {"PimSearchFieldSet" } ,notes = "fetch全部数据")
     @RequestMapping(method= RequestMethod.GET , value="/pimsearchfieldsets/fetchalldata")
 	public ResponseEntity<List<PimSearchFieldSetDTO>> fetchAllDATA(PimSearchFieldSetSearchContext context) {
@@ -185,6 +186,7 @@ public class PimSearchFieldSetResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimSearchFieldSet-AllDATA-all')")
 	@ApiOperation(value = "search全部数据", tags = {"PimSearchFieldSet" } ,notes = "search全部数据")
     @RequestMapping(method= RequestMethod.POST , value="/pimsearchfieldsets/searchalldata")
 	public ResponseEntity<Page<PimSearchFieldSetDTO>> searchAllDATA(@RequestBody PimSearchFieldSetSearchContext context) {
@@ -193,6 +195,7 @@ public class PimSearchFieldSetResource {
                 .body(new PageImpl(pimsearchfieldsetMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimSearchFieldSet-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PimSearchFieldSet" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimsearchfieldsets/fetchdefault")
 	public ResponseEntity<List<PimSearchFieldSetDTO>> fetchDefault(PimSearchFieldSetSearchContext context) {
@@ -205,6 +208,7 @@ public class PimSearchFieldSetResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimSearchFieldSet-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PimSearchFieldSet" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pimsearchfieldsets/searchdefault")
 	public ResponseEntity<Page<PimSearchFieldSetDTO>> searchDefault(@RequestBody PimSearchFieldSetSearchContext context) {

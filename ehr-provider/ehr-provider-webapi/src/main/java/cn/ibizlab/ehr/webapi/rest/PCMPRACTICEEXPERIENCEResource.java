@@ -55,7 +55,7 @@ public class PCMPRACTICEEXPERIENCEResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#pcmpracticeexperience_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#pcmpracticeexperience_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"PCMPRACTICEEXPERIENCE" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmpracticeexperiences/{pcmpracticeexperience_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class PCMPRACTICEEXPERIENCEResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPRACTICEEXPERIENCE-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PCMPRACTICEEXPERIENCE" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pcmpracticeexperiences/fetchdefault")
 	public ResponseEntity<List<PCMPRACTICEEXPERIENCEDTO>> fetchDefault(PCMPRACTICEEXPERIENCESearchContext context) {
@@ -172,6 +173,7 @@ public class PCMPRACTICEEXPERIENCEResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPRACTICEEXPERIENCE-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PCMPRACTICEEXPERIENCE" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pcmpracticeexperiences/searchdefault")
 	public ResponseEntity<Page<PCMPRACTICEEXPERIENCEDTO>> searchDefault(@RequestBody PCMPRACTICEEXPERIENCESearchContext context) {

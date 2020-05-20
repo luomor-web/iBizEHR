@@ -113,7 +113,7 @@ public class UserResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#user_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#user_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"User" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/users/{user_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class UserResource {
         return  ResponseEntity.status(HttpStatus.OK).body(userService.checkKey(userMapping.toDomain(userdto)));
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-User-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"User" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/users/fetchdefault")
 	public ResponseEntity<List<UserDTO>> fetchDefault(UserSearchContext context) {
@@ -172,6 +173,7 @@ public class UserResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-User-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"User" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/users/searchdefault")
 	public ResponseEntity<Page<UserDTO>> searchDefault(@RequestBody UserSearchContext context) {

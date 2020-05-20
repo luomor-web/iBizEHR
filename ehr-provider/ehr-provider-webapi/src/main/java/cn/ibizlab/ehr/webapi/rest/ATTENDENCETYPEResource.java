@@ -101,7 +101,7 @@ public class ATTENDENCETYPEResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#attendencetype_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#attendencetype_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"ATTENDENCETYPE" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/attendencetypes/{attendencetype_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class ATTENDENCETYPEResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ATTENDENCETYPE-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"ATTENDENCETYPE" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/attendencetypes/fetchdefault")
 	public ResponseEntity<List<ATTENDENCETYPEDTO>> fetchDefault(ATTENDENCETYPESearchContext context) {
@@ -172,6 +173,7 @@ public class ATTENDENCETYPEResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ATTENDENCETYPE-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"ATTENDENCETYPE" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/attendencetypes/searchdefault")
 	public ResponseEntity<Page<ATTENDENCETYPEDTO>> searchDefault(@RequestBody ATTENDENCETYPESearchContext context) {

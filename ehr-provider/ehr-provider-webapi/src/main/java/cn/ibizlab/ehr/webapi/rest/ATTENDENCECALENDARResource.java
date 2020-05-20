@@ -136,7 +136,7 @@ public class ATTENDENCECALENDARResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#attendencecalendar_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#attendencecalendar_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"ATTENDENCECALENDAR" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/attendencecalendars/{attendencecalendar_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class ATTENDENCECALENDARResource {
         return ResponseEntity.status(HttpStatus.OK).body(attendencecalendarMapping.toDto(attendencecalendarService.getDraft(new ATTENDENCECALENDAR())));
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ATTENDENCECALENDAR-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"ATTENDENCECALENDAR" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/attendencecalendars/fetchdefault")
 	public ResponseEntity<List<ATTENDENCECALENDARDTO>> fetchDefault(ATTENDENCECALENDARSearchContext context) {
@@ -172,6 +173,7 @@ public class ATTENDENCECALENDARResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ATTENDENCECALENDAR-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"ATTENDENCECALENDAR" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/attendencecalendars/searchdefault")
 	public ResponseEntity<Page<ATTENDENCECALENDARDTO>> searchDefault(@RequestBody ATTENDENCECALENDARSearchContext context) {

@@ -73,7 +73,7 @@ public class WFStepDataResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#wfstepdata_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#wfstepdata_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"WFStepData" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/wfstepdata/{wfstepdata_id}")
     @Transactional
@@ -173,6 +173,7 @@ public class WFStepDataResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFStepData-MyHist-all')")
 	@ApiOperation(value = "fetch我的历史", tags = {"WFStepData" } ,notes = "fetch我的历史")
     @RequestMapping(method= RequestMethod.GET , value="/wfstepdata/fetchmyhist")
 	public ResponseEntity<List<WFStepDataDTO>> fetchMyHist(WFStepDataSearchContext context) {
@@ -185,6 +186,7 @@ public class WFStepDataResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFStepData-MyHist-all')")
 	@ApiOperation(value = "search我的历史", tags = {"WFStepData" } ,notes = "search我的历史")
     @RequestMapping(method= RequestMethod.POST , value="/wfstepdata/searchmyhist")
 	public ResponseEntity<Page<WFStepDataDTO>> searchMyHist(@RequestBody WFStepDataSearchContext context) {
@@ -193,6 +195,7 @@ public class WFStepDataResource {
                 .body(new PageImpl(wfstepdataMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFStepData-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"WFStepData" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/wfstepdata/fetchdefault")
 	public ResponseEntity<List<WFStepDataDTO>> fetchDefault(WFStepDataSearchContext context) {
@@ -205,6 +208,7 @@ public class WFStepDataResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFStepData-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"WFStepData" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/wfstepdata/searchdefault")
 	public ResponseEntity<Page<WFStepDataDTO>> searchDefault(@RequestBody WFStepDataSearchContext context) {

@@ -145,7 +145,7 @@ public class VACSITUATIONDETAILResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#vacsituationdetail_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#vacsituationdetail_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"VACSITUATIONDETAIL" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/vacsituationdetails/{vacsituationdetail_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class VACSITUATIONDETAILResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACSITUATIONDETAIL-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"VACSITUATIONDETAIL" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/vacsituationdetails/fetchdefault")
 	public ResponseEntity<List<VACSITUATIONDETAILDTO>> fetchDefault(VACSITUATIONDETAILSearchContext context) {
@@ -172,6 +173,7 @@ public class VACSITUATIONDETAILResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACSITUATIONDETAIL-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"VACSITUATIONDETAIL" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/vacsituationdetails/searchdefault")
 	public ResponseEntity<Page<VACSITUATIONDETAILDTO>> searchDefault(@RequestBody VACSITUATIONDETAILSearchContext context) {

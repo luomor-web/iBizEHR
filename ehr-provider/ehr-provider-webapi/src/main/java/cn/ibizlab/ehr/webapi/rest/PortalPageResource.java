@@ -76,7 +76,7 @@ public class PortalPageResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#portalpage_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#portalpage_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"PortalPage" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/portalpages/{portalpage_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class PortalPageResource {
         return ResponseEntity.status(HttpStatus.OK).body(portalpageMapping.toDto(portalpageService.getDraft(new PortalPage())));
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PortalPage-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PortalPage" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/portalpages/fetchdefault")
 	public ResponseEntity<List<PortalPageDTO>> fetchDefault(PortalPageSearchContext context) {
@@ -172,6 +173,7 @@ public class PortalPageResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PortalPage-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PortalPage" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/portalpages/searchdefault")
 	public ResponseEntity<Page<PortalPageDTO>> searchDefault(@RequestBody PortalPageSearchContext context) {

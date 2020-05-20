@@ -158,7 +158,7 @@ public class ServiceRTResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#servicert_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#servicert_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"ServiceRT" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/servicerts/{servicert_id}")
     @Transactional
@@ -186,6 +186,7 @@ public class ServiceRTResource {
         return ResponseEntity.status(HttpStatus.OK).body(servicertdto);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ServiceRT-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"ServiceRT" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/servicerts/fetchdefault")
 	public ResponseEntity<List<ServiceRTDTO>> fetchDefault(ServiceRTSearchContext context) {
@@ -198,6 +199,7 @@ public class ServiceRTResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ServiceRT-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"ServiceRT" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/servicerts/searchdefault")
 	public ResponseEntity<Page<ServiceRTDTO>> searchDefault(@RequestBody ServiceRTSearchContext context) {

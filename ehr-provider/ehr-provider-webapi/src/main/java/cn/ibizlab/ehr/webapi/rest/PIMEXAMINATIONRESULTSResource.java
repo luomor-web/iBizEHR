@@ -124,7 +124,7 @@ public class PIMEXAMINATIONRESULTSResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#pimexaminationresults_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#pimexaminationresults_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"PIMEXAMINATIONRESULTS" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimexaminationresults/{pimexaminationresults_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class PIMEXAMINATIONRESULTSResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMEXAMINATIONRESULTS-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PIMEXAMINATIONRESULTS" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimexaminationresults/fetchdefault")
 	public ResponseEntity<List<PIMEXAMINATIONRESULTSDTO>> fetchDefault(PIMEXAMINATIONRESULTSSearchContext context) {
@@ -172,6 +173,7 @@ public class PIMEXAMINATIONRESULTSResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMEXAMINATIONRESULTS-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PIMEXAMINATIONRESULTS" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pimexaminationresults/searchdefault")
 	public ResponseEntity<Page<PIMEXAMINATIONRESULTSDTO>> searchDefault(@RequestBody PIMEXAMINATIONRESULTSSearchContext context) {

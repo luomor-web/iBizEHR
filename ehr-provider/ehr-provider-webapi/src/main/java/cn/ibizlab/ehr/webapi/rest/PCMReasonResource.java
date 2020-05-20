@@ -64,7 +64,7 @@ public class PCMReasonResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#pcmreason_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#pcmreason_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"PCMReason" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmreasons/{pcmreason_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class PCMReasonResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMReason-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PCMReason" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pcmreasons/fetchdefault")
 	public ResponseEntity<List<PCMReasonDTO>> fetchDefault(PCMReasonSearchContext context) {
@@ -172,6 +173,7 @@ public class PCMReasonResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMReason-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PCMReason" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pcmreasons/searchdefault")
 	public ResponseEntity<Page<PCMReasonDTO>> searchDefault(@RequestBody PCMReasonSearchContext context) {

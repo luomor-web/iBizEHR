@@ -133,7 +133,7 @@ public class PIMTITLECATALOGUEResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#pimtitlecatalogue_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#pimtitlecatalogue_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"PIMTITLECATALOGUE" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimtitlecatalogues/{pimtitlecatalogue_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class PIMTITLECATALOGUEResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMTITLECATALOGUE-IsRootDQ-all')")
 	@ApiOperation(value = "fetch查询没有上级职称的", tags = {"PIMTITLECATALOGUE" } ,notes = "fetch查询没有上级职称的")
     @RequestMapping(method= RequestMethod.GET , value="/pimtitlecatalogues/fetchisrootdq")
 	public ResponseEntity<List<PIMTITLECATALOGUEDTO>> fetchIsRootDQ(PIMTITLECATALOGUESearchContext context) {
@@ -172,6 +173,7 @@ public class PIMTITLECATALOGUEResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMTITLECATALOGUE-IsRootDQ-all')")
 	@ApiOperation(value = "search查询没有上级职称的", tags = {"PIMTITLECATALOGUE" } ,notes = "search查询没有上级职称的")
     @RequestMapping(method= RequestMethod.POST , value="/pimtitlecatalogues/searchisrootdq")
 	public ResponseEntity<Page<PIMTITLECATALOGUEDTO>> searchIsRootDQ(@RequestBody PIMTITLECATALOGUESearchContext context) {
@@ -180,6 +182,7 @@ public class PIMTITLECATALOGUEResource {
                 .body(new PageImpl(pimtitlecatalogueMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMTITLECATALOGUE-NotRootDQ-all')")
 	@ApiOperation(value = "fetch不查询没有上级职称的", tags = {"PIMTITLECATALOGUE" } ,notes = "fetch不查询没有上级职称的")
     @RequestMapping(method= RequestMethod.GET , value="/pimtitlecatalogues/fetchnotrootdq")
 	public ResponseEntity<List<PIMTITLECATALOGUEDTO>> fetchNotRootDQ(PIMTITLECATALOGUESearchContext context) {
@@ -192,6 +195,7 @@ public class PIMTITLECATALOGUEResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMTITLECATALOGUE-NotRootDQ-all')")
 	@ApiOperation(value = "search不查询没有上级职称的", tags = {"PIMTITLECATALOGUE" } ,notes = "search不查询没有上级职称的")
     @RequestMapping(method= RequestMethod.POST , value="/pimtitlecatalogues/searchnotrootdq")
 	public ResponseEntity<Page<PIMTITLECATALOGUEDTO>> searchNotRootDQ(@RequestBody PIMTITLECATALOGUESearchContext context) {
@@ -200,6 +204,7 @@ public class PIMTITLECATALOGUEResource {
                 .body(new PageImpl(pimtitlecatalogueMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMTITLECATALOGUE-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PIMTITLECATALOGUE" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimtitlecatalogues/fetchdefault")
 	public ResponseEntity<List<PIMTITLECATALOGUEDTO>> fetchDefault(PIMTITLECATALOGUESearchContext context) {
@@ -212,6 +217,7 @@ public class PIMTITLECATALOGUEResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMTITLECATALOGUE-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PIMTITLECATALOGUE" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pimtitlecatalogues/searchdefault")
 	public ResponseEntity<Page<PIMTITLECATALOGUEDTO>> searchDefault(@RequestBody PIMTITLECATALOGUESearchContext context) {

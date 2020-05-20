@@ -120,7 +120,7 @@ public class SGQMgrResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#sgqmgr_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#sgqmgr_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"SGQMgr" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/sgqmgrs/{sgqmgr_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class SGQMgrResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SGQMgr-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"SGQMgr" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/sgqmgrs/fetchdefault")
 	public ResponseEntity<List<SGQMgrDTO>> fetchDefault(SGQMgrSearchContext context) {
@@ -172,6 +173,7 @@ public class SGQMgrResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SGQMgr-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"SGQMgr" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/sgqmgrs/searchdefault")
 	public ResponseEntity<Page<SGQMgrDTO>> searchDefault(@RequestBody SGQMgrSearchContext context) {

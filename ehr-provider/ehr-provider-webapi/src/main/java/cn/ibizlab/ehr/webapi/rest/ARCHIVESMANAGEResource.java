@@ -55,7 +55,7 @@ public class ARCHIVESMANAGEResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#archivesmanage_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#archivesmanage_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"ARCHIVESMANAGE" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/archivesmanages/{archivesmanage_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class ARCHIVESMANAGEResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ARCHIVESMANAGE-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"ARCHIVESMANAGE" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/archivesmanages/fetchdefault")
 	public ResponseEntity<List<ARCHIVESMANAGEDTO>> fetchDefault(ARCHIVESMANAGESearchContext context) {
@@ -172,6 +173,7 @@ public class ARCHIVESMANAGEResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ARCHIVESMANAGE-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"ARCHIVESMANAGE" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/archivesmanages/searchdefault")
 	public ResponseEntity<Page<ARCHIVESMANAGEDTO>> searchDefault(@RequestBody ARCHIVESMANAGESearchContext context) {

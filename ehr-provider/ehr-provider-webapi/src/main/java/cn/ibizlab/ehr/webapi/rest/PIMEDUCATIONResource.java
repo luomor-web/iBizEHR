@@ -135,7 +135,7 @@ public class PIMEDUCATIONResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#pimeducation_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#pimeducation_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"PIMEDUCATION" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimeducations/{pimeducation_id}")
     @Transactional
@@ -173,6 +173,7 @@ public class PIMEDUCATIONResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMEDUCATION-FAZZSY-all')")
 	@ApiOperation(value = "fetch教育信息（非A转正专用）", tags = {"PIMEDUCATION" } ,notes = "fetch教育信息（非A转正专用）")
     @RequestMapping(method= RequestMethod.GET , value="/pimeducations/fetchfazzsy")
 	public ResponseEntity<List<PIMEDUCATIONDTO>> fetchFAZZSY(PIMEDUCATIONSearchContext context) {
@@ -185,6 +186,7 @@ public class PIMEDUCATIONResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMEDUCATION-FAZZSY-all')")
 	@ApiOperation(value = "search教育信息（非A转正专用）", tags = {"PIMEDUCATION" } ,notes = "search教育信息（非A转正专用）")
     @RequestMapping(method= RequestMethod.POST , value="/pimeducations/searchfazzsy")
 	public ResponseEntity<Page<PIMEDUCATIONDTO>> searchFAZZSY(@RequestBody PIMEDUCATIONSearchContext context) {
@@ -193,6 +195,7 @@ public class PIMEDUCATIONResource {
                 .body(new PageImpl(pimeducationMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMEDUCATION-JLSS-all')")
 	@ApiOperation(value = "fetch记录所属", tags = {"PIMEDUCATION" } ,notes = "fetch记录所属")
     @RequestMapping(method= RequestMethod.GET , value="/pimeducations/fetchjlss")
 	public ResponseEntity<List<PIMEDUCATIONDTO>> fetchJLSS(PIMEDUCATIONSearchContext context) {
@@ -205,6 +208,7 @@ public class PIMEDUCATIONResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMEDUCATION-JLSS-all')")
 	@ApiOperation(value = "search记录所属", tags = {"PIMEDUCATION" } ,notes = "search记录所属")
     @RequestMapping(method= RequestMethod.POST , value="/pimeducations/searchjlss")
 	public ResponseEntity<Page<PIMEDUCATIONDTO>> searchJLSS(@RequestBody PIMEDUCATIONSearchContext context) {
@@ -213,6 +217,7 @@ public class PIMEDUCATIONResource {
                 .body(new PageImpl(pimeducationMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMEDUCATION-ZIZHU-all')")
 	@ApiOperation(value = "fetch自助(教育信息)", tags = {"PIMEDUCATION" } ,notes = "fetch自助(教育信息)")
     @RequestMapping(method= RequestMethod.GET , value="/pimeducations/fetchzizhu")
 	public ResponseEntity<List<PIMEDUCATIONDTO>> fetchZIZHU(PIMEDUCATIONSearchContext context) {
@@ -225,6 +230,7 @@ public class PIMEDUCATIONResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMEDUCATION-ZIZHU-all')")
 	@ApiOperation(value = "search自助(教育信息)", tags = {"PIMEDUCATION" } ,notes = "search自助(教育信息)")
     @RequestMapping(method= RequestMethod.POST , value="/pimeducations/searchzizhu")
 	public ResponseEntity<Page<PIMEDUCATIONDTO>> searchZIZHU(@RequestBody PIMEDUCATIONSearchContext context) {
@@ -233,6 +239,7 @@ public class PIMEDUCATIONResource {
                 .body(new PageImpl(pimeducationMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMEDUCATION-ADMDYZG-all')")
 	@ApiOperation(value = "fetch第一学历和最高学历（管理员）", tags = {"PIMEDUCATION" } ,notes = "fetch第一学历和最高学历（管理员）")
     @RequestMapping(method= RequestMethod.GET , value="/pimeducations/fetchadmdyzg")
 	public ResponseEntity<List<PIMEDUCATIONDTO>> fetchADMDYZG(PIMEDUCATIONSearchContext context) {
@@ -245,6 +252,7 @@ public class PIMEDUCATIONResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMEDUCATION-ADMDYZG-all')")
 	@ApiOperation(value = "search第一学历和最高学历（管理员）", tags = {"PIMEDUCATION" } ,notes = "search第一学历和最高学历（管理员）")
     @RequestMapping(method= RequestMethod.POST , value="/pimeducations/searchadmdyzg")
 	public ResponseEntity<Page<PIMEDUCATIONDTO>> searchADMDYZG(@RequestBody PIMEDUCATIONSearchContext context) {
@@ -253,6 +261,7 @@ public class PIMEDUCATIONResource {
                 .body(new PageImpl(pimeducationMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMEDUCATION-PERSONAL-all')")
 	@ApiOperation(value = "fetch记录所属（个人）", tags = {"PIMEDUCATION" } ,notes = "fetch记录所属（个人）")
     @RequestMapping(method= RequestMethod.GET , value="/pimeducations/fetchpersonal")
 	public ResponseEntity<List<PIMEDUCATIONDTO>> fetchPERSONAL(PIMEDUCATIONSearchContext context) {
@@ -265,6 +274,7 @@ public class PIMEDUCATIONResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMEDUCATION-PERSONAL-all')")
 	@ApiOperation(value = "search记录所属（个人）", tags = {"PIMEDUCATION" } ,notes = "search记录所属（个人）")
     @RequestMapping(method= RequestMethod.POST , value="/pimeducations/searchpersonal")
 	public ResponseEntity<Page<PIMEDUCATIONDTO>> searchPERSONAL(@RequestBody PIMEDUCATIONSearchContext context) {
@@ -273,6 +283,7 @@ public class PIMEDUCATIONResource {
                 .body(new PageImpl(pimeducationMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMEDUCATION-ADMSYSTEM-all')")
 	@ApiOperation(value = "fetch记录所属（管理员）", tags = {"PIMEDUCATION" } ,notes = "fetch记录所属（管理员）")
     @RequestMapping(method= RequestMethod.GET , value="/pimeducations/fetchadmsystem")
 	public ResponseEntity<List<PIMEDUCATIONDTO>> fetchADMSYSTEM(PIMEDUCATIONSearchContext context) {
@@ -285,6 +296,7 @@ public class PIMEDUCATIONResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMEDUCATION-ADMSYSTEM-all')")
 	@ApiOperation(value = "search记录所属（管理员）", tags = {"PIMEDUCATION" } ,notes = "search记录所属（管理员）")
     @RequestMapping(method= RequestMethod.POST , value="/pimeducations/searchadmsystem")
 	public ResponseEntity<Page<PIMEDUCATIONDTO>> searchADMSYSTEM(@RequestBody PIMEDUCATIONSearchContext context) {
@@ -293,6 +305,7 @@ public class PIMEDUCATIONResource {
                 .body(new PageImpl(pimeducationMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMEDUCATION-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PIMEDUCATION" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimeducations/fetchdefault")
 	public ResponseEntity<List<PIMEDUCATIONDTO>> fetchDefault(PIMEDUCATIONSearchContext context) {
@@ -305,6 +318,7 @@ public class PIMEDUCATIONResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMEDUCATION-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PIMEDUCATION" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pimeducations/searchdefault")
 	public ResponseEntity<Page<PIMEDUCATIONDTO>> searchDefault(@RequestBody PIMEDUCATIONSearchContext context) {
@@ -313,6 +327,7 @@ public class PIMEDUCATIONResource {
                 .body(new PageImpl(pimeducationMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMEDUCATION-REP_EDU-all')")
 	@ApiOperation(value = "fetch图表_学历分布统计", tags = {"PIMEDUCATION" } ,notes = "fetch图表_学历分布统计")
     @RequestMapping(method= RequestMethod.GET , value="/pimeducations/fetchrep_edu")
 	public ResponseEntity<List<HashMap>> fetchREP_EDU(PIMEDUCATIONSearchContext context) {
@@ -324,6 +339,7 @@ public class PIMEDUCATIONResource {
                 .body(domains.getContent());
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMEDUCATION-REP_EDU-all')")
 	@ApiOperation(value = "search图表_学历分布统计", tags = {"PIMEDUCATION" } ,notes = "search图表_学历分布统计")
     @RequestMapping(method= RequestMethod.POST , value="/pimeducations/searchrep_edu")
 	public ResponseEntity<Page<HashMap>> searchREP_EDU(@RequestBody PIMEDUCATIONSearchContext context) {

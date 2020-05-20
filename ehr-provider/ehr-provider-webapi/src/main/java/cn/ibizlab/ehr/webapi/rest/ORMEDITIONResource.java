@@ -55,7 +55,7 @@ public class ORMEDITIONResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#ormedition_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#ormedition_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"ORMEDITION" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/ormeditions/{ormedition_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class ORMEDITIONResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMEDITION-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"ORMEDITION" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/ormeditions/fetchdefault")
 	public ResponseEntity<List<ORMEDITIONDTO>> fetchDefault(ORMEDITIONSearchContext context) {
@@ -172,6 +173,7 @@ public class ORMEDITIONResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMEDITION-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"ORMEDITION" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/ormeditions/searchdefault")
 	public ResponseEntity<Page<ORMEDITIONDTO>> searchDefault(@RequestBody ORMEDITIONSearchContext context) {

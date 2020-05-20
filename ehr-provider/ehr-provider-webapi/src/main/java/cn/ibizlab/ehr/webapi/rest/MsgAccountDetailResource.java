@@ -87,7 +87,7 @@ public class MsgAccountDetailResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#msgaccountdetail_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#msgaccountdetail_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"MsgAccountDetail" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/msgaccountdetails/{msgaccountdetail_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class MsgAccountDetailResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-MsgAccountDetail-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"MsgAccountDetail" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/msgaccountdetails/fetchdefault")
 	public ResponseEntity<List<MsgAccountDetailDTO>> fetchDefault(MsgAccountDetailSearchContext context) {
@@ -172,6 +173,7 @@ public class MsgAccountDetailResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-MsgAccountDetail-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"MsgAccountDetail" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/msgaccountdetails/searchdefault")
 	public ResponseEntity<Page<MsgAccountDetailDTO>> searchDefault(@RequestBody MsgAccountDetailSearchContext context) {

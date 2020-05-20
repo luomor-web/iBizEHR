@@ -71,7 +71,7 @@ public class PARJXNDKHJGResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#parjxndkhjg_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#parjxndkhjg_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"PARJXNDKHJG" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/parjxndkhjgs/{parjxndkhjg_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class PARJXNDKHJGResource {
         return  ResponseEntity.status(HttpStatus.OK).body(parjxndkhjgService.checkKey(parjxndkhjgMapping.toDomain(parjxndkhjgdto)));
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PARJXNDKHJG-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PARJXNDKHJG" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/parjxndkhjgs/fetchdefault")
 	public ResponseEntity<List<PARJXNDKHJGDTO>> fetchDefault(PARJXNDKHJGSearchContext context) {
@@ -172,6 +173,7 @@ public class PARJXNDKHJGResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PARJXNDKHJG-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PARJXNDKHJG" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/parjxndkhjgs/searchdefault")
 	public ResponseEntity<Page<PARJXNDKHJGDTO>> searchDefault(@RequestBody PARJXNDKHJGSearchContext context) {
@@ -180,6 +182,7 @@ public class PARJXNDKHJGResource {
                 .body(new PageImpl(parjxndkhjgMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PARJXNDKHJG-LastTwoYear-all')")
 	@ApiOperation(value = "fetch最近2年下半年考核成绩", tags = {"PARJXNDKHJG" } ,notes = "fetch最近2年下半年考核成绩")
     @RequestMapping(method= RequestMethod.GET , value="/parjxndkhjgs/fetchlasttwoyear")
 	public ResponseEntity<List<PARJXNDKHJGDTO>> fetchLastTwoYear(PARJXNDKHJGSearchContext context) {
@@ -192,6 +195,7 @@ public class PARJXNDKHJGResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PARJXNDKHJG-LastTwoYear-all')")
 	@ApiOperation(value = "search最近2年下半年考核成绩", tags = {"PARJXNDKHJG" } ,notes = "search最近2年下半年考核成绩")
     @RequestMapping(method= RequestMethod.POST , value="/parjxndkhjgs/searchlasttwoyear")
 	public ResponseEntity<Page<PARJXNDKHJGDTO>> searchLastTwoYear(@RequestBody PARJXNDKHJGSearchContext context) {

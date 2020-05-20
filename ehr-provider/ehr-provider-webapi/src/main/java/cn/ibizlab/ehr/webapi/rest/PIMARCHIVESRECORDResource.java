@@ -145,7 +145,7 @@ public class PIMARCHIVESRECORDResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#pimarchivesrecord_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#pimarchivesrecord_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"PIMARCHIVESRECORD" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimarchivesrecords/{pimarchivesrecord_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class PIMARCHIVESRECORDResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMARCHIVESRECORD-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PIMARCHIVESRECORD" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimarchivesrecords/fetchdefault")
 	public ResponseEntity<List<PIMARCHIVESRECORDDTO>> fetchDefault(PIMARCHIVESRECORDSearchContext context) {
@@ -172,6 +173,7 @@ public class PIMARCHIVESRECORDResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMARCHIVESRECORD-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PIMARCHIVESRECORD" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pimarchivesrecords/searchdefault")
 	public ResponseEntity<Page<PIMARCHIVESRECORDDTO>> searchDefault(@RequestBody PIMARCHIVESRECORDSearchContext context) {

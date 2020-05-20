@@ -145,7 +145,7 @@ public class TRMLGBDETAILResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#trmlgbdetail_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#trmlgbdetail_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"TRMLGBDETAIL" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/trmlgbdetails/{trmlgbdetail_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class TRMLGBDETAILResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMLGBDETAIL-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"TRMLGBDETAIL" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/trmlgbdetails/fetchdefault")
 	public ResponseEntity<List<TRMLGBDETAILDTO>> fetchDefault(TRMLGBDETAILSearchContext context) {
@@ -172,6 +173,7 @@ public class TRMLGBDETAILResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMLGBDETAIL-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"TRMLGBDETAIL" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/trmlgbdetails/searchdefault")
 	public ResponseEntity<Page<TRMLGBDETAILDTO>> searchDefault(@RequestBody TRMLGBDETAILSearchContext context) {

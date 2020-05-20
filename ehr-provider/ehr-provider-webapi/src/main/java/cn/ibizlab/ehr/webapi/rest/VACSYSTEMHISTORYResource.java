@@ -78,7 +78,7 @@ public class VACSYSTEMHISTORYResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#vacsystemhistory_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#vacsystemhistory_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"VACSYSTEMHISTORY" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/vacsystemhistories/{vacsystemhistory_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class VACSYSTEMHISTORYResource {
         return ResponseEntity.status(HttpStatus.OK).body(vacsystemhistoryMapping.toDto(vacsystemhistoryService.getDraft(new VACSYSTEMHISTORY())));
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACSYSTEMHISTORY-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"VACSYSTEMHISTORY" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/vacsystemhistories/fetchdefault")
 	public ResponseEntity<List<VACSYSTEMHISTORYDTO>> fetchDefault(VACSYSTEMHISTORYSearchContext context) {
@@ -172,6 +173,7 @@ public class VACSYSTEMHISTORYResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACSYSTEMHISTORY-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"VACSYSTEMHISTORY" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/vacsystemhistories/searchdefault")
 	public ResponseEntity<Page<VACSYSTEMHISTORYDTO>> searchDefault(@RequestBody VACSYSTEMHISTORYSearchContext context) {

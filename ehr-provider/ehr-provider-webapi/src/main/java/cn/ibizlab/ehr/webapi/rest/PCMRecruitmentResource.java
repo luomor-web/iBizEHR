@@ -145,7 +145,7 @@ public class PCMRecruitmentResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#pcmrecruitment_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#pcmrecruitment_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"PCMRecruitment" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmrecruitments/{pcmrecruitment_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class PCMRecruitmentResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMRecruitment-NBZP-all')")
 	@ApiOperation(value = "fetch内部招聘信息", tags = {"PCMRecruitment" } ,notes = "fetch内部招聘信息")
     @RequestMapping(method= RequestMethod.GET , value="/pcmrecruitments/fetchnbzp")
 	public ResponseEntity<List<PCMRecruitmentDTO>> fetchNBZP(PCMRecruitmentSearchContext context) {
@@ -172,6 +173,7 @@ public class PCMRecruitmentResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMRecruitment-NBZP-all')")
 	@ApiOperation(value = "search内部招聘信息", tags = {"PCMRecruitment" } ,notes = "search内部招聘信息")
     @RequestMapping(method= RequestMethod.POST , value="/pcmrecruitments/searchnbzp")
 	public ResponseEntity<Page<PCMRecruitmentDTO>> searchNBZP(@RequestBody PCMRecruitmentSearchContext context) {
@@ -180,6 +182,7 @@ public class PCMRecruitmentResource {
                 .body(new PageImpl(pcmrecruitmentMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMRecruitment-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PCMRecruitment" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pcmrecruitments/fetchdefault")
 	public ResponseEntity<List<PCMRecruitmentDTO>> fetchDefault(PCMRecruitmentSearchContext context) {
@@ -192,6 +195,7 @@ public class PCMRecruitmentResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMRecruitment-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PCMRecruitment" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pcmrecruitments/searchdefault")
 	public ResponseEntity<Page<PCMRecruitmentDTO>> searchDefault(@RequestBody PCMRecruitmentSearchContext context) {

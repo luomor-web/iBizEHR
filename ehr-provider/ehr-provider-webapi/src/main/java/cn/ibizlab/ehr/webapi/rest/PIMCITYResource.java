@@ -64,7 +64,7 @@ public class PIMCITYResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#pimcity_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#pimcity_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"PIMCITY" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimcities/{pimcity_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class PIMCITYResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMCITY-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PIMCITY" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimcities/fetchdefault")
 	public ResponseEntity<List<PIMCITYDTO>> fetchDefault(PIMCITYSearchContext context) {
@@ -172,6 +173,7 @@ public class PIMCITYResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMCITY-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PIMCITY" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pimcities/searchdefault")
 	public ResponseEntity<Page<PIMCITYDTO>> searchDefault(@RequestBody PIMCITYSearchContext context) {

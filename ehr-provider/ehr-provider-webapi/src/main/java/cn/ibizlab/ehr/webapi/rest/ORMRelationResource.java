@@ -111,7 +111,7 @@ public class ORMRelationResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#ormrelation_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#ormrelation_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"ORMRelation" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/ormrelations/{ormrelation_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class ORMRelationResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMRelation-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"ORMRelation" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/ormrelations/fetchdefault")
 	public ResponseEntity<List<ORMRelationDTO>> fetchDefault(ORMRelationSearchContext context) {
@@ -172,6 +173,7 @@ public class ORMRelationResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMRelation-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"ORMRelation" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/ormrelations/searchdefault")
 	public ResponseEntity<Page<ORMRelationDTO>> searchDefault(@RequestBody ORMRelationSearchContext context) {

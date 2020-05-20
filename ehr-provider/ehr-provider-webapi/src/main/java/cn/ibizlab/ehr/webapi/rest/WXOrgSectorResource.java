@@ -55,7 +55,7 @@ public class WXOrgSectorResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#wxorgsector_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#wxorgsector_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"WXOrgSector" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/wxorgsectors/{wxorgsector_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class WXOrgSectorResource {
         return ResponseEntity.status(HttpStatus.OK).body(wxorgsectorMapping.toDto(wxorgsectorService.getDraft(new WXOrgSector())));
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WXOrgSector-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"WXOrgSector" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/wxorgsectors/fetchdefault")
 	public ResponseEntity<List<WXOrgSectorDTO>> fetchDefault(WXOrgSectorSearchContext context) {
@@ -172,6 +173,7 @@ public class WXOrgSectorResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WXOrgSector-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"WXOrgSector" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/wxorgsectors/searchdefault")
 	public ResponseEntity<Page<WXOrgSectorDTO>> searchDefault(@RequestBody WXOrgSectorSearchContext context) {

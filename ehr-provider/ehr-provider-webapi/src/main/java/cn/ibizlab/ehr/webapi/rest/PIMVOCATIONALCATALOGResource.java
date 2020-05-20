@@ -145,7 +145,7 @@ public class PIMVOCATIONALCATALOGResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#pimvocationalcatalog_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#pimvocationalcatalog_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"PIMVOCATIONALCATALOG" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimvocationalcatalogs/{pimvocationalcatalog_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class PIMVOCATIONALCATALOGResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMVOCATIONALCATALOG-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PIMVOCATIONALCATALOG" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimvocationalcatalogs/fetchdefault")
 	public ResponseEntity<List<PIMVOCATIONALCATALOGDTO>> fetchDefault(PIMVOCATIONALCATALOGSearchContext context) {
@@ -172,6 +173,7 @@ public class PIMVOCATIONALCATALOGResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMVOCATIONALCATALOG-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PIMVOCATIONALCATALOG" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pimvocationalcatalogs/searchdefault")
 	public ResponseEntity<Page<PIMVOCATIONALCATALOGDTO>> searchDefault(@RequestBody PIMVOCATIONALCATALOGSearchContext context) {

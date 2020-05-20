@@ -71,7 +71,7 @@ public class OrgUserLevelResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#orguserlevel_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#orguserlevel_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"OrgUserLevel" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/orguserlevels/{orguserlevel_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class OrgUserLevelResource {
         return  ResponseEntity.status(HttpStatus.OK).body(orguserlevelService.checkKey(orguserlevelMapping.toDomain(orguserleveldto)));
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrgUserLevel-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"OrgUserLevel" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/orguserlevels/fetchdefault")
 	public ResponseEntity<List<OrgUserLevelDTO>> fetchDefault(OrgUserLevelSearchContext context) {
@@ -172,6 +173,7 @@ public class OrgUserLevelResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrgUserLevel-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"OrgUserLevel" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/orguserlevels/searchdefault")
 	public ResponseEntity<Page<OrgUserLevelDTO>> searchDefault(@RequestBody OrgUserLevelSearchContext context) {

@@ -115,7 +115,7 @@ public class UserGroupDetailResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#usergroupdetail_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#usergroupdetail_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"UserGroupDetail" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/usergroupdetails/{usergroupdetail_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class UserGroupDetailResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UserGroupDetail-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"UserGroupDetail" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/usergroupdetails/fetchdefault")
 	public ResponseEntity<List<UserGroupDetailDTO>> fetchDefault(UserGroupDetailSearchContext context) {
@@ -172,6 +173,7 @@ public class UserGroupDetailResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UserGroupDetail-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"UserGroupDetail" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/usergroupdetails/searchdefault")
 	public ResponseEntity<Page<UserGroupDetailDTO>> searchDefault(@RequestBody UserGroupDetailSearchContext context) {

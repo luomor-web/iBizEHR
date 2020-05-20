@@ -55,7 +55,7 @@ public class PIMEXPACCOUNTResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#pimexpaccount_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#pimexpaccount_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"PIMEXPACCOUNT" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimexpaccounts/{pimexpaccount_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class PIMEXPACCOUNTResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMEXPACCOUNT-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PIMEXPACCOUNT" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimexpaccounts/fetchdefault")
 	public ResponseEntity<List<PIMEXPACCOUNTDTO>> fetchDefault(PIMEXPACCOUNTSearchContext context) {
@@ -172,6 +173,7 @@ public class PIMEXPACCOUNTResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMEXPACCOUNT-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PIMEXPACCOUNT" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pimexpaccounts/searchdefault")
 	public ResponseEntity<Page<PIMEXPACCOUNTDTO>> searchDefault(@RequestBody PIMEXPACCOUNTSearchContext context) {

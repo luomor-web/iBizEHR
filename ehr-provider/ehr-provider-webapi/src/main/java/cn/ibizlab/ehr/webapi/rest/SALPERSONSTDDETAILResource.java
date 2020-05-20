@@ -101,7 +101,7 @@ public class SALPERSONSTDDETAILResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#salpersonstddetail_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#salpersonstddetail_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"SALPERSONSTDDETAIL" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/salpersonstddetails/{salpersonstddetail_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class SALPERSONSTDDETAILResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALPERSONSTDDETAIL-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"SALPERSONSTDDETAIL" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/salpersonstddetails/fetchdefault")
 	public ResponseEntity<List<SALPERSONSTDDETAILDTO>> fetchDefault(SALPERSONSTDDETAILSearchContext context) {
@@ -172,6 +173,7 @@ public class SALPERSONSTDDETAILResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALPERSONSTDDETAIL-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"SALPERSONSTDDETAIL" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/salpersonstddetails/searchdefault")
 	public ResponseEntity<Page<SALPERSONSTDDETAILDTO>> searchDefault(@RequestBody SALPERSONSTDDETAILSearchContext context) {

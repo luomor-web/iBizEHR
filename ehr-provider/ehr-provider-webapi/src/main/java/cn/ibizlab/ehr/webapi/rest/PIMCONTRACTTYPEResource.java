@@ -94,7 +94,7 @@ public class PIMCONTRACTTYPEResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#pimcontracttype_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#pimcontracttype_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"PIMCONTRACTTYPE" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimcontracttypes/{pimcontracttype_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class PIMCONTRACTTYPEResource {
         return  ResponseEntity.status(HttpStatus.OK).body(pimcontracttypeService.checkKey(pimcontracttypeMapping.toDomain(pimcontracttypedto)));
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMCONTRACTTYPE-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PIMCONTRACTTYPE" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimcontracttypes/fetchdefault")
 	public ResponseEntity<List<PIMCONTRACTTYPEDTO>> fetchDefault(PIMCONTRACTTYPESearchContext context) {
@@ -172,6 +173,7 @@ public class PIMCONTRACTTYPEResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMCONTRACTTYPE-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PIMCONTRACTTYPE" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pimcontracttypes/searchdefault")
 	public ResponseEntity<Page<PIMCONTRACTTYPEDTO>> searchDefault(@RequestBody PIMCONTRACTTYPESearchContext context) {

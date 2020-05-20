@@ -78,7 +78,7 @@ public class PIMPersonAbilityResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#pimpersonability_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#pimpersonability_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"PIMPersonAbility" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimpersonabilities/{pimpersonability_id}")
     @Transactional
@@ -173,6 +173,7 @@ public class PIMPersonAbilityResource {
         return  ResponseEntity.status(HttpStatus.OK).body(pimpersonabilityService.checkKey(pimpersonabilityMapping.toDomain(pimpersonabilitydto)));
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMPersonAbility-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PIMPersonAbility" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimpersonabilities/fetchdefault")
 	public ResponseEntity<List<PIMPersonAbilityDTO>> fetchDefault(PIMPersonAbilitySearchContext context) {
@@ -185,6 +186,7 @@ public class PIMPersonAbilityResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMPersonAbility-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PIMPersonAbility" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pimpersonabilities/searchdefault")
 	public ResponseEntity<Page<PIMPersonAbilityDTO>> searchDefault(@RequestBody PIMPersonAbilitySearchContext context) {

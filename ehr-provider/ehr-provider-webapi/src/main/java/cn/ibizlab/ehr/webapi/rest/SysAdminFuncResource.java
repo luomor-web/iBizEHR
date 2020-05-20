@@ -94,7 +94,7 @@ public class SysAdminFuncResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#sysadminfunc_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#sysadminfunc_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"SysAdminFunc" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/sysadminfuncs/{sysadminfunc_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class SysAdminFuncResource {
         return  ResponseEntity.status(HttpStatus.OK).body(sysadminfuncService.checkKey(sysadminfuncMapping.toDomain(sysadminfuncdto)));
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SysAdminFunc-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"SysAdminFunc" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/sysadminfuncs/fetchdefault")
 	public ResponseEntity<List<SysAdminFuncDTO>> fetchDefault(SysAdminFuncSearchContext context) {
@@ -172,6 +173,7 @@ public class SysAdminFuncResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SysAdminFunc-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"SysAdminFunc" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/sysadminfuncs/searchdefault")
 	public ResponseEntity<Page<SysAdminFuncDTO>> searchDefault(@RequestBody SysAdminFuncSearchContext context) {

@@ -55,7 +55,7 @@ public class DEDataChgDispResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#dedatachgdisp_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#dedatachgdisp_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"DEDataChgDisp" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/dedatachgdisps/{dedatachgdisp_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class DEDataChgDispResource {
         return ResponseEntity.status(HttpStatus.OK).body(dedatachgdispMapping.toDto(dedatachgdispService.getDraft(new DEDataChgDisp())));
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DEDataChgDisp-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"DEDataChgDisp" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/dedatachgdisps/fetchdefault")
 	public ResponseEntity<List<DEDataChgDispDTO>> fetchDefault(DEDataChgDispSearchContext context) {
@@ -172,6 +173,7 @@ public class DEDataChgDispResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DEDataChgDisp-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"DEDataChgDisp" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/dedatachgdisps/searchdefault")
 	public ResponseEntity<Page<DEDataChgDispDTO>> searchDefault(@RequestBody DEDataChgDispSearchContext context) {

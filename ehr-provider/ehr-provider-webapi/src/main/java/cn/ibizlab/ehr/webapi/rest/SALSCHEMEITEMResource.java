@@ -106,7 +106,7 @@ public class SALSCHEMEITEMResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#salschemeitem_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#salschemeitem_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"SALSCHEMEITEM" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/salschemeitems/{salschemeitem_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class SALSCHEMEITEMResource {
         return ResponseEntity.status(HttpStatus.OK).body(salschemeitemMapping.toDto(salschemeitemService.getDraft(new SALSCHEMEITEM())));
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALSCHEMEITEM-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"SALSCHEMEITEM" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/salschemeitems/fetchdefault")
 	public ResponseEntity<List<SALSCHEMEITEMDTO>> fetchDefault(SALSCHEMEITEMSearchContext context) {
@@ -172,6 +173,7 @@ public class SALSCHEMEITEMResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALSCHEMEITEM-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"SALSCHEMEITEM" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/salschemeitems/searchdefault")
 	public ResponseEntity<Page<SALSCHEMEITEMDTO>> searchDefault(@RequestBody SALSCHEMEITEMSearchContext context) {

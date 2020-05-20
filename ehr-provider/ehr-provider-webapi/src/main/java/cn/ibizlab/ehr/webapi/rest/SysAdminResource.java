@@ -108,7 +108,7 @@ public class SysAdminResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#sysadmin_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#sysadmin_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"SysAdmin" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/sysadmins/{sysadmin_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class SysAdminResource {
         return  ResponseEntity.status(HttpStatus.OK).body(sysadminService.checkKey(sysadminMapping.toDomain(sysadmindto)));
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SysAdmin-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"SysAdmin" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/sysadmins/fetchdefault")
 	public ResponseEntity<List<SysAdminDTO>> fetchDefault(SysAdminSearchContext context) {
@@ -172,6 +173,7 @@ public class SysAdminResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SysAdmin-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"SysAdmin" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/sysadmins/searchdefault")
 	public ResponseEntity<Page<SysAdminDTO>> searchDefault(@RequestBody SysAdminSearchContext context) {

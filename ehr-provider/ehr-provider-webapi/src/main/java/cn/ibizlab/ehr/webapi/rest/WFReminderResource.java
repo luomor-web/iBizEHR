@@ -55,7 +55,7 @@ public class WFReminderResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#wfreminder_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#wfreminder_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"WFReminder" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/wfreminders/{wfreminder_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class WFReminderResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFReminder-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"WFReminder" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/wfreminders/fetchdefault")
 	public ResponseEntity<List<WFReminderDTO>> fetchDefault(WFReminderSearchContext context) {
@@ -172,6 +173,7 @@ public class WFReminderResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFReminder-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"WFReminder" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/wfreminders/searchdefault")
 	public ResponseEntity<Page<WFReminderDTO>> searchDefault(@RequestBody WFReminderSearchContext context) {

@@ -171,7 +171,7 @@ public class PCMYDGZMXResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#pcmydgzmx_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#pcmydgzmx_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"PCMYDGZMX" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmydgzmxes/{pcmydgzmx_id}")
     @Transactional
@@ -186,6 +186,7 @@ public class PCMYDGZMXResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMYDGZMX-GZCRYDQ-all')")
 	@ApiOperation(value = "fetch挂职出人员查询", tags = {"PCMYDGZMX" } ,notes = "fetch挂职出人员查询")
     @RequestMapping(method= RequestMethod.GET , value="/pcmydgzmxes/fetchgzcrydq")
 	public ResponseEntity<List<PCMYDGZMXDTO>> fetchGZCRYDQ(PCMYDGZMXSearchContext context) {
@@ -198,6 +199,7 @@ public class PCMYDGZMXResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMYDGZMX-GZCRYDQ-all')")
 	@ApiOperation(value = "search挂职出人员查询", tags = {"PCMYDGZMX" } ,notes = "search挂职出人员查询")
     @RequestMapping(method= RequestMethod.POST , value="/pcmydgzmxes/searchgzcrydq")
 	public ResponseEntity<Page<PCMYDGZMXDTO>> searchGZCRYDQ(@RequestBody PCMYDGZMXSearchContext context) {
@@ -206,6 +208,7 @@ public class PCMYDGZMXResource {
                 .body(new PageImpl(pcmydgzmxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMYDGZMX-GZJLSJLDQ-all')")
 	@ApiOperation(value = "fetch挂职进历史记录查询", tags = {"PCMYDGZMX" } ,notes = "fetch挂职进历史记录查询")
     @RequestMapping(method= RequestMethod.GET , value="/pcmydgzmxes/fetchgzjlsjldq")
 	public ResponseEntity<List<PCMYDGZMXDTO>> fetchGZJLSJLDQ(PCMYDGZMXSearchContext context) {
@@ -218,6 +221,7 @@ public class PCMYDGZMXResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMYDGZMX-GZJLSJLDQ-all')")
 	@ApiOperation(value = "search挂职进历史记录查询", tags = {"PCMYDGZMX" } ,notes = "search挂职进历史记录查询")
     @RequestMapping(method= RequestMethod.POST , value="/pcmydgzmxes/searchgzjlsjldq")
 	public ResponseEntity<Page<PCMYDGZMXDTO>> searchGZJLSJLDQ(@RequestBody PCMYDGZMXSearchContext context) {
@@ -226,6 +230,7 @@ public class PCMYDGZMXResource {
                 .body(new PageImpl(pcmydgzmxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMYDGZMX-GZJRY-all')")
 	@ApiOperation(value = "fetch挂职进人员", tags = {"PCMYDGZMX" } ,notes = "fetch挂职进人员")
     @RequestMapping(method= RequestMethod.GET , value="/pcmydgzmxes/fetchgzjry")
 	public ResponseEntity<List<PCMYDGZMXDTO>> fetchGZJRY(PCMYDGZMXSearchContext context) {
@@ -238,6 +243,7 @@ public class PCMYDGZMXResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMYDGZMX-GZJRY-all')")
 	@ApiOperation(value = "search挂职进人员", tags = {"PCMYDGZMX" } ,notes = "search挂职进人员")
     @RequestMapping(method= RequestMethod.POST , value="/pcmydgzmxes/searchgzjry")
 	public ResponseEntity<Page<PCMYDGZMXDTO>> searchGZJRY(@RequestBody PCMYDGZMXSearchContext context) {
@@ -246,6 +252,7 @@ public class PCMYDGZMXResource {
                 .body(new PageImpl(pcmydgzmxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMYDGZMX-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PCMYDGZMX" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pcmydgzmxes/fetchdefault")
 	public ResponseEntity<List<PCMYDGZMXDTO>> fetchDefault(PCMYDGZMXSearchContext context) {
@@ -258,6 +265,7 @@ public class PCMYDGZMXResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMYDGZMX-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PCMYDGZMX" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pcmydgzmxes/searchdefault")
 	public ResponseEntity<Page<PCMYDGZMXDTO>> searchDefault(@RequestBody PCMYDGZMXSearchContext context) {
@@ -266,6 +274,7 @@ public class PCMYDGZMXResource {
                 .body(new PageImpl(pcmydgzmxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMYDGZMX-GZCLSJLDQ-all')")
 	@ApiOperation(value = "fetch挂职出历史记录查询", tags = {"PCMYDGZMX" } ,notes = "fetch挂职出历史记录查询")
     @RequestMapping(method= RequestMethod.GET , value="/pcmydgzmxes/fetchgzclsjldq")
 	public ResponseEntity<List<PCMYDGZMXDTO>> fetchGZCLSJLDQ(PCMYDGZMXSearchContext context) {
@@ -278,6 +287,7 @@ public class PCMYDGZMXResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMYDGZMX-GZCLSJLDQ-all')")
 	@ApiOperation(value = "search挂职出历史记录查询", tags = {"PCMYDGZMX" } ,notes = "search挂职出历史记录查询")
     @RequestMapping(method= RequestMethod.POST , value="/pcmydgzmxes/searchgzclsjldq")
 	public ResponseEntity<Page<PCMYDGZMXDTO>> searchGZCLSJLDQ(@RequestBody PCMYDGZMXSearchContext context) {

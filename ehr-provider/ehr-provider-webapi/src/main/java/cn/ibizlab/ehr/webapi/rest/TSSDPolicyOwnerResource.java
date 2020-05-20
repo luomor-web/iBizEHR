@@ -87,7 +87,7 @@ public class TSSDPolicyOwnerResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#tssdpolicyowner_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#tssdpolicyowner_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"TSSDPolicyOwner" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/tssdpolicyowners/{tssdpolicyowner_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class TSSDPolicyOwnerResource {
         return ResponseEntity.status(HttpStatus.OK).body(tssdpolicyownerMapping.toDto(tssdpolicyownerService.getDraft(new TSSDPolicyOwner())));
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TSSDPolicyOwner-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"TSSDPolicyOwner" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/tssdpolicyowners/fetchdefault")
 	public ResponseEntity<List<TSSDPolicyOwnerDTO>> fetchDefault(TSSDPolicyOwnerSearchContext context) {
@@ -172,6 +173,7 @@ public class TSSDPolicyOwnerResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TSSDPolicyOwner-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"TSSDPolicyOwner" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/tssdpolicyowners/searchdefault")
 	public ResponseEntity<Page<TSSDPolicyOwnerDTO>> searchDefault(@RequestBody TSSDPolicyOwnerSearchContext context) {

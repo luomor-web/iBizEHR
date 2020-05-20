@@ -85,7 +85,7 @@ public class SALTYPEResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#saltype_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#saltype_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"SALTYPE" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/saltypes/{saltype_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class SALTYPEResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALTYPE-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"SALTYPE" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/saltypes/fetchdefault")
 	public ResponseEntity<List<SALTYPEDTO>> fetchDefault(SALTYPESearchContext context) {
@@ -172,6 +173,7 @@ public class SALTYPEResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALTYPE-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"SALTYPE" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/saltypes/searchdefault")
 	public ResponseEntity<Page<SALTYPEDTO>> searchDefault(@RequestBody SALTYPESearchContext context) {

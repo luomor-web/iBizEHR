@@ -101,7 +101,7 @@ public class SALPERSONSTDResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#salpersonstd_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#salpersonstd_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"SALPERSONSTD" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/salpersonstds/{salpersonstd_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class SALPERSONSTDResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALPERSONSTD-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"SALPERSONSTD" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/salpersonstds/fetchdefault")
 	public ResponseEntity<List<SALPERSONSTDDTO>> fetchDefault(SALPERSONSTDSearchContext context) {
@@ -172,6 +173,7 @@ public class SALPERSONSTDResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALPERSONSTD-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"SALPERSONSTD" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/salpersonstds/searchdefault")
 	public ResponseEntity<Page<SALPERSONSTDDTO>> searchDefault(@RequestBody SALPERSONSTDSearchContext context) {

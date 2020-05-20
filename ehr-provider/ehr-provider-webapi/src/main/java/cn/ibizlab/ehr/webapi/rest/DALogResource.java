@@ -103,7 +103,7 @@ public class DALogResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#dalog_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#dalog_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"DALog" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/dalogs/{dalog_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class DALogResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DALog-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"DALog" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/dalogs/fetchdefault")
 	public ResponseEntity<List<DALogDTO>> fetchDefault(DALogSearchContext context) {
@@ -172,6 +173,7 @@ public class DALogResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DALog-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"DALog" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/dalogs/searchdefault")
 	public ResponseEntity<Page<DALogDTO>> searchDefault(@RequestBody DALogSearchContext context) {

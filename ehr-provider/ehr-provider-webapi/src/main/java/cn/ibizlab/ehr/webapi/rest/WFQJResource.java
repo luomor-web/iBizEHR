@@ -133,7 +133,7 @@ public class WFQJResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#wfqj_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#wfqj_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"WFQJ" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/wfqjs/{wfqj_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class WFQJResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFQJ-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"WFQJ" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/wfqjs/fetchdefault")
 	public ResponseEntity<List<WFQJDTO>> fetchDefault(WFQJSearchContext context) {
@@ -172,6 +173,7 @@ public class WFQJResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFQJ-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"WFQJ" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/wfqjs/searchdefault")
 	public ResponseEntity<Page<WFQJDTO>> searchDefault(@RequestBody WFQJSearchContext context) {

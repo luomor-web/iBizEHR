@@ -120,7 +120,7 @@ public class ORMQYGLResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#ormqygl_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#ormqygl_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"ORMQYGL" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/ormqygls/{ormqygl_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class ORMQYGLResource {
         return  ResponseEntity.status(HttpStatus.OK).body(ormqyglService.checkKey(ormqyglMapping.toDomain(ormqygldto)));
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMQYGL-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"ORMQYGL" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/ormqygls/fetchdefault")
 	public ResponseEntity<List<ORMQYGLDTO>> fetchDefault(ORMQYGLSearchContext context) {
@@ -172,6 +173,7 @@ public class ORMQYGLResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMQYGL-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"ORMQYGL" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/ormqygls/searchdefault")
 	public ResponseEntity<Page<ORMQYGLDTO>> searchDefault(@RequestBody ORMQYGLSearchContext context) {

@@ -153,7 +153,7 @@ public class WFUCPolicyResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#wfucpolicy_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#wfucpolicy_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"WFUCPolicy" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/wfucpolicies/{wfucpolicy_id}")
     @Transactional
@@ -186,6 +186,7 @@ public class WFUCPolicyResource {
         return ResponseEntity.status(HttpStatus.OK).body(wfucpolicyMapping.toDto(wfucpolicyService.getDraft(new WFUCPolicy())));
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFUCPolicy-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"WFUCPolicy" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/wfucpolicies/fetchdefault")
 	public ResponseEntity<List<WFUCPolicyDTO>> fetchDefault(WFUCPolicySearchContext context) {
@@ -198,6 +199,7 @@ public class WFUCPolicyResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFUCPolicy-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"WFUCPolicy" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/wfucpolicies/searchdefault")
 	public ResponseEntity<Page<WFUCPolicyDTO>> searchDefault(@RequestBody WFUCPolicySearchContext context) {

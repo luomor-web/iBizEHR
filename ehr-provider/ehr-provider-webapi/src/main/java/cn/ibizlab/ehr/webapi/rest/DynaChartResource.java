@@ -108,7 +108,7 @@ public class DynaChartResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#dynachart_id,{this.getEntity(),'ServiceApi'}})")
+    @PreAuthorize("hasPermission(#dynachart_id,'Remove',{this.getEntity(),'ServiceApi'})")
     @ApiOperation(value = "Remove", tags = {"DynaChart" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/dynacharts/{dynachart_id}")
 
@@ -160,6 +160,7 @@ public class DynaChartResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DynaChart-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"DynaChart" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/dynacharts/fetchdefault")
 	public ResponseEntity<List<DynaChartDTO>> fetchDefault(DynaChartSearchContext context) {
@@ -172,6 +173,7 @@ public class DynaChartResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DynaChart-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"DynaChart" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/dynacharts/searchdefault")
 	public ResponseEntity<Page<DynaChartDTO>> searchDefault(@RequestBody DynaChartSearchContext context) {

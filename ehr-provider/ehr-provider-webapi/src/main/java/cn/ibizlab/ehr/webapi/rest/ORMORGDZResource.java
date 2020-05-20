@@ -76,7 +76,7 @@ public class ORMORGDZResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#ormorgdz_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#ormorgdz_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"ORMORGDZ" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/ormorgdzs/{ormorgdz_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class ORMORGDZResource {
         return  ResponseEntity.status(HttpStatus.OK).body(ormorgdzService.checkKey(ormorgdzMapping.toDomain(ormorgdzdto)));
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMORGDZ-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"ORMORGDZ" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/ormorgdzs/fetchdefault")
 	public ResponseEntity<List<ORMORGDZDTO>> fetchDefault(ORMORGDZSearchContext context) {
@@ -172,6 +173,7 @@ public class ORMORGDZResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMORGDZ-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"ORMORGDZ" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/ormorgdzs/searchdefault")
 	public ResponseEntity<Page<ORMORGDZDTO>> searchDefault(@RequestBody ORMORGDZSearchContext context) {

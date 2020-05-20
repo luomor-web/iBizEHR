@@ -136,7 +136,7 @@ public class PIMWORKHISTORYResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#pimworkhistory_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#pimworkhistory_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"PIMWORKHISTORY" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimworkhistories/{pimworkhistory_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class PIMWORKHISTORYResource {
         return ResponseEntity.status(HttpStatus.OK).body(pimworkhistoryMapping.toDto(pimworkhistoryService.getDraft(new PIMWORKHISTORY())));
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMWORKHISTORY-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PIMWORKHISTORY" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimworkhistories/fetchdefault")
 	public ResponseEntity<List<PIMWORKHISTORYDTO>> fetchDefault(PIMWORKHISTORYSearchContext context) {
@@ -172,6 +173,7 @@ public class PIMWORKHISTORYResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMWORKHISTORY-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PIMWORKHISTORY" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pimworkhistories/searchdefault")
 	public ResponseEntity<Page<PIMWORKHISTORYDTO>> searchDefault(@RequestBody PIMWORKHISTORYSearchContext context) {
@@ -180,6 +182,7 @@ public class PIMWORKHISTORYResource {
                 .body(new PageImpl(pimworkhistoryMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMWORKHISTORY-IsMain-all')")
 	@ApiOperation(value = "fetch是主要工作经历的", tags = {"PIMWORKHISTORY" } ,notes = "fetch是主要工作经历的")
     @RequestMapping(method= RequestMethod.GET , value="/pimworkhistories/fetchismain")
 	public ResponseEntity<List<PIMWORKHISTORYDTO>> fetchIsMain(PIMWORKHISTORYSearchContext context) {
@@ -192,6 +195,7 @@ public class PIMWORKHISTORYResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMWORKHISTORY-IsMain-all')")
 	@ApiOperation(value = "search是主要工作经历的", tags = {"PIMWORKHISTORY" } ,notes = "search是主要工作经历的")
     @RequestMapping(method= RequestMethod.POST , value="/pimworkhistories/searchismain")
 	public ResponseEntity<Page<PIMWORKHISTORYDTO>> searchIsMain(@RequestBody PIMWORKHISTORYSearchContext context) {
@@ -200,6 +204,7 @@ public class PIMWORKHISTORYResource {
                 .body(new PageImpl(pimworkhistoryMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMWORKHISTORY-JLSSGLY-all')")
 	@ApiOperation(value = "fetch记录所属（管理员）", tags = {"PIMWORKHISTORY" } ,notes = "fetch记录所属（管理员）")
     @RequestMapping(method= RequestMethod.GET , value="/pimworkhistories/fetchjlssgly")
 	public ResponseEntity<List<PIMWORKHISTORYDTO>> fetchJLSSGLY(PIMWORKHISTORYSearchContext context) {
@@ -212,6 +217,7 @@ public class PIMWORKHISTORYResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMWORKHISTORY-JLSSGLY-all')")
 	@ApiOperation(value = "search记录所属（管理员）", tags = {"PIMWORKHISTORY" } ,notes = "search记录所属（管理员）")
     @RequestMapping(method= RequestMethod.POST , value="/pimworkhistories/searchjlssgly")
 	public ResponseEntity<Page<PIMWORKHISTORYDTO>> searchJLSSGLY(@RequestBody PIMWORKHISTORYSearchContext context) {
@@ -220,6 +226,7 @@ public class PIMWORKHISTORYResource {
                 .body(new PageImpl(pimworkhistoryMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMWORKHISTORY-ZIZHU-all')")
 	@ApiOperation(value = "fetch记录所属(个人履历)", tags = {"PIMWORKHISTORY" } ,notes = "fetch记录所属(个人履历)")
     @RequestMapping(method= RequestMethod.GET , value="/pimworkhistories/fetchzizhu")
 	public ResponseEntity<List<PIMWORKHISTORYDTO>> fetchZIZHU(PIMWORKHISTORYSearchContext context) {
@@ -232,6 +239,7 @@ public class PIMWORKHISTORYResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMWORKHISTORY-ZIZHU-all')")
 	@ApiOperation(value = "search记录所属(个人履历)", tags = {"PIMWORKHISTORY" } ,notes = "search记录所属(个人履历)")
     @RequestMapping(method= RequestMethod.POST , value="/pimworkhistories/searchzizhu")
 	public ResponseEntity<Page<PIMWORKHISTORYDTO>> searchZIZHU(@RequestBody PIMWORKHISTORYSearchContext context) {
@@ -240,6 +248,7 @@ public class PIMWORKHISTORYResource {
                 .body(new PageImpl(pimworkhistoryMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMWORKHISTORY-JLSS-all')")
 	@ApiOperation(value = "fetch记录所属", tags = {"PIMWORKHISTORY" } ,notes = "fetch记录所属")
     @RequestMapping(method= RequestMethod.GET , value="/pimworkhistories/fetchjlss")
 	public ResponseEntity<List<PIMWORKHISTORYDTO>> fetchJLSS(PIMWORKHISTORYSearchContext context) {
@@ -252,6 +261,7 @@ public class PIMWORKHISTORYResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMWORKHISTORY-JLSS-all')")
 	@ApiOperation(value = "search记录所属", tags = {"PIMWORKHISTORY" } ,notes = "search记录所属")
     @RequestMapping(method= RequestMethod.POST , value="/pimworkhistories/searchjlss")
 	public ResponseEntity<Page<PIMWORKHISTORYDTO>> searchJLSS(@RequestBody PIMWORKHISTORYSearchContext context) {
@@ -260,6 +270,7 @@ public class PIMWORKHISTORYResource {
                 .body(new PageImpl(pimworkhistoryMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMWORKHISTORY-FAZZSY-all')")
 	@ApiOperation(value = "fetch非A转正使用", tags = {"PIMWORKHISTORY" } ,notes = "fetch非A转正使用")
     @RequestMapping(method= RequestMethod.GET , value="/pimworkhistories/fetchfazzsy")
 	public ResponseEntity<List<PIMWORKHISTORYDTO>> fetchFAZZSY(PIMWORKHISTORYSearchContext context) {
@@ -272,6 +283,7 @@ public class PIMWORKHISTORYResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMWORKHISTORY-FAZZSY-all')")
 	@ApiOperation(value = "search非A转正使用", tags = {"PIMWORKHISTORY" } ,notes = "search非A转正使用")
     @RequestMapping(method= RequestMethod.POST , value="/pimworkhistories/searchfazzsy")
 	public ResponseEntity<Page<PIMWORKHISTORYDTO>> searchFAZZSY(@RequestBody PIMWORKHISTORYSearchContext context) {
@@ -280,6 +292,7 @@ public class PIMWORKHISTORYResource {
                 .body(new PageImpl(pimworkhistoryMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMWORKHISTORY-JLSSGR-all')")
 	@ApiOperation(value = "fetch记录所属（个人）", tags = {"PIMWORKHISTORY" } ,notes = "fetch记录所属（个人）")
     @RequestMapping(method= RequestMethod.GET , value="/pimworkhistories/fetchjlssgr")
 	public ResponseEntity<List<PIMWORKHISTORYDTO>> fetchJLSSGR(PIMWORKHISTORYSearchContext context) {
@@ -292,6 +305,7 @@ public class PIMWORKHISTORYResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMWORKHISTORY-JLSSGR-all')")
 	@ApiOperation(value = "search记录所属（个人）", tags = {"PIMWORKHISTORY" } ,notes = "search记录所属（个人）")
     @RequestMapping(method= RequestMethod.POST , value="/pimworkhistories/searchjlssgr")
 	public ResponseEntity<Page<PIMWORKHISTORYDTO>> searchJLSSGR(@RequestBody PIMWORKHISTORYSearchContext context) {

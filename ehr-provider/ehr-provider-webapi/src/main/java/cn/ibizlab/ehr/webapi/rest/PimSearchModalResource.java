@@ -145,7 +145,7 @@ public class PimSearchModalResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#pimsearchmodal_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#pimsearchmodal_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"PimSearchModal" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimsearchmodals/{pimsearchmodal_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class PimSearchModalResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimSearchModal-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PimSearchModal" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimsearchmodals/fetchdefault")
 	public ResponseEntity<List<PimSearchModalDTO>> fetchDefault(PimSearchModalSearchContext context) {
@@ -172,6 +173,7 @@ public class PimSearchModalResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimSearchModal-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PimSearchModal" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pimsearchmodals/searchdefault")
 	public ResponseEntity<Page<PimSearchModalDTO>> searchDefault(@RequestBody PimSearchModalSearchContext context) {

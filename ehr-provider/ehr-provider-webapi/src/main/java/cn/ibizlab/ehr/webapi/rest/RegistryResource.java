@@ -127,7 +127,7 @@ public class RegistryResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#registry_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#registry_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"Registry" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/registries/{registry_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class RegistryResource {
         return  ResponseEntity.status(HttpStatus.OK).body(registryService.checkKey(registryMapping.toDomain(registrydto)));
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-Registry-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"Registry" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/registries/fetchdefault")
 	public ResponseEntity<List<RegistryDTO>> fetchDefault(RegistrySearchContext context) {
@@ -172,6 +173,7 @@ public class RegistryResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-Registry-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"Registry" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/registries/searchdefault")
 	public ResponseEntity<Page<RegistryDTO>> searchDefault(@RequestBody RegistrySearchContext context) {

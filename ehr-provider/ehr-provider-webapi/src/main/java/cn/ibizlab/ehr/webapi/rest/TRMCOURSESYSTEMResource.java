@@ -124,7 +124,7 @@ public class TRMCOURSESYSTEMResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#trmcoursesystem_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#trmcoursesystem_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"TRMCOURSESYSTEM" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/trmcoursesystems/{trmcoursesystem_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class TRMCOURSESYSTEMResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMCOURSESYSTEM-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"TRMCOURSESYSTEM" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/trmcoursesystems/fetchdefault")
 	public ResponseEntity<List<TRMCOURSESYSTEMDTO>> fetchDefault(TRMCOURSESYSTEMSearchContext context) {
@@ -172,6 +173,7 @@ public class TRMCOURSESYSTEMResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMCOURSESYSTEM-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"TRMCOURSESYSTEM" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/trmcoursesystems/searchdefault")
 	public ResponseEntity<Page<TRMCOURSESYSTEMDTO>> searchDefault(@RequestBody TRMCOURSESYSTEMSearchContext context) {

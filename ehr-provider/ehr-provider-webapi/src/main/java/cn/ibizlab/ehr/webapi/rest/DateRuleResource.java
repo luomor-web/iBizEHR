@@ -87,7 +87,7 @@ public class DateRuleResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#daterule_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#daterule_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"DateRule" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/daterules/{daterule_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class DateRuleResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DateRule-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"DateRule" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/daterules/fetchdefault")
 	public ResponseEntity<List<DateRuleDTO>> fetchDefault(DateRuleSearchContext context) {
@@ -172,6 +173,7 @@ public class DateRuleResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DateRule-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"DateRule" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/daterules/searchdefault")
 	public ResponseEntity<Page<DateRuleDTO>> searchDefault(@RequestBody DateRuleSearchContext context) {

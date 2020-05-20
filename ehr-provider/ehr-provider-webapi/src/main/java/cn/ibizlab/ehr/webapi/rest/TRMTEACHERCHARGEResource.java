@@ -83,7 +83,7 @@ public class TRMTEACHERCHARGEResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#trmteachercharge_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#trmteachercharge_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"TRMTEACHERCHARGE" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/trmteachercharges/{trmteachercharge_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class TRMTEACHERCHARGEResource {
         return  ResponseEntity.status(HttpStatus.OK).body(trmteacherchargeService.checkKey(trmteacherchargeMapping.toDomain(trmteacherchargedto)));
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMTEACHERCHARGE-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"TRMTEACHERCHARGE" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/trmteachercharges/fetchdefault")
 	public ResponseEntity<List<TRMTEACHERCHARGEDTO>> fetchDefault(TRMTEACHERCHARGESearchContext context) {
@@ -172,6 +173,7 @@ public class TRMTEACHERCHARGEResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMTEACHERCHARGE-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"TRMTEACHERCHARGE" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/trmteachercharges/searchdefault")
 	public ResponseEntity<Page<TRMTEACHERCHARGEDTO>> searchDefault(@RequestBody TRMTEACHERCHARGESearchContext context) {

@@ -140,7 +140,7 @@ public class WFStepActorResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#wfstepactor_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#wfstepactor_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"WFStepActor" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/wfstepactors/{wfstepactor_id}")
     @Transactional
@@ -173,6 +173,7 @@ public class WFStepActorResource {
         return  ResponseEntity.status(HttpStatus.OK).body(wfstepactorService.checkKey(wfstepactorMapping.toDomain(wfstepactordto)));
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFStepActor-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"WFStepActor" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/wfstepactors/fetchdefault")
 	public ResponseEntity<List<WFStepActorDTO>> fetchDefault(WFStepActorSearchContext context) {
@@ -185,6 +186,7 @@ public class WFStepActorResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFStepActor-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"WFStepActor" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/wfstepactors/searchdefault")
 	public ResponseEntity<Page<WFStepActorDTO>> searchDefault(@RequestBody WFStepActorSearchContext context) {

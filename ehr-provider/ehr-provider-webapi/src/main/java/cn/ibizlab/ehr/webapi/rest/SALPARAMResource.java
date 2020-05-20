@@ -83,7 +83,7 @@ public class SALPARAMResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#salparam_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#salparam_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"SALPARAM" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/salparams/{salparam_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class SALPARAMResource {
         return ResponseEntity.status(HttpStatus.OK).body(salparamMapping.toDto(salparamService.getDraft(new SALPARAM())));
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALPARAM-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"SALPARAM" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/salparams/fetchdefault")
 	public ResponseEntity<List<SALPARAMDTO>> fetchDefault(SALPARAMSearchContext context) {
@@ -172,6 +173,7 @@ public class SALPARAMResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALPARAM-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"SALPARAM" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/salparams/searchdefault")
 	public ResponseEntity<Page<SALPARAMDTO>> searchDefault(@RequestBody SALPARAMSearchContext context) {

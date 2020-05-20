@@ -48,40 +48,32 @@ public class AuthPermissionEvaluator implements PermissionEvaluator {
     @Lazy
     private MongoTemplate mongoTemplate;
 
-    /**
-     * 表格权限检查 ：用于检查当前用户是否拥有表格数据的读取、删除权限
-     *
-     * @param authentication
-     * @param deAction     表格行为，如：[READ,DELETE]
-     * @param gridParam     表格参数，如：当前表格所处实体(EntityName)、表格删除的数据主键(srfkeys)
-     * @return true/false true则允许当前行为，false拒绝行为
-     */
+
     @Override
     public boolean hasPermission(Authentication authentication, Object deAction, Object gridParam) {
-
-                return true;
+            return true;
     }
 
 
     /**
-     * 表单权限检查 ：用于检查当前用户是否拥有表单的新建、编辑、删除权限
+     * 实体行为权限检查 ：用于检查当前用户是否拥有实体的新建、编辑、删除权限
      *
      * @param authentication
      * @param srfKey         当前操作数据的主键
      * @param action         当前操作行为：如：[READ、UPDATE、DELETE]
-     * @param formParam      表单参数对象
+     * @param params         相关参数
      * @return true/false true则允许当前行为，false拒绝行为
      */
     @Override
-    public boolean hasPermission(Authentication authentication, Serializable srfKey, String action, Object formParam) {
+    public boolean hasPermission(Authentication authentication, Serializable srfKey, String action, Object params) {
 
         //未开启权限校验、超级管理员则不进行权限检查
         if(AuthenticationUser.getAuthenticationUser().getSuperuser()==1  || !enablePermissionValid)
             return true;
 
-        List formParamList = (ArrayList) formParam;
-        EntityBase  entity = (EntityBase) formParamList.get(0);
-        String deStorageMode= (String) formParamList.get(1);
+        List paramList = (ArrayList) params;
+        EntityBase  entity = (EntityBase) paramList.get(0);
+        String deStorageMode= (String) paramList.get(1);
 
         if (StringUtils.isEmpty(entity))
             return false;

@@ -55,7 +55,7 @@ public class DEDataChg2Resource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#dedatachg2_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#dedatachg2_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"DEDataChg2" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/dedatachg2s/{dedatachg2_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class DEDataChg2Resource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DEDataChg2-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"DEDataChg2" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/dedatachg2s/fetchdefault")
 	public ResponseEntity<List<DEDataChg2DTO>> fetchDefault(DEDataChg2SearchContext context) {
@@ -172,6 +173,7 @@ public class DEDataChg2Resource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DEDataChg2-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"DEDataChg2" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/dedatachg2s/searchdefault")
 	public ResponseEntity<Page<DEDataChg2DTO>> searchDefault(@RequestBody DEDataChg2SearchContext context) {

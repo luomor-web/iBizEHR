@@ -145,7 +145,7 @@ public class PIMFILEBATVHUPLOADResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#pimfilebatvhupload_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#pimfilebatvhupload_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"PIMFILEBATVHUPLOAD" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimfilebatvhuploads/{pimfilebatvhupload_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class PIMFILEBATVHUPLOADResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMFILEBATVHUPLOAD-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PIMFILEBATVHUPLOAD" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimfilebatvhuploads/fetchdefault")
 	public ResponseEntity<List<PIMFILEBATVHUPLOADDTO>> fetchDefault(PIMFILEBATVHUPLOADSearchContext context) {
@@ -172,6 +173,7 @@ public class PIMFILEBATVHUPLOADResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMFILEBATVHUPLOAD-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PIMFILEBATVHUPLOAD" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pimfilebatvhuploads/searchdefault")
 	public ResponseEntity<Page<PIMFILEBATVHUPLOADDTO>> searchDefault(@RequestBody PIMFILEBATVHUPLOADSearchContext context) {

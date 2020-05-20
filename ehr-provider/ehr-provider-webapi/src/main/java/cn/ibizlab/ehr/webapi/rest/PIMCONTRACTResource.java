@@ -77,7 +77,7 @@ public class PIMCONTRACTResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#pimcontract_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#pimcontract_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"PIMCONTRACT" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimcontracts/{pimcontract_id}")
     @Transactional
@@ -186,6 +186,7 @@ public class PIMCONTRACTResource {
         return ResponseEntity.status(HttpStatus.OK).body(pimcontractMapping.toDto(pimcontractService.getDraft(new PIMCONTRACT())));
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMCONTRACT-RSTXDS-all')")
 	@ApiOperation(value = "fetch人事提醒", tags = {"PIMCONTRACT" } ,notes = "fetch人事提醒")
     @RequestMapping(method= RequestMethod.GET , value="/pimcontracts/fetchrstxds")
 	public ResponseEntity<List<PIMCONTRACTDTO>> fetchRSTXDS(PIMCONTRACTSearchContext context) {
@@ -198,6 +199,7 @@ public class PIMCONTRACTResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMCONTRACT-RSTXDS-all')")
 	@ApiOperation(value = "search人事提醒", tags = {"PIMCONTRACT" } ,notes = "search人事提醒")
     @RequestMapping(method= RequestMethod.POST , value="/pimcontracts/searchrstxds")
 	public ResponseEntity<Page<PIMCONTRACTDTO>> searchRSTXDS(@RequestBody PIMCONTRACTSearchContext context) {
@@ -206,6 +208,7 @@ public class PIMCONTRACTResource {
                 .body(new PageImpl(pimcontractMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMCONTRACT-JLSS-all')")
 	@ApiOperation(value = "fetch记录所属和人员ID不符的", tags = {"PIMCONTRACT" } ,notes = "fetch记录所属和人员ID不符的")
     @RequestMapping(method= RequestMethod.GET , value="/pimcontracts/fetchjlss")
 	public ResponseEntity<List<PIMCONTRACTDTO>> fetchJLSS(PIMCONTRACTSearchContext context) {
@@ -218,6 +221,7 @@ public class PIMCONTRACTResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMCONTRACT-JLSS-all')")
 	@ApiOperation(value = "search记录所属和人员ID不符的", tags = {"PIMCONTRACT" } ,notes = "search记录所属和人员ID不符的")
     @RequestMapping(method= RequestMethod.POST , value="/pimcontracts/searchjlss")
 	public ResponseEntity<Page<PIMCONTRACTDTO>> searchJLSS(@RequestBody PIMCONTRACTSearchContext context) {
@@ -226,6 +230,7 @@ public class PIMCONTRACTResource {
                 .body(new PageImpl(pimcontractMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMCONTRACT-OrderByOrg-all')")
 	@ApiOperation(value = "fetch按组织树过滤", tags = {"PIMCONTRACT" } ,notes = "fetch按组织树过滤")
     @RequestMapping(method= RequestMethod.GET , value="/pimcontracts/fetchorderbyorg")
 	public ResponseEntity<List<PIMCONTRACTDTO>> fetchOrderByOrg(PIMCONTRACTSearchContext context) {
@@ -238,6 +243,7 @@ public class PIMCONTRACTResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMCONTRACT-OrderByOrg-all')")
 	@ApiOperation(value = "search按组织树过滤", tags = {"PIMCONTRACT" } ,notes = "search按组织树过滤")
     @RequestMapping(method= RequestMethod.POST , value="/pimcontracts/searchorderbyorg")
 	public ResponseEntity<Page<PIMCONTRACTDTO>> searchOrderByOrg(@RequestBody PIMCONTRACTSearchContext context) {
@@ -246,6 +252,7 @@ public class PIMCONTRACTResource {
                 .body(new PageImpl(pimcontractMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMCONTRACT-StopContracts-all')")
 	@ApiOperation(value = "fetch待终止合同", tags = {"PIMCONTRACT" } ,notes = "fetch待终止合同")
     @RequestMapping(method= RequestMethod.GET , value="/pimcontracts/fetchstopcontracts")
 	public ResponseEntity<List<PIMCONTRACTDTO>> fetchStopContracts(PIMCONTRACTSearchContext context) {
@@ -258,6 +265,7 @@ public class PIMCONTRACTResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMCONTRACT-StopContracts-all')")
 	@ApiOperation(value = "search待终止合同", tags = {"PIMCONTRACT" } ,notes = "search待终止合同")
     @RequestMapping(method= RequestMethod.POST , value="/pimcontracts/searchstopcontracts")
 	public ResponseEntity<Page<PIMCONTRACTDTO>> searchStopContracts(@RequestBody PIMCONTRACTSearchContext context) {
@@ -266,6 +274,7 @@ public class PIMCONTRACTResource {
                 .body(new PageImpl(pimcontractMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMCONTRACT-SignContracts-all')")
 	@ApiOperation(value = "fetch待签订合同", tags = {"PIMCONTRACT" } ,notes = "fetch待签订合同")
     @RequestMapping(method= RequestMethod.GET , value="/pimcontracts/fetchsigncontracts")
 	public ResponseEntity<List<PIMCONTRACTDTO>> fetchSignContracts(PIMCONTRACTSearchContext context) {
@@ -278,6 +287,7 @@ public class PIMCONTRACTResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMCONTRACT-SignContracts-all')")
 	@ApiOperation(value = "search待签订合同", tags = {"PIMCONTRACT" } ,notes = "search待签订合同")
     @RequestMapping(method= RequestMethod.POST , value="/pimcontracts/searchsigncontracts")
 	public ResponseEntity<Page<PIMCONTRACTDTO>> searchSignContracts(@RequestBody PIMCONTRACTSearchContext context) {
@@ -286,6 +296,7 @@ public class PIMCONTRACTResource {
                 .body(new PageImpl(pimcontractMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMCONTRACT-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PIMCONTRACT" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimcontracts/fetchdefault")
 	public ResponseEntity<List<PIMCONTRACTDTO>> fetchDefault(PIMCONTRACTSearchContext context) {
@@ -298,6 +309,7 @@ public class PIMCONTRACTResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMCONTRACT-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PIMCONTRACT" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pimcontracts/searchdefault")
 	public ResponseEntity<Page<PIMCONTRACTDTO>> searchDefault(@RequestBody PIMCONTRACTSearchContext context) {
@@ -306,6 +318,7 @@ public class PIMCONTRACTResource {
                 .body(new PageImpl(pimcontractMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMCONTRACT-XYHT-all')")
 	@ApiOperation(value = "fetch协议合同", tags = {"PIMCONTRACT" } ,notes = "fetch协议合同")
     @RequestMapping(method= RequestMethod.GET , value="/pimcontracts/fetchxyht")
 	public ResponseEntity<List<PIMCONTRACTDTO>> fetchXYHT(PIMCONTRACTSearchContext context) {
@@ -318,6 +331,7 @@ public class PIMCONTRACTResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMCONTRACT-XYHT-all')")
 	@ApiOperation(value = "search协议合同", tags = {"PIMCONTRACT" } ,notes = "search协议合同")
     @RequestMapping(method= RequestMethod.POST , value="/pimcontracts/searchxyht")
 	public ResponseEntity<Page<PIMCONTRACTDTO>> searchXYHT(@RequestBody PIMCONTRACTSearchContext context) {
@@ -326,6 +340,7 @@ public class PIMCONTRACTResource {
                 .body(new PageImpl(pimcontractMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMCONTRACT-ZIZHU-all')")
 	@ApiOperation(value = "fetch自助(合同信息)", tags = {"PIMCONTRACT" } ,notes = "fetch自助(合同信息)")
     @RequestMapping(method= RequestMethod.GET , value="/pimcontracts/fetchzizhu")
 	public ResponseEntity<List<PIMCONTRACTDTO>> fetchZIZHU(PIMCONTRACTSearchContext context) {
@@ -338,6 +353,7 @@ public class PIMCONTRACTResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMCONTRACT-ZIZHU-all')")
 	@ApiOperation(value = "search自助(合同信息)", tags = {"PIMCONTRACT" } ,notes = "search自助(合同信息)")
     @RequestMapping(method= RequestMethod.POST , value="/pimcontracts/searchzizhu")
 	public ResponseEntity<Page<PIMCONTRACTDTO>> searchZIZHU(@RequestBody PIMCONTRACTSearchContext context) {
@@ -346,6 +362,7 @@ public class PIMCONTRACTResource {
                 .body(new PageImpl(pimcontractMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMCONTRACT-LDHT-all')")
 	@ApiOperation(value = "fetch劳动合同", tags = {"PIMCONTRACT" } ,notes = "fetch劳动合同")
     @RequestMapping(method= RequestMethod.GET , value="/pimcontracts/fetchldht")
 	public ResponseEntity<List<PIMCONTRACTDTO>> fetchLDHT(PIMCONTRACTSearchContext context) {
@@ -358,6 +375,7 @@ public class PIMCONTRACTResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMCONTRACT-LDHT-all')")
 	@ApiOperation(value = "search劳动合同", tags = {"PIMCONTRACT" } ,notes = "search劳动合同")
     @RequestMapping(method= RequestMethod.POST , value="/pimcontracts/searchldht")
 	public ResponseEntity<Page<PIMCONTRACTDTO>> searchLDHT(@RequestBody PIMCONTRACTSearchContext context) {
@@ -366,6 +384,7 @@ public class PIMCONTRACTResource {
                 .body(new PageImpl(pimcontractMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMCONTRACT-LWHT-all')")
 	@ApiOperation(value = "fetch劳务合同", tags = {"PIMCONTRACT" } ,notes = "fetch劳务合同")
     @RequestMapping(method= RequestMethod.GET , value="/pimcontracts/fetchlwht")
 	public ResponseEntity<List<PIMCONTRACTDTO>> fetchLWHT(PIMCONTRACTSearchContext context) {
@@ -378,6 +397,7 @@ public class PIMCONTRACTResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMCONTRACT-LWHT-all')")
 	@ApiOperation(value = "search劳务合同", tags = {"PIMCONTRACT" } ,notes = "search劳务合同")
     @RequestMapping(method= RequestMethod.POST , value="/pimcontracts/searchlwht")
 	public ResponseEntity<Page<PIMCONTRACTDTO>> searchLWHT(@RequestBody PIMCONTRACTSearchContext context) {

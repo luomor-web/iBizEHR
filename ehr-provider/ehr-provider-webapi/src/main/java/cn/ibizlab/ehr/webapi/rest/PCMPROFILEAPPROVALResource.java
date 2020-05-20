@@ -124,7 +124,7 @@ public class PCMPROFILEAPPROVALResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#pcmprofileapproval_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#pcmprofileapproval_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"PCMPROFILEAPPROVAL" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmprofileapprovals/{pcmprofileapproval_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class PCMPROFILEAPPROVALResource {
         return  ResponseEntity.status(HttpStatus.OK).body(pcmprofileapprovalService.checkKey(pcmprofileapprovalMapping.toDomain(pcmprofileapprovaldto)));
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILEAPPROVAL-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PCMPROFILEAPPROVAL" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pcmprofileapprovals/fetchdefault")
 	public ResponseEntity<List<PCMPROFILEAPPROVALDTO>> fetchDefault(PCMPROFILEAPPROVALSearchContext context) {
@@ -172,6 +173,7 @@ public class PCMPROFILEAPPROVALResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILEAPPROVAL-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PCMPROFILEAPPROVAL" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pcmprofileapprovals/searchdefault")
 	public ResponseEntity<Page<PCMPROFILEAPPROVALDTO>> searchDefault(@RequestBody PCMPROFILEAPPROVALSearchContext context) {
@@ -180,6 +182,7 @@ public class PCMPROFILEAPPROVALResource {
                 .body(new PageImpl(pcmprofileapprovalMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILEAPPROVAL-Disagree-all')")
 	@ApiOperation(value = "fetch拒绝", tags = {"PCMPROFILEAPPROVAL" } ,notes = "fetch拒绝")
     @RequestMapping(method= RequestMethod.GET , value="/pcmprofileapprovals/fetchdisagree")
 	public ResponseEntity<List<PCMPROFILEAPPROVALDTO>> fetchDisagree(PCMPROFILEAPPROVALSearchContext context) {
@@ -192,6 +195,7 @@ public class PCMPROFILEAPPROVALResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILEAPPROVAL-Disagree-all')")
 	@ApiOperation(value = "search拒绝", tags = {"PCMPROFILEAPPROVAL" } ,notes = "search拒绝")
     @RequestMapping(method= RequestMethod.POST , value="/pcmprofileapprovals/searchdisagree")
 	public ResponseEntity<Page<PCMPROFILEAPPROVALDTO>> searchDisagree(@RequestBody PCMPROFILEAPPROVALSearchContext context) {

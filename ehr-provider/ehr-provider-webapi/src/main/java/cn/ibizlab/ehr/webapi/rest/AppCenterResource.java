@@ -92,7 +92,7 @@ public class AppCenterResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#appcenter_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#appcenter_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"AppCenter" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/appcenters/{appcenter_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class AppCenterResource {
         return  ResponseEntity.status(HttpStatus.OK).body(appcenterService.checkKey(appcenterMapping.toDomain(appcenterdto)));
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-AppCenter-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"AppCenter" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/appcenters/fetchdefault")
 	public ResponseEntity<List<AppCenterDTO>> fetchDefault(AppCenterSearchContext context) {
@@ -172,6 +173,7 @@ public class AppCenterResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-AppCenter-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"AppCenter" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/appcenters/searchdefault")
 	public ResponseEntity<Page<AppCenterDTO>> searchDefault(@RequestBody AppCenterSearchContext context) {

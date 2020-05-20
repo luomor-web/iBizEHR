@@ -88,7 +88,7 @@ public class WFUserCandidateResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#wfusercandidate_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#wfusercandidate_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"WFUserCandidate" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/wfusercandidates/{wfusercandidate_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class WFUserCandidateResource {
         return  ResponseEntity.status(HttpStatus.OK).body(wfusercandidateService.checkKey(wfusercandidateMapping.toDomain(wfusercandidatedto)));
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFUserCandidate-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"WFUserCandidate" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/wfusercandidates/fetchdefault")
 	public ResponseEntity<List<WFUserCandidateDTO>> fetchDefault(WFUserCandidateSearchContext context) {
@@ -172,6 +173,7 @@ public class WFUserCandidateResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFUserCandidate-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"WFUserCandidate" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/wfusercandidates/searchdefault")
 	public ResponseEntity<Page<WFUserCandidateDTO>> searchDefault(@RequestBody WFUserCandidateSearchContext context) {

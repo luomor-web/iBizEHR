@@ -115,7 +115,7 @@ public class ATTENDENCESETUPResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#attendencesetup_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#attendencesetup_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"ATTENDENCESETUP" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/attendencesetups/{attendencesetup_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class ATTENDENCESETUPResource {
         return  ResponseEntity.status(HttpStatus.OK).body(attendencesetupService.checkKey(attendencesetupMapping.toDomain(attendencesetupdto)));
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ATTENDENCESETUP-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"ATTENDENCESETUP" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/attendencesetups/fetchdefault")
 	public ResponseEntity<List<ATTENDENCESETUPDTO>> fetchDefault(ATTENDENCESETUPSearchContext context) {
@@ -172,6 +173,7 @@ public class ATTENDENCESETUPResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ATTENDENCESETUP-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"ATTENDENCESETUP" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/attendencesetups/searchdefault")
 	public ResponseEntity<Page<ATTENDENCESETUPDTO>> searchDefault(@RequestBody ATTENDENCESETUPSearchContext context) {
@@ -180,6 +182,7 @@ public class ATTENDENCESETUPResource {
                 .body(new PageImpl(attendencesetupMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ATTENDENCESETUP-CurOrgKQSZ-all')")
 	@ApiOperation(value = "fetch当前组织下的考勤设置", tags = {"ATTENDENCESETUP" } ,notes = "fetch当前组织下的考勤设置")
     @RequestMapping(method= RequestMethod.GET , value="/attendencesetups/fetchcurorgkqsz")
 	public ResponseEntity<List<ATTENDENCESETUPDTO>> fetchCurOrgKQSZ(ATTENDENCESETUPSearchContext context) {
@@ -192,6 +195,7 @@ public class ATTENDENCESETUPResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ATTENDENCESETUP-CurOrgKQSZ-all')")
 	@ApiOperation(value = "search当前组织下的考勤设置", tags = {"ATTENDENCESETUP" } ,notes = "search当前组织下的考勤设置")
     @RequestMapping(method= RequestMethod.POST , value="/attendencesetups/searchcurorgkqsz")
 	public ResponseEntity<Page<ATTENDENCESETUPDTO>> searchCurOrgKQSZ(@RequestBody ATTENDENCESETUPSearchContext context) {
@@ -200,6 +204,7 @@ public class ATTENDENCESETUPResource {
                 .body(new PageImpl(attendencesetupMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ATTENDENCESETUP-KQYBXKQB-all')")
 	@ApiOperation(value = "fetch考勤月报中选考勤表", tags = {"ATTENDENCESETUP" } ,notes = "fetch考勤月报中选考勤表")
     @RequestMapping(method= RequestMethod.GET , value="/attendencesetups/fetchkqybxkqb")
 	public ResponseEntity<List<ATTENDENCESETUPDTO>> fetchKQYBXKQB(ATTENDENCESETUPSearchContext context) {
@@ -212,6 +217,7 @@ public class ATTENDENCESETUPResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ATTENDENCESETUP-KQYBXKQB-all')")
 	@ApiOperation(value = "search考勤月报中选考勤表", tags = {"ATTENDENCESETUP" } ,notes = "search考勤月报中选考勤表")
     @RequestMapping(method= RequestMethod.POST , value="/attendencesetups/searchkqybxkqb")
 	public ResponseEntity<Page<ATTENDENCESETUPDTO>> searchKQYBXKQB(@RequestBody ATTENDENCESETUPSearchContext context) {
@@ -220,6 +226,7 @@ public class ATTENDENCESETUPResource {
                 .body(new PageImpl(attendencesetupMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ATTENDENCESETUP-KQYCZKQSZ-all')")
 	@ApiOperation(value = "fetch考勤员操作考勤设置", tags = {"ATTENDENCESETUP" } ,notes = "fetch考勤员操作考勤设置")
     @RequestMapping(method= RequestMethod.GET , value="/attendencesetups/fetchkqyczkqsz")
 	public ResponseEntity<List<ATTENDENCESETUPDTO>> fetchKQYCZKQSZ(ATTENDENCESETUPSearchContext context) {
@@ -232,6 +239,7 @@ public class ATTENDENCESETUPResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ATTENDENCESETUP-KQYCZKQSZ-all')")
 	@ApiOperation(value = "search考勤员操作考勤设置", tags = {"ATTENDENCESETUP" } ,notes = "search考勤员操作考勤设置")
     @RequestMapping(method= RequestMethod.POST , value="/attendencesetups/searchkqyczkqsz")
 	public ResponseEntity<Page<ATTENDENCESETUPDTO>> searchKQYCZKQSZ(@RequestBody ATTENDENCESETUPSearchContext context) {

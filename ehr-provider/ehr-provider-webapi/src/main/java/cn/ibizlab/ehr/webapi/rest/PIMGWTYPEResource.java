@@ -92,7 +92,7 @@ public class PIMGWTYPEResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#pimgwtype_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#pimgwtype_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"PIMGWTYPE" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimgwtypes/{pimgwtype_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class PIMGWTYPEResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMGWTYPE-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PIMGWTYPE" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimgwtypes/fetchdefault")
 	public ResponseEntity<List<PIMGWTYPEDTO>> fetchDefault(PIMGWTYPESearchContext context) {
@@ -172,6 +173,7 @@ public class PIMGWTYPEResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMGWTYPE-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PIMGWTYPE" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pimgwtypes/searchdefault")
 	public ResponseEntity<Page<PIMGWTYPEDTO>> searchDefault(@RequestBody PIMGWTYPESearchContext context) {

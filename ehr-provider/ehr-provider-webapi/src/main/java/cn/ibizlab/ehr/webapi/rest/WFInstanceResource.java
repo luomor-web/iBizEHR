@@ -55,7 +55,7 @@ public class WFInstanceResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#wfinstance_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#wfinstance_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"WFInstance" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/wfinstances/{wfinstance_id}")
     @Transactional
@@ -186,6 +186,7 @@ public class WFInstanceResource {
         return ResponseEntity.status(HttpStatus.OK).body(wfinstancedto);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFInstance-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"WFInstance" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/wfinstances/fetchdefault")
 	public ResponseEntity<List<WFInstanceDTO>> fetchDefault(WFInstanceSearchContext context) {
@@ -198,6 +199,7 @@ public class WFInstanceResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFInstance-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"WFInstance" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/wfinstances/searchdefault")
 	public ResponseEntity<Page<WFInstanceDTO>> searchDefault(@RequestBody WFInstanceSearchContext context) {

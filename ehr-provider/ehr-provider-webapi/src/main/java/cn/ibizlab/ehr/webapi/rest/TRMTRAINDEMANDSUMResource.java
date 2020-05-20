@@ -104,7 +104,7 @@ public class TRMTRAINDEMANDSUMResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#trmtraindemandsum_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#trmtraindemandsum_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"TRMTRAINDEMANDSUM" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/trmtraindemandsums/{trmtraindemandsum_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class TRMTRAINDEMANDSUMResource {
         return  ResponseEntity.status(HttpStatus.OK).body(trmtraindemandsumService.checkKey(trmtraindemandsumMapping.toDomain(trmtraindemandsumdto)));
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMTRAINDEMANDSUM-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"TRMTRAINDEMANDSUM" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/trmtraindemandsums/fetchdefault")
 	public ResponseEntity<List<TRMTRAINDEMANDSUMDTO>> fetchDefault(TRMTRAINDEMANDSUMSearchContext context) {
@@ -172,6 +173,7 @@ public class TRMTRAINDEMANDSUMResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMTRAINDEMANDSUM-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"TRMTRAINDEMANDSUM" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/trmtraindemandsums/searchdefault")
 	public ResponseEntity<Page<TRMTRAINDEMANDSUMDTO>> searchDefault(@RequestBody TRMTRAINDEMANDSUMSearchContext context) {

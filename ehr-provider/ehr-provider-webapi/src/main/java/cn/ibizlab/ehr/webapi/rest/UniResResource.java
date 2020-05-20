@@ -124,7 +124,7 @@ public class UniResResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#unires_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#unires_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"UniRes" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/unires/{unires_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class UniResResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UniRes-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"UniRes" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/unires/fetchdefault")
 	public ResponseEntity<List<UniResDTO>> fetchDefault(UniResSearchContext context) {
@@ -172,6 +173,7 @@ public class UniResResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UniRes-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"UniRes" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/unires/searchdefault")
 	public ResponseEntity<Page<UniResDTO>> searchDefault(@RequestBody UniResSearchContext context) {

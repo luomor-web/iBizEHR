@@ -124,7 +124,7 @@ public class DataSyncAgentResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#datasyncagent_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#datasyncagent_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"DataSyncAgent" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/datasyncagents/{datasyncagent_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class DataSyncAgentResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DataSyncAgent-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"DataSyncAgent" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/datasyncagents/fetchdefault")
 	public ResponseEntity<List<DataSyncAgentDTO>> fetchDefault(DataSyncAgentSearchContext context) {
@@ -172,6 +173,7 @@ public class DataSyncAgentResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DataSyncAgent-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"DataSyncAgent" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/datasyncagents/searchdefault")
 	public ResponseEntity<Page<DataSyncAgentDTO>> searchDefault(@RequestBody DataSyncAgentSearchContext context) {

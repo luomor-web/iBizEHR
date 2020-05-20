@@ -112,7 +112,7 @@ public class ORMXMXQHZResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#ormxmxqhz_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#ormxmxqhz_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"ORMXMXQHZ" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/ormxmxqhzs/{ormxmxqhz_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class ORMXMXQHZResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMXMXQHZ-XMRYQKMX-all')")
 	@ApiOperation(value = "fetch项目人员缺口明细", tags = {"ORMXMXQHZ" } ,notes = "fetch项目人员缺口明细")
     @RequestMapping(method= RequestMethod.GET , value="/ormxmxqhzs/fetchxmryqkmx")
 	public ResponseEntity<List<ORMXMXQHZDTO>> fetchXMRYQKMX(ORMXMXQHZSearchContext context) {
@@ -172,6 +173,7 @@ public class ORMXMXQHZResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMXMXQHZ-XMRYQKMX-all')")
 	@ApiOperation(value = "search项目人员缺口明细", tags = {"ORMXMXQHZ" } ,notes = "search项目人员缺口明细")
     @RequestMapping(method= RequestMethod.POST , value="/ormxmxqhzs/searchxmryqkmx")
 	public ResponseEntity<Page<ORMXMXQHZDTO>> searchXMRYQKMX(@RequestBody ORMXMXQHZSearchContext context) {
@@ -180,6 +182,7 @@ public class ORMXMXQHZResource {
                 .body(new PageImpl(ormxmxqhzMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMXMXQHZ-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"ORMXMXQHZ" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/ormxmxqhzs/fetchdefault")
 	public ResponseEntity<List<ORMXMXQHZDTO>> fetchDefault(ORMXMXQHZSearchContext context) {
@@ -192,6 +195,7 @@ public class ORMXMXQHZResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMXMXQHZ-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"ORMXMXQHZ" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/ormxmxqhzs/searchdefault")
 	public ResponseEntity<Page<ORMXMXQHZDTO>> searchDefault(@RequestBody ORMXMXQHZSearchContext context) {

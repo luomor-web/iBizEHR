@@ -106,7 +106,7 @@ public class DynaDashboardResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#dynadashboard_id,{this.getEntity(),'ServiceApi'}})")
+    @PreAuthorize("hasPermission(#dynadashboard_id,'Remove',{this.getEntity(),'ServiceApi'})")
     @ApiOperation(value = "Remove", tags = {"DynaDashboard" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/dynadashboards/{dynadashboard_id}")
 
@@ -160,6 +160,7 @@ public class DynaDashboardResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DynaDashboard-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"DynaDashboard" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/dynadashboards/fetchdefault")
 	public ResponseEntity<List<DynaDashboardDTO>> fetchDefault(DynaDashboardSearchContext context) {
@@ -172,6 +173,7 @@ public class DynaDashboardResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DynaDashboard-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"DynaDashboard" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/dynadashboards/searchdefault")
 	public ResponseEntity<Page<DynaDashboardDTO>> searchDefault(@RequestBody DynaDashboardSearchContext context) {

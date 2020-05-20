@@ -108,7 +108,7 @@ public class PIMQUALMAJORResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#pimqualmajor_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#pimqualmajor_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"PIMQUALMAJOR" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimqualmajors/{pimqualmajor_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class PIMQUALMAJORResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMQUALMAJOR-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PIMQUALMAJOR" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimqualmajors/fetchdefault")
 	public ResponseEntity<List<PIMQUALMAJORDTO>> fetchDefault(PIMQUALMAJORSearchContext context) {
@@ -172,6 +173,7 @@ public class PIMQUALMAJORResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMQUALMAJOR-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PIMQUALMAJOR" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pimqualmajors/searchdefault")
 	public ResponseEntity<Page<PIMQUALMAJORDTO>> searchDefault(@RequestBody PIMQUALMAJORSearchContext context) {
@@ -180,6 +182,7 @@ public class PIMQUALMAJORResource {
                 .body(new PageImpl(pimqualmajorMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMQUALMAJOR-XZZGZY-all')")
 	@ApiOperation(value = "fetch选择资格类别下对应的资格专业", tags = {"PIMQUALMAJOR" } ,notes = "fetch选择资格类别下对应的资格专业")
     @RequestMapping(method= RequestMethod.GET , value="/pimqualmajors/fetchxzzgzy")
 	public ResponseEntity<List<PIMQUALMAJORDTO>> fetchXZZGZY(PIMQUALMAJORSearchContext context) {
@@ -192,6 +195,7 @@ public class PIMQUALMAJORResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMQUALMAJOR-XZZGZY-all')")
 	@ApiOperation(value = "search选择资格类别下对应的资格专业", tags = {"PIMQUALMAJOR" } ,notes = "search选择资格类别下对应的资格专业")
     @RequestMapping(method= RequestMethod.POST , value="/pimqualmajors/searchxzzgzy")
 	public ResponseEntity<Page<PIMQUALMAJORDTO>> searchXZZGZY(@RequestBody PIMQUALMAJORSearchContext context) {

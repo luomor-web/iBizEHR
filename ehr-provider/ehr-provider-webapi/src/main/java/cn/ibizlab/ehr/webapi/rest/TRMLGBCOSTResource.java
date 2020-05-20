@@ -67,7 +67,7 @@ public class TRMLGBCOSTResource {
 
 
 
-    @PreAuthorize("hasPermission('Remove',{#trmlgbcost_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#trmlgbcost_id,'Remove',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "Remove", tags = {"TRMLGBCOST" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/trmlgbcosts/{trmlgbcost_id}")
     @Transactional
@@ -160,6 +160,7 @@ public class TRMLGBCOSTResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMLGBCOST-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"TRMLGBCOST" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/trmlgbcosts/fetchdefault")
 	public ResponseEntity<List<TRMLGBCOSTDTO>> fetchDefault(TRMLGBCOSTSearchContext context) {
@@ -172,6 +173,7 @@ public class TRMLGBCOSTResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMLGBCOST-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"TRMLGBCOST" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/trmlgbcosts/searchdefault")
 	public ResponseEntity<Page<TRMLGBCOSTDTO>> searchDefault(@RequestBody TRMLGBCOSTSearchContext context) {
