@@ -4,6 +4,9 @@
 <mapper	namespace="cn.ibizlab.ehr.core.pim.mapper.PIMWorkflowRefMapper">
 
     <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
+	<select id="selectById"  resultMap="PIMWorkflowRefResultMap" databaseId="mysql">
+        <![CDATA[select * from v_pimworkflowref t1     where  pimworkflowrefid=#{id}]]>
+    </select>
 	<select id="selectById"  resultMap="PIMWorkflowRefResultMap" databaseId="oracle">
         <![CDATA[select * from v_pimworkflowref t1     where  pimworkflowrefid=#{id}]]>
     </select>
@@ -44,6 +47,12 @@
          <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
          <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
      </select>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="mysql">
+       <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t11.`ORMORGID`, t1.`PIMWORKFLOWID`, t11.`PIMWORKFLOWNAME`, t1.`PIMWORKFLOWREFID`, t1.`PIMWORKFLOWREFNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`WFWORKFLOWID`, t21.`WFWORKFLOWNAME` FROM `T_PIMWORKFLOWREF` t1  LEFT JOIN T_PIMWORKFLOW t11 ON t1.PIMWORKFLOWID = t11.PIMWORKFLOWID  LEFT JOIN T_SRFWFWORKFLOW t21 ON t1.WFWORKFLOWID = t21.WFWORKFLOWID  
+			]]>
+    </sql>
 
     <!--数据查询[Default]-->
     <sql id="Default" databaseId="oracle">

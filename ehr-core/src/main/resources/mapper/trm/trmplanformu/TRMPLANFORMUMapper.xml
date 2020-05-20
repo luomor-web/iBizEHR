@@ -4,6 +4,9 @@
 <mapper	namespace="cn.ibizlab.ehr.core.trm.mapper.TRMPLANFORMUMapper">
 
     <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
+	<select id="selectById"  resultMap="TRMPLANFORMUResultMap" databaseId="mysql">
+        <![CDATA[select * from v_trmplanformu t1     where  trmplanformuid=#{id}]]>
+    </select>
 	<select id="selectById"  resultMap="TRMPLANFORMUResultMap" databaseId="oracle">
         <![CDATA[select * from v_trmplanformu t1     where  trmplanformuid=#{id}]]>
     </select>
@@ -54,6 +57,13 @@
          <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
          <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
      </select>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="mysql">
+       <![CDATA[	SELECT t1.`BZSJ`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t1.`JD`, t1.`ND`, t1.`ORMORGID`, t11.`ORGNAME` AS `ORMORGNAME`, t1.`ORMORGSECTORID`, t31.`ORGSECTORNAME` AS `ORMORGSECTORNAME`, t1.`PIMPERSONID`, t21.`PIMPERSONNAME`, t1.`PXZZF`, t31.`SHORTNAME`, t1.`TRMPLANFORMUID`, t1.`TRMPLANFORMUNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t11.`ZZDZS` FROM `T_TRMPLANFORMU` t1  LEFT JOIN T_SRFORG t11 ON t1.ORMORGID = t11.ORGID  LEFT JOIN T_PIMPERSON t21 ON t1.PIMPERSONID = t21.PIMPERSONID  LEFT JOIN T_SRFORGSECTOR t31 ON t1.ORMORGSECTORID = t31.ORGSECTORID  
+				 WHERE 	t1.ENABLE = 1
+			]]>
+    </sql>
 
     <!--数据查询[Default]-->
     <sql id="Default" databaseId="oracle">

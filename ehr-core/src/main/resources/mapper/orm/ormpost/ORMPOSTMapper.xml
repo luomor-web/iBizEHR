@@ -4,6 +4,9 @@
 <mapper	namespace="cn.ibizlab.ehr.core.orm.mapper.ORMPOSTMapper">
 
     <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
+	<select id="selectById"  resultMap="ORMPOSTResultMap" databaseId="mysql">
+        <![CDATA[select * from v_ormpost t1     where  ormpostid=#{id}]]>
+    </select>
 	<select id="selectById"  resultMap="ORMPOSTResultMap" databaseId="oracle">
         <![CDATA[select * from v_ormpost t1     where  ormpostid=#{id}]]>
     </select>
@@ -108,9 +111,23 @@
      </select>
 
     <!--数据查询[CurOrg]-->
+    <sql id="CurOrg" databaseId="mysql">
+       <![CDATA[	SELECT t1.`BXJLNX`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`GWFL`, t1.`GWTYPE`, t1.`ISCONFIDENTIAL`, t1.`ISKEYPOSTION`, t1.`ISTEMP`, t1.`LGNX`, t1.`NX`, t1.`ORMORGID` AS `ORGID`, t1.`ORMORGID`, t11.`ORGNAME` AS `ORMORGNAME`, t1.`ORMPOSTID`, t1.`ORMPOSTNAME`, t1.`POSTNATURE`, t1.`QZLGNX`, t1.`STARTSTOPSIGN`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XH` FROM `T_ORMPOST` t1  LEFT JOIN T_SRFORG t11 ON t1.ORMORGID = t11.ORGID  
+				 WHERE 	( t1.`ORMORGID` =  #{srf.sessioncontext.SRFORGID}  AND  t1.`ISTEMP` = '0'  AND  t1.`STARTSTOPSIGN` = '1' )
+			]]>
+    </sql>
+
+    <!--数据查询[CurOrg]-->
     <sql id="CurOrg" databaseId="oracle">
        <![CDATA[	SELECT t1.BXJLNX, t1.CREATEDATE, t1.CREATEMAN, t1.GWFL, t1.GWTYPE, t1.ISCONFIDENTIAL, t1.ISKEYPOSTION, t1.ISTEMP, t1.LGNX, t1.NX, t1.ORMORGID AS ORGID, t1.ORMORGID, t11.ORGNAME AS ORMORGNAME, t1.ORMPOSTID, t1.ORMPOSTNAME, t1.POSTNATURE, t1.QZLGNX, t1.STARTSTOPSIGN, t1.UPDATEDATE, t1.UPDATEMAN, t1.XH FROM T_ORMPOST t1  LEFT JOIN T_SRFORG t11 ON t1.ORMORGID = t11.ORGID  
 				 WHERE 	( t1.ORMORGID =  #{srf.sessioncontext.SRFORGID}  AND  t1.ISTEMP = '0'  AND  t1.STARTSTOPSIGN = '1' )
+			]]>
+    </sql>
+
+    <!--数据查询[CXGW]-->
+    <sql id="CXGW" databaseId="mysql">
+       <![CDATA[	SELECT t1.`BXJLNX`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`GWFL`, t1.`GWTYPE`, t1.`ISCONFIDENTIAL`, t1.`ISKEYPOSTION`, t1.`ISTEMP`, t1.`LGNX`, t1.`NX`, t1.`ORMORGID` AS `ORGID`, t1.`ORMORGID`, t11.`ORGNAME` AS `ORMORGNAME`, t1.`ORMPOSTID`, t1.`ORMPOSTNAME`, t1.`POSTNATURE`, t1.`QZLGNX`, t1.`STARTSTOPSIGN`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XH` FROM `T_ORMPOST` t1  LEFT JOIN T_SRFORG t11 ON t1.ORMORGID = t11.ORGID  
+				 WHERE 	( ( t1.ORMORGID in (select (case when t2.ORGCODE ='10101' then t2.PORGID else t1.COMPANYFLAG end) as orgid FROM T_SRFORG t1  left join T_SRFORG t2 on t1.COMPANYFLAG = t2.orgid where t1.ORGID = #{srf.datacontext.orginfoid')} ))  AND  t1.`STARTSTOPSIGN` = '1'  AND  t1.`ISTEMP` = '0'  AND  t1.`GWTYPE` LIKE '%180%' )
 			]]>
     </sql>
 
@@ -122,8 +139,21 @@
     </sql>
 
     <!--数据查询[Default]-->
+    <sql id="Default" databaseId="mysql">
+       <![CDATA[	SELECT t1.`BXJLNX`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`GWFL`, t1.`GWTYPE`, t1.`ISCONFIDENTIAL`, t1.`ISKEYPOSTION`, t1.`ISTEMP`, t1.`LGNX`, t1.`NX`, t1.`ORMORGID` AS `ORGID`, t1.`ORMORGID`, t11.`ORGNAME` AS `ORMORGNAME`, t1.`ORMPOSTID`, t1.`ORMPOSTNAME`, t1.`POSTNATURE`, t1.`QZLGNX`, t1.`STARTSTOPSIGN`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XH` FROM `T_ORMPOST` t1  LEFT JOIN T_SRFORG t11 ON t1.ORMORGID = t11.ORGID  
+			]]>
+    </sql>
+
+    <!--数据查询[Default]-->
     <sql id="Default" databaseId="oracle">
        <![CDATA[	SELECT t1.BXJLNX, t1.CREATEDATE, t1.CREATEMAN, t1.GWFL, t1.GWTYPE, t1.ISCONFIDENTIAL, t1.ISKEYPOSTION, t1.ISTEMP, t1.LGNX, t1.NX, t1.ORMORGID AS ORGID, t1.ORMORGID, t11.ORGNAME AS ORMORGNAME, t1.ORMPOSTID, t1.ORMPOSTNAME, t1.POSTNATURE, t1.QZLGNX, t1.STARTSTOPSIGN, t1.UPDATEDATE, t1.UPDATEMAN, t1.XH FROM T_ORMPOST t1  LEFT JOIN T_SRFORG t11 ON t1.ORMORGID = t11.ORGID  
+			]]>
+    </sql>
+
+    <!--数据查询[DQGW]-->
+    <sql id="DQGW" databaseId="mysql">
+       <![CDATA[	SELECT t1.`BXJLNX`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`GWFL`, t1.`GWTYPE`, t1.`ISCONFIDENTIAL`, t1.`ISKEYPOSTION`, t1.`ISTEMP`, t1.`LGNX`, t1.`NX`, t1.`ORMORGID` AS `ORGID`, t1.`ORMORGID`, t11.`ORGNAME` AS `ORMORGNAME`, t1.`ORMPOSTID`, t1.`ORMPOSTNAME`, t1.`POSTNATURE`, t1.`QZLGNX`, t1.`STARTSTOPSIGN`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XH` FROM `T_ORMPOST` t1  LEFT JOIN T_SRFORG t11 ON t1.ORMORGID = t11.ORGID  
+				 WHERE 	( t1.`ORMORGID` =  #{srf.datacontext.ormorgid}  AND  t1.`ISTEMP` = '0'  AND  t1.`STARTSTOPSIGN` = '1' )
 			]]>
     </sql>
 
@@ -135,9 +165,23 @@
     </sql>
 
     <!--数据查询[DQORGGW]-->
+    <sql id="DQORGGW" databaseId="mysql">
+       <![CDATA[	SELECT t1.`BXJLNX`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`GWFL`, t1.`GWTYPE`, t1.`ISCONFIDENTIAL`, t1.`ISKEYPOSTION`, t1.`ISTEMP`, t1.`LGNX`, t1.`NX`, t1.`ORMORGID` AS `ORGID`, t1.`ORMORGID`, t11.`ORGNAME` AS `ORMORGNAME`, t1.`ORMPOSTID`, t1.`ORMPOSTNAME`, t1.`POSTNATURE`, t1.`QZLGNX`, t1.`STARTSTOPSIGN`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XH` FROM `T_ORMPOST` t1  LEFT JOIN T_SRFORG t11 ON t1.ORMORGID = t11.ORGID  
+				 WHERE 	( ( t1.ORMORGID in (select (case when t2.ORGCODE ='10101' then t2.PORGID else t1.COMPANYFLAG end) as orgid FROM T_SRFORG t1  left join T_SRFORG t2 on t1.COMPANYFLAG = t2.orgid where t1.ORGID = #{srf.datacontext.orgid} ))  AND  t1.`ISTEMP` = '0'  AND  t1.`STARTSTOPSIGN` = '1' )
+			]]>
+    </sql>
+
+    <!--数据查询[DQORGGW]-->
     <sql id="DQORGGW" databaseId="oracle">
        <![CDATA[	SELECT t1.BXJLNX, t1.CREATEDATE, t1.CREATEMAN, t1.GWFL, t1.GWTYPE, t1.ISCONFIDENTIAL, t1.ISKEYPOSTION, t1.ISTEMP, t1.LGNX, t1.NX, t1.ORMORGID AS ORGID, t1.ORMORGID, t11.ORGNAME AS ORMORGNAME, t1.ORMPOSTID, t1.ORMPOSTNAME, t1.POSTNATURE, t1.QZLGNX, t1.STARTSTOPSIGN, t1.UPDATEDATE, t1.UPDATEMAN, t1.XH FROM T_ORMPOST t1  LEFT JOIN T_SRFORG t11 ON t1.ORMORGID = t11.ORGID  
 				 WHERE 	( ( t1.ORMORGID in (select (case when t2.ORGCODE ='10101' then t2.PORGID else t1.COMPANYFLAG end) as orgid FROM T_SRFORG t1  left join T_SRFORG t2 on t1.COMPANYFLAG = t2.orgid where t1.ORGID = #{srf.datacontext.orgid} ))  AND  t1.ISTEMP = '0'  AND  t1.STARTSTOPSIGN = '1' )
+			]]>
+    </sql>
+
+    <!--数据查询[EJZZGW]-->
+    <sql id="EJZZGW" databaseId="mysql">
+       <![CDATA[	SELECT t1.`BXJLNX`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`GWFL`, t1.`GWTYPE`, t1.`ISCONFIDENTIAL`, t1.`ISKEYPOSTION`, t1.`ISTEMP`, t1.`LGNX`, t1.`NX`, t1.`ORMORGID` AS `ORGID`, t1.`ORMORGID`, t11.`ORGNAME` AS `ORMORGNAME`, t1.`ORMPOSTID`, t1.`ORMPOSTNAME`, t1.`POSTNATURE`, t1.`QZLGNX`, t1.`STARTSTOPSIGN`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XH` FROM `T_ORMPOST` t1  LEFT JOIN T_SRFORG t11 ON t1.ORMORGID = t11.ORGID  
+				 WHERE 	( ( t1.ORMORGID in (select (case when T2.ORGCODE ='10101' then T2.PORGID else t1.COMPANYFLAG end) as orgid FROM T_SRFORG t1  left join T_SRFORG t2 on t1.CompanyFlag=t2.ORGID where t1.ORGID = #{srf.datacontext.ormorgid} ))  AND  t1.`ISTEMP` = '0'  AND  t1.`STARTSTOPSIGN` = '1' )
 			]]>
     </sql>
 
@@ -149,9 +193,23 @@
     </sql>
 
     <!--数据查询[GWXH]-->
+    <sql id="GWXH" databaseId="mysql">
+       <![CDATA[	SELECT t1.`BXJLNX`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`GWFL`, t1.`GWTYPE`, t1.`ISCONFIDENTIAL`, t1.`ISKEYPOSTION`, t1.`ISTEMP`, t1.`LGNX`, t1.`NX`, t1.`ORMORGID` AS `ORGID`, t1.`ORMORGID`, t11.`ORGNAME` AS `ORMORGNAME`, t1.`ORMPOSTID`, t1.`ORMPOSTNAME`, t1.`POSTNATURE`, t1.`QZLGNX`, t1.`STARTSTOPSIGN`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XH` FROM `T_ORMPOST` t1  LEFT JOIN T_SRFORG t11 ON t1.ORMORGID = t11.ORGID  
+				 WHERE 	( t1.`ISTEMP` = '0'  AND  ( t1.`ORMORGID` =  #{srf.sessioncontext.SRFORGID}  OR  'ibzadmin' = (select t.loginaccountname from t_srfloginaccount t where t.loginaccountid = #{srf.sessioncontext.SRFPERSONID')})  OR  (t1.ormorgid in (select t.orgid from t_srforg t where instr(t.levelcode, ( select b.levelcode from t_srforg b where b.orgid = #{srf.sessioncontext.SRFORGID')} ) ) =1 ) ) ) )
+			]]>
+    </sql>
+
+    <!--数据查询[GWXH]-->
     <sql id="GWXH" databaseId="oracle">
        <![CDATA[	SELECT t1.BXJLNX, t1.CREATEDATE, t1.CREATEMAN, t1.GWFL, t1.GWTYPE, t1.ISCONFIDENTIAL, t1.ISKEYPOSTION, t1.ISTEMP, t1.LGNX, t1.NX, t1.ORMORGID AS ORGID, t1.ORMORGID, t11.ORGNAME AS ORMORGNAME, t1.ORMPOSTID, t1.ORMPOSTNAME, t1.POSTNATURE, t1.QZLGNX, t1.STARTSTOPSIGN, t1.UPDATEDATE, t1.UPDATEMAN, t1.XH FROM T_ORMPOST t1  LEFT JOIN T_SRFORG t11 ON t1.ORMORGID = t11.ORGID  
 				 WHERE 	( t1.ISTEMP = '0'  AND  ( t1.ORMORGID =  #{srf.sessioncontext.SRFORGID}  OR  'ibzadmin' = (select t.loginaccountname from t_srfloginaccount t where t.loginaccountid = #{srf.sessioncontext.SRFPERSONID')})  OR  (t1.ormorgid in (select t.orgid from t_srforg t where instr(t.levelcode, ( select b.levelcode from t_srforg b where b.orgid = #{srf.sessioncontext.SRFORGID')} ) ) =1 ) ) ) )
+			]]>
+    </sql>
+
+    <!--数据查询[JZBGWCX]-->
+    <sql id="JZBGWCX" databaseId="mysql">
+       <![CDATA[	SELECT t1.`BXJLNX`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`GWFL`, t1.`GWTYPE`, t1.`ISCONFIDENTIAL`, t1.`ISKEYPOSTION`, t1.`ISTEMP`, t1.`LGNX`, t1.`NX`, t1.`ORMORGID` AS `ORGID`, t1.`ORMORGID`, t11.`ORGNAME` AS `ORMORGNAME`, t1.`ORMPOSTID`, t1.`ORMPOSTNAME`, t1.`POSTNATURE`, t1.`QZLGNX`, t1.`STARTSTOPSIGN`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XH` FROM `T_ORMPOST` t1  LEFT JOIN T_SRFORG t11 ON t1.ORMORGID = t11.ORGID  
+				 WHERE 	( t1.ormorgid in (select orgid from v_ormorg t2 where t2.porgid is null)  AND  t1.`ISTEMP` = '0'  AND  t1.`STARTSTOPSIGN` = '1' )
 			]]>
     </sql>
 

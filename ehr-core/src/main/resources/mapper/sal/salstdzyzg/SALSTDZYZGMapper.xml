@@ -4,6 +4,9 @@
 <mapper	namespace="cn.ibizlab.ehr.core.sal.mapper.SALSTDZYZGMapper">
 
     <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
+	<select id="selectById"  resultMap="SALSTDZYZGResultMap" databaseId="mysql">
+        <![CDATA[select * from v_salstdzyzg t1     where  salstdzyzgid=#{id}]]>
+    </select>
 	<select id="selectById"  resultMap="SALSTDZYZGResultMap" databaseId="oracle">
         <![CDATA[select * from v_salstdzyzg t1     where  salstdzyzgid=#{id}]]>
     </select>
@@ -34,6 +37,13 @@
          <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
          <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
      </select>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="mysql">
+       <![CDATA[	SELECT t1.`BZ`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t1.`JBFL`, t1.`ORMORGID`, t11.`ORGNAME` AS `ORMORGNAME`, t1.`SALSTDZYZGID`, t1.`SALSTDZYZGNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`ZYFL` FROM `T_SALSTDZYZG` t1  LEFT JOIN T_SRFORG t11 ON t1.ORMORGID = t11.ORGID  
+				 WHERE 	t1.ENABLE = 1
+			]]>
+    </sql>
 
     <!--数据查询[Default]-->
     <sql id="Default" databaseId="oracle">

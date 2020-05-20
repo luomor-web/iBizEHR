@@ -4,6 +4,9 @@
 <mapper	namespace="cn.ibizlab.ehr.core.att.mapper.AttendRecordDetailMapper">
 
     <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
+	<select id="selectById"  resultMap="AttendRecordDetailResultMap" databaseId="mysql">
+        <![CDATA[select * from v_attendrecorddetail t1     where  attendrecorddetailid=#{id}]]>
+    </select>
 	<select id="selectById"  resultMap="AttendRecordDetailResultMap" databaseId="oracle">
         <![CDATA[select * from v_attendrecorddetail t1     where  attendrecorddetailid=#{id}]]>
     </select>
@@ -34,6 +37,12 @@
          <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
          <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
      </select>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="mysql">
+       <![CDATA[	SELECT t1.`ATTENDANCERECORDID`, t11.`ATTENDANCERECORDNAME`, t1.`ATTENDRECORDDETAILID`, t1.`ATTENDRECORDDETAILNAME`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`LAT`, t1.`LNG`, t1.`SIGNLOCATION`, t1.`SIGNTIME`, t1.`UPDATEDATE`, t1.`UPDATEMAN` FROM `T_ATTENDRECORDDETAIL` t1  LEFT JOIN T_ATTENDANCERECORD t11 ON t1.ATTENDANCERECORDID = t11.ATTENDANCERECORDID  
+			]]>
+    </sql>
 
     <!--数据查询[Default]-->
     <sql id="Default" databaseId="oracle">

@@ -4,6 +4,9 @@
 <mapper	namespace="cn.ibizlab.ehr.core.pcm.mapper.PCMJXSYGZZSQMXMapper">
 
     <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
+	<select id="selectById"  resultMap="PCMJXSYGZZSQMXResultMap" databaseId="mysql">
+        <![CDATA[select * from v_pcmjxsygzzsqmx t1     where  pcmjxsygzzsqmxid=#{id}]]>
+    </select>
 	<select id="selectById"  resultMap="PCMJXSYGZZSQMXResultMap" databaseId="oracle">
         <![CDATA[select * from v_pcmjxsygzzsqmx t1     where  pcmjxsygzzsqmxid=#{id}]]>
     </select>
@@ -55,6 +58,12 @@
      </select>
 
     <!--数据查询[Default]-->
+    <sql id="Default" databaseId="mysql">
+       <![CDATA[	SELECT t1.`BM`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`GW`, t1.`PCMJXSYGZZSQID`, t1.`PCMJXSYGZZSQMXID`, t1.`PCMJXSYGZZSQMXNAME`, t21.`PCMJXSYGZZSQNAME`, t1.`PIMPERSONID`, t11.`PIMPERSONNAME`, t1.`STATUS`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`ZJ`, t1.`ZW`, t1.`ZZ` FROM `T_PCMJXSYGZZSQMX` t1  LEFT JOIN T_PIMPERSON t11 ON t1.PIMPERSONID = t11.PIMPERSONID  LEFT JOIN T_PCMJXSYGZZSQ t21 ON t1.PCMJXSYGZZSQID = t21.PCMJXSYGZZSQID  
+			]]>
+    </sql>
+
+    <!--数据查询[Default]-->
     <sql id="Default" databaseId="oracle">
        <![CDATA[	SELECT t1.BM, t1.CREATEDATE, t1.CREATEMAN, t1.GW, t1.PCMJXSYGZZSQID, t1.PCMJXSYGZZSQMXID, t1.PCMJXSYGZZSQMXNAME, t21.PCMJXSYGZZSQNAME, t1.PIMPERSONID, t11.PIMPERSONNAME, t1.STATUS, t1.UPDATEDATE, t1.UPDATEMAN, t1.ZJ, t1.ZW, t1.ZZ FROM T_PCMJXSYGZZSQMX t1  LEFT JOIN T_PIMPERSON t11 ON t1.PIMPERSONID = t11.PIMPERSONID  LEFT JOIN T_PCMJXSYGZZSQ t21 ON t1.PCMJXSYGZZSQID = t21.PCMJXSYGZZSQID  
 			]]>
@@ -62,7 +71,7 @@
 
     <!--数据查询[DSHSQ]-->
     <sql id="DSHSQ" databaseId="mysql">
-       <![CDATA[	SELECT t1.`BM`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`GW`, t1.`PCMJXSYGZZSQID`, t1.`PCMJXSYGZZSQMXID`, t1.`PCMJXSYGZZSQMXNAME`, t11.`PCMJXSYGZZSQNAME`, t1.`PIMPERSONID`, t21.`PIMPERSONNAME`, t1.`STATUS`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`ZJ`, t1.`ZW`, t1.`ZZ` FROM `T_PCMJXSYGZZSQMX` t1  LEFT JOIN T_PCMJXSYGZZSQ t11 ON t1.PCMJXSYGZZSQID = t11.PCMJXSYGZZSQID  LEFT JOIN T_PIMPERSON t21 ON t1.PIMPERSONID = t21.PIMPERSONID  
+       <![CDATA[	SELECT t1.`BM`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`GW`, t1.`PCMJXSYGZZSQID`, t1.`PCMJXSYGZZSQMXID`, t1.`PCMJXSYGZZSQMXNAME`, t21.`PCMJXSYGZZSQNAME`, t1.`PIMPERSONID`, t11.`PIMPERSONNAME`, t1.`STATUS`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`ZJ`, t1.`ZW`, t1.`ZZ` FROM `T_PCMJXSYGZZSQMX` t1  LEFT JOIN T_PIMPERSON t11 ON t1.PIMPERSONID = t11.PIMPERSONID  LEFT JOIN T_PCMJXSYGZZSQ t21 ON t1.PCMJXSYGZZSQID = t21.PCMJXSYGZZSQID  
 				 WHERE 	( t1.`STATUS` = '1' )
 			]]>
     </sql>

@@ -30,8 +30,7 @@
 
     <!--数据查询[Default]-->
     <sql id="Default" databaseId="mysql">
-       <![CDATA[	SELECT t1.`BZ`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`CZR`, t1.`CZRQ`, t1.`ISTEMP`, t1.`PCMXYGZZSQID`, t1.`PCMXYGZZSQNAME`, t1.`SXRQ`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`ZZLX` FROM `T_PCMXYGZZSQ` t1  
-				 WHERE 	( t1.`ISTEMP` = 0 )
+       <![CDATA[	SELECT t1.`BZ`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`CZR`, t1.`CZRQ`, t1.`ISTEMP`, t1.`ORGID`, t1.`PCMXYGZZSQID`, t1.`PCMXYGZZSQNAME`, t1.`SXRQ`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`ZZLX` FROM `T_PCMXYGZZSQ` t1  
 			]]>
     </sql>
 

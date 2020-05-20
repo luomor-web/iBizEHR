@@ -4,6 +4,9 @@
 <mapper	namespace="cn.ibizlab.ehr.core.vac.mapper.VACUSENXJMXMapper">
 
     <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
+	<select id="selectById"  resultMap="VACUSENXJMXResultMap" databaseId="mysql">
+        <![CDATA[select * from v_vacusenxjmx t1     where  vacusenxjmxid=#{id}]]>
+    </select>
 	<select id="selectById"  resultMap="VACUSENXJMXResultMap" databaseId="oracle">
         <![CDATA[select * from v_vacusenxjmx t1     where  vacusenxjmxid=#{id}]]>
     </select>
@@ -34,6 +37,12 @@
          <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
          <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
      </select>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="mysql">
+       <![CDATA[	SELECT t1.`BCNXJTS`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ND`, t11.`PIMPERSONID`, t11.`PIMPERSONNAME`, t1.`QJZL`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`VACLEAVEDETAILID`, t1.`VACSYNJCXID`, t1.`VACUSENXJMXID`, t1.`VACUSENXJMXNAME` FROM `T_VACUSENXJMX` t1  LEFT JOIN T_VACLEAVEDETAIL t11 ON t1.VACLEAVEDETAILID = t11.VACLEAVEDETAILID  
+			]]>
+    </sql>
 
     <!--数据查询[Default]-->
     <sql id="Default" databaseId="oracle">

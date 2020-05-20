@@ -4,6 +4,9 @@
 <mapper	namespace="cn.ibizlab.ehr.core.orm.mapper.ORMXMRLCBMapper">
 
     <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
+	<select id="selectById"  resultMap="ORMXMRLCBResultMap" databaseId="mysql">
+        <![CDATA[select * from v_ormxmrlcb t1     where  ormxmrlcbid=#{id}]]>
+    </select>
 	<select id="selectById"  resultMap="ORMXMRLCBResultMap" databaseId="oracle">
         <![CDATA[select * from v_ormxmrlcb t1     where  ormxmrlcbid=#{id}]]>
     </select>
@@ -37,8 +40,20 @@
      </select>
 
     <!--数据查询[CBCX]-->
+    <sql id="CBCX" databaseId="mysql">
+       <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ORGID`, t1.`ORMXMRLCBID`, t1.`ORMXMRLCBNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XCED`, t1.`XCRY`, ( case when  t1.`XMSJRY`>t1.`XMJHRY`  then  '20'  else  '30'  end ) AS `XCRY_COLOR`, t1.`XM`, t1.`XMB`, t1.`XMJHRY`, t1.`XMJHZCCB`, t1.`XMSJRY`, ( case when  t1.`XMSJRY`>t1.`XMJHRY`  then  '20'  else  '30'  end ) AS `XMSJRY_COLOR`, t1.`XMSJZCCB`, t1.`ZZMC` FROM `T_ORMXMRLCB` t1  
+			]]>
+    </sql>
+
+    <!--数据查询[CBCX]-->
     <sql id="CBCX" databaseId="oracle">
        <![CDATA[	SELECT t1.CREATEDATE, t1.CREATEMAN, t1.ORGID, t1.ORMXMRLCBID, t1.ORMXMRLCBNAME, t1.UPDATEDATE, t1.UPDATEMAN, t1.XCED, t1.XCRY, ( case when  t1.XMSJRY>t1.XMJHRY  then  '20'  else  '30'  end ) AS XCRY_COLOR, t1.XM, t1.XMB, t1.XMJHRY, t1.XMJHZCCB, t1.XMSJRY, ( case when  t1.XMSJRY>t1.XMJHRY  then  '20'  else  '30'  end ) AS XMSJRY_COLOR, t1.XMSJZCCB, t1.ZZMC FROM T_ORMXMRLCB t1  
+			]]>
+    </sql>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="mysql">
+       <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ORGID`, t1.`ORMXMRLCBID`, t1.`ORMXMRLCBNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XCED`, t1.`XCRY`, ( case when  t1.`XMSJRY`>t1.`XMJHRY`  then  '20'  else  '30'  end ) AS `XCRY_COLOR`, t1.`XM`, t1.`XMB`, t1.`XMJHRY`, t1.`XMJHZCCB`, t1.`XMSJRY`, ( case when  t1.`XMSJRY`>t1.`XMJHRY`  then  '20'  else  '30'  end ) AS `XMSJRY_COLOR`, t1.`XMSJZCCB`, t1.`ZZMC` FROM `T_ORMXMRLCB` t1  
 			]]>
     </sql>
 

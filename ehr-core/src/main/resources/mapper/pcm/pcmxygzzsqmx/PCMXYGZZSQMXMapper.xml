@@ -4,6 +4,9 @@
 <mapper	namespace="cn.ibizlab.ehr.core.pcm.mapper.PCMXYGZZSQMXMapper">
 
     <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
+	<select id="selectById"  resultMap="PCMXYGZZSQMXResultMap" databaseId="mysql">
+        <![CDATA[select * from v_pcmxygzzsqmx t1     where  pcmxygzzsqmxid=#{id}]]>
+    </select>
 	<select id="selectById"  resultMap="PCMXYGZZSQMXResultMap" databaseId="oracle">
         <![CDATA[select * from v_pcmxygzzsqmx t1     where  pcmxygzzsqmxid=#{id}]]>
     </select>
@@ -55,8 +58,21 @@
      </select>
 
     <!--数据查询[Default]-->
+    <sql id="Default" databaseId="mysql">
+       <![CDATA[	SELECT t1.`BM`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t1.`FINISHED`, t1.`GW`, t1.`PCMXYGZZSQID`, t1.`PCMXYGZZSQMXID`, t1.`PCMXYGZZSQMXNAME`, t21.`PCMXYGZZSQNAME`, t1.`PIMPERSONID`, t11.`PIMPERSONNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`ZJ`, t1.`ZW`, t1.`ZZ` FROM `T_PCMXYGZZSQMX` t1  LEFT JOIN T_PIMPERSON t11 ON t1.PIMPERSONID = t11.PIMPERSONID  LEFT JOIN T_PCMXYGZZSQ t21 ON t1.PCMXYGZZSQID = t21.PCMXYGZZSQID  
+			]]>
+    </sql>
+
+    <!--数据查询[Default]-->
     <sql id="Default" databaseId="oracle">
        <![CDATA[	SELECT t1.BM, t1.CREATEDATE, t1.CREATEMAN, t1.ENABLE, t1.FINISHED, t1.GW, t1.PCMXYGZZSQID, t1.PCMXYGZZSQMXID, t1.PCMXYGZZSQMXNAME, t21.PCMXYGZZSQNAME, t1.PIMPERSONID, t11.PIMPERSONNAME, t1.UPDATEDATE, t1.UPDATEMAN, t1.ZJ, t1.ZW, t1.ZZ FROM T_PCMXYGZZSQMX t1  LEFT JOIN T_PIMPERSON t11 ON t1.PIMPERSONID = t11.PIMPERSONID  LEFT JOIN T_PCMXYGZZSQ t21 ON t1.PCMXYGZZSQID = t21.PCMXYGZZSQID  
+			]]>
+    </sql>
+
+    <!--数据查询[WSHSQ]-->
+    <sql id="WSHSQ" databaseId="mysql">
+       <![CDATA[	SELECT t1.`BM`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t1.`FINISHED`, t1.`GW`, t1.`PCMXYGZZSQID`, t1.`PCMXYGZZSQMXID`, t1.`PCMXYGZZSQMXNAME`, t21.`PCMXYGZZSQNAME`, t1.`PIMPERSONID`, t11.`PIMPERSONNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`ZJ`, t1.`ZW`, t1.`ZZ` FROM `T_PCMXYGZZSQMX` t1  LEFT JOIN T_PIMPERSON t11 ON t1.PIMPERSONID = t11.PIMPERSONID  LEFT JOIN T_PCMXYGZZSQ t21 ON t1.PCMXYGZZSQID = t21.PCMXYGZZSQID  
+				 WHERE 	( t1.`FINISHED` = 0 )
 			]]>
     </sql>
 

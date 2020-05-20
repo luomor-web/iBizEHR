@@ -4,6 +4,9 @@
 <mapper	namespace="cn.ibizlab.ehr.core.pcm.mapper.PCMPROFILEFJMapper">
 
     <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
+	<select id="selectById"  resultMap="PCMPROFILEFJResultMap" databaseId="mysql">
+        <![CDATA[select * from v_pcmprofilefj t1     where  pcmprofilefjid=#{id}]]>
+    </select>
 	<select id="selectById"  resultMap="PCMPROFILEFJResultMap" databaseId="oracle">
         <![CDATA[select * from v_pcmprofilefj t1     where  pcmprofilefjid=#{id}]]>
     </select>
@@ -35,8 +38,20 @@
      </select>
 
     <!--数据查询[Default]-->
+    <sql id="Default" databaseId="mysql">
+       <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`FJ`, t1.`FJNAME`, t1.`PCMPROFILEFJID`, t1.`PCMPROFILEFJNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN` FROM `T_PCMPROFILEFJ` t1  
+			]]>
+    </sql>
+
+    <!--数据查询[Default]-->
     <sql id="Default" databaseId="oracle">
        <![CDATA[	SELECT t1.CREATEDATE, t1.CREATEMAN, t1.FJ, t1.FJNAME, t1.PCMPROFILEFJID, t1.PCMPROFILEFJNAME, t1.UPDATEDATE, t1.UPDATEMAN FROM T_PCMPROFILEFJ t1  
+			]]>
+    </sql>
+
+    <!--数据查询[PROFILEFJ]-->
+    <sql id="PROFILEFJ" databaseId="mysql">
+       <![CDATA[	
 			]]>
     </sql>
 

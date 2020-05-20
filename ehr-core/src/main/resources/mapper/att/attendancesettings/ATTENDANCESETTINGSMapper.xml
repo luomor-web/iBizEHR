@@ -4,6 +4,9 @@
 <mapper	namespace="cn.ibizlab.ehr.core.att.mapper.ATTENDANCESETTINGSMapper">
 
     <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
+	<select id="selectById"  resultMap="ATTENDANCESETTINGSResultMap" databaseId="mysql">
+        <![CDATA[select * from v_attendancesettings t1     where  attendancesettingsid=#{id}]]>
+    </select>
 	<select id="selectById"  resultMap="ATTENDANCESETTINGSResultMap" databaseId="oracle">
         <![CDATA[select * from v_attendancesettings t1     where  attendancesettingsid=#{id}]]>
     </select>
@@ -64,8 +67,20 @@
      </select>
 
     <!--数据查询[Default]-->
+    <sql id="Default" databaseId="mysql">
+       <![CDATA[	SELECT t1.`ATTENDANCESETTINGSID`, t1.`ATTENDANCESETTINGSNAME`, t1.`ATTENDENCESETUPID`, t11.`ATTENDENCESETUPNAME`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`DKFS`, t31.`ORMORGID`, t11.`ORMORGID` AS `ORMORGID2`, t21.`ZZDZS` AS `ORMORGNAME2`, t31.`ORMORGSECTORID`, t41.`SHORTNAME` AS `ORMORGSECTORNAME`, t1.`PIMPERSONID`, t1.`PIMPERSONNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`YGBH`, t31.`YGZT`, t51.`ZZDZS` FROM `T_ATTENDANCESETTINGS` t1  LEFT JOIN T_ATTENDENCESETUP t11 ON t1.ATTENDENCESETUPID = t11.ATTENDENCESETUPID  LEFT JOIN T_SRFORG t21 ON t11.ORMORGID = t21.ORGID  LEFT JOIN T_PIMPERSON t31 ON t1.PIMPERSONID = t31.PIMPERSONID  LEFT JOIN T_SRFORGSECTOR t41 ON t31.ORMORGSECTORID = t41.ORGSECTORID  LEFT JOIN T_SRFORG t51 ON t31.ORMORGID = t51.ORGID  
+			]]>
+    </sql>
+
+    <!--数据查询[Default]-->
     <sql id="Default" databaseId="oracle">
        <![CDATA[	SELECT t1.ATTENDANCESETTINGSID, t1.ATTENDANCESETTINGSNAME, t1.ATTENDENCESETUPID, t11.ATTENDENCESETUPNAME, t1.CREATEDATE, t1.CREATEMAN, t1.DKFS, t31.ORMORGID, t11.ORMORGID AS ORMORGID2, t21.ZZDZS AS ORMORGNAME2, t31.ORMORGSECTORID, t41.SHORTNAME AS ORMORGSECTORNAME, t1.PIMPERSONID, t1.PIMPERSONNAME, t1.UPDATEDATE, t1.UPDATEMAN, t1.YGBH, t31.YGZT, t51.ZZDZS FROM T_ATTENDANCESETTINGS t1  LEFT JOIN T_ATTENDENCESETUP t11 ON t1.ATTENDENCESETUPID = t11.ATTENDENCESETUPID  LEFT JOIN T_SRFORG t21 ON t11.ORMORGID = t21.ORGID  LEFT JOIN T_PIMPERSON t31 ON t1.PIMPERSONID = t31.PIMPERSONID  LEFT JOIN T_SRFORGSECTOR t41 ON t31.ORMORGSECTORID = t41.ORGSECTORID  LEFT JOIN T_SRFORG t51 ON t31.ORMORGID = t51.ORGID  
+			]]>
+    </sql>
+
+    <!--数据查询[FYGZZKQ]-->
+    <sql id="FYGZZKQ" databaseId="mysql">
+       <![CDATA[	
 			]]>
     </sql>
 
@@ -73,6 +88,12 @@
     <sql id="FYGZZKQ" databaseId="oracle">
        <![CDATA[	select * from V_ATTENDANCESETTINGS_FYGZZKQ t1
 				 WHERE 	ormorgid2 in (      SELECT t.orgid FROM t_srforg t      WHERE instr(t.levelcode, ( select a.levelcode from t_srforg a where a.orgid = #{srf.sessioncontext.SRFORGID')} ))=1 ) 
+			]]>
+    </sql>
+
+    <!--数据查询[YGSZKQ]-->
+    <sql id="YGSZKQ" databaseId="mysql">
+       <![CDATA[	
 			]]>
     </sql>
 

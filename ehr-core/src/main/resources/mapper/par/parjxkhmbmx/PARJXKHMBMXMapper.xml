@@ -4,6 +4,9 @@
 <mapper	namespace="cn.ibizlab.ehr.core.par.mapper.PARJXKHMBMXMapper">
 
     <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
+	<select id="selectById"  resultMap="PARJXKHMBMXResultMap" databaseId="mysql">
+        <![CDATA[select * from v_parjxkhmbmx t1     where  parjxkhmbmxid=#{id}]]>
+    </select>
 	<select id="selectById"  resultMap="PARJXKHMBMXResultMap" databaseId="oracle">
         <![CDATA[select * from v_parjxkhmbmx t1     where  parjxkhmbmxid=#{id}]]>
     </select>
@@ -34,6 +37,12 @@
          <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
          <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
      </select>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="mysql">
+       <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`FZ`, t1.`PARJXKHMBID`, t1.`PARJXKHMBMXID`, t1.`PARJXKHMBMXNAME`, t11.`PARJXKHMBNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XH`, t1.`ZB`, t1.`ZDFZ`, t1.`ZXFZ` FROM `T_PARJXKHMBMX` t1  LEFT JOIN T_PARJXKHMB t11 ON t1.PARJXKHMBID = t11.PARJXKHMBID  
+			]]>
+    </sql>
 
     <!--数据查询[Default]-->
     <sql id="Default" databaseId="oracle">

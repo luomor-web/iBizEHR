@@ -4,6 +4,9 @@
 <mapper	namespace="cn.ibizlab.ehr.core.pcm.mapper.PCMDDSQDMapper">
 
     <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
+	<select id="selectById"  resultMap="PCMDDSQDResultMap" databaseId="mysql">
+        <![CDATA[select * from v_pcmddsqd t1     where  pcmddsqdid=#{id}]]>
+    </select>
 	<select id="selectById"  resultMap="PCMDDSQDResultMap" databaseId="oracle">
         <![CDATA[select * from v_pcmddsqd t1     where  pcmddsqdid=#{id}]]>
     </select>
@@ -34,6 +37,12 @@
          <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
          <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
      </select>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="mysql">
+       <![CDATA[	SELECT t1.`BZSM`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`LX`, t1.`ORGID`, t1.`PCMDDSQDID`, t1.`PCMDDSQDNAME`, t1.`PIMPERSONID`, t11.`PIMPERSONNAME`, t1.`SQSJ`, t1.`UPDATEDATE`, t1.`UPDATEMAN` FROM `T_PCMDDSQD` t1  LEFT JOIN T_PIMPERSON t11 ON t1.PIMPERSONID = t11.PIMPERSONID  
+			]]>
+    </sql>
 
     <!--数据查询[Default]-->
     <sql id="Default" databaseId="oracle">

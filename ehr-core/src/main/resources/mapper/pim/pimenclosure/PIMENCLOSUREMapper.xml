@@ -4,6 +4,9 @@
 <mapper	namespace="cn.ibizlab.ehr.core.pim.mapper.PIMENCLOSUREMapper">
 
     <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
+	<select id="selectById"  resultMap="PIMENCLOSUREResultMap" databaseId="mysql">
+        <![CDATA[select * from v_pimenclosure t1     where  pimenclosureid=#{id}]]>
+    </select>
 	<select id="selectById"  resultMap="PIMENCLOSUREResultMap" databaseId="oracle">
         <![CDATA[select * from v_pimenclosure t1     where  pimenclosureid=#{id}]]>
     </select>
@@ -45,9 +48,22 @@
      </select>
 
     <!--数据查询[Default]-->
+    <sql id="Default" databaseId="mysql">
+       <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t1.`FJ`, t1.`FJFL`, t1.`FJKZ`, t1.`FJLJ`, t11.`ORMORGID` AS `ORGID`, t11.`ORMORGSECTORID` AS `ORGSECTORID`, t11.`ORMORGID`, t11.`ORMORGSECTORID`, t1.`PIMENCLOSUREID`, t1.`PIMENCLOSURENAME`, t1.`PIMPERSONID`, t11.`PIMPERSONNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`USERSTATE` FROM `T_PIMENCLOSURE` t1  LEFT JOIN T_PIMPERSON t11 ON t1.PIMPERSONID = t11.PIMPERSONID  
+				 WHERE 	t1.ENABLE = 1
+			]]>
+    </sql>
+
+    <!--数据查询[Default]-->
     <sql id="Default" databaseId="oracle">
        <![CDATA[	SELECT t1.CREATEDATE, t1.CREATEMAN, t1.ENABLE, t1.FJ, t1.FJFL, t1.FJKZ, t1.FJLJ, t11.ORMORGID AS ORGID, t11.ORMORGSECTORID AS ORGSECTORID, t11.ORMORGID, t11.ORMORGSECTORID, t1.PIMENCLOSUREID, t1.PIMENCLOSURENAME, t1.PIMPERSONID, t11.PIMPERSONNAME, t1.UPDATEDATE, t1.UPDATEMAN, t1.USERSTATE FROM T_PIMENCLOSURE t1  LEFT JOIN T_PIMPERSON t11 ON t1.PIMPERSONID = t11.PIMPERSONID  
 				 WHERE 	t1.ENABLE = 1
+			]]>
+    </sql>
+
+    <!--数据查询[PCMPROFILE_FJ]-->
+    <sql id="PCMPROFILE_FJ" databaseId="mysql">
+       <![CDATA[	
 			]]>
     </sql>
 

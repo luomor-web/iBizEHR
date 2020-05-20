@@ -4,6 +4,9 @@
 <mapper	namespace="cn.ibizlab.ehr.core.pcm.mapper.PCMRZGLMapper">
 
     <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
+	<select id="selectById"  resultMap="PCMRZGLResultMap" databaseId="mysql">
+        <![CDATA[select * from v_pcmrzgl t1     where  pcmrzglid=#{id}]]>
+    </select>
 	<select id="selectById"  resultMap="PCMRZGLResultMap" databaseId="oracle">
         <![CDATA[select * from v_pcmrzgl t1     where  pcmrzglid=#{id}]]>
     </select>
@@ -46,14 +49,32 @@
      </select>
 
     <!--数据查询[Default]-->
+    <sql id="Default" databaseId="mysql">
+       <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`DQZJXZW`, t1.`GW`, t1.`NL`, t1.`NLDQ`, t1.`ORGID`, t1.`ORGSECTORID`, t1.`ORMORGNAME`, t1.`ORMORGSECTORNAME`, t1.`PCMRZGLID`, t1.`PCMRZGLNAME`, t1.`RZNX`, t1.`RZNX_COLOR`, t1.`SEX`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`YGBH`, t1.`YGID`, t1.`YGNAME`, t1.`ZJ`, t1.`ZJNX`, t1.`ZJNX_COLOR`, t1.`ZJRQ`, t1.`ZWRQ` FROM `T_PCMRZGL` t1  
+			]]>
+    </sql>
+
+    <!--数据查询[Default]-->
     <sql id="Default" databaseId="oracle">
        <![CDATA[	SELECT t1.CREATEDATE, t1.CREATEMAN, t1.DQZJXZW, t1.GW, t1.NL, t1.NLDQ, t1.ORGID, t1.ORGSECTORID, t1.ORMORGNAME, t1.ORMORGSECTORNAME, t1.PCMRZGLID, t1.PCMRZGLNAME, t1.RZNX, t1.RZNX_COLOR, t1.SEX, t1.UPDATEDATE, t1.UPDATEMAN, t1.YGBH, t1.YGID, t1.YGNAME, t1.ZJ, t1.ZJNX, t1.ZJNX_COLOR, t1.ZJRQ, t1.ZWRQ FROM T_PCMRZGL t1  
 			]]>
     </sql>
 
     <!--数据查询[GBRZQXDQ]-->
+    <sql id="GBRZQXDQ" databaseId="mysql">
+       <![CDATA[	
+			]]>
+    </sql>
+
+    <!--数据查询[GBRZQXDQ]-->
     <sql id="GBRZQXDQ" databaseId="oracle">
        <![CDATA[	SELECT T1.*,(T1.txnx - T1.nl) as nldq,T2.ORMRANKNAME,t2.JYJLNX as zjjlnx,t3.nx as zwjlnx,t3.bxjlnx as zwbxjlnx ,(case when  t2.JYJLNX< t1.zjnx then '20' else '10' END) as zjnx_color, (case when  t3.bxjlnx< t1.rznx then '20' when  t3.nx< t1.rznx then '30' else '10' END) as rznx_color FROM T_PCMRZGL3 t1  LEFT JOIN T_ORMRANK t2 on T1.zj = T2.ORMRANKID LEFT JOIN T_ORMDUTY t3 on t1.dqzjxzw = t3.ormdutyid
+			]]>
+    </sql>
+
+    <!--数据查询[RQCX]-->
+    <sql id="RQCX" databaseId="mysql">
+       <![CDATA[	
 			]]>
     </sql>
 

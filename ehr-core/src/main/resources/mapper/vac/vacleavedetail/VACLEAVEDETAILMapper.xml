@@ -4,6 +4,9 @@
 <mapper	namespace="cn.ibizlab.ehr.core.vac.mapper.VACLEAVEDETAILMapper">
 
     <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
+	<select id="selectById"  resultMap="VACLEAVEDETAILResultMap" databaseId="mysql">
+        <![CDATA[select * from v_vacleavedetail t1     where  vacleavedetailid=#{id}]]>
+    </select>
 	<select id="selectById"  resultMap="VACLEAVEDETAILResultMap" databaseId="oracle">
         <![CDATA[select * from v_vacleavedetail t1     where  vacleavedetailid=#{id}]]>
     </select>
@@ -34,6 +37,12 @@
          <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
          <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
      </select>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="mysql">
+       <![CDATA[	SELECT t1.`BZ`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`FJ`, t1.`HYZK`, t1.`JHJSSJ`, t1.`JHJSSXW`, t1.`JHKSSJ`, t1.`JHKSSXW`, to_char(t1.jhjssj,'yyyy-mm-dd')||' '|| case when t1.jhjssxw ='20' then '下午'  when t1.jhjssxw ='10' then '上午' else '' END AS `JHQJJS`, to_char(t1.jhkssj,'yyyy-mm-dd')||' '|| case when t1.jhkssxw ='20' then '下午'  when t1.jhkssxw ='10' then '上午' else '' END AS `JHQJKS`, t1.`JHTS`, t1.`NJSY`, t21.`ORMORGID`, t21.`ORMORGSECTORID`, t1.`PIMPERSONID`, t1.`PIMPERSONNAME`, t1.`QJZL`, t1.`SJJSSJ`, t1.`SJJSSXW`, t1.`SJKSSJ`, t1.`SJKSSXW`, to_char(t1.sjjssj,'yyyy-mm-dd')||' '|| case when t1.sjjssxw ='20' then '下午'  when t1.sjjssxw ='10' then '上午' else '' END AS `SJQJJS`, to_char(t1.sjkssj,'yyyy-mm-dd')||' '|| case when t1.sjkssxw ='20' then '下午'  when t1.sjkssxw ='10' then '上午' else '' END AS `SJQJKS`, t1.`SJTS`, t1.`TIPS`, t1.`TQLX`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`VACLEAVEDETAILID`, t1.`VACLEAVEDETAILNAME`, t1.`VACLEAVEMANAGEID`, t11.`VACLEAVEMANAGENAME` FROM `T_VACLEAVEDETAIL` t1  LEFT JOIN T_VACLEAVEMANAGE t11 ON t1.VACLEAVEMANAGEID = t11.VACLEAVEMANAGEID  LEFT JOIN T_PIMPERSON t21 ON t11.PIMPERSONID = t21.PIMPERSONID  
+			]]>
+    </sql>
 
     <!--数据查询[Default]-->
     <sql id="Default" databaseId="oracle">

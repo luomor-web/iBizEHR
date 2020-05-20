@@ -4,6 +4,9 @@
 <mapper	namespace="cn.ibizlab.ehr.core.trm.mapper.TRMTRAINBUAPPLYMapper">
 
     <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
+	<select id="selectById"  resultMap="TRMTRAINBUAPPLYResultMap" databaseId="mysql">
+        <![CDATA[select * from v_trmtrainbuapply t1     where  trmtrainbuapplyid=#{id}]]>
+    </select>
 	<select id="selectById"  resultMap="TRMTRAINBUAPPLYResultMap" databaseId="oracle">
         <![CDATA[select * from v_trmtrainbuapply t1     where  trmtrainbuapplyid=#{id}]]>
     </select>
@@ -44,6 +47,13 @@
          <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
          <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
      </select>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="mysql">
+       <![CDATA[	SELECT t1.`BZ`, t1.`CDZJ`, t1.`CLF`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t1.`JFLX`, t1.`JGFY`, t1.`ND`, t1.`ORMORGID`, t21.`ORGNAME` AS `ORMORGNAME`, t1.`QTFY`, t1.`SZF`, t1.`TRMTRAINBUAPPLYID`, t1.`TRMTRAINBUAPPLYNAME`, t1.`TRMTRAINPLANTERMID`, t11.`TRMTRAINPLANTERMNAME`, t1.`TZJE`, t1.`TZYSXM`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`YSZJE` FROM `T_TRMTRAINBUAPPLY` t1  LEFT JOIN T_TRMTRAINPLANTERM t11 ON t1.TRMTRAINPLANTERMID = t11.TRMTRAINPLANTERMID  LEFT JOIN T_SRFORG t21 ON t1.ORMORGID = t21.ORGID  
+				 WHERE 	t1.ENABLE = 1
+			]]>
+    </sql>
 
     <!--数据查询[Default]-->
     <sql id="Default" databaseId="oracle">

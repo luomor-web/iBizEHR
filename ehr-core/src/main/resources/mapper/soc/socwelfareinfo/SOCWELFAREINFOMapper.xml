@@ -4,6 +4,9 @@
 <mapper	namespace="cn.ibizlab.ehr.core.soc.mapper.SOCWELFAREINFOMapper">
 
     <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
+	<select id="selectById"  resultMap="SOCWELFAREINFOResultMap" databaseId="mysql">
+        <![CDATA[select * from v_socwelfareinfo t1     where  socwelfareinfoid=#{id}]]>
+    </select>
 	<select id="selectById"  resultMap="SOCWELFAREINFOResultMap" databaseId="oracle">
         <![CDATA[select * from v_socwelfareinfo t1     where  socwelfareinfoid=#{id}]]>
     </select>
@@ -44,6 +47,13 @@
          <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
          <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
      </select>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="mysql">
+       <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t1.`GRGJJZH`, t1.`GRSBZH`, t11.`ORMORGID` AS `ORGID`, t11.`ORMORGSECTORID` AS `ORGSECTORID`, t11.`ORMORGID`, t11.`ORMORGNAME`, t11.`ORMORGSECTORID`, t1.`PIMPERSONID`, t11.`PIMPERSONNAME`, t1.`SOCCOMPANYWELID`, t21.`SOCCOMPANYWELNAME`, t31.`SOCSELFAREBASENAME`, t1.`SOCWELFAREINFOID`, t1.`SOCWELFAREINFONAME`, t1.`SXSJ`, t1.`SXSJ2`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t11.`YGBH`, t11.`ZJHM` FROM `T_SOCWELFAREINFO` t1  LEFT JOIN T_PIMPERSON t11 ON t1.PIMPERSONID = t11.PIMPERSONID  LEFT JOIN T_SOCCOMPANYWEL t21 ON t1.SOCCOMPANYWELID = t21.SOCCOMPANYWELID  LEFT JOIN T_SOCSELFAREBASE t31 ON t21.SOCSELFAREBASEID = t31.SOCSELFAREBASEID  
+				 WHERE 	t1.ENABLE = 1
+			]]>
+    </sql>
 
     <!--数据查询[Default]-->
     <sql id="Default" databaseId="oracle">

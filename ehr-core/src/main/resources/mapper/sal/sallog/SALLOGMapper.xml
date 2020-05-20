@@ -4,6 +4,9 @@
 <mapper	namespace="cn.ibizlab.ehr.core.sal.mapper.SALLOGMapper">
 
     <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
+	<select id="selectById"  resultMap="SALLOGResultMap" databaseId="mysql">
+        <![CDATA[select * from v_sallog t1     where  sallogid=#{id}]]>
+    </select>
 	<select id="selectById"  resultMap="SALLOGResultMap" databaseId="oracle">
         <![CDATA[select * from v_sallog t1     where  sallogid=#{id}]]>
     </select>
@@ -44,6 +47,12 @@
          <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
          <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
      </select>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="mysql">
+       <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`SALLOGID`, t1.`SALLOGNAME`, t1.`SALSALARYDETAILID`, t21.`SALSALARYDETAILNAME`, t1.`SALSALARYID`, t11.`SALSALARYNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`VAL1`, t1.`VAL2` FROM `T_SALLOG` t1  LEFT JOIN T_SALSALARY t11 ON t1.SALSALARYID = t11.SALSALARYID  LEFT JOIN T_SALSALARYDETAIL t21 ON t1.SALSALARYDETAILID = t21.SALSALARYDETAILID  
+			]]>
+    </sql>
 
     <!--数据查询[Default]-->
     <sql id="Default" databaseId="oracle">
