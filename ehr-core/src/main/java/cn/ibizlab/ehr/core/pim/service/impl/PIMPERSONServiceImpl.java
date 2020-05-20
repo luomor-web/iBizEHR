@@ -313,11 +313,11 @@ public class PIMPERSONServiceImpl extends ServiceImpl<PIMPERSONMapper, PIMPERSON
 
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.pim.service.logic.IPIMPERSONGenratePersonFileLogic genratepersonfileLogic;
+    private cn.ibizlab.ehr.core.pim.service.logic.IPIMPERSONGetJTLXRDHLogic getjtlxrdhLogic;
 
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.pim.service.logic.IPIMPERSONGetJTLXRDHLogic getjtlxrdhLogic;
+    private cn.ibizlab.ehr.core.pim.service.logic.IPIMPERSONGenratePersonFileLogic genratepersonfileLogic;
 
     private int batchSize = 500;
 
@@ -385,7 +385,6 @@ public class PIMPERSONServiceImpl extends ServiceImpl<PIMPERSONMapper, PIMPERSON
         if(!this.retBool(this.baseMapper.insert(et)))
             return false;
         CachedBeanCopier.copy(get(et.getPimpersonid()),et);
-        genratepersonfileLogic.execute(et);
         return true;
     }
 
@@ -438,7 +437,10 @@ public class PIMPERSONServiceImpl extends ServiceImpl<PIMPERSONMapper, PIMPERSON
     @Override
     @Transactional
     public boolean remove(String key) {
+        PIMPERSON et=new PIMPERSON();
+        et.set("pimpersonid",key);
         boolean result=removeById(key);
+        genratepersonfileLogic.execute(et);
         return result ;
     }
 
