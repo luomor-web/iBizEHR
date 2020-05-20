@@ -67,7 +67,7 @@ iBizEHR划分为六大模块:
 
 
 # 项目部署
-**本地化部署   [参考Wiki文档](https://gitee.com/ibizlab/iBizEHR/wikis/pages?sort_id=2233686&doc_id=692797)**
+* 本地化部署说明   [参考Wiki文档](https://gitee.com/ibizlab/iBizEHR/wikis/pages?sort_id=2233686&doc_id=692797)
 
 
 
