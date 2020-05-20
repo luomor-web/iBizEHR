@@ -63,7 +63,11 @@
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
         </dependency>
-
+        <dependency>
+			<groupId>com.oracle</groupId>
+			<artifactId>ojdbc6</artifactId>
+			<version>11.2.0.3</version>
+		</dependency>
         <!--  Druid阿里连接池  -->
         <dependency>
             <groupId>com.alibaba</groupId>
@@ -150,7 +154,7 @@
                                     <verbose>true</verbose>
                                     <logging>debug</logging>
                                     <contexts>!test</contexts>
-                                    <diffExcludeObjects>Index:.*,table:IBZFILE,IBZUSER,IBZDATAAUDIT</diffExcludeObjects>
+                                    <diffExcludeObjects>Index:.*,table:ibzfile,ibzuser,ibzdataaudit</diffExcludeObjects>
                                 </configuration>
                                 <phase>process-resources</phase>
                                 <goals>

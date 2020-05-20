@@ -9,6 +9,6 @@ CMD echo "The application will start in ${IBZ_SLEEP}s..." && \
     sleep ${IBZ_SLEEP} && \
     java ${JAVA_OPTS} -Djava.security.egd=file:/dev/./urandom -jar /ehr-provider-wfcallback.jar
 
-EXPOSE 8081
+EXPOSE 35080
 
 ADD ehr-provider-wfcallback.jar /ehr-provider-wfcallback.jar
