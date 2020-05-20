@@ -111,7 +111,6 @@ public class PCMPROFILESPYYResource {
         PCMPROFILESPYYDTO dto = pcmprofilespyyMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"PCMPROFILESPYY" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofilespyys/batch")
@@ -161,7 +160,6 @@ public class PCMPROFILESPYYResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PCMPROFILESPYY" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pcmprofilespyys/fetchdefault")
 	public ResponseEntity<List<PCMPROFILESPYYDTO>> fetchDefault(PCMPROFILESPYYSearchContext context) {
@@ -174,10 +172,9 @@ public class PCMPROFILESPYYResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PCMPROFILESPYY" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/pcmprofilespyys/searchdefault")
-	public ResponseEntity<Page<PCMPROFILESPYYDTO>> searchDefault(PCMPROFILESPYYSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pcmprofilespyys/searchdefault")
+	public ResponseEntity<Page<PCMPROFILESPYYDTO>> searchDefault(@RequestBody PCMPROFILESPYYSearchContext context) {
         Page<PCMPROFILESPYY> domains = pcmprofilespyyService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pcmprofilespyyMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

@@ -118,7 +118,6 @@ public class SALLOGResource {
         SALLOGDTO dto = sallogMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"SALLOG" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/sallogs/batch")
@@ -161,7 +160,6 @@ public class SALLOGResource {
         return  ResponseEntity.status(HttpStatus.OK).body(sallogService.checkKey(sallogMapping.toDomain(sallogdto)));
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"SALLOG" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/sallogs/fetchdefault")
 	public ResponseEntity<List<SALLOGDTO>> fetchDefault(SALLOGSearchContext context) {
@@ -174,10 +172,9 @@ public class SALLOGResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"SALLOG" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/sallogs/searchdefault")
-	public ResponseEntity<Page<SALLOGDTO>> searchDefault(SALLOGSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/sallogs/searchdefault")
+	public ResponseEntity<Page<SALLOGDTO>> searchDefault(@RequestBody SALLOGSearchContext context) {
         Page<SALLOG> domains = sallogService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(sallogMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

@@ -77,7 +77,6 @@ public class PIMWORKHISTORYResource {
         PIMWORKHISTORYDTO dto = pimworkhistoryMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"PIMWORKHISTORY" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimworkhistories/batch")
@@ -161,7 +160,6 @@ public class PIMWORKHISTORYResource {
         return ResponseEntity.status(HttpStatus.OK).body(pimworkhistoryMapping.toDto(pimworkhistoryService.getDraft(new PIMWORKHISTORY())));
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PIMWORKHISTORY" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimworkhistories/fetchdefault")
 	public ResponseEntity<List<PIMWORKHISTORYDTO>> fetchDefault(PIMWORKHISTORYSearchContext context) {
@@ -174,16 +172,14 @@ public class PIMWORKHISTORYResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PIMWORKHISTORY" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/pimworkhistories/searchdefault")
-	public ResponseEntity<Page<PIMWORKHISTORYDTO>> searchDefault(PIMWORKHISTORYSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimworkhistories/searchdefault")
+	public ResponseEntity<Page<PIMWORKHISTORYDTO>> searchDefault(@RequestBody PIMWORKHISTORYSearchContext context) {
         Page<PIMWORKHISTORY> domains = pimworkhistoryService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimworkhistoryMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'IsMain',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch是主要工作经历的", tags = {"PIMWORKHISTORY" } ,notes = "fetch是主要工作经历的")
     @RequestMapping(method= RequestMethod.GET , value="/pimworkhistories/fetchismain")
 	public ResponseEntity<List<PIMWORKHISTORYDTO>> fetchIsMain(PIMWORKHISTORYSearchContext context) {
@@ -196,16 +192,14 @@ public class PIMWORKHISTORYResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'IsMain',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search是主要工作经历的", tags = {"PIMWORKHISTORY" } ,notes = "search是主要工作经历的")
-    @RequestMapping(method= RequestMethod.GET , value="/pimworkhistories/searchismain")
-	public ResponseEntity<Page<PIMWORKHISTORYDTO>> searchIsMain(PIMWORKHISTORYSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimworkhistories/searchismain")
+	public ResponseEntity<Page<PIMWORKHISTORYDTO>> searchIsMain(@RequestBody PIMWORKHISTORYSearchContext context) {
         Page<PIMWORKHISTORY> domains = pimworkhistoryService.searchIsMain(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimworkhistoryMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'JLSSGLY',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch记录所属（管理员）", tags = {"PIMWORKHISTORY" } ,notes = "fetch记录所属（管理员）")
     @RequestMapping(method= RequestMethod.GET , value="/pimworkhistories/fetchjlssgly")
 	public ResponseEntity<List<PIMWORKHISTORYDTO>> fetchJLSSGLY(PIMWORKHISTORYSearchContext context) {
@@ -218,16 +212,14 @@ public class PIMWORKHISTORYResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'JLSSGLY',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search记录所属（管理员）", tags = {"PIMWORKHISTORY" } ,notes = "search记录所属（管理员）")
-    @RequestMapping(method= RequestMethod.GET , value="/pimworkhistories/searchjlssgly")
-	public ResponseEntity<Page<PIMWORKHISTORYDTO>> searchJLSSGLY(PIMWORKHISTORYSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimworkhistories/searchjlssgly")
+	public ResponseEntity<Page<PIMWORKHISTORYDTO>> searchJLSSGLY(@RequestBody PIMWORKHISTORYSearchContext context) {
         Page<PIMWORKHISTORY> domains = pimworkhistoryService.searchJLSSGLY(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimworkhistoryMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'ZIZHU',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch记录所属(个人履历)", tags = {"PIMWORKHISTORY" } ,notes = "fetch记录所属(个人履历)")
     @RequestMapping(method= RequestMethod.GET , value="/pimworkhistories/fetchzizhu")
 	public ResponseEntity<List<PIMWORKHISTORYDTO>> fetchZIZHU(PIMWORKHISTORYSearchContext context) {
@@ -240,16 +232,14 @@ public class PIMWORKHISTORYResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'ZIZHU',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search记录所属(个人履历)", tags = {"PIMWORKHISTORY" } ,notes = "search记录所属(个人履历)")
-    @RequestMapping(method= RequestMethod.GET , value="/pimworkhistories/searchzizhu")
-	public ResponseEntity<Page<PIMWORKHISTORYDTO>> searchZIZHU(PIMWORKHISTORYSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimworkhistories/searchzizhu")
+	public ResponseEntity<Page<PIMWORKHISTORYDTO>> searchZIZHU(@RequestBody PIMWORKHISTORYSearchContext context) {
         Page<PIMWORKHISTORY> domains = pimworkhistoryService.searchZIZHU(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimworkhistoryMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'JLSS',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch记录所属", tags = {"PIMWORKHISTORY" } ,notes = "fetch记录所属")
     @RequestMapping(method= RequestMethod.GET , value="/pimworkhistories/fetchjlss")
 	public ResponseEntity<List<PIMWORKHISTORYDTO>> fetchJLSS(PIMWORKHISTORYSearchContext context) {
@@ -262,16 +252,14 @@ public class PIMWORKHISTORYResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'JLSS',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search记录所属", tags = {"PIMWORKHISTORY" } ,notes = "search记录所属")
-    @RequestMapping(method= RequestMethod.GET , value="/pimworkhistories/searchjlss")
-	public ResponseEntity<Page<PIMWORKHISTORYDTO>> searchJLSS(PIMWORKHISTORYSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimworkhistories/searchjlss")
+	public ResponseEntity<Page<PIMWORKHISTORYDTO>> searchJLSS(@RequestBody PIMWORKHISTORYSearchContext context) {
         Page<PIMWORKHISTORY> domains = pimworkhistoryService.searchJLSS(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimworkhistoryMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'FAZZSY',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch非A转正使用", tags = {"PIMWORKHISTORY" } ,notes = "fetch非A转正使用")
     @RequestMapping(method= RequestMethod.GET , value="/pimworkhistories/fetchfazzsy")
 	public ResponseEntity<List<PIMWORKHISTORYDTO>> fetchFAZZSY(PIMWORKHISTORYSearchContext context) {
@@ -284,16 +272,14 @@ public class PIMWORKHISTORYResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'FAZZSY',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search非A转正使用", tags = {"PIMWORKHISTORY" } ,notes = "search非A转正使用")
-    @RequestMapping(method= RequestMethod.GET , value="/pimworkhistories/searchfazzsy")
-	public ResponseEntity<Page<PIMWORKHISTORYDTO>> searchFAZZSY(PIMWORKHISTORYSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimworkhistories/searchfazzsy")
+	public ResponseEntity<Page<PIMWORKHISTORYDTO>> searchFAZZSY(@RequestBody PIMWORKHISTORYSearchContext context) {
         Page<PIMWORKHISTORY> domains = pimworkhistoryService.searchFAZZSY(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimworkhistoryMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'JLSSGR',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch记录所属（个人）", tags = {"PIMWORKHISTORY" } ,notes = "fetch记录所属（个人）")
     @RequestMapping(method= RequestMethod.GET , value="/pimworkhistories/fetchjlssgr")
 	public ResponseEntity<List<PIMWORKHISTORYDTO>> fetchJLSSGR(PIMWORKHISTORYSearchContext context) {
@@ -306,10 +292,9 @@ public class PIMWORKHISTORYResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'JLSSGR',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search记录所属（个人）", tags = {"PIMWORKHISTORY" } ,notes = "search记录所属（个人）")
-    @RequestMapping(method= RequestMethod.GET , value="/pimworkhistories/searchjlssgr")
-	public ResponseEntity<Page<PIMWORKHISTORYDTO>> searchJLSSGR(PIMWORKHISTORYSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimworkhistories/searchjlssgr")
+	public ResponseEntity<Page<PIMWORKHISTORYDTO>> searchJLSSGR(@RequestBody PIMWORKHISTORYSearchContext context) {
         Page<PIMWORKHISTORY> domains = pimworkhistoryService.searchJLSSGR(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimworkhistoryMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
@@ -431,8 +416,8 @@ public class PIMWORKHISTORYResource {
 	}
 
 	@ApiOperation(value = "searchDEFAULTByPIMPERSON", tags = {"PIMWORKHISTORY" } ,notes = "searchDEFAULTByPIMPERSON")
-    @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/pimworkhistories/searchdefault")
-	public ResponseEntity<Page<PIMWORKHISTORYDTO>> searchPIMWORKHISTORYDefaultByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id,PIMWORKHISTORYSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/pimworkhistories/searchdefault")
+	public ResponseEntity<Page<PIMWORKHISTORYDTO>> searchPIMWORKHISTORYDefaultByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMWORKHISTORYSearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
         Page<PIMWORKHISTORY> domains = pimworkhistoryService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
@@ -453,8 +438,8 @@ public class PIMWORKHISTORYResource {
 	}
 
 	@ApiOperation(value = "search是主要工作经历的ByPIMPERSON", tags = {"PIMWORKHISTORY" } ,notes = "search是主要工作经历的ByPIMPERSON")
-    @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/pimworkhistories/searchismain")
-	public ResponseEntity<Page<PIMWORKHISTORYDTO>> searchPIMWORKHISTORYIsMainByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id,PIMWORKHISTORYSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/pimworkhistories/searchismain")
+	public ResponseEntity<Page<PIMWORKHISTORYDTO>> searchPIMWORKHISTORYIsMainByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMWORKHISTORYSearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
         Page<PIMWORKHISTORY> domains = pimworkhistoryService.searchIsMain(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
@@ -475,8 +460,8 @@ public class PIMWORKHISTORYResource {
 	}
 
 	@ApiOperation(value = "search记录所属（管理员）ByPIMPERSON", tags = {"PIMWORKHISTORY" } ,notes = "search记录所属（管理员）ByPIMPERSON")
-    @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/pimworkhistories/searchjlssgly")
-	public ResponseEntity<Page<PIMWORKHISTORYDTO>> searchPIMWORKHISTORYJLSSGLYByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id,PIMWORKHISTORYSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/pimworkhistories/searchjlssgly")
+	public ResponseEntity<Page<PIMWORKHISTORYDTO>> searchPIMWORKHISTORYJLSSGLYByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMWORKHISTORYSearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
         Page<PIMWORKHISTORY> domains = pimworkhistoryService.searchJLSSGLY(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
@@ -497,8 +482,8 @@ public class PIMWORKHISTORYResource {
 	}
 
 	@ApiOperation(value = "search记录所属(个人履历)ByPIMPERSON", tags = {"PIMWORKHISTORY" } ,notes = "search记录所属(个人履历)ByPIMPERSON")
-    @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/pimworkhistories/searchzizhu")
-	public ResponseEntity<Page<PIMWORKHISTORYDTO>> searchPIMWORKHISTORYZIZHUByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id,PIMWORKHISTORYSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/pimworkhistories/searchzizhu")
+	public ResponseEntity<Page<PIMWORKHISTORYDTO>> searchPIMWORKHISTORYZIZHUByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMWORKHISTORYSearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
         Page<PIMWORKHISTORY> domains = pimworkhistoryService.searchZIZHU(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
@@ -519,8 +504,8 @@ public class PIMWORKHISTORYResource {
 	}
 
 	@ApiOperation(value = "search记录所属ByPIMPERSON", tags = {"PIMWORKHISTORY" } ,notes = "search记录所属ByPIMPERSON")
-    @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/pimworkhistories/searchjlss")
-	public ResponseEntity<Page<PIMWORKHISTORYDTO>> searchPIMWORKHISTORYJLSSByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id,PIMWORKHISTORYSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/pimworkhistories/searchjlss")
+	public ResponseEntity<Page<PIMWORKHISTORYDTO>> searchPIMWORKHISTORYJLSSByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMWORKHISTORYSearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
         Page<PIMWORKHISTORY> domains = pimworkhistoryService.searchJLSS(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
@@ -541,8 +526,8 @@ public class PIMWORKHISTORYResource {
 	}
 
 	@ApiOperation(value = "search非A转正使用ByPIMPERSON", tags = {"PIMWORKHISTORY" } ,notes = "search非A转正使用ByPIMPERSON")
-    @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/pimworkhistories/searchfazzsy")
-	public ResponseEntity<Page<PIMWORKHISTORYDTO>> searchPIMWORKHISTORYFAZZSYByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id,PIMWORKHISTORYSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/pimworkhistories/searchfazzsy")
+	public ResponseEntity<Page<PIMWORKHISTORYDTO>> searchPIMWORKHISTORYFAZZSYByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMWORKHISTORYSearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
         Page<PIMWORKHISTORY> domains = pimworkhistoryService.searchFAZZSY(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
@@ -563,8 +548,8 @@ public class PIMWORKHISTORYResource {
 	}
 
 	@ApiOperation(value = "search记录所属（个人）ByPIMPERSON", tags = {"PIMWORKHISTORY" } ,notes = "search记录所属（个人）ByPIMPERSON")
-    @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/pimworkhistories/searchjlssgr")
-	public ResponseEntity<Page<PIMWORKHISTORYDTO>> searchPIMWORKHISTORYJLSSGRByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id,PIMWORKHISTORYSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/pimworkhistories/searchjlssgr")
+	public ResponseEntity<Page<PIMWORKHISTORYDTO>> searchPIMWORKHISTORYJLSSGRByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMWORKHISTORYSearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
         Page<PIMWORKHISTORY> domains = pimworkhistoryService.searchJLSSGR(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)

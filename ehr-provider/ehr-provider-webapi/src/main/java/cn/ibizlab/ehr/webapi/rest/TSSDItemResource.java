@@ -65,7 +65,6 @@ public class TSSDItemResource {
         TSSDItemDTO dto = tssditemMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"TSSDItem" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/tssditems/batch")
@@ -161,7 +160,6 @@ public class TSSDItemResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"TSSDItem" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/tssditems/fetchdefault")
 	public ResponseEntity<List<TSSDItemDTO>> fetchDefault(TSSDItemSearchContext context) {
@@ -174,10 +172,9 @@ public class TSSDItemResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"TSSDItem" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/tssditems/searchdefault")
-	public ResponseEntity<Page<TSSDItemDTO>> searchDefault(TSSDItemSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/tssditems/searchdefault")
+	public ResponseEntity<Page<TSSDItemDTO>> searchDefault(@RequestBody TSSDItemSearchContext context) {
         Page<TSSDItem> domains = tssditemService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(tssditemMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

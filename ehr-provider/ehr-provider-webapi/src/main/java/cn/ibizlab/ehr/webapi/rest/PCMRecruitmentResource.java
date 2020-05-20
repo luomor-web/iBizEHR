@@ -102,7 +102,6 @@ public class PCMRecruitmentResource {
         PCMRecruitmentDTO dto = pcmrecruitmentMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"PCMRecruitment" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmrecruitments/batch")
@@ -161,7 +160,6 @@ public class PCMRecruitmentResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'NBZP',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch内部招聘信息", tags = {"PCMRecruitment" } ,notes = "fetch内部招聘信息")
     @RequestMapping(method= RequestMethod.GET , value="/pcmrecruitments/fetchnbzp")
 	public ResponseEntity<List<PCMRecruitmentDTO>> fetchNBZP(PCMRecruitmentSearchContext context) {
@@ -174,16 +172,14 @@ public class PCMRecruitmentResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'NBZP',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search内部招聘信息", tags = {"PCMRecruitment" } ,notes = "search内部招聘信息")
-    @RequestMapping(method= RequestMethod.GET , value="/pcmrecruitments/searchnbzp")
-	public ResponseEntity<Page<PCMRecruitmentDTO>> searchNBZP(PCMRecruitmentSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pcmrecruitments/searchnbzp")
+	public ResponseEntity<Page<PCMRecruitmentDTO>> searchNBZP(@RequestBody PCMRecruitmentSearchContext context) {
         Page<PCMRecruitment> domains = pcmrecruitmentService.searchNBZP(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pcmrecruitmentMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PCMRecruitment" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pcmrecruitments/fetchdefault")
 	public ResponseEntity<List<PCMRecruitmentDTO>> fetchDefault(PCMRecruitmentSearchContext context) {
@@ -196,10 +192,9 @@ public class PCMRecruitmentResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PCMRecruitment" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/pcmrecruitments/searchdefault")
-	public ResponseEntity<Page<PCMRecruitmentDTO>> searchDefault(PCMRecruitmentSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pcmrecruitments/searchdefault")
+	public ResponseEntity<Page<PCMRecruitmentDTO>> searchDefault(@RequestBody PCMRecruitmentSearchContext context) {
         Page<PCMRecruitment> domains = pcmrecruitmentService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pcmrecruitmentMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

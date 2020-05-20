@@ -152,7 +152,6 @@ public class WFAppSettingResource {
         WFAppSettingDTO dto = wfappsettingMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"WFAppSetting" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/wfappsettings/batch")
@@ -161,7 +160,6 @@ public class WFAppSettingResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"WFAppSetting" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/wfappsettings/fetchdefault")
 	public ResponseEntity<List<WFAppSettingDTO>> fetchDefault(WFAppSettingSearchContext context) {
@@ -174,10 +172,9 @@ public class WFAppSettingResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"WFAppSetting" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/wfappsettings/searchdefault")
-	public ResponseEntity<Page<WFAppSettingDTO>> searchDefault(WFAppSettingSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/wfappsettings/searchdefault")
+	public ResponseEntity<Page<WFAppSettingDTO>> searchDefault(@RequestBody WFAppSettingSearchContext context) {
         Page<WFAppSetting> domains = wfappsettingService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(wfappsettingMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

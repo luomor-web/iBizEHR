@@ -156,7 +156,6 @@ public class ORMERPORGResource {
         ORMERPORGDTO dto = ormerporgMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"ORMERPORG" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormerporgs/batch")
@@ -174,7 +173,6 @@ public class ORMERPORGResource {
         return  ResponseEntity.status(HttpStatus.OK).body(ormerporgService.checkKey(ormerporgMapping.toDomain(ormerporgdto)));
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'CXBM',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch查询可用ERP部门", tags = {"ORMERPORG" } ,notes = "fetch查询可用ERP部门")
     @RequestMapping(method= RequestMethod.GET , value="/ormerporgs/fetchcxbm")
 	public ResponseEntity<List<ORMERPORGDTO>> fetchCXBM(ORMERPORGSearchContext context) {
@@ -187,16 +185,14 @@ public class ORMERPORGResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'CXBM',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search查询可用ERP部门", tags = {"ORMERPORG" } ,notes = "search查询可用ERP部门")
-    @RequestMapping(method= RequestMethod.GET , value="/ormerporgs/searchcxbm")
-	public ResponseEntity<Page<ORMERPORGDTO>> searchCXBM(ORMERPORGSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/ormerporgs/searchcxbm")
+	public ResponseEntity<Page<ORMERPORGDTO>> searchCXBM(@RequestBody ORMERPORGSearchContext context) {
         Page<ORMERPORG> domains = ormerporgService.searchCXBM(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(ormerporgMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'LegalChoice',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch管理单位选择", tags = {"ORMERPORG" } ,notes = "fetch管理单位选择")
     @RequestMapping(method= RequestMethod.GET , value="/ormerporgs/fetchlegalchoice")
 	public ResponseEntity<List<ORMERPORGDTO>> fetchLegalChoice(ORMERPORGSearchContext context) {
@@ -209,16 +205,14 @@ public class ORMERPORGResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'LegalChoice',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search管理单位选择", tags = {"ORMERPORG" } ,notes = "search管理单位选择")
-    @RequestMapping(method= RequestMethod.GET , value="/ormerporgs/searchlegalchoice")
-	public ResponseEntity<Page<ORMERPORGDTO>> searchLegalChoice(ORMERPORGSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/ormerporgs/searchlegalchoice")
+	public ResponseEntity<Page<ORMERPORGDTO>> searchLegalChoice(@RequestBody ORMERPORGSearchContext context) {
         Page<ORMERPORG> domains = ormerporgService.searchLegalChoice(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(ormerporgMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"ORMERPORG" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/ormerporgs/fetchdefault")
 	public ResponseEntity<List<ORMERPORGDTO>> fetchDefault(ORMERPORGSearchContext context) {
@@ -231,16 +225,14 @@ public class ORMERPORGResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"ORMERPORG" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/ormerporgs/searchdefault")
-	public ResponseEntity<Page<ORMERPORGDTO>> searchDefault(ORMERPORGSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/ormerporgs/searchdefault")
+	public ResponseEntity<Page<ORMERPORGDTO>> searchDefault(@RequestBody ORMERPORGSearchContext context) {
         Page<ORMERPORG> domains = ormerporgService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(ormerporgMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'CX',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch查询可用ERP组织", tags = {"ORMERPORG" } ,notes = "fetch查询可用ERP组织")
     @RequestMapping(method= RequestMethod.GET , value="/ormerporgs/fetchcx")
 	public ResponseEntity<List<ORMERPORGDTO>> fetchCX(ORMERPORGSearchContext context) {
@@ -253,16 +245,14 @@ public class ORMERPORGResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'CX',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search查询可用ERP组织", tags = {"ORMERPORG" } ,notes = "search查询可用ERP组织")
-    @RequestMapping(method= RequestMethod.GET , value="/ormerporgs/searchcx")
-	public ResponseEntity<Page<ORMERPORGDTO>> searchCX(ORMERPORGSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/ormerporgs/searchcx")
+	public ResponseEntity<Page<ORMERPORGDTO>> searchCX(@RequestBody ORMERPORGSearchContext context) {
         Page<ORMERPORG> domains = ormerporgService.searchCX(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(ormerporgMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'CXZBM',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch查询可用ERP部门", tags = {"ORMERPORG" } ,notes = "fetch查询可用ERP部门")
     @RequestMapping(method= RequestMethod.GET , value="/ormerporgs/fetchcxzbm")
 	public ResponseEntity<List<ORMERPORGDTO>> fetchCXZBM(ORMERPORGSearchContext context) {
@@ -275,10 +265,9 @@ public class ORMERPORGResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'CXZBM',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search查询可用ERP部门", tags = {"ORMERPORG" } ,notes = "search查询可用ERP部门")
-    @RequestMapping(method= RequestMethod.GET , value="/ormerporgs/searchcxzbm")
-	public ResponseEntity<Page<ORMERPORGDTO>> searchCXZBM(ORMERPORGSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/ormerporgs/searchcxzbm")
+	public ResponseEntity<Page<ORMERPORGDTO>> searchCXZBM(@RequestBody ORMERPORGSearchContext context) {
         Page<ORMERPORG> domains = ormerporgService.searchCXZBM(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(ormerporgMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

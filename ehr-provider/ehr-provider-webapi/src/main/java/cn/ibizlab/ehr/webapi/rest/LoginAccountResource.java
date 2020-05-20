@@ -151,7 +151,6 @@ public class LoginAccountResource {
         LoginAccountDTO dto = loginaccountMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"LoginAccount" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/loginaccounts/batch")
@@ -187,7 +186,6 @@ public class LoginAccountResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"LoginAccount" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/loginaccounts/fetchdefault")
 	public ResponseEntity<List<LoginAccountDTO>> fetchDefault(LoginAccountSearchContext context) {
@@ -200,10 +198,9 @@ public class LoginAccountResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"LoginAccount" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/loginaccounts/searchdefault")
-	public ResponseEntity<Page<LoginAccountDTO>> searchDefault(LoginAccountSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/loginaccounts/searchdefault")
+	public ResponseEntity<Page<LoginAccountDTO>> searchDefault(@RequestBody LoginAccountSearchContext context) {
         Page<LoginAccount> domains = loginaccountService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(loginaccountMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

@@ -65,7 +65,6 @@ public class TRMCOUARRANGEResource {
         TRMCOUARRANGEDTO dto = trmcouarrangeMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"TRMCOUARRANGE" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmcouarranges/batch")
@@ -161,7 +160,6 @@ public class TRMCOUARRANGEResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"TRMCOUARRANGE" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/trmcouarranges/fetchdefault")
 	public ResponseEntity<List<TRMCOUARRANGEDTO>> fetchDefault(TRMCOUARRANGESearchContext context) {
@@ -174,10 +172,9 @@ public class TRMCOUARRANGEResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"TRMCOUARRANGE" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/trmcouarranges/searchdefault")
-	public ResponseEntity<Page<TRMCOUARRANGEDTO>> searchDefault(TRMCOUARRANGESearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/trmcouarranges/searchdefault")
+	public ResponseEntity<Page<TRMCOUARRANGEDTO>> searchDefault(@RequestBody TRMCOUARRANGESearchContext context) {
         Page<TRMCOUARRANGE> domains = trmcouarrangeService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(trmcouarrangeMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

@@ -65,7 +65,7 @@ public interface DynaChartFeignClient {
 
 
     @RequestMapping(method = RequestMethod.POST, value = "/dynacharts/searchdefault")
-    Page<DynaChart> searchDefault(DynaChartSearchContext context);
+    Page<DynaChart> searchDefault(@RequestBody DynaChartSearchContext context);
 
 
 }

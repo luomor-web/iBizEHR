@@ -99,7 +99,6 @@ public class ARCHIVESCENTERResource {
         ARCHIVESCENTERDTO dto = archivescenterMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"ARCHIVESCENTER" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/archivescenters/batch")
@@ -161,7 +160,6 @@ public class ARCHIVESCENTERResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"ARCHIVESCENTER" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/archivescenters/fetchdefault")
 	public ResponseEntity<List<ARCHIVESCENTERDTO>> fetchDefault(ARCHIVESCENTERSearchContext context) {
@@ -174,10 +172,9 @@ public class ARCHIVESCENTERResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"ARCHIVESCENTER" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/archivescenters/searchdefault")
-	public ResponseEntity<Page<ARCHIVESCENTERDTO>> searchDefault(ARCHIVESCENTERSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/archivescenters/searchdefault")
+	public ResponseEntity<Page<ARCHIVESCENTERDTO>> searchDefault(@RequestBody ARCHIVESCENTERSearchContext context) {
         Page<ARCHIVESCENTER> domains = archivescenterService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(archivescenterMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

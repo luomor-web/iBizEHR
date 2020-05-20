@@ -109,7 +109,6 @@ public class MsgTemplateResource {
         MsgTemplateDTO dto = msgtemplateMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"MsgTemplate" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/msgtemplates/batch")
@@ -161,7 +160,6 @@ public class MsgTemplateResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"MsgTemplate" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/msgtemplates/fetchdefault")
 	public ResponseEntity<List<MsgTemplateDTO>> fetchDefault(MsgTemplateSearchContext context) {
@@ -174,10 +172,9 @@ public class MsgTemplateResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"MsgTemplate" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/msgtemplates/searchdefault")
-	public ResponseEntity<Page<MsgTemplateDTO>> searchDefault(MsgTemplateSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/msgtemplates/searchdefault")
+	public ResponseEntity<Page<MsgTemplateDTO>> searchDefault(@RequestBody MsgTemplateSearchContext context) {
         Page<MsgTemplate> domains = msgtemplateService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(msgtemplateMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

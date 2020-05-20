@@ -140,7 +140,6 @@ public class PCMXYGZZSQMXResource {
         PCMXYGZZSQMXDTO dto = pcmxygzzsqmxMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"PCMXYGZZSQMX" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmxygzzsqmxes/batch")
@@ -200,7 +199,6 @@ public class PCMXYGZZSQMXResource {
         return  ResponseEntity.status(HttpStatus.OK).body(pcmxygzzsqmxService.checkKey(pcmxygzzsqmxMapping.toDomain(pcmxygzzsqmxdto)));
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'WSHSQ',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch未完成审核的申请", tags = {"PCMXYGZZSQMX" } ,notes = "fetch未完成审核的申请")
     @RequestMapping(method= RequestMethod.GET , value="/pcmxygzzsqmxes/fetchwshsq")
 	public ResponseEntity<List<PCMXYGZZSQMXDTO>> fetchWSHSQ(PCMXYGZZSQMXSearchContext context) {
@@ -213,16 +211,14 @@ public class PCMXYGZZSQMXResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'WSHSQ',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search未完成审核的申请", tags = {"PCMXYGZZSQMX" } ,notes = "search未完成审核的申请")
-    @RequestMapping(method= RequestMethod.GET , value="/pcmxygzzsqmxes/searchwshsq")
-	public ResponseEntity<Page<PCMXYGZZSQMXDTO>> searchWSHSQ(PCMXYGZZSQMXSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pcmxygzzsqmxes/searchwshsq")
+	public ResponseEntity<Page<PCMXYGZZSQMXDTO>> searchWSHSQ(@RequestBody PCMXYGZZSQMXSearchContext context) {
         Page<PCMXYGZZSQMX> domains = pcmxygzzsqmxService.searchWSHSQ(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pcmxygzzsqmxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PCMXYGZZSQMX" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pcmxygzzsqmxes/fetchdefault")
 	public ResponseEntity<List<PCMXYGZZSQMXDTO>> fetchDefault(PCMXYGZZSQMXSearchContext context) {
@@ -235,10 +231,9 @@ public class PCMXYGZZSQMXResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PCMXYGZZSQMX" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/pcmxygzzsqmxes/searchdefault")
-	public ResponseEntity<Page<PCMXYGZZSQMXDTO>> searchDefault(PCMXYGZZSQMXSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pcmxygzzsqmxes/searchdefault")
+	public ResponseEntity<Page<PCMXYGZZSQMXDTO>> searchDefault(@RequestBody PCMXYGZZSQMXSearchContext context) {
         Page<PCMXYGZZSQMX> domains = pcmxygzzsqmxService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pcmxygzzsqmxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

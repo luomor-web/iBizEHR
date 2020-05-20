@@ -65,7 +65,6 @@ public class PCMWORKRESUMEResource {
         PCMWORKRESUMEDTO dto = pcmworkresumeMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"PCMWORKRESUME" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmworkresumes/batch")
@@ -161,7 +160,6 @@ public class PCMWORKRESUMEResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PCMWORKRESUME" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pcmworkresumes/fetchdefault")
 	public ResponseEntity<List<PCMWORKRESUMEDTO>> fetchDefault(PCMWORKRESUMESearchContext context) {
@@ -174,10 +172,9 @@ public class PCMWORKRESUMEResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PCMWORKRESUME" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/pcmworkresumes/searchdefault")
-	public ResponseEntity<Page<PCMWORKRESUMEDTO>> searchDefault(PCMWORKRESUMESearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pcmworkresumes/searchdefault")
+	public ResponseEntity<Page<PCMWORKRESUMEDTO>> searchDefault(@RequestBody PCMWORKRESUMESearchContext context) {
         Page<PCMWORKRESUME> domains = pcmworkresumeService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pcmworkresumeMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
@@ -299,8 +296,8 @@ public class PCMWORKRESUMEResource {
 	}
 
 	@ApiOperation(value = "searchDEFAULTByPCMPROFILE", tags = {"PCMWORKRESUME" } ,notes = "searchDEFAULTByPCMPROFILE")
-    @RequestMapping(method= RequestMethod.GET , value="/pcmprofiles/{pcmprofile_id}/pcmworkresumes/searchdefault")
-	public ResponseEntity<Page<PCMWORKRESUMEDTO>> searchPCMWORKRESUMEDefaultByPCMPROFILE(@PathVariable("pcmprofile_id") String pcmprofile_id,PCMWORKRESUMESearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pcmprofiles/{pcmprofile_id}/pcmworkresumes/searchdefault")
+	public ResponseEntity<Page<PCMWORKRESUMEDTO>> searchPCMWORKRESUMEDefaultByPCMPROFILE(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody PCMWORKRESUMESearchContext context) {
         context.setN_pcmprofileid_eq(pcmprofile_id);
         Page<PCMWORKRESUME> domains = pcmworkresumeService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)

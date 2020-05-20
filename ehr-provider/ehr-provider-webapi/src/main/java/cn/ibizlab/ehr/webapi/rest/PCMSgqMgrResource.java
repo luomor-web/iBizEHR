@@ -153,7 +153,6 @@ public class PCMSgqMgrResource {
         PCMSgqMgrDTO dto = pcmsgqmgrMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"PCMSgqMgr" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmsgqmgrs/batch")
@@ -187,7 +186,6 @@ public class PCMSgqMgrResource {
         return ResponseEntity.status(HttpStatus.OK).body(pcmsgqmgrMapping.toDto(pcmsgqmgrService.getDraft(new PCMSgqMgr())));
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PCMSgqMgr" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pcmsgqmgrs/fetchdefault")
 	public ResponseEntity<List<PCMSgqMgrDTO>> fetchDefault(PCMSgqMgrSearchContext context) {
@@ -200,10 +198,9 @@ public class PCMSgqMgrResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PCMSgqMgr" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/pcmsgqmgrs/searchdefault")
-	public ResponseEntity<Page<PCMSgqMgrDTO>> searchDefault(PCMSgqMgrSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pcmsgqmgrs/searchdefault")
+	public ResponseEntity<Page<PCMSgqMgrDTO>> searchDefault(@RequestBody PCMSgqMgrSearchContext context) {
         Page<PCMSgqMgr> domains = pcmsgqmgrService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pcmsgqmgrMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

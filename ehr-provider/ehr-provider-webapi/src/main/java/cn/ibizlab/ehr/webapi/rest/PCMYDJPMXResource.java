@@ -160,7 +160,6 @@ public class PCMYDJPMXResource {
         PCMYDJPMXDTO dto = pcmydjpmxMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"PCMYDJPMX" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmydjpmxes/batch")
@@ -187,7 +186,6 @@ public class PCMYDJPMXResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'JLDS',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch记录查询", tags = {"PCMYDJPMX" } ,notes = "fetch记录查询")
     @RequestMapping(method= RequestMethod.GET , value="/pcmydjpmxes/fetchjlds")
 	public ResponseEntity<List<PCMYDJPMXDTO>> fetchJLDS(PCMYDJPMXSearchContext context) {
@@ -200,16 +198,14 @@ public class PCMYDJPMXResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'JLDS',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search记录查询", tags = {"PCMYDJPMX" } ,notes = "search记录查询")
-    @RequestMapping(method= RequestMethod.GET , value="/pcmydjpmxes/searchjlds")
-	public ResponseEntity<Page<PCMYDJPMXDTO>> searchJLDS(PCMYDJPMXSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pcmydjpmxes/searchjlds")
+	public ResponseEntity<Page<PCMYDJPMXDTO>> searchJLDS(@RequestBody PCMYDJPMXSearchContext context) {
         Page<PCMYDJPMX> domains = pcmydjpmxService.searchJLDS(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pcmydjpmxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PCMYDJPMX" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pcmydjpmxes/fetchdefault")
 	public ResponseEntity<List<PCMYDJPMXDTO>> fetchDefault(PCMYDJPMXSearchContext context) {
@@ -222,16 +218,14 @@ public class PCMYDJPMXResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PCMYDJPMX" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/pcmydjpmxes/searchdefault")
-	public ResponseEntity<Page<PCMYDJPMXDTO>> searchDefault(PCMYDJPMXSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pcmydjpmxes/searchdefault")
+	public ResponseEntity<Page<PCMYDJPMXDTO>> searchDefault(@RequestBody PCMYDJPMXSearchContext context) {
         Page<PCMYDJPMX> domains = pcmydjpmxService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pcmydjpmxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'GLDS',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch管理查询", tags = {"PCMYDJPMX" } ,notes = "fetch管理查询")
     @RequestMapping(method= RequestMethod.GET , value="/pcmydjpmxes/fetchglds")
 	public ResponseEntity<List<PCMYDJPMXDTO>> fetchGLDS(PCMYDJPMXSearchContext context) {
@@ -244,10 +238,9 @@ public class PCMYDJPMXResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'GLDS',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search管理查询", tags = {"PCMYDJPMX" } ,notes = "search管理查询")
-    @RequestMapping(method= RequestMethod.GET , value="/pcmydjpmxes/searchglds")
-	public ResponseEntity<Page<PCMYDJPMXDTO>> searchGLDS(PCMYDJPMXSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pcmydjpmxes/searchglds")
+	public ResponseEntity<Page<PCMYDJPMXDTO>> searchGLDS(@RequestBody PCMYDJPMXSearchContext context) {
         Page<PCMYDJPMX> domains = pcmydjpmxService.searchGLDS(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pcmydjpmxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

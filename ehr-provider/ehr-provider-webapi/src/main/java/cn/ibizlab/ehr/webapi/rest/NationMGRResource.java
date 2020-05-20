@@ -117,7 +117,6 @@ public class NationMGRResource {
         NationMGRDTO dto = nationmgrMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"NationMGR" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/nationmgrs/batch")
@@ -161,7 +160,6 @@ public class NationMGRResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"NationMGR" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/nationmgrs/fetchdefault")
 	public ResponseEntity<List<NationMGRDTO>> fetchDefault(NationMGRSearchContext context) {
@@ -174,10 +172,9 @@ public class NationMGRResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"NationMGR" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/nationmgrs/searchdefault")
-	public ResponseEntity<Page<NationMGRDTO>> searchDefault(NationMGRSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/nationmgrs/searchdefault")
+	public ResponseEntity<Page<NationMGRDTO>> searchDefault(@RequestBody NationMGRSearchContext context) {
         Page<NationMGR> domains = nationmgrService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(nationmgrMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

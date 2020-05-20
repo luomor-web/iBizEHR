@@ -131,7 +131,6 @@ public class CodeList1Resource {
         CodeList1DTO dto = codelist1Mapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"CodeList1" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/codelist1s/batch")
@@ -174,7 +173,6 @@ public class CodeList1Resource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'PersonUse',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch用户使用", tags = {"CodeList1" } ,notes = "fetch用户使用")
     @RequestMapping(method= RequestMethod.GET , value="/codelist1s/fetchpersonuse")
 	public ResponseEntity<List<CodeList1DTO>> fetchPersonUse(CodeList1SearchContext context) {
@@ -187,16 +185,14 @@ public class CodeList1Resource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'PersonUse',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search用户使用", tags = {"CodeList1" } ,notes = "search用户使用")
-    @RequestMapping(method= RequestMethod.GET , value="/codelist1s/searchpersonuse")
-	public ResponseEntity<Page<CodeList1DTO>> searchPersonUse(CodeList1SearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/codelist1s/searchpersonuse")
+	public ResponseEntity<Page<CodeList1DTO>> searchPersonUse(@RequestBody CodeList1SearchContext context) {
         Page<CodeList1> domains = codelist1Service.searchPersonUse(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(codelist1Mapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"CodeList1" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/codelist1s/fetchdefault")
 	public ResponseEntity<List<CodeList1DTO>> fetchDefault(CodeList1SearchContext context) {
@@ -209,10 +205,9 @@ public class CodeList1Resource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"CodeList1" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/codelist1s/searchdefault")
-	public ResponseEntity<Page<CodeList1DTO>> searchDefault(CodeList1SearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/codelist1s/searchdefault")
+	public ResponseEntity<Page<CodeList1DTO>> searchDefault(@RequestBody CodeList1SearchContext context) {
         Page<CodeList1> domains = codelist1Service.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(codelist1Mapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

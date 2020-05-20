@@ -106,7 +106,6 @@ public class PIMEDUCATIONResource {
         PIMEDUCATIONDTO dto = pimeducationMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"PIMEDUCATION" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimeducations/batch")
@@ -174,7 +173,6 @@ public class PIMEDUCATIONResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'FAZZSY',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch教育信息（非A转正专用）", tags = {"PIMEDUCATION" } ,notes = "fetch教育信息（非A转正专用）")
     @RequestMapping(method= RequestMethod.GET , value="/pimeducations/fetchfazzsy")
 	public ResponseEntity<List<PIMEDUCATIONDTO>> fetchFAZZSY(PIMEDUCATIONSearchContext context) {
@@ -187,16 +185,14 @@ public class PIMEDUCATIONResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'FAZZSY',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search教育信息（非A转正专用）", tags = {"PIMEDUCATION" } ,notes = "search教育信息（非A转正专用）")
-    @RequestMapping(method= RequestMethod.GET , value="/pimeducations/searchfazzsy")
-	public ResponseEntity<Page<PIMEDUCATIONDTO>> searchFAZZSY(PIMEDUCATIONSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimeducations/searchfazzsy")
+	public ResponseEntity<Page<PIMEDUCATIONDTO>> searchFAZZSY(@RequestBody PIMEDUCATIONSearchContext context) {
         Page<PIMEDUCATION> domains = pimeducationService.searchFAZZSY(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimeducationMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'JLSS',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch记录所属", tags = {"PIMEDUCATION" } ,notes = "fetch记录所属")
     @RequestMapping(method= RequestMethod.GET , value="/pimeducations/fetchjlss")
 	public ResponseEntity<List<PIMEDUCATIONDTO>> fetchJLSS(PIMEDUCATIONSearchContext context) {
@@ -209,16 +205,14 @@ public class PIMEDUCATIONResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'JLSS',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search记录所属", tags = {"PIMEDUCATION" } ,notes = "search记录所属")
-    @RequestMapping(method= RequestMethod.GET , value="/pimeducations/searchjlss")
-	public ResponseEntity<Page<PIMEDUCATIONDTO>> searchJLSS(PIMEDUCATIONSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimeducations/searchjlss")
+	public ResponseEntity<Page<PIMEDUCATIONDTO>> searchJLSS(@RequestBody PIMEDUCATIONSearchContext context) {
         Page<PIMEDUCATION> domains = pimeducationService.searchJLSS(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimeducationMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'ZIZHU',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch自助(教育信息)", tags = {"PIMEDUCATION" } ,notes = "fetch自助(教育信息)")
     @RequestMapping(method= RequestMethod.GET , value="/pimeducations/fetchzizhu")
 	public ResponseEntity<List<PIMEDUCATIONDTO>> fetchZIZHU(PIMEDUCATIONSearchContext context) {
@@ -231,16 +225,14 @@ public class PIMEDUCATIONResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'ZIZHU',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search自助(教育信息)", tags = {"PIMEDUCATION" } ,notes = "search自助(教育信息)")
-    @RequestMapping(method= RequestMethod.GET , value="/pimeducations/searchzizhu")
-	public ResponseEntity<Page<PIMEDUCATIONDTO>> searchZIZHU(PIMEDUCATIONSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimeducations/searchzizhu")
+	public ResponseEntity<Page<PIMEDUCATIONDTO>> searchZIZHU(@RequestBody PIMEDUCATIONSearchContext context) {
         Page<PIMEDUCATION> domains = pimeducationService.searchZIZHU(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimeducationMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'ADMDYZG',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch第一学历和最高学历（管理员）", tags = {"PIMEDUCATION" } ,notes = "fetch第一学历和最高学历（管理员）")
     @RequestMapping(method= RequestMethod.GET , value="/pimeducations/fetchadmdyzg")
 	public ResponseEntity<List<PIMEDUCATIONDTO>> fetchADMDYZG(PIMEDUCATIONSearchContext context) {
@@ -253,16 +245,14 @@ public class PIMEDUCATIONResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'ADMDYZG',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search第一学历和最高学历（管理员）", tags = {"PIMEDUCATION" } ,notes = "search第一学历和最高学历（管理员）")
-    @RequestMapping(method= RequestMethod.GET , value="/pimeducations/searchadmdyzg")
-	public ResponseEntity<Page<PIMEDUCATIONDTO>> searchADMDYZG(PIMEDUCATIONSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimeducations/searchadmdyzg")
+	public ResponseEntity<Page<PIMEDUCATIONDTO>> searchADMDYZG(@RequestBody PIMEDUCATIONSearchContext context) {
         Page<PIMEDUCATION> domains = pimeducationService.searchADMDYZG(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimeducationMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'PERSONAL',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch记录所属（个人）", tags = {"PIMEDUCATION" } ,notes = "fetch记录所属（个人）")
     @RequestMapping(method= RequestMethod.GET , value="/pimeducations/fetchpersonal")
 	public ResponseEntity<List<PIMEDUCATIONDTO>> fetchPERSONAL(PIMEDUCATIONSearchContext context) {
@@ -275,16 +265,14 @@ public class PIMEDUCATIONResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'PERSONAL',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search记录所属（个人）", tags = {"PIMEDUCATION" } ,notes = "search记录所属（个人）")
-    @RequestMapping(method= RequestMethod.GET , value="/pimeducations/searchpersonal")
-	public ResponseEntity<Page<PIMEDUCATIONDTO>> searchPERSONAL(PIMEDUCATIONSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimeducations/searchpersonal")
+	public ResponseEntity<Page<PIMEDUCATIONDTO>> searchPERSONAL(@RequestBody PIMEDUCATIONSearchContext context) {
         Page<PIMEDUCATION> domains = pimeducationService.searchPERSONAL(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimeducationMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'ADMSYSTEM',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch记录所属（管理员）", tags = {"PIMEDUCATION" } ,notes = "fetch记录所属（管理员）")
     @RequestMapping(method= RequestMethod.GET , value="/pimeducations/fetchadmsystem")
 	public ResponseEntity<List<PIMEDUCATIONDTO>> fetchADMSYSTEM(PIMEDUCATIONSearchContext context) {
@@ -297,16 +285,14 @@ public class PIMEDUCATIONResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'ADMSYSTEM',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search记录所属（管理员）", tags = {"PIMEDUCATION" } ,notes = "search记录所属（管理员）")
-    @RequestMapping(method= RequestMethod.GET , value="/pimeducations/searchadmsystem")
-	public ResponseEntity<Page<PIMEDUCATIONDTO>> searchADMSYSTEM(PIMEDUCATIONSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimeducations/searchadmsystem")
+	public ResponseEntity<Page<PIMEDUCATIONDTO>> searchADMSYSTEM(@RequestBody PIMEDUCATIONSearchContext context) {
         Page<PIMEDUCATION> domains = pimeducationService.searchADMSYSTEM(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimeducationMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PIMEDUCATION" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimeducations/fetchdefault")
 	public ResponseEntity<List<PIMEDUCATIONDTO>> fetchDefault(PIMEDUCATIONSearchContext context) {
@@ -319,16 +305,14 @@ public class PIMEDUCATIONResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PIMEDUCATION" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/pimeducations/searchdefault")
-	public ResponseEntity<Page<PIMEDUCATIONDTO>> searchDefault(PIMEDUCATIONSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimeducations/searchdefault")
+	public ResponseEntity<Page<PIMEDUCATIONDTO>> searchDefault(@RequestBody PIMEDUCATIONSearchContext context) {
         Page<PIMEDUCATION> domains = pimeducationService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimeducationMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'REP_EDU',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch图表_学历分布统计", tags = {"PIMEDUCATION" } ,notes = "fetch图表_学历分布统计")
     @RequestMapping(method= RequestMethod.GET , value="/pimeducations/fetchrep_edu")
 	public ResponseEntity<List<HashMap>> fetchREP_EDU(PIMEDUCATIONSearchContext context) {
@@ -340,10 +324,9 @@ public class PIMEDUCATIONResource {
                 .body(domains.getContent());
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'REP_EDU',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search图表_学历分布统计", tags = {"PIMEDUCATION" } ,notes = "search图表_学历分布统计")
-    @RequestMapping(method= RequestMethod.GET , value="/pimeducations/searchrep_edu")
-	public ResponseEntity<Page<HashMap>> searchREP_EDU(PIMEDUCATIONSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimeducations/searchrep_edu")
+	public ResponseEntity<Page<HashMap>> searchREP_EDU(@RequestBody PIMEDUCATIONSearchContext context) {
         Page<HashMap> domains = pimeducationService.searchREP_EDU(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(domains.getContent(), context.getPageable(), domains.getTotalElements()));
@@ -476,8 +459,8 @@ public class PIMEDUCATIONResource {
 	}
 
 	@ApiOperation(value = "search教育信息（非A转正专用）ByPIMPERSON", tags = {"PIMEDUCATION" } ,notes = "search教育信息（非A转正专用）ByPIMPERSON")
-    @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/pimeducations/searchfazzsy")
-	public ResponseEntity<Page<PIMEDUCATIONDTO>> searchPIMEDUCATIONFAZZSYByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id,PIMEDUCATIONSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/pimeducations/searchfazzsy")
+	public ResponseEntity<Page<PIMEDUCATIONDTO>> searchPIMEDUCATIONFAZZSYByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMEDUCATIONSearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
         Page<PIMEDUCATION> domains = pimeducationService.searchFAZZSY(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
@@ -498,8 +481,8 @@ public class PIMEDUCATIONResource {
 	}
 
 	@ApiOperation(value = "search记录所属ByPIMPERSON", tags = {"PIMEDUCATION" } ,notes = "search记录所属ByPIMPERSON")
-    @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/pimeducations/searchjlss")
-	public ResponseEntity<Page<PIMEDUCATIONDTO>> searchPIMEDUCATIONJLSSByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id,PIMEDUCATIONSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/pimeducations/searchjlss")
+	public ResponseEntity<Page<PIMEDUCATIONDTO>> searchPIMEDUCATIONJLSSByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMEDUCATIONSearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
         Page<PIMEDUCATION> domains = pimeducationService.searchJLSS(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
@@ -520,8 +503,8 @@ public class PIMEDUCATIONResource {
 	}
 
 	@ApiOperation(value = "search自助(教育信息)ByPIMPERSON", tags = {"PIMEDUCATION" } ,notes = "search自助(教育信息)ByPIMPERSON")
-    @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/pimeducations/searchzizhu")
-	public ResponseEntity<Page<PIMEDUCATIONDTO>> searchPIMEDUCATIONZIZHUByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id,PIMEDUCATIONSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/pimeducations/searchzizhu")
+	public ResponseEntity<Page<PIMEDUCATIONDTO>> searchPIMEDUCATIONZIZHUByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMEDUCATIONSearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
         Page<PIMEDUCATION> domains = pimeducationService.searchZIZHU(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
@@ -542,8 +525,8 @@ public class PIMEDUCATIONResource {
 	}
 
 	@ApiOperation(value = "search第一学历和最高学历（管理员）ByPIMPERSON", tags = {"PIMEDUCATION" } ,notes = "search第一学历和最高学历（管理员）ByPIMPERSON")
-    @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/pimeducations/searchadmdyzg")
-	public ResponseEntity<Page<PIMEDUCATIONDTO>> searchPIMEDUCATIONADMDYZGByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id,PIMEDUCATIONSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/pimeducations/searchadmdyzg")
+	public ResponseEntity<Page<PIMEDUCATIONDTO>> searchPIMEDUCATIONADMDYZGByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMEDUCATIONSearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
         Page<PIMEDUCATION> domains = pimeducationService.searchADMDYZG(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
@@ -564,8 +547,8 @@ public class PIMEDUCATIONResource {
 	}
 
 	@ApiOperation(value = "search记录所属（个人）ByPIMPERSON", tags = {"PIMEDUCATION" } ,notes = "search记录所属（个人）ByPIMPERSON")
-    @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/pimeducations/searchpersonal")
-	public ResponseEntity<Page<PIMEDUCATIONDTO>> searchPIMEDUCATIONPERSONALByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id,PIMEDUCATIONSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/pimeducations/searchpersonal")
+	public ResponseEntity<Page<PIMEDUCATIONDTO>> searchPIMEDUCATIONPERSONALByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMEDUCATIONSearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
         Page<PIMEDUCATION> domains = pimeducationService.searchPERSONAL(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
@@ -586,8 +569,8 @@ public class PIMEDUCATIONResource {
 	}
 
 	@ApiOperation(value = "search记录所属（管理员）ByPIMPERSON", tags = {"PIMEDUCATION" } ,notes = "search记录所属（管理员）ByPIMPERSON")
-    @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/pimeducations/searchadmsystem")
-	public ResponseEntity<Page<PIMEDUCATIONDTO>> searchPIMEDUCATIONADMSYSTEMByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id,PIMEDUCATIONSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/pimeducations/searchadmsystem")
+	public ResponseEntity<Page<PIMEDUCATIONDTO>> searchPIMEDUCATIONADMSYSTEMByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMEDUCATIONSearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
         Page<PIMEDUCATION> domains = pimeducationService.searchADMSYSTEM(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
@@ -608,8 +591,8 @@ public class PIMEDUCATIONResource {
 	}
 
 	@ApiOperation(value = "searchDEFAULTByPIMPERSON", tags = {"PIMEDUCATION" } ,notes = "searchDEFAULTByPIMPERSON")
-    @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/pimeducations/searchdefault")
-	public ResponseEntity<Page<PIMEDUCATIONDTO>> searchPIMEDUCATIONDefaultByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id,PIMEDUCATIONSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/pimeducations/searchdefault")
+	public ResponseEntity<Page<PIMEDUCATIONDTO>> searchPIMEDUCATIONDefaultByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMEDUCATIONSearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
         Page<PIMEDUCATION> domains = pimeducationService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
@@ -629,8 +612,8 @@ public class PIMEDUCATIONResource {
 	}
 
 	@ApiOperation(value = "search图表_学历分布统计ByPIMPERSON", tags = {"PIMEDUCATION" } ,notes = "search图表_学历分布统计ByPIMPERSON")
-    @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/pimeducations/searchrep_edu")
-	public ResponseEntity<Page<HashMap>> searchPIMEDUCATIONREP_EDUByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id,PIMEDUCATIONSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/pimeducations/searchrep_edu")
+	public ResponseEntity<Page<HashMap>> searchPIMEDUCATIONREP_EDUByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMEDUCATIONSearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
         Page<HashMap> domains = pimeducationService.searchREP_EDU(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)

@@ -152,7 +152,6 @@ public class WFCustomProcessResource {
         WFCustomProcessDTO dto = wfcustomprocessMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"WFCustomProcess" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/wfcustomprocesses/batch")
@@ -161,7 +160,6 @@ public class WFCustomProcessResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"WFCustomProcess" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/wfcustomprocesses/fetchdefault")
 	public ResponseEntity<List<WFCustomProcessDTO>> fetchDefault(WFCustomProcessSearchContext context) {
@@ -174,10 +172,9 @@ public class WFCustomProcessResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"WFCustomProcess" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/wfcustomprocesses/searchdefault")
-	public ResponseEntity<Page<WFCustomProcessDTO>> searchDefault(WFCustomProcessSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/wfcustomprocesses/searchdefault")
+	public ResponseEntity<Page<WFCustomProcessDTO>> searchDefault(@RequestBody WFCustomProcessSearchContext context) {
         Page<WFCustomProcess> domains = wfcustomprocessService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(wfcustomprocessMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

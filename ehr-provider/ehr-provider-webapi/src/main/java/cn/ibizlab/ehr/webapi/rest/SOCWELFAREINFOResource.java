@@ -178,7 +178,6 @@ public class SOCWELFAREINFOResource {
         SOCWELFAREINFODTO dto = socwelfareinfoMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"SOCWELFAREINFO" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/socwelfareinfos/batch")
@@ -187,7 +186,6 @@ public class SOCWELFAREINFOResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"SOCWELFAREINFO" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/socwelfareinfos/fetchdefault")
 	public ResponseEntity<List<SOCWELFAREINFODTO>> fetchDefault(SOCWELFAREINFOSearchContext context) {
@@ -200,10 +198,9 @@ public class SOCWELFAREINFOResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"SOCWELFAREINFO" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/socwelfareinfos/searchdefault")
-	public ResponseEntity<Page<SOCWELFAREINFODTO>> searchDefault(SOCWELFAREINFOSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/socwelfareinfos/searchdefault")
+	public ResponseEntity<Page<SOCWELFAREINFODTO>> searchDefault(@RequestBody SOCWELFAREINFOSearchContext context) {
         Page<SOCWELFAREINFO> domains = socwelfareinfoService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(socwelfareinfoMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

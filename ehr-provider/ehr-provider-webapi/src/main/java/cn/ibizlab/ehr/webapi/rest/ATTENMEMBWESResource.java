@@ -152,7 +152,6 @@ public class ATTENMEMBWESResource {
         ATTENMEMBWESDTO dto = attenmembwesMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"ATTENMEMBWES" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/attenmembwes/batch")
@@ -161,7 +160,6 @@ public class ATTENMEMBWESResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"ATTENMEMBWES" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/attenmembwes/fetchdefault")
 	public ResponseEntity<List<ATTENMEMBWESDTO>> fetchDefault(ATTENMEMBWESSearchContext context) {
@@ -174,10 +172,9 @@ public class ATTENMEMBWESResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"ATTENMEMBWES" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/attenmembwes/searchdefault")
-	public ResponseEntity<Page<ATTENMEMBWESDTO>> searchDefault(ATTENMEMBWESSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/attenmembwes/searchdefault")
+	public ResponseEntity<Page<ATTENMEMBWESDTO>> searchDefault(@RequestBody ATTENMEMBWESSearchContext context) {
         Page<ATTENMEMBWES> domains = attenmembwesService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(attenmembwesMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

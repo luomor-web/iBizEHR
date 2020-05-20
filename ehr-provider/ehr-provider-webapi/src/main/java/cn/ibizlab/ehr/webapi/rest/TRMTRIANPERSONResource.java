@@ -117,7 +117,6 @@ public class TRMTRIANPERSONResource {
         TRMTRIANPERSONDTO dto = trmtrianpersonMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"TRMTRIANPERSON" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmtrianpeople/batch")
@@ -161,7 +160,6 @@ public class TRMTRIANPERSONResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"TRMTRIANPERSON" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/trmtrianpeople/fetchdefault")
 	public ResponseEntity<List<TRMTRIANPERSONDTO>> fetchDefault(TRMTRIANPERSONSearchContext context) {
@@ -174,10 +172,9 @@ public class TRMTRIANPERSONResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"TRMTRIANPERSON" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/trmtrianpeople/searchdefault")
-	public ResponseEntity<Page<TRMTRIANPERSONDTO>> searchDefault(TRMTRIANPERSONSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/trmtrianpeople/searchdefault")
+	public ResponseEntity<Page<TRMTRIANPERSONDTO>> searchDefault(@RequestBody TRMTRIANPERSONSearchContext context) {
         Page<TRMTRIANPERSON> domains = trmtrianpersonService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(trmtrianpersonMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
@@ -299,8 +296,8 @@ public class TRMTRIANPERSONResource {
 	}
 
 	@ApiOperation(value = "searchDEFAULTByPIMPERSON", tags = {"TRMTRIANPERSON" } ,notes = "searchDEFAULTByPIMPERSON")
-    @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/trmtrianpeople/searchdefault")
-	public ResponseEntity<Page<TRMTRIANPERSONDTO>> searchTRMTRIANPERSONDefaultByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id,TRMTRIANPERSONSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/trmtrianpeople/searchdefault")
+	public ResponseEntity<Page<TRMTRIANPERSONDTO>> searchTRMTRIANPERSONDefaultByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody TRMTRIANPERSONSearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
         Page<TRMTRIANPERSON> domains = trmtrianpersonService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)

@@ -95,7 +95,6 @@ public class ATTENDANCEDATEResource {
         ATTENDANCEDATEDTO dto = attendancedateMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"ATTENDANCEDATE" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/attendancedates/batch")
@@ -161,7 +160,6 @@ public class ATTENDANCEDATEResource {
         return  ResponseEntity.status(HttpStatus.OK).body(attendancedateService.checkKey(attendancedateMapping.toDomain(attendancedatedto)));
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"ATTENDANCEDATE" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/attendancedates/fetchdefault")
 	public ResponseEntity<List<ATTENDANCEDATEDTO>> fetchDefault(ATTENDANCEDATESearchContext context) {
@@ -174,10 +172,9 @@ public class ATTENDANCEDATEResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"ATTENDANCEDATE" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/attendancedates/searchdefault")
-	public ResponseEntity<Page<ATTENDANCEDATEDTO>> searchDefault(ATTENDANCEDATESearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/attendancedates/searchdefault")
+	public ResponseEntity<Page<ATTENDANCEDATEDTO>> searchDefault(@RequestBody ATTENDANCEDATESearchContext context) {
         Page<ATTENDANCEDATE> domains = attendancedateService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(attendancedateMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

@@ -120,7 +120,6 @@ public class PIMMAJORSETYPEResource {
         PIMMAJORSETYPEDTO dto = pimmajorsetypeMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"PIMMAJORSETYPE" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimmajorsetypes/batch")
@@ -161,7 +160,6 @@ public class PIMMAJORSETYPEResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PIMMAJORSETYPE" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimmajorsetypes/fetchdefault")
 	public ResponseEntity<List<PIMMAJORSETYPEDTO>> fetchDefault(PIMMAJORSETYPESearchContext context) {
@@ -174,10 +172,9 @@ public class PIMMAJORSETYPEResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PIMMAJORSETYPE" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/pimmajorsetypes/searchdefault")
-	public ResponseEntity<Page<PIMMAJORSETYPEDTO>> searchDefault(PIMMAJORSETYPESearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimmajorsetypes/searchdefault")
+	public ResponseEntity<Page<PIMMAJORSETYPEDTO>> searchDefault(@RequestBody PIMMAJORSETYPESearchContext context) {
         Page<PIMMAJORSETYPE> domains = pimmajorsetypeService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimmajorsetypeMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

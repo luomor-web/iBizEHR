@@ -127,7 +127,6 @@ public class WFActorResource {
         WFActorDTO dto = wfactorMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"WFActor" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/wfactors/batch")
@@ -161,7 +160,6 @@ public class WFActorResource {
         return ResponseEntity.status(HttpStatus.OK).body(wfactorMapping.toDto(wfactorService.getDraft(new WFActor())));
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'IndexDER',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchIndexDER", tags = {"WFActor" } ,notes = "fetchIndexDER")
     @RequestMapping(method= RequestMethod.GET , value="/wfactors/fetchindexder")
 	public ResponseEntity<List<WFActorDTO>> fetchIndexDER(WFActorSearchContext context) {
@@ -174,16 +172,14 @@ public class WFActorResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'IndexDER',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchIndexDER", tags = {"WFActor" } ,notes = "searchIndexDER")
-    @RequestMapping(method= RequestMethod.GET , value="/wfactors/searchindexder")
-	public ResponseEntity<Page<WFActorDTO>> searchIndexDER(WFActorSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/wfactors/searchindexder")
+	public ResponseEntity<Page<WFActorDTO>> searchIndexDER(@RequestBody WFActorSearchContext context) {
         Page<WFActor> domains = wfactorService.searchIndexDER(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(wfactorMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"WFActor" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/wfactors/fetchdefault")
 	public ResponseEntity<List<WFActorDTO>> fetchDefault(WFActorSearchContext context) {
@@ -196,10 +192,9 @@ public class WFActorResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"WFActor" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/wfactors/searchdefault")
-	public ResponseEntity<Page<WFActorDTO>> searchDefault(WFActorSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/wfactors/searchdefault")
+	public ResponseEntity<Page<WFActorDTO>> searchDefault(@RequestBody WFActorSearchContext context) {
         Page<WFActor> domains = wfactorService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(wfactorMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

@@ -129,7 +129,6 @@ public class ORMORGInfoResource {
         ORMORGInfoDTO dto = ormorginfoMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"ORMORGInfo" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormorginfos/batch")
@@ -161,7 +160,6 @@ public class ORMORGInfoResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'SubOrgsector',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch子部门查询", tags = {"ORMORGInfo" } ,notes = "fetch子部门查询")
     @RequestMapping(method= RequestMethod.GET , value="/ormorginfos/fetchsuborgsector")
 	public ResponseEntity<List<ORMORGInfoDTO>> fetchSubOrgsector(ORMORGInfoSearchContext context) {
@@ -174,16 +172,14 @@ public class ORMORGInfoResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'SubOrgsector',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search子部门查询", tags = {"ORMORGInfo" } ,notes = "search子部门查询")
-    @RequestMapping(method= RequestMethod.GET , value="/ormorginfos/searchsuborgsector")
-	public ResponseEntity<Page<ORMORGInfoDTO>> searchSubOrgsector(ORMORGInfoSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/ormorginfos/searchsuborgsector")
+	public ResponseEntity<Page<ORMORGInfoDTO>> searchSubOrgsector(@RequestBody ORMORGInfoSearchContext context) {
         Page<ORMORGInfo> domains = ormorginfoService.searchSubOrgsector(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(ormorginfoMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'CX',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch自定义查询", tags = {"ORMORGInfo" } ,notes = "fetch自定义查询")
     @RequestMapping(method= RequestMethod.GET , value="/ormorginfos/fetchcx")
 	public ResponseEntity<List<ORMORGInfoDTO>> fetchCX(ORMORGInfoSearchContext context) {
@@ -196,16 +192,14 @@ public class ORMORGInfoResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'CX',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search自定义查询", tags = {"ORMORGInfo" } ,notes = "search自定义查询")
-    @RequestMapping(method= RequestMethod.GET , value="/ormorginfos/searchcx")
-	public ResponseEntity<Page<ORMORGInfoDTO>> searchCX(ORMORGInfoSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/ormorginfos/searchcx")
+	public ResponseEntity<Page<ORMORGInfoDTO>> searchCX(@RequestBody ORMORGInfoSearchContext context) {
         Page<ORMORGInfo> domains = ormorginfoService.searchCX(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(ormorginfoMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'CurOrgsector',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch部门/项目部查询", tags = {"ORMORGInfo" } ,notes = "fetch部门/项目部查询")
     @RequestMapping(method= RequestMethod.GET , value="/ormorginfos/fetchcurorgsector")
 	public ResponseEntity<List<ORMORGInfoDTO>> fetchCurOrgsector(ORMORGInfoSearchContext context) {
@@ -218,16 +212,14 @@ public class ORMORGInfoResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'CurOrgsector',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search部门/项目部查询", tags = {"ORMORGInfo" } ,notes = "search部门/项目部查询")
-    @RequestMapping(method= RequestMethod.GET , value="/ormorginfos/searchcurorgsector")
-	public ResponseEntity<Page<ORMORGInfoDTO>> searchCurOrgsector(ORMORGInfoSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/ormorginfos/searchcurorgsector")
+	public ResponseEntity<Page<ORMORGInfoDTO>> searchCurOrgsector(@RequestBody ORMORGInfoSearchContext context) {
         Page<ORMORGInfo> domains = ormorginfoService.searchCurOrgsector(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(ormorginfoMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'CurChild',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch子组织查询", tags = {"ORMORGInfo" } ,notes = "fetch子组织查询")
     @RequestMapping(method= RequestMethod.GET , value="/ormorginfos/fetchcurchild")
 	public ResponseEntity<List<ORMORGInfoDTO>> fetchCurChild(ORMORGInfoSearchContext context) {
@@ -240,16 +232,14 @@ public class ORMORGInfoResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'CurChild',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search子组织查询", tags = {"ORMORGInfo" } ,notes = "search子组织查询")
-    @RequestMapping(method= RequestMethod.GET , value="/ormorginfos/searchcurchild")
-	public ResponseEntity<Page<ORMORGInfoDTO>> searchCurChild(ORMORGInfoSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/ormorginfos/searchcurchild")
+	public ResponseEntity<Page<ORMORGInfoDTO>> searchCurChild(@RequestBody ORMORGInfoSearchContext context) {
         Page<ORMORGInfo> domains = ormorginfoService.searchCurChild(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(ormorginfoMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'CurPorg',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch根组织查询", tags = {"ORMORGInfo" } ,notes = "fetch根组织查询")
     @RequestMapping(method= RequestMethod.GET , value="/ormorginfos/fetchcurporg")
 	public ResponseEntity<List<ORMORGInfoDTO>> fetchCurPorg(ORMORGInfoSearchContext context) {
@@ -262,16 +252,14 @@ public class ORMORGInfoResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'CurPorg',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search根组织查询", tags = {"ORMORGInfo" } ,notes = "search根组织查询")
-    @RequestMapping(method= RequestMethod.GET , value="/ormorginfos/searchcurporg")
-	public ResponseEntity<Page<ORMORGInfoDTO>> searchCurPorg(ORMORGInfoSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/ormorginfos/searchcurporg")
+	public ResponseEntity<Page<ORMORGInfoDTO>> searchCurPorg(@RequestBody ORMORGInfoSearchContext context) {
         Page<ORMORGInfo> domains = ormorginfoService.searchCurPorg(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(ormorginfoMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'SubPerson',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch当前部门/项目部人员清单", tags = {"ORMORGInfo" } ,notes = "fetch当前部门/项目部人员清单")
     @RequestMapping(method= RequestMethod.GET , value="/ormorginfos/fetchsubperson")
 	public ResponseEntity<List<ORMORGInfoDTO>> fetchSubPerson(ORMORGInfoSearchContext context) {
@@ -284,16 +272,14 @@ public class ORMORGInfoResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'SubPerson',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search当前部门/项目部人员清单", tags = {"ORMORGInfo" } ,notes = "search当前部门/项目部人员清单")
-    @RequestMapping(method= RequestMethod.GET , value="/ormorginfos/searchsubperson")
-	public ResponseEntity<Page<ORMORGInfoDTO>> searchSubPerson(ORMORGInfoSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/ormorginfos/searchsubperson")
+	public ResponseEntity<Page<ORMORGInfoDTO>> searchSubPerson(@RequestBody ORMORGInfoSearchContext context) {
         Page<ORMORGInfo> domains = ormorginfoService.searchSubPerson(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(ormorginfoMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"ORMORGInfo" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/ormorginfos/fetchdefault")
 	public ResponseEntity<List<ORMORGInfoDTO>> fetchDefault(ORMORGInfoSearchContext context) {
@@ -306,16 +292,14 @@ public class ORMORGInfoResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"ORMORGInfo" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/ormorginfos/searchdefault")
-	public ResponseEntity<Page<ORMORGInfoDTO>> searchDefault(ORMORGInfoSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/ormorginfos/searchdefault")
+	public ResponseEntity<Page<ORMORGInfoDTO>> searchDefault(@RequestBody ORMORGInfoSearchContext context) {
         Page<ORMORGInfo> domains = ormorginfoService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(ormorginfoMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Suborg',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch当前组织所包含的直接下级组织查询", tags = {"ORMORGInfo" } ,notes = "fetch当前组织所包含的直接下级组织查询")
     @RequestMapping(method= RequestMethod.GET , value="/ormorginfos/fetchsuborg")
 	public ResponseEntity<List<ORMORGInfoDTO>> fetchSuborg(ORMORGInfoSearchContext context) {
@@ -328,10 +312,9 @@ public class ORMORGInfoResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Suborg',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search当前组织所包含的直接下级组织查询", tags = {"ORMORGInfo" } ,notes = "search当前组织所包含的直接下级组织查询")
-    @RequestMapping(method= RequestMethod.GET , value="/ormorginfos/searchsuborg")
-	public ResponseEntity<Page<ORMORGInfoDTO>> searchSuborg(ORMORGInfoSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/ormorginfos/searchsuborg")
+	public ResponseEntity<Page<ORMORGInfoDTO>> searchSuborg(@RequestBody ORMORGInfoSearchContext context) {
         Page<ORMORGInfo> domains = ormorginfoService.searchSuborg(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(ormorginfoMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

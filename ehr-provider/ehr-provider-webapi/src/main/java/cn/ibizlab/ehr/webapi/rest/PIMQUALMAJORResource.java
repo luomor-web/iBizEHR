@@ -65,7 +65,6 @@ public class PIMQUALMAJORResource {
         PIMQUALMAJORDTO dto = pimqualmajorMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"PIMQUALMAJOR" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimqualmajors/batch")
@@ -161,7 +160,6 @@ public class PIMQUALMAJORResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PIMQUALMAJOR" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimqualmajors/fetchdefault")
 	public ResponseEntity<List<PIMQUALMAJORDTO>> fetchDefault(PIMQUALMAJORSearchContext context) {
@@ -174,16 +172,14 @@ public class PIMQUALMAJORResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PIMQUALMAJOR" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/pimqualmajors/searchdefault")
-	public ResponseEntity<Page<PIMQUALMAJORDTO>> searchDefault(PIMQUALMAJORSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimqualmajors/searchdefault")
+	public ResponseEntity<Page<PIMQUALMAJORDTO>> searchDefault(@RequestBody PIMQUALMAJORSearchContext context) {
         Page<PIMQUALMAJOR> domains = pimqualmajorService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimqualmajorMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'XZZGZY',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch选择资格类别下对应的资格专业", tags = {"PIMQUALMAJOR" } ,notes = "fetch选择资格类别下对应的资格专业")
     @RequestMapping(method= RequestMethod.GET , value="/pimqualmajors/fetchxzzgzy")
 	public ResponseEntity<List<PIMQUALMAJORDTO>> fetchXZZGZY(PIMQUALMAJORSearchContext context) {
@@ -196,10 +192,9 @@ public class PIMQUALMAJORResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'XZZGZY',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search选择资格类别下对应的资格专业", tags = {"PIMQUALMAJOR" } ,notes = "search选择资格类别下对应的资格专业")
-    @RequestMapping(method= RequestMethod.GET , value="/pimqualmajors/searchxzzgzy")
-	public ResponseEntity<Page<PIMQUALMAJORDTO>> searchXZZGZY(PIMQUALMAJORSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimqualmajors/searchxzzgzy")
+	public ResponseEntity<Page<PIMQUALMAJORDTO>> searchXZZGZY(@RequestBody PIMQUALMAJORSearchContext context) {
         Page<PIMQUALMAJOR> domains = pimqualmajorService.searchXZZGZY(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimqualmajorMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

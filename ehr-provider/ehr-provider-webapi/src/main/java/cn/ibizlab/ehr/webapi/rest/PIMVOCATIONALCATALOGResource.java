@@ -134,7 +134,6 @@ public class PIMVOCATIONALCATALOGResource {
         PIMVOCATIONALCATALOGDTO dto = pimvocationalcatalogMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"PIMVOCATIONALCATALOG" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimvocationalcatalogs/batch")
@@ -161,7 +160,6 @@ public class PIMVOCATIONALCATALOGResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PIMVOCATIONALCATALOG" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimvocationalcatalogs/fetchdefault")
 	public ResponseEntity<List<PIMVOCATIONALCATALOGDTO>> fetchDefault(PIMVOCATIONALCATALOGSearchContext context) {
@@ -174,10 +172,9 @@ public class PIMVOCATIONALCATALOGResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PIMVOCATIONALCATALOG" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/pimvocationalcatalogs/searchdefault")
-	public ResponseEntity<Page<PIMVOCATIONALCATALOGDTO>> searchDefault(PIMVOCATIONALCATALOGSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimvocationalcatalogs/searchdefault")
+	public ResponseEntity<Page<PIMVOCATIONALCATALOGDTO>> searchDefault(@RequestBody PIMVOCATIONALCATALOGSearchContext context) {
         Page<PIMVOCATIONALCATALOG> domains = pimvocationalcatalogService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimvocationalcatalogMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

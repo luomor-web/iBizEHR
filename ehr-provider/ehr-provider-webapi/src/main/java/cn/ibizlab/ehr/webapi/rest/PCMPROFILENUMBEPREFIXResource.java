@@ -116,7 +116,6 @@ public class PCMPROFILENUMBEPREFIXResource {
         PCMPROFILENUMBEPREFIXDTO dto = pcmprofilenumbeprefixMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"PCMPROFILENUMBEPREFIX" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofilenumbeprefixes/batch")
@@ -161,7 +160,6 @@ public class PCMPROFILENUMBEPREFIXResource {
         return ResponseEntity.status(HttpStatus.OK).body(pcmprofilenumbeprefixMapping.toDto(pcmprofilenumbeprefixService.getDraft(new PCMPROFILENUMBEPREFIX())));
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PCMPROFILENUMBEPREFIX" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pcmprofilenumbeprefixes/fetchdefault")
 	public ResponseEntity<List<PCMPROFILENUMBEPREFIXDTO>> fetchDefault(PCMPROFILENUMBEPREFIXSearchContext context) {
@@ -174,10 +172,9 @@ public class PCMPROFILENUMBEPREFIXResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PCMPROFILENUMBEPREFIX" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/pcmprofilenumbeprefixes/searchdefault")
-	public ResponseEntity<Page<PCMPROFILENUMBEPREFIXDTO>> searchDefault(PCMPROFILENUMBEPREFIXSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pcmprofilenumbeprefixes/searchdefault")
+	public ResponseEntity<Page<PCMPROFILENUMBEPREFIXDTO>> searchDefault(@RequestBody PCMPROFILENUMBEPREFIXSearchContext context) {
         Page<PCMPROFILENUMBEPREFIX> domains = pcmprofilenumbeprefixService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pcmprofilenumbeprefixMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

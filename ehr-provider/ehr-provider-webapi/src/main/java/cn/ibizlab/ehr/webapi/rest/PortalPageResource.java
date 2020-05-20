@@ -127,7 +127,6 @@ public class PortalPageResource {
         PortalPageDTO dto = portalpageMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"PortalPage" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/portalpages/batch")
@@ -161,7 +160,6 @@ public class PortalPageResource {
         return ResponseEntity.status(HttpStatus.OK).body(portalpageMapping.toDto(portalpageService.getDraft(new PortalPage())));
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PortalPage" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/portalpages/fetchdefault")
 	public ResponseEntity<List<PortalPageDTO>> fetchDefault(PortalPageSearchContext context) {
@@ -174,10 +172,9 @@ public class PortalPageResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PortalPage" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/portalpages/searchdefault")
-	public ResponseEntity<Page<PortalPageDTO>> searchDefault(PortalPageSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/portalpages/searchdefault")
+	public ResponseEntity<Page<PortalPageDTO>> searchDefault(@RequestBody PortalPageSearchContext context) {
         Page<PortalPage> domains = portalpageService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(portalpageMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

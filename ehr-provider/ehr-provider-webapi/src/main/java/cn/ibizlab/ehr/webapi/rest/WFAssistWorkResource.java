@@ -88,7 +88,6 @@ public class WFAssistWorkResource {
         WFAssistWorkDTO dto = wfassistworkMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"WFAssistWork" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/wfassistworks/batch")
@@ -161,7 +160,6 @@ public class WFAssistWorkResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'CurUserAssistWork',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch当前用户代办工作", tags = {"WFAssistWork" } ,notes = "fetch当前用户代办工作")
     @RequestMapping(method= RequestMethod.GET , value="/wfassistworks/fetchcuruserassistwork")
 	public ResponseEntity<List<WFAssistWorkDTO>> fetchCurUserAssistWork(WFAssistWorkSearchContext context) {
@@ -174,16 +172,14 @@ public class WFAssistWorkResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'CurUserAssistWork',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search当前用户代办工作", tags = {"WFAssistWork" } ,notes = "search当前用户代办工作")
-    @RequestMapping(method= RequestMethod.GET , value="/wfassistworks/searchcuruserassistwork")
-	public ResponseEntity<Page<WFAssistWorkDTO>> searchCurUserAssistWork(WFAssistWorkSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/wfassistworks/searchcuruserassistwork")
+	public ResponseEntity<Page<WFAssistWorkDTO>> searchCurUserAssistWork(@RequestBody WFAssistWorkSearchContext context) {
         Page<WFAssistWork> domains = wfassistworkService.searchCurUserAssistWork(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(wfassistworkMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"WFAssistWork" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/wfassistworks/fetchdefault")
 	public ResponseEntity<List<WFAssistWorkDTO>> fetchDefault(WFAssistWorkSearchContext context) {
@@ -196,10 +192,9 @@ public class WFAssistWorkResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"WFAssistWork" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/wfassistworks/searchdefault")
-	public ResponseEntity<Page<WFAssistWorkDTO>> searchDefault(WFAssistWorkSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/wfassistworks/searchdefault")
+	public ResponseEntity<Page<WFAssistWorkDTO>> searchDefault(@RequestBody WFAssistWorkSearchContext context) {
         Page<WFAssistWork> domains = wfassistworkService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(wfassistworkMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

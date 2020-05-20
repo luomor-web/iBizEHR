@@ -111,7 +111,6 @@ public class VACDAYOFFResource {
         VACDAYOFFDTO dto = vacdayoffMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"VACDAYOFF" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacdayoffs/batch")
@@ -161,7 +160,6 @@ public class VACDAYOFFResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"VACDAYOFF" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/vacdayoffs/fetchdefault")
 	public ResponseEntity<List<VACDAYOFFDTO>> fetchDefault(VACDAYOFFSearchContext context) {
@@ -174,10 +172,9 @@ public class VACDAYOFFResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"VACDAYOFF" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/vacdayoffs/searchdefault")
-	public ResponseEntity<Page<VACDAYOFFDTO>> searchDefault(VACDAYOFFSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/vacdayoffs/searchdefault")
+	public ResponseEntity<Page<VACDAYOFFDTO>> searchDefault(@RequestBody VACDAYOFFSearchContext context) {
         Page<VACDAYOFF> domains = vacdayoffService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(vacdayoffMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

@@ -65,7 +65,6 @@ public class PIMARCHIVESRECORDResource {
         PIMARCHIVESRECORDDTO dto = pimarchivesrecordMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"PIMARCHIVESRECORD" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimarchivesrecords/batch")
@@ -161,7 +160,6 @@ public class PIMARCHIVESRECORDResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PIMARCHIVESRECORD" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimarchivesrecords/fetchdefault")
 	public ResponseEntity<List<PIMARCHIVESRECORDDTO>> fetchDefault(PIMARCHIVESRECORDSearchContext context) {
@@ -174,10 +172,9 @@ public class PIMARCHIVESRECORDResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PIMARCHIVESRECORD" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/pimarchivesrecords/searchdefault")
-	public ResponseEntity<Page<PIMARCHIVESRECORDDTO>> searchDefault(PIMARCHIVESRECORDSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimarchivesrecords/searchdefault")
+	public ResponseEntity<Page<PIMARCHIVESRECORDDTO>> searchDefault(@RequestBody PIMARCHIVESRECORDSearchContext context) {
         Page<PIMARCHIVESRECORD> domains = pimarchivesrecordService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimarchivesrecordMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
@@ -299,8 +296,8 @@ public class PIMARCHIVESRECORDResource {
 	}
 
 	@ApiOperation(value = "searchDEFAULTByPIMARCHIVES", tags = {"PIMARCHIVESRECORD" } ,notes = "searchDEFAULTByPIMARCHIVES")
-    @RequestMapping(method= RequestMethod.GET , value="/pimarchives/{pimarchives_id}/pimarchivesrecords/searchdefault")
-	public ResponseEntity<Page<PIMARCHIVESRECORDDTO>> searchPIMARCHIVESRECORDDefaultByPIMARCHIVES(@PathVariable("pimarchives_id") String pimarchives_id,PIMARCHIVESRECORDSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimarchives/{pimarchives_id}/pimarchivesrecords/searchdefault")
+	public ResponseEntity<Page<PIMARCHIVESRECORDDTO>> searchPIMARCHIVESRECORDDefaultByPIMARCHIVES(@PathVariable("pimarchives_id") String pimarchives_id, @RequestBody PIMARCHIVESRECORDSearchContext context) {
         context.setN_pimarchivesid_eq(pimarchives_id);
         Page<PIMARCHIVESRECORD> domains = pimarchivesrecordService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
@@ -424,8 +421,8 @@ public class PIMARCHIVESRECORDResource {
 	}
 
 	@ApiOperation(value = "searchDEFAULTByPIMPERSONPIMARCHIVES", tags = {"PIMARCHIVESRECORD" } ,notes = "searchDEFAULTByPIMPERSONPIMARCHIVES")
-    @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/pimarchives/{pimarchives_id}/pimarchivesrecords/searchdefault")
-	public ResponseEntity<Page<PIMARCHIVESRECORDDTO>> searchPIMARCHIVESRECORDDefaultByPIMPERSONPIMARCHIVES(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimarchives_id") String pimarchives_id,PIMARCHIVESRECORDSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/pimarchives/{pimarchives_id}/pimarchivesrecords/searchdefault")
+	public ResponseEntity<Page<PIMARCHIVESRECORDDTO>> searchPIMARCHIVESRECORDDefaultByPIMPERSONPIMARCHIVES(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimarchives_id") String pimarchives_id, @RequestBody PIMARCHIVESRECORDSearchContext context) {
         context.setN_pimarchivesid_eq(pimarchives_id);
         Page<PIMARCHIVESRECORD> domains = pimarchivesrecordService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)

@@ -221,7 +221,6 @@ public class QUESTIONSResource {
         QUESTIONSDTO dto = questionsMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"QUESTIONS" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/questions/batch")
@@ -291,7 +290,6 @@ public class QUESTIONSResource {
         return ResponseEntity.status(HttpStatus.OK).body(questionsdto);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'QUERYcurrentQUESTION',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch查询当前页面问题", tags = {"QUESTIONS" } ,notes = "fetch查询当前页面问题")
     @RequestMapping(method= RequestMethod.GET , value="/questions/fetchquerycurrentquestion")
 	public ResponseEntity<List<QUESTIONSDTO>> fetchQUERYcurrentQUESTION(QUESTIONSSearchContext context) {
@@ -304,16 +302,14 @@ public class QUESTIONSResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'QUERYcurrentQUESTION',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search查询当前页面问题", tags = {"QUESTIONS" } ,notes = "search查询当前页面问题")
-    @RequestMapping(method= RequestMethod.GET , value="/questions/searchquerycurrentquestion")
-	public ResponseEntity<Page<QUESTIONSDTO>> searchQUERYcurrentQUESTION(QUESTIONSSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/questions/searchquerycurrentquestion")
+	public ResponseEntity<Page<QUESTIONSDTO>> searchQUERYcurrentQUESTION(@RequestBody QUESTIONSSearchContext context) {
         Page<QUESTIONS> domains = questionsService.searchQUERYcurrentQUESTION(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(questionsMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"QUESTIONS" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/questions/fetchdefault")
 	public ResponseEntity<List<QUESTIONSDTO>> fetchDefault(QUESTIONSSearchContext context) {
@@ -326,10 +322,9 @@ public class QUESTIONSResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"QUESTIONS" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/questions/searchdefault")
-	public ResponseEntity<Page<QUESTIONSDTO>> searchDefault(QUESTIONSSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/questions/searchdefault")
+	public ResponseEntity<Page<QUESTIONSDTO>> searchDefault(@RequestBody QUESTIONSSearchContext context) {
         Page<QUESTIONS> domains = questionsService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(questionsMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

@@ -63,6 +63,8 @@ mybatis-plus:
 
 #阿里sentinel熔断器
 feign:
+  httpclient:
+    enabled: true
   sentinel:
     enabled: true
 

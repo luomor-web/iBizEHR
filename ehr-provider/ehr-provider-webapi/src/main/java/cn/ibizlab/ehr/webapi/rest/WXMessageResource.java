@@ -106,7 +106,6 @@ public class WXMessageResource {
         WXMessageDTO dto = wxmessageMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"WXMessage" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/wxmessages/batch")
@@ -161,7 +160,6 @@ public class WXMessageResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"WXMessage" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/wxmessages/fetchdefault")
 	public ResponseEntity<List<WXMessageDTO>> fetchDefault(WXMessageSearchContext context) {
@@ -174,10 +172,9 @@ public class WXMessageResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"WXMessage" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/wxmessages/searchdefault")
-	public ResponseEntity<Page<WXMessageDTO>> searchDefault(WXMessageSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/wxmessages/searchdefault")
+	public ResponseEntity<Page<WXMessageDTO>> searchDefault(@RequestBody WXMessageSearchContext context) {
         Page<WXMessage> domains = wxmessageService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(wxmessageMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

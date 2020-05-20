@@ -65,7 +65,6 @@ public class WFSystemUserResource {
         WFSystemUserDTO dto = wfsystemuserMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"WFSystemUser" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/wfsystemusers/batch")
@@ -161,7 +160,6 @@ public class WFSystemUserResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"WFSystemUser" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/wfsystemusers/fetchdefault")
 	public ResponseEntity<List<WFSystemUserDTO>> fetchDefault(WFSystemUserSearchContext context) {
@@ -174,10 +172,9 @@ public class WFSystemUserResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"WFSystemUser" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/wfsystemusers/searchdefault")
-	public ResponseEntity<Page<WFSystemUserDTO>> searchDefault(WFSystemUserSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/wfsystemusers/searchdefault")
+	public ResponseEntity<Page<WFSystemUserDTO>> searchDefault(@RequestBody WFSystemUserSearchContext context) {
         Page<WFSystemUser> domains = wfsystemuserService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(wfsystemuserMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

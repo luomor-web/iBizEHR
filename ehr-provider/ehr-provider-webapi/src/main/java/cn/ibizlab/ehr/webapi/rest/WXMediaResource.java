@@ -65,7 +65,6 @@ public class WXMediaResource {
         WXMediaDTO dto = wxmediaMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"WXMedia" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/wxmedia/batch")
@@ -161,7 +160,6 @@ public class WXMediaResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"WXMedia" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/wxmedia/fetchdefault")
 	public ResponseEntity<List<WXMediaDTO>> fetchDefault(WXMediaSearchContext context) {
@@ -174,10 +172,9 @@ public class WXMediaResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"WXMedia" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/wxmedia/searchdefault")
-	public ResponseEntity<Page<WXMediaDTO>> searchDefault(WXMediaSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/wxmedia/searchdefault")
+	public ResponseEntity<Page<WXMediaDTO>> searchDefault(@RequestBody WXMediaSearchContext context) {
         Page<WXMedia> domains = wxmediaService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(wxmediaMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

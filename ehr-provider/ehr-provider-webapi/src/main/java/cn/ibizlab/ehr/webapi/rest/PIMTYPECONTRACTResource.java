@@ -127,7 +127,6 @@ public class PIMTYPECONTRACTResource {
         PIMTYPECONTRACTDTO dto = pimtypecontractMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"PIMTYPECONTRACT" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimtypecontracts/batch")
@@ -161,7 +160,6 @@ public class PIMTYPECONTRACTResource {
         return ResponseEntity.status(HttpStatus.OK).body(pimtypecontractMapping.toDto(pimtypecontractService.getDraft(new PIMTYPECONTRACT())));
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PIMTYPECONTRACT" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimtypecontracts/fetchdefault")
 	public ResponseEntity<List<PIMTYPECONTRACTDTO>> fetchDefault(PIMTYPECONTRACTSearchContext context) {
@@ -174,10 +172,9 @@ public class PIMTYPECONTRACTResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PIMTYPECONTRACT" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/pimtypecontracts/searchdefault")
-	public ResponseEntity<Page<PIMTYPECONTRACTDTO>> searchDefault(PIMTYPECONTRACTSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimtypecontracts/searchdefault")
+	public ResponseEntity<Page<PIMTYPECONTRACTDTO>> searchDefault(@RequestBody PIMTYPECONTRACTSearchContext context) {
         Page<PIMTYPECONTRACT> domains = pimtypecontractService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimtypecontractMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

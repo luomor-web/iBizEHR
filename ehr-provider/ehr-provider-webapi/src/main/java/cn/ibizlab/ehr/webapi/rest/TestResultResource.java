@@ -83,7 +83,6 @@ public class TestResultResource {
         TestResultDTO dto = testresultMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"TestResult" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/testresults/batch")
@@ -161,7 +160,6 @@ public class TestResultResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"TestResult" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/testresults/fetchdefault")
 	public ResponseEntity<List<TestResultDTO>> fetchDefault(TestResultSearchContext context) {
@@ -174,10 +172,9 @@ public class TestResultResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"TestResult" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/testresults/searchdefault")
-	public ResponseEntity<Page<TestResultDTO>> searchDefault(TestResultSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/testresults/searchdefault")
+	public ResponseEntity<Page<TestResultDTO>> searchDefault(@RequestBody TestResultSearchContext context) {
         Page<TestResult> domains = testresultService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(testresultMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
@@ -299,8 +296,8 @@ public class TestResultResource {
 	}
 
 	@ApiOperation(value = "searchDEFAULTByPCMPROFILE", tags = {"TestResult" } ,notes = "searchDEFAULTByPCMPROFILE")
-    @RequestMapping(method= RequestMethod.GET , value="/pcmprofiles/{pcmprofile_id}/testresults/searchdefault")
-	public ResponseEntity<Page<TestResultDTO>> searchTestResultDefaultByPCMPROFILE(@PathVariable("pcmprofile_id") String pcmprofile_id,TestResultSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pcmprofiles/{pcmprofile_id}/testresults/searchdefault")
+	public ResponseEntity<Page<TestResultDTO>> searchTestResultDefaultByPCMPROFILE(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody TestResultSearchContext context) {
         context.setN_pcmprofileid_eq(pcmprofile_id);
         Page<TestResult> domains = testresultService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)

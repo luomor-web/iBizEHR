@@ -152,7 +152,6 @@ public class UserRoleResResource {
         UserRoleResDTO dto = userroleresMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"UserRoleRes" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/userroleres/batch")
@@ -161,7 +160,6 @@ public class UserRoleResResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"UserRoleRes" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/userroleres/fetchdefault")
 	public ResponseEntity<List<UserRoleResDTO>> fetchDefault(UserRoleResSearchContext context) {
@@ -174,10 +172,9 @@ public class UserRoleResResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"UserRoleRes" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/userroleres/searchdefault")
-	public ResponseEntity<Page<UserRoleResDTO>> searchDefault(UserRoleResSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/userroleres/searchdefault")
+	public ResponseEntity<Page<UserRoleResDTO>> searchDefault(@RequestBody UserRoleResSearchContext context) {
         Page<UserRoleRes> domains = userroleresService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(userroleresMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

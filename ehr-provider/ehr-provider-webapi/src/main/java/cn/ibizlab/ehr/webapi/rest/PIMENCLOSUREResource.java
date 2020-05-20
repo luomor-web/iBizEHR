@@ -140,7 +140,6 @@ public class PIMENCLOSUREResource {
         PIMENCLOSUREDTO dto = pimenclosureMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"PIMENCLOSURE" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimenclosures/batch")
@@ -161,7 +160,6 @@ public class PIMENCLOSUREResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'PCMPROFILE_FJ',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch应聘者附件预览", tags = {"PIMENCLOSURE" } ,notes = "fetch应聘者附件预览")
     @RequestMapping(method= RequestMethod.GET , value="/pimenclosures/fetchpcmprofile_fj")
 	public ResponseEntity<List<PIMENCLOSUREDTO>> fetchPCMPROFILE_FJ(PIMENCLOSURESearchContext context) {
@@ -174,16 +172,14 @@ public class PIMENCLOSUREResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'PCMPROFILE_FJ',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search应聘者附件预览", tags = {"PIMENCLOSURE" } ,notes = "search应聘者附件预览")
-    @RequestMapping(method= RequestMethod.GET , value="/pimenclosures/searchpcmprofile_fj")
-	public ResponseEntity<Page<PIMENCLOSUREDTO>> searchPCMPROFILE_FJ(PIMENCLOSURESearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimenclosures/searchpcmprofile_fj")
+	public ResponseEntity<Page<PIMENCLOSUREDTO>> searchPCMPROFILE_FJ(@RequestBody PIMENCLOSURESearchContext context) {
         Page<PIMENCLOSURE> domains = pimenclosureService.searchPCMPROFILE_FJ(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimenclosureMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PIMENCLOSURE" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimenclosures/fetchdefault")
 	public ResponseEntity<List<PIMENCLOSUREDTO>> fetchDefault(PIMENCLOSURESearchContext context) {
@@ -196,10 +192,9 @@ public class PIMENCLOSUREResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PIMENCLOSURE" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/pimenclosures/searchdefault")
-	public ResponseEntity<Page<PIMENCLOSUREDTO>> searchDefault(PIMENCLOSURESearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimenclosures/searchdefault")
+	public ResponseEntity<Page<PIMENCLOSUREDTO>> searchDefault(@RequestBody PIMENCLOSURESearchContext context) {
         Page<PIMENCLOSURE> domains = pimenclosureService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimenclosureMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

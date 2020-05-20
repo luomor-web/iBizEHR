@@ -118,7 +118,6 @@ public class ORMXMGLResource {
         ORMXMGLDTO dto = ormxmglMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"ORMXMGL" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormxmgls/batch")
@@ -174,7 +173,6 @@ public class ORMXMGLResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"ORMXMGL" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/ormxmgls/fetchdefault")
 	public ResponseEntity<List<ORMXMGLDTO>> fetchDefault(ORMXMGLSearchContext context) {
@@ -187,16 +185,14 @@ public class ORMXMGLResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"ORMXMGL" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/ormxmgls/searchdefault")
-	public ResponseEntity<Page<ORMXMGLDTO>> searchDefault(ORMXMGLSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/ormxmgls/searchdefault")
+	public ResponseEntity<Page<ORMXMGLDTO>> searchDefault(@RequestBody ORMXMGLSearchContext context) {
         Page<ORMXMGL> domains = ormxmglService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(ormxmglMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'ValidPro',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch有效项目", tags = {"ORMXMGL" } ,notes = "fetch有效项目")
     @RequestMapping(method= RequestMethod.GET , value="/ormxmgls/fetchvalidpro")
 	public ResponseEntity<List<ORMXMGLDTO>> fetchValidPro(ORMXMGLSearchContext context) {
@@ -209,10 +205,9 @@ public class ORMXMGLResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'ValidPro',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search有效项目", tags = {"ORMXMGL" } ,notes = "search有效项目")
-    @RequestMapping(method= RequestMethod.GET , value="/ormxmgls/searchvalidpro")
-	public ResponseEntity<Page<ORMXMGLDTO>> searchValidPro(ORMXMGLSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/ormxmgls/searchvalidpro")
+	public ResponseEntity<Page<ORMXMGLDTO>> searchValidPro(@RequestBody ORMXMGLSearchContext context) {
         Page<ORMXMGL> domains = ormxmglService.searchValidPro(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(ormxmglMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

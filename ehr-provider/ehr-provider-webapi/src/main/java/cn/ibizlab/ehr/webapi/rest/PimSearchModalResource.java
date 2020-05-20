@@ -109,7 +109,6 @@ public class PimSearchModalResource {
         PimSearchModalDTO dto = pimsearchmodalMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"PimSearchModal" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimsearchmodals/batch")
@@ -161,7 +160,6 @@ public class PimSearchModalResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PimSearchModal" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimsearchmodals/fetchdefault")
 	public ResponseEntity<List<PimSearchModalDTO>> fetchDefault(PimSearchModalSearchContext context) {
@@ -174,10 +172,9 @@ public class PimSearchModalResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PimSearchModal" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/pimsearchmodals/searchdefault")
-	public ResponseEntity<Page<PimSearchModalDTO>> searchDefault(PimSearchModalSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimsearchmodals/searchdefault")
+	public ResponseEntity<Page<PimSearchModalDTO>> searchDefault(@RequestBody PimSearchModalSearchContext context) {
         Page<PimSearchModal> domains = pimsearchmodalService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimsearchmodalMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

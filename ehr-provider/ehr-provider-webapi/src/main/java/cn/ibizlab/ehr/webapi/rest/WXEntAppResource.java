@@ -133,7 +133,6 @@ public class WXEntAppResource {
         WXEntAppDTO dto = wxentappMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"WXEntApp" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/wxentapps/batch")
@@ -174,7 +173,6 @@ public class WXEntAppResource {
         return  ResponseEntity.status(HttpStatus.OK).body(wxentappService.checkKey(wxentappMapping.toDomain(wxentappdto)));
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"WXEntApp" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/wxentapps/fetchdefault")
 	public ResponseEntity<List<WXEntAppDTO>> fetchDefault(WXEntAppSearchContext context) {
@@ -187,10 +185,9 @@ public class WXEntAppResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"WXEntApp" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/wxentapps/searchdefault")
-	public ResponseEntity<Page<WXEntAppDTO>> searchDefault(WXEntAppSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/wxentapps/searchdefault")
+	public ResponseEntity<Page<WXEntAppDTO>> searchDefault(@RequestBody WXEntAppSearchContext context) {
         Page<WXEntApp> domains = wxentappService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(wxentappMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

@@ -77,7 +77,6 @@ public class WFVersionResource {
         WFVersionDTO dto = wfversionMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"WFVersion" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/wfversions/batch")
@@ -161,7 +160,6 @@ public class WFVersionResource {
         return  ResponseEntity.status(HttpStatus.OK).body(wfversionService.checkKey(wfversionMapping.toDomain(wfversiondto)));
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"WFVersion" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/wfversions/fetchdefault")
 	public ResponseEntity<List<WFVersionDTO>> fetchDefault(WFVersionSearchContext context) {
@@ -174,10 +172,9 @@ public class WFVersionResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"WFVersion" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/wfversions/searchdefault")
-	public ResponseEntity<Page<WFVersionDTO>> searchDefault(WFVersionSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/wfversions/searchdefault")
+	public ResponseEntity<Page<WFVersionDTO>> searchDefault(@RequestBody WFVersionSearchContext context) {
         Page<WFVersion> domains = wfversionService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(wfversionMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

@@ -117,7 +117,6 @@ public class WFWorkListResource {
         WFWorkListDTO dto = wfworklistMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"WFWorkList" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/wfworklists/batch")
@@ -161,7 +160,6 @@ public class WFWorkListResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"WFWorkList" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/wfworklists/fetchdefault")
 	public ResponseEntity<List<WFWorkListDTO>> fetchDefault(WFWorkListSearchContext context) {
@@ -174,10 +172,9 @@ public class WFWorkListResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"WFWorkList" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/wfworklists/searchdefault")
-	public ResponseEntity<Page<WFWorkListDTO>> searchDefault(WFWorkListSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/wfworklists/searchdefault")
+	public ResponseEntity<Page<WFWorkListDTO>> searchDefault(@RequestBody WFWorkListSearchContext context) {
         Page<WFWorkList> domains = wfworklistService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(wfworklistMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

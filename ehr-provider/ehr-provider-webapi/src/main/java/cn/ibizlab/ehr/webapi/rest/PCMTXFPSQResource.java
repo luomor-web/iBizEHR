@@ -199,7 +199,6 @@ public class PCMTXFPSQResource {
         PCMTXFPSQDTO dto = pcmtxfpsqMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"PCMTXFPSQ" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmtxfpsqs/batch")
@@ -226,7 +225,6 @@ public class PCMTXFPSQResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'FPJL',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch返聘记录", tags = {"PCMTXFPSQ" } ,notes = "fetch返聘记录")
     @RequestMapping(method= RequestMethod.GET , value="/pcmtxfpsqs/fetchfpjl")
 	public ResponseEntity<List<PCMTXFPSQDTO>> fetchFPJL(PCMTXFPSQSearchContext context) {
@@ -239,16 +237,14 @@ public class PCMTXFPSQResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'FPJL',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search返聘记录", tags = {"PCMTXFPSQ" } ,notes = "search返聘记录")
-    @RequestMapping(method= RequestMethod.GET , value="/pcmtxfpsqs/searchfpjl")
-	public ResponseEntity<Page<PCMTXFPSQDTO>> searchFPJL(PCMTXFPSQSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pcmtxfpsqs/searchfpjl")
+	public ResponseEntity<Page<PCMTXFPSQDTO>> searchFPJL(@RequestBody PCMTXFPSQSearchContext context) {
         Page<PCMTXFPSQ> domains = pcmtxfpsqService.searchFPJL(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pcmtxfpsqMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PCMTXFPSQ" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pcmtxfpsqs/fetchdefault")
 	public ResponseEntity<List<PCMTXFPSQDTO>> fetchDefault(PCMTXFPSQSearchContext context) {
@@ -261,16 +257,14 @@ public class PCMTXFPSQResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PCMTXFPSQ" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/pcmtxfpsqs/searchdefault")
-	public ResponseEntity<Page<PCMTXFPSQDTO>> searchDefault(PCMTXFPSQSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pcmtxfpsqs/searchdefault")
+	public ResponseEntity<Page<PCMTXFPSQDTO>> searchDefault(@RequestBody PCMTXFPSQSearchContext context) {
         Page<PCMTXFPSQ> domains = pcmtxfpsqService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pcmtxfpsqMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'YXSQDS',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch未审核申请", tags = {"PCMTXFPSQ" } ,notes = "fetch未审核申请")
     @RequestMapping(method= RequestMethod.GET , value="/pcmtxfpsqs/fetchyxsqds")
 	public ResponseEntity<List<PCMTXFPSQDTO>> fetchYXSQDS(PCMTXFPSQSearchContext context) {
@@ -283,16 +277,14 @@ public class PCMTXFPSQResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'YXSQDS',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search未审核申请", tags = {"PCMTXFPSQ" } ,notes = "search未审核申请")
-    @RequestMapping(method= RequestMethod.GET , value="/pcmtxfpsqs/searchyxsqds")
-	public ResponseEntity<Page<PCMTXFPSQDTO>> searchYXSQDS(PCMTXFPSQSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pcmtxfpsqs/searchyxsqds")
+	public ResponseEntity<Page<PCMTXFPSQDTO>> searchYXSQDS(@RequestBody PCMTXFPSQSearchContext context) {
         Page<PCMTXFPSQ> domains = pcmtxfpsqService.searchYXSQDS(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pcmtxfpsqMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'FPGL',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch返聘管理", tags = {"PCMTXFPSQ" } ,notes = "fetch返聘管理")
     @RequestMapping(method= RequestMethod.GET , value="/pcmtxfpsqs/fetchfpgl")
 	public ResponseEntity<List<PCMTXFPSQDTO>> fetchFPGL(PCMTXFPSQSearchContext context) {
@@ -305,10 +297,9 @@ public class PCMTXFPSQResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'FPGL',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search返聘管理", tags = {"PCMTXFPSQ" } ,notes = "search返聘管理")
-    @RequestMapping(method= RequestMethod.GET , value="/pcmtxfpsqs/searchfpgl")
-	public ResponseEntity<Page<PCMTXFPSQDTO>> searchFPGL(PCMTXFPSQSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pcmtxfpsqs/searchfpgl")
+	public ResponseEntity<Page<PCMTXFPSQDTO>> searchFPGL(@RequestBody PCMTXFPSQSearchContext context) {
         Page<PCMTXFPSQ> domains = pcmtxfpsqService.searchFPGL(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pcmtxfpsqMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

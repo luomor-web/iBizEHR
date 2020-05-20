@@ -120,7 +120,6 @@ public class PCMRZGLResource {
         PCMRZGLDTO dto = pcmrzglMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"PCMRZGL" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmrzgls/batch")
@@ -161,7 +160,6 @@ public class PCMRZGLResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PCMRZGL" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pcmrzgls/fetchdefault")
 	public ResponseEntity<List<PCMRZGLDTO>> fetchDefault(PCMRZGLSearchContext context) {
@@ -174,16 +172,14 @@ public class PCMRZGLResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PCMRZGL" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/pcmrzgls/searchdefault")
-	public ResponseEntity<Page<PCMRZGLDTO>> searchDefault(PCMRZGLSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pcmrzgls/searchdefault")
+	public ResponseEntity<Page<PCMRZGLDTO>> searchDefault(@RequestBody PCMRZGLSearchContext context) {
         Page<PCMRZGL> domains = pcmrzglService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pcmrzglMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'GBRZQXDQ',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch干部任职期限查询", tags = {"PCMRZGL" } ,notes = "fetch干部任职期限查询")
     @RequestMapping(method= RequestMethod.GET , value="/pcmrzgls/fetchgbrzqxdq")
 	public ResponseEntity<List<PCMRZGLDTO>> fetchGBRZQXDQ(PCMRZGLSearchContext context) {
@@ -196,16 +192,14 @@ public class PCMRZGLResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'GBRZQXDQ',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search干部任职期限查询", tags = {"PCMRZGL" } ,notes = "search干部任职期限查询")
-    @RequestMapping(method= RequestMethod.GET , value="/pcmrzgls/searchgbrzqxdq")
-	public ResponseEntity<Page<PCMRZGLDTO>> searchGBRZQXDQ(PCMRZGLSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pcmrzgls/searchgbrzqxdq")
+	public ResponseEntity<Page<PCMRZGLDTO>> searchGBRZQXDQ(@RequestBody PCMRZGLSearchContext context) {
         Page<PCMRZGL> domains = pcmrzglService.searchGBRZQXDQ(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pcmrzglMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'RQCX',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchRQCX", tags = {"PCMRZGL" } ,notes = "fetchRQCX")
     @RequestMapping(method= RequestMethod.GET , value="/pcmrzgls/fetchrqcx")
 	public ResponseEntity<List<PCMRZGLDTO>> fetchRQCX(PCMRZGLSearchContext context) {
@@ -218,10 +212,9 @@ public class PCMRZGLResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'RQCX',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchRQCX", tags = {"PCMRZGL" } ,notes = "searchRQCX")
-    @RequestMapping(method= RequestMethod.GET , value="/pcmrzgls/searchrqcx")
-	public ResponseEntity<Page<PCMRZGLDTO>> searchRQCX(PCMRZGLSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pcmrzgls/searchrqcx")
+	public ResponseEntity<Page<PCMRZGLDTO>> searchRQCX(@RequestBody PCMRZGLSearchContext context) {
         Page<PCMRZGL> domains = pcmrzglService.searchRQCX(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pcmrzglMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

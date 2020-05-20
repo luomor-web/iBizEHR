@@ -129,7 +129,6 @@ public class WZD0002Resource {
         WZD0002DTO dto = wzd0002Mapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"WZD0002" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/wzd0002s/batch")
@@ -161,7 +160,6 @@ public class WZD0002Resource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"WZD0002" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/wzd0002s/fetchdefault")
 	public ResponseEntity<List<WZD0002DTO>> fetchDefault(WZD0002SearchContext context) {
@@ -174,10 +172,9 @@ public class WZD0002Resource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"WZD0002" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/wzd0002s/searchdefault")
-	public ResponseEntity<Page<WZD0002DTO>> searchDefault(WZD0002SearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/wzd0002s/searchdefault")
+	public ResponseEntity<Page<WZD0002DTO>> searchDefault(@RequestBody WZD0002SearchContext context) {
         Page<WZD0002> domains = wzd0002Service.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(wzd0002Mapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

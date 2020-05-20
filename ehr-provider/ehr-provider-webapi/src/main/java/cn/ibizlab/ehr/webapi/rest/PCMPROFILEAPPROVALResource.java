@@ -97,7 +97,6 @@ public class PCMPROFILEAPPROVALResource {
         PCMPROFILEAPPROVALDTO dto = pcmprofileapprovalMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"PCMPROFILEAPPROVAL" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofileapprovals/batch")
@@ -161,7 +160,6 @@ public class PCMPROFILEAPPROVALResource {
         return  ResponseEntity.status(HttpStatus.OK).body(pcmprofileapprovalService.checkKey(pcmprofileapprovalMapping.toDomain(pcmprofileapprovaldto)));
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PCMPROFILEAPPROVAL" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pcmprofileapprovals/fetchdefault")
 	public ResponseEntity<List<PCMPROFILEAPPROVALDTO>> fetchDefault(PCMPROFILEAPPROVALSearchContext context) {
@@ -174,16 +172,14 @@ public class PCMPROFILEAPPROVALResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PCMPROFILEAPPROVAL" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/pcmprofileapprovals/searchdefault")
-	public ResponseEntity<Page<PCMPROFILEAPPROVALDTO>> searchDefault(PCMPROFILEAPPROVALSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pcmprofileapprovals/searchdefault")
+	public ResponseEntity<Page<PCMPROFILEAPPROVALDTO>> searchDefault(@RequestBody PCMPROFILEAPPROVALSearchContext context) {
         Page<PCMPROFILEAPPROVAL> domains = pcmprofileapprovalService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pcmprofileapprovalMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Disagree',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch拒绝", tags = {"PCMPROFILEAPPROVAL" } ,notes = "fetch拒绝")
     @RequestMapping(method= RequestMethod.GET , value="/pcmprofileapprovals/fetchdisagree")
 	public ResponseEntity<List<PCMPROFILEAPPROVALDTO>> fetchDisagree(PCMPROFILEAPPROVALSearchContext context) {
@@ -196,10 +192,9 @@ public class PCMPROFILEAPPROVALResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Disagree',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search拒绝", tags = {"PCMPROFILEAPPROVAL" } ,notes = "search拒绝")
-    @RequestMapping(method= RequestMethod.GET , value="/pcmprofileapprovals/searchdisagree")
-	public ResponseEntity<Page<PCMPROFILEAPPROVALDTO>> searchDisagree(PCMPROFILEAPPROVALSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pcmprofileapprovals/searchdisagree")
+	public ResponseEntity<Page<PCMPROFILEAPPROVALDTO>> searchDisagree(@RequestBody PCMPROFILEAPPROVALSearchContext context) {
         Page<PCMPROFILEAPPROVAL> domains = pcmprofileapprovalService.searchDisagree(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pcmprofileapprovalMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
@@ -321,8 +316,8 @@ public class PCMPROFILEAPPROVALResource {
 	}
 
 	@ApiOperation(value = "searchDEFAULTByPCMPROFILE", tags = {"PCMPROFILEAPPROVAL" } ,notes = "searchDEFAULTByPCMPROFILE")
-    @RequestMapping(method= RequestMethod.GET , value="/pcmprofiles/{pcmprofile_id}/pcmprofileapprovals/searchdefault")
-	public ResponseEntity<Page<PCMPROFILEAPPROVALDTO>> searchPCMPROFILEAPPROVALDefaultByPCMPROFILE(@PathVariable("pcmprofile_id") String pcmprofile_id,PCMPROFILEAPPROVALSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pcmprofiles/{pcmprofile_id}/pcmprofileapprovals/searchdefault")
+	public ResponseEntity<Page<PCMPROFILEAPPROVALDTO>> searchPCMPROFILEAPPROVALDefaultByPCMPROFILE(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody PCMPROFILEAPPROVALSearchContext context) {
         context.setN_pcmprofileid_eq(pcmprofile_id);
         Page<PCMPROFILEAPPROVAL> domains = pcmprofileapprovalService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
@@ -343,8 +338,8 @@ public class PCMPROFILEAPPROVALResource {
 	}
 
 	@ApiOperation(value = "search拒绝ByPCMPROFILE", tags = {"PCMPROFILEAPPROVAL" } ,notes = "search拒绝ByPCMPROFILE")
-    @RequestMapping(method= RequestMethod.GET , value="/pcmprofiles/{pcmprofile_id}/pcmprofileapprovals/searchdisagree")
-	public ResponseEntity<Page<PCMPROFILEAPPROVALDTO>> searchPCMPROFILEAPPROVALDisagreeByPCMPROFILE(@PathVariable("pcmprofile_id") String pcmprofile_id,PCMPROFILEAPPROVALSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pcmprofiles/{pcmprofile_id}/pcmprofileapprovals/searchdisagree")
+	public ResponseEntity<Page<PCMPROFILEAPPROVALDTO>> searchPCMPROFILEAPPROVALDisagreeByPCMPROFILE(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody PCMPROFILEAPPROVALSearchContext context) {
         context.setN_pcmprofileid_eq(pcmprofile_id);
         Page<PCMPROFILEAPPROVAL> domains = pcmprofileapprovalService.searchDisagree(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)

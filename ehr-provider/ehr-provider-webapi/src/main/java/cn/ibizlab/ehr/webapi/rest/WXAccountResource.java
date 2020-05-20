@@ -65,7 +65,6 @@ public class WXAccountResource {
         WXAccountDTO dto = wxaccountMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"WXAccount" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/wxaccounts/batch")
@@ -200,7 +199,6 @@ public class WXAccountResource {
         return ResponseEntity.status(HttpStatus.OK).body(wxaccountMapping.toDto(wxaccountService.getDraft(new WXAccount())));
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"WXAccount" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/wxaccounts/fetchdefault")
 	public ResponseEntity<List<WXAccountDTO>> fetchDefault(WXAccountSearchContext context) {
@@ -213,10 +211,9 @@ public class WXAccountResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"WXAccount" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/wxaccounts/searchdefault")
-	public ResponseEntity<Page<WXAccountDTO>> searchDefault(WXAccountSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/wxaccounts/searchdefault")
+	public ResponseEntity<Page<WXAccountDTO>> searchDefault(@RequestBody WXAccountSearchContext context) {
         Page<WXAccount> domains = wxaccountService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(wxaccountMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

@@ -152,7 +152,6 @@ public class TSSDGroupResource {
         TSSDGroupDTO dto = tssdgroupMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"TSSDGroup" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/tssdgroups/batch")
@@ -161,7 +160,6 @@ public class TSSDGroupResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"TSSDGroup" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/tssdgroups/fetchdefault")
 	public ResponseEntity<List<TSSDGroupDTO>> fetchDefault(TSSDGroupSearchContext context) {
@@ -174,10 +172,9 @@ public class TSSDGroupResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"TSSDGroup" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/tssdgroups/searchdefault")
-	public ResponseEntity<Page<TSSDGroupDTO>> searchDefault(TSSDGroupSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/tssdgroups/searchdefault")
+	public ResponseEntity<Page<TSSDGroupDTO>> searchDefault(@RequestBody TSSDGroupSearchContext context) {
         Page<TSSDGroup> domains = tssdgroupService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(tssdgroupMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

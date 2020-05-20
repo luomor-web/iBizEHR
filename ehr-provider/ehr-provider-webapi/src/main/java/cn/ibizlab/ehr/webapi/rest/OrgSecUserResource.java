@@ -115,7 +115,6 @@ public class OrgSecUserResource {
         OrgSecUserDTO dto = orgsecuserMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"OrgSecUser" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/orgsecusers/batch")
@@ -174,7 +173,6 @@ public class OrgSecUserResource {
         return  ResponseEntity.status(HttpStatus.OK).body(orgsecuserService.checkKey(orgsecuserMapping.toDomain(orgsecuserdto)));
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"OrgSecUser" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/orgsecusers/fetchdefault")
 	public ResponseEntity<List<OrgSecUserDTO>> fetchDefault(OrgSecUserSearchContext context) {
@@ -187,10 +185,9 @@ public class OrgSecUserResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"OrgSecUser" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/orgsecusers/searchdefault")
-	public ResponseEntity<Page<OrgSecUserDTO>> searchDefault(OrgSecUserSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/orgsecusers/searchdefault")
+	public ResponseEntity<Page<OrgSecUserDTO>> searchDefault(@RequestBody OrgSecUserSearchContext context) {
         Page<OrgSecUser> domains = orgsecuserService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(orgsecuserMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

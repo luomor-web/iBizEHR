@@ -122,7 +122,6 @@ public class ORMPostLibResource {
         ORMPostLibDTO dto = ormpostlibMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"ORMPostLib" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormpostlibs/batch")
@@ -161,7 +160,6 @@ public class ORMPostLibResource {
         return  ResponseEntity.status(HttpStatus.OK).body(ormpostlibService.checkKey(ormpostlibMapping.toDomain(ormpostlibdto)));
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"ORMPostLib" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/ormpostlibs/fetchdefault")
 	public ResponseEntity<List<ORMPostLibDTO>> fetchDefault(ORMPostLibSearchContext context) {
@@ -174,10 +172,9 @@ public class ORMPostLibResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"ORMPostLib" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/ormpostlibs/searchdefault")
-	public ResponseEntity<Page<ORMPostLibDTO>> searchDefault(ORMPostLibSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/ormpostlibs/searchdefault")
+	public ResponseEntity<Page<ORMPostLibDTO>> searchDefault(@RequestBody ORMPostLibSearchContext context) {
         Page<ORMPostLib> domains = ormpostlibService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(ormpostlibMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

@@ -115,7 +115,6 @@ public class DateRuleResource {
         DateRuleDTO dto = dateruleMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"DateRule" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/daterules/batch")
@@ -161,7 +160,6 @@ public class DateRuleResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"DateRule" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/daterules/fetchdefault")
 	public ResponseEntity<List<DateRuleDTO>> fetchDefault(DateRuleSearchContext context) {
@@ -174,10 +172,9 @@ public class DateRuleResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"DateRule" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/daterules/searchdefault")
-	public ResponseEntity<Page<DateRuleDTO>> searchDefault(DateRuleSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/daterules/searchdefault")
+	public ResponseEntity<Page<DateRuleDTO>> searchDefault(@RequestBody DateRuleSearchContext context) {
         Page<DateRule> domains = dateruleService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(dateruleMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

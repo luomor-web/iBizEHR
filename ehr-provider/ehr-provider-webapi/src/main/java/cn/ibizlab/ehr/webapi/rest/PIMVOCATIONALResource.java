@@ -88,7 +88,6 @@ public class PIMVOCATIONALResource {
         PIMVOCATIONALDTO dto = pimvocationalMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"PIMVOCATIONAL" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimvocationals/batch")
@@ -161,7 +160,6 @@ public class PIMVOCATIONALResource {
         return ResponseEntity.status(HttpStatus.OK).body(pimvocationalMapping.toDto(pimvocationalService.getDraft(new PIMVOCATIONAL())));
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'REP_VOCATIONAL',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchREP_VOCATIONAL", tags = {"PIMVOCATIONAL" } ,notes = "fetchREP_VOCATIONAL")
     @RequestMapping(method= RequestMethod.GET , value="/pimvocationals/fetchrep_vocational")
 	public ResponseEntity<List<HashMap>> fetchREP_VOCATIONAL(PIMVOCATIONALSearchContext context) {
@@ -173,16 +171,14 @@ public class PIMVOCATIONALResource {
                 .body(domains.getContent());
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'REP_VOCATIONAL',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchREP_VOCATIONAL", tags = {"PIMVOCATIONAL" } ,notes = "searchREP_VOCATIONAL")
-    @RequestMapping(method= RequestMethod.GET , value="/pimvocationals/searchrep_vocational")
-	public ResponseEntity<Page<HashMap>> searchREP_VOCATIONAL(PIMVOCATIONALSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimvocationals/searchrep_vocational")
+	public ResponseEntity<Page<HashMap>> searchREP_VOCATIONAL(@RequestBody PIMVOCATIONALSearchContext context) {
         Page<HashMap> domains = pimvocationalService.searchREP_VOCATIONAL(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(domains.getContent(), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'AscriptionSysDQ',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch记录所属是管理员的", tags = {"PIMVOCATIONAL" } ,notes = "fetch记录所属是管理员的")
     @RequestMapping(method= RequestMethod.GET , value="/pimvocationals/fetchascriptionsysdq")
 	public ResponseEntity<List<PIMVOCATIONALDTO>> fetchAscriptionSysDQ(PIMVOCATIONALSearchContext context) {
@@ -195,16 +191,14 @@ public class PIMVOCATIONALResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'AscriptionSysDQ',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search记录所属是管理员的", tags = {"PIMVOCATIONAL" } ,notes = "search记录所属是管理员的")
-    @RequestMapping(method= RequestMethod.GET , value="/pimvocationals/searchascriptionsysdq")
-	public ResponseEntity<Page<PIMVOCATIONALDTO>> searchAscriptionSysDQ(PIMVOCATIONALSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimvocationals/searchascriptionsysdq")
+	public ResponseEntity<Page<PIMVOCATIONALDTO>> searchAscriptionSysDQ(@RequestBody PIMVOCATIONALSearchContext context) {
         Page<PIMVOCATIONAL> domains = pimvocationalService.searchAscriptionSysDQ(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimvocationalMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PIMVOCATIONAL" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimvocationals/fetchdefault")
 	public ResponseEntity<List<PIMVOCATIONALDTO>> fetchDefault(PIMVOCATIONALSearchContext context) {
@@ -217,16 +211,14 @@ public class PIMVOCATIONALResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PIMVOCATIONAL" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/pimvocationals/searchdefault")
-	public ResponseEntity<Page<PIMVOCATIONALDTO>> searchDefault(PIMVOCATIONALSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimvocationals/searchdefault")
+	public ResponseEntity<Page<PIMVOCATIONALDTO>> searchDefault(@RequestBody PIMVOCATIONALSearchContext context) {
         Page<PIMVOCATIONAL> domains = pimvocationalService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimvocationalMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'JLSS',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch记录所属于", tags = {"PIMVOCATIONAL" } ,notes = "fetch记录所属于")
     @RequestMapping(method= RequestMethod.GET , value="/pimvocationals/fetchjlss")
 	public ResponseEntity<List<PIMVOCATIONALDTO>> fetchJLSS(PIMVOCATIONALSearchContext context) {
@@ -239,16 +231,14 @@ public class PIMVOCATIONALResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'JLSS',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search记录所属于", tags = {"PIMVOCATIONAL" } ,notes = "search记录所属于")
-    @RequestMapping(method= RequestMethod.GET , value="/pimvocationals/searchjlss")
-	public ResponseEntity<Page<PIMVOCATIONALDTO>> searchJLSS(PIMVOCATIONALSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimvocationals/searchjlss")
+	public ResponseEntity<Page<PIMVOCATIONALDTO>> searchJLSS(@RequestBody PIMVOCATIONALSearchContext context) {
         Page<PIMVOCATIONAL> domains = pimvocationalService.searchJLSS(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimvocationalMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'ZIZHU',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch自助(证书信息)", tags = {"PIMVOCATIONAL" } ,notes = "fetch自助(证书信息)")
     @RequestMapping(method= RequestMethod.GET , value="/pimvocationals/fetchzizhu")
 	public ResponseEntity<List<PIMVOCATIONALDTO>> fetchZIZHU(PIMVOCATIONALSearchContext context) {
@@ -261,10 +251,9 @@ public class PIMVOCATIONALResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'ZIZHU',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search自助(证书信息)", tags = {"PIMVOCATIONAL" } ,notes = "search自助(证书信息)")
-    @RequestMapping(method= RequestMethod.GET , value="/pimvocationals/searchzizhu")
-	public ResponseEntity<Page<PIMVOCATIONALDTO>> searchZIZHU(PIMVOCATIONALSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimvocationals/searchzizhu")
+	public ResponseEntity<Page<PIMVOCATIONALDTO>> searchZIZHU(@RequestBody PIMVOCATIONALSearchContext context) {
         Page<PIMVOCATIONAL> domains = pimvocationalService.searchZIZHU(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimvocationalMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
@@ -385,8 +374,8 @@ public class PIMVOCATIONALResource {
 	}
 
 	@ApiOperation(value = "searchREP_VOCATIONALByPIMPERSON", tags = {"PIMVOCATIONAL" } ,notes = "searchREP_VOCATIONALByPIMPERSON")
-    @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/pimvocationals/searchrep_vocational")
-	public ResponseEntity<Page<HashMap>> searchPIMVOCATIONALREP_VOCATIONALByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id,PIMVOCATIONALSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/pimvocationals/searchrep_vocational")
+	public ResponseEntity<Page<HashMap>> searchPIMVOCATIONALREP_VOCATIONALByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMVOCATIONALSearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
         Page<HashMap> domains = pimvocationalService.searchREP_VOCATIONAL(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
@@ -407,8 +396,8 @@ public class PIMVOCATIONALResource {
 	}
 
 	@ApiOperation(value = "search记录所属是管理员的ByPIMPERSON", tags = {"PIMVOCATIONAL" } ,notes = "search记录所属是管理员的ByPIMPERSON")
-    @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/pimvocationals/searchascriptionsysdq")
-	public ResponseEntity<Page<PIMVOCATIONALDTO>> searchPIMVOCATIONALAscriptionSysDQByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id,PIMVOCATIONALSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/pimvocationals/searchascriptionsysdq")
+	public ResponseEntity<Page<PIMVOCATIONALDTO>> searchPIMVOCATIONALAscriptionSysDQByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMVOCATIONALSearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
         Page<PIMVOCATIONAL> domains = pimvocationalService.searchAscriptionSysDQ(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
@@ -429,8 +418,8 @@ public class PIMVOCATIONALResource {
 	}
 
 	@ApiOperation(value = "searchDEFAULTByPIMPERSON", tags = {"PIMVOCATIONAL" } ,notes = "searchDEFAULTByPIMPERSON")
-    @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/pimvocationals/searchdefault")
-	public ResponseEntity<Page<PIMVOCATIONALDTO>> searchPIMVOCATIONALDefaultByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id,PIMVOCATIONALSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/pimvocationals/searchdefault")
+	public ResponseEntity<Page<PIMVOCATIONALDTO>> searchPIMVOCATIONALDefaultByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMVOCATIONALSearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
         Page<PIMVOCATIONAL> domains = pimvocationalService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
@@ -451,8 +440,8 @@ public class PIMVOCATIONALResource {
 	}
 
 	@ApiOperation(value = "search记录所属于ByPIMPERSON", tags = {"PIMVOCATIONAL" } ,notes = "search记录所属于ByPIMPERSON")
-    @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/pimvocationals/searchjlss")
-	public ResponseEntity<Page<PIMVOCATIONALDTO>> searchPIMVOCATIONALJLSSByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id,PIMVOCATIONALSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/pimvocationals/searchjlss")
+	public ResponseEntity<Page<PIMVOCATIONALDTO>> searchPIMVOCATIONALJLSSByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMVOCATIONALSearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
         Page<PIMVOCATIONAL> domains = pimvocationalService.searchJLSS(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
@@ -473,8 +462,8 @@ public class PIMVOCATIONALResource {
 	}
 
 	@ApiOperation(value = "search自助(证书信息)ByPIMPERSON", tags = {"PIMVOCATIONAL" } ,notes = "search自助(证书信息)ByPIMPERSON")
-    @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/pimvocationals/searchzizhu")
-	public ResponseEntity<Page<PIMVOCATIONALDTO>> searchPIMVOCATIONALZIZHUByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id,PIMVOCATIONALSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/pimvocationals/searchzizhu")
+	public ResponseEntity<Page<PIMVOCATIONALDTO>> searchPIMVOCATIONALZIZHUByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMVOCATIONALSearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
         Page<PIMVOCATIONAL> domains = pimvocationalService.searchZIZHU(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)

@@ -140,7 +140,6 @@ public class MsgAccountDetailResource {
         MsgAccountDetailDTO dto = msgaccountdetailMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"MsgAccountDetail" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/msgaccountdetails/batch")
@@ -161,7 +160,6 @@ public class MsgAccountDetailResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"MsgAccountDetail" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/msgaccountdetails/fetchdefault")
 	public ResponseEntity<List<MsgAccountDetailDTO>> fetchDefault(MsgAccountDetailSearchContext context) {
@@ -174,10 +172,9 @@ public class MsgAccountDetailResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"MsgAccountDetail" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/msgaccountdetails/searchdefault")
-	public ResponseEntity<Page<MsgAccountDetailDTO>> searchDefault(MsgAccountDetailSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/msgaccountdetails/searchdefault")
+	public ResponseEntity<Page<MsgAccountDetailDTO>> searchDefault(@RequestBody MsgAccountDetailSearchContext context) {
         Page<MsgAccountDetail> domains = msgaccountdetailService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(msgaccountdetailMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

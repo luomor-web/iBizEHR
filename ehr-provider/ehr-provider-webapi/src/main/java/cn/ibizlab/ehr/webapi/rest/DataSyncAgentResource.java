@@ -81,7 +81,6 @@ public class DataSyncAgentResource {
         DataSyncAgentDTO dto = datasyncagentMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"DataSyncAgent" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/datasyncagents/batch")
@@ -161,7 +160,6 @@ public class DataSyncAgentResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"DataSyncAgent" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/datasyncagents/fetchdefault")
 	public ResponseEntity<List<DataSyncAgentDTO>> fetchDefault(DataSyncAgentSearchContext context) {
@@ -174,10 +172,9 @@ public class DataSyncAgentResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"DataSyncAgent" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/datasyncagents/searchdefault")
-	public ResponseEntity<Page<DataSyncAgentDTO>> searchDefault(DataSyncAgentSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/datasyncagents/searchdefault")
+	public ResponseEntity<Page<DataSyncAgentDTO>> searchDefault(@RequestBody DataSyncAgentSearchContext context) {
         Page<DataSyncAgent> domains = datasyncagentService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(datasyncagentMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

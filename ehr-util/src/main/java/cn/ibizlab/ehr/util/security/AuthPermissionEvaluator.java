@@ -40,10 +40,6 @@ public class AuthPermissionEvaluator implements PermissionEvaluator {
      */
     private String DEActionType="DEACTION";
     /**
-     * 实体数据集操作标识
-     */
-    private String DataSetTag="DATASET";
-    /**
      *实体主键标识
      */
     private String keyFieldTag="keyfield";
@@ -63,61 +59,6 @@ public class AuthPermissionEvaluator implements PermissionEvaluator {
     @Override
     public boolean hasPermission(Authentication authentication, Object deAction, Object gridParam) {
 
-        //未开启权限校验、超级管理员则不进行权限检查
-        if(AuthenticationUser.getAuthenticationUser().getSuperuser()==1  || !enablePermissionValid)
-            return true;
-
-        String action = "";
-        String deStorageMode;
-        if (deAction instanceof String)
-            action = (String) deAction;
-
-        if (StringUtils.isEmpty(action))
-            return false;
-
-        //获取当前用户权限列表
-        JSONObject userPermission= AuthenticationUser.getAuthenticationUser().getPermissionList();
-
-        if(userPermission==null)
-            return false;
-
-        List gridParamList = (ArrayList) gridParam;
-        if(action.equalsIgnoreCase("remove")){
-            //准备参数
-            Object srfKey =gridParamList.get(0);
-            EntityBase entity = (EntityBase) gridParamList.get(1);
-            deStorageMode= (String) gridParamList.get(2);
-            String entityName = entity.getClass().getSimpleName();
-
-            //获取实体行为权限信息
-            JSONObject permissionList=userPermission.getJSONObject("entities");
-
-            //检查是否有操作权限[create.update.delete.read]
-            if(!validDEActionHasPermission(permissionList,entityName,action)){
-                return false;
-            }
-            //检查是否有数据权限
-            return deActionPermissionValidRouter(deStorageMode, entity , action , srfKey, permissionList);
-        }
-        else{
-            //准备参数
-            Object searchContext=gridParamList.get(0);
-            String dataSetName=String.valueOf(gridParamList.get(1));
-            EntityBase entity = (EntityBase) gridParamList.get(2);
-            deStorageMode= (String) gridParamList.get(3);
-            String entityName = entity.getClass().getSimpleName();
-
-            //获取数据集权限信息
-            JSONObject permissionList=userPermission.getJSONObject("entities");
-
-            if(StringUtils.isEmpty(entityName)|| StringUtils.isEmpty(dataSetName))
-                return false;
-
-            //检查是否有访问数据集的权限
-            if(!validDataSetHasPermission(permissionList,entityName,dataSetName)){
-                return false;
-            }
-        }
                 return true;
     }
 
@@ -211,33 +152,6 @@ public class AuthPermissionEvaluator implements PermissionEvaluator {
         return hasPermission;
     }
 
-    /**
-     * 数据集合权限校验
-     * @param userPermission
-     * @param entityName
-     * @param dataSetName
-     * userPermission:{"ENTITY":{"DEACTION":{"READ":["CURORG"]},"DATASET":{"Default":["CURORG"]}}}
-     * @return
-     */
-    private boolean validDataSetHasPermission(JSONObject userPermission,String entityName ,String dataSetName){
-
-        boolean hasPermission=false;
-        if(userPermission==null)
-            return false;
-        if(!userPermission.containsKey(entityName))
-            return false;
-        JSONObject entity=userPermission.getJSONObject(entityName);//获取实体
-        if(!entity.containsKey(DataSetTag))
-            return false;
-        JSONObject dataSetList=entity.getJSONObject(DataSetTag);//获取数据集
-        if(!dataSetList.containsKey(dataSetName))
-            return false;
-        JSONArray dataRange=dataSetList.getJSONArray(dataSetName);//获取数据范围
-        if(dataRange!=null && dataRange.size()>0){
-            hasPermission=true;
-        }
-        return hasPermission;
-    }
 
     /**
      * 根据实体存储模式，进行鉴权
@@ -366,28 +280,28 @@ public class AuthPermissionEvaluator implements PermissionEvaluator {
 
         for(int i=0;i<oppriList.size();i++){
             String permissionCond=oppriList.getString(i);//权限配置条件
-            if(permissionCond.equals("CURORG")){   //本单位
+            if(permissionCond.equals("curorg")){   //本单位
                 permissionSQL.or(new QueryBuilder().and(orgField).is(AuthenticationUser.getAuthenticationUser().getOrgid()).get());
             }
-            else if(permissionCond.equals("PORG")){//上级单位
+            else if(permissionCond.equals("porg")){//上级单位
                 permissionSQL.or(new QueryBuilder().and(orgField).in(formatStringArr(orgParent)).get());
             }
-            else if(permissionCond.equals("SORG")){//下级单位
+            else if(permissionCond.equals("sorg")){//下级单位
                 permissionSQL.or(new QueryBuilder().and(orgField).in(formatStringArr(orgChild)).get());
             }
-            else if(permissionCond.equals("CREATEMAN")){//建立人
+            else if(permissionCond.equals("createman")){//建立人
                 permissionSQL.or(new QueryBuilder().and(createManField).is(AuthenticationUser.getAuthenticationUser().getUserid()).get());
             }
-            else if(permissionCond.equals("CURORGDEPT")){//本部门
+            else if(permissionCond.equals("curorgdept")){//本部门
                 permissionSQL.or(new QueryBuilder().and(orgDeptField).is(AuthenticationUser.getAuthenticationUser().getMdeptid()).get());
             }
-            else if(permissionCond.equals("PORGDEPT")){//上级部门
+            else if(permissionCond.equals("porgdept")){//上级部门
                 permissionSQL.or(new QueryBuilder().and(orgDeptField).in(formatStringArr(orgDeptParent)).get());
             }
-            else if(permissionCond.equals("SORGDEPT")){//下级部门
+            else if(permissionCond.equals("sorgdept")){//下级部门
                 permissionSQL.or(new QueryBuilder().and(orgDeptField).in(formatStringArr(orgDeptChild)).get());
             }
-            else if(permissionCond.equals("ALL")){
+            else if(permissionCond.equals("all")){
                 permissionSQL.or(new QueryBuilder().get());
             }
         }
@@ -417,28 +331,28 @@ public class AuthPermissionEvaluator implements PermissionEvaluator {
         for(int i=0;i<oppriList.size();i++){
             permissionSQL.append("OR");
             String permissionCond=oppriList.getString(i);//权限配置条件
-            if(permissionCond.equals("CURORG")){   //本单位
+            if(permissionCond.equals("curorg")){   //本单位
                 permissionSQL.append(String.format("(%s='%s')",orgField,AuthenticationUser.getAuthenticationUser().getOrgid()));
             }
-            else if(permissionCond.equals("PORG")){//上级单位
+            else if(permissionCond.equals("porg")){//上级单位
                 permissionSQL.append(String.format(" %s in(%s) ", orgField, formatStringArr(orgParent)));
             }
-            else if(permissionCond.equals("SORG")){//下级单位
+            else if(permissionCond.equals("sorg")){//下级单位
                 permissionSQL.append(String.format(" %s in(%s) ", orgField, formatStringArr(orgChild)));
             }
-            else if(permissionCond.equals("CREATEMAN")){//建立人
+            else if(permissionCond.equals("createman")){//建立人
                 permissionSQL.append(String.format("(%s='%s')",createManField,AuthenticationUser.getAuthenticationUser().getUserid()));
             }
-            else if(permissionCond.equals("CURORGDEPT")){//本部门
+            else if(permissionCond.equals("curorgdept")){//本部门
                 permissionSQL.append(String.format("(%s='%s')",orgDeptField,AuthenticationUser.getAuthenticationUser().getMdeptid()));
             }
-            else if(permissionCond.equals("PORGDEPT")){//上级部门
+            else if(permissionCond.equals("porgdept")){//上级部门
                 permissionSQL.append(String.format(" %s in (%s) ", orgDeptField, formatStringArr(orgDeptParent)));
             }
-            else if(permissionCond.equals("SORGDEPT")){//下级部门
+            else if(permissionCond.equals("sorgdept")){//下级部门
                 permissionSQL.append(String.format(" %s in (%s) ", orgDeptField, formatStringArr(orgDeptChild)));
             }
-            else if(permissionCond.equals("ALL")){//全部数据
+            else if(permissionCond.equals("all")){//全部数据
                 permissionSQL.append("(1=1)");
             }
             else{

@@ -152,7 +152,6 @@ public class PIMACHIEVEMENTSResource {
         PIMACHIEVEMENTSDTO dto = pimachievementsMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"PIMACHIEVEMENTS" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimachievements/batch")
@@ -161,7 +160,6 @@ public class PIMACHIEVEMENTSResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'JLSS',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch记录所属和人员ID不符的", tags = {"PIMACHIEVEMENTS" } ,notes = "fetch记录所属和人员ID不符的")
     @RequestMapping(method= RequestMethod.GET , value="/pimachievements/fetchjlss")
 	public ResponseEntity<List<PIMACHIEVEMENTSDTO>> fetchJLSS(PIMACHIEVEMENTSSearchContext context) {
@@ -174,16 +172,14 @@ public class PIMACHIEVEMENTSResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'JLSS',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search记录所属和人员ID不符的", tags = {"PIMACHIEVEMENTS" } ,notes = "search记录所属和人员ID不符的")
-    @RequestMapping(method= RequestMethod.GET , value="/pimachievements/searchjlss")
-	public ResponseEntity<Page<PIMACHIEVEMENTSDTO>> searchJLSS(PIMACHIEVEMENTSSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimachievements/searchjlss")
+	public ResponseEntity<Page<PIMACHIEVEMENTSDTO>> searchJLSS(@RequestBody PIMACHIEVEMENTSSearchContext context) {
         Page<PIMACHIEVEMENTS> domains = pimachievementsService.searchJLSS(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimachievementsMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PIMACHIEVEMENTS" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimachievements/fetchdefault")
 	public ResponseEntity<List<PIMACHIEVEMENTSDTO>> fetchDefault(PIMACHIEVEMENTSSearchContext context) {
@@ -196,16 +192,14 @@ public class PIMACHIEVEMENTSResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PIMACHIEVEMENTS" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/pimachievements/searchdefault")
-	public ResponseEntity<Page<PIMACHIEVEMENTSDTO>> searchDefault(PIMACHIEVEMENTSSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimachievements/searchdefault")
+	public ResponseEntity<Page<PIMACHIEVEMENTSDTO>> searchDefault(@RequestBody PIMACHIEVEMENTSSearchContext context) {
         Page<PIMACHIEVEMENTS> domains = pimachievementsService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimachievementsMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'ZIZHU',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch自助(绩效信息)", tags = {"PIMACHIEVEMENTS" } ,notes = "fetch自助(绩效信息)")
     @RequestMapping(method= RequestMethod.GET , value="/pimachievements/fetchzizhu")
 	public ResponseEntity<List<PIMACHIEVEMENTSDTO>> fetchZIZHU(PIMACHIEVEMENTSSearchContext context) {
@@ -218,10 +212,9 @@ public class PIMACHIEVEMENTSResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'ZIZHU',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search自助(绩效信息)", tags = {"PIMACHIEVEMENTS" } ,notes = "search自助(绩效信息)")
-    @RequestMapping(method= RequestMethod.GET , value="/pimachievements/searchzizhu")
-	public ResponseEntity<Page<PIMACHIEVEMENTSDTO>> searchZIZHU(PIMACHIEVEMENTSSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimachievements/searchzizhu")
+	public ResponseEntity<Page<PIMACHIEVEMENTSDTO>> searchZIZHU(@RequestBody PIMACHIEVEMENTSSearchContext context) {
         Page<PIMACHIEVEMENTS> domains = pimachievementsService.searchZIZHU(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimachievementsMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
@@ -343,8 +336,8 @@ public class PIMACHIEVEMENTSResource {
 	}
 
 	@ApiOperation(value = "search记录所属和人员ID不符的ByPIMPERSON", tags = {"PIMACHIEVEMENTS" } ,notes = "search记录所属和人员ID不符的ByPIMPERSON")
-    @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/pimachievements/searchjlss")
-	public ResponseEntity<Page<PIMACHIEVEMENTSDTO>> searchPIMACHIEVEMENTSJLSSByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id,PIMACHIEVEMENTSSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/pimachievements/searchjlss")
+	public ResponseEntity<Page<PIMACHIEVEMENTSDTO>> searchPIMACHIEVEMENTSJLSSByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMACHIEVEMENTSSearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
         Page<PIMACHIEVEMENTS> domains = pimachievementsService.searchJLSS(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
@@ -365,8 +358,8 @@ public class PIMACHIEVEMENTSResource {
 	}
 
 	@ApiOperation(value = "searchDEFAULTByPIMPERSON", tags = {"PIMACHIEVEMENTS" } ,notes = "searchDEFAULTByPIMPERSON")
-    @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/pimachievements/searchdefault")
-	public ResponseEntity<Page<PIMACHIEVEMENTSDTO>> searchPIMACHIEVEMENTSDefaultByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id,PIMACHIEVEMENTSSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/pimachievements/searchdefault")
+	public ResponseEntity<Page<PIMACHIEVEMENTSDTO>> searchPIMACHIEVEMENTSDefaultByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMACHIEVEMENTSSearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
         Page<PIMACHIEVEMENTS> domains = pimachievementsService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
@@ -387,8 +380,8 @@ public class PIMACHIEVEMENTSResource {
 	}
 
 	@ApiOperation(value = "search自助(绩效信息)ByPIMPERSON", tags = {"PIMACHIEVEMENTS" } ,notes = "search自助(绩效信息)ByPIMPERSON")
-    @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/pimachievements/searchzizhu")
-	public ResponseEntity<Page<PIMACHIEVEMENTSDTO>> searchPIMACHIEVEMENTSZIZHUByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id,PIMACHIEVEMENTSSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/pimachievements/searchzizhu")
+	public ResponseEntity<Page<PIMACHIEVEMENTSDTO>> searchPIMACHIEVEMENTSZIZHUByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMACHIEVEMENTSSearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
         Page<PIMACHIEVEMENTS> domains = pimachievementsService.searchZIZHU(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)

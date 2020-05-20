@@ -65,7 +65,6 @@ public class VACSYSTEMAPPLICATIONResource {
         VACSYSTEMAPPLICATIONDTO dto = vacsystemapplicationMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"VACSYSTEMAPPLICATION" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacsystemapplications/batch")
@@ -161,7 +160,6 @@ public class VACSYSTEMAPPLICATIONResource {
         return  ResponseEntity.status(HttpStatus.OK).body(vacsystemapplicationService.checkKey(vacsystemapplicationMapping.toDomain(vacsystemapplicationdto)));
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"VACSYSTEMAPPLICATION" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/vacsystemapplications/fetchdefault")
 	public ResponseEntity<List<VACSYSTEMAPPLICATIONDTO>> fetchDefault(VACSYSTEMAPPLICATIONSearchContext context) {
@@ -174,10 +172,9 @@ public class VACSYSTEMAPPLICATIONResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"VACSYSTEMAPPLICATION" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/vacsystemapplications/searchdefault")
-	public ResponseEntity<Page<VACSYSTEMAPPLICATIONDTO>> searchDefault(VACSYSTEMAPPLICATIONSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/vacsystemapplications/searchdefault")
+	public ResponseEntity<Page<VACSYSTEMAPPLICATIONDTO>> searchDefault(@RequestBody VACSYSTEMAPPLICATIONSearchContext context) {
         Page<VACSYSTEMAPPLICATION> domains = vacsystemapplicationService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(vacsystemapplicationMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

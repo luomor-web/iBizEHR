@@ -81,7 +81,6 @@ public class AppCenterResource {
         AppCenterDTO dto = appcenterMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"AppCenter" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/appcenters/batch")
@@ -161,7 +160,6 @@ public class AppCenterResource {
         return  ResponseEntity.status(HttpStatus.OK).body(appcenterService.checkKey(appcenterMapping.toDomain(appcenterdto)));
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"AppCenter" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/appcenters/fetchdefault")
 	public ResponseEntity<List<AppCenterDTO>> fetchDefault(AppCenterSearchContext context) {
@@ -174,10 +172,9 @@ public class AppCenterResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"AppCenter" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/appcenters/searchdefault")
-	public ResponseEntity<Page<AppCenterDTO>> searchDefault(AppCenterSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/appcenters/searchdefault")
+	public ResponseEntity<Page<AppCenterDTO>> searchDefault(@RequestBody AppCenterSearchContext context) {
         Page<AppCenter> domains = appcenterService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(appcenterMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

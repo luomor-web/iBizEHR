@@ -131,7 +131,6 @@ public class WFUIWizardResource {
         WFUIWizardDTO dto = wfuiwizardMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"WFUIWizard" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/wfuiwizards/batch")
@@ -161,7 +160,6 @@ public class WFUIWizardResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"WFUIWizard" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/wfuiwizards/fetchdefault")
 	public ResponseEntity<List<WFUIWizardDTO>> fetchDefault(WFUIWizardSearchContext context) {
@@ -174,10 +172,9 @@ public class WFUIWizardResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"WFUIWizard" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/wfuiwizards/searchdefault")
-	public ResponseEntity<Page<WFUIWizardDTO>> searchDefault(WFUIWizardSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/wfuiwizards/searchdefault")
+	public ResponseEntity<Page<WFUIWizardDTO>> searchDefault(@RequestBody WFUIWizardSearchContext context) {
         Page<WFUIWizard> domains = wfuiwizardService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(wfuiwizardMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

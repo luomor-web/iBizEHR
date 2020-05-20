@@ -113,7 +113,6 @@ public class PCMYDLZMXResource {
         PCMYDLZMXDTO dto = pcmydlzmxMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"PCMYDLZMX" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmydlzmxes/batch")
@@ -187,7 +186,6 @@ public class PCMYDLZMXResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'GLDQ',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch管理查询", tags = {"PCMYDLZMX" } ,notes = "fetch管理查询")
     @RequestMapping(method= RequestMethod.GET , value="/pcmydlzmxes/fetchgldq")
 	public ResponseEntity<List<PCMYDLZMXDTO>> fetchGLDQ(PCMYDLZMXSearchContext context) {
@@ -200,16 +198,14 @@ public class PCMYDLZMXResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'GLDQ',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search管理查询", tags = {"PCMYDLZMX" } ,notes = "search管理查询")
-    @RequestMapping(method= RequestMethod.GET , value="/pcmydlzmxes/searchgldq")
-	public ResponseEntity<Page<PCMYDLZMXDTO>> searchGLDQ(PCMYDLZMXSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pcmydlzmxes/searchgldq")
+	public ResponseEntity<Page<PCMYDLZMXDTO>> searchGLDQ(@RequestBody PCMYDLZMXSearchContext context) {
         Page<PCMYDLZMX> domains = pcmydlzmxService.searchGLDQ(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pcmydlzmxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'JLDQ',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch记录查询", tags = {"PCMYDLZMX" } ,notes = "fetch记录查询")
     @RequestMapping(method= RequestMethod.GET , value="/pcmydlzmxes/fetchjldq")
 	public ResponseEntity<List<PCMYDLZMXDTO>> fetchJLDQ(PCMYDLZMXSearchContext context) {
@@ -222,16 +218,14 @@ public class PCMYDLZMXResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'JLDQ',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search记录查询", tags = {"PCMYDLZMX" } ,notes = "search记录查询")
-    @RequestMapping(method= RequestMethod.GET , value="/pcmydlzmxes/searchjldq")
-	public ResponseEntity<Page<PCMYDLZMXDTO>> searchJLDQ(PCMYDLZMXSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pcmydlzmxes/searchjldq")
+	public ResponseEntity<Page<PCMYDLZMXDTO>> searchJLDQ(@RequestBody PCMYDLZMXSearchContext context) {
         Page<PCMYDLZMX> domains = pcmydlzmxService.searchJLDQ(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pcmydlzmxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PCMYDLZMX" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pcmydlzmxes/fetchdefault")
 	public ResponseEntity<List<PCMYDLZMXDTO>> fetchDefault(PCMYDLZMXSearchContext context) {
@@ -244,10 +238,9 @@ public class PCMYDLZMXResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PCMYDLZMX" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/pcmydlzmxes/searchdefault")
-	public ResponseEntity<Page<PCMYDLZMXDTO>> searchDefault(PCMYDLZMXSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pcmydlzmxes/searchdefault")
+	public ResponseEntity<Page<PCMYDLZMXDTO>> searchDefault(@RequestBody PCMYDLZMXSearchContext context) {
         Page<PCMYDLZMX> domains = pcmydlzmxService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pcmydlzmxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

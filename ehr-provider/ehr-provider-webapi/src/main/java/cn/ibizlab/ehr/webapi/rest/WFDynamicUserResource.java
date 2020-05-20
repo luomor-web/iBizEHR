@@ -65,7 +65,6 @@ public class WFDynamicUserResource {
         WFDynamicUserDTO dto = wfdynamicuserMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"WFDynamicUser" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/wfdynamicusers/batch")
@@ -161,7 +160,6 @@ public class WFDynamicUserResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"WFDynamicUser" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/wfdynamicusers/fetchdefault")
 	public ResponseEntity<List<WFDynamicUserDTO>> fetchDefault(WFDynamicUserSearchContext context) {
@@ -174,10 +172,9 @@ public class WFDynamicUserResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"WFDynamicUser" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/wfdynamicusers/searchdefault")
-	public ResponseEntity<Page<WFDynamicUserDTO>> searchDefault(WFDynamicUserSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/wfdynamicusers/searchdefault")
+	public ResponseEntity<Page<WFDynamicUserDTO>> searchDefault(@RequestBody WFDynamicUserSearchContext context) {
         Page<WFDynamicUser> domains = wfdynamicuserService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(wfdynamicuserMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

@@ -117,7 +117,6 @@ public class SystemResource {
         SystemDTO dto = systemMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"System" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/systems/batch")
@@ -161,7 +160,6 @@ public class SystemResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"System" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/systems/fetchdefault")
 	public ResponseEntity<List<SystemDTO>> fetchDefault(SystemSearchContext context) {
@@ -174,10 +172,9 @@ public class SystemResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"System" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/systems/searchdefault")
-	public ResponseEntity<Page<SystemDTO>> searchDefault(SystemSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/systems/searchdefault")
+	public ResponseEntity<Page<SystemDTO>> searchDefault(@RequestBody SystemSearchContext context) {
         Page<System> domains = systemService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(systemMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

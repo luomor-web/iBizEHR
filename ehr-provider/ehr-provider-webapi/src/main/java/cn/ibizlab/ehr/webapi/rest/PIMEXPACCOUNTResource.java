@@ -152,7 +152,6 @@ public class PIMEXPACCOUNTResource {
         PIMEXPACCOUNTDTO dto = pimexpaccountMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"PIMEXPACCOUNT" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimexpaccounts/batch")
@@ -161,7 +160,6 @@ public class PIMEXPACCOUNTResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PIMEXPACCOUNT" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimexpaccounts/fetchdefault")
 	public ResponseEntity<List<PIMEXPACCOUNTDTO>> fetchDefault(PIMEXPACCOUNTSearchContext context) {
@@ -174,10 +172,9 @@ public class PIMEXPACCOUNTResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PIMEXPACCOUNT" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/pimexpaccounts/searchdefault")
-	public ResponseEntity<Page<PIMEXPACCOUNTDTO>> searchDefault(PIMEXPACCOUNTSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimexpaccounts/searchdefault")
+	public ResponseEntity<Page<PIMEXPACCOUNTDTO>> searchDefault(@RequestBody PIMEXPACCOUNTSearchContext context) {
         Page<PIMEXPACCOUNT> domains = pimexpaccountService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimexpaccountMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

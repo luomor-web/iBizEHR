@@ -143,7 +143,6 @@ public class VACSYSTEMHISTORYResource {
         VACSYSTEMHISTORYDTO dto = vacsystemhistoryMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"VACSYSTEMHISTORY" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacsystemhistories/batch")
@@ -161,7 +160,6 @@ public class VACSYSTEMHISTORYResource {
         return ResponseEntity.status(HttpStatus.OK).body(vacsystemhistoryMapping.toDto(vacsystemhistoryService.getDraft(new VACSYSTEMHISTORY())));
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"VACSYSTEMHISTORY" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/vacsystemhistories/fetchdefault")
 	public ResponseEntity<List<VACSYSTEMHISTORYDTO>> fetchDefault(VACSYSTEMHISTORYSearchContext context) {
@@ -174,10 +172,9 @@ public class VACSYSTEMHISTORYResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"VACSYSTEMHISTORY" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/vacsystemhistories/searchdefault")
-	public ResponseEntity<Page<VACSYSTEMHISTORYDTO>> searchDefault(VACSYSTEMHISTORYSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/vacsystemhistories/searchdefault")
+	public ResponseEntity<Page<VACSYSTEMHISTORYDTO>> searchDefault(@RequestBody VACSYSTEMHISTORYSearchContext context) {
         Page<VACSYSTEMHISTORY> domains = vacsystemhistoryService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(vacsystemhistoryMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

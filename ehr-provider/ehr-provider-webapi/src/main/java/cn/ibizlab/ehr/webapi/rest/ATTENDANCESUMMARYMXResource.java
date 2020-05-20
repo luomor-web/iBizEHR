@@ -65,7 +65,6 @@ public class ATTENDANCESUMMARYMXResource {
         ATTENDANCESUMMARYMXDTO dto = attendancesummarymxMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"ATTENDANCESUMMARYMX" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/attendancesummarymxes/batch")
@@ -161,7 +160,6 @@ public class ATTENDANCESUMMARYMXResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"ATTENDANCESUMMARYMX" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/attendancesummarymxes/fetchdefault")
 	public ResponseEntity<List<ATTENDANCESUMMARYMXDTO>> fetchDefault(ATTENDANCESUMMARYMXSearchContext context) {
@@ -174,10 +172,9 @@ public class ATTENDANCESUMMARYMXResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"ATTENDANCESUMMARYMX" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/attendancesummarymxes/searchdefault")
-	public ResponseEntity<Page<ATTENDANCESUMMARYMXDTO>> searchDefault(ATTENDANCESUMMARYMXSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/attendancesummarymxes/searchdefault")
+	public ResponseEntity<Page<ATTENDANCESUMMARYMXDTO>> searchDefault(@RequestBody ATTENDANCESUMMARYMXSearchContext context) {
         Page<ATTENDANCESUMMARYMX> domains = attendancesummarymxService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(attendancesummarymxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

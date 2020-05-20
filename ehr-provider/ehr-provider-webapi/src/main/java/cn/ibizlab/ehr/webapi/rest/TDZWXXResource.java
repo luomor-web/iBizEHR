@@ -65,7 +65,6 @@ public class TDZWXXResource {
         TDZWXXDTO dto = tdzwxxMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"TDZWXX" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/tdzwxxes/batch")
@@ -161,7 +160,6 @@ public class TDZWXXResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"TDZWXX" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/tdzwxxes/fetchdefault")
 	public ResponseEntity<List<TDZWXXDTO>> fetchDefault(TDZWXXSearchContext context) {
@@ -174,10 +172,9 @@ public class TDZWXXResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"TDZWXX" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/tdzwxxes/searchdefault")
-	public ResponseEntity<Page<TDZWXXDTO>> searchDefault(TDZWXXSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/tdzwxxes/searchdefault")
+	public ResponseEntity<Page<TDZWXXDTO>> searchDefault(@RequestBody TDZWXXSearchContext context) {
         Page<TDZWXX> domains = tdzwxxService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(tdzwxxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
@@ -299,8 +296,8 @@ public class TDZWXXResource {
 	}
 
 	@ApiOperation(value = "searchDEFAULTByPCMPROFILE", tags = {"TDZWXX" } ,notes = "searchDEFAULTByPCMPROFILE")
-    @RequestMapping(method= RequestMethod.GET , value="/pcmprofiles/{pcmprofile_id}/tdzwxxes/searchdefault")
-	public ResponseEntity<Page<TDZWXXDTO>> searchTDZWXXDefaultByPCMPROFILE(@PathVariable("pcmprofile_id") String pcmprofile_id,TDZWXXSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pcmprofiles/{pcmprofile_id}/tdzwxxes/searchdefault")
+	public ResponseEntity<Page<TDZWXXDTO>> searchTDZWXXDefaultByPCMPROFILE(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody TDZWXXSearchContext context) {
         context.setN_pcmprofileid_eq(pcmprofile_id);
         Page<TDZWXX> domains = tdzwxxService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)

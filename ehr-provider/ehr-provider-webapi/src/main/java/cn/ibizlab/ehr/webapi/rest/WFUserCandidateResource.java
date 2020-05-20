@@ -77,7 +77,6 @@ public class WFUserCandidateResource {
         WFUserCandidateDTO dto = wfusercandidateMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"WFUserCandidate" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/wfusercandidates/batch")
@@ -161,7 +160,6 @@ public class WFUserCandidateResource {
         return  ResponseEntity.status(HttpStatus.OK).body(wfusercandidateService.checkKey(wfusercandidateMapping.toDomain(wfusercandidatedto)));
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"WFUserCandidate" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/wfusercandidates/fetchdefault")
 	public ResponseEntity<List<WFUserCandidateDTO>> fetchDefault(WFUserCandidateSearchContext context) {
@@ -174,10 +172,9 @@ public class WFUserCandidateResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"WFUserCandidate" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/wfusercandidates/searchdefault")
-	public ResponseEntity<Page<WFUserCandidateDTO>> searchDefault(WFUserCandidateSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/wfusercandidates/searchdefault")
+	public ResponseEntity<Page<WFUserCandidateDTO>> searchDefault(@RequestBody WFUserCandidateSearchContext context) {
         Page<WFUserCandidate> domains = wfusercandidateService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(wfusercandidateMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

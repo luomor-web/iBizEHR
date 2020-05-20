@@ -152,7 +152,6 @@ public class DynaDashboardResource {
         DynaDashboardDTO dto = dynadashboardMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'ServiceApi'})")
     @ApiOperation(value = "createBatch", tags = {"DynaDashboard" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/dynadashboards/batch")
@@ -161,7 +160,6 @@ public class DynaDashboardResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'ServiceApi'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"DynaDashboard" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/dynadashboards/fetchdefault")
 	public ResponseEntity<List<DynaDashboardDTO>> fetchDefault(DynaDashboardSearchContext context) {
@@ -174,10 +172,9 @@ public class DynaDashboardResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'ServiceApi'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"DynaDashboard" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/dynadashboards/searchdefault")
-	public ResponseEntity<Page<DynaDashboardDTO>> searchDefault(DynaDashboardSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/dynadashboards/searchdefault")
+	public ResponseEntity<Page<DynaDashboardDTO>> searchDefault(@RequestBody DynaDashboardSearchContext context) {
         Page<DynaDashboard> domains = dynadashboardService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(dynadashboardMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

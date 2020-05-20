@@ -65,7 +65,6 @@ public class AttendRecordDetailResource {
         AttendRecordDetailDTO dto = attendrecorddetailMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"AttendRecordDetail" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/attendrecorddetails/batch")
@@ -161,7 +160,6 @@ public class AttendRecordDetailResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"AttendRecordDetail" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/attendrecorddetails/fetchdefault")
 	public ResponseEntity<List<AttendRecordDetailDTO>> fetchDefault(AttendRecordDetailSearchContext context) {
@@ -174,10 +172,9 @@ public class AttendRecordDetailResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"AttendRecordDetail" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/attendrecorddetails/searchdefault")
-	public ResponseEntity<Page<AttendRecordDetailDTO>> searchDefault(AttendRecordDetailSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/attendrecorddetails/searchdefault")
+	public ResponseEntity<Page<AttendRecordDetailDTO>> searchDefault(@RequestBody AttendRecordDetailSearchContext context) {
         Page<AttendRecordDetail> domains = attendrecorddetailService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(attendrecorddetailMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

@@ -90,7 +90,6 @@ public class ORMPOSTResource {
         ORMPOSTDTO dto = ormpostMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"ORMPOST" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormposts/batch")
@@ -174,7 +173,6 @@ public class ORMPOSTResource {
         return ResponseEntity.status(HttpStatus.OK).body(ormpostMapping.toDto(ormpostService.getDraft(new ORMPOST())));
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'EJZZGW',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch根据选择的组织所属的二级组织来获取岗位(ormorgid)", tags = {"ORMPOST" } ,notes = "fetch根据选择的组织所属的二级组织来获取岗位(ormorgid)")
     @RequestMapping(method= RequestMethod.GET , value="/ormposts/fetchejzzgw")
 	public ResponseEntity<List<ORMPOSTDTO>> fetchEJZZGW(ORMPOSTSearchContext context) {
@@ -187,16 +185,14 @@ public class ORMPOSTResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'EJZZGW',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search根据选择的组织所属的二级组织来获取岗位(ormorgid)", tags = {"ORMPOST" } ,notes = "search根据选择的组织所属的二级组织来获取岗位(ormorgid)")
-    @RequestMapping(method= RequestMethod.GET , value="/ormposts/searchejzzgw")
-	public ResponseEntity<Page<ORMPOSTDTO>> searchEJZZGW(ORMPOSTSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/ormposts/searchejzzgw")
+	public ResponseEntity<Page<ORMPOSTDTO>> searchEJZZGW(@RequestBody ORMPOSTSearchContext context) {
         Page<ORMPOST> domains = ormpostService.searchEJZZGW(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(ormpostMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'AuthPost',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchAuthPost", tags = {"ORMPOST" } ,notes = "fetchAuthPost")
     @RequestMapping(method= RequestMethod.GET , value="/ormposts/fetchauthpost")
 	public ResponseEntity<List<ORMPOSTDTO>> fetchAuthPost(ORMPOSTSearchContext context) {
@@ -209,16 +205,14 @@ public class ORMPOSTResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'AuthPost',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchAuthPost", tags = {"ORMPOST" } ,notes = "searchAuthPost")
-    @RequestMapping(method= RequestMethod.GET , value="/ormposts/searchauthpost")
-	public ResponseEntity<Page<ORMPOSTDTO>> searchAuthPost(ORMPOSTSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/ormposts/searchauthpost")
+	public ResponseEntity<Page<ORMPOSTDTO>> searchAuthPost(@RequestBody ORMPOSTSearchContext context) {
         Page<ORMPOST> domains = ormpostService.searchAuthPost(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(ormpostMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'CurOrg',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch根据当前操作人的身份选择岗位", tags = {"ORMPOST" } ,notes = "fetch根据当前操作人的身份选择岗位")
     @RequestMapping(method= RequestMethod.GET , value="/ormposts/fetchcurorg")
 	public ResponseEntity<List<ORMPOSTDTO>> fetchCurOrg(ORMPOSTSearchContext context) {
@@ -231,16 +225,14 @@ public class ORMPOSTResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'CurOrg',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search根据当前操作人的身份选择岗位", tags = {"ORMPOST" } ,notes = "search根据当前操作人的身份选择岗位")
-    @RequestMapping(method= RequestMethod.GET , value="/ormposts/searchcurorg")
-	public ResponseEntity<Page<ORMPOSTDTO>> searchCurOrg(ORMPOSTSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/ormposts/searchcurorg")
+	public ResponseEntity<Page<ORMPOSTDTO>> searchCurOrg(@RequestBody ORMPOSTSearchContext context) {
         Page<ORMPOST> domains = ormpostService.searchCurOrg(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(ormpostMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'DQGW',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch根据当前组织过滤岗位", tags = {"ORMPOST" } ,notes = "fetch根据当前组织过滤岗位")
     @RequestMapping(method= RequestMethod.GET , value="/ormposts/fetchdqgw")
 	public ResponseEntity<List<ORMPOSTDTO>> fetchDQGW(ORMPOSTSearchContext context) {
@@ -253,16 +245,14 @@ public class ORMPOSTResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'DQGW',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search根据当前组织过滤岗位", tags = {"ORMPOST" } ,notes = "search根据当前组织过滤岗位")
-    @RequestMapping(method= RequestMethod.GET , value="/ormposts/searchdqgw")
-	public ResponseEntity<Page<ORMPOSTDTO>> searchDQGW(ORMPOSTSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/ormposts/searchdqgw")
+	public ResponseEntity<Page<ORMPOSTDTO>> searchDQGW(@RequestBody ORMPOSTSearchContext context) {
         Page<ORMPOST> domains = ormpostService.searchDQGW(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(ormpostMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'DQORGGW',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch根据当前组织过滤岗位(orgid)", tags = {"ORMPOST" } ,notes = "fetch根据当前组织过滤岗位(orgid)")
     @RequestMapping(method= RequestMethod.GET , value="/ormposts/fetchdqorggw")
 	public ResponseEntity<List<ORMPOSTDTO>> fetchDQORGGW(ORMPOSTSearchContext context) {
@@ -275,16 +265,14 @@ public class ORMPOSTResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'DQORGGW',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search根据当前组织过滤岗位(orgid)", tags = {"ORMPOST" } ,notes = "search根据当前组织过滤岗位(orgid)")
-    @RequestMapping(method= RequestMethod.GET , value="/ormposts/searchdqorggw")
-	public ResponseEntity<Page<ORMPOSTDTO>> searchDQORGGW(ORMPOSTSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/ormposts/searchdqorggw")
+	public ResponseEntity<Page<ORMPOSTDTO>> searchDQORGGW(@RequestBody ORMPOSTSearchContext context) {
         Page<ORMPOST> domains = ormpostService.searchDQORGGW(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(ormpostMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'GWXH',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch岗位查询", tags = {"ORMPOST" } ,notes = "fetch岗位查询")
     @RequestMapping(method= RequestMethod.GET , value="/ormposts/fetchgwxh")
 	public ResponseEntity<List<ORMPOSTDTO>> fetchGWXH(ORMPOSTSearchContext context) {
@@ -297,16 +285,14 @@ public class ORMPOSTResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'GWXH',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search岗位查询", tags = {"ORMPOST" } ,notes = "search岗位查询")
-    @RequestMapping(method= RequestMethod.GET , value="/ormposts/searchgwxh")
-	public ResponseEntity<Page<ORMPOSTDTO>> searchGWXH(ORMPOSTSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/ormposts/searchgwxh")
+	public ResponseEntity<Page<ORMPOSTDTO>> searchGWXH(@RequestBody ORMPOSTSearchContext context) {
         Page<ORMPOST> domains = ormpostService.searchGWXH(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(ormpostMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"ORMPOST" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/ormposts/fetchdefault")
 	public ResponseEntity<List<ORMPOSTDTO>> fetchDefault(ORMPOSTSearchContext context) {
@@ -319,16 +305,14 @@ public class ORMPOSTResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"ORMPOST" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/ormposts/searchdefault")
-	public ResponseEntity<Page<ORMPOSTDTO>> searchDefault(ORMPOSTSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/ormposts/searchdefault")
+	public ResponseEntity<Page<ORMPOSTDTO>> searchDefault(@RequestBody ORMPOSTSearchContext context) {
         Page<ORMPOST> domains = ormpostService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(ormpostMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'JZBGWCX',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch局总部岗位查询", tags = {"ORMPOST" } ,notes = "fetch局总部岗位查询")
     @RequestMapping(method= RequestMethod.GET , value="/ormposts/fetchjzbgwcx")
 	public ResponseEntity<List<ORMPOSTDTO>> fetchJZBGWCX(ORMPOSTSearchContext context) {
@@ -341,16 +325,14 @@ public class ORMPOSTResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'JZBGWCX',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search局总部岗位查询", tags = {"ORMPOST" } ,notes = "search局总部岗位查询")
-    @RequestMapping(method= RequestMethod.GET , value="/ormposts/searchjzbgwcx")
-	public ResponseEntity<Page<ORMPOSTDTO>> searchJZBGWCX(ORMPOSTSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/ormposts/searchjzbgwcx")
+	public ResponseEntity<Page<ORMPOSTDTO>> searchJZBGWCX(@RequestBody ORMPOSTSearchContext context) {
         Page<ORMPOST> domains = ormpostService.searchJZBGWCX(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(ormpostMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'CXGW',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch查询当前组织所属的二级单位岗位", tags = {"ORMPOST" } ,notes = "fetch查询当前组织所属的二级单位岗位")
     @RequestMapping(method= RequestMethod.GET , value="/ormposts/fetchcxgw")
 	public ResponseEntity<List<ORMPOSTDTO>> fetchCXGW(ORMPOSTSearchContext context) {
@@ -363,10 +345,9 @@ public class ORMPOSTResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'CXGW',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search查询当前组织所属的二级单位岗位", tags = {"ORMPOST" } ,notes = "search查询当前组织所属的二级单位岗位")
-    @RequestMapping(method= RequestMethod.GET , value="/ormposts/searchcxgw")
-	public ResponseEntity<Page<ORMPOSTDTO>> searchCXGW(ORMPOSTSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/ormposts/searchcxgw")
+	public ResponseEntity<Page<ORMPOSTDTO>> searchCXGW(@RequestBody ORMPOSTSearchContext context) {
         Page<ORMPOST> domains = ormpostService.searchCXGW(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(ormpostMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

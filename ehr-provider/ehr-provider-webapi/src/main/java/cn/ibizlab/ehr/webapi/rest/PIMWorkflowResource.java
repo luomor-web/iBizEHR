@@ -165,7 +165,6 @@ public class PIMWorkflowResource {
         PIMWorkflowDTO dto = pimworkflowMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"PIMWorkflow" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimworkflows/batch")
@@ -174,7 +173,6 @@ public class PIMWorkflowResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PIMWorkflow" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimworkflows/fetchdefault")
 	public ResponseEntity<List<PIMWorkflowDTO>> fetchDefault(PIMWorkflowSearchContext context) {
@@ -187,10 +185,9 @@ public class PIMWorkflowResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PIMWorkflow" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/pimworkflows/searchdefault")
-	public ResponseEntity<Page<PIMWorkflowDTO>> searchDefault(PIMWorkflowSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimworkflows/searchdefault")
+	public ResponseEntity<Page<PIMWorkflowDTO>> searchDefault(@RequestBody PIMWorkflowSearchContext context) {
         Page<PIMWorkflow> domains = pimworkflowService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimworkflowMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

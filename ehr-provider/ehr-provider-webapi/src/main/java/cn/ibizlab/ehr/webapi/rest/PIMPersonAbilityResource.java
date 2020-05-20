@@ -156,7 +156,6 @@ public class PIMPersonAbilityResource {
         PIMPersonAbilityDTO dto = pimpersonabilityMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"PIMPersonAbility" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpersonabilities/batch")
@@ -174,7 +173,6 @@ public class PIMPersonAbilityResource {
         return  ResponseEntity.status(HttpStatus.OK).body(pimpersonabilityService.checkKey(pimpersonabilityMapping.toDomain(pimpersonabilitydto)));
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PIMPersonAbility" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimpersonabilities/fetchdefault")
 	public ResponseEntity<List<PIMPersonAbilityDTO>> fetchDefault(PIMPersonAbilitySearchContext context) {
@@ -187,10 +185,9 @@ public class PIMPersonAbilityResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PIMPersonAbility" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/pimpersonabilities/searchdefault")
-	public ResponseEntity<Page<PIMPersonAbilityDTO>> searchDefault(PIMPersonAbilitySearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimpersonabilities/searchdefault")
+	public ResponseEntity<Page<PIMPersonAbilityDTO>> searchDefault(@RequestBody PIMPersonAbilitySearchContext context) {
         Page<PIMPersonAbility> domains = pimpersonabilityService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimpersonabilityMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
@@ -323,8 +320,8 @@ public class PIMPersonAbilityResource {
 	}
 
 	@ApiOperation(value = "searchDEFAULTByPIMPERSON", tags = {"PIMPersonAbility" } ,notes = "searchDEFAULTByPIMPERSON")
-    @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/pimpersonabilities/searchdefault")
-	public ResponseEntity<Page<PIMPersonAbilityDTO>> searchPIMPersonAbilityDefaultByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id,PIMPersonAbilitySearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/pimpersonabilities/searchdefault")
+	public ResponseEntity<Page<PIMPersonAbilityDTO>> searchPIMPersonAbilityDefaultByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMPersonAbilitySearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
         Page<PIMPersonAbility> domains = pimpersonabilityService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)

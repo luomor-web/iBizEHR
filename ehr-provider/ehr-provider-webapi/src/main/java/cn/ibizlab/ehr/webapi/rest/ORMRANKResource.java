@@ -152,7 +152,6 @@ public class ORMRANKResource {
         ORMRANKDTO dto = ormrankMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"ORMRANK" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormranks/batch")
@@ -161,7 +160,6 @@ public class ORMRANKResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'JZRANK',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchJZRANK", tags = {"ORMRANK" } ,notes = "fetchJZRANK")
     @RequestMapping(method= RequestMethod.GET , value="/ormranks/fetchjzrank")
 	public ResponseEntity<List<ORMRANKDTO>> fetchJZRANK(ORMRANKSearchContext context) {
@@ -174,16 +172,14 @@ public class ORMRANKResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'JZRANK',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchJZRANK", tags = {"ORMRANK" } ,notes = "searchJZRANK")
-    @RequestMapping(method= RequestMethod.GET , value="/ormranks/searchjzrank")
-	public ResponseEntity<Page<ORMRANKDTO>> searchJZRANK(ORMRANKSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/ormranks/searchjzrank")
+	public ResponseEntity<Page<ORMRANKDTO>> searchJZRANK(@RequestBody ORMRANKSearchContext context) {
         Page<ORMRANK> domains = ormrankService.searchJZRANK(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(ormrankMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'JSRANK',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchJSRANK", tags = {"ORMRANK" } ,notes = "fetchJSRANK")
     @RequestMapping(method= RequestMethod.GET , value="/ormranks/fetchjsrank")
 	public ResponseEntity<List<ORMRANKDTO>> fetchJSRANK(ORMRANKSearchContext context) {
@@ -196,16 +192,14 @@ public class ORMRANKResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'JSRANK',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchJSRANK", tags = {"ORMRANK" } ,notes = "searchJSRANK")
-    @RequestMapping(method= RequestMethod.GET , value="/ormranks/searchjsrank")
-	public ResponseEntity<Page<ORMRANKDTO>> searchJSRANK(ORMRANKSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/ormranks/searchjsrank")
+	public ResponseEntity<Page<ORMRANKDTO>> searchJSRANK(@RequestBody ORMRANKSearchContext context) {
         Page<ORMRANK> domains = ormrankService.searchJSRANK(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(ormrankMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'DJYX',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchD级以下", tags = {"ORMRANK" } ,notes = "fetchD级以下")
     @RequestMapping(method= RequestMethod.GET , value="/ormranks/fetchdjyx")
 	public ResponseEntity<List<ORMRANKDTO>> fetchDJYX(ORMRANKSearchContext context) {
@@ -218,16 +212,14 @@ public class ORMRANKResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'DJYX',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchD级以下", tags = {"ORMRANK" } ,notes = "searchD级以下")
-    @RequestMapping(method= RequestMethod.GET , value="/ormranks/searchdjyx")
-	public ResponseEntity<Page<ORMRANKDTO>> searchDJYX(ORMRANKSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/ormranks/searchdjyx")
+	public ResponseEntity<Page<ORMRANKDTO>> searchDJYX(@RequestBody ORMRANKSearchContext context) {
         Page<ORMRANK> domains = ormrankService.searchDJYX(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(ormrankMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'JSNRANK',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchJSNRANK", tags = {"ORMRANK" } ,notes = "fetchJSNRANK")
     @RequestMapping(method= RequestMethod.GET , value="/ormranks/fetchjsnrank")
 	public ResponseEntity<List<ORMRANKDTO>> fetchJSNRANK(ORMRANKSearchContext context) {
@@ -240,16 +232,14 @@ public class ORMRANKResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'JSNRANK',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchJSNRANK", tags = {"ORMRANK" } ,notes = "searchJSNRANK")
-    @RequestMapping(method= RequestMethod.GET , value="/ormranks/searchjsnrank")
-	public ResponseEntity<Page<ORMRANKDTO>> searchJSNRANK(ORMRANKSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/ormranks/searchjsnrank")
+	public ResponseEntity<Page<ORMRANKDTO>> searchJSNRANK(@RequestBody ORMRANKSearchContext context) {
         Page<ORMRANK> domains = ormrankService.searchJSNRANK(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(ormrankMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"ORMRANK" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/ormranks/fetchdefault")
 	public ResponseEntity<List<ORMRANKDTO>> fetchDefault(ORMRANKSearchContext context) {
@@ -262,16 +252,14 @@ public class ORMRANKResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"ORMRANK" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/ormranks/searchdefault")
-	public ResponseEntity<Page<ORMRANKDTO>> searchDefault(ORMRANKSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/ormranks/searchdefault")
+	public ResponseEntity<Page<ORMRANKDTO>> searchDefault(@RequestBody ORMRANKSearchContext context) {
         Page<ORMRANK> domains = ormrankService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(ormrankMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'CurRank',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch根据登录人身份判定职级显示", tags = {"ORMRANK" } ,notes = "fetch根据登录人身份判定职级显示")
     @RequestMapping(method= RequestMethod.GET , value="/ormranks/fetchcurrank")
 	public ResponseEntity<List<ORMRANKDTO>> fetchCurRank(ORMRANKSearchContext context) {
@@ -284,10 +272,9 @@ public class ORMRANKResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'CurRank',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search根据登录人身份判定职级显示", tags = {"ORMRANK" } ,notes = "search根据登录人身份判定职级显示")
-    @RequestMapping(method= RequestMethod.GET , value="/ormranks/searchcurrank")
-	public ResponseEntity<Page<ORMRANKDTO>> searchCurRank(ORMRANKSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/ormranks/searchcurrank")
+	public ResponseEntity<Page<ORMRANKDTO>> searchCurRank(@RequestBody ORMRANKSearchContext context) {
         Page<ORMRANK> domains = ormrankService.searchCurRank(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(ormrankMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

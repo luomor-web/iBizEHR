@@ -56,6 +56,7 @@
             <column name="FONTSIZE" type="VARCHAR2(10 BYTE)"/>
             <column name="LANG" type="VARCHAR2(100 BYTE)"/>
             <column name="MEMO" type="VARCHAR2(500 BYTE)"/>
+            <column name="SUPERUSER" type="INTEGER"/>
         </createTable>
     </changeSet>
     <changeSet author="Think (generated)" id="1561433044682-3">
@@ -65,6 +66,7 @@
             <column name="USERNAME" value="系统管理员"/>
             <column name="USERCODE" value="0100"/>
             <column name="LOGINNAME" value="ibzadmin"/>
+            <column name="SUPERUSER" value="1"/>
             <column name="PASSWORD" value="123456"/>
             <column name="DOMAINS" value="100000"/>
             <column name="MDEPTID"/>

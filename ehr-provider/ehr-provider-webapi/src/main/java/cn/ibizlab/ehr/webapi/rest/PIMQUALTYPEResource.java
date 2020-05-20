@@ -65,7 +65,6 @@ public class PIMQUALTYPEResource {
         PIMQUALTYPEDTO dto = pimqualtypeMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"PIMQUALTYPE" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimqualtypes/batch")
@@ -161,7 +160,6 @@ public class PIMQUALTYPEResource {
         return ResponseEntity.status(HttpStatus.OK).body(pimqualtypeMapping.toDto(pimqualtypeService.getDraft(new PIMQUALTYPE())));
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PIMQUALTYPE" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimqualtypes/fetchdefault")
 	public ResponseEntity<List<PIMQUALTYPEDTO>> fetchDefault(PIMQUALTYPESearchContext context) {
@@ -174,10 +172,9 @@ public class PIMQUALTYPEResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PIMQUALTYPE" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/pimqualtypes/searchdefault")
-	public ResponseEntity<Page<PIMQUALTYPEDTO>> searchDefault(PIMQUALTYPESearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimqualtypes/searchdefault")
+	public ResponseEntity<Page<PIMQUALTYPEDTO>> searchDefault(@RequestBody PIMQUALTYPESearchContext context) {
         Page<PIMQUALTYPE> domains = pimqualtypeService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimqualtypeMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

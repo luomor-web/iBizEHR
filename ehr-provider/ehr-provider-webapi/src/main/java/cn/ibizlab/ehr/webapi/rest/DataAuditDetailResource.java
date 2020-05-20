@@ -102,7 +102,6 @@ public class DataAuditDetailResource {
         DataAuditDetailDTO dto = dataauditdetailMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"DataAuditDetail" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/dataauditdetails/batch")
@@ -161,7 +160,6 @@ public class DataAuditDetailResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"DataAuditDetail" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/dataauditdetails/fetchdefault")
 	public ResponseEntity<List<DataAuditDetailDTO>> fetchDefault(DataAuditDetailSearchContext context) {
@@ -174,10 +172,9 @@ public class DataAuditDetailResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"DataAuditDetail" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/dataauditdetails/searchdefault")
-	public ResponseEntity<Page<DataAuditDetailDTO>> searchDefault(DataAuditDetailSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/dataauditdetails/searchdefault")
+	public ResponseEntity<Page<DataAuditDetailDTO>> searchDefault(@RequestBody DataAuditDetailSearchContext context) {
         Page<DataAuditDetail> domains = dataauditdetailService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(dataauditdetailMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

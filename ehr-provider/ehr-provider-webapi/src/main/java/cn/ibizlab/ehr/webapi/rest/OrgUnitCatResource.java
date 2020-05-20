@@ -88,7 +88,6 @@ public class OrgUnitCatResource {
         OrgUnitCatDTO dto = orgunitcatMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"OrgUnitCat" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/orgunitcats/batch")
@@ -161,7 +160,6 @@ public class OrgUnitCatResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"OrgUnitCat" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/orgunitcats/fetchdefault")
 	public ResponseEntity<List<OrgUnitCatDTO>> fetchDefault(OrgUnitCatSearchContext context) {
@@ -174,10 +172,9 @@ public class OrgUnitCatResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"OrgUnitCat" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/orgunitcats/searchdefault")
-	public ResponseEntity<Page<OrgUnitCatDTO>> searchDefault(OrgUnitCatSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/orgunitcats/searchdefault")
+	public ResponseEntity<Page<OrgUnitCatDTO>> searchDefault(@RequestBody OrgUnitCatSearchContext context) {
         Page<OrgUnitCat> domains = orgunitcatService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(orgunitcatMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

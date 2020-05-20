@@ -100,7 +100,6 @@ public class PIMARCHIVESLOANANDRETURNResource {
         PIMARCHIVESLOANANDRETURNDTO dto = pimarchivesloanandreturnMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"PIMARCHIVESLOANANDRETURN" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimarchivesloanandreturns/batch")
@@ -187,7 +186,6 @@ public class PIMARCHIVESLOANANDRETURNResource {
         return ResponseEntity.status(HttpStatus.OK).body(pimarchivesloanandreturndto);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PIMARCHIVESLOANANDRETURN" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimarchivesloanandreturns/fetchdefault")
 	public ResponseEntity<List<PIMARCHIVESLOANANDRETURNDTO>> fetchDefault(PIMARCHIVESLOANANDRETURNSearchContext context) {
@@ -200,10 +198,9 @@ public class PIMARCHIVESLOANANDRETURNResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PIMARCHIVESLOANANDRETURN" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/pimarchivesloanandreturns/searchdefault")
-	public ResponseEntity<Page<PIMARCHIVESLOANANDRETURNDTO>> searchDefault(PIMARCHIVESLOANANDRETURNSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimarchivesloanandreturns/searchdefault")
+	public ResponseEntity<Page<PIMARCHIVESLOANANDRETURNDTO>> searchDefault(@RequestBody PIMARCHIVESLOANANDRETURNSearchContext context) {
         Page<PIMARCHIVESLOANANDRETURN> domains = pimarchivesloanandreturnService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimarchivesloanandreturnMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
@@ -347,8 +344,8 @@ public class PIMARCHIVESLOANANDRETURNResource {
 	}
 
 	@ApiOperation(value = "searchDEFAULTByPIMARCHIVES", tags = {"PIMARCHIVESLOANANDRETURN" } ,notes = "searchDEFAULTByPIMARCHIVES")
-    @RequestMapping(method= RequestMethod.GET , value="/pimarchives/{pimarchives_id}/pimarchivesloanandreturns/searchdefault")
-	public ResponseEntity<Page<PIMARCHIVESLOANANDRETURNDTO>> searchPIMARCHIVESLOANANDRETURNDefaultByPIMARCHIVES(@PathVariable("pimarchives_id") String pimarchives_id,PIMARCHIVESLOANANDRETURNSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimarchives/{pimarchives_id}/pimarchivesloanandreturns/searchdefault")
+	public ResponseEntity<Page<PIMARCHIVESLOANANDRETURNDTO>> searchPIMARCHIVESLOANANDRETURNDefaultByPIMARCHIVES(@PathVariable("pimarchives_id") String pimarchives_id, @RequestBody PIMARCHIVESLOANANDRETURNSearchContext context) {
         context.setN_pimarchivesid_eq(pimarchives_id);
         Page<PIMARCHIVESLOANANDRETURN> domains = pimarchivesloanandreturnService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
@@ -494,8 +491,8 @@ public class PIMARCHIVESLOANANDRETURNResource {
 	}
 
 	@ApiOperation(value = "searchDEFAULTByPIMPERSONPIMARCHIVES", tags = {"PIMARCHIVESLOANANDRETURN" } ,notes = "searchDEFAULTByPIMPERSONPIMARCHIVES")
-    @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/pimarchives/{pimarchives_id}/pimarchivesloanandreturns/searchdefault")
-	public ResponseEntity<Page<PIMARCHIVESLOANANDRETURNDTO>> searchPIMARCHIVESLOANANDRETURNDefaultByPIMPERSONPIMARCHIVES(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimarchives_id") String pimarchives_id,PIMARCHIVESLOANANDRETURNSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/pimarchives/{pimarchives_id}/pimarchivesloanandreturns/searchdefault")
+	public ResponseEntity<Page<PIMARCHIVESLOANANDRETURNDTO>> searchPIMARCHIVESLOANANDRETURNDefaultByPIMPERSONPIMARCHIVES(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimarchives_id") String pimarchives_id, @RequestBody PIMARCHIVESLOANANDRETURNSearchContext context) {
         context.setN_pimarchivesid_eq(pimarchives_id);
         Page<PIMARCHIVESLOANANDRETURN> domains = pimarchivesloanandreturnService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)

@@ -118,7 +118,6 @@ public class PCMXKMLResource {
         PCMXKMLDTO dto = pcmxkmlMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"PCMXKML" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmxkmls/batch")
@@ -161,7 +160,6 @@ public class PCMXKMLResource {
         return ResponseEntity.status(HttpStatus.OK).body(pcmxkmlMapping.toDto(pcmxkmlService.getDraft(new PCMXKML())));
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PCMXKML" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pcmxkmls/fetchdefault")
 	public ResponseEntity<List<PCMXKMLDTO>> fetchDefault(PCMXKMLSearchContext context) {
@@ -174,16 +172,14 @@ public class PCMXKMLResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PCMXKML" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/pcmxkmls/searchdefault")
-	public ResponseEntity<Page<PCMXKMLDTO>> searchDefault(PCMXKMLSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pcmxkmls/searchdefault")
+	public ResponseEntity<Page<PCMXKMLDTO>> searchDefault(@RequestBody PCMXKMLSearchContext context) {
         Page<PCMXKML> domains = pcmxkmlService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pcmxkmlMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'CurND',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch当前年度", tags = {"PCMXKML" } ,notes = "fetch当前年度")
     @RequestMapping(method= RequestMethod.GET , value="/pcmxkmls/fetchcurnd")
 	public ResponseEntity<List<PCMXKMLDTO>> fetchCurND(PCMXKMLSearchContext context) {
@@ -196,10 +192,9 @@ public class PCMXKMLResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'CurND',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search当前年度", tags = {"PCMXKML" } ,notes = "search当前年度")
-    @RequestMapping(method= RequestMethod.GET , value="/pcmxkmls/searchcurnd")
-	public ResponseEntity<Page<PCMXKMLDTO>> searchCurND(PCMXKMLSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pcmxkmls/searchcurnd")
+	public ResponseEntity<Page<PCMXKMLDTO>> searchCurND(@RequestBody PCMXKMLSearchContext context) {
         Page<PCMXKML> domains = pcmxkmlService.searchCurND(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pcmxkmlMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

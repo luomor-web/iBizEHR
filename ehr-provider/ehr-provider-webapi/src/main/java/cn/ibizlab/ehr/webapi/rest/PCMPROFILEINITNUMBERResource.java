@@ -122,7 +122,6 @@ public class PCMPROFILEINITNUMBERResource {
         PCMPROFILEINITNUMBERDTO dto = pcmprofileinitnumberMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"PCMPROFILEINITNUMBER" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofileinitnumbers/batch")
@@ -161,7 +160,6 @@ public class PCMPROFILEINITNUMBERResource {
         return  ResponseEntity.status(HttpStatus.OK).body(pcmprofileinitnumberService.checkKey(pcmprofileinitnumberMapping.toDomain(pcmprofileinitnumberdto)));
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PCMPROFILEINITNUMBER" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pcmprofileinitnumbers/fetchdefault")
 	public ResponseEntity<List<PCMPROFILEINITNUMBERDTO>> fetchDefault(PCMPROFILEINITNUMBERSearchContext context) {
@@ -174,10 +172,9 @@ public class PCMPROFILEINITNUMBERResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PCMPROFILEINITNUMBER" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/pcmprofileinitnumbers/searchdefault")
-	public ResponseEntity<Page<PCMPROFILEINITNUMBERDTO>> searchDefault(PCMPROFILEINITNUMBERSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pcmprofileinitnumbers/searchdefault")
+	public ResponseEntity<Page<PCMPROFILEINITNUMBERDTO>> searchDefault(@RequestBody PCMPROFILEINITNUMBERSearchContext context) {
         Page<PCMPROFILEINITNUMBER> domains = pcmprofileinitnumberService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pcmprofileinitnumberMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

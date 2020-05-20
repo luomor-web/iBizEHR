@@ -83,7 +83,6 @@ public class WFReminderResource {
         WFReminderDTO dto = wfreminderMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"WFReminder" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/wfreminders/batch")
@@ -161,7 +160,6 @@ public class WFReminderResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"WFReminder" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/wfreminders/fetchdefault")
 	public ResponseEntity<List<WFReminderDTO>> fetchDefault(WFReminderSearchContext context) {
@@ -174,10 +172,9 @@ public class WFReminderResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"WFReminder" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/wfreminders/searchdefault")
-	public ResponseEntity<Page<WFReminderDTO>> searchDefault(WFReminderSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/wfreminders/searchdefault")
+	public ResponseEntity<Page<WFReminderDTO>> searchDefault(@RequestBody WFReminderSearchContext context) {
         Page<WFReminder> domains = wfreminderService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(wfreminderMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

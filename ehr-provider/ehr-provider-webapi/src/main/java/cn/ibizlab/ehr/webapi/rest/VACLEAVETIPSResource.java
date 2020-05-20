@@ -78,7 +78,6 @@ public class VACLEAVETIPSResource {
         VACLEAVETIPSDTO dto = vacleavetipsMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"VACLEAVETIPS" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacleavetips/batch")
@@ -187,7 +186,6 @@ public class VACLEAVETIPSResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"VACLEAVETIPS" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/vacleavetips/fetchdefault")
 	public ResponseEntity<List<VACLEAVETIPSDTO>> fetchDefault(VACLEAVETIPSSearchContext context) {
@@ -200,10 +198,9 @@ public class VACLEAVETIPSResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"VACLEAVETIPS" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/vacleavetips/searchdefault")
-	public ResponseEntity<Page<VACLEAVETIPSDTO>> searchDefault(VACLEAVETIPSSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/vacleavetips/searchdefault")
+	public ResponseEntity<Page<VACLEAVETIPSDTO>> searchDefault(@RequestBody VACLEAVETIPSSearchContext context) {
         Page<VACLEAVETIPS> domains = vacleavetipsService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(vacleavetipsMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

@@ -147,7 +147,6 @@ public class PIMARCHIVESResource {
         PIMARCHIVESDTO dto = pimarchivesMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"PIMARCHIVES" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimarchives/batch")
@@ -174,7 +173,6 @@ public class PIMARCHIVESResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'EMLOYEENOFILE',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch员工不在档档案", tags = {"PIMARCHIVES" } ,notes = "fetch员工不在档档案")
     @RequestMapping(method= RequestMethod.GET , value="/pimarchives/fetchemloyeenofile")
 	public ResponseEntity<List<PIMARCHIVESDTO>> fetchEMLOYEENOFILE(PIMARCHIVESSearchContext context) {
@@ -187,16 +185,14 @@ public class PIMARCHIVESResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'EMLOYEENOFILE',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search员工不在档档案", tags = {"PIMARCHIVES" } ,notes = "search员工不在档档案")
-    @RequestMapping(method= RequestMethod.GET , value="/pimarchives/searchemloyeenofile")
-	public ResponseEntity<Page<PIMARCHIVESDTO>> searchEMLOYEENOFILE(PIMARCHIVESSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimarchives/searchemloyeenofile")
+	public ResponseEntity<Page<PIMARCHIVESDTO>> searchEMLOYEENOFILE(@RequestBody PIMARCHIVESSearchContext context) {
         Page<PIMARCHIVES> domains = pimarchivesService.searchEMLOYEENOFILE(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimarchivesMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'SysOrgIsSrfOrg',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch管理单位等于当前登录人的单位（用于非员工在档数据查询）", tags = {"PIMARCHIVES" } ,notes = "fetch管理单位等于当前登录人的单位（用于非员工在档数据查询）")
     @RequestMapping(method= RequestMethod.GET , value="/pimarchives/fetchsysorgissrforg")
 	public ResponseEntity<List<PIMARCHIVESDTO>> fetchSysOrgIsSrfOrg(PIMARCHIVESSearchContext context) {
@@ -209,16 +205,14 @@ public class PIMARCHIVESResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'SysOrgIsSrfOrg',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search管理单位等于当前登录人的单位（用于非员工在档数据查询）", tags = {"PIMARCHIVES" } ,notes = "search管理单位等于当前登录人的单位（用于非员工在档数据查询）")
-    @RequestMapping(method= RequestMethod.GET , value="/pimarchives/searchsysorgissrforg")
-	public ResponseEntity<Page<PIMARCHIVESDTO>> searchSysOrgIsSrfOrg(PIMARCHIVESSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimarchives/searchsysorgissrforg")
+	public ResponseEntity<Page<PIMARCHIVESDTO>> searchSysOrgIsSrfOrg(@RequestBody PIMARCHIVESSearchContext context) {
         Page<PIMARCHIVES> domains = pimarchivesService.searchSysOrgIsSrfOrg(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimarchivesMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PIMARCHIVES" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimarchives/fetchdefault")
 	public ResponseEntity<List<PIMARCHIVESDTO>> fetchDefault(PIMARCHIVESSearchContext context) {
@@ -231,16 +225,14 @@ public class PIMARCHIVESResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PIMARCHIVES" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/pimarchives/searchdefault")
-	public ResponseEntity<Page<PIMARCHIVESDTO>> searchDefault(PIMARCHIVESSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimarchives/searchdefault")
+	public ResponseEntity<Page<PIMARCHIVESDTO>> searchDefault(@RequestBody PIMARCHIVESSearchContext context) {
         Page<PIMARCHIVES> domains = pimarchivesService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimarchivesMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'JLSS',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch记录所属和个人ID不符的", tags = {"PIMARCHIVES" } ,notes = "fetch记录所属和个人ID不符的")
     @RequestMapping(method= RequestMethod.GET , value="/pimarchives/fetchjlss")
 	public ResponseEntity<List<PIMARCHIVESDTO>> fetchJLSS(PIMARCHIVESSearchContext context) {
@@ -253,16 +245,14 @@ public class PIMARCHIVESResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'JLSS',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search记录所属和个人ID不符的", tags = {"PIMARCHIVES" } ,notes = "search记录所属和个人ID不符的")
-    @RequestMapping(method= RequestMethod.GET , value="/pimarchives/searchjlss")
-	public ResponseEntity<Page<PIMARCHIVESDTO>> searchJLSS(PIMARCHIVESSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimarchives/searchjlss")
+	public ResponseEntity<Page<PIMARCHIVESDTO>> searchJLSS(@RequestBody PIMARCHIVESSearchContext context) {
         Page<PIMARCHIVES> domains = pimarchivesService.searchJLSS(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimarchivesMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'ZIZHU',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch自助(档案信息)", tags = {"PIMARCHIVES" } ,notes = "fetch自助(档案信息)")
     @RequestMapping(method= RequestMethod.GET , value="/pimarchives/fetchzizhu")
 	public ResponseEntity<List<PIMARCHIVESDTO>> fetchZIZHU(PIMARCHIVESSearchContext context) {
@@ -275,16 +265,14 @@ public class PIMARCHIVESResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'ZIZHU',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search自助(档案信息)", tags = {"PIMARCHIVES" } ,notes = "search自助(档案信息)")
-    @RequestMapping(method= RequestMethod.GET , value="/pimarchives/searchzizhu")
-	public ResponseEntity<Page<PIMARCHIVESDTO>> searchZIZHU(PIMARCHIVESSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimarchives/searchzizhu")
+	public ResponseEntity<Page<PIMARCHIVESDTO>> searchZIZHU(@RequestBody PIMARCHIVESSearchContext context) {
         Page<PIMARCHIVES> domains = pimarchivesService.searchZIZHU(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimarchivesMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'NOEMLOYEENOFILE',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch非员工在档档案", tags = {"PIMARCHIVES" } ,notes = "fetch非员工在档档案")
     @RequestMapping(method= RequestMethod.GET , value="/pimarchives/fetchnoemloyeenofile")
 	public ResponseEntity<List<PIMARCHIVESDTO>> fetchNOEMLOYEENOFILE(PIMARCHIVESSearchContext context) {
@@ -297,16 +285,14 @@ public class PIMARCHIVESResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'NOEMLOYEENOFILE',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search非员工在档档案", tags = {"PIMARCHIVES" } ,notes = "search非员工在档档案")
-    @RequestMapping(method= RequestMethod.GET , value="/pimarchives/searchnoemloyeenofile")
-	public ResponseEntity<Page<PIMARCHIVESDTO>> searchNOEMLOYEENOFILE(PIMARCHIVESSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimarchives/searchnoemloyeenofile")
+	public ResponseEntity<Page<PIMARCHIVESDTO>> searchNOEMLOYEENOFILE(@RequestBody PIMARCHIVESSearchContext context) {
         Page<PIMARCHIVES> domains = pimarchivesService.searchNOEMLOYEENOFILE(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimarchivesMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'PIMREADGJD',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch档案信息组织查询", tags = {"PIMARCHIVES" } ,notes = "fetch档案信息组织查询")
     @RequestMapping(method= RequestMethod.GET , value="/pimarchives/fetchpimreadgjd")
 	public ResponseEntity<List<PIMARCHIVESDTO>> fetchPIMREADGJD(PIMARCHIVESSearchContext context) {
@@ -319,10 +305,9 @@ public class PIMARCHIVESResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'PIMREADGJD',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search档案信息组织查询", tags = {"PIMARCHIVES" } ,notes = "search档案信息组织查询")
-    @RequestMapping(method= RequestMethod.GET , value="/pimarchives/searchpimreadgjd")
-	public ResponseEntity<Page<PIMARCHIVESDTO>> searchPIMREADGJD(PIMARCHIVESSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimarchives/searchpimreadgjd")
+	public ResponseEntity<Page<PIMARCHIVESDTO>> searchPIMREADGJD(@RequestBody PIMARCHIVESSearchContext context) {
         Page<PIMARCHIVES> domains = pimarchivesService.searchPIMREADGJD(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimarchivesMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
@@ -455,8 +440,8 @@ public class PIMARCHIVESResource {
 	}
 
 	@ApiOperation(value = "search员工不在档档案ByPIMPERSON", tags = {"PIMARCHIVES" } ,notes = "search员工不在档档案ByPIMPERSON")
-    @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/pimarchives/searchemloyeenofile")
-	public ResponseEntity<Page<PIMARCHIVESDTO>> searchPIMARCHIVESEMLOYEENOFILEByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id,PIMARCHIVESSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/pimarchives/searchemloyeenofile")
+	public ResponseEntity<Page<PIMARCHIVESDTO>> searchPIMARCHIVESEMLOYEENOFILEByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMARCHIVESSearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
         Page<PIMARCHIVES> domains = pimarchivesService.searchEMLOYEENOFILE(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
@@ -477,8 +462,8 @@ public class PIMARCHIVESResource {
 	}
 
 	@ApiOperation(value = "search管理单位等于当前登录人的单位（用于非员工在档数据查询）ByPIMPERSON", tags = {"PIMARCHIVES" } ,notes = "search管理单位等于当前登录人的单位（用于非员工在档数据查询）ByPIMPERSON")
-    @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/pimarchives/searchsysorgissrforg")
-	public ResponseEntity<Page<PIMARCHIVESDTO>> searchPIMARCHIVESSysOrgIsSrfOrgByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id,PIMARCHIVESSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/pimarchives/searchsysorgissrforg")
+	public ResponseEntity<Page<PIMARCHIVESDTO>> searchPIMARCHIVESSysOrgIsSrfOrgByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMARCHIVESSearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
         Page<PIMARCHIVES> domains = pimarchivesService.searchSysOrgIsSrfOrg(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
@@ -499,8 +484,8 @@ public class PIMARCHIVESResource {
 	}
 
 	@ApiOperation(value = "searchDEFAULTByPIMPERSON", tags = {"PIMARCHIVES" } ,notes = "searchDEFAULTByPIMPERSON")
-    @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/pimarchives/searchdefault")
-	public ResponseEntity<Page<PIMARCHIVESDTO>> searchPIMARCHIVESDefaultByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id,PIMARCHIVESSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/pimarchives/searchdefault")
+	public ResponseEntity<Page<PIMARCHIVESDTO>> searchPIMARCHIVESDefaultByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMARCHIVESSearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
         Page<PIMARCHIVES> domains = pimarchivesService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
@@ -521,8 +506,8 @@ public class PIMARCHIVESResource {
 	}
 
 	@ApiOperation(value = "search记录所属和个人ID不符的ByPIMPERSON", tags = {"PIMARCHIVES" } ,notes = "search记录所属和个人ID不符的ByPIMPERSON")
-    @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/pimarchives/searchjlss")
-	public ResponseEntity<Page<PIMARCHIVESDTO>> searchPIMARCHIVESJLSSByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id,PIMARCHIVESSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/pimarchives/searchjlss")
+	public ResponseEntity<Page<PIMARCHIVESDTO>> searchPIMARCHIVESJLSSByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMARCHIVESSearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
         Page<PIMARCHIVES> domains = pimarchivesService.searchJLSS(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
@@ -543,8 +528,8 @@ public class PIMARCHIVESResource {
 	}
 
 	@ApiOperation(value = "search自助(档案信息)ByPIMPERSON", tags = {"PIMARCHIVES" } ,notes = "search自助(档案信息)ByPIMPERSON")
-    @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/pimarchives/searchzizhu")
-	public ResponseEntity<Page<PIMARCHIVESDTO>> searchPIMARCHIVESZIZHUByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id,PIMARCHIVESSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/pimarchives/searchzizhu")
+	public ResponseEntity<Page<PIMARCHIVESDTO>> searchPIMARCHIVESZIZHUByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMARCHIVESSearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
         Page<PIMARCHIVES> domains = pimarchivesService.searchZIZHU(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
@@ -565,8 +550,8 @@ public class PIMARCHIVESResource {
 	}
 
 	@ApiOperation(value = "search非员工在档档案ByPIMPERSON", tags = {"PIMARCHIVES" } ,notes = "search非员工在档档案ByPIMPERSON")
-    @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/pimarchives/searchnoemloyeenofile")
-	public ResponseEntity<Page<PIMARCHIVESDTO>> searchPIMARCHIVESNOEMLOYEENOFILEByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id,PIMARCHIVESSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/pimarchives/searchnoemloyeenofile")
+	public ResponseEntity<Page<PIMARCHIVESDTO>> searchPIMARCHIVESNOEMLOYEENOFILEByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMARCHIVESSearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
         Page<PIMARCHIVES> domains = pimarchivesService.searchNOEMLOYEENOFILE(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
@@ -587,8 +572,8 @@ public class PIMARCHIVESResource {
 	}
 
 	@ApiOperation(value = "search档案信息组织查询ByPIMPERSON", tags = {"PIMARCHIVES" } ,notes = "search档案信息组织查询ByPIMPERSON")
-    @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/pimarchives/searchpimreadgjd")
-	public ResponseEntity<Page<PIMARCHIVESDTO>> searchPIMARCHIVESPIMREADGJDByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id,PIMARCHIVESSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/pimarchives/searchpimreadgjd")
+	public ResponseEntity<Page<PIMARCHIVESDTO>> searchPIMARCHIVESPIMREADGJDByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMARCHIVESSearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
         Page<PIMARCHIVES> domains = pimarchivesService.searchPIMREADGJD(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)

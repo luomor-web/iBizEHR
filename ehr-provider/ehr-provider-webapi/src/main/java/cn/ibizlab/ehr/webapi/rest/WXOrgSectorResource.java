@@ -92,7 +92,6 @@ public class WXOrgSectorResource {
         WXOrgSectorDTO dto = wxorgsectorMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"WXOrgSector" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/wxorgsectors/batch")
@@ -161,7 +160,6 @@ public class WXOrgSectorResource {
         return ResponseEntity.status(HttpStatus.OK).body(wxorgsectorMapping.toDto(wxorgsectorService.getDraft(new WXOrgSector())));
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"WXOrgSector" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/wxorgsectors/fetchdefault")
 	public ResponseEntity<List<WXOrgSectorDTO>> fetchDefault(WXOrgSectorSearchContext context) {
@@ -174,10 +172,9 @@ public class WXOrgSectorResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"WXOrgSector" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/wxorgsectors/searchdefault")
-	public ResponseEntity<Page<WXOrgSectorDTO>> searchDefault(WXOrgSectorSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/wxorgsectors/searchdefault")
+	public ResponseEntity<Page<WXOrgSectorDTO>> searchDefault(@RequestBody WXOrgSectorSearchContext context) {
         Page<WXOrgSector> domains = wxorgsectorService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(wxorgsectorMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

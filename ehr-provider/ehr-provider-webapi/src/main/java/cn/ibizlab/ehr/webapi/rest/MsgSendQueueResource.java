@@ -124,7 +124,6 @@ public class MsgSendQueueResource {
         MsgSendQueueDTO dto = msgsendqueueMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"MsgSendQueue" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/msgsendqueues/batch")
@@ -161,7 +160,6 @@ public class MsgSendQueueResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"MsgSendQueue" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/msgsendqueues/fetchdefault")
 	public ResponseEntity<List<MsgSendQueueDTO>> fetchDefault(MsgSendQueueSearchContext context) {
@@ -174,10 +172,9 @@ public class MsgSendQueueResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"MsgSendQueue" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/msgsendqueues/searchdefault")
-	public ResponseEntity<Page<MsgSendQueueDTO>> searchDefault(MsgSendQueueSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/msgsendqueues/searchdefault")
+	public ResponseEntity<Page<MsgSendQueueDTO>> searchDefault(@RequestBody MsgSendQueueSearchContext context) {
         Page<MsgSendQueue> domains = msgsendqueueService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(msgsendqueueMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

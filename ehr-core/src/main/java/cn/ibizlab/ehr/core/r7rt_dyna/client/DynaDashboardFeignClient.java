@@ -65,7 +65,7 @@ public interface DynaDashboardFeignClient {
 
 
     @RequestMapping(method = RequestMethod.POST, value = "/dynadashboards/searchdefault")
-    Page<DynaDashboard> searchDefault(DynaDashboardSearchContext context);
+    Page<DynaDashboard> searchDefault(@RequestBody DynaDashboardSearchContext context);
 
 
 }

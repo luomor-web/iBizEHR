@@ -95,7 +95,6 @@ public class PIMSTAFFTYPEResource {
         PIMSTAFFTYPEDTO dto = pimstafftypeMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"PIMSTAFFTYPE" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimstafftypes/batch")
@@ -161,7 +160,6 @@ public class PIMSTAFFTYPEResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PIMSTAFFTYPE" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimstafftypes/fetchdefault")
 	public ResponseEntity<List<PIMSTAFFTYPEDTO>> fetchDefault(PIMSTAFFTYPESearchContext context) {
@@ -174,16 +172,14 @@ public class PIMSTAFFTYPEResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PIMSTAFFTYPE" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/pimstafftypes/searchdefault")
-	public ResponseEntity<Page<PIMSTAFFTYPEDTO>> searchDefault(PIMSTAFFTYPESearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimstafftypes/searchdefault")
+	public ResponseEntity<Page<PIMSTAFFTYPEDTO>> searchDefault(@RequestBody PIMSTAFFTYPESearchContext context) {
         Page<PIMSTAFFTYPE> domains = pimstafftypeService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimstafftypeMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'YPZ',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch应聘者专用", tags = {"PIMSTAFFTYPE" } ,notes = "fetch应聘者专用")
     @RequestMapping(method= RequestMethod.GET , value="/pimstafftypes/fetchypz")
 	public ResponseEntity<List<PIMSTAFFTYPEDTO>> fetchYPZ(PIMSTAFFTYPESearchContext context) {
@@ -196,10 +192,9 @@ public class PIMSTAFFTYPEResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'YPZ',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search应聘者专用", tags = {"PIMSTAFFTYPE" } ,notes = "search应聘者专用")
-    @RequestMapping(method= RequestMethod.GET , value="/pimstafftypes/searchypz")
-	public ResponseEntity<Page<PIMSTAFFTYPEDTO>> searchYPZ(PIMSTAFFTYPESearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimstafftypes/searchypz")
+	public ResponseEntity<Page<PIMSTAFFTYPEDTO>> searchYPZ(@RequestBody PIMSTAFFTYPESearchContext context) {
         Page<PIMSTAFFTYPE> domains = pimstafftypeService.searchYPZ(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimstafftypeMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

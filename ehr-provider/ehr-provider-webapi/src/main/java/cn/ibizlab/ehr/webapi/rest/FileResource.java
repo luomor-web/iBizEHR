@@ -129,7 +129,6 @@ public class FileResource {
         FileDTO dto = fileMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"File" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/files/batch")
@@ -161,7 +160,6 @@ public class FileResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"File" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/files/fetchdefault")
 	public ResponseEntity<List<FileDTO>> fetchDefault(FileSearchContext context) {
@@ -174,10 +172,9 @@ public class FileResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"File" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/files/searchdefault")
-	public ResponseEntity<Page<FileDTO>> searchDefault(FileSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/files/searchdefault")
+	public ResponseEntity<Page<FileDTO>> searchDefault(@RequestBody FileSearchContext context) {
         Page<File> domains = fileService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(fileMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

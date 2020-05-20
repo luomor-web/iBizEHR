@@ -152,7 +152,6 @@ public class SALITEMResource {
         SALITEMDTO dto = salitemMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"SALITEM" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/salitems/batch")
@@ -161,7 +160,6 @@ public class SALITEMResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"SALITEM" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/salitems/fetchdefault")
 	public ResponseEntity<List<SALITEMDTO>> fetchDefault(SALITEMSearchContext context) {
@@ -174,10 +172,9 @@ public class SALITEMResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"SALITEM" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/salitems/searchdefault")
-	public ResponseEntity<Page<SALITEMDTO>> searchDefault(SALITEMSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/salitems/searchdefault")
+	public ResponseEntity<Page<SALITEMDTO>> searchDefault(@RequestBody SALITEMSearchContext context) {
         Page<SALITEM> domains = salitemService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(salitemMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

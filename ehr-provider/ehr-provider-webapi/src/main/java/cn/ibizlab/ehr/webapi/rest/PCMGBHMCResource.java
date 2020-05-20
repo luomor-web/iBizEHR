@@ -117,7 +117,6 @@ public class PCMGBHMCResource {
         PCMGBHMCDTO dto = pcmgbhmcMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"PCMGBHMC" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmgbhmcs/batch")
@@ -200,7 +199,6 @@ public class PCMGBHMCResource {
         return ResponseEntity.status(HttpStatus.OK).body(pcmgbhmcdto);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'GBHMCNewTree',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch树视图的干部花名册（新）", tags = {"PCMGBHMC" } ,notes = "fetch树视图的干部花名册（新）")
     @RequestMapping(method= RequestMethod.GET , value="/pcmgbhmcs/fetchgbhmcnewtree")
 	public ResponseEntity<List<PCMGBHMCDTO>> fetchGBHMCNewTree(PCMGBHMCSearchContext context) {
@@ -213,16 +211,14 @@ public class PCMGBHMCResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'GBHMCNewTree',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search树视图的干部花名册（新）", tags = {"PCMGBHMC" } ,notes = "search树视图的干部花名册（新）")
-    @RequestMapping(method= RequestMethod.GET , value="/pcmgbhmcs/searchgbhmcnewtree")
-	public ResponseEntity<Page<PCMGBHMCDTO>> searchGBHMCNewTree(PCMGBHMCSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pcmgbhmcs/searchgbhmcnewtree")
+	public ResponseEntity<Page<PCMGBHMCDTO>> searchGBHMCNewTree(@RequestBody PCMGBHMCSearchContext context) {
         Page<PCMGBHMC> domains = pcmgbhmcService.searchGBHMCNewTree(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pcmgbhmcMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'GBHMCTree',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch树视图的干部花名册", tags = {"PCMGBHMC" } ,notes = "fetch树视图的干部花名册")
     @RequestMapping(method= RequestMethod.GET , value="/pcmgbhmcs/fetchgbhmctree")
 	public ResponseEntity<List<PCMGBHMCDTO>> fetchGBHMCTree(PCMGBHMCSearchContext context) {
@@ -235,16 +231,14 @@ public class PCMGBHMCResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'GBHMCTree',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search树视图的干部花名册", tags = {"PCMGBHMC" } ,notes = "search树视图的干部花名册")
-    @RequestMapping(method= RequestMethod.GET , value="/pcmgbhmcs/searchgbhmctree")
-	public ResponseEntity<Page<PCMGBHMCDTO>> searchGBHMCTree(PCMGBHMCSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pcmgbhmcs/searchgbhmctree")
+	public ResponseEntity<Page<PCMGBHMCDTO>> searchGBHMCTree(@RequestBody PCMGBHMCSearchContext context) {
         Page<PCMGBHMC> domains = pcmgbhmcService.searchGBHMCTree(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pcmgbhmcMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PCMGBHMC" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pcmgbhmcs/fetchdefault")
 	public ResponseEntity<List<PCMGBHMCDTO>> fetchDefault(PCMGBHMCSearchContext context) {
@@ -257,16 +251,14 @@ public class PCMGBHMCResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PCMGBHMC" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/pcmgbhmcs/searchdefault")
-	public ResponseEntity<Page<PCMGBHMCDTO>> searchDefault(PCMGBHMCSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pcmgbhmcs/searchdefault")
+	public ResponseEntity<Page<PCMGBHMCDTO>> searchDefault(@RequestBody PCMGBHMCSearchContext context) {
         Page<PCMGBHMC> domains = pcmgbhmcService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pcmgbhmcMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'ZJPD',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchZJPD", tags = {"PCMGBHMC" } ,notes = "fetchZJPD")
     @RequestMapping(method= RequestMethod.GET , value="/pcmgbhmcs/fetchzjpd")
 	public ResponseEntity<List<PCMGBHMCDTO>> fetchZJPD(PCMGBHMCSearchContext context) {
@@ -279,10 +271,9 @@ public class PCMGBHMCResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'ZJPD',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchZJPD", tags = {"PCMGBHMC" } ,notes = "searchZJPD")
-    @RequestMapping(method= RequestMethod.GET , value="/pcmgbhmcs/searchzjpd")
-	public ResponseEntity<Page<PCMGBHMCDTO>> searchZJPD(PCMGBHMCSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pcmgbhmcs/searchzjpd")
+	public ResponseEntity<Page<PCMGBHMCDTO>> searchZJPD(@RequestBody PCMGBHMCSearchContext context) {
         Page<PCMGBHMC> domains = pcmgbhmcService.searchZJPD(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pcmgbhmcMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

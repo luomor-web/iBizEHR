@@ -65,7 +65,6 @@ public class PIMCORRECTIONAPPLYResource {
         PIMCORRECTIONAPPLYDTO dto = pimcorrectionapplyMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"PIMCORRECTIONAPPLY" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimcorrectionapplies/batch")
@@ -161,7 +160,6 @@ public class PIMCORRECTIONAPPLYResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PIMCORRECTIONAPPLY" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimcorrectionapplies/fetchdefault")
 	public ResponseEntity<List<PIMCORRECTIONAPPLYDTO>> fetchDefault(PIMCORRECTIONAPPLYSearchContext context) {
@@ -174,10 +172,9 @@ public class PIMCORRECTIONAPPLYResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PIMCORRECTIONAPPLY" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/pimcorrectionapplies/searchdefault")
-	public ResponseEntity<Page<PIMCORRECTIONAPPLYDTO>> searchDefault(PIMCORRECTIONAPPLYSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimcorrectionapplies/searchdefault")
+	public ResponseEntity<Page<PIMCORRECTIONAPPLYDTO>> searchDefault(@RequestBody PIMCORRECTIONAPPLYSearchContext context) {
         Page<PIMCORRECTIONAPPLY> domains = pimcorrectionapplyService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimcorrectionapplyMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

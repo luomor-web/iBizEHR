@@ -83,7 +83,6 @@ public class TSSDTaskResource {
         TSSDTaskDTO dto = tssdtaskMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"TSSDTask" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/tssdtasks/batch")
@@ -161,7 +160,6 @@ public class TSSDTaskResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"TSSDTask" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/tssdtasks/fetchdefault")
 	public ResponseEntity<List<TSSDTaskDTO>> fetchDefault(TSSDTaskSearchContext context) {
@@ -174,10 +172,9 @@ public class TSSDTaskResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"TSSDTask" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/tssdtasks/searchdefault")
-	public ResponseEntity<Page<TSSDTaskDTO>> searchDefault(TSSDTaskSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/tssdtasks/searchdefault")
+	public ResponseEntity<Page<TSSDTaskDTO>> searchDefault(@RequestBody TSSDTaskSearchContext context) {
         Page<TSSDTask> domains = tssdtaskService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(tssdtaskMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

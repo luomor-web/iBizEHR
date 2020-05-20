@@ -118,7 +118,6 @@ public class SALSTDZYZGResource {
         SALSTDZYZGDTO dto = salstdzyzgMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"SALSTDZYZG" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/salstdzyzgs/batch")
@@ -161,7 +160,6 @@ public class SALSTDZYZGResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"SALSTDZYZG" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/salstdzyzgs/fetchdefault")
 	public ResponseEntity<List<SALSTDZYZGDTO>> fetchDefault(SALSTDZYZGSearchContext context) {
@@ -174,10 +172,9 @@ public class SALSTDZYZGResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"SALSTDZYZG" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/salstdzyzgs/searchdefault")
-	public ResponseEntity<Page<SALSTDZYZGDTO>> searchDefault(SALSTDZYZGSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/salstdzyzgs/searchdefault")
+	public ResponseEntity<Page<SALSTDZYZGDTO>> searchDefault(@RequestBody SALSTDZYZGSearchContext context) {
         Page<SALSTDZYZG> domains = salstdzyzgService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(salstdzyzgMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

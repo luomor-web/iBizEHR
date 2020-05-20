@@ -127,7 +127,6 @@ public class ContractSignORGResource {
         ContractSignORGDTO dto = contractsignorgMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"ContractSignORG" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/contractsignorgs/batch")
@@ -161,7 +160,6 @@ public class ContractSignORGResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"ContractSignORG" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/contractsignorgs/fetchdefault")
 	public ResponseEntity<List<ContractSignORGDTO>> fetchDefault(ContractSignORGSearchContext context) {
@@ -174,16 +172,14 @@ public class ContractSignORGResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"ContractSignORG" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/contractsignorgs/searchdefault")
-	public ResponseEntity<Page<ContractSignORGDTO>> searchDefault(ContractSignORGSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/contractsignorgs/searchdefault")
+	public ResponseEntity<Page<ContractSignORGDTO>> searchDefault(@RequestBody ContractSignORGSearchContext context) {
         Page<ContractSignORG> domains = contractsignorgService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(contractsignorgMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default2',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT2", tags = {"ContractSignORG" } ,notes = "fetchDEFAULT2")
     @RequestMapping(method= RequestMethod.GET , value="/contractsignorgs/fetchdefault2")
 	public ResponseEntity<List<ContractSignORGDTO>> fetchDefault2(ContractSignORGSearchContext context) {
@@ -196,10 +192,9 @@ public class ContractSignORGResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default2',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT2", tags = {"ContractSignORG" } ,notes = "searchDEFAULT2")
-    @RequestMapping(method= RequestMethod.GET , value="/contractsignorgs/searchdefault2")
-	public ResponseEntity<Page<ContractSignORGDTO>> searchDefault2(ContractSignORGSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/contractsignorgs/searchdefault2")
+	public ResponseEntity<Page<ContractSignORGDTO>> searchDefault2(@RequestBody ContractSignORGSearchContext context) {
         Page<ContractSignORG> domains = contractsignorgService.searchDefault2(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(contractsignorgMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

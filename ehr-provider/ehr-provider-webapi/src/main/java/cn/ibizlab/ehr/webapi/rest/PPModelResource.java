@@ -129,7 +129,6 @@ public class PPModelResource {
         PPModelDTO dto = ppmodelMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"PPModel" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/ppmodels/batch")
@@ -161,7 +160,6 @@ public class PPModelResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PPModel" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/ppmodels/fetchdefault")
 	public ResponseEntity<List<PPModelDTO>> fetchDefault(PPModelSearchContext context) {
@@ -174,10 +172,9 @@ public class PPModelResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PPModel" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/ppmodels/searchdefault")
-	public ResponseEntity<Page<PPModelDTO>> searchDefault(PPModelSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/ppmodels/searchdefault")
+	public ResponseEntity<Page<PPModelDTO>> searchDefault(@RequestBody PPModelSearchContext context) {
         Page<PPModel> domains = ppmodelService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(ppmodelMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

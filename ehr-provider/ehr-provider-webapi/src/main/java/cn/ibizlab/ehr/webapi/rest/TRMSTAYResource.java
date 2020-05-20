@@ -143,7 +143,6 @@ public class TRMSTAYResource {
         TRMSTAYDTO dto = trmstayMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"TRMSTAY" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmstays/batch")
@@ -161,7 +160,6 @@ public class TRMSTAYResource {
         return  ResponseEntity.status(HttpStatus.OK).body(trmstayService.checkKey(trmstayMapping.toDomain(trmstaydto)));
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"TRMSTAY" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/trmstays/fetchdefault")
 	public ResponseEntity<List<TRMSTAYDTO>> fetchDefault(TRMSTAYSearchContext context) {
@@ -174,10 +172,9 @@ public class TRMSTAYResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"TRMSTAY" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/trmstays/searchdefault")
-	public ResponseEntity<Page<TRMSTAYDTO>> searchDefault(TRMSTAYSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/trmstays/searchdefault")
+	public ResponseEntity<Page<TRMSTAYDTO>> searchDefault(@RequestBody TRMSTAYSearchContext context) {
         Page<TRMSTAY> domains = trmstayService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(trmstayMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

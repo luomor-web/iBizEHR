@@ -106,7 +106,6 @@ public class TSSDTaskPolicyResource {
         TSSDTaskPolicyDTO dto = tssdtaskpolicyMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"TSSDTaskPolicy" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/tssdtaskpolicies/batch")
@@ -161,7 +160,6 @@ public class TSSDTaskPolicyResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"TSSDTaskPolicy" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/tssdtaskpolicies/fetchdefault")
 	public ResponseEntity<List<TSSDTaskPolicyDTO>> fetchDefault(TSSDTaskPolicySearchContext context) {
@@ -174,10 +172,9 @@ public class TSSDTaskPolicyResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"TSSDTaskPolicy" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/tssdtaskpolicies/searchdefault")
-	public ResponseEntity<Page<TSSDTaskPolicyDTO>> searchDefault(TSSDTaskPolicySearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/tssdtaskpolicies/searchdefault")
+	public ResponseEntity<Page<TSSDTaskPolicyDTO>> searchDefault(@RequestBody TSSDTaskPolicySearchContext context) {
         Page<TSSDTaskPolicy> domains = tssdtaskpolicyService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(tssdtaskpolicyMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

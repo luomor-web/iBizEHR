@@ -88,7 +88,6 @@ public class VACSITUATIONResource {
         VACSITUATIONDTO dto = vacsituationMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"VACSITUATION" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacsituations/batch")
@@ -161,7 +160,6 @@ public class VACSITUATIONResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"VACSITUATION" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/vacsituations/fetchdefault")
 	public ResponseEntity<List<VACSITUATIONDTO>> fetchDefault(VACSITUATIONSearchContext context) {
@@ -174,10 +172,9 @@ public class VACSITUATIONResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"VACSITUATION" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/vacsituations/searchdefault")
-	public ResponseEntity<Page<VACSITUATIONDTO>> searchDefault(VACSITUATIONSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/vacsituations/searchdefault")
+	public ResponseEntity<Page<VACSITUATIONDTO>> searchDefault(@RequestBody VACSITUATIONSearchContext context) {
         Page<VACSITUATION> domains = vacsituationService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(vacsituationMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

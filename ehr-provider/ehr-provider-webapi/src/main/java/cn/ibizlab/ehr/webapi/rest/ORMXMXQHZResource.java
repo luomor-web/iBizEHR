@@ -152,7 +152,6 @@ public class ORMXMXQHZResource {
         ORMXMXQHZDTO dto = ormxmxqhzMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"ORMXMXQHZ" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormxmxqhzs/batch")
@@ -161,7 +160,6 @@ public class ORMXMXQHZResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'XMRYQKMX',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch项目人员缺口明细", tags = {"ORMXMXQHZ" } ,notes = "fetch项目人员缺口明细")
     @RequestMapping(method= RequestMethod.GET , value="/ormxmxqhzs/fetchxmryqkmx")
 	public ResponseEntity<List<ORMXMXQHZDTO>> fetchXMRYQKMX(ORMXMXQHZSearchContext context) {
@@ -174,16 +172,14 @@ public class ORMXMXQHZResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'XMRYQKMX',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search项目人员缺口明细", tags = {"ORMXMXQHZ" } ,notes = "search项目人员缺口明细")
-    @RequestMapping(method= RequestMethod.GET , value="/ormxmxqhzs/searchxmryqkmx")
-	public ResponseEntity<Page<ORMXMXQHZDTO>> searchXMRYQKMX(ORMXMXQHZSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/ormxmxqhzs/searchxmryqkmx")
+	public ResponseEntity<Page<ORMXMXQHZDTO>> searchXMRYQKMX(@RequestBody ORMXMXQHZSearchContext context) {
         Page<ORMXMXQHZ> domains = ormxmxqhzService.searchXMRYQKMX(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(ormxmxqhzMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"ORMXMXQHZ" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/ormxmxqhzs/fetchdefault")
 	public ResponseEntity<List<ORMXMXQHZDTO>> fetchDefault(ORMXMXQHZSearchContext context) {
@@ -196,10 +192,9 @@ public class ORMXMXQHZResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"ORMXMXQHZ" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/ormxmxqhzs/searchdefault")
-	public ResponseEntity<Page<ORMXMXQHZDTO>> searchDefault(ORMXMXQHZSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/ormxmxqhzs/searchdefault")
+	public ResponseEntity<Page<ORMXMXQHZDTO>> searchDefault(@RequestBody ORMXMXQHZSearchContext context) {
         Page<ORMXMXQHZ> domains = ormxmxqhzService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(ormxmxqhzMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

@@ -87,7 +87,6 @@ public class ServiceRTResource {
         ServiceRTDTO dto = servicertMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"ServiceRT" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/servicerts/batch")
@@ -187,7 +186,6 @@ public class ServiceRTResource {
         return ResponseEntity.status(HttpStatus.OK).body(servicertdto);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"ServiceRT" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/servicerts/fetchdefault")
 	public ResponseEntity<List<ServiceRTDTO>> fetchDefault(ServiceRTSearchContext context) {
@@ -200,10 +198,9 @@ public class ServiceRTResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"ServiceRT" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/servicerts/searchdefault")
-	public ResponseEntity<Page<ServiceRTDTO>> searchDefault(ServiceRTSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/servicerts/searchdefault")
+	public ResponseEntity<Page<ServiceRTDTO>> searchDefault(@RequestBody ServiceRTSearchContext context) {
         Page<ServiceRT> domains = servicertService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(servicertMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

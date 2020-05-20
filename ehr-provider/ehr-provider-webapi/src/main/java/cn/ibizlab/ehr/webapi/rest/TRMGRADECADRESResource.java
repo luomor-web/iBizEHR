@@ -115,7 +115,6 @@ public class TRMGRADECADRESResource {
         TRMGRADECADRESDTO dto = trmgradecadresMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"TRMGRADECADRES" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmgradecadres/batch")
@@ -161,7 +160,6 @@ public class TRMGRADECADRESResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"TRMGRADECADRES" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/trmgradecadres/fetchdefault")
 	public ResponseEntity<List<TRMGRADECADRESDTO>> fetchDefault(TRMGRADECADRESSearchContext context) {
@@ -174,10 +172,9 @@ public class TRMGRADECADRESResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"TRMGRADECADRES" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/trmgradecadres/searchdefault")
-	public ResponseEntity<Page<TRMGRADECADRESDTO>> searchDefault(TRMGRADECADRESSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/trmgradecadres/searchdefault")
+	public ResponseEntity<Page<TRMGRADECADRESDTO>> searchDefault(@RequestBody TRMGRADECADRESSearchContext context) {
         Page<TRMGRADECADRES> domains = trmgradecadresService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(trmgradecadresMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

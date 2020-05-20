@@ -134,7 +134,6 @@ public class TRMTRAINAGENCYResource {
         TRMTRAINAGENCYDTO dto = trmtrainagencyMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"TRMTRAINAGENCY" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmtrainagencies/batch")
@@ -161,7 +160,6 @@ public class TRMTRAINAGENCYResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"TRMTRAINAGENCY" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/trmtrainagencies/fetchdefault")
 	public ResponseEntity<List<TRMTRAINAGENCYDTO>> fetchDefault(TRMTRAINAGENCYSearchContext context) {
@@ -174,10 +172,9 @@ public class TRMTRAINAGENCYResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"TRMTRAINAGENCY" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/trmtrainagencies/searchdefault")
-	public ResponseEntity<Page<TRMTRAINAGENCYDTO>> searchDefault(TRMTRAINAGENCYSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/trmtrainagencies/searchdefault")
+	public ResponseEntity<Page<TRMTRAINAGENCYDTO>> searchDefault(@RequestBody TRMTRAINAGENCYSearchContext context) {
         Page<TRMTRAINAGENCY> domains = trmtrainagencyService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(trmtrainagencyMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

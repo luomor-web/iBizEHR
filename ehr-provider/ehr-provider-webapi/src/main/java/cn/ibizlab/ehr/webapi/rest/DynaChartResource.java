@@ -136,7 +136,6 @@ public class DynaChartResource {
         DynaChartDTO dto = dynachartMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'ServiceApi'})")
     @ApiOperation(value = "createBatch", tags = {"DynaChart" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/dynacharts/batch")
@@ -161,7 +160,6 @@ public class DynaChartResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'ServiceApi'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"DynaChart" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/dynacharts/fetchdefault")
 	public ResponseEntity<List<DynaChartDTO>> fetchDefault(DynaChartSearchContext context) {
@@ -174,10 +172,9 @@ public class DynaChartResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'ServiceApi'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"DynaChart" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/dynacharts/searchdefault")
-	public ResponseEntity<Page<DynaChartDTO>> searchDefault(DynaChartSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/dynacharts/searchdefault")
+	public ResponseEntity<Page<DynaChartDTO>> searchDefault(@RequestBody DynaChartSearchContext context) {
         Page<DynaChart> domains = dynachartService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(dynachartMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

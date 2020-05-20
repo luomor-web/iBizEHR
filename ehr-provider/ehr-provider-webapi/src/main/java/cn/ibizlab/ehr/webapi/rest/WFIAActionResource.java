@@ -65,7 +65,6 @@ public class WFIAActionResource {
         WFIAActionDTO dto = wfiaactionMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"WFIAAction" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/wfiaactions/batch")
@@ -161,7 +160,6 @@ public class WFIAActionResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"WFIAAction" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/wfiaactions/fetchdefault")
 	public ResponseEntity<List<WFIAActionDTO>> fetchDefault(WFIAActionSearchContext context) {
@@ -174,10 +172,9 @@ public class WFIAActionResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"WFIAAction" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/wfiaactions/searchdefault")
-	public ResponseEntity<Page<WFIAActionDTO>> searchDefault(WFIAActionSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/wfiaactions/searchdefault")
+	public ResponseEntity<Page<WFIAActionDTO>> searchDefault(@RequestBody WFIAActionSearchContext context) {
         Page<WFIAAction> domains = wfiaactionService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(wfiaactionMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

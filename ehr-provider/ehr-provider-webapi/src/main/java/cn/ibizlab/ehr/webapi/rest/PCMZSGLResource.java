@@ -152,7 +152,6 @@ public class PCMZSGLResource {
         PCMZSGLDTO dto = pcmzsglMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"PCMZSGL" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmzsgls/batch")
@@ -161,7 +160,6 @@ public class PCMZSGLResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PCMZSGL" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pcmzsgls/fetchdefault")
 	public ResponseEntity<List<PCMZSGLDTO>> fetchDefault(PCMZSGLSearchContext context) {
@@ -174,10 +172,9 @@ public class PCMZSGLResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PCMZSGL" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/pcmzsgls/searchdefault")
-	public ResponseEntity<Page<PCMZSGLDTO>> searchDefault(PCMZSGLSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pcmzsgls/searchdefault")
+	public ResponseEntity<Page<PCMZSGLDTO>> searchDefault(@RequestBody PCMZSGLSearchContext context) {
         Page<PCMZSGL> domains = pcmzsglService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pcmzsglMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

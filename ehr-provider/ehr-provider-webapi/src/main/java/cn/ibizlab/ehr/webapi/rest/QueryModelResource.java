@@ -152,7 +152,6 @@ public class QueryModelResource {
         QueryModelDTO dto = querymodelMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"QueryModel" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/querymodels/batch")
@@ -161,7 +160,6 @@ public class QueryModelResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"QueryModel" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/querymodels/fetchdefault")
 	public ResponseEntity<List<QueryModelDTO>> fetchDefault(QueryModelSearchContext context) {
@@ -174,16 +172,14 @@ public class QueryModelResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"QueryModel" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/querymodels/searchdefault")
-	public ResponseEntity<Page<QueryModelDTO>> searchDefault(QueryModelSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/querymodels/searchdefault")
+	public ResponseEntity<Page<QueryModelDTO>> searchDefault(@RequestBody QueryModelSearchContext context) {
         Page<QueryModel> domains = querymodelService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(querymodelMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'CurDE',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch当前实体", tags = {"QueryModel" } ,notes = "fetch当前实体")
     @RequestMapping(method= RequestMethod.GET , value="/querymodels/fetchcurde")
 	public ResponseEntity<List<QueryModelDTO>> fetchCurDE(QueryModelSearchContext context) {
@@ -196,10 +192,9 @@ public class QueryModelResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'CurDE',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search当前实体", tags = {"QueryModel" } ,notes = "search当前实体")
-    @RequestMapping(method= RequestMethod.GET , value="/querymodels/searchcurde")
-	public ResponseEntity<Page<QueryModelDTO>> searchCurDE(QueryModelSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/querymodels/searchcurde")
+	public ResponseEntity<Page<QueryModelDTO>> searchCurDE(@RequestBody QueryModelSearchContext context) {
         Page<QueryModel> domains = querymodelService.searchCurDE(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(querymodelMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

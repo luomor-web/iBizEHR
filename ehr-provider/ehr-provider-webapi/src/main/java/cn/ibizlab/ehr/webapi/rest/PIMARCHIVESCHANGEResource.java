@@ -100,7 +100,6 @@ public class PIMARCHIVESCHANGEResource {
         PIMARCHIVESCHANGEDTO dto = pimarchiveschangeMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"PIMARCHIVESCHANGE" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimarchiveschanges/batch")
@@ -174,7 +173,6 @@ public class PIMARCHIVESCHANGEResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'DADCJL',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch档案调出记录", tags = {"PIMARCHIVESCHANGE" } ,notes = "fetch档案调出记录")
     @RequestMapping(method= RequestMethod.GET , value="/pimarchiveschanges/fetchdadcjl")
 	public ResponseEntity<List<PIMARCHIVESCHANGEDTO>> fetchDADCJL(PIMARCHIVESCHANGESearchContext context) {
@@ -187,16 +185,14 @@ public class PIMARCHIVESCHANGEResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'DADCJL',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search档案调出记录", tags = {"PIMARCHIVESCHANGE" } ,notes = "search档案调出记录")
-    @RequestMapping(method= RequestMethod.GET , value="/pimarchiveschanges/searchdadcjl")
-	public ResponseEntity<Page<PIMARCHIVESCHANGEDTO>> searchDADCJL(PIMARCHIVESCHANGESearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimarchiveschanges/searchdadcjl")
+	public ResponseEntity<Page<PIMARCHIVESCHANGEDTO>> searchDADCJL(@RequestBody PIMARCHIVESCHANGESearchContext context) {
         Page<PIMARCHIVESCHANGE> domains = pimarchiveschangeService.searchDADCJL(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimarchiveschangeMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PIMARCHIVESCHANGE" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimarchiveschanges/fetchdefault")
 	public ResponseEntity<List<PIMARCHIVESCHANGEDTO>> fetchDefault(PIMARCHIVESCHANGESearchContext context) {
@@ -209,10 +205,9 @@ public class PIMARCHIVESCHANGEResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PIMARCHIVESCHANGE" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/pimarchiveschanges/searchdefault")
-	public ResponseEntity<Page<PIMARCHIVESCHANGEDTO>> searchDefault(PIMARCHIVESCHANGESearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimarchiveschanges/searchdefault")
+	public ResponseEntity<Page<PIMARCHIVESCHANGEDTO>> searchDefault(@RequestBody PIMARCHIVESCHANGESearchContext context) {
         Page<PIMARCHIVESCHANGE> domains = pimarchiveschangeService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimarchiveschangeMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
@@ -345,8 +340,8 @@ public class PIMARCHIVESCHANGEResource {
 	}
 
 	@ApiOperation(value = "search档案调出记录ByPIMARCHIVES", tags = {"PIMARCHIVESCHANGE" } ,notes = "search档案调出记录ByPIMARCHIVES")
-    @RequestMapping(method= RequestMethod.GET , value="/pimarchives/{pimarchives_id}/pimarchiveschanges/searchdadcjl")
-	public ResponseEntity<Page<PIMARCHIVESCHANGEDTO>> searchPIMARCHIVESCHANGEDADCJLByPIMARCHIVES(@PathVariable("pimarchives_id") String pimarchives_id,PIMARCHIVESCHANGESearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimarchives/{pimarchives_id}/pimarchiveschanges/searchdadcjl")
+	public ResponseEntity<Page<PIMARCHIVESCHANGEDTO>> searchPIMARCHIVESCHANGEDADCJLByPIMARCHIVES(@PathVariable("pimarchives_id") String pimarchives_id, @RequestBody PIMARCHIVESCHANGESearchContext context) {
         context.setN_pimarchivesid_eq(pimarchives_id);
         Page<PIMARCHIVESCHANGE> domains = pimarchiveschangeService.searchDADCJL(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
@@ -367,8 +362,8 @@ public class PIMARCHIVESCHANGEResource {
 	}
 
 	@ApiOperation(value = "searchDEFAULTByPIMARCHIVES", tags = {"PIMARCHIVESCHANGE" } ,notes = "searchDEFAULTByPIMARCHIVES")
-    @RequestMapping(method= RequestMethod.GET , value="/pimarchives/{pimarchives_id}/pimarchiveschanges/searchdefault")
-	public ResponseEntity<Page<PIMARCHIVESCHANGEDTO>> searchPIMARCHIVESCHANGEDefaultByPIMARCHIVES(@PathVariable("pimarchives_id") String pimarchives_id,PIMARCHIVESCHANGESearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimarchives/{pimarchives_id}/pimarchiveschanges/searchdefault")
+	public ResponseEntity<Page<PIMARCHIVESCHANGEDTO>> searchPIMARCHIVESCHANGEDefaultByPIMARCHIVES(@PathVariable("pimarchives_id") String pimarchives_id, @RequestBody PIMARCHIVESCHANGESearchContext context) {
         context.setN_pimarchivesid_eq(pimarchives_id);
         Page<PIMARCHIVESCHANGE> domains = pimarchiveschangeService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
@@ -503,8 +498,8 @@ public class PIMARCHIVESCHANGEResource {
 	}
 
 	@ApiOperation(value = "search档案调出记录ByPIMPERSONPIMARCHIVES", tags = {"PIMARCHIVESCHANGE" } ,notes = "search档案调出记录ByPIMPERSONPIMARCHIVES")
-    @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/pimarchives/{pimarchives_id}/pimarchiveschanges/searchdadcjl")
-	public ResponseEntity<Page<PIMARCHIVESCHANGEDTO>> searchPIMARCHIVESCHANGEDADCJLByPIMPERSONPIMARCHIVES(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimarchives_id") String pimarchives_id,PIMARCHIVESCHANGESearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/pimarchives/{pimarchives_id}/pimarchiveschanges/searchdadcjl")
+	public ResponseEntity<Page<PIMARCHIVESCHANGEDTO>> searchPIMARCHIVESCHANGEDADCJLByPIMPERSONPIMARCHIVES(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimarchives_id") String pimarchives_id, @RequestBody PIMARCHIVESCHANGESearchContext context) {
         context.setN_pimarchivesid_eq(pimarchives_id);
         Page<PIMARCHIVESCHANGE> domains = pimarchiveschangeService.searchDADCJL(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
@@ -525,8 +520,8 @@ public class PIMARCHIVESCHANGEResource {
 	}
 
 	@ApiOperation(value = "searchDEFAULTByPIMPERSONPIMARCHIVES", tags = {"PIMARCHIVESCHANGE" } ,notes = "searchDEFAULTByPIMPERSONPIMARCHIVES")
-    @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/pimarchives/{pimarchives_id}/pimarchiveschanges/searchdefault")
-	public ResponseEntity<Page<PIMARCHIVESCHANGEDTO>> searchPIMARCHIVESCHANGEDefaultByPIMPERSONPIMARCHIVES(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimarchives_id") String pimarchives_id,PIMARCHIVESCHANGESearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/pimarchives/{pimarchives_id}/pimarchiveschanges/searchdefault")
+	public ResponseEntity<Page<PIMARCHIVESCHANGEDTO>> searchPIMARCHIVESCHANGEDefaultByPIMPERSONPIMARCHIVES(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimarchives_id") String pimarchives_id, @RequestBody PIMARCHIVESCHANGESearchContext context) {
         context.setN_pimarchivesid_eq(pimarchives_id);
         Page<PIMARCHIVESCHANGE> domains = pimarchiveschangeService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)

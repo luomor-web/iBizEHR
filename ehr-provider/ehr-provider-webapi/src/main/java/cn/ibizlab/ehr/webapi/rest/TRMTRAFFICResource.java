@@ -143,7 +143,6 @@ public class TRMTRAFFICResource {
         TRMTRAFFICDTO dto = trmtrafficMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"TRMTRAFFIC" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmtraffics/batch")
@@ -161,7 +160,6 @@ public class TRMTRAFFICResource {
         return  ResponseEntity.status(HttpStatus.OK).body(trmtrafficService.checkKey(trmtrafficMapping.toDomain(trmtrafficdto)));
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"TRMTRAFFIC" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/trmtraffics/fetchdefault")
 	public ResponseEntity<List<TRMTRAFFICDTO>> fetchDefault(TRMTRAFFICSearchContext context) {
@@ -174,10 +172,9 @@ public class TRMTRAFFICResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"TRMTRAFFIC" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/trmtraffics/searchdefault")
-	public ResponseEntity<Page<TRMTRAFFICDTO>> searchDefault(TRMTRAFFICSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/trmtraffics/searchdefault")
+	public ResponseEntity<Page<TRMTRAFFICDTO>> searchDefault(@RequestBody TRMTRAFFICSearchContext context) {
         Page<TRMTRAFFIC> domains = trmtrafficService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(trmtrafficMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

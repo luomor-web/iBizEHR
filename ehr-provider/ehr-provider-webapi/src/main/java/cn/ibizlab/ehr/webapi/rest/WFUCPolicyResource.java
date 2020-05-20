@@ -129,7 +129,6 @@ public class WFUCPolicyResource {
         WFUCPolicyDTO dto = wfucpolicyMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"WFUCPolicy" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/wfucpolicies/batch")
@@ -187,7 +186,6 @@ public class WFUCPolicyResource {
         return ResponseEntity.status(HttpStatus.OK).body(wfucpolicyMapping.toDto(wfucpolicyService.getDraft(new WFUCPolicy())));
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"WFUCPolicy" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/wfucpolicies/fetchdefault")
 	public ResponseEntity<List<WFUCPolicyDTO>> fetchDefault(WFUCPolicySearchContext context) {
@@ -200,10 +198,9 @@ public class WFUCPolicyResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"WFUCPolicy" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/wfucpolicies/searchdefault")
-	public ResponseEntity<Page<WFUCPolicyDTO>> searchDefault(WFUCPolicySearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/wfucpolicies/searchdefault")
+	public ResponseEntity<Page<WFUCPolicyDTO>> searchDefault(@RequestBody WFUCPolicySearchContext context) {
         Page<WFUCPolicy> domains = wfucpolicyService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(wfucpolicyMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

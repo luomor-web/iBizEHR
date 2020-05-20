@@ -250,7 +250,6 @@ public class PCMPROFILEResource {
         PCMPROFILEDTO dto = pcmprofileMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"PCMPROFILE" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/batch")
@@ -577,7 +576,6 @@ public class PCMPROFILEResource {
         return ResponseEntity.status(HttpStatus.OK).body(pcmprofiledto);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'YRDWSH_CSRCYJ',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch用人单位董事长审批（成熟人才引进）", tags = {"PCMPROFILE" } ,notes = "fetch用人单位董事长审批（成熟人才引进）")
     @RequestMapping(method= RequestMethod.GET , value="/pcmprofiles/fetchyrdwsh_csrcyj")
 	public ResponseEntity<List<PCMPROFILEDTO>> fetchYRDWSH_CSRCYJ(PCMPROFILESearchContext context) {
@@ -590,16 +588,14 @@ public class PCMPROFILEResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'YRDWSH_CSRCYJ',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search用人单位董事长审批（成熟人才引进）", tags = {"PCMPROFILE" } ,notes = "search用人单位董事长审批（成熟人才引进）")
-    @RequestMapping(method= RequestMethod.GET , value="/pcmprofiles/searchyrdwsh_csrcyj")
-	public ResponseEntity<Page<PCMPROFILEDTO>> searchYRDWSH_CSRCYJ(PCMPROFILESearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pcmprofiles/searchyrdwsh_csrcyj")
+	public ResponseEntity<Page<PCMPROFILEDTO>> searchYRDWSH_CSRCYJ(@RequestBody PCMPROFILESearchContext context) {
         Page<PCMPROFILE> domains = pcmprofileService.searchYRDWSH_CSRCYJ(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pcmprofileMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'JLDSP',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch局总部审核（校园招聘）", tags = {"PCMPROFILE" } ,notes = "fetch局总部审核（校园招聘）")
     @RequestMapping(method= RequestMethod.GET , value="/pcmprofiles/fetchjldsp")
 	public ResponseEntity<List<PCMPROFILEDTO>> fetchJLDSP(PCMPROFILESearchContext context) {
@@ -612,16 +608,14 @@ public class PCMPROFILEResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'JLDSP',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search局总部审核（校园招聘）", tags = {"PCMPROFILE" } ,notes = "search局总部审核（校园招聘）")
-    @RequestMapping(method= RequestMethod.GET , value="/pcmprofiles/searchjldsp")
-	public ResponseEntity<Page<PCMPROFILEDTO>> searchJLDSP(PCMPROFILESearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pcmprofiles/searchjldsp")
+	public ResponseEntity<Page<PCMPROFILEDTO>> searchJLDSP(@RequestBody PCMPROFILESearchContext context) {
         Page<PCMPROFILE> domains = pcmprofileService.searchJLDSP(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pcmprofileMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'BD_CSRCYJ',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch报到（成熟人才引进）", tags = {"PCMPROFILE" } ,notes = "fetch报到（成熟人才引进）")
     @RequestMapping(method= RequestMethod.GET , value="/pcmprofiles/fetchbd_csrcyj")
 	public ResponseEntity<List<PCMPROFILEDTO>> fetchBD_CSRCYJ(PCMPROFILESearchContext context) {
@@ -634,16 +628,14 @@ public class PCMPROFILEResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'BD_CSRCYJ',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search报到（成熟人才引进）", tags = {"PCMPROFILE" } ,notes = "search报到（成熟人才引进）")
-    @RequestMapping(method= RequestMethod.GET , value="/pcmprofiles/searchbd_csrcyj")
-	public ResponseEntity<Page<PCMPROFILEDTO>> searchBD_CSRCYJ(PCMPROFILESearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pcmprofiles/searchbd_csrcyj")
+	public ResponseEntity<Page<PCMPROFILEDTO>> searchBD_CSRCYJ(@RequestBody PCMPROFILESearchContext context) {
         Page<PCMPROFILE> domains = pcmprofileService.searchBD_CSRCYJ(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pcmprofileMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'YPZSPB_CSRCYJ',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch应聘者审批表（成熟人才引进）", tags = {"PCMPROFILE" } ,notes = "fetch应聘者审批表（成熟人才引进）")
     @RequestMapping(method= RequestMethod.GET , value="/pcmprofiles/fetchypzspb_csrcyj")
 	public ResponseEntity<List<PCMPROFILEDTO>> fetchYPZSPB_CSRCYJ(PCMPROFILESearchContext context) {
@@ -656,16 +648,14 @@ public class PCMPROFILEResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'YPZSPB_CSRCYJ',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search应聘者审批表（成熟人才引进）", tags = {"PCMPROFILE" } ,notes = "search应聘者审批表（成熟人才引进）")
-    @RequestMapping(method= RequestMethod.GET , value="/pcmprofiles/searchypzspb_csrcyj")
-	public ResponseEntity<Page<PCMPROFILEDTO>> searchYPZSPB_CSRCYJ(PCMPROFILESearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pcmprofiles/searchypzspb_csrcyj")
+	public ResponseEntity<Page<PCMPROFILEDTO>> searchYPZSPB_CSRCYJ(@RequestBody PCMPROFILESearchContext context) {
         Page<PCMPROFILE> domains = pcmprofileService.searchYPZSPB_CSRCYJ(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pcmprofileMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'ZPDWSH',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch用人单位初审（校园招聘）", tags = {"PCMPROFILE" } ,notes = "fetch用人单位初审（校园招聘）")
     @RequestMapping(method= RequestMethod.GET , value="/pcmprofiles/fetchzpdwsh")
 	public ResponseEntity<List<PCMPROFILEDTO>> fetchZPDWSH(PCMPROFILESearchContext context) {
@@ -678,16 +668,14 @@ public class PCMPROFILEResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'ZPDWSH',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search用人单位初审（校园招聘）", tags = {"PCMPROFILE" } ,notes = "search用人单位初审（校园招聘）")
-    @RequestMapping(method= RequestMethod.GET , value="/pcmprofiles/searchzpdwsh")
-	public ResponseEntity<Page<PCMPROFILEDTO>> searchZPDWSH(PCMPROFILESearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pcmprofiles/searchzpdwsh")
+	public ResponseEntity<Page<PCMPROFILEDTO>> searchZPDWSH(@RequestBody PCMPROFILESearchContext context) {
         Page<PCMPROFILE> domains = pcmprofileService.searchZPDWSH(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pcmprofileMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'BD',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch报到（校园招聘）", tags = {"PCMPROFILE" } ,notes = "fetch报到（校园招聘）")
     @RequestMapping(method= RequestMethod.GET , value="/pcmprofiles/fetchbd")
 	public ResponseEntity<List<PCMPROFILEDTO>> fetchBD(PCMPROFILESearchContext context) {
@@ -700,16 +688,14 @@ public class PCMPROFILEResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'BD',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search报到（校园招聘）", tags = {"PCMPROFILE" } ,notes = "search报到（校园招聘）")
-    @RequestMapping(method= RequestMethod.GET , value="/pcmprofiles/searchbd")
-	public ResponseEntity<Page<PCMPROFILEDTO>> searchBD(PCMPROFILESearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pcmprofiles/searchbd")
+	public ResponseEntity<Page<PCMPROFILEDTO>> searchBD(@RequestBody PCMPROFILESearchContext context) {
         Page<PCMPROFILE> domains = pcmprofileService.searchBD(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pcmprofileMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'BHSP',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch编号审批（校园招聘）", tags = {"PCMPROFILE" } ,notes = "fetch编号审批（校园招聘）")
     @RequestMapping(method= RequestMethod.GET , value="/pcmprofiles/fetchbhsp")
 	public ResponseEntity<List<PCMPROFILEDTO>> fetchBHSP(PCMPROFILESearchContext context) {
@@ -722,16 +708,14 @@ public class PCMPROFILEResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'BHSP',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search编号审批（校园招聘）", tags = {"PCMPROFILE" } ,notes = "search编号审批（校园招聘）")
-    @RequestMapping(method= RequestMethod.GET , value="/pcmprofiles/searchbhsp")
-	public ResponseEntity<Page<PCMPROFILEDTO>> searchBHSP(PCMPROFILESearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pcmprofiles/searchbhsp")
+	public ResponseEntity<Page<PCMPROFILEDTO>> searchBHSP(@RequestBody PCMPROFILESearchContext context) {
         Page<PCMPROFILE> domains = pcmprofileService.searchBHSP(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pcmprofileMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'LR',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch录入（校园招聘）", tags = {"PCMPROFILE" } ,notes = "fetch录入（校园招聘）")
     @RequestMapping(method= RequestMethod.GET , value="/pcmprofiles/fetchlr")
 	public ResponseEntity<List<PCMPROFILEDTO>> fetchLR(PCMPROFILESearchContext context) {
@@ -744,16 +728,14 @@ public class PCMPROFILEResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'LR',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search录入（校园招聘）", tags = {"PCMPROFILE" } ,notes = "search录入（校园招聘）")
-    @RequestMapping(method= RequestMethod.GET , value="/pcmprofiles/searchlr")
-	public ResponseEntity<Page<PCMPROFILEDTO>> searchLR(PCMPROFILESearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pcmprofiles/searchlr")
+	public ResponseEntity<Page<PCMPROFILEDTO>> searchLR(@RequestBody PCMPROFILESearchContext context) {
         Page<PCMPROFILE> domains = pcmprofileService.searchLR(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pcmprofileMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'RLSB',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch人力上报（校园招聘）", tags = {"PCMPROFILE" } ,notes = "fetch人力上报（校园招聘）")
     @RequestMapping(method= RequestMethod.GET , value="/pcmprofiles/fetchrlsb")
 	public ResponseEntity<List<PCMPROFILEDTO>> fetchRLSB(PCMPROFILESearchContext context) {
@@ -766,16 +748,14 @@ public class PCMPROFILEResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'RLSB',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search人力上报（校园招聘）", tags = {"PCMPROFILE" } ,notes = "search人力上报（校园招聘）")
-    @RequestMapping(method= RequestMethod.GET , value="/pcmprofiles/searchrlsb")
-	public ResponseEntity<Page<PCMPROFILEDTO>> searchRLSB(PCMPROFILESearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pcmprofiles/searchrlsb")
+	public ResponseEntity<Page<PCMPROFILEDTO>> searchRLSB(@RequestBody PCMPROFILESearchContext context) {
         Page<PCMPROFILE> domains = pcmprofileService.searchRLSB(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pcmprofileMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'FormType',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchFormType", tags = {"PCMPROFILE" } ,notes = "fetchFormType")
     @RequestMapping(method= RequestMethod.GET , value="/pcmprofiles/fetchformtype")
 	public ResponseEntity<List<PCMPROFILEDTO>> fetchFormType(PCMPROFILESearchContext context) {
@@ -788,16 +768,14 @@ public class PCMPROFILEResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'FormType',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchFormType", tags = {"PCMPROFILE" } ,notes = "searchFormType")
-    @RequestMapping(method= RequestMethod.GET , value="/pcmprofiles/searchformtype")
-	public ResponseEntity<Page<PCMPROFILEDTO>> searchFormType(PCMPROFILESearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pcmprofiles/searchformtype")
+	public ResponseEntity<Page<PCMPROFILEDTO>> searchFormType(@RequestBody PCMPROFILESearchContext context) {
         Page<PCMPROFILE> domains = pcmprofileService.searchFormType(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pcmprofileMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'HTRY_CSRCYJ',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch回退人员（成熟人才引进）", tags = {"PCMPROFILE" } ,notes = "fetch回退人员（成熟人才引进）")
     @RequestMapping(method= RequestMethod.GET , value="/pcmprofiles/fetchhtry_csrcyj")
 	public ResponseEntity<List<PCMPROFILEDTO>> fetchHTRY_CSRCYJ(PCMPROFILESearchContext context) {
@@ -810,16 +788,14 @@ public class PCMPROFILEResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'HTRY_CSRCYJ',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search回退人员（成熟人才引进）", tags = {"PCMPROFILE" } ,notes = "search回退人员（成熟人才引进）")
-    @RequestMapping(method= RequestMethod.GET , value="/pcmprofiles/searchhtry_csrcyj")
-	public ResponseEntity<Page<PCMPROFILEDTO>> searchHTRY_CSRCYJ(PCMPROFILESearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pcmprofiles/searchhtry_csrcyj")
+	public ResponseEntity<Page<PCMPROFILEDTO>> searchHTRY_CSRCYJ(@RequestBody PCMPROFILESearchContext context) {
         Page<PCMPROFILE> domains = pcmprofileService.searchHTRY_CSRCYJ(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pcmprofileMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PCMPROFILE" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pcmprofiles/fetchdefault")
 	public ResponseEntity<List<PCMPROFILEDTO>> fetchDefault(PCMPROFILESearchContext context) {
@@ -832,16 +808,14 @@ public class PCMPROFILEResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PCMPROFILE" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/pcmprofiles/searchdefault")
-	public ResponseEntity<Page<PCMPROFILEDTO>> searchDefault(PCMPROFILESearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pcmprofiles/searchdefault")
+	public ResponseEntity<Page<PCMPROFILEDTO>> searchDefault(@RequestBody PCMPROFILESearchContext context) {
         Page<PCMPROFILE> domains = pcmprofileService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pcmprofileMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'JZBSP',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch局总部审批（校园招聘）", tags = {"PCMPROFILE" } ,notes = "fetch局总部审批（校园招聘）")
     @RequestMapping(method= RequestMethod.GET , value="/pcmprofiles/fetchjzbsp")
 	public ResponseEntity<List<PCMPROFILEDTO>> fetchJZBSP(PCMPROFILESearchContext context) {
@@ -854,16 +828,14 @@ public class PCMPROFILEResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'JZBSP',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search局总部审批（校园招聘）", tags = {"PCMPROFILE" } ,notes = "search局总部审批（校园招聘）")
-    @RequestMapping(method= RequestMethod.GET , value="/pcmprofiles/searchjzbsp")
-	public ResponseEntity<Page<PCMPROFILEDTO>> searchJZBSP(PCMPROFILESearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pcmprofiles/searchjzbsp")
+	public ResponseEntity<Page<PCMPROFILEDTO>> searchJZBSP(@RequestBody PCMPROFILESearchContext context) {
         Page<PCMPROFILE> domains = pcmprofileService.searchJZBSP(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pcmprofileMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'RZSP_CSRCYJ',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch局总部初审（成熟人才引进）", tags = {"PCMPROFILE" } ,notes = "fetch局总部初审（成熟人才引进）")
     @RequestMapping(method= RequestMethod.GET , value="/pcmprofiles/fetchrzsp_csrcyj")
 	public ResponseEntity<List<PCMPROFILEDTO>> fetchRZSP_CSRCYJ(PCMPROFILESearchContext context) {
@@ -876,16 +848,14 @@ public class PCMPROFILEResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'RZSP_CSRCYJ',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search局总部初审（成熟人才引进）", tags = {"PCMPROFILE" } ,notes = "search局总部初审（成熟人才引进）")
-    @RequestMapping(method= RequestMethod.GET , value="/pcmprofiles/searchrzsp_csrcyj")
-	public ResponseEntity<Page<PCMPROFILEDTO>> searchRZSP_CSRCYJ(PCMPROFILESearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pcmprofiles/searchrzsp_csrcyj")
+	public ResponseEntity<Page<PCMPROFILEDTO>> searchRZSP_CSRCYJ(@RequestBody PCMPROFILESearchContext context) {
         Page<PCMPROFILE> domains = pcmprofileService.searchRZSP_CSRCYJ(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pcmprofileMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'JLDSP_CSRCYJ',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch局总部审核（成熟人才引进）", tags = {"PCMPROFILE" } ,notes = "fetch局总部审核（成熟人才引进）")
     @RequestMapping(method= RequestMethod.GET , value="/pcmprofiles/fetchjldsp_csrcyj")
 	public ResponseEntity<List<PCMPROFILEDTO>> fetchJLDSP_CSRCYJ(PCMPROFILESearchContext context) {
@@ -898,16 +868,14 @@ public class PCMPROFILEResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'JLDSP_CSRCYJ',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search局总部审核（成熟人才引进）", tags = {"PCMPROFILE" } ,notes = "search局总部审核（成熟人才引进）")
-    @RequestMapping(method= RequestMethod.GET , value="/pcmprofiles/searchjldsp_csrcyj")
-	public ResponseEntity<Page<PCMPROFILEDTO>> searchJLDSP_CSRCYJ(PCMPROFILESearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pcmprofiles/searchjldsp_csrcyj")
+	public ResponseEntity<Page<PCMPROFILEDTO>> searchJLDSP_CSRCYJ(@RequestBody PCMPROFILESearchContext context) {
         Page<PCMPROFILE> domains = pcmprofileService.searchJLDSP_CSRCYJ(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pcmprofileMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'BHSP_CSRCYJ',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch编号审批（成熟人才引进）", tags = {"PCMPROFILE" } ,notes = "fetch编号审批（成熟人才引进）")
     @RequestMapping(method= RequestMethod.GET , value="/pcmprofiles/fetchbhsp_csrcyj")
 	public ResponseEntity<List<PCMPROFILEDTO>> fetchBHSP_CSRCYJ(PCMPROFILESearchContext context) {
@@ -920,16 +888,14 @@ public class PCMPROFILEResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'BHSP_CSRCYJ',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search编号审批（成熟人才引进）", tags = {"PCMPROFILE" } ,notes = "search编号审批（成熟人才引进）")
-    @RequestMapping(method= RequestMethod.GET , value="/pcmprofiles/searchbhsp_csrcyj")
-	public ResponseEntity<Page<PCMPROFILEDTO>> searchBHSP_CSRCYJ(PCMPROFILESearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pcmprofiles/searchbhsp_csrcyj")
+	public ResponseEntity<Page<PCMPROFILEDTO>> searchBHSP_CSRCYJ(@RequestBody PCMPROFILESearchContext context) {
         Page<PCMPROFILE> domains = pcmprofileService.searchBHSP_CSRCYJ(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pcmprofileMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'LR_CSRCYJ',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch录入（成熟人才引进）", tags = {"PCMPROFILE" } ,notes = "fetch录入（成熟人才引进）")
     @RequestMapping(method= RequestMethod.GET , value="/pcmprofiles/fetchlr_csrcyj")
 	public ResponseEntity<List<PCMPROFILEDTO>> fetchLR_CSRCYJ(PCMPROFILESearchContext context) {
@@ -942,16 +908,14 @@ public class PCMPROFILEResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'LR_CSRCYJ',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search录入（成熟人才引进）", tags = {"PCMPROFILE" } ,notes = "search录入（成熟人才引进）")
-    @RequestMapping(method= RequestMethod.GET , value="/pcmprofiles/searchlr_csrcyj")
-	public ResponseEntity<Page<PCMPROFILEDTO>> searchLR_CSRCYJ(PCMPROFILESearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pcmprofiles/searchlr_csrcyj")
+	public ResponseEntity<Page<PCMPROFILEDTO>> searchLR_CSRCYJ(@RequestBody PCMPROFILESearchContext context) {
         Page<PCMPROFILE> domains = pcmprofileService.searchLR_CSRCYJ(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pcmprofileMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'YPZBB_READ',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch应聘者查询", tags = {"PCMPROFILE" } ,notes = "fetch应聘者查询")
     @RequestMapping(method= RequestMethod.GET , value="/pcmprofiles/fetchypzbb_read")
 	public ResponseEntity<List<PCMPROFILEDTO>> fetchYPZBB_READ(PCMPROFILESearchContext context) {
@@ -964,16 +928,14 @@ public class PCMPROFILEResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'YPZBB_READ',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search应聘者查询", tags = {"PCMPROFILE" } ,notes = "search应聘者查询")
-    @RequestMapping(method= RequestMethod.GET , value="/pcmprofiles/searchypzbb_read")
-	public ResponseEntity<Page<PCMPROFILEDTO>> searchYPZBB_READ(PCMPROFILESearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pcmprofiles/searchypzbb_read")
+	public ResponseEntity<Page<PCMPROFILEDTO>> searchYPZBB_READ(@RequestBody PCMPROFILESearchContext context) {
         Page<PCMPROFILE> domains = pcmprofileService.searchYPZBB_READ(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pcmprofileMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'HTRY',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch回退人员（校园招聘）", tags = {"PCMPROFILE" } ,notes = "fetch回退人员（校园招聘）")
     @RequestMapping(method= RequestMethod.GET , value="/pcmprofiles/fetchhtry")
 	public ResponseEntity<List<PCMPROFILEDTO>> fetchHTRY(PCMPROFILESearchContext context) {
@@ -986,16 +948,14 @@ public class PCMPROFILEResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'HTRY',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search回退人员（校园招聘）", tags = {"PCMPROFILE" } ,notes = "search回退人员（校园招聘）")
-    @RequestMapping(method= RequestMethod.GET , value="/pcmprofiles/searchhtry")
-	public ResponseEntity<Page<PCMPROFILEDTO>> searchHTRY(PCMPROFILESearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pcmprofiles/searchhtry")
+	public ResponseEntity<Page<PCMPROFILEDTO>> searchHTRY(@RequestBody PCMPROFILESearchContext context) {
         Page<PCMPROFILE> domains = pcmprofileService.searchHTRY(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pcmprofileMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'RZSP',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch局总部初审（校园招聘）", tags = {"PCMPROFILE" } ,notes = "fetch局总部初审（校园招聘）")
     @RequestMapping(method= RequestMethod.GET , value="/pcmprofiles/fetchrzsp")
 	public ResponseEntity<List<PCMPROFILEDTO>> fetchRZSP(PCMPROFILESearchContext context) {
@@ -1008,16 +968,14 @@ public class PCMPROFILEResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'RZSP',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search局总部初审（校园招聘）", tags = {"PCMPROFILE" } ,notes = "search局总部初审（校园招聘）")
-    @RequestMapping(method= RequestMethod.GET , value="/pcmprofiles/searchrzsp")
-	public ResponseEntity<Page<PCMPROFILEDTO>> searchRZSP(PCMPROFILESearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pcmprofiles/searchrzsp")
+	public ResponseEntity<Page<PCMPROFILEDTO>> searchRZSP(@RequestBody PCMPROFILESearchContext context) {
         Page<PCMPROFILE> domains = pcmprofileService.searchRZSP(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pcmprofileMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'YRDWCS_CSRCYJ',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch用人单位初审（成熟人才引进）", tags = {"PCMPROFILE" } ,notes = "fetch用人单位初审（成熟人才引进）")
     @RequestMapping(method= RequestMethod.GET , value="/pcmprofiles/fetchyrdwcs_csrcyj")
 	public ResponseEntity<List<PCMPROFILEDTO>> fetchYRDWCS_CSRCYJ(PCMPROFILESearchContext context) {
@@ -1030,16 +988,14 @@ public class PCMPROFILEResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'YRDWCS_CSRCYJ',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search用人单位初审（成熟人才引进）", tags = {"PCMPROFILE" } ,notes = "search用人单位初审（成熟人才引进）")
-    @RequestMapping(method= RequestMethod.GET , value="/pcmprofiles/searchyrdwcs_csrcyj")
-	public ResponseEntity<Page<PCMPROFILEDTO>> searchYRDWCS_CSRCYJ(PCMPROFILESearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pcmprofiles/searchyrdwcs_csrcyj")
+	public ResponseEntity<Page<PCMPROFILEDTO>> searchYRDWCS_CSRCYJ(@RequestBody PCMPROFILESearchContext context) {
         Page<PCMPROFILE> domains = pcmprofileService.searchYRDWCS_CSRCYJ(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pcmprofileMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'JZBSP_CSRCYJ',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch局总部审批（成熟人才引进）", tags = {"PCMPROFILE" } ,notes = "fetch局总部审批（成熟人才引进）")
     @RequestMapping(method= RequestMethod.GET , value="/pcmprofiles/fetchjzbsp_csrcyj")
 	public ResponseEntity<List<PCMPROFILEDTO>> fetchJZBSP_CSRCYJ(PCMPROFILESearchContext context) {
@@ -1052,16 +1008,14 @@ public class PCMPROFILEResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'JZBSP_CSRCYJ',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search局总部审批（成熟人才引进）", tags = {"PCMPROFILE" } ,notes = "search局总部审批（成熟人才引进）")
-    @RequestMapping(method= RequestMethod.GET , value="/pcmprofiles/searchjzbsp_csrcyj")
-	public ResponseEntity<Page<PCMPROFILEDTO>> searchJZBSP_CSRCYJ(PCMPROFILESearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pcmprofiles/searchjzbsp_csrcyj")
+	public ResponseEntity<Page<PCMPROFILEDTO>> searchJZBSP_CSRCYJ(@RequestBody PCMPROFILESearchContext context) {
         Page<PCMPROFILE> domains = pcmprofileService.searchJZBSP_CSRCYJ(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pcmprofileMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'RLSB_CSRCYJ',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch人力上报（成熟人才引进）", tags = {"PCMPROFILE" } ,notes = "fetch人力上报（成熟人才引进）")
     @RequestMapping(method= RequestMethod.GET , value="/pcmprofiles/fetchrlsb_csrcyj")
 	public ResponseEntity<List<PCMPROFILEDTO>> fetchRLSB_CSRCYJ(PCMPROFILESearchContext context) {
@@ -1074,10 +1028,9 @@ public class PCMPROFILEResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'RLSB_CSRCYJ',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search人力上报（成熟人才引进）", tags = {"PCMPROFILE" } ,notes = "search人力上报（成熟人才引进）")
-    @RequestMapping(method= RequestMethod.GET , value="/pcmprofiles/searchrlsb_csrcyj")
-	public ResponseEntity<Page<PCMPROFILEDTO>> searchRLSB_CSRCYJ(PCMPROFILESearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pcmprofiles/searchrlsb_csrcyj")
+	public ResponseEntity<Page<PCMPROFILEDTO>> searchRLSB_CSRCYJ(@RequestBody PCMPROFILESearchContext context) {
         Page<PCMPROFILE> domains = pcmprofileService.searchRLSB_CSRCYJ(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pcmprofileMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

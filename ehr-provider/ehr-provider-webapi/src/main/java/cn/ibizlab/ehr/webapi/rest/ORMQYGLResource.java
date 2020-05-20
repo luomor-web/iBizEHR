@@ -100,7 +100,6 @@ public class ORMQYGLResource {
         ORMQYGLDTO dto = ormqyglMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"ORMQYGL" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormqygls/batch")
@@ -161,7 +160,6 @@ public class ORMQYGLResource {
         return  ResponseEntity.status(HttpStatus.OK).body(ormqyglService.checkKey(ormqyglMapping.toDomain(ormqygldto)));
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"ORMQYGL" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/ormqygls/fetchdefault")
 	public ResponseEntity<List<ORMQYGLDTO>> fetchDefault(ORMQYGLSearchContext context) {
@@ -174,10 +172,9 @@ public class ORMQYGLResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"ORMQYGL" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/ormqygls/searchdefault")
-	public ResponseEntity<Page<ORMQYGLDTO>> searchDefault(ORMQYGLSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/ormqygls/searchdefault")
+	public ResponseEntity<Page<ORMQYGLDTO>> searchDefault(@RequestBody ORMQYGLSearchContext context) {
         Page<ORMQYGL> domains = ormqyglService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(ormqyglMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

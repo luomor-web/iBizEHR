@@ -65,7 +65,6 @@ public class WFWorkflowResource {
         WFWorkflowDTO dto = wfworkflowMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"WFWorkflow" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/wfworkflows/batch")
@@ -161,7 +160,6 @@ public class WFWorkflowResource {
         return  ResponseEntity.status(HttpStatus.OK).body(wfworkflowService.checkKey(wfworkflowMapping.toDomain(wfworkflowdto)));
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"WFWorkflow" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/wfworkflows/fetchdefault")
 	public ResponseEntity<List<WFWorkflowDTO>> fetchDefault(WFWorkflowSearchContext context) {
@@ -174,10 +172,9 @@ public class WFWorkflowResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"WFWorkflow" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/wfworkflows/searchdefault")
-	public ResponseEntity<Page<WFWorkflowDTO>> searchDefault(WFWorkflowSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/wfworkflows/searchdefault")
+	public ResponseEntity<Page<WFWorkflowDTO>> searchDefault(@RequestBody WFWorkflowSearchContext context) {
         Page<WFWorkflow> domains = wfworkflowService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(wfworkflowMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

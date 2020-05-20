@@ -105,7 +105,6 @@ public class OrgResource {
         OrgDTO dto = orgMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"Org" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/orgs/batch")
@@ -187,7 +186,6 @@ public class OrgResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"Org" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/orgs/fetchdefault")
 	public ResponseEntity<List<OrgDTO>> fetchDefault(OrgSearchContext context) {
@@ -200,16 +198,14 @@ public class OrgResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"Org" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/orgs/searchdefault")
-	public ResponseEntity<Page<OrgDTO>> searchDefault(OrgSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/orgs/searchdefault")
+	public ResponseEntity<Page<OrgDTO>> searchDefault(@RequestBody OrgSearchContext context) {
         Page<Org> domains = orgService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(orgMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'CurCat',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch当前组织分类", tags = {"Org" } ,notes = "fetch当前组织分类")
     @RequestMapping(method= RequestMethod.GET , value="/orgs/fetchcurcat")
 	public ResponseEntity<List<OrgDTO>> fetchCurCat(OrgSearchContext context) {
@@ -222,16 +218,14 @@ public class OrgResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'CurCat',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search当前组织分类", tags = {"Org" } ,notes = "search当前组织分类")
-    @RequestMapping(method= RequestMethod.GET , value="/orgs/searchcurcat")
-	public ResponseEntity<Page<OrgDTO>> searchCurCat(OrgSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/orgs/searchcurcat")
+	public ResponseEntity<Page<OrgDTO>> searchCurCat(@RequestBody OrgSearchContext context) {
         Page<Org> domains = orgService.searchCurCat(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(orgMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'AllRoot',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch全部根组织", tags = {"Org" } ,notes = "fetch全部根组织")
     @RequestMapping(method= RequestMethod.GET , value="/orgs/fetchallroot")
 	public ResponseEntity<List<OrgDTO>> fetchAllRoot(OrgSearchContext context) {
@@ -244,16 +238,14 @@ public class OrgResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'AllRoot',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search全部根组织", tags = {"Org" } ,notes = "search全部根组织")
-    @RequestMapping(method= RequestMethod.GET , value="/orgs/searchallroot")
-	public ResponseEntity<Page<OrgDTO>> searchAllRoot(OrgSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/orgs/searchallroot")
+	public ResponseEntity<Page<OrgDTO>> searchAllRoot(@RequestBody OrgSearchContext context) {
         Page<Org> domains = orgService.searchAllRoot(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(orgMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'CurChild',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch当前子组织", tags = {"Org" } ,notes = "fetch当前子组织")
     @RequestMapping(method= RequestMethod.GET , value="/orgs/fetchcurchild")
 	public ResponseEntity<List<OrgDTO>> fetchCurChild(OrgSearchContext context) {
@@ -266,10 +258,9 @@ public class OrgResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'CurChild',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search当前子组织", tags = {"Org" } ,notes = "search当前子组织")
-    @RequestMapping(method= RequestMethod.GET , value="/orgs/searchcurchild")
-	public ResponseEntity<Page<OrgDTO>> searchCurChild(OrgSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/orgs/searchcurchild")
+	public ResponseEntity<Page<OrgDTO>> searchCurChild(@RequestBody OrgSearchContext context) {
         Page<Org> domains = orgService.searchCurChild(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(orgMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

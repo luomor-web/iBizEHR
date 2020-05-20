@@ -100,7 +100,6 @@ public class RegistryResource {
         RegistryDTO dto = registryMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"Registry" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/registries/batch")
@@ -161,7 +160,6 @@ public class RegistryResource {
         return  ResponseEntity.status(HttpStatus.OK).body(registryService.checkKey(registryMapping.toDomain(registrydto)));
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"Registry" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/registries/fetchdefault")
 	public ResponseEntity<List<RegistryDTO>> fetchDefault(RegistrySearchContext context) {
@@ -174,10 +172,9 @@ public class RegistryResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"Registry" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/registries/searchdefault")
-	public ResponseEntity<Page<RegistryDTO>> searchDefault(RegistrySearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/registries/searchdefault")
+	public ResponseEntity<Page<RegistryDTO>> searchDefault(@RequestBody RegistrySearchContext context) {
         Page<Registry> domains = registryService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(registryMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

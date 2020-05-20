@@ -122,7 +122,6 @@ public class PCMMonthResource {
         PCMMonthDTO dto = pcmmonthMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"PCMMonth" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmmonths/batch")
@@ -161,7 +160,6 @@ public class PCMMonthResource {
         return ResponseEntity.status(HttpStatus.OK).body(pcmmonthMapping.toDto(pcmmonthService.getDraft(new PCMMonth())));
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PCMMonth" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pcmmonths/fetchdefault")
 	public ResponseEntity<List<PCMMonthDTO>> fetchDefault(PCMMonthSearchContext context) {
@@ -174,10 +172,9 @@ public class PCMMonthResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PCMMonth" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/pcmmonths/searchdefault")
-	public ResponseEntity<Page<PCMMonthDTO>> searchDefault(PCMMonthSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pcmmonths/searchdefault")
+	public ResponseEntity<Page<PCMMonthDTO>> searchDefault(@RequestBody PCMMonthSearchContext context) {
         Page<PCMMonth> domains = pcmmonthService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pcmmonthMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

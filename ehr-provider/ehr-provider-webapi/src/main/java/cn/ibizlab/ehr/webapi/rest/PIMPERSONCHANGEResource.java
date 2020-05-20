@@ -142,7 +142,6 @@ public class PIMPERSONCHANGEResource {
         PIMPERSONCHANGEDTO dto = pimpersonchangeMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"PIMPERSONCHANGE" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpersonchanges/batch")
@@ -200,7 +199,6 @@ public class PIMPERSONCHANGEResource {
         return ResponseEntity.status(HttpStatus.OK).body(pimpersonchangeMapping.toDto(pimpersonchangeService.getDraft(new PIMPERSONCHANGE())));
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'HistoryRec',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch历史审批记录", tags = {"PIMPERSONCHANGE" } ,notes = "fetch历史审批记录")
     @RequestMapping(method= RequestMethod.GET , value="/pimpersonchanges/fetchhistoryrec")
 	public ResponseEntity<List<PIMPERSONCHANGEDTO>> fetchHistoryRec(PIMPERSONCHANGESearchContext context) {
@@ -213,16 +211,14 @@ public class PIMPERSONCHANGEResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'HistoryRec',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search历史审批记录", tags = {"PIMPERSONCHANGE" } ,notes = "search历史审批记录")
-    @RequestMapping(method= RequestMethod.GET , value="/pimpersonchanges/searchhistoryrec")
-	public ResponseEntity<Page<PIMPERSONCHANGEDTO>> searchHistoryRec(PIMPERSONCHANGESearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimpersonchanges/searchhistoryrec")
+	public ResponseEntity<Page<PIMPERSONCHANGEDTO>> searchHistoryRec(@RequestBody PIMPERSONCHANGESearchContext context) {
         Page<PIMPERSONCHANGE> domains = pimpersonchangeService.searchHistoryRec(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimpersonchangeMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'PIMCL_NOTAPPROVAL',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchPIMCL_NOTAPPROVAL", tags = {"PIMPERSONCHANGE" } ,notes = "fetchPIMCL_NOTAPPROVAL")
     @RequestMapping(method= RequestMethod.GET , value="/pimpersonchanges/fetchpimcl_notapproval")
 	public ResponseEntity<List<PIMPERSONCHANGEDTO>> fetchPIMCL_NOTAPPROVAL(PIMPERSONCHANGESearchContext context) {
@@ -235,16 +231,14 @@ public class PIMPERSONCHANGEResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'PIMCL_NOTAPPROVAL',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchPIMCL_NOTAPPROVAL", tags = {"PIMPERSONCHANGE" } ,notes = "searchPIMCL_NOTAPPROVAL")
-    @RequestMapping(method= RequestMethod.GET , value="/pimpersonchanges/searchpimcl_notapproval")
-	public ResponseEntity<Page<PIMPERSONCHANGEDTO>> searchPIMCL_NOTAPPROVAL(PIMPERSONCHANGESearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimpersonchanges/searchpimcl_notapproval")
+	public ResponseEntity<Page<PIMPERSONCHANGEDTO>> searchPIMCL_NOTAPPROVAL(@RequestBody PIMPERSONCHANGESearchContext context) {
         Page<PIMPERSONCHANGE> domains = pimpersonchangeService.searchPIMCL_NOTAPPROVAL(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimpersonchangeMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'HeadRed',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch总部记录", tags = {"PIMPERSONCHANGE" } ,notes = "fetch总部记录")
     @RequestMapping(method= RequestMethod.GET , value="/pimpersonchanges/fetchheadred")
 	public ResponseEntity<List<PIMPERSONCHANGEDTO>> fetchHeadRed(PIMPERSONCHANGESearchContext context) {
@@ -257,16 +251,14 @@ public class PIMPERSONCHANGEResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'HeadRed',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search总部记录", tags = {"PIMPERSONCHANGE" } ,notes = "search总部记录")
-    @RequestMapping(method= RequestMethod.GET , value="/pimpersonchanges/searchheadred")
-	public ResponseEntity<Page<PIMPERSONCHANGEDTO>> searchHeadRed(PIMPERSONCHANGESearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimpersonchanges/searchheadred")
+	public ResponseEntity<Page<PIMPERSONCHANGEDTO>> searchHeadRed(@RequestBody PIMPERSONCHANGESearchContext context) {
         Page<PIMPERSONCHANGE> domains = pimpersonchangeService.searchHeadRed(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimpersonchangeMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PIMPERSONCHANGE" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimpersonchanges/fetchdefault")
 	public ResponseEntity<List<PIMPERSONCHANGEDTO>> fetchDefault(PIMPERSONCHANGESearchContext context) {
@@ -279,10 +271,9 @@ public class PIMPERSONCHANGEResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PIMPERSONCHANGE" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/pimpersonchanges/searchdefault")
-	public ResponseEntity<Page<PIMPERSONCHANGEDTO>> searchDefault(PIMPERSONCHANGESearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimpersonchanges/searchdefault")
+	public ResponseEntity<Page<PIMPERSONCHANGEDTO>> searchDefault(@RequestBody PIMPERSONCHANGESearchContext context) {
         Page<PIMPERSONCHANGE> domains = pimpersonchangeService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimpersonchangeMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
@@ -437,8 +428,8 @@ public class PIMPERSONCHANGEResource {
 	}
 
 	@ApiOperation(value = "search历史审批记录ByPIMPERSON", tags = {"PIMPERSONCHANGE" } ,notes = "search历史审批记录ByPIMPERSON")
-    @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/pimpersonchanges/searchhistoryrec")
-	public ResponseEntity<Page<PIMPERSONCHANGEDTO>> searchPIMPERSONCHANGEHistoryRecByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id,PIMPERSONCHANGESearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/pimpersonchanges/searchhistoryrec")
+	public ResponseEntity<Page<PIMPERSONCHANGEDTO>> searchPIMPERSONCHANGEHistoryRecByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMPERSONCHANGESearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
         Page<PIMPERSONCHANGE> domains = pimpersonchangeService.searchHistoryRec(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
@@ -459,8 +450,8 @@ public class PIMPERSONCHANGEResource {
 	}
 
 	@ApiOperation(value = "searchPIMCL_NOTAPPROVALByPIMPERSON", tags = {"PIMPERSONCHANGE" } ,notes = "searchPIMCL_NOTAPPROVALByPIMPERSON")
-    @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/pimpersonchanges/searchpimcl_notapproval")
-	public ResponseEntity<Page<PIMPERSONCHANGEDTO>> searchPIMPERSONCHANGEPIMCL_NOTAPPROVALByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id,PIMPERSONCHANGESearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/pimpersonchanges/searchpimcl_notapproval")
+	public ResponseEntity<Page<PIMPERSONCHANGEDTO>> searchPIMPERSONCHANGEPIMCL_NOTAPPROVALByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMPERSONCHANGESearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
         Page<PIMPERSONCHANGE> domains = pimpersonchangeService.searchPIMCL_NOTAPPROVAL(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
@@ -481,8 +472,8 @@ public class PIMPERSONCHANGEResource {
 	}
 
 	@ApiOperation(value = "search总部记录ByPIMPERSON", tags = {"PIMPERSONCHANGE" } ,notes = "search总部记录ByPIMPERSON")
-    @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/pimpersonchanges/searchheadred")
-	public ResponseEntity<Page<PIMPERSONCHANGEDTO>> searchPIMPERSONCHANGEHeadRedByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id,PIMPERSONCHANGESearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/pimpersonchanges/searchheadred")
+	public ResponseEntity<Page<PIMPERSONCHANGEDTO>> searchPIMPERSONCHANGEHeadRedByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMPERSONCHANGESearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
         Page<PIMPERSONCHANGE> domains = pimpersonchangeService.searchHeadRed(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
@@ -503,8 +494,8 @@ public class PIMPERSONCHANGEResource {
 	}
 
 	@ApiOperation(value = "searchDEFAULTByPIMPERSON", tags = {"PIMPERSONCHANGE" } ,notes = "searchDEFAULTByPIMPERSON")
-    @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/pimpersonchanges/searchdefault")
-	public ResponseEntity<Page<PIMPERSONCHANGEDTO>> searchPIMPERSONCHANGEDefaultByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id,PIMPERSONCHANGESearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/pimpersonchanges/searchdefault")
+	public ResponseEntity<Page<PIMPERSONCHANGEDTO>> searchPIMPERSONCHANGEDefaultByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMPERSONCHANGESearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
         Page<PIMPERSONCHANGE> domains = pimpersonchangeService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)

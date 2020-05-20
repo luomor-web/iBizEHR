@@ -125,7 +125,6 @@ public class WXAccessTokenResource {
         WXAccessTokenDTO dto = wxaccesstokenMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"WXAccessToken" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/wxaccesstokens/batch")
@@ -161,7 +160,6 @@ public class WXAccessTokenResource {
         return ResponseEntity.status(HttpStatus.OK).body(wxaccesstokenMapping.toDto(wxaccesstokenService.getDraft(new WXAccessToken())));
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"WXAccessToken" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/wxaccesstokens/fetchdefault")
 	public ResponseEntity<List<WXAccessTokenDTO>> fetchDefault(WXAccessTokenSearchContext context) {
@@ -174,10 +172,9 @@ public class WXAccessTokenResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"WXAccessToken" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/wxaccesstokens/searchdefault")
-	public ResponseEntity<Page<WXAccessTokenDTO>> searchDefault(WXAccessTokenSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/wxaccesstokens/searchdefault")
+	public ResponseEntity<Page<WXAccessTokenDTO>> searchDefault(@RequestBody WXAccessTokenSearchContext context) {
         Page<WXAccessToken> domains = wxaccesstokenService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(wxaccesstokenMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

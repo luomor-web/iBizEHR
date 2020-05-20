@@ -65,7 +65,6 @@ public class WFUserAssistResource {
         WFUserAssistDTO dto = wfuserassistMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"WFUserAssist" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/wfuserassists/batch")
@@ -161,7 +160,6 @@ public class WFUserAssistResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"WFUserAssist" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/wfuserassists/fetchdefault")
 	public ResponseEntity<List<WFUserAssistDTO>> fetchDefault(WFUserAssistSearchContext context) {
@@ -174,10 +172,9 @@ public class WFUserAssistResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"WFUserAssist" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/wfuserassists/searchdefault")
-	public ResponseEntity<Page<WFUserAssistDTO>> searchDefault(WFUserAssistSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/wfuserassists/searchdefault")
+	public ResponseEntity<Page<WFUserAssistDTO>> searchDefault(@RequestBody WFUserAssistSearchContext context) {
         Page<WFUserAssist> domains = wfuserassistService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(wfuserassistMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

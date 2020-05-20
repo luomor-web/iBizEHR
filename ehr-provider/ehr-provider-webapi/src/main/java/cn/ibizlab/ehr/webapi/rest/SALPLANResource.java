@@ -65,7 +65,6 @@ public class SALPLANResource {
         SALPLANDTO dto = salplanMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"SALPLAN" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/salplans/batch")
@@ -161,7 +160,6 @@ public class SALPLANResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"SALPLAN" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/salplans/fetchdefault")
 	public ResponseEntity<List<SALPLANDTO>> fetchDefault(SALPLANSearchContext context) {
@@ -174,10 +172,9 @@ public class SALPLANResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"SALPLAN" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/salplans/searchdefault")
-	public ResponseEntity<Page<SALPLANDTO>> searchDefault(SALPLANSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/salplans/searchdefault")
+	public ResponseEntity<Page<SALPLANDTO>> searchDefault(@RequestBody SALPLANSearchContext context) {
         Page<SALPLAN> domains = salplanService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(salplanMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

@@ -136,7 +136,6 @@ public class PIMSOCIALSECURITYResource {
         PIMSOCIALSECURITYDTO dto = pimsocialsecurityMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"PIMSOCIALSECURITY" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimsocialsecurities/batch")
@@ -161,7 +160,6 @@ public class PIMSOCIALSECURITYResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'ZIZHU',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch自助(社保信息)", tags = {"PIMSOCIALSECURITY" } ,notes = "fetch自助(社保信息)")
     @RequestMapping(method= RequestMethod.GET , value="/pimsocialsecurities/fetchzizhu")
 	public ResponseEntity<List<PIMSOCIALSECURITYDTO>> fetchZIZHU(PIMSOCIALSECURITYSearchContext context) {
@@ -174,16 +172,14 @@ public class PIMSOCIALSECURITYResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'ZIZHU',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search自助(社保信息)", tags = {"PIMSOCIALSECURITY" } ,notes = "search自助(社保信息)")
-    @RequestMapping(method= RequestMethod.GET , value="/pimsocialsecurities/searchzizhu")
-	public ResponseEntity<Page<PIMSOCIALSECURITYDTO>> searchZIZHU(PIMSOCIALSECURITYSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimsocialsecurities/searchzizhu")
+	public ResponseEntity<Page<PIMSOCIALSECURITYDTO>> searchZIZHU(@RequestBody PIMSOCIALSECURITYSearchContext context) {
         Page<PIMSOCIALSECURITY> domains = pimsocialsecurityService.searchZIZHU(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimsocialsecurityMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PIMSOCIALSECURITY" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimsocialsecurities/fetchdefault")
 	public ResponseEntity<List<PIMSOCIALSECURITYDTO>> fetchDefault(PIMSOCIALSECURITYSearchContext context) {
@@ -196,16 +192,14 @@ public class PIMSOCIALSECURITYResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PIMSOCIALSECURITY" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/pimsocialsecurities/searchdefault")
-	public ResponseEntity<Page<PIMSOCIALSECURITYDTO>> searchDefault(PIMSOCIALSECURITYSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimsocialsecurities/searchdefault")
+	public ResponseEntity<Page<PIMSOCIALSECURITYDTO>> searchDefault(@RequestBody PIMSOCIALSECURITYSearchContext context) {
         Page<PIMSOCIALSECURITY> domains = pimsocialsecurityService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimsocialsecurityMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'JLSS',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch记录所属", tags = {"PIMSOCIALSECURITY" } ,notes = "fetch记录所属")
     @RequestMapping(method= RequestMethod.GET , value="/pimsocialsecurities/fetchjlss")
 	public ResponseEntity<List<PIMSOCIALSECURITYDTO>> fetchJLSS(PIMSOCIALSECURITYSearchContext context) {
@@ -218,10 +212,9 @@ public class PIMSOCIALSECURITYResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'JLSS',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search记录所属", tags = {"PIMSOCIALSECURITY" } ,notes = "search记录所属")
-    @RequestMapping(method= RequestMethod.GET , value="/pimsocialsecurities/searchjlss")
-	public ResponseEntity<Page<PIMSOCIALSECURITYDTO>> searchJLSS(PIMSOCIALSECURITYSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimsocialsecurities/searchjlss")
+	public ResponseEntity<Page<PIMSOCIALSECURITYDTO>> searchJLSS(@RequestBody PIMSOCIALSECURITYSearchContext context) {
         Page<PIMSOCIALSECURITY> domains = pimsocialsecurityService.searchJLSS(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimsocialsecurityMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

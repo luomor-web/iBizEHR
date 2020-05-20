@@ -152,7 +152,6 @@ public class ARCHIVALCATALOGUEResource {
         ARCHIVALCATALOGUEDTO dto = archivalcatalogueMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"ARCHIVALCATALOGUE" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/archivalcatalogues/batch")
@@ -161,7 +160,6 @@ public class ARCHIVALCATALOGUEResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"ARCHIVALCATALOGUE" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/archivalcatalogues/fetchdefault")
 	public ResponseEntity<List<ARCHIVALCATALOGUEDTO>> fetchDefault(ARCHIVALCATALOGUESearchContext context) {
@@ -174,10 +172,9 @@ public class ARCHIVALCATALOGUEResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"ARCHIVALCATALOGUE" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/archivalcatalogues/searchdefault")
-	public ResponseEntity<Page<ARCHIVALCATALOGUEDTO>> searchDefault(ARCHIVALCATALOGUESearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/archivalcatalogues/searchdefault")
+	public ResponseEntity<Page<ARCHIVALCATALOGUEDTO>> searchDefault(@RequestBody ARCHIVALCATALOGUESearchContext context) {
         Page<ARCHIVALCATALOGUE> domains = archivalcatalogueService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(archivalcatalogueMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

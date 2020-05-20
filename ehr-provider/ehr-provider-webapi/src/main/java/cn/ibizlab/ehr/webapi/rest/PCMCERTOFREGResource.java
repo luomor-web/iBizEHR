@@ -108,7 +108,6 @@ public class PCMCERTOFREGResource {
         PCMCERTOFREGDTO dto = pcmcertofregMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"PCMCERTOFREG" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmcertofregs/batch")
@@ -161,7 +160,6 @@ public class PCMCERTOFREGResource {
         return  ResponseEntity.status(HttpStatus.OK).body(pcmcertofregService.checkKey(pcmcertofregMapping.toDomain(pcmcertofregdto)));
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PCMCERTOFREG" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pcmcertofregs/fetchdefault")
 	public ResponseEntity<List<PCMCERTOFREGDTO>> fetchDefault(PCMCERTOFREGSearchContext context) {
@@ -174,10 +172,9 @@ public class PCMCERTOFREGResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PCMCERTOFREG" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/pcmcertofregs/searchdefault")
-	public ResponseEntity<Page<PCMCERTOFREGDTO>> searchDefault(PCMCERTOFREGSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pcmcertofregs/searchdefault")
+	public ResponseEntity<Page<PCMCERTOFREGDTO>> searchDefault(@RequestBody PCMCERTOFREGSearchContext context) {
         Page<PCMCERTOFREG> domains = pcmcertofregService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pcmcertofregMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
@@ -299,8 +296,8 @@ public class PCMCERTOFREGResource {
 	}
 
 	@ApiOperation(value = "searchDEFAULTByPCMPROFILE", tags = {"PCMCERTOFREG" } ,notes = "searchDEFAULTByPCMPROFILE")
-    @RequestMapping(method= RequestMethod.GET , value="/pcmprofiles/{pcmprofile_id}/pcmcertofregs/searchdefault")
-	public ResponseEntity<Page<PCMCERTOFREGDTO>> searchPCMCERTOFREGDefaultByPCMPROFILE(@PathVariable("pcmprofile_id") String pcmprofile_id,PCMCERTOFREGSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pcmprofiles/{pcmprofile_id}/pcmcertofregs/searchdefault")
+	public ResponseEntity<Page<PCMCERTOFREGDTO>> searchPCMCERTOFREGDefaultByPCMPROFILE(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody PCMCERTOFREGSearchContext context) {
         context.setN_pcmprofileid_eq(pcmprofile_id);
         Page<PCMCERTOFREG> domains = pcmcertofregService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)

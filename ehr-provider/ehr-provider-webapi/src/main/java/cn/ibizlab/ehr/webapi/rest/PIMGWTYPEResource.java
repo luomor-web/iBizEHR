@@ -152,7 +152,6 @@ public class PIMGWTYPEResource {
         PIMGWTYPEDTO dto = pimgwtypeMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"PIMGWTYPE" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimgwtypes/batch")
@@ -161,7 +160,6 @@ public class PIMGWTYPEResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PIMGWTYPE" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimgwtypes/fetchdefault")
 	public ResponseEntity<List<PIMGWTYPEDTO>> fetchDefault(PIMGWTYPESearchContext context) {
@@ -174,10 +172,9 @@ public class PIMGWTYPEResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PIMGWTYPE" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/pimgwtypes/searchdefault")
-	public ResponseEntity<Page<PIMGWTYPEDTO>> searchDefault(PIMGWTYPESearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimgwtypes/searchdefault")
+	public ResponseEntity<Page<PIMGWTYPEDTO>> searchDefault(@RequestBody PIMGWTYPESearchContext context) {
         Page<PIMGWTYPE> domains = pimgwtypeService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimgwtypeMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

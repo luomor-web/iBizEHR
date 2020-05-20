@@ -131,7 +131,6 @@ public class PIMVACATIONResource {
         PIMVACATIONDTO dto = pimvacationMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"PIMVACATION" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimvacations/batch")
@@ -161,7 +160,6 @@ public class PIMVACATIONResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PIMVACATION" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimvacations/fetchdefault")
 	public ResponseEntity<List<PIMVACATIONDTO>> fetchDefault(PIMVACATIONSearchContext context) {
@@ -174,10 +172,9 @@ public class PIMVACATIONResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PIMVACATION" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/pimvacations/searchdefault")
-	public ResponseEntity<Page<PIMVACATIONDTO>> searchDefault(PIMVACATIONSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimvacations/searchdefault")
+	public ResponseEntity<Page<PIMVACATIONDTO>> searchDefault(@RequestBody PIMVACATIONSearchContext context) {
         Page<PIMVACATION> domains = pimvacationService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimvacationMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
@@ -299,8 +296,8 @@ public class PIMVACATIONResource {
 	}
 
 	@ApiOperation(value = "searchDEFAULTByPIMPERSON", tags = {"PIMVACATION" } ,notes = "searchDEFAULTByPIMPERSON")
-    @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/pimvacations/searchdefault")
-	public ResponseEntity<Page<PIMVACATIONDTO>> searchPIMVACATIONDefaultByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id,PIMVACATIONSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/pimvacations/searchdefault")
+	public ResponseEntity<Page<PIMVACATIONDTO>> searchPIMVACATIONDefaultByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMVACATIONSearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
         Page<PIMVACATION> domains = pimvacationService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)

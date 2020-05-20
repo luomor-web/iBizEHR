@@ -127,7 +127,6 @@ public class PCMReasonResource {
         PCMReasonDTO dto = pcmreasonMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"PCMReason" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmreasons/batch")
@@ -161,7 +160,6 @@ public class PCMReasonResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PCMReason" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pcmreasons/fetchdefault")
 	public ResponseEntity<List<PCMReasonDTO>> fetchDefault(PCMReasonSearchContext context) {
@@ -174,10 +172,9 @@ public class PCMReasonResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PCMReason" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/pcmreasons/searchdefault")
-	public ResponseEntity<Page<PCMReasonDTO>> searchDefault(PCMReasonSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pcmreasons/searchdefault")
+	public ResponseEntity<Page<PCMReasonDTO>> searchDefault(@RequestBody PCMReasonSearchContext context) {
         Page<PCMReason> domains = pcmreasonService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pcmreasonMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

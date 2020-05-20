@@ -106,7 +106,6 @@ public class VACLEACETYPEResource {
         VACLEACETYPEDTO dto = vacleacetypeMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"VACLEACETYPE" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacleacetypes/batch")
@@ -161,7 +160,6 @@ public class VACLEACETYPEResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"VACLEACETYPE" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/vacleacetypes/fetchdefault")
 	public ResponseEntity<List<VACLEACETYPEDTO>> fetchDefault(VACLEACETYPESearchContext context) {
@@ -174,10 +172,9 @@ public class VACLEACETYPEResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"VACLEACETYPE" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/vacleacetypes/searchdefault")
-	public ResponseEntity<Page<VACLEACETYPEDTO>> searchDefault(VACLEACETYPESearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/vacleacetypes/searchdefault")
+	public ResponseEntity<Page<VACLEACETYPEDTO>> searchDefault(@RequestBody VACLEACETYPESearchContext context) {
         Page<VACLEACETYPE> domains = vacleacetypeService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(vacleacetypeMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

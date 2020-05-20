@@ -122,7 +122,6 @@ public class TRMHMATSERResource {
         TRMHMATSERDTO dto = trmhmatserMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"TRMHMATSER" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmhmatsers/batch")
@@ -161,7 +160,6 @@ public class TRMHMATSERResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"TRMHMATSER" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/trmhmatsers/fetchdefault")
 	public ResponseEntity<List<TRMHMATSERDTO>> fetchDefault(TRMHMATSERSearchContext context) {
@@ -174,10 +172,9 @@ public class TRMHMATSERResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"TRMHMATSER" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/trmhmatsers/searchdefault")
-	public ResponseEntity<Page<TRMHMATSERDTO>> searchDefault(TRMHMATSERSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/trmhmatsers/searchdefault")
+	public ResponseEntity<Page<TRMHMATSERDTO>> searchDefault(@RequestBody TRMHMATSERSearchContext context) {
         Page<TRMHMATSER> domains = trmhmatserService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(trmhmatserMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

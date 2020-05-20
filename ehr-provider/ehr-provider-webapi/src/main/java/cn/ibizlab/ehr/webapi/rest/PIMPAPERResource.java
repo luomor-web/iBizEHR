@@ -115,7 +115,6 @@ public class PIMPAPERResource {
         PIMPAPERDTO dto = pimpaperMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"PIMPAPER" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpapers/batch")
@@ -161,7 +160,6 @@ public class PIMPAPERResource {
         return  ResponseEntity.status(HttpStatus.OK).body(pimpaperService.checkKey(pimpaperMapping.toDomain(pimpaperdto)));
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PIMPAPER" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimpapers/fetchdefault")
 	public ResponseEntity<List<PIMPAPERDTO>> fetchDefault(PIMPAPERSearchContext context) {
@@ -174,16 +172,14 @@ public class PIMPAPERResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PIMPAPER" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/pimpapers/searchdefault")
-	public ResponseEntity<Page<PIMPAPERDTO>> searchDefault(PIMPAPERSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimpapers/searchdefault")
+	public ResponseEntity<Page<PIMPAPERDTO>> searchDefault(@RequestBody PIMPAPERSearchContext context) {
         Page<PIMPAPER> domains = pimpaperService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimpaperMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'JLSSGR',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch记录所属（个人）", tags = {"PIMPAPER" } ,notes = "fetch记录所属（个人）")
     @RequestMapping(method= RequestMethod.GET , value="/pimpapers/fetchjlssgr")
 	public ResponseEntity<List<PIMPAPERDTO>> fetchJLSSGR(PIMPAPERSearchContext context) {
@@ -196,16 +192,14 @@ public class PIMPAPERResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'JLSSGR',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search记录所属（个人）", tags = {"PIMPAPER" } ,notes = "search记录所属（个人）")
-    @RequestMapping(method= RequestMethod.GET , value="/pimpapers/searchjlssgr")
-	public ResponseEntity<Page<PIMPAPERDTO>> searchJLSSGR(PIMPAPERSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimpapers/searchjlssgr")
+	public ResponseEntity<Page<PIMPAPERDTO>> searchJLSSGR(@RequestBody PIMPAPERSearchContext context) {
         Page<PIMPAPER> domains = pimpaperService.searchJLSSGR(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimpaperMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'JLSSGLY',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch记录所属（管理员）", tags = {"PIMPAPER" } ,notes = "fetch记录所属（管理员）")
     @RequestMapping(method= RequestMethod.GET , value="/pimpapers/fetchjlssgly")
 	public ResponseEntity<List<PIMPAPERDTO>> fetchJLSSGLY(PIMPAPERSearchContext context) {
@@ -218,10 +212,9 @@ public class PIMPAPERResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'JLSSGLY',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search记录所属（管理员）", tags = {"PIMPAPER" } ,notes = "search记录所属（管理员）")
-    @RequestMapping(method= RequestMethod.GET , value="/pimpapers/searchjlssgly")
-	public ResponseEntity<Page<PIMPAPERDTO>> searchJLSSGLY(PIMPAPERSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimpapers/searchjlssgly")
+	public ResponseEntity<Page<PIMPAPERDTO>> searchJLSSGLY(@RequestBody PIMPAPERSearchContext context) {
         Page<PIMPAPER> domains = pimpaperService.searchJLSSGLY(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimpaperMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
@@ -343,8 +336,8 @@ public class PIMPAPERResource {
 	}
 
 	@ApiOperation(value = "searchDEFAULTByPIMPERSON", tags = {"PIMPAPER" } ,notes = "searchDEFAULTByPIMPERSON")
-    @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/pimpapers/searchdefault")
-	public ResponseEntity<Page<PIMPAPERDTO>> searchPIMPAPERDefaultByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id,PIMPAPERSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/pimpapers/searchdefault")
+	public ResponseEntity<Page<PIMPAPERDTO>> searchPIMPAPERDefaultByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMPAPERSearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
         Page<PIMPAPER> domains = pimpaperService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
@@ -365,8 +358,8 @@ public class PIMPAPERResource {
 	}
 
 	@ApiOperation(value = "search记录所属（个人）ByPIMPERSON", tags = {"PIMPAPER" } ,notes = "search记录所属（个人）ByPIMPERSON")
-    @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/pimpapers/searchjlssgr")
-	public ResponseEntity<Page<PIMPAPERDTO>> searchPIMPAPERJLSSGRByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id,PIMPAPERSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/pimpapers/searchjlssgr")
+	public ResponseEntity<Page<PIMPAPERDTO>> searchPIMPAPERJLSSGRByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMPAPERSearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
         Page<PIMPAPER> domains = pimpaperService.searchJLSSGR(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
@@ -387,8 +380,8 @@ public class PIMPAPERResource {
 	}
 
 	@ApiOperation(value = "search记录所属（管理员）ByPIMPERSON", tags = {"PIMPAPER" } ,notes = "search记录所属（管理员）ByPIMPERSON")
-    @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/pimpapers/searchjlssgly")
-	public ResponseEntity<Page<PIMPAPERDTO>> searchPIMPAPERJLSSGLYByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id,PIMPAPERSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/pimpapers/searchjlssgly")
+	public ResponseEntity<Page<PIMPAPERDTO>> searchPIMPAPERJLSSGLYByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMPAPERSearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
         Page<PIMPAPER> domains = pimpaperService.searchJLSSGLY(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)

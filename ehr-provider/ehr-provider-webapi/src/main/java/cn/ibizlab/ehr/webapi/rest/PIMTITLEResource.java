@@ -97,7 +97,6 @@ public class PIMTITLEResource {
         PIMTITLEDTO dto = pimtitleMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"PIMTITLE" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimtitles/batch")
@@ -174,7 +173,6 @@ public class PIMTITLEResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PIMTITLE" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimtitles/fetchdefault")
 	public ResponseEntity<List<PIMTITLEDTO>> fetchDefault(PIMTITLESearchContext context) {
@@ -187,16 +185,14 @@ public class PIMTITLEResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PIMTITLE" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/pimtitles/searchdefault")
-	public ResponseEntity<Page<PIMTITLEDTO>> searchDefault(PIMTITLESearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimtitles/searchdefault")
+	public ResponseEntity<Page<PIMTITLEDTO>> searchDefault(@RequestBody PIMTITLESearchContext context) {
         Page<PIMTITLE> domains = pimtitleService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimtitleMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'JLSS',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch记录所属", tags = {"PIMTITLE" } ,notes = "fetch记录所属")
     @RequestMapping(method= RequestMethod.GET , value="/pimtitles/fetchjlss")
 	public ResponseEntity<List<PIMTITLEDTO>> fetchJLSS(PIMTITLESearchContext context) {
@@ -209,16 +205,14 @@ public class PIMTITLEResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'JLSS',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search记录所属", tags = {"PIMTITLE" } ,notes = "search记录所属")
-    @RequestMapping(method= RequestMethod.GET , value="/pimtitles/searchjlss")
-	public ResponseEntity<Page<PIMTITLEDTO>> searchJLSS(PIMTITLESearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimtitles/searchjlss")
+	public ResponseEntity<Page<PIMTITLEDTO>> searchJLSS(@RequestBody PIMTITLESearchContext context) {
         Page<PIMTITLE> domains = pimtitleService.searchJLSS(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimtitleMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'AscriptionSys',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch职称记录所属是管理员的", tags = {"PIMTITLE" } ,notes = "fetch职称记录所属是管理员的")
     @RequestMapping(method= RequestMethod.GET , value="/pimtitles/fetchascriptionsys")
 	public ResponseEntity<List<PIMTITLEDTO>> fetchAscriptionSys(PIMTITLESearchContext context) {
@@ -231,16 +225,14 @@ public class PIMTITLEResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'AscriptionSys',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search职称记录所属是管理员的", tags = {"PIMTITLE" } ,notes = "search职称记录所属是管理员的")
-    @RequestMapping(method= RequestMethod.GET , value="/pimtitles/searchascriptionsys")
-	public ResponseEntity<Page<PIMTITLEDTO>> searchAscriptionSys(PIMTITLESearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimtitles/searchascriptionsys")
+	public ResponseEntity<Page<PIMTITLEDTO>> searchAscriptionSys(@RequestBody PIMTITLESearchContext context) {
         Page<PIMTITLE> domains = pimtitleService.searchAscriptionSys(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimtitleMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'REP_TITLE',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch职称分布", tags = {"PIMTITLE" } ,notes = "fetch职称分布")
     @RequestMapping(method= RequestMethod.GET , value="/pimtitles/fetchrep_title")
 	public ResponseEntity<List<HashMap>> fetchREP_TITLE(PIMTITLESearchContext context) {
@@ -252,16 +244,14 @@ public class PIMTITLEResource {
                 .body(domains.getContent());
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'REP_TITLE',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search职称分布", tags = {"PIMTITLE" } ,notes = "search职称分布")
-    @RequestMapping(method= RequestMethod.GET , value="/pimtitles/searchrep_title")
-	public ResponseEntity<Page<HashMap>> searchREP_TITLE(PIMTITLESearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimtitles/searchrep_title")
+	public ResponseEntity<Page<HashMap>> searchREP_TITLE(@RequestBody PIMTITLESearchContext context) {
         Page<HashMap> domains = pimtitleService.searchREP_TITLE(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(domains.getContent(), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'ZIZHU',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch自助(职称信息)", tags = {"PIMTITLE" } ,notes = "fetch自助(职称信息)")
     @RequestMapping(method= RequestMethod.GET , value="/pimtitles/fetchzizhu")
 	public ResponseEntity<List<PIMTITLEDTO>> fetchZIZHU(PIMTITLESearchContext context) {
@@ -274,10 +264,9 @@ public class PIMTITLEResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'ZIZHU',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search自助(职称信息)", tags = {"PIMTITLE" } ,notes = "search自助(职称信息)")
-    @RequestMapping(method= RequestMethod.GET , value="/pimtitles/searchzizhu")
-	public ResponseEntity<Page<PIMTITLEDTO>> searchZIZHU(PIMTITLESearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimtitles/searchzizhu")
+	public ResponseEntity<Page<PIMTITLEDTO>> searchZIZHU(@RequestBody PIMTITLESearchContext context) {
         Page<PIMTITLE> domains = pimtitleService.searchZIZHU(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimtitleMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
@@ -410,8 +399,8 @@ public class PIMTITLEResource {
 	}
 
 	@ApiOperation(value = "searchDEFAULTByPIMPERSON", tags = {"PIMTITLE" } ,notes = "searchDEFAULTByPIMPERSON")
-    @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/pimtitles/searchdefault")
-	public ResponseEntity<Page<PIMTITLEDTO>> searchPIMTITLEDefaultByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id,PIMTITLESearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/pimtitles/searchdefault")
+	public ResponseEntity<Page<PIMTITLEDTO>> searchPIMTITLEDefaultByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMTITLESearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
         Page<PIMTITLE> domains = pimtitleService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
@@ -432,8 +421,8 @@ public class PIMTITLEResource {
 	}
 
 	@ApiOperation(value = "search记录所属ByPIMPERSON", tags = {"PIMTITLE" } ,notes = "search记录所属ByPIMPERSON")
-    @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/pimtitles/searchjlss")
-	public ResponseEntity<Page<PIMTITLEDTO>> searchPIMTITLEJLSSByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id,PIMTITLESearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/pimtitles/searchjlss")
+	public ResponseEntity<Page<PIMTITLEDTO>> searchPIMTITLEJLSSByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMTITLESearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
         Page<PIMTITLE> domains = pimtitleService.searchJLSS(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
@@ -454,8 +443,8 @@ public class PIMTITLEResource {
 	}
 
 	@ApiOperation(value = "search职称记录所属是管理员的ByPIMPERSON", tags = {"PIMTITLE" } ,notes = "search职称记录所属是管理员的ByPIMPERSON")
-    @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/pimtitles/searchascriptionsys")
-	public ResponseEntity<Page<PIMTITLEDTO>> searchPIMTITLEAscriptionSysByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id,PIMTITLESearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/pimtitles/searchascriptionsys")
+	public ResponseEntity<Page<PIMTITLEDTO>> searchPIMTITLEAscriptionSysByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMTITLESearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
         Page<PIMTITLE> domains = pimtitleService.searchAscriptionSys(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
@@ -475,8 +464,8 @@ public class PIMTITLEResource {
 	}
 
 	@ApiOperation(value = "search职称分布ByPIMPERSON", tags = {"PIMTITLE" } ,notes = "search职称分布ByPIMPERSON")
-    @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/pimtitles/searchrep_title")
-	public ResponseEntity<Page<HashMap>> searchPIMTITLEREP_TITLEByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id,PIMTITLESearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/pimtitles/searchrep_title")
+	public ResponseEntity<Page<HashMap>> searchPIMTITLEREP_TITLEByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMTITLESearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
         Page<HashMap> domains = pimtitleService.searchREP_TITLE(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
@@ -497,8 +486,8 @@ public class PIMTITLEResource {
 	}
 
 	@ApiOperation(value = "search自助(职称信息)ByPIMPERSON", tags = {"PIMTITLE" } ,notes = "search自助(职称信息)ByPIMPERSON")
-    @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/pimtitles/searchzizhu")
-	public ResponseEntity<Page<PIMTITLEDTO>> searchPIMTITLEZIZHUByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id,PIMTITLESearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/pimtitles/searchzizhu")
+	public ResponseEntity<Page<PIMTITLEDTO>> searchPIMTITLEZIZHUByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMTITLESearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
         Page<PIMTITLE> domains = pimtitleService.searchZIZHU(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)

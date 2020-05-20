@@ -125,7 +125,6 @@ public class PIMFILEBATVHUPLOADResource {
         PIMFILEBATVHUPLOADDTO dto = pimfilebatvhuploadMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"PIMFILEBATVHUPLOAD" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimfilebatvhuploads/batch")
@@ -161,7 +160,6 @@ public class PIMFILEBATVHUPLOADResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PIMFILEBATVHUPLOAD" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimfilebatvhuploads/fetchdefault")
 	public ResponseEntity<List<PIMFILEBATVHUPLOADDTO>> fetchDefault(PIMFILEBATVHUPLOADSearchContext context) {
@@ -174,10 +172,9 @@ public class PIMFILEBATVHUPLOADResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PIMFILEBATVHUPLOAD" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/pimfilebatvhuploads/searchdefault")
-	public ResponseEntity<Page<PIMFILEBATVHUPLOADDTO>> searchDefault(PIMFILEBATVHUPLOADSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimfilebatvhuploads/searchdefault")
+	public ResponseEntity<Page<PIMFILEBATVHUPLOADDTO>> searchDefault(@RequestBody PIMFILEBATVHUPLOADSearchContext context) {
         Page<PIMFILEBATVHUPLOAD> domains = pimfilebatvhuploadService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimfilebatvhuploadMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

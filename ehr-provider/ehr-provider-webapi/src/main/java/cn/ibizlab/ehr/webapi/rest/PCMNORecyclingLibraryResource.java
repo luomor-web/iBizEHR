@@ -65,7 +65,6 @@ public class PCMNORecyclingLibraryResource {
         PCMNORecyclingLibraryDTO dto = pcmnorecyclinglibraryMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"PCMNORecyclingLibrary" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmnorecyclinglibraries/batch")
@@ -161,7 +160,6 @@ public class PCMNORecyclingLibraryResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PCMNORecyclingLibrary" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pcmnorecyclinglibraries/fetchdefault")
 	public ResponseEntity<List<PCMNORecyclingLibraryDTO>> fetchDefault(PCMNORecyclingLibrarySearchContext context) {
@@ -174,10 +172,9 @@ public class PCMNORecyclingLibraryResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PCMNORecyclingLibrary" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/pcmnorecyclinglibraries/searchdefault")
-	public ResponseEntity<Page<PCMNORecyclingLibraryDTO>> searchDefault(PCMNORecyclingLibrarySearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pcmnorecyclinglibraries/searchdefault")
+	public ResponseEntity<Page<PCMNORecyclingLibraryDTO>> searchDefault(@RequestBody PCMNORecyclingLibrarySearchContext context) {
         Page<PCMNORecyclingLibrary> domains = pcmnorecyclinglibraryService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pcmnorecyclinglibraryMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

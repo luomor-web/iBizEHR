@@ -99,7 +99,6 @@ public class PCMEducationExperienceResource {
         PCMEducationExperienceDTO dto = pcmeducationexperienceMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"PCMEducationExperience" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmeducationexperiences/batch")
@@ -200,7 +199,6 @@ public class PCMEducationExperienceResource {
         return ResponseEntity.status(HttpStatus.OK).body(pcmeducationexperiencedto);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PCMEducationExperience" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pcmeducationexperiences/fetchdefault")
 	public ResponseEntity<List<PCMEducationExperienceDTO>> fetchDefault(PCMEducationExperienceSearchContext context) {
@@ -213,10 +211,9 @@ public class PCMEducationExperienceResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PCMEducationExperience" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/pcmeducationexperiences/searchdefault")
-	public ResponseEntity<Page<PCMEducationExperienceDTO>> searchDefault(PCMEducationExperienceSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pcmeducationexperiences/searchdefault")
+	public ResponseEntity<Page<PCMEducationExperienceDTO>> searchDefault(@RequestBody PCMEducationExperienceSearchContext context) {
         Page<PCMEducationExperience> domains = pcmeducationexperienceService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pcmeducationexperienceMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
@@ -371,8 +368,8 @@ public class PCMEducationExperienceResource {
 	}
 
 	@ApiOperation(value = "searchDEFAULTByPCMPROFILE", tags = {"PCMEducationExperience" } ,notes = "searchDEFAULTByPCMPROFILE")
-    @RequestMapping(method= RequestMethod.GET , value="/pcmprofiles/{pcmprofile_id}/pcmeducationexperiences/searchdefault")
-	public ResponseEntity<Page<PCMEducationExperienceDTO>> searchPCMEducationExperienceDefaultByPCMPROFILE(@PathVariable("pcmprofile_id") String pcmprofile_id,PCMEducationExperienceSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pcmprofiles/{pcmprofile_id}/pcmeducationexperiences/searchdefault")
+	public ResponseEntity<Page<PCMEducationExperienceDTO>> searchPCMEducationExperienceDefaultByPCMPROFILE(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody PCMEducationExperienceSearchContext context) {
         context.setN_pcmprofileid_eq(pcmprofile_id);
         Page<PCMEducationExperience> domains = pcmeducationexperienceService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)

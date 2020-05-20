@@ -120,7 +120,6 @@ public class SALPARAMResource {
         SALPARAMDTO dto = salparamMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"SALPARAM" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/salparams/batch")
@@ -161,7 +160,6 @@ public class SALPARAMResource {
         return ResponseEntity.status(HttpStatus.OK).body(salparamMapping.toDto(salparamService.getDraft(new SALPARAM())));
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"SALPARAM" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/salparams/fetchdefault")
 	public ResponseEntity<List<SALPARAMDTO>> fetchDefault(SALPARAMSearchContext context) {
@@ -174,10 +172,9 @@ public class SALPARAMResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"SALPARAM" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/salparams/searchdefault")
-	public ResponseEntity<Page<SALPARAMDTO>> searchDefault(SALPARAMSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/salparams/searchdefault")
+	public ResponseEntity<Page<SALPARAMDTO>> searchDefault(@RequestBody SALPARAMSearchContext context) {
         Page<SALPARAM> domains = salparamService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(salparamMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

@@ -131,7 +131,6 @@ public class TRMEMPLOYRETIONResource {
         TRMEMPLOYRETIONDTO dto = trmemployretionMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"TRMEMPLOYRETION" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmemployretions/batch")
@@ -161,7 +160,6 @@ public class TRMEMPLOYRETIONResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"TRMEMPLOYRETION" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/trmemployretions/fetchdefault")
 	public ResponseEntity<List<TRMEMPLOYRETIONDTO>> fetchDefault(TRMEMPLOYRETIONSearchContext context) {
@@ -174,10 +172,9 @@ public class TRMEMPLOYRETIONResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"TRMEMPLOYRETION" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/trmemployretions/searchdefault")
-	public ResponseEntity<Page<TRMEMPLOYRETIONDTO>> searchDefault(TRMEMPLOYRETIONSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/trmemployretions/searchdefault")
+	public ResponseEntity<Page<TRMEMPLOYRETIONDTO>> searchDefault(@RequestBody TRMEMPLOYRETIONSearchContext context) {
         Page<TRMEMPLOYRETION> domains = trmemployretionService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(trmemployretionMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

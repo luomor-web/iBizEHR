@@ -65,7 +65,6 @@ public class PCMRCXLResource {
         PCMRCXLDTO dto = pcmrcxlMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"PCMRCXL" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmrcxls/batch")
@@ -161,7 +160,6 @@ public class PCMRCXLResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Current',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch查询当前人才序列下的序列", tags = {"PCMRCXL" } ,notes = "fetch查询当前人才序列下的序列")
     @RequestMapping(method= RequestMethod.GET , value="/pcmrcxls/fetchcurrent")
 	public ResponseEntity<List<PCMRCXLDTO>> fetchCurrent(PCMRCXLSearchContext context) {
@@ -174,16 +172,14 @@ public class PCMRCXLResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Current',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search查询当前人才序列下的序列", tags = {"PCMRCXL" } ,notes = "search查询当前人才序列下的序列")
-    @RequestMapping(method= RequestMethod.GET , value="/pcmrcxls/searchcurrent")
-	public ResponseEntity<Page<PCMRCXLDTO>> searchCurrent(PCMRCXLSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pcmrcxls/searchcurrent")
+	public ResponseEntity<Page<PCMRCXLDTO>> searchCurrent(@RequestBody PCMRCXLSearchContext context) {
         Page<PCMRCXL> domains = pcmrcxlService.searchCurrent(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pcmrcxlMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'RCXLPPXLLX',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch人才序列匹配人才序列类型", tags = {"PCMRCXL" } ,notes = "fetch人才序列匹配人才序列类型")
     @RequestMapping(method= RequestMethod.GET , value="/pcmrcxls/fetchrcxlppxllx")
 	public ResponseEntity<List<PCMRCXLDTO>> fetchRCXLPPXLLX(PCMRCXLSearchContext context) {
@@ -196,16 +192,14 @@ public class PCMRCXLResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'RCXLPPXLLX',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search人才序列匹配人才序列类型", tags = {"PCMRCXL" } ,notes = "search人才序列匹配人才序列类型")
-    @RequestMapping(method= RequestMethod.GET , value="/pcmrcxls/searchrcxlppxllx")
-	public ResponseEntity<Page<PCMRCXLDTO>> searchRCXLPPXLLX(PCMRCXLSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pcmrcxls/searchrcxlppxllx")
+	public ResponseEntity<Page<PCMRCXLDTO>> searchRCXLPPXLLX(@RequestBody PCMRCXLSearchContext context) {
         Page<PCMRCXL> domains = pcmrcxlService.searchRCXLPPXLLX(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pcmrcxlMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'ZiDQ',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch子查询", tags = {"PCMRCXL" } ,notes = "fetch子查询")
     @RequestMapping(method= RequestMethod.GET , value="/pcmrcxls/fetchzidq")
 	public ResponseEntity<List<PCMRCXLDTO>> fetchZiDQ(PCMRCXLSearchContext context) {
@@ -218,16 +212,14 @@ public class PCMRCXLResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'ZiDQ',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search子查询", tags = {"PCMRCXL" } ,notes = "search子查询")
-    @RequestMapping(method= RequestMethod.GET , value="/pcmrcxls/searchzidq")
-	public ResponseEntity<Page<PCMRCXLDTO>> searchZiDQ(PCMRCXLSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pcmrcxls/searchzidq")
+	public ResponseEntity<Page<PCMRCXLDTO>> searchZiDQ(@RequestBody PCMRCXLSearchContext context) {
         Page<PCMRCXL> domains = pcmrcxlService.searchZiDQ(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pcmrcxlMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PCMRCXL" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pcmrcxls/fetchdefault")
 	public ResponseEntity<List<PCMRCXLDTO>> fetchDefault(PCMRCXLSearchContext context) {
@@ -240,16 +232,14 @@ public class PCMRCXLResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PCMRCXL" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/pcmrcxls/searchdefault")
-	public ResponseEntity<Page<PCMRCXLDTO>> searchDefault(PCMRCXLSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pcmrcxls/searchdefault")
+	public ResponseEntity<Page<PCMRCXLDTO>> searchDefault(@RequestBody PCMRCXLSearchContext context) {
         Page<PCMRCXL> domains = pcmrcxlService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pcmrcxlMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'GenDQ',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch根查询", tags = {"PCMRCXL" } ,notes = "fetch根查询")
     @RequestMapping(method= RequestMethod.GET , value="/pcmrcxls/fetchgendq")
 	public ResponseEntity<List<PCMRCXLDTO>> fetchGenDQ(PCMRCXLSearchContext context) {
@@ -262,10 +252,9 @@ public class PCMRCXLResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'GenDQ',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search根查询", tags = {"PCMRCXL" } ,notes = "search根查询")
-    @RequestMapping(method= RequestMethod.GET , value="/pcmrcxls/searchgendq")
-	public ResponseEntity<Page<PCMRCXLDTO>> searchGenDQ(PCMRCXLSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pcmrcxls/searchgendq")
+	public ResponseEntity<Page<PCMRCXLDTO>> searchGenDQ(@RequestBody PCMRCXLSearchContext context) {
         Page<PCMRCXL> domains = pcmrcxlService.searchGenDQ(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pcmrcxlMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

@@ -143,7 +143,6 @@ public class ATTENDENCESETUPResource {
         ATTENDENCESETUPDTO dto = attendencesetupMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"ATTENDENCESETUP" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/attendencesetups/batch")
@@ -161,7 +160,6 @@ public class ATTENDENCESETUPResource {
         return  ResponseEntity.status(HttpStatus.OK).body(attendencesetupService.checkKey(attendencesetupMapping.toDomain(attendencesetupdto)));
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"ATTENDENCESETUP" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/attendencesetups/fetchdefault")
 	public ResponseEntity<List<ATTENDENCESETUPDTO>> fetchDefault(ATTENDENCESETUPSearchContext context) {
@@ -174,16 +172,14 @@ public class ATTENDENCESETUPResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"ATTENDENCESETUP" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/attendencesetups/searchdefault")
-	public ResponseEntity<Page<ATTENDENCESETUPDTO>> searchDefault(ATTENDENCESETUPSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/attendencesetups/searchdefault")
+	public ResponseEntity<Page<ATTENDENCESETUPDTO>> searchDefault(@RequestBody ATTENDENCESETUPSearchContext context) {
         Page<ATTENDENCESETUP> domains = attendencesetupService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(attendencesetupMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'CurOrgKQSZ',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch当前组织下的考勤设置", tags = {"ATTENDENCESETUP" } ,notes = "fetch当前组织下的考勤设置")
     @RequestMapping(method= RequestMethod.GET , value="/attendencesetups/fetchcurorgkqsz")
 	public ResponseEntity<List<ATTENDENCESETUPDTO>> fetchCurOrgKQSZ(ATTENDENCESETUPSearchContext context) {
@@ -196,16 +192,14 @@ public class ATTENDENCESETUPResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'CurOrgKQSZ',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search当前组织下的考勤设置", tags = {"ATTENDENCESETUP" } ,notes = "search当前组织下的考勤设置")
-    @RequestMapping(method= RequestMethod.GET , value="/attendencesetups/searchcurorgkqsz")
-	public ResponseEntity<Page<ATTENDENCESETUPDTO>> searchCurOrgKQSZ(ATTENDENCESETUPSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/attendencesetups/searchcurorgkqsz")
+	public ResponseEntity<Page<ATTENDENCESETUPDTO>> searchCurOrgKQSZ(@RequestBody ATTENDENCESETUPSearchContext context) {
         Page<ATTENDENCESETUP> domains = attendencesetupService.searchCurOrgKQSZ(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(attendencesetupMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'KQYBXKQB',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch考勤月报中选考勤表", tags = {"ATTENDENCESETUP" } ,notes = "fetch考勤月报中选考勤表")
     @RequestMapping(method= RequestMethod.GET , value="/attendencesetups/fetchkqybxkqb")
 	public ResponseEntity<List<ATTENDENCESETUPDTO>> fetchKQYBXKQB(ATTENDENCESETUPSearchContext context) {
@@ -218,16 +212,14 @@ public class ATTENDENCESETUPResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'KQYBXKQB',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search考勤月报中选考勤表", tags = {"ATTENDENCESETUP" } ,notes = "search考勤月报中选考勤表")
-    @RequestMapping(method= RequestMethod.GET , value="/attendencesetups/searchkqybxkqb")
-	public ResponseEntity<Page<ATTENDENCESETUPDTO>> searchKQYBXKQB(ATTENDENCESETUPSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/attendencesetups/searchkqybxkqb")
+	public ResponseEntity<Page<ATTENDENCESETUPDTO>> searchKQYBXKQB(@RequestBody ATTENDENCESETUPSearchContext context) {
         Page<ATTENDENCESETUP> domains = attendencesetupService.searchKQYBXKQB(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(attendencesetupMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'KQYCZKQSZ',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch考勤员操作考勤设置", tags = {"ATTENDENCESETUP" } ,notes = "fetch考勤员操作考勤设置")
     @RequestMapping(method= RequestMethod.GET , value="/attendencesetups/fetchkqyczkqsz")
 	public ResponseEntity<List<ATTENDENCESETUPDTO>> fetchKQYCZKQSZ(ATTENDENCESETUPSearchContext context) {
@@ -240,10 +232,9 @@ public class ATTENDENCESETUPResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'KQYCZKQSZ',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search考勤员操作考勤设置", tags = {"ATTENDENCESETUP" } ,notes = "search考勤员操作考勤设置")
-    @RequestMapping(method= RequestMethod.GET , value="/attendencesetups/searchkqyczkqsz")
-	public ResponseEntity<Page<ATTENDENCESETUPDTO>> searchKQYCZKQSZ(ATTENDENCESETUPSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/attendencesetups/searchkqyczkqsz")
+	public ResponseEntity<Page<ATTENDENCESETUPDTO>> searchKQYCZKQSZ(@RequestBody ATTENDENCESETUPSearchContext context) {
         Page<ATTENDENCESETUP> domains = attendencesetupService.searchKQYCZKQSZ(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(attendencesetupMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

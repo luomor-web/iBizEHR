@@ -152,7 +152,6 @@ public class DataSyncInResource {
         DataSyncInDTO dto = datasyncinMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"DataSyncIn" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/datasyncins/batch")
@@ -161,7 +160,6 @@ public class DataSyncInResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"DataSyncIn" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/datasyncins/fetchdefault")
 	public ResponseEntity<List<DataSyncInDTO>> fetchDefault(DataSyncInSearchContext context) {
@@ -174,10 +172,9 @@ public class DataSyncInResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"DataSyncIn" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/datasyncins/searchdefault")
-	public ResponseEntity<Page<DataSyncInDTO>> searchDefault(DataSyncInSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/datasyncins/searchdefault")
+	public ResponseEntity<Page<DataSyncInDTO>> searchDefault(@RequestBody DataSyncInSearchContext context) {
         Page<DataSyncIn> domains = datasyncinService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(datasyncinMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

@@ -65,7 +65,6 @@ public class PCMNoticeResource {
         PCMNoticeDTO dto = pcmnoticeMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"PCMNotice" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmnotices/batch")
@@ -161,7 +160,6 @@ public class PCMNoticeResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'NOTICE_DAGLYDQ',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch档案管理员的提醒", tags = {"PCMNotice" } ,notes = "fetch档案管理员的提醒")
     @RequestMapping(method= RequestMethod.GET , value="/pcmnotices/fetchnotice_daglydq")
 	public ResponseEntity<List<PCMNoticeDTO>> fetchNOTICE_DAGLYDQ(PCMNoticeSearchContext context) {
@@ -174,16 +172,14 @@ public class PCMNoticeResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'NOTICE_DAGLYDQ',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search档案管理员的提醒", tags = {"PCMNotice" } ,notes = "search档案管理员的提醒")
-    @RequestMapping(method= RequestMethod.GET , value="/pcmnotices/searchnotice_daglydq")
-	public ResponseEntity<Page<PCMNoticeDTO>> searchNOTICE_DAGLYDQ(PCMNoticeSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pcmnotices/searchnotice_daglydq")
+	public ResponseEntity<Page<PCMNoticeDTO>> searchNOTICE_DAGLYDQ(@RequestBody PCMNoticeSearchContext context) {
         Page<PCMNotice> domains = pcmnoticeService.searchNOTICE_DAGLYDQ(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pcmnoticeMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'NOTICE_XCZYDQ',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch薪酬专员的提醒", tags = {"PCMNotice" } ,notes = "fetch薪酬专员的提醒")
     @RequestMapping(method= RequestMethod.GET , value="/pcmnotices/fetchnotice_xczydq")
 	public ResponseEntity<List<PCMNoticeDTO>> fetchNOTICE_XCZYDQ(PCMNoticeSearchContext context) {
@@ -196,16 +192,14 @@ public class PCMNoticeResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'NOTICE_XCZYDQ',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search薪酬专员的提醒", tags = {"PCMNotice" } ,notes = "search薪酬专员的提醒")
-    @RequestMapping(method= RequestMethod.GET , value="/pcmnotices/searchnotice_xczydq")
-	public ResponseEntity<Page<PCMNoticeDTO>> searchNOTICE_XCZYDQ(PCMNoticeSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pcmnotices/searchnotice_xczydq")
+	public ResponseEntity<Page<PCMNoticeDTO>> searchNOTICE_XCZYDQ(@RequestBody PCMNoticeSearchContext context) {
         Page<PCMNotice> domains = pcmnoticeService.searchNOTICE_XCZYDQ(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pcmnoticeMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'NOTICE_KQZYDQ',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch考勤专员的提醒", tags = {"PCMNotice" } ,notes = "fetch考勤专员的提醒")
     @RequestMapping(method= RequestMethod.GET , value="/pcmnotices/fetchnotice_kqzydq")
 	public ResponseEntity<List<PCMNoticeDTO>> fetchNOTICE_KQZYDQ(PCMNoticeSearchContext context) {
@@ -218,16 +212,14 @@ public class PCMNoticeResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'NOTICE_KQZYDQ',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search考勤专员的提醒", tags = {"PCMNotice" } ,notes = "search考勤专员的提醒")
-    @RequestMapping(method= RequestMethod.GET , value="/pcmnotices/searchnotice_kqzydq")
-	public ResponseEntity<Page<PCMNoticeDTO>> searchNOTICE_KQZYDQ(PCMNoticeSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pcmnotices/searchnotice_kqzydq")
+	public ResponseEntity<Page<PCMNoticeDTO>> searchNOTICE_KQZYDQ(@RequestBody PCMNoticeSearchContext context) {
         Page<PCMNotice> domains = pcmnoticeService.searchNOTICE_KQZYDQ(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pcmnoticeMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'NOTICE_RSZYDQ',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch人事专员的提醒", tags = {"PCMNotice" } ,notes = "fetch人事专员的提醒")
     @RequestMapping(method= RequestMethod.GET , value="/pcmnotices/fetchnotice_rszydq")
 	public ResponseEntity<List<PCMNoticeDTO>> fetchNOTICE_RSZYDQ(PCMNoticeSearchContext context) {
@@ -240,16 +232,14 @@ public class PCMNoticeResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'NOTICE_RSZYDQ',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search人事专员的提醒", tags = {"PCMNotice" } ,notes = "search人事专员的提醒")
-    @RequestMapping(method= RequestMethod.GET , value="/pcmnotices/searchnotice_rszydq")
-	public ResponseEntity<Page<PCMNoticeDTO>> searchNOTICE_RSZYDQ(PCMNoticeSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pcmnotices/searchnotice_rszydq")
+	public ResponseEntity<Page<PCMNoticeDTO>> searchNOTICE_RSZYDQ(@RequestBody PCMNoticeSearchContext context) {
         Page<PCMNotice> domains = pcmnoticeService.searchNOTICE_RSZYDQ(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pcmnoticeMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PCMNotice" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pcmnotices/fetchdefault")
 	public ResponseEntity<List<PCMNoticeDTO>> fetchDefault(PCMNoticeSearchContext context) {
@@ -262,16 +252,14 @@ public class PCMNoticeResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PCMNotice" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/pcmnotices/searchdefault")
-	public ResponseEntity<Page<PCMNoticeDTO>> searchDefault(PCMNoticeSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pcmnotices/searchdefault")
+	public ResponseEntity<Page<PCMNoticeDTO>> searchDefault(@RequestBody PCMNoticeSearchContext context) {
         Page<PCMNotice> domains = pcmnoticeService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pcmnoticeMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'NOTICE_SBFLZYDQ',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch社保福利专员的提醒", tags = {"PCMNotice" } ,notes = "fetch社保福利专员的提醒")
     @RequestMapping(method= RequestMethod.GET , value="/pcmnotices/fetchnotice_sbflzydq")
 	public ResponseEntity<List<PCMNoticeDTO>> fetchNOTICE_SBFLZYDQ(PCMNoticeSearchContext context) {
@@ -284,10 +272,9 @@ public class PCMNoticeResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'NOTICE_SBFLZYDQ',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search社保福利专员的提醒", tags = {"PCMNotice" } ,notes = "search社保福利专员的提醒")
-    @RequestMapping(method= RequestMethod.GET , value="/pcmnotices/searchnotice_sbflzydq")
-	public ResponseEntity<Page<PCMNoticeDTO>> searchNOTICE_SBFLZYDQ(PCMNoticeSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pcmnotices/searchnotice_sbflzydq")
+	public ResponseEntity<Page<PCMNoticeDTO>> searchNOTICE_SBFLZYDQ(@RequestBody PCMNoticeSearchContext context) {
         Page<PCMNotice> domains = pcmnoticeService.searchNOTICE_SBFLZYDQ(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pcmnoticeMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

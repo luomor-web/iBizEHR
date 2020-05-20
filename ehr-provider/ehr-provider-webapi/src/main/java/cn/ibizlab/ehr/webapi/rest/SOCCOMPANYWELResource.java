@@ -65,7 +65,6 @@ public class SOCCOMPANYWELResource {
         SOCCOMPANYWELDTO dto = soccompanywelMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"SOCCOMPANYWEL" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/soccompanywels/batch")
@@ -161,7 +160,6 @@ public class SOCCOMPANYWELResource {
         return ResponseEntity.status(HttpStatus.OK).body(soccompanywelMapping.toDto(soccompanywelService.getDraft(new SOCCOMPANYWEL())));
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"SOCCOMPANYWEL" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/soccompanywels/fetchdefault")
 	public ResponseEntity<List<SOCCOMPANYWELDTO>> fetchDefault(SOCCOMPANYWELSearchContext context) {
@@ -174,10 +172,9 @@ public class SOCCOMPANYWELResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"SOCCOMPANYWEL" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/soccompanywels/searchdefault")
-	public ResponseEntity<Page<SOCCOMPANYWELDTO>> searchDefault(SOCCOMPANYWELSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/soccompanywels/searchdefault")
+	public ResponseEntity<Page<SOCCOMPANYWELDTO>> searchDefault(@RequestBody SOCCOMPANYWELSearchContext context) {
         Page<SOCCOMPANYWEL> domains = soccompanywelService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(soccompanywelMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

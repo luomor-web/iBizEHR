@@ -107,7 +107,6 @@ public class TRMDUTYCADRESResource {
         TRMDUTYCADRESDTO dto = trmdutycadresMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"TRMDUTYCADRES" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmdutycadres/batch")
@@ -200,7 +199,6 @@ public class TRMDUTYCADRESResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'CurCXFW',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch数据范围选择", tags = {"TRMDUTYCADRES" } ,notes = "fetch数据范围选择")
     @RequestMapping(method= RequestMethod.GET , value="/trmdutycadres/fetchcurcxfw")
 	public ResponseEntity<List<TRMDUTYCADRESDTO>> fetchCurCXFW(TRMDUTYCADRESSearchContext context) {
@@ -213,16 +211,14 @@ public class TRMDUTYCADRESResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'CurCXFW',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search数据范围选择", tags = {"TRMDUTYCADRES" } ,notes = "search数据范围选择")
-    @RequestMapping(method= RequestMethod.GET , value="/trmdutycadres/searchcurcxfw")
-	public ResponseEntity<Page<TRMDUTYCADRESDTO>> searchCurCXFW(TRMDUTYCADRESSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/trmdutycadres/searchcurcxfw")
+	public ResponseEntity<Page<TRMDUTYCADRESDTO>> searchCurCXFW(@RequestBody TRMDUTYCADRESSearchContext context) {
         Page<TRMDUTYCADRES> domains = trmdutycadresService.searchCurCXFW(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(trmdutycadresMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"TRMDUTYCADRES" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/trmdutycadres/fetchdefault")
 	public ResponseEntity<List<TRMDUTYCADRESDTO>> fetchDefault(TRMDUTYCADRESSearchContext context) {
@@ -235,10 +231,9 @@ public class TRMDUTYCADRESResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"TRMDUTYCADRES" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/trmdutycadres/searchdefault")
-	public ResponseEntity<Page<TRMDUTYCADRESDTO>> searchDefault(TRMDUTYCADRESSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/trmdutycadres/searchdefault")
+	public ResponseEntity<Page<TRMDUTYCADRESDTO>> searchDefault(@RequestBody TRMDUTYCADRESSearchContext context) {
         Page<TRMDUTYCADRES> domains = trmdutycadresService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(trmdutycadresMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

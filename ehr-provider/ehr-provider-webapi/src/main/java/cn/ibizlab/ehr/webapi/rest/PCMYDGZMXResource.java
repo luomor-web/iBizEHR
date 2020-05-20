@@ -135,7 +135,6 @@ public class PCMYDGZMXResource {
         PCMYDGZMXDTO dto = pcmydgzmxMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"PCMYDGZMX" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmydgzmxes/batch")
@@ -187,7 +186,6 @@ public class PCMYDGZMXResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'GZCRYDQ',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch挂职出人员查询", tags = {"PCMYDGZMX" } ,notes = "fetch挂职出人员查询")
     @RequestMapping(method= RequestMethod.GET , value="/pcmydgzmxes/fetchgzcrydq")
 	public ResponseEntity<List<PCMYDGZMXDTO>> fetchGZCRYDQ(PCMYDGZMXSearchContext context) {
@@ -200,16 +198,14 @@ public class PCMYDGZMXResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'GZCRYDQ',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search挂职出人员查询", tags = {"PCMYDGZMX" } ,notes = "search挂职出人员查询")
-    @RequestMapping(method= RequestMethod.GET , value="/pcmydgzmxes/searchgzcrydq")
-	public ResponseEntity<Page<PCMYDGZMXDTO>> searchGZCRYDQ(PCMYDGZMXSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pcmydgzmxes/searchgzcrydq")
+	public ResponseEntity<Page<PCMYDGZMXDTO>> searchGZCRYDQ(@RequestBody PCMYDGZMXSearchContext context) {
         Page<PCMYDGZMX> domains = pcmydgzmxService.searchGZCRYDQ(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pcmydgzmxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'GZJLSJLDQ',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch挂职进历史记录查询", tags = {"PCMYDGZMX" } ,notes = "fetch挂职进历史记录查询")
     @RequestMapping(method= RequestMethod.GET , value="/pcmydgzmxes/fetchgzjlsjldq")
 	public ResponseEntity<List<PCMYDGZMXDTO>> fetchGZJLSJLDQ(PCMYDGZMXSearchContext context) {
@@ -222,16 +218,14 @@ public class PCMYDGZMXResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'GZJLSJLDQ',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search挂职进历史记录查询", tags = {"PCMYDGZMX" } ,notes = "search挂职进历史记录查询")
-    @RequestMapping(method= RequestMethod.GET , value="/pcmydgzmxes/searchgzjlsjldq")
-	public ResponseEntity<Page<PCMYDGZMXDTO>> searchGZJLSJLDQ(PCMYDGZMXSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pcmydgzmxes/searchgzjlsjldq")
+	public ResponseEntity<Page<PCMYDGZMXDTO>> searchGZJLSJLDQ(@RequestBody PCMYDGZMXSearchContext context) {
         Page<PCMYDGZMX> domains = pcmydgzmxService.searchGZJLSJLDQ(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pcmydgzmxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'GZJRY',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch挂职进人员", tags = {"PCMYDGZMX" } ,notes = "fetch挂职进人员")
     @RequestMapping(method= RequestMethod.GET , value="/pcmydgzmxes/fetchgzjry")
 	public ResponseEntity<List<PCMYDGZMXDTO>> fetchGZJRY(PCMYDGZMXSearchContext context) {
@@ -244,16 +238,14 @@ public class PCMYDGZMXResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'GZJRY',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search挂职进人员", tags = {"PCMYDGZMX" } ,notes = "search挂职进人员")
-    @RequestMapping(method= RequestMethod.GET , value="/pcmydgzmxes/searchgzjry")
-	public ResponseEntity<Page<PCMYDGZMXDTO>> searchGZJRY(PCMYDGZMXSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pcmydgzmxes/searchgzjry")
+	public ResponseEntity<Page<PCMYDGZMXDTO>> searchGZJRY(@RequestBody PCMYDGZMXSearchContext context) {
         Page<PCMYDGZMX> domains = pcmydgzmxService.searchGZJRY(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pcmydgzmxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PCMYDGZMX" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pcmydgzmxes/fetchdefault")
 	public ResponseEntity<List<PCMYDGZMXDTO>> fetchDefault(PCMYDGZMXSearchContext context) {
@@ -266,16 +258,14 @@ public class PCMYDGZMXResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PCMYDGZMX" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/pcmydgzmxes/searchdefault")
-	public ResponseEntity<Page<PCMYDGZMXDTO>> searchDefault(PCMYDGZMXSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pcmydgzmxes/searchdefault")
+	public ResponseEntity<Page<PCMYDGZMXDTO>> searchDefault(@RequestBody PCMYDGZMXSearchContext context) {
         Page<PCMYDGZMX> domains = pcmydgzmxService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pcmydgzmxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'GZCLSJLDQ',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch挂职出历史记录查询", tags = {"PCMYDGZMX" } ,notes = "fetch挂职出历史记录查询")
     @RequestMapping(method= RequestMethod.GET , value="/pcmydgzmxes/fetchgzclsjldq")
 	public ResponseEntity<List<PCMYDGZMXDTO>> fetchGZCLSJLDQ(PCMYDGZMXSearchContext context) {
@@ -288,10 +278,9 @@ public class PCMYDGZMXResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'GZCLSJLDQ',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search挂职出历史记录查询", tags = {"PCMYDGZMX" } ,notes = "search挂职出历史记录查询")
-    @RequestMapping(method= RequestMethod.GET , value="/pcmydgzmxes/searchgzclsjldq")
-	public ResponseEntity<Page<PCMYDGZMXDTO>> searchGZCLSJLDQ(PCMYDGZMXSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pcmydgzmxes/searchgzclsjldq")
+	public ResponseEntity<Page<PCMYDGZMXDTO>> searchGZCLSJLDQ(@RequestBody PCMYDGZMXSearchContext context) {
         Page<PCMYDGZMX> domains = pcmydgzmxService.searchGZCLSJLDQ(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pcmydgzmxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

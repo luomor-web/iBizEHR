@@ -129,7 +129,6 @@ public class SALSALARYResource {
         SALSALARYDTO dto = salsalaryMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"SALSALARY" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/salsalaries/batch")
@@ -161,7 +160,6 @@ public class SALSALARYResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"SALSALARY" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/salsalaries/fetchdefault")
 	public ResponseEntity<List<SALSALARYDTO>> fetchDefault(SALSALARYSearchContext context) {
@@ -174,10 +172,9 @@ public class SALSALARYResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"SALSALARY" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/salsalaries/searchdefault")
-	public ResponseEntity<Page<SALSALARYDTO>> searchDefault(SALSALARYSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/salsalaries/searchdefault")
+	public ResponseEntity<Page<SALSALARYDTO>> searchDefault(@RequestBody SALSALARYSearchContext context) {
         Page<SALSALARY> domains = salsalaryService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(salsalaryMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

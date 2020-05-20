@@ -97,7 +97,6 @@ public class SysAdminResource {
         SysAdminDTO dto = sysadminMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"SysAdmin" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/sysadmins/batch")
@@ -161,7 +160,6 @@ public class SysAdminResource {
         return  ResponseEntity.status(HttpStatus.OK).body(sysadminService.checkKey(sysadminMapping.toDomain(sysadmindto)));
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"SysAdmin" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/sysadmins/fetchdefault")
 	public ResponseEntity<List<SysAdminDTO>> fetchDefault(SysAdminSearchContext context) {
@@ -174,10 +172,9 @@ public class SysAdminResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"SysAdmin" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/sysadmins/searchdefault")
-	public ResponseEntity<Page<SysAdminDTO>> searchDefault(SysAdminSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/sysadmins/searchdefault")
+	public ResponseEntity<Page<SysAdminDTO>> searchDefault(@RequestBody SysAdminSearchContext context) {
         Page<SysAdmin> domains = sysadminService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(sysadminMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

@@ -111,7 +111,6 @@ public class PersonStateMGRResource {
         PersonStateMGRDTO dto = personstatemgrMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"PersonStateMGR" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/personstatemgrs/batch")
@@ -161,7 +160,6 @@ public class PersonStateMGRResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PersonStateMGR" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/personstatemgrs/fetchdefault")
 	public ResponseEntity<List<PersonStateMGRDTO>> fetchDefault(PersonStateMGRSearchContext context) {
@@ -174,10 +172,9 @@ public class PersonStateMGRResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PersonStateMGR" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/personstatemgrs/searchdefault")
-	public ResponseEntity<Page<PersonStateMGRDTO>> searchDefault(PersonStateMGRSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/personstatemgrs/searchdefault")
+	public ResponseEntity<Page<PersonStateMGRDTO>> searchDefault(@RequestBody PersonStateMGRSearchContext context) {
         Page<PersonStateMGR> domains = personstatemgrService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(personstatemgrMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

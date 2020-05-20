@@ -74,7 +74,6 @@ public class PIMPersonAbilityDetailResource {
         PIMPersonAbilityDetailDTO dto = pimpersonabilitydetailMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"PIMPersonAbilityDetail" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpersonabilitydetails/batch")
@@ -161,7 +160,6 @@ public class PIMPersonAbilityDetailResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PIMPersonAbilityDetail" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimpersonabilitydetails/fetchdefault")
 	public ResponseEntity<List<PIMPersonAbilityDetailDTO>> fetchDefault(PIMPersonAbilityDetailSearchContext context) {
@@ -174,10 +172,9 @@ public class PIMPersonAbilityDetailResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PIMPersonAbilityDetail" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/pimpersonabilitydetails/searchdefault")
-	public ResponseEntity<Page<PIMPersonAbilityDetailDTO>> searchDefault(PIMPersonAbilityDetailSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimpersonabilitydetails/searchdefault")
+	public ResponseEntity<Page<PIMPersonAbilityDetailDTO>> searchDefault(@RequestBody PIMPersonAbilityDetailSearchContext context) {
         Page<PIMPersonAbilityDetail> domains = pimpersonabilitydetailService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimpersonabilitydetailMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

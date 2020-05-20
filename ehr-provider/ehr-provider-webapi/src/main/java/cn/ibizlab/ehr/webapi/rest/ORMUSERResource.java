@@ -77,7 +77,6 @@ public class ORMUSERResource {
         ORMUSERDTO dto = ormuserMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"ORMUSER" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormusers/batch")
@@ -161,7 +160,6 @@ public class ORMUSERResource {
         return ResponseEntity.status(HttpStatus.OK).body(ormuserMapping.toDto(ormuserService.getDraft(new ORMUSER())));
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'DQZZJXJZZ',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch当前组织及下级组织", tags = {"ORMUSER" } ,notes = "fetch当前组织及下级组织")
     @RequestMapping(method= RequestMethod.GET , value="/ormusers/fetchdqzzjxjzz")
 	public ResponseEntity<List<ORMUSERDTO>> fetchDQZZJXJZZ(ORMUSERSearchContext context) {
@@ -174,16 +172,14 @@ public class ORMUSERResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'DQZZJXJZZ',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search当前组织及下级组织", tags = {"ORMUSER" } ,notes = "search当前组织及下级组织")
-    @RequestMapping(method= RequestMethod.GET , value="/ormusers/searchdqzzjxjzz")
-	public ResponseEntity<Page<ORMUSERDTO>> searchDQZZJXJZZ(ORMUSERSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/ormusers/searchdqzzjxjzz")
+	public ResponseEntity<Page<ORMUSERDTO>> searchDQZZJXJZZ(@RequestBody ORMUSERSearchContext context) {
         Page<ORMUSER> domains = ormuserService.searchDQZZJXJZZ(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(ormuserMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"ORMUSER" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/ormusers/fetchdefault")
 	public ResponseEntity<List<ORMUSERDTO>> fetchDefault(ORMUSERSearchContext context) {
@@ -196,10 +192,9 @@ public class ORMUSERResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"ORMUSER" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/ormusers/searchdefault")
-	public ResponseEntity<Page<ORMUSERDTO>> searchDefault(ORMUSERSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/ormusers/searchdefault")
+	public ResponseEntity<Page<ORMUSERDTO>> searchDefault(@RequestBody ORMUSERSearchContext context) {
         Page<ORMUSER> domains = ormuserService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(ormuserMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

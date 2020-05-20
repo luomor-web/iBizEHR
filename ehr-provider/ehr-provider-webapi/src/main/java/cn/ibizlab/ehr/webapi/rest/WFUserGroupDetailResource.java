@@ -65,7 +65,6 @@ public class WFUserGroupDetailResource {
         WFUserGroupDetailDTO dto = wfusergroupdetailMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"WFUserGroupDetail" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/wfusergroupdetails/batch")
@@ -161,7 +160,6 @@ public class WFUserGroupDetailResource {
         return  ResponseEntity.status(HttpStatus.OK).body(wfusergroupdetailService.checkKey(wfusergroupdetailMapping.toDomain(wfusergroupdetaildto)));
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"WFUserGroupDetail" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/wfusergroupdetails/fetchdefault")
 	public ResponseEntity<List<WFUserGroupDetailDTO>> fetchDefault(WFUserGroupDetailSearchContext context) {
@@ -174,10 +172,9 @@ public class WFUserGroupDetailResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"WFUserGroupDetail" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/wfusergroupdetails/searchdefault")
-	public ResponseEntity<Page<WFUserGroupDetailDTO>> searchDefault(WFUserGroupDetailSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/wfusergroupdetails/searchdefault")
+	public ResponseEntity<Page<WFUserGroupDetailDTO>> searchDefault(@RequestBody WFUserGroupDetailSearchContext context) {
         Page<WFUserGroupDetail> domains = wfusergroupdetailService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(wfusergroupdetailMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

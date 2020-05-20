@@ -83,7 +83,6 @@ public class ORMDepEstManResource {
         ORMDepEstManDTO dto = ormdepestmanMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"ORMDepEstMan" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormdepestmen/batch")
@@ -161,7 +160,6 @@ public class ORMDepEstManResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"ORMDepEstMan" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/ormdepestmen/fetchdefault")
 	public ResponseEntity<List<ORMDepEstManDTO>> fetchDefault(ORMDepEstManSearchContext context) {
@@ -174,10 +172,9 @@ public class ORMDepEstManResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"ORMDepEstMan" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/ormdepestmen/searchdefault")
-	public ResponseEntity<Page<ORMDepEstManDTO>> searchDefault(ORMDepEstManSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/ormdepestmen/searchdefault")
+	public ResponseEntity<Page<ORMDepEstManDTO>> searchDefault(@RequestBody ORMDepEstManSearchContext context) {
         Page<ORMDepEstMan> domains = ormdepestmanService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(ormdepestmanMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

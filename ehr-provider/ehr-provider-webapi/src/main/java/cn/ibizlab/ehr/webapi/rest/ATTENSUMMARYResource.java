@@ -74,7 +74,6 @@ public class ATTENSUMMARYResource {
         ATTENSUMMARYDTO dto = attensummaryMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"ATTENSUMMARY" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/attensummaries/batch")
@@ -174,7 +173,6 @@ public class ATTENSUMMARYResource {
         return ResponseEntity.status(HttpStatus.OK).body(attensummarydto);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'CurZZKQHZ',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch当前组织考勤汇总", tags = {"ATTENSUMMARY" } ,notes = "fetch当前组织考勤汇总")
     @RequestMapping(method= RequestMethod.GET , value="/attensummaries/fetchcurzzkqhz")
 	public ResponseEntity<List<ATTENSUMMARYDTO>> fetchCurZZKQHZ(ATTENSUMMARYSearchContext context) {
@@ -187,16 +185,14 @@ public class ATTENSUMMARYResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'CurZZKQHZ',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search当前组织考勤汇总", tags = {"ATTENSUMMARY" } ,notes = "search当前组织考勤汇总")
-    @RequestMapping(method= RequestMethod.GET , value="/attensummaries/searchcurzzkqhz")
-	public ResponseEntity<Page<ATTENSUMMARYDTO>> searchCurZZKQHZ(ATTENSUMMARYSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/attensummaries/searchcurzzkqhz")
+	public ResponseEntity<Page<ATTENSUMMARYDTO>> searchCurZZKQHZ(@RequestBody ATTENSUMMARYSearchContext context) {
         Page<ATTENSUMMARY> domains = attensummaryService.searchCurZZKQHZ(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(attensummaryMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"ATTENSUMMARY" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/attensummaries/fetchdefault")
 	public ResponseEntity<List<ATTENSUMMARYDTO>> fetchDefault(ATTENSUMMARYSearchContext context) {
@@ -209,10 +205,9 @@ public class ATTENSUMMARYResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"ATTENSUMMARY" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/attensummaries/searchdefault")
-	public ResponseEntity<Page<ATTENSUMMARYDTO>> searchDefault(ATTENSUMMARYSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/attensummaries/searchdefault")
+	public ResponseEntity<Page<ATTENSUMMARYDTO>> searchDefault(@RequestBody ATTENSUMMARYSearchContext context) {
         Page<ATTENSUMMARY> domains = attensummaryService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(attensummaryMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

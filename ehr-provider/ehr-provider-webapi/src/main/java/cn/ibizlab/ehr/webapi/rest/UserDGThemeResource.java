@@ -111,7 +111,6 @@ public class UserDGThemeResource {
         UserDGThemeDTO dto = userdgthemeMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"UserDGTheme" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/userdgthemes/batch")
@@ -161,7 +160,6 @@ public class UserDGThemeResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"UserDGTheme" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/userdgthemes/fetchdefault")
 	public ResponseEntity<List<UserDGThemeDTO>> fetchDefault(UserDGThemeSearchContext context) {
@@ -174,10 +172,9 @@ public class UserDGThemeResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"UserDGTheme" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/userdgthemes/searchdefault")
-	public ResponseEntity<Page<UserDGThemeDTO>> searchDefault(UserDGThemeSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/userdgthemes/searchdefault")
+	public ResponseEntity<Page<UserDGThemeDTO>> searchDefault(@RequestBody UserDGThemeSearchContext context) {
         Page<UserDGTheme> domains = userdgthemeService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(userdgthemeMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

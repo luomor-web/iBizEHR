@@ -113,7 +113,6 @@ public class PIMEXAMINATIONRESULTSResource {
         PIMEXAMINATIONRESULTSDTO dto = pimexaminationresultsMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"PIMEXAMINATIONRESULTS" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimexaminationresults/batch")
@@ -161,7 +160,6 @@ public class PIMEXAMINATIONRESULTSResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PIMEXAMINATIONRESULTS" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimexaminationresults/fetchdefault")
 	public ResponseEntity<List<PIMEXAMINATIONRESULTSDTO>> fetchDefault(PIMEXAMINATIONRESULTSSearchContext context) {
@@ -174,10 +172,9 @@ public class PIMEXAMINATIONRESULTSResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PIMEXAMINATIONRESULTS" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/pimexaminationresults/searchdefault")
-	public ResponseEntity<Page<PIMEXAMINATIONRESULTSDTO>> searchDefault(PIMEXAMINATIONRESULTSSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimexaminationresults/searchdefault")
+	public ResponseEntity<Page<PIMEXAMINATIONRESULTSDTO>> searchDefault(@RequestBody PIMEXAMINATIONRESULTSSearchContext context) {
         Page<PIMEXAMINATIONRESULTS> domains = pimexaminationresultsService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimexaminationresultsMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

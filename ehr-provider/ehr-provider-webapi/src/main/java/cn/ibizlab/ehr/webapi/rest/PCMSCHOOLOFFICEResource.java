@@ -152,7 +152,6 @@ public class PCMSCHOOLOFFICEResource {
         PCMSCHOOLOFFICEDTO dto = pcmschoolofficeMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"PCMSCHOOLOFFICE" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmschooloffices/batch")
@@ -161,7 +160,6 @@ public class PCMSCHOOLOFFICEResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PCMSCHOOLOFFICE" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pcmschooloffices/fetchdefault")
 	public ResponseEntity<List<PCMSCHOOLOFFICEDTO>> fetchDefault(PCMSCHOOLOFFICESearchContext context) {
@@ -174,10 +172,9 @@ public class PCMSCHOOLOFFICEResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PCMSCHOOLOFFICE" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/pcmschooloffices/searchdefault")
-	public ResponseEntity<Page<PCMSCHOOLOFFICEDTO>> searchDefault(PCMSCHOOLOFFICESearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pcmschooloffices/searchdefault")
+	public ResponseEntity<Page<PCMSCHOOLOFFICEDTO>> searchDefault(@RequestBody PCMSCHOOLOFFICESearchContext context) {
         Page<PCMSCHOOLOFFICE> domains = pcmschoolofficeService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pcmschoolofficeMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
@@ -299,8 +296,8 @@ public class PCMSCHOOLOFFICEResource {
 	}
 
 	@ApiOperation(value = "searchDEFAULTByPCMPROFILE", tags = {"PCMSCHOOLOFFICE" } ,notes = "searchDEFAULTByPCMPROFILE")
-    @RequestMapping(method= RequestMethod.GET , value="/pcmprofiles/{pcmprofile_id}/pcmschooloffices/searchdefault")
-	public ResponseEntity<Page<PCMSCHOOLOFFICEDTO>> searchPCMSCHOOLOFFICEDefaultByPCMPROFILE(@PathVariable("pcmprofile_id") String pcmprofile_id,PCMSCHOOLOFFICESearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pcmprofiles/{pcmprofile_id}/pcmschooloffices/searchdefault")
+	public ResponseEntity<Page<PCMSCHOOLOFFICEDTO>> searchPCMSCHOOLOFFICEDefaultByPCMPROFILE(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody PCMSCHOOLOFFICESearchContext context) {
         context.setN_pcmprofileid_eq(pcmprofile_id);
         Page<PCMSCHOOLOFFICE> domains = pcmschoolofficeService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)

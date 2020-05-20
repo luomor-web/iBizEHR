@@ -71,6 +71,9 @@
         <!--反序列化工具-->
         <kryo.version>4.0.2</kryo.version>
 
+        <!--httpClient -->
+        <openfeign-httpclient.version>11.0</openfeign-httpclient.version>
+
     </properties>
 
     <dependencyManagement>
@@ -250,6 +253,11 @@
                 <version>${kryo.version}</version>
             </dependency>
 
+            <dependency>
+                <groupId>io.github.openfeign</groupId>
+                <artifactId>feign-httpclient</artifactId>
+                <version>${openfeign-httpclient.version}</version>
+            </dependency>
 
         </dependencies>
     </dependencyManagement>

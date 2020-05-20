@@ -90,7 +90,6 @@ public class BUDGETResource {
         BUDGETDTO dto = budgetMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"BUDGET" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/budgets/batch")
@@ -161,7 +160,6 @@ public class BUDGETResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"BUDGET" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/budgets/fetchdefault")
 	public ResponseEntity<List<BUDGETDTO>> fetchDefault(BUDGETSearchContext context) {
@@ -174,10 +172,9 @@ public class BUDGETResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"BUDGET" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/budgets/searchdefault")
-	public ResponseEntity<Page<BUDGETDTO>> searchDefault(BUDGETSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/budgets/searchdefault")
+	public ResponseEntity<Page<BUDGETDTO>> searchDefault(@RequestBody BUDGETSearchContext context) {
         Page<BUDGET> domains = budgetService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(budgetMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

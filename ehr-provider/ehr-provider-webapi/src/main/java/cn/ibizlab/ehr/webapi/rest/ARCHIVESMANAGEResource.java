@@ -115,7 +115,6 @@ public class ARCHIVESMANAGEResource {
         ARCHIVESMANAGEDTO dto = archivesmanageMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"ARCHIVESMANAGE" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/archivesmanages/batch")
@@ -161,7 +160,6 @@ public class ARCHIVESMANAGEResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"ARCHIVESMANAGE" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/archivesmanages/fetchdefault")
 	public ResponseEntity<List<ARCHIVESMANAGEDTO>> fetchDefault(ARCHIVESMANAGESearchContext context) {
@@ -174,10 +172,9 @@ public class ARCHIVESMANAGEResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"ARCHIVESMANAGE" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/archivesmanages/searchdefault")
-	public ResponseEntity<Page<ARCHIVESMANAGEDTO>> searchDefault(ARCHIVESMANAGESearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/archivesmanages/searchdefault")
+	public ResponseEntity<Page<ARCHIVESMANAGEDTO>> searchDefault(@RequestBody ARCHIVESMANAGESearchContext context) {
         Page<ARCHIVESMANAGE> domains = archivesmanageService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(archivesmanageMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

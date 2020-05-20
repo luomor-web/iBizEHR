@@ -74,7 +74,6 @@ public class VACINITNXJResource {
         VACINITNXJDTO dto = vacinitnxjMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"VACINITNXJ" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacinitnxjs/batch")
@@ -161,7 +160,6 @@ public class VACINITNXJResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"VACINITNXJ" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/vacinitnxjs/fetchdefault")
 	public ResponseEntity<List<VACINITNXJDTO>> fetchDefault(VACINITNXJSearchContext context) {
@@ -174,10 +172,9 @@ public class VACINITNXJResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"VACINITNXJ" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/vacinitnxjs/searchdefault")
-	public ResponseEntity<Page<VACINITNXJDTO>> searchDefault(VACINITNXJSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/vacinitnxjs/searchdefault")
+	public ResponseEntity<Page<VACINITNXJDTO>> searchDefault(@RequestBody VACINITNXJSearchContext context) {
         Page<VACINITNXJ> domains = vacinitnxjService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(vacinitnxjMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

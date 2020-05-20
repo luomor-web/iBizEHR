@@ -134,7 +134,6 @@ public class WFStepInstResource {
         WFStepInstDTO dto = wfstepinstMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"WFStepInst" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/wfstepinsts/batch")
@@ -161,7 +160,6 @@ public class WFStepInstResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"WFStepInst" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/wfstepinsts/fetchdefault")
 	public ResponseEntity<List<WFStepInstDTO>> fetchDefault(WFStepInstSearchContext context) {
@@ -174,10 +172,9 @@ public class WFStepInstResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"WFStepInst" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/wfstepinsts/searchdefault")
-	public ResponseEntity<Page<WFStepInstDTO>> searchDefault(WFStepInstSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/wfstepinsts/searchdefault")
+	public ResponseEntity<Page<WFStepInstDTO>> searchDefault(@RequestBody WFStepInstSearchContext context) {
         Page<WFStepInst> domains = wfstepinstService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(wfstepinstMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

@@ -121,7 +121,6 @@ public class UnitedPersonResource {
         UnitedPersonDTO dto = unitedpersonMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"UnitedPerson" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/unitedpeople/batch")
@@ -174,7 +173,6 @@ public class UnitedPersonResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"UnitedPerson" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/unitedpeople/fetchdefault")
 	public ResponseEntity<List<UnitedPersonDTO>> fetchDefault(UnitedPersonSearchContext context) {
@@ -187,16 +185,14 @@ public class UnitedPersonResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"UnitedPerson" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/unitedpeople/searchdefault")
-	public ResponseEntity<Page<UnitedPersonDTO>> searchDefault(UnitedPersonSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/unitedpeople/searchdefault")
+	public ResponseEntity<Page<UnitedPersonDTO>> searchDefault(@RequestBody UnitedPersonSearchContext context) {
         Page<UnitedPerson> domains = unitedpersonService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(unitedpersonMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'CXYH',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch查询可用的OID用户", tags = {"UnitedPerson" } ,notes = "fetch查询可用的OID用户")
     @RequestMapping(method= RequestMethod.GET , value="/unitedpeople/fetchcxyh")
 	public ResponseEntity<List<UnitedPersonDTO>> fetchCXYH(UnitedPersonSearchContext context) {
@@ -209,16 +205,14 @@ public class UnitedPersonResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'CXYH',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search查询可用的OID用户", tags = {"UnitedPerson" } ,notes = "search查询可用的OID用户")
-    @RequestMapping(method= RequestMethod.GET , value="/unitedpeople/searchcxyh")
-	public ResponseEntity<Page<UnitedPersonDTO>> searchCXYH(UnitedPersonSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/unitedpeople/searchcxyh")
+	public ResponseEntity<Page<UnitedPersonDTO>> searchCXYH(@RequestBody UnitedPersonSearchContext context) {
         Page<UnitedPerson> domains = unitedpersonService.searchCXYH(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(unitedpersonMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'CurFQXJYH',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch新建用户", tags = {"UnitedPerson" } ,notes = "fetch新建用户")
     @RequestMapping(method= RequestMethod.GET , value="/unitedpeople/fetchcurfqxjyh")
 	public ResponseEntity<List<UnitedPersonDTO>> fetchCurFQXJYH(UnitedPersonSearchContext context) {
@@ -231,10 +225,9 @@ public class UnitedPersonResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'CurFQXJYH',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search新建用户", tags = {"UnitedPerson" } ,notes = "search新建用户")
-    @RequestMapping(method= RequestMethod.GET , value="/unitedpeople/searchcurfqxjyh")
-	public ResponseEntity<Page<UnitedPersonDTO>> searchCurFQXJYH(UnitedPersonSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/unitedpeople/searchcurfqxjyh")
+	public ResponseEntity<Page<UnitedPersonDTO>> searchCurFQXJYH(@RequestBody UnitedPersonSearchContext context) {
         Page<UnitedPerson> domains = unitedpersonService.searchCurFQXJYH(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(unitedpersonMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

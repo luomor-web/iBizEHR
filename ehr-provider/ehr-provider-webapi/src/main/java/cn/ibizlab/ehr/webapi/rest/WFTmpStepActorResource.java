@@ -97,7 +97,6 @@ public class WFTmpStepActorResource {
         WFTmpStepActorDTO dto = wftmpstepactorMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"WFTmpStepActor" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/wftmpstepactors/batch")
@@ -161,7 +160,6 @@ public class WFTmpStepActorResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"WFTmpStepActor" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/wftmpstepactors/fetchdefault")
 	public ResponseEntity<List<WFTmpStepActorDTO>> fetchDefault(WFTmpStepActorSearchContext context) {
@@ -174,10 +172,9 @@ public class WFTmpStepActorResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"WFTmpStepActor" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/wftmpstepactors/searchdefault")
-	public ResponseEntity<Page<WFTmpStepActorDTO>> searchDefault(WFTmpStepActorSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/wftmpstepactors/searchdefault")
+	public ResponseEntity<Page<WFTmpStepActorDTO>> searchDefault(@RequestBody WFTmpStepActorSearchContext context) {
         Page<WFTmpStepActor> domains = wftmpstepactorService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(wftmpstepactorMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

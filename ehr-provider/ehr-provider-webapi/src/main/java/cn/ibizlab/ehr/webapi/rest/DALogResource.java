@@ -140,7 +140,6 @@ public class DALogResource {
         DALogDTO dto = dalogMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"DALog" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/dalogs/batch")
@@ -161,7 +160,6 @@ public class DALogResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"DALog" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/dalogs/fetchdefault")
 	public ResponseEntity<List<DALogDTO>> fetchDefault(DALogSearchContext context) {
@@ -174,10 +172,9 @@ public class DALogResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"DALog" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/dalogs/searchdefault")
-	public ResponseEntity<Page<DALogDTO>> searchDefault(DALogSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/dalogs/searchdefault")
+	public ResponseEntity<Page<DALogDTO>> searchDefault(@RequestBody DALogSearchContext context) {
         Page<DALog> domains = dalogService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(dalogMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

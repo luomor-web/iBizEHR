@@ -115,7 +115,6 @@ public class UserGroupResource {
         UserGroupDTO dto = usergroupMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"UserGroup" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/usergroups/batch")
@@ -161,7 +160,6 @@ public class UserGroupResource {
         return ResponseEntity.status(HttpStatus.OK).body(usergroupMapping.toDto(usergroupService.getDraft(new UserGroup())));
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"UserGroup" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/usergroups/fetchdefault")
 	public ResponseEntity<List<UserGroupDTO>> fetchDefault(UserGroupSearchContext context) {
@@ -174,10 +172,9 @@ public class UserGroupResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"UserGroup" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/usergroups/searchdefault")
-	public ResponseEntity<Page<UserGroupDTO>> searchDefault(UserGroupSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/usergroups/searchdefault")
+	public ResponseEntity<Page<UserGroupDTO>> searchDefault(@RequestBody UserGroupSearchContext context) {
         Page<UserGroup> domains = usergroupService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(usergroupMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

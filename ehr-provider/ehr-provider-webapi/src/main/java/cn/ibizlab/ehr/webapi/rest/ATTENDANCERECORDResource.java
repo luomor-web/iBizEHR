@@ -74,7 +74,6 @@ public class ATTENDANCERECORDResource {
         ATTENDANCERECORDDTO dto = attendancerecordMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"ATTENDANCERECORD" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/attendancerecords/batch")
@@ -174,7 +173,6 @@ public class ATTENDANCERECORDResource {
         return  ResponseEntity.status(HttpStatus.OK).body(attendancerecordService.checkKey(attendancerecordMapping.toDomain(attendancerecorddto)));
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"ATTENDANCERECORD" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/attendancerecords/fetchdefault")
 	public ResponseEntity<List<ATTENDANCERECORDDTO>> fetchDefault(ATTENDANCERECORDSearchContext context) {
@@ -187,10 +185,9 @@ public class ATTENDANCERECORDResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"ATTENDANCERECORD" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/attendancerecords/searchdefault")
-	public ResponseEntity<Page<ATTENDANCERECORDDTO>> searchDefault(ATTENDANCERECORDSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/attendancerecords/searchdefault")
+	public ResponseEntity<Page<ATTENDANCERECORDDTO>> searchDefault(@RequestBody ATTENDANCERECORDSearchContext context) {
         Page<ATTENDANCERECORD> domains = attendancerecordService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(attendancerecordMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
@@ -323,8 +320,8 @@ public class ATTENDANCERECORDResource {
 	}
 
 	@ApiOperation(value = "searchDEFAULTByPIMPERSON", tags = {"ATTENDANCERECORD" } ,notes = "searchDEFAULTByPIMPERSON")
-    @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/attendancerecords/searchdefault")
-	public ResponseEntity<Page<ATTENDANCERECORDDTO>> searchATTENDANCERECORDDefaultByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id,ATTENDANCERECORDSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/attendancerecords/searchdefault")
+	public ResponseEntity<Page<ATTENDANCERECORDDTO>> searchATTENDANCERECORDDefaultByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody ATTENDANCERECORDSearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
         Page<ATTENDANCERECORD> domains = attendancerecordService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)

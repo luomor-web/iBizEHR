@@ -131,7 +131,6 @@ public class CodeItemResource {
         CodeItemDTO dto = codeitemMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"CodeItem" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/codeitems/batch")
@@ -161,7 +160,6 @@ public class CodeItemResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"CodeItem" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/codeitems/fetchdefault")
 	public ResponseEntity<List<CodeItemDTO>> fetchDefault(CodeItemSearchContext context) {
@@ -174,16 +172,14 @@ public class CodeItemResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"CodeItem" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/codeitems/searchdefault")
-	public ResponseEntity<Page<CodeItemDTO>> searchDefault(CodeItemSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/codeitems/searchdefault")
+	public ResponseEntity<Page<CodeItemDTO>> searchDefault(@RequestBody CodeItemSearchContext context) {
         Page<CodeItem> domains = codeitemService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(codeitemMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'CurCL',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch当前代码表", tags = {"CodeItem" } ,notes = "fetch当前代码表")
     @RequestMapping(method= RequestMethod.GET , value="/codeitems/fetchcurcl")
 	public ResponseEntity<List<CodeItemDTO>> fetchCurCL(CodeItemSearchContext context) {
@@ -196,10 +192,9 @@ public class CodeItemResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'CurCL',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search当前代码表", tags = {"CodeItem" } ,notes = "search当前代码表")
-    @RequestMapping(method= RequestMethod.GET , value="/codeitems/searchcurcl")
-	public ResponseEntity<Page<CodeItemDTO>> searchCurCL(CodeItemSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/codeitems/searchcurcl")
+	public ResponseEntity<Page<CodeItemDTO>> searchCurCL(@RequestBody CodeItemSearchContext context) {
         Page<CodeItem> domains = codeitemService.searchCurCL(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(codeitemMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

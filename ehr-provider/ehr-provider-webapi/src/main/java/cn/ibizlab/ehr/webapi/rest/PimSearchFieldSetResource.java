@@ -165,7 +165,6 @@ public class PimSearchFieldSetResource {
         PimSearchFieldSetDTO dto = pimsearchfieldsetMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"PimSearchFieldSet" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimsearchfieldsets/batch")
@@ -174,7 +173,6 @@ public class PimSearchFieldSetResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'AllDATA',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch全部数据", tags = {"PimSearchFieldSet" } ,notes = "fetch全部数据")
     @RequestMapping(method= RequestMethod.GET , value="/pimsearchfieldsets/fetchalldata")
 	public ResponseEntity<List<PimSearchFieldSetDTO>> fetchAllDATA(PimSearchFieldSetSearchContext context) {
@@ -187,16 +185,14 @@ public class PimSearchFieldSetResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'AllDATA',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search全部数据", tags = {"PimSearchFieldSet" } ,notes = "search全部数据")
-    @RequestMapping(method= RequestMethod.GET , value="/pimsearchfieldsets/searchalldata")
-	public ResponseEntity<Page<PimSearchFieldSetDTO>> searchAllDATA(PimSearchFieldSetSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimsearchfieldsets/searchalldata")
+	public ResponseEntity<Page<PimSearchFieldSetDTO>> searchAllDATA(@RequestBody PimSearchFieldSetSearchContext context) {
         Page<PimSearchFieldSet> domains = pimsearchfieldsetService.searchAllDATA(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimsearchfieldsetMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PimSearchFieldSet" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimsearchfieldsets/fetchdefault")
 	public ResponseEntity<List<PimSearchFieldSetDTO>> fetchDefault(PimSearchFieldSetSearchContext context) {
@@ -209,10 +205,9 @@ public class PimSearchFieldSetResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PimSearchFieldSet" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/pimsearchfieldsets/searchdefault")
-	public ResponseEntity<Page<PimSearchFieldSetDTO>> searchDefault(PimSearchFieldSetSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimsearchfieldsets/searchdefault")
+	public ResponseEntity<Page<PimSearchFieldSetDTO>> searchDefault(@RequestBody PimSearchFieldSetSearchContext context) {
         Page<PimSearchFieldSet> domains = pimsearchfieldsetService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimsearchfieldsetMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

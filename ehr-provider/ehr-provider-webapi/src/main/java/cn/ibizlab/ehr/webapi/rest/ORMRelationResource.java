@@ -65,7 +65,6 @@ public class ORMRelationResource {
         ORMRelationDTO dto = ormrelationMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"ORMRelation" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormrelations/batch")
@@ -161,7 +160,6 @@ public class ORMRelationResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"ORMRelation" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/ormrelations/fetchdefault")
 	public ResponseEntity<List<ORMRelationDTO>> fetchDefault(ORMRelationSearchContext context) {
@@ -174,10 +172,9 @@ public class ORMRelationResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"ORMRelation" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/ormrelations/searchdefault")
-	public ResponseEntity<Page<ORMRelationDTO>> searchDefault(ORMRelationSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/ormrelations/searchdefault")
+	public ResponseEntity<Page<ORMRelationDTO>> searchDefault(@RequestBody ORMRelationSearchContext context) {
         Page<ORMRelation> domains = ormrelationService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(ormrelationMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

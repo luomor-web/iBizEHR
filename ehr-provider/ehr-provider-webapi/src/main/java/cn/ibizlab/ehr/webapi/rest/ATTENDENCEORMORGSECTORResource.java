@@ -77,7 +77,6 @@ public class ATTENDENCEORMORGSECTORResource {
         ATTENDENCEORMORGSECTORDTO dto = attendenceormorgsectorMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"ATTENDENCEORMORGSECTOR" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/attendenceormorgsectors/batch")
@@ -161,7 +160,6 @@ public class ATTENDENCEORMORGSECTORResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"ATTENDENCEORMORGSECTOR" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/attendenceormorgsectors/fetchdefault")
 	public ResponseEntity<List<ATTENDENCEORMORGSECTORDTO>> fetchDefault(ATTENDENCEORMORGSECTORSearchContext context) {
@@ -174,10 +172,9 @@ public class ATTENDENCEORMORGSECTORResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"ATTENDENCEORMORGSECTOR" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/attendenceormorgsectors/searchdefault")
-	public ResponseEntity<Page<ATTENDENCEORMORGSECTORDTO>> searchDefault(ATTENDENCEORMORGSECTORSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/attendenceormorgsectors/searchdefault")
+	public ResponseEntity<Page<ATTENDENCEORMORGSECTORDTO>> searchDefault(@RequestBody ATTENDENCEORMORGSECTORSearchContext context) {
         Page<ATTENDENCEORMORGSECTOR> domains = attendenceormorgsectorService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(attendenceormorgsectorMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

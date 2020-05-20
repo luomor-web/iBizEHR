@@ -108,7 +108,6 @@ public class PARJXNDKHJGResource {
         PARJXNDKHJGDTO dto = parjxndkhjgMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"PARJXNDKHJG" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/parjxndkhjgs/batch")
@@ -161,7 +160,6 @@ public class PARJXNDKHJGResource {
         return  ResponseEntity.status(HttpStatus.OK).body(parjxndkhjgService.checkKey(parjxndkhjgMapping.toDomain(parjxndkhjgdto)));
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PARJXNDKHJG" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/parjxndkhjgs/fetchdefault")
 	public ResponseEntity<List<PARJXNDKHJGDTO>> fetchDefault(PARJXNDKHJGSearchContext context) {
@@ -174,16 +172,14 @@ public class PARJXNDKHJGResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PARJXNDKHJG" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/parjxndkhjgs/searchdefault")
-	public ResponseEntity<Page<PARJXNDKHJGDTO>> searchDefault(PARJXNDKHJGSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/parjxndkhjgs/searchdefault")
+	public ResponseEntity<Page<PARJXNDKHJGDTO>> searchDefault(@RequestBody PARJXNDKHJGSearchContext context) {
         Page<PARJXNDKHJG> domains = parjxndkhjgService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(parjxndkhjgMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'LastTwoYear',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch最近2年下半年考核成绩", tags = {"PARJXNDKHJG" } ,notes = "fetch最近2年下半年考核成绩")
     @RequestMapping(method= RequestMethod.GET , value="/parjxndkhjgs/fetchlasttwoyear")
 	public ResponseEntity<List<PARJXNDKHJGDTO>> fetchLastTwoYear(PARJXNDKHJGSearchContext context) {
@@ -196,10 +192,9 @@ public class PARJXNDKHJGResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'LastTwoYear',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search最近2年下半年考核成绩", tags = {"PARJXNDKHJG" } ,notes = "search最近2年下半年考核成绩")
-    @RequestMapping(method= RequestMethod.GET , value="/parjxndkhjgs/searchlasttwoyear")
-	public ResponseEntity<Page<PARJXNDKHJGDTO>> searchLastTwoYear(PARJXNDKHJGSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/parjxndkhjgs/searchlasttwoyear")
+	public ResponseEntity<Page<PARJXNDKHJGDTO>> searchLastTwoYear(@RequestBody PARJXNDKHJGSearchContext context) {
         Page<PARJXNDKHJG> domains = parjxndkhjgService.searchLastTwoYear(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(parjxndkhjgMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

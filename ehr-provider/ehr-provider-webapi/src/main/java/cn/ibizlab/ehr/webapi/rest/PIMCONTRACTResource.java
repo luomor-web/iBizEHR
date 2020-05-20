@@ -117,7 +117,6 @@ public class PIMCONTRACTResource {
         PIMCONTRACTDTO dto = pimcontractMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"PIMCONTRACT" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimcontracts/batch")
@@ -187,7 +186,6 @@ public class PIMCONTRACTResource {
         return ResponseEntity.status(HttpStatus.OK).body(pimcontractMapping.toDto(pimcontractService.getDraft(new PIMCONTRACT())));
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'RSTXDS',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch人事提醒", tags = {"PIMCONTRACT" } ,notes = "fetch人事提醒")
     @RequestMapping(method= RequestMethod.GET , value="/pimcontracts/fetchrstxds")
 	public ResponseEntity<List<PIMCONTRACTDTO>> fetchRSTXDS(PIMCONTRACTSearchContext context) {
@@ -200,16 +198,14 @@ public class PIMCONTRACTResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'RSTXDS',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search人事提醒", tags = {"PIMCONTRACT" } ,notes = "search人事提醒")
-    @RequestMapping(method= RequestMethod.GET , value="/pimcontracts/searchrstxds")
-	public ResponseEntity<Page<PIMCONTRACTDTO>> searchRSTXDS(PIMCONTRACTSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimcontracts/searchrstxds")
+	public ResponseEntity<Page<PIMCONTRACTDTO>> searchRSTXDS(@RequestBody PIMCONTRACTSearchContext context) {
         Page<PIMCONTRACT> domains = pimcontractService.searchRSTXDS(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimcontractMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'JLSS',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch记录所属和人员ID不符的", tags = {"PIMCONTRACT" } ,notes = "fetch记录所属和人员ID不符的")
     @RequestMapping(method= RequestMethod.GET , value="/pimcontracts/fetchjlss")
 	public ResponseEntity<List<PIMCONTRACTDTO>> fetchJLSS(PIMCONTRACTSearchContext context) {
@@ -222,16 +218,14 @@ public class PIMCONTRACTResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'JLSS',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search记录所属和人员ID不符的", tags = {"PIMCONTRACT" } ,notes = "search记录所属和人员ID不符的")
-    @RequestMapping(method= RequestMethod.GET , value="/pimcontracts/searchjlss")
-	public ResponseEntity<Page<PIMCONTRACTDTO>> searchJLSS(PIMCONTRACTSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimcontracts/searchjlss")
+	public ResponseEntity<Page<PIMCONTRACTDTO>> searchJLSS(@RequestBody PIMCONTRACTSearchContext context) {
         Page<PIMCONTRACT> domains = pimcontractService.searchJLSS(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimcontractMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'OrderByOrg',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch按组织树过滤", tags = {"PIMCONTRACT" } ,notes = "fetch按组织树过滤")
     @RequestMapping(method= RequestMethod.GET , value="/pimcontracts/fetchorderbyorg")
 	public ResponseEntity<List<PIMCONTRACTDTO>> fetchOrderByOrg(PIMCONTRACTSearchContext context) {
@@ -244,16 +238,14 @@ public class PIMCONTRACTResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'OrderByOrg',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search按组织树过滤", tags = {"PIMCONTRACT" } ,notes = "search按组织树过滤")
-    @RequestMapping(method= RequestMethod.GET , value="/pimcontracts/searchorderbyorg")
-	public ResponseEntity<Page<PIMCONTRACTDTO>> searchOrderByOrg(PIMCONTRACTSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimcontracts/searchorderbyorg")
+	public ResponseEntity<Page<PIMCONTRACTDTO>> searchOrderByOrg(@RequestBody PIMCONTRACTSearchContext context) {
         Page<PIMCONTRACT> domains = pimcontractService.searchOrderByOrg(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimcontractMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'StopContracts',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch待终止合同", tags = {"PIMCONTRACT" } ,notes = "fetch待终止合同")
     @RequestMapping(method= RequestMethod.GET , value="/pimcontracts/fetchstopcontracts")
 	public ResponseEntity<List<PIMCONTRACTDTO>> fetchStopContracts(PIMCONTRACTSearchContext context) {
@@ -266,16 +258,14 @@ public class PIMCONTRACTResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'StopContracts',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search待终止合同", tags = {"PIMCONTRACT" } ,notes = "search待终止合同")
-    @RequestMapping(method= RequestMethod.GET , value="/pimcontracts/searchstopcontracts")
-	public ResponseEntity<Page<PIMCONTRACTDTO>> searchStopContracts(PIMCONTRACTSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimcontracts/searchstopcontracts")
+	public ResponseEntity<Page<PIMCONTRACTDTO>> searchStopContracts(@RequestBody PIMCONTRACTSearchContext context) {
         Page<PIMCONTRACT> domains = pimcontractService.searchStopContracts(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimcontractMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'SignContracts',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch待签订合同", tags = {"PIMCONTRACT" } ,notes = "fetch待签订合同")
     @RequestMapping(method= RequestMethod.GET , value="/pimcontracts/fetchsigncontracts")
 	public ResponseEntity<List<PIMCONTRACTDTO>> fetchSignContracts(PIMCONTRACTSearchContext context) {
@@ -288,16 +278,14 @@ public class PIMCONTRACTResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'SignContracts',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search待签订合同", tags = {"PIMCONTRACT" } ,notes = "search待签订合同")
-    @RequestMapping(method= RequestMethod.GET , value="/pimcontracts/searchsigncontracts")
-	public ResponseEntity<Page<PIMCONTRACTDTO>> searchSignContracts(PIMCONTRACTSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimcontracts/searchsigncontracts")
+	public ResponseEntity<Page<PIMCONTRACTDTO>> searchSignContracts(@RequestBody PIMCONTRACTSearchContext context) {
         Page<PIMCONTRACT> domains = pimcontractService.searchSignContracts(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimcontractMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PIMCONTRACT" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimcontracts/fetchdefault")
 	public ResponseEntity<List<PIMCONTRACTDTO>> fetchDefault(PIMCONTRACTSearchContext context) {
@@ -310,16 +298,14 @@ public class PIMCONTRACTResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PIMCONTRACT" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/pimcontracts/searchdefault")
-	public ResponseEntity<Page<PIMCONTRACTDTO>> searchDefault(PIMCONTRACTSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimcontracts/searchdefault")
+	public ResponseEntity<Page<PIMCONTRACTDTO>> searchDefault(@RequestBody PIMCONTRACTSearchContext context) {
         Page<PIMCONTRACT> domains = pimcontractService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimcontractMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'XYHT',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch协议合同", tags = {"PIMCONTRACT" } ,notes = "fetch协议合同")
     @RequestMapping(method= RequestMethod.GET , value="/pimcontracts/fetchxyht")
 	public ResponseEntity<List<PIMCONTRACTDTO>> fetchXYHT(PIMCONTRACTSearchContext context) {
@@ -332,16 +318,14 @@ public class PIMCONTRACTResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'XYHT',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search协议合同", tags = {"PIMCONTRACT" } ,notes = "search协议合同")
-    @RequestMapping(method= RequestMethod.GET , value="/pimcontracts/searchxyht")
-	public ResponseEntity<Page<PIMCONTRACTDTO>> searchXYHT(PIMCONTRACTSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimcontracts/searchxyht")
+	public ResponseEntity<Page<PIMCONTRACTDTO>> searchXYHT(@RequestBody PIMCONTRACTSearchContext context) {
         Page<PIMCONTRACT> domains = pimcontractService.searchXYHT(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimcontractMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'ZIZHU',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch自助(合同信息)", tags = {"PIMCONTRACT" } ,notes = "fetch自助(合同信息)")
     @RequestMapping(method= RequestMethod.GET , value="/pimcontracts/fetchzizhu")
 	public ResponseEntity<List<PIMCONTRACTDTO>> fetchZIZHU(PIMCONTRACTSearchContext context) {
@@ -354,16 +338,14 @@ public class PIMCONTRACTResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'ZIZHU',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search自助(合同信息)", tags = {"PIMCONTRACT" } ,notes = "search自助(合同信息)")
-    @RequestMapping(method= RequestMethod.GET , value="/pimcontracts/searchzizhu")
-	public ResponseEntity<Page<PIMCONTRACTDTO>> searchZIZHU(PIMCONTRACTSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimcontracts/searchzizhu")
+	public ResponseEntity<Page<PIMCONTRACTDTO>> searchZIZHU(@RequestBody PIMCONTRACTSearchContext context) {
         Page<PIMCONTRACT> domains = pimcontractService.searchZIZHU(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimcontractMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'LDHT',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch劳动合同", tags = {"PIMCONTRACT" } ,notes = "fetch劳动合同")
     @RequestMapping(method= RequestMethod.GET , value="/pimcontracts/fetchldht")
 	public ResponseEntity<List<PIMCONTRACTDTO>> fetchLDHT(PIMCONTRACTSearchContext context) {
@@ -376,16 +358,14 @@ public class PIMCONTRACTResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'LDHT',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search劳动合同", tags = {"PIMCONTRACT" } ,notes = "search劳动合同")
-    @RequestMapping(method= RequestMethod.GET , value="/pimcontracts/searchldht")
-	public ResponseEntity<Page<PIMCONTRACTDTO>> searchLDHT(PIMCONTRACTSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimcontracts/searchldht")
+	public ResponseEntity<Page<PIMCONTRACTDTO>> searchLDHT(@RequestBody PIMCONTRACTSearchContext context) {
         Page<PIMCONTRACT> domains = pimcontractService.searchLDHT(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimcontractMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'LWHT',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch劳务合同", tags = {"PIMCONTRACT" } ,notes = "fetch劳务合同")
     @RequestMapping(method= RequestMethod.GET , value="/pimcontracts/fetchlwht")
 	public ResponseEntity<List<PIMCONTRACTDTO>> fetchLWHT(PIMCONTRACTSearchContext context) {
@@ -398,10 +378,9 @@ public class PIMCONTRACTResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'LWHT',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search劳务合同", tags = {"PIMCONTRACT" } ,notes = "search劳务合同")
-    @RequestMapping(method= RequestMethod.GET , value="/pimcontracts/searchlwht")
-	public ResponseEntity<Page<PIMCONTRACTDTO>> searchLWHT(PIMCONTRACTSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimcontracts/searchlwht")
+	public ResponseEntity<Page<PIMCONTRACTDTO>> searchLWHT(@RequestBody PIMCONTRACTSearchContext context) {
         Page<PIMCONTRACT> domains = pimcontractService.searchLWHT(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimcontractMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
@@ -545,8 +524,8 @@ public class PIMCONTRACTResource {
 	}
 
 	@ApiOperation(value = "search人事提醒ByPIMPERSON", tags = {"PIMCONTRACT" } ,notes = "search人事提醒ByPIMPERSON")
-    @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/pimcontracts/searchrstxds")
-	public ResponseEntity<Page<PIMCONTRACTDTO>> searchPIMCONTRACTRSTXDSByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id,PIMCONTRACTSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/pimcontracts/searchrstxds")
+	public ResponseEntity<Page<PIMCONTRACTDTO>> searchPIMCONTRACTRSTXDSByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMCONTRACTSearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
         Page<PIMCONTRACT> domains = pimcontractService.searchRSTXDS(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
@@ -567,8 +546,8 @@ public class PIMCONTRACTResource {
 	}
 
 	@ApiOperation(value = "search记录所属和人员ID不符的ByPIMPERSON", tags = {"PIMCONTRACT" } ,notes = "search记录所属和人员ID不符的ByPIMPERSON")
-    @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/pimcontracts/searchjlss")
-	public ResponseEntity<Page<PIMCONTRACTDTO>> searchPIMCONTRACTJLSSByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id,PIMCONTRACTSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/pimcontracts/searchjlss")
+	public ResponseEntity<Page<PIMCONTRACTDTO>> searchPIMCONTRACTJLSSByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMCONTRACTSearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
         Page<PIMCONTRACT> domains = pimcontractService.searchJLSS(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
@@ -589,8 +568,8 @@ public class PIMCONTRACTResource {
 	}
 
 	@ApiOperation(value = "search按组织树过滤ByPIMPERSON", tags = {"PIMCONTRACT" } ,notes = "search按组织树过滤ByPIMPERSON")
-    @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/pimcontracts/searchorderbyorg")
-	public ResponseEntity<Page<PIMCONTRACTDTO>> searchPIMCONTRACTOrderByOrgByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id,PIMCONTRACTSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/pimcontracts/searchorderbyorg")
+	public ResponseEntity<Page<PIMCONTRACTDTO>> searchPIMCONTRACTOrderByOrgByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMCONTRACTSearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
         Page<PIMCONTRACT> domains = pimcontractService.searchOrderByOrg(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
@@ -611,8 +590,8 @@ public class PIMCONTRACTResource {
 	}
 
 	@ApiOperation(value = "search待终止合同ByPIMPERSON", tags = {"PIMCONTRACT" } ,notes = "search待终止合同ByPIMPERSON")
-    @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/pimcontracts/searchstopcontracts")
-	public ResponseEntity<Page<PIMCONTRACTDTO>> searchPIMCONTRACTStopContractsByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id,PIMCONTRACTSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/pimcontracts/searchstopcontracts")
+	public ResponseEntity<Page<PIMCONTRACTDTO>> searchPIMCONTRACTStopContractsByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMCONTRACTSearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
         Page<PIMCONTRACT> domains = pimcontractService.searchStopContracts(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
@@ -633,8 +612,8 @@ public class PIMCONTRACTResource {
 	}
 
 	@ApiOperation(value = "search待签订合同ByPIMPERSON", tags = {"PIMCONTRACT" } ,notes = "search待签订合同ByPIMPERSON")
-    @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/pimcontracts/searchsigncontracts")
-	public ResponseEntity<Page<PIMCONTRACTDTO>> searchPIMCONTRACTSignContractsByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id,PIMCONTRACTSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/pimcontracts/searchsigncontracts")
+	public ResponseEntity<Page<PIMCONTRACTDTO>> searchPIMCONTRACTSignContractsByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMCONTRACTSearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
         Page<PIMCONTRACT> domains = pimcontractService.searchSignContracts(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
@@ -655,8 +634,8 @@ public class PIMCONTRACTResource {
 	}
 
 	@ApiOperation(value = "searchDEFAULTByPIMPERSON", tags = {"PIMCONTRACT" } ,notes = "searchDEFAULTByPIMPERSON")
-    @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/pimcontracts/searchdefault")
-	public ResponseEntity<Page<PIMCONTRACTDTO>> searchPIMCONTRACTDefaultByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id,PIMCONTRACTSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/pimcontracts/searchdefault")
+	public ResponseEntity<Page<PIMCONTRACTDTO>> searchPIMCONTRACTDefaultByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMCONTRACTSearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
         Page<PIMCONTRACT> domains = pimcontractService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
@@ -677,8 +656,8 @@ public class PIMCONTRACTResource {
 	}
 
 	@ApiOperation(value = "search协议合同ByPIMPERSON", tags = {"PIMCONTRACT" } ,notes = "search协议合同ByPIMPERSON")
-    @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/pimcontracts/searchxyht")
-	public ResponseEntity<Page<PIMCONTRACTDTO>> searchPIMCONTRACTXYHTByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id,PIMCONTRACTSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/pimcontracts/searchxyht")
+	public ResponseEntity<Page<PIMCONTRACTDTO>> searchPIMCONTRACTXYHTByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMCONTRACTSearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
         Page<PIMCONTRACT> domains = pimcontractService.searchXYHT(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
@@ -699,8 +678,8 @@ public class PIMCONTRACTResource {
 	}
 
 	@ApiOperation(value = "search自助(合同信息)ByPIMPERSON", tags = {"PIMCONTRACT" } ,notes = "search自助(合同信息)ByPIMPERSON")
-    @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/pimcontracts/searchzizhu")
-	public ResponseEntity<Page<PIMCONTRACTDTO>> searchPIMCONTRACTZIZHUByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id,PIMCONTRACTSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/pimcontracts/searchzizhu")
+	public ResponseEntity<Page<PIMCONTRACTDTO>> searchPIMCONTRACTZIZHUByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMCONTRACTSearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
         Page<PIMCONTRACT> domains = pimcontractService.searchZIZHU(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
@@ -721,8 +700,8 @@ public class PIMCONTRACTResource {
 	}
 
 	@ApiOperation(value = "search劳动合同ByPIMPERSON", tags = {"PIMCONTRACT" } ,notes = "search劳动合同ByPIMPERSON")
-    @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/pimcontracts/searchldht")
-	public ResponseEntity<Page<PIMCONTRACTDTO>> searchPIMCONTRACTLDHTByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id,PIMCONTRACTSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/pimcontracts/searchldht")
+	public ResponseEntity<Page<PIMCONTRACTDTO>> searchPIMCONTRACTLDHTByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMCONTRACTSearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
         Page<PIMCONTRACT> domains = pimcontractService.searchLDHT(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
@@ -743,8 +722,8 @@ public class PIMCONTRACTResource {
 	}
 
 	@ApiOperation(value = "search劳务合同ByPIMPERSON", tags = {"PIMCONTRACT" } ,notes = "search劳务合同ByPIMPERSON")
-    @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/pimcontracts/searchlwht")
-	public ResponseEntity<Page<PIMCONTRACTDTO>> searchPIMCONTRACTLWHTByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id,PIMCONTRACTSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/pimcontracts/searchlwht")
+	public ResponseEntity<Page<PIMCONTRACTDTO>> searchPIMCONTRACTLWHTByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMCONTRACTSearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
         Page<PIMCONTRACT> domains = pimcontractService.searchLWHT(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)

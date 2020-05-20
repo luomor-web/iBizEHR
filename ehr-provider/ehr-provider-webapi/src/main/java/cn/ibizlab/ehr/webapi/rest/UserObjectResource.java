@@ -125,7 +125,6 @@ public class UserObjectResource {
         UserObjectDTO dto = userobjectMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"UserObject" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/userobjects/batch")
@@ -161,7 +160,6 @@ public class UserObjectResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'IndexDER',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchIndexDER", tags = {"UserObject" } ,notes = "fetchIndexDER")
     @RequestMapping(method= RequestMethod.GET , value="/userobjects/fetchindexder")
 	public ResponseEntity<List<UserObjectDTO>> fetchIndexDER(UserObjectSearchContext context) {
@@ -174,16 +172,14 @@ public class UserObjectResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'IndexDER',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchIndexDER", tags = {"UserObject" } ,notes = "searchIndexDER")
-    @RequestMapping(method= RequestMethod.GET , value="/userobjects/searchindexder")
-	public ResponseEntity<Page<UserObjectDTO>> searchIndexDER(UserObjectSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/userobjects/searchindexder")
+	public ResponseEntity<Page<UserObjectDTO>> searchIndexDER(@RequestBody UserObjectSearchContext context) {
         Page<UserObject> domains = userobjectService.searchIndexDER(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(userobjectMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"UserObject" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/userobjects/fetchdefault")
 	public ResponseEntity<List<UserObjectDTO>> fetchDefault(UserObjectSearchContext context) {
@@ -196,10 +192,9 @@ public class UserObjectResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"UserObject" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/userobjects/searchdefault")
-	public ResponseEntity<Page<UserObjectDTO>> searchDefault(UserObjectSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/userobjects/searchdefault")
+	public ResponseEntity<Page<UserObjectDTO>> searchDefault(@RequestBody UserObjectSearchContext context) {
         Page<UserObject> domains = userobjectService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(userobjectMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

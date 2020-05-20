@@ -165,7 +165,6 @@ public class PIMLANGUAGEABILITYResource {
         PIMLANGUAGEABILITYDTO dto = pimlanguageabilityMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"PIMLANGUAGEABILITY" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimlanguageabilities/batch")
@@ -174,7 +173,6 @@ public class PIMLANGUAGEABILITYResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'JLSSGR',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch记录所属（个人）", tags = {"PIMLANGUAGEABILITY" } ,notes = "fetch记录所属（个人）")
     @RequestMapping(method= RequestMethod.GET , value="/pimlanguageabilities/fetchjlssgr")
 	public ResponseEntity<List<PIMLANGUAGEABILITYDTO>> fetchJLSSGR(PIMLANGUAGEABILITYSearchContext context) {
@@ -187,16 +185,14 @@ public class PIMLANGUAGEABILITYResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'JLSSGR',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search记录所属（个人）", tags = {"PIMLANGUAGEABILITY" } ,notes = "search记录所属（个人）")
-    @RequestMapping(method= RequestMethod.GET , value="/pimlanguageabilities/searchjlssgr")
-	public ResponseEntity<Page<PIMLANGUAGEABILITYDTO>> searchJLSSGR(PIMLANGUAGEABILITYSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimlanguageabilities/searchjlssgr")
+	public ResponseEntity<Page<PIMLANGUAGEABILITYDTO>> searchJLSSGR(@RequestBody PIMLANGUAGEABILITYSearchContext context) {
         Page<PIMLANGUAGEABILITY> domains = pimlanguageabilityService.searchJLSSGR(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimlanguageabilityMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PIMLANGUAGEABILITY" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimlanguageabilities/fetchdefault")
 	public ResponseEntity<List<PIMLANGUAGEABILITYDTO>> fetchDefault(PIMLANGUAGEABILITYSearchContext context) {
@@ -209,16 +205,14 @@ public class PIMLANGUAGEABILITYResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PIMLANGUAGEABILITY" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/pimlanguageabilities/searchdefault")
-	public ResponseEntity<Page<PIMLANGUAGEABILITYDTO>> searchDefault(PIMLANGUAGEABILITYSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimlanguageabilities/searchdefault")
+	public ResponseEntity<Page<PIMLANGUAGEABILITYDTO>> searchDefault(@RequestBody PIMLANGUAGEABILITYSearchContext context) {
         Page<PIMLANGUAGEABILITY> domains = pimlanguageabilityService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimlanguageabilityMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'JLSS',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch记录所属", tags = {"PIMLANGUAGEABILITY" } ,notes = "fetch记录所属")
     @RequestMapping(method= RequestMethod.GET , value="/pimlanguageabilities/fetchjlss")
 	public ResponseEntity<List<PIMLANGUAGEABILITYDTO>> fetchJLSS(PIMLANGUAGEABILITYSearchContext context) {
@@ -231,16 +225,14 @@ public class PIMLANGUAGEABILITYResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'JLSS',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search记录所属", tags = {"PIMLANGUAGEABILITY" } ,notes = "search记录所属")
-    @RequestMapping(method= RequestMethod.GET , value="/pimlanguageabilities/searchjlss")
-	public ResponseEntity<Page<PIMLANGUAGEABILITYDTO>> searchJLSS(PIMLANGUAGEABILITYSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimlanguageabilities/searchjlss")
+	public ResponseEntity<Page<PIMLANGUAGEABILITYDTO>> searchJLSS(@RequestBody PIMLANGUAGEABILITYSearchContext context) {
         Page<PIMLANGUAGEABILITY> domains = pimlanguageabilityService.searchJLSS(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimlanguageabilityMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'ZIZHU',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch自助(语言能力)", tags = {"PIMLANGUAGEABILITY" } ,notes = "fetch自助(语言能力)")
     @RequestMapping(method= RequestMethod.GET , value="/pimlanguageabilities/fetchzizhu")
 	public ResponseEntity<List<PIMLANGUAGEABILITYDTO>> fetchZIZHU(PIMLANGUAGEABILITYSearchContext context) {
@@ -253,16 +245,14 @@ public class PIMLANGUAGEABILITYResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'ZIZHU',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search自助(语言能力)", tags = {"PIMLANGUAGEABILITY" } ,notes = "search自助(语言能力)")
-    @RequestMapping(method= RequestMethod.GET , value="/pimlanguageabilities/searchzizhu")
-	public ResponseEntity<Page<PIMLANGUAGEABILITYDTO>> searchZIZHU(PIMLANGUAGEABILITYSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimlanguageabilities/searchzizhu")
+	public ResponseEntity<Page<PIMLANGUAGEABILITYDTO>> searchZIZHU(@RequestBody PIMLANGUAGEABILITYSearchContext context) {
         Page<PIMLANGUAGEABILITY> domains = pimlanguageabilityService.searchZIZHU(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimlanguageabilityMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'JLSSGLY',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch记录所属（管理员）", tags = {"PIMLANGUAGEABILITY" } ,notes = "fetch记录所属（管理员）")
     @RequestMapping(method= RequestMethod.GET , value="/pimlanguageabilities/fetchjlssgly")
 	public ResponseEntity<List<PIMLANGUAGEABILITYDTO>> fetchJLSSGLY(PIMLANGUAGEABILITYSearchContext context) {
@@ -275,10 +265,9 @@ public class PIMLANGUAGEABILITYResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'JLSSGLY',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search记录所属（管理员）", tags = {"PIMLANGUAGEABILITY" } ,notes = "search记录所属（管理员）")
-    @RequestMapping(method= RequestMethod.GET , value="/pimlanguageabilities/searchjlssgly")
-	public ResponseEntity<Page<PIMLANGUAGEABILITYDTO>> searchJLSSGLY(PIMLANGUAGEABILITYSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimlanguageabilities/searchjlssgly")
+	public ResponseEntity<Page<PIMLANGUAGEABILITYDTO>> searchJLSSGLY(@RequestBody PIMLANGUAGEABILITYSearchContext context) {
         Page<PIMLANGUAGEABILITY> domains = pimlanguageabilityService.searchJLSSGLY(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimlanguageabilityMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
@@ -411,8 +400,8 @@ public class PIMLANGUAGEABILITYResource {
 	}
 
 	@ApiOperation(value = "search记录所属（个人）ByPIMPERSON", tags = {"PIMLANGUAGEABILITY" } ,notes = "search记录所属（个人）ByPIMPERSON")
-    @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/pimlanguageabilities/searchjlssgr")
-	public ResponseEntity<Page<PIMLANGUAGEABILITYDTO>> searchPIMLANGUAGEABILITYJLSSGRByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id,PIMLANGUAGEABILITYSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/pimlanguageabilities/searchjlssgr")
+	public ResponseEntity<Page<PIMLANGUAGEABILITYDTO>> searchPIMLANGUAGEABILITYJLSSGRByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMLANGUAGEABILITYSearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
         Page<PIMLANGUAGEABILITY> domains = pimlanguageabilityService.searchJLSSGR(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
@@ -433,8 +422,8 @@ public class PIMLANGUAGEABILITYResource {
 	}
 
 	@ApiOperation(value = "searchDEFAULTByPIMPERSON", tags = {"PIMLANGUAGEABILITY" } ,notes = "searchDEFAULTByPIMPERSON")
-    @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/pimlanguageabilities/searchdefault")
-	public ResponseEntity<Page<PIMLANGUAGEABILITYDTO>> searchPIMLANGUAGEABILITYDefaultByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id,PIMLANGUAGEABILITYSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/pimlanguageabilities/searchdefault")
+	public ResponseEntity<Page<PIMLANGUAGEABILITYDTO>> searchPIMLANGUAGEABILITYDefaultByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMLANGUAGEABILITYSearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
         Page<PIMLANGUAGEABILITY> domains = pimlanguageabilityService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
@@ -455,8 +444,8 @@ public class PIMLANGUAGEABILITYResource {
 	}
 
 	@ApiOperation(value = "search记录所属ByPIMPERSON", tags = {"PIMLANGUAGEABILITY" } ,notes = "search记录所属ByPIMPERSON")
-    @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/pimlanguageabilities/searchjlss")
-	public ResponseEntity<Page<PIMLANGUAGEABILITYDTO>> searchPIMLANGUAGEABILITYJLSSByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id,PIMLANGUAGEABILITYSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/pimlanguageabilities/searchjlss")
+	public ResponseEntity<Page<PIMLANGUAGEABILITYDTO>> searchPIMLANGUAGEABILITYJLSSByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMLANGUAGEABILITYSearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
         Page<PIMLANGUAGEABILITY> domains = pimlanguageabilityService.searchJLSS(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
@@ -477,8 +466,8 @@ public class PIMLANGUAGEABILITYResource {
 	}
 
 	@ApiOperation(value = "search自助(语言能力)ByPIMPERSON", tags = {"PIMLANGUAGEABILITY" } ,notes = "search自助(语言能力)ByPIMPERSON")
-    @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/pimlanguageabilities/searchzizhu")
-	public ResponseEntity<Page<PIMLANGUAGEABILITYDTO>> searchPIMLANGUAGEABILITYZIZHUByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id,PIMLANGUAGEABILITYSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/pimlanguageabilities/searchzizhu")
+	public ResponseEntity<Page<PIMLANGUAGEABILITYDTO>> searchPIMLANGUAGEABILITYZIZHUByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMLANGUAGEABILITYSearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
         Page<PIMLANGUAGEABILITY> domains = pimlanguageabilityService.searchZIZHU(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
@@ -499,8 +488,8 @@ public class PIMLANGUAGEABILITYResource {
 	}
 
 	@ApiOperation(value = "search记录所属（管理员）ByPIMPERSON", tags = {"PIMLANGUAGEABILITY" } ,notes = "search记录所属（管理员）ByPIMPERSON")
-    @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/pimlanguageabilities/searchjlssgly")
-	public ResponseEntity<Page<PIMLANGUAGEABILITYDTO>> searchPIMLANGUAGEABILITYJLSSGLYByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id,PIMLANGUAGEABILITYSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/pimlanguageabilities/searchjlssgly")
+	public ResponseEntity<Page<PIMLANGUAGEABILITYDTO>> searchPIMLANGUAGEABILITYJLSSGLYByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMLANGUAGEABILITYSearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
         Page<PIMLANGUAGEABILITY> domains = pimlanguageabilityService.searchJLSSGLY(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)

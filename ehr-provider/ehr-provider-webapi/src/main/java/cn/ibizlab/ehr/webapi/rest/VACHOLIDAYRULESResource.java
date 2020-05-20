@@ -105,7 +105,6 @@ public class VACHOLIDAYRULESResource {
         VACHOLIDAYRULESDTO dto = vacholidayrulesMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"VACHOLIDAYRULES" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacholidayrules/batch")
@@ -174,7 +173,6 @@ public class VACHOLIDAYRULESResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"VACHOLIDAYRULES" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/vacholidayrules/fetchdefault")
 	public ResponseEntity<List<VACHOLIDAYRULESDTO>> fetchDefault(VACHOLIDAYRULESSearchContext context) {
@@ -187,16 +185,14 @@ public class VACHOLIDAYRULESResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"VACHOLIDAYRULES" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/vacholidayrules/searchdefault")
-	public ResponseEntity<Page<VACHOLIDAYRULESDTO>> searchDefault(VACHOLIDAYRULESSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/vacholidayrules/searchdefault")
+	public ResponseEntity<Page<VACHOLIDAYRULESDTO>> searchDefault(@RequestBody VACHOLIDAYRULESSearchContext context) {
         Page<VACHOLIDAYRULES> domains = vacholidayrulesService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(vacholidayrulesMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'CurOrmorg',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch当前组织下的假期规则", tags = {"VACHOLIDAYRULES" } ,notes = "fetch当前组织下的假期规则")
     @RequestMapping(method= RequestMethod.GET , value="/vacholidayrules/fetchcurormorg")
 	public ResponseEntity<List<VACHOLIDAYRULESDTO>> fetchCurOrmorg(VACHOLIDAYRULESSearchContext context) {
@@ -209,10 +205,9 @@ public class VACHOLIDAYRULESResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'CurOrmorg',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search当前组织下的假期规则", tags = {"VACHOLIDAYRULES" } ,notes = "search当前组织下的假期规则")
-    @RequestMapping(method= RequestMethod.GET , value="/vacholidayrules/searchcurormorg")
-	public ResponseEntity<Page<VACHOLIDAYRULESDTO>> searchCurOrmorg(VACHOLIDAYRULESSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/vacholidayrules/searchcurormorg")
+	public ResponseEntity<Page<VACHOLIDAYRULESDTO>> searchCurOrmorg(@RequestBody VACHOLIDAYRULESSearchContext context) {
         Page<VACHOLIDAYRULES> domains = vacholidayrulesService.searchCurOrmorg(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(vacholidayrulesMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

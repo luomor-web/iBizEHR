@@ -152,7 +152,6 @@ public class UniResResource {
         UniResDTO dto = uniresMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"UniRes" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/unires/batch")
@@ -161,7 +160,6 @@ public class UniResResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"UniRes" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/unires/fetchdefault")
 	public ResponseEntity<List<UniResDTO>> fetchDefault(UniResSearchContext context) {
@@ -174,10 +172,9 @@ public class UniResResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"UniRes" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/unires/searchdefault")
-	public ResponseEntity<Page<UniResDTO>> searchDefault(UniResSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/unires/searchdefault")
+	public ResponseEntity<Page<UniResDTO>> searchDefault(@RequestBody UniResSearchContext context) {
         Page<UniRes> domains = uniresService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(uniresMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

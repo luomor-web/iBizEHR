@@ -65,7 +65,6 @@ public class TRMINVOICEResource {
         TRMINVOICEDTO dto = trminvoiceMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"TRMINVOICE" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/trminvoices/batch")
@@ -161,7 +160,6 @@ public class TRMINVOICEResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"TRMINVOICE" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/trminvoices/fetchdefault")
 	public ResponseEntity<List<TRMINVOICEDTO>> fetchDefault(TRMINVOICESearchContext context) {
@@ -174,10 +172,9 @@ public class TRMINVOICEResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"TRMINVOICE" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/trminvoices/searchdefault")
-	public ResponseEntity<Page<TRMINVOICEDTO>> searchDefault(TRMINVOICESearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/trminvoices/searchdefault")
+	public ResponseEntity<Page<TRMINVOICEDTO>> searchDefault(@RequestBody TRMINVOICESearchContext context) {
         Page<TRMINVOICE> domains = trminvoiceService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(trminvoiceMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

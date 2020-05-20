@@ -113,7 +113,6 @@ public class PIMTITLECATALOGUEResource {
         PIMTITLECATALOGUEDTO dto = pimtitlecatalogueMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"PIMTITLECATALOGUE" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimtitlecatalogues/batch")
@@ -161,7 +160,6 @@ public class PIMTITLECATALOGUEResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'IsRootDQ',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch查询没有上级职称的", tags = {"PIMTITLECATALOGUE" } ,notes = "fetch查询没有上级职称的")
     @RequestMapping(method= RequestMethod.GET , value="/pimtitlecatalogues/fetchisrootdq")
 	public ResponseEntity<List<PIMTITLECATALOGUEDTO>> fetchIsRootDQ(PIMTITLECATALOGUESearchContext context) {
@@ -174,16 +172,14 @@ public class PIMTITLECATALOGUEResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'IsRootDQ',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search查询没有上级职称的", tags = {"PIMTITLECATALOGUE" } ,notes = "search查询没有上级职称的")
-    @RequestMapping(method= RequestMethod.GET , value="/pimtitlecatalogues/searchisrootdq")
-	public ResponseEntity<Page<PIMTITLECATALOGUEDTO>> searchIsRootDQ(PIMTITLECATALOGUESearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimtitlecatalogues/searchisrootdq")
+	public ResponseEntity<Page<PIMTITLECATALOGUEDTO>> searchIsRootDQ(@RequestBody PIMTITLECATALOGUESearchContext context) {
         Page<PIMTITLECATALOGUE> domains = pimtitlecatalogueService.searchIsRootDQ(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimtitlecatalogueMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'NotRootDQ',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch不查询没有上级职称的", tags = {"PIMTITLECATALOGUE" } ,notes = "fetch不查询没有上级职称的")
     @RequestMapping(method= RequestMethod.GET , value="/pimtitlecatalogues/fetchnotrootdq")
 	public ResponseEntity<List<PIMTITLECATALOGUEDTO>> fetchNotRootDQ(PIMTITLECATALOGUESearchContext context) {
@@ -196,16 +192,14 @@ public class PIMTITLECATALOGUEResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'NotRootDQ',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search不查询没有上级职称的", tags = {"PIMTITLECATALOGUE" } ,notes = "search不查询没有上级职称的")
-    @RequestMapping(method= RequestMethod.GET , value="/pimtitlecatalogues/searchnotrootdq")
-	public ResponseEntity<Page<PIMTITLECATALOGUEDTO>> searchNotRootDQ(PIMTITLECATALOGUESearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimtitlecatalogues/searchnotrootdq")
+	public ResponseEntity<Page<PIMTITLECATALOGUEDTO>> searchNotRootDQ(@RequestBody PIMTITLECATALOGUESearchContext context) {
         Page<PIMTITLECATALOGUE> domains = pimtitlecatalogueService.searchNotRootDQ(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimtitlecatalogueMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PIMTITLECATALOGUE" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimtitlecatalogues/fetchdefault")
 	public ResponseEntity<List<PIMTITLECATALOGUEDTO>> fetchDefault(PIMTITLECATALOGUESearchContext context) {
@@ -218,10 +212,9 @@ public class PIMTITLECATALOGUEResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PIMTITLECATALOGUE" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/pimtitlecatalogues/searchdefault")
-	public ResponseEntity<Page<PIMTITLECATALOGUEDTO>> searchDefault(PIMTITLECATALOGUESearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimtitlecatalogues/searchdefault")
+	public ResponseEntity<Page<PIMTITLECATALOGUEDTO>> searchDefault(@RequestBody PIMTITLECATALOGUESearchContext context) {
         Page<PIMTITLECATALOGUE> domains = pimtitlecatalogueService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimtitlecatalogueMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

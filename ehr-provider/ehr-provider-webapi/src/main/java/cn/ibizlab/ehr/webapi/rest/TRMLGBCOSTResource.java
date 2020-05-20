@@ -136,7 +136,6 @@ public class TRMLGBCOSTResource {
         TRMLGBCOSTDTO dto = trmlgbcostMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"TRMLGBCOST" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmlgbcosts/batch")
@@ -161,7 +160,6 @@ public class TRMLGBCOSTResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"TRMLGBCOST" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/trmlgbcosts/fetchdefault")
 	public ResponseEntity<List<TRMLGBCOSTDTO>> fetchDefault(TRMLGBCOSTSearchContext context) {
@@ -174,10 +172,9 @@ public class TRMLGBCOSTResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"TRMLGBCOST" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/trmlgbcosts/searchdefault")
-	public ResponseEntity<Page<TRMLGBCOSTDTO>> searchDefault(TRMLGBCOSTSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/trmlgbcosts/searchdefault")
+	public ResponseEntity<Page<TRMLGBCOSTDTO>> searchDefault(@RequestBody TRMLGBCOSTSearchContext context) {
         Page<TRMLGBCOST> domains = trmlgbcostService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(trmlgbcostMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

@@ -113,7 +113,6 @@ public class PIMLABOURCAMPANYResource {
         PIMLABOURCAMPANYDTO dto = pimlabourcampanyMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"PIMLABOURCAMPANY" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimlabourcampanies/batch")
@@ -161,7 +160,6 @@ public class PIMLABOURCAMPANYResource {
         return ResponseEntity.status(HttpStatus.OK).body(pimlabourcampanyMapping.toDto(pimlabourcampanyService.getDraft(new PIMLABOURCAMPANY())));
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'AuthLab',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchAuthLab", tags = {"PIMLABOURCAMPANY" } ,notes = "fetchAuthLab")
     @RequestMapping(method= RequestMethod.GET , value="/pimlabourcampanies/fetchauthlab")
 	public ResponseEntity<List<PIMLABOURCAMPANYDTO>> fetchAuthLab(PIMLABOURCAMPANYSearchContext context) {
@@ -174,16 +172,14 @@ public class PIMLABOURCAMPANYResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'AuthLab',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchAuthLab", tags = {"PIMLABOURCAMPANY" } ,notes = "searchAuthLab")
-    @RequestMapping(method= RequestMethod.GET , value="/pimlabourcampanies/searchauthlab")
-	public ResponseEntity<Page<PIMLABOURCAMPANYDTO>> searchAuthLab(PIMLABOURCAMPANYSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimlabourcampanies/searchauthlab")
+	public ResponseEntity<Page<PIMLABOURCAMPANYDTO>> searchAuthLab(@RequestBody PIMLABOURCAMPANYSearchContext context) {
         Page<PIMLABOURCAMPANY> domains = pimlabourcampanyService.searchAuthLab(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimlabourcampanyMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PIMLABOURCAMPANY" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimlabourcampanies/fetchdefault")
 	public ResponseEntity<List<PIMLABOURCAMPANYDTO>> fetchDefault(PIMLABOURCAMPANYSearchContext context) {
@@ -196,10 +192,9 @@ public class PIMLABOURCAMPANYResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PIMLABOURCAMPANY" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/pimlabourcampanies/searchdefault")
-	public ResponseEntity<Page<PIMLABOURCAMPANYDTO>> searchDefault(PIMLABOURCAMPANYSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimlabourcampanies/searchdefault")
+	public ResponseEntity<Page<PIMLABOURCAMPANYDTO>> searchDefault(@RequestBody PIMLABOURCAMPANYSearchContext context) {
         Page<PIMLABOURCAMPANY> domains = pimlabourcampanyService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimlabourcampanyMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

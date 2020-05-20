@@ -127,7 +127,6 @@ public class DEDataChg2Resource {
         DEDataChg2DTO dto = dedatachg2Mapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"DEDataChg2" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/dedatachg2s/batch")
@@ -161,7 +160,6 @@ public class DEDataChg2Resource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"DEDataChg2" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/dedatachg2s/fetchdefault")
 	public ResponseEntity<List<DEDataChg2DTO>> fetchDefault(DEDataChg2SearchContext context) {
@@ -174,10 +172,9 @@ public class DEDataChg2Resource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"DEDataChg2" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/dedatachg2s/searchdefault")
-	public ResponseEntity<Page<DEDataChg2DTO>> searchDefault(DEDataChg2SearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/dedatachg2s/searchdefault")
+	public ResponseEntity<Page<DEDataChg2DTO>> searchDefault(@RequestBody DEDataChg2SearchContext context) {
         Page<DEDataChg2> domains = dedatachg2Service.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(dedatachg2Mapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

@@ -81,7 +81,6 @@ public class PCMPROFILESZYJTJResource {
         PCMPROFILESZYJTJDTO dto = pcmprofileszyjtjMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"PCMPROFILESZYJTJ" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofileszyjtjs/batch")
@@ -161,7 +160,6 @@ public class PCMPROFILESZYJTJResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PCMPROFILESZYJTJ" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pcmprofileszyjtjs/fetchdefault")
 	public ResponseEntity<List<PCMPROFILESZYJTJDTO>> fetchDefault(PCMPROFILESZYJTJSearchContext context) {
@@ -174,16 +172,14 @@ public class PCMPROFILESZYJTJResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PCMPROFILESZYJTJ" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/pcmprofileszyjtjs/searchdefault")
-	public ResponseEntity<Page<PCMPROFILESZYJTJDTO>> searchDefault(PCMPROFILESZYJTJSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pcmprofileszyjtjs/searchdefault")
+	public ResponseEntity<Page<PCMPROFILESZYJTJDTO>> searchDefault(@RequestBody PCMPROFILESZYJTJSearchContext context) {
         Page<PCMPROFILESZYJTJ> domains = pcmprofileszyjtjService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pcmprofileszyjtjMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'YGLX',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch通过申报类型过滤", tags = {"PCMPROFILESZYJTJ" } ,notes = "fetch通过申报类型过滤")
     @RequestMapping(method= RequestMethod.GET , value="/pcmprofileszyjtjs/fetchyglx")
 	public ResponseEntity<List<PCMPROFILESZYJTJDTO>> fetchYGLX(PCMPROFILESZYJTJSearchContext context) {
@@ -196,10 +192,9 @@ public class PCMPROFILESZYJTJResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'YGLX',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search通过申报类型过滤", tags = {"PCMPROFILESZYJTJ" } ,notes = "search通过申报类型过滤")
-    @RequestMapping(method= RequestMethod.GET , value="/pcmprofileszyjtjs/searchyglx")
-	public ResponseEntity<Page<PCMPROFILESZYJTJDTO>> searchYGLX(PCMPROFILESZYJTJSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pcmprofileszyjtjs/searchyglx")
+	public ResponseEntity<Page<PCMPROFILESZYJTJDTO>> searchYGLX(@RequestBody PCMPROFILESZYJTJSearchContext context) {
         Page<PCMPROFILESZYJTJ> domains = pcmprofileszyjtjService.searchYGLX(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pcmprofileszyjtjMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

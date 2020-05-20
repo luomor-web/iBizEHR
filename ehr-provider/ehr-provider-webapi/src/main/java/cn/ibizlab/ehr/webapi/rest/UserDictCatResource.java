@@ -152,7 +152,6 @@ public class UserDictCatResource {
         UserDictCatDTO dto = userdictcatMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"UserDictCat" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/userdictcats/batch")
@@ -161,7 +160,6 @@ public class UserDictCatResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"UserDictCat" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/userdictcats/fetchdefault")
 	public ResponseEntity<List<UserDictCatDTO>> fetchDefault(UserDictCatSearchContext context) {
@@ -174,10 +172,9 @@ public class UserDictCatResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"UserDictCat" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/userdictcats/searchdefault")
-	public ResponseEntity<Page<UserDictCatDTO>> searchDefault(UserDictCatSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/userdictcats/searchdefault")
+	public ResponseEntity<Page<UserDictCatDTO>> searchDefault(@RequestBody UserDictCatSearchContext context) {
         Page<UserDictCat> domains = userdictcatService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(userdictcatMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

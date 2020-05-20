@@ -81,7 +81,6 @@ public class ATTENDENCETYPEResource {
         ATTENDENCETYPEDTO dto = attendencetypeMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"ATTENDENCETYPE" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/attendencetypes/batch")
@@ -161,7 +160,6 @@ public class ATTENDENCETYPEResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"ATTENDENCETYPE" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/attendencetypes/fetchdefault")
 	public ResponseEntity<List<ATTENDENCETYPEDTO>> fetchDefault(ATTENDENCETYPESearchContext context) {
@@ -174,10 +172,9 @@ public class ATTENDENCETYPEResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"ATTENDENCETYPE" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/attendencetypes/searchdefault")
-	public ResponseEntity<Page<ATTENDENCETYPEDTO>> searchDefault(ATTENDENCETYPESearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/attendencetypes/searchdefault")
+	public ResponseEntity<Page<ATTENDENCETYPEDTO>> searchDefault(@RequestBody ATTENDENCETYPESearchContext context) {
         Page<ATTENDENCETYPE> domains = attendencetypeService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(attendencetypeMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

@@ -152,7 +152,6 @@ public class UserGroupDetailResource {
         UserGroupDetailDTO dto = usergroupdetailMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"UserGroupDetail" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/usergroupdetails/batch")
@@ -161,7 +160,6 @@ public class UserGroupDetailResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"UserGroupDetail" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/usergroupdetails/fetchdefault")
 	public ResponseEntity<List<UserGroupDetailDTO>> fetchDefault(UserGroupDetailSearchContext context) {
@@ -174,10 +172,9 @@ public class UserGroupDetailResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"UserGroupDetail" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/usergroupdetails/searchdefault")
-	public ResponseEntity<Page<UserGroupDetailDTO>> searchDefault(UserGroupDetailSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/usergroupdetails/searchdefault")
+	public ResponseEntity<Page<UserGroupDetailDTO>> searchDefault(@RequestBody UserGroupDetailSearchContext context) {
         Page<UserGroupDetail> domains = usergroupdetailService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(usergroupdetailMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

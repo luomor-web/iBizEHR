@@ -100,7 +100,6 @@ public class PIMOUTPUTResource {
         PIMOUTPUTDTO dto = pimoutputMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"PIMOUTPUT" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimoutputs/batch")
@@ -161,7 +160,6 @@ public class PIMOUTPUTResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'CurOrg',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch当前组织范围", tags = {"PIMOUTPUT" } ,notes = "fetch当前组织范围")
     @RequestMapping(method= RequestMethod.GET , value="/pimoutputs/fetchcurorg")
 	public ResponseEntity<List<PIMOUTPUTDTO>> fetchCurOrg(PIMOUTPUTSearchContext context) {
@@ -174,16 +172,14 @@ public class PIMOUTPUTResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'CurOrg',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search当前组织范围", tags = {"PIMOUTPUT" } ,notes = "search当前组织范围")
-    @RequestMapping(method= RequestMethod.GET , value="/pimoutputs/searchcurorg")
-	public ResponseEntity<Page<PIMOUTPUTDTO>> searchCurOrg(PIMOUTPUTSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimoutputs/searchcurorg")
+	public ResponseEntity<Page<PIMOUTPUTDTO>> searchCurOrg(@RequestBody PIMOUTPUTSearchContext context) {
         Page<PIMOUTPUT> domains = pimoutputService.searchCurOrg(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimoutputMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PIMOUTPUT" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimoutputs/fetchdefault")
 	public ResponseEntity<List<PIMOUTPUTDTO>> fetchDefault(PIMOUTPUTSearchContext context) {
@@ -196,16 +192,14 @@ public class PIMOUTPUTResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PIMOUTPUT" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/pimoutputs/searchdefault")
-	public ResponseEntity<Page<PIMOUTPUTDTO>> searchDefault(PIMOUTPUTSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimoutputs/searchdefault")
+	public ResponseEntity<Page<PIMOUTPUTDTO>> searchDefault(@RequestBody PIMOUTPUTSearchContext context) {
         Page<PIMOUTPUT> domains = pimoutputService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimoutputMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'REP_OUTPUT',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch人均产值", tags = {"PIMOUTPUT" } ,notes = "fetch人均产值")
     @RequestMapping(method= RequestMethod.GET , value="/pimoutputs/fetchrep_output")
 	public ResponseEntity<List<HashMap>> fetchREP_OUTPUT(PIMOUTPUTSearchContext context) {
@@ -217,10 +211,9 @@ public class PIMOUTPUTResource {
                 .body(domains.getContent());
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'REP_OUTPUT',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search人均产值", tags = {"PIMOUTPUT" } ,notes = "search人均产值")
-    @RequestMapping(method= RequestMethod.GET , value="/pimoutputs/searchrep_output")
-	public ResponseEntity<Page<HashMap>> searchREP_OUTPUT(PIMOUTPUTSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimoutputs/searchrep_output")
+	public ResponseEntity<Page<HashMap>> searchREP_OUTPUT(@RequestBody PIMOUTPUTSearchContext context) {
         Page<HashMap> domains = pimoutputService.searchREP_OUTPUT(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(domains.getContent(), context.getPageable(), domains.getTotalElements()));

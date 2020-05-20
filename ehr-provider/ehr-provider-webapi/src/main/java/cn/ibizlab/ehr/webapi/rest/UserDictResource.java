@@ -92,7 +92,6 @@ public class UserDictResource {
         UserDictDTO dto = userdictMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"UserDict" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/userdicts/batch")
@@ -174,7 +173,6 @@ public class UserDictResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"UserDict" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/userdicts/fetchdefault")
 	public ResponseEntity<List<UserDictDTO>> fetchDefault(UserDictSearchContext context) {
@@ -187,10 +185,9 @@ public class UserDictResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"UserDict" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/userdicts/searchdefault")
-	public ResponseEntity<Page<UserDictDTO>> searchDefault(UserDictSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/userdicts/searchdefault")
+	public ResponseEntity<Page<UserDictDTO>> searchDefault(@RequestBody UserDictSearchContext context) {
         Page<UserDict> domains = userdictService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(userdictMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

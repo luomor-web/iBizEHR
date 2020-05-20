@@ -134,7 +134,6 @@ public class PCMGXMLResource {
         PCMGXMLDTO dto = pcmgxmlMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"PCMGXML" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmgxmls/batch")
@@ -161,7 +160,6 @@ public class PCMGXMLResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PCMGXML" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pcmgxmls/fetchdefault")
 	public ResponseEntity<List<PCMGXMLDTO>> fetchDefault(PCMGXMLSearchContext context) {
@@ -174,16 +172,14 @@ public class PCMGXMLResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PCMGXML" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/pcmgxmls/searchdefault")
-	public ResponseEntity<Page<PCMGXMLDTO>> searchDefault(PCMGXMLSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pcmgxmls/searchdefault")
+	public ResponseEntity<Page<PCMGXMLDTO>> searchDefault(@RequestBody PCMGXMLSearchContext context) {
         Page<PCMGXML> domains = pcmgxmlService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pcmgxmlMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'CurND',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch当前年度高校名录", tags = {"PCMGXML" } ,notes = "fetch当前年度高校名录")
     @RequestMapping(method= RequestMethod.GET , value="/pcmgxmls/fetchcurnd")
 	public ResponseEntity<List<PCMGXMLDTO>> fetchCurND(PCMGXMLSearchContext context) {
@@ -196,10 +192,9 @@ public class PCMGXMLResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'CurND',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search当前年度高校名录", tags = {"PCMGXML" } ,notes = "search当前年度高校名录")
-    @RequestMapping(method= RequestMethod.GET , value="/pcmgxmls/searchcurnd")
-	public ResponseEntity<Page<PCMGXMLDTO>> searchCurND(PCMGXMLSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pcmgxmls/searchcurnd")
+	public ResponseEntity<Page<PCMGXMLDTO>> searchCurND(@RequestBody PCMGXMLSearchContext context) {
         Page<PCMGXML> domains = pcmgxmlService.searchCurND(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pcmgxmlMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

@@ -65,7 +65,6 @@ public class TRMZZOBMResource {
         TRMZZOBMDTO dto = trmzzobmMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"TRMZZOBM" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmzzobms/batch")
@@ -161,7 +160,6 @@ public class TRMZZOBMResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"TRMZZOBM" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/trmzzobms/fetchdefault")
 	public ResponseEntity<List<TRMZZOBMDTO>> fetchDefault(TRMZZOBMSearchContext context) {
@@ -174,10 +172,9 @@ public class TRMZZOBMResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"TRMZZOBM" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/trmzzobms/searchdefault")
-	public ResponseEntity<Page<TRMZZOBMDTO>> searchDefault(TRMZZOBMSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/trmzzobms/searchdefault")
+	public ResponseEntity<Page<TRMZZOBMDTO>> searchDefault(@RequestBody TRMZZOBMSearchContext context) {
         Page<TRMZZOBM> domains = trmzzobmService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(trmzzobmMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

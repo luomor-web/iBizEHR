@@ -65,7 +65,6 @@ public class LoginLogResource {
         LoginLogDTO dto = loginlogMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"LoginLog" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/loginlogs/batch")
@@ -161,7 +160,6 @@ public class LoginLogResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"LoginLog" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/loginlogs/fetchdefault")
 	public ResponseEntity<List<LoginLogDTO>> fetchDefault(LoginLogSearchContext context) {
@@ -174,10 +172,9 @@ public class LoginLogResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"LoginLog" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/loginlogs/searchdefault")
-	public ResponseEntity<Page<LoginLogDTO>> searchDefault(LoginLogSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/loginlogs/searchdefault")
+	public ResponseEntity<Page<LoginLogDTO>> searchDefault(@RequestBody LoginLogSearchContext context) {
         Page<LoginLog> domains = loginlogService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(loginlogMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

@@ -130,7 +130,6 @@ public class DataEntityResource {
         DataEntityDTO dto = dataentityMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"DataEntity" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/dataentities/batch")
@@ -187,7 +186,6 @@ public class DataEntityResource {
         return  ResponseEntity.status(HttpStatus.OK).body(dataentityService.checkKey(dataentityMapping.toDomain(dataentitydto)));
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"DataEntity" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/dataentities/fetchdefault")
 	public ResponseEntity<List<DataEntityDTO>> fetchDefault(DataEntitySearchContext context) {
@@ -200,10 +198,9 @@ public class DataEntityResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"DataEntity" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/dataentities/searchdefault")
-	public ResponseEntity<Page<DataEntityDTO>> searchDefault(DataEntitySearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/dataentities/searchdefault")
+	public ResponseEntity<Page<DataEntityDTO>> searchDefault(@RequestBody DataEntitySearchContext context) {
         Page<DataEntity> domains = dataentityService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(dataentityMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

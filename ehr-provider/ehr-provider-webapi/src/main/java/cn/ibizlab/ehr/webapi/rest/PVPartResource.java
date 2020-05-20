@@ -152,7 +152,6 @@ public class PVPartResource {
         PVPartDTO dto = pvpartMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"PVPart" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pvparts/batch")
@@ -161,7 +160,6 @@ public class PVPartResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PVPart" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pvparts/fetchdefault")
 	public ResponseEntity<List<PVPartDTO>> fetchDefault(PVPartSearchContext context) {
@@ -174,16 +172,14 @@ public class PVPartResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PVPart" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/pvparts/searchdefault")
-	public ResponseEntity<Page<PVPartDTO>> searchDefault(PVPartSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pvparts/searchdefault")
+	public ResponseEntity<Page<PVPartDTO>> searchDefault(@RequestBody PVPartSearchContext context) {
         Page<PVPart> domains = pvpartService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pvpartMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'CurPV',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch当前门户视图", tags = {"PVPart" } ,notes = "fetch当前门户视图")
     @RequestMapping(method= RequestMethod.GET , value="/pvparts/fetchcurpv")
 	public ResponseEntity<List<PVPartDTO>> fetchCurPV(PVPartSearchContext context) {
@@ -196,10 +192,9 @@ public class PVPartResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'CurPV',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search当前门户视图", tags = {"PVPart" } ,notes = "search当前门户视图")
-    @RequestMapping(method= RequestMethod.GET , value="/pvparts/searchcurpv")
-	public ResponseEntity<Page<PVPartDTO>> searchCurPV(PVPartSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pvparts/searchcurpv")
+	public ResponseEntity<Page<PVPartDTO>> searchCurPV(@RequestBody PVPartSearchContext context) {
         Page<PVPart> domains = pvpartService.searchCurPV(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pvpartMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

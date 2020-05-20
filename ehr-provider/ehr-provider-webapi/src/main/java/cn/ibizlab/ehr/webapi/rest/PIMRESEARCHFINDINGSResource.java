@@ -152,7 +152,6 @@ public class PIMRESEARCHFINDINGSResource {
         PIMRESEARCHFINDINGSDTO dto = pimresearchfindingsMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"PIMRESEARCHFINDINGS" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimresearchfindings/batch")
@@ -161,7 +160,6 @@ public class PIMRESEARCHFINDINGSResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PIMRESEARCHFINDINGS" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimresearchfindings/fetchdefault")
 	public ResponseEntity<List<PIMRESEARCHFINDINGSDTO>> fetchDefault(PIMRESEARCHFINDINGSSearchContext context) {
@@ -174,16 +172,14 @@ public class PIMRESEARCHFINDINGSResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PIMRESEARCHFINDINGS" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/pimresearchfindings/searchdefault")
-	public ResponseEntity<Page<PIMRESEARCHFINDINGSDTO>> searchDefault(PIMRESEARCHFINDINGSSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimresearchfindings/searchdefault")
+	public ResponseEntity<Page<PIMRESEARCHFINDINGSDTO>> searchDefault(@RequestBody PIMRESEARCHFINDINGSSearchContext context) {
         Page<PIMRESEARCHFINDINGS> domains = pimresearchfindingsService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimresearchfindingsMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'JLSSGLY',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch记录所属（管理员）", tags = {"PIMRESEARCHFINDINGS" } ,notes = "fetch记录所属（管理员）")
     @RequestMapping(method= RequestMethod.GET , value="/pimresearchfindings/fetchjlssgly")
 	public ResponseEntity<List<PIMRESEARCHFINDINGSDTO>> fetchJLSSGLY(PIMRESEARCHFINDINGSSearchContext context) {
@@ -196,16 +192,14 @@ public class PIMRESEARCHFINDINGSResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'JLSSGLY',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search记录所属（管理员）", tags = {"PIMRESEARCHFINDINGS" } ,notes = "search记录所属（管理员）")
-    @RequestMapping(method= RequestMethod.GET , value="/pimresearchfindings/searchjlssgly")
-	public ResponseEntity<Page<PIMRESEARCHFINDINGSDTO>> searchJLSSGLY(PIMRESEARCHFINDINGSSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimresearchfindings/searchjlssgly")
+	public ResponseEntity<Page<PIMRESEARCHFINDINGSDTO>> searchJLSSGLY(@RequestBody PIMRESEARCHFINDINGSSearchContext context) {
         Page<PIMRESEARCHFINDINGS> domains = pimresearchfindingsService.searchJLSSGLY(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimresearchfindingsMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'JLSSGR',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch记录所属（个人）", tags = {"PIMRESEARCHFINDINGS" } ,notes = "fetch记录所属（个人）")
     @RequestMapping(method= RequestMethod.GET , value="/pimresearchfindings/fetchjlssgr")
 	public ResponseEntity<List<PIMRESEARCHFINDINGSDTO>> fetchJLSSGR(PIMRESEARCHFINDINGSSearchContext context) {
@@ -218,10 +212,9 @@ public class PIMRESEARCHFINDINGSResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'JLSSGR',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search记录所属（个人）", tags = {"PIMRESEARCHFINDINGS" } ,notes = "search记录所属（个人）")
-    @RequestMapping(method= RequestMethod.GET , value="/pimresearchfindings/searchjlssgr")
-	public ResponseEntity<Page<PIMRESEARCHFINDINGSDTO>> searchJLSSGR(PIMRESEARCHFINDINGSSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimresearchfindings/searchjlssgr")
+	public ResponseEntity<Page<PIMRESEARCHFINDINGSDTO>> searchJLSSGR(@RequestBody PIMRESEARCHFINDINGSSearchContext context) {
         Page<PIMRESEARCHFINDINGS> domains = pimresearchfindingsService.searchJLSSGR(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimresearchfindingsMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
@@ -343,8 +336,8 @@ public class PIMRESEARCHFINDINGSResource {
 	}
 
 	@ApiOperation(value = "searchDEFAULTByPIMPERSON", tags = {"PIMRESEARCHFINDINGS" } ,notes = "searchDEFAULTByPIMPERSON")
-    @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/pimresearchfindings/searchdefault")
-	public ResponseEntity<Page<PIMRESEARCHFINDINGSDTO>> searchPIMRESEARCHFINDINGSDefaultByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id,PIMRESEARCHFINDINGSSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/pimresearchfindings/searchdefault")
+	public ResponseEntity<Page<PIMRESEARCHFINDINGSDTO>> searchPIMRESEARCHFINDINGSDefaultByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMRESEARCHFINDINGSSearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
         Page<PIMRESEARCHFINDINGS> domains = pimresearchfindingsService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
@@ -365,8 +358,8 @@ public class PIMRESEARCHFINDINGSResource {
 	}
 
 	@ApiOperation(value = "search记录所属（管理员）ByPIMPERSON", tags = {"PIMRESEARCHFINDINGS" } ,notes = "search记录所属（管理员）ByPIMPERSON")
-    @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/pimresearchfindings/searchjlssgly")
-	public ResponseEntity<Page<PIMRESEARCHFINDINGSDTO>> searchPIMRESEARCHFINDINGSJLSSGLYByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id,PIMRESEARCHFINDINGSSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/pimresearchfindings/searchjlssgly")
+	public ResponseEntity<Page<PIMRESEARCHFINDINGSDTO>> searchPIMRESEARCHFINDINGSJLSSGLYByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMRESEARCHFINDINGSSearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
         Page<PIMRESEARCHFINDINGS> domains = pimresearchfindingsService.searchJLSSGLY(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
@@ -387,8 +380,8 @@ public class PIMRESEARCHFINDINGSResource {
 	}
 
 	@ApiOperation(value = "search记录所属（个人）ByPIMPERSON", tags = {"PIMRESEARCHFINDINGS" } ,notes = "search记录所属（个人）ByPIMPERSON")
-    @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/pimresearchfindings/searchjlssgr")
-	public ResponseEntity<Page<PIMRESEARCHFINDINGSDTO>> searchPIMRESEARCHFINDINGSJLSSGRByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id,PIMRESEARCHFINDINGSSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/pimresearchfindings/searchjlssgr")
+	public ResponseEntity<Page<PIMRESEARCHFINDINGSDTO>> searchPIMRESEARCHFINDINGSJLSSGRByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMRESEARCHFINDINGSSearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
         Page<PIMRESEARCHFINDINGS> domains = pimresearchfindingsService.searchJLSSGR(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)

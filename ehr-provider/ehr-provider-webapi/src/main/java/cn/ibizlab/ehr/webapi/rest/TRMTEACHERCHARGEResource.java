@@ -134,7 +134,6 @@ public class TRMTEACHERCHARGEResource {
         TRMTEACHERCHARGEDTO dto = trmteacherchargeMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"TRMTEACHERCHARGE" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmteachercharges/batch")
@@ -161,7 +160,6 @@ public class TRMTEACHERCHARGEResource {
         return  ResponseEntity.status(HttpStatus.OK).body(trmteacherchargeService.checkKey(trmteacherchargeMapping.toDomain(trmteacherchargedto)));
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"TRMTEACHERCHARGE" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/trmteachercharges/fetchdefault")
 	public ResponseEntity<List<TRMTEACHERCHARGEDTO>> fetchDefault(TRMTEACHERCHARGESearchContext context) {
@@ -174,10 +172,9 @@ public class TRMTEACHERCHARGEResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"TRMTEACHERCHARGE" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/trmteachercharges/searchdefault")
-	public ResponseEntity<Page<TRMTEACHERCHARGEDTO>> searchDefault(TRMTEACHERCHARGESearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/trmteachercharges/searchdefault")
+	public ResponseEntity<Page<TRMTEACHERCHARGEDTO>> searchDefault(@RequestBody TRMTEACHERCHARGESearchContext context) {
         Page<TRMTEACHERCHARGE> domains = trmteacherchargeService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(trmteacherchargeMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

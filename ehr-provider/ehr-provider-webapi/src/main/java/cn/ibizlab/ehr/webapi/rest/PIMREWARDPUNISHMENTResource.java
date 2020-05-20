@@ -129,7 +129,6 @@ public class PIMREWARDPUNISHMENTResource {
         PIMREWARDPUNISHMENTDTO dto = pimrewardpunishmentMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"PIMREWARDPUNISHMENT" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimrewardpunishments/batch")
@@ -161,7 +160,6 @@ public class PIMREWARDPUNISHMENTResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'ZIZHU',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch自助(奖惩信息)", tags = {"PIMREWARDPUNISHMENT" } ,notes = "fetch自助(奖惩信息)")
     @RequestMapping(method= RequestMethod.GET , value="/pimrewardpunishments/fetchzizhu")
 	public ResponseEntity<List<PIMREWARDPUNISHMENTDTO>> fetchZIZHU(PIMREWARDPUNISHMENTSearchContext context) {
@@ -174,16 +172,14 @@ public class PIMREWARDPUNISHMENTResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'ZIZHU',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search自助(奖惩信息)", tags = {"PIMREWARDPUNISHMENT" } ,notes = "search自助(奖惩信息)")
-    @RequestMapping(method= RequestMethod.GET , value="/pimrewardpunishments/searchzizhu")
-	public ResponseEntity<Page<PIMREWARDPUNISHMENTDTO>> searchZIZHU(PIMREWARDPUNISHMENTSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimrewardpunishments/searchzizhu")
+	public ResponseEntity<Page<PIMREWARDPUNISHMENTDTO>> searchZIZHU(@RequestBody PIMREWARDPUNISHMENTSearchContext context) {
         Page<PIMREWARDPUNISHMENT> domains = pimrewardpunishmentService.searchZIZHU(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimrewardpunishmentMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'HONORARY',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch公司及以上荣誉", tags = {"PIMREWARDPUNISHMENT" } ,notes = "fetch公司及以上荣誉")
     @RequestMapping(method= RequestMethod.GET , value="/pimrewardpunishments/fetchhonorary")
 	public ResponseEntity<List<PIMREWARDPUNISHMENTDTO>> fetchHONORARY(PIMREWARDPUNISHMENTSearchContext context) {
@@ -196,16 +192,14 @@ public class PIMREWARDPUNISHMENTResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'HONORARY',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search公司及以上荣誉", tags = {"PIMREWARDPUNISHMENT" } ,notes = "search公司及以上荣誉")
-    @RequestMapping(method= RequestMethod.GET , value="/pimrewardpunishments/searchhonorary")
-	public ResponseEntity<Page<PIMREWARDPUNISHMENTDTO>> searchHONORARY(PIMREWARDPUNISHMENTSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimrewardpunishments/searchhonorary")
+	public ResponseEntity<Page<PIMREWARDPUNISHMENTDTO>> searchHONORARY(@RequestBody PIMREWARDPUNISHMENTSearchContext context) {
         Page<PIMREWARDPUNISHMENT> domains = pimrewardpunishmentService.searchHONORARY(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimrewardpunishmentMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PIMREWARDPUNISHMENT" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimrewardpunishments/fetchdefault")
 	public ResponseEntity<List<PIMREWARDPUNISHMENTDTO>> fetchDefault(PIMREWARDPUNISHMENTSearchContext context) {
@@ -218,16 +212,14 @@ public class PIMREWARDPUNISHMENTResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PIMREWARDPUNISHMENT" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/pimrewardpunishments/searchdefault")
-	public ResponseEntity<Page<PIMREWARDPUNISHMENTDTO>> searchDefault(PIMREWARDPUNISHMENTSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimrewardpunishments/searchdefault")
+	public ResponseEntity<Page<PIMREWARDPUNISHMENTDTO>> searchDefault(@RequestBody PIMREWARDPUNISHMENTSearchContext context) {
         Page<PIMREWARDPUNISHMENT> domains = pimrewardpunishmentService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimrewardpunishmentMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'JLSS',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch记录所属", tags = {"PIMREWARDPUNISHMENT" } ,notes = "fetch记录所属")
     @RequestMapping(method= RequestMethod.GET , value="/pimrewardpunishments/fetchjlss")
 	public ResponseEntity<List<PIMREWARDPUNISHMENTDTO>> fetchJLSS(PIMREWARDPUNISHMENTSearchContext context) {
@@ -240,10 +232,9 @@ public class PIMREWARDPUNISHMENTResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'JLSS',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search记录所属", tags = {"PIMREWARDPUNISHMENT" } ,notes = "search记录所属")
-    @RequestMapping(method= RequestMethod.GET , value="/pimrewardpunishments/searchjlss")
-	public ResponseEntity<Page<PIMREWARDPUNISHMENTDTO>> searchJLSS(PIMREWARDPUNISHMENTSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimrewardpunishments/searchjlss")
+	public ResponseEntity<Page<PIMREWARDPUNISHMENTDTO>> searchJLSS(@RequestBody PIMREWARDPUNISHMENTSearchContext context) {
         Page<PIMREWARDPUNISHMENT> domains = pimrewardpunishmentService.searchJLSS(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimrewardpunishmentMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
@@ -365,8 +356,8 @@ public class PIMREWARDPUNISHMENTResource {
 	}
 
 	@ApiOperation(value = "search自助(奖惩信息)ByPIMPERSON", tags = {"PIMREWARDPUNISHMENT" } ,notes = "search自助(奖惩信息)ByPIMPERSON")
-    @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/pimrewardpunishments/searchzizhu")
-	public ResponseEntity<Page<PIMREWARDPUNISHMENTDTO>> searchPIMREWARDPUNISHMENTZIZHUByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id,PIMREWARDPUNISHMENTSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/pimrewardpunishments/searchzizhu")
+	public ResponseEntity<Page<PIMREWARDPUNISHMENTDTO>> searchPIMREWARDPUNISHMENTZIZHUByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMREWARDPUNISHMENTSearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
         Page<PIMREWARDPUNISHMENT> domains = pimrewardpunishmentService.searchZIZHU(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
@@ -387,8 +378,8 @@ public class PIMREWARDPUNISHMENTResource {
 	}
 
 	@ApiOperation(value = "search公司及以上荣誉ByPIMPERSON", tags = {"PIMREWARDPUNISHMENT" } ,notes = "search公司及以上荣誉ByPIMPERSON")
-    @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/pimrewardpunishments/searchhonorary")
-	public ResponseEntity<Page<PIMREWARDPUNISHMENTDTO>> searchPIMREWARDPUNISHMENTHONORARYByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id,PIMREWARDPUNISHMENTSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/pimrewardpunishments/searchhonorary")
+	public ResponseEntity<Page<PIMREWARDPUNISHMENTDTO>> searchPIMREWARDPUNISHMENTHONORARYByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMREWARDPUNISHMENTSearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
         Page<PIMREWARDPUNISHMENT> domains = pimrewardpunishmentService.searchHONORARY(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
@@ -409,8 +400,8 @@ public class PIMREWARDPUNISHMENTResource {
 	}
 
 	@ApiOperation(value = "searchDEFAULTByPIMPERSON", tags = {"PIMREWARDPUNISHMENT" } ,notes = "searchDEFAULTByPIMPERSON")
-    @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/pimrewardpunishments/searchdefault")
-	public ResponseEntity<Page<PIMREWARDPUNISHMENTDTO>> searchPIMREWARDPUNISHMENTDefaultByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id,PIMREWARDPUNISHMENTSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/pimrewardpunishments/searchdefault")
+	public ResponseEntity<Page<PIMREWARDPUNISHMENTDTO>> searchPIMREWARDPUNISHMENTDefaultByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMREWARDPUNISHMENTSearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
         Page<PIMREWARDPUNISHMENT> domains = pimrewardpunishmentService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
@@ -431,8 +422,8 @@ public class PIMREWARDPUNISHMENTResource {
 	}
 
 	@ApiOperation(value = "search记录所属ByPIMPERSON", tags = {"PIMREWARDPUNISHMENT" } ,notes = "search记录所属ByPIMPERSON")
-    @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/pimrewardpunishments/searchjlss")
-	public ResponseEntity<Page<PIMREWARDPUNISHMENTDTO>> searchPIMREWARDPUNISHMENTJLSSByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id,PIMREWARDPUNISHMENTSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/pimrewardpunishments/searchjlss")
+	public ResponseEntity<Page<PIMREWARDPUNISHMENTDTO>> searchPIMREWARDPUNISHMENTJLSSByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMREWARDPUNISHMENTSearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
         Page<PIMREWARDPUNISHMENT> domains = pimrewardpunishmentService.searchJLSS(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)

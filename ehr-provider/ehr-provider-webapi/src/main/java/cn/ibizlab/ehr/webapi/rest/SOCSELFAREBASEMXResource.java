@@ -113,7 +113,6 @@ public class SOCSELFAREBASEMXResource {
         SOCSELFAREBASEMXDTO dto = socselfarebasemxMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"SOCSELFAREBASEMX" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/socselfarebasemxes/batch")
@@ -161,7 +160,6 @@ public class SOCSELFAREBASEMXResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"SOCSELFAREBASEMX" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/socselfarebasemxes/fetchdefault")
 	public ResponseEntity<List<SOCSELFAREBASEMXDTO>> fetchDefault(SOCSELFAREBASEMXSearchContext context) {
@@ -174,10 +172,9 @@ public class SOCSELFAREBASEMXResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"SOCSELFAREBASEMX" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/socselfarebasemxes/searchdefault")
-	public ResponseEntity<Page<SOCSELFAREBASEMXDTO>> searchDefault(SOCSELFAREBASEMXSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/socselfarebasemxes/searchdefault")
+	public ResponseEntity<Page<SOCSELFAREBASEMXDTO>> searchDefault(@RequestBody SOCSELFAREBASEMXSearchContext context) {
         Page<SOCSELFAREBASEMX> domains = socselfarebasemxService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(socselfarebasemxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

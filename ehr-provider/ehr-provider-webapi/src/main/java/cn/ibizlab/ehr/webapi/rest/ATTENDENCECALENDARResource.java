@@ -65,7 +65,6 @@ public class ATTENDENCECALENDARResource {
         ATTENDENCECALENDARDTO dto = attendencecalendarMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"ATTENDENCECALENDAR" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/attendencecalendars/batch")
@@ -161,7 +160,6 @@ public class ATTENDENCECALENDARResource {
         return ResponseEntity.status(HttpStatus.OK).body(attendencecalendarMapping.toDto(attendencecalendarService.getDraft(new ATTENDENCECALENDAR())));
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"ATTENDENCECALENDAR" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/attendencecalendars/fetchdefault")
 	public ResponseEntity<List<ATTENDENCECALENDARDTO>> fetchDefault(ATTENDENCECALENDARSearchContext context) {
@@ -174,10 +172,9 @@ public class ATTENDENCECALENDARResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"ATTENDENCECALENDAR" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/attendencecalendars/searchdefault")
-	public ResponseEntity<Page<ATTENDENCECALENDARDTO>> searchDefault(ATTENDENCECALENDARSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/attendencecalendars/searchdefault")
+	public ResponseEntity<Page<ATTENDENCECALENDARDTO>> searchDefault(@RequestBody ATTENDENCECALENDARSearchContext context) {
         Page<ATTENDENCECALENDAR> domains = attendencecalendarService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(attendencecalendarMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

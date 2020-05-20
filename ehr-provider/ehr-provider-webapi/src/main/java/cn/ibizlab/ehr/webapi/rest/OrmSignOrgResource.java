@@ -134,7 +134,6 @@ public class OrmSignOrgResource {
         OrmSignOrgDTO dto = ormsignorgMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"OrmSignOrg" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormsignorgs/batch")
@@ -161,7 +160,6 @@ public class OrmSignOrgResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'HTQDDW',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch合同签订单位", tags = {"OrmSignOrg" } ,notes = "fetch合同签订单位")
     @RequestMapping(method= RequestMethod.GET , value="/ormsignorgs/fetchhtqddw")
 	public ResponseEntity<List<OrmSignOrgDTO>> fetchHTQDDW(OrmSignOrgSearchContext context) {
@@ -174,16 +172,14 @@ public class OrmSignOrgResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'HTQDDW',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search合同签订单位", tags = {"OrmSignOrg" } ,notes = "search合同签订单位")
-    @RequestMapping(method= RequestMethod.GET , value="/ormsignorgs/searchhtqddw")
-	public ResponseEntity<Page<OrmSignOrgDTO>> searchHTQDDW(OrmSignOrgSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/ormsignorgs/searchhtqddw")
+	public ResponseEntity<Page<OrmSignOrgDTO>> searchHTQDDW(@RequestBody OrmSignOrgSearchContext context) {
         Page<OrmSignOrg> domains = ormsignorgService.searchHTQDDW(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(ormsignorgMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"OrmSignOrg" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/ormsignorgs/fetchdefault")
 	public ResponseEntity<List<OrmSignOrgDTO>> fetchDefault(OrmSignOrgSearchContext context) {
@@ -196,16 +192,14 @@ public class OrmSignOrgResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"OrmSignOrg" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/ormsignorgs/searchdefault")
-	public ResponseEntity<Page<OrmSignOrgDTO>> searchDefault(OrmSignOrgSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/ormsignorgs/searchdefault")
+	public ResponseEntity<Page<OrmSignOrgDTO>> searchDefault(@RequestBody OrmSignOrgSearchContext context) {
         Page<OrmSignOrg> domains = ormsignorgService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(ormsignorgMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'CKBDWDFRZT',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch证书注册单位", tags = {"OrmSignOrg" } ,notes = "fetch证书注册单位")
     @RequestMapping(method= RequestMethod.GET , value="/ormsignorgs/fetchckbdwdfrzt")
 	public ResponseEntity<List<OrmSignOrgDTO>> fetchCKBDWDFRZT(OrmSignOrgSearchContext context) {
@@ -218,10 +212,9 @@ public class OrmSignOrgResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'CKBDWDFRZT',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search证书注册单位", tags = {"OrmSignOrg" } ,notes = "search证书注册单位")
-    @RequestMapping(method= RequestMethod.GET , value="/ormsignorgs/searchckbdwdfrzt")
-	public ResponseEntity<Page<OrmSignOrgDTO>> searchCKBDWDFRZT(OrmSignOrgSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/ormsignorgs/searchckbdwdfrzt")
+	public ResponseEntity<Page<OrmSignOrgDTO>> searchCKBDWDFRZT(@RequestBody OrmSignOrgSearchContext context) {
         Page<OrmSignOrg> domains = ormsignorgService.searchCKBDWDFRZT(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(ormsignorgMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

@@ -183,7 +183,6 @@ public class VACLEAVEMANAGEResource {
         VACLEAVEMANAGEDTO dto = vacleavemanageMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"VACLEAVEMANAGE" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacleavemanages/batch")
@@ -226,7 +225,6 @@ public class VACLEAVEMANAGEResource {
         return ResponseEntity.status(HttpStatus.OK).body(vacleavemanagedto);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'FormType',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchFormType", tags = {"VACLEAVEMANAGE" } ,notes = "fetchFormType")
     @RequestMapping(method= RequestMethod.GET , value="/vacleavemanages/fetchformtype")
 	public ResponseEntity<List<VACLEAVEMANAGEDTO>> fetchFormType(VACLEAVEMANAGESearchContext context) {
@@ -239,16 +237,14 @@ public class VACLEAVEMANAGEResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'FormType',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchFormType", tags = {"VACLEAVEMANAGE" } ,notes = "searchFormType")
-    @RequestMapping(method= RequestMethod.GET , value="/vacleavemanages/searchformtype")
-	public ResponseEntity<Page<VACLEAVEMANAGEDTO>> searchFormType(VACLEAVEMANAGESearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/vacleavemanages/searchformtype")
+	public ResponseEntity<Page<VACLEAVEMANAGEDTO>> searchFormType(@RequestBody VACLEAVEMANAGESearchContext context) {
         Page<VACLEAVEMANAGE> domains = vacleavemanageService.searchFormType(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(vacleavemanageMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'GR',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch个人", tags = {"VACLEAVEMANAGE" } ,notes = "fetch个人")
     @RequestMapping(method= RequestMethod.GET , value="/vacleavemanages/fetchgr")
 	public ResponseEntity<List<VACLEAVEMANAGEDTO>> fetchGR(VACLEAVEMANAGESearchContext context) {
@@ -261,16 +257,14 @@ public class VACLEAVEMANAGEResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'GR',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search个人", tags = {"VACLEAVEMANAGE" } ,notes = "search个人")
-    @RequestMapping(method= RequestMethod.GET , value="/vacleavemanages/searchgr")
-	public ResponseEntity<Page<VACLEAVEMANAGEDTO>> searchGR(VACLEAVEMANAGESearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/vacleavemanages/searchgr")
+	public ResponseEntity<Page<VACLEAVEMANAGEDTO>> searchGR(@RequestBody VACLEAVEMANAGESearchContext context) {
         Page<VACLEAVEMANAGE> domains = vacleavemanageService.searchGR(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(vacleavemanageMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'MOBJLSS',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch记录所属（移动端）", tags = {"VACLEAVEMANAGE" } ,notes = "fetch记录所属（移动端）")
     @RequestMapping(method= RequestMethod.GET , value="/vacleavemanages/fetchmobjlss")
 	public ResponseEntity<List<VACLEAVEMANAGEDTO>> fetchMOBJLSS(VACLEAVEMANAGESearchContext context) {
@@ -283,16 +277,14 @@ public class VACLEAVEMANAGEResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'MOBJLSS',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search记录所属（移动端）", tags = {"VACLEAVEMANAGE" } ,notes = "search记录所属（移动端）")
-    @RequestMapping(method= RequestMethod.GET , value="/vacleavemanages/searchmobjlss")
-	public ResponseEntity<Page<VACLEAVEMANAGEDTO>> searchMOBJLSS(VACLEAVEMANAGESearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/vacleavemanages/searchmobjlss")
+	public ResponseEntity<Page<VACLEAVEMANAGEDTO>> searchMOBJLSS(@RequestBody VACLEAVEMANAGESearchContext context) {
         Page<VACLEAVEMANAGE> domains = vacleavemanageService.searchMOBJLSS(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(vacleavemanageMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'JLSS',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch记录所属和人员ID不符的", tags = {"VACLEAVEMANAGE" } ,notes = "fetch记录所属和人员ID不符的")
     @RequestMapping(method= RequestMethod.GET , value="/vacleavemanages/fetchjlss")
 	public ResponseEntity<List<VACLEAVEMANAGEDTO>> fetchJLSS(VACLEAVEMANAGESearchContext context) {
@@ -305,16 +297,14 @@ public class VACLEAVEMANAGEResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'JLSS',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search记录所属和人员ID不符的", tags = {"VACLEAVEMANAGE" } ,notes = "search记录所属和人员ID不符的")
-    @RequestMapping(method= RequestMethod.GET , value="/vacleavemanages/searchjlss")
-	public ResponseEntity<Page<VACLEAVEMANAGEDTO>> searchJLSS(VACLEAVEMANAGESearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/vacleavemanages/searchjlss")
+	public ResponseEntity<Page<VACLEAVEMANAGEDTO>> searchJLSS(@RequestBody VACLEAVEMANAGESearchContext context) {
         Page<VACLEAVEMANAGE> domains = vacleavemanageService.searchJLSS(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(vacleavemanageMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"VACLEAVEMANAGE" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/vacleavemanages/fetchdefault")
 	public ResponseEntity<List<VACLEAVEMANAGEDTO>> fetchDefault(VACLEAVEMANAGESearchContext context) {
@@ -327,16 +317,14 @@ public class VACLEAVEMANAGEResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"VACLEAVEMANAGE" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/vacleavemanages/searchdefault")
-	public ResponseEntity<Page<VACLEAVEMANAGEDTO>> searchDefault(VACLEAVEMANAGESearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/vacleavemanages/searchdefault")
+	public ResponseEntity<Page<VACLEAVEMANAGEDTO>> searchDefault(@RequestBody VACLEAVEMANAGESearchContext context) {
         Page<VACLEAVEMANAGE> domains = vacleavemanageService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(vacleavemanageMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'OnlySPTY',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetch只查看审批中、已同意的请假记录", tags = {"VACLEAVEMANAGE" } ,notes = "fetch只查看审批中、已同意的请假记录")
     @RequestMapping(method= RequestMethod.GET , value="/vacleavemanages/fetchonlyspty")
 	public ResponseEntity<List<VACLEAVEMANAGEDTO>> fetchOnlySPTY(VACLEAVEMANAGESearchContext context) {
@@ -349,10 +337,9 @@ public class VACLEAVEMANAGEResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'OnlySPTY',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "search只查看审批中、已同意的请假记录", tags = {"VACLEAVEMANAGE" } ,notes = "search只查看审批中、已同意的请假记录")
-    @RequestMapping(method= RequestMethod.GET , value="/vacleavemanages/searchonlyspty")
-	public ResponseEntity<Page<VACLEAVEMANAGEDTO>> searchOnlySPTY(VACLEAVEMANAGESearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/vacleavemanages/searchonlyspty")
+	public ResponseEntity<Page<VACLEAVEMANAGEDTO>> searchOnlySPTY(@RequestBody VACLEAVEMANAGESearchContext context) {
         Page<VACLEAVEMANAGE> domains = vacleavemanageService.searchOnlySPTY(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(vacleavemanageMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
@@ -529,8 +516,8 @@ public class VACLEAVEMANAGEResource {
 	}
 
 	@ApiOperation(value = "searchFormTypeByPIMPERSON", tags = {"VACLEAVEMANAGE" } ,notes = "searchFormTypeByPIMPERSON")
-    @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/vacleavemanages/searchformtype")
-	public ResponseEntity<Page<VACLEAVEMANAGEDTO>> searchVACLEAVEMANAGEFormTypeByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id,VACLEAVEMANAGESearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/vacleavemanages/searchformtype")
+	public ResponseEntity<Page<VACLEAVEMANAGEDTO>> searchVACLEAVEMANAGEFormTypeByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody VACLEAVEMANAGESearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
         Page<VACLEAVEMANAGE> domains = vacleavemanageService.searchFormType(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
@@ -551,8 +538,8 @@ public class VACLEAVEMANAGEResource {
 	}
 
 	@ApiOperation(value = "search个人ByPIMPERSON", tags = {"VACLEAVEMANAGE" } ,notes = "search个人ByPIMPERSON")
-    @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/vacleavemanages/searchgr")
-	public ResponseEntity<Page<VACLEAVEMANAGEDTO>> searchVACLEAVEMANAGEGRByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id,VACLEAVEMANAGESearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/vacleavemanages/searchgr")
+	public ResponseEntity<Page<VACLEAVEMANAGEDTO>> searchVACLEAVEMANAGEGRByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody VACLEAVEMANAGESearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
         Page<VACLEAVEMANAGE> domains = vacleavemanageService.searchGR(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
@@ -573,8 +560,8 @@ public class VACLEAVEMANAGEResource {
 	}
 
 	@ApiOperation(value = "search记录所属（移动端）ByPIMPERSON", tags = {"VACLEAVEMANAGE" } ,notes = "search记录所属（移动端）ByPIMPERSON")
-    @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/vacleavemanages/searchmobjlss")
-	public ResponseEntity<Page<VACLEAVEMANAGEDTO>> searchVACLEAVEMANAGEMOBJLSSByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id,VACLEAVEMANAGESearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/vacleavemanages/searchmobjlss")
+	public ResponseEntity<Page<VACLEAVEMANAGEDTO>> searchVACLEAVEMANAGEMOBJLSSByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody VACLEAVEMANAGESearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
         Page<VACLEAVEMANAGE> domains = vacleavemanageService.searchMOBJLSS(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
@@ -595,8 +582,8 @@ public class VACLEAVEMANAGEResource {
 	}
 
 	@ApiOperation(value = "search记录所属和人员ID不符的ByPIMPERSON", tags = {"VACLEAVEMANAGE" } ,notes = "search记录所属和人员ID不符的ByPIMPERSON")
-    @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/vacleavemanages/searchjlss")
-	public ResponseEntity<Page<VACLEAVEMANAGEDTO>> searchVACLEAVEMANAGEJLSSByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id,VACLEAVEMANAGESearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/vacleavemanages/searchjlss")
+	public ResponseEntity<Page<VACLEAVEMANAGEDTO>> searchVACLEAVEMANAGEJLSSByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody VACLEAVEMANAGESearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
         Page<VACLEAVEMANAGE> domains = vacleavemanageService.searchJLSS(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
@@ -617,8 +604,8 @@ public class VACLEAVEMANAGEResource {
 	}
 
 	@ApiOperation(value = "searchDEFAULTByPIMPERSON", tags = {"VACLEAVEMANAGE" } ,notes = "searchDEFAULTByPIMPERSON")
-    @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/vacleavemanages/searchdefault")
-	public ResponseEntity<Page<VACLEAVEMANAGEDTO>> searchVACLEAVEMANAGEDefaultByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id,VACLEAVEMANAGESearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/vacleavemanages/searchdefault")
+	public ResponseEntity<Page<VACLEAVEMANAGEDTO>> searchVACLEAVEMANAGEDefaultByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody VACLEAVEMANAGESearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
         Page<VACLEAVEMANAGE> domains = vacleavemanageService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
@@ -639,8 +626,8 @@ public class VACLEAVEMANAGEResource {
 	}
 
 	@ApiOperation(value = "search只查看审批中、已同意的请假记录ByPIMPERSON", tags = {"VACLEAVEMANAGE" } ,notes = "search只查看审批中、已同意的请假记录ByPIMPERSON")
-    @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/vacleavemanages/searchonlyspty")
-	public ResponseEntity<Page<VACLEAVEMANAGEDTO>> searchVACLEAVEMANAGEOnlySPTYByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id,VACLEAVEMANAGESearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/vacleavemanages/searchonlyspty")
+	public ResponseEntity<Page<VACLEAVEMANAGEDTO>> searchVACLEAVEMANAGEOnlySPTYByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody VACLEAVEMANAGESearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
         Page<VACLEAVEMANAGE> domains = vacleavemanageService.searchOnlySPTY(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)

@@ -86,7 +86,6 @@ public class SGQMgrResource {
         SGQMgrDTO dto = sgqmgrMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"SGQMgr" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/sgqmgrs/batch")
@@ -161,7 +160,6 @@ public class SGQMgrResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"SGQMgr" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/sgqmgrs/fetchdefault")
 	public ResponseEntity<List<SGQMgrDTO>> fetchDefault(SGQMgrSearchContext context) {
@@ -174,10 +172,9 @@ public class SGQMgrResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"SGQMgr" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/sgqmgrs/searchdefault")
-	public ResponseEntity<Page<SGQMgrDTO>> searchDefault(SGQMgrSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/sgqmgrs/searchdefault")
+	public ResponseEntity<Page<SGQMgrDTO>> searchDefault(@RequestBody SGQMgrSearchContext context) {
         Page<SGQMgr> domains = sgqmgrService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(sgqmgrMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));

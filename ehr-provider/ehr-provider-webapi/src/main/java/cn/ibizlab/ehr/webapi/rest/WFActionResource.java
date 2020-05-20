@@ -122,7 +122,6 @@ public class WFActionResource {
         WFActionDTO dto = wfactionMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
     @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "createBatch", tags = {"WFAction" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/wfactions/batch")
@@ -161,7 +160,6 @@ public class WFActionResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"WFAction" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/wfactions/fetchdefault")
 	public ResponseEntity<List<WFActionDTO>> fetchDefault(WFActionSearchContext context) {
@@ -174,10 +172,9 @@ public class WFActionResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
 	@ApiOperation(value = "searchDEFAULT", tags = {"WFAction" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/wfactions/searchdefault")
-	public ResponseEntity<Page<WFActionDTO>> searchDefault(WFActionSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/wfactions/searchdefault")
+	public ResponseEntity<Page<WFActionDTO>> searchDefault(@RequestBody WFActionSearchContext context) {
         Page<WFAction> domains = wfactionService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(wfactionMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
