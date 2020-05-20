@@ -66,6 +66,11 @@ iBizEHR划分为六大模块:
 * 本系统100%开源，遵守MIT协议
 
 
+# 项目部署
+**本地化部署   [参考Wiki文档](https://gitee.com/ibizlab/iBizEHR/wikis/pages?sort_id=2233686&doc_id=692797)**
+
+
+
 # 模型设计
 * ER图设计
 ![输入图片说明](https://images.gitee.com/uploads/images/2020/0513/205626_e5119d6c_1181347.png "ER图设计.png")
