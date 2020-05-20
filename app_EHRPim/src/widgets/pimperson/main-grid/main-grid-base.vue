@@ -111,13 +111,6 @@
                     </template>
                 </el-table-column>
             </template>
-            <template v-if="getColumnState('ahtc')">
-                <el-table-column show-overflow-tooltip :prop="'ahtc'" :label="$t('entities.pimperson.main_grid.columns.ahtc')" :width="250" :align="'left'" :sortable="'custom'">
-                    <template v-slot="{row,column}">
-                        <span>{{row.ahtc}}</span>
-                    </template>
-                </el-table-column>
-            </template>
             <template v-if="adaptiveState">
                 <el-table-column></el-table-column>
             </template>
@@ -653,13 +646,6 @@ export default class MainBase extends Vue implements ControlInterface {
             name: 'ygzt',
             label: '员工状态',
             langtag: 'entities.pimperson.main_grid.columns.ygzt',
-            show: true,
-            util: 'PX'
-        },
-        {
-            name: 'ahtc',
-            label: '爱好特长',
-            langtag: 'entities.pimperson.main_grid.columns.ahtc',
             show: true,
             util: 'PX'
         },

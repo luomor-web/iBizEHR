@@ -92,11 +92,6 @@ export default class MainModel {
           dataType: 'PICKUP',
         },
         {
-          name: 'ahtc',
-          prop: 'ahtc',
-          dataType: 'TEXT',
-        },
-        {
           name: 'zzdzs',
           prop: 'zzdzs',
           dataType: 'PICKUPDATA',

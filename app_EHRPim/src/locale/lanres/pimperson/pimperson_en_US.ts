@@ -804,7 +804,6 @@ export default {
 			nj: "年龄",
 			lxdh: "手机号码",
 			ygzt: "员工状态",
-			ahtc: "爱好特长",
 		},
 		uiactions: {
 		},
