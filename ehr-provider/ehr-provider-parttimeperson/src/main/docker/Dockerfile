@@ -9,6 +9,6 @@ CMD echo "The application will start in ${IBZ_SLEEP}s..." && \
     sleep ${IBZ_SLEEP} && \
     java ${JAVA_OPTS} -Djava.security.egd=file:/dev/./urandom -jar /ehr-provider-parttimeperson.jar
 
-EXPOSE 5080
+EXPOSE 8081
 
 ADD ehr-provider-parttimeperson.jar /ehr-provider-parttimeperson.jar
