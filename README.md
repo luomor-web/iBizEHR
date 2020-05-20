@@ -34,7 +34,7 @@ iBizEHR划分为六大模块:
 
 
 # 技术框架
-**后台技术模板[iBiz4j Spring R7](http://demo.ibizlab.cn/ibizr7sfstdtempl/ibiz4jr7)**
+**后台技术模板  [参考Wiki文档](https://gitee.com/ibizlab/iBizEHR/wikis/pages?sort_id=2231366&doc_id=692797)**
 * 核心框架：Spring Boot
 * 持久层框架: Mybatis-plus
 * 服务发现：Nacos
