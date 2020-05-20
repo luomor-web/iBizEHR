@@ -34,14 +34,14 @@ iBizEHR划分为六大模块:
 
 
 # 技术框架
-**后台技术模板  [参考Wiki文档](https://gitee.com/ibizlab/iBizEHR/wikis/pages?sort_id=2231366&doc_id=692797)**
+**后台技术架构  [参考Wiki文档](https://gitee.com/ibizlab/iBizEHR/wikis/pages?sort_id=2231366&doc_id=692797)**
 * 核心框架：Spring Boot
 * 持久层框架: Mybatis-plus
 * 服务发现：Nacos
 * 日志管理：Logback
 * 项目管理框架: Maven
 
-**前端技术模板  [参考Wiki文档](https://gitee.com/ibizlab/iBizEHR/wikis/pages?sort_id=2231096&doc_id=692797)**
+**前端技术架构  [参考Wiki文档](https://gitee.com/ibizlab/iBizEHR/wikis/pages?sort_id=2231096&doc_id=692797)**
 * 前端MVVM框架：vue.js 2.6.10
 * 路由：vue-router 3.1.3
 * 状态管理：vue-router 3.1.3
