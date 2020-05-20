@@ -46,9 +46,6 @@
         <!--  Security  -->
         <spring-cloud-security.version>2.1.1.RELEASE</spring-cloud-security.version>
 
-        <!--  Activity  -->
-        <activiti.version>7.1.0.M2</activiti.version>
-
         <maven-jar-plugin.version>3.1.1</maven-jar-plugin.version>
         <!--logstash-logback-encoder-->
         <logstash.version>5.2</logstash.version>
@@ -63,7 +60,10 @@
         <jsonwebtoken-jjwt.version>0.9.1</jsonwebtoken-jjwt.version>
 
         <!--Liquibase数据库版本更新工具-->
-        <liquibase.version>3.6.3</liquibase.version>
+        <liquibase.version>3.8.7</liquibase.version>
+
+        <!--H2内存数据库-->
+        <h2.version>1.4.200</h2.version>
 
         <!--caffeine缓存-->
         <caffeine-cache.version>2.6.0</caffeine-cache.version>
@@ -127,6 +127,13 @@
                 <version>${liquibase.version}</version>
             </dependency>
 
+            <!--  H2  -->
+            <dependency>
+                <groupId>com.h2database</groupId>
+                <artifactId>h2</artifactId>
+                <version>${h2.version}</version>
+            </dependency>
+
             <!--  Swagger2  -->
             <dependency>
                 <groupId>io.springfox</groupId>
@@ -171,23 +178,6 @@
                 <groupId>org.kie</groupId>
                 <artifactId>kie-api</artifactId>
                 <version>${drools-version}</version>
-            </dependency>
-
-            <!-- Activiti -->
-            <dependency>
-                <groupId>org.activiti</groupId>
-                <artifactId>activiti-spring-boot-starter</artifactId>
-                <version>${activiti.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.activiti</groupId>
-                <artifactId>activiti-json-converter</artifactId>
-                <version>${activiti.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.activiti</groupId>
-                <artifactId>activiti-image-generator</artifactId>
-                <version>${activiti.version}</version>
             </dependency>
 
             <!--  Error  -->
@@ -310,6 +300,12 @@
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>druid-spring-boot-starter</artifactId>
+        </dependency>
+
+        <!--  H2内存库 -->
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
         </dependency>
 
         <!--  Error -->
