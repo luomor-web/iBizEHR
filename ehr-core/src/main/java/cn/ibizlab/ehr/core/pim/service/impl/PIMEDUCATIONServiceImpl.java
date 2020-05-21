@@ -48,10 +48,6 @@ public class PIMEDUCATIONServiceImpl extends ServiceImpl<PIMEDUCATIONMapper, PIM
     @Lazy
     private cn.ibizlab.ehr.core.pim.service.IPIMPERSONService pimpersonService;
 
-    @Autowired
-    @Lazy
-    private cn.ibizlab.ehr.core.pim.service.logic.IPIMEDUCATIONCheckHighestEduLogic checkhighesteduLogic;
-
     private int batchSize = 500;
 
     @Override
@@ -104,7 +100,6 @@ public class PIMEDUCATIONServiceImpl extends ServiceImpl<PIMEDUCATIONMapper, PIM
     @Transactional
     public boolean create(PIMEDUCATION et) {
         fillParentData(et);
-        checkhighesteduLogic.execute(et);
         if(!this.retBool(this.baseMapper.insert(et)))
             return false;
         CachedBeanCopier.copy(get(et.getPimeducationid()),et);
@@ -144,7 +139,6 @@ public class PIMEDUCATIONServiceImpl extends ServiceImpl<PIMEDUCATIONMapper, PIM
     @Transactional
     public boolean update(PIMEDUCATION et) {
         fillParentData(et);
-        checkhighesteduLogic.execute(et);
         if(!update(et,(Wrapper) et.getUpdateWrapper(true).eq("pimeducationid",et.getPimeducationid())))
             return false;
         CachedBeanCopier.copy(get(et.getPimeducationid()),et);
