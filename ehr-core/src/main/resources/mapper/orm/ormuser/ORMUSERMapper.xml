@@ -53,7 +53,7 @@
 
     <!--数据查询[Default]-->
     <sql id="Default" databaseId="mysql">
-       <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`EMPID`, t1.`MEMO`, t1.`ORGID`, t1.`ORGNAME`, t1.`ORGSECTORID`, t1.`ORGSECTORNAME`, t1.`ORGUSERID`, t1.`ORGUSERNAME`, t1.`UNUSERID`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`USERCODE`, t1.`VALIDFLAG` FROM `T_ORGUSER` t1  
+       <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`EMPID`, t1.`MEMO`, t1.`ORGID`, t1.`ORGNAME`, t1.`ORGSECTORID`, t1.`ORGSECTORNAME`, t1.`ORGUSERID`, t1.`ORGUSERNAME`, t1.`UNUSERID`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`USERCODE`, t1.`VALIDFLAG` FROM `T_SRFORGUSER` t1  
 			]]>
     </sql>
 
@@ -65,7 +65,7 @@
 
     <!--数据查询[DQZZJXJZZ]-->
     <sql id="DQZZJXJZZ" databaseId="mysql">
-       <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`EMPID`, t1.`MEMO`, t1.`ORGID`, t1.`ORGNAME`, t1.`ORGSECTORID`, t1.`ORGSECTORNAME`, t1.`ORGUSERID`, t1.`ORGUSERNAME`, t1.`UNUSERID`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`USERCODE`, t1.`VALIDFLAG` FROM `T_ORGUSER` t1  LEFT JOIN T_ORG t11 ON t1.ORGID = t11.ORGID  
+       <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`EMPID`, t1.`MEMO`, t1.`ORGID`, t1.`ORGNAME`, t1.`ORGSECTORID`, t1.`ORGSECTORNAME`, t1.`ORGUSERID`, t1.`ORGUSERNAME`, t1.`UNUSERID`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`USERCODE`, t1.`VALIDFLAG` FROM `T_SRFORGUSER` t1  LEFT JOIN T_SRFORG t11 ON t1.ORGID = t11.ORGID  
 				 WHERE 	( ( t11.`ORGID` =  #{srf.sessioncontext.SRFORGID}  OR  '64BCDCC1-24AA-42E4-AC7A-FB6F242F3FF1' = #{srf.sessioncontext.SRFORGID')}  OR  'ibzadmin' = (select t.loginaccountname from t_srfloginaccount t where t.loginaccountid = #{srf.sessioncontext.SRFPERSONID')})  OR  instr(t11.levelcode, ( select a.levelcode from t_srforg a where a.orgid = #{srf.sessioncontext.SRFORGID')} ) )=1 ) )
 					 AND ( t1.`VALIDFLAG` = 1 )
 			]]>

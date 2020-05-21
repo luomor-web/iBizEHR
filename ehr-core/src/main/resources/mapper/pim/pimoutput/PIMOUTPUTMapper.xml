@@ -55,7 +55,7 @@
 
     <!--数据查询[CurOrg]-->
     <sql id="CurOrg" databaseId="mysql">
-       <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t1.`ND`, t11.`ORGCODE`, t1.`ORMORGID`, t11.`SHORTNAME` AS `ORMORGNAME`, t1.`OUTPUT`, t1.`PIMOUTPUTID`, t1.`PIMOUTPUTNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`YD`, t11.`ZZDZS` AS `ZZXS` FROM `T_PIMOUTPUT` t1  LEFT JOIN T_ORG t11 ON t1.ORMORGID = t11.ORGID  
+       <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t1.`ND`, t11.`ORGCODE`, t1.`ORMORGID`, t11.`SHORTNAME` AS `ORMORGNAME`, t1.`OUTPUT`, t1.`PIMOUTPUTID`, t1.`PIMOUTPUTNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`YD`, t11.`ZZDZS` AS `ZZXS` FROM `T_PIMOUTPUT` t1  LEFT JOIN T_SRFORG t11 ON t1.ORMORGID = t11.ORGID  
 				 WHERE 	t1.ENABLE = 1
 					 AND ( ( ((length(t1.orgcode) = 3) and ((select a.orgcode from t_srforg a where a.orgid = #{srf.sessioncontext.SRFORGID')})  in  ('100','BG')))   or ((length(t1.orgcode) = 5) and ((select a.orgcode from t_srforg a where a.orgid = #{srf.sessioncontext.SRFORGID')})  not in  ('100','BG')  and a.orgcode = substr(t1.orgcode,1,3))) ) )
 			]]>
@@ -71,7 +71,7 @@
 
     <!--数据查询[Default]-->
     <sql id="Default" databaseId="mysql">
-       <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t1.`ND`, t11.`ORGCODE`, t1.`ORMORGID`, t11.`SHORTNAME` AS `ORMORGNAME`, t1.`OUTPUT`, t1.`PIMOUTPUTID`, t1.`PIMOUTPUTNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`YD`, t11.`ZZDZS` AS `ZZXS` FROM `T_PIMOUTPUT` t1  LEFT JOIN T_ORG t11 ON t1.ORMORGID = t11.ORGID  
+       <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t1.`ND`, t11.`ORGCODE`, t1.`ORMORGID`, t11.`SHORTNAME` AS `ORMORGNAME`, t1.`OUTPUT`, t1.`PIMOUTPUTID`, t1.`PIMOUTPUTNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`YD`, t11.`ZZDZS` AS `ZZXS` FROM `T_PIMOUTPUT` t1  LEFT JOIN T_SRFORG t11 ON t1.ORMORGID = t11.ORGID  
 				 WHERE 	t1.ENABLE = 1
 			]]>
     </sql>
