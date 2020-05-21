@@ -847,10 +847,6 @@ zuul:
       path: /userobjects/**
       serviceId: ehr-webapi
       stripPrefix: false
-    appcenter:
-      path: /appcenters/**
-      serviceId: ehr-webapi
-      stripPrefix: false
     pcmtxfpsq:
       path: /pcmtxfpsqs/**
       serviceId: ehr-webapi

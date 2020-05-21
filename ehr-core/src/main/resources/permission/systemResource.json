@@ -2256,14 +2256,6 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"AppCenter",
-    "delogicname":"应用中心（工作流专用）",
-    "sysmoudle":{"id":"PIM","name":"基础管理"},
-    "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
-    "deaction":[{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" }],
-    "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
-     }
-    ,    {
     "dename":"PCMTXFPSQ",
     "delogicname":"退休返聘申请",
     "sysmoudle":{"id":"PCM","name":"配置管理"},
