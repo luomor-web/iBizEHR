@@ -394,7 +394,7 @@ export default class PIMPATENTPATENTGridViewBase extends GridViewBase {
             datas = [...xData.getDatas()];
         }
         // 界面行为
-        this.New(datas, contextJO,paramJO,  $event, xData,this,"PIMPATENT");
+        this.NewRow(datas, contextJO,paramJO,  $event, xData,this,"PIMPATENT");
     }
 
     /**
@@ -420,7 +420,7 @@ export default class PIMPATENTPATENTGridViewBase extends GridViewBase {
             datas = [...xData.getDatas()];
         }
         // 界面行为
-        this.SaveAllEditRow(datas, contextJO,paramJO,  $event, xData,this,"PIMPATENT");
+        this.SaveRow(datas, contextJO,paramJO,  $event, xData,this,"PIMPATENT");
     }
 
     /**
@@ -652,7 +652,7 @@ export default class PIMPATENTPATENTGridViewBase extends GridViewBase {
 
 
     /**
-     * 新建
+     * 新建行
      *
      * @param {any[]} args 当前数据
      * @param {any} contextJO 行为附加上下文
@@ -662,17 +662,19 @@ export default class PIMPATENTPATENTGridViewBase extends GridViewBase {
      * @param {*} [actionContext]  执行行为上下文
      * @memberof PIMPATENTPATENTGridViewBase
      */
-    public New(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
-         const _this: any = this;
-        if (_this.newdata && _this.newdata instanceof Function) {
-            const data: any = {};
-            _this.newdata([{ ...data }],[{ ...data }], params, $event, xData);
-        } else {
-            _this.$Notice.error({ title: '错误', desc: 'newdata 视图处理逻辑不存在，请添加!' });
+    public NewRow(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
+        const _this: any = this;
+        const data: any = {};
+        if (_this.newRow && _this.newRow instanceof Function) {
+            _this.newRow([{ ...data }], params, $event, xData);
+        } else if(xData.newRow && xData.newRow instanceof Function) {
+            xData.newRow([{ ...data }], params, $event, xData);
+        }else{
+            _this.$Notice.error({ title: '错误', desc: 'newRow 视图处理逻辑不存在，请添加!' });
         }
     }
     /**
-     * 保存所有编辑行
+     * 保存行
      *
      * @param {any[]} args 当前数据
      * @param {any} contextJO 行为附加上下文
@@ -682,8 +684,14 @@ export default class PIMPATENTPATENTGridViewBase extends GridViewBase {
      * @param {*} [actionContext]  执行行为上下文
      * @memberof PIMPATENTPATENTGridViewBase
      */
-    protected SaveAllEditRow(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
-        
+    public SaveRow(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
+        // 界面行为容器对象 _this
+        const _this: any = this;
+        if (xData && xData.save instanceof Function) {
+            xData.save();
+        } else if (_this.save && _this.save instanceof Function) {
+            _this.save();
+        }
     }
     /**
      * 删除

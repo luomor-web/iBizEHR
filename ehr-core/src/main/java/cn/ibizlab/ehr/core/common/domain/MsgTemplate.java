@@ -30,7 +30,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
  * 实体[消息模板]
  */
 @Data
-@TableName(value = "T_SRFMSGTEMPLATE",resultMap = "MsgTemplateResultMap")
+@TableName(value = "T_MSGTEMPLATE",resultMap = "MsgTemplateResultMap")
 public class MsgTemplate extends EntityMP implements Serializable {
 
     private static final long serialVersionUID = 1L;

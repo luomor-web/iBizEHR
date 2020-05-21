@@ -30,7 +30,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
  * 实体[微信公众号]
  */
 @Data
-@TableName(value = "T_SRFWXACCOUNT",resultMap = "WXAccountResultMap")
+@TableName(value = "T_WXACCOUNT",resultMap = "WXAccountResultMap")
 public class WXAccount extends EntityMP implements Serializable {
 
     private static final long serialVersionUID = 1L;

@@ -39,7 +39,7 @@
 </i-col>
 <i-col v-show="detailsModel.sfxjd.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='sfxjd' :itemRules="this.rules.sfxjd" class='' :caption="$t('entities.pimarchives.main_form.details.sfxjd')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.sfxjd.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-radio-group v-model="data.sfxjd"  :disabled="detailsModel.sfxjd.disabled"  name="sfxjd" tag='YesNo' codelistType='STATIC'  style=""></app-radio-group>
+     <dropdown-list v-model="data.sfxjd" :data="data" :itemParam="{}" :disabled="detailsModel.sfxjd.disabled" style="width:100px;width: 100px;" tag='YesNo' codelistType='STATIC'  placeholder='请选择...'></dropdown-list>
 </app-form-item>
 
 </i-col>

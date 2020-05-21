@@ -30,7 +30,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
  * 实体[DA日志]
  */
 @Data
-@TableName(value = "T_SRFDALOG",resultMap = "DALogResultMap")
+@TableName(value = "T_DALOG",resultMap = "DALogResultMap")
 public class DALog extends EntityMP implements Serializable {
 
     private static final long serialVersionUID = 1L;

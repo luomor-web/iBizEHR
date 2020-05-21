@@ -30,7 +30,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
  * 实体[任务调度日志]
  */
 @Data
-@TableName(value = "T_SRFTSSDTASKLOG",resultMap = "TSSDTaskLogResultMap")
+@TableName(value = "T_TSSDTASKLOG",resultMap = "TSSDTaskLogResultMap")
 public class TSSDTaskLog extends EntityMP implements Serializable {
 
     private static final long serialVersionUID = 1L;

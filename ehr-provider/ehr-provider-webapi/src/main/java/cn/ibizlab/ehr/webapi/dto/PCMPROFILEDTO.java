@@ -506,7 +506,7 @@ public class PCMPROFILEDTO extends DTOBase implements Serializable {
      */
     @JSONField(name = "jzbspyj")
     @JsonProperty("jzbspyj")
-    private String jzbspyj;
+    private Integer jzbspyj;
 
     /**
      * 属性 [GRADUATIONDATE]
@@ -1456,7 +1456,7 @@ public class PCMPROFILEDTO extends DTOBase implements Serializable {
     /**
      * 设置 [JZBSPYJ]
      */
-    public void setJzbspyj(String  jzbspyj){
+    public void setJzbspyj(Integer  jzbspyj){
         this.jzbspyj = jzbspyj ;
         this.modify("jzbspyj",jzbspyj);
     }

@@ -30,7 +30,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
  * 实体[组织人员级别]
  */
 @Data
-@TableName(value = "T_SRFORGUSERLEVEL",resultMap = "OrgUserLevelResultMap")
+@TableName(value = "T_ORGUSERLEVEL",resultMap = "OrgUserLevelResultMap")
 public class OrgUserLevel extends EntityMP implements Serializable {
 
     private static final long serialVersionUID = 1L;

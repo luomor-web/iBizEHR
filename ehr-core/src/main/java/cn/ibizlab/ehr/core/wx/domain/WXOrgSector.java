@@ -30,7 +30,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
  * 实体[微信部门]
  */
 @Data
-@TableName(value = "T_SRFWXORGSECTOR",resultMap = "WXOrgSectorResultMap")
+@TableName(value = "T_WXORGSECTOR",resultMap = "WXOrgSectorResultMap")
 public class WXOrgSector extends EntityMP implements Serializable {
 
     private static final long serialVersionUID = 1L;

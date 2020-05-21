@@ -1195,10 +1195,6 @@ zuul:
       path: /attenmembwes/**
       serviceId: ehr-webapi
       stripPrefix: false
-    wfstepdata:
-      path: /wfstepdata/**
-      serviceId: ehr-webapi
-      stripPrefix: false
     ormerporg:
       path: /ormerporgs/**
       serviceId: ehr-webapi

@@ -30,7 +30,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
  * 实体[工作流用户组]
  */
 @Data
-@TableName(value = "T_SRFWFUSERGROUP",resultMap = "WFUserGroupResultMap")
+@TableName(value = "T_WFUSERGROUP",resultMap = "WFUserGroupResultMap")
 public class WFUserGroup extends EntityMP implements Serializable {
 
     private static final long serialVersionUID = 1L;

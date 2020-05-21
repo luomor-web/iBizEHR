@@ -30,7 +30,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
  * 实体[组消息账户明细]
  */
 @Data
-@TableName(value = "T_SRFMSGACCOUNTDETAIL",resultMap = "MsgAccountDetailResultMap")
+@TableName(value = "T_MSGACCOUNTDETAIL",resultMap = "MsgAccountDetailResultMap")
 public class MsgAccountDetail extends EntityMP implements Serializable {
 
     private static final long serialVersionUID = 1L;

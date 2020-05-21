@@ -30,7 +30,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
  * 实体[部门人员关系类型]
  */
 @Data
-@TableName(value = "T_SRFORGSECUSERTYPE",resultMap = "OrgSecUserTypeResultMap")
+@TableName(value = "T_ORGSECUSERTYPE",resultMap = "OrgSecUserTypeResultMap")
 public class OrgSecUserType extends EntityMP implements Serializable {
 
     private static final long serialVersionUID = 1L;

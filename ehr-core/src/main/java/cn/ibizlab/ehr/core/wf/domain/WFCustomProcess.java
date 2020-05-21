@@ -30,7 +30,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
  * 实体[工作流预定义处理]
  */
 @Data
-@TableName(value = "T_SRFWFCUSTOMPROCESS",resultMap = "WFCustomProcessResultMap")
+@TableName(value = "T_WFCUSTOMPROCESS",resultMap = "WFCustomProcessResultMap")
 public class WFCustomProcess extends EntityMP implements Serializable {
 
     private static final long serialVersionUID = 1L;

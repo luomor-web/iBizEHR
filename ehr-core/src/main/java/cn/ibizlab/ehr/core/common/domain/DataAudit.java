@@ -30,7 +30,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
  * 实体[数据审计]
  */
 @Data
-@TableName(value = "T_SRFDATAAUDIT",resultMap = "DataAuditResultMap")
+@TableName(value = "T_DATAAUDIT",resultMap = "DataAuditResultMap")
 public class DataAudit extends EntityMP implements Serializable {
 
     private static final long serialVersionUID = 1L;

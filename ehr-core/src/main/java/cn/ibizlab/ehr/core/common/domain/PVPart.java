@@ -30,7 +30,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
  * 实体[门户视图部件]
  */
 @Data
-@TableName(value = "T_SRFPVPART",resultMap = "PVPartResultMap")
+@TableName(value = "T_PVPART",resultMap = "PVPartResultMap")
 public class PVPart extends EntityMP implements Serializable {
 
     private static final long serialVersionUID = 1L;

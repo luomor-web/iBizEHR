@@ -30,7 +30,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
  * 实体[实体查询模型]
  */
 @Data
-@TableName(value = "T_SRFQUERYMODEL",resultMap = "QueryModelResultMap")
+@TableName(value = "T_QUERYMODEL",resultMap = "QueryModelResultMap")
 public class QueryModel extends EntityMP implements Serializable {
 
     private static final long serialVersionUID = 1L;

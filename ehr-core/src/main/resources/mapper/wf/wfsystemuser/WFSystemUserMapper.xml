@@ -30,7 +30,7 @@
 
     <!--数据查询[Default]-->
     <sql id="Default" databaseId="mysql">
-       <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`WFSYSTEMUSERID`, t1.`WFSYSTEMUSERNAME` FROM `T_SRFWFSYSTEMUSER` t1  
+       <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`WFSYSTEMUSERID`, t1.`WFSYSTEMUSERNAME` FROM `T_WFSYSTEMUSER` t1  
 			]]>
     </sql>
 

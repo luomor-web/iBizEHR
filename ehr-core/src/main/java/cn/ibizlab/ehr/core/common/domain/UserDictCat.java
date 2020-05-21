@@ -30,7 +30,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
  * 实体[用户词条类别]
  */
 @Data
-@TableName(value = "T_SRFUSERDICTCAT",resultMap = "UserDictCatResultMap")
+@TableName(value = "T_USERDICTCAT",resultMap = "UserDictCatResultMap")
 public class UserDictCat extends EntityMP implements Serializable {
 
     private static final long serialVersionUID = 1L;

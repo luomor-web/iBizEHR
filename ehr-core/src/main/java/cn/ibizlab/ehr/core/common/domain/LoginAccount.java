@@ -30,7 +30,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
  * 实体[登录帐户]
  */
 @Data
-@TableName(value = "T_SRFLOGINACCOUNT",resultMap = "LoginAccountResultMap")
+@TableName(value = "T_LOGINACCOUNT",resultMap = "LoginAccountResultMap")
 public class LoginAccount extends EntityMP implements Serializable {
 
     private static final long serialVersionUID = 1L;

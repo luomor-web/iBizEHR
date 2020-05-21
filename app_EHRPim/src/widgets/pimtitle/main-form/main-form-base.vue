@@ -106,7 +106,7 @@
 </i-col>
 <i-col v-show="detailsModel.sfzgzc.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='sfzgzc' :itemRules="this.rules.sfzgzc" class='' :caption="$t('entities.pimtitle.main_form.details.sfzgzc')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.sfzgzc.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-radio-group v-model="data.sfzgzc"  :disabled="detailsModel.sfzgzc.disabled"  name="sfzgzc" tag='YesNo' codelistType='STATIC'  style=""></app-radio-group>
+     <dropdown-list v-model="data.sfzgzc" :data="data" :itemParam="{}" :disabled="detailsModel.sfzgzc.disabled" style="width:100px;width: 100px;" tag='YesNo' codelistType='STATIC'  placeholder='请选择...'></dropdown-list>
 </app-form-item>
 
 </i-col>

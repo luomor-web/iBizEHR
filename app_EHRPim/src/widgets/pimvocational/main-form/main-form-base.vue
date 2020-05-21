@@ -174,12 +174,6 @@
 </app-form-item>
 
 </i-col>
-<i-col v-show="detailsModel.fzyxq.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
-    <app-form-item name='fzyxq' :itemRules="this.rules.fzyxq" class='' :caption="$t('entities.pimvocational.main_form.details.fzyxq')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.fzyxq.error" :isEmptyCaption="false" labelPos="LEFT">
-    <input-box v-model="data.fzyxq"  @enter="onEnter($event)"   unit=""  :disabled="detailsModel.fzyxq.disabled" type='text'  style=""></input-box>
-</app-form-item>
-
-</i-col>
     
     </row>
 </app-form-group>
@@ -207,7 +201,7 @@
 </app-form-item>
 
 </i-col>
-<i-col v-show="detailsModel.fj.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
+<i-col v-show="detailsModel.fj.visible" :style="{}"  :sm="{ span: 8, offset: 0 }" :md="{ span: 8, offset: 0 }" :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
     <app-form-item name='fj' :itemRules="this.rules.fj" class='' :caption="$t('entities.pimvocational.main_form.details.fj')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.fj.error" :isEmptyCaption="false" labelPos="LEFT">
     <app-file-upload :formState="formState" :ignorefieldvaluechange="ignorefieldvaluechange" @formitemvaluechange="onFormItemValueChange" :data="JSON.stringify(this.data)" name='fj' :value="data.fj" :disabled="detailsModel.fj.disabled" uploadparams='' exportparams='' :customparams="{}" style="overflow: auto;"></app-file-upload>
 </app-form-item>
@@ -535,7 +529,6 @@ export default class MainBase extends Vue implements ControlInterface {
         cszcsj: null,
         xzcsj: null,
         sxrq: null,
-        fzyxq: null,
         nsqk: null,
         syqk: null,
         alteration: null,
@@ -765,12 +758,6 @@ export default class MainBase extends Vue implements ControlInterface {
             { required: false, type: 'string', message: '失效日期 值不能为空', trigger: 'change' },
             { required: false, type: 'string', message: '失效日期 值不能为空', trigger: 'blur' },
         ],
-        fzyxq: [
-            { type: 'string', message: '发证有效期 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '发证有效期 值必须为字符串类型', trigger: 'blur' },
-            { required: false, type: 'string', message: '发证有效期 值不能为空', trigger: 'change' },
-            { required: false, type: 'string', message: '发证有效期 值不能为空', trigger: 'blur' },
-        ],
         nsqk: [
             { type: 'string', message: '年审情况 值必须为字符串类型', trigger: 'change' },
             { type: 'string', message: '年审情况 值必须为字符串类型', trigger: 'blur' },
@@ -887,8 +874,6 @@ export default class MainBase extends Vue implements ControlInterface {
         xzcsj: new FormItemModel({ caption: '续注册时间', detailType: 'FORMITEM', name: 'xzcsj', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
         sxrq: new FormItemModel({ caption: '失效日期', detailType: 'FORMITEM', name: 'sxrq', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
-, 
-        fzyxq: new FormItemModel({ caption: '发证有效期', detailType: 'FORMITEM', name: 'fzyxq', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
         nsqk: new FormItemModel({ caption: '年审情况', detailType: 'FORMITEM', name: 'nsqk', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
@@ -1267,18 +1252,6 @@ export default class MainBase extends Vue implements ControlInterface {
     }
 
     /**
-     * 监控表单属性 fzyxq 值
-     *
-     * @param {*} newVal
-     * @param {*} oldVal
-     * @memberof Main
-     */
-    @Watch('data.fzyxq')
-    onFzyxqChange(newVal: any, oldVal: any) {
-        this.formDataChange({ name: 'fzyxq', newVal: newVal, oldVal: oldVal });
-    }
-
-    /**
      * 监控表单属性 nsqk 值
      *
      * @param {*} newVal
@@ -1464,7 +1437,6 @@ export default class MainBase extends Vue implements ControlInterface {
             }
             this.detailsModel.pimqualmajorname.setVisible(ret);
         }
-
 
 
 

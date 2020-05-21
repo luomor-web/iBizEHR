@@ -30,7 +30,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
  * 实体[微信访问票据]
  */
 @Data
-@TableName(value = "T_SRFWXACCESSTOKEN",resultMap = "WXAccessTokenResultMap")
+@TableName(value = "T_WXACCESSTOKEN",resultMap = "WXAccessTokenResultMap")
 public class WXAccessToken extends EntityMP implements Serializable {
 
     private static final long serialVersionUID = 1L;

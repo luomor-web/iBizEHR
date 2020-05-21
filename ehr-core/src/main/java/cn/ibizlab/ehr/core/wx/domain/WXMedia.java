@@ -30,7 +30,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
  * 实体[微信多媒体内容]
  */
 @Data
-@TableName(value = "T_SRFWXMEDIA",resultMap = "WXMediaResultMap")
+@TableName(value = "T_WXMEDIA",resultMap = "WXMediaResultMap")
 public class WXMedia extends EntityMP implements Serializable {
 
     private static final long serialVersionUID = 1L;

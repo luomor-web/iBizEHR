@@ -40,7 +40,7 @@
 
     <!--数据查询[Default]-->
     <sql id="Default" databaseId="mysql">
-       <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`DATAKEY`, t1.`DEDATACHG2ID`, t1.`DEDATACHG2NAME`, t1.`DEID`, t1.`DENAME`, t1.`ERROR`, t1.`EVENTTYPE`, t1.`UPDATEDATE`, t1.`UPDATEMAN` FROM `T_SRFDEDATACHG2` t1  
+       <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`DATAKEY`, t1.`DEDATACHG2ID`, t1.`DEDATACHG2NAME`, t1.`DEID`, t1.`DENAME`, t1.`ERROR`, t1.`EVENTTYPE`, t1.`UPDATEDATE`, t1.`UPDATEMAN` FROM `T_DEDATACHG` t1  
 			]]>
     </sql>
 

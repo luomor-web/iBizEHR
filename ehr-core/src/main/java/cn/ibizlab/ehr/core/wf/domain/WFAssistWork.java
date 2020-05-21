@@ -30,7 +30,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
  * 实体[工作流代办工作]
  */
 @Data
-@TableName(value = "T_SRFWFASSISTWORK",resultMap = "WFAssistWorkResultMap")
+@TableName(value = "T_WFASSISTWORK",resultMap = "WFAssistWorkResultMap")
 public class WFAssistWork extends EntityMP implements Serializable {
 
     private static final long serialVersionUID = 1L;

@@ -30,7 +30,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
  * 实体[代码表]
  */
 @Data
-@TableName(value = "T_SRFCODELIST",resultMap = "CodeList1ResultMap")
+@TableName(value = "T_CODELIST",resultMap = "CodeList1ResultMap")
 public class CodeList1 extends EntityMP implements Serializable {
 
     private static final long serialVersionUID = 1L;

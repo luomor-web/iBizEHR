@@ -30,7 +30,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
  * 实体[用户管理]
  */
 @Data
-@TableName(value = "T_SRFORGUSER",resultMap = "ORMUSERResultMap")
+@TableName(value = "T_ORGUSER",resultMap = "ORMUSERResultMap")
 public class ORMUSER extends EntityMP implements Serializable {
 
     private static final long serialVersionUID = 1L;
