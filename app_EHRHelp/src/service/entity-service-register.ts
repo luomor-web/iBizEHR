@@ -337,7 +337,6 @@ export class EntityServiceRegister {
         this.allEntityService.set('pimpersonabilitydetail', () => import('@/service/pimperson-ability-detail/pimperson-ability-detail-service'));
         this.allEntityService.set('ormxmgl', () => import('@/service/ormxmgl/ormxmgl-service'));
         this.allEntityService.set('attenmembwes', () => import('@/service/attenmembwes/attenmembwes-service'));
-        this.allEntityService.set('wfstepdata', () => import('@/service/wfstep-data/wfstep-data-service'));
         this.allEntityService.set('ormerporg', () => import('@/service/ormerporg/ormerporg-service'));
         this.allEntityService.set('loginaccount', () => import('@/service/login-account/login-account-service'));
         this.allEntityService.set('parbmfzjyx', () => import('@/service/parbmfzjyx/parbmfzjyx-service'));

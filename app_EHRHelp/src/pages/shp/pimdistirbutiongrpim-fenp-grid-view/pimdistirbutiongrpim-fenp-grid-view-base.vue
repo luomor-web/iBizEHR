@@ -413,16 +413,28 @@ export default class PIMDISTIRBUTIONGRPImFenpGridViewBase extends GridViewBase {
         }
         const parameters: any[] = [
             { pathName: 'pimdistirbutions', parameterName: 'pimdistirbution' },
-            { pathName: 'grdividereditview', parameterName: 'grdividereditview' },
         ];
         const _this: any = this;
-        const openIndexViewTab = (data: any) => {
-            const _data: any = { w: (new Date().getTime()) };
-            Object.assign(_data, data);
-            const routePath = this.$viewTool.buildUpRoutePath(this.$route, curViewParam, deResParameters, parameters, args, _data);
-            this.$router.push(routePath);
+        const openDrawer = (view: any, data: any) => {
+            let container: Subject<any> = this.$appdrawer.openDrawer(view, curViewParam, data);
+            container.subscribe((result: any) => {
+                if (!result || !Object.is(result.ret, 'OK')) {
+                    return;
+                }
+                if (!xData || !(xData.refresh instanceof Function)) {
+                    return;
+                }
+                xData.refresh(result.datas);
+            });
         }
-        openIndexViewTab(data);
+        const view: any = {
+            viewname: 'pimdistirbutiongrdivider-edit-view', 
+            height: 0, 
+            width: 0,  
+            title: this.$t('entities.pimdistirbution.views.grdividereditview.title'),
+            placement: 'DRAWER_TOP',
+        };
+        openDrawer(view, data);
     }
 
 
@@ -450,14 +462,28 @@ export default class PIMDISTIRBUTIONGRPImFenpGridViewBase extends GridViewBase {
         }
         const parameters: any[] = [
             { pathName: 'pimdistirbutions', parameterName: 'pimdistirbution' },
-            { pathName: 'grdividereditview', parameterName: 'grdividereditview' },
         ];
         const _this: any = this;
-        const openIndexViewTab = (data: any) => {
-            const routePath = this.$viewTool.buildUpRoutePath(this.$route, curViewParam, deResParameters, parameters, args, data);
-            this.$router.push(routePath);
+        const openDrawer = (view: any, data: any) => {
+            let container: Subject<any> = this.$appdrawer.openDrawer(view, curViewParam, data);
+            container.subscribe((result: any) => {
+                if (!result || !Object.is(result.ret, 'OK')) {
+                    return;
+                }
+                if (!xData || !(xData.refresh instanceof Function)) {
+                    return;
+                }
+                xData.refresh(result.datas);
+            });
         }
-        openIndexViewTab(data);
+        const view: any = {
+            viewname: 'pimdistirbutiongrdivider-edit-view', 
+            height: 0, 
+            width: 0,  
+            title: this.$t('entities.pimdistirbution.views.grdividereditview.title'),
+            placement: 'DRAWER_TOP',
+        };
+        openDrawer(view, data);
     }
 
 

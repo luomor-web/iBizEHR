@@ -296,7 +296,6 @@ import salstdgwgz_en_US from '@locale/lanres/salstdgwgz/salstdgwgz_en_US';
 import pimpersonabilitydetail_en_US from '@locale/lanres/pimperson-ability-detail/pimperson-ability-detail_en_US';
 import ormxmgl_en_US from '@locale/lanres/ormxmgl/ormxmgl_en_US';
 import attenmembwes_en_US from '@locale/lanres/attenmembwes/attenmembwes_en_US';
-import wfstepdata_en_US from '@locale/lanres/wfstep-data/wfstep-data_en_US';
 import ormerporg_en_US from '@locale/lanres/ormerporg/ormerporg_en_US';
 import loginaccount_en_US from '@locale/lanres/login-account/login-account_en_US';
 import parbmfzjyx_en_US from '@locale/lanres/parbmfzjyx/parbmfzjyx_en_US';
@@ -759,7 +758,6 @@ export default {
         pimpersonabilitydetail: pimpersonabilitydetail_en_US,
         ormxmgl: ormxmgl_en_US,
         attenmembwes: attenmembwes_en_US,
-        wfstepdata: wfstepdata_en_US,
         ormerporg: ormerporg_en_US,
         loginaccount: loginaccount_en_US,
         parbmfzjyx: parbmfzjyx_en_US,

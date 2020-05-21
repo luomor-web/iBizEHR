@@ -337,7 +337,6 @@ export class UIServiceRegister {
         this.allUIService.set('pimpersonabilitydetail', () => import('@/uiservice/pimperson-ability-detail/pimperson-ability-detail-ui-service'));
         this.allUIService.set('ormxmgl', () => import('@/uiservice/ormxmgl/ormxmgl-ui-service'));
         this.allUIService.set('attenmembwes', () => import('@/uiservice/attenmembwes/attenmembwes-ui-service'));
-        this.allUIService.set('wfstepdata', () => import('@/uiservice/wfstep-data/wfstep-data-ui-service'));
         this.allUIService.set('ormerporg', () => import('@/uiservice/ormerporg/ormerporg-ui-service'));
         this.allUIService.set('loginaccount', () => import('@/uiservice/login-account/login-account-ui-service'));
         this.allUIService.set('parbmfzjyx', () => import('@/uiservice/parbmfzjyx/parbmfzjyx-ui-service'));
