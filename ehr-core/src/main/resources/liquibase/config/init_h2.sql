@@ -1,6 +1,6 @@
 
-create schema if not exists ibizehr;
-set schema ibizehr;
+create schema if not exists BPMEHR;
+set schema BPMEHR;
 
 
 
