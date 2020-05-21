@@ -1,0 +1,28 @@
+
+export default {
+  fields: {
+    pcmjxsbdjlname: '见习生变动记录名称',
+    createdate: '建立时间',
+    updatedate: '更新时间',
+    pcmjxsbdjlid: '见习生变动记录标识',
+    createman: '建立人',
+    orgid: '组织ID',
+    updateman: '更新人',
+    bdsjsj: '变动结束时间',
+    bdqssj: '变动起始时间',
+    orgsectorid: '部门ID',
+    bdqksm: '变动情况说明',
+    ybm: '原部门',
+    ygw: '原岗位',
+    ormorgname: '组织',
+    ygbh: '员工编号',
+    pimpersonname: '见习生',
+    ormpostname: '岗位',
+    ormorgsectorname: '部门',
+    yzz: '原组织',
+    pimpersonid: '人员信息标识',
+    ormpostid: '岗位管理标识',
+    ormorgid: '组织标识',
+    ormorgsectorid: '部门标识',
+  },
+};

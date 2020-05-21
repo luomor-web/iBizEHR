@@ -1,0 +1,23 @@
+
+export default {
+  fields: {
+    actioncount: 'ACTIONCOUNT',
+    orderflag: 'ORDERFLAG',
+    fahelper: 'FAHELPER',
+    updateman: '更新人',
+    nextto: 'NEXTTO',
+    pagepath: 'PAGEPATH',
+    actionname: 'ACTIONNAME',
+    createdate: '建立时间',
+    wfiaactionid: '工作流交互操作标识',
+    updatedate: '更新时间',
+    actionlogicname: 'ACTIONLOGICNAME',
+    createman: '建立人',
+    nextcondition: 'NEXTCONDITION',
+    wfiaactionname: '工作流交互操作名称',
+    memo: '备注',
+    panelid: 'PANELID',
+    wfstepname: 'WFSTEPNAME',
+    wfstepid: '互动操作_相关步骤',
+  },
+};

@@ -1,0 +1,27 @@
+
+export default {
+  fields: {
+    actortype: '用户类型',
+    updatedate: '更新时间',
+    wfstepactorid: '工作流步骤操作者标识',
+    firstreadtime: '查看时间',
+    updateman: '更新人',
+    createdate: '建立时间',
+    readflag: '是否已读',
+    wfstepactorname: '工作流步骤操作者名称',
+    createman: '建立人',
+    isfinish: '是否完成',
+    memo: '备注',
+    iaactions: '允许交互操作',
+    isreadonly: '是否只读',
+    actorid: '工作流用户',
+    roleid: '角色用户',
+    remindercount: '督促次数',
+    finishdate: '完成时间',
+    wfstepname: '流程步骤',
+    originalwfusername: '源流程用户',
+    wfinstanceid: '流程实例',
+    originalwfuserid: '源流程用户',
+    wfstepid: '步骤角色_步骤',
+  },
+};

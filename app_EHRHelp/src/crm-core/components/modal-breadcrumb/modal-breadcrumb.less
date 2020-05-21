@@ -1,0 +1,31 @@
+.modal-breadcrumb {
+    display: flex;
+
+    >.modal-breadcrumb-item {
+        font-size: 18px;
+        color: #304265;
+
+        >.name {
+            float: left;
+
+            >span:hover {
+                color: #107fff;
+                text-decoration: underline;
+                cursor: pointer;
+            }
+        }
+
+        >.breadcrumb {
+            float: left;
+            padding: 0px 6px;
+            font-weight: 900;
+        }
+    }
+
+    >.modal-breadcrumb-item.last {
+
+        >.name {
+            font-weight: 700 !important;
+        }
+    }
+}

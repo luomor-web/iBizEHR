@@ -1,0 +1,22 @@
+
+export default {
+  fields: {
+    updatedate: '更新时间',
+    reserver: '保留字段',
+    userroledetailid: '用户角色成员标识',
+    updateman: '更新人',
+    reserver2: '保留字段2',
+    userdata: '用户数据',
+    reserver4: '保留字段4',
+    reserver3: '保留字段3',
+    usertag: '用户自定义',
+    createdate: '建立时间',
+    userroledetailname: '用户角色成员名称',
+    createman: '建立人',
+    userdata2: '用户数据2',
+    userobjectname: '用户对象',
+    userrolename: '用户角色',
+    userobjectid: '用户对象',
+    userroleid: '用户角色',
+  },
+};

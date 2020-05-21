@@ -1,0 +1,1781 @@
+<template>
+    <i-form :model="this.data" class='app-form' ref='form'  id='form' style="">
+    <input style="display:none;" />
+    <row >
+            
+<i-col v-show="detailsModel.group1.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
+    <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' uiActionGroup="detailsModel.group1.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.questions.yh_check_form.details.group1')" :isShowCaption="false" uiStyle="DEFAULT" :titleBarCloseMode="0" :isInfoGroupMode="false" >    
+    <row>
+        <i-col v-show="detailsModel.wtbh.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
+    <app-form-item name='wtbh' :itemRules="this.rules.wtbh" class='' :caption="$t('entities.questions.yh_check_form.details.wtbh')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.wtbh.error" :isEmptyCaption="false" labelPos="LEFT">
+    <input-box v-model="data.wtbh"  @enter="onEnter($event)"   unit=""  :disabled="detailsModel.wtbh.disabled" type='text'  style=""></input-box>
+</app-form-item>
+
+</i-col>
+<i-col v-show="detailsModel.questionsname.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
+    <app-form-item name='questionsname' :itemRules="this.rules.questionsname" class='' :caption="$t('entities.questions.yh_check_form.details.questionsname')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.questionsname.error" :isEmptyCaption="false" labelPos="LEFT">
+    <input-box v-model="data.questionsname"  @enter="onEnter($event)"   unit=""  :disabled="detailsModel.questionsname.disabled" type='text'  style=""></input-box>
+</app-form-item>
+
+</i-col>
+<i-col v-show="detailsModel.jjcd.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
+    <app-form-item name='jjcd' :itemRules="this.rules.jjcd" class='' :caption="$t('entities.questions.yh_check_form.details.jjcd')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.jjcd.error" :isEmptyCaption="false" labelPos="LEFT">
+    <input-box v-model="data.jjcd"  @enter="onEnter($event)"   unit=""  :disabled="detailsModel.jjcd.disabled" type='text'  style=""></input-box>
+</app-form-item>
+
+</i-col>
+<i-col v-show="detailsModel.ym.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
+    <app-form-item name='ym' :itemRules="this.rules.ym" class='' :caption="$t('entities.questions.yh_check_form.details.ym')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.ym.error" :isEmptyCaption="false" labelPos="LEFT">
+    <input-box v-model="data.ym"  @enter="onEnter($event)"   unit=""  :disabled="detailsModel.ym.disabled" type='text'  style=""></input-box>
+</app-form-item>
+
+</i-col>
+<i-col v-show="detailsModel.wtms.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
+    <app-form-item name='wtms' :itemRules="this.rules.wtms" class='' :caption="$t('entities.questions.yh_check_form.details.wtms')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.wtms.error" :isEmptyCaption="false" labelPos="LEFT">
+    <div class="ivu-input-wrapper ivu-input-wrapper-default ivu-input-type">
+    <textarea class="ivu-input" v-model="data.wtms" :disabled="detailsModel.wtms.disabled" style=""></textarea>
+</div>
+</app-form-item>
+
+</i-col>
+<i-col v-show="detailsModel.jt.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
+    <app-form-item name='jt' :itemRules="this.rules.jt" class='' :caption="$t('entities.questions.yh_check_form.details.jt')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.jt.error" :isEmptyCaption="false" labelPos="LEFT">
+     <app-image-upload :multiple="true" :formState="formState" :ignorefieldvaluechange="ignorefieldvaluechange" @formitemvaluechange="onFormItemValueChange" :data="JSON.stringify(this.data)" name='jt' :value="data.jt" :disabled="detailsModel.jt.disabled" uploadparams='' exportparams='' :customparams="{}" style="overflow: auto;"></app-image-upload>
+</app-form-item>
+
+</i-col>
+<i-col v-show="detailsModel.wtzt.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
+    <app-form-item name='wtzt' :itemRules="this.rules.wtzt" class='' :caption="$t('entities.questions.yh_check_form.details.wtzt')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.wtzt.error" :isEmptyCaption="false" labelPos="LEFT">
+    <input-box v-model="data.wtzt"  @enter="onEnter($event)"   unit=""  :disabled="detailsModel.wtzt.disabled" type='text'  style=""></input-box>
+</app-form-item>
+
+</i-col>
+<i-col v-show="detailsModel.kfz.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
+    <app-form-item name='kfz' :itemRules="this.rules.kfz" class='' :caption="$t('entities.questions.yh_check_form.details.kfz')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.kfz.error" :isEmptyCaption="false" labelPos="LEFT">
+    <input-box v-model="data.kfz"  @enter="onEnter($event)"   unit=""  :disabled="detailsModel.kfz.disabled" type='text'  style=""></input-box>
+</app-form-item>
+
+</i-col>
+<i-col v-show="detailsModel.wcsj.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
+    <app-form-item name='wcsj' :itemRules="this.rules.wcsj" class='' :caption="$t('entities.questions.yh_check_form.details.wcsj')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.wcsj.error" :isEmptyCaption="false" labelPos="LEFT">
+    <input-box v-model="data.wcsj"  @enter="onEnter($event)"   unit=""  :disabled="detailsModel.wcsj.disabled" type='text'  style=""></input-box>
+</app-form-item>
+
+</i-col>
+<i-col v-show="detailsModel.wtfk.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
+    <app-form-item name='wtfk' :itemRules="this.rules.wtfk" class='' :caption="$t('entities.questions.yh_check_form.details.wtfk')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.wtfk.error" :isEmptyCaption="false" labelPos="LEFT">
+    <div class="ivu-input-wrapper ivu-input-wrapper-default ivu-input-type">
+    <textarea class="ivu-input" v-model="data.wtfk" :disabled="detailsModel.wtfk.disabled" style=""></textarea>
+</div>
+</app-form-item>
+
+</i-col>
+    
+    </row>
+</app-form-group>
+
+</i-col>
+
+
+    </row>
+</i-form>
+</template>
+
+<script lang='tsx'>
+import { Vue, Component, Prop, Provide, Emit, Watch, Model } from 'vue-property-decorator';
+import { CreateElement } from 'vue';
+import { Subject, Subscription } from 'rxjs';
+import { ControlInterface } from '@/interface/control';
+import { UIActionTool,Util } from '@/utils';
+import QUESTIONSService from '@/service/questions/questions-service';
+import YH_CheckService from './yh-check-form-service';
+
+import { FormButtonModel, FormPageModel, FormItemModel, FormDRUIPartModel, FormPartModel, FormGroupPanelModel, FormIFrameModel, FormRowItemModel, FormTabPageModel, FormTabPanelModel, FormUserControlModel } from '@/model/form-detail';
+import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
+
+
+@Component({
+    components: {
+      
+    }
+})
+export default class YH_CheckBase extends Vue implements ControlInterface {
+
+    /**
+     * 名称
+     *
+     * @type {string}
+     * @memberof YH_Check
+     */
+    @Prop() public name?: string;
+
+    /**
+     * 视图通讯对象
+     *
+     * @type {Subject<ViewState>}
+     * @memberof YH_Check
+     */
+    @Prop() public viewState!: Subject<ViewState>;
+
+    /**
+     * 应用上下文
+     *
+     * @type {*}
+     * @memberof YH_Check
+     */
+    @Prop() public context: any;
+
+    /**
+     * 视图参数
+     *
+     * @type {*}
+     * @memberof YH_Check
+     */
+    @Prop() public viewparams: any;
+
+    /**
+     * 视图状态事件
+     *
+     * @public
+     * @type {(Subscription | undefined)}
+     * @memberof YH_Check
+     */
+    public viewStateEvent: Subscription | undefined;
+
+    /**
+     * 获取部件类型
+     *
+     * @returns {string}
+     * @memberof YH_Check
+     */
+    public getControlType(): string {
+        return 'FORM'
+    }
+
+
+
+    /**
+     * 计数器服务对象集合
+     *
+     * @type {Array<*>}
+     * @memberof YH_Check
+     */    
+    public counterServiceArray:Array<any> = [];
+
+    /**
+     * 建构部件服务对象
+     *
+     * @type {YH_CheckService}
+     * @memberof YH_Check
+     */
+    public service: YH_CheckService = new YH_CheckService({ $store: this.$store });
+
+    /**
+     * 实体服务对象
+     *
+     * @type {QUESTIONSService}
+     * @memberof YH_Check
+     */
+    public appEntityService: QUESTIONSService = new QUESTIONSService({ $store: this.$store });
+    
+
+
+    /**
+     * 关闭视图
+     *
+     * @param {any} args
+     * @memberof YH_Check
+     */
+    public closeView(args: any): void {
+        let _this: any = this;
+        _this.$emit('closeview', [args]);
+    }
+
+    /**
+     *  计数器刷新
+     *
+     * @memberof YH_Check
+     */
+    public counterRefresh(){
+        const _this:any =this;
+        if(_this.counterServiceArray && _this.counterServiceArray.length >0){
+            _this.counterServiceArray.forEach((item:any) =>{
+                if(item.refreshData && item.refreshData instanceof Function){
+                    item.refreshData();
+                }
+            })
+        }
+    }
+
+
+    
+    /**
+     * 获取多项数据
+     *
+     * @returns {any[]}
+     * @memberof YH_Check
+     */
+    public getDatas(): any[] {
+        return [this.data];
+    }
+
+    /**
+     * 获取单项树
+     *
+     * @returns {*}
+     * @memberof YH_Check
+     */
+    public getData(): any {
+        return this.data;
+    }
+
+    /**
+     * 是否默认保存
+     *
+     * @type {boolean}
+     * @memberof YH_Check
+     */
+    @Prop({ default: false }) public autosave?: boolean;
+
+    /**
+     * 显示处理提示
+     *
+     * @type {boolean}
+     * @memberof YH_Check
+     */
+    @Prop({ default: true }) public showBusyIndicator?: boolean;
+
+    /**
+     * 部件行为--submit
+     *
+     * @type {string}
+     * @memberof YH_Check
+     */
+    @Prop() public WFSubmitAction!: string;
+    
+    /**
+     * 部件行为--start
+     *
+     * @type {string}
+     * @memberof YH_Check
+     */
+    @Prop() public WFStartAction!: string;
+    
+    /**
+     * 部件行为--update
+     *
+     * @type {string}
+     * @memberof YH_Check
+     */
+    @Prop() public updateAction!: string;
+    
+    /**
+     * 部件行为--remove
+     *
+     * @type {string}
+     * @memberof YH_Check
+     */
+    @Prop() public removeAction!: string;
+    
+    /**
+     * 部件行为--loaddraft
+     *
+     * @type {string}
+     * @memberof YH_Check
+     */
+    @Prop() public loaddraftAction!: string;
+    
+    /**
+     * 部件行为--load
+     *
+     * @type {string}
+     * @memberof YH_Check
+     */
+    @Prop() public loadAction!: string;
+    
+    /**
+     * 部件行为--create
+     *
+     * @type {string}
+     * @memberof YH_Check
+     */
+    @Prop() public createAction!: string;
+
+    /**
+     * 部件行为--create
+     *
+     * @type {string}
+     * @memberof YH_Check
+     */
+    @Prop() public searchAction!: string;
+
+    /**
+     * 视图标识
+     *
+     * @type {string}
+     * @memberof YH_Check
+     */
+    @Prop() public viewtag!: string;
+
+    /**
+     * 表单状态
+     *
+     * @type {Subject<any>}
+     * @memberof YH_Check
+     */
+    public formState: Subject<any> = new Subject();
+
+    /**
+     * 忽略表单项值变化
+     *
+     * @type {boolean}
+     * @memberof YH_Check
+     */
+    public ignorefieldvaluechange: boolean = false;
+
+    /**
+     * 数据变化
+     *
+     * @public
+     * @type {Subject<any>}
+     * @memberof YH_Check
+     */
+    public dataChang: Subject<any> = new Subject();
+
+    /**
+     * 视图状态事件
+     *
+     * @public
+     * @type {(Subscription | undefined)}
+     * @memberof YH_Check
+     */
+    public dataChangEvent: Subscription | undefined;
+
+    /**
+     * 原始数据
+     *
+     * @public
+     * @type {*}
+     * @memberof YH_Check
+     */
+    public oldData: any = {};
+
+    /**
+     * 表单数据对象
+     *
+     * @type {*}
+     * @memberof YH_Check
+     */
+    public data: any = {
+        srfupdatedate: null,
+        srforikey: null,
+        srfkey: null,
+        srfmajortext: null,
+        srftempmode: null,
+        srfuf: null,
+        srfdeid: null,
+        srfsourcekey: null,
+        wtbh: null,
+        questionsname: null,
+        jjcd: null,
+        ym: null,
+        wtms: null,
+        jt: null,
+        wtzt: null,
+        kfz: null,
+        wcsj: null,
+        wtfk: null,
+        questionsid: null,
+        questions:null,
+    };
+
+    /**
+      * 当前执行的行为逻辑
+      *
+      * @type {string}
+      * @memberof YH_Check
+      */
+    public currentAction: string = "";
+
+    /**
+      * 关系界面计数器
+      *
+      * @type {number}
+      * @memberof YH_Check
+      */
+    public drcounter: number = 0;
+
+    /**
+      * 需要等待关系界面保存时，第一次调用save参数的备份
+      *
+      * @type {number}
+      * @memberof YH_Check
+      */
+    public drsaveopt: any = {};
+
+    /**
+      * 表单保存回调存储对象
+      *
+      * @type {any}
+      * @memberof YH_Check
+      */
+    public saveState:any ;
+
+    /**
+     * 属性值规则
+     *
+     * @type {*}
+     * @memberof YH_Check
+     */
+    public rules: any = {
+        srfupdatedate: [
+            { type: 'string', message: '更新时间 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '更新时间 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '更新时间 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '更新时间 值不能为空', trigger: 'blur' },
+        ],
+        srforikey: [
+            { type: 'string', message: ' 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: ' 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: ' 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: ' 值不能为空', trigger: 'blur' },
+        ],
+        srfkey: [
+            { type: 'string', message: '问题收集标识 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '问题收集标识 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '问题收集标识 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '问题收集标识 值不能为空', trigger: 'blur' },
+        ],
+        srfmajortext: [
+            { type: 'string', message: '问题 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '问题 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '问题 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '问题 值不能为空', trigger: 'blur' },
+        ],
+        srftempmode: [
+            { type: 'string', message: ' 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: ' 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: ' 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: ' 值不能为空', trigger: 'blur' },
+        ],
+        srfuf: [
+            { type: 'string', message: ' 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: ' 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: ' 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: ' 值不能为空', trigger: 'blur' },
+        ],
+        srfdeid: [
+            { type: 'string', message: ' 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: ' 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: ' 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: ' 值不能为空', trigger: 'blur' },
+        ],
+        srfsourcekey: [
+            { type: 'string', message: ' 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: ' 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: ' 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: ' 值不能为空', trigger: 'blur' },
+        ],
+        wtbh: [
+            { type: 'string', message: '问题编号 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '问题编号 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '问题编号 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '问题编号 值不能为空', trigger: 'blur' },
+        ],
+        questionsname: [
+            { type: 'string', message: '问题 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '问题 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '问题 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '问题 值不能为空', trigger: 'blur' },
+        ],
+        jjcd: [
+            { type: 'string', message: '紧急程度 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '紧急程度 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '紧急程度 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '紧急程度 值不能为空', trigger: 'blur' },
+        ],
+        ym: [
+            { type: 'string', message: '页面 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '页面 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '页面 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '页面 值不能为空', trigger: 'blur' },
+        ],
+        wtms: [
+            { type: 'string', message: '问题描述 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '问题描述 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '问题描述 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '问题描述 值不能为空', trigger: 'blur' },
+        ],
+        jt: [
+            { type: 'string', message: '界面截图 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '界面截图 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '界面截图 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '界面截图 值不能为空', trigger: 'blur' },
+        ],
+        wtzt: [
+            { type: 'string', message: '问题状态 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '问题状态 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '问题状态 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '问题状态 值不能为空', trigger: 'blur' },
+        ],
+        kfz: [
+            { type: 'string', message: '开发者 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '开发者 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '开发者 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '开发者 值不能为空', trigger: 'blur' },
+        ],
+        wcsj: [
+            { type: 'string', message: '完成时间 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '完成时间 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '完成时间 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '完成时间 值不能为空', trigger: 'blur' },
+        ],
+        wtfk: [
+            { type: 'string', message: '问题反馈 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '问题反馈 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '问题反馈 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '问题反馈 值不能为空', trigger: 'blur' },
+        ],
+        questionsid: [
+            { type: 'string', message: '问题收集标识 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '问题收集标识 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '问题收集标识 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '问题收集标识 值不能为空', trigger: 'blur' },
+        ],
+    }
+
+    /**
+     * 详情模型集合
+     *
+     * @type {*}
+     * @memberof YH_Check
+     */
+    public detailsModel: any = {
+        group1: new FormGroupPanelModel({ caption: '问题收集基本信息', detailType: 'GROUPPANEL', name: 'group1', visible: true, isShowCaption: false, form: this, uiActionGroup: { caption: '', langbase: 'entities.questions.yh_check_form', extractMode: 'ITEM', details: [] } })
+, 
+        formpage1: new FormPageModel({ caption: '基本信息', detailType: 'FORMPAGE', name: 'formpage1', visible: true, isShowCaption: true, form: this })
+, 
+        srfupdatedate: new FormItemModel({ caption: '更新时间', detailType: 'FORMITEM', name: 'srfupdatedate', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+, 
+        srforikey: new FormItemModel({ caption: '', detailType: 'FORMITEM', name: 'srforikey', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+, 
+        srfkey: new FormItemModel({ caption: '问题收集标识', detailType: 'FORMITEM', name: 'srfkey', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+, 
+        srfmajortext: new FormItemModel({ caption: '问题', detailType: 'FORMITEM', name: 'srfmajortext', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+, 
+        srftempmode: new FormItemModel({ caption: '', detailType: 'FORMITEM', name: 'srftempmode', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+, 
+        srfuf: new FormItemModel({ caption: '', detailType: 'FORMITEM', name: 'srfuf', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+, 
+        srfdeid: new FormItemModel({ caption: '', detailType: 'FORMITEM', name: 'srfdeid', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+, 
+        srfsourcekey: new FormItemModel({ caption: '', detailType: 'FORMITEM', name: 'srfsourcekey', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+, 
+        wtbh: new FormItemModel({ caption: '问题编号', detailType: 'FORMITEM', name: 'wtbh', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 0 })
+, 
+        questionsname: new FormItemModel({ caption: '问题', detailType: 'FORMITEM', name: 'questionsname', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 0 })
+, 
+        jjcd: new FormItemModel({ caption: '紧急程度', detailType: 'FORMITEM', name: 'jjcd', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 0 })
+, 
+        ym: new FormItemModel({ caption: '页面', detailType: 'FORMITEM', name: 'ym', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 0 })
+, 
+        wtms: new FormItemModel({ caption: '问题描述', detailType: 'FORMITEM', name: 'wtms', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+, 
+        jt: new FormItemModel({ caption: '界面截图', detailType: 'FORMITEM', name: 'jt', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+, 
+        wtzt: new FormItemModel({ caption: '问题状态', detailType: 'FORMITEM', name: 'wtzt', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 0 })
+, 
+        kfz: new FormItemModel({ caption: '开发者', detailType: 'FORMITEM', name: 'kfz', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 0 })
+, 
+        wcsj: new FormItemModel({ caption: '完成时间', detailType: 'FORMITEM', name: 'wcsj', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 0 })
+, 
+        wtfk: new FormItemModel({ caption: '问题反馈', detailType: 'FORMITEM', name: 'wtfk', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 0 })
+, 
+        questionsid: new FormItemModel({ caption: '问题收集标识', detailType: 'FORMITEM', name: 'questionsid', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+, 
+    };
+
+    /**
+     * 监控表单属性 srfupdatedate 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof YH_Check
+     */
+    @Watch('data.srfupdatedate')
+    onSrfupdatedateChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'srfupdatedate', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 srforikey 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof YH_Check
+     */
+    @Watch('data.srforikey')
+    onSrforikeyChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'srforikey', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 srfkey 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof YH_Check
+     */
+    @Watch('data.srfkey')
+    onSrfkeyChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'srfkey', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 srfmajortext 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof YH_Check
+     */
+    @Watch('data.srfmajortext')
+    onSrfmajortextChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'srfmajortext', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 srftempmode 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof YH_Check
+     */
+    @Watch('data.srftempmode')
+    onSrftempmodeChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'srftempmode', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 srfuf 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof YH_Check
+     */
+    @Watch('data.srfuf')
+    onSrfufChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'srfuf', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 srfdeid 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof YH_Check
+     */
+    @Watch('data.srfdeid')
+    onSrfdeidChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'srfdeid', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 srfsourcekey 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof YH_Check
+     */
+    @Watch('data.srfsourcekey')
+    onSrfsourcekeyChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'srfsourcekey', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 wtbh 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof YH_Check
+     */
+    @Watch('data.wtbh')
+    onWtbhChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'wtbh', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 questionsname 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof YH_Check
+     */
+    @Watch('data.questionsname')
+    onQuestionsnameChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'questionsname', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 jjcd 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof YH_Check
+     */
+    @Watch('data.jjcd')
+    onJjcdChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'jjcd', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 ym 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof YH_Check
+     */
+    @Watch('data.ym')
+    onYmChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'ym', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 wtms 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof YH_Check
+     */
+    @Watch('data.wtms')
+    onWtmsChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'wtms', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 jt 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof YH_Check
+     */
+    @Watch('data.jt')
+    onJtChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'jt', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 wtzt 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof YH_Check
+     */
+    @Watch('data.wtzt')
+    onWtztChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'wtzt', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 kfz 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof YH_Check
+     */
+    @Watch('data.kfz')
+    onKfzChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'kfz', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 wcsj 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof YH_Check
+     */
+    @Watch('data.wcsj')
+    onWcsjChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'wcsj', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 wtfk 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof YH_Check
+     */
+    @Watch('data.wtfk')
+    onWtfkChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'wtfk', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 questionsid 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof YH_Check
+     */
+    @Watch('data.questionsid')
+    onQuestionsidChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'questionsid', newVal: newVal, oldVal: oldVal });
+    }
+
+
+    /**
+     * 重置表单项值
+     *
+     * @public
+     * @param {{ name: string, newVal: any, oldVal: any }} { name, newVal, oldVal }
+     * @memberof YH_Check
+     */
+    public resetFormData({ name, newVal, oldVal }: { name: string, newVal: any, oldVal: any }): void {
+    }
+
+    /**
+      * 置空对象
+      *
+      * @param {any[]} args
+      * @memberof EditForm
+      */
+    public ResetData(_datas:any){
+        if(Object.keys(_datas).length >0){
+            Object.keys(_datas).forEach((name: string) => {
+                if (this.data.hasOwnProperty(name)) {
+                    this.data[name] = null;
+                }
+            });
+        }
+    }
+
+    /**
+     * 表单逻辑
+     *
+     * @public
+     * @param {{ name: string, newVal: any, oldVal: any }} { name, newVal, oldVal }
+     * @memberof YH_Check
+     */
+    public formLogic({ name, newVal, oldVal }: { name: string, newVal: any, oldVal: any }): void {
+                
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    }
+
+    /**
+     * 表单值变化
+     *
+     * @public
+     * @param {{ name: string, newVal: any, oldVal: any }} { name, newVal, oldVal }
+     * @returns {void}
+     * @memberof YH_Check
+     */
+    public formDataChange({ name, newVal, oldVal }: { name: string, newVal: any, oldVal: any }): void {
+        if (this.ignorefieldvaluechange) {
+            return;
+        }
+        this.resetFormData({ name: name, newVal: newVal, oldVal: oldVal });
+        this.formLogic({ name: name, newVal: newVal, oldVal: oldVal });
+        this.dataChang.next(JSON.stringify(this.data));
+    }
+
+    /**
+     * 表单加载完成
+     *
+     * @public
+     * @param {*} [data={}]
+     * @param {string} [action]
+     * @memberof YH_Check
+     */
+    public onFormLoad(data: any = {},action:string): void {
+        if(Object.is(action,"save") || Object.is(action,"autoSave") || Object.is(action,"submit"))
+        // 更新context的实体主键
+        if(data.questions){
+            Object.assign(this.context,{questions:data.questions})
+        }
+        this.setFormEnableCond(data);
+        this.fillForm(data,action);
+        this.oldData = {};
+        Object.assign(this.oldData, JSON.parse(JSON.stringify(this.data)));
+        this.$store.commit('viewaction/setViewDataChange', { viewtag: this.viewtag, viewdatachange: false });
+        this.formLogic({ name: '', newVal: null, oldVal: null });
+    }
+
+    /**
+     * 值填充
+     *
+     * @param {*} [_datas={}]
+     * @param {string} [action]
+     * @memberof YH_Check
+     */
+    public fillForm(_datas: any = {},action:string): void {
+        this.ignorefieldvaluechange = true;
+        Object.keys(_datas).forEach((name: string) => {
+            if (this.data.hasOwnProperty(name)) {
+                this.data[name] = _datas[name];
+            }
+        });
+        if(Object.is(action,'loadDraft')){
+            this.createDefault();
+        }
+        if(Object.is(action,'load')){
+            this.updateDefault();
+        }
+        this.$nextTick(function () {
+            this.ignorefieldvaluechange = false;
+        })
+    }
+
+    /**
+     * 设置表单项是否启用
+     *
+     * @public
+     * @param {*} data
+     * @memberof YH_Check
+     */
+    public setFormEnableCond(data: any): void {
+        Object.values(this.detailsModel).forEach((detail: any) => {
+            if (!Object.is(detail.detailType, 'FORMITEM')) {
+                return;
+            }
+            const formItem: FormItemModel = detail;
+            formItem.setEnableCond(data.srfuf);
+        });
+    }
+
+    /**
+     * 重置草稿表单状态
+     *
+     * @public
+     * @memberof YH_Check
+     */
+    public resetDraftFormStates(): void {
+        const form: any = this.$refs.form;
+        if (form) {
+            form.resetFields();
+        }
+    }
+
+    /**
+     * 重置校验结果
+     *
+     * @memberof YH_Check
+     */
+    public resetValidates(): void {
+        Object.values(this.detailsModel).forEach((detail: any) => {
+            if (!Object.is(detail.detailType, 'FORMITEM')) {
+                return;
+            }
+            const formItem: FormItemModel = detail;
+            formItem.setError('');
+        });
+    }
+
+    /**
+     * 填充校验结果 （后台）
+     *
+     * @param {any[]} fieldErrors
+     * @memberof YH_Check
+     */
+    public fillValidates(fieldErrors: any[]): void {
+        fieldErrors.forEach((error: any) => {
+            const formItem: FormItemModel = this.detailsModel[error.field];
+            if (!formItem) {
+                return;
+            }
+            this.$nextTick(() => {
+                formItem.setError(error.message);
+            });
+        });
+    }
+
+    /**
+     * 表单校验状态
+     *
+     * @returns {boolean} 
+     * @memberof YH_Check
+     */
+    public formValidateStatus(): boolean {
+        const form: any = this.$refs.form;
+        let validatestate: boolean = true;
+        form.validate((valid: boolean) => {
+            validatestate = valid ? true : false;
+        });
+        return validatestate
+    }
+
+    /**
+     * 获取全部值
+     *
+     * @returns {*}
+     * @memberof YH_Check
+     */
+    public getValues(): any {
+        return this.data;
+    }
+
+    /**
+     * 表单项值变更
+     *
+     * @param {{ name: string, value: any }} $event
+     * @returns {void}
+     * @memberof YH_Check
+     */
+    public onFormItemValueChange($event: { name: string, value: any }): void {
+        if (!$event) {
+            return;
+        }
+        if (!$event.name || Object.is($event.name, '') || !this.data.hasOwnProperty($event.name)) {
+            return;
+        }
+        this.data[$event.name] = $event.value;
+    }
+
+    /**
+     * 设置数据项值
+     *
+     * @param {string} name
+     * @param {*} value
+     * @returns {void}
+     * @memberof YH_Check
+     */
+    public setDataItemValue(name: string, value: any): void {
+        if (!name || Object.is(name, '') || !this.data.hasOwnProperty(name)) {
+            return;
+        }
+        if (Object.is(this.data[name], value)) {
+            return;
+        }
+        this.data[name] = value;
+    }
+
+
+
+    /**
+     * 分组界面行为事件
+     *
+     * @param {*} $event
+     * @memberof YH_Check
+     */
+    public groupUIActionClick($event: any): void {
+        if (!$event) {
+            return;
+        }
+        const item:any = $event.item;
+    }
+
+    /**
+     * Vue声明周期(处理组件的输入属性)
+     *
+     * @memberof YH_Check
+     */
+    public created(): void {
+        this.afterCreated();
+    }
+
+    /**
+     * 执行created后的逻辑
+     *
+     *  @memberof YH_Check
+     */    
+    public afterCreated(){
+        if (this.viewState) {
+            this.viewStateEvent = this.viewState.subscribe(({ tag, action, data }) => {
+                if (!Object.is(tag, this.name)) {
+                    return;
+                }
+                if (Object.is('autoload', action)) {
+                    this.autoLoad(data);
+                }
+                if (Object.is('load', action)) {
+                    this.load(data);
+                }
+                if (Object.is('loaddraft', action)) {
+                    this.loadDraft(data);
+                }
+                if (Object.is('save', action)) {
+                    this.save(data,data.showResultInfo);
+                }
+                if (Object.is('remove', action)) {
+                    this.remove(data);
+                }
+                if (Object.is('saveandexit', action)) {
+                    this.saveAndExit(data);
+                }
+                if (Object.is('saveandnew', action)) {
+                    this.saveAndNew(data);
+                }
+                if (Object.is('removeandexit', action)) {
+                    this.removeAndExit(data);
+                }
+                if (Object.is('refresh', action)) {
+                    this.refresh(data);
+                }
+            });
+        }
+        this.dataChang
+            .pipe(
+                debounceTime(300),
+                distinctUntilChanged()
+            ).subscribe((data: any) => {
+                if (this.autosave) {
+                    this.autoSave();
+                }
+                const state = !Object.is(JSON.stringify(this.oldData), JSON.stringify(this.data)) ? true : false;
+                this.$store.commit('viewaction/setViewDataChange', { viewtag: this.viewtag, viewdatachange: state });
+            });
+    }
+
+    /**
+     * vue 生命周期
+     *
+     * @memberof YH_Check
+     */
+    public destroyed() {
+        this.afterDestroy();
+    }
+
+    /**
+     * 执行destroyed后的逻辑
+     *
+     * @memberof YH_Check
+     */
+    public afterDestroy() {
+        if (this.viewStateEvent) {
+            this.viewStateEvent.unsubscribe();
+        }
+        if (this.dataChangEvent) {
+            this.dataChangEvent.unsubscribe();
+        }
+    }
+
+    /**
+     * 拷贝内容
+     *
+     * @param {*} [arg={}]
+     * @memberof @memberof YH_Check
+     */
+    public copy(arg: any = {}): void {
+        this.loadDraft(arg);
+    }
+
+    /**
+     *打印
+     *@memberof @memberof YH_Check
+     */
+    public print(){
+        let _this:any = this;
+        _this.$print({id:'form',popTitle:'本页问题表单（用户查看）'});
+    }
+
+    /**
+     * 部件刷新
+     *
+     * @param {any[]} args
+     * @memberof YH_Check
+     */
+    public refresh(args: any[]): void {
+        let arg: any = {};
+        Object.assign(arg,args[0]);
+        if (this.data.srfkey && !Object.is(this.data.srfkey, '')) {
+            Object.assign(arg, { srfkey: this.data.srfkey });
+            this.load(arg);
+            return;
+        }
+        if (this.data.srfkeys && !Object.is(this.data.srfkeys, '')) {
+            Object.assign(arg, { srfkey: this.data.srfkeys });
+            this.load(arg);
+            return;
+        }
+    }
+
+    /**
+     * 自动加载
+     *
+     * @param {*} [arg={}]
+     * @returns {void}
+     * @memberof YH_Check
+     */
+    public autoLoad(arg: any = {}): void {
+        if (arg.srfkey && !Object.is(arg.srfkey, '')) {
+            Object.assign(arg, { srfkey: arg.srfkey });
+            this.load(arg);
+            return;
+        }
+        if (arg.srfkeys && !Object.is(arg.srfkeys, '')) {
+            Object.assign(arg, { srfkey: arg.srfkeys });
+            this.load(arg);
+            return;
+        }
+        this.loadDraft(arg);
+    }
+
+    /**
+     * 加载
+     *
+     * @public
+     * @param {*} [opt={}]
+     * @memberof YH_Check
+     */
+    public load(opt: any = {}): void {
+        if(!this.loadAction){
+            this.$Notice.error({ title: '错误', desc: 'QUESTIONSYH_CheckEditView视图表单loadAction参数未配置' });
+            return;
+        }
+        const arg: any = { ...opt };
+        let viewparamResult:any = Object.assign(arg,this.viewparams);
+        const get: Promise<any> = this.service.get(this.loadAction,JSON.parse(JSON.stringify(this.context)),{viewparams:viewparamResult}, this.showBusyIndicator);
+        get.then((response: any) => {
+            if (response && response.status === 200) {
+                const data = response.data;
+                this.onFormLoad(data,'load');
+                this.$emit('load', data);
+                this.$nextTick(() => {
+                    this.formState.next({ type: 'load', data: data });
+                });
+            }
+        }).catch((response: any) => {
+            if (response && response.status && response.data) {
+                this.$Notice.error({ title: '错误', desc: response.data.message });
+                return;
+            }
+            if (!response || !response.status || !response.data) {
+                this.$Notice.error({ title: '错误', desc: '系统异常' });
+                return;
+            }
+        });
+    }
+
+    /**
+     * 加载草稿
+     *
+     * @param {*} [opt={}]
+     * @memberof YH_Check
+     */
+    public loadDraft(opt: any = {}): void {
+        if(!this.loaddraftAction){
+            this.$Notice.error({ title: '错误', desc: 'QUESTIONSYH_CheckEditView视图表单loaddraftAction参数未配置' });
+            return;
+        }
+        const arg: any = { ...opt } ;
+        let viewparamResult:any = Object.assign(arg,this.viewparams);
+        let post: Promise<any> = this.service.loadDraft(this.loaddraftAction,JSON.parse(JSON.stringify(this.context)),{viewparams:viewparamResult}, this.showBusyIndicator);
+        post.then((response: any) => {
+            if (!response.status || response.status !== 200) {
+                if (response.data) {
+                    this.$Notice.error({ title: '错误', desc: response.data.message });
+                }
+                return;
+            }
+
+            const data = response.data;
+            if(data.questions){
+                Object.assign(this.context,{questions:data.questions})
+            }
+            this.resetDraftFormStates();
+            this.onFormLoad(data,'loadDraft');
+            this.$emit('load', data);
+            this.$nextTick(() => {
+                this.formState.next({ type: 'load', data: data });
+            });
+            setTimeout(() => {
+                const form: any = this.$refs.form;
+                if (form) {
+                    form.fields.forEach((field: any) => {
+                        field.validateMessage = "";
+                        field.validateState = "";
+                        field.validateStatus = false;
+                    });
+                }
+            });
+        }).catch((response: any) => {
+            if (response && response.status  && response.data) {
+                this.$Notice.error({ title: '错误', desc: response.data.message });
+                return;
+            }
+            if (!response || !response.status || !response.data) {
+                this.$Notice.error({ title: '错误', desc: '系统异常' });
+                return;
+            }
+        });
+    }
+
+    /**
+     * 自动保存
+     *
+     * @param {*} [opt={}]
+     * @memberof YH_Check
+     */
+    public autoSave(opt: any = {}): void {
+        if (!this.formValidateStatus()) {
+            return;
+        }
+        const arg: any = { ...opt };
+        const data = this.getValues();
+        Object.assign(arg, data);
+        const action: any = Object.is(data.srfuf, '1') ? this.updateAction : this.createAction;
+        if(!action){
+            let actionName:any = Object.is(data.srfuf, '1')?"updateAction":"createAction";
+            this.$Notice.error({ title: '错误', desc: 'QUESTIONSYH_CheckEditView视图表单'+actionName+'参数未配置' });
+            return;
+        }
+        Object.assign(arg,{viewparams:this.viewparams});
+        const post: Promise<any> = this.service.add(action, JSON.parse(JSON.stringify(this.context)),arg, this.showBusyIndicator);
+        post.then((response: any) => {
+            if (!response.status || response.status !== 200) {
+                if (response.data) {
+                    this.$Notice.error({ title: '错误', desc: response.data.message });
+                }
+                return;
+            }
+
+            const data = response.data;
+            this.onFormLoad(data,'autoSave');
+            this.$emit('save', data);
+            this.$store.dispatch('viewaction/datasaved', { viewtag: this.viewtag });
+            this.$nextTick(() => {
+                this.formState.next({ type: 'save', data: data });
+            });
+        }).catch((response: any) => {
+            if (response && response.status && response.data) {
+                this.$Notice.error({ title: '错误', desc: response.data.message });
+                return;
+            }
+            if (!response || !response.status || !response.data) {
+                this.$Notice.error({ title: '错误', desc: '系统异常' });
+                return;
+            }
+        });
+    }
+
+    /**
+     * 保存
+     *
+     * @param {*} [opt={}]
+     * @param {boolean} [showResultInfo] 
+     * @param {boolean} [ifStateNext] formState是否下发通知
+     * @returns {Promise<any>}
+     * @memberof YH_Check
+     */
+    public async save(opt: any = {}, showResultInfo?: boolean, ifStateNext: boolean = true): Promise<any> {
+        return new Promise((resolve: any, reject: any) => {
+            showResultInfo = showResultInfo === undefined ? true : false;
+            if (!this.formValidateStatus()) {
+                this.$Notice.error({ title: '错误', desc: '值规则校验异常' });
+                return;
+            }
+            const arg: any = { ...opt };
+            const data = this.getValues();
+            Object.assign(arg, data);
+            Object.assign(arg, this.context);
+            if (ifStateNext) {
+                this.drcounter = 0;
+                if(this.drcounter !== 0){
+                    this.drsaveopt = opt;
+                    this.formState.next({ type: 'beforesave', data: arg });//先通知关系界面保存
+                    this.saveState = resolve;
+                    return;
+                }
+            }
+            const action: any = Object.is(data.srfuf, '1') ? this.updateAction : this.createAction;
+            if(!action){
+                let actionName:any = Object.is(data.srfuf, '1')?"updateAction":"createAction";
+                this.$Notice.error({ title: '错误', desc: 'QUESTIONSYH_CheckEditView视图表单'+actionName+'参数未配置' });
+                return;
+            }
+            Object.assign(arg,{viewparams:this.viewparams});
+            const post: Promise<any> = Object.is(data.srfuf, '1')?this.service.update(action, JSON.parse(JSON.stringify(this.context)),arg, this.showBusyIndicator):this.service.add(action,JSON.parse(JSON.stringify(this.context)),arg, this.showBusyIndicator);
+            post.then((response: any) => {
+                if (!response.status || response.status !== 200) {
+                    if (response.data) {
+                        this.$Notice.error({ title: '错误', desc: response.data.message });
+                    }
+                    return;
+                }
+
+                const data = response.data;
+                this.onFormLoad(data,'save');
+                this.$emit('save', data);
+                this.$store.dispatch('viewaction/datasaved', { viewtag: this.viewtag });
+                this.$nextTick(() => {
+                    this.formState.next({ type: 'save', data: data });
+                });
+                if (showResultInfo) {
+                    this.$Notice.success({ title: '', desc: (data.srfmajortext ? data.srfmajortext : '') + '&nbsp;保存成功！' });
+                }
+                resolve(response);
+            }).catch((response: any) => {
+                if (response && response.status  && response.data) {
+                    this.$Notice.error({ title: '错误', desc: response.data.message });
+                    reject(response);
+                    return;
+                }
+                if (!response || !response.status || !response.data) {
+                    this.$Notice.error({ title: '错误', desc: '系统异常' });
+                    reject(response);
+                    return;
+                }
+                reject(response);
+            });
+        })
+    }
+
+    /**
+    * 删除
+    *
+    * @public
+    * @param {*} [opt={}]
+    * @memberof EditForm
+    */
+    public remove(opt:Array<any> = [],showResultInfo?: boolean): Promise<any> {
+        return new Promise((resolve: any, reject: any) => {
+            if(!this.removeAction){
+                this.$Notice.error({ title: '错误', desc: 'QUESTIONSYH_CheckEditView视图表单removeAction参数未配置' });
+                return;
+            }
+            const arg: any = opt[0];
+            const _this: any = this;
+            Object.assign(arg,{viewparams:this.viewparams});
+            this.service.delete(_this.removeAction, JSON.parse(JSON.stringify(this.context)),arg, showResultInfo).then((response: any) => {
+                if (response) {
+                    const data = response.data;
+                    this.$emit('remove',data);
+                    this.formState.next({ type: 'remove', data: data });
+                    this.data.ismodify = false;
+                    this.$Notice.success({ title: '', desc: (data.srfmajortext ? data.srfmajortext : '') + '&nbsp;删除成功！' });
+                    resolve(response);
+                }
+            }).catch((error: any) => {
+                const { data: _data } = error;
+                this.$Notice.error({ title: _data.title, desc: _data.message });
+                reject(error);
+            });
+        });
+    }
+
+    /**
+     * 工作流启动
+     *
+     * @param {*} [data={}]
+     * @param {*} [localdata={}]
+     * @returns {Promise<any>}
+     * @memberof YH_Check
+     */
+    public async wfstart(data: any,localdata?:any): Promise<any> {
+        return new Promise((resolve: any, reject: any) => {
+            const _this: any = this;
+            const post: Promise<any> = _this.save({},false);
+            post.then((response:any) =>{
+                const arg:any = response.data;
+                if(this.viewparams){
+                    Object.assign(arg,{viewparams:this.viewparams});
+                }
+                const result: Promise<any> = this.service.wfstart(_this.WFStartAction, JSON.parse(JSON.stringify(this.context)),arg, this.showBusyIndicator,localdata);
+                result.then((response: any) => {
+                    if (!response || response.status !== 200) {
+                        if(response.data){
+                            this.$Notice.error({ title: '', desc: '工作流启动失败, ' + response.data.message });
+                        }
+                        return;
+                    }
+                    this.$Notice.info({ title: '', desc: '工作流启动成功' });
+                    resolve(response);
+            }).catch((response: any) => {
+                if (response && response.status && response.data) {
+                    this.$Notice.error({ title: '错误', desc: response.data.message });
+                    reject(response);
+                    return;
+                }
+                if (!response || !response.status || !response.data) {
+                    this.$Notice.error({ title: '错误', desc: '系统异常' });
+                    reject(response);
+                    return;
+                }
+                reject(response);
+            });
+            }).catch((response: any) => {
+                    if (response && response.status && response.data) {
+                        this.$Notice.error({ title: '错误', desc: response.data.message });
+                        reject(response);
+                        return;
+                    }
+                    if (!response || !response.status || !response.data) {
+                        this.$Notice.error({ title: '错误', desc: '系统异常' });
+                        reject(response);
+                        return;
+                    }
+                    reject(response);
+            })
+        });
+    }
+
+    /**
+     * 工作流提交
+     *
+     * @param {*} [data={}]
+     * @param {*} [localdata={}]
+     * @returns {Promise<any>}
+     * @memberof YH_Check
+     */
+    public async wfsubmit(data: any,localdata?:any): Promise<any> {
+        return new Promise((resolve: any, reject: any) => {
+        const _this: any = this;
+        const arg: any = data[0];
+        Object.assign(arg,{viewparams:this.viewparams});
+        if (!arg.questions || Object.is(arg.questions, '')) {
+            return;
+        }
+        const post: Promise<any> = Object.is(arg.srfuf, '1')?this.service.update(this.updateAction, JSON.parse(JSON.stringify(this.context)),arg, this.showBusyIndicator):this.service.add(this.createAction,JSON.parse(JSON.stringify(this.context)),arg, this.showBusyIndicator);
+        post.then((response:any) =>{
+                const arg:any = response.data;
+                // 保存完成UI处理
+                this.onFormLoad(arg,'save');
+                this.$emit('save', arg);
+                this.$nextTick(() => {
+                    this.formState.next({ type: 'save', data: arg });
+                });
+                // 准备提交参数
+                if(this.viewparams){
+                    Object.assign(arg,{viewparams:this.viewparams});
+                }
+                const result: Promise<any> = this.service.wfsubmit(_this.WFSubmitAction, JSON.parse(JSON.stringify(this.context)),arg, this.showBusyIndicator,localdata);
+                result.then((response: any) => {
+                    if (!response || response.status !== 200) {
+                        if(response.data){
+                            this.$Notice.error({ title: '', desc: '工作流提交失败, ' + response.data.message });
+                        }
+                        return;
+                    }
+                    this.onFormLoad(arg,'submit');
+                    this.$store.dispatch('viewaction/datasaved', { viewtag: this.viewtag });
+                    this.$Notice.info({ title: '', desc: '工作流提交成功' });
+                    resolve(response);
+            }).catch((response: any) => {
+                if (response && response.status && response.data) {
+                    this.$Notice.error({ title: '错误', desc: response.data.message });
+                    reject(response);
+                    return;
+                }
+                if (!response || !response.status || !response.data) {
+                    this.$Notice.error({ title: '错误', desc: '系统异常' });
+                    reject(response);
+                    return;
+                }
+                reject(response);
+            });
+            }).catch((response: any) => {
+                    if (response && response.status && response.data) {
+                        this.$Notice.error({ title: '错误', desc: response.data.message });
+                        reject(response);
+                        return;
+                    }
+                    if (!response || !response.status || !response.data) {
+                        this.$Notice.error({ title: '错误', desc: '系统异常' });
+                        reject(response);
+                        return;
+                    }
+                    reject(response);
+            })
+        })
+    }
+
+    /**
+     * 表单项更新
+     *
+     * @param {string} mode 界面行为名称
+     * @param {*} [data={}] 请求数据
+     * @param {string[]} updateDetails 更新项
+     * @param {boolean} [showloading] 是否显示加载状态
+     * @returns {void}
+     * @memberof YH_Check
+     */
+    public updateFormItems(mode: string, data: any = {}, updateDetails: string[], showloading?: boolean): void {
+        if (!mode || (mode && Object.is(mode, ''))) {
+            return;
+        }
+        const arg: any = { ...data };
+        Object.assign(arg,this.viewparams);
+        const post: Promise<any> = this.service.frontLogic(mode,JSON.parse(JSON.stringify(this.context)),arg, showloading);
+        post.then((response: any) => {
+            if (!response || response.status !== 200) {
+                this.$Notice.error({ title: '错误', desc: '表单项更新失败' });
+                return;
+            }
+            const data = response.data;
+            const _data: any = {};
+            updateDetails.forEach((name: string) => {
+                if (!data.hasOwnProperty(name)) {
+                    return;
+                }
+                Object.assign(_data, { [name]: data[name] });
+            });
+            this.setFormEnableCond(_data);
+            this.fillForm(_data,'updateFormItem');
+            this.formLogic({ name: '', newVal: null, oldVal: null });
+            this.dataChang.next(JSON.stringify(this.data));
+            this.$nextTick(() => {
+                this.formState.next({ type: 'updateformitem', ufimode: arg.srfufimode, data: _data });
+            });
+        }).catch((response: any) => {
+            if (response && response.status && response.data) {
+                this.$Notice.error({ title: '错误', desc: response.data.message });
+                return;
+            }
+            if (!response || !response.status || !response.data) {
+                this.$Notice.error({ title: '错误', desc: '系统异常' });
+                return;
+            }
+        });
+    }
+
+    /**
+     * 回车事件
+     *
+     * @param {*} $event
+     * @memberof YH_Check
+     */
+    public onEnter($event: any): void {
+    }
+
+    /**
+     * 保存并退出
+     *
+     * @param {any[]} args
+     * @memberof YH_Check
+     */
+    public saveAndExit(data:any[]):Promise<any>{
+        let _this = this;
+        return new Promise((resolve: any, reject: any) =>{
+            let arg: any = {};
+            if(data && data.length > 0){
+                Object.assign(arg,data[0]);
+            }
+            _this.currentAction = "saveAndExit";
+            _this.save([arg]).then((res) =>{
+                if(res){
+                    _this.closeView(res.data);
+                }
+                resolve(res);
+            }).catch((error) =>{
+                reject(error);
+            })
+        })
+    }
+
+    /**
+     * 保存并新建
+     *
+     * @param {any[]} args
+     * @memberof YH_Check
+     */
+    public saveAndNew(data:any[]):Promise<any>{
+        let _this = this;
+        return new Promise((resolve: any, reject: any) =>{
+            let arg: any = {};
+            if(data && data.length > 0){
+                Object.assign(arg,data[0]);
+            }
+            _this.currentAction = "saveAndNew";
+            _this.save([arg]).then((res) =>{
+                _this.ResetData(res);
+                _this.loadDraft({});
+            }).catch((error) =>{
+                reject(error);
+            })
+        })
+    }
+
+    /**
+     * 删除并退出
+     *
+     * @param {any[]} args
+     * @memberof YH_Check
+     */
+    public removeAndExit(data:any[]):Promise<any>{
+        let _this = this;
+        return new Promise((resolve: any, reject: any) =>{
+            let arg: any = {};
+            if(data && data.length > 0){
+                Object.assign(arg,data[0]);
+            }
+            _this.remove([arg]).then((res) =>{
+                if(res){
+                  _this.closeView(res.data);
+                }
+                resolve(res);
+            }).catch((error) =>{
+                reject(error);
+            })
+        })
+    }
+
+    /**
+    * 关系界面数据保存完成
+    *
+    * @param {any} $event
+    * @memberof YH_Check
+    */
+    public drdatasaved($event:any){
+        let _this = this;
+        this.drcounter--;
+        if(this.drcounter > 0){
+            return;
+        }
+        this.save(this.drsaveopt, undefined, false).then((res) =>{
+            this.saveState(res);
+            this.drsaveopt = {};
+            if(Object.is(_this.currentAction, "saveAndNew")){
+                _this.ResetData(res);
+                _this.loadDraft({});
+            }else if(Object.is(_this.currentAction, "saveAndExit")){
+                if(res){
+                    _this.closeView(res.data);
+                }
+            }
+        });
+    }
+
+    /**
+     * 新建默认值
+     * @memberof YH_Check
+     */
+    public createDefault(){                    
+        if (this.data.hasOwnProperty('jjcd')) {
+            this.data['jjcd'] = '10';
+        }
+    }
+
+    /**
+     * 更新默认值
+     * @memberof YH_Check
+     */
+    public updateDefault(){                    
+    }
+
+    
+}
+</script>
+
+<style lang='less'>
+@import './yh-check-form.less';
+</style>

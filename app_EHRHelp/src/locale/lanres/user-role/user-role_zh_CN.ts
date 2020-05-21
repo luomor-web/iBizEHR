@@ -1,0 +1,20 @@
+export default {
+  fields: {
+    menumode: '菜单模式',
+    userdata: '用户数据',
+    memo: '备注',
+    userroleid: '用户角色标识',
+    updateman: '更新人',
+    reserver: '保留字段',
+    userdata2: '用户数据2',
+    reserver2: '保留字段2',
+    createman: '建立人',
+    issystem: '系统数据',
+    reserver3: '保留字段3',
+    userrolename: '用户角色名称',
+    createdate: '建立时间',
+    updatedate: '更新时间',
+    reserver4: '保留字段4',
+    userroletype: '用户角色类型',
+  },
+};

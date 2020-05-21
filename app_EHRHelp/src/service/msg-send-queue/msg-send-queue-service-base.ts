@@ -1,0 +1,179 @@
+import { Http,Util } from '@/utils';
+import EntityService from '../entity-service';
+
+
+
+/**
+ * 消息发送队列服务对象基类
+ *
+ * @export
+ * @class MsgSendQueueServiceBase
+ * @extends {EntityServie}
+ */
+export default class MsgSendQueueServiceBase extends EntityService {
+
+    /**
+     * Creates an instance of  MsgSendQueueServiceBase.
+     * 
+     * @param {*} [opts={}]
+     * @memberof  MsgSendQueueServiceBase
+     */
+    constructor(opts: any = {}) {
+        super(opts);
+    }
+
+    /**
+     * 初始化基础数据
+     *
+     * @memberof MsgSendQueueServiceBase
+     */
+    public initBasicData(){
+        this.APPLYDEKEY ='msgsendqueue';
+        this.APPDEKEY = 'msgsendqueueid';
+        this.APPDENAME = 'msgsendqueues';
+        this.APPDETEXT = 'msgsendqueuename';
+        this.APPNAME = 'ehrhelp';
+        this.SYSTEMNAME = 'ehr';
+    }
+
+// 实体接口
+
+    /**
+     * Select接口方法
+     *
+     * @param {*} [context={}]
+     * @param {*} [data={}]
+     * @param {boolean} [isloading]
+     * @returns {Promise<any>}
+     * @memberof MsgSendQueueServiceBase
+     */
+    public async Select(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+            return Http.getInstance().get(`/msgsendqueues/${context.msgsendqueue}/select`,isloading);
+    }
+
+    /**
+     * Update接口方法
+     *
+     * @param {*} [context={}]
+     * @param {*} [data={}]
+     * @param {boolean} [isloading]
+     * @returns {Promise<any>}
+     * @memberof MsgSendQueueServiceBase
+     */
+    public async Update(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        let masterData:any = {};
+        Object.assign(data,masterData);
+            let res:any = await  Http.getInstance().put(`/msgsendqueues/${context.msgsendqueue}`,data,isloading);
+            return res;
+    }
+
+    /**
+     * Remove接口方法
+     *
+     * @param {*} [context={}]
+     * @param {*} [data={}]
+     * @param {boolean} [isloading]
+     * @returns {Promise<any>}
+     * @memberof MsgSendQueueServiceBase
+     */
+    public async Remove(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+            return Http.getInstance().delete(`/msgsendqueues/${context.msgsendqueue}`,isloading);
+
+    }
+
+    /**
+     * CheckKey接口方法
+     *
+     * @param {*} [context={}]
+     * @param {*} [data={}]
+     * @param {boolean} [isloading]
+     * @returns {Promise<any>}
+     * @memberof MsgSendQueueServiceBase
+     */
+    public async CheckKey(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+            return Http.getInstance().post(`/msgsendqueues/${context.msgsendqueue}/checkkey`,data,isloading);
+    }
+
+    /**
+     * GetDraft接口方法
+     *
+     * @param {*} [context={}]
+     * @param {*} [data={}]
+     * @param {boolean} [isloading]
+     * @returns {Promise<any>}
+     * @memberof MsgSendQueueServiceBase
+     */
+    public async GetDraft(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        let res:any = await  Http.getInstance().get(`/msgsendqueues/getdraft`,isloading);
+        res.data.msgsendqueue = data.msgsendqueue;
+        return res;
+    }
+
+    /**
+     * Create接口方法
+     *
+     * @param {*} [context={}]
+     * @param {*} [data={}]
+     * @param {boolean} [isloading]
+     * @returns {Promise<any>}
+     * @memberof MsgSendQueueServiceBase
+     */
+    public async Create(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        let masterData:any = {};
+        Object.assign(data,masterData);
+        if(!data.srffrontuf || data.srffrontuf !== "1"){
+            data[this.APPDEKEY] = null;
+        }
+        if(data.srffrontuf){
+            delete data.srffrontuf;
+        }
+        let tempContext:any = JSON.parse(JSON.stringify(context));
+        let res:any = await Http.getInstance().post(`/msgsendqueues`,data,isloading);
+        return res;
+    }
+
+    /**
+     * Get接口方法
+     *
+     * @param {*} [context={}]
+     * @param {*} [data={}]
+     * @param {boolean} [isloading]
+     * @returns {Promise<any>}
+     * @memberof MsgSendQueueServiceBase
+     */
+    public async Get(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+            let res:any = await Http.getInstance().get(`/msgsendqueues/${context.msgsendqueue}`,isloading);
+            return res;
+
+    }
+
+    /**
+     * Save接口方法
+     *
+     * @param {*} [context={}]
+     * @param {*} [data={}]
+     * @param {boolean} [isloading]
+     * @returns {Promise<any>}
+     * @memberof MsgSendQueueServiceBase
+     */
+    public async Save(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        let masterData:any = {};
+        Object.assign(data,masterData);
+            let res:any = await  Http.getInstance().post(`/msgsendqueues/${context.msgsendqueue}/save`,data,isloading);
+            return res;
+    }
+
+    /**
+     * FetchDefault接口方法
+     *
+     * @param {*} [context={}]
+     * @param {*} [data={}]
+     * @param {boolean} [isloading]
+     * @returns {Promise<any>}
+     * @memberof MsgSendQueueServiceBase
+     */
+    public async FetchDefault(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        let tempData:any = JSON.parse(JSON.stringify(data));
+        return Http.getInstance().get(`/msgsendqueues/fetchdefault`,tempData,isloading);
+    }
+}

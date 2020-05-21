@@ -1,0 +1,23 @@
+
+export default {
+  fields: {
+    validflag: '是否启用',
+    reserver: '保留字段',
+    updatedate: '更新时间',
+    memo: '备注',
+    wxaccountname: '微信公众号名称',
+    createman: '建立人',
+    apiappid: 'AppId',
+    wxaccountid: '微信公众号标识',
+    apiappsecret: 'AppSecret',
+    reserver3: '保留字段3',
+    createdate: '建立时间',
+    reserver4: '保留字段4',
+    apitoken: 'Token',
+    reserver2: '保留字段2',
+    updateman: '更新人',
+    apiurl: 'API地址',
+    orgname: '机构',
+    orgid: '机构',
+  },
+};

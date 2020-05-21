@@ -1,0 +1,21 @@
+export default {
+  fields: {
+    wfassistworkid: '工作流代办工作标识',
+    createman: '建立人',
+    updateman: '更新人',
+    wfplogicname: '流程步骤名称',
+    createdate: '建立时间',
+    updatedate: '更新时间',
+    wfassistworkname: '工作流代办工作名称',
+    wfstepid: '流程步骤标识',
+    wfinstancename: '流程实例',
+    wfstepactorname: '步骤操作者',
+    wfworkflowname: '工作流',
+    userdata4: 'USERDATA4',
+    userdata: 'USERDATA',
+    activestepid: 'ACTIVESTEPID',
+    wfinstanceid: '流程实例',
+    wfstepactorid: '步骤操作者',
+    wfworkflowid: '工作流',
+  },
+};
