@@ -45,7 +45,7 @@
 
     <!--数据查询[Default]-->
     <sql id="Default" databaseId="oracle">
-       <![CDATA[	SELECT t1.CREATEDATE, t1.CREATEMAN, t1.ISSYSTEM, t1.MEMO, t1.MENUMODE, t1.RESERVER, t1.RESERVER2, t1.RESERVER3, t1.RESERVER4, t1.UPDATEDATE, t1.UPDATEMAN, t1.USERDATA, t1.USERDATA2, t1.USERROLEID, t1.USERROLENAME, t1.USERROLETYPE FROM T_SRFUSERROLE t1  
+       <![CDATA[	SELECT t1.CREATEDATE, t1.CREATEMAN, t1.ISSYSTEM, t1.MEMO, t1.MENUMODE, t1.RESERVER, t1.RESERVER2, t1.RESERVER3, t1.RESERVER4, t1.UPDATEDATE, t1.UPDATEMAN, t1.USERDATA, t1.USERDATA2, t1.USERROLEID, t1.USERROLENAME, t1.USERROLETYPE FROM T_USERROLE t1  
 			]]>
     </sql>
 
@@ -76,7 +76,7 @@
 
     <!--数据查询[LevelC]-->
     <sql id="LevelC" databaseId="oracle">
-       <![CDATA[	SELECT t1.CREATEDATE, t1.CREATEMAN, t1.ISSYSTEM, t1.MEMO, t1.MENUMODE, t1.RESERVER, t1.RESERVER2, t1.RESERVER3, t1.RESERVER4, t1.UPDATEDATE, t1.UPDATEMAN, t1.USERDATA, t1.USERDATA2, t1.USERROLEID, t1.USERROLENAME, t1.USERROLETYPE FROM T_SRFUSERROLE t1  
+       <![CDATA[	SELECT t1.CREATEDATE, t1.CREATEMAN, t1.ISSYSTEM, t1.MEMO, t1.MENUMODE, t1.RESERVER, t1.RESERVER2, t1.RESERVER3, t1.RESERVER4, t1.UPDATEDATE, t1.UPDATEMAN, t1.USERDATA, t1.USERDATA2, t1.USERROLEID, t1.USERROLENAME, t1.USERROLETYPE FROM T_USERROLE t1  
 				 WHERE 	( ( 'ibzadmin' = (select t.loginaccountname from t_srfloginaccount t where t.loginaccountid = #{srf.sessioncontext.SRFPERSONID')})  OR  ( t1.USERDATA = '20'  AND  exists(select 1 from t_srfuserroledetail t2 where t2.userroleid = 'BF5D496B-8B7A-4C64-AA5B-82A6D8C18DF2' and t2.userobjectid =#{srf.sessioncontext.SRFPERSONID')}) )  OR  ( t1.USERDATA IS NOT NULL  AND  exists(select 1 from t_srfuserroledetail t2 where t2.userroleid = '32A40E9C-9BC9-41AD-ACDD-DCE44CB4B16C' and t2.userobjectid =#{srf.sessioncontext.SRFPERSONID')}) ) ) )
 			]]>
     </sql>
