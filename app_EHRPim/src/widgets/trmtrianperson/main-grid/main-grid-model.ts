@@ -90,12 +90,6 @@ export default class MainModel {
           name: 'trmtrianperson',
           prop: 'trmtrianpersonid',
         },
-      {
-        name: 'n_pimpersonname_like',
-        prop: 'n_pimpersonname_like',
-        dataType: 'PICKUPTEXT',
-      },
-
         {
           name:'size',
           prop:'size'

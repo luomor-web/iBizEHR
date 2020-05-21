@@ -14,23 +14,7 @@
     </template>
     <template slot="content">
       <div class="view-content-wrapper">
-        <view_searchform 
-    :viewState="viewState"  
-    :viewparams="viewparams" 
-    :context="context" 
-    :showBusyIndicator="true"
-    v-show="isExpandSearchForm"
-    loaddraftAction="FilterGetDraft"
-    loadAction="FilterGet"
-
-    name="searchform"  
-    ref='searchform' 
-    @save="searchform_save($event)"  
-    @search="searchform_search($event)"  
-    @load="searchform_load($event)"  
-    @closeview="closeView($event)">
-</view_searchform>
-<view_grid 
+        <view_grid 
     :viewState="viewState"  
     :viewparams="viewparams" 
     :context="context" 
@@ -162,10 +146,8 @@ export default class PIMRESEARCHFINDINGSRESEARCHGridViewBase extends GridViewBas
      * @memberof PIMRESEARCHFINDINGSRESEARCHGridViewBase
      */
     public containerModel: any = {
-        view_toolbar2: { name: 'toolbar2', type: 'TOOLBAR' },
         view_toolbar: { name: 'toolbar', type: 'TOOLBAR' },
         view_grid: { name: 'grid', type: 'GRID' },
-        view_searchform: { name: 'searchform', type: 'SEARCHFORM' },
     };
 
     /**
@@ -184,11 +166,15 @@ export default class PIMRESEARCHFINDINGSRESEARCHGridViewBase extends GridViewBas
      * @memberof PIMRESEARCHFINDINGSRESEARCHGridView
      */
     public toolBarModels: any = {
-        deuiaction3: { name: 'deuiaction3', caption: '开启行编辑','isShowCaption':true,'isShowIcon':true, tooltip: '开启行编辑', iconcls: 'fa fa-edit', icon: '', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: 'SRFUR__JGLYZW', uiaction: { tag: 'OpenRowEdit', target: '' }, class: '' },
+        deuiaction1: { name: 'deuiaction1', caption: '新建','isShowCaption':true,'isShowIcon':true, tooltip: '新建', iconcls: 'fa fa-plus', icon: '', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: '', uiaction: { tag: 'NewRow', target: '' }, class: '' },
 
-        deuiaction6: { name: 'deuiaction6', caption: '导出','isShowCaption':true,'isShowIcon':true, tooltip: '导出', iconcls: 'fa fa-file-excel-o', icon: '', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: '', uiaction: { tag: 'ExportExcel', target: '' }, MaxRowCount: 5000, class: '' },
+        deuiaction2: { name: 'deuiaction2', caption: '保存','isShowCaption':true,'isShowIcon':true, tooltip: '保存', iconcls: 'fa fa-save', icon: '', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: '', uiaction: { tag: 'SaveRow', target: '' }, class: '' },
 
-        deuiaction2: { name: 'deuiaction2', caption: '过滤','isShowCaption':true,'isShowIcon':true, tooltip: '过滤', iconcls: 'fa fa-filter', icon: '', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: 'SRFUR__JGLYKQLX', uiaction: { tag: 'ToggleFilter', target: '' }, class: '' },
+        deuiaction3: { name: 'deuiaction3', caption: '删除','isShowCaption':true,'isShowIcon':true, tooltip: '删除', iconcls: 'fa fa-remove', icon: '', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: 'SRFUR__JGLYGXML', uiaction: { tag: 'Remove', target: 'MULTIKEY' }, class: '' },
+
+        deuiaction4: { name: 'deuiaction4', caption: '导入','isShowCaption':true,'isShowIcon':true, tooltip: '导入', iconcls: 'fa fa-upload', icon: '', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: 'SRFUR__JGLYYPZSZYJTJ', uiaction: { tag: 'Import', target: '' }, class: '' },
+
+        deuiaction5: { name: 'deuiaction5', caption: '导出','isShowCaption':true,'isShowIcon':true, tooltip: '导出', iconcls: 'fa fa-file-excel-o', icon: '', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: '', uiaction: { tag: 'ExportExcel', target: '' }, MaxRowCount: 5000, class: '' },
 
     };
 
@@ -222,37 +208,10 @@ export default class PIMRESEARCHFINDINGSRESEARCHGridViewBase extends GridViewBas
                 this.newdata(args, params, $event, xData);
             },
             grid: this.$refs.grid,
-            searchform: this.$refs.searchform,
             keyPSDEField: 'pimresearchfindings',
             majorPSDEField: 'pimresearchfindingsname',
             isLoadDefault: true,
         });
-    }
-
-
-    /**
-     * toolbar2 部件 click 事件
-     *
-     * @param {*} [args={}]
-     * @param {*} $event
-     * @memberof PIMRESEARCHFINDINGSRESEARCHGridViewBase
-     */
-    public toolbar2_click($event: any, $event2?: any) {
-        if (Object.is($event.tag, 'deuiaction1')) {
-            this.toolbar2_deuiaction1_click($event, '', $event2);
-        }
-        if (Object.is($event.tag, 'deuiaction2')) {
-            this.toolbar2_deuiaction2_click($event, '', $event2);
-        }
-        if (Object.is($event.tag, 'deuiaction3')) {
-            this.toolbar2_deuiaction3_click($event, '', $event2);
-        }
-        if (Object.is($event.tag, 'deuiaction4')) {
-            this.toolbar2_deuiaction4_click($event, '', $event2);
-        }
-        if (Object.is($event.tag, 'deuiaction5')) {
-            this.toolbar2_deuiaction5_click($event, '', $event2);
-        }
     }
 
 
@@ -264,14 +223,20 @@ export default class PIMRESEARCHFINDINGSRESEARCHGridViewBase extends GridViewBas
      * @memberof PIMRESEARCHFINDINGSRESEARCHGridViewBase
      */
     public toolbar_click($event: any, $event2?: any) {
-        if (Object.is($event.tag, 'deuiaction3')) {
-            this.toolbar_deuiaction3_click($event, '', $event2);
-        }
-        if (Object.is($event.tag, 'deuiaction6')) {
-            this.toolbar_deuiaction6_click($event, '', $event2);
+        if (Object.is($event.tag, 'deuiaction1')) {
+            this.toolbar_deuiaction1_click($event, '', $event2);
         }
         if (Object.is($event.tag, 'deuiaction2')) {
             this.toolbar_deuiaction2_click($event, '', $event2);
+        }
+        if (Object.is($event.tag, 'deuiaction3')) {
+            this.toolbar_deuiaction3_click($event, '', $event2);
+        }
+        if (Object.is($event.tag, 'deuiaction4')) {
+            this.toolbar_deuiaction4_click($event, '', $event2);
+        }
+        if (Object.is($event.tag, 'deuiaction5')) {
+            this.toolbar_deuiaction5_click($event, '', $event2);
         }
     }
 
@@ -336,42 +301,6 @@ export default class PIMRESEARCHFINDINGSRESEARCHGridViewBase extends GridViewBas
     }
 
 
-    /**
-     * searchform 部件 save 事件
-     *
-     * @param {*} [args={}]
-     * @param {*} $event
-     * @memberof PIMRESEARCHFINDINGSRESEARCHGridViewBase
-     */
-    public searchform_save($event: any, $event2?: any) {
-        this.engine.onCtrlEvent('searchform', 'save', $event);
-    }
-
-
-    /**
-     * searchform 部件 search 事件
-     *
-     * @param {*} [args={}]
-     * @param {*} $event
-     * @memberof PIMRESEARCHFINDINGSRESEARCHGridViewBase
-     */
-    public searchform_search($event: any, $event2?: any) {
-        this.engine.onCtrlEvent('searchform', 'search', $event);
-    }
-
-
-    /**
-     * searchform 部件 load 事件
-     *
-     * @param {*} [args={}]
-     * @param {*} $event
-     * @memberof PIMRESEARCHFINDINGSRESEARCHGridViewBase
-     */
-    public searchform_load($event: any, $event2?: any) {
-        this.engine.onCtrlEvent('searchform', 'load', $event);
-    }
-
-
 
     /**
      * 逻辑事件
@@ -381,7 +310,7 @@ export default class PIMRESEARCHFINDINGSRESEARCHGridViewBase extends GridViewBas
      * @param {*} [$event]
      * @memberof 
      */
-    public toolbar2_deuiaction1_click(params: any = {}, tag?: any, $event?: any) {
+    public toolbar_deuiaction1_click(params: any = {}, tag?: any, $event?: any) {
         // 参数
         // 取数
         let datas: any[] = [];
@@ -407,7 +336,7 @@ export default class PIMRESEARCHFINDINGSRESEARCHGridViewBase extends GridViewBas
      * @param {*} [$event]
      * @memberof 
      */
-    public toolbar2_deuiaction2_click(params: any = {}, tag?: any, $event?: any) {
+    public toolbar_deuiaction2_click(params: any = {}, tag?: any, $event?: any) {
         // 参数
         // 取数
         let datas: any[] = [];
@@ -433,7 +362,7 @@ export default class PIMRESEARCHFINDINGSRESEARCHGridViewBase extends GridViewBas
      * @param {*} [$event]
      * @memberof 
      */
-    public toolbar2_deuiaction3_click(params: any = {}, tag?: any, $event?: any) {
+    public toolbar_deuiaction3_click(params: any = {}, tag?: any, $event?: any) {
         // 参数
         // 取数
         let datas: any[] = [];
@@ -459,7 +388,7 @@ export default class PIMRESEARCHFINDINGSRESEARCHGridViewBase extends GridViewBas
      * @param {*} [$event]
      * @memberof 
      */
-    public toolbar2_deuiaction4_click(params: any = {}, tag?: any, $event?: any) {
+    public toolbar_deuiaction4_click(params: any = {}, tag?: any, $event?: any) {
         // 参数
         // 取数
         let datas: any[] = [];
@@ -485,7 +414,7 @@ export default class PIMRESEARCHFINDINGSRESEARCHGridViewBase extends GridViewBas
      * @param {*} [$event]
      * @memberof 
      */
-    public toolbar2_deuiaction5_click(params: any = {}, tag?: any, $event?: any) {
+    public toolbar_deuiaction5_click(params: any = {}, tag?: any, $event?: any) {
         // 参数
         // 取数
         let datas: any[] = [];
@@ -501,84 +430,6 @@ export default class PIMRESEARCHFINDINGSRESEARCHGridViewBase extends GridViewBas
         }
         // 界面行为
         this.ExportExcel(datas, contextJO,paramJO,  $event, xData,this,"PIMRESEARCHFINDINGS");
-    }
-
-    /**
-     * 逻辑事件
-     *
-     * @param {*} [params={}]
-     * @param {*} [tag]
-     * @param {*} [$event]
-     * @memberof 
-     */
-    public toolbar_deuiaction3_click(params: any = {}, tag?: any, $event?: any) {
-        // 参数
-        // 取数
-        let datas: any[] = [];
-        let xData: any = null;
-        // _this 指向容器对象
-        const _this: any = this;
-        let paramJO:any = {};
-        
-        let contextJO:any = {};
-        xData = this.$refs.grid;
-        if (xData.getDatas && xData.getDatas instanceof Function) {
-            datas = [...xData.getDatas()];
-        }
-        // 界面行为
-        this.OpenRowEdit(datas, contextJO,paramJO,  $event, xData,this,"PIMRESEARCHFINDINGS");
-    }
-
-    /**
-     * 逻辑事件
-     *
-     * @param {*} [params={}]
-     * @param {*} [tag]
-     * @param {*} [$event]
-     * @memberof 
-     */
-    public toolbar_deuiaction6_click(params: any = {}, tag?: any, $event?: any) {
-        // 参数
-        // 取数
-        let datas: any[] = [];
-        let xData: any = null;
-        // _this 指向容器对象
-        const _this: any = this;
-        let paramJO:any = {};
-        
-        let contextJO:any = {};
-        xData = this.$refs.grid;
-        if (xData.getDatas && xData.getDatas instanceof Function) {
-            datas = [...xData.getDatas()];
-        }
-        // 界面行为
-        this.ExportExcel(datas, contextJO,paramJO,  $event, xData,this,"PIMRESEARCHFINDINGS");
-    }
-
-    /**
-     * 逻辑事件
-     *
-     * @param {*} [params={}]
-     * @param {*} [tag]
-     * @param {*} [$event]
-     * @memberof 
-     */
-    public toolbar_deuiaction2_click(params: any = {}, tag?: any, $event?: any) {
-        // 参数
-        // 取数
-        let datas: any[] = [];
-        let xData: any = null;
-        // _this 指向容器对象
-        const _this: any = this;
-        let paramJO:any = {};
-        
-        let contextJO:any = {};
-        xData = this.$refs.grid;
-        if (xData.getDatas && xData.getDatas instanceof Function) {
-            datas = [...xData.getDatas()];
-        }
-        // 界面行为
-        this.ToggleFilter(datas, contextJO,paramJO,  $event, xData,this,"PIMRESEARCHFINDINGS");
     }
 
     /**
@@ -749,37 +600,6 @@ export default class PIMRESEARCHFINDINGSRESEARCHGridViewBase extends GridViewBas
             return ;
         }
         xData.exportExcel($event.exportparms);
-    }
-    /**
-     * 开启行编辑
-     *
-     * @param {any[]} args 当前数据
-     * @param {any} contextJO 行为附加上下文
-     * @param {*} [params] 附加参数
-     * @param {*} [$event] 事件源
-     * @param {*} [xData]  执行行为所需当前部件
-     * @param {*} [actionContext]  执行行为上下文
-     * @memberof PIMRESEARCHFINDINGSRESEARCHGridViewBase
-     */
-    protected OpenRowEdit(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
-        
-    }
-    /**
-     * 过滤
-     *
-     * @param {any[]} args 当前数据
-     * @param {any} contextJO 行为附加上下文
-     * @param {*} [params] 附加参数
-     * @param {*} [$event] 事件源
-     * @param {*} [xData]  执行行为所需当前部件
-     * @param {*} [actionContext]  执行行为上下文
-     * @memberof PIMRESEARCHFINDINGSRESEARCHGridViewBase
-     */
-    public ToggleFilter(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
-        const _this: any = this;
-        if (_this.hasOwnProperty('isExpandSearchForm')) {
-            _this.isExpandSearchForm = !_this.isExpandSearchForm;
-        }
     }
 
 

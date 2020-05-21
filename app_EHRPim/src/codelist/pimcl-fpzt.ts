@@ -48,6 +48,7 @@ export default class PIMCL_FPZT {
      * @memberof PIMCL_FPZT
      */
     public userParamNames:any ={
+        codelistid:"546BA7FF-758B-493F-A2C7-26BEF6DE80A3"
     }
 
     /**

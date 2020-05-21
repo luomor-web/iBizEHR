@@ -85,7 +85,6 @@ export default class MainModel {
           name: 'pimarmycadres',
           prop: 'pimarmycadresid',
         },
-
         {
           name:'size',
           prop:'size'

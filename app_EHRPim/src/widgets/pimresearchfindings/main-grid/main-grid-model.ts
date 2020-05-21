@@ -70,7 +70,6 @@ export default class MainModel {
           name: 'pimresearchfindings',
           prop: 'pimresearchfindingsid',
         },
-
         {
           name:'size',
           prop:'size'
