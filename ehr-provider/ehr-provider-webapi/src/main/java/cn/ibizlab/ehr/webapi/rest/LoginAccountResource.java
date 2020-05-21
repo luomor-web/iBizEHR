@@ -50,11 +50,14 @@ public class LoginAccountResource {
 
     @Autowired
     @Lazy
-    private LoginAccountMapping loginaccountMapping;
+    public LoginAccountMapping loginaccountMapping;
+
+    public LoginAccountDTO permissionDTO=new LoginAccountDTO();
 
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-LoginAccount-Save-all')")
     @ApiOperation(value = "Save", tags = {"LoginAccount" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/loginaccounts/save")
     public ResponseEntity<Boolean> save(@RequestBody LoginAccountDTO loginaccountdto) {
@@ -71,6 +74,7 @@ public class LoginAccountResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-LoginAccount-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"LoginAccount" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/loginaccounts/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody LoginAccountDTO loginaccountdto) {
@@ -80,6 +84,7 @@ public class LoginAccountResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-LoginAccount-SaveHashMode-all')")
     @ApiOperation(value = "保存（密码Hash）", tags = {"LoginAccount" },  notes = "保存（密码Hash）")
 	@RequestMapping(method = RequestMethod.POST, value = "/loginaccounts/{loginaccount_id}/savehashmode")
     @Transactional
@@ -93,7 +98,7 @@ public class LoginAccountResource {
 
 
 
-    @PreAuthorize("hasPermission(#loginaccount_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#loginaccount_id,'Update',{'Sql',this.loginaccountMapping,#loginaccountdto})")
     @ApiOperation(value = "Update", tags = {"LoginAccount" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/loginaccounts/{loginaccount_id}")
     @Transactional
@@ -105,7 +110,6 @@ public class LoginAccountResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#loginaccount_id,'Update',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "UpdateBatch", tags = {"LoginAccount" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/loginaccounts/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<LoginAccountDTO> loginaccountdtos) {
@@ -116,7 +120,7 @@ public class LoginAccountResource {
 
 
 
-    @PreAuthorize("hasPermission(#loginaccount_id,'Get',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#loginaccount_id,'Get',{'Sql',this.loginaccountMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"LoginAccount" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/loginaccounts/{loginaccount_id}")
     public ResponseEntity<LoginAccountDTO> get(@PathVariable("loginaccount_id") String loginaccount_id) {
@@ -128,6 +132,7 @@ public class LoginAccountResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-LoginAccount-GetHashMode-all')")
     @ApiOperation(value = "获取（密码Hash）", tags = {"LoginAccount" },  notes = "获取（密码Hash）")
 	@RequestMapping(method = RequestMethod.GET, value = "/loginaccounts/{loginaccount_id}/gethashmode")
     @Transactional
@@ -141,7 +146,7 @@ public class LoginAccountResource {
 
 
 
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.loginaccountMapping,#loginaccountdto})")
     @ApiOperation(value = "Create", tags = {"LoginAccount" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/loginaccounts")
     @Transactional
@@ -151,7 +156,7 @@ public class LoginAccountResource {
         LoginAccountDTO dto = loginaccountMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+
     @ApiOperation(value = "createBatch", tags = {"LoginAccount" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/loginaccounts/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<LoginAccountDTO> loginaccountdtos) {
@@ -162,6 +167,7 @@ public class LoginAccountResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-LoginAccount-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"LoginAccount" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/loginaccounts/getdraft")
     public ResponseEntity<LoginAccountDTO> getDraft() {
@@ -171,7 +177,7 @@ public class LoginAccountResource {
 
 
 
-    @PreAuthorize("hasPermission(#loginaccount_id,'Remove',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#loginaccount_id,'Remove',{'Sql',this.loginaccountMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"LoginAccount" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/loginaccounts/{loginaccount_id}")
     @Transactional
@@ -186,7 +192,7 @@ public class LoginAccountResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-LoginAccount-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-LoginAccount-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"LoginAccount" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/loginaccounts/fetchdefault")
 	public ResponseEntity<List<LoginAccountDTO>> fetchDefault(LoginAccountSearchContext context) {
@@ -199,7 +205,7 @@ public class LoginAccountResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-LoginAccount-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-LoginAccount-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"LoginAccount" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/loginaccounts/searchdefault")
 	public ResponseEntity<Page<LoginAccountDTO>> searchDefault(@RequestBody LoginAccountSearchContext context) {
@@ -209,12 +215,6 @@ public class LoginAccountResource {
 	}
 
 
-    /**
-     * 用户权限校验
-     * @return
-     */
-	public LoginAccount getEntity(){
-        return new LoginAccount();
-    }
-
 }
+
+

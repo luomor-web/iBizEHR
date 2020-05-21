@@ -50,12 +50,14 @@ public class VACLEAVEDETAILResource {
 
     @Autowired
     @Lazy
-    private VACLEAVEDETAILMapping vacleavedetailMapping;
+    public VACLEAVEDETAILMapping vacleavedetailMapping;
+
+    public VACLEAVEDETAILDTO permissionDTO=new VACLEAVEDETAILDTO();
 
 
 
 
-    @PreAuthorize("hasPermission(#vacleavedetail_id,'Remove',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#vacleavedetail_id,'Remove',{'Sql',this.vacleavedetailMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"VACLEAVEDETAIL" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/vacleavedetails/{vacleavedetail_id}")
     @Transactional
@@ -73,6 +75,7 @@ public class VACLEAVEDETAILResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACLEAVEDETAIL-CalcSJQJTS-all')")
     @ApiOperation(value = "计算实际请假天数", tags = {"VACLEAVEDETAIL" },  notes = "计算实际请假天数")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacleavedetails/{vacleavedetail_id}/calcsjqjts")
     @Transactional
@@ -86,7 +89,7 @@ public class VACLEAVEDETAILResource {
 
 
 
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.vacleavedetailMapping,#vacleavedetaildto})")
     @ApiOperation(value = "Create", tags = {"VACLEAVEDETAIL" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacleavedetails")
     @Transactional
@@ -96,7 +99,7 @@ public class VACLEAVEDETAILResource {
         VACLEAVEDETAILDTO dto = vacleavedetailMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+
     @ApiOperation(value = "createBatch", tags = {"VACLEAVEDETAIL" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacleavedetails/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<VACLEAVEDETAILDTO> vacleavedetaildtos) {
@@ -107,7 +110,7 @@ public class VACLEAVEDETAILResource {
 
 
 
-    @PreAuthorize("hasPermission(#vacleavedetail_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#vacleavedetail_id,'Update',{'Sql',this.vacleavedetailMapping,#vacleavedetaildto})")
     @ApiOperation(value = "Update", tags = {"VACLEAVEDETAIL" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/vacleavedetails/{vacleavedetail_id}")
     @Transactional
@@ -119,7 +122,6 @@ public class VACLEAVEDETAILResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#vacleavedetail_id,'Update',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "UpdateBatch", tags = {"VACLEAVEDETAIL" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/vacleavedetails/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<VACLEAVEDETAILDTO> vacleavedetaildtos) {
@@ -130,6 +132,7 @@ public class VACLEAVEDETAILResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACLEAVEDETAIL-GetNianJia-all')")
     @ApiOperation(value = "获取假期使用情况、温馨提示、计算计划请假天数", tags = {"VACLEAVEDETAIL" },  notes = "获取假期使用情况、温馨提示、计算计划请假天数")
 	@RequestMapping(method = RequestMethod.GET, value = "/vacleavedetails/{vacleavedetail_id}/getnianjia")
     @Transactional
@@ -143,6 +146,7 @@ public class VACLEAVEDETAILResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACLEAVEDETAIL-Save-all')")
     @ApiOperation(value = "Save", tags = {"VACLEAVEDETAIL" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacleavedetails/save")
     public ResponseEntity<Boolean> save(@RequestBody VACLEAVEDETAILDTO vacleavedetaildto) {
@@ -159,6 +163,7 @@ public class VACLEAVEDETAILResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACLEAVEDETAIL-CalcJHQJTS-all')")
     @ApiOperation(value = "计算计划请假天数", tags = {"VACLEAVEDETAIL" },  notes = "计算计划请假天数")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacleavedetails/{vacleavedetail_id}/calcjhqjts")
     @Transactional
@@ -172,7 +177,7 @@ public class VACLEAVEDETAILResource {
 
 
 
-    @PreAuthorize("hasPermission(#vacleavedetail_id,'Get',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#vacleavedetail_id,'Get',{'Sql',this.vacleavedetailMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"VACLEAVEDETAIL" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/vacleavedetails/{vacleavedetail_id}")
     public ResponseEntity<VACLEAVEDETAILDTO> get(@PathVariable("vacleavedetail_id") String vacleavedetail_id) {
@@ -184,6 +189,7 @@ public class VACLEAVEDETAILResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACLEAVEDETAIL-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"VACLEAVEDETAIL" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacleavedetails/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody VACLEAVEDETAILDTO vacleavedetaildto) {
@@ -193,13 +199,14 @@ public class VACLEAVEDETAILResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACLEAVEDETAIL-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"VACLEAVEDETAIL" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/vacleavedetails/getdraft")
     public ResponseEntity<VACLEAVEDETAILDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(vacleavedetailMapping.toDto(vacleavedetailService.getDraft(new VACLEAVEDETAIL())));
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACLEAVEDETAIL-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACLEAVEDETAIL-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"VACLEAVEDETAIL" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/vacleavedetails/fetchdefault")
 	public ResponseEntity<List<VACLEAVEDETAILDTO>> fetchDefault(VACLEAVEDETAILSearchContext context) {
@@ -212,7 +219,7 @@ public class VACLEAVEDETAILResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACLEAVEDETAIL-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACLEAVEDETAIL-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"VACLEAVEDETAIL" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/vacleavedetails/searchdefault")
 	public ResponseEntity<Page<VACLEAVEDETAILDTO>> searchDefault(@RequestBody VACLEAVEDETAILSearchContext context) {
@@ -222,12 +229,6 @@ public class VACLEAVEDETAILResource {
 	}
 
 
-    /**
-     * 用户权限校验
-     * @return
-     */
-	public VACLEAVEDETAIL getEntity(){
-        return new VACLEAVEDETAIL();
-    }
-
 }
+
+

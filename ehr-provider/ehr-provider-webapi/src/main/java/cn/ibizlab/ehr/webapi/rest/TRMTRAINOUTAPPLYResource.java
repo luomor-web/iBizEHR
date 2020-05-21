@@ -50,12 +50,14 @@ public class TRMTRAINOUTAPPLYResource {
 
     @Autowired
     @Lazy
-    private TRMTRAINOUTAPPLYMapping trmtrainoutapplyMapping;
+    public TRMTRAINOUTAPPLYMapping trmtrainoutapplyMapping;
+
+    public TRMTRAINOUTAPPLYDTO permissionDTO=new TRMTRAINOUTAPPLYDTO();
 
 
 
 
-    @PreAuthorize("hasPermission(#trmtrainoutapply_id,'Get',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#trmtrainoutapply_id,'Get',{'Sql',this.trmtrainoutapplyMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"TRMTRAINOUTAPPLY" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/trmtrainoutapplies/{trmtrainoutapply_id}")
     public ResponseEntity<TRMTRAINOUTAPPLYDTO> get(@PathVariable("trmtrainoutapply_id") String trmtrainoutapply_id) {
@@ -67,6 +69,7 @@ public class TRMTRAINOUTAPPLYResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMTRAINOUTAPPLY-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"TRMTRAINOUTAPPLY" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmtrainoutapplies/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody TRMTRAINOUTAPPLYDTO trmtrainoutapplydto) {
@@ -76,6 +79,7 @@ public class TRMTRAINOUTAPPLYResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMTRAINOUTAPPLY-Save-all')")
     @ApiOperation(value = "Save", tags = {"TRMTRAINOUTAPPLY" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmtrainoutapplies/save")
     public ResponseEntity<Boolean> save(@RequestBody TRMTRAINOUTAPPLYDTO trmtrainoutapplydto) {
@@ -92,6 +96,7 @@ public class TRMTRAINOUTAPPLYResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMTRAINOUTAPPLY-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"TRMTRAINOUTAPPLY" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/trmtrainoutapplies/getdraft")
     public ResponseEntity<TRMTRAINOUTAPPLYDTO> getDraft() {
@@ -101,7 +106,7 @@ public class TRMTRAINOUTAPPLYResource {
 
 
 
-    @PreAuthorize("hasPermission(#trmtrainoutapply_id,'Remove',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#trmtrainoutapply_id,'Remove',{'Sql',this.trmtrainoutapplyMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"TRMTRAINOUTAPPLY" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/trmtrainoutapplies/{trmtrainoutapply_id}")
     @Transactional
@@ -119,7 +124,7 @@ public class TRMTRAINOUTAPPLYResource {
 
 
 
-    @PreAuthorize("hasPermission(#trmtrainoutapply_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#trmtrainoutapply_id,'Update',{'Sql',this.trmtrainoutapplyMapping,#trmtrainoutapplydto})")
     @ApiOperation(value = "Update", tags = {"TRMTRAINOUTAPPLY" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/trmtrainoutapplies/{trmtrainoutapply_id}")
     @Transactional
@@ -131,7 +136,6 @@ public class TRMTRAINOUTAPPLYResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#trmtrainoutapply_id,'Update',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "UpdateBatch", tags = {"TRMTRAINOUTAPPLY" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/trmtrainoutapplies/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<TRMTRAINOUTAPPLYDTO> trmtrainoutapplydtos) {
@@ -142,7 +146,7 @@ public class TRMTRAINOUTAPPLYResource {
 
 
 
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.trmtrainoutapplyMapping,#trmtrainoutapplydto})")
     @ApiOperation(value = "Create", tags = {"TRMTRAINOUTAPPLY" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmtrainoutapplies")
     @Transactional
@@ -152,7 +156,7 @@ public class TRMTRAINOUTAPPLYResource {
         TRMTRAINOUTAPPLYDTO dto = trmtrainoutapplyMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+
     @ApiOperation(value = "createBatch", tags = {"TRMTRAINOUTAPPLY" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmtrainoutapplies/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<TRMTRAINOUTAPPLYDTO> trmtrainoutapplydtos) {
@@ -160,7 +164,7 @@ public class TRMTRAINOUTAPPLYResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMTRAINOUTAPPLY-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMTRAINOUTAPPLY-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"TRMTRAINOUTAPPLY" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/trmtrainoutapplies/fetchdefault")
 	public ResponseEntity<List<TRMTRAINOUTAPPLYDTO>> fetchDefault(TRMTRAINOUTAPPLYSearchContext context) {
@@ -173,7 +177,7 @@ public class TRMTRAINOUTAPPLYResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMTRAINOUTAPPLY-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMTRAINOUTAPPLY-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"TRMTRAINOUTAPPLY" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/trmtrainoutapplies/searchdefault")
 	public ResponseEntity<Page<TRMTRAINOUTAPPLYDTO>> searchDefault(@RequestBody TRMTRAINOUTAPPLYSearchContext context) {
@@ -183,12 +187,6 @@ public class TRMTRAINOUTAPPLYResource {
 	}
 
 
-    /**
-     * 用户权限校验
-     * @return
-     */
-	public TRMTRAINOUTAPPLY getEntity(){
-        return new TRMTRAINOUTAPPLY();
-    }
-
 }
+
+

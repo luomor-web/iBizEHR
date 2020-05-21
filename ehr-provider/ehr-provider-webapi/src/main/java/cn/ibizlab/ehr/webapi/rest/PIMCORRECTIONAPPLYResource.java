@@ -50,12 +50,14 @@ public class PIMCORRECTIONAPPLYResource {
 
     @Autowired
     @Lazy
-    private PIMCORRECTIONAPPLYMapping pimcorrectionapplyMapping;
+    public PIMCORRECTIONAPPLYMapping pimcorrectionapplyMapping;
+
+    public PIMCORRECTIONAPPLYDTO permissionDTO=new PIMCORRECTIONAPPLYDTO();
 
 
 
 
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.pimcorrectionapplyMapping,#pimcorrectionapplydto})")
     @ApiOperation(value = "Create", tags = {"PIMCORRECTIONAPPLY" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimcorrectionapplies")
     @Transactional
@@ -65,7 +67,7 @@ public class PIMCORRECTIONAPPLYResource {
         PIMCORRECTIONAPPLYDTO dto = pimcorrectionapplyMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+
     @ApiOperation(value = "createBatch", tags = {"PIMCORRECTIONAPPLY" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimcorrectionapplies/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PIMCORRECTIONAPPLYDTO> pimcorrectionapplydtos) {
@@ -76,6 +78,7 @@ public class PIMCORRECTIONAPPLYResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMCORRECTIONAPPLY-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"PIMCORRECTIONAPPLY" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimcorrectionapplies/getdraft")
     public ResponseEntity<PIMCORRECTIONAPPLYDTO> getDraft() {
@@ -85,6 +88,7 @@ public class PIMCORRECTIONAPPLYResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMCORRECTIONAPPLY-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"PIMCORRECTIONAPPLY" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimcorrectionapplies/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PIMCORRECTIONAPPLYDTO pimcorrectionapplydto) {
@@ -94,6 +98,7 @@ public class PIMCORRECTIONAPPLYResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMCORRECTIONAPPLY-Save-all')")
     @ApiOperation(value = "Save", tags = {"PIMCORRECTIONAPPLY" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimcorrectionapplies/save")
     public ResponseEntity<Boolean> save(@RequestBody PIMCORRECTIONAPPLYDTO pimcorrectionapplydto) {
@@ -110,7 +115,7 @@ public class PIMCORRECTIONAPPLYResource {
 
 
 
-    @PreAuthorize("hasPermission(#pimcorrectionapply_id,'Get',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#pimcorrectionapply_id,'Get',{'Sql',this.pimcorrectionapplyMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"PIMCORRECTIONAPPLY" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimcorrectionapplies/{pimcorrectionapply_id}")
     public ResponseEntity<PIMCORRECTIONAPPLYDTO> get(@PathVariable("pimcorrectionapply_id") String pimcorrectionapply_id) {
@@ -122,7 +127,7 @@ public class PIMCORRECTIONAPPLYResource {
 
 
 
-    @PreAuthorize("hasPermission(#pimcorrectionapply_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#pimcorrectionapply_id,'Update',{'Sql',this.pimcorrectionapplyMapping,#pimcorrectionapplydto})")
     @ApiOperation(value = "Update", tags = {"PIMCORRECTIONAPPLY" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimcorrectionapplies/{pimcorrectionapply_id}")
     @Transactional
@@ -134,7 +139,6 @@ public class PIMCORRECTIONAPPLYResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#pimcorrectionapply_id,'Update',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "UpdateBatch", tags = {"PIMCORRECTIONAPPLY" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimcorrectionapplies/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PIMCORRECTIONAPPLYDTO> pimcorrectionapplydtos) {
@@ -145,7 +149,7 @@ public class PIMCORRECTIONAPPLYResource {
 
 
 
-    @PreAuthorize("hasPermission(#pimcorrectionapply_id,'Remove',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#pimcorrectionapply_id,'Remove',{'Sql',this.pimcorrectionapplyMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"PIMCORRECTIONAPPLY" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimcorrectionapplies/{pimcorrectionapply_id}")
     @Transactional
@@ -160,7 +164,7 @@ public class PIMCORRECTIONAPPLYResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMCORRECTIONAPPLY-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMCORRECTIONAPPLY-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PIMCORRECTIONAPPLY" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimcorrectionapplies/fetchdefault")
 	public ResponseEntity<List<PIMCORRECTIONAPPLYDTO>> fetchDefault(PIMCORRECTIONAPPLYSearchContext context) {
@@ -173,7 +177,7 @@ public class PIMCORRECTIONAPPLYResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMCORRECTIONAPPLY-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMCORRECTIONAPPLY-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PIMCORRECTIONAPPLY" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pimcorrectionapplies/searchdefault")
 	public ResponseEntity<Page<PIMCORRECTIONAPPLYDTO>> searchDefault(@RequestBody PIMCORRECTIONAPPLYSearchContext context) {
@@ -183,12 +187,6 @@ public class PIMCORRECTIONAPPLYResource {
 	}
 
 
-    /**
-     * 用户权限校验
-     * @return
-     */
-	public PIMCORRECTIONAPPLY getEntity(){
-        return new PIMCORRECTIONAPPLY();
-    }
-
 }
+
+

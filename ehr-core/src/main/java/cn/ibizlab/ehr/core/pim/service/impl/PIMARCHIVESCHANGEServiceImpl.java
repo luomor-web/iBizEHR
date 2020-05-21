@@ -96,7 +96,6 @@ public class PIMARCHIVESCHANGEServiceImpl extends ServiceImpl<PIMARCHIVESCHANGEM
         if(!this.retBool(this.baseMapper.insert(et)))
             return false;
         CachedBeanCopier.copy(get(et.getPimarchiveschangeid()),et);
-        updatepersonfileLogic.execute(et);
         return true;
     }
 

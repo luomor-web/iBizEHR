@@ -50,12 +50,14 @@ public class PCMPROFILEINITNUMBERResource {
 
     @Autowired
     @Lazy
-    private PCMPROFILEINITNUMBERMapping pcmprofileinitnumberMapping;
+    public PCMPROFILEINITNUMBERMapping pcmprofileinitnumberMapping;
+
+    public PCMPROFILEINITNUMBERDTO permissionDTO=new PCMPROFILEINITNUMBERDTO();
 
 
 
 
-    @PreAuthorize("hasPermission(#pcmprofileinitnumber_id,'Remove',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#pcmprofileinitnumber_id,'Remove',{'Sql',this.pcmprofileinitnumberMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"PCMPROFILEINITNUMBER" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmprofileinitnumbers/{pcmprofileinitnumber_id}")
     @Transactional
@@ -73,6 +75,7 @@ public class PCMPROFILEINITNUMBERResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILEINITNUMBER-Save-all')")
     @ApiOperation(value = "Save", tags = {"PCMPROFILEINITNUMBER" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofileinitnumbers/save")
     public ResponseEntity<Boolean> save(@RequestBody PCMPROFILEINITNUMBERDTO pcmprofileinitnumberdto) {
@@ -89,7 +92,7 @@ public class PCMPROFILEINITNUMBERResource {
 
 
 
-    @PreAuthorize("hasPermission(#pcmprofileinitnumber_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#pcmprofileinitnumber_id,'Update',{'Sql',this.pcmprofileinitnumberMapping,#pcmprofileinitnumberdto})")
     @ApiOperation(value = "Update", tags = {"PCMPROFILEINITNUMBER" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmprofileinitnumbers/{pcmprofileinitnumber_id}")
     @Transactional
@@ -101,7 +104,6 @@ public class PCMPROFILEINITNUMBERResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#pcmprofileinitnumber_id,'Update',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "UpdateBatch", tags = {"PCMPROFILEINITNUMBER" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmprofileinitnumbers/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PCMPROFILEINITNUMBERDTO> pcmprofileinitnumberdtos) {
@@ -112,7 +114,7 @@ public class PCMPROFILEINITNUMBERResource {
 
 
 
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.pcmprofileinitnumberMapping,#pcmprofileinitnumberdto})")
     @ApiOperation(value = "Create", tags = {"PCMPROFILEINITNUMBER" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofileinitnumbers")
     @Transactional
@@ -122,7 +124,7 @@ public class PCMPROFILEINITNUMBERResource {
         PCMPROFILEINITNUMBERDTO dto = pcmprofileinitnumberMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+
     @ApiOperation(value = "createBatch", tags = {"PCMPROFILEINITNUMBER" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofileinitnumbers/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PCMPROFILEINITNUMBERDTO> pcmprofileinitnumberdtos) {
@@ -133,7 +135,7 @@ public class PCMPROFILEINITNUMBERResource {
 
 
 
-    @PreAuthorize("hasPermission(#pcmprofileinitnumber_id,'Get',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#pcmprofileinitnumber_id,'Get',{'Sql',this.pcmprofileinitnumberMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"PCMPROFILEINITNUMBER" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmprofileinitnumbers/{pcmprofileinitnumber_id}")
     public ResponseEntity<PCMPROFILEINITNUMBERDTO> get(@PathVariable("pcmprofileinitnumber_id") String pcmprofileinitnumber_id) {
@@ -145,6 +147,7 @@ public class PCMPROFILEINITNUMBERResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILEINITNUMBER-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"PCMPROFILEINITNUMBER" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmprofileinitnumbers/getdraft")
     public ResponseEntity<PCMPROFILEINITNUMBERDTO> getDraft() {
@@ -154,13 +157,14 @@ public class PCMPROFILEINITNUMBERResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILEINITNUMBER-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"PCMPROFILEINITNUMBER" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofileinitnumbers/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PCMPROFILEINITNUMBERDTO pcmprofileinitnumberdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pcmprofileinitnumberService.checkKey(pcmprofileinitnumberMapping.toDomain(pcmprofileinitnumberdto)));
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILEINITNUMBER-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILEINITNUMBER-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PCMPROFILEINITNUMBER" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pcmprofileinitnumbers/fetchdefault")
 	public ResponseEntity<List<PCMPROFILEINITNUMBERDTO>> fetchDefault(PCMPROFILEINITNUMBERSearchContext context) {
@@ -173,7 +177,7 @@ public class PCMPROFILEINITNUMBERResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILEINITNUMBER-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILEINITNUMBER-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PCMPROFILEINITNUMBER" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pcmprofileinitnumbers/searchdefault")
 	public ResponseEntity<Page<PCMPROFILEINITNUMBERDTO>> searchDefault(@RequestBody PCMPROFILEINITNUMBERSearchContext context) {
@@ -183,12 +187,6 @@ public class PCMPROFILEINITNUMBERResource {
 	}
 
 
-    /**
-     * 用户权限校验
-     * @return
-     */
-	public PCMPROFILEINITNUMBER getEntity(){
-        return new PCMPROFILEINITNUMBER();
-    }
-
 }
+
+

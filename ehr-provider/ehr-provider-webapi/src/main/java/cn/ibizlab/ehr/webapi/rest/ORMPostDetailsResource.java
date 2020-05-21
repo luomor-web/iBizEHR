@@ -50,12 +50,14 @@ public class ORMPostDetailsResource {
 
     @Autowired
     @Lazy
-    private ORMPostDetailsMapping ormpostdetailsMapping;
+    public ORMPostDetailsMapping ormpostdetailsMapping;
+
+    public ORMPostDetailsDTO permissionDTO=new ORMPostDetailsDTO();
 
 
 
 
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.ormpostdetailsMapping,#ormpostdetailsdto})")
     @ApiOperation(value = "Create", tags = {"ORMPostDetails" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormpostdetails")
     @Transactional
@@ -65,7 +67,7 @@ public class ORMPostDetailsResource {
         ORMPostDetailsDTO dto = ormpostdetailsMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+
     @ApiOperation(value = "createBatch", tags = {"ORMPostDetails" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormpostdetails/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<ORMPostDetailsDTO> ormpostdetailsdtos) {
@@ -76,7 +78,7 @@ public class ORMPostDetailsResource {
 
 
 
-    @PreAuthorize("hasPermission(#ormpostdetails_id,'Get',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#ormpostdetails_id,'Get',{'Sql',this.ormpostdetailsMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"ORMPostDetails" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/ormpostdetails/{ormpostdetails_id}")
     public ResponseEntity<ORMPostDetailsDTO> get(@PathVariable("ormpostdetails_id") String ormpostdetails_id) {
@@ -88,6 +90,7 @@ public class ORMPostDetailsResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMPostDetails-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"ORMPostDetails" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormpostdetails/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody ORMPostDetailsDTO ormpostdetailsdto) {
@@ -97,7 +100,7 @@ public class ORMPostDetailsResource {
 
 
 
-    @PreAuthorize("hasPermission(#ormpostdetails_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#ormpostdetails_id,'Update',{'Sql',this.ormpostdetailsMapping,#ormpostdetailsdto})")
     @ApiOperation(value = "Update", tags = {"ORMPostDetails" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/ormpostdetails/{ormpostdetails_id}")
     @Transactional
@@ -109,7 +112,6 @@ public class ORMPostDetailsResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#ormpostdetails_id,'Update',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "UpdateBatch", tags = {"ORMPostDetails" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/ormpostdetails/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<ORMPostDetailsDTO> ormpostdetailsdtos) {
@@ -120,6 +122,7 @@ public class ORMPostDetailsResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMPostDetails-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"ORMPostDetails" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/ormpostdetails/getdraft")
     public ResponseEntity<ORMPostDetailsDTO> getDraft() {
@@ -129,6 +132,7 @@ public class ORMPostDetailsResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMPostDetails-Save-all')")
     @ApiOperation(value = "Save", tags = {"ORMPostDetails" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormpostdetails/save")
     public ResponseEntity<Boolean> save(@RequestBody ORMPostDetailsDTO ormpostdetailsdto) {
@@ -145,7 +149,7 @@ public class ORMPostDetailsResource {
 
 
 
-    @PreAuthorize("hasPermission(#ormpostdetails_id,'Remove',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#ormpostdetails_id,'Remove',{'Sql',this.ormpostdetailsMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"ORMPostDetails" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/ormpostdetails/{ormpostdetails_id}")
     @Transactional
@@ -160,7 +164,7 @@ public class ORMPostDetailsResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMPostDetails-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMPostDetails-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"ORMPostDetails" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/ormpostdetails/fetchdefault")
 	public ResponseEntity<List<ORMPostDetailsDTO>> fetchDefault(ORMPostDetailsSearchContext context) {
@@ -173,7 +177,7 @@ public class ORMPostDetailsResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMPostDetails-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMPostDetails-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"ORMPostDetails" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/ormpostdetails/searchdefault")
 	public ResponseEntity<Page<ORMPostDetailsDTO>> searchDefault(@RequestBody ORMPostDetailsSearchContext context) {
@@ -183,12 +187,6 @@ public class ORMPostDetailsResource {
 	}
 
 
-    /**
-     * 用户权限校验
-     * @return
-     */
-	public ORMPostDetails getEntity(){
-        return new ORMPostDetails();
-    }
-
 }
+
+

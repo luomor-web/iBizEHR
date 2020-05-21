@@ -50,12 +50,14 @@ public class RegistryResource {
 
     @Autowired
     @Lazy
-    private RegistryMapping registryMapping;
+    public RegistryMapping registryMapping;
+
+    public RegistryDTO permissionDTO=new RegistryDTO();
 
 
 
 
-    @PreAuthorize("hasPermission(#registry_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#registry_id,'Update',{'Sql',this.registryMapping,#registrydto})")
     @ApiOperation(value = "Update", tags = {"Registry" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/registries/{registry_id}")
     @Transactional
@@ -67,7 +69,6 @@ public class RegistryResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#registry_id,'Update',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "UpdateBatch", tags = {"Registry" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/registries/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<RegistryDTO> registrydtos) {
@@ -78,7 +79,7 @@ public class RegistryResource {
 
 
 
-    @PreAuthorize("hasPermission(#registry_id,'Get',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#registry_id,'Get',{'Sql',this.registryMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"Registry" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/registries/{registry_id}")
     public ResponseEntity<RegistryDTO> get(@PathVariable("registry_id") String registry_id) {
@@ -90,7 +91,7 @@ public class RegistryResource {
 
 
 
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.registryMapping,#registrydto})")
     @ApiOperation(value = "Create", tags = {"Registry" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/registries")
     @Transactional
@@ -100,7 +101,7 @@ public class RegistryResource {
         RegistryDTO dto = registryMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+
     @ApiOperation(value = "createBatch", tags = {"Registry" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/registries/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<RegistryDTO> registrydtos) {
@@ -111,6 +112,7 @@ public class RegistryResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-Registry-Save-all')")
     @ApiOperation(value = "Save", tags = {"Registry" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/registries/save")
     public ResponseEntity<Boolean> save(@RequestBody RegistryDTO registrydto) {
@@ -127,7 +129,7 @@ public class RegistryResource {
 
 
 
-    @PreAuthorize("hasPermission(#registry_id,'Remove',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#registry_id,'Remove',{'Sql',this.registryMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"Registry" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/registries/{registry_id}")
     @Transactional
@@ -145,6 +147,7 @@ public class RegistryResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-Registry-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"Registry" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/registries/getdraft")
     public ResponseEntity<RegistryDTO> getDraft() {
@@ -154,13 +157,14 @@ public class RegistryResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-Registry-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"Registry" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/registries/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody RegistryDTO registrydto) {
         return  ResponseEntity.status(HttpStatus.OK).body(registryService.checkKey(registryMapping.toDomain(registrydto)));
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-Registry-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-Registry-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"Registry" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/registries/fetchdefault")
 	public ResponseEntity<List<RegistryDTO>> fetchDefault(RegistrySearchContext context) {
@@ -173,7 +177,7 @@ public class RegistryResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-Registry-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-Registry-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"Registry" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/registries/searchdefault")
 	public ResponseEntity<Page<RegistryDTO>> searchDefault(@RequestBody RegistrySearchContext context) {
@@ -183,12 +187,6 @@ public class RegistryResource {
 	}
 
 
-    /**
-     * 用户权限校验
-     * @return
-     */
-	public Registry getEntity(){
-        return new Registry();
-    }
-
 }
+
+

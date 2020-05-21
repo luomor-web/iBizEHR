@@ -50,11 +50,14 @@ public class CodeItemResource {
 
     @Autowired
     @Lazy
-    private CodeItemMapping codeitemMapping;
+    public CodeItemMapping codeitemMapping;
+
+    public CodeItemDTO permissionDTO=new CodeItemDTO();
 
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-CodeItem-Save-all')")
     @ApiOperation(value = "Save", tags = {"CodeItem" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/codeitems/save")
     public ResponseEntity<Boolean> save(@RequestBody CodeItemDTO codeitemdto) {
@@ -71,6 +74,7 @@ public class CodeItemResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-CodeItem-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"CodeItem" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/codeitems/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody CodeItemDTO codeitemdto) {
@@ -80,7 +84,7 @@ public class CodeItemResource {
 
 
 
-    @PreAuthorize("hasPermission(#codeitem_id,'Remove',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#codeitem_id,'Remove',{'Sql',this.codeitemMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"CodeItem" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/codeitems/{codeitem_id}")
     @Transactional
@@ -98,7 +102,7 @@ public class CodeItemResource {
 
 
 
-    @PreAuthorize("hasPermission(#codeitem_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#codeitem_id,'Update',{'Sql',this.codeitemMapping,#codeitemdto})")
     @ApiOperation(value = "Update", tags = {"CodeItem" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/codeitems/{codeitem_id}")
     @Transactional
@@ -110,7 +114,6 @@ public class CodeItemResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#codeitem_id,'Update',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "UpdateBatch", tags = {"CodeItem" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/codeitems/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<CodeItemDTO> codeitemdtos) {
@@ -121,7 +124,7 @@ public class CodeItemResource {
 
 
 
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.codeitemMapping,#codeitemdto})")
     @ApiOperation(value = "Create", tags = {"CodeItem" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/codeitems")
     @Transactional
@@ -131,7 +134,7 @@ public class CodeItemResource {
         CodeItemDTO dto = codeitemMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+
     @ApiOperation(value = "createBatch", tags = {"CodeItem" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/codeitems/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<CodeItemDTO> codeitemdtos) {
@@ -142,6 +145,7 @@ public class CodeItemResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-CodeItem-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"CodeItem" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/codeitems/getdraft")
     public ResponseEntity<CodeItemDTO> getDraft() {
@@ -151,7 +155,7 @@ public class CodeItemResource {
 
 
 
-    @PreAuthorize("hasPermission(#codeitem_id,'Get',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#codeitem_id,'Get',{'Sql',this.codeitemMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"CodeItem" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/codeitems/{codeitem_id}")
     public ResponseEntity<CodeItemDTO> get(@PathVariable("codeitem_id") String codeitem_id) {
@@ -160,7 +164,7 @@ public class CodeItemResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-CodeItem-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-CodeItem-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"CodeItem" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/codeitems/fetchdefault")
 	public ResponseEntity<List<CodeItemDTO>> fetchDefault(CodeItemSearchContext context) {
@@ -173,7 +177,7 @@ public class CodeItemResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-CodeItem-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-CodeItem-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"CodeItem" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/codeitems/searchdefault")
 	public ResponseEntity<Page<CodeItemDTO>> searchDefault(@RequestBody CodeItemSearchContext context) {
@@ -182,7 +186,7 @@ public class CodeItemResource {
                 .body(new PageImpl(codeitemMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-CodeItem-CurCL-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-CodeItem-CurCL-all')")
 	@ApiOperation(value = "fetch当前代码表", tags = {"CodeItem" } ,notes = "fetch当前代码表")
     @RequestMapping(method= RequestMethod.GET , value="/codeitems/fetchcurcl")
 	public ResponseEntity<List<CodeItemDTO>> fetchCurCL(CodeItemSearchContext context) {
@@ -195,7 +199,7 @@ public class CodeItemResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-CodeItem-CurCL-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-CodeItem-CurCL-all')")
 	@ApiOperation(value = "search当前代码表", tags = {"CodeItem" } ,notes = "search当前代码表")
     @RequestMapping(method= RequestMethod.POST , value="/codeitems/searchcurcl")
 	public ResponseEntity<Page<CodeItemDTO>> searchCurCL(@RequestBody CodeItemSearchContext context) {
@@ -205,12 +209,6 @@ public class CodeItemResource {
 	}
 
 
-    /**
-     * 用户权限校验
-     * @return
-     */
-	public CodeItem getEntity(){
-        return new CodeItem();
-    }
-
 }
+
+

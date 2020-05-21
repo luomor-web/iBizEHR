@@ -50,12 +50,14 @@ public class PARKHFAResource {
 
     @Autowired
     @Lazy
-    private PARKHFAMapping parkhfaMapping;
+    public PARKHFAMapping parkhfaMapping;
+
+    public PARKHFADTO permissionDTO=new PARKHFADTO();
 
 
 
 
-    @PreAuthorize("hasPermission(#parkhfa_id,'Remove',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#parkhfa_id,'Remove',{'Sql',this.parkhfaMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"PARKHFA" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/parkhfas/{parkhfa_id}")
     @Transactional
@@ -73,6 +75,7 @@ public class PARKHFAResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PARKHFA-Save-all')")
     @ApiOperation(value = "Save", tags = {"PARKHFA" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/parkhfas/save")
     public ResponseEntity<Boolean> save(@RequestBody PARKHFADTO parkhfadto) {
@@ -89,7 +92,7 @@ public class PARKHFAResource {
 
 
 
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.parkhfaMapping,#parkhfadto})")
     @ApiOperation(value = "Create", tags = {"PARKHFA" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/parkhfas")
     @Transactional
@@ -99,7 +102,7 @@ public class PARKHFAResource {
         PARKHFADTO dto = parkhfaMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+
     @ApiOperation(value = "createBatch", tags = {"PARKHFA" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/parkhfas/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PARKHFADTO> parkhfadtos) {
@@ -110,6 +113,7 @@ public class PARKHFAResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PARKHFA-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"PARKHFA" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/parkhfas/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PARKHFADTO parkhfadto) {
@@ -119,6 +123,7 @@ public class PARKHFAResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PARKHFA-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"PARKHFA" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/parkhfas/getdraft")
     public ResponseEntity<PARKHFADTO> getDraft() {
@@ -128,7 +133,7 @@ public class PARKHFAResource {
 
 
 
-    @PreAuthorize("hasPermission(#parkhfa_id,'Get',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#parkhfa_id,'Get',{'Sql',this.parkhfaMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"PARKHFA" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/parkhfas/{parkhfa_id}")
     public ResponseEntity<PARKHFADTO> get(@PathVariable("parkhfa_id") String parkhfa_id) {
@@ -140,7 +145,7 @@ public class PARKHFAResource {
 
 
 
-    @PreAuthorize("hasPermission(#parkhfa_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#parkhfa_id,'Update',{'Sql',this.parkhfaMapping,#parkhfadto})")
     @ApiOperation(value = "Update", tags = {"PARKHFA" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/parkhfas/{parkhfa_id}")
     @Transactional
@@ -152,7 +157,6 @@ public class PARKHFAResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#parkhfa_id,'Update',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "UpdateBatch", tags = {"PARKHFA" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/parkhfas/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PARKHFADTO> parkhfadtos) {
@@ -160,7 +164,7 @@ public class PARKHFAResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PARKHFA-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PARKHFA-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PARKHFA" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/parkhfas/fetchdefault")
 	public ResponseEntity<List<PARKHFADTO>> fetchDefault(PARKHFASearchContext context) {
@@ -173,7 +177,7 @@ public class PARKHFAResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PARKHFA-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PARKHFA-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PARKHFA" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/parkhfas/searchdefault")
 	public ResponseEntity<Page<PARKHFADTO>> searchDefault(@RequestBody PARKHFASearchContext context) {
@@ -183,12 +187,6 @@ public class PARKHFAResource {
 	}
 
 
-    /**
-     * 用户权限校验
-     * @return
-     */
-	public PARKHFA getEntity(){
-        return new PARKHFA();
-    }
-
 }
+
+

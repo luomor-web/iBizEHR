@@ -50,11 +50,14 @@ public class TSSDEngineResource {
 
     @Autowired
     @Lazy
-    private TSSDEngineMapping tssdengineMapping;
+    public TSSDEngineMapping tssdengineMapping;
+
+    public TSSDEngineDTO permissionDTO=new TSSDEngineDTO();
 
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TSSDEngine-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"TSSDEngine" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/tssdengines/getdraft")
     public ResponseEntity<TSSDEngineDTO> getDraft() {
@@ -64,7 +67,7 @@ public class TSSDEngineResource {
 
 
 
-    @PreAuthorize("hasPermission(#tssdengine_id,'Get',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#tssdengine_id,'Get',{'Sql',this.tssdengineMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"TSSDEngine" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/tssdengines/{tssdengine_id}")
     public ResponseEntity<TSSDEngineDTO> get(@PathVariable("tssdengine_id") String tssdengine_id) {
@@ -76,6 +79,7 @@ public class TSSDEngineResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TSSDEngine-Save-all')")
     @ApiOperation(value = "Save", tags = {"TSSDEngine" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/tssdengines/save")
     public ResponseEntity<Boolean> save(@RequestBody TSSDEngineDTO tssdenginedto) {
@@ -92,7 +96,7 @@ public class TSSDEngineResource {
 
 
 
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.tssdengineMapping,#tssdenginedto})")
     @ApiOperation(value = "Create", tags = {"TSSDEngine" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/tssdengines")
     @Transactional
@@ -102,7 +106,7 @@ public class TSSDEngineResource {
         TSSDEngineDTO dto = tssdengineMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+
     @ApiOperation(value = "createBatch", tags = {"TSSDEngine" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/tssdengines/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<TSSDEngineDTO> tssdenginedtos) {
@@ -113,7 +117,7 @@ public class TSSDEngineResource {
 
 
 
-    @PreAuthorize("hasPermission(#tssdengine_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#tssdengine_id,'Update',{'Sql',this.tssdengineMapping,#tssdenginedto})")
     @ApiOperation(value = "Update", tags = {"TSSDEngine" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/tssdengines/{tssdengine_id}")
     @Transactional
@@ -125,7 +129,6 @@ public class TSSDEngineResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#tssdengine_id,'Update',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "UpdateBatch", tags = {"TSSDEngine" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/tssdengines/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<TSSDEngineDTO> tssdenginedtos) {
@@ -136,6 +139,7 @@ public class TSSDEngineResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TSSDEngine-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"TSSDEngine" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/tssdengines/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody TSSDEngineDTO tssdenginedto) {
@@ -145,7 +149,7 @@ public class TSSDEngineResource {
 
 
 
-    @PreAuthorize("hasPermission(#tssdengine_id,'Remove',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#tssdengine_id,'Remove',{'Sql',this.tssdengineMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"TSSDEngine" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/tssdengines/{tssdengine_id}")
     @Transactional
@@ -160,7 +164,7 @@ public class TSSDEngineResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TSSDEngine-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TSSDEngine-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"TSSDEngine" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/tssdengines/fetchdefault")
 	public ResponseEntity<List<TSSDEngineDTO>> fetchDefault(TSSDEngineSearchContext context) {
@@ -173,7 +177,7 @@ public class TSSDEngineResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TSSDEngine-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TSSDEngine-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"TSSDEngine" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/tssdengines/searchdefault")
 	public ResponseEntity<Page<TSSDEngineDTO>> searchDefault(@RequestBody TSSDEngineSearchContext context) {
@@ -183,12 +187,6 @@ public class TSSDEngineResource {
 	}
 
 
-    /**
-     * 用户权限校验
-     * @return
-     */
-	public TSSDEngine getEntity(){
-        return new TSSDEngine();
-    }
-
 }
+
+

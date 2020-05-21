@@ -4,24 +4,6 @@
 <mapper	namespace="cn.ibizlab.ehr.core.common.mapper.DEDataChgMapper">
 
     <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
-	<select id="selectById"  resultMap="DEDataChgResultMap" databaseId="db2">
-        <![CDATA[select * from v_dedatachg t1     where  dedatachgid=#{id}]]>
-    </select>
-	<select id="selectById"  resultMap="DEDataChgResultMap" databaseId="mysql">
-        <![CDATA[select * from v_dedatachg t1     where  dedatachgid=#{id}]]>
-    </select>
-	<select id="selectById"  resultMap="DEDataChgResultMap" databaseId="oracle">
-        <![CDATA[select * from v_dedatachg t1     where  dedatachgid=#{id}]]>
-    </select>
-	<select id="selectById"  resultMap="DEDataChgResultMap" databaseId="postgresql">
-        <![CDATA[select * from v_dedatachg t1     where  dedatachgid=#{id}]]>
-    </select>
-	<select id="selectById"  resultMap="DEDataChgResultMap" databaseId="ppas">
-        <![CDATA[select * from v_dedatachg t1     where  dedatachgid=#{id}]]>
-    </select>
-	<select id="selectById"  resultMap="DEDataChgResultMap" databaseId="sqlserver">
-        <![CDATA[select * from v_dedatachg t1     where  dedatachgid=#{id}]]>
-    </select>
 
     <!--通过mybatis将查询结果注入到entity中,通过配置autoMapping="true"由mybatis自动处理映射关系 -->
     <resultMap id="DEDataChgResultMap" type="cn.ibizlab.ehr.core.common.domain.DEDataChg" autoMapping="true">

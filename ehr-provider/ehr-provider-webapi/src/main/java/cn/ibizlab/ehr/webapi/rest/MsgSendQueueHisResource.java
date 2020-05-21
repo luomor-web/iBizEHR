@@ -50,12 +50,14 @@ public class MsgSendQueueHisResource {
 
     @Autowired
     @Lazy
-    private MsgSendQueueHisMapping msgsendqueuehisMapping;
+    public MsgSendQueueHisMapping msgsendqueuehisMapping;
+
+    public MsgSendQueueHisDTO permissionDTO=new MsgSendQueueHisDTO();
 
 
 
 
-    @PreAuthorize("hasPermission(#msgsendqueuehis_id,'Remove',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#msgsendqueuehis_id,'Remove',{'Sql',this.msgsendqueuehisMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"MsgSendQueueHis" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/msgsendqueuehis/{msgsendqueuehis_id}")
     @Transactional
@@ -73,6 +75,7 @@ public class MsgSendQueueHisResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-MsgSendQueueHis-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"MsgSendQueueHis" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/msgsendqueuehis/getdraft")
     public ResponseEntity<MsgSendQueueHisDTO> getDraft() {
@@ -82,6 +85,7 @@ public class MsgSendQueueHisResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-MsgSendQueueHis-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"MsgSendQueueHis" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/msgsendqueuehis/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody MsgSendQueueHisDTO msgsendqueuehisdto) {
@@ -91,7 +95,7 @@ public class MsgSendQueueHisResource {
 
 
 
-    @PreAuthorize("hasPermission(#msgsendqueuehis_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#msgsendqueuehis_id,'Update',{'Sql',this.msgsendqueuehisMapping,#msgsendqueuehisdto})")
     @ApiOperation(value = "Update", tags = {"MsgSendQueueHis" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/msgsendqueuehis/{msgsendqueuehis_id}")
     @Transactional
@@ -103,7 +107,6 @@ public class MsgSendQueueHisResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#msgsendqueuehis_id,'Update',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "UpdateBatch", tags = {"MsgSendQueueHis" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/msgsendqueuehis/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<MsgSendQueueHisDTO> msgsendqueuehisdtos) {
@@ -114,7 +117,7 @@ public class MsgSendQueueHisResource {
 
 
 
-    @PreAuthorize("hasPermission(#msgsendqueuehis_id,'Get',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#msgsendqueuehis_id,'Get',{'Sql',this.msgsendqueuehisMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"MsgSendQueueHis" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/msgsendqueuehis/{msgsendqueuehis_id}")
     public ResponseEntity<MsgSendQueueHisDTO> get(@PathVariable("msgsendqueuehis_id") String msgsendqueuehis_id) {
@@ -126,6 +129,7 @@ public class MsgSendQueueHisResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-MsgSendQueueHis-Save-all')")
     @ApiOperation(value = "Save", tags = {"MsgSendQueueHis" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/msgsendqueuehis/save")
     public ResponseEntity<Boolean> save(@RequestBody MsgSendQueueHisDTO msgsendqueuehisdto) {
@@ -142,7 +146,7 @@ public class MsgSendQueueHisResource {
 
 
 
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.msgsendqueuehisMapping,#msgsendqueuehisdto})")
     @ApiOperation(value = "Create", tags = {"MsgSendQueueHis" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/msgsendqueuehis")
     @Transactional
@@ -152,7 +156,7 @@ public class MsgSendQueueHisResource {
         MsgSendQueueHisDTO dto = msgsendqueuehisMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+
     @ApiOperation(value = "createBatch", tags = {"MsgSendQueueHis" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/msgsendqueuehis/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<MsgSendQueueHisDTO> msgsendqueuehisdtos) {
@@ -160,7 +164,7 @@ public class MsgSendQueueHisResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-MsgSendQueueHis-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-MsgSendQueueHis-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"MsgSendQueueHis" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/msgsendqueuehis/fetchdefault")
 	public ResponseEntity<List<MsgSendQueueHisDTO>> fetchDefault(MsgSendQueueHisSearchContext context) {
@@ -173,7 +177,7 @@ public class MsgSendQueueHisResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-MsgSendQueueHis-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-MsgSendQueueHis-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"MsgSendQueueHis" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/msgsendqueuehis/searchdefault")
 	public ResponseEntity<Page<MsgSendQueueHisDTO>> searchDefault(@RequestBody MsgSendQueueHisSearchContext context) {
@@ -183,12 +187,6 @@ public class MsgSendQueueHisResource {
 	}
 
 
-    /**
-     * 用户权限校验
-     * @return
-     */
-	public MsgSendQueueHis getEntity(){
-        return new MsgSendQueueHis();
-    }
-
 }
+
+

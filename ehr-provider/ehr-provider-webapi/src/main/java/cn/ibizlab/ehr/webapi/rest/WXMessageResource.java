@@ -50,12 +50,14 @@ public class WXMessageResource {
 
     @Autowired
     @Lazy
-    private WXMessageMapping wxmessageMapping;
+    public WXMessageMapping wxmessageMapping;
+
+    public WXMessageDTO permissionDTO=new WXMessageDTO();
 
 
 
 
-    @PreAuthorize("hasPermission(#wxmessage_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#wxmessage_id,'Update',{'Sql',this.wxmessageMapping,#wxmessagedto})")
     @ApiOperation(value = "Update", tags = {"WXMessage" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/wxmessages/{wxmessage_id}")
     @Transactional
@@ -67,7 +69,6 @@ public class WXMessageResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#wxmessage_id,'Update',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "UpdateBatch", tags = {"WXMessage" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/wxmessages/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<WXMessageDTO> wxmessagedtos) {
@@ -78,6 +79,7 @@ public class WXMessageResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WXMessage-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"WXMessage" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/wxmessages/getdraft")
     public ResponseEntity<WXMessageDTO> getDraft() {
@@ -87,6 +89,7 @@ public class WXMessageResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WXMessage-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"WXMessage" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/wxmessages/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody WXMessageDTO wxmessagedto) {
@@ -96,7 +99,7 @@ public class WXMessageResource {
 
 
 
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.wxmessageMapping,#wxmessagedto})")
     @ApiOperation(value = "Create", tags = {"WXMessage" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/wxmessages")
     @Transactional
@@ -106,7 +109,7 @@ public class WXMessageResource {
         WXMessageDTO dto = wxmessageMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+
     @ApiOperation(value = "createBatch", tags = {"WXMessage" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/wxmessages/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<WXMessageDTO> wxmessagedtos) {
@@ -117,6 +120,7 @@ public class WXMessageResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WXMessage-Save-all')")
     @ApiOperation(value = "Save", tags = {"WXMessage" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/wxmessages/save")
     public ResponseEntity<Boolean> save(@RequestBody WXMessageDTO wxmessagedto) {
@@ -133,7 +137,7 @@ public class WXMessageResource {
 
 
 
-    @PreAuthorize("hasPermission(#wxmessage_id,'Get',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#wxmessage_id,'Get',{'Sql',this.wxmessageMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"WXMessage" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/wxmessages/{wxmessage_id}")
     public ResponseEntity<WXMessageDTO> get(@PathVariable("wxmessage_id") String wxmessage_id) {
@@ -145,7 +149,7 @@ public class WXMessageResource {
 
 
 
-    @PreAuthorize("hasPermission(#wxmessage_id,'Remove',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#wxmessage_id,'Remove',{'Sql',this.wxmessageMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"WXMessage" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/wxmessages/{wxmessage_id}")
     @Transactional
@@ -160,7 +164,7 @@ public class WXMessageResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WXMessage-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WXMessage-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"WXMessage" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/wxmessages/fetchdefault")
 	public ResponseEntity<List<WXMessageDTO>> fetchDefault(WXMessageSearchContext context) {
@@ -173,7 +177,7 @@ public class WXMessageResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WXMessage-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WXMessage-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"WXMessage" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/wxmessages/searchdefault")
 	public ResponseEntity<Page<WXMessageDTO>> searchDefault(@RequestBody WXMessageSearchContext context) {
@@ -183,12 +187,6 @@ public class WXMessageResource {
 	}
 
 
-    /**
-     * 用户权限校验
-     * @return
-     */
-	public WXMessage getEntity(){
-        return new WXMessage();
-    }
-
 }
+
+

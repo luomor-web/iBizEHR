@@ -50,12 +50,14 @@ public class WFQJResource {
 
     @Autowired
     @Lazy
-    private WFQJMapping wfqjMapping;
+    public WFQJMapping wfqjMapping;
+
+    public WFQJDTO permissionDTO=new WFQJDTO();
 
 
 
 
-    @PreAuthorize("hasPermission(#wfqj_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#wfqj_id,'Update',{'Sql',this.wfqjMapping,#wfqjdto})")
     @ApiOperation(value = "Update", tags = {"WFQJ" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/wfqjs/{wfqj_id}")
     @Transactional
@@ -67,7 +69,6 @@ public class WFQJResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#wfqj_id,'Update',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "UpdateBatch", tags = {"WFQJ" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/wfqjs/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<WFQJDTO> wfqjdtos) {
@@ -78,6 +79,7 @@ public class WFQJResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFQJ-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"WFQJ" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/wfqjs/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody WFQJDTO wfqjdto) {
@@ -87,7 +89,7 @@ public class WFQJResource {
 
 
 
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.wfqjMapping,#wfqjdto})")
     @ApiOperation(value = "Create", tags = {"WFQJ" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/wfqjs")
     @Transactional
@@ -97,7 +99,7 @@ public class WFQJResource {
         WFQJDTO dto = wfqjMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+
     @ApiOperation(value = "createBatch", tags = {"WFQJ" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/wfqjs/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<WFQJDTO> wfqjdtos) {
@@ -108,6 +110,7 @@ public class WFQJResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFQJ-Save-all')")
     @ApiOperation(value = "Save", tags = {"WFQJ" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/wfqjs/save")
     public ResponseEntity<Boolean> save(@RequestBody WFQJDTO wfqjdto) {
@@ -124,6 +127,7 @@ public class WFQJResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFQJ-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"WFQJ" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/wfqjs/getdraft")
     public ResponseEntity<WFQJDTO> getDraft() {
@@ -133,7 +137,7 @@ public class WFQJResource {
 
 
 
-    @PreAuthorize("hasPermission(#wfqj_id,'Remove',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#wfqj_id,'Remove',{'Sql',this.wfqjMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"WFQJ" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/wfqjs/{wfqj_id}")
     @Transactional
@@ -151,7 +155,7 @@ public class WFQJResource {
 
 
 
-    @PreAuthorize("hasPermission(#wfqj_id,'Get',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#wfqj_id,'Get',{'Sql',this.wfqjMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"WFQJ" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/wfqjs/{wfqj_id}")
     public ResponseEntity<WFQJDTO> get(@PathVariable("wfqj_id") String wfqj_id) {
@@ -160,7 +164,7 @@ public class WFQJResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFQJ-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFQJ-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"WFQJ" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/wfqjs/fetchdefault")
 	public ResponseEntity<List<WFQJDTO>> fetchDefault(WFQJSearchContext context) {
@@ -173,7 +177,7 @@ public class WFQJResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFQJ-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFQJ-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"WFQJ" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/wfqjs/searchdefault")
 	public ResponseEntity<Page<WFQJDTO>> searchDefault(@RequestBody WFQJSearchContext context) {
@@ -183,12 +187,6 @@ public class WFQJResource {
 	}
 
 
-    /**
-     * 用户权限校验
-     * @return
-     */
-	public WFQJ getEntity(){
-        return new WFQJ();
-    }
-
 }
+
+

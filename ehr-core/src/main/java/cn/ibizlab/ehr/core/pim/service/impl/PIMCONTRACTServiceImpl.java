@@ -110,7 +110,6 @@ public class PIMCONTRACTServiceImpl extends ServiceImpl<PIMCONTRACTMapper, PIMCO
         if(!this.retBool(this.baseMapper.insert(et)))
             return false;
         CachedBeanCopier.copy(get(et.getPimcontractid()),et);
-        calcontracttimeLogic.execute(et);
         return true;
     }
 
@@ -160,7 +159,6 @@ public class PIMCONTRACTServiceImpl extends ServiceImpl<PIMCONTRACTMapper, PIMCO
         if(!update(et,(Wrapper) et.getUpdateWrapper(true).eq("pimcontractid",et.getPimcontractid())))
             return false;
         CachedBeanCopier.copy(get(et.getPimcontractid()),et);
-        calcontracttimeLogic.execute(et);
         return true;
     }
 

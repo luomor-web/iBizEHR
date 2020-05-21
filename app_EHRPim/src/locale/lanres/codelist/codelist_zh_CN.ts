@@ -140,8 +140,8 @@ export default {
         empty: '',
     },
     YesNo: {
-        '1': '是',
-        '0': '否',
+        1: '是',
+        0: '否',
         empty: '',
     },
     PIMCL_BMLX: {

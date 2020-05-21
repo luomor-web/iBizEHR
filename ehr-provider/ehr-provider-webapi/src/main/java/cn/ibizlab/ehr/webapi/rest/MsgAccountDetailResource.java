@@ -50,11 +50,14 @@ public class MsgAccountDetailResource {
 
     @Autowired
     @Lazy
-    private MsgAccountDetailMapping msgaccountdetailMapping;
+    public MsgAccountDetailMapping msgaccountdetailMapping;
+
+    public MsgAccountDetailDTO permissionDTO=new MsgAccountDetailDTO();
 
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-MsgAccountDetail-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"MsgAccountDetail" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/msgaccountdetails/getdraft")
     public ResponseEntity<MsgAccountDetailDTO> getDraft() {
@@ -64,7 +67,7 @@ public class MsgAccountDetailResource {
 
 
 
-    @PreAuthorize("hasPermission(#msgaccountdetail_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#msgaccountdetail_id,'Update',{'Sql',this.msgaccountdetailMapping,#msgaccountdetaildto})")
     @ApiOperation(value = "Update", tags = {"MsgAccountDetail" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/msgaccountdetails/{msgaccountdetail_id}")
     @Transactional
@@ -76,7 +79,6 @@ public class MsgAccountDetailResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#msgaccountdetail_id,'Update',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "UpdateBatch", tags = {"MsgAccountDetail" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/msgaccountdetails/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<MsgAccountDetailDTO> msgaccountdetaildtos) {
@@ -87,7 +89,7 @@ public class MsgAccountDetailResource {
 
 
 
-    @PreAuthorize("hasPermission(#msgaccountdetail_id,'Remove',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#msgaccountdetail_id,'Remove',{'Sql',this.msgaccountdetailMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"MsgAccountDetail" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/msgaccountdetails/{msgaccountdetail_id}")
     @Transactional
@@ -105,6 +107,7 @@ public class MsgAccountDetailResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-MsgAccountDetail-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"MsgAccountDetail" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/msgaccountdetails/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody MsgAccountDetailDTO msgaccountdetaildto) {
@@ -114,6 +117,7 @@ public class MsgAccountDetailResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-MsgAccountDetail-Save-all')")
     @ApiOperation(value = "Save", tags = {"MsgAccountDetail" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/msgaccountdetails/save")
     public ResponseEntity<Boolean> save(@RequestBody MsgAccountDetailDTO msgaccountdetaildto) {
@@ -130,7 +134,7 @@ public class MsgAccountDetailResource {
 
 
 
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.msgaccountdetailMapping,#msgaccountdetaildto})")
     @ApiOperation(value = "Create", tags = {"MsgAccountDetail" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/msgaccountdetails")
     @Transactional
@@ -140,7 +144,7 @@ public class MsgAccountDetailResource {
         MsgAccountDetailDTO dto = msgaccountdetailMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+
     @ApiOperation(value = "createBatch", tags = {"MsgAccountDetail" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/msgaccountdetails/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<MsgAccountDetailDTO> msgaccountdetaildtos) {
@@ -151,7 +155,7 @@ public class MsgAccountDetailResource {
 
 
 
-    @PreAuthorize("hasPermission(#msgaccountdetail_id,'Get',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#msgaccountdetail_id,'Get',{'Sql',this.msgaccountdetailMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"MsgAccountDetail" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/msgaccountdetails/{msgaccountdetail_id}")
     public ResponseEntity<MsgAccountDetailDTO> get(@PathVariable("msgaccountdetail_id") String msgaccountdetail_id) {
@@ -160,7 +164,7 @@ public class MsgAccountDetailResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-MsgAccountDetail-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-MsgAccountDetail-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"MsgAccountDetail" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/msgaccountdetails/fetchdefault")
 	public ResponseEntity<List<MsgAccountDetailDTO>> fetchDefault(MsgAccountDetailSearchContext context) {
@@ -173,7 +177,7 @@ public class MsgAccountDetailResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-MsgAccountDetail-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-MsgAccountDetail-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"MsgAccountDetail" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/msgaccountdetails/searchdefault")
 	public ResponseEntity<Page<MsgAccountDetailDTO>> searchDefault(@RequestBody MsgAccountDetailSearchContext context) {
@@ -183,12 +187,6 @@ public class MsgAccountDetailResource {
 	}
 
 
-    /**
-     * 用户权限校验
-     * @return
-     */
-	public MsgAccountDetail getEntity(){
-        return new MsgAccountDetail();
-    }
-
 }
+
+

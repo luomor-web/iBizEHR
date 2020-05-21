@@ -50,12 +50,14 @@ public class ORMRANKResource {
 
     @Autowired
     @Lazy
-    private ORMRANKMapping ormrankMapping;
+    public ORMRANKMapping ormrankMapping;
+
+    public ORMRANKDTO permissionDTO=new ORMRANKDTO();
 
 
 
 
-    @PreAuthorize("hasPermission(#ormrank_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#ormrank_id,'Update',{'Sql',this.ormrankMapping,#ormrankdto})")
     @ApiOperation(value = "Update", tags = {"ORMRANK" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/ormranks/{ormrank_id}")
     @Transactional
@@ -67,7 +69,6 @@ public class ORMRANKResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#ormrank_id,'Update',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "UpdateBatch", tags = {"ORMRANK" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/ormranks/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<ORMRANKDTO> ormrankdtos) {
@@ -78,7 +79,7 @@ public class ORMRANKResource {
 
 
 
-    @PreAuthorize("hasPermission(#ormrank_id,'Remove',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#ormrank_id,'Remove',{'Sql',this.ormrankMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"ORMRANK" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/ormranks/{ormrank_id}")
     @Transactional
@@ -96,6 +97,7 @@ public class ORMRANKResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMRANK-Save-all')")
     @ApiOperation(value = "Save", tags = {"ORMRANK" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormranks/save")
     public ResponseEntity<Boolean> save(@RequestBody ORMRANKDTO ormrankdto) {
@@ -112,7 +114,7 @@ public class ORMRANKResource {
 
 
 
-    @PreAuthorize("hasPermission(#ormrank_id,'Get',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#ormrank_id,'Get',{'Sql',this.ormrankMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"ORMRANK" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/ormranks/{ormrank_id}")
     public ResponseEntity<ORMRANKDTO> get(@PathVariable("ormrank_id") String ormrank_id) {
@@ -124,6 +126,7 @@ public class ORMRANKResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMRANK-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"ORMRANK" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormranks/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody ORMRANKDTO ormrankdto) {
@@ -133,6 +136,7 @@ public class ORMRANKResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMRANK-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"ORMRANK" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/ormranks/getdraft")
     public ResponseEntity<ORMRANKDTO> getDraft() {
@@ -142,7 +146,7 @@ public class ORMRANKResource {
 
 
 
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.ormrankMapping,#ormrankdto})")
     @ApiOperation(value = "Create", tags = {"ORMRANK" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormranks")
     @Transactional
@@ -152,7 +156,7 @@ public class ORMRANKResource {
         ORMRANKDTO dto = ormrankMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+
     @ApiOperation(value = "createBatch", tags = {"ORMRANK" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormranks/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<ORMRANKDTO> ormrankdtos) {
@@ -160,7 +164,7 @@ public class ORMRANKResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMRANK-JZRANK-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMRANK-JZRANK-all')")
 	@ApiOperation(value = "fetchJZRANK", tags = {"ORMRANK" } ,notes = "fetchJZRANK")
     @RequestMapping(method= RequestMethod.GET , value="/ormranks/fetchjzrank")
 	public ResponseEntity<List<ORMRANKDTO>> fetchJZRANK(ORMRANKSearchContext context) {
@@ -173,7 +177,7 @@ public class ORMRANKResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMRANK-JZRANK-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMRANK-JZRANK-all')")
 	@ApiOperation(value = "searchJZRANK", tags = {"ORMRANK" } ,notes = "searchJZRANK")
     @RequestMapping(method= RequestMethod.POST , value="/ormranks/searchjzrank")
 	public ResponseEntity<Page<ORMRANKDTO>> searchJZRANK(@RequestBody ORMRANKSearchContext context) {
@@ -182,7 +186,7 @@ public class ORMRANKResource {
                 .body(new PageImpl(ormrankMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMRANK-JSRANK-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMRANK-JSRANK-all')")
 	@ApiOperation(value = "fetchJSRANK", tags = {"ORMRANK" } ,notes = "fetchJSRANK")
     @RequestMapping(method= RequestMethod.GET , value="/ormranks/fetchjsrank")
 	public ResponseEntity<List<ORMRANKDTO>> fetchJSRANK(ORMRANKSearchContext context) {
@@ -195,7 +199,7 @@ public class ORMRANKResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMRANK-JSRANK-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMRANK-JSRANK-all')")
 	@ApiOperation(value = "searchJSRANK", tags = {"ORMRANK" } ,notes = "searchJSRANK")
     @RequestMapping(method= RequestMethod.POST , value="/ormranks/searchjsrank")
 	public ResponseEntity<Page<ORMRANKDTO>> searchJSRANK(@RequestBody ORMRANKSearchContext context) {
@@ -204,7 +208,7 @@ public class ORMRANKResource {
                 .body(new PageImpl(ormrankMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMRANK-DJYX-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMRANK-DJYX-all')")
 	@ApiOperation(value = "fetchD级以下", tags = {"ORMRANK" } ,notes = "fetchD级以下")
     @RequestMapping(method= RequestMethod.GET , value="/ormranks/fetchdjyx")
 	public ResponseEntity<List<ORMRANKDTO>> fetchDJYX(ORMRANKSearchContext context) {
@@ -217,7 +221,7 @@ public class ORMRANKResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMRANK-DJYX-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMRANK-DJYX-all')")
 	@ApiOperation(value = "searchD级以下", tags = {"ORMRANK" } ,notes = "searchD级以下")
     @RequestMapping(method= RequestMethod.POST , value="/ormranks/searchdjyx")
 	public ResponseEntity<Page<ORMRANKDTO>> searchDJYX(@RequestBody ORMRANKSearchContext context) {
@@ -226,7 +230,7 @@ public class ORMRANKResource {
                 .body(new PageImpl(ormrankMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMRANK-JSNRANK-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMRANK-JSNRANK-all')")
 	@ApiOperation(value = "fetchJSNRANK", tags = {"ORMRANK" } ,notes = "fetchJSNRANK")
     @RequestMapping(method= RequestMethod.GET , value="/ormranks/fetchjsnrank")
 	public ResponseEntity<List<ORMRANKDTO>> fetchJSNRANK(ORMRANKSearchContext context) {
@@ -239,7 +243,7 @@ public class ORMRANKResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMRANK-JSNRANK-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMRANK-JSNRANK-all')")
 	@ApiOperation(value = "searchJSNRANK", tags = {"ORMRANK" } ,notes = "searchJSNRANK")
     @RequestMapping(method= RequestMethod.POST , value="/ormranks/searchjsnrank")
 	public ResponseEntity<Page<ORMRANKDTO>> searchJSNRANK(@RequestBody ORMRANKSearchContext context) {
@@ -248,7 +252,7 @@ public class ORMRANKResource {
                 .body(new PageImpl(ormrankMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMRANK-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMRANK-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"ORMRANK" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/ormranks/fetchdefault")
 	public ResponseEntity<List<ORMRANKDTO>> fetchDefault(ORMRANKSearchContext context) {
@@ -261,7 +265,7 @@ public class ORMRANKResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMRANK-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMRANK-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"ORMRANK" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/ormranks/searchdefault")
 	public ResponseEntity<Page<ORMRANKDTO>> searchDefault(@RequestBody ORMRANKSearchContext context) {
@@ -270,7 +274,7 @@ public class ORMRANKResource {
                 .body(new PageImpl(ormrankMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMRANK-CurRank-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMRANK-CurRank-all')")
 	@ApiOperation(value = "fetch根据登录人身份判定职级显示", tags = {"ORMRANK" } ,notes = "fetch根据登录人身份判定职级显示")
     @RequestMapping(method= RequestMethod.GET , value="/ormranks/fetchcurrank")
 	public ResponseEntity<List<ORMRANKDTO>> fetchCurRank(ORMRANKSearchContext context) {
@@ -283,7 +287,7 @@ public class ORMRANKResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMRANK-CurRank-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMRANK-CurRank-all')")
 	@ApiOperation(value = "search根据登录人身份判定职级显示", tags = {"ORMRANK" } ,notes = "search根据登录人身份判定职级显示")
     @RequestMapping(method= RequestMethod.POST , value="/ormranks/searchcurrank")
 	public ResponseEntity<Page<ORMRANKDTO>> searchCurRank(@RequestBody ORMRANKSearchContext context) {
@@ -293,12 +297,6 @@ public class ORMRANKResource {
 	}
 
 
-    /**
-     * 用户权限校验
-     * @return
-     */
-	public ORMRANK getEntity(){
-        return new ORMRANK();
-    }
-
 }
+
+

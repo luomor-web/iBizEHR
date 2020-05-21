@@ -50,12 +50,14 @@ public class ORMXMSFHZResource {
 
     @Autowired
     @Lazy
-    private ORMXMSFHZMapping ormxmsfhzMapping;
+    public ORMXMSFHZMapping ormxmsfhzMapping;
+
+    public ORMXMSFHZDTO permissionDTO=new ORMXMSFHZDTO();
 
 
 
 
-    @PreAuthorize("hasPermission(#ormxmsfhz_id,'Remove',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#ormxmsfhz_id,'Remove',{'Sql',this.ormxmsfhzMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"ORMXMSFHZ" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/ormxmsfhzs/{ormxmsfhz_id}")
     @Transactional
@@ -73,7 +75,7 @@ public class ORMXMSFHZResource {
 
 
 
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.ormxmsfhzMapping,#ormxmsfhzdto})")
     @ApiOperation(value = "Create", tags = {"ORMXMSFHZ" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormxmsfhzs")
     @Transactional
@@ -83,7 +85,7 @@ public class ORMXMSFHZResource {
         ORMXMSFHZDTO dto = ormxmsfhzMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+
     @ApiOperation(value = "createBatch", tags = {"ORMXMSFHZ" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormxmsfhzs/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<ORMXMSFHZDTO> ormxmsfhzdtos) {
@@ -94,7 +96,7 @@ public class ORMXMSFHZResource {
 
 
 
-    @PreAuthorize("hasPermission(#ormxmsfhz_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#ormxmsfhz_id,'Update',{'Sql',this.ormxmsfhzMapping,#ormxmsfhzdto})")
     @ApiOperation(value = "Update", tags = {"ORMXMSFHZ" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/ormxmsfhzs/{ormxmsfhz_id}")
     @Transactional
@@ -106,7 +108,6 @@ public class ORMXMSFHZResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#ormxmsfhz_id,'Update',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "UpdateBatch", tags = {"ORMXMSFHZ" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/ormxmsfhzs/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<ORMXMSFHZDTO> ormxmsfhzdtos) {
@@ -117,6 +118,7 @@ public class ORMXMSFHZResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMXMSFHZ-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"ORMXMSFHZ" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/ormxmsfhzs/getdraft")
     public ResponseEntity<ORMXMSFHZDTO> getDraft() {
@@ -126,6 +128,7 @@ public class ORMXMSFHZResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMXMSFHZ-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"ORMXMSFHZ" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormxmsfhzs/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody ORMXMSFHZDTO ormxmsfhzdto) {
@@ -135,7 +138,7 @@ public class ORMXMSFHZResource {
 
 
 
-    @PreAuthorize("hasPermission(#ormxmsfhz_id,'Get',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#ormxmsfhz_id,'Get',{'Sql',this.ormxmsfhzMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"ORMXMSFHZ" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/ormxmsfhzs/{ormxmsfhz_id}")
     public ResponseEntity<ORMXMSFHZDTO> get(@PathVariable("ormxmsfhz_id") String ormxmsfhz_id) {
@@ -147,6 +150,7 @@ public class ORMXMSFHZResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMXMSFHZ-Save-all')")
     @ApiOperation(value = "Save", tags = {"ORMXMSFHZ" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormxmsfhzs/save")
     public ResponseEntity<Boolean> save(@RequestBody ORMXMSFHZDTO ormxmsfhzdto) {
@@ -160,7 +164,7 @@ public class ORMXMSFHZResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMXMSFHZ-AccOrg-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMXMSFHZ-AccOrg-all')")
 	@ApiOperation(value = "fetch根据组织定位查询", tags = {"ORMXMSFHZ" } ,notes = "fetch根据组织定位查询")
     @RequestMapping(method= RequestMethod.GET , value="/ormxmsfhzs/fetchaccorg")
 	public ResponseEntity<List<ORMXMSFHZDTO>> fetchAccOrg(ORMXMSFHZSearchContext context) {
@@ -173,7 +177,7 @@ public class ORMXMSFHZResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMXMSFHZ-AccOrg-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMXMSFHZ-AccOrg-all')")
 	@ApiOperation(value = "search根据组织定位查询", tags = {"ORMXMSFHZ" } ,notes = "search根据组织定位查询")
     @RequestMapping(method= RequestMethod.POST , value="/ormxmsfhzs/searchaccorg")
 	public ResponseEntity<Page<ORMXMSFHZDTO>> searchAccOrg(@RequestBody ORMXMSFHZSearchContext context) {
@@ -182,7 +186,7 @@ public class ORMXMSFHZResource {
                 .body(new PageImpl(ormxmsfhzMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMXMSFHZ-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMXMSFHZ-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"ORMXMSFHZ" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/ormxmsfhzs/fetchdefault")
 	public ResponseEntity<List<ORMXMSFHZDTO>> fetchDefault(ORMXMSFHZSearchContext context) {
@@ -195,7 +199,7 @@ public class ORMXMSFHZResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMXMSFHZ-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMXMSFHZ-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"ORMXMSFHZ" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/ormxmsfhzs/searchdefault")
 	public ResponseEntity<Page<ORMXMSFHZDTO>> searchDefault(@RequestBody ORMXMSFHZSearchContext context) {
@@ -205,12 +209,6 @@ public class ORMXMSFHZResource {
 	}
 
 
-    /**
-     * 用户权限校验
-     * @return
-     */
-	public ORMXMSFHZ getEntity(){
-        return new ORMXMSFHZ();
-    }
-
 }
+
+

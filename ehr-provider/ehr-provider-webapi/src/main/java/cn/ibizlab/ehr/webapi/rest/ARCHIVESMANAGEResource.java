@@ -50,12 +50,14 @@ public class ARCHIVESMANAGEResource {
 
     @Autowired
     @Lazy
-    private ARCHIVESMANAGEMapping archivesmanageMapping;
+    public ARCHIVESMANAGEMapping archivesmanageMapping;
+
+    public ARCHIVESMANAGEDTO permissionDTO=new ARCHIVESMANAGEDTO();
 
 
 
 
-    @PreAuthorize("hasPermission(#archivesmanage_id,'Remove',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#archivesmanage_id,'Remove',{'Sql',this.archivesmanageMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"ARCHIVESMANAGE" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/archivesmanages/{archivesmanage_id}")
     @Transactional
@@ -73,6 +75,7 @@ public class ARCHIVESMANAGEResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ARCHIVESMANAGE-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"ARCHIVESMANAGE" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/archivesmanages/getdraft")
     public ResponseEntity<ARCHIVESMANAGEDTO> getDraft() {
@@ -82,7 +85,7 @@ public class ARCHIVESMANAGEResource {
 
 
 
-    @PreAuthorize("hasPermission(#archivesmanage_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#archivesmanage_id,'Update',{'Sql',this.archivesmanageMapping,#archivesmanagedto})")
     @ApiOperation(value = "Update", tags = {"ARCHIVESMANAGE" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/archivesmanages/{archivesmanage_id}")
     @Transactional
@@ -94,7 +97,6 @@ public class ARCHIVESMANAGEResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#archivesmanage_id,'Update',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "UpdateBatch", tags = {"ARCHIVESMANAGE" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/archivesmanages/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<ARCHIVESMANAGEDTO> archivesmanagedtos) {
@@ -105,7 +107,7 @@ public class ARCHIVESMANAGEResource {
 
 
 
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.archivesmanageMapping,#archivesmanagedto})")
     @ApiOperation(value = "Create", tags = {"ARCHIVESMANAGE" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/archivesmanages")
     @Transactional
@@ -115,7 +117,7 @@ public class ARCHIVESMANAGEResource {
         ARCHIVESMANAGEDTO dto = archivesmanageMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+
     @ApiOperation(value = "createBatch", tags = {"ARCHIVESMANAGE" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/archivesmanages/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<ARCHIVESMANAGEDTO> archivesmanagedtos) {
@@ -126,6 +128,7 @@ public class ARCHIVESMANAGEResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ARCHIVESMANAGE-Save-all')")
     @ApiOperation(value = "Save", tags = {"ARCHIVESMANAGE" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/archivesmanages/save")
     public ResponseEntity<Boolean> save(@RequestBody ARCHIVESMANAGEDTO archivesmanagedto) {
@@ -142,6 +145,7 @@ public class ARCHIVESMANAGEResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ARCHIVESMANAGE-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"ARCHIVESMANAGE" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/archivesmanages/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody ARCHIVESMANAGEDTO archivesmanagedto) {
@@ -151,7 +155,7 @@ public class ARCHIVESMANAGEResource {
 
 
 
-    @PreAuthorize("hasPermission(#archivesmanage_id,'Get',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#archivesmanage_id,'Get',{'Sql',this.archivesmanageMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"ARCHIVESMANAGE" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/archivesmanages/{archivesmanage_id}")
     public ResponseEntity<ARCHIVESMANAGEDTO> get(@PathVariable("archivesmanage_id") String archivesmanage_id) {
@@ -160,7 +164,7 @@ public class ARCHIVESMANAGEResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ARCHIVESMANAGE-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ARCHIVESMANAGE-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"ARCHIVESMANAGE" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/archivesmanages/fetchdefault")
 	public ResponseEntity<List<ARCHIVESMANAGEDTO>> fetchDefault(ARCHIVESMANAGESearchContext context) {
@@ -173,7 +177,7 @@ public class ARCHIVESMANAGEResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ARCHIVESMANAGE-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ARCHIVESMANAGE-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"ARCHIVESMANAGE" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/archivesmanages/searchdefault")
 	public ResponseEntity<Page<ARCHIVESMANAGEDTO>> searchDefault(@RequestBody ARCHIVESMANAGESearchContext context) {
@@ -183,12 +187,6 @@ public class ARCHIVESMANAGEResource {
 	}
 
 
-    /**
-     * 用户权限校验
-     * @return
-     */
-	public ARCHIVESMANAGE getEntity(){
-        return new ARCHIVESMANAGE();
-    }
-
 }
+
+

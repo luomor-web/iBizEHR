@@ -50,11 +50,14 @@ public class SALRULEResource {
 
     @Autowired
     @Lazy
-    private SALRULEMapping salruleMapping;
+    public SALRULEMapping salruleMapping;
+
+    public SALRULEDTO permissionDTO=new SALRULEDTO();
 
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALRULE-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"SALRULE" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/salrules/getdraft")
     public ResponseEntity<SALRULEDTO> getDraft() {
@@ -64,7 +67,7 @@ public class SALRULEResource {
 
 
 
-    @PreAuthorize("hasPermission(#salrule_id,'Remove',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#salrule_id,'Remove',{'Sql',this.salruleMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"SALRULE" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/salrules/{salrule_id}")
     @Transactional
@@ -82,7 +85,7 @@ public class SALRULEResource {
 
 
 
-    @PreAuthorize("hasPermission(#salrule_id,'Get',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#salrule_id,'Get',{'Sql',this.salruleMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"SALRULE" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/salrules/{salrule_id}")
     public ResponseEntity<SALRULEDTO> get(@PathVariable("salrule_id") String salrule_id) {
@@ -94,7 +97,7 @@ public class SALRULEResource {
 
 
 
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.salruleMapping,#salruledto})")
     @ApiOperation(value = "Create", tags = {"SALRULE" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/salrules")
     @Transactional
@@ -104,7 +107,7 @@ public class SALRULEResource {
         SALRULEDTO dto = salruleMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+
     @ApiOperation(value = "createBatch", tags = {"SALRULE" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/salrules/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<SALRULEDTO> salruledtos) {
@@ -115,7 +118,7 @@ public class SALRULEResource {
 
 
 
-    @PreAuthorize("hasPermission(#salrule_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#salrule_id,'Update',{'Sql',this.salruleMapping,#salruledto})")
     @ApiOperation(value = "Update", tags = {"SALRULE" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/salrules/{salrule_id}")
     @Transactional
@@ -127,7 +130,6 @@ public class SALRULEResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#salrule_id,'Update',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "UpdateBatch", tags = {"SALRULE" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/salrules/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<SALRULEDTO> salruledtos) {
@@ -138,6 +140,7 @@ public class SALRULEResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALRULE-Save-all')")
     @ApiOperation(value = "Save", tags = {"SALRULE" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/salrules/save")
     public ResponseEntity<Boolean> save(@RequestBody SALRULEDTO salruledto) {
@@ -154,13 +157,14 @@ public class SALRULEResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALRULE-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"SALRULE" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/salrules/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody SALRULEDTO salruledto) {
         return  ResponseEntity.status(HttpStatus.OK).body(salruleService.checkKey(salruleMapping.toDomain(salruledto)));
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALRULE-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALRULE-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"SALRULE" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/salrules/fetchdefault")
 	public ResponseEntity<List<SALRULEDTO>> fetchDefault(SALRULESearchContext context) {
@@ -173,7 +177,7 @@ public class SALRULEResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALRULE-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALRULE-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"SALRULE" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/salrules/searchdefault")
 	public ResponseEntity<Page<SALRULEDTO>> searchDefault(@RequestBody SALRULESearchContext context) {
@@ -183,12 +187,6 @@ public class SALRULEResource {
 	}
 
 
-    /**
-     * 用户权限校验
-     * @return
-     */
-	public SALRULE getEntity(){
-        return new SALRULE();
-    }
-
 }
+
+

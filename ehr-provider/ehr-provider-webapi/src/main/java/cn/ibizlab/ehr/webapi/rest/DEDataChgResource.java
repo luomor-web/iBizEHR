@@ -50,12 +50,14 @@ public class DEDataChgResource {
 
     @Autowired
     @Lazy
-    private DEDataChgMapping dedatachgMapping;
+    public DEDataChgMapping dedatachgMapping;
+
+    public DEDataChgDTO permissionDTO=new DEDataChgDTO();
 
 
 
 
-    @PreAuthorize("hasPermission(#dedatachg_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#dedatachg_id,'Update',{'Sql',this.dedatachgMapping,#dedatachgdto})")
     @ApiOperation(value = "Update", tags = {"DEDataChg" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/dedatachgs/{dedatachg_id}")
     @Transactional
@@ -67,7 +69,6 @@ public class DEDataChgResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#dedatachg_id,'Update',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "UpdateBatch", tags = {"DEDataChg" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/dedatachgs/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<DEDataChgDTO> dedatachgdtos) {
@@ -78,6 +79,7 @@ public class DEDataChgResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DEDataChg-Save-all')")
     @ApiOperation(value = "Save", tags = {"DEDataChg" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/dedatachgs/save")
     public ResponseEntity<Boolean> save(@RequestBody DEDataChgDTO dedatachgdto) {
@@ -94,7 +96,7 @@ public class DEDataChgResource {
 
 
 
-    @PreAuthorize("hasPermission(#dedatachg_id,'Get',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#dedatachg_id,'Get',{'Sql',this.dedatachgMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"DEDataChg" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/dedatachgs/{dedatachg_id}")
     public ResponseEntity<DEDataChgDTO> get(@PathVariable("dedatachg_id") String dedatachg_id) {
@@ -106,6 +108,7 @@ public class DEDataChgResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DEDataChg-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"DEDataChg" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/dedatachgs/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody DEDataChgDTO dedatachgdto) {
@@ -115,6 +118,7 @@ public class DEDataChgResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DEDataChg-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"DEDataChg" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/dedatachgs/getdraft")
     public ResponseEntity<DEDataChgDTO> getDraft() {
@@ -124,7 +128,7 @@ public class DEDataChgResource {
 
 
 
-    @PreAuthorize("hasPermission(#dedatachg_id,'Remove',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#dedatachg_id,'Remove',{'Sql',this.dedatachgMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"DEDataChg" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/dedatachgs/{dedatachg_id}")
     @Transactional
@@ -142,7 +146,7 @@ public class DEDataChgResource {
 
 
 
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.dedatachgMapping,#dedatachgdto})")
     @ApiOperation(value = "Create", tags = {"DEDataChg" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/dedatachgs")
     @Transactional
@@ -152,7 +156,7 @@ public class DEDataChgResource {
         DEDataChgDTO dto = dedatachgMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+
     @ApiOperation(value = "createBatch", tags = {"DEDataChg" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/dedatachgs/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<DEDataChgDTO> dedatachgdtos) {
@@ -160,7 +164,7 @@ public class DEDataChgResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DEDataChg-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DEDataChg-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"DEDataChg" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/dedatachgs/fetchdefault")
 	public ResponseEntity<List<DEDataChgDTO>> fetchDefault(DEDataChgSearchContext context) {
@@ -173,7 +177,7 @@ public class DEDataChgResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DEDataChg-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DEDataChg-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"DEDataChg" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/dedatachgs/searchdefault")
 	public ResponseEntity<Page<DEDataChgDTO>> searchDefault(@RequestBody DEDataChgSearchContext context) {
@@ -183,12 +187,6 @@ public class DEDataChgResource {
 	}
 
 
-    /**
-     * 用户权限校验
-     * @return
-     */
-	public DEDataChg getEntity(){
-        return new DEDataChg();
-    }
-
 }
+
+

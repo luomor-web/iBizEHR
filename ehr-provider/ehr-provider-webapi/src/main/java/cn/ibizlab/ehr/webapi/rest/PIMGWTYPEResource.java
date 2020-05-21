@@ -50,11 +50,14 @@ public class PIMGWTYPEResource {
 
     @Autowired
     @Lazy
-    private PIMGWTYPEMapping pimgwtypeMapping;
+    public PIMGWTYPEMapping pimgwtypeMapping;
+
+    public PIMGWTYPEDTO permissionDTO=new PIMGWTYPEDTO();
 
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMGWTYPE-Save-all')")
     @ApiOperation(value = "Save", tags = {"PIMGWTYPE" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimgwtypes/save")
     public ResponseEntity<Boolean> save(@RequestBody PIMGWTYPEDTO pimgwtypedto) {
@@ -71,6 +74,7 @@ public class PIMGWTYPEResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMGWTYPE-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"PIMGWTYPE" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimgwtypes/getdraft")
     public ResponseEntity<PIMGWTYPEDTO> getDraft() {
@@ -80,7 +84,7 @@ public class PIMGWTYPEResource {
 
 
 
-    @PreAuthorize("hasPermission(#pimgwtype_id,'Get',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#pimgwtype_id,'Get',{'Sql',this.pimgwtypeMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"PIMGWTYPE" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimgwtypes/{pimgwtype_id}")
     public ResponseEntity<PIMGWTYPEDTO> get(@PathVariable("pimgwtype_id") String pimgwtype_id) {
@@ -92,7 +96,7 @@ public class PIMGWTYPEResource {
 
 
 
-    @PreAuthorize("hasPermission(#pimgwtype_id,'Remove',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#pimgwtype_id,'Remove',{'Sql',this.pimgwtypeMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"PIMGWTYPE" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimgwtypes/{pimgwtype_id}")
     @Transactional
@@ -110,6 +114,7 @@ public class PIMGWTYPEResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMGWTYPE-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"PIMGWTYPE" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimgwtypes/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PIMGWTYPEDTO pimgwtypedto) {
@@ -119,7 +124,7 @@ public class PIMGWTYPEResource {
 
 
 
-    @PreAuthorize("hasPermission(#pimgwtype_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#pimgwtype_id,'Update',{'Sql',this.pimgwtypeMapping,#pimgwtypedto})")
     @ApiOperation(value = "Update", tags = {"PIMGWTYPE" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimgwtypes/{pimgwtype_id}")
     @Transactional
@@ -131,7 +136,6 @@ public class PIMGWTYPEResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#pimgwtype_id,'Update',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "UpdateBatch", tags = {"PIMGWTYPE" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimgwtypes/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PIMGWTYPEDTO> pimgwtypedtos) {
@@ -142,7 +146,7 @@ public class PIMGWTYPEResource {
 
 
 
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.pimgwtypeMapping,#pimgwtypedto})")
     @ApiOperation(value = "Create", tags = {"PIMGWTYPE" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimgwtypes")
     @Transactional
@@ -152,7 +156,7 @@ public class PIMGWTYPEResource {
         PIMGWTYPEDTO dto = pimgwtypeMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+
     @ApiOperation(value = "createBatch", tags = {"PIMGWTYPE" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimgwtypes/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PIMGWTYPEDTO> pimgwtypedtos) {
@@ -160,7 +164,7 @@ public class PIMGWTYPEResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMGWTYPE-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMGWTYPE-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PIMGWTYPE" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimgwtypes/fetchdefault")
 	public ResponseEntity<List<PIMGWTYPEDTO>> fetchDefault(PIMGWTYPESearchContext context) {
@@ -173,7 +177,7 @@ public class PIMGWTYPEResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMGWTYPE-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMGWTYPE-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PIMGWTYPE" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pimgwtypes/searchdefault")
 	public ResponseEntity<Page<PIMGWTYPEDTO>> searchDefault(@RequestBody PIMGWTYPESearchContext context) {
@@ -183,12 +187,6 @@ public class PIMGWTYPEResource {
 	}
 
 
-    /**
-     * 用户权限校验
-     * @return
-     */
-	public PIMGWTYPE getEntity(){
-        return new PIMGWTYPE();
-    }
-
 }
+
+

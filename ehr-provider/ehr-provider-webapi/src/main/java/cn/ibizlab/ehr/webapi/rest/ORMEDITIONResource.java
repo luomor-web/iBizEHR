@@ -50,12 +50,14 @@ public class ORMEDITIONResource {
 
     @Autowired
     @Lazy
-    private ORMEDITIONMapping ormeditionMapping;
+    public ORMEDITIONMapping ormeditionMapping;
+
+    public ORMEDITIONDTO permissionDTO=new ORMEDITIONDTO();
 
 
 
 
-    @PreAuthorize("hasPermission(#ormedition_id,'Remove',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#ormedition_id,'Remove',{'Sql',this.ormeditionMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"ORMEDITION" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/ormeditions/{ormedition_id}")
     @Transactional
@@ -73,7 +75,7 @@ public class ORMEDITIONResource {
 
 
 
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.ormeditionMapping,#ormeditiondto})")
     @ApiOperation(value = "Create", tags = {"ORMEDITION" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormeditions")
     @Transactional
@@ -83,7 +85,7 @@ public class ORMEDITIONResource {
         ORMEDITIONDTO dto = ormeditionMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+
     @ApiOperation(value = "createBatch", tags = {"ORMEDITION" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormeditions/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<ORMEDITIONDTO> ormeditiondtos) {
@@ -94,6 +96,7 @@ public class ORMEDITIONResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMEDITION-Save-all')")
     @ApiOperation(value = "Save", tags = {"ORMEDITION" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormeditions/save")
     public ResponseEntity<Boolean> save(@RequestBody ORMEDITIONDTO ormeditiondto) {
@@ -110,6 +113,7 @@ public class ORMEDITIONResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMEDITION-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"ORMEDITION" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/ormeditions/getdraft")
     public ResponseEntity<ORMEDITIONDTO> getDraft() {
@@ -119,7 +123,7 @@ public class ORMEDITIONResource {
 
 
 
-    @PreAuthorize("hasPermission(#ormedition_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#ormedition_id,'Update',{'Sql',this.ormeditionMapping,#ormeditiondto})")
     @ApiOperation(value = "Update", tags = {"ORMEDITION" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/ormeditions/{ormedition_id}")
     @Transactional
@@ -131,7 +135,6 @@ public class ORMEDITIONResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#ormedition_id,'Update',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "UpdateBatch", tags = {"ORMEDITION" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/ormeditions/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<ORMEDITIONDTO> ormeditiondtos) {
@@ -142,6 +145,7 @@ public class ORMEDITIONResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMEDITION-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"ORMEDITION" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormeditions/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody ORMEDITIONDTO ormeditiondto) {
@@ -151,7 +155,7 @@ public class ORMEDITIONResource {
 
 
 
-    @PreAuthorize("hasPermission(#ormedition_id,'Get',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#ormedition_id,'Get',{'Sql',this.ormeditionMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"ORMEDITION" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/ormeditions/{ormedition_id}")
     public ResponseEntity<ORMEDITIONDTO> get(@PathVariable("ormedition_id") String ormedition_id) {
@@ -160,7 +164,7 @@ public class ORMEDITIONResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMEDITION-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMEDITION-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"ORMEDITION" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/ormeditions/fetchdefault")
 	public ResponseEntity<List<ORMEDITIONDTO>> fetchDefault(ORMEDITIONSearchContext context) {
@@ -173,7 +177,7 @@ public class ORMEDITIONResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMEDITION-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMEDITION-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"ORMEDITION" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/ormeditions/searchdefault")
 	public ResponseEntity<Page<ORMEDITIONDTO>> searchDefault(@RequestBody ORMEDITIONSearchContext context) {
@@ -183,12 +187,6 @@ public class ORMEDITIONResource {
 	}
 
 
-    /**
-     * 用户权限校验
-     * @return
-     */
-	public ORMEDITION getEntity(){
-        return new ORMEDITION();
-    }
-
 }
+
+

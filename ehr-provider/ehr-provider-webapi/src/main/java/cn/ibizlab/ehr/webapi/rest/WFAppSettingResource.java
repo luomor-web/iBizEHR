@@ -50,12 +50,14 @@ public class WFAppSettingResource {
 
     @Autowired
     @Lazy
-    private WFAppSettingMapping wfappsettingMapping;
+    public WFAppSettingMapping wfappsettingMapping;
+
+    public WFAppSettingDTO permissionDTO=new WFAppSettingDTO();
 
 
 
 
-    @PreAuthorize("hasPermission(#wfappsetting_id,'Remove',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#wfappsetting_id,'Remove',{'Sql',this.wfappsettingMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"WFAppSetting" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/wfappsettings/{wfappsetting_id}")
     @Transactional
@@ -73,7 +75,7 @@ public class WFAppSettingResource {
 
 
 
-    @PreAuthorize("hasPermission(#wfappsetting_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#wfappsetting_id,'Update',{'Sql',this.wfappsettingMapping,#wfappsettingdto})")
     @ApiOperation(value = "Update", tags = {"WFAppSetting" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/wfappsettings/{wfappsetting_id}")
     @Transactional
@@ -85,7 +87,6 @@ public class WFAppSettingResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#wfappsetting_id,'Update',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "UpdateBatch", tags = {"WFAppSetting" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/wfappsettings/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<WFAppSettingDTO> wfappsettingdtos) {
@@ -96,6 +97,7 @@ public class WFAppSettingResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFAppSetting-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"WFAppSetting" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/wfappsettings/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody WFAppSettingDTO wfappsettingdto) {
@@ -105,6 +107,7 @@ public class WFAppSettingResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFAppSetting-Save-all')")
     @ApiOperation(value = "Save", tags = {"WFAppSetting" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/wfappsettings/save")
     public ResponseEntity<Boolean> save(@RequestBody WFAppSettingDTO wfappsettingdto) {
@@ -121,6 +124,7 @@ public class WFAppSettingResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFAppSetting-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"WFAppSetting" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/wfappsettings/getdraft")
     public ResponseEntity<WFAppSettingDTO> getDraft() {
@@ -130,7 +134,7 @@ public class WFAppSettingResource {
 
 
 
-    @PreAuthorize("hasPermission(#wfappsetting_id,'Get',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#wfappsetting_id,'Get',{'Sql',this.wfappsettingMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"WFAppSetting" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/wfappsettings/{wfappsetting_id}")
     public ResponseEntity<WFAppSettingDTO> get(@PathVariable("wfappsetting_id") String wfappsetting_id) {
@@ -142,7 +146,7 @@ public class WFAppSettingResource {
 
 
 
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.wfappsettingMapping,#wfappsettingdto})")
     @ApiOperation(value = "Create", tags = {"WFAppSetting" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/wfappsettings")
     @Transactional
@@ -152,7 +156,7 @@ public class WFAppSettingResource {
         WFAppSettingDTO dto = wfappsettingMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+
     @ApiOperation(value = "createBatch", tags = {"WFAppSetting" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/wfappsettings/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<WFAppSettingDTO> wfappsettingdtos) {
@@ -160,7 +164,7 @@ public class WFAppSettingResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFAppSetting-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFAppSetting-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"WFAppSetting" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/wfappsettings/fetchdefault")
 	public ResponseEntity<List<WFAppSettingDTO>> fetchDefault(WFAppSettingSearchContext context) {
@@ -173,7 +177,7 @@ public class WFAppSettingResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFAppSetting-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFAppSetting-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"WFAppSetting" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/wfappsettings/searchdefault")
 	public ResponseEntity<Page<WFAppSettingDTO>> searchDefault(@RequestBody WFAppSettingSearchContext context) {
@@ -183,12 +187,6 @@ public class WFAppSettingResource {
 	}
 
 
-    /**
-     * 用户权限校验
-     * @return
-     */
-	public WFAppSetting getEntity(){
-        return new WFAppSetting();
-    }
-
 }
+
+

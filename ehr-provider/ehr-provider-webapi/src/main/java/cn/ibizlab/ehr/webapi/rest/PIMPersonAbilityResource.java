@@ -50,12 +50,14 @@ public class PIMPersonAbilityResource {
 
     @Autowired
     @Lazy
-    private PIMPersonAbilityMapping pimpersonabilityMapping;
+    public PIMPersonAbilityMapping pimpersonabilityMapping;
+
+    public PIMPersonAbilityDTO permissionDTO=new PIMPersonAbilityDTO();
 
 
 
 
-    @PreAuthorize("hasPermission(#pimpersonability_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#pimpersonability_id,'Update',{'Sql',this.pimpersonabilityMapping,#pimpersonabilitydto})")
     @ApiOperation(value = "Update", tags = {"PIMPersonAbility" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimpersonabilities/{pimpersonability_id}")
     @Transactional
@@ -67,7 +69,6 @@ public class PIMPersonAbilityResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#pimpersonability_id,'Update',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "UpdateBatch", tags = {"PIMPersonAbility" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimpersonabilities/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PIMPersonAbilityDTO> pimpersonabilitydtos) {
@@ -78,7 +79,7 @@ public class PIMPersonAbilityResource {
 
 
 
-    @PreAuthorize("hasPermission(#pimpersonability_id,'Remove',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#pimpersonability_id,'Remove',{'Sql',this.pimpersonabilityMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"PIMPersonAbility" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimpersonabilities/{pimpersonability_id}")
     @Transactional
@@ -96,7 +97,7 @@ public class PIMPersonAbilityResource {
 
 
 
-    @PreAuthorize("hasPermission(#pimpersonability_id,'Get',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#pimpersonability_id,'Get',{'Sql',this.pimpersonabilityMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"PIMPersonAbility" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimpersonabilities/{pimpersonability_id}")
     public ResponseEntity<PIMPersonAbilityDTO> get(@PathVariable("pimpersonability_id") String pimpersonability_id) {
@@ -108,6 +109,7 @@ public class PIMPersonAbilityResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMPersonAbility-Save-all')")
     @ApiOperation(value = "Save", tags = {"PIMPersonAbility" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpersonabilities/save")
     public ResponseEntity<Boolean> save(@RequestBody PIMPersonAbilityDTO pimpersonabilitydto) {
@@ -124,6 +126,7 @@ public class PIMPersonAbilityResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMPersonAbility-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"PIMPersonAbility" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimpersonabilities/getdraft")
     public ResponseEntity<PIMPersonAbilityDTO> getDraft() {
@@ -133,6 +136,7 @@ public class PIMPersonAbilityResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMPersonAbility-InitData-all')")
     @ApiOperation(value = "初始化数据", tags = {"PIMPersonAbility" },  notes = "初始化数据")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpersonabilities/{pimpersonability_id}/initdata")
     @Transactional
@@ -146,7 +150,7 @@ public class PIMPersonAbilityResource {
 
 
 
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.pimpersonabilityMapping,#pimpersonabilitydto})")
     @ApiOperation(value = "Create", tags = {"PIMPersonAbility" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpersonabilities")
     @Transactional
@@ -156,7 +160,7 @@ public class PIMPersonAbilityResource {
         PIMPersonAbilityDTO dto = pimpersonabilityMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+
     @ApiOperation(value = "createBatch", tags = {"PIMPersonAbility" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpersonabilities/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PIMPersonAbilityDTO> pimpersonabilitydtos) {
@@ -167,13 +171,14 @@ public class PIMPersonAbilityResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMPersonAbility-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"PIMPersonAbility" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpersonabilities/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PIMPersonAbilityDTO pimpersonabilitydto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pimpersonabilityService.checkKey(pimpersonabilityMapping.toDomain(pimpersonabilitydto)));
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMPersonAbility-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMPersonAbility-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PIMPersonAbility" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimpersonabilities/fetchdefault")
 	public ResponseEntity<List<PIMPersonAbilityDTO>> fetchDefault(PIMPersonAbilitySearchContext context) {
@@ -186,7 +191,7 @@ public class PIMPersonAbilityResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMPersonAbility-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMPersonAbility-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PIMPersonAbility" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pimpersonabilities/searchdefault")
 	public ResponseEntity<Page<PIMPersonAbilityDTO>> searchDefault(@RequestBody PIMPersonAbilitySearchContext context) {
@@ -197,6 +202,7 @@ public class PIMPersonAbilityResource {
 
 
 
+    //@PreAuthorize("hasPermission(#pimpersonability_id,'Update',{'Sql',this.pimpersonabilityMapping,#pimpersonabilitydto})")
     @ApiOperation(value = "UpdateByPIMPERSON", tags = {"PIMPersonAbility" },  notes = "UpdateByPIMPERSON")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimpeople/{pimperson_id}/pimpersonabilities/{pimpersonability_id}")
     @Transactional
@@ -220,6 +226,7 @@ public class PIMPersonAbilityResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    //@PreAuthorize("hasPermission(#pimpersonability_id,'Remove',{'Sql',this.pimpersonabilityMapping,this.permissionDTO})")
     @ApiOperation(value = "RemoveByPIMPERSON", tags = {"PIMPersonAbility" },  notes = "RemoveByPIMPERSON")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimpeople/{pimperson_id}/pimpersonabilities/{pimpersonability_id}")
     @Transactional
@@ -234,6 +241,7 @@ public class PIMPersonAbilityResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    //@PreAuthorize("hasPermission(#pimpersonability_id,'Get',{'Sql',this.pimpersonabilityMapping,this.permissionDTO})")
     @ApiOperation(value = "GetByPIMPERSON", tags = {"PIMPersonAbility" },  notes = "GetByPIMPERSON")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimpeople/{pimperson_id}/pimpersonabilities/{pimpersonability_id}")
     public ResponseEntity<PIMPersonAbilityDTO> getByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimpersonability_id") String pimpersonability_id) {
@@ -242,6 +250,7 @@ public class PIMPersonAbilityResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMPersonAbility-Save-all')")
     @ApiOperation(value = "SaveByPIMPERSON", tags = {"PIMPersonAbility" },  notes = "SaveByPIMPERSON")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimpersonabilities/save")
     public ResponseEntity<Boolean> saveByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMPersonAbilityDTO pimpersonabilitydto) {
@@ -261,6 +270,7 @@ public class PIMPersonAbilityResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMPersonAbility-GetDraft-all')")
     @ApiOperation(value = "GetDraftByPIMPERSON", tags = {"PIMPersonAbility" },  notes = "GetDraftByPIMPERSON")
     @RequestMapping(method = RequestMethod.GET, value = "/pimpeople/{pimperson_id}/pimpersonabilities/getdraft")
     public ResponseEntity<PIMPersonAbilityDTO> getDraftByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id) {
@@ -269,6 +279,7 @@ public class PIMPersonAbilityResource {
         return ResponseEntity.status(HttpStatus.OK).body(pimpersonabilityMapping.toDto(pimpersonabilityService.getDraft(domain)));
     }
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMPersonAbility-InitData-all')")
     @ApiOperation(value = "初始化数据ByPIMPERSON", tags = {"PIMPersonAbility" },  notes = "初始化数据ByPIMPERSON")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimpersonabilities/{pimpersonabilitypimpersonabilityid}/initdata")
     @Transactional
@@ -280,6 +291,7 @@ public class PIMPersonAbilityResource {
         return ResponseEntity.status(HttpStatus.OK).body(pimpersonabilitydto);
     }
 
+    //@PreAuthorize("hasPermission('','Create',{'Sql',this.pimpersonabilityMapping,#pimpersonabilitydto})")
     @ApiOperation(value = "CreateByPIMPERSON", tags = {"PIMPersonAbility" },  notes = "CreateByPIMPERSON")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimpersonabilities")
     @Transactional
@@ -302,12 +314,14 @@ public class PIMPersonAbilityResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMPersonAbility-CheckKey-all')")
     @ApiOperation(value = "CheckKeyByPIMPERSON", tags = {"PIMPersonAbility" },  notes = "CheckKeyByPIMPERSON")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimpersonabilities/checkkey")
     public ResponseEntity<Boolean> checkKeyByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMPersonAbilityDTO pimpersonabilitydto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pimpersonabilityService.checkKey(pimpersonabilityMapping.toDomain(pimpersonabilitydto)));
     }
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMPersonAbility-Default-all')")
 	@ApiOperation(value = "fetchDEFAULTByPIMPERSON", tags = {"PIMPersonAbility" } ,notes = "fetchDEFAULTByPIMPERSON")
     @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/pimpersonabilities/fetchdefault")
 	public ResponseEntity<List<PIMPersonAbilityDTO>> fetchPIMPersonAbilityDefaultByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id,PIMPersonAbilitySearchContext context) {
@@ -321,6 +335,7 @@ public class PIMPersonAbilityResource {
                 .body(list);
 	}
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMPersonAbility-Default-all')")
 	@ApiOperation(value = "searchDEFAULTByPIMPERSON", tags = {"PIMPersonAbility" } ,notes = "searchDEFAULTByPIMPERSON")
     @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/pimpersonabilities/searchdefault")
 	public ResponseEntity<Page<PIMPersonAbilityDTO>> searchPIMPersonAbilityDefaultByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMPersonAbilitySearchContext context) {
@@ -331,12 +346,6 @@ public class PIMPersonAbilityResource {
 	}
 
 
-    /**
-     * 用户权限校验
-     * @return
-     */
-	public PIMPersonAbility getEntity(){
-        return new PIMPersonAbility();
-    }
-
 }
+
+

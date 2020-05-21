@@ -50,11 +50,14 @@ public class PortalPageResource {
 
     @Autowired
     @Lazy
-    private PortalPageMapping portalpageMapping;
+    public PortalPageMapping portalpageMapping;
+
+    public PortalPageDTO permissionDTO=new PortalPageDTO();
 
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PortalPage-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"PortalPage" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/portalpages/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PortalPageDTO portalpagedto) {
@@ -64,7 +67,7 @@ public class PortalPageResource {
 
 
 
-    @PreAuthorize("hasPermission(#portalpage_id,'Get',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#portalpage_id,'Get',{'Sql',this.portalpageMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"PortalPage" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/portalpages/{portalpage_id}")
     public ResponseEntity<PortalPageDTO> get(@PathVariable("portalpage_id") String portalpage_id) {
@@ -76,7 +79,7 @@ public class PortalPageResource {
 
 
 
-    @PreAuthorize("hasPermission(#portalpage_id,'Remove',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#portalpage_id,'Remove',{'Sql',this.portalpageMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"PortalPage" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/portalpages/{portalpage_id}")
     @Transactional
@@ -94,7 +97,7 @@ public class PortalPageResource {
 
 
 
-    @PreAuthorize("hasPermission(#portalpage_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#portalpage_id,'Update',{'Sql',this.portalpageMapping,#portalpagedto})")
     @ApiOperation(value = "Update", tags = {"PortalPage" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/portalpages/{portalpage_id}")
     @Transactional
@@ -106,7 +109,6 @@ public class PortalPageResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#portalpage_id,'Update',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "UpdateBatch", tags = {"PortalPage" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/portalpages/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PortalPageDTO> portalpagedtos) {
@@ -117,7 +119,7 @@ public class PortalPageResource {
 
 
 
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.portalpageMapping,#portalpagedto})")
     @ApiOperation(value = "Create", tags = {"PortalPage" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/portalpages")
     @Transactional
@@ -127,7 +129,7 @@ public class PortalPageResource {
         PortalPageDTO dto = portalpageMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+
     @ApiOperation(value = "createBatch", tags = {"PortalPage" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/portalpages/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PortalPageDTO> portalpagedtos) {
@@ -138,6 +140,7 @@ public class PortalPageResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PortalPage-Save-all')")
     @ApiOperation(value = "Save", tags = {"PortalPage" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/portalpages/save")
     public ResponseEntity<Boolean> save(@RequestBody PortalPageDTO portalpagedto) {
@@ -154,13 +157,14 @@ public class PortalPageResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PortalPage-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"PortalPage" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/portalpages/getdraft")
     public ResponseEntity<PortalPageDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(portalpageMapping.toDto(portalpageService.getDraft(new PortalPage())));
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PortalPage-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PortalPage-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PortalPage" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/portalpages/fetchdefault")
 	public ResponseEntity<List<PortalPageDTO>> fetchDefault(PortalPageSearchContext context) {
@@ -173,7 +177,7 @@ public class PortalPageResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PortalPage-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PortalPage-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PortalPage" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/portalpages/searchdefault")
 	public ResponseEntity<Page<PortalPageDTO>> searchDefault(@RequestBody PortalPageSearchContext context) {
@@ -183,12 +187,6 @@ public class PortalPageResource {
 	}
 
 
-    /**
-     * 用户权限校验
-     * @return
-     */
-	public PortalPage getEntity(){
-        return new PortalPage();
-    }
-
 }
+
+

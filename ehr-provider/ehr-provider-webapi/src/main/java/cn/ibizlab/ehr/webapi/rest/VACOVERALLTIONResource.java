@@ -50,11 +50,14 @@ public class VACOVERALLTIONResource {
 
     @Autowired
     @Lazy
-    private VACOVERALLTIONMapping vacoveralltionMapping;
+    public VACOVERALLTIONMapping vacoveralltionMapping;
+
+    public VACOVERALLTIONDTO permissionDTO=new VACOVERALLTIONDTO();
 
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACOVERALLTION-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"VACOVERALLTION" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/vacoveralltions/getdraft")
     public ResponseEntity<VACOVERALLTIONDTO> getDraft() {
@@ -64,6 +67,7 @@ public class VACOVERALLTIONResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACOVERALLTION-Save-all')")
     @ApiOperation(value = "Save", tags = {"VACOVERALLTION" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacoveralltions/save")
     public ResponseEntity<Boolean> save(@RequestBody VACOVERALLTIONDTO vacoveralltiondto) {
@@ -80,6 +84,7 @@ public class VACOVERALLTIONResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACOVERALLTION-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"VACOVERALLTION" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacoveralltions/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody VACOVERALLTIONDTO vacoveralltiondto) {
@@ -89,7 +94,7 @@ public class VACOVERALLTIONResource {
 
 
 
-    @PreAuthorize("hasPermission(#vacoveralltion_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#vacoveralltion_id,'Update',{'Sql',this.vacoveralltionMapping,#vacoveralltiondto})")
     @ApiOperation(value = "Update", tags = {"VACOVERALLTION" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/vacoveralltions/{vacoveralltion_id}")
     @Transactional
@@ -101,7 +106,6 @@ public class VACOVERALLTIONResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#vacoveralltion_id,'Update',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "UpdateBatch", tags = {"VACOVERALLTION" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/vacoveralltions/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<VACOVERALLTIONDTO> vacoveralltiondtos) {
@@ -112,7 +116,7 @@ public class VACOVERALLTIONResource {
 
 
 
-    @PreAuthorize("hasPermission(#vacoveralltion_id,'Remove',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#vacoveralltion_id,'Remove',{'Sql',this.vacoveralltionMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"VACOVERALLTION" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/vacoveralltions/{vacoveralltion_id}")
     @Transactional
@@ -130,7 +134,7 @@ public class VACOVERALLTIONResource {
 
 
 
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.vacoveralltionMapping,#vacoveralltiondto})")
     @ApiOperation(value = "Create", tags = {"VACOVERALLTION" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacoveralltions")
     @Transactional
@@ -140,7 +144,7 @@ public class VACOVERALLTIONResource {
         VACOVERALLTIONDTO dto = vacoveralltionMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+
     @ApiOperation(value = "createBatch", tags = {"VACOVERALLTION" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacoveralltions/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<VACOVERALLTIONDTO> vacoveralltiondtos) {
@@ -151,7 +155,7 @@ public class VACOVERALLTIONResource {
 
 
 
-    @PreAuthorize("hasPermission(#vacoveralltion_id,'Get',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#vacoveralltion_id,'Get',{'Sql',this.vacoveralltionMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"VACOVERALLTION" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/vacoveralltions/{vacoveralltion_id}")
     public ResponseEntity<VACOVERALLTIONDTO> get(@PathVariable("vacoveralltion_id") String vacoveralltion_id) {
@@ -160,7 +164,7 @@ public class VACOVERALLTIONResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACOVERALLTION-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACOVERALLTION-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"VACOVERALLTION" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/vacoveralltions/fetchdefault")
 	public ResponseEntity<List<VACOVERALLTIONDTO>> fetchDefault(VACOVERALLTIONSearchContext context) {
@@ -173,7 +177,7 @@ public class VACOVERALLTIONResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACOVERALLTION-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACOVERALLTION-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"VACOVERALLTION" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/vacoveralltions/searchdefault")
 	public ResponseEntity<Page<VACOVERALLTIONDTO>> searchDefault(@RequestBody VACOVERALLTIONSearchContext context) {
@@ -183,12 +187,6 @@ public class VACOVERALLTIONResource {
 	}
 
 
-    /**
-     * 用户权限校验
-     * @return
-     */
-	public VACOVERALLTION getEntity(){
-        return new VACOVERALLTION();
-    }
-
 }
+
+

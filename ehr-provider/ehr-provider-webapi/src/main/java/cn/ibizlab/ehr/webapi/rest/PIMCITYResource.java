@@ -50,11 +50,14 @@ public class PIMCITYResource {
 
     @Autowired
     @Lazy
-    private PIMCITYMapping pimcityMapping;
+    public PIMCITYMapping pimcityMapping;
+
+    public PIMCITYDTO permissionDTO=new PIMCITYDTO();
 
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMCITY-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"PIMCITY" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimcities/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PIMCITYDTO pimcitydto) {
@@ -64,7 +67,7 @@ public class PIMCITYResource {
 
 
 
-    @PreAuthorize("hasPermission(#pimcity_id,'Remove',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#pimcity_id,'Remove',{'Sql',this.pimcityMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"PIMCITY" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimcities/{pimcity_id}")
     @Transactional
@@ -82,6 +85,7 @@ public class PIMCITYResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMCITY-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"PIMCITY" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimcities/getdraft")
     public ResponseEntity<PIMCITYDTO> getDraft() {
@@ -91,7 +95,7 @@ public class PIMCITYResource {
 
 
 
-    @PreAuthorize("hasPermission(#pimcity_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#pimcity_id,'Update',{'Sql',this.pimcityMapping,#pimcitydto})")
     @ApiOperation(value = "Update", tags = {"PIMCITY" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimcities/{pimcity_id}")
     @Transactional
@@ -103,7 +107,6 @@ public class PIMCITYResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#pimcity_id,'Update',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "UpdateBatch", tags = {"PIMCITY" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimcities/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PIMCITYDTO> pimcitydtos) {
@@ -114,6 +117,7 @@ public class PIMCITYResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMCITY-Save-all')")
     @ApiOperation(value = "Save", tags = {"PIMCITY" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimcities/save")
     public ResponseEntity<Boolean> save(@RequestBody PIMCITYDTO pimcitydto) {
@@ -130,7 +134,7 @@ public class PIMCITYResource {
 
 
 
-    @PreAuthorize("hasPermission(#pimcity_id,'Get',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#pimcity_id,'Get',{'Sql',this.pimcityMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"PIMCITY" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimcities/{pimcity_id}")
     public ResponseEntity<PIMCITYDTO> get(@PathVariable("pimcity_id") String pimcity_id) {
@@ -142,7 +146,7 @@ public class PIMCITYResource {
 
 
 
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.pimcityMapping,#pimcitydto})")
     @ApiOperation(value = "Create", tags = {"PIMCITY" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimcities")
     @Transactional
@@ -152,7 +156,7 @@ public class PIMCITYResource {
         PIMCITYDTO dto = pimcityMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+
     @ApiOperation(value = "createBatch", tags = {"PIMCITY" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimcities/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PIMCITYDTO> pimcitydtos) {
@@ -160,7 +164,7 @@ public class PIMCITYResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMCITY-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMCITY-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PIMCITY" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimcities/fetchdefault")
 	public ResponseEntity<List<PIMCITYDTO>> fetchDefault(PIMCITYSearchContext context) {
@@ -173,7 +177,7 @@ public class PIMCITYResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMCITY-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMCITY-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PIMCITY" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pimcities/searchdefault")
 	public ResponseEntity<Page<PIMCITYDTO>> searchDefault(@RequestBody PIMCITYSearchContext context) {
@@ -183,12 +187,6 @@ public class PIMCITYResource {
 	}
 
 
-    /**
-     * 用户权限校验
-     * @return
-     */
-	public PIMCITY getEntity(){
-        return new PIMCITY();
-    }
-
 }
+
+

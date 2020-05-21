@@ -50,12 +50,14 @@ public class UserObjectResource {
 
     @Autowired
     @Lazy
-    private UserObjectMapping userobjectMapping;
+    public UserObjectMapping userobjectMapping;
+
+    public UserObjectDTO permissionDTO=new UserObjectDTO();
 
 
 
 
-    @PreAuthorize("hasPermission(#userobject_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#userobject_id,'Update',{'Sql',this.userobjectMapping,#userobjectdto})")
     @ApiOperation(value = "Update", tags = {"UserObject" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/userobjects/{userobject_id}")
     @Transactional
@@ -67,7 +69,6 @@ public class UserObjectResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#userobject_id,'Update',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "UpdateBatch", tags = {"UserObject" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/userobjects/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<UserObjectDTO> userobjectdtos) {
@@ -78,6 +79,7 @@ public class UserObjectResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UserObject-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"UserObject" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/userobjects/getdraft")
     public ResponseEntity<UserObjectDTO> getDraft() {
@@ -87,7 +89,7 @@ public class UserObjectResource {
 
 
 
-    @PreAuthorize("hasPermission(#userobject_id,'Get',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#userobject_id,'Get',{'Sql',this.userobjectMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"UserObject" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/userobjects/{userobject_id}")
     public ResponseEntity<UserObjectDTO> get(@PathVariable("userobject_id") String userobject_id) {
@@ -99,6 +101,7 @@ public class UserObjectResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UserObject-Save-all')")
     @ApiOperation(value = "Save", tags = {"UserObject" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/userobjects/save")
     public ResponseEntity<Boolean> save(@RequestBody UserObjectDTO userobjectdto) {
@@ -115,7 +118,7 @@ public class UserObjectResource {
 
 
 
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.userobjectMapping,#userobjectdto})")
     @ApiOperation(value = "Create", tags = {"UserObject" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/userobjects")
     @Transactional
@@ -125,7 +128,7 @@ public class UserObjectResource {
         UserObjectDTO dto = userobjectMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+
     @ApiOperation(value = "createBatch", tags = {"UserObject" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/userobjects/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<UserObjectDTO> userobjectdtos) {
@@ -136,6 +139,7 @@ public class UserObjectResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UserObject-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"UserObject" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/userobjects/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody UserObjectDTO userobjectdto) {
@@ -145,7 +149,7 @@ public class UserObjectResource {
 
 
 
-    @PreAuthorize("hasPermission(#userobject_id,'Remove',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#userobject_id,'Remove',{'Sql',this.userobjectMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"UserObject" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/userobjects/{userobject_id}")
     @Transactional
@@ -160,7 +164,7 @@ public class UserObjectResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UserObject-IndexDER-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UserObject-IndexDER-all')")
 	@ApiOperation(value = "fetchIndexDER", tags = {"UserObject" } ,notes = "fetchIndexDER")
     @RequestMapping(method= RequestMethod.GET , value="/userobjects/fetchindexder")
 	public ResponseEntity<List<UserObjectDTO>> fetchIndexDER(UserObjectSearchContext context) {
@@ -173,7 +177,7 @@ public class UserObjectResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UserObject-IndexDER-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UserObject-IndexDER-all')")
 	@ApiOperation(value = "searchIndexDER", tags = {"UserObject" } ,notes = "searchIndexDER")
     @RequestMapping(method= RequestMethod.POST , value="/userobjects/searchindexder")
 	public ResponseEntity<Page<UserObjectDTO>> searchIndexDER(@RequestBody UserObjectSearchContext context) {
@@ -182,7 +186,7 @@ public class UserObjectResource {
                 .body(new PageImpl(userobjectMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UserObject-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UserObject-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"UserObject" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/userobjects/fetchdefault")
 	public ResponseEntity<List<UserObjectDTO>> fetchDefault(UserObjectSearchContext context) {
@@ -195,7 +199,7 @@ public class UserObjectResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UserObject-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UserObject-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"UserObject" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/userobjects/searchdefault")
 	public ResponseEntity<Page<UserObjectDTO>> searchDefault(@RequestBody UserObjectSearchContext context) {
@@ -205,12 +209,6 @@ public class UserObjectResource {
 	}
 
 
-    /**
-     * 用户权限校验
-     * @return
-     */
-	public UserObject getEntity(){
-        return new UserObject();
-    }
-
 }
+
+

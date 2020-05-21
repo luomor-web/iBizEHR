@@ -50,12 +50,14 @@ public class ORMRelationResource {
 
     @Autowired
     @Lazy
-    private ORMRelationMapping ormrelationMapping;
+    public ORMRelationMapping ormrelationMapping;
+
+    public ORMRelationDTO permissionDTO=new ORMRelationDTO();
 
 
 
 
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.ormrelationMapping,#ormrelationdto})")
     @ApiOperation(value = "Create", tags = {"ORMRelation" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormrelations")
     @Transactional
@@ -65,7 +67,7 @@ public class ORMRelationResource {
         ORMRelationDTO dto = ormrelationMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+
     @ApiOperation(value = "createBatch", tags = {"ORMRelation" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormrelations/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<ORMRelationDTO> ormrelationdtos) {
@@ -76,7 +78,7 @@ public class ORMRelationResource {
 
 
 
-    @PreAuthorize("hasPermission(#ormrelation_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#ormrelation_id,'Update',{'Sql',this.ormrelationMapping,#ormrelationdto})")
     @ApiOperation(value = "Update", tags = {"ORMRelation" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/ormrelations/{ormrelation_id}")
     @Transactional
@@ -88,7 +90,6 @@ public class ORMRelationResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#ormrelation_id,'Update',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "UpdateBatch", tags = {"ORMRelation" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/ormrelations/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<ORMRelationDTO> ormrelationdtos) {
@@ -99,7 +100,7 @@ public class ORMRelationResource {
 
 
 
-    @PreAuthorize("hasPermission(#ormrelation_id,'Get',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#ormrelation_id,'Get',{'Sql',this.ormrelationMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"ORMRelation" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/ormrelations/{ormrelation_id}")
     public ResponseEntity<ORMRelationDTO> get(@PathVariable("ormrelation_id") String ormrelation_id) {
@@ -111,7 +112,7 @@ public class ORMRelationResource {
 
 
 
-    @PreAuthorize("hasPermission(#ormrelation_id,'Remove',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#ormrelation_id,'Remove',{'Sql',this.ormrelationMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"ORMRelation" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/ormrelations/{ormrelation_id}")
     @Transactional
@@ -129,6 +130,7 @@ public class ORMRelationResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMRelation-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"ORMRelation" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/ormrelations/getdraft")
     public ResponseEntity<ORMRelationDTO> getDraft() {
@@ -138,6 +140,7 @@ public class ORMRelationResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMRelation-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"ORMRelation" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormrelations/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody ORMRelationDTO ormrelationdto) {
@@ -147,6 +150,7 @@ public class ORMRelationResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMRelation-Save-all')")
     @ApiOperation(value = "Save", tags = {"ORMRelation" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormrelations/save")
     public ResponseEntity<Boolean> save(@RequestBody ORMRelationDTO ormrelationdto) {
@@ -160,7 +164,7 @@ public class ORMRelationResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMRelation-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMRelation-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"ORMRelation" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/ormrelations/fetchdefault")
 	public ResponseEntity<List<ORMRelationDTO>> fetchDefault(ORMRelationSearchContext context) {
@@ -173,7 +177,7 @@ public class ORMRelationResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMRelation-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMRelation-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"ORMRelation" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/ormrelations/searchdefault")
 	public ResponseEntity<Page<ORMRelationDTO>> searchDefault(@RequestBody ORMRelationSearchContext context) {
@@ -183,12 +187,6 @@ public class ORMRelationResource {
 	}
 
 
-    /**
-     * 用户权限校验
-     * @return
-     */
-	public ORMRelation getEntity(){
-        return new ORMRelation();
-    }
-
 }
+
+

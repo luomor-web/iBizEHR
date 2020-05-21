@@ -50,11 +50,14 @@ public class PCMPROFILEResource {
 
     @Autowired
     @Lazy
-    private PCMPROFILEMapping pcmprofileMapping;
+    public PCMPROFILEMapping pcmprofileMapping;
+
+    public PCMPROFILEDTO permissionDTO=new PCMPROFILEDTO();
 
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILE-JZBTG-all')")
     @ApiOperation(value = "初审通过", tags = {"PCMPROFILE" },  notes = "初审通过")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/jzbtg")
     @Transactional
@@ -68,6 +71,7 @@ public class PCMPROFILEResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILE-SBJZB-all')")
     @ApiOperation(value = "上报局总部", tags = {"PCMPROFILE" },  notes = "上报局总部")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/sbjzb")
     @Transactional
@@ -81,6 +85,7 @@ public class PCMPROFILEResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILE-JSPBTG-all')")
     @ApiOperation(value = "审批不通过", tags = {"PCMPROFILE" },  notes = "审批不通过")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/jspbtg")
     @Transactional
@@ -94,6 +99,7 @@ public class PCMPROFILEResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILE-PrintSPB-all')")
     @ApiOperation(value = "打印审批表", tags = {"PCMPROFILE" },  notes = "打印审批表")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/printspb")
     @Transactional
@@ -107,6 +113,7 @@ public class PCMPROFILEResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILE-GetYPZNL-all')")
     @ApiOperation(value = "通过出生日期获取应聘者年龄", tags = {"PCMPROFILE" },  notes = "通过出生日期获取应聘者年龄")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmprofiles/{pcmprofile_id}/getypznl")
     @Transactional
@@ -120,6 +127,7 @@ public class PCMPROFILEResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILE-ClearPersonUpdateInfo-all')")
     @ApiOperation(value = "改变证件类型清空证件号码、出生日期、年龄、性别", tags = {"PCMPROFILE" },  notes = "改变证件类型清空证件号码、出生日期、年龄、性别")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmprofiles/{pcmprofile_id}/clearpersonupdateinfo")
     @Transactional
@@ -133,6 +141,7 @@ public class PCMPROFILEResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILE-Save-all')")
     @ApiOperation(value = "Save", tags = {"PCMPROFILE" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/save")
     public ResponseEntity<Boolean> save(@RequestBody PCMPROFILEDTO pcmprofiledto) {
@@ -149,6 +158,7 @@ public class PCMPROFILEResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILE-Invalid2-all')")
     @ApiOperation(value = "公司董事长审批拒绝", tags = {"PCMPROFILE" },  notes = "公司董事长审批拒绝")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/invalid2")
     @Transactional
@@ -162,6 +172,7 @@ public class PCMPROFILEResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILE-BD-all')")
     @ApiOperation(value = "报到", tags = {"PCMPROFILE" },  notes = "报到")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/bd")
     @Transactional
@@ -175,6 +186,7 @@ public class PCMPROFILEResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILE-JLDTG-all')")
     @ApiOperation(value = "审核通过", tags = {"PCMPROFILE" },  notes = "审核通过")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/jldtg")
     @Transactional
@@ -188,6 +200,7 @@ public class PCMPROFILEResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILE-CheckYJSNF-all')")
     @ApiOperation(value = "检查毕业年份", tags = {"PCMPROFILE" },  notes = "检查毕业年份")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/checkyjsnf")
     @Transactional
@@ -201,6 +214,7 @@ public class PCMPROFILEResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILE-GSSP-all')")
     @ApiOperation(value = "公司初审同意", tags = {"PCMPROFILE" },  notes = "公司初审同意")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/gssp")
     @Transactional
@@ -214,6 +228,7 @@ public class PCMPROFILEResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILE-CheckEmail-all')")
     @ApiOperation(value = "检查邮箱", tags = {"PCMPROFILE" },  notes = "检查邮箱")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/checkemail")
     @Transactional
@@ -227,6 +242,7 @@ public class PCMPROFILEResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILE-GetPcmprofileInfo-all')")
     @ApiOperation(value = "获取应聘者信息", tags = {"PCMPROFILE" },  notes = "获取应聘者信息")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmprofiles/{pcmprofile_id}/getpcmprofileinfo")
     @Transactional
@@ -240,7 +256,7 @@ public class PCMPROFILEResource {
 
 
 
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.pcmprofileMapping,#pcmprofiledto})")
     @ApiOperation(value = "Create", tags = {"PCMPROFILE" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles")
     @Transactional
@@ -250,7 +266,7 @@ public class PCMPROFILEResource {
         PCMPROFILEDTO dto = pcmprofileMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+
     @ApiOperation(value = "createBatch", tags = {"PCMPROFILE" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PCMPROFILEDTO> pcmprofiledtos) {
@@ -261,7 +277,7 @@ public class PCMPROFILEResource {
 
 
 
-    @PreAuthorize("hasPermission(#pcmprofile_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#pcmprofile_id,'Update',{'Sql',this.pcmprofileMapping,#pcmprofiledto})")
     @ApiOperation(value = "Update", tags = {"PCMPROFILE" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmprofiles/{pcmprofile_id}")
     @Transactional
@@ -273,7 +289,6 @@ public class PCMPROFILEResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#pcmprofile_id,'Update',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "UpdateBatch", tags = {"PCMPROFILE" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmprofiles/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PCMPROFILEDTO> pcmprofiledtos) {
@@ -284,6 +299,7 @@ public class PCMPROFILEResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILE-ReturnYPZ-all')")
     @ApiOperation(value = "失效", tags = {"PCMPROFILE" },  notes = "失效")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/returnypz")
     @Transactional
@@ -297,7 +313,7 @@ public class PCMPROFILEResource {
 
 
 
-    @PreAuthorize("hasPermission(#pcmprofile_id,'Get',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#pcmprofile_id,'Get',{'Sql',this.pcmprofileMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"PCMPROFILE" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmprofiles/{pcmprofile_id}")
     public ResponseEntity<PCMPROFILEDTO> get(@PathVariable("pcmprofile_id") String pcmprofile_id) {
@@ -309,6 +325,7 @@ public class PCMPROFILEResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILE-CheckYglxIsChanged-all')")
     @ApiOperation(value = "检查申报类型是否改变", tags = {"PCMPROFILE" },  notes = "检查申报类型是否改变")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/checkyglxischanged")
     @Transactional
@@ -322,6 +339,7 @@ public class PCMPROFILEResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILE-SX-all')")
     @ApiOperation(value = "生效", tags = {"PCMPROFILE" },  notes = "生效")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/sx")
     @Transactional
@@ -335,6 +353,7 @@ public class PCMPROFILEResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILE-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"PCMPROFILE" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PCMPROFILEDTO pcmprofiledto) {
@@ -344,6 +363,7 @@ public class PCMPROFILEResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILE-Invalid-all')")
     @ApiOperation(value = "公司初审拒绝", tags = {"PCMPROFILE" },  notes = "公司初审拒绝")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/invalid")
     @Transactional
@@ -357,6 +377,7 @@ public class PCMPROFILEResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILE-JZBBTG-all')")
     @ApiOperation(value = "初审不通过", tags = {"PCMPROFILE" },  notes = "初审不通过")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/jzbbtg")
     @Transactional
@@ -370,6 +391,7 @@ public class PCMPROFILEResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILE-ClearYPZ-all')")
     @ApiOperation(value = "清空应聘者信息", tags = {"PCMPROFILE" },  notes = "清空应聘者信息")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/clearypz")
     @Transactional
@@ -383,6 +405,7 @@ public class PCMPROFILEResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILE-CheckFP-all')")
     @ApiOperation(value = "检查返聘", tags = {"PCMPROFILE" },  notes = "检查返聘")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/checkfp")
     @Transactional
@@ -396,6 +419,7 @@ public class PCMPROFILEResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILE-SCBH-all')")
     @ApiOperation(value = "生成编号", tags = {"PCMPROFILE" },  notes = "生成编号")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/scbh")
     @Transactional
@@ -409,6 +433,7 @@ public class PCMPROFILEResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILE-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"PCMPROFILE" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmprofiles/getdraft")
     public ResponseEntity<PCMPROFILEDTO> getDraft() {
@@ -418,6 +443,7 @@ public class PCMPROFILEResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILE-ClearYYDJMC-all')")
     @ApiOperation(value = "清空语言等级名称", tags = {"PCMPROFILE" },  notes = "清空语言等级名称")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/clearyydjmc")
     @Transactional
@@ -431,6 +457,7 @@ public class PCMPROFILEResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILE-Submit-all')")
     @ApiOperation(value = "提交", tags = {"PCMPROFILE" },  notes = "提交")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/submit")
     @Transactional
@@ -444,6 +471,7 @@ public class PCMPROFILEResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILE-PersonUpdateInfo-all')")
     @ApiOperation(value = "根据证件号更改出生日期、性别、年龄", tags = {"PCMPROFILE" },  notes = "根据证件号更改出生日期、性别、年龄")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmprofiles/{pcmprofile_id}/personupdateinfo")
     @Transactional
@@ -457,6 +485,7 @@ public class PCMPROFILEResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILE-GSCS-all')")
     @ApiOperation(value = "公司董事长同意", tags = {"PCMPROFILE" },  notes = "公司董事长同意")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/gscs")
     @Transactional
@@ -470,6 +499,7 @@ public class PCMPROFILEResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILE-FillingYPZ-all')")
     @ApiOperation(value = "获取人员信息填充应聘者", tags = {"PCMPROFILE" },  notes = "获取人员信息填充应聘者")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/fillingypz")
     @Transactional
@@ -483,6 +513,7 @@ public class PCMPROFILEResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILE-YQWBD-all')")
     @ApiOperation(value = "逾期未报到", tags = {"PCMPROFILE" },  notes = "逾期未报到")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/yqwbd")
     @Transactional
@@ -496,6 +527,7 @@ public class PCMPROFILEResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILE-USEYBH-all')")
     @ApiOperation(value = "使用原编号", tags = {"PCMPROFILE" },  notes = "使用原编号")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/useybh")
     @Transactional
@@ -509,6 +541,7 @@ public class PCMPROFILEResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILE-CheckMobieNumber-all')")
     @ApiOperation(value = "检查手机号", tags = {"PCMPROFILE" },  notes = "检查手机号")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/checkmobienumber")
     @Transactional
@@ -522,7 +555,7 @@ public class PCMPROFILEResource {
 
 
 
-    @PreAuthorize("hasPermission(#pcmprofile_id,'Remove',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#pcmprofile_id,'Remove',{'Sql',this.pcmprofileMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"PCMPROFILE" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmprofiles/{pcmprofile_id}")
     @Transactional
@@ -540,6 +573,7 @@ public class PCMPROFILEResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILE-JLDBTG-all')")
     @ApiOperation(value = "审核不通过", tags = {"PCMPROFILE" },  notes = "审核不通过")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/jldbtg")
     @Transactional
@@ -553,6 +587,7 @@ public class PCMPROFILEResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILE-JSPTG-all')")
     @ApiOperation(value = "审批通过", tags = {"PCMPROFILE" },  notes = "审批通过")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/jsptg")
     @Transactional
@@ -566,6 +601,7 @@ public class PCMPROFILEResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILE-SetNQDLDHTQX-all')")
     @ApiOperation(value = "设置拟签订劳动合同期限", tags = {"PCMPROFILE" },  notes = "设置拟签订劳动合同期限")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/setnqdldhtqx")
     @Transactional
@@ -576,7 +612,7 @@ public class PCMPROFILEResource {
         return ResponseEntity.status(HttpStatus.OK).body(pcmprofiledto);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILE-YRDWSH_CSRCYJ-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILE-YRDWSH_CSRCYJ-all')")
 	@ApiOperation(value = "fetch用人单位董事长审批（成熟人才引进）", tags = {"PCMPROFILE" } ,notes = "fetch用人单位董事长审批（成熟人才引进）")
     @RequestMapping(method= RequestMethod.GET , value="/pcmprofiles/fetchyrdwsh_csrcyj")
 	public ResponseEntity<List<PCMPROFILEDTO>> fetchYRDWSH_CSRCYJ(PCMPROFILESearchContext context) {
@@ -589,7 +625,7 @@ public class PCMPROFILEResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILE-YRDWSH_CSRCYJ-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILE-YRDWSH_CSRCYJ-all')")
 	@ApiOperation(value = "search用人单位董事长审批（成熟人才引进）", tags = {"PCMPROFILE" } ,notes = "search用人单位董事长审批（成熟人才引进）")
     @RequestMapping(method= RequestMethod.POST , value="/pcmprofiles/searchyrdwsh_csrcyj")
 	public ResponseEntity<Page<PCMPROFILEDTO>> searchYRDWSH_CSRCYJ(@RequestBody PCMPROFILESearchContext context) {
@@ -598,7 +634,7 @@ public class PCMPROFILEResource {
                 .body(new PageImpl(pcmprofileMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILE-JLDSP-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILE-JLDSP-all')")
 	@ApiOperation(value = "fetch局总部审核（校园招聘）", tags = {"PCMPROFILE" } ,notes = "fetch局总部审核（校园招聘）")
     @RequestMapping(method= RequestMethod.GET , value="/pcmprofiles/fetchjldsp")
 	public ResponseEntity<List<PCMPROFILEDTO>> fetchJLDSP(PCMPROFILESearchContext context) {
@@ -611,7 +647,7 @@ public class PCMPROFILEResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILE-JLDSP-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILE-JLDSP-all')")
 	@ApiOperation(value = "search局总部审核（校园招聘）", tags = {"PCMPROFILE" } ,notes = "search局总部审核（校园招聘）")
     @RequestMapping(method= RequestMethod.POST , value="/pcmprofiles/searchjldsp")
 	public ResponseEntity<Page<PCMPROFILEDTO>> searchJLDSP(@RequestBody PCMPROFILESearchContext context) {
@@ -620,7 +656,7 @@ public class PCMPROFILEResource {
                 .body(new PageImpl(pcmprofileMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILE-BD_CSRCYJ-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILE-BD_CSRCYJ-all')")
 	@ApiOperation(value = "fetch报到（成熟人才引进）", tags = {"PCMPROFILE" } ,notes = "fetch报到（成熟人才引进）")
     @RequestMapping(method= RequestMethod.GET , value="/pcmprofiles/fetchbd_csrcyj")
 	public ResponseEntity<List<PCMPROFILEDTO>> fetchBD_CSRCYJ(PCMPROFILESearchContext context) {
@@ -633,7 +669,7 @@ public class PCMPROFILEResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILE-BD_CSRCYJ-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILE-BD_CSRCYJ-all')")
 	@ApiOperation(value = "search报到（成熟人才引进）", tags = {"PCMPROFILE" } ,notes = "search报到（成熟人才引进）")
     @RequestMapping(method= RequestMethod.POST , value="/pcmprofiles/searchbd_csrcyj")
 	public ResponseEntity<Page<PCMPROFILEDTO>> searchBD_CSRCYJ(@RequestBody PCMPROFILESearchContext context) {
@@ -642,7 +678,7 @@ public class PCMPROFILEResource {
                 .body(new PageImpl(pcmprofileMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILE-YPZSPB_CSRCYJ-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILE-YPZSPB_CSRCYJ-all')")
 	@ApiOperation(value = "fetch应聘者审批表（成熟人才引进）", tags = {"PCMPROFILE" } ,notes = "fetch应聘者审批表（成熟人才引进）")
     @RequestMapping(method= RequestMethod.GET , value="/pcmprofiles/fetchypzspb_csrcyj")
 	public ResponseEntity<List<PCMPROFILEDTO>> fetchYPZSPB_CSRCYJ(PCMPROFILESearchContext context) {
@@ -655,7 +691,7 @@ public class PCMPROFILEResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILE-YPZSPB_CSRCYJ-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILE-YPZSPB_CSRCYJ-all')")
 	@ApiOperation(value = "search应聘者审批表（成熟人才引进）", tags = {"PCMPROFILE" } ,notes = "search应聘者审批表（成熟人才引进）")
     @RequestMapping(method= RequestMethod.POST , value="/pcmprofiles/searchypzspb_csrcyj")
 	public ResponseEntity<Page<PCMPROFILEDTO>> searchYPZSPB_CSRCYJ(@RequestBody PCMPROFILESearchContext context) {
@@ -664,7 +700,7 @@ public class PCMPROFILEResource {
                 .body(new PageImpl(pcmprofileMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILE-ZPDWSH-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILE-ZPDWSH-all')")
 	@ApiOperation(value = "fetch用人单位初审（校园招聘）", tags = {"PCMPROFILE" } ,notes = "fetch用人单位初审（校园招聘）")
     @RequestMapping(method= RequestMethod.GET , value="/pcmprofiles/fetchzpdwsh")
 	public ResponseEntity<List<PCMPROFILEDTO>> fetchZPDWSH(PCMPROFILESearchContext context) {
@@ -677,7 +713,7 @@ public class PCMPROFILEResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILE-ZPDWSH-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILE-ZPDWSH-all')")
 	@ApiOperation(value = "search用人单位初审（校园招聘）", tags = {"PCMPROFILE" } ,notes = "search用人单位初审（校园招聘）")
     @RequestMapping(method= RequestMethod.POST , value="/pcmprofiles/searchzpdwsh")
 	public ResponseEntity<Page<PCMPROFILEDTO>> searchZPDWSH(@RequestBody PCMPROFILESearchContext context) {
@@ -686,7 +722,7 @@ public class PCMPROFILEResource {
                 .body(new PageImpl(pcmprofileMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILE-BD-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILE-BD-all')")
 	@ApiOperation(value = "fetch报到（校园招聘）", tags = {"PCMPROFILE" } ,notes = "fetch报到（校园招聘）")
     @RequestMapping(method= RequestMethod.GET , value="/pcmprofiles/fetchbd")
 	public ResponseEntity<List<PCMPROFILEDTO>> fetchBD(PCMPROFILESearchContext context) {
@@ -699,7 +735,7 @@ public class PCMPROFILEResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILE-BD-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILE-BD-all')")
 	@ApiOperation(value = "search报到（校园招聘）", tags = {"PCMPROFILE" } ,notes = "search报到（校园招聘）")
     @RequestMapping(method= RequestMethod.POST , value="/pcmprofiles/searchbd")
 	public ResponseEntity<Page<PCMPROFILEDTO>> searchBD(@RequestBody PCMPROFILESearchContext context) {
@@ -708,7 +744,7 @@ public class PCMPROFILEResource {
                 .body(new PageImpl(pcmprofileMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILE-BHSP-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILE-BHSP-all')")
 	@ApiOperation(value = "fetch编号审批（校园招聘）", tags = {"PCMPROFILE" } ,notes = "fetch编号审批（校园招聘）")
     @RequestMapping(method= RequestMethod.GET , value="/pcmprofiles/fetchbhsp")
 	public ResponseEntity<List<PCMPROFILEDTO>> fetchBHSP(PCMPROFILESearchContext context) {
@@ -721,7 +757,7 @@ public class PCMPROFILEResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILE-BHSP-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILE-BHSP-all')")
 	@ApiOperation(value = "search编号审批（校园招聘）", tags = {"PCMPROFILE" } ,notes = "search编号审批（校园招聘）")
     @RequestMapping(method= RequestMethod.POST , value="/pcmprofiles/searchbhsp")
 	public ResponseEntity<Page<PCMPROFILEDTO>> searchBHSP(@RequestBody PCMPROFILESearchContext context) {
@@ -730,7 +766,7 @@ public class PCMPROFILEResource {
                 .body(new PageImpl(pcmprofileMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILE-LR-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILE-LR-all')")
 	@ApiOperation(value = "fetch录入（校园招聘）", tags = {"PCMPROFILE" } ,notes = "fetch录入（校园招聘）")
     @RequestMapping(method= RequestMethod.GET , value="/pcmprofiles/fetchlr")
 	public ResponseEntity<List<PCMPROFILEDTO>> fetchLR(PCMPROFILESearchContext context) {
@@ -743,7 +779,7 @@ public class PCMPROFILEResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILE-LR-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILE-LR-all')")
 	@ApiOperation(value = "search录入（校园招聘）", tags = {"PCMPROFILE" } ,notes = "search录入（校园招聘）")
     @RequestMapping(method= RequestMethod.POST , value="/pcmprofiles/searchlr")
 	public ResponseEntity<Page<PCMPROFILEDTO>> searchLR(@RequestBody PCMPROFILESearchContext context) {
@@ -752,7 +788,7 @@ public class PCMPROFILEResource {
                 .body(new PageImpl(pcmprofileMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILE-RLSB-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILE-RLSB-all')")
 	@ApiOperation(value = "fetch人力上报（校园招聘）", tags = {"PCMPROFILE" } ,notes = "fetch人力上报（校园招聘）")
     @RequestMapping(method= RequestMethod.GET , value="/pcmprofiles/fetchrlsb")
 	public ResponseEntity<List<PCMPROFILEDTO>> fetchRLSB(PCMPROFILESearchContext context) {
@@ -765,7 +801,7 @@ public class PCMPROFILEResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILE-RLSB-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILE-RLSB-all')")
 	@ApiOperation(value = "search人力上报（校园招聘）", tags = {"PCMPROFILE" } ,notes = "search人力上报（校园招聘）")
     @RequestMapping(method= RequestMethod.POST , value="/pcmprofiles/searchrlsb")
 	public ResponseEntity<Page<PCMPROFILEDTO>> searchRLSB(@RequestBody PCMPROFILESearchContext context) {
@@ -774,7 +810,7 @@ public class PCMPROFILEResource {
                 .body(new PageImpl(pcmprofileMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILE-FormType-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILE-FormType-all')")
 	@ApiOperation(value = "fetchFormType", tags = {"PCMPROFILE" } ,notes = "fetchFormType")
     @RequestMapping(method= RequestMethod.GET , value="/pcmprofiles/fetchformtype")
 	public ResponseEntity<List<PCMPROFILEDTO>> fetchFormType(PCMPROFILESearchContext context) {
@@ -787,7 +823,7 @@ public class PCMPROFILEResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILE-FormType-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILE-FormType-all')")
 	@ApiOperation(value = "searchFormType", tags = {"PCMPROFILE" } ,notes = "searchFormType")
     @RequestMapping(method= RequestMethod.POST , value="/pcmprofiles/searchformtype")
 	public ResponseEntity<Page<PCMPROFILEDTO>> searchFormType(@RequestBody PCMPROFILESearchContext context) {
@@ -796,7 +832,7 @@ public class PCMPROFILEResource {
                 .body(new PageImpl(pcmprofileMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILE-HTRY_CSRCYJ-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILE-HTRY_CSRCYJ-all')")
 	@ApiOperation(value = "fetch回退人员（成熟人才引进）", tags = {"PCMPROFILE" } ,notes = "fetch回退人员（成熟人才引进）")
     @RequestMapping(method= RequestMethod.GET , value="/pcmprofiles/fetchhtry_csrcyj")
 	public ResponseEntity<List<PCMPROFILEDTO>> fetchHTRY_CSRCYJ(PCMPROFILESearchContext context) {
@@ -809,7 +845,7 @@ public class PCMPROFILEResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILE-HTRY_CSRCYJ-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILE-HTRY_CSRCYJ-all')")
 	@ApiOperation(value = "search回退人员（成熟人才引进）", tags = {"PCMPROFILE" } ,notes = "search回退人员（成熟人才引进）")
     @RequestMapping(method= RequestMethod.POST , value="/pcmprofiles/searchhtry_csrcyj")
 	public ResponseEntity<Page<PCMPROFILEDTO>> searchHTRY_CSRCYJ(@RequestBody PCMPROFILESearchContext context) {
@@ -818,7 +854,7 @@ public class PCMPROFILEResource {
                 .body(new PageImpl(pcmprofileMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILE-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILE-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PCMPROFILE" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pcmprofiles/fetchdefault")
 	public ResponseEntity<List<PCMPROFILEDTO>> fetchDefault(PCMPROFILESearchContext context) {
@@ -831,7 +867,7 @@ public class PCMPROFILEResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILE-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILE-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PCMPROFILE" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pcmprofiles/searchdefault")
 	public ResponseEntity<Page<PCMPROFILEDTO>> searchDefault(@RequestBody PCMPROFILESearchContext context) {
@@ -840,7 +876,7 @@ public class PCMPROFILEResource {
                 .body(new PageImpl(pcmprofileMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILE-JZBSP-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILE-JZBSP-all')")
 	@ApiOperation(value = "fetch局总部审批（校园招聘）", tags = {"PCMPROFILE" } ,notes = "fetch局总部审批（校园招聘）")
     @RequestMapping(method= RequestMethod.GET , value="/pcmprofiles/fetchjzbsp")
 	public ResponseEntity<List<PCMPROFILEDTO>> fetchJZBSP(PCMPROFILESearchContext context) {
@@ -853,7 +889,7 @@ public class PCMPROFILEResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILE-JZBSP-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILE-JZBSP-all')")
 	@ApiOperation(value = "search局总部审批（校园招聘）", tags = {"PCMPROFILE" } ,notes = "search局总部审批（校园招聘）")
     @RequestMapping(method= RequestMethod.POST , value="/pcmprofiles/searchjzbsp")
 	public ResponseEntity<Page<PCMPROFILEDTO>> searchJZBSP(@RequestBody PCMPROFILESearchContext context) {
@@ -862,7 +898,7 @@ public class PCMPROFILEResource {
                 .body(new PageImpl(pcmprofileMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILE-RZSP_CSRCYJ-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILE-RZSP_CSRCYJ-all')")
 	@ApiOperation(value = "fetch局总部初审（成熟人才引进）", tags = {"PCMPROFILE" } ,notes = "fetch局总部初审（成熟人才引进）")
     @RequestMapping(method= RequestMethod.GET , value="/pcmprofiles/fetchrzsp_csrcyj")
 	public ResponseEntity<List<PCMPROFILEDTO>> fetchRZSP_CSRCYJ(PCMPROFILESearchContext context) {
@@ -875,7 +911,7 @@ public class PCMPROFILEResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILE-RZSP_CSRCYJ-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILE-RZSP_CSRCYJ-all')")
 	@ApiOperation(value = "search局总部初审（成熟人才引进）", tags = {"PCMPROFILE" } ,notes = "search局总部初审（成熟人才引进）")
     @RequestMapping(method= RequestMethod.POST , value="/pcmprofiles/searchrzsp_csrcyj")
 	public ResponseEntity<Page<PCMPROFILEDTO>> searchRZSP_CSRCYJ(@RequestBody PCMPROFILESearchContext context) {
@@ -884,7 +920,7 @@ public class PCMPROFILEResource {
                 .body(new PageImpl(pcmprofileMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILE-JLDSP_CSRCYJ-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILE-JLDSP_CSRCYJ-all')")
 	@ApiOperation(value = "fetch局总部审核（成熟人才引进）", tags = {"PCMPROFILE" } ,notes = "fetch局总部审核（成熟人才引进）")
     @RequestMapping(method= RequestMethod.GET , value="/pcmprofiles/fetchjldsp_csrcyj")
 	public ResponseEntity<List<PCMPROFILEDTO>> fetchJLDSP_CSRCYJ(PCMPROFILESearchContext context) {
@@ -897,7 +933,7 @@ public class PCMPROFILEResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILE-JLDSP_CSRCYJ-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILE-JLDSP_CSRCYJ-all')")
 	@ApiOperation(value = "search局总部审核（成熟人才引进）", tags = {"PCMPROFILE" } ,notes = "search局总部审核（成熟人才引进）")
     @RequestMapping(method= RequestMethod.POST , value="/pcmprofiles/searchjldsp_csrcyj")
 	public ResponseEntity<Page<PCMPROFILEDTO>> searchJLDSP_CSRCYJ(@RequestBody PCMPROFILESearchContext context) {
@@ -906,7 +942,7 @@ public class PCMPROFILEResource {
                 .body(new PageImpl(pcmprofileMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILE-BHSP_CSRCYJ-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILE-BHSP_CSRCYJ-all')")
 	@ApiOperation(value = "fetch编号审批（成熟人才引进）", tags = {"PCMPROFILE" } ,notes = "fetch编号审批（成熟人才引进）")
     @RequestMapping(method= RequestMethod.GET , value="/pcmprofiles/fetchbhsp_csrcyj")
 	public ResponseEntity<List<PCMPROFILEDTO>> fetchBHSP_CSRCYJ(PCMPROFILESearchContext context) {
@@ -919,7 +955,7 @@ public class PCMPROFILEResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILE-BHSP_CSRCYJ-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILE-BHSP_CSRCYJ-all')")
 	@ApiOperation(value = "search编号审批（成熟人才引进）", tags = {"PCMPROFILE" } ,notes = "search编号审批（成熟人才引进）")
     @RequestMapping(method= RequestMethod.POST , value="/pcmprofiles/searchbhsp_csrcyj")
 	public ResponseEntity<Page<PCMPROFILEDTO>> searchBHSP_CSRCYJ(@RequestBody PCMPROFILESearchContext context) {
@@ -928,7 +964,7 @@ public class PCMPROFILEResource {
                 .body(new PageImpl(pcmprofileMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILE-LR_CSRCYJ-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILE-LR_CSRCYJ-all')")
 	@ApiOperation(value = "fetch录入（成熟人才引进）", tags = {"PCMPROFILE" } ,notes = "fetch录入（成熟人才引进）")
     @RequestMapping(method= RequestMethod.GET , value="/pcmprofiles/fetchlr_csrcyj")
 	public ResponseEntity<List<PCMPROFILEDTO>> fetchLR_CSRCYJ(PCMPROFILESearchContext context) {
@@ -941,7 +977,7 @@ public class PCMPROFILEResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILE-LR_CSRCYJ-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILE-LR_CSRCYJ-all')")
 	@ApiOperation(value = "search录入（成熟人才引进）", tags = {"PCMPROFILE" } ,notes = "search录入（成熟人才引进）")
     @RequestMapping(method= RequestMethod.POST , value="/pcmprofiles/searchlr_csrcyj")
 	public ResponseEntity<Page<PCMPROFILEDTO>> searchLR_CSRCYJ(@RequestBody PCMPROFILESearchContext context) {
@@ -950,7 +986,7 @@ public class PCMPROFILEResource {
                 .body(new PageImpl(pcmprofileMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILE-YPZBB_READ-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILE-YPZBB_READ-all')")
 	@ApiOperation(value = "fetch应聘者查询", tags = {"PCMPROFILE" } ,notes = "fetch应聘者查询")
     @RequestMapping(method= RequestMethod.GET , value="/pcmprofiles/fetchypzbb_read")
 	public ResponseEntity<List<PCMPROFILEDTO>> fetchYPZBB_READ(PCMPROFILESearchContext context) {
@@ -963,7 +999,7 @@ public class PCMPROFILEResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILE-YPZBB_READ-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILE-YPZBB_READ-all')")
 	@ApiOperation(value = "search应聘者查询", tags = {"PCMPROFILE" } ,notes = "search应聘者查询")
     @RequestMapping(method= RequestMethod.POST , value="/pcmprofiles/searchypzbb_read")
 	public ResponseEntity<Page<PCMPROFILEDTO>> searchYPZBB_READ(@RequestBody PCMPROFILESearchContext context) {
@@ -972,7 +1008,7 @@ public class PCMPROFILEResource {
                 .body(new PageImpl(pcmprofileMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILE-HTRY-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILE-HTRY-all')")
 	@ApiOperation(value = "fetch回退人员（校园招聘）", tags = {"PCMPROFILE" } ,notes = "fetch回退人员（校园招聘）")
     @RequestMapping(method= RequestMethod.GET , value="/pcmprofiles/fetchhtry")
 	public ResponseEntity<List<PCMPROFILEDTO>> fetchHTRY(PCMPROFILESearchContext context) {
@@ -985,7 +1021,7 @@ public class PCMPROFILEResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILE-HTRY-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILE-HTRY-all')")
 	@ApiOperation(value = "search回退人员（校园招聘）", tags = {"PCMPROFILE" } ,notes = "search回退人员（校园招聘）")
     @RequestMapping(method= RequestMethod.POST , value="/pcmprofiles/searchhtry")
 	public ResponseEntity<Page<PCMPROFILEDTO>> searchHTRY(@RequestBody PCMPROFILESearchContext context) {
@@ -994,7 +1030,7 @@ public class PCMPROFILEResource {
                 .body(new PageImpl(pcmprofileMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILE-RZSP-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILE-RZSP-all')")
 	@ApiOperation(value = "fetch局总部初审（校园招聘）", tags = {"PCMPROFILE" } ,notes = "fetch局总部初审（校园招聘）")
     @RequestMapping(method= RequestMethod.GET , value="/pcmprofiles/fetchrzsp")
 	public ResponseEntity<List<PCMPROFILEDTO>> fetchRZSP(PCMPROFILESearchContext context) {
@@ -1007,7 +1043,7 @@ public class PCMPROFILEResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILE-RZSP-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILE-RZSP-all')")
 	@ApiOperation(value = "search局总部初审（校园招聘）", tags = {"PCMPROFILE" } ,notes = "search局总部初审（校园招聘）")
     @RequestMapping(method= RequestMethod.POST , value="/pcmprofiles/searchrzsp")
 	public ResponseEntity<Page<PCMPROFILEDTO>> searchRZSP(@RequestBody PCMPROFILESearchContext context) {
@@ -1016,7 +1052,7 @@ public class PCMPROFILEResource {
                 .body(new PageImpl(pcmprofileMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILE-YRDWCS_CSRCYJ-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILE-YRDWCS_CSRCYJ-all')")
 	@ApiOperation(value = "fetch用人单位初审（成熟人才引进）", tags = {"PCMPROFILE" } ,notes = "fetch用人单位初审（成熟人才引进）")
     @RequestMapping(method= RequestMethod.GET , value="/pcmprofiles/fetchyrdwcs_csrcyj")
 	public ResponseEntity<List<PCMPROFILEDTO>> fetchYRDWCS_CSRCYJ(PCMPROFILESearchContext context) {
@@ -1029,7 +1065,7 @@ public class PCMPROFILEResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILE-YRDWCS_CSRCYJ-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILE-YRDWCS_CSRCYJ-all')")
 	@ApiOperation(value = "search用人单位初审（成熟人才引进）", tags = {"PCMPROFILE" } ,notes = "search用人单位初审（成熟人才引进）")
     @RequestMapping(method= RequestMethod.POST , value="/pcmprofiles/searchyrdwcs_csrcyj")
 	public ResponseEntity<Page<PCMPROFILEDTO>> searchYRDWCS_CSRCYJ(@RequestBody PCMPROFILESearchContext context) {
@@ -1038,7 +1074,7 @@ public class PCMPROFILEResource {
                 .body(new PageImpl(pcmprofileMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILE-JZBSP_CSRCYJ-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILE-JZBSP_CSRCYJ-all')")
 	@ApiOperation(value = "fetch局总部审批（成熟人才引进）", tags = {"PCMPROFILE" } ,notes = "fetch局总部审批（成熟人才引进）")
     @RequestMapping(method= RequestMethod.GET , value="/pcmprofiles/fetchjzbsp_csrcyj")
 	public ResponseEntity<List<PCMPROFILEDTO>> fetchJZBSP_CSRCYJ(PCMPROFILESearchContext context) {
@@ -1051,7 +1087,7 @@ public class PCMPROFILEResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILE-JZBSP_CSRCYJ-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILE-JZBSP_CSRCYJ-all')")
 	@ApiOperation(value = "search局总部审批（成熟人才引进）", tags = {"PCMPROFILE" } ,notes = "search局总部审批（成熟人才引进）")
     @RequestMapping(method= RequestMethod.POST , value="/pcmprofiles/searchjzbsp_csrcyj")
 	public ResponseEntity<Page<PCMPROFILEDTO>> searchJZBSP_CSRCYJ(@RequestBody PCMPROFILESearchContext context) {
@@ -1060,7 +1096,7 @@ public class PCMPROFILEResource {
                 .body(new PageImpl(pcmprofileMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILE-RLSB_CSRCYJ-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILE-RLSB_CSRCYJ-all')")
 	@ApiOperation(value = "fetch人力上报（成熟人才引进）", tags = {"PCMPROFILE" } ,notes = "fetch人力上报（成熟人才引进）")
     @RequestMapping(method= RequestMethod.GET , value="/pcmprofiles/fetchrlsb_csrcyj")
 	public ResponseEntity<List<PCMPROFILEDTO>> fetchRLSB_CSRCYJ(PCMPROFILESearchContext context) {
@@ -1073,7 +1109,7 @@ public class PCMPROFILEResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILE-RLSB_CSRCYJ-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILE-RLSB_CSRCYJ-all')")
 	@ApiOperation(value = "search人力上报（成熟人才引进）", tags = {"PCMPROFILE" } ,notes = "search人力上报（成熟人才引进）")
     @RequestMapping(method= RequestMethod.POST , value="/pcmprofiles/searchrlsb_csrcyj")
 	public ResponseEntity<Page<PCMPROFILEDTO>> searchRLSB_CSRCYJ(@RequestBody PCMPROFILESearchContext context) {
@@ -1083,12 +1119,6 @@ public class PCMPROFILEResource {
 	}
 
 
-    /**
-     * 用户权限校验
-     * @return
-     */
-	public PCMPROFILE getEntity(){
-        return new PCMPROFILE();
-    }
-
 }
+
+

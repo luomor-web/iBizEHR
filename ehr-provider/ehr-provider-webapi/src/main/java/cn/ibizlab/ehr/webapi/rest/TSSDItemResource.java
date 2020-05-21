@@ -50,12 +50,14 @@ public class TSSDItemResource {
 
     @Autowired
     @Lazy
-    private TSSDItemMapping tssditemMapping;
+    public TSSDItemMapping tssditemMapping;
+
+    public TSSDItemDTO permissionDTO=new TSSDItemDTO();
 
 
 
 
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.tssditemMapping,#tssditemdto})")
     @ApiOperation(value = "Create", tags = {"TSSDItem" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/tssditems")
     @Transactional
@@ -65,7 +67,7 @@ public class TSSDItemResource {
         TSSDItemDTO dto = tssditemMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+
     @ApiOperation(value = "createBatch", tags = {"TSSDItem" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/tssditems/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<TSSDItemDTO> tssditemdtos) {
@@ -76,7 +78,7 @@ public class TSSDItemResource {
 
 
 
-    @PreAuthorize("hasPermission(#tssditem_id,'Remove',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#tssditem_id,'Remove',{'Sql',this.tssditemMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"TSSDItem" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/tssditems/{tssditem_id}")
     @Transactional
@@ -94,6 +96,7 @@ public class TSSDItemResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TSSDItem-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"TSSDItem" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/tssditems/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody TSSDItemDTO tssditemdto) {
@@ -103,6 +106,7 @@ public class TSSDItemResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TSSDItem-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"TSSDItem" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/tssditems/getdraft")
     public ResponseEntity<TSSDItemDTO> getDraft() {
@@ -112,7 +116,7 @@ public class TSSDItemResource {
 
 
 
-    @PreAuthorize("hasPermission(#tssditem_id,'Get',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#tssditem_id,'Get',{'Sql',this.tssditemMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"TSSDItem" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/tssditems/{tssditem_id}")
     public ResponseEntity<TSSDItemDTO> get(@PathVariable("tssditem_id") String tssditem_id) {
@@ -124,7 +128,7 @@ public class TSSDItemResource {
 
 
 
-    @PreAuthorize("hasPermission(#tssditem_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#tssditem_id,'Update',{'Sql',this.tssditemMapping,#tssditemdto})")
     @ApiOperation(value = "Update", tags = {"TSSDItem" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/tssditems/{tssditem_id}")
     @Transactional
@@ -136,7 +140,6 @@ public class TSSDItemResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#tssditem_id,'Update',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "UpdateBatch", tags = {"TSSDItem" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/tssditems/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<TSSDItemDTO> tssditemdtos) {
@@ -147,6 +150,7 @@ public class TSSDItemResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TSSDItem-Save-all')")
     @ApiOperation(value = "Save", tags = {"TSSDItem" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/tssditems/save")
     public ResponseEntity<Boolean> save(@RequestBody TSSDItemDTO tssditemdto) {
@@ -160,7 +164,7 @@ public class TSSDItemResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TSSDItem-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TSSDItem-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"TSSDItem" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/tssditems/fetchdefault")
 	public ResponseEntity<List<TSSDItemDTO>> fetchDefault(TSSDItemSearchContext context) {
@@ -173,7 +177,7 @@ public class TSSDItemResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TSSDItem-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TSSDItem-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"TSSDItem" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/tssditems/searchdefault")
 	public ResponseEntity<Page<TSSDItemDTO>> searchDefault(@RequestBody TSSDItemSearchContext context) {
@@ -183,12 +187,6 @@ public class TSSDItemResource {
 	}
 
 
-    /**
-     * 用户权限校验
-     * @return
-     */
-	public TSSDItem getEntity(){
-        return new TSSDItem();
-    }
-
 }
+
+

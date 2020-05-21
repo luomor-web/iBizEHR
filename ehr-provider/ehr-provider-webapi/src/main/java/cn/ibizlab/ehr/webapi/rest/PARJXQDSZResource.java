@@ -50,12 +50,14 @@ public class PARJXQDSZResource {
 
     @Autowired
     @Lazy
-    private PARJXQDSZMapping parjxqdszMapping;
+    public PARJXQDSZMapping parjxqdszMapping;
+
+    public PARJXQDSZDTO permissionDTO=new PARJXQDSZDTO();
 
 
 
 
-    @PreAuthorize("hasPermission(#parjxqdsz_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#parjxqdsz_id,'Update',{'Sql',this.parjxqdszMapping,#parjxqdszdto})")
     @ApiOperation(value = "Update", tags = {"PARJXQDSZ" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/parjxqdszs/{parjxqdsz_id}")
     @Transactional
@@ -67,7 +69,6 @@ public class PARJXQDSZResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#parjxqdsz_id,'Update',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "UpdateBatch", tags = {"PARJXQDSZ" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/parjxqdszs/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PARJXQDSZDTO> parjxqdszdtos) {
@@ -78,7 +79,7 @@ public class PARJXQDSZResource {
 
 
 
-    @PreAuthorize("hasPermission(#parjxqdsz_id,'Get',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#parjxqdsz_id,'Get',{'Sql',this.parjxqdszMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"PARJXQDSZ" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/parjxqdszs/{parjxqdsz_id}")
     public ResponseEntity<PARJXQDSZDTO> get(@PathVariable("parjxqdsz_id") String parjxqdsz_id) {
@@ -90,6 +91,7 @@ public class PARJXQDSZResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PARJXQDSZ-Save-all')")
     @ApiOperation(value = "Save", tags = {"PARJXQDSZ" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/parjxqdszs/save")
     public ResponseEntity<Boolean> save(@RequestBody PARJXQDSZDTO parjxqdszdto) {
@@ -106,6 +108,7 @@ public class PARJXQDSZResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PARJXQDSZ-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"PARJXQDSZ" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/parjxqdszs/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PARJXQDSZDTO parjxqdszdto) {
@@ -115,6 +118,7 @@ public class PARJXQDSZResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PARJXQDSZ-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"PARJXQDSZ" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/parjxqdszs/getdraft")
     public ResponseEntity<PARJXQDSZDTO> getDraft() {
@@ -124,7 +128,7 @@ public class PARJXQDSZResource {
 
 
 
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.parjxqdszMapping,#parjxqdszdto})")
     @ApiOperation(value = "Create", tags = {"PARJXQDSZ" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/parjxqdszs")
     @Transactional
@@ -134,7 +138,7 @@ public class PARJXQDSZResource {
         PARJXQDSZDTO dto = parjxqdszMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+
     @ApiOperation(value = "createBatch", tags = {"PARJXQDSZ" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/parjxqdszs/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PARJXQDSZDTO> parjxqdszdtos) {
@@ -145,7 +149,7 @@ public class PARJXQDSZResource {
 
 
 
-    @PreAuthorize("hasPermission(#parjxqdsz_id,'Remove',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#parjxqdsz_id,'Remove',{'Sql',this.parjxqdszMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"PARJXQDSZ" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/parjxqdszs/{parjxqdsz_id}")
     @Transactional
@@ -160,7 +164,7 @@ public class PARJXQDSZResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PARJXQDSZ-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PARJXQDSZ-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PARJXQDSZ" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/parjxqdszs/fetchdefault")
 	public ResponseEntity<List<PARJXQDSZDTO>> fetchDefault(PARJXQDSZSearchContext context) {
@@ -173,7 +177,7 @@ public class PARJXQDSZResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PARJXQDSZ-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PARJXQDSZ-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PARJXQDSZ" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/parjxqdszs/searchdefault")
 	public ResponseEntity<Page<PARJXQDSZDTO>> searchDefault(@RequestBody PARJXQDSZSearchContext context) {
@@ -183,12 +187,6 @@ public class PARJXQDSZResource {
 	}
 
 
-    /**
-     * 用户权限校验
-     * @return
-     */
-	public PARJXQDSZ getEntity(){
-        return new PARJXQDSZ();
-    }
-
 }
+
+

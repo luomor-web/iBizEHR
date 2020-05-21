@@ -50,11 +50,14 @@ public class DataSyncInResource {
 
     @Autowired
     @Lazy
-    private DataSyncInMapping datasyncinMapping;
+    public DataSyncInMapping datasyncinMapping;
+
+    public DataSyncInDTO permissionDTO=new DataSyncInDTO();
 
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DataSyncIn-Save-all')")
     @ApiOperation(value = "Save", tags = {"DataSyncIn" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/datasyncins/save")
     public ResponseEntity<Boolean> save(@RequestBody DataSyncInDTO datasyncindto) {
@@ -71,6 +74,7 @@ public class DataSyncInResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DataSyncIn-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"DataSyncIn" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/datasyncins/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody DataSyncInDTO datasyncindto) {
@@ -80,7 +84,7 @@ public class DataSyncInResource {
 
 
 
-    @PreAuthorize("hasPermission(#datasyncin_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#datasyncin_id,'Update',{'Sql',this.datasyncinMapping,#datasyncindto})")
     @ApiOperation(value = "Update", tags = {"DataSyncIn" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/datasyncins/{datasyncin_id}")
     @Transactional
@@ -92,7 +96,6 @@ public class DataSyncInResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#datasyncin_id,'Update',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "UpdateBatch", tags = {"DataSyncIn" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/datasyncins/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<DataSyncInDTO> datasyncindtos) {
@@ -103,7 +106,7 @@ public class DataSyncInResource {
 
 
 
-    @PreAuthorize("hasPermission(#datasyncin_id,'Get',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#datasyncin_id,'Get',{'Sql',this.datasyncinMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"DataSyncIn" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/datasyncins/{datasyncin_id}")
     public ResponseEntity<DataSyncInDTO> get(@PathVariable("datasyncin_id") String datasyncin_id) {
@@ -115,6 +118,7 @@ public class DataSyncInResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DataSyncIn-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"DataSyncIn" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/datasyncins/getdraft")
     public ResponseEntity<DataSyncInDTO> getDraft() {
@@ -124,7 +128,7 @@ public class DataSyncInResource {
 
 
 
-    @PreAuthorize("hasPermission(#datasyncin_id,'Remove',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#datasyncin_id,'Remove',{'Sql',this.datasyncinMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"DataSyncIn" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/datasyncins/{datasyncin_id}")
     @Transactional
@@ -142,7 +146,7 @@ public class DataSyncInResource {
 
 
 
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.datasyncinMapping,#datasyncindto})")
     @ApiOperation(value = "Create", tags = {"DataSyncIn" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/datasyncins")
     @Transactional
@@ -152,7 +156,7 @@ public class DataSyncInResource {
         DataSyncInDTO dto = datasyncinMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+
     @ApiOperation(value = "createBatch", tags = {"DataSyncIn" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/datasyncins/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<DataSyncInDTO> datasyncindtos) {
@@ -160,7 +164,7 @@ public class DataSyncInResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DataSyncIn-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DataSyncIn-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"DataSyncIn" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/datasyncins/fetchdefault")
 	public ResponseEntity<List<DataSyncInDTO>> fetchDefault(DataSyncInSearchContext context) {
@@ -173,7 +177,7 @@ public class DataSyncInResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DataSyncIn-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DataSyncIn-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"DataSyncIn" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/datasyncins/searchdefault")
 	public ResponseEntity<Page<DataSyncInDTO>> searchDefault(@RequestBody DataSyncInSearchContext context) {
@@ -183,12 +187,6 @@ public class DataSyncInResource {
 	}
 
 
-    /**
-     * 用户权限校验
-     * @return
-     */
-	public DataSyncIn getEntity(){
-        return new DataSyncIn();
-    }
-
 }
+
+

@@ -50,12 +50,14 @@ public class WFWorkflowResource {
 
     @Autowired
     @Lazy
-    private WFWorkflowMapping wfworkflowMapping;
+    public WFWorkflowMapping wfworkflowMapping;
+
+    public WFWorkflowDTO permissionDTO=new WFWorkflowDTO();
 
 
 
 
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.wfworkflowMapping,#wfworkflowdto})")
     @ApiOperation(value = "Create", tags = {"WFWorkflow" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/wfworkflows")
     @Transactional
@@ -65,7 +67,7 @@ public class WFWorkflowResource {
         WFWorkflowDTO dto = wfworkflowMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+
     @ApiOperation(value = "createBatch", tags = {"WFWorkflow" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/wfworkflows/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<WFWorkflowDTO> wfworkflowdtos) {
@@ -76,7 +78,7 @@ public class WFWorkflowResource {
 
 
 
-    @PreAuthorize("hasPermission(#wfworkflow_id,'Remove',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#wfworkflow_id,'Remove',{'Sql',this.wfworkflowMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"WFWorkflow" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/wfworkflows/{wfworkflow_id}")
     @Transactional
@@ -94,6 +96,7 @@ public class WFWorkflowResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFWorkflow-Save-all')")
     @ApiOperation(value = "Save", tags = {"WFWorkflow" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/wfworkflows/save")
     public ResponseEntity<Boolean> save(@RequestBody WFWorkflowDTO wfworkflowdto) {
@@ -110,7 +113,7 @@ public class WFWorkflowResource {
 
 
 
-    @PreAuthorize("hasPermission(#wfworkflow_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#wfworkflow_id,'Update',{'Sql',this.wfworkflowMapping,#wfworkflowdto})")
     @ApiOperation(value = "Update", tags = {"WFWorkflow" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/wfworkflows/{wfworkflow_id}")
     @Transactional
@@ -122,7 +125,6 @@ public class WFWorkflowResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#wfworkflow_id,'Update',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "UpdateBatch", tags = {"WFWorkflow" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/wfworkflows/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<WFWorkflowDTO> wfworkflowdtos) {
@@ -133,6 +135,7 @@ public class WFWorkflowResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFWorkflow-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"WFWorkflow" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/wfworkflows/getdraft")
     public ResponseEntity<WFWorkflowDTO> getDraft() {
@@ -142,7 +145,7 @@ public class WFWorkflowResource {
 
 
 
-    @PreAuthorize("hasPermission(#wfworkflow_id,'Get',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#wfworkflow_id,'Get',{'Sql',this.wfworkflowMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"WFWorkflow" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/wfworkflows/{wfworkflow_id}")
     public ResponseEntity<WFWorkflowDTO> get(@PathVariable("wfworkflow_id") String wfworkflow_id) {
@@ -154,13 +157,14 @@ public class WFWorkflowResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFWorkflow-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"WFWorkflow" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/wfworkflows/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody WFWorkflowDTO wfworkflowdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(wfworkflowService.checkKey(wfworkflowMapping.toDomain(wfworkflowdto)));
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFWorkflow-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFWorkflow-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"WFWorkflow" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/wfworkflows/fetchdefault")
 	public ResponseEntity<List<WFWorkflowDTO>> fetchDefault(WFWorkflowSearchContext context) {
@@ -173,7 +177,7 @@ public class WFWorkflowResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFWorkflow-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFWorkflow-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"WFWorkflow" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/wfworkflows/searchdefault")
 	public ResponseEntity<Page<WFWorkflowDTO>> searchDefault(@RequestBody WFWorkflowSearchContext context) {
@@ -183,12 +187,6 @@ public class WFWorkflowResource {
 	}
 
 
-    /**
-     * 用户权限校验
-     * @return
-     */
-	public WFWorkflow getEntity(){
-        return new WFWorkflow();
-    }
-
 }
+
+

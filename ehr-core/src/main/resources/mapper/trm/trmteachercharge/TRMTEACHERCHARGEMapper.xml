@@ -4,12 +4,6 @@
 <mapper	namespace="cn.ibizlab.ehr.core.trm.mapper.TRMTEACHERCHARGEMapper">
 
     <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
-	<select id="selectById"  resultMap="TRMTEACHERCHARGEResultMap" databaseId="mysql">
-        <![CDATA[select * from v_trmteachercharge t1     where  trmteacherchargeid=#{id}]]>
-    </select>
-	<select id="selectById"  resultMap="TRMTEACHERCHARGEResultMap" databaseId="oracle">
-        <![CDATA[select * from v_trmteachercharge t1     where  trmteacherchargeid=#{id}]]>
-    </select>
 
     <!--通过mybatis将查询结果注入到entity中,通过配置autoMapping="true"由mybatis自动处理映射关系 -->
     <resultMap id="TRMTEACHERCHARGEResultMap" type="cn.ibizlab.ehr.core.trm.domain.TRMTEACHERCHARGE" autoMapping="true">

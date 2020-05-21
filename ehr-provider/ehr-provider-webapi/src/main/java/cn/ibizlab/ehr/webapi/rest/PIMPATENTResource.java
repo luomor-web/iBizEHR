@@ -50,12 +50,14 @@ public class PIMPATENTResource {
 
     @Autowired
     @Lazy
-    private PIMPATENTMapping pimpatentMapping;
+    public PIMPATENTMapping pimpatentMapping;
+
+    public PIMPATENTDTO permissionDTO=new PIMPATENTDTO();
 
 
 
 
-    @PreAuthorize("hasPermission(#pimpatent_id,'Get',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#pimpatent_id,'Get',{'Sql',this.pimpatentMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"PIMPATENT" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimpatents/{pimpatent_id}")
     public ResponseEntity<PIMPATENTDTO> get(@PathVariable("pimpatent_id") String pimpatent_id) {
@@ -67,6 +69,7 @@ public class PIMPATENTResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMPATENT-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"PIMPATENT" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimpatents/getdraft")
     public ResponseEntity<PIMPATENTDTO> getDraft() {
@@ -76,7 +79,7 @@ public class PIMPATENTResource {
 
 
 
-    @PreAuthorize("hasPermission(#pimpatent_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#pimpatent_id,'Update',{'Sql',this.pimpatentMapping,#pimpatentdto})")
     @ApiOperation(value = "Update", tags = {"PIMPATENT" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimpatents/{pimpatent_id}")
     @Transactional
@@ -88,7 +91,6 @@ public class PIMPATENTResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#pimpatent_id,'Update',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "UpdateBatch", tags = {"PIMPATENT" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimpatents/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PIMPATENTDTO> pimpatentdtos) {
@@ -99,7 +101,7 @@ public class PIMPATENTResource {
 
 
 
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.pimpatentMapping,#pimpatentdto})")
     @ApiOperation(value = "Create", tags = {"PIMPATENT" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpatents")
     @Transactional
@@ -109,7 +111,7 @@ public class PIMPATENTResource {
         PIMPATENTDTO dto = pimpatentMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+
     @ApiOperation(value = "createBatch", tags = {"PIMPATENT" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpatents/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PIMPATENTDTO> pimpatentdtos) {
@@ -120,6 +122,7 @@ public class PIMPATENTResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMPATENT-Save-all')")
     @ApiOperation(value = "Save", tags = {"PIMPATENT" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpatents/save")
     public ResponseEntity<Boolean> save(@RequestBody PIMPATENTDTO pimpatentdto) {
@@ -136,7 +139,7 @@ public class PIMPATENTResource {
 
 
 
-    @PreAuthorize("hasPermission(#pimpatent_id,'Remove',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#pimpatent_id,'Remove',{'Sql',this.pimpatentMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"PIMPATENT" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimpatents/{pimpatent_id}")
     @Transactional
@@ -154,13 +157,14 @@ public class PIMPATENTResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMPATENT-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"PIMPATENT" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpatents/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PIMPATENTDTO pimpatentdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pimpatentService.checkKey(pimpatentMapping.toDomain(pimpatentdto)));
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMPATENT-JLSSGLY-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMPATENT-JLSSGLY-all')")
 	@ApiOperation(value = "fetch记录所属（管理员）", tags = {"PIMPATENT" } ,notes = "fetch记录所属（管理员）")
     @RequestMapping(method= RequestMethod.GET , value="/pimpatents/fetchjlssgly")
 	public ResponseEntity<List<PIMPATENTDTO>> fetchJLSSGLY(PIMPATENTSearchContext context) {
@@ -173,7 +177,7 @@ public class PIMPATENTResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMPATENT-JLSSGLY-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMPATENT-JLSSGLY-all')")
 	@ApiOperation(value = "search记录所属（管理员）", tags = {"PIMPATENT" } ,notes = "search记录所属（管理员）")
     @RequestMapping(method= RequestMethod.POST , value="/pimpatents/searchjlssgly")
 	public ResponseEntity<Page<PIMPATENTDTO>> searchJLSSGLY(@RequestBody PIMPATENTSearchContext context) {
@@ -182,7 +186,7 @@ public class PIMPATENTResource {
                 .body(new PageImpl(pimpatentMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMPATENT-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMPATENT-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PIMPATENT" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimpatents/fetchdefault")
 	public ResponseEntity<List<PIMPATENTDTO>> fetchDefault(PIMPATENTSearchContext context) {
@@ -195,7 +199,7 @@ public class PIMPATENTResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMPATENT-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMPATENT-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PIMPATENT" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pimpatents/searchdefault")
 	public ResponseEntity<Page<PIMPATENTDTO>> searchDefault(@RequestBody PIMPATENTSearchContext context) {
@@ -204,7 +208,7 @@ public class PIMPATENTResource {
                 .body(new PageImpl(pimpatentMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMPATENT-JLSSGR-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMPATENT-JLSSGR-all')")
 	@ApiOperation(value = "fetch记录所属（个人）", tags = {"PIMPATENT" } ,notes = "fetch记录所属（个人）")
     @RequestMapping(method= RequestMethod.GET , value="/pimpatents/fetchjlssgr")
 	public ResponseEntity<List<PIMPATENTDTO>> fetchJLSSGR(PIMPATENTSearchContext context) {
@@ -217,7 +221,7 @@ public class PIMPATENTResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMPATENT-JLSSGR-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMPATENT-JLSSGR-all')")
 	@ApiOperation(value = "search记录所属（个人）", tags = {"PIMPATENT" } ,notes = "search记录所属（个人）")
     @RequestMapping(method= RequestMethod.POST , value="/pimpatents/searchjlssgr")
 	public ResponseEntity<Page<PIMPATENTDTO>> searchJLSSGR(@RequestBody PIMPATENTSearchContext context) {
@@ -228,6 +232,7 @@ public class PIMPATENTResource {
 
 
 
+    //@PreAuthorize("hasPermission(#pimpatent_id,'Get',{'Sql',this.pimpatentMapping,this.permissionDTO})")
     @ApiOperation(value = "GetByPIMPERSON", tags = {"PIMPATENT" },  notes = "GetByPIMPERSON")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimpeople/{pimperson_id}/pimpatents/{pimpatent_id}")
     public ResponseEntity<PIMPATENTDTO> getByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimpatent_id") String pimpatent_id) {
@@ -236,6 +241,7 @@ public class PIMPATENTResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMPATENT-GetDraft-all')")
     @ApiOperation(value = "GetDraftByPIMPERSON", tags = {"PIMPATENT" },  notes = "GetDraftByPIMPERSON")
     @RequestMapping(method = RequestMethod.GET, value = "/pimpeople/{pimperson_id}/pimpatents/getdraft")
     public ResponseEntity<PIMPATENTDTO> getDraftByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id) {
@@ -244,6 +250,7 @@ public class PIMPATENTResource {
         return ResponseEntity.status(HttpStatus.OK).body(pimpatentMapping.toDto(pimpatentService.getDraft(domain)));
     }
 
+    //@PreAuthorize("hasPermission(#pimpatent_id,'Update',{'Sql',this.pimpatentMapping,#pimpatentdto})")
     @ApiOperation(value = "UpdateByPIMPERSON", tags = {"PIMPATENT" },  notes = "UpdateByPIMPERSON")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimpeople/{pimperson_id}/pimpatents/{pimpatent_id}")
     @Transactional
@@ -267,6 +274,7 @@ public class PIMPATENTResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    //@PreAuthorize("hasPermission('','Create',{'Sql',this.pimpatentMapping,#pimpatentdto})")
     @ApiOperation(value = "CreateByPIMPERSON", tags = {"PIMPATENT" },  notes = "CreateByPIMPERSON")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimpatents")
     @Transactional
@@ -289,6 +297,7 @@ public class PIMPATENTResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMPATENT-Save-all')")
     @ApiOperation(value = "SaveByPIMPERSON", tags = {"PIMPATENT" },  notes = "SaveByPIMPERSON")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimpatents/save")
     public ResponseEntity<Boolean> saveByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMPATENTDTO pimpatentdto) {
@@ -308,6 +317,7 @@ public class PIMPATENTResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    //@PreAuthorize("hasPermission(#pimpatent_id,'Remove',{'Sql',this.pimpatentMapping,this.permissionDTO})")
     @ApiOperation(value = "RemoveByPIMPERSON", tags = {"PIMPATENT" },  notes = "RemoveByPIMPERSON")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimpeople/{pimperson_id}/pimpatents/{pimpatent_id}")
     @Transactional
@@ -322,12 +332,14 @@ public class PIMPATENTResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMPATENT-CheckKey-all')")
     @ApiOperation(value = "CheckKeyByPIMPERSON", tags = {"PIMPATENT" },  notes = "CheckKeyByPIMPERSON")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimpatents/checkkey")
     public ResponseEntity<Boolean> checkKeyByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMPATENTDTO pimpatentdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pimpatentService.checkKey(pimpatentMapping.toDomain(pimpatentdto)));
     }
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMPATENT-JLSSGLY-all')")
 	@ApiOperation(value = "fetch记录所属（管理员）ByPIMPERSON", tags = {"PIMPATENT" } ,notes = "fetch记录所属（管理员）ByPIMPERSON")
     @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/pimpatents/fetchjlssgly")
 	public ResponseEntity<List<PIMPATENTDTO>> fetchPIMPATENTJLSSGLYByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id,PIMPATENTSearchContext context) {
@@ -341,6 +353,7 @@ public class PIMPATENTResource {
                 .body(list);
 	}
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMPATENT-JLSSGLY-all')")
 	@ApiOperation(value = "search记录所属（管理员）ByPIMPERSON", tags = {"PIMPATENT" } ,notes = "search记录所属（管理员）ByPIMPERSON")
     @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/pimpatents/searchjlssgly")
 	public ResponseEntity<Page<PIMPATENTDTO>> searchPIMPATENTJLSSGLYByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMPATENTSearchContext context) {
@@ -350,6 +363,7 @@ public class PIMPATENTResource {
                 .body(new PageImpl(pimpatentMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMPATENT-Default-all')")
 	@ApiOperation(value = "fetchDEFAULTByPIMPERSON", tags = {"PIMPATENT" } ,notes = "fetchDEFAULTByPIMPERSON")
     @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/pimpatents/fetchdefault")
 	public ResponseEntity<List<PIMPATENTDTO>> fetchPIMPATENTDefaultByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id,PIMPATENTSearchContext context) {
@@ -363,6 +377,7 @@ public class PIMPATENTResource {
                 .body(list);
 	}
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMPATENT-Default-all')")
 	@ApiOperation(value = "searchDEFAULTByPIMPERSON", tags = {"PIMPATENT" } ,notes = "searchDEFAULTByPIMPERSON")
     @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/pimpatents/searchdefault")
 	public ResponseEntity<Page<PIMPATENTDTO>> searchPIMPATENTDefaultByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMPATENTSearchContext context) {
@@ -372,6 +387,7 @@ public class PIMPATENTResource {
                 .body(new PageImpl(pimpatentMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMPATENT-JLSSGR-all')")
 	@ApiOperation(value = "fetch记录所属（个人）ByPIMPERSON", tags = {"PIMPATENT" } ,notes = "fetch记录所属（个人）ByPIMPERSON")
     @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/pimpatents/fetchjlssgr")
 	public ResponseEntity<List<PIMPATENTDTO>> fetchPIMPATENTJLSSGRByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id,PIMPATENTSearchContext context) {
@@ -385,6 +401,7 @@ public class PIMPATENTResource {
                 .body(list);
 	}
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMPATENT-JLSSGR-all')")
 	@ApiOperation(value = "search记录所属（个人）ByPIMPERSON", tags = {"PIMPATENT" } ,notes = "search记录所属（个人）ByPIMPERSON")
     @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/pimpatents/searchjlssgr")
 	public ResponseEntity<Page<PIMPATENTDTO>> searchPIMPATENTJLSSGRByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMPATENTSearchContext context) {
@@ -395,12 +412,6 @@ public class PIMPATENTResource {
 	}
 
 
-    /**
-     * 用户权限校验
-     * @return
-     */
-	public PIMPATENT getEntity(){
-        return new PIMPATENT();
-    }
-
 }
+
+

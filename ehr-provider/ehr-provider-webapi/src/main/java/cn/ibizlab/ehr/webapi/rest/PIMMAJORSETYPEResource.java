@@ -50,12 +50,14 @@ public class PIMMAJORSETYPEResource {
 
     @Autowired
     @Lazy
-    private PIMMAJORSETYPEMapping pimmajorsetypeMapping;
+    public PIMMAJORSETYPEMapping pimmajorsetypeMapping;
+
+    public PIMMAJORSETYPEDTO permissionDTO=new PIMMAJORSETYPEDTO();
 
 
 
 
-    @PreAuthorize("hasPermission(#pimmajorsetype_id,'Remove',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#pimmajorsetype_id,'Remove',{'Sql',this.pimmajorsetypeMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"PIMMAJORSETYPE" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimmajorsetypes/{pimmajorsetype_id}")
     @Transactional
@@ -73,6 +75,7 @@ public class PIMMAJORSETYPEResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMMAJORSETYPE-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"PIMMAJORSETYPE" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimmajorsetypes/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PIMMAJORSETYPEDTO pimmajorsetypedto) {
@@ -82,7 +85,7 @@ public class PIMMAJORSETYPEResource {
 
 
 
-    @PreAuthorize("hasPermission(#pimmajorsetype_id,'Get',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#pimmajorsetype_id,'Get',{'Sql',this.pimmajorsetypeMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"PIMMAJORSETYPE" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimmajorsetypes/{pimmajorsetype_id}")
     public ResponseEntity<PIMMAJORSETYPEDTO> get(@PathVariable("pimmajorsetype_id") String pimmajorsetype_id) {
@@ -94,6 +97,7 @@ public class PIMMAJORSETYPEResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMMAJORSETYPE-Save-all')")
     @ApiOperation(value = "Save", tags = {"PIMMAJORSETYPE" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimmajorsetypes/save")
     public ResponseEntity<Boolean> save(@RequestBody PIMMAJORSETYPEDTO pimmajorsetypedto) {
@@ -110,7 +114,7 @@ public class PIMMAJORSETYPEResource {
 
 
 
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.pimmajorsetypeMapping,#pimmajorsetypedto})")
     @ApiOperation(value = "Create", tags = {"PIMMAJORSETYPE" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimmajorsetypes")
     @Transactional
@@ -120,7 +124,7 @@ public class PIMMAJORSETYPEResource {
         PIMMAJORSETYPEDTO dto = pimmajorsetypeMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+
     @ApiOperation(value = "createBatch", tags = {"PIMMAJORSETYPE" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimmajorsetypes/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PIMMAJORSETYPEDTO> pimmajorsetypedtos) {
@@ -131,6 +135,7 @@ public class PIMMAJORSETYPEResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMMAJORSETYPE-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"PIMMAJORSETYPE" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimmajorsetypes/getdraft")
     public ResponseEntity<PIMMAJORSETYPEDTO> getDraft() {
@@ -140,7 +145,7 @@ public class PIMMAJORSETYPEResource {
 
 
 
-    @PreAuthorize("hasPermission(#pimmajorsetype_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#pimmajorsetype_id,'Update',{'Sql',this.pimmajorsetypeMapping,#pimmajorsetypedto})")
     @ApiOperation(value = "Update", tags = {"PIMMAJORSETYPE" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimmajorsetypes/{pimmajorsetype_id}")
     @Transactional
@@ -152,7 +157,6 @@ public class PIMMAJORSETYPEResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#pimmajorsetype_id,'Update',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "UpdateBatch", tags = {"PIMMAJORSETYPE" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimmajorsetypes/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PIMMAJORSETYPEDTO> pimmajorsetypedtos) {
@@ -160,7 +164,7 @@ public class PIMMAJORSETYPEResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMMAJORSETYPE-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMMAJORSETYPE-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PIMMAJORSETYPE" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimmajorsetypes/fetchdefault")
 	public ResponseEntity<List<PIMMAJORSETYPEDTO>> fetchDefault(PIMMAJORSETYPESearchContext context) {
@@ -173,7 +177,7 @@ public class PIMMAJORSETYPEResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMMAJORSETYPE-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMMAJORSETYPE-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PIMMAJORSETYPE" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pimmajorsetypes/searchdefault")
 	public ResponseEntity<Page<PIMMAJORSETYPEDTO>> searchDefault(@RequestBody PIMMAJORSETYPESearchContext context) {
@@ -183,12 +187,6 @@ public class PIMMAJORSETYPEResource {
 	}
 
 
-    /**
-     * 用户权限校验
-     * @return
-     */
-	public PIMMAJORSETYPE getEntity(){
-        return new PIMMAJORSETYPE();
-    }
-
 }
+
+

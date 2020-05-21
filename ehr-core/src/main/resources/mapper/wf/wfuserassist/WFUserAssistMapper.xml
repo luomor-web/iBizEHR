@@ -4,24 +4,6 @@
 <mapper	namespace="cn.ibizlab.ehr.core.wf.mapper.WFUserAssistMapper">
 
     <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
-	<select id="selectById"  resultMap="WFUserAssistResultMap" databaseId="db2">
-        <![CDATA[select * from v_wfuserassist t1     where  wfuserassistid=#{id}]]>
-    </select>
-	<select id="selectById"  resultMap="WFUserAssistResultMap" databaseId="mysql">
-        <![CDATA[select * from v_wfuserassist t1     where  wfuserassistid=#{id}]]>
-    </select>
-	<select id="selectById"  resultMap="WFUserAssistResultMap" databaseId="oracle">
-        <![CDATA[select * from v_wfuserassist t1     where  wfuserassistid=#{id}]]>
-    </select>
-	<select id="selectById"  resultMap="WFUserAssistResultMap" databaseId="postgresql">
-        <![CDATA[select * from v_wfuserassist t1     where  wfuserassistid=#{id}]]>
-    </select>
-	<select id="selectById"  resultMap="WFUserAssistResultMap" databaseId="ppas">
-        <![CDATA[select * from v_wfuserassist t1     where  wfuserassistid=#{id}]]>
-    </select>
-	<select id="selectById"  resultMap="WFUserAssistResultMap" databaseId="sqlserver">
-        <![CDATA[select * from v_wfuserassist t1     where  wfuserassistid=#{id}]]>
-    </select>
 
     <!--通过mybatis将查询结果注入到entity中,通过配置autoMapping="true"由mybatis自动处理映射关系 -->
     <resultMap id="WFUserAssistResultMap" type="cn.ibizlab.ehr.core.wf.domain.WFUserAssist" autoMapping="true">

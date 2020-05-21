@@ -4,12 +4,6 @@
 <mapper	namespace="cn.ibizlab.ehr.core.sal.mapper.SALSALARYMapper">
 
     <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
-	<select id="selectById"  resultMap="SALSALARYResultMap" databaseId="mysql">
-        <![CDATA[select * from v_salsalary t1     where  salsalaryid=#{id}]]>
-    </select>
-	<select id="selectById"  resultMap="SALSALARYResultMap" databaseId="oracle">
-        <![CDATA[select * from v_salsalary t1     where  salsalaryid=#{id}]]>
-    </select>
 
     <!--通过mybatis将查询结果注入到entity中,通过配置autoMapping="true"由mybatis自动处理映射关系 -->
     <resultMap id="SALSALARYResultMap" type="cn.ibizlab.ehr.core.sal.domain.SALSALARY" autoMapping="true">

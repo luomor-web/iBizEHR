@@ -50,12 +50,14 @@ public class PIMARMYCADRESResource {
 
     @Autowired
     @Lazy
-    private PIMARMYCADRESMapping pimarmycadresMapping;
+    public PIMARMYCADRESMapping pimarmycadresMapping;
+
+    public PIMARMYCADRESDTO permissionDTO=new PIMARMYCADRESDTO();
 
 
 
 
-    @PreAuthorize("hasPermission(#pimarmycadres_id,'Remove',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#pimarmycadres_id,'Remove',{'Sql',this.pimarmycadresMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"PIMARMYCADRES" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimarmycadres/{pimarmycadres_id}")
     @Transactional
@@ -73,6 +75,7 @@ public class PIMARMYCADRESResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMARMYCADRES-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"PIMARMYCADRES" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimarmycadres/getdraft")
     public ResponseEntity<PIMARMYCADRESDTO> getDraft() {
@@ -82,6 +85,7 @@ public class PIMARMYCADRESResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMARMYCADRES-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"PIMARMYCADRES" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimarmycadres/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PIMARMYCADRESDTO pimarmycadresdto) {
@@ -91,7 +95,7 @@ public class PIMARMYCADRESResource {
 
 
 
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.pimarmycadresMapping,#pimarmycadresdto})")
     @ApiOperation(value = "Create", tags = {"PIMARMYCADRES" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimarmycadres")
     @Transactional
@@ -101,7 +105,7 @@ public class PIMARMYCADRESResource {
         PIMARMYCADRESDTO dto = pimarmycadresMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+
     @ApiOperation(value = "createBatch", tags = {"PIMARMYCADRES" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimarmycadres/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PIMARMYCADRESDTO> pimarmycadresdtos) {
@@ -112,7 +116,7 @@ public class PIMARMYCADRESResource {
 
 
 
-    @PreAuthorize("hasPermission(#pimarmycadres_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#pimarmycadres_id,'Update',{'Sql',this.pimarmycadresMapping,#pimarmycadresdto})")
     @ApiOperation(value = "Update", tags = {"PIMARMYCADRES" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimarmycadres/{pimarmycadres_id}")
     @Transactional
@@ -124,7 +128,6 @@ public class PIMARMYCADRESResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#pimarmycadres_id,'Update',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "UpdateBatch", tags = {"PIMARMYCADRES" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimarmycadres/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PIMARMYCADRESDTO> pimarmycadresdtos) {
@@ -135,7 +138,7 @@ public class PIMARMYCADRESResource {
 
 
 
-    @PreAuthorize("hasPermission(#pimarmycadres_id,'Get',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#pimarmycadres_id,'Get',{'Sql',this.pimarmycadresMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"PIMARMYCADRES" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimarmycadres/{pimarmycadres_id}")
     public ResponseEntity<PIMARMYCADRESDTO> get(@PathVariable("pimarmycadres_id") String pimarmycadres_id) {
@@ -147,6 +150,7 @@ public class PIMARMYCADRESResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMARMYCADRES-Save-all')")
     @ApiOperation(value = "Save", tags = {"PIMARMYCADRES" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimarmycadres/save")
     public ResponseEntity<Boolean> save(@RequestBody PIMARMYCADRESDTO pimarmycadresdto) {
@@ -160,7 +164,7 @@ public class PIMARMYCADRESResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMARMYCADRES-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMARMYCADRES-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PIMARMYCADRES" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimarmycadres/fetchdefault")
 	public ResponseEntity<List<PIMARMYCADRESDTO>> fetchDefault(PIMARMYCADRESSearchContext context) {
@@ -173,7 +177,7 @@ public class PIMARMYCADRESResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMARMYCADRES-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMARMYCADRES-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PIMARMYCADRES" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pimarmycadres/searchdefault")
 	public ResponseEntity<Page<PIMARMYCADRESDTO>> searchDefault(@RequestBody PIMARMYCADRESSearchContext context) {
@@ -182,7 +186,7 @@ public class PIMARMYCADRESResource {
                 .body(new PageImpl(pimarmycadresMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMARMYCADRES-JLSSGLY-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMARMYCADRES-JLSSGLY-all')")
 	@ApiOperation(value = "fetch记录所属（管理员）", tags = {"PIMARMYCADRES" } ,notes = "fetch记录所属（管理员）")
     @RequestMapping(method= RequestMethod.GET , value="/pimarmycadres/fetchjlssgly")
 	public ResponseEntity<List<PIMARMYCADRESDTO>> fetchJLSSGLY(PIMARMYCADRESSearchContext context) {
@@ -195,7 +199,7 @@ public class PIMARMYCADRESResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMARMYCADRES-JLSSGLY-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMARMYCADRES-JLSSGLY-all')")
 	@ApiOperation(value = "search记录所属（管理员）", tags = {"PIMARMYCADRES" } ,notes = "search记录所属（管理员）")
     @RequestMapping(method= RequestMethod.POST , value="/pimarmycadres/searchjlssgly")
 	public ResponseEntity<Page<PIMARMYCADRESDTO>> searchJLSSGLY(@RequestBody PIMARMYCADRESSearchContext context) {
@@ -204,7 +208,7 @@ public class PIMARMYCADRESResource {
                 .body(new PageImpl(pimarmycadresMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMARMYCADRES-JLSSGR-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMARMYCADRES-JLSSGR-all')")
 	@ApiOperation(value = "fetch记录所属（个人）", tags = {"PIMARMYCADRES" } ,notes = "fetch记录所属（个人）")
     @RequestMapping(method= RequestMethod.GET , value="/pimarmycadres/fetchjlssgr")
 	public ResponseEntity<List<PIMARMYCADRESDTO>> fetchJLSSGR(PIMARMYCADRESSearchContext context) {
@@ -217,7 +221,7 @@ public class PIMARMYCADRESResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMARMYCADRES-JLSSGR-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMARMYCADRES-JLSSGR-all')")
 	@ApiOperation(value = "search记录所属（个人）", tags = {"PIMARMYCADRES" } ,notes = "search记录所属（个人）")
     @RequestMapping(method= RequestMethod.POST , value="/pimarmycadres/searchjlssgr")
 	public ResponseEntity<Page<PIMARMYCADRESDTO>> searchJLSSGR(@RequestBody PIMARMYCADRESSearchContext context) {
@@ -228,6 +232,7 @@ public class PIMARMYCADRESResource {
 
 
 
+    //@PreAuthorize("hasPermission(#pimarmycadres_id,'Remove',{'Sql',this.pimarmycadresMapping,this.permissionDTO})")
     @ApiOperation(value = "RemoveByPIMPERSON", tags = {"PIMARMYCADRES" },  notes = "RemoveByPIMPERSON")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimpeople/{pimperson_id}/pimarmycadres/{pimarmycadres_id}")
     @Transactional
@@ -242,6 +247,7 @@ public class PIMARMYCADRESResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMARMYCADRES-GetDraft-all')")
     @ApiOperation(value = "GetDraftByPIMPERSON", tags = {"PIMARMYCADRES" },  notes = "GetDraftByPIMPERSON")
     @RequestMapping(method = RequestMethod.GET, value = "/pimpeople/{pimperson_id}/pimarmycadres/getdraft")
     public ResponseEntity<PIMARMYCADRESDTO> getDraftByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id) {
@@ -250,12 +256,14 @@ public class PIMARMYCADRESResource {
         return ResponseEntity.status(HttpStatus.OK).body(pimarmycadresMapping.toDto(pimarmycadresService.getDraft(domain)));
     }
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMARMYCADRES-CheckKey-all')")
     @ApiOperation(value = "CheckKeyByPIMPERSON", tags = {"PIMARMYCADRES" },  notes = "CheckKeyByPIMPERSON")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimarmycadres/checkkey")
     public ResponseEntity<Boolean> checkKeyByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMARMYCADRESDTO pimarmycadresdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pimarmycadresService.checkKey(pimarmycadresMapping.toDomain(pimarmycadresdto)));
     }
 
+    //@PreAuthorize("hasPermission('','Create',{'Sql',this.pimarmycadresMapping,#pimarmycadresdto})")
     @ApiOperation(value = "CreateByPIMPERSON", tags = {"PIMARMYCADRES" },  notes = "CreateByPIMPERSON")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimarmycadres")
     @Transactional
@@ -278,6 +286,7 @@ public class PIMARMYCADRESResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    //@PreAuthorize("hasPermission(#pimarmycadres_id,'Update',{'Sql',this.pimarmycadresMapping,#pimarmycadresdto})")
     @ApiOperation(value = "UpdateByPIMPERSON", tags = {"PIMARMYCADRES" },  notes = "UpdateByPIMPERSON")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimpeople/{pimperson_id}/pimarmycadres/{pimarmycadres_id}")
     @Transactional
@@ -301,6 +310,7 @@ public class PIMARMYCADRESResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    //@PreAuthorize("hasPermission(#pimarmycadres_id,'Get',{'Sql',this.pimarmycadresMapping,this.permissionDTO})")
     @ApiOperation(value = "GetByPIMPERSON", tags = {"PIMARMYCADRES" },  notes = "GetByPIMPERSON")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimpeople/{pimperson_id}/pimarmycadres/{pimarmycadres_id}")
     public ResponseEntity<PIMARMYCADRESDTO> getByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimarmycadres_id") String pimarmycadres_id) {
@@ -309,6 +319,7 @@ public class PIMARMYCADRESResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMARMYCADRES-Save-all')")
     @ApiOperation(value = "SaveByPIMPERSON", tags = {"PIMARMYCADRES" },  notes = "SaveByPIMPERSON")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimarmycadres/save")
     public ResponseEntity<Boolean> saveByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMARMYCADRESDTO pimarmycadresdto) {
@@ -328,6 +339,7 @@ public class PIMARMYCADRESResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMARMYCADRES-Default-all')")
 	@ApiOperation(value = "fetchDEFAULTByPIMPERSON", tags = {"PIMARMYCADRES" } ,notes = "fetchDEFAULTByPIMPERSON")
     @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/pimarmycadres/fetchdefault")
 	public ResponseEntity<List<PIMARMYCADRESDTO>> fetchPIMARMYCADRESDefaultByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id,PIMARMYCADRESSearchContext context) {
@@ -341,6 +353,7 @@ public class PIMARMYCADRESResource {
                 .body(list);
 	}
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMARMYCADRES-Default-all')")
 	@ApiOperation(value = "searchDEFAULTByPIMPERSON", tags = {"PIMARMYCADRES" } ,notes = "searchDEFAULTByPIMPERSON")
     @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/pimarmycadres/searchdefault")
 	public ResponseEntity<Page<PIMARMYCADRESDTO>> searchPIMARMYCADRESDefaultByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMARMYCADRESSearchContext context) {
@@ -350,6 +363,7 @@ public class PIMARMYCADRESResource {
                 .body(new PageImpl(pimarmycadresMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMARMYCADRES-JLSSGLY-all')")
 	@ApiOperation(value = "fetch记录所属（管理员）ByPIMPERSON", tags = {"PIMARMYCADRES" } ,notes = "fetch记录所属（管理员）ByPIMPERSON")
     @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/pimarmycadres/fetchjlssgly")
 	public ResponseEntity<List<PIMARMYCADRESDTO>> fetchPIMARMYCADRESJLSSGLYByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id,PIMARMYCADRESSearchContext context) {
@@ -363,6 +377,7 @@ public class PIMARMYCADRESResource {
                 .body(list);
 	}
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMARMYCADRES-JLSSGLY-all')")
 	@ApiOperation(value = "search记录所属（管理员）ByPIMPERSON", tags = {"PIMARMYCADRES" } ,notes = "search记录所属（管理员）ByPIMPERSON")
     @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/pimarmycadres/searchjlssgly")
 	public ResponseEntity<Page<PIMARMYCADRESDTO>> searchPIMARMYCADRESJLSSGLYByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMARMYCADRESSearchContext context) {
@@ -372,6 +387,7 @@ public class PIMARMYCADRESResource {
                 .body(new PageImpl(pimarmycadresMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMARMYCADRES-JLSSGR-all')")
 	@ApiOperation(value = "fetch记录所属（个人）ByPIMPERSON", tags = {"PIMARMYCADRES" } ,notes = "fetch记录所属（个人）ByPIMPERSON")
     @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/pimarmycadres/fetchjlssgr")
 	public ResponseEntity<List<PIMARMYCADRESDTO>> fetchPIMARMYCADRESJLSSGRByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id,PIMARMYCADRESSearchContext context) {
@@ -385,6 +401,7 @@ public class PIMARMYCADRESResource {
                 .body(list);
 	}
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMARMYCADRES-JLSSGR-all')")
 	@ApiOperation(value = "search记录所属（个人）ByPIMPERSON", tags = {"PIMARMYCADRES" } ,notes = "search记录所属（个人）ByPIMPERSON")
     @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/pimarmycadres/searchjlssgr")
 	public ResponseEntity<Page<PIMARMYCADRESDTO>> searchPIMARMYCADRESJLSSGRByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMARMYCADRESSearchContext context) {
@@ -395,12 +412,6 @@ public class PIMARMYCADRESResource {
 	}
 
 
-    /**
-     * 用户权限校验
-     * @return
-     */
-	public PIMARMYCADRES getEntity(){
-        return new PIMARMYCADRES();
-    }
-
 }
+
+

@@ -50,11 +50,14 @@ public class PARZNBMMXResource {
 
     @Autowired
     @Lazy
-    private PARZNBMMXMapping parznbmmxMapping;
+    public PARZNBMMXMapping parznbmmxMapping;
+
+    public PARZNBMMXDTO permissionDTO=new PARZNBMMXDTO();
 
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PARZNBMMX-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"PARZNBMMX" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/parznbmmxes/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PARZNBMMXDTO parznbmmxdto) {
@@ -64,7 +67,7 @@ public class PARZNBMMXResource {
 
 
 
-    @PreAuthorize("hasPermission(#parznbmmx_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#parznbmmx_id,'Update',{'Sql',this.parznbmmxMapping,#parznbmmxdto})")
     @ApiOperation(value = "Update", tags = {"PARZNBMMX" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/parznbmmxes/{parznbmmx_id}")
     @Transactional
@@ -76,7 +79,6 @@ public class PARZNBMMXResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#parznbmmx_id,'Update',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "UpdateBatch", tags = {"PARZNBMMX" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/parznbmmxes/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PARZNBMMXDTO> parznbmmxdtos) {
@@ -87,6 +89,7 @@ public class PARZNBMMXResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PARZNBMMX-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"PARZNBMMX" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/parznbmmxes/getdraft")
     public ResponseEntity<PARZNBMMXDTO> getDraft() {
@@ -96,7 +99,7 @@ public class PARZNBMMXResource {
 
 
 
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.parznbmmxMapping,#parznbmmxdto})")
     @ApiOperation(value = "Create", tags = {"PARZNBMMX" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/parznbmmxes")
     @Transactional
@@ -106,7 +109,7 @@ public class PARZNBMMXResource {
         PARZNBMMXDTO dto = parznbmmxMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+
     @ApiOperation(value = "createBatch", tags = {"PARZNBMMX" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/parznbmmxes/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PARZNBMMXDTO> parznbmmxdtos) {
@@ -117,7 +120,7 @@ public class PARZNBMMXResource {
 
 
 
-    @PreAuthorize("hasPermission(#parznbmmx_id,'Remove',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#parznbmmx_id,'Remove',{'Sql',this.parznbmmxMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"PARZNBMMX" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/parznbmmxes/{parznbmmx_id}")
     @Transactional
@@ -135,6 +138,7 @@ public class PARZNBMMXResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PARZNBMMX-Save-all')")
     @ApiOperation(value = "Save", tags = {"PARZNBMMX" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/parznbmmxes/save")
     public ResponseEntity<Boolean> save(@RequestBody PARZNBMMXDTO parznbmmxdto) {
@@ -151,7 +155,7 @@ public class PARZNBMMXResource {
 
 
 
-    @PreAuthorize("hasPermission(#parznbmmx_id,'Get',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#parznbmmx_id,'Get',{'Sql',this.parznbmmxMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"PARZNBMMX" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/parznbmmxes/{parznbmmx_id}")
     public ResponseEntity<PARZNBMMXDTO> get(@PathVariable("parznbmmx_id") String parznbmmx_id) {
@@ -160,7 +164,7 @@ public class PARZNBMMXResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PARZNBMMX-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PARZNBMMX-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PARZNBMMX" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/parznbmmxes/fetchdefault")
 	public ResponseEntity<List<PARZNBMMXDTO>> fetchDefault(PARZNBMMXSearchContext context) {
@@ -173,7 +177,7 @@ public class PARZNBMMXResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PARZNBMMX-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PARZNBMMX-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PARZNBMMX" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/parznbmmxes/searchdefault")
 	public ResponseEntity<Page<PARZNBMMXDTO>> searchDefault(@RequestBody PARZNBMMXSearchContext context) {
@@ -183,12 +187,6 @@ public class PARZNBMMXResource {
 	}
 
 
-    /**
-     * 用户权限校验
-     * @return
-     */
-	public PARZNBMMX getEntity(){
-        return new PARZNBMMX();
-    }
-
 }
+
+

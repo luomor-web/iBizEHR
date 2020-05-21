@@ -50,12 +50,14 @@ public class DynaChartResource {
 
     @Autowired
     @Lazy
-    private DynaChartMapping dynachartMapping;
+    public DynaChartMapping dynachartMapping;
+
+    public DynaChartDTO permissionDTO=new DynaChartDTO();
 
 
 
 
-    @PreAuthorize("hasPermission(#dynachart_id,'Get',{this.getEntity(),'ServiceApi'})")
+    @PreAuthorize("hasPermission(#dynachart_id,'Get',{'ServiceApi',this.dynachartMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"DynaChart" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/dynacharts/{dynachart_id}")
     public ResponseEntity<DynaChartDTO> get(@PathVariable("dynachart_id") String dynachart_id) {
@@ -67,6 +69,7 @@ public class DynaChartResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DynaChart-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"DynaChart" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/dynacharts/getdraft")
     public ResponseEntity<DynaChartDTO> getDraft() {
@@ -76,6 +79,7 @@ public class DynaChartResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DynaChart-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"DynaChart" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/dynacharts/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody DynaChartDTO dynachartdto) {
@@ -85,7 +89,7 @@ public class DynaChartResource {
 
 
 
-    @PreAuthorize("hasPermission(#dynachart_id,'Update',{this.getEntity(),'ServiceApi'})")
+    @PreAuthorize("hasPermission(#dynachart_id,'Update',{'ServiceApi',this.dynachartMapping,#dynachartdto})")
     @ApiOperation(value = "Update", tags = {"DynaChart" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/dynacharts/{dynachart_id}")
 
@@ -97,7 +101,6 @@ public class DynaChartResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#dynachart_id,'Update',{this.getEntity(),'ServiceApi'})")
     @ApiOperation(value = "UpdateBatch", tags = {"DynaChart" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/dynacharts/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<DynaChartDTO> dynachartdtos) {
@@ -108,7 +111,7 @@ public class DynaChartResource {
 
 
 
-    @PreAuthorize("hasPermission(#dynachart_id,'Remove',{this.getEntity(),'ServiceApi'})")
+    @PreAuthorize("hasPermission(#dynachart_id,'Remove',{'ServiceApi',this.dynachartMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"DynaChart" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/dynacharts/{dynachart_id}")
 
@@ -126,7 +129,7 @@ public class DynaChartResource {
 
 
 
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'ServiceApi'})")
+    @PreAuthorize("hasPermission('','Create',{'ServiceApi',this.dynachartMapping,#dynachartdto})")
     @ApiOperation(value = "Create", tags = {"DynaChart" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/dynacharts")
 
@@ -136,7 +139,7 @@ public class DynaChartResource {
         DynaChartDTO dto = dynachartMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'ServiceApi'})")
+
     @ApiOperation(value = "createBatch", tags = {"DynaChart" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/dynacharts/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<DynaChartDTO> dynachartdtos) {
@@ -147,6 +150,7 @@ public class DynaChartResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DynaChart-Save-all')")
     @ApiOperation(value = "Save", tags = {"DynaChart" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/dynacharts/save")
     public ResponseEntity<Boolean> save(@RequestBody DynaChartDTO dynachartdto) {
@@ -160,7 +164,7 @@ public class DynaChartResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DynaChart-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DynaChart-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"DynaChart" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/dynacharts/fetchdefault")
 	public ResponseEntity<List<DynaChartDTO>> fetchDefault(DynaChartSearchContext context) {
@@ -173,7 +177,7 @@ public class DynaChartResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DynaChart-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DynaChart-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"DynaChart" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/dynacharts/searchdefault")
 	public ResponseEntity<Page<DynaChartDTO>> searchDefault(@RequestBody DynaChartSearchContext context) {
@@ -183,12 +187,6 @@ public class DynaChartResource {
 	}
 
 
-    /**
-     * 用户权限校验
-     * @return
-     */
-	public DynaChart getEntity(){
-        return new DynaChart();
-    }
-
 }
+
+

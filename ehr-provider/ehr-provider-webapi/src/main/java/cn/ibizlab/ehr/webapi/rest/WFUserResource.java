@@ -50,11 +50,14 @@ public class WFUserResource {
 
     @Autowired
     @Lazy
-    private WFUserMapping wfuserMapping;
+    public WFUserMapping wfuserMapping;
+
+    public WFUserDTO permissionDTO=new WFUserDTO();
 
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFUser-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"WFUser" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/wfusers/getdraft")
     public ResponseEntity<WFUserDTO> getDraft() {
@@ -64,7 +67,7 @@ public class WFUserResource {
 
 
 
-    @PreAuthorize("hasPermission(#wfuser_id,'Get',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#wfuser_id,'Get',{'Sql',this.wfuserMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"WFUser" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/wfusers/{wfuser_id}")
     public ResponseEntity<WFUserDTO> get(@PathVariable("wfuser_id") String wfuser_id) {
@@ -76,7 +79,7 @@ public class WFUserResource {
 
 
 
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.wfuserMapping,#wfuserdto})")
     @ApiOperation(value = "Create", tags = {"WFUser" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/wfusers")
     @Transactional
@@ -86,7 +89,7 @@ public class WFUserResource {
         WFUserDTO dto = wfuserMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+
     @ApiOperation(value = "createBatch", tags = {"WFUser" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/wfusers/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<WFUserDTO> wfuserdtos) {
@@ -97,6 +100,7 @@ public class WFUserResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFUser-Save-all')")
     @ApiOperation(value = "Save", tags = {"WFUser" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/wfusers/save")
     public ResponseEntity<Boolean> save(@RequestBody WFUserDTO wfuserdto) {
@@ -113,7 +117,7 @@ public class WFUserResource {
 
 
 
-    @PreAuthorize("hasPermission(#wfuser_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#wfuser_id,'Update',{'Sql',this.wfuserMapping,#wfuserdto})")
     @ApiOperation(value = "Update", tags = {"WFUser" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/wfusers/{wfuser_id}")
     @Transactional
@@ -125,7 +129,6 @@ public class WFUserResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#wfuser_id,'Update',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "UpdateBatch", tags = {"WFUser" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/wfusers/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<WFUserDTO> wfuserdtos) {
@@ -136,7 +139,7 @@ public class WFUserResource {
 
 
 
-    @PreAuthorize("hasPermission(#wfuser_id,'Remove',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#wfuser_id,'Remove',{'Sql',this.wfuserMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"WFUser" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/wfusers/{wfuser_id}")
     @Transactional
@@ -154,13 +157,14 @@ public class WFUserResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFUser-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"WFUser" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/wfusers/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody WFUserDTO wfuserdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(wfuserService.checkKey(wfuserMapping.toDomain(wfuserdto)));
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFUser-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFUser-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"WFUser" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/wfusers/fetchdefault")
 	public ResponseEntity<List<WFUserDTO>> fetchDefault(WFUserSearchContext context) {
@@ -173,7 +177,7 @@ public class WFUserResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFUser-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFUser-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"WFUser" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/wfusers/searchdefault")
 	public ResponseEntity<Page<WFUserDTO>> searchDefault(@RequestBody WFUserSearchContext context) {
@@ -183,12 +187,6 @@ public class WFUserResource {
 	}
 
 
-    /**
-     * 用户权限校验
-     * @return
-     */
-	public WFUser getEntity(){
-        return new WFUser();
-    }
-
 }
+
+

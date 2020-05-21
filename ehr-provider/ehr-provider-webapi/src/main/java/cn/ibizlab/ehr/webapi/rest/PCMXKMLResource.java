@@ -50,12 +50,14 @@ public class PCMXKMLResource {
 
     @Autowired
     @Lazy
-    private PCMXKMLMapping pcmxkmlMapping;
+    public PCMXKMLMapping pcmxkmlMapping;
+
+    public PCMXKMLDTO permissionDTO=new PCMXKMLDTO();
 
 
 
 
-    @PreAuthorize("hasPermission(#pcmxkml_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#pcmxkml_id,'Update',{'Sql',this.pcmxkmlMapping,#pcmxkmldto})")
     @ApiOperation(value = "Update", tags = {"PCMXKML" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmxkmls/{pcmxkml_id}")
     @Transactional
@@ -67,7 +69,6 @@ public class PCMXKMLResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#pcmxkml_id,'Update',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "UpdateBatch", tags = {"PCMXKML" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmxkmls/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PCMXKMLDTO> pcmxkmldtos) {
@@ -78,7 +79,7 @@ public class PCMXKMLResource {
 
 
 
-    @PreAuthorize("hasPermission(#pcmxkml_id,'Remove',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#pcmxkml_id,'Remove',{'Sql',this.pcmxkmlMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"PCMXKML" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmxkmls/{pcmxkml_id}")
     @Transactional
@@ -96,7 +97,7 @@ public class PCMXKMLResource {
 
 
 
-    @PreAuthorize("hasPermission(#pcmxkml_id,'Get',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#pcmxkml_id,'Get',{'Sql',this.pcmxkmlMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"PCMXKML" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmxkmls/{pcmxkml_id}")
     public ResponseEntity<PCMXKMLDTO> get(@PathVariable("pcmxkml_id") String pcmxkml_id) {
@@ -108,7 +109,7 @@ public class PCMXKMLResource {
 
 
 
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.pcmxkmlMapping,#pcmxkmldto})")
     @ApiOperation(value = "Create", tags = {"PCMXKML" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmxkmls")
     @Transactional
@@ -118,7 +119,7 @@ public class PCMXKMLResource {
         PCMXKMLDTO dto = pcmxkmlMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+
     @ApiOperation(value = "createBatch", tags = {"PCMXKML" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmxkmls/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PCMXKMLDTO> pcmxkmldtos) {
@@ -129,6 +130,7 @@ public class PCMXKMLResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMXKML-Save-all')")
     @ApiOperation(value = "Save", tags = {"PCMXKML" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmxkmls/save")
     public ResponseEntity<Boolean> save(@RequestBody PCMXKMLDTO pcmxkmldto) {
@@ -145,6 +147,7 @@ public class PCMXKMLResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMXKML-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"PCMXKML" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmxkmls/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PCMXKMLDTO pcmxkmldto) {
@@ -154,13 +157,14 @@ public class PCMXKMLResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMXKML-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"PCMXKML" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmxkmls/getdraft")
     public ResponseEntity<PCMXKMLDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(pcmxkmlMapping.toDto(pcmxkmlService.getDraft(new PCMXKML())));
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMXKML-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMXKML-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PCMXKML" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pcmxkmls/fetchdefault")
 	public ResponseEntity<List<PCMXKMLDTO>> fetchDefault(PCMXKMLSearchContext context) {
@@ -173,7 +177,7 @@ public class PCMXKMLResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMXKML-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMXKML-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PCMXKML" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pcmxkmls/searchdefault")
 	public ResponseEntity<Page<PCMXKMLDTO>> searchDefault(@RequestBody PCMXKMLSearchContext context) {
@@ -182,7 +186,7 @@ public class PCMXKMLResource {
                 .body(new PageImpl(pcmxkmlMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMXKML-CurND-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMXKML-CurND-all')")
 	@ApiOperation(value = "fetch当前年度", tags = {"PCMXKML" } ,notes = "fetch当前年度")
     @RequestMapping(method= RequestMethod.GET , value="/pcmxkmls/fetchcurnd")
 	public ResponseEntity<List<PCMXKMLDTO>> fetchCurND(PCMXKMLSearchContext context) {
@@ -195,7 +199,7 @@ public class PCMXKMLResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMXKML-CurND-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMXKML-CurND-all')")
 	@ApiOperation(value = "search当前年度", tags = {"PCMXKML" } ,notes = "search当前年度")
     @RequestMapping(method= RequestMethod.POST , value="/pcmxkmls/searchcurnd")
 	public ResponseEntity<Page<PCMXKMLDTO>> searchCurND(@RequestBody PCMXKMLSearchContext context) {
@@ -205,12 +209,6 @@ public class PCMXKMLResource {
 	}
 
 
-    /**
-     * 用户权限校验
-     * @return
-     */
-	public PCMXKML getEntity(){
-        return new PCMXKML();
-    }
-
 }
+
+

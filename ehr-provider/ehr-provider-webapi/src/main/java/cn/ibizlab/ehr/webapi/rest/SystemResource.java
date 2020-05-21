@@ -50,11 +50,14 @@ public class SystemResource {
 
     @Autowired
     @Lazy
-    private SystemMapping systemMapping;
+    public SystemMapping systemMapping;
+
+    public SystemDTO permissionDTO=new SystemDTO();
 
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-System-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"System" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/systems/getdraft")
     public ResponseEntity<SystemDTO> getDraft() {
@@ -64,7 +67,7 @@ public class SystemResource {
 
 
 
-    @PreAuthorize("hasPermission(#system_id,'Remove',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#system_id,'Remove',{'Sql',this.systemMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"System" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/systems/{system_id}")
     @Transactional
@@ -82,6 +85,7 @@ public class SystemResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-System-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"System" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/systems/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody SystemDTO systemdto) {
@@ -91,6 +95,7 @@ public class SystemResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-System-Save-all')")
     @ApiOperation(value = "Save", tags = {"System" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/systems/save")
     public ResponseEntity<Boolean> save(@RequestBody SystemDTO systemdto) {
@@ -107,7 +112,7 @@ public class SystemResource {
 
 
 
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.systemMapping,#systemdto})")
     @ApiOperation(value = "Create", tags = {"System" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/systems")
     @Transactional
@@ -117,7 +122,7 @@ public class SystemResource {
         SystemDTO dto = systemMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+
     @ApiOperation(value = "createBatch", tags = {"System" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/systems/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<SystemDTO> systemdtos) {
@@ -128,7 +133,7 @@ public class SystemResource {
 
 
 
-    @PreAuthorize("hasPermission(#system_id,'Get',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#system_id,'Get',{'Sql',this.systemMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"System" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/systems/{system_id}")
     public ResponseEntity<SystemDTO> get(@PathVariable("system_id") String system_id) {
@@ -140,7 +145,7 @@ public class SystemResource {
 
 
 
-    @PreAuthorize("hasPermission(#system_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#system_id,'Update',{'Sql',this.systemMapping,#systemdto})")
     @ApiOperation(value = "Update", tags = {"System" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/systems/{system_id}")
     @Transactional
@@ -152,7 +157,6 @@ public class SystemResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#system_id,'Update',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "UpdateBatch", tags = {"System" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/systems/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<SystemDTO> systemdtos) {
@@ -160,7 +164,7 @@ public class SystemResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-System-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-System-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"System" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/systems/fetchdefault")
 	public ResponseEntity<List<SystemDTO>> fetchDefault(SystemSearchContext context) {
@@ -173,7 +177,7 @@ public class SystemResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-System-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-System-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"System" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/systems/searchdefault")
 	public ResponseEntity<Page<SystemDTO>> searchDefault(@RequestBody SystemSearchContext context) {
@@ -183,12 +187,6 @@ public class SystemResource {
 	}
 
 
-    /**
-     * 用户权限校验
-     * @return
-     */
-	public System getEntity(){
-        return new System();
-    }
-
 }
+
+

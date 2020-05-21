@@ -50,12 +50,14 @@ public class PVPartResource {
 
     @Autowired
     @Lazy
-    private PVPartMapping pvpartMapping;
+    public PVPartMapping pvpartMapping;
+
+    public PVPartDTO permissionDTO=new PVPartDTO();
 
 
 
 
-    @PreAuthorize("hasPermission(#pvpart_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#pvpart_id,'Update',{'Sql',this.pvpartMapping,#pvpartdto})")
     @ApiOperation(value = "Update", tags = {"PVPart" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pvparts/{pvpart_id}")
     @Transactional
@@ -67,7 +69,6 @@ public class PVPartResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#pvpart_id,'Update',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "UpdateBatch", tags = {"PVPart" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pvparts/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PVPartDTO> pvpartdtos) {
@@ -78,7 +79,7 @@ public class PVPartResource {
 
 
 
-    @PreAuthorize("hasPermission(#pvpart_id,'Get',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#pvpart_id,'Get',{'Sql',this.pvpartMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"PVPart" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/pvparts/{pvpart_id}")
     public ResponseEntity<PVPartDTO> get(@PathVariable("pvpart_id") String pvpart_id) {
@@ -90,6 +91,7 @@ public class PVPartResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PVPart-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"PVPart" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/pvparts/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PVPartDTO pvpartdto) {
@@ -99,6 +101,7 @@ public class PVPartResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PVPart-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"PVPart" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/pvparts/getdraft")
     public ResponseEntity<PVPartDTO> getDraft() {
@@ -108,6 +111,7 @@ public class PVPartResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PVPart-Save-all')")
     @ApiOperation(value = "Save", tags = {"PVPart" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/pvparts/save")
     public ResponseEntity<Boolean> save(@RequestBody PVPartDTO pvpartdto) {
@@ -124,7 +128,7 @@ public class PVPartResource {
 
 
 
-    @PreAuthorize("hasPermission(#pvpart_id,'Remove',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#pvpart_id,'Remove',{'Sql',this.pvpartMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"PVPart" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pvparts/{pvpart_id}")
     @Transactional
@@ -142,7 +146,7 @@ public class PVPartResource {
 
 
 
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.pvpartMapping,#pvpartdto})")
     @ApiOperation(value = "Create", tags = {"PVPart" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/pvparts")
     @Transactional
@@ -152,7 +156,7 @@ public class PVPartResource {
         PVPartDTO dto = pvpartMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+
     @ApiOperation(value = "createBatch", tags = {"PVPart" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pvparts/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PVPartDTO> pvpartdtos) {
@@ -160,7 +164,7 @@ public class PVPartResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PVPart-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PVPart-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PVPart" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pvparts/fetchdefault")
 	public ResponseEntity<List<PVPartDTO>> fetchDefault(PVPartSearchContext context) {
@@ -173,7 +177,7 @@ public class PVPartResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PVPart-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PVPart-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PVPart" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pvparts/searchdefault")
 	public ResponseEntity<Page<PVPartDTO>> searchDefault(@RequestBody PVPartSearchContext context) {
@@ -182,7 +186,7 @@ public class PVPartResource {
                 .body(new PageImpl(pvpartMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PVPart-CurPV-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PVPart-CurPV-all')")
 	@ApiOperation(value = "fetch当前门户视图", tags = {"PVPart" } ,notes = "fetch当前门户视图")
     @RequestMapping(method= RequestMethod.GET , value="/pvparts/fetchcurpv")
 	public ResponseEntity<List<PVPartDTO>> fetchCurPV(PVPartSearchContext context) {
@@ -195,7 +199,7 @@ public class PVPartResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PVPart-CurPV-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PVPart-CurPV-all')")
 	@ApiOperation(value = "search当前门户视图", tags = {"PVPart" } ,notes = "search当前门户视图")
     @RequestMapping(method= RequestMethod.POST , value="/pvparts/searchcurpv")
 	public ResponseEntity<Page<PVPartDTO>> searchCurPV(@RequestBody PVPartSearchContext context) {
@@ -205,12 +209,6 @@ public class PVPartResource {
 	}
 
 
-    /**
-     * 用户权限校验
-     * @return
-     */
-	public PVPart getEntity(){
-        return new PVPart();
-    }
-
 }
+
+

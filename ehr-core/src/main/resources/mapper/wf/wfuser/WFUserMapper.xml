@@ -4,24 +4,6 @@
 <mapper	namespace="cn.ibizlab.ehr.core.wf.mapper.WFUserMapper">
 
     <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
-	<select id="selectById"  resultMap="WFUserResultMap" databaseId="db2">
-        <![CDATA[select * from v_wfuser t1     where  wfuserid=#{id}]]>
-    </select>
-	<select id="selectById"  resultMap="WFUserResultMap" databaseId="mysql">
-        <![CDATA[select * from v_wfuser t1     where  wfuserid=#{id}]]>
-    </select>
-	<select id="selectById"  resultMap="WFUserResultMap" databaseId="oracle">
-        <![CDATA[select * from v_wfuser t1     where  wfuserid=#{id}]]>
-    </select>
-	<select id="selectById"  resultMap="WFUserResultMap" databaseId="postgresql">
-        <![CDATA[select * from v_wfuser t1     where  wfuserid=#{id}]]>
-    </select>
-	<select id="selectById"  resultMap="WFUserResultMap" databaseId="ppas">
-        <![CDATA[select * from v_wfuser t1     where  wfuserid=#{id}]]>
-    </select>
-	<select id="selectById"  resultMap="WFUserResultMap" databaseId="sqlserver">
-        <![CDATA[select * from v_wfuser t1     where  wfuserid=#{id}]]>
-    </select>
 
     <!--通过mybatis将查询结果注入到entity中,通过配置autoMapping="true"由mybatis自动处理映射关系 -->
     <resultMap id="WFUserResultMap" type="cn.ibizlab.ehr.core.wf.domain.WFUser" autoMapping="true">

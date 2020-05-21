@@ -50,12 +50,14 @@ public class WFVersionResource {
 
     @Autowired
     @Lazy
-    private WFVersionMapping wfversionMapping;
+    public WFVersionMapping wfversionMapping;
+
+    public WFVersionDTO permissionDTO=new WFVersionDTO();
 
 
 
 
-    @PreAuthorize("hasPermission(#wfversion_id,'Get',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#wfversion_id,'Get',{'Sql',this.wfversionMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"WFVersion" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/wfversions/{wfversion_id}")
     public ResponseEntity<WFVersionDTO> get(@PathVariable("wfversion_id") String wfversion_id) {
@@ -67,7 +69,7 @@ public class WFVersionResource {
 
 
 
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.wfversionMapping,#wfversiondto})")
     @ApiOperation(value = "Create", tags = {"WFVersion" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/wfversions")
     @Transactional
@@ -77,7 +79,7 @@ public class WFVersionResource {
         WFVersionDTO dto = wfversionMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+
     @ApiOperation(value = "createBatch", tags = {"WFVersion" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/wfversions/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<WFVersionDTO> wfversiondtos) {
@@ -88,6 +90,7 @@ public class WFVersionResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFVersion-Save-all')")
     @ApiOperation(value = "Save", tags = {"WFVersion" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/wfversions/save")
     public ResponseEntity<Boolean> save(@RequestBody WFVersionDTO wfversiondto) {
@@ -104,6 +107,7 @@ public class WFVersionResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFVersion-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"WFVersion" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/wfversions/getdraft")
     public ResponseEntity<WFVersionDTO> getDraft() {
@@ -113,7 +117,7 @@ public class WFVersionResource {
 
 
 
-    @PreAuthorize("hasPermission(#wfversion_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#wfversion_id,'Update',{'Sql',this.wfversionMapping,#wfversiondto})")
     @ApiOperation(value = "Update", tags = {"WFVersion" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/wfversions/{wfversion_id}")
     @Transactional
@@ -125,7 +129,6 @@ public class WFVersionResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#wfversion_id,'Update',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "UpdateBatch", tags = {"WFVersion" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/wfversions/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<WFVersionDTO> wfversiondtos) {
@@ -136,7 +139,7 @@ public class WFVersionResource {
 
 
 
-    @PreAuthorize("hasPermission(#wfversion_id,'Remove',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#wfversion_id,'Remove',{'Sql',this.wfversionMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"WFVersion" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/wfversions/{wfversion_id}")
     @Transactional
@@ -154,13 +157,14 @@ public class WFVersionResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFVersion-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"WFVersion" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/wfversions/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody WFVersionDTO wfversiondto) {
         return  ResponseEntity.status(HttpStatus.OK).body(wfversionService.checkKey(wfversionMapping.toDomain(wfversiondto)));
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFVersion-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFVersion-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"WFVersion" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/wfversions/fetchdefault")
 	public ResponseEntity<List<WFVersionDTO>> fetchDefault(WFVersionSearchContext context) {
@@ -173,7 +177,7 @@ public class WFVersionResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFVersion-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFVersion-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"WFVersion" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/wfversions/searchdefault")
 	public ResponseEntity<Page<WFVersionDTO>> searchDefault(@RequestBody WFVersionSearchContext context) {
@@ -183,12 +187,6 @@ public class WFVersionResource {
 	}
 
 
-    /**
-     * 用户权限校验
-     * @return
-     */
-	public WFVersion getEntity(){
-        return new WFVersion();
-    }
-
 }
+
+

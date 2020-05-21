@@ -50,12 +50,14 @@ public class SALSALARYDETAILResource {
 
     @Autowired
     @Lazy
-    private SALSALARYDETAILMapping salsalarydetailMapping;
+    public SALSALARYDETAILMapping salsalarydetailMapping;
+
+    public SALSALARYDETAILDTO permissionDTO=new SALSALARYDETAILDTO();
 
 
 
 
-    @PreAuthorize("hasPermission(#salsalarydetail_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#salsalarydetail_id,'Update',{'Sql',this.salsalarydetailMapping,#salsalarydetaildto})")
     @ApiOperation(value = "Update", tags = {"SALSALARYDETAIL" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/salsalarydetails/{salsalarydetail_id}")
     @Transactional
@@ -67,7 +69,6 @@ public class SALSALARYDETAILResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#salsalarydetail_id,'Update',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "UpdateBatch", tags = {"SALSALARYDETAIL" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/salsalarydetails/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<SALSALARYDETAILDTO> salsalarydetaildtos) {
@@ -78,7 +79,7 @@ public class SALSALARYDETAILResource {
 
 
 
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.salsalarydetailMapping,#salsalarydetaildto})")
     @ApiOperation(value = "Create", tags = {"SALSALARYDETAIL" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/salsalarydetails")
     @Transactional
@@ -88,7 +89,7 @@ public class SALSALARYDETAILResource {
         SALSALARYDETAILDTO dto = salsalarydetailMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+
     @ApiOperation(value = "createBatch", tags = {"SALSALARYDETAIL" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/salsalarydetails/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<SALSALARYDETAILDTO> salsalarydetaildtos) {
@@ -99,6 +100,7 @@ public class SALSALARYDETAILResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALSALARYDETAIL-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"SALSALARYDETAIL" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/salsalarydetails/getdraft")
     public ResponseEntity<SALSALARYDETAILDTO> getDraft() {
@@ -108,7 +110,7 @@ public class SALSALARYDETAILResource {
 
 
 
-    @PreAuthorize("hasPermission(#salsalarydetail_id,'Remove',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#salsalarydetail_id,'Remove',{'Sql',this.salsalarydetailMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"SALSALARYDETAIL" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/salsalarydetails/{salsalarydetail_id}")
     @Transactional
@@ -126,7 +128,7 @@ public class SALSALARYDETAILResource {
 
 
 
-    @PreAuthorize("hasPermission(#salsalarydetail_id,'Get',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#salsalarydetail_id,'Get',{'Sql',this.salsalarydetailMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"SALSALARYDETAIL" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/salsalarydetails/{salsalarydetail_id}")
     public ResponseEntity<SALSALARYDETAILDTO> get(@PathVariable("salsalarydetail_id") String salsalarydetail_id) {
@@ -138,6 +140,7 @@ public class SALSALARYDETAILResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALSALARYDETAIL-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"SALSALARYDETAIL" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/salsalarydetails/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody SALSALARYDETAILDTO salsalarydetaildto) {
@@ -147,6 +150,7 @@ public class SALSALARYDETAILResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALSALARYDETAIL-Save-all')")
     @ApiOperation(value = "Save", tags = {"SALSALARYDETAIL" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/salsalarydetails/save")
     public ResponseEntity<Boolean> save(@RequestBody SALSALARYDETAILDTO salsalarydetaildto) {
@@ -160,7 +164,7 @@ public class SALSALARYDETAILResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALSALARYDETAIL-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALSALARYDETAIL-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"SALSALARYDETAIL" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/salsalarydetails/fetchdefault")
 	public ResponseEntity<List<SALSALARYDETAILDTO>> fetchDefault(SALSALARYDETAILSearchContext context) {
@@ -173,7 +177,7 @@ public class SALSALARYDETAILResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALSALARYDETAIL-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALSALARYDETAIL-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"SALSALARYDETAIL" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/salsalarydetails/searchdefault")
 	public ResponseEntity<Page<SALSALARYDETAILDTO>> searchDefault(@RequestBody SALSALARYDETAILSearchContext context) {
@@ -183,12 +187,6 @@ public class SALSALARYDETAILResource {
 	}
 
 
-    /**
-     * 用户权限校验
-     * @return
-     */
-	public SALSALARYDETAIL getEntity(){
-        return new SALSALARYDETAIL();
-    }
-
 }
+
+

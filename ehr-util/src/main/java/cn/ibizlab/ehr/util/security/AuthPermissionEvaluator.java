@@ -6,7 +6,9 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.mongodb.QueryBuilder;
 import cn.ibizlab.ehr.util.annotation.DEField;
+import cn.ibizlab.ehr.util.domain.DTOBase;
 import cn.ibizlab.ehr.util.domain.EntityBase;
+import cn.ibizlab.ehr.util.domain.MappingBase;
 import cn.ibizlab.ehr.util.enums.DEPredefinedFieldType;
 import cn.ibizlab.ehr.util.filter.QueryBuildContext;
 import cn.ibizlab.ehr.util.filter.QueryWrapperContext;
@@ -72,8 +74,10 @@ public class AuthPermissionEvaluator implements PermissionEvaluator {
             return true;
 
         List paramList = (ArrayList) params;
-        EntityBase  entity = (EntityBase) paramList.get(0);
-        String deStorageMode= (String) paramList.get(1);
+        String deStorageMode= (String) paramList.get(0);
+        MappingBase mappingBase= (MappingBase) paramList.get(1);
+        DTOBase dtoBase = (DTOBase) paramList.get(2);
+        EntityBase entity = (EntityBase) mappingBase.toDomain(dtoBase);
 
         if (StringUtils.isEmpty(entity))
             return false;
@@ -82,20 +86,19 @@ public class AuthPermissionEvaluator implements PermissionEvaluator {
         JSONObject permissionList=userPermission.getJSONObject("entities");
         String entityName = entity.getClass().getSimpleName();
 
+        //拥有全部数据访问权限时，则跳过权限检查
+        if(isAllData(permissionList,entityName,action)){
+            return true;
+        }
+        //检查是否有操作权限[create.update.delete.read]
+        if(!validDEActionHasPermission(permissionList,entityName,action)){
+            return false;
+        }
         if(action.equalsIgnoreCase("create")){
-            return validDEActionHasPermission(permissionList,entityName,action);
+            return createActionPermissionValid(permissionList,entity, action);
         }
         else{
-            //拥有全部数据访问权限时，则跳过权限检查
-            if(isAllData(permissionList,entityName,action)){
-                return true;
-            }
-            //检查是否有操作权限[create.update.delete.read]
-            if(!validDEActionHasPermission(permissionList,entityName,action)){
-                return false;
-            }
-            //检查是否有数据权限
-            return deActionPermissionValidRouter(deStorageMode, entity , action , srfKey, permissionList);
+            return otherActionPermissionValidRouter(deStorageMode, entity , action , srfKey, permissionList);
         }
     }
 
@@ -113,7 +116,10 @@ public class AuthPermissionEvaluator implements PermissionEvaluator {
         if(!permissionList.containsKey(entityName))
             return false;
         JSONObject entity=permissionList.getJSONObject(entityName);
-        if(entity.containsKey(action) && entity.getJSONArray(action).contains("ALL"))
+        if(!entity.containsKey(DEActionType))
+            return false;
+        JSONObject dataRange=entity.getJSONObject(DEActionType);//获取实体行为对应的数据范围
+        if(dataRange.containsKey(action) && dataRange.getJSONArray(action).contains("all"))
             return true;
 
         return false;
@@ -144,6 +150,81 @@ public class AuthPermissionEvaluator implements PermissionEvaluator {
         return hasPermission;
     }
 
+    /**
+     * 新建行为校验
+     * @param permissionList
+     * @param entity
+     * @param action
+     * @return
+     */
+    private boolean createActionPermissionValid(JSONObject permissionList,EntityBase entity, String action){
+
+        Map<String,String> permissionField=getPermissionField(entity);//获取组织、部门预置属性
+        String keyField=permissionField.get(keyFieldTag);
+        if(StringUtils.isEmpty(keyField)){
+            throw new RuntimeException("权限校验失败，请检查当前实体中是否已经配置主键属性!");
+        }
+
+        //获取权限表达式[全部数据、本单位、本部门等]
+        JSONObject entityObj=permissionList.getJSONObject(entity.getClass().getSimpleName());//获取实体
+        JSONObject permissionType= entityObj.getJSONObject(DEActionType);
+        JSONArray dataRangeList=permissionType.getJSONArray(action);//行为：read；insert...
+        if(dataRangeList.size()==0)
+            return false;
+
+        boolean isCreate=true;
+
+        String orgField=permissionField.get("orgfield");
+        String orgDeptField=permissionField.get("orgsecfield");
+        String createManField=permissionField.get("createmanfield");
+        AuthenticationUser authenticationUser = AuthenticationUser.getAuthenticationUser();
+        Map<String, Set<String>> userInfo = authenticationUser.getOrgInfo();
+        Set<String> orgParent = userInfo.get("parentorg");
+        Set<String> orgChild = userInfo.get("suborg");
+        Set<String> orgDeptParent = userInfo.get("parentdept");
+        Set<String> orgDeptChild = userInfo.get("subdept");
+
+        Object orgFieldValue=entity.get(orgField);
+        Object orgDeptFieldValue=entity.get(orgDeptField);
+        Object crateManFieldValue=entity.get(createManField);
+
+        Set<String> userOrg = new HashSet<>();
+        Set<String> userOrgDept = new HashSet<>();
+
+        for(int a=0;a<dataRangeList.size();a++){
+            String permissionCond=dataRangeList.getString(a);//权限配置条件
+            if(permissionCond.equals("curorg")){   //本单位
+                userOrg.add(authenticationUser.getOrgid());
+            }
+            else if(permissionCond.equals("porg")){//上级单位
+                userOrg.addAll(orgParent);
+            }
+            else if(permissionCond.equals("sorg")){//下级单位
+                userOrg.addAll(orgChild);
+            }
+            else if(permissionCond.equals("curorgdept")){//本部门
+                userOrgDept.add(authenticationUser.getMdeptid());
+            }
+            else if(permissionCond.equals("porgdept")){//上级部门
+                userOrgDept.addAll(orgDeptParent);
+            }
+            else if(permissionCond.equals("sorgdept")){//下级部门
+                userOrgDept.addAll(orgDeptChild);
+            }
+        }
+
+        if(!ObjectUtils.isEmpty(orgFieldValue) && !userOrg.contains(orgFieldValue)){
+            return false;
+        }
+        if(!ObjectUtils.isEmpty(orgDeptFieldValue) && !userOrgDept.contains(orgDeptFieldValue)){
+            return false;
+        }
+        if(!ObjectUtils.isEmpty(crateManFieldValue) && !crateManFieldValue.equals(authenticationUser.getUserid())){
+            return false;
+        }
+
+        return isCreate;
+    }
 
     /**
      * 根据实体存储模式，进行鉴权
@@ -154,7 +235,7 @@ public class AuthPermissionEvaluator implements PermissionEvaluator {
      * @param permissionList
      * @return
      */
-    private boolean deActionPermissionValidRouter(String deStorageMode, EntityBase entity , String action , Object srfKey , JSONObject permissionList){
+    private boolean otherActionPermissionValidRouter(String deStorageMode, EntityBase entity , String action , Object srfKey , JSONObject permissionList){
 
         if(deStorageMode.equalsIgnoreCase("sql")){
             return sqlPermissionValid(entity , action , srfKey, permissionList);

@@ -50,12 +50,14 @@ public class LoginLogResource {
 
     @Autowired
     @Lazy
-    private LoginLogMapping loginlogMapping;
+    public LoginLogMapping loginlogMapping;
+
+    public LoginLogDTO permissionDTO=new LoginLogDTO();
 
 
 
 
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.loginlogMapping,#loginlogdto})")
     @ApiOperation(value = "Create", tags = {"LoginLog" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/loginlogs")
     @Transactional
@@ -65,7 +67,7 @@ public class LoginLogResource {
         LoginLogDTO dto = loginlogMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+
     @ApiOperation(value = "createBatch", tags = {"LoginLog" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/loginlogs/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<LoginLogDTO> loginlogdtos) {
@@ -76,6 +78,7 @@ public class LoginLogResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-LoginLog-Save-all')")
     @ApiOperation(value = "Save", tags = {"LoginLog" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/loginlogs/save")
     public ResponseEntity<Boolean> save(@RequestBody LoginLogDTO loginlogdto) {
@@ -92,6 +95,7 @@ public class LoginLogResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-LoginLog-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"LoginLog" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/loginlogs/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody LoginLogDTO loginlogdto) {
@@ -101,6 +105,7 @@ public class LoginLogResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-LoginLog-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"LoginLog" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/loginlogs/getdraft")
     public ResponseEntity<LoginLogDTO> getDraft() {
@@ -110,7 +115,7 @@ public class LoginLogResource {
 
 
 
-    @PreAuthorize("hasPermission(#loginlog_id,'Get',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#loginlog_id,'Get',{'Sql',this.loginlogMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"LoginLog" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/loginlogs/{loginlog_id}")
     public ResponseEntity<LoginLogDTO> get(@PathVariable("loginlog_id") String loginlog_id) {
@@ -122,7 +127,7 @@ public class LoginLogResource {
 
 
 
-    @PreAuthorize("hasPermission(#loginlog_id,'Remove',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#loginlog_id,'Remove',{'Sql',this.loginlogMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"LoginLog" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/loginlogs/{loginlog_id}")
     @Transactional
@@ -140,7 +145,7 @@ public class LoginLogResource {
 
 
 
-    @PreAuthorize("hasPermission(#loginlog_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#loginlog_id,'Update',{'Sql',this.loginlogMapping,#loginlogdto})")
     @ApiOperation(value = "Update", tags = {"LoginLog" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/loginlogs/{loginlog_id}")
     @Transactional
@@ -152,7 +157,6 @@ public class LoginLogResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#loginlog_id,'Update',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "UpdateBatch", tags = {"LoginLog" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/loginlogs/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<LoginLogDTO> loginlogdtos) {
@@ -160,7 +164,7 @@ public class LoginLogResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-LoginLog-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-LoginLog-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"LoginLog" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/loginlogs/fetchdefault")
 	public ResponseEntity<List<LoginLogDTO>> fetchDefault(LoginLogSearchContext context) {
@@ -173,7 +177,7 @@ public class LoginLogResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-LoginLog-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-LoginLog-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"LoginLog" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/loginlogs/searchdefault")
 	public ResponseEntity<Page<LoginLogDTO>> searchDefault(@RequestBody LoginLogSearchContext context) {
@@ -183,12 +187,6 @@ public class LoginLogResource {
 	}
 
 
-    /**
-     * 用户权限校验
-     * @return
-     */
-	public LoginLog getEntity(){
-        return new LoginLog();
-    }
-
 }
+
+

@@ -50,11 +50,14 @@ public class WFActionResource {
 
     @Autowired
     @Lazy
-    private WFActionMapping wfactionMapping;
+    public WFActionMapping wfactionMapping;
+
+    public WFActionDTO permissionDTO=new WFActionDTO();
 
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFAction-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"WFAction" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/wfactions/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody WFActionDTO wfactiondto) {
@@ -64,6 +67,7 @@ public class WFActionResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFAction-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"WFAction" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/wfactions/getdraft")
     public ResponseEntity<WFActionDTO> getDraft() {
@@ -73,7 +77,7 @@ public class WFActionResource {
 
 
 
-    @PreAuthorize("hasPermission(#wfaction_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#wfaction_id,'Update',{'Sql',this.wfactionMapping,#wfactiondto})")
     @ApiOperation(value = "Update", tags = {"WFAction" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/wfactions/{wfaction_id}")
     @Transactional
@@ -85,7 +89,6 @@ public class WFActionResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#wfaction_id,'Update',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "UpdateBatch", tags = {"WFAction" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/wfactions/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<WFActionDTO> wfactiondtos) {
@@ -96,6 +99,7 @@ public class WFActionResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFAction-Save-all')")
     @ApiOperation(value = "Save", tags = {"WFAction" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/wfactions/save")
     public ResponseEntity<Boolean> save(@RequestBody WFActionDTO wfactiondto) {
@@ -112,7 +116,7 @@ public class WFActionResource {
 
 
 
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.wfactionMapping,#wfactiondto})")
     @ApiOperation(value = "Create", tags = {"WFAction" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/wfactions")
     @Transactional
@@ -122,7 +126,7 @@ public class WFActionResource {
         WFActionDTO dto = wfactionMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+
     @ApiOperation(value = "createBatch", tags = {"WFAction" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/wfactions/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<WFActionDTO> wfactiondtos) {
@@ -133,7 +137,7 @@ public class WFActionResource {
 
 
 
-    @PreAuthorize("hasPermission(#wfaction_id,'Remove',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#wfaction_id,'Remove',{'Sql',this.wfactionMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"WFAction" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/wfactions/{wfaction_id}")
     @Transactional
@@ -151,7 +155,7 @@ public class WFActionResource {
 
 
 
-    @PreAuthorize("hasPermission(#wfaction_id,'Get',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#wfaction_id,'Get',{'Sql',this.wfactionMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"WFAction" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/wfactions/{wfaction_id}")
     public ResponseEntity<WFActionDTO> get(@PathVariable("wfaction_id") String wfaction_id) {
@@ -160,7 +164,7 @@ public class WFActionResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFAction-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFAction-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"WFAction" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/wfactions/fetchdefault")
 	public ResponseEntity<List<WFActionDTO>> fetchDefault(WFActionSearchContext context) {
@@ -173,7 +177,7 @@ public class WFActionResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFAction-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFAction-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"WFAction" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/wfactions/searchdefault")
 	public ResponseEntity<Page<WFActionDTO>> searchDefault(@RequestBody WFActionSearchContext context) {
@@ -183,12 +187,6 @@ public class WFActionResource {
 	}
 
 
-    /**
-     * 用户权限校验
-     * @return
-     */
-	public WFAction getEntity(){
-        return new WFAction();
-    }
-
 }
+
+

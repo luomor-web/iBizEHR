@@ -50,11 +50,14 @@ public class ORMDepEstManResource {
 
     @Autowired
     @Lazy
-    private ORMDepEstManMapping ormdepestmanMapping;
+    public ORMDepEstManMapping ormdepestmanMapping;
+
+    public ORMDepEstManDTO permissionDTO=new ORMDepEstManDTO();
 
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMDepEstMan-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"ORMDepEstMan" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/ormdepestmen/getdraft")
     public ResponseEntity<ORMDepEstManDTO> getDraft() {
@@ -64,6 +67,7 @@ public class ORMDepEstManResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMDepEstMan-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"ORMDepEstMan" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormdepestmen/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody ORMDepEstManDTO ormdepestmandto) {
@@ -73,7 +77,7 @@ public class ORMDepEstManResource {
 
 
 
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.ormdepestmanMapping,#ormdepestmandto})")
     @ApiOperation(value = "Create", tags = {"ORMDepEstMan" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormdepestmen")
     @Transactional
@@ -83,7 +87,7 @@ public class ORMDepEstManResource {
         ORMDepEstManDTO dto = ormdepestmanMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+
     @ApiOperation(value = "createBatch", tags = {"ORMDepEstMan" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormdepestmen/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<ORMDepEstManDTO> ormdepestmandtos) {
@@ -94,7 +98,7 @@ public class ORMDepEstManResource {
 
 
 
-    @PreAuthorize("hasPermission(#ormdepestman_id,'Get',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#ormdepestman_id,'Get',{'Sql',this.ormdepestmanMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"ORMDepEstMan" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/ormdepestmen/{ormdepestman_id}")
     public ResponseEntity<ORMDepEstManDTO> get(@PathVariable("ormdepestman_id") String ormdepestman_id) {
@@ -106,7 +110,7 @@ public class ORMDepEstManResource {
 
 
 
-    @PreAuthorize("hasPermission(#ormdepestman_id,'Remove',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#ormdepestman_id,'Remove',{'Sql',this.ormdepestmanMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"ORMDepEstMan" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/ormdepestmen/{ormdepestman_id}")
     @Transactional
@@ -124,7 +128,7 @@ public class ORMDepEstManResource {
 
 
 
-    @PreAuthorize("hasPermission(#ormdepestman_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#ormdepestman_id,'Update',{'Sql',this.ormdepestmanMapping,#ormdepestmandto})")
     @ApiOperation(value = "Update", tags = {"ORMDepEstMan" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/ormdepestmen/{ormdepestman_id}")
     @Transactional
@@ -136,7 +140,6 @@ public class ORMDepEstManResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#ormdepestman_id,'Update',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "UpdateBatch", tags = {"ORMDepEstMan" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/ormdepestmen/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<ORMDepEstManDTO> ormdepestmandtos) {
@@ -147,6 +150,7 @@ public class ORMDepEstManResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMDepEstMan-Save-all')")
     @ApiOperation(value = "Save", tags = {"ORMDepEstMan" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormdepestmen/save")
     public ResponseEntity<Boolean> save(@RequestBody ORMDepEstManDTO ormdepestmandto) {
@@ -160,7 +164,7 @@ public class ORMDepEstManResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMDepEstMan-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMDepEstMan-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"ORMDepEstMan" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/ormdepestmen/fetchdefault")
 	public ResponseEntity<List<ORMDepEstManDTO>> fetchDefault(ORMDepEstManSearchContext context) {
@@ -173,7 +177,7 @@ public class ORMDepEstManResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMDepEstMan-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMDepEstMan-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"ORMDepEstMan" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/ormdepestmen/searchdefault")
 	public ResponseEntity<Page<ORMDepEstManDTO>> searchDefault(@RequestBody ORMDepEstManSearchContext context) {
@@ -183,12 +187,6 @@ public class ORMDepEstManResource {
 	}
 
 
-    /**
-     * 用户权限校验
-     * @return
-     */
-	public ORMDepEstMan getEntity(){
-        return new ORMDepEstMan();
-    }
-
 }
+
+

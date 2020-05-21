@@ -50,12 +50,14 @@ public class SALSTDGLResource {
 
     @Autowired
     @Lazy
-    private SALSTDGLMapping salstdglMapping;
+    public SALSTDGLMapping salstdglMapping;
+
+    public SALSTDGLDTO permissionDTO=new SALSTDGLDTO();
 
 
 
 
-    @PreAuthorize("hasPermission(#salstdgl_id,'Remove',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#salstdgl_id,'Remove',{'Sql',this.salstdglMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"SALSTDGL" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/salstdgls/{salstdgl_id}")
     @Transactional
@@ -73,7 +75,7 @@ public class SALSTDGLResource {
 
 
 
-    @PreAuthorize("hasPermission(#salstdgl_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#salstdgl_id,'Update',{'Sql',this.salstdglMapping,#salstdgldto})")
     @ApiOperation(value = "Update", tags = {"SALSTDGL" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/salstdgls/{salstdgl_id}")
     @Transactional
@@ -85,7 +87,6 @@ public class SALSTDGLResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#salstdgl_id,'Update',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "UpdateBatch", tags = {"SALSTDGL" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/salstdgls/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<SALSTDGLDTO> salstdgldtos) {
@@ -96,7 +97,7 @@ public class SALSTDGLResource {
 
 
 
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.salstdglMapping,#salstdgldto})")
     @ApiOperation(value = "Create", tags = {"SALSTDGL" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/salstdgls")
     @Transactional
@@ -106,7 +107,7 @@ public class SALSTDGLResource {
         SALSTDGLDTO dto = salstdglMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+
     @ApiOperation(value = "createBatch", tags = {"SALSTDGL" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/salstdgls/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<SALSTDGLDTO> salstdgldtos) {
@@ -117,6 +118,7 @@ public class SALSTDGLResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALSTDGL-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"SALSTDGL" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/salstdgls/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody SALSTDGLDTO salstdgldto) {
@@ -126,6 +128,7 @@ public class SALSTDGLResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALSTDGL-Save-all')")
     @ApiOperation(value = "Save", tags = {"SALSTDGL" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/salstdgls/save")
     public ResponseEntity<Boolean> save(@RequestBody SALSTDGLDTO salstdgldto) {
@@ -142,7 +145,7 @@ public class SALSTDGLResource {
 
 
 
-    @PreAuthorize("hasPermission(#salstdgl_id,'Get',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#salstdgl_id,'Get',{'Sql',this.salstdglMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"SALSTDGL" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/salstdgls/{salstdgl_id}")
     public ResponseEntity<SALSTDGLDTO> get(@PathVariable("salstdgl_id") String salstdgl_id) {
@@ -154,13 +157,14 @@ public class SALSTDGLResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALSTDGL-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"SALSTDGL" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/salstdgls/getdraft")
     public ResponseEntity<SALSTDGLDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(salstdglMapping.toDto(salstdglService.getDraft(new SALSTDGL())));
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALSTDGL-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALSTDGL-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"SALSTDGL" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/salstdgls/fetchdefault")
 	public ResponseEntity<List<SALSTDGLDTO>> fetchDefault(SALSTDGLSearchContext context) {
@@ -173,7 +177,7 @@ public class SALSTDGLResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALSTDGL-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALSTDGL-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"SALSTDGL" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/salstdgls/searchdefault")
 	public ResponseEntity<Page<SALSTDGLDTO>> searchDefault(@RequestBody SALSTDGLSearchContext context) {
@@ -183,12 +187,6 @@ public class SALSTDGLResource {
 	}
 
 
-    /**
-     * 用户权限校验
-     * @return
-     */
-	public SALSTDGL getEntity(){
-        return new SALSTDGL();
-    }
-
 }
+
+

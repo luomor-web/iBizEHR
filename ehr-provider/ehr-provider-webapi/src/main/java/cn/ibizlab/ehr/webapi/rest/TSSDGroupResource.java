@@ -50,11 +50,14 @@ public class TSSDGroupResource {
 
     @Autowired
     @Lazy
-    private TSSDGroupMapping tssdgroupMapping;
+    public TSSDGroupMapping tssdgroupMapping;
+
+    public TSSDGroupDTO permissionDTO=new TSSDGroupDTO();
 
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TSSDGroup-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"TSSDGroup" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/tssdgroups/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody TSSDGroupDTO tssdgroupdto) {
@@ -64,7 +67,7 @@ public class TSSDGroupResource {
 
 
 
-    @PreAuthorize("hasPermission(#tssdgroup_id,'Remove',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#tssdgroup_id,'Remove',{'Sql',this.tssdgroupMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"TSSDGroup" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/tssdgroups/{tssdgroup_id}")
     @Transactional
@@ -82,6 +85,7 @@ public class TSSDGroupResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TSSDGroup-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"TSSDGroup" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/tssdgroups/getdraft")
     public ResponseEntity<TSSDGroupDTO> getDraft() {
@@ -91,7 +95,7 @@ public class TSSDGroupResource {
 
 
 
-    @PreAuthorize("hasPermission(#tssdgroup_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#tssdgroup_id,'Update',{'Sql',this.tssdgroupMapping,#tssdgroupdto})")
     @ApiOperation(value = "Update", tags = {"TSSDGroup" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/tssdgroups/{tssdgroup_id}")
     @Transactional
@@ -103,7 +107,6 @@ public class TSSDGroupResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#tssdgroup_id,'Update',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "UpdateBatch", tags = {"TSSDGroup" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/tssdgroups/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<TSSDGroupDTO> tssdgroupdtos) {
@@ -114,7 +117,7 @@ public class TSSDGroupResource {
 
 
 
-    @PreAuthorize("hasPermission(#tssdgroup_id,'Get',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#tssdgroup_id,'Get',{'Sql',this.tssdgroupMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"TSSDGroup" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/tssdgroups/{tssdgroup_id}")
     public ResponseEntity<TSSDGroupDTO> get(@PathVariable("tssdgroup_id") String tssdgroup_id) {
@@ -126,6 +129,7 @@ public class TSSDGroupResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TSSDGroup-Save-all')")
     @ApiOperation(value = "Save", tags = {"TSSDGroup" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/tssdgroups/save")
     public ResponseEntity<Boolean> save(@RequestBody TSSDGroupDTO tssdgroupdto) {
@@ -142,7 +146,7 @@ public class TSSDGroupResource {
 
 
 
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.tssdgroupMapping,#tssdgroupdto})")
     @ApiOperation(value = "Create", tags = {"TSSDGroup" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/tssdgroups")
     @Transactional
@@ -152,7 +156,7 @@ public class TSSDGroupResource {
         TSSDGroupDTO dto = tssdgroupMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+
     @ApiOperation(value = "createBatch", tags = {"TSSDGroup" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/tssdgroups/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<TSSDGroupDTO> tssdgroupdtos) {
@@ -160,7 +164,7 @@ public class TSSDGroupResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TSSDGroup-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TSSDGroup-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"TSSDGroup" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/tssdgroups/fetchdefault")
 	public ResponseEntity<List<TSSDGroupDTO>> fetchDefault(TSSDGroupSearchContext context) {
@@ -173,7 +177,7 @@ public class TSSDGroupResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TSSDGroup-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TSSDGroup-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"TSSDGroup" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/tssdgroups/searchdefault")
 	public ResponseEntity<Page<TSSDGroupDTO>> searchDefault(@RequestBody TSSDGroupSearchContext context) {
@@ -183,12 +187,6 @@ public class TSSDGroupResource {
 	}
 
 
-    /**
-     * 用户权限校验
-     * @return
-     */
-	public TSSDGroup getEntity(){
-        return new TSSDGroup();
-    }
-
 }
+
+

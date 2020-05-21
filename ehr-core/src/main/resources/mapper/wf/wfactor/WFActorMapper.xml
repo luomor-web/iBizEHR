@@ -4,24 +4,6 @@
 <mapper	namespace="cn.ibizlab.ehr.core.wf.mapper.WFActorMapper">
 
     <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
-	<select id="selectById"  resultMap="WFActorResultMap" databaseId="db2">
-        <![CDATA[select * from v_wfactor t1     where  wfactorid=#{id}]]>
-    </select>
-	<select id="selectById"  resultMap="WFActorResultMap" databaseId="mysql">
-        <![CDATA[select * from v_wfactor t1     where  wfactorid=#{id}]]>
-    </select>
-	<select id="selectById"  resultMap="WFActorResultMap" databaseId="oracle">
-        <![CDATA[select * from v_wfactor t1     where  wfactorid=#{id}]]>
-    </select>
-	<select id="selectById"  resultMap="WFActorResultMap" databaseId="postgresql">
-        <![CDATA[select * from v_wfactor t1     where  wfactorid=#{id}]]>
-    </select>
-	<select id="selectById"  resultMap="WFActorResultMap" databaseId="ppas">
-        <![CDATA[select * from v_wfactor t1     where  wfactorid=#{id}]]>
-    </select>
-	<select id="selectById"  resultMap="WFActorResultMap" databaseId="sqlserver">
-        <![CDATA[select * from v_wfactor t1     where  wfactorid=#{id}]]>
-    </select>
 
     <!--通过mybatis将查询结果注入到entity中,通过配置autoMapping="true"由mybatis自动处理映射关系 -->
     <resultMap id="WFActorResultMap" type="cn.ibizlab.ehr.core.wf.domain.WFActor" autoMapping="true">

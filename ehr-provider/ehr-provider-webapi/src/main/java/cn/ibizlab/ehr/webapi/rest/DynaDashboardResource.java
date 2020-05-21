@@ -50,11 +50,14 @@ public class DynaDashboardResource {
 
     @Autowired
     @Lazy
-    private DynaDashboardMapping dynadashboardMapping;
+    public DynaDashboardMapping dynadashboardMapping;
+
+    public DynaDashboardDTO permissionDTO=new DynaDashboardDTO();
 
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DynaDashboard-Save-all')")
     @ApiOperation(value = "Save", tags = {"DynaDashboard" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/dynadashboards/save")
     public ResponseEntity<Boolean> save(@RequestBody DynaDashboardDTO dynadashboarddto) {
@@ -71,7 +74,7 @@ public class DynaDashboardResource {
 
 
 
-    @PreAuthorize("hasPermission(#dynadashboard_id,'Update',{this.getEntity(),'ServiceApi'})")
+    @PreAuthorize("hasPermission(#dynadashboard_id,'Update',{'ServiceApi',this.dynadashboardMapping,#dynadashboarddto})")
     @ApiOperation(value = "Update", tags = {"DynaDashboard" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/dynadashboards/{dynadashboard_id}")
 
@@ -83,7 +86,6 @@ public class DynaDashboardResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#dynadashboard_id,'Update',{this.getEntity(),'ServiceApi'})")
     @ApiOperation(value = "UpdateBatch", tags = {"DynaDashboard" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/dynadashboards/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<DynaDashboardDTO> dynadashboarddtos) {
@@ -94,7 +96,7 @@ public class DynaDashboardResource {
 
 
 
-    @PreAuthorize("hasPermission(#dynadashboard_id,'Get',{this.getEntity(),'ServiceApi'})")
+    @PreAuthorize("hasPermission(#dynadashboard_id,'Get',{'ServiceApi',this.dynadashboardMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"DynaDashboard" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/dynadashboards/{dynadashboard_id}")
     public ResponseEntity<DynaDashboardDTO> get(@PathVariable("dynadashboard_id") String dynadashboard_id) {
@@ -106,7 +108,7 @@ public class DynaDashboardResource {
 
 
 
-    @PreAuthorize("hasPermission(#dynadashboard_id,'Remove',{this.getEntity(),'ServiceApi'})")
+    @PreAuthorize("hasPermission(#dynadashboard_id,'Remove',{'ServiceApi',this.dynadashboardMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"DynaDashboard" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/dynadashboards/{dynadashboard_id}")
 
@@ -124,6 +126,7 @@ public class DynaDashboardResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DynaDashboard-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"DynaDashboard" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/dynadashboards/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody DynaDashboardDTO dynadashboarddto) {
@@ -133,6 +136,7 @@ public class DynaDashboardResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DynaDashboard-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"DynaDashboard" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/dynadashboards/getdraft")
     public ResponseEntity<DynaDashboardDTO> getDraft() {
@@ -142,7 +146,7 @@ public class DynaDashboardResource {
 
 
 
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'ServiceApi'})")
+    @PreAuthorize("hasPermission('','Create',{'ServiceApi',this.dynadashboardMapping,#dynadashboarddto})")
     @ApiOperation(value = "Create", tags = {"DynaDashboard" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/dynadashboards")
 
@@ -152,7 +156,7 @@ public class DynaDashboardResource {
         DynaDashboardDTO dto = dynadashboardMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'ServiceApi'})")
+
     @ApiOperation(value = "createBatch", tags = {"DynaDashboard" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/dynadashboards/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<DynaDashboardDTO> dynadashboarddtos) {
@@ -160,7 +164,7 @@ public class DynaDashboardResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DynaDashboard-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DynaDashboard-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"DynaDashboard" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/dynadashboards/fetchdefault")
 	public ResponseEntity<List<DynaDashboardDTO>> fetchDefault(DynaDashboardSearchContext context) {
@@ -173,7 +177,7 @@ public class DynaDashboardResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DynaDashboard-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DynaDashboard-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"DynaDashboard" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/dynadashboards/searchdefault")
 	public ResponseEntity<Page<DynaDashboardDTO>> searchDefault(@RequestBody DynaDashboardSearchContext context) {
@@ -183,12 +187,6 @@ public class DynaDashboardResource {
 	}
 
 
-    /**
-     * 用户权限校验
-     * @return
-     */
-	public DynaDashboard getEntity(){
-        return new DynaDashboard();
-    }
-
 }
+
+

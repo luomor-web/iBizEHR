@@ -50,11 +50,14 @@ public class AppCenterResource {
 
     @Autowired
     @Lazy
-    private AppCenterMapping appcenterMapping;
+    public AppCenterMapping appcenterMapping;
+
+    public AppCenterDTO permissionDTO=new AppCenterDTO();
 
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-AppCenter-Save-all')")
     @ApiOperation(value = "Save", tags = {"AppCenter" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/appcenters/save")
     public ResponseEntity<Boolean> save(@RequestBody AppCenterDTO appcenterdto) {
@@ -71,7 +74,7 @@ public class AppCenterResource {
 
 
 
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.appcenterMapping,#appcenterdto})")
     @ApiOperation(value = "Create", tags = {"AppCenter" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/appcenters")
     @Transactional
@@ -81,7 +84,7 @@ public class AppCenterResource {
         AppCenterDTO dto = appcenterMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+
     @ApiOperation(value = "createBatch", tags = {"AppCenter" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/appcenters/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<AppCenterDTO> appcenterdtos) {
@@ -92,7 +95,7 @@ public class AppCenterResource {
 
 
 
-    @PreAuthorize("hasPermission(#appcenter_id,'Remove',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#appcenter_id,'Remove',{'Sql',this.appcenterMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"AppCenter" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/appcenters/{appcenter_id}")
     @Transactional
@@ -110,7 +113,7 @@ public class AppCenterResource {
 
 
 
-    @PreAuthorize("hasPermission(#appcenter_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#appcenter_id,'Update',{'Sql',this.appcenterMapping,#appcenterdto})")
     @ApiOperation(value = "Update", tags = {"AppCenter" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/appcenters/{appcenter_id}")
     @Transactional
@@ -122,7 +125,6 @@ public class AppCenterResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#appcenter_id,'Update',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "UpdateBatch", tags = {"AppCenter" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/appcenters/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<AppCenterDTO> appcenterdtos) {
@@ -133,6 +135,7 @@ public class AppCenterResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-AppCenter-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"AppCenter" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/appcenters/getdraft")
     public ResponseEntity<AppCenterDTO> getDraft() {
@@ -142,7 +145,7 @@ public class AppCenterResource {
 
 
 
-    @PreAuthorize("hasPermission(#appcenter_id,'Get',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#appcenter_id,'Get',{'Sql',this.appcenterMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"AppCenter" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/appcenters/{appcenter_id}")
     public ResponseEntity<AppCenterDTO> get(@PathVariable("appcenter_id") String appcenter_id) {
@@ -154,13 +157,14 @@ public class AppCenterResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-AppCenter-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"AppCenter" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/appcenters/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody AppCenterDTO appcenterdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(appcenterService.checkKey(appcenterMapping.toDomain(appcenterdto)));
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-AppCenter-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-AppCenter-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"AppCenter" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/appcenters/fetchdefault")
 	public ResponseEntity<List<AppCenterDTO>> fetchDefault(AppCenterSearchContext context) {
@@ -173,7 +177,7 @@ public class AppCenterResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-AppCenter-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-AppCenter-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"AppCenter" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/appcenters/searchdefault")
 	public ResponseEntity<Page<AppCenterDTO>> searchDefault(@RequestBody AppCenterSearchContext context) {
@@ -183,12 +187,6 @@ public class AppCenterResource {
 	}
 
 
-    /**
-     * 用户权限校验
-     * @return
-     */
-	public AppCenter getEntity(){
-        return new AppCenter();
-    }
-
 }
+
+

@@ -50,12 +50,14 @@ public class PIMOUTPUTResource {
 
     @Autowired
     @Lazy
-    private PIMOUTPUTMapping pimoutputMapping;
+    public PIMOUTPUTMapping pimoutputMapping;
+
+    public PIMOUTPUTDTO permissionDTO=new PIMOUTPUTDTO();
 
 
 
 
-    @PreAuthorize("hasPermission(#pimoutput_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#pimoutput_id,'Update',{'Sql',this.pimoutputMapping,#pimoutputdto})")
     @ApiOperation(value = "Update", tags = {"PIMOUTPUT" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimoutputs/{pimoutput_id}")
     @Transactional
@@ -67,7 +69,6 @@ public class PIMOUTPUTResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#pimoutput_id,'Update',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "UpdateBatch", tags = {"PIMOUTPUT" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimoutputs/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PIMOUTPUTDTO> pimoutputdtos) {
@@ -78,7 +79,7 @@ public class PIMOUTPUTResource {
 
 
 
-    @PreAuthorize("hasPermission(#pimoutput_id,'Get',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#pimoutput_id,'Get',{'Sql',this.pimoutputMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"PIMOUTPUT" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimoutputs/{pimoutput_id}")
     public ResponseEntity<PIMOUTPUTDTO> get(@PathVariable("pimoutput_id") String pimoutput_id) {
@@ -90,7 +91,7 @@ public class PIMOUTPUTResource {
 
 
 
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.pimoutputMapping,#pimoutputdto})")
     @ApiOperation(value = "Create", tags = {"PIMOUTPUT" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimoutputs")
     @Transactional
@@ -100,7 +101,7 @@ public class PIMOUTPUTResource {
         PIMOUTPUTDTO dto = pimoutputMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+
     @ApiOperation(value = "createBatch", tags = {"PIMOUTPUT" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimoutputs/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PIMOUTPUTDTO> pimoutputdtos) {
@@ -111,6 +112,7 @@ public class PIMOUTPUTResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMOUTPUT-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"PIMOUTPUT" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimoutputs/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PIMOUTPUTDTO pimoutputdto) {
@@ -120,6 +122,7 @@ public class PIMOUTPUTResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMOUTPUT-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"PIMOUTPUT" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimoutputs/getdraft")
     public ResponseEntity<PIMOUTPUTDTO> getDraft() {
@@ -129,7 +132,7 @@ public class PIMOUTPUTResource {
 
 
 
-    @PreAuthorize("hasPermission(#pimoutput_id,'Remove',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#pimoutput_id,'Remove',{'Sql',this.pimoutputMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"PIMOUTPUT" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimoutputs/{pimoutput_id}")
     @Transactional
@@ -147,6 +150,7 @@ public class PIMOUTPUTResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMOUTPUT-Save-all')")
     @ApiOperation(value = "Save", tags = {"PIMOUTPUT" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimoutputs/save")
     public ResponseEntity<Boolean> save(@RequestBody PIMOUTPUTDTO pimoutputdto) {
@@ -160,7 +164,7 @@ public class PIMOUTPUTResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMOUTPUT-CurOrg-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMOUTPUT-CurOrg-all')")
 	@ApiOperation(value = "fetch当前组织范围", tags = {"PIMOUTPUT" } ,notes = "fetch当前组织范围")
     @RequestMapping(method= RequestMethod.GET , value="/pimoutputs/fetchcurorg")
 	public ResponseEntity<List<PIMOUTPUTDTO>> fetchCurOrg(PIMOUTPUTSearchContext context) {
@@ -173,7 +177,7 @@ public class PIMOUTPUTResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMOUTPUT-CurOrg-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMOUTPUT-CurOrg-all')")
 	@ApiOperation(value = "search当前组织范围", tags = {"PIMOUTPUT" } ,notes = "search当前组织范围")
     @RequestMapping(method= RequestMethod.POST , value="/pimoutputs/searchcurorg")
 	public ResponseEntity<Page<PIMOUTPUTDTO>> searchCurOrg(@RequestBody PIMOUTPUTSearchContext context) {
@@ -182,7 +186,7 @@ public class PIMOUTPUTResource {
                 .body(new PageImpl(pimoutputMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMOUTPUT-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMOUTPUT-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PIMOUTPUT" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimoutputs/fetchdefault")
 	public ResponseEntity<List<PIMOUTPUTDTO>> fetchDefault(PIMOUTPUTSearchContext context) {
@@ -195,7 +199,7 @@ public class PIMOUTPUTResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMOUTPUT-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMOUTPUT-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PIMOUTPUT" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pimoutputs/searchdefault")
 	public ResponseEntity<Page<PIMOUTPUTDTO>> searchDefault(@RequestBody PIMOUTPUTSearchContext context) {
@@ -204,7 +208,7 @@ public class PIMOUTPUTResource {
                 .body(new PageImpl(pimoutputMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMOUTPUT-REP_OUTPUT-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMOUTPUT-REP_OUTPUT-all')")
 	@ApiOperation(value = "fetch人均产值", tags = {"PIMOUTPUT" } ,notes = "fetch人均产值")
     @RequestMapping(method= RequestMethod.GET , value="/pimoutputs/fetchrep_output")
 	public ResponseEntity<List<HashMap>> fetchREP_OUTPUT(PIMOUTPUTSearchContext context) {
@@ -216,7 +220,7 @@ public class PIMOUTPUTResource {
                 .body(domains.getContent());
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMOUTPUT-REP_OUTPUT-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMOUTPUT-REP_OUTPUT-all')")
 	@ApiOperation(value = "search人均产值", tags = {"PIMOUTPUT" } ,notes = "search人均产值")
     @RequestMapping(method= RequestMethod.POST , value="/pimoutputs/searchrep_output")
 	public ResponseEntity<Page<HashMap>> searchREP_OUTPUT(@RequestBody PIMOUTPUTSearchContext context) {
@@ -226,12 +230,6 @@ public class PIMOUTPUTResource {
 	}
 
 
-    /**
-     * 用户权限校验
-     * @return
-     */
-	public PIMOUTPUT getEntity(){
-        return new PIMOUTPUT();
-    }
-
 }
+
+

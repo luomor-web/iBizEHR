@@ -50,11 +50,14 @@ public class WXEntAppResource {
 
     @Autowired
     @Lazy
-    private WXEntAppMapping wxentappMapping;
+    public WXEntAppMapping wxentappMapping;
+
+    public WXEntAppDTO permissionDTO=new WXEntAppDTO();
 
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WXEntApp-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"WXEntApp" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/wxentapps/getdraft")
     public ResponseEntity<WXEntAppDTO> getDraft() {
@@ -64,7 +67,7 @@ public class WXEntAppResource {
 
 
 
-    @PreAuthorize("hasPermission(#wxentapp_id,'Remove',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#wxentapp_id,'Remove',{'Sql',this.wxentappMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"WXEntApp" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/wxentapps/{wxentapp_id}")
     @Transactional
@@ -82,7 +85,7 @@ public class WXEntAppResource {
 
 
 
-    @PreAuthorize("hasPermission(#wxentapp_id,'Get',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#wxentapp_id,'Get',{'Sql',this.wxentappMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"WXEntApp" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/wxentapps/{wxentapp_id}")
     public ResponseEntity<WXEntAppDTO> get(@PathVariable("wxentapp_id") String wxentapp_id) {
@@ -94,6 +97,7 @@ public class WXEntAppResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WXEntApp-Save-all')")
     @ApiOperation(value = "Save", tags = {"WXEntApp" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/wxentapps/save")
     public ResponseEntity<Boolean> save(@RequestBody WXEntAppDTO wxentappdto) {
@@ -110,6 +114,7 @@ public class WXEntAppResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WXEntApp-PubMenu-all')")
     @ApiOperation(value = "发布菜单", tags = {"WXEntApp" },  notes = "发布菜单")
 	@RequestMapping(method = RequestMethod.POST, value = "/wxentapps/{wxentapp_id}/pubmenu")
     @Transactional
@@ -123,7 +128,7 @@ public class WXEntAppResource {
 
 
 
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.wxentappMapping,#wxentappdto})")
     @ApiOperation(value = "Create", tags = {"WXEntApp" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/wxentapps")
     @Transactional
@@ -133,7 +138,7 @@ public class WXEntAppResource {
         WXEntAppDTO dto = wxentappMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+
     @ApiOperation(value = "createBatch", tags = {"WXEntApp" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/wxentapps/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<WXEntAppDTO> wxentappdtos) {
@@ -144,7 +149,7 @@ public class WXEntAppResource {
 
 
 
-    @PreAuthorize("hasPermission(#wxentapp_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#wxentapp_id,'Update',{'Sql',this.wxentappMapping,#wxentappdto})")
     @ApiOperation(value = "Update", tags = {"WXEntApp" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/wxentapps/{wxentapp_id}")
     @Transactional
@@ -156,7 +161,6 @@ public class WXEntAppResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#wxentapp_id,'Update',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "UpdateBatch", tags = {"WXEntApp" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/wxentapps/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<WXEntAppDTO> wxentappdtos) {
@@ -167,13 +171,14 @@ public class WXEntAppResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WXEntApp-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"WXEntApp" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/wxentapps/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody WXEntAppDTO wxentappdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(wxentappService.checkKey(wxentappMapping.toDomain(wxentappdto)));
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WXEntApp-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WXEntApp-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"WXEntApp" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/wxentapps/fetchdefault")
 	public ResponseEntity<List<WXEntAppDTO>> fetchDefault(WXEntAppSearchContext context) {
@@ -186,7 +191,7 @@ public class WXEntAppResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WXEntApp-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WXEntApp-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"WXEntApp" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/wxentapps/searchdefault")
 	public ResponseEntity<Page<WXEntAppDTO>> searchDefault(@RequestBody WXEntAppSearchContext context) {
@@ -196,12 +201,6 @@ public class WXEntAppResource {
 	}
 
 
-    /**
-     * 用户权限校验
-     * @return
-     */
-	public WXEntApp getEntity(){
-        return new WXEntApp();
-    }
-
 }
+
+

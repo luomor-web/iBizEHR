@@ -50,12 +50,14 @@ public class OrgUnitCatResource {
 
     @Autowired
     @Lazy
-    private OrgUnitCatMapping orgunitcatMapping;
+    public OrgUnitCatMapping orgunitcatMapping;
+
+    public OrgUnitCatDTO permissionDTO=new OrgUnitCatDTO();
 
 
 
 
-    @PreAuthorize("hasPermission(#orgunitcat_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#orgunitcat_id,'Update',{'Sql',this.orgunitcatMapping,#orgunitcatdto})")
     @ApiOperation(value = "Update", tags = {"OrgUnitCat" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/orgunitcats/{orgunitcat_id}")
     @Transactional
@@ -67,7 +69,6 @@ public class OrgUnitCatResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#orgunitcat_id,'Update',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "UpdateBatch", tags = {"OrgUnitCat" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/orgunitcats/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<OrgUnitCatDTO> orgunitcatdtos) {
@@ -78,7 +79,7 @@ public class OrgUnitCatResource {
 
 
 
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.orgunitcatMapping,#orgunitcatdto})")
     @ApiOperation(value = "Create", tags = {"OrgUnitCat" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/orgunitcats")
     @Transactional
@@ -88,7 +89,7 @@ public class OrgUnitCatResource {
         OrgUnitCatDTO dto = orgunitcatMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+
     @ApiOperation(value = "createBatch", tags = {"OrgUnitCat" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/orgunitcats/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<OrgUnitCatDTO> orgunitcatdtos) {
@@ -99,7 +100,7 @@ public class OrgUnitCatResource {
 
 
 
-    @PreAuthorize("hasPermission(#orgunitcat_id,'Remove',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#orgunitcat_id,'Remove',{'Sql',this.orgunitcatMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"OrgUnitCat" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/orgunitcats/{orgunitcat_id}")
     @Transactional
@@ -117,6 +118,7 @@ public class OrgUnitCatResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrgUnitCat-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"OrgUnitCat" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/orgunitcats/getdraft")
     public ResponseEntity<OrgUnitCatDTO> getDraft() {
@@ -126,6 +128,7 @@ public class OrgUnitCatResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrgUnitCat-Save-all')")
     @ApiOperation(value = "Save", tags = {"OrgUnitCat" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/orgunitcats/save")
     public ResponseEntity<Boolean> save(@RequestBody OrgUnitCatDTO orgunitcatdto) {
@@ -142,6 +145,7 @@ public class OrgUnitCatResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrgUnitCat-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"OrgUnitCat" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/orgunitcats/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody OrgUnitCatDTO orgunitcatdto) {
@@ -151,7 +155,7 @@ public class OrgUnitCatResource {
 
 
 
-    @PreAuthorize("hasPermission(#orgunitcat_id,'Get',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#orgunitcat_id,'Get',{'Sql',this.orgunitcatMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"OrgUnitCat" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/orgunitcats/{orgunitcat_id}")
     public ResponseEntity<OrgUnitCatDTO> get(@PathVariable("orgunitcat_id") String orgunitcat_id) {
@@ -160,7 +164,7 @@ public class OrgUnitCatResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrgUnitCat-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrgUnitCat-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"OrgUnitCat" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/orgunitcats/fetchdefault")
 	public ResponseEntity<List<OrgUnitCatDTO>> fetchDefault(OrgUnitCatSearchContext context) {
@@ -173,7 +177,7 @@ public class OrgUnitCatResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrgUnitCat-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrgUnitCat-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"OrgUnitCat" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/orgunitcats/searchdefault")
 	public ResponseEntity<Page<OrgUnitCatDTO>> searchDefault(@RequestBody OrgUnitCatSearchContext context) {
@@ -183,12 +187,6 @@ public class OrgUnitCatResource {
 	}
 
 
-    /**
-     * 用户权限校验
-     * @return
-     */
-	public OrgUnitCat getEntity(){
-        return new OrgUnitCat();
-    }
-
 }
+
+

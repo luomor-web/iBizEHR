@@ -50,12 +50,14 @@ public class TRMTRAINPLANResource {
 
     @Autowired
     @Lazy
-    private TRMTRAINPLANMapping trmtrainplanMapping;
+    public TRMTRAINPLANMapping trmtrainplanMapping;
+
+    public TRMTRAINPLANDTO permissionDTO=new TRMTRAINPLANDTO();
 
 
 
 
-    @PreAuthorize("hasPermission(#trmtrainplan_id,'Remove',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#trmtrainplan_id,'Remove',{'Sql',this.trmtrainplanMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"TRMTRAINPLAN" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/trmtrainplans/{trmtrainplan_id}")
     @Transactional
@@ -73,6 +75,7 @@ public class TRMTRAINPLANResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMTRAINPLAN-Save-all')")
     @ApiOperation(value = "Save", tags = {"TRMTRAINPLAN" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmtrainplans/save")
     public ResponseEntity<Boolean> save(@RequestBody TRMTRAINPLANDTO trmtrainplandto) {
@@ -89,6 +92,7 @@ public class TRMTRAINPLANResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMTRAINPLAN-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"TRMTRAINPLAN" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/trmtrainplans/getdraft")
     public ResponseEntity<TRMTRAINPLANDTO> getDraft() {
@@ -98,6 +102,7 @@ public class TRMTRAINPLANResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMTRAINPLAN-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"TRMTRAINPLAN" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmtrainplans/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody TRMTRAINPLANDTO trmtrainplandto) {
@@ -107,7 +112,7 @@ public class TRMTRAINPLANResource {
 
 
 
-    @PreAuthorize("hasPermission(#trmtrainplan_id,'Get',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#trmtrainplan_id,'Get',{'Sql',this.trmtrainplanMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"TRMTRAINPLAN" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/trmtrainplans/{trmtrainplan_id}")
     public ResponseEntity<TRMTRAINPLANDTO> get(@PathVariable("trmtrainplan_id") String trmtrainplan_id) {
@@ -119,7 +124,7 @@ public class TRMTRAINPLANResource {
 
 
 
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.trmtrainplanMapping,#trmtrainplandto})")
     @ApiOperation(value = "Create", tags = {"TRMTRAINPLAN" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmtrainplans")
     @Transactional
@@ -129,7 +134,7 @@ public class TRMTRAINPLANResource {
         TRMTRAINPLANDTO dto = trmtrainplanMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+
     @ApiOperation(value = "createBatch", tags = {"TRMTRAINPLAN" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmtrainplans/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<TRMTRAINPLANDTO> trmtrainplandtos) {
@@ -140,7 +145,7 @@ public class TRMTRAINPLANResource {
 
 
 
-    @PreAuthorize("hasPermission(#trmtrainplan_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#trmtrainplan_id,'Update',{'Sql',this.trmtrainplanMapping,#trmtrainplandto})")
     @ApiOperation(value = "Update", tags = {"TRMTRAINPLAN" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/trmtrainplans/{trmtrainplan_id}")
     @Transactional
@@ -152,7 +157,6 @@ public class TRMTRAINPLANResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#trmtrainplan_id,'Update',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "UpdateBatch", tags = {"TRMTRAINPLAN" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/trmtrainplans/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<TRMTRAINPLANDTO> trmtrainplandtos) {
@@ -160,7 +164,7 @@ public class TRMTRAINPLANResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMTRAINPLAN-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMTRAINPLAN-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"TRMTRAINPLAN" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/trmtrainplans/fetchdefault")
 	public ResponseEntity<List<TRMTRAINPLANDTO>> fetchDefault(TRMTRAINPLANSearchContext context) {
@@ -173,7 +177,7 @@ public class TRMTRAINPLANResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMTRAINPLAN-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMTRAINPLAN-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"TRMTRAINPLAN" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/trmtrainplans/searchdefault")
 	public ResponseEntity<Page<TRMTRAINPLANDTO>> searchDefault(@RequestBody TRMTRAINPLANSearchContext context) {
@@ -183,12 +187,6 @@ public class TRMTRAINPLANResource {
 	}
 
 
-    /**
-     * 用户权限校验
-     * @return
-     */
-	public TRMTRAINPLAN getEntity(){
-        return new TRMTRAINPLAN();
-    }
-
 }
+
+

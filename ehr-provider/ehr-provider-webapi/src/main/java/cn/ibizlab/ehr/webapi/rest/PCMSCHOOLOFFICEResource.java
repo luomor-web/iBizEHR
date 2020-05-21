@@ -50,12 +50,14 @@ public class PCMSCHOOLOFFICEResource {
 
     @Autowired
     @Lazy
-    private PCMSCHOOLOFFICEMapping pcmschoolofficeMapping;
+    public PCMSCHOOLOFFICEMapping pcmschoolofficeMapping;
+
+    public PCMSCHOOLOFFICEDTO permissionDTO=new PCMSCHOOLOFFICEDTO();
 
 
 
 
-    @PreAuthorize("hasPermission(#pcmschooloffice_id,'Get',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#pcmschooloffice_id,'Get',{'Sql',this.pcmschoolofficeMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"PCMSCHOOLOFFICE" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmschooloffices/{pcmschooloffice_id}")
     public ResponseEntity<PCMSCHOOLOFFICEDTO> get(@PathVariable("pcmschooloffice_id") String pcmschooloffice_id) {
@@ -67,7 +69,7 @@ public class PCMSCHOOLOFFICEResource {
 
 
 
-    @PreAuthorize("hasPermission(#pcmschooloffice_id,'Remove',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#pcmschooloffice_id,'Remove',{'Sql',this.pcmschoolofficeMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"PCMSCHOOLOFFICE" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmschooloffices/{pcmschooloffice_id}")
     @Transactional
@@ -85,6 +87,7 @@ public class PCMSCHOOLOFFICEResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMSCHOOLOFFICE-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"PCMSCHOOLOFFICE" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmschooloffices/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PCMSCHOOLOFFICEDTO pcmschoolofficedto) {
@@ -94,6 +97,7 @@ public class PCMSCHOOLOFFICEResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMSCHOOLOFFICE-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"PCMSCHOOLOFFICE" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmschooloffices/getdraft")
     public ResponseEntity<PCMSCHOOLOFFICEDTO> getDraft() {
@@ -103,7 +107,7 @@ public class PCMSCHOOLOFFICEResource {
 
 
 
-    @PreAuthorize("hasPermission(#pcmschooloffice_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#pcmschooloffice_id,'Update',{'Sql',this.pcmschoolofficeMapping,#pcmschoolofficedto})")
     @ApiOperation(value = "Update", tags = {"PCMSCHOOLOFFICE" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmschooloffices/{pcmschooloffice_id}")
     @Transactional
@@ -115,7 +119,6 @@ public class PCMSCHOOLOFFICEResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#pcmschooloffice_id,'Update',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "UpdateBatch", tags = {"PCMSCHOOLOFFICE" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmschooloffices/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PCMSCHOOLOFFICEDTO> pcmschoolofficedtos) {
@@ -126,6 +129,7 @@ public class PCMSCHOOLOFFICEResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMSCHOOLOFFICE-Save-all')")
     @ApiOperation(value = "Save", tags = {"PCMSCHOOLOFFICE" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmschooloffices/save")
     public ResponseEntity<Boolean> save(@RequestBody PCMSCHOOLOFFICEDTO pcmschoolofficedto) {
@@ -142,7 +146,7 @@ public class PCMSCHOOLOFFICEResource {
 
 
 
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.pcmschoolofficeMapping,#pcmschoolofficedto})")
     @ApiOperation(value = "Create", tags = {"PCMSCHOOLOFFICE" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmschooloffices")
     @Transactional
@@ -152,7 +156,7 @@ public class PCMSCHOOLOFFICEResource {
         PCMSCHOOLOFFICEDTO dto = pcmschoolofficeMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+
     @ApiOperation(value = "createBatch", tags = {"PCMSCHOOLOFFICE" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmschooloffices/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PCMSCHOOLOFFICEDTO> pcmschoolofficedtos) {
@@ -160,7 +164,7 @@ public class PCMSCHOOLOFFICEResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMSCHOOLOFFICE-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMSCHOOLOFFICE-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PCMSCHOOLOFFICE" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pcmschooloffices/fetchdefault")
 	public ResponseEntity<List<PCMSCHOOLOFFICEDTO>> fetchDefault(PCMSCHOOLOFFICESearchContext context) {
@@ -173,7 +177,7 @@ public class PCMSCHOOLOFFICEResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMSCHOOLOFFICE-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMSCHOOLOFFICE-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PCMSCHOOLOFFICE" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pcmschooloffices/searchdefault")
 	public ResponseEntity<Page<PCMSCHOOLOFFICEDTO>> searchDefault(@RequestBody PCMSCHOOLOFFICESearchContext context) {
@@ -184,6 +188,7 @@ public class PCMSCHOOLOFFICEResource {
 
 
 
+    //@PreAuthorize("hasPermission(#pcmschooloffice_id,'Get',{'Sql',this.pcmschoolofficeMapping,this.permissionDTO})")
     @ApiOperation(value = "GetByPCMPROFILE", tags = {"PCMSCHOOLOFFICE" },  notes = "GetByPCMPROFILE")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmprofiles/{pcmprofile_id}/pcmschooloffices/{pcmschooloffice_id}")
     public ResponseEntity<PCMSCHOOLOFFICEDTO> getByPCMPROFILE(@PathVariable("pcmprofile_id") String pcmprofile_id, @PathVariable("pcmschooloffice_id") String pcmschooloffice_id) {
@@ -192,6 +197,7 @@ public class PCMSCHOOLOFFICEResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    //@PreAuthorize("hasPermission(#pcmschooloffice_id,'Remove',{'Sql',this.pcmschoolofficeMapping,this.permissionDTO})")
     @ApiOperation(value = "RemoveByPCMPROFILE", tags = {"PCMSCHOOLOFFICE" },  notes = "RemoveByPCMPROFILE")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmprofiles/{pcmprofile_id}/pcmschooloffices/{pcmschooloffice_id}")
     @Transactional
@@ -206,12 +212,14 @@ public class PCMSCHOOLOFFICEResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMSCHOOLOFFICE-CheckKey-all')")
     @ApiOperation(value = "CheckKeyByPCMPROFILE", tags = {"PCMSCHOOLOFFICE" },  notes = "CheckKeyByPCMPROFILE")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/pcmschooloffices/checkkey")
     public ResponseEntity<Boolean> checkKeyByPCMPROFILE(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody PCMSCHOOLOFFICEDTO pcmschoolofficedto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pcmschoolofficeService.checkKey(pcmschoolofficeMapping.toDomain(pcmschoolofficedto)));
     }
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMSCHOOLOFFICE-GetDraft-all')")
     @ApiOperation(value = "GetDraftByPCMPROFILE", tags = {"PCMSCHOOLOFFICE" },  notes = "GetDraftByPCMPROFILE")
     @RequestMapping(method = RequestMethod.GET, value = "/pcmprofiles/{pcmprofile_id}/pcmschooloffices/getdraft")
     public ResponseEntity<PCMSCHOOLOFFICEDTO> getDraftByPCMPROFILE(@PathVariable("pcmprofile_id") String pcmprofile_id) {
@@ -220,6 +228,7 @@ public class PCMSCHOOLOFFICEResource {
         return ResponseEntity.status(HttpStatus.OK).body(pcmschoolofficeMapping.toDto(pcmschoolofficeService.getDraft(domain)));
     }
 
+    //@PreAuthorize("hasPermission(#pcmschooloffice_id,'Update',{'Sql',this.pcmschoolofficeMapping,#pcmschoolofficedto})")
     @ApiOperation(value = "UpdateByPCMPROFILE", tags = {"PCMSCHOOLOFFICE" },  notes = "UpdateByPCMPROFILE")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmprofiles/{pcmprofile_id}/pcmschooloffices/{pcmschooloffice_id}")
     @Transactional
@@ -243,6 +252,7 @@ public class PCMSCHOOLOFFICEResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMSCHOOLOFFICE-Save-all')")
     @ApiOperation(value = "SaveByPCMPROFILE", tags = {"PCMSCHOOLOFFICE" },  notes = "SaveByPCMPROFILE")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/pcmschooloffices/save")
     public ResponseEntity<Boolean> saveByPCMPROFILE(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody PCMSCHOOLOFFICEDTO pcmschoolofficedto) {
@@ -262,6 +272,7 @@ public class PCMSCHOOLOFFICEResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    //@PreAuthorize("hasPermission('','Create',{'Sql',this.pcmschoolofficeMapping,#pcmschoolofficedto})")
     @ApiOperation(value = "CreateByPCMPROFILE", tags = {"PCMSCHOOLOFFICE" },  notes = "CreateByPCMPROFILE")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/pcmschooloffices")
     @Transactional
@@ -284,6 +295,7 @@ public class PCMSCHOOLOFFICEResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMSCHOOLOFFICE-Default-all')")
 	@ApiOperation(value = "fetchDEFAULTByPCMPROFILE", tags = {"PCMSCHOOLOFFICE" } ,notes = "fetchDEFAULTByPCMPROFILE")
     @RequestMapping(method= RequestMethod.GET , value="/pcmprofiles/{pcmprofile_id}/pcmschooloffices/fetchdefault")
 	public ResponseEntity<List<PCMSCHOOLOFFICEDTO>> fetchPCMSCHOOLOFFICEDefaultByPCMPROFILE(@PathVariable("pcmprofile_id") String pcmprofile_id,PCMSCHOOLOFFICESearchContext context) {
@@ -297,6 +309,7 @@ public class PCMSCHOOLOFFICEResource {
                 .body(list);
 	}
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMSCHOOLOFFICE-Default-all')")
 	@ApiOperation(value = "searchDEFAULTByPCMPROFILE", tags = {"PCMSCHOOLOFFICE" } ,notes = "searchDEFAULTByPCMPROFILE")
     @RequestMapping(method= RequestMethod.POST , value="/pcmprofiles/{pcmprofile_id}/pcmschooloffices/searchdefault")
 	public ResponseEntity<Page<PCMSCHOOLOFFICEDTO>> searchPCMSCHOOLOFFICEDefaultByPCMPROFILE(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody PCMSCHOOLOFFICESearchContext context) {
@@ -307,12 +320,6 @@ public class PCMSCHOOLOFFICEResource {
 	}
 
 
-    /**
-     * 用户权限校验
-     * @return
-     */
-	public PCMSCHOOLOFFICE getEntity(){
-        return new PCMSCHOOLOFFICE();
-    }
-
 }
+
+

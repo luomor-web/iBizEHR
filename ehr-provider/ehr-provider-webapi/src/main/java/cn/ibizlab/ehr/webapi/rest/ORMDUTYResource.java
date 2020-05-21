@@ -50,12 +50,14 @@ public class ORMDUTYResource {
 
     @Autowired
     @Lazy
-    private ORMDUTYMapping ormdutyMapping;
+    public ORMDUTYMapping ormdutyMapping;
+
+    public ORMDUTYDTO permissionDTO=new ORMDUTYDTO();
 
 
 
 
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.ormdutyMapping,#ormdutydto})")
     @ApiOperation(value = "Create", tags = {"ORMDUTY" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormduties")
     @Transactional
@@ -65,7 +67,7 @@ public class ORMDUTYResource {
         ORMDUTYDTO dto = ormdutyMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+
     @ApiOperation(value = "createBatch", tags = {"ORMDUTY" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormduties/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<ORMDUTYDTO> ormdutydtos) {
@@ -76,6 +78,7 @@ public class ORMDUTYResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMDUTY-SynOrderNum-all')")
     @ApiOperation(value = "设置默认排序信息", tags = {"ORMDUTY" },  notes = "设置默认排序信息")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormduties/{ormduty_id}/synordernum")
     @Transactional
@@ -89,7 +92,7 @@ public class ORMDUTYResource {
 
 
 
-    @PreAuthorize("hasPermission(#ormduty_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#ormduty_id,'Update',{'Sql',this.ormdutyMapping,#ormdutydto})")
     @ApiOperation(value = "Update", tags = {"ORMDUTY" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/ormduties/{ormduty_id}")
     @Transactional
@@ -101,7 +104,6 @@ public class ORMDUTYResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#ormduty_id,'Update',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "UpdateBatch", tags = {"ORMDUTY" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/ormduties/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<ORMDUTYDTO> ormdutydtos) {
@@ -112,6 +114,7 @@ public class ORMDUTYResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMDUTY-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"ORMDUTY" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/ormduties/getdraft")
     public ResponseEntity<ORMDUTYDTO> getDraft() {
@@ -121,7 +124,7 @@ public class ORMDUTYResource {
 
 
 
-    @PreAuthorize("hasPermission(#ormduty_id,'Remove',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#ormduty_id,'Remove',{'Sql',this.ormdutyMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"ORMDUTY" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/ormduties/{ormduty_id}")
     @Transactional
@@ -139,6 +142,7 @@ public class ORMDUTYResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMDUTY-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"ORMDUTY" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormduties/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody ORMDUTYDTO ormdutydto) {
@@ -148,7 +152,7 @@ public class ORMDUTYResource {
 
 
 
-    @PreAuthorize("hasPermission(#ormduty_id,'Get',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#ormduty_id,'Get',{'Sql',this.ormdutyMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"ORMDUTY" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/ormduties/{ormduty_id}")
     public ResponseEntity<ORMDUTYDTO> get(@PathVariable("ormduty_id") String ormduty_id) {
@@ -160,6 +164,7 @@ public class ORMDUTYResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMDUTY-Save-all')")
     @ApiOperation(value = "Save", tags = {"ORMDUTY" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormduties/save")
     public ResponseEntity<Boolean> save(@RequestBody ORMDUTYDTO ormdutydto) {
@@ -173,7 +178,7 @@ public class ORMDUTYResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMDUTY-BasDuty-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMDUTY-BasDuty-all')")
 	@ApiOperation(value = "fetch根据当前部门所属组织层次过滤数据", tags = {"ORMDUTY" } ,notes = "fetch根据当前部门所属组织层次过滤数据")
     @RequestMapping(method= RequestMethod.GET , value="/ormduties/fetchbasduty")
 	public ResponseEntity<List<ORMDUTYDTO>> fetchBasDuty(ORMDUTYSearchContext context) {
@@ -186,7 +191,7 @@ public class ORMDUTYResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMDUTY-BasDuty-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMDUTY-BasDuty-all')")
 	@ApiOperation(value = "search根据当前部门所属组织层次过滤数据", tags = {"ORMDUTY" } ,notes = "search根据当前部门所属组织层次过滤数据")
     @RequestMapping(method= RequestMethod.POST , value="/ormduties/searchbasduty")
 	public ResponseEntity<Page<ORMDUTYDTO>> searchBasDuty(@RequestBody ORMDUTYSearchContext context) {
@@ -195,7 +200,7 @@ public class ORMDUTYResource {
                 .body(new PageImpl(ormdutyMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMDUTY-CurOrgsector-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMDUTY-CurOrgsector-all')")
 	@ApiOperation(value = "fetchCurOrgsector", tags = {"ORMDUTY" } ,notes = "fetchCurOrgsector")
     @RequestMapping(method= RequestMethod.GET , value="/ormduties/fetchcurorgsector")
 	public ResponseEntity<List<ORMDUTYDTO>> fetchCurOrgsector(ORMDUTYSearchContext context) {
@@ -208,7 +213,7 @@ public class ORMDUTYResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMDUTY-CurOrgsector-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMDUTY-CurOrgsector-all')")
 	@ApiOperation(value = "searchCurOrgsector", tags = {"ORMDUTY" } ,notes = "searchCurOrgsector")
     @RequestMapping(method= RequestMethod.POST , value="/ormduties/searchcurorgsector")
 	public ResponseEntity<Page<ORMDUTYDTO>> searchCurOrgsector(@RequestBody ORMDUTYSearchContext context) {
@@ -217,7 +222,7 @@ public class ORMDUTYResource {
                 .body(new PageImpl(ormdutyMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMDUTY-SrfOrgData-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMDUTY-SrfOrgData-all')")
 	@ApiOperation(value = "fetch根据当前人员身份判定职务范围", tags = {"ORMDUTY" } ,notes = "fetch根据当前人员身份判定职务范围")
     @RequestMapping(method= RequestMethod.GET , value="/ormduties/fetchsrforgdata")
 	public ResponseEntity<List<ORMDUTYDTO>> fetchSrfOrgData(ORMDUTYSearchContext context) {
@@ -230,7 +235,7 @@ public class ORMDUTYResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMDUTY-SrfOrgData-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMDUTY-SrfOrgData-all')")
 	@ApiOperation(value = "search根据当前人员身份判定职务范围", tags = {"ORMDUTY" } ,notes = "search根据当前人员身份判定职务范围")
     @RequestMapping(method= RequestMethod.POST , value="/ormduties/searchsrforgdata")
 	public ResponseEntity<Page<ORMDUTYDTO>> searchSrfOrgData(@RequestBody ORMDUTYSearchContext context) {
@@ -239,7 +244,7 @@ public class ORMDUTYResource {
                 .body(new PageImpl(ormdutyMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMDUTY-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMDUTY-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"ORMDUTY" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/ormduties/fetchdefault")
 	public ResponseEntity<List<ORMDUTYDTO>> fetchDefault(ORMDUTYSearchContext context) {
@@ -252,7 +257,7 @@ public class ORMDUTYResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMDUTY-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMDUTY-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"ORMDUTY" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/ormduties/searchdefault")
 	public ResponseEntity<Page<ORMDUTYDTO>> searchDefault(@RequestBody ORMDUTYSearchContext context) {
@@ -261,7 +266,7 @@ public class ORMDUTYResource {
                 .body(new PageImpl(ormdutyMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMDUTY-CurOrg-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMDUTY-CurOrg-all')")
 	@ApiOperation(value = "fetch根据当前人员身份判定职务范围", tags = {"ORMDUTY" } ,notes = "fetch根据当前人员身份判定职务范围")
     @RequestMapping(method= RequestMethod.GET , value="/ormduties/fetchcurorg")
 	public ResponseEntity<List<ORMDUTYDTO>> fetchCurOrg(ORMDUTYSearchContext context) {
@@ -274,7 +279,7 @@ public class ORMDUTYResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMDUTY-CurOrg-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMDUTY-CurOrg-all')")
 	@ApiOperation(value = "search根据当前人员身份判定职务范围", tags = {"ORMDUTY" } ,notes = "search根据当前人员身份判定职务范围")
     @RequestMapping(method= RequestMethod.POST , value="/ormduties/searchcurorg")
 	public ResponseEntity<Page<ORMDUTYDTO>> searchCurOrg(@RequestBody ORMDUTYSearchContext context) {
@@ -283,7 +288,7 @@ public class ORMDUTYResource {
                 .body(new PageImpl(ormdutyMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMDUTY-CurOrmorgsector-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMDUTY-CurOrmorgsector-all')")
 	@ApiOperation(value = "fetchCurOrmorgsector", tags = {"ORMDUTY" } ,notes = "fetchCurOrmorgsector")
     @RequestMapping(method= RequestMethod.GET , value="/ormduties/fetchcurormorgsector")
 	public ResponseEntity<List<ORMDUTYDTO>> fetchCurOrmorgsector(ORMDUTYSearchContext context) {
@@ -296,7 +301,7 @@ public class ORMDUTYResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMDUTY-CurOrmorgsector-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMDUTY-CurOrmorgsector-all')")
 	@ApiOperation(value = "searchCurOrmorgsector", tags = {"ORMDUTY" } ,notes = "searchCurOrmorgsector")
     @RequestMapping(method= RequestMethod.POST , value="/ormduties/searchcurormorgsector")
 	public ResponseEntity<Page<ORMDUTYDTO>> searchCurOrmorgsector(@RequestBody ORMDUTYSearchContext context) {
@@ -306,12 +311,6 @@ public class ORMDUTYResource {
 	}
 
 
-    /**
-     * 用户权限校验
-     * @return
-     */
-	public ORMDUTY getEntity(){
-        return new ORMDUTY();
-    }
-
 }
+
+

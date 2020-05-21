@@ -50,12 +50,14 @@ public class PCMRCXLResource {
 
     @Autowired
     @Lazy
-    private PCMRCXLMapping pcmrcxlMapping;
+    public PCMRCXLMapping pcmrcxlMapping;
+
+    public PCMRCXLDTO permissionDTO=new PCMRCXLDTO();
 
 
 
 
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.pcmrcxlMapping,#pcmrcxldto})")
     @ApiOperation(value = "Create", tags = {"PCMRCXL" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmrcxls")
     @Transactional
@@ -65,7 +67,7 @@ public class PCMRCXLResource {
         PCMRCXLDTO dto = pcmrcxlMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+
     @ApiOperation(value = "createBatch", tags = {"PCMRCXL" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmrcxls/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PCMRCXLDTO> pcmrcxldtos) {
@@ -76,6 +78,7 @@ public class PCMRCXLResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMRCXL-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"PCMRCXL" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmrcxls/getdraft")
     public ResponseEntity<PCMRCXLDTO> getDraft() {
@@ -85,7 +88,7 @@ public class PCMRCXLResource {
 
 
 
-    @PreAuthorize("hasPermission(#pcmrcxl_id,'Get',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#pcmrcxl_id,'Get',{'Sql',this.pcmrcxlMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"PCMRCXL" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmrcxls/{pcmrcxl_id}")
     public ResponseEntity<PCMRCXLDTO> get(@PathVariable("pcmrcxl_id") String pcmrcxl_id) {
@@ -97,7 +100,7 @@ public class PCMRCXLResource {
 
 
 
-    @PreAuthorize("hasPermission(#pcmrcxl_id,'Remove',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#pcmrcxl_id,'Remove',{'Sql',this.pcmrcxlMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"PCMRCXL" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmrcxls/{pcmrcxl_id}")
     @Transactional
@@ -115,7 +118,7 @@ public class PCMRCXLResource {
 
 
 
-    @PreAuthorize("hasPermission(#pcmrcxl_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#pcmrcxl_id,'Update',{'Sql',this.pcmrcxlMapping,#pcmrcxldto})")
     @ApiOperation(value = "Update", tags = {"PCMRCXL" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmrcxls/{pcmrcxl_id}")
     @Transactional
@@ -127,7 +130,6 @@ public class PCMRCXLResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#pcmrcxl_id,'Update',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "UpdateBatch", tags = {"PCMRCXL" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmrcxls/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PCMRCXLDTO> pcmrcxldtos) {
@@ -138,6 +140,7 @@ public class PCMRCXLResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMRCXL-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"PCMRCXL" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmrcxls/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PCMRCXLDTO pcmrcxldto) {
@@ -147,6 +150,7 @@ public class PCMRCXLResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMRCXL-Save-all')")
     @ApiOperation(value = "Save", tags = {"PCMRCXL" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmrcxls/save")
     public ResponseEntity<Boolean> save(@RequestBody PCMRCXLDTO pcmrcxldto) {
@@ -160,7 +164,7 @@ public class PCMRCXLResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMRCXL-Current-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMRCXL-Current-all')")
 	@ApiOperation(value = "fetch查询当前人才序列下的序列", tags = {"PCMRCXL" } ,notes = "fetch查询当前人才序列下的序列")
     @RequestMapping(method= RequestMethod.GET , value="/pcmrcxls/fetchcurrent")
 	public ResponseEntity<List<PCMRCXLDTO>> fetchCurrent(PCMRCXLSearchContext context) {
@@ -173,7 +177,7 @@ public class PCMRCXLResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMRCXL-Current-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMRCXL-Current-all')")
 	@ApiOperation(value = "search查询当前人才序列下的序列", tags = {"PCMRCXL" } ,notes = "search查询当前人才序列下的序列")
     @RequestMapping(method= RequestMethod.POST , value="/pcmrcxls/searchcurrent")
 	public ResponseEntity<Page<PCMRCXLDTO>> searchCurrent(@RequestBody PCMRCXLSearchContext context) {
@@ -182,7 +186,7 @@ public class PCMRCXLResource {
                 .body(new PageImpl(pcmrcxlMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMRCXL-RCXLPPXLLX-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMRCXL-RCXLPPXLLX-all')")
 	@ApiOperation(value = "fetch人才序列匹配人才序列类型", tags = {"PCMRCXL" } ,notes = "fetch人才序列匹配人才序列类型")
     @RequestMapping(method= RequestMethod.GET , value="/pcmrcxls/fetchrcxlppxllx")
 	public ResponseEntity<List<PCMRCXLDTO>> fetchRCXLPPXLLX(PCMRCXLSearchContext context) {
@@ -195,7 +199,7 @@ public class PCMRCXLResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMRCXL-RCXLPPXLLX-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMRCXL-RCXLPPXLLX-all')")
 	@ApiOperation(value = "search人才序列匹配人才序列类型", tags = {"PCMRCXL" } ,notes = "search人才序列匹配人才序列类型")
     @RequestMapping(method= RequestMethod.POST , value="/pcmrcxls/searchrcxlppxllx")
 	public ResponseEntity<Page<PCMRCXLDTO>> searchRCXLPPXLLX(@RequestBody PCMRCXLSearchContext context) {
@@ -204,7 +208,7 @@ public class PCMRCXLResource {
                 .body(new PageImpl(pcmrcxlMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMRCXL-ZiDQ-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMRCXL-ZiDQ-all')")
 	@ApiOperation(value = "fetch子查询", tags = {"PCMRCXL" } ,notes = "fetch子查询")
     @RequestMapping(method= RequestMethod.GET , value="/pcmrcxls/fetchzidq")
 	public ResponseEntity<List<PCMRCXLDTO>> fetchZiDQ(PCMRCXLSearchContext context) {
@@ -217,7 +221,7 @@ public class PCMRCXLResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMRCXL-ZiDQ-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMRCXL-ZiDQ-all')")
 	@ApiOperation(value = "search子查询", tags = {"PCMRCXL" } ,notes = "search子查询")
     @RequestMapping(method= RequestMethod.POST , value="/pcmrcxls/searchzidq")
 	public ResponseEntity<Page<PCMRCXLDTO>> searchZiDQ(@RequestBody PCMRCXLSearchContext context) {
@@ -226,7 +230,7 @@ public class PCMRCXLResource {
                 .body(new PageImpl(pcmrcxlMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMRCXL-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMRCXL-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PCMRCXL" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pcmrcxls/fetchdefault")
 	public ResponseEntity<List<PCMRCXLDTO>> fetchDefault(PCMRCXLSearchContext context) {
@@ -239,7 +243,7 @@ public class PCMRCXLResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMRCXL-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMRCXL-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PCMRCXL" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pcmrcxls/searchdefault")
 	public ResponseEntity<Page<PCMRCXLDTO>> searchDefault(@RequestBody PCMRCXLSearchContext context) {
@@ -248,7 +252,7 @@ public class PCMRCXLResource {
                 .body(new PageImpl(pcmrcxlMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMRCXL-GenDQ-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMRCXL-GenDQ-all')")
 	@ApiOperation(value = "fetch根查询", tags = {"PCMRCXL" } ,notes = "fetch根查询")
     @RequestMapping(method= RequestMethod.GET , value="/pcmrcxls/fetchgendq")
 	public ResponseEntity<List<PCMRCXLDTO>> fetchGenDQ(PCMRCXLSearchContext context) {
@@ -261,7 +265,7 @@ public class PCMRCXLResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMRCXL-GenDQ-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMRCXL-GenDQ-all')")
 	@ApiOperation(value = "search根查询", tags = {"PCMRCXL" } ,notes = "search根查询")
     @RequestMapping(method= RequestMethod.POST , value="/pcmrcxls/searchgendq")
 	public ResponseEntity<Page<PCMRCXLDTO>> searchGenDQ(@RequestBody PCMRCXLSearchContext context) {
@@ -271,12 +275,6 @@ public class PCMRCXLResource {
 	}
 
 
-    /**
-     * 用户权限校验
-     * @return
-     */
-	public PCMRCXL getEntity(){
-        return new PCMRCXL();
-    }
-
 }
+
+

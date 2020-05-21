@@ -16,14 +16,10 @@
 
     <modules>
         <module>ehr-app-ehrhelp</module>
-        <module>ehr-app-ehr</module>
         <module>ehr-app-ehrpcm2</module>
         <module>ehr-app-ehrmob</module>
         <module>ehr-app-ehrpcm</module>
         <module>ehr-app-ehrorm</module>
-        <module>ehr-app-ehrweb</module>
-        <module>ehr-app-ehrapp</module>
-        <module>ehr-app-web</module>
         <module>ehr-app-ehrpim</module>
     </modules>
 

@@ -50,11 +50,14 @@ public class TRMTRAINACTAPPLYResource {
 
     @Autowired
     @Lazy
-    private TRMTRAINACTAPPLYMapping trmtrainactapplyMapping;
+    public TRMTRAINACTAPPLYMapping trmtrainactapplyMapping;
+
+    public TRMTRAINACTAPPLYDTO permissionDTO=new TRMTRAINACTAPPLYDTO();
 
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMTRAINACTAPPLY-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"TRMTRAINACTAPPLY" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/trmtrainactapplies/getdraft")
     public ResponseEntity<TRMTRAINACTAPPLYDTO> getDraft() {
@@ -64,6 +67,7 @@ public class TRMTRAINACTAPPLYResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMTRAINACTAPPLY-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"TRMTRAINACTAPPLY" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmtrainactapplies/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody TRMTRAINACTAPPLYDTO trmtrainactapplydto) {
@@ -73,7 +77,7 @@ public class TRMTRAINACTAPPLYResource {
 
 
 
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.trmtrainactapplyMapping,#trmtrainactapplydto})")
     @ApiOperation(value = "Create", tags = {"TRMTRAINACTAPPLY" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmtrainactapplies")
     @Transactional
@@ -83,7 +87,7 @@ public class TRMTRAINACTAPPLYResource {
         TRMTRAINACTAPPLYDTO dto = trmtrainactapplyMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+
     @ApiOperation(value = "createBatch", tags = {"TRMTRAINACTAPPLY" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmtrainactapplies/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<TRMTRAINACTAPPLYDTO> trmtrainactapplydtos) {
@@ -94,7 +98,7 @@ public class TRMTRAINACTAPPLYResource {
 
 
 
-    @PreAuthorize("hasPermission(#trmtrainactapply_id,'Get',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#trmtrainactapply_id,'Get',{'Sql',this.trmtrainactapplyMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"TRMTRAINACTAPPLY" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/trmtrainactapplies/{trmtrainactapply_id}")
     public ResponseEntity<TRMTRAINACTAPPLYDTO> get(@PathVariable("trmtrainactapply_id") String trmtrainactapply_id) {
@@ -106,6 +110,7 @@ public class TRMTRAINACTAPPLYResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMTRAINACTAPPLY-Save-all')")
     @ApiOperation(value = "Save", tags = {"TRMTRAINACTAPPLY" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmtrainactapplies/save")
     public ResponseEntity<Boolean> save(@RequestBody TRMTRAINACTAPPLYDTO trmtrainactapplydto) {
@@ -122,7 +127,7 @@ public class TRMTRAINACTAPPLYResource {
 
 
 
-    @PreAuthorize("hasPermission(#trmtrainactapply_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#trmtrainactapply_id,'Update',{'Sql',this.trmtrainactapplyMapping,#trmtrainactapplydto})")
     @ApiOperation(value = "Update", tags = {"TRMTRAINACTAPPLY" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/trmtrainactapplies/{trmtrainactapply_id}")
     @Transactional
@@ -134,7 +139,6 @@ public class TRMTRAINACTAPPLYResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#trmtrainactapply_id,'Update',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "UpdateBatch", tags = {"TRMTRAINACTAPPLY" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/trmtrainactapplies/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<TRMTRAINACTAPPLYDTO> trmtrainactapplydtos) {
@@ -145,7 +149,7 @@ public class TRMTRAINACTAPPLYResource {
 
 
 
-    @PreAuthorize("hasPermission(#trmtrainactapply_id,'Remove',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#trmtrainactapply_id,'Remove',{'Sql',this.trmtrainactapplyMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"TRMTRAINACTAPPLY" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/trmtrainactapplies/{trmtrainactapply_id}")
     @Transactional
@@ -160,7 +164,7 @@ public class TRMTRAINACTAPPLYResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMTRAINACTAPPLY-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMTRAINACTAPPLY-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"TRMTRAINACTAPPLY" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/trmtrainactapplies/fetchdefault")
 	public ResponseEntity<List<TRMTRAINACTAPPLYDTO>> fetchDefault(TRMTRAINACTAPPLYSearchContext context) {
@@ -173,7 +177,7 @@ public class TRMTRAINACTAPPLYResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMTRAINACTAPPLY-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMTRAINACTAPPLY-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"TRMTRAINACTAPPLY" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/trmtrainactapplies/searchdefault")
 	public ResponseEntity<Page<TRMTRAINACTAPPLYDTO>> searchDefault(@RequestBody TRMTRAINACTAPPLYSearchContext context) {
@@ -183,12 +187,6 @@ public class TRMTRAINACTAPPLYResource {
 	}
 
 
-    /**
-     * 用户权限校验
-     * @return
-     */
-	public TRMTRAINACTAPPLY getEntity(){
-        return new TRMTRAINACTAPPLY();
-    }
-
 }
+
+

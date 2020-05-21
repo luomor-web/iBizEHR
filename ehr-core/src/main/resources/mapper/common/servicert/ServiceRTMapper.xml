@@ -4,24 +4,6 @@
 <mapper	namespace="cn.ibizlab.ehr.core.common.mapper.ServiceRTMapper">
 
     <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
-	<select id="selectById"  resultMap="ServiceRTResultMap" databaseId="db2">
-        <![CDATA[select * from v_service t1     where  serviceid=#{id}]]>
-    </select>
-	<select id="selectById"  resultMap="ServiceRTResultMap" databaseId="mysql">
-        <![CDATA[select * from v_service t1     where  serviceid=#{id}]]>
-    </select>
-	<select id="selectById"  resultMap="ServiceRTResultMap" databaseId="oracle">
-        <![CDATA[select * from v_service t1     where  serviceid=#{id}]]>
-    </select>
-	<select id="selectById"  resultMap="ServiceRTResultMap" databaseId="postgresql">
-        <![CDATA[select * from v_service t1     where  serviceid=#{id}]]>
-    </select>
-	<select id="selectById"  resultMap="ServiceRTResultMap" databaseId="ppas">
-        <![CDATA[select * from v_service t1     where  serviceid=#{id}]]>
-    </select>
-	<select id="selectById"  resultMap="ServiceRTResultMap" databaseId="sqlserver">
-        <![CDATA[select * from v_service t1     where  serviceid=#{id}]]>
-    </select>
 
     <!--通过mybatis将查询结果注入到entity中,通过配置autoMapping="true"由mybatis自动处理映射关系 -->
     <resultMap id="ServiceRTResultMap" type="cn.ibizlab.ehr.core.common.domain.ServiceRT" autoMapping="true">

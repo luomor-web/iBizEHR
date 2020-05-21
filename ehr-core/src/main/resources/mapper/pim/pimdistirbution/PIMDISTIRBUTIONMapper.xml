@@ -4,12 +4,6 @@
 <mapper	namespace="cn.ibizlab.ehr.core.pim.mapper.PIMDISTIRBUTIONMapper">
 
     <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
-	<select id="selectById"  resultMap="PIMDISTIRBUTIONResultMap" databaseId="mysql">
-        <![CDATA[select * from v_pimdistirbution t1     where  pimdistirbutionid=#{id}]]>
-    </select>
-	<select id="selectById"  resultMap="PIMDISTIRBUTIONResultMap" databaseId="oracle">
-        <![CDATA[select * from v_pimdistirbution t1     where  pimdistirbutionid=#{id}]]>
-    </select>
 
     <!--通过mybatis将查询结果注入到entity中,通过配置autoMapping="true"由mybatis自动处理映射关系 -->
     <resultMap id="PIMDISTIRBUTIONResultMap" type="cn.ibizlab.ehr.core.pim.domain.PIMDISTIRBUTION" autoMapping="true">

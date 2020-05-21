@@ -50,12 +50,14 @@ public class TRMCOURSESYSTEMResource {
 
     @Autowired
     @Lazy
-    private TRMCOURSESYSTEMMapping trmcoursesystemMapping;
+    public TRMCOURSESYSTEMMapping trmcoursesystemMapping;
+
+    public TRMCOURSESYSTEMDTO permissionDTO=new TRMCOURSESYSTEMDTO();
 
 
 
 
-    @PreAuthorize("hasPermission(#trmcoursesystem_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#trmcoursesystem_id,'Update',{'Sql',this.trmcoursesystemMapping,#trmcoursesystemdto})")
     @ApiOperation(value = "Update", tags = {"TRMCOURSESYSTEM" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/trmcoursesystems/{trmcoursesystem_id}")
     @Transactional
@@ -67,7 +69,6 @@ public class TRMCOURSESYSTEMResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#trmcoursesystem_id,'Update',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "UpdateBatch", tags = {"TRMCOURSESYSTEM" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/trmcoursesystems/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<TRMCOURSESYSTEMDTO> trmcoursesystemdtos) {
@@ -78,6 +79,7 @@ public class TRMCOURSESYSTEMResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMCOURSESYSTEM-Save-all')")
     @ApiOperation(value = "Save", tags = {"TRMCOURSESYSTEM" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmcoursesystems/save")
     public ResponseEntity<Boolean> save(@RequestBody TRMCOURSESYSTEMDTO trmcoursesystemdto) {
@@ -94,6 +96,7 @@ public class TRMCOURSESYSTEMResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMCOURSESYSTEM-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"TRMCOURSESYSTEM" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmcoursesystems/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody TRMCOURSESYSTEMDTO trmcoursesystemdto) {
@@ -103,6 +106,7 @@ public class TRMCOURSESYSTEMResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMCOURSESYSTEM-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"TRMCOURSESYSTEM" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/trmcoursesystems/getdraft")
     public ResponseEntity<TRMCOURSESYSTEMDTO> getDraft() {
@@ -112,7 +116,7 @@ public class TRMCOURSESYSTEMResource {
 
 
 
-    @PreAuthorize("hasPermission(#trmcoursesystem_id,'Get',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#trmcoursesystem_id,'Get',{'Sql',this.trmcoursesystemMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"TRMCOURSESYSTEM" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/trmcoursesystems/{trmcoursesystem_id}")
     public ResponseEntity<TRMCOURSESYSTEMDTO> get(@PathVariable("trmcoursesystem_id") String trmcoursesystem_id) {
@@ -124,7 +128,7 @@ public class TRMCOURSESYSTEMResource {
 
 
 
-    @PreAuthorize("hasPermission(#trmcoursesystem_id,'Remove',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#trmcoursesystem_id,'Remove',{'Sql',this.trmcoursesystemMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"TRMCOURSESYSTEM" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/trmcoursesystems/{trmcoursesystem_id}")
     @Transactional
@@ -142,7 +146,7 @@ public class TRMCOURSESYSTEMResource {
 
 
 
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.trmcoursesystemMapping,#trmcoursesystemdto})")
     @ApiOperation(value = "Create", tags = {"TRMCOURSESYSTEM" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmcoursesystems")
     @Transactional
@@ -152,7 +156,7 @@ public class TRMCOURSESYSTEMResource {
         TRMCOURSESYSTEMDTO dto = trmcoursesystemMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+
     @ApiOperation(value = "createBatch", tags = {"TRMCOURSESYSTEM" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmcoursesystems/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<TRMCOURSESYSTEMDTO> trmcoursesystemdtos) {
@@ -160,7 +164,7 @@ public class TRMCOURSESYSTEMResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMCOURSESYSTEM-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMCOURSESYSTEM-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"TRMCOURSESYSTEM" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/trmcoursesystems/fetchdefault")
 	public ResponseEntity<List<TRMCOURSESYSTEMDTO>> fetchDefault(TRMCOURSESYSTEMSearchContext context) {
@@ -173,7 +177,7 @@ public class TRMCOURSESYSTEMResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMCOURSESYSTEM-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMCOURSESYSTEM-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"TRMCOURSESYSTEM" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/trmcoursesystems/searchdefault")
 	public ResponseEntity<Page<TRMCOURSESYSTEMDTO>> searchDefault(@RequestBody TRMCOURSESYSTEMSearchContext context) {
@@ -183,12 +187,6 @@ public class TRMCOURSESYSTEMResource {
 	}
 
 
-    /**
-     * 用户权限校验
-     * @return
-     */
-	public TRMCOURSESYSTEM getEntity(){
-        return new TRMCOURSESYSTEM();
-    }
-
 }
+
+

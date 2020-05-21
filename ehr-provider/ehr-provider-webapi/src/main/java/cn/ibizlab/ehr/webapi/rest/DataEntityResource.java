@@ -50,11 +50,14 @@ public class DataEntityResource {
 
     @Autowired
     @Lazy
-    private DataEntityMapping dataentityMapping;
+    public DataEntityMapping dataentityMapping;
+
+    public DataEntityDTO permissionDTO=new DataEntityDTO();
 
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DataEntity-InitUserRoleData-all')")
     @ApiOperation(value = "初始化角色数据对象", tags = {"DataEntity" },  notes = "初始化角色数据对象")
 	@RequestMapping(method = RequestMethod.POST, value = "/dataentities/{dataentity_id}/inituserroledata")
     @Transactional
@@ -68,7 +71,7 @@ public class DataEntityResource {
 
 
 
-    @PreAuthorize("hasPermission(#dataentity_id,'Remove',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#dataentity_id,'Remove',{'Sql',this.dataentityMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"DataEntity" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/dataentities/{dataentity_id}")
     @Transactional
@@ -86,6 +89,7 @@ public class DataEntityResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DataEntity-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"DataEntity" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/dataentities/getdraft")
     public ResponseEntity<DataEntityDTO> getDraft() {
@@ -95,7 +99,7 @@ public class DataEntityResource {
 
 
 
-    @PreAuthorize("hasPermission(#dataentity_id,'Get',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#dataentity_id,'Get',{'Sql',this.dataentityMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"DataEntity" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/dataentities/{dataentity_id}")
     public ResponseEntity<DataEntityDTO> get(@PathVariable("dataentity_id") String dataentity_id) {
@@ -107,6 +111,7 @@ public class DataEntityResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DataEntity-InitAll-all')")
     @ApiOperation(value = "初始化", tags = {"DataEntity" },  notes = "初始化")
 	@RequestMapping(method = RequestMethod.POST, value = "/dataentities/{dataentity_id}/initall")
     @Transactional
@@ -120,7 +125,7 @@ public class DataEntityResource {
 
 
 
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.dataentityMapping,#dataentitydto})")
     @ApiOperation(value = "Create", tags = {"DataEntity" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/dataentities")
     @Transactional
@@ -130,7 +135,7 @@ public class DataEntityResource {
         DataEntityDTO dto = dataentityMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+
     @ApiOperation(value = "createBatch", tags = {"DataEntity" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/dataentities/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<DataEntityDTO> dataentitydtos) {
@@ -141,6 +146,7 @@ public class DataEntityResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DataEntity-Save-all')")
     @ApiOperation(value = "Save", tags = {"DataEntity" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/dataentities/save")
     public ResponseEntity<Boolean> save(@RequestBody DataEntityDTO dataentitydto) {
@@ -157,7 +163,7 @@ public class DataEntityResource {
 
 
 
-    @PreAuthorize("hasPermission(#dataentity_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#dataentity_id,'Update',{'Sql',this.dataentityMapping,#dataentitydto})")
     @ApiOperation(value = "Update", tags = {"DataEntity" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/dataentities/{dataentity_id}")
     @Transactional
@@ -169,7 +175,6 @@ public class DataEntityResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#dataentity_id,'Update',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "UpdateBatch", tags = {"DataEntity" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/dataentities/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<DataEntityDTO> dataentitydtos) {
@@ -180,13 +185,14 @@ public class DataEntityResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DataEntity-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"DataEntity" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/dataentities/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody DataEntityDTO dataentitydto) {
         return  ResponseEntity.status(HttpStatus.OK).body(dataentityService.checkKey(dataentityMapping.toDomain(dataentitydto)));
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DataEntity-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DataEntity-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"DataEntity" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/dataentities/fetchdefault")
 	public ResponseEntity<List<DataEntityDTO>> fetchDefault(DataEntitySearchContext context) {
@@ -199,7 +205,7 @@ public class DataEntityResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DataEntity-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DataEntity-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"DataEntity" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/dataentities/searchdefault")
 	public ResponseEntity<Page<DataEntityDTO>> searchDefault(@RequestBody DataEntitySearchContext context) {
@@ -209,12 +215,6 @@ public class DataEntityResource {
 	}
 
 
-    /**
-     * 用户权限校验
-     * @return
-     */
-	public DataEntity getEntity(){
-        return new DataEntity();
-    }
-
 }
+
+

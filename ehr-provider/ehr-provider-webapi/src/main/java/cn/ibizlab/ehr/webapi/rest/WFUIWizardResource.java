@@ -50,12 +50,14 @@ public class WFUIWizardResource {
 
     @Autowired
     @Lazy
-    private WFUIWizardMapping wfuiwizardMapping;
+    public WFUIWizardMapping wfuiwizardMapping;
+
+    public WFUIWizardDTO permissionDTO=new WFUIWizardDTO();
 
 
 
 
-    @PreAuthorize("hasPermission(#wfuiwizard_id,'Remove',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#wfuiwizard_id,'Remove',{'Sql',this.wfuiwizardMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"WFUIWizard" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/wfuiwizards/{wfuiwizard_id}")
     @Transactional
@@ -73,7 +75,7 @@ public class WFUIWizardResource {
 
 
 
-    @PreAuthorize("hasPermission(#wfuiwizard_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#wfuiwizard_id,'Update',{'Sql',this.wfuiwizardMapping,#wfuiwizarddto})")
     @ApiOperation(value = "Update", tags = {"WFUIWizard" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/wfuiwizards/{wfuiwizard_id}")
     @Transactional
@@ -85,7 +87,6 @@ public class WFUIWizardResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#wfuiwizard_id,'Update',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "UpdateBatch", tags = {"WFUIWizard" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/wfuiwizards/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<WFUIWizardDTO> wfuiwizarddtos) {
@@ -96,6 +97,7 @@ public class WFUIWizardResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFUIWizard-Save-all')")
     @ApiOperation(value = "Save", tags = {"WFUIWizard" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/wfuiwizards/save")
     public ResponseEntity<Boolean> save(@RequestBody WFUIWizardDTO wfuiwizarddto) {
@@ -112,6 +114,7 @@ public class WFUIWizardResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFUIWizard-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"WFUIWizard" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/wfuiwizards/getdraft")
     public ResponseEntity<WFUIWizardDTO> getDraft() {
@@ -121,7 +124,7 @@ public class WFUIWizardResource {
 
 
 
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.wfuiwizardMapping,#wfuiwizarddto})")
     @ApiOperation(value = "Create", tags = {"WFUIWizard" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/wfuiwizards")
     @Transactional
@@ -131,7 +134,7 @@ public class WFUIWizardResource {
         WFUIWizardDTO dto = wfuiwizardMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+
     @ApiOperation(value = "createBatch", tags = {"WFUIWizard" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/wfuiwizards/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<WFUIWizardDTO> wfuiwizarddtos) {
@@ -142,6 +145,7 @@ public class WFUIWizardResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFUIWizard-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"WFUIWizard" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/wfuiwizards/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody WFUIWizardDTO wfuiwizarddto) {
@@ -151,7 +155,7 @@ public class WFUIWizardResource {
 
 
 
-    @PreAuthorize("hasPermission(#wfuiwizard_id,'Get',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#wfuiwizard_id,'Get',{'Sql',this.wfuiwizardMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"WFUIWizard" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/wfuiwizards/{wfuiwizard_id}")
     public ResponseEntity<WFUIWizardDTO> get(@PathVariable("wfuiwizard_id") String wfuiwizard_id) {
@@ -160,7 +164,7 @@ public class WFUIWizardResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFUIWizard-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFUIWizard-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"WFUIWizard" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/wfuiwizards/fetchdefault")
 	public ResponseEntity<List<WFUIWizardDTO>> fetchDefault(WFUIWizardSearchContext context) {
@@ -173,7 +177,7 @@ public class WFUIWizardResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFUIWizard-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFUIWizard-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"WFUIWizard" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/wfuiwizards/searchdefault")
 	public ResponseEntity<Page<WFUIWizardDTO>> searchDefault(@RequestBody WFUIWizardSearchContext context) {
@@ -183,12 +187,6 @@ public class WFUIWizardResource {
 	}
 
 
-    /**
-     * 用户权限校验
-     * @return
-     */
-	public WFUIWizard getEntity(){
-        return new WFUIWizard();
-    }
-
 }
+
+

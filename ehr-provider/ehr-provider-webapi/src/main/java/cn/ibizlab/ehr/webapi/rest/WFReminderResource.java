@@ -50,12 +50,14 @@ public class WFReminderResource {
 
     @Autowired
     @Lazy
-    private WFReminderMapping wfreminderMapping;
+    public WFReminderMapping wfreminderMapping;
+
+    public WFReminderDTO permissionDTO=new WFReminderDTO();
 
 
 
 
-    @PreAuthorize("hasPermission(#wfreminder_id,'Remove',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#wfreminder_id,'Remove',{'Sql',this.wfreminderMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"WFReminder" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/wfreminders/{wfreminder_id}")
     @Transactional
@@ -73,7 +75,7 @@ public class WFReminderResource {
 
 
 
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.wfreminderMapping,#wfreminderdto})")
     @ApiOperation(value = "Create", tags = {"WFReminder" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/wfreminders")
     @Transactional
@@ -83,7 +85,7 @@ public class WFReminderResource {
         WFReminderDTO dto = wfreminderMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+
     @ApiOperation(value = "createBatch", tags = {"WFReminder" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/wfreminders/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<WFReminderDTO> wfreminderdtos) {
@@ -94,6 +96,7 @@ public class WFReminderResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFReminder-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"WFReminder" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/wfreminders/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody WFReminderDTO wfreminderdto) {
@@ -103,7 +106,7 @@ public class WFReminderResource {
 
 
 
-    @PreAuthorize("hasPermission(#wfreminder_id,'Get',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#wfreminder_id,'Get',{'Sql',this.wfreminderMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"WFReminder" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/wfreminders/{wfreminder_id}")
     public ResponseEntity<WFReminderDTO> get(@PathVariable("wfreminder_id") String wfreminder_id) {
@@ -115,6 +118,7 @@ public class WFReminderResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFReminder-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"WFReminder" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/wfreminders/getdraft")
     public ResponseEntity<WFReminderDTO> getDraft() {
@@ -124,7 +128,7 @@ public class WFReminderResource {
 
 
 
-    @PreAuthorize("hasPermission(#wfreminder_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#wfreminder_id,'Update',{'Sql',this.wfreminderMapping,#wfreminderdto})")
     @ApiOperation(value = "Update", tags = {"WFReminder" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/wfreminders/{wfreminder_id}")
     @Transactional
@@ -136,7 +140,6 @@ public class WFReminderResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#wfreminder_id,'Update',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "UpdateBatch", tags = {"WFReminder" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/wfreminders/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<WFReminderDTO> wfreminderdtos) {
@@ -147,6 +150,7 @@ public class WFReminderResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFReminder-Save-all')")
     @ApiOperation(value = "Save", tags = {"WFReminder" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/wfreminders/save")
     public ResponseEntity<Boolean> save(@RequestBody WFReminderDTO wfreminderdto) {
@@ -160,7 +164,7 @@ public class WFReminderResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFReminder-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFReminder-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"WFReminder" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/wfreminders/fetchdefault")
 	public ResponseEntity<List<WFReminderDTO>> fetchDefault(WFReminderSearchContext context) {
@@ -173,7 +177,7 @@ public class WFReminderResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFReminder-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFReminder-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"WFReminder" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/wfreminders/searchdefault")
 	public ResponseEntity<Page<WFReminderDTO>> searchDefault(@RequestBody WFReminderSearchContext context) {
@@ -183,12 +187,6 @@ public class WFReminderResource {
 	}
 
 
-    /**
-     * 用户权限校验
-     * @return
-     */
-	public WFReminder getEntity(){
-        return new WFReminder();
-    }
-
 }
+
+

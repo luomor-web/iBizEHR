@@ -50,11 +50,14 @@ public class TRMPLANFORMUResource {
 
     @Autowired
     @Lazy
-    private TRMPLANFORMUMapping trmplanformuMapping;
+    public TRMPLANFORMUMapping trmplanformuMapping;
+
+    public TRMPLANFORMUDTO permissionDTO=new TRMPLANFORMUDTO();
 
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMPLANFORMU-Save-all')")
     @ApiOperation(value = "Save", tags = {"TRMPLANFORMU" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmplanformus/save")
     public ResponseEntity<Boolean> save(@RequestBody TRMPLANFORMUDTO trmplanformudto) {
@@ -71,7 +74,7 @@ public class TRMPLANFORMUResource {
 
 
 
-    @PreAuthorize("hasPermission(#trmplanformu_id,'Remove',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#trmplanformu_id,'Remove',{'Sql',this.trmplanformuMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"TRMPLANFORMU" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/trmplanformus/{trmplanformu_id}")
     @Transactional
@@ -89,7 +92,7 @@ public class TRMPLANFORMUResource {
 
 
 
-    @PreAuthorize("hasPermission(#trmplanformu_id,'Get',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#trmplanformu_id,'Get',{'Sql',this.trmplanformuMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"TRMPLANFORMU" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/trmplanformus/{trmplanformu_id}")
     public ResponseEntity<TRMPLANFORMUDTO> get(@PathVariable("trmplanformu_id") String trmplanformu_id) {
@@ -101,7 +104,7 @@ public class TRMPLANFORMUResource {
 
 
 
-    @PreAuthorize("hasPermission(#trmplanformu_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#trmplanformu_id,'Update',{'Sql',this.trmplanformuMapping,#trmplanformudto})")
     @ApiOperation(value = "Update", tags = {"TRMPLANFORMU" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/trmplanformus/{trmplanformu_id}")
     @Transactional
@@ -113,7 +116,6 @@ public class TRMPLANFORMUResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#trmplanformu_id,'Update',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "UpdateBatch", tags = {"TRMPLANFORMU" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/trmplanformus/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<TRMPLANFORMUDTO> trmplanformudtos) {
@@ -124,7 +126,7 @@ public class TRMPLANFORMUResource {
 
 
 
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.trmplanformuMapping,#trmplanformudto})")
     @ApiOperation(value = "Create", tags = {"TRMPLANFORMU" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmplanformus")
     @Transactional
@@ -134,7 +136,7 @@ public class TRMPLANFORMUResource {
         TRMPLANFORMUDTO dto = trmplanformuMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+
     @ApiOperation(value = "createBatch", tags = {"TRMPLANFORMU" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmplanformus/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<TRMPLANFORMUDTO> trmplanformudtos) {
@@ -145,6 +147,7 @@ public class TRMPLANFORMUResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMPLANFORMU-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"TRMPLANFORMU" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/trmplanformus/getdraft")
     public ResponseEntity<TRMPLANFORMUDTO> getDraft() {
@@ -154,13 +157,14 @@ public class TRMPLANFORMUResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMPLANFORMU-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"TRMPLANFORMU" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmplanformus/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody TRMPLANFORMUDTO trmplanformudto) {
         return  ResponseEntity.status(HttpStatus.OK).body(trmplanformuService.checkKey(trmplanformuMapping.toDomain(trmplanformudto)));
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMPLANFORMU-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMPLANFORMU-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"TRMPLANFORMU" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/trmplanformus/fetchdefault")
 	public ResponseEntity<List<TRMPLANFORMUDTO>> fetchDefault(TRMPLANFORMUSearchContext context) {
@@ -173,7 +177,7 @@ public class TRMPLANFORMUResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMPLANFORMU-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMPLANFORMU-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"TRMPLANFORMU" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/trmplanformus/searchdefault")
 	public ResponseEntity<Page<TRMPLANFORMUDTO>> searchDefault(@RequestBody TRMPLANFORMUSearchContext context) {
@@ -183,12 +187,6 @@ public class TRMPLANFORMUResource {
 	}
 
 
-    /**
-     * 用户权限校验
-     * @return
-     */
-	public TRMPLANFORMU getEntity(){
-        return new TRMPLANFORMU();
-    }
-
 }
+
+

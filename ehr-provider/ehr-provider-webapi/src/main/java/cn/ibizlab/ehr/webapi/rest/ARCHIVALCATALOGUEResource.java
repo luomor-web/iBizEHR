@@ -50,11 +50,14 @@ public class ARCHIVALCATALOGUEResource {
 
     @Autowired
     @Lazy
-    private ARCHIVALCATALOGUEMapping archivalcatalogueMapping;
+    public ARCHIVALCATALOGUEMapping archivalcatalogueMapping;
+
+    public ARCHIVALCATALOGUEDTO permissionDTO=new ARCHIVALCATALOGUEDTO();
 
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ARCHIVALCATALOGUE-Save-all')")
     @ApiOperation(value = "Save", tags = {"ARCHIVALCATALOGUE" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/archivalcatalogues/save")
     public ResponseEntity<Boolean> save(@RequestBody ARCHIVALCATALOGUEDTO archivalcataloguedto) {
@@ -71,6 +74,7 @@ public class ARCHIVALCATALOGUEResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ARCHIVALCATALOGUE-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"ARCHIVALCATALOGUE" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/archivalcatalogues/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody ARCHIVALCATALOGUEDTO archivalcataloguedto) {
@@ -80,7 +84,7 @@ public class ARCHIVALCATALOGUEResource {
 
 
 
-    @PreAuthorize("hasPermission(#archivalcatalogue_id,'Get',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#archivalcatalogue_id,'Get',{'Sql',this.archivalcatalogueMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"ARCHIVALCATALOGUE" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/archivalcatalogues/{archivalcatalogue_id}")
     public ResponseEntity<ARCHIVALCATALOGUEDTO> get(@PathVariable("archivalcatalogue_id") String archivalcatalogue_id) {
@@ -92,6 +96,7 @@ public class ARCHIVALCATALOGUEResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ARCHIVALCATALOGUE-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"ARCHIVALCATALOGUE" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/archivalcatalogues/getdraft")
     public ResponseEntity<ARCHIVALCATALOGUEDTO> getDraft() {
@@ -101,7 +106,7 @@ public class ARCHIVALCATALOGUEResource {
 
 
 
-    @PreAuthorize("hasPermission(#archivalcatalogue_id,'Remove',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#archivalcatalogue_id,'Remove',{'Sql',this.archivalcatalogueMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"ARCHIVALCATALOGUE" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/archivalcatalogues/{archivalcatalogue_id}")
     @Transactional
@@ -119,7 +124,7 @@ public class ARCHIVALCATALOGUEResource {
 
 
 
-    @PreAuthorize("hasPermission(#archivalcatalogue_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#archivalcatalogue_id,'Update',{'Sql',this.archivalcatalogueMapping,#archivalcataloguedto})")
     @ApiOperation(value = "Update", tags = {"ARCHIVALCATALOGUE" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/archivalcatalogues/{archivalcatalogue_id}")
     @Transactional
@@ -131,7 +136,6 @@ public class ARCHIVALCATALOGUEResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#archivalcatalogue_id,'Update',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "UpdateBatch", tags = {"ARCHIVALCATALOGUE" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/archivalcatalogues/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<ARCHIVALCATALOGUEDTO> archivalcataloguedtos) {
@@ -142,7 +146,7 @@ public class ARCHIVALCATALOGUEResource {
 
 
 
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.archivalcatalogueMapping,#archivalcataloguedto})")
     @ApiOperation(value = "Create", tags = {"ARCHIVALCATALOGUE" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/archivalcatalogues")
     @Transactional
@@ -152,7 +156,7 @@ public class ARCHIVALCATALOGUEResource {
         ARCHIVALCATALOGUEDTO dto = archivalcatalogueMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+
     @ApiOperation(value = "createBatch", tags = {"ARCHIVALCATALOGUE" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/archivalcatalogues/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<ARCHIVALCATALOGUEDTO> archivalcataloguedtos) {
@@ -160,7 +164,7 @@ public class ARCHIVALCATALOGUEResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ARCHIVALCATALOGUE-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ARCHIVALCATALOGUE-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"ARCHIVALCATALOGUE" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/archivalcatalogues/fetchdefault")
 	public ResponseEntity<List<ARCHIVALCATALOGUEDTO>> fetchDefault(ARCHIVALCATALOGUESearchContext context) {
@@ -173,7 +177,7 @@ public class ARCHIVALCATALOGUEResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ARCHIVALCATALOGUE-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ARCHIVALCATALOGUE-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"ARCHIVALCATALOGUE" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/archivalcatalogues/searchdefault")
 	public ResponseEntity<Page<ARCHIVALCATALOGUEDTO>> searchDefault(@RequestBody ARCHIVALCATALOGUESearchContext context) {
@@ -183,12 +187,6 @@ public class ARCHIVALCATALOGUEResource {
 	}
 
 
-    /**
-     * 用户权限校验
-     * @return
-     */
-	public ARCHIVALCATALOGUE getEntity(){
-        return new ARCHIVALCATALOGUE();
-    }
-
 }
+
+

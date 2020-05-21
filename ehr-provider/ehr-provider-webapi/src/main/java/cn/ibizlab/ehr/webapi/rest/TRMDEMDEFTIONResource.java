@@ -50,11 +50,14 @@ public class TRMDEMDEFTIONResource {
 
     @Autowired
     @Lazy
-    private TRMDEMDEFTIONMapping trmdemdeftionMapping;
+    public TRMDEMDEFTIONMapping trmdemdeftionMapping;
+
+    public TRMDEMDEFTIONDTO permissionDTO=new TRMDEMDEFTIONDTO();
 
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMDEMDEFTION-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"TRMDEMDEFTION" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/trmdemdeftions/getdraft")
     public ResponseEntity<TRMDEMDEFTIONDTO> getDraft() {
@@ -64,7 +67,7 @@ public class TRMDEMDEFTIONResource {
 
 
 
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.trmdemdeftionMapping,#trmdemdeftiondto})")
     @ApiOperation(value = "Create", tags = {"TRMDEMDEFTION" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmdemdeftions")
     @Transactional
@@ -74,7 +77,7 @@ public class TRMDEMDEFTIONResource {
         TRMDEMDEFTIONDTO dto = trmdemdeftionMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+
     @ApiOperation(value = "createBatch", tags = {"TRMDEMDEFTION" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmdemdeftions/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<TRMDEMDEFTIONDTO> trmdemdeftiondtos) {
@@ -85,7 +88,7 @@ public class TRMDEMDEFTIONResource {
 
 
 
-    @PreAuthorize("hasPermission(#trmdemdeftion_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#trmdemdeftion_id,'Update',{'Sql',this.trmdemdeftionMapping,#trmdemdeftiondto})")
     @ApiOperation(value = "Update", tags = {"TRMDEMDEFTION" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/trmdemdeftions/{trmdemdeftion_id}")
     @Transactional
@@ -97,7 +100,6 @@ public class TRMDEMDEFTIONResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#trmdemdeftion_id,'Update',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "UpdateBatch", tags = {"TRMDEMDEFTION" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/trmdemdeftions/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<TRMDEMDEFTIONDTO> trmdemdeftiondtos) {
@@ -108,7 +110,7 @@ public class TRMDEMDEFTIONResource {
 
 
 
-    @PreAuthorize("hasPermission(#trmdemdeftion_id,'Remove',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#trmdemdeftion_id,'Remove',{'Sql',this.trmdemdeftionMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"TRMDEMDEFTION" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/trmdemdeftions/{trmdemdeftion_id}")
     @Transactional
@@ -126,6 +128,7 @@ public class TRMDEMDEFTIONResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMDEMDEFTION-Save-all')")
     @ApiOperation(value = "Save", tags = {"TRMDEMDEFTION" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmdemdeftions/save")
     public ResponseEntity<Boolean> save(@RequestBody TRMDEMDEFTIONDTO trmdemdeftiondto) {
@@ -142,6 +145,7 @@ public class TRMDEMDEFTIONResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMDEMDEFTION-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"TRMDEMDEFTION" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmdemdeftions/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody TRMDEMDEFTIONDTO trmdemdeftiondto) {
@@ -151,7 +155,7 @@ public class TRMDEMDEFTIONResource {
 
 
 
-    @PreAuthorize("hasPermission(#trmdemdeftion_id,'Get',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#trmdemdeftion_id,'Get',{'Sql',this.trmdemdeftionMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"TRMDEMDEFTION" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/trmdemdeftions/{trmdemdeftion_id}")
     public ResponseEntity<TRMDEMDEFTIONDTO> get(@PathVariable("trmdemdeftion_id") String trmdemdeftion_id) {
@@ -160,7 +164,7 @@ public class TRMDEMDEFTIONResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMDEMDEFTION-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMDEMDEFTION-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"TRMDEMDEFTION" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/trmdemdeftions/fetchdefault")
 	public ResponseEntity<List<TRMDEMDEFTIONDTO>> fetchDefault(TRMDEMDEFTIONSearchContext context) {
@@ -173,7 +177,7 @@ public class TRMDEMDEFTIONResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMDEMDEFTION-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMDEMDEFTION-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"TRMDEMDEFTION" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/trmdemdeftions/searchdefault")
 	public ResponseEntity<Page<TRMDEMDEFTIONDTO>> searchDefault(@RequestBody TRMDEMDEFTIONSearchContext context) {
@@ -183,12 +187,6 @@ public class TRMDEMDEFTIONResource {
 	}
 
 
-    /**
-     * 用户权限校验
-     * @return
-     */
-	public TRMDEMDEFTION getEntity(){
-        return new TRMDEMDEFTION();
-    }
-
 }
+
+

@@ -50,11 +50,14 @@ public class PCMTXFPSQResource {
 
     @Autowired
     @Lazy
-    private PCMTXFPSQMapping pcmtxfpsqMapping;
+    public PCMTXFPSQMapping pcmtxfpsqMapping;
+
+    public PCMTXFPSQDTO permissionDTO=new PCMTXFPSQDTO();
 
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMTXFPSQ-FillPersonInfo-all')")
     @ApiOperation(value = "填充用户信息", tags = {"PCMTXFPSQ" },  notes = "填充用户信息")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmtxfpsqs/{pcmtxfpsq_id}/fillpersoninfo")
     @Transactional
@@ -68,7 +71,7 @@ public class PCMTXFPSQResource {
 
 
 
-    @PreAuthorize("hasPermission(#pcmtxfpsq_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#pcmtxfpsq_id,'Update',{'Sql',this.pcmtxfpsqMapping,#pcmtxfpsqdto})")
     @ApiOperation(value = "Update", tags = {"PCMTXFPSQ" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmtxfpsqs/{pcmtxfpsq_id}")
     @Transactional
@@ -80,7 +83,6 @@ public class PCMTXFPSQResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#pcmtxfpsq_id,'Update',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "UpdateBatch", tags = {"PCMTXFPSQ" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmtxfpsqs/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PCMTXFPSQDTO> pcmtxfpsqdtos) {
@@ -91,6 +93,7 @@ public class PCMTXFPSQResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMTXFPSQ-FPCZ-all')")
     @ApiOperation(value = "返聘操作", tags = {"PCMTXFPSQ" },  notes = "返聘操作")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmtxfpsqs/{pcmtxfpsq_id}/fpcz")
     @Transactional
@@ -104,7 +107,7 @@ public class PCMTXFPSQResource {
 
 
 
-    @PreAuthorize("hasPermission(#pcmtxfpsq_id,'Get',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#pcmtxfpsq_id,'Get',{'Sql',this.pcmtxfpsqMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"PCMTXFPSQ" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmtxfpsqs/{pcmtxfpsq_id}")
     public ResponseEntity<PCMTXFPSQDTO> get(@PathVariable("pcmtxfpsq_id") String pcmtxfpsq_id) {
@@ -116,6 +119,7 @@ public class PCMTXFPSQResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMTXFPSQ-FinishFP-all')")
     @ApiOperation(value = "完成返聘", tags = {"PCMTXFPSQ" },  notes = "完成返聘")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmtxfpsqs/{pcmtxfpsq_id}/finishfp")
     @Transactional
@@ -129,6 +133,7 @@ public class PCMTXFPSQResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMTXFPSQ-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"PCMTXFPSQ" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmtxfpsqs/getdraft")
     public ResponseEntity<PCMTXFPSQDTO> getDraft() {
@@ -138,6 +143,7 @@ public class PCMTXFPSQResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMTXFPSQ-SHTG-all')")
     @ApiOperation(value = "审核通过", tags = {"PCMTXFPSQ" },  notes = "审核通过")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmtxfpsqs/{pcmtxfpsq_id}/shtg")
     @Transactional
@@ -151,6 +157,7 @@ public class PCMTXFPSQResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMTXFPSQ-SHBTG-all')")
     @ApiOperation(value = "审核不通过", tags = {"PCMTXFPSQ" },  notes = "审核不通过")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmtxfpsqs/{pcmtxfpsq_id}/shbtg")
     @Transactional
@@ -164,6 +171,7 @@ public class PCMTXFPSQResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMTXFPSQ-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"PCMTXFPSQ" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmtxfpsqs/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PCMTXFPSQDTO pcmtxfpsqdto) {
@@ -173,6 +181,7 @@ public class PCMTXFPSQResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMTXFPSQ-Save-all')")
     @ApiOperation(value = "Save", tags = {"PCMTXFPSQ" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmtxfpsqs/save")
     public ResponseEntity<Boolean> save(@RequestBody PCMTXFPSQDTO pcmtxfpsqdto) {
@@ -189,7 +198,7 @@ public class PCMTXFPSQResource {
 
 
 
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.pcmtxfpsqMapping,#pcmtxfpsqdto})")
     @ApiOperation(value = "Create", tags = {"PCMTXFPSQ" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmtxfpsqs")
     @Transactional
@@ -199,7 +208,7 @@ public class PCMTXFPSQResource {
         PCMTXFPSQDTO dto = pcmtxfpsqMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+
     @ApiOperation(value = "createBatch", tags = {"PCMTXFPSQ" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmtxfpsqs/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PCMTXFPSQDTO> pcmtxfpsqdtos) {
@@ -210,7 +219,7 @@ public class PCMTXFPSQResource {
 
 
 
-    @PreAuthorize("hasPermission(#pcmtxfpsq_id,'Remove',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#pcmtxfpsq_id,'Remove',{'Sql',this.pcmtxfpsqMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"PCMTXFPSQ" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmtxfpsqs/{pcmtxfpsq_id}")
     @Transactional
@@ -225,7 +234,7 @@ public class PCMTXFPSQResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMTXFPSQ-FPJL-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMTXFPSQ-FPJL-all')")
 	@ApiOperation(value = "fetch返聘记录", tags = {"PCMTXFPSQ" } ,notes = "fetch返聘记录")
     @RequestMapping(method= RequestMethod.GET , value="/pcmtxfpsqs/fetchfpjl")
 	public ResponseEntity<List<PCMTXFPSQDTO>> fetchFPJL(PCMTXFPSQSearchContext context) {
@@ -238,7 +247,7 @@ public class PCMTXFPSQResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMTXFPSQ-FPJL-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMTXFPSQ-FPJL-all')")
 	@ApiOperation(value = "search返聘记录", tags = {"PCMTXFPSQ" } ,notes = "search返聘记录")
     @RequestMapping(method= RequestMethod.POST , value="/pcmtxfpsqs/searchfpjl")
 	public ResponseEntity<Page<PCMTXFPSQDTO>> searchFPJL(@RequestBody PCMTXFPSQSearchContext context) {
@@ -247,7 +256,7 @@ public class PCMTXFPSQResource {
                 .body(new PageImpl(pcmtxfpsqMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMTXFPSQ-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMTXFPSQ-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PCMTXFPSQ" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pcmtxfpsqs/fetchdefault")
 	public ResponseEntity<List<PCMTXFPSQDTO>> fetchDefault(PCMTXFPSQSearchContext context) {
@@ -260,7 +269,7 @@ public class PCMTXFPSQResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMTXFPSQ-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMTXFPSQ-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PCMTXFPSQ" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pcmtxfpsqs/searchdefault")
 	public ResponseEntity<Page<PCMTXFPSQDTO>> searchDefault(@RequestBody PCMTXFPSQSearchContext context) {
@@ -269,7 +278,7 @@ public class PCMTXFPSQResource {
                 .body(new PageImpl(pcmtxfpsqMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMTXFPSQ-YXSQDS-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMTXFPSQ-YXSQDS-all')")
 	@ApiOperation(value = "fetch未审核申请", tags = {"PCMTXFPSQ" } ,notes = "fetch未审核申请")
     @RequestMapping(method= RequestMethod.GET , value="/pcmtxfpsqs/fetchyxsqds")
 	public ResponseEntity<List<PCMTXFPSQDTO>> fetchYXSQDS(PCMTXFPSQSearchContext context) {
@@ -282,7 +291,7 @@ public class PCMTXFPSQResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMTXFPSQ-YXSQDS-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMTXFPSQ-YXSQDS-all')")
 	@ApiOperation(value = "search未审核申请", tags = {"PCMTXFPSQ" } ,notes = "search未审核申请")
     @RequestMapping(method= RequestMethod.POST , value="/pcmtxfpsqs/searchyxsqds")
 	public ResponseEntity<Page<PCMTXFPSQDTO>> searchYXSQDS(@RequestBody PCMTXFPSQSearchContext context) {
@@ -291,7 +300,7 @@ public class PCMTXFPSQResource {
                 .body(new PageImpl(pcmtxfpsqMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMTXFPSQ-FPGL-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMTXFPSQ-FPGL-all')")
 	@ApiOperation(value = "fetch返聘管理", tags = {"PCMTXFPSQ" } ,notes = "fetch返聘管理")
     @RequestMapping(method= RequestMethod.GET , value="/pcmtxfpsqs/fetchfpgl")
 	public ResponseEntity<List<PCMTXFPSQDTO>> fetchFPGL(PCMTXFPSQSearchContext context) {
@@ -304,7 +313,7 @@ public class PCMTXFPSQResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMTXFPSQ-FPGL-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMTXFPSQ-FPGL-all')")
 	@ApiOperation(value = "search返聘管理", tags = {"PCMTXFPSQ" } ,notes = "search返聘管理")
     @RequestMapping(method= RequestMethod.POST , value="/pcmtxfpsqs/searchfpgl")
 	public ResponseEntity<Page<PCMTXFPSQDTO>> searchFPGL(@RequestBody PCMTXFPSQSearchContext context) {
@@ -314,12 +323,6 @@ public class PCMTXFPSQResource {
 	}
 
 
-    /**
-     * 用户权限校验
-     * @return
-     */
-	public PCMTXFPSQ getEntity(){
-        return new PCMTXFPSQ();
-    }
-
 }
+
+

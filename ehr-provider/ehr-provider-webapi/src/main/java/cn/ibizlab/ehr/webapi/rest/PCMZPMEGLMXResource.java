@@ -50,11 +50,14 @@ public class PCMZPMEGLMXResource {
 
     @Autowired
     @Lazy
-    private PCMZPMEGLMXMapping pcmzpmeglmxMapping;
+    public PCMZPMEGLMXMapping pcmzpmeglmxMapping;
+
+    public PCMZPMEGLMXDTO permissionDTO=new PCMZPMEGLMXDTO();
 
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMZPMEGLMX-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"PCMZPMEGLMX" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmzpmeglmxes/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PCMZPMEGLMXDTO pcmzpmeglmxdto) {
@@ -64,7 +67,7 @@ public class PCMZPMEGLMXResource {
 
 
 
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.pcmzpmeglmxMapping,#pcmzpmeglmxdto})")
     @ApiOperation(value = "Create", tags = {"PCMZPMEGLMX" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmzpmeglmxes")
     @Transactional
@@ -74,7 +77,7 @@ public class PCMZPMEGLMXResource {
         PCMZPMEGLMXDTO dto = pcmzpmeglmxMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+
     @ApiOperation(value = "createBatch", tags = {"PCMZPMEGLMX" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmzpmeglmxes/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PCMZPMEGLMXDTO> pcmzpmeglmxdtos) {
@@ -85,7 +88,7 @@ public class PCMZPMEGLMXResource {
 
 
 
-    @PreAuthorize("hasPermission(#pcmzpmeglmx_id,'Get',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#pcmzpmeglmx_id,'Get',{'Sql',this.pcmzpmeglmxMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"PCMZPMEGLMX" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmzpmeglmxes/{pcmzpmeglmx_id}")
     public ResponseEntity<PCMZPMEGLMXDTO> get(@PathVariable("pcmzpmeglmx_id") String pcmzpmeglmx_id) {
@@ -97,6 +100,7 @@ public class PCMZPMEGLMXResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMZPMEGLMX-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"PCMZPMEGLMX" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmzpmeglmxes/getdraft")
     public ResponseEntity<PCMZPMEGLMXDTO> getDraft() {
@@ -106,7 +110,7 @@ public class PCMZPMEGLMXResource {
 
 
 
-    @PreAuthorize("hasPermission(#pcmzpmeglmx_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#pcmzpmeglmx_id,'Update',{'Sql',this.pcmzpmeglmxMapping,#pcmzpmeglmxdto})")
     @ApiOperation(value = "Update", tags = {"PCMZPMEGLMX" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmzpmeglmxes/{pcmzpmeglmx_id}")
     @Transactional
@@ -118,7 +122,6 @@ public class PCMZPMEGLMXResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#pcmzpmeglmx_id,'Update',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "UpdateBatch", tags = {"PCMZPMEGLMX" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmzpmeglmxes/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PCMZPMEGLMXDTO> pcmzpmeglmxdtos) {
@@ -129,6 +132,7 @@ public class PCMZPMEGLMXResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMZPMEGLMX-Save-all')")
     @ApiOperation(value = "Save", tags = {"PCMZPMEGLMX" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmzpmeglmxes/save")
     public ResponseEntity<Boolean> save(@RequestBody PCMZPMEGLMXDTO pcmzpmeglmxdto) {
@@ -145,7 +149,7 @@ public class PCMZPMEGLMXResource {
 
 
 
-    @PreAuthorize("hasPermission(#pcmzpmeglmx_id,'Remove',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#pcmzpmeglmx_id,'Remove',{'Sql',this.pcmzpmeglmxMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"PCMZPMEGLMX" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmzpmeglmxes/{pcmzpmeglmx_id}")
     @Transactional
@@ -160,7 +164,7 @@ public class PCMZPMEGLMXResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMZPMEGLMX-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMZPMEGLMX-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PCMZPMEGLMX" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pcmzpmeglmxes/fetchdefault")
 	public ResponseEntity<List<PCMZPMEGLMXDTO>> fetchDefault(PCMZPMEGLMXSearchContext context) {
@@ -173,7 +177,7 @@ public class PCMZPMEGLMXResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMZPMEGLMX-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMZPMEGLMX-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PCMZPMEGLMX" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pcmzpmeglmxes/searchdefault")
 	public ResponseEntity<Page<PCMZPMEGLMXDTO>> searchDefault(@RequestBody PCMZPMEGLMXSearchContext context) {
@@ -183,12 +187,6 @@ public class PCMZPMEGLMXResource {
 	}
 
 
-    /**
-     * 用户权限校验
-     * @return
-     */
-	public PCMZPMEGLMX getEntity(){
-        return new PCMZPMEGLMX();
-    }
-
 }
+
+

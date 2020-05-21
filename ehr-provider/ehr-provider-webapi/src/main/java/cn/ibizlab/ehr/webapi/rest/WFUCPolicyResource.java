@@ -50,12 +50,14 @@ public class WFUCPolicyResource {
 
     @Autowired
     @Lazy
-    private WFUCPolicyMapping wfucpolicyMapping;
+    public WFUCPolicyMapping wfucpolicyMapping;
+
+    public WFUCPolicyDTO permissionDTO=new WFUCPolicyDTO();
 
 
 
 
-    @PreAuthorize("hasPermission(#wfucpolicy_id,'Get',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#wfucpolicy_id,'Get',{'Sql',this.wfucpolicyMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"WFUCPolicy" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/wfucpolicies/{wfucpolicy_id}")
     public ResponseEntity<WFUCPolicyDTO> get(@PathVariable("wfucpolicy_id") String wfucpolicy_id) {
@@ -67,6 +69,7 @@ public class WFUCPolicyResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFUCPolicy-DisablePolicy-all')")
     @ApiOperation(value = "禁用策略", tags = {"WFUCPolicy" },  notes = "禁用策略")
 	@RequestMapping(method = RequestMethod.POST, value = "/wfucpolicies/{wfucpolicy_id}/disablepolicy")
     @Transactional
@@ -80,6 +83,7 @@ public class WFUCPolicyResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFUCPolicy-Save-all')")
     @ApiOperation(value = "Save", tags = {"WFUCPolicy" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/wfucpolicies/save")
     public ResponseEntity<Boolean> save(@RequestBody WFUCPolicyDTO wfucpolicydto) {
@@ -96,7 +100,7 @@ public class WFUCPolicyResource {
 
 
 
-    @PreAuthorize("hasPermission(#wfucpolicy_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#wfucpolicy_id,'Update',{'Sql',this.wfucpolicyMapping,#wfucpolicydto})")
     @ApiOperation(value = "Update", tags = {"WFUCPolicy" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/wfucpolicies/{wfucpolicy_id}")
     @Transactional
@@ -108,7 +112,6 @@ public class WFUCPolicyResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#wfucpolicy_id,'Update',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "UpdateBatch", tags = {"WFUCPolicy" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/wfucpolicies/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<WFUCPolicyDTO> wfucpolicydtos) {
@@ -119,7 +122,7 @@ public class WFUCPolicyResource {
 
 
 
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.wfucpolicyMapping,#wfucpolicydto})")
     @ApiOperation(value = "Create", tags = {"WFUCPolicy" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/wfucpolicies")
     @Transactional
@@ -129,7 +132,7 @@ public class WFUCPolicyResource {
         WFUCPolicyDTO dto = wfucpolicyMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+
     @ApiOperation(value = "createBatch", tags = {"WFUCPolicy" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/wfucpolicies/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<WFUCPolicyDTO> wfucpolicydtos) {
@@ -140,6 +143,7 @@ public class WFUCPolicyResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFUCPolicy-EnablePolicy-all')")
     @ApiOperation(value = "启用策略", tags = {"WFUCPolicy" },  notes = "启用策略")
 	@RequestMapping(method = RequestMethod.POST, value = "/wfucpolicies/{wfucpolicy_id}/enablepolicy")
     @Transactional
@@ -153,7 +157,7 @@ public class WFUCPolicyResource {
 
 
 
-    @PreAuthorize("hasPermission(#wfucpolicy_id,'Remove',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#wfucpolicy_id,'Remove',{'Sql',this.wfucpolicyMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"WFUCPolicy" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/wfucpolicies/{wfucpolicy_id}")
     @Transactional
@@ -171,6 +175,7 @@ public class WFUCPolicyResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFUCPolicy-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"WFUCPolicy" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/wfucpolicies/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody WFUCPolicyDTO wfucpolicydto) {
@@ -180,13 +185,14 @@ public class WFUCPolicyResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFUCPolicy-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"WFUCPolicy" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/wfucpolicies/getdraft")
     public ResponseEntity<WFUCPolicyDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(wfucpolicyMapping.toDto(wfucpolicyService.getDraft(new WFUCPolicy())));
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFUCPolicy-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFUCPolicy-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"WFUCPolicy" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/wfucpolicies/fetchdefault")
 	public ResponseEntity<List<WFUCPolicyDTO>> fetchDefault(WFUCPolicySearchContext context) {
@@ -199,7 +205,7 @@ public class WFUCPolicyResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFUCPolicy-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFUCPolicy-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"WFUCPolicy" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/wfucpolicies/searchdefault")
 	public ResponseEntity<Page<WFUCPolicyDTO>> searchDefault(@RequestBody WFUCPolicySearchContext context) {
@@ -209,12 +215,6 @@ public class WFUCPolicyResource {
 	}
 
 
-    /**
-     * 用户权限校验
-     * @return
-     */
-	public WFUCPolicy getEntity(){
-        return new WFUCPolicy();
-    }
-
 }
+
+

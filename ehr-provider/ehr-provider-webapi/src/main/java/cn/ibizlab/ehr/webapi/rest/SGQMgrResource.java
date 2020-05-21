@@ -50,12 +50,14 @@ public class SGQMgrResource {
 
     @Autowired
     @Lazy
-    private SGQMgrMapping sgqmgrMapping;
+    public SGQMgrMapping sgqmgrMapping;
+
+    public SGQMgrDTO permissionDTO=new SGQMgrDTO();
 
 
 
 
-    @PreAuthorize("hasPermission(#sgqmgr_id,'Get',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#sgqmgr_id,'Get',{'Sql',this.sgqmgrMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"SGQMgr" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/sgqmgrs/{sgqmgr_id}")
     public ResponseEntity<SGQMgrDTO> get(@PathVariable("sgqmgr_id") String sgqmgr_id) {
@@ -67,6 +69,7 @@ public class SGQMgrResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SGQMgr-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"SGQMgr" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/sgqmgrs/getdraft")
     public ResponseEntity<SGQMgrDTO> getDraft() {
@@ -76,7 +79,7 @@ public class SGQMgrResource {
 
 
 
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.sgqmgrMapping,#sgqmgrdto})")
     @ApiOperation(value = "Create", tags = {"SGQMgr" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/sgqmgrs")
     @Transactional
@@ -86,7 +89,7 @@ public class SGQMgrResource {
         SGQMgrDTO dto = sgqmgrMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+
     @ApiOperation(value = "createBatch", tags = {"SGQMgr" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/sgqmgrs/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<SGQMgrDTO> sgqmgrdtos) {
@@ -97,7 +100,7 @@ public class SGQMgrResource {
 
 
 
-    @PreAuthorize("hasPermission(#sgqmgr_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#sgqmgr_id,'Update',{'Sql',this.sgqmgrMapping,#sgqmgrdto})")
     @ApiOperation(value = "Update", tags = {"SGQMgr" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/sgqmgrs/{sgqmgr_id}")
     @Transactional
@@ -109,7 +112,6 @@ public class SGQMgrResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#sgqmgr_id,'Update',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "UpdateBatch", tags = {"SGQMgr" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/sgqmgrs/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<SGQMgrDTO> sgqmgrdtos) {
@@ -120,7 +122,7 @@ public class SGQMgrResource {
 
 
 
-    @PreAuthorize("hasPermission(#sgqmgr_id,'Remove',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#sgqmgr_id,'Remove',{'Sql',this.sgqmgrMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"SGQMgr" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/sgqmgrs/{sgqmgr_id}")
     @Transactional
@@ -138,6 +140,7 @@ public class SGQMgrResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SGQMgr-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"SGQMgr" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/sgqmgrs/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody SGQMgrDTO sgqmgrdto) {
@@ -147,6 +150,7 @@ public class SGQMgrResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SGQMgr-Save-all')")
     @ApiOperation(value = "Save", tags = {"SGQMgr" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/sgqmgrs/save")
     public ResponseEntity<Boolean> save(@RequestBody SGQMgrDTO sgqmgrdto) {
@@ -160,7 +164,7 @@ public class SGQMgrResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SGQMgr-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SGQMgr-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"SGQMgr" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/sgqmgrs/fetchdefault")
 	public ResponseEntity<List<SGQMgrDTO>> fetchDefault(SGQMgrSearchContext context) {
@@ -173,7 +177,7 @@ public class SGQMgrResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SGQMgr-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SGQMgr-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"SGQMgr" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/sgqmgrs/searchdefault")
 	public ResponseEntity<Page<SGQMgrDTO>> searchDefault(@RequestBody SGQMgrSearchContext context) {
@@ -183,12 +187,6 @@ public class SGQMgrResource {
 	}
 
 
-    /**
-     * 用户权限校验
-     * @return
-     */
-	public SGQMgr getEntity(){
-        return new SGQMgr();
-    }
-
 }
+
+

@@ -50,11 +50,14 @@ public class DataAuditResource {
 
     @Autowired
     @Lazy
-    private DataAuditMapping dataauditMapping;
+    public DataAuditMapping dataauditMapping;
+
+    public DataAuditDTO permissionDTO=new DataAuditDTO();
 
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DataAudit-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"DataAudit" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/dataaudits/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody DataAuditDTO dataauditdto) {
@@ -64,6 +67,7 @@ public class DataAuditResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DataAudit-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"DataAudit" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/dataaudits/getdraft")
     public ResponseEntity<DataAuditDTO> getDraft() {
@@ -73,7 +77,7 @@ public class DataAuditResource {
 
 
 
-    @PreAuthorize("hasPermission(#dataaudit_id,'Get',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#dataaudit_id,'Get',{'Sql',this.dataauditMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"DataAudit" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/dataaudits/{dataaudit_id}")
     public ResponseEntity<DataAuditDTO> get(@PathVariable("dataaudit_id") String dataaudit_id) {
@@ -85,7 +89,7 @@ public class DataAuditResource {
 
 
 
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.dataauditMapping,#dataauditdto})")
     @ApiOperation(value = "Create", tags = {"DataAudit" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/dataaudits")
     @Transactional
@@ -95,7 +99,7 @@ public class DataAuditResource {
         DataAuditDTO dto = dataauditMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+
     @ApiOperation(value = "createBatch", tags = {"DataAudit" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/dataaudits/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<DataAuditDTO> dataauditdtos) {
@@ -106,7 +110,7 @@ public class DataAuditResource {
 
 
 
-    @PreAuthorize("hasPermission(#dataaudit_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#dataaudit_id,'Update',{'Sql',this.dataauditMapping,#dataauditdto})")
     @ApiOperation(value = "Update", tags = {"DataAudit" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/dataaudits/{dataaudit_id}")
     @Transactional
@@ -118,7 +122,6 @@ public class DataAuditResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#dataaudit_id,'Update',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "UpdateBatch", tags = {"DataAudit" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/dataaudits/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<DataAuditDTO> dataauditdtos) {
@@ -129,7 +132,7 @@ public class DataAuditResource {
 
 
 
-    @PreAuthorize("hasPermission(#dataaudit_id,'Remove',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#dataaudit_id,'Remove',{'Sql',this.dataauditMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"DataAudit" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/dataaudits/{dataaudit_id}")
     @Transactional
@@ -147,6 +150,7 @@ public class DataAuditResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DataAudit-Save-all')")
     @ApiOperation(value = "Save", tags = {"DataAudit" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/dataaudits/save")
     public ResponseEntity<Boolean> save(@RequestBody DataAuditDTO dataauditdto) {
@@ -160,7 +164,7 @@ public class DataAuditResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DataAudit-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DataAudit-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"DataAudit" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/dataaudits/fetchdefault")
 	public ResponseEntity<List<DataAuditDTO>> fetchDefault(DataAuditSearchContext context) {
@@ -173,7 +177,7 @@ public class DataAuditResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DataAudit-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DataAudit-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"DataAudit" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/dataaudits/searchdefault")
 	public ResponseEntity<Page<DataAuditDTO>> searchDefault(@RequestBody DataAuditSearchContext context) {
@@ -183,12 +187,6 @@ public class DataAuditResource {
 	}
 
 
-    /**
-     * 用户权限校验
-     * @return
-     */
-	public DataAudit getEntity(){
-        return new DataAudit();
-    }
-
 }
+
+

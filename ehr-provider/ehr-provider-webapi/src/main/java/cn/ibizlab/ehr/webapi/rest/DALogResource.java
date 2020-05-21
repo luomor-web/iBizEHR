@@ -50,11 +50,14 @@ public class DALogResource {
 
     @Autowired
     @Lazy
-    private DALogMapping dalogMapping;
+    public DALogMapping dalogMapping;
+
+    public DALogDTO permissionDTO=new DALogDTO();
 
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DALog-Save-all')")
     @ApiOperation(value = "Save", tags = {"DALog" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/dalogs/save")
     public ResponseEntity<Boolean> save(@RequestBody DALogDTO dalogdto) {
@@ -71,7 +74,7 @@ public class DALogResource {
 
 
 
-    @PreAuthorize("hasPermission(#dalog_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#dalog_id,'Update',{'Sql',this.dalogMapping,#dalogdto})")
     @ApiOperation(value = "Update", tags = {"DALog" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/dalogs/{dalog_id}")
     @Transactional
@@ -83,7 +86,6 @@ public class DALogResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#dalog_id,'Update',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "UpdateBatch", tags = {"DALog" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/dalogs/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<DALogDTO> dalogdtos) {
@@ -94,6 +96,7 @@ public class DALogResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DALog-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"DALog" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/dalogs/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody DALogDTO dalogdto) {
@@ -103,7 +106,7 @@ public class DALogResource {
 
 
 
-    @PreAuthorize("hasPermission(#dalog_id,'Remove',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#dalog_id,'Remove',{'Sql',this.dalogMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"DALog" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/dalogs/{dalog_id}")
     @Transactional
@@ -121,6 +124,7 @@ public class DALogResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DALog-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"DALog" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/dalogs/getdraft")
     public ResponseEntity<DALogDTO> getDraft() {
@@ -130,7 +134,7 @@ public class DALogResource {
 
 
 
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.dalogMapping,#dalogdto})")
     @ApiOperation(value = "Create", tags = {"DALog" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/dalogs")
     @Transactional
@@ -140,7 +144,7 @@ public class DALogResource {
         DALogDTO dto = dalogMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+
     @ApiOperation(value = "createBatch", tags = {"DALog" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/dalogs/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<DALogDTO> dalogdtos) {
@@ -151,7 +155,7 @@ public class DALogResource {
 
 
 
-    @PreAuthorize("hasPermission(#dalog_id,'Get',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#dalog_id,'Get',{'Sql',this.dalogMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"DALog" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/dalogs/{dalog_id}")
     public ResponseEntity<DALogDTO> get(@PathVariable("dalog_id") String dalog_id) {
@@ -160,7 +164,7 @@ public class DALogResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DALog-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DALog-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"DALog" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/dalogs/fetchdefault")
 	public ResponseEntity<List<DALogDTO>> fetchDefault(DALogSearchContext context) {
@@ -173,7 +177,7 @@ public class DALogResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DALog-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DALog-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"DALog" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/dalogs/searchdefault")
 	public ResponseEntity<Page<DALogDTO>> searchDefault(@RequestBody DALogSearchContext context) {
@@ -183,12 +187,6 @@ public class DALogResource {
 	}
 
 
-    /**
-     * 用户权限校验
-     * @return
-     */
-	public DALog getEntity(){
-        return new DALog();
-    }
-
 }
+
+

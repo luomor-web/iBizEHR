@@ -50,12 +50,14 @@ public class WXAccountResource {
 
     @Autowired
     @Lazy
-    private WXAccountMapping wxaccountMapping;
+    public WXAccountMapping wxaccountMapping;
+
+    public WXAccountDTO permissionDTO=new WXAccountDTO();
 
 
 
 
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.wxaccountMapping,#wxaccountdto})")
     @ApiOperation(value = "Create", tags = {"WXAccount" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/wxaccounts")
     @Transactional
@@ -65,7 +67,7 @@ public class WXAccountResource {
         WXAccountDTO dto = wxaccountMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+
     @ApiOperation(value = "createBatch", tags = {"WXAccount" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/wxaccounts/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<WXAccountDTO> wxaccountdtos) {
@@ -76,6 +78,7 @@ public class WXAccountResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WXAccount-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"WXAccount" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/wxaccounts/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody WXAccountDTO wxaccountdto) {
@@ -85,7 +88,7 @@ public class WXAccountResource {
 
 
 
-    @PreAuthorize("hasPermission(#wxaccount_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#wxaccount_id,'Update',{'Sql',this.wxaccountMapping,#wxaccountdto})")
     @ApiOperation(value = "Update", tags = {"WXAccount" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/wxaccounts/{wxaccount_id}")
     @Transactional
@@ -97,7 +100,6 @@ public class WXAccountResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#wxaccount_id,'Update',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "UpdateBatch", tags = {"WXAccount" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/wxaccounts/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<WXAccountDTO> wxaccountdtos) {
@@ -108,6 +110,7 @@ public class WXAccountResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WXAccount-SyncOrgSector-all')")
     @ApiOperation(value = "同步组织部门", tags = {"WXAccount" },  notes = "同步组织部门")
 	@RequestMapping(method = RequestMethod.POST, value = "/wxaccounts/{wxaccount_id}/syncorgsector")
     @Transactional
@@ -121,6 +124,7 @@ public class WXAccountResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WXAccount-PubMenu-all')")
     @ApiOperation(value = "发布菜单", tags = {"WXAccount" },  notes = "发布菜单")
 	@RequestMapping(method = RequestMethod.POST, value = "/wxaccounts/{wxaccount_id}/pubmenu")
     @Transactional
@@ -134,7 +138,7 @@ public class WXAccountResource {
 
 
 
-    @PreAuthorize("hasPermission(#wxaccount_id,'Remove',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#wxaccount_id,'Remove',{'Sql',this.wxaccountMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"WXAccount" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/wxaccounts/{wxaccount_id}")
     @Transactional
@@ -152,6 +156,7 @@ public class WXAccountResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WXAccount-SyncOrgUser-all')")
     @ApiOperation(value = "同步组织人员", tags = {"WXAccount" },  notes = "同步组织人员")
 	@RequestMapping(method = RequestMethod.POST, value = "/wxaccounts/{wxaccount_id}/syncorguser")
     @Transactional
@@ -165,7 +170,7 @@ public class WXAccountResource {
 
 
 
-    @PreAuthorize("hasPermission(#wxaccount_id,'Get',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#wxaccount_id,'Get',{'Sql',this.wxaccountMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"WXAccount" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/wxaccounts/{wxaccount_id}")
     public ResponseEntity<WXAccountDTO> get(@PathVariable("wxaccount_id") String wxaccount_id) {
@@ -177,6 +182,7 @@ public class WXAccountResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WXAccount-Save-all')")
     @ApiOperation(value = "Save", tags = {"WXAccount" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/wxaccounts/save")
     public ResponseEntity<Boolean> save(@RequestBody WXAccountDTO wxaccountdto) {
@@ -193,13 +199,14 @@ public class WXAccountResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WXAccount-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"WXAccount" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/wxaccounts/getdraft")
     public ResponseEntity<WXAccountDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(wxaccountMapping.toDto(wxaccountService.getDraft(new WXAccount())));
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WXAccount-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WXAccount-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"WXAccount" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/wxaccounts/fetchdefault")
 	public ResponseEntity<List<WXAccountDTO>> fetchDefault(WXAccountSearchContext context) {
@@ -212,7 +219,7 @@ public class WXAccountResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WXAccount-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WXAccount-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"WXAccount" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/wxaccounts/searchdefault")
 	public ResponseEntity<Page<WXAccountDTO>> searchDefault(@RequestBody WXAccountSearchContext context) {
@@ -222,12 +229,6 @@ public class WXAccountResource {
 	}
 
 
-    /**
-     * 用户权限校验
-     * @return
-     */
-	public WXAccount getEntity(){
-        return new WXAccount();
-    }
-
 }
+
+

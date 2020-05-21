@@ -50,12 +50,14 @@ public class QueryModelResource {
 
     @Autowired
     @Lazy
-    private QueryModelMapping querymodelMapping;
+    public QueryModelMapping querymodelMapping;
+
+    public QueryModelDTO permissionDTO=new QueryModelDTO();
 
 
 
 
-    @PreAuthorize("hasPermission(#querymodel_id,'Get',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#querymodel_id,'Get',{'Sql',this.querymodelMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"QueryModel" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/querymodels/{querymodel_id}")
     public ResponseEntity<QueryModelDTO> get(@PathVariable("querymodel_id") String querymodel_id) {
@@ -67,7 +69,7 @@ public class QueryModelResource {
 
 
 
-    @PreAuthorize("hasPermission(#querymodel_id,'Remove',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#querymodel_id,'Remove',{'Sql',this.querymodelMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"QueryModel" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/querymodels/{querymodel_id}")
     @Transactional
@@ -85,7 +87,7 @@ public class QueryModelResource {
 
 
 
-    @PreAuthorize("hasPermission(#querymodel_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#querymodel_id,'Update',{'Sql',this.querymodelMapping,#querymodeldto})")
     @ApiOperation(value = "Update", tags = {"QueryModel" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/querymodels/{querymodel_id}")
     @Transactional
@@ -97,7 +99,6 @@ public class QueryModelResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#querymodel_id,'Update',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "UpdateBatch", tags = {"QueryModel" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/querymodels/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<QueryModelDTO> querymodeldtos) {
@@ -108,6 +109,7 @@ public class QueryModelResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-QueryModel-Save-all')")
     @ApiOperation(value = "Save", tags = {"QueryModel" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/querymodels/save")
     public ResponseEntity<Boolean> save(@RequestBody QueryModelDTO querymodeldto) {
@@ -124,6 +126,7 @@ public class QueryModelResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-QueryModel-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"QueryModel" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/querymodels/getdraft")
     public ResponseEntity<QueryModelDTO> getDraft() {
@@ -133,6 +136,7 @@ public class QueryModelResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-QueryModel-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"QueryModel" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/querymodels/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody QueryModelDTO querymodeldto) {
@@ -142,7 +146,7 @@ public class QueryModelResource {
 
 
 
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.querymodelMapping,#querymodeldto})")
     @ApiOperation(value = "Create", tags = {"QueryModel" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/querymodels")
     @Transactional
@@ -152,7 +156,7 @@ public class QueryModelResource {
         QueryModelDTO dto = querymodelMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+
     @ApiOperation(value = "createBatch", tags = {"QueryModel" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/querymodels/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<QueryModelDTO> querymodeldtos) {
@@ -160,7 +164,7 @@ public class QueryModelResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-QueryModel-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-QueryModel-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"QueryModel" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/querymodels/fetchdefault")
 	public ResponseEntity<List<QueryModelDTO>> fetchDefault(QueryModelSearchContext context) {
@@ -173,7 +177,7 @@ public class QueryModelResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-QueryModel-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-QueryModel-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"QueryModel" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/querymodels/searchdefault")
 	public ResponseEntity<Page<QueryModelDTO>> searchDefault(@RequestBody QueryModelSearchContext context) {
@@ -182,7 +186,7 @@ public class QueryModelResource {
                 .body(new PageImpl(querymodelMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-QueryModel-CurDE-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-QueryModel-CurDE-all')")
 	@ApiOperation(value = "fetch当前实体", tags = {"QueryModel" } ,notes = "fetch当前实体")
     @RequestMapping(method= RequestMethod.GET , value="/querymodels/fetchcurde")
 	public ResponseEntity<List<QueryModelDTO>> fetchCurDE(QueryModelSearchContext context) {
@@ -195,7 +199,7 @@ public class QueryModelResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-QueryModel-CurDE-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-QueryModel-CurDE-all')")
 	@ApiOperation(value = "search当前实体", tags = {"QueryModel" } ,notes = "search当前实体")
     @RequestMapping(method= RequestMethod.POST , value="/querymodels/searchcurde")
 	public ResponseEntity<Page<QueryModelDTO>> searchCurDE(@RequestBody QueryModelSearchContext context) {
@@ -205,12 +209,6 @@ public class QueryModelResource {
 	}
 
 
-    /**
-     * 用户权限校验
-     * @return
-     */
-	public QueryModel getEntity(){
-        return new QueryModel();
-    }
-
 }
+
+

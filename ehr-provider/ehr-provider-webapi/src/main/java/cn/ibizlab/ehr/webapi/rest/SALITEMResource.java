@@ -50,12 +50,14 @@ public class SALITEMResource {
 
     @Autowired
     @Lazy
-    private SALITEMMapping salitemMapping;
+    public SALITEMMapping salitemMapping;
+
+    public SALITEMDTO permissionDTO=new SALITEMDTO();
 
 
 
 
-    @PreAuthorize("hasPermission(#salitem_id,'Get',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#salitem_id,'Get',{'Sql',this.salitemMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"SALITEM" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/salitems/{salitem_id}")
     public ResponseEntity<SALITEMDTO> get(@PathVariable("salitem_id") String salitem_id) {
@@ -67,7 +69,7 @@ public class SALITEMResource {
 
 
 
-    @PreAuthorize("hasPermission(#salitem_id,'Remove',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#salitem_id,'Remove',{'Sql',this.salitemMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"SALITEM" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/salitems/{salitem_id}")
     @Transactional
@@ -85,6 +87,7 @@ public class SALITEMResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALITEM-Save-all')")
     @ApiOperation(value = "Save", tags = {"SALITEM" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/salitems/save")
     public ResponseEntity<Boolean> save(@RequestBody SALITEMDTO salitemdto) {
@@ -101,6 +104,7 @@ public class SALITEMResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALITEM-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"SALITEM" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/salitems/getdraft")
     public ResponseEntity<SALITEMDTO> getDraft() {
@@ -110,6 +114,7 @@ public class SALITEMResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALITEM-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"SALITEM" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/salitems/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody SALITEMDTO salitemdto) {
@@ -119,7 +124,7 @@ public class SALITEMResource {
 
 
 
-    @PreAuthorize("hasPermission(#salitem_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#salitem_id,'Update',{'Sql',this.salitemMapping,#salitemdto})")
     @ApiOperation(value = "Update", tags = {"SALITEM" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/salitems/{salitem_id}")
     @Transactional
@@ -131,7 +136,6 @@ public class SALITEMResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#salitem_id,'Update',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "UpdateBatch", tags = {"SALITEM" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/salitems/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<SALITEMDTO> salitemdtos) {
@@ -142,7 +146,7 @@ public class SALITEMResource {
 
 
 
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.salitemMapping,#salitemdto})")
     @ApiOperation(value = "Create", tags = {"SALITEM" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/salitems")
     @Transactional
@@ -152,7 +156,7 @@ public class SALITEMResource {
         SALITEMDTO dto = salitemMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+
     @ApiOperation(value = "createBatch", tags = {"SALITEM" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/salitems/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<SALITEMDTO> salitemdtos) {
@@ -160,7 +164,7 @@ public class SALITEMResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALITEM-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALITEM-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"SALITEM" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/salitems/fetchdefault")
 	public ResponseEntity<List<SALITEMDTO>> fetchDefault(SALITEMSearchContext context) {
@@ -173,7 +177,7 @@ public class SALITEMResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALITEM-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALITEM-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"SALITEM" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/salitems/searchdefault")
 	public ResponseEntity<Page<SALITEMDTO>> searchDefault(@RequestBody SALITEMSearchContext context) {
@@ -183,12 +187,6 @@ public class SALITEMResource {
 	}
 
 
-    /**
-     * 用户权限校验
-     * @return
-     */
-	public SALITEM getEntity(){
-        return new SALITEM();
-    }
-
 }
+
+

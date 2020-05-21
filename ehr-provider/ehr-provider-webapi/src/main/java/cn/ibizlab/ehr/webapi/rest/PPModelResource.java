@@ -50,11 +50,14 @@ public class PPModelResource {
 
     @Autowired
     @Lazy
-    private PPModelMapping ppmodelMapping;
+    public PPModelMapping ppmodelMapping;
+
+    public PPModelDTO permissionDTO=new PPModelDTO();
 
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PPModel-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"PPModel" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/ppmodels/getdraft")
     public ResponseEntity<PPModelDTO> getDraft() {
@@ -64,7 +67,7 @@ public class PPModelResource {
 
 
 
-    @PreAuthorize("hasPermission(#ppmodel_id,'Remove',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#ppmodel_id,'Remove',{'Sql',this.ppmodelMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"PPModel" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/ppmodels/{ppmodel_id}")
     @Transactional
@@ -82,6 +85,7 @@ public class PPModelResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PPModel-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"PPModel" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/ppmodels/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PPModelDTO ppmodeldto) {
@@ -91,6 +95,7 @@ public class PPModelResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PPModel-Save-all')")
     @ApiOperation(value = "Save", tags = {"PPModel" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/ppmodels/save")
     public ResponseEntity<Boolean> save(@RequestBody PPModelDTO ppmodeldto) {
@@ -107,7 +112,7 @@ public class PPModelResource {
 
 
 
-    @PreAuthorize("hasPermission(#ppmodel_id,'Get',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#ppmodel_id,'Get',{'Sql',this.ppmodelMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"PPModel" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/ppmodels/{ppmodel_id}")
     public ResponseEntity<PPModelDTO> get(@PathVariable("ppmodel_id") String ppmodel_id) {
@@ -119,7 +124,7 @@ public class PPModelResource {
 
 
 
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.ppmodelMapping,#ppmodeldto})")
     @ApiOperation(value = "Create", tags = {"PPModel" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/ppmodels")
     @Transactional
@@ -129,7 +134,7 @@ public class PPModelResource {
         PPModelDTO dto = ppmodelMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+
     @ApiOperation(value = "createBatch", tags = {"PPModel" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/ppmodels/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PPModelDTO> ppmodeldtos) {
@@ -140,7 +145,7 @@ public class PPModelResource {
 
 
 
-    @PreAuthorize("hasPermission(#ppmodel_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#ppmodel_id,'Update',{'Sql',this.ppmodelMapping,#ppmodeldto})")
     @ApiOperation(value = "Update", tags = {"PPModel" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/ppmodels/{ppmodel_id}")
     @Transactional
@@ -152,7 +157,6 @@ public class PPModelResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#ppmodel_id,'Update',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "UpdateBatch", tags = {"PPModel" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/ppmodels/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PPModelDTO> ppmodeldtos) {
@@ -160,7 +164,7 @@ public class PPModelResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PPModel-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PPModel-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PPModel" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/ppmodels/fetchdefault")
 	public ResponseEntity<List<PPModelDTO>> fetchDefault(PPModelSearchContext context) {
@@ -173,7 +177,7 @@ public class PPModelResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PPModel-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PPModel-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PPModel" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/ppmodels/searchdefault")
 	public ResponseEntity<Page<PPModelDTO>> searchDefault(@RequestBody PPModelSearchContext context) {
@@ -183,12 +187,6 @@ public class PPModelResource {
 	}
 
 
-    /**
-     * 用户权限校验
-     * @return
-     */
-	public PPModel getEntity(){
-        return new PPModel();
-    }
-
 }
+
+

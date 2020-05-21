@@ -50,11 +50,14 @@ public class ATTENDENCETYPEResource {
 
     @Autowired
     @Lazy
-    private ATTENDENCETYPEMapping attendencetypeMapping;
+    public ATTENDENCETYPEMapping attendencetypeMapping;
+
+    public ATTENDENCETYPEDTO permissionDTO=new ATTENDENCETYPEDTO();
 
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ATTENDENCETYPE-Save-all')")
     @ApiOperation(value = "Save", tags = {"ATTENDENCETYPE" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/attendencetypes/save")
     public ResponseEntity<Boolean> save(@RequestBody ATTENDENCETYPEDTO attendencetypedto) {
@@ -71,7 +74,7 @@ public class ATTENDENCETYPEResource {
 
 
 
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.attendencetypeMapping,#attendencetypedto})")
     @ApiOperation(value = "Create", tags = {"ATTENDENCETYPE" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/attendencetypes")
     @Transactional
@@ -81,7 +84,7 @@ public class ATTENDENCETYPEResource {
         ATTENDENCETYPEDTO dto = attendencetypeMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+
     @ApiOperation(value = "createBatch", tags = {"ATTENDENCETYPE" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/attendencetypes/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<ATTENDENCETYPEDTO> attendencetypedtos) {
@@ -92,6 +95,7 @@ public class ATTENDENCETYPEResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ATTENDENCETYPE-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"ATTENDENCETYPE" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/attendencetypes/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody ATTENDENCETYPEDTO attendencetypedto) {
@@ -101,7 +105,7 @@ public class ATTENDENCETYPEResource {
 
 
 
-    @PreAuthorize("hasPermission(#attendencetype_id,'Remove',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#attendencetype_id,'Remove',{'Sql',this.attendencetypeMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"ATTENDENCETYPE" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/attendencetypes/{attendencetype_id}")
     @Transactional
@@ -119,7 +123,7 @@ public class ATTENDENCETYPEResource {
 
 
 
-    @PreAuthorize("hasPermission(#attendencetype_id,'Get',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#attendencetype_id,'Get',{'Sql',this.attendencetypeMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"ATTENDENCETYPE" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/attendencetypes/{attendencetype_id}")
     public ResponseEntity<ATTENDENCETYPEDTO> get(@PathVariable("attendencetype_id") String attendencetype_id) {
@@ -131,6 +135,7 @@ public class ATTENDENCETYPEResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ATTENDENCETYPE-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"ATTENDENCETYPE" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/attendencetypes/getdraft")
     public ResponseEntity<ATTENDENCETYPEDTO> getDraft() {
@@ -140,7 +145,7 @@ public class ATTENDENCETYPEResource {
 
 
 
-    @PreAuthorize("hasPermission(#attendencetype_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#attendencetype_id,'Update',{'Sql',this.attendencetypeMapping,#attendencetypedto})")
     @ApiOperation(value = "Update", tags = {"ATTENDENCETYPE" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/attendencetypes/{attendencetype_id}")
     @Transactional
@@ -152,7 +157,6 @@ public class ATTENDENCETYPEResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#attendencetype_id,'Update',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "UpdateBatch", tags = {"ATTENDENCETYPE" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/attendencetypes/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<ATTENDENCETYPEDTO> attendencetypedtos) {
@@ -160,7 +164,7 @@ public class ATTENDENCETYPEResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ATTENDENCETYPE-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ATTENDENCETYPE-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"ATTENDENCETYPE" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/attendencetypes/fetchdefault")
 	public ResponseEntity<List<ATTENDENCETYPEDTO>> fetchDefault(ATTENDENCETYPESearchContext context) {
@@ -173,7 +177,7 @@ public class ATTENDENCETYPEResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ATTENDENCETYPE-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ATTENDENCETYPE-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"ATTENDENCETYPE" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/attendencetypes/searchdefault")
 	public ResponseEntity<Page<ATTENDENCETYPEDTO>> searchDefault(@RequestBody ATTENDENCETYPESearchContext context) {
@@ -183,12 +187,6 @@ public class ATTENDENCETYPEResource {
 	}
 
 
-    /**
-     * 用户权限校验
-     * @return
-     */
-	public ATTENDENCETYPE getEntity(){
-        return new ATTENDENCETYPE();
-    }
-
 }
+
+

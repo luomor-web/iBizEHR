@@ -50,11 +50,14 @@ public class UserDGThemeResource {
 
     @Autowired
     @Lazy
-    private UserDGThemeMapping userdgthemeMapping;
+    public UserDGThemeMapping userdgthemeMapping;
+
+    public UserDGThemeDTO permissionDTO=new UserDGThemeDTO();
 
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UserDGTheme-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"UserDGTheme" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/userdgthemes/getdraft")
     public ResponseEntity<UserDGThemeDTO> getDraft() {
@@ -64,7 +67,7 @@ public class UserDGThemeResource {
 
 
 
-    @PreAuthorize("hasPermission(#userdgtheme_id,'Get',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#userdgtheme_id,'Get',{'Sql',this.userdgthemeMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"UserDGTheme" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/userdgthemes/{userdgtheme_id}")
     public ResponseEntity<UserDGThemeDTO> get(@PathVariable("userdgtheme_id") String userdgtheme_id) {
@@ -76,6 +79,7 @@ public class UserDGThemeResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UserDGTheme-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"UserDGTheme" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/userdgthemes/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody UserDGThemeDTO userdgthemedto) {
@@ -85,6 +89,7 @@ public class UserDGThemeResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UserDGTheme-Save-all')")
     @ApiOperation(value = "Save", tags = {"UserDGTheme" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/userdgthemes/save")
     public ResponseEntity<Boolean> save(@RequestBody UserDGThemeDTO userdgthemedto) {
@@ -101,7 +106,7 @@ public class UserDGThemeResource {
 
 
 
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.userdgthemeMapping,#userdgthemedto})")
     @ApiOperation(value = "Create", tags = {"UserDGTheme" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/userdgthemes")
     @Transactional
@@ -111,7 +116,7 @@ public class UserDGThemeResource {
         UserDGThemeDTO dto = userdgthemeMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+
     @ApiOperation(value = "createBatch", tags = {"UserDGTheme" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/userdgthemes/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<UserDGThemeDTO> userdgthemedtos) {
@@ -122,7 +127,7 @@ public class UserDGThemeResource {
 
 
 
-    @PreAuthorize("hasPermission(#userdgtheme_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#userdgtheme_id,'Update',{'Sql',this.userdgthemeMapping,#userdgthemedto})")
     @ApiOperation(value = "Update", tags = {"UserDGTheme" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/userdgthemes/{userdgtheme_id}")
     @Transactional
@@ -134,7 +139,6 @@ public class UserDGThemeResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#userdgtheme_id,'Update',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "UpdateBatch", tags = {"UserDGTheme" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/userdgthemes/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<UserDGThemeDTO> userdgthemedtos) {
@@ -145,7 +149,7 @@ public class UserDGThemeResource {
 
 
 
-    @PreAuthorize("hasPermission(#userdgtheme_id,'Remove',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#userdgtheme_id,'Remove',{'Sql',this.userdgthemeMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"UserDGTheme" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/userdgthemes/{userdgtheme_id}")
     @Transactional
@@ -160,7 +164,7 @@ public class UserDGThemeResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UserDGTheme-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UserDGTheme-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"UserDGTheme" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/userdgthemes/fetchdefault")
 	public ResponseEntity<List<UserDGThemeDTO>> fetchDefault(UserDGThemeSearchContext context) {
@@ -173,7 +177,7 @@ public class UserDGThemeResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UserDGTheme-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UserDGTheme-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"UserDGTheme" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/userdgthemes/searchdefault")
 	public ResponseEntity<Page<UserDGThemeDTO>> searchDefault(@RequestBody UserDGThemeSearchContext context) {
@@ -183,12 +187,6 @@ public class UserDGThemeResource {
 	}
 
 
-    /**
-     * 用户权限校验
-     * @return
-     */
-	public UserDGTheme getEntity(){
-        return new UserDGTheme();
-    }
-
 }
+
+

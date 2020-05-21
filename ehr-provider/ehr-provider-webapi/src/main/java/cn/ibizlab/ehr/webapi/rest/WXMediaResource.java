@@ -50,12 +50,14 @@ public class WXMediaResource {
 
     @Autowired
     @Lazy
-    private WXMediaMapping wxmediaMapping;
+    public WXMediaMapping wxmediaMapping;
+
+    public WXMediaDTO permissionDTO=new WXMediaDTO();
 
 
 
 
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.wxmediaMapping,#wxmediadto})")
     @ApiOperation(value = "Create", tags = {"WXMedia" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/wxmedia")
     @Transactional
@@ -65,7 +67,7 @@ public class WXMediaResource {
         WXMediaDTO dto = wxmediaMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+
     @ApiOperation(value = "createBatch", tags = {"WXMedia" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/wxmedia/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<WXMediaDTO> wxmediadtos) {
@@ -76,6 +78,7 @@ public class WXMediaResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WXMedia-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"WXMedia" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/wxmedia/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody WXMediaDTO wxmediadto) {
@@ -85,6 +88,7 @@ public class WXMediaResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WXMedia-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"WXMedia" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/wxmedia/getdraft")
     public ResponseEntity<WXMediaDTO> getDraft() {
@@ -94,6 +98,7 @@ public class WXMediaResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WXMedia-Save-all')")
     @ApiOperation(value = "Save", tags = {"WXMedia" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/wxmedia/save")
     public ResponseEntity<Boolean> save(@RequestBody WXMediaDTO wxmediadto) {
@@ -110,7 +115,7 @@ public class WXMediaResource {
 
 
 
-    @PreAuthorize("hasPermission(#wxmedia_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#wxmedia_id,'Update',{'Sql',this.wxmediaMapping,#wxmediadto})")
     @ApiOperation(value = "Update", tags = {"WXMedia" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/wxmedia/{wxmedia_id}")
     @Transactional
@@ -122,7 +127,6 @@ public class WXMediaResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#wxmedia_id,'Update',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "UpdateBatch", tags = {"WXMedia" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/wxmedia/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<WXMediaDTO> wxmediadtos) {
@@ -133,7 +137,7 @@ public class WXMediaResource {
 
 
 
-    @PreAuthorize("hasPermission(#wxmedia_id,'Get',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#wxmedia_id,'Get',{'Sql',this.wxmediaMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"WXMedia" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/wxmedia/{wxmedia_id}")
     public ResponseEntity<WXMediaDTO> get(@PathVariable("wxmedia_id") String wxmedia_id) {
@@ -145,7 +149,7 @@ public class WXMediaResource {
 
 
 
-    @PreAuthorize("hasPermission(#wxmedia_id,'Remove',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#wxmedia_id,'Remove',{'Sql',this.wxmediaMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"WXMedia" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/wxmedia/{wxmedia_id}")
     @Transactional
@@ -160,7 +164,7 @@ public class WXMediaResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WXMedia-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WXMedia-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"WXMedia" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/wxmedia/fetchdefault")
 	public ResponseEntity<List<WXMediaDTO>> fetchDefault(WXMediaSearchContext context) {
@@ -173,7 +177,7 @@ public class WXMediaResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WXMedia-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WXMedia-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"WXMedia" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/wxmedia/searchdefault")
 	public ResponseEntity<Page<WXMediaDTO>> searchDefault(@RequestBody WXMediaSearchContext context) {
@@ -183,12 +187,6 @@ public class WXMediaResource {
 	}
 
 
-    /**
-     * 用户权限校验
-     * @return
-     */
-	public WXMedia getEntity(){
-        return new WXMedia();
-    }
-
 }
+
+

@@ -50,11 +50,14 @@ public class TestResultResource {
 
     @Autowired
     @Lazy
-    private TestResultMapping testresultMapping;
+    public TestResultMapping testresultMapping;
+
+    public TestResultDTO permissionDTO=new TestResultDTO();
 
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TestResult-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"TestResult" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/testresults/getdraft")
     public ResponseEntity<TestResultDTO> getDraft() {
@@ -64,6 +67,7 @@ public class TestResultResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TestResult-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"TestResult" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/testresults/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody TestResultDTO testresultdto) {
@@ -73,7 +77,7 @@ public class TestResultResource {
 
 
 
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.testresultMapping,#testresultdto})")
     @ApiOperation(value = "Create", tags = {"TestResult" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/testresults")
     @Transactional
@@ -83,7 +87,7 @@ public class TestResultResource {
         TestResultDTO dto = testresultMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+
     @ApiOperation(value = "createBatch", tags = {"TestResult" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/testresults/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<TestResultDTO> testresultdtos) {
@@ -94,6 +98,7 @@ public class TestResultResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TestResult-Save-all')")
     @ApiOperation(value = "Save", tags = {"TestResult" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/testresults/save")
     public ResponseEntity<Boolean> save(@RequestBody TestResultDTO testresultdto) {
@@ -110,7 +115,7 @@ public class TestResultResource {
 
 
 
-    @PreAuthorize("hasPermission(#testresult_id,'Get',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#testresult_id,'Get',{'Sql',this.testresultMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"TestResult" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/testresults/{testresult_id}")
     public ResponseEntity<TestResultDTO> get(@PathVariable("testresult_id") String testresult_id) {
@@ -122,7 +127,7 @@ public class TestResultResource {
 
 
 
-    @PreAuthorize("hasPermission(#testresult_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#testresult_id,'Update',{'Sql',this.testresultMapping,#testresultdto})")
     @ApiOperation(value = "Update", tags = {"TestResult" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/testresults/{testresult_id}")
     @Transactional
@@ -134,7 +139,6 @@ public class TestResultResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#testresult_id,'Update',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "UpdateBatch", tags = {"TestResult" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/testresults/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<TestResultDTO> testresultdtos) {
@@ -145,7 +149,7 @@ public class TestResultResource {
 
 
 
-    @PreAuthorize("hasPermission(#testresult_id,'Remove',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#testresult_id,'Remove',{'Sql',this.testresultMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"TestResult" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/testresults/{testresult_id}")
     @Transactional
@@ -160,7 +164,7 @@ public class TestResultResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TestResult-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TestResult-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"TestResult" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/testresults/fetchdefault")
 	public ResponseEntity<List<TestResultDTO>> fetchDefault(TestResultSearchContext context) {
@@ -173,7 +177,7 @@ public class TestResultResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TestResult-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TestResult-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"TestResult" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/testresults/searchdefault")
 	public ResponseEntity<Page<TestResultDTO>> searchDefault(@RequestBody TestResultSearchContext context) {
@@ -184,6 +188,7 @@ public class TestResultResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TestResult-GetDraft-all')")
     @ApiOperation(value = "GetDraftByPCMPROFILE", tags = {"TestResult" },  notes = "GetDraftByPCMPROFILE")
     @RequestMapping(method = RequestMethod.GET, value = "/pcmprofiles/{pcmprofile_id}/testresults/getdraft")
     public ResponseEntity<TestResultDTO> getDraftByPCMPROFILE(@PathVariable("pcmprofile_id") String pcmprofile_id) {
@@ -192,12 +197,14 @@ public class TestResultResource {
         return ResponseEntity.status(HttpStatus.OK).body(testresultMapping.toDto(testresultService.getDraft(domain)));
     }
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TestResult-CheckKey-all')")
     @ApiOperation(value = "CheckKeyByPCMPROFILE", tags = {"TestResult" },  notes = "CheckKeyByPCMPROFILE")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/testresults/checkkey")
     public ResponseEntity<Boolean> checkKeyByPCMPROFILE(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody TestResultDTO testresultdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(testresultService.checkKey(testresultMapping.toDomain(testresultdto)));
     }
 
+    //@PreAuthorize("hasPermission('','Create',{'Sql',this.testresultMapping,#testresultdto})")
     @ApiOperation(value = "CreateByPCMPROFILE", tags = {"TestResult" },  notes = "CreateByPCMPROFILE")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/testresults")
     @Transactional
@@ -220,6 +227,7 @@ public class TestResultResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TestResult-Save-all')")
     @ApiOperation(value = "SaveByPCMPROFILE", tags = {"TestResult" },  notes = "SaveByPCMPROFILE")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/testresults/save")
     public ResponseEntity<Boolean> saveByPCMPROFILE(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody TestResultDTO testresultdto) {
@@ -239,6 +247,7 @@ public class TestResultResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    //@PreAuthorize("hasPermission(#testresult_id,'Get',{'Sql',this.testresultMapping,this.permissionDTO})")
     @ApiOperation(value = "GetByPCMPROFILE", tags = {"TestResult" },  notes = "GetByPCMPROFILE")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmprofiles/{pcmprofile_id}/testresults/{testresult_id}")
     public ResponseEntity<TestResultDTO> getByPCMPROFILE(@PathVariable("pcmprofile_id") String pcmprofile_id, @PathVariable("testresult_id") String testresult_id) {
@@ -247,6 +256,7 @@ public class TestResultResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    //@PreAuthorize("hasPermission(#testresult_id,'Update',{'Sql',this.testresultMapping,#testresultdto})")
     @ApiOperation(value = "UpdateByPCMPROFILE", tags = {"TestResult" },  notes = "UpdateByPCMPROFILE")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmprofiles/{pcmprofile_id}/testresults/{testresult_id}")
     @Transactional
@@ -270,6 +280,7 @@ public class TestResultResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    //@PreAuthorize("hasPermission(#testresult_id,'Remove',{'Sql',this.testresultMapping,this.permissionDTO})")
     @ApiOperation(value = "RemoveByPCMPROFILE", tags = {"TestResult" },  notes = "RemoveByPCMPROFILE")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmprofiles/{pcmprofile_id}/testresults/{testresult_id}")
     @Transactional
@@ -284,6 +295,7 @@ public class TestResultResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TestResult-Default-all')")
 	@ApiOperation(value = "fetchDEFAULTByPCMPROFILE", tags = {"TestResult" } ,notes = "fetchDEFAULTByPCMPROFILE")
     @RequestMapping(method= RequestMethod.GET , value="/pcmprofiles/{pcmprofile_id}/testresults/fetchdefault")
 	public ResponseEntity<List<TestResultDTO>> fetchTestResultDefaultByPCMPROFILE(@PathVariable("pcmprofile_id") String pcmprofile_id,TestResultSearchContext context) {
@@ -297,6 +309,7 @@ public class TestResultResource {
                 .body(list);
 	}
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TestResult-Default-all')")
 	@ApiOperation(value = "searchDEFAULTByPCMPROFILE", tags = {"TestResult" } ,notes = "searchDEFAULTByPCMPROFILE")
     @RequestMapping(method= RequestMethod.POST , value="/pcmprofiles/{pcmprofile_id}/testresults/searchdefault")
 	public ResponseEntity<Page<TestResultDTO>> searchTestResultDefaultByPCMPROFILE(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody TestResultSearchContext context) {
@@ -307,12 +320,6 @@ public class TestResultResource {
 	}
 
 
-    /**
-     * 用户权限校验
-     * @return
-     */
-	public TestResult getEntity(){
-        return new TestResult();
-    }
-
 }
+
+

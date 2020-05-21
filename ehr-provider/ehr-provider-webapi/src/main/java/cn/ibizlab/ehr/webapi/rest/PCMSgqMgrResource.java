@@ -50,12 +50,14 @@ public class PCMSgqMgrResource {
 
     @Autowired
     @Lazy
-    private PCMSgqMgrMapping pcmsgqmgrMapping;
+    public PCMSgqMgrMapping pcmsgqmgrMapping;
+
+    public PCMSgqMgrDTO permissionDTO=new PCMSgqMgrDTO();
 
 
 
 
-    @PreAuthorize("hasPermission(#pcmsgqmgr_id,'Remove',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#pcmsgqmgr_id,'Remove',{'Sql',this.pcmsgqmgrMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"PCMSgqMgr" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmsgqmgrs/{pcmsgqmgr_id}")
     @Transactional
@@ -73,6 +75,7 @@ public class PCMSgqMgrResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMSgqMgr-SGTG-all')")
     @ApiOperation(value = "试岗通过", tags = {"PCMSgqMgr" },  notes = "试岗通过")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmsgqmgrs/{pcmsgqmgr_id}/sgtg")
     @Transactional
@@ -86,7 +89,7 @@ public class PCMSgqMgrResource {
 
 
 
-    @PreAuthorize("hasPermission(#pcmsgqmgr_id,'Get',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#pcmsgqmgr_id,'Get',{'Sql',this.pcmsgqmgrMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"PCMSgqMgr" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmsgqmgrs/{pcmsgqmgr_id}")
     public ResponseEntity<PCMSgqMgrDTO> get(@PathVariable("pcmsgqmgr_id") String pcmsgqmgr_id) {
@@ -98,6 +101,7 @@ public class PCMSgqMgrResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMSgqMgr-SGBTG-all')")
     @ApiOperation(value = "试岗不通过", tags = {"PCMSgqMgr" },  notes = "试岗不通过")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmsgqmgrs/{pcmsgqmgr_id}/sgbtg")
     @Transactional
@@ -111,6 +115,7 @@ public class PCMSgqMgrResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMSgqMgr-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"PCMSgqMgr" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmsgqmgrs/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PCMSgqMgrDTO pcmsgqmgrdto) {
@@ -120,7 +125,7 @@ public class PCMSgqMgrResource {
 
 
 
-    @PreAuthorize("hasPermission(#pcmsgqmgr_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#pcmsgqmgr_id,'Update',{'Sql',this.pcmsgqmgrMapping,#pcmsgqmgrdto})")
     @ApiOperation(value = "Update", tags = {"PCMSgqMgr" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmsgqmgrs/{pcmsgqmgr_id}")
     @Transactional
@@ -132,7 +137,6 @@ public class PCMSgqMgrResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#pcmsgqmgr_id,'Update',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "UpdateBatch", tags = {"PCMSgqMgr" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmsgqmgrs/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PCMSgqMgrDTO> pcmsgqmgrdtos) {
@@ -143,7 +147,7 @@ public class PCMSgqMgrResource {
 
 
 
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.pcmsgqmgrMapping,#pcmsgqmgrdto})")
     @ApiOperation(value = "Create", tags = {"PCMSgqMgr" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmsgqmgrs")
     @Transactional
@@ -153,7 +157,7 @@ public class PCMSgqMgrResource {
         PCMSgqMgrDTO dto = pcmsgqmgrMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+
     @ApiOperation(value = "createBatch", tags = {"PCMSgqMgr" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmsgqmgrs/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PCMSgqMgrDTO> pcmsgqmgrdtos) {
@@ -164,6 +168,7 @@ public class PCMSgqMgrResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMSgqMgr-Save-all')")
     @ApiOperation(value = "Save", tags = {"PCMSgqMgr" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmsgqmgrs/save")
     public ResponseEntity<Boolean> save(@RequestBody PCMSgqMgrDTO pcmsgqmgrdto) {
@@ -180,13 +185,14 @@ public class PCMSgqMgrResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMSgqMgr-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"PCMSgqMgr" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmsgqmgrs/getdraft")
     public ResponseEntity<PCMSgqMgrDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(pcmsgqmgrMapping.toDto(pcmsgqmgrService.getDraft(new PCMSgqMgr())));
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMSgqMgr-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMSgqMgr-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PCMSgqMgr" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pcmsgqmgrs/fetchdefault")
 	public ResponseEntity<List<PCMSgqMgrDTO>> fetchDefault(PCMSgqMgrSearchContext context) {
@@ -199,7 +205,7 @@ public class PCMSgqMgrResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMSgqMgr-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMSgqMgr-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PCMSgqMgr" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pcmsgqmgrs/searchdefault")
 	public ResponseEntity<Page<PCMSgqMgrDTO>> searchDefault(@RequestBody PCMSgqMgrSearchContext context) {
@@ -209,12 +215,6 @@ public class PCMSgqMgrResource {
 	}
 
 
-    /**
-     * 用户权限校验
-     * @return
-     */
-	public PCMSgqMgr getEntity(){
-        return new PCMSgqMgr();
-    }
-
 }
+
+

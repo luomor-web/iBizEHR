@@ -50,11 +50,14 @@ public class SALPARAMResource {
 
     @Autowired
     @Lazy
-    private SALPARAMMapping salparamMapping;
+    public SALPARAMMapping salparamMapping;
+
+    public SALPARAMDTO permissionDTO=new SALPARAMDTO();
 
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALPARAM-Save-all')")
     @ApiOperation(value = "Save", tags = {"SALPARAM" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/salparams/save")
     public ResponseEntity<Boolean> save(@RequestBody SALPARAMDTO salparamdto) {
@@ -71,7 +74,7 @@ public class SALPARAMResource {
 
 
 
-    @PreAuthorize("hasPermission(#salparam_id,'Get',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#salparam_id,'Get',{'Sql',this.salparamMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"SALPARAM" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/salparams/{salparam_id}")
     public ResponseEntity<SALPARAMDTO> get(@PathVariable("salparam_id") String salparam_id) {
@@ -83,7 +86,7 @@ public class SALPARAMResource {
 
 
 
-    @PreAuthorize("hasPermission(#salparam_id,'Remove',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#salparam_id,'Remove',{'Sql',this.salparamMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"SALPARAM" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/salparams/{salparam_id}")
     @Transactional
@@ -101,6 +104,7 @@ public class SALPARAMResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALPARAM-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"SALPARAM" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/salparams/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody SALPARAMDTO salparamdto) {
@@ -110,7 +114,7 @@ public class SALPARAMResource {
 
 
 
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.salparamMapping,#salparamdto})")
     @ApiOperation(value = "Create", tags = {"SALPARAM" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/salparams")
     @Transactional
@@ -120,7 +124,7 @@ public class SALPARAMResource {
         SALPARAMDTO dto = salparamMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+
     @ApiOperation(value = "createBatch", tags = {"SALPARAM" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/salparams/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<SALPARAMDTO> salparamdtos) {
@@ -131,7 +135,7 @@ public class SALPARAMResource {
 
 
 
-    @PreAuthorize("hasPermission(#salparam_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#salparam_id,'Update',{'Sql',this.salparamMapping,#salparamdto})")
     @ApiOperation(value = "Update", tags = {"SALPARAM" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/salparams/{salparam_id}")
     @Transactional
@@ -143,7 +147,6 @@ public class SALPARAMResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#salparam_id,'Update',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "UpdateBatch", tags = {"SALPARAM" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/salparams/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<SALPARAMDTO> salparamdtos) {
@@ -154,13 +157,14 @@ public class SALPARAMResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALPARAM-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"SALPARAM" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/salparams/getdraft")
     public ResponseEntity<SALPARAMDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(salparamMapping.toDto(salparamService.getDraft(new SALPARAM())));
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALPARAM-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALPARAM-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"SALPARAM" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/salparams/fetchdefault")
 	public ResponseEntity<List<SALPARAMDTO>> fetchDefault(SALPARAMSearchContext context) {
@@ -173,7 +177,7 @@ public class SALPARAMResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALPARAM-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALPARAM-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"SALPARAM" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/salparams/searchdefault")
 	public ResponseEntity<Page<SALPARAMDTO>> searchDefault(@RequestBody SALPARAMSearchContext context) {
@@ -183,12 +187,6 @@ public class SALPARAMResource {
 	}
 
 
-    /**
-     * 用户权限校验
-     * @return
-     */
-	public SALPARAM getEntity(){
-        return new SALPARAM();
-    }
-
 }
+
+

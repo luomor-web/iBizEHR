@@ -50,12 +50,14 @@ public class ATTENDANCERECORDTEMPResource {
 
     @Autowired
     @Lazy
-    private ATTENDANCERECORDTEMPMapping attendancerecordtempMapping;
+    public ATTENDANCERECORDTEMPMapping attendancerecordtempMapping;
+
+    public ATTENDANCERECORDTEMPDTO permissionDTO=new ATTENDANCERECORDTEMPDTO();
 
 
 
 
-    @PreAuthorize("hasPermission(#attendancerecordtemp_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#attendancerecordtemp_id,'Update',{'Sql',this.attendancerecordtempMapping,#attendancerecordtempdto})")
     @ApiOperation(value = "Update", tags = {"ATTENDANCERECORDTEMP" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/attendancerecordtemps/{attendancerecordtemp_id}")
     @Transactional
@@ -67,7 +69,6 @@ public class ATTENDANCERECORDTEMPResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#attendancerecordtemp_id,'Update',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "UpdateBatch", tags = {"ATTENDANCERECORDTEMP" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/attendancerecordtemps/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<ATTENDANCERECORDTEMPDTO> attendancerecordtempdtos) {
@@ -78,7 +79,7 @@ public class ATTENDANCERECORDTEMPResource {
 
 
 
-    @PreAuthorize("hasPermission(#attendancerecordtemp_id,'Remove',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#attendancerecordtemp_id,'Remove',{'Sql',this.attendancerecordtempMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"ATTENDANCERECORDTEMP" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/attendancerecordtemps/{attendancerecordtemp_id}")
     @Transactional
@@ -96,6 +97,7 @@ public class ATTENDANCERECORDTEMPResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ATTENDANCERECORDTEMP-Save-all')")
     @ApiOperation(value = "Save", tags = {"ATTENDANCERECORDTEMP" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/attendancerecordtemps/save")
     public ResponseEntity<Boolean> save(@RequestBody ATTENDANCERECORDTEMPDTO attendancerecordtempdto) {
@@ -112,6 +114,7 @@ public class ATTENDANCERECORDTEMPResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ATTENDANCERECORDTEMP-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"ATTENDANCERECORDTEMP" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/attendancerecordtemps/getdraft")
     public ResponseEntity<ATTENDANCERECORDTEMPDTO> getDraft() {
@@ -121,7 +124,7 @@ public class ATTENDANCERECORDTEMPResource {
 
 
 
-    @PreAuthorize("hasPermission(#attendancerecordtemp_id,'Get',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#attendancerecordtemp_id,'Get',{'Sql',this.attendancerecordtempMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"ATTENDANCERECORDTEMP" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/attendancerecordtemps/{attendancerecordtemp_id}")
     public ResponseEntity<ATTENDANCERECORDTEMPDTO> get(@PathVariable("attendancerecordtemp_id") String attendancerecordtemp_id) {
@@ -133,7 +136,7 @@ public class ATTENDANCERECORDTEMPResource {
 
 
 
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.attendancerecordtempMapping,#attendancerecordtempdto})")
     @ApiOperation(value = "Create", tags = {"ATTENDANCERECORDTEMP" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/attendancerecordtemps")
     @Transactional
@@ -143,7 +146,7 @@ public class ATTENDANCERECORDTEMPResource {
         ATTENDANCERECORDTEMPDTO dto = attendancerecordtempMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+
     @ApiOperation(value = "createBatch", tags = {"ATTENDANCERECORDTEMP" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/attendancerecordtemps/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<ATTENDANCERECORDTEMPDTO> attendancerecordtempdtos) {
@@ -154,13 +157,14 @@ public class ATTENDANCERECORDTEMPResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ATTENDANCERECORDTEMP-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"ATTENDANCERECORDTEMP" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/attendancerecordtemps/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody ATTENDANCERECORDTEMPDTO attendancerecordtempdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(attendancerecordtempService.checkKey(attendancerecordtempMapping.toDomain(attendancerecordtempdto)));
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ATTENDANCERECORDTEMP-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ATTENDANCERECORDTEMP-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"ATTENDANCERECORDTEMP" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/attendancerecordtemps/fetchdefault")
 	public ResponseEntity<List<ATTENDANCERECORDTEMPDTO>> fetchDefault(ATTENDANCERECORDTEMPSearchContext context) {
@@ -173,7 +177,7 @@ public class ATTENDANCERECORDTEMPResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ATTENDANCERECORDTEMP-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ATTENDANCERECORDTEMP-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"ATTENDANCERECORDTEMP" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/attendancerecordtemps/searchdefault")
 	public ResponseEntity<Page<ATTENDANCERECORDTEMPDTO>> searchDefault(@RequestBody ATTENDANCERECORDTEMPSearchContext context) {
@@ -183,12 +187,6 @@ public class ATTENDANCERECORDTEMPResource {
 	}
 
 
-    /**
-     * 用户权限校验
-     * @return
-     */
-	public ATTENDANCERECORDTEMP getEntity(){
-        return new ATTENDANCERECORDTEMP();
-    }
-
 }
+
+

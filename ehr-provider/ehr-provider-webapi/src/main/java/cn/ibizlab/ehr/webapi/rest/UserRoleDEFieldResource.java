@@ -50,11 +50,14 @@ public class UserRoleDEFieldResource {
 
     @Autowired
     @Lazy
-    private UserRoleDEFieldMapping userroledefieldMapping;
+    public UserRoleDEFieldMapping userroledefieldMapping;
+
+    public UserRoleDEFieldDTO permissionDTO=new UserRoleDEFieldDTO();
 
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UserRoleDEField-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"UserRoleDEField" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/userroledefields/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody UserRoleDEFieldDTO userroledefielddto) {
@@ -64,7 +67,7 @@ public class UserRoleDEFieldResource {
 
 
 
-    @PreAuthorize("hasPermission(#userroledefield_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#userroledefield_id,'Update',{'Sql',this.userroledefieldMapping,#userroledefielddto})")
     @ApiOperation(value = "Update", tags = {"UserRoleDEField" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/userroledefields/{userroledefield_id}")
     @Transactional
@@ -76,7 +79,6 @@ public class UserRoleDEFieldResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#userroledefield_id,'Update',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "UpdateBatch", tags = {"UserRoleDEField" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/userroledefields/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<UserRoleDEFieldDTO> userroledefielddtos) {
@@ -87,7 +89,7 @@ public class UserRoleDEFieldResource {
 
 
 
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.userroledefieldMapping,#userroledefielddto})")
     @ApiOperation(value = "Create", tags = {"UserRoleDEField" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/userroledefields")
     @Transactional
@@ -97,7 +99,7 @@ public class UserRoleDEFieldResource {
         UserRoleDEFieldDTO dto = userroledefieldMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+
     @ApiOperation(value = "createBatch", tags = {"UserRoleDEField" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/userroledefields/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<UserRoleDEFieldDTO> userroledefielddtos) {
@@ -108,6 +110,7 @@ public class UserRoleDEFieldResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UserRoleDEField-Save-all')")
     @ApiOperation(value = "Save", tags = {"UserRoleDEField" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/userroledefields/save")
     public ResponseEntity<Boolean> save(@RequestBody UserRoleDEFieldDTO userroledefielddto) {
@@ -124,7 +127,7 @@ public class UserRoleDEFieldResource {
 
 
 
-    @PreAuthorize("hasPermission(#userroledefield_id,'Remove',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#userroledefield_id,'Remove',{'Sql',this.userroledefieldMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"UserRoleDEField" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/userroledefields/{userroledefield_id}")
     @Transactional
@@ -142,7 +145,7 @@ public class UserRoleDEFieldResource {
 
 
 
-    @PreAuthorize("hasPermission(#userroledefield_id,'Get',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#userroledefield_id,'Get',{'Sql',this.userroledefieldMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"UserRoleDEField" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/userroledefields/{userroledefield_id}")
     public ResponseEntity<UserRoleDEFieldDTO> get(@PathVariable("userroledefield_id") String userroledefield_id) {
@@ -154,13 +157,14 @@ public class UserRoleDEFieldResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UserRoleDEField-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"UserRoleDEField" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/userroledefields/getdraft")
     public ResponseEntity<UserRoleDEFieldDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(userroledefieldMapping.toDto(userroledefieldService.getDraft(new UserRoleDEField())));
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UserRoleDEField-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UserRoleDEField-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"UserRoleDEField" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/userroledefields/fetchdefault")
 	public ResponseEntity<List<UserRoleDEFieldDTO>> fetchDefault(UserRoleDEFieldSearchContext context) {
@@ -173,7 +177,7 @@ public class UserRoleDEFieldResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UserRoleDEField-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UserRoleDEField-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"UserRoleDEField" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/userroledefields/searchdefault")
 	public ResponseEntity<Page<UserRoleDEFieldDTO>> searchDefault(@RequestBody UserRoleDEFieldSearchContext context) {
@@ -183,12 +187,6 @@ public class UserRoleDEFieldResource {
 	}
 
 
-    /**
-     * 用户权限校验
-     * @return
-     */
-	public UserRoleDEField getEntity(){
-        return new UserRoleDEField();
-    }
-
 }
+
+

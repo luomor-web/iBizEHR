@@ -50,12 +50,14 @@ public class PCMGXMLResource {
 
     @Autowired
     @Lazy
-    private PCMGXMLMapping pcmgxmlMapping;
+    public PCMGXMLMapping pcmgxmlMapping;
+
+    public PCMGXMLDTO permissionDTO=new PCMGXMLDTO();
 
 
 
 
-    @PreAuthorize("hasPermission(#pcmgxml_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#pcmgxml_id,'Update',{'Sql',this.pcmgxmlMapping,#pcmgxmldto})")
     @ApiOperation(value = "Update", tags = {"PCMGXML" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmgxmls/{pcmgxml_id}")
     @Transactional
@@ -67,7 +69,6 @@ public class PCMGXMLResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#pcmgxml_id,'Update',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "UpdateBatch", tags = {"PCMGXML" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmgxmls/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PCMGXMLDTO> pcmgxmldtos) {
@@ -78,6 +79,7 @@ public class PCMGXMLResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMGXML-Save-all')")
     @ApiOperation(value = "Save", tags = {"PCMGXML" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmgxmls/save")
     public ResponseEntity<Boolean> save(@RequestBody PCMGXMLDTO pcmgxmldto) {
@@ -94,6 +96,7 @@ public class PCMGXMLResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMGXML-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"PCMGXML" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmgxmls/getdraft")
     public ResponseEntity<PCMGXMLDTO> getDraft() {
@@ -103,6 +106,7 @@ public class PCMGXMLResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMGXML-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"PCMGXML" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmgxmls/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PCMGXMLDTO pcmgxmldto) {
@@ -112,7 +116,7 @@ public class PCMGXMLResource {
 
 
 
-    @PreAuthorize("hasPermission(#pcmgxml_id,'Get',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#pcmgxml_id,'Get',{'Sql',this.pcmgxmlMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"PCMGXML" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmgxmls/{pcmgxml_id}")
     public ResponseEntity<PCMGXMLDTO> get(@PathVariable("pcmgxml_id") String pcmgxml_id) {
@@ -124,7 +128,7 @@ public class PCMGXMLResource {
 
 
 
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.pcmgxmlMapping,#pcmgxmldto})")
     @ApiOperation(value = "Create", tags = {"PCMGXML" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmgxmls")
     @Transactional
@@ -134,7 +138,7 @@ public class PCMGXMLResource {
         PCMGXMLDTO dto = pcmgxmlMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+
     @ApiOperation(value = "createBatch", tags = {"PCMGXML" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmgxmls/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PCMGXMLDTO> pcmgxmldtos) {
@@ -145,7 +149,7 @@ public class PCMGXMLResource {
 
 
 
-    @PreAuthorize("hasPermission(#pcmgxml_id,'Remove',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#pcmgxml_id,'Remove',{'Sql',this.pcmgxmlMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"PCMGXML" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmgxmls/{pcmgxml_id}")
     @Transactional
@@ -160,7 +164,7 @@ public class PCMGXMLResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMGXML-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMGXML-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PCMGXML" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pcmgxmls/fetchdefault")
 	public ResponseEntity<List<PCMGXMLDTO>> fetchDefault(PCMGXMLSearchContext context) {
@@ -173,7 +177,7 @@ public class PCMGXMLResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMGXML-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMGXML-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PCMGXML" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pcmgxmls/searchdefault")
 	public ResponseEntity<Page<PCMGXMLDTO>> searchDefault(@RequestBody PCMGXMLSearchContext context) {
@@ -182,7 +186,7 @@ public class PCMGXMLResource {
                 .body(new PageImpl(pcmgxmlMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMGXML-CurND-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMGXML-CurND-all')")
 	@ApiOperation(value = "fetch当前年度高校名录", tags = {"PCMGXML" } ,notes = "fetch当前年度高校名录")
     @RequestMapping(method= RequestMethod.GET , value="/pcmgxmls/fetchcurnd")
 	public ResponseEntity<List<PCMGXMLDTO>> fetchCurND(PCMGXMLSearchContext context) {
@@ -195,7 +199,7 @@ public class PCMGXMLResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMGXML-CurND-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMGXML-CurND-all')")
 	@ApiOperation(value = "search当前年度高校名录", tags = {"PCMGXML" } ,notes = "search当前年度高校名录")
     @RequestMapping(method= RequestMethod.POST , value="/pcmgxmls/searchcurnd")
 	public ResponseEntity<Page<PCMGXMLDTO>> searchCurND(@RequestBody PCMGXMLSearchContext context) {
@@ -205,12 +209,6 @@ public class PCMGXMLResource {
 	}
 
 
-    /**
-     * 用户权限校验
-     * @return
-     */
-	public PCMGXML getEntity(){
-        return new PCMGXML();
-    }
-
 }
+
+

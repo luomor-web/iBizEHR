@@ -50,12 +50,14 @@ public class WFActorResource {
 
     @Autowired
     @Lazy
-    private WFActorMapping wfactorMapping;
+    public WFActorMapping wfactorMapping;
+
+    public WFActorDTO permissionDTO=new WFActorDTO();
 
 
 
 
-    @PreAuthorize("hasPermission(#wfactor_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#wfactor_id,'Update',{'Sql',this.wfactorMapping,#wfactordto})")
     @ApiOperation(value = "Update", tags = {"WFActor" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/wfactors/{wfactor_id}")
     @Transactional
@@ -67,7 +69,6 @@ public class WFActorResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#wfactor_id,'Update',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "UpdateBatch", tags = {"WFActor" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/wfactors/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<WFActorDTO> wfactordtos) {
@@ -78,6 +79,7 @@ public class WFActorResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFActor-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"WFActor" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/wfactors/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody WFActorDTO wfactordto) {
@@ -87,7 +89,7 @@ public class WFActorResource {
 
 
 
-    @PreAuthorize("hasPermission(#wfactor_id,'Get',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#wfactor_id,'Get',{'Sql',this.wfactorMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"WFActor" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/wfactors/{wfactor_id}")
     public ResponseEntity<WFActorDTO> get(@PathVariable("wfactor_id") String wfactor_id) {
@@ -99,7 +101,7 @@ public class WFActorResource {
 
 
 
-    @PreAuthorize("hasPermission(#wfactor_id,'Remove',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#wfactor_id,'Remove',{'Sql',this.wfactorMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"WFActor" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/wfactors/{wfactor_id}")
     @Transactional
@@ -117,7 +119,7 @@ public class WFActorResource {
 
 
 
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.wfactorMapping,#wfactordto})")
     @ApiOperation(value = "Create", tags = {"WFActor" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/wfactors")
     @Transactional
@@ -127,7 +129,7 @@ public class WFActorResource {
         WFActorDTO dto = wfactorMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+
     @ApiOperation(value = "createBatch", tags = {"WFActor" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/wfactors/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<WFActorDTO> wfactordtos) {
@@ -138,6 +140,7 @@ public class WFActorResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFActor-Save-all')")
     @ApiOperation(value = "Save", tags = {"WFActor" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/wfactors/save")
     public ResponseEntity<Boolean> save(@RequestBody WFActorDTO wfactordto) {
@@ -154,13 +157,14 @@ public class WFActorResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFActor-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"WFActor" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/wfactors/getdraft")
     public ResponseEntity<WFActorDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(wfactorMapping.toDto(wfactorService.getDraft(new WFActor())));
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFActor-IndexDER-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFActor-IndexDER-all')")
 	@ApiOperation(value = "fetchIndexDER", tags = {"WFActor" } ,notes = "fetchIndexDER")
     @RequestMapping(method= RequestMethod.GET , value="/wfactors/fetchindexder")
 	public ResponseEntity<List<WFActorDTO>> fetchIndexDER(WFActorSearchContext context) {
@@ -173,7 +177,7 @@ public class WFActorResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFActor-IndexDER-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFActor-IndexDER-all')")
 	@ApiOperation(value = "searchIndexDER", tags = {"WFActor" } ,notes = "searchIndexDER")
     @RequestMapping(method= RequestMethod.POST , value="/wfactors/searchindexder")
 	public ResponseEntity<Page<WFActorDTO>> searchIndexDER(@RequestBody WFActorSearchContext context) {
@@ -182,7 +186,7 @@ public class WFActorResource {
                 .body(new PageImpl(wfactorMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFActor-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFActor-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"WFActor" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/wfactors/fetchdefault")
 	public ResponseEntity<List<WFActorDTO>> fetchDefault(WFActorSearchContext context) {
@@ -195,7 +199,7 @@ public class WFActorResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFActor-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFActor-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"WFActor" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/wfactors/searchdefault")
 	public ResponseEntity<Page<WFActorDTO>> searchDefault(@RequestBody WFActorSearchContext context) {
@@ -205,12 +209,6 @@ public class WFActorResource {
 	}
 
 
-    /**
-     * 用户权限校验
-     * @return
-     */
-	public WFActor getEntity(){
-        return new WFActor();
-    }
-
 }
+
+

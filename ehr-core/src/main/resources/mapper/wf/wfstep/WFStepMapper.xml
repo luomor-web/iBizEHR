@@ -4,24 +4,6 @@
 <mapper	namespace="cn.ibizlab.ehr.core.wf.mapper.WFStepMapper">
 
     <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
-	<select id="selectById"  resultMap="WFStepResultMap" databaseId="db2">
-        <![CDATA[select * from v_wfstep t1     where  wfstepid=#{id}]]>
-    </select>
-	<select id="selectById"  resultMap="WFStepResultMap" databaseId="mysql">
-        <![CDATA[select * from v_wfstep t1     where  wfstepid=#{id}]]>
-    </select>
-	<select id="selectById"  resultMap="WFStepResultMap" databaseId="oracle">
-        <![CDATA[select * from v_wfstep t1     where  wfstepid=#{id}]]>
-    </select>
-	<select id="selectById"  resultMap="WFStepResultMap" databaseId="postgresql">
-        <![CDATA[select * from v_wfstep t1     where  wfstepid=#{id}]]>
-    </select>
-	<select id="selectById"  resultMap="WFStepResultMap" databaseId="ppas">
-        <![CDATA[select * from v_wfstep t1     where  wfstepid=#{id}]]>
-    </select>
-	<select id="selectById"  resultMap="WFStepResultMap" databaseId="sqlserver">
-        <![CDATA[select * from v_wfstep t1     where  wfstepid=#{id}]]>
-    </select>
 
     <!--通过mybatis将查询结果注入到entity中,通过配置autoMapping="true"由mybatis自动处理映射关系 -->
     <resultMap id="WFStepResultMap" type="cn.ibizlab.ehr.core.wf.domain.WFStep" autoMapping="true">

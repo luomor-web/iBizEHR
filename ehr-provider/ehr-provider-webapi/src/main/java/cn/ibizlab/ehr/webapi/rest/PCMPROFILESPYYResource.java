@@ -50,11 +50,14 @@ public class PCMPROFILESPYYResource {
 
     @Autowired
     @Lazy
-    private PCMPROFILESPYYMapping pcmprofilespyyMapping;
+    public PCMPROFILESPYYMapping pcmprofilespyyMapping;
+
+    public PCMPROFILESPYYDTO permissionDTO=new PCMPROFILESPYYDTO();
 
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILESPYY-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"PCMPROFILESPYY" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmprofilespyys/getdraft")
     public ResponseEntity<PCMPROFILESPYYDTO> getDraft() {
@@ -64,6 +67,7 @@ public class PCMPROFILESPYYResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILESPYY-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"PCMPROFILESPYY" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofilespyys/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PCMPROFILESPYYDTO pcmprofilespyydto) {
@@ -73,7 +77,7 @@ public class PCMPROFILESPYYResource {
 
 
 
-    @PreAuthorize("hasPermission(#pcmprofilespyy_id,'Get',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#pcmprofilespyy_id,'Get',{'Sql',this.pcmprofilespyyMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"PCMPROFILESPYY" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmprofilespyys/{pcmprofilespyy_id}")
     public ResponseEntity<PCMPROFILESPYYDTO> get(@PathVariable("pcmprofilespyy_id") String pcmprofilespyy_id) {
@@ -85,6 +89,7 @@ public class PCMPROFILESPYYResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILESPYY-Save-all')")
     @ApiOperation(value = "Save", tags = {"PCMPROFILESPYY" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofilespyys/save")
     public ResponseEntity<Boolean> save(@RequestBody PCMPROFILESPYYDTO pcmprofilespyydto) {
@@ -101,7 +106,7 @@ public class PCMPROFILESPYYResource {
 
 
 
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.pcmprofilespyyMapping,#pcmprofilespyydto})")
     @ApiOperation(value = "Create", tags = {"PCMPROFILESPYY" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofilespyys")
     @Transactional
@@ -111,7 +116,7 @@ public class PCMPROFILESPYYResource {
         PCMPROFILESPYYDTO dto = pcmprofilespyyMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+
     @ApiOperation(value = "createBatch", tags = {"PCMPROFILESPYY" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofilespyys/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PCMPROFILESPYYDTO> pcmprofilespyydtos) {
@@ -122,7 +127,7 @@ public class PCMPROFILESPYYResource {
 
 
 
-    @PreAuthorize("hasPermission(#pcmprofilespyy_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#pcmprofilespyy_id,'Update',{'Sql',this.pcmprofilespyyMapping,#pcmprofilespyydto})")
     @ApiOperation(value = "Update", tags = {"PCMPROFILESPYY" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmprofilespyys/{pcmprofilespyy_id}")
     @Transactional
@@ -134,7 +139,6 @@ public class PCMPROFILESPYYResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#pcmprofilespyy_id,'Update',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "UpdateBatch", tags = {"PCMPROFILESPYY" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmprofilespyys/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PCMPROFILESPYYDTO> pcmprofilespyydtos) {
@@ -145,7 +149,7 @@ public class PCMPROFILESPYYResource {
 
 
 
-    @PreAuthorize("hasPermission(#pcmprofilespyy_id,'Remove',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#pcmprofilespyy_id,'Remove',{'Sql',this.pcmprofilespyyMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"PCMPROFILESPYY" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmprofilespyys/{pcmprofilespyy_id}")
     @Transactional
@@ -160,7 +164,7 @@ public class PCMPROFILESPYYResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILESPYY-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILESPYY-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PCMPROFILESPYY" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pcmprofilespyys/fetchdefault")
 	public ResponseEntity<List<PCMPROFILESPYYDTO>> fetchDefault(PCMPROFILESPYYSearchContext context) {
@@ -173,7 +177,7 @@ public class PCMPROFILESPYYResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILESPYY-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILESPYY-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PCMPROFILESPYY" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pcmprofilespyys/searchdefault")
 	public ResponseEntity<Page<PCMPROFILESPYYDTO>> searchDefault(@RequestBody PCMPROFILESPYYSearchContext context) {
@@ -183,12 +187,6 @@ public class PCMPROFILESPYYResource {
 	}
 
 
-    /**
-     * 用户权限校验
-     * @return
-     */
-	public PCMPROFILESPYY getEntity(){
-        return new PCMPROFILESPYY();
-    }
-
 }
+
+

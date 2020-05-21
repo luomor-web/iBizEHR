@@ -50,11 +50,14 @@ public class TSSDTaskPolicyResource {
 
     @Autowired
     @Lazy
-    private TSSDTaskPolicyMapping tssdtaskpolicyMapping;
+    public TSSDTaskPolicyMapping tssdtaskpolicyMapping;
+
+    public TSSDTaskPolicyDTO permissionDTO=new TSSDTaskPolicyDTO();
 
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TSSDTaskPolicy-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"TSSDTaskPolicy" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/tssdtaskpolicies/getdraft")
     public ResponseEntity<TSSDTaskPolicyDTO> getDraft() {
@@ -64,7 +67,7 @@ public class TSSDTaskPolicyResource {
 
 
 
-    @PreAuthorize("hasPermission(#tssdtaskpolicy_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#tssdtaskpolicy_id,'Update',{'Sql',this.tssdtaskpolicyMapping,#tssdtaskpolicydto})")
     @ApiOperation(value = "Update", tags = {"TSSDTaskPolicy" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/tssdtaskpolicies/{tssdtaskpolicy_id}")
     @Transactional
@@ -76,7 +79,6 @@ public class TSSDTaskPolicyResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#tssdtaskpolicy_id,'Update',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "UpdateBatch", tags = {"TSSDTaskPolicy" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/tssdtaskpolicies/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<TSSDTaskPolicyDTO> tssdtaskpolicydtos) {
@@ -87,6 +89,7 @@ public class TSSDTaskPolicyResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TSSDTaskPolicy-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"TSSDTaskPolicy" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/tssdtaskpolicies/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody TSSDTaskPolicyDTO tssdtaskpolicydto) {
@@ -96,7 +99,7 @@ public class TSSDTaskPolicyResource {
 
 
 
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.tssdtaskpolicyMapping,#tssdtaskpolicydto})")
     @ApiOperation(value = "Create", tags = {"TSSDTaskPolicy" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/tssdtaskpolicies")
     @Transactional
@@ -106,7 +109,7 @@ public class TSSDTaskPolicyResource {
         TSSDTaskPolicyDTO dto = tssdtaskpolicyMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+
     @ApiOperation(value = "createBatch", tags = {"TSSDTaskPolicy" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/tssdtaskpolicies/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<TSSDTaskPolicyDTO> tssdtaskpolicydtos) {
@@ -117,7 +120,7 @@ public class TSSDTaskPolicyResource {
 
 
 
-    @PreAuthorize("hasPermission(#tssdtaskpolicy_id,'Remove',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#tssdtaskpolicy_id,'Remove',{'Sql',this.tssdtaskpolicyMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"TSSDTaskPolicy" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/tssdtaskpolicies/{tssdtaskpolicy_id}")
     @Transactional
@@ -135,6 +138,7 @@ public class TSSDTaskPolicyResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TSSDTaskPolicy-Save-all')")
     @ApiOperation(value = "Save", tags = {"TSSDTaskPolicy" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/tssdtaskpolicies/save")
     public ResponseEntity<Boolean> save(@RequestBody TSSDTaskPolicyDTO tssdtaskpolicydto) {
@@ -151,7 +155,7 @@ public class TSSDTaskPolicyResource {
 
 
 
-    @PreAuthorize("hasPermission(#tssdtaskpolicy_id,'Get',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#tssdtaskpolicy_id,'Get',{'Sql',this.tssdtaskpolicyMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"TSSDTaskPolicy" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/tssdtaskpolicies/{tssdtaskpolicy_id}")
     public ResponseEntity<TSSDTaskPolicyDTO> get(@PathVariable("tssdtaskpolicy_id") String tssdtaskpolicy_id) {
@@ -160,7 +164,7 @@ public class TSSDTaskPolicyResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TSSDTaskPolicy-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TSSDTaskPolicy-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"TSSDTaskPolicy" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/tssdtaskpolicies/fetchdefault")
 	public ResponseEntity<List<TSSDTaskPolicyDTO>> fetchDefault(TSSDTaskPolicySearchContext context) {
@@ -173,7 +177,7 @@ public class TSSDTaskPolicyResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TSSDTaskPolicy-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TSSDTaskPolicy-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"TSSDTaskPolicy" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/tssdtaskpolicies/searchdefault")
 	public ResponseEntity<Page<TSSDTaskPolicyDTO>> searchDefault(@RequestBody TSSDTaskPolicySearchContext context) {
@@ -183,12 +187,6 @@ public class TSSDTaskPolicyResource {
 	}
 
 
-    /**
-     * 用户权限校验
-     * @return
-     */
-	public TSSDTaskPolicy getEntity(){
-        return new TSSDTaskPolicy();
-    }
-
 }
+
+

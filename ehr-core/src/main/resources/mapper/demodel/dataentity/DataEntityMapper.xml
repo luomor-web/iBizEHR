@@ -4,24 +4,6 @@
 <mapper	namespace="cn.ibizlab.ehr.core.demodel.mapper.DataEntityMapper">
 
     <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
-	<select id="selectById"  resultMap="DataEntityResultMap" databaseId="db2">
-        <![CDATA[select * from v_dataentity t1     where  deid=#{id}]]>
-    </select>
-	<select id="selectById"  resultMap="DataEntityResultMap" databaseId="mysql">
-        <![CDATA[select * from v_dataentity t1     where  deid=#{id}]]>
-    </select>
-	<select id="selectById"  resultMap="DataEntityResultMap" databaseId="oracle">
-        <![CDATA[select * from v_dataentity t1     where  deid=#{id}]]>
-    </select>
-	<select id="selectById"  resultMap="DataEntityResultMap" databaseId="postgresql">
-        <![CDATA[select * from v_dataentity t1     where  deid=#{id}]]>
-    </select>
-	<select id="selectById"  resultMap="DataEntityResultMap" databaseId="ppas">
-        <![CDATA[select * from v_dataentity t1     where  deid=#{id}]]>
-    </select>
-	<select id="selectById"  resultMap="DataEntityResultMap" databaseId="sqlserver">
-        <![CDATA[select * from v_dataentity t1     where  deid=#{id}]]>
-    </select>
 
     <!--通过mybatis将查询结果注入到entity中,通过配置autoMapping="true"由mybatis自动处理映射关系 -->
     <resultMap id="DataEntityResultMap" type="cn.ibizlab.ehr.core.demodel.domain.DataEntity" autoMapping="true">

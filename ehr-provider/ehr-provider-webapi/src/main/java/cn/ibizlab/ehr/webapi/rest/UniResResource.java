@@ -50,12 +50,14 @@ public class UniResResource {
 
     @Autowired
     @Lazy
-    private UniResMapping uniresMapping;
+    public UniResMapping uniresMapping;
+
+    public UniResDTO permissionDTO=new UniResDTO();
 
 
 
 
-    @PreAuthorize("hasPermission(#unires_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#unires_id,'Update',{'Sql',this.uniresMapping,#uniresdto})")
     @ApiOperation(value = "Update", tags = {"UniRes" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/unires/{unires_id}")
     @Transactional
@@ -67,7 +69,6 @@ public class UniResResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#unires_id,'Update',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "UpdateBatch", tags = {"UniRes" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/unires/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<UniResDTO> uniresdtos) {
@@ -78,6 +79,7 @@ public class UniResResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UniRes-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"UniRes" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/unires/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody UniResDTO uniresdto) {
@@ -87,7 +89,7 @@ public class UniResResource {
 
 
 
-    @PreAuthorize("hasPermission(#unires_id,'Get',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#unires_id,'Get',{'Sql',this.uniresMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"UniRes" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/unires/{unires_id}")
     public ResponseEntity<UniResDTO> get(@PathVariable("unires_id") String unires_id) {
@@ -99,6 +101,7 @@ public class UniResResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UniRes-Save-all')")
     @ApiOperation(value = "Save", tags = {"UniRes" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/unires/save")
     public ResponseEntity<Boolean> save(@RequestBody UniResDTO uniresdto) {
@@ -115,6 +118,7 @@ public class UniResResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UniRes-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"UniRes" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/unires/getdraft")
     public ResponseEntity<UniResDTO> getDraft() {
@@ -124,7 +128,7 @@ public class UniResResource {
 
 
 
-    @PreAuthorize("hasPermission(#unires_id,'Remove',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#unires_id,'Remove',{'Sql',this.uniresMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"UniRes" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/unires/{unires_id}")
     @Transactional
@@ -142,7 +146,7 @@ public class UniResResource {
 
 
 
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.uniresMapping,#uniresdto})")
     @ApiOperation(value = "Create", tags = {"UniRes" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/unires")
     @Transactional
@@ -152,7 +156,7 @@ public class UniResResource {
         UniResDTO dto = uniresMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+
     @ApiOperation(value = "createBatch", tags = {"UniRes" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/unires/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<UniResDTO> uniresdtos) {
@@ -160,7 +164,7 @@ public class UniResResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UniRes-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UniRes-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"UniRes" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/unires/fetchdefault")
 	public ResponseEntity<List<UniResDTO>> fetchDefault(UniResSearchContext context) {
@@ -173,7 +177,7 @@ public class UniResResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UniRes-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UniRes-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"UniRes" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/unires/searchdefault")
 	public ResponseEntity<Page<UniResDTO>> searchDefault(@RequestBody UniResSearchContext context) {
@@ -183,12 +187,6 @@ public class UniResResource {
 	}
 
 
-    /**
-     * 用户权限校验
-     * @return
-     */
-	public UniRes getEntity(){
-        return new UniRes();
-    }
-
 }
+
+

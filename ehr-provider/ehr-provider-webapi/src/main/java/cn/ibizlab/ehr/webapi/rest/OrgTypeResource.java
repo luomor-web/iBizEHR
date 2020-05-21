@@ -50,11 +50,14 @@ public class OrgTypeResource {
 
     @Autowired
     @Lazy
-    private OrgTypeMapping orgtypeMapping;
+    public OrgTypeMapping orgtypeMapping;
+
+    public OrgTypeDTO permissionDTO=new OrgTypeDTO();
 
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrgType-Save-all')")
     @ApiOperation(value = "Save", tags = {"OrgType" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/orgtypes/save")
     public ResponseEntity<Boolean> save(@RequestBody OrgTypeDTO orgtypedto) {
@@ -71,6 +74,7 @@ public class OrgTypeResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrgType-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"OrgType" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/orgtypes/getdraft")
     public ResponseEntity<OrgTypeDTO> getDraft() {
@@ -80,7 +84,7 @@ public class OrgTypeResource {
 
 
 
-    @PreAuthorize("hasPermission(#orgtype_id,'Remove',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#orgtype_id,'Remove',{'Sql',this.orgtypeMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"OrgType" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/orgtypes/{orgtype_id}")
     @Transactional
@@ -98,7 +102,7 @@ public class OrgTypeResource {
 
 
 
-    @PreAuthorize("hasPermission(#orgtype_id,'Get',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#orgtype_id,'Get',{'Sql',this.orgtypeMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"OrgType" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/orgtypes/{orgtype_id}")
     public ResponseEntity<OrgTypeDTO> get(@PathVariable("orgtype_id") String orgtype_id) {
@@ -110,7 +114,7 @@ public class OrgTypeResource {
 
 
 
-    @PreAuthorize("hasPermission(#orgtype_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#orgtype_id,'Update',{'Sql',this.orgtypeMapping,#orgtypedto})")
     @ApiOperation(value = "Update", tags = {"OrgType" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/orgtypes/{orgtype_id}")
     @Transactional
@@ -122,7 +126,6 @@ public class OrgTypeResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#orgtype_id,'Update',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "UpdateBatch", tags = {"OrgType" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/orgtypes/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<OrgTypeDTO> orgtypedtos) {
@@ -133,7 +136,7 @@ public class OrgTypeResource {
 
 
 
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.orgtypeMapping,#orgtypedto})")
     @ApiOperation(value = "Create", tags = {"OrgType" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/orgtypes")
     @Transactional
@@ -143,7 +146,7 @@ public class OrgTypeResource {
         OrgTypeDTO dto = orgtypeMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+
     @ApiOperation(value = "createBatch", tags = {"OrgType" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/orgtypes/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<OrgTypeDTO> orgtypedtos) {
@@ -154,13 +157,14 @@ public class OrgTypeResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrgType-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"OrgType" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/orgtypes/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody OrgTypeDTO orgtypedto) {
         return  ResponseEntity.status(HttpStatus.OK).body(orgtypeService.checkKey(orgtypeMapping.toDomain(orgtypedto)));
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrgType-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrgType-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"OrgType" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/orgtypes/fetchdefault")
 	public ResponseEntity<List<OrgTypeDTO>> fetchDefault(OrgTypeSearchContext context) {
@@ -173,7 +177,7 @@ public class OrgTypeResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrgType-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrgType-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"OrgType" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/orgtypes/searchdefault")
 	public ResponseEntity<Page<OrgTypeDTO>> searchDefault(@RequestBody OrgTypeSearchContext context) {
@@ -183,12 +187,6 @@ public class OrgTypeResource {
 	}
 
 
-    /**
-     * 用户权限校验
-     * @return
-     */
-	public OrgType getEntity(){
-        return new OrgType();
-    }
-
 }
+
+

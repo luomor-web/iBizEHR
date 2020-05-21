@@ -4,24 +4,6 @@
 <mapper	namespace="cn.ibizlab.ehr.core.common.mapper.CodeList1Mapper">
 
     <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
-	<select id="selectById"  resultMap="CodeList1ResultMap" databaseId="db2">
-        <![CDATA[select * from v_codelist t1     where  codelistid=#{id}]]>
-    </select>
-	<select id="selectById"  resultMap="CodeList1ResultMap" databaseId="mysql">
-        <![CDATA[select * from v_codelist t1     where  codelistid=#{id}]]>
-    </select>
-	<select id="selectById"  resultMap="CodeList1ResultMap" databaseId="oracle">
-        <![CDATA[select * from v_codelist t1     where  codelistid=#{id}]]>
-    </select>
-	<select id="selectById"  resultMap="CodeList1ResultMap" databaseId="postgresql">
-        <![CDATA[select * from v_codelist t1     where  codelistid=#{id}]]>
-    </select>
-	<select id="selectById"  resultMap="CodeList1ResultMap" databaseId="ppas">
-        <![CDATA[select * from v_codelist t1     where  codelistid=#{id}]]>
-    </select>
-	<select id="selectById"  resultMap="CodeList1ResultMap" databaseId="sqlserver">
-        <![CDATA[select * from v_codelist t1     where  codelistid=#{id}]]>
-    </select>
 
     <!--通过mybatis将查询结果注入到entity中,通过配置autoMapping="true"由mybatis自动处理映射关系 -->
     <resultMap id="CodeList1ResultMap" type="cn.ibizlab.ehr.core.common.domain.CodeList1" autoMapping="true">

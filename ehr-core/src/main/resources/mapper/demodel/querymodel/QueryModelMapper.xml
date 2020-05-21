@@ -4,24 +4,6 @@
 <mapper	namespace="cn.ibizlab.ehr.core.demodel.mapper.QueryModelMapper">
 
     <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
-	<select id="selectById"  resultMap="QueryModelResultMap" databaseId="db2">
-        <![CDATA[select * from v_querymodel t1     where  querymodelid=#{id}]]>
-    </select>
-	<select id="selectById"  resultMap="QueryModelResultMap" databaseId="mysql">
-        <![CDATA[select * from v_querymodel t1     where  querymodelid=#{id}]]>
-    </select>
-	<select id="selectById"  resultMap="QueryModelResultMap" databaseId="oracle">
-        <![CDATA[select * from v_querymodel t1     where  querymodelid=#{id}]]>
-    </select>
-	<select id="selectById"  resultMap="QueryModelResultMap" databaseId="postgresql">
-        <![CDATA[select * from v_querymodel t1     where  querymodelid=#{id}]]>
-    </select>
-	<select id="selectById"  resultMap="QueryModelResultMap" databaseId="ppas">
-        <![CDATA[select * from v_querymodel t1     where  querymodelid=#{id}]]>
-    </select>
-	<select id="selectById"  resultMap="QueryModelResultMap" databaseId="sqlserver">
-        <![CDATA[select * from v_querymodel t1     where  querymodelid=#{id}]]>
-    </select>
 
     <!--通过mybatis将查询结果注入到entity中,通过配置autoMapping="true"由mybatis自动处理映射关系 -->
     <resultMap id="QueryModelResultMap" type="cn.ibizlab.ehr.core.demodel.domain.QueryModel" autoMapping="true">

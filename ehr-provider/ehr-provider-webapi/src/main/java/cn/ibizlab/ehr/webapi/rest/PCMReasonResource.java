@@ -50,11 +50,14 @@ public class PCMReasonResource {
 
     @Autowired
     @Lazy
-    private PCMReasonMapping pcmreasonMapping;
+    public PCMReasonMapping pcmreasonMapping;
+
+    public PCMReasonDTO permissionDTO=new PCMReasonDTO();
 
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMReason-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"PCMReason" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmreasons/getdraft")
     public ResponseEntity<PCMReasonDTO> getDraft() {
@@ -64,7 +67,7 @@ public class PCMReasonResource {
 
 
 
-    @PreAuthorize("hasPermission(#pcmreason_id,'Remove',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#pcmreason_id,'Remove',{'Sql',this.pcmreasonMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"PCMReason" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmreasons/{pcmreason_id}")
     @Transactional
@@ -82,7 +85,7 @@ public class PCMReasonResource {
 
 
 
-    @PreAuthorize("hasPermission(#pcmreason_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#pcmreason_id,'Update',{'Sql',this.pcmreasonMapping,#pcmreasondto})")
     @ApiOperation(value = "Update", tags = {"PCMReason" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmreasons/{pcmreason_id}")
     @Transactional
@@ -94,7 +97,6 @@ public class PCMReasonResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#pcmreason_id,'Update',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "UpdateBatch", tags = {"PCMReason" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmreasons/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PCMReasonDTO> pcmreasondtos) {
@@ -105,7 +107,7 @@ public class PCMReasonResource {
 
 
 
-    @PreAuthorize("hasPermission(#pcmreason_id,'Get',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#pcmreason_id,'Get',{'Sql',this.pcmreasonMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"PCMReason" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmreasons/{pcmreason_id}")
     public ResponseEntity<PCMReasonDTO> get(@PathVariable("pcmreason_id") String pcmreason_id) {
@@ -117,7 +119,7 @@ public class PCMReasonResource {
 
 
 
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.pcmreasonMapping,#pcmreasondto})")
     @ApiOperation(value = "Create", tags = {"PCMReason" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmreasons")
     @Transactional
@@ -127,7 +129,7 @@ public class PCMReasonResource {
         PCMReasonDTO dto = pcmreasonMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+
     @ApiOperation(value = "createBatch", tags = {"PCMReason" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmreasons/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PCMReasonDTO> pcmreasondtos) {
@@ -138,6 +140,7 @@ public class PCMReasonResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMReason-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"PCMReason" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmreasons/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PCMReasonDTO pcmreasondto) {
@@ -147,6 +150,7 @@ public class PCMReasonResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMReason-Save-all')")
     @ApiOperation(value = "Save", tags = {"PCMReason" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmreasons/save")
     public ResponseEntity<Boolean> save(@RequestBody PCMReasonDTO pcmreasondto) {
@@ -160,7 +164,7 @@ public class PCMReasonResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMReason-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMReason-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PCMReason" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pcmreasons/fetchdefault")
 	public ResponseEntity<List<PCMReasonDTO>> fetchDefault(PCMReasonSearchContext context) {
@@ -173,7 +177,7 @@ public class PCMReasonResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMReason-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMReason-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PCMReason" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pcmreasons/searchdefault")
 	public ResponseEntity<Page<PCMReasonDTO>> searchDefault(@RequestBody PCMReasonSearchContext context) {
@@ -183,12 +187,6 @@ public class PCMReasonResource {
 	}
 
 
-    /**
-     * 用户权限校验
-     * @return
-     */
-	public PCMReason getEntity(){
-        return new PCMReason();
-    }
-
 }
+
+

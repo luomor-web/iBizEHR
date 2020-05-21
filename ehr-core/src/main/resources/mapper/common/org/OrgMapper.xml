@@ -4,24 +4,6 @@
 <mapper	namespace="cn.ibizlab.ehr.core.common.mapper.OrgMapper">
 
     <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
-	<select id="selectById"  resultMap="OrgResultMap" databaseId="db2">
-        <![CDATA[select * from v_org t1     where  orgid=#{id}]]>
-    </select>
-	<select id="selectById"  resultMap="OrgResultMap" databaseId="mysql">
-        <![CDATA[select * from v_org t1     where  orgid=#{id}]]>
-    </select>
-	<select id="selectById"  resultMap="OrgResultMap" databaseId="oracle">
-        <![CDATA[select * from v_org t1     where  orgid=#{id}]]>
-    </select>
-	<select id="selectById"  resultMap="OrgResultMap" databaseId="postgresql">
-        <![CDATA[select * from v_org t1     where  orgid=#{id}]]>
-    </select>
-	<select id="selectById"  resultMap="OrgResultMap" databaseId="ppas">
-        <![CDATA[select * from v_org t1     where  orgid=#{id}]]>
-    </select>
-	<select id="selectById"  resultMap="OrgResultMap" databaseId="sqlserver">
-        <![CDATA[select * from v_org t1     where  orgid=#{id}]]>
-    </select>
 
     <!--通过mybatis将查询结果注入到entity中,通过配置autoMapping="true"由mybatis自动处理映射关系 -->
     <resultMap id="OrgResultMap" type="cn.ibizlab.ehr.core.common.domain.Org" autoMapping="true">

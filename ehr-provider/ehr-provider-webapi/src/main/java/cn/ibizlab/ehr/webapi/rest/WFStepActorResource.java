@@ -50,11 +50,14 @@ public class WFStepActorResource {
 
     @Autowired
     @Lazy
-    private WFStepActorMapping wfstepactorMapping;
+    public WFStepActorMapping wfstepactorMapping;
+
+    public WFStepActorDTO permissionDTO=new WFStepActorDTO();
 
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFStepActor-Save-all')")
     @ApiOperation(value = "Save", tags = {"WFStepActor" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/wfstepactors/save")
     public ResponseEntity<Boolean> save(@RequestBody WFStepActorDTO wfstepactordto) {
@@ -71,6 +74,7 @@ public class WFStepActorResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFStepActor-RemindSave-all')")
     @ApiOperation(value = "催办保存", tags = {"WFStepActor" },  notes = "催办保存")
 	@RequestMapping(method = RequestMethod.POST, value = "/wfstepactors/{wfstepactor_id}/remindsave")
     @Transactional
@@ -84,7 +88,7 @@ public class WFStepActorResource {
 
 
 
-    @PreAuthorize("hasPermission(#wfstepactor_id,'Get',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#wfstepactor_id,'Get',{'Sql',this.wfstepactorMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"WFStepActor" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/wfstepactors/{wfstepactor_id}")
     public ResponseEntity<WFStepActorDTO> get(@PathVariable("wfstepactor_id") String wfstepactor_id) {
@@ -96,7 +100,7 @@ public class WFStepActorResource {
 
 
 
-    @PreAuthorize("hasPermission(#wfstepactor_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#wfstepactor_id,'Update',{'Sql',this.wfstepactorMapping,#wfstepactordto})")
     @ApiOperation(value = "Update", tags = {"WFStepActor" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/wfstepactors/{wfstepactor_id}")
     @Transactional
@@ -108,7 +112,6 @@ public class WFStepActorResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#wfstepactor_id,'Update',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "UpdateBatch", tags = {"WFStepActor" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/wfstepactors/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<WFStepActorDTO> wfstepactordtos) {
@@ -119,7 +122,7 @@ public class WFStepActorResource {
 
 
 
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.wfstepactorMapping,#wfstepactordto})")
     @ApiOperation(value = "Create", tags = {"WFStepActor" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/wfstepactors")
     @Transactional
@@ -129,7 +132,7 @@ public class WFStepActorResource {
         WFStepActorDTO dto = wfstepactorMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+
     @ApiOperation(value = "createBatch", tags = {"WFStepActor" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/wfstepactors/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<WFStepActorDTO> wfstepactordtos) {
@@ -140,7 +143,7 @@ public class WFStepActorResource {
 
 
 
-    @PreAuthorize("hasPermission(#wfstepactor_id,'Remove',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#wfstepactor_id,'Remove',{'Sql',this.wfstepactorMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"WFStepActor" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/wfstepactors/{wfstepactor_id}")
     @Transactional
@@ -158,6 +161,7 @@ public class WFStepActorResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFStepActor-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"WFStepActor" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/wfstepactors/getdraft")
     public ResponseEntity<WFStepActorDTO> getDraft() {
@@ -167,13 +171,14 @@ public class WFStepActorResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFStepActor-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"WFStepActor" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/wfstepactors/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody WFStepActorDTO wfstepactordto) {
         return  ResponseEntity.status(HttpStatus.OK).body(wfstepactorService.checkKey(wfstepactorMapping.toDomain(wfstepactordto)));
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFStepActor-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFStepActor-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"WFStepActor" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/wfstepactors/fetchdefault")
 	public ResponseEntity<List<WFStepActorDTO>> fetchDefault(WFStepActorSearchContext context) {
@@ -186,7 +191,7 @@ public class WFStepActorResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFStepActor-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFStepActor-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"WFStepActor" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/wfstepactors/searchdefault")
 	public ResponseEntity<Page<WFStepActorDTO>> searchDefault(@RequestBody WFStepActorSearchContext context) {
@@ -196,12 +201,6 @@ public class WFStepActorResource {
 	}
 
 
-    /**
-     * 用户权限校验
-     * @return
-     */
-	public WFStepActor getEntity(){
-        return new WFStepActor();
-    }
-
 }
+
+

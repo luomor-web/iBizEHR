@@ -50,11 +50,14 @@ public class BUDGETResource {
 
     @Autowired
     @Lazy
-    private BUDGETMapping budgetMapping;
+    public BUDGETMapping budgetMapping;
+
+    public BUDGETDTO permissionDTO=new BUDGETDTO();
 
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-BUDGET-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"BUDGET" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/budgets/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody BUDGETDTO budgetdto) {
@@ -64,6 +67,7 @@ public class BUDGETResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-BUDGET-Save-all')")
     @ApiOperation(value = "Save", tags = {"BUDGET" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/budgets/save")
     public ResponseEntity<Boolean> save(@RequestBody BUDGETDTO budgetdto) {
@@ -80,7 +84,7 @@ public class BUDGETResource {
 
 
 
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.budgetMapping,#budgetdto})")
     @ApiOperation(value = "Create", tags = {"BUDGET" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/budgets")
     @Transactional
@@ -90,7 +94,7 @@ public class BUDGETResource {
         BUDGETDTO dto = budgetMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+
     @ApiOperation(value = "createBatch", tags = {"BUDGET" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/budgets/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<BUDGETDTO> budgetdtos) {
@@ -101,6 +105,7 @@ public class BUDGETResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-BUDGET-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"BUDGET" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/budgets/getdraft")
     public ResponseEntity<BUDGETDTO> getDraft() {
@@ -110,7 +115,7 @@ public class BUDGETResource {
 
 
 
-    @PreAuthorize("hasPermission(#budget_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#budget_id,'Update',{'Sql',this.budgetMapping,#budgetdto})")
     @ApiOperation(value = "Update", tags = {"BUDGET" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/budgets/{budget_id}")
     @Transactional
@@ -122,7 +127,6 @@ public class BUDGETResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#budget_id,'Update',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "UpdateBatch", tags = {"BUDGET" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/budgets/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<BUDGETDTO> budgetdtos) {
@@ -133,7 +137,7 @@ public class BUDGETResource {
 
 
 
-    @PreAuthorize("hasPermission(#budget_id,'Get',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#budget_id,'Get',{'Sql',this.budgetMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"BUDGET" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/budgets/{budget_id}")
     public ResponseEntity<BUDGETDTO> get(@PathVariable("budget_id") String budget_id) {
@@ -145,7 +149,7 @@ public class BUDGETResource {
 
 
 
-    @PreAuthorize("hasPermission(#budget_id,'Remove',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#budget_id,'Remove',{'Sql',this.budgetMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"BUDGET" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/budgets/{budget_id}")
     @Transactional
@@ -160,7 +164,7 @@ public class BUDGETResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-BUDGET-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-BUDGET-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"BUDGET" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/budgets/fetchdefault")
 	public ResponseEntity<List<BUDGETDTO>> fetchDefault(BUDGETSearchContext context) {
@@ -173,7 +177,7 @@ public class BUDGETResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-BUDGET-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-BUDGET-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"BUDGET" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/budgets/searchdefault")
 	public ResponseEntity<Page<BUDGETDTO>> searchDefault(@RequestBody BUDGETSearchContext context) {
@@ -183,12 +187,6 @@ public class BUDGETResource {
 	}
 
 
-    /**
-     * 用户权限校验
-     * @return
-     */
-	public BUDGET getEntity(){
-        return new BUDGET();
-    }
-
 }
+
+

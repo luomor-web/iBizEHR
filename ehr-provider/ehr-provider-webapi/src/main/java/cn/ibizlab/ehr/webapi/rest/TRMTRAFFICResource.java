@@ -50,11 +50,14 @@ public class TRMTRAFFICResource {
 
     @Autowired
     @Lazy
-    private TRMTRAFFICMapping trmtrafficMapping;
+    public TRMTRAFFICMapping trmtrafficMapping;
+
+    public TRMTRAFFICDTO permissionDTO=new TRMTRAFFICDTO();
 
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMTRAFFIC-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"TRMTRAFFIC" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/trmtraffics/getdraft")
     public ResponseEntity<TRMTRAFFICDTO> getDraft() {
@@ -64,7 +67,7 @@ public class TRMTRAFFICResource {
 
 
 
-    @PreAuthorize("hasPermission(#trmtraffic_id,'Remove',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#trmtraffic_id,'Remove',{'Sql',this.trmtrafficMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"TRMTRAFFIC" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/trmtraffics/{trmtraffic_id}")
     @Transactional
@@ -82,6 +85,7 @@ public class TRMTRAFFICResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMTRAFFIC-Save-all')")
     @ApiOperation(value = "Save", tags = {"TRMTRAFFIC" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmtraffics/save")
     public ResponseEntity<Boolean> save(@RequestBody TRMTRAFFICDTO trmtrafficdto) {
@@ -98,7 +102,7 @@ public class TRMTRAFFICResource {
 
 
 
-    @PreAuthorize("hasPermission(#trmtraffic_id,'Get',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#trmtraffic_id,'Get',{'Sql',this.trmtrafficMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"TRMTRAFFIC" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/trmtraffics/{trmtraffic_id}")
     public ResponseEntity<TRMTRAFFICDTO> get(@PathVariable("trmtraffic_id") String trmtraffic_id) {
@@ -110,7 +114,7 @@ public class TRMTRAFFICResource {
 
 
 
-    @PreAuthorize("hasPermission(#trmtraffic_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#trmtraffic_id,'Update',{'Sql',this.trmtrafficMapping,#trmtrafficdto})")
     @ApiOperation(value = "Update", tags = {"TRMTRAFFIC" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/trmtraffics/{trmtraffic_id}")
     @Transactional
@@ -122,7 +126,6 @@ public class TRMTRAFFICResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#trmtraffic_id,'Update',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "UpdateBatch", tags = {"TRMTRAFFIC" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/trmtraffics/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<TRMTRAFFICDTO> trmtrafficdtos) {
@@ -133,7 +136,7 @@ public class TRMTRAFFICResource {
 
 
 
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.trmtrafficMapping,#trmtrafficdto})")
     @ApiOperation(value = "Create", tags = {"TRMTRAFFIC" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmtraffics")
     @Transactional
@@ -143,7 +146,7 @@ public class TRMTRAFFICResource {
         TRMTRAFFICDTO dto = trmtrafficMapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+
     @ApiOperation(value = "createBatch", tags = {"TRMTRAFFIC" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmtraffics/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<TRMTRAFFICDTO> trmtrafficdtos) {
@@ -154,13 +157,14 @@ public class TRMTRAFFICResource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMTRAFFIC-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"TRMTRAFFIC" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmtraffics/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody TRMTRAFFICDTO trmtrafficdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(trmtrafficService.checkKey(trmtrafficMapping.toDomain(trmtrafficdto)));
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMTRAFFIC-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMTRAFFIC-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"TRMTRAFFIC" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/trmtraffics/fetchdefault")
 	public ResponseEntity<List<TRMTRAFFICDTO>> fetchDefault(TRMTRAFFICSearchContext context) {
@@ -173,7 +177,7 @@ public class TRMTRAFFICResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMTRAFFIC-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMTRAFFIC-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"TRMTRAFFIC" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/trmtraffics/searchdefault")
 	public ResponseEntity<Page<TRMTRAFFICDTO>> searchDefault(@RequestBody TRMTRAFFICSearchContext context) {
@@ -183,12 +187,6 @@ public class TRMTRAFFICResource {
 	}
 
 
-    /**
-     * 用户权限校验
-     * @return
-     */
-	public TRMTRAFFIC getEntity(){
-        return new TRMTRAFFIC();
-    }
-
 }
+
+

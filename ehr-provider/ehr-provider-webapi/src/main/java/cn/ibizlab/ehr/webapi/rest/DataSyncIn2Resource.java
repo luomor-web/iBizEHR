@@ -50,12 +50,14 @@ public class DataSyncIn2Resource {
 
     @Autowired
     @Lazy
-    private DataSyncIn2Mapping datasyncin2Mapping;
+    public DataSyncIn2Mapping datasyncin2Mapping;
+
+    public DataSyncIn2DTO permissionDTO=new DataSyncIn2DTO();
 
 
 
 
-    @PreAuthorize("hasPermission(#datasyncin2_id,'Remove',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#datasyncin2_id,'Remove',{'Sql',this.datasyncin2Mapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"DataSyncIn2" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/datasyncin2s/{datasyncin2_id}")
     @Transactional
@@ -73,6 +75,7 @@ public class DataSyncIn2Resource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DataSyncIn2-Save-all')")
     @ApiOperation(value = "Save", tags = {"DataSyncIn2" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/datasyncin2s/save")
     public ResponseEntity<Boolean> save(@RequestBody DataSyncIn2DTO datasyncin2dto) {
@@ -89,6 +92,7 @@ public class DataSyncIn2Resource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DataSyncIn2-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"DataSyncIn2" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/datasyncin2s/getdraft")
     public ResponseEntity<DataSyncIn2DTO> getDraft() {
@@ -98,7 +102,7 @@ public class DataSyncIn2Resource {
 
 
 
-    @PreAuthorize("hasPermission(#datasyncin2_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#datasyncin2_id,'Update',{'Sql',this.datasyncin2Mapping,#datasyncin2dto})")
     @ApiOperation(value = "Update", tags = {"DataSyncIn2" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/datasyncin2s/{datasyncin2_id}")
     @Transactional
@@ -110,7 +114,6 @@ public class DataSyncIn2Resource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#datasyncin2_id,'Update',{this.getEntity(),'Sql'})")
     @ApiOperation(value = "UpdateBatch", tags = {"DataSyncIn2" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/datasyncin2s/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<DataSyncIn2DTO> datasyncin2dtos) {
@@ -121,7 +124,7 @@ public class DataSyncIn2Resource {
 
 
 
-    @PreAuthorize("hasPermission(#datasyncin2_id,'Get',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#datasyncin2_id,'Get',{'Sql',this.datasyncin2Mapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"DataSyncIn2" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/datasyncin2s/{datasyncin2_id}")
     public ResponseEntity<DataSyncIn2DTO> get(@PathVariable("datasyncin2_id") String datasyncin2_id) {
@@ -133,7 +136,7 @@ public class DataSyncIn2Resource {
 
 
 
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.datasyncin2Mapping,#datasyncin2dto})")
     @ApiOperation(value = "Create", tags = {"DataSyncIn2" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/datasyncin2s")
     @Transactional
@@ -143,7 +146,7 @@ public class DataSyncIn2Resource {
         DataSyncIn2DTO dto = datasyncin2Mapping.toDto(domain);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+
     @ApiOperation(value = "createBatch", tags = {"DataSyncIn2" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/datasyncin2s/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<DataSyncIn2DTO> datasyncin2dtos) {
@@ -154,13 +157,14 @@ public class DataSyncIn2Resource {
 
 
 
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DataSyncIn2-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"DataSyncIn2" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/datasyncin2s/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody DataSyncIn2DTO datasyncin2dto) {
         return  ResponseEntity.status(HttpStatus.OK).body(datasyncin2Service.checkKey(datasyncin2Mapping.toDomain(datasyncin2dto)));
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DataSyncIn2-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DataSyncIn2-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"DataSyncIn2" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/datasyncin2s/fetchdefault")
 	public ResponseEntity<List<DataSyncIn2DTO>> fetchDefault(DataSyncIn2SearchContext context) {
@@ -173,7 +177,7 @@ public class DataSyncIn2Resource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DataSyncIn2-Default-all')")
+    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DataSyncIn2-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"DataSyncIn2" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/datasyncin2s/searchdefault")
 	public ResponseEntity<Page<DataSyncIn2DTO>> searchDefault(@RequestBody DataSyncIn2SearchContext context) {
@@ -183,12 +187,6 @@ public class DataSyncIn2Resource {
 	}
 
 
-    /**
-     * 用户权限校验
-     * @return
-     */
-	public DataSyncIn2 getEntity(){
-        return new DataSyncIn2();
-    }
-
 }
+
+
