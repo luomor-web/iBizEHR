@@ -48,10 +48,6 @@ public class PIMLANGUAGEABILITYServiceImpl extends ServiceImpl<PIMLANGUAGEABILIT
     @Lazy
     private cn.ibizlab.ehr.core.pim.service.IPIMPERSONService pimpersonService;
 
-    @Autowired
-    @Lazy
-    private cn.ibizlab.ehr.core.pim.service.logic.IPIMLANGUAGEABILITYGenerateFJLogic generatefjLogic;
-
     private int batchSize = 500;
 
     @Override
@@ -130,7 +126,6 @@ public class PIMLANGUAGEABILITYServiceImpl extends ServiceImpl<PIMLANGUAGEABILIT
         if(!update(et,(Wrapper) et.getUpdateWrapper(true).eq("pimlanguageabilityid",et.getPimlanguageabilityid())))
             return false;
         CachedBeanCopier.copy(get(et.getPimlanguageabilityid()),et);
-        generatefjLogic.execute(et);
         return true;
     }
 
@@ -147,7 +142,6 @@ public class PIMLANGUAGEABILITYServiceImpl extends ServiceImpl<PIMLANGUAGEABILIT
         if(!this.retBool(this.baseMapper.insert(et)))
             return false;
         CachedBeanCopier.copy(get(et.getPimlanguageabilityid()),et);
-        generatefjLogic.execute(et);
         return true;
     }
 
