@@ -27,6 +27,8 @@ public interface ORMTITLEMapper extends BaseMapper<ORMTITLE>{
     @Override
     int updateById(@Param(Constants.ENTITY) ORMTITLE entity);
     @Override
+    int update(@Param(Constants.ENTITY) ORMTITLE entity, @Param("ew") Wrapper<ORMTITLE> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

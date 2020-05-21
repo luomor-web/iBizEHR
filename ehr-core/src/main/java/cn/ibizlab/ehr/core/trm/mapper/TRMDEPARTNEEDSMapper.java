@@ -27,6 +27,8 @@ public interface TRMDEPARTNEEDSMapper extends BaseMapper<TRMDEPARTNEEDS>{
     @Override
     int updateById(@Param(Constants.ENTITY) TRMDEPARTNEEDS entity);
     @Override
+    int update(@Param(Constants.ENTITY) TRMDEPARTNEEDS entity, @Param("ew") Wrapper<TRMDEPARTNEEDS> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

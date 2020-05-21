@@ -30,7 +30,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
  * 实体[门户页面模型]
  */
 @Data
-@TableName(value = "T_PPMODEL",resultMap = "PPModelResultMap")
+@TableName(value = "T_SRFPPMODEL",resultMap = "PPModelResultMap")
 public class PPModel extends EntityMP implements Serializable {
 
     private static final long serialVersionUID = 1L;

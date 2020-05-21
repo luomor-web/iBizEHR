@@ -27,6 +27,8 @@ public interface TRMPLANFORMUMapper extends BaseMapper<TRMPLANFORMU>{
     @Override
     int updateById(@Param(Constants.ENTITY) TRMPLANFORMU entity);
     @Override
+    int update(@Param(Constants.ENTITY) TRMPLANFORMU entity, @Param("ew") Wrapper<TRMPLANFORMU> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

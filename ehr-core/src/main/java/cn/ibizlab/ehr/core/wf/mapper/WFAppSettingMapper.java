@@ -27,6 +27,8 @@ public interface WFAppSettingMapper extends BaseMapper<WFAppSetting>{
     @Override
     int updateById(@Param(Constants.ENTITY) WFAppSetting entity);
     @Override
+    int update(@Param(Constants.ENTITY) WFAppSetting entity, @Param("ew") Wrapper<WFAppSetting> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

@@ -27,6 +27,8 @@ public interface SystemMapper extends BaseMapper<System>{
     @Override
     int updateById(@Param(Constants.ENTITY) System entity);
     @Override
+    int update(@Param(Constants.ENTITY) System entity, @Param("ew") Wrapper<System> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

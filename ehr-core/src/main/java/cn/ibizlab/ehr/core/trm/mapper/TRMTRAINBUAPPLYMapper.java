@@ -27,6 +27,8 @@ public interface TRMTRAINBUAPPLYMapper extends BaseMapper<TRMTRAINBUAPPLY>{
     @Override
     int updateById(@Param(Constants.ENTITY) TRMTRAINBUAPPLY entity);
     @Override
+    int update(@Param(Constants.ENTITY) TRMTRAINBUAPPLY entity, @Param("ew") Wrapper<TRMTRAINBUAPPLY> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

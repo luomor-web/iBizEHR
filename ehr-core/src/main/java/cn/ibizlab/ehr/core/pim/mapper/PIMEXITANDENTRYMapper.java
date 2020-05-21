@@ -32,6 +32,8 @@ public interface PIMEXITANDENTRYMapper extends BaseMapper<PIMEXITANDENTRY>{
     @Override
     int updateById(@Param(Constants.ENTITY) PIMEXITANDENTRY entity);
     @Override
+    int update(@Param(Constants.ENTITY) PIMEXITANDENTRY entity, @Param("ew") Wrapper<PIMEXITANDENTRY> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

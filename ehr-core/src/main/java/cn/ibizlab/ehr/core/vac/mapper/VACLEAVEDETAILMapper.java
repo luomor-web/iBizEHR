@@ -27,6 +27,8 @@ public interface VACLEAVEDETAILMapper extends BaseMapper<VACLEAVEDETAIL>{
     @Override
     int updateById(@Param(Constants.ENTITY) VACLEAVEDETAIL entity);
     @Override
+    int update(@Param(Constants.ENTITY) VACLEAVEDETAIL entity, @Param("ew") Wrapper<VACLEAVEDETAIL> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

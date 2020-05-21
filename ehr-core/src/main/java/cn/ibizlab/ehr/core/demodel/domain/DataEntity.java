@@ -30,7 +30,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
  * 实体[实体]
  */
 @Data
-@TableName(value = "T_dataentity",resultMap = "DataEntityResultMap")
+@TableName(value = "T_SRFdataentity",resultMap = "DataEntityResultMap")
 public class DataEntity extends EntityMP implements Serializable {
 
     private static final long serialVersionUID = 1L;

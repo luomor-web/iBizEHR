@@ -27,6 +27,8 @@ public interface WXMessageMapper extends BaseMapper<WXMessage>{
     @Override
     int updateById(@Param(Constants.ENTITY) WXMessage entity);
     @Override
+    int update(@Param(Constants.ENTITY) WXMessage entity, @Param("ew") Wrapper<WXMessage> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

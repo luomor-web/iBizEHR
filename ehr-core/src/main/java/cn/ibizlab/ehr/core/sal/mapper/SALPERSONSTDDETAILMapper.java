@@ -27,6 +27,8 @@ public interface SALPERSONSTDDETAILMapper extends BaseMapper<SALPERSONSTDDETAIL>
     @Override
     int updateById(@Param(Constants.ENTITY) SALPERSONSTDDETAIL entity);
     @Override
+    int update(@Param(Constants.ENTITY) SALPERSONSTDDETAIL entity, @Param("ew") Wrapper<SALPERSONSTDDETAIL> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

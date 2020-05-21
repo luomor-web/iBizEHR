@@ -27,6 +27,8 @@ public interface PARLHMBMXMapper extends BaseMapper<PARLHMBMX>{
     @Override
     int updateById(@Param(Constants.ENTITY) PARLHMBMX entity);
     @Override
+    int update(@Param(Constants.ENTITY) PARLHMBMX entity, @Param("ew") Wrapper<PARLHMBMX> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

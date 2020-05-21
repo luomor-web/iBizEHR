@@ -27,6 +27,8 @@ public interface WFUserAssistMapper extends BaseMapper<WFUserAssist>{
     @Override
     int updateById(@Param(Constants.ENTITY) WFUserAssist entity);
     @Override
+    int update(@Param(Constants.ENTITY) WFUserAssist entity, @Param("ew") Wrapper<WFUserAssist> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

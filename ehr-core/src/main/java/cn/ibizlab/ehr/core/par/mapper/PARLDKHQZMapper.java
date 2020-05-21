@@ -27,6 +27,8 @@ public interface PARLDKHQZMapper extends BaseMapper<PARLDKHQZ>{
     @Override
     int updateById(@Param(Constants.ENTITY) PARLDKHQZ entity);
     @Override
+    int update(@Param(Constants.ENTITY) PARLDKHQZ entity, @Param("ew") Wrapper<PARLDKHQZ> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

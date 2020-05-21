@@ -27,6 +27,8 @@ public interface VACSYNJCXMapper extends BaseMapper<VACSYNJCX>{
     @Override
     int updateById(@Param(Constants.ENTITY) VACSYNJCX entity);
     @Override
+    int update(@Param(Constants.ENTITY) VACSYNJCX entity, @Param("ew") Wrapper<VACSYNJCX> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

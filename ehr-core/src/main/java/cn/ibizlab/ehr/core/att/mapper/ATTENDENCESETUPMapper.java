@@ -30,6 +30,8 @@ public interface ATTENDENCESETUPMapper extends BaseMapper<ATTENDENCESETUP>{
     @Override
     int updateById(@Param(Constants.ENTITY) ATTENDENCESETUP entity);
     @Override
+    int update(@Param(Constants.ENTITY) ATTENDENCESETUP entity, @Param("ew") Wrapper<ATTENDENCESETUP> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

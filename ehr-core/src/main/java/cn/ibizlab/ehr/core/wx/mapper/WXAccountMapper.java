@@ -27,6 +27,8 @@ public interface WXAccountMapper extends BaseMapper<WXAccount>{
     @Override
     int updateById(@Param(Constants.ENTITY) WXAccount entity);
     @Override
+    int update(@Param(Constants.ENTITY) WXAccount entity, @Param("ew") Wrapper<WXAccount> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

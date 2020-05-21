@@ -27,6 +27,8 @@ public interface PCMNORecyclingLibraryMapper extends BaseMapper<PCMNORecyclingLi
     @Override
     int updateById(@Param(Constants.ENTITY) PCMNORecyclingLibrary entity);
     @Override
+    int update(@Param(Constants.ENTITY) PCMNORecyclingLibrary entity, @Param("ew") Wrapper<PCMNORecyclingLibrary> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

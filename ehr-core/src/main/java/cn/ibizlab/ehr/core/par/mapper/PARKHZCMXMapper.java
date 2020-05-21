@@ -27,6 +27,8 @@ public interface PARKHZCMXMapper extends BaseMapper<PARKHZCMX>{
     @Override
     int updateById(@Param(Constants.ENTITY) PARKHZCMX entity);
     @Override
+    int update(@Param(Constants.ENTITY) PARKHZCMX entity, @Param("ew") Wrapper<PARKHZCMX> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

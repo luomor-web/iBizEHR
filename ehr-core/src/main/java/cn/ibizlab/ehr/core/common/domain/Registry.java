@@ -30,7 +30,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
  * 实体[注册表]
  */
 @Data
-@TableName(value = "T_REGISTRY",resultMap = "RegistryResultMap")
+@TableName(value = "T_SRFREGISTRY",resultMap = "RegistryResultMap")
 public class Registry extends EntityMP implements Serializable {
 
     private static final long serialVersionUID = 1L;

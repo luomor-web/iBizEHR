@@ -29,6 +29,8 @@ public interface PIMSOCIALSECURITYMapper extends BaseMapper<PIMSOCIALSECURITY>{
     @Override
     int updateById(@Param(Constants.ENTITY) PIMSOCIALSECURITY entity);
     @Override
+    int update(@Param(Constants.ENTITY) PIMSOCIALSECURITY entity, @Param("ew") Wrapper<PIMSOCIALSECURITY> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

@@ -27,6 +27,8 @@ public interface ARCHIVESCENTERMapper extends BaseMapper<ARCHIVESCENTER>{
     @Override
     int updateById(@Param(Constants.ENTITY) ARCHIVESCENTER entity);
     @Override
+    int update(@Param(Constants.ENTITY) ARCHIVESCENTER entity, @Param("ew") Wrapper<ARCHIVESCENTER> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

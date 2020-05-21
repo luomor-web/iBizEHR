@@ -27,6 +27,8 @@ public interface WFWorkflowMapper extends BaseMapper<WFWorkflow>{
     @Override
     int updateById(@Param(Constants.ENTITY) WFWorkflow entity);
     @Override
+    int update(@Param(Constants.ENTITY) WFWorkflow entity, @Param("ew") Wrapper<WFWorkflow> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

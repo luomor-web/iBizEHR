@@ -27,6 +27,8 @@ public interface SALSALARYBILLMapper extends BaseMapper<SALSALARYBILL>{
     @Override
     int updateById(@Param(Constants.ENTITY) SALSALARYBILL entity);
     @Override
+    int update(@Param(Constants.ENTITY) SALSALARYBILL entity, @Param("ew") Wrapper<SALSALARYBILL> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

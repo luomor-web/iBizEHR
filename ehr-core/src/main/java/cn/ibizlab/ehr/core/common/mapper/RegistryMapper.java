@@ -27,6 +27,8 @@ public interface RegistryMapper extends BaseMapper<Registry>{
     @Override
     int updateById(@Param(Constants.ENTITY) Registry entity);
     @Override
+    int update(@Param(Constants.ENTITY) Registry entity, @Param("ew") Wrapper<Registry> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

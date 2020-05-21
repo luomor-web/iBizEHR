@@ -27,6 +27,8 @@ public interface PIMPersonAbilityMapper extends BaseMapper<PIMPersonAbility>{
     @Override
     int updateById(@Param(Constants.ENTITY) PIMPersonAbility entity);
     @Override
+    int update(@Param(Constants.ENTITY) PIMPersonAbility entity, @Param("ew") Wrapper<PIMPersonAbility> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

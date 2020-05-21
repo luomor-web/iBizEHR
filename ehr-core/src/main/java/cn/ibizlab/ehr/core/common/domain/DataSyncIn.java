@@ -30,7 +30,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
  * 实体[数据同步接收队列]
  */
 @Data
-@TableName(value = "T_DATASYNCIN",resultMap = "DataSyncInResultMap")
+@TableName(value = "T_SRFDATASYNCIN",resultMap = "DataSyncInResultMap")
 public class DataSyncIn extends EntityMP implements Serializable {
 
     private static final long serialVersionUID = 1L;

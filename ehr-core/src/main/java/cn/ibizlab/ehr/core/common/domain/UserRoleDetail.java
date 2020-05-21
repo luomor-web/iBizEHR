@@ -30,7 +30,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
  * 实体[用户角色成员]
  */
 @Data
-@TableName(value = "T_USERROLEDETAIL",resultMap = "UserRoleDetailResultMap")
+@TableName(value = "T_SRFUSERROLEDETAIL",resultMap = "UserRoleDetailResultMap")
 public class UserRoleDetail extends EntityMP implements Serializable {
 
     private static final long serialVersionUID = 1L;

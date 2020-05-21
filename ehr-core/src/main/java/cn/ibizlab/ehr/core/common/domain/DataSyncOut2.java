@@ -30,7 +30,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
  * 实体[数据同步发送队列2]
  */
 @Data
-@TableName(value = "T_DATASYNCOUT2",resultMap = "DataSyncOut2ResultMap")
+@TableName(value = "T_SRFDATASYNCOUT2",resultMap = "DataSyncOut2ResultMap")
 public class DataSyncOut2 extends EntityMP implements Serializable {
 
     private static final long serialVersionUID = 1L;

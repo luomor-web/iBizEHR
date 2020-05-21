@@ -31,6 +31,8 @@ public interface PIMVOCATIONALMapper extends BaseMapper<PIMVOCATIONAL>{
     @Override
     int updateById(@Param(Constants.ENTITY) PIMVOCATIONAL entity);
     @Override
+    int update(@Param(Constants.ENTITY) PIMVOCATIONAL entity, @Param("ew") Wrapper<PIMVOCATIONAL> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

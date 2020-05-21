@@ -250,7 +250,6 @@ export class EntityServiceRegister {
         this.allEntityService.set('trmhmatser', () => import('@/service/trmhmatser/trmhmatser-service'));
         this.allEntityService.set('userroleres', () => import('@/service/user-role-res/user-role-res-service'));
         this.allEntityService.set('userobject', () => import('@/service/user-object/user-object-service'));
-        this.allEntityService.set('appcenter', () => import('@/service/app-center/app-center-service'));
         this.allEntityService.set('pcmtxfpsq', () => import('@/service/pcmtxfpsq/pcmtxfpsq-service'));
         this.allEntityService.set('ormzwdqgz', () => import('@/service/ormzwdqgz/ormzwdqgz-service'));
         this.allEntityService.set('msgaccount', () => import('@/service/msg-account/msg-account-service'));

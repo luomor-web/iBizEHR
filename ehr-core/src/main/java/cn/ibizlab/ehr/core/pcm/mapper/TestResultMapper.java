@@ -27,6 +27,8 @@ public interface TestResultMapper extends BaseMapper<TestResult>{
     @Override
     int updateById(@Param(Constants.ENTITY) TestResult entity);
     @Override
+    int update(@Param(Constants.ENTITY) TestResult entity, @Param("ew") Wrapper<TestResult> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

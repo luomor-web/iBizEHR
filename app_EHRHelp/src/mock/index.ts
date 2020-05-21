@@ -218,7 +218,6 @@ import './entity/attendancesummarymxs/attendancesummarymxs';
 import './entity/trmhmatsers/trmhmatsers';
 import './entity/user-role-ress/user-role-ress';
 import './entity/user-objects/user-objects';
-import './entity/app-centers/app-centers';
 import './entity/pcmtxfpsqs/pcmtxfpsqs';
 import './entity/ormzwdqgzs/ormzwdqgzs';
 import './entity/msg-accounts/msg-accounts';

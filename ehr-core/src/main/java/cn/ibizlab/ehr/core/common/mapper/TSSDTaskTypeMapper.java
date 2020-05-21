@@ -27,6 +27,8 @@ public interface TSSDTaskTypeMapper extends BaseMapper<TSSDTaskType>{
     @Override
     int updateById(@Param(Constants.ENTITY) TSSDTaskType entity);
     @Override
+    int update(@Param(Constants.ENTITY) TSSDTaskType entity, @Param("ew") Wrapper<TSSDTaskType> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

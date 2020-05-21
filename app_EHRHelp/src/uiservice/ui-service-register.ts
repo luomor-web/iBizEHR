@@ -250,7 +250,6 @@ export class UIServiceRegister {
         this.allUIService.set('trmhmatser', () => import('@/uiservice/trmhmatser/trmhmatser-ui-service'));
         this.allUIService.set('userroleres', () => import('@/uiservice/user-role-res/user-role-res-ui-service'));
         this.allUIService.set('userobject', () => import('@/uiservice/user-object/user-object-ui-service'));
-        this.allUIService.set('appcenter', () => import('@/uiservice/app-center/app-center-ui-service'));
         this.allUIService.set('pcmtxfpsq', () => import('@/uiservice/pcmtxfpsq/pcmtxfpsq-ui-service'));
         this.allUIService.set('ormzwdqgz', () => import('@/uiservice/ormzwdqgz/ormzwdqgz-ui-service'));
         this.allUIService.set('msgaccount', () => import('@/uiservice/msg-account/msg-account-ui-service'));

@@ -27,6 +27,8 @@ public interface DataSyncAgentMapper extends BaseMapper<DataSyncAgent>{
     @Override
     int updateById(@Param(Constants.ENTITY) DataSyncAgent entity);
     @Override
+    int update(@Param(Constants.ENTITY) DataSyncAgent entity, @Param("ew") Wrapper<DataSyncAgent> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

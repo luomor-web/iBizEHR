@@ -30,7 +30,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
  * 实体[工作流操作者]
  */
 @Data
-@TableName(value = "T_WFACTOR",resultMap = "WFActorResultMap")
+@TableName(value = "T_SRFWFACTOR",resultMap = "WFActorResultMap")
 public class WFActor extends EntityMP implements Serializable {
 
     private static final long serialVersionUID = 1L;

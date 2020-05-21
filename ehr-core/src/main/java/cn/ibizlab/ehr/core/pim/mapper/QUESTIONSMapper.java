@@ -28,6 +28,8 @@ public interface QUESTIONSMapper extends BaseMapper<QUESTIONS>{
     @Override
     int updateById(@Param(Constants.ENTITY) QUESTIONS entity);
     @Override
+    int update(@Param(Constants.ENTITY) QUESTIONS entity, @Param("ew") Wrapper<QUESTIONS> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

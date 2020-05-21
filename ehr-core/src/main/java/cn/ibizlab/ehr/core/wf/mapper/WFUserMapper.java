@@ -27,6 +27,8 @@ public interface WFUserMapper extends BaseMapper<WFUser>{
     @Override
     int updateById(@Param(Constants.ENTITY) WFUser entity);
     @Override
+    int update(@Param(Constants.ENTITY) WFUser entity, @Param("ew") Wrapper<WFUser> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

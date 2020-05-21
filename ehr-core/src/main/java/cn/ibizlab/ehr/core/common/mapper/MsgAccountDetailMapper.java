@@ -27,6 +27,8 @@ public interface MsgAccountDetailMapper extends BaseMapper<MsgAccountDetail>{
     @Override
     int updateById(@Param(Constants.ENTITY) MsgAccountDetail entity);
     @Override
+    int update(@Param(Constants.ENTITY) MsgAccountDetail entity, @Param("ew") Wrapper<MsgAccountDetail> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

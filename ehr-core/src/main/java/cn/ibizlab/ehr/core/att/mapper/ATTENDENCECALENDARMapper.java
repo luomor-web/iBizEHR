@@ -27,6 +27,8 @@ public interface ATTENDENCECALENDARMapper extends BaseMapper<ATTENDENCECALENDAR>
     @Override
     int updateById(@Param(Constants.ENTITY) ATTENDENCECALENDAR entity);
     @Override
+    int update(@Param(Constants.ENTITY) ATTENDENCECALENDAR entity, @Param("ew") Wrapper<ATTENDENCECALENDAR> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

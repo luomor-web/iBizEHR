@@ -209,7 +209,6 @@ import attendancesummarymx_zh_CN from '@locale/lanres/attendancesummarymx/attend
 import trmhmatser_zh_CN from '@locale/lanres/trmhmatser/trmhmatser_zh_CN';
 import userroleres_zh_CN from '@locale/lanres/user-role-res/user-role-res_zh_CN';
 import userobject_zh_CN from '@locale/lanres/user-object/user-object_zh_CN';
-import appcenter_zh_CN from '@locale/lanres/app-center/app-center_zh_CN';
 import pcmtxfpsq_zh_CN from '@locale/lanres/pcmtxfpsq/pcmtxfpsq_zh_CN';
 import ormzwdqgz_zh_CN from '@locale/lanres/ormzwdqgz/ormzwdqgz_zh_CN';
 import msgaccount_zh_CN from '@locale/lanres/msg-account/msg-account_zh_CN';
@@ -671,7 +670,6 @@ export default {
         trmhmatser: trmhmatser_zh_CN,
         userroleres: userroleres_zh_CN,
         userobject: userobject_zh_CN,
-        appcenter: appcenter_zh_CN,
         pcmtxfpsq: pcmtxfpsq_zh_CN,
         ormzwdqgz: ormzwdqgz_zh_CN,
         msgaccount: msgaccount_zh_CN,

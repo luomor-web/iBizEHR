@@ -27,6 +27,8 @@ public interface FileMapper extends BaseMapper<File>{
     @Override
     int updateById(@Param(Constants.ENTITY) File entity);
     @Override
+    int update(@Param(Constants.ENTITY) File entity, @Param("ew") Wrapper<File> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

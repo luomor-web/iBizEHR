@@ -27,6 +27,8 @@ public interface PCMCERTOFREGMapper extends BaseMapper<PCMCERTOFREG>{
     @Override
     int updateById(@Param(Constants.ENTITY) PCMCERTOFREG entity);
     @Override
+    int update(@Param(Constants.ENTITY) PCMCERTOFREG entity, @Param("ew") Wrapper<PCMCERTOFREG> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

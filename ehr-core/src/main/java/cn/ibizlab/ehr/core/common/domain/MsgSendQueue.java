@@ -30,7 +30,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
  * 实体[消息发送队列]
  */
 @Data
-@TableName(value = "T_MSGSENDQUEUE",resultMap = "MsgSendQueueResultMap")
+@TableName(value = "T_SRFMSGSENDQUEUE",resultMap = "MsgSendQueueResultMap")
 public class MsgSendQueue extends EntityMP implements Serializable {
 
     private static final long serialVersionUID = 1L;

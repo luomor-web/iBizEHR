@@ -27,6 +27,8 @@ public interface WXEntAppMapper extends BaseMapper<WXEntApp>{
     @Override
     int updateById(@Param(Constants.ENTITY) WXEntApp entity);
     @Override
+    int update(@Param(Constants.ENTITY) WXEntApp entity, @Param("ew") Wrapper<WXEntApp> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

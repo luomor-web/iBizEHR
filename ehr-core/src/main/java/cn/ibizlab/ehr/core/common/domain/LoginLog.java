@@ -30,7 +30,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
  * 实体[帐户使用记录]
  */
 @Data
-@TableName(value = "T_LOGINLOG",resultMap = "LoginLogResultMap")
+@TableName(value = "T_SRFLOGINLOG",resultMap = "LoginLogResultMap")
 public class LoginLog extends EntityMP implements Serializable {
 
     private static final long serialVersionUID = 1L;

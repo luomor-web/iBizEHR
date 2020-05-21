@@ -29,6 +29,8 @@ public interface PIMRESEARCHFINDINGSMapper extends BaseMapper<PIMRESEARCHFINDING
     @Override
     int updateById(@Param(Constants.ENTITY) PIMRESEARCHFINDINGS entity);
     @Override
+    int update(@Param(Constants.ENTITY) PIMRESEARCHFINDINGS entity, @Param("ew") Wrapper<PIMRESEARCHFINDINGS> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

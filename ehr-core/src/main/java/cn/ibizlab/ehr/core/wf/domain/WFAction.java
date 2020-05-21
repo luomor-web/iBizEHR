@@ -30,7 +30,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
  * 实体[工作流用户操作]
  */
 @Data
-@TableName(value = "T_WFACTION",resultMap = "WFActionResultMap")
+@TableName(value = "T_SRFWFACTION",resultMap = "WFActionResultMap")
 public class WFAction extends EntityMP implements Serializable {
 
     private static final long serialVersionUID = 1L;

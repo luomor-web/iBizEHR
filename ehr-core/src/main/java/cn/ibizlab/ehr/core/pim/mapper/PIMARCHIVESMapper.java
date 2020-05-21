@@ -33,6 +33,8 @@ public interface PIMARCHIVESMapper extends BaseMapper<PIMARCHIVES>{
     @Override
     int updateById(@Param(Constants.ENTITY) PIMARCHIVES entity);
     @Override
+    int update(@Param(Constants.ENTITY) PIMARCHIVES entity, @Param("ew") Wrapper<PIMARCHIVES> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

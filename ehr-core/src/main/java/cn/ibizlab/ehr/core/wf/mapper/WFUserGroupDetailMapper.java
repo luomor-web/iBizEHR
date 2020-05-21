@@ -27,6 +27,8 @@ public interface WFUserGroupDetailMapper extends BaseMapper<WFUserGroupDetail>{
     @Override
     int updateById(@Param(Constants.ENTITY) WFUserGroupDetail entity);
     @Override
+    int update(@Param(Constants.ENTITY) WFUserGroupDetail entity, @Param("ew") Wrapper<WFUserGroupDetail> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

@@ -28,6 +28,8 @@ public interface PCMZPMEGLMapper extends BaseMapper<PCMZPMEGL>{
     @Override
     int updateById(@Param(Constants.ENTITY) PCMZPMEGL entity);
     @Override
+    int update(@Param(Constants.ENTITY) PCMZPMEGL entity, @Param("ew") Wrapper<PCMZPMEGL> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

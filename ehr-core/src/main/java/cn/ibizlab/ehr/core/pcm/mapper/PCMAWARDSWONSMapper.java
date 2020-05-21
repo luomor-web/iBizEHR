@@ -27,6 +27,8 @@ public interface PCMAWARDSWONSMapper extends BaseMapper<PCMAWARDSWONS>{
     @Override
     int updateById(@Param(Constants.ENTITY) PCMAWARDSWONS entity);
     @Override
+    int update(@Param(Constants.ENTITY) PCMAWARDSWONS entity, @Param("ew") Wrapper<PCMAWARDSWONS> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

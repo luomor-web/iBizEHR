@@ -27,6 +27,8 @@ public interface WFReminderMapper extends BaseMapper<WFReminder>{
     @Override
     int updateById(@Param(Constants.ENTITY) WFReminder entity);
     @Override
+    int update(@Param(Constants.ENTITY) WFReminder entity, @Param("ew") Wrapper<WFReminder> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

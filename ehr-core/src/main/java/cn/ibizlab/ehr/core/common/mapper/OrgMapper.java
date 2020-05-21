@@ -30,6 +30,8 @@ public interface OrgMapper extends BaseMapper<Org>{
     @Override
     int updateById(@Param(Constants.ENTITY) Org entity);
     @Override
+    int update(@Param(Constants.ENTITY) Org entity, @Param("ew") Wrapper<Org> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

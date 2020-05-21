@@ -27,6 +27,8 @@ public interface LoginLogMapper extends BaseMapper<LoginLog>{
     @Override
     int updateById(@Param(Constants.ENTITY) LoginLog entity);
     @Override
+    int update(@Param(Constants.ENTITY) LoginLog entity, @Param("ew") Wrapper<LoginLog> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

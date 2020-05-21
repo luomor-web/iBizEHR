@@ -30,7 +30,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
  * 实体[实体数据变更]
  */
 @Data
-@TableName(value = "T_DEDATACHG",resultMap = "DEDataChgResultMap")
+@TableName(value = "T_SRFDEDATACHG",resultMap = "DEDataChgResultMap")
 public class DEDataChg extends EntityMP implements Serializable {
 
     private static final long serialVersionUID = 1L;

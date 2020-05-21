@@ -27,6 +27,8 @@ public interface SALSOURCEMapper extends BaseMapper<SALSOURCE>{
     @Override
     int updateById(@Param(Constants.ENTITY) SALSOURCE entity);
     @Override
+    int update(@Param(Constants.ENTITY) SALSOURCE entity, @Param("ew") Wrapper<SALSOURCE> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

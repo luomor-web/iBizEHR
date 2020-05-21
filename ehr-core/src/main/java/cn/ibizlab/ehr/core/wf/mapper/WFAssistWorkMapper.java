@@ -28,6 +28,8 @@ public interface WFAssistWorkMapper extends BaseMapper<WFAssistWork>{
     @Override
     int updateById(@Param(Constants.ENTITY) WFAssistWork entity);
     @Override
+    int update(@Param(Constants.ENTITY) WFAssistWork entity, @Param("ew") Wrapper<WFAssistWork> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

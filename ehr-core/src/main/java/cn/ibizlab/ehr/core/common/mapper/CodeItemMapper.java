@@ -28,6 +28,8 @@ public interface CodeItemMapper extends BaseMapper<CodeItem>{
     @Override
     int updateById(@Param(Constants.ENTITY) CodeItem entity);
     @Override
+    int update(@Param(Constants.ENTITY) CodeItem entity, @Param("ew") Wrapper<CodeItem> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

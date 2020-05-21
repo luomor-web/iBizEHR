@@ -28,6 +28,8 @@ public interface QueryModelMapper extends BaseMapper<QueryModel>{
     @Override
     int updateById(@Param(Constants.ENTITY) QueryModel entity);
     @Override
+    int update(@Param(Constants.ENTITY) QueryModel entity, @Param("ew") Wrapper<QueryModel> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

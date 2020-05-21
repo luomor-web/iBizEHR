@@ -27,6 +27,8 @@ public interface PCMDETAILMapper extends BaseMapper<PCMDETAIL>{
     @Override
     int updateById(@Param(Constants.ENTITY) PCMDETAIL entity);
     @Override
+    int update(@Param(Constants.ENTITY) PCMDETAIL entity, @Param("ew") Wrapper<PCMDETAIL> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

@@ -27,6 +27,8 @@ public interface WFCustomProcessMapper extends BaseMapper<WFCustomProcess>{
     @Override
     int updateById(@Param(Constants.ENTITY) WFCustomProcess entity);
     @Override
+    int update(@Param(Constants.ENTITY) WFCustomProcess entity, @Param("ew") Wrapper<WFCustomProcess> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

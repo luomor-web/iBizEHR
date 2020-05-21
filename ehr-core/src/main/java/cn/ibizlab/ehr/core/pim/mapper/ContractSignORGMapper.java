@@ -28,6 +28,8 @@ public interface ContractSignORGMapper extends BaseMapper<ContractSignORG>{
     @Override
     int updateById(@Param(Constants.ENTITY) ContractSignORG entity);
     @Override
+    int update(@Param(Constants.ENTITY) ContractSignORG entity, @Param("ew") Wrapper<ContractSignORG> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

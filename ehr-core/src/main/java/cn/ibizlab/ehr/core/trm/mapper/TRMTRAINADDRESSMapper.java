@@ -27,6 +27,8 @@ public interface TRMTRAINADDRESSMapper extends BaseMapper<TRMTRAINADDRESS>{
     @Override
     int updateById(@Param(Constants.ENTITY) TRMTRAINADDRESS entity);
     @Override
+    int update(@Param(Constants.ENTITY) TRMTRAINADDRESS entity, @Param("ew") Wrapper<TRMTRAINADDRESS> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

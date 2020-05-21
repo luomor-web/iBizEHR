@@ -27,6 +27,8 @@ public interface WFDynamicUserMapper extends BaseMapper<WFDynamicUser>{
     @Override
     int updateById(@Param(Constants.ENTITY) WFDynamicUser entity);
     @Override
+    int update(@Param(Constants.ENTITY) WFDynamicUser entity, @Param("ew") Wrapper<WFDynamicUser> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

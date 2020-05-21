@@ -33,6 +33,8 @@ public interface PIMWORKHISTORYMapper extends BaseMapper<PIMWORKHISTORY>{
     @Override
     int updateById(@Param(Constants.ENTITY) PIMWORKHISTORY entity);
     @Override
+    int update(@Param(Constants.ENTITY) PIMWORKHISTORY entity, @Param("ew") Wrapper<PIMWORKHISTORY> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

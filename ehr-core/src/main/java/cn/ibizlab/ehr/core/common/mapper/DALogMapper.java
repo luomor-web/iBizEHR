@@ -27,6 +27,8 @@ public interface DALogMapper extends BaseMapper<DALog>{
     @Override
     int updateById(@Param(Constants.ENTITY) DALog entity);
     @Override
+    int update(@Param(Constants.ENTITY) DALog entity, @Param("ew") Wrapper<DALog> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

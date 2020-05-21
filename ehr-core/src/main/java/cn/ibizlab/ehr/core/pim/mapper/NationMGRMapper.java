@@ -27,6 +27,8 @@ public interface NationMGRMapper extends BaseMapper<NationMGR>{
     @Override
     int updateById(@Param(Constants.ENTITY) NationMGR entity);
     @Override
+    int update(@Param(Constants.ENTITY) NationMGR entity, @Param("ew") Wrapper<NationMGR> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

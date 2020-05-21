@@ -32,6 +32,8 @@ public interface ORMDUTYMapper extends BaseMapper<ORMDUTY>{
     @Override
     int updateById(@Param(Constants.ENTITY) ORMDUTY entity);
     @Override
+    int update(@Param(Constants.ENTITY) ORMDUTY entity, @Param("ew") Wrapper<ORMDUTY> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

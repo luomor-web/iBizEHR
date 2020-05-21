@@ -27,6 +27,8 @@ public interface WFActionMapper extends BaseMapper<WFAction>{
     @Override
     int updateById(@Param(Constants.ENTITY) WFAction entity);
     @Override
+    int update(@Param(Constants.ENTITY) WFAction entity, @Param("ew") Wrapper<WFAction> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

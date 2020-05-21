@@ -27,6 +27,8 @@ public interface VACDAYOFFMapper extends BaseMapper<VACDAYOFF>{
     @Override
     int updateById(@Param(Constants.ENTITY) VACDAYOFF entity);
     @Override
+    int update(@Param(Constants.ENTITY) VACDAYOFF entity, @Param("ew") Wrapper<VACDAYOFF> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

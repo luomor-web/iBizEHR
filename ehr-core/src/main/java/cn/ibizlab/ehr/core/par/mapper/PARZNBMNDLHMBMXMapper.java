@@ -27,6 +27,8 @@ public interface PARZNBMNDLHMBMXMapper extends BaseMapper<PARZNBMNDLHMBMX>{
     @Override
     int updateById(@Param(Constants.ENTITY) PARZNBMNDLHMBMX entity);
     @Override
+    int update(@Param(Constants.ENTITY) PARZNBMNDLHMBMX entity, @Param("ew") Wrapper<PARZNBMNDLHMBMX> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

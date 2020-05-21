@@ -27,6 +27,8 @@ public interface WFWorkListMapper extends BaseMapper<WFWorkList>{
     @Override
     int updateById(@Param(Constants.ENTITY) WFWorkList entity);
     @Override
+    int update(@Param(Constants.ENTITY) WFWorkList entity, @Param("ew") Wrapper<WFWorkList> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

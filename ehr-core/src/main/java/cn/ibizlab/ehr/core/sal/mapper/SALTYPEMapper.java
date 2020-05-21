@@ -27,6 +27,8 @@ public interface SALTYPEMapper extends BaseMapper<SALTYPE>{
     @Override
     int updateById(@Param(Constants.ENTITY) SALTYPE entity);
     @Override
+    int update(@Param(Constants.ENTITY) SALTYPE entity, @Param("ew") Wrapper<SALTYPE> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

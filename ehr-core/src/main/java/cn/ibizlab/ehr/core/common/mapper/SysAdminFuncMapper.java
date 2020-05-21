@@ -27,6 +27,8 @@ public interface SysAdminFuncMapper extends BaseMapper<SysAdminFunc>{
     @Override
     int updateById(@Param(Constants.ENTITY) SysAdminFunc entity);
     @Override
+    int update(@Param(Constants.ENTITY) SysAdminFunc entity, @Param("ew") Wrapper<SysAdminFunc> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

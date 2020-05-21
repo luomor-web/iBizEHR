@@ -27,6 +27,8 @@ public interface LoginAccountMapper extends BaseMapper<LoginAccount>{
     @Override
     int updateById(@Param(Constants.ENTITY) LoginAccount entity);
     @Override
+    int update(@Param(Constants.ENTITY) LoginAccount entity, @Param("ew") Wrapper<LoginAccount> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

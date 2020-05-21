@@ -27,6 +27,8 @@ public interface ORMPostLibMapper extends BaseMapper<ORMPostLib>{
     @Override
     int updateById(@Param(Constants.ENTITY) ORMPostLib entity);
     @Override
+    int update(@Param(Constants.ENTITY) ORMPostLib entity, @Param("ew") Wrapper<ORMPostLib> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

@@ -30,7 +30,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
  * 实体[工作流候选用户策略]
  */
 @Data
-@TableName(value = "T_WFUCPOLICY",resultMap = "WFUCPolicyResultMap")
+@TableName(value = "T_SRFWFUCPOLICY",resultMap = "WFUCPolicyResultMap")
 public class WFUCPolicy extends EntityMP implements Serializable {
 
     private static final long serialVersionUID = 1L;

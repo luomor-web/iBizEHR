@@ -27,6 +27,8 @@ public interface BUDGETMapper extends BaseMapper<BUDGET>{
     @Override
     int updateById(@Param(Constants.ENTITY) BUDGET entity);
     @Override
+    int update(@Param(Constants.ENTITY) BUDGET entity, @Param("ew") Wrapper<BUDGET> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

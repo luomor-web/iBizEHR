@@ -27,6 +27,8 @@ public interface WFUIWizardMapper extends BaseMapper<WFUIWizard>{
     @Override
     int updateById(@Param(Constants.ENTITY) WFUIWizard entity);
     @Override
+    int update(@Param(Constants.ENTITY) WFUIWizard entity, @Param("ew") Wrapper<WFUIWizard> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

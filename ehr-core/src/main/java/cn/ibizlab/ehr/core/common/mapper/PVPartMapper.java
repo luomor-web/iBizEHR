@@ -28,6 +28,8 @@ public interface PVPartMapper extends BaseMapper<PVPart>{
     @Override
     int updateById(@Param(Constants.ENTITY) PVPart entity);
     @Override
+    int update(@Param(Constants.ENTITY) PVPart entity, @Param("ew") Wrapper<PVPart> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

@@ -30,7 +30,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
  * 实体[任务调度引擎]
  */
 @Data
-@TableName(value = "T_TSSDENGINE",resultMap = "TSSDEngineResultMap")
+@TableName(value = "T_SRFTSSDENGINE",resultMap = "TSSDEngineResultMap")
 public class TSSDEngine extends EntityMP implements Serializable {
 
     private static final long serialVersionUID = 1L;

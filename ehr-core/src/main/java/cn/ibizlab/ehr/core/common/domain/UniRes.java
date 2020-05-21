@@ -30,7 +30,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
  * 实体[统一资源]
  */
 @Data
-@TableName(value = "T_UNIRES",resultMap = "UniResResultMap")
+@TableName(value = "T_SRFUNIRES",resultMap = "UniResResultMap")
 public class UniRes extends EntityMP implements Serializable {
 
     private static final long serialVersionUID = 1L;

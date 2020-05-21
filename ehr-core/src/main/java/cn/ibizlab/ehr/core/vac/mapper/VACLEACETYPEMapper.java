@@ -27,6 +27,8 @@ public interface VACLEACETYPEMapper extends BaseMapper<VACLEACETYPE>{
     @Override
     int updateById(@Param(Constants.ENTITY) VACLEACETYPE entity);
     @Override
+    int update(@Param(Constants.ENTITY) VACLEACETYPE entity, @Param("ew") Wrapper<VACLEACETYPE> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

@@ -27,6 +27,8 @@ public interface WFUCPolicyMapper extends BaseMapper<WFUCPolicy>{
     @Override
     int updateById(@Param(Constants.ENTITY) WFUCPolicy entity);
     @Override
+    int update(@Param(Constants.ENTITY) WFUCPolicy entity, @Param("ew") Wrapper<WFUCPolicy> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

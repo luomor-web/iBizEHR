@@ -27,6 +27,8 @@ public interface PCMReasonMapper extends BaseMapper<PCMReason>{
     @Override
     int updateById(@Param(Constants.ENTITY) PCMReason entity);
     @Override
+    int update(@Param(Constants.ENTITY) PCMReason entity, @Param("ew") Wrapper<PCMReason> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

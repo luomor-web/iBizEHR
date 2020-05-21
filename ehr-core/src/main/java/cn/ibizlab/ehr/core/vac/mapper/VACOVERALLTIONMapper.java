@@ -27,6 +27,8 @@ public interface VACOVERALLTIONMapper extends BaseMapper<VACOVERALLTION>{
     @Override
     int updateById(@Param(Constants.ENTITY) VACOVERALLTION entity);
     @Override
+    int update(@Param(Constants.ENTITY) VACOVERALLTION entity, @Param("ew") Wrapper<VACOVERALLTION> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

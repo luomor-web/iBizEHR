@@ -30,7 +30,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
  * 实体[门户页面]
  */
 @Data
-@TableName(value = "T_PORTALPAGE",resultMap = "PortalPageResultMap")
+@TableName(value = "T_SRFPORTALPAGE",resultMap = "PortalPageResultMap")
 public class PortalPage extends EntityMP implements Serializable {
 
     private static final long serialVersionUID = 1L;

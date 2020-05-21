@@ -27,6 +27,8 @@ public interface WXMediaMapper extends BaseMapper<WXMedia>{
     @Override
     int updateById(@Param(Constants.ENTITY) WXMedia entity);
     @Override
+    int update(@Param(Constants.ENTITY) WXMedia entity, @Param("ew") Wrapper<WXMedia> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

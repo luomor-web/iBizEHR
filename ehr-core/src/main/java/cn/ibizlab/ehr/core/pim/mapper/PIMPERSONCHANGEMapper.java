@@ -30,6 +30,8 @@ public interface PIMPERSONCHANGEMapper extends BaseMapper<PIMPERSONCHANGE>{
     @Override
     int updateById(@Param(Constants.ENTITY) PIMPERSONCHANGE entity);
     @Override
+    int update(@Param(Constants.ENTITY) PIMPERSONCHANGE entity, @Param("ew") Wrapper<PIMPERSONCHANGE> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

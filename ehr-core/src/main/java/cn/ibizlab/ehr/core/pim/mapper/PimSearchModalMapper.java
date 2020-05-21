@@ -27,6 +27,8 @@ public interface PimSearchModalMapper extends BaseMapper<PimSearchModal>{
     @Override
     int updateById(@Param(Constants.ENTITY) PimSearchModal entity);
     @Override
+    int update(@Param(Constants.ENTITY) PimSearchModal entity, @Param("ew") Wrapper<PimSearchModal> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

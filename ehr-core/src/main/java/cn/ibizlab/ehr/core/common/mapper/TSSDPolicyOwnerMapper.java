@@ -27,6 +27,8 @@ public interface TSSDPolicyOwnerMapper extends BaseMapper<TSSDPolicyOwner>{
     @Override
     int updateById(@Param(Constants.ENTITY) TSSDPolicyOwner entity);
     @Override
+    int update(@Param(Constants.ENTITY) TSSDPolicyOwner entity, @Param("ew") Wrapper<TSSDPolicyOwner> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

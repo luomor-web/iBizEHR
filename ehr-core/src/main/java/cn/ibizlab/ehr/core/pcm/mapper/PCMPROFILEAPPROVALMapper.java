@@ -28,6 +28,8 @@ public interface PCMPROFILEAPPROVALMapper extends BaseMapper<PCMPROFILEAPPROVAL>
     @Override
     int updateById(@Param(Constants.ENTITY) PCMPROFILEAPPROVAL entity);
     @Override
+    int update(@Param(Constants.ENTITY) PCMPROFILEAPPROVAL entity, @Param("ew") Wrapper<PCMPROFILEAPPROVAL> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

@@ -27,6 +27,8 @@ public interface PCMGXXKTEMPMapper extends BaseMapper<PCMGXXKTEMP>{
     @Override
     int updateById(@Param(Constants.ENTITY) PCMGXXKTEMP entity);
     @Override
+    int update(@Param(Constants.ENTITY) PCMGXXKTEMP entity, @Param("ew") Wrapper<PCMGXXKTEMP> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

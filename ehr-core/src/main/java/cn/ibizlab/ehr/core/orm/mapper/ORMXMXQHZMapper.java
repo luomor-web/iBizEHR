@@ -28,6 +28,8 @@ public interface ORMXMXQHZMapper extends BaseMapper<ORMXMXQHZ>{
     @Override
     int updateById(@Param(Constants.ENTITY) ORMXMXQHZ entity);
     @Override
+    int update(@Param(Constants.ENTITY) ORMXMXQHZ entity, @Param("ew") Wrapper<ORMXMXQHZ> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

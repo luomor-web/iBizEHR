@@ -27,6 +27,8 @@ public interface TSSDGroupMapper extends BaseMapper<TSSDGroup>{
     @Override
     int updateById(@Param(Constants.ENTITY) TSSDGroup entity);
     @Override
+    int update(@Param(Constants.ENTITY) TSSDGroup entity, @Param("ew") Wrapper<TSSDGroup> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

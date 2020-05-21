@@ -30,7 +30,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
  * 实体[工作流系统用户]
  */
 @Data
-@TableName(value = "T_WFSYSTEMUSER",resultMap = "WFSystemUserResultMap")
+@TableName(value = "T_SRFWFSYSTEMUSER",resultMap = "WFSystemUserResultMap")
 public class WFSystemUser extends EntityMP implements Serializable {
 
     private static final long serialVersionUID = 1L;

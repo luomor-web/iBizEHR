@@ -35,6 +35,8 @@ public interface PCMDDSQDMXMapper extends BaseMapper<PCMDDSQDMX>{
     @Override
     int updateById(@Param(Constants.ENTITY) PCMDDSQDMX entity);
     @Override
+    int update(@Param(Constants.ENTITY) PCMDDSQDMX entity, @Param("ew") Wrapper<PCMDDSQDMX> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

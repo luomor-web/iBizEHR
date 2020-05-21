@@ -27,6 +27,8 @@ public interface DataSyncIn2Mapper extends BaseMapper<DataSyncIn2>{
     @Override
     int updateById(@Param(Constants.ENTITY) DataSyncIn2 entity);
     @Override
+    int update(@Param(Constants.ENTITY) DataSyncIn2 entity, @Param("ew") Wrapper<DataSyncIn2> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

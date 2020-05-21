@@ -27,6 +27,8 @@ public interface TRMZZOBMMapper extends BaseMapper<TRMZZOBM>{
     @Override
     int updateById(@Param(Constants.ENTITY) TRMZZOBM entity);
     @Override
+    int update(@Param(Constants.ENTITY) TRMZZOBM entity, @Param("ew") Wrapper<TRMZZOBM> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

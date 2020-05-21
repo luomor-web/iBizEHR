@@ -27,6 +27,8 @@ public interface WXOrgSectorMapper extends BaseMapper<WXOrgSector>{
     @Override
     int updateById(@Param(Constants.ENTITY) WXOrgSector entity);
     @Override
+    int update(@Param(Constants.ENTITY) WXOrgSector entity, @Param("ew") Wrapper<WXOrgSector> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

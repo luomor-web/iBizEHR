@@ -27,6 +27,8 @@ public interface UserRoleDataActionMapper extends BaseMapper<UserRoleDataAction>
     @Override
     int updateById(@Param(Constants.ENTITY) UserRoleDataAction entity);
     @Override
+    int update(@Param(Constants.ENTITY) UserRoleDataAction entity, @Param("ew") Wrapper<UserRoleDataAction> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

@@ -32,6 +32,8 @@ public interface ORMRANKMapper extends BaseMapper<ORMRANK>{
     @Override
     int updateById(@Param(Constants.ENTITY) ORMRANK entity);
     @Override
+    int update(@Param(Constants.ENTITY) ORMRANK entity, @Param("ew") Wrapper<ORMRANK> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

@@ -35,6 +35,8 @@ public interface ORMPOSTMapper extends BaseMapper<ORMPOST>{
     @Override
     int updateById(@Param(Constants.ENTITY) ORMPOST entity);
     @Override
+    int update(@Param(Constants.ENTITY) ORMPOST entity, @Param("ew") Wrapper<ORMPOST> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

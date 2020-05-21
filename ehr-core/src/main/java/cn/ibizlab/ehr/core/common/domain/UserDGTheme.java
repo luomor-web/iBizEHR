@@ -30,7 +30,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
  * 实体[用户表格自定义]
  */
 @Data
-@TableName(value = "T_USERDGTHEME",resultMap = "UserDGThemeResultMap")
+@TableName(value = "T_SRFUSERDGTHEME",resultMap = "UserDGThemeResultMap")
 public class UserDGTheme extends EntityMP implements Serializable {
 
     private static final long serialVersionUID = 1L;

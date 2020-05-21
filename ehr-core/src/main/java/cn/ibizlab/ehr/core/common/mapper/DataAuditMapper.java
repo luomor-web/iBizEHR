@@ -27,6 +27,8 @@ public interface DataAuditMapper extends BaseMapper<DataAudit>{
     @Override
     int updateById(@Param(Constants.ENTITY) DataAudit entity);
     @Override
+    int update(@Param(Constants.ENTITY) DataAudit entity, @Param("ew") Wrapper<DataAudit> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

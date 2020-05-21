@@ -28,6 +28,8 @@ public interface VACHOLIDAYRULESMapper extends BaseMapper<VACHOLIDAYRULES>{
     @Override
     int updateById(@Param(Constants.ENTITY) VACHOLIDAYRULES entity);
     @Override
+    int update(@Param(Constants.ENTITY) VACHOLIDAYRULES entity, @Param("ew") Wrapper<VACHOLIDAYRULES> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

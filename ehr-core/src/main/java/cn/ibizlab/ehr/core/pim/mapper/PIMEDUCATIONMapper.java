@@ -34,6 +34,8 @@ public interface PIMEDUCATIONMapper extends BaseMapper<PIMEDUCATION>{
     @Override
     int updateById(@Param(Constants.ENTITY) PIMEDUCATION entity);
     @Override
+    int update(@Param(Constants.ENTITY) PIMEDUCATION entity, @Param("ew") Wrapper<PIMEDUCATION> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

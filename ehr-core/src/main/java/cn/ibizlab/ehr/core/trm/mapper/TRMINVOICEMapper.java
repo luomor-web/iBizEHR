@@ -27,6 +27,8 @@ public interface TRMINVOICEMapper extends BaseMapper<TRMINVOICE>{
     @Override
     int updateById(@Param(Constants.ENTITY) TRMINVOICE entity);
     @Override
+    int update(@Param(Constants.ENTITY) TRMINVOICE entity, @Param("ew") Wrapper<TRMINVOICE> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

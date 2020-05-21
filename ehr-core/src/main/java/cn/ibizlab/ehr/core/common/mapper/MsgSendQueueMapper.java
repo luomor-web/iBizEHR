@@ -27,6 +27,8 @@ public interface MsgSendQueueMapper extends BaseMapper<MsgSendQueue>{
     @Override
     int updateById(@Param(Constants.ENTITY) MsgSendQueue entity);
     @Override
+    int update(@Param(Constants.ENTITY) MsgSendQueue entity, @Param("ew") Wrapper<MsgSendQueue> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

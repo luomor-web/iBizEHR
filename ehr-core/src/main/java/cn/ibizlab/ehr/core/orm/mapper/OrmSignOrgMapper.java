@@ -29,6 +29,8 @@ public interface OrmSignOrgMapper extends BaseMapper<OrmSignOrg>{
     @Override
     int updateById(@Param(Constants.ENTITY) OrmSignOrg entity);
     @Override
+    int update(@Param(Constants.ENTITY) OrmSignOrg entity, @Param("ew") Wrapper<OrmSignOrg> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

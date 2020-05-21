@@ -27,6 +27,8 @@ public interface TSSDEngineMapper extends BaseMapper<TSSDEngine>{
     @Override
     int updateById(@Param(Constants.ENTITY) TSSDEngine entity);
     @Override
+    int update(@Param(Constants.ENTITY) TSSDEngine entity, @Param("ew") Wrapper<TSSDEngine> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

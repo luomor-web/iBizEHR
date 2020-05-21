@@ -27,6 +27,8 @@ public interface UserGroupMapper extends BaseMapper<UserGroup>{
     @Override
     int updateById(@Param(Constants.ENTITY) UserGroup entity);
     @Override
+    int update(@Param(Constants.ENTITY) UserGroup entity, @Param("ew") Wrapper<UserGroup> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

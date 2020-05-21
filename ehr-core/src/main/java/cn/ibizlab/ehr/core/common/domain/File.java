@@ -30,7 +30,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
  * 实体[文件]
  */
 @Data
-@TableName(value = "T_FILE",resultMap = "FileResultMap")
+@TableName(value = "T_SRFFILE",resultMap = "FileResultMap")
 public class File extends EntityMP implements Serializable {
 
     private static final long serialVersionUID = 1L;

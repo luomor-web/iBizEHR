@@ -28,6 +28,8 @@ public interface ORMXMGLMapper extends BaseMapper<ORMXMGL>{
     @Override
     int updateById(@Param(Constants.ENTITY) ORMXMGL entity);
     @Override
+    int update(@Param(Constants.ENTITY) ORMXMGL entity, @Param("ew") Wrapper<ORMXMGL> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

@@ -27,6 +27,8 @@ public interface UserDictMapper extends BaseMapper<UserDict>{
     @Override
     int updateById(@Param(Constants.ENTITY) UserDict entity);
     @Override
+    int update(@Param(Constants.ENTITY) UserDict entity, @Param("ew") Wrapper<UserDict> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

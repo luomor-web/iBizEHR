@@ -31,6 +31,8 @@ public interface PIMLANGUAGEABILITYMapper extends BaseMapper<PIMLANGUAGEABILITY>
     @Override
     int updateById(@Param(Constants.ENTITY) PIMLANGUAGEABILITY entity);
     @Override
+    int update(@Param(Constants.ENTITY) PIMLANGUAGEABILITY entity, @Param("ew") Wrapper<PIMLANGUAGEABILITY> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

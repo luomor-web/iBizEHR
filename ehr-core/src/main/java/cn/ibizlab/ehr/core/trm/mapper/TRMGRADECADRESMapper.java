@@ -27,6 +27,8 @@ public interface TRMGRADECADRESMapper extends BaseMapper<TRMGRADECADRES>{
     @Override
     int updateById(@Param(Constants.ENTITY) TRMGRADECADRES entity);
     @Override
+    int update(@Param(Constants.ENTITY) TRMGRADECADRES entity, @Param("ew") Wrapper<TRMGRADECADRES> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

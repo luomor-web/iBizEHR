@@ -27,6 +27,8 @@ public interface PCMPROFILEINITNUMBERMapper extends BaseMapper<PCMPROFILEINITNUM
     @Override
     int updateById(@Param(Constants.ENTITY) PCMPROFILEINITNUMBER entity);
     @Override
+    int update(@Param(Constants.ENTITY) PCMPROFILEINITNUMBER entity, @Param("ew") Wrapper<PCMPROFILEINITNUMBER> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

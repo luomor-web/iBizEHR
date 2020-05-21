@@ -27,6 +27,8 @@ public interface PIMFILEBATVHUPLOADMapper extends BaseMapper<PIMFILEBATVHUPLOAD>
     @Override
     int updateById(@Param(Constants.ENTITY) PIMFILEBATVHUPLOAD entity);
     @Override
+    int update(@Param(Constants.ENTITY) PIMFILEBATVHUPLOAD entity, @Param("ew") Wrapper<PIMFILEBATVHUPLOAD> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

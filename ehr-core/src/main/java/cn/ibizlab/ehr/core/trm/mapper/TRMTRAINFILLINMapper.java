@@ -27,6 +27,8 @@ public interface TRMTRAINFILLINMapper extends BaseMapper<TRMTRAINFILLIN>{
     @Override
     int updateById(@Param(Constants.ENTITY) TRMTRAINFILLIN entity);
     @Override
+    int update(@Param(Constants.ENTITY) TRMTRAINFILLIN entity, @Param("ew") Wrapper<TRMTRAINFILLIN> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

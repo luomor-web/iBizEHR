@@ -27,6 +27,8 @@ public interface PPModelMapper extends BaseMapper<PPModel>{
     @Override
     int updateById(@Param(Constants.ENTITY) PPModel entity);
     @Override
+    int update(@Param(Constants.ENTITY) PPModel entity, @Param("ew") Wrapper<PPModel> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

@@ -30,7 +30,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
  * 实体[微信消息]
  */
 @Data
-@TableName(value = "T_WXMESSAGE",resultMap = "WXMessageResultMap")
+@TableName(value = "T_SRFWXMESSAGE",resultMap = "WXMessageResultMap")
 public class WXMessage extends EntityMP implements Serializable {
 
     private static final long serialVersionUID = 1L;

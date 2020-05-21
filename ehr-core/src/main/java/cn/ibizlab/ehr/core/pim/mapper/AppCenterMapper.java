@@ -27,6 +27,8 @@ public interface AppCenterMapper extends BaseMapper<AppCenter>{
     @Override
     int updateById(@Param(Constants.ENTITY) AppCenter entity);
     @Override
+    int update(@Param(Constants.ENTITY) AppCenter entity, @Param("ew") Wrapper<AppCenter> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

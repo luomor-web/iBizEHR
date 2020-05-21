@@ -30,7 +30,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
  * 实体[工作流工作催办]
  */
 @Data
-@TableName(value = "T_WFREMINDER",resultMap = "WFReminderResultMap")
+@TableName(value = "T_SRFWFREMINDER",resultMap = "WFReminderResultMap")
 public class WFReminder extends EntityMP implements Serializable {
 
     private static final long serialVersionUID = 1L;

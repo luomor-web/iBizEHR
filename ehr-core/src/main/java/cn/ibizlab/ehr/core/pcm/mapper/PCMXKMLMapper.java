@@ -28,6 +28,8 @@ public interface PCMXKMLMapper extends BaseMapper<PCMXKML>{
     @Override
     int updateById(@Param(Constants.ENTITY) PCMXKML entity);
     @Override
+    int update(@Param(Constants.ENTITY) PCMXKML entity, @Param("ew") Wrapper<PCMXKML> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

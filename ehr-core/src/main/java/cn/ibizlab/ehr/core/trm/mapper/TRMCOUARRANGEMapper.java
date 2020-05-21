@@ -27,6 +27,8 @@ public interface TRMCOUARRANGEMapper extends BaseMapper<TRMCOUARRANGE>{
     @Override
     int updateById(@Param(Constants.ENTITY) TRMCOUARRANGE entity);
     @Override
+    int update(@Param(Constants.ENTITY) TRMCOUARRANGE entity, @Param("ew") Wrapper<TRMCOUARRANGE> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

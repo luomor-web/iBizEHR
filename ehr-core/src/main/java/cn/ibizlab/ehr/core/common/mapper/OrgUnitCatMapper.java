@@ -27,6 +27,8 @@ public interface OrgUnitCatMapper extends BaseMapper<OrgUnitCat>{
     @Override
     int updateById(@Param(Constants.ENTITY) OrgUnitCat entity);
     @Override
+    int update(@Param(Constants.ENTITY) OrgUnitCat entity, @Param("ew") Wrapper<OrgUnitCat> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

@@ -27,6 +27,8 @@ public interface DataEntityMapper extends BaseMapper<DataEntity>{
     @Override
     int updateById(@Param(Constants.ENTITY) DataEntity entity);
     @Override
+    int update(@Param(Constants.ENTITY) DataEntity entity, @Param("ew") Wrapper<DataEntity> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

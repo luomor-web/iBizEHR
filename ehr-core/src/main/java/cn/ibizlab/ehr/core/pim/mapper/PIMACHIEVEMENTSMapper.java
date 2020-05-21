@@ -29,6 +29,8 @@ public interface PIMACHIEVEMENTSMapper extends BaseMapper<PIMACHIEVEMENTS>{
     @Override
     int updateById(@Param(Constants.ENTITY) PIMACHIEVEMENTS entity);
     @Override
+    int update(@Param(Constants.ENTITY) PIMACHIEVEMENTS entity, @Param("ew") Wrapper<PIMACHIEVEMENTS> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

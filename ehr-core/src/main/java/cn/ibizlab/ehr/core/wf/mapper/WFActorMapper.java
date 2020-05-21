@@ -28,6 +28,8 @@ public interface WFActorMapper extends BaseMapper<WFActor>{
     @Override
     int updateById(@Param(Constants.ENTITY) WFActor entity);
     @Override
+    int update(@Param(Constants.ENTITY) WFActor entity, @Param("ew") Wrapper<WFActor> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

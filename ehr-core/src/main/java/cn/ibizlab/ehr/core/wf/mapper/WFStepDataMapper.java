@@ -28,6 +28,8 @@ public interface WFStepDataMapper extends BaseMapper<WFStepData>{
     @Override
     int updateById(@Param(Constants.ENTITY) WFStepData entity);
     @Override
+    int update(@Param(Constants.ENTITY) WFStepData entity, @Param("ew") Wrapper<WFStepData> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

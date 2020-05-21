@@ -30,7 +30,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
  * 实体[调度任务项策略]
  */
 @Data
-@TableName(value = "T_TSSDTASKPOLICY",resultMap = "TSSDTaskPolicyResultMap")
+@TableName(value = "T_SRFTSSDTASKPOLICY",resultMap = "TSSDTaskPolicyResultMap")
 public class TSSDTaskPolicy extends EntityMP implements Serializable {
 
     private static final long serialVersionUID = 1L;

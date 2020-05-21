@@ -27,6 +27,8 @@ public interface WZD0002Mapper extends BaseMapper<WZD0002>{
     @Override
     int updateById(@Param(Constants.ENTITY) WZD0002 entity);
     @Override
+    int update(@Param(Constants.ENTITY) WZD0002 entity, @Param("ew") Wrapper<WZD0002> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

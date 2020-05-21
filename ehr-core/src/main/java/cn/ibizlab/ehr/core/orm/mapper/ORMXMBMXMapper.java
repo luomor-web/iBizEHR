@@ -27,6 +27,8 @@ public interface ORMXMBMXMapper extends BaseMapper<ORMXMBMX>{
     @Override
     int updateById(@Param(Constants.ENTITY) ORMXMBMX entity);
     @Override
+    int update(@Param(Constants.ENTITY) ORMXMBMX entity, @Param("ew") Wrapper<ORMXMBMX> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

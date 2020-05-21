@@ -27,6 +27,8 @@ public interface WXAccessTokenMapper extends BaseMapper<WXAccessToken>{
     @Override
     int updateById(@Param(Constants.ENTITY) WXAccessToken entity);
     @Override
+    int update(@Param(Constants.ENTITY) WXAccessToken entity, @Param("ew") Wrapper<WXAccessToken> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

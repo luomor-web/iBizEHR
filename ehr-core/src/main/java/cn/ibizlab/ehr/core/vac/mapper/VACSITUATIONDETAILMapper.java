@@ -27,6 +27,8 @@ public interface VACSITUATIONDETAILMapper extends BaseMapper<VACSITUATIONDETAIL>
     @Override
     int updateById(@Param(Constants.ENTITY) VACSITUATIONDETAIL entity);
     @Override
+    int update(@Param(Constants.ENTITY) VACSITUATIONDETAIL entity, @Param("ew") Wrapper<VACSITUATIONDETAIL> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

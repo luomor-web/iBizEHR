@@ -29,6 +29,8 @@ public interface PIMTITLECATALOGUEMapper extends BaseMapper<PIMTITLECATALOGUE>{
     @Override
     int updateById(@Param(Constants.ENTITY) PIMTITLECATALOGUE entity);
     @Override
+    int update(@Param(Constants.ENTITY) PIMTITLECATALOGUE entity, @Param("ew") Wrapper<PIMTITLECATALOGUE> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

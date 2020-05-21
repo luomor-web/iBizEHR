@@ -27,6 +27,8 @@ public interface PIMEXPACCOUNTMapper extends BaseMapper<PIMEXPACCOUNT>{
     @Override
     int updateById(@Param(Constants.ENTITY) PIMEXPACCOUNT entity);
     @Override
+    int update(@Param(Constants.ENTITY) PIMEXPACCOUNT entity, @Param("ew") Wrapper<PIMEXPACCOUNT> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

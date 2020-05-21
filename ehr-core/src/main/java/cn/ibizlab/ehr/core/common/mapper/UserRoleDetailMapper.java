@@ -30,6 +30,8 @@ public interface UserRoleDetailMapper extends BaseMapper<UserRoleDetail>{
     @Override
     int updateById(@Param(Constants.ENTITY) UserRoleDetail entity);
     @Override
+    int update(@Param(Constants.ENTITY) UserRoleDetail entity, @Param("ew") Wrapper<UserRoleDetail> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

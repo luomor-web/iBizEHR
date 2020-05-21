@@ -27,6 +27,8 @@ public interface UserRoleDEFieldesMapper extends BaseMapper<UserRoleDEFieldes>{
     @Override
     int updateById(@Param(Constants.ENTITY) UserRoleDEFieldes entity);
     @Override
+    int update(@Param(Constants.ENTITY) UserRoleDEFieldes entity, @Param("ew") Wrapper<UserRoleDEFieldes> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

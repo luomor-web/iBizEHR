@@ -27,6 +27,8 @@ public interface PCMMSPJXXMapper extends BaseMapper<PCMMSPJXX>{
     @Override
     int updateById(@Param(Constants.ENTITY) PCMMSPJXX entity);
     @Override
+    int update(@Param(Constants.ENTITY) PCMMSPJXX entity, @Param("ew") Wrapper<PCMMSPJXX> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

@@ -27,6 +27,8 @@ public interface VACHOLIDAYMapper extends BaseMapper<VACHOLIDAY>{
     @Override
     int updateById(@Param(Constants.ENTITY) VACHOLIDAY entity);
     @Override
+    int update(@Param(Constants.ENTITY) VACHOLIDAY entity, @Param("ew") Wrapper<VACHOLIDAY> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

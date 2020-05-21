@@ -27,6 +27,8 @@ public interface WFIAActionMapper extends BaseMapper<WFIAAction>{
     @Override
     int updateById(@Param(Constants.ENTITY) WFIAAction entity);
     @Override
+    int update(@Param(Constants.ENTITY) WFIAAction entity, @Param("ew") Wrapper<WFIAAction> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

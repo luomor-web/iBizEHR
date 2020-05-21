@@ -28,6 +28,8 @@ public interface ORMUSERMapper extends BaseMapper<ORMUSER>{
     @Override
     int updateById(@Param(Constants.ENTITY) ORMUSER entity);
     @Override
+    int update(@Param(Constants.ENTITY) ORMUSER entity, @Param("ew") Wrapper<ORMUSER> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

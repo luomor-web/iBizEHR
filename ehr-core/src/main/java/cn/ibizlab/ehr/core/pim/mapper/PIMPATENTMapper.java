@@ -29,6 +29,8 @@ public interface PIMPATENTMapper extends BaseMapper<PIMPATENT>{
     @Override
     int updateById(@Param(Constants.ENTITY) PIMPATENT entity);
     @Override
+    int update(@Param(Constants.ENTITY) PIMPATENT entity, @Param("ew") Wrapper<PIMPATENT> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

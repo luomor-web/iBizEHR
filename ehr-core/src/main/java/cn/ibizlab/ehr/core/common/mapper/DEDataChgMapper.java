@@ -27,6 +27,8 @@ public interface DEDataChgMapper extends BaseMapper<DEDataChg>{
     @Override
     int updateById(@Param(Constants.ENTITY) DEDataChg entity);
     @Override
+    int update(@Param(Constants.ENTITY) DEDataChg entity, @Param("ew") Wrapper<DEDataChg> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

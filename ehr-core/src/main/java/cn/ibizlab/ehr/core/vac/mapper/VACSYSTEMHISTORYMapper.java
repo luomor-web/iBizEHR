@@ -27,6 +27,8 @@ public interface VACSYSTEMHISTORYMapper extends BaseMapper<VACSYSTEMHISTORY>{
     @Override
     int updateById(@Param(Constants.ENTITY) VACSYSTEMHISTORY entity);
     @Override
+    int update(@Param(Constants.ENTITY) VACSYSTEMHISTORY entity, @Param("ew") Wrapper<VACSYSTEMHISTORY> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

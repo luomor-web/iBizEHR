@@ -27,6 +27,8 @@ public interface UniResMapper extends BaseMapper<UniRes>{
     @Override
     int updateById(@Param(Constants.ENTITY) UniRes entity);
     @Override
+    int update(@Param(Constants.ENTITY) UniRes entity, @Param("ew") Wrapper<UniRes> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

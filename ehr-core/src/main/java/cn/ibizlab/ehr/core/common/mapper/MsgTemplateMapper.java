@@ -27,6 +27,8 @@ public interface MsgTemplateMapper extends BaseMapper<MsgTemplate>{
     @Override
     int updateById(@Param(Constants.ENTITY) MsgTemplate entity);
     @Override
+    int update(@Param(Constants.ENTITY) MsgTemplate entity, @Param("ew") Wrapper<MsgTemplate> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

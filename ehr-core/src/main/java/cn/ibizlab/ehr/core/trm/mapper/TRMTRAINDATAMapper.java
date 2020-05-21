@@ -27,6 +27,8 @@ public interface TRMTRAINDATAMapper extends BaseMapper<TRMTRAINDATA>{
     @Override
     int updateById(@Param(Constants.ENTITY) TRMTRAINDATA entity);
     @Override
+    int update(@Param(Constants.ENTITY) TRMTRAINDATA entity, @Param("ew") Wrapper<TRMTRAINDATA> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

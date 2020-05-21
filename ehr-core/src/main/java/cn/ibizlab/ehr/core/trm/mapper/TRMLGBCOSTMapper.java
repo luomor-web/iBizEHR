@@ -27,6 +27,8 @@ public interface TRMLGBCOSTMapper extends BaseMapper<TRMLGBCOST>{
     @Override
     int updateById(@Param(Constants.ENTITY) TRMLGBCOST entity);
     @Override
+    int update(@Param(Constants.ENTITY) TRMLGBCOST entity, @Param("ew") Wrapper<TRMLGBCOST> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

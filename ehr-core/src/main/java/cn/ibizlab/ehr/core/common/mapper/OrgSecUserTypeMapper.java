@@ -27,6 +27,8 @@ public interface OrgSecUserTypeMapper extends BaseMapper<OrgSecUserType>{
     @Override
     int updateById(@Param(Constants.ENTITY) OrgSecUserType entity);
     @Override
+    int update(@Param(Constants.ENTITY) OrgSecUserType entity, @Param("ew") Wrapper<OrgSecUserType> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

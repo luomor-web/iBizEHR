@@ -27,6 +27,8 @@ public interface PIMCONTRACTTYPEMapper extends BaseMapper<PIMCONTRACTTYPE>{
     @Override
     int updateById(@Param(Constants.ENTITY) PIMCONTRACTTYPE entity);
     @Override
+    int update(@Param(Constants.ENTITY) PIMCONTRACTTYPE entity, @Param("ew") Wrapper<PIMCONTRACTTYPE> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

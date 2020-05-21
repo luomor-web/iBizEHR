@@ -27,6 +27,8 @@ public interface WFTmpStepActorMapper extends BaseMapper<WFTmpStepActor>{
     @Override
     int updateById(@Param(Constants.ENTITY) WFTmpStepActor entity);
     @Override
+    int update(@Param(Constants.ENTITY) WFTmpStepActor entity, @Param("ew") Wrapper<WFTmpStepActor> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

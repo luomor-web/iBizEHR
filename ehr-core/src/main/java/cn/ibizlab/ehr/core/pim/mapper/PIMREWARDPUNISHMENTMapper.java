@@ -30,6 +30,8 @@ public interface PIMREWARDPUNISHMENTMapper extends BaseMapper<PIMREWARDPUNISHMEN
     @Override
     int updateById(@Param(Constants.ENTITY) PIMREWARDPUNISHMENT entity);
     @Override
+    int update(@Param(Constants.ENTITY) PIMREWARDPUNISHMENT entity, @Param("ew") Wrapper<PIMREWARDPUNISHMENT> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

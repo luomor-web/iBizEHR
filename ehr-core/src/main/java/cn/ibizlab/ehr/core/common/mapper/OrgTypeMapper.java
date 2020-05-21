@@ -27,6 +27,8 @@ public interface OrgTypeMapper extends BaseMapper<OrgType>{
     @Override
     int updateById(@Param(Constants.ENTITY) OrgType entity);
     @Override
+    int update(@Param(Constants.ENTITY) OrgType entity, @Param("ew") Wrapper<OrgType> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

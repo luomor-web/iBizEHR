@@ -27,6 +27,8 @@ public interface ORMDepEstManMapper extends BaseMapper<ORMDepEstMan>{
     @Override
     int updateById(@Param(Constants.ENTITY) ORMDepEstMan entity);
     @Override
+    int update(@Param(Constants.ENTITY) ORMDepEstMan entity, @Param("ew") Wrapper<ORMDepEstMan> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

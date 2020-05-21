@@ -27,6 +27,8 @@ public interface VACWORKDAYMapper extends BaseMapper<VACWORKDAY>{
     @Override
     int updateById(@Param(Constants.ENTITY) VACWORKDAY entity);
     @Override
+    int update(@Param(Constants.ENTITY) VACWORKDAY entity, @Param("ew") Wrapper<VACWORKDAY> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

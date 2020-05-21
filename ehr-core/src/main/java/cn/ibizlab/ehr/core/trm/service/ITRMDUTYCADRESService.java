@@ -12,6 +12,7 @@ import java.math.BigInteger;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import com.alibaba.fastjson.JSONObject;
+import org.springframework.cache.annotation.CacheEvict;
 
 import cn.ibizlab.ehr.core.trm.domain.TRMDUTYCADRES;
 import cn.ibizlab.ehr.core.trm.filter.TRMDUTYCADRESSearchContext;

@@ -27,6 +27,8 @@ public interface WFInstanceMapper extends BaseMapper<WFInstance>{
     @Override
     int updateById(@Param(Constants.ENTITY) WFInstance entity);
     @Override
+    int update(@Param(Constants.ENTITY) WFInstance entity, @Param("ew") Wrapper<WFInstance> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

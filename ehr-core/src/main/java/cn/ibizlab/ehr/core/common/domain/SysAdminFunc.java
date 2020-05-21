@@ -30,7 +30,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
  * 实体[系统管理功能]
  */
 @Data
-@TableName(value = "T_SYSADMINFUNC",resultMap = "SysAdminFuncResultMap")
+@TableName(value = "T_SRFSYSADMINFUNC",resultMap = "SysAdminFuncResultMap")
 public class SysAdminFunc extends EntityMP implements Serializable {
 
     private static final long serialVersionUID = 1L;

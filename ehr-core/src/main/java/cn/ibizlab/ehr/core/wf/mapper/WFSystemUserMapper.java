@@ -27,6 +27,8 @@ public interface WFSystemUserMapper extends BaseMapper<WFSystemUser>{
     @Override
     int updateById(@Param(Constants.ENTITY) WFSystemUser entity);
     @Override
+    int update(@Param(Constants.ENTITY) WFSystemUser entity, @Param("ew") Wrapper<WFSystemUser> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

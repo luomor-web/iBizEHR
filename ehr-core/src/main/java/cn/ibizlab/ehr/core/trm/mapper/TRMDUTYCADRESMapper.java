@@ -28,6 +28,8 @@ public interface TRMDUTYCADRESMapper extends BaseMapper<TRMDUTYCADRES>{
     @Override
     int updateById(@Param(Constants.ENTITY) TRMDUTYCADRES entity);
     @Override
+    int update(@Param(Constants.ENTITY) TRMDUTYCADRES entity, @Param("ew") Wrapper<TRMDUTYCADRES> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

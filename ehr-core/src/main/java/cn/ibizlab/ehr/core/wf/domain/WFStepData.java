@@ -30,7 +30,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
  * 实体[工作流步骤数据]
  */
 @Data
-@TableName(value = "T_WFSTEPDATA",resultMap = "WFStepDataResultMap")
+@TableName(value = "T_SRFWFSTEPDATA",resultMap = "WFStepDataResultMap")
 public class WFStepData extends EntityMP implements Serializable {
 
     private static final long serialVersionUID = 1L;

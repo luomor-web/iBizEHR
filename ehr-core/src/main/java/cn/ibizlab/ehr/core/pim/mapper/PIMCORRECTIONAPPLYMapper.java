@@ -27,6 +27,8 @@ public interface PIMCORRECTIONAPPLYMapper extends BaseMapper<PIMCORRECTIONAPPLY>
     @Override
     int updateById(@Param(Constants.ENTITY) PIMCORRECTIONAPPLY entity);
     @Override
+    int update(@Param(Constants.ENTITY) PIMCORRECTIONAPPLY entity, @Param("ew") Wrapper<PIMCORRECTIONAPPLY> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

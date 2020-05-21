@@ -27,6 +27,8 @@ public interface PortalPageMapper extends BaseMapper<PortalPage>{
     @Override
     int updateById(@Param(Constants.ENTITY) PortalPage entity);
     @Override
+    int update(@Param(Constants.ENTITY) PortalPage entity, @Param("ew") Wrapper<PortalPage> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

@@ -28,6 +28,8 @@ public interface CodeList1Mapper extends BaseMapper<CodeList1>{
     @Override
     int updateById(@Param(Constants.ENTITY) CodeList1 entity);
     @Override
+    int update(@Param(Constants.ENTITY) CodeList1 entity, @Param("ew") Wrapper<CodeList1> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

@@ -27,6 +27,8 @@ public interface TSSDItemMapper extends BaseMapper<TSSDItem>{
     @Override
     int updateById(@Param(Constants.ENTITY) TSSDItem entity);
     @Override
+    int update(@Param(Constants.ENTITY) TSSDItem entity, @Param("ew") Wrapper<TSSDItem> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

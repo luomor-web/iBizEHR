@@ -27,6 +27,8 @@ public interface SALSTDGLMapper extends BaseMapper<SALSTDGL>{
     @Override
     int updateById(@Param(Constants.ENTITY) SALSTDGL entity);
     @Override
+    int update(@Param(Constants.ENTITY) SALSTDGL entity, @Param("ew") Wrapper<SALSTDGL> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

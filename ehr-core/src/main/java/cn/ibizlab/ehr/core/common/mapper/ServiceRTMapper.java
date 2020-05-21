@@ -27,6 +27,8 @@ public interface ServiceRTMapper extends BaseMapper<ServiceRT>{
     @Override
     int updateById(@Param(Constants.ENTITY) ServiceRT entity);
     @Override
+    int update(@Param(Constants.ENTITY) ServiceRT entity, @Param("ew") Wrapper<ServiceRT> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

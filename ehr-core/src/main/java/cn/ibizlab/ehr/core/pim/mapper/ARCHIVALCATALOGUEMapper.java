@@ -27,6 +27,8 @@ public interface ARCHIVALCATALOGUEMapper extends BaseMapper<ARCHIVALCATALOGUE>{
     @Override
     int updateById(@Param(Constants.ENTITY) ARCHIVALCATALOGUE entity);
     @Override
+    int update(@Param(Constants.ENTITY) ARCHIVALCATALOGUE entity, @Param("ew") Wrapper<ARCHIVALCATALOGUE> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

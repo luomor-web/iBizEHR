@@ -29,6 +29,8 @@ public interface PIMARMYCADRESMapper extends BaseMapper<PIMARMYCADRES>{
     @Override
     int updateById(@Param(Constants.ENTITY) PIMARMYCADRES entity);
     @Override
+    int update(@Param(Constants.ENTITY) PIMARMYCADRES entity, @Param("ew") Wrapper<PIMARMYCADRES> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

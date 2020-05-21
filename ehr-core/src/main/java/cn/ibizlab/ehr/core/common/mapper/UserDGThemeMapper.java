@@ -27,6 +27,8 @@ public interface UserDGThemeMapper extends BaseMapper<UserDGTheme>{
     @Override
     int updateById(@Param(Constants.ENTITY) UserDGTheme entity);
     @Override
+    int update(@Param(Constants.ENTITY) UserDGTheme entity, @Param("ew") Wrapper<UserDGTheme> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

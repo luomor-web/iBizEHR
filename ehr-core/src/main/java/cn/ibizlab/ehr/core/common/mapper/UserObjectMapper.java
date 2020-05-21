@@ -28,6 +28,8 @@ public interface UserObjectMapper extends BaseMapper<UserObject>{
     @Override
     int updateById(@Param(Constants.ENTITY) UserObject entity);
     @Override
+    int update(@Param(Constants.ENTITY) UserObject entity, @Param("ew") Wrapper<UserObject> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL
