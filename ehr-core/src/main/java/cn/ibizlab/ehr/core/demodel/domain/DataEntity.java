@@ -27,7 +27,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 
 
 /**
- * 实体[实体]
+ * 实体[实体***]
  */
 @Data
 @TableName(value = "T_SRFdataentity",resultMap = "DataEntityResultMap")
