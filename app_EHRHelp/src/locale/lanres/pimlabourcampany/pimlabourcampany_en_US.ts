@@ -1,0 +1,25 @@
+
+export default {
+  fields: {
+    lxfs: '联系电话',
+    createdate: '建立时间',
+    enable: '逻辑有效标志',
+    createman: '建立人',
+    legalperosn: '法人',
+    orgid: '组织ID',
+    updateman: '更新人',
+    regcapital: '注册资本金',
+    pimlabourcampanyname: '公司名称',
+    jyfw: '经营范围',
+    pimlabourcampanyid: '劳务派遣公司管理标识',
+    lxr: '联系人',
+    gsjj: '公司简介',
+    updatedate: '更新时间',
+    lxdz: '联系地址',
+    pimpersonname: '人员信息名称',
+    ormorgname: '所属单位',
+    zzdzs: '所属单位',
+    pimpersonid: '人员信息标识',
+    ormorgid: '组织标识',
+  },
+};
