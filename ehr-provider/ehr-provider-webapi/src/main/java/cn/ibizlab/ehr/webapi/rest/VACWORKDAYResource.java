@@ -50,26 +50,25 @@ public class VACWORKDAYResource {
 
     @Autowired
     @Lazy
-    private VACWORKDAYMapping vacworkdayMapping;
+    public VACWORKDAYMapping vacworkdayMapping;
 
+    public VACWORKDAYDTO permissionDTO=new VACWORKDAYDTO();
 
-
-
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACWORKDAY-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"VACWORKDAY" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacworkdays/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody VACWORKDAYDTO vacworkdaydto) {
         return  ResponseEntity.status(HttpStatus.OK).body(vacworkdayService.checkKey(vacworkdayMapping.toDomain(vacworkdaydto)));
     }
 
-
-
-
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACWORKDAY-Save-all')")
     @ApiOperation(value = "Save", tags = {"VACWORKDAY" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacworkdays/save")
     public ResponseEntity<Boolean> save(@RequestBody VACWORKDAYDTO vacworkdaydto) {
         return ResponseEntity.status(HttpStatus.OK).body(vacworkdayService.save(vacworkdayMapping.toDomain(vacworkdaydto)));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"VACWORKDAY" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacworkdays/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<VACWORKDAYDTO> vacworkdaydtos) {
@@ -77,10 +76,7 @@ public class VACWORKDAYResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    @PreAuthorize("hasPermission('Remove',{#vacworkday_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#vacworkday_id,'Remove',{'Sql',this.vacworkdayMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"VACWORKDAY" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/vacworkdays/{vacworkday_id}")
     @Transactional
@@ -88,6 +84,7 @@ public class VACWORKDAYResource {
          return ResponseEntity.status(HttpStatus.OK).body(vacworkdayService.remove(vacworkday_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"VACWORKDAY" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/vacworkdays/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -95,10 +92,7 @@ public class VACWORKDAYResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.vacworkdayMapping,#vacworkdaydto})")
     @ApiOperation(value = "Create", tags = {"VACWORKDAY" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacworkdays")
     @Transactional
@@ -109,7 +103,7 @@ public class VACWORKDAYResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatch", tags = {"VACWORKDAY" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacworkdays/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<VACWORKDAYDTO> vacworkdaydtos) {
@@ -117,10 +111,7 @@ public class VACWORKDAYResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    @PreAuthorize("hasPermission(#vacworkday_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#vacworkday_id,'Update',{'Sql',this.vacworkdayMapping,#vacworkdaydto})")
     @ApiOperation(value = "Update", tags = {"VACWORKDAY" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/vacworkdays/{vacworkday_id}")
     @Transactional
@@ -132,7 +123,7 @@ public class VACWORKDAYResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#vacworkday_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"VACWORKDAY" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/vacworkdays/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<VACWORKDAYDTO> vacworkdaydtos) {
@@ -140,10 +131,7 @@ public class VACWORKDAYResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    @PreAuthorize("hasPermission(#vacworkday_id,'Get',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#vacworkday_id,'Get',{'Sql',this.vacworkdayMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"VACWORKDAY" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/vacworkdays/{vacworkday_id}")
     public ResponseEntity<VACWORKDAYDTO> get(@PathVariable("vacworkday_id") String vacworkday_id) {
@@ -152,16 +140,14 @@ public class VACWORKDAYResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-
-
-
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACWORKDAY-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"VACWORKDAY" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/vacworkdays/getdraft")
     public ResponseEntity<VACWORKDAYDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(vacworkdayMapping.toDto(vacworkdayService.getDraft(new VACWORKDAY())));
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACWORKDAY-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"VACWORKDAY" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/vacworkdays/fetchdefault")
 	public ResponseEntity<List<VACWORKDAYDTO>> fetchDefault(VACWORKDAYSearchContext context) {
@@ -174,22 +160,12 @@ public class VACWORKDAYResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACWORKDAY-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"VACWORKDAY" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/vacworkdays/searchdefault")
-	public ResponseEntity<Page<VACWORKDAYDTO>> searchDefault(VACWORKDAYSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/vacworkdays/searchdefault")
+	public ResponseEntity<Page<VACWORKDAYDTO>> searchDefault(@RequestBody VACWORKDAYSearchContext context) {
         Page<VACWORKDAY> domains = vacworkdayService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(vacworkdayMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
-    /**
-     * 用户权限校验
-     * @return
-     */
-	public VACWORKDAY getEntity(){
-        return new VACWORKDAY();
-    }
-
 }

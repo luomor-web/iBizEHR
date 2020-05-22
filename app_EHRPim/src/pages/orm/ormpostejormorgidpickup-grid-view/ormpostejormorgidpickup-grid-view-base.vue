@@ -1,5 +1,5 @@
 <template>
-  <app-layout viewName="ormpostejormorgidpickupgridview" viewTitle="岗位选择" :isShowToolbar="false" :className="{ 'view-container': true, 'default-mode-view': true, 'depickupgridview': true, 'ormpostejormorgidpickup-grid-view': true }" layoutMode="VIEW" :isShowUserInfo="isDefaultView()" :openMode="openMode" @close-view="closeView($event)">
+  <app-layout viewName="ormpostejormorgidpickupgridview" viewTitle="岗位选择" :isShowCaptionBar="false" :isShowToolbar="false" :className="{ 'view-container': true, 'default-mode-view': true, 'depickupgridview': true, 'ormpostejormorgidpickup-grid-view': true }" layoutMode="VIEW" :isShowUserInfo="isDefaultView()" :openMode="openMode" @close-view="closeView($event)">
     <template slot="headerLeft">
       <div class="view-header-left">
 
@@ -81,6 +81,15 @@ export default class ORMPOSTEJORMORGIDPickupGridViewBase extends PickupViewBase 
      */
     public appEntityService: ORMPOSTService = new ORMPOSTService;
 
+
+    /**
+     * 计数器服务对象集合
+     *
+     * @type {Array<*>}
+     * @memberof ORMPOSTEJORMORGIDPickupGridViewBase
+     */    
+    public counterServiceArray:Array<any> = [];
+    
     /**
      * 数据变化
      *
@@ -116,7 +125,7 @@ export default class ORMPOSTEJORMORGIDPickupGridViewBase extends PickupViewBase 
 	 * @type {*}
 	 * @memberof ORMPOSTEJORMORGIDPickupGridViewBase
 	 */
-    protected customViewNavContexts:any ={
+    public customViewNavContexts:any ={
     };
 
 	/**
@@ -125,7 +134,7 @@ export default class ORMPOSTEJORMORGIDPickupGridViewBase extends PickupViewBase 
 	 * @type {*}
 	 * @memberof ORMPOSTEJORMORGIDPickupGridViewBase
 	 */
-    protected customViewParams:any ={
+    public customViewParams:any ={
     };
 
     /**
@@ -155,7 +164,7 @@ export default class ORMPOSTEJORMORGIDPickupGridViewBase extends PickupViewBase 
     /**
      * 视图状态订阅对象
      *
-     * @private
+     * @public
      * @type {Subject<{action: string, data: any}>}
      * @memberof ORMPOSTEJORMORGIDPickupGridViewBase
      */

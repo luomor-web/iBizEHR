@@ -80,7 +80,6 @@ export default class MainModel {
           name: 'pimpatent',
           prop: 'pimpatentid',
         },
-
         {
           name:'size',
           prop:'size'

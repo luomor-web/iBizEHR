@@ -7,6 +7,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.PageRequest;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.util.StringUtils;
@@ -54,6 +55,7 @@ public class SearchContextBase implements ISearchContext{
     /**
      * 排序对象
      */
+    @JsonIgnore
     public Sort pageSort;
     /**
      * 工作流步骤标识

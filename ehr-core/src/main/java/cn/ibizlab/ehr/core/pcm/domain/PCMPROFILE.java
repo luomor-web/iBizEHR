@@ -471,7 +471,7 @@ public class PCMPROFILE extends EntityMP implements Serializable {
     @TableField(value = "jzbspyj")
     @JSONField(name = "jzbspyj")
     @JsonProperty("jzbspyj")
-    private String jzbspyj;
+    private Integer jzbspyj;
     /**
      * 毕业时间
      */
@@ -543,13 +543,6 @@ public class PCMPROFILE extends EntityMP implements Serializable {
     @JSONField(name = "sftgcp")
     @JsonProperty("sftgcp")
     private String sftgcp;
-    /**
-     * 证书名称
-     */
-    @TableField(exist = false)
-    @JSONField(name = "zsmc")
-    @JsonProperty("zsmc")
-    private String zsmc;
     /**
      * 健康状况
      */
@@ -1352,7 +1345,7 @@ public class PCMPROFILE extends EntityMP implements Serializable {
     /**
      * 设置 [局审批意见]
      */
-    public void setJzbspyj(String jzbspyj){
+    public void setJzbspyj(Integer jzbspyj){
         this.jzbspyj = jzbspyj ;
         this.modify("jzbspyj",jzbspyj);
     }

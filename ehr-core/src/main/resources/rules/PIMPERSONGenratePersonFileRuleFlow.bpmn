@@ -11,7 +11,7 @@
      <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="pimpersongenratepersonfiledeaction1" id="f30463e2afbc1021c613c7ead60dba95" implementation="http://www.jboss.org/drools/rule" name="生成档案"/>
      <endEvent id="f30463e2afbc1021c613c7ead60dba95_End" name="End"/>
      <sequenceFlow id="f30463e2afbc1021c613c7ead60dba95_End_Line" sourceRef="f30463e2afbc1021c613c7ead60dba95" targetRef="f30463e2afbc1021c613c7ead60dba95_End"/>
-     <sequenceFlow id="df899ee79edd1b6d51cd1deb7de4a0b9" sourceRef="a5b1ff5492fb257102e028e77a897e42" targetRef="f30463e2afbc1021c613c7ead60dba95">
+     <sequenceFlow id="98b60f5a15066dc4a6d8ab5a1de8ead7" sourceRef="a5b1ff5492fb257102e028e77a897e42" targetRef="f30463e2afbc1021c613c7ead60dba95">
      </sequenceFlow>
     </process>
 </definitions>

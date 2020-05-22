@@ -27,6 +27,8 @@ public interface ATTENDANCEDATEMapper extends BaseMapper<ATTENDANCEDATE>{
     @Override
     int updateById(@Param(Constants.ENTITY) ATTENDANCEDATE entity);
     @Override
+    int update(@Param(Constants.ENTITY) ATTENDANCEDATE entity, @Param("ew") Wrapper<ATTENDANCEDATE> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

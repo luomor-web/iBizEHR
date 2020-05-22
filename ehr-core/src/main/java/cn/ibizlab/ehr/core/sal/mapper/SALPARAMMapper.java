@@ -27,6 +27,8 @@ public interface SALPARAMMapper extends BaseMapper<SALPARAM>{
     @Override
     int updateById(@Param(Constants.ENTITY) SALPARAM entity);
     @Override
+    int update(@Param(Constants.ENTITY) SALPARAM entity, @Param("ew") Wrapper<SALPARAM> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

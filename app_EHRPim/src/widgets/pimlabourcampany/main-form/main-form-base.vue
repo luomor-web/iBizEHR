@@ -4,7 +4,7 @@
     <row >
             
 <i-col v-show="detailsModel.group1.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
-    <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' uiActionGroup="detailsModel.group1.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.pimlabourcampany.main_form.details.group1')" :isShowCaption="false" uiStyle="DEFAULT" :titleBarCloseMode="0" :isInfoGroupMode="false" >    
+    <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' :uiActionGroup="detailsModel.group1.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.pimlabourcampany.main_form.details.group1')" :isShowCaption="false" uiStyle="DEFAULT" :titleBarCloseMode="0" :isInfoGroupMode="false" >    
     <row>
         <i-col v-show="detailsModel.pimlabourcampanyname.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='pimlabourcampanyname' :itemRules="this.rules.pimlabourcampanyname" class='' :caption="$t('entities.pimlabourcampany.main_form.details.pimlabourcampanyname')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.pimlabourcampanyname.error" :isEmptyCaption="false" labelPos="LEFT">
@@ -81,7 +81,7 @@
 
 </i-col>
 <i-col v-show="detailsModel.grouppanel1.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
-    <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' uiActionGroup="detailsModel.grouppanel1.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.pimlabourcampany.main_form.details.grouppanel1')" :isShowCaption="false" uiStyle="DEFAULT" :titleBarCloseMode="0" :isInfoGroupMode="false" >    
+    <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' :uiActionGroup="detailsModel.grouppanel1.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.pimlabourcampany.main_form.details.grouppanel1')" :isShowCaption="false" uiStyle="DEFAULT" :titleBarCloseMode="0" :isInfoGroupMode="false" >    
     <row>
         <i-col v-show="detailsModel.druipart1.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
     <app-form-druipart
@@ -483,10 +483,10 @@ export default class MainBase extends Vue implements ControlInterface {
             { required: false, type: 'string', message: '劳务派遣公司管理标识 值不能为空', trigger: 'blur' },
         ],
         srfmajortext: [
-            { type: 'string', message: '劳务派遣公司管理名称 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '劳务派遣公司管理名称 值必须为字符串类型', trigger: 'blur' },
-            { required: false, type: 'string', message: '劳务派遣公司管理名称 值不能为空', trigger: 'change' },
-            { required: false, type: 'string', message: '劳务派遣公司管理名称 值不能为空', trigger: 'blur' },
+            { type: 'string', message: '公司名称 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '公司名称 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '公司名称 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '公司名称 值不能为空', trigger: 'blur' },
         ],
         srftempmode: [
             { type: 'string', message: ' 值必须为字符串类型', trigger: 'change' },
@@ -595,7 +595,7 @@ export default class MainBase extends Vue implements ControlInterface {
 , 
         srfkey: new FormItemModel({ caption: '劳务派遣公司管理标识', detailType: 'FORMITEM', name: 'srfkey', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
-        srfmajortext: new FormItemModel({ caption: '劳务派遣公司管理名称', detailType: 'FORMITEM', name: 'srfmajortext', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+        srfmajortext: new FormItemModel({ caption: '公司名称', detailType: 'FORMITEM', name: 'srfmajortext', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
         srftempmode: new FormItemModel({ caption: '', detailType: 'FORMITEM', name: 'srftempmode', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
@@ -1132,7 +1132,11 @@ export default class MainBase extends Vue implements ControlInterface {
                     this.load(data);
                 }
                 if (Object.is('loaddraft', action)) {
-                    this.loadDraft(data);
+                    if(this.context.srfsourcekey){
+                        this.copy(this.context.srfsourcekey);
+                    }else{
+                        this.loadDraft(data);
+                    }
                 }
                 if (Object.is('save', action)) {
                     this.save(data,data.showResultInfo);
@@ -1196,8 +1200,18 @@ export default class MainBase extends Vue implements ControlInterface {
      * @param {*} [arg={}]
      * @memberof @memberof Main
      */
-    public copy(arg: any = {}): void {
-        this.loadDraft(arg);
+    public copy(srfkey: string): void {
+        let copyData = this.$store.getters.getCopyData(srfkey);
+        copyData.srfkey = Util.createUUID();
+        copyData.pimlabourcampany = copyData.srfkey;
+        copyData.pimlabourcampanyid = copyData.srfkey;
+        Object.assign(this.context,{pimlabourcampany:copyData.pimlabourcampany})
+        this.data = copyData;
+        this.$nextTick(() => {
+          this.formState.next({ type: 'load', data: copyData });
+          this.data.srfuf = '0';
+          this.setFormEnableCond(this.data);
+        });
     }
 
     /**

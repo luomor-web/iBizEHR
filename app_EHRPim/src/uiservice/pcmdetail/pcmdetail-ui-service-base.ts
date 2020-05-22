@@ -5,7 +5,7 @@ import { Subject } from 'rxjs';
 import PCMDETAILService from '@/service/pcmdetail/pcmdetail-service';
 
 /**
- * 人员明细表UI服务对象基类
+ * 人员花名册UI服务对象基类
  *
  * @export
  * @class PCMDETAILUIServiceBase

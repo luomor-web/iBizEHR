@@ -285,14 +285,6 @@ public class TRMDUTYCADRESDTO extends DTOBase implements Serializable {
     private String ormrankname;
 
     /**
-     * 属性 [SHORTNAME]
-     *
-     */
-    @JSONField(name = "shortname")
-    @JsonProperty("shortname")
-    private String shortname;
-
-    /**
      * 属性 [ORMORGNAME2]
      *
      */
@@ -333,14 +325,6 @@ public class TRMDUTYCADRESDTO extends DTOBase implements Serializable {
     private String gw;
 
     /**
-     * 属性 [ORGSECTORNAME]
-     *
-     */
-    @JSONField(name = "orgsectorname")
-    @JsonProperty("orgsectorname")
-    private String orgsectorname;
-
-    /**
      * 属性 [ZW]
      *
      */
@@ -379,14 +363,6 @@ public class TRMDUTYCADRESDTO extends DTOBase implements Serializable {
     @JSONField(name = "ormpostid")
     @JsonProperty("ormpostid")
     private String ormpostid;
-
-    /**
-     * 属性 [ORGSECTORID]
-     *
-     */
-    @JSONField(name = "orgsectorid")
-    @JsonProperty("orgsectorid")
-    private String orgsectorid;
 
     /**
      * 属性 [PIMPERSONID2]

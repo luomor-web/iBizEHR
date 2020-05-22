@@ -27,6 +27,8 @@ public interface PIMPROVINCEMapper extends BaseMapper<PIMPROVINCE>{
     @Override
     int updateById(@Param(Constants.ENTITY) PIMPROVINCE entity);
     @Override
+    int update(@Param(Constants.ENTITY) PIMPROVINCE entity, @Param("ew") Wrapper<PIMPROVINCE> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

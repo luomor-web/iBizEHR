@@ -4,7 +4,7 @@
     <row >
             
 <i-col v-show="detailsModel.group1.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
-    <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' uiActionGroup="detailsModel.group1.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.pimexpaccount.main_form.details.group1')" :isShowCaption="false" uiStyle="DEFAULT" :titleBarCloseMode="0" :isInfoGroupMode="false" >    
+    <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' :uiActionGroup="detailsModel.group1.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.pimexpaccount.main_form.details.group1')" :isShowCaption="false" uiStyle="DEFAULT" :titleBarCloseMode="0" :isInfoGroupMode="false" >    
     <row>
         <i-col v-show="detailsModel.fylb.visible" :style="{}"  :sm="{ span: 24, offset: 0 }" :md="{ span: 12, offset: 0 }" :lg="{ span: 8, offset: 0 }" :xl="{ span: 6, offset: 0 }">
     <app-form-item name='fylb' :itemRules="this.rules.fylb" class='' :caption="$t('entities.pimexpaccount.main_form.details.fylb')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.fylb.error" :isEmptyCaption="false" labelPos="LEFT">
@@ -1019,7 +1019,11 @@ export default class MainBase extends Vue implements ControlInterface {
                     this.load(data);
                 }
                 if (Object.is('loaddraft', action)) {
-                    this.loadDraft(data);
+                    if(this.context.srfsourcekey){
+                        this.copy(this.context.srfsourcekey);
+                    }else{
+                        this.loadDraft(data);
+                    }
                 }
                 if (Object.is('save', action)) {
                     this.save(data,data.showResultInfo);
@@ -1083,8 +1087,18 @@ export default class MainBase extends Vue implements ControlInterface {
      * @param {*} [arg={}]
      * @memberof @memberof Main
      */
-    public copy(arg: any = {}): void {
-        this.loadDraft(arg);
+    public copy(srfkey: string): void {
+        let copyData = this.$store.getters.getCopyData(srfkey);
+        copyData.srfkey = Util.createUUID();
+        copyData.pimexpaccount = copyData.srfkey;
+        copyData.pimexpaccountid = copyData.srfkey;
+        Object.assign(this.context,{pimexpaccount:copyData.pimexpaccount})
+        this.data = copyData;
+        this.$nextTick(() => {
+          this.formState.next({ type: 'load', data: copyData });
+          this.data.srfuf = '0';
+          this.setFormEnableCond(this.data);
+        });
     }
 
     /**

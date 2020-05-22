@@ -13,7 +13,7 @@ import MainModel from './main-grid-model';
 export default class MainService extends ControlService {
 
     /**
-     * 人员明细表服务对象
+     * 人员花名册服务对象
      *
      * @type {PCMDETAILService}
      * @memberof MainService

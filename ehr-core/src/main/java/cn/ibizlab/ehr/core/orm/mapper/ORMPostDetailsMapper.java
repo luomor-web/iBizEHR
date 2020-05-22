@@ -27,6 +27,8 @@ public interface ORMPostDetailsMapper extends BaseMapper<ORMPostDetails>{
     @Override
     int updateById(@Param(Constants.ENTITY) ORMPostDetails entity);
     @Override
+    int update(@Param(Constants.ENTITY) ORMPostDetails entity, @Param("ew") Wrapper<ORMPostDetails> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

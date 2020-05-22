@@ -50,21 +50,18 @@ public class SOCSELFAREBASEMXResource {
 
     @Autowired
     @Lazy
-    private SOCSELFAREBASEMXMapping socselfarebasemxMapping;
+    public SOCSELFAREBASEMXMapping socselfarebasemxMapping;
 
+    public SOCSELFAREBASEMXDTO permissionDTO=new SOCSELFAREBASEMXDTO();
 
-
-
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SOCSELFAREBASEMX-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"SOCSELFAREBASEMX" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/socselfarebasemxes/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody SOCSELFAREBASEMXDTO socselfarebasemxdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(socselfarebasemxService.checkKey(socselfarebasemxMapping.toDomain(socselfarebasemxdto)));
     }
 
-
-
-
-    @PreAuthorize("hasPermission('Remove',{#socselfarebasemx_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#socselfarebasemx_id,'Remove',{'Sql',this.socselfarebasemxMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"SOCSELFAREBASEMX" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/socselfarebasemxes/{socselfarebasemx_id}")
     @Transactional
@@ -72,6 +69,7 @@ public class SOCSELFAREBASEMXResource {
          return ResponseEntity.status(HttpStatus.OK).body(socselfarebasemxService.remove(socselfarebasemx_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"SOCSELFAREBASEMX" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/socselfarebasemxes/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -79,10 +77,7 @@ public class SOCSELFAREBASEMXResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    @PreAuthorize("hasPermission(#socselfarebasemx_id,'Get',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#socselfarebasemx_id,'Get',{'Sql',this.socselfarebasemxMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"SOCSELFAREBASEMX" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/socselfarebasemxes/{socselfarebasemx_id}")
     public ResponseEntity<SOCSELFAREBASEMXDTO> get(@PathVariable("socselfarebasemx_id") String socselfarebasemx_id) {
@@ -91,19 +86,14 @@ public class SOCSELFAREBASEMXResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-
-
-
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SOCSELFAREBASEMX-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"SOCSELFAREBASEMX" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/socselfarebasemxes/getdraft")
     public ResponseEntity<SOCSELFAREBASEMXDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(socselfarebasemxMapping.toDto(socselfarebasemxService.getDraft(new SOCSELFAREBASEMX())));
     }
 
-
-
-
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.socselfarebasemxMapping,#socselfarebasemxdto})")
     @ApiOperation(value = "Create", tags = {"SOCSELFAREBASEMX" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/socselfarebasemxes")
     @Transactional
@@ -114,7 +104,7 @@ public class SOCSELFAREBASEMXResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatch", tags = {"SOCSELFAREBASEMX" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/socselfarebasemxes/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<SOCSELFAREBASEMXDTO> socselfarebasemxdtos) {
@@ -122,15 +112,14 @@ public class SOCSELFAREBASEMXResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SOCSELFAREBASEMX-Save-all')")
     @ApiOperation(value = "Save", tags = {"SOCSELFAREBASEMX" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/socselfarebasemxes/save")
     public ResponseEntity<Boolean> save(@RequestBody SOCSELFAREBASEMXDTO socselfarebasemxdto) {
         return ResponseEntity.status(HttpStatus.OK).body(socselfarebasemxService.save(socselfarebasemxMapping.toDomain(socselfarebasemxdto)));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"SOCSELFAREBASEMX" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/socselfarebasemxes/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<SOCSELFAREBASEMXDTO> socselfarebasemxdtos) {
@@ -138,10 +127,7 @@ public class SOCSELFAREBASEMXResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    @PreAuthorize("hasPermission(#socselfarebasemx_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#socselfarebasemx_id,'Update',{'Sql',this.socselfarebasemxMapping,#socselfarebasemxdto})")
     @ApiOperation(value = "Update", tags = {"SOCSELFAREBASEMX" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/socselfarebasemxes/{socselfarebasemx_id}")
     @Transactional
@@ -153,7 +139,7 @@ public class SOCSELFAREBASEMXResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#socselfarebasemx_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"SOCSELFAREBASEMX" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/socselfarebasemxes/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<SOCSELFAREBASEMXDTO> socselfarebasemxdtos) {
@@ -161,7 +147,7 @@ public class SOCSELFAREBASEMXResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SOCSELFAREBASEMX-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"SOCSELFAREBASEMX" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/socselfarebasemxes/fetchdefault")
 	public ResponseEntity<List<SOCSELFAREBASEMXDTO>> fetchDefault(SOCSELFAREBASEMXSearchContext context) {
@@ -174,22 +160,12 @@ public class SOCSELFAREBASEMXResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SOCSELFAREBASEMX-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"SOCSELFAREBASEMX" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/socselfarebasemxes/searchdefault")
-	public ResponseEntity<Page<SOCSELFAREBASEMXDTO>> searchDefault(SOCSELFAREBASEMXSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/socselfarebasemxes/searchdefault")
+	public ResponseEntity<Page<SOCSELFAREBASEMXDTO>> searchDefault(@RequestBody SOCSELFAREBASEMXSearchContext context) {
         Page<SOCSELFAREBASEMX> domains = socselfarebasemxService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(socselfarebasemxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
-    /**
-     * 用户权限校验
-     * @return
-     */
-	public SOCSELFAREBASEMX getEntity(){
-        return new SOCSELFAREBASEMX();
-    }
-
 }

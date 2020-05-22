@@ -22,14 +22,14 @@
                 <el-table-column align="center" type='selection' :width="checkboxColWidth"></el-table-column>
             </template>
             <template v-if="getColumnState('ygbh')">
-                <el-table-column show-overflow-tooltip :prop="'ygbh'" :label="$t('entities.pimtitle.main_2_grid.columns.ygbh')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'ygbh'" :label="$t('entities.pimtitle.main_2_grid.columns.ygbh')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.ygbh}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('pimpersonname')">
-                <el-table-column show-overflow-tooltip :prop="'pimpersonname'" :label="$t('entities.pimtitle.main_2_grid.columns.pimpersonname')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'pimpersonname'" :label="$t('entities.pimtitle.main_2_grid.columns.pimpersonname')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
                               <app-column-link deKeyField='pimperson' :context="JSON.parse(JSON.stringify(context))" :viewparams="JSON.parse(JSON.stringify(viewparams))" :data="row" :linkview="{viewname: 'pimpersonedit-view2', height: 0,width: 0,title: $t('entities.pimperson.views.editview2.title'),placement: 'DRAWER_TOP', isRedirectView: false,deResParameters: [
@@ -45,7 +45,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('ygzt')">
-                <el-table-column show-overflow-tooltip :prop="'ygzt'" :label="$t('entities.pimtitle.main_2_grid.columns.ygzt')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'ygzt'" :label="$t('entities.pimtitle.main_2_grid.columns.ygzt')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
             <codelist :value="row.ygzt" tag='PIMCL_YGZT' codelistType='DYNAMIC' ></codelist>
@@ -54,14 +54,14 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('ormorgname')">
-                <el-table-column show-overflow-tooltip :prop="'ormorgname'" :label="$t('entities.pimtitle.main_2_grid.columns.ormorgname')" :width="200" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'ormorgname'" :label="$t('entities.pimtitle.main_2_grid.columns.ormorgname')" :width="200"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.ormorgname}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('pimtitlecataloguename')">
-                <el-table-column show-overflow-tooltip :prop="'pimtitlecataloguename'" :label="$t('entities.pimtitle.main_2_grid.columns.pimtitlecataloguename')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'pimtitlecataloguename'" :label="$t('entities.pimtitle.main_2_grid.columns.pimtitlecataloguename')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
                               <app-column-link deKeyField='pimtitlecatalogue' :context="JSON.parse(JSON.stringify(context))" :viewparams="JSON.parse(JSON.stringify(viewparams))" :data="row" :linkview="{viewname: 'pimtitlecatalogueredirect-view', height: 0,width: 0,title: $t('entities.pimtitlecatalogue.views.redirectview.title'),placement: '', isRedirectView: true,deResParameters: [
@@ -77,7 +77,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('zchqrq')">
-                <el-table-column show-overflow-tooltip :prop="'zchqrq'" :label="$t('entities.pimtitle.main_2_grid.columns.zchqrq')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'zchqrq'" :label="$t('entities.pimtitle.main_2_grid.columns.zchqrq')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
                                 <app-span name='zchqrq' editorType="DATEPICKER" :value="row.zchqrq"></app-span>
@@ -86,7 +86,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('zcbh')">
-                <el-table-column show-overflow-tooltip :prop="'zcbh'" :label="$t('entities.pimtitle.main_2_grid.columns.zcbh')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'zcbh'" :label="$t('entities.pimtitle.main_2_grid.columns.zcbh')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
                                 <app-span name='zcbh' editorType="TEXTBOX" :value="row.zcbh"></app-span>
@@ -95,7 +95,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('majorengaged')">
-                <el-table-column show-overflow-tooltip :prop="'majorengaged'" :label="$t('entities.pimtitle.main_2_grid.columns.majorengaged')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'majorengaged'" :label="$t('entities.pimtitle.main_2_grid.columns.majorengaged')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
                                 <app-span name='majorengaged' editorType="DROPDOWNLIST" :value="row.majorengaged"></app-span>
@@ -104,7 +104,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('zcdj')">
-                <el-table-column show-overflow-tooltip :prop="'zcdj'" :label="$t('entities.pimtitle.main_2_grid.columns.zcdj')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'zcdj'" :label="$t('entities.pimtitle.main_2_grid.columns.zcdj')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
             <codelist :value="row.zcdj" tag='PIMCL_ZCDJ' codelistType='DYNAMIC' ></codelist>
@@ -113,28 +113,28 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('duration')">
-                <el-table-column show-overflow-tooltip :prop="'duration'" :label="$t('entities.pimtitle.main_2_grid.columns.duration')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'duration'" :label="$t('entities.pimtitle.main_2_grid.columns.duration')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.duration}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('employtime')">
-                <el-table-column show-overflow-tooltip :prop="'employtime'" :label="$t('entities.pimtitle.main_2_grid.columns.employtime')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'employtime'" :label="$t('entities.pimtitle.main_2_grid.columns.employtime')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <app-format-data format="YYYY-MM-DD" :data="row.employtime"></app-format-data>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('lssuingagency')">
-                <el-table-column show-overflow-tooltip :prop="'lssuingagency'" :label="$t('entities.pimtitle.main_2_grid.columns.lssuingagency')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'lssuingagency'" :label="$t('entities.pimtitle.main_2_grid.columns.lssuingagency')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.lssuingagency}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('reviewbody')">
-                <el-table-column show-overflow-tooltip :prop="'reviewbody'" :label="$t('entities.pimtitle.main_2_grid.columns.reviewbody')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'reviewbody'" :label="$t('entities.pimtitle.main_2_grid.columns.reviewbody')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
                                 <app-span name='reviewbody' editorType="TEXTBOX" :value="row.reviewbody"></app-span>
@@ -143,7 +143,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('sfzgzc')">
-                <el-table-column show-overflow-tooltip :prop="'sfzgzc'" :label="$t('entities.pimtitle.main_2_grid.columns.sfzgzc')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'sfzgzc'" :label="$t('entities.pimtitle.main_2_grid.columns.sfzgzc')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
             <codelist :value="row.sfzgzc" tag='YesNo' codelistType='STATIC' ></codelist>
@@ -609,7 +609,7 @@ export default class Main_2Base extends Vue implements ControlInterface {
     * @type {number}
     * @memberof AppIndex
     */
-    protected checkboxColWidth: number = 34;
+    public checkboxColWidth: number = 34;
 
     /**
      * 是否允许拖动列宽
@@ -1445,7 +1445,7 @@ export default class Main_2Base extends Vue implements ControlInterface {
      * @memberof Main_2
      */
 	public uiAction(row: any, tag: any, $event: any) {
-        this.rowClick(row, true);
+        // this.rowClick(row, true);
     }
 
     /**

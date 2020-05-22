@@ -4,9 +4,6 @@
 <mapper	namespace="cn.ibizlab.ehr.core.pim.mapper.PIMQUALMAJORMapper">
 
     <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
-	<select id="selectById"  resultMap="PIMQUALMAJORResultMap" databaseId="oracle">
-        <![CDATA[select * from v_pimqualmajor t1     where  pimqualmajorid=#{id}]]>
-    </select>
 
     <!--通过mybatis将查询结果注入到entity中,通过配置autoMapping="true"由mybatis自动处理映射关系 -->
     <resultMap id="PIMQUALMAJORResultMap" type="cn.ibizlab.ehr.core.pim.domain.PIMQUALMAJOR" autoMapping="true">
@@ -55,8 +52,22 @@
      </select>
 
     <!--数据查询[Default]-->
+    <sql id="Default" databaseId="mysql">
+       <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t1.`GWLX`, t1.`GWTYPE`, t1.`GWZS`, t1.`ORMORGID` AS `ORGID`, t1.`ORMORGID`, t1.`PIMQUALMAJORID`, t1.`PIMQUALMAJORNAME`, t1.`PIMQUALTYPEID`, t11.`PIMQUALTYPENAME`, t1.`PROFESSIONALTYPE`, t1.`QUALEVEL`, t1.`QUAMAJOR`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`ZYJSZW`, concat(t1.`QUALEVEL`, t1.`PIMQUALMAJORNAME`, t1.`QUAMAJOR`) AS `ZYZGZY` FROM `T_PIMQUALMAJOR` t1  LEFT JOIN T_PIMQUALTYPE t11 ON t1.PIMQUALTYPEID = t11.PIMQUALTYPEID  
+				 WHERE 	t1.ENABLE = 1
+			]]>
+    </sql>
+
+    <!--数据查询[Default]-->
     <sql id="Default" databaseId="oracle">
        <![CDATA[	SELECT t1.CREATEDATE, t1.CREATEMAN, t1.ENABLE, t1.GWLX, t1.GWTYPE, t1.GWZS, t1.ORMORGID AS ORGID, t1.ORMORGID, t1.PIMQUALMAJORID, t1.PIMQUALMAJORNAME, t1.PIMQUALTYPEID, t11.PIMQUALTYPENAME, t1.PROFESSIONALTYPE, t1.QUALEVEL, t1.QUAMAJOR, t1.UPDATEDATE, t1.UPDATEMAN, t1.ZYJSZW, t1.QUALEVEL||t1.PIMQUALMAJORNAME||t1.QUAMAJOR AS ZYZGZY FROM T_PIMQUALMAJOR t1  LEFT JOIN T_PIMQUALTYPE t11 ON t1.PIMQUALTYPEID = t11.PIMQUALTYPEID  
+				 WHERE 	t1.ENABLE = 1
+			]]>
+    </sql>
+
+    <!--数据查询[XZZGZY]-->
+    <sql id="XZZGZY" databaseId="mysql">
+       <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t1.`GWLX`, t1.`GWTYPE`, t1.`GWZS`, t1.`ORMORGID` AS `ORGID`, t1.`ORMORGID`, t1.`PIMQUALMAJORID`, t1.`PIMQUALMAJORNAME`, t1.`PIMQUALTYPEID`, t11.`PIMQUALTYPENAME`, t1.`PROFESSIONALTYPE`, t1.`QUALEVEL`, t1.`QUAMAJOR`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`ZYJSZW`, concat(t1.`QUALEVEL`, t1.`PIMQUALMAJORNAME`, t1.`QUAMAJOR`) AS `ZYZGZY` FROM `T_PIMQUALMAJOR` t1  LEFT JOIN T_PIMQUALTYPE t11 ON t1.PIMQUALTYPEID = t11.PIMQUALTYPEID  
 				 WHERE 	t1.ENABLE = 1
 			]]>
     </sql>

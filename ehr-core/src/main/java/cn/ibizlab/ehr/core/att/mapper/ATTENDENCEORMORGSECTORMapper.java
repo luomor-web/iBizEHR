@@ -27,6 +27,8 @@ public interface ATTENDENCEORMORGSECTORMapper extends BaseMapper<ATTENDENCEORMOR
     @Override
     int updateById(@Param(Constants.ENTITY) ATTENDENCEORMORGSECTOR entity);
     @Override
+    int update(@Param(Constants.ENTITY) ATTENDENCEORMORGSECTOR entity, @Param("ew") Wrapper<ATTENDENCEORMORGSECTOR> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

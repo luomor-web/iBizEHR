@@ -27,6 +27,8 @@ public interface PCMPRACTICEEXPERIENCEMapper extends BaseMapper<PCMPRACTICEEXPER
     @Override
     int updateById(@Param(Constants.ENTITY) PCMPRACTICEEXPERIENCE entity);
     @Override
+    int update(@Param(Constants.ENTITY) PCMPRACTICEEXPERIENCE entity, @Param("ew") Wrapper<PCMPRACTICEEXPERIENCE> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

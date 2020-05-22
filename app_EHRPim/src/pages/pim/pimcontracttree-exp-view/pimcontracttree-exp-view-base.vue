@@ -56,6 +56,15 @@ export default class PIMCONTRACTTreeExpViewBase extends TreeExpViewBase {
      */
     public appEntityService: PIMCONTRACTService = new PIMCONTRACTService;
 
+
+    /**
+     * 计数器服务对象集合
+     *
+     * @type {Array<*>}
+     * @memberof PIMCONTRACTTreeExpViewBase
+     */    
+    public counterServiceArray:Array<any> = [];
+    
     /**
      * 数据变化
      *
@@ -91,7 +100,7 @@ export default class PIMCONTRACTTreeExpViewBase extends TreeExpViewBase {
 	 * @type {*}
 	 * @memberof PIMCONTRACTTreeExpViewBase
 	 */
-    protected customViewNavContexts:any ={
+    public customViewNavContexts:any ={
     };
 
 	/**
@@ -100,7 +109,7 @@ export default class PIMCONTRACTTreeExpViewBase extends TreeExpViewBase {
 	 * @type {*}
 	 * @memberof PIMCONTRACTTreeExpViewBase
 	 */
-    protected customViewParams:any ={
+    public customViewParams:any ={
     };
 
     /**
@@ -129,7 +138,7 @@ export default class PIMCONTRACTTreeExpViewBase extends TreeExpViewBase {
     /**
      * 视图状态订阅对象
      *
-     * @private
+     * @public
      * @type {Subject<{action: string, data: any}>}
      * @memberof PIMCONTRACTTreeExpViewBase
      */

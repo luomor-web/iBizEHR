@@ -895,7 +895,11 @@ export default class RYInfoForm_3Base extends Vue implements ControlInterface {
                     this.load(data);
                 }
                 if (Object.is('loaddraft', action)) {
-                    this.loadDraft(data);
+                    if(this.context.srfsourcekey){
+                        this.copy(this.context.srfsourcekey);
+                    }else{
+                        this.loadDraft(data);
+                    }
                 }
                 if (Object.is('save', action)) {
                     this.save(data,data.showResultInfo);
@@ -959,8 +963,18 @@ export default class RYInfoForm_3Base extends Vue implements ControlInterface {
      * @param {*} [arg={}]
      * @memberof @memberof RYInfoForm_3
      */
-    public copy(arg: any = {}): void {
-        this.loadDraft(arg);
+    public copy(srfkey: string): void {
+        let copyData = this.$store.getters.getCopyData(srfkey);
+        copyData.srfkey = Util.createUUID();
+        copyData.pimperson = copyData.srfkey;
+        copyData.pimpersonid = copyData.srfkey;
+        Object.assign(this.context,{pimperson:copyData.pimperson})
+        this.data = copyData;
+        this.$nextTick(() => {
+          this.formState.next({ type: 'load', data: copyData });
+          this.data.srfuf = '0';
+          this.setFormEnableCond(this.data);
+        });
     }
 
     /**

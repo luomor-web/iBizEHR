@@ -27,6 +27,8 @@ public interface TRMTEACHERCHARGEMapper extends BaseMapper<TRMTEACHERCHARGE>{
     @Override
     int updateById(@Param(Constants.ENTITY) TRMTEACHERCHARGE entity);
     @Override
+    int update(@Param(Constants.ENTITY) TRMTEACHERCHARGE entity, @Param("ew") Wrapper<TRMTEACHERCHARGE> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

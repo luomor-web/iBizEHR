@@ -28,6 +28,8 @@ public interface TRMDUTYCADRESMapper extends BaseMapper<TRMDUTYCADRES>{
     @Override
     int updateById(@Param(Constants.ENTITY) TRMDUTYCADRES entity);
     @Override
+    int update(@Param(Constants.ENTITY) TRMDUTYCADRES entity, @Param("ew") Wrapper<TRMDUTYCADRES> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL
@@ -60,8 +62,6 @@ public interface TRMDUTYCADRESMapper extends BaseMapper<TRMDUTYCADRES>{
     */
     @Delete("${sql}")
     boolean deleteBySQL(@Param("sql") String sql, @Param("et")Map param);
-
-    List<TRMDUTYCADRES> selectByOrgsectorid(@Param("orgsectorid") Serializable orgsectorid) ;
 
     List<TRMDUTYCADRES> selectByOrmdutyid(@Param("ormdutyid") Serializable ormdutyid) ;
 

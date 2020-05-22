@@ -22,7 +22,7 @@
                 <el-table-column align="center" type='selection' :width="checkboxColWidth"></el-table-column>
             </template>
             <template v-if="getColumnState('xl')">
-                <el-table-column show-overflow-tooltip :prop="'xl'" :label="$t('entities.pimeducation.main_grid.columns.xl')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'xl'" :label="$t('entities.pimeducation.main_grid.columns.xl')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template v-if="actualIsOpenEdit">
                             <i-form style="height:100%;" :model="row">
@@ -38,7 +38,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('qssj')">
-                <el-table-column show-overflow-tooltip :prop="'qssj'" :label="$t('entities.pimeducation.main_grid.columns.qssj')" :width="130" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'qssj'" :label="$t('entities.pimeducation.main_grid.columns.qssj')" :width="130"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template v-if="actualIsOpenEdit">
                             <i-form style="height:100%;" :model="row">
@@ -54,7 +54,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('jssj')">
-                <el-table-column show-overflow-tooltip :prop="'jssj'" :label="$t('entities.pimeducation.main_grid.columns.jssj')" :width="130" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'jssj'" :label="$t('entities.pimeducation.main_grid.columns.jssj')" :width="130"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template v-if="actualIsOpenEdit">
                             <i-form style="height:100%;" :model="row">
@@ -70,7 +70,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('byyx')">
-                <el-table-column show-overflow-tooltip :prop="'byyx'" :label="$t('entities.pimeducation.main_grid.columns.byyx')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'byyx'" :label="$t('entities.pimeducation.main_grid.columns.byyx')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template v-if="actualIsOpenEdit">
                             <i-form style="height:100%;" :model="row">
@@ -94,7 +94,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('xkml')">
-                <el-table-column show-overflow-tooltip :prop="'xkml'" :label="$t('entities.pimeducation.main_grid.columns.xkml')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'xkml'" :label="$t('entities.pimeducation.main_grid.columns.xkml')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template v-if="actualIsOpenEdit">
                             <i-form style="height:100%;" :model="row">
@@ -110,7 +110,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('sxzy')">
-                <el-table-column show-overflow-tooltip :prop="'sxzy'" :label="$t('entities.pimeducation.main_grid.columns.sxzy')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'sxzy'" :label="$t('entities.pimeducation.main_grid.columns.sxzy')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template v-if="actualIsOpenEdit">
                             <i-form style="height:100%;" :model="row">
@@ -134,7 +134,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('xllx')">
-                <el-table-column show-overflow-tooltip :prop="'xllx'" :label="$t('entities.pimeducation.main_grid.columns.xllx')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'xllx'" :label="$t('entities.pimeducation.main_grid.columns.xllx')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template v-if="actualIsOpenEdit">
                             <i-form style="height:100%;" :model="row">
@@ -150,7 +150,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('xxxz')">
-                <el-table-column show-overflow-tooltip :prop="'xxxz'" :label="$t('entities.pimeducation.main_grid.columns.xxxz')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'xxxz'" :label="$t('entities.pimeducation.main_grid.columns.xxxz')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template v-if="actualIsOpenEdit">
                             <i-form style="height:100%;" :model="row">
@@ -166,7 +166,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('sfdyxl')">
-                <el-table-column show-overflow-tooltip :prop="'sfdyxl'" :label="$t('entities.pimeducation.main_grid.columns.sfdyxl')" :width="160" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'sfdyxl'" :label="$t('entities.pimeducation.main_grid.columns.sfdyxl')" :width="160"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template v-if="actualIsOpenEdit">
                             <i-form style="height:100%;" :model="row">
@@ -182,7 +182,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('sfzgxl')">
-                <el-table-column show-overflow-tooltip :prop="'sfzgxl'" :label="$t('entities.pimeducation.main_grid.columns.sfzgxl')" :width="160" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'sfzgxl'" :label="$t('entities.pimeducation.main_grid.columns.sfzgxl')" :width="160"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template v-if="actualIsOpenEdit">
                             <i-form style="height:100%;" :model="row">
@@ -198,7 +198,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('btz')">
-                <el-table-column show-overflow-tooltip :prop="'btz'" :label="$t('entities.pimeducation.main_grid.columns.btz')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'btz'" :label="$t('entities.pimeducation.main_grid.columns.btz')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template v-if="actualIsOpenEdit">
                             <i-form style="height:100%;" :model="row">
@@ -226,7 +226,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('xwz')">
-                <el-table-column show-overflow-tooltip :prop="'xwz'" :label="$t('entities.pimeducation.main_grid.columns.xwz')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'xwz'" :label="$t('entities.pimeducation.main_grid.columns.xwz')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template v-if="actualIsOpenEdit">
                             <i-form style="height:100%;" :model="row">
@@ -254,7 +254,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('xlcx')">
-                <el-table-column show-overflow-tooltip :prop="'xlcx'" :label="$t('entities.pimeducation.main_grid.columns.xlcx')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'xlcx'" :label="$t('entities.pimeducation.main_grid.columns.xlcx')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template v-if="actualIsOpenEdit">
                             <i-form style="height:100%;" :model="row">
@@ -282,7 +282,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('fj')">
-                <el-table-column show-overflow-tooltip :prop="'fj'" :label="$t('entities.pimeducation.main_grid.columns.fj')" :width="200" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'fj'" :label="$t('entities.pimeducation.main_grid.columns.fj')" :width="200"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template v-if="actualIsOpenEdit">
                             <i-form style="height:100%;" :model="row">
@@ -767,7 +767,7 @@ export default class MainBase extends Vue implements ControlInterface {
     * @type {number}
     * @memberof AppIndex
     */
-    protected checkboxColWidth: number = 34;
+    public checkboxColWidth: number = 34;
 
     /**
      * 是否允许拖动列宽
@@ -1655,7 +1655,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * @memberof Main
      */
 	public uiAction(row: any, tag: any, $event: any) {
-        this.rowClick(row, true);
+        // this.rowClick(row, true);
     }
 
     /**

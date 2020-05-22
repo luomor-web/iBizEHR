@@ -4,9 +4,6 @@
 <mapper	namespace="cn.ibizlab.ehr.core.pcm.mapper.PCMTXFPSQMapper">
 
     <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
-	<select id="selectById"  resultMap="PCMTXFPSQResultMap" databaseId="oracle">
-        <![CDATA[select * from v_pcmtxfpsq t1     where  pcmtxfpsqid=#{id}]]>
-    </select>
 
     <!--通过mybatis将查询结果注入到entity中,通过配置autoMapping="true"由mybatis自动处理映射关系 -->
     <resultMap id="PCMTXFPSQResultMap" type="cn.ibizlab.ehr.core.pcm.domain.PCMTXFPSQ" autoMapping="true">
@@ -73,8 +70,21 @@
      </select>
 
     <!--数据查询[Default]-->
+    <sql id="Default" databaseId="mysql">
+       <![CDATA[	SELECT t1.`BM`, t1.`BMID`, t1.`BZ`, t1.`CHECKSTATUS`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`CZR`, t1.`CZRID`, t1.`FINISHED`, t1.`FPSXSJ`, t1.`LXDH`, t1.`NL`, t1.`ZZID` AS `ORGID`, t1.`BMID` AS `ORGSECTORID`, t1.`PCMPROFILEID`, t1.`PCMTXFPSQID`, t1.`PCMTXFPSQNAME`, t1.`PIMPERSONID`, t11.`PIMPERSONNAME`, t1.`POSTALADDRESS`, t1.`RANK`, t1.`TXDQ`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XYGBH`, t1.`YGBH`, t1.`YGW`, t1.`YZW`, t1.`ZZ`, t1.`ZZID` FROM `T_PCMTXFPSQ` t1  LEFT JOIN T_PIMPERSON t11 ON t1.PIMPERSONID = t11.PIMPERSONID  
+			]]>
+    </sql>
+
+    <!--数据查询[Default]-->
     <sql id="Default" databaseId="oracle">
        <![CDATA[	SELECT t1.BM, t1.BMID, t1.BZ, t1.CHECKSTATUS, t1.CREATEDATE, t1.CREATEMAN, t1.CZR, t1.CZRID, t1.FINISHED, t1.FPSXSJ, t1.LXDH, t1.NL, t1.ZZID AS ORGID, t1.BMID AS ORGSECTORID, t1.PCMPROFILEID, t1.PCMTXFPSQID, t1.PCMTXFPSQNAME, t1.PIMPERSONID, t11.PIMPERSONNAME, t1.POSTALADDRESS, t1.RANK, t1.TXDQ, t1.UPDATEDATE, t1.UPDATEMAN, t1.XYGBH, t1.YGBH, t1.YGW, t1.YZW, t1.ZZ, t1.ZZID FROM T_PCMTXFPSQ t1  LEFT JOIN T_PIMPERSON t11 ON t1.PIMPERSONID = t11.PIMPERSONID  
+			]]>
+    </sql>
+
+    <!--数据查询[FPGL]-->
+    <sql id="FPGL" databaseId="mysql">
+       <![CDATA[	SELECT t1.`BM`, t1.`BMID`, t1.`BZ`, t1.`CHECKSTATUS`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`CZR`, t1.`CZRID`, t1.`FINISHED`, t1.`FPSXSJ`, t1.`LXDH`, t1.`NL`, t1.`ZZID` AS `ORGID`, t1.`BMID` AS `ORGSECTORID`, t1.`PCMPROFILEID`, t1.`PCMTXFPSQID`, t1.`PCMTXFPSQNAME`, t1.`PIMPERSONID`, t11.`PIMPERSONNAME`, t1.`POSTALADDRESS`, t1.`RANK`, t1.`TXDQ`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XYGBH`, t1.`YGBH`, t1.`YGW`, t1.`YZW`, t1.`ZZ`, t1.`ZZID` FROM `T_PCMTXFPSQ` t1  LEFT JOIN T_PIMPERSON t11 ON t1.PIMPERSONID = t11.PIMPERSONID  
+				 WHERE 	( t1.`FINISHED` = 0 )
 			]]>
     </sql>
 
@@ -82,6 +92,13 @@
     <sql id="FPGL" databaseId="oracle">
        <![CDATA[	SELECT t1.BM, t1.BMID, t1.BZ, t1.CHECKSTATUS, t1.CREATEDATE, t1.CREATEMAN, t1.CZR, t1.CZRID, t1.FINISHED, t1.FPSXSJ, t1.LXDH, t1.NL, t1.ZZID AS ORGID, t1.BMID AS ORGSECTORID, t1.PCMPROFILEID, t1.PCMTXFPSQID, t1.PCMTXFPSQNAME, t1.PIMPERSONID, t11.PIMPERSONNAME, t1.POSTALADDRESS, t1.RANK, t1.TXDQ, t1.UPDATEDATE, t1.UPDATEMAN, t1.XYGBH, t1.YGBH, t1.YGW, t1.YZW, t1.ZZ, t1.ZZID FROM T_PCMTXFPSQ t1  LEFT JOIN T_PIMPERSON t11 ON t1.PIMPERSONID = t11.PIMPERSONID  
 				 WHERE 	( t1.FINISHED = 0 )
+			]]>
+    </sql>
+
+    <!--数据查询[FPJL]-->
+    <sql id="FPJL" databaseId="mysql">
+       <![CDATA[	SELECT t1.`BM`, t1.`BMID`, t1.`BZ`, t1.`CHECKSTATUS`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`CZR`, t1.`CZRID`, t1.`FINISHED`, t1.`FPSXSJ`, t1.`LXDH`, t1.`NL`, t1.`ZZID` AS `ORGID`, t1.`BMID` AS `ORGSECTORID`, t1.`PCMPROFILEID`, t1.`PCMTXFPSQID`, t1.`PCMTXFPSQNAME`, t1.`PIMPERSONID`, t11.`PIMPERSONNAME`, t1.`POSTALADDRESS`, t1.`RANK`, t1.`TXDQ`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XYGBH`, t1.`YGBH`, t1.`YGW`, t1.`YZW`, t1.`ZZ`, t1.`ZZID` FROM `T_PCMTXFPSQ` t1  LEFT JOIN T_PIMPERSON t11 ON t1.PIMPERSONID = t11.PIMPERSONID  
+				 WHERE 	( t1.`FINISHED` = 1 )
 			]]>
     </sql>
 
@@ -94,7 +111,7 @@
 
     <!--数据查询[YXSQDQ]-->
     <sql id="YXSQDQ" databaseId="mysql">
-       <![CDATA[	SELECT t11.`ORMORGSECTORNAME` AS `BM`, t1.`BMID`, t1.`CHECKSTATUS`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`CZR`, t1.`CZRID`, t1.`FINISHED`, t1.`FPSXSJ`, t1.`LXDH`, t1.`NL`, t1.`PCMTXFPSQID`, t1.`PCMTXFPSQNAME`, t1.`PIMPERSONID`, t11.`PIMPERSONNAME`, t1.`POSTALADDRESS`, t1.`TXDQ`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`YGBH`, t1.`YGW`, t1.`YZW`, t11.`ORMORGNAME` AS `ZZ`, t1.`ZZID` FROM `T_PCMTXFPSQ` t1  LEFT JOIN T_PIMPERSON t11 ON t1.PIMPERSONID = t11.PIMPERSONID  
+       <![CDATA[	SELECT t1.`BM`, t1.`BMID`, t1.`BZ`, t1.`CHECKSTATUS`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`CZR`, t1.`CZRID`, t1.`FINISHED`, t1.`FPSXSJ`, t1.`LXDH`, t1.`NL`, t1.`ZZID` AS `ORGID`, t1.`BMID` AS `ORGSECTORID`, t1.`PCMPROFILEID`, t1.`PCMTXFPSQID`, t1.`PCMTXFPSQNAME`, t1.`PIMPERSONID`, t11.`PIMPERSONNAME`, t1.`POSTALADDRESS`, t1.`RANK`, t1.`TXDQ`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XYGBH`, t1.`YGBH`, t1.`YGW`, t1.`YZW`, t1.`ZZ`, t1.`ZZID` FROM `T_PCMTXFPSQ` t1  LEFT JOIN T_PIMPERSON t11 ON t1.PIMPERSONID = t11.PIMPERSONID  
 				 WHERE 	( t1.`FINISHED` IS NOT NULL )
 			]]>
     </sql>

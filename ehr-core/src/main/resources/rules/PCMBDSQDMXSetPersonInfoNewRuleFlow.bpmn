@@ -17,15 +17,15 @@
      <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="pcmbdsqdmxsetpersoninfonewprepareparam2" id="7b6b15526b06875145b94a0ebe71dc8c" implementation="http://www.jboss.org/drools/rule" name="设置职级、部门、组织"/>
      <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="pcmbdsqdmxsetpersoninfonewprepareparam3" id="3b80cb0397f76cc2a4f9c5e52266e19e" implementation="http://www.jboss.org/drools/rule" name="zjcodeList"/>
      <startEvent id="2d2aa27fa925b7e79d1015beb068af12" isInterrupting="true"/>
-     <sequenceFlow id="42c849739796f296b8f0548ca8802f8a" sourceRef="1f9568a6331f74f26b48d96db02ed256" targetRef="7b6b15526b06875145b94a0ebe71dc8c">
+     <sequenceFlow id="aa0877f9185f2f580ded28074256a4c5" sourceRef="1f9568a6331f74f26b48d96db02ed256" targetRef="7b6b15526b06875145b94a0ebe71dc8c">
      </sequenceFlow>
-     <sequenceFlow id="4fcc345d3550e81173f4ad5f95eb7ce9" sourceRef="2d2aa27fa925b7e79d1015beb068af12" targetRef="b3d2f985d9061175926241b2b3e0b919">
+     <sequenceFlow id="539ad0d6c68b417f2f423387fb7cb214" sourceRef="2d2aa27fa925b7e79d1015beb068af12" targetRef="b3d2f985d9061175926241b2b3e0b919">
      </sequenceFlow>
-     <sequenceFlow id="f08d6778ad387e119bbec75723c6cab5" sourceRef="3b80cb0397f76cc2a4f9c5e52266e19e" targetRef="f2a7f386981bf446b46bba05571cb158">
+     <sequenceFlow id="18e1d0aa54270a7a9f699a6702388bc6" sourceRef="3b80cb0397f76cc2a4f9c5e52266e19e" targetRef="f2a7f386981bf446b46bba05571cb158">
      </sequenceFlow>
-     <sequenceFlow id="a569cc838b601a95d5dcea7846edc9ae" sourceRef="7b6b15526b06875145b94a0ebe71dc8c" targetRef="3b80cb0397f76cc2a4f9c5e52266e19e">
+     <sequenceFlow id="c4fb44a09b39771a3f4d46dc5670b8db" sourceRef="7b6b15526b06875145b94a0ebe71dc8c" targetRef="3b80cb0397f76cc2a4f9c5e52266e19e">
      </sequenceFlow>
-     <sequenceFlow id="9e123fd297f58099b5191c63a96cfa77" sourceRef="b3d2f985d9061175926241b2b3e0b919" targetRef="1f9568a6331f74f26b48d96db02ed256">
+     <sequenceFlow id="eaa61a938ceb9969e96ffd39db8093e8" sourceRef="b3d2f985d9061175926241b2b3e0b919" targetRef="1f9568a6331f74f26b48d96db02ed256">
      </sequenceFlow>
     </process>
 </definitions>

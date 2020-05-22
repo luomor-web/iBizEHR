@@ -29,6 +29,8 @@ public interface PIMOUTPUTMapper extends BaseMapper<PIMOUTPUT>{
     @Override
     int updateById(@Param(Constants.ENTITY) PIMOUTPUT entity);
     @Override
+    int update(@Param(Constants.ENTITY) PIMOUTPUT entity, @Param("ew") Wrapper<PIMOUTPUT> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

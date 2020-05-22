@@ -56,6 +56,15 @@ export default class PIMPERSONPersonInfoTreeExpViewBase extends TreeExpViewBase 
      */
     public appEntityService: PIMPERSONService = new PIMPERSONService;
 
+
+    /**
+     * 计数器服务对象集合
+     *
+     * @type {Array<*>}
+     * @memberof PIMPERSONPersonInfoTreeExpViewBase
+     */    
+    public counterServiceArray:Array<any> = [];
+    
     /**
      * 数据变化
      *
@@ -91,7 +100,7 @@ export default class PIMPERSONPersonInfoTreeExpViewBase extends TreeExpViewBase 
 	 * @type {*}
 	 * @memberof PIMPERSONPersonInfoTreeExpViewBase
 	 */
-    protected customViewNavContexts:any ={
+    public customViewNavContexts:any ={
     };
 
 	/**
@@ -100,7 +109,7 @@ export default class PIMPERSONPersonInfoTreeExpViewBase extends TreeExpViewBase 
 	 * @type {*}
 	 * @memberof PIMPERSONPersonInfoTreeExpViewBase
 	 */
-    protected customViewParams:any ={
+    public customViewParams:any ={
     };
 
     /**
@@ -129,7 +138,7 @@ export default class PIMPERSONPersonInfoTreeExpViewBase extends TreeExpViewBase 
     /**
      * 视图状态订阅对象
      *
-     * @private
+     * @public
      * @type {Subject<{action: string, data: any}>}
      * @memberof PIMPERSONPersonInfoTreeExpViewBase
      */

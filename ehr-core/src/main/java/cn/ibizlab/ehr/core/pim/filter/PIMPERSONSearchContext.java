@@ -500,7 +500,6 @@ public class PIMPERSONSearchContext extends QueryWrapperContext<PIMPERSON> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("yygbh",query);
 			this.getSelectCond().or().like("ygbh",query);
 			this.getSelectCond().or().like("pimpersonname",query);
 		 }

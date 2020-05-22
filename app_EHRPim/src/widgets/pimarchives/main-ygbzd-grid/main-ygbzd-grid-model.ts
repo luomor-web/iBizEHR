@@ -72,14 +72,14 @@ export default class Main_YGBZDModel {
           dataType: 'PICKUPTEXT',
         },
         {
-          name: 'drda',
-          prop: 'drda',
-          dataType: 'TEXT',
-        },
-        {
           name: 'duration',
           prop: 'duration',
           dataType: 'INT',
+        },
+        {
+          name: 'drda',
+          prop: 'drda',
+          dataType: 'TEXT',
         },
         {
           name: 'dastate',

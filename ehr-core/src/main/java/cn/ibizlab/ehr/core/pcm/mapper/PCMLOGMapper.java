@@ -27,6 +27,8 @@ public interface PCMLOGMapper extends BaseMapper<PCMLOG>{
     @Override
     int updateById(@Param(Constants.ENTITY) PCMLOG entity);
     @Override
+    int update(@Param(Constants.ENTITY) PCMLOG entity, @Param("ew") Wrapper<PCMLOG> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

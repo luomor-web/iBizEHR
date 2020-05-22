@@ -27,6 +27,8 @@ public interface TRMTRIANPERSONMapper extends BaseMapper<TRMTRIANPERSON>{
     @Override
     int updateById(@Param(Constants.ENTITY) TRMTRIANPERSON entity);
     @Override
+    int update(@Param(Constants.ENTITY) TRMTRIANPERSON entity, @Param("ew") Wrapper<TRMTRIANPERSON> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

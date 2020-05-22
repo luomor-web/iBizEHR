@@ -27,6 +27,8 @@ public interface PIMWorkflowRefMapper extends BaseMapper<PIMWorkflowRef>{
     @Override
     int updateById(@Param(Constants.ENTITY) PIMWorkflowRef entity);
     @Override
+    int update(@Param(Constants.ENTITY) PIMWorkflowRef entity, @Param("ew") Wrapper<PIMWorkflowRef> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL
@@ -61,7 +63,5 @@ public interface PIMWorkflowRefMapper extends BaseMapper<PIMWorkflowRef>{
     boolean deleteBySQL(@Param("sql") String sql, @Param("et")Map param);
 
     List<PIMWorkflowRef> selectByPimworkflowid(@Param("pimworkflowid") Serializable pimworkflowid) ;
-
-    List<PIMWorkflowRef> selectByWfworkflowid(@Param("wfworkflowid") Serializable wfworkflowid) ;
 
 }

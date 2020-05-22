@@ -31,6 +31,8 @@ public interface PIMTITLEMapper extends BaseMapper<PIMTITLE>{
     @Override
     int updateById(@Param(Constants.ENTITY) PIMTITLE entity);
     @Override
+    int update(@Param(Constants.ENTITY) PIMTITLE entity, @Param("ew") Wrapper<PIMTITLE> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

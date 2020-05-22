@@ -50,12 +50,11 @@ public class ATTENDENCEORMORGSECTORResource {
 
     @Autowired
     @Lazy
-    private ATTENDENCEORMORGSECTORMapping attendenceormorgsectorMapping;
+    public ATTENDENCEORMORGSECTORMapping attendenceormorgsectorMapping;
 
+    public ATTENDENCEORMORGSECTORDTO permissionDTO=new ATTENDENCEORMORGSECTORDTO();
 
-
-
-    @PreAuthorize("hasPermission(#attendenceormorgsector_id,'Get',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#attendenceormorgsector_id,'Get',{'Sql',this.attendenceormorgsectorMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"ATTENDENCEORMORGSECTOR" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/attendenceormorgsectors/{attendenceormorgsector_id}")
     public ResponseEntity<ATTENDENCEORMORGSECTORDTO> get(@PathVariable("attendenceormorgsector_id") String attendenceormorgsector_id) {
@@ -64,10 +63,7 @@ public class ATTENDENCEORMORGSECTORResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-
-
-
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.attendenceormorgsectorMapping,#attendenceormorgsectordto})")
     @ApiOperation(value = "Create", tags = {"ATTENDENCEORMORGSECTOR" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/attendenceormorgsectors")
     @Transactional
@@ -78,7 +74,7 @@ public class ATTENDENCEORMORGSECTORResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatch", tags = {"ATTENDENCEORMORGSECTOR" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/attendenceormorgsectors/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<ATTENDENCEORMORGSECTORDTO> attendenceormorgsectordtos) {
@@ -86,10 +82,7 @@ public class ATTENDENCEORMORGSECTORResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    @PreAuthorize("hasPermission(#attendenceormorgsector_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#attendenceormorgsector_id,'Update',{'Sql',this.attendenceormorgsectorMapping,#attendenceormorgsectordto})")
     @ApiOperation(value = "Update", tags = {"ATTENDENCEORMORGSECTOR" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/attendenceormorgsectors/{attendenceormorgsector_id}")
     @Transactional
@@ -101,7 +94,7 @@ public class ATTENDENCEORMORGSECTORResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#attendenceormorgsector_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"ATTENDENCEORMORGSECTOR" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/attendenceormorgsectors/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<ATTENDENCEORMORGSECTORDTO> attendenceormorgsectordtos) {
@@ -109,19 +102,14 @@ public class ATTENDENCEORMORGSECTORResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ATTENDENCEORMORGSECTOR-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"ATTENDENCEORMORGSECTOR" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/attendenceormorgsectors/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody ATTENDENCEORMORGSECTORDTO attendenceormorgsectordto) {
         return  ResponseEntity.status(HttpStatus.OK).body(attendenceormorgsectorService.checkKey(attendenceormorgsectorMapping.toDomain(attendenceormorgsectordto)));
     }
 
-
-
-
-    @PreAuthorize("hasPermission('Remove',{#attendenceormorgsector_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#attendenceormorgsector_id,'Remove',{'Sql',this.attendenceormorgsectorMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"ATTENDENCEORMORGSECTOR" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/attendenceormorgsectors/{attendenceormorgsector_id}")
     @Transactional
@@ -129,6 +117,7 @@ public class ATTENDENCEORMORGSECTORResource {
          return ResponseEntity.status(HttpStatus.OK).body(attendenceormorgsectorService.remove(attendenceormorgsector_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"ATTENDENCEORMORGSECTOR" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/attendenceormorgsectors/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -136,24 +125,21 @@ public class ATTENDENCEORMORGSECTORResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ATTENDENCEORMORGSECTOR-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"ATTENDENCEORMORGSECTOR" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/attendenceormorgsectors/getdraft")
     public ResponseEntity<ATTENDENCEORMORGSECTORDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(attendenceormorgsectorMapping.toDto(attendenceormorgsectorService.getDraft(new ATTENDENCEORMORGSECTOR())));
     }
 
-
-
-
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ATTENDENCEORMORGSECTOR-Save-all')")
     @ApiOperation(value = "Save", tags = {"ATTENDENCEORMORGSECTOR" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/attendenceormorgsectors/save")
     public ResponseEntity<Boolean> save(@RequestBody ATTENDENCEORMORGSECTORDTO attendenceormorgsectordto) {
         return ResponseEntity.status(HttpStatus.OK).body(attendenceormorgsectorService.save(attendenceormorgsectorMapping.toDomain(attendenceormorgsectordto)));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"ATTENDENCEORMORGSECTOR" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/attendenceormorgsectors/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<ATTENDENCEORMORGSECTORDTO> attendenceormorgsectordtos) {
@@ -161,7 +147,7 @@ public class ATTENDENCEORMORGSECTORResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ATTENDENCEORMORGSECTOR-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"ATTENDENCEORMORGSECTOR" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/attendenceormorgsectors/fetchdefault")
 	public ResponseEntity<List<ATTENDENCEORMORGSECTORDTO>> fetchDefault(ATTENDENCEORMORGSECTORSearchContext context) {
@@ -174,22 +160,12 @@ public class ATTENDENCEORMORGSECTORResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ATTENDENCEORMORGSECTOR-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"ATTENDENCEORMORGSECTOR" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/attendenceormorgsectors/searchdefault")
-	public ResponseEntity<Page<ATTENDENCEORMORGSECTORDTO>> searchDefault(ATTENDENCEORMORGSECTORSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/attendenceormorgsectors/searchdefault")
+	public ResponseEntity<Page<ATTENDENCEORMORGSECTORDTO>> searchDefault(@RequestBody ATTENDENCEORMORGSECTORSearchContext context) {
         Page<ATTENDENCEORMORGSECTOR> domains = attendenceormorgsectorService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(attendenceormorgsectorMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
-    /**
-     * 用户权限校验
-     * @return
-     */
-	public ATTENDENCEORMORGSECTOR getEntity(){
-        return new ATTENDENCEORMORGSECTOR();
-    }
-
 }

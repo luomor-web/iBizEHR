@@ -60,22 +60,6 @@ export default class MainModel {
           name: 'pimcontracttype',
           prop: 'pimcontracttypeid',
         },
-      {
-        name: 'n_pimcontracttypeid_like',
-        prop: 'n_pimcontracttypeid_like',
-        dataType: 'GUID',
-      },
-      {
-        name: 'n_pimcontracttypename_like',
-        prop: 'n_pimcontracttypename_like',
-        dataType: 'TEXT',
-      },
-      {
-        name: 'pimcontracttype',
-        prop: 'pimcontracttypeid',
-        dataType: 'FONTKEY',
-      },
-
         {
           name:'size',
           prop:'size'

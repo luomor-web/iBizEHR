@@ -140,8 +140,8 @@ export default {
         empty: '',
     },
     YesNo: {
-        '1': '是',
-        '0': '否',
+        1: '是',
+        0: '否',
         empty: '',
     },
     PIMCL_BMLX: {
@@ -201,8 +201,8 @@ export default {
         empty: '',
     },
     DASTATE: {
-        10: '有效',
-        20: '失效',
+        '10': '有效',
+        '20': '失效',
         empty: '',
     },
     PIMCL_HKLX: {

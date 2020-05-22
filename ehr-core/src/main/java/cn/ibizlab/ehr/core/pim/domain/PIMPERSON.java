@@ -305,13 +305,6 @@ public class PIMPERSON extends EntityMP implements Serializable {
     @JsonProperty("csd")
     private String csd;
     /**
-     * 挂职到期(月)颜色
-     */
-    @TableField(exist = false)
-    @JSONField(name = "gzdq_color")
-    @JsonProperty("gzdq_color")
-    private String gzdqColor;
-    /**
      * 家庭联系人电话
      */
     @TableField(value = "jtlxrdh")
@@ -423,13 +416,6 @@ public class PIMPERSON extends EntityMP implements Serializable {
     @JSONField(name = "zt")
     @JsonProperty("zt")
     private String zt;
-    /**
-     * 挂职到期(月)
-     */
-    @TableField(exist = false)
-    @JSONField(name = "gzdq")
-    @JsonProperty("gzdq")
-    private String gzdq;
     /**
      * 年龄（废除）
      */

@@ -28,6 +28,8 @@ public interface ORMXMRLCBMapper extends BaseMapper<ORMXMRLCB>{
     @Override
     int updateById(@Param(Constants.ENTITY) ORMXMRLCB entity);
     @Override
+    int update(@Param(Constants.ENTITY) ORMXMRLCB entity, @Param("ew") Wrapper<ORMXMRLCB> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

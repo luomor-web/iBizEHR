@@ -27,6 +27,8 @@ public interface PIMEXAMINATIONRESULTSMapper extends BaseMapper<PIMEXAMINATIONRE
     @Override
     int updateById(@Param(Constants.ENTITY) PIMEXAMINATIONRESULTS entity);
     @Override
+    int update(@Param(Constants.ENTITY) PIMEXAMINATIONRESULTS entity, @Param("ew") Wrapper<PIMEXAMINATIONRESULTS> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

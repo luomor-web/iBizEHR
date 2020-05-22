@@ -27,6 +27,8 @@ public interface ORMRelationMapper extends BaseMapper<ORMRelation>{
     @Override
     int updateById(@Param(Constants.ENTITY) ORMRelation entity);
     @Override
+    int update(@Param(Constants.ENTITY) ORMRelation entity, @Param("ew") Wrapper<ORMRelation> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

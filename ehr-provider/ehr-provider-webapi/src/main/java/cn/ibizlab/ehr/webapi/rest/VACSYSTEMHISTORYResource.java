@@ -50,12 +50,11 @@ public class VACSYSTEMHISTORYResource {
 
     @Autowired
     @Lazy
-    private VACSYSTEMHISTORYMapping vacsystemhistoryMapping;
+    public VACSYSTEMHISTORYMapping vacsystemhistoryMapping;
 
+    public VACSYSTEMHISTORYDTO permissionDTO=new VACSYSTEMHISTORYDTO();
 
-
-
-    @PreAuthorize("hasPermission(#vacsystemhistory_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#vacsystemhistory_id,'Update',{'Sql',this.vacsystemhistoryMapping,#vacsystemhistorydto})")
     @ApiOperation(value = "Update", tags = {"VACSYSTEMHISTORY" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/vacsystemhistories/{vacsystemhistory_id}")
     @Transactional
@@ -67,7 +66,7 @@ public class VACSYSTEMHISTORYResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#vacsystemhistory_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"VACSYSTEMHISTORY" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/vacsystemhistories/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<VACSYSTEMHISTORYDTO> vacsystemhistorydtos) {
@@ -75,10 +74,7 @@ public class VACSYSTEMHISTORYResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    @PreAuthorize("hasPermission('Remove',{#vacsystemhistory_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#vacsystemhistory_id,'Remove',{'Sql',this.vacsystemhistoryMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"VACSYSTEMHISTORY" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/vacsystemhistories/{vacsystemhistory_id}")
     @Transactional
@@ -86,6 +82,7 @@ public class VACSYSTEMHISTORYResource {
          return ResponseEntity.status(HttpStatus.OK).body(vacsystemhistoryService.remove(vacsystemhistory_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"VACSYSTEMHISTORY" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/vacsystemhistories/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -93,15 +90,14 @@ public class VACSYSTEMHISTORYResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACSYSTEMHISTORY-Save-all')")
     @ApiOperation(value = "Save", tags = {"VACSYSTEMHISTORY" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacsystemhistories/save")
     public ResponseEntity<Boolean> save(@RequestBody VACSYSTEMHISTORYDTO vacsystemhistorydto) {
         return ResponseEntity.status(HttpStatus.OK).body(vacsystemhistoryService.save(vacsystemhistoryMapping.toDomain(vacsystemhistorydto)));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"VACSYSTEMHISTORY" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacsystemhistories/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<VACSYSTEMHISTORYDTO> vacsystemhistorydtos) {
@@ -109,10 +105,7 @@ public class VACSYSTEMHISTORYResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    @PreAuthorize("hasPermission(#vacsystemhistory_id,'Get',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#vacsystemhistory_id,'Get',{'Sql',this.vacsystemhistoryMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"VACSYSTEMHISTORY" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/vacsystemhistories/{vacsystemhistory_id}")
     public ResponseEntity<VACSYSTEMHISTORYDTO> get(@PathVariable("vacsystemhistory_id") String vacsystemhistory_id) {
@@ -121,19 +114,14 @@ public class VACSYSTEMHISTORYResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-
-
-
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACSYSTEMHISTORY-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"VACSYSTEMHISTORY" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacsystemhistories/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody VACSYSTEMHISTORYDTO vacsystemhistorydto) {
         return  ResponseEntity.status(HttpStatus.OK).body(vacsystemhistoryService.checkKey(vacsystemhistoryMapping.toDomain(vacsystemhistorydto)));
     }
 
-
-
-
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.vacsystemhistoryMapping,#vacsystemhistorydto})")
     @ApiOperation(value = "Create", tags = {"VACSYSTEMHISTORY" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacsystemhistories")
     @Transactional
@@ -144,7 +132,7 @@ public class VACSYSTEMHISTORYResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatch", tags = {"VACSYSTEMHISTORY" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacsystemhistories/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<VACSYSTEMHISTORYDTO> vacsystemhistorydtos) {
@@ -152,16 +140,14 @@ public class VACSYSTEMHISTORYResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACSYSTEMHISTORY-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"VACSYSTEMHISTORY" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/vacsystemhistories/getdraft")
     public ResponseEntity<VACSYSTEMHISTORYDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(vacsystemhistoryMapping.toDto(vacsystemhistoryService.getDraft(new VACSYSTEMHISTORY())));
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACSYSTEMHISTORY-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"VACSYSTEMHISTORY" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/vacsystemhistories/fetchdefault")
 	public ResponseEntity<List<VACSYSTEMHISTORYDTO>> fetchDefault(VACSYSTEMHISTORYSearchContext context) {
@@ -174,22 +160,12 @@ public class VACSYSTEMHISTORYResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACSYSTEMHISTORY-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"VACSYSTEMHISTORY" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/vacsystemhistories/searchdefault")
-	public ResponseEntity<Page<VACSYSTEMHISTORYDTO>> searchDefault(VACSYSTEMHISTORYSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/vacsystemhistories/searchdefault")
+	public ResponseEntity<Page<VACSYSTEMHISTORYDTO>> searchDefault(@RequestBody VACSYSTEMHISTORYSearchContext context) {
         Page<VACSYSTEMHISTORY> domains = vacsystemhistoryService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(vacsystemhistoryMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
-    /**
-     * 用户权限校验
-     * @return
-     */
-	public VACSYSTEMHISTORY getEntity(){
-        return new VACSYSTEMHISTORY();
-    }
-
 }

@@ -27,6 +27,8 @@ public interface PARJXMTFKMapper extends BaseMapper<PARJXMTFK>{
     @Override
     int updateById(@Param(Constants.ENTITY) PARJXMTFK entity);
     @Override
+    int update(@Param(Constants.ENTITY) PARJXMTFK entity, @Param("ew") Wrapper<PARJXMTFK> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

@@ -27,6 +27,8 @@ public interface ARCHIVESMANAGEMapper extends BaseMapper<ARCHIVESMANAGE>{
     @Override
     int updateById(@Param(Constants.ENTITY) ARCHIVESMANAGE entity);
     @Override
+    int update(@Param(Constants.ENTITY) ARCHIVESMANAGE entity, @Param("ew") Wrapper<ARCHIVESMANAGE> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

@@ -27,6 +27,8 @@ public interface PCMMonthMapper extends BaseMapper<PCMMonth>{
     @Override
     int updateById(@Param(Constants.ENTITY) PCMMonth entity);
     @Override
+    int update(@Param(Constants.ENTITY) PCMMonth entity, @Param("ew") Wrapper<PCMMonth> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

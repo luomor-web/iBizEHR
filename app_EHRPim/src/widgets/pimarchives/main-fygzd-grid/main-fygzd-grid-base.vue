@@ -21,36 +21,29 @@
             <template v-if="!isSingleSelect">
                 <el-table-column align="center" type='selection' :width="checkboxColWidth"></el-table-column>
             </template>
-            <template v-if="getColumnState('dcda')">
-                <el-table-column show-overflow-tooltip :prop="'dcda'" :label="$t('entities.pimarchives.main_fygzd_grid.columns.dcda')" :width="100" :align="'center'" :sortable="'custom'">
-                    <template v-slot="{row,column}">
-                        <span>{{row.dcda}}</span>
-                    </template>
-                </el-table-column>
-            </template>
             <template v-if="getColumnState('dabh')">
-                <el-table-column show-overflow-tooltip :prop="'dabh'" :label="$t('entities.pimarchives.main_fygzd_grid.columns.dabh')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'dabh'" :label="$t('entities.pimarchives.main_fygzd_grid.columns.dabh')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.dabh}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('glzzdzs')">
-                <el-table-column show-overflow-tooltip :prop="'glzzdzs'" :label="$t('entities.pimarchives.main_fygzd_grid.columns.glzzdzs')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'glzzdzs'" :label="$t('entities.pimarchives.main_fygzd_grid.columns.glzzdzs')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.glzzdzs}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('dabgd')">
-                <el-table-column show-overflow-tooltip :prop="'dabgd'" :label="$t('entities.pimarchives.main_fygzd_grid.columns.dabgd')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'dabgd'" :label="$t('entities.pimarchives.main_fygzd_grid.columns.dabgd')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.dabgd}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('archivescentername')">
-                <el-table-column show-overflow-tooltip :prop="'archivescentername'" :label="$t('entities.pimarchives.main_fygzd_grid.columns.archivescentername')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'archivescentername'" :label="$t('entities.pimarchives.main_fygzd_grid.columns.archivescentername')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <app-column-link deKeyField='archivescenter' :context="JSON.parse(JSON.stringify(context))" :viewparams="JSON.parse(JSON.stringify(viewparams))" :data="row" :linkview="{viewname: 'archivescenterredirect-view', height: 0,width: 0,title: $t('entities.archivescenter.views.redirectview.title'),placement: '', isRedirectView: true,deResParameters: [
             ]
@@ -64,23 +57,23 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('dastate')">
-                <el-table-column show-overflow-tooltip :prop="'dastate'" :label="$t('entities.pimarchives.main_fygzd_grid.columns.dastate')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'dastate'" :label="$t('entities.pimarchives.main_fygzd_grid.columns.dastate')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
-            <codelist :value="row.dastate" tag='DASTATE' codelistType='STATIC' renderMode="NUM" textSeparator="、" ></codelist>
+            <codelist :value="row.dastate" tag='DASTATE' codelistType='STATIC' renderMode="STR" valueSeparator=";" textSeparator="、" ></codelist>
                         </template>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('ygbh')">
-                <el-table-column show-overflow-tooltip :prop="'ygbh'" :label="$t('entities.pimarchives.main_fygzd_grid.columns.ygbh')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'ygbh'" :label="$t('entities.pimarchives.main_fygzd_grid.columns.ygbh')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.ygbh}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('pimpersonname')">
-                <el-table-column show-overflow-tooltip :prop="'pimpersonname'" :label="$t('entities.pimarchives.main_fygzd_grid.columns.pimpersonname')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'pimpersonname'" :label="$t('entities.pimarchives.main_fygzd_grid.columns.pimpersonname')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <app-column-link deKeyField='pimperson' :context="JSON.parse(JSON.stringify(context))" :viewparams="JSON.parse(JSON.stringify(viewparams))" :data="row" :linkview="{viewname: 'pimpersonedit-view2', height: 0,width: 0,title: $t('entities.pimperson.views.editview2.title'),placement: 'DRAWER_TOP', isRedirectView: false,deResParameters: [
             ]
@@ -94,14 +87,14 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('sszzdzs')">
-                <el-table-column show-overflow-tooltip :prop="'sszzdzs'" :label="$t('entities.pimarchives.main_fygzd_grid.columns.sszzdzs')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'sszzdzs'" :label="$t('entities.pimarchives.main_fygzd_grid.columns.sszzdzs')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.sszzdzs}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('ygzt')">
-                <el-table-column show-overflow-tooltip :prop="'ygzt'" :label="$t('entities.pimarchives.main_fygzd_grid.columns.ygzt')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'ygzt'" :label="$t('entities.pimarchives.main_fygzd_grid.columns.ygzt')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
             <codelist :value="row.ygzt" tag='PIMCL_YGZT' codelistType='DYNAMIC' ></codelist>
@@ -110,18 +103,30 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('duration')">
-                <el-table-column show-overflow-tooltip :prop="'duration'" :label="$t('entities.pimarchives.main_fygzd_grid.columns.duration')" :width="200" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'duration'" :label="$t('entities.pimarchives.main_fygzd_grid.columns.duration')" :width="200"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.duration}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('zt')">
-                <el-table-column show-overflow-tooltip :prop="'zt'" :label="$t('entities.pimarchives.main_fygzd_grid.columns.zt')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'zt'" :label="$t('entities.pimarchives.main_fygzd_grid.columns.zt')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
             <codelist :value="row.zt" tag='PIMCL_DAGHZT' codelistType='STATIC' renderMode="STR" valueSeparator=";" textSeparator="、" ></codelist>
                         </template>
+                    </template>
+                </el-table-column>
+            </template>
+            <template v-if="getColumnState('uagridcolumn1')">
+                <el-table-column :column-key="'uagridcolumn1'" :label="$t('entities.pimarchives.main_fygzd_grid.columns.uagridcolumn1')" :width="100"  :align="'right'">
+                    <template slot-scope="scope">
+                        <span>
+                            
+                            <a @click="uiAction(scope.row, 'FILEOUT', $event)">
+                              {{$t('entities.pimarchives.main_fygzd_grid.uiactions.fileout')}}
+                            </a>
+                        </span>
                     </template>
                 </el-table-column>
             </template>
@@ -175,6 +180,7 @@ import { UIActionTool,Util } from '@/utils';
 import PIMARCHIVESService from '@/service/pimarchives/pimarchives-service';
 import Main_FYGZDService from './main-fygzd-grid-service';
 
+import PIMARCHIVESUIService from '@/uiservice/pimarchives/pimarchives-ui-service';
 import CodeListService from "@service/app/codelist-service";
 
 
@@ -262,6 +268,35 @@ export default class Main_FYGZDBase extends Vue implements ControlInterface {
      */
     public appEntityService: PIMARCHIVESService = new PIMARCHIVESService({ $store: this.$store });
     
+
+    /**
+     * 逻辑事件
+     *
+     * @param {*} [params={}]
+     * @param {*} [tag]
+     * @param {*} [$event]
+     * @memberof 
+     */
+    public grid_uagridcolumn1_ud164ec4_click(params: any = {}, tag?: any, $event?: any) {
+        // 取数
+        let datas: any[] = [];
+        let xData: any = null;
+        // _this 指向容器对象
+        const _this: any = this;
+        let paramJO:any = {};
+        
+        let contextJO:any = {};
+        xData = this;
+        if (_this.getDatas && _this.getDatas instanceof Function) {
+            datas = [..._this.getDatas()];
+        }
+        if(params){
+          datas = [params];
+        }
+        // 界面行为
+        const curUIService:PIMARCHIVESUIService  = new PIMARCHIVESUIService();
+        curUIService.PIMARCHIVES_FILEOUT(datas,contextJO, paramJO,  $event, xData,this,"PIMARCHIVES");
+    }
 
 
     /**
@@ -583,7 +618,7 @@ export default class Main_FYGZDBase extends Vue implements ControlInterface {
     * @type {number}
     * @memberof AppIndex
     */
-    protected checkboxColWidth: number = 34;
+    public checkboxColWidth: number = 34;
 
     /**
      * 是否允许拖动列宽
@@ -600,13 +635,6 @@ export default class Main_FYGZDBase extends Vue implements ControlInterface {
      * @memberof Main_FYGZD
      */
     public allColumns: any[] = [
-        {
-            name: 'dcda',
-            label: '调出档案',
-            langtag: 'entities.pimarchives.main_fygzd_grid.columns.dcda',
-            show: true,
-            util: 'PX'
-        },
         {
             name: 'dabh',
             label: '档案编号',
@@ -683,6 +711,13 @@ export default class Main_FYGZDBase extends Vue implements ControlInterface {
             langtag: 'entities.pimarchives.main_fygzd_grid.columns.zt',
             show: true,
             util: 'px'
+        },
+        {
+            name: 'uagridcolumn1',
+            label: '操作列',
+            langtag: 'entities.pimarchives.main_fygzd_grid.columns.uagridcolumn1',
+            show: true,
+            util: 'PX'
         },
     ]
 
@@ -1006,9 +1041,9 @@ export default class Main_FYGZDBase extends Vue implements ControlInterface {
             name: 'dastate',
             srfkey: 'DASTATE',
             codelistType : 'STATIC',
-            renderMode: 'number',
             textSeparator: '、',
-            valueSeparator: ',',
+            renderMode: 'string',
+            valueSeparator: ";",
           },
           {
             name: 'ygzt',
@@ -1369,7 +1404,10 @@ export default class Main_FYGZDBase extends Vue implements ControlInterface {
      * @memberof Main_FYGZD
      */
 	public uiAction(row: any, tag: any, $event: any) {
-        this.rowClick(row, true);
+        // this.rowClick(row, true);
+        if(Object.is('FILEOUT', tag)) {
+            this.grid_uagridcolumn1_ud164ec4_click(row, tag, $event);
+        }
     }
 
     /**

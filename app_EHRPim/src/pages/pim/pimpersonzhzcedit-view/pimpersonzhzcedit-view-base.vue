@@ -1,15 +1,10 @@
 <template>
-  <app-layout viewName="pimpersonzhzceditview" viewTitle="证书信息编辑视图" :isShowCaptionBar="false" :className="{ 'view-container': true, 'default-mode-view': true, 'deeditview': true, 'pimpersonzhzcedit-view': true }" layoutMode="VIEW" :isShowUserInfo="isDefaultView()" :openMode="openMode" @close-view="closeView($event)">
+  <app-layout viewName="pimpersonzhzceditview" viewTitle="证书信息编辑视图" :isShowCaptionBar="false" :isShowToolbar="false" :className="{ 'view-container': true, 'default-mode-view': true, 'deeditview': true, 'pimpersonzhzcedit-view': true }" layoutMode="VIEW" :isShowUserInfo="isDefaultView()" :openMode="openMode" @close-view="closeView($event)">
     <template slot="headerLeft">
       <div class="view-header-left">
 
         <div class="view-caption" v-if="isDefaultView()">{{$t(model.srfCaption)}}</div>
         <modal-breadcrumb v-if="isModalView()"/>
-      </div>
-    </template>
-    <template slot="headerRight">
-      <div class="view-header-right">
-        <app-header-menus :toolbarModel="toolBarModels" @menu-click="toolbar_click($event)" mode="view" :openMode="openMode"/>
       </div>
     </template>
     <template slot="content">
@@ -71,6 +66,15 @@ export default class PIMPERSONZHZCEditViewBase extends EditViewBase {
      */
     public appEntityService: PIMPERSONService = new PIMPERSONService;
 
+
+    /**
+     * 计数器服务对象集合
+     *
+     * @type {Array<*>}
+     * @memberof PIMPERSONZHZCEditViewBase
+     */    
+    public counterServiceArray:Array<any> = [];
+    
     /**
      * 数据变化
      *
@@ -106,7 +110,7 @@ export default class PIMPERSONZHZCEditViewBase extends EditViewBase {
 	 * @type {*}
 	 * @memberof PIMPERSONZHZCEditViewBase
 	 */
-    protected customViewNavContexts:any ={
+    public customViewNavContexts:any ={
     };
 
 	/**
@@ -115,7 +119,7 @@ export default class PIMPERSONZHZCEditViewBase extends EditViewBase {
 	 * @type {*}
 	 * @memberof PIMPERSONZHZCEditViewBase
 	 */
-    protected customViewParams:any ={
+    public customViewParams:any ={
     };
 
     /**
@@ -138,28 +142,17 @@ export default class PIMPERSONZHZCEditViewBase extends EditViewBase {
      * @memberof PIMPERSONZHZCEditViewBase
      */
     public containerModel: any = {
-        view_toolbar: { name: 'toolbar', type: 'TOOLBAR' },
         view_form: { name: 'form', type: 'FORM' },
     };
 
     /**
      * 视图状态订阅对象
      *
-     * @private
+     * @public
      * @type {Subject<{action: string, data: any}>}
      * @memberof PIMPERSONZHZCEditViewBase
      */
     public viewState: Subject<ViewState> = new Subject();
-
-    /**
-     * 工具栏模型
-     *
-     * @type {*}
-     * @memberof PIMPERSONZHZCEditView
-     */
-    public toolBarModels: any = {
-    };
-
 
 
 

@@ -9,7 +9,7 @@
     </template>
     <template slot="headerRight">
       <div class="view-header-right">
-        <app-header-menus :toolbarModel="toolBarModels" @menu-click="toolbar_click($event)" mode="view" :openMode="openMode" :isEnableQuickSearch="true" v-model="query" @search="onSearch($event)"/>
+        <app-header-menus :toolbarModel="toolBarModels" @menu-click="toolbar_click($event)" mode="view" :openMode="openMode" :isEnableQuickSearch="true" searchPlaceholder="岗位类型，执业资格名称" v-model="query" @search="onSearch($event)"/>
       </div>
     </template>
     <template slot="content">
@@ -36,7 +36,7 @@
     :context="context" 
     :isSingleSelect="isSingleSelect"
     :showBusyIndicator="true"
-    :isOpenEdit="false"
+    :isOpenEdit="true"
     :gridRowActiveMode="gridRowActiveMode"
     @save="onSave"
     updateAction="Update"
@@ -95,6 +95,15 @@ export default class PIMQUALMAJORGridViewBase extends GridViewBase {
      */
     public appEntityService: PIMQUALMAJORService = new PIMQUALMAJORService;
 
+
+    /**
+     * 计数器服务对象集合
+     *
+     * @type {Array<*>}
+     * @memberof PIMQUALMAJORGridViewBase
+     */    
+    public counterServiceArray:Array<any> = [];
+    
     /**
      * 数据变化
      *
@@ -130,7 +139,7 @@ export default class PIMQUALMAJORGridViewBase extends GridViewBase {
 	 * @type {*}
 	 * @memberof PIMQUALMAJORGridViewBase
 	 */
-    protected customViewNavContexts:any ={
+    public customViewNavContexts:any ={
     };
 
 	/**
@@ -139,7 +148,7 @@ export default class PIMQUALMAJORGridViewBase extends GridViewBase {
 	 * @type {*}
 	 * @memberof PIMQUALMAJORGridViewBase
 	 */
-    protected customViewParams:any ={
+    public customViewParams:any ={
     };
 
     /**
@@ -162,7 +171,6 @@ export default class PIMQUALMAJORGridViewBase extends GridViewBase {
      * @memberof PIMQUALMAJORGridViewBase
      */
     public containerModel: any = {
-        view_toolbar2: { name: 'toolbar2', type: 'TOOLBAR' },
         view_toolbar: { name: 'toolbar', type: 'TOOLBAR' },
         view_grid: { name: 'grid', type: 'GRID' },
         view_searchform: { name: 'searchform', type: 'SEARCHFORM' },
@@ -171,12 +179,11 @@ export default class PIMQUALMAJORGridViewBase extends GridViewBase {
     /**
      * 视图状态订阅对象
      *
-     * @private
+     * @public
      * @type {Subject<{action: string, data: any}>}
      * @memberof PIMQUALMAJORGridViewBase
      */
     public viewState: Subject<ViewState> = new Subject();
-
     /**
      * 工具栏模型
      *
@@ -184,15 +191,15 @@ export default class PIMQUALMAJORGridViewBase extends GridViewBase {
      * @memberof PIMQUALMAJORGridView
      */
     public toolBarModels: any = {
-        tbitem3: { name: 'tbitem3', caption: '新建','isShowCaption':true,'isShowIcon':true, tooltip: '新建', iconcls: 'fa fa-file-text-o', icon: '', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: 'SRFUR__JGLYYPZSZYJTJ', uiaction: { tag: 'New', target: '' }, class: '' },
+        deuiaction1: { name: 'deuiaction1', caption: '新建','isShowCaption':true,'isShowIcon':true, tooltip: '新建', iconcls: 'fa fa-plus', icon: '', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: '', uiaction: { tag: 'NewRow', target: '' }, class: '' },
 
-        tbitem8: { name: 'tbitem8', caption: '删除','isShowCaption':true,'isShowIcon':true, tooltip: '删除', iconcls: 'fa fa-remove', icon: '', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: 'SRFUR__JGLYGXML', uiaction: { tag: 'Remove', target: 'MULTIKEY' }, class: '' },
+        deuiaction2: { name: 'deuiaction2', caption: '保存','isShowCaption':true,'isShowIcon':true, tooltip: '保存', iconcls: 'fa fa-save', icon: '', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: '', uiaction: { tag: 'SaveRow', target: '' }, class: '' },
 
-        deuiaction1: { name: 'deuiaction1', caption: '开启行编辑','isShowCaption':true,'isShowIcon':true, tooltip: '开启行编辑', iconcls: 'fa fa-edit', icon: '', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: 'SRFUR__JGLYZW', uiaction: { tag: 'OpenRowEdit', target: '' }, class: '' },
+        deuiaction3: { name: 'deuiaction3', caption: '删除','isShowCaption':true,'isShowIcon':true, tooltip: '删除', iconcls: 'fa fa-remove', icon: '', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: 'SRFUR__JGLYGXML', uiaction: { tag: 'Remove', target: 'MULTIKEY' }, class: '' },
 
-        tbitem13: { name: 'tbitem13', caption: '导出','isShowCaption':true,'isShowIcon':true, tooltip: '导出', iconcls: 'fa fa-file-excel-o', icon: '', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: '', uiaction: { tag: 'ExportExcel', target: '' }, MaxRowCount: 5000, class: '' },
+        deuiaction4: { name: 'deuiaction4', caption: '导入','isShowCaption':true,'isShowIcon':true, tooltip: '导入', iconcls: 'fa fa-upload', icon: '', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: 'SRFUR__JGLYYPZSZYJTJ', uiaction: { tag: 'Import', target: '' }, class: '' },
 
-        deuiaction2: { name: 'deuiaction2', caption: '过滤','isShowCaption':true,'isShowIcon':true, tooltip: '过滤', iconcls: 'fa fa-filter', icon: '', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: 'SRFUR__JGLYKQLX', uiaction: { tag: 'ToggleFilter', target: '' }, class: '' },
+        deuiaction5: { name: 'deuiaction5', caption: '导出','isShowCaption':true,'isShowIcon':true, tooltip: '导出', iconcls: 'fa fa-file-excel-o', icon: '', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: '', uiaction: { tag: 'ExportExcel', target: '' }, MaxRowCount: 5000, class: '' },
 
     };
 
@@ -235,35 +242,6 @@ export default class PIMQUALMAJORGridViewBase extends GridViewBase {
 
 
     /**
-     * toolbar2 部件 click 事件
-     *
-     * @param {*} [args={}]
-     * @param {*} $event
-     * @memberof PIMQUALMAJORGridViewBase
-     */
-    public toolbar2_click($event: any, $event2?: any) {
-        if (Object.is($event.tag, 'deuiaction1')) {
-            this.toolbar2_deuiaction1_click($event, '', $event2);
-        }
-        if (Object.is($event.tag, 'deuiaction2')) {
-            this.toolbar2_deuiaction2_click($event, '', $event2);
-        }
-        if (Object.is($event.tag, 'deuiaction3')) {
-            this.toolbar2_deuiaction3_click($event, '', $event2);
-        }
-        if (Object.is($event.tag, 'deuiaction6')) {
-            this.toolbar2_deuiaction6_click($event, '', $event2);
-        }
-        if (Object.is($event.tag, 'deuiaction4')) {
-            this.toolbar2_deuiaction4_click($event, '', $event2);
-        }
-        if (Object.is($event.tag, 'deuiaction5')) {
-            this.toolbar2_deuiaction5_click($event, '', $event2);
-        }
-    }
-
-
-    /**
      * toolbar 部件 click 事件
      *
      * @param {*} [args={}]
@@ -271,20 +249,20 @@ export default class PIMQUALMAJORGridViewBase extends GridViewBase {
      * @memberof PIMQUALMAJORGridViewBase
      */
     public toolbar_click($event: any, $event2?: any) {
-        if (Object.is($event.tag, 'tbitem3')) {
-            this.toolbar_tbitem3_click($event, '', $event2);
-        }
-        if (Object.is($event.tag, 'tbitem8')) {
-            this.toolbar_tbitem8_click($event, '', $event2);
-        }
         if (Object.is($event.tag, 'deuiaction1')) {
-            this.toolbar_deuiaction1_click($event, '', $event2);
-        }
-        if (Object.is($event.tag, 'tbitem13')) {
-            this.toolbar_tbitem13_click($event, '', $event2);
+            this.toolbar_deuiaction1_click(null, '', $event2);
         }
         if (Object.is($event.tag, 'deuiaction2')) {
-            this.toolbar_deuiaction2_click($event, '', $event2);
+            this.toolbar_deuiaction2_click(null, '', $event2);
+        }
+        if (Object.is($event.tag, 'deuiaction3')) {
+            this.toolbar_deuiaction3_click(null, '', $event2);
+        }
+        if (Object.is($event.tag, 'deuiaction4')) {
+            this.toolbar_deuiaction4_click(null, '', $event2);
+        }
+        if (Object.is($event.tag, 'deuiaction5')) {
+            this.toolbar_deuiaction5_click(null, '', $event2);
         }
     }
 
@@ -394,214 +372,6 @@ export default class PIMQUALMAJORGridViewBase extends GridViewBase {
      * @param {*} [$event]
      * @memberof 
      */
-    public toolbar2_deuiaction1_click(params: any = {}, tag?: any, $event?: any) {
-        // 参数
-        // 取数
-        let datas: any[] = [];
-        let xData: any = null;
-        // _this 指向容器对象
-        const _this: any = this;
-        let paramJO:any = {};
-        
-        let contextJO:any = {};
-        xData = this.$refs.grid;
-        if (xData.getDatas && xData.getDatas instanceof Function) {
-            datas = [...xData.getDatas()];
-        }
-        // 界面行为
-        this.New(datas, contextJO,paramJO,  $event, xData,this,"PIMQUALMAJOR");
-    }
-
-    /**
-     * 逻辑事件
-     *
-     * @param {*} [params={}]
-     * @param {*} [tag]
-     * @param {*} [$event]
-     * @memberof 
-     */
-    public toolbar2_deuiaction2_click(params: any = {}, tag?: any, $event?: any) {
-        // 参数
-        // 取数
-        let datas: any[] = [];
-        let xData: any = null;
-        // _this 指向容器对象
-        const _this: any = this;
-        let paramJO:any = {};
-        
-        let contextJO:any = {};
-        xData = this.$refs.grid;
-        if (xData.getDatas && xData.getDatas instanceof Function) {
-            datas = [...xData.getDatas()];
-        }
-        // 界面行为
-        this.SaveAllEditRow(datas, contextJO,paramJO,  $event, xData,this,"PIMQUALMAJOR");
-    }
-
-    /**
-     * 逻辑事件
-     *
-     * @param {*} [params={}]
-     * @param {*} [tag]
-     * @param {*} [$event]
-     * @memberof 
-     */
-    public toolbar2_deuiaction3_click(params: any = {}, tag?: any, $event?: any) {
-        // 参数
-        // 取数
-        let datas: any[] = [];
-        let xData: any = null;
-        // _this 指向容器对象
-        const _this: any = this;
-        let paramJO:any = {};
-        
-        let contextJO:any = {};
-        xData = this.$refs.grid;
-        if (xData.getDatas && xData.getDatas instanceof Function) {
-            datas = [...xData.getDatas()];
-        }
-        // 界面行为
-        this.Remove(datas, contextJO,paramJO,  $event, xData,this,"PIMQUALMAJOR");
-    }
-
-    /**
-     * 逻辑事件
-     *
-     * @param {*} [params={}]
-     * @param {*} [tag]
-     * @param {*} [$event]
-     * @memberof 
-     */
-    public toolbar2_deuiaction6_click(params: any = {}, tag?: any, $event?: any) {
-        // 参数
-        // 取数
-        let datas: any[] = [];
-        let xData: any = null;
-        // _this 指向容器对象
-        const _this: any = this;
-        let paramJO:any = {};
-        
-        let contextJO:any = {};
-        xData = this.$refs.grid;
-        if (xData.getDatas && xData.getDatas instanceof Function) {
-            datas = [...xData.getDatas()];
-        }
-        // 界面行为
-        this.CloseRowEdit(datas, contextJO,paramJO,  $event, xData,this,"PIMQUALMAJOR");
-    }
-
-    /**
-     * 逻辑事件
-     *
-     * @param {*} [params={}]
-     * @param {*} [tag]
-     * @param {*} [$event]
-     * @memberof 
-     */
-    public toolbar2_deuiaction4_click(params: any = {}, tag?: any, $event?: any) {
-        // 参数
-        // 取数
-        let datas: any[] = [];
-        let xData: any = null;
-        // _this 指向容器对象
-        const _this: any = this;
-        let paramJO:any = {};
-        
-        let contextJO:any = {};
-        xData = this.$refs.grid;
-        if (xData.getDatas && xData.getDatas instanceof Function) {
-            datas = [...xData.getDatas()];
-        }
-        // 界面行为
-        this.Import(datas, contextJO,paramJO,  $event, xData,this,"PIMQUALMAJOR");
-    }
-
-    /**
-     * 逻辑事件
-     *
-     * @param {*} [params={}]
-     * @param {*} [tag]
-     * @param {*} [$event]
-     * @memberof 
-     */
-    public toolbar2_deuiaction5_click(params: any = {}, tag?: any, $event?: any) {
-        // 参数
-        // 取数
-        let datas: any[] = [];
-        let xData: any = null;
-        // _this 指向容器对象
-        const _this: any = this;
-        let paramJO:any = {};
-        
-        let contextJO:any = {};
-        xData = this.$refs.grid;
-        if (xData.getDatas && xData.getDatas instanceof Function) {
-            datas = [...xData.getDatas()];
-        }
-        // 界面行为
-        this.ExportExcel(datas, contextJO,paramJO,  $event, xData,this,"PIMQUALMAJOR");
-    }
-
-    /**
-     * 逻辑事件
-     *
-     * @param {*} [params={}]
-     * @param {*} [tag]
-     * @param {*} [$event]
-     * @memberof 
-     */
-    public toolbar_tbitem3_click(params: any = {}, tag?: any, $event?: any) {
-        // 参数
-        // 取数
-        let datas: any[] = [];
-        let xData: any = null;
-        // _this 指向容器对象
-        const _this: any = this;
-        let paramJO:any = {};
-        
-        let contextJO:any = {};
-        xData = this.$refs.grid;
-        if (xData.getDatas && xData.getDatas instanceof Function) {
-            datas = [...xData.getDatas()];
-        }
-        // 界面行为
-        this.New(datas, contextJO,paramJO,  $event, xData,this,"PIMQUALMAJOR");
-    }
-
-    /**
-     * 逻辑事件
-     *
-     * @param {*} [params={}]
-     * @param {*} [tag]
-     * @param {*} [$event]
-     * @memberof 
-     */
-    public toolbar_tbitem8_click(params: any = {}, tag?: any, $event?: any) {
-        // 参数
-        // 取数
-        let datas: any[] = [];
-        let xData: any = null;
-        // _this 指向容器对象
-        const _this: any = this;
-        let paramJO:any = {};
-        
-        let contextJO:any = {};
-        xData = this.$refs.grid;
-        if (xData.getDatas && xData.getDatas instanceof Function) {
-            datas = [...xData.getDatas()];
-        }
-        // 界面行为
-        this.Remove(datas, contextJO,paramJO,  $event, xData,this,"PIMQUALMAJOR");
-    }
-
-    /**
-     * 逻辑事件
-     *
-     * @param {*} [params={}]
-     * @param {*} [tag]
-     * @param {*} [$event]
-     * @memberof 
-     */
     public toolbar_deuiaction1_click(params: any = {}, tag?: any, $event?: any) {
         // 参数
         // 取数
@@ -616,34 +386,11 @@ export default class PIMQUALMAJORGridViewBase extends GridViewBase {
         if (xData.getDatas && xData.getDatas instanceof Function) {
             datas = [...xData.getDatas()];
         }
-        // 界面行为
-        this.OpenRowEdit(datas, contextJO,paramJO,  $event, xData,this,"PIMQUALMAJOR");
-    }
-
-    /**
-     * 逻辑事件
-     *
-     * @param {*} [params={}]
-     * @param {*} [tag]
-     * @param {*} [$event]
-     * @memberof 
-     */
-    public toolbar_tbitem13_click(params: any = {}, tag?: any, $event?: any) {
-        // 参数
-        // 取数
-        let datas: any[] = [];
-        let xData: any = null;
-        // _this 指向容器对象
-        const _this: any = this;
-        let paramJO:any = {};
-        
-        let contextJO:any = {};
-        xData = this.$refs.grid;
-        if (xData.getDatas && xData.getDatas instanceof Function) {
-            datas = [...xData.getDatas()];
+        if(params){
+          datas = [params];
         }
         // 界面行为
-        this.ExportExcel(datas, contextJO,paramJO,  $event, xData,this,"PIMQUALMAJOR");
+        this.NewRow(datas, contextJO,paramJO,  $event, xData,this,"PIMQUALMAJOR");
     }
 
     /**
@@ -668,8 +415,98 @@ export default class PIMQUALMAJORGridViewBase extends GridViewBase {
         if (xData.getDatas && xData.getDatas instanceof Function) {
             datas = [...xData.getDatas()];
         }
+        if(params){
+          datas = [params];
+        }
         // 界面行为
-        this.ToggleFilter(datas, contextJO,paramJO,  $event, xData,this,"PIMQUALMAJOR");
+        this.SaveRow(datas, contextJO,paramJO,  $event, xData,this,"PIMQUALMAJOR");
+    }
+
+    /**
+     * 逻辑事件
+     *
+     * @param {*} [params={}]
+     * @param {*} [tag]
+     * @param {*} [$event]
+     * @memberof 
+     */
+    public toolbar_deuiaction3_click(params: any = {}, tag?: any, $event?: any) {
+        // 参数
+        // 取数
+        let datas: any[] = [];
+        let xData: any = null;
+        // _this 指向容器对象
+        const _this: any = this;
+        let paramJO:any = {};
+        
+        let contextJO:any = {};
+        xData = this.$refs.grid;
+        if (xData.getDatas && xData.getDatas instanceof Function) {
+            datas = [...xData.getDatas()];
+        }
+        if(params){
+          datas = [params];
+        }
+        // 界面行为
+        this.Remove(datas, contextJO,paramJO,  $event, xData,this,"PIMQUALMAJOR");
+    }
+
+    /**
+     * 逻辑事件
+     *
+     * @param {*} [params={}]
+     * @param {*} [tag]
+     * @param {*} [$event]
+     * @memberof 
+     */
+    public toolbar_deuiaction4_click(params: any = {}, tag?: any, $event?: any) {
+        // 参数
+        // 取数
+        let datas: any[] = [];
+        let xData: any = null;
+        // _this 指向容器对象
+        const _this: any = this;
+        let paramJO:any = {};
+        
+        let contextJO:any = {};
+        xData = this.$refs.grid;
+        if (xData.getDatas && xData.getDatas instanceof Function) {
+            datas = [...xData.getDatas()];
+        }
+        if(params){
+          datas = [params];
+        }
+        // 界面行为
+        this.Import(datas, contextJO,paramJO,  $event, xData,this,"PIMQUALMAJOR");
+    }
+
+    /**
+     * 逻辑事件
+     *
+     * @param {*} [params={}]
+     * @param {*} [tag]
+     * @param {*} [$event]
+     * @memberof 
+     */
+    public toolbar_deuiaction5_click(params: any = {}, tag?: any, $event?: any) {
+        // 参数
+        // 取数
+        let datas: any[] = [];
+        let xData: any = null;
+        // _this 指向容器对象
+        const _this: any = this;
+        let paramJO:any = {};
+        
+        let contextJO:any = {};
+        xData = this.$refs.grid;
+        if (xData.getDatas && xData.getDatas instanceof Function) {
+            datas = [...xData.getDatas()];
+        }
+        if(params){
+          datas = [params];
+        }
+        // 界面行为
+        this.ExportExcel(datas, contextJO,paramJO,  $event, xData,this,"PIMQUALMAJOR");
     }
 
     /**
@@ -684,6 +521,9 @@ export default class PIMQUALMAJORGridViewBase extends GridViewBase {
      */
     public newdata(args: any[],fullargs?:any[], params?: any, $event?: any, xData?: any) {
         const data: any = {};
+        if(args[0].srfsourcekey){
+            data.srfsourcekey = args[0].srfsourcekey;
+        }
         let curViewParam = JSON.parse(JSON.stringify(this.context));
         if(args.length >0){
             Object.assign(curViewParam,args[0]);
@@ -735,7 +575,7 @@ export default class PIMQUALMAJORGridViewBase extends GridViewBase {
 
 
     /**
-     * 新建
+     * 新建行
      *
      * @param {any[]} args 当前数据
      * @param {any} contextJO 行为附加上下文
@@ -745,17 +585,19 @@ export default class PIMQUALMAJORGridViewBase extends GridViewBase {
      * @param {*} [actionContext]  执行行为上下文
      * @memberof PIMQUALMAJORGridViewBase
      */
-    public New(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
-         const _this: any = this;
-        if (_this.newdata && _this.newdata instanceof Function) {
-            const data: any = {};
-            _this.newdata([{ ...data }],[{ ...data }], params, $event, xData);
-        } else {
-            _this.$Notice.error({ title: '错误', desc: 'newdata 视图处理逻辑不存在，请添加!' });
+    public NewRow(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
+        const _this: any = this;
+        const data: any = {};
+        if (_this.newRow && _this.newRow instanceof Function) {
+            _this.newRow([{ ...data }], params, $event, xData);
+        } else if(xData.newRow && xData.newRow instanceof Function) {
+            xData.newRow([{ ...data }], params, $event, xData);
+        }else{
+            _this.$Notice.error({ title: '错误', desc: 'newRow 视图处理逻辑不存在，请添加!' });
         }
     }
     /**
-     * 保存所有编辑行
+     * 保存行
      *
      * @param {any[]} args 当前数据
      * @param {any} contextJO 行为附加上下文
@@ -765,8 +607,14 @@ export default class PIMQUALMAJORGridViewBase extends GridViewBase {
      * @param {*} [actionContext]  执行行为上下文
      * @memberof PIMQUALMAJORGridViewBase
      */
-    protected SaveAllEditRow(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
-        
+    public SaveRow(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
+        // 界面行为容器对象 _this
+        const _this: any = this;
+        if (xData && xData.save instanceof Function) {
+            xData.save();
+        } else if (_this.save && _this.save instanceof Function) {
+            _this.save();
+        }
     }
     /**
      * 删除
@@ -787,20 +635,6 @@ export default class PIMQUALMAJORGridViewBase extends GridViewBase {
         xData.remove(args);
     }
 
-    /**
-     * 关闭行编辑
-     *
-     * @param {any[]} args 当前数据
-     * @param {any} contextJO 行为附加上下文
-     * @param {*} [params] 附加参数
-     * @param {*} [$event] 事件源
-     * @param {*} [xData]  执行行为所需当前部件
-     * @param {*} [actionContext]  执行行为上下文
-     * @memberof PIMQUALMAJORGridViewBase
-     */
-    protected CloseRowEdit(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
-        
-    }
     /**
      * 数据导入
      *
@@ -836,37 +670,6 @@ export default class PIMQUALMAJORGridViewBase extends GridViewBase {
             return ;
         }
         xData.exportExcel($event.exportparms);
-    }
-    /**
-     * 开启行编辑
-     *
-     * @param {any[]} args 当前数据
-     * @param {any} contextJO 行为附加上下文
-     * @param {*} [params] 附加参数
-     * @param {*} [$event] 事件源
-     * @param {*} [xData]  执行行为所需当前部件
-     * @param {*} [actionContext]  执行行为上下文
-     * @memberof PIMQUALMAJORGridViewBase
-     */
-    protected OpenRowEdit(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
-        
-    }
-    /**
-     * 过滤
-     *
-     * @param {any[]} args 当前数据
-     * @param {any} contextJO 行为附加上下文
-     * @param {*} [params] 附加参数
-     * @param {*} [$event] 事件源
-     * @param {*} [xData]  执行行为所需当前部件
-     * @param {*} [actionContext]  执行行为上下文
-     * @memberof PIMQUALMAJORGridViewBase
-     */
-    public ToggleFilter(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
-        const _this: any = this;
-        if (_this.hasOwnProperty('isExpandSearchForm')) {
-            _this.isExpandSearchForm = !_this.isExpandSearchForm;
-        }
     }
 
 

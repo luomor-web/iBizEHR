@@ -29,6 +29,8 @@ public interface UnitedPersonMapper extends BaseMapper<UnitedPerson>{
     @Override
     int updateById(@Param(Constants.ENTITY) UnitedPerson entity);
     @Override
+    int update(@Param(Constants.ENTITY) UnitedPerson entity, @Param("ew") Wrapper<UnitedPerson> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

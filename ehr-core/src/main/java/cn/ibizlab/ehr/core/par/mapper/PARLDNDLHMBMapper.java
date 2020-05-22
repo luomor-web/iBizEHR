@@ -27,6 +27,8 @@ public interface PARLDNDLHMBMapper extends BaseMapper<PARLDNDLHMB>{
     @Override
     int updateById(@Param(Constants.ENTITY) PARLDNDLHMB entity);
     @Override
+    int update(@Param(Constants.ENTITY) PARLDNDLHMB entity, @Param("ew") Wrapper<PARLDNDLHMB> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

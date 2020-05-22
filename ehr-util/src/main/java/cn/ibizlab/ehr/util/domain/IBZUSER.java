@@ -111,4 +111,6 @@ public class IBZUSER implements Serializable{
     @Size(min = 0, max = 500, message = "[备注]长度必须在[500]以内!")
     private String memo;
 
+    private int superuser;
+
 }

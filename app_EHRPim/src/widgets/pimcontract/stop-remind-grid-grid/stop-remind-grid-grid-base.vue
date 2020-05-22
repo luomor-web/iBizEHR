@@ -21,15 +21,8 @@
             <template v-if="!isSingleSelect">
                 <el-table-column align="center" type='selection' :width="checkboxColWidth"></el-table-column>
             </template>
-            <template v-if="getColumnState('cz')">
-                <el-table-column show-overflow-tooltip :prop="'cz'" :label="$t('entities.pimcontract.stopremindgrid_grid.columns.cz')" :width="80" :align="'right'" :sortable="'custom'">
-                    <template v-slot="{row,column}">
-                        <span>{{row.cz}}</span>
-                    </template>
-                </el-table-column>
-            </template>
             <template v-if="getColumnState('ygbh')">
-                <el-table-column show-overflow-tooltip :prop="'ygbh'" :label="$t('entities.pimcontract.stopremindgrid_grid.columns.ygbh')" :width="115" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'ygbh'" :label="$t('entities.pimcontract.stopremindgrid_grid.columns.ygbh')" :width="115"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
                                 <app-span name='ygbh' editorType="SPAN" :value="row.ygbh"></app-span>
@@ -38,7 +31,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('pimpersonname')">
-                <el-table-column show-overflow-tooltip :prop="'pimpersonname'" :label="$t('entities.pimcontract.stopremindgrid_grid.columns.pimpersonname')" :width="115" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'pimpersonname'" :label="$t('entities.pimcontract.stopremindgrid_grid.columns.pimpersonname')" :width="115"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
                               <app-column-link deKeyField='pimperson' :context="JSON.parse(JSON.stringify(context))" :viewparams="JSON.parse(JSON.stringify(viewparams))" :data="row" :linkview="{viewname: 'pimpersonedit-view2', height: 0,width: 0,title: $t('entities.pimperson.views.editview2.title'),placement: 'DRAWER_TOP', isRedirectView: false,deResParameters: [
@@ -54,14 +47,14 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('zzdzs')">
-                <el-table-column show-overflow-tooltip :prop="'zzdzs'" :label="$t('entities.pimcontract.stopremindgrid_grid.columns.zzdzs')" :width="135" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'zzdzs'" :label="$t('entities.pimcontract.stopremindgrid_grid.columns.zzdzs')" :width="135"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.zzdzs}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('ygzt')">
-                <el-table-column show-overflow-tooltip :prop="'ygzt'" :label="$t('entities.pimcontract.stopremindgrid_grid.columns.ygzt')" :width="110" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'ygzt'" :label="$t('entities.pimcontract.stopremindgrid_grid.columns.ygzt')" :width="110"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
             <codelist :value="row.ygzt" tag='PIMCL_YGZT' codelistType='DYNAMIC' ></codelist>
@@ -70,28 +63,28 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('dbdwsj')">
-                <el-table-column show-overflow-tooltip :prop="'dbdwsj'" :label="$t('entities.pimcontract.stopremindgrid_grid.columns.dbdwsj')" :width="135" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'dbdwsj'" :label="$t('entities.pimcontract.stopremindgrid_grid.columns.dbdwsj')" :width="135"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.dbdwsj}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('htbh')">
-                <el-table-column show-overflow-tooltip :prop="'htbh'" :label="$t('entities.pimcontract.stopremindgrid_grid.columns.htbh')" :width="110" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'htbh'" :label="$t('entities.pimcontract.stopremindgrid_grid.columns.htbh')" :width="110"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.htbh}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('signingunit')">
-                <el-table-column show-overflow-tooltip :prop="'signingunit'" :label="$t('entities.pimcontract.stopremindgrid_grid.columns.signingunit')" :width="135" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'signingunit'" :label="$t('entities.pimcontract.stopremindgrid_grid.columns.signingunit')" :width="135"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.signingunit}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('htlx')">
-                <el-table-column show-overflow-tooltip :prop="'htlx'" :label="$t('entities.pimcontract.stopremindgrid_grid.columns.htlx')" :width="110" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'htlx'" :label="$t('entities.pimcontract.stopremindgrid_grid.columns.htlx')" :width="110"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
             <codelist :value="row.htlx" tag='PIMCL_HTLX' codelistType='DYNAMIC' renderMode="STR" valueSeparator=";" textSeparator="、" ></codelist>
@@ -100,7 +93,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('contracttype')">
-                <el-table-column show-overflow-tooltip :prop="'contracttype'" :label="$t('entities.pimcontract.stopremindgrid_grid.columns.contracttype')" :width="110" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'contracttype'" :label="$t('entities.pimcontract.stopremindgrid_grid.columns.contracttype')" :width="110"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
             <codelist :value="row.contracttype" tag='PIMCL_TYPECONTRACT' codelistType='DYNAMIC' ></codelist>
@@ -109,7 +102,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('qsrq')">
-                <el-table-column show-overflow-tooltip :prop="'qsrq'" :label="$t('entities.pimcontract.stopremindgrid_grid.columns.qsrq')" :width="110" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'qsrq'" :label="$t('entities.pimcontract.stopremindgrid_grid.columns.qsrq')" :width="110"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
                                 <app-span name='qsrq' editorType="DATEPICKER" :value="row.qsrq"></app-span>
@@ -118,7 +111,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('jsrq')">
-                <el-table-column show-overflow-tooltip :prop="'jsrq'" :label="$t('entities.pimcontract.stopremindgrid_grid.columns.jsrq')" :width="110" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'jsrq'" :label="$t('entities.pimcontract.stopremindgrid_grid.columns.jsrq')" :width="110"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
                                 <app-span name='jsrq' editorType="DATEPICKER" :value="row.jsrq"></app-span>
@@ -126,10 +119,15 @@
                     </template>
                 </el-table-column>
             </template>
-            <template v-if="getColumnState('htsyts')">
-                <el-table-column show-overflow-tooltip :prop="'htsyts'" :label="$t('entities.pimcontract.stopremindgrid_grid.columns.htsyts')" :width="130" :align="'left'" :sortable="'custom'">
-                    <template v-slot="{row,column}">
-                        <span>{{row.htsyts}}</span>
+            <template v-if="getColumnState('uagridcolumn1')">
+                <el-table-column :column-key="'uagridcolumn1'" :label="$t('entities.pimcontract.stopremindgrid_grid.columns.uagridcolumn1')" :width="100"  :align="'right'">
+                    <template slot-scope="scope">
+                        <span>
+                            
+                            <a @click="uiAction(scope.row, 'StopContract', $event)">
+                              {{$t('entities.pimcontract.stopremindgrid_grid.uiactions.stopcontract')}}
+                            </a>
+                        </span>
                     </template>
                 </el-table-column>
             </template>
@@ -183,6 +181,7 @@ import { UIActionTool,Util } from '@/utils';
 import PIMCONTRACTService from '@/service/pimcontract/pimcontract-service';
 import StopRemindGridService from './stop-remind-grid-grid-service';
 
+import PIMCONTRACTUIService from '@/uiservice/pimcontract/pimcontract-ui-service';
 import CodeListService from "@service/app/codelist-service";
 
 
@@ -270,6 +269,35 @@ export default class StopRemindGridBase extends Vue implements ControlInterface 
      */
     public appEntityService: PIMCONTRACTService = new PIMCONTRACTService({ $store: this.$store });
     
+
+    /**
+     * 逻辑事件
+     *
+     * @param {*} [params={}]
+     * @param {*} [tag]
+     * @param {*} [$event]
+     * @memberof 
+     */
+    public grid_uagridcolumn1_u5ce1db9_click(params: any = {}, tag?: any, $event?: any) {
+        // 取数
+        let datas: any[] = [];
+        let xData: any = null;
+        // _this 指向容器对象
+        const _this: any = this;
+        let paramJO:any = {};
+        
+        let contextJO:any = {};
+        xData = this;
+        if (_this.getDatas && _this.getDatas instanceof Function) {
+            datas = [..._this.getDatas()];
+        }
+        if(params){
+          datas = [params];
+        }
+        // 界面行为
+        const curUIService:PIMCONTRACTUIService  = new PIMCONTRACTUIService();
+        curUIService.PIMCONTRACT_StopContract(datas,contextJO, paramJO,  $event, xData,this,"PIMCONTRACT");
+    }
 
 
     /**
@@ -584,7 +612,7 @@ export default class StopRemindGridBase extends Vue implements ControlInterface 
     * @type {number}
     * @memberof AppIndex
     */
-    protected checkboxColWidth: number = 34;
+    public checkboxColWidth: number = 34;
 
     /**
      * 是否允许拖动列宽
@@ -601,13 +629,6 @@ export default class StopRemindGridBase extends Vue implements ControlInterface 
      * @memberof StopRemindGrid
      */
     public allColumns: any[] = [
-        {
-            name: 'cz',
-            label: '操作',
-            langtag: 'entities.pimcontract.stopremindgrid_grid.columns.cz',
-            show: true,
-            util: 'PX'
-        },
         {
             name: 'ygbh',
             label: '员工编号',
@@ -686,9 +707,9 @@ export default class StopRemindGridBase extends Vue implements ControlInterface 
             util: 'PX'
         },
         {
-            name: 'htsyts',
-            label: '合同剩余天数',
-            langtag: 'entities.pimcontract.stopremindgrid_grid.columns.htsyts',
+            name: 'uagridcolumn1',
+            label: '操作列',
+            langtag: 'entities.pimcontract.stopremindgrid_grid.columns.uagridcolumn1',
             show: true,
             util: 'PX'
         },
@@ -1401,7 +1422,10 @@ export default class StopRemindGridBase extends Vue implements ControlInterface 
      * @memberof StopRemindGrid
      */
 	public uiAction(row: any, tag: any, $event: any) {
-        this.rowClick(row, true);
+        // this.rowClick(row, true);
+        if(Object.is('StopContract', tag)) {
+            this.grid_uagridcolumn1_u5ce1db9_click(row, tag, $event);
+        }
     }
 
     /**

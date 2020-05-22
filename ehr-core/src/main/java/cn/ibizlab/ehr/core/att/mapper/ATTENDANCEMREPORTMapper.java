@@ -31,6 +31,8 @@ public interface ATTENDANCEMREPORTMapper extends BaseMapper<ATTENDANCEMREPORT>{
     @Override
     int updateById(@Param(Constants.ENTITY) ATTENDANCEMREPORT entity);
     @Override
+    int update(@Param(Constants.ENTITY) ATTENDANCEMREPORT entity, @Param("ew") Wrapper<ATTENDANCEMREPORT> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

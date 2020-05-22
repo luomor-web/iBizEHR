@@ -4,9 +4,6 @@
 <mapper	namespace="cn.ibizlab.ehr.core.pcm.mapper.PCMAWARDSWONSMapper">
 
     <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
-	<select id="selectById"  resultMap="PCMAWARDSWONSResultMap" databaseId="oracle">
-        <![CDATA[select * from v_pcmawardswons t1     where  pcmawardswonsid=#{id}]]>
-    </select>
 
     <!--通过mybatis将查询结果注入到entity中,通过配置autoMapping="true"由mybatis自动处理映射关系 -->
     <resultMap id="PCMAWARDSWONSResultMap" type="cn.ibizlab.ehr.core.pcm.domain.PCMAWARDSWONS" autoMapping="true">
@@ -34,6 +31,13 @@
          <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
          <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
      </select>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="mysql">
+       <![CDATA[	SELECT t1.`AWARDDESCRIPTION`, t1.`AWARDLEVEL`, t1.`AWARDNAME`, t1.`AWARDTIME`, t1.`BBSJ`, t11.`CERTIFICATENUMBER`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`FLAG`, t1.`JUDGEORG`, t1.`PCMAWARDSWONSID`, t1.`PCMAWARDSWONSNAME`, t1.`PCMPROFILEID`, t11.`PCMPROFILENAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN` FROM `T_PCMAWARDSWONS` t1  LEFT JOIN T_PCMPROFILE t11 ON t1.PCMPROFILEID = t11.PCMPROFILEID  
+				 WHERE 	( t1.`FLAG` = '1' )
+			]]>
+    </sql>
 
     <!--数据查询[Default]-->
     <sql id="Default" databaseId="oracle">

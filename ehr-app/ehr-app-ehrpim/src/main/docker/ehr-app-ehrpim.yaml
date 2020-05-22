@@ -13,11 +13,11 @@ services:
       - SPRING_REDIS_HOST=172.16.100.243
       - SPRING_REDIS_PORT=6379
       - SPRING_REDIS_DATABASE=0
-      - SPRING_DATASOURCE_USERNAME=BPMEHR
-      - SPRING_DATASOURCE_PASSWORD=sys
-      - SPRING_DATASOURCE_URL=jdbc:oracle:thin:@172.16.170.71:1521:localorcl
-      - SPRING_DATASOURCE_DRIVER-CLASS-NAME=oracle.jdbc.driver.OracleDriver
-      - SPRING_DATASOURCE_DEFAULTSCHEMA=BPMEHR
+      - SPRING_DATASOURCE_USERNAME=a_LAB01_bd0ca3178
+      - SPRING_DATASOURCE_PASSWORD=25A3@0@a
+      - SPRING_DATASOURCE_URL=jdbc:mysql://172.16.186.185:3306/a_LAB01_bd0ca3178?autoReconnect=true&useUnicode=true&characterEncoding=UTF-8&useOldAliasMetadataBehavior=true
+      - SPRING_DATASOURCE_DRIVER-CLASS-NAME=com.mysql.jdbc.Driver
+      - SPRING_DATASOURCE_DEFAULTSCHEMA=a_LAB01_bd0ca3178
       - CAS=https://passport.ibizlab.cn
       - NACOS=172.16.240.110:8848
     deploy:

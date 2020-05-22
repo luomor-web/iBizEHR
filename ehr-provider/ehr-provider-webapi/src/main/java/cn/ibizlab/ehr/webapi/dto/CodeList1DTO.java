@@ -234,22 +234,6 @@ public class CodeList1DTO extends DTOBase implements Serializable {
     @JsonProperty("srfuserpub")
     private Integer srfuserpub;
 
-    /**
-     * 属性 [DENAME]
-     *
-     */
-    @JSONField(name = "dename")
-    @JsonProperty("dename")
-    private String dename;
-
-    /**
-     * 属性 [DEID]
-     *
-     */
-    @JSONField(name = "deid")
-    @JsonProperty("deid")
-    private String deid;
-
 
     /**
      * 设置 [VALUESEPERATOR]
@@ -417,14 +401,6 @@ public class CodeList1DTO extends DTOBase implements Serializable {
     public void setSrfuserpub(Integer  srfuserpub){
         this.srfuserpub = srfuserpub ;
         this.modify("srfuserpub",srfuserpub);
-    }
-
-    /**
-     * 设置 [DEID]
-     */
-    public void setDeid(String  deid){
-        this.deid = deid ;
-        this.modify("deid",deid);
     }
 
 

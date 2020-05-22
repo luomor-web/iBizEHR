@@ -4,7 +4,7 @@ import EntityService from '../entity-service';
 
 
 /**
- * 人员明细表服务对象基类
+ * 人员花名册服务对象基类
  *
  * @export
  * @class PCMDETAILServiceBase

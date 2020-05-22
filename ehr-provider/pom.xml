@@ -15,10 +15,6 @@
     <description>Ehr Provider</description>
 
     <modules>
-        <module>ehr-provider-saasadmin</module>
-        <module>ehr-provider-parttimeperson</module>
-        <module>ehr-provider-wfcallback</module>
-        <module>ehr-provider-specialrole</module>
         <module>ehr-provider-webapi</module>
     </modules>
 

@@ -50,12 +50,11 @@ public class PIMPAPERResource {
 
     @Autowired
     @Lazy
-    private PIMPAPERMapping pimpaperMapping;
+    public PIMPAPERMapping pimpaperMapping;
 
+    public PIMPAPERDTO permissionDTO=new PIMPAPERDTO();
 
-
-
-    @PreAuthorize("hasPermission(#pimpaper_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#pimpaper_id,'Update',{'Sql',this.pimpaperMapping,#pimpaperdto})")
     @ApiOperation(value = "Update", tags = {"PIMPAPER" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimpapers/{pimpaper_id}")
     @Transactional
@@ -67,7 +66,7 @@ public class PIMPAPERResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#pimpaper_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"PIMPAPER" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimpapers/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PIMPAPERDTO> pimpaperdtos) {
@@ -75,19 +74,14 @@ public class PIMPAPERResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMPAPER-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"PIMPAPER" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimpapers/getdraft")
     public ResponseEntity<PIMPAPERDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(pimpaperMapping.toDto(pimpaperService.getDraft(new PIMPAPER())));
     }
 
-
-
-
-    @PreAuthorize("hasPermission('Remove',{#pimpaper_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#pimpaper_id,'Remove',{'Sql',this.pimpaperMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"PIMPAPER" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimpapers/{pimpaper_id}")
     @Transactional
@@ -95,6 +89,7 @@ public class PIMPAPERResource {
          return ResponseEntity.status(HttpStatus.OK).body(pimpaperService.remove(pimpaper_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"PIMPAPER" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimpapers/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -102,10 +97,7 @@ public class PIMPAPERResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.pimpaperMapping,#pimpaperdto})")
     @ApiOperation(value = "Create", tags = {"PIMPAPER" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpapers")
     @Transactional
@@ -116,7 +108,7 @@ public class PIMPAPERResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatch", tags = {"PIMPAPER" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpapers/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PIMPAPERDTO> pimpaperdtos) {
@@ -124,10 +116,7 @@ public class PIMPAPERResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    @PreAuthorize("hasPermission(#pimpaper_id,'Get',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#pimpaper_id,'Get',{'Sql',this.pimpaperMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"PIMPAPER" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimpapers/{pimpaper_id}")
     public ResponseEntity<PIMPAPERDTO> get(@PathVariable("pimpaper_id") String pimpaper_id) {
@@ -136,15 +125,14 @@ public class PIMPAPERResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-
-
-
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMPAPER-Save-all')")
     @ApiOperation(value = "Save", tags = {"PIMPAPER" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpapers/save")
     public ResponseEntity<Boolean> save(@RequestBody PIMPAPERDTO pimpaperdto) {
         return ResponseEntity.status(HttpStatus.OK).body(pimpaperService.save(pimpaperMapping.toDomain(pimpaperdto)));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"PIMPAPER" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpapers/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PIMPAPERDTO> pimpaperdtos) {
@@ -152,16 +140,14 @@ public class PIMPAPERResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMPAPER-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"PIMPAPER" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpapers/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PIMPAPERDTO pimpaperdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pimpaperService.checkKey(pimpaperMapping.toDomain(pimpaperdto)));
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMPAPER-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PIMPAPER" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimpapers/fetchdefault")
 	public ResponseEntity<List<PIMPAPERDTO>> fetchDefault(PIMPAPERSearchContext context) {
@@ -174,16 +160,15 @@ public class PIMPAPERResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMPAPER-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PIMPAPER" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/pimpapers/searchdefault")
-	public ResponseEntity<Page<PIMPAPERDTO>> searchDefault(PIMPAPERSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimpapers/searchdefault")
+	public ResponseEntity<Page<PIMPAPERDTO>> searchDefault(@RequestBody PIMPAPERSearchContext context) {
         Page<PIMPAPER> domains = pimpaperService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimpaperMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-    @PreAuthorize("hasPermission('Get',{#context,'JLSSGR',this.getEntity(),'Sql'})")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMPAPER-JLSSGR-all')")
 	@ApiOperation(value = "fetch记录所属（个人）", tags = {"PIMPAPER" } ,notes = "fetch记录所属（个人）")
     @RequestMapping(method= RequestMethod.GET , value="/pimpapers/fetchjlssgr")
 	public ResponseEntity<List<PIMPAPERDTO>> fetchJLSSGR(PIMPAPERSearchContext context) {
@@ -196,16 +181,15 @@ public class PIMPAPERResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'JLSSGR',this.getEntity(),'Sql'})")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMPAPER-JLSSGR-all')")
 	@ApiOperation(value = "search记录所属（个人）", tags = {"PIMPAPER" } ,notes = "search记录所属（个人）")
-    @RequestMapping(method= RequestMethod.GET , value="/pimpapers/searchjlssgr")
-	public ResponseEntity<Page<PIMPAPERDTO>> searchJLSSGR(PIMPAPERSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimpapers/searchjlssgr")
+	public ResponseEntity<Page<PIMPAPERDTO>> searchJLSSGR(@RequestBody PIMPAPERSearchContext context) {
         Page<PIMPAPER> domains = pimpaperService.searchJLSSGR(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimpaperMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-    @PreAuthorize("hasPermission('Get',{#context,'JLSSGLY',this.getEntity(),'Sql'})")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMPAPER-JLSSGLY-all')")
 	@ApiOperation(value = "fetch记录所属（管理员）", tags = {"PIMPAPER" } ,notes = "fetch记录所属（管理员）")
     @RequestMapping(method= RequestMethod.GET , value="/pimpapers/fetchjlssgly")
 	public ResponseEntity<List<PIMPAPERDTO>> fetchJLSSGLY(PIMPAPERSearchContext context) {
@@ -218,17 +202,15 @@ public class PIMPAPERResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'JLSSGLY',this.getEntity(),'Sql'})")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMPAPER-JLSSGLY-all')")
 	@ApiOperation(value = "search记录所属（管理员）", tags = {"PIMPAPER" } ,notes = "search记录所属（管理员）")
-    @RequestMapping(method= RequestMethod.GET , value="/pimpapers/searchjlssgly")
-	public ResponseEntity<Page<PIMPAPERDTO>> searchJLSSGLY(PIMPAPERSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimpapers/searchjlssgly")
+	public ResponseEntity<Page<PIMPAPERDTO>> searchJLSSGLY(@RequestBody PIMPAPERSearchContext context) {
         Page<PIMPAPER> domains = pimpaperService.searchJLSSGLY(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimpaperMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
-
+    //@PreAuthorize("hasPermission(#pimpaper_id,'Update',{'Sql',this.pimpaperMapping,#pimpaperdto})")
     @ApiOperation(value = "UpdateByPIMPERSON", tags = {"PIMPAPER" },  notes = "UpdateByPIMPERSON")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimpeople/{pimperson_id}/pimpapers/{pimpaper_id}")
     @Transactional
@@ -241,6 +223,7 @@ public class PIMPAPERResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatchByPIMPERSON", tags = {"PIMPAPER" },  notes = "UpdateBatchByPIMPERSON")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimpeople/{pimperson_id}/pimpapers/batch")
     public ResponseEntity<Boolean> updateBatchByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody List<PIMPAPERDTO> pimpaperdtos) {
@@ -252,6 +235,7 @@ public class PIMPAPERResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMPAPER-GetDraft-all')")
     @ApiOperation(value = "GetDraftByPIMPERSON", tags = {"PIMPAPER" },  notes = "GetDraftByPIMPERSON")
     @RequestMapping(method = RequestMethod.GET, value = "/pimpeople/{pimperson_id}/pimpapers/getdraft")
     public ResponseEntity<PIMPAPERDTO> getDraftByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id) {
@@ -260,6 +244,7 @@ public class PIMPAPERResource {
         return ResponseEntity.status(HttpStatus.OK).body(pimpaperMapping.toDto(pimpaperService.getDraft(domain)));
     }
 
+    //@PreAuthorize("hasPermission(#pimpaper_id,'Remove',{'Sql',this.pimpaperMapping,this.permissionDTO})")
     @ApiOperation(value = "RemoveByPIMPERSON", tags = {"PIMPAPER" },  notes = "RemoveByPIMPERSON")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimpeople/{pimperson_id}/pimpapers/{pimpaper_id}")
     @Transactional
@@ -267,6 +252,7 @@ public class PIMPAPERResource {
 		return ResponseEntity.status(HttpStatus.OK).body(pimpaperService.remove(pimpaper_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatchByPIMPERSON", tags = {"PIMPAPER" },  notes = "RemoveBatchByPIMPERSON")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimpeople/{pimperson_id}/pimpapers/batch")
     public ResponseEntity<Boolean> removeBatchByPIMPERSON(@RequestBody List<String> ids) {
@@ -274,6 +260,7 @@ public class PIMPAPERResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    //@PreAuthorize("hasPermission('','Create',{'Sql',this.pimpaperMapping,#pimpaperdto})")
     @ApiOperation(value = "CreateByPIMPERSON", tags = {"PIMPAPER" },  notes = "CreateByPIMPERSON")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimpapers")
     @Transactional
@@ -285,6 +272,7 @@ public class PIMPAPERResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatchByPIMPERSON", tags = {"PIMPAPER" },  notes = "createBatchByPIMPERSON")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimpapers/batch")
     public ResponseEntity<Boolean> createBatchByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody List<PIMPAPERDTO> pimpaperdtos) {
@@ -296,6 +284,7 @@ public class PIMPAPERResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    //@PreAuthorize("hasPermission(#pimpaper_id,'Get',{'Sql',this.pimpaperMapping,this.permissionDTO})")
     @ApiOperation(value = "GetByPIMPERSON", tags = {"PIMPAPER" },  notes = "GetByPIMPERSON")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimpeople/{pimperson_id}/pimpapers/{pimpaper_id}")
     public ResponseEntity<PIMPAPERDTO> getByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimpaper_id") String pimpaper_id) {
@@ -304,6 +293,7 @@ public class PIMPAPERResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMPAPER-Save-all')")
     @ApiOperation(value = "SaveByPIMPERSON", tags = {"PIMPAPER" },  notes = "SaveByPIMPERSON")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimpapers/save")
     public ResponseEntity<Boolean> saveByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMPAPERDTO pimpaperdto) {
@@ -312,6 +302,7 @@ public class PIMPAPERResource {
         return ResponseEntity.status(HttpStatus.OK).body(pimpaperService.save(domain));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatchByPIMPERSON", tags = {"PIMPAPER" },  notes = "SaveBatchByPIMPERSON")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimpapers/savebatch")
     public ResponseEntity<Boolean> saveBatchByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody List<PIMPAPERDTO> pimpaperdtos) {
@@ -323,12 +314,14 @@ public class PIMPAPERResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMPAPER-CheckKey-all')")
     @ApiOperation(value = "CheckKeyByPIMPERSON", tags = {"PIMPAPER" },  notes = "CheckKeyByPIMPERSON")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimpapers/checkkey")
     public ResponseEntity<Boolean> checkKeyByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMPAPERDTO pimpaperdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pimpaperService.checkKey(pimpaperMapping.toDomain(pimpaperdto)));
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMPAPER-Default-all')")
 	@ApiOperation(value = "fetchDEFAULTByPIMPERSON", tags = {"PIMPAPER" } ,notes = "fetchDEFAULTByPIMPERSON")
     @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/pimpapers/fetchdefault")
 	public ResponseEntity<List<PIMPAPERDTO>> fetchPIMPAPERDefaultByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id,PIMPAPERSearchContext context) {
@@ -342,15 +335,16 @@ public class PIMPAPERResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMPAPER-Default-all')")
 	@ApiOperation(value = "searchDEFAULTByPIMPERSON", tags = {"PIMPAPER" } ,notes = "searchDEFAULTByPIMPERSON")
-    @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/pimpapers/searchdefault")
-	public ResponseEntity<Page<PIMPAPERDTO>> searchPIMPAPERDefaultByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id,PIMPAPERSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/pimpapers/searchdefault")
+	public ResponseEntity<Page<PIMPAPERDTO>> searchPIMPAPERDefaultByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMPAPERSearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
         Page<PIMPAPER> domains = pimpaperService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimpaperMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMPAPER-JLSSGR-all')")
 	@ApiOperation(value = "fetch记录所属（个人）ByPIMPERSON", tags = {"PIMPAPER" } ,notes = "fetch记录所属（个人）ByPIMPERSON")
     @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/pimpapers/fetchjlssgr")
 	public ResponseEntity<List<PIMPAPERDTO>> fetchPIMPAPERJLSSGRByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id,PIMPAPERSearchContext context) {
@@ -364,15 +358,16 @@ public class PIMPAPERResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMPAPER-JLSSGR-all')")
 	@ApiOperation(value = "search记录所属（个人）ByPIMPERSON", tags = {"PIMPAPER" } ,notes = "search记录所属（个人）ByPIMPERSON")
-    @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/pimpapers/searchjlssgr")
-	public ResponseEntity<Page<PIMPAPERDTO>> searchPIMPAPERJLSSGRByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id,PIMPAPERSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/pimpapers/searchjlssgr")
+	public ResponseEntity<Page<PIMPAPERDTO>> searchPIMPAPERJLSSGRByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMPAPERSearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
         Page<PIMPAPER> domains = pimpaperService.searchJLSSGR(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimpaperMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMPAPER-JLSSGLY-all')")
 	@ApiOperation(value = "fetch记录所属（管理员）ByPIMPERSON", tags = {"PIMPAPER" } ,notes = "fetch记录所属（管理员）ByPIMPERSON")
     @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/pimpapers/fetchjlssgly")
 	public ResponseEntity<List<PIMPAPERDTO>> fetchPIMPAPERJLSSGLYByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id,PIMPAPERSearchContext context) {
@@ -386,22 +381,13 @@ public class PIMPAPERResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMPAPER-JLSSGLY-all')")
 	@ApiOperation(value = "search记录所属（管理员）ByPIMPERSON", tags = {"PIMPAPER" } ,notes = "search记录所属（管理员）ByPIMPERSON")
-    @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/pimpapers/searchjlssgly")
-	public ResponseEntity<Page<PIMPAPERDTO>> searchPIMPAPERJLSSGLYByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id,PIMPAPERSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/pimpapers/searchjlssgly")
+	public ResponseEntity<Page<PIMPAPERDTO>> searchPIMPAPERJLSSGLYByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMPAPERSearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
         Page<PIMPAPER> domains = pimpaperService.searchJLSSGLY(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimpaperMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
-    /**
-     * 用户权限校验
-     * @return
-     */
-	public PIMPAPER getEntity(){
-        return new PIMPAPER();
-    }
-
 }

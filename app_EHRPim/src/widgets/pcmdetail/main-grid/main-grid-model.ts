@@ -425,32 +425,6 @@ export default class MainModel {
           name: 'pcmdetail',
           prop: 'pcmdetailid',
         },
-      {
-        name: 'n_pimpersonname_like',
-        prop: 'n_pimpersonname_like',
-        dataType: 'TEXT',
-      },
-      {
-        name: 'n_ygbh_like',
-        prop: 'n_ygbh_like',
-        dataType: 'TEXT',
-      },
-      {
-        name: 'n_zjhm_like',
-        prop: 'n_zjhm_like',
-        dataType: 'TEXT',
-      },
-      {
-        name: 'n_zzdzs_like',
-        prop: 'n_zzdzs_like',
-        dataType: 'PICKUPDATA',
-      },
-      {
-        name: 'n_shortname_like',
-        prop: 'n_shortname_like',
-        dataType: 'PICKUPDATA',
-      },
-
         {
           name:'size',
           prop:'size'

@@ -27,6 +27,8 @@ public interface ATTENDANCESUMMARYMXMapper extends BaseMapper<ATTENDANCESUMMARYM
     @Override
     int updateById(@Param(Constants.ENTITY) ATTENDANCESUMMARYMX entity);
     @Override
+    int update(@Param(Constants.ENTITY) ATTENDANCESUMMARYMX entity, @Param("ew") Wrapper<ATTENDANCESUMMARYMX> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

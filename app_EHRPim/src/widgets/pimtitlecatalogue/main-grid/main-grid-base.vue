@@ -22,7 +22,7 @@
                 <el-table-column align="center" type='selection' :width="checkboxColWidth"></el-table-column>
             </template>
             <template v-if="getColumnState('pxh')">
-                <el-table-column show-overflow-tooltip :prop="'pxh'" :label="$t('entities.pimtitlecatalogue.main_grid.columns.pxh')" :width="100" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'pxh'" :label="$t('entities.pimtitlecatalogue.main_grid.columns.pxh')" :width="100"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template v-if="actualIsOpenEdit">
                             <i-form style="height:100%;" :model="row">
@@ -46,7 +46,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('dh')">
-                <el-table-column show-overflow-tooltip :prop="'dh'" :label="$t('entities.pimtitlecatalogue.main_grid.columns.dh')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'dh'" :label="$t('entities.pimtitlecatalogue.main_grid.columns.dh')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template v-if="actualIsOpenEdit">
                             <i-form style="height:100%;" :model="row">
@@ -70,7 +70,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('pimtitlecataloguename')">
-                <el-table-column show-overflow-tooltip :prop="'pimtitlecataloguename'" :label="$t('entities.pimtitlecatalogue.main_grid.columns.pimtitlecataloguename')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'pimtitlecataloguename'" :label="$t('entities.pimtitlecatalogue.main_grid.columns.pimtitlecataloguename')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template v-if="actualIsOpenEdit">
                             <i-form style="height:100%;" :model="row">
@@ -94,7 +94,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('pimtitlecataloguename2')">
-                <el-table-column show-overflow-tooltip :prop="'pimtitlecataloguename2'" :label="$t('entities.pimtitlecatalogue.main_grid.columns.pimtitlecataloguename2')" :width="250" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'pimtitlecataloguename2'" :label="$t('entities.pimtitlecatalogue.main_grid.columns.pimtitlecataloguename2')" :width="250"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template v-if="actualIsOpenEdit">
                             <i-form style="height:100%;" :model="row">
@@ -136,7 +136,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('zclc')">
-                <el-table-column show-overflow-tooltip :prop="'zclc'" :label="$t('entities.pimtitlecatalogue.main_grid.columns.zclc')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'zclc'" :label="$t('entities.pimtitlecatalogue.main_grid.columns.zclc')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template v-if="actualIsOpenEdit">
                             <i-form style="height:100%;" :model="row">
@@ -609,7 +609,7 @@ export default class MainBase extends Vue implements ControlInterface {
     * @type {number}
     * @memberof AppIndex
     */
-    protected checkboxColWidth: number = 34;
+    public checkboxColWidth: number = 34;
 
     /**
      * 是否允许拖动列宽
@@ -1354,7 +1354,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * @memberof Main
      */
 	public uiAction(row: any, tag: any, $event: any) {
-        this.rowClick(row, true);
+        // this.rowClick(row, true);
     }
 
     /**

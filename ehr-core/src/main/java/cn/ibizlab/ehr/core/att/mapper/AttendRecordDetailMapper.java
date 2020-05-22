@@ -27,6 +27,8 @@ public interface AttendRecordDetailMapper extends BaseMapper<AttendRecordDetail>
     @Override
     int updateById(@Param(Constants.ENTITY) AttendRecordDetail entity);
     @Override
+    int update(@Param(Constants.ENTITY) AttendRecordDetail entity, @Param("ew") Wrapper<AttendRecordDetail> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

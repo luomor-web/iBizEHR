@@ -22,7 +22,7 @@
                 <el-table-column align="center" type='selection' :width="checkboxColWidth"></el-table-column>
             </template>
             <template v-if="getColumnState('wyyz')">
-                <el-table-column show-overflow-tooltip :prop="'wyyz'" :label="$t('entities.pimlanguageability.main_grid.columns.wyyz')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'wyyz'" :label="$t('entities.pimlanguageability.main_grid.columns.wyyz')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template v-if="actualIsOpenEdit">
                             <i-form style="height:100%;" :model="row">
@@ -38,7 +38,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('wydj')">
-                <el-table-column show-overflow-tooltip :prop="'wydj'" :label="$t('entities.pimlanguageability.main_grid.columns.wydj')" :width="300" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'wydj'" :label="$t('entities.pimlanguageability.main_grid.columns.wydj')" :width="300"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template v-if="actualIsOpenEdit">
                             <i-form style="height:100%;" :model="row">
@@ -54,7 +54,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('wydjhqsj')">
-                <el-table-column show-overflow-tooltip :prop="'wydjhqsj'" :label="$t('entities.pimlanguageability.main_grid.columns.wydjhqsj')" :width="200" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'wydjhqsj'" :label="$t('entities.pimlanguageability.main_grid.columns.wydjhqsj')" :width="200"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template v-if="actualIsOpenEdit">
                             <i-form style="height:100%;" :model="row">
@@ -70,25 +70,29 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('fj')">
-                <el-table-column show-overflow-tooltip :prop="'fj'" :label="$t('entities.pimlanguageability.main_grid.columns.fj')" :width="200" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'fj'" :label="$t('entities.pimlanguageability.main_grid.columns.fj')" :width="200"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template v-if="actualIsOpenEdit">
                             <i-form style="height:100%;" :model="row">
                                 <app-form-item :name="column.property" :itemRules="rules[column.property]">
-                                    <input-box 
+                                    <app-file-upload 
+              :formState="viewState" 
+              :ignorefieldvaluechange="false" 
+              @formitemvaluechange="($event)=>{onGridItemValueChange(row,$event)}" 
+              :data="JSON.stringify(row)" 
+              :name='column.property' 
+              :value="row[column.property]" 
               :disabled="row.srfuf === 1 ? (3 & 2) !== 2 : (3 & 1) !== 1" 
-              v-model="row[column.property]" 
-              style=""
-              type="text"
-              
-              
-              @change="($event)=>{gridEditItemChange(row, column.property, $event)}">
-            </input-box>
+              :rowPreview="true"
+              uploadparams='' 
+              exportparams='' 
+              :customparams="{}" style="overflow: auto;">
+            </app-file-upload>
                                 </app-form-item>
                             </i-form>
                         </template>
                         <template v-if="!actualIsOpenEdit">
-                                <app-span name='fj' editorType="TEXTBOX" :value="row.fj"></app-span>
+                                <app-span name='fj' editorType="FILEUPLOADER" :value="row.fj"></app-span>
                         </template>
                     </template>
                 </el-table-column>
@@ -551,7 +555,7 @@ export default class MainBase extends Vue implements ControlInterface {
     * @type {number}
     * @memberof AppIndex
     */
-    protected checkboxColWidth: number = 34;
+    public checkboxColWidth: number = 34;
 
     /**
      * 是否允许拖动列宽
@@ -1293,7 +1297,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * @memberof Main
      */
 	public uiAction(row: any, tag: any, $event: any) {
-        this.rowClick(row, true);
+        // this.rowClick(row, true);
     }
 
     /**

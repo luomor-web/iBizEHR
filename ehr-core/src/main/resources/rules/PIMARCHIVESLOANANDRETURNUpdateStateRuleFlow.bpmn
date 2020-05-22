@@ -14,15 +14,7 @@
      <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="pimarchivesloanandreturnupdatestateprepareparam3" id="3a7fd688a0d19456f335a79de883099e" implementation="http://www.jboss.org/drools/rule" name="借阅中"/>
      <endEvent id="3a7fd688a0d19456f335a79de883099e_End" name="End"/>
      <sequenceFlow id="3a7fd688a0d19456f335a79de883099e_End_Line" sourceRef="3a7fd688a0d19456f335a79de883099e" targetRef="3a7fd688a0d19456f335a79de883099e_End"/>
-     <sequenceFlow id="41cd7e05f79f16faba589777a26d97c6" sourceRef="gateway-ac39dd7df9ce92e4ef79c88b97684793" targetRef="a3d986365b3d06e7711e455ecefdc337">
-            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
-            $pimarchivesloanandreturnupdatestatedefault:PIMARCHIVESLOANANDRETURN();
-            eval($pimarchivesloanandreturnupdatestatedefault==pimarchivesloanandreturnupdatestatedefault);
-                eval((RuleUtils.test($pimarchivesloanandreturnupdatestatedefault.get("JYQSSJ"),"ISNOTNULL",""))&&(RuleUtils.test($pimarchivesloanandreturnupdatestatedefault.get("GHRQ"),"ISNOTNULL","")))
-                ]]>
-            </conditionExpression>
-     </sequenceFlow>
-     <sequenceFlow id="b15b2fc7762681fa3e4317c4fbfc6199" sourceRef="gateway-ac39dd7df9ce92e4ef79c88b97684793" targetRef="3a7fd688a0d19456f335a79de883099e">
+     <sequenceFlow id="134a44ee9487a8458aa8e7f0c04bc458" sourceRef="gateway-ac39dd7df9ce92e4ef79c88b97684793" targetRef="3a7fd688a0d19456f335a79de883099e">
             <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
             $pimarchivesloanandreturnupdatestatedefault:PIMARCHIVESLOANANDRETURN();
             eval($pimarchivesloanandreturnupdatestatedefault==pimarchivesloanandreturnupdatestatedefault);
@@ -30,8 +22,16 @@
                 ]]>
             </conditionExpression>
      </sequenceFlow>
+     <sequenceFlow id="9e76781ea4ecb77686414256676a3932" sourceRef="gateway-ac39dd7df9ce92e4ef79c88b97684793" targetRef="a3d986365b3d06e7711e455ecefdc337">
+            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+            $pimarchivesloanandreturnupdatestatedefault:PIMARCHIVESLOANANDRETURN();
+            eval($pimarchivesloanandreturnupdatestatedefault==pimarchivesloanandreturnupdatestatedefault);
+                eval((RuleUtils.test($pimarchivesloanandreturnupdatestatedefault.get("JYQSSJ"),"ISNOTNULL",""))&&(RuleUtils.test($pimarchivesloanandreturnupdatestatedefault.get("GHRQ"),"ISNOTNULL","")))
+                ]]>
+            </conditionExpression>
+     </sequenceFlow>
     <exclusiveGateway id="gateway-ac39dd7df9ce92e4ef79c88b97684793" name="Gateway" gatewayDirection="Diverging" default="gateway-ac39dd7df9ce92e4ef79c88b97684793_End_Line"></exclusiveGateway>
-    <sequenceFlow id="41cd7e05f79f16faba589777a26d97c6-gatewayline" sourceRef="ac39dd7df9ce92e4ef79c88b97684793" targetRef="gateway-ac39dd7df9ce92e4ef79c88b97684793"></sequenceFlow>
+    <sequenceFlow id="134a44ee9487a8458aa8e7f0c04bc458-gatewayline" sourceRef="ac39dd7df9ce92e4ef79c88b97684793" targetRef="gateway-ac39dd7df9ce92e4ef79c88b97684793"></sequenceFlow>
     <sequenceFlow id="gateway-ac39dd7df9ce92e4ef79c88b97684793_End_Line" sourceRef="gateway-ac39dd7df9ce92e4ef79c88b97684793" targetRef="gateway-ac39dd7df9ce92e4ef79c88b97684793_End"/>
     <endEvent id="gateway-ac39dd7df9ce92e4ef79c88b97684793_End" name="End"/>
     </process>

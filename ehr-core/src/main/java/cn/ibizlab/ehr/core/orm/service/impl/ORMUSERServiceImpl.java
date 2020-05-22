@@ -51,14 +51,6 @@ public class ORMUSERServiceImpl extends ServiceImpl<ORMUSERMapper, ORMUSER> impl
     @Lazy
     private cn.ibizlab.ehr.core.orm.service.IORMORGService ormorgService;
 
-    @Autowired
-    @Lazy
-    private cn.ibizlab.ehr.core.orm.service.logic.IORMUSERCreateRelatedInfoLogic createrelatedinfoLogic;
-
-    @Autowired
-    @Lazy
-    private cn.ibizlab.ehr.core.orm.service.logic.IORMUSERUpdateRelatedInfoLogic updaterelatedinfoLogic;
-
     private int batchSize = 500;
 
     @Override
@@ -81,7 +73,6 @@ public class ORMUSERServiceImpl extends ServiceImpl<ORMUSERMapper, ORMUSER> impl
         if(!this.retBool(this.baseMapper.insert(et)))
             return false;
         CachedBeanCopier.copy(get(et.getOrguserid()),et);
-        createrelatedinfoLogic.execute(et);
         return true;
     }
 
@@ -110,7 +101,6 @@ public class ORMUSERServiceImpl extends ServiceImpl<ORMUSERMapper, ORMUSER> impl
         if(!update(et,(Wrapper) et.getUpdateWrapper(true).eq("orguserid",et.getOrguserid())))
             return false;
         CachedBeanCopier.copy(get(et.getOrguserid()),et);
-        updaterelatedinfoLogic.execute(et);
         return true;
     }
 

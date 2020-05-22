@@ -50,12 +50,11 @@ public class ORMBMGWBZResource {
 
     @Autowired
     @Lazy
-    private ORMBMGWBZMapping ormbmgwbzMapping;
+    public ORMBMGWBZMapping ormbmgwbzMapping;
 
+    public ORMBMGWBZDTO permissionDTO=new ORMBMGWBZDTO();
 
-
-
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.ormbmgwbzMapping,#ormbmgwbzdto})")
     @ApiOperation(value = "Create", tags = {"ORMBMGWBZ" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormbmgwbzs")
     @Transactional
@@ -66,7 +65,7 @@ public class ORMBMGWBZResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatch", tags = {"ORMBMGWBZ" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormbmgwbzs/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<ORMBMGWBZDTO> ormbmgwbzdtos) {
@@ -74,19 +73,14 @@ public class ORMBMGWBZResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMBMGWBZ-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"ORMBMGWBZ" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormbmgwbzs/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody ORMBMGWBZDTO ormbmgwbzdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(ormbmgwbzService.checkKey(ormbmgwbzMapping.toDomain(ormbmgwbzdto)));
     }
 
-
-
-
-    @PreAuthorize("hasPermission(#ormbmgwbz_id,'Get',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#ormbmgwbz_id,'Get',{'Sql',this.ormbmgwbzMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"ORMBMGWBZ" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/ormbmgwbzs/{ormbmgwbz_id}")
     public ResponseEntity<ORMBMGWBZDTO> get(@PathVariable("ormbmgwbz_id") String ormbmgwbz_id) {
@@ -95,15 +89,14 @@ public class ORMBMGWBZResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-
-
-
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMBMGWBZ-Save-all')")
     @ApiOperation(value = "Save", tags = {"ORMBMGWBZ" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormbmgwbzs/save")
     public ResponseEntity<Boolean> save(@RequestBody ORMBMGWBZDTO ormbmgwbzdto) {
         return ResponseEntity.status(HttpStatus.OK).body(ormbmgwbzService.save(ormbmgwbzMapping.toDomain(ormbmgwbzdto)));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"ORMBMGWBZ" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormbmgwbzs/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<ORMBMGWBZDTO> ormbmgwbzdtos) {
@@ -111,10 +104,7 @@ public class ORMBMGWBZResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    @PreAuthorize("hasPermission(#ormbmgwbz_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#ormbmgwbz_id,'Update',{'Sql',this.ormbmgwbzMapping,#ormbmgwbzdto})")
     @ApiOperation(value = "Update", tags = {"ORMBMGWBZ" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/ormbmgwbzs/{ormbmgwbz_id}")
     @Transactional
@@ -126,7 +116,7 @@ public class ORMBMGWBZResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#ormbmgwbz_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"ORMBMGWBZ" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/ormbmgwbzs/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<ORMBMGWBZDTO> ormbmgwbzdtos) {
@@ -134,19 +124,14 @@ public class ORMBMGWBZResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMBMGWBZ-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"ORMBMGWBZ" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/ormbmgwbzs/getdraft")
     public ResponseEntity<ORMBMGWBZDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(ormbmgwbzMapping.toDto(ormbmgwbzService.getDraft(new ORMBMGWBZ())));
     }
 
-
-
-
-    @PreAuthorize("hasPermission('Remove',{#ormbmgwbz_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#ormbmgwbz_id,'Remove',{'Sql',this.ormbmgwbzMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"ORMBMGWBZ" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/ormbmgwbzs/{ormbmgwbz_id}")
     @Transactional
@@ -154,6 +139,7 @@ public class ORMBMGWBZResource {
          return ResponseEntity.status(HttpStatus.OK).body(ormbmgwbzService.remove(ormbmgwbz_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"ORMBMGWBZ" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/ormbmgwbzs/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -161,7 +147,7 @@ public class ORMBMGWBZResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMBMGWBZ-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"ORMBMGWBZ" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/ormbmgwbzs/fetchdefault")
 	public ResponseEntity<List<ORMBMGWBZDTO>> fetchDefault(ORMBMGWBZSearchContext context) {
@@ -174,22 +160,12 @@ public class ORMBMGWBZResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMBMGWBZ-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"ORMBMGWBZ" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/ormbmgwbzs/searchdefault")
-	public ResponseEntity<Page<ORMBMGWBZDTO>> searchDefault(ORMBMGWBZSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/ormbmgwbzs/searchdefault")
+	public ResponseEntity<Page<ORMBMGWBZDTO>> searchDefault(@RequestBody ORMBMGWBZSearchContext context) {
         Page<ORMBMGWBZ> domains = ormbmgwbzService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(ormbmgwbzMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
-    /**
-     * 用户权限校验
-     * @return
-     */
-	public ORMBMGWBZ getEntity(){
-        return new ORMBMGWBZ();
-    }
-
 }

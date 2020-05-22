@@ -50,12 +50,11 @@ public class PIMVOCATIONALResource {
 
     @Autowired
     @Lazy
-    private PIMVOCATIONALMapping pimvocationalMapping;
+    public PIMVOCATIONALMapping pimvocationalMapping;
 
+    public PIMVOCATIONALDTO permissionDTO=new PIMVOCATIONALDTO();
 
-
-
-    @PreAuthorize("hasPermission(#pimvocational_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#pimvocational_id,'Update',{'Sql',this.pimvocationalMapping,#pimvocationaldto})")
     @ApiOperation(value = "Update", tags = {"PIMVOCATIONAL" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimvocationals/{pimvocational_id}")
     @Transactional
@@ -67,7 +66,7 @@ public class PIMVOCATIONALResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#pimvocational_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"PIMVOCATIONAL" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimvocationals/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PIMVOCATIONALDTO> pimvocationaldtos) {
@@ -75,10 +74,7 @@ public class PIMVOCATIONALResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.pimvocationalMapping,#pimvocationaldto})")
     @ApiOperation(value = "Create", tags = {"PIMVOCATIONAL" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimvocationals")
     @Transactional
@@ -89,7 +85,7 @@ public class PIMVOCATIONALResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatch", tags = {"PIMVOCATIONAL" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimvocationals/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PIMVOCATIONALDTO> pimvocationaldtos) {
@@ -97,19 +93,14 @@ public class PIMVOCATIONALResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMVOCATIONAL-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"PIMVOCATIONAL" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimvocationals/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PIMVOCATIONALDTO pimvocationaldto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pimvocationalService.checkKey(pimvocationalMapping.toDomain(pimvocationaldto)));
     }
 
-
-
-
-    @PreAuthorize("hasPermission('Remove',{#pimvocational_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#pimvocational_id,'Remove',{'Sql',this.pimvocationalMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"PIMVOCATIONAL" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimvocationals/{pimvocational_id}")
     @Transactional
@@ -117,6 +108,7 @@ public class PIMVOCATIONALResource {
          return ResponseEntity.status(HttpStatus.OK).body(pimvocationalService.remove(pimvocational_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"PIMVOCATIONAL" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimvocationals/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -124,15 +116,14 @@ public class PIMVOCATIONALResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMVOCATIONAL-Save-all')")
     @ApiOperation(value = "Save", tags = {"PIMVOCATIONAL" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimvocationals/save")
     public ResponseEntity<Boolean> save(@RequestBody PIMVOCATIONALDTO pimvocationaldto) {
         return ResponseEntity.status(HttpStatus.OK).body(pimvocationalService.save(pimvocationalMapping.toDomain(pimvocationaldto)));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"PIMVOCATIONAL" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimvocationals/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PIMVOCATIONALDTO> pimvocationaldtos) {
@@ -140,10 +131,7 @@ public class PIMVOCATIONALResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    @PreAuthorize("hasPermission(#pimvocational_id,'Get',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#pimvocational_id,'Get',{'Sql',this.pimvocationalMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"PIMVOCATIONAL" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimvocationals/{pimvocational_id}")
     public ResponseEntity<PIMVOCATIONALDTO> get(@PathVariable("pimvocational_id") String pimvocational_id) {
@@ -152,16 +140,14 @@ public class PIMVOCATIONALResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-
-
-
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMVOCATIONAL-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"PIMVOCATIONAL" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimvocationals/getdraft")
     public ResponseEntity<PIMVOCATIONALDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(pimvocationalMapping.toDto(pimvocationalService.getDraft(new PIMVOCATIONAL())));
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'REP_VOCATIONAL',this.getEntity(),'Sql'})")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMVOCATIONAL-REP_VOCATIONAL-all')")
 	@ApiOperation(value = "fetchREP_VOCATIONAL", tags = {"PIMVOCATIONAL" } ,notes = "fetchREP_VOCATIONAL")
     @RequestMapping(method= RequestMethod.GET , value="/pimvocationals/fetchrep_vocational")
 	public ResponseEntity<List<HashMap>> fetchREP_VOCATIONAL(PIMVOCATIONALSearchContext context) {
@@ -173,16 +159,15 @@ public class PIMVOCATIONALResource {
                 .body(domains.getContent());
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'REP_VOCATIONAL',this.getEntity(),'Sql'})")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMVOCATIONAL-REP_VOCATIONAL-all')")
 	@ApiOperation(value = "searchREP_VOCATIONAL", tags = {"PIMVOCATIONAL" } ,notes = "searchREP_VOCATIONAL")
-    @RequestMapping(method= RequestMethod.GET , value="/pimvocationals/searchrep_vocational")
-	public ResponseEntity<Page<HashMap>> searchREP_VOCATIONAL(PIMVOCATIONALSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimvocationals/searchrep_vocational")
+	public ResponseEntity<Page<HashMap>> searchREP_VOCATIONAL(@RequestBody PIMVOCATIONALSearchContext context) {
         Page<HashMap> domains = pimvocationalService.searchREP_VOCATIONAL(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(domains.getContent(), context.getPageable(), domains.getTotalElements()));
 	}
-
-    @PreAuthorize("hasPermission('Get',{#context,'AscriptionSysDQ',this.getEntity(),'Sql'})")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMVOCATIONAL-AscriptionSysDQ-all')")
 	@ApiOperation(value = "fetch记录所属是管理员的", tags = {"PIMVOCATIONAL" } ,notes = "fetch记录所属是管理员的")
     @RequestMapping(method= RequestMethod.GET , value="/pimvocationals/fetchascriptionsysdq")
 	public ResponseEntity<List<PIMVOCATIONALDTO>> fetchAscriptionSysDQ(PIMVOCATIONALSearchContext context) {
@@ -195,16 +180,15 @@ public class PIMVOCATIONALResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'AscriptionSysDQ',this.getEntity(),'Sql'})")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMVOCATIONAL-AscriptionSysDQ-all')")
 	@ApiOperation(value = "search记录所属是管理员的", tags = {"PIMVOCATIONAL" } ,notes = "search记录所属是管理员的")
-    @RequestMapping(method= RequestMethod.GET , value="/pimvocationals/searchascriptionsysdq")
-	public ResponseEntity<Page<PIMVOCATIONALDTO>> searchAscriptionSysDQ(PIMVOCATIONALSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimvocationals/searchascriptionsysdq")
+	public ResponseEntity<Page<PIMVOCATIONALDTO>> searchAscriptionSysDQ(@RequestBody PIMVOCATIONALSearchContext context) {
         Page<PIMVOCATIONAL> domains = pimvocationalService.searchAscriptionSysDQ(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimvocationalMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMVOCATIONAL-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PIMVOCATIONAL" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimvocationals/fetchdefault")
 	public ResponseEntity<List<PIMVOCATIONALDTO>> fetchDefault(PIMVOCATIONALSearchContext context) {
@@ -217,16 +201,15 @@ public class PIMVOCATIONALResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMVOCATIONAL-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PIMVOCATIONAL" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/pimvocationals/searchdefault")
-	public ResponseEntity<Page<PIMVOCATIONALDTO>> searchDefault(PIMVOCATIONALSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimvocationals/searchdefault")
+	public ResponseEntity<Page<PIMVOCATIONALDTO>> searchDefault(@RequestBody PIMVOCATIONALSearchContext context) {
         Page<PIMVOCATIONAL> domains = pimvocationalService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimvocationalMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-    @PreAuthorize("hasPermission('Get',{#context,'JLSS',this.getEntity(),'Sql'})")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMVOCATIONAL-JLSS-all')")
 	@ApiOperation(value = "fetch记录所属于", tags = {"PIMVOCATIONAL" } ,notes = "fetch记录所属于")
     @RequestMapping(method= RequestMethod.GET , value="/pimvocationals/fetchjlss")
 	public ResponseEntity<List<PIMVOCATIONALDTO>> fetchJLSS(PIMVOCATIONALSearchContext context) {
@@ -239,16 +222,15 @@ public class PIMVOCATIONALResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'JLSS',this.getEntity(),'Sql'})")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMVOCATIONAL-JLSS-all')")
 	@ApiOperation(value = "search记录所属于", tags = {"PIMVOCATIONAL" } ,notes = "search记录所属于")
-    @RequestMapping(method= RequestMethod.GET , value="/pimvocationals/searchjlss")
-	public ResponseEntity<Page<PIMVOCATIONALDTO>> searchJLSS(PIMVOCATIONALSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimvocationals/searchjlss")
+	public ResponseEntity<Page<PIMVOCATIONALDTO>> searchJLSS(@RequestBody PIMVOCATIONALSearchContext context) {
         Page<PIMVOCATIONAL> domains = pimvocationalService.searchJLSS(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimvocationalMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-    @PreAuthorize("hasPermission('Get',{#context,'ZIZHU',this.getEntity(),'Sql'})")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMVOCATIONAL-ZIZHU-all')")
 	@ApiOperation(value = "fetch自助(证书信息)", tags = {"PIMVOCATIONAL" } ,notes = "fetch自助(证书信息)")
     @RequestMapping(method= RequestMethod.GET , value="/pimvocationals/fetchzizhu")
 	public ResponseEntity<List<PIMVOCATIONALDTO>> fetchZIZHU(PIMVOCATIONALSearchContext context) {
@@ -261,17 +243,15 @@ public class PIMVOCATIONALResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'ZIZHU',this.getEntity(),'Sql'})")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMVOCATIONAL-ZIZHU-all')")
 	@ApiOperation(value = "search自助(证书信息)", tags = {"PIMVOCATIONAL" } ,notes = "search自助(证书信息)")
-    @RequestMapping(method= RequestMethod.GET , value="/pimvocationals/searchzizhu")
-	public ResponseEntity<Page<PIMVOCATIONALDTO>> searchZIZHU(PIMVOCATIONALSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimvocationals/searchzizhu")
+	public ResponseEntity<Page<PIMVOCATIONALDTO>> searchZIZHU(@RequestBody PIMVOCATIONALSearchContext context) {
         Page<PIMVOCATIONAL> domains = pimvocationalService.searchZIZHU(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimvocationalMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
-
+    //@PreAuthorize("hasPermission(#pimvocational_id,'Update',{'Sql',this.pimvocationalMapping,#pimvocationaldto})")
     @ApiOperation(value = "UpdateByPIMPERSON", tags = {"PIMVOCATIONAL" },  notes = "UpdateByPIMPERSON")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimpeople/{pimperson_id}/pimvocationals/{pimvocational_id}")
     @Transactional
@@ -284,6 +264,7 @@ public class PIMVOCATIONALResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatchByPIMPERSON", tags = {"PIMVOCATIONAL" },  notes = "UpdateBatchByPIMPERSON")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimpeople/{pimperson_id}/pimvocationals/batch")
     public ResponseEntity<Boolean> updateBatchByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody List<PIMVOCATIONALDTO> pimvocationaldtos) {
@@ -295,6 +276,7 @@ public class PIMVOCATIONALResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    //@PreAuthorize("hasPermission('','Create',{'Sql',this.pimvocationalMapping,#pimvocationaldto})")
     @ApiOperation(value = "CreateByPIMPERSON", tags = {"PIMVOCATIONAL" },  notes = "CreateByPIMPERSON")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimvocationals")
     @Transactional
@@ -306,6 +288,7 @@ public class PIMVOCATIONALResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatchByPIMPERSON", tags = {"PIMVOCATIONAL" },  notes = "createBatchByPIMPERSON")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimvocationals/batch")
     public ResponseEntity<Boolean> createBatchByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody List<PIMVOCATIONALDTO> pimvocationaldtos) {
@@ -317,12 +300,14 @@ public class PIMVOCATIONALResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMVOCATIONAL-CheckKey-all')")
     @ApiOperation(value = "CheckKeyByPIMPERSON", tags = {"PIMVOCATIONAL" },  notes = "CheckKeyByPIMPERSON")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimvocationals/checkkey")
     public ResponseEntity<Boolean> checkKeyByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMVOCATIONALDTO pimvocationaldto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pimvocationalService.checkKey(pimvocationalMapping.toDomain(pimvocationaldto)));
     }
 
+    //@PreAuthorize("hasPermission(#pimvocational_id,'Remove',{'Sql',this.pimvocationalMapping,this.permissionDTO})")
     @ApiOperation(value = "RemoveByPIMPERSON", tags = {"PIMVOCATIONAL" },  notes = "RemoveByPIMPERSON")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimpeople/{pimperson_id}/pimvocationals/{pimvocational_id}")
     @Transactional
@@ -330,6 +315,7 @@ public class PIMVOCATIONALResource {
 		return ResponseEntity.status(HttpStatus.OK).body(pimvocationalService.remove(pimvocational_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatchByPIMPERSON", tags = {"PIMVOCATIONAL" },  notes = "RemoveBatchByPIMPERSON")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimpeople/{pimperson_id}/pimvocationals/batch")
     public ResponseEntity<Boolean> removeBatchByPIMPERSON(@RequestBody List<String> ids) {
@@ -337,6 +323,7 @@ public class PIMVOCATIONALResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMVOCATIONAL-Save-all')")
     @ApiOperation(value = "SaveByPIMPERSON", tags = {"PIMVOCATIONAL" },  notes = "SaveByPIMPERSON")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimvocationals/save")
     public ResponseEntity<Boolean> saveByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMVOCATIONALDTO pimvocationaldto) {
@@ -345,6 +332,7 @@ public class PIMVOCATIONALResource {
         return ResponseEntity.status(HttpStatus.OK).body(pimvocationalService.save(domain));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatchByPIMPERSON", tags = {"PIMVOCATIONAL" },  notes = "SaveBatchByPIMPERSON")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimvocationals/savebatch")
     public ResponseEntity<Boolean> saveBatchByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody List<PIMVOCATIONALDTO> pimvocationaldtos) {
@@ -356,6 +344,7 @@ public class PIMVOCATIONALResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    //@PreAuthorize("hasPermission(#pimvocational_id,'Get',{'Sql',this.pimvocationalMapping,this.permissionDTO})")
     @ApiOperation(value = "GetByPIMPERSON", tags = {"PIMVOCATIONAL" },  notes = "GetByPIMPERSON")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimpeople/{pimperson_id}/pimvocationals/{pimvocational_id}")
     public ResponseEntity<PIMVOCATIONALDTO> getByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimvocational_id") String pimvocational_id) {
@@ -364,6 +353,7 @@ public class PIMVOCATIONALResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMVOCATIONAL-GetDraft-all')")
     @ApiOperation(value = "GetDraftByPIMPERSON", tags = {"PIMVOCATIONAL" },  notes = "GetDraftByPIMPERSON")
     @RequestMapping(method = RequestMethod.GET, value = "/pimpeople/{pimperson_id}/pimvocationals/getdraft")
     public ResponseEntity<PIMVOCATIONALDTO> getDraftByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id) {
@@ -372,6 +362,7 @@ public class PIMVOCATIONALResource {
         return ResponseEntity.status(HttpStatus.OK).body(pimvocationalMapping.toDto(pimvocationalService.getDraft(domain)));
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMVOCATIONAL-REP_VOCATIONAL-all')")
 	@ApiOperation(value = "fetchREP_VOCATIONALByPIMPERSON", tags = {"PIMVOCATIONAL" } ,notes = "fetchREP_VOCATIONALByPIMPERSON")
     @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/pimvocationals/fetchrep_vocational")
 	public ResponseEntity<List<HashMap>> fetchPIMVOCATIONALREP_VOCATIONALByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id,PIMVOCATIONALSearchContext context) {
@@ -384,15 +375,16 @@ public class PIMVOCATIONALResource {
                 .body(domains.getContent());
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMVOCATIONAL-REP_VOCATIONAL-all')")
 	@ApiOperation(value = "searchREP_VOCATIONALByPIMPERSON", tags = {"PIMVOCATIONAL" } ,notes = "searchREP_VOCATIONALByPIMPERSON")
-    @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/pimvocationals/searchrep_vocational")
-	public ResponseEntity<Page<HashMap>> searchPIMVOCATIONALREP_VOCATIONALByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id,PIMVOCATIONALSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/pimvocationals/searchrep_vocational")
+	public ResponseEntity<Page<HashMap>> searchPIMVOCATIONALREP_VOCATIONALByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMVOCATIONALSearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
         Page<HashMap> domains = pimvocationalService.searchREP_VOCATIONAL(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(domains.getContent(), context.getPageable(), domains.getTotalElements()));
 	}
-
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMVOCATIONAL-AscriptionSysDQ-all')")
 	@ApiOperation(value = "fetch记录所属是管理员的ByPIMPERSON", tags = {"PIMVOCATIONAL" } ,notes = "fetch记录所属是管理员的ByPIMPERSON")
     @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/pimvocationals/fetchascriptionsysdq")
 	public ResponseEntity<List<PIMVOCATIONALDTO>> fetchPIMVOCATIONALAscriptionSysDQByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id,PIMVOCATIONALSearchContext context) {
@@ -406,15 +398,16 @@ public class PIMVOCATIONALResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMVOCATIONAL-AscriptionSysDQ-all')")
 	@ApiOperation(value = "search记录所属是管理员的ByPIMPERSON", tags = {"PIMVOCATIONAL" } ,notes = "search记录所属是管理员的ByPIMPERSON")
-    @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/pimvocationals/searchascriptionsysdq")
-	public ResponseEntity<Page<PIMVOCATIONALDTO>> searchPIMVOCATIONALAscriptionSysDQByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id,PIMVOCATIONALSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/pimvocationals/searchascriptionsysdq")
+	public ResponseEntity<Page<PIMVOCATIONALDTO>> searchPIMVOCATIONALAscriptionSysDQByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMVOCATIONALSearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
         Page<PIMVOCATIONAL> domains = pimvocationalService.searchAscriptionSysDQ(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimvocationalMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMVOCATIONAL-Default-all')")
 	@ApiOperation(value = "fetchDEFAULTByPIMPERSON", tags = {"PIMVOCATIONAL" } ,notes = "fetchDEFAULTByPIMPERSON")
     @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/pimvocationals/fetchdefault")
 	public ResponseEntity<List<PIMVOCATIONALDTO>> fetchPIMVOCATIONALDefaultByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id,PIMVOCATIONALSearchContext context) {
@@ -428,15 +421,16 @@ public class PIMVOCATIONALResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMVOCATIONAL-Default-all')")
 	@ApiOperation(value = "searchDEFAULTByPIMPERSON", tags = {"PIMVOCATIONAL" } ,notes = "searchDEFAULTByPIMPERSON")
-    @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/pimvocationals/searchdefault")
-	public ResponseEntity<Page<PIMVOCATIONALDTO>> searchPIMVOCATIONALDefaultByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id,PIMVOCATIONALSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/pimvocationals/searchdefault")
+	public ResponseEntity<Page<PIMVOCATIONALDTO>> searchPIMVOCATIONALDefaultByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMVOCATIONALSearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
         Page<PIMVOCATIONAL> domains = pimvocationalService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimvocationalMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMVOCATIONAL-JLSS-all')")
 	@ApiOperation(value = "fetch记录所属于ByPIMPERSON", tags = {"PIMVOCATIONAL" } ,notes = "fetch记录所属于ByPIMPERSON")
     @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/pimvocationals/fetchjlss")
 	public ResponseEntity<List<PIMVOCATIONALDTO>> fetchPIMVOCATIONALJLSSByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id,PIMVOCATIONALSearchContext context) {
@@ -450,15 +444,16 @@ public class PIMVOCATIONALResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMVOCATIONAL-JLSS-all')")
 	@ApiOperation(value = "search记录所属于ByPIMPERSON", tags = {"PIMVOCATIONAL" } ,notes = "search记录所属于ByPIMPERSON")
-    @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/pimvocationals/searchjlss")
-	public ResponseEntity<Page<PIMVOCATIONALDTO>> searchPIMVOCATIONALJLSSByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id,PIMVOCATIONALSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/pimvocationals/searchjlss")
+	public ResponseEntity<Page<PIMVOCATIONALDTO>> searchPIMVOCATIONALJLSSByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMVOCATIONALSearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
         Page<PIMVOCATIONAL> domains = pimvocationalService.searchJLSS(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimvocationalMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMVOCATIONAL-ZIZHU-all')")
 	@ApiOperation(value = "fetch自助(证书信息)ByPIMPERSON", tags = {"PIMVOCATIONAL" } ,notes = "fetch自助(证书信息)ByPIMPERSON")
     @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/pimvocationals/fetchzizhu")
 	public ResponseEntity<List<PIMVOCATIONALDTO>> fetchPIMVOCATIONALZIZHUByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id,PIMVOCATIONALSearchContext context) {
@@ -472,22 +467,13 @@ public class PIMVOCATIONALResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMVOCATIONAL-ZIZHU-all')")
 	@ApiOperation(value = "search自助(证书信息)ByPIMPERSON", tags = {"PIMVOCATIONAL" } ,notes = "search自助(证书信息)ByPIMPERSON")
-    @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/pimvocationals/searchzizhu")
-	public ResponseEntity<Page<PIMVOCATIONALDTO>> searchPIMVOCATIONALZIZHUByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id,PIMVOCATIONALSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/pimvocationals/searchzizhu")
+	public ResponseEntity<Page<PIMVOCATIONALDTO>> searchPIMVOCATIONALZIZHUByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMVOCATIONALSearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
         Page<PIMVOCATIONAL> domains = pimvocationalService.searchZIZHU(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimvocationalMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
-    /**
-     * 用户权限校验
-     * @return
-     */
-	public PIMVOCATIONAL getEntity(){
-        return new PIMVOCATIONAL();
-    }
-
 }

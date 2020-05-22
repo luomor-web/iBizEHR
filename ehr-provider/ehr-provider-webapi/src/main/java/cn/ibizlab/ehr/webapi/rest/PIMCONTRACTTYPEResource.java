@@ -50,12 +50,11 @@ public class PIMCONTRACTTYPEResource {
 
     @Autowired
     @Lazy
-    private PIMCONTRACTTYPEMapping pimcontracttypeMapping;
+    public PIMCONTRACTTYPEMapping pimcontracttypeMapping;
 
+    public PIMCONTRACTTYPEDTO permissionDTO=new PIMCONTRACTTYPEDTO();
 
-
-
-    @PreAuthorize("hasPermission(#pimcontracttype_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#pimcontracttype_id,'Update',{'Sql',this.pimcontracttypeMapping,#pimcontracttypedto})")
     @ApiOperation(value = "Update", tags = {"PIMCONTRACTTYPE" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimcontracttypes/{pimcontracttype_id}")
     @Transactional
@@ -67,7 +66,7 @@ public class PIMCONTRACTTYPEResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#pimcontracttype_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"PIMCONTRACTTYPE" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimcontracttypes/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PIMCONTRACTTYPEDTO> pimcontracttypedtos) {
@@ -75,15 +74,14 @@ public class PIMCONTRACTTYPEResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMCONTRACTTYPE-Save-all')")
     @ApiOperation(value = "Save", tags = {"PIMCONTRACTTYPE" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimcontracttypes/save")
     public ResponseEntity<Boolean> save(@RequestBody PIMCONTRACTTYPEDTO pimcontracttypedto) {
         return ResponseEntity.status(HttpStatus.OK).body(pimcontracttypeService.save(pimcontracttypeMapping.toDomain(pimcontracttypedto)));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"PIMCONTRACTTYPE" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimcontracttypes/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PIMCONTRACTTYPEDTO> pimcontracttypedtos) {
@@ -91,10 +89,7 @@ public class PIMCONTRACTTYPEResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    @PreAuthorize("hasPermission('Remove',{#pimcontracttype_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#pimcontracttype_id,'Remove',{'Sql',this.pimcontracttypeMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"PIMCONTRACTTYPE" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimcontracttypes/{pimcontracttype_id}")
     @Transactional
@@ -102,6 +97,7 @@ public class PIMCONTRACTTYPEResource {
          return ResponseEntity.status(HttpStatus.OK).body(pimcontracttypeService.remove(pimcontracttype_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"PIMCONTRACTTYPE" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimcontracttypes/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -109,10 +105,7 @@ public class PIMCONTRACTTYPEResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.pimcontracttypeMapping,#pimcontracttypedto})")
     @ApiOperation(value = "Create", tags = {"PIMCONTRACTTYPE" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimcontracttypes")
     @Transactional
@@ -123,7 +116,7 @@ public class PIMCONTRACTTYPEResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatch", tags = {"PIMCONTRACTTYPE" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimcontracttypes/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PIMCONTRACTTYPEDTO> pimcontracttypedtos) {
@@ -131,10 +124,7 @@ public class PIMCONTRACTTYPEResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    @PreAuthorize("hasPermission(#pimcontracttype_id,'Get',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#pimcontracttype_id,'Get',{'Sql',this.pimcontracttypeMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"PIMCONTRACTTYPE" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimcontracttypes/{pimcontracttype_id}")
     public ResponseEntity<PIMCONTRACTTYPEDTO> get(@PathVariable("pimcontracttype_id") String pimcontracttype_id) {
@@ -143,25 +133,21 @@ public class PIMCONTRACTTYPEResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-
-
-
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMCONTRACTTYPE-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"PIMCONTRACTTYPE" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimcontracttypes/getdraft")
     public ResponseEntity<PIMCONTRACTTYPEDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(pimcontracttypeMapping.toDto(pimcontracttypeService.getDraft(new PIMCONTRACTTYPE())));
     }
 
-
-
-
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMCONTRACTTYPE-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"PIMCONTRACTTYPE" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimcontracttypes/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PIMCONTRACTTYPEDTO pimcontracttypedto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pimcontracttypeService.checkKey(pimcontracttypeMapping.toDomain(pimcontracttypedto)));
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMCONTRACTTYPE-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PIMCONTRACTTYPE" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimcontracttypes/fetchdefault")
 	public ResponseEntity<List<PIMCONTRACTTYPEDTO>> fetchDefault(PIMCONTRACTTYPESearchContext context) {
@@ -174,22 +160,12 @@ public class PIMCONTRACTTYPEResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMCONTRACTTYPE-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PIMCONTRACTTYPE" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/pimcontracttypes/searchdefault")
-	public ResponseEntity<Page<PIMCONTRACTTYPEDTO>> searchDefault(PIMCONTRACTTYPESearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimcontracttypes/searchdefault")
+	public ResponseEntity<Page<PIMCONTRACTTYPEDTO>> searchDefault(@RequestBody PIMCONTRACTTYPESearchContext context) {
         Page<PIMCONTRACTTYPE> domains = pimcontracttypeService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimcontracttypeMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
-    /**
-     * 用户权限校验
-     * @return
-     */
-	public PIMCONTRACTTYPE getEntity(){
-        return new PIMCONTRACTTYPE();
-    }
-
 }

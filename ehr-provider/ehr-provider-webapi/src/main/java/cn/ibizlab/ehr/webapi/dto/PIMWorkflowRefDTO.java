@@ -90,22 +90,6 @@ public class PIMWorkflowRefDTO extends DTOBase implements Serializable {
     private String ormorgid;
 
     /**
-     * 属性 [WFWORKFLOWNAME]
-     *
-     */
-    @JSONField(name = "wfworkflowname")
-    @JsonProperty("wfworkflowname")
-    private String wfworkflowname;
-
-    /**
-     * 属性 [WFWORKFLOWID]
-     *
-     */
-    @JSONField(name = "wfworkflowid")
-    @JsonProperty("wfworkflowid")
-    private String wfworkflowid;
-
-    /**
      * 属性 [PIMWORKFLOWID]
      *
      */
@@ -120,14 +104,6 @@ public class PIMWorkflowRefDTO extends DTOBase implements Serializable {
     public void setPimworkflowrefname(String  pimworkflowrefname){
         this.pimworkflowrefname = pimworkflowrefname ;
         this.modify("pimworkflowrefname",pimworkflowrefname);
-    }
-
-    /**
-     * 设置 [WFWORKFLOWID]
-     */
-    public void setWfworkflowid(String  wfworkflowid){
-        this.wfworkflowid = wfworkflowid ;
-        this.modify("wfworkflowid",wfworkflowid);
     }
 
     /**

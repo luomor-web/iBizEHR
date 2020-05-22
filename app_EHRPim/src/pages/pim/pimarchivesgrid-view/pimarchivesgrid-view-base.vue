@@ -9,7 +9,7 @@
     </template>
     <template slot="headerRight">
       <div class="view-header-right">
-        <app-header-menus :toolbarModel="toolBarModels" @menu-click="toolbar_click($event)" mode="view" :openMode="openMode" :isEnableQuickSearch="true" v-model="query" @search="onSearch($event)"/>
+        <app-header-menus :toolbarModel="toolBarModels" @menu-click="toolbar_click($event)" mode="view" :openMode="openMode" :isEnableQuickSearch="true" searchPlaceholder="员工姓名" v-model="query" @search="onSearch($event)"/>
       </div>
     </template>
     <template slot="content">
@@ -95,6 +95,15 @@ export default class PIMARCHIVESGridViewBase extends GridViewBase {
      */
     public appEntityService: PIMARCHIVESService = new PIMARCHIVESService;
 
+
+    /**
+     * 计数器服务对象集合
+     *
+     * @type {Array<*>}
+     * @memberof PIMARCHIVESGridViewBase
+     */    
+    public counterServiceArray:Array<any> = [];
+    
     /**
      * 数据变化
      *
@@ -130,7 +139,7 @@ export default class PIMARCHIVESGridViewBase extends GridViewBase {
 	 * @type {*}
 	 * @memberof PIMARCHIVESGridViewBase
 	 */
-    protected customViewNavContexts:any ={
+    public customViewNavContexts:any ={
     };
 
 	/**
@@ -139,7 +148,7 @@ export default class PIMARCHIVESGridViewBase extends GridViewBase {
 	 * @type {*}
 	 * @memberof PIMARCHIVESGridViewBase
 	 */
-    protected customViewParams:any ={
+    public customViewParams:any ={
     };
 
     /**
@@ -170,12 +179,11 @@ export default class PIMARCHIVESGridViewBase extends GridViewBase {
     /**
      * 视图状态订阅对象
      *
-     * @private
+     * @public
      * @type {Subject<{action: string, data: any}>}
      * @memberof PIMARCHIVESGridViewBase
      */
     public viewState: Subject<ViewState> = new Subject();
-
     /**
      * 工具栏模型
      *
@@ -183,11 +191,11 @@ export default class PIMARCHIVESGridViewBase extends GridViewBase {
      * @memberof PIMARCHIVESGridView
      */
     public toolBarModels: any = {
-        deuiaction4: { name: 'deuiaction4', caption: '导入','isShowCaption':true,'isShowIcon':true, tooltip: '导入', iconcls: 'fa fa-upload', icon: '', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: 'SRFUR__JGLYYPZSZYJTJ', uiaction: { tag: 'Import', target: '' }, class: '' },
+        tbitem3: { name: 'tbitem3', caption: '新建','isShowCaption':true,'isShowIcon':true, tooltip: '新建', iconcls: 'fa fa-file-text-o', icon: '', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: 'SRFUR__JGLYYPZSZYJTJ', uiaction: { tag: 'New', target: '' }, class: '' },
 
-        deuiaction5: { name: 'deuiaction5', caption: '导出','isShowCaption':true,'isShowIcon':true, tooltip: '导出', iconcls: 'fa fa-file-excel-o', icon: '', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: '', uiaction: { tag: 'ExportExcel', target: '' }, MaxRowCount: 5000, class: '' },
+        deuiaction1: { name: 'deuiaction1', caption: '编辑','isShowCaption':true,'isShowIcon':true, tooltip: '编辑', iconcls: 'fa fa-edit', icon: '', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: '', uiaction: { tag: 'Edit', target: 'SINGLEKEY' }, class: '' },
 
-        deuiaction1: { name: 'deuiaction1', caption: '过滤','isShowCaption':true,'isShowIcon':true, tooltip: '过滤', iconcls: 'fa fa-filter', icon: '', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: 'SRFUR__JGLYKQLX', uiaction: { tag: 'ToggleFilter', target: '' }, class: '' },
+        tbitem19: { name: 'tbitem19', caption: '过滤','isShowCaption':true,'isShowIcon':true, tooltip: '过滤', iconcls: 'fa fa-filter', icon: '', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: 'SRFUR__JGLYKQLX', uiaction: { tag: 'ToggleFilter', target: '' }, class: '' },
 
     };
 
@@ -237,14 +245,14 @@ export default class PIMARCHIVESGridViewBase extends GridViewBase {
      * @memberof PIMARCHIVESGridViewBase
      */
     public toolbar_click($event: any, $event2?: any) {
-        if (Object.is($event.tag, 'deuiaction4')) {
-            this.toolbar_deuiaction4_click($event, '', $event2);
-        }
-        if (Object.is($event.tag, 'deuiaction5')) {
-            this.toolbar_deuiaction5_click($event, '', $event2);
+        if (Object.is($event.tag, 'tbitem3')) {
+            this.toolbar_tbitem3_click(null, '', $event2);
         }
         if (Object.is($event.tag, 'deuiaction1')) {
-            this.toolbar_deuiaction1_click($event, '', $event2);
+            this.toolbar_deuiaction1_click(null, '', $event2);
+        }
+        if (Object.is($event.tag, 'tbitem19')) {
+            this.toolbar_tbitem19_click(null, '', $event2);
         }
     }
 
@@ -354,7 +362,7 @@ export default class PIMARCHIVESGridViewBase extends GridViewBase {
      * @param {*} [$event]
      * @memberof 
      */
-    public toolbar_deuiaction4_click(params: any = {}, tag?: any, $event?: any) {
+    public toolbar_tbitem3_click(params: any = {}, tag?: any, $event?: any) {
         // 参数
         // 取数
         let datas: any[] = [];
@@ -368,34 +376,11 @@ export default class PIMARCHIVESGridViewBase extends GridViewBase {
         if (xData.getDatas && xData.getDatas instanceof Function) {
             datas = [...xData.getDatas()];
         }
-        // 界面行为
-        this.Import(datas, contextJO,paramJO,  $event, xData,this,"PIMARCHIVES");
-    }
-
-    /**
-     * 逻辑事件
-     *
-     * @param {*} [params={}]
-     * @param {*} [tag]
-     * @param {*} [$event]
-     * @memberof 
-     */
-    public toolbar_deuiaction5_click(params: any = {}, tag?: any, $event?: any) {
-        // 参数
-        // 取数
-        let datas: any[] = [];
-        let xData: any = null;
-        // _this 指向容器对象
-        const _this: any = this;
-        let paramJO:any = {};
-        
-        let contextJO:any = {};
-        xData = this.$refs.grid;
-        if (xData.getDatas && xData.getDatas instanceof Function) {
-            datas = [...xData.getDatas()];
+        if(params){
+          datas = [params];
         }
         // 界面行为
-        this.ExportExcel(datas, contextJO,paramJO,  $event, xData,this,"PIMARCHIVES");
+        this.New(datas, contextJO,paramJO,  $event, xData,this,"PIMARCHIVES");
     }
 
     /**
@@ -420,6 +405,38 @@ export default class PIMARCHIVESGridViewBase extends GridViewBase {
         if (xData.getDatas && xData.getDatas instanceof Function) {
             datas = [...xData.getDatas()];
         }
+        if(params){
+          datas = [params];
+        }
+        // 界面行为
+        this.Edit(datas, contextJO,paramJO,  $event, xData,this,"PIMARCHIVES");
+    }
+
+    /**
+     * 逻辑事件
+     *
+     * @param {*} [params={}]
+     * @param {*} [tag]
+     * @param {*} [$event]
+     * @memberof 
+     */
+    public toolbar_tbitem19_click(params: any = {}, tag?: any, $event?: any) {
+        // 参数
+        // 取数
+        let datas: any[] = [];
+        let xData: any = null;
+        // _this 指向容器对象
+        const _this: any = this;
+        let paramJO:any = {};
+        
+        let contextJO:any = {};
+        xData = this.$refs.grid;
+        if (xData.getDatas && xData.getDatas instanceof Function) {
+            datas = [...xData.getDatas()];
+        }
+        if(params){
+          datas = [params];
+        }
         // 界面行为
         this.ToggleFilter(datas, contextJO,paramJO,  $event, xData,this,"PIMARCHIVES");
     }
@@ -436,6 +453,9 @@ export default class PIMARCHIVESGridViewBase extends GridViewBase {
      */
     public newdata(args: any[],fullargs?:any[], params?: any, $event?: any, xData?: any) {
         const data: any = {};
+        if(args[0].srfsourcekey){
+            data.srfsourcekey = args[0].srfsourcekey;
+        }
         let curViewParam = JSON.parse(JSON.stringify(this.context));
         if(args.length >0){
             Object.assign(curViewParam,args[0]);
@@ -523,7 +543,7 @@ export default class PIMARCHIVESGridViewBase extends GridViewBase {
 
 
     /**
-     * 数据导入
+     * 新建
      *
      * @param {any[]} args 当前数据
      * @param {any} contextJO 行为附加上下文
@@ -533,15 +553,17 @@ export default class PIMARCHIVESGridViewBase extends GridViewBase {
      * @param {*} [actionContext]  执行行为上下文
      * @memberof PIMARCHIVESGridViewBase
      */
-    public Import(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
-        const _this: any = this;
-        if (!xData || !(xData.importExcel instanceof Function) || !$event) {
-            return ;
+    public New(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
+         const _this: any = this;
+        if (_this.newdata && _this.newdata instanceof Function) {
+            const data: any = {};
+            _this.newdata([{ ...data }],[{ ...data }], params, $event, xData);
+        } else {
+            _this.$Notice.error({ title: '错误', desc: 'newdata 视图处理逻辑不存在，请添加!' });
         }
-        xData.importExcel(params);
     }
     /**
-     * 导出
+     * 编辑
      *
      * @param {any[]} args 当前数据
      * @param {any} contextJO 行为附加上下文
@@ -551,12 +573,20 @@ export default class PIMARCHIVESGridViewBase extends GridViewBase {
      * @param {*} [actionContext]  执行行为上下文
      * @memberof PIMARCHIVESGridViewBase
      */
-    public ExportExcel(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
-        const _this: any = this;
-        if (!xData || !(xData.exportExcel instanceof Function) || !$event) {
-            return ;
+    public Edit(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
+        if (args.length === 0) {
+            return;
         }
-        xData.exportExcel($event.exportparms);
+        const _this: any = this;
+        if (_this.opendata && _this.opendata instanceof Function) {
+            const data: any = { };
+            if (args.length > 0) {
+                Object.assign(data, { pimarchives: args[0].pimarchives })
+            }
+            _this.opendata([{ ...data }], params, $event, xData);
+        } else {
+            _this.$Notice.error({ title: '错误', desc: 'opendata 视图处理逻辑不存在，请添加!' });
+        }
     }
     /**
      * 过滤

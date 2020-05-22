@@ -35,6 +35,15 @@ export default class PIMACHIEVEMENTSRedirectViewBase extends WizardViewBase {
      */
     public appEntityService: PIMACHIEVEMENTSService = new PIMACHIEVEMENTSService;
 
+
+    /**
+     * 计数器服务对象集合
+     *
+     * @type {Array<*>}
+     * @memberof PIMACHIEVEMENTSRedirectViewBase
+     */    
+    public counterServiceArray:Array<any> = [];
+    
     /**
      * 数据变化
      *
@@ -70,7 +79,7 @@ export default class PIMACHIEVEMENTSRedirectViewBase extends WizardViewBase {
 	 * @type {*}
 	 * @memberof PIMACHIEVEMENTSRedirectViewBase
 	 */
-    protected customViewNavContexts:any ={
+    public customViewNavContexts:any ={
     };
 
 	/**
@@ -79,7 +88,7 @@ export default class PIMACHIEVEMENTSRedirectViewBase extends WizardViewBase {
 	 * @type {*}
 	 * @memberof PIMACHIEVEMENTSRedirectViewBase
 	 */
-    protected customViewParams:any ={
+    public customViewParams:any ={
     };
 
     /**
@@ -107,7 +116,7 @@ export default class PIMACHIEVEMENTSRedirectViewBase extends WizardViewBase {
     /**
      * 视图状态订阅对象
      *
-     * @private
+     * @public
      * @type {Subject<{action: string, data: any}>}
      * @memberof PIMACHIEVEMENTSRedirectViewBase
      */

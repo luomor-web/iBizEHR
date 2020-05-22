@@ -27,6 +27,8 @@ public interface SALPLANMapper extends BaseMapper<SALPLAN>{
     @Override
     int updateById(@Param(Constants.ENTITY) SALPLAN entity);
     @Override
+    int update(@Param(Constants.ENTITY) SALPLAN entity, @Param("ew") Wrapper<SALPLAN> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

@@ -50,21 +50,18 @@ public class DateRuleResource {
 
     @Autowired
     @Lazy
-    private DateRuleMapping dateruleMapping;
+    public DateRuleMapping dateruleMapping;
 
+    public DateRuleDTO permissionDTO=new DateRuleDTO();
 
-
-
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DateRule-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"DateRule" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/daterules/getdraft")
     public ResponseEntity<DateRuleDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(dateruleMapping.toDto(dateruleService.getDraft(new DateRule())));
     }
 
-
-
-
-    @PreAuthorize("hasPermission(#daterule_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#daterule_id,'Update',{'Sql',this.dateruleMapping,#dateruledto})")
     @ApiOperation(value = "Update", tags = {"DateRule" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/daterules/{daterule_id}")
     @Transactional
@@ -76,7 +73,7 @@ public class DateRuleResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#daterule_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"DateRule" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/daterules/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<DateRuleDTO> dateruledtos) {
@@ -84,10 +81,7 @@ public class DateRuleResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    @PreAuthorize("hasPermission('Remove',{#daterule_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#daterule_id,'Remove',{'Sql',this.dateruleMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"DateRule" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/daterules/{daterule_id}")
     @Transactional
@@ -95,6 +89,7 @@ public class DateRuleResource {
          return ResponseEntity.status(HttpStatus.OK).body(dateruleService.remove(daterule_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"DateRule" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/daterules/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -102,10 +97,7 @@ public class DateRuleResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.dateruleMapping,#dateruledto})")
     @ApiOperation(value = "Create", tags = {"DateRule" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/daterules")
     @Transactional
@@ -116,7 +108,7 @@ public class DateRuleResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatch", tags = {"DateRule" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/daterules/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<DateRuleDTO> dateruledtos) {
@@ -124,24 +116,21 @@ public class DateRuleResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DateRule-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"DateRule" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/daterules/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody DateRuleDTO dateruledto) {
         return  ResponseEntity.status(HttpStatus.OK).body(dateruleService.checkKey(dateruleMapping.toDomain(dateruledto)));
     }
 
-
-
-
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DateRule-Save-all')")
     @ApiOperation(value = "Save", tags = {"DateRule" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/daterules/save")
     public ResponseEntity<Boolean> save(@RequestBody DateRuleDTO dateruledto) {
         return ResponseEntity.status(HttpStatus.OK).body(dateruleService.save(dateruleMapping.toDomain(dateruledto)));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"DateRule" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/daterules/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<DateRuleDTO> dateruledtos) {
@@ -149,10 +138,7 @@ public class DateRuleResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    @PreAuthorize("hasPermission(#daterule_id,'Get',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#daterule_id,'Get',{'Sql',this.dateruleMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"DateRule" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/daterules/{daterule_id}")
     public ResponseEntity<DateRuleDTO> get(@PathVariable("daterule_id") String daterule_id) {
@@ -161,7 +147,7 @@ public class DateRuleResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DateRule-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"DateRule" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/daterules/fetchdefault")
 	public ResponseEntity<List<DateRuleDTO>> fetchDefault(DateRuleSearchContext context) {
@@ -174,22 +160,12 @@ public class DateRuleResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DateRule-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"DateRule" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/daterules/searchdefault")
-	public ResponseEntity<Page<DateRuleDTO>> searchDefault(DateRuleSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/daterules/searchdefault")
+	public ResponseEntity<Page<DateRuleDTO>> searchDefault(@RequestBody DateRuleSearchContext context) {
         Page<DateRule> domains = dateruleService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(dateruleMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
-    /**
-     * 用户权限校验
-     * @return
-     */
-	public DateRule getEntity(){
-        return new DateRule();
-    }
-
 }

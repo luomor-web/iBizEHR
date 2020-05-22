@@ -4,9 +4,6 @@
 <mapper	namespace="cn.ibizlab.ehr.core.par.mapper.PARJZSZPSJGMapper">
 
     <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
-	<select id="selectById"  resultMap="PARJZSZPSJGResultMap" databaseId="oracle">
-        <![CDATA[select * from v_parjzszpsjg t1     where  parjzszpsjgid=#{id}]]>
-    </select>
 
     <!--通过mybatis将查询结果注入到entity中,通过配置autoMapping="true"由mybatis自动处理映射关系 -->
     <resultMap id="PARJZSZPSJGResultMap" type="cn.ibizlab.ehr.core.par.domain.PARJZSZPSJG" autoMapping="true">
@@ -34,6 +31,12 @@
          <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
          <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
      </select>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="mysql">
+       <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`KHDX`, t1.`ND`, t1.`PARJZSZPSJGID`, t1.`PARJZSZPSJGNAME`, t1.`PIMPERSONID`, t11.`PIMPERSONNAME`, t1.`SZPSFS`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t11.`ZJHM` FROM `T_PARJZSZPSJG` t1  LEFT JOIN T_PIMPERSON t11 ON t1.PIMPERSONID = t11.PIMPERSONID  
+			]]>
+    </sql>
 
     <!--数据查询[Default]-->
     <sql id="Default" databaseId="oracle">

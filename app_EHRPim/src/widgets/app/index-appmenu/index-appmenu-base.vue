@@ -65,9 +65,6 @@ export default class IndexBase extends AppMenusCtrlBase {
                 case 'Auto459': 
                     this.clickAuto459(item);
                     return;
-                case 'Auto470': 
-                    this.clickAuto470(item);
-                    return;
                 case 'Auto489': 
                     this.clickAuto489(item);
                     return;
@@ -91,9 +88,6 @@ export default class IndexBase extends AppMenusCtrlBase {
                     return;
                 case 'Auto451': 
                     this.clickAuto451(item);
-                    return;
-                case 'Auto466': 
-                    this.clickAuto466(item);
                     return;
                 case 'Auto488': 
                     this.clickAuto488(item);
@@ -119,9 +113,6 @@ export default class IndexBase extends AppMenusCtrlBase {
                 case 'Auto467': 
                     this.clickAuto467(item);
                     return;
-                case 'Auto490': 
-                    this.clickAuto490(item);
-                    return;
                 case 'Auto455': 
                     this.clickAuto455(item);
                     return;
@@ -130,9 +121,6 @@ export default class IndexBase extends AppMenusCtrlBase {
                     return;
                 case 'Auto477': 
                     this.clickAuto477(item);
-                    return;
-                case 'Auto463': 
-                    this.clickAuto463(item);
                     return;
                 case 'Auto491': 
                     this.clickAuto491(item);
@@ -186,24 +174,6 @@ export default class IndexBase extends AppMenusCtrlBase {
         const parameters: any[] = [
             { pathName: 'pimarchives', parameterName: 'pimarchives' },
             { pathName: 'loyeenofilegridview', parameterName: 'loyeenofilegridview' },
-        ];
-        const path: string = this.$viewTool.buildUpRoutePath(this.$route, {}, deResParameters, parameters, [], viewparam);
-        this.$router.push(path);
-    }
-    
-    /**
-     * 专业序列类型设置<基础管理模块>
-     *
-     * @param {*} [item={}]
-     * @memberof Index
-     */
-    public clickAuto470(item: any = {}) {
-        const viewparam: any = {};
-        Object.assign(viewparam, {});
-        const deResParameters: any[] = [];
-        const parameters: any[] = [
-            { pathName: 'pimmajorsetypes', parameterName: 'pimmajorsetype' },
-            { pathName: 'gridview', parameterName: 'gridview' },
         ];
         const path: string = this.$viewTool.buildUpRoutePath(this.$route, {}, deResParameters, parameters, [], viewparam);
         this.$router.push(path);
@@ -346,24 +316,6 @@ export default class IndexBase extends AppMenusCtrlBase {
         const deResParameters: any[] = [];
         const parameters: any[] = [
             { pathName: 'archivescenters', parameterName: 'archivescenter' },
-            { pathName: 'gridview', parameterName: 'gridview' },
-        ];
-        const path: string = this.$viewTool.buildUpRoutePath(this.$route, {}, deResParameters, parameters, [], viewparam);
-        this.$router.push(path);
-    }
-    
-    /**
-     * 档案目录<基础管理模块>
-     *
-     * @param {*} [item={}]
-     * @memberof Index
-     */
-    public clickAuto466(item: any = {}) {
-        const viewparam: any = {};
-        Object.assign(viewparam, {});
-        const deResParameters: any[] = [];
-        const parameters: any[] = [
-            { pathName: 'archivalcatalogues', parameterName: 'archivalcatalogue' },
             { pathName: 'gridview', parameterName: 'gridview' },
         ];
         const path: string = this.$viewTool.buildUpRoutePath(this.$route, {}, deResParameters, parameters, [], viewparam);
@@ -515,24 +467,6 @@ export default class IndexBase extends AppMenusCtrlBase {
     }
     
     /**
-     * 员工类型<基础管理模块>
-     *
-     * @param {*} [item={}]
-     * @memberof Index
-     */
-    public clickAuto490(item: any = {}) {
-        const viewparam: any = {};
-        Object.assign(viewparam, {});
-        const deResParameters: any[] = [];
-        const parameters: any[] = [
-            { pathName: 'pimstafftypes', parameterName: 'pimstafftype' },
-            { pathName: 'gridview', parameterName: 'gridview' },
-        ];
-        const path: string = this.$viewTool.buildUpRoutePath(this.$route, {}, deResParameters, parameters, [], viewparam);
-        this.$router.push(path);
-    }
-    
-    /**
      * 因私出国境<基础管理模块>
      *
      * @param {*} [item={}]
@@ -581,24 +515,6 @@ export default class IndexBase extends AppMenusCtrlBase {
         const parameters: any[] = [
             { pathName: 'pimpeople', parameterName: 'pimperson' },
             { pathName: 'personinfotreeexpview', parameterName: 'personinfotreeexpview' },
-        ];
-        const path: string = this.$viewTool.buildUpRoutePath(this.$route, {}, deResParameters, parameters, [], viewparam);
-        this.$router.push(path);
-    }
-    
-    /**
-     * 见习期规则<配置管理模块>
-     *
-     * @param {*} [item={}]
-     * @memberof Index
-     */
-    public clickAuto463(item: any = {}) {
-        const viewparam: any = {};
-        Object.assign(viewparam, {});
-        const deResParameters: any[] = [];
-        const parameters: any[] = [
-            { pathName: 'pcmjxsgzs', parameterName: 'pcmjxsgz' },
-            { pathName: 'gridview', parameterName: 'gridview' },
         ];
         const path: string = this.$viewTool.buildUpRoutePath(this.$route, {}, deResParameters, parameters, [], viewparam);
         this.$router.push(path);

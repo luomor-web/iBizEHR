@@ -28,6 +28,8 @@ public interface PCMRecruitmentMapper extends BaseMapper<PCMRecruitment>{
     @Override
     int updateById(@Param(Constants.ENTITY) PCMRecruitment entity);
     @Override
+    int update(@Param(Constants.ENTITY) PCMRecruitment entity, @Param("ew") Wrapper<PCMRecruitment> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

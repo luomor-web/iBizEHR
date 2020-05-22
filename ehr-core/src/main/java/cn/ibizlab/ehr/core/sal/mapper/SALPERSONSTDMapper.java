@@ -27,6 +27,8 @@ public interface SALPERSONSTDMapper extends BaseMapper<SALPERSONSTD>{
     @Override
     int updateById(@Param(Constants.ENTITY) SALPERSONSTD entity);
     @Override
+    int update(@Param(Constants.ENTITY) SALPERSONSTD entity, @Param("ew") Wrapper<SALPERSONSTD> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

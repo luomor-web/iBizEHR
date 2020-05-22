@@ -48,27 +48,6 @@ public class PIMWorkflowRefSearchContext extends QueryWrapperContext<PIMWorkflow
             this.getSelectCond().like("pimworkflowname", n_pimworkflowname_like);
         }
     }
-	private String n_wfworkflowname_eq;//[系统表单]
-	public void setN_wfworkflowname_eq(String n_wfworkflowname_eq) {
-        this.n_wfworkflowname_eq = n_wfworkflowname_eq;
-        if(!ObjectUtils.isEmpty(this.n_wfworkflowname_eq)){
-            this.getSelectCond().eq("wfworkflowname", n_wfworkflowname_eq);
-        }
-    }
-	private String n_wfworkflowname_like;//[系统表单]
-	public void setN_wfworkflowname_like(String n_wfworkflowname_like) {
-        this.n_wfworkflowname_like = n_wfworkflowname_like;
-        if(!ObjectUtils.isEmpty(this.n_wfworkflowname_like)){
-            this.getSelectCond().like("wfworkflowname", n_wfworkflowname_like);
-        }
-    }
-	private String n_wfworkflowid_eq;//[系统表单]
-	public void setN_wfworkflowid_eq(String n_wfworkflowid_eq) {
-        this.n_wfworkflowid_eq = n_wfworkflowid_eq;
-        if(!ObjectUtils.isEmpty(this.n_wfworkflowid_eq)){
-            this.getSelectCond().eq("wfworkflowid", n_wfworkflowid_eq);
-        }
-    }
 	private String n_pimworkflowid_eq;//[流程配置]
 	public void setN_pimworkflowid_eq(String n_pimworkflowid_eq) {
         this.n_pimworkflowid_eq = n_pimworkflowid_eq;

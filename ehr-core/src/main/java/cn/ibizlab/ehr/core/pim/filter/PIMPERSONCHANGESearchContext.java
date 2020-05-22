@@ -77,7 +77,6 @@ public class PIMPERSONCHANGESearchContext extends QueryWrapperContext<PIMPERSONC
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("pimpersonchangename",query);
 			this.getSelectCond().or().like("pimpersonname",query);
 		 }
 	}

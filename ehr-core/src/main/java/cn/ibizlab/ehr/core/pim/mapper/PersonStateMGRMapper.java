@@ -27,6 +27,8 @@ public interface PersonStateMGRMapper extends BaseMapper<PersonStateMGR>{
     @Override
     int updateById(@Param(Constants.ENTITY) PersonStateMGR entity);
     @Override
+    int update(@Param(Constants.ENTITY) PersonStateMGR entity, @Param("ew") Wrapper<PersonStateMGR> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

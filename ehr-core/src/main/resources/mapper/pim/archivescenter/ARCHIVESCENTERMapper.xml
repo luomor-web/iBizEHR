@@ -4,8 +4,8 @@
 <mapper	namespace="cn.ibizlab.ehr.core.pim.mapper.ARCHIVESCENTERMapper">
 
     <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
-	<select id="selectById"  resultMap="ARCHIVESCENTERResultMap" databaseId="oracle">
-        <![CDATA[select * from v_archivescenter t1     where  archivescenterid=#{id}]]>
+	<select id="selectById"  resultMap="ARCHIVESCENTERResultMap" databaseId="mysql">
+        <![CDATA[select t1.* from (SELECT t1.`ARCHIVESCENTERID`, t1.`ARCHIVESCENTERNAME`, t1.`BNUMBER`, t1.`CABINETNO`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t1.`LAYERNO`, t1.`MEMO`, t1.`ORMORGID` AS `ORGID`, t1.`ORMORGID`, t11.`ORGNAME` AS `ORMORGNAME`, concat(t1.`ARCHIVESCENTERNAME`,t1.`CABINETNO`,(case when t1.`LAYERNO`='10' then '上层'  when t1.`LAYERNO`='20' then '中层' when t1.`LAYERNO`='30' then '下层' else ' ' end),t1.`BNUMBER`) AS `POSITION`, t1.`SERIALNO`, t1.`UPDATEDATE`, t1.`UPDATEMAN` FROM `T_ARCHIVESCENTER` t1  LEFT JOIN T_SRFORG t11 ON t1.ORMORGID = t11.ORGID  ) t1 where archivescenterid=#{id}]]>
     </select>
 
     <!--通过mybatis将查询结果注入到entity中,通过配置autoMapping="true"由mybatis自动处理映射关系 -->
@@ -36,8 +36,22 @@
      </select>
 
     <!--数据查询[Default]-->
+    <sql id="Default" databaseId="mysql">
+       <![CDATA[	SELECT t1.`ARCHIVESCENTERID`, t1.`ARCHIVESCENTERNAME`, t1.`BNUMBER`, t1.`CABINETNO`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t1.`LAYERNO`, t1.`MEMO`, t1.`ORMORGID` AS `ORGID`, t1.`ORMORGID`, t11.`ORGNAME` AS `ORMORGNAME`, concat(t1.`ARCHIVESCENTERNAME`,t1.`CABINETNO`,(case when t1.`LAYERNO`='10' then '上层'  when t1.`LAYERNO`='20' then '中层' when t1.`LAYERNO`='30' then '下层' else ' ' end),t1.`BNUMBER`) AS `POSITION`, t1.`SERIALNO`, t1.`UPDATEDATE`, t1.`UPDATEMAN` FROM `T_ARCHIVESCENTER` t1  LEFT JOIN T_SRFORG t11 ON t1.ORMORGID = t11.ORGID  
+				 WHERE 	t1.ENABLE = 1
+			]]>
+    </sql>
+
+    <!--数据查询[Default]-->
     <sql id="Default" databaseId="oracle">
-       <![CDATA[	SELECT t1.ARCHIVESCENTERID, t1.ARCHIVESCENTERNAME, t1.BNUMBER, t1.CABINETNO, t1.CREATEDATE, t1.CREATEMAN, t1.ENABLE, t1.LAYERNO, t1.MEMO, t1.ORMORGID AS ORGID, t1.ORMORGID, t11.ORGNAME AS ORMORGNAME, t1.ARCHIVESCENTERNAME||' '||t1.CABINETNO||' ' ||(case when t1.LAYERNO = '10' then '上层'   when t1.LAYERNO = '20' then '中层'  when t1.LAYERNO = '30'  then '下层'  else ' ' end ) ||t1.LAYERNO AS POSITION, t1.SERIALNO, t1.UPDATEDATE, t1.UPDATEMAN FROM T_ARCHIVESCENTER t1  LEFT JOIN T_SRFORG t11 ON t1.ORMORGID = t11.ORGID  
+       <![CDATA[	SELECT t1.ARCHIVESCENTERID, t1.ARCHIVESCENTERNAME, t1.BNUMBER, t1.CABINETNO, t1.CREATEDATE, t1.CREATEMAN, t1.ENABLE, t1.LAYERNO, t1.MEMO, t1.ORMORGID AS ORGID, t1.ORMORGID, t11.ORGNAME AS ORMORGNAME, t1.ARCHIVESCENTERNAME||' '||t1.CABINETNO||' ' ||(case when t1.LAYERNO = '10' then '上层'   when t1.LAYERNO = '20' then '中层'  when t1.LAYERNO = '30'  then '下层'  else ' ' end ) ||t1.LAYERNO AS POSITION, t1.SERIALNO, t1.UPDATEDATE, t1.UPDATEMAN FROM T_ARCHIVESCENTER t1  LEFT JOIN T_ORG t11 ON t1.ORMORGID = t11.ORGID  
+				 WHERE 	t1.ENABLE = 1
+			]]>
+    </sql>
+
+    <!--数据查询[View]-->
+    <sql id="View" databaseId="mysql">
+       <![CDATA[	SELECT t1.`ARCHIVESCENTERID`, t1.`ARCHIVESCENTERNAME`, t1.`BNUMBER`, t1.`CABINETNO`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t1.`LAYERNO`, t1.`MEMO`, t1.`ORMORGID` AS `ORGID`, t1.`ORMORGID`, t11.`ORGNAME` AS `ORMORGNAME`, concat(t1.`ARCHIVESCENTERNAME`,t1.`CABINETNO`,(case when t1.`LAYERNO`='10' then '上层'  when t1.`LAYERNO`='20' then '中层' when t1.`LAYERNO`='30' then '下层' else ' ' end),t1.`BNUMBER`) AS `POSITION`, t1.`SERIALNO`, t1.`UPDATEDATE`, t1.`UPDATEMAN` FROM `T_ARCHIVESCENTER` t1  LEFT JOIN T_SRFORG t11 ON t1.ORMORGID = t11.ORGID  
 				 WHERE 	t1.ENABLE = 1
 			]]>
     </sql>

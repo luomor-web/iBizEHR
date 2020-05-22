@@ -35,6 +35,15 @@ export default class PIMWORKHISTORYRedirectViewBase extends WizardViewBase {
      */
     public appEntityService: PIMWORKHISTORYService = new PIMWORKHISTORYService;
 
+
+    /**
+     * 计数器服务对象集合
+     *
+     * @type {Array<*>}
+     * @memberof PIMWORKHISTORYRedirectViewBase
+     */    
+    public counterServiceArray:Array<any> = [];
+    
     /**
      * 数据变化
      *
@@ -70,7 +79,7 @@ export default class PIMWORKHISTORYRedirectViewBase extends WizardViewBase {
 	 * @type {*}
 	 * @memberof PIMWORKHISTORYRedirectViewBase
 	 */
-    protected customViewNavContexts:any ={
+    public customViewNavContexts:any ={
     };
 
 	/**
@@ -79,7 +88,7 @@ export default class PIMWORKHISTORYRedirectViewBase extends WizardViewBase {
 	 * @type {*}
 	 * @memberof PIMWORKHISTORYRedirectViewBase
 	 */
-    protected customViewParams:any ={
+    public customViewParams:any ={
     };
 
     /**
@@ -107,7 +116,7 @@ export default class PIMWORKHISTORYRedirectViewBase extends WizardViewBase {
     /**
      * 视图状态订阅对象
      *
-     * @private
+     * @public
      * @type {Subject<{action: string, data: any}>}
      * @memberof PIMWORKHISTORYRedirectViewBase
      */

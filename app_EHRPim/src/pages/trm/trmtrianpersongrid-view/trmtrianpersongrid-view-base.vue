@@ -9,28 +9,12 @@
     </template>
     <template slot="headerRight">
       <div class="view-header-right">
-        <app-header-menus :toolbarModel="toolBarModels" @menu-click="toolbar_click($event)" mode="view" :openMode="openMode" :isEnableQuickSearch="true" v-model="query" @search="onSearch($event)"/>
+        <app-header-menus :toolbarModel="toolBarModels" @menu-click="toolbar_click($event)" mode="view" :openMode="openMode"/>
       </div>
     </template>
     <template slot="content">
       <div class="view-content-wrapper">
-        <view_searchform 
-    :viewState="viewState"  
-    :viewparams="viewparams" 
-    :context="context" 
-    :showBusyIndicator="true"
-    v-show="isExpandSearchForm"
-    loaddraftAction="FilterGetDraft"
-    loadAction="FilterGet"
-
-    name="searchform"  
-    ref='searchform' 
-    @save="searchform_save($event)"  
-    @search="searchform_search($event)"  
-    @load="searchform_load($event)"  
-    @closeview="closeView($event)">
-</view_searchform>
-<view_grid 
+        <view_grid 
     :viewState="viewState"  
     :viewparams="viewparams" 
     :context="context" 
@@ -95,6 +79,15 @@ export default class TRMTRIANPERSONGridViewBase extends GridViewBase {
      */
     public appEntityService: TRMTRIANPERSONService = new TRMTRIANPERSONService;
 
+
+    /**
+     * 计数器服务对象集合
+     *
+     * @type {Array<*>}
+     * @memberof TRMTRIANPERSONGridViewBase
+     */    
+    public counterServiceArray:Array<any> = [];
+    
     /**
      * 数据变化
      *
@@ -130,7 +123,7 @@ export default class TRMTRIANPERSONGridViewBase extends GridViewBase {
 	 * @type {*}
 	 * @memberof TRMTRIANPERSONGridViewBase
 	 */
-    protected customViewNavContexts:any ={
+    public customViewNavContexts:any ={
     };
 
 	/**
@@ -139,7 +132,7 @@ export default class TRMTRIANPERSONGridViewBase extends GridViewBase {
 	 * @type {*}
 	 * @memberof TRMTRIANPERSONGridViewBase
 	 */
-    protected customViewParams:any ={
+    public customViewParams:any ={
     };
 
     /**
@@ -164,18 +157,16 @@ export default class TRMTRIANPERSONGridViewBase extends GridViewBase {
     public containerModel: any = {
         view_toolbar: { name: 'toolbar', type: 'TOOLBAR' },
         view_grid: { name: 'grid', type: 'GRID' },
-        view_searchform: { name: 'searchform', type: 'SEARCHFORM' },
     };
 
     /**
      * 视图状态订阅对象
      *
-     * @private
+     * @public
      * @type {Subject<{action: string, data: any}>}
      * @memberof TRMTRIANPERSONGridViewBase
      */
     public viewState: Subject<ViewState> = new Subject();
-
     /**
      * 工具栏模型
      *
@@ -219,7 +210,6 @@ export default class TRMTRIANPERSONGridViewBase extends GridViewBase {
                 this.newdata(args, params, $event, xData);
             },
             grid: this.$refs.grid,
-            searchform: this.$refs.searchform,
             keyPSDEField: 'trmtrianperson',
             majorPSDEField: 'trmtrianpersonname',
             isLoadDefault: true,
@@ -236,10 +226,10 @@ export default class TRMTRIANPERSONGridViewBase extends GridViewBase {
      */
     public toolbar_click($event: any, $event2?: any) {
         if (Object.is($event.tag, 'deuiaction4')) {
-            this.toolbar_deuiaction4_click($event, '', $event2);
+            this.toolbar_deuiaction4_click(null, '', $event2);
         }
         if (Object.is($event.tag, 'deuiaction5')) {
-            this.toolbar_deuiaction5_click($event, '', $event2);
+            this.toolbar_deuiaction5_click(null, '', $event2);
         }
     }
 
@@ -304,42 +294,6 @@ export default class TRMTRIANPERSONGridViewBase extends GridViewBase {
     }
 
 
-    /**
-     * searchform 部件 save 事件
-     *
-     * @param {*} [args={}]
-     * @param {*} $event
-     * @memberof TRMTRIANPERSONGridViewBase
-     */
-    public searchform_save($event: any, $event2?: any) {
-        this.engine.onCtrlEvent('searchform', 'save', $event);
-    }
-
-
-    /**
-     * searchform 部件 search 事件
-     *
-     * @param {*} [args={}]
-     * @param {*} $event
-     * @memberof TRMTRIANPERSONGridViewBase
-     */
-    public searchform_search($event: any, $event2?: any) {
-        this.engine.onCtrlEvent('searchform', 'search', $event);
-    }
-
-
-    /**
-     * searchform 部件 load 事件
-     *
-     * @param {*} [args={}]
-     * @param {*} $event
-     * @memberof TRMTRIANPERSONGridViewBase
-     */
-    public searchform_load($event: any, $event2?: any) {
-        this.engine.onCtrlEvent('searchform', 'load', $event);
-    }
-
-
 
     /**
      * 逻辑事件
@@ -362,6 +316,9 @@ export default class TRMTRIANPERSONGridViewBase extends GridViewBase {
         xData = this.$refs.grid;
         if (xData.getDatas && xData.getDatas instanceof Function) {
             datas = [...xData.getDatas()];
+        }
+        if(params){
+          datas = [params];
         }
         // 界面行为
         this.Import(datas, contextJO,paramJO,  $event, xData,this,"TRMTRIANPERSON");
@@ -389,6 +346,9 @@ export default class TRMTRIANPERSONGridViewBase extends GridViewBase {
         if (xData.getDatas && xData.getDatas instanceof Function) {
             datas = [...xData.getDatas()];
         }
+        if(params){
+          datas = [params];
+        }
         // 界面行为
         this.ExportExcel(datas, contextJO,paramJO,  $event, xData,this,"TRMTRIANPERSON");
     }
@@ -405,6 +365,9 @@ export default class TRMTRIANPERSONGridViewBase extends GridViewBase {
      */
     public newdata(args: any[],fullargs?:any[], params?: any, $event?: any, xData?: any) {
         const data: any = {};
+        if(args[0].srfsourcekey){
+            data.srfsourcekey = args[0].srfsourcekey;
+        }
         let curViewParam = JSON.parse(JSON.stringify(this.context));
         if(args.length >0){
             Object.assign(curViewParam,args[0]);

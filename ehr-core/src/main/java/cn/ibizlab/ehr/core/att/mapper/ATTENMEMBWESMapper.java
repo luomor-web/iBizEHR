@@ -27,6 +27,8 @@ public interface ATTENMEMBWESMapper extends BaseMapper<ATTENMEMBWES>{
     @Override
     int updateById(@Param(Constants.ENTITY) ATTENMEMBWES entity);
     @Override
+    int update(@Param(Constants.ENTITY) ATTENMEMBWES entity, @Param("ew") Wrapper<ATTENMEMBWES> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

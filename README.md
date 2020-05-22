@@ -18,6 +18,8 @@ iBiz致力于提升中国软件软件建设和应用的价值，从业务到技�
 * **[iBizEHR训练营](http://demo.ibizlab.cn/ibizehr_practice)**
 * **欢迎加入iBizEHR交流QQ群：1056401976**
 
+![输入图片说明](https://images.gitee.com/uploads/images/2020/0520/135506_3a2bca15_7580957.png "iBizEHR_QQ.png")
+
 
 # 业务描述
 iBizEHR划分为六大模块:
@@ -32,14 +34,14 @@ iBizEHR划分为六大模块:
 
 
 # 技术框架
-**后台技术模板[iBiz4j Spring R7](http://demo.ibizlab.cn/ibizr7sfstdtempl/ibiz4jr7)**
+**后台技术架构  [参考Wiki文档](https://gitee.com/ibizlab/iBizEHR/wikis/pages?sort_id=2231366&doc_id=692797)**
 * 核心框架：Spring Boot
 * 持久层框架: Mybatis-plus
 * 服务发现：Nacos
 * 日志管理：Logback
 * 项目管理框架: Maven
 
-**前端技术模板[iBiz-Vue-R7-Plus](http://demo.ibizlab.cn/ibizr7pfstdtempl/ibizvuer7plus)**
+**前端技术架构  [参考Wiki文档](https://gitee.com/ibizlab/iBizEHR/wikis/pages?sort_id=2231096&doc_id=692797)**
 * 前端MVVM框架：vue.js 2.6.10
 * 路由：vue-router 3.1.3
 * 状态管理：vue-router 3.1.3
@@ -62,6 +64,11 @@ iBizEHR划分为六大模块:
 
 # 开源说明
 * 本系统100%开源，遵守MIT协议
+
+
+# 项目部署
+* 本地化部署说明   [参考Wiki文档](https://gitee.com/ibizlab/iBizEHR/wikis/pages?sort_id=2234729&doc_id=692797)
+
 
 
 # 模型设计

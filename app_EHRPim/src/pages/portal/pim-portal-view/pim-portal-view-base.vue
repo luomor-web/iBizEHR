@@ -43,6 +43,15 @@ import { VueLifeCycleProcessing, PortalViewBase } from '@/crm-core';
 @VueLifeCycleProcessing
 export default class PimPortalViewBase extends PortalViewBase {
 
+
+    /**
+     * 计数器服务对象集合
+     *
+     * @type {Array<*>}
+     * @memberof PimPortalViewBase
+     */    
+    public counterServiceArray:Array<any> = [];
+    
     /**
      * 数据变化
      *
@@ -78,7 +87,7 @@ export default class PimPortalViewBase extends PortalViewBase {
 	 * @type {*}
 	 * @memberof PimPortalViewBase
 	 */
-    protected customViewNavContexts:any ={
+    public customViewNavContexts:any ={
     };
 
 	/**
@@ -87,7 +96,7 @@ export default class PimPortalViewBase extends PortalViewBase {
 	 * @type {*}
 	 * @memberof PimPortalViewBase
 	 */
-    protected customViewParams:any ={
+    public customViewParams:any ={
     };
 
     /**
@@ -116,7 +125,7 @@ export default class PimPortalViewBase extends PortalViewBase {
     /**
      * 视图状态订阅对象
      *
-     * @private
+     * @public
      * @type {Subject<{action: string, data: any}>}
      * @memberof PimPortalViewBase
      */

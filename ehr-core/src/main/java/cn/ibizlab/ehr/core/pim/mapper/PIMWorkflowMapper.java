@@ -27,6 +27,8 @@ public interface PIMWorkflowMapper extends BaseMapper<PIMWorkflow>{
     @Override
     int updateById(@Param(Constants.ENTITY) PIMWorkflow entity);
     @Override
+    int update(@Param(Constants.ENTITY) PIMWorkflow entity, @Param("ew") Wrapper<PIMWorkflow> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

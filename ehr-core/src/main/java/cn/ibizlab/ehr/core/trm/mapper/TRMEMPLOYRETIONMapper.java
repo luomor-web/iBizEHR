@@ -27,6 +27,8 @@ public interface TRMEMPLOYRETIONMapper extends BaseMapper<TRMEMPLOYRETION>{
     @Override
     int updateById(@Param(Constants.ENTITY) TRMEMPLOYRETION entity);
     @Override
+    int update(@Param(Constants.ENTITY) TRMEMPLOYRETION entity, @Param("ew") Wrapper<TRMEMPLOYRETION> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

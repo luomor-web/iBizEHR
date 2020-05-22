@@ -50,12 +50,11 @@ public class PCMDETAILResource {
 
     @Autowired
     @Lazy
-    private PCMDETAILMapping pcmdetailMapping;
+    public PCMDETAILMapping pcmdetailMapping;
 
+    public PCMDETAILDTO permissionDTO=new PCMDETAILDTO();
 
-
-
-    @PreAuthorize("hasPermission('Remove',{#pcmdetail_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#pcmdetail_id,'Remove',{'Sql',this.pcmdetailMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"PCMDETAIL" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmdetails/{pcmdetail_id}")
     @Transactional
@@ -63,6 +62,7 @@ public class PCMDETAILResource {
          return ResponseEntity.status(HttpStatus.OK).body(pcmdetailService.remove(pcmdetail_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"PCMDETAIL" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmdetails/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -70,10 +70,7 @@ public class PCMDETAILResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    @PreAuthorize("hasPermission(#pcmdetail_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#pcmdetail_id,'Update',{'Sql',this.pcmdetailMapping,#pcmdetaildto})")
     @ApiOperation(value = "Update", tags = {"PCMDETAIL" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmdetails/{pcmdetail_id}")
     @Transactional
@@ -85,7 +82,7 @@ public class PCMDETAILResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#pcmdetail_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"PCMDETAIL" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmdetails/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PCMDETAILDTO> pcmdetaildtos) {
@@ -93,10 +90,7 @@ public class PCMDETAILResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.pcmdetailMapping,#pcmdetaildto})")
     @ApiOperation(value = "Create", tags = {"PCMDETAIL" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmdetails")
     @Transactional
@@ -107,7 +101,7 @@ public class PCMDETAILResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatch", tags = {"PCMDETAIL" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmdetails/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PCMDETAILDTO> pcmdetaildtos) {
@@ -115,19 +109,14 @@ public class PCMDETAILResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMDETAIL-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"PCMDETAIL" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmdetails/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PCMDETAILDTO pcmdetaildto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pcmdetailService.checkKey(pcmdetailMapping.toDomain(pcmdetaildto)));
     }
 
-
-
-
-    @PreAuthorize("hasPermission(#pcmdetail_id,'Get',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#pcmdetail_id,'Get',{'Sql',this.pcmdetailMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"PCMDETAIL" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmdetails/{pcmdetail_id}")
     public ResponseEntity<PCMDETAILDTO> get(@PathVariable("pcmdetail_id") String pcmdetail_id) {
@@ -136,15 +125,14 @@ public class PCMDETAILResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-
-
-
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMDETAIL-Save-all')")
     @ApiOperation(value = "Save", tags = {"PCMDETAIL" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmdetails/save")
     public ResponseEntity<Boolean> save(@RequestBody PCMDETAILDTO pcmdetaildto) {
         return ResponseEntity.status(HttpStatus.OK).body(pcmdetailService.save(pcmdetailMapping.toDomain(pcmdetaildto)));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"PCMDETAIL" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmdetails/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PCMDETAILDTO> pcmdetaildtos) {
@@ -152,16 +140,14 @@ public class PCMDETAILResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMDETAIL-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"PCMDETAIL" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmdetails/getdraft")
     public ResponseEntity<PCMDETAILDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(pcmdetailMapping.toDto(pcmdetailService.getDraft(new PCMDETAIL())));
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMDETAIL-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PCMDETAIL" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pcmdetails/fetchdefault")
 	public ResponseEntity<List<PCMDETAILDTO>> fetchDefault(PCMDETAILSearchContext context) {
@@ -174,22 +160,12 @@ public class PCMDETAILResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMDETAIL-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PCMDETAIL" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/pcmdetails/searchdefault")
-	public ResponseEntity<Page<PCMDETAILDTO>> searchDefault(PCMDETAILSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pcmdetails/searchdefault")
+	public ResponseEntity<Page<PCMDETAILDTO>> searchDefault(@RequestBody PCMDETAILSearchContext context) {
         Page<PCMDETAIL> domains = pcmdetailService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pcmdetailMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
-    /**
-     * 用户权限校验
-     * @return
-     */
-	public PCMDETAIL getEntity(){
-        return new PCMDETAIL();
-    }
-
 }

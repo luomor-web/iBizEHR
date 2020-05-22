@@ -1,5 +1,5 @@
 <template>
-  <app-layout viewName="ormorgallleveltwoorgpickupgridview" viewTitle="管理单位" :isShowToolbar="false" :className="{ 'view-container': true, 'default-mode-view': true, 'depickupgridview': true, 'ormorgall-level-two-org-pickup-grid-view': true }" layoutMode="VIEW" :isShowUserInfo="isDefaultView()" :openMode="openMode" @close-view="closeView($event)">
+  <app-layout viewName="ormorgallleveltwoorgpickupgridview" viewTitle="管理单位" :isShowCaptionBar="false" :isShowToolbar="false" :className="{ 'view-container': true, 'default-mode-view': true, 'depickupgridview': true, 'ormorgall-level-two-org-pickup-grid-view': true }" layoutMode="VIEW" :isShowUserInfo="isDefaultView()" :openMode="openMode" @close-view="closeView($event)">
     <template slot="headerLeft">
       <div class="view-header-left">
 
@@ -81,6 +81,15 @@ export default class ORMORGAllLevelTwoOrgPickupGridViewBase extends PickupViewBa
      */
     public appEntityService: ORMORGService = new ORMORGService;
 
+
+    /**
+     * 计数器服务对象集合
+     *
+     * @type {Array<*>}
+     * @memberof ORMORGAllLevelTwoOrgPickupGridViewBase
+     */    
+    public counterServiceArray:Array<any> = [];
+    
     /**
      * 数据变化
      *
@@ -116,7 +125,7 @@ export default class ORMORGAllLevelTwoOrgPickupGridViewBase extends PickupViewBa
 	 * @type {*}
 	 * @memberof ORMORGAllLevelTwoOrgPickupGridViewBase
 	 */
-    protected customViewNavContexts:any ={
+    public customViewNavContexts:any ={
     };
 
 	/**
@@ -125,7 +134,7 @@ export default class ORMORGAllLevelTwoOrgPickupGridViewBase extends PickupViewBa
 	 * @type {*}
 	 * @memberof ORMORGAllLevelTwoOrgPickupGridViewBase
 	 */
-    protected customViewParams:any ={
+    public customViewParams:any ={
     };
 
     /**
@@ -155,7 +164,7 @@ export default class ORMORGAllLevelTwoOrgPickupGridViewBase extends PickupViewBa
     /**
      * 视图状态订阅对象
      *
-     * @private
+     * @public
      * @type {Subject<{action: string, data: any}>}
      * @memberof ORMORGAllLevelTwoOrgPickupGridViewBase
      */

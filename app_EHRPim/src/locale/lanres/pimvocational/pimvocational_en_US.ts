@@ -197,7 +197,6 @@ export default {
 			cszcsj: "初始注册时间", 
 			xzcsj: "续注册时间", 
 			sxrq: "失效日期", 
-			fzyxq: "发证有效期", 
 			nsqk: "年审情况", 
 			syqk: "使用情况", 
 			alteration: "变更情况", 

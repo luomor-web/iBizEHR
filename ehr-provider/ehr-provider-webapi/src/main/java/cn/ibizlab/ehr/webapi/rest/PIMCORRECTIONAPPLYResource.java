@@ -50,12 +50,11 @@ public class PIMCORRECTIONAPPLYResource {
 
     @Autowired
     @Lazy
-    private PIMCORRECTIONAPPLYMapping pimcorrectionapplyMapping;
+    public PIMCORRECTIONAPPLYMapping pimcorrectionapplyMapping;
 
+    public PIMCORRECTIONAPPLYDTO permissionDTO=new PIMCORRECTIONAPPLYDTO();
 
-
-
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.pimcorrectionapplyMapping,#pimcorrectionapplydto})")
     @ApiOperation(value = "Create", tags = {"PIMCORRECTIONAPPLY" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimcorrectionapplies")
     @Transactional
@@ -66,7 +65,7 @@ public class PIMCORRECTIONAPPLYResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatch", tags = {"PIMCORRECTIONAPPLY" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimcorrectionapplies/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PIMCORRECTIONAPPLYDTO> pimcorrectionapplydtos) {
@@ -74,33 +73,28 @@ public class PIMCORRECTIONAPPLYResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMCORRECTIONAPPLY-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"PIMCORRECTIONAPPLY" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimcorrectionapplies/getdraft")
     public ResponseEntity<PIMCORRECTIONAPPLYDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(pimcorrectionapplyMapping.toDto(pimcorrectionapplyService.getDraft(new PIMCORRECTIONAPPLY())));
     }
 
-
-
-
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMCORRECTIONAPPLY-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"PIMCORRECTIONAPPLY" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimcorrectionapplies/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PIMCORRECTIONAPPLYDTO pimcorrectionapplydto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pimcorrectionapplyService.checkKey(pimcorrectionapplyMapping.toDomain(pimcorrectionapplydto)));
     }
 
-
-
-
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMCORRECTIONAPPLY-Save-all')")
     @ApiOperation(value = "Save", tags = {"PIMCORRECTIONAPPLY" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimcorrectionapplies/save")
     public ResponseEntity<Boolean> save(@RequestBody PIMCORRECTIONAPPLYDTO pimcorrectionapplydto) {
         return ResponseEntity.status(HttpStatus.OK).body(pimcorrectionapplyService.save(pimcorrectionapplyMapping.toDomain(pimcorrectionapplydto)));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"PIMCORRECTIONAPPLY" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimcorrectionapplies/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PIMCORRECTIONAPPLYDTO> pimcorrectionapplydtos) {
@@ -108,10 +102,7 @@ public class PIMCORRECTIONAPPLYResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    @PreAuthorize("hasPermission(#pimcorrectionapply_id,'Get',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#pimcorrectionapply_id,'Get',{'Sql',this.pimcorrectionapplyMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"PIMCORRECTIONAPPLY" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimcorrectionapplies/{pimcorrectionapply_id}")
     public ResponseEntity<PIMCORRECTIONAPPLYDTO> get(@PathVariable("pimcorrectionapply_id") String pimcorrectionapply_id) {
@@ -120,10 +111,7 @@ public class PIMCORRECTIONAPPLYResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-
-
-
-    @PreAuthorize("hasPermission(#pimcorrectionapply_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#pimcorrectionapply_id,'Update',{'Sql',this.pimcorrectionapplyMapping,#pimcorrectionapplydto})")
     @ApiOperation(value = "Update", tags = {"PIMCORRECTIONAPPLY" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimcorrectionapplies/{pimcorrectionapply_id}")
     @Transactional
@@ -135,7 +123,7 @@ public class PIMCORRECTIONAPPLYResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#pimcorrectionapply_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"PIMCORRECTIONAPPLY" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimcorrectionapplies/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PIMCORRECTIONAPPLYDTO> pimcorrectionapplydtos) {
@@ -143,10 +131,7 @@ public class PIMCORRECTIONAPPLYResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    @PreAuthorize("hasPermission('Remove',{#pimcorrectionapply_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#pimcorrectionapply_id,'Remove',{'Sql',this.pimcorrectionapplyMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"PIMCORRECTIONAPPLY" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimcorrectionapplies/{pimcorrectionapply_id}")
     @Transactional
@@ -154,6 +139,7 @@ public class PIMCORRECTIONAPPLYResource {
          return ResponseEntity.status(HttpStatus.OK).body(pimcorrectionapplyService.remove(pimcorrectionapply_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"PIMCORRECTIONAPPLY" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimcorrectionapplies/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -161,7 +147,7 @@ public class PIMCORRECTIONAPPLYResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMCORRECTIONAPPLY-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PIMCORRECTIONAPPLY" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimcorrectionapplies/fetchdefault")
 	public ResponseEntity<List<PIMCORRECTIONAPPLYDTO>> fetchDefault(PIMCORRECTIONAPPLYSearchContext context) {
@@ -174,22 +160,12 @@ public class PIMCORRECTIONAPPLYResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMCORRECTIONAPPLY-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PIMCORRECTIONAPPLY" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/pimcorrectionapplies/searchdefault")
-	public ResponseEntity<Page<PIMCORRECTIONAPPLYDTO>> searchDefault(PIMCORRECTIONAPPLYSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimcorrectionapplies/searchdefault")
+	public ResponseEntity<Page<PIMCORRECTIONAPPLYDTO>> searchDefault(@RequestBody PIMCORRECTIONAPPLYSearchContext context) {
         Page<PIMCORRECTIONAPPLY> domains = pimcorrectionapplyService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimcorrectionapplyMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
-    /**
-     * 用户权限校验
-     * @return
-     */
-	public PIMCORRECTIONAPPLY getEntity(){
-        return new PIMCORRECTIONAPPLY();
-    }
-
 }

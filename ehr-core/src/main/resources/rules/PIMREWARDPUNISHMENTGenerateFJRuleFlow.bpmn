@@ -16,18 +16,9 @@
      <endEvent id="c20afb308ca5dad12b0e73131ee66990_End" name="End"/>
      <sequenceFlow id="c20afb308ca5dad12b0e73131ee66990_End_Line" sourceRef="c20afb308ca5dad12b0e73131ee66990" targetRef="c20afb308ca5dad12b0e73131ee66990_End"/>
      <startEvent id="abcbd0da94f130afd9775e0b7a07a78b" isInterrupting="true"/>
-     <sequenceFlow id="0887be7f23f94b01291a7bce5b439ede" sourceRef="abcbd0da94f130afd9775e0b7a07a78b" targetRef="cfde4baad91b3a228563a57779e498dc">
+     <sequenceFlow id="d2bbecd7444ff7b7b62c74d1fc4ce13b" sourceRef="abcbd0da94f130afd9775e0b7a07a78b" targetRef="cfde4baad91b3a228563a57779e498dc">
      </sequenceFlow>
-     <sequenceFlow id="0b68932dc1682368e14948a3cf04f309" sourceRef="gateway-cfde4baad91b3a228563a57779e498dc" targetRef="c20afb308ca5dad12b0e73131ee66990">
-            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
-            $pimrewardpunishmentgeneratefjenclosure:PIMENCLOSURE();
-            $pimrewardpunishmentgeneratefjdefault:PIMREWARDPUNISHMENT();
-            eval($pimrewardpunishmentgeneratefjenclosure==pimrewardpunishmentgeneratefjenclosure && $pimrewardpunishmentgeneratefjdefault==pimrewardpunishmentgeneratefjdefault);
-                eval((RuleUtils.test($pimrewardpunishmentgeneratefjenclosure.get("FJ"),"ISNULL","")))
-                ]]>
-            </conditionExpression>
-     </sequenceFlow>
-     <sequenceFlow id="b61edcf017716f1be804ee98ecc8d5e0" sourceRef="gateway-cfde4baad91b3a228563a57779e498dc" targetRef="6bd79c427d444cb4e9b4b55483c4239e">
+     <sequenceFlow id="5204803c18e6e3f92661fff061347b25" sourceRef="gateway-cfde4baad91b3a228563a57779e498dc" targetRef="6bd79c427d444cb4e9b4b55483c4239e">
             <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
             $pimrewardpunishmentgeneratefjenclosure:PIMENCLOSURE();
             $pimrewardpunishmentgeneratefjdefault:PIMREWARDPUNISHMENT();
@@ -36,8 +27,17 @@
                 ]]>
             </conditionExpression>
      </sequenceFlow>
+     <sequenceFlow id="e10aa48cc11a3468a23b9fb99041ebfd" sourceRef="gateway-cfde4baad91b3a228563a57779e498dc" targetRef="c20afb308ca5dad12b0e73131ee66990">
+            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+            $pimrewardpunishmentgeneratefjenclosure:PIMENCLOSURE();
+            $pimrewardpunishmentgeneratefjdefault:PIMREWARDPUNISHMENT();
+            eval($pimrewardpunishmentgeneratefjenclosure==pimrewardpunishmentgeneratefjenclosure && $pimrewardpunishmentgeneratefjdefault==pimrewardpunishmentgeneratefjdefault);
+                eval((RuleUtils.test($pimrewardpunishmentgeneratefjenclosure.get("FJ"),"ISNULL","")))
+                ]]>
+            </conditionExpression>
+     </sequenceFlow>
     <exclusiveGateway id="gateway-cfde4baad91b3a228563a57779e498dc" name="Gateway" gatewayDirection="Diverging" default="gateway-cfde4baad91b3a228563a57779e498dc_End_Line"></exclusiveGateway>
-    <sequenceFlow id="0b68932dc1682368e14948a3cf04f309-gatewayline" sourceRef="cfde4baad91b3a228563a57779e498dc" targetRef="gateway-cfde4baad91b3a228563a57779e498dc"></sequenceFlow>
+    <sequenceFlow id="5204803c18e6e3f92661fff061347b25-gatewayline" sourceRef="cfde4baad91b3a228563a57779e498dc" targetRef="gateway-cfde4baad91b3a228563a57779e498dc"></sequenceFlow>
     <sequenceFlow id="gateway-cfde4baad91b3a228563a57779e498dc_End_Line" sourceRef="gateway-cfde4baad91b3a228563a57779e498dc" targetRef="gateway-cfde4baad91b3a228563a57779e498dc_End"/>
     <endEvent id="gateway-cfde4baad91b3a228563a57779e498dc_End" name="End"/>
     </process>

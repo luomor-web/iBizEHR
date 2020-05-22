@@ -27,7 +27,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 
 
 /**
- * 实体[人员明细表]
+ * 实体[人员花名册]
  */
 @Data
 @TableName(value = "T_PCMDETAIL",resultMap = "PCMDETAILResultMap")

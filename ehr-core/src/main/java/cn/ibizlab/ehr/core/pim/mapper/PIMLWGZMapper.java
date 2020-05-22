@@ -27,6 +27,8 @@ public interface PIMLWGZMapper extends BaseMapper<PIMLWGZ>{
     @Override
     int updateById(@Param(Constants.ENTITY) PIMLWGZ entity);
     @Override
+    int update(@Param(Constants.ENTITY) PIMLWGZ entity, @Param("ew") Wrapper<PIMLWGZ> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

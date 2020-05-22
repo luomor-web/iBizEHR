@@ -29,6 +29,8 @@ public interface PCMYDLZMXMapper extends BaseMapper<PCMYDLZMX>{
     @Override
     int updateById(@Param(Constants.ENTITY) PCMYDLZMX entity);
     @Override
+    int update(@Param(Constants.ENTITY) PCMYDLZMX entity, @Param("ew") Wrapper<PCMYDLZMX> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

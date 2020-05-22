@@ -27,6 +27,8 @@ public interface TRMSTAYMapper extends BaseMapper<TRMSTAY>{
     @Override
     int updateById(@Param(Constants.ENTITY) TRMSTAY entity);
     @Override
+    int update(@Param(Constants.ENTITY) TRMSTAY entity, @Param("ew") Wrapper<TRMSTAY> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

@@ -1,5 +1,5 @@
 <template>
-  <app-layout viewName="ormorgfpxxpickupgridview" viewTitle="组织选择表格视图" :isShowToolbar="false" :className="{ 'view-container': true, 'default-mode-view': true, 'depickupgridview': true, 'ormorgfpxxpickup-grid-view': true }" layoutMode="VIEW" :isShowUserInfo="isDefaultView()" :openMode="openMode" @close-view="closeView($event)">
+  <app-layout viewName="ormorgfpxxpickupgridview" viewTitle="组织选择表格视图" :isShowCaptionBar="false" :isShowToolbar="false" :className="{ 'view-container': true, 'default-mode-view': true, 'depickupgridview': true, 'ormorgfpxxpickup-grid-view': true }" layoutMode="VIEW" :isShowUserInfo="isDefaultView()" :openMode="openMode" @close-view="closeView($event)">
     <template slot="headerLeft">
       <div class="view-header-left">
 
@@ -37,7 +37,7 @@
                 loaddraftAction=""
                 loadAction=""
                 createAction=""
-                fetchAction="FetchUseByFP"
+                fetchAction="FetchDefault"
                 name="grid"  
                 ref='grid' 
                 @selectionchange="grid_selectionchange($event)"  
@@ -81,6 +81,15 @@ export default class ORMORGFPXXPickupGridViewBase extends PickupViewBase {
      */
     public appEntityService: ORMORGService = new ORMORGService;
 
+
+    /**
+     * 计数器服务对象集合
+     *
+     * @type {Array<*>}
+     * @memberof ORMORGFPXXPickupGridViewBase
+     */    
+    public counterServiceArray:Array<any> = [];
+    
     /**
      * 数据变化
      *
@@ -116,7 +125,7 @@ export default class ORMORGFPXXPickupGridViewBase extends PickupViewBase {
 	 * @type {*}
 	 * @memberof ORMORGFPXXPickupGridViewBase
 	 */
-    protected customViewNavContexts:any ={
+    public customViewNavContexts:any ={
     };
 
 	/**
@@ -125,7 +134,7 @@ export default class ORMORGFPXXPickupGridViewBase extends PickupViewBase {
 	 * @type {*}
 	 * @memberof ORMORGFPXXPickupGridViewBase
 	 */
-    protected customViewParams:any ={
+    public customViewParams:any ={
     };
 
     /**
@@ -155,7 +164,7 @@ export default class ORMORGFPXXPickupGridViewBase extends PickupViewBase {
     /**
      * 视图状态订阅对象
      *
-     * @private
+     * @public
      * @type {Subject<{action: string, data: any}>}
      * @memberof ORMORGFPXXPickupGridViewBase
      */

@@ -28,6 +28,8 @@ public interface PIMARCHIVESCHANGEMapper extends BaseMapper<PIMARCHIVESCHANGE>{
     @Override
     int updateById(@Param(Constants.ENTITY) PIMARCHIVESCHANGE entity);
     @Override
+    int update(@Param(Constants.ENTITY) PIMARCHIVESCHANGE entity, @Param("ew") Wrapper<PIMARCHIVESCHANGE> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

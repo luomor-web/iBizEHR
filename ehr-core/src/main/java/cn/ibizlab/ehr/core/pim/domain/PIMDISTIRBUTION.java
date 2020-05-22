@@ -43,13 +43,6 @@ public class PIMDISTIRBUTION extends EntityMP implements Serializable {
     @JsonProperty("ssfw")
     private String ssfw;
     /**
-     * 岗位到期颜色
-     */
-    @TableField(exist = false)
-    @JSONField(name = "postexpiration_color")
-    @JsonProperty("postexpiration_color")
-    private String postexpirationColor;
-    /**
      * 任职结束时间
      */
     @TableField(value = "rzjssj")
@@ -157,26 +150,12 @@ public class PIMDISTIRBUTION extends EntityMP implements Serializable {
     @JsonProperty("pimworkhistoryid")
     private String pimworkhistoryid;
     /**
-     * 剩余月份颜色
-     */
-    @TableField(exist = false)
-    @JSONField(name = "syyf_color")
-    @JsonProperty("syyf_color")
-    private String syyfColor;
-    /**
      * 组织ID
      */
     @TableField(exist = false)
     @JSONField(name = "orgid")
     @JsonProperty("orgid")
     private String orgid;
-    /**
-     * 剩余月份
-     */
-    @TableField(exist = false)
-    @JSONField(name = "syyf")
-    @JsonProperty("syyf")
-    private String syyf;
     /**
      * 外单位履历
      */
@@ -229,13 +208,6 @@ public class PIMDISTIRBUTION extends EntityMP implements Serializable {
     @JSONField(name = "ydmxid")
     @JsonProperty("ydmxid")
     private String ydmxid;
-    /**
-     * 岗位到期（月）
-     */
-    @TableField(exist = false)
-    @JSONField(name = "postexpiration")
-    @JsonProperty("postexpiration")
-    private Double postexpiration;
     /**
      * 工作地点
      */

@@ -48,10 +48,6 @@ public class PIMREWARDPUNISHMENTServiceImpl extends ServiceImpl<PIMREWARDPUNISHM
     @Lazy
     private cn.ibizlab.ehr.core.pim.service.IPIMPERSONService pimpersonService;
 
-    @Autowired
-    @Lazy
-    private cn.ibizlab.ehr.core.pim.service.logic.IPIMREWARDPUNISHMENTGenerateFJLogic generatefjLogic;
-
     private int batchSize = 500;
 
     @Override
@@ -123,7 +119,6 @@ public class PIMREWARDPUNISHMENTServiceImpl extends ServiceImpl<PIMREWARDPUNISHM
         if(!this.retBool(this.baseMapper.insert(et)))
             return false;
         CachedBeanCopier.copy(get(et.getPimrewardpunishmentid()),et);
-        generatefjLogic.execute(et);
         return true;
     }
 
@@ -140,7 +135,6 @@ public class PIMREWARDPUNISHMENTServiceImpl extends ServiceImpl<PIMREWARDPUNISHM
         if(!update(et,(Wrapper) et.getUpdateWrapper(true).eq("pimrewardpunishmentid",et.getPimrewardpunishmentid())))
             return false;
         CachedBeanCopier.copy(get(et.getPimrewardpunishmentid()),et);
-        generatefjLogic.execute(et);
         return true;
     }
 

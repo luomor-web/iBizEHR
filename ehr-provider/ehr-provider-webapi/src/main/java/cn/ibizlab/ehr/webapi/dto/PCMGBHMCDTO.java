@@ -368,14 +368,6 @@ public class PCMGBHMCDTO extends DTOBase implements Serializable {
     private Timestamp syczjrq2;
 
     /**
-     * 属性 [JZRZ]
-     *
-     */
-    @JSONField(name = "jzrz")
-    @JsonProperty("jzrz")
-    private String jzrz;
-
-    /**
      * 属性 [JG]
      *
      */
@@ -414,15 +406,6 @@ public class PCMGBHMCDTO extends DTOBase implements Serializable {
     @JSONField(name = "rznx")
     @JsonProperty("rznx")
     private Double rznx;
-
-    /**
-     * 属性 [CFYXJSRQ]
-     *
-     */
-    @JsonFormat(pattern="yyyy-MM-dd", locale = "zh" , timezone="GMT+8")
-    @JSONField(name = "cfyxjsrq" , format="yyyy-MM-dd")
-    @JsonProperty("cfyxjsrq")
-    private Timestamp cfyxjsrq;
 
     /**
      * 属性 [RZNX2]
@@ -479,14 +462,6 @@ public class PCMGBHMCDTO extends DTOBase implements Serializable {
     @JSONField(name = "ygbh")
     @JsonProperty("ygbh")
     private String ygbh;
-
-    /**
-     * 属性 [CZ]
-     *
-     */
-    @JSONField(name = "cz")
-    @JsonProperty("cz")
-    private String cz;
 
     /**
      * 属性 [NL]

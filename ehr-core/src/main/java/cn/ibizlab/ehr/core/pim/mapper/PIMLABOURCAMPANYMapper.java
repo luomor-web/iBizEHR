@@ -28,6 +28,8 @@ public interface PIMLABOURCAMPANYMapper extends BaseMapper<PIMLABOURCAMPANY>{
     @Override
     int updateById(@Param(Constants.ENTITY) PIMLABOURCAMPANY entity);
     @Override
+    int update(@Param(Constants.ENTITY) PIMLABOURCAMPANY entity, @Param("ew") Wrapper<PIMLABOURCAMPANY> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

@@ -6,13 +6,11 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.util.ObjectUtils;
-import java.util.Map;
-import java.util.HashMap;
 import java.sql.Timestamp;
-import java.util.Collection;
-import java.util.Set;
+import java.util.*;
 import com.alibaba.fastjson.JSONObject;
 
 @Data
@@ -58,8 +56,8 @@ public class AuthenticationUser implements UserDetails
 	private String memo;
 	private Map <String,Object> sessionParams;
 	@JsonIgnore
-	private   Collection<GrantedAuthority> authorities;
-    @JsonIgnore
+	private Collection<GrantedAuthority> authorities;
+
     private int superuser;
     private JSONObject permissionList;
     private String orglevel;//单位级别
@@ -144,4 +142,15 @@ public class AuthenticationUser implements UserDetails
 		else
 			return new HashMap<>();
     }
+
+	public Collection<GrantedAuthority> getAuthorities() {
+		if(authorities==null && permissionList !=null){
+			if(permissionList.getJSONArray("authorities")!=null){
+				authorities=new ArrayList<>();
+				permissionList.getJSONArray("authorities").
+				forEach(item->authorities.add(new SimpleGrantedAuthority(String.valueOf(item))));
+			}
+		}
+		return authorities;
+	}
 }

@@ -27,6 +27,8 @@ public interface SALSTDXMGZMapper extends BaseMapper<SALSTDXMGZ>{
     @Override
     int updateById(@Param(Constants.ENTITY) SALSTDXMGZ entity);
     @Override
+    int update(@Param(Constants.ENTITY) SALSTDXMGZ entity, @Param("ew") Wrapper<SALSTDXMGZ> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

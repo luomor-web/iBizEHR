@@ -50,12 +50,11 @@ public class PCMWORKRESUMEResource {
 
     @Autowired
     @Lazy
-    private PCMWORKRESUMEMapping pcmworkresumeMapping;
+    public PCMWORKRESUMEMapping pcmworkresumeMapping;
 
+    public PCMWORKRESUMEDTO permissionDTO=new PCMWORKRESUMEDTO();
 
-
-
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.pcmworkresumeMapping,#pcmworkresumedto})")
     @ApiOperation(value = "Create", tags = {"PCMWORKRESUME" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmworkresumes")
     @Transactional
@@ -66,7 +65,7 @@ public class PCMWORKRESUMEResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatch", tags = {"PCMWORKRESUME" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmworkresumes/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PCMWORKRESUMEDTO> pcmworkresumedtos) {
@@ -74,24 +73,21 @@ public class PCMWORKRESUMEResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMWORKRESUME-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"PCMWORKRESUME" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmworkresumes/getdraft")
     public ResponseEntity<PCMWORKRESUMEDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(pcmworkresumeMapping.toDto(pcmworkresumeService.getDraft(new PCMWORKRESUME())));
     }
 
-
-
-
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMWORKRESUME-Save-all')")
     @ApiOperation(value = "Save", tags = {"PCMWORKRESUME" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmworkresumes/save")
     public ResponseEntity<Boolean> save(@RequestBody PCMWORKRESUMEDTO pcmworkresumedto) {
         return ResponseEntity.status(HttpStatus.OK).body(pcmworkresumeService.save(pcmworkresumeMapping.toDomain(pcmworkresumedto)));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"PCMWORKRESUME" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmworkresumes/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PCMWORKRESUMEDTO> pcmworkresumedtos) {
@@ -99,10 +95,7 @@ public class PCMWORKRESUMEResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    @PreAuthorize("hasPermission(#pcmworkresume_id,'Get',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#pcmworkresume_id,'Get',{'Sql',this.pcmworkresumeMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"PCMWORKRESUME" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmworkresumes/{pcmworkresume_id}")
     public ResponseEntity<PCMWORKRESUMEDTO> get(@PathVariable("pcmworkresume_id") String pcmworkresume_id) {
@@ -111,10 +104,7 @@ public class PCMWORKRESUMEResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-
-
-
-    @PreAuthorize("hasPermission(#pcmworkresume_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#pcmworkresume_id,'Update',{'Sql',this.pcmworkresumeMapping,#pcmworkresumedto})")
     @ApiOperation(value = "Update", tags = {"PCMWORKRESUME" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmworkresumes/{pcmworkresume_id}")
     @Transactional
@@ -126,7 +116,7 @@ public class PCMWORKRESUMEResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#pcmworkresume_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"PCMWORKRESUME" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmworkresumes/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PCMWORKRESUMEDTO> pcmworkresumedtos) {
@@ -134,19 +124,14 @@ public class PCMWORKRESUMEResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMWORKRESUME-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"PCMWORKRESUME" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmworkresumes/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PCMWORKRESUMEDTO pcmworkresumedto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pcmworkresumeService.checkKey(pcmworkresumeMapping.toDomain(pcmworkresumedto)));
     }
 
-
-
-
-    @PreAuthorize("hasPermission('Remove',{#pcmworkresume_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#pcmworkresume_id,'Remove',{'Sql',this.pcmworkresumeMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"PCMWORKRESUME" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmworkresumes/{pcmworkresume_id}")
     @Transactional
@@ -154,6 +139,7 @@ public class PCMWORKRESUMEResource {
          return ResponseEntity.status(HttpStatus.OK).body(pcmworkresumeService.remove(pcmworkresume_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"PCMWORKRESUME" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmworkresumes/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -161,7 +147,7 @@ public class PCMWORKRESUMEResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMWORKRESUME-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PCMWORKRESUME" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pcmworkresumes/fetchdefault")
 	public ResponseEntity<List<PCMWORKRESUMEDTO>> fetchDefault(PCMWORKRESUMESearchContext context) {
@@ -174,17 +160,15 @@ public class PCMWORKRESUMEResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMWORKRESUME-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PCMWORKRESUME" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/pcmworkresumes/searchdefault")
-	public ResponseEntity<Page<PCMWORKRESUMEDTO>> searchDefault(PCMWORKRESUMESearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pcmworkresumes/searchdefault")
+	public ResponseEntity<Page<PCMWORKRESUMEDTO>> searchDefault(@RequestBody PCMWORKRESUMESearchContext context) {
         Page<PCMWORKRESUME> domains = pcmworkresumeService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pcmworkresumeMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
-
+    //@PreAuthorize("hasPermission('','Create',{'Sql',this.pcmworkresumeMapping,#pcmworkresumedto})")
     @ApiOperation(value = "CreateByPCMPROFILE", tags = {"PCMWORKRESUME" },  notes = "CreateByPCMPROFILE")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/pcmworkresumes")
     @Transactional
@@ -196,6 +180,7 @@ public class PCMWORKRESUMEResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatchByPCMPROFILE", tags = {"PCMWORKRESUME" },  notes = "createBatchByPCMPROFILE")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/pcmworkresumes/batch")
     public ResponseEntity<Boolean> createBatchByPCMPROFILE(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody List<PCMWORKRESUMEDTO> pcmworkresumedtos) {
@@ -207,6 +192,7 @@ public class PCMWORKRESUMEResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMWORKRESUME-GetDraft-all')")
     @ApiOperation(value = "GetDraftByPCMPROFILE", tags = {"PCMWORKRESUME" },  notes = "GetDraftByPCMPROFILE")
     @RequestMapping(method = RequestMethod.GET, value = "/pcmprofiles/{pcmprofile_id}/pcmworkresumes/getdraft")
     public ResponseEntity<PCMWORKRESUMEDTO> getDraftByPCMPROFILE(@PathVariable("pcmprofile_id") String pcmprofile_id) {
@@ -215,6 +201,7 @@ public class PCMWORKRESUMEResource {
         return ResponseEntity.status(HttpStatus.OK).body(pcmworkresumeMapping.toDto(pcmworkresumeService.getDraft(domain)));
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMWORKRESUME-Save-all')")
     @ApiOperation(value = "SaveByPCMPROFILE", tags = {"PCMWORKRESUME" },  notes = "SaveByPCMPROFILE")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/pcmworkresumes/save")
     public ResponseEntity<Boolean> saveByPCMPROFILE(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody PCMWORKRESUMEDTO pcmworkresumedto) {
@@ -223,6 +210,7 @@ public class PCMWORKRESUMEResource {
         return ResponseEntity.status(HttpStatus.OK).body(pcmworkresumeService.save(domain));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatchByPCMPROFILE", tags = {"PCMWORKRESUME" },  notes = "SaveBatchByPCMPROFILE")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/pcmworkresumes/savebatch")
     public ResponseEntity<Boolean> saveBatchByPCMPROFILE(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody List<PCMWORKRESUMEDTO> pcmworkresumedtos) {
@@ -234,6 +222,7 @@ public class PCMWORKRESUMEResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    //@PreAuthorize("hasPermission(#pcmworkresume_id,'Get',{'Sql',this.pcmworkresumeMapping,this.permissionDTO})")
     @ApiOperation(value = "GetByPCMPROFILE", tags = {"PCMWORKRESUME" },  notes = "GetByPCMPROFILE")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmprofiles/{pcmprofile_id}/pcmworkresumes/{pcmworkresume_id}")
     public ResponseEntity<PCMWORKRESUMEDTO> getByPCMPROFILE(@PathVariable("pcmprofile_id") String pcmprofile_id, @PathVariable("pcmworkresume_id") String pcmworkresume_id) {
@@ -242,6 +231,7 @@ public class PCMWORKRESUMEResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    //@PreAuthorize("hasPermission(#pcmworkresume_id,'Update',{'Sql',this.pcmworkresumeMapping,#pcmworkresumedto})")
     @ApiOperation(value = "UpdateByPCMPROFILE", tags = {"PCMWORKRESUME" },  notes = "UpdateByPCMPROFILE")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmprofiles/{pcmprofile_id}/pcmworkresumes/{pcmworkresume_id}")
     @Transactional
@@ -254,6 +244,7 @@ public class PCMWORKRESUMEResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatchByPCMPROFILE", tags = {"PCMWORKRESUME" },  notes = "UpdateBatchByPCMPROFILE")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmprofiles/{pcmprofile_id}/pcmworkresumes/batch")
     public ResponseEntity<Boolean> updateBatchByPCMPROFILE(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody List<PCMWORKRESUMEDTO> pcmworkresumedtos) {
@@ -265,12 +256,14 @@ public class PCMWORKRESUMEResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMWORKRESUME-CheckKey-all')")
     @ApiOperation(value = "CheckKeyByPCMPROFILE", tags = {"PCMWORKRESUME" },  notes = "CheckKeyByPCMPROFILE")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/pcmworkresumes/checkkey")
     public ResponseEntity<Boolean> checkKeyByPCMPROFILE(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody PCMWORKRESUMEDTO pcmworkresumedto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pcmworkresumeService.checkKey(pcmworkresumeMapping.toDomain(pcmworkresumedto)));
     }
 
+    //@PreAuthorize("hasPermission(#pcmworkresume_id,'Remove',{'Sql',this.pcmworkresumeMapping,this.permissionDTO})")
     @ApiOperation(value = "RemoveByPCMPROFILE", tags = {"PCMWORKRESUME" },  notes = "RemoveByPCMPROFILE")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmprofiles/{pcmprofile_id}/pcmworkresumes/{pcmworkresume_id}")
     @Transactional
@@ -278,6 +271,7 @@ public class PCMWORKRESUMEResource {
 		return ResponseEntity.status(HttpStatus.OK).body(pcmworkresumeService.remove(pcmworkresume_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatchByPCMPROFILE", tags = {"PCMWORKRESUME" },  notes = "RemoveBatchByPCMPROFILE")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmprofiles/{pcmprofile_id}/pcmworkresumes/batch")
     public ResponseEntity<Boolean> removeBatchByPCMPROFILE(@RequestBody List<String> ids) {
@@ -285,6 +279,7 @@ public class PCMWORKRESUMEResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMWORKRESUME-Default-all')")
 	@ApiOperation(value = "fetchDEFAULTByPCMPROFILE", tags = {"PCMWORKRESUME" } ,notes = "fetchDEFAULTByPCMPROFILE")
     @RequestMapping(method= RequestMethod.GET , value="/pcmprofiles/{pcmprofile_id}/pcmworkresumes/fetchdefault")
 	public ResponseEntity<List<PCMWORKRESUMEDTO>> fetchPCMWORKRESUMEDefaultByPCMPROFILE(@PathVariable("pcmprofile_id") String pcmprofile_id,PCMWORKRESUMESearchContext context) {
@@ -298,22 +293,13 @@ public class PCMWORKRESUMEResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMWORKRESUME-Default-all')")
 	@ApiOperation(value = "searchDEFAULTByPCMPROFILE", tags = {"PCMWORKRESUME" } ,notes = "searchDEFAULTByPCMPROFILE")
-    @RequestMapping(method= RequestMethod.GET , value="/pcmprofiles/{pcmprofile_id}/pcmworkresumes/searchdefault")
-	public ResponseEntity<Page<PCMWORKRESUMEDTO>> searchPCMWORKRESUMEDefaultByPCMPROFILE(@PathVariable("pcmprofile_id") String pcmprofile_id,PCMWORKRESUMESearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pcmprofiles/{pcmprofile_id}/pcmworkresumes/searchdefault")
+	public ResponseEntity<Page<PCMWORKRESUMEDTO>> searchPCMWORKRESUMEDefaultByPCMPROFILE(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody PCMWORKRESUMESearchContext context) {
         context.setN_pcmprofileid_eq(pcmprofile_id);
         Page<PCMWORKRESUME> domains = pcmworkresumeService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pcmworkresumeMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
-    /**
-     * 用户权限校验
-     * @return
-     */
-	public PCMWORKRESUME getEntity(){
-        return new PCMWORKRESUME();
-    }
-
 }

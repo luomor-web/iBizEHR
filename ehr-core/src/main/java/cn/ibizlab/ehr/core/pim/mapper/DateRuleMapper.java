@@ -27,6 +27,8 @@ public interface DateRuleMapper extends BaseMapper<DateRule>{
     @Override
     int updateById(@Param(Constants.ENTITY) DateRule entity);
     @Override
+    int update(@Param(Constants.ENTITY) DateRule entity, @Param("ew") Wrapper<DateRule> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

@@ -13,9 +13,9 @@
      <sequenceFlow id="43d66ac9d4999867af3ae4c88169dfb5_End_Line" sourceRef="43d66ac9d4999867af3ae4c88169dfb5" targetRef="43d66ac9d4999867af3ae4c88169dfb5_End"/>
      <startEvent id="07e2b629dfafd1b8bcd7618a2151407a" isInterrupting="true"/>
      <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="pimarchivesgetpersonorgdeaction1" id="f3f4caffdd4d3127b5488e84cf456307" implementation="http://www.jboss.org/drools/rule" name="获取人员信息"/>
-     <sequenceFlow id="38276234d09745ab2f9e1dc0d2218998" sourceRef="07e2b629dfafd1b8bcd7618a2151407a" targetRef="f3f4caffdd4d3127b5488e84cf456307">
+     <sequenceFlow id="66c202b9aadf9f15cf98cfe4dd014aec" sourceRef="07e2b629dfafd1b8bcd7618a2151407a" targetRef="f3f4caffdd4d3127b5488e84cf456307">
      </sequenceFlow>
-     <sequenceFlow id="14f6e60bf5fe50e8654eb45f8b1522dc" sourceRef="f3f4caffdd4d3127b5488e84cf456307" targetRef="43d66ac9d4999867af3ae4c88169dfb5">
+     <sequenceFlow id="eb1bb01193561ae2f433d486a93d513b" sourceRef="f3f4caffdd4d3127b5488e84cf456307" targetRef="43d66ac9d4999867af3ae4c88169dfb5">
      </sequenceFlow>
     </process>
 </definitions>

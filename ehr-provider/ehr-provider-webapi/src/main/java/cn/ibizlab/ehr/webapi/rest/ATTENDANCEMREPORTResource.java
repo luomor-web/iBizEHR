@@ -50,11 +50,11 @@ public class ATTENDANCEMREPORTResource {
 
     @Autowired
     @Lazy
-    private ATTENDANCEMREPORTMapping attendancemreportMapping;
+    public ATTENDANCEMREPORTMapping attendancemreportMapping;
 
+    public ATTENDANCEMREPORTDTO permissionDTO=new ATTENDANCEMREPORTDTO();
 
-
-
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ATTENDANCEMREPORT-GetAttendencemanOfKQSZ-all')")
     @ApiOperation(value = "获取考勤表的考勤员", tags = {"ATTENDANCEMREPORT" },  notes = "获取考勤表的考勤员")
 	@RequestMapping(method = RequestMethod.GET, value = "/attendancemreports/{attendancemreport_id}/getattendencemanofkqsz")
     @Transactional
@@ -65,15 +65,14 @@ public class ATTENDANCEMREPORTResource {
         return ResponseEntity.status(HttpStatus.OK).body(attendancemreportdto);
     }
 
-
-
-
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ATTENDANCEMREPORT-Save-all')")
     @ApiOperation(value = "Save", tags = {"ATTENDANCEMREPORT" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/attendancemreports/save")
     public ResponseEntity<Boolean> save(@RequestBody ATTENDANCEMREPORTDTO attendancemreportdto) {
         return ResponseEntity.status(HttpStatus.OK).body(attendancemreportService.save(attendancemreportMapping.toDomain(attendancemreportdto)));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"ATTENDANCEMREPORT" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/attendancemreports/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<ATTENDANCEMREPORTDTO> attendancemreportdtos) {
@@ -81,10 +80,7 @@ public class ATTENDANCEMREPORTResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    @PreAuthorize("hasPermission('Remove',{#attendancemreport_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#attendancemreport_id,'Remove',{'Sql',this.attendancemreportMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"ATTENDANCEMREPORT" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/attendancemreports/{attendancemreport_id}")
     @Transactional
@@ -92,6 +88,7 @@ public class ATTENDANCEMREPORTResource {
          return ResponseEntity.status(HttpStatus.OK).body(attendancemreportService.remove(attendancemreport_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"ATTENDANCEMREPORT" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/attendancemreports/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -99,9 +96,7 @@ public class ATTENDANCEMREPORTResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ATTENDANCEMREPORT-ExportKQYB-all')")
     @ApiOperation(value = "导出月报", tags = {"ATTENDANCEMREPORT" },  notes = "导出月报")
 	@RequestMapping(method = RequestMethod.POST, value = "/attendancemreports/{attendancemreport_id}/exportkqyb")
     @Transactional
@@ -112,10 +107,7 @@ public class ATTENDANCEMREPORTResource {
         return ResponseEntity.status(HttpStatus.OK).body(attendancemreportdto);
     }
 
-
-
-
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.attendancemreportMapping,#attendancemreportdto})")
     @ApiOperation(value = "Create", tags = {"ATTENDANCEMREPORT" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/attendancemreports")
     @Transactional
@@ -126,7 +118,7 @@ public class ATTENDANCEMREPORTResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatch", tags = {"ATTENDANCEMREPORT" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/attendancemreports/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<ATTENDANCEMREPORTDTO> attendancemreportdtos) {
@@ -134,9 +126,7 @@ public class ATTENDANCEMREPORTResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ATTENDANCEMREPORT-SCKQYB-all')")
     @ApiOperation(value = "生成月报", tags = {"ATTENDANCEMREPORT" },  notes = "生成月报")
 	@RequestMapping(method = RequestMethod.POST, value = "/attendancemreports/{attendancemreport_id}/sckqyb")
     @Transactional
@@ -147,10 +137,7 @@ public class ATTENDANCEMREPORTResource {
         return ResponseEntity.status(HttpStatus.OK).body(attendancemreportdto);
     }
 
-
-
-
-    @PreAuthorize("hasPermission(#attendancemreport_id,'Get',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#attendancemreport_id,'Get',{'Sql',this.attendancemreportMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"ATTENDANCEMREPORT" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/attendancemreports/{attendancemreport_id}")
     public ResponseEntity<ATTENDANCEMREPORTDTO> get(@PathVariable("attendancemreport_id") String attendancemreport_id) {
@@ -159,18 +146,14 @@ public class ATTENDANCEMREPORTResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-
-
-
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ATTENDANCEMREPORT-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"ATTENDANCEMREPORT" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/attendancemreports/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody ATTENDANCEMREPORTDTO attendancemreportdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(attendancemreportService.checkKey(attendancemreportMapping.toDomain(attendancemreportdto)));
     }
 
-
-
-
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ATTENDANCEMREPORT-QR-all')")
     @ApiOperation(value = "确认月报", tags = {"ATTENDANCEMREPORT" },  notes = "确认月报")
 	@RequestMapping(method = RequestMethod.POST, value = "/attendancemreports/{attendancemreport_id}/qr")
     @Transactional
@@ -181,10 +164,7 @@ public class ATTENDANCEMREPORTResource {
         return ResponseEntity.status(HttpStatus.OK).body(attendancemreportdto);
     }
 
-
-
-
-    @PreAuthorize("hasPermission(#attendancemreport_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#attendancemreport_id,'Update',{'Sql',this.attendancemreportMapping,#attendancemreportdto})")
     @ApiOperation(value = "Update", tags = {"ATTENDANCEMREPORT" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/attendancemreports/{attendancemreport_id}")
     @Transactional
@@ -196,7 +176,7 @@ public class ATTENDANCEMREPORTResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#attendancemreport_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"ATTENDANCEMREPORT" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/attendancemreports/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<ATTENDANCEMREPORTDTO> attendancemreportdtos) {
@@ -204,16 +184,14 @@ public class ATTENDANCEMREPORTResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ATTENDANCEMREPORT-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"ATTENDANCEMREPORT" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/attendancemreports/getdraft")
     public ResponseEntity<ATTENDANCEMREPORTDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(attendancemreportMapping.toDto(attendancemreportService.getDraft(new ATTENDANCEMREPORT())));
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'KQYBDY',this.getEntity(),'Sql'})")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ATTENDANCEMREPORT-KQYBDY-all')")
 	@ApiOperation(value = "fetch考勤月报打印", tags = {"ATTENDANCEMREPORT" } ,notes = "fetch考勤月报打印")
     @RequestMapping(method= RequestMethod.GET , value="/attendancemreports/fetchkqybdy")
 	public ResponseEntity<List<ATTENDANCEMREPORTDTO>> fetchKQYBDY(ATTENDANCEMREPORTSearchContext context) {
@@ -226,16 +204,15 @@ public class ATTENDANCEMREPORTResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'KQYBDY',this.getEntity(),'Sql'})")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ATTENDANCEMREPORT-KQYBDY-all')")
 	@ApiOperation(value = "search考勤月报打印", tags = {"ATTENDANCEMREPORT" } ,notes = "search考勤月报打印")
-    @RequestMapping(method= RequestMethod.GET , value="/attendancemreports/searchkqybdy")
-	public ResponseEntity<Page<ATTENDANCEMREPORTDTO>> searchKQYBDY(ATTENDANCEMREPORTSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/attendancemreports/searchkqybdy")
+	public ResponseEntity<Page<ATTENDANCEMREPORTDTO>> searchKQYBDY(@RequestBody ATTENDANCEMREPORTSearchContext context) {
         Page<ATTENDANCEMREPORT> domains = attendancemreportService.searchKQYBDY(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(attendancemreportMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ATTENDANCEMREPORT-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"ATTENDANCEMREPORT" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/attendancemreports/fetchdefault")
 	public ResponseEntity<List<ATTENDANCEMREPORTDTO>> fetchDefault(ATTENDANCEMREPORTSearchContext context) {
@@ -248,16 +225,15 @@ public class ATTENDANCEMREPORTResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ATTENDANCEMREPORT-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"ATTENDANCEMREPORT" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/attendancemreports/searchdefault")
-	public ResponseEntity<Page<ATTENDANCEMREPORTDTO>> searchDefault(ATTENDANCEMREPORTSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/attendancemreports/searchdefault")
+	public ResponseEntity<Page<ATTENDANCEMREPORTDTO>> searchDefault(@RequestBody ATTENDANCEMREPORTSearchContext context) {
         Page<ATTENDANCEMREPORT> domains = attendancemreportService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(attendancemreportMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-    @PreAuthorize("hasPermission('Get',{#context,'KQYCZKQYB',this.getEntity(),'Sql'})")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ATTENDANCEMREPORT-KQYCZKQYB-all')")
 	@ApiOperation(value = "fetch考勤员操作考勤月报", tags = {"ATTENDANCEMREPORT" } ,notes = "fetch考勤员操作考勤月报")
     @RequestMapping(method= RequestMethod.GET , value="/attendancemreports/fetchkqyczkqyb")
 	public ResponseEntity<List<ATTENDANCEMREPORTDTO>> fetchKQYCZKQYB(ATTENDANCEMREPORTSearchContext context) {
@@ -270,16 +246,15 @@ public class ATTENDANCEMREPORTResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'KQYCZKQYB',this.getEntity(),'Sql'})")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ATTENDANCEMREPORT-KQYCZKQYB-all')")
 	@ApiOperation(value = "search考勤员操作考勤月报", tags = {"ATTENDANCEMREPORT" } ,notes = "search考勤员操作考勤月报")
-    @RequestMapping(method= RequestMethod.GET , value="/attendancemreports/searchkqyczkqyb")
-	public ResponseEntity<Page<ATTENDANCEMREPORTDTO>> searchKQYCZKQYB(ATTENDANCEMREPORTSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/attendancemreports/searchkqyczkqyb")
+	public ResponseEntity<Page<ATTENDANCEMREPORTDTO>> searchKQYCZKQYB(@RequestBody ATTENDANCEMREPORTSearchContext context) {
         Page<ATTENDANCEMREPORT> domains = attendancemreportService.searchKQYCZKQYB(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(attendancemreportMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-    @PreAuthorize("hasPermission('Get',{#context,'CurORMORGKQYB',this.getEntity(),'Sql'})")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ATTENDANCEMREPORT-CurORMORGKQYB-all')")
 	@ApiOperation(value = "fetch当前组织考勤月报", tags = {"ATTENDANCEMREPORT" } ,notes = "fetch当前组织考勤月报")
     @RequestMapping(method= RequestMethod.GET , value="/attendancemreports/fetchcurormorgkqyb")
 	public ResponseEntity<List<ATTENDANCEMREPORTDTO>> fetchCurORMORGKQYB(ATTENDANCEMREPORTSearchContext context) {
@@ -292,16 +267,15 @@ public class ATTENDANCEMREPORTResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'CurORMORGKQYB',this.getEntity(),'Sql'})")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ATTENDANCEMREPORT-CurORMORGKQYB-all')")
 	@ApiOperation(value = "search当前组织考勤月报", tags = {"ATTENDANCEMREPORT" } ,notes = "search当前组织考勤月报")
-    @RequestMapping(method= RequestMethod.GET , value="/attendancemreports/searchcurormorgkqyb")
-	public ResponseEntity<Page<ATTENDANCEMREPORTDTO>> searchCurORMORGKQYB(ATTENDANCEMREPORTSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/attendancemreports/searchcurormorgkqyb")
+	public ResponseEntity<Page<ATTENDANCEMREPORTDTO>> searchCurORMORGKQYB(@RequestBody ATTENDANCEMREPORTSearchContext context) {
         Page<ATTENDANCEMREPORT> domains = attendancemreportService.searchCurORMORGKQYB(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(attendancemreportMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-    @PreAuthorize("hasPermission('Get',{#context,'CurORMORGSECTORKQYB',this.getEntity(),'Sql'})")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ATTENDANCEMREPORT-CurORMORGSECTORKQYB-all')")
 	@ApiOperation(value = "fetch当前组织下部门考勤月报", tags = {"ATTENDANCEMREPORT" } ,notes = "fetch当前组织下部门考勤月报")
     @RequestMapping(method= RequestMethod.GET , value="/attendancemreports/fetchcurormorgsectorkqyb")
 	public ResponseEntity<List<ATTENDANCEMREPORTDTO>> fetchCurORMORGSECTORKQYB(ATTENDANCEMREPORTSearchContext context) {
@@ -314,22 +288,12 @@ public class ATTENDANCEMREPORTResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'CurORMORGSECTORKQYB',this.getEntity(),'Sql'})")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ATTENDANCEMREPORT-CurORMORGSECTORKQYB-all')")
 	@ApiOperation(value = "search当前组织下部门考勤月报", tags = {"ATTENDANCEMREPORT" } ,notes = "search当前组织下部门考勤月报")
-    @RequestMapping(method= RequestMethod.GET , value="/attendancemreports/searchcurormorgsectorkqyb")
-	public ResponseEntity<Page<ATTENDANCEMREPORTDTO>> searchCurORMORGSECTORKQYB(ATTENDANCEMREPORTSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/attendancemreports/searchcurormorgsectorkqyb")
+	public ResponseEntity<Page<ATTENDANCEMREPORTDTO>> searchCurORMORGSECTORKQYB(@RequestBody ATTENDANCEMREPORTSearchContext context) {
         Page<ATTENDANCEMREPORT> domains = attendancemreportService.searchCurORMORGSECTORKQYB(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(attendancemreportMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
-    /**
-     * 用户权限校验
-     * @return
-     */
-	public ATTENDANCEMREPORT getEntity(){
-        return new ATTENDANCEMREPORT();
-    }
-
 }

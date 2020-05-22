@@ -27,6 +27,8 @@ public interface SOCSELFAREBASEMapper extends BaseMapper<SOCSELFAREBASE>{
     @Override
     int updateById(@Param(Constants.ENTITY) SOCSELFAREBASE entity);
     @Override
+    int update(@Param(Constants.ENTITY) SOCSELFAREBASE entity, @Param("ew") Wrapper<SOCSELFAREBASE> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

@@ -1,5 +1,5 @@
 <template>
-  <app-layout viewName="pimqualtypepickupgridview" viewTitle="执业资格类别选择表格视图" :isShowToolbar="false" :className="{ 'view-container': true, 'default-mode-view': true, 'depickupgridview': true, 'pimqualtypepickup-grid-view': true }" layoutMode="VIEW" :isShowUserInfo="isDefaultView()" :openMode="openMode" @close-view="closeView($event)">
+  <app-layout viewName="pimqualtypepickupgridview" viewTitle="执业资格类别选择表格视图" :isShowCaptionBar="false" :isShowToolbar="false" :className="{ 'view-container': true, 'default-mode-view': true, 'depickupgridview': true, 'pimqualtypepickup-grid-view': true }" layoutMode="VIEW" :isShowUserInfo="isDefaultView()" :openMode="openMode" @close-view="closeView($event)">
     <template slot="headerLeft">
       <div class="view-header-left">
 
@@ -81,6 +81,15 @@ export default class PIMQUALTYPEPickupGridViewBase extends PickupViewBase {
      */
     public appEntityService: PIMQUALTYPEService = new PIMQUALTYPEService;
 
+
+    /**
+     * 计数器服务对象集合
+     *
+     * @type {Array<*>}
+     * @memberof PIMQUALTYPEPickupGridViewBase
+     */    
+    public counterServiceArray:Array<any> = [];
+    
     /**
      * 数据变化
      *
@@ -116,7 +125,7 @@ export default class PIMQUALTYPEPickupGridViewBase extends PickupViewBase {
 	 * @type {*}
 	 * @memberof PIMQUALTYPEPickupGridViewBase
 	 */
-    protected customViewNavContexts:any ={
+    public customViewNavContexts:any ={
     };
 
 	/**
@@ -125,7 +134,7 @@ export default class PIMQUALTYPEPickupGridViewBase extends PickupViewBase {
 	 * @type {*}
 	 * @memberof PIMQUALTYPEPickupGridViewBase
 	 */
-    protected customViewParams:any ={
+    public customViewParams:any ={
     };
 
     /**
@@ -155,7 +164,7 @@ export default class PIMQUALTYPEPickupGridViewBase extends PickupViewBase {
     /**
      * 视图状态订阅对象
      *
-     * @private
+     * @public
      * @type {Subject<{action: string, data: any}>}
      * @memberof PIMQUALTYPEPickupGridViewBase
      */

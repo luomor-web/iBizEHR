@@ -30,6 +30,8 @@ public interface PCMGBHMCMapper extends BaseMapper<PCMGBHMC>{
     @Override
     int updateById(@Param(Constants.ENTITY) PCMGBHMC entity);
     @Override
+    int update(@Param(Constants.ENTITY) PCMGBHMC entity, @Param("ew") Wrapper<PCMGBHMC> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

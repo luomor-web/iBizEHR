@@ -50,12 +50,11 @@ public class PIMQUALMAJORResource {
 
     @Autowired
     @Lazy
-    private PIMQUALMAJORMapping pimqualmajorMapping;
+    public PIMQUALMAJORMapping pimqualmajorMapping;
 
+    public PIMQUALMAJORDTO permissionDTO=new PIMQUALMAJORDTO();
 
-
-
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.pimqualmajorMapping,#pimqualmajordto})")
     @ApiOperation(value = "Create", tags = {"PIMQUALMAJOR" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimqualmajors")
     @Transactional
@@ -66,7 +65,7 @@ public class PIMQUALMAJORResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatch", tags = {"PIMQUALMAJOR" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimqualmajors/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PIMQUALMAJORDTO> pimqualmajordtos) {
@@ -74,19 +73,14 @@ public class PIMQUALMAJORResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMQUALMAJOR-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"PIMQUALMAJOR" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimqualmajors/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PIMQUALMAJORDTO pimqualmajordto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pimqualmajorService.checkKey(pimqualmajorMapping.toDomain(pimqualmajordto)));
     }
 
-
-
-
-    @PreAuthorize("hasPermission(#pimqualmajor_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#pimqualmajor_id,'Update',{'Sql',this.pimqualmajorMapping,#pimqualmajordto})")
     @ApiOperation(value = "Update", tags = {"PIMQUALMAJOR" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimqualmajors/{pimqualmajor_id}")
     @Transactional
@@ -98,7 +92,7 @@ public class PIMQUALMAJORResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#pimqualmajor_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"PIMQUALMAJOR" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimqualmajors/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PIMQUALMAJORDTO> pimqualmajordtos) {
@@ -106,10 +100,7 @@ public class PIMQUALMAJORResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    @PreAuthorize("hasPermission('Remove',{#pimqualmajor_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#pimqualmajor_id,'Remove',{'Sql',this.pimqualmajorMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"PIMQUALMAJOR" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimqualmajors/{pimqualmajor_id}")
     @Transactional
@@ -117,6 +108,7 @@ public class PIMQUALMAJORResource {
          return ResponseEntity.status(HttpStatus.OK).body(pimqualmajorService.remove(pimqualmajor_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"PIMQUALMAJOR" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimqualmajors/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -124,24 +116,21 @@ public class PIMQUALMAJORResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMQUALMAJOR-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"PIMQUALMAJOR" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimqualmajors/getdraft")
     public ResponseEntity<PIMQUALMAJORDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(pimqualmajorMapping.toDto(pimqualmajorService.getDraft(new PIMQUALMAJOR())));
     }
 
-
-
-
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMQUALMAJOR-Save-all')")
     @ApiOperation(value = "Save", tags = {"PIMQUALMAJOR" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimqualmajors/save")
     public ResponseEntity<Boolean> save(@RequestBody PIMQUALMAJORDTO pimqualmajordto) {
         return ResponseEntity.status(HttpStatus.OK).body(pimqualmajorService.save(pimqualmajorMapping.toDomain(pimqualmajordto)));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"PIMQUALMAJOR" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimqualmajors/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PIMQUALMAJORDTO> pimqualmajordtos) {
@@ -149,10 +138,7 @@ public class PIMQUALMAJORResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    @PreAuthorize("hasPermission(#pimqualmajor_id,'Get',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#pimqualmajor_id,'Get',{'Sql',this.pimqualmajorMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"PIMQUALMAJOR" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimqualmajors/{pimqualmajor_id}")
     public ResponseEntity<PIMQUALMAJORDTO> get(@PathVariable("pimqualmajor_id") String pimqualmajor_id) {
@@ -161,7 +147,7 @@ public class PIMQUALMAJORResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMQUALMAJOR-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PIMQUALMAJOR" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimqualmajors/fetchdefault")
 	public ResponseEntity<List<PIMQUALMAJORDTO>> fetchDefault(PIMQUALMAJORSearchContext context) {
@@ -174,16 +160,15 @@ public class PIMQUALMAJORResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMQUALMAJOR-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PIMQUALMAJOR" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/pimqualmajors/searchdefault")
-	public ResponseEntity<Page<PIMQUALMAJORDTO>> searchDefault(PIMQUALMAJORSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimqualmajors/searchdefault")
+	public ResponseEntity<Page<PIMQUALMAJORDTO>> searchDefault(@RequestBody PIMQUALMAJORSearchContext context) {
         Page<PIMQUALMAJOR> domains = pimqualmajorService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimqualmajorMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-    @PreAuthorize("hasPermission('Get',{#context,'XZZGZY',this.getEntity(),'Sql'})")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMQUALMAJOR-XZZGZY-all')")
 	@ApiOperation(value = "fetch选择资格类别下对应的资格专业", tags = {"PIMQUALMAJOR" } ,notes = "fetch选择资格类别下对应的资格专业")
     @RequestMapping(method= RequestMethod.GET , value="/pimqualmajors/fetchxzzgzy")
 	public ResponseEntity<List<PIMQUALMAJORDTO>> fetchXZZGZY(PIMQUALMAJORSearchContext context) {
@@ -196,22 +181,12 @@ public class PIMQUALMAJORResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'XZZGZY',this.getEntity(),'Sql'})")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMQUALMAJOR-XZZGZY-all')")
 	@ApiOperation(value = "search选择资格类别下对应的资格专业", tags = {"PIMQUALMAJOR" } ,notes = "search选择资格类别下对应的资格专业")
-    @RequestMapping(method= RequestMethod.GET , value="/pimqualmajors/searchxzzgzy")
-	public ResponseEntity<Page<PIMQUALMAJORDTO>> searchXZZGZY(PIMQUALMAJORSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimqualmajors/searchxzzgzy")
+	public ResponseEntity<Page<PIMQUALMAJORDTO>> searchXZZGZY(@RequestBody PIMQUALMAJORSearchContext context) {
         Page<PIMQUALMAJOR> domains = pimqualmajorService.searchXZZGZY(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimqualmajorMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
-    /**
-     * 用户权限校验
-     * @return
-     */
-	public PIMQUALMAJOR getEntity(){
-        return new PIMQUALMAJOR();
-    }
-
 }

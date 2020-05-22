@@ -27,6 +27,8 @@ public interface ORMQYGLMapper extends BaseMapper<ORMQYGL>{
     @Override
     int updateById(@Param(Constants.ENTITY) ORMQYGL entity);
     @Override
+    int update(@Param(Constants.ENTITY) ORMQYGL entity, @Param("ew") Wrapper<ORMQYGL> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

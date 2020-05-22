@@ -22,14 +22,14 @@
                 <el-table-column align="center" type='selection' :width="checkboxColWidth"></el-table-column>
             </template>
             <template v-if="getColumnState('ygbh')">
-                <el-table-column show-overflow-tooltip :prop="'ygbh'" :label="$t('entities.pimvocational.main_2_grid.columns.ygbh')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'ygbh'" :label="$t('entities.pimvocational.main_2_grid.columns.ygbh')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.ygbh}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('pimpersonname')">
-                <el-table-column show-overflow-tooltip :prop="'pimpersonname'" :label="$t('entities.pimvocational.main_2_grid.columns.pimpersonname')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'pimpersonname'" :label="$t('entities.pimvocational.main_2_grid.columns.pimpersonname')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <app-column-link deKeyField='pimperson' :context="JSON.parse(JSON.stringify(context))" :viewparams="JSON.parse(JSON.stringify(viewparams))" :data="row" :linkview="{viewname: 'pimpersonedit-view2', height: 0,width: 0,title: $t('entities.pimperson.views.editview2.title'),placement: 'DRAWER_TOP', isRedirectView: false,deResParameters: [
             ]
@@ -43,7 +43,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('ygzt')">
-                <el-table-column show-overflow-tooltip :prop="'ygzt'" :label="$t('entities.pimvocational.main_2_grid.columns.ygzt')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'ygzt'" :label="$t('entities.pimvocational.main_2_grid.columns.ygzt')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
             <codelist :value="row.ygzt" tag='PIMCL_YGZT' codelistType='DYNAMIC' ></codelist>
@@ -52,35 +52,35 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('zzdzs')">
-                <el-table-column show-overflow-tooltip :prop="'zzdzs'" :label="$t('entities.pimvocational.main_2_grid.columns.zzdzs')" :width="200" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'zzdzs'" :label="$t('entities.pimvocational.main_2_grid.columns.zzdzs')" :width="200"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.zzdzs}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('zgzsbh')">
-                <el-table-column show-overflow-tooltip :prop="'zgzsbh'" :label="$t('entities.pimvocational.main_2_grid.columns.zgzsbh')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'zgzsbh'" :label="$t('entities.pimvocational.main_2_grid.columns.zgzsbh')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.zgzsbh}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('bcardnumber')">
-                <el-table-column show-overflow-tooltip :prop="'bcardnumber'" :label="$t('entities.pimvocational.main_2_grid.columns.bcardnumber')" :width="300" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'bcardnumber'" :label="$t('entities.pimvocational.main_2_grid.columns.bcardnumber')" :width="300"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.bcardnumber}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('zsmc')">
-                <el-table-column show-overflow-tooltip :prop="'zsmc'" :label="$t('entities.pimvocational.main_2_grid.columns.zsmc')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'zsmc'" :label="$t('entities.pimvocational.main_2_grid.columns.zsmc')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.zsmc}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('zslx')">
-                <el-table-column show-overflow-tooltip :prop="'zslx'" :label="$t('entities.pimvocational.main_2_grid.columns.zslx')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'zslx'" :label="$t('entities.pimvocational.main_2_grid.columns.zslx')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
             <codelist :value="row.zslx" tag='ZSLX' codelistType='STATIC' renderMode="STR" valueSeparator=";" textSeparator="、" ></codelist>
@@ -89,42 +89,42 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('zghqrq')">
-                <el-table-column show-overflow-tooltip :prop="'zghqrq'" :label="$t('entities.pimvocational.main_2_grid.columns.zghqrq')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'zghqrq'" :label="$t('entities.pimvocational.main_2_grid.columns.zghqrq')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <app-format-data format="YYYY-MM-DD" :data="row.zghqrq"></app-format-data>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('zgsydw')">
-                <el-table-column show-overflow-tooltip :prop="'zgsydw'" :label="$t('entities.pimvocational.main_2_grid.columns.zgsydw')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'zgsydw'" :label="$t('entities.pimvocational.main_2_grid.columns.zgsydw')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.zgsydw}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('ormsignorgname')">
-                <el-table-column show-overflow-tooltip :prop="'ormsignorgname'" :label="$t('entities.pimvocational.main_2_grid.columns.ormsignorgname')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'ormsignorgname'" :label="$t('entities.pimvocational.main_2_grid.columns.ormsignorgname')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.ormsignorgname}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('fzyxq')">
-                <el-table-column show-overflow-tooltip :prop="'fzyxq'" :label="$t('entities.pimvocational.main_2_grid.columns.fzyxq')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'fzyxq'" :label="$t('entities.pimvocational.main_2_grid.columns.fzyxq')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.fzyxq}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('sxrq')">
-                <el-table-column show-overflow-tooltip :prop="'sxrq'" :label="$t('entities.pimvocational.main_2_grid.columns.sxrq')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'sxrq'" :label="$t('entities.pimvocational.main_2_grid.columns.sxrq')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <app-format-data format="YYYY-MM-DD" :data="row.sxrq"></app-format-data>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('zssyts')">
-                <el-table-column show-overflow-tooltip :prop="'zssyts'" :label="$t('entities.pimvocational.main_2_grid.columns.zssyts')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'zssyts'" :label="$t('entities.pimvocational.main_2_grid.columns.zssyts')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.zssyts}}</span>
                     </template>
@@ -588,7 +588,7 @@ export default class Main_2Base extends Vue implements ControlInterface {
     * @type {number}
     * @memberof AppIndex
     */
-    protected checkboxColWidth: number = 34;
+    public checkboxColWidth: number = 34;
 
     /**
      * 是否允许拖动列宽
@@ -1380,7 +1380,7 @@ export default class Main_2Base extends Vue implements ControlInterface {
      * @memberof Main_2
      */
 	public uiAction(row: any, tag: any, $event: any) {
-        this.rowClick(row, true);
+        // this.rowClick(row, true);
     }
 
     /**

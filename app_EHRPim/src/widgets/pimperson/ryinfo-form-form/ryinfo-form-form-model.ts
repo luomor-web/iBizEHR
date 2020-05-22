@@ -193,21 +193,6 @@ export default class RYInfoFormModel {
         dataType: 'TEXT',
       },
       {
-        name: 'rcxllx',
-        prop: 'rcxllx',
-        dataType: 'SSCODELIST',
-      },
-      {
-        name: 'pimmajorsetypename',
-        prop: 'pimmajorsetypename',
-        dataType: 'PICKUPTEXT',
-      },
-      {
-        name: 'pcmrcxlname',
-        prop: 'pcmrcxlname',
-        dataType: 'PICKUPTEXT',
-      },
-      {
         name: 'jkzk',
         prop: 'jkzk',
         dataType: 'TEXT',
@@ -233,11 +218,6 @@ export default class RYInfoFormModel {
         dataType: 'DATE',
       },
       {
-        name: 'yglx',
-        prop: 'yglx',
-        dataType: 'SSCODELIST',
-      },
-      {
         name: 'ygzt',
         prop: 'ygzt',
         dataType: 'SSCODELIST',
@@ -250,6 +230,11 @@ export default class RYInfoFormModel {
       {
         name: 'rzqd',
         prop: 'rzqd',
+        dataType: 'SSCODELIST',
+      },
+      {
+        name: 'yglx',
+        prop: 'yglx',
         dataType: 'SSCODELIST',
       },
       {
@@ -273,11 +258,6 @@ export default class RYInfoFormModel {
         dataType: 'PICKUPTEXT',
       },
       {
-        name: 'rank',
-        prop: 'rank',
-        dataType: 'SSCODELIST',
-      },
-      {
         name: 'zw',
         prop: 'zw',
         dataType: 'SSCODELIST',
@@ -288,23 +268,8 @@ export default class RYInfoFormModel {
         dataType: 'SSCODELIST',
       },
       {
-        name: 'zj',
-        prop: 'zj',
-        dataType: 'SSCODELIST',
-      },
-      {
         name: 'cjgzsj',
         prop: 'cjgzsj',
-        dataType: 'DATE',
-      },
-      {
-        name: 'tozjdate',
-        prop: 'tozjdate',
-        dataType: 'DATE',
-      },
-      {
-        name: 'dzjbjsj',
-        prop: 'dzjbjsj',
         dataType: 'DATE',
       },
       {
@@ -313,49 +278,9 @@ export default class RYInfoFormModel {
         dataType: 'DATE',
       },
       {
-        name: 'gzzt',
-        prop: 'gzzt',
-        dataType: 'SSCODELIST',
-      },
-      {
-        name: 'gzzz',
-        prop: 'gzzz',
-        dataType: 'TEXT',
-      },
-      {
-        name: 'gzbm',
-        prop: 'gzbm',
-        dataType: 'TEXT',
-      },
-      {
-        name: 'gzkssj',
-        prop: 'gzkssj',
-        dataType: 'DATE',
-      },
-      {
-        name: 'gzjssj',
-        prop: 'gzjssj',
-        dataType: 'DATE',
-      },
-      {
         name: 'sgyy',
         prop: 'sgyy',
         dataType: 'LONGTEXT_1000',
-      },
-      {
-        name: 'pimpersonname2',
-        prop: 'pimpersonname2',
-        dataType: 'PICKUPTEXT',
-      },
-      {
-        name: 'pimpersonname3',
-        prop: 'pimpersonname3',
-        dataType: 'PICKUPTEXT',
-      },
-      {
-        name: 'sftberp',
-        prop: 'sftberp',
-        dataType: 'SSCODELIST',
       },
       {
         name: 'hmd',
@@ -366,21 +291,6 @@ export default class RYInfoFormModel {
         name: 'blacklistreasons',
         prop: 'blacklistreasons',
         dataType: 'TEXT',
-      },
-      {
-        name: 'pimpersonid3',
-        prop: 'pimpersonid3',
-        dataType: 'PICKUP',
-      },
-      {
-        name: 'pcmrcxlid',
-        prop: 'pcmrcxlid',
-        dataType: 'PICKUP',
-      },
-      {
-        name: 'pimmajorsetypeid',
-        prop: 'pimmajorsetypeid',
-        dataType: 'PICKUP',
       },
       {
         name: 'pimperson',

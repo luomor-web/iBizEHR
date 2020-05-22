@@ -27,6 +27,8 @@ public interface VACUSENXJMXMapper extends BaseMapper<VACUSENXJMX>{
     @Override
     int updateById(@Param(Constants.ENTITY) VACUSENXJMX entity);
     @Override
+    int update(@Param(Constants.ENTITY) VACUSENXJMX entity, @Param("ew") Wrapper<VACUSENXJMX> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

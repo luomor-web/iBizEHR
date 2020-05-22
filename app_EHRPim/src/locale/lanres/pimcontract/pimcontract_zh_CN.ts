@@ -350,7 +350,6 @@ export default {
 	},
 	stopremindgrid_grid: {
 		columns: {
-			cz: '操作',
 			ygbh: '员工编号',
 			pimpersonname: '员工姓名',
 			zzdzs: '员工所属单位',
@@ -362,9 +361,10 @@ export default {
 			contracttype: '合同类型',
 			qsrq: '起始日期',
 			jsrq: '结束日期',
-			htsyts: '合同剩余天数',
+			uagridcolumn1: '操作列',
 		},
 		uiactions: {
+			stopcontract: '终止合同',
 		},
 	},
 	main_grid: {
@@ -404,7 +404,6 @@ export default {
 	},
 	signrmindgrid_grid: {
 		columns: {
-			action: '操作',
 			ygbh: '员工编号',
 			pimpersonname: '员工姓名',
 			zzdzs: '员工所属单位',
@@ -416,7 +415,7 @@ export default {
 			contracttype: '合同类型',
 			qsrq: '起始日期',
 			jsrq: '结束日期',
-			htsyts: '合同剩余天数',
+			uagridcolumn1: '操作列',
 		},
 		uiactions: {
 		},
@@ -548,36 +547,18 @@ export default {
 			tip: '帮助',
 		},
 	},
-	reneweditviewtoolbar_toolbar: {
-		tbitem5: {
-			caption: '确认签订',
-			tip: '确认签订',
-		},
-	},
 	gridviewtoolbar_toolbar: {
-		deuiaction3: {
-			caption: '过滤',
-			tip: '过滤',
+		tbitem3: {
+			caption: '新建',
+			tip: '新建',
 		},
 		deuiaction1: {
-			caption: '导入',
-			tip: '导入',
+			caption: '编辑',
+			tip: '编辑',
 		},
-		deuiaction2: {
-			caption: '导出',
-			tip: '导出',
-		},
-		tbitem18: {
-			caption: '帮助',
-			tip: '帮助',
-		},
-		deuiaction4: {
-			caption: '新签',
-			tip: '新签',
-		},
-		deuiaction5: {
-			caption: '续签',
-			tip: '续签',
+		tbitem19: {
+			caption: '过滤',
+			tip: '过滤',
 		},
 	},
 	grcontractgridviewtoolbar_toolbar: {
@@ -668,6 +649,12 @@ export default {
 		tbitem22: {
 			caption: '帮助',
 			tip: '帮助',
+		},
+	},
+	reneweditviewtoolbar_toolbar: {
+		tbitem5: {
+			caption: '确认签订',
+			tip: '确认签订',
 		},
 	},
 	signremindgridviewtoolbar_toolbar: {

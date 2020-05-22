@@ -27,6 +27,8 @@ public interface ATTENDENCETYPEMapper extends BaseMapper<ATTENDENCETYPE>{
     @Override
     int updateById(@Param(Constants.ENTITY) ATTENDENCETYPE entity);
     @Override
+    int update(@Param(Constants.ENTITY) ATTENDENCETYPE entity, @Param("ew") Wrapper<ATTENDENCETYPE> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

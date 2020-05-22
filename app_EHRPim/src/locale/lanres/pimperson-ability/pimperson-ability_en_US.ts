@@ -103,30 +103,6 @@ export default {
 		uiactions: {
 		},
 	},
-	gridviewtoolbar_toolbar: {
-	},
-	editviewtoolbar_toolbar: {
-		tbitem3: {
-			caption: "Save",
-			tip: "Save",
-		},
-		tbitem4: {
-			caption: "Save And New",
-			tip: "Save And New",
-		},
-		tbitem5: {
-			caption: "Save And Close",
-			tip: "Save And Close Window",
-		},
-		tbitem7: {
-			caption: "Remove And Close",
-			tip: "Remove And Close Window",
-		},
-		tbitem22: {
-			caption: "Help",
-			tip: "Help",
-		},
-	},
 	mgrgridviewtoolbar_toolbar: {
 		tbitem3: {
 			caption: "New",
@@ -153,6 +129,28 @@ export default {
 			tip: "Help",
 		},
 	},
+	editviewtoolbar_toolbar: {
+		tbitem3: {
+			caption: "Save",
+			tip: "Save",
+		},
+		tbitem4: {
+			caption: "Save And New",
+			tip: "Save And New",
+		},
+		tbitem5: {
+			caption: "Save And Close",
+			tip: "Save And Close Window",
+		},
+		tbitem7: {
+			caption: "Remove And Close",
+			tip: "Remove And Close Window",
+		},
+		tbitem22: {
+			caption: "Help",
+			tip: "Help",
+		},
+	},
 	editview2toolbar_toolbar: {
 		tbitem3: {
 			caption: "Save",
@@ -174,5 +172,7 @@ export default {
 			caption: "Help",
 			tip: "Help",
 		},
+	},
+	gridviewtoolbar_toolbar: {
 	},
 };

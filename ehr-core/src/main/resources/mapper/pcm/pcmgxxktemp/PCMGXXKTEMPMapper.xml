@@ -4,9 +4,6 @@
 <mapper	namespace="cn.ibizlab.ehr.core.pcm.mapper.PCMGXXKTEMPMapper">
 
     <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
-	<select id="selectById"  resultMap="PCMGXXKTEMPResultMap" databaseId="oracle">
-        <![CDATA[select * from v_pcmgxxktemp t1     where  pcmgxxktempid=#{id}]]>
-    </select>
 
     <!--通过mybatis将查询结果注入到entity中,通过配置autoMapping="true"由mybatis自动处理映射关系 -->
     <resultMap id="PCMGXXKTEMPResultMap" type="cn.ibizlab.ehr.core.pcm.domain.PCMGXXKTEMP" autoMapping="true">
@@ -44,6 +41,12 @@
          <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
          <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
      </select>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="mysql">
+       <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t11.`ND`, t21.`ND` AS `ND2`, t1.`PCMGXMLID`, t11.`PCMGXMLNAME`, t1.`PCMGXXKTEMPID`, t1.`PCMGXXKTEMPNAME`, t1.`PCMXKMLID`, t21.`PCMXKMLNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN` FROM `T_PCMGXXKTEMP` t1  LEFT JOIN T_PCMGXML t11 ON t1.PCMGXMLID = t11.PCMGXMLID  LEFT JOIN T_PCMXKML t21 ON t1.PCMXKMLID = t21.PCMXKMLID  
+			]]>
+    </sql>
 
     <!--数据查询[Default]-->
     <sql id="Default" databaseId="oracle">

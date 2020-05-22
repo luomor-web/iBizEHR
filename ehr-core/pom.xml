@@ -63,13 +63,11 @@
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
         </dependency>
-
         <dependency>
 			<groupId>com.oracle</groupId>
 			<artifactId>ojdbc6</artifactId>
 			<version>11.2.0.3</version>
 		</dependency>
-
         <!--  Druid阿里连接池  -->
         <dependency>
             <groupId>com.alibaba</groupId>
@@ -99,5 +97,76 @@
         </dependency>
 
 	</dependencies>
+
+    <properties>
+        <maven.build.timestamp.format>yyyyMMddHHmmss</maven.build.timestamp.format>
+    </properties>
+    <profiles>
+        <profile>
+            <id>diff</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.liquibase</groupId>
+                        <artifactId>liquibase-maven-plugin</artifactId>
+                        <version>${liquibase.version}</version>
+                        <executions>
+                            <execution>
+                                <id>prepare-newdb</id>
+                                <configuration>
+                                    <changeLogFile>${project.basedir}/src/main/resources/liquibase/h2_table.xml</changeLogFile>
+                                    <driver>org.h2.Driver</driver>
+                                    <url>jdbc:h2:file:${project.build.directory}/db/new;MODE=mysql</url>
+                                    <username>root</username>
+                                    <dropFirst>true</dropFirst>
+                                </configuration>
+                                <phase>process-resources</phase>
+                                <goals>
+                                    <goal>update</goal>
+                                </goals>
+                            </execution>
+                            <execution>
+                                <id>prepare-olddb</id>
+                                <configuration>
+                                    <changeLogFile>${project.basedir}/src/main/resources/liquibase/master_table.xml</changeLogFile>
+                                    <driver>org.h2.Driver</driver>
+                                    <url>jdbc:h2:file:${project.build.directory}/db/last;MODE=mysql</url>
+                                    <username>root</username>
+                                    <dropFirst>true</dropFirst>
+                                </configuration>
+                                <phase>process-resources</phase>
+                                <goals>
+                                    <goal>update</goal>
+                                </goals>
+                            </execution>
+                            <execution>
+                                <id>make-diff</id>
+                                <configuration>
+                                    <changeLogFile>${project.basedir}/src/main/resources/liquibase/empty.xml</changeLogFile>
+                                    <diffChangeLogFile>${project.basedir}/src/main/resources/liquibase/changelog/${maven.build.timestamp}_changelog.xml</diffChangeLogFile>
+                                    <driver>org.h2.Driver</driver>
+                                    <url>jdbc:h2:file:${project.build.directory}/db/last;MODE=mysql</url>
+                                    <username>root</username>
+                                    <password></password>
+                                    <referenceUrl>jdbc:h2:file:${project.build.directory}/db/new;MODE=mysql</referenceUrl>
+                                    <referenceDriver>org.h2.Driver</referenceDriver>
+                                    <referenceUsername>root</referenceUsername>
+                                    <verbose>true</verbose>
+                                    <logging>debug</logging>
+                                    <contexts>!test</contexts>
+                                    <diffExcludeObjects>Index:.*,table:ibzfile,ibzuser,ibzdataaudit</diffExcludeObjects>
+                                </configuration>
+                                <phase>process-resources</phase>
+                                <goals>
+                                    <goal>diff</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 
 </project>

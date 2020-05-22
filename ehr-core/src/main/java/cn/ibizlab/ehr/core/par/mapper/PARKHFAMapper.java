@@ -27,6 +27,8 @@ public interface PARKHFAMapper extends BaseMapper<PARKHFA>{
     @Override
     int updateById(@Param(Constants.ENTITY) PARKHFA entity);
     @Override
+    int update(@Param(Constants.ENTITY) PARKHFA entity, @Param("ew") Wrapper<PARKHFA> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

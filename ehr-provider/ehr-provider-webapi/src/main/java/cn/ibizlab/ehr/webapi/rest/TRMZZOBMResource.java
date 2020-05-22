@@ -50,12 +50,11 @@ public class TRMZZOBMResource {
 
     @Autowired
     @Lazy
-    private TRMZZOBMMapping trmzzobmMapping;
+    public TRMZZOBMMapping trmzzobmMapping;
 
+    public TRMZZOBMDTO permissionDTO=new TRMZZOBMDTO();
 
-
-
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.trmzzobmMapping,#trmzzobmdto})")
     @ApiOperation(value = "Create", tags = {"TRMZZOBM" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmzzobms")
     @Transactional
@@ -66,7 +65,7 @@ public class TRMZZOBMResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatch", tags = {"TRMZZOBM" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmzzobms/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<TRMZZOBMDTO> trmzzobmdtos) {
@@ -74,10 +73,7 @@ public class TRMZZOBMResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    @PreAuthorize("hasPermission(#trmzzobm_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#trmzzobm_id,'Update',{'Sql',this.trmzzobmMapping,#trmzzobmdto})")
     @ApiOperation(value = "Update", tags = {"TRMZZOBM" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/trmzzobms/{trmzzobm_id}")
     @Transactional
@@ -89,7 +85,7 @@ public class TRMZZOBMResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#trmzzobm_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"TRMZZOBM" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/trmzzobms/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<TRMZZOBMDTO> trmzzobmdtos) {
@@ -97,33 +93,28 @@ public class TRMZZOBMResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMZZOBM-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"TRMZZOBM" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmzzobms/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody TRMZZOBMDTO trmzzobmdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(trmzzobmService.checkKey(trmzzobmMapping.toDomain(trmzzobmdto)));
     }
 
-
-
-
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMZZOBM-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"TRMZZOBM" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/trmzzobms/getdraft")
     public ResponseEntity<TRMZZOBMDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(trmzzobmMapping.toDto(trmzzobmService.getDraft(new TRMZZOBM())));
     }
 
-
-
-
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMZZOBM-Save-all')")
     @ApiOperation(value = "Save", tags = {"TRMZZOBM" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmzzobms/save")
     public ResponseEntity<Boolean> save(@RequestBody TRMZZOBMDTO trmzzobmdto) {
         return ResponseEntity.status(HttpStatus.OK).body(trmzzobmService.save(trmzzobmMapping.toDomain(trmzzobmdto)));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"TRMZZOBM" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmzzobms/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<TRMZZOBMDTO> trmzzobmdtos) {
@@ -131,10 +122,7 @@ public class TRMZZOBMResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    @PreAuthorize("hasPermission(#trmzzobm_id,'Get',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#trmzzobm_id,'Get',{'Sql',this.trmzzobmMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"TRMZZOBM" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/trmzzobms/{trmzzobm_id}")
     public ResponseEntity<TRMZZOBMDTO> get(@PathVariable("trmzzobm_id") String trmzzobm_id) {
@@ -143,10 +131,7 @@ public class TRMZZOBMResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-
-
-
-    @PreAuthorize("hasPermission('Remove',{#trmzzobm_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#trmzzobm_id,'Remove',{'Sql',this.trmzzobmMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"TRMZZOBM" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/trmzzobms/{trmzzobm_id}")
     @Transactional
@@ -154,6 +139,7 @@ public class TRMZZOBMResource {
          return ResponseEntity.status(HttpStatus.OK).body(trmzzobmService.remove(trmzzobm_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"TRMZZOBM" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/trmzzobms/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -161,7 +147,7 @@ public class TRMZZOBMResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMZZOBM-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"TRMZZOBM" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/trmzzobms/fetchdefault")
 	public ResponseEntity<List<TRMZZOBMDTO>> fetchDefault(TRMZZOBMSearchContext context) {
@@ -174,22 +160,12 @@ public class TRMZZOBMResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMZZOBM-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"TRMZZOBM" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/trmzzobms/searchdefault")
-	public ResponseEntity<Page<TRMZZOBMDTO>> searchDefault(TRMZZOBMSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/trmzzobms/searchdefault")
+	public ResponseEntity<Page<TRMZZOBMDTO>> searchDefault(@RequestBody TRMZZOBMSearchContext context) {
         Page<TRMZZOBM> domains = trmzzobmService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(trmzzobmMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
-    /**
-     * 用户权限校验
-     * @return
-     */
-	public TRMZZOBM getEntity(){
-        return new TRMZZOBM();
-    }
-
 }

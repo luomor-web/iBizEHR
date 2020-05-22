@@ -28,6 +28,8 @@ public interface PCMPROFILESZYJTJMapper extends BaseMapper<PCMPROFILESZYJTJ>{
     @Override
     int updateById(@Param(Constants.ENTITY) PCMPROFILESZYJTJ entity);
     @Override
+    int update(@Param(Constants.ENTITY) PCMPROFILESZYJTJ entity, @Param("ew") Wrapper<PCMPROFILESZYJTJ> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

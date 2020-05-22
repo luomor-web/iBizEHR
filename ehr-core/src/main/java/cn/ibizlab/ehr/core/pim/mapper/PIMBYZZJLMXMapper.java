@@ -37,6 +37,8 @@ public interface PIMBYZZJLMXMapper extends BaseMapper<PIMBYZZJLMX>{
     @Override
     int updateById(@Param(Constants.ENTITY) PIMBYZZJLMX entity);
     @Override
+    int update(@Param(Constants.ENTITY) PIMBYZZJLMX entity, @Param("ew") Wrapper<PIMBYZZJLMX> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

@@ -78,28 +78,28 @@ export default {
   },
 	views: {
 		mpickupview: {
-			caption: "人员明细表",
-      title: '人员明细表',
+			caption: "人员花名册",
+      title: '人员花名册',
 		},
 		editview: {
-			caption: "人员明细表",
-      title: '人员明细表',
+			caption: "人员花名册",
+      title: '人员花名册',
 		},
 		pickupview: {
-			caption: "人员明细表",
-      title: '人员明细表',
+			caption: "人员花名册",
+      title: '人员花名册',
 		},
 		pickupgridview: {
-			caption: "人员明细表",
-      title: '人员明细表',
+			caption: "人员花名册",
+      title: '人员花名册',
 		},
 		editview2: {
-			caption: "人员明细表",
-      title: '人员明细表',
+			caption: "人员花名册",
+      title: '人员花名册',
 		},
 		redirectview: {
-			caption: "人员明细表",
-      title: '人员明细表',
+			caption: "人员花名册",
+      title: '人员花名册',
 		},
 		gridview: {
 			caption: "人员花名册",
@@ -283,17 +283,9 @@ export default {
 		},
 	},
 	gridviewtoolbar_toolbar: {
-		deuiaction3: {
-			caption: "开启行编辑",
-			tip: "开启行编辑",
-		},
-		deuiaction6: {
+		deuiaction1: {
 			caption: "Export",
 			tip: "Export {0} Data To Excel",
-		},
-		deuiaction2: {
-			caption: "Filter",
-			tip: "Filter",
 		},
 	},
 	editview2toolbar_toolbar: {

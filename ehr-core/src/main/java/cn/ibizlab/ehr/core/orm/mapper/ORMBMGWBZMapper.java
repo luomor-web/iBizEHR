@@ -27,6 +27,8 @@ public interface ORMBMGWBZMapper extends BaseMapper<ORMBMGWBZ>{
     @Override
     int updateById(@Param(Constants.ENTITY) ORMBMGWBZ entity);
     @Override
+    int update(@Param(Constants.ENTITY) ORMBMGWBZ entity, @Param("ew") Wrapper<ORMBMGWBZ> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

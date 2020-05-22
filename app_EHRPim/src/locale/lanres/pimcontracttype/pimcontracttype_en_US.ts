@@ -126,10 +126,10 @@ export default {
 			tip: "Help",
 		},
 	},
-	gridviewtoolbar2_toolbar: {
+	gridviewtoolbar_toolbar: {
 		deuiaction1: {
-			caption: "New",
-			tip: "New",
+			caption: "新建",
+			tip: "新建",
 		},
 		deuiaction2: {
 			caption: "保存",
@@ -146,20 +146,6 @@ export default {
 		deuiaction5: {
 			caption: "Export",
 			tip: "Export {0} Data To Excel",
-		},
-	},
-	gridviewtoolbar_toolbar: {
-		deuiaction3: {
-			caption: "开启行编辑",
-			tip: "开启行编辑",
-		},
-		deuiaction6: {
-			caption: "Export",
-			tip: "Export {0} Data To Excel",
-		},
-		deuiaction2: {
-			caption: "Filter",
-			tip: "Filter",
 		},
 	},
 	selgridviewtoolbar_toolbar: {

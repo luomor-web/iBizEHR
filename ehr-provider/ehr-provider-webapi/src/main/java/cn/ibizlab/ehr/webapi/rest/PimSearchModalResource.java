@@ -50,21 +50,18 @@ public class PimSearchModalResource {
 
     @Autowired
     @Lazy
-    private PimSearchModalMapping pimsearchmodalMapping;
+    public PimSearchModalMapping pimsearchmodalMapping;
 
+    public PimSearchModalDTO permissionDTO=new PimSearchModalDTO();
 
-
-
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimSearchModal-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"PimSearchModal" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimsearchmodals/getdraft")
     public ResponseEntity<PimSearchModalDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(pimsearchmodalMapping.toDto(pimsearchmodalService.getDraft(new PimSearchModal())));
     }
 
-
-
-
-    @PreAuthorize("hasPermission(#pimsearchmodal_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#pimsearchmodal_id,'Update',{'Sql',this.pimsearchmodalMapping,#pimsearchmodaldto})")
     @ApiOperation(value = "Update", tags = {"PimSearchModal" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimsearchmodals/{pimsearchmodal_id}")
     @Transactional
@@ -76,7 +73,7 @@ public class PimSearchModalResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#pimsearchmodal_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"PimSearchModal" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimsearchmodals/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PimSearchModalDTO> pimsearchmodaldtos) {
@@ -84,10 +81,7 @@ public class PimSearchModalResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    @PreAuthorize("hasPermission(#pimsearchmodal_id,'Get',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#pimsearchmodal_id,'Get',{'Sql',this.pimsearchmodalMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"PimSearchModal" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimsearchmodals/{pimsearchmodal_id}")
     public ResponseEntity<PimSearchModalDTO> get(@PathVariable("pimsearchmodal_id") String pimsearchmodal_id) {
@@ -96,10 +90,7 @@ public class PimSearchModalResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-
-
-
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.pimsearchmodalMapping,#pimsearchmodaldto})")
     @ApiOperation(value = "Create", tags = {"PimSearchModal" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimsearchmodals")
     @Transactional
@@ -110,7 +101,7 @@ public class PimSearchModalResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatch", tags = {"PimSearchModal" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimsearchmodals/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PimSearchModalDTO> pimsearchmodaldtos) {
@@ -118,24 +109,21 @@ public class PimSearchModalResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimSearchModal-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"PimSearchModal" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimsearchmodals/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PimSearchModalDTO pimsearchmodaldto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pimsearchmodalService.checkKey(pimsearchmodalMapping.toDomain(pimsearchmodaldto)));
     }
 
-
-
-
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimSearchModal-Save-all')")
     @ApiOperation(value = "Save", tags = {"PimSearchModal" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimsearchmodals/save")
     public ResponseEntity<Boolean> save(@RequestBody PimSearchModalDTO pimsearchmodaldto) {
         return ResponseEntity.status(HttpStatus.OK).body(pimsearchmodalService.save(pimsearchmodalMapping.toDomain(pimsearchmodaldto)));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"PimSearchModal" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimsearchmodals/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PimSearchModalDTO> pimsearchmodaldtos) {
@@ -143,10 +131,7 @@ public class PimSearchModalResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    @PreAuthorize("hasPermission('Remove',{#pimsearchmodal_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#pimsearchmodal_id,'Remove',{'Sql',this.pimsearchmodalMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"PimSearchModal" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimsearchmodals/{pimsearchmodal_id}")
     @Transactional
@@ -154,6 +139,7 @@ public class PimSearchModalResource {
          return ResponseEntity.status(HttpStatus.OK).body(pimsearchmodalService.remove(pimsearchmodal_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"PimSearchModal" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimsearchmodals/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -161,7 +147,7 @@ public class PimSearchModalResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimSearchModal-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PimSearchModal" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimsearchmodals/fetchdefault")
 	public ResponseEntity<List<PimSearchModalDTO>> fetchDefault(PimSearchModalSearchContext context) {
@@ -174,22 +160,12 @@ public class PimSearchModalResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimSearchModal-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PimSearchModal" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/pimsearchmodals/searchdefault")
-	public ResponseEntity<Page<PimSearchModalDTO>> searchDefault(PimSearchModalSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimsearchmodals/searchdefault")
+	public ResponseEntity<Page<PimSearchModalDTO>> searchDefault(@RequestBody PimSearchModalSearchContext context) {
         Page<PimSearchModal> domains = pimsearchmodalService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimsearchmodalMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
-    /**
-     * 用户权限校验
-     * @return
-     */
-	public PimSearchModal getEntity(){
-        return new PimSearchModal();
-    }
-
 }

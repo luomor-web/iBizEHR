@@ -56,6 +56,15 @@ export default class PIMARCHIVESTreeExpViewBase extends TreeExpViewBase {
      */
     public appEntityService: PIMARCHIVESService = new PIMARCHIVESService;
 
+
+    /**
+     * 计数器服务对象集合
+     *
+     * @type {Array<*>}
+     * @memberof PIMARCHIVESTreeExpViewBase
+     */    
+    public counterServiceArray:Array<any> = [];
+    
     /**
      * 数据变化
      *
@@ -91,7 +100,7 @@ export default class PIMARCHIVESTreeExpViewBase extends TreeExpViewBase {
 	 * @type {*}
 	 * @memberof PIMARCHIVESTreeExpViewBase
 	 */
-    protected customViewNavContexts:any ={
+    public customViewNavContexts:any ={
     };
 
 	/**
@@ -100,7 +109,7 @@ export default class PIMARCHIVESTreeExpViewBase extends TreeExpViewBase {
 	 * @type {*}
 	 * @memberof PIMARCHIVESTreeExpViewBase
 	 */
-    protected customViewParams:any ={
+    public customViewParams:any ={
     };
 
     /**
@@ -129,7 +138,7 @@ export default class PIMARCHIVESTreeExpViewBase extends TreeExpViewBase {
     /**
      * 视图状态订阅对象
      *
-     * @private
+     * @public
      * @type {Subject<{action: string, data: any}>}
      * @memberof PIMARCHIVESTreeExpViewBase
      */

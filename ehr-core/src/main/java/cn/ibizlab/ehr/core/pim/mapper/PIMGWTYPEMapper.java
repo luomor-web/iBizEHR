@@ -27,6 +27,8 @@ public interface PIMGWTYPEMapper extends BaseMapper<PIMGWTYPE>{
     @Override
     int updateById(@Param(Constants.ENTITY) PIMGWTYPE entity);
     @Override
+    int update(@Param(Constants.ENTITY) PIMGWTYPE entity, @Param("ew") Wrapper<PIMGWTYPE> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

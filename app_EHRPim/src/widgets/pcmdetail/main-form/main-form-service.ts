@@ -14,7 +14,7 @@ import ORMORGSECTORService from '@/service/ormorgsector/ormorgsector-service';
 export default class MainService extends ControlService {
 
     /**
-     * 人员明细表服务对象
+     * 人员花名册服务对象
      *
      * @type {PCMDETAILService}
      * @memberof MainService

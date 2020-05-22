@@ -27,6 +27,8 @@ public interface VACINITNXJMapper extends BaseMapper<VACINITNXJ>{
     @Override
     int updateById(@Param(Constants.ENTITY) VACINITNXJ entity);
     @Override
+    int update(@Param(Constants.ENTITY) VACINITNXJ entity, @Param("ew") Wrapper<VACINITNXJ> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

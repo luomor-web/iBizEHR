@@ -28,6 +28,8 @@ public interface PIMSTAFFTYPEMapper extends BaseMapper<PIMSTAFFTYPE>{
     @Override
     int updateById(@Param(Constants.ENTITY) PIMSTAFFTYPE entity);
     @Override
+    int update(@Param(Constants.ENTITY) PIMSTAFFTYPE entity, @Param("ew") Wrapper<PIMSTAFFTYPE> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

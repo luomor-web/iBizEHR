@@ -27,6 +27,8 @@ public interface SALRULEDETAILMapper extends BaseMapper<SALRULEDETAIL>{
     @Override
     int updateById(@Param(Constants.ENTITY) SALRULEDETAIL entity);
     @Override
+    int update(@Param(Constants.ENTITY) SALRULEDETAIL entity, @Param("ew") Wrapper<SALRULEDETAIL> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

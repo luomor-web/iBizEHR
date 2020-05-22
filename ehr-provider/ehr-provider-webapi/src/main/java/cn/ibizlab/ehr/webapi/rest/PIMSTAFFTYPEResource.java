@@ -50,21 +50,18 @@ public class PIMSTAFFTYPEResource {
 
     @Autowired
     @Lazy
-    private PIMSTAFFTYPEMapping pimstafftypeMapping;
+    public PIMSTAFFTYPEMapping pimstafftypeMapping;
 
+    public PIMSTAFFTYPEDTO permissionDTO=new PIMSTAFFTYPEDTO();
 
-
-
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMSTAFFTYPE-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"PIMSTAFFTYPE" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimstafftypes/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PIMSTAFFTYPEDTO pimstafftypedto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pimstafftypeService.checkKey(pimstafftypeMapping.toDomain(pimstafftypedto)));
     }
 
-
-
-
-    @PreAuthorize("hasPermission(#pimstafftype_id,'Get',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#pimstafftype_id,'Get',{'Sql',this.pimstafftypeMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"PIMSTAFFTYPE" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimstafftypes/{pimstafftype_id}")
     public ResponseEntity<PIMSTAFFTYPEDTO> get(@PathVariable("pimstafftype_id") String pimstafftype_id) {
@@ -73,19 +70,14 @@ public class PIMSTAFFTYPEResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-
-
-
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMSTAFFTYPE-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"PIMSTAFFTYPE" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimstafftypes/getdraft")
     public ResponseEntity<PIMSTAFFTYPEDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(pimstafftypeMapping.toDto(pimstafftypeService.getDraft(new PIMSTAFFTYPE())));
     }
 
-
-
-
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.pimstafftypeMapping,#pimstafftypedto})")
     @ApiOperation(value = "Create", tags = {"PIMSTAFFTYPE" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimstafftypes")
     @Transactional
@@ -96,7 +88,7 @@ public class PIMSTAFFTYPEResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatch", tags = {"PIMSTAFFTYPE" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimstafftypes/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PIMSTAFFTYPEDTO> pimstafftypedtos) {
@@ -104,10 +96,7 @@ public class PIMSTAFFTYPEResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    @PreAuthorize("hasPermission('Remove',{#pimstafftype_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#pimstafftype_id,'Remove',{'Sql',this.pimstafftypeMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"PIMSTAFFTYPE" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimstafftypes/{pimstafftype_id}")
     @Transactional
@@ -115,6 +104,7 @@ public class PIMSTAFFTYPEResource {
          return ResponseEntity.status(HttpStatus.OK).body(pimstafftypeService.remove(pimstafftype_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"PIMSTAFFTYPE" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimstafftypes/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -122,15 +112,14 @@ public class PIMSTAFFTYPEResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMSTAFFTYPE-Save-all')")
     @ApiOperation(value = "Save", tags = {"PIMSTAFFTYPE" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimstafftypes/save")
     public ResponseEntity<Boolean> save(@RequestBody PIMSTAFFTYPEDTO pimstafftypedto) {
         return ResponseEntity.status(HttpStatus.OK).body(pimstafftypeService.save(pimstafftypeMapping.toDomain(pimstafftypedto)));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"PIMSTAFFTYPE" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimstafftypes/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PIMSTAFFTYPEDTO> pimstafftypedtos) {
@@ -138,10 +127,7 @@ public class PIMSTAFFTYPEResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    @PreAuthorize("hasPermission(#pimstafftype_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#pimstafftype_id,'Update',{'Sql',this.pimstafftypeMapping,#pimstafftypedto})")
     @ApiOperation(value = "Update", tags = {"PIMSTAFFTYPE" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimstafftypes/{pimstafftype_id}")
     @Transactional
@@ -153,7 +139,7 @@ public class PIMSTAFFTYPEResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#pimstafftype_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"PIMSTAFFTYPE" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimstafftypes/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PIMSTAFFTYPEDTO> pimstafftypedtos) {
@@ -161,7 +147,7 @@ public class PIMSTAFFTYPEResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMSTAFFTYPE-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PIMSTAFFTYPE" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimstafftypes/fetchdefault")
 	public ResponseEntity<List<PIMSTAFFTYPEDTO>> fetchDefault(PIMSTAFFTYPESearchContext context) {
@@ -174,16 +160,15 @@ public class PIMSTAFFTYPEResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMSTAFFTYPE-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PIMSTAFFTYPE" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/pimstafftypes/searchdefault")
-	public ResponseEntity<Page<PIMSTAFFTYPEDTO>> searchDefault(PIMSTAFFTYPESearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimstafftypes/searchdefault")
+	public ResponseEntity<Page<PIMSTAFFTYPEDTO>> searchDefault(@RequestBody PIMSTAFFTYPESearchContext context) {
         Page<PIMSTAFFTYPE> domains = pimstafftypeService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimstafftypeMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-    @PreAuthorize("hasPermission('Get',{#context,'YPZ',this.getEntity(),'Sql'})")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMSTAFFTYPE-YPZ-all')")
 	@ApiOperation(value = "fetch应聘者专用", tags = {"PIMSTAFFTYPE" } ,notes = "fetch应聘者专用")
     @RequestMapping(method= RequestMethod.GET , value="/pimstafftypes/fetchypz")
 	public ResponseEntity<List<PIMSTAFFTYPEDTO>> fetchYPZ(PIMSTAFFTYPESearchContext context) {
@@ -196,22 +181,12 @@ public class PIMSTAFFTYPEResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'YPZ',this.getEntity(),'Sql'})")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMSTAFFTYPE-YPZ-all')")
 	@ApiOperation(value = "search应聘者专用", tags = {"PIMSTAFFTYPE" } ,notes = "search应聘者专用")
-    @RequestMapping(method= RequestMethod.GET , value="/pimstafftypes/searchypz")
-	public ResponseEntity<Page<PIMSTAFFTYPEDTO>> searchYPZ(PIMSTAFFTYPESearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimstafftypes/searchypz")
+	public ResponseEntity<Page<PIMSTAFFTYPEDTO>> searchYPZ(@RequestBody PIMSTAFFTYPESearchContext context) {
         Page<PIMSTAFFTYPE> domains = pimstafftypeService.searchYPZ(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimstafftypeMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
-    /**
-     * 用户权限校验
-     * @return
-     */
-	public PIMSTAFFTYPE getEntity(){
-        return new PIMSTAFFTYPE();
-    }
-
 }

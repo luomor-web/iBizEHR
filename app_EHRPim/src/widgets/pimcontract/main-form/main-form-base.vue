@@ -4,7 +4,7 @@
     <row >
             
 <i-col v-show="detailsModel.group1.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
-    <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' uiActionGroup="detailsModel.group1.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.pimcontract.main_form.details.group1')" :isShowCaption="false" uiStyle="DEFAULT" :titleBarCloseMode="0" :isInfoGroupMode="false" >    
+    <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' :uiActionGroup="detailsModel.group1.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.pimcontract.main_form.details.group1')" :isShowCaption="false" uiStyle="DEFAULT" :titleBarCloseMode="0" :isInfoGroupMode="false" >    
     <row>
         <i-col v-show="detailsModel.pimpersonname.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='pimpersonname' :itemRules="this.rules.pimpersonname" class='' :caption="$t('entities.pimcontract.main_form.details.pimpersonname')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.pimpersonname.error" :isEmptyCaption="false" labelPos="LEFT">
@@ -44,7 +44,7 @@
 
 </i-col>
 <i-col v-show="detailsModel.grouppanel1.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
-    <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' uiActionGroup="detailsModel.grouppanel1.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.pimcontract.main_form.details.grouppanel1')" :isShowCaption="false" uiStyle="DEFAULT" :titleBarCloseMode="0" :isInfoGroupMode="false" >    
+    <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' :uiActionGroup="detailsModel.grouppanel1.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.pimcontract.main_form.details.grouppanel1')" :isShowCaption="false" uiStyle="DEFAULT" :titleBarCloseMode="0" :isInfoGroupMode="false" >    
     <row>
         <i-col v-show="detailsModel.contracttype.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='contracttype' :itemRules="this.rules.contracttype" class='' :caption="$t('entities.pimcontract.main_form.details.contracttype')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.contracttype.error" :isEmptyCaption="false" labelPos="LEFT">
@@ -88,7 +88,7 @@
   deMajorField='orgname'
   deKeyField='ormorg'
   :service="service"
-  :acParams="{ serviceName: 'ORMORGService', interfaceName: 'FetchHTGLDW'}"
+  :acParams="{ serviceName: 'ORMORGService', interfaceName: 'FetchDefault'}"
   valueitem='ormorgid' 
   :value="data.ormorgname" 
   editortype="" 
@@ -113,7 +113,7 @@
   deMajorField='ormsignorgname'
   deKeyField='ormsignorg'
   :service="service"
-  :acParams="{ serviceName: 'OrmSignOrgService', interfaceName: 'FetchHTQDDW'}"
+  :acParams="{ serviceName: 'OrmSignOrgService', interfaceName: 'FetchDefault'}"
   valueitem='ormsignorgid' 
   :value="data.ormsignorgname" 
   editortype="" 
@@ -138,7 +138,7 @@
   deMajorField='pimlabourcampanyname'
   deKeyField='pimlabourcampany'
   :service="service"
-  :acParams="{ serviceName: 'PIMLABOURCAMPANYService', interfaceName: 'FetchAuthLab'}"
+  :acParams="{ serviceName: 'PIMLABOURCAMPANYService', interfaceName: 'FetchDefault'}"
   valueitem='pimlabourcampanyid' 
   :value="data.pimlabourcampanyname" 
   editortype="dropdown" 
@@ -641,8 +641,8 @@ export default class MainBase extends Vue implements ControlInterface {
         ormorgname: [
             { type: 'string', message: '合同管理单位 值必须为字符串类型', trigger: 'change' },
             { type: 'string', message: '合同管理单位 值必须为字符串类型', trigger: 'blur' },
-            { required: true, type: 'string', message: '合同管理单位 值不能为空', trigger: 'change' },
-            { required: true, type: 'string', message: '合同管理单位 值不能为空', trigger: 'blur' },
+            { required: false, type: 'string', message: '合同管理单位 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '合同管理单位 值不能为空', trigger: 'blur' },
         ],
         contractsignorgid: [
             { type: 'string', message: '签约主体单位标识 值必须为字符串类型', trigger: 'change' },
@@ -1461,7 +1461,11 @@ export default class MainBase extends Vue implements ControlInterface {
                     this.load(data);
                 }
                 if (Object.is('loaddraft', action)) {
-                    this.loadDraft(data);
+                    if(this.context.srfsourcekey){
+                        this.copy(this.context.srfsourcekey);
+                    }else{
+                        this.loadDraft(data);
+                    }
                 }
                 if (Object.is('save', action)) {
                     this.save(data,data.showResultInfo);
@@ -1525,8 +1529,18 @@ export default class MainBase extends Vue implements ControlInterface {
      * @param {*} [arg={}]
      * @memberof @memberof Main
      */
-    public copy(arg: any = {}): void {
-        this.loadDraft(arg);
+    public copy(srfkey: string): void {
+        let copyData = this.$store.getters.getCopyData(srfkey);
+        copyData.srfkey = Util.createUUID();
+        copyData.pimcontract = copyData.srfkey;
+        copyData.pimcontractid = copyData.srfkey;
+        Object.assign(this.context,{pimcontract:copyData.pimcontract})
+        this.data = copyData;
+        this.$nextTick(() => {
+          this.formState.next({ type: 'load', data: copyData });
+          this.data.srfuf = '0';
+          this.setFormEnableCond(this.data);
+        });
     }
 
     /**

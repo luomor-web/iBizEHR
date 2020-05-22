@@ -50,17 +50,18 @@ public class ARCHIVESCENTERResource {
 
     @Autowired
     @Lazy
-    private ARCHIVESCENTERMapping archivescenterMapping;
+    public ARCHIVESCENTERMapping archivescenterMapping;
 
+    public ARCHIVESCENTERDTO permissionDTO=new ARCHIVESCENTERDTO();
 
-
-
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ARCHIVESCENTER-Save-all')")
     @ApiOperation(value = "Save", tags = {"ARCHIVESCENTER" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/archivescenters/save")
     public ResponseEntity<Boolean> save(@RequestBody ARCHIVESCENTERDTO archivescenterdto) {
         return ResponseEntity.status(HttpStatus.OK).body(archivescenterService.save(archivescenterMapping.toDomain(archivescenterdto)));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"ARCHIVESCENTER" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/archivescenters/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<ARCHIVESCENTERDTO> archivescenterdtos) {
@@ -68,10 +69,7 @@ public class ARCHIVESCENTERResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    @PreAuthorize("hasPermission('Remove',{#archivescenter_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#archivescenter_id,'Remove',{'Sql',this.archivescenterMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"ARCHIVESCENTER" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/archivescenters/{archivescenter_id}")
     @Transactional
@@ -79,6 +77,7 @@ public class ARCHIVESCENTERResource {
          return ResponseEntity.status(HttpStatus.OK).body(archivescenterService.remove(archivescenter_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"ARCHIVESCENTER" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/archivescenters/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -86,10 +85,7 @@ public class ARCHIVESCENTERResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.archivescenterMapping,#archivescenterdto})")
     @ApiOperation(value = "Create", tags = {"ARCHIVESCENTER" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/archivescenters")
     @Transactional
@@ -100,7 +96,7 @@ public class ARCHIVESCENTERResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatch", tags = {"ARCHIVESCENTER" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/archivescenters/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<ARCHIVESCENTERDTO> archivescenterdtos) {
@@ -108,28 +104,21 @@ public class ARCHIVESCENTERResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ARCHIVESCENTER-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"ARCHIVESCENTER" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/archivescenters/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody ARCHIVESCENTERDTO archivescenterdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(archivescenterService.checkKey(archivescenterMapping.toDomain(archivescenterdto)));
     }
 
-
-
-
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ARCHIVESCENTER-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"ARCHIVESCENTER" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/archivescenters/getdraft")
     public ResponseEntity<ARCHIVESCENTERDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(archivescenterMapping.toDto(archivescenterService.getDraft(new ARCHIVESCENTER())));
     }
 
-
-
-
-    @PreAuthorize("hasPermission(#archivescenter_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#archivescenter_id,'Update',{'Sql',this.archivescenterMapping,#archivescenterdto})")
     @ApiOperation(value = "Update", tags = {"ARCHIVESCENTER" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/archivescenters/{archivescenter_id}")
     @Transactional
@@ -141,7 +130,7 @@ public class ARCHIVESCENTERResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#archivescenter_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"ARCHIVESCENTER" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/archivescenters/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<ARCHIVESCENTERDTO> archivescenterdtos) {
@@ -149,10 +138,7 @@ public class ARCHIVESCENTERResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    @PreAuthorize("hasPermission(#archivescenter_id,'Get',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#archivescenter_id,'Get',{'Sql',this.archivescenterMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"ARCHIVESCENTER" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/archivescenters/{archivescenter_id}")
     public ResponseEntity<ARCHIVESCENTERDTO> get(@PathVariable("archivescenter_id") String archivescenter_id) {
@@ -161,7 +147,7 @@ public class ARCHIVESCENTERResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ARCHIVESCENTER-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"ARCHIVESCENTER" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/archivescenters/fetchdefault")
 	public ResponseEntity<List<ARCHIVESCENTERDTO>> fetchDefault(ARCHIVESCENTERSearchContext context) {
@@ -174,22 +160,12 @@ public class ARCHIVESCENTERResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ARCHIVESCENTER-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"ARCHIVESCENTER" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/archivescenters/searchdefault")
-	public ResponseEntity<Page<ARCHIVESCENTERDTO>> searchDefault(ARCHIVESCENTERSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/archivescenters/searchdefault")
+	public ResponseEntity<Page<ARCHIVESCENTERDTO>> searchDefault(@RequestBody ARCHIVESCENTERSearchContext context) {
         Page<ARCHIVESCENTER> domains = archivescenterService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(archivescenterMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
-    /**
-     * 用户权限校验
-     * @return
-     */
-	public ARCHIVESCENTER getEntity(){
-        return new ARCHIVESCENTER();
-    }
-
 }

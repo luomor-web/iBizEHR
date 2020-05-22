@@ -273,13 +273,6 @@ public class TRMDUTYCADRES extends EntityMP implements Serializable {
     @JsonProperty("ormrankname")
     private String ormrankname;
     /**
-     * 拟任部门
-     */
-    @TableField(exist = false)
-    @JSONField(name = "shortname")
-    @JsonProperty("shortname")
-    private String shortname;
-    /**
      * 当前组织
      */
     @TableField(exist = false)
@@ -315,13 +308,6 @@ public class TRMDUTYCADRES extends EntityMP implements Serializable {
     @JsonProperty("gw")
     private String gw;
     /**
-     * 部门/项目
-     */
-    @TableField(exist = false)
-    @JSONField(name = "orgsectorname")
-    @JsonProperty("orgsectorname")
-    private String orgsectorname;
-    /**
      * 现任职务
      */
     @TableField(exist = false)
@@ -356,14 +342,6 @@ public class TRMDUTYCADRES extends EntityMP implements Serializable {
     @JSONField(name = "ormpostid")
     @JsonProperty("ormpostid")
     private String ormpostid;
-    /**
-     * 部门标识
-     */
-    @DEField(preType = DEPredefinedFieldType.ORGSECTORID)
-    @TableField(value = "orgsectorid")
-    @JSONField(name = "orgsectorid")
-    @JsonProperty("orgsectorid")
-    private String orgsectorid;
     /**
      * 人员信息标识
      */
@@ -406,14 +384,6 @@ public class TRMDUTYCADRES extends EntityMP implements Serializable {
     @JSONField(name = "ormorgid")
     @JsonProperty("ormorgid")
     private String ormorgid;
-
-    /**
-     * 部门
-     */
-    @JsonIgnore
-    @JSONField(serialize = false)
-    @TableField(exist = false)
-    private cn.ibizlab.ehr.core.common.domain.OrgSector orgsector;
 
     /**
      * 职务

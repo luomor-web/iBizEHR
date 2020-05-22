@@ -22,49 +22,49 @@
                 <el-table-column align="center" type='selection' :width="checkboxColWidth"></el-table-column>
             </template>
             <template v-if="getColumnState('rzkssj')">
-                <el-table-column show-overflow-tooltip :prop="'rzkssj'" :label="$t('entities.pimworkhistory.gbll_grid.columns.rzkssj')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'rzkssj'" :label="$t('entities.pimworkhistory.gbll_grid.columns.rzkssj')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <app-format-data format="YYYY-MM-DD" :data="row.rzkssj"></app-format-data>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('rzjssj')">
-                <el-table-column show-overflow-tooltip :prop="'rzjssj'" :label="$t('entities.pimworkhistory.gbll_grid.columns.rzjssj')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'rzjssj'" :label="$t('entities.pimworkhistory.gbll_grid.columns.rzjssj')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <app-format-data format="YYYY-MM-DD" :data="row.rzjssj"></app-format-data>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('ormorgname')">
-                <el-table-column show-overflow-tooltip :prop="'ormorgname'" :label="$t('entities.pimworkhistory.gbll_grid.columns.ormorgname')" :width="250" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'ormorgname'" :label="$t('entities.pimworkhistory.gbll_grid.columns.ormorgname')" :width="250"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.ormorgname}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('ormorgsectorname')">
-                <el-table-column show-overflow-tooltip :prop="'ormorgsectorname'" :label="$t('entities.pimworkhistory.gbll_grid.columns.ormorgsectorname')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'ormorgsectorname'" :label="$t('entities.pimworkhistory.gbll_grid.columns.ormorgsectorname')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.ormorgsectorname}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('ormdutyname')">
-                <el-table-column show-overflow-tooltip :prop="'ormdutyname'" :label="$t('entities.pimworkhistory.gbll_grid.columns.ormdutyname')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'ormdutyname'" :label="$t('entities.pimworkhistory.gbll_grid.columns.ormdutyname')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.ormdutyname}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('ormpostname')">
-                <el-table-column show-overflow-tooltip :prop="'ormpostname'" :label="$t('entities.pimworkhistory.gbll_grid.columns.ormpostname')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'ormpostname'" :label="$t('entities.pimworkhistory.gbll_grid.columns.ormpostname')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.ormpostname}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('ormrankname')">
-                <el-table-column show-overflow-tooltip :prop="'ormrankname'" :label="$t('entities.pimworkhistory.gbll_grid.columns.ormrankname')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'ormrankname'" :label="$t('entities.pimworkhistory.gbll_grid.columns.ormrankname')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.ormrankname}}</span>
                     </template>
@@ -493,7 +493,7 @@ export default class GBLLBase extends Vue implements ControlInterface {
     * @type {number}
     * @memberof AppIndex
     */
-    protected checkboxColWidth: number = 34;
+    public checkboxColWidth: number = 34;
 
     /**
      * 是否允许拖动列宽
@@ -1224,7 +1224,7 @@ export default class GBLLBase extends Vue implements ControlInterface {
      * @memberof GBLL
      */
 	public uiAction(row: any, tag: any, $event: any) {
-        this.rowClick(row, true);
+        // this.rowClick(row, true);
     }
 
     /**

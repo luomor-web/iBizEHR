@@ -27,6 +27,8 @@ public interface SOCCOMPANYWELMapper extends BaseMapper<SOCCOMPANYWEL>{
     @Override
     int updateById(@Param(Constants.ENTITY) SOCCOMPANYWEL entity);
     @Override
+    int update(@Param(Constants.ENTITY) SOCCOMPANYWEL entity, @Param("ew") Wrapper<SOCCOMPANYWEL> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

@@ -27,6 +27,8 @@ public interface PIMARCHIVESRECORDMapper extends BaseMapper<PIMARCHIVESRECORD>{
     @Override
     int updateById(@Param(Constants.ENTITY) PIMARCHIVESRECORD entity);
     @Override
+    int update(@Param(Constants.ENTITY) PIMARCHIVESRECORD entity, @Param("ew") Wrapper<PIMARCHIVESRECORD> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

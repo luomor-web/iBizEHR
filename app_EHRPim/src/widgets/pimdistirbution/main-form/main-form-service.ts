@@ -128,8 +128,8 @@ export default class MainService extends ControlService {
         if (Object.is(serviceName, 'PIMPERSONService') && Object.is(interfaceName, 'FetchDefault')) {
             return this.doItems(this.pimpersonService.FetchDefault(JSON.parse(JSON.stringify(context)),data, isloading), 'pimpersonid', 'pimperson');
         }
-        if (Object.is(serviceName, 'ORMORGService') && Object.is(interfaceName, 'FetchUseByFP')) {
-            return this.doItems(this.ormorgService.FetchUseByFP(JSON.parse(JSON.stringify(context)),data, isloading), 'orgid', 'ormorg');
+        if (Object.is(serviceName, 'ORMORGService') && Object.is(interfaceName, 'FetchDefault')) {
+            return this.doItems(this.ormorgService.FetchDefault(JSON.parse(JSON.stringify(context)),data, isloading), 'orgid', 'ormorg');
         }
         if (Object.is(serviceName, 'ORMORGSECTORService') && Object.is(interfaceName, 'FetchCURORG')) {
             return this.doItems(this.ormorgsectorService.FetchCURORG(JSON.parse(JSON.stringify(context)),data, isloading), 'orgsectorid', 'ormorgsector');

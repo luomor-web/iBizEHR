@@ -50,12 +50,11 @@ public class TRMHMATSERResource {
 
     @Autowired
     @Lazy
-    private TRMHMATSERMapping trmhmatserMapping;
+    public TRMHMATSERMapping trmhmatserMapping;
 
+    public TRMHMATSERDTO permissionDTO=new TRMHMATSERDTO();
 
-
-
-    @PreAuthorize("hasPermission('Remove',{#trmhmatser_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#trmhmatser_id,'Remove',{'Sql',this.trmhmatserMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"TRMHMATSER" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/trmhmatsers/{trmhmatser_id}")
     @Transactional
@@ -63,6 +62,7 @@ public class TRMHMATSERResource {
          return ResponseEntity.status(HttpStatus.OK).body(trmhmatserService.remove(trmhmatser_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"TRMHMATSER" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/trmhmatsers/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -70,15 +70,14 @@ public class TRMHMATSERResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMHMATSER-Save-all')")
     @ApiOperation(value = "Save", tags = {"TRMHMATSER" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmhmatsers/save")
     public ResponseEntity<Boolean> save(@RequestBody TRMHMATSERDTO trmhmatserdto) {
         return ResponseEntity.status(HttpStatus.OK).body(trmhmatserService.save(trmhmatserMapping.toDomain(trmhmatserdto)));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"TRMHMATSER" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmhmatsers/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<TRMHMATSERDTO> trmhmatserdtos) {
@@ -86,10 +85,7 @@ public class TRMHMATSERResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    @PreAuthorize("hasPermission(#trmhmatser_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#trmhmatser_id,'Update',{'Sql',this.trmhmatserMapping,#trmhmatserdto})")
     @ApiOperation(value = "Update", tags = {"TRMHMATSER" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/trmhmatsers/{trmhmatser_id}")
     @Transactional
@@ -101,7 +97,7 @@ public class TRMHMATSERResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#trmhmatser_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"TRMHMATSER" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/trmhmatsers/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<TRMHMATSERDTO> trmhmatserdtos) {
@@ -109,10 +105,7 @@ public class TRMHMATSERResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.trmhmatserMapping,#trmhmatserdto})")
     @ApiOperation(value = "Create", tags = {"TRMHMATSER" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmhmatsers")
     @Transactional
@@ -123,7 +116,7 @@ public class TRMHMATSERResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatch", tags = {"TRMHMATSER" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmhmatsers/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<TRMHMATSERDTO> trmhmatserdtos) {
@@ -131,28 +124,21 @@ public class TRMHMATSERResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMHMATSER-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"TRMHMATSER" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmhmatsers/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody TRMHMATSERDTO trmhmatserdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(trmhmatserService.checkKey(trmhmatserMapping.toDomain(trmhmatserdto)));
     }
 
-
-
-
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMHMATSER-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"TRMHMATSER" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/trmhmatsers/getdraft")
     public ResponseEntity<TRMHMATSERDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(trmhmatserMapping.toDto(trmhmatserService.getDraft(new TRMHMATSER())));
     }
 
-
-
-
-    @PreAuthorize("hasPermission(#trmhmatser_id,'Get',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#trmhmatser_id,'Get',{'Sql',this.trmhmatserMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"TRMHMATSER" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/trmhmatsers/{trmhmatser_id}")
     public ResponseEntity<TRMHMATSERDTO> get(@PathVariable("trmhmatser_id") String trmhmatser_id) {
@@ -161,7 +147,7 @@ public class TRMHMATSERResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMHMATSER-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"TRMHMATSER" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/trmhmatsers/fetchdefault")
 	public ResponseEntity<List<TRMHMATSERDTO>> fetchDefault(TRMHMATSERSearchContext context) {
@@ -174,22 +160,12 @@ public class TRMHMATSERResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMHMATSER-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"TRMHMATSER" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/trmhmatsers/searchdefault")
-	public ResponseEntity<Page<TRMHMATSERDTO>> searchDefault(TRMHMATSERSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/trmhmatsers/searchdefault")
+	public ResponseEntity<Page<TRMHMATSERDTO>> searchDefault(@RequestBody TRMHMATSERSearchContext context) {
         Page<TRMHMATSER> domains = trmhmatserService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(trmhmatserMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
-    /**
-     * 用户权限校验
-     * @return
-     */
-	public TRMHMATSER getEntity(){
-        return new TRMHMATSER();
-    }
-
 }

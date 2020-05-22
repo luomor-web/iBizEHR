@@ -22,55 +22,14 @@
                 <el-table-column align="center" type='selection' :width="checkboxColWidth"></el-table-column>
             </template>
             <template v-if="getColumnState('zyzgzy')">
-                <el-table-column show-overflow-tooltip :prop="'zyzgzy'" :label="$t('entities.pimqualmajor.main_grid.columns.zyzgzy')" :width="300" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'zyzgzy'" :label="$t('entities.pimqualmajor.main_grid.columns.zyzgzy')" :width="300"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
-                        <template v-if="actualIsOpenEdit">
-                            <i-form style="height:100%;" :model="row">
-                                <app-form-item :name="column.property" :itemRules="rules[column.property]">
-                                    <input-box 
-              :disabled="row.srfuf === 1 ? (3 & 2) !== 2 : (3 & 1) !== 1" 
-              v-model="row[column.property]" 
-              style=""
-              type="text"
-              
-              
-              @change="($event)=>{gridEditItemChange(row, column.property, $event)}">
-            </input-box>
-                                </app-form-item>
-                            </i-form>
-                        </template>
-                        <template v-if="!actualIsOpenEdit">
-                                <app-span name='zyzgzy' editorType="SPAN" :value="row.zyzgzy"></app-span>
-                        </template>
-                    </template>
-                </el-table-column>
-            </template>
-            <template v-if="getColumnState('pimqualmajorname')">
-                <el-table-column show-overflow-tooltip :prop="'pimqualmajorname'" :label="$t('entities.pimqualmajor.main_grid.columns.pimqualmajorname')" :width="200" :align="'left'" :sortable="'custom'">
-                    <template v-slot="{row,column}">
-                        <template v-if="actualIsOpenEdit">
-                            <i-form style="height:100%;" :model="row">
-                                <app-form-item :name="column.property" :itemRules="rules[column.property]">
-                                    <input-box 
-              :disabled="row.srfuf === 1 ? (3 & 2) !== 2 : (3 & 1) !== 1" 
-              v-model="row[column.property]" 
-              style=""
-              type="text"
-              
-              
-              @change="($event)=>{gridEditItemChange(row, column.property, $event)}">
-            </input-box>
-                                </app-form-item>
-                            </i-form>
-                        </template>
-                        <template v-if="!actualIsOpenEdit">
-                                <app-span name='pimqualmajorname' editorType="TEXTBOX" :value="row.pimqualmajorname"></app-span>
-                        </template>
+                        <span>{{row.zyzgzy}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('qualevel')">
-                <el-table-column show-overflow-tooltip :prop="'qualevel'" :label="$t('entities.pimqualmajor.main_grid.columns.qualevel')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'qualevel'" :label="$t('entities.pimqualmajor.main_grid.columns.qualevel')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template v-if="actualIsOpenEdit">
                             <i-form style="height:100%;" :model="row">
@@ -93,8 +52,32 @@
                     </template>
                 </el-table-column>
             </template>
+            <template v-if="getColumnState('pimqualmajorname')">
+                <el-table-column show-overflow-tooltip :prop="'pimqualmajorname'" :label="$t('entities.pimqualmajor.main_grid.columns.pimqualmajorname')" :width="200"  :align="'left'" :sortable="'custom'">
+                    <template v-slot="{row,column}">
+                        <template v-if="actualIsOpenEdit">
+                            <i-form style="height:100%;" :model="row">
+                                <app-form-item :name="column.property" :itemRules="rules[column.property]">
+                                    <input-box 
+              :disabled="row.srfuf === 1 ? (3 & 2) !== 2 : (3 & 1) !== 1" 
+              v-model="row[column.property]" 
+              style=""
+              type="text"
+              
+              
+              @change="($event)=>{gridEditItemChange(row, column.property, $event)}">
+            </input-box>
+                                </app-form-item>
+                            </i-form>
+                        </template>
+                        <template v-if="!actualIsOpenEdit">
+                                <app-span name='pimqualmajorname' editorType="TEXTBOX" :value="row.pimqualmajorname"></app-span>
+                        </template>
+                    </template>
+                </el-table-column>
+            </template>
             <template v-if="getColumnState('quamajor')">
-                <el-table-column show-overflow-tooltip :prop="'quamajor'" :label="$t('entities.pimqualmajor.main_grid.columns.quamajor')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'quamajor'" :label="$t('entities.pimqualmajor.main_grid.columns.quamajor')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template v-if="actualIsOpenEdit">
                             <i-form style="height:100%;" :model="row">
@@ -114,13 +97,6 @@
                         <template v-if="!actualIsOpenEdit">
                                 <app-span name='quamajor' editorType="TEXTBOX" :value="row.quamajor"></app-span>
                         </template>
-                    </template>
-                </el-table-column>
-            </template>
-            <template v-if="getColumnState('gwzs')">
-                <el-table-column show-overflow-tooltip :prop="'gwzs'" :label="$t('entities.pimqualmajor.main_grid.columns.gwzs')" :width="200" :align="'left'" :sortable="'custom'">
-                    <template v-slot="{row,column}">
-                        <span>{{row.gwzs}}</span>
                     </template>
                 </el-table-column>
             </template>
@@ -582,7 +558,7 @@ export default class MainBase extends Vue implements ControlInterface {
     * @type {number}
     * @memberof AppIndex
     */
-    protected checkboxColWidth: number = 34;
+    public checkboxColWidth: number = 34;
 
     /**
      * 是否允许拖动列宽
@@ -607,13 +583,6 @@ export default class MainBase extends Vue implements ControlInterface {
             util: 'PX'
         },
         {
-            name: 'pimqualmajorname',
-            label: '执业资格',
-            langtag: 'entities.pimqualmajor.main_grid.columns.pimqualmajorname',
-            show: true,
-            util: 'PX'
-        },
-        {
             name: 'qualevel',
             label: '级别',
             langtag: 'entities.pimqualmajor.main_grid.columns.qualevel',
@@ -621,16 +590,16 @@ export default class MainBase extends Vue implements ControlInterface {
             util: 'PX'
         },
         {
-            name: 'quamajor',
-            label: '专业',
-            langtag: 'entities.pimqualmajor.main_grid.columns.quamajor',
+            name: 'pimqualmajorname',
+            label: '执业资格',
+            langtag: 'entities.pimqualmajor.main_grid.columns.pimqualmajorname',
             show: true,
             util: 'PX'
         },
         {
-            name: 'gwzs',
-            label: '岗位类型',
-            langtag: 'entities.pimqualmajor.main_grid.columns.gwzs',
+            name: 'quamajor',
+            label: '专业',
+            langtag: 'entities.pimqualmajor.main_grid.columns.quamajor',
             show: true,
             util: 'PX'
         },
@@ -643,14 +612,6 @@ export default class MainBase extends Vue implements ControlInterface {
      * @memberof Main
      */
     public rules: any = {
-        zyzgzy: [
-             { required: false, validator: (rule:any, value:any, callback:any) => { return (rule.required && (value === null || value === undefined || value === "")) ? false : true;}, message: '执业资格名称 值不能为空', trigger: 'change' },
-            { required: false, validator: (rule:any, value:any, callback:any) => { return (rule.required && (value === null || value === undefined || value === "")) ? false : true;}, message: '执业资格名称 值不能为空', trigger: 'blur' },
-        ],
-        gwtype: [
-             { required: false, validator: (rule:any, value:any, callback:any) => { return (rule.required && (value === null || value === undefined || value === "")) ? false : true;}, message: '岗位类型 值不能为空', trigger: 'change' },
-            { required: false, validator: (rule:any, value:any, callback:any) => { return (rule.required && (value === null || value === undefined || value === "")) ? false : true;}, message: '岗位类型 值不能为空', trigger: 'blur' },
-        ],
         quamajor: [
              { required: false, validator: (rule:any, value:any, callback:any) => { return (rule.required && (value === null || value === undefined || value === "")) ? false : true;}, message: '专业 值不能为空', trigger: 'change' },
             { required: false, validator: (rule:any, value:any, callback:any) => { return (rule.required && (value === null || value === undefined || value === "")) ? false : true;}, message: '专业 值不能为空', trigger: 'blur' },
@@ -658,10 +619,6 @@ export default class MainBase extends Vue implements ControlInterface {
         qualevel: [
              { required: false, validator: (rule:any, value:any, callback:any) => { return (rule.required && (value === null || value === undefined || value === "")) ? false : true;}, message: '级别 值不能为空', trigger: 'change' },
             { required: false, validator: (rule:any, value:any, callback:any) => { return (rule.required && (value === null || value === undefined || value === "")) ? false : true;}, message: '级别 值不能为空', trigger: 'blur' },
-        ],
-        gwlx: [
-             { required: false, validator: (rule:any, value:any, callback:any) => { return (rule.required && (value === null || value === undefined || value === "")) ? false : true;}, message: '岗位类型 值不能为空', trigger: 'change' },
-            { required: false, validator: (rule:any, value:any, callback:any) => { return (rule.required && (value === null || value === undefined || value === "")) ? false : true;}, message: '岗位类型 值不能为空', trigger: 'blur' },
         ],
         pimqualmajorname: [
              { required: false, validator: (rule:any, value:any, callback:any) => { return (rule.required && (value === null || value === undefined || value === "")) ? false : true;}, message: '执业资格 值不能为空', trigger: 'change' },
@@ -1319,7 +1276,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * @memberof Main
      */
 	public uiAction(row: any, tag: any, $event: any) {
-        this.rowClick(row, true);
+        // this.rowClick(row, true);
     }
 
     /**

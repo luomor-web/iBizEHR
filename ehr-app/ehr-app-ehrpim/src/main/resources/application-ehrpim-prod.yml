@@ -191,6 +191,10 @@ zuul:
       path: /pimtitlecatalogues/**
       serviceId: ehr-webapi
       stripPrefix: false
+    ormuser:
+      path: /ormusers/**
+      serviceId: ehr-webapi
+      stripPrefix: false
     pimpatent:
       path: /pimpatents/**
       serviceId: ehr-webapi

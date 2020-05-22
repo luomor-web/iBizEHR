@@ -27,6 +27,8 @@ public interface TRMSTAFFMapper extends BaseMapper<TRMSTAFF>{
     @Override
     int updateById(@Param(Constants.ENTITY) TRMSTAFF entity);
     @Override
+    int update(@Param(Constants.ENTITY) TRMSTAFF entity, @Param("ew") Wrapper<TRMSTAFF> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

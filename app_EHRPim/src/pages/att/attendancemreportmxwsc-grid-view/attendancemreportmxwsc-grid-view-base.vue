@@ -1,5 +1,5 @@
 <template>
-  <app-layout viewName="attendancemreportmxwscgridview" viewTitle="考勤信息" :isShowCaptionBar="false" :className="{ 'view-container': true, 'default-mode-view': true, 'degridview': true, 'attendancemreportmxwsc-grid-view': true }" layoutMode="VIEW" :isShowUserInfo="isDefaultView()" :openMode="openMode" @close-view="closeView($event)">
+  <app-layout viewName="attendancemreportmxwscgridview" viewTitle="考勤信息" :className="{ 'view-container': true, 'default-mode-view': true, 'degridview': true, 'attendancemreportmxwsc-grid-view': true }" layoutMode="VIEW" :isShowUserInfo="isDefaultView()" :openMode="openMode" @close-view="closeView($event)">
     <template slot="headerLeft">
       <div class="view-header-left">
 
@@ -96,6 +96,15 @@ export default class ATTENDANCEMREPORTMXWscGridViewBase extends GridViewBase {
      */
     public appEntityService: ATTENDANCEMREPORTMXService = new ATTENDANCEMREPORTMXService;
 
+
+    /**
+     * 计数器服务对象集合
+     *
+     * @type {Array<*>}
+     * @memberof ATTENDANCEMREPORTMXWscGridViewBase
+     */    
+    public counterServiceArray:Array<any> = [];
+    
     /**
      * 数据变化
      *
@@ -131,7 +140,7 @@ export default class ATTENDANCEMREPORTMXWscGridViewBase extends GridViewBase {
 	 * @type {*}
 	 * @memberof ATTENDANCEMREPORTMXWscGridViewBase
 	 */
-    protected customViewNavContexts:any ={
+    public customViewNavContexts:any ={
     };
 
 	/**
@@ -140,7 +149,7 @@ export default class ATTENDANCEMREPORTMXWscGridViewBase extends GridViewBase {
 	 * @type {*}
 	 * @memberof ATTENDANCEMREPORTMXWscGridViewBase
 	 */
-    protected customViewParams:any ={
+    public customViewParams:any ={
     };
 
     /**
@@ -171,12 +180,11 @@ export default class ATTENDANCEMREPORTMXWscGridViewBase extends GridViewBase {
     /**
      * 视图状态订阅对象
      *
-     * @private
+     * @public
      * @type {Subject<{action: string, data: any}>}
      * @memberof ATTENDANCEMREPORTMXWscGridViewBase
      */
     public viewState: Subject<ViewState> = new Subject();
-
     /**
      * 工具栏模型
      *
@@ -237,10 +245,10 @@ export default class ATTENDANCEMREPORTMXWscGridViewBase extends GridViewBase {
      */
     public toolbar_click($event: any, $event2?: any) {
         if (Object.is($event.tag, 'tbitem14_export2excel')) {
-            this.toolbar_tbitem14_export2excel_click($event, '', $event2);
+            this.toolbar_tbitem14_export2excel_click(null, '', $event2);
         }
         if (Object.is($event.tag, 'tbitem13')) {
-            this.toolbar_tbitem13_click($event, '', $event2);
+            this.toolbar_tbitem13_click(null, '', $event2);
         }
     }
 
@@ -364,6 +372,9 @@ export default class ATTENDANCEMREPORTMXWscGridViewBase extends GridViewBase {
         if (xData.getDatas && xData.getDatas instanceof Function) {
             datas = [...xData.getDatas()];
         }
+        if(params){
+          datas = [params];
+        }
         // 界面行为
         const curUIService:ATTENDANCEMREPORTMXUIService  = new ATTENDANCEMREPORTMXUIService();
         curUIService.ATTENDANCEMREPORTMX_export2Excel(datas,contextJO, paramJO,  $event, xData,this,"ATTENDANCEMREPORTMX");
@@ -391,6 +402,9 @@ export default class ATTENDANCEMREPORTMXWscGridViewBase extends GridViewBase {
         if (xData.getDatas && xData.getDatas instanceof Function) {
             datas = [...xData.getDatas()];
         }
+        if(params){
+          datas = [params];
+        }
         // 界面行为
         this.Import(datas, contextJO,paramJO,  $event, xData,this,"ATTENDANCEMREPORTMX");
     }
@@ -407,6 +421,9 @@ export default class ATTENDANCEMREPORTMXWscGridViewBase extends GridViewBase {
      */
     public newdata(args: any[],fullargs?:any[], params?: any, $event?: any, xData?: any) {
         const data: any = {};
+        if(args[0].srfsourcekey){
+            data.srfsourcekey = args[0].srfsourcekey;
+        }
         let curViewParam = JSON.parse(JSON.stringify(this.context));
         if(args.length >0){
             Object.assign(curViewParam,args[0]);

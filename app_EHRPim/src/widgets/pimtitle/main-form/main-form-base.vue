@@ -4,7 +4,7 @@
     <row >
             
 <i-col v-show="detailsModel.group1.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
-    <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' uiActionGroup="detailsModel.group1.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.pimtitle.main_form.details.group1')" :isShowCaption="false" uiStyle="DEFAULT" :titleBarCloseMode="0" :isInfoGroupMode="false" >    
+    <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' :uiActionGroup="detailsModel.group1.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.pimtitle.main_form.details.group1')" :isShowCaption="false" uiStyle="DEFAULT" :titleBarCloseMode="0" :isInfoGroupMode="false" >    
     <row>
         <i-col v-show="detailsModel.pimpersonname.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='pimpersonname' :itemRules="this.rules.pimpersonname" class='' :caption="$t('entities.pimtitle.main_form.details.pimpersonname')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.pimpersonname.error" :isEmptyCaption="false" labelPos="LEFT">
@@ -106,7 +106,7 @@
 </i-col>
 <i-col v-show="detailsModel.sfzgzc.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='sfzgzc' :itemRules="this.rules.sfzgzc" class='' :caption="$t('entities.pimtitle.main_form.details.sfzgzc')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.sfzgzc.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-radio-group v-model="data.sfzgzc"  :disabled="detailsModel.sfzgzc.disabled"  name="sfzgzc" tag='YesNo' codelistType='STATIC'  style=""></app-radio-group>
+     <dropdown-list v-model="data.sfzgzc" :data="data" :itemParam="{}" :disabled="detailsModel.sfzgzc.disabled" style="width:100px;width: 100px;" tag='YesNo' codelistType='STATIC'  placeholder='请选择...'></dropdown-list>
 </app-form-item>
 
 </i-col>
@@ -1289,7 +1289,11 @@ export default class MainBase extends Vue implements ControlInterface {
                     this.load(data);
                 }
                 if (Object.is('loaddraft', action)) {
-                    this.loadDraft(data);
+                    if(this.context.srfsourcekey){
+                        this.copy(this.context.srfsourcekey);
+                    }else{
+                        this.loadDraft(data);
+                    }
                 }
                 if (Object.is('save', action)) {
                     this.save(data,data.showResultInfo);
@@ -1353,8 +1357,18 @@ export default class MainBase extends Vue implements ControlInterface {
      * @param {*} [arg={}]
      * @memberof @memberof Main
      */
-    public copy(arg: any = {}): void {
-        this.loadDraft(arg);
+    public copy(srfkey: string): void {
+        let copyData = this.$store.getters.getCopyData(srfkey);
+        copyData.srfkey = Util.createUUID();
+        copyData.pimtitle = copyData.srfkey;
+        copyData.pimtitleid = copyData.srfkey;
+        Object.assign(this.context,{pimtitle:copyData.pimtitle})
+        this.data = copyData;
+        this.$nextTick(() => {
+          this.formState.next({ type: 'load', data: copyData });
+          this.data.srfuf = '0';
+          this.setFormEnableCond(this.data);
+        });
     }
 
     /**

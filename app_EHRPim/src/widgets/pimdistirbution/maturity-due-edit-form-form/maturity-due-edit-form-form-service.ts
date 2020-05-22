@@ -116,8 +116,8 @@ export default class MaturityDueEditFormService extends ControlService {
      */
     @Errorlog
     public getItems(serviceName: string, interfaceName: string, context: any = {}, data: any, isloading?: boolean): Promise<any[]> {
-        if (Object.is(serviceName, 'ORMORGService') && Object.is(interfaceName, 'FetchUseByFP')) {
-            return this.doItems(this.ormorgService.FetchUseByFP(JSON.parse(JSON.stringify(context)),data, isloading), 'orgid', 'ormorg');
+        if (Object.is(serviceName, 'ORMORGService') && Object.is(interfaceName, 'FetchDefault')) {
+            return this.doItems(this.ormorgService.FetchDefault(JSON.parse(JSON.stringify(context)),data, isloading), 'orgid', 'ormorg');
         }
         if (Object.is(serviceName, 'ORMORGSECTORService') && Object.is(interfaceName, 'FetchCURORG')) {
             return this.doItems(this.ormorgsectorService.FetchCURORG(JSON.parse(JSON.stringify(context)),data, isloading), 'orgsectorid', 'ormorgsector');

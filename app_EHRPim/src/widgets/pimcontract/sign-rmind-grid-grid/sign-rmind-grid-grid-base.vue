@@ -21,15 +21,8 @@
             <template v-if="!isSingleSelect">
                 <el-table-column align="center" type='selection' :width="checkboxColWidth"></el-table-column>
             </template>
-            <template v-if="getColumnState('action')">
-                <el-table-column show-overflow-tooltip :prop="'action'" :label="$t('entities.pimcontract.signrmindgrid_grid.columns.action')" :width="80" :align="'right'" :sortable="'custom'">
-                    <template v-slot="{row,column}">
-                        <span>{{row.action}}</span>
-                    </template>
-                </el-table-column>
-            </template>
             <template v-if="getColumnState('ygbh')">
-                <el-table-column show-overflow-tooltip :prop="'ygbh'" :label="$t('entities.pimcontract.signrmindgrid_grid.columns.ygbh')" :width="115" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'ygbh'" :label="$t('entities.pimcontract.signrmindgrid_grid.columns.ygbh')" :width="115"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
                                 <app-span name='ygbh' editorType="SPAN" :value="row.ygbh"></app-span>
@@ -38,7 +31,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('pimpersonname')">
-                <el-table-column show-overflow-tooltip :prop="'pimpersonname'" :label="$t('entities.pimcontract.signrmindgrid_grid.columns.pimpersonname')" :width="115" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'pimpersonname'" :label="$t('entities.pimcontract.signrmindgrid_grid.columns.pimpersonname')" :width="115"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
                               <app-column-link deKeyField='pimperson' :context="JSON.parse(JSON.stringify(context))" :viewparams="JSON.parse(JSON.stringify(viewparams))" :data="row" :linkview="{viewname: 'pimpersonedit-view2', height: 0,width: 0,title: $t('entities.pimperson.views.editview2.title'),placement: 'DRAWER_TOP', isRedirectView: false,deResParameters: [
@@ -54,14 +47,14 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('zzdzs')">
-                <el-table-column show-overflow-tooltip :prop="'zzdzs'" :label="$t('entities.pimcontract.signrmindgrid_grid.columns.zzdzs')" :width="135" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'zzdzs'" :label="$t('entities.pimcontract.signrmindgrid_grid.columns.zzdzs')" :width="135"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.zzdzs}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('ygzt')">
-                <el-table-column show-overflow-tooltip :prop="'ygzt'" :label="$t('entities.pimcontract.signrmindgrid_grid.columns.ygzt')" :width="115" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'ygzt'" :label="$t('entities.pimcontract.signrmindgrid_grid.columns.ygzt')" :width="115"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
             <codelist :value="row.ygzt" tag='PIMCL_YGZT' codelistType='DYNAMIC' ></codelist>
@@ -70,14 +63,14 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('dbdwsj')">
-                <el-table-column show-overflow-tooltip :prop="'dbdwsj'" :label="$t('entities.pimcontract.signrmindgrid_grid.columns.dbdwsj')" :width="135" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'dbdwsj'" :label="$t('entities.pimcontract.signrmindgrid_grid.columns.dbdwsj')" :width="135"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.dbdwsj}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('htbh')">
-                <el-table-column show-overflow-tooltip :prop="'htbh'" :label="$t('entities.pimcontract.signrmindgrid_grid.columns.htbh')" :width="115" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'htbh'" :label="$t('entities.pimcontract.signrmindgrid_grid.columns.htbh')" :width="115"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
                                 <app-span name='htbh' editorType="TEXTBOX" :value="row.htbh"></app-span>
@@ -86,14 +79,14 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('signingunit')">
-                <el-table-column show-overflow-tooltip :prop="'signingunit'" :label="$t('entities.pimcontract.signrmindgrid_grid.columns.signingunit')" :width="135" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'signingunit'" :label="$t('entities.pimcontract.signrmindgrid_grid.columns.signingunit')" :width="135"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.signingunit}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('htlx')">
-                <el-table-column show-overflow-tooltip :prop="'htlx'" :label="$t('entities.pimcontract.signrmindgrid_grid.columns.htlx')" :width="115" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'htlx'" :label="$t('entities.pimcontract.signrmindgrid_grid.columns.htlx')" :width="115"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
             <codelist :value="row.htlx" tag='PIMCL_HTLX' codelistType='DYNAMIC' renderMode="STR" valueSeparator=";" textSeparator="、" ></codelist>
@@ -102,7 +95,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('contracttype')">
-                <el-table-column show-overflow-tooltip :prop="'contracttype'" :label="$t('entities.pimcontract.signrmindgrid_grid.columns.contracttype')" :width="115" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'contracttype'" :label="$t('entities.pimcontract.signrmindgrid_grid.columns.contracttype')" :width="115"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
             <codelist :value="row.contracttype" tag='PIMCL_TYPECONTRACT' codelistType='DYNAMIC' ></codelist>
@@ -111,7 +104,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('qsrq')">
-                <el-table-column show-overflow-tooltip :prop="'qsrq'" :label="$t('entities.pimcontract.signrmindgrid_grid.columns.qsrq')" :width="115" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'qsrq'" :label="$t('entities.pimcontract.signrmindgrid_grid.columns.qsrq')" :width="115"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
                                 <app-span name='qsrq' editorType="DATEPICKER" :value="row.qsrq"></app-span>
@@ -120,7 +113,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('jsrq')">
-                <el-table-column show-overflow-tooltip :prop="'jsrq'" :label="$t('entities.pimcontract.signrmindgrid_grid.columns.jsrq')" :width="115" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'jsrq'" :label="$t('entities.pimcontract.signrmindgrid_grid.columns.jsrq')" :width="115"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
                                 <app-span name='jsrq' editorType="DATEPICKER" :value="row.jsrq"></app-span>
@@ -128,10 +121,11 @@
                     </template>
                 </el-table-column>
             </template>
-            <template v-if="getColumnState('htsyts')">
-                <el-table-column show-overflow-tooltip :prop="'htsyts'" :label="$t('entities.pimcontract.signrmindgrid_grid.columns.htsyts')" :width="135" :align="'left'" :sortable="'custom'">
-                    <template v-slot="{row,column}">
-                        <span>{{row.htsyts}}</span>
+            <template v-if="getColumnState('uagridcolumn1')">
+                <el-table-column :column-key="'uagridcolumn1'" :label="$t('entities.pimcontract.signrmindgrid_grid.columns.uagridcolumn1')" :width="100"  :align="'right'">
+                    <template slot-scope="scope">
+                        <span>
+                        </span>
                     </template>
                 </el-table-column>
             </template>
@@ -586,7 +580,7 @@ export default class SignRmindGridBase extends Vue implements ControlInterface {
     * @type {number}
     * @memberof AppIndex
     */
-    protected checkboxColWidth: number = 34;
+    public checkboxColWidth: number = 34;
 
     /**
      * 是否允许拖动列宽
@@ -603,13 +597,6 @@ export default class SignRmindGridBase extends Vue implements ControlInterface {
      * @memberof SignRmindGrid
      */
     public allColumns: any[] = [
-        {
-            name: 'action',
-            label: '操作',
-            langtag: 'entities.pimcontract.signrmindgrid_grid.columns.action',
-            show: true,
-            util: 'PX'
-        },
         {
             name: 'ygbh',
             label: '员工编号',
@@ -688,9 +675,9 @@ export default class SignRmindGridBase extends Vue implements ControlInterface {
             util: 'PX'
         },
         {
-            name: 'htsyts',
-            label: '合同剩余天数',
-            langtag: 'entities.pimcontract.signrmindgrid_grid.columns.htsyts',
+            name: 'uagridcolumn1',
+            label: '操作列',
+            langtag: 'entities.pimcontract.signrmindgrid_grid.columns.uagridcolumn1',
             show: true,
             util: 'PX'
         },
@@ -1411,7 +1398,7 @@ export default class SignRmindGridBase extends Vue implements ControlInterface {
      * @memberof SignRmindGrid
      */
 	public uiAction(row: any, tag: any, $event: any) {
-        this.rowClick(row, true);
+        // this.rowClick(row, true);
     }
 
     /**

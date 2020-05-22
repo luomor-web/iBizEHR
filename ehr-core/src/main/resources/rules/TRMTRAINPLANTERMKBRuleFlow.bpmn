@@ -12,9 +12,9 @@
      <sequenceFlow id="64580db46e3ea1464d566c843e2de0a5_End_Line" sourceRef="64580db46e3ea1464d566c843e2de0a5" targetRef="64580db46e3ea1464d566c843e2de0a5_End"/>
      <startEvent id="ad2bb3c197f2b1eaaa6e43aaaa9ad9fe" isInterrupting="true"/>
      <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="trmtrainplantermkbdeaction1" id="85416cb910427cf5af1f735bc0354123" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
-     <sequenceFlow id="077929ec89481cccba2feba46eea03a5" sourceRef="85416cb910427cf5af1f735bc0354123" targetRef="64580db46e3ea1464d566c843e2de0a5">
+     <sequenceFlow id="45612862c85a30f183b24afaf801148c" sourceRef="85416cb910427cf5af1f735bc0354123" targetRef="64580db46e3ea1464d566c843e2de0a5">
      </sequenceFlow>
-     <sequenceFlow id="a36f69de531f1d7803613954be824965" sourceRef="ad2bb3c197f2b1eaaa6e43aaaa9ad9fe" targetRef="85416cb910427cf5af1f735bc0354123">
+     <sequenceFlow id="8293f4fa5e19fcf9d11186d970c4b2ee" sourceRef="ad2bb3c197f2b1eaaa6e43aaaa9ad9fe" targetRef="85416cb910427cf5af1f735bc0354123">
      </sequenceFlow>
     </process>
 </definitions>

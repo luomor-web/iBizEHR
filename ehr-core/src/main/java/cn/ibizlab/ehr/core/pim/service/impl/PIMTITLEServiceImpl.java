@@ -51,10 +51,6 @@ public class PIMTITLEServiceImpl extends ServiceImpl<PIMTITLEMapper, PIMTITLE> i
     @Lazy
     private cn.ibizlab.ehr.core.pim.service.IPIMTITLECATALOGUEService pimtitlecatalogueService;
 
-    @Autowired
-    @Lazy
-    private cn.ibizlab.ehr.core.pim.service.logic.IPIMTITLEEnsureHighestTechLogic ensurehighesttechLogic;
-
     private int batchSize = 500;
 
     @Override
@@ -66,7 +62,6 @@ public class PIMTITLEServiceImpl extends ServiceImpl<PIMTITLEMapper, PIMTITLE> i
     @Transactional
     public boolean update(PIMTITLE et) {
         fillParentData(et);
-        ensurehighesttechLogic.execute(et);
         if(!update(et,(Wrapper) et.getUpdateWrapper(true).eq("pimtitleid",et.getPimtitleid())))
             return false;
         CachedBeanCopier.copy(get(et.getPimtitleid()),et);
@@ -83,7 +78,6 @@ public class PIMTITLEServiceImpl extends ServiceImpl<PIMTITLEMapper, PIMTITLE> i
     @Transactional
     public boolean create(PIMTITLE et) {
         fillParentData(et);
-        ensurehighesttechLogic.execute(et);
         if(!this.retBool(this.baseMapper.insert(et)))
             return false;
         CachedBeanCopier.copy(get(et.getPimtitleid()),et);

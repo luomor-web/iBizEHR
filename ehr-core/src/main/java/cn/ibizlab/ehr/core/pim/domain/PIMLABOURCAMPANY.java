@@ -98,7 +98,7 @@ public class PIMLABOURCAMPANY extends EntityMP implements Serializable {
     @JsonProperty("regcapital")
     private String regcapital;
     /**
-     * 劳务派遣公司管理名称
+     * 公司名称
      */
     @TableField(value = "pimlabourcampanyname")
     @JSONField(name = "pimlabourcampanyname")
@@ -225,7 +225,7 @@ public class PIMLABOURCAMPANY extends EntityMP implements Serializable {
         this.modify("regcapital",regcapital);
     }
     /**
-     * 设置 [劳务派遣公司管理名称]
+     * 设置 [公司名称]
      */
     public void setPimlabourcampanyname(String pimlabourcampanyname){
         this.pimlabourcampanyname = pimlabourcampanyname ;

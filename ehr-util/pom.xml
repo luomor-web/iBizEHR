@@ -85,5 +85,10 @@
             <artifactId>springfox-swagger-ui</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>io.github.openfeign</groupId>
+            <artifactId>feign-httpclient</artifactId>
+        </dependency>
+
     </dependencies>
 </project>

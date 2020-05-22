@@ -145,7 +145,7 @@ export default {
 		uiactions: {
 		},
 	},
-	patentgridviewtoolbar2_toolbar: {
+	patentgridviewtoolbar_toolbar: {
 		deuiaction1: {
 			caption: '新建',
 			tip: '新建',
@@ -165,16 +165,6 @@ export default {
 		deuiaction5: {
 			caption: '导出',
 			tip: '导出',
-		},
-	},
-	patentgridviewtoolbar_toolbar: {
-		deuiaction5: {
-			caption: '帮助',
-			tip: '帮助',
-		},
-		deuiaction3: {
-			caption: '开启行编辑',
-			tip: '开启行编辑',
 		},
 	},
 	editviewtoolbar_toolbar: {

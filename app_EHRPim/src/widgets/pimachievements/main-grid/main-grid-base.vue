@@ -22,7 +22,7 @@
                 <el-table-column align="center" type='selection' :width="checkboxColWidth"></el-table-column>
             </template>
             <template v-if="getColumnState('khlx')">
-                <el-table-column show-overflow-tooltip :prop="'khlx'" :label="$t('entities.pimachievements.main_grid.columns.khlx')" :width="120" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'khlx'" :label="$t('entities.pimachievements.main_grid.columns.khlx')" :width="120"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
             <codelist :value="row.khlx" tag='PARCL_JXKHLX' codelistType='STATIC' ></codelist>
@@ -31,7 +31,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('pimachievementsname')">
-                <el-table-column show-overflow-tooltip :prop="'pimachievementsname'" :label="$t('entities.pimachievements.main_grid.columns.pimachievementsname')" :width="130" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'pimachievementsname'" :label="$t('entities.pimachievements.main_grid.columns.pimachievementsname')" :width="130"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
             <codelist :value="row.pimachievementsname" tag='PIMCL_ND' codelistType='STATIC' renderMode="STR" valueSeparator=";" textSeparator="、" ></codelist>
@@ -40,7 +40,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('jd')">
-                <el-table-column show-overflow-tooltip :prop="'jd'" :label="$t('entities.pimachievements.main_grid.columns.jd')" :width="130" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'jd'" :label="$t('entities.pimachievements.main_grid.columns.jd')" :width="130"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
             <codelist :value="row.jd" tag='PARCL_Quarter' codelistType='STATIC' ></codelist>
@@ -49,7 +49,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('yd')">
-                <el-table-column show-overflow-tooltip :prop="'yd'" :label="$t('entities.pimachievements.main_grid.columns.yd')" :width="110" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'yd'" :label="$t('entities.pimachievements.main_grid.columns.yd')" :width="110"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
             <codelist :value="row.yd" tag='CodeList82' codelistType='STATIC' renderMode="STR" valueSeparator=";" textSeparator="、" ></codelist>
@@ -58,7 +58,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('khjl')">
-                <el-table-column show-overflow-tooltip :prop="'khjl'" :label="$t('entities.pimachievements.main_grid.columns.khjl')" :width="120" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'khjl'" :label="$t('entities.pimachievements.main_grid.columns.khjl')" :width="120"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
             <codelist :value="row.khjl" tag='PIMCL_KHJL' codelistType='DYNAMIC' renderMode="STR" valueSeparator=";" textSeparator="、" ></codelist>
@@ -67,7 +67,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('evaluationunit')">
-                <el-table-column show-overflow-tooltip :prop="'evaluationunit'" :label="$t('entities.pimachievements.main_grid.columns.evaluationunit')" :width="200" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'evaluationunit'" :label="$t('entities.pimachievements.main_grid.columns.evaluationunit')" :width="200"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.evaluationunit}}</span>
                     </template>
@@ -531,7 +531,7 @@ export default class MainBase extends Vue implements ControlInterface {
     * @type {number}
     * @memberof AppIndex
     */
-    protected checkboxColWidth: number = 34;
+    public checkboxColWidth: number = 34;
 
     /**
      * 是否允许拖动列宽
@@ -1299,7 +1299,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * @memberof Main
      */
 	public uiAction(row: any, tag: any, $event: any) {
-        this.rowClick(row, true);
+        // this.rowClick(row, true);
     }
 
     /**

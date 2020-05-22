@@ -27,6 +27,8 @@ public interface PCMPROFILEYJTJTEMPMapper extends BaseMapper<PCMPROFILEYJTJTEMP>
     @Override
     int updateById(@Param(Constants.ENTITY) PCMPROFILEYJTJTEMP entity);
     @Override
+    int update(@Param(Constants.ENTITY) PCMPROFILEYJTJTEMP entity, @Param("ew") Wrapper<PCMPROFILEYJTJTEMP> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

@@ -27,6 +27,8 @@ public interface PARJXBZGLMapper extends BaseMapper<PARJXBZGL>{
     @Override
     int updateById(@Param(Constants.ENTITY) PARJXBZGL entity);
     @Override
+    int update(@Param(Constants.ENTITY) PARJXBZGL entity, @Param("ew") Wrapper<PARJXBZGL> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

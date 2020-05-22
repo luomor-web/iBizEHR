@@ -90,7 +90,6 @@ export default class MainModel {
           name: 'pimpaper',
           prop: 'pimpaperid',
         },
-
         {
           name:'size',
           prop:'size'

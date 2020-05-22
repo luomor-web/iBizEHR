@@ -27,6 +27,8 @@ public interface PCMWORKRESUMEMapper extends BaseMapper<PCMWORKRESUME>{
     @Override
     int updateById(@Param(Constants.ENTITY) PCMWORKRESUME entity);
     @Override
+    int update(@Param(Constants.ENTITY) PCMWORKRESUME entity, @Param("ew") Wrapper<PCMWORKRESUME> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

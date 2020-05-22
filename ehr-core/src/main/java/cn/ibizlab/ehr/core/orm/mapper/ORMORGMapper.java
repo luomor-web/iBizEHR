@@ -46,6 +46,8 @@ public interface ORMORGMapper extends BaseMapper<ORMORG>{
     @Override
     int updateById(@Param(Constants.ENTITY) ORMORG entity);
     @Override
+    int update(@Param(Constants.ENTITY) ORMORG entity, @Param("ew") Wrapper<ORMORG> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

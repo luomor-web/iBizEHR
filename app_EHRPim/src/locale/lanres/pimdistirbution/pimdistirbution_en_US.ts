@@ -2,7 +2,6 @@
 export default {
   fields: {
     ssfw: '调动状态',
-    postexpiration_color: '岗位到期颜色',
     rzjssj: '任职结束时间',
     enable: '逻辑有效标志',
     fpzt: '分配状态',
@@ -17,9 +16,7 @@ export default {
     gzdq: '工作地区',
     createdate: '建立时间',
     pimworkhistoryid: '履历id',
-    syyf_color: '剩余月份颜色',
     orgid: '组织ID',
-    syyf: '剩余月份',
     isoutrecord: '外单位履历',
     pimdistirbutionname: '分配信息名称',
     updatedate: '更新时间',
@@ -27,7 +24,6 @@ export default {
     experience: '是否主要经历',
     jdzt: '借调状态',
     ydmxid: '异动明细id',
-    postexpiration: '岗位到期（月）',
     gzdd: '工作地点',
     ygw: '原岗位',
     orgsectorid: '部门ID',
@@ -473,7 +469,6 @@ export default {
 			jdzt: "借调状态",
 			rzkssj: "借调开始时间",
 			rzjssj: "借调结束时间",
-			syyf: "剩余月份",
 		},
 		uiactions: {
 		},
@@ -492,7 +487,6 @@ export default {
 			ormpostname: "新岗位",
 			rzkssj: "借调开始时间",
 			rzjssj: "借调结束时间",
-			syyf: "剩余月份",
 		},
 		uiactions: {
 		},
@@ -747,8 +741,8 @@ export default {
 	},
 	gzllgridviewtoolbar2_toolbar: {
 		deuiaction1: {
-			caption: "New",
-			tip: "New",
+			caption: "新建",
+			tip: "新建",
 		},
 		deuiaction2: {
 			caption: "保存",

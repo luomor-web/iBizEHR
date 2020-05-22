@@ -50,11 +50,11 @@ public class PCMXYGZZJLMXResource {
 
     @Autowired
     @Lazy
-    private PCMXYGZZJLMXMapping pcmxygzzjlmxMapping;
+    public PCMXYGZZJLMXMapping pcmxygzzjlmxMapping;
 
+    public PCMXYGZZJLMXDTO permissionDTO=new PCMXYGZZJLMXDTO();
 
-
-
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMXYGZZJLMX-XYGZZCZ-all')")
     @ApiOperation(value = "新员工转正操作", tags = {"PCMXYGZZJLMX" },  notes = "新员工转正操作")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmxygzzjlmxes/{pcmxygzzjlmx_id}/xygzzcz")
     @Transactional
@@ -65,10 +65,7 @@ public class PCMXYGZZJLMXResource {
         return ResponseEntity.status(HttpStatus.OK).body(pcmxygzzjlmxdto);
     }
 
-
-
-
-    @PreAuthorize("hasPermission(#pcmxygzzjlmx_id,'Get',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#pcmxygzzjlmx_id,'Get',{'Sql',this.pcmxygzzjlmxMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"PCMXYGZZJLMX" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmxygzzjlmxes/{pcmxygzzjlmx_id}")
     public ResponseEntity<PCMXYGZZJLMXDTO> get(@PathVariable("pcmxygzzjlmx_id") String pcmxygzzjlmx_id) {
@@ -77,9 +74,7 @@ public class PCMXYGZZJLMXResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-
-
-
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMXYGZZJLMX-SHTG-all')")
     @ApiOperation(value = "审核通过", tags = {"PCMXYGZZJLMX" },  notes = "审核通过")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmxygzzjlmxes/{pcmxygzzjlmx_id}/shtg")
     @Transactional
@@ -90,9 +85,7 @@ public class PCMXYGZZJLMXResource {
         return ResponseEntity.status(HttpStatus.OK).body(pcmxygzzjlmxdto);
     }
 
-
-
-
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMXYGZZJLMX-FillPersonInfo-all')")
     @ApiOperation(value = "设置人员信息", tags = {"PCMXYGZZJLMX" },  notes = "设置人员信息")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmxygzzjlmxes/{pcmxygzzjlmx_id}/fillpersoninfo")
     @Transactional
@@ -103,10 +96,7 @@ public class PCMXYGZZJLMXResource {
         return ResponseEntity.status(HttpStatus.OK).body(pcmxygzzjlmxdto);
     }
 
-
-
-
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.pcmxygzzjlmxMapping,#pcmxygzzjlmxdto})")
     @ApiOperation(value = "Create", tags = {"PCMXYGZZJLMX" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmxygzzjlmxes")
     @Transactional
@@ -117,7 +107,7 @@ public class PCMXYGZZJLMXResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatch", tags = {"PCMXYGZZJLMX" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmxygzzjlmxes/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PCMXYGZZJLMXDTO> pcmxygzzjlmxdtos) {
@@ -125,10 +115,7 @@ public class PCMXYGZZJLMXResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    @PreAuthorize("hasPermission('Remove',{#pcmxygzzjlmx_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#pcmxygzzjlmx_id,'Remove',{'Sql',this.pcmxygzzjlmxMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"PCMXYGZZJLMX" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmxygzzjlmxes/{pcmxygzzjlmx_id}")
     @Transactional
@@ -136,6 +123,7 @@ public class PCMXYGZZJLMXResource {
          return ResponseEntity.status(HttpStatus.OK).body(pcmxygzzjlmxService.remove(pcmxygzzjlmx_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"PCMXYGZZJLMX" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmxygzzjlmxes/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -143,19 +131,14 @@ public class PCMXYGZZJLMXResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMXYGZZJLMX-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"PCMXYGZZJLMX" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmxygzzjlmxes/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PCMXYGZZJLMXDTO pcmxygzzjlmxdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pcmxygzzjlmxService.checkKey(pcmxygzzjlmxMapping.toDomain(pcmxygzzjlmxdto)));
     }
 
-
-
-
-    @PreAuthorize("hasPermission(#pcmxygzzjlmx_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#pcmxygzzjlmx_id,'Update',{'Sql',this.pcmxygzzjlmxMapping,#pcmxygzzjlmxdto})")
     @ApiOperation(value = "Update", tags = {"PCMXYGZZJLMX" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmxygzzjlmxes/{pcmxygzzjlmx_id}")
     @Transactional
@@ -167,7 +150,7 @@ public class PCMXYGZZJLMXResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#pcmxygzzjlmx_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"PCMXYGZZJLMX" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmxygzzjlmxes/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PCMXYGZZJLMXDTO> pcmxygzzjlmxdtos) {
@@ -175,18 +158,14 @@ public class PCMXYGZZJLMXResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMXYGZZJLMX-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"PCMXYGZZJLMX" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmxygzzjlmxes/getdraft")
     public ResponseEntity<PCMXYGZZJLMXDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(pcmxygzzjlmxMapping.toDto(pcmxygzzjlmxService.getDraft(new PCMXYGZZJLMX())));
     }
 
-
-
-
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMXYGZZJLMX-SHBTG-all')")
     @ApiOperation(value = "审核不通过", tags = {"PCMXYGZZJLMX" },  notes = "审核不通过")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmxygzzjlmxes/{pcmxygzzjlmx_id}/shbtg")
     @Transactional
@@ -197,15 +176,14 @@ public class PCMXYGZZJLMXResource {
         return ResponseEntity.status(HttpStatus.OK).body(pcmxygzzjlmxdto);
     }
 
-
-
-
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMXYGZZJLMX-Save-all')")
     @ApiOperation(value = "Save", tags = {"PCMXYGZZJLMX" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmxygzzjlmxes/save")
     public ResponseEntity<Boolean> save(@RequestBody PCMXYGZZJLMXDTO pcmxygzzjlmxdto) {
         return ResponseEntity.status(HttpStatus.OK).body(pcmxygzzjlmxService.save(pcmxygzzjlmxMapping.toDomain(pcmxygzzjlmxdto)));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"PCMXYGZZJLMX" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmxygzzjlmxes/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PCMXYGZZJLMXDTO> pcmxygzzjlmxdtos) {
@@ -213,7 +191,7 @@ public class PCMXYGZZJLMXResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'ZZWSHDS',this.getEntity(),'Sql'})")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMXYGZZJLMX-ZZWSHDS-all')")
 	@ApiOperation(value = "fetch试用期转正申请未审核", tags = {"PCMXYGZZJLMX" } ,notes = "fetch试用期转正申请未审核")
     @RequestMapping(method= RequestMethod.GET , value="/pcmxygzzjlmxes/fetchzzwshds")
 	public ResponseEntity<List<PCMXYGZZJLMXDTO>> fetchZZWSHDS(PCMXYGZZJLMXSearchContext context) {
@@ -226,16 +204,15 @@ public class PCMXYGZZJLMXResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'ZZWSHDS',this.getEntity(),'Sql'})")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMXYGZZJLMX-ZZWSHDS-all')")
 	@ApiOperation(value = "search试用期转正申请未审核", tags = {"PCMXYGZZJLMX" } ,notes = "search试用期转正申请未审核")
-    @RequestMapping(method= RequestMethod.GET , value="/pcmxygzzjlmxes/searchzzwshds")
-	public ResponseEntity<Page<PCMXYGZZJLMXDTO>> searchZZWSHDS(PCMXYGZZJLMXSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pcmxygzzjlmxes/searchzzwshds")
+	public ResponseEntity<Page<PCMXYGZZJLMXDTO>> searchZZWSHDS(@RequestBody PCMXYGZZJLMXSearchContext context) {
         Page<PCMXYGZZJLMX> domains = pcmxygzzjlmxService.searchZZWSHDS(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pcmxygzzjlmxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-    @PreAuthorize("hasPermission('Get',{#context,'ALLDS',this.getEntity(),'Sql'})")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMXYGZZJLMX-ALLDS-all')")
 	@ApiOperation(value = "fetch所有的试用期转正申请", tags = {"PCMXYGZZJLMX" } ,notes = "fetch所有的试用期转正申请")
     @RequestMapping(method= RequestMethod.GET , value="/pcmxygzzjlmxes/fetchallds")
 	public ResponseEntity<List<PCMXYGZZJLMXDTO>> fetchALLDS(PCMXYGZZJLMXSearchContext context) {
@@ -248,16 +225,15 @@ public class PCMXYGZZJLMXResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'ALLDS',this.getEntity(),'Sql'})")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMXYGZZJLMX-ALLDS-all')")
 	@ApiOperation(value = "search所有的试用期转正申请", tags = {"PCMXYGZZJLMX" } ,notes = "search所有的试用期转正申请")
-    @RequestMapping(method= RequestMethod.GET , value="/pcmxygzzjlmxes/searchallds")
-	public ResponseEntity<Page<PCMXYGZZJLMXDTO>> searchALLDS(PCMXYGZZJLMXSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pcmxygzzjlmxes/searchallds")
+	public ResponseEntity<Page<PCMXYGZZJLMXDTO>> searchALLDS(@RequestBody PCMXYGZZJLMXSearchContext context) {
         Page<PCMXYGZZJLMX> domains = pcmxygzzjlmxService.searchALLDS(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pcmxygzzjlmxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-    @PreAuthorize("hasPermission('Get',{#context,'SYQZZJL',this.getEntity(),'Sql'})")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMXYGZZJLMX-SYQZZJL-all')")
 	@ApiOperation(value = "fetch试用期转正记录", tags = {"PCMXYGZZJLMX" } ,notes = "fetch试用期转正记录")
     @RequestMapping(method= RequestMethod.GET , value="/pcmxygzzjlmxes/fetchsyqzzjl")
 	public ResponseEntity<List<PCMXYGZZJLMXDTO>> fetchSYQZZJL(PCMXYGZZJLMXSearchContext context) {
@@ -270,16 +246,15 @@ public class PCMXYGZZJLMXResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'SYQZZJL',this.getEntity(),'Sql'})")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMXYGZZJLMX-SYQZZJL-all')")
 	@ApiOperation(value = "search试用期转正记录", tags = {"PCMXYGZZJLMX" } ,notes = "search试用期转正记录")
-    @RequestMapping(method= RequestMethod.GET , value="/pcmxygzzjlmxes/searchsyqzzjl")
-	public ResponseEntity<Page<PCMXYGZZJLMXDTO>> searchSYQZZJL(PCMXYGZZJLMXSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pcmxygzzjlmxes/searchsyqzzjl")
+	public ResponseEntity<Page<PCMXYGZZJLMXDTO>> searchSYQZZJL(@RequestBody PCMXYGZZJLMXSearchContext context) {
         Page<PCMXYGZZJLMX> domains = pcmxygzzjlmxService.searchSYQZZJL(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pcmxygzzjlmxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMXYGZZJLMX-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PCMXYGZZJLMX" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pcmxygzzjlmxes/fetchdefault")
 	public ResponseEntity<List<PCMXYGZZJLMXDTO>> fetchDefault(PCMXYGZZJLMXSearchContext context) {
@@ -292,22 +267,12 @@ public class PCMXYGZZJLMXResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMXYGZZJLMX-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PCMXYGZZJLMX" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/pcmxygzzjlmxes/searchdefault")
-	public ResponseEntity<Page<PCMXYGZZJLMXDTO>> searchDefault(PCMXYGZZJLMXSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pcmxygzzjlmxes/searchdefault")
+	public ResponseEntity<Page<PCMXYGZZJLMXDTO>> searchDefault(@RequestBody PCMXYGZZJLMXSearchContext context) {
         Page<PCMXYGZZJLMX> domains = pcmxygzzjlmxService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pcmxygzzjlmxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
-    /**
-     * 用户权限校验
-     * @return
-     */
-	public PCMXYGZZJLMX getEntity(){
-        return new PCMXYGZZJLMX();
-    }
-
 }

@@ -66,10 +66,6 @@ public class PIMVOCATIONALServiceImpl extends ServiceImpl<PIMVOCATIONALMapper, P
     @Lazy
     private cn.ibizlab.ehr.core.pim.service.IPIMVOCATIONALCATALOGService pimvocationalcatalogService;
 
-    @Autowired
-    @Lazy
-    private cn.ibizlab.ehr.core.pim.service.logic.IPIMVOCATIONALGenerateFJLogic generatefjLogic;
-
     private int batchSize = 500;
 
     @Override
@@ -79,7 +75,6 @@ public class PIMVOCATIONALServiceImpl extends ServiceImpl<PIMVOCATIONALMapper, P
         if(!update(et,(Wrapper) et.getUpdateWrapper(true).eq("pimvocationalid",et.getPimvocationalid())))
             return false;
         CachedBeanCopier.copy(get(et.getPimvocationalid()),et);
-        generatefjLogic.execute(et);
         return true;
     }
 
@@ -96,7 +91,6 @@ public class PIMVOCATIONALServiceImpl extends ServiceImpl<PIMVOCATIONALMapper, P
         if(!this.retBool(this.baseMapper.insert(et)))
             return false;
         CachedBeanCopier.copy(get(et.getPimvocationalid()),et);
-        generatefjLogic.execute(et);
         return true;
     }
 

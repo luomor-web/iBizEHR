@@ -50,17 +50,18 @@ public class TRMDUTYCADRESResource {
 
     @Autowired
     @Lazy
-    private TRMDUTYCADRESMapping trmdutycadresMapping;
+    public TRMDUTYCADRESMapping trmdutycadresMapping;
 
+    public TRMDUTYCADRESDTO permissionDTO=new TRMDUTYCADRESDTO();
 
-
-
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMDUTYCADRES-Save-all')")
     @ApiOperation(value = "Save", tags = {"TRMDUTYCADRES" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmdutycadres/save")
     public ResponseEntity<Boolean> save(@RequestBody TRMDUTYCADRESDTO trmdutycadresdto) {
         return ResponseEntity.status(HttpStatus.OK).body(trmdutycadresService.save(trmdutycadresMapping.toDomain(trmdutycadresdto)));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"TRMDUTYCADRES" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmdutycadres/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<TRMDUTYCADRESDTO> trmdutycadresdtos) {
@@ -68,9 +69,7 @@ public class TRMDUTYCADRESResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMDUTYCADRES-SetNQGBXX-all')")
     @ApiOperation(value = "设置年轻干部信息", tags = {"TRMDUTYCADRES" },  notes = "设置年轻干部信息")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmdutycadres/{trmdutycadres_id}/setnqgbxx")
     @Transactional
@@ -81,9 +80,7 @@ public class TRMDUTYCADRESResource {
         return ResponseEntity.status(HttpStatus.OK).body(trmdutycadresdto);
     }
 
-
-
-
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMDUTYCADRES-SX-all')")
     @ApiOperation(value = "生效", tags = {"TRMDUTYCADRES" },  notes = "生效")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmdutycadres/{trmdutycadres_id}/sx")
     @Transactional
@@ -94,10 +91,7 @@ public class TRMDUTYCADRESResource {
         return ResponseEntity.status(HttpStatus.OK).body(trmdutycadresdto);
     }
 
-
-
-
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.trmdutycadresMapping,#trmdutycadresdto})")
     @ApiOperation(value = "Create", tags = {"TRMDUTYCADRES" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmdutycadres")
     @Transactional
@@ -108,7 +102,7 @@ public class TRMDUTYCADRESResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatch", tags = {"TRMDUTYCADRES" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmdutycadres/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<TRMDUTYCADRESDTO> trmdutycadresdtos) {
@@ -116,27 +110,21 @@ public class TRMDUTYCADRESResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMDUTYCADRES-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"TRMDUTYCADRES" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/trmdutycadres/getdraft")
     public ResponseEntity<TRMDUTYCADRESDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(trmdutycadresMapping.toDto(trmdutycadresService.getDraft(new TRMDUTYCADRES())));
     }
 
-
-
-
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMDUTYCADRES-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"TRMDUTYCADRES" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmdutycadres/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody TRMDUTYCADRESDTO trmdutycadresdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(trmdutycadresService.checkKey(trmdutycadresMapping.toDomain(trmdutycadresdto)));
     }
 
-
-
-
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMDUTYCADRES-XX-all')")
     @ApiOperation(value = "失效", tags = {"TRMDUTYCADRES" },  notes = "失效")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmdutycadres/{trmdutycadres_id}/xx")
     @Transactional
@@ -147,10 +135,7 @@ public class TRMDUTYCADRESResource {
         return ResponseEntity.status(HttpStatus.OK).body(trmdutycadresdto);
     }
 
-
-
-
-    @PreAuthorize("hasPermission(#trmdutycadres_id,'Get',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#trmdutycadres_id,'Get',{'Sql',this.trmdutycadresMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"TRMDUTYCADRES" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/trmdutycadres/{trmdutycadres_id}")
     public ResponseEntity<TRMDUTYCADRESDTO> get(@PathVariable("trmdutycadres_id") String trmdutycadres_id) {
@@ -159,10 +144,7 @@ public class TRMDUTYCADRESResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-
-
-
-    @PreAuthorize("hasPermission(#trmdutycadres_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#trmdutycadres_id,'Update',{'Sql',this.trmdutycadresMapping,#trmdutycadresdto})")
     @ApiOperation(value = "Update", tags = {"TRMDUTYCADRES" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/trmdutycadres/{trmdutycadres_id}")
     @Transactional
@@ -174,7 +156,7 @@ public class TRMDUTYCADRESResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#trmdutycadres_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"TRMDUTYCADRES" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/trmdutycadres/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<TRMDUTYCADRESDTO> trmdutycadresdtos) {
@@ -182,10 +164,7 @@ public class TRMDUTYCADRESResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    @PreAuthorize("hasPermission('Remove',{#trmdutycadres_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#trmdutycadres_id,'Remove',{'Sql',this.trmdutycadresMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"TRMDUTYCADRES" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/trmdutycadres/{trmdutycadres_id}")
     @Transactional
@@ -193,6 +172,7 @@ public class TRMDUTYCADRESResource {
          return ResponseEntity.status(HttpStatus.OK).body(trmdutycadresService.remove(trmdutycadres_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"TRMDUTYCADRES" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/trmdutycadres/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -200,7 +180,7 @@ public class TRMDUTYCADRESResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'CurCXFW',this.getEntity(),'Sql'})")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMDUTYCADRES-CurCXFW-all')")
 	@ApiOperation(value = "fetch数据范围选择", tags = {"TRMDUTYCADRES" } ,notes = "fetch数据范围选择")
     @RequestMapping(method= RequestMethod.GET , value="/trmdutycadres/fetchcurcxfw")
 	public ResponseEntity<List<TRMDUTYCADRESDTO>> fetchCurCXFW(TRMDUTYCADRESSearchContext context) {
@@ -213,16 +193,15 @@ public class TRMDUTYCADRESResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'CurCXFW',this.getEntity(),'Sql'})")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMDUTYCADRES-CurCXFW-all')")
 	@ApiOperation(value = "search数据范围选择", tags = {"TRMDUTYCADRES" } ,notes = "search数据范围选择")
-    @RequestMapping(method= RequestMethod.GET , value="/trmdutycadres/searchcurcxfw")
-	public ResponseEntity<Page<TRMDUTYCADRESDTO>> searchCurCXFW(TRMDUTYCADRESSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/trmdutycadres/searchcurcxfw")
+	public ResponseEntity<Page<TRMDUTYCADRESDTO>> searchCurCXFW(@RequestBody TRMDUTYCADRESSearchContext context) {
         Page<TRMDUTYCADRES> domains = trmdutycadresService.searchCurCXFW(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(trmdutycadresMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMDUTYCADRES-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"TRMDUTYCADRES" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/trmdutycadres/fetchdefault")
 	public ResponseEntity<List<TRMDUTYCADRESDTO>> fetchDefault(TRMDUTYCADRESSearchContext context) {
@@ -235,22 +214,12 @@ public class TRMDUTYCADRESResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMDUTYCADRES-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"TRMDUTYCADRES" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/trmdutycadres/searchdefault")
-	public ResponseEntity<Page<TRMDUTYCADRESDTO>> searchDefault(TRMDUTYCADRESSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/trmdutycadres/searchdefault")
+	public ResponseEntity<Page<TRMDUTYCADRESDTO>> searchDefault(@RequestBody TRMDUTYCADRESSearchContext context) {
         Page<TRMDUTYCADRES> domains = trmdutycadresService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(trmdutycadresMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
-    /**
-     * 用户权限校验
-     * @return
-     */
-	public TRMDUTYCADRES getEntity(){
-        return new TRMDUTYCADRES();
-    }
-
 }

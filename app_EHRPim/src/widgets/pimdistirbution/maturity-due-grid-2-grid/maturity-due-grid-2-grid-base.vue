@@ -22,14 +22,14 @@
                 <el-table-column align="center" type='selection' :width="checkboxColWidth"></el-table-column>
             </template>
             <template v-if="getColumnState('ygbh')">
-                <el-table-column show-overflow-tooltip :prop="'ygbh'" :label="$t('entities.pimdistirbution.maturityduegrid_2_grid.columns.ygbh')" :width="130" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'ygbh'" :label="$t('entities.pimdistirbution.maturityduegrid_2_grid.columns.ygbh')" :width="130"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.ygbh}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('pimpersonname')">
-                <el-table-column show-overflow-tooltip :prop="'pimpersonname'" :label="$t('entities.pimdistirbution.maturityduegrid_2_grid.columns.pimpersonname')" :width="130" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'pimpersonname'" :label="$t('entities.pimdistirbution.maturityduegrid_2_grid.columns.pimpersonname')" :width="130"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <app-column-link deKeyField='pimperson' :context="JSON.parse(JSON.stringify(context))" :viewparams="JSON.parse(JSON.stringify(viewparams))" :data="row" :linkview="{viewname: 'pimpersonedit-view2', height: 0,width: 0,title: $t('entities.pimperson.views.editview2.title'),placement: 'DRAWER_TOP', isRedirectView: false,deResParameters: [
             ]
@@ -43,21 +43,21 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('yzzzzdzs')">
-                <el-table-column show-overflow-tooltip :prop="'yzzzzdzs'" :label="$t('entities.pimdistirbution.maturityduegrid_2_grid.columns.yzzzzdzs')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'yzzzzdzs'" :label="$t('entities.pimdistirbution.maturityduegrid_2_grid.columns.yzzzzdzs')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.yzzzzdzs}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('ybmshortname')">
-                <el-table-column show-overflow-tooltip :prop="'ybmshortname'" :label="$t('entities.pimdistirbution.maturityduegrid_2_grid.columns.ybmshortname')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'ybmshortname'" :label="$t('entities.pimdistirbution.maturityduegrid_2_grid.columns.ybmshortname')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.ybmshortname}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('yzw')">
-                <el-table-column show-overflow-tooltip :prop="'yzw'" :label="$t('entities.pimdistirbution.maturityduegrid_2_grid.columns.yzw')" :width="120" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'yzw'" :label="$t('entities.pimdistirbution.maturityduegrid_2_grid.columns.yzw')" :width="120"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
             <codelist :value="row.yzw" tag='ORMCL_ZW' codelistType='DYNAMIC' renderMode="STR" valueSeparator=";" textSeparator="、" ></codelist>
@@ -66,7 +66,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('ygw')">
-                <el-table-column show-overflow-tooltip :prop="'ygw'" :label="$t('entities.pimdistirbution.maturityduegrid_2_grid.columns.ygw')" :width="120" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'ygw'" :label="$t('entities.pimdistirbution.maturityduegrid_2_grid.columns.ygw')" :width="120"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
             <codelist :value="row.ygw" tag='ORMCL_GW' codelistType='DYNAMIC' renderMode="STR" valueSeparator=";" textSeparator="、" ></codelist>
@@ -75,21 +75,21 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('zzdzs')">
-                <el-table-column show-overflow-tooltip :prop="'zzdzs'" :label="$t('entities.pimdistirbution.maturityduegrid_2_grid.columns.zzdzs')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'zzdzs'" :label="$t('entities.pimdistirbution.maturityduegrid_2_grid.columns.zzdzs')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.zzdzs}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('shortname')">
-                <el-table-column show-overflow-tooltip :prop="'shortname'" :label="$t('entities.pimdistirbution.maturityduegrid_2_grid.columns.shortname')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'shortname'" :label="$t('entities.pimdistirbution.maturityduegrid_2_grid.columns.shortname')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.shortname}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('ormdutyname')">
-                <el-table-column show-overflow-tooltip :prop="'ormdutyname'" :label="$t('entities.pimdistirbution.maturityduegrid_2_grid.columns.ormdutyname')" :width="120" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'ormdutyname'" :label="$t('entities.pimdistirbution.maturityduegrid_2_grid.columns.ormdutyname')" :width="120"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
                                 <app-span name='ormdutyname' editorType="PICKER" :value="row.ormdutyname"></app-span>
@@ -98,7 +98,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('ormpostname')">
-                <el-table-column show-overflow-tooltip :prop="'ormpostname'" :label="$t('entities.pimdistirbution.maturityduegrid_2_grid.columns.ormpostname')" :width="120" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'ormpostname'" :label="$t('entities.pimdistirbution.maturityduegrid_2_grid.columns.ormpostname')" :width="120"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
                                 <app-span name='ormpostname' editorType="PICKER" :value="row.ormpostname"></app-span>
@@ -107,14 +107,14 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('jdzt')">
-                <el-table-column show-overflow-tooltip :prop="'jdzt'" :label="$t('entities.pimdistirbution.maturityduegrid_2_grid.columns.jdzt')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'jdzt'" :label="$t('entities.pimdistirbution.maturityduegrid_2_grid.columns.jdzt')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.jdzt}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('rzkssj')">
-                <el-table-column show-overflow-tooltip :prop="'rzkssj'" :label="$t('entities.pimdistirbution.maturityduegrid_2_grid.columns.rzkssj')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'rzkssj'" :label="$t('entities.pimdistirbution.maturityduegrid_2_grid.columns.rzkssj')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
                                 <app-span name='rzkssj' editorType="DATEPICKER" :value="row.rzkssj"></app-span>
@@ -123,18 +123,11 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('rzjssj')">
-                <el-table-column show-overflow-tooltip :prop="'rzjssj'" :label="$t('entities.pimdistirbution.maturityduegrid_2_grid.columns.rzjssj')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'rzjssj'" :label="$t('entities.pimdistirbution.maturityduegrid_2_grid.columns.rzjssj')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
                                 <app-span name='rzjssj' editorType="DATEPICKER" :value="row.rzjssj"></app-span>
                         </template>
-                    </template>
-                </el-table-column>
-            </template>
-            <template v-if="getColumnState('syyf')">
-                <el-table-column show-overflow-tooltip :prop="'syyf'" :label="$t('entities.pimdistirbution.maturityduegrid_2_grid.columns.syyf')" :width="100" :align="'left'" :sortable="'custom'">
-                    <template v-slot="{row,column}">
-                        <span>{{row.syyf}}</span>
                     </template>
                 </el-table-column>
             </template>
@@ -596,7 +589,7 @@ export default class MaturityDueGrid_2Base extends Vue implements ControlInterfa
     * @type {number}
     * @memberof AppIndex
     */
-    protected checkboxColWidth: number = 34;
+    public checkboxColWidth: number = 34;
 
     /**
      * 是否允许拖动列宽
@@ -701,13 +694,6 @@ export default class MaturityDueGrid_2Base extends Vue implements ControlInterfa
             name: 'rzjssj',
             label: '借调结束时间',
             langtag: 'entities.pimdistirbution.maturityduegrid_2_grid.columns.rzjssj',
-            show: true,
-            util: 'PX'
-        },
-        {
-            name: 'syyf',
-            label: '剩余月份',
-            langtag: 'entities.pimdistirbution.maturityduegrid_2_grid.columns.syyf',
             show: true,
             util: 'PX'
         },
@@ -1412,7 +1398,7 @@ export default class MaturityDueGrid_2Base extends Vue implements ControlInterfa
      * @memberof MaturityDueGrid_2
      */
 	public uiAction(row: any, tag: any, $event: any) {
-        this.rowClick(row, true);
+        // this.rowClick(row, true);
     }
 
     /**

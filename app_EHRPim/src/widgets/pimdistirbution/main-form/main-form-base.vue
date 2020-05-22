@@ -4,7 +4,7 @@
     <row >
             
 <i-col v-show="detailsModel.group1.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
-    <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' uiActionGroup="detailsModel.group1.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.pimdistirbution.main_form.details.group1')" :isShowCaption="false" uiStyle="DEFAULT" :titleBarCloseMode="0" :isInfoGroupMode="false" >    
+    <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' :uiActionGroup="detailsModel.group1.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.pimdistirbution.main_form.details.group1')" :isShowCaption="false" uiStyle="DEFAULT" :titleBarCloseMode="0" :isInfoGroupMode="false" >    
     <row>
         <i-col v-show="detailsModel.pimpersonname.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='pimpersonname' :itemRules="this.rules.pimpersonname" class='' :caption="$t('entities.pimdistirbution.main_form.details.pimpersonname')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.pimpersonname.error" :isEmptyCaption="false" labelPos="LEFT">
@@ -62,7 +62,7 @@
   deMajorField='orgname'
   deKeyField='ormorg'
   :service="service"
-  :acParams="{ serviceName: 'ORMORGService', interfaceName: 'FetchUseByFP'}"
+  :acParams="{ serviceName: 'ORMORGService', interfaceName: 'FetchDefault'}"
   valueitem='ormorgid' 
   :value="data.ormorgname" 
   editortype="" 
@@ -131,7 +131,7 @@
   :data="data"
   :context="context"
   :viewparams="viewparams"
-  :itemParam='{ }' 
+  :itemParam='{ context:{"ORMORG":"%ormorgid%"},param:{"n_ormorgid_eq":"%ormorgid%"},}' 
   :disabled="detailsModel.ormpostname.disabled"
   name='ormpostname'
   deMajorField='ormpostname'
@@ -1053,6 +1053,9 @@ export default class MainBase extends Vue implements ControlInterface {
             this.onFormItemValueChange({ name: 'ormorgsectorid', value: null });
         }
         if (Object.is(name, 'ormorgid')) {
+            this.onFormItemValueChange({ name: 'ormpostid', value: null });
+        }
+        if (Object.is(name, 'ormorgid')) {
             this.onFormItemValueChange({ name: 'ormorgsectorname', value: null });
             this.onFormItemValueChange({ name: 'ormorgsectorid', value: null });
         }
@@ -1371,7 +1374,11 @@ export default class MainBase extends Vue implements ControlInterface {
                     this.load(data);
                 }
                 if (Object.is('loaddraft', action)) {
-                    this.loadDraft(data);
+                    if(this.context.srfsourcekey){
+                        this.copy(this.context.srfsourcekey);
+                    }else{
+                        this.loadDraft(data);
+                    }
                 }
                 if (Object.is('save', action)) {
                     this.save(data,data.showResultInfo);
@@ -1435,8 +1442,18 @@ export default class MainBase extends Vue implements ControlInterface {
      * @param {*} [arg={}]
      * @memberof @memberof Main
      */
-    public copy(arg: any = {}): void {
-        this.loadDraft(arg);
+    public copy(srfkey: string): void {
+        let copyData = this.$store.getters.getCopyData(srfkey);
+        copyData.srfkey = Util.createUUID();
+        copyData.pimdistirbution = copyData.srfkey;
+        copyData.pimdistirbutionid = copyData.srfkey;
+        Object.assign(this.context,{pimdistirbution:copyData.pimdistirbution})
+        this.data = copyData;
+        this.$nextTick(() => {
+          this.formState.next({ type: 'load', data: copyData });
+          this.data.srfuf = '0';
+          this.setFormEnableCond(this.data);
+        });
     }
 
     /**

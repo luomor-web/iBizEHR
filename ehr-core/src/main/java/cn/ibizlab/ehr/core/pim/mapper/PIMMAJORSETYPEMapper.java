@@ -27,6 +27,8 @@ public interface PIMMAJORSETYPEMapper extends BaseMapper<PIMMAJORSETYPE>{
     @Override
     int updateById(@Param(Constants.ENTITY) PIMMAJORSETYPE entity);
     @Override
+    int update(@Param(Constants.ENTITY) PIMMAJORSETYPE entity, @Param("ew") Wrapper<PIMMAJORSETYPE> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

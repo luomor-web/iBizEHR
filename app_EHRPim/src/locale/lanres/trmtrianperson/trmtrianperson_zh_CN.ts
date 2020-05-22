@@ -90,14 +90,6 @@ export default {
 		uiactions: {
 		},
 	},
-	default_searchform: {
-		details: {
-			formpage1: '常规条件', 
-			n_pimpersonname_like: '姓名', 
-		},
-		uiactions: {
-		},
-	},
 	gridviewtoolbar_toolbar: {
 		deuiaction4: {
 			caption: '导入',

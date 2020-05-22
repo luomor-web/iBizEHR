@@ -21,37 +21,12 @@
         </dependency>
         <dependency>
             <groupId>cn.ibizlab.ehr</groupId>
-            <artifactId>ehr-provider-saasadmin</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>cn.ibizlab.ehr</groupId>
-            <artifactId>ehr-provider-parttimeperson</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>cn.ibizlab.ehr</groupId>
-            <artifactId>ehr-provider-wfcallback</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>cn.ibizlab.ehr</groupId>
-            <artifactId>ehr-provider-specialrole</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>cn.ibizlab.ehr</groupId>
             <artifactId>ehr-provider-webapi</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>cn.ibizlab.ehr</groupId>
             <artifactId>ehr-app-ehrhelp</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>cn.ibizlab.ehr</groupId>
-            <artifactId>ehr-app-ehr</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
@@ -72,21 +47,6 @@
         <dependency>
             <groupId>cn.ibizlab.ehr</groupId>
             <artifactId>ehr-app-ehrorm</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>cn.ibizlab.ehr</groupId>
-            <artifactId>ehr-app-ehrweb</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>cn.ibizlab.ehr</groupId>
-            <artifactId>ehr-app-ehrapp</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>cn.ibizlab.ehr</groupId>
-            <artifactId>ehr-app-web</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>

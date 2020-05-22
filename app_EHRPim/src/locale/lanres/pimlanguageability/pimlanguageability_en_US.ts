@@ -147,10 +147,10 @@ export default {
 		uiactions: {
 		},
 	},
-	yynlgridviewtoolbar2_toolbar: {
+	yynlgridviewtoolbar_toolbar: {
 		deuiaction1: {
-			caption: "New",
-			tip: "New",
+			caption: "新建",
+			tip: "新建",
 		},
 		deuiaction2: {
 			caption: "保存",
@@ -167,36 +167,6 @@ export default {
 		deuiaction5: {
 			caption: "Export",
 			tip: "Export {0} Data To Excel",
-		},
-	},
-	yynlgridviewtoolbar_toolbar: {
-		tbitem3: {
-			caption: "New",
-			tip: "New",
-		},
-		tbitem8: {
-			caption: "Remove",
-			tip: "Remove {0}",
-		},
-		tbitem16: {
-			caption: "其它",
-			tip: "其它",
-		},
-		tbitem23: {
-			caption: "数据导入",
-			tip: "数据导入",
-		},
-		tbitem13: {
-			caption: "Export",
-			tip: "Export {0} Data To Excel",
-		},
-		deuiaction1: {
-			caption: "开启行编辑",
-			tip: "开启行编辑",
-		},
-		tbitem18: {
-			caption: "Help",
-			tip: "Help",
 		},
 	},
 	editviewtoolbar_toolbar: {

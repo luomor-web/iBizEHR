@@ -22,7 +22,7 @@
                 <el-table-column align="center" type='selection' :width="checkboxColWidth"></el-table-column>
             </template>
             <template v-if="getColumnState('fylb')">
-                <el-table-column show-overflow-tooltip :prop="'fylb'" :label="$t('entities.pimexpaccount.main_grid.columns.fylb')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'fylb'" :label="$t('entities.pimexpaccount.main_grid.columns.fylb')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
             <codelist :value="row.fylb" tag='PIMCL_EXPACCOUNT' codelistType='STATIC' renderMode="STR" valueSeparator=";" textSeparator="、" ></codelist>
@@ -31,28 +31,28 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('fyje')">
-                <el-table-column show-overflow-tooltip :prop="'fyje'" :label="$t('entities.pimexpaccount.main_grid.columns.fyje')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'fyje'" :label="$t('entities.pimexpaccount.main_grid.columns.fyje')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                             <app-format-data dataType="FLOAT" precision="0" :data="row.fyje"></app-format-data>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('ffrs')">
-                <el-table-column show-overflow-tooltip :prop="'ffrs'" :label="$t('entities.pimexpaccount.main_grid.columns.ffrs')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'ffrs'" :label="$t('entities.pimexpaccount.main_grid.columns.ffrs')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.ffrs}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('ffsj')">
-                <el-table-column show-overflow-tooltip :prop="'ffsj'" :label="$t('entities.pimexpaccount.main_grid.columns.ffsj')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'ffsj'" :label="$t('entities.pimexpaccount.main_grid.columns.ffsj')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <app-format-data format="YYYY-MM-DD" :data="row.ffsj"></app-format-data>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('ffybz')">
-                <el-table-column show-overflow-tooltip :prop="'ffybz'" :label="$t('entities.pimexpaccount.main_grid.columns.ffybz')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'ffybz'" :label="$t('entities.pimexpaccount.main_grid.columns.ffybz')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.ffybz}}</span>
                     </template>
@@ -516,7 +516,7 @@ export default class MainBase extends Vue implements ControlInterface {
     * @type {number}
     * @memberof AppIndex
     */
-    protected checkboxColWidth: number = 34;
+    public checkboxColWidth: number = 34;
 
     /**
      * 是否允许拖动列宽
@@ -1237,7 +1237,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * @memberof Main
      */
 	public uiAction(row: any, tag: any, $event: any) {
-        this.rowClick(row, true);
+        // this.rowClick(row, true);
     }
 
     /**

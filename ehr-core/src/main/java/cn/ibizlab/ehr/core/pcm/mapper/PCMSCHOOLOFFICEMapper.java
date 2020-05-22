@@ -27,6 +27,8 @@ public interface PCMSCHOOLOFFICEMapper extends BaseMapper<PCMSCHOOLOFFICE>{
     @Override
     int updateById(@Param(Constants.ENTITY) PCMSCHOOLOFFICE entity);
     @Override
+    int update(@Param(Constants.ENTITY) PCMSCHOOLOFFICE entity, @Param("ew") Wrapper<PCMSCHOOLOFFICE> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

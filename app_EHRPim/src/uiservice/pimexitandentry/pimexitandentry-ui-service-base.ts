@@ -83,7 +83,6 @@ export default class PIMEXITANDENTRYUIServiceBase extends UIService {
         this.allViewMap.set(':',{viewname:'wfproxyresultview',srfappde:'pimexitandentries'});
         this.allViewMap.set('EDITVIEW:30',{viewname:'editview_ytg',srfappde:'pimexitandentries'});
         this.allViewMap.set(':',{viewname:'editview2',srfappde:'pimexitandentries'});
-        this.allViewMap.set('REDIRECTVIEW:',{viewname:'redirectview',srfappde:'pimexitandentries'});
         this.allViewMap.set(':',{viewname:'pimexitgridview',srfappde:'pimexitandentries'});
         this.allViewMap.set(':',{viewname:'formpickupdataview',srfappde:'pimexitandentries'});
         this.allViewMap.set('EDITVIEW:',{viewname:'editview',srfappde:'pimexitandentries'});

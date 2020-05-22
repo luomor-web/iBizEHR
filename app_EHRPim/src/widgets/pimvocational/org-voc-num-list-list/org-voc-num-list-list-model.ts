@@ -15,10 +15,10 @@ export default class OrgVocNumListModel {
 	public getDataItems(): any[] {
 		return [
 			{
-				name: 'countnum',
+				name: 'zsmc',
 			},
 			{
-				name: 'zsmc',
+				name: 'countnum',
 			},
       {
         name:'size',

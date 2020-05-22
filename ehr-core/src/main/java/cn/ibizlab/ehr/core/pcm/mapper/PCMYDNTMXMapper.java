@@ -29,6 +29,8 @@ public interface PCMYDNTMXMapper extends BaseMapper<PCMYDNTMX>{
     @Override
     int updateById(@Param(Constants.ENTITY) PCMYDNTMX entity);
     @Override
+    int update(@Param(Constants.ENTITY) PCMYDNTMX entity, @Param("ew") Wrapper<PCMYDNTMX> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

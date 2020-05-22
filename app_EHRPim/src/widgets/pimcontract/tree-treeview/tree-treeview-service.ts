@@ -206,11 +206,11 @@ export default class TreeService extends ControlService {
         filter = this.handleResNavParams(context,filter,rsNavParams,rsParams);
         return new Promise((resolve:any,reject:any) =>{
             let searchFilter: any = {};
-            if (Object.is(filter.strNodeType, this.TREENODE_SUBORG)) {
+            if (Object.is(filter.strNodeType, this.TREENODE_ORG)) {
                 Object.assign(searchFilter, { n_porgid_eq: filter.nodeid });
             }
 
-            if (Object.is(filter.strNodeType, this.TREENODE_ORG)) {
+            if (Object.is(filter.strNodeType, this.TREENODE_SUBORG)) {
                 Object.assign(searchFilter, { n_porgid_eq: filter.nodeid });
             }
 

@@ -29,7 +29,7 @@
             deMajorField='orgname'
             deKeyField='ormorg'
             :service="service"
-            :acParams="{ serviceName: 'ORMORGService', interfaceName: 'FetchUseByFP'}"
+            :acParams="{ serviceName: 'ORMORGService', interfaceName: 'FetchDefault'}"
             valueitem='n_ormorgid_eq' 
             :value="data.n_ormorgname_eq" 
             editortype="" 
@@ -681,6 +681,10 @@ export default class DefaultBase extends Vue implements ControlInterface {
         if (Object.is(name, 'ormorgid')) {
             this.onFormItemValueChange({ name: 'n_ormorgsectorname_eq', value: null });
             this.onFormItemValueChange({ name: 'n_ormorgsectorid_eq', value: null });
+        }
+        if (Object.is(name, 'ormorgid')) {
+            this.onFormItemValueChange({ name: 'n_ormpostname_eq', value: null });
+            this.onFormItemValueChange({ name: 'n_ormpostid_eq', value: null });
         }
     }
 

@@ -27,6 +27,8 @@ public interface SGQMgrMapper extends BaseMapper<SGQMgr>{
     @Override
     int updateById(@Param(Constants.ENTITY) SGQMgr entity);
     @Override
+    int update(@Param(Constants.ENTITY) SGQMgr entity, @Param("ew") Wrapper<SGQMgr> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

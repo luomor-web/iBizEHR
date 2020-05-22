@@ -27,6 +27,8 @@ public interface PARJXQDSZMapper extends BaseMapper<PARJXQDSZ>{
     @Override
     int updateById(@Param(Constants.ENTITY) PARJXQDSZ entity);
     @Override
+    int update(@Param(Constants.ENTITY) PARJXQDSZ entity, @Param("ew") Wrapper<PARJXQDSZ> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

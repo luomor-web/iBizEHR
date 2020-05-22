@@ -33,6 +33,8 @@ public interface PIMFAMINFOMapper extends BaseMapper<PIMFAMINFO>{
     @Override
     int updateById(@Param(Constants.ENTITY) PIMFAMINFO entity);
     @Override
+    int update(@Param(Constants.ENTITY) PIMFAMINFO entity, @Param("ew") Wrapper<PIMFAMINFO> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

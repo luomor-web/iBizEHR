@@ -27,6 +27,8 @@ public interface ORMEDITIONMapper extends BaseMapper<ORMEDITION>{
     @Override
     int updateById(@Param(Constants.ENTITY) ORMEDITION entity);
     @Override
+    int update(@Param(Constants.ENTITY) ORMEDITION entity, @Param("ew") Wrapper<ORMEDITION> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

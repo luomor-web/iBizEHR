@@ -35,6 +35,15 @@ export default class PIMEXITANDENTRYRedirectViewBase extends WizardViewBase {
      */
     public appEntityService: PIMEXITANDENTRYService = new PIMEXITANDENTRYService;
 
+
+    /**
+     * 计数器服务对象集合
+     *
+     * @type {Array<*>}
+     * @memberof PIMEXITANDENTRYRedirectViewBase
+     */    
+    public counterServiceArray:Array<any> = [];
+    
     /**
      * 数据变化
      *
@@ -70,7 +79,7 @@ export default class PIMEXITANDENTRYRedirectViewBase extends WizardViewBase {
 	 * @type {*}
 	 * @memberof PIMEXITANDENTRYRedirectViewBase
 	 */
-    protected customViewNavContexts:any ={
+    public customViewNavContexts:any ={
     };
 
 	/**
@@ -79,7 +88,7 @@ export default class PIMEXITANDENTRYRedirectViewBase extends WizardViewBase {
 	 * @type {*}
 	 * @memberof PIMEXITANDENTRYRedirectViewBase
 	 */
-    protected customViewParams:any ={
+    public customViewParams:any ={
     };
 
     /**
@@ -108,7 +117,7 @@ export default class PIMEXITANDENTRYRedirectViewBase extends WizardViewBase {
     /**
      * 视图状态订阅对象
      *
-     * @private
+     * @public
      * @type {Subject<{action: string, data: any}>}
      * @memberof PIMEXITANDENTRYRedirectViewBase
      */

@@ -873,7 +873,7 @@
                 "text": "是",
                 "data":"",
                 "codename":"Item_1",
-                "value": "1",
+                "value": 1,
                 
                 "disabled": false
             }
@@ -883,7 +883,7 @@
                 "text": "否",
                 "data":"",
                 "codename":"Item_0",
-                "value": "0",
+                "value": 0,
                 
                 "disabled": false
             }
@@ -1218,7 +1218,7 @@
                 "text": "有效",
                 "data":"",
                 "codename":"Item_10",
-                "value": 10,
+                "value": "10",
                 
                 "disabled": false
             }
@@ -1228,7 +1228,7 @@
                 "text": "失效",
                 "data":"",
                 "codename":"Item_20",
-                "value": 20,
+                "value": "20",
                 
                 "disabled": false
             }

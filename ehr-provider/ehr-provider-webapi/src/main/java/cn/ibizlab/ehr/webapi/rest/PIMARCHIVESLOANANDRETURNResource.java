@@ -50,12 +50,11 @@ public class PIMARCHIVESLOANANDRETURNResource {
 
     @Autowired
     @Lazy
-    private PIMARCHIVESLOANANDRETURNMapping pimarchivesloanandreturnMapping;
+    public PIMARCHIVESLOANANDRETURNMapping pimarchivesloanandreturnMapping;
 
+    public PIMARCHIVESLOANANDRETURNDTO permissionDTO=new PIMARCHIVESLOANANDRETURNDTO();
 
-
-
-    @PreAuthorize("hasPermission(#pimarchivesloanandreturn_id,'Get',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#pimarchivesloanandreturn_id,'Get',{'Sql',this.pimarchivesloanandreturnMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"PIMARCHIVESLOANANDRETURN" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimarchivesloanandreturns/{pimarchivesloanandreturn_id}")
     public ResponseEntity<PIMARCHIVESLOANANDRETURNDTO> get(@PathVariable("pimarchivesloanandreturn_id") String pimarchivesloanandreturn_id) {
@@ -64,10 +63,7 @@ public class PIMARCHIVESLOANANDRETURNResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-
-
-
-    @PreAuthorize("hasPermission(#pimarchivesloanandreturn_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#pimarchivesloanandreturn_id,'Update',{'Sql',this.pimarchivesloanandreturnMapping,#pimarchivesloanandreturndto})")
     @ApiOperation(value = "Update", tags = {"PIMARCHIVESLOANANDRETURN" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimarchivesloanandreturns/{pimarchivesloanandreturn_id}")
     @Transactional
@@ -79,7 +75,7 @@ public class PIMARCHIVESLOANANDRETURNResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#pimarchivesloanandreturn_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"PIMARCHIVESLOANANDRETURN" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimarchivesloanandreturns/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PIMARCHIVESLOANANDRETURNDTO> pimarchivesloanandreturndtos) {
@@ -87,10 +83,7 @@ public class PIMARCHIVESLOANANDRETURNResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.pimarchivesloanandreturnMapping,#pimarchivesloanandreturndto})")
     @ApiOperation(value = "Create", tags = {"PIMARCHIVESLOANANDRETURN" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimarchivesloanandreturns")
     @Transactional
@@ -101,7 +94,7 @@ public class PIMARCHIVESLOANANDRETURNResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatch", tags = {"PIMARCHIVESLOANANDRETURN" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimarchivesloanandreturns/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PIMARCHIVESLOANANDRETURNDTO> pimarchivesloanandreturndtos) {
@@ -109,27 +102,21 @@ public class PIMARCHIVESLOANANDRETURNResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMARCHIVESLOANANDRETURN-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"PIMARCHIVESLOANANDRETURN" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimarchivesloanandreturns/getdraft")
     public ResponseEntity<PIMARCHIVESLOANANDRETURNDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(pimarchivesloanandreturnMapping.toDto(pimarchivesloanandreturnService.getDraft(new PIMARCHIVESLOANANDRETURN())));
     }
 
-
-
-
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMARCHIVESLOANANDRETURN-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"PIMARCHIVESLOANANDRETURN" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimarchivesloanandreturns/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PIMARCHIVESLOANANDRETURNDTO pimarchivesloanandreturndto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pimarchivesloanandreturnService.checkKey(pimarchivesloanandreturnMapping.toDomain(pimarchivesloanandreturndto)));
     }
 
-
-
-
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMARCHIVESLOANANDRETURN-UpdateState-all')")
     @ApiOperation(value = "", tags = {"PIMARCHIVESLOANANDRETURN" },  notes = "")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimarchivesloanandreturns/{pimarchivesloanandreturn_id}/updatestate")
     @Transactional
@@ -140,15 +127,14 @@ public class PIMARCHIVESLOANANDRETURNResource {
         return ResponseEntity.status(HttpStatus.OK).body(pimarchivesloanandreturndto);
     }
 
-
-
-
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMARCHIVESLOANANDRETURN-Save-all')")
     @ApiOperation(value = "Save", tags = {"PIMARCHIVESLOANANDRETURN" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimarchivesloanandreturns/save")
     public ResponseEntity<Boolean> save(@RequestBody PIMARCHIVESLOANANDRETURNDTO pimarchivesloanandreturndto) {
         return ResponseEntity.status(HttpStatus.OK).body(pimarchivesloanandreturnService.save(pimarchivesloanandreturnMapping.toDomain(pimarchivesloanandreturndto)));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"PIMARCHIVESLOANANDRETURN" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimarchivesloanandreturns/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PIMARCHIVESLOANANDRETURNDTO> pimarchivesloanandreturndtos) {
@@ -156,10 +142,7 @@ public class PIMARCHIVESLOANANDRETURNResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    @PreAuthorize("hasPermission('Remove',{#pimarchivesloanandreturn_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#pimarchivesloanandreturn_id,'Remove',{'Sql',this.pimarchivesloanandreturnMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"PIMARCHIVESLOANANDRETURN" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimarchivesloanandreturns/{pimarchivesloanandreturn_id}")
     @Transactional
@@ -167,6 +150,7 @@ public class PIMARCHIVESLOANANDRETURNResource {
          return ResponseEntity.status(HttpStatus.OK).body(pimarchivesloanandreturnService.remove(pimarchivesloanandreturn_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"PIMARCHIVESLOANANDRETURN" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimarchivesloanandreturns/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -174,9 +158,7 @@ public class PIMARCHIVESLOANANDRETURNResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMARCHIVESLOANANDRETURN-UpdateArchiveState-all')")
     @ApiOperation(value = "更新档案信息借阅状态", tags = {"PIMARCHIVESLOANANDRETURN" },  notes = "更新档案信息借阅状态")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimarchivesloanandreturns/{pimarchivesloanandreturn_id}/updatearchivestate")
     @Transactional
@@ -187,7 +169,7 @@ public class PIMARCHIVESLOANANDRETURNResource {
         return ResponseEntity.status(HttpStatus.OK).body(pimarchivesloanandreturndto);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMARCHIVESLOANANDRETURN-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PIMARCHIVESLOANANDRETURN" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimarchivesloanandreturns/fetchdefault")
 	public ResponseEntity<List<PIMARCHIVESLOANANDRETURNDTO>> fetchDefault(PIMARCHIVESLOANANDRETURNSearchContext context) {
@@ -200,17 +182,15 @@ public class PIMARCHIVESLOANANDRETURNResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMARCHIVESLOANANDRETURN-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PIMARCHIVESLOANANDRETURN" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/pimarchivesloanandreturns/searchdefault")
-	public ResponseEntity<Page<PIMARCHIVESLOANANDRETURNDTO>> searchDefault(PIMARCHIVESLOANANDRETURNSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimarchivesloanandreturns/searchdefault")
+	public ResponseEntity<Page<PIMARCHIVESLOANANDRETURNDTO>> searchDefault(@RequestBody PIMARCHIVESLOANANDRETURNSearchContext context) {
         Page<PIMARCHIVESLOANANDRETURN> domains = pimarchivesloanandreturnService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimarchivesloanandreturnMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
-
+    //@PreAuthorize("hasPermission(#pimarchivesloanandreturn_id,'Get',{'Sql',this.pimarchivesloanandreturnMapping,this.permissionDTO})")
     @ApiOperation(value = "GetByPIMARCHIVES", tags = {"PIMARCHIVESLOANANDRETURN" },  notes = "GetByPIMARCHIVES")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimarchives/{pimarchives_id}/pimarchivesloanandreturns/{pimarchivesloanandreturn_id}")
     public ResponseEntity<PIMARCHIVESLOANANDRETURNDTO> getByPIMARCHIVES(@PathVariable("pimarchives_id") String pimarchives_id, @PathVariable("pimarchivesloanandreturn_id") String pimarchivesloanandreturn_id) {
@@ -219,6 +199,7 @@ public class PIMARCHIVESLOANANDRETURNResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    //@PreAuthorize("hasPermission(#pimarchivesloanandreturn_id,'Update',{'Sql',this.pimarchivesloanandreturnMapping,#pimarchivesloanandreturndto})")
     @ApiOperation(value = "UpdateByPIMARCHIVES", tags = {"PIMARCHIVESLOANANDRETURN" },  notes = "UpdateByPIMARCHIVES")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimarchives/{pimarchives_id}/pimarchivesloanandreturns/{pimarchivesloanandreturn_id}")
     @Transactional
@@ -231,6 +212,7 @@ public class PIMARCHIVESLOANANDRETURNResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatchByPIMARCHIVES", tags = {"PIMARCHIVESLOANANDRETURN" },  notes = "UpdateBatchByPIMARCHIVES")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimarchives/{pimarchives_id}/pimarchivesloanandreturns/batch")
     public ResponseEntity<Boolean> updateBatchByPIMARCHIVES(@PathVariable("pimarchives_id") String pimarchives_id, @RequestBody List<PIMARCHIVESLOANANDRETURNDTO> pimarchivesloanandreturndtos) {
@@ -242,6 +224,7 @@ public class PIMARCHIVESLOANANDRETURNResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    //@PreAuthorize("hasPermission('','Create',{'Sql',this.pimarchivesloanandreturnMapping,#pimarchivesloanandreturndto})")
     @ApiOperation(value = "CreateByPIMARCHIVES", tags = {"PIMARCHIVESLOANANDRETURN" },  notes = "CreateByPIMARCHIVES")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimarchives/{pimarchives_id}/pimarchivesloanandreturns")
     @Transactional
@@ -253,6 +236,7 @@ public class PIMARCHIVESLOANANDRETURNResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatchByPIMARCHIVES", tags = {"PIMARCHIVESLOANANDRETURN" },  notes = "createBatchByPIMARCHIVES")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimarchives/{pimarchives_id}/pimarchivesloanandreturns/batch")
     public ResponseEntity<Boolean> createBatchByPIMARCHIVES(@PathVariable("pimarchives_id") String pimarchives_id, @RequestBody List<PIMARCHIVESLOANANDRETURNDTO> pimarchivesloanandreturndtos) {
@@ -264,6 +248,7 @@ public class PIMARCHIVESLOANANDRETURNResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMARCHIVESLOANANDRETURN-GetDraft-all')")
     @ApiOperation(value = "GetDraftByPIMARCHIVES", tags = {"PIMARCHIVESLOANANDRETURN" },  notes = "GetDraftByPIMARCHIVES")
     @RequestMapping(method = RequestMethod.GET, value = "/pimarchives/{pimarchives_id}/pimarchivesloanandreturns/getdraft")
     public ResponseEntity<PIMARCHIVESLOANANDRETURNDTO> getDraftByPIMARCHIVES(@PathVariable("pimarchives_id") String pimarchives_id) {
@@ -272,12 +257,14 @@ public class PIMARCHIVESLOANANDRETURNResource {
         return ResponseEntity.status(HttpStatus.OK).body(pimarchivesloanandreturnMapping.toDto(pimarchivesloanandreturnService.getDraft(domain)));
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMARCHIVESLOANANDRETURN-CheckKey-all')")
     @ApiOperation(value = "CheckKeyByPIMARCHIVES", tags = {"PIMARCHIVESLOANANDRETURN" },  notes = "CheckKeyByPIMARCHIVES")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimarchives/{pimarchives_id}/pimarchivesloanandreturns/checkkey")
     public ResponseEntity<Boolean> checkKeyByPIMARCHIVES(@PathVariable("pimarchives_id") String pimarchives_id, @RequestBody PIMARCHIVESLOANANDRETURNDTO pimarchivesloanandreturndto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pimarchivesloanandreturnService.checkKey(pimarchivesloanandreturnMapping.toDomain(pimarchivesloanandreturndto)));
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMARCHIVESLOANANDRETURN-UpdateState-all')")
     @ApiOperation(value = "ByPIMARCHIVES", tags = {"PIMARCHIVESLOANANDRETURN" },  notes = "ByPIMARCHIVES")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimarchives/{pimarchives_id}/pimarchivesloanandreturns/{pimarchivesloanandreturnpimarchivesloanandreturnid}/updatestate")
     @Transactional
@@ -289,6 +276,7 @@ public class PIMARCHIVESLOANANDRETURNResource {
         return ResponseEntity.status(HttpStatus.OK).body(pimarchivesloanandreturndto);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMARCHIVESLOANANDRETURN-Save-all')")
     @ApiOperation(value = "SaveByPIMARCHIVES", tags = {"PIMARCHIVESLOANANDRETURN" },  notes = "SaveByPIMARCHIVES")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimarchives/{pimarchives_id}/pimarchivesloanandreturns/save")
     public ResponseEntity<Boolean> saveByPIMARCHIVES(@PathVariable("pimarchives_id") String pimarchives_id, @RequestBody PIMARCHIVESLOANANDRETURNDTO pimarchivesloanandreturndto) {
@@ -297,6 +285,7 @@ public class PIMARCHIVESLOANANDRETURNResource {
         return ResponseEntity.status(HttpStatus.OK).body(pimarchivesloanandreturnService.save(domain));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatchByPIMARCHIVES", tags = {"PIMARCHIVESLOANANDRETURN" },  notes = "SaveBatchByPIMARCHIVES")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimarchives/{pimarchives_id}/pimarchivesloanandreturns/savebatch")
     public ResponseEntity<Boolean> saveBatchByPIMARCHIVES(@PathVariable("pimarchives_id") String pimarchives_id, @RequestBody List<PIMARCHIVESLOANANDRETURNDTO> pimarchivesloanandreturndtos) {
@@ -308,6 +297,7 @@ public class PIMARCHIVESLOANANDRETURNResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    //@PreAuthorize("hasPermission(#pimarchivesloanandreturn_id,'Remove',{'Sql',this.pimarchivesloanandreturnMapping,this.permissionDTO})")
     @ApiOperation(value = "RemoveByPIMARCHIVES", tags = {"PIMARCHIVESLOANANDRETURN" },  notes = "RemoveByPIMARCHIVES")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimarchives/{pimarchives_id}/pimarchivesloanandreturns/{pimarchivesloanandreturn_id}")
     @Transactional
@@ -315,6 +305,7 @@ public class PIMARCHIVESLOANANDRETURNResource {
 		return ResponseEntity.status(HttpStatus.OK).body(pimarchivesloanandreturnService.remove(pimarchivesloanandreturn_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatchByPIMARCHIVES", tags = {"PIMARCHIVESLOANANDRETURN" },  notes = "RemoveBatchByPIMARCHIVES")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimarchives/{pimarchives_id}/pimarchivesloanandreturns/batch")
     public ResponseEntity<Boolean> removeBatchByPIMARCHIVES(@RequestBody List<String> ids) {
@@ -322,6 +313,7 @@ public class PIMARCHIVESLOANANDRETURNResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMARCHIVESLOANANDRETURN-UpdateArchiveState-all')")
     @ApiOperation(value = "更新档案信息借阅状态ByPIMARCHIVES", tags = {"PIMARCHIVESLOANANDRETURN" },  notes = "更新档案信息借阅状态ByPIMARCHIVES")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimarchives/{pimarchives_id}/pimarchivesloanandreturns/{pimarchivesloanandreturnpimarchivesloanandreturnid}/updatearchivestate")
     @Transactional
@@ -333,6 +325,7 @@ public class PIMARCHIVESLOANANDRETURNResource {
         return ResponseEntity.status(HttpStatus.OK).body(pimarchivesloanandreturndto);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMARCHIVESLOANANDRETURN-Default-all')")
 	@ApiOperation(value = "fetchDEFAULTByPIMARCHIVES", tags = {"PIMARCHIVESLOANANDRETURN" } ,notes = "fetchDEFAULTByPIMARCHIVES")
     @RequestMapping(method= RequestMethod.GET , value="/pimarchives/{pimarchives_id}/pimarchivesloanandreturns/fetchdefault")
 	public ResponseEntity<List<PIMARCHIVESLOANANDRETURNDTO>> fetchPIMARCHIVESLOANANDRETURNDefaultByPIMARCHIVES(@PathVariable("pimarchives_id") String pimarchives_id,PIMARCHIVESLOANANDRETURNSearchContext context) {
@@ -346,18 +339,16 @@ public class PIMARCHIVESLOANANDRETURNResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMARCHIVESLOANANDRETURN-Default-all')")
 	@ApiOperation(value = "searchDEFAULTByPIMARCHIVES", tags = {"PIMARCHIVESLOANANDRETURN" } ,notes = "searchDEFAULTByPIMARCHIVES")
-    @RequestMapping(method= RequestMethod.GET , value="/pimarchives/{pimarchives_id}/pimarchivesloanandreturns/searchdefault")
-	public ResponseEntity<Page<PIMARCHIVESLOANANDRETURNDTO>> searchPIMARCHIVESLOANANDRETURNDefaultByPIMARCHIVES(@PathVariable("pimarchives_id") String pimarchives_id,PIMARCHIVESLOANANDRETURNSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimarchives/{pimarchives_id}/pimarchivesloanandreturns/searchdefault")
+	public ResponseEntity<Page<PIMARCHIVESLOANANDRETURNDTO>> searchPIMARCHIVESLOANANDRETURNDefaultByPIMARCHIVES(@PathVariable("pimarchives_id") String pimarchives_id, @RequestBody PIMARCHIVESLOANANDRETURNSearchContext context) {
         context.setN_pimarchivesid_eq(pimarchives_id);
         Page<PIMARCHIVESLOANANDRETURN> domains = pimarchivesloanandreturnService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimarchivesloanandreturnMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
-
-
+    //@PreAuthorize("hasPermission(#pimarchivesloanandreturn_id,'Get',{'Sql',this.pimarchivesloanandreturnMapping,this.permissionDTO})")
     @ApiOperation(value = "GetByPIMPERSONPIMARCHIVES", tags = {"PIMARCHIVESLOANANDRETURN" },  notes = "GetByPIMPERSONPIMARCHIVES")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimpeople/{pimperson_id}/pimarchives/{pimarchives_id}/pimarchivesloanandreturns/{pimarchivesloanandreturn_id}")
     public ResponseEntity<PIMARCHIVESLOANANDRETURNDTO> getByPIMPERSONPIMARCHIVES(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimarchives_id") String pimarchives_id, @PathVariable("pimarchivesloanandreturn_id") String pimarchivesloanandreturn_id) {
@@ -366,6 +357,7 @@ public class PIMARCHIVESLOANANDRETURNResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    //@PreAuthorize("hasPermission(#pimarchivesloanandreturn_id,'Update',{'Sql',this.pimarchivesloanandreturnMapping,#pimarchivesloanandreturndto})")
     @ApiOperation(value = "UpdateByPIMPERSONPIMARCHIVES", tags = {"PIMARCHIVESLOANANDRETURN" },  notes = "UpdateByPIMPERSONPIMARCHIVES")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimpeople/{pimperson_id}/pimarchives/{pimarchives_id}/pimarchivesloanandreturns/{pimarchivesloanandreturn_id}")
     @Transactional
@@ -378,6 +370,7 @@ public class PIMARCHIVESLOANANDRETURNResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatchByPIMPERSONPIMARCHIVES", tags = {"PIMARCHIVESLOANANDRETURN" },  notes = "UpdateBatchByPIMPERSONPIMARCHIVES")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimpeople/{pimperson_id}/pimarchives/{pimarchives_id}/pimarchivesloanandreturns/batch")
     public ResponseEntity<Boolean> updateBatchByPIMPERSONPIMARCHIVES(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimarchives_id") String pimarchives_id, @RequestBody List<PIMARCHIVESLOANANDRETURNDTO> pimarchivesloanandreturndtos) {
@@ -389,6 +382,7 @@ public class PIMARCHIVESLOANANDRETURNResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    //@PreAuthorize("hasPermission('','Create',{'Sql',this.pimarchivesloanandreturnMapping,#pimarchivesloanandreturndto})")
     @ApiOperation(value = "CreateByPIMPERSONPIMARCHIVES", tags = {"PIMARCHIVESLOANANDRETURN" },  notes = "CreateByPIMPERSONPIMARCHIVES")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimarchives/{pimarchives_id}/pimarchivesloanandreturns")
     @Transactional
@@ -400,6 +394,7 @@ public class PIMARCHIVESLOANANDRETURNResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatchByPIMPERSONPIMARCHIVES", tags = {"PIMARCHIVESLOANANDRETURN" },  notes = "createBatchByPIMPERSONPIMARCHIVES")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimarchives/{pimarchives_id}/pimarchivesloanandreturns/batch")
     public ResponseEntity<Boolean> createBatchByPIMPERSONPIMARCHIVES(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimarchives_id") String pimarchives_id, @RequestBody List<PIMARCHIVESLOANANDRETURNDTO> pimarchivesloanandreturndtos) {
@@ -411,6 +406,7 @@ public class PIMARCHIVESLOANANDRETURNResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMARCHIVESLOANANDRETURN-GetDraft-all')")
     @ApiOperation(value = "GetDraftByPIMPERSONPIMARCHIVES", tags = {"PIMARCHIVESLOANANDRETURN" },  notes = "GetDraftByPIMPERSONPIMARCHIVES")
     @RequestMapping(method = RequestMethod.GET, value = "/pimpeople/{pimperson_id}/pimarchives/{pimarchives_id}/pimarchivesloanandreturns/getdraft")
     public ResponseEntity<PIMARCHIVESLOANANDRETURNDTO> getDraftByPIMPERSONPIMARCHIVES(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimarchives_id") String pimarchives_id) {
@@ -419,12 +415,14 @@ public class PIMARCHIVESLOANANDRETURNResource {
         return ResponseEntity.status(HttpStatus.OK).body(pimarchivesloanandreturnMapping.toDto(pimarchivesloanandreturnService.getDraft(domain)));
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMARCHIVESLOANANDRETURN-CheckKey-all')")
     @ApiOperation(value = "CheckKeyByPIMPERSONPIMARCHIVES", tags = {"PIMARCHIVESLOANANDRETURN" },  notes = "CheckKeyByPIMPERSONPIMARCHIVES")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimarchives/{pimarchives_id}/pimarchivesloanandreturns/checkkey")
     public ResponseEntity<Boolean> checkKeyByPIMPERSONPIMARCHIVES(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimarchives_id") String pimarchives_id, @RequestBody PIMARCHIVESLOANANDRETURNDTO pimarchivesloanandreturndto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pimarchivesloanandreturnService.checkKey(pimarchivesloanandreturnMapping.toDomain(pimarchivesloanandreturndto)));
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMARCHIVESLOANANDRETURN-UpdateState-all')")
     @ApiOperation(value = "ByPIMPERSONPIMARCHIVES", tags = {"PIMARCHIVESLOANANDRETURN" },  notes = "ByPIMPERSONPIMARCHIVES")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimpeople/{pimperson_id}/pimarchives/{pimarchives_id}/pimarchivesloanandreturns/{pimarchivesloanandreturnpimarchivesloanandreturnid}/updatestate")
     @Transactional
@@ -436,6 +434,7 @@ public class PIMARCHIVESLOANANDRETURNResource {
         return ResponseEntity.status(HttpStatus.OK).body(pimarchivesloanandreturndto);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMARCHIVESLOANANDRETURN-Save-all')")
     @ApiOperation(value = "SaveByPIMPERSONPIMARCHIVES", tags = {"PIMARCHIVESLOANANDRETURN" },  notes = "SaveByPIMPERSONPIMARCHIVES")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimarchives/{pimarchives_id}/pimarchivesloanandreturns/save")
     public ResponseEntity<Boolean> saveByPIMPERSONPIMARCHIVES(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimarchives_id") String pimarchives_id, @RequestBody PIMARCHIVESLOANANDRETURNDTO pimarchivesloanandreturndto) {
@@ -444,6 +443,7 @@ public class PIMARCHIVESLOANANDRETURNResource {
         return ResponseEntity.status(HttpStatus.OK).body(pimarchivesloanandreturnService.save(domain));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatchByPIMPERSONPIMARCHIVES", tags = {"PIMARCHIVESLOANANDRETURN" },  notes = "SaveBatchByPIMPERSONPIMARCHIVES")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimarchives/{pimarchives_id}/pimarchivesloanandreturns/savebatch")
     public ResponseEntity<Boolean> saveBatchByPIMPERSONPIMARCHIVES(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimarchives_id") String pimarchives_id, @RequestBody List<PIMARCHIVESLOANANDRETURNDTO> pimarchivesloanandreturndtos) {
@@ -455,6 +455,7 @@ public class PIMARCHIVESLOANANDRETURNResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    //@PreAuthorize("hasPermission(#pimarchivesloanandreturn_id,'Remove',{'Sql',this.pimarchivesloanandreturnMapping,this.permissionDTO})")
     @ApiOperation(value = "RemoveByPIMPERSONPIMARCHIVES", tags = {"PIMARCHIVESLOANANDRETURN" },  notes = "RemoveByPIMPERSONPIMARCHIVES")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimpeople/{pimperson_id}/pimarchives/{pimarchives_id}/pimarchivesloanandreturns/{pimarchivesloanandreturn_id}")
     @Transactional
@@ -462,6 +463,7 @@ public class PIMARCHIVESLOANANDRETURNResource {
 		return ResponseEntity.status(HttpStatus.OK).body(pimarchivesloanandreturnService.remove(pimarchivesloanandreturn_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatchByPIMPERSONPIMARCHIVES", tags = {"PIMARCHIVESLOANANDRETURN" },  notes = "RemoveBatchByPIMPERSONPIMARCHIVES")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimpeople/{pimperson_id}/pimarchives/{pimarchives_id}/pimarchivesloanandreturns/batch")
     public ResponseEntity<Boolean> removeBatchByPIMPERSONPIMARCHIVES(@RequestBody List<String> ids) {
@@ -469,6 +471,7 @@ public class PIMARCHIVESLOANANDRETURNResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMARCHIVESLOANANDRETURN-UpdateArchiveState-all')")
     @ApiOperation(value = "更新档案信息借阅状态ByPIMPERSONPIMARCHIVES", tags = {"PIMARCHIVESLOANANDRETURN" },  notes = "更新档案信息借阅状态ByPIMPERSONPIMARCHIVES")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimpeople/{pimperson_id}/pimarchives/{pimarchives_id}/pimarchivesloanandreturns/{pimarchivesloanandreturnpimarchivesloanandreturnid}/updatearchivestate")
     @Transactional
@@ -480,6 +483,7 @@ public class PIMARCHIVESLOANANDRETURNResource {
         return ResponseEntity.status(HttpStatus.OK).body(pimarchivesloanandreturndto);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMARCHIVESLOANANDRETURN-Default-all')")
 	@ApiOperation(value = "fetchDEFAULTByPIMPERSONPIMARCHIVES", tags = {"PIMARCHIVESLOANANDRETURN" } ,notes = "fetchDEFAULTByPIMPERSONPIMARCHIVES")
     @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/pimarchives/{pimarchives_id}/pimarchivesloanandreturns/fetchdefault")
 	public ResponseEntity<List<PIMARCHIVESLOANANDRETURNDTO>> fetchPIMARCHIVESLOANANDRETURNDefaultByPIMPERSONPIMARCHIVES(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimarchives_id") String pimarchives_id,PIMARCHIVESLOANANDRETURNSearchContext context) {
@@ -493,22 +497,13 @@ public class PIMARCHIVESLOANANDRETURNResource {
                 .body(list);
 	}
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMARCHIVESLOANANDRETURN-Default-all')")
 	@ApiOperation(value = "searchDEFAULTByPIMPERSONPIMARCHIVES", tags = {"PIMARCHIVESLOANANDRETURN" } ,notes = "searchDEFAULTByPIMPERSONPIMARCHIVES")
-    @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/pimarchives/{pimarchives_id}/pimarchivesloanandreturns/searchdefault")
-	public ResponseEntity<Page<PIMARCHIVESLOANANDRETURNDTO>> searchPIMARCHIVESLOANANDRETURNDefaultByPIMPERSONPIMARCHIVES(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimarchives_id") String pimarchives_id,PIMARCHIVESLOANANDRETURNSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/pimarchives/{pimarchives_id}/pimarchivesloanandreturns/searchdefault")
+	public ResponseEntity<Page<PIMARCHIVESLOANANDRETURNDTO>> searchPIMARCHIVESLOANANDRETURNDefaultByPIMPERSONPIMARCHIVES(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimarchives_id") String pimarchives_id, @RequestBody PIMARCHIVESLOANANDRETURNSearchContext context) {
         context.setN_pimarchivesid_eq(pimarchives_id);
         Page<PIMARCHIVESLOANANDRETURN> domains = pimarchivesloanandreturnService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimarchivesloanandreturnMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
-    /**
-     * 用户权限校验
-     * @return
-     */
-	public PIMARCHIVESLOANANDRETURN getEntity(){
-        return new PIMARCHIVESLOANANDRETURN();
-    }
-
 }

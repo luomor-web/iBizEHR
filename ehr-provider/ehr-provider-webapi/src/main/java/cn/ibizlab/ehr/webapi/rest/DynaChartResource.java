@@ -50,12 +50,11 @@ public class DynaChartResource {
 
     @Autowired
     @Lazy
-    private DynaChartMapping dynachartMapping;
+    public DynaChartMapping dynachartMapping;
 
+    public DynaChartDTO permissionDTO=new DynaChartDTO();
 
-
-
-    @PreAuthorize("hasPermission(#dynachart_id,'Get',{this.getEntity(),'ServiceApi'})")
+    @PreAuthorize("hasPermission(#dynachart_id,'Get',{'ServiceApi',this.dynachartMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"DynaChart" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/dynacharts/{dynachart_id}")
     public ResponseEntity<DynaChartDTO> get(@PathVariable("dynachart_id") String dynachart_id) {
@@ -64,28 +63,21 @@ public class DynaChartResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-
-
-
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DynaChart-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"DynaChart" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/dynacharts/getdraft")
     public ResponseEntity<DynaChartDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(dynachartMapping.toDto(dynachartService.getDraft(new DynaChart())));
     }
 
-
-
-
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DynaChart-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"DynaChart" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/dynacharts/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody DynaChartDTO dynachartdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(dynachartService.checkKey(dynachartMapping.toDomain(dynachartdto)));
     }
 
-
-
-
-    @PreAuthorize("hasPermission(#dynachart_id,'Update',{this.getEntity(),'ServiceApi'})")
+    @PreAuthorize("hasPermission(#dynachart_id,'Update',{'ServiceApi',this.dynachartMapping,#dynachartdto})")
     @ApiOperation(value = "Update", tags = {"DynaChart" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/dynacharts/{dynachart_id}")
 
@@ -97,7 +89,7 @@ public class DynaChartResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#dynachart_id,'Update',{this.getEntity(),'ServiceApi'})")
+    @PreAuthorize("hasPermission('Update',{'ServiceApi',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"DynaChart" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/dynacharts/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<DynaChartDTO> dynachartdtos) {
@@ -105,10 +97,7 @@ public class DynaChartResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    @PreAuthorize("hasPermission('Remove',{#dynachart_id,{this.getEntity(),'ServiceApi'}})")
+    @PreAuthorize("hasPermission(#dynachart_id,'Remove',{'ServiceApi',this.dynachartMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"DynaChart" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/dynacharts/{dynachart_id}")
 
@@ -116,6 +105,7 @@ public class DynaChartResource {
          return ResponseEntity.status(HttpStatus.OK).body(dynachartService.remove(dynachart_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'ServiceApi',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"DynaChart" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/dynacharts/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -123,10 +113,7 @@ public class DynaChartResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'ServiceApi'})")
+    @PreAuthorize("hasPermission('','Create',{'ServiceApi',this.dynachartMapping,#dynachartdto})")
     @ApiOperation(value = "Create", tags = {"DynaChart" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/dynacharts")
 
@@ -137,7 +124,7 @@ public class DynaChartResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'ServiceApi'})")
+    @PreAuthorize("hasPermission('Create',{'ServiceApi',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatch", tags = {"DynaChart" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/dynacharts/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<DynaChartDTO> dynachartdtos) {
@@ -145,15 +132,14 @@ public class DynaChartResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DynaChart-Save-all')")
     @ApiOperation(value = "Save", tags = {"DynaChart" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/dynacharts/save")
     public ResponseEntity<Boolean> save(@RequestBody DynaChartDTO dynachartdto) {
         return ResponseEntity.status(HttpStatus.OK).body(dynachartService.save(dynachartMapping.toDomain(dynachartdto)));
     }
 
+    @PreAuthorize("hasPermission('Save',{'ServiceApi',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"DynaChart" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/dynacharts/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<DynaChartDTO> dynachartdtos) {
@@ -161,7 +147,7 @@ public class DynaChartResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'ServiceApi'})")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DynaChart-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"DynaChart" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/dynacharts/fetchdefault")
 	public ResponseEntity<List<DynaChartDTO>> fetchDefault(DynaChartSearchContext context) {
@@ -174,22 +160,12 @@ public class DynaChartResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'ServiceApi'})")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DynaChart-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"DynaChart" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/dynacharts/searchdefault")
-	public ResponseEntity<Page<DynaChartDTO>> searchDefault(DynaChartSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/dynacharts/searchdefault")
+	public ResponseEntity<Page<DynaChartDTO>> searchDefault(@RequestBody DynaChartSearchContext context) {
         Page<DynaChart> domains = dynachartService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(dynachartMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
-    /**
-     * 用户权限校验
-     * @return
-     */
-	public DynaChart getEntity(){
-        return new DynaChart();
-    }
-
 }

@@ -46,10 +46,6 @@ export default {
 			caption: "出入境管理",
       title: '出入境管理',
 		},
-		redirectview: {
-			caption: "出入境管理",
-      title: '出入境管理',
-		},
 		pimexitgridview: {
 			caption: "出（国）境基本信息",
       title: '出（国）境基本信息',
@@ -239,7 +235,7 @@ export default {
 		uiactions: {
 		},
 	},
-	ng_form: {
+	spz_form: {
 		details: {
 			group1: "出（国）境申请", 
 			formpage1: "基本信息", 
@@ -267,7 +263,7 @@ export default {
 		uiactions: {
 		},
 	},
-	spz_form: {
+	yqx_form: {
 		details: {
 			group1: "出（国）境申请", 
 			formpage1: "基本信息", 
@@ -323,7 +319,7 @@ export default {
 		uiactions: {
 		},
 	},
-	yqx_form: {
+	ng_form: {
 		details: {
 			group1: "出（国）境申请", 
 			formpage1: "基本信息", 
@@ -419,7 +415,6 @@ export default {
 			lx: "类型",
 			sy: "事由",
 			workflowstate: "流程状态",
-			updatedate: "更新时间",
 		},
 		uiactions: {
 		},
@@ -484,68 +479,6 @@ export default {
 			tip: "Help",
 		},
 	},
-	editviewtoolbar_toolbar: {
-		deuiaction1: {
-			caption: "关闭",
-			tip: "关闭",
-		},
-	},
-	editview_ngtoolbar_toolbar: {
-		tbitem3: {
-			caption: "Save",
-			tip: "Save",
-		},
-		tbitem4: {
-			caption: "Save And New",
-			tip: "Save And New",
-		},
-		tbitem5: {
-			caption: "关闭",
-			tip: "关闭",
-		},
-		tbitem22: {
-			caption: "Help",
-			tip: "Help",
-		},
-	},
-	editview_spztoolbar_toolbar: {
-		tbitem1_cx: {
-			caption: "撤销",
-			tip: "撤销",
-		},
-		tbitem1_cb: {
-			caption: "催办",
-			tip: "催办",
-		},
-		deuiaction1: {
-			caption: "关闭",
-			tip: "关闭",
-		},
-	},
-	editview_ybhtoolbar_toolbar: {
-		tbitem3: {
-			caption: "Save",
-			tip: "Save",
-		},
-		tbitem4: {
-			caption: "Save And New",
-			tip: "Save And New",
-		},
-		tbitem5: {
-			caption: "关闭",
-			tip: "关闭",
-		},
-		tbitem22: {
-			caption: "Help",
-			tip: "Help",
-		},
-	},
-	editview_yqxtoolbar_toolbar: {
-		deuiaction1: {
-			caption: "关闭",
-			tip: "关闭",
-		},
-	},
 	pimexitgridviewtoolbar2_toolbar: {
 		deuiaction1: {
 			caption: "New",
@@ -590,6 +523,68 @@ export default {
 			tip: "开启行编辑",
 		},
 		tbitem18: {
+			caption: "Help",
+			tip: "Help",
+		},
+	},
+	editviewtoolbar_toolbar: {
+		deuiaction1: {
+			caption: "关闭",
+			tip: "关闭",
+		},
+	},
+	editview_spztoolbar_toolbar: {
+		tbitem1_cx: {
+			caption: "撤销",
+			tip: "撤销",
+		},
+		tbitem1_cb: {
+			caption: "催办",
+			tip: "催办",
+		},
+		deuiaction1: {
+			caption: "关闭",
+			tip: "关闭",
+		},
+	},
+	editview_yqxtoolbar_toolbar: {
+		deuiaction1: {
+			caption: "关闭",
+			tip: "关闭",
+		},
+	},
+	editview_ybhtoolbar_toolbar: {
+		tbitem3: {
+			caption: "Save",
+			tip: "Save",
+		},
+		tbitem4: {
+			caption: "Save And New",
+			tip: "Save And New",
+		},
+		tbitem5: {
+			caption: "关闭",
+			tip: "关闭",
+		},
+		tbitem22: {
+			caption: "Help",
+			tip: "Help",
+		},
+	},
+	editview_ngtoolbar_toolbar: {
+		tbitem3: {
+			caption: "Save",
+			tip: "Save",
+		},
+		tbitem4: {
+			caption: "Save And New",
+			tip: "Save And New",
+		},
+		tbitem5: {
+			caption: "关闭",
+			tip: "关闭",
+		},
+		tbitem22: {
 			caption: "Help",
 			tip: "Help",
 		},

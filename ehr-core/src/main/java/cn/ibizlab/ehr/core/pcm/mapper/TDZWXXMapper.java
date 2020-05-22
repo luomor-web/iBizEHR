@@ -27,6 +27,8 @@ public interface TDZWXXMapper extends BaseMapper<TDZWXX>{
     @Override
     int updateById(@Param(Constants.ENTITY) TDZWXX entity);
     @Override
+    int update(@Param(Constants.ENTITY) TDZWXX entity, @Param("ew") Wrapper<TDZWXX> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

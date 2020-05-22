@@ -28,6 +28,8 @@ public interface ATTENSUMMARYMapper extends BaseMapper<ATTENSUMMARY>{
     @Override
     int updateById(@Param(Constants.ENTITY) ATTENSUMMARY entity);
     @Override
+    int update(@Param(Constants.ENTITY) ATTENSUMMARY entity, @Param("ew") Wrapper<ATTENSUMMARY> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

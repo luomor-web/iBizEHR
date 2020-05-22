@@ -27,6 +27,8 @@ public interface SALITEMMapper extends BaseMapper<SALITEM>{
     @Override
     int updateById(@Param(Constants.ENTITY) SALITEM entity);
     @Override
+    int update(@Param(Constants.ENTITY) SALITEM entity, @Param("ew") Wrapper<SALITEM> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

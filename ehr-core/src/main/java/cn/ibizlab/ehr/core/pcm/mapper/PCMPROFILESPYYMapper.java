@@ -27,6 +27,8 @@ public interface PCMPROFILESPYYMapper extends BaseMapper<PCMPROFILESPYY>{
     @Override
     int updateById(@Param(Constants.ENTITY) PCMPROFILESPYY entity);
     @Override
+    int update(@Param(Constants.ENTITY) PCMPROFILESPYY entity, @Param("ew") Wrapper<PCMPROFILESPYY> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

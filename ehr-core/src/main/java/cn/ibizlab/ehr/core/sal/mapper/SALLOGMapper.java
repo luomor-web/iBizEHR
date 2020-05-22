@@ -27,6 +27,8 @@ public interface SALLOGMapper extends BaseMapper<SALLOG>{
     @Override
     int updateById(@Param(Constants.ENTITY) SALLOG entity);
     @Override
+    int update(@Param(Constants.ENTITY) SALLOG entity, @Param("ew") Wrapper<SALLOG> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

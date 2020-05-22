@@ -50,17 +50,18 @@ public class NationMGRResource {
 
     @Autowired
     @Lazy
-    private NationMGRMapping nationmgrMapping;
+    public NationMGRMapping nationmgrMapping;
 
+    public NationMGRDTO permissionDTO=new NationMGRDTO();
 
-
-
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-NationMGR-Save-all')")
     @ApiOperation(value = "Save", tags = {"NationMGR" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/nationmgrs/save")
     public ResponseEntity<Boolean> save(@RequestBody NationMGRDTO nationmgrdto) {
         return ResponseEntity.status(HttpStatus.OK).body(nationmgrService.save(nationmgrMapping.toDomain(nationmgrdto)));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"NationMGR" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/nationmgrs/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<NationMGRDTO> nationmgrdtos) {
@@ -68,10 +69,7 @@ public class NationMGRResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    @PreAuthorize("hasPermission('Remove',{#nationmgr_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#nationmgr_id,'Remove',{'Sql',this.nationmgrMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"NationMGR" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/nationmgrs/{nationmgr_id}")
     @Transactional
@@ -79,6 +77,7 @@ public class NationMGRResource {
          return ResponseEntity.status(HttpStatus.OK).body(nationmgrService.remove(nationmgr_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"NationMGR" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/nationmgrs/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -86,28 +85,21 @@ public class NationMGRResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-NationMGR-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"NationMGR" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/nationmgrs/getdraft")
     public ResponseEntity<NationMGRDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(nationmgrMapping.toDto(nationmgrService.getDraft(new NationMGR())));
     }
 
-
-
-
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-NationMGR-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"NationMGR" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/nationmgrs/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody NationMGRDTO nationmgrdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(nationmgrService.checkKey(nationmgrMapping.toDomain(nationmgrdto)));
     }
 
-
-
-
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.nationmgrMapping,#nationmgrdto})")
     @ApiOperation(value = "Create", tags = {"NationMGR" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/nationmgrs")
     @Transactional
@@ -118,7 +110,7 @@ public class NationMGRResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatch", tags = {"NationMGR" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/nationmgrs/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<NationMGRDTO> nationmgrdtos) {
@@ -126,10 +118,7 @@ public class NationMGRResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    @PreAuthorize("hasPermission(#nationmgr_id,'Get',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#nationmgr_id,'Get',{'Sql',this.nationmgrMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"NationMGR" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/nationmgrs/{nationmgr_id}")
     public ResponseEntity<NationMGRDTO> get(@PathVariable("nationmgr_id") String nationmgr_id) {
@@ -138,10 +127,7 @@ public class NationMGRResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-
-
-
-    @PreAuthorize("hasPermission(#nationmgr_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#nationmgr_id,'Update',{'Sql',this.nationmgrMapping,#nationmgrdto})")
     @ApiOperation(value = "Update", tags = {"NationMGR" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/nationmgrs/{nationmgr_id}")
     @Transactional
@@ -153,7 +139,7 @@ public class NationMGRResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#nationmgr_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"NationMGR" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/nationmgrs/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<NationMGRDTO> nationmgrdtos) {
@@ -161,7 +147,7 @@ public class NationMGRResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-NationMGR-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"NationMGR" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/nationmgrs/fetchdefault")
 	public ResponseEntity<List<NationMGRDTO>> fetchDefault(NationMGRSearchContext context) {
@@ -174,22 +160,12 @@ public class NationMGRResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-NationMGR-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"NationMGR" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/nationmgrs/searchdefault")
-	public ResponseEntity<Page<NationMGRDTO>> searchDefault(NationMGRSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/nationmgrs/searchdefault")
+	public ResponseEntity<Page<NationMGRDTO>> searchDefault(@RequestBody NationMGRSearchContext context) {
         Page<NationMGR> domains = nationmgrService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(nationmgrMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
-    /**
-     * 用户权限校验
-     * @return
-     */
-	public NationMGR getEntity(){
-        return new NationMGR();
-    }
-
 }

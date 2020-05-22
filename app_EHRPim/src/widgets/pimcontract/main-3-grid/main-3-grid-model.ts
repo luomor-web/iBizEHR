@@ -120,52 +120,6 @@ export default class Main_3Model {
           name: 'pimcontract',
           prop: 'pimcontractid',
         },
-      {
-        name: 'n_ygbh_like',
-        prop: 'n_ygbh_like',
-        dataType: 'PICKUPDATA',
-      },
-      {
-        name: 'n_pimpersonname_like',
-        prop: 'n_pimpersonname_like',
-        dataType: 'PICKUPTEXT',
-      },
-      {
-        name: 'n_ygzt_eq',
-        prop: 'n_ygzt_eq',
-        dataType: 'PICKUPDATA',
-      },
-      {
-        name: 'n_htbh_like',
-        prop: 'n_htbh_like',
-        dataType: 'TEXT',
-      },
-      {
-        name: 'n_htlx_eq',
-        prop: 'n_htlx_eq',
-        dataType: 'SSCODELIST',
-      },
-      {
-        name: 'n_htzt_eq',
-        prop: 'n_htzt_eq',
-        dataType: 'SSCODELIST',
-      },
-      {
-        name: 'n_qsrq_gtandeq',
-        prop: 'n_qsrq_gtandeq',
-        dataType: 'DATE',
-      },
-      {
-        name: 'n_jsrq_ltandeq',
-        prop: 'n_jsrq_ltandeq',
-        dataType: 'DATE',
-      },
-      {
-        name: 'n_contracttype_eq',
-        prop: 'n_contracttype_eq',
-        dataType: 'SSCODELIST',
-      },
-
         {
           name:'size',
           prop:'size'

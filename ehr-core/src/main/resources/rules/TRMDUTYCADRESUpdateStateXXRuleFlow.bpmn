@@ -12,9 +12,9 @@
      <sequenceFlow id="c37e2edb12c355839025291aa1eced0f_End_Line" sourceRef="c37e2edb12c355839025291aa1eced0f" targetRef="c37e2edb12c355839025291aa1eced0f_End"/>
      <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="trmdutycadresupdatestatexxprepareparam1" id="5599fcbe037c5d37bcf044f8518fe629" implementation="http://www.jboss.org/drools/rule" name="更新状态（失效）"/>
      <startEvent id="dd2eefc3d6e8c5605b35248c81f4655d" isInterrupting="true"/>
-     <sequenceFlow id="0f18c5d391b3541a007d610e6060a301" sourceRef="5599fcbe037c5d37bcf044f8518fe629" targetRef="c37e2edb12c355839025291aa1eced0f">
+     <sequenceFlow id="3547f5432b89872465ee48040e318dae" sourceRef="5599fcbe037c5d37bcf044f8518fe629" targetRef="c37e2edb12c355839025291aa1eced0f">
      </sequenceFlow>
-     <sequenceFlow id="ded26185d8f1b404601bbbd29b89c3b6" sourceRef="dd2eefc3d6e8c5605b35248c81f4655d" targetRef="5599fcbe037c5d37bcf044f8518fe629">
+     <sequenceFlow id="164e78ca3354d8f976f6cb0d62224837" sourceRef="dd2eefc3d6e8c5605b35248c81f4655d" targetRef="5599fcbe037c5d37bcf044f8518fe629">
      </sequenceFlow>
     </process>
 </definitions>

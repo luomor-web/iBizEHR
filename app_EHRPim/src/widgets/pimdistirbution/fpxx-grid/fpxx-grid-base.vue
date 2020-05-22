@@ -22,7 +22,7 @@
                 <el-table-column align="center" type='selection' :width="checkboxColWidth"></el-table-column>
             </template>
             <template v-if="getColumnState('fplx')">
-                <el-table-column show-overflow-tooltip :prop="'fplx'" :label="$t('entities.pimdistirbution.fpxx_grid.columns.fplx')" :width="120" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'fplx'" :label="$t('entities.pimdistirbution.fpxx_grid.columns.fplx')" :width="120"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
             <codelist :value="row.fplx" tag='PIMCL_FPLX' codelistType='DYNAMIC' ></codelist>
@@ -31,7 +31,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('cfplx')">
-                <el-table-column show-overflow-tooltip :prop="'cfplx'" :label="$t('entities.pimdistirbution.fpxx_grid.columns.cfplx')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'cfplx'" :label="$t('entities.pimdistirbution.fpxx_grid.columns.cfplx')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
             <codelist :value="row.cfplx" tag='CFPLX' codelistType='DYNAMIC' ></codelist>
@@ -40,21 +40,21 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('zzdzs')">
-                <el-table-column show-overflow-tooltip :prop="'zzdzs'" :label="$t('entities.pimdistirbution.fpxx_grid.columns.zzdzs')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'zzdzs'" :label="$t('entities.pimdistirbution.fpxx_grid.columns.zzdzs')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.zzdzs}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('shortname')">
-                <el-table-column show-overflow-tooltip :prop="'shortname'" :label="$t('entities.pimdistirbution.fpxx_grid.columns.shortname')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'shortname'" :label="$t('entities.pimdistirbution.fpxx_grid.columns.shortname')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.shortname}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('ormdutyname')">
-                <el-table-column show-overflow-tooltip :prop="'ormdutyname'" :label="$t('entities.pimdistirbution.fpxx_grid.columns.ormdutyname')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'ormdutyname'" :label="$t('entities.pimdistirbution.fpxx_grid.columns.ormdutyname')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
                                 <app-span name='ormdutyname' editorType="PICKER" :value="row.ormdutyname"></app-span>
@@ -63,7 +63,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('ormpostname')">
-                <el-table-column show-overflow-tooltip :prop="'ormpostname'" :label="$t('entities.pimdistirbution.fpxx_grid.columns.ormpostname')" :width="180" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'ormpostname'" :label="$t('entities.pimdistirbution.fpxx_grid.columns.ormpostname')" :width="180"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
                                 <app-span name='ormpostname' editorType="PICKER" :value="row.ormpostname"></app-span>
@@ -72,7 +72,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('rzkssj')">
-                <el-table-column show-overflow-tooltip :prop="'rzkssj'" :label="$t('entities.pimdistirbution.fpxx_grid.columns.rzkssj')" :width="180" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'rzkssj'" :label="$t('entities.pimdistirbution.fpxx_grid.columns.rzkssj')" :width="180"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
                                 <app-span name='rzkssj' editorType="DATEPICKER" :value="row.rzkssj"></app-span>
@@ -81,7 +81,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('rzjssj')">
-                <el-table-column show-overflow-tooltip :prop="'rzjssj'" :label="$t('entities.pimdistirbution.fpxx_grid.columns.rzjssj')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'rzjssj'" :label="$t('entities.pimdistirbution.fpxx_grid.columns.rzjssj')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
                                 <app-span name='rzjssj' editorType="DATEPICKER" :value="row.rzjssj"></app-span>
@@ -547,7 +547,7 @@ export default class FPXXBase extends Vue implements ControlInterface {
     * @type {number}
     * @memberof AppIndex
     */
-    protected checkboxColWidth: number = 34;
+    public checkboxColWidth: number = 34;
 
     /**
      * 是否允许拖动列宽
@@ -1329,7 +1329,7 @@ export default class FPXXBase extends Vue implements ControlInterface {
      * @memberof FPXX
      */
 	public uiAction(row: any, tag: any, $event: any) {
-        this.rowClick(row, true);
+        // this.rowClick(row, true);
     }
 
     /**

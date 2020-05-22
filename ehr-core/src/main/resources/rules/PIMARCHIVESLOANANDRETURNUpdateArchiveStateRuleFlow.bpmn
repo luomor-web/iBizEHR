@@ -11,7 +11,7 @@
      <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="pimarchivesloanandreturnupdatearchivestatedeaction1" id="2f82a55593f86ef0500c9fae8253e566" implementation="http://www.jboss.org/drools/rule" name="更新档案信息归还状态"/>
      <endEvent id="2f82a55593f86ef0500c9fae8253e566_End" name="End"/>
      <sequenceFlow id="2f82a55593f86ef0500c9fae8253e566_End_Line" sourceRef="2f82a55593f86ef0500c9fae8253e566" targetRef="2f82a55593f86ef0500c9fae8253e566_End"/>
-     <sequenceFlow id="b7406a121793134c6e994a45262bac2f" sourceRef="fc5898c25a9166f18bb7c3246fea86e8" targetRef="2f82a55593f86ef0500c9fae8253e566">
+     <sequenceFlow id="99493c0951a4ba527c55dc6f20c3f4c9" sourceRef="fc5898c25a9166f18bb7c3246fea86e8" targetRef="2f82a55593f86ef0500c9fae8253e566">
      </sequenceFlow>
     </process>
 </definitions>

@@ -22,7 +22,7 @@
                 <el-table-column align="center" type='selection' :width="checkboxColWidth"></el-table-column>
             </template>
             <template v-if="getColumnState('htbh')">
-                <el-table-column show-overflow-tooltip :prop="'htbh'" :label="$t('entities.pimcontract.main_3_grid.columns.htbh')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'htbh'" :label="$t('entities.pimcontract.main_3_grid.columns.htbh')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
                                 <app-span name='htbh' editorType="TEXTBOX" :value="row.htbh"></app-span>
@@ -31,7 +31,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('htlx')">
-                <el-table-column show-overflow-tooltip :prop="'htlx'" :label="$t('entities.pimcontract.main_3_grid.columns.htlx')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'htlx'" :label="$t('entities.pimcontract.main_3_grid.columns.htlx')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
             <codelist :value="row.htlx" tag='PIMCL_HTLX' codelistType='DYNAMIC' renderMode="STR" valueSeparator=";" textSeparator="、" ></codelist>
@@ -40,7 +40,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('contracttype')">
-                <el-table-column show-overflow-tooltip :prop="'contracttype'" :label="$t('entities.pimcontract.main_3_grid.columns.contracttype')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'contracttype'" :label="$t('entities.pimcontract.main_3_grid.columns.contracttype')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
             <codelist :value="row.contracttype" tag='PIMCL_TYPECONTRACT' codelistType='DYNAMIC' ></codelist>
@@ -49,7 +49,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('qsrq')">
-                <el-table-column show-overflow-tooltip :prop="'qsrq'" :label="$t('entities.pimcontract.main_3_grid.columns.qsrq')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'qsrq'" :label="$t('entities.pimcontract.main_3_grid.columns.qsrq')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
                                 <app-span name='qsrq' editorType="DATEPICKER" :value="row.qsrq"></app-span>
@@ -58,7 +58,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('jsrq')">
-                <el-table-column show-overflow-tooltip :prop="'jsrq'" :label="$t('entities.pimcontract.main_3_grid.columns.jsrq')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'jsrq'" :label="$t('entities.pimcontract.main_3_grid.columns.jsrq')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
                                 <app-span name='jsrq' editorType="DATEPICKER" :value="row.jsrq"></app-span>
@@ -67,7 +67,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('htzt')">
-                <el-table-column show-overflow-tooltip :prop="'htzt'" :label="$t('entities.pimcontract.main_3_grid.columns.htzt')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'htzt'" :label="$t('entities.pimcontract.main_3_grid.columns.htzt')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
             <codelist :value="row.htzt" tag='PIMCL_HTZT' codelistType='STATIC' renderMode="STR" valueSeparator=";" textSeparator="、" ></codelist>
@@ -76,7 +76,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('sydqsj')">
-                <el-table-column show-overflow-tooltip :prop="'sydqsj'" :label="$t('entities.pimcontract.main_3_grid.columns.sydqsj')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'sydqsj'" :label="$t('entities.pimcontract.main_3_grid.columns.sydqsj')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <app-format-data format="YYYY-MM-DD" :data="row.sydqsj"></app-format-data>
                     </template>
@@ -540,7 +540,7 @@ export default class Main_3Base extends Vue implements ControlInterface {
     * @type {number}
     * @memberof AppIndex
     */
-    protected checkboxColWidth: number = 34;
+    public checkboxColWidth: number = 34;
 
     /**
      * 是否允许拖动列宽
@@ -1319,7 +1319,7 @@ export default class Main_3Base extends Vue implements ControlInterface {
      * @memberof Main_3
      */
 	public uiAction(row: any, tag: any, $event: any) {
-        this.rowClick(row, true);
+        // this.rowClick(row, true);
     }
 
     /**

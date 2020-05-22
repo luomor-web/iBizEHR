@@ -32,6 +32,8 @@ public interface PCMNoticeMapper extends BaseMapper<PCMNotice>{
     @Override
     int updateById(@Param(Constants.ENTITY) PCMNotice entity);
     @Override
+    int update(@Param(Constants.ENTITY) PCMNotice entity, @Param("ew") Wrapper<PCMNotice> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

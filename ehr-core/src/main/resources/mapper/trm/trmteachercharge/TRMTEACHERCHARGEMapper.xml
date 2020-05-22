@@ -4,9 +4,6 @@
 <mapper	namespace="cn.ibizlab.ehr.core.trm.mapper.TRMTEACHERCHARGEMapper">
 
     <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
-	<select id="selectById"  resultMap="TRMTEACHERCHARGEResultMap" databaseId="oracle">
-        <![CDATA[select * from v_trmteachercharge t1     where  trmteacherchargeid=#{id}]]>
-    </select>
 
     <!--通过mybatis将查询结果注入到entity中,通过配置autoMapping="true"由mybatis自动处理映射关系 -->
     <resultMap id="TRMTEACHERCHARGEResultMap" type="cn.ibizlab.ehr.core.trm.domain.TRMTEACHERCHARGE" autoMapping="true">
@@ -44,6 +41,13 @@
          <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
          <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
      </select>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="mysql">
+       <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`DJ`, t1.`ENABLE`, t1.`JSDJ`, t1.`TRMTEACHERCHARGEID`, t1.`TRMTEACHERCHARGENAME`, t1.`TRMTRAINPLANTERMID`, t21.`TRMTRAINPLANTERMNAME`, t1.`TRMTRAINTEACHERID`, t11.`TRMTRAINTEACHERNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XS`, t1.`ZFY` FROM `T_TRMTEACHERCHARGE` t1  LEFT JOIN T_TRMTRAINTEACHER t11 ON t1.TRMTRAINTEACHERID = t11.TRMTRAINTEACHERID  LEFT JOIN T_TRMTRAINPLANTERM t21 ON t1.TRMTRAINPLANTERMID = t21.TRMTRAINPLANTERMID  
+				 WHERE 	t1.ENABLE = 1
+			]]>
+    </sql>
 
     <!--数据查询[Default]-->
     <sql id="Default" databaseId="oracle">

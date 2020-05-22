@@ -50,12 +50,11 @@ public class PCMMonthResource {
 
     @Autowired
     @Lazy
-    private PCMMonthMapping pcmmonthMapping;
+    public PCMMonthMapping pcmmonthMapping;
 
+    public PCMMonthDTO permissionDTO=new PCMMonthDTO();
 
-
-
-    @PreAuthorize("hasPermission(#pcmmonth_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#pcmmonth_id,'Update',{'Sql',this.pcmmonthMapping,#pcmmonthdto})")
     @ApiOperation(value = "Update", tags = {"PCMMonth" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmmonths/{pcmmonth_id}")
     @Transactional
@@ -67,7 +66,7 @@ public class PCMMonthResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#pcmmonth_id,'Update',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"PCMMonth" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmmonths/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PCMMonthDTO> pcmmonthdtos) {
@@ -75,10 +74,7 @@ public class PCMMonthResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    @PreAuthorize("hasPermission('Remove',{#pcmmonth_id,{this.getEntity(),'Sql'}})")
+    @PreAuthorize("hasPermission(#pcmmonth_id,'Remove',{'Sql',this.pcmmonthMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"PCMMonth" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmmonths/{pcmmonth_id}")
     @Transactional
@@ -86,6 +82,7 @@ public class PCMMonthResource {
          return ResponseEntity.status(HttpStatus.OK).body(pcmmonthService.remove(pcmmonth_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"PCMMonth" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmmonths/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -93,15 +90,14 @@ public class PCMMonthResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMMonth-Save-all')")
     @ApiOperation(value = "Save", tags = {"PCMMonth" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmmonths/save")
     public ResponseEntity<Boolean> save(@RequestBody PCMMonthDTO pcmmonthdto) {
         return ResponseEntity.status(HttpStatus.OK).body(pcmmonthService.save(pcmmonthMapping.toDomain(pcmmonthdto)));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"PCMMonth" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmmonths/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PCMMonthDTO> pcmmonthdtos) {
@@ -109,10 +105,7 @@ public class PCMMonthResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.pcmmonthMapping,#pcmmonthdto})")
     @ApiOperation(value = "Create", tags = {"PCMMonth" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmmonths")
     @Transactional
@@ -123,7 +116,7 @@ public class PCMMonthResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('','Create',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatch", tags = {"PCMMonth" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmmonths/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PCMMonthDTO> pcmmonthdtos) {
@@ -131,19 +124,14 @@ public class PCMMonthResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMMonth-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"PCMMonth" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmmonths/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PCMMonthDTO pcmmonthdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pcmmonthService.checkKey(pcmmonthMapping.toDomain(pcmmonthdto)));
     }
 
-
-
-
-    @PreAuthorize("hasPermission(#pcmmonth_id,'Get',{this.getEntity(),'Sql'})")
+    @PreAuthorize("hasPermission(#pcmmonth_id,'Get',{'Sql',this.pcmmonthMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"PCMMonth" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmmonths/{pcmmonth_id}")
     public ResponseEntity<PCMMonthDTO> get(@PathVariable("pcmmonth_id") String pcmmonth_id) {
@@ -152,16 +140,14 @@ public class PCMMonthResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-
-
-
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMMonth-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"PCMMonth" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmmonths/getdraft")
     public ResponseEntity<PCMMonthDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(pcmmonthMapping.toDto(pcmmonthService.getDraft(new PCMMonth())));
     }
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMMonth-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PCMMonth" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pcmmonths/fetchdefault")
 	public ResponseEntity<List<PCMMonthDTO>> fetchDefault(PCMMonthSearchContext context) {
@@ -174,22 +160,12 @@ public class PCMMonthResource {
                 .body(list);
 	}
 
-    @PreAuthorize("hasPermission('Get',{#context,'Default',this.getEntity(),'Sql'})")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMMonth-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PCMMonth" } ,notes = "searchDEFAULT")
-    @RequestMapping(method= RequestMethod.GET , value="/pcmmonths/searchdefault")
-	public ResponseEntity<Page<PCMMonthDTO>> searchDefault(PCMMonthSearchContext context) {
+    @RequestMapping(method= RequestMethod.POST , value="/pcmmonths/searchdefault")
+	public ResponseEntity<Page<PCMMonthDTO>> searchDefault(@RequestBody PCMMonthSearchContext context) {
         Page<PCMMonth> domains = pcmmonthService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pcmmonthMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
-    /**
-     * 用户权限校验
-     * @return
-     */
-	public PCMMonth getEntity(){
-        return new PCMMonth();
-    }
-
 }

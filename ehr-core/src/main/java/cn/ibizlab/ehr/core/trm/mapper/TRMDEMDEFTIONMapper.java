@@ -27,6 +27,8 @@ public interface TRMDEMDEFTIONMapper extends BaseMapper<TRMDEMDEFTION>{
     @Override
     int updateById(@Param(Constants.ENTITY) TRMDEMDEFTION entity);
     @Override
+    int update(@Param(Constants.ENTITY) TRMDEMDEFTION entity, @Param("ew") Wrapper<TRMDEMDEFTION> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

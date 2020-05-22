@@ -29,6 +29,8 @@ public interface PIMPAPERMapper extends BaseMapper<PIMPAPER>{
     @Override
     int updateById(@Param(Constants.ENTITY) PIMPAPER entity);
     @Override
+    int update(@Param(Constants.ENTITY) PIMPAPER entity, @Param("ew") Wrapper<PIMPAPER> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

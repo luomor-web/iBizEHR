@@ -227,28 +227,6 @@ public class CodeList1 extends EntityMP implements Serializable {
     @JSONField(name = "srfuserpub")
     @JsonProperty("srfuserpub")
     private Integer srfuserpub;
-    /**
-     * 数据实体
-     */
-    @TableField(exist = false)
-    @JSONField(name = "dename")
-    @JsonProperty("dename")
-    private String dename;
-    /**
-     * 数据实体
-     */
-    @TableField(value = "deid")
-    @JSONField(name = "deid")
-    @JsonProperty("deid")
-    private String deid;
-
-    /**
-     * 
-     */
-    @JsonIgnore
-    @JSONField(serialize = false)
-    @TableField(exist = false)
-    private cn.ibizlab.ehr.core.demodel.domain.DataEntity de;
 
 
 
@@ -398,13 +376,6 @@ public class CodeList1 extends EntityMP implements Serializable {
     public void setSrfuserpub(Integer srfuserpub){
         this.srfuserpub = srfuserpub ;
         this.modify("srfuserpub",srfuserpub);
-    }
-    /**
-     * 设置 [数据实体]
-     */
-    public void setDeid(String deid){
-        this.deid = deid ;
-        this.modify("deid",deid);
     }
 
 }

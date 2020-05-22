@@ -27,6 +27,8 @@ public interface PIMARCHIVESLOANANDRETURNMapper extends BaseMapper<PIMARCHIVESLO
     @Override
     int updateById(@Param(Constants.ENTITY) PIMARCHIVESLOANANDRETURN entity);
     @Override
+    int update(@Param(Constants.ENTITY) PIMARCHIVESLOANANDRETURN entity, @Param("ew") Wrapper<PIMARCHIVESLOANANDRETURN> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

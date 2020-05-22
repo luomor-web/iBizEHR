@@ -28,6 +28,8 @@ public interface PCMGXMLMapper extends BaseMapper<PCMGXML>{
     @Override
     int updateById(@Param(Constants.ENTITY) PCMGXML entity);
     @Override
+    int update(@Param(Constants.ENTITY) PCMGXML entity, @Param("ew") Wrapper<PCMGXML> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

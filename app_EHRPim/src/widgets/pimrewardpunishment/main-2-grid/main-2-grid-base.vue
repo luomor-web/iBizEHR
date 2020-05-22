@@ -22,21 +22,21 @@
                 <el-table-column align="center" type='selection' :width="checkboxColWidth"></el-table-column>
             </template>
             <template v-if="getColumnState('jlsj')">
-                <el-table-column show-overflow-tooltip :prop="'jlsj'" :label="$t('entities.pimrewardpunishment.main_2_grid.columns.jlsj')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'jlsj'" :label="$t('entities.pimrewardpunishment.main_2_grid.columns.jlsj')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <app-format-data format="YYYY-MM-DD" :data="row.jlsj"></app-format-data>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('pimrewardpunishmentname')">
-                <el-table-column show-overflow-tooltip :prop="'pimrewardpunishmentname'" :label="$t('entities.pimrewardpunishment.main_2_grid.columns.pimrewardpunishmentname')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'pimrewardpunishmentname'" :label="$t('entities.pimrewardpunishment.main_2_grid.columns.pimrewardpunishmentname')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.pimrewardpunishmentname}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('lx')">
-                <el-table-column show-overflow-tooltip :prop="'lx'" :label="$t('entities.pimrewardpunishment.main_2_grid.columns.lx')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'lx'" :label="$t('entities.pimrewardpunishment.main_2_grid.columns.lx')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
             <codelist :value="row.lx" tag='PIMCL_JLCFLX' codelistType='STATIC' renderMode="STR" valueSeparator=";" textSeparator="、" ></codelist>
@@ -45,7 +45,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('department')">
-                <el-table-column show-overflow-tooltip :prop="'department'" :label="$t('entities.pimrewardpunishment.main_2_grid.columns.department')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'department'" :label="$t('entities.pimrewardpunishment.main_2_grid.columns.department')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.department}}</span>
                     </template>
@@ -474,7 +474,7 @@ export default class Main_2Base extends Vue implements ControlInterface {
     * @type {number}
     * @memberof AppIndex
     */
-    protected checkboxColWidth: number = 34;
+    public checkboxColWidth: number = 34;
 
     /**
      * 是否允许拖动列宽
@@ -1188,7 +1188,7 @@ export default class Main_2Base extends Vue implements ControlInterface {
      * @memberof Main_2
      */
 	public uiAction(row: any, tag: any, $event: any) {
-        this.rowClick(row, true);
+        // this.rowClick(row, true);
     }
 
     /**

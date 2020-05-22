@@ -31,6 +31,8 @@ public interface PCMRCXLMapper extends BaseMapper<PCMRCXL>{
     @Override
     int updateById(@Param(Constants.ENTITY) PCMRCXL entity);
     @Override
+    int update(@Param(Constants.ENTITY) PCMRCXL entity, @Param("ew") Wrapper<PCMRCXL> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

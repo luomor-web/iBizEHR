@@ -9,28 +9,12 @@
     </template>
     <template slot="headerRight">
       <div class="view-header-right">
-        <app-header-menus :toolbarModel="toolBarModels" @menu-click="toolbar_click($event)" mode="view" :openMode="openMode" :isEnableQuickSearch="true" v-model="query" @search="onSearch($event)"/>
+        <app-header-menus :toolbarModel="toolBarModels" @menu-click="toolbar_click($event)" mode="view" :openMode="openMode"/>
       </div>
     </template>
     <template slot="content">
       <div class="view-content-wrapper">
-        <view_searchform 
-    :viewState="viewState"  
-    :viewparams="viewparams" 
-    :context="context" 
-    :showBusyIndicator="true"
-    v-show="isExpandSearchForm"
-    loaddraftAction="FilterGetDraft"
-    loadAction="FilterGet"
-
-    name="searchform"  
-    ref='searchform' 
-    @save="searchform_save($event)"  
-    @search="searchform_search($event)"  
-    @load="searchform_load($event)"  
-    @closeview="closeView($event)">
-</view_searchform>
-<view_grid 
+        <view_grid 
     :viewState="viewState"  
     :viewparams="viewparams" 
     :context="context" 
@@ -95,6 +79,15 @@ export default class PIMARCHIVESLOANANDRETURNGridViewBase extends GridViewBase {
      */
     public appEntityService: PIMARCHIVESLOANANDRETURNService = new PIMARCHIVESLOANANDRETURNService;
 
+
+    /**
+     * 计数器服务对象集合
+     *
+     * @type {Array<*>}
+     * @memberof PIMARCHIVESLOANANDRETURNGridViewBase
+     */    
+    public counterServiceArray:Array<any> = [];
+    
     /**
      * 数据变化
      *
@@ -130,7 +123,7 @@ export default class PIMARCHIVESLOANANDRETURNGridViewBase extends GridViewBase {
 	 * @type {*}
 	 * @memberof PIMARCHIVESLOANANDRETURNGridViewBase
 	 */
-    protected customViewNavContexts:any ={
+    public customViewNavContexts:any ={
     };
 
 	/**
@@ -139,7 +132,7 @@ export default class PIMARCHIVESLOANANDRETURNGridViewBase extends GridViewBase {
 	 * @type {*}
 	 * @memberof PIMARCHIVESLOANANDRETURNGridViewBase
 	 */
-    protected customViewParams:any ={
+    public customViewParams:any ={
     };
 
     /**
@@ -162,21 +155,18 @@ export default class PIMARCHIVESLOANANDRETURNGridViewBase extends GridViewBase {
      * @memberof PIMARCHIVESLOANANDRETURNGridViewBase
      */
     public containerModel: any = {
-        view_toolbar2: { name: 'toolbar2', type: 'TOOLBAR' },
         view_toolbar: { name: 'toolbar', type: 'TOOLBAR' },
         view_grid: { name: 'grid', type: 'GRID' },
-        view_searchform: { name: 'searchform', type: 'SEARCHFORM' },
     };
 
     /**
      * 视图状态订阅对象
      *
-     * @private
+     * @public
      * @type {Subject<{action: string, data: any}>}
      * @memberof PIMARCHIVESLOANANDRETURNGridViewBase
      */
     public viewState: Subject<ViewState> = new Subject();
-
     /**
      * 工具栏模型
      *
@@ -184,15 +174,15 @@ export default class PIMARCHIVESLOANANDRETURNGridViewBase extends GridViewBase {
      * @memberof PIMARCHIVESLOANANDRETURNGridView
      */
     public toolBarModels: any = {
-        deuiaction1: { name: 'deuiaction1', caption: '开启行编辑','isShowCaption':true,'isShowIcon':true, tooltip: '开启行编辑', iconcls: 'fa fa-edit', icon: '', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: 'SRFUR__JGLYZW', uiaction: { tag: 'OpenRowEdit', target: '' }, class: '' },
+        deuiaction1: { name: 'deuiaction1', caption: '新建','isShowCaption':true,'isShowIcon':true, tooltip: '新建', iconcls: 'fa fa-plus', icon: '', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: '', uiaction: { tag: 'NewRow', target: '' }, class: '' },
 
-        tbitem16: { name: 'tbitem16', caption: '其它', disabled: false, type: 'ITEMS', visabled: true, dataaccaction: '', uiaction: { }, class: '' }, 
- tbitem23: { name: 'tbitem23', caption: '数据导入','isShowCaption':true,'isShowIcon':true, tooltip: '数据导入', iconcls: 'fa fa-upload', icon: '', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: 'SRFUR__JGLYYPZSZYJTJ', uiaction: { tag: 'Import', target: '' }, class: '' },
+        deuiaction2: { name: 'deuiaction2', caption: '保存','isShowCaption':true,'isShowIcon':true, tooltip: '保存', iconcls: 'fa fa-save', icon: '', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: '', uiaction: { tag: 'SaveRow', target: '' }, class: '' },
 
- tbitem13: { name: 'tbitem13', caption: '导出数据','isShowCaption':true,'isShowIcon':true, tooltip: '导出数据', iconcls: 'fa fa-file-excel-o', icon: '', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: '', uiaction: { tag: 'ExportExcel', target: '' }, MaxRowCount: 5000, class: '' },
+        deuiaction3: { name: 'deuiaction3', caption: '删除','isShowCaption':true,'isShowIcon':true, tooltip: '删除', iconcls: 'fa fa-remove', icon: '', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: 'SRFUR__JGLYGXML', uiaction: { tag: 'Remove', target: 'MULTIKEY' }, class: '' },
 
+        deuiaction4: { name: 'deuiaction4', caption: '导入','isShowCaption':true,'isShowIcon':true, tooltip: '导入', iconcls: 'fa fa-upload', icon: '', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: 'SRFUR__JGLYYPZSZYJTJ', uiaction: { tag: 'Import', target: '' }, class: '' },
 
-        tbitem18: { name: 'tbitem18', caption: '帮助','isShowCaption':true,'isShowIcon':true, tooltip: '帮助', iconcls: 'fa fa-question', icon: '', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: '', uiaction: { tag: 'Help', target: '' }, class: '' },
+        deuiaction5: { name: 'deuiaction5', caption: '导出','isShowCaption':true,'isShowIcon':true, tooltip: '导出', iconcls: 'fa fa-file-excel-o', icon: '', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: '', uiaction: { tag: 'ExportExcel', target: '' }, MaxRowCount: 5000, class: '' },
 
     };
 
@@ -226,34 +216,10 @@ export default class PIMARCHIVESLOANANDRETURNGridViewBase extends GridViewBase {
                 this.newdata(args, params, $event, xData);
             },
             grid: this.$refs.grid,
-            searchform: this.$refs.searchform,
             keyPSDEField: 'pimarchivesloanandreturn',
             majorPSDEField: 'pimarchivesloanandreturnname',
             isLoadDefault: true,
         });
-    }
-
-
-    /**
-     * toolbar2 部件 click 事件
-     *
-     * @param {*} [args={}]
-     * @param {*} $event
-     * @memberof PIMARCHIVESLOANANDRETURNGridViewBase
-     */
-    public toolbar2_click($event: any, $event2?: any) {
-        if (Object.is($event.tag, 'deuiaction1')) {
-            this.toolbar2_deuiaction1_click($event, '', $event2);
-        }
-        if (Object.is($event.tag, 'deuiaction2')) {
-            this.toolbar2_deuiaction2_click($event, '', $event2);
-        }
-        if (Object.is($event.tag, 'deuiaction4')) {
-            this.toolbar2_deuiaction4_click($event, '', $event2);
-        }
-        if (Object.is($event.tag, 'deuiaction3')) {
-            this.toolbar2_deuiaction3_click($event, '', $event2);
-        }
     }
 
 
@@ -266,16 +232,19 @@ export default class PIMARCHIVESLOANANDRETURNGridViewBase extends GridViewBase {
      */
     public toolbar_click($event: any, $event2?: any) {
         if (Object.is($event.tag, 'deuiaction1')) {
-            this.toolbar_deuiaction1_click($event, '', $event2);
+            this.toolbar_deuiaction1_click(null, '', $event2);
         }
-        if (Object.is($event.tag, 'tbitem23')) {
-            this.toolbar_tbitem23_click($event, '', $event2);
+        if (Object.is($event.tag, 'deuiaction2')) {
+            this.toolbar_deuiaction2_click(null, '', $event2);
         }
-        if (Object.is($event.tag, 'tbitem13')) {
-            this.toolbar_tbitem13_click($event, '', $event2);
+        if (Object.is($event.tag, 'deuiaction3')) {
+            this.toolbar_deuiaction3_click(null, '', $event2);
         }
-        if (Object.is($event.tag, 'tbitem18')) {
-            this.toolbar_tbitem18_click($event, '', $event2);
+        if (Object.is($event.tag, 'deuiaction4')) {
+            this.toolbar_deuiaction4_click(null, '', $event2);
+        }
+        if (Object.is($event.tag, 'deuiaction5')) {
+            this.toolbar_deuiaction5_click(null, '', $event2);
         }
     }
 
@@ -340,146 +309,6 @@ export default class PIMARCHIVESLOANANDRETURNGridViewBase extends GridViewBase {
     }
 
 
-    /**
-     * searchform 部件 save 事件
-     *
-     * @param {*} [args={}]
-     * @param {*} $event
-     * @memberof PIMARCHIVESLOANANDRETURNGridViewBase
-     */
-    public searchform_save($event: any, $event2?: any) {
-        this.engine.onCtrlEvent('searchform', 'save', $event);
-    }
-
-
-    /**
-     * searchform 部件 search 事件
-     *
-     * @param {*} [args={}]
-     * @param {*} $event
-     * @memberof PIMARCHIVESLOANANDRETURNGridViewBase
-     */
-    public searchform_search($event: any, $event2?: any) {
-        this.engine.onCtrlEvent('searchform', 'search', $event);
-    }
-
-
-    /**
-     * searchform 部件 load 事件
-     *
-     * @param {*} [args={}]
-     * @param {*} $event
-     * @memberof PIMARCHIVESLOANANDRETURNGridViewBase
-     */
-    public searchform_load($event: any, $event2?: any) {
-        this.engine.onCtrlEvent('searchform', 'load', $event);
-    }
-
-
-
-    /**
-     * 逻辑事件
-     *
-     * @param {*} [params={}]
-     * @param {*} [tag]
-     * @param {*} [$event]
-     * @memberof 
-     */
-    public toolbar2_deuiaction1_click(params: any = {}, tag?: any, $event?: any) {
-        // 参数
-        // 取数
-        let datas: any[] = [];
-        let xData: any = null;
-        // _this 指向容器对象
-        const _this: any = this;
-        let paramJO:any = {};
-        
-        let contextJO:any = {};
-        xData = this.$refs.grid;
-        if (xData.getDatas && xData.getDatas instanceof Function) {
-            datas = [...xData.getDatas()];
-        }
-        // 界面行为
-        this.New(datas, contextJO,paramJO,  $event, xData,this,"PIMARCHIVESLOANANDRETURN");
-    }
-
-    /**
-     * 逻辑事件
-     *
-     * @param {*} [params={}]
-     * @param {*} [tag]
-     * @param {*} [$event]
-     * @memberof 
-     */
-    public toolbar2_deuiaction2_click(params: any = {}, tag?: any, $event?: any) {
-        // 参数
-        // 取数
-        let datas: any[] = [];
-        let xData: any = null;
-        // _this 指向容器对象
-        const _this: any = this;
-        let paramJO:any = {};
-        
-        let contextJO:any = {};
-        xData = this.$refs.grid;
-        if (xData.getDatas && xData.getDatas instanceof Function) {
-            datas = [...xData.getDatas()];
-        }
-        // 界面行为
-        this.SaveAllEditRow(datas, contextJO,paramJO,  $event, xData,this,"PIMARCHIVESLOANANDRETURN");
-    }
-
-    /**
-     * 逻辑事件
-     *
-     * @param {*} [params={}]
-     * @param {*} [tag]
-     * @param {*} [$event]
-     * @memberof 
-     */
-    public toolbar2_deuiaction4_click(params: any = {}, tag?: any, $event?: any) {
-        // 参数
-        // 取数
-        let datas: any[] = [];
-        let xData: any = null;
-        // _this 指向容器对象
-        const _this: any = this;
-        let paramJO:any = {};
-        
-        let contextJO:any = {};
-        xData = this.$refs.grid;
-        if (xData.getDatas && xData.getDatas instanceof Function) {
-            datas = [...xData.getDatas()];
-        }
-        // 界面行为
-        this.Remove(datas, contextJO,paramJO,  $event, xData,this,"PIMARCHIVESLOANANDRETURN");
-    }
-
-    /**
-     * 逻辑事件
-     *
-     * @param {*} [params={}]
-     * @param {*} [tag]
-     * @param {*} [$event]
-     * @memberof 
-     */
-    public toolbar2_deuiaction3_click(params: any = {}, tag?: any, $event?: any) {
-        // 参数
-        // 取数
-        let datas: any[] = [];
-        let xData: any = null;
-        // _this 指向容器对象
-        const _this: any = this;
-        let paramJO:any = {};
-        
-        let contextJO:any = {};
-        xData = this.$refs.grid;
-        if (xData.getDatas && xData.getDatas instanceof Function) {
-            datas = [...xData.getDatas()];
-        }
-        // 界面行为
-        this.CloseRowEdit(datas, contextJO,paramJO,  $event, xData,this,"PIMARCHIVESLOANANDRETURN");
-    }
 
     /**
      * 逻辑事件
@@ -503,8 +332,11 @@ export default class PIMARCHIVESLOANANDRETURNGridViewBase extends GridViewBase {
         if (xData.getDatas && xData.getDatas instanceof Function) {
             datas = [...xData.getDatas()];
         }
+        if(params){
+          datas = [params];
+        }
         // 界面行为
-        this.OpenRowEdit(datas, contextJO,paramJO,  $event, xData,this,"PIMARCHIVESLOANANDRETURN");
+        this.NewRow(datas, contextJO,paramJO,  $event, xData,this,"PIMARCHIVESLOANANDRETURN");
     }
 
     /**
@@ -515,7 +347,7 @@ export default class PIMARCHIVESLOANANDRETURNGridViewBase extends GridViewBase {
      * @param {*} [$event]
      * @memberof 
      */
-    public toolbar_tbitem23_click(params: any = {}, tag?: any, $event?: any) {
+    public toolbar_deuiaction2_click(params: any = {}, tag?: any, $event?: any) {
         // 参数
         // 取数
         let datas: any[] = [];
@@ -528,6 +360,67 @@ export default class PIMARCHIVESLOANANDRETURNGridViewBase extends GridViewBase {
         xData = this.$refs.grid;
         if (xData.getDatas && xData.getDatas instanceof Function) {
             datas = [...xData.getDatas()];
+        }
+        if(params){
+          datas = [params];
+        }
+        // 界面行为
+        this.SaveRow(datas, contextJO,paramJO,  $event, xData,this,"PIMARCHIVESLOANANDRETURN");
+    }
+
+    /**
+     * 逻辑事件
+     *
+     * @param {*} [params={}]
+     * @param {*} [tag]
+     * @param {*} [$event]
+     * @memberof 
+     */
+    public toolbar_deuiaction3_click(params: any = {}, tag?: any, $event?: any) {
+        // 参数
+        // 取数
+        let datas: any[] = [];
+        let xData: any = null;
+        // _this 指向容器对象
+        const _this: any = this;
+        let paramJO:any = {};
+        
+        let contextJO:any = {};
+        xData = this.$refs.grid;
+        if (xData.getDatas && xData.getDatas instanceof Function) {
+            datas = [...xData.getDatas()];
+        }
+        if(params){
+          datas = [params];
+        }
+        // 界面行为
+        this.Remove(datas, contextJO,paramJO,  $event, xData,this,"PIMARCHIVESLOANANDRETURN");
+    }
+
+    /**
+     * 逻辑事件
+     *
+     * @param {*} [params={}]
+     * @param {*} [tag]
+     * @param {*} [$event]
+     * @memberof 
+     */
+    public toolbar_deuiaction4_click(params: any = {}, tag?: any, $event?: any) {
+        // 参数
+        // 取数
+        let datas: any[] = [];
+        let xData: any = null;
+        // _this 指向容器对象
+        const _this: any = this;
+        let paramJO:any = {};
+        
+        let contextJO:any = {};
+        xData = this.$refs.grid;
+        if (xData.getDatas && xData.getDatas instanceof Function) {
+            datas = [...xData.getDatas()];
+        }
+        if(params){
+          datas = [params];
         }
         // 界面行为
         this.Import(datas, contextJO,paramJO,  $event, xData,this,"PIMARCHIVESLOANANDRETURN");
@@ -541,7 +434,7 @@ export default class PIMARCHIVESLOANANDRETURNGridViewBase extends GridViewBase {
      * @param {*} [$event]
      * @memberof 
      */
-    public toolbar_tbitem13_click(params: any = {}, tag?: any, $event?: any) {
+    public toolbar_deuiaction5_click(params: any = {}, tag?: any, $event?: any) {
         // 参数
         // 取数
         let datas: any[] = [];
@@ -554,35 +447,12 @@ export default class PIMARCHIVESLOANANDRETURNGridViewBase extends GridViewBase {
         xData = this.$refs.grid;
         if (xData.getDatas && xData.getDatas instanceof Function) {
             datas = [...xData.getDatas()];
+        }
+        if(params){
+          datas = [params];
         }
         // 界面行为
         this.ExportExcel(datas, contextJO,paramJO,  $event, xData,this,"PIMARCHIVESLOANANDRETURN");
-    }
-
-    /**
-     * 逻辑事件
-     *
-     * @param {*} [params={}]
-     * @param {*} [tag]
-     * @param {*} [$event]
-     * @memberof 
-     */
-    public toolbar_tbitem18_click(params: any = {}, tag?: any, $event?: any) {
-        // 参数
-        // 取数
-        let datas: any[] = [];
-        let xData: any = null;
-        // _this 指向容器对象
-        const _this: any = this;
-        let paramJO:any = {};
-        
-        let contextJO:any = {};
-        xData = this.$refs.grid;
-        if (xData.getDatas && xData.getDatas instanceof Function) {
-            datas = [...xData.getDatas()];
-        }
-        // 界面行为
-        this.Help(datas, contextJO,paramJO,  $event, xData,this,"PIMARCHIVESLOANANDRETURN");
     }
 
     /**
@@ -597,6 +467,9 @@ export default class PIMARCHIVESLOANANDRETURNGridViewBase extends GridViewBase {
      */
     public newdata(args: any[],fullargs?:any[], params?: any, $event?: any, xData?: any) {
         const data: any = {};
+        if(args[0].srfsourcekey){
+            data.srfsourcekey = args[0].srfsourcekey;
+        }
         let curViewParam = JSON.parse(JSON.stringify(this.context));
         if(args.length >0){
             Object.assign(curViewParam,args[0]);
@@ -658,7 +531,7 @@ export default class PIMARCHIVESLOANANDRETURNGridViewBase extends GridViewBase {
 
 
     /**
-     * 新建
+     * 新建行
      *
      * @param {any[]} args 当前数据
      * @param {any} contextJO 行为附加上下文
@@ -668,17 +541,19 @@ export default class PIMARCHIVESLOANANDRETURNGridViewBase extends GridViewBase {
      * @param {*} [actionContext]  执行行为上下文
      * @memberof PIMARCHIVESLOANANDRETURNGridViewBase
      */
-    public New(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
-         const _this: any = this;
-        if (_this.newdata && _this.newdata instanceof Function) {
-            const data: any = {};
-            _this.newdata([{ ...data }],[{ ...data }], params, $event, xData);
-        } else {
-            _this.$Notice.error({ title: '错误', desc: 'newdata 视图处理逻辑不存在，请添加!' });
+    public NewRow(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
+        const _this: any = this;
+        const data: any = {};
+        if (_this.newRow && _this.newRow instanceof Function) {
+            _this.newRow([{ ...data }], params, $event, xData);
+        } else if(xData.newRow && xData.newRow instanceof Function) {
+            xData.newRow([{ ...data }], params, $event, xData);
+        }else{
+            _this.$Notice.error({ title: '错误', desc: 'newRow 视图处理逻辑不存在，请添加!' });
         }
     }
     /**
-     * 保存所有编辑行
+     * 保存行
      *
      * @param {any[]} args 当前数据
      * @param {any} contextJO 行为附加上下文
@@ -688,8 +563,14 @@ export default class PIMARCHIVESLOANANDRETURNGridViewBase extends GridViewBase {
      * @param {*} [actionContext]  执行行为上下文
      * @memberof PIMARCHIVESLOANANDRETURNGridViewBase
      */
-    protected SaveAllEditRow(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
-        
+    public SaveRow(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
+        // 界面行为容器对象 _this
+        const _this: any = this;
+        if (xData && xData.save instanceof Function) {
+            xData.save();
+        } else if (_this.save && _this.save instanceof Function) {
+            _this.save();
+        }
     }
     /**
      * 删除
@@ -710,34 +591,6 @@ export default class PIMARCHIVESLOANANDRETURNGridViewBase extends GridViewBase {
         xData.remove(args);
     }
 
-    /**
-     * 关闭行编辑
-     *
-     * @param {any[]} args 当前数据
-     * @param {any} contextJO 行为附加上下文
-     * @param {*} [params] 附加参数
-     * @param {*} [$event] 事件源
-     * @param {*} [xData]  执行行为所需当前部件
-     * @param {*} [actionContext]  执行行为上下文
-     * @memberof PIMARCHIVESLOANANDRETURNGridViewBase
-     */
-    protected CloseRowEdit(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
-        
-    }
-    /**
-     * 开启行编辑
-     *
-     * @param {any[]} args 当前数据
-     * @param {any} contextJO 行为附加上下文
-     * @param {*} [params] 附加参数
-     * @param {*} [$event] 事件源
-     * @param {*} [xData]  执行行为所需当前部件
-     * @param {*} [actionContext]  执行行为上下文
-     * @memberof PIMARCHIVESLOANANDRETURNGridViewBase
-     */
-    protected OpenRowEdit(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
-        
-    }
     /**
      * 数据导入
      *
@@ -773,20 +626,6 @@ export default class PIMARCHIVESLOANANDRETURNGridViewBase extends GridViewBase {
             return ;
         }
         xData.exportExcel($event.exportparms);
-    }
-    /**
-     * 帮助
-     *
-     * @param {any[]} args 当前数据
-     * @param {any} contextJO 行为附加上下文
-     * @param {*} [params] 附加参数
-     * @param {*} [$event] 事件源
-     * @param {*} [xData]  执行行为所需当前部件
-     * @param {*} [actionContext]  执行行为上下文
-     * @memberof PIMARCHIVESLOANANDRETURNGridViewBase
-     */
-    public Help(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
-        this.$Notice.error({ title: '错误', desc: '帮助未支持' });
     }
 
 

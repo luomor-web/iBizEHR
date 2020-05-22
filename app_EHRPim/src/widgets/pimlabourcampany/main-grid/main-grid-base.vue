@@ -22,56 +22,56 @@
                 <el-table-column align="center" type='selection' :width="checkboxColWidth"></el-table-column>
             </template>
             <template v-if="getColumnState('pimlabourcampanyname')">
-                <el-table-column show-overflow-tooltip :prop="'pimlabourcampanyname'" :label="$t('entities.pimlabourcampany.main_grid.columns.pimlabourcampanyname')" :width="300" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'pimlabourcampanyname'" :label="$t('entities.pimlabourcampany.main_grid.columns.pimlabourcampanyname')" :width="300"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.pimlabourcampanyname}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('zzdzs')">
-                <el-table-column show-overflow-tooltip :prop="'zzdzs'" :label="$t('entities.pimlabourcampany.main_grid.columns.zzdzs')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'zzdzs'" :label="$t('entities.pimlabourcampany.main_grid.columns.zzdzs')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.zzdzs}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('lxdz')">
-                <el-table-column show-overflow-tooltip :prop="'lxdz'" :label="$t('entities.pimlabourcampany.main_grid.columns.lxdz')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'lxdz'" :label="$t('entities.pimlabourcampany.main_grid.columns.lxdz')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.lxdz}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('lxr')">
-                <el-table-column show-overflow-tooltip :prop="'lxr'" :label="$t('entities.pimlabourcampany.main_grid.columns.lxr')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'lxr'" :label="$t('entities.pimlabourcampany.main_grid.columns.lxr')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.lxr}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('lxfs')">
-                <el-table-column show-overflow-tooltip :prop="'lxfs'" :label="$t('entities.pimlabourcampany.main_grid.columns.lxfs')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'lxfs'" :label="$t('entities.pimlabourcampany.main_grid.columns.lxfs')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.lxfs}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('regcapital')">
-                <el-table-column show-overflow-tooltip :prop="'regcapital'" :label="$t('entities.pimlabourcampany.main_grid.columns.regcapital')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'regcapital'" :label="$t('entities.pimlabourcampany.main_grid.columns.regcapital')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.regcapital}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('legalperosn')">
-                <el-table-column show-overflow-tooltip :prop="'legalperosn'" :label="$t('entities.pimlabourcampany.main_grid.columns.legalperosn')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'legalperosn'" :label="$t('entities.pimlabourcampany.main_grid.columns.legalperosn')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.legalperosn}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('updatedate')">
-                <el-table-column show-overflow-tooltip :prop="'updatedate'" :label="$t('entities.pimlabourcampany.main_grid.columns.updatedate')" :width="200" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'updatedate'" :label="$t('entities.pimlabourcampany.main_grid.columns.updatedate')" :width="200"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <app-format-data format="%1$tY-%1$tm-%1$td" :data="row.updatedate"></app-format-data>
                     </template>
@@ -535,7 +535,7 @@ export default class MainBase extends Vue implements ControlInterface {
     * @type {number}
     * @memberof AppIndex
     */
-    protected checkboxColWidth: number = 34;
+    public checkboxColWidth: number = 34;
 
     /**
      * 是否允许拖动列宽
@@ -1269,7 +1269,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * @memberof Main
      */
 	public uiAction(row: any, tag: any, $event: any) {
-        this.rowClick(row, true);
+        // this.rowClick(row, true);
     }
 
     /**

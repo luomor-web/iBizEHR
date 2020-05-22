@@ -27,6 +27,8 @@ public interface PARTZGGMapper extends BaseMapper<PARTZGG>{
     @Override
     int updateById(@Param(Constants.ENTITY) PARTZGG entity);
     @Override
+    int update(@Param(Constants.ENTITY) PARTZGG entity, @Param("ew") Wrapper<PARTZGG> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

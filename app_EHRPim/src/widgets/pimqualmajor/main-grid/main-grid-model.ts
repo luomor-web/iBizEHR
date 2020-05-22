@@ -32,14 +32,19 @@ export default class MainModel {
           dataType: 'TEXT',
         },
         {
-          name: 'quamajor',
-          prop: 'quamajor',
-          dataType: 'TEXT',
+          name: 'pimqualtypeid',
+          prop: 'pimqualtypeid',
+          dataType: 'PICKUP',
         },
         {
           name: 'ormorgid',
           prop: 'ormorgid',
           dataType: 'PICKUP',
+        },
+        {
+          name: 'quamajor',
+          prop: 'quamajor',
+          dataType: 'TEXT',
         },
         {
           name: 'qualevel',
@@ -57,39 +62,14 @@ export default class MainModel {
           dataType: 'TEXT',
         },
         {
-          name: 'srfkey',
-          prop: 'pimqualmajorid',
-          dataType: 'GUID',
-        },
-        {
           name: 'srfdataaccaction',
           prop: 'pimqualmajorid',
           dataType: 'GUID',
         },
         {
-          name: 'gwzs',
-          prop: 'gwzs',
-          dataType: 'TEXT',
-        },
-        {
-          name: 'gwtype',
-          prop: 'gwtype',
-          dataType: 'TEXT',
-        },
-        {
-          name: 'pimqualtypeid',
-          prop: 'pimqualtypeid',
-          dataType: 'PICKUP',
-        },
-        {
-          name: 'gwlx_text',
-          prop: 'gwlx',
-          dataType: 'SSCODELIST',
-        },
-        {
-          name: 'gwlx',
-          prop: 'gwlx',
-          dataType: 'SSCODELIST',
+          name: 'srfkey',
+          prop: 'pimqualmajorid',
+          dataType: 'GUID',
         },
         {
           name: 'pimqualmajor',

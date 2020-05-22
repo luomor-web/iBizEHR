@@ -27,6 +27,8 @@ public interface PIMCITYMapper extends BaseMapper<PIMCITY>{
     @Override
     int updateById(@Param(Constants.ENTITY) PIMCITY entity);
     @Override
+    int update(@Param(Constants.ENTITY) PIMCITY entity, @Param("ew") Wrapper<PIMCITY> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

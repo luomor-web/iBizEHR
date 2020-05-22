@@ -27,6 +27,8 @@ public interface PIMVOCATIONALCATALOGMapper extends BaseMapper<PIMVOCATIONALCATA
     @Override
     int updateById(@Param(Constants.ENTITY) PIMVOCATIONALCATALOG entity);
     @Override
+    int update(@Param(Constants.ENTITY) PIMVOCATIONALCATALOG entity, @Param("ew") Wrapper<PIMVOCATIONALCATALOG> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

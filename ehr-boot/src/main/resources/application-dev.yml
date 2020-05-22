@@ -15,6 +15,6 @@ zuul:
       wfcore:
         path: /wfcore/**
         serviceId: ibzwf-api
-        stripPrefix: false
+        stripPrefix: true
   sensitive-headers:
     - Cookie,Set-Cookie,Authorization

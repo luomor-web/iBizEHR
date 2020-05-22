@@ -47,9 +47,6 @@ public class CodeList1ServiceImpl extends ServiceImpl<CodeList1Mapper, CodeList1
     @Autowired
     @Lazy
     private cn.ibizlab.ehr.core.common.service.ICodeItemService codeitemService;
-    @Autowired
-    @Lazy
-    private cn.ibizlab.ehr.core.demodel.service.IDataEntityService dataentityService;
 
     private int batchSize = 500;
 
@@ -68,14 +65,12 @@ public class CodeList1ServiceImpl extends ServiceImpl<CodeList1Mapper, CodeList1
 
     @Override
     public CodeList1 getDraft(CodeList1 et) {
-        fillParentData(et);
         return et;
     }
 
     @Override
     @Transactional
     public boolean update(CodeList1 et) {
-        fillParentData(et);
         if(!update(et,(Wrapper) et.getUpdateWrapper(true).eq("codelistid",et.getCodelistid())))
             return false;
         CachedBeanCopier.copy(get(et.getCodelistid()),et);
@@ -84,7 +79,6 @@ public class CodeList1ServiceImpl extends ServiceImpl<CodeList1Mapper, CodeList1
 
     @Override
     public void updateBatch(List<CodeList1> list) {
-        list.forEach(item->fillParentData(item));
         updateBatchById(list,batchSize);
     }
 
@@ -103,7 +97,6 @@ public class CodeList1ServiceImpl extends ServiceImpl<CodeList1Mapper, CodeList1
     @Override
     @Transactional
     public boolean create(CodeList1 et) {
-        fillParentData(et);
         if(!this.retBool(this.baseMapper.insert(et)))
             return false;
         CachedBeanCopier.copy(get(et.getCodelistid()),et);
@@ -112,7 +105,6 @@ public class CodeList1ServiceImpl extends ServiceImpl<CodeList1Mapper, CodeList1
 
     @Override
     public void createBatch(List<CodeList1> list) {
-        list.forEach(item->fillParentData(item));
         this.saveBatch(list,batchSize);
     }
 
@@ -150,20 +142,9 @@ public class CodeList1ServiceImpl extends ServiceImpl<CodeList1Mapper, CodeList1
 
     @Override
     public void saveBatch(List<CodeList1> list) {
-        list.forEach(item->fillParentData(item));
         saveOrUpdateBatch(list,batchSize);
     }
 
-
-	@Override
-    public List<CodeList1> selectByDeid(String deid) {
-        return baseMapper.selectByDeid(deid);
-    }
-
-    @Override
-    public void removeByDeid(String deid) {
-        this.remove(new QueryWrapper<CodeList1>().eq("deid",deid));
-    }
 
 
     /**
@@ -186,22 +167,6 @@ public class CodeList1ServiceImpl extends ServiceImpl<CodeList1Mapper, CodeList1
 
 
 
-    /**
-     * 为当前实体填充父数据（外键值文本、外键值附加数据）
-     * @param et
-     */
-    private void fillParentData(CodeList1 et){
-        //实体关系[DER1N_CODELIST_DATAENTITY_DEID]
-        if(!ObjectUtils.isEmpty(et.getDeid())){
-            cn.ibizlab.ehr.core.demodel.domain.DataEntity de=et.getDe();
-            if(ObjectUtils.isEmpty(de)){
-                cn.ibizlab.ehr.core.demodel.domain.DataEntity majorEntity=dataentityService.get(et.getDeid());
-                et.setDe(majorEntity);
-                de=majorEntity;
-            }
-            et.setDename(de.getDename());
-        }
-    }
 
     @Override
     public List<JSONObject> select(String sql, Map param){

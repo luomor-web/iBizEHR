@@ -27,6 +27,8 @@ public interface SOCWELFAREINFOMXMapper extends BaseMapper<SOCWELFAREINFOMX>{
     @Override
     int updateById(@Param(Constants.ENTITY) SOCWELFAREINFOMX entity);
     @Override
+    int update(@Param(Constants.ENTITY) SOCWELFAREINFOMX entity, @Param("ew") Wrapper<SOCWELFAREINFOMX> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

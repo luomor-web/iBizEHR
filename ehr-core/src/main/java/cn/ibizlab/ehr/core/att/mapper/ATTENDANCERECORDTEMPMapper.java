@@ -27,6 +27,8 @@ public interface ATTENDANCERECORDTEMPMapper extends BaseMapper<ATTENDANCERECORDT
     @Override
     int updateById(@Param(Constants.ENTITY) ATTENDANCERECORDTEMP entity);
     @Override
+    int update(@Param(Constants.ENTITY) ATTENDANCERECORDTEMP entity, @Param("ew") Wrapper<ATTENDANCERECORDTEMP> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

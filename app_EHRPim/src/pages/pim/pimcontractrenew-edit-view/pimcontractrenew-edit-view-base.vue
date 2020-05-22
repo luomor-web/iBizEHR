@@ -71,6 +71,15 @@ export default class PIMCONTRACTRenewEditViewBase extends EditViewBase {
      */
     public appEntityService: PIMCONTRACTService = new PIMCONTRACTService;
 
+
+    /**
+     * 计数器服务对象集合
+     *
+     * @type {Array<*>}
+     * @memberof PIMCONTRACTRenewEditViewBase
+     */    
+    public counterServiceArray:Array<any> = [];
+    
     /**
      * 数据变化
      *
@@ -106,7 +115,7 @@ export default class PIMCONTRACTRenewEditViewBase extends EditViewBase {
 	 * @type {*}
 	 * @memberof PIMCONTRACTRenewEditViewBase
 	 */
-    protected customViewNavContexts:any ={
+    public customViewNavContexts:any ={
     };
 
 	/**
@@ -115,7 +124,7 @@ export default class PIMCONTRACTRenewEditViewBase extends EditViewBase {
 	 * @type {*}
 	 * @memberof PIMCONTRACTRenewEditViewBase
 	 */
-    protected customViewParams:any ={
+    public customViewParams:any ={
     };
 
     /**
@@ -145,12 +154,11 @@ export default class PIMCONTRACTRenewEditViewBase extends EditViewBase {
     /**
      * 视图状态订阅对象
      *
-     * @private
+     * @public
      * @type {Subject<{action: string, data: any}>}
      * @memberof PIMCONTRACTRenewEditViewBase
      */
     public viewState: Subject<ViewState> = new Subject();
-
     /**
      * 工具栏模型
      *
@@ -202,7 +210,7 @@ export default class PIMCONTRACTRenewEditViewBase extends EditViewBase {
      */
     public toolbar_click($event: any, $event2?: any) {
         if (Object.is($event.tag, 'tbitem5')) {
-            this.toolbar_tbitem5_click($event, '', $event2);
+            this.toolbar_tbitem5_click(null, '', $event2);
         }
     }
 
@@ -265,6 +273,9 @@ export default class PIMCONTRACTRenewEditViewBase extends EditViewBase {
         xData = this.$refs.form;
         if (xData.getDatas && xData.getDatas instanceof Function) {
             datas = [...xData.getDatas()];
+        }
+        if(params){
+          datas = [params];
         }
         // 界面行为
         this.SaveAndExit(datas, contextJO,paramJO,  $event, xData,this,"PIMCONTRACT");

@@ -28,6 +28,8 @@ public interface PimSearchFieldSetMapper extends BaseMapper<PimSearchFieldSet>{
     @Override
     int updateById(@Param(Constants.ENTITY) PimSearchFieldSet entity);
     @Override
+    int update(@Param(Constants.ENTITY) PimSearchFieldSet entity, @Param("ew") Wrapper<PimSearchFieldSet> updateWrapper);
+    @Override
     int deleteById(Serializable id);
      /**
       * 自定义查询SQL

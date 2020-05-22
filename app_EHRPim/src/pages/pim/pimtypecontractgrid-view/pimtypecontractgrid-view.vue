@@ -3,7 +3,6 @@ import { Component } from 'vue-property-decorator';
 import PIMTYPECONTRACTGridViewBase from './pimtypecontractgrid-view-base.vue';
 
 import view_grid from '@widgets/pimtypecontract/main-grid/main-grid.vue';
-import view_searchform from '@widgets/pimtypecontract/default-searchform/default-searchform.vue';
 
 /**
  * 合同类型表格视图
@@ -15,7 +14,6 @@ import view_searchform from '@widgets/pimtypecontract/default-searchform/default
 @Component({
     components: {
         view_grid, 
-        view_searchform, 
     },
     beforeRouteEnter: (to: any, from: any, next: any) => {
         next((vm: any) => {

@@ -166,11 +166,6 @@ export default class MainModel {
         dataType: 'DATE',
       },
       {
-        name: 'fzyxq',
-        prop: 'fzyxq',
-        dataType: 'TEXT',
-      },
-      {
         name: 'nsqk',
         prop: 'nsqk',
         dataType: 'TEXT',

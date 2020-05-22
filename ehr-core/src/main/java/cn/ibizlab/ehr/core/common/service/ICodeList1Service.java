@@ -12,6 +12,7 @@ import java.math.BigInteger;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import com.alibaba.fastjson.JSONObject;
+import org.springframework.cache.annotation.CacheEvict;
 
 import cn.ibizlab.ehr.core.common.domain.CodeList1;
 import cn.ibizlab.ehr.core.common.filter.CodeList1SearchContext;
@@ -38,8 +39,6 @@ public interface ICodeList1Service extends IService<CodeList1>{
     void saveBatch(List<CodeList1> list) ;
     Page<CodeList1> searchPersonUse(CodeList1SearchContext context) ;
     Page<CodeList1> searchDefault(CodeList1SearchContext context) ;
-    List<CodeList1> selectByDeid(String deid) ;
-    void removeByDeid(String deid) ;
     /**
      *自定义查询SQL
      * @param sql  select * from table where id =#{et.param}
