@@ -30,7 +30,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
  * 实体[干部花名册]
  */
 @Data
-@TableName(value = "",resultMap = "PCMGBHMCResultMap")
+@TableName(value = "T_PCMGBHMC",resultMap = "PCMGBHMCResultMap")
 public class PCMGBHMC extends EntityMP implements Serializable {
 
     private static final long serialVersionUID = 1L;

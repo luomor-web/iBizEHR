@@ -11662,8 +11662,8 @@
         </createTable>
     </changeSet>
     <!--输出实体[PCMGBHMC]数据结构 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="tab-pcmgbhmc-1-297">
-        <createTable tableName="">
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-pcmgbhmc-3-297">
+        <createTable tableName="T_PCMGBHMC">
         </createTable>
     </changeSet>
     <!--输出实体[PARDJBZ]数据结构 -->
