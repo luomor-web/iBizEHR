@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+    <process id="cn.ibizlab.ehr.core.pim.service.logic.pimtitleensurehighesttech" isClosed="false" isExecutable="true" name="ScoreRule" processType="Private" tns:packageName="cn.ibizlab.ehr.core.pim.service.logic.pimtitleensurehighesttech">
+        <extensionElements>
+            <tns:import name="java.util.Map" />
+            <tns:import name="org.springframework.util.StringUtils"/>
+            <tns:import name="cn.ibizlab.ehr.util.helper.RuleUtils"/>
+        <tns:global identifier="pimtitleensurehighesttechdefault" type="cn.ibizlab.ehr.core.pim.domain.PIMTITLE" />
+        </extensionElements>
+     <startEvent id="838d5d73ddda8d1dc23f89e0f878cd95" isInterrupting="true"/>
+     <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="pimtitleensurehighesttechdeaction1" id="c23bb3853e96a35567b3a33b119b956c" implementation="http://www.jboss.org/drools/rule" name="确认唯一最高职称"/>
+     <endEvent id="c23bb3853e96a35567b3a33b119b956c_End" name="End"/>
+     <sequenceFlow id="c23bb3853e96a35567b3a33b119b956c_End_Line" sourceRef="c23bb3853e96a35567b3a33b119b956c" targetRef="c23bb3853e96a35567b3a33b119b956c_End"/>
+     <sequenceFlow id="31cc556b0443dd30080c0a8ee0960131" sourceRef="838d5d73ddda8d1dc23f89e0f878cd95" targetRef="c23bb3853e96a35567b3a33b119b956c">
+     </sequenceFlow>
+    </process>
+</definitions>
+

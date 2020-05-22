@@ -1,0 +1,26 @@
+package cn.ibizlab.ehr.pcm.logic.pcmbdsqdmxlogic.setsxrq;
+
+import java.util.Map;
+import java.util.HashMap;
+import com.alibaba.fastjson.JSONObject;
+global cn.ibizlab.ehr.core.pcm.domain.PCMBDSQDMX pcmbdsqdmxsetsxrqdefault;
+global cn.ibizlab.ehr.core.pcm.service.IPCMBDSQDMXService iBzSysPcmbdsqdmxDefaultService;
+global cn.ibizlab.ehr.util.security.AuthenticationUser curuser;
+
+no-loop
+
+//逻辑处理节点[设置生效日期]
+rule "prepareparam1"
+ruleflow-group "pcmbdsqdmxsetsxrqprepareparam1"
+    when
+    then
+    update(pcmbdsqdmxsetsxrqdefault);//更新fact中变量值
+    end
+
+//逻辑处理节点[开始]
+rule "begin"
+ruleflow-group "pcmbdsqdmxsetsxrqbegin"
+    when
+    then
+    end
+

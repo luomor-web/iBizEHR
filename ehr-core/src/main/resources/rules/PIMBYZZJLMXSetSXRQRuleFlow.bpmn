@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+    <process id="cn.ibizlab.ehr.core.pim.service.logic.pimbyzzjlmxsetsxrq" isClosed="false" isExecutable="true" name="ScoreRule" processType="Private" tns:packageName="cn.ibizlab.ehr.core.pim.service.logic.pimbyzzjlmxsetsxrq">
+        <extensionElements>
+            <tns:import name="java.util.Map" />
+            <tns:import name="org.springframework.util.StringUtils"/>
+            <tns:import name="cn.ibizlab.ehr.util.helper.RuleUtils"/>
+        <tns:global identifier="pimbyzzjlmxsetsxrqdefault" type="cn.ibizlab.ehr.core.pim.domain.PIMBYZZJLMX" />
+        </extensionElements>
+     <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="pimbyzzjlmxsetsxrqprepareparam1" id="84c202569f0e416b15a8947a1d1ed536" implementation="http://www.jboss.org/drools/rule" name="设置生效日期"/>
+     <endEvent id="84c202569f0e416b15a8947a1d1ed536_End" name="End"/>
+     <sequenceFlow id="84c202569f0e416b15a8947a1d1ed536_End_Line" sourceRef="84c202569f0e416b15a8947a1d1ed536" targetRef="84c202569f0e416b15a8947a1d1ed536_End"/>
+     <startEvent id="8604f0f75053e53f7df6e44e3f94c269" isInterrupting="true"/>
+     <endEvent id="8604f0f75053e53f7df6e44e3f94c269_End" name="End"/>
+     <sequenceFlow id="8604f0f75053e53f7df6e44e3f94c269_End_Line" sourceRef="8604f0f75053e53f7df6e44e3f94c269" targetRef="8604f0f75053e53f7df6e44e3f94c269_End"/>
+    </process>
+</definitions>
+
