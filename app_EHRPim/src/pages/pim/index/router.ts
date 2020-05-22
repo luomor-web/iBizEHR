@@ -566,19 +566,6 @@ const router = new Router({
                     component: () => import('@pages/pim/pimpersonquick-edit-view/pimpersonquick-edit-view.vue'),
                 },
                 {
-                    path: 'pimmajorsetypes/:pimmajorsetype?/pickupgridview/:pickupgridview?',
-                    meta: {
-                        caption: 'entities.pimmajorsetype.views.pickupgridview.caption',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'pimmajorsetypes', parameterName: 'pimmajorsetype' },
-                            { pathName: 'pickupgridview', parameterName: 'pickupgridview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/pim/pimmajorsetypepickup-grid-view/pimmajorsetypepickup-grid-view.vue'),
-                },
-                {
                     path: 'ormsignorgs/:ormsignorg?/htqddwwpickupview/:htqddwwpickupview?',
                     meta: {
                         caption: 'entities.ormsignorg.views.htqddwwpickupview.caption',
@@ -2418,19 +2405,6 @@ const router = new Router({
                     component: () => import('@pages/pim/archivalcatalogueedit-view/archivalcatalogueedit-view.vue'),
                 },
                 {
-                    path: 'pimmajorsetypes/:pimmajorsetype?/pickupview/:pickupview?',
-                    meta: {
-                        caption: 'entities.pimmajorsetype.views.pickupview.caption',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'pimmajorsetypes', parameterName: 'pimmajorsetype' },
-                            { pathName: 'pickupview', parameterName: 'pickupview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/pim/pimmajorsetypepickup-view/pimmajorsetypepickup-view.vue'),
-                },
-                {
                     path: 'ormduties/:ormduty?/ormorgsectorpickupview/:ormorgsectorpickupview?',
                     meta: {
                         caption: 'entities.ormduty.views.ormorgsectorpickupview.caption',
@@ -2786,19 +2760,6 @@ const router = new Router({
                         requireAuth: true,
                     },
                     component: () => import('@pages/pim/pimqualtypepickup-grid-view/pimqualtypepickup-grid-view.vue'),
-                },
-                {
-                    path: 'pcmrcxls/:pcmrcxl?/pickupview/:pickupview?',
-                    meta: {
-                        caption: 'entities.pcmrcxl.views.pickupview.caption',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'pcmrcxls', parameterName: 'pcmrcxl' },
-                            { pathName: 'pickupview', parameterName: 'pickupview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/pcm/pcmrcxlpickup-view/pcmrcxlpickup-view.vue'),
                 },
                 {
                     path: 'pimpeople/:pimperson?/pimarchives/:pimarchives?/noloyeenofilegridview/:noloyeenofilegridview?',
@@ -3197,19 +3158,6 @@ const router = new Router({
                         requireAuth: true,
                     },
                     component: () => import('@pages/pim/pimeducationpim-edu-grid-view/pimeducationpim-edu-grid-view.vue'),
-                },
-                {
-                    path: 'pcmrcxls/:pcmrcxl?/pickupgridview/:pickupgridview?',
-                    meta: {
-                        caption: 'entities.pcmrcxl.views.pickupgridview.caption',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'pcmrcxls', parameterName: 'pcmrcxl' },
-                            { pathName: 'pickupgridview', parameterName: 'pickupgridview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/pcm/pcmrcxlpickup-grid-view/pcmrcxlpickup-grid-view.vue'),
                 },
                 {
                     path: 'pimpeople/:pimperson?/editview/:editview?',
@@ -6285,18 +6233,6 @@ const router = new Router({
         component: () => import('@pages/pim/pimeducationpim-edu-grid-view/pimeducationpim-edu-grid-view.vue'),
     },
     {
-        path: '/pimmajorsetypes/:pimmajorsetype?/pickupview/:pickupview?',
-        meta: {
-            caption: 'entities.pimmajorsetype.views.pickupview.caption',
-            parameters: [
-                { pathName: 'pimmajorsetypes', parameterName: 'pimmajorsetype' },
-                { pathName: 'pickupview', parameterName: 'pickupview' },
-            ],
-            requireAuth: true,
-        },
-        component: () => import('@pages/pim/pimmajorsetypepickup-view/pimmajorsetypepickup-view.vue'),
-    },
-    {
         path: '/pimvocationalcatalogs/:pimvocationalcatalog?/editview/:editview?',
         meta: {
             caption: 'entities.pimvocationalcatalog.views.editview.caption',
@@ -6640,18 +6576,6 @@ const router = new Router({
         component: () => import('@pages/pim/pimdistirbutionedit-view/pimdistirbutionedit-view.vue'),
     },
     {
-        path: '/pcmrcxls/:pcmrcxl?/pickupview/:pickupview?',
-        meta: {
-            caption: 'entities.pcmrcxl.views.pickupview.caption',
-            parameters: [
-                { pathName: 'pcmrcxls', parameterName: 'pcmrcxl' },
-                { pathName: 'pickupview', parameterName: 'pickupview' },
-            ],
-            requireAuth: true,
-        },
-        component: () => import('@pages/pcm/pcmrcxlpickup-view/pcmrcxlpickup-view.vue'),
-    },
-    {
         path: '/pimtitlecatalogues/:pimtitlecatalogue?/gridview/:gridview?',
         meta: {
             caption: 'entities.pimtitlecatalogue.views.gridview.caption',
@@ -6822,18 +6746,6 @@ const router = new Router({
             requireAuth: true,
         },
         component: () => import('@pages/pim/pimpersonltxyggrid-view/pimpersonltxyggrid-view.vue'),
-    },
-    {
-        path: '/pcmrcxls/:pcmrcxl?/pickupgridview/:pickupgridview?',
-        meta: {
-            caption: 'entities.pcmrcxl.views.pickupgridview.caption',
-            parameters: [
-                { pathName: 'pcmrcxls', parameterName: 'pcmrcxl' },
-                { pathName: 'pickupgridview', parameterName: 'pickupgridview' },
-            ],
-            requireAuth: true,
-        },
-        component: () => import('@pages/pcm/pcmrcxlpickup-grid-view/pcmrcxlpickup-grid-view.vue'),
     },
     {
         path: '/ormsignorgs/:ormsignorg?/bdwpickupview/:bdwpickupview?',
@@ -7798,18 +7710,6 @@ const router = new Router({
             requireAuth: true,
         },
         component: () => import('@pages/pim/pimpersonlzyghmcgrid-view/pimpersonlzyghmcgrid-view.vue'),
-    },
-    {
-        path: '/pimmajorsetypes/:pimmajorsetype?/pickupgridview/:pickupgridview?',
-        meta: {
-            caption: 'entities.pimmajorsetype.views.pickupgridview.caption',
-            parameters: [
-                { pathName: 'pimmajorsetypes', parameterName: 'pimmajorsetype' },
-                { pathName: 'pickupgridview', parameterName: 'pickupgridview' },
-            ],
-            requireAuth: true,
-        },
-        component: () => import('@pages/pim/pimmajorsetypepickup-grid-view/pimmajorsetypepickup-grid-view.vue'),
     },
     {
         path: '/pimpeople/:pimperson?/pimdistirbutions/:pimdistirbution?/jdryhmcgridview/:jdryhmcgridview?',

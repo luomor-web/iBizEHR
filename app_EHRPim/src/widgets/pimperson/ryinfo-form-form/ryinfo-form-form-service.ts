@@ -3,8 +3,6 @@ import ControlService from '@/widgets/control-service';
 import PIMPERSONService from '@/service/pimperson/pimperson-service';
 import RYInfoFormModel from './ryinfo-form-form-model';
 import PIMCITYService from '@/service/pimcity/pimcity-service';
-import PIMMAJORSETYPEService from '@/service/pimmajorsetype/pimmajorsetype-service';
-import PCMRCXLService from '@/service/pcmrcxl/pcmrcxl-service';
 
 
 /**
@@ -53,22 +51,6 @@ export default class RYInfoFormService extends ControlService {
     public pimcityService: PIMCITYService = new PIMCITYService();
 
     /**
-     * 专业序列类型服务对象
-     *
-     * @type {PIMMAJORSETYPEService}
-     * @memberof RYInfoFormService
-     */
-    public pimmajorsetypeService: PIMMAJORSETYPEService = new PIMMAJORSETYPEService();
-
-    /**
-     * 人才序列服务对象
-     *
-     * @type {PCMRCXLService}
-     * @memberof RYInfoFormService
-     */
-    public pcmrcxlService: PCMRCXLService = new PCMRCXLService();
-
-    /**
      * 处理数据
      *
      * @private
@@ -109,15 +91,6 @@ export default class RYInfoFormService extends ControlService {
     public getItems(serviceName: string, interfaceName: string, context: any = {}, data: any, isloading?: boolean): Promise<any[]> {
         if (Object.is(serviceName, 'PIMCITYService') && Object.is(interfaceName, 'FetchDefault')) {
             return this.doItems(this.pimcityService.FetchDefault(JSON.parse(JSON.stringify(context)),data, isloading), 'pimcityid', 'pimcity');
-        }
-        if (Object.is(serviceName, 'PIMMAJORSETYPEService') && Object.is(interfaceName, 'FetchDefault')) {
-            return this.doItems(this.pimmajorsetypeService.FetchDefault(JSON.parse(JSON.stringify(context)),data, isloading), 'pimmajorsetypeid', 'pimmajorsetype');
-        }
-        if (Object.is(serviceName, 'PCMRCXLService') && Object.is(interfaceName, 'FetchRCXLPPXLLX')) {
-            return this.doItems(this.pcmrcxlService.FetchRCXLPPXLLX(JSON.parse(JSON.stringify(context)),data, isloading), 'pcmrcxlid', 'pcmrcxl');
-        }
-        if (Object.is(serviceName, 'PIMPERSONService') && Object.is(interfaceName, 'FetchDefault')) {
-            return this.doItems(this.appEntityService.FetchDefault(JSON.parse(JSON.stringify(context)), data, isloading), 'pimpersonid', 'pimperson');
         }
 
         return Promise.reject([])

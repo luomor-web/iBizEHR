@@ -148,9 +148,6 @@ export const viewstate: any = {
             viewaction: '',
             viewdatachange: false,
             refviews: [
-                '8ac6c88ddba945cb91aae46458993976',
-                'a0d8013080fccd9671334826f02bea04',
-                'dd1cb79d950f565eaa08292a68f2bdd2',
             ],
         },
         {
@@ -1175,16 +1172,6 @@ export const viewstate: any = {
             ],
         },
         {
-            viewtag: '8ac6c88ddba945cb91aae46458993976',
-            viewmodule: 'PIM',
-            viewname: 'PIMMAJORSETYPEPickupView',
-            viewaction: '',
-            viewdatachange: false,
-            refviews: [
-                'ec3c29eba3009f1ecc2dad64aa0a6213',
-            ],
-        },
-        {
             viewtag: '8b7bb8559ea51e3cb1f72c99bc6681d7',
             viewmodule: 'PIM',
             viewname: 'PIMVOCATIONALCATALOGEditView',
@@ -1230,9 +1217,6 @@ export const viewstate: any = {
             viewaction: '',
             viewdatachange: false,
             refviews: [
-                '8ac6c88ddba945cb91aae46458993976',
-                'a0d8013080fccd9671334826f02bea04',
-                'dd1cb79d950f565eaa08292a68f2bdd2',
             ],
         },
         {
@@ -1435,16 +1419,6 @@ export const viewstate: any = {
             ],
         },
         {
-            viewtag: 'a0d8013080fccd9671334826f02bea04',
-            viewmodule: 'PCM',
-            viewname: 'PCMRCXLPickupView',
-            viewaction: '',
-            viewdatachange: false,
-            refviews: [
-                'ab4fdb5d4d8e9872e2949d4dc317736e',
-            ],
-        },
-        {
             viewtag: 'a244f9fd24091560df1d952e8a6a282e',
             viewmodule: 'PIM',
             viewname: 'PIMTITLECATALOGUEGridView',
@@ -1555,15 +1529,6 @@ export const viewstate: any = {
             viewdatachange: false,
             refviews: [
                 '29d56c84d92732195b0b61795c352dd6',
-            ],
-        },
-        {
-            viewtag: 'ab4fdb5d4d8e9872e2949d4dc317736e',
-            viewmodule: 'PCM',
-            viewname: 'PCMRCXLPickupGridView',
-            viewaction: '',
-            viewdatachange: false,
-            refviews: [
             ],
         },
         {
@@ -2064,15 +2029,6 @@ export const viewstate: any = {
             viewdatachange: false,
             refviews: [
                 'c05753c87731f02b862491ae2d4fc908',
-            ],
-        },
-        {
-            viewtag: 'ec3c29eba3009f1ecc2dad64aa0a6213',
-            viewmodule: 'PIM',
-            viewname: 'PIMMAJORSETYPEPickupGridView',
-            viewaction: '',
-            viewdatachange: false,
-            refviews: [
             ],
         },
         {

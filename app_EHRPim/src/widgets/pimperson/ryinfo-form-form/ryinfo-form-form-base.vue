@@ -225,69 +225,13 @@
 </i-col>
 <i-col v-show="detailsModel.sfdszn.visible" :style="{}"  :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
     <app-form-item name='sfdszn' :itemRules="this.rules.sfdszn" class='' :caption="$t('entities.pimperson.ryinfoform_form.details.sfdszn')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.sfdszn.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-radio-group v-model="data.sfdszn"  :disabled="detailsModel.sfdszn.disabled"  name="sfdszn" tag='PIMCL_SFLJ' codelistType='STATIC'  style=""></app-radio-group>
+     <dropdown-list v-model="data.sfdszn" :data="data" :itemParam="{}" :disabled="detailsModel.sfdszn.disabled"  tag='PIMCL_SFLJ' codelistType='STATIC' placeholder='请选择...' style=""></dropdown-list>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.ahtc.visible" :style="{}"  :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
     <app-form-item name='ahtc' :itemRules="this.rules.ahtc" class='' :caption="$t('entities.pimperson.ryinfoform_form.details.ahtc')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.ahtc.error" :isEmptyCaption="false" labelPos="LEFT">
     <input-box v-model="data.ahtc"  @enter="onEnter($event)"   unit=""  :disabled="detailsModel.ahtc.disabled" type='text'  style=""></input-box>
-</app-form-item>
-
-</i-col>
-<i-col v-show="detailsModel.rcxllx.visible" :style="{}"  :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
-    <app-form-item name='rcxllx' :itemRules="this.rules.rcxllx" class='' :caption="$t('entities.pimperson.ryinfoform_form.details.rcxllx')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.rcxllx.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.rcxllx" :data="data" :itemParam="{}" :disabled="detailsModel.rcxllx.disabled"  tag='PCMCL_RCXLLX' codelistType='STATIC' placeholder='请选择...' style=""></dropdown-list>
-</app-form-item>
-
-</i-col>
-<i-col v-show="detailsModel.pimmajorsetypename.visible" :style="{}"  :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
-    <app-form-item name='pimmajorsetypename' :itemRules="this.rules.pimmajorsetypename" class='' :caption="$t('entities.pimperson.ryinfoform_form.details.pimmajorsetypename')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.pimmajorsetypename.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-picker 
-  :formState="formState"
-  :data="data"
-  :context="context"
-  :viewparams="viewparams"
-  :itemParam='{ }' 
-  :disabled="detailsModel.pimmajorsetypename.disabled"
-  name='pimmajorsetypename'
-  deMajorField='pimmajorsetypename'
-  deKeyField='pimmajorsetype'
-  :service="service"
-  :acParams="{ serviceName: 'PIMMAJORSETYPEService', interfaceName: 'FetchDefault'}"
-  valueitem='pimmajorsetypeid' 
-  :value="data.pimmajorsetypename" 
-  editortype="" 
-  :pickupView="{ viewname: 'pimmajorsetypepickup-view', title: $t('entities.pimmajorsetype.views.pickupview.title'), deResParameters: [], parameters: [{ pathName: 'pimmajorsetypes', parameterName: 'pimmajorsetype' }, { pathName: 'pickupview', parameterName: 'pickupview' } ], placement:'' }"
-  style=""  
-  @formitemvaluechange="onFormItemValueChange">
-</app-picker>
-
-</app-form-item>
-
-</i-col>
-<i-col v-show="detailsModel.pcmrcxlname.visible" :style="{}"  :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
-    <app-form-item name='pcmrcxlname' :itemRules="this.rules.pcmrcxlname" class='' :caption="$t('entities.pimperson.ryinfoform_form.details.pcmrcxlname')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.pcmrcxlname.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-picker 
-  :formState="formState"
-  :data="data"
-  :context="context"
-  :viewparams="viewparams"
-  :itemParam='{ }' 
-  :disabled="detailsModel.pcmrcxlname.disabled"
-  name='pcmrcxlname'
-  deMajorField='rcxlmc'
-  deKeyField='pcmrcxl'
-  :service="service"
-  :acParams="{ serviceName: 'PCMRCXLService', interfaceName: 'FetchRCXLPPXLLX'}"
-  valueitem='pcmrcxlid' 
-  :value="data.pcmrcxlname" 
-  editortype="" 
-  :pickupView="{ viewname: 'pcmrcxlpickup-view', title: $t('entities.pcmrcxl.views.pickupview.title'), deResParameters: [], parameters: [{ pathName: 'pcmrcxls', parameterName: 'pcmrcxl' }, { pathName: 'pickupview', parameterName: 'pickupview' } ], placement:'' }"
-  style=""  
-  @formitemvaluechange="onFormItemValueChange">
-</app-picker>
-
 </app-form-item>
 
 </i-col>
@@ -354,33 +298,9 @@
 </app-form-item>
 
 </i-col>
-<i-col v-show="detailsModel.rank.visible" :style="{}"  :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
-    <app-form-item name='rank' :itemRules="this.rules.rank" class='' :caption="$t('entities.pimperson.ryinfoform_form.details.rank')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.rank.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.rank" :data="data" :itemParam="{}" :disabled="detailsModel.rank.disabled"  tag='PIMCL_RANK' codelistType='DYNAMIC' placeholder='请选择...' style=""></dropdown-list>
-</app-form-item>
-
-</i-col>
-<i-col v-show="detailsModel.zj.visible" :style="{}"  :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
-    <app-form-item name='zj' :itemRules="this.rules.zj" class='' :caption="$t('entities.pimperson.ryinfoform_form.details.zj')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.zj.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.zj" :data="data" :itemParam="{}" :disabled="detailsModel.zj.disabled"  tag='PIMCL_ZJ' codelistType='DYNAMIC' placeholder='请选择...' style=""></dropdown-list>
-</app-form-item>
-
-</i-col>
 <i-col v-show="detailsModel.cjgzsj.visible" :style="{}"  :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
     <app-form-item name='cjgzsj' :itemRules="this.rules.cjgzsj" class='' :caption="$t('entities.pimperson.ryinfoform_form.details.cjgzsj')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.cjgzsj.error" :isEmptyCaption="false" labelPos="LEFT">
     <date-picker type="date" :transfer="true" format="yyyy-MM-dd" placeholder="请选择时间..." :value="data.cjgzsj" :disabled="detailsModel.cjgzsj.disabled" style="min-width: 150px; width:100px;width:100%;" @on-change="(val1, val2) => { this.data.cjgzsj = val1 }"></date-picker>
-</app-form-item>
-
-</i-col>
-<i-col v-show="detailsModel.tozjdate.visible" :style="{}"  :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
-    <app-form-item name='tozjdate' :itemRules="this.rules.tozjdate" class='' :caption="$t('entities.pimperson.ryinfoform_form.details.tozjdate')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.tozjdate.error" :isEmptyCaption="false" labelPos="LEFT">
-    <date-picker type="date" :transfer="true" format="yyyy-MM-dd" placeholder="请选择时间..." :value="data.tozjdate" :disabled="detailsModel.tozjdate.disabled" style="min-width: 150px; width:100px;width:100%;" @on-change="(val1, val2) => { this.data.tozjdate = val1 }"></date-picker>
-</app-form-item>
-
-</i-col>
-<i-col v-show="detailsModel.dzjbjsj.visible" :style="{}"  :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
-    <app-form-item name='dzjbjsj' :itemRules="this.rules.dzjbjsj" class='' :caption="$t('entities.pimperson.ryinfoform_form.details.dzjbjsj')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.dzjbjsj.error" :isEmptyCaption="false" labelPos="LEFT">
-    <date-picker type="date" :transfer="true" format="yyyy-MM-dd" placeholder="请选择时间..." :value="data.dzjbjsj" :disabled="detailsModel.dzjbjsj.disabled" style="min-width: 150px; width:100px;width:100%;" @on-change="(val1, val2) => { this.data.dzjbjsj = val1 }"></date-picker>
 </app-form-item>
 
 </i-col>
@@ -390,37 +310,7 @@
 </app-form-item>
 
 </i-col>
-<i-col v-show="detailsModel.gzzt.visible" :style="{}"  :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
-    <app-form-item name='gzzt' :itemRules="this.rules.gzzt" class='' :caption="$t('entities.pimperson.ryinfoform_form.details.gzzt')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.gzzt.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.gzzt" :data="data" :itemParam="{}" :disabled="detailsModel.gzzt.disabled"  tag='PIMCL_GZZT' codelistType='STATIC' placeholder='请选择...' style=""></dropdown-list>
-</app-form-item>
-
-</i-col>
-<i-col v-show="detailsModel.gzzz.visible" :style="{}"  :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
-    <app-form-item name='gzzz' :itemRules="this.rules.gzzz" class='' :caption="$t('entities.pimperson.ryinfoform_form.details.gzzz')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.gzzz.error" :isEmptyCaption="false" labelPos="LEFT">
-    <input-box v-model="data.gzzz"  @enter="onEnter($event)"   unit=""  :disabled="detailsModel.gzzz.disabled" type='text'  style=""></input-box>
-</app-form-item>
-
-</i-col>
-<i-col v-show="detailsModel.gzbm.visible" :style="{}"  :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
-    <app-form-item name='gzbm' :itemRules="this.rules.gzbm" class='' :caption="$t('entities.pimperson.ryinfoform_form.details.gzbm')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.gzbm.error" :isEmptyCaption="false" labelPos="LEFT">
-    <input-box v-model="data.gzbm"  @enter="onEnter($event)"   unit=""  :disabled="detailsModel.gzbm.disabled" type='text'  style=""></input-box>
-</app-form-item>
-
-</i-col>
-<i-col v-show="detailsModel.gzkssj.visible" :style="{}"  :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
-    <app-form-item name='gzkssj' :itemRules="this.rules.gzkssj" class='' :caption="$t('entities.pimperson.ryinfoform_form.details.gzkssj')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.gzkssj.error" :isEmptyCaption="false" labelPos="LEFT">
-    <date-picker type="date" :transfer="true" format="yyyy-MM-dd" placeholder="请选择时间..." :value="data.gzkssj" :disabled="detailsModel.gzkssj.disabled" style="min-width: 150px; width:100px;width:100%;" @on-change="(val1, val2) => { this.data.gzkssj = val1 }"></date-picker>
-</app-form-item>
-
-</i-col>
-<i-col v-show="detailsModel.gzjssj.visible" :style="{}"  :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
-    <app-form-item name='gzjssj' :itemRules="this.rules.gzjssj" class='' :caption="$t('entities.pimperson.ryinfoform_form.details.gzjssj')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.gzjssj.error" :isEmptyCaption="false" labelPos="LEFT">
-    <date-picker type="date" :transfer="true" format="yyyy-MM-dd" placeholder="请选择时间..." :value="data.gzjssj" :disabled="detailsModel.gzjssj.disabled" style="min-width: 150px; width:100px;width:100%;" @on-change="(val1, val2) => { this.data.gzjssj = val1 }"></date-picker>
-</app-form-item>
-
-</i-col>
-<i-col v-show="detailsModel.sgyy.visible" :style="{}"  :lg="{ span: 24, offset: 0 }" :xl="{ span: 8, offset: 0 }">
+<i-col v-show="detailsModel.sgyy.visible" :style="{}"  :lg="{ span: 24, offset: 0 }" :xl="{ span: 24, offset: 0 }">
     <app-form-item name='sgyy' :itemRules="this.rules.sgyy" class='' :caption="$t('entities.pimperson.ryinfoform_form.details.sgyy')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.sgyy.error" :isEmptyCaption="false" labelPos="LEFT">
     <div class="ivu-input-wrapper ivu-input-wrapper-default ivu-input-type">
     <textarea class="ivu-input" v-model="data.sgyy" :disabled="detailsModel.sgyy.disabled" style=""></textarea>
@@ -436,63 +326,13 @@
 <div v-show="detailsModel.grouppanel7.visible">
     <app-form-group layoutType="TABLE_12COL" titleStyle="" class='' :uiActionGroup="detailsModel.grouppanel7.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.pimperson.ryinfoform_form.details.grouppanel7')" :isShowCaption="true" uiStyle="DEFAULT" :titleBarCloseMode="0" :isInfoGroupMode="false" >    
     <row>
-        <i-col v-show="detailsModel.pimpersonname2.visible" :style="{}"  :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
-    <app-form-item name='pimpersonname2' :itemRules="this.rules.pimpersonname2" class='' :caption="$t('entities.pimperson.ryinfoform_form.details.pimpersonname2')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.pimpersonname2.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-picker 
-  :formState="formState"
-  :data="data"
-  :context="context"
-  :viewparams="viewparams"
-  :itemParam='{ }' 
-  :disabled="detailsModel.pimpersonname2.disabled"
-  name='pimpersonname2'
-  deMajorField='pimpersonname'
-  deKeyField='pimperson'
-  :service="service"
-  :acParams="{ serviceName: 'PIMPERSONService', interfaceName: 'FetchDefault'}"
-  valueitem='pimpersonid2' 
-  :value="data.pimpersonname2" 
-  editortype="" 
-  :pickupView="{ viewname: 'pimpersonpickup-view', title: $t('entities.pimperson.views.pickupview.title'), deResParameters: [], parameters: [{ pathName: 'pimpeople', parameterName: 'pimperson' }, { pathName: 'pickupview', parameterName: 'pickupview' } ], placement:'' }"
-  style=""  
-  @formitemvaluechange="onFormItemValueChange">
-</app-picker>
-
-</app-form-item>
-
-</i-col>
-<i-col v-show="detailsModel.pimpersonname3.visible" :style="{}"  :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
-    <app-form-item name='pimpersonname3' :itemRules="this.rules.pimpersonname3" class='' :caption="$t('entities.pimperson.ryinfoform_form.details.pimpersonname3')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.pimpersonname3.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-picker 
-  :formState="formState"
-  :data="data"
-  :context="context"
-  :viewparams="viewparams"
-  :itemParam='{ }' 
-  :disabled="detailsModel.pimpersonname3.disabled"
-  name='pimpersonname3'
-  deMajorField='pimpersonname'
-  deKeyField='pimperson'
-  :service="service"
-  :acParams="{ serviceName: 'PIMPERSONService', interfaceName: 'FetchDefault'}"
-  valueitem='pimpersonid3' 
-  :value="data.pimpersonname3" 
-  editortype="" 
-  :pickupView="{ viewname: 'pimpersonpickup-view', title: $t('entities.pimperson.views.pickupview.title'), deResParameters: [], parameters: [{ pathName: 'pimpeople', parameterName: 'pimperson' }, { pathName: 'pickupview', parameterName: 'pickupview' } ], placement:'' }"
-  style=""  
-  @formitemvaluechange="onFormItemValueChange">
-</app-picker>
-
-</app-form-item>
-
-</i-col>
-<i-col v-show="detailsModel.hmd.visible" :style="{}"  :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
+        <i-col v-show="detailsModel.hmd.visible" :style="{}"  :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
     <app-form-item name='hmd' :itemRules="this.rules.hmd" class='' :caption="$t('entities.pimperson.ryinfoform_form.details.hmd')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.hmd.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-radio-group v-model="data.hmd"  :disabled="detailsModel.hmd.disabled"  name="hmd" tag='YesNo' codelistType='STATIC'  style=""></app-radio-group>
+     <dropdown-list v-model="data.hmd" :data="data" :itemParam="{}" :disabled="detailsModel.hmd.disabled" style="width:100px;width: 100px;" tag='YesNo' codelistType='STATIC'  placeholder='请选择...'></dropdown-list>
 </app-form-item>
 
 </i-col>
-<i-col v-show="detailsModel.blacklistreasons.visible" :style="{}"  :lg="{ span: 24, offset: 0 }" :xl="{ span: 8, offset: 0 }">
+<i-col v-show="detailsModel.blacklistreasons.visible" :style="{}"  :sm="{ span: 24, offset: 0 }" :md="{ span: 24, offset: 0 }" :lg="{ span: 24, offset: 0 }" :xl="{ span: 24, offset: 0 }">
     <app-form-item name='blacklistreasons' :itemRules="this.rules.blacklistreasons" class='' :caption="$t('entities.pimperson.ryinfoform_form.details.blacklistreasons')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.blacklistreasons.error" :isEmptyCaption="false" labelPos="LEFT">
     <div class="ivu-input-wrapper ivu-input-wrapper-default ivu-input-type">
     <textarea class="ivu-input" v-model="data.blacklistreasons" :disabled="detailsModel.blacklistreasons.disabled" style=""></textarea>
@@ -834,44 +674,26 @@ export default class RYInfoFormBase extends Vue implements ControlInterface {
         postaladdress: null,
         sfdszn: null,
         ahtc: null,
-        rcxllx: null,
-        pimmajorsetypename: null,
-        pcmrcxlname: null,
         jkzk: null,
         jlczz: null,
         zzmm: null,
         rtsj: null,
         rdsj: null,
-        yglx: null,
         ygzt: null,
         workstate: null,
         rzqd: null,
+        yglx: null,
         ormorgid: null,
         ormorgname: null,
         ormorgsectorid: null,
         ormorgsectorname: null,
-        rank: null,
         zw: null,
         gw: null,
-        zj: null,
         cjgzsj: null,
-        tozjdate: null,
-        dzjbjsj: null,
         dbdwsj: null,
-        gzzt: null,
-        gzzz: null,
-        gzbm: null,
-        gzkssj: null,
-        gzjssj: null,
         sgyy: null,
-        pimpersonname2: null,
-        pimpersonname3: null,
-        sftberp: null,
         hmd: null,
         blacklistreasons: null,
-        pimpersonid3: null,
-        pcmrcxlid: null,
-        pimmajorsetypeid: null,
         pimperson:null,
     };
 
@@ -1136,24 +958,6 @@ export default class RYInfoFormBase extends Vue implements ControlInterface {
             { required: false, type: 'string', message: '爱好特长 值不能为空', trigger: 'change' },
             { required: false, type: 'string', message: '爱好特长 值不能为空', trigger: 'blur' },
         ],
-        rcxllx: [
-            { type: 'string', message: '人才序列类型 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '人才序列类型 值必须为字符串类型', trigger: 'blur' },
-            { required: false, type: 'string', message: '人才序列类型 值不能为空', trigger: 'change' },
-            { required: false, type: 'string', message: '人才序列类型 值不能为空', trigger: 'blur' },
-        ],
-        pimmajorsetypename: [
-            { type: 'string', message: '专业序列类型 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '专业序列类型 值必须为字符串类型', trigger: 'blur' },
-            { required: false, type: 'string', message: '专业序列类型 值不能为空', trigger: 'change' },
-            { required: false, type: 'string', message: '专业序列类型 值不能为空', trigger: 'blur' },
-        ],
-        pcmrcxlname: [
-            { type: 'string', message: '人才序列 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '人才序列 值必须为字符串类型', trigger: 'blur' },
-            { required: false, type: 'string', message: '人才序列 值不能为空', trigger: 'change' },
-            { required: false, type: 'string', message: '人才序列 值不能为空', trigger: 'blur' },
-        ],
         jkzk: [
             { type: 'string', message: '健康状况 值必须为字符串类型', trigger: 'change' },
             { type: 'string', message: '健康状况 值必须为字符串类型', trigger: 'blur' },
@@ -1184,12 +988,6 @@ export default class RYInfoFormBase extends Vue implements ControlInterface {
             { required: false, type: 'string', message: '入党时间 值不能为空', trigger: 'change' },
             { required: false, type: 'string', message: '入党时间 值不能为空', trigger: 'blur' },
         ],
-        yglx: [
-            { type: 'string', message: '员工类型 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '员工类型 值必须为字符串类型', trigger: 'blur' },
-            { required: true, type: 'string', message: '员工类型 值不能为空', trigger: 'change' },
-            { required: true, type: 'string', message: '员工类型 值不能为空', trigger: 'blur' },
-        ],
         ygzt: [
             { type: 'string', message: '员工状态 值必须为字符串类型', trigger: 'change' },
             { type: 'string', message: '员工状态 值必须为字符串类型', trigger: 'blur' },
@@ -1207,6 +1005,12 @@ export default class RYInfoFormBase extends Vue implements ControlInterface {
             { type: 'string', message: '入职渠道 值必须为字符串类型', trigger: 'blur' },
             { required: false, type: 'string', message: '入职渠道 值不能为空', trigger: 'change' },
             { required: false, type: 'string', message: '入职渠道 值不能为空', trigger: 'blur' },
+        ],
+        yglx: [
+            { type: 'string', message: '员工类型 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '员工类型 值必须为字符串类型', trigger: 'blur' },
+            { required: true, type: 'string', message: '员工类型 值不能为空', trigger: 'change' },
+            { required: true, type: 'string', message: '员工类型 值不能为空', trigger: 'blur' },
         ],
         ormorgid: [
             { type: 'string', message: '组织标识 值必须为字符串类型', trigger: 'change' },
@@ -1232,12 +1036,6 @@ export default class RYInfoFormBase extends Vue implements ControlInterface {
             { required: false, type: 'string', message: '部门 值不能为空', trigger: 'change' },
             { required: false, type: 'string', message: '部门 值不能为空', trigger: 'blur' },
         ],
-        rank: [
-            { type: 'string', message: '职级 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '职级 值必须为字符串类型', trigger: 'blur' },
-            { required: false, type: 'string', message: '职级 值不能为空', trigger: 'change' },
-            { required: false, type: 'string', message: '职级 值不能为空', trigger: 'blur' },
-        ],
         zw: [
             { type: 'string', message: '职务 值必须为字符串类型', trigger: 'change' },
             { type: 'string', message: '职务 值必须为字符串类型', trigger: 'blur' },
@@ -1250,29 +1048,11 @@ export default class RYInfoFormBase extends Vue implements ControlInterface {
             { required: false, type: 'string', message: '岗位 值不能为空', trigger: 'change' },
             { required: false, type: 'string', message: '岗位 值不能为空', trigger: 'blur' },
         ],
-        zj: [
-            { type: 'string', message: '专家类型 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '专家类型 值必须为字符串类型', trigger: 'blur' },
-            { required: false, type: 'string', message: '专家类型 值不能为空', trigger: 'change' },
-            { required: false, type: 'string', message: '专家类型 值不能为空', trigger: 'blur' },
-        ],
         cjgzsj: [
             { type: 'string', message: '参加工作时间 值必须为字符串类型', trigger: 'change' },
             { type: 'string', message: '参加工作时间 值必须为字符串类型', trigger: 'blur' },
             { required: false, type: 'string', message: '参加工作时间 值不能为空', trigger: 'change' },
             { required: false, type: 'string', message: '参加工作时间 值不能为空', trigger: 'blur' },
-        ],
-        tozjdate: [
-            { type: 'string', message: '到建筑系统时间 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '到建筑系统时间 值必须为字符串类型', trigger: 'blur' },
-            { required: false, type: 'string', message: '到建筑系统时间 值不能为空', trigger: 'change' },
-            { required: false, type: 'string', message: '到建筑系统时间 值不能为空', trigger: 'blur' },
-        ],
-        dzjbjsj: [
-            { type: 'string', message: '到局时间 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '到局时间 值必须为字符串类型', trigger: 'blur' },
-            { required: false, type: 'string', message: '到局时间 值不能为空', trigger: 'change' },
-            { required: false, type: 'string', message: '到局时间 值不能为空', trigger: 'blur' },
         ],
         dbdwsj: [
             { type: 'string', message: '到本单位时间 值必须为字符串类型', trigger: 'change' },
@@ -1280,59 +1060,11 @@ export default class RYInfoFormBase extends Vue implements ControlInterface {
             { required: false, type: 'string', message: '到本单位时间 值不能为空', trigger: 'change' },
             { required: false, type: 'string', message: '到本单位时间 值不能为空', trigger: 'blur' },
         ],
-        gzzt: [
-            { type: 'string', message: '挂职状态 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '挂职状态 值必须为字符串类型', trigger: 'blur' },
-            { required: false, type: 'string', message: '挂职状态 值不能为空', trigger: 'change' },
-            { required: false, type: 'string', message: '挂职状态 值不能为空', trigger: 'blur' },
-        ],
-        gzzz: [
-            { type: 'string', message: '挂职组织 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '挂职组织 值必须为字符串类型', trigger: 'blur' },
-            { required: false, type: 'string', message: '挂职组织 值不能为空', trigger: 'change' },
-            { required: false, type: 'string', message: '挂职组织 值不能为空', trigger: 'blur' },
-        ],
-        gzbm: [
-            { type: 'string', message: '挂职部门 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '挂职部门 值必须为字符串类型', trigger: 'blur' },
-            { required: false, type: 'string', message: '挂职部门 值不能为空', trigger: 'change' },
-            { required: false, type: 'string', message: '挂职部门 值不能为空', trigger: 'blur' },
-        ],
-        gzkssj: [
-            { type: 'string', message: '挂职开始时间 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '挂职开始时间 值必须为字符串类型', trigger: 'blur' },
-            { required: false, type: 'string', message: '挂职开始时间 值不能为空', trigger: 'change' },
-            { required: false, type: 'string', message: '挂职开始时间 值不能为空', trigger: 'blur' },
-        ],
-        gzjssj: [
-            { type: 'string', message: '挂职结束时间 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '挂职结束时间 值必须为字符串类型', trigger: 'blur' },
-            { required: false, type: 'string', message: '挂职结束时间 值不能为空', trigger: 'change' },
-            { required: false, type: 'string', message: '挂职结束时间 值不能为空', trigger: 'blur' },
-        ],
         sgyy: [
             { type: 'string', message: '身故原因 值必须为字符串类型', trigger: 'change' },
             { type: 'string', message: '身故原因 值必须为字符串类型', trigger: 'blur' },
             { required: false, type: 'string', message: '身故原因 值不能为空', trigger: 'change' },
             { required: false, type: 'string', message: '身故原因 值不能为空', trigger: 'blur' },
-        ],
-        pimpersonname2: [
-            { type: 'string', message: '思想导师 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '思想导师 值必须为字符串类型', trigger: 'blur' },
-            { required: false, type: 'string', message: '思想导师 值不能为空', trigger: 'change' },
-            { required: false, type: 'string', message: '思想导师 值不能为空', trigger: 'blur' },
-        ],
-        pimpersonname3: [
-            { type: 'string', message: '业务导师 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '业务导师 值必须为字符串类型', trigger: 'blur' },
-            { required: false, type: 'string', message: '业务导师 值不能为空', trigger: 'change' },
-            { required: false, type: 'string', message: '业务导师 值不能为空', trigger: 'blur' },
-        ],
-        sftberp: [
-            { type: 'string', message: '同步ERP 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '同步ERP 值必须为字符串类型', trigger: 'blur' },
-            { required: false, type: 'string', message: '同步ERP 值不能为空', trigger: 'change' },
-            { required: false, type: 'string', message: '同步ERP 值不能为空', trigger: 'blur' },
         ],
         hmd: [
             { type: 'number', message: '列入黑名单 值必须为数值类型', trigger: 'change' },
@@ -1345,24 +1077,6 @@ export default class RYInfoFormBase extends Vue implements ControlInterface {
             { type: 'string', message: '黑名单原因 值必须为字符串类型', trigger: 'blur' },
             { required: true, type: 'string', message: '黑名单原因 值不能为空', trigger: 'change' },
             { required: true, type: 'string', message: '黑名单原因 值不能为空', trigger: 'blur' },
-        ],
-        pimpersonid3: [
-            { type: 'string', message: '人员信息标识 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '人员信息标识 值必须为字符串类型', trigger: 'blur' },
-            { required: false, type: 'string', message: '人员信息标识 值不能为空', trigger: 'change' },
-            { required: false, type: 'string', message: '人员信息标识 值不能为空', trigger: 'blur' },
-        ],
-        pcmrcxlid: [
-            { type: 'string', message: '人才序列标识 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '人才序列标识 值必须为字符串类型', trigger: 'blur' },
-            { required: false, type: 'string', message: '人才序列标识 值不能为空', trigger: 'change' },
-            { required: false, type: 'string', message: '人才序列标识 值不能为空', trigger: 'blur' },
-        ],
-        pimmajorsetypeid: [
-            { type: 'string', message: '专业序列类型标识 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '专业序列类型标识 值必须为字符串类型', trigger: 'blur' },
-            { required: false, type: 'string', message: '专业序列类型标识 值不能为空', trigger: 'change' },
-            { required: false, type: 'string', message: '专业序列类型标识 值不能为空', trigger: 'blur' },
         ],
     }
 
@@ -1469,12 +1183,6 @@ export default class RYInfoFormBase extends Vue implements ControlInterface {
 , 
         ahtc: new FormItemModel({ caption: '爱好特长', detailType: 'FORMITEM', name: 'ahtc', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
-        rcxllx: new FormItemModel({ caption: '人才序列类型', detailType: 'FORMITEM', name: 'rcxllx', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
-, 
-        pimmajorsetypename: new FormItemModel({ caption: '专业序列类型', detailType: 'FORMITEM', name: 'pimmajorsetypename', visible: false, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
-, 
-        pcmrcxlname: new FormItemModel({ caption: '人才序列', detailType: 'FORMITEM', name: 'pcmrcxlname', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
-, 
         jkzk: new FormItemModel({ caption: '健康状况', detailType: 'FORMITEM', name: 'jkzk', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
         jlczz: new FormItemModel({ caption: '记录操作者', detailType: 'FORMITEM', name: 'jlczz', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
@@ -1485,13 +1193,13 @@ export default class RYInfoFormBase extends Vue implements ControlInterface {
 , 
         rdsj: new FormItemModel({ caption: '入党时间', detailType: 'FORMITEM', name: 'rdsj', visible: false, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
-        yglx: new FormItemModel({ caption: '员工类型', detailType: 'FORMITEM', name: 'yglx', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 0 })
-, 
         ygzt: new FormItemModel({ caption: '员工状态', detailType: 'FORMITEM', name: 'ygzt', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
         workstate: new FormItemModel({ caption: '工作状态', detailType: 'FORMITEM', name: 'workstate', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
         rzqd: new FormItemModel({ caption: '入职渠道', detailType: 'FORMITEM', name: 'rzqd', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+, 
+        yglx: new FormItemModel({ caption: '员工类型', detailType: 'FORMITEM', name: 'yglx', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 0 })
 , 
         ormorgid: new FormItemModel({ caption: '组织标识', detailType: 'FORMITEM', name: 'ormorgid', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
@@ -1501,49 +1209,19 @@ export default class RYInfoFormBase extends Vue implements ControlInterface {
 , 
         ormorgsectorname: new FormItemModel({ caption: '部门', detailType: 'FORMITEM', name: 'ormorgsectorname', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 0 })
 , 
-        rank: new FormItemModel({ caption: '职级', detailType: 'FORMITEM', name: 'rank', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 0 })
-, 
         zw: new FormItemModel({ caption: '职务', detailType: 'FORMITEM', name: 'zw', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 0 })
 , 
         gw: new FormItemModel({ caption: '岗位', detailType: 'FORMITEM', name: 'gw', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 0 })
 , 
-        zj: new FormItemModel({ caption: '专家类型', detailType: 'FORMITEM', name: 'zj', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
-, 
         cjgzsj: new FormItemModel({ caption: '参加工作时间', detailType: 'FORMITEM', name: 'cjgzsj', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
-, 
-        tozjdate: new FormItemModel({ caption: '到建筑系统时间', detailType: 'FORMITEM', name: 'tozjdate', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
-, 
-        dzjbjsj: new FormItemModel({ caption: '到局时间', detailType: 'FORMITEM', name: 'dzjbjsj', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
         dbdwsj: new FormItemModel({ caption: '到本单位时间', detailType: 'FORMITEM', name: 'dbdwsj', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
-        gzzt: new FormItemModel({ caption: '挂职状态', detailType: 'FORMITEM', name: 'gzzt', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
-, 
-        gzzz: new FormItemModel({ caption: '挂职组织', detailType: 'FORMITEM', name: 'gzzz', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
-, 
-        gzbm: new FormItemModel({ caption: '挂职部门', detailType: 'FORMITEM', name: 'gzbm', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
-, 
-        gzkssj: new FormItemModel({ caption: '挂职开始时间', detailType: 'FORMITEM', name: 'gzkssj', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
-, 
-        gzjssj: new FormItemModel({ caption: '挂职结束时间', detailType: 'FORMITEM', name: 'gzjssj', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
-, 
         sgyy: new FormItemModel({ caption: '身故原因', detailType: 'FORMITEM', name: 'sgyy', visible: false, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
-, 
-        pimpersonname2: new FormItemModel({ caption: '思想导师', detailType: 'FORMITEM', name: 'pimpersonname2', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
-, 
-        pimpersonname3: new FormItemModel({ caption: '业务导师', detailType: 'FORMITEM', name: 'pimpersonname3', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
-, 
-        sftberp: new FormItemModel({ caption: '同步ERP', detailType: 'FORMITEM', name: 'sftberp', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
         hmd: new FormItemModel({ caption: '列入黑名单', detailType: 'FORMITEM', name: 'hmd', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
         blacklistreasons: new FormItemModel({ caption: '黑名单原因', detailType: 'FORMITEM', name: 'blacklistreasons', visible: false, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
-, 
-        pimpersonid3: new FormItemModel({ caption: '人员信息标识', detailType: 'FORMITEM', name: 'pimpersonid3', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
-, 
-        pcmrcxlid: new FormItemModel({ caption: '人才序列标识', detailType: 'FORMITEM', name: 'pcmrcxlid', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
-, 
-        pimmajorsetypeid: new FormItemModel({ caption: '专业序列类型标识', detailType: 'FORMITEM', name: 'pimmajorsetypeid', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
     };
 
@@ -1992,42 +1670,6 @@ export default class RYInfoFormBase extends Vue implements ControlInterface {
     }
 
     /**
-     * 监控表单属性 rcxllx 值
-     *
-     * @param {*} newVal
-     * @param {*} oldVal
-     * @memberof RYInfoForm
-     */
-    @Watch('data.rcxllx')
-    onRcxllxChange(newVal: any, oldVal: any) {
-        this.formDataChange({ name: 'rcxllx', newVal: newVal, oldVal: oldVal });
-    }
-
-    /**
-     * 监控表单属性 pimmajorsetypename 值
-     *
-     * @param {*} newVal
-     * @param {*} oldVal
-     * @memberof RYInfoForm
-     */
-    @Watch('data.pimmajorsetypename')
-    onPimmajorsetypenameChange(newVal: any, oldVal: any) {
-        this.formDataChange({ name: 'pimmajorsetypename', newVal: newVal, oldVal: oldVal });
-    }
-
-    /**
-     * 监控表单属性 pcmrcxlname 值
-     *
-     * @param {*} newVal
-     * @param {*} oldVal
-     * @memberof RYInfoForm
-     */
-    @Watch('data.pcmrcxlname')
-    onPcmrcxlnameChange(newVal: any, oldVal: any) {
-        this.formDataChange({ name: 'pcmrcxlname', newVal: newVal, oldVal: oldVal });
-    }
-
-    /**
      * 监控表单属性 jkzk 值
      *
      * @param {*} newVal
@@ -2088,18 +1730,6 @@ export default class RYInfoFormBase extends Vue implements ControlInterface {
     }
 
     /**
-     * 监控表单属性 yglx 值
-     *
-     * @param {*} newVal
-     * @param {*} oldVal
-     * @memberof RYInfoForm
-     */
-    @Watch('data.yglx')
-    onYglxChange(newVal: any, oldVal: any) {
-        this.formDataChange({ name: 'yglx', newVal: newVal, oldVal: oldVal });
-    }
-
-    /**
      * 监控表单属性 ygzt 值
      *
      * @param {*} newVal
@@ -2133,6 +1763,18 @@ export default class RYInfoFormBase extends Vue implements ControlInterface {
     @Watch('data.rzqd')
     onRzqdChange(newVal: any, oldVal: any) {
         this.formDataChange({ name: 'rzqd', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 yglx 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof RYInfoForm
+     */
+    @Watch('data.yglx')
+    onYglxChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'yglx', newVal: newVal, oldVal: oldVal });
     }
 
     /**
@@ -2184,18 +1826,6 @@ export default class RYInfoFormBase extends Vue implements ControlInterface {
     }
 
     /**
-     * 监控表单属性 rank 值
-     *
-     * @param {*} newVal
-     * @param {*} oldVal
-     * @memberof RYInfoForm
-     */
-    @Watch('data.rank')
-    onRankChange(newVal: any, oldVal: any) {
-        this.formDataChange({ name: 'rank', newVal: newVal, oldVal: oldVal });
-    }
-
-    /**
      * 监控表单属性 zw 值
      *
      * @param {*} newVal
@@ -2220,18 +1850,6 @@ export default class RYInfoFormBase extends Vue implements ControlInterface {
     }
 
     /**
-     * 监控表单属性 zj 值
-     *
-     * @param {*} newVal
-     * @param {*} oldVal
-     * @memberof RYInfoForm
-     */
-    @Watch('data.zj')
-    onZjChange(newVal: any, oldVal: any) {
-        this.formDataChange({ name: 'zj', newVal: newVal, oldVal: oldVal });
-    }
-
-    /**
      * 监控表单属性 cjgzsj 值
      *
      * @param {*} newVal
@@ -2241,30 +1859,6 @@ export default class RYInfoFormBase extends Vue implements ControlInterface {
     @Watch('data.cjgzsj')
     onCjgzsjChange(newVal: any, oldVal: any) {
         this.formDataChange({ name: 'cjgzsj', newVal: newVal, oldVal: oldVal });
-    }
-
-    /**
-     * 监控表单属性 tozjdate 值
-     *
-     * @param {*} newVal
-     * @param {*} oldVal
-     * @memberof RYInfoForm
-     */
-    @Watch('data.tozjdate')
-    onTozjdateChange(newVal: any, oldVal: any) {
-        this.formDataChange({ name: 'tozjdate', newVal: newVal, oldVal: oldVal });
-    }
-
-    /**
-     * 监控表单属性 dzjbjsj 值
-     *
-     * @param {*} newVal
-     * @param {*} oldVal
-     * @memberof RYInfoForm
-     */
-    @Watch('data.dzjbjsj')
-    onDzjbjsjChange(newVal: any, oldVal: any) {
-        this.formDataChange({ name: 'dzjbjsj', newVal: newVal, oldVal: oldVal });
     }
 
     /**
@@ -2280,66 +1874,6 @@ export default class RYInfoFormBase extends Vue implements ControlInterface {
     }
 
     /**
-     * 监控表单属性 gzzt 值
-     *
-     * @param {*} newVal
-     * @param {*} oldVal
-     * @memberof RYInfoForm
-     */
-    @Watch('data.gzzt')
-    onGzztChange(newVal: any, oldVal: any) {
-        this.formDataChange({ name: 'gzzt', newVal: newVal, oldVal: oldVal });
-    }
-
-    /**
-     * 监控表单属性 gzzz 值
-     *
-     * @param {*} newVal
-     * @param {*} oldVal
-     * @memberof RYInfoForm
-     */
-    @Watch('data.gzzz')
-    onGzzzChange(newVal: any, oldVal: any) {
-        this.formDataChange({ name: 'gzzz', newVal: newVal, oldVal: oldVal });
-    }
-
-    /**
-     * 监控表单属性 gzbm 值
-     *
-     * @param {*} newVal
-     * @param {*} oldVal
-     * @memberof RYInfoForm
-     */
-    @Watch('data.gzbm')
-    onGzbmChange(newVal: any, oldVal: any) {
-        this.formDataChange({ name: 'gzbm', newVal: newVal, oldVal: oldVal });
-    }
-
-    /**
-     * 监控表单属性 gzkssj 值
-     *
-     * @param {*} newVal
-     * @param {*} oldVal
-     * @memberof RYInfoForm
-     */
-    @Watch('data.gzkssj')
-    onGzkssjChange(newVal: any, oldVal: any) {
-        this.formDataChange({ name: 'gzkssj', newVal: newVal, oldVal: oldVal });
-    }
-
-    /**
-     * 监控表单属性 gzjssj 值
-     *
-     * @param {*} newVal
-     * @param {*} oldVal
-     * @memberof RYInfoForm
-     */
-    @Watch('data.gzjssj')
-    onGzjssjChange(newVal: any, oldVal: any) {
-        this.formDataChange({ name: 'gzjssj', newVal: newVal, oldVal: oldVal });
-    }
-
-    /**
      * 监控表单属性 sgyy 值
      *
      * @param {*} newVal
@@ -2349,42 +1883,6 @@ export default class RYInfoFormBase extends Vue implements ControlInterface {
     @Watch('data.sgyy')
     onSgyyChange(newVal: any, oldVal: any) {
         this.formDataChange({ name: 'sgyy', newVal: newVal, oldVal: oldVal });
-    }
-
-    /**
-     * 监控表单属性 pimpersonname2 值
-     *
-     * @param {*} newVal
-     * @param {*} oldVal
-     * @memberof RYInfoForm
-     */
-    @Watch('data.pimpersonname2')
-    onPimpersonname2Change(newVal: any, oldVal: any) {
-        this.formDataChange({ name: 'pimpersonname2', newVal: newVal, oldVal: oldVal });
-    }
-
-    /**
-     * 监控表单属性 pimpersonname3 值
-     *
-     * @param {*} newVal
-     * @param {*} oldVal
-     * @memberof RYInfoForm
-     */
-    @Watch('data.pimpersonname3')
-    onPimpersonname3Change(newVal: any, oldVal: any) {
-        this.formDataChange({ name: 'pimpersonname3', newVal: newVal, oldVal: oldVal });
-    }
-
-    /**
-     * 监控表单属性 sftberp 值
-     *
-     * @param {*} newVal
-     * @param {*} oldVal
-     * @memberof RYInfoForm
-     */
-    @Watch('data.sftberp')
-    onSftberpChange(newVal: any, oldVal: any) {
-        this.formDataChange({ name: 'sftberp', newVal: newVal, oldVal: oldVal });
     }
 
     /**
@@ -2411,42 +1909,6 @@ export default class RYInfoFormBase extends Vue implements ControlInterface {
         this.formDataChange({ name: 'blacklistreasons', newVal: newVal, oldVal: oldVal });
     }
 
-    /**
-     * 监控表单属性 pimpersonid3 值
-     *
-     * @param {*} newVal
-     * @param {*} oldVal
-     * @memberof RYInfoForm
-     */
-    @Watch('data.pimpersonid3')
-    onPimpersonid3Change(newVal: any, oldVal: any) {
-        this.formDataChange({ name: 'pimpersonid3', newVal: newVal, oldVal: oldVal });
-    }
-
-    /**
-     * 监控表单属性 pcmrcxlid 值
-     *
-     * @param {*} newVal
-     * @param {*} oldVal
-     * @memberof RYInfoForm
-     */
-    @Watch('data.pcmrcxlid')
-    onPcmrcxlidChange(newVal: any, oldVal: any) {
-        this.formDataChange({ name: 'pcmrcxlid', newVal: newVal, oldVal: oldVal });
-    }
-
-    /**
-     * 监控表单属性 pimmajorsetypeid 值
-     *
-     * @param {*} newVal
-     * @param {*} oldVal
-     * @memberof RYInfoForm
-     */
-    @Watch('data.pimmajorsetypeid')
-    onPimmajorsetypeidChange(newVal: any, oldVal: any) {
-        this.formDataChange({ name: 'pimmajorsetypeid', newVal: newVal, oldVal: oldVal });
-    }
-
 
     /**
      * 重置表单项值
@@ -2456,14 +1918,6 @@ export default class RYInfoFormBase extends Vue implements ControlInterface {
      * @memberof RYInfoForm
      */
     public resetFormData({ name, newVal, oldVal }: { name: string, newVal: any, oldVal: any }): void {
-        if (Object.is(name, 'rcxllx')) {
-            this.onFormItemValueChange({ name: 'pimmajorsetypename', value: null });
-            this.onFormItemValueChange({ name: 'pimmajorsetypeid', value: null });
-        }
-        if (Object.is(name, 'rcxllx')) {
-            this.onFormItemValueChange({ name: 'pcmrcxlname', value: null });
-            this.onFormItemValueChange({ name: 'pcmrcxlid', value: null });
-        }
     }
 
     /**
@@ -2556,17 +2010,6 @@ export default class RYInfoFormBase extends Vue implements ControlInterface {
 
 
 
-        if (Object.is(name, '') || Object.is(name, 'rcxllx')) {
-            let ret = false;
-            const _rcxllx = this.data.rcxllx;
-            if (this.$verify.testCond(_rcxllx, 'EQ', 'ZY')) {
-                ret = true;
-            }
-            this.detailsModel.pimmajorsetypename.setVisible(ret);
-        }
-
-
-
 
 
         if (Object.is(name, '') || Object.is(name, 'zzmm')) {
@@ -2599,15 +2042,6 @@ export default class RYInfoFormBase extends Vue implements ControlInterface {
 
 
 
-
-
-
-
-
-
-
-
-
         if (Object.is(name, '') || Object.is(name, 'ygzt')) {
             let ret = false;
             const _ygzt = this.data.ygzt;
@@ -2616,9 +2050,6 @@ export default class RYInfoFormBase extends Vue implements ControlInterface {
             }
             this.detailsModel.sgyy.setVisible(ret);
         }
-
-
-
 
 
         if (Object.is(name, '') || Object.is(name, 'hmd')) {
@@ -2642,9 +2073,6 @@ export default class RYInfoFormBase extends Vue implements ControlInterface {
             }
             this.detailsModel.blacklistreasons.setVisible(ret);
         }
-
-
-
 
 
         if(Object.is(name, 'ygbh')){

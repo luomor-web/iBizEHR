@@ -52,6 +52,22 @@ export default class ORMORGServiceBase extends EntityService {
     }
 
     /**
+     * Update接口方法
+     *
+     * @param {*} [context={}]
+     * @param {*} [data={}]
+     * @param {boolean} [isloading]
+     * @returns {Promise<any>}
+     * @memberof ORMORGServiceBase
+     */
+    public async Update(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        let masterData:any = {};
+        Object.assign(data,masterData);
+            let res:any = await  Http.getInstance().put(`/ormorgs/${context.ormorg}`,data,isloading);
+            return res;
+    }
+
+    /**
      * SynOrg接口方法
      *
      * @param {*} [context={}]
@@ -61,7 +77,103 @@ export default class ORMORGServiceBase extends EntityService {
      * @memberof ORMORGServiceBase
      */
     public async SynOrg(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
-        // URI参数传递情况未实现
+            return Http.getInstance().post(`/ormorgs/${context.ormorg}/synorg`,data,isloading);
+    }
+
+    /**
+     * Remove接口方法
+     *
+     * @param {*} [context={}]
+     * @param {*} [data={}]
+     * @param {boolean} [isloading]
+     * @returns {Promise<any>}
+     * @memberof ORMORGServiceBase
+     */
+    public async Remove(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+            return Http.getInstance().delete(`/ormorgs/${context.ormorg}`,isloading);
+
+    }
+
+    /**
+     * GetDraft接口方法
+     *
+     * @param {*} [context={}]
+     * @param {*} [data={}]
+     * @param {boolean} [isloading]
+     * @returns {Promise<any>}
+     * @memberof ORMORGServiceBase
+     */
+    public async GetDraft(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        let res:any = await  Http.getInstance().get(`/ormorgs/getdraft`,isloading);
+        res.data.ormorg = data.ormorg;
+        return res;
+    }
+
+    /**
+     * Get接口方法
+     *
+     * @param {*} [context={}]
+     * @param {*} [data={}]
+     * @param {boolean} [isloading]
+     * @returns {Promise<any>}
+     * @memberof ORMORGServiceBase
+     */
+    public async Get(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+            let res:any = await Http.getInstance().get(`/ormorgs/${context.ormorg}`,isloading);
+            return res;
+
+    }
+
+    /**
+     * CheckKey接口方法
+     *
+     * @param {*} [context={}]
+     * @param {*} [data={}]
+     * @param {boolean} [isloading]
+     * @returns {Promise<any>}
+     * @memberof ORMORGServiceBase
+     */
+    public async CheckKey(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+            return Http.getInstance().post(`/ormorgs/${context.ormorg}/checkkey`,data,isloading);
+    }
+
+    /**
+     * Create接口方法
+     *
+     * @param {*} [context={}]
+     * @param {*} [data={}]
+     * @param {boolean} [isloading]
+     * @returns {Promise<any>}
+     * @memberof ORMORGServiceBase
+     */
+    public async Create(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        let masterData:any = {};
+        Object.assign(data,masterData);
+        if(!data.srffrontuf || data.srffrontuf !== "1"){
+            data[this.APPDEKEY] = null;
+        }
+        if(data.srffrontuf){
+            delete data.srffrontuf;
+        }
+        let tempContext:any = JSON.parse(JSON.stringify(context));
+        let res:any = await Http.getInstance().post(`/ormorgs`,data,isloading);
+        return res;
+    }
+
+    /**
+     * Save接口方法
+     *
+     * @param {*} [context={}]
+     * @param {*} [data={}]
+     * @param {boolean} [isloading]
+     * @returns {Promise<any>}
+     * @memberof ORMORGServiceBase
+     */
+    public async Save(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        let masterData:any = {};
+        Object.assign(data,masterData);
+            let res:any = await  Http.getInstance().post(`/ormorgs/${context.ormorg}/save`,data,isloading);
+            return res;
     }
 
     /**
@@ -75,7 +187,7 @@ export default class ORMORGServiceBase extends EntityService {
      */
     public async FetchALLSIGNORG(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
         let tempData:any = JSON.parse(JSON.stringify(data));
-        return Http.getInstance().get(`/ormorgs/select`,tempData,isloading);
+        return Http.getInstance().get(`/ormorgs/fetchallsignorg`,tempData,isloading);
     }
 
     /**
@@ -89,7 +201,7 @@ export default class ORMORGServiceBase extends EntityService {
      */
     public async FetchAllLevelTwoOrg2(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
         let tempData:any = JSON.parse(JSON.stringify(data));
-        return Http.getInstance().get(`/ormorgs/select`,tempData,isloading);
+        return Http.getInstance().get(`/ormorgs/fetchallleveltwoorg2`,tempData,isloading);
     }
 
     /**
@@ -103,7 +215,7 @@ export default class ORMORGServiceBase extends EntityService {
      */
     public async FetchOrglist_Profile(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
         let tempData:any = JSON.parse(JSON.stringify(data));
-        return Http.getInstance().get(`/ormorgs/select`,tempData,isloading);
+        return Http.getInstance().get(`/ormorgs/fetchorglist_profile`,tempData,isloading);
     }
 
     /**
@@ -117,7 +229,7 @@ export default class ORMORGServiceBase extends EntityService {
      */
     public async FetchREP_ORG(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
         let tempData:any = JSON.parse(JSON.stringify(data));
-        return Http.getInstance().get(`/ormorgs/select`,tempData,isloading);
+        return Http.getInstance().get(`/ormorgs/fetchrep_org`,tempData,isloading);
     }
 
     /**
@@ -131,7 +243,7 @@ export default class ORMORGServiceBase extends EntityService {
      */
     public async FetchAuthOrg(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
         let tempData:any = JSON.parse(JSON.stringify(data));
-        return Http.getInstance().get(`/ormorgs/select`,tempData,isloading);
+        return Http.getInstance().get(`/ormorgs/fetchauthorg`,tempData,isloading);
     }
 
     /**
@@ -145,7 +257,7 @@ export default class ORMORGServiceBase extends EntityService {
      */
     public async FetchGSGWZY(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
         let tempData:any = JSON.parse(JSON.stringify(data));
-        return Http.getInstance().get(`/ormorgs/select`,tempData,isloading);
+        return Http.getInstance().get(`/ormorgs/fetchgsgwzy`,tempData,isloading);
     }
 
     /**
@@ -159,7 +271,7 @@ export default class ORMORGServiceBase extends EntityService {
      */
     public async FetchSubSubOrg(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
         let tempData:any = JSON.parse(JSON.stringify(data));
-        return Http.getInstance().get(`/ormorgs/select`,tempData,isloading);
+        return Http.getInstance().get(`/ormorgs/fetchsubsuborg`,tempData,isloading);
     }
 
     /**
@@ -173,7 +285,7 @@ export default class ORMORGServiceBase extends EntityService {
      */
     public async FetchDefault(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
         let tempData:any = JSON.parse(JSON.stringify(data));
-        return Http.getInstance().get(`/ormorgs/select`,tempData,isloading);
+        return Http.getInstance().get(`/ormorgs/fetchdefault`,tempData,isloading);
     }
 
     /**
@@ -187,7 +299,7 @@ export default class ORMORGServiceBase extends EntityService {
      */
     public async FetchCurChild(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
         let tempData:any = JSON.parse(JSON.stringify(data));
-        return Http.getInstance().get(`/ormorgs/select`,tempData,isloading);
+        return Http.getInstance().get(`/ormorgs/fetchcurchild`,tempData,isloading);
     }
 
     /**
@@ -201,7 +313,7 @@ export default class ORMORGServiceBase extends EntityService {
      */
     public async FetchSJYXZZ(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
         let tempData:any = JSON.parse(JSON.stringify(data));
-        return Http.getInstance().get(`/ormorgs/select`,tempData,isloading);
+        return Http.getInstance().get(`/ormorgs/fetchsjyxzz`,tempData,isloading);
     }
 
     /**
@@ -215,7 +327,7 @@ export default class ORMORGServiceBase extends EntityService {
      */
     public async FetchREP_ORGPNUM(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
         let tempData:any = JSON.parse(JSON.stringify(data));
-        return Http.getInstance().get(`/ormorgs/select`,tempData,isloading);
+        return Http.getInstance().get(`/ormorgs/fetchrep_orgpnum`,tempData,isloading);
     }
 
     /**
@@ -229,7 +341,7 @@ export default class ORMORGServiceBase extends EntityService {
      */
     public async FetchKZSJZZXZ(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
         let tempData:any = JSON.parse(JSON.stringify(data));
-        return Http.getInstance().get(`/ormorgs/select`,tempData,isloading);
+        return Http.getInstance().get(`/ormorgs/fetchkzsjzzxz`,tempData,isloading);
     }
 
     /**
@@ -243,7 +355,7 @@ export default class ORMORGServiceBase extends EntityService {
      */
     public async FetchDanQian(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
         let tempData:any = JSON.parse(JSON.stringify(data));
-        return Http.getInstance().get(`/ormorgs/select`,tempData,isloading);
+        return Http.getInstance().get(`/ormorgs/fetchdanqian`,tempData,isloading);
     }
 
     /**
@@ -257,7 +369,7 @@ export default class ORMORGServiceBase extends EntityService {
      */
     public async FetchAllLevelTwoOrg(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
         let tempData:any = JSON.parse(JSON.stringify(data));
-        return Http.getInstance().get(`/ormorgs/select`,tempData,isloading);
+        return Http.getInstance().get(`/ormorgs/fetchallleveltwoorg`,tempData,isloading);
     }
 
     /**
@@ -271,7 +383,7 @@ export default class ORMORGServiceBase extends EntityService {
      */
     public async FetchSubOrg(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
         let tempData:any = JSON.parse(JSON.stringify(data));
-        return Http.getInstance().get(`/ormorgs/select`,tempData,isloading);
+        return Http.getInstance().get(`/ormorgs/fetchsuborg`,tempData,isloading);
     }
 
     /**
@@ -285,7 +397,7 @@ export default class ORMORGServiceBase extends EntityService {
      */
     public async FetchHTGLDW(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
         let tempData:any = JSON.parse(JSON.stringify(data));
-        return Http.getInstance().get(`/ormorgs/select`,tempData,isloading);
+        return Http.getInstance().get(`/ormorgs/fetchhtgldw`,tempData,isloading);
     }
 
     /**
@@ -299,7 +411,7 @@ export default class ORMORGServiceBase extends EntityService {
      */
     public async FetchKZXLXZ(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
         let tempData:any = JSON.parse(JSON.stringify(data));
-        return Http.getInstance().get(`/ormorgs/select`,tempData,isloading);
+        return Http.getInstance().get(`/ormorgs/fetchkzxlxz`,tempData,isloading);
     }
 
     /**
@@ -313,7 +425,7 @@ export default class ORMORGServiceBase extends EntityService {
      */
     public async FetchAuthSJYXZZ(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
         let tempData:any = JSON.parse(JSON.stringify(data));
-        return Http.getInstance().get(`/ormorgs/select`,tempData,isloading);
+        return Http.getInstance().get(`/ormorgs/fetchauthsjyxzz`,tempData,isloading);
     }
 
     /**
@@ -327,7 +439,7 @@ export default class ORMORGServiceBase extends EntityService {
      */
     public async FetchUseByFP(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
         let tempData:any = JSON.parse(JSON.stringify(data));
-        return Http.getInstance().get(`/ormorgs/select`,tempData,isloading);
+        return Http.getInstance().get(`/ormorgs/fetchusebyfp`,tempData,isloading);
     }
 
     /**
@@ -341,6 +453,6 @@ export default class ORMORGServiceBase extends EntityService {
      */
     public async FetchCurPorg(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
         let tempData:any = JSON.parse(JSON.stringify(data));
-        return Http.getInstance().get(`/ormorgs/select`,tempData,isloading);
+        return Http.getInstance().get(`/ormorgs/fetchcurporg`,tempData,isloading);
     }
 }
