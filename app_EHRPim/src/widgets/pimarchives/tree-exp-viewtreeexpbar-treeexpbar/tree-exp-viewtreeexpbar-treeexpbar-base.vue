@@ -234,7 +234,7 @@ export default class TreeExpViewtreeexpbarBase extends Vue implements ControlInt
      * @type {number}
      * @memberof TreeExpViewtreeexpbarBase
      */
-    public ctrlWidth:number = 0;
+    public ctrlWidth:number = 250;
 
     /**
      * 过滤值

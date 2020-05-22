@@ -46,9 +46,6 @@ public class TRMDUTYCADRESServiceImpl extends ServiceImpl<TRMDUTYCADRESMapper, T
 
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.common.service.IOrgSectorService orgsectorService;
-    @Autowired
-    @Lazy
     private cn.ibizlab.ehr.core.orm.service.IORMDUTYService ormdutyService;
     @Autowired
     @Lazy
@@ -197,16 +194,6 @@ public class TRMDUTYCADRESServiceImpl extends ServiceImpl<TRMDUTYCADRESMapper, T
 
 
 	@Override
-    public List<TRMDUTYCADRES> selectByOrgsectorid(String orgsectorid) {
-        return baseMapper.selectByOrgsectorid(orgsectorid);
-    }
-
-    @Override
-    public void removeByOrgsectorid(String orgsectorid) {
-        this.remove(new QueryWrapper<TRMDUTYCADRES>().eq("orgsectorid",orgsectorid));
-    }
-
-	@Override
     public List<TRMDUTYCADRES> selectByOrmdutyid(String ormdutyid) {
         return baseMapper.selectByOrmdutyid(ormdutyid);
     }
@@ -302,17 +289,6 @@ public class TRMDUTYCADRESServiceImpl extends ServiceImpl<TRMDUTYCADRESMapper, T
      * @param et
      */
     private void fillParentData(TRMDUTYCADRES et){
-        //实体关系[DER1N_TRMDUTYCADRES_ORGSECTOR_ORGSECTORID]
-        if(!ObjectUtils.isEmpty(et.getOrgsectorid())){
-            cn.ibizlab.ehr.core.common.domain.OrgSector orgsector=et.getOrgsector();
-            if(ObjectUtils.isEmpty(orgsector)){
-                cn.ibizlab.ehr.core.common.domain.OrgSector majorEntity=orgsectorService.get(et.getOrgsectorid());
-                et.setOrgsector(majorEntity);
-                orgsector=majorEntity;
-            }
-            et.setShortname(orgsector.getShortname());
-            et.setOrgsectorname(orgsector.getOrgsectorname());
-        }
         //实体关系[DER1N_TRMDUTYCADRES_ORMDUTY_ORMDUTYID]
         if(!ObjectUtils.isEmpty(et.getOrmdutyid())){
             cn.ibizlab.ehr.core.orm.domain.ORMDUTY ormduty=et.getOrmduty();

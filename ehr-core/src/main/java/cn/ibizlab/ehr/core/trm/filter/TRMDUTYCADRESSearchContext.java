@@ -132,20 +132,6 @@ public class TRMDUTYCADRESSearchContext extends QueryWrapperContext<TRMDUTYCADRE
             this.getSelectCond().like("pimpersonname2", n_pimpersonname2_like);
         }
     }
-	private String n_orgsectorname_eq;//[部门/项目]
-	public void setN_orgsectorname_eq(String n_orgsectorname_eq) {
-        this.n_orgsectorname_eq = n_orgsectorname_eq;
-        if(!ObjectUtils.isEmpty(this.n_orgsectorname_eq)){
-            this.getSelectCond().eq("orgsectorname", n_orgsectorname_eq);
-        }
-    }
-	private String n_orgsectorname_like;//[部门/项目]
-	public void setN_orgsectorname_like(String n_orgsectorname_like) {
-        this.n_orgsectorname_like = n_orgsectorname_like;
-        if(!ObjectUtils.isEmpty(this.n_orgsectorname_like)){
-            this.getSelectCond().like("orgsectorname", n_orgsectorname_like);
-        }
-    }
 	private String n_ormorgsectorname_eq;//[拟任部门]
 	public void setN_ormorgsectorname_eq(String n_ormorgsectorname_eq) {
         this.n_ormorgsectorname_eq = n_ormorgsectorname_eq;
@@ -179,13 +165,6 @@ public class TRMDUTYCADRESSearchContext extends QueryWrapperContext<TRMDUTYCADRE
         this.n_ormpostid_eq = n_ormpostid_eq;
         if(!ObjectUtils.isEmpty(this.n_ormpostid_eq)){
             this.getSelectCond().eq("ormpostid", n_ormpostid_eq);
-        }
-    }
-	private String n_orgsectorid_eq;//[部门标识]
-	public void setN_orgsectorid_eq(String n_orgsectorid_eq) {
-        this.n_orgsectorid_eq = n_orgsectorid_eq;
-        if(!ObjectUtils.isEmpty(this.n_orgsectorid_eq)){
-            this.getSelectCond().eq("orgsectorid", n_orgsectorid_eq);
         }
     }
 	private String n_pimpersonid2_eq;//[人员信息标识]

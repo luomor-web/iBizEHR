@@ -41,8 +41,6 @@ public interface ITRMDUTYCADRESService extends IService<TRMDUTYCADRES>{
     void removeBatch(Collection<String> idList) ;
     Page<TRMDUTYCADRES> searchCurCXFW(TRMDUTYCADRESSearchContext context) ;
     Page<TRMDUTYCADRES> searchDefault(TRMDUTYCADRESSearchContext context) ;
-    List<TRMDUTYCADRES> selectByOrgsectorid(String orgsectorid) ;
-    void removeByOrgsectorid(String orgsectorid) ;
     List<TRMDUTYCADRES> selectByOrmdutyid(String ormdutyid) ;
     void removeByOrmdutyid(String ormdutyid) ;
     List<TRMDUTYCADRES> selectByOrmorgsectorid(String orgsectorid) ;

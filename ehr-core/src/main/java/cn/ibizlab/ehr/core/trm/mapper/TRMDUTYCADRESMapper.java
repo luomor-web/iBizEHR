@@ -63,8 +63,6 @@ public interface TRMDUTYCADRESMapper extends BaseMapper<TRMDUTYCADRES>{
     @Delete("${sql}")
     boolean deleteBySQL(@Param("sql") String sql, @Param("et")Map param);
 
-    List<TRMDUTYCADRES> selectByOrgsectorid(@Param("orgsectorid") Serializable orgsectorid) ;
-
     List<TRMDUTYCADRES> selectByOrmdutyid(@Param("ormdutyid") Serializable ormdutyid) ;
 
     List<TRMDUTYCADRES> selectByOrmorgsectorid(@Param("orgsectorid") Serializable orgsectorid) ;
