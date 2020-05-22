@@ -84,7 +84,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('lx')">
-                <el-table-column show-overflow-tooltip :prop="'lx'" :label="$t('entities.pimexitandentry.main_grid.columns.lx')" :width="150"  :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'lx'" :label="$t('entities.pimexitandentry.main_grid.columns.lx')" :width="100"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
             <codelist :value="row.lx" tag='PIMCL_EXITANDENTRY_TYPE' codelistType='STATIC' ></codelist>
@@ -93,7 +93,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('sy')">
-                <el-table-column show-overflow-tooltip :prop="'sy'" :label="$t('entities.pimexitandentry.main_grid.columns.sy')" :min-width="1"  :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'sy'" :label="$t('entities.pimexitandentry.main_grid.columns.sy')" :width="200"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.sy}}</span>
                     </template>
@@ -105,13 +105,6 @@
                         <template >
             <codelist :value="row.workflowstate" tag='PIMCL_EXITANDENTRY_WFState' codelistType='STATIC' ></codelist>
                         </template>
-                    </template>
-                </el-table-column>
-            </template>
-            <template v-if="getColumnState('updatedate')">
-                <el-table-column show-overflow-tooltip :prop="'updatedate'" :label="$t('entities.pimexitandentry.main_grid.columns.updatedate')" :width="180"  :align="'left'" :sortable="'custom'">
-                    <template v-slot="{row,column}">
-                        <app-format-data format="%1$tY-%1$tm-%1$td" :data="row.updatedate"></app-format-data>
                     </template>
                 </el-table-column>
             </template>
@@ -651,19 +644,12 @@ export default class MainBase extends Vue implements ControlInterface {
             label: '事由',
             langtag: 'entities.pimexitandentry.main_grid.columns.sy',
             show: true,
-            util: 'STAR'
+            util: 'PX'
         },
         {
             name: 'workflowstate',
             label: '流程状态',
             langtag: 'entities.pimexitandentry.main_grid.columns.workflowstate',
-            show: true,
-            util: 'PX'
-        },
-        {
-            name: 'updatedate',
-            label: '更新时间',
-            langtag: 'entities.pimexitandentry.main_grid.columns.updatedate',
             show: true,
             util: 'PX'
         },

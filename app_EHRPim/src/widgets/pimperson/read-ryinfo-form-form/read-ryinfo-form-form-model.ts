@@ -228,11 +228,6 @@ export default class ReadRYInfoFormModel {
         dataType: 'SSCODELIST',
       },
       {
-        name: 'zj',
-        prop: 'zj',
-        dataType: 'SSCODELIST',
-      },
-      {
         name: 'postaladdress',
         prop: 'postaladdress',
         dataType: 'TEXT',
@@ -248,59 +243,14 @@ export default class ReadRYInfoFormModel {
         dataType: 'DATE',
       },
       {
-        name: 'tozjdate',
-        prop: 'tozjdate',
-        dataType: 'DATE',
-      },
-      {
-        name: 'dzjbjsj',
-        prop: 'dzjbjsj',
-        dataType: 'DATE',
-      },
-      {
         name: 'rzqd',
         prop: 'rzqd',
         dataType: 'SSCODELIST',
       },
       {
-        name: 'gzzt',
-        prop: 'gzzt',
-        dataType: 'SSCODELIST',
-      },
-      {
-        name: 'gzzz',
-        prop: 'gzzz',
-        dataType: 'TEXT',
-      },
-      {
-        name: 'gzbm',
-        prop: 'gzbm',
-        dataType: 'TEXT',
-      },
-      {
-        name: 'gzkssj',
-        prop: 'gzkssj',
-        dataType: 'DATE',
-      },
-      {
-        name: 'gzjssj',
-        prop: 'gzjssj',
-        dataType: 'DATE',
-      },
-      {
         name: 'ygzt',
         prop: 'ygzt',
         dataType: 'SSCODELIST',
-      },
-      {
-        name: 'pimpersonname2',
-        prop: 'pimpersonname2',
-        dataType: 'PICKUPTEXT',
-      },
-      {
-        name: 'pimpersonname3',
-        prop: 'pimpersonname3',
-        dataType: 'PICKUPTEXT',
       },
       {
         name: 'hmd',

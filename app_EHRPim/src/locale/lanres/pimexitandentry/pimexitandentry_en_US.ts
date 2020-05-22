@@ -419,7 +419,6 @@ export default {
 			lx: "类型",
 			sy: "事由",
 			workflowstate: "流程状态",
-			updatedate: "更新时间",
 		},
 		uiactions: {
 		},

@@ -317,13 +317,6 @@
 </app-form-item>
 
 </i-col>
-<i-col v-show="detailsModel.zj.visible" :style="{}"  :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
-    <app-form-item name='zj' :itemRules="this.rules.zj" class='' :caption="$t('entities.pimperson.readryinfoform_form.details.zj')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.zj.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-span   name='zj'
-:value="data.zj" tag='PIMCL_ZJ' codelistType='DYNAMIC' style=""></app-span>
-</app-form-item>
-
-</i-col>
 <i-col v-show="detailsModel.postaladdress.visible" :style="{}"  :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
     <app-form-item name='postaladdress' :itemRules="this.rules.postaladdress" class='' :caption="$t('entities.pimperson.readryinfoform_form.details.postaladdress')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.postaladdress.error" :isEmptyCaption="false" labelPos="LEFT">
     <app-span   name='postaladdress'
@@ -345,20 +338,6 @@
 </app-form-item>
 
 </i-col>
-<i-col v-show="detailsModel.tozjdate.visible" :style="{}"  :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
-    <app-form-item name='tozjdate' :itemRules="this.rules.tozjdate" class='' :caption="$t('entities.pimperson.readryinfoform_form.details.tozjdate')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.tozjdate.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-span   name='tozjdate'
-:value="data.tozjdate" style=""></app-span>
-</app-form-item>
-
-</i-col>
-<i-col v-show="detailsModel.dzjbjsj.visible" :style="{}"  :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
-    <app-form-item name='dzjbjsj' :itemRules="this.rules.dzjbjsj" class='' :caption="$t('entities.pimperson.readryinfoform_form.details.dzjbjsj')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.dzjbjsj.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-span   name='dzjbjsj'
-:value="data.dzjbjsj" style=""></app-span>
-</app-form-item>
-
-</i-col>
 <i-col v-show="detailsModel.rzqd.visible" :style="{}"  :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
     <app-form-item name='rzqd' :itemRules="this.rules.rzqd" class='' :caption="$t('entities.pimperson.readryinfoform_form.details.rzqd')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.rzqd.error" :isEmptyCaption="false" labelPos="LEFT">
     <app-span   name='rzqd'
@@ -366,59 +345,10 @@
 </app-form-item>
 
 </i-col>
-<i-col v-show="detailsModel.gzzt.visible" :style="{}"  :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
-    <app-form-item name='gzzt' :itemRules="this.rules.gzzt" class='' :caption="$t('entities.pimperson.readryinfoform_form.details.gzzt')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.gzzt.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-span   name='gzzt'
-:value="data.gzzt" tag='PIMCL_GZZT' codelistType='STATIC' style=""></app-span>
-</app-form-item>
-
-</i-col>
-<i-col v-show="detailsModel.gzzz.visible" :style="{}"  :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
-    <app-form-item name='gzzz' :itemRules="this.rules.gzzz" class='' :caption="$t('entities.pimperson.readryinfoform_form.details.gzzz')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.gzzz.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-span   name='gzzz'
-:value="data.gzzz" style=""></app-span>
-</app-form-item>
-
-</i-col>
-<i-col v-show="detailsModel.gzbm.visible" :style="{}"  :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
-    <app-form-item name='gzbm' :itemRules="this.rules.gzbm" class='' :caption="$t('entities.pimperson.readryinfoform_form.details.gzbm')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.gzbm.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-span   name='gzbm'
-:value="data.gzbm" style=""></app-span>
-</app-form-item>
-
-</i-col>
-<i-col v-show="detailsModel.gzkssj.visible" :style="{}"  :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
-    <app-form-item name='gzkssj' :itemRules="this.rules.gzkssj" class='' :caption="$t('entities.pimperson.readryinfoform_form.details.gzkssj')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.gzkssj.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-span   name='gzkssj'
-:value="data.gzkssj" style=""></app-span>
-</app-form-item>
-
-</i-col>
-<i-col v-show="detailsModel.gzjssj.visible" :style="{}"  :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
-    <app-form-item name='gzjssj' :itemRules="this.rules.gzjssj" class='' :caption="$t('entities.pimperson.readryinfoform_form.details.gzjssj')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.gzjssj.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-span   name='gzjssj'
-:value="data.gzjssj" style=""></app-span>
-</app-form-item>
-
-</i-col>
 <i-col v-show="detailsModel.ygzt.visible" :style="{}"  :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
     <app-form-item name='ygzt' :itemRules="this.rules.ygzt" class='' :caption="$t('entities.pimperson.readryinfoform_form.details.ygzt')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.ygzt.error" :isEmptyCaption="false" labelPos="LEFT">
     <app-span   name='ygzt'
 :value="data.ygzt" tag='PIMCL_YGZT' codelistType='DYNAMIC' style=""></app-span>
-</app-form-item>
-
-</i-col>
-<i-col v-show="detailsModel.pimpersonname2.visible" :style="{}"  :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
-    <app-form-item name='pimpersonname2' :itemRules="this.rules.pimpersonname2" class='' :caption="$t('entities.pimperson.readryinfoform_form.details.pimpersonname2')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.pimpersonname2.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-span   name='pimpersonname2'
-:value="data.pimpersonname2" style=""></app-span>
-</app-form-item>
-
-</i-col>
-<i-col v-show="detailsModel.pimpersonname3.visible" :style="{}"  :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
-    <app-form-item name='pimpersonname3' :itemRules="this.rules.pimpersonname3" class='' :caption="$t('entities.pimperson.readryinfoform_form.details.pimpersonname3')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.pimpersonname3.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-span   name='pimpersonname3'
-:value="data.pimpersonname3" style=""></app-span>
 </app-form-item>
 
 </i-col>
@@ -800,21 +730,11 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
         ahtc: null,
         xx: null,
         sfdszn: null,
-        zj: null,
         postaladdress: null,
         rdsj1: null,
         rtsj: null,
-        tozjdate: null,
-        dzjbjsj: null,
         rzqd: null,
-        gzzt: null,
-        gzzz: null,
-        gzbm: null,
-        gzkssj: null,
-        gzjssj: null,
         ygzt: null,
-        pimpersonname2: null,
-        pimpersonname3: null,
         hmd: null,
         ormorgid: null,
         ormorgsectorid: null,
@@ -1125,12 +1045,6 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
             { required: false, type: 'string', message: '有独生子女证 值不能为空', trigger: 'change' },
             { required: false, type: 'string', message: '有独生子女证 值不能为空', trigger: 'blur' },
         ],
-        zj: [
-            { type: 'string', message: '专家类型 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '专家类型 值必须为字符串类型', trigger: 'blur' },
-            { required: false, type: 'string', message: '专家类型 值不能为空', trigger: 'change' },
-            { required: false, type: 'string', message: '专家类型 值不能为空', trigger: 'blur' },
-        ],
         postaladdress: [
             { type: 'string', message: '通讯地址 值必须为字符串类型', trigger: 'change' },
             { type: 'string', message: '通讯地址 值必须为字符串类型', trigger: 'blur' },
@@ -1149,71 +1063,17 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
             { required: false, type: 'string', message: '入团时间 值不能为空', trigger: 'change' },
             { required: false, type: 'string', message: '入团时间 值不能为空', trigger: 'blur' },
         ],
-        tozjdate: [
-            { type: 'string', message: '到建筑系统时间 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '到建筑系统时间 值必须为字符串类型', trigger: 'blur' },
-            { required: false, type: 'string', message: '到建筑系统时间 值不能为空', trigger: 'change' },
-            { required: false, type: 'string', message: '到建筑系统时间 值不能为空', trigger: 'blur' },
-        ],
-        dzjbjsj: [
-            { type: 'string', message: '到局时间 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '到局时间 值必须为字符串类型', trigger: 'blur' },
-            { required: false, type: 'string', message: '到局时间 值不能为空', trigger: 'change' },
-            { required: false, type: 'string', message: '到局时间 值不能为空', trigger: 'blur' },
-        ],
         rzqd: [
             { type: 'string', message: '入职渠道 值必须为字符串类型', trigger: 'change' },
             { type: 'string', message: '入职渠道 值必须为字符串类型', trigger: 'blur' },
             { required: false, type: 'string', message: '入职渠道 值不能为空', trigger: 'change' },
             { required: false, type: 'string', message: '入职渠道 值不能为空', trigger: 'blur' },
         ],
-        gzzt: [
-            { type: 'string', message: '挂职状态 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '挂职状态 值必须为字符串类型', trigger: 'blur' },
-            { required: false, type: 'string', message: '挂职状态 值不能为空', trigger: 'change' },
-            { required: false, type: 'string', message: '挂职状态 值不能为空', trigger: 'blur' },
-        ],
-        gzzz: [
-            { type: 'string', message: '挂职组织 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '挂职组织 值必须为字符串类型', trigger: 'blur' },
-            { required: false, type: 'string', message: '挂职组织 值不能为空', trigger: 'change' },
-            { required: false, type: 'string', message: '挂职组织 值不能为空', trigger: 'blur' },
-        ],
-        gzbm: [
-            { type: 'string', message: '挂职部门 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '挂职部门 值必须为字符串类型', trigger: 'blur' },
-            { required: false, type: 'string', message: '挂职部门 值不能为空', trigger: 'change' },
-            { required: false, type: 'string', message: '挂职部门 值不能为空', trigger: 'blur' },
-        ],
-        gzkssj: [
-            { type: 'string', message: '挂职开始时间 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '挂职开始时间 值必须为字符串类型', trigger: 'blur' },
-            { required: false, type: 'string', message: '挂职开始时间 值不能为空', trigger: 'change' },
-            { required: false, type: 'string', message: '挂职开始时间 值不能为空', trigger: 'blur' },
-        ],
-        gzjssj: [
-            { type: 'string', message: '挂职结束时间 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '挂职结束时间 值必须为字符串类型', trigger: 'blur' },
-            { required: false, type: 'string', message: '挂职结束时间 值不能为空', trigger: 'change' },
-            { required: false, type: 'string', message: '挂职结束时间 值不能为空', trigger: 'blur' },
-        ],
         ygzt: [
             { type: 'string', message: '员工状态 值必须为字符串类型', trigger: 'change' },
             { type: 'string', message: '员工状态 值必须为字符串类型', trigger: 'blur' },
             { required: false, type: 'string', message: '员工状态 值不能为空', trigger: 'change' },
             { required: false, type: 'string', message: '员工状态 值不能为空', trigger: 'blur' },
-        ],
-        pimpersonname2: [
-            { type: 'string', message: '思想导师 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '思想导师 值必须为字符串类型', trigger: 'blur' },
-            { required: false, type: 'string', message: '思想导师 值不能为空', trigger: 'change' },
-            { required: false, type: 'string', message: '思想导师 值不能为空', trigger: 'blur' },
-        ],
-        pimpersonname3: [
-            { type: 'string', message: '业务导师 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '业务导师 值必须为字符串类型', trigger: 'blur' },
-            { required: false, type: 'string', message: '业务导师 值不能为空', trigger: 'change' },
-            { required: false, type: 'string', message: '业务导师 值不能为空', trigger: 'blur' },
         ],
         hmd: [
             { type: 'string', message: '列入黑名单 值必须为字符串类型', trigger: 'change' },
@@ -1366,35 +1226,15 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
 , 
         sfdszn: new FormItemModel({ caption: '有独生子女证', detailType: 'FORMITEM', name: 'sfdszn', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 0 })
 , 
-        zj: new FormItemModel({ caption: '专家类型', detailType: 'FORMITEM', name: 'zj', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 0 })
-, 
         postaladdress: new FormItemModel({ caption: '通讯地址', detailType: 'FORMITEM', name: 'postaladdress', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 0 })
 , 
         rdsj1: new FormItemModel({ caption: '入党时间', detailType: 'FORMITEM', name: 'rdsj1', visible: false, isShowCaption: true, form: this, disabled: false, enableCond: 0 })
 , 
         rtsj: new FormItemModel({ caption: '入团时间', detailType: 'FORMITEM', name: 'rtsj', visible: false, isShowCaption: true, form: this, disabled: false, enableCond: 0 })
 , 
-        tozjdate: new FormItemModel({ caption: '到建筑系统时间', detailType: 'FORMITEM', name: 'tozjdate', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 0 })
-, 
-        dzjbjsj: new FormItemModel({ caption: '到局时间', detailType: 'FORMITEM', name: 'dzjbjsj', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 0 })
-, 
         rzqd: new FormItemModel({ caption: '入职渠道', detailType: 'FORMITEM', name: 'rzqd', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 0 })
 , 
-        gzzt: new FormItemModel({ caption: '挂职状态', detailType: 'FORMITEM', name: 'gzzt', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 0 })
-, 
-        gzzz: new FormItemModel({ caption: '挂职组织', detailType: 'FORMITEM', name: 'gzzz', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 0 })
-, 
-        gzbm: new FormItemModel({ caption: '挂职部门', detailType: 'FORMITEM', name: 'gzbm', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 0 })
-, 
-        gzkssj: new FormItemModel({ caption: '挂职开始时间', detailType: 'FORMITEM', name: 'gzkssj', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 0 })
-, 
-        gzjssj: new FormItemModel({ caption: '挂职结束时间', detailType: 'FORMITEM', name: 'gzjssj', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 0 })
-, 
         ygzt: new FormItemModel({ caption: '员工状态', detailType: 'FORMITEM', name: 'ygzt', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 0 })
-, 
-        pimpersonname2: new FormItemModel({ caption: '思想导师', detailType: 'FORMITEM', name: 'pimpersonname2', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 0 })
-, 
-        pimpersonname3: new FormItemModel({ caption: '业务导师', detailType: 'FORMITEM', name: 'pimpersonname3', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 0 })
 , 
         hmd: new FormItemModel({ caption: '列入黑名单', detailType: 'FORMITEM', name: 'hmd', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 0 })
 , 
@@ -1935,18 +1775,6 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
     }
 
     /**
-     * 监控表单属性 zj 值
-     *
-     * @param {*} newVal
-     * @param {*} oldVal
-     * @memberof ReadRYInfoForm
-     */
-    @Watch('data.zj')
-    onZjChange(newVal: any, oldVal: any) {
-        this.formDataChange({ name: 'zj', newVal: newVal, oldVal: oldVal });
-    }
-
-    /**
      * 监控表单属性 postaladdress 值
      *
      * @param {*} newVal
@@ -1983,30 +1811,6 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
     }
 
     /**
-     * 监控表单属性 tozjdate 值
-     *
-     * @param {*} newVal
-     * @param {*} oldVal
-     * @memberof ReadRYInfoForm
-     */
-    @Watch('data.tozjdate')
-    onTozjdateChange(newVal: any, oldVal: any) {
-        this.formDataChange({ name: 'tozjdate', newVal: newVal, oldVal: oldVal });
-    }
-
-    /**
-     * 监控表单属性 dzjbjsj 值
-     *
-     * @param {*} newVal
-     * @param {*} oldVal
-     * @memberof ReadRYInfoForm
-     */
-    @Watch('data.dzjbjsj')
-    onDzjbjsjChange(newVal: any, oldVal: any) {
-        this.formDataChange({ name: 'dzjbjsj', newVal: newVal, oldVal: oldVal });
-    }
-
-    /**
      * 监控表单属性 rzqd 值
      *
      * @param {*} newVal
@@ -2019,66 +1823,6 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
     }
 
     /**
-     * 监控表单属性 gzzt 值
-     *
-     * @param {*} newVal
-     * @param {*} oldVal
-     * @memberof ReadRYInfoForm
-     */
-    @Watch('data.gzzt')
-    onGzztChange(newVal: any, oldVal: any) {
-        this.formDataChange({ name: 'gzzt', newVal: newVal, oldVal: oldVal });
-    }
-
-    /**
-     * 监控表单属性 gzzz 值
-     *
-     * @param {*} newVal
-     * @param {*} oldVal
-     * @memberof ReadRYInfoForm
-     */
-    @Watch('data.gzzz')
-    onGzzzChange(newVal: any, oldVal: any) {
-        this.formDataChange({ name: 'gzzz', newVal: newVal, oldVal: oldVal });
-    }
-
-    /**
-     * 监控表单属性 gzbm 值
-     *
-     * @param {*} newVal
-     * @param {*} oldVal
-     * @memberof ReadRYInfoForm
-     */
-    @Watch('data.gzbm')
-    onGzbmChange(newVal: any, oldVal: any) {
-        this.formDataChange({ name: 'gzbm', newVal: newVal, oldVal: oldVal });
-    }
-
-    /**
-     * 监控表单属性 gzkssj 值
-     *
-     * @param {*} newVal
-     * @param {*} oldVal
-     * @memberof ReadRYInfoForm
-     */
-    @Watch('data.gzkssj')
-    onGzkssjChange(newVal: any, oldVal: any) {
-        this.formDataChange({ name: 'gzkssj', newVal: newVal, oldVal: oldVal });
-    }
-
-    /**
-     * 监控表单属性 gzjssj 值
-     *
-     * @param {*} newVal
-     * @param {*} oldVal
-     * @memberof ReadRYInfoForm
-     */
-    @Watch('data.gzjssj')
-    onGzjssjChange(newVal: any, oldVal: any) {
-        this.formDataChange({ name: 'gzjssj', newVal: newVal, oldVal: oldVal });
-    }
-
-    /**
      * 监控表单属性 ygzt 值
      *
      * @param {*} newVal
@@ -2088,30 +1832,6 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
     @Watch('data.ygzt')
     onYgztChange(newVal: any, oldVal: any) {
         this.formDataChange({ name: 'ygzt', newVal: newVal, oldVal: oldVal });
-    }
-
-    /**
-     * 监控表单属性 pimpersonname2 值
-     *
-     * @param {*} newVal
-     * @param {*} oldVal
-     * @memberof ReadRYInfoForm
-     */
-    @Watch('data.pimpersonname2')
-    onPimpersonname2Change(newVal: any, oldVal: any) {
-        this.formDataChange({ name: 'pimpersonname2', newVal: newVal, oldVal: oldVal });
-    }
-
-    /**
-     * 监控表单属性 pimpersonname3 值
-     *
-     * @param {*} newVal
-     * @param {*} oldVal
-     * @memberof ReadRYInfoForm
-     */
-    @Watch('data.pimpersonname3')
-    onPimpersonname3Change(newVal: any, oldVal: any) {
-        this.formDataChange({ name: 'pimpersonname3', newVal: newVal, oldVal: oldVal });
     }
 
     /**
@@ -2258,7 +1978,6 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
 
 
 
-
         if (Object.is(name, '') || Object.is(name, 'zzmm')) {
             let ret = false;
             const _zzmm = this.data.zzmm;
@@ -2276,15 +1995,6 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
             }
             this.detailsModel.rtsj.setVisible(ret);
         }
-
-
-
-
-
-
-
-
-
 
 
 

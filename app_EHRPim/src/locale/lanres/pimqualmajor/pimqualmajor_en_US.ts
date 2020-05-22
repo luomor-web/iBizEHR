@@ -82,10 +82,9 @@ export default {
 	main_grid: {
 		columns: {
 			zyzgzy: "执业资格名称",
-			pimqualmajorname: "执业资格",
 			qualevel: "级别",
+			pimqualmajorname: "执业资格",
 			quamajor: "专业",
-			gwzs: "岗位类型",
 		},
 		uiactions: {
 		},

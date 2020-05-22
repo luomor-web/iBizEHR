@@ -58,6 +58,7 @@ export default class NATIVEPLACE {
      * @memberof NATIVEPLACE
      */
     public queryParamNames:any ={
+        sort: 'ordervalue,asc'
     }
 
     /**
