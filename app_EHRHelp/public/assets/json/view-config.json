@@ -895,14 +895,6 @@
         "viewname": "ORMDUTYOrgSectorPickupGridView",
         "viewtag": "b7ce0b1b00698891bf19385cb04f687c"
     },
-    "wfstephishtmlview": {
-        "title": "工作流步骤HTML视图",
-        "caption": "工作流步骤***",
-        "viewtype": "DEHTMLVIEW",
-        "viewmodule": "Shp",
-        "viewname": "WFStepHisHtmlView",
-        "viewtag": "b89898b8f8c50e6e9e4a934fc9f06d3f"
-    },
     "ormorgfpxxpickupgridview": {
         "title": "组织选择表格视图",
         "caption": "组织选择表格视图",
@@ -993,7 +985,7 @@
     },
     "ormorgsectorpickupgridview": {
         "title": "部门管理选择表格视图",
-        "caption": "部门管理***",
+        "caption": "部门管理",
         "viewtype": "DEPICKUPGRIDVIEW",
         "viewmodule": "Shp",
         "viewname": "ORMORGSECTORPickupGridView",

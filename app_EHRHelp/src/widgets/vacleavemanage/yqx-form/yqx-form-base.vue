@@ -2,17 +2,7 @@
     <i-form :model="this.data" class='app-form' ref='form'  id='form' style="">
     <input style="display:none;" />
     <row >
-    <tabs :animated="false" name='yqx' :value="detailsModel.form.activiedPage" 
-        @on-click="detailsModel.form.clickPage($event)">
-            <tab-pane v-show="detailsModel.formpage1.visible" name='formpage1' :index="0" tab='yqx' class=''  
-                :label="(h) =>{
-                    return h('span',{
-                        class:'caption'
-                    },[
-                    $t('entities.vacleavemanage.yqx_form.details.formpage1')
-                    ])
-                }">
-                    
+            
 <i-col v-show="detailsModel.group1.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
     <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' :uiActionGroup="detailsModel.group1.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.vacleavemanage.yqx_form.details.group1')" :isShowCaption="false" uiStyle="DEFAULT" :titleBarCloseMode="0" :isInfoGroupMode="false" >    
     <row>
@@ -99,43 +89,6 @@
 </i-col>
 
 
-            </tab-pane> 
-            <tab-pane v-show="detailsModel.formpage2.visible" name='formpage2' :index="1" tab='yqx' class=''  
-                :label="(h) =>{
-                    return h('span',{
-                        class:'caption'
-                    },[
-                    $t('entities.vacleavemanage.yqx_form.details.formpage2')
-                    ])
-                }">
-                    
-<i-col v-show="detailsModel.druipart1.visible" :style="{'height': '600px !important',}"  :lg="{ span: 24, offset: 0 }">
-    <app-form-druipart
-    
-    :formState="formState"
-    :isForbidLoad="this.data.srfuf === '0'"
-    paramItem='vacleavemanage' 
-    :parentdata='{"srfparentdename":"VACLEAVEMANAGE","SRFPARENTTYPE":"CUSTOM"}'
-    :parameters="[
-    ]"
-    :context="context"
-    :viewparams="viewparams"
-    parameterName='vacleavemanage'
-    parentName="VACLEAVEMANAGE"  
-    refviewtype='DEHTMLVIEW' 
-    refreshitems='' 
-    :ignorefieldvaluechange="ignorefieldvaluechange"
-    viewname='wfstep-his-html-view' 
-    :data="JSON.stringify(this.data)" 
-    @drdatasaved="drdatasaved($event)"
-    style="height:600px;overflow: auto;">
-</app-form-druipart>
-
-</i-col>
-
-
-            </tab-pane> 
-    </tabs>
     </row>
 </i-form>
 </template>
@@ -604,10 +557,6 @@ export default class YQXBase extends Vue implements ControlInterface {
 , 
         formpage1: new FormPageModel({ caption: '基本信息', detailType: 'FORMPAGE', name: 'formpage1', visible: true, isShowCaption: true, form: this })
 , 
-        druipart1: new FormDRUIPartModel({ caption: '', detailType: 'DRUIPART', name: 'druipart1', visible: true, isShowCaption: true, form: this })
-, 
-        formpage2: new FormPageModel({ caption: '审批记录', detailType: 'FORMPAGE', name: 'formpage2', visible: true, isShowCaption: true, form: this })
-, 
         srfupdatedate: new FormItemModel({ caption: '更新时间', detailType: 'FORMITEM', name: 'srfupdatedate', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
         srforikey: new FormItemModel({ caption: '', detailType: 'FORMITEM', name: 'srforikey', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
@@ -642,7 +591,6 @@ export default class YQXBase extends Vue implements ControlInterface {
 , 
         vacleavemanageid: new FormItemModel({ caption: '请假管理标识', detailType: 'FORMITEM', name: 'vacleavemanageid', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
-        form: new FormTabPanelModel({ caption: 'form', detailType: 'TABPANEL', name: 'form', visible: true, isShowCaption: true, form: this, tabPages: [{ name: 'formpage1', index: 0, visible: true }, { name: 'formpage2', index: 1, visible: true }] }),
     };
 
     /**
@@ -885,8 +833,6 @@ export default class YQXBase extends Vue implements ControlInterface {
      */
     public formLogic({ name, newVal, oldVal }: { name: string, newVal: any, oldVal: any }): void {
                 
-
-
 
 
 
@@ -1436,7 +1382,7 @@ export default class YQXBase extends Vue implements ControlInterface {
             Object.assign(arg, data);
             Object.assign(arg, this.context);
             if (ifStateNext) {
-                this.drcounter = 2;
+                this.drcounter = 1;
                 if(this.drcounter !== 0){
                     this.drsaveopt = opt;
                     this.formState.next({ type: 'beforesave', data: arg });//先通知关系界面保存

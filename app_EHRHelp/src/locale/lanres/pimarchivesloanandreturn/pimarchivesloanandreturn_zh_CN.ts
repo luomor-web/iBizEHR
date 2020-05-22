@@ -72,16 +72,7 @@ export default {
 		uiactions: {
 		},
 	},
-	default_searchform: {
-		details: {
-			formpage1: '常规条件', 
-			n_pimpersonname_like: '员工姓名', 
-			n_zt_eq: '状态(=)', 
-		},
-		uiactions: {
-		},
-	},
-	gridviewtoolbar2_toolbar: {
+	gridviewtoolbar_toolbar: {
 		deuiaction1: {
 			caption: '新建',
 			tip: '新建',
@@ -90,35 +81,17 @@ export default {
 			caption: '保存',
 			tip: '保存',
 		},
-		deuiaction4: {
+		deuiaction3: {
 			caption: '删除',
 			tip: '删除',
 		},
-		deuiaction3: {
-			caption: '关闭行编辑',
-			tip: '关闭行编辑',
+		deuiaction4: {
+			caption: '导入',
+			tip: '导入',
 		},
-	},
-	gridviewtoolbar_toolbar: {
-		deuiaction1: {
-			caption: '开启行编辑',
-			tip: '开启行编辑',
-		},
-		tbitem16: {
-			caption: '其它',
-			tip: '其它',
-		},
-		tbitem23: {
-			caption: '数据导入',
-			tip: '数据导入',
-		},
-		tbitem13: {
-			caption: '导出数据',
-			tip: '导出数据',
-		},
-		tbitem18: {
-			caption: '帮助',
-			tip: '帮助',
+		deuiaction5: {
+			caption: '导出',
+			tip: '导出',
 		},
 	},
 	editviewtoolbar_toolbar: {

@@ -95,10 +95,6 @@ zuul:
       path: /pimlanguageabilities/**
       serviceId: ehr-webapi
       stripPrefix: false
-    orguser:
-      path: /orgusers/**
-      serviceId: ehr-webapi
-      stripPrefix: false
     wfcore:
       path: /wfcore/**
       serviceId: ibzwf-api

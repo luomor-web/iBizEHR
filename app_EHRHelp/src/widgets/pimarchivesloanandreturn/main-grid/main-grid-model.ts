@@ -105,17 +105,6 @@ export default class MainModel {
           name: 'pimarchivesloanandreturn',
           prop: 'pimarchivesloanandreturnid',
         },
-      {
-        name: 'n_pimpersonname_like',
-        prop: 'n_pimpersonname_like',
-        dataType: 'PICKUPTEXT',
-      },
-      {
-        name: 'n_zt_eq',
-        prop: 'n_zt_eq',
-        dataType: 'SSCODELIST',
-      },
-
         {
           name:'size',
           prop:'size'

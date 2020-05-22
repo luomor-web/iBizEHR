@@ -38,7 +38,7 @@ import com.alibaba.fastjson.JSONObject;
 import org.springframework.util.StringUtils;
 
 /**
- * 实体[用户管理***] 服务对象接口实现
+ * 实体[用户管理] 服务对象接口实现
  */
 @Slf4j
 @Service("ORMUSERServiceImpl")

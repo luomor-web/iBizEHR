@@ -49,7 +49,6 @@ export const viewstate: any = {
             viewaction: '',
             viewdatachange: false,
             refviews: [
-                'b89898b8f8c50e6e9e4a934fc9f06d3f',
                 'edd151ee6faa6806d346d2a96d2dce5e',
                 '5a19a58e9941cb2b0e4f3a6c174cbd45',
             ],
@@ -494,7 +493,6 @@ export const viewstate: any = {
             viewaction: '',
             viewdatachange: false,
             refviews: [
-                'b89898b8f8c50e6e9e4a934fc9f06d3f',
                 'edd151ee6faa6806d346d2a96d2dce5e',
                 '5a19a58e9941cb2b0e4f3a6c174cbd45',
             ],
@@ -545,7 +543,6 @@ export const viewstate: any = {
             viewaction: '',
             viewdatachange: false,
             refviews: [
-                'b89898b8f8c50e6e9e4a934fc9f06d3f',
                 '8bcc6b59d8eb2a403ab018d9a9f42a9f',
                 'e659ffb581767694cfdeffc70644dcd7',
             ],
@@ -634,7 +631,6 @@ export const viewstate: any = {
             viewaction: '',
             viewdatachange: false,
             refviews: [
-                'b89898b8f8c50e6e9e4a934fc9f06d3f',
                 'b7bde6adb20c2ff22ff8005d941e91de',
                 '5a19a58e9941cb2b0e4f3a6c174cbd45',
             ],
@@ -676,15 +672,6 @@ export const viewstate: any = {
             viewdatachange: false,
             refviews: [
                 '83686d68de58d2cc4092599680525ece',
-            ],
-        },
-        {
-            viewtag: 'b89898b8f8c50e6e9e4a934fc9f06d3f',
-            viewmodule: 'Shp',
-            viewname: 'WFStepHisHtmlView',
-            viewaction: '',
-            viewdatachange: false,
-            refviews: [
             ],
         },
         {

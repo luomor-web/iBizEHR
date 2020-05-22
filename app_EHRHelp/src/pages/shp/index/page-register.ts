@@ -1,7 +1,6 @@
 export const PageComponents = {
     install(Vue: any, opt: any) {
-                Vue.component('wfstep-his-html-view', () => import('@pages/shp/wfstep-his-html-view/wfstep-his-html-view.vue'));
-        Vue.component('pimenclosurefile-pre-view-custom-view', () => import('@pages/shp/pimenclosurefile-pre-view-custom-view/pimenclosurefile-pre-view-custom-view.vue'));
+                Vue.component('pimenclosurefile-pre-view-custom-view', () => import('@pages/shp/pimenclosurefile-pre-view-custom-view/pimenclosurefile-pre-view-custom-view.vue'));
         Vue.component('pimarmycadresgrarmygrid-view', () => import('@pages/shp/pimarmycadresgrarmygrid-view/pimarmycadresgrarmygrid-view.vue'));
         Vue.component('pimpersongrzzedit-view', () => import('@pages/shp/pimpersongrzzedit-view/pimpersongrzzedit-view.vue'));
         Vue.component('pimarmycadresgredit-view', () => import('@pages/shp/pimarmycadresgredit-view/pimarmycadresgredit-view.vue'));

@@ -27,7 +27,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 
 
 /**
- * 实体[组织管理***]
+ * 实体[组织管理]
  */
 @Data
 @TableName(value = "T_SRFORG",resultMap = "ORMORGResultMap")

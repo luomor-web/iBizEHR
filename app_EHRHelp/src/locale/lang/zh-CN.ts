@@ -1,29 +1,24 @@
 import sallog_zh_CN from '@locale/lanres/sallog/sallog_zh_CN';
 import trmdepart_zh_CN from '@locale/lanres/trmdepart/trmdepart_zh_CN';
-import wfusergroupdetail_zh_CN from '@locale/lanres/wfuser-group-detail/wfuser-group-detail_zh_CN';
 import trmtrainplanterm_zh_CN from '@locale/lanres/trmtrainplanterm/trmtrainplanterm_zh_CN';
 import salschemeitem_zh_CN from '@locale/lanres/salschemeitem/salschemeitem_zh_CN';
 import trmlgbcost_zh_CN from '@locale/lanres/trmlgbcost/trmlgbcost_zh_CN';
 import pcmjxsygzzsq_zh_CN from '@locale/lanres/pcmjxsygzzsq/pcmjxsygzzsq_zh_CN';
 import pcmrecruitment_zh_CN from '@locale/lanres/pcmrecruitment/pcmrecruitment_zh_CN';
 import pimcorrectionapply_zh_CN from '@locale/lanres/pimcorrectionapply/pimcorrectionapply_zh_CN';
-import wfusergroup_zh_CN from '@locale/lanres/wfuser-group/wfuser-group_zh_CN';
 import ormorg_zh_CN from '@locale/lanres/ormorg/ormorg_zh_CN';
 import pcmnotice_zh_CN from '@locale/lanres/pcmnotice/pcmnotice_zh_CN';
 import salstdgwgzrate_zh_CN from '@locale/lanres/salstdgwgzrate/salstdgwgzrate_zh_CN';
 import pcmydmx_zh_CN from '@locale/lanres/pcmydmx/pcmydmx_zh_CN';
 import pimqualtype_zh_CN from '@locale/lanres/pimqualtype/pimqualtype_zh_CN';
-import msgaccountdetail_zh_CN from '@locale/lanres/msg-account-detail/msg-account-detail_zh_CN';
 import pimmajorsetype_zh_CN from '@locale/lanres/pimmajorsetype/pimmajorsetype_zh_CN';
 import wzd0001_zh_CN from '@locale/lanres/wzd0001/wzd0001_zh_CN';
 import pimtitle_zh_CN from '@locale/lanres/pimtitle/pimtitle_zh_CN';
 import parlhmbkhmx_zh_CN from '@locale/lanres/parlhmbkhmx/parlhmbkhmx_zh_CN';
-import userdictitem_zh_CN from '@locale/lanres/user-dict-item/user-dict-item_zh_CN';
 import attendencesetup_zh_CN from '@locale/lanres/attendencesetup/attendencesetup_zh_CN';
 import pcmddsqdmx_zh_CN from '@locale/lanres/pcmddsqdmx/pcmddsqdmx_zh_CN';
 import pcmschooloffice_zh_CN from '@locale/lanres/pcmschooloffice/pcmschooloffice_zh_CN';
 import pimtypecontract_zh_CN from '@locale/lanres/pimtypecontract/pimtypecontract_zh_CN';
-import userdict_zh_CN from '@locale/lanres/user-dict/user-dict_zh_CN';
 import trmteachercharge_zh_CN from '@locale/lanres/trmteachercharge/trmteachercharge_zh_CN';
 import salstdzc_zh_CN from '@locale/lanres/salstdzc/salstdzc_zh_CN';
 import pcmxygzzsq_zh_CN from '@locale/lanres/pcmxygzzsq/pcmxygzzsq_zh_CN';
@@ -38,20 +33,15 @@ import parjxkhjcsz_zh_CN from '@locale/lanres/parjxkhjcsz/parjxkhjcsz_zh_CN';
 import trmtrianperson_zh_CN from '@locale/lanres/trmtrianperson/trmtrianperson_zh_CN';
 import pimarchivesloanandreturn_zh_CN from '@locale/lanres/pimarchivesloanandreturn/pimarchivesloanandreturn_zh_CN';
 import pcmzjdyzw_zh_CN from '@locale/lanres/pcmzjdyzw/pcmzjdyzw_zh_CN';
-import userroledata_zh_CN from '@locale/lanres/user-role-data/user-role-data_zh_CN';
-import wfassistwork_zh_CN from '@locale/lanres/wfassist-work/wfassist-work_zh_CN';
 import pcmrcxl_zh_CN from '@locale/lanres/pcmrcxl/pcmrcxl_zh_CN';
 import pimbyzzjlmx_zh_CN from '@locale/lanres/pimbyzzjlmx/pimbyzzjlmx_zh_CN';
-import orgsecusertype_zh_CN from '@locale/lanres/org-sec-user-type/org-sec-user-type_zh_CN';
 import ormbmgwbz_zh_CN from '@locale/lanres/ormbmgwbz/ormbmgwbz_zh_CN';
 import pimcontract_zh_CN from '@locale/lanres/pimcontract/pimcontract_zh_CN';
 import saltype_zh_CN from '@locale/lanres/saltype/saltype_zh_CN';
-import userrole_zh_CN from '@locale/lanres/user-role/user-role_zh_CN';
 import pcmprofileinitnumber_zh_CN from '@locale/lanres/pcmprofileinitnumber/pcmprofileinitnumber_zh_CN';
 import pcmworkresume_zh_CN from '@locale/lanres/pcmworkresume/pcmworkresume_zh_CN';
 import trmtrainactment_zh_CN from '@locale/lanres/trmtrainactment/trmtrainactment_zh_CN';
 import pimsocialsecurity_zh_CN from '@locale/lanres/pimsocialsecurity/pimsocialsecurity_zh_CN';
-import wfcustomprocess_zh_CN from '@locale/lanres/wfcustom-process/wfcustom-process_zh_CN';
 import pimworkhistory_zh_CN from '@locale/lanres/pimworkhistory/pimworkhistory_zh_CN';
 import ormorgdz_zh_CN from '@locale/lanres/ormorgdz/ormorgdz_zh_CN';
 import parlhmbmx_zh_CN from '@locale/lanres/parlhmbmx/parlhmbmx_zh_CN';
@@ -70,7 +60,6 @@ import parjxmtfk_zh_CN from '@locale/lanres/parjxmtfk/parjxmtfk_zh_CN';
 import attendancemreport_zh_CN from '@locale/lanres/attendancemreport/attendancemreport_zh_CN';
 import trmtrainactapply_zh_CN from '@locale/lanres/trmtrainactapply/trmtrainactapply_zh_CN';
 import pcmgxml_zh_CN from '@locale/lanres/pcmgxml/pcmgxml_zh_CN';
-import userroledefieldes_zh_CN from '@locale/lanres/user-role-defieldes/user-role-defieldes_zh_CN';
 import pcmtxbz_zh_CN from '@locale/lanres/pcmtxbz/pcmtxbz_zh_CN';
 import ormxmxqhz_zh_CN from '@locale/lanres/ormxmxqhz/ormxmxqhz_zh_CN';
 import pimqualmajor_zh_CN from '@locale/lanres/pimqualmajor/pimqualmajor_zh_CN';
@@ -78,31 +67,19 @@ import pcmxygzzkhjgjl_zh_CN from '@locale/lanres/pcmxygzzkhjgjl/pcmxygzzkhjgjl_z
 import parjxkhmbmx_zh_CN from '@locale/lanres/parjxkhmbmx/parjxkhmbmx_zh_CN';
 import vacleavemanage_zh_CN from '@locale/lanres/vacleavemanage/vacleavemanage_zh_CN';
 import pcmlog_zh_CN from '@locale/lanres/pcmlog/pcmlog_zh_CN';
-import wfstepinst_zh_CN from '@locale/lanres/wfstep-inst/wfstep-inst_zh_CN';
-import wxaccesstoken_zh_CN from '@locale/lanres/wxaccess-token/wxaccess-token_zh_CN';
 import pimvacation_zh_CN from '@locale/lanres/pimvacation/pimvacation_zh_CN';
 import pimexitandentry_zh_CN from '@locale/lanres/pimexitandentry/pimexitandentry_zh_CN';
 import trmplanformu_zh_CN from '@locale/lanres/trmplanformu/trmplanformu_zh_CN';
-import loginlog_zh_CN from '@locale/lanres/login-log/login-log_zh_CN';
 import trmtraindemand_zh_CN from '@locale/lanres/trmtraindemand/trmtraindemand_zh_CN';
 import pimpersonchange_zh_CN from '@locale/lanres/pimpersonchange/pimpersonchange_zh_CN';
 import pcmeducationexperience_zh_CN from '@locale/lanres/pcmeducation-experience/pcmeducation-experience_zh_CN';
-import usergroup_zh_CN from '@locale/lanres/user-group/user-group_zh_CN';
 import trmtrainplan_zh_CN from '@locale/lanres/trmtrainplan/trmtrainplan_zh_CN';
-import userroledetail_zh_CN from '@locale/lanres/user-role-detail/user-role-detail_zh_CN';
-import orguser_zh_CN from '@locale/lanres/org-user/org-user_zh_CN';
 import pimachievements_zh_CN from '@locale/lanres/pimachievements/pimachievements_zh_CN';
 import pcmbdsqd_zh_CN from '@locale/lanres/pcmbdsqd/pcmbdsqd_zh_CN';
 import pcmxkml_zh_CN from '@locale/lanres/pcmxkml/pcmxkml_zh_CN';
 import pimlanguageability_zh_CN from '@locale/lanres/pimlanguageability/pimlanguageability_zh_CN';
-import wxorgsector_zh_CN from '@locale/lanres/wxorg-sector/wxorg-sector_zh_CN';
 import pimperson_zh_CN from '@locale/lanres/pimperson/pimperson_zh_CN';
-import userroledefield_zh_CN from '@locale/lanres/user-role-defield/user-role-defield_zh_CN';
-import userdgtheme_zh_CN from '@locale/lanres/user-dgtheme/user-dgtheme_zh_CN';
-import msgsendqueue_zh_CN from '@locale/lanres/msg-send-queue/msg-send-queue_zh_CN';
 import trmtraffic_zh_CN from '@locale/lanres/trmtraffic/trmtraffic_zh_CN';
-import wfuser_zh_CN from '@locale/lanres/wfuser/wfuser_zh_CN';
-import userroledatadetail_zh_CN from '@locale/lanres/user-role-data-detail/user-role-data-detail_zh_CN';
 import pimexaminationresults_zh_CN from '@locale/lanres/pimexaminationresults/pimexaminationresults_zh_CN';
 import pimarchives_zh_CN from '@locale/lanres/pimarchives/pimarchives_zh_CN';
 import vacleavesystemdetail_zh_CN from '@locale/lanres/vacleavesystemdetail/vacleavesystemdetail_zh_CN';
@@ -112,10 +89,7 @@ import vacleavedetail_zh_CN from '@locale/lanres/vacleavedetail/vacleavedetail_z
 import trmtraindata_zh_CN from '@locale/lanres/trmtraindata/trmtraindata_zh_CN';
 import pcmgbhmc_zh_CN from '@locale/lanres/pcmgbhmc/pcmgbhmc_zh_CN';
 import parjgbmpjbz_zh_CN from '@locale/lanres/parjgbmpjbz/parjgbmpjbz_zh_CN';
-import wfuserassist_zh_CN from '@locale/lanres/wfuser-assist/wfuser-assist_zh_CN';
 import parndlhmbkh_zh_CN from '@locale/lanres/parndlhmbkh/parndlhmbkh_zh_CN';
-import usergroupdetail_zh_CN from '@locale/lanres/user-group-detail/user-group-detail_zh_CN';
-import userdictcat_zh_CN from '@locale/lanres/user-dict-cat/user-dict-cat_zh_CN';
 import pcmydjzmx_zh_CN from '@locale/lanres/pcmydjzmx/pcmydjzmx_zh_CN';
 import testresult_zh_CN from '@locale/lanres/test-result/test-result_zh_CN';
 import ormorginfo_zh_CN from '@locale/lanres/ormorginfo/ormorginfo_zh_CN';
@@ -149,10 +123,8 @@ import trmtrainteacher_zh_CN from '@locale/lanres/trmtrainteacher/trmtrainteache
 import pcmjxsbdjl_zh_CN from '@locale/lanres/pcmjxsbdjl/pcmjxsbdjl_zh_CN';
 import trmtrainbuapply_zh_CN from '@locale/lanres/trmtrainbuapply/trmtrainbuapply_zh_CN';
 import codelist1_zh_CN from '@locale/lanres/code-list1/code-list1_zh_CN';
-import querymodel_zh_CN from '@locale/lanres/query-model/query-model_zh_CN';
 import trmtrainagency_zh_CN from '@locale/lanres/trmtrainagency/trmtrainagency_zh_CN';
 import pimresearchfindings_zh_CN from '@locale/lanres/pimresearchfindings/pimresearchfindings_zh_CN';
-import msgsendqueuehis_zh_CN from '@locale/lanres/msg-send-queue-his/msg-send-queue-his_zh_CN';
 import salscheme_zh_CN from '@locale/lanres/salscheme/salscheme_zh_CN';
 import pimlwgz_zh_CN from '@locale/lanres/pimlwgz/pimlwgz_zh_CN';
 import pimcontracttype_zh_CN from '@locale/lanres/pimcontracttype/pimcontracttype_zh_CN';
@@ -166,7 +138,6 @@ import pimdistirbution_zh_CN from '@locale/lanres/pimdistirbution/pimdistirbutio
 import pimlabourcampany_zh_CN from '@locale/lanres/pimlabourcampany/pimlabourcampany_zh_CN';
 import pcmydjdmx_zh_CN from '@locale/lanres/pcmydjdmx/pcmydjdmx_zh_CN';
 import tdzwxx_zh_CN from '@locale/lanres/tdzwxx/tdzwxx_zh_CN';
-import wfinstance_zh_CN from '@locale/lanres/wfinstance/wfinstance_zh_CN';
 import contractsignorg_zh_CN from '@locale/lanres/contract-sign-org/contract-sign-org_zh_CN';
 import parjxkhmb_zh_CN from '@locale/lanres/parjxkhmb/parjxkhmb_zh_CN';
 import salpersonstd_zh_CN from '@locale/lanres/salpersonstd/salpersonstd_zh_CN';
@@ -175,13 +146,11 @@ import salsalarybill_zh_CN from '@locale/lanres/salsalarybill/salsalarybill_zh_C
 import parznbmmx_zh_CN from '@locale/lanres/parznbmmx/parznbmmx_zh_CN';
 import trmemployretion_zh_CN from '@locale/lanres/trmemployretion/trmemployretion_zh_CN';
 import parjxndkhjg_zh_CN from '@locale/lanres/parjxndkhjg/parjxndkhjg_zh_CN';
-import wfworklist_zh_CN from '@locale/lanres/wfwork-list/wfwork-list_zh_CN';
 import trmstaff_zh_CN from '@locale/lanres/trmstaff/trmstaff_zh_CN';
 import ormxmbmx_zh_CN from '@locale/lanres/ormxmbmx/ormxmbmx_zh_CN';
 import parldkhqz_zh_CN from '@locale/lanres/parldkhqz/parldkhqz_zh_CN';
 import questions_zh_CN from '@locale/lanres/questions/questions_zh_CN';
 import salruledetail_zh_CN from '@locale/lanres/salruledetail/salruledetail_zh_CN';
-import orgsecuser_zh_CN from '@locale/lanres/org-sec-user/org-sec-user_zh_CN';
 import salpersonstddetail_zh_CN from '@locale/lanres/salpersonstddetail/salpersonstddetail_zh_CN';
 import trmstay_zh_CN from '@locale/lanres/trmstay/trmstay_zh_CN';
 import trmcoursesystem_zh_CN from '@locale/lanres/trmcoursesystem/trmcoursesystem_zh_CN';
@@ -191,45 +160,33 @@ import ormxmrlcb_zh_CN from '@locale/lanres/ormxmrlcb/ormxmrlcb_zh_CN';
 import wfuiwizard_zh_CN from '@locale/lanres/wfuiwizard/wfuiwizard_zh_CN';
 import personstatemgr_zh_CN from '@locale/lanres/person-state-mgr/person-state-mgr_zh_CN';
 import ormpostdetails_zh_CN from '@locale/lanres/ormpost-details/ormpost-details_zh_CN';
-import wfreminder_zh_CN from '@locale/lanres/wfreminder/wfreminder_zh_CN';
 import pimstafftype_zh_CN from '@locale/lanres/pimstafftype/pimstafftype_zh_CN';
 import pcmsgqmgr_zh_CN from '@locale/lanres/pcmsgq-mgr/pcmsgq-mgr_zh_CN';
 import salitemsub_zh_CN from '@locale/lanres/salitemsub/salitemsub_zh_CN';
-import wfusercandidate_zh_CN from '@locale/lanres/wfuser-candidate/wfuser-candidate_zh_CN';
-import wftmpstepactor_zh_CN from '@locale/lanres/wftmp-step-actor/wftmp-step-actor_zh_CN';
 import pimgwtype_zh_CN from '@locale/lanres/pimgwtype/pimgwtype_zh_CN';
 import ormpostlib_zh_CN from '@locale/lanres/ormpost-lib/ormpost-lib_zh_CN';
 import archivescenter_zh_CN from '@locale/lanres/archivescenter/archivescenter_zh_CN';
-import userroledatas_zh_CN from '@locale/lanres/user-role-datas/user-role-datas_zh_CN';
 import parjxbzgl_zh_CN from '@locale/lanres/parjxbzgl/parjxbzgl_zh_CN';
 import vacusenxjmx_zh_CN from '@locale/lanres/vacusenxjmx/vacusenxjmx_zh_CN';
 import vacsynjcx_zh_CN from '@locale/lanres/vacsynjcx/vacsynjcx_zh_CN';
 import pcmzpmegl_zh_CN from '@locale/lanres/pcmzpmegl/pcmzpmegl_zh_CN';
 import attendancesummarymx_zh_CN from '@locale/lanres/attendancesummarymx/attendancesummarymx_zh_CN';
 import trmhmatser_zh_CN from '@locale/lanres/trmhmatser/trmhmatser_zh_CN';
-import userroleres_zh_CN from '@locale/lanres/user-role-res/user-role-res_zh_CN';
-import userobject_zh_CN from '@locale/lanres/user-object/user-object_zh_CN';
 import pcmtxfpsq_zh_CN from '@locale/lanres/pcmtxfpsq/pcmtxfpsq_zh_CN';
 import ormzwdqgz_zh_CN from '@locale/lanres/ormzwdqgz/ormzwdqgz_zh_CN';
-import msgaccount_zh_CN from '@locale/lanres/msg-account/msg-account_zh_CN';
 import pcmyddgmx_zh_CN from '@locale/lanres/pcmyddgmx/pcmyddgmx_zh_CN';
 import ormxmbq_zh_CN from '@locale/lanres/ormxmbq/ormxmbq_zh_CN';
-import wfsystemuser_zh_CN from '@locale/lanres/wfsystem-user/wfsystem-user_zh_CN';
 import attendancerecordtemp_zh_CN from '@locale/lanres/attendancerecordtemp/attendancerecordtemp_zh_CN';
 import pcmgxxktemp_zh_CN from '@locale/lanres/pcmgxxktemp/pcmgxxktemp_zh_CN';
 import pcmrzgl_zh_CN from '@locale/lanres/pcmrzgl/pcmrzgl_zh_CN';
 import trmtrainfillin_zh_CN from '@locale/lanres/trmtrainfillin/trmtrainfillin_zh_CN';
-import user_zh_CN from '@locale/lanres/user/user_zh_CN';
 import salstdxmgzrate_zh_CN from '@locale/lanres/salstdxmgzrate/salstdxmgzrate_zh_CN';
 import vacdayoff_zh_CN from '@locale/lanres/vacdayoff/vacdayoff_zh_CN';
-import org_zh_CN from '@locale/lanres/org/org_zh_CN';
 import trmstaffnodes_zh_CN from '@locale/lanres/trmstaffnodes/trmstaffnodes_zh_CN';
-import wfaction_zh_CN from '@locale/lanres/wfaction/wfaction_zh_CN';
 import pcmawardswons_zh_CN from '@locale/lanres/pcmawardswons/pcmawardswons_zh_CN';
 import trmcouarrange_zh_CN from '@locale/lanres/trmcouarrange/trmcouarrange_zh_CN';
 import pimrewardpunishment_zh_CN from '@locale/lanres/pimrewardpunishment/pimrewardpunishment_zh_CN';
 import salstdzj_zh_CN from '@locale/lanres/salstdzj/salstdzj_zh_CN';
-import orgtype_zh_CN from '@locale/lanres/org-type/org-type_zh_CN';
 import attendancerecord_zh_CN from '@locale/lanres/attendancerecord/attendancerecord_zh_CN';
 import pimpatent_zh_CN from '@locale/lanres/pimpatent/pimpatent_zh_CN';
 import trmtrainaddress_zh_CN from '@locale/lanres/trmtrainaddress/trmtrainaddress_zh_CN';
@@ -237,16 +194,11 @@ import archivesmanage_zh_CN from '@locale/lanres/archivesmanage/archivesmanage_z
 import pcmprofile_zh_CN from '@locale/lanres/pcmprofile/pcmprofile_zh_CN';
 import trmtrainoutapply_zh_CN from '@locale/lanres/trmtrainoutapply/trmtrainoutapply_zh_CN';
 import archivalcatalogue_zh_CN from '@locale/lanres/archivalcatalogue/archivalcatalogue_zh_CN';
-import orgunitcat_zh_CN from '@locale/lanres/org-unit-cat/org-unit-cat_zh_CN';
 import parjxqdsz_zh_CN from '@locale/lanres/parjxqdsz/parjxqdsz_zh_CN';
 import vacsituationdetail_zh_CN from '@locale/lanres/vacsituationdetail/vacsituationdetail_zh_CN';
-import wfstep_zh_CN from '@locale/lanres/wfstep/wfstep_zh_CN';
 import trmtraincourse_zh_CN from '@locale/lanres/trmtraincourse/trmtraincourse_zh_CN';
-import dataentity_zh_CN from '@locale/lanres/data-entity/data-entity_zh_CN';
 import parkhfa_zh_CN from '@locale/lanres/parkhfa/parkhfa_zh_CN';
-import wxaccount_zh_CN from '@locale/lanres/wxaccount/wxaccount_zh_CN';
 import attendenceormorgsector_zh_CN from '@locale/lanres/attendenceormorgsector/attendenceormorgsector_zh_CN';
-import wfappsetting_zh_CN from '@locale/lanres/wfapp-setting/wfapp-setting_zh_CN';
 import trmdutycadres_zh_CN from '@locale/lanres/trmdutycadres/trmdutycadres_zh_CN';
 import vacoveralltion_zh_CN from '@locale/lanres/vacoveralltion/vacoveralltion_zh_CN';
 import partzgg_zh_CN from '@locale/lanres/partzgg/partzgg_zh_CN';
@@ -263,30 +215,21 @@ import ormdepestman_zh_CN from '@locale/lanres/ormdep-est-man/ormdep-est-man_zh_
 import ormxmsfhz_zh_CN from '@locale/lanres/ormxmsfhz/ormxmsfhz_zh_CN';
 import ormduty_zh_CN from '@locale/lanres/ormduty/ormduty_zh_CN';
 import pcmmspjxx_zh_CN from '@locale/lanres/pcmmspjxx/pcmmspjxx_zh_CN';
-import wfdynamicuser_zh_CN from '@locale/lanres/wfdynamic-user/wfdynamic-user_zh_CN';
 import codeitem_zh_CN from '@locale/lanres/code-item/code-item_zh_CN';
 import daterule_zh_CN from '@locale/lanres/date-rule/date-rule_zh_CN';
 import ormqybzwh_zh_CN from '@locale/lanres/ormqybzwh/ormqybzwh_zh_CN';
 import vacholidayrules_zh_CN from '@locale/lanres/vacholidayrules/vacholidayrules_zh_CN';
-import wxmessage_zh_CN from '@locale/lanres/wxmessage/wxmessage_zh_CN';
 import pimworkflowref_zh_CN from '@locale/lanres/pimworkflow-ref/pimworkflow-ref_zh_CN';
 import parjxkhxhz_zh_CN from '@locale/lanres/parjxkhxhz/parjxkhxhz_zh_CN';
 import pcmxygzzjlmx_zh_CN from '@locale/lanres/pcmxygzzjlmx/pcmxygzzjlmx_zh_CN';
-import wfworkflow_zh_CN from '@locale/lanres/wfworkflow/wfworkflow_zh_CN';
 import wfqj_zh_CN from '@locale/lanres/wfqj/wfqj_zh_CN';
 import pcmjxszzkhjgjl_zh_CN from '@locale/lanres/pcmjxszzkhjgjl/pcmjxszzkhjgjl_zh_CN';
 import salsource_zh_CN from '@locale/lanres/salsource/salsource_zh_CN';
-import userroledataaction_zh_CN from '@locale/lanres/user-role-data-action/user-role-data-action_zh_CN';
 import pimeducation_zh_CN from '@locale/lanres/pimeducation/pimeducation_zh_CN';
 import ormqygl_zh_CN from '@locale/lanres/ormqygl/ormqygl_zh_CN';
 import pcmjxsygzzsqmx_zh_CN from '@locale/lanres/pcmjxsygzzsqmx/pcmjxsygzzsqmx_zh_CN';
-import wfstepactor_zh_CN from '@locale/lanres/wfstep-actor/wfstep-actor_zh_CN';
 import pimprovince_zh_CN from '@locale/lanres/pimprovince/pimprovince_zh_CN';
 import pcmzsgl_zh_CN from '@locale/lanres/pcmzsgl/pcmzsgl_zh_CN';
-import orgsector_zh_CN from '@locale/lanres/org-sector/org-sector_zh_CN';
-import wxentapp_zh_CN from '@locale/lanres/wxent-app/wxent-app_zh_CN';
-import wfactor_zh_CN from '@locale/lanres/wfactor/wfactor_zh_CN';
-import wfiaaction_zh_CN from '@locale/lanres/wfiaaction/wfiaaction_zh_CN';
 import ormpost_zh_CN from '@locale/lanres/ormpost/ormpost_zh_CN';
 import salplan_zh_CN from '@locale/lanres/salplan/salplan_zh_CN';
 import pcmzpmeglmx_zh_CN from '@locale/lanres/pcmzpmeglmx/pcmzpmeglmx_zh_CN';
@@ -296,33 +239,26 @@ import pimpersonabilitydetail_zh_CN from '@locale/lanres/pimperson-ability-detai
 import ormxmgl_zh_CN from '@locale/lanres/ormxmgl/ormxmgl_zh_CN';
 import attenmembwes_zh_CN from '@locale/lanres/attenmembwes/attenmembwes_zh_CN';
 import ormerporg_zh_CN from '@locale/lanres/ormerporg/ormerporg_zh_CN';
-import loginaccount_zh_CN from '@locale/lanres/login-account/login-account_zh_CN';
 import parbmfzjyx_zh_CN from '@locale/lanres/parbmfzjyx/parbmfzjyx_zh_CN';
-import orguserlevel_zh_CN from '@locale/lanres/org-user-level/org-user-level_zh_CN';
 import pcmddsqd_zh_CN from '@locale/lanres/pcmddsqd/pcmddsqd_zh_CN';
 import pcmjxsgz_zh_CN from '@locale/lanres/pcmjxsgz/pcmjxsgz_zh_CN';
 import vacsituation_zh_CN from '@locale/lanres/vacsituation/vacsituation_zh_CN';
 import pcmbdsqdmx_zh_CN from '@locale/lanres/pcmbdsqdmx/pcmbdsqdmx_zh_CN';
-import wxmedia_zh_CN from '@locale/lanres/wxmedia/wxmedia_zh_CN';
 import pcmjxsygzzjlmx_zh_CN from '@locale/lanres/pcmjxsygzzjlmx/pcmjxsygzzjlmx_zh_CN';
 import vacsystemapplication_zh_CN from '@locale/lanres/vacsystemapplication/vacsystemapplication_zh_CN';
 import trmzzobm_zh_CN from '@locale/lanres/trmzzobm/trmzzobm_zh_CN';
 import pcmydbxmx_zh_CN from '@locale/lanres/pcmydbxmx/pcmydbxmx_zh_CN';
 import pimpaper_zh_CN from '@locale/lanres/pimpaper/pimpaper_zh_CN';
 import attendrecorddetail_zh_CN from '@locale/lanres/attend-record-detail/attend-record-detail_zh_CN';
-import unires_zh_CN from '@locale/lanres/uni-res/uni-res_zh_CN';
 import pcmxygzzjgwh_zh_CN from '@locale/lanres/pcmxygzzjgwh/pcmxygzzjgwh_zh_CN';
 import salparam_zh_CN from '@locale/lanres/salparam/salparam_zh_CN';
 import parjxlhmb_zh_CN from '@locale/lanres/parjxlhmb/parjxlhmb_zh_CN';
 import pcmxygzzsqmx_zh_CN from '@locale/lanres/pcmxygzzsqmx/pcmxygzzsqmx_zh_CN';
-import wfversion_zh_CN from '@locale/lanres/wfversion/wfversion_zh_CN';
 import pimvocationalcatalog_zh_CN from '@locale/lanres/pimvocationalcatalog/pimvocationalcatalog_zh_CN';
 import pcmydtxmx_zh_CN from '@locale/lanres/pcmydtxmx/pcmydtxmx_zh_CN';
 import pcmpracticeexperience_zh_CN from '@locale/lanres/pcmpracticeexperience/pcmpracticeexperience_zh_CN';
-import msgtemplate_zh_CN from '@locale/lanres/msg-template/msg-template_zh_CN';
 import parfzsmx_zh_CN from '@locale/lanres/parfzsmx/parfzsmx_zh_CN';
 import pimcity_zh_CN from '@locale/lanres/pimcity/pimcity_zh_CN';
-import userroletype_zh_CN from '@locale/lanres/user-role-type/user-role-type_zh_CN';
 import pimvocational_zh_CN from '@locale/lanres/pimvocational/pimvocational_zh_CN';
 import pimfaminfo_zh_CN from '@locale/lanres/pimfaminfo/pimfaminfo_zh_CN';
 import pimenclosure_zh_CN from '@locale/lanres/pimenclosure/pimenclosure_zh_CN';
@@ -461,30 +397,25 @@ export default {
     entities: {
         sallog: sallog_zh_CN,
         trmdepart: trmdepart_zh_CN,
-        wfusergroupdetail: wfusergroupdetail_zh_CN,
         trmtrainplanterm: trmtrainplanterm_zh_CN,
         salschemeitem: salschemeitem_zh_CN,
         trmlgbcost: trmlgbcost_zh_CN,
         pcmjxsygzzsq: pcmjxsygzzsq_zh_CN,
         pcmrecruitment: pcmrecruitment_zh_CN,
         pimcorrectionapply: pimcorrectionapply_zh_CN,
-        wfusergroup: wfusergroup_zh_CN,
         ormorg: ormorg_zh_CN,
         pcmnotice: pcmnotice_zh_CN,
         salstdgwgzrate: salstdgwgzrate_zh_CN,
         pcmydmx: pcmydmx_zh_CN,
         pimqualtype: pimqualtype_zh_CN,
-        msgaccountdetail: msgaccountdetail_zh_CN,
         pimmajorsetype: pimmajorsetype_zh_CN,
         wzd0001: wzd0001_zh_CN,
         pimtitle: pimtitle_zh_CN,
         parlhmbkhmx: parlhmbkhmx_zh_CN,
-        userdictitem: userdictitem_zh_CN,
         attendencesetup: attendencesetup_zh_CN,
         pcmddsqdmx: pcmddsqdmx_zh_CN,
         pcmschooloffice: pcmschooloffice_zh_CN,
         pimtypecontract: pimtypecontract_zh_CN,
-        userdict: userdict_zh_CN,
         trmteachercharge: trmteachercharge_zh_CN,
         salstdzc: salstdzc_zh_CN,
         pcmxygzzsq: pcmxygzzsq_zh_CN,
@@ -499,20 +430,15 @@ export default {
         trmtrianperson: trmtrianperson_zh_CN,
         pimarchivesloanandreturn: pimarchivesloanandreturn_zh_CN,
         pcmzjdyzw: pcmzjdyzw_zh_CN,
-        userroledata: userroledata_zh_CN,
-        wfassistwork: wfassistwork_zh_CN,
         pcmrcxl: pcmrcxl_zh_CN,
         pimbyzzjlmx: pimbyzzjlmx_zh_CN,
-        orgsecusertype: orgsecusertype_zh_CN,
         ormbmgwbz: ormbmgwbz_zh_CN,
         pimcontract: pimcontract_zh_CN,
         saltype: saltype_zh_CN,
-        userrole: userrole_zh_CN,
         pcmprofileinitnumber: pcmprofileinitnumber_zh_CN,
         pcmworkresume: pcmworkresume_zh_CN,
         trmtrainactment: trmtrainactment_zh_CN,
         pimsocialsecurity: pimsocialsecurity_zh_CN,
-        wfcustomprocess: wfcustomprocess_zh_CN,
         pimworkhistory: pimworkhistory_zh_CN,
         ormorgdz: ormorgdz_zh_CN,
         parlhmbmx: parlhmbmx_zh_CN,
@@ -531,7 +457,6 @@ export default {
         attendancemreport: attendancemreport_zh_CN,
         trmtrainactapply: trmtrainactapply_zh_CN,
         pcmgxml: pcmgxml_zh_CN,
-        userroledefieldes: userroledefieldes_zh_CN,
         pcmtxbz: pcmtxbz_zh_CN,
         ormxmxqhz: ormxmxqhz_zh_CN,
         pimqualmajor: pimqualmajor_zh_CN,
@@ -539,31 +464,19 @@ export default {
         parjxkhmbmx: parjxkhmbmx_zh_CN,
         vacleavemanage: vacleavemanage_zh_CN,
         pcmlog: pcmlog_zh_CN,
-        wfstepinst: wfstepinst_zh_CN,
-        wxaccesstoken: wxaccesstoken_zh_CN,
         pimvacation: pimvacation_zh_CN,
         pimexitandentry: pimexitandentry_zh_CN,
         trmplanformu: trmplanformu_zh_CN,
-        loginlog: loginlog_zh_CN,
         trmtraindemand: trmtraindemand_zh_CN,
         pimpersonchange: pimpersonchange_zh_CN,
         pcmeducationexperience: pcmeducationexperience_zh_CN,
-        usergroup: usergroup_zh_CN,
         trmtrainplan: trmtrainplan_zh_CN,
-        userroledetail: userroledetail_zh_CN,
-        orguser: orguser_zh_CN,
         pimachievements: pimachievements_zh_CN,
         pcmbdsqd: pcmbdsqd_zh_CN,
         pcmxkml: pcmxkml_zh_CN,
         pimlanguageability: pimlanguageability_zh_CN,
-        wxorgsector: wxorgsector_zh_CN,
         pimperson: pimperson_zh_CN,
-        userroledefield: userroledefield_zh_CN,
-        userdgtheme: userdgtheme_zh_CN,
-        msgsendqueue: msgsendqueue_zh_CN,
         trmtraffic: trmtraffic_zh_CN,
-        wfuser: wfuser_zh_CN,
-        userroledatadetail: userroledatadetail_zh_CN,
         pimexaminationresults: pimexaminationresults_zh_CN,
         pimarchives: pimarchives_zh_CN,
         vacleavesystemdetail: vacleavesystemdetail_zh_CN,
@@ -573,10 +486,7 @@ export default {
         trmtraindata: trmtraindata_zh_CN,
         pcmgbhmc: pcmgbhmc_zh_CN,
         parjgbmpjbz: parjgbmpjbz_zh_CN,
-        wfuserassist: wfuserassist_zh_CN,
         parndlhmbkh: parndlhmbkh_zh_CN,
-        usergroupdetail: usergroupdetail_zh_CN,
-        userdictcat: userdictcat_zh_CN,
         pcmydjzmx: pcmydjzmx_zh_CN,
         testresult: testresult_zh_CN,
         ormorginfo: ormorginfo_zh_CN,
@@ -610,10 +520,8 @@ export default {
         pcmjxsbdjl: pcmjxsbdjl_zh_CN,
         trmtrainbuapply: trmtrainbuapply_zh_CN,
         codelist1: codelist1_zh_CN,
-        querymodel: querymodel_zh_CN,
         trmtrainagency: trmtrainagency_zh_CN,
         pimresearchfindings: pimresearchfindings_zh_CN,
-        msgsendqueuehis: msgsendqueuehis_zh_CN,
         salscheme: salscheme_zh_CN,
         pimlwgz: pimlwgz_zh_CN,
         pimcontracttype: pimcontracttype_zh_CN,
@@ -627,7 +535,6 @@ export default {
         pimlabourcampany: pimlabourcampany_zh_CN,
         pcmydjdmx: pcmydjdmx_zh_CN,
         tdzwxx: tdzwxx_zh_CN,
-        wfinstance: wfinstance_zh_CN,
         contractsignorg: contractsignorg_zh_CN,
         parjxkhmb: parjxkhmb_zh_CN,
         salpersonstd: salpersonstd_zh_CN,
@@ -636,13 +543,11 @@ export default {
         parznbmmx: parznbmmx_zh_CN,
         trmemployretion: trmemployretion_zh_CN,
         parjxndkhjg: parjxndkhjg_zh_CN,
-        wfworklist: wfworklist_zh_CN,
         trmstaff: trmstaff_zh_CN,
         ormxmbmx: ormxmbmx_zh_CN,
         parldkhqz: parldkhqz_zh_CN,
         questions: questions_zh_CN,
         salruledetail: salruledetail_zh_CN,
-        orgsecuser: orgsecuser_zh_CN,
         salpersonstddetail: salpersonstddetail_zh_CN,
         trmstay: trmstay_zh_CN,
         trmcoursesystem: trmcoursesystem_zh_CN,
@@ -652,45 +557,33 @@ export default {
         wfuiwizard: wfuiwizard_zh_CN,
         personstatemgr: personstatemgr_zh_CN,
         ormpostdetails: ormpostdetails_zh_CN,
-        wfreminder: wfreminder_zh_CN,
         pimstafftype: pimstafftype_zh_CN,
         pcmsgqmgr: pcmsgqmgr_zh_CN,
         salitemsub: salitemsub_zh_CN,
-        wfusercandidate: wfusercandidate_zh_CN,
-        wftmpstepactor: wftmpstepactor_zh_CN,
         pimgwtype: pimgwtype_zh_CN,
         ormpostlib: ormpostlib_zh_CN,
         archivescenter: archivescenter_zh_CN,
-        userroledatas: userroledatas_zh_CN,
         parjxbzgl: parjxbzgl_zh_CN,
         vacusenxjmx: vacusenxjmx_zh_CN,
         vacsynjcx: vacsynjcx_zh_CN,
         pcmzpmegl: pcmzpmegl_zh_CN,
         attendancesummarymx: attendancesummarymx_zh_CN,
         trmhmatser: trmhmatser_zh_CN,
-        userroleres: userroleres_zh_CN,
-        userobject: userobject_zh_CN,
         pcmtxfpsq: pcmtxfpsq_zh_CN,
         ormzwdqgz: ormzwdqgz_zh_CN,
-        msgaccount: msgaccount_zh_CN,
         pcmyddgmx: pcmyddgmx_zh_CN,
         ormxmbq: ormxmbq_zh_CN,
-        wfsystemuser: wfsystemuser_zh_CN,
         attendancerecordtemp: attendancerecordtemp_zh_CN,
         pcmgxxktemp: pcmgxxktemp_zh_CN,
         pcmrzgl: pcmrzgl_zh_CN,
         trmtrainfillin: trmtrainfillin_zh_CN,
-        user: user_zh_CN,
         salstdxmgzrate: salstdxmgzrate_zh_CN,
         vacdayoff: vacdayoff_zh_CN,
-        org: org_zh_CN,
         trmstaffnodes: trmstaffnodes_zh_CN,
-        wfaction: wfaction_zh_CN,
         pcmawardswons: pcmawardswons_zh_CN,
         trmcouarrange: trmcouarrange_zh_CN,
         pimrewardpunishment: pimrewardpunishment_zh_CN,
         salstdzj: salstdzj_zh_CN,
-        orgtype: orgtype_zh_CN,
         attendancerecord: attendancerecord_zh_CN,
         pimpatent: pimpatent_zh_CN,
         trmtrainaddress: trmtrainaddress_zh_CN,
@@ -698,16 +591,11 @@ export default {
         pcmprofile: pcmprofile_zh_CN,
         trmtrainoutapply: trmtrainoutapply_zh_CN,
         archivalcatalogue: archivalcatalogue_zh_CN,
-        orgunitcat: orgunitcat_zh_CN,
         parjxqdsz: parjxqdsz_zh_CN,
         vacsituationdetail: vacsituationdetail_zh_CN,
-        wfstep: wfstep_zh_CN,
         trmtraincourse: trmtraincourse_zh_CN,
-        dataentity: dataentity_zh_CN,
         parkhfa: parkhfa_zh_CN,
-        wxaccount: wxaccount_zh_CN,
         attendenceormorgsector: attendenceormorgsector_zh_CN,
-        wfappsetting: wfappsetting_zh_CN,
         trmdutycadres: trmdutycadres_zh_CN,
         vacoveralltion: vacoveralltion_zh_CN,
         partzgg: partzgg_zh_CN,
@@ -724,30 +612,21 @@ export default {
         ormxmsfhz: ormxmsfhz_zh_CN,
         ormduty: ormduty_zh_CN,
         pcmmspjxx: pcmmspjxx_zh_CN,
-        wfdynamicuser: wfdynamicuser_zh_CN,
         codeitem: codeitem_zh_CN,
         daterule: daterule_zh_CN,
         ormqybzwh: ormqybzwh_zh_CN,
         vacholidayrules: vacholidayrules_zh_CN,
-        wxmessage: wxmessage_zh_CN,
         pimworkflowref: pimworkflowref_zh_CN,
         parjxkhxhz: parjxkhxhz_zh_CN,
         pcmxygzzjlmx: pcmxygzzjlmx_zh_CN,
-        wfworkflow: wfworkflow_zh_CN,
         wfqj: wfqj_zh_CN,
         pcmjxszzkhjgjl: pcmjxszzkhjgjl_zh_CN,
         salsource: salsource_zh_CN,
-        userroledataaction: userroledataaction_zh_CN,
         pimeducation: pimeducation_zh_CN,
         ormqygl: ormqygl_zh_CN,
         pcmjxsygzzsqmx: pcmjxsygzzsqmx_zh_CN,
-        wfstepactor: wfstepactor_zh_CN,
         pimprovince: pimprovince_zh_CN,
         pcmzsgl: pcmzsgl_zh_CN,
-        orgsector: orgsector_zh_CN,
-        wxentapp: wxentapp_zh_CN,
-        wfactor: wfactor_zh_CN,
-        wfiaaction: wfiaaction_zh_CN,
         ormpost: ormpost_zh_CN,
         salplan: salplan_zh_CN,
         pcmzpmeglmx: pcmzpmeglmx_zh_CN,
@@ -757,33 +636,26 @@ export default {
         ormxmgl: ormxmgl_zh_CN,
         attenmembwes: attenmembwes_zh_CN,
         ormerporg: ormerporg_zh_CN,
-        loginaccount: loginaccount_zh_CN,
         parbmfzjyx: parbmfzjyx_zh_CN,
-        orguserlevel: orguserlevel_zh_CN,
         pcmddsqd: pcmddsqd_zh_CN,
         pcmjxsgz: pcmjxsgz_zh_CN,
         vacsituation: vacsituation_zh_CN,
         pcmbdsqdmx: pcmbdsqdmx_zh_CN,
-        wxmedia: wxmedia_zh_CN,
         pcmjxsygzzjlmx: pcmjxsygzzjlmx_zh_CN,
         vacsystemapplication: vacsystemapplication_zh_CN,
         trmzzobm: trmzzobm_zh_CN,
         pcmydbxmx: pcmydbxmx_zh_CN,
         pimpaper: pimpaper_zh_CN,
         attendrecorddetail: attendrecorddetail_zh_CN,
-        unires: unires_zh_CN,
         pcmxygzzjgwh: pcmxygzzjgwh_zh_CN,
         salparam: salparam_zh_CN,
         parjxlhmb: parjxlhmb_zh_CN,
         pcmxygzzsqmx: pcmxygzzsqmx_zh_CN,
-        wfversion: wfversion_zh_CN,
         pimvocationalcatalog: pimvocationalcatalog_zh_CN,
         pcmydtxmx: pcmydtxmx_zh_CN,
         pcmpracticeexperience: pcmpracticeexperience_zh_CN,
-        msgtemplate: msgtemplate_zh_CN,
         parfzsmx: parfzsmx_zh_CN,
         pimcity: pimcity_zh_CN,
-        userroletype: userroletype_zh_CN,
         pimvocational: pimvocational_zh_CN,
         pimfaminfo: pimfaminfo_zh_CN,
         pimenclosure: pimenclosure_zh_CN,

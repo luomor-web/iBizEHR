@@ -61,7 +61,7 @@ export default class NATIVEPLACE {
     }
 
     /**
-     * 代码项***应用实体服务对象
+     * 代码项应用实体服务对象
      *
      * @type {CodeItemService}
      * @memberof NATIVEPLACE

@@ -35,19 +35,6 @@ const router = new Router({
             component: () => import('@pages/shp/index/index.vue'),
             children: [
                 {
-                    path: 'wfsteps/:wfstep?/hishtmlview/:hishtmlview?',
-                    meta: {
-                        caption: 'entities.wfstep.views.hishtmlview.caption',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'wfsteps', parameterName: 'wfstep' },
-                            { pathName: 'hishtmlview', parameterName: 'hishtmlview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/shp/wfstep-his-html-view/wfstep-his-html-view.vue'),
-                },
-                {
                     path: 'pimenclosures/:pimenclosure?/filepreviewcustomview/:filepreviewcustomview?',
                     meta: {
                         caption: 'entities.pimenclosure.views.filepreviewcustomview.caption',
@@ -3619,18 +3606,6 @@ const router = new Router({
             requireAuth: true,
         },
         component: () => import('@pages/shp/vacleavedetailjhqjmx-ck-grid-view/vacleavedetailjhqjmx-ck-grid-view.vue'),
-    },
-    {
-        path: '/wfsteps/:wfstep?/hishtmlview/:hishtmlview?',
-        meta: {
-            caption: 'entities.wfstep.views.hishtmlview.caption',
-            parameters: [
-                { pathName: 'wfsteps', parameterName: 'wfstep' },
-                { pathName: 'hishtmlview', parameterName: 'hishtmlview' },
-            ],
-            requireAuth: true,
-        },
-        component: () => import('@pages/shp/wfstep-his-html-view/wfstep-his-html-view.vue'),
     },
     {
         path: '/ormorgs/:ormorg?/fpxxpickupgridview/:fpxxpickupgridview?',

@@ -584,14 +584,6 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"WFUserGroupDetail",
-    "delogicname":"工作流用户组成员***",
-    "sysmoudle":{"id":"WF","name":"工作流"},
-    "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
-    "deaction":[{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" }],
-    "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
-     }
-    ,    {
     "dename":"TRMTRAINPLANTERM",
     "delogicname":"培训立项",
     "sysmoudle":{"id":"TRM","name":"培训管理"},
@@ -640,16 +632,8 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"WFUserGroup",
-    "delogicname":"工作流用户组***",
-    "sysmoudle":{"id":"WF","name":"工作流"},
-    "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
-    "deaction":[{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" }],
-    "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
-     }
-    ,    {
     "dename":"ORMORG",
-    "delogicname":"组织管理***",
+    "delogicname":"组织管理",
     "sysmoudle":{"id":"ORM","name":"组织管理"},
     "dedataset":[{"id":"ALLSIGNORG" , "name":"全部法人主体"},{"id":"AllLevelTwoOrg2" , "name":"全部二级单位（无权限）"},{"id":"Orglist_Profile" , "name":"当前可选择组织列表（应聘者信息使用）"},{"id":"REP_ORG" , "name":"组织分布"},{"id":"AuthOrg" , "name":"显示组织(权限控制)"},{"id":"GSGWZY" , "name":"用于控制当前用户选择视图下拉显示（公司级岗位专用）"},{"id":"SubSubOrg" , "name":"显示当前组织下组织"},{"id":"Default" , "name":"DEFAULT"},{"id":"CurChild" , "name":"子组织查询"},{"id":"SJYXZZ" , "name":"三级组织及以下组织"},{"id":"REP_ORGPNUM" , "name":"组织人员总数"},{"id":"KZSJZZXZ" , "name":"用于控制当前用户选择视图下拉显示（上级组织）"},{"id":"DanQian" , "name":"查询当前登录人组织下的组织（包含当前组织）"},{"id":"AllLevelTwoOrg" , "name":"全部二级单位"},{"id":"SubOrg" , "name":"显示当前组织包含所有组织"},{"id":"HTGLDW" , "name":"合同管理单位"},{"id":"KZXLXZ" , "name":"用于控制当前用户选择视图下拉显示（当前组织）"},{"id":"AuthSJYXZZ" , "name":"三级组织及以下组织（权限控制）"},{"id":"UseByFP" , "name":"分配信息专用（组织过滤）"},{"id":"CurPorg" , "name":"根组织查询"}],
     "deaction":[{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"SynOrg" , "name":"设置默认排序信息" , "type":"USERCUSTOM" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" }],
@@ -688,14 +672,6 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"MsgAccountDetail",
-    "delogicname":"组消息账户明细***",
-    "sysmoudle":{"id":"COMMON","name":"常规"},
-    "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
-    "deaction":[{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" }],
-    "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
-     }
-    ,    {
     "dename":"PIMMAJORSETYPE",
     "delogicname":"专业序列类型",
     "sysmoudle":{"id":"PIM","name":"基础管理"},
@@ -728,14 +704,6 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"UserDictItem",
-    "delogicname":"用户词条***",
-    "sysmoudle":{"id":"COMMON","name":"常规"},
-    "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
-    "deaction":[{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" }],
-    "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
-     }
-    ,    {
     "dename":"ATTENDENCESETUP",
     "delogicname":"考勤设置",
     "sysmoudle":{"id":"ATT","name":"考勤管理"},
@@ -765,14 +733,6 @@
     "sysmoudle":{"id":"PIM","name":"基础管理"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
     "deaction":[{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" }],
-    "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
-     }
-    ,    {
-    "dename":"UserDict",
-    "delogicname":"用户词典***",
-    "sysmoudle":{"id":"COMMON","name":"常规"},
-    "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
-    "deaction":[{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"ReloadCurUser" , "name":"重新加载当前用户词典" , "type":"USERCUSTOM" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" }],
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
@@ -888,22 +848,6 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"UserRoleData",
-    "delogicname":"数据对象能力***",
-    "sysmoudle":{"id":"COMMON","name":"常规"},
-    "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
-    "deaction":[{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" }],
-    "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
-     }
-    ,    {
-    "dename":"WFAssistWork",
-    "delogicname":"工作流代办工作***",
-    "sysmoudle":{"id":"WF","name":"工作流"},
-    "dedataset":[{"id":"CurUserAssistWork" , "name":"当前用户代办工作"},{"id":"Default" , "name":"DEFAULT"}],
-    "deaction":[{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" }],
-    "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
-     }
-    ,    {
     "dename":"PCMRCXL",
     "delogicname":"人才序列",
     "sysmoudle":{"id":"PCM","name":"配置管理"},
@@ -918,14 +862,6 @@
     "dedataset":[{"id":"ZZWSHDS" , "name":"转正未审核"},{"id":"UnApproved" , "name":"待公司初审"},{"id":"DDJZBSH" , "name":"待局总部审核"},{"id":"BYLZZJL" , "name":"B/Y类员工转正记录"},{"id":"DGSDSZSH" , "name":"待公司董事长审批"},{"id":"HTRY" , "name":"回退人员"},{"id":"DJZBSP" , "name":"待局总部审批"},{"id":"DSB" , "name":"待上报"},{"id":"FinishYGBH" , "name":"已变更员工编号名单"},{"id":"DJZBSH" , "name":"待局总部初审"},{"id":"Default" , "name":"DEFAULT"}],
     "deaction":[{"id":"SHTG" , "name":"局总部初审通过" , "type":"USERCUSTOM" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"ReturnYPZ" , "name":"失效" , "type":"USERCUSTOM" },{"id":"JSPTG" , "name":"局总部审批通过" , "type":"USERCUSTOM" },{"id":"FillPersonInfo" , "name":"填充人员信息" , "type":"DELOGIC" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"JSHTG" , "name":"局总部审核通过" , "type":"USERCUSTOM" },{"id":"JSHBTG" , "name":"局总部审核不通过" , "type":"USERCUSTOM" },{"id":"Ensure" , "name":"确认" , "type":"USERCUSTOM" },{"id":"SHBTG" , "name":"局总部初审不通过" , "type":"USERCUSTOM" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"GSDSZSP" , "name":"公司董事长审批同意" , "type":"USERCUSTOM" },{"id":"ZZCZ" , "name":"转正操作" , "type":"USERCUSTOM" },{"id":"DSB" , "name":"待上报" , "type":"USERCUSTOM" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"JZBSHQR" , "name":"确认" , "type":"USERCUSTOM" },{"id":"GSDSZSPBTG" , "name":"公司董事长审批拒绝" , "type":"USERCUSTOM" },{"id":"GSCSBTG" , "name":"公司初审拒绝" , "type":"USERCUSTOM" },{"id":"JSPBTG" , "name":"局总部审批不通过" , "type":"USERCUSTOM" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"GSCS" , "name":"公司初审同意" , "type":"USERCUSTOM" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"UpdatePeopleNum" , "name":"刷新人数" , "type":"USERCUSTOM" },{"id":"JZBSPQR" , "name":"确认" , "type":"USERCUSTOM" }],
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"curorg","name":"当前单位"},{"id":"porg","name":"上级单位"},{"id":"sorg","name":"下级单位"} , {"id":"curorgdept","name":"当前部门"},{"id":"porgdept","name":"上级部门"},{"id":"sorgdept","name":"下级部门"} , {"id":"createman","name":"创建人"}]
-     }
-    ,    {
-    "dename":"OrgSecUserType",
-    "delogicname":"部门人员关系类型***",
-    "sysmoudle":{"id":"COMMON","name":"常规"},
-    "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
-    "deaction":[{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" }],
-    "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
     "dename":"ORMBMGWBZ",
@@ -949,14 +885,6 @@
     "sysmoudle":{"id":"SAL","name":"激励管理"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
     "deaction":[{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" }],
-    "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
-     }
-    ,    {
-    "dename":"UserRole",
-    "delogicname":"用户角色***",
-    "sysmoudle":{"id":"COMMON","name":"常规"},
-    "dedataset":[{"id":"LevelC" , "name":"用户角色权限配置"},{"id":"Default" , "name":"DEFAULT"}],
-    "deaction":[{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" }],
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
@@ -989,14 +917,6 @@
     "sysmoudle":{"id":"PIM","name":"基础管理"},
     "dedataset":[{"id":"ZIZHU" , "name":"自助(社保信息)"},{"id":"Default" , "name":"DEFAULT"},{"id":"JLSS" , "name":"记录所属"}],
     "deaction":[{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" }],
-    "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
-     }
-    ,    {
-    "dename":"WFCustomProcess",
-    "delogicname":"工作流预定义处理***",
-    "sysmoudle":{"id":"WF","name":"工作流"},
-    "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
-    "deaction":[{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" }],
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
@@ -1144,14 +1064,6 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"UserRoleDEFieldes",
-    "delogicname":"用户角色相关实体属性访问控制***",
-    "sysmoudle":{"id":"COMMON","name":"常规"},
-    "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
-    "deaction":[{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" }],
-    "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
-     }
-    ,    {
     "dename":"PCMTXBZ",
     "delogicname":"退休标准管理",
     "sysmoudle":{"id":"PCM","name":"配置管理"},
@@ -1208,22 +1120,6 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"curorg","name":"当前单位"},{"id":"porg","name":"上级单位"},{"id":"sorg","name":"下级单位"} , {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"WFStepInst",
-    "delogicname":"工作流步骤子实例***",
-    "sysmoudle":{"id":"WF","name":"工作流"},
-    "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
-    "deaction":[{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" }],
-    "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
-     }
-    ,    {
-    "dename":"WXAccessToken",
-    "delogicname":"微信访问票据***",
-    "sysmoudle":{"id":"WX","name":"微信"},
-    "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
-    "deaction":[{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" }],
-    "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
-     }
-    ,    {
     "dename":"PIMVACATION",
     "delogicname":"休假信息",
     "sysmoudle":{"id":"PIM","name":"基础管理"},
@@ -1245,14 +1141,6 @@
     "sysmoudle":{"id":"TRM","name":"培训管理"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
     "deaction":[{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" }],
-    "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
-     }
-    ,    {
-    "dename":"LoginLog",
-    "delogicname":"帐户使用记录***",
-    "sysmoudle":{"id":"COMMON","name":"常规"},
-    "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
-    "deaction":[{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" }],
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
@@ -1280,36 +1168,12 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"UserGroup",
-    "delogicname":"用户组***",
-    "sysmoudle":{"id":"COMMON","name":"常规"},
-    "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
-    "deaction":[{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" }],
-    "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
-     }
-    ,    {
     "dename":"TRMTRAINPLAN",
     "delogicname":"培训计划",
     "sysmoudle":{"id":"TRM","name":"培训管理"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
     "deaction":[{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" }],
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
-     }
-    ,    {
-    "dename":"UserRoleDetail",
-    "delogicname":"用户角色成员***",
-    "sysmoudle":{"id":"COMMON","name":"常规"},
-    "dedataset":[{"id":"CurrentCompany" , "name":"当前公司角色成员"},{"id":"OrderByUserCX" , "name":"根据用户查询角色"},{"id":"Default" , "name":"DEFAULT"},{"id":"SysManager" , "name":"系统管理员"}],
-    "deaction":[{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" }],
-    "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
-     }
-    ,    {
-    "dename":"OrgUser",
-    "delogicname":"组织人员***",
-    "sysmoudle":{"id":"COMMON","name":"常规"},
-    "dedataset":[{"id":"CurOrg" , "name":"当前组织"},{"id":"Default" , "name":"DEFAULT"},{"id":"CurOrgSector" , "name":"当前部门"},{"id":"UserOrgSector" , "name":"用户所在部门用户"},{"id":"UserOrg" , "name":"用户所在组织范围"},{"id":"DQZZJXJZZ" , "name":"当前组织及下级组织"}],
-    "deaction":[{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"UpdateCurUser" , "name":"更新当前用户" , "type":"DELOGIC" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"GetCurUser" , "name":"获取当前用户" , "type":"DELOGIC" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" }],
-    "datascope":[{"id":"all","name":"全部数据"}, {"id":"curorg","name":"当前单位"},{"id":"porg","name":"上级单位"},{"id":"sorg","name":"下级单位"} , {"id":"curorgdept","name":"当前部门"},{"id":"porgdept","name":"上级部门"},{"id":"sorgdept","name":"下级部门"} , {"id":"createman","name":"创建人"}]
      }
     ,    {
     "dename":"PIMACHIEVEMENTS",
@@ -1344,14 +1208,6 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"curorg","name":"当前单位"},{"id":"porg","name":"上级单位"},{"id":"sorg","name":"下级单位"} , {"id":"curorgdept","name":"当前部门"},{"id":"porgdept","name":"上级部门"},{"id":"sorgdept","name":"下级部门"} , {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"WXOrgSector",
-    "delogicname":"微信部门***",
-    "sysmoudle":{"id":"WX","name":"微信"},
-    "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
-    "deaction":[{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" }],
-    "datascope":[{"id":"all","name":"全部数据"}, {"id":"curorgdept","name":"当前部门"},{"id":"porgdept","name":"上级部门"},{"id":"sorgdept","name":"下级部门"} , {"id":"createman","name":"创建人"}]
-     }
-    ,    {
     "dename":"PIMPERSON",
     "delogicname":"人员信息",
     "sysmoudle":{"id":"PIM","name":"基础管理"},
@@ -1360,51 +1216,11 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"curorg","name":"当前单位"},{"id":"porg","name":"上级单位"},{"id":"sorg","name":"下级单位"} , {"id":"curorgdept","name":"当前部门"},{"id":"porgdept","name":"上级部门"},{"id":"sorgdept","name":"下级部门"} , {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"UserRoleDEField",
-    "delogicname":"用户角色实体属性访问***",
-    "sysmoudle":{"id":"COMMON","name":"常规"},
-    "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
-    "deaction":[{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" }],
-    "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
-     }
-    ,    {
-    "dename":"UserDGTheme",
-    "delogicname":"用户表格自定义***",
-    "sysmoudle":{"id":"COMMON","name":"常规"},
-    "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
-    "deaction":[{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" }],
-    "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
-     }
-    ,    {
-    "dename":"MsgSendQueue",
-    "delogicname":"消息发送队列***",
-    "sysmoudle":{"id":"COMMON","name":"常规"},
-    "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
-    "deaction":[{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" }],
-    "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
-     }
-    ,    {
     "dename":"TRMTRAFFIC",
     "delogicname":"交通",
     "sysmoudle":{"id":"TRM","name":"培训管理"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
     "deaction":[{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" }],
-    "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
-     }
-    ,    {
-    "dename":"WFUser",
-    "delogicname":"工作流用户***",
-    "sysmoudle":{"id":"WF","name":"工作流"},
-    "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
-    "deaction":[{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" }],
-    "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
-     }
-    ,    {
-    "dename":"UserRoleDataDetail",
-    "delogicname":"数据对象能力明细***",
-    "sysmoudle":{"id":"COMMON","name":"常规"},
-    "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
-    "deaction":[{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" }],
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
@@ -1480,35 +1296,11 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"WFUserAssist",
-    "delogicname":"工作流用户代办***",
-    "sysmoudle":{"id":"WF","name":"工作流"},
-    "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
-    "deaction":[{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" }],
-    "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
-     }
-    ,    {
     "dename":"PARNDLHMBKH",
     "delogicname":"量化目标考核",
     "sysmoudle":{"id":"PAR","name":"绩效管理"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
     "deaction":[{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" }],
-    "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
-     }
-    ,    {
-    "dename":"UserGroupDetail",
-    "delogicname":"用户组成员***",
-    "sysmoudle":{"id":"COMMON","name":"常规"},
-    "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
-    "deaction":[{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" }],
-    "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
-     }
-    ,    {
-    "dename":"UserDictCat",
-    "delogicname":"用户词条类别***",
-    "sysmoudle":{"id":"COMMON","name":"常规"},
-    "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
-    "deaction":[{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" }],
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
@@ -1649,7 +1441,7 @@
      }
     ,    {
     "dename":"ORMORGSECTOR",
-    "delogicname":"部门管理***",
+    "delogicname":"部门管理",
     "sysmoudle":{"id":"ORM","name":"组织管理"},
     "dedataset":[{"id":"CURORMORG" , "name":"通过当前组织过滤部门(ORMORGID)"},{"id":"XMBBZGL" , "name":"项目部编制管理"},{"id":"JSYXMB" , "name":"局所有项目部选择（第一版规则）"},{"id":"CurZZBM" , "name":"当前组织下的部门"},{"id":"CurZZBM_KQSZ" , "name":"当前组织部门（考勤设置）"},{"id":"CURORG" , "name":"通过当前组织过滤部门"},{"id":"CurOrgSector" , "name":"当前部门"},{"id":"Default" , "name":"DEFAULT"},{"id":"BaseInfo" , "name":"项目人员需求"},{"id":"DQZZXBM" , "name":"当前组织（及下级组织）下部门"},{"id":"RsshInfo" , "name":"设置项目负责人"},{"id":"SubOrgsector" , "name":"子组织部门/项目部（组织专用）"},{"id":"PimpersonInfoOrgsector" , "name":"子组织部门/项目部（人员信息专用）"},{"id":"HisInfo" , "name":"项目人员需求（历史版本）"},{"id":"SubZZBM" , "name":"子组织部门"},{"id":"ProExpandInfo" , "name":"项目拓展信息"},{"id":"BMBZGL" , "name":"部门编制管理"}],
     "deaction":[{"id":"ChangeEdition" , "name":"设置为生效版本" , "type":"USERCUSTOM" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"SynOrgSectPro" , "name":"通过项目部选择计算项目信息" , "type":"USERCUSTOM" },{"id":"CLWC" , "name":"处理完成" , "type":"USERCUSTOM" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"TJ" , "name":"提交需求计划" , "type":"USERCUSTOM" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"SynOrgSectOderNum" , "name":"根据当前所选组织默认计算当前部门的排序" , "type":"USERCUSTOM" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"SynOrgSec" , "name":"计算当前部门默认所属区域" , "type":"USERCUSTOM" }],
@@ -1769,18 +1561,10 @@
      }
     ,    {
     "dename":"CodeList1",
-    "delogicname":"代码表***",
+    "delogicname":"代码表",
     "sysmoudle":{"id":"COMMON","name":"常规"},
     "dedataset":[{"id":"PersonUse" , "name":"用户使用"},{"id":"Default" , "name":"DEFAULT"}],
     "deaction":[{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"RefreshModel" , "name":"刷新代码表" , "type":"USERCUSTOM" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" }],
-    "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
-     }
-    ,    {
-    "dename":"QueryModel",
-    "delogicname":"实体查询模型***",
-    "sysmoudle":{"id":"DEMODEL","name":"实体模型"},
-    "dedataset":[{"id":"Default" , "name":"DEFAULT"},{"id":"CurDE" , "name":"当前实体"}],
-    "deaction":[{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" }],
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
@@ -1798,14 +1582,6 @@
     "dedataset":[{"id":"Default" , "name":"DEFAULT"},{"id":"JLSSGLY" , "name":"记录所属（管理员）"},{"id":"JLSSGR" , "name":"记录所属（个人）"}],
     "deaction":[{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" }],
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"curorg","name":"当前单位"},{"id":"porg","name":"上级单位"},{"id":"sorg","name":"下级单位"} , {"id":"curorgdept","name":"当前部门"},{"id":"porgdept","name":"上级部门"},{"id":"sorgdept","name":"下级部门"} , {"id":"createman","name":"创建人"}]
-     }
-    ,    {
-    "dename":"MsgSendQueueHis",
-    "delogicname":"消息发送队列（历史）***",
-    "sysmoudle":{"id":"COMMON","name":"常规"},
-    "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
-    "deaction":[{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" }],
-    "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
     "dename":"SALSCHEME",
@@ -1912,14 +1688,6 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"WFInstance",
-    "delogicname":"工作流实例***",
-    "sysmoudle":{"id":"WF","name":"工作流"},
-    "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
-    "deaction":[{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Restart" , "name":"重新启动" , "type":"USERCUSTOM" },{"id":"UserCancel" , "name":"取消流程" , "type":"USERCUSTOM" }],
-    "datascope":[{"id":"all","name":"全部数据"}, {"id":"curorg","name":"当前单位"},{"id":"porg","name":"上级单位"},{"id":"sorg","name":"下级单位"} , {"id":"createman","name":"创建人"}]
-     }
-    ,    {
     "dename":"ContractSignORG",
     "delogicname":"签约主体单位",
     "sysmoudle":{"id":"PIM","name":"基础管理"},
@@ -1984,14 +1752,6 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"WFWorkList",
-    "delogicname":"工作流工作列表***",
-    "sysmoudle":{"id":"WF","name":"工作流"},
-    "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
-    "deaction":[{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" }],
-    "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
-     }
-    ,    {
     "dename":"TRMSTAFF",
     "delogicname":"员工需求填报",
     "sysmoudle":{"id":"TRM","name":"培训管理"},
@@ -2030,14 +1790,6 @@
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
     "deaction":[{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" }],
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
-     }
-    ,    {
-    "dename":"OrgSecUser",
-    "delogicname":"组织部门人员***",
-    "sysmoudle":{"id":"COMMON","name":"常规"},
-    "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
-    "deaction":[{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"RemoveDefault" , "name":"删除默认关系" , "type":"USERCUSTOM" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" }],
-    "datascope":[{"id":"all","name":"全部数据"}, {"id":"curorg","name":"当前单位"},{"id":"porg","name":"上级单位"},{"id":"sorg","name":"下级单位"} , {"id":"curorgdept","name":"当前部门"},{"id":"porgdept","name":"上级部门"},{"id":"sorgdept","name":"下级部门"} , {"id":"createman","name":"创建人"}]
      }
     ,    {
     "dename":"SALPERSONSTDDETAIL",
@@ -2112,14 +1864,6 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"WFReminder",
-    "delogicname":"工作流工作催办***",
-    "sysmoudle":{"id":"WF","name":"工作流"},
-    "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
-    "deaction":[{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" }],
-    "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
-     }
-    ,    {
     "dename":"PIMSTAFFTYPE",
     "delogicname":"员工类型管理",
     "sysmoudle":{"id":"PIM","name":"基础管理"},
@@ -2141,22 +1885,6 @@
     "sysmoudle":{"id":"SAL","name":"激励管理"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
     "deaction":[{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" }],
-    "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
-     }
-    ,    {
-    "dename":"WFUserCandidate",
-    "delogicname":"工作流用户候选者***",
-    "sysmoudle":{"id":"WF","name":"工作流"},
-    "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
-    "deaction":[{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" }],
-    "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
-     }
-    ,    {
-    "dename":"WFTmpStepActor",
-    "delogicname":"工作流步骤操作者（临时）***",
-    "sysmoudle":{"id":"WF","name":"工作流"},
-    "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
-    "deaction":[{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" }],
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
@@ -2182,14 +1910,6 @@
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
     "deaction":[{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" }],
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"curorg","name":"当前单位"},{"id":"porg","name":"上级单位"},{"id":"sorg","name":"下级单位"} , {"id":"createman","name":"创建人"}]
-     }
-    ,    {
-    "dename":"UserRoleDatas",
-    "delogicname":"用户角色数据能力***",
-    "sysmoudle":{"id":"COMMON","name":"常规"},
-    "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
-    "deaction":[{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" }],
-    "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
     "dename":"PARJXBZGL",
@@ -2240,22 +1960,6 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"UserRoleRes",
-    "delogicname":"用户角色资源能力***",
-    "sysmoudle":{"id":"COMMON","name":"常规"},
-    "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
-    "deaction":[{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" }],
-    "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
-     }
-    ,    {
-    "dename":"UserObject",
-    "delogicname":"用户对象***",
-    "sysmoudle":{"id":"COMMON","name":"常规"},
-    "dedataset":[{"id":"IndexDER" , "name":"IndexDER"},{"id":"Default" , "name":"DEFAULT"}],
-    "deaction":[{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" }],
-    "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
-     }
-    ,    {
     "dename":"PCMTXFPSQ",
     "delogicname":"退休返聘申请",
     "sysmoudle":{"id":"PCM","name":"配置管理"},
@@ -2272,14 +1976,6 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"curorg","name":"当前单位"},{"id":"porg","name":"上级单位"},{"id":"sorg","name":"下级单位"} , {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"MsgAccount",
-    "delogicname":"消息账户***",
-    "sysmoudle":{"id":"COMMON","name":"常规"},
-    "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
-    "deaction":[{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" }],
-    "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
-     }
-    ,    {
     "dename":"PCMYDDGMX",
     "delogicname":"异动待岗明细",
     "sysmoudle":{"id":"PCM","name":"配置管理"},
@@ -2294,14 +1990,6 @@
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
     "deaction":[{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" }],
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"curorg","name":"当前单位"},{"id":"porg","name":"上级单位"},{"id":"sorg","name":"下级单位"} , {"id":"createman","name":"创建人"}]
-     }
-    ,    {
-    "dename":"WFSystemUser",
-    "delogicname":"工作流系统用户***",
-    "sysmoudle":{"id":"WF","name":"工作流"},
-    "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
-    "deaction":[{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" }],
-    "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
     "dename":"ATTENDANCERECORDTEMP",
@@ -2336,14 +2024,6 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"User",
-    "delogicname":"用户***",
-    "sysmoudle":{"id":"COMMON","name":"常规"},
-    "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
-    "deaction":[{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" }],
-    "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
-     }
-    ,    {
     "dename":"SALSTDXMGZRATE",
     "delogicname":"项目工资标准(绩效比例)",
     "sysmoudle":{"id":"SAL","name":"激励管理"},
@@ -2360,27 +2040,11 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"Org",
-    "delogicname":"组织机构***",
-    "sysmoudle":{"id":"COMMON","name":"常规"},
-    "dedataset":[{"id":"Default" , "name":"DEFAULT"},{"id":"CurCat" , "name":"当前组织分类"},{"id":"AllRoot" , "name":"全部根组织"},{"id":"CurChild" , "name":"当前子组织"}],
-    "deaction":[{"id":"InitAll" , "name":"初始化" , "type":"USERCUSTOM" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"InitUserObject" , "name":"初始化用户对象" , "type":"USERCUSTOM" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" }],
-    "datascope":[{"id":"all","name":"全部数据"}, {"id":"curorg","name":"当前单位"},{"id":"porg","name":"上级单位"},{"id":"sorg","name":"下级单位"} , {"id":"createman","name":"创建人"}]
-     }
-    ,    {
     "dename":"TRMSTAFFNODES",
     "delogicname":"员工需求明细",
     "sysmoudle":{"id":"TRM","name":"培训管理"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
     "deaction":[{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" }],
-    "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
-     }
-    ,    {
-    "dename":"WFAction",
-    "delogicname":"工作流用户操作***",
-    "sysmoudle":{"id":"WF","name":"工作流"},
-    "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
-    "deaction":[{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" }],
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
@@ -2413,14 +2077,6 @@
     "sysmoudle":{"id":"SAL","name":"激励管理"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
     "deaction":[{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" }],
-    "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
-     }
-    ,    {
-    "dename":"OrgType",
-    "delogicname":"组织类型***",
-    "sysmoudle":{"id":"COMMON","name":"常规"},
-    "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
-    "deaction":[{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" }],
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
@@ -2480,14 +2136,6 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"OrgUnitCat",
-    "delogicname":"组织单元类别***",
-    "sysmoudle":{"id":"COMMON","name":"常规"},
-    "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
-    "deaction":[{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" }],
-    "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
-     }
-    ,    {
     "dename":"PARJXQDSZ",
     "delogicname":"绩效启动设置",
     "sysmoudle":{"id":"PAR","name":"绩效管理"},
@@ -2504,27 +2152,11 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"WFStep",
-    "delogicname":"工作流步骤***",
-    "sysmoudle":{"id":"WF","name":"工作流"},
-    "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
-    "deaction":[{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" }],
-    "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
-     }
-    ,    {
     "dename":"TRMTRAINCOURSE",
     "delogicname":"培训课程",
     "sysmoudle":{"id":"TRM","name":"培训管理"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
     "deaction":[{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" }],
-    "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
-     }
-    ,    {
-    "dename":"DataEntity",
-    "delogicname":"实体***",
-    "sysmoudle":{"id":"DEMODEL","name":"实体模型"},
-    "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
-    "deaction":[{"id":"InitUserRoleData" , "name":"初始化角色数据对象" , "type":"USERCUSTOM" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"InitAll" , "name":"初始化" , "type":"USERCUSTOM" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" }],
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
@@ -2536,28 +2168,12 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"WXAccount",
-    "delogicname":"微信公众号***",
-    "sysmoudle":{"id":"WX","name":"微信"},
-    "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
-    "deaction":[{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"SyncOrgSector" , "name":"同步组织部门" , "type":"USERCUSTOM" },{"id":"PubMenu" , "name":"发布菜单" , "type":"USERCUSTOM" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"SyncOrgUser" , "name":"同步组织人员" , "type":"USERCUSTOM" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" }],
-    "datascope":[{"id":"all","name":"全部数据"}, {"id":"curorg","name":"当前单位"},{"id":"porg","name":"上级单位"},{"id":"sorg","name":"下级单位"} , {"id":"createman","name":"创建人"}]
-     }
-    ,    {
     "dename":"ATTENDENCEORMORGSECTOR",
     "delogicname":"考勤部门",
     "sysmoudle":{"id":"ATT","name":"考勤管理"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
     "deaction":[{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" }],
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"curorg","name":"当前单位"},{"id":"porg","name":"上级单位"},{"id":"sorg","name":"下级单位"} , {"id":"createman","name":"创建人"}]
-     }
-    ,    {
-    "dename":"WFAppSetting",
-    "delogicname":"工作流系统设定***",
-    "sysmoudle":{"id":"WF","name":"工作流"},
-    "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
-    "deaction":[{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" }],
-    "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
     "dename":"TRMDUTYCADRES",
@@ -2688,16 +2304,8 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"WFDynamicUser",
-    "delogicname":"工作流动态用户***",
-    "sysmoudle":{"id":"WF","name":"工作流"},
-    "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
-    "deaction":[{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" }],
-    "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
-     }
-    ,    {
     "dename":"CodeItem",
-    "delogicname":"代码项***",
+    "delogicname":"代码项",
     "sysmoudle":{"id":"COMMON","name":"常规"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"},{"id":"CurCL" , "name":"当前代码表"}],
     "deaction":[{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" }],
@@ -2728,14 +2336,6 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"curorg","name":"当前单位"},{"id":"porg","name":"上级单位"},{"id":"sorg","name":"下级单位"} , {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"WXMessage",
-    "delogicname":"微信消息***",
-    "sysmoudle":{"id":"WX","name":"微信"},
-    "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
-    "deaction":[{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" }],
-    "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
-     }
-    ,    {
     "dename":"PIMWorkflowRef",
     "delogicname":"平台流程配置",
     "sysmoudle":{"id":"PIM","name":"基础管理"},
@@ -2760,14 +2360,6 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"curorg","name":"当前单位"},{"id":"porg","name":"上级单位"},{"id":"sorg","name":"下级单位"} , {"id":"curorgdept","name":"当前部门"},{"id":"porgdept","name":"上级部门"},{"id":"sorgdept","name":"下级部门"} , {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"WFWorkflow",
-    "delogicname":"工作流配置***",
-    "sysmoudle":{"id":"WF","name":"工作流"},
-    "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
-    "deaction":[{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" }],
-    "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
-     }
-    ,    {
     "dename":"WFQJ",
     "delogicname":"请假（WF）",
     "sysmoudle":{"id":"VAC","name":"休假管理"},
@@ -2789,14 +2381,6 @@
     "sysmoudle":{"id":"SAL","name":"激励管理"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
     "deaction":[{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" }],
-    "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
-     }
-    ,    {
-    "dename":"UserRoleDataAction",
-    "delogicname":"用户角色数据操作***",
-    "sysmoudle":{"id":"COMMON","name":"常规"},
-    "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
-    "deaction":[{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" }],
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
@@ -2824,14 +2408,6 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"WFStepActor",
-    "delogicname":"工作流步骤操作者***",
-    "sysmoudle":{"id":"WF","name":"工作流"},
-    "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
-    "deaction":[{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"RemindSave" , "name":"催办保存" , "type":"USERCUSTOM" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" }],
-    "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
-     }
-    ,    {
     "dename":"PIMPROVINCE",
     "delogicname":"省",
     "sysmoudle":{"id":"PIM","name":"基础管理"},
@@ -2845,38 +2421,6 @@
     "sysmoudle":{"id":"PCM","name":"配置管理"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
     "deaction":[{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" }],
-    "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
-     }
-    ,    {
-    "dename":"OrgSector",
-    "delogicname":"组织部门***",
-    "sysmoudle":{"id":"COMMON","name":"常规"},
-    "dedataset":[{"id":"CurChild" , "name":"当前部门子部门"},{"id":"CurOrgOrg" , "name":"当前组织下部门"},{"id":"UserOrgSector" , "name":"用户部门子部门"},{"id":"OrgRoot" , "name":"组织根部门"},{"id":"UserOrg" , "name":"用户组织部门"},{"id":"CurOrg" , "name":"当前组织"},{"id":"Default" , "name":"DEFAULT"}],
-    "deaction":[{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"InitUserObject" , "name":"初始化用户对象" , "type":"USERCUSTOM" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" }],
-    "datascope":[{"id":"all","name":"全部数据"}, {"id":"curorg","name":"当前单位"},{"id":"porg","name":"上级单位"},{"id":"sorg","name":"下级单位"} , {"id":"curorgdept","name":"当前部门"},{"id":"porgdept","name":"上级部门"},{"id":"sorgdept","name":"下级部门"} , {"id":"createman","name":"创建人"}]
-     }
-    ,    {
-    "dename":"WXEntApp",
-    "delogicname":"微信企业应用***",
-    "sysmoudle":{"id":"WX","name":"微信"},
-    "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
-    "deaction":[{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"PubMenu" , "name":"发布菜单" , "type":"USERCUSTOM" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" }],
-    "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
-     }
-    ,    {
-    "dename":"WFActor",
-    "delogicname":"工作流操作者***",
-    "sysmoudle":{"id":"WF","name":"工作流"},
-    "dedataset":[{"id":"IndexDER" , "name":"IndexDER"},{"id":"Default" , "name":"DEFAULT"}],
-    "deaction":[{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" }],
-    "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
-     }
-    ,    {
-    "dename":"WFIAAction",
-    "delogicname":"工作流交互操作***",
-    "sysmoudle":{"id":"WF","name":"工作流"},
-    "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
-    "deaction":[{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" }],
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
@@ -2952,27 +2496,11 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"LoginAccount",
-    "delogicname":"登录帐户***",
-    "sysmoudle":{"id":"COMMON","name":"常规"},
-    "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
-    "deaction":[{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"SaveHashMode" , "name":"保存（密码Hash）" , "type":"USERCUSTOM" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"GetHashMode" , "name":"获取（密码Hash）" , "type":"USERCUSTOM" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" }],
-    "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
-     }
-    ,    {
     "dename":"PARBMFZJYX",
     "delogicname":"通知选择部门副职及以下",
     "sysmoudle":{"id":"PAR","name":"绩效管理"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
     "deaction":[{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" }],
-    "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
-     }
-    ,    {
-    "dename":"OrgUserLevel",
-    "delogicname":"组织人员级别***",
-    "sysmoudle":{"id":"COMMON","name":"常规"},
-    "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
-    "deaction":[{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" }],
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
@@ -3006,14 +2534,6 @@
     "dedataset":[{"id":"JPSQMX" , "name":"解聘申请（未审核）"},{"id":"NTSQMX" , "name":"内退申请明细（未审核）"},{"id":"NTSQMXGR" , "name":"内退申请明细（个人）"},{"id":"TXSQMX" , "name":"退休申请明细（未审核）"},{"id":"GZSQMX" , "name":"挂职申请明细（未审核）"},{"id":"ZJBDSQMX" , "name":"职级变动申请明细"},{"id":"DGSQMX" , "name":"待岗申请明细"},{"id":"CQBXSQMXDS" , "name":"长期病休申请明细"},{"id":"LZSQMX" , "name":"离职申请明细"},{"id":"LZSQMXGR" , "name":"离职申请明细（个人）"},{"id":"Default" , "name":"DEFAULT"}],
     "deaction":[{"id":"ZJJSDMB" , "name":"职级晋升代码表" , "type":"DELOGIC" },{"id":"CQBXCZ" , "name":"长期病休操作" , "type":"USERCUSTOM" },{"id":"SXJSDMB" , "name":"SXJSDMB" , "type":"DELOGIC" },{"id":"PDZJ" , "name":"判断职级" , "type":"USERCUSTOM" },{"id":"SXJSDMB2" , "name":"刷新代码表" , "type":"DELOGIC" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"ZZSQ" , "name":"自助申请" , "type":"USERCUSTOM" },{"id":"SXDMB" , "name":"职级降职代码表" , "type":"DELOGIC" },{"id":"DGCZ" , "name":"待岗操作" , "type":"USERCUSTOM" },{"id":"SetPersonInfo" , "name":"设置人员相关信息" , "type":"DELOGIC" },{"id":"GZCZ" , "name":"挂职操作" , "type":"USERCUSTOM" },{"id":"JPCZ" , "name":"解聘操作" , "type":"USERCUSTOM" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"LZCZ" , "name":"离职操作" , "type":"USERCUSTOM" },{"id":"NTCZ" , "name":"内退操作" , "type":"USERCUSTOM" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"SHBTG" , "name":"审核不通过" , "type":"USERCUSTOM" },{"id":"ZJBDCZ" , "name":"职级变动操作" , "type":"USERCUSTOM" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"TXCZ" , "name":"退休操作" , "type":"USERCUSTOM" },{"id":"JZJJSDMB" , "name":"局职级晋升代码表" , "type":"DELOGIC" },{"id":"SHTG" , "name":"审核通过" , "type":"USERCUSTOM" }],
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"curorg","name":"当前单位"},{"id":"porg","name":"上级单位"},{"id":"sorg","name":"下级单位"} , {"id":"curorgdept","name":"当前部门"},{"id":"porgdept","name":"上级部门"},{"id":"sorgdept","name":"下级部门"} , {"id":"createman","name":"创建人"}]
-     }
-    ,    {
-    "dename":"WXMedia",
-    "delogicname":"微信多媒体内容***",
-    "sysmoudle":{"id":"WX","name":"微信"},
-    "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
-    "deaction":[{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" }],
-    "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
     "dename":"PCMJXSYGZZJLMX",
@@ -3064,14 +2584,6 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"UniRes",
-    "delogicname":"统一资源***",
-    "sysmoudle":{"id":"COMMON","name":"常规"},
-    "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
-    "deaction":[{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" }],
-    "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
-     }
-    ,    {
     "dename":"PCMXYGZZJGWH",
     "delogicname":"试用期员工转正考核结果维护",
     "sysmoudle":{"id":"PCM","name":"配置管理"},
@@ -3104,14 +2616,6 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"WFVersion",
-    "delogicname":"工作流配置版本***",
-    "sysmoudle":{"id":"WF","name":"工作流"},
-    "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
-    "deaction":[{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" }],
-    "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
-     }
-    ,    {
     "dename":"PIMVOCATIONALCATALOG",
     "delogicname":"执（职）业资格管理",
     "sysmoudle":{"id":"PIM","name":"基础管理"},
@@ -3136,14 +2640,6 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"MsgTemplate",
-    "delogicname":"消息模板***",
-    "sysmoudle":{"id":"COMMON","name":"常规"},
-    "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
-    "deaction":[{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" }],
-    "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
-     }
-    ,    {
     "dename":"PARFZSMX",
     "delogicname":"通知选择助总领导明细",
     "sysmoudle":{"id":"PAR","name":"绩效管理"},
@@ -3157,14 +2653,6 @@
     "sysmoudle":{"id":"PIM","name":"基础管理"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
     "deaction":[{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" }],
-    "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
-     }
-    ,    {
-    "dename":"UserRoleType",
-    "delogicname":"用户角色类型***",
-    "sysmoudle":{"id":"COMMON","name":"常规"},
-    "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
-    "deaction":[{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" }],
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
@@ -3347,7 +2835,7 @@
             {
                "appid":"EHRPim",
                "appname":"EHRPIM（基础管理）",
-               "appmenu":[{"menuid":"Index", "menuname":"Index", "menuitem":[{ "id":"menuitem45" , "name":"门户首页" },{ "id":"menuitem1" , "name":"人员信息" , "items":[{ "id":"menuitem2" , "name":"员工信息" },{ "id":"menuitem3" , "name":"自助信息审核" },{ "id":"menuitem10" , "name":"黑名单" }]},{ "id":"menuitem46" , "name":"人员花名册" , "items":[{ "id":"menuitem11" , "name":"人员花名册" },{ "id":"menuitem4" , "name":"见习员工" },{ "id":"menuitem5" , "name":"试用员工" },{ "id":"menuitem6" , "name":"离(退)休人员" },{ "id":"menuitem7" , "name":"离职人员" },{ "id":"menuitem8" , "name":"借调员工" },{ "id":"menuitem9" , "name":"挂职员工" }]},{ "id":"menuitem13" , "name":"合同管理" , "items":[{ "id":"menuitem20" , "name":"劳务派遣公司" },{ "id":"menuitem21" , "name":"合同信息" },{ "id":"menuitem22" , "name":"初签(续签)提醒" },{ "id":"menuitem23" , "name":"终止提醒" }]},{ "id":"menuitem14" , "name":"档案管理" , "items":[{ "id":"menuitem24" , "name":"档案信息" },{ "id":"menuitem25" , "name":"非员工在档提醒" },{ "id":"menuitem26" , "name":"员工不在档提醒" },{ "id":"menuitem27" , "name":"档案转出记录" }]},{ "id":"menuitem15" , "name":"证书管理" , "items":[{ "id":"menuitem28" , "name":"证书信息" }]},{ "id":"menuitem16" , "name":"职称管理" , "items":[{ "id":"menuitem29" , "name":"职称信息" }]},{ "id":"menuitem17" , "name":"出(国)境管理" , "items":[{ "id":"menuitem30" , "name":"因公出(国)境" },{ "id":"menuitem31" , "name":"因私出(国)境" }]},{ "id":"menuitem18" , "name":"离(退)休管理" , "items":[{ "id":"menuitem32" , "name":"离(退)休人员" },{ "id":"menuitem33" , "name":"老干部活动" },{ "id":"menuitem34" , "name":"费用台账" }]},{ "id":"menuitem19" , "name":"标准化数据设置" , "items":[{ "id":"menuitem35" , "name":"员工类型" },{ "id":"menuitem36" , "name":"合同类别" },{ "id":"menuitem37" , "name":"合同类型" },{ "id":"menuitem38" , "name":"专业序列类型" },{ "id":"menuitem39" , "name":"见习期" },{ "id":"menuitem40" , "name":"执业资格证书" },{ "id":"menuitem41" , "name":"岗位(技能)证书" },{ "id":"menuitem43" , "name":"职称目录" },{ "id":"menuitem42" , "name":"档案类别" },{ "id":"menuitem44" , "name":"档案室" }]}] }]
+               "appmenu":[{"menuid":"Index", "menuname":"Index", "menuitem":[{ "id":"menuitem45" , "name":"门户首页" },{ "id":"menuitem1" , "name":"人员信息" , "items":[{ "id":"menuitem2" , "name":"员工信息" },{ "id":"menuitem3" , "name":"自助信息审核" },{ "id":"menuitem10" , "name":"黑名单" }]},{ "id":"menuitem46" , "name":"人员花名册" , "items":[{ "id":"menuitem11" , "name":"人员花名册" },{ "id":"menuitem4" , "name":"见习员工" },{ "id":"menuitem5" , "name":"试用员工" },{ "id":"menuitem6" , "name":"离(退)休人员" },{ "id":"menuitem7" , "name":"离职人员" },{ "id":"menuitem8" , "name":"借调员工" },{ "id":"menuitem9" , "name":"挂职员工" }]},{ "id":"menuitem13" , "name":"合同管理" , "items":[{ "id":"menuitem20" , "name":"劳务派遣公司" },{ "id":"menuitem21" , "name":"合同信息" },{ "id":"menuitem22" , "name":"初签(续签)提醒" },{ "id":"menuitem23" , "name":"终止提醒" }]},{ "id":"menuitem14" , "name":"档案管理" , "items":[{ "id":"menuitem24" , "name":"档案信息" },{ "id":"menuitem25" , "name":"非员工在档提醒" },{ "id":"menuitem26" , "name":"员工不在档提醒" },{ "id":"menuitem27" , "name":"档案转出记录" }]},{ "id":"menuitem15" , "name":"证书管理" , "items":[{ "id":"menuitem28" , "name":"证书信息" }]},{ "id":"menuitem16" , "name":"职称管理" , "items":[{ "id":"menuitem29" , "name":"职称信息" }]},{ "id":"menuitem17" , "name":"出(国)境管理" , "items":[{ "id":"menuitem30" , "name":"因公出(国)境" },{ "id":"menuitem31" , "name":"因私出(国)境" }]},{ "id":"menuitem18" , "name":"离(退)休管理" , "items":[{ "id":"menuitem32" , "name":"离(退)休人员" },{ "id":"menuitem33" , "name":"老干部活动" },{ "id":"menuitem34" , "name":"费用台账" }]},{ "id":"menuitem19" , "name":"标准化数据设置" , "items":[{ "id":"menuitem36" , "name":"合同类别" },{ "id":"menuitem37" , "name":"合同类型" },{ "id":"menuitem40" , "name":"执业资格证书" },{ "id":"menuitem41" , "name":"岗位(技能)证书" },{ "id":"menuitem43" , "name":"职称目录" },{ "id":"menuitem44" , "name":"档案室" }]}] }]
             }
             ]
     }

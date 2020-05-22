@@ -61,7 +61,7 @@ export default class PIMCL_LEVEL {
     }
 
     /**
-     * 代码项***应用实体服务对象
+     * 代码项应用实体服务对象
      *
      * @type {CodeItemService}
      * @memberof PIMCL_LEVEL

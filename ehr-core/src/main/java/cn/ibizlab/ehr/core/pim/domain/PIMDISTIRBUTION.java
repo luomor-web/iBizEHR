@@ -157,26 +157,12 @@ public class PIMDISTIRBUTION extends EntityMP implements Serializable {
     @JsonProperty("pimworkhistoryid")
     private String pimworkhistoryid;
     /**
-     * 剩余月份颜色
-     */
-    @TableField(exist = false)
-    @JSONField(name = "syyf_color")
-    @JsonProperty("syyf_color")
-    private String syyfColor;
-    /**
      * 组织ID
      */
     @TableField(exist = false)
     @JSONField(name = "orgid")
     @JsonProperty("orgid")
     private String orgid;
-    /**
-     * 剩余月份
-     */
-    @TableField(exist = false)
-    @JSONField(name = "syyf")
-    @JsonProperty("syyf")
-    private String syyf;
     /**
      * 外单位履历
      */

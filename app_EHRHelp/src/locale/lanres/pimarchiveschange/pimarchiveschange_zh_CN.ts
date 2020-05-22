@@ -68,33 +68,6 @@ export default {
 		uiactions: {
 		},
 	},
-	default_searchform: {
-		details: {
-			formpage1: '常规条件', 
-			n_ygbh_like: '员工编号(%)', 
-			n_pimpersonname_like: '员工姓名(%)', 
-		},
-		uiactions: {
-		},
-	},
-	gridviewtoolbar_toolbar: {
-		tbitem16: {
-			caption: '其它',
-			tip: '其它',
-		},
-		tbitem23: {
-			caption: '数据导入',
-			tip: '数据导入',
-		},
-		tbitem13: {
-			caption: '导出数据',
-			tip: '导出数据',
-		},
-		tbitem18: {
-			caption: '帮助',
-			tip: '帮助',
-		},
-	},
 	editviewtoolbar_toolbar: {
 		tbitem3: {
 			caption: '保存',

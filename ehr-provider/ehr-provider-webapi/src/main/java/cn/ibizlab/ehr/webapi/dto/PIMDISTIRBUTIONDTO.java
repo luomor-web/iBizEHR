@@ -155,28 +155,12 @@ public class PIMDISTIRBUTIONDTO extends DTOBase implements Serializable {
     private String pimworkhistoryid;
 
     /**
-     * 属性 [SYYF_COLOR]
-     *
-     */
-    @JSONField(name = "syyf_color")
-    @JsonProperty("syyf_color")
-    private String syyfColor;
-
-    /**
      * 属性 [ORGID]
      *
      */
     @JSONField(name = "orgid")
     @JsonProperty("orgid")
     private String orgid;
-
-    /**
-     * 属性 [SYYF]
-     *
-     */
-    @JSONField(name = "syyf")
-    @JsonProperty("syyf")
-    private String syyf;
 
     /**
      * 属性 [ISOUTRECORD]

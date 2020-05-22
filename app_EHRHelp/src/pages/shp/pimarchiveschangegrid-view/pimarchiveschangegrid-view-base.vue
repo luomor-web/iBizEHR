@@ -1,5 +1,5 @@
 <template>
-  <app-layout viewName="pimarchiveschangegridview" viewTitle="调档记录表格视图" :className="{ 'view-container': true, 'default-mode-view': true, 'degridview': true, 'pimarchiveschangegrid-view': true }" layoutMode="VIEW" :isShowUserInfo="isDefaultView()" :openMode="openMode" @close-view="closeView($event)">
+  <app-layout viewName="pimarchiveschangegridview" viewTitle="调档记录表格视图" :isShowToolbar="false" :className="{ 'view-container': true, 'default-mode-view': true, 'degridview': true, 'pimarchiveschangegrid-view': true }" layoutMode="VIEW" :isShowUserInfo="isDefaultView()" :openMode="openMode" @close-view="closeView($event)">
     <template slot="headerLeft">
       <div class="view-header-left">
 
@@ -7,30 +7,9 @@
         <modal-breadcrumb v-if="isModalView()"/>
       </div>
     </template>
-    <template slot="headerRight">
-      <div class="view-header-right">
-        <app-header-menus :toolbarModel="toolBarModels" @menu-click="toolbar_click($event)" mode="view" :openMode="openMode" :isEnableQuickSearch="true" searchPlaceholder="归档地变更记录" v-model="query" @search="onSearch($event)"/>
-      </div>
-    </template>
     <template slot="content">
       <div class="view-content-wrapper">
-        <view_searchform 
-    :viewState="viewState"  
-    :viewparams="viewparams" 
-    :context="context" 
-    :showBusyIndicator="true"
-    v-show="isExpandSearchForm"
-    loaddraftAction="FilterGetDraft"
-    loadAction="FilterGet"
-
-    name="searchform"  
-    ref='searchform' 
-    @save="searchform_save($event)"  
-    @search="searchform_search($event)"  
-    @load="searchform_load($event)"  
-    @closeview="closeView($event)">
-</view_searchform>
-<view_grid 
+        <view_grid 
     :viewState="viewState"  
     :viewparams="viewparams" 
     :context="context" 
@@ -171,9 +150,7 @@ export default class PIMARCHIVESCHANGEGridViewBase extends GridViewBase {
      * @memberof PIMARCHIVESCHANGEGridViewBase
      */
     public containerModel: any = {
-        view_toolbar: { name: 'toolbar', type: 'TOOLBAR' },
         view_grid: { name: 'grid', type: 'GRID' },
-        view_searchform: { name: 'searchform', type: 'SEARCHFORM' },
     };
 
     /**
@@ -184,23 +161,6 @@ export default class PIMARCHIVESCHANGEGridViewBase extends GridViewBase {
      * @memberof PIMARCHIVESCHANGEGridViewBase
      */
     public viewState: Subject<ViewState> = new Subject();
-    /**
-     * 工具栏模型
-     *
-     * @type {*}
-     * @memberof PIMARCHIVESCHANGEGridView
-     */
-    public toolBarModels: any = {
-        tbitem16: { name: 'tbitem16', caption: '其它', disabled: false, type: 'ITEMS', visabled: true, dataaccaction: '', uiaction: { }, class: '' }, 
- tbitem23: { name: 'tbitem23', caption: '数据导入','isShowCaption':true,'isShowIcon':true, tooltip: '数据导入', iconcls: 'fa fa-upload', icon: '', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: 'SRFUR__JGLYYPZSZYJTJ', uiaction: { tag: 'Import', target: '' }, class: '' },
-
- tbitem13: { name: 'tbitem13', caption: '导出数据','isShowCaption':true,'isShowIcon':true, tooltip: '导出数据', iconcls: 'fa fa-file-excel-o', icon: '', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: '', uiaction: { tag: 'ExportExcel', target: '' }, MaxRowCount: 5000, class: '' },
-
-
-        tbitem18: { name: 'tbitem18', caption: '帮助','isShowCaption':true,'isShowIcon':true, tooltip: '帮助', iconcls: 'fa fa-question', icon: '', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: '', uiaction: { tag: 'Help', target: '' }, class: '' },
-
-    };
-
 
 
 
@@ -231,34 +191,10 @@ export default class PIMARCHIVESCHANGEGridViewBase extends GridViewBase {
                 this.newdata(args, params, $event, xData);
             },
             grid: this.$refs.grid,
-            searchform: this.$refs.searchform,
             keyPSDEField: 'pimarchiveschange',
             majorPSDEField: 'pimarchiveschangename',
             isLoadDefault: true,
         });
-    }
-
-
-    /**
-     * toolbar 部件 click 事件
-     *
-     * @param {*} [args={}]
-     * @param {*} $event
-     * @memberof PIMARCHIVESCHANGEGridViewBase
-     */
-    public toolbar_click($event: any, $event2?: any) {
-        if (Object.is($event.tag, 'deuiaction1')) {
-            this.toolbar_deuiaction1_click(null, '', $event2);
-        }
-        if (Object.is($event.tag, 'tbitem23')) {
-            this.toolbar_tbitem23_click(null, '', $event2);
-        }
-        if (Object.is($event.tag, 'tbitem13')) {
-            this.toolbar_tbitem13_click(null, '', $event2);
-        }
-        if (Object.is($event.tag, 'tbitem18')) {
-            this.toolbar_tbitem18_click(null, '', $event2);
-        }
     }
 
 
@@ -322,158 +258,6 @@ export default class PIMARCHIVESCHANGEGridViewBase extends GridViewBase {
     }
 
 
-    /**
-     * searchform 部件 save 事件
-     *
-     * @param {*} [args={}]
-     * @param {*} $event
-     * @memberof PIMARCHIVESCHANGEGridViewBase
-     */
-    public searchform_save($event: any, $event2?: any) {
-        this.engine.onCtrlEvent('searchform', 'save', $event);
-    }
-
-
-    /**
-     * searchform 部件 search 事件
-     *
-     * @param {*} [args={}]
-     * @param {*} $event
-     * @memberof PIMARCHIVESCHANGEGridViewBase
-     */
-    public searchform_search($event: any, $event2?: any) {
-        this.engine.onCtrlEvent('searchform', 'search', $event);
-    }
-
-
-    /**
-     * searchform 部件 load 事件
-     *
-     * @param {*} [args={}]
-     * @param {*} $event
-     * @memberof PIMARCHIVESCHANGEGridViewBase
-     */
-    public searchform_load($event: any, $event2?: any) {
-        this.engine.onCtrlEvent('searchform', 'load', $event);
-    }
-
-
-
-    /**
-     * 逻辑事件
-     *
-     * @param {*} [params={}]
-     * @param {*} [tag]
-     * @param {*} [$event]
-     * @memberof 
-     */
-    public toolbar_deuiaction1_click(params: any = {}, tag?: any, $event?: any) {
-        // 参数
-        // 取数
-        let datas: any[] = [];
-        let xData: any = null;
-        // _this 指向容器对象
-        const _this: any = this;
-        let paramJO:any = {};
-        
-        let contextJO:any = {};
-        xData = this.$refs.grid;
-        if (xData.getDatas && xData.getDatas instanceof Function) {
-            datas = [...xData.getDatas()];
-        }
-        if(params){
-          datas = [params];
-        }
-        // 界面行为
-        this.OpenRowEdit(datas, contextJO,paramJO,  $event, xData,this,"PIMARCHIVESCHANGE");
-    }
-
-    /**
-     * 逻辑事件
-     *
-     * @param {*} [params={}]
-     * @param {*} [tag]
-     * @param {*} [$event]
-     * @memberof 
-     */
-    public toolbar_tbitem23_click(params: any = {}, tag?: any, $event?: any) {
-        // 参数
-        // 取数
-        let datas: any[] = [];
-        let xData: any = null;
-        // _this 指向容器对象
-        const _this: any = this;
-        let paramJO:any = {};
-        
-        let contextJO:any = {};
-        xData = this.$refs.grid;
-        if (xData.getDatas && xData.getDatas instanceof Function) {
-            datas = [...xData.getDatas()];
-        }
-        if(params){
-          datas = [params];
-        }
-        // 界面行为
-        this.Import(datas, contextJO,paramJO,  $event, xData,this,"PIMARCHIVESCHANGE");
-    }
-
-    /**
-     * 逻辑事件
-     *
-     * @param {*} [params={}]
-     * @param {*} [tag]
-     * @param {*} [$event]
-     * @memberof 
-     */
-    public toolbar_tbitem13_click(params: any = {}, tag?: any, $event?: any) {
-        // 参数
-        // 取数
-        let datas: any[] = [];
-        let xData: any = null;
-        // _this 指向容器对象
-        const _this: any = this;
-        let paramJO:any = {};
-        
-        let contextJO:any = {};
-        xData = this.$refs.grid;
-        if (xData.getDatas && xData.getDatas instanceof Function) {
-            datas = [...xData.getDatas()];
-        }
-        if(params){
-          datas = [params];
-        }
-        // 界面行为
-        this.ExportExcel(datas, contextJO,paramJO,  $event, xData,this,"PIMARCHIVESCHANGE");
-    }
-
-    /**
-     * 逻辑事件
-     *
-     * @param {*} [params={}]
-     * @param {*} [tag]
-     * @param {*} [$event]
-     * @memberof 
-     */
-    public toolbar_tbitem18_click(params: any = {}, tag?: any, $event?: any) {
-        // 参数
-        // 取数
-        let datas: any[] = [];
-        let xData: any = null;
-        // _this 指向容器对象
-        const _this: any = this;
-        let paramJO:any = {};
-        
-        let contextJO:any = {};
-        xData = this.$refs.grid;
-        if (xData.getDatas && xData.getDatas instanceof Function) {
-            datas = [...xData.getDatas()];
-        }
-        if(params){
-          datas = [params];
-        }
-        // 界面行为
-        this.Help(datas, contextJO,paramJO,  $event, xData,this,"PIMARCHIVESCHANGE");
-    }
 
     /**
      * 打开新建数据视图
@@ -550,70 +334,6 @@ export default class PIMARCHIVESCHANGEGridViewBase extends GridViewBase {
     }
 
 
-    /**
-     * 开启行编辑
-     *
-     * @param {any[]} args 当前数据
-     * @param {any} contextJO 行为附加上下文
-     * @param {*} [params] 附加参数
-     * @param {*} [$event] 事件源
-     * @param {*} [xData]  执行行为所需当前部件
-     * @param {*} [actionContext]  执行行为上下文
-     * @memberof PIMARCHIVESCHANGEGridViewBase
-     */
-    protected OpenRowEdit(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
-        
-    }
-    /**
-     * 数据导入
-     *
-     * @param {any[]} args 当前数据
-     * @param {any} contextJO 行为附加上下文
-     * @param {*} [params] 附加参数
-     * @param {*} [$event] 事件源
-     * @param {*} [xData]  执行行为所需当前部件
-     * @param {*} [actionContext]  执行行为上下文
-     * @memberof PIMARCHIVESCHANGEGridViewBase
-     */
-    public Import(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
-        const _this: any = this;
-        if (!xData || !(xData.importExcel instanceof Function) || !$event) {
-            return ;
-        }
-        xData.importExcel(params);
-    }
-    /**
-     * 导出
-     *
-     * @param {any[]} args 当前数据
-     * @param {any} contextJO 行为附加上下文
-     * @param {*} [params] 附加参数
-     * @param {*} [$event] 事件源
-     * @param {*} [xData]  执行行为所需当前部件
-     * @param {*} [actionContext]  执行行为上下文
-     * @memberof PIMARCHIVESCHANGEGridViewBase
-     */
-    public ExportExcel(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
-        const _this: any = this;
-        if (!xData || !(xData.exportExcel instanceof Function) || !$event) {
-            return ;
-        }
-        xData.exportExcel($event.exportparms);
-    }
-    /**
-     * 帮助
-     *
-     * @param {any[]} args 当前数据
-     * @param {any} contextJO 行为附加上下文
-     * @param {*} [params] 附加参数
-     * @param {*} [$event] 事件源
-     * @param {*} [xData]  执行行为所需当前部件
-     * @param {*} [actionContext]  执行行为上下文
-     * @memberof PIMARCHIVESCHANGEGridViewBase
-     */
-    public Help(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
-        this.$Notice.error({ title: '错误', desc: '帮助未支持' });
-    }
 
 
     /**

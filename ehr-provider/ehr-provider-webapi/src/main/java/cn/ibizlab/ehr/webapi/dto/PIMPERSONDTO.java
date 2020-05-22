@@ -327,14 +327,6 @@ public class PIMPERSONDTO extends DTOBase implements Serializable {
     private String csd;
 
     /**
-     * 属性 [GZDQ_COLOR]
-     *
-     */
-    @JSONField(name = "gzdq_color")
-    @JsonProperty("gzdq_color")
-    private String gzdqColor;
-
-    /**
      * 属性 [JTLXRDH]
      *
      */
@@ -458,14 +450,6 @@ public class PIMPERSONDTO extends DTOBase implements Serializable {
     @JSONField(name = "zt")
     @JsonProperty("zt")
     private String zt;
-
-    /**
-     * 属性 [GZDQ]
-     *
-     */
-    @JSONField(name = "gzdq")
-    @JsonProperty("gzdq")
-    private String gzdq;
 
     /**
      * 属性 [NL]

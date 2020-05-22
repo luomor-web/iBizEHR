@@ -3,7 +3,7 @@ import ORMORGSECTORServiceBase from './ormorgsector-service-base';
 
 
 /**
- * 部门管理***服务对象
+ * 部门管理服务对象
  *
  * @export
  * @class ORMORGSECTORService

@@ -1,7 +1,7 @@
 import CodeItemUIServiceBase from './code-item-ui-service-base';
 
 /**
- * 代码项***UI服务对象
+ * 代码项UI服务对象
  *
  * @export
  * @class CodeItemUIService

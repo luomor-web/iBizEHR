@@ -61,7 +61,7 @@ export default class ORMCL_GWTYPE {
     }
 
     /**
-     * 代码项***应用实体服务对象
+     * 代码项应用实体服务对象
      *
      * @type {CodeItemService}
      * @memberof ORMCL_GWTYPE

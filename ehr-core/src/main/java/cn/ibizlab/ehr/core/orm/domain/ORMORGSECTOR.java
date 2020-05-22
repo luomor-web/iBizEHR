@@ -27,7 +27,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 
 
 /**
- * 实体[部门管理***]
+ * 实体[部门管理]
  */
 @Data
 @TableName(value = "T_SRFORGSECTOR",resultMap = "ORMORGSECTORResultMap")

@@ -337,13 +337,6 @@ public class PCMGBHMC extends EntityMP implements Serializable {
     @JsonProperty("syczjrq2")
     private Timestamp syczjrq2;
     /**
-     * 兼职任职
-     */
-    @TableField(exist = false)
-    @JSONField(name = "jzrz")
-    @JsonProperty("jzrz")
-    private String jzrz;
-    /**
      * 籍贯
      */
     @TableField(exist = false)
@@ -379,14 +372,6 @@ public class PCMGBHMC extends EntityMP implements Serializable {
     @JSONField(name = "rznx")
     @JsonProperty("rznx")
     private Double rznx;
-    /**
-     * 惩罚影响结束日期
-     */
-    @TableField(exist = false)
-    @JsonFormat(pattern="yyyy-MM-dd", locale = "zh" , timezone="GMT+8")
-    @JSONField(name = "cfyxjsrq" , format="yyyy-MM-dd")
-    @JsonProperty("cfyxjsrq")
-    private Timestamp cfyxjsrq;
     /**
      * 任职年限
      */
@@ -436,13 +421,6 @@ public class PCMGBHMC extends EntityMP implements Serializable {
     @JSONField(name = "ygbh")
     @JsonProperty("ygbh")
     private String ygbh;
-    /**
-     * 操作
-     */
-    @TableField(exist = false)
-    @JSONField(name = "cz")
-    @JsonProperty("cz")
-    private String cz;
     /**
      * 年龄
      */

@@ -27,7 +27,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 
 
 /**
- * 实体[代码项***]
+ * 实体[代码项]
  */
 @Data
 @TableName(value = "T_SRFCODEITEM",resultMap = "CodeItemResultMap")
