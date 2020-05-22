@@ -1,5 +1,0 @@
-spring:
-  profiles:
-    include: sys , ehrweb-prod
-  application:
-    name: ehr-ehrweb
