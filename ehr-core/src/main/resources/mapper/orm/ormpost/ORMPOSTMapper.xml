@@ -175,7 +175,7 @@
     <!--数据查询[EJZZGW]-->
     <sql id="EJZZGW" databaseId="mysql">
        <![CDATA[	SELECT t1.`BXJLNX`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`GWFL`, t1.`GWTYPE`, t1.`ISCONFIDENTIAL`, t1.`ISKEYPOSTION`, t1.`ISTEMP`, t1.`LGNX`, t1.`NX`, t1.`ORMORGID` AS `ORGID`, t1.`ORMORGID`, t11.`ORGNAME` AS `ORMORGNAME`, t1.`ORMPOSTID`, t1.`ORMPOSTNAME`, t1.`POSTNATURE`, t1.`QZLGNX`, t1.`STARTSTOPSIGN`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XH` FROM `T_ORMPOST` t1  LEFT JOIN T_SRFORG t11 ON t1.ORMORGID = t11.ORGID  
-				 WHERE 	( ( t1.ORMORGID in (select (case when T2.ORGCODE ='10101' then T2.PORGID else t1.COMPANYFLAG end) as orgid FROM T_SRFORG t1  left join T_SRFORG t2 on t1.CompanyFlag=t2.ORGID where t1.ORGID = #{srf.datacontext.ormorgid} ))  AND  t1.`ISTEMP` = '0'  AND  t1.`STARTSTOPSIGN` = '1' )
+				 WHERE 	( t1.`ISTEMP` = '0'  AND  t1.`STARTSTOPSIGN` = '1' )
 			]]>
     </sql>
 
