@@ -1,7 +1,7 @@
 import OrgUserUIServiceBase from './org-user-ui-service-base';
 
 /**
- * 组织人员UI服务对象
+ * 组织人员***UI服务对象
  *
  * @export
  * @class OrgUserUIService

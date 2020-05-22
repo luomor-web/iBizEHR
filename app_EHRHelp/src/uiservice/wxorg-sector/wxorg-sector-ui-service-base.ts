@@ -5,7 +5,7 @@ import { Subject } from 'rxjs';
 import WXOrgSectorService from '@/service/wxorg-sector/wxorg-sector-service';
 
 /**
- * 微信部门UI服务对象基类
+ * 微信部门***UI服务对象基类
  *
  * @export
  * @class WXOrgSectorUIServiceBase

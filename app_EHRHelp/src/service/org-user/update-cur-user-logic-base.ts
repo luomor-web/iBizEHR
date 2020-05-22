@@ -99,7 +99,7 @@ export default class UpdateCurUserLogicBase {
     private async executePrepareparam1(context:any,params:any,isloading:boolean){
         // 准备参数节点
         Object.assign(params,{orguserid:params.srfpersonid});
-        Object.assign(context,{orguser:params.srfpersonid});
+        Object.assign(context,{orguser:params.srfpersonid ? params.srfpersonid : null});
         if(this.compute1Cond(params)){
             return this.executeDeaction1(context,params,isloading);   
         }

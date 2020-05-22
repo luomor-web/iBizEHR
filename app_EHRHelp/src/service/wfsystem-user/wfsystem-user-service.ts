@@ -3,7 +3,7 @@ import WFSystemUserServiceBase from './wfsystem-user-service-base';
 
 
 /**
- * 工作流系统用户服务对象
+ * 工作流系统用户***服务对象
  *
  * @export
  * @class WFSystemUserService

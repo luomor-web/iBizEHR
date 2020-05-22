@@ -3,7 +3,7 @@ import OrgTypeServiceBase from './org-type-service-base';
 
 
 /**
- * 组织类型服务对象
+ * 组织类型***服务对象
  *
  * @export
  * @class OrgTypeService

@@ -1,7 +1,7 @@
 import WFUserGroupDetailUIServiceBase from './wfuser-group-detail-ui-service-base';
 
 /**
- * 工作流用户组成员UI服务对象
+ * 工作流用户组成员***UI服务对象
  *
  * @export
  * @class WFUserGroupDetailUIService

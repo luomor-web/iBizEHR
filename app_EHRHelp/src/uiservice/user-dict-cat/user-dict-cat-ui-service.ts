@@ -1,7 +1,7 @@
 import UserDictCatUIServiceBase from './user-dict-cat-ui-service-base';
 
 /**
- * 用户词条类别UI服务对象
+ * 用户词条类别***UI服务对象
  *
  * @export
  * @class UserDictCatUIService

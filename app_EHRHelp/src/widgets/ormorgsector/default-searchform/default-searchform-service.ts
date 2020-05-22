@@ -13,7 +13,7 @@ import DefaultModel from './default-searchform-model';
 export default class DefaultService extends ControlService {
 
     /**
-     * 部门管理服务对象
+     * 部门管理***服务对象
      *
      * @type {ORMORGSECTORService}
      * @memberof DefaultService

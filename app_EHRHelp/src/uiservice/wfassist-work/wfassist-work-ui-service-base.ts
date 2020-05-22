@@ -5,7 +5,7 @@ import { Subject } from 'rxjs';
 import WFAssistWorkService from '@/service/wfassist-work/wfassist-work-service';
 
 /**
- * 工作流代办工作UI服务对象基类
+ * 工作流代办工作***UI服务对象基类
  *
  * @export
  * @class WFAssistWorkUIServiceBase

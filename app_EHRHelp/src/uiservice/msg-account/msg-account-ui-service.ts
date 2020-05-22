@@ -1,7 +1,7 @@
 import MsgAccountUIServiceBase from './msg-account-ui-service-base';
 
 /**
- * 消息账户UI服务对象
+ * 消息账户***UI服务对象
  *
  * @export
  * @class MsgAccountUIService

@@ -119,16 +119,16 @@ export default class SetPersonInfoNew2LogicBase {
         // 准备参数节点
         Object.assign(params,{ygbh:params.ygbh});
         Object.assign(params,{zzid:params.ormorgid});
-        Object.assign(context,{pcmbdsqdmx:params.ormorgid});
+        Object.assign(context,{pcmbdsqdmx:params.ormorgid ? params.ormorgid : null});
         Object.assign(params,{zz:params.ormorgname});
         Object.assign(params,{ormorgid:params.ormorgid});
-        Object.assign(context,{pcmbdsqdmx:params.ormorgid});
+        Object.assign(context,{pcmbdsqdmx:params.ormorgid ? params.ormorgid : null});
         Object.assign(params,{ormorgname:params.ormorgname});
         Object.assign(params,{bmid:params.ormorgsectorid});
-        Object.assign(context,{pcmbdsqdmx:params.ormorgsectorid});
+        Object.assign(context,{pcmbdsqdmx:params.ormorgsectorid ? params.ormorgsectorid : null});
         Object.assign(params,{bm:params.ormorgsectorname});
         Object.assign(params,{ormorgsectorid:params.ormorgsectorid});
-        Object.assign(context,{pcmbdsqdmx:params.ormorgsectorid});
+        Object.assign(context,{pcmbdsqdmx:params.ormorgsectorid ? params.ormorgsectorid : null});
         Object.assign(params,{ormorgsectorname:params.ormorgsectorname});
         Object.assign(params,{ywg:params.gw});
         Object.assign(params,{rank:params.rank});
@@ -235,7 +235,7 @@ export default class SetPersonInfoNew2LogicBase {
     private async executePrepareparam1(context:any,params:any,isloading:boolean){
         // 准备参数节点
         Object.assign(params,{pimpersonid:params.pimpersonid});
-        Object.assign(context,{pimperson:params.pimpersonid});
+        Object.assign(context,{pimperson:params.pimpersonid ? params.pimpersonid : null});
         if(this.compute3Cond(params)){
             return this.executeDeaction1(context,params,isloading);   
         }

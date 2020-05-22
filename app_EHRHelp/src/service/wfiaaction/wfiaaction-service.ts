@@ -3,7 +3,7 @@ import WFIAActionServiceBase from './wfiaaction-service-base';
 
 
 /**
- * 工作流交互操作服务对象
+ * 工作流交互操作***服务对象
  *
  * @export
  * @class WFIAActionService

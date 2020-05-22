@@ -1,7 +1,7 @@
 import UserGroupUIServiceBase from './user-group-ui-service-base';
 
 /**
- * 用户组UI服务对象
+ * 用户组***UI服务对象
  *
  * @export
  * @class UserGroupUIService

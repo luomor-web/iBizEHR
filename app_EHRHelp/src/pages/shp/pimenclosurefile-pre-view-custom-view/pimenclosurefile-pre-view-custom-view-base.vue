@@ -43,6 +43,15 @@ export default class PIMENCLOSUREFilePreViewCustomViewBase extends ViewBase {
      */
     public appEntityService: PIMENCLOSUREService = new PIMENCLOSUREService;
 
+
+    /**
+     * 计数器服务对象集合
+     *
+     * @type {Array<*>}
+     * @memberof PIMENCLOSUREFilePreViewCustomViewBase
+     */    
+    public counterServiceArray:Array<any> = [];
+    
     /**
      * 数据变化
      *
@@ -78,7 +87,7 @@ export default class PIMENCLOSUREFilePreViewCustomViewBase extends ViewBase {
 	 * @type {*}
 	 * @memberof PIMENCLOSUREFilePreViewCustomViewBase
 	 */
-    protected customViewNavContexts:any ={
+    public customViewNavContexts:any ={
     };
 
 	/**
@@ -87,7 +96,7 @@ export default class PIMENCLOSUREFilePreViewCustomViewBase extends ViewBase {
 	 * @type {*}
 	 * @memberof PIMENCLOSUREFilePreViewCustomViewBase
 	 */
-    protected customViewParams:any ={
+    public customViewParams:any ={
     };
 
     /**
@@ -115,7 +124,7 @@ export default class PIMENCLOSUREFilePreViewCustomViewBase extends ViewBase {
     /**
      * 视图状态订阅对象
      *
-     * @private
+     * @public
      * @type {Subject<{action: string, data: any}>}
      * @memberof PIMENCLOSUREFilePreViewCustomViewBase
      */

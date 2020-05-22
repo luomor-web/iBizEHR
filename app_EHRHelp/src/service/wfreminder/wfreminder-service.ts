@@ -3,7 +3,7 @@ import WFReminderServiceBase from './wfreminder-service-base';
 
 
 /**
- * 工作流工作催办服务对象
+ * 工作流工作催办***服务对象
  *
  * @export
  * @class WFReminderService

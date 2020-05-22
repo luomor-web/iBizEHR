@@ -66,6 +66,15 @@ export default class PIMPERSONKQJRYPickupViewBase extends PickupViewBase {
      */
     public appEntityService: PIMPERSONService = new PIMPERSONService;
 
+
+    /**
+     * 计数器服务对象集合
+     *
+     * @type {Array<*>}
+     * @memberof PIMPERSONKQJRYPickupViewBase
+     */    
+    public counterServiceArray:Array<any> = [];
+    
     /**
      * 数据变化
      *
@@ -101,7 +110,7 @@ export default class PIMPERSONKQJRYPickupViewBase extends PickupViewBase {
 	 * @type {*}
 	 * @memberof PIMPERSONKQJRYPickupViewBase
 	 */
-    protected customViewNavContexts:any ={
+    public customViewNavContexts:any ={
     };
 
 	/**
@@ -110,7 +119,7 @@ export default class PIMPERSONKQJRYPickupViewBase extends PickupViewBase {
 	 * @type {*}
 	 * @memberof PIMPERSONKQJRYPickupViewBase
 	 */
-    protected customViewParams:any ={
+    public customViewParams:any ={
     };
 
     /**
@@ -145,7 +154,7 @@ export default class PIMPERSONKQJRYPickupViewBase extends PickupViewBase {
     /**
      * 视图状态订阅对象
      *
-     * @private
+     * @public
      * @type {Subject<{action: string, data: any}>}
      * @memberof PIMPERSONKQJRYPickupViewBase
      */

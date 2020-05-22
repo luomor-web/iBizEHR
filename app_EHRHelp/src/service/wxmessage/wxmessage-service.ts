@@ -3,7 +3,7 @@ import WXMessageServiceBase from './wxmessage-service-base';
 
 
 /**
- * 微信消息服务对象
+ * 微信消息***服务对象
  *
  * @export
  * @class WXMessageService

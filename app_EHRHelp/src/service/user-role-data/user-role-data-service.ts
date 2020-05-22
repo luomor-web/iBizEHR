@@ -3,7 +3,7 @@ import UserRoleDataServiceBase from './user-role-data-service-base';
 
 
 /**
- * 数据对象能力服务对象
+ * 数据对象能力***服务对象
  *
  * @export
  * @class UserRoleDataService

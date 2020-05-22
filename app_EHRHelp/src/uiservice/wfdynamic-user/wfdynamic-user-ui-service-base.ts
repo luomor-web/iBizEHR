@@ -5,7 +5,7 @@ import { Subject } from 'rxjs';
 import WFDynamicUserService from '@/service/wfdynamic-user/wfdynamic-user-service';
 
 /**
- * 工作流动态用户UI服务对象基类
+ * 工作流动态用户***UI服务对象基类
  *
  * @export
  * @class WFDynamicUserUIServiceBase

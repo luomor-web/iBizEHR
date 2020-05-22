@@ -3,7 +3,7 @@ import WXOrgSectorServiceBase from './wxorg-sector-service-base';
 
 
 /**
- * 微信部门服务对象
+ * 微信部门***服务对象
  *
  * @export
  * @class WXOrgSectorService

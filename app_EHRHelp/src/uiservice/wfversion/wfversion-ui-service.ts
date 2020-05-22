@@ -1,7 +1,7 @@
 import WFVersionUIServiceBase from './wfversion-ui-service-base';
 
 /**
- * 工作流配置版本UI服务对象
+ * 工作流配置版本***UI服务对象
  *
  * @export
  * @class WFVersionUIService

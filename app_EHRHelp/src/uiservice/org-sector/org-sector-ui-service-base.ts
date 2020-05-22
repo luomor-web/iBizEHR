@@ -5,7 +5,7 @@ import { Subject } from 'rxjs';
 import OrgSectorService from '@/service/org-sector/org-sector-service';
 
 /**
- * 组织部门UI服务对象基类
+ * 组织部门***UI服务对象基类
  *
  * @export
  * @class OrgSectorUIServiceBase

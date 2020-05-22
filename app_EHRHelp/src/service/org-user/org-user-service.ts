@@ -3,7 +3,7 @@ import OrgUserServiceBase from './org-user-service-base';
 
 
 /**
- * 组织人员服务对象
+ * 组织人员***服务对象
  *
  * @export
  * @class OrgUserService

@@ -5,7 +5,7 @@ import { Subject } from 'rxjs';
 import WFActorService from '@/service/wfactor/wfactor-service';
 
 /**
- * 工作流操作者UI服务对象基类
+ * 工作流操作者***UI服务对象基类
  *
  * @export
  * @class WFActorUIServiceBase

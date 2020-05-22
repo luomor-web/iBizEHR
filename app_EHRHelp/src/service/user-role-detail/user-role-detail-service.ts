@@ -3,7 +3,7 @@ import UserRoleDetailServiceBase from './user-role-detail-service-base';
 
 
 /**
- * 用户角色成员服务对象
+ * 用户角色成员***服务对象
  *
  * @export
  * @class UserRoleDetailService

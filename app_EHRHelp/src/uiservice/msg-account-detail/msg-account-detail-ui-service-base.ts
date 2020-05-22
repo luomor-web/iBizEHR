@@ -5,7 +5,7 @@ import { Subject } from 'rxjs';
 import MsgAccountDetailService from '@/service/msg-account-detail/msg-account-detail-service';
 
 /**
- * 组消息账户明细UI服务对象基类
+ * 组消息账户明细***UI服务对象基类
  *
  * @export
  * @class MsgAccountDetailUIServiceBase

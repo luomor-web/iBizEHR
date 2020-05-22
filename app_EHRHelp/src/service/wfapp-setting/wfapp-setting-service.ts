@@ -3,7 +3,7 @@ import WFAppSettingServiceBase from './wfapp-setting-service-base';
 
 
 /**
- * 工作流系统设定服务对象
+ * 工作流系统设定***服务对象
  *
  * @export
  * @class WFAppSettingService

@@ -5,7 +5,7 @@ import { Subject } from 'rxjs';
 import UserGroupService from '@/service/user-group/user-group-service';
 
 /**
- * 用户组UI服务对象基类
+ * 用户组***UI服务对象基类
  *
  * @export
  * @class UserGroupUIServiceBase

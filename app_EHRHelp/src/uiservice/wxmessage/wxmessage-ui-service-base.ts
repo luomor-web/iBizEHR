@@ -5,7 +5,7 @@ import { Subject } from 'rxjs';
 import WXMessageService from '@/service/wxmessage/wxmessage-service';
 
 /**
- * 微信消息UI服务对象基类
+ * 微信消息***UI服务对象基类
  *
  * @export
  * @class WXMessageUIServiceBase

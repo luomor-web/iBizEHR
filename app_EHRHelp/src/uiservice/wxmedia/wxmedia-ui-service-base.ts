@@ -5,7 +5,7 @@ import { Subject } from 'rxjs';
 import WXMediaService from '@/service/wxmedia/wxmedia-service';
 
 /**
- * 微信多媒体内容UI服务对象基类
+ * 微信多媒体内容***UI服务对象基类
  *
  * @export
  * @class WXMediaUIServiceBase

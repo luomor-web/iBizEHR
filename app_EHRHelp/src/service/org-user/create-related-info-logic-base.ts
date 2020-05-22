@@ -132,7 +132,7 @@ export default class CreateRelatedInfoLogicBase {
     private async executePrepareparam1(context:any,params:any,isloading:boolean){
         // 准备参数节点
         Object.assign(params,{userid:params.orguserid});
-        Object.assign(context,{user:params.orguserid});
+        Object.assign(context,{user:params.orguserid ? params.orguserid : null});
         Object.assign(params,{username:params.orgusername});
         if(this.compute2Cond(params)){
             return this.executeDeaction1(context,params,isloading);   
@@ -167,9 +167,9 @@ export default class CreateRelatedInfoLogicBase {
     private async executePrepareparam2(context:any,params:any,isloading:boolean){
         // 准备参数节点
         Object.assign(params,{ownerid:params.orguserid});
-        Object.assign(context,{userdict:params.orguserid});
+        Object.assign(context,{userdict:params.orguserid ? params.orguserid : null});
         Object.assign(params,{userdictid:params.orguserid});
-        Object.assign(context,{userdict:params.orguserid});
+        Object.assign(context,{userdict:params.orguserid ? params.orguserid : null});
         Object.assign(params,{userdictname:params.orgusername});
         Object.assign(params,{ownertype:params.ownertype});
         if(this.compute0Cond(params)){

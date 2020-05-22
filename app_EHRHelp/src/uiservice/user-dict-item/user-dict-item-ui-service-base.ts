@@ -5,7 +5,7 @@ import { Subject } from 'rxjs';
 import UserDictItemService from '@/service/user-dict-item/user-dict-item-service';
 
 /**
- * 用户词条UI服务对象基类
+ * 用户词条***UI服务对象基类
  *
  * @export
  * @class UserDictItemUIServiceBase

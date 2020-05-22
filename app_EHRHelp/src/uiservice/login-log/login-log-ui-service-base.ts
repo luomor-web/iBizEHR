@@ -5,7 +5,7 @@ import { Subject } from 'rxjs';
 import LoginLogService from '@/service/login-log/login-log-service';
 
 /**
- * 帐户使用记录UI服务对象基类
+ * 帐户使用记录***UI服务对象基类
  *
  * @export
  * @class LoginLogUIServiceBase

@@ -3,7 +3,7 @@ import WFUserCandidateServiceBase from './wfuser-candidate-service-base';
 
 
 /**
- * 工作流用户候选者服务对象
+ * 工作流用户候选者***服务对象
  *
  * @export
  * @class WFUserCandidateService

@@ -3,7 +3,7 @@ import MsgTemplateServiceBase from './msg-template-service-base';
 
 
 /**
- * 消息模板服务对象
+ * 消息模板***服务对象
  *
  * @export
  * @class MsgTemplateService

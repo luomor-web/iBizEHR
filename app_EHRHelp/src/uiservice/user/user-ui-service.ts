@@ -1,7 +1,7 @@
 import UserUIServiceBase from './user-ui-service-base';
 
 /**
- * 用户UI服务对象
+ * 用户***UI服务对象
  *
  * @export
  * @class UserUIService

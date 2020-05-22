@@ -71,6 +71,15 @@ export default class PIMFAMINFOGREditViewBase extends EditViewBase {
      */
     public appEntityService: PIMFAMINFOService = new PIMFAMINFOService;
 
+
+    /**
+     * 计数器服务对象集合
+     *
+     * @type {Array<*>}
+     * @memberof PIMFAMINFOGREditViewBase
+     */    
+    public counterServiceArray:Array<any> = [];
+    
     /**
      * 数据变化
      *
@@ -106,7 +115,7 @@ export default class PIMFAMINFOGREditViewBase extends EditViewBase {
 	 * @type {*}
 	 * @memberof PIMFAMINFOGREditViewBase
 	 */
-    protected customViewNavContexts:any ={
+    public customViewNavContexts:any ={
     };
 
 	/**
@@ -115,7 +124,7 @@ export default class PIMFAMINFOGREditViewBase extends EditViewBase {
 	 * @type {*}
 	 * @memberof PIMFAMINFOGREditViewBase
 	 */
-    protected customViewParams:any ={
+    public customViewParams:any ={
     };
 
     /**
@@ -145,12 +154,11 @@ export default class PIMFAMINFOGREditViewBase extends EditViewBase {
     /**
      * 视图状态订阅对象
      *
-     * @private
+     * @public
      * @type {Subject<{action: string, data: any}>}
      * @memberof PIMFAMINFOGREditViewBase
      */
     public viewState: Subject<ViewState> = new Subject();
-
     /**
      * 工具栏模型
      *
@@ -204,10 +212,10 @@ export default class PIMFAMINFOGREditViewBase extends EditViewBase {
      */
     public toolbar_click($event: any, $event2?: any) {
         if (Object.is($event.tag, 'tbitem3')) {
-            this.toolbar_tbitem3_click($event, '', $event2);
+            this.toolbar_tbitem3_click(null, '', $event2);
         }
         if (Object.is($event.tag, 'tbitem5')) {
-            this.toolbar_tbitem5_click($event, '', $event2);
+            this.toolbar_tbitem5_click(null, '', $event2);
         }
     }
 
@@ -271,6 +279,9 @@ export default class PIMFAMINFOGREditViewBase extends EditViewBase {
         if (xData.getDatas && xData.getDatas instanceof Function) {
             datas = [...xData.getDatas()];
         }
+        if(params){
+          datas = [params];
+        }
         // 界面行为
         this.Save(datas, contextJO,paramJO,  $event, xData,this,"PIMFAMINFO");
     }
@@ -296,6 +307,9 @@ export default class PIMFAMINFOGREditViewBase extends EditViewBase {
         xData = this.$refs.form;
         if (xData.getDatas && xData.getDatas instanceof Function) {
             datas = [...xData.getDatas()];
+        }
+        if(params){
+          datas = [params];
         }
         // 界面行为
         this.SaveAndExit(datas, contextJO,paramJO,  $event, xData,this,"PIMFAMINFO");

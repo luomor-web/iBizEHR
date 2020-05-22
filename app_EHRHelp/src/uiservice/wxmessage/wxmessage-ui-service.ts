@@ -1,7 +1,7 @@
 import WXMessageUIServiceBase from './wxmessage-ui-service-base';
 
 /**
- * 微信消息UI服务对象
+ * 微信消息***UI服务对象
  *
  * @export
  * @class WXMessageUIService

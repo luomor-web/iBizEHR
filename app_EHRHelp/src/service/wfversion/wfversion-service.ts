@@ -3,7 +3,7 @@ import WFVersionServiceBase from './wfversion-service-base';
 
 
 /**
- * 工作流配置版本服务对象
+ * 工作流配置版本***服务对象
  *
  * @export
  * @class WFVersionService

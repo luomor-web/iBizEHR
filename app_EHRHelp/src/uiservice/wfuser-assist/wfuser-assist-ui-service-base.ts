@@ -5,7 +5,7 @@ import { Subject } from 'rxjs';
 import WFUserAssistService from '@/service/wfuser-assist/wfuser-assist-service';
 
 /**
- * 工作流用户代办UI服务对象基类
+ * 工作流用户代办***UI服务对象基类
  *
  * @export
  * @class WFUserAssistUIServiceBase

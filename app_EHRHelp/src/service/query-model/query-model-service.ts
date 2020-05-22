@@ -3,7 +3,7 @@ import QueryModelServiceBase from './query-model-service-base';
 
 
 /**
- * 实体查询模型服务对象
+ * 实体查询模型***服务对象
  *
  * @export
  * @class QueryModelService

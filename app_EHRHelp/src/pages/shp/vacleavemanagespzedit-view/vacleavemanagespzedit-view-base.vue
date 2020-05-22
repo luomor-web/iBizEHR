@@ -72,6 +72,15 @@ export default class VACLEAVEMANAGESPZEditViewBase extends EditViewBase {
      */
     public appEntityService: VACLEAVEMANAGEService = new VACLEAVEMANAGEService;
 
+
+    /**
+     * 计数器服务对象集合
+     *
+     * @type {Array<*>}
+     * @memberof VACLEAVEMANAGESPZEditViewBase
+     */    
+    public counterServiceArray:Array<any> = [];
+    
     /**
      * 数据变化
      *
@@ -107,7 +116,7 @@ export default class VACLEAVEMANAGESPZEditViewBase extends EditViewBase {
 	 * @type {*}
 	 * @memberof VACLEAVEMANAGESPZEditViewBase
 	 */
-    protected customViewNavContexts:any ={
+    public customViewNavContexts:any ={
     };
 
 	/**
@@ -116,7 +125,7 @@ export default class VACLEAVEMANAGESPZEditViewBase extends EditViewBase {
 	 * @type {*}
 	 * @memberof VACLEAVEMANAGESPZEditViewBase
 	 */
-    protected customViewParams:any ={
+    public customViewParams:any ={
     };
 
     /**
@@ -147,12 +156,11 @@ export default class VACLEAVEMANAGESPZEditViewBase extends EditViewBase {
     /**
      * 视图状态订阅对象
      *
-     * @private
+     * @public
      * @type {Subject<{action: string, data: any}>}
      * @memberof VACLEAVEMANAGESPZEditViewBase
      */
     public viewState: Subject<ViewState> = new Subject();
-
     /**
      * 工具栏模型
      *
@@ -208,13 +216,13 @@ export default class VACLEAVEMANAGESPZEditViewBase extends EditViewBase {
      */
     public toolbar_click($event: any, $event2?: any) {
         if (Object.is($event.tag, 'tbitem1_cx')) {
-            this.toolbar_tbitem1_cx_click($event, '', $event2);
+            this.toolbar_tbitem1_cx_click(null, '', $event2);
         }
         if (Object.is($event.tag, 'tbitem1_cb')) {
-            this.toolbar_tbitem1_cb_click($event, '', $event2);
+            this.toolbar_tbitem1_cb_click(null, '', $event2);
         }
         if (Object.is($event.tag, 'deuiaction1')) {
-            this.toolbar_deuiaction1_click($event, '', $event2);
+            this.toolbar_deuiaction1_click(null, '', $event2);
         }
     }
 
@@ -278,6 +286,9 @@ export default class VACLEAVEMANAGESPZEditViewBase extends EditViewBase {
         if (xData.getDatas && xData.getDatas instanceof Function) {
             datas = [...xData.getDatas()];
         }
+        if(params){
+          datas = [params];
+        }
         // 界面行为
         const curUIService:VACLEAVEMANAGEUIService  = new VACLEAVEMANAGEUIService();
         curUIService.VACLEAVEMANAGE_CX(datas,contextJO, paramJO,  $event, xData,this,"VACLEAVEMANAGE");
@@ -305,6 +316,9 @@ export default class VACLEAVEMANAGESPZEditViewBase extends EditViewBase {
         if (xData.getDatas && xData.getDatas instanceof Function) {
             datas = [...xData.getDatas()];
         }
+        if(params){
+          datas = [params];
+        }
         // 界面行为
         const curUIService:VACLEAVEMANAGEUIService  = new VACLEAVEMANAGEUIService();
         curUIService.VACLEAVEMANAGE_CB(datas,contextJO, paramJO,  $event, xData,this,"VACLEAVEMANAGE");
@@ -331,6 +345,9 @@ export default class VACLEAVEMANAGESPZEditViewBase extends EditViewBase {
         xData = this.$refs.form;
         if (xData.getDatas && xData.getDatas instanceof Function) {
             datas = [...xData.getDatas()];
+        }
+        if(params){
+          datas = [params];
         }
         // 界面行为
         this.Exit(datas, contextJO,paramJO,  $event, xData,this,"VACLEAVEMANAGE");

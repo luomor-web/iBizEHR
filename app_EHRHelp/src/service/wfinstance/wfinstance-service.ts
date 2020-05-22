@@ -3,7 +3,7 @@ import WFInstanceServiceBase from './wfinstance-service-base';
 
 
 /**
- * 工作流实例服务对象
+ * 工作流实例***服务对象
  *
  * @export
  * @class WFInstanceService

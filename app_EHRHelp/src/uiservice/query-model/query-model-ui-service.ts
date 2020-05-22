@@ -1,7 +1,7 @@
 import QueryModelUIServiceBase from './query-model-ui-service-base';
 
 /**
- * 实体查询模型UI服务对象
+ * 实体查询模型***UI服务对象
  *
  * @export
  * @class QueryModelUIService

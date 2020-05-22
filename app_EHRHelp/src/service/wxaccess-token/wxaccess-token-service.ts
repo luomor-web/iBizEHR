@@ -3,7 +3,7 @@ import WXAccessTokenServiceBase from './wxaccess-token-service-base';
 
 
 /**
- * 微信访问票据服务对象
+ * 微信访问票据***服务对象
  *
  * @export
  * @class WXAccessTokenService

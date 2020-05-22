@@ -44,6 +44,15 @@ export default class WFStepHisHtmlViewBase extends ViewBase {
      */
     public appEntityService: WFStepService = new WFStepService;
 
+
+    /**
+     * 计数器服务对象集合
+     *
+     * @type {Array<*>}
+     * @memberof WFStepHisHtmlViewBase
+     */    
+    public counterServiceArray:Array<any> = [];
+    
     /**
      * 数据变化
      *
@@ -79,7 +88,7 @@ export default class WFStepHisHtmlViewBase extends ViewBase {
 	 * @type {*}
 	 * @memberof WFStepHisHtmlViewBase
 	 */
-    protected customViewNavContexts:any ={
+    public customViewNavContexts:any ={
     };
 
 	/**
@@ -88,7 +97,7 @@ export default class WFStepHisHtmlViewBase extends ViewBase {
 	 * @type {*}
 	 * @memberof WFStepHisHtmlViewBase
 	 */
-    protected customViewParams:any ={
+    public customViewParams:any ={
     };
 
     /**
@@ -116,7 +125,7 @@ export default class WFStepHisHtmlViewBase extends ViewBase {
     /**
      * 视图状态订阅对象
      *
-     * @private
+     * @public
      * @type {Subject<{action: string, data: any}>}
      * @memberof WFStepHisHtmlViewBase
      */

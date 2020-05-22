@@ -71,6 +71,15 @@ export default class PIMPATENTGREditViewBase extends EditViewBase {
      */
     public appEntityService: PIMPATENTService = new PIMPATENTService;
 
+
+    /**
+     * 计数器服务对象集合
+     *
+     * @type {Array<*>}
+     * @memberof PIMPATENTGREditViewBase
+     */    
+    public counterServiceArray:Array<any> = [];
+    
     /**
      * 数据变化
      *
@@ -106,7 +115,7 @@ export default class PIMPATENTGREditViewBase extends EditViewBase {
 	 * @type {*}
 	 * @memberof PIMPATENTGREditViewBase
 	 */
-    protected customViewNavContexts:any ={
+    public customViewNavContexts:any ={
     };
 
 	/**
@@ -115,7 +124,7 @@ export default class PIMPATENTGREditViewBase extends EditViewBase {
 	 * @type {*}
 	 * @memberof PIMPATENTGREditViewBase
 	 */
-    protected customViewParams:any ={
+    public customViewParams:any ={
     };
 
     /**
@@ -145,12 +154,11 @@ export default class PIMPATENTGREditViewBase extends EditViewBase {
     /**
      * 视图状态订阅对象
      *
-     * @private
+     * @public
      * @type {Subject<{action: string, data: any}>}
      * @memberof PIMPATENTGREditViewBase
      */
     public viewState: Subject<ViewState> = new Subject();
-
     /**
      * 工具栏模型
      *
@@ -210,25 +218,25 @@ export default class PIMPATENTGREditViewBase extends EditViewBase {
      */
     public toolbar_click($event: any, $event2?: any) {
         if (Object.is($event.tag, 'tbitem3')) {
-            this.toolbar_tbitem3_click($event, '', $event2);
+            this.toolbar_tbitem3_click(null, '', $event2);
         }
         if (Object.is($event.tag, 'tbitem4')) {
-            this.toolbar_tbitem4_click($event, '', $event2);
+            this.toolbar_tbitem4_click(null, '', $event2);
         }
         if (Object.is($event.tag, 'tbitem5')) {
-            this.toolbar_tbitem5_click($event, '', $event2);
+            this.toolbar_tbitem5_click(null, '', $event2);
         }
         if (Object.is($event.tag, 'tbitem7')) {
-            this.toolbar_tbitem7_click($event, '', $event2);
+            this.toolbar_tbitem7_click(null, '', $event2);
         }
         if (Object.is($event.tag, 'tbitem10')) {
-            this.toolbar_tbitem10_click($event, '', $event2);
+            this.toolbar_tbitem10_click(null, '', $event2);
         }
         if (Object.is($event.tag, 'tbitem15')) {
-            this.toolbar_tbitem15_click($event, '', $event2);
+            this.toolbar_tbitem15_click(null, '', $event2);
         }
         if (Object.is($event.tag, 'tbitem22')) {
-            this.toolbar_tbitem22_click($event, '', $event2);
+            this.toolbar_tbitem22_click(null, '', $event2);
         }
     }
 
@@ -292,6 +300,9 @@ export default class PIMPATENTGREditViewBase extends EditViewBase {
         if (xData.getDatas && xData.getDatas instanceof Function) {
             datas = [...xData.getDatas()];
         }
+        if(params){
+          datas = [params];
+        }
         // 界面行为
         this.Save(datas, contextJO,paramJO,  $event, xData,this,"PIMPATENT");
     }
@@ -317,6 +328,9 @@ export default class PIMPATENTGREditViewBase extends EditViewBase {
         xData = this.$refs.form;
         if (xData.getDatas && xData.getDatas instanceof Function) {
             datas = [...xData.getDatas()];
+        }
+        if(params){
+          datas = [params];
         }
         // 界面行为
         this.SaveAndNew(datas, contextJO,paramJO,  $event, xData,this,"PIMPATENT");
@@ -344,6 +358,9 @@ export default class PIMPATENTGREditViewBase extends EditViewBase {
         if (xData.getDatas && xData.getDatas instanceof Function) {
             datas = [...xData.getDatas()];
         }
+        if(params){
+          datas = [params];
+        }
         // 界面行为
         this.SaveAndExit(datas, contextJO,paramJO,  $event, xData,this,"PIMPATENT");
     }
@@ -369,6 +386,9 @@ export default class PIMPATENTGREditViewBase extends EditViewBase {
         xData = this.$refs.form;
         if (xData.getDatas && xData.getDatas instanceof Function) {
             datas = [...xData.getDatas()];
+        }
+        if(params){
+          datas = [params];
         }
         // 界面行为
         this.RemoveAndExit(datas, contextJO,paramJO,  $event, xData,this,"PIMPATENT");
@@ -396,6 +416,9 @@ export default class PIMPATENTGREditViewBase extends EditViewBase {
         if (xData.getDatas && xData.getDatas instanceof Function) {
             datas = [...xData.getDatas()];
         }
+        if(params){
+          datas = [params];
+        }
         // 界面行为
         this.ViewWFStep(datas, contextJO,paramJO,  $event, xData,this,"PIMPATENT");
     }
@@ -422,6 +445,9 @@ export default class PIMPATENTGREditViewBase extends EditViewBase {
         if (xData.getDatas && xData.getDatas instanceof Function) {
             datas = [...xData.getDatas()];
         }
+        if(params){
+          datas = [params];
+        }
         // 界面行为
         this.Print(datas, contextJO,paramJO,  $event, xData,this,"PIMPATENT");
     }
@@ -447,6 +473,9 @@ export default class PIMPATENTGREditViewBase extends EditViewBase {
         xData = this.$refs.form;
         if (xData.getDatas && xData.getDatas instanceof Function) {
             datas = [...xData.getDatas()];
+        }
+        if(params){
+          datas = [params];
         }
         // 界面行为
         this.Help(datas, contextJO,paramJO,  $event, xData,this,"PIMPATENT");

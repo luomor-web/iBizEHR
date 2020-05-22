@@ -3,7 +3,7 @@ import MsgAccountServiceBase from './msg-account-service-base';
 
 
 /**
- * 消息账户服务对象
+ * 消息账户***服务对象
  *
  * @export
  * @class MsgAccountService

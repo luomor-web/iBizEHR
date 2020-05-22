@@ -5,7 +5,7 @@ import { Subject } from 'rxjs';
 import WFVersionService from '@/service/wfversion/wfversion-service';
 
 /**
- * 工作流配置版本UI服务对象基类
+ * 工作流配置版本***UI服务对象基类
  *
  * @export
  * @class WFVersionUIServiceBase

@@ -5,7 +5,7 @@ import { Subject } from 'rxjs';
 import DataEntityService from '@/service/data-entity/data-entity-service';
 
 /**
- * 实体UI服务对象基类
+ * 实体***UI服务对象基类
  *
  * @export
  * @class DataEntityUIServiceBase

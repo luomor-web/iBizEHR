@@ -22,7 +22,7 @@
                 <el-table-column align="center" type='selection' :width="checkboxColWidth"></el-table-column>
             </template>
             <template v-if="getColumnState('ormsignorgname')">
-                <el-table-column show-overflow-tooltip :prop="'ormsignorgname'" :label="$t('entities.ormsignorg.main_grid.columns.ormsignorgname')" :width="400" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'ormsignorgname'" :label="$t('entities.ormsignorg.main_grid.columns.ormsignorgname')" :width="400"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
                                 <app-span name='ormsignorgname' editorType="TEXTBOX" :value="row.ormsignorgname"></app-span>
@@ -31,7 +31,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('orgcode')">
-                <el-table-column show-overflow-tooltip :prop="'orgcode'" :label="$t('entities.ormsignorg.main_grid.columns.orgcode')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'orgcode'" :label="$t('entities.ormsignorg.main_grid.columns.orgcode')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
                                 <app-span name='orgcode' editorType="TEXTBOX" :value="row.orgcode"></app-span>
@@ -483,7 +483,7 @@ export default class MainBase extends Vue implements ControlInterface {
     * @type {number}
     * @memberof AppIndex
     */
-    protected checkboxColWidth: number = 34;
+    public checkboxColWidth: number = 34;
 
     /**
      * 是否允许拖动列宽
@@ -1183,7 +1183,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * @memberof Main
      */
 	public uiAction(row: any, tag: any, $event: any) {
-        this.rowClick(row, true);
+        // this.rowClick(row, true);
     }
 
     /**

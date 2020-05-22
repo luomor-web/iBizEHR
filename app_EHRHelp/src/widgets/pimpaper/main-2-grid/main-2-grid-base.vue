@@ -22,7 +22,7 @@
                 <el-table-column align="center" type='selection' :width="checkboxColWidth"></el-table-column>
             </template>
             <template v-if="getColumnState('pimpapername')">
-                <el-table-column show-overflow-tooltip :prop="'pimpapername'" :label="$t('entities.pimpaper.main_2_grid.columns.pimpapername')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'pimpapername'" :label="$t('entities.pimpaper.main_2_grid.columns.pimpapername')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template v-if="actualIsOpenEdit">
                             <i-form style="height:100%;" :model="row">
@@ -46,7 +46,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('cbs')">
-                <el-table-column show-overflow-tooltip :prop="'cbs'" :label="$t('entities.pimpaper.main_2_grid.columns.cbs')" :width="200" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'cbs'" :label="$t('entities.pimpaper.main_2_grid.columns.cbs')" :width="200"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template v-if="actualIsOpenEdit">
                             <i-form style="height:100%;" :model="row">
@@ -70,7 +70,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('kwmc')">
-                <el-table-column show-overflow-tooltip :prop="'kwmc'" :label="$t('entities.pimpaper.main_2_grid.columns.kwmc')" :width="200" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'kwmc'" :label="$t('entities.pimpaper.main_2_grid.columns.kwmc')" :width="200"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template v-if="actualIsOpenEdit">
                             <i-form style="height:100%;" :model="row">
@@ -94,7 +94,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('kwqs')">
-                <el-table-column show-overflow-tooltip :prop="'kwqs'" :label="$t('entities.pimpaper.main_2_grid.columns.kwqs')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'kwqs'" :label="$t('entities.pimpaper.main_2_grid.columns.kwqs')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template v-if="actualIsOpenEdit">
                             <i-form style="height:100%;" :model="row">
@@ -118,7 +118,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('fbsj')">
-                <el-table-column show-overflow-tooltip :prop="'fbsj'" :label="$t('entities.pimpaper.main_2_grid.columns.fbsj')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'fbsj'" :label="$t('entities.pimpaper.main_2_grid.columns.fbsj')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template v-if="actualIsOpenEdit">
                             <i-form style="height:100%;" :model="row">
@@ -134,7 +134,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('grzlwzzzdpm')">
-                <el-table-column show-overflow-tooltip :prop="'grzlwzzzdpm'" :label="$t('entities.pimpaper.main_2_grid.columns.grzlwzzzdpm')" :width="220" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'grzlwzzzdpm'" :label="$t('entities.pimpaper.main_2_grid.columns.grzlwzzzdpm')" :width="220"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template v-if="actualIsOpenEdit">
                             <i-form style="height:100%;" :model="row">
@@ -158,7 +158,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('fj')">
-                <el-table-column show-overflow-tooltip :prop="'fj'" :label="$t('entities.pimpaper.main_2_grid.columns.fj')" :width="200" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'fj'" :label="$t('entities.pimpaper.main_2_grid.columns.fj')" :width="200"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template v-if="actualIsOpenEdit">
                             <i-form style="height:100%;" :model="row">
@@ -182,7 +182,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('jlspzt')">
-                <el-table-column show-overflow-tooltip :prop="'jlspzt'" :label="$t('entities.pimpaper.main_2_grid.columns.jlspzt')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'jlspzt'" :label="$t('entities.pimpaper.main_2_grid.columns.jlspzt')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
             <codelist :value="row.jlspzt" tag='PIMCL_SPZT' codelistType='STATIC' renderMode="STR" valueSeparator=";" textSeparator="、" ></codelist>
@@ -613,7 +613,7 @@ export default class Main_2Base extends Vue implements ControlInterface {
     * @type {number}
     * @memberof AppIndex
     */
-    protected checkboxColWidth: number = 34;
+    public checkboxColWidth: number = 34;
 
     /**
      * 是否允许拖动列宽
@@ -1391,7 +1391,7 @@ export default class Main_2Base extends Vue implements ControlInterface {
      * @memberof Main_2
      */
 	public uiAction(row: any, tag: any, $event: any) {
-        this.rowClick(row, true);
+        // this.rowClick(row, true);
     }
 
     /**

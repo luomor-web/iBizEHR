@@ -46,7 +46,7 @@ export default class GRDividerEditGridService extends ControlService {
     }
 
     /**
-     * 组织管理服务对象
+     * 组织管理***服务对象
      *
      * @type {ORMORGService}
      * @memberof GRDividerEditGridService
@@ -54,7 +54,7 @@ export default class GRDividerEditGridService extends ControlService {
     public ormorgService: ORMORGService = new ORMORGService();
 
     /**
-     * 部门管理服务对象
+     * 部门管理***服务对象
      *
      * @type {ORMORGSECTORService}
      * @memberof GRDividerEditGridService

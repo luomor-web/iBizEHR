@@ -1,7 +1,7 @@
 import WFAppSettingUIServiceBase from './wfapp-setting-ui-service-base';
 
 /**
- * 工作流系统设定UI服务对象
+ * 工作流系统设定***UI服务对象
  *
  * @export
  * @class WFAppSettingUIService

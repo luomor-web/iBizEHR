@@ -3,7 +3,7 @@ import OrgSecUserServiceBase from './org-sec-user-service-base';
 
 
 /**
- * 组织部门人员服务对象
+ * 组织部门人员***服务对象
  *
  * @export
  * @class OrgSecUserService

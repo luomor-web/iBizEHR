@@ -5,7 +5,7 @@ import { Subject } from 'rxjs';
 import WFSystemUserService from '@/service/wfsystem-user/wfsystem-user-service';
 
 /**
- * 工作流系统用户UI服务对象基类
+ * 工作流系统用户***UI服务对象基类
  *
  * @export
  * @class WFSystemUserUIServiceBase

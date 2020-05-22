@@ -25,8 +25,8 @@ export default {
   },
 	views: {
 		hishtmlview: {
-			caption: '工作流步骤',
-      title: '工作流步骤',
+			caption: '工作流步骤***',
+      title: '工作流步骤***',
 		},
 	},
 };

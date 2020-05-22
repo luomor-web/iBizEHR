@@ -5,7 +5,7 @@ import { Subject } from 'rxjs';
 import WXAccountService from '@/service/wxaccount/wxaccount-service';
 
 /**
- * 微信公众号UI服务对象基类
+ * 微信公众号***UI服务对象基类
  *
  * @export
  * @class WXAccountUIServiceBase

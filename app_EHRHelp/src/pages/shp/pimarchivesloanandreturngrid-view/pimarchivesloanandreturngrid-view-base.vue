@@ -9,7 +9,7 @@
     </template>
     <template slot="headerRight">
       <div class="view-header-right">
-        <app-header-menus :toolbarModel="toolBarModels" @menu-click="toolbar_click($event)" mode="view" :openMode="openMode" :isEnableQuickSearch="true" searchPlaceholder="请输入档案借阅及归还记录名称" v-model="query" @search="onSearch($event)"/>
+        <app-header-menus :toolbarModel="toolBarModels" @menu-click="toolbar_click($event)" mode="view" :openMode="openMode" :isEnableQuickSearch="true" searchPlaceholder="档案借阅及归还记录名称" v-model="query" @search="onSearch($event)"/>
       </div>
     </template>
     <template slot="content">
@@ -95,6 +95,15 @@ export default class PIMARCHIVESLOANANDRETURNGridViewBase extends GridViewBase {
      */
     public appEntityService: PIMARCHIVESLOANANDRETURNService = new PIMARCHIVESLOANANDRETURNService;
 
+
+    /**
+     * 计数器服务对象集合
+     *
+     * @type {Array<*>}
+     * @memberof PIMARCHIVESLOANANDRETURNGridViewBase
+     */    
+    public counterServiceArray:Array<any> = [];
+    
     /**
      * 数据变化
      *
@@ -130,7 +139,7 @@ export default class PIMARCHIVESLOANANDRETURNGridViewBase extends GridViewBase {
 	 * @type {*}
 	 * @memberof PIMARCHIVESLOANANDRETURNGridViewBase
 	 */
-    protected customViewNavContexts:any ={
+    public customViewNavContexts:any ={
     };
 
 	/**
@@ -139,7 +148,7 @@ export default class PIMARCHIVESLOANANDRETURNGridViewBase extends GridViewBase {
 	 * @type {*}
 	 * @memberof PIMARCHIVESLOANANDRETURNGridViewBase
 	 */
-    protected customViewParams:any ={
+    public customViewParams:any ={
     };
 
     /**
@@ -171,12 +180,11 @@ export default class PIMARCHIVESLOANANDRETURNGridViewBase extends GridViewBase {
     /**
      * 视图状态订阅对象
      *
-     * @private
+     * @public
      * @type {Subject<{action: string, data: any}>}
      * @memberof PIMARCHIVESLOANANDRETURNGridViewBase
      */
     public viewState: Subject<ViewState> = new Subject();
-
     /**
      * 工具栏模型
      *
@@ -243,16 +251,16 @@ export default class PIMARCHIVESLOANANDRETURNGridViewBase extends GridViewBase {
      */
     public toolbar2_click($event: any, $event2?: any) {
         if (Object.is($event.tag, 'deuiaction1')) {
-            this.toolbar2_deuiaction1_click($event, '', $event2);
+            this.toolbar2_deuiaction1_click(null, '', $event2);
         }
         if (Object.is($event.tag, 'deuiaction2')) {
-            this.toolbar2_deuiaction2_click($event, '', $event2);
+            this.toolbar2_deuiaction2_click(null, '', $event2);
         }
         if (Object.is($event.tag, 'deuiaction4')) {
-            this.toolbar2_deuiaction4_click($event, '', $event2);
+            this.toolbar2_deuiaction4_click(null, '', $event2);
         }
         if (Object.is($event.tag, 'deuiaction3')) {
-            this.toolbar2_deuiaction3_click($event, '', $event2);
+            this.toolbar2_deuiaction3_click(null, '', $event2);
         }
     }
 
@@ -266,16 +274,16 @@ export default class PIMARCHIVESLOANANDRETURNGridViewBase extends GridViewBase {
      */
     public toolbar_click($event: any, $event2?: any) {
         if (Object.is($event.tag, 'deuiaction1')) {
-            this.toolbar_deuiaction1_click($event, '', $event2);
+            this.toolbar_deuiaction1_click(null, '', $event2);
         }
         if (Object.is($event.tag, 'tbitem23')) {
-            this.toolbar_tbitem23_click($event, '', $event2);
+            this.toolbar_tbitem23_click(null, '', $event2);
         }
         if (Object.is($event.tag, 'tbitem13')) {
-            this.toolbar_tbitem13_click($event, '', $event2);
+            this.toolbar_tbitem13_click(null, '', $event2);
         }
         if (Object.is($event.tag, 'tbitem18')) {
-            this.toolbar_tbitem18_click($event, '', $event2);
+            this.toolbar_tbitem18_click(null, '', $event2);
         }
     }
 
@@ -399,6 +407,9 @@ export default class PIMARCHIVESLOANANDRETURNGridViewBase extends GridViewBase {
         if (xData.getDatas && xData.getDatas instanceof Function) {
             datas = [...xData.getDatas()];
         }
+        if(params){
+          datas = [params];
+        }
         // 界面行为
         this.New(datas, contextJO,paramJO,  $event, xData,this,"PIMARCHIVESLOANANDRETURN");
     }
@@ -424,6 +435,9 @@ export default class PIMARCHIVESLOANANDRETURNGridViewBase extends GridViewBase {
         xData = this.$refs.grid;
         if (xData.getDatas && xData.getDatas instanceof Function) {
             datas = [...xData.getDatas()];
+        }
+        if(params){
+          datas = [params];
         }
         // 界面行为
         this.SaveAllEditRow(datas, contextJO,paramJO,  $event, xData,this,"PIMARCHIVESLOANANDRETURN");
@@ -451,6 +465,9 @@ export default class PIMARCHIVESLOANANDRETURNGridViewBase extends GridViewBase {
         if (xData.getDatas && xData.getDatas instanceof Function) {
             datas = [...xData.getDatas()];
         }
+        if(params){
+          datas = [params];
+        }
         // 界面行为
         this.Remove(datas, contextJO,paramJO,  $event, xData,this,"PIMARCHIVESLOANANDRETURN");
     }
@@ -476,6 +493,9 @@ export default class PIMARCHIVESLOANANDRETURNGridViewBase extends GridViewBase {
         xData = this.$refs.grid;
         if (xData.getDatas && xData.getDatas instanceof Function) {
             datas = [...xData.getDatas()];
+        }
+        if(params){
+          datas = [params];
         }
         // 界面行为
         this.CloseRowEdit(datas, contextJO,paramJO,  $event, xData,this,"PIMARCHIVESLOANANDRETURN");
@@ -503,6 +523,9 @@ export default class PIMARCHIVESLOANANDRETURNGridViewBase extends GridViewBase {
         if (xData.getDatas && xData.getDatas instanceof Function) {
             datas = [...xData.getDatas()];
         }
+        if(params){
+          datas = [params];
+        }
         // 界面行为
         this.OpenRowEdit(datas, contextJO,paramJO,  $event, xData,this,"PIMARCHIVESLOANANDRETURN");
     }
@@ -528,6 +551,9 @@ export default class PIMARCHIVESLOANANDRETURNGridViewBase extends GridViewBase {
         xData = this.$refs.grid;
         if (xData.getDatas && xData.getDatas instanceof Function) {
             datas = [...xData.getDatas()];
+        }
+        if(params){
+          datas = [params];
         }
         // 界面行为
         this.Import(datas, contextJO,paramJO,  $event, xData,this,"PIMARCHIVESLOANANDRETURN");
@@ -555,6 +581,9 @@ export default class PIMARCHIVESLOANANDRETURNGridViewBase extends GridViewBase {
         if (xData.getDatas && xData.getDatas instanceof Function) {
             datas = [...xData.getDatas()];
         }
+        if(params){
+          datas = [params];
+        }
         // 界面行为
         this.ExportExcel(datas, contextJO,paramJO,  $event, xData,this,"PIMARCHIVESLOANANDRETURN");
     }
@@ -581,6 +610,9 @@ export default class PIMARCHIVESLOANANDRETURNGridViewBase extends GridViewBase {
         if (xData.getDatas && xData.getDatas instanceof Function) {
             datas = [...xData.getDatas()];
         }
+        if(params){
+          datas = [params];
+        }
         // 界面行为
         this.Help(datas, contextJO,paramJO,  $event, xData,this,"PIMARCHIVESLOANANDRETURN");
     }
@@ -597,6 +629,9 @@ export default class PIMARCHIVESLOANANDRETURNGridViewBase extends GridViewBase {
      */
     public newdata(args: any[],fullargs?:any[], params?: any, $event?: any, xData?: any) {
         const data: any = {};
+        if(args[0].srfsourcekey){
+            data.srfsourcekey = args[0].srfsourcekey;
+        }
         let curViewParam = JSON.parse(JSON.stringify(this.context));
         if(args.length >0){
             Object.assign(curViewParam,args[0]);

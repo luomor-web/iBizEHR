@@ -3,7 +3,7 @@ import WFStepActorServiceBase from './wfstep-actor-service-base';
 
 
 /**
- * 工作流步骤操作者服务对象
+ * 工作流步骤操作者***服务对象
  *
  * @export
  * @class WFStepActorService

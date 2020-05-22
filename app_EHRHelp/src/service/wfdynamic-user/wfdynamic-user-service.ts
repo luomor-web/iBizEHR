@@ -3,7 +3,7 @@ import WFDynamicUserServiceBase from './wfdynamic-user-service-base';
 
 
 /**
- * 工作流动态用户服务对象
+ * 工作流动态用户***服务对象
  *
  * @export
  * @class WFDynamicUserService

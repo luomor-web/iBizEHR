@@ -1,7 +1,7 @@
 import WFWorkListUIServiceBase from './wfwork-list-ui-service-base';
 
 /**
- * 工作流工作列表UI服务对象
+ * 工作流工作列表***UI服务对象
  *
  * @export
  * @class WFWorkListUIService

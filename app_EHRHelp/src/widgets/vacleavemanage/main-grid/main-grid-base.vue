@@ -22,49 +22,49 @@
                 <el-table-column align="center" type='selection' :width="checkboxColWidth"></el-table-column>
             </template>
             <template v-if="getColumnState('pimpersonname')">
-                <el-table-column show-overflow-tooltip :prop="'pimpersonname'" :label="$t('entities.vacleavemanage.main_grid.columns.pimpersonname')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'pimpersonname'" :label="$t('entities.vacleavemanage.main_grid.columns.pimpersonname')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.pimpersonname}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('ygbh')">
-                <el-table-column show-overflow-tooltip :prop="'ygbh'" :label="$t('entities.vacleavemanage.main_grid.columns.ygbh')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'ygbh'" :label="$t('entities.vacleavemanage.main_grid.columns.ygbh')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.ygbh}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('zzdzs')">
-                <el-table-column show-overflow-tooltip :prop="'zzdzs'" :label="$t('entities.vacleavemanage.main_grid.columns.zzdzs')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'zzdzs'" :label="$t('entities.vacleavemanage.main_grid.columns.zzdzs')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.zzdzs}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('ormorgsectorname')">
-                <el-table-column show-overflow-tooltip :prop="'ormorgsectorname'" :label="$t('entities.vacleavemanage.main_grid.columns.ormorgsectorname')" :width="200" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'ormorgsectorname'" :label="$t('entities.vacleavemanage.main_grid.columns.ormorgsectorname')" :width="200"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.ormorgsectorname}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('qjmx')">
-                <el-table-column show-overflow-tooltip :prop="'qjmx'" :label="$t('entities.vacleavemanage.main_grid.columns.qjmx')" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'qjmx'" :label="$t('entities.vacleavemanage.main_grid.columns.qjmx')" :min-width="1"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.qjmx}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('qjsy')">
-                <el-table-column show-overflow-tooltip :prop="'qjsy'" :label="$t('entities.vacleavemanage.main_grid.columns.qjsy')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'qjsy'" :label="$t('entities.vacleavemanage.main_grid.columns.qjsy')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.qjsy}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('wfqqjstate')">
-                <el-table-column show-overflow-tooltip :prop="'wfqqjstate'" :label="$t('entities.vacleavemanage.main_grid.columns.wfqqjstate')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'wfqqjstate'" :label="$t('entities.vacleavemanage.main_grid.columns.wfqqjstate')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
             <codelist :value="row.wfqqjstate" tag='QQJYWZT' codelistType='STATIC' ></codelist>
@@ -530,7 +530,7 @@ export default class MainBase extends Vue implements ControlInterface {
     * @type {number}
     * @memberof AppIndex
     */
-    protected checkboxColWidth: number = 34;
+    public checkboxColWidth: number = 34;
 
     /**
      * 是否允许拖动列宽
@@ -1265,7 +1265,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * @memberof Main
      */
 	public uiAction(row: any, tag: any, $event: any) {
-        this.rowClick(row, true);
+        // this.rowClick(row, true);
     }
 
     /**

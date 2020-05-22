@@ -3,7 +3,7 @@ import UserDictItemServiceBase from './user-dict-item-service-base';
 
 
 /**
- * 用户词条服务对象
+ * 用户词条***服务对象
  *
  * @export
  * @class UserDictItemService

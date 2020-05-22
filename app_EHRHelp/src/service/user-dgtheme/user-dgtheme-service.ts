@@ -3,7 +3,7 @@ import UserDGThemeServiceBase from './user-dgtheme-service-base';
 
 
 /**
- * 用户表格自定义服务对象
+ * 用户表格自定义***服务对象
  *
  * @export
  * @class UserDGThemeService

@@ -1,7 +1,7 @@
 import UserDGThemeUIServiceBase from './user-dgtheme-ui-service-base';
 
 /**
- * 用户表格自定义UI服务对象
+ * 用户表格自定义***UI服务对象
  *
  * @export
  * @class UserDGThemeUIService

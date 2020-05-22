@@ -3,7 +3,7 @@ import UserRoleDEFieldServiceBase from './user-role-defield-service-base';
 
 
 /**
- * 用户角色实体属性访问服务对象
+ * 用户角色实体属性访问***服务对象
  *
  * @export
  * @class UserRoleDEFieldService

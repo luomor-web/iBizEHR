@@ -5,7 +5,7 @@ import { Subject } from 'rxjs';
 import MsgSendQueueHisService from '@/service/msg-send-queue-his/msg-send-queue-his-service';
 
 /**
- * 消息发送队列（历史）UI服务对象基类
+ * 消息发送队列（历史）***UI服务对象基类
  *
  * @export
  * @class MsgSendQueueHisUIServiceBase

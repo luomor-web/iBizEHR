@@ -1,7 +1,7 @@
 import OrgUnitCatUIServiceBase from './org-unit-cat-ui-service-base';
 
 /**
- * 组织单元类别UI服务对象
+ * 组织单元类别***UI服务对象
  *
  * @export
  * @class OrgUnitCatUIService

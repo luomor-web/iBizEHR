@@ -3,7 +3,7 @@ import WXEntAppServiceBase from './wxent-app-service-base';
 
 
 /**
- * 微信企业应用服务对象
+ * 微信企业应用***服务对象
  *
  * @export
  * @class WXEntAppService

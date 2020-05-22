@@ -1,7 +1,7 @@
 import MsgTemplateUIServiceBase from './msg-template-ui-service-base';
 
 /**
- * 消息模板UI服务对象
+ * 消息模板***UI服务对象
  *
  * @export
  * @class MsgTemplateUIService

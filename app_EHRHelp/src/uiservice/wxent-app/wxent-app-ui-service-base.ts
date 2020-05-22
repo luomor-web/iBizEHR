@@ -5,7 +5,7 @@ import { Subject } from 'rxjs';
 import WXEntAppService from '@/service/wxent-app/wxent-app-service';
 
 /**
- * 微信企业应用UI服务对象基类
+ * 微信企业应用***UI服务对象基类
  *
  * @export
  * @class WXEntAppUIServiceBase

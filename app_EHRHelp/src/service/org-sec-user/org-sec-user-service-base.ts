@@ -4,7 +4,7 @@ import EntityService from '../entity-service';
 
 
 /**
- * 组织部门人员服务对象基类
+ * 组织部门人员***服务对象基类
  *
  * @export
  * @class OrgSecUserServiceBase
@@ -52,90 +52,6 @@ export default class OrgSecUserServiceBase extends EntityService {
     }
 
     /**
-     * Update接口方法
-     *
-     * @param {*} [context={}]
-     * @param {*} [data={}]
-     * @param {boolean} [isloading]
-     * @returns {Promise<any>}
-     * @memberof OrgSecUserServiceBase
-     */
-    public async Update(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
-        let masterData:any = {};
-        Object.assign(data,masterData);
-            let res:any = await  Http.getInstance().put(`/orgsecusers/${context.orgsecuser}`,data,isloading);
-            return res;
-    }
-
-    /**
-     * GetDraft接口方法
-     *
-     * @param {*} [context={}]
-     * @param {*} [data={}]
-     * @param {boolean} [isloading]
-     * @returns {Promise<any>}
-     * @memberof OrgSecUserServiceBase
-     */
-    public async GetDraft(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
-        let res:any = await  Http.getInstance().get(`/orgsecusers/getdraft`,isloading);
-        res.data.orgsecuser = data.orgsecuser;
-        return res;
-    }
-
-    /**
-     * Remove接口方法
-     *
-     * @param {*} [context={}]
-     * @param {*} [data={}]
-     * @param {boolean} [isloading]
-     * @returns {Promise<any>}
-     * @memberof OrgSecUserServiceBase
-     */
-    public async Remove(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
-            return Http.getInstance().delete(`/orgsecusers/${context.orgsecuser}`,isloading);
-
-    }
-
-    /**
-     * Create接口方法
-     *
-     * @param {*} [context={}]
-     * @param {*} [data={}]
-     * @param {boolean} [isloading]
-     * @returns {Promise<any>}
-     * @memberof OrgSecUserServiceBase
-     */
-    public async Create(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
-        let masterData:any = {};
-        Object.assign(data,masterData);
-        if(!data.srffrontuf || data.srffrontuf !== "1"){
-            data[this.APPDEKEY] = null;
-        }
-        if(data.srffrontuf){
-            delete data.srffrontuf;
-        }
-        let tempContext:any = JSON.parse(JSON.stringify(context));
-        let res:any = await Http.getInstance().post(`/orgsecusers`,data,isloading);
-        return res;
-    }
-
-    /**
-     * Save接口方法
-     *
-     * @param {*} [context={}]
-     * @param {*} [data={}]
-     * @param {boolean} [isloading]
-     * @returns {Promise<any>}
-     * @memberof OrgSecUserServiceBase
-     */
-    public async Save(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
-        let masterData:any = {};
-        Object.assign(data,masterData);
-            let res:any = await  Http.getInstance().post(`/orgsecusers/${context.orgsecuser}/save`,data,isloading);
-            return res;
-    }
-
-    /**
      * RemoveDefault接口方法
      *
      * @param {*} [context={}]
@@ -145,36 +61,7 @@ export default class OrgSecUserServiceBase extends EntityService {
      * @memberof OrgSecUserServiceBase
      */
     public async RemoveDefault(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
-            return Http.getInstance().delete(`/orgsecusers/${context.orgsecuser}/removedefault`,isloading);
-
-    }
-
-    /**
-     * Get接口方法
-     *
-     * @param {*} [context={}]
-     * @param {*} [data={}]
-     * @param {boolean} [isloading]
-     * @returns {Promise<any>}
-     * @memberof OrgSecUserServiceBase
-     */
-    public async Get(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
-            let res:any = await Http.getInstance().get(`/orgsecusers/${context.orgsecuser}`,isloading);
-            return res;
-
-    }
-
-    /**
-     * CheckKey接口方法
-     *
-     * @param {*} [context={}]
-     * @param {*} [data={}]
-     * @param {boolean} [isloading]
-     * @returns {Promise<any>}
-     * @memberof OrgSecUserServiceBase
-     */
-    public async CheckKey(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
-            return Http.getInstance().post(`/orgsecusers/${context.orgsecuser}/checkkey`,data,isloading);
+        // URI参数传递情况未实现
     }
 
     /**
@@ -188,6 +75,6 @@ export default class OrgSecUserServiceBase extends EntityService {
      */
     public async FetchDefault(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
         let tempData:any = JSON.parse(JSON.stringify(data));
-        return Http.getInstance().get(`/orgsecusers/fetchdefault`,tempData,isloading);
+        return Http.getInstance().get(`/orgsecusers/select`,tempData,isloading);
     }
 }

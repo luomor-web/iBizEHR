@@ -5,7 +5,7 @@ import { Subject } from 'rxjs';
 import WFTmpStepActorService from '@/service/wftmp-step-actor/wftmp-step-actor-service';
 
 /**
- * 工作流步骤操作者（临时）UI服务对象基类
+ * 工作流步骤操作者（临时）***UI服务对象基类
  *
  * @export
  * @class WFTmpStepActorUIServiceBase

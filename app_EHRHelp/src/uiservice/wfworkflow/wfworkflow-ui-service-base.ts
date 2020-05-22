@@ -5,7 +5,7 @@ import { Subject } from 'rxjs';
 import WFWorkflowService from '@/service/wfworkflow/wfworkflow-service';
 
 /**
- * 工作流配置UI服务对象基类
+ * 工作流配置***UI服务对象基类
  *
  * @export
  * @class WFWorkflowUIServiceBase

@@ -1,7 +1,7 @@
 import WFInstanceUIServiceBase from './wfinstance-ui-service-base';
 
 /**
- * 工作流实例UI服务对象
+ * 工作流实例***UI服务对象
  *
  * @export
  * @class WFInstanceUIService

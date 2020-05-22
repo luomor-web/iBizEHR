@@ -3,7 +3,7 @@ import WFActionServiceBase from './wfaction-service-base';
 
 
 /**
- * 工作流用户操作服务对象
+ * 工作流用户操作***服务对象
  *
  * @export
  * @class WFActionService

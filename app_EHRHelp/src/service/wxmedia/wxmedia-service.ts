@@ -3,7 +3,7 @@ import WXMediaServiceBase from './wxmedia-service-base';
 
 
 /**
- * 微信多媒体内容服务对象
+ * 微信多媒体内容***服务对象
  *
  * @export
  * @class WXMediaService

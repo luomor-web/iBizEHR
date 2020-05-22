@@ -3,7 +3,7 @@ import LoginAccountServiceBase from './login-account-service-base';
 
 
 /**
- * 登录帐户服务对象
+ * 登录帐户***服务对象
  *
  * @export
  * @class LoginAccountService

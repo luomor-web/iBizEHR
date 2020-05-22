@@ -3,7 +3,7 @@ import CodeList1ServiceBase from './code-list1-service-base';
 
 
 /**
- * 代码表服务对象
+ * 代码表***服务对象
  *
  * @export
  * @class CodeList1Service

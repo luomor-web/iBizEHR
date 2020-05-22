@@ -1,7 +1,7 @@
 import WFCustomProcessUIServiceBase from './wfcustom-process-ui-service-base';
 
 /**
- * 工作流预定义处理UI服务对象
+ * 工作流预定义处理***UI服务对象
  *
  * @export
  * @class WFCustomProcessUIService

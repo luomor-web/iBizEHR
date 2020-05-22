@@ -37,6 +37,15 @@ export default class VACLEAVEMANAGEWFProxyStartViewBase extends ViewBase {
      */
     public appEntityService: VACLEAVEMANAGEService = new VACLEAVEMANAGEService;
 
+
+    /**
+     * 计数器服务对象集合
+     *
+     * @type {Array<*>}
+     * @memberof VACLEAVEMANAGEWFProxyStartViewBase
+     */    
+    public counterServiceArray:Array<any> = [];
+    
     /**
      * 数据变化
      *
@@ -72,7 +81,7 @@ export default class VACLEAVEMANAGEWFProxyStartViewBase extends ViewBase {
 	 * @type {*}
 	 * @memberof VACLEAVEMANAGEWFProxyStartViewBase
 	 */
-    protected customViewNavContexts:any ={
+    public customViewNavContexts:any ={
     };
 
 	/**
@@ -81,7 +90,7 @@ export default class VACLEAVEMANAGEWFProxyStartViewBase extends ViewBase {
 	 * @type {*}
 	 * @memberof VACLEAVEMANAGEWFProxyStartViewBase
 	 */
-    protected customViewParams:any ={
+    public customViewParams:any ={
     };
 
     /**
@@ -110,7 +119,7 @@ export default class VACLEAVEMANAGEWFProxyStartViewBase extends ViewBase {
     /**
      * 视图状态订阅对象
      *
-     * @private
+     * @public
      * @type {Subject<{action: string, data: any}>}
      * @memberof VACLEAVEMANAGEWFProxyStartViewBase
      */

@@ -5,7 +5,7 @@ import { Subject } from 'rxjs';
 import UserDGThemeService from '@/service/user-dgtheme/user-dgtheme-service';
 
 /**
- * 用户表格自定义UI服务对象基类
+ * 用户表格自定义***UI服务对象基类
  *
  * @export
  * @class UserDGThemeUIServiceBase

@@ -5,7 +5,7 @@ import { Subject } from 'rxjs';
 import UserObjectService from '@/service/user-object/user-object-service';
 
 /**
- * 用户对象UI服务对象基类
+ * 用户对象***UI服务对象基类
  *
  * @export
  * @class UserObjectUIServiceBase

@@ -3,7 +3,7 @@ import UserGroupServiceBase from './user-group-service-base';
 
 
 /**
- * 用户组服务对象
+ * 用户组***服务对象
  *
  * @export
  * @class UserGroupService

@@ -85,7 +85,7 @@ export default {
 		uiactions: {
 		},
 	},
-	gridviewtoolbar2_toolbar: {
+	gridviewtoolbar_toolbar: {
 		deuiaction1: {
 			caption: '新建',
 			tip: '新建',
@@ -105,32 +105,6 @@ export default {
 		deuiaction5: {
 			caption: '导出',
 			tip: '导出',
-		},
-	},
-	gridviewtoolbar_toolbar: {
-		tbitem3: {
-			caption: '新建',
-			tip: '新建',
-		},
-		tbitem8: {
-			caption: '删除',
-			tip: '删除',
-		},
-		tbitem19: {
-			caption: '过滤',
-			tip: '过滤',
-		},
-		tbitem13: {
-			caption: '导出',
-			tip: '导出',
-		},
-		deuiaction1: {
-			caption: '开启行编辑',
-			tip: '开启行编辑',
-		},
-		tbitem18: {
-			caption: '帮助',
-			tip: '帮助',
 		},
 	},
 	editviewtoolbar_toolbar: {

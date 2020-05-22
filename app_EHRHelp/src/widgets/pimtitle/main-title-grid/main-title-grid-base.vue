@@ -22,7 +22,7 @@
                 <el-table-column align="center" type='selection' :width="checkboxColWidth"></el-table-column>
             </template>
             <template v-if="getColumnState('pimtitlecataloguename')">
-                <el-table-column show-overflow-tooltip :prop="'pimtitlecataloguename'" :label="$t('entities.pimtitle.main_title_grid.columns.pimtitlecataloguename')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'pimtitlecataloguename'" :label="$t('entities.pimtitle.main_title_grid.columns.pimtitlecataloguename')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
                                 <app-span name='pimtitlecataloguename' editorType="PICKER" :value="row.pimtitlecataloguename"></app-span>
@@ -31,7 +31,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('zcbh')">
-                <el-table-column show-overflow-tooltip :prop="'zcbh'" :label="$t('entities.pimtitle.main_title_grid.columns.zcbh')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'zcbh'" :label="$t('entities.pimtitle.main_title_grid.columns.zcbh')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
                                 <app-span name='zcbh' editorType="TEXTBOX" :value="row.zcbh"></app-span>
@@ -40,7 +40,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('zcdj')">
-                <el-table-column show-overflow-tooltip :prop="'zcdj'" :label="$t('entities.pimtitle.main_title_grid.columns.zcdj')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'zcdj'" :label="$t('entities.pimtitle.main_title_grid.columns.zcdj')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
             <codelist :value="row.zcdj" tag='PIMCL_ZCDJ' codelistType='DYNAMIC' ></codelist>
@@ -49,14 +49,14 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('majorengaged')">
-                <el-table-column show-overflow-tooltip :prop="'majorengaged'" :label="$t('entities.pimtitle.main_title_grid.columns.majorengaged')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'majorengaged'" :label="$t('entities.pimtitle.main_title_grid.columns.majorengaged')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.majorengaged}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('zchqrq')">
-                <el-table-column show-overflow-tooltip :prop="'zchqrq'" :label="$t('entities.pimtitle.main_title_grid.columns.zchqrq')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'zchqrq'" :label="$t('entities.pimtitle.main_title_grid.columns.zchqrq')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
                                 <app-span name='zchqrq' editorType="DATEPICKER" :value="row.zchqrq"></app-span>
@@ -65,28 +65,28 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('reviewbody')">
-                <el-table-column show-overflow-tooltip :prop="'reviewbody'" :label="$t('entities.pimtitle.main_title_grid.columns.reviewbody')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'reviewbody'" :label="$t('entities.pimtitle.main_title_grid.columns.reviewbody')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.reviewbody}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('lssuingagency')">
-                <el-table-column show-overflow-tooltip :prop="'lssuingagency'" :label="$t('entities.pimtitle.main_title_grid.columns.lssuingagency')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'lssuingagency'" :label="$t('entities.pimtitle.main_title_grid.columns.lssuingagency')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.lssuingagency}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('employtime')">
-                <el-table-column show-overflow-tooltip :prop="'employtime'" :label="$t('entities.pimtitle.main_title_grid.columns.employtime')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'employtime'" :label="$t('entities.pimtitle.main_title_grid.columns.employtime')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <app-format-data format="YYYY-MM-DD" :data="row.employtime"></app-format-data>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('sfzgzc')">
-                <el-table-column show-overflow-tooltip :prop="'sfzgzc'" :label="$t('entities.pimtitle.main_title_grid.columns.sfzgzc')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'sfzgzc'" :label="$t('entities.pimtitle.main_title_grid.columns.sfzgzc')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
             <codelist :value="row.sfzgzc" tag='YesNo' codelistType='STATIC' ></codelist>
@@ -95,7 +95,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('jlspzt')">
-                <el-table-column show-overflow-tooltip :prop="'jlspzt'" :label="$t('entities.pimtitle.main_title_grid.columns.jlspzt')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'jlspzt'" :label="$t('entities.pimtitle.main_title_grid.columns.jlspzt')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
             <codelist :value="row.jlspzt" tag='PIMCL_SPZT' codelistType='STATIC' renderMode="STR" valueSeparator=";" textSeparator="、" ></codelist>
@@ -526,7 +526,7 @@ export default class Main_TitleBase extends Vue implements ControlInterface {
     * @type {number}
     * @memberof AppIndex
     */
-    protected checkboxColWidth: number = 34;
+    public checkboxColWidth: number = 34;
 
     /**
      * 是否允许拖动列宽
@@ -1326,7 +1326,7 @@ export default class Main_TitleBase extends Vue implements ControlInterface {
      * @memberof Main_Title
      */
 	public uiAction(row: any, tag: any, $event: any) {
-        this.rowClick(row, true);
+        // this.rowClick(row, true);
     }
 
     /**

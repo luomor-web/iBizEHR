@@ -5,7 +5,7 @@ import { Subject } from 'rxjs';
 import WFAppSettingService from '@/service/wfapp-setting/wfapp-setting-service';
 
 /**
- * 工作流系统设定UI服务对象基类
+ * 工作流系统设定***UI服务对象基类
  *
  * @export
  * @class WFAppSettingUIServiceBase

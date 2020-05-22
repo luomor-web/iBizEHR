@@ -5,7 +5,7 @@ import { Subject } from 'rxjs';
 import WFWorkListService from '@/service/wfwork-list/wfwork-list-service';
 
 /**
- * 工作流工作列表UI服务对象基类
+ * 工作流工作列表***UI服务对象基类
  *
  * @export
  * @class WFWorkListUIServiceBase

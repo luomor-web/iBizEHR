@@ -4,7 +4,7 @@ import EntityService from '../entity-service';
 
 
 /**
- * 组织机构服务对象基类
+ * 组织机构***服务对象基类
  *
  * @export
  * @class OrgServiceBase
@@ -61,87 +61,7 @@ export default class OrgServiceBase extends EntityService {
      * @memberof OrgServiceBase
      */
     public async InitAll(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
-            return Http.getInstance().post(`/orgs/${context.org}/initall`,data,isloading);
-    }
-
-    /**
-     * CheckKey接口方法
-     *
-     * @param {*} [context={}]
-     * @param {*} [data={}]
-     * @param {boolean} [isloading]
-     * @returns {Promise<any>}
-     * @memberof OrgServiceBase
-     */
-    public async CheckKey(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
-            return Http.getInstance().post(`/orgs/${context.org}/checkkey`,data,isloading);
-    }
-
-    /**
-     * Remove接口方法
-     *
-     * @param {*} [context={}]
-     * @param {*} [data={}]
-     * @param {boolean} [isloading]
-     * @returns {Promise<any>}
-     * @memberof OrgServiceBase
-     */
-    public async Remove(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
-            return Http.getInstance().delete(`/orgs/${context.org}`,isloading);
-
-    }
-
-    /**
-     * Create接口方法
-     *
-     * @param {*} [context={}]
-     * @param {*} [data={}]
-     * @param {boolean} [isloading]
-     * @returns {Promise<any>}
-     * @memberof OrgServiceBase
-     */
-    public async Create(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
-        let masterData:any = {};
-        Object.assign(data,masterData);
-        if(!data.srffrontuf || data.srffrontuf !== "1"){
-            data[this.APPDEKEY] = null;
-        }
-        if(data.srffrontuf){
-            delete data.srffrontuf;
-        }
-        let tempContext:any = JSON.parse(JSON.stringify(context));
-        let res:any = await Http.getInstance().post(`/orgs`,data,isloading);
-        return res;
-    }
-
-    /**
-     * Get接口方法
-     *
-     * @param {*} [context={}]
-     * @param {*} [data={}]
-     * @param {boolean} [isloading]
-     * @returns {Promise<any>}
-     * @memberof OrgServiceBase
-     */
-    public async Get(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
-            let res:any = await Http.getInstance().get(`/orgs/${context.org}`,isloading);
-            return res;
-
-    }
-
-    /**
-     * GetDraft接口方法
-     *
-     * @param {*} [context={}]
-     * @param {*} [data={}]
-     * @param {boolean} [isloading]
-     * @returns {Promise<any>}
-     * @memberof OrgServiceBase
-     */
-    public async GetDraft(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
-        let res:any = await  Http.getInstance().get(`/orgs/getdraft`,isloading);
-        res.data.org = data.org;
-        return res;
+        // URI参数传递情况未实现
     }
 
     /**
@@ -154,39 +74,7 @@ export default class OrgServiceBase extends EntityService {
      * @memberof OrgServiceBase
      */
     public async InitUserObject(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
-            return Http.getInstance().post(`/orgs/${context.org}/inituserobject`,data,isloading);
-    }
-
-    /**
-     * Save接口方法
-     *
-     * @param {*} [context={}]
-     * @param {*} [data={}]
-     * @param {boolean} [isloading]
-     * @returns {Promise<any>}
-     * @memberof OrgServiceBase
-     */
-    public async Save(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
-        let masterData:any = {};
-        Object.assign(data,masterData);
-            let res:any = await  Http.getInstance().post(`/orgs/${context.org}/save`,data,isloading);
-            return res;
-    }
-
-    /**
-     * Update接口方法
-     *
-     * @param {*} [context={}]
-     * @param {*} [data={}]
-     * @param {boolean} [isloading]
-     * @returns {Promise<any>}
-     * @memberof OrgServiceBase
-     */
-    public async Update(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
-        let masterData:any = {};
-        Object.assign(data,masterData);
-            let res:any = await  Http.getInstance().put(`/orgs/${context.org}`,data,isloading);
-            return res;
+        // URI参数传递情况未实现
     }
 
     /**
@@ -200,7 +88,7 @@ export default class OrgServiceBase extends EntityService {
      */
     public async FetchDefault(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
         let tempData:any = JSON.parse(JSON.stringify(data));
-        return Http.getInstance().get(`/orgs/fetchdefault`,tempData,isloading);
+        return Http.getInstance().get(`/orgs/select`,tempData,isloading);
     }
 
     /**
@@ -214,7 +102,7 @@ export default class OrgServiceBase extends EntityService {
      */
     public async FetchCurCat(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
         let tempData:any = JSON.parse(JSON.stringify(data));
-        return Http.getInstance().get(`/orgs/fetchcurcat`,tempData,isloading);
+        return Http.getInstance().get(`/orgs/select`,tempData,isloading);
     }
 
     /**
@@ -228,7 +116,7 @@ export default class OrgServiceBase extends EntityService {
      */
     public async FetchAllRoot(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
         let tempData:any = JSON.parse(JSON.stringify(data));
-        return Http.getInstance().get(`/orgs/fetchallroot`,tempData,isloading);
+        return Http.getInstance().get(`/orgs/select`,tempData,isloading);
     }
 
     /**
@@ -242,6 +130,6 @@ export default class OrgServiceBase extends EntityService {
      */
     public async FetchCurChild(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
         let tempData:any = JSON.parse(JSON.stringify(data));
-        return Http.getInstance().get(`/orgs/fetchcurchild`,tempData,isloading);
+        return Http.getInstance().get(`/orgs/select`,tempData,isloading);
     }
 }

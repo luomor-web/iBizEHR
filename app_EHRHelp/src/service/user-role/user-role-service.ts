@@ -3,7 +3,7 @@ import UserRoleServiceBase from './user-role-service-base';
 
 
 /**
- * 用户角色服务对象
+ * 用户角色***服务对象
  *
  * @export
  * @class UserRoleService

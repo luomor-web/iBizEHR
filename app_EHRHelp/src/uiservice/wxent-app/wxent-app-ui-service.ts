@@ -1,7 +1,7 @@
 import WXEntAppUIServiceBase from './wxent-app-ui-service-base';
 
 /**
- * 微信企业应用UI服务对象
+ * 微信企业应用***UI服务对象
  *
  * @export
  * @class WXEntAppUIService

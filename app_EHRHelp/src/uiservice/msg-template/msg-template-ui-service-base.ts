@@ -5,7 +5,7 @@ import { Subject } from 'rxjs';
 import MsgTemplateService from '@/service/msg-template/msg-template-service';
 
 /**
- * 消息模板UI服务对象基类
+ * 消息模板***UI服务对象基类
  *
  * @export
  * @class MsgTemplateUIServiceBase

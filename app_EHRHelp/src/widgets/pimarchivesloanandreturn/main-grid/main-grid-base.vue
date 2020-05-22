@@ -22,7 +22,7 @@
                 <el-table-column align="center" type='selection' :width="checkboxColWidth"></el-table-column>
             </template>
             <template v-if="getColumnState('jyr')">
-                <el-table-column show-overflow-tooltip :prop="'jyr'" :label="$t('entities.pimarchivesloanandreturn.main_grid.columns.jyr')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'jyr'" :label="$t('entities.pimarchivesloanandreturn.main_grid.columns.jyr')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template v-if="actualIsOpenEdit">
                             <i-form style="height:100%;" :model="row">
@@ -46,7 +46,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('jyqssj')">
-                <el-table-column show-overflow-tooltip :prop="'jyqssj'" :label="$t('entities.pimarchivesloanandreturn.main_grid.columns.jyqssj')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'jyqssj'" :label="$t('entities.pimarchivesloanandreturn.main_grid.columns.jyqssj')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template v-if="actualIsOpenEdit">
                             <i-form style="height:100%;" :model="row">
@@ -62,7 +62,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('ghrq')">
-                <el-table-column show-overflow-tooltip :prop="'ghrq'" :label="$t('entities.pimarchivesloanandreturn.main_grid.columns.ghrq')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'ghrq'" :label="$t('entities.pimarchivesloanandreturn.main_grid.columns.ghrq')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template v-if="actualIsOpenEdit">
                             <i-form style="height:100%;" :model="row">
@@ -78,7 +78,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('pimpersonname3')">
-                <el-table-column show-overflow-tooltip :prop="'pimpersonname3'" :label="$t('entities.pimarchivesloanandreturn.main_grid.columns.pimpersonname3')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'pimpersonname3'" :label="$t('entities.pimarchivesloanandreturn.main_grid.columns.pimpersonname3')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template v-if="actualIsOpenEdit">
                             <i-form style="height:100%;" :model="row">
@@ -113,7 +113,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('spdate')">
-                <el-table-column show-overflow-tooltip :prop="'spdate'" :label="$t('entities.pimarchivesloanandreturn.main_grid.columns.spdate')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'spdate'" :label="$t('entities.pimarchivesloanandreturn.main_grid.columns.spdate')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template v-if="actualIsOpenEdit">
                             <i-form style="height:100%;" :model="row">
@@ -129,7 +129,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('jyyy')">
-                <el-table-column show-overflow-tooltip :prop="'jyyy'" :label="$t('entities.pimarchivesloanandreturn.main_grid.columns.jyyy')" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'jyyy'" :label="$t('entities.pimarchivesloanandreturn.main_grid.columns.jyyy')" :min-width="300"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template v-if="actualIsOpenEdit">
                             <i-form style="height:100%;" :model="row">
@@ -153,7 +153,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('zt')">
-                <el-table-column show-overflow-tooltip :prop="'zt'" :label="$t('entities.pimarchivesloanandreturn.main_grid.columns.zt')" :width="100" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'zt'" :label="$t('entities.pimarchivesloanandreturn.main_grid.columns.zt')" :width="100"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template v-if="actualIsOpenEdit">
                             <i-form style="height:100%;" :model="row">
@@ -591,7 +591,7 @@ export default class MainBase extends Vue implements ControlInterface {
     * @type {number}
     * @memberof AppIndex
     */
-    protected checkboxColWidth: number = 34;
+    public checkboxColWidth: number = 34;
 
     /**
      * 是否允许拖动列宽
@@ -1366,7 +1366,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * @memberof Main
      */
 	public uiAction(row: any, tag: any, $event: any) {
-        this.rowClick(row, true);
+        // this.rowClick(row, true);
     }
 
     /**

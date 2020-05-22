@@ -1,7 +1,7 @@
 import UserRoleDatasUIServiceBase from './user-role-datas-ui-service-base';
 
 /**
- * 用户角色数据能力UI服务对象
+ * 用户角色数据能力***UI服务对象
  *
  * @export
  * @class UserRoleDatasUIService

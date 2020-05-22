@@ -4,7 +4,7 @@ import EntityService from '../entity-service';
 
 
 /**
- * 工作流实例服务对象基类
+ * 工作流实例***服务对象基类
  *
  * @export
  * @class WFInstanceServiceBase
@@ -52,118 +52,6 @@ export default class WFInstanceServiceBase extends EntityService {
     }
 
     /**
-     * Remove接口方法
-     *
-     * @param {*} [context={}]
-     * @param {*} [data={}]
-     * @param {boolean} [isloading]
-     * @returns {Promise<any>}
-     * @memberof WFInstanceServiceBase
-     */
-    public async Remove(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
-            return Http.getInstance().delete(`/wfinstances/${context.wfinstance}`,isloading);
-
-    }
-
-    /**
-     * GetDraft接口方法
-     *
-     * @param {*} [context={}]
-     * @param {*} [data={}]
-     * @param {boolean} [isloading]
-     * @returns {Promise<any>}
-     * @memberof WFInstanceServiceBase
-     */
-    public async GetDraft(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
-        let res:any = await  Http.getInstance().get(`/wfinstances/getdraft`,isloading);
-        res.data.wfinstance = data.wfinstance;
-        return res;
-    }
-
-    /**
-     * Save接口方法
-     *
-     * @param {*} [context={}]
-     * @param {*} [data={}]
-     * @param {boolean} [isloading]
-     * @returns {Promise<any>}
-     * @memberof WFInstanceServiceBase
-     */
-    public async Save(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
-        let masterData:any = {};
-        Object.assign(data,masterData);
-            let res:any = await  Http.getInstance().post(`/wfinstances/${context.wfinstance}/save`,data,isloading);
-            return res;
-    }
-
-    /**
-     * Create接口方法
-     *
-     * @param {*} [context={}]
-     * @param {*} [data={}]
-     * @param {boolean} [isloading]
-     * @returns {Promise<any>}
-     * @memberof WFInstanceServiceBase
-     */
-    public async Create(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
-        let masterData:any = {};
-        Object.assign(data,masterData);
-        if(!data.srffrontuf || data.srffrontuf !== "1"){
-            data[this.APPDEKEY] = null;
-        }
-        if(data.srffrontuf){
-            delete data.srffrontuf;
-        }
-        let tempContext:any = JSON.parse(JSON.stringify(context));
-        let res:any = await Http.getInstance().post(`/wfinstances`,data,isloading);
-        return res;
-    }
-
-    /**
-     * Get接口方法
-     *
-     * @param {*} [context={}]
-     * @param {*} [data={}]
-     * @param {boolean} [isloading]
-     * @returns {Promise<any>}
-     * @memberof WFInstanceServiceBase
-     */
-    public async Get(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
-            let res:any = await Http.getInstance().get(`/wfinstances/${context.wfinstance}`,isloading);
-            return res;
-
-    }
-
-    /**
-     * Update接口方法
-     *
-     * @param {*} [context={}]
-     * @param {*} [data={}]
-     * @param {boolean} [isloading]
-     * @returns {Promise<any>}
-     * @memberof WFInstanceServiceBase
-     */
-    public async Update(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
-        let masterData:any = {};
-        Object.assign(data,masterData);
-            let res:any = await  Http.getInstance().put(`/wfinstances/${context.wfinstance}`,data,isloading);
-            return res;
-    }
-
-    /**
-     * CheckKey接口方法
-     *
-     * @param {*} [context={}]
-     * @param {*} [data={}]
-     * @param {boolean} [isloading]
-     * @returns {Promise<any>}
-     * @memberof WFInstanceServiceBase
-     */
-    public async CheckKey(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
-            return Http.getInstance().post(`/wfinstances/${context.wfinstance}/checkkey`,data,isloading);
-    }
-
-    /**
      * Restart接口方法
      *
      * @param {*} [context={}]
@@ -173,7 +61,7 @@ export default class WFInstanceServiceBase extends EntityService {
      * @memberof WFInstanceServiceBase
      */
     public async Restart(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
-            return Http.getInstance().post(`/wfinstances/${context.wfinstance}/restart`,data,isloading);
+        // URI参数传递情况未实现
     }
 
     /**
@@ -186,7 +74,7 @@ export default class WFInstanceServiceBase extends EntityService {
      * @memberof WFInstanceServiceBase
      */
     public async UserCancel(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
-            return Http.getInstance().post(`/wfinstances/${context.wfinstance}/usercancel`,data,isloading);
+        // URI参数传递情况未实现
     }
 
     /**
@@ -200,6 +88,6 @@ export default class WFInstanceServiceBase extends EntityService {
      */
     public async FetchDefault(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
         let tempData:any = JSON.parse(JSON.stringify(data));
-        return Http.getInstance().get(`/wfinstances/fetchdefault`,tempData,isloading);
+        return Http.getInstance().get(`/wfinstances/select`,tempData,isloading);
     }
 }

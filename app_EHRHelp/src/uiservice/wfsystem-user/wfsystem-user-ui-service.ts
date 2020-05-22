@@ -1,7 +1,7 @@
 import WFSystemUserUIServiceBase from './wfsystem-user-ui-service-base';
 
 /**
- * 工作流系统用户UI服务对象
+ * 工作流系统用户***UI服务对象
  *
  * @export
  * @class WFSystemUserUIService

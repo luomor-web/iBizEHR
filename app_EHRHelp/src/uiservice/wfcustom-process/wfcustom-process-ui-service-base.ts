@@ -5,7 +5,7 @@ import { Subject } from 'rxjs';
 import WFCustomProcessService from '@/service/wfcustom-process/wfcustom-process-service';
 
 /**
- * 工作流预定义处理UI服务对象基类
+ * 工作流预定义处理***UI服务对象基类
  *
  * @export
  * @class WFCustomProcessUIServiceBase

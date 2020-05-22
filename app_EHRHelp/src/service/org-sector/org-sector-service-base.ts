@@ -4,7 +4,7 @@ import EntityService from '../entity-service';
 
 
 /**
- * 组织部门服务对象基类
+ * 组织部门***服务对象基类
  *
  * @export
  * @class OrgSectorServiceBase
@@ -52,60 +52,6 @@ export default class OrgSectorServiceBase extends EntityService {
     }
 
     /**
-     * Create接口方法
-     *
-     * @param {*} [context={}]
-     * @param {*} [data={}]
-     * @param {boolean} [isloading]
-     * @returns {Promise<any>}
-     * @memberof OrgSectorServiceBase
-     */
-    public async Create(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
-        let masterData:any = {};
-        Object.assign(data,masterData);
-        if(!data.srffrontuf || data.srffrontuf !== "1"){
-            data[this.APPDEKEY] = null;
-        }
-        if(data.srffrontuf){
-            delete data.srffrontuf;
-        }
-        let tempContext:any = JSON.parse(JSON.stringify(context));
-        let res:any = await Http.getInstance().post(`/orgsectors`,data,isloading);
-        return res;
-    }
-
-    /**
-     * Save接口方法
-     *
-     * @param {*} [context={}]
-     * @param {*} [data={}]
-     * @param {boolean} [isloading]
-     * @returns {Promise<any>}
-     * @memberof OrgSectorServiceBase
-     */
-    public async Save(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
-        let masterData:any = {};
-        Object.assign(data,masterData);
-            let res:any = await  Http.getInstance().post(`/orgsectors/${context.orgsector}/save`,data,isloading);
-            return res;
-    }
-
-    /**
-     * Get接口方法
-     *
-     * @param {*} [context={}]
-     * @param {*} [data={}]
-     * @param {boolean} [isloading]
-     * @returns {Promise<any>}
-     * @memberof OrgSectorServiceBase
-     */
-    public async Get(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
-            let res:any = await Http.getInstance().get(`/orgsectors/${context.orgsector}`,isloading);
-            return res;
-
-    }
-
-    /**
      * InitUserObject接口方法
      *
      * @param {*} [context={}]
@@ -115,65 +61,7 @@ export default class OrgSectorServiceBase extends EntityService {
      * @memberof OrgSectorServiceBase
      */
     public async InitUserObject(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
-            return Http.getInstance().post(`/orgsectors/${context.orgsector}/inituserobject`,data,isloading);
-    }
-
-    /**
-     * Update接口方法
-     *
-     * @param {*} [context={}]
-     * @param {*} [data={}]
-     * @param {boolean} [isloading]
-     * @returns {Promise<any>}
-     * @memberof OrgSectorServiceBase
-     */
-    public async Update(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
-        let masterData:any = {};
-        Object.assign(data,masterData);
-            let res:any = await  Http.getInstance().put(`/orgsectors/${context.orgsector}`,data,isloading);
-            return res;
-    }
-
-    /**
-     * Remove接口方法
-     *
-     * @param {*} [context={}]
-     * @param {*} [data={}]
-     * @param {boolean} [isloading]
-     * @returns {Promise<any>}
-     * @memberof OrgSectorServiceBase
-     */
-    public async Remove(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
-            return Http.getInstance().delete(`/orgsectors/${context.orgsector}`,isloading);
-
-    }
-
-    /**
-     * CheckKey接口方法
-     *
-     * @param {*} [context={}]
-     * @param {*} [data={}]
-     * @param {boolean} [isloading]
-     * @returns {Promise<any>}
-     * @memberof OrgSectorServiceBase
-     */
-    public async CheckKey(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
-            return Http.getInstance().post(`/orgsectors/${context.orgsector}/checkkey`,data,isloading);
-    }
-
-    /**
-     * GetDraft接口方法
-     *
-     * @param {*} [context={}]
-     * @param {*} [data={}]
-     * @param {boolean} [isloading]
-     * @returns {Promise<any>}
-     * @memberof OrgSectorServiceBase
-     */
-    public async GetDraft(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
-        let res:any = await  Http.getInstance().get(`/orgsectors/getdraft`,isloading);
-        res.data.orgsector = data.orgsector;
-        return res;
+        // URI参数传递情况未实现
     }
 
     /**
@@ -187,7 +75,7 @@ export default class OrgSectorServiceBase extends EntityService {
      */
     public async FetchCurChild(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
         let tempData:any = JSON.parse(JSON.stringify(data));
-        return Http.getInstance().get(`/orgsectors/fetchcurchild`,tempData,isloading);
+        return Http.getInstance().get(`/orgsectors/select`,tempData,isloading);
     }
 
     /**
@@ -201,7 +89,7 @@ export default class OrgSectorServiceBase extends EntityService {
      */
     public async FetchCurOrgOrg(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
         let tempData:any = JSON.parse(JSON.stringify(data));
-        return Http.getInstance().get(`/orgsectors/fetchcurorgorg`,tempData,isloading);
+        return Http.getInstance().get(`/orgsectors/select`,tempData,isloading);
     }
 
     /**
@@ -215,7 +103,7 @@ export default class OrgSectorServiceBase extends EntityService {
      */
     public async FetchUserOrgSector(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
         let tempData:any = JSON.parse(JSON.stringify(data));
-        return Http.getInstance().get(`/orgsectors/fetchuserorgsector`,tempData,isloading);
+        return Http.getInstance().get(`/orgsectors/select`,tempData,isloading);
     }
 
     /**
@@ -229,7 +117,7 @@ export default class OrgSectorServiceBase extends EntityService {
      */
     public async FetchOrgRoot(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
         let tempData:any = JSON.parse(JSON.stringify(data));
-        return Http.getInstance().get(`/orgsectors/fetchorgroot`,tempData,isloading);
+        return Http.getInstance().get(`/orgsectors/select`,tempData,isloading);
     }
 
     /**
@@ -243,7 +131,7 @@ export default class OrgSectorServiceBase extends EntityService {
      */
     public async FetchUserOrg(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
         let tempData:any = JSON.parse(JSON.stringify(data));
-        return Http.getInstance().get(`/orgsectors/fetchuserorg`,tempData,isloading);
+        return Http.getInstance().get(`/orgsectors/select`,tempData,isloading);
     }
 
     /**
@@ -257,7 +145,7 @@ export default class OrgSectorServiceBase extends EntityService {
      */
     public async FetchCurOrg(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
         let tempData:any = JSON.parse(JSON.stringify(data));
-        return Http.getInstance().get(`/orgsectors/fetchcurorg`,tempData,isloading);
+        return Http.getInstance().get(`/orgsectors/select`,tempData,isloading);
     }
 
     /**
@@ -271,6 +159,6 @@ export default class OrgSectorServiceBase extends EntityService {
      */
     public async FetchDefault(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
         let tempData:any = JSON.parse(JSON.stringify(data));
-        return Http.getInstance().get(`/orgsectors/fetchdefault`,tempData,isloading);
+        return Http.getInstance().get(`/orgsectors/select`,tempData,isloading);
     }
 }

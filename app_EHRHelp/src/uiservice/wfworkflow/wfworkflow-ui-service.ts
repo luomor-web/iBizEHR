@@ -1,7 +1,7 @@
 import WFWorkflowUIServiceBase from './wfworkflow-ui-service-base';
 
 /**
- * 工作流配置UI服务对象
+ * 工作流配置***UI服务对象
  *
  * @export
  * @class WFWorkflowUIService

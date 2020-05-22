@@ -24,6 +24,7 @@
     "element-ui": "^2.13.0",
     "file-saver": "^2.0.2",
     "font-awesome": "^4.7.0",
+    "ibiz-gantt-elastic": "^1.0.8",
     "interactjs": "^1.9.4",
     "moment": "^2.24.0",
     "path-to-regexp": "^6.1.0",

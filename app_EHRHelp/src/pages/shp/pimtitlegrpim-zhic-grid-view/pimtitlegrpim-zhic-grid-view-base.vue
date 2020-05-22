@@ -9,7 +9,7 @@
     </template>
     <template slot="headerRight">
       <div class="view-header-right">
-        <app-header-menus :toolbarModel="toolBarModels" @menu-click="toolbar_click($event)" mode="view" :openMode="openMode" :isEnableQuickSearch="true" searchPlaceholder="请输入员工姓名，员工编号" v-model="query" @search="onSearch($event)"/>
+        <app-header-menus :toolbarModel="toolBarModels" @menu-click="toolbar_click($event)" mode="view" :openMode="openMode" :isEnableQuickSearch="true" searchPlaceholder="员工姓名，员工编号" v-model="query" @search="onSearch($event)"/>
       </div>
     </template>
     <template slot="content">
@@ -95,6 +95,15 @@ export default class PIMTITLEGRPimZhicGridViewBase extends GridViewBase {
      */
     public appEntityService: PIMTITLEService = new PIMTITLEService;
 
+
+    /**
+     * 计数器服务对象集合
+     *
+     * @type {Array<*>}
+     * @memberof PIMTITLEGRPimZhicGridViewBase
+     */    
+    public counterServiceArray:Array<any> = [];
+    
     /**
      * 数据变化
      *
@@ -130,7 +139,7 @@ export default class PIMTITLEGRPimZhicGridViewBase extends GridViewBase {
 	 * @type {*}
 	 * @memberof PIMTITLEGRPimZhicGridViewBase
 	 */
-    protected customViewNavContexts:any ={
+    public customViewNavContexts:any ={
     };
 
 	/**
@@ -139,7 +148,7 @@ export default class PIMTITLEGRPimZhicGridViewBase extends GridViewBase {
 	 * @type {*}
 	 * @memberof PIMTITLEGRPimZhicGridViewBase
 	 */
-    protected customViewParams:any ={
+    public customViewParams:any ={
     };
 
     /**
@@ -170,12 +179,11 @@ export default class PIMTITLEGRPimZhicGridViewBase extends GridViewBase {
     /**
      * 视图状态订阅对象
      *
-     * @private
+     * @public
      * @type {Subject<{action: string, data: any}>}
      * @memberof PIMTITLEGRPimZhicGridViewBase
      */
     public viewState: Subject<ViewState> = new Subject();
-
     /**
      * 工具栏模型
      *
@@ -236,10 +244,10 @@ export default class PIMTITLEGRPimZhicGridViewBase extends GridViewBase {
      */
     public toolbar_click($event: any, $event2?: any) {
         if (Object.is($event.tag, 'tbitem3')) {
-            this.toolbar_tbitem3_click($event, '', $event2);
+            this.toolbar_tbitem3_click(null, '', $event2);
         }
         if (Object.is($event.tag, 'tbitem8')) {
-            this.toolbar_tbitem8_click($event, '', $event2);
+            this.toolbar_tbitem8_click(null, '', $event2);
         }
     }
 
@@ -363,6 +371,9 @@ export default class PIMTITLEGRPimZhicGridViewBase extends GridViewBase {
         if (xData.getDatas && xData.getDatas instanceof Function) {
             datas = [...xData.getDatas()];
         }
+        if(params){
+          datas = [params];
+        }
         // 界面行为
         this.New(datas, contextJO,paramJO,  $event, xData,this,"PIMTITLE");
     }
@@ -389,6 +400,9 @@ export default class PIMTITLEGRPimZhicGridViewBase extends GridViewBase {
         if (xData.getDatas && xData.getDatas instanceof Function) {
             datas = [...xData.getDatas()];
         }
+        if(params){
+          datas = [params];
+        }
         // 界面行为
         this.Remove(datas, contextJO,paramJO,  $event, xData,this,"PIMTITLE");
     }
@@ -405,6 +419,9 @@ export default class PIMTITLEGRPimZhicGridViewBase extends GridViewBase {
      */
     public newdata(args: any[],fullargs?:any[], params?: any, $event?: any, xData?: any) {
         const data: any = {};
+        if(args[0].srfsourcekey){
+            data.srfsourcekey = args[0].srfsourcekey;
+        }
         let curViewParam = JSON.parse(JSON.stringify(this.context));
         if(args.length >0){
             Object.assign(curViewParam,args[0]);

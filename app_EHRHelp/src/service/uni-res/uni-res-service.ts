@@ -3,7 +3,7 @@ import UniResServiceBase from './uni-res-service-base';
 
 
 /**
- * 统一资源服务对象
+ * 统一资源***服务对象
  *
  * @export
  * @class UniResService

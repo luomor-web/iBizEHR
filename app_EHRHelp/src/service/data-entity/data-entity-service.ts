@@ -3,7 +3,7 @@ import DataEntityServiceBase from './data-entity-service-base';
 
 
 /**
- * 实体服务对象
+ * 实体***服务对象
  *
  * @export
  * @class DataEntityService

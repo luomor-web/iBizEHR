@@ -22,21 +22,21 @@
                 <el-table-column align="center" type='selection' :width="checkboxColWidth"></el-table-column>
             </template>
             <template v-if="getColumnState('zgzsbh')">
-                <el-table-column show-overflow-tooltip :prop="'zgzsbh'" :label="$t('entities.pimvocational.main_certificate_grid.columns.zgzsbh')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'zgzsbh'" :label="$t('entities.pimvocational.main_certificate_grid.columns.zgzsbh')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.zgzsbh}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('zsmc')">
-                <el-table-column show-overflow-tooltip :prop="'zsmc'" :label="$t('entities.pimvocational.main_certificate_grid.columns.zsmc')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'zsmc'" :label="$t('entities.pimvocational.main_certificate_grid.columns.zsmc')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.zsmc}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('zslx')">
-                <el-table-column show-overflow-tooltip :prop="'zslx'" :label="$t('entities.pimvocational.main_certificate_grid.columns.zslx')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'zslx'" :label="$t('entities.pimvocational.main_certificate_grid.columns.zslx')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
             <codelist :value="row.zslx" tag='ZSLX' codelistType='STATIC' renderMode="STR" valueSeparator=";" textSeparator="、" ></codelist>
@@ -45,28 +45,28 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('zghqrq')">
-                <el-table-column show-overflow-tooltip :prop="'zghqrq'" :label="$t('entities.pimvocational.main_certificate_grid.columns.zghqrq')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'zghqrq'" :label="$t('entities.pimvocational.main_certificate_grid.columns.zghqrq')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <app-format-data format="YYYY-MM-DD" :data="row.zghqrq"></app-format-data>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('zgsydw')">
-                <el-table-column show-overflow-tooltip :prop="'zgsydw'" :label="$t('entities.pimvocational.main_certificate_grid.columns.zgsydw')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'zgsydw'" :label="$t('entities.pimvocational.main_certificate_grid.columns.zgsydw')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.zgsydw}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('fzyxq')">
-                <el-table-column show-overflow-tooltip :prop="'fzyxq'" :label="$t('entities.pimvocational.main_certificate_grid.columns.fzyxq')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'fzyxq'" :label="$t('entities.pimvocational.main_certificate_grid.columns.fzyxq')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.fzyxq}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('jlspzt')">
-                <el-table-column show-overflow-tooltip :prop="'jlspzt'" :label="$t('entities.pimvocational.main_certificate_grid.columns.jlspzt')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'jlspzt'" :label="$t('entities.pimvocational.main_certificate_grid.columns.jlspzt')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
             <codelist :value="row.jlspzt" tag='PIMCL_SPZT' codelistType='STATIC' renderMode="STR" valueSeparator=";" textSeparator="、" ></codelist>
@@ -497,7 +497,7 @@ export default class Main_CertificateBase extends Vue implements ControlInterfac
     * @type {number}
     * @memberof AppIndex
     */
-    protected checkboxColWidth: number = 34;
+    public checkboxColWidth: number = 34;
 
     /**
      * 是否允许拖动列宽
@@ -1240,7 +1240,7 @@ export default class Main_CertificateBase extends Vue implements ControlInterfac
      * @memberof Main_Certificate
      */
 	public uiAction(row: any, tag: any, $event: any) {
-        this.rowClick(row, true);
+        // this.rowClick(row, true);
     }
 
     /**

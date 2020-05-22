@@ -3,7 +3,7 @@ import OrgUnitCatServiceBase from './org-unit-cat-service-base';
 
 
 /**
- * 组织单元类别服务对象
+ * 组织单元类别***服务对象
  *
  * @export
  * @class OrgUnitCatService

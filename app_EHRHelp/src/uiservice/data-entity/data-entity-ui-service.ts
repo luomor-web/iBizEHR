@@ -1,7 +1,7 @@
 import DataEntityUIServiceBase from './data-entity-ui-service-base';
 
 /**
- * 实体UI服务对象
+ * 实体***UI服务对象
  *
  * @export
  * @class DataEntityUIService

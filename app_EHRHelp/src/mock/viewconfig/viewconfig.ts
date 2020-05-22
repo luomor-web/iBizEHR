@@ -905,7 +905,7 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
         },
         "wfstephishtmlview": {
             "title": "工作流步骤HTML视图",
-            "caption": "工作流步骤",
+            "caption": "工作流步骤***",
             "viewtype": "DEHTMLVIEW",
             "viewmodule": "Shp",
             "viewname": "WFStepHisHtmlView",
@@ -1001,7 +1001,7 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
         },
         "ormorgsectorpickupgridview": {
             "title": "部门管理选择表格视图",
-            "caption": "部门管理",
+            "caption": "部门管理***",
             "viewtype": "DEPICKUPGRIDVIEW",
             "viewmodule": "Shp",
             "viewname": "ORMORGSECTORPickupGridView",

@@ -1,7 +1,7 @@
 import UserRoleDEFieldesUIServiceBase from './user-role-defieldes-ui-service-base';
 
 /**
- * 用户角色相关实体属性访问控制UI服务对象
+ * 用户角色相关实体属性访问控制***UI服务对象
  *
  * @export
  * @class UserRoleDEFieldesUIService

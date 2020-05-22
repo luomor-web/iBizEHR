@@ -3,7 +3,7 @@ import MsgSendQueueServiceBase from './msg-send-queue-service-base';
 
 
 /**
- * 消息发送队列服务对象
+ * 消息发送队列***服务对象
  *
  * @export
  * @class MsgSendQueueService

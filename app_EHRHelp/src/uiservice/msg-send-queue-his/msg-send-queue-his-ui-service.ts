@@ -1,7 +1,7 @@
 import MsgSendQueueHisUIServiceBase from './msg-send-queue-his-ui-service-base';
 
 /**
- * 消息发送队列（历史）UI服务对象
+ * 消息发送队列（历史）***UI服务对象
  *
  * @export
  * @class MsgSendQueueHisUIService

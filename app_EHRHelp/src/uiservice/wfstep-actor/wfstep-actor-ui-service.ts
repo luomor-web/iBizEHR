@@ -1,7 +1,7 @@
 import WFStepActorUIServiceBase from './wfstep-actor-ui-service-base';
 
 /**
- * 工作流步骤操作者UI服务对象
+ * 工作流步骤操作者***UI服务对象
  *
  * @export
  * @class WFStepActorUIService

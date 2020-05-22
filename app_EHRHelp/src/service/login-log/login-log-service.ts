@@ -3,7 +3,7 @@ import LoginLogServiceBase from './login-log-service-base';
 
 
 /**
- * 帐户使用记录服务对象
+ * 帐户使用记录***服务对象
  *
  * @export
  * @class LoginLogService

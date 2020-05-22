@@ -1,7 +1,7 @@
 import ORMORGSECTORUIServiceBase from './ormorgsector-ui-service-base';
 
 /**
- * 部门管理UI服务对象
+ * 部门管理***UI服务对象
  *
  * @export
  * @class ORMORGSECTORUIService

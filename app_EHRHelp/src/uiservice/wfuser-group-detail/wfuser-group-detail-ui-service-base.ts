@@ -5,7 +5,7 @@ import { Subject } from 'rxjs';
 import WFUserGroupDetailService from '@/service/wfuser-group-detail/wfuser-group-detail-service';
 
 /**
- * 工作流用户组成员UI服务对象基类
+ * 工作流用户组成员***UI服务对象基类
  *
  * @export
  * @class WFUserGroupDetailUIServiceBase

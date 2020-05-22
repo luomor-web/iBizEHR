@@ -3,7 +3,7 @@ import OrgUserLevelServiceBase from './org-user-level-service-base';
 
 
 /**
- * 组织人员级别服务对象
+ * 组织人员级别***服务对象
  *
  * @export
  * @class OrgUserLevelService

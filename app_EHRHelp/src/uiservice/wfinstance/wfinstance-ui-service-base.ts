@@ -5,7 +5,7 @@ import { Subject } from 'rxjs';
 import WFInstanceService from '@/service/wfinstance/wfinstance-service';
 
 /**
- * 工作流实例UI服务对象基类
+ * 工作流实例***UI服务对象基类
  *
  * @export
  * @class WFInstanceUIServiceBase

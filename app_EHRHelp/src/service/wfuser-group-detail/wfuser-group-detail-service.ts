@@ -3,7 +3,7 @@ import WFUserGroupDetailServiceBase from './wfuser-group-detail-service-base';
 
 
 /**
- * 工作流用户组成员服务对象
+ * 工作流用户组成员***服务对象
  *
  * @export
  * @class WFUserGroupDetailService

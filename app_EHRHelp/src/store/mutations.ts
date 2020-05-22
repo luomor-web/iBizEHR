@@ -254,3 +254,15 @@ export const updateZIndex = (state: any, zIndex: number) => {
 export const setViewSplit = (state: any, args: {viewSplit: number,viewUID:string}) => {
   state.viewSplit[args.viewUID] = args.viewSplit;
 }
+
+/**
+ * 添加拷贝数据
+ * 
+ * @param state 
+ * @param localdata 
+ */
+export const addCopyData = (state: any, args: {srfkey: string,copyData: any}) => {
+  if(args && args.srfkey && args.copyData){
+      state.copyDataMap[args.srfkey] = JSON.parse(JSON.stringify(args.copyData));
+  }
+}

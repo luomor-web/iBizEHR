@@ -5,7 +5,7 @@ import { Subject } from 'rxjs';
 import WFUserCandidateService from '@/service/wfuser-candidate/wfuser-candidate-service';
 
 /**
- * 工作流用户候选者UI服务对象基类
+ * 工作流用户候选者***UI服务对象基类
  *
  * @export
  * @class WFUserCandidateUIServiceBase

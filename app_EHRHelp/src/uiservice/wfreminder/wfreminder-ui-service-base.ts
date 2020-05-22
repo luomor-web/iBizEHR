@@ -5,7 +5,7 @@ import { Subject } from 'rxjs';
 import WFReminderService from '@/service/wfreminder/wfreminder-service';
 
 /**
- * 工作流工作催办UI服务对象基类
+ * 工作流工作催办***UI服务对象基类
  *
  * @export
  * @class WFReminderUIServiceBase

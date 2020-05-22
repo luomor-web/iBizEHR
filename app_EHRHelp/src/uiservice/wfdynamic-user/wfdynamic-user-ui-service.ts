@@ -1,7 +1,7 @@
 import WFDynamicUserUIServiceBase from './wfdynamic-user-ui-service-base';
 
 /**
- * 工作流动态用户UI服务对象
+ * 工作流动态用户***UI服务对象
  *
  * @export
  * @class WFDynamicUserUIService

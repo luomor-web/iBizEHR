@@ -1,7 +1,7 @@
 import WFActorUIServiceBase from './wfactor-ui-service-base';
 
 /**
- * 工作流操作者UI服务对象
+ * 工作流操作者***UI服务对象
  *
  * @export
  * @class WFActorUIService

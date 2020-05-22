@@ -3,7 +3,7 @@ import WFStepServiceBase from './wfstep-service-base';
 
 
 /**
- * 工作流步骤服务对象
+ * 工作流步骤***服务对象
  *
  * @export
  * @class WFStepService

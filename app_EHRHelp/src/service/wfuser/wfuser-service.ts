@@ -3,7 +3,7 @@ import WFUserServiceBase from './wfuser-service-base';
 
 
 /**
- * 工作流用户服务对象
+ * 工作流用户***服务对象
  *
  * @export
  * @class WFUserService

@@ -3,7 +3,7 @@ import WFActorServiceBase from './wfactor-service-base';
 
 
 /**
- * 工作流操作者服务对象
+ * 工作流操作者***服务对象
  *
  * @export
  * @class WFActorService

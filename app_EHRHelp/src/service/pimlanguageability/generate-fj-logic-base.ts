@@ -142,10 +142,10 @@ export default class GenerateFJLogicBase {
         Object.assign(params,{fjkz:params.fj});
         Object.assign(params,{fj:params.fj});
         Object.assign(params,{pimenclosureid:params.pimlanguageabilityid});
-        Object.assign(context,{pimenclosure:params.pimlanguageabilityid});
+        Object.assign(context,{pimenclosure:params.pimlanguageabilityid ? params.pimlanguageabilityid : null});
         Object.assign(params,{pimenclosurename:params.pimlanguageabilityname});
         Object.assign(params,{pimpersonid:params.pimpersonid});
-        Object.assign(context,{pimenclosure:params.pimpersonid});
+        Object.assign(context,{pimenclosure:params.pimpersonid ? params.pimpersonid : null});
         Object.assign(params,{pimpersonname:params.pimpersonname});
         Object.assign(params,{fjfl:params.fjfl});
         if(this.compute2Cond(params)){

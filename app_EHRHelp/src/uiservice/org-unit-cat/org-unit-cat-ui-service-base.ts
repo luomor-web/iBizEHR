@@ -5,7 +5,7 @@ import { Subject } from 'rxjs';
 import OrgUnitCatService from '@/service/org-unit-cat/org-unit-cat-service';
 
 /**
- * 组织单元类别UI服务对象基类
+ * 组织单元类别***UI服务对象基类
  *
  * @export
  * @class OrgUnitCatUIServiceBase

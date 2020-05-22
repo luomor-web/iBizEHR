@@ -1,7 +1,7 @@
 import WFIAActionUIServiceBase from './wfiaaction-ui-service-base';
 
 /**
- * 工作流交互操作UI服务对象
+ * 工作流交互操作***UI服务对象
  *
  * @export
  * @class WFIAActionUIService

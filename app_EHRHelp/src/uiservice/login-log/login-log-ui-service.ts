@@ -1,7 +1,7 @@
 import LoginLogUIServiceBase from './login-log-ui-service-base';
 
 /**
- * 帐户使用记录UI服务对象
+ * 帐户使用记录***UI服务对象
  *
  * @export
  * @class LoginLogUIService

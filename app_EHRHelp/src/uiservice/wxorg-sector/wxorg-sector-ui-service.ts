@@ -1,7 +1,7 @@
 import WXOrgSectorUIServiceBase from './wxorg-sector-ui-service-base';
 
 /**
- * 微信部门UI服务对象
+ * 微信部门***UI服务对象
  *
  * @export
  * @class WXOrgSectorUIService

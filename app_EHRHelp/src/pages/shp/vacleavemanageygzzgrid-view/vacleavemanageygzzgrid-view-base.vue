@@ -9,7 +9,7 @@
     </template>
     <template slot="headerRight">
       <div class="view-header-right">
-        <app-header-menus :toolbarModel="toolBarModels" @menu-click="toolbar_click($event)" mode="view" :openMode="openMode" :isEnableQuickSearch="true" searchPlaceholder="请输入请假人员" v-model="query" @search="onSearch($event)"/>
+        <app-header-menus :toolbarModel="toolBarModels" @menu-click="toolbar_click($event)" mode="view" :openMode="openMode" :isEnableQuickSearch="true" searchPlaceholder="请假人员" v-model="query" @search="onSearch($event)"/>
       </div>
     </template>
     <template slot="content">
@@ -96,6 +96,15 @@ export default class VACLEAVEMANAGEYGZZGridViewBase extends GridViewBase {
      */
     public appEntityService: VACLEAVEMANAGEService = new VACLEAVEMANAGEService;
 
+
+    /**
+     * 计数器服务对象集合
+     *
+     * @type {Array<*>}
+     * @memberof VACLEAVEMANAGEYGZZGridViewBase
+     */    
+    public counterServiceArray:Array<any> = [];
+    
     /**
      * 数据变化
      *
@@ -131,7 +140,7 @@ export default class VACLEAVEMANAGEYGZZGridViewBase extends GridViewBase {
 	 * @type {*}
 	 * @memberof VACLEAVEMANAGEYGZZGridViewBase
 	 */
-    protected customViewNavContexts:any ={
+    public customViewNavContexts:any ={
     };
 
 	/**
@@ -140,7 +149,7 @@ export default class VACLEAVEMANAGEYGZZGridViewBase extends GridViewBase {
 	 * @type {*}
 	 * @memberof VACLEAVEMANAGEYGZZGridViewBase
 	 */
-    protected customViewParams:any ={
+    public customViewParams:any ={
     };
 
     /**
@@ -172,12 +181,11 @@ export default class VACLEAVEMANAGEYGZZGridViewBase extends GridViewBase {
     /**
      * 视图状态订阅对象
      *
-     * @private
+     * @public
      * @type {Subject<{action: string, data: any}>}
      * @memberof VACLEAVEMANAGEYGZZGridViewBase
      */
     public viewState: Subject<ViewState> = new Subject();
-
     /**
      * 工具栏模型
      *
@@ -242,19 +250,19 @@ export default class VACLEAVEMANAGEYGZZGridViewBase extends GridViewBase {
      */
     public toolbar_click($event: any, $event2?: any) {
         if (Object.is($event.tag, 'tbitem1_xjqj')) {
-            this.toolbar_tbitem1_xjqj_click($event, '', $event2);
+            this.toolbar_tbitem1_xjqj_click(null, '', $event2);
         }
         if (Object.is($event.tag, 'tbitem1_kscqj')) {
-            this.toolbar_tbitem1_kscqj_click($event, '', $event2);
+            this.toolbar_tbitem1_kscqj_click(null, '', $event2);
         }
         if (Object.is($event.tag, 'deuiaction1')) {
-            this.toolbar_deuiaction1_click($event, '', $event2);
+            this.toolbar_deuiaction1_click(null, '', $event2);
         }
         if (Object.is($event.tag, 'tbitem13')) {
-            this.toolbar_tbitem13_click($event, '', $event2);
+            this.toolbar_tbitem13_click(null, '', $event2);
         }
         if (Object.is($event.tag, 'tbitem18')) {
-            this.toolbar_tbitem18_click($event, '', $event2);
+            this.toolbar_tbitem18_click(null, '', $event2);
         }
     }
 
@@ -378,6 +386,9 @@ export default class VACLEAVEMANAGEYGZZGridViewBase extends GridViewBase {
         if (xData.getDatas && xData.getDatas instanceof Function) {
             datas = [...xData.getDatas()];
         }
+        if(params){
+          datas = [params];
+        }
         // 界面行为
         const curUIService:VACLEAVEMANAGEUIService  = new VACLEAVEMANAGEUIService();
         curUIService.VACLEAVEMANAGE_XJQJ(datas,contextJO, paramJO,  $event, xData,this,"VACLEAVEMANAGE");
@@ -404,6 +415,9 @@ export default class VACLEAVEMANAGEYGZZGridViewBase extends GridViewBase {
         xData = this.$refs.grid;
         if (xData.getDatas && xData.getDatas instanceof Function) {
             datas = [...xData.getDatas()];
+        }
+        if(params){
+          datas = [params];
         }
         // 界面行为
         const curUIService:VACLEAVEMANAGEUIService  = new VACLEAVEMANAGEUIService();
@@ -432,6 +446,9 @@ export default class VACLEAVEMANAGEYGZZGridViewBase extends GridViewBase {
         if (xData.getDatas && xData.getDatas instanceof Function) {
             datas = [...xData.getDatas()];
         }
+        if(params){
+          datas = [params];
+        }
         // 界面行为
         this.OpenRowEdit(datas, contextJO,paramJO,  $event, xData,this,"VACLEAVEMANAGE");
     }
@@ -458,6 +475,9 @@ export default class VACLEAVEMANAGEYGZZGridViewBase extends GridViewBase {
         if (xData.getDatas && xData.getDatas instanceof Function) {
             datas = [...xData.getDatas()];
         }
+        if(params){
+          datas = [params];
+        }
         // 界面行为
         this.ExportExcel(datas, contextJO,paramJO,  $event, xData,this,"VACLEAVEMANAGE");
     }
@@ -483,6 +503,9 @@ export default class VACLEAVEMANAGEYGZZGridViewBase extends GridViewBase {
         xData = this.$refs.grid;
         if (xData.getDatas && xData.getDatas instanceof Function) {
             datas = [...xData.getDatas()];
+        }
+        if(params){
+          datas = [params];
         }
         // 界面行为
         this.Help(datas, contextJO,paramJO,  $event, xData,this,"VACLEAVEMANAGE");

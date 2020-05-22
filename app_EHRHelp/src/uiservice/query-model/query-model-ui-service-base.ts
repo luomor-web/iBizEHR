@@ -5,7 +5,7 @@ import { Subject } from 'rxjs';
 import QueryModelService from '@/service/query-model/query-model-service';
 
 /**
- * 实体查询模型UI服务对象基类
+ * 实体查询模型***UI服务对象基类
  *
  * @export
  * @class QueryModelUIServiceBase

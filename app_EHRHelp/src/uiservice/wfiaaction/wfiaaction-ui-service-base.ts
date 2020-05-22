@@ -5,7 +5,7 @@ import { Subject } from 'rxjs';
 import WFIAActionService from '@/service/wfiaaction/wfiaaction-service';
 
 /**
- * 工作流交互操作UI服务对象基类
+ * 工作流交互操作***UI服务对象基类
  *
  * @export
  * @class WFIAActionUIServiceBase

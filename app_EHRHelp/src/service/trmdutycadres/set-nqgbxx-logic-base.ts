@@ -127,7 +127,7 @@ export default class SetNQGBXXLogicBase {
     private async executePrepareparam1(context:any,params:any,isloading:boolean){
         // 准备参数节点
         Object.assign(params,{pimpersonid:params.pimpersonid2});
-        Object.assign(context,{pimperson:params.pimpersonid2});
+        Object.assign(context,{pimperson:params.pimpersonid2 ? params.pimpersonid2 : null});
         if(this.compute2Cond(params)){
             return this.executeDeaction1(context,params,isloading);   
         }

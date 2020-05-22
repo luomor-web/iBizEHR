@@ -92,10 +92,10 @@ export default class UpdateRelatedInfoLogicBase {
     private async executePrepareparam1(context:any,params:any,isloading:boolean){
         // 准备参数节点
         Object.assign(params,{userid:params.orguserid});
-        Object.assign(context,{user:params.orguserid});
+        Object.assign(context,{user:params.orguserid ? params.orguserid : null});
         Object.assign(params,{username:params.orgusername});
         Object.assign(params,{validflag:params.validflag});
-        Object.assign(context,{user:params.validflag});
+        Object.assign(context,{user:params.validflag ? params.validflag : null});
         if(this.compute1Cond(params)){
             return this.executeDeaction1(context,params,isloading);   
         }

@@ -5,7 +5,7 @@ import { Subject } from 'rxjs';
 import WXAccessTokenService from '@/service/wxaccess-token/wxaccess-token-service';
 
 /**
- * 微信访问票据UI服务对象基类
+ * 微信访问票据***UI服务对象基类
  *
  * @export
  * @class WXAccessTokenUIServiceBase

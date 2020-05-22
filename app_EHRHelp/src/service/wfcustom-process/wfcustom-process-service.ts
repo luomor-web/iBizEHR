@@ -3,7 +3,7 @@ import WFCustomProcessServiceBase from './wfcustom-process-service-base';
 
 
 /**
- * 工作流预定义处理服务对象
+ * 工作流预定义处理***服务对象
  *
  * @export
  * @class WFCustomProcessService

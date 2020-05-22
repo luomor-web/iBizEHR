@@ -3,7 +3,7 @@ import WFUserAssistServiceBase from './wfuser-assist-service-base';
 
 
 /**
- * 工作流用户代办服务对象
+ * 工作流用户代办***服务对象
  *
  * @export
  * @class WFUserAssistService

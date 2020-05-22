@@ -3,7 +3,7 @@ import UserRoleResServiceBase from './user-role-res-service-base';
 
 
 /**
- * 用户角色资源能力服务对象
+ * 用户角色资源能力***服务对象
  *
  * @export
  * @class UserRoleResService

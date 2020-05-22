@@ -22,21 +22,21 @@
                 <el-table-column align="center" type='selection' :width="checkboxColWidth"></el-table-column>
             </template>
             <template v-if="getColumnState('wtbh')">
-                <el-table-column show-overflow-tooltip :prop="'wtbh'" :label="$t('entities.questions.currentquestions_grid.columns.wtbh')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'wtbh'" :label="$t('entities.questions.currentquestions_grid.columns.wtbh')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.wtbh}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('questionsname')">
-                <el-table-column show-overflow-tooltip :prop="'questionsname'" :label="$t('entities.questions.currentquestions_grid.columns.questionsname')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'questionsname'" :label="$t('entities.questions.currentquestions_grid.columns.questionsname')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.questionsname}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('jjcd')">
-                <el-table-column show-overflow-tooltip :prop="'jjcd'" :label="$t('entities.questions.currentquestions_grid.columns.jjcd')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'jjcd'" :label="$t('entities.questions.currentquestions_grid.columns.jjcd')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
             <codelist :value="row.jjcd" tag='JJCD' codelistType='STATIC' ></codelist>
@@ -45,7 +45,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('createman')">
-                <el-table-column show-overflow-tooltip :prop="'createman'" :label="$t('entities.questions.currentquestions_grid.columns.createman')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'createman'" :label="$t('entities.questions.currentquestions_grid.columns.createman')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
             <codelist :value="row.createman" tag='SysOperator' codelistType='DYNAMIC' ></codelist>
@@ -54,21 +54,21 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('createdate')">
-                <el-table-column show-overflow-tooltip :prop="'createdate'" :label="$t('entities.questions.currentquestions_grid.columns.createdate')" :width="180" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'createdate'" :label="$t('entities.questions.currentquestions_grid.columns.createdate')" :width="180"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <app-format-data format="YYYY-MM-DD hh:mm:ss" :data="row.createdate"></app-format-data>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('wtms')">
-                <el-table-column show-overflow-tooltip :prop="'wtms'" :label="$t('entities.questions.currentquestions_grid.columns.wtms')" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'wtms'" :label="$t('entities.questions.currentquestions_grid.columns.wtms')" :min-width="1"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.wtms}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('wtzt')">
-                <el-table-column show-overflow-tooltip :prop="'wtzt'" :label="$t('entities.questions.currentquestions_grid.columns.wtzt')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'wtzt'" :label="$t('entities.questions.currentquestions_grid.columns.wtzt')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
             <codelist :value="row.wtzt" tag='WTZT' codelistType='STATIC' ></codelist>
@@ -77,7 +77,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('wcsj')">
-                <el-table-column show-overflow-tooltip :prop="'wcsj'" :label="$t('entities.questions.currentquestions_grid.columns.wcsj')" :width="180" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'wcsj'" :label="$t('entities.questions.currentquestions_grid.columns.wcsj')" :width="180"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <app-format-data format="YYYY-MM-DD hh:mm:ss" :data="row.wcsj"></app-format-data>
                     </template>
@@ -541,7 +541,7 @@ export default class CurrentQuestionsBase extends Vue implements ControlInterfac
     * @type {number}
     * @memberof AppIndex
     */
-    protected checkboxColWidth: number = 34;
+    public checkboxColWidth: number = 34;
 
     /**
      * 是否允许拖动列宽
@@ -1299,7 +1299,7 @@ export default class CurrentQuestionsBase extends Vue implements ControlInterfac
      * @memberof CurrentQuestions
      */
 	public uiAction(row: any, tag: any, $event: any) {
-        this.rowClick(row, true);
+        // this.rowClick(row, true);
     }
 
     /**

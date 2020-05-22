@@ -103,9 +103,9 @@ export default class FillPersonInfoLogicBase {
         Object.assign(params,{zz:params.ormorgname});
         Object.assign(params,{ygbh:params.ygbh});
         Object.assign(params,{zzid:params.ormorgid});
-        Object.assign(context,{pcmjxsygzzjlmx:params.ormorgid});
+        Object.assign(context,{pcmjxsygzzjlmx:params.ormorgid ? params.ormorgid : null});
         Object.assign(params,{bmid:params.ormorgsectorid});
-        Object.assign(context,{pcmjxsygzzjlmx:params.ormorgsectorid});
+        Object.assign(context,{pcmjxsygzzjlmx:params.ormorgsectorid ? params.ormorgsectorid : null});
         Object.assign(params,{bm:params.ormorgsectorname});
         Object.assign(params,{zzgw:params.gw});
         Object.assign(params,{duration:params.duration});
@@ -145,7 +145,7 @@ export default class FillPersonInfoLogicBase {
     private async executePrepareparam1(context:any,params:any,isloading:boolean){
         // 准备参数节点
         Object.assign(params,{pimpersonid:params.pimpersonid});
-        Object.assign(context,{pimperson:params.pimpersonid});
+        Object.assign(context,{pimperson:params.pimpersonid ? params.pimpersonid : null});
         if(this.compute2Cond(params)){
             return this.executeDeaction1(context,params,isloading);   
         }

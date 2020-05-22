@@ -22,7 +22,7 @@
                 <el-table-column align="center" type='selection' :width="checkboxColWidth"></el-table-column>
             </template>
             <template v-if="getColumnState('dabh')">
-                <el-table-column show-overflow-tooltip :prop="'dabh'" :label="$t('entities.pimarchives.main_2_grid.columns.dabh')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'dabh'" :label="$t('entities.pimarchives.main_2_grid.columns.dabh')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
                                 <app-span name='dabh' editorType="TEXTBOX" :value="row.dabh"></app-span>
@@ -31,14 +31,14 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('ormorgname3')">
-                <el-table-column show-overflow-tooltip :prop="'ormorgname3'" :label="$t('entities.pimarchives.main_2_grid.columns.ormorgname3')" :width="250" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'ormorgname3'" :label="$t('entities.pimarchives.main_2_grid.columns.ormorgname3')" :width="250"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.ormorgname3}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('dabgd')">
-                <el-table-column show-overflow-tooltip :prop="'dabgd'" :label="$t('entities.pimarchives.main_2_grid.columns.dabgd')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'dabgd'" :label="$t('entities.pimarchives.main_2_grid.columns.dabgd')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
                                 <app-span name='dabgd' editorType="TEXTBOX" :value="row.dabgd"></app-span>
@@ -47,14 +47,14 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('archivescentername')">
-                <el-table-column show-overflow-tooltip :prop="'archivescentername'" :label="$t('entities.pimarchives.main_2_grid.columns.archivescentername')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'archivescentername'" :label="$t('entities.pimarchives.main_2_grid.columns.archivescentername')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.archivescentername}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('education')">
-                <el-table-column show-overflow-tooltip :prop="'education'" :label="$t('entities.pimarchives.main_2_grid.columns.education')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'education'" :label="$t('entities.pimarchives.main_2_grid.columns.education')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
             <codelist :value="row.education" tag='PIM_XL2' codelistType='DYNAMIC' renderMode="STR" valueSeparator=";" textSeparator="、" ></codelist>
@@ -63,28 +63,28 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('dateofbirth')">
-                <el-table-column show-overflow-tooltip :prop="'dateofbirth'" :label="$t('entities.pimarchives.main_2_grid.columns.dateofbirth')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'dateofbirth'" :label="$t('entities.pimarchives.main_2_grid.columns.dateofbirth')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <app-format-data format="YYYY-MM-DD" :data="row.dateofbirth"></app-format-data>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('joinpartydate')">
-                <el-table-column show-overflow-tooltip :prop="'joinpartydate'" :label="$t('entities.pimarchives.main_2_grid.columns.joinpartydate')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'joinpartydate'" :label="$t('entities.pimarchives.main_2_grid.columns.joinpartydate')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <app-format-data format="YYYY-MM-DD" :data="row.joinpartydate"></app-format-data>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('startworkdatae')">
-                <el-table-column show-overflow-tooltip :prop="'startworkdatae'" :label="$t('entities.pimarchives.main_2_grid.columns.startworkdatae')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'startworkdatae'" :label="$t('entities.pimarchives.main_2_grid.columns.startworkdatae')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <app-format-data format="YYYY-MM-DD" :data="row.startworkdatae"></app-format-data>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('dastate')">
-                <el-table-column show-overflow-tooltip :prop="'dastate'" :label="$t('entities.pimarchives.main_2_grid.columns.dastate')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'dastate'" :label="$t('entities.pimarchives.main_2_grid.columns.dastate')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
             <codelist :value="row.dastate" tag='DASTATE' codelistType='STATIC' renderMode="NUM" textSeparator="、" ></codelist>
@@ -550,7 +550,7 @@ export default class Main_2Base extends Vue implements ControlInterface {
     * @type {number}
     * @memberof AppIndex
     */
-    protected checkboxColWidth: number = 34;
+    public checkboxColWidth: number = 34;
 
     /**
      * 是否允许拖动列宽
@@ -1319,7 +1319,7 @@ export default class Main_2Base extends Vue implements ControlInterface {
      * @memberof Main_2
      */
 	public uiAction(row: any, tag: any, $event: any) {
-        this.rowClick(row, true);
+        // this.rowClick(row, true);
     }
 
     /**

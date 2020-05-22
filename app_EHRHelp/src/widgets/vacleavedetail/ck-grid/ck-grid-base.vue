@@ -22,14 +22,14 @@
                 <el-table-column align="center" type='selection' :width="checkboxColWidth"></el-table-column>
             </template>
             <template v-if="getColumnState('pimpersonname')">
-                <el-table-column show-overflow-tooltip :prop="'pimpersonname'" :label="$t('entities.vacleavedetail.ck_grid.columns.pimpersonname')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'pimpersonname'" :label="$t('entities.vacleavedetail.ck_grid.columns.pimpersonname')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.pimpersonname}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('qjzl')">
-                <el-table-column show-overflow-tooltip :prop="'qjzl'" :label="$t('entities.vacleavedetail.ck_grid.columns.qjzl')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'qjzl'" :label="$t('entities.vacleavedetail.ck_grid.columns.qjzl')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
             <codelist :value="row.qjzl" tag='SOCCL_XJLX' codelistType='DYNAMIC' renderMode="STR" valueSeparator=";" textSeparator="、" ></codelist>
@@ -38,49 +38,49 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('jhqjks')">
-                <el-table-column show-overflow-tooltip :prop="'jhqjks'" :label="$t('entities.vacleavedetail.ck_grid.columns.jhqjks')" :width="180" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'jhqjks'" :label="$t('entities.vacleavedetail.ck_grid.columns.jhqjks')" :width="180"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.jhqjks}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('jhqjjs')">
-                <el-table-column show-overflow-tooltip :prop="'jhqjjs'" :label="$t('entities.vacleavedetail.ck_grid.columns.jhqjjs')" :width="180" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'jhqjjs'" :label="$t('entities.vacleavedetail.ck_grid.columns.jhqjjs')" :width="180"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.jhqjjs}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('jhts')">
-                <el-table-column show-overflow-tooltip :prop="'jhts'" :label="$t('entities.vacleavedetail.ck_grid.columns.jhts')" :width="120" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'jhts'" :label="$t('entities.vacleavedetail.ck_grid.columns.jhts')" :width="120"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                             <app-format-data dataType="FLOAT" precision="0" :data="row.jhts"></app-format-data>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('bz')">
-                <el-table-column show-overflow-tooltip :prop="'bz'" :label="$t('entities.vacleavedetail.ck_grid.columns.bz')" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'bz'" :label="$t('entities.vacleavedetail.ck_grid.columns.bz')" :min-width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.bz}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('sjqjks')">
-                <el-table-column show-overflow-tooltip :prop="'sjqjks'" :label="$t('entities.vacleavedetail.ck_grid.columns.sjqjks')" :width="180" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'sjqjks'" :label="$t('entities.vacleavedetail.ck_grid.columns.sjqjks')" :width="180"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.sjqjks}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('sjqjjs')">
-                <el-table-column show-overflow-tooltip :prop="'sjqjjs'" :label="$t('entities.vacleavedetail.ck_grid.columns.sjqjjs')" :width="180" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'sjqjjs'" :label="$t('entities.vacleavedetail.ck_grid.columns.sjqjjs')" :width="180"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.sjqjjs}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('sjts')">
-                <el-table-column show-overflow-tooltip :prop="'sjts'" :label="$t('entities.vacleavedetail.ck_grid.columns.sjts')" :width="120" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'sjts'" :label="$t('entities.vacleavedetail.ck_grid.columns.sjts')" :width="120"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                             <app-format-data dataType="FLOAT" precision="0" :data="row.sjts"></app-format-data>
                     </template>
@@ -509,7 +509,7 @@ export default class CKBase extends Vue implements ControlInterface {
     * @type {number}
     * @memberof AppIndex
     */
-    protected checkboxColWidth: number = 34;
+    public checkboxColWidth: number = 34;
 
     /**
      * 是否允许拖动列宽
@@ -1258,7 +1258,7 @@ export default class CKBase extends Vue implements ControlInterface {
      * @memberof CK
      */
 	public uiAction(row: any, tag: any, $event: any) {
-        this.rowClick(row, true);
+        // this.rowClick(row, true);
     }
 
     /**

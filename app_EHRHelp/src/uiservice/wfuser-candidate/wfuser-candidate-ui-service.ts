@@ -1,7 +1,7 @@
 import WFUserCandidateUIServiceBase from './wfuser-candidate-ui-service-base';
 
 /**
- * 工作流用户候选者UI服务对象
+ * 工作流用户候选者***UI服务对象
  *
  * @export
  * @class WFUserCandidateUIService

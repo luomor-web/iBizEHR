@@ -3,7 +3,7 @@ import WXAccountServiceBase from './wxaccount-service-base';
 
 
 /**
- * 微信公众号服务对象
+ * 微信公众号***服务对象
  *
  * @export
  * @class WXAccountService

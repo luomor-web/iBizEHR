@@ -22,7 +22,7 @@
                 <el-table-column align="center" type='selection' :width="checkboxColWidth"></el-table-column>
             </template>
             <template v-if="getColumnState('lx')">
-                <el-table-column show-overflow-tooltip :prop="'lx'" :label="$t('entities.pimrewardpunishment.main_bonuspenalty_grid.columns.lx')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'lx'" :label="$t('entities.pimrewardpunishment.main_bonuspenalty_grid.columns.lx')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
             <codelist :value="row.lx" tag='PIMCL_JLCFLX' codelistType='STATIC' renderMode="STR" valueSeparator=";" textSeparator="、" ></codelist>
@@ -31,7 +31,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('jcjb')">
-                <el-table-column show-overflow-tooltip :prop="'jcjb'" :label="$t('entities.pimrewardpunishment.main_bonuspenalty_grid.columns.jcjb')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'jcjb'" :label="$t('entities.pimrewardpunishment.main_bonuspenalty_grid.columns.jcjb')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
             <codelist :value="row.jcjb" tag='PIMCL_JCJB' codelistType='DYNAMIC' renderMode="STR" valueSeparator=";" textSeparator="、" ></codelist>
@@ -40,21 +40,21 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('jlsj')">
-                <el-table-column show-overflow-tooltip :prop="'jlsj'" :label="$t('entities.pimrewardpunishment.main_bonuspenalty_grid.columns.jlsj')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'jlsj'" :label="$t('entities.pimrewardpunishment.main_bonuspenalty_grid.columns.jlsj')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <app-format-data format="YYYY-MM-DD" :data="row.jlsj"></app-format-data>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('jcsj')">
-                <el-table-column show-overflow-tooltip :prop="'jcsj'" :label="$t('entities.pimrewardpunishment.main_bonuspenalty_grid.columns.jcsj')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'jcsj'" :label="$t('entities.pimrewardpunishment.main_bonuspenalty_grid.columns.jcsj')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.jcsj}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('jlspzt')">
-                <el-table-column show-overflow-tooltip :prop="'jlspzt'" :label="$t('entities.pimrewardpunishment.main_bonuspenalty_grid.columns.jlspzt')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'jlspzt'" :label="$t('entities.pimrewardpunishment.main_bonuspenalty_grid.columns.jlspzt')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
             <codelist :value="row.jlspzt" tag='PIMCL_SPZT' codelistType='STATIC' renderMode="STR" valueSeparator=";" textSeparator="、" ></codelist>
@@ -520,7 +520,7 @@ export default class Main_BonusPenaltyBase extends Vue implements ControlInterfa
     * @type {number}
     * @memberof AppIndex
     */
-    protected checkboxColWidth: number = 34;
+    public checkboxColWidth: number = 34;
 
     /**
      * 是否允许拖动列宽
@@ -1257,7 +1257,7 @@ export default class Main_BonusPenaltyBase extends Vue implements ControlInterfa
      * @memberof Main_BonusPenalty
      */
 	public uiAction(row: any, tag: any, $event: any) {
-        this.rowClick(row, true);
+        // this.rowClick(row, true);
     }
 
     /**

@@ -51,6 +51,15 @@ export default class PIMEXITANDENTRYFormPickupViewBase extends PickupViewBase {
      */
     public appEntityService: PIMEXITANDENTRYService = new PIMEXITANDENTRYService;
 
+
+    /**
+     * 计数器服务对象集合
+     *
+     * @type {Array<*>}
+     * @memberof PIMEXITANDENTRYFormPickupViewBase
+     */    
+    public counterServiceArray:Array<any> = [];
+    
     /**
      * 数据变化
      *
@@ -86,7 +95,7 @@ export default class PIMEXITANDENTRYFormPickupViewBase extends PickupViewBase {
 	 * @type {*}
 	 * @memberof PIMEXITANDENTRYFormPickupViewBase
 	 */
-    protected customViewNavContexts:any ={
+    public customViewNavContexts:any ={
     };
 
 	/**
@@ -95,7 +104,7 @@ export default class PIMEXITANDENTRYFormPickupViewBase extends PickupViewBase {
 	 * @type {*}
 	 * @memberof PIMEXITANDENTRYFormPickupViewBase
 	 */
-    protected customViewParams:any ={
+    public customViewParams:any ={
     };
 
     /**
@@ -130,7 +139,7 @@ export default class PIMEXITANDENTRYFormPickupViewBase extends PickupViewBase {
     /**
      * 视图状态订阅对象
      *
-     * @private
+     * @public
      * @type {Subject<{action: string, data: any}>}
      * @memberof PIMEXITANDENTRYFormPickupViewBase
      */

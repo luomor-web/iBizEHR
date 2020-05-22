@@ -61,13 +61,40 @@ export default class PIMCL_JCJB {
     }
 
     /**
-     * 代码项应用实体服务对象
+     * 代码项***应用实体服务对象
      *
      * @type {CodeItemService}
      * @memberof PIMCL_JCJB
      */
     public codeitemService: CodeItemService = new CodeItemService();
 
+
+    /**
+     * 获取数据项
+     *
+     * @param {string} context 
+     * @param {*} data
+     * @param {boolean} [isloading]
+     * @returns {Promise<any>}
+     * @memberof PIMCL_JCJB
+     */
+    public getItems(context:any = {}, data: any={}, isloading?: boolean): Promise<any> {
+        return new Promise((resolve, reject) => {
+            data = this.handleQueryParam(data);
+            const promise: Promise<any> = this.codeitemService.FetchCurCL(context, data, isloading);
+            promise.then((response: any) => {
+                if (response && response.status === 200) {
+                    const data =  response.data;
+                    resolve(this.doItems(data));
+                } else {
+                    resolve([]);
+                }
+            }).catch((response: any) => {
+                console.error(response);
+                reject(response);
+            });
+        });
+    }
 
     /**
      * 处理数据
@@ -88,33 +115,6 @@ export default class PIMCL_JCJB {
             _items.push(itemdata);
         });
         return _items;
-    }
-
-    /**
-     * 获取数据项
-     *
-     * @param {*} context
-     * @param {*} data
-     * @param {boolean} [isloading]
-     * @returns {Promise<any>}
-     * @memberof PIMCL_JCJB
-     */
-    public getItems(context: any={}, data: any={}, isloading?: boolean): Promise<any> {
-        return new Promise((resolve, reject) => {
-            data = this.handleQueryParam(data);
-            const promise: Promise<any> = this.codeitemService.FetchCurCL(context, data, isloading);
-            promise.then((response: any) => {
-                if (response && response.status === 200) {
-                    const data =  response.data;
-                    resolve(this.doItems(data));
-                } else {
-                    resolve([]);
-                }
-            }).catch((response: any) => {
-                console.error(response);
-                reject(response);
-            });
-        });
     }
 
     /**

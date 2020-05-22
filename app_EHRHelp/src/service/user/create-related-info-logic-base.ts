@@ -99,10 +99,10 @@ export default class CreateRelatedInfoLogicBase {
     private async executePrepareparam1(context:any,params:any,isloading:boolean){
         // 准备参数节点
         Object.assign(params,{wfuserid:params.userid});
-        Object.assign(context,{wfuser:params.userid});
+        Object.assign(context,{wfuser:params.userid ? params.userid : null});
         Object.assign(params,{wfusername:params.username});
         Object.assign(params,{validflag:params.validflag});
-        Object.assign(context,{wfuser:params.validflag});
+        Object.assign(context,{wfuser:params.validflag ? params.validflag : null});
         if(this.compute2Cond(params)){
             return this.executeDeaction1(context,params,isloading);   
         }
@@ -117,7 +117,7 @@ export default class CreateRelatedInfoLogicBase {
     private async executePrepareparam2(context:any,params:any,isloading:boolean){
         // 准备参数节点
         Object.assign(params,{msgaccountid:params.userid});
-        Object.assign(context,{msgaccount:params.userid});
+        Object.assign(context,{msgaccount:params.userid ? params.userid : null});
         Object.assign(params,{msgaccountname:params.username});
         Object.assign(params,{islist:params.islist});
         if(this.compute0Cond(params)){

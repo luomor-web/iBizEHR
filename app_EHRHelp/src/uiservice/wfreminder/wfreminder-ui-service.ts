@@ -1,7 +1,7 @@
 import WFReminderUIServiceBase from './wfreminder-ui-service-base';
 
 /**
- * 工作流工作催办UI服务对象
+ * 工作流工作催办***UI服务对象
  *
  * @export
  * @class WFReminderUIService

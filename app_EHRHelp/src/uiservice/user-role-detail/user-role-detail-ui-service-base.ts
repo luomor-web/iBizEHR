@@ -5,7 +5,7 @@ import { Subject } from 'rxjs';
 import UserRoleDetailService from '@/service/user-role-detail/user-role-detail-service';
 
 /**
- * 用户角色成员UI服务对象基类
+ * 用户角色成员***UI服务对象基类
  *
  * @export
  * @class UserRoleDetailUIServiceBase

@@ -1,7 +1,7 @@
 import LoginAccountUIServiceBase from './login-account-ui-service-base';
 
 /**
- * 登录帐户UI服务对象
+ * 登录帐户***UI服务对象
  *
  * @export
  * @class LoginAccountUIService

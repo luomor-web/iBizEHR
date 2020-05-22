@@ -89,7 +89,7 @@ export default class SetPersonInfoLogicBase {
     private async executePrepareparam1(context:any,params:any,isloading:boolean){
         // 准备参数节点
         Object.assign(params,{pimpersonid:params.pimpersonid});
-        Object.assign(context,{pimperson:params.pimpersonid});
+        Object.assign(context,{pimperson:params.pimpersonid ? params.pimpersonid : null});
         if(this.compute0Cond(params)){
             return this.executeDeaction1(context,params,isloading);   
         }
@@ -137,11 +137,11 @@ export default class SetPersonInfoLogicBase {
     private async executePrepareparam2(context:any,params:any,isloading:boolean){
         // 准备参数节点
         Object.assign(params,{zzid:params.ormorgid});
-        Object.assign(context,{pcmxygzzjlmx:params.ormorgid});
+        Object.assign(context,{pcmxygzzjlmx:params.ormorgid ? params.ormorgid : null});
         Object.assign(params,{zz:params.ormorgname});
         Object.assign(params,{ygbh:params.ygbh});
         Object.assign(params,{bmid:params.ormorgsectorid});
-        Object.assign(context,{pcmxygzzjlmx:params.ormorgsectorid});
+        Object.assign(context,{pcmxygzzjlmx:params.ormorgsectorid ? params.ormorgsectorid : null});
         Object.assign(params,{rzqd:params.rzqd});
         Object.assign(params,{bm:params.ormorgsectorname});
         Object.assign(params,{qssj:params.dzjbjsj});

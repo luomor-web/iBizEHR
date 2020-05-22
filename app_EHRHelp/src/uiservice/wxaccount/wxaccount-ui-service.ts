@@ -1,7 +1,7 @@
 import WXAccountUIServiceBase from './wxaccount-ui-service-base';
 
 /**
- * 微信公众号UI服务对象
+ * 微信公众号***UI服务对象
  *
  * @export
  * @class WXAccountUIService

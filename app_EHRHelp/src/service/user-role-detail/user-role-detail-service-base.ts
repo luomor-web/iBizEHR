@@ -4,7 +4,7 @@ import EntityService from '../entity-service';
 
 
 /**
- * 用户角色成员服务对象基类
+ * 用户角色成员***服务对象基类
  *
  * @export
  * @class UserRoleDetailServiceBase
@@ -52,118 +52,6 @@ export default class UserRoleDetailServiceBase extends EntityService {
     }
 
     /**
-     * Update接口方法
-     *
-     * @param {*} [context={}]
-     * @param {*} [data={}]
-     * @param {boolean} [isloading]
-     * @returns {Promise<any>}
-     * @memberof UserRoleDetailServiceBase
-     */
-    public async Update(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
-        let masterData:any = {};
-        Object.assign(data,masterData);
-            let res:any = await  Http.getInstance().put(`/userroledetails/${context.userroledetail}`,data,isloading);
-            return res;
-    }
-
-    /**
-     * CheckKey接口方法
-     *
-     * @param {*} [context={}]
-     * @param {*} [data={}]
-     * @param {boolean} [isloading]
-     * @returns {Promise<any>}
-     * @memberof UserRoleDetailServiceBase
-     */
-    public async CheckKey(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
-            return Http.getInstance().post(`/userroledetails/${context.userroledetail}/checkkey`,data,isloading);
-    }
-
-    /**
-     * Create接口方法
-     *
-     * @param {*} [context={}]
-     * @param {*} [data={}]
-     * @param {boolean} [isloading]
-     * @returns {Promise<any>}
-     * @memberof UserRoleDetailServiceBase
-     */
-    public async Create(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
-        let masterData:any = {};
-        Object.assign(data,masterData);
-        if(!data.srffrontuf || data.srffrontuf !== "1"){
-            data[this.APPDEKEY] = null;
-        }
-        if(data.srffrontuf){
-            delete data.srffrontuf;
-        }
-        let tempContext:any = JSON.parse(JSON.stringify(context));
-        let res:any = await Http.getInstance().post(`/userroledetails`,data,isloading);
-        return res;
-    }
-
-    /**
-     * Save接口方法
-     *
-     * @param {*} [context={}]
-     * @param {*} [data={}]
-     * @param {boolean} [isloading]
-     * @returns {Promise<any>}
-     * @memberof UserRoleDetailServiceBase
-     */
-    public async Save(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
-        let masterData:any = {};
-        Object.assign(data,masterData);
-            let res:any = await  Http.getInstance().post(`/userroledetails/${context.userroledetail}/save`,data,isloading);
-            return res;
-    }
-
-    /**
-     * GetDraft接口方法
-     *
-     * @param {*} [context={}]
-     * @param {*} [data={}]
-     * @param {boolean} [isloading]
-     * @returns {Promise<any>}
-     * @memberof UserRoleDetailServiceBase
-     */
-    public async GetDraft(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
-        let res:any = await  Http.getInstance().get(`/userroledetails/getdraft`,isloading);
-        res.data.userroledetail = data.userroledetail;
-        return res;
-    }
-
-    /**
-     * Remove接口方法
-     *
-     * @param {*} [context={}]
-     * @param {*} [data={}]
-     * @param {boolean} [isloading]
-     * @returns {Promise<any>}
-     * @memberof UserRoleDetailServiceBase
-     */
-    public async Remove(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
-            return Http.getInstance().delete(`/userroledetails/${context.userroledetail}`,isloading);
-
-    }
-
-    /**
-     * Get接口方法
-     *
-     * @param {*} [context={}]
-     * @param {*} [data={}]
-     * @param {boolean} [isloading]
-     * @returns {Promise<any>}
-     * @memberof UserRoleDetailServiceBase
-     */
-    public async Get(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
-            let res:any = await Http.getInstance().get(`/userroledetails/${context.userroledetail}`,isloading);
-            return res;
-
-    }
-
-    /**
      * FetchCurrentCompany接口方法
      *
      * @param {*} [context={}]
@@ -174,7 +62,7 @@ export default class UserRoleDetailServiceBase extends EntityService {
      */
     public async FetchCurrentCompany(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
         let tempData:any = JSON.parse(JSON.stringify(data));
-        return Http.getInstance().get(`/userroledetails/fetchcurrentcompany`,tempData,isloading);
+        return Http.getInstance().get(`/userroledetails/select`,tempData,isloading);
     }
 
     /**
@@ -188,7 +76,7 @@ export default class UserRoleDetailServiceBase extends EntityService {
      */
     public async FetchOrderByUserCX(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
         let tempData:any = JSON.parse(JSON.stringify(data));
-        return Http.getInstance().get(`/userroledetails/fetchorderbyusercx`,tempData,isloading);
+        return Http.getInstance().get(`/userroledetails/select`,tempData,isloading);
     }
 
     /**
@@ -202,7 +90,7 @@ export default class UserRoleDetailServiceBase extends EntityService {
      */
     public async FetchDefault(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
         let tempData:any = JSON.parse(JSON.stringify(data));
-        return Http.getInstance().get(`/userroledetails/fetchdefault`,tempData,isloading);
+        return Http.getInstance().get(`/userroledetails/select`,tempData,isloading);
     }
 
     /**
@@ -216,6 +104,6 @@ export default class UserRoleDetailServiceBase extends EntityService {
      */
     public async FetchSysManager(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
         let tempData:any = JSON.parse(JSON.stringify(data));
-        return Http.getInstance().get(`/userroledetails/fetchsysmanager`,tempData,isloading);
+        return Http.getInstance().get(`/userroledetails/select`,tempData,isloading);
     }
 }

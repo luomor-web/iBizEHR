@@ -5,7 +5,7 @@ import { Subject } from 'rxjs';
 import WFStepInstService from '@/service/wfstep-inst/wfstep-inst-service';
 
 /**
- * 工作流步骤子实例UI服务对象基类
+ * 工作流步骤子实例***UI服务对象基类
  *
  * @export
  * @class WFStepInstUIServiceBase

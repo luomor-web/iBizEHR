@@ -1,7 +1,7 @@
 import UserDictItemUIServiceBase from './user-dict-item-ui-service-base';
 
 /**
- * 用户词条UI服务对象
+ * 用户词条***UI服务对象
  *
  * @export
  * @class UserDictItemUIService

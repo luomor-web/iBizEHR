@@ -5,7 +5,7 @@ import { Subject } from 'rxjs';
 import UniResService from '@/service/uni-res/uni-res-service';
 
 /**
- * 统一资源UI服务对象基类
+ * 统一资源***UI服务对象基类
  *
  * @export
  * @class UniResUIServiceBase

@@ -1,7 +1,7 @@
 import WFUserAssistUIServiceBase from './wfuser-assist-ui-service-base';
 
 /**
- * 工作流用户代办UI服务对象
+ * 工作流用户代办***UI服务对象
  *
  * @export
  * @class WFUserAssistUIService

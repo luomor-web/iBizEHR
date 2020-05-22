@@ -3,7 +3,7 @@ import WFWorkflowServiceBase from './wfworkflow-service-base';
 
 
 /**
- * 工作流配置服务对象
+ * 工作流配置***服务对象
  *
  * @export
  * @class WFWorkflowService

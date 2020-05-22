@@ -3,7 +3,7 @@ import UserServiceBase from './user-service-base';
 
 
 /**
- * 用户服务对象
+ * 用户***服务对象
  *
  * @export
  * @class UserService

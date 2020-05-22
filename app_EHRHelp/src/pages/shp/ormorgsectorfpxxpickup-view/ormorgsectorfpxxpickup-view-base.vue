@@ -66,6 +66,15 @@ export default class ORMORGSECTORFPXXPickupViewBase extends PickupViewBase {
      */
     public appEntityService: ORMORGSECTORService = new ORMORGSECTORService;
 
+
+    /**
+     * 计数器服务对象集合
+     *
+     * @type {Array<*>}
+     * @memberof ORMORGSECTORFPXXPickupViewBase
+     */    
+    public counterServiceArray:Array<any> = [];
+    
     /**
      * 数据变化
      *
@@ -101,7 +110,7 @@ export default class ORMORGSECTORFPXXPickupViewBase extends PickupViewBase {
 	 * @type {*}
 	 * @memberof ORMORGSECTORFPXXPickupViewBase
 	 */
-    protected customViewNavContexts:any ={
+    public customViewNavContexts:any ={
     };
 
 	/**
@@ -110,7 +119,7 @@ export default class ORMORGSECTORFPXXPickupViewBase extends PickupViewBase {
 	 * @type {*}
 	 * @memberof ORMORGSECTORFPXXPickupViewBase
 	 */
-    protected customViewParams:any ={
+    public customViewParams:any ={
     };
 
     /**
@@ -145,7 +154,7 @@ export default class ORMORGSECTORFPXXPickupViewBase extends PickupViewBase {
     /**
      * 视图状态订阅对象
      *
-     * @private
+     * @public
      * @type {Subject<{action: string, data: any}>}
      * @memberof ORMORGSECTORFPXXPickupViewBase
      */

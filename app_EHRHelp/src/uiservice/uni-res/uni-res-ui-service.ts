@@ -1,7 +1,7 @@
 import UniResUIServiceBase from './uni-res-ui-service-base';
 
 /**
- * 统一资源UI服务对象
+ * 统一资源***UI服务对象
  *
  * @export
  * @class UniResUIService

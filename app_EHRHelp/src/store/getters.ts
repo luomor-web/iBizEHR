@@ -76,3 +76,16 @@ export const getZIndex = (state: any) => () => {
 export const getViewSplit = (state: any) => (viewUID: string) => {
   return state.viewSplit[viewUID];
 }
+
+/**
+ * 获取拷贝数据
+ * 
+ * @param state 
+ */
+export const getCopyData = (state: any) => (srfkey: string) => {
+  let copyData = state.copyDataMap[srfkey];
+  if(copyData){
+      delete state.copyDataMap[srfkey];
+  }
+  return copyData;
+}

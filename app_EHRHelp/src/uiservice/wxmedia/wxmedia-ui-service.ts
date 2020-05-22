@@ -1,7 +1,7 @@
 import WXMediaUIServiceBase from './wxmedia-ui-service-base';
 
 /**
- * 微信多媒体内容UI服务对象
+ * 微信多媒体内容***UI服务对象
  *
  * @export
  * @class WXMediaUIService

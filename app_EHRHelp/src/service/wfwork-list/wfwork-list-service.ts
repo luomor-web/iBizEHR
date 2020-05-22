@@ -3,7 +3,7 @@ import WFWorkListServiceBase from './wfwork-list-service-base';
 
 
 /**
- * 工作流工作列表服务对象
+ * 工作流工作列表***服务对象
  *
  * @export
  * @class WFWorkListService
