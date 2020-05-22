@@ -99,20 +99,6 @@ public class PIMWorkflowRef extends EntityMP implements Serializable {
     @JsonProperty("ormorgid")
     private String ormorgid;
     /**
-     * 系统表单
-     */
-    @TableField(exist = false)
-    @JSONField(name = "wfworkflowname")
-    @JsonProperty("wfworkflowname")
-    private String wfworkflowname;
-    /**
-     * 系统表单
-     */
-    @TableField(value = "wfworkflowid")
-    @JSONField(name = "wfworkflowid")
-    @JsonProperty("wfworkflowid")
-    private String wfworkflowid;
-    /**
      * 流程配置
      */
     @TableField(value = "pimworkflowid")
@@ -128,14 +114,6 @@ public class PIMWorkflowRef extends EntityMP implements Serializable {
     @TableField(exist = false)
     private cn.ibizlab.ehr.core.pim.domain.PIMWorkflow pimworkflow;
 
-    /**
-     * 系统流程
-     */
-    @JsonIgnore
-    @JSONField(serialize = false)
-    @TableField(exist = false)
-    private cn.ibizlab.ehr.core.wf.domain.WFWorkflow wfworkflow;
-
 
 
     /**
@@ -144,13 +122,6 @@ public class PIMWorkflowRef extends EntityMP implements Serializable {
     public void setPimworkflowrefname(String pimworkflowrefname){
         this.pimworkflowrefname = pimworkflowrefname ;
         this.modify("pimworkflowrefname",pimworkflowrefname);
-    }
-    /**
-     * 设置 [系统表单]
-     */
-    public void setWfworkflowid(String wfworkflowid){
-        this.wfworkflowid = wfworkflowid ;
-        this.modify("wfworkflowid",wfworkflowid);
     }
     /**
      * 设置 [流程配置]
@@ -172,8 +143,8 @@ public class PIMWorkflowRef extends EntityMP implements Serializable {
 
     @Override
     public Serializable getDefaultKey(boolean gen) {
-        if((!ObjectUtils.isEmpty(this.getWfworkflowid()))&&(!ObjectUtils.isEmpty(this.getPimworkflowid())))
-            return DigestUtils.md5DigestAsHex(String.format("%s||%s" ,this.getWfworkflowid(),this.getPimworkflowid()).getBytes());
+        if((!ObjectUtils.isEmpty(this.getPimworkflowid())))
+            return DigestUtils.md5DigestAsHex(String.format("%s" ,this.getPimworkflowid()).getBytes());
         return null;
     }
 }

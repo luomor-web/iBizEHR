@@ -1,7 +1,7 @@
 import PCMDETAILUIServiceBase from './pcmdetail-ui-service-base';
 
 /**
- * 人员明细表UI服务对象
+ * 人员花名册UI服务对象
  *
  * @export
  * @class PCMDETAILUIService

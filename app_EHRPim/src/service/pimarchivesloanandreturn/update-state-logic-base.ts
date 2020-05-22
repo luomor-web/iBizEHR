@@ -47,7 +47,7 @@ export default class UpdateStateLogicBase {
      * @param params 传入参数
      */
     public compute0Cond(params:any):boolean{
-        if(Verify.testCond(params.jyqssj, 'ISNOTNULL', '') && Verify.testCond(params.ghrq, 'ISNOTNULL', '')){
+        if(Verify.testCond(params.jyqssj, 'ISNOTNULL', '') && Verify.testCond(params.ghrq, 'ISNULL', '')){
            return true;
         }else{
             return false;
@@ -60,7 +60,7 @@ export default class UpdateStateLogicBase {
      * @param params 传入参数
      */
     public compute1Cond(params:any):boolean{
-        if(Verify.testCond(params.jyqssj, 'ISNOTNULL', '') && Verify.testCond(params.ghrq, 'ISNULL', '')){
+        if(Verify.testCond(params.jyqssj, 'ISNOTNULL', '') && Verify.testCond(params.ghrq, 'ISNOTNULL', '')){
            return true;
         }else{
             return false;
@@ -98,10 +98,10 @@ export default class UpdateStateLogicBase {
     private async executeBegin(context:any,params:any,isloading:boolean){
         //开始节点
         if(this.compute0Cond(params)){
-            return this.executePrepareparam4(context,params,isloading);   
+            return this.executePrepareparam3(context,params,isloading);   
         }
         if(this.compute1Cond(params)){
-            return this.executePrepareparam3(context,params,isloading);   
+            return this.executePrepareparam4(context,params,isloading);   
         }
     }
 

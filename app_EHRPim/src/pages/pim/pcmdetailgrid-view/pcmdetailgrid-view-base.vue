@@ -9,28 +9,12 @@
     </template>
     <template slot="headerRight">
       <div class="view-header-right">
-        <app-header-menus :toolbarModel="toolBarModels" @menu-click="toolbar_click($event)" mode="view" :openMode="openMode" :isEnableQuickSearch="true" searchPlaceholder="人员明细表名称" v-model="query" @search="onSearch($event)"/>
+        <app-header-menus :toolbarModel="toolBarModels" @menu-click="toolbar_click($event)" mode="view" :openMode="openMode" :isEnableQuickSearch="true" searchPlaceholder="员工姓名，员工编号" v-model="query" @search="onSearch($event)"/>
       </div>
     </template>
     <template slot="content">
       <div class="view-content-wrapper">
-        <view_searchform 
-    :viewState="viewState"  
-    :viewparams="viewparams" 
-    :context="context" 
-    :showBusyIndicator="true"
-    v-show="isExpandSearchForm"
-    loaddraftAction="FilterGetDraft"
-    loadAction="FilterGet"
-
-    name="searchform"  
-    ref='searchform' 
-    @save="searchform_save($event)"  
-    @search="searchform_search($event)"  
-    @load="searchform_load($event)"  
-    @closeview="closeView($event)">
-</view_searchform>
-<view_grid 
+        <view_grid 
     :viewState="viewState"  
     :viewparams="viewparams" 
     :context="context" 
@@ -173,7 +157,6 @@ export default class PCMDETAILGridViewBase extends GridViewBase {
     public containerModel: any = {
         view_toolbar: { name: 'toolbar', type: 'TOOLBAR' },
         view_grid: { name: 'grid', type: 'GRID' },
-        view_searchform: { name: 'searchform', type: 'SEARCHFORM' },
     };
 
     /**
@@ -191,11 +174,7 @@ export default class PCMDETAILGridViewBase extends GridViewBase {
      * @memberof PCMDETAILGridView
      */
     public toolBarModels: any = {
-        deuiaction3: { name: 'deuiaction3', caption: '开启行编辑','isShowCaption':true,'isShowIcon':true, tooltip: '开启行编辑', iconcls: 'fa fa-edit', icon: '', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: 'SRFUR__JGLYZW', uiaction: { tag: 'OpenRowEdit', target: '' }, class: '' },
-
-        deuiaction6: { name: 'deuiaction6', caption: '导出','isShowCaption':true,'isShowIcon':true, tooltip: '导出', iconcls: 'fa fa-file-excel-o', icon: '', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: '', uiaction: { tag: 'ExportExcel', target: '' }, MaxRowCount: 5000, class: '' },
-
-        deuiaction2: { name: 'deuiaction2', caption: '过滤','isShowCaption':true,'isShowIcon':true, tooltip: '过滤', iconcls: 'fa fa-filter', icon: '', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: 'SRFUR__JGLYKQLX', uiaction: { tag: 'ToggleFilter', target: '' }, class: '' },
+        deuiaction1: { name: 'deuiaction1', caption: '导出','isShowCaption':true,'isShowIcon':true, tooltip: '导出', iconcls: 'fa fa-file-excel-o', icon: '', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: '', uiaction: { tag: 'ExportExcel', target: '' }, MaxRowCount: 5000, class: '' },
 
     };
 
@@ -229,7 +208,6 @@ export default class PCMDETAILGridViewBase extends GridViewBase {
                 this.newdata(args, params, $event, xData);
             },
             grid: this.$refs.grid,
-            searchform: this.$refs.searchform,
             keyPSDEField: 'pcmdetail',
             majorPSDEField: 'pcmdetailname',
             isLoadDefault: true,
@@ -245,14 +223,8 @@ export default class PCMDETAILGridViewBase extends GridViewBase {
      * @memberof PCMDETAILGridViewBase
      */
     public toolbar_click($event: any, $event2?: any) {
-        if (Object.is($event.tag, 'deuiaction3')) {
-            this.toolbar_deuiaction3_click(null, '', $event2);
-        }
-        if (Object.is($event.tag, 'deuiaction6')) {
-            this.toolbar_deuiaction6_click(null, '', $event2);
-        }
-        if (Object.is($event.tag, 'deuiaction2')) {
-            this.toolbar_deuiaction2_click(null, '', $event2);
+        if (Object.is($event.tag, 'deuiaction1')) {
+            this.toolbar_deuiaction1_click(null, '', $event2);
         }
     }
 
@@ -317,42 +289,6 @@ export default class PCMDETAILGridViewBase extends GridViewBase {
     }
 
 
-    /**
-     * searchform 部件 save 事件
-     *
-     * @param {*} [args={}]
-     * @param {*} $event
-     * @memberof PCMDETAILGridViewBase
-     */
-    public searchform_save($event: any, $event2?: any) {
-        this.engine.onCtrlEvent('searchform', 'save', $event);
-    }
-
-
-    /**
-     * searchform 部件 search 事件
-     *
-     * @param {*} [args={}]
-     * @param {*} $event
-     * @memberof PCMDETAILGridViewBase
-     */
-    public searchform_search($event: any, $event2?: any) {
-        this.engine.onCtrlEvent('searchform', 'search', $event);
-    }
-
-
-    /**
-     * searchform 部件 load 事件
-     *
-     * @param {*} [args={}]
-     * @param {*} $event
-     * @memberof PCMDETAILGridViewBase
-     */
-    public searchform_load($event: any, $event2?: any) {
-        this.engine.onCtrlEvent('searchform', 'load', $event);
-    }
-
-
 
     /**
      * 逻辑事件
@@ -362,36 +298,7 @@ export default class PCMDETAILGridViewBase extends GridViewBase {
      * @param {*} [$event]
      * @memberof 
      */
-    public toolbar_deuiaction3_click(params: any = {}, tag?: any, $event?: any) {
-        // 参数
-        // 取数
-        let datas: any[] = [];
-        let xData: any = null;
-        // _this 指向容器对象
-        const _this: any = this;
-        let paramJO:any = {};
-        
-        let contextJO:any = {};
-        xData = this.$refs.grid;
-        if (xData.getDatas && xData.getDatas instanceof Function) {
-            datas = [...xData.getDatas()];
-        }
-        if(params){
-          datas = [params];
-        }
-        // 界面行为
-        this.OpenRowEdit(datas, contextJO,paramJO,  $event, xData,this,"PCMDETAIL");
-    }
-
-    /**
-     * 逻辑事件
-     *
-     * @param {*} [params={}]
-     * @param {*} [tag]
-     * @param {*} [$event]
-     * @memberof 
-     */
-    public toolbar_deuiaction6_click(params: any = {}, tag?: any, $event?: any) {
+    public toolbar_deuiaction1_click(params: any = {}, tag?: any, $event?: any) {
         // 参数
         // 取数
         let datas: any[] = [];
@@ -410,35 +317,6 @@ export default class PCMDETAILGridViewBase extends GridViewBase {
         }
         // 界面行为
         this.ExportExcel(datas, contextJO,paramJO,  $event, xData,this,"PCMDETAIL");
-    }
-
-    /**
-     * 逻辑事件
-     *
-     * @param {*} [params={}]
-     * @param {*} [tag]
-     * @param {*} [$event]
-     * @memberof 
-     */
-    public toolbar_deuiaction2_click(params: any = {}, tag?: any, $event?: any) {
-        // 参数
-        // 取数
-        let datas: any[] = [];
-        let xData: any = null;
-        // _this 指向容器对象
-        const _this: any = this;
-        let paramJO:any = {};
-        
-        let contextJO:any = {};
-        xData = this.$refs.grid;
-        if (xData.getDatas && xData.getDatas instanceof Function) {
-            datas = [...xData.getDatas()];
-        }
-        if(params){
-          datas = [params];
-        }
-        // 界面行为
-        this.ToggleFilter(datas, contextJO,paramJO,  $event, xData,this,"PCMDETAIL");
     }
 
     /**
@@ -507,20 +385,6 @@ export default class PCMDETAILGridViewBase extends GridViewBase {
 
 
     /**
-     * 开启行编辑
-     *
-     * @param {any[]} args 当前数据
-     * @param {any} contextJO 行为附加上下文
-     * @param {*} [params] 附加参数
-     * @param {*} [$event] 事件源
-     * @param {*} [xData]  执行行为所需当前部件
-     * @param {*} [actionContext]  执行行为上下文
-     * @memberof PCMDETAILGridViewBase
-     */
-    protected OpenRowEdit(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
-        
-    }
-    /**
      * 导出
      *
      * @param {any[]} args 当前数据
@@ -537,23 +401,6 @@ export default class PCMDETAILGridViewBase extends GridViewBase {
             return ;
         }
         xData.exportExcel($event.exportparms);
-    }
-    /**
-     * 过滤
-     *
-     * @param {any[]} args 当前数据
-     * @param {any} contextJO 行为附加上下文
-     * @param {*} [params] 附加参数
-     * @param {*} [$event] 事件源
-     * @param {*} [xData]  执行行为所需当前部件
-     * @param {*} [actionContext]  执行行为上下文
-     * @memberof PCMDETAILGridViewBase
-     */
-    public ToggleFilter(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
-        const _this: any = this;
-        if (_this.hasOwnProperty('isExpandSearchForm')) {
-            _this.isExpandSearchForm = !_this.isExpandSearchForm;
-        }
     }
 
 

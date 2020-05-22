@@ -64,6 +64,4 @@ public interface PIMWorkflowRefMapper extends BaseMapper<PIMWorkflowRef>{
 
     List<PIMWorkflowRef> selectByPimworkflowid(@Param("pimworkflowid") Serializable pimworkflowid) ;
 
-    List<PIMWorkflowRef> selectByWfworkflowid(@Param("wfworkflowid") Serializable wfworkflowid) ;
-
 }

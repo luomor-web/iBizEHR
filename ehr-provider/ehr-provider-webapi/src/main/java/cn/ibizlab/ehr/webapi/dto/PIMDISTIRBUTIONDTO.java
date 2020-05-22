@@ -32,14 +32,6 @@ public class PIMDISTIRBUTIONDTO extends DTOBase implements Serializable {
     private String ssfw;
 
     /**
-     * 属性 [POSTEXPIRATION_COLOR]
-     *
-     */
-    @JSONField(name = "postexpiration_color")
-    @JsonProperty("postexpiration_color")
-    private String postexpirationColor;
-
-    /**
      * 属性 [RZJSSJ]
      *
      */
@@ -218,14 +210,6 @@ public class PIMDISTIRBUTIONDTO extends DTOBase implements Serializable {
     @JSONField(name = "ydmxid")
     @JsonProperty("ydmxid")
     private String ydmxid;
-
-    /**
-     * 属性 [POSTEXPIRATION]
-     *
-     */
-    @JSONField(name = "postexpiration")
-    @JsonProperty("postexpiration")
-    private Double postexpiration;
 
     /**
      * 属性 [GZDD]

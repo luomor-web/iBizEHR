@@ -57,7 +57,7 @@ export default class GenerateFJLogicBase {
      * @param params 传入参数
      */
     public compute1Cond(params:any):boolean{
-        if(Verify.testCond(params.fj, 'ISNULL', '')){
+        if(Verify.testCond(params.fj, 'ISNOTNULL', '')){
            return true;
         }else{
             return false;
@@ -70,7 +70,7 @@ export default class GenerateFJLogicBase {
      * @param params 传入参数
      */
     public compute2Cond(params:any):boolean{
-        if(Verify.testCond(params.fj, 'ISNOTNULL', '')){
+        if(Verify.testCond(params.fj, 'ISNULL', '')){
            return true;
         }else{
             return false;
@@ -126,10 +126,10 @@ export default class GenerateFJLogicBase {
         Object.assign(params,{pimenclosurename:params.pimrewardpunishmentname});
         Object.assign(params,{fjfl:params.fj});
         if(this.compute1Cond(params)){
-            return this.executePrepareparam2(context,params,isloading);   
+            return this.executeDeaction1(context,params,isloading);   
         }
         if(this.compute2Cond(params)){
-            return this.executeDeaction1(context,params,isloading);   
+            return this.executePrepareparam2(context,params,isloading);   
         }
     }
 

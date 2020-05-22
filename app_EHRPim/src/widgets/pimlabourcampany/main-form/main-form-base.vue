@@ -483,10 +483,10 @@ export default class MainBase extends Vue implements ControlInterface {
             { required: false, type: 'string', message: '劳务派遣公司管理标识 值不能为空', trigger: 'blur' },
         ],
         srfmajortext: [
-            { type: 'string', message: '劳务派遣公司管理名称 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '劳务派遣公司管理名称 值必须为字符串类型', trigger: 'blur' },
-            { required: false, type: 'string', message: '劳务派遣公司管理名称 值不能为空', trigger: 'change' },
-            { required: false, type: 'string', message: '劳务派遣公司管理名称 值不能为空', trigger: 'blur' },
+            { type: 'string', message: '公司名称 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '公司名称 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '公司名称 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '公司名称 值不能为空', trigger: 'blur' },
         ],
         srftempmode: [
             { type: 'string', message: ' 值必须为字符串类型', trigger: 'change' },
@@ -595,7 +595,7 @@ export default class MainBase extends Vue implements ControlInterface {
 , 
         srfkey: new FormItemModel({ caption: '劳务派遣公司管理标识', detailType: 'FORMITEM', name: 'srfkey', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
-        srfmajortext: new FormItemModel({ caption: '劳务派遣公司管理名称', detailType: 'FORMITEM', name: 'srfmajortext', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+        srfmajortext: new FormItemModel({ caption: '公司名称', detailType: 'FORMITEM', name: 'srfmajortext', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
         srftempmode: new FormItemModel({ caption: '', detailType: 'FORMITEM', name: 'srftempmode', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 

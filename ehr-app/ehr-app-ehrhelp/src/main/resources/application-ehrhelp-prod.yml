@@ -639,10 +639,6 @@ zuul:
       path: /ormxmrlcbs/**
       serviceId: ehr-webapi
       stripPrefix: false
-    wfuiwizard:
-      path: /wfuiwizards/**
-      serviceId: ehr-webapi
-      stripPrefix: false
     personstatemgr:
       path: /personstatemgrs/**
       serviceId: ehr-webapi

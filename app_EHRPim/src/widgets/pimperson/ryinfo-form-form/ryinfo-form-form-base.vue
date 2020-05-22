@@ -2075,11 +2075,6 @@ export default class RYInfoFormBase extends Vue implements ControlInterface {
         }
 
 
-        if(Object.is(name, 'ygbh')){
-            const details: string[] = ['yglx'];
-            this.updateFormItems('FillPersonType', this.data, details, true);
-        }
-
         if(Object.is(name, 'zjhm')){
             const details: string[] = ['csrq', 'nj', 'xb'];
             this.updateFormItems('PersonUpdateInfo', this.data, details, true);

@@ -14,11 +14,11 @@
      <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="pimvocationalgeneratefjdeaction1" id="3cb1a11ab89e4a677b35a23f747d8e9b" implementation="http://www.jboss.org/drools/rule" name="保存附件信息"/>
      <endEvent id="3cb1a11ab89e4a677b35a23f747d8e9b_End" name="End"/>
      <sequenceFlow id="3cb1a11ab89e4a677b35a23f747d8e9b_End_Line" sourceRef="3cb1a11ab89e4a677b35a23f747d8e9b" targetRef="3cb1a11ab89e4a677b35a23f747d8e9b_End"/>
-     <sequenceFlow id="77607074e7f6744055eb856a7fc524fd" sourceRef="59bbd0d4e55e776d094a982dd558095e" targetRef="d3cfa01aaad1ab965c7deaa0baf85a1f">
+     <sequenceFlow id="53f6c61e3705b34609dce08758ca8e31" sourceRef="59bbd0d4e55e776d094a982dd558095e" targetRef="d3cfa01aaad1ab965c7deaa0baf85a1f">
      </sequenceFlow>
-     <sequenceFlow id="1ab7402ef31b90533e04c9d33bb412f2" sourceRef="6171d64ab5b73400b4582d3810551945" targetRef="3cb1a11ab89e4a677b35a23f747d8e9b">
+     <sequenceFlow id="ed156004cc0b6c2400049b14878bfade" sourceRef="6171d64ab5b73400b4582d3810551945" targetRef="3cb1a11ab89e4a677b35a23f747d8e9b">
      </sequenceFlow>
-     <sequenceFlow id="41ebf4563f514909a25d0a321feb77b6" sourceRef="gateway-d3cfa01aaad1ab965c7deaa0baf85a1f" targetRef="6171d64ab5b73400b4582d3810551945">
+     <sequenceFlow id="2506f903ff1bd2b21727dcafa8475330" sourceRef="gateway-d3cfa01aaad1ab965c7deaa0baf85a1f" targetRef="6171d64ab5b73400b4582d3810551945">
             <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
             $pimvocationalgeneratefjdefault:PIMVOCATIONAL();
             $pimvocationalgeneratefjenclosure:PIMENCLOSURE();
@@ -27,7 +27,7 @@
                 ]]>
             </conditionExpression>
      </sequenceFlow>
-     <sequenceFlow id="6ffce7c2860a778b7ce9f3f24adb79f1" sourceRef="gateway-d3cfa01aaad1ab965c7deaa0baf85a1f" targetRef="3cb1a11ab89e4a677b35a23f747d8e9b">
+     <sequenceFlow id="de4053c851c66b998b77baf7d44ea1d0" sourceRef="gateway-d3cfa01aaad1ab965c7deaa0baf85a1f" targetRef="3cb1a11ab89e4a677b35a23f747d8e9b">
             <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
             $pimvocationalgeneratefjdefault:PIMVOCATIONAL();
             $pimvocationalgeneratefjenclosure:PIMENCLOSURE();
@@ -37,7 +37,7 @@
             </conditionExpression>
      </sequenceFlow>
     <exclusiveGateway id="gateway-d3cfa01aaad1ab965c7deaa0baf85a1f" name="Gateway" gatewayDirection="Diverging" default="gateway-d3cfa01aaad1ab965c7deaa0baf85a1f_End_Line"></exclusiveGateway>
-    <sequenceFlow id="41ebf4563f514909a25d0a321feb77b6-gatewayline" sourceRef="d3cfa01aaad1ab965c7deaa0baf85a1f" targetRef="gateway-d3cfa01aaad1ab965c7deaa0baf85a1f"></sequenceFlow>
+    <sequenceFlow id="2506f903ff1bd2b21727dcafa8475330-gatewayline" sourceRef="d3cfa01aaad1ab965c7deaa0baf85a1f" targetRef="gateway-d3cfa01aaad1ab965c7deaa0baf85a1f"></sequenceFlow>
     <sequenceFlow id="gateway-d3cfa01aaad1ab965c7deaa0baf85a1f_End_Line" sourceRef="gateway-d3cfa01aaad1ab965c7deaa0baf85a1f" targetRef="gateway-d3cfa01aaad1ab965c7deaa0baf85a1f_End"/>
     <endEvent id="gateway-d3cfa01aaad1ab965c7deaa0baf85a1f_End" name="End"/>
     </process>

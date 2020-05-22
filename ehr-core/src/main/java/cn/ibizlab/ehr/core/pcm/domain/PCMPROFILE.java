@@ -544,13 +544,6 @@ public class PCMPROFILE extends EntityMP implements Serializable {
     @JsonProperty("sftgcp")
     private String sftgcp;
     /**
-     * 证书名称
-     */
-    @TableField(exist = false)
-    @JSONField(name = "zsmc")
-    @JsonProperty("zsmc")
-    private String zsmc;
-    /**
      * 健康状况
      */
     @TableField(value = "jkzk")

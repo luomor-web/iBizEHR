@@ -47,9 +47,6 @@ public class PIMWorkflowRefServiceImpl extends ServiceImpl<PIMWorkflowRefMapper,
     @Autowired
     @Lazy
     private cn.ibizlab.ehr.core.pim.service.IPIMWorkflowService pimworkflowService;
-    @Autowired
-    @Lazy
-    private cn.ibizlab.ehr.core.wf.service.IWFWorkflowService wfworkflowService;
 
     private int batchSize = 500;
 
@@ -158,16 +155,6 @@ public class PIMWorkflowRefServiceImpl extends ServiceImpl<PIMWorkflowRefMapper,
         this.remove(new QueryWrapper<PIMWorkflowRef>().eq("pimworkflowid",pimworkflowid));
     }
 
-	@Override
-    public List<PIMWorkflowRef> selectByWfworkflowid(String wfworkflowid) {
-        return baseMapper.selectByWfworkflowid(wfworkflowid);
-    }
-
-    @Override
-    public void removeByWfworkflowid(String wfworkflowid) {
-        this.remove(new QueryWrapper<PIMWorkflowRef>().eq("wfworkflowid",wfworkflowid));
-    }
-
 
     /**
      * 查询集合 DEFAULT
@@ -195,16 +182,6 @@ public class PIMWorkflowRefServiceImpl extends ServiceImpl<PIMWorkflowRefMapper,
             }
             et.setPimworkflowname(pimworkflow.getPimworkflowname());
             et.setOrmorgid(pimworkflow.getOrmorgid());
-        }
-        //实体关系[DER1N_PIMWORKFLOWREF_WFWORKFLOW_WFWORKFLOWID]
-        if(!ObjectUtils.isEmpty(et.getWfworkflowid())){
-            cn.ibizlab.ehr.core.wf.domain.WFWorkflow wfworkflow=et.getWfworkflow();
-            if(ObjectUtils.isEmpty(wfworkflow)){
-                cn.ibizlab.ehr.core.wf.domain.WFWorkflow majorEntity=wfworkflowService.get(et.getWfworkflowid());
-                et.setWfworkflow(majorEntity);
-                wfworkflow=majorEntity;
-            }
-            et.setWfworkflowname(wfworkflow.getWfworkflowname());
         }
     }
 

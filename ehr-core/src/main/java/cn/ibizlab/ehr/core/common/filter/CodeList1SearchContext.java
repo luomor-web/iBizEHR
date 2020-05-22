@@ -41,27 +41,6 @@ public class CodeList1SearchContext extends QueryWrapperContext<CodeList1> {
             this.getSelectCond().like("codelistname", n_codelistname_like);
         }
     }
-	private String n_dename_eq;//[数据实体]
-	public void setN_dename_eq(String n_dename_eq) {
-        this.n_dename_eq = n_dename_eq;
-        if(!ObjectUtils.isEmpty(this.n_dename_eq)){
-            this.getSelectCond().eq("dename", n_dename_eq);
-        }
-    }
-	private String n_dename_like;//[数据实体]
-	public void setN_dename_like(String n_dename_like) {
-        this.n_dename_like = n_dename_like;
-        if(!ObjectUtils.isEmpty(this.n_dename_like)){
-            this.getSelectCond().like("dename", n_dename_like);
-        }
-    }
-	private String n_deid_eq;//[数据实体]
-	public void setN_deid_eq(String n_deid_eq) {
-        this.n_deid_eq = n_deid_eq;
-        if(!ObjectUtils.isEmpty(this.n_deid_eq)){
-            this.getSelectCond().eq("deid", n_deid_eq);
-        }
-    }
 
     /**
 	 * 启用快速搜索

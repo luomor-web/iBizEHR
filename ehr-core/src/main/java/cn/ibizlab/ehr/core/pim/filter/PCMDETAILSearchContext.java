@@ -549,7 +549,8 @@ public class PCMDETAILSearchContext extends QueryWrapperContext<PCMDETAIL> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("pcmdetailname",query);
+			this.getSelectCond().or().like("pimpersonname",query);
+			this.getSelectCond().or().like("ygbh",query);
 		 }
 	}
 }

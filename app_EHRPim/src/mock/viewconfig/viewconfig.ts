@@ -873,7 +873,7 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
         },
         "pcmdetailmpickupview": {
             "title": "人员明细表数据多项选择视图",
-            "caption": "人员明细表",
+            "caption": "人员花名册",
             "viewtype": "DEMPICKUPVIEW",
             "viewmodule": "PIM",
             "viewname": "PCMDETAILMPickupView",
@@ -1105,7 +1105,7 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
         },
         "pcmdetaileditview": {
             "title": "人员明细表编辑视图",
-            "caption": "人员明细表",
+            "caption": "人员花名册",
             "viewtype": "DEEDITVIEW",
             "viewmodule": "PIM",
             "viewname": "PCMDETAILEditView",
@@ -3417,7 +3417,7 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
         },
         "pcmdetailpickupview": {
             "title": "人员明细表数据选择视图",
-            "caption": "人员明细表",
+            "caption": "人员花名册",
             "viewtype": "DEPICKUPVIEW",
             "viewmodule": "PIM",
             "viewname": "PCMDETAILPickupView",
@@ -3521,7 +3521,7 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
         },
         "pcmdetailpickupgridview": {
             "title": "人员明细表选择表格视图",
-            "caption": "人员明细表",
+            "caption": "人员花名册",
             "viewtype": "DEPICKUPGRIDVIEW",
             "viewmodule": "PIM",
             "viewname": "PCMDETAILPickupGridView",
@@ -3905,7 +3905,7 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
         },
         "pcmdetaileditview2": {
             "title": "人员明细表编辑视图",
-            "caption": "人员明细表",
+            "caption": "人员花名册",
             "viewtype": "DEEDITVIEW2",
             "viewmodule": "PIM",
             "viewname": "PCMDETAILEditView2",
@@ -4105,7 +4105,7 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
         },
         "pcmdetailredirectview": {
             "title": "人员明细表数据重定向视图",
-            "caption": "人员明细表",
+            "caption": "人员花名册",
             "viewtype": "DEREDIRECTVIEW",
             "viewmodule": "PIM",
             "viewname": "PCMDETAILRedirectView",

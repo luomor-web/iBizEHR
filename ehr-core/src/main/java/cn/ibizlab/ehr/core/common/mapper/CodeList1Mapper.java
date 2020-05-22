@@ -63,6 +63,4 @@ public interface CodeList1Mapper extends BaseMapper<CodeList1>{
     @Delete("${sql}")
     boolean deleteBySQL(@Param("sql") String sql, @Param("et")Map param);
 
-    List<CodeList1> selectByDeid(@Param("deid") Serializable deid) ;
-
 }

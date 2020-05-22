@@ -11,7 +11,7 @@
      <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="pimtitleensurehighesttechdeaction1" id="c23bb3853e96a35567b3a33b119b956c" implementation="http://www.jboss.org/drools/rule" name="确认唯一最高职称"/>
      <endEvent id="c23bb3853e96a35567b3a33b119b956c_End" name="End"/>
      <sequenceFlow id="c23bb3853e96a35567b3a33b119b956c_End_Line" sourceRef="c23bb3853e96a35567b3a33b119b956c" targetRef="c23bb3853e96a35567b3a33b119b956c_End"/>
-     <sequenceFlow id="023acca8a7a2e2385a4190737220ac44" sourceRef="838d5d73ddda8d1dc23f89e0f878cd95" targetRef="c23bb3853e96a35567b3a33b119b956c">
+     <sequenceFlow id="31cc556b0443dd30080c0a8ee0960131" sourceRef="838d5d73ddda8d1dc23f89e0f878cd95" targetRef="c23bb3853e96a35567b3a33b119b956c">
      </sequenceFlow>
     </process>
 </definitions>

@@ -26,7 +26,5 @@ export default {
     reserver2: '保留字段2',
     clparam: '代码表参数',
     srfuserpub: '应用发布',
-    dename: '数据实体',
-    deid: '数据实体',
   },
 };

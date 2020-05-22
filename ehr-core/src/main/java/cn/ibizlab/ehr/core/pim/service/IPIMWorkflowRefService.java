@@ -39,8 +39,6 @@ public interface IPIMWorkflowRefService extends IService<PIMWorkflowRef>{
     Page<PIMWorkflowRef> searchDefault(PIMWorkflowRefSearchContext context) ;
     List<PIMWorkflowRef> selectByPimworkflowid(String pimworkflowid) ;
     void removeByPimworkflowid(String pimworkflowid) ;
-    List<PIMWorkflowRef> selectByWfworkflowid(String wfworkflowid) ;
-    void removeByWfworkflowid(String wfworkflowid) ;
     /**
      *自定义查询SQL
      * @param sql  select * from table where id =#{et.param}

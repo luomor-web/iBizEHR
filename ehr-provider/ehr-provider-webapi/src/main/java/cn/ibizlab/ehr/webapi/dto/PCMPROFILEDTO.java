@@ -590,14 +590,6 @@ public class PCMPROFILEDTO extends DTOBase implements Serializable {
     private String sftgcp;
 
     /**
-     * 属性 [ZSMC]
-     *
-     */
-    @JSONField(name = "zsmc")
-    @JsonProperty("zsmc")
-    private String zsmc;
-
-    /**
      * 属性 [JKZK]
      *
      */

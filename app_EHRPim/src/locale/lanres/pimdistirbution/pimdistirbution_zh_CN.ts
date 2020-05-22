@@ -1,7 +1,6 @@
 export default {
   fields: {
     ssfw: '调动状态',
-    postexpiration_color: '岗位到期颜色',
     rzjssj: '任职结束时间',
     enable: '逻辑有效标志',
     fpzt: '分配状态',
@@ -24,7 +23,6 @@ export default {
     experience: '是否主要经历',
     jdzt: '借调状态',
     ydmxid: '异动明细id',
-    postexpiration: '岗位到期（月）',
     gzdd: '工作地点',
     ygw: '原岗位',
     orgsectorid: '部门ID',

@@ -3,7 +3,7 @@ import PCMDETAILServiceBase from './pcmdetail-service-base';
 
 
 /**
- * 人员明细表服务对象
+ * 人员花名册服务对象
  *
  * @export
  * @class PCMDETAILService

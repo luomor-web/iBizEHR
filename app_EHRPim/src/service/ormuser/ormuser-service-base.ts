@@ -1,7 +1,5 @@
 import { Http,Util } from '@/utils';
 import EntityService from '../entity-service';
-import CreateRelatedInfoLogic from '@/service/ormuser/create-related-info-logic';
-import UpdateRelatedInfoLogic from '@/service/ormuser/update-related-info-logic';
 
 
 

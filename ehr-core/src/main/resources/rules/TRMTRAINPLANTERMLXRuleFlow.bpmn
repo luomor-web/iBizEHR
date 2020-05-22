@@ -12,9 +12,9 @@
      <endEvent id="ba07c08f220ae4bdfb89890712b4036f_End" name="End"/>
      <sequenceFlow id="ba07c08f220ae4bdfb89890712b4036f_End_Line" sourceRef="ba07c08f220ae4bdfb89890712b4036f" targetRef="ba07c08f220ae4bdfb89890712b4036f_End"/>
      <startEvent id="e71e445b9876b3613271f677e863d01d" isInterrupting="true"/>
-     <sequenceFlow id="cdb08a5fdb7b98ff36ff2b5556bcfceb" sourceRef="1fae09495c8fa9a04c6368d67bf23d88" targetRef="ba07c08f220ae4bdfb89890712b4036f">
+     <sequenceFlow id="978b7952ee91bffff473af3a4c637318" sourceRef="1fae09495c8fa9a04c6368d67bf23d88" targetRef="ba07c08f220ae4bdfb89890712b4036f">
      </sequenceFlow>
-     <sequenceFlow id="2ed87d3afe63cee4c524765ec5cc1b1f" sourceRef="e71e445b9876b3613271f677e863d01d" targetRef="1fae09495c8fa9a04c6368d67bf23d88">
+     <sequenceFlow id="2ab4f26b58c9e6a997cee7ce1b4c5057" sourceRef="e71e445b9876b3613271f677e863d01d" targetRef="1fae09495c8fa9a04c6368d67bf23d88">
      </sequenceFlow>
     </process>
 </definitions>

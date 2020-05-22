@@ -27,7 +27,7 @@ import cn.ibizlab.ehr.core.pim.domain.PIMLABOURCAMPANY;
 @Data
 public class PIMLABOURCAMPANYSearchContext extends QueryWrapperContext<PIMLABOURCAMPANY> {
 
-	private String n_pimlabourcampanyname_like;//[劳务派遣公司管理名称]
+	private String n_pimlabourcampanyname_like;//[公司名称]
 	public void setN_pimlabourcampanyname_like(String n_pimlabourcampanyname_like) {
         this.n_pimlabourcampanyname_like = n_pimlabourcampanyname_like;
         if(!ObjectUtils.isEmpty(this.n_pimlabourcampanyname_like)){
