@@ -87,11 +87,6 @@ export default class SignRmindGridModel {
           dataType: 'PICKUPDATA',
         },
         {
-          name: 'action',
-          prop: 'action',
-          dataType: 'TEXT',
-        },
-        {
           name: 'htbh',
           prop: 'htbh',
           dataType: 'TEXT',

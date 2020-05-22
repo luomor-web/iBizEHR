@@ -682,6 +682,10 @@ export default class DefaultBase extends Vue implements ControlInterface {
             this.onFormItemValueChange({ name: 'n_ormorgsectorname_eq', value: null });
             this.onFormItemValueChange({ name: 'n_ormorgsectorid_eq', value: null });
         }
+        if (Object.is(name, 'ormorgid')) {
+            this.onFormItemValueChange({ name: 'n_ormpostname_eq', value: null });
+            this.onFormItemValueChange({ name: 'n_ormpostid_eq', value: null });
+        }
     }
 
     /**

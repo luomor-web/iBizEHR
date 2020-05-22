@@ -131,7 +131,7 @@
   :data="data"
   :context="context"
   :viewparams="viewparams"
-  :itemParam='{ }' 
+  :itemParam='{ context:{"ORMORG":"%ormorgid%"},param:{"n_ormorgid_eq":"%ormorgid%"},}' 
   :disabled="detailsModel.ormpostname.disabled"
   name='ormpostname'
   deMajorField='ormpostname'
@@ -1051,6 +1051,9 @@ export default class MainBase extends Vue implements ControlInterface {
     public resetFormData({ name, newVal, oldVal }: { name: string, newVal: any, oldVal: any }): void {
         if (Object.is(name, 'ormorgid')) {
             this.onFormItemValueChange({ name: 'ormorgsectorid', value: null });
+        }
+        if (Object.is(name, 'ormorgid')) {
+            this.onFormItemValueChange({ name: 'ormpostid', value: null });
         }
         if (Object.is(name, 'ormorgid')) {
             this.onFormItemValueChange({ name: 'ormorgsectorname', value: null });

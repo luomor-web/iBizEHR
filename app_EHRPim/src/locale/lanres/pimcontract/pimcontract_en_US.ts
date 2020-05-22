@@ -351,7 +351,6 @@ export default {
 	},
 	stopremindgrid_grid: {
 		columns: {
-			cz: "操作",
 			ygbh: "员工编号",
 			pimpersonname: "员工姓名",
 			zzdzs: "员工所属单位",
@@ -363,9 +362,10 @@ export default {
 			contracttype: "合同类型",
 			qsrq: "起始日期",
 			jsrq: "结束日期",
-			htsyts: "合同剩余天数",
+			uagridcolumn1: "操作列",
 		},
 		uiactions: {
+			stopcontract: "终止合同",
 		},
 	},
 	main_grid: {
@@ -405,7 +405,6 @@ export default {
 	},
 	signrmindgrid_grid: {
 		columns: {
-			action: "操作",
 			ygbh: "员工编号",
 			pimpersonname: "员工姓名",
 			zzdzs: "员工所属单位",
@@ -417,7 +416,7 @@ export default {
 			contracttype: "合同类型",
 			qsrq: "起始日期",
 			jsrq: "结束日期",
-			htsyts: "合同剩余天数",
+			uagridcolumn1: "操作列",
 		},
 		uiactions: {
 		},

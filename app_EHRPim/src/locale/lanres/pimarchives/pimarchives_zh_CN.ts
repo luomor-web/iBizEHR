@@ -319,7 +319,6 @@ export default {
 	},
 	main_ygbzd_grid: {
 		columns: {
-			drda: '调入档案',
 			dabh: '档案编号',
 			ormorgname3: '管理单位',
 			dabgd: '档案保管地',
@@ -331,8 +330,10 @@ export default {
 			ygzt: '员工状态',
 			duration: '档案未转出月数',
 			zt: '档案借阅状态',
+			uagridcolumn1: '操作列',
 		},
 		uiactions: {
+			filein: '调入档案',
 		},
 	},
 	main_grid: {
@@ -354,7 +355,6 @@ export default {
 	},
 	main_fygzd_grid: {
 		columns: {
-			dcda: '调出档案',
 			dabh: '档案编号',
 			glzzdzs: '管理单位',
 			dabgd: '档案保管地',
@@ -366,8 +366,10 @@ export default {
 			ygzt: '员工状态',
 			duration: '档案未转出月数',
 			zt: '档案借阅状态',
+			uagridcolumn1: '操作列',
 		},
 		uiactions: {
+			fileout: '调出档案',
 		},
 	},
 	default_searchform: {

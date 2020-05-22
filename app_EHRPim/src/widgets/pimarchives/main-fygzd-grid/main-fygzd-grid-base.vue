@@ -21,13 +21,6 @@
             <template v-if="!isSingleSelect">
                 <el-table-column align="center" type='selection' :width="checkboxColWidth"></el-table-column>
             </template>
-            <template v-if="getColumnState('dcda')">
-                <el-table-column show-overflow-tooltip :prop="'dcda'" :label="$t('entities.pimarchives.main_fygzd_grid.columns.dcda')" :width="100"  :align="'center'" :sortable="'custom'">
-                    <template v-slot="{row,column}">
-                        <span>{{row.dcda}}</span>
-                    </template>
-                </el-table-column>
-            </template>
             <template v-if="getColumnState('dabh')">
                 <el-table-column show-overflow-tooltip :prop="'dabh'" :label="$t('entities.pimarchives.main_fygzd_grid.columns.dabh')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
@@ -125,6 +118,18 @@
                     </template>
                 </el-table-column>
             </template>
+            <template v-if="getColumnState('uagridcolumn1')">
+                <el-table-column :column-key="'uagridcolumn1'" :label="$t('entities.pimarchives.main_fygzd_grid.columns.uagridcolumn1')" :width="100"  :align="'right'">
+                    <template slot-scope="scope">
+                        <span>
+                            
+                            <a @click="uiAction(scope.row, 'FILEOUT', $event)">
+                              {{$t('entities.pimarchives.main_fygzd_grid.uiactions.fileout')}}
+                            </a>
+                        </span>
+                    </template>
+                </el-table-column>
+            </template>
             <template v-if="adaptiveState">
                 <el-table-column></el-table-column>
             </template>
@@ -175,6 +180,7 @@ import { UIActionTool,Util } from '@/utils';
 import PIMARCHIVESService from '@/service/pimarchives/pimarchives-service';
 import Main_FYGZDService from './main-fygzd-grid-service';
 
+import PIMARCHIVESUIService from '@/uiservice/pimarchives/pimarchives-ui-service';
 import CodeListService from "@service/app/codelist-service";
 
 
@@ -262,6 +268,35 @@ export default class Main_FYGZDBase extends Vue implements ControlInterface {
      */
     public appEntityService: PIMARCHIVESService = new PIMARCHIVESService({ $store: this.$store });
     
+
+    /**
+     * 逻辑事件
+     *
+     * @param {*} [params={}]
+     * @param {*} [tag]
+     * @param {*} [$event]
+     * @memberof 
+     */
+    public grid_uagridcolumn1_ud164ec4_click(params: any = {}, tag?: any, $event?: any) {
+        // 取数
+        let datas: any[] = [];
+        let xData: any = null;
+        // _this 指向容器对象
+        const _this: any = this;
+        let paramJO:any = {};
+        
+        let contextJO:any = {};
+        xData = this;
+        if (_this.getDatas && _this.getDatas instanceof Function) {
+            datas = [..._this.getDatas()];
+        }
+        if(params){
+          datas = [params];
+        }
+        // 界面行为
+        const curUIService:PIMARCHIVESUIService  = new PIMARCHIVESUIService();
+        curUIService.PIMARCHIVES_FILEOUT(datas,contextJO, paramJO,  $event, xData,this,"PIMARCHIVES");
+    }
 
 
     /**
@@ -601,13 +636,6 @@ export default class Main_FYGZDBase extends Vue implements ControlInterface {
      */
     public allColumns: any[] = [
         {
-            name: 'dcda',
-            label: '调出档案',
-            langtag: 'entities.pimarchives.main_fygzd_grid.columns.dcda',
-            show: true,
-            util: 'PX'
-        },
-        {
             name: 'dabh',
             label: '档案编号',
             langtag: 'entities.pimarchives.main_fygzd_grid.columns.dabh',
@@ -683,6 +711,13 @@ export default class Main_FYGZDBase extends Vue implements ControlInterface {
             langtag: 'entities.pimarchives.main_fygzd_grid.columns.zt',
             show: true,
             util: 'px'
+        },
+        {
+            name: 'uagridcolumn1',
+            label: '操作列',
+            langtag: 'entities.pimarchives.main_fygzd_grid.columns.uagridcolumn1',
+            show: true,
+            util: 'PX'
         },
     ]
 
@@ -1370,6 +1405,9 @@ export default class Main_FYGZDBase extends Vue implements ControlInterface {
      */
 	public uiAction(row: any, tag: any, $event: any) {
         // this.rowClick(row, true);
+        if(Object.is('FILEOUT', tag)) {
+            this.grid_uagridcolumn1_ud164ec4_click(row, tag, $event);
+        }
     }
 
     /**

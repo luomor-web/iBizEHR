@@ -21,13 +21,6 @@
             <template v-if="!isSingleSelect">
                 <el-table-column align="center" type='selection' :width="checkboxColWidth"></el-table-column>
             </template>
-            <template v-if="getColumnState('action')">
-                <el-table-column show-overflow-tooltip :prop="'action'" :label="$t('entities.pimcontract.signrmindgrid_grid.columns.action')" :width="80"  :align="'right'" :sortable="'custom'">
-                    <template v-slot="{row,column}">
-                        <span>{{row.action}}</span>
-                    </template>
-                </el-table-column>
-            </template>
             <template v-if="getColumnState('ygbh')">
                 <el-table-column show-overflow-tooltip :prop="'ygbh'" :label="$t('entities.pimcontract.signrmindgrid_grid.columns.ygbh')" :width="115"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
@@ -128,10 +121,11 @@
                     </template>
                 </el-table-column>
             </template>
-            <template v-if="getColumnState('htsyts')">
-                <el-table-column show-overflow-tooltip :prop="'htsyts'" :label="$t('entities.pimcontract.signrmindgrid_grid.columns.htsyts')" :width="135"  :align="'left'" :sortable="'custom'">
-                    <template v-slot="{row,column}">
-                        <span>{{row.htsyts}}</span>
+            <template v-if="getColumnState('uagridcolumn1')">
+                <el-table-column :column-key="'uagridcolumn1'" :label="$t('entities.pimcontract.signrmindgrid_grid.columns.uagridcolumn1')" :width="100"  :align="'right'">
+                    <template slot-scope="scope">
+                        <span>
+                        </span>
                     </template>
                 </el-table-column>
             </template>
@@ -604,13 +598,6 @@ export default class SignRmindGridBase extends Vue implements ControlInterface {
      */
     public allColumns: any[] = [
         {
-            name: 'action',
-            label: '操作',
-            langtag: 'entities.pimcontract.signrmindgrid_grid.columns.action',
-            show: true,
-            util: 'PX'
-        },
-        {
             name: 'ygbh',
             label: '员工编号',
             langtag: 'entities.pimcontract.signrmindgrid_grid.columns.ygbh',
@@ -688,9 +675,9 @@ export default class SignRmindGridBase extends Vue implements ControlInterface {
             util: 'PX'
         },
         {
-            name: 'htsyts',
-            label: '合同剩余天数',
-            langtag: 'entities.pimcontract.signrmindgrid_grid.columns.htsyts',
+            name: 'uagridcolumn1',
+            label: '操作列',
+            langtag: 'entities.pimcontract.signrmindgrid_grid.columns.uagridcolumn1',
             show: true,
             util: 'PX'
         },

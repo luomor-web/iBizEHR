@@ -21,13 +21,6 @@
             <template v-if="!isSingleSelect">
                 <el-table-column align="center" type='selection' :width="checkboxColWidth"></el-table-column>
             </template>
-            <template v-if="getColumnState('cz')">
-                <el-table-column show-overflow-tooltip :prop="'cz'" :label="$t('entities.pimcontract.stopremindgrid_grid.columns.cz')" :width="80"  :align="'right'" :sortable="'custom'">
-                    <template v-slot="{row,column}">
-                        <span>{{row.cz}}</span>
-                    </template>
-                </el-table-column>
-            </template>
             <template v-if="getColumnState('ygbh')">
                 <el-table-column show-overflow-tooltip :prop="'ygbh'" :label="$t('entities.pimcontract.stopremindgrid_grid.columns.ygbh')" :width="115"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
@@ -126,10 +119,15 @@
                     </template>
                 </el-table-column>
             </template>
-            <template v-if="getColumnState('htsyts')">
-                <el-table-column show-overflow-tooltip :prop="'htsyts'" :label="$t('entities.pimcontract.stopremindgrid_grid.columns.htsyts')" :width="130"  :align="'left'" :sortable="'custom'">
-                    <template v-slot="{row,column}">
-                        <span>{{row.htsyts}}</span>
+            <template v-if="getColumnState('uagridcolumn1')">
+                <el-table-column :column-key="'uagridcolumn1'" :label="$t('entities.pimcontract.stopremindgrid_grid.columns.uagridcolumn1')" :width="100"  :align="'right'">
+                    <template slot-scope="scope">
+                        <span>
+                            
+                            <a @click="uiAction(scope.row, 'StopContract', $event)">
+                              {{$t('entities.pimcontract.stopremindgrid_grid.uiactions.stopcontract')}}
+                            </a>
+                        </span>
                     </template>
                 </el-table-column>
             </template>
@@ -183,6 +181,7 @@ import { UIActionTool,Util } from '@/utils';
 import PIMCONTRACTService from '@/service/pimcontract/pimcontract-service';
 import StopRemindGridService from './stop-remind-grid-grid-service';
 
+import PIMCONTRACTUIService from '@/uiservice/pimcontract/pimcontract-ui-service';
 import CodeListService from "@service/app/codelist-service";
 
 
@@ -270,6 +269,35 @@ export default class StopRemindGridBase extends Vue implements ControlInterface 
      */
     public appEntityService: PIMCONTRACTService = new PIMCONTRACTService({ $store: this.$store });
     
+
+    /**
+     * 逻辑事件
+     *
+     * @param {*} [params={}]
+     * @param {*} [tag]
+     * @param {*} [$event]
+     * @memberof 
+     */
+    public grid_uagridcolumn1_u5ce1db9_click(params: any = {}, tag?: any, $event?: any) {
+        // 取数
+        let datas: any[] = [];
+        let xData: any = null;
+        // _this 指向容器对象
+        const _this: any = this;
+        let paramJO:any = {};
+        
+        let contextJO:any = {};
+        xData = this;
+        if (_this.getDatas && _this.getDatas instanceof Function) {
+            datas = [..._this.getDatas()];
+        }
+        if(params){
+          datas = [params];
+        }
+        // 界面行为
+        const curUIService:PIMCONTRACTUIService  = new PIMCONTRACTUIService();
+        curUIService.PIMCONTRACT_StopContract(datas,contextJO, paramJO,  $event, xData,this,"PIMCONTRACT");
+    }
 
 
     /**
@@ -602,13 +630,6 @@ export default class StopRemindGridBase extends Vue implements ControlInterface 
      */
     public allColumns: any[] = [
         {
-            name: 'cz',
-            label: '操作',
-            langtag: 'entities.pimcontract.stopremindgrid_grid.columns.cz',
-            show: true,
-            util: 'PX'
-        },
-        {
             name: 'ygbh',
             label: '员工编号',
             langtag: 'entities.pimcontract.stopremindgrid_grid.columns.ygbh',
@@ -686,9 +707,9 @@ export default class StopRemindGridBase extends Vue implements ControlInterface 
             util: 'PX'
         },
         {
-            name: 'htsyts',
-            label: '合同剩余天数',
-            langtag: 'entities.pimcontract.stopremindgrid_grid.columns.htsyts',
+            name: 'uagridcolumn1',
+            label: '操作列',
+            langtag: 'entities.pimcontract.stopremindgrid_grid.columns.uagridcolumn1',
             show: true,
             util: 'PX'
         },
@@ -1402,6 +1423,9 @@ export default class StopRemindGridBase extends Vue implements ControlInterface 
      */
 	public uiAction(row: any, tag: any, $event: any) {
         // this.rowClick(row, true);
+        if(Object.is('StopContract', tag)) {
+            this.grid_uagridcolumn1_u5ce1db9_click(row, tag, $event);
+        }
     }
 
     /**
