@@ -163,20 +163,24 @@
                         <template v-if="actualIsOpenEdit">
                             <i-form style="height:100%;" :model="row">
                                 <app-form-item :name="column.property" :itemRules="rules[column.property]">
-                                    <input-box 
+                                    <app-file-upload 
+              :formState="viewState" 
+              :ignorefieldvaluechange="false" 
+              @formitemvaluechange="($event)=>{onGridItemValueChange(row,$event)}" 
+              :data="JSON.stringify(row)" 
+              :name='column.property' 
+              :value="row[column.property]" 
               :disabled="row.srfuf === 1 ? (3 & 2) !== 2 : (3 & 1) !== 1" 
-              v-model="row[column.property]" 
-              style=""
-              type="text"
-              
-              
-              @change="($event)=>{gridEditItemChange(row, column.property, $event)}">
-            </input-box>
+              :rowPreview="true"
+              uploadparams='' 
+              exportparams='' 
+              :customparams="{}" style="overflow: auto;">
+            </app-file-upload>
                                 </app-form-item>
                             </i-form>
                         </template>
                         <template v-if="!actualIsOpenEdit">
-                                <app-span name='fj' editorType="TEXTBOX" :value="row.fj"></app-span>
+                                <app-span name='fj' editorType="FILEUPLOADER" :value="row.fj"></app-span>
                         </template>
                     </template>
                 </el-table-column>
