@@ -1,7 +1,7 @@
 import CodeList1UIServiceBase from './code-list1-ui-service-base';
 
 /**
- * 代码表UI服务对象
+ * 代码表***UI服务对象
  *
  * @export
  * @class CodeList1UIService

@@ -1,5 +1,5 @@
 <template>
-  <app-layout viewName="attendancemreportmxwscgridview" viewTitle="考勤信息" :isShowCaptionBar="false" :className="{ 'view-container': true, 'default-mode-view': true, 'degridview': true, 'attendancemreportmxwsc-grid-view': true }" layoutMode="VIEW" :isShowUserInfo="isDefaultView()" :openMode="openMode" @close-view="closeView($event)">
+  <app-layout viewName="attendancemreportmxwscgridview" viewTitle="考勤信息" :className="{ 'view-container': true, 'default-mode-view': true, 'degridview': true, 'attendancemreportmxwsc-grid-view': true }" layoutMode="VIEW" :isShowUserInfo="isDefaultView()" :openMode="openMode" @close-view="closeView($event)">
     <template slot="headerLeft">
       <div class="view-header-left">
 

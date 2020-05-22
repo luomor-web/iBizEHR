@@ -55,7 +55,7 @@ export default class PIMRecordService extends ControlService {
 
 
     /**
-     * 组织管理服务对象
+     * 组织管理***服务对象
      *
      * @type {ORMORGService}
      * @memberof PIMRecordService

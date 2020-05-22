@@ -585,7 +585,7 @@
      }
     ,    {
     "dename":"WFUserGroupDetail",
-    "delogicname":"工作流用户组成员",
+    "delogicname":"工作流用户组成员***",
     "sysmoudle":{"id":"WF","name":"工作流"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
     "deaction":[{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" }],
@@ -641,7 +641,7 @@
      }
     ,    {
     "dename":"WFUserGroup",
-    "delogicname":"工作流用户组",
+    "delogicname":"工作流用户组***",
     "sysmoudle":{"id":"WF","name":"工作流"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
     "deaction":[{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" }],
@@ -649,7 +649,7 @@
      }
     ,    {
     "dename":"ORMORG",
-    "delogicname":"组织管理",
+    "delogicname":"组织管理***",
     "sysmoudle":{"id":"ORM","name":"组织管理"},
     "dedataset":[{"id":"ALLSIGNORG" , "name":"全部法人主体"},{"id":"AllLevelTwoOrg2" , "name":"全部二级单位（无权限）"},{"id":"Orglist_Profile" , "name":"当前可选择组织列表（应聘者信息使用）"},{"id":"REP_ORG" , "name":"组织分布"},{"id":"AuthOrg" , "name":"显示组织(权限控制)"},{"id":"GSGWZY" , "name":"用于控制当前用户选择视图下拉显示（公司级岗位专用）"},{"id":"SubSubOrg" , "name":"显示当前组织下组织"},{"id":"Default" , "name":"DEFAULT"},{"id":"CurChild" , "name":"子组织查询"},{"id":"SJYXZZ" , "name":"三级组织及以下组织"},{"id":"REP_ORGPNUM" , "name":"组织人员总数"},{"id":"KZSJZZXZ" , "name":"用于控制当前用户选择视图下拉显示（上级组织）"},{"id":"DanQian" , "name":"查询当前登录人组织下的组织（包含当前组织）"},{"id":"AllLevelTwoOrg" , "name":"全部二级单位"},{"id":"SubOrg" , "name":"显示当前组织包含所有组织"},{"id":"HTGLDW" , "name":"合同管理单位"},{"id":"KZXLXZ" , "name":"用于控制当前用户选择视图下拉显示（当前组织）"},{"id":"AuthSJYXZZ" , "name":"三级组织及以下组织（权限控制）"},{"id":"UseByFP" , "name":"分配信息专用（组织过滤）"},{"id":"CurPorg" , "name":"根组织查询"}],
     "deaction":[{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"SynOrg" , "name":"设置默认排序信息" , "type":"USERCUSTOM" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" }],
@@ -689,7 +689,7 @@
      }
     ,    {
     "dename":"MsgAccountDetail",
-    "delogicname":"组消息账户明细",
+    "delogicname":"组消息账户明细***",
     "sysmoudle":{"id":"COMMON","name":"常规"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
     "deaction":[{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" }],
@@ -729,7 +729,7 @@
      }
     ,    {
     "dename":"UserDictItem",
-    "delogicname":"用户词条",
+    "delogicname":"用户词条***",
     "sysmoudle":{"id":"COMMON","name":"常规"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
     "deaction":[{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" }],
@@ -769,7 +769,7 @@
      }
     ,    {
     "dename":"UserDict",
-    "delogicname":"用户词典",
+    "delogicname":"用户词典***",
     "sysmoudle":{"id":"COMMON","name":"常规"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
     "deaction":[{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"ReloadCurUser" , "name":"重新加载当前用户词典" , "type":"USERCUSTOM" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" }],
@@ -889,7 +889,7 @@
      }
     ,    {
     "dename":"UserRoleData",
-    "delogicname":"数据对象能力",
+    "delogicname":"数据对象能力***",
     "sysmoudle":{"id":"COMMON","name":"常规"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
     "deaction":[{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" }],
@@ -897,7 +897,7 @@
      }
     ,    {
     "dename":"WFAssistWork",
-    "delogicname":"工作流代办工作",
+    "delogicname":"工作流代办工作***",
     "sysmoudle":{"id":"WF","name":"工作流"},
     "dedataset":[{"id":"CurUserAssistWork" , "name":"当前用户代办工作"},{"id":"Default" , "name":"DEFAULT"}],
     "deaction":[{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" }],
@@ -921,7 +921,7 @@
      }
     ,    {
     "dename":"OrgSecUserType",
-    "delogicname":"部门人员关系类型",
+    "delogicname":"部门人员关系类型***",
     "sysmoudle":{"id":"COMMON","name":"常规"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
     "deaction":[{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" }],
@@ -953,7 +953,7 @@
      }
     ,    {
     "dename":"UserRole",
-    "delogicname":"用户角色",
+    "delogicname":"用户角色***",
     "sysmoudle":{"id":"COMMON","name":"常规"},
     "dedataset":[{"id":"LevelC" , "name":"用户角色权限配置"},{"id":"Default" , "name":"DEFAULT"}],
     "deaction":[{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" }],
@@ -993,7 +993,7 @@
      }
     ,    {
     "dename":"WFCustomProcess",
-    "delogicname":"工作流预定义处理",
+    "delogicname":"工作流预定义处理***",
     "sysmoudle":{"id":"WF","name":"工作流"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
     "deaction":[{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" }],
@@ -1145,7 +1145,7 @@
      }
     ,    {
     "dename":"UserRoleDEFieldes",
-    "delogicname":"用户角色相关实体属性访问控制",
+    "delogicname":"用户角色相关实体属性访问控制***",
     "sysmoudle":{"id":"COMMON","name":"常规"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
     "deaction":[{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" }],
@@ -1209,7 +1209,7 @@
      }
     ,    {
     "dename":"WFStepInst",
-    "delogicname":"工作流步骤子实例",
+    "delogicname":"工作流步骤子实例***",
     "sysmoudle":{"id":"WF","name":"工作流"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
     "deaction":[{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" }],
@@ -1217,7 +1217,7 @@
      }
     ,    {
     "dename":"WXAccessToken",
-    "delogicname":"微信访问票据",
+    "delogicname":"微信访问票据***",
     "sysmoudle":{"id":"WX","name":"微信"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
     "deaction":[{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" }],
@@ -1249,7 +1249,7 @@
      }
     ,    {
     "dename":"LoginLog",
-    "delogicname":"帐户使用记录",
+    "delogicname":"帐户使用记录***",
     "sysmoudle":{"id":"COMMON","name":"常规"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
     "deaction":[{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" }],
@@ -1281,7 +1281,7 @@
      }
     ,    {
     "dename":"UserGroup",
-    "delogicname":"用户组",
+    "delogicname":"用户组***",
     "sysmoudle":{"id":"COMMON","name":"常规"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
     "deaction":[{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" }],
@@ -1297,7 +1297,7 @@
      }
     ,    {
     "dename":"UserRoleDetail",
-    "delogicname":"用户角色成员",
+    "delogicname":"用户角色成员***",
     "sysmoudle":{"id":"COMMON","name":"常规"},
     "dedataset":[{"id":"CurrentCompany" , "name":"当前公司角色成员"},{"id":"OrderByUserCX" , "name":"根据用户查询角色"},{"id":"Default" , "name":"DEFAULT"},{"id":"SysManager" , "name":"系统管理员"}],
     "deaction":[{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" }],
@@ -1305,7 +1305,7 @@
      }
     ,    {
     "dename":"OrgUser",
-    "delogicname":"组织人员",
+    "delogicname":"组织人员***",
     "sysmoudle":{"id":"COMMON","name":"常规"},
     "dedataset":[{"id":"CurOrg" , "name":"当前组织"},{"id":"Default" , "name":"DEFAULT"},{"id":"CurOrgSector" , "name":"当前部门"},{"id":"UserOrgSector" , "name":"用户所在部门用户"},{"id":"UserOrg" , "name":"用户所在组织范围"},{"id":"DQZZJXJZZ" , "name":"当前组织及下级组织"}],
     "deaction":[{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"UpdateCurUser" , "name":"更新当前用户" , "type":"DELOGIC" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"GetCurUser" , "name":"获取当前用户" , "type":"DELOGIC" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" }],
@@ -1345,7 +1345,7 @@
      }
     ,    {
     "dename":"WXOrgSector",
-    "delogicname":"微信部门",
+    "delogicname":"微信部门***",
     "sysmoudle":{"id":"WX","name":"微信"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
     "deaction":[{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" }],
@@ -1361,7 +1361,7 @@
      }
     ,    {
     "dename":"UserRoleDEField",
-    "delogicname":"用户角色实体属性访问",
+    "delogicname":"用户角色实体属性访问***",
     "sysmoudle":{"id":"COMMON","name":"常规"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
     "deaction":[{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" }],
@@ -1369,7 +1369,7 @@
      }
     ,    {
     "dename":"UserDGTheme",
-    "delogicname":"用户表格自定义",
+    "delogicname":"用户表格自定义***",
     "sysmoudle":{"id":"COMMON","name":"常规"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
     "deaction":[{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" }],
@@ -1377,7 +1377,7 @@
      }
     ,    {
     "dename":"MsgSendQueue",
-    "delogicname":"消息发送队列",
+    "delogicname":"消息发送队列***",
     "sysmoudle":{"id":"COMMON","name":"常规"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
     "deaction":[{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" }],
@@ -1393,7 +1393,7 @@
      }
     ,    {
     "dename":"WFUser",
-    "delogicname":"工作流用户",
+    "delogicname":"工作流用户***",
     "sysmoudle":{"id":"WF","name":"工作流"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
     "deaction":[{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" }],
@@ -1401,7 +1401,7 @@
      }
     ,    {
     "dename":"UserRoleDataDetail",
-    "delogicname":"数据对象能力明细",
+    "delogicname":"数据对象能力明细***",
     "sysmoudle":{"id":"COMMON","name":"常规"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
     "deaction":[{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" }],
@@ -1481,7 +1481,7 @@
      }
     ,    {
     "dename":"WFUserAssist",
-    "delogicname":"工作流用户代办",
+    "delogicname":"工作流用户代办***",
     "sysmoudle":{"id":"WF","name":"工作流"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
     "deaction":[{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" }],
@@ -1497,7 +1497,7 @@
      }
     ,    {
     "dename":"UserGroupDetail",
-    "delogicname":"用户组成员",
+    "delogicname":"用户组成员***",
     "sysmoudle":{"id":"COMMON","name":"常规"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
     "deaction":[{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" }],
@@ -1505,7 +1505,7 @@
      }
     ,    {
     "dename":"UserDictCat",
-    "delogicname":"用户词条类别",
+    "delogicname":"用户词条类别***",
     "sysmoudle":{"id":"COMMON","name":"常规"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
     "deaction":[{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" }],
@@ -1649,7 +1649,7 @@
      }
     ,    {
     "dename":"ORMORGSECTOR",
-    "delogicname":"部门管理",
+    "delogicname":"部门管理***",
     "sysmoudle":{"id":"ORM","name":"组织管理"},
     "dedataset":[{"id":"CURORMORG" , "name":"通过当前组织过滤部门(ORMORGID)"},{"id":"XMBBZGL" , "name":"项目部编制管理"},{"id":"JSYXMB" , "name":"局所有项目部选择（第一版规则）"},{"id":"CurZZBM" , "name":"当前组织下的部门"},{"id":"CurZZBM_KQSZ" , "name":"当前组织部门（考勤设置）"},{"id":"CURORG" , "name":"通过当前组织过滤部门"},{"id":"CurOrgSector" , "name":"当前部门"},{"id":"Default" , "name":"DEFAULT"},{"id":"BaseInfo" , "name":"项目人员需求"},{"id":"DQZZXBM" , "name":"当前组织（及下级组织）下部门"},{"id":"RsshInfo" , "name":"设置项目负责人"},{"id":"SubOrgsector" , "name":"子组织部门/项目部（组织专用）"},{"id":"PimpersonInfoOrgsector" , "name":"子组织部门/项目部（人员信息专用）"},{"id":"HisInfo" , "name":"项目人员需求（历史版本）"},{"id":"SubZZBM" , "name":"子组织部门"},{"id":"ProExpandInfo" , "name":"项目拓展信息"},{"id":"BMBZGL" , "name":"部门编制管理"}],
     "deaction":[{"id":"ChangeEdition" , "name":"设置为生效版本" , "type":"USERCUSTOM" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"SynOrgSectPro" , "name":"通过项目部选择计算项目信息" , "type":"USERCUSTOM" },{"id":"CLWC" , "name":"处理完成" , "type":"USERCUSTOM" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"TJ" , "name":"提交需求计划" , "type":"USERCUSTOM" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"SynOrgSectOderNum" , "name":"根据当前所选组织默认计算当前部门的排序" , "type":"USERCUSTOM" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"SynOrgSec" , "name":"计算当前部门默认所属区域" , "type":"USERCUSTOM" }],
@@ -1769,7 +1769,7 @@
      }
     ,    {
     "dename":"CodeList1",
-    "delogicname":"代码表",
+    "delogicname":"代码表***",
     "sysmoudle":{"id":"COMMON","name":"常规"},
     "dedataset":[{"id":"PersonUse" , "name":"用户使用"},{"id":"Default" , "name":"DEFAULT"}],
     "deaction":[{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"RefreshModel" , "name":"刷新代码表" , "type":"USERCUSTOM" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" }],
@@ -1777,7 +1777,7 @@
      }
     ,    {
     "dename":"QueryModel",
-    "delogicname":"实体查询模型",
+    "delogicname":"实体查询模型***",
     "sysmoudle":{"id":"DEMODEL","name":"实体模型"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"},{"id":"CurDE" , "name":"当前实体"}],
     "deaction":[{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" }],
@@ -1801,7 +1801,7 @@
      }
     ,    {
     "dename":"MsgSendQueueHis",
-    "delogicname":"消息发送队列（历史）",
+    "delogicname":"消息发送队列（历史）***",
     "sysmoudle":{"id":"COMMON","name":"常规"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
     "deaction":[{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" }],
@@ -1913,7 +1913,7 @@
      }
     ,    {
     "dename":"WFInstance",
-    "delogicname":"工作流实例",
+    "delogicname":"工作流实例***",
     "sysmoudle":{"id":"WF","name":"工作流"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
     "deaction":[{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Restart" , "name":"重新启动" , "type":"USERCUSTOM" },{"id":"UserCancel" , "name":"取消流程" , "type":"USERCUSTOM" }],
@@ -1985,7 +1985,7 @@
      }
     ,    {
     "dename":"WFWorkList",
-    "delogicname":"工作流工作列表",
+    "delogicname":"工作流工作列表***",
     "sysmoudle":{"id":"WF","name":"工作流"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
     "deaction":[{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" }],
@@ -2033,7 +2033,7 @@
      }
     ,    {
     "dename":"OrgSecUser",
-    "delogicname":"组织部门人员",
+    "delogicname":"组织部门人员***",
     "sysmoudle":{"id":"COMMON","name":"常规"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
     "deaction":[{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"RemoveDefault" , "name":"删除默认关系" , "type":"USERCUSTOM" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" }],
@@ -2113,7 +2113,7 @@
      }
     ,    {
     "dename":"WFReminder",
-    "delogicname":"工作流工作催办",
+    "delogicname":"工作流工作催办***",
     "sysmoudle":{"id":"WF","name":"工作流"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
     "deaction":[{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" }],
@@ -2145,7 +2145,7 @@
      }
     ,    {
     "dename":"WFUserCandidate",
-    "delogicname":"工作流用户候选者",
+    "delogicname":"工作流用户候选者***",
     "sysmoudle":{"id":"WF","name":"工作流"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
     "deaction":[{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" }],
@@ -2153,7 +2153,7 @@
      }
     ,    {
     "dename":"WFTmpStepActor",
-    "delogicname":"工作流步骤操作者（临时）",
+    "delogicname":"工作流步骤操作者（临时）***",
     "sysmoudle":{"id":"WF","name":"工作流"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
     "deaction":[{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" }],
@@ -2185,7 +2185,7 @@
      }
     ,    {
     "dename":"UserRoleDatas",
-    "delogicname":"用户角色数据能力",
+    "delogicname":"用户角色数据能力***",
     "sysmoudle":{"id":"COMMON","name":"常规"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
     "deaction":[{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" }],
@@ -2241,7 +2241,7 @@
      }
     ,    {
     "dename":"UserRoleRes",
-    "delogicname":"用户角色资源能力",
+    "delogicname":"用户角色资源能力***",
     "sysmoudle":{"id":"COMMON","name":"常规"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
     "deaction":[{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" }],
@@ -2249,7 +2249,7 @@
      }
     ,    {
     "dename":"UserObject",
-    "delogicname":"用户对象",
+    "delogicname":"用户对象***",
     "sysmoudle":{"id":"COMMON","name":"常规"},
     "dedataset":[{"id":"IndexDER" , "name":"IndexDER"},{"id":"Default" , "name":"DEFAULT"}],
     "deaction":[{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" }],
@@ -2273,7 +2273,7 @@
      }
     ,    {
     "dename":"MsgAccount",
-    "delogicname":"消息账户",
+    "delogicname":"消息账户***",
     "sysmoudle":{"id":"COMMON","name":"常规"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
     "deaction":[{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" }],
@@ -2297,7 +2297,7 @@
      }
     ,    {
     "dename":"WFSystemUser",
-    "delogicname":"工作流系统用户",
+    "delogicname":"工作流系统用户***",
     "sysmoudle":{"id":"WF","name":"工作流"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
     "deaction":[{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" }],
@@ -2337,7 +2337,7 @@
      }
     ,    {
     "dename":"User",
-    "delogicname":"用户",
+    "delogicname":"用户***",
     "sysmoudle":{"id":"COMMON","name":"常规"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
     "deaction":[{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" }],
@@ -2361,7 +2361,7 @@
      }
     ,    {
     "dename":"Org",
-    "delogicname":"组织机构",
+    "delogicname":"组织机构***",
     "sysmoudle":{"id":"COMMON","name":"常规"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"},{"id":"CurCat" , "name":"当前组织分类"},{"id":"AllRoot" , "name":"全部根组织"},{"id":"CurChild" , "name":"当前子组织"}],
     "deaction":[{"id":"InitAll" , "name":"初始化" , "type":"USERCUSTOM" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"InitUserObject" , "name":"初始化用户对象" , "type":"USERCUSTOM" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" }],
@@ -2377,7 +2377,7 @@
      }
     ,    {
     "dename":"WFAction",
-    "delogicname":"工作流用户操作",
+    "delogicname":"工作流用户操作***",
     "sysmoudle":{"id":"WF","name":"工作流"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
     "deaction":[{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" }],
@@ -2417,7 +2417,7 @@
      }
     ,    {
     "dename":"OrgType",
-    "delogicname":"组织类型",
+    "delogicname":"组织类型***",
     "sysmoudle":{"id":"COMMON","name":"常规"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
     "deaction":[{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" }],
@@ -2481,7 +2481,7 @@
      }
     ,    {
     "dename":"OrgUnitCat",
-    "delogicname":"组织单元类别",
+    "delogicname":"组织单元类别***",
     "sysmoudle":{"id":"COMMON","name":"常规"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
     "deaction":[{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" }],
@@ -2505,7 +2505,7 @@
      }
     ,    {
     "dename":"WFStep",
-    "delogicname":"工作流步骤",
+    "delogicname":"工作流步骤***",
     "sysmoudle":{"id":"WF","name":"工作流"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
     "deaction":[{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" }],
@@ -2521,7 +2521,7 @@
      }
     ,    {
     "dename":"DataEntity",
-    "delogicname":"实体",
+    "delogicname":"实体***",
     "sysmoudle":{"id":"DEMODEL","name":"实体模型"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
     "deaction":[{"id":"InitUserRoleData" , "name":"初始化角色数据对象" , "type":"USERCUSTOM" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"InitAll" , "name":"初始化" , "type":"USERCUSTOM" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" }],
@@ -2537,7 +2537,7 @@
      }
     ,    {
     "dename":"WXAccount",
-    "delogicname":"微信公众号",
+    "delogicname":"微信公众号***",
     "sysmoudle":{"id":"WX","name":"微信"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
     "deaction":[{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"SyncOrgSector" , "name":"同步组织部门" , "type":"USERCUSTOM" },{"id":"PubMenu" , "name":"发布菜单" , "type":"USERCUSTOM" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"SyncOrgUser" , "name":"同步组织人员" , "type":"USERCUSTOM" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" }],
@@ -2553,7 +2553,7 @@
      }
     ,    {
     "dename":"WFAppSetting",
-    "delogicname":"工作流系统设定",
+    "delogicname":"工作流系统设定***",
     "sysmoudle":{"id":"WF","name":"工作流"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
     "deaction":[{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" }],
@@ -2689,7 +2689,7 @@
      }
     ,    {
     "dename":"WFDynamicUser",
-    "delogicname":"工作流动态用户",
+    "delogicname":"工作流动态用户***",
     "sysmoudle":{"id":"WF","name":"工作流"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
     "deaction":[{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" }],
@@ -2697,7 +2697,7 @@
      }
     ,    {
     "dename":"CodeItem",
-    "delogicname":"代码项",
+    "delogicname":"代码项***",
     "sysmoudle":{"id":"COMMON","name":"常规"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"},{"id":"CurCL" , "name":"当前代码表"}],
     "deaction":[{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" }],
@@ -2729,7 +2729,7 @@
      }
     ,    {
     "dename":"WXMessage",
-    "delogicname":"微信消息",
+    "delogicname":"微信消息***",
     "sysmoudle":{"id":"WX","name":"微信"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
     "deaction":[{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" }],
@@ -2761,7 +2761,7 @@
      }
     ,    {
     "dename":"WFWorkflow",
-    "delogicname":"工作流配置",
+    "delogicname":"工作流配置***",
     "sysmoudle":{"id":"WF","name":"工作流"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
     "deaction":[{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" }],
@@ -2793,7 +2793,7 @@
      }
     ,    {
     "dename":"UserRoleDataAction",
-    "delogicname":"用户角色数据操作",
+    "delogicname":"用户角色数据操作***",
     "sysmoudle":{"id":"COMMON","name":"常规"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
     "deaction":[{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" }],
@@ -2825,7 +2825,7 @@
      }
     ,    {
     "dename":"WFStepActor",
-    "delogicname":"工作流步骤操作者",
+    "delogicname":"工作流步骤操作者***",
     "sysmoudle":{"id":"WF","name":"工作流"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
     "deaction":[{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"RemindSave" , "name":"催办保存" , "type":"USERCUSTOM" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" }],
@@ -2849,7 +2849,7 @@
      }
     ,    {
     "dename":"OrgSector",
-    "delogicname":"组织部门",
+    "delogicname":"组织部门***",
     "sysmoudle":{"id":"COMMON","name":"常规"},
     "dedataset":[{"id":"CurChild" , "name":"当前部门子部门"},{"id":"CurOrgOrg" , "name":"当前组织下部门"},{"id":"UserOrgSector" , "name":"用户部门子部门"},{"id":"OrgRoot" , "name":"组织根部门"},{"id":"UserOrg" , "name":"用户组织部门"},{"id":"CurOrg" , "name":"当前组织"},{"id":"Default" , "name":"DEFAULT"}],
     "deaction":[{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"InitUserObject" , "name":"初始化用户对象" , "type":"USERCUSTOM" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" }],
@@ -2857,7 +2857,7 @@
      }
     ,    {
     "dename":"WXEntApp",
-    "delogicname":"微信企业应用",
+    "delogicname":"微信企业应用***",
     "sysmoudle":{"id":"WX","name":"微信"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
     "deaction":[{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"PubMenu" , "name":"发布菜单" , "type":"USERCUSTOM" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" }],
@@ -2865,7 +2865,7 @@
      }
     ,    {
     "dename":"WFActor",
-    "delogicname":"工作流操作者",
+    "delogicname":"工作流操作者***",
     "sysmoudle":{"id":"WF","name":"工作流"},
     "dedataset":[{"id":"IndexDER" , "name":"IndexDER"},{"id":"Default" , "name":"DEFAULT"}],
     "deaction":[{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" }],
@@ -2873,7 +2873,7 @@
      }
     ,    {
     "dename":"WFIAAction",
-    "delogicname":"工作流交互操作",
+    "delogicname":"工作流交互操作***",
     "sysmoudle":{"id":"WF","name":"工作流"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
     "deaction":[{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" }],
@@ -2953,7 +2953,7 @@
      }
     ,    {
     "dename":"LoginAccount",
-    "delogicname":"登录帐户",
+    "delogicname":"登录帐户***",
     "sysmoudle":{"id":"COMMON","name":"常规"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
     "deaction":[{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"SaveHashMode" , "name":"保存（密码Hash）" , "type":"USERCUSTOM" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"GetHashMode" , "name":"获取（密码Hash）" , "type":"USERCUSTOM" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" }],
@@ -2969,7 +2969,7 @@
      }
     ,    {
     "dename":"OrgUserLevel",
-    "delogicname":"组织人员级别",
+    "delogicname":"组织人员级别***",
     "sysmoudle":{"id":"COMMON","name":"常规"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
     "deaction":[{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" }],
@@ -3009,7 +3009,7 @@
      }
     ,    {
     "dename":"WXMedia",
-    "delogicname":"微信多媒体内容",
+    "delogicname":"微信多媒体内容***",
     "sysmoudle":{"id":"WX","name":"微信"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
     "deaction":[{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" }],
@@ -3065,7 +3065,7 @@
      }
     ,    {
     "dename":"UniRes",
-    "delogicname":"统一资源",
+    "delogicname":"统一资源***",
     "sysmoudle":{"id":"COMMON","name":"常规"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
     "deaction":[{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" }],
@@ -3105,7 +3105,7 @@
      }
     ,    {
     "dename":"WFVersion",
-    "delogicname":"工作流配置版本",
+    "delogicname":"工作流配置版本***",
     "sysmoudle":{"id":"WF","name":"工作流"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
     "deaction":[{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" }],
@@ -3137,7 +3137,7 @@
      }
     ,    {
     "dename":"MsgTemplate",
-    "delogicname":"消息模板",
+    "delogicname":"消息模板***",
     "sysmoudle":{"id":"COMMON","name":"常规"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
     "deaction":[{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" }],
@@ -3161,7 +3161,7 @@
      }
     ,    {
     "dename":"UserRoleType",
-    "delogicname":"用户角色类型",
+    "delogicname":"用户角色类型***",
     "sysmoudle":{"id":"COMMON","name":"常规"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
     "deaction":[{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" }],

@@ -54,7 +54,7 @@ export default class MainService extends ControlService {
     public pimpersonService: PIMPERSONService = new PIMPERSONService();
 
     /**
-     * 组织管理服务对象
+     * 组织管理***服务对象
      *
      * @type {ORMORGService}
      * @memberof MainService

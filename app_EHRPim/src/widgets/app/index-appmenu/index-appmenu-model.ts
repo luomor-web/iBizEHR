@@ -669,7 +669,7 @@ export default class IndexModel {
 	tooltip: '员工类型',
 	expanded: false,
 	separator: false,
-	hidden: false,
+	hidden: true,
 	hidesidebar: false,
 	opendefault: false,
 	iconcls: '',

@@ -5,7 +5,7 @@ import { Subject } from 'rxjs';
 import CodeList1Service from '@/service/code-list1/code-list1-service';
 
 /**
- * 代码表UI服务对象基类
+ * 代码表***UI服务对象基类
  *
  * @export
  * @class CodeList1UIServiceBase

@@ -56,7 +56,7 @@ export default class PERSONINFOTREEService extends ControlService {
 
 
     /**
-     * 组织管理服务对象
+     * 组织管理***服务对象
      *
      * @type {ORMORGService}
      * @memberof PERSONINFOTREEService
@@ -64,7 +64,7 @@ export default class PERSONINFOTREEService extends ControlService {
     public ormorgService: ORMORGService = new ORMORGService({ $store: this.getStore() });
 
     /**
-     * 部门管理服务对象
+     * 部门管理***服务对象
      *
      * @type {ORMORGSECTORService}
      * @memberof PERSONINFOTREEService

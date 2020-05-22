@@ -13,7 +13,7 @@ import MainModel from './main-grid-model';
 export default class MainService extends ControlService {
 
     /**
-     * 组织管理服务对象
+     * 组织管理***服务对象
      *
      * @type {ORMORGService}
      * @memberof MainService
