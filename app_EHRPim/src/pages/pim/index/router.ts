@@ -553,33 +553,6 @@ const router = new Router({
                     component: () => import('@pages/orm/ormorgxmbqpickup-view/ormorgxmbqpickup-view.vue'),
                 },
                 {
-                    path: 'pimpeople/:pimperson?/pimpersonabilities/:pimpersonability?/gridview/:gridview?',
-                    meta: {
-                        caption: 'entities.pimpersonability.views.gridview.caption',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'pimpeople', parameterName: 'pimperson' },
-                            { pathName: 'pimpersonabilities', parameterName: 'pimpersonability' },
-                            { pathName: 'gridview', parameterName: 'gridview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/pim/pimperson-ability-grid-view/pimperson-ability-grid-view.vue'),
-                },
-                {
-                    path: 'pimpersonabilities/:pimpersonability?/gridview/:gridview?',
-                    meta: {
-                        caption: 'entities.pimpersonability.views.gridview.caption',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'pimpersonabilities', parameterName: 'pimpersonability' },
-                            { pathName: 'gridview', parameterName: 'gridview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/pim/pimperson-ability-grid-view/pimperson-ability-grid-view.vue'),
-                },
-                {
                     path: 'pimpeople/:pimperson?/quickeditview/:quickeditview?',
                     meta: {
                         caption: 'entities.pimperson.views.quickeditview.caption',
@@ -2723,33 +2696,6 @@ const router = new Router({
                         requireAuth: true,
                     },
                     component: () => import('@pages/pim/pimpersonchangegrid-view/pimpersonchangegrid-view.vue'),
-                },
-                {
-                    path: 'pimpeople/:pimperson?/pimpersonabilities/:pimpersonability?/editview/:editview?',
-                    meta: {
-                        caption: 'entities.pimpersonability.views.editview.caption',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'pimpeople', parameterName: 'pimperson' },
-                            { pathName: 'pimpersonabilities', parameterName: 'pimpersonability' },
-                            { pathName: 'editview', parameterName: 'editview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/pim/pimperson-ability-edit-view/pimperson-ability-edit-view.vue'),
-                },
-                {
-                    path: 'pimpersonabilities/:pimpersonability?/editview/:editview?',
-                    meta: {
-                        caption: 'entities.pimpersonability.views.editview.caption',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'pimpersonabilities', parameterName: 'pimpersonability' },
-                            { pathName: 'editview', parameterName: 'editview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/pim/pimperson-ability-edit-view/pimperson-ability-edit-view.vue'),
                 },
                 {
                     path: 'pimpeople/:pimperson?/pimcontracts/:pimcontract?/lweditview/:lweditview?',
@@ -7688,31 +7634,6 @@ const router = new Router({
                 },
                 component: () => import('@pages/pim/pimqualmajorredirect-view/pimqualmajorredirect-view.vue'),
             },
-    {
-        path: '/pimpeople/:pimperson?/pimpersonabilities/:pimpersonability?/gridview/:gridview?',
-        meta: {
-            caption: 'entities.pimpersonability.views.gridview.caption',
-            parameters: [
-                { pathName: 'pimpeople', parameterName: 'pimperson' },
-                { pathName: 'pimpersonabilities', parameterName: 'pimpersonability' },
-                { pathName: 'gridview', parameterName: 'gridview' },
-            ],
-            requireAuth: true,
-        },
-        component: () => import('@pages/pim/pimperson-ability-grid-view/pimperson-ability-grid-view.vue'),
-    },
-    {
-        path: '/pimpersonabilities/:pimpersonability?/gridview/:gridview?',
-        meta: {
-            caption: 'entities.pimpersonability.views.gridview.caption',
-            parameters: [
-                { pathName: 'pimpersonabilities', parameterName: 'pimpersonability' },
-                { pathName: 'gridview', parameterName: 'gridview' },
-            ],
-            requireAuth: true,
-        },
-        component: () => import('@pages/pim/pimperson-ability-grid-view/pimperson-ability-grid-view.vue'),
-    },
     {
         path: '/pimqualmajors/:pimqualmajor?/gridview/:gridview?',
         meta: {

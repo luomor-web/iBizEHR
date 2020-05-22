@@ -496,9 +496,9 @@ export default class PIMDISTIRBUTIONYGFenPeiGridViewBase extends GridViewBase {
         const view: any = {
             viewname: 'pimdistirbutionedit-view', 
             height: 0, 
-            width: 0,  
+            width: 1024,  
             title: this.$t('entities.pimdistirbution.views.editview.title'),
-            placement: 'DRAWER_TOP',
+            placement: 'DRAWER_RIGHT',
         };
         openDrawer(view, data);
     }
@@ -545,9 +545,9 @@ export default class PIMDISTIRBUTIONYGFenPeiGridViewBase extends GridViewBase {
         const view: any = {
             viewname: 'pimdistirbutionedit-view', 
             height: 0, 
-            width: 0,  
+            width: 1024,  
             title: this.$t('entities.pimdistirbution.views.editview.title'),
-            placement: 'DRAWER_TOP',
+            placement: 'DRAWER_RIGHT',
         };
         openDrawer(view, data);
     }

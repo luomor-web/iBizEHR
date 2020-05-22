@@ -30,7 +30,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
  * 实体[干部花名册]
  */
 @Data
-@TableName(value = "T_PCMGBHMC",resultMap = "PCMGBHMCResultMap")
+@TableName(value = "T_PIMPERSON",resultMap = "PCMGBHMCResultMap")
 public class PCMGBHMC extends EntityMP implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -367,6 +367,7 @@ public class PCMGBHMC extends EntityMP implements Serializable {
     /**
      * 人员信息标识
      */
+    @DEField(isKeyField=true)
     @TableId(value= "pimpersonid",type=IdType.UUID)
     @JSONField(name = "pimpersonid")
     @JsonProperty("pimpersonid")

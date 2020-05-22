@@ -299,13 +299,6 @@ export default class YGCDBase extends Vue implements ControlInterface {
             iconcls: '',
             icon: '../../../img/jcgl/1/keyanchengguo.png',
         },
-        {
-            text: "能力模型",
-            disabled: false,
-            id: "dritem25",
-            iconcls: 'fa fa-pencil',
-            icon: '',
-        },
     ];
 
     /**
@@ -413,12 +406,6 @@ export default class YGCDBase extends Vue implements ControlInterface {
         if (Object.is(expmode, 'dritem22')) {
             return {  
                 viewname: 'attendancemreportmxwsc-grid-view', 
-                parentdatajo: {},
-			};
-        }
-        if (Object.is(expmode, 'dritem25')) {
-            return {  
-                viewname: 'pimperson-ability-grid-view', 
                 parentdatajo: {},
 			};
         }

@@ -2936,7 +2936,7 @@
         </createTable>
     </changeSet>
     <!--输出实体[PIMDISTIRBUTION]数据结构 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="tab-pimdistirbution-92-70">
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-pimdistirbution-94-70">
         <createTable tableName="T_PIMDISTIRBUTION">
                 <column name="RZJSSJ" remarks="" type="DATETIME">
                 </column>
@@ -4677,7 +4677,7 @@
         </createTable>
     </changeSet>
     <!--输出实体[PIMLANGUAGEABILITY]数据结构 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="tab-pimlanguageability-21-114">
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-pimlanguageability-22-114">
         <createTable tableName="T_PIMLANGUAGEABILITY">
                 <column name="REASON" remarks="" type="VARCHAR(500)">
                 </column>
@@ -7378,7 +7378,7 @@
         </createTable>
     </changeSet>
     <!--输出实体[ARCHIVESCENTER]数据结构 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="tab-archivescenter-36-183">
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-archivescenter-38-183">
         <createTable tableName="T_ARCHIVESCENTER">
                 <column name="CABINETNO" remarks="" type="VARCHAR(100)">
                 </column>
@@ -8682,7 +8682,7 @@
         </createTable>
     </changeSet>
     <!--输出实体[PIMARMYCADRES]数据结构 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="tab-pimarmycadres-20-216">
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-pimarmycadres-21-216">
         <createTable tableName="T_PIMARMYCADRES">
                 <column name="UPDATEDATE" remarks="" type="DATETIME">
                 </column>
@@ -11662,10 +11662,6 @@
         </createTable>
     </changeSet>
     <!--输出实体[PCMGBHMC]数据结构 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="tab-pcmgbhmc-3-297">
-        <createTable tableName="T_PCMGBHMC">
-        </createTable>
-    </changeSet>
     <!--输出实体[PARDJBZ]数据结构 -->
     <changeSet author="a_LAB01_bd0ca3178" id="tab-pardjbz-9-298">
         <createTable tableName="T_PARDJBZ">
@@ -15545,22 +15541,22 @@
     </changeSet>
         <!--输出实体[ORGUNITCAT]外键关系 -->
         <!--输出实体[PIMDISTIRBUTION]外键关系 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-pimdistirbution-92-480">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-pimdistirbution-94-480">
        <addForeignKeyConstraint baseColumnNames="ORMDUTYID" baseTableName="T_PIMDISTIRBUTION" constraintName="DER1N_PIMDISTIRBUTION_ORMDUTY_" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="ORMDUTYID" referencedTableName="T_ORMDUTY" validate="true"/>
     </changeSet>
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-pimdistirbution-92-481">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-pimdistirbution-94-481">
        <addForeignKeyConstraint baseColumnNames="ORMORGSECTORID" baseTableName="T_PIMDISTIRBUTION" constraintName="DER1N_PIMDISTIRBUTION_ORMORGSE" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="ORGSECTORID" referencedTableName="T_SRFORGSECTOR" validate="true"/>
     </changeSet>
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-pimdistirbution-92-483">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-pimdistirbution-94-483">
        <addForeignKeyConstraint baseColumnNames="ORMORGID" baseTableName="T_PIMDISTIRBUTION" constraintName="DER1N_PIMDISTIRBUTION_ORMORG_O" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="ORGID" referencedTableName="T_SRFORG" validate="true"/>
     </changeSet>
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-pimdistirbution-92-484">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-pimdistirbution-94-484">
        <addForeignKeyConstraint baseColumnNames="YZZID" baseTableName="T_PIMDISTIRBUTION" constraintName="DER1N_PIMDISTIRBUTION_ORMORG_Y" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="ORGID" referencedTableName="T_SRFORG" validate="true"/>
     </changeSet>
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-pimdistirbution-92-485">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-pimdistirbution-94-485">
        <addForeignKeyConstraint baseColumnNames="ORMPOSTID" baseTableName="T_PIMDISTIRBUTION" constraintName="DER1N_PIMDISTIRBUTION_ORMPOST_" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="ORMPOSTID" referencedTableName="T_ORMPOST" validate="true"/>
     </changeSet>
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-pimdistirbution-92-487">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-pimdistirbution-94-487">
        <addForeignKeyConstraint baseColumnNames="PIMPERSONID" baseTableName="T_PIMDISTIRBUTION" constraintName="DER1N_PIMDISTIRBUTION_PIMPERSO" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="PIMPERSONID" referencedTableName="T_PIMPERSON" validate="true"/>
     </changeSet>
         <!--输出实体[PARJXLHMB]外键关系 -->
@@ -15748,7 +15744,7 @@
     </changeSet>
         <!--输出实体[PIMWORKFLOWREF]外键关系 -->
         <!--输出实体[PIMLANGUAGEABILITY]外键关系 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-pimlanguageability-21-536">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-pimlanguageability-22-536">
        <addForeignKeyConstraint baseColumnNames="PIMPERSONID" baseTableName="T_PIMLANGUAGEABILITY" constraintName="DER1N_PIMLANGUAGEABILITY_PIMPE" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="PIMPERSONID" referencedTableName="T_PIMPERSON" validate="true"/>
     </changeSet>
         <!--输出实体[TSSDPOLICYOWNER]外键关系 -->
@@ -16081,7 +16077,7 @@
        <addForeignKeyConstraint baseColumnNames="ORMORGID" baseTableName="T_TRMTRAINDEMAND" constraintName="DER1N_TRMTRAINDEMAND_ORMORG_OR" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="ORGID" referencedTableName="T_SRFORG" validate="true"/>
     </changeSet>
         <!--输出实体[ARCHIVESCENTER]外键关系 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-archivescenter-36-634">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-archivescenter-38-634">
        <addForeignKeyConstraint baseColumnNames="ORMORGID" baseTableName="T_ARCHIVESCENTER" constraintName="DER1N_ARCHIVESCENTER_ORMORG_OR" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="ORGID" referencedTableName="T_SRFORG" validate="true"/>
     </changeSet>
         <!--输出实体[TRMTRAINFACIES]外键关系 -->
@@ -16219,7 +16215,7 @@
        <addForeignKeyConstraint baseColumnNames="LOGINACCOUNTID" baseTableName="T_SRFLOGINLOG" constraintName="DER1N_LOGINLOG_LOGINACCOUNT_LO" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="LOGINACCOUNTID" referencedTableName="T_SRFLOGINACCOUNT" validate="true"/>
     </changeSet>
         <!--输出实体[PIMARMYCADRES]外键关系 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-pimarmycadres-20-670">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-pimarmycadres-21-670">
        <addForeignKeyConstraint baseColumnNames="PIMPERSONID" baseTableName="T_PIMARMYCADRES" constraintName="DER1N_PIMARMYCADRES_PIMPERSON_" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="PIMPERSONID" referencedTableName="T_PIMPERSON" validate="true"/>
     </changeSet>
         <!--输出实体[PIMGWTYPE]外键关系 -->

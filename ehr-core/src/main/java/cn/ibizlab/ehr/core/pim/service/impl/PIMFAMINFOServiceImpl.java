@@ -48,10 +48,6 @@ public class PIMFAMINFOServiceImpl extends ServiceImpl<PIMFAMINFOMapper, PIMFAMI
     @Lazy
     private cn.ibizlab.ehr.core.pim.service.IPIMPERSONService pimpersonService;
 
-    @Autowired
-    @Lazy
-    private cn.ibizlab.ehr.core.pim.service.logic.IPIMFAMINFOUpdateContactLogic updatecontactLogic;
-
     private int batchSize = 500;
 
     @Override
@@ -80,7 +76,6 @@ public class PIMFAMINFOServiceImpl extends ServiceImpl<PIMFAMINFOMapper, PIMFAMI
         if(!this.retBool(this.baseMapper.insert(et)))
             return false;
         CachedBeanCopier.copy(get(et.getPimfaminfoid()),et);
-        updatecontactLogic.execute(et);
         return true;
     }
 
@@ -97,7 +92,6 @@ public class PIMFAMINFOServiceImpl extends ServiceImpl<PIMFAMINFOMapper, PIMFAMI
         if(!update(et,(Wrapper) et.getUpdateWrapper(true).eq("pimfaminfoid",et.getPimfaminfoid())))
             return false;
         CachedBeanCopier.copy(get(et.getPimfaminfoid()),et);
-        updatecontactLogic.execute(et);
         return true;
     }
 

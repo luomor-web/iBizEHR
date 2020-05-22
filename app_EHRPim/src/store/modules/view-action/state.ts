@@ -395,7 +395,6 @@ export const viewstate: any = {
                 'a75234c9f1badf160bebfc6b1b00fc13',
                 '47a51836a8ffb05c23362952df3db3d2',
                 '6c4cbfc8f736328ae63518990928a246',
-                'e1101a28fb6703dc5a9a9e01d726fe01',
             ],
         },
         {
@@ -1977,16 +1976,6 @@ export const viewstate: any = {
             viewdatachange: false,
             refviews: [
                 'd4b210c054213905f88419649974a419',
-            ],
-        },
-        {
-            viewtag: 'e1101a28fb6703dc5a9a9e01d726fe01',
-            viewmodule: 'PIM',
-            viewname: 'PIMPersonAbilityGridView',
-            viewaction: '',
-            viewdatachange: false,
-            refviews: [
-                '39583f12f2d7e365df4385ef7770d414',
             ],
         },
         {
