@@ -54,16 +54,14 @@ public class LoginAccountResource {
 
     public LoginAccountDTO permissionDTO=new LoginAccountDTO();
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-LoginAccount-Save-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-LoginAccount-Save-all')")
     @ApiOperation(value = "Save", tags = {"LoginAccount" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/loginaccounts/save")
     public ResponseEntity<Boolean> save(@RequestBody LoginAccountDTO loginaccountdto) {
         return ResponseEntity.status(HttpStatus.OK).body(loginaccountService.save(loginaccountMapping.toDomain(loginaccountdto)));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"LoginAccount" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/loginaccounts/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<LoginAccountDTO> loginaccountdtos) {
@@ -71,20 +69,14 @@ public class LoginAccountResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-LoginAccount-CheckKey-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-LoginAccount-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"LoginAccount" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/loginaccounts/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody LoginAccountDTO loginaccountdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(loginaccountService.checkKey(loginaccountMapping.toDomain(loginaccountdto)));
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-LoginAccount-SaveHashMode-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-LoginAccount-SaveHashMode-all')")
     @ApiOperation(value = "保存（密码Hash）", tags = {"LoginAccount" },  notes = "保存（密码Hash）")
 	@RequestMapping(method = RequestMethod.POST, value = "/loginaccounts/{loginaccount_id}/savehashmode")
     @Transactional
@@ -94,9 +86,6 @@ public class LoginAccountResource {
         loginaccountdto = loginaccountMapping.toDto(loginaccount);
         return ResponseEntity.status(HttpStatus.OK).body(loginaccountdto);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#loginaccount_id,'Update',{'Sql',this.loginaccountMapping,#loginaccountdto})")
     @ApiOperation(value = "Update", tags = {"LoginAccount" },  notes = "Update")
@@ -110,15 +99,13 @@ public class LoginAccountResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"LoginAccount" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/loginaccounts/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<LoginAccountDTO> loginaccountdtos) {
         loginaccountService.updateBatch(loginaccountMapping.toDomain(loginaccountdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#loginaccount_id,'Get',{'Sql',this.loginaccountMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"LoginAccount" },  notes = "Get")
@@ -129,10 +116,7 @@ public class LoginAccountResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-LoginAccount-GetHashMode-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-LoginAccount-GetHashMode-all')")
     @ApiOperation(value = "获取（密码Hash）", tags = {"LoginAccount" },  notes = "获取（密码Hash）")
 	@RequestMapping(method = RequestMethod.GET, value = "/loginaccounts/{loginaccount_id}/gethashmode")
     @Transactional
@@ -142,9 +126,6 @@ public class LoginAccountResource {
         loginaccountdto = loginaccountMapping.toDto(loginaccount);
         return ResponseEntity.status(HttpStatus.OK).body(loginaccountdto);
     }
-
-
-
 
     @PreAuthorize("hasPermission('','Create',{'Sql',this.loginaccountMapping,#loginaccountdto})")
     @ApiOperation(value = "Create", tags = {"LoginAccount" },  notes = "Create")
@@ -157,6 +138,7 @@ public class LoginAccountResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatch", tags = {"LoginAccount" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/loginaccounts/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<LoginAccountDTO> loginaccountdtos) {
@@ -164,18 +146,12 @@ public class LoginAccountResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-LoginAccount-GetDraft-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-LoginAccount-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"LoginAccount" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/loginaccounts/getdraft")
     public ResponseEntity<LoginAccountDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(loginaccountMapping.toDto(loginaccountService.getDraft(new LoginAccount())));
     }
-
-
-
 
     @PreAuthorize("hasPermission(#loginaccount_id,'Remove',{'Sql',this.loginaccountMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"LoginAccount" },  notes = "Remove")
@@ -185,6 +161,7 @@ public class LoginAccountResource {
          return ResponseEntity.status(HttpStatus.OK).body(loginaccountService.remove(loginaccount_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"LoginAccount" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/loginaccounts/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -192,7 +169,7 @@ public class LoginAccountResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-LoginAccount-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-LoginAccount-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"LoginAccount" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/loginaccounts/fetchdefault")
 	public ResponseEntity<List<LoginAccountDTO>> fetchDefault(LoginAccountSearchContext context) {
@@ -205,7 +182,7 @@ public class LoginAccountResource {
                 .body(list);
 	}
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-LoginAccount-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-LoginAccount-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"LoginAccount" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/loginaccounts/searchdefault")
 	public ResponseEntity<Page<LoginAccountDTO>> searchDefault(@RequestBody LoginAccountSearchContext context) {
@@ -213,8 +190,4 @@ public class LoginAccountResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(loginaccountMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
 }
-
-

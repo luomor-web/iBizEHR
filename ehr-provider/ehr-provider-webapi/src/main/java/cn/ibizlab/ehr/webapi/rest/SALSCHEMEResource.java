@@ -54,9 +54,6 @@ public class SALSCHEMEResource {
 
     public SALSCHEMEDTO permissionDTO=new SALSCHEMEDTO();
 
-
-
-
     @PreAuthorize("hasPermission('','Create',{'Sql',this.salschemeMapping,#salschemedto})")
     @ApiOperation(value = "Create", tags = {"SALSCHEME" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/salschemes")
@@ -68,15 +65,13 @@ public class SALSCHEMEResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatch", tags = {"SALSCHEME" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/salschemes/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<SALSCHEMEDTO> salschemedtos) {
         salschemeService.createBatch(salschemeMapping.toDomain(salschemedtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#salscheme_id,'Update',{'Sql',this.salschemeMapping,#salschemedto})")
     @ApiOperation(value = "Update", tags = {"SALSCHEME" },  notes = "Update")
@@ -90,6 +85,7 @@ public class SALSCHEMEResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"SALSCHEME" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/salschemes/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<SALSCHEMEDTO> salschemedtos) {
@@ -97,35 +93,27 @@ public class SALSCHEMEResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALSCHEME-GetDraft-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALSCHEME-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"SALSCHEME" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/salschemes/getdraft")
     public ResponseEntity<SALSCHEMEDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(salschemeMapping.toDto(salschemeService.getDraft(new SALSCHEME())));
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALSCHEME-Save-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALSCHEME-Save-all')")
     @ApiOperation(value = "Save", tags = {"SALSCHEME" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/salschemes/save")
     public ResponseEntity<Boolean> save(@RequestBody SALSCHEMEDTO salschemedto) {
         return ResponseEntity.status(HttpStatus.OK).body(salschemeService.save(salschemeMapping.toDomain(salschemedto)));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"SALSCHEME" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/salschemes/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<SALSCHEMEDTO> salschemedtos) {
         salschemeService.saveBatch(salschemeMapping.toDomain(salschemedtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#salscheme_id,'Remove',{'Sql',this.salschemeMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"SALSCHEME" },  notes = "Remove")
@@ -135,15 +123,13 @@ public class SALSCHEMEResource {
          return ResponseEntity.status(HttpStatus.OK).body(salschemeService.remove(salscheme_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"SALSCHEME" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/salschemes/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         salschemeService.removeBatch(ids);
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#salscheme_id,'Get',{'Sql',this.salschemeMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"SALSCHEME" },  notes = "Get")
@@ -154,17 +140,14 @@ public class SALSCHEMEResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALSCHEME-CheckKey-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALSCHEME-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"SALSCHEME" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/salschemes/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody SALSCHEMEDTO salschemedto) {
         return  ResponseEntity.status(HttpStatus.OK).body(salschemeService.checkKey(salschemeMapping.toDomain(salschemedto)));
     }
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALSCHEME-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALSCHEME-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"SALSCHEME" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/salschemes/fetchdefault")
 	public ResponseEntity<List<SALSCHEMEDTO>> fetchDefault(SALSCHEMESearchContext context) {
@@ -177,7 +160,7 @@ public class SALSCHEMEResource {
                 .body(list);
 	}
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALSCHEME-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALSCHEME-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"SALSCHEME" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/salschemes/searchdefault")
 	public ResponseEntity<Page<SALSCHEMEDTO>> searchDefault(@RequestBody SALSCHEMESearchContext context) {
@@ -185,8 +168,4 @@ public class SALSCHEMEResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(salschemeMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
 }
-
-

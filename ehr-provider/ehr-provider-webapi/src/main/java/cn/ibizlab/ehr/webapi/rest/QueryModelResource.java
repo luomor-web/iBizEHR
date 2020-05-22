@@ -54,9 +54,6 @@ public class QueryModelResource {
 
     public QueryModelDTO permissionDTO=new QueryModelDTO();
 
-
-
-
     @PreAuthorize("hasPermission(#querymodel_id,'Get',{'Sql',this.querymodelMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"QueryModel" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/querymodels/{querymodel_id}")
@@ -66,9 +63,6 @@ public class QueryModelResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-
-
-
     @PreAuthorize("hasPermission(#querymodel_id,'Remove',{'Sql',this.querymodelMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"QueryModel" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/querymodels/{querymodel_id}")
@@ -77,15 +71,13 @@ public class QueryModelResource {
          return ResponseEntity.status(HttpStatus.OK).body(querymodelService.remove(querymodel_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"QueryModel" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/querymodels/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         querymodelService.removeBatch(ids);
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#querymodel_id,'Update',{'Sql',this.querymodelMapping,#querymodeldto})")
     @ApiOperation(value = "Update", tags = {"QueryModel" },  notes = "Update")
@@ -99,6 +91,7 @@ public class QueryModelResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"QueryModel" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/querymodels/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<QueryModelDTO> querymodeldtos) {
@@ -106,16 +99,14 @@ public class QueryModelResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-QueryModel-Save-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-QueryModel-Save-all')")
     @ApiOperation(value = "Save", tags = {"QueryModel" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/querymodels/save")
     public ResponseEntity<Boolean> save(@RequestBody QueryModelDTO querymodeldto) {
         return ResponseEntity.status(HttpStatus.OK).body(querymodelService.save(querymodelMapping.toDomain(querymodeldto)));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"QueryModel" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/querymodels/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<QueryModelDTO> querymodeldtos) {
@@ -123,28 +114,19 @@ public class QueryModelResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-QueryModel-GetDraft-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-QueryModel-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"QueryModel" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/querymodels/getdraft")
     public ResponseEntity<QueryModelDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(querymodelMapping.toDto(querymodelService.getDraft(new QueryModel())));
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-QueryModel-CheckKey-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-QueryModel-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"QueryModel" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/querymodels/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody QueryModelDTO querymodeldto) {
         return  ResponseEntity.status(HttpStatus.OK).body(querymodelService.checkKey(querymodelMapping.toDomain(querymodeldto)));
     }
-
-
-
 
     @PreAuthorize("hasPermission('','Create',{'Sql',this.querymodelMapping,#querymodeldto})")
     @ApiOperation(value = "Create", tags = {"QueryModel" },  notes = "Create")
@@ -157,6 +139,7 @@ public class QueryModelResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatch", tags = {"QueryModel" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/querymodels/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<QueryModelDTO> querymodeldtos) {
@@ -164,7 +147,7 @@ public class QueryModelResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-QueryModel-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-QueryModel-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"QueryModel" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/querymodels/fetchdefault")
 	public ResponseEntity<List<QueryModelDTO>> fetchDefault(QueryModelSearchContext context) {
@@ -177,7 +160,7 @@ public class QueryModelResource {
                 .body(list);
 	}
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-QueryModel-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-QueryModel-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"QueryModel" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/querymodels/searchdefault")
 	public ResponseEntity<Page<QueryModelDTO>> searchDefault(@RequestBody QueryModelSearchContext context) {
@@ -185,8 +168,7 @@ public class QueryModelResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(querymodelMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-QueryModel-CurDE-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-QueryModel-CurDE-all')")
 	@ApiOperation(value = "fetch当前实体", tags = {"QueryModel" } ,notes = "fetch当前实体")
     @RequestMapping(method= RequestMethod.GET , value="/querymodels/fetchcurde")
 	public ResponseEntity<List<QueryModelDTO>> fetchCurDE(QueryModelSearchContext context) {
@@ -199,7 +181,7 @@ public class QueryModelResource {
                 .body(list);
 	}
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-QueryModel-CurDE-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-QueryModel-CurDE-all')")
 	@ApiOperation(value = "search当前实体", tags = {"QueryModel" } ,notes = "search当前实体")
     @RequestMapping(method= RequestMethod.POST , value="/querymodels/searchcurde")
 	public ResponseEntity<Page<QueryModelDTO>> searchCurDE(@RequestBody QueryModelSearchContext context) {
@@ -207,8 +189,4 @@ public class QueryModelResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(querymodelMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
 }
-
-

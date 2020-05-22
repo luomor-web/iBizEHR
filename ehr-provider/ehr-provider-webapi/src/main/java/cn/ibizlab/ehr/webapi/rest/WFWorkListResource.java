@@ -54,28 +54,19 @@ public class WFWorkListResource {
 
     public WFWorkListDTO permissionDTO=new WFWorkListDTO();
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFWorkList-GetDraft-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFWorkList-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"WFWorkList" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/wfworklists/getdraft")
     public ResponseEntity<WFWorkListDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(wfworklistMapping.toDto(wfworklistService.getDraft(new WFWorkList())));
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFWorkList-CheckKey-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFWorkList-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"WFWorkList" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/wfworklists/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody WFWorkListDTO wfworklistdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(wfworklistService.checkKey(wfworklistMapping.toDomain(wfworklistdto)));
     }
-
-
-
 
     @PreAuthorize("hasPermission(#wfworklist_id,'Remove',{'Sql',this.wfworklistMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"WFWorkList" },  notes = "Remove")
@@ -85,6 +76,7 @@ public class WFWorkListResource {
          return ResponseEntity.status(HttpStatus.OK).body(wfworklistService.remove(wfworklist_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"WFWorkList" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/wfworklists/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -92,25 +84,20 @@ public class WFWorkListResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFWorkList-Save-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFWorkList-Save-all')")
     @ApiOperation(value = "Save", tags = {"WFWorkList" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/wfworklists/save")
     public ResponseEntity<Boolean> save(@RequestBody WFWorkListDTO wfworklistdto) {
         return ResponseEntity.status(HttpStatus.OK).body(wfworklistService.save(wfworklistMapping.toDomain(wfworklistdto)));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"WFWorkList" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/wfworklists/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<WFWorkListDTO> wfworklistdtos) {
         wfworklistService.saveBatch(wfworklistMapping.toDomain(wfworklistdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission('','Create',{'Sql',this.wfworklistMapping,#wfworklistdto})")
     @ApiOperation(value = "Create", tags = {"WFWorkList" },  notes = "Create")
@@ -123,15 +110,13 @@ public class WFWorkListResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatch", tags = {"WFWorkList" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/wfworklists/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<WFWorkListDTO> wfworklistdtos) {
         wfworklistService.createBatch(wfworklistMapping.toDomain(wfworklistdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#wfworklist_id,'Get',{'Sql',this.wfworklistMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"WFWorkList" },  notes = "Get")
@@ -141,9 +126,6 @@ public class WFWorkListResource {
         WFWorkListDTO dto = wfworklistMapping.toDto(domain);
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#wfworklist_id,'Update',{'Sql',this.wfworklistMapping,#wfworklistdto})")
     @ApiOperation(value = "Update", tags = {"WFWorkList" },  notes = "Update")
@@ -157,6 +139,7 @@ public class WFWorkListResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"WFWorkList" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/wfworklists/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<WFWorkListDTO> wfworklistdtos) {
@@ -164,7 +147,7 @@ public class WFWorkListResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFWorkList-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFWorkList-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"WFWorkList" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/wfworklists/fetchdefault")
 	public ResponseEntity<List<WFWorkListDTO>> fetchDefault(WFWorkListSearchContext context) {
@@ -177,7 +160,7 @@ public class WFWorkListResource {
                 .body(list);
 	}
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFWorkList-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFWorkList-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"WFWorkList" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/wfworklists/searchdefault")
 	public ResponseEntity<Page<WFWorkListDTO>> searchDefault(@RequestBody WFWorkListSearchContext context) {
@@ -185,8 +168,4 @@ public class WFWorkListResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(wfworklistMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
 }
-
-

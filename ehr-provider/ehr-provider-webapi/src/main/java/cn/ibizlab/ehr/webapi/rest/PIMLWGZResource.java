@@ -54,9 +54,6 @@ public class PIMLWGZResource {
 
     public PIMLWGZDTO permissionDTO=new PIMLWGZDTO();
 
-
-
-
     @PreAuthorize("hasPermission('','Create',{'Sql',this.pimlwgzMapping,#pimlwgzdto})")
     @ApiOperation(value = "Create", tags = {"PIMLWGZ" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimlwgzs")
@@ -68,15 +65,13 @@ public class PIMLWGZResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatch", tags = {"PIMLWGZ" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimlwgzs/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PIMLWGZDTO> pimlwgzdtos) {
         pimlwgzService.createBatch(pimlwgzMapping.toDomain(pimlwgzdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#pimlwgz_id,'Get',{'Sql',this.pimlwgzMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"PIMLWGZ" },  notes = "Get")
@@ -87,9 +82,6 @@ public class PIMLWGZResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-
-
-
     @PreAuthorize("hasPermission(#pimlwgz_id,'Remove',{'Sql',this.pimlwgzMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"PIMLWGZ" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimlwgzs/{pimlwgz_id}")
@@ -98,6 +90,7 @@ public class PIMLWGZResource {
          return ResponseEntity.status(HttpStatus.OK).body(pimlwgzService.remove(pimlwgz_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"PIMLWGZ" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimlwgzs/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -105,35 +98,27 @@ public class PIMLWGZResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMLWGZ-GetDraft-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMLWGZ-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"PIMLWGZ" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimlwgzs/getdraft")
     public ResponseEntity<PIMLWGZDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(pimlwgzMapping.toDto(pimlwgzService.getDraft(new PIMLWGZ())));
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMLWGZ-Save-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMLWGZ-Save-all')")
     @ApiOperation(value = "Save", tags = {"PIMLWGZ" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimlwgzs/save")
     public ResponseEntity<Boolean> save(@RequestBody PIMLWGZDTO pimlwgzdto) {
         return ResponseEntity.status(HttpStatus.OK).body(pimlwgzService.save(pimlwgzMapping.toDomain(pimlwgzdto)));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"PIMLWGZ" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimlwgzs/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PIMLWGZDTO> pimlwgzdtos) {
         pimlwgzService.saveBatch(pimlwgzMapping.toDomain(pimlwgzdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#pimlwgz_id,'Update',{'Sql',this.pimlwgzMapping,#pimlwgzdto})")
     @ApiOperation(value = "Update", tags = {"PIMLWGZ" },  notes = "Update")
@@ -147,6 +132,7 @@ public class PIMLWGZResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"PIMLWGZ" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimlwgzs/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PIMLWGZDTO> pimlwgzdtos) {
@@ -154,17 +140,14 @@ public class PIMLWGZResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMLWGZ-CheckKey-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMLWGZ-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"PIMLWGZ" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimlwgzs/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PIMLWGZDTO pimlwgzdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pimlwgzService.checkKey(pimlwgzMapping.toDomain(pimlwgzdto)));
     }
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMLWGZ-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMLWGZ-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PIMLWGZ" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimlwgzs/fetchdefault")
 	public ResponseEntity<List<PIMLWGZDTO>> fetchDefault(PIMLWGZSearchContext context) {
@@ -177,7 +160,7 @@ public class PIMLWGZResource {
                 .body(list);
 	}
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMLWGZ-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMLWGZ-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PIMLWGZ" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pimlwgzs/searchdefault")
 	public ResponseEntity<Page<PIMLWGZDTO>> searchDefault(@RequestBody PIMLWGZSearchContext context) {
@@ -185,8 +168,4 @@ public class PIMLWGZResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimlwgzMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
 }
-
-

@@ -54,25 +54,20 @@ public class SALPARAMResource {
 
     public SALPARAMDTO permissionDTO=new SALPARAMDTO();
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALPARAM-Save-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALPARAM-Save-all')")
     @ApiOperation(value = "Save", tags = {"SALPARAM" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/salparams/save")
     public ResponseEntity<Boolean> save(@RequestBody SALPARAMDTO salparamdto) {
         return ResponseEntity.status(HttpStatus.OK).body(salparamService.save(salparamMapping.toDomain(salparamdto)));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"SALPARAM" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/salparams/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<SALPARAMDTO> salparamdtos) {
         salparamService.saveBatch(salparamMapping.toDomain(salparamdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#salparam_id,'Get',{'Sql',this.salparamMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"SALPARAM" },  notes = "Get")
@@ -83,9 +78,6 @@ public class SALPARAMResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-
-
-
     @PreAuthorize("hasPermission(#salparam_id,'Remove',{'Sql',this.salparamMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"SALPARAM" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/salparams/{salparam_id}")
@@ -94,6 +86,7 @@ public class SALPARAMResource {
          return ResponseEntity.status(HttpStatus.OK).body(salparamService.remove(salparam_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"SALPARAM" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/salparams/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -101,18 +94,12 @@ public class SALPARAMResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALPARAM-CheckKey-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALPARAM-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"SALPARAM" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/salparams/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody SALPARAMDTO salparamdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(salparamService.checkKey(salparamMapping.toDomain(salparamdto)));
     }
-
-
-
 
     @PreAuthorize("hasPermission('','Create',{'Sql',this.salparamMapping,#salparamdto})")
     @ApiOperation(value = "Create", tags = {"SALPARAM" },  notes = "Create")
@@ -125,15 +112,13 @@ public class SALPARAMResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatch", tags = {"SALPARAM" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/salparams/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<SALPARAMDTO> salparamdtos) {
         salparamService.createBatch(salparamMapping.toDomain(salparamdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#salparam_id,'Update',{'Sql',this.salparamMapping,#salparamdto})")
     @ApiOperation(value = "Update", tags = {"SALPARAM" },  notes = "Update")
@@ -147,6 +132,7 @@ public class SALPARAMResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"SALPARAM" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/salparams/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<SALPARAMDTO> salparamdtos) {
@@ -154,17 +140,14 @@ public class SALPARAMResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALPARAM-GetDraft-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALPARAM-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"SALPARAM" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/salparams/getdraft")
     public ResponseEntity<SALPARAMDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(salparamMapping.toDto(salparamService.getDraft(new SALPARAM())));
     }
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALPARAM-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALPARAM-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"SALPARAM" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/salparams/fetchdefault")
 	public ResponseEntity<List<SALPARAMDTO>> fetchDefault(SALPARAMSearchContext context) {
@@ -177,7 +160,7 @@ public class SALPARAMResource {
                 .body(list);
 	}
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALPARAM-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALPARAM-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"SALPARAM" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/salparams/searchdefault")
 	public ResponseEntity<Page<SALPARAMDTO>> searchDefault(@RequestBody SALPARAMSearchContext context) {
@@ -185,8 +168,4 @@ public class SALPARAMResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(salparamMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
 }
-
-

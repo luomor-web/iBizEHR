@@ -54,28 +54,19 @@ public class PCMPROFILESPYYResource {
 
     public PCMPROFILESPYYDTO permissionDTO=new PCMPROFILESPYYDTO();
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILESPYY-GetDraft-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILESPYY-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"PCMPROFILESPYY" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmprofilespyys/getdraft")
     public ResponseEntity<PCMPROFILESPYYDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(pcmprofilespyyMapping.toDto(pcmprofilespyyService.getDraft(new PCMPROFILESPYY())));
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILESPYY-CheckKey-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILESPYY-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"PCMPROFILESPYY" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofilespyys/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PCMPROFILESPYYDTO pcmprofilespyydto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pcmprofilespyyService.checkKey(pcmprofilespyyMapping.toDomain(pcmprofilespyydto)));
     }
-
-
-
 
     @PreAuthorize("hasPermission(#pcmprofilespyy_id,'Get',{'Sql',this.pcmprofilespyyMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"PCMPROFILESPYY" },  notes = "Get")
@@ -86,25 +77,20 @@ public class PCMPROFILESPYYResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILESPYY-Save-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILESPYY-Save-all')")
     @ApiOperation(value = "Save", tags = {"PCMPROFILESPYY" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofilespyys/save")
     public ResponseEntity<Boolean> save(@RequestBody PCMPROFILESPYYDTO pcmprofilespyydto) {
         return ResponseEntity.status(HttpStatus.OK).body(pcmprofilespyyService.save(pcmprofilespyyMapping.toDomain(pcmprofilespyydto)));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"PCMPROFILESPYY" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofilespyys/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PCMPROFILESPYYDTO> pcmprofilespyydtos) {
         pcmprofilespyyService.saveBatch(pcmprofilespyyMapping.toDomain(pcmprofilespyydtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission('','Create',{'Sql',this.pcmprofilespyyMapping,#pcmprofilespyydto})")
     @ApiOperation(value = "Create", tags = {"PCMPROFILESPYY" },  notes = "Create")
@@ -117,15 +103,13 @@ public class PCMPROFILESPYYResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatch", tags = {"PCMPROFILESPYY" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofilespyys/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PCMPROFILESPYYDTO> pcmprofilespyydtos) {
         pcmprofilespyyService.createBatch(pcmprofilespyyMapping.toDomain(pcmprofilespyydtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#pcmprofilespyy_id,'Update',{'Sql',this.pcmprofilespyyMapping,#pcmprofilespyydto})")
     @ApiOperation(value = "Update", tags = {"PCMPROFILESPYY" },  notes = "Update")
@@ -139,15 +123,13 @@ public class PCMPROFILESPYYResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"PCMPROFILESPYY" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmprofilespyys/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PCMPROFILESPYYDTO> pcmprofilespyydtos) {
         pcmprofilespyyService.updateBatch(pcmprofilespyyMapping.toDomain(pcmprofilespyydtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#pcmprofilespyy_id,'Remove',{'Sql',this.pcmprofilespyyMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"PCMPROFILESPYY" },  notes = "Remove")
@@ -157,6 +139,7 @@ public class PCMPROFILESPYYResource {
          return ResponseEntity.status(HttpStatus.OK).body(pcmprofilespyyService.remove(pcmprofilespyy_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"PCMPROFILESPYY" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmprofilespyys/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -164,7 +147,7 @@ public class PCMPROFILESPYYResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILESPYY-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILESPYY-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PCMPROFILESPYY" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pcmprofilespyys/fetchdefault")
 	public ResponseEntity<List<PCMPROFILESPYYDTO>> fetchDefault(PCMPROFILESPYYSearchContext context) {
@@ -177,7 +160,7 @@ public class PCMPROFILESPYYResource {
                 .body(list);
 	}
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILESPYY-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILESPYY-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PCMPROFILESPYY" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pcmprofilespyys/searchdefault")
 	public ResponseEntity<Page<PCMPROFILESPYYDTO>> searchDefault(@RequestBody PCMPROFILESPYYSearchContext context) {
@@ -185,8 +168,4 @@ public class PCMPROFILESPYYResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pcmprofilespyyMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
 }
-
-

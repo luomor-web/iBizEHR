@@ -54,18 +54,12 @@ public class TSSDPolicyOwnerResource {
 
     public TSSDPolicyOwnerDTO permissionDTO=new TSSDPolicyOwnerDTO();
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TSSDPolicyOwner-CheckKey-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TSSDPolicyOwner-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"TSSDPolicyOwner" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/tssdpolicyowners/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody TSSDPolicyOwnerDTO tssdpolicyownerdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(tssdpolicyownerService.checkKey(tssdpolicyownerMapping.toDomain(tssdpolicyownerdto)));
     }
-
-
-
 
     @PreAuthorize("hasPermission(#tssdpolicyowner_id,'Update',{'Sql',this.tssdpolicyownerMapping,#tssdpolicyownerdto})")
     @ApiOperation(value = "Update", tags = {"TSSDPolicyOwner" },  notes = "Update")
@@ -79,15 +73,13 @@ public class TSSDPolicyOwnerResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"TSSDPolicyOwner" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/tssdpolicyowners/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<TSSDPolicyOwnerDTO> tssdpolicyownerdtos) {
         tssdpolicyownerService.updateBatch(tssdpolicyownerMapping.toDomain(tssdpolicyownerdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#tssdpolicyowner_id,'Remove',{'Sql',this.tssdpolicyownerMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"TSSDPolicyOwner" },  notes = "Remove")
@@ -97,15 +89,13 @@ public class TSSDPolicyOwnerResource {
          return ResponseEntity.status(HttpStatus.OK).body(tssdpolicyownerService.remove(tssdpolicyowner_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"TSSDPolicyOwner" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/tssdpolicyowners/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         tssdpolicyownerService.removeBatch(ids);
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission('','Create',{'Sql',this.tssdpolicyownerMapping,#tssdpolicyownerdto})")
     @ApiOperation(value = "Create", tags = {"TSSDPolicyOwner" },  notes = "Create")
@@ -118,15 +108,13 @@ public class TSSDPolicyOwnerResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatch", tags = {"TSSDPolicyOwner" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/tssdpolicyowners/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<TSSDPolicyOwnerDTO> tssdpolicyownerdtos) {
         tssdpolicyownerService.createBatch(tssdpolicyownerMapping.toDomain(tssdpolicyownerdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#tssdpolicyowner_id,'Get',{'Sql',this.tssdpolicyownerMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"TSSDPolicyOwner" },  notes = "Get")
@@ -137,16 +125,14 @@ public class TSSDPolicyOwnerResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TSSDPolicyOwner-Save-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TSSDPolicyOwner-Save-all')")
     @ApiOperation(value = "Save", tags = {"TSSDPolicyOwner" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/tssdpolicyowners/save")
     public ResponseEntity<Boolean> save(@RequestBody TSSDPolicyOwnerDTO tssdpolicyownerdto) {
         return ResponseEntity.status(HttpStatus.OK).body(tssdpolicyownerService.save(tssdpolicyownerMapping.toDomain(tssdpolicyownerdto)));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"TSSDPolicyOwner" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/tssdpolicyowners/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<TSSDPolicyOwnerDTO> tssdpolicyownerdtos) {
@@ -154,17 +140,14 @@ public class TSSDPolicyOwnerResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TSSDPolicyOwner-GetDraft-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TSSDPolicyOwner-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"TSSDPolicyOwner" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/tssdpolicyowners/getdraft")
     public ResponseEntity<TSSDPolicyOwnerDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(tssdpolicyownerMapping.toDto(tssdpolicyownerService.getDraft(new TSSDPolicyOwner())));
     }
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TSSDPolicyOwner-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TSSDPolicyOwner-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"TSSDPolicyOwner" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/tssdpolicyowners/fetchdefault")
 	public ResponseEntity<List<TSSDPolicyOwnerDTO>> fetchDefault(TSSDPolicyOwnerSearchContext context) {
@@ -177,7 +160,7 @@ public class TSSDPolicyOwnerResource {
                 .body(list);
 	}
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TSSDPolicyOwner-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TSSDPolicyOwner-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"TSSDPolicyOwner" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/tssdpolicyowners/searchdefault")
 	public ResponseEntity<Page<TSSDPolicyOwnerDTO>> searchDefault(@RequestBody TSSDPolicyOwnerSearchContext context) {
@@ -185,8 +168,4 @@ public class TSSDPolicyOwnerResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(tssdpolicyownerMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
 }
-
-

@@ -54,9 +54,6 @@ public class WXOrgSectorResource {
 
     public WXOrgSectorDTO permissionDTO=new WXOrgSectorDTO();
 
-
-
-
     @PreAuthorize("hasPermission(#wxorgsector_id,'Remove',{'Sql',this.wxorgsectorMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"WXOrgSector" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/wxorgsectors/{wxorgsector_id}")
@@ -65,6 +62,7 @@ public class WXOrgSectorResource {
          return ResponseEntity.status(HttpStatus.OK).body(wxorgsectorService.remove(wxorgsector_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"WXOrgSector" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/wxorgsectors/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -72,18 +70,12 @@ public class WXOrgSectorResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WXOrgSector-CheckKey-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WXOrgSector-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"WXOrgSector" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/wxorgsectors/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody WXOrgSectorDTO wxorgsectordto) {
         return  ResponseEntity.status(HttpStatus.OK).body(wxorgsectorService.checkKey(wxorgsectorMapping.toDomain(wxorgsectordto)));
     }
-
-
-
 
     @PreAuthorize("hasPermission('','Create',{'Sql',this.wxorgsectorMapping,#wxorgsectordto})")
     @ApiOperation(value = "Create", tags = {"WXOrgSector" },  notes = "Create")
@@ -96,15 +88,13 @@ public class WXOrgSectorResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatch", tags = {"WXOrgSector" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/wxorgsectors/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<WXOrgSectorDTO> wxorgsectordtos) {
         wxorgsectorService.createBatch(wxorgsectorMapping.toDomain(wxorgsectordtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#wxorgsector_id,'Get',{'Sql',this.wxorgsectorMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"WXOrgSector" },  notes = "Get")
@@ -115,25 +105,20 @@ public class WXOrgSectorResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WXOrgSector-Save-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WXOrgSector-Save-all')")
     @ApiOperation(value = "Save", tags = {"WXOrgSector" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/wxorgsectors/save")
     public ResponseEntity<Boolean> save(@RequestBody WXOrgSectorDTO wxorgsectordto) {
         return ResponseEntity.status(HttpStatus.OK).body(wxorgsectorService.save(wxorgsectorMapping.toDomain(wxorgsectordto)));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"WXOrgSector" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/wxorgsectors/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<WXOrgSectorDTO> wxorgsectordtos) {
         wxorgsectorService.saveBatch(wxorgsectorMapping.toDomain(wxorgsectordtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#wxorgsector_id,'Update',{'Sql',this.wxorgsectorMapping,#wxorgsectordto})")
     @ApiOperation(value = "Update", tags = {"WXOrgSector" },  notes = "Update")
@@ -147,6 +132,7 @@ public class WXOrgSectorResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"WXOrgSector" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/wxorgsectors/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<WXOrgSectorDTO> wxorgsectordtos) {
@@ -154,17 +140,14 @@ public class WXOrgSectorResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WXOrgSector-GetDraft-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WXOrgSector-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"WXOrgSector" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/wxorgsectors/getdraft")
     public ResponseEntity<WXOrgSectorDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(wxorgsectorMapping.toDto(wxorgsectorService.getDraft(new WXOrgSector())));
     }
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WXOrgSector-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WXOrgSector-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"WXOrgSector" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/wxorgsectors/fetchdefault")
 	public ResponseEntity<List<WXOrgSectorDTO>> fetchDefault(WXOrgSectorSearchContext context) {
@@ -177,7 +160,7 @@ public class WXOrgSectorResource {
                 .body(list);
 	}
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WXOrgSector-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WXOrgSector-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"WXOrgSector" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/wxorgsectors/searchdefault")
 	public ResponseEntity<Page<WXOrgSectorDTO>> searchDefault(@RequestBody WXOrgSectorSearchContext context) {
@@ -185,8 +168,4 @@ public class WXOrgSectorResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(wxorgsectorMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
 }
-
-

@@ -54,25 +54,20 @@ public class PIMTITLECATALOGUEResource {
 
     public PIMTITLECATALOGUEDTO permissionDTO=new PIMTITLECATALOGUEDTO();
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMTITLECATALOGUE-Save-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMTITLECATALOGUE-Save-all')")
     @ApiOperation(value = "Save", tags = {"PIMTITLECATALOGUE" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimtitlecatalogues/save")
     public ResponseEntity<Boolean> save(@RequestBody PIMTITLECATALOGUEDTO pimtitlecataloguedto) {
         return ResponseEntity.status(HttpStatus.OK).body(pimtitlecatalogueService.save(pimtitlecatalogueMapping.toDomain(pimtitlecataloguedto)));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"PIMTITLECATALOGUE" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimtitlecatalogues/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PIMTITLECATALOGUEDTO> pimtitlecataloguedtos) {
         pimtitlecatalogueService.saveBatch(pimtitlecatalogueMapping.toDomain(pimtitlecataloguedtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#pimtitlecatalogue_id,'Update',{'Sql',this.pimtitlecatalogueMapping,#pimtitlecataloguedto})")
     @ApiOperation(value = "Update", tags = {"PIMTITLECATALOGUE" },  notes = "Update")
@@ -86,6 +81,7 @@ public class PIMTITLECATALOGUEResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"PIMTITLECATALOGUE" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimtitlecatalogues/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PIMTITLECATALOGUEDTO> pimtitlecataloguedtos) {
@@ -93,18 +89,12 @@ public class PIMTITLECATALOGUEResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMTITLECATALOGUE-GetDraft-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMTITLECATALOGUE-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"PIMTITLECATALOGUE" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimtitlecatalogues/getdraft")
     public ResponseEntity<PIMTITLECATALOGUEDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(pimtitlecatalogueMapping.toDto(pimtitlecatalogueService.getDraft(new PIMTITLECATALOGUE())));
     }
-
-
-
 
     @PreAuthorize("hasPermission('','Create',{'Sql',this.pimtitlecatalogueMapping,#pimtitlecataloguedto})")
     @ApiOperation(value = "Create", tags = {"PIMTITLECATALOGUE" },  notes = "Create")
@@ -117,6 +107,7 @@ public class PIMTITLECATALOGUEResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatch", tags = {"PIMTITLECATALOGUE" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimtitlecatalogues/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PIMTITLECATALOGUEDTO> pimtitlecataloguedtos) {
@@ -124,18 +115,12 @@ public class PIMTITLECATALOGUEResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMTITLECATALOGUE-CheckKey-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMTITLECATALOGUE-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"PIMTITLECATALOGUE" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimtitlecatalogues/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PIMTITLECATALOGUEDTO pimtitlecataloguedto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pimtitlecatalogueService.checkKey(pimtitlecatalogueMapping.toDomain(pimtitlecataloguedto)));
     }
-
-
-
 
     @PreAuthorize("hasPermission(#pimtitlecatalogue_id,'Remove',{'Sql',this.pimtitlecatalogueMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"PIMTITLECATALOGUE" },  notes = "Remove")
@@ -145,15 +130,13 @@ public class PIMTITLECATALOGUEResource {
          return ResponseEntity.status(HttpStatus.OK).body(pimtitlecatalogueService.remove(pimtitlecatalogue_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"PIMTITLECATALOGUE" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimtitlecatalogues/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         pimtitlecatalogueService.removeBatch(ids);
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#pimtitlecatalogue_id,'Get',{'Sql',this.pimtitlecatalogueMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"PIMTITLECATALOGUE" },  notes = "Get")
@@ -164,7 +147,7 @@ public class PIMTITLECATALOGUEResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMTITLECATALOGUE-IsRootDQ-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMTITLECATALOGUE-IsRootDQ-all')")
 	@ApiOperation(value = "fetch查询没有上级职称的", tags = {"PIMTITLECATALOGUE" } ,notes = "fetch查询没有上级职称的")
     @RequestMapping(method= RequestMethod.GET , value="/pimtitlecatalogues/fetchisrootdq")
 	public ResponseEntity<List<PIMTITLECATALOGUEDTO>> fetchIsRootDQ(PIMTITLECATALOGUESearchContext context) {
@@ -177,7 +160,7 @@ public class PIMTITLECATALOGUEResource {
                 .body(list);
 	}
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMTITLECATALOGUE-IsRootDQ-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMTITLECATALOGUE-IsRootDQ-all')")
 	@ApiOperation(value = "search查询没有上级职称的", tags = {"PIMTITLECATALOGUE" } ,notes = "search查询没有上级职称的")
     @RequestMapping(method= RequestMethod.POST , value="/pimtitlecatalogues/searchisrootdq")
 	public ResponseEntity<Page<PIMTITLECATALOGUEDTO>> searchIsRootDQ(@RequestBody PIMTITLECATALOGUESearchContext context) {
@@ -185,8 +168,7 @@ public class PIMTITLECATALOGUEResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimtitlecatalogueMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMTITLECATALOGUE-NotRootDQ-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMTITLECATALOGUE-NotRootDQ-all')")
 	@ApiOperation(value = "fetch不查询没有上级职称的", tags = {"PIMTITLECATALOGUE" } ,notes = "fetch不查询没有上级职称的")
     @RequestMapping(method= RequestMethod.GET , value="/pimtitlecatalogues/fetchnotrootdq")
 	public ResponseEntity<List<PIMTITLECATALOGUEDTO>> fetchNotRootDQ(PIMTITLECATALOGUESearchContext context) {
@@ -199,7 +181,7 @@ public class PIMTITLECATALOGUEResource {
                 .body(list);
 	}
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMTITLECATALOGUE-NotRootDQ-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMTITLECATALOGUE-NotRootDQ-all')")
 	@ApiOperation(value = "search不查询没有上级职称的", tags = {"PIMTITLECATALOGUE" } ,notes = "search不查询没有上级职称的")
     @RequestMapping(method= RequestMethod.POST , value="/pimtitlecatalogues/searchnotrootdq")
 	public ResponseEntity<Page<PIMTITLECATALOGUEDTO>> searchNotRootDQ(@RequestBody PIMTITLECATALOGUESearchContext context) {
@@ -207,8 +189,7 @@ public class PIMTITLECATALOGUEResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimtitlecatalogueMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMTITLECATALOGUE-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMTITLECATALOGUE-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PIMTITLECATALOGUE" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimtitlecatalogues/fetchdefault")
 	public ResponseEntity<List<PIMTITLECATALOGUEDTO>> fetchDefault(PIMTITLECATALOGUESearchContext context) {
@@ -221,7 +202,7 @@ public class PIMTITLECATALOGUEResource {
                 .body(list);
 	}
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMTITLECATALOGUE-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMTITLECATALOGUE-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PIMTITLECATALOGUE" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pimtitlecatalogues/searchdefault")
 	public ResponseEntity<Page<PIMTITLECATALOGUEDTO>> searchDefault(@RequestBody PIMTITLECATALOGUESearchContext context) {
@@ -229,8 +210,4 @@ public class PIMTITLECATALOGUEResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimtitlecatalogueMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
 }
-
-

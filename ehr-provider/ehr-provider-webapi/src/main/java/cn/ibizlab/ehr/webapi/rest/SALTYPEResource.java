@@ -54,18 +54,12 @@ public class SALTYPEResource {
 
     public SALTYPEDTO permissionDTO=new SALTYPEDTO();
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALTYPE-CheckKey-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALTYPE-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"SALTYPE" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/saltypes/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody SALTYPEDTO saltypedto) {
         return  ResponseEntity.status(HttpStatus.OK).body(saltypeService.checkKey(saltypeMapping.toDomain(saltypedto)));
     }
-
-
-
 
     @PreAuthorize("hasPermission(#saltype_id,'Get',{'Sql',this.saltypeMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"SALTYPE" },  notes = "Get")
@@ -76,18 +70,12 @@ public class SALTYPEResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALTYPE-GetDraft-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALTYPE-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"SALTYPE" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/saltypes/getdraft")
     public ResponseEntity<SALTYPEDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(saltypeMapping.toDto(saltypeService.getDraft(new SALTYPE())));
     }
-
-
-
 
     @PreAuthorize("hasPermission(#saltype_id,'Remove',{'Sql',this.saltypeMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"SALTYPE" },  notes = "Remove")
@@ -97,6 +85,7 @@ public class SALTYPEResource {
          return ResponseEntity.status(HttpStatus.OK).body(saltypeService.remove(saltype_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"SALTYPE" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/saltypes/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -104,25 +93,20 @@ public class SALTYPEResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALTYPE-Save-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALTYPE-Save-all')")
     @ApiOperation(value = "Save", tags = {"SALTYPE" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/saltypes/save")
     public ResponseEntity<Boolean> save(@RequestBody SALTYPEDTO saltypedto) {
         return ResponseEntity.status(HttpStatus.OK).body(saltypeService.save(saltypeMapping.toDomain(saltypedto)));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"SALTYPE" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/saltypes/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<SALTYPEDTO> saltypedtos) {
         saltypeService.saveBatch(saltypeMapping.toDomain(saltypedtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission('','Create',{'Sql',this.saltypeMapping,#saltypedto})")
     @ApiOperation(value = "Create", tags = {"SALTYPE" },  notes = "Create")
@@ -135,15 +119,13 @@ public class SALTYPEResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatch", tags = {"SALTYPE" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/saltypes/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<SALTYPEDTO> saltypedtos) {
         saltypeService.createBatch(saltypeMapping.toDomain(saltypedtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#saltype_id,'Update',{'Sql',this.saltypeMapping,#saltypedto})")
     @ApiOperation(value = "Update", tags = {"SALTYPE" },  notes = "Update")
@@ -157,6 +139,7 @@ public class SALTYPEResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"SALTYPE" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/saltypes/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<SALTYPEDTO> saltypedtos) {
@@ -164,7 +147,7 @@ public class SALTYPEResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALTYPE-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALTYPE-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"SALTYPE" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/saltypes/fetchdefault")
 	public ResponseEntity<List<SALTYPEDTO>> fetchDefault(SALTYPESearchContext context) {
@@ -177,7 +160,7 @@ public class SALTYPEResource {
                 .body(list);
 	}
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALTYPE-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALTYPE-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"SALTYPE" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/saltypes/searchdefault")
 	public ResponseEntity<Page<SALTYPEDTO>> searchDefault(@RequestBody SALTYPESearchContext context) {
@@ -185,8 +168,4 @@ public class SALTYPEResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(saltypeMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
 }
-
-

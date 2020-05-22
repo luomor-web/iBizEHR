@@ -54,18 +54,12 @@ public class UserDGThemeResource {
 
     public UserDGThemeDTO permissionDTO=new UserDGThemeDTO();
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UserDGTheme-GetDraft-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UserDGTheme-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"UserDGTheme" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/userdgthemes/getdraft")
     public ResponseEntity<UserDGThemeDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(userdgthemeMapping.toDto(userdgthemeService.getDraft(new UserDGTheme())));
     }
-
-
-
 
     @PreAuthorize("hasPermission(#userdgtheme_id,'Get',{'Sql',this.userdgthemeMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"UserDGTheme" },  notes = "Get")
@@ -76,35 +70,27 @@ public class UserDGThemeResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UserDGTheme-CheckKey-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UserDGTheme-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"UserDGTheme" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/userdgthemes/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody UserDGThemeDTO userdgthemedto) {
         return  ResponseEntity.status(HttpStatus.OK).body(userdgthemeService.checkKey(userdgthemeMapping.toDomain(userdgthemedto)));
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UserDGTheme-Save-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UserDGTheme-Save-all')")
     @ApiOperation(value = "Save", tags = {"UserDGTheme" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/userdgthemes/save")
     public ResponseEntity<Boolean> save(@RequestBody UserDGThemeDTO userdgthemedto) {
         return ResponseEntity.status(HttpStatus.OK).body(userdgthemeService.save(userdgthemeMapping.toDomain(userdgthemedto)));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"UserDGTheme" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/userdgthemes/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<UserDGThemeDTO> userdgthemedtos) {
         userdgthemeService.saveBatch(userdgthemeMapping.toDomain(userdgthemedtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission('','Create',{'Sql',this.userdgthemeMapping,#userdgthemedto})")
     @ApiOperation(value = "Create", tags = {"UserDGTheme" },  notes = "Create")
@@ -117,15 +103,13 @@ public class UserDGThemeResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatch", tags = {"UserDGTheme" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/userdgthemes/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<UserDGThemeDTO> userdgthemedtos) {
         userdgthemeService.createBatch(userdgthemeMapping.toDomain(userdgthemedtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#userdgtheme_id,'Update',{'Sql',this.userdgthemeMapping,#userdgthemedto})")
     @ApiOperation(value = "Update", tags = {"UserDGTheme" },  notes = "Update")
@@ -139,15 +123,13 @@ public class UserDGThemeResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"UserDGTheme" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/userdgthemes/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<UserDGThemeDTO> userdgthemedtos) {
         userdgthemeService.updateBatch(userdgthemeMapping.toDomain(userdgthemedtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#userdgtheme_id,'Remove',{'Sql',this.userdgthemeMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"UserDGTheme" },  notes = "Remove")
@@ -157,6 +139,7 @@ public class UserDGThemeResource {
          return ResponseEntity.status(HttpStatus.OK).body(userdgthemeService.remove(userdgtheme_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"UserDGTheme" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/userdgthemes/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -164,7 +147,7 @@ public class UserDGThemeResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UserDGTheme-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UserDGTheme-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"UserDGTheme" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/userdgthemes/fetchdefault")
 	public ResponseEntity<List<UserDGThemeDTO>> fetchDefault(UserDGThemeSearchContext context) {
@@ -177,7 +160,7 @@ public class UserDGThemeResource {
                 .body(list);
 	}
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UserDGTheme-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UserDGTheme-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"UserDGTheme" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/userdgthemes/searchdefault")
 	public ResponseEntity<Page<UserDGThemeDTO>> searchDefault(@RequestBody UserDGThemeSearchContext context) {
@@ -185,8 +168,4 @@ public class UserDGThemeResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(userdgthemeMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
 }
-
-

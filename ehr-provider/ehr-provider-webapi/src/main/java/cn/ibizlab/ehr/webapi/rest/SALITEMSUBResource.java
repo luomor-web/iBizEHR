@@ -54,9 +54,6 @@ public class SALITEMSUBResource {
 
     public SALITEMSUBDTO permissionDTO=new SALITEMSUBDTO();
 
-
-
-
     @PreAuthorize("hasPermission(#salitemsub_id,'Get',{'Sql',this.salitemsubMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"SALITEMSUB" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/salitemsubs/{salitemsub_id}")
@@ -65,9 +62,6 @@ public class SALITEMSUBResource {
         SALITEMSUBDTO dto = salitemsubMapping.toDto(domain);
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#salitemsub_id,'Update',{'Sql',this.salitemsubMapping,#salitemsubdto})")
     @ApiOperation(value = "Update", tags = {"SALITEMSUB" },  notes = "Update")
@@ -81,15 +75,13 @@ public class SALITEMSUBResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"SALITEMSUB" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/salitemsubs/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<SALITEMSUBDTO> salitemsubdtos) {
         salitemsubService.updateBatch(salitemsubMapping.toDomain(salitemsubdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#salitemsub_id,'Remove',{'Sql',this.salitemsubMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"SALITEMSUB" },  notes = "Remove")
@@ -99,6 +91,7 @@ public class SALITEMSUBResource {
          return ResponseEntity.status(HttpStatus.OK).body(salitemsubService.remove(salitemsub_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"SALITEMSUB" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/salitemsubs/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -106,26 +99,21 @@ public class SALITEMSUBResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALITEMSUB-CheckKey-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALITEMSUB-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"SALITEMSUB" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/salitemsubs/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody SALITEMSUBDTO salitemsubdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(salitemsubService.checkKey(salitemsubMapping.toDomain(salitemsubdto)));
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALITEMSUB-Save-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALITEMSUB-Save-all')")
     @ApiOperation(value = "Save", tags = {"SALITEMSUB" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/salitemsubs/save")
     public ResponseEntity<Boolean> save(@RequestBody SALITEMSUBDTO salitemsubdto) {
         return ResponseEntity.status(HttpStatus.OK).body(salitemsubService.save(salitemsubMapping.toDomain(salitemsubdto)));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"SALITEMSUB" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/salitemsubs/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<SALITEMSUBDTO> salitemsubdtos) {
@@ -133,18 +121,12 @@ public class SALITEMSUBResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALITEMSUB-GetDraft-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALITEMSUB-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"SALITEMSUB" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/salitemsubs/getdraft")
     public ResponseEntity<SALITEMSUBDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(salitemsubMapping.toDto(salitemsubService.getDraft(new SALITEMSUB())));
     }
-
-
-
 
     @PreAuthorize("hasPermission('','Create',{'Sql',this.salitemsubMapping,#salitemsubdto})")
     @ApiOperation(value = "Create", tags = {"SALITEMSUB" },  notes = "Create")
@@ -157,6 +139,7 @@ public class SALITEMSUBResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatch", tags = {"SALITEMSUB" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/salitemsubs/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<SALITEMSUBDTO> salitemsubdtos) {
@@ -164,7 +147,7 @@ public class SALITEMSUBResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALITEMSUB-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALITEMSUB-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"SALITEMSUB" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/salitemsubs/fetchdefault")
 	public ResponseEntity<List<SALITEMSUBDTO>> fetchDefault(SALITEMSUBSearchContext context) {
@@ -177,7 +160,7 @@ public class SALITEMSUBResource {
                 .body(list);
 	}
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALITEMSUB-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALITEMSUB-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"SALITEMSUB" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/salitemsubs/searchdefault")
 	public ResponseEntity<Page<SALITEMSUBDTO>> searchDefault(@RequestBody SALITEMSUBSearchContext context) {
@@ -185,8 +168,4 @@ public class SALITEMSUBResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(salitemsubMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
 }
-
-

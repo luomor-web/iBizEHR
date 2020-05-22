@@ -54,9 +54,6 @@ public class WFSystemUserResource {
 
     public WFSystemUserDTO permissionDTO=new WFSystemUserDTO();
 
-
-
-
     @PreAuthorize("hasPermission('','Create',{'Sql',this.wfsystemuserMapping,#wfsystemuserdto})")
     @ApiOperation(value = "Create", tags = {"WFSystemUser" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/wfsystemusers")
@@ -68,6 +65,7 @@ public class WFSystemUserResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatch", tags = {"WFSystemUser" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/wfsystemusers/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<WFSystemUserDTO> wfsystemuserdtos) {
@@ -75,18 +73,12 @@ public class WFSystemUserResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFSystemUser-CheckKey-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFSystemUser-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"WFSystemUser" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/wfsystemusers/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody WFSystemUserDTO wfsystemuserdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(wfsystemuserService.checkKey(wfsystemuserMapping.toDomain(wfsystemuserdto)));
     }
-
-
-
 
     @PreAuthorize("hasPermission(#wfsystemuser_id,'Get',{'Sql',this.wfsystemuserMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"WFSystemUser" },  notes = "Get")
@@ -97,25 +89,20 @@ public class WFSystemUserResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFSystemUser-Save-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFSystemUser-Save-all')")
     @ApiOperation(value = "Save", tags = {"WFSystemUser" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/wfsystemusers/save")
     public ResponseEntity<Boolean> save(@RequestBody WFSystemUserDTO wfsystemuserdto) {
         return ResponseEntity.status(HttpStatus.OK).body(wfsystemuserService.save(wfsystemuserMapping.toDomain(wfsystemuserdto)));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"WFSystemUser" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/wfsystemusers/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<WFSystemUserDTO> wfsystemuserdtos) {
         wfsystemuserService.saveBatch(wfsystemuserMapping.toDomain(wfsystemuserdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#wfsystemuser_id,'Remove',{'Sql',this.wfsystemuserMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"WFSystemUser" },  notes = "Remove")
@@ -125,6 +112,7 @@ public class WFSystemUserResource {
          return ResponseEntity.status(HttpStatus.OK).body(wfsystemuserService.remove(wfsystemuser_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"WFSystemUser" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/wfsystemusers/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -132,18 +120,12 @@ public class WFSystemUserResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFSystemUser-GetDraft-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFSystemUser-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"WFSystemUser" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/wfsystemusers/getdraft")
     public ResponseEntity<WFSystemUserDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(wfsystemuserMapping.toDto(wfsystemuserService.getDraft(new WFSystemUser())));
     }
-
-
-
 
     @PreAuthorize("hasPermission(#wfsystemuser_id,'Update',{'Sql',this.wfsystemuserMapping,#wfsystemuserdto})")
     @ApiOperation(value = "Update", tags = {"WFSystemUser" },  notes = "Update")
@@ -157,6 +139,7 @@ public class WFSystemUserResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"WFSystemUser" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/wfsystemusers/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<WFSystemUserDTO> wfsystemuserdtos) {
@@ -164,7 +147,7 @@ public class WFSystemUserResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFSystemUser-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFSystemUser-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"WFSystemUser" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/wfsystemusers/fetchdefault")
 	public ResponseEntity<List<WFSystemUserDTO>> fetchDefault(WFSystemUserSearchContext context) {
@@ -177,7 +160,7 @@ public class WFSystemUserResource {
                 .body(list);
 	}
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFSystemUser-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFSystemUser-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"WFSystemUser" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/wfsystemusers/searchdefault")
 	public ResponseEntity<Page<WFSystemUserDTO>> searchDefault(@RequestBody WFSystemUserSearchContext context) {
@@ -185,8 +168,4 @@ public class WFSystemUserResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(wfsystemuserMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
 }
-
-

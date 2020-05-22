@@ -54,9 +54,6 @@ public class TSSDPolicyResource {
 
     public TSSDPolicyDTO permissionDTO=new TSSDPolicyDTO();
 
-
-
-
     @PreAuthorize("hasPermission('','Create',{'Sql',this.tssdpolicyMapping,#tssdpolicydto})")
     @ApiOperation(value = "Create", tags = {"TSSDPolicy" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/tssdpolicies")
@@ -68,15 +65,13 @@ public class TSSDPolicyResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatch", tags = {"TSSDPolicy" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/tssdpolicies/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<TSSDPolicyDTO> tssdpolicydtos) {
         tssdpolicyService.createBatch(tssdpolicyMapping.toDomain(tssdpolicydtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#tssdpolicy_id,'Remove',{'Sql',this.tssdpolicyMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"TSSDPolicy" },  notes = "Remove")
@@ -86,6 +81,7 @@ public class TSSDPolicyResource {
          return ResponseEntity.status(HttpStatus.OK).body(tssdpolicyService.remove(tssdpolicy_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"TSSDPolicy" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/tssdpolicies/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -93,18 +89,12 @@ public class TSSDPolicyResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TSSDPolicy-CheckKey-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TSSDPolicy-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"TSSDPolicy" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/tssdpolicies/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody TSSDPolicyDTO tssdpolicydto) {
         return  ResponseEntity.status(HttpStatus.OK).body(tssdpolicyService.checkKey(tssdpolicyMapping.toDomain(tssdpolicydto)));
     }
-
-
-
 
     @PreAuthorize("hasPermission(#tssdpolicy_id,'Update',{'Sql',this.tssdpolicyMapping,#tssdpolicydto})")
     @ApiOperation(value = "Update", tags = {"TSSDPolicy" },  notes = "Update")
@@ -118,6 +108,7 @@ public class TSSDPolicyResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"TSSDPolicy" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/tssdpolicies/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<TSSDPolicyDTO> tssdpolicydtos) {
@@ -125,35 +116,27 @@ public class TSSDPolicyResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TSSDPolicy-GetDraft-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TSSDPolicy-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"TSSDPolicy" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/tssdpolicies/getdraft")
     public ResponseEntity<TSSDPolicyDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(tssdpolicyMapping.toDto(tssdpolicyService.getDraft(new TSSDPolicy())));
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TSSDPolicy-Save-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TSSDPolicy-Save-all')")
     @ApiOperation(value = "Save", tags = {"TSSDPolicy" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/tssdpolicies/save")
     public ResponseEntity<Boolean> save(@RequestBody TSSDPolicyDTO tssdpolicydto) {
         return ResponseEntity.status(HttpStatus.OK).body(tssdpolicyService.save(tssdpolicyMapping.toDomain(tssdpolicydto)));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"TSSDPolicy" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/tssdpolicies/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<TSSDPolicyDTO> tssdpolicydtos) {
         tssdpolicyService.saveBatch(tssdpolicyMapping.toDomain(tssdpolicydtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#tssdpolicy_id,'Get',{'Sql',this.tssdpolicyMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"TSSDPolicy" },  notes = "Get")
@@ -164,7 +147,7 @@ public class TSSDPolicyResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TSSDPolicy-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TSSDPolicy-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"TSSDPolicy" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/tssdpolicies/fetchdefault")
 	public ResponseEntity<List<TSSDPolicyDTO>> fetchDefault(TSSDPolicySearchContext context) {
@@ -177,7 +160,7 @@ public class TSSDPolicyResource {
                 .body(list);
 	}
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TSSDPolicy-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TSSDPolicy-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"TSSDPolicy" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/tssdpolicies/searchdefault")
 	public ResponseEntity<Page<TSSDPolicyDTO>> searchDefault(@RequestBody TSSDPolicySearchContext context) {
@@ -185,8 +168,4 @@ public class TSSDPolicyResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(tssdpolicyMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
 }
-
-

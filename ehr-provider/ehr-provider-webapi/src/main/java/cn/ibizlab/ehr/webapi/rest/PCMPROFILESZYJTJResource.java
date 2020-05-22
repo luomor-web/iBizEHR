@@ -54,25 +54,20 @@ public class PCMPROFILESZYJTJResource {
 
     public PCMPROFILESZYJTJDTO permissionDTO=new PCMPROFILESZYJTJDTO();
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILESZYJTJ-Save-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILESZYJTJ-Save-all')")
     @ApiOperation(value = "Save", tags = {"PCMPROFILESZYJTJ" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofileszyjtjs/save")
     public ResponseEntity<Boolean> save(@RequestBody PCMPROFILESZYJTJDTO pcmprofileszyjtjdto) {
         return ResponseEntity.status(HttpStatus.OK).body(pcmprofileszyjtjService.save(pcmprofileszyjtjMapping.toDomain(pcmprofileszyjtjdto)));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"PCMPROFILESZYJTJ" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofileszyjtjs/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PCMPROFILESZYJTJDTO> pcmprofileszyjtjdtos) {
         pcmprofileszyjtjService.saveBatch(pcmprofileszyjtjMapping.toDomain(pcmprofileszyjtjdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission('','Create',{'Sql',this.pcmprofileszyjtjMapping,#pcmprofileszyjtjdto})")
     @ApiOperation(value = "Create", tags = {"PCMPROFILESZYJTJ" },  notes = "Create")
@@ -85,6 +80,7 @@ public class PCMPROFILESZYJTJResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatch", tags = {"PCMPROFILESZYJTJ" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofileszyjtjs/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PCMPROFILESZYJTJDTO> pcmprofileszyjtjdtos) {
@@ -92,28 +88,19 @@ public class PCMPROFILESZYJTJResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILESZYJTJ-GetDraft-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILESZYJTJ-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"PCMPROFILESZYJTJ" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmprofileszyjtjs/getdraft")
     public ResponseEntity<PCMPROFILESZYJTJDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(pcmprofileszyjtjMapping.toDto(pcmprofileszyjtjService.getDraft(new PCMPROFILESZYJTJ())));
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILESZYJTJ-CheckKey-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILESZYJTJ-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"PCMPROFILESZYJTJ" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofileszyjtjs/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PCMPROFILESZYJTJDTO pcmprofileszyjtjdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pcmprofileszyjtjService.checkKey(pcmprofileszyjtjMapping.toDomain(pcmprofileszyjtjdto)));
     }
-
-
-
 
     @PreAuthorize("hasPermission(#pcmprofileszyjtj_id,'Remove',{'Sql',this.pcmprofileszyjtjMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"PCMPROFILESZYJTJ" },  notes = "Remove")
@@ -123,15 +110,13 @@ public class PCMPROFILESZYJTJResource {
          return ResponseEntity.status(HttpStatus.OK).body(pcmprofileszyjtjService.remove(pcmprofileszyjtj_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"PCMPROFILESZYJTJ" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmprofileszyjtjs/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         pcmprofileszyjtjService.removeBatch(ids);
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#pcmprofileszyjtj_id,'Get',{'Sql',this.pcmprofileszyjtjMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"PCMPROFILESZYJTJ" },  notes = "Get")
@@ -141,9 +126,6 @@ public class PCMPROFILESZYJTJResource {
         PCMPROFILESZYJTJDTO dto = pcmprofileszyjtjMapping.toDto(domain);
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#pcmprofileszyjtj_id,'Update',{'Sql',this.pcmprofileszyjtjMapping,#pcmprofileszyjtjdto})")
     @ApiOperation(value = "Update", tags = {"PCMPROFILESZYJTJ" },  notes = "Update")
@@ -157,6 +139,7 @@ public class PCMPROFILESZYJTJResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"PCMPROFILESZYJTJ" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmprofileszyjtjs/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PCMPROFILESZYJTJDTO> pcmprofileszyjtjdtos) {
@@ -164,7 +147,7 @@ public class PCMPROFILESZYJTJResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILESZYJTJ-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILESZYJTJ-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PCMPROFILESZYJTJ" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pcmprofileszyjtjs/fetchdefault")
 	public ResponseEntity<List<PCMPROFILESZYJTJDTO>> fetchDefault(PCMPROFILESZYJTJSearchContext context) {
@@ -177,7 +160,7 @@ public class PCMPROFILESZYJTJResource {
                 .body(list);
 	}
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILESZYJTJ-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILESZYJTJ-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PCMPROFILESZYJTJ" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pcmprofileszyjtjs/searchdefault")
 	public ResponseEntity<Page<PCMPROFILESZYJTJDTO>> searchDefault(@RequestBody PCMPROFILESZYJTJSearchContext context) {
@@ -185,8 +168,7 @@ public class PCMPROFILESZYJTJResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pcmprofileszyjtjMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILESZYJTJ-YGLX-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILESZYJTJ-YGLX-all')")
 	@ApiOperation(value = "fetch通过申报类型过滤", tags = {"PCMPROFILESZYJTJ" } ,notes = "fetch通过申报类型过滤")
     @RequestMapping(method= RequestMethod.GET , value="/pcmprofileszyjtjs/fetchyglx")
 	public ResponseEntity<List<PCMPROFILESZYJTJDTO>> fetchYGLX(PCMPROFILESZYJTJSearchContext context) {
@@ -199,7 +181,7 @@ public class PCMPROFILESZYJTJResource {
                 .body(list);
 	}
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILESZYJTJ-YGLX-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILESZYJTJ-YGLX-all')")
 	@ApiOperation(value = "search通过申报类型过滤", tags = {"PCMPROFILESZYJTJ" } ,notes = "search通过申报类型过滤")
     @RequestMapping(method= RequestMethod.POST , value="/pcmprofileszyjtjs/searchyglx")
 	public ResponseEntity<Page<PCMPROFILESZYJTJDTO>> searchYGLX(@RequestBody PCMPROFILESZYJTJSearchContext context) {
@@ -207,8 +189,4 @@ public class PCMPROFILESZYJTJResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pcmprofileszyjtjMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
 }
-
-

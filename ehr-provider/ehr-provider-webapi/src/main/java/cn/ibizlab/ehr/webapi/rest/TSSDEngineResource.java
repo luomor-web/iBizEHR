@@ -54,18 +54,12 @@ public class TSSDEngineResource {
 
     public TSSDEngineDTO permissionDTO=new TSSDEngineDTO();
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TSSDEngine-GetDraft-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TSSDEngine-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"TSSDEngine" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/tssdengines/getdraft")
     public ResponseEntity<TSSDEngineDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(tssdengineMapping.toDto(tssdengineService.getDraft(new TSSDEngine())));
     }
-
-
-
 
     @PreAuthorize("hasPermission(#tssdengine_id,'Get',{'Sql',this.tssdengineMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"TSSDEngine" },  notes = "Get")
@@ -76,25 +70,20 @@ public class TSSDEngineResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TSSDEngine-Save-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TSSDEngine-Save-all')")
     @ApiOperation(value = "Save", tags = {"TSSDEngine" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/tssdengines/save")
     public ResponseEntity<Boolean> save(@RequestBody TSSDEngineDTO tssdenginedto) {
         return ResponseEntity.status(HttpStatus.OK).body(tssdengineService.save(tssdengineMapping.toDomain(tssdenginedto)));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"TSSDEngine" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/tssdengines/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<TSSDEngineDTO> tssdenginedtos) {
         tssdengineService.saveBatch(tssdengineMapping.toDomain(tssdenginedtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission('','Create',{'Sql',this.tssdengineMapping,#tssdenginedto})")
     @ApiOperation(value = "Create", tags = {"TSSDEngine" },  notes = "Create")
@@ -107,15 +96,13 @@ public class TSSDEngineResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatch", tags = {"TSSDEngine" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/tssdengines/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<TSSDEngineDTO> tssdenginedtos) {
         tssdengineService.createBatch(tssdengineMapping.toDomain(tssdenginedtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#tssdengine_id,'Update',{'Sql',this.tssdengineMapping,#tssdenginedto})")
     @ApiOperation(value = "Update", tags = {"TSSDEngine" },  notes = "Update")
@@ -129,6 +116,7 @@ public class TSSDEngineResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"TSSDEngine" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/tssdengines/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<TSSDEngineDTO> tssdenginedtos) {
@@ -136,18 +124,12 @@ public class TSSDEngineResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TSSDEngine-CheckKey-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TSSDEngine-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"TSSDEngine" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/tssdengines/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody TSSDEngineDTO tssdenginedto) {
         return  ResponseEntity.status(HttpStatus.OK).body(tssdengineService.checkKey(tssdengineMapping.toDomain(tssdenginedto)));
     }
-
-
-
 
     @PreAuthorize("hasPermission(#tssdengine_id,'Remove',{'Sql',this.tssdengineMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"TSSDEngine" },  notes = "Remove")
@@ -157,6 +139,7 @@ public class TSSDEngineResource {
          return ResponseEntity.status(HttpStatus.OK).body(tssdengineService.remove(tssdengine_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"TSSDEngine" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/tssdengines/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -164,7 +147,7 @@ public class TSSDEngineResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TSSDEngine-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TSSDEngine-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"TSSDEngine" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/tssdengines/fetchdefault")
 	public ResponseEntity<List<TSSDEngineDTO>> fetchDefault(TSSDEngineSearchContext context) {
@@ -177,7 +160,7 @@ public class TSSDEngineResource {
                 .body(list);
 	}
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TSSDEngine-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TSSDEngine-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"TSSDEngine" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/tssdengines/searchdefault")
 	public ResponseEntity<Page<TSSDEngineDTO>> searchDefault(@RequestBody TSSDEngineSearchContext context) {
@@ -185,8 +168,4 @@ public class TSSDEngineResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(tssdengineMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
 }
-
-

@@ -54,9 +54,6 @@ public class VACLEACETYPEResource {
 
     public VACLEACETYPEDTO permissionDTO=new VACLEACETYPEDTO();
 
-
-
-
     @PreAuthorize("hasPermission(#vacleacetype_id,'Update',{'Sql',this.vacleacetypeMapping,#vacleacetypedto})")
     @ApiOperation(value = "Update", tags = {"VACLEACETYPE" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/vacleacetypes/{vacleacetype_id}")
@@ -69,15 +66,13 @@ public class VACLEACETYPEResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"VACLEACETYPE" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/vacleacetypes/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<VACLEACETYPEDTO> vacleacetypedtos) {
         vacleacetypeService.updateBatch(vacleacetypeMapping.toDomain(vacleacetypedtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#vacleacetype_id,'Remove',{'Sql',this.vacleacetypeMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"VACLEACETYPE" },  notes = "Remove")
@@ -87,15 +82,13 @@ public class VACLEACETYPEResource {
          return ResponseEntity.status(HttpStatus.OK).body(vacleacetypeService.remove(vacleacetype_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"VACLEACETYPE" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/vacleacetypes/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         vacleacetypeService.removeBatch(ids);
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission('','Create',{'Sql',this.vacleacetypeMapping,#vacleacetypedto})")
     @ApiOperation(value = "Create", tags = {"VACLEACETYPE" },  notes = "Create")
@@ -108,6 +101,7 @@ public class VACLEACETYPEResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatch", tags = {"VACLEACETYPE" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacleacetypes/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<VACLEACETYPEDTO> vacleacetypedtos) {
@@ -115,26 +109,21 @@ public class VACLEACETYPEResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACLEACETYPE-GetDraft-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACLEACETYPE-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"VACLEACETYPE" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/vacleacetypes/getdraft")
     public ResponseEntity<VACLEACETYPEDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(vacleacetypeMapping.toDto(vacleacetypeService.getDraft(new VACLEACETYPE())));
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACLEACETYPE-Save-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACLEACETYPE-Save-all')")
     @ApiOperation(value = "Save", tags = {"VACLEACETYPE" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacleacetypes/save")
     public ResponseEntity<Boolean> save(@RequestBody VACLEACETYPEDTO vacleacetypedto) {
         return ResponseEntity.status(HttpStatus.OK).body(vacleacetypeService.save(vacleacetypeMapping.toDomain(vacleacetypedto)));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"VACLEACETYPE" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacleacetypes/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<VACLEACETYPEDTO> vacleacetypedtos) {
@@ -142,18 +131,12 @@ public class VACLEACETYPEResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACLEACETYPE-CheckKey-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACLEACETYPE-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"VACLEACETYPE" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacleacetypes/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody VACLEACETYPEDTO vacleacetypedto) {
         return  ResponseEntity.status(HttpStatus.OK).body(vacleacetypeService.checkKey(vacleacetypeMapping.toDomain(vacleacetypedto)));
     }
-
-
-
 
     @PreAuthorize("hasPermission(#vacleacetype_id,'Get',{'Sql',this.vacleacetypeMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"VACLEACETYPE" },  notes = "Get")
@@ -164,7 +147,7 @@ public class VACLEACETYPEResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACLEACETYPE-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACLEACETYPE-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"VACLEACETYPE" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/vacleacetypes/fetchdefault")
 	public ResponseEntity<List<VACLEACETYPEDTO>> fetchDefault(VACLEACETYPESearchContext context) {
@@ -177,7 +160,7 @@ public class VACLEACETYPEResource {
                 .body(list);
 	}
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACLEACETYPE-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACLEACETYPE-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"VACLEACETYPE" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/vacleacetypes/searchdefault")
 	public ResponseEntity<Page<VACLEACETYPEDTO>> searchDefault(@RequestBody VACLEACETYPESearchContext context) {
@@ -185,8 +168,4 @@ public class VACLEACETYPEResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(vacleacetypeMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
 }
-
-

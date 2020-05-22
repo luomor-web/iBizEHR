@@ -54,9 +54,6 @@ public class ORMXMGLResource {
 
     public ORMXMGLDTO permissionDTO=new ORMXMGLDTO();
 
-
-
-
     @PreAuthorize("hasPermission(#ormxmgl_id,'Get',{'Sql',this.ormxmglMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"ORMXMGL" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/ormxmgls/{ormxmgl_id}")
@@ -66,28 +63,19 @@ public class ORMXMGLResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMXMGL-CheckKey-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMXMGL-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"ORMXMGL" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormxmgls/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody ORMXMGLDTO ormxmgldto) {
         return  ResponseEntity.status(HttpStatus.OK).body(ormxmglService.checkKey(ormxmglMapping.toDomain(ormxmgldto)));
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMXMGL-GetDraft-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMXMGL-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"ORMXMGL" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/ormxmgls/getdraft")
     public ResponseEntity<ORMXMGLDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(ormxmglMapping.toDto(ormxmglService.getDraft(new ORMXMGL())));
     }
-
-
-
 
     @PreAuthorize("hasPermission(#ormxmgl_id,'Update',{'Sql',this.ormxmglMapping,#ormxmgldto})")
     @ApiOperation(value = "Update", tags = {"ORMXMGL" },  notes = "Update")
@@ -101,15 +89,13 @@ public class ORMXMGLResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"ORMXMGL" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/ormxmgls/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<ORMXMGLDTO> ormxmgldtos) {
         ormxmglService.updateBatch(ormxmglMapping.toDomain(ormxmgldtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission('','Create',{'Sql',this.ormxmglMapping,#ormxmgldto})")
     @ApiOperation(value = "Create", tags = {"ORMXMGL" },  notes = "Create")
@@ -122,15 +108,13 @@ public class ORMXMGLResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatch", tags = {"ORMXMGL" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormxmgls/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<ORMXMGLDTO> ormxmgldtos) {
         ormxmglService.createBatch(ormxmglMapping.toDomain(ormxmgldtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#ormxmgl_id,'Remove',{'Sql',this.ormxmglMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"ORMXMGL" },  notes = "Remove")
@@ -140,6 +124,7 @@ public class ORMXMGLResource {
          return ResponseEntity.status(HttpStatus.OK).body(ormxmglService.remove(ormxmgl_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"ORMXMGL" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/ormxmgls/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -147,10 +132,7 @@ public class ORMXMGLResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMXMGL-Synchro-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMXMGL-Synchro-all')")
     @ApiOperation(value = "同步项目信息", tags = {"ORMXMGL" },  notes = "同步项目信息")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormxmgls/{ormxmgl_id}/synchro")
     @Transactional
@@ -161,16 +143,14 @@ public class ORMXMGLResource {
         return ResponseEntity.status(HttpStatus.OK).body(ormxmgldto);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMXMGL-Save-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMXMGL-Save-all')")
     @ApiOperation(value = "Save", tags = {"ORMXMGL" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormxmgls/save")
     public ResponseEntity<Boolean> save(@RequestBody ORMXMGLDTO ormxmgldto) {
         return ResponseEntity.status(HttpStatus.OK).body(ormxmglService.save(ormxmglMapping.toDomain(ormxmgldto)));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"ORMXMGL" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormxmgls/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<ORMXMGLDTO> ormxmgldtos) {
@@ -178,7 +158,7 @@ public class ORMXMGLResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMXMGL-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMXMGL-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"ORMXMGL" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/ormxmgls/fetchdefault")
 	public ResponseEntity<List<ORMXMGLDTO>> fetchDefault(ORMXMGLSearchContext context) {
@@ -191,7 +171,7 @@ public class ORMXMGLResource {
                 .body(list);
 	}
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMXMGL-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMXMGL-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"ORMXMGL" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/ormxmgls/searchdefault")
 	public ResponseEntity<Page<ORMXMGLDTO>> searchDefault(@RequestBody ORMXMGLSearchContext context) {
@@ -199,8 +179,7 @@ public class ORMXMGLResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(ormxmglMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMXMGL-ValidPro-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMXMGL-ValidPro-all')")
 	@ApiOperation(value = "fetch有效项目", tags = {"ORMXMGL" } ,notes = "fetch有效项目")
     @RequestMapping(method= RequestMethod.GET , value="/ormxmgls/fetchvalidpro")
 	public ResponseEntity<List<ORMXMGLDTO>> fetchValidPro(ORMXMGLSearchContext context) {
@@ -213,7 +192,7 @@ public class ORMXMGLResource {
                 .body(list);
 	}
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMXMGL-ValidPro-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMXMGL-ValidPro-all')")
 	@ApiOperation(value = "search有效项目", tags = {"ORMXMGL" } ,notes = "search有效项目")
     @RequestMapping(method= RequestMethod.POST , value="/ormxmgls/searchvalidpro")
 	public ResponseEntity<Page<ORMXMGLDTO>> searchValidPro(@RequestBody ORMXMGLSearchContext context) {
@@ -221,8 +200,4 @@ public class ORMXMGLResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(ormxmglMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
 }
-
-

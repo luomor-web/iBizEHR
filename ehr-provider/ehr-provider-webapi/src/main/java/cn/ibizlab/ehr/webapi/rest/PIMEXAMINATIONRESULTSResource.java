@@ -54,9 +54,6 @@ public class PIMEXAMINATIONRESULTSResource {
 
     public PIMEXAMINATIONRESULTSDTO permissionDTO=new PIMEXAMINATIONRESULTSDTO();
 
-
-
-
     @PreAuthorize("hasPermission(#pimexaminationresults_id,'Update',{'Sql',this.pimexaminationresultsMapping,#pimexaminationresultsdto})")
     @ApiOperation(value = "Update", tags = {"PIMEXAMINATIONRESULTS" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimexaminationresults/{pimexaminationresults_id}")
@@ -69,6 +66,7 @@ public class PIMEXAMINATIONRESULTSResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"PIMEXAMINATIONRESULTS" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimexaminationresults/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PIMEXAMINATIONRESULTSDTO> pimexaminationresultsdtos) {
@@ -76,16 +74,14 @@ public class PIMEXAMINATIONRESULTSResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMEXAMINATIONRESULTS-Save-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMEXAMINATIONRESULTS-Save-all')")
     @ApiOperation(value = "Save", tags = {"PIMEXAMINATIONRESULTS" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimexaminationresults/save")
     public ResponseEntity<Boolean> save(@RequestBody PIMEXAMINATIONRESULTSDTO pimexaminationresultsdto) {
         return ResponseEntity.status(HttpStatus.OK).body(pimexaminationresultsService.save(pimexaminationresultsMapping.toDomain(pimexaminationresultsdto)));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"PIMEXAMINATIONRESULTS" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimexaminationresults/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PIMEXAMINATIONRESULTSDTO> pimexaminationresultsdtos) {
@@ -93,18 +89,12 @@ public class PIMEXAMINATIONRESULTSResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMEXAMINATIONRESULTS-CheckKey-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMEXAMINATIONRESULTS-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"PIMEXAMINATIONRESULTS" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimexaminationresults/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PIMEXAMINATIONRESULTSDTO pimexaminationresultsdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pimexaminationresultsService.checkKey(pimexaminationresultsMapping.toDomain(pimexaminationresultsdto)));
     }
-
-
-
 
     @PreAuthorize("hasPermission('','Create',{'Sql',this.pimexaminationresultsMapping,#pimexaminationresultsdto})")
     @ApiOperation(value = "Create", tags = {"PIMEXAMINATIONRESULTS" },  notes = "Create")
@@ -117,15 +107,13 @@ public class PIMEXAMINATIONRESULTSResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatch", tags = {"PIMEXAMINATIONRESULTS" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimexaminationresults/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PIMEXAMINATIONRESULTSDTO> pimexaminationresultsdtos) {
         pimexaminationresultsService.createBatch(pimexaminationresultsMapping.toDomain(pimexaminationresultsdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#pimexaminationresults_id,'Remove',{'Sql',this.pimexaminationresultsMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"PIMEXAMINATIONRESULTS" },  notes = "Remove")
@@ -135,6 +123,7 @@ public class PIMEXAMINATIONRESULTSResource {
          return ResponseEntity.status(HttpStatus.OK).body(pimexaminationresultsService.remove(pimexaminationresults_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"PIMEXAMINATIONRESULTS" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimexaminationresults/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -142,18 +131,12 @@ public class PIMEXAMINATIONRESULTSResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMEXAMINATIONRESULTS-GetDraft-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMEXAMINATIONRESULTS-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"PIMEXAMINATIONRESULTS" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimexaminationresults/getdraft")
     public ResponseEntity<PIMEXAMINATIONRESULTSDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(pimexaminationresultsMapping.toDto(pimexaminationresultsService.getDraft(new PIMEXAMINATIONRESULTS())));
     }
-
-
-
 
     @PreAuthorize("hasPermission(#pimexaminationresults_id,'Get',{'Sql',this.pimexaminationresultsMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"PIMEXAMINATIONRESULTS" },  notes = "Get")
@@ -164,7 +147,7 @@ public class PIMEXAMINATIONRESULTSResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMEXAMINATIONRESULTS-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMEXAMINATIONRESULTS-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PIMEXAMINATIONRESULTS" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimexaminationresults/fetchdefault")
 	public ResponseEntity<List<PIMEXAMINATIONRESULTSDTO>> fetchDefault(PIMEXAMINATIONRESULTSSearchContext context) {
@@ -177,7 +160,7 @@ public class PIMEXAMINATIONRESULTSResource {
                 .body(list);
 	}
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMEXAMINATIONRESULTS-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMEXAMINATIONRESULTS-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PIMEXAMINATIONRESULTS" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pimexaminationresults/searchdefault")
 	public ResponseEntity<Page<PIMEXAMINATIONRESULTSDTO>> searchDefault(@RequestBody PIMEXAMINATIONRESULTSSearchContext context) {
@@ -185,8 +168,4 @@ public class PIMEXAMINATIONRESULTSResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimexaminationresultsMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
 }
-
-

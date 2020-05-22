@@ -54,25 +54,20 @@ public class UserDictCatResource {
 
     public UserDictCatDTO permissionDTO=new UserDictCatDTO();
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UserDictCat-Save-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UserDictCat-Save-all')")
     @ApiOperation(value = "Save", tags = {"UserDictCat" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/userdictcats/save")
     public ResponseEntity<Boolean> save(@RequestBody UserDictCatDTO userdictcatdto) {
         return ResponseEntity.status(HttpStatus.OK).body(userdictcatService.save(userdictcatMapping.toDomain(userdictcatdto)));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"UserDictCat" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/userdictcats/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<UserDictCatDTO> userdictcatdtos) {
         userdictcatService.saveBatch(userdictcatMapping.toDomain(userdictcatdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#userdictcat_id,'Get',{'Sql',this.userdictcatMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"UserDictCat" },  notes = "Get")
@@ -83,18 +78,12 @@ public class UserDictCatResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UserDictCat-CheckKey-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UserDictCat-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"UserDictCat" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/userdictcats/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody UserDictCatDTO userdictcatdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(userdictcatService.checkKey(userdictcatMapping.toDomain(userdictcatdto)));
     }
-
-
-
 
     @PreAuthorize("hasPermission(#userdictcat_id,'Update',{'Sql',this.userdictcatMapping,#userdictcatdto})")
     @ApiOperation(value = "Update", tags = {"UserDictCat" },  notes = "Update")
@@ -108,15 +97,13 @@ public class UserDictCatResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"UserDictCat" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/userdictcats/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<UserDictCatDTO> userdictcatdtos) {
         userdictcatService.updateBatch(userdictcatMapping.toDomain(userdictcatdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#userdictcat_id,'Remove',{'Sql',this.userdictcatMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"UserDictCat" },  notes = "Remove")
@@ -126,6 +113,7 @@ public class UserDictCatResource {
          return ResponseEntity.status(HttpStatus.OK).body(userdictcatService.remove(userdictcat_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"UserDictCat" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/userdictcats/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -133,18 +121,12 @@ public class UserDictCatResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UserDictCat-GetDraft-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UserDictCat-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"UserDictCat" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/userdictcats/getdraft")
     public ResponseEntity<UserDictCatDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(userdictcatMapping.toDto(userdictcatService.getDraft(new UserDictCat())));
     }
-
-
-
 
     @PreAuthorize("hasPermission('','Create',{'Sql',this.userdictcatMapping,#userdictcatdto})")
     @ApiOperation(value = "Create", tags = {"UserDictCat" },  notes = "Create")
@@ -157,6 +139,7 @@ public class UserDictCatResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatch", tags = {"UserDictCat" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/userdictcats/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<UserDictCatDTO> userdictcatdtos) {
@@ -164,7 +147,7 @@ public class UserDictCatResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UserDictCat-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UserDictCat-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"UserDictCat" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/userdictcats/fetchdefault")
 	public ResponseEntity<List<UserDictCatDTO>> fetchDefault(UserDictCatSearchContext context) {
@@ -177,7 +160,7 @@ public class UserDictCatResource {
                 .body(list);
 	}
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UserDictCat-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UserDictCat-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"UserDictCat" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/userdictcats/searchdefault")
 	public ResponseEntity<Page<UserDictCatDTO>> searchDefault(@RequestBody UserDictCatSearchContext context) {
@@ -185,8 +168,4 @@ public class UserDictCatResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(userdictcatMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
 }
-
-

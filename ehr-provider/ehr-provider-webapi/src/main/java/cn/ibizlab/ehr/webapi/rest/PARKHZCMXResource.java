@@ -54,9 +54,6 @@ public class PARKHZCMXResource {
 
     public PARKHZCMXDTO permissionDTO=new PARKHZCMXDTO();
 
-
-
-
     @PreAuthorize("hasPermission('','Create',{'Sql',this.parkhzcmxMapping,#parkhzcmxdto})")
     @ApiOperation(value = "Create", tags = {"PARKHZCMX" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/parkhzcmxes")
@@ -68,6 +65,7 @@ public class PARKHZCMXResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatch", tags = {"PARKHZCMX" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/parkhzcmxes/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PARKHZCMXDTO> parkhzcmxdtos) {
@@ -75,25 +73,20 @@ public class PARKHZCMXResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PARKHZCMX-Save-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PARKHZCMX-Save-all')")
     @ApiOperation(value = "Save", tags = {"PARKHZCMX" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/parkhzcmxes/save")
     public ResponseEntity<Boolean> save(@RequestBody PARKHZCMXDTO parkhzcmxdto) {
         return ResponseEntity.status(HttpStatus.OK).body(parkhzcmxService.save(parkhzcmxMapping.toDomain(parkhzcmxdto)));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"PARKHZCMX" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/parkhzcmxes/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PARKHZCMXDTO> parkhzcmxdtos) {
         parkhzcmxService.saveBatch(parkhzcmxMapping.toDomain(parkhzcmxdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#parkhzcmx_id,'Get',{'Sql',this.parkhzcmxMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"PARKHZCMX" },  notes = "Get")
@@ -104,18 +97,12 @@ public class PARKHZCMXResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PARKHZCMX-GetDraft-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PARKHZCMX-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"PARKHZCMX" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/parkhzcmxes/getdraft")
     public ResponseEntity<PARKHZCMXDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(parkhzcmxMapping.toDto(parkhzcmxService.getDraft(new PARKHZCMX())));
     }
-
-
-
 
     @PreAuthorize("hasPermission(#parkhzcmx_id,'Remove',{'Sql',this.parkhzcmxMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"PARKHZCMX" },  notes = "Remove")
@@ -125,6 +112,7 @@ public class PARKHZCMXResource {
          return ResponseEntity.status(HttpStatus.OK).body(parkhzcmxService.remove(parkhzcmx_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"PARKHZCMX" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/parkhzcmxes/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -132,18 +120,12 @@ public class PARKHZCMXResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PARKHZCMX-CheckKey-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PARKHZCMX-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"PARKHZCMX" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/parkhzcmxes/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PARKHZCMXDTO parkhzcmxdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(parkhzcmxService.checkKey(parkhzcmxMapping.toDomain(parkhzcmxdto)));
     }
-
-
-
 
     @PreAuthorize("hasPermission(#parkhzcmx_id,'Update',{'Sql',this.parkhzcmxMapping,#parkhzcmxdto})")
     @ApiOperation(value = "Update", tags = {"PARKHZCMX" },  notes = "Update")
@@ -157,6 +139,7 @@ public class PARKHZCMXResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"PARKHZCMX" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/parkhzcmxes/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PARKHZCMXDTO> parkhzcmxdtos) {
@@ -164,7 +147,7 @@ public class PARKHZCMXResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PARKHZCMX-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PARKHZCMX-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PARKHZCMX" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/parkhzcmxes/fetchdefault")
 	public ResponseEntity<List<PARKHZCMXDTO>> fetchDefault(PARKHZCMXSearchContext context) {
@@ -177,7 +160,7 @@ public class PARKHZCMXResource {
                 .body(list);
 	}
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PARKHZCMX-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PARKHZCMX-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PARKHZCMX" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/parkhzcmxes/searchdefault")
 	public ResponseEntity<Page<PARKHZCMXDTO>> searchDefault(@RequestBody PARKHZCMXSearchContext context) {
@@ -185,8 +168,4 @@ public class PARKHZCMXResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(parkhzcmxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
 }
-
-

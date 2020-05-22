@@ -54,9 +54,6 @@ public class PARXMBPJBZResource {
 
     public PARXMBPJBZDTO permissionDTO=new PARXMBPJBZDTO();
 
-
-
-
     @PreAuthorize("hasPermission(#parxmbpjbz_id,'Get',{'Sql',this.parxmbpjbzMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"PARXMBPJBZ" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/parxmbpjbzs/{parxmbpjbz_id}")
@@ -66,9 +63,6 @@ public class PARXMBPJBZResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-
-
-
     @PreAuthorize("hasPermission(#parxmbpjbz_id,'Remove',{'Sql',this.parxmbpjbzMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"PARXMBPJBZ" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/parxmbpjbzs/{parxmbpjbz_id}")
@@ -77,6 +71,7 @@ public class PARXMBPJBZResource {
          return ResponseEntity.status(HttpStatus.OK).body(parxmbpjbzService.remove(parxmbpjbz_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"PARXMBPJBZ" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/parxmbpjbzs/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -84,18 +79,12 @@ public class PARXMBPJBZResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PARXMBPJBZ-CheckKey-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PARXMBPJBZ-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"PARXMBPJBZ" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/parxmbpjbzs/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PARXMBPJBZDTO parxmbpjbzdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(parxmbpjbzService.checkKey(parxmbpjbzMapping.toDomain(parxmbpjbzdto)));
     }
-
-
-
 
     @PreAuthorize("hasPermission(#parxmbpjbz_id,'Update',{'Sql',this.parxmbpjbzMapping,#parxmbpjbzdto})")
     @ApiOperation(value = "Update", tags = {"PARXMBPJBZ" },  notes = "Update")
@@ -109,15 +98,13 @@ public class PARXMBPJBZResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"PARXMBPJBZ" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/parxmbpjbzs/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PARXMBPJBZDTO> parxmbpjbzdtos) {
         parxmbpjbzService.updateBatch(parxmbpjbzMapping.toDomain(parxmbpjbzdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission('','Create',{'Sql',this.parxmbpjbzMapping,#parxmbpjbzdto})")
     @ApiOperation(value = "Create", tags = {"PARXMBPJBZ" },  notes = "Create")
@@ -130,6 +117,7 @@ public class PARXMBPJBZResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatch", tags = {"PARXMBPJBZ" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/parxmbpjbzs/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PARXMBPJBZDTO> parxmbpjbzdtos) {
@@ -137,16 +125,14 @@ public class PARXMBPJBZResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PARXMBPJBZ-Save-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PARXMBPJBZ-Save-all')")
     @ApiOperation(value = "Save", tags = {"PARXMBPJBZ" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/parxmbpjbzs/save")
     public ResponseEntity<Boolean> save(@RequestBody PARXMBPJBZDTO parxmbpjbzdto) {
         return ResponseEntity.status(HttpStatus.OK).body(parxmbpjbzService.save(parxmbpjbzMapping.toDomain(parxmbpjbzdto)));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"PARXMBPJBZ" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/parxmbpjbzs/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PARXMBPJBZDTO> parxmbpjbzdtos) {
@@ -154,17 +140,14 @@ public class PARXMBPJBZResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PARXMBPJBZ-GetDraft-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PARXMBPJBZ-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"PARXMBPJBZ" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/parxmbpjbzs/getdraft")
     public ResponseEntity<PARXMBPJBZDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(parxmbpjbzMapping.toDto(parxmbpjbzService.getDraft(new PARXMBPJBZ())));
     }
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PARXMBPJBZ-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PARXMBPJBZ-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PARXMBPJBZ" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/parxmbpjbzs/fetchdefault")
 	public ResponseEntity<List<PARXMBPJBZDTO>> fetchDefault(PARXMBPJBZSearchContext context) {
@@ -177,7 +160,7 @@ public class PARXMBPJBZResource {
                 .body(list);
 	}
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PARXMBPJBZ-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PARXMBPJBZ-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PARXMBPJBZ" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/parxmbpjbzs/searchdefault")
 	public ResponseEntity<Page<PARXMBPJBZDTO>> searchDefault(@RequestBody PARXMBPJBZSearchContext context) {
@@ -185,8 +168,4 @@ public class PARXMBPJBZResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(parxmbpjbzMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
 }
-
-

@@ -54,9 +54,6 @@ public class WFUserAssistResource {
 
     public WFUserAssistDTO permissionDTO=new WFUserAssistDTO();
 
-
-
-
     @PreAuthorize("hasPermission('','Create',{'Sql',this.wfuserassistMapping,#wfuserassistdto})")
     @ApiOperation(value = "Create", tags = {"WFUserAssist" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/wfuserassists")
@@ -68,15 +65,13 @@ public class WFUserAssistResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatch", tags = {"WFUserAssist" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/wfuserassists/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<WFUserAssistDTO> wfuserassistdtos) {
         wfuserassistService.createBatch(wfuserassistMapping.toDomain(wfuserassistdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#wfuserassist_id,'Update',{'Sql',this.wfuserassistMapping,#wfuserassistdto})")
     @ApiOperation(value = "Update", tags = {"WFUserAssist" },  notes = "Update")
@@ -90,15 +85,13 @@ public class WFUserAssistResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"WFUserAssist" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/wfuserassists/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<WFUserAssistDTO> wfuserassistdtos) {
         wfuserassistService.updateBatch(wfuserassistMapping.toDomain(wfuserassistdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#wfuserassist_id,'Remove',{'Sql',this.wfuserassistMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"WFUserAssist" },  notes = "Remove")
@@ -108,6 +101,7 @@ public class WFUserAssistResource {
          return ResponseEntity.status(HttpStatus.OK).body(wfuserassistService.remove(wfuserassist_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"WFUserAssist" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/wfuserassists/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -115,45 +109,34 @@ public class WFUserAssistResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFUserAssist-CheckKey-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFUserAssist-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"WFUserAssist" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/wfuserassists/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody WFUserAssistDTO wfuserassistdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(wfuserassistService.checkKey(wfuserassistMapping.toDomain(wfuserassistdto)));
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFUserAssist-GetDraft-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFUserAssist-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"WFUserAssist" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/wfuserassists/getdraft")
     public ResponseEntity<WFUserAssistDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(wfuserassistMapping.toDto(wfuserassistService.getDraft(new WFUserAssist())));
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFUserAssist-Save-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFUserAssist-Save-all')")
     @ApiOperation(value = "Save", tags = {"WFUserAssist" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/wfuserassists/save")
     public ResponseEntity<Boolean> save(@RequestBody WFUserAssistDTO wfuserassistdto) {
         return ResponseEntity.status(HttpStatus.OK).body(wfuserassistService.save(wfuserassistMapping.toDomain(wfuserassistdto)));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"WFUserAssist" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/wfuserassists/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<WFUserAssistDTO> wfuserassistdtos) {
         wfuserassistService.saveBatch(wfuserassistMapping.toDomain(wfuserassistdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#wfuserassist_id,'Get',{'Sql',this.wfuserassistMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"WFUserAssist" },  notes = "Get")
@@ -164,7 +147,7 @@ public class WFUserAssistResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFUserAssist-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFUserAssist-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"WFUserAssist" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/wfuserassists/fetchdefault")
 	public ResponseEntity<List<WFUserAssistDTO>> fetchDefault(WFUserAssistSearchContext context) {
@@ -177,7 +160,7 @@ public class WFUserAssistResource {
                 .body(list);
 	}
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFUserAssist-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFUserAssist-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"WFUserAssist" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/wfuserassists/searchdefault")
 	public ResponseEntity<Page<WFUserAssistDTO>> searchDefault(@RequestBody WFUserAssistSearchContext context) {
@@ -185,8 +168,4 @@ public class WFUserAssistResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(wfuserassistMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
 }
-
-

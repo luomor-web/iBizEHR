@@ -54,9 +54,6 @@ public class SOCCOMPANYWELResource {
 
     public SOCCOMPANYWELDTO permissionDTO=new SOCCOMPANYWELDTO();
 
-
-
-
     @PreAuthorize("hasPermission('','Create',{'Sql',this.soccompanywelMapping,#soccompanyweldto})")
     @ApiOperation(value = "Create", tags = {"SOCCOMPANYWEL" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/soccompanywels")
@@ -68,6 +65,7 @@ public class SOCCOMPANYWELResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatch", tags = {"SOCCOMPANYWEL" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/soccompanywels/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<SOCCOMPANYWELDTO> soccompanyweldtos) {
@@ -75,35 +73,27 @@ public class SOCCOMPANYWELResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SOCCOMPANYWEL-CheckKey-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SOCCOMPANYWEL-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"SOCCOMPANYWEL" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/soccompanywels/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody SOCCOMPANYWELDTO soccompanyweldto) {
         return  ResponseEntity.status(HttpStatus.OK).body(soccompanywelService.checkKey(soccompanywelMapping.toDomain(soccompanyweldto)));
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SOCCOMPANYWEL-Save-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SOCCOMPANYWEL-Save-all')")
     @ApiOperation(value = "Save", tags = {"SOCCOMPANYWEL" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/soccompanywels/save")
     public ResponseEntity<Boolean> save(@RequestBody SOCCOMPANYWELDTO soccompanyweldto) {
         return ResponseEntity.status(HttpStatus.OK).body(soccompanywelService.save(soccompanywelMapping.toDomain(soccompanyweldto)));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"SOCCOMPANYWEL" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/soccompanywels/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<SOCCOMPANYWELDTO> soccompanyweldtos) {
         soccompanywelService.saveBatch(soccompanywelMapping.toDomain(soccompanyweldtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#soccompanywel_id,'Update',{'Sql',this.soccompanywelMapping,#soccompanyweldto})")
     @ApiOperation(value = "Update", tags = {"SOCCOMPANYWEL" },  notes = "Update")
@@ -117,15 +107,13 @@ public class SOCCOMPANYWELResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"SOCCOMPANYWEL" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/soccompanywels/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<SOCCOMPANYWELDTO> soccompanyweldtos) {
         soccompanywelService.updateBatch(soccompanywelMapping.toDomain(soccompanyweldtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#soccompanywel_id,'Get',{'Sql',this.soccompanywelMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"SOCCOMPANYWEL" },  notes = "Get")
@@ -136,9 +124,6 @@ public class SOCCOMPANYWELResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-
-
-
     @PreAuthorize("hasPermission(#soccompanywel_id,'Remove',{'Sql',this.soccompanywelMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"SOCCOMPANYWEL" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/soccompanywels/{soccompanywel_id}")
@@ -147,6 +132,7 @@ public class SOCCOMPANYWELResource {
          return ResponseEntity.status(HttpStatus.OK).body(soccompanywelService.remove(soccompanywel_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"SOCCOMPANYWEL" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/soccompanywels/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -154,17 +140,14 @@ public class SOCCOMPANYWELResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SOCCOMPANYWEL-GetDraft-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SOCCOMPANYWEL-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"SOCCOMPANYWEL" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/soccompanywels/getdraft")
     public ResponseEntity<SOCCOMPANYWELDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(soccompanywelMapping.toDto(soccompanywelService.getDraft(new SOCCOMPANYWEL())));
     }
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SOCCOMPANYWEL-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SOCCOMPANYWEL-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"SOCCOMPANYWEL" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/soccompanywels/fetchdefault")
 	public ResponseEntity<List<SOCCOMPANYWELDTO>> fetchDefault(SOCCOMPANYWELSearchContext context) {
@@ -177,7 +160,7 @@ public class SOCCOMPANYWELResource {
                 .body(list);
 	}
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SOCCOMPANYWEL-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SOCCOMPANYWEL-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"SOCCOMPANYWEL" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/soccompanywels/searchdefault")
 	public ResponseEntity<Page<SOCCOMPANYWELDTO>> searchDefault(@RequestBody SOCCOMPANYWELSearchContext context) {
@@ -185,8 +168,4 @@ public class SOCCOMPANYWELResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(soccompanywelMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
 }
-
-

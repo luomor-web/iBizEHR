@@ -54,9 +54,6 @@ public class WFUCPolicyResource {
 
     public WFUCPolicyDTO permissionDTO=new WFUCPolicyDTO();
 
-
-
-
     @PreAuthorize("hasPermission(#wfucpolicy_id,'Get',{'Sql',this.wfucpolicyMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"WFUCPolicy" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/wfucpolicies/{wfucpolicy_id}")
@@ -66,10 +63,7 @@ public class WFUCPolicyResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFUCPolicy-DisablePolicy-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFUCPolicy-DisablePolicy-all')")
     @ApiOperation(value = "禁用策略", tags = {"WFUCPolicy" },  notes = "禁用策略")
 	@RequestMapping(method = RequestMethod.POST, value = "/wfucpolicies/{wfucpolicy_id}/disablepolicy")
     @Transactional
@@ -80,25 +74,20 @@ public class WFUCPolicyResource {
         return ResponseEntity.status(HttpStatus.OK).body(wfucpolicydto);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFUCPolicy-Save-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFUCPolicy-Save-all')")
     @ApiOperation(value = "Save", tags = {"WFUCPolicy" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/wfucpolicies/save")
     public ResponseEntity<Boolean> save(@RequestBody WFUCPolicyDTO wfucpolicydto) {
         return ResponseEntity.status(HttpStatus.OK).body(wfucpolicyService.save(wfucpolicyMapping.toDomain(wfucpolicydto)));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"WFUCPolicy" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/wfucpolicies/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<WFUCPolicyDTO> wfucpolicydtos) {
         wfucpolicyService.saveBatch(wfucpolicyMapping.toDomain(wfucpolicydtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#wfucpolicy_id,'Update',{'Sql',this.wfucpolicyMapping,#wfucpolicydto})")
     @ApiOperation(value = "Update", tags = {"WFUCPolicy" },  notes = "Update")
@@ -112,15 +101,13 @@ public class WFUCPolicyResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"WFUCPolicy" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/wfucpolicies/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<WFUCPolicyDTO> wfucpolicydtos) {
         wfucpolicyService.updateBatch(wfucpolicyMapping.toDomain(wfucpolicydtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission('','Create',{'Sql',this.wfucpolicyMapping,#wfucpolicydto})")
     @ApiOperation(value = "Create", tags = {"WFUCPolicy" },  notes = "Create")
@@ -133,6 +120,7 @@ public class WFUCPolicyResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatch", tags = {"WFUCPolicy" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/wfucpolicies/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<WFUCPolicyDTO> wfucpolicydtos) {
@@ -140,10 +128,7 @@ public class WFUCPolicyResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFUCPolicy-EnablePolicy-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFUCPolicy-EnablePolicy-all')")
     @ApiOperation(value = "启用策略", tags = {"WFUCPolicy" },  notes = "启用策略")
 	@RequestMapping(method = RequestMethod.POST, value = "/wfucpolicies/{wfucpolicy_id}/enablepolicy")
     @Transactional
@@ -154,9 +139,6 @@ public class WFUCPolicyResource {
         return ResponseEntity.status(HttpStatus.OK).body(wfucpolicydto);
     }
 
-
-
-
     @PreAuthorize("hasPermission(#wfucpolicy_id,'Remove',{'Sql',this.wfucpolicyMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"WFUCPolicy" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/wfucpolicies/{wfucpolicy_id}")
@@ -165,6 +147,7 @@ public class WFUCPolicyResource {
          return ResponseEntity.status(HttpStatus.OK).body(wfucpolicyService.remove(wfucpolicy_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"WFUCPolicy" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/wfucpolicies/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -172,27 +155,21 @@ public class WFUCPolicyResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFUCPolicy-CheckKey-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFUCPolicy-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"WFUCPolicy" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/wfucpolicies/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody WFUCPolicyDTO wfucpolicydto) {
         return  ResponseEntity.status(HttpStatus.OK).body(wfucpolicyService.checkKey(wfucpolicyMapping.toDomain(wfucpolicydto)));
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFUCPolicy-GetDraft-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFUCPolicy-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"WFUCPolicy" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/wfucpolicies/getdraft")
     public ResponseEntity<WFUCPolicyDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(wfucpolicyMapping.toDto(wfucpolicyService.getDraft(new WFUCPolicy())));
     }
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFUCPolicy-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFUCPolicy-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"WFUCPolicy" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/wfucpolicies/fetchdefault")
 	public ResponseEntity<List<WFUCPolicyDTO>> fetchDefault(WFUCPolicySearchContext context) {
@@ -205,7 +182,7 @@ public class WFUCPolicyResource {
                 .body(list);
 	}
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFUCPolicy-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFUCPolicy-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"WFUCPolicy" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/wfucpolicies/searchdefault")
 	public ResponseEntity<Page<WFUCPolicyDTO>> searchDefault(@RequestBody WFUCPolicySearchContext context) {
@@ -213,8 +190,4 @@ public class WFUCPolicyResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(wfucpolicyMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
 }
-
-

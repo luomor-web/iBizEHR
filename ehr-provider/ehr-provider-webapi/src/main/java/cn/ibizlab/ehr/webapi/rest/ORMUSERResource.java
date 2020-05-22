@@ -54,9 +54,6 @@ public class ORMUSERResource {
 
     public ORMUSERDTO permissionDTO=new ORMUSERDTO();
 
-
-
-
     @PreAuthorize("hasPermission(#ormuser_id,'Get',{'Sql',this.ormuserMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"ORMUSER" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/ormusers/{ormuser_id}")
@@ -65,9 +62,6 @@ public class ORMUSERResource {
         ORMUSERDTO dto = ormuserMapping.toDto(domain);
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
-
-
 
     @PreAuthorize("hasPermission('','Create',{'Sql',this.ormuserMapping,#ormuserdto})")
     @ApiOperation(value = "Create", tags = {"ORMUSER" },  notes = "Create")
@@ -80,15 +74,13 @@ public class ORMUSERResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatch", tags = {"ORMUSER" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormusers/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<ORMUSERDTO> ormuserdtos) {
         ormuserService.createBatch(ormuserMapping.toDomain(ormuserdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#ormuser_id,'Remove',{'Sql',this.ormuserMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"ORMUSER" },  notes = "Remove")
@@ -98,15 +90,13 @@ public class ORMUSERResource {
          return ResponseEntity.status(HttpStatus.OK).body(ormuserService.remove(ormuser_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"ORMUSER" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/ormusers/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         ormuserService.removeBatch(ids);
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#ormuser_id,'Update',{'Sql',this.ormuserMapping,#ormuserdto})")
     @ApiOperation(value = "Update", tags = {"ORMUSER" },  notes = "Update")
@@ -120,6 +110,7 @@ public class ORMUSERResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"ORMUSER" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/ormusers/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<ORMUSERDTO> ormuserdtos) {
@@ -127,26 +118,21 @@ public class ORMUSERResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMUSER-CheckKey-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMUSER-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"ORMUSER" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormusers/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody ORMUSERDTO ormuserdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(ormuserService.checkKey(ormuserMapping.toDomain(ormuserdto)));
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMUSER-Save-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMUSER-Save-all')")
     @ApiOperation(value = "Save", tags = {"ORMUSER" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormusers/save")
     public ResponseEntity<Boolean> save(@RequestBody ORMUSERDTO ormuserdto) {
         return ResponseEntity.status(HttpStatus.OK).body(ormuserService.save(ormuserMapping.toDomain(ormuserdto)));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"ORMUSER" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormusers/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<ORMUSERDTO> ormuserdtos) {
@@ -154,17 +140,14 @@ public class ORMUSERResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMUSER-GetDraft-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMUSER-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"ORMUSER" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/ormusers/getdraft")
     public ResponseEntity<ORMUSERDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(ormuserMapping.toDto(ormuserService.getDraft(new ORMUSER())));
     }
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMUSER-DQZZJXJZZ-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMUSER-DQZZJXJZZ-all')")
 	@ApiOperation(value = "fetch当前组织及下级组织", tags = {"ORMUSER" } ,notes = "fetch当前组织及下级组织")
     @RequestMapping(method= RequestMethod.GET , value="/ormusers/fetchdqzzjxjzz")
 	public ResponseEntity<List<ORMUSERDTO>> fetchDQZZJXJZZ(ORMUSERSearchContext context) {
@@ -177,7 +160,7 @@ public class ORMUSERResource {
                 .body(list);
 	}
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMUSER-DQZZJXJZZ-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMUSER-DQZZJXJZZ-all')")
 	@ApiOperation(value = "search当前组织及下级组织", tags = {"ORMUSER" } ,notes = "search当前组织及下级组织")
     @RequestMapping(method= RequestMethod.POST , value="/ormusers/searchdqzzjxjzz")
 	public ResponseEntity<Page<ORMUSERDTO>> searchDQZZJXJZZ(@RequestBody ORMUSERSearchContext context) {
@@ -185,8 +168,7 @@ public class ORMUSERResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(ormuserMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMUSER-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMUSER-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"ORMUSER" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/ormusers/fetchdefault")
 	public ResponseEntity<List<ORMUSERDTO>> fetchDefault(ORMUSERSearchContext context) {
@@ -199,7 +181,7 @@ public class ORMUSERResource {
                 .body(list);
 	}
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMUSER-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMUSER-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"ORMUSER" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/ormusers/searchdefault")
 	public ResponseEntity<Page<ORMUSERDTO>> searchDefault(@RequestBody ORMUSERSearchContext context) {
@@ -207,8 +189,4 @@ public class ORMUSERResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(ormuserMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
 }
-
-

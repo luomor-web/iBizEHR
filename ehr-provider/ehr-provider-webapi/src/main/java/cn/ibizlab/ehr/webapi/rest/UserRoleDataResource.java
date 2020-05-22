@@ -54,18 +54,12 @@ public class UserRoleDataResource {
 
     public UserRoleDataDTO permissionDTO=new UserRoleDataDTO();
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UserRoleData-CheckKey-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UserRoleData-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"UserRoleData" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/userroledata/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody UserRoleDataDTO userroledatadto) {
         return  ResponseEntity.status(HttpStatus.OK).body(userroledataService.checkKey(userroledataMapping.toDomain(userroledatadto)));
     }
-
-
-
 
     @PreAuthorize("hasPermission('','Create',{'Sql',this.userroledataMapping,#userroledatadto})")
     @ApiOperation(value = "Create", tags = {"UserRoleData" },  notes = "Create")
@@ -78,15 +72,13 @@ public class UserRoleDataResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatch", tags = {"UserRoleData" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/userroledata/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<UserRoleDataDTO> userroledatadtos) {
         userroledataService.createBatch(userroledataMapping.toDomain(userroledatadtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#userroledata_id,'Update',{'Sql',this.userroledataMapping,#userroledatadto})")
     @ApiOperation(value = "Update", tags = {"UserRoleData" },  notes = "Update")
@@ -100,15 +92,13 @@ public class UserRoleDataResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"UserRoleData" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/userroledata/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<UserRoleDataDTO> userroledatadtos) {
         userroledataService.updateBatch(userroledataMapping.toDomain(userroledatadtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#userroledata_id,'Get',{'Sql',this.userroledataMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"UserRoleData" },  notes = "Get")
@@ -119,9 +109,6 @@ public class UserRoleDataResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-
-
-
     @PreAuthorize("hasPermission(#userroledata_id,'Remove',{'Sql',this.userroledataMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"UserRoleData" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/userroledata/{userroledata_id}")
@@ -130,6 +117,7 @@ public class UserRoleDataResource {
          return ResponseEntity.status(HttpStatus.OK).body(userroledataService.remove(userroledata_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"UserRoleData" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/userroledata/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -137,16 +125,14 @@ public class UserRoleDataResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UserRoleData-Save-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UserRoleData-Save-all')")
     @ApiOperation(value = "Save", tags = {"UserRoleData" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/userroledata/save")
     public ResponseEntity<Boolean> save(@RequestBody UserRoleDataDTO userroledatadto) {
         return ResponseEntity.status(HttpStatus.OK).body(userroledataService.save(userroledataMapping.toDomain(userroledatadto)));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"UserRoleData" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/userroledata/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<UserRoleDataDTO> userroledatadtos) {
@@ -154,17 +140,14 @@ public class UserRoleDataResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UserRoleData-GetDraft-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UserRoleData-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"UserRoleData" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/userroledata/getdraft")
     public ResponseEntity<UserRoleDataDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(userroledataMapping.toDto(userroledataService.getDraft(new UserRoleData())));
     }
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UserRoleData-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UserRoleData-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"UserRoleData" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/userroledata/fetchdefault")
 	public ResponseEntity<List<UserRoleDataDTO>> fetchDefault(UserRoleDataSearchContext context) {
@@ -177,7 +160,7 @@ public class UserRoleDataResource {
                 .body(list);
 	}
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UserRoleData-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UserRoleData-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"UserRoleData" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/userroledata/searchdefault")
 	public ResponseEntity<Page<UserRoleDataDTO>> searchDefault(@RequestBody UserRoleDataSearchContext context) {
@@ -185,8 +168,4 @@ public class UserRoleDataResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(userroledataMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
 }
-
-

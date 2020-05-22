@@ -54,9 +54,6 @@ public class WFDynamicUserResource {
 
     public WFDynamicUserDTO permissionDTO=new WFDynamicUserDTO();
 
-
-
-
     @PreAuthorize("hasPermission('','Create',{'Sql',this.wfdynamicuserMapping,#wfdynamicuserdto})")
     @ApiOperation(value = "Create", tags = {"WFDynamicUser" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/wfdynamicusers")
@@ -68,15 +65,13 @@ public class WFDynamicUserResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatch", tags = {"WFDynamicUser" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/wfdynamicusers/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<WFDynamicUserDTO> wfdynamicuserdtos) {
         wfdynamicuserService.createBatch(wfdynamicuserMapping.toDomain(wfdynamicuserdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#wfdynamicuser_id,'Get',{'Sql',this.wfdynamicuserMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"WFDynamicUser" },  notes = "Get")
@@ -87,16 +82,14 @@ public class WFDynamicUserResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFDynamicUser-Save-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFDynamicUser-Save-all')")
     @ApiOperation(value = "Save", tags = {"WFDynamicUser" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/wfdynamicusers/save")
     public ResponseEntity<Boolean> save(@RequestBody WFDynamicUserDTO wfdynamicuserdto) {
         return ResponseEntity.status(HttpStatus.OK).body(wfdynamicuserService.save(wfdynamicuserMapping.toDomain(wfdynamicuserdto)));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"WFDynamicUser" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/wfdynamicusers/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<WFDynamicUserDTO> wfdynamicuserdtos) {
@@ -104,28 +97,19 @@ public class WFDynamicUserResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFDynamicUser-CheckKey-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFDynamicUser-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"WFDynamicUser" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/wfdynamicusers/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody WFDynamicUserDTO wfdynamicuserdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(wfdynamicuserService.checkKey(wfdynamicuserMapping.toDomain(wfdynamicuserdto)));
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFDynamicUser-GetDraft-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFDynamicUser-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"WFDynamicUser" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/wfdynamicusers/getdraft")
     public ResponseEntity<WFDynamicUserDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(wfdynamicuserMapping.toDto(wfdynamicuserService.getDraft(new WFDynamicUser())));
     }
-
-
-
 
     @PreAuthorize("hasPermission(#wfdynamicuser_id,'Update',{'Sql',this.wfdynamicuserMapping,#wfdynamicuserdto})")
     @ApiOperation(value = "Update", tags = {"WFDynamicUser" },  notes = "Update")
@@ -139,15 +123,13 @@ public class WFDynamicUserResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"WFDynamicUser" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/wfdynamicusers/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<WFDynamicUserDTO> wfdynamicuserdtos) {
         wfdynamicuserService.updateBatch(wfdynamicuserMapping.toDomain(wfdynamicuserdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#wfdynamicuser_id,'Remove',{'Sql',this.wfdynamicuserMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"WFDynamicUser" },  notes = "Remove")
@@ -157,6 +139,7 @@ public class WFDynamicUserResource {
          return ResponseEntity.status(HttpStatus.OK).body(wfdynamicuserService.remove(wfdynamicuser_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"WFDynamicUser" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/wfdynamicusers/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -164,7 +147,7 @@ public class WFDynamicUserResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFDynamicUser-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFDynamicUser-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"WFDynamicUser" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/wfdynamicusers/fetchdefault")
 	public ResponseEntity<List<WFDynamicUserDTO>> fetchDefault(WFDynamicUserSearchContext context) {
@@ -177,7 +160,7 @@ public class WFDynamicUserResource {
                 .body(list);
 	}
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFDynamicUser-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFDynamicUser-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"WFDynamicUser" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/wfdynamicusers/searchdefault")
 	public ResponseEntity<Page<WFDynamicUserDTO>> searchDefault(@RequestBody WFDynamicUserSearchContext context) {
@@ -185,8 +168,4 @@ public class WFDynamicUserResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(wfdynamicuserMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
 }
-
-

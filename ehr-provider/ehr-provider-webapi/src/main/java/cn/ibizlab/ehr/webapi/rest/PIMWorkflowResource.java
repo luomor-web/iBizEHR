@@ -54,28 +54,19 @@ public class PIMWorkflowResource {
 
     public PIMWorkflowDTO permissionDTO=new PIMWorkflowDTO();
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMWorkflow-CheckKey-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMWorkflow-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"PIMWorkflow" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimworkflows/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PIMWorkflowDTO pimworkflowdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pimworkflowService.checkKey(pimworkflowMapping.toDomain(pimworkflowdto)));
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMWorkflow-GetDraft-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMWorkflow-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"PIMWorkflow" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimworkflows/getdraft")
     public ResponseEntity<PIMWorkflowDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(pimworkflowMapping.toDto(pimworkflowService.getDraft(new PIMWorkflow())));
     }
-
-
-
 
     @PreAuthorize("hasPermission(#pimworkflow_id,'Remove',{'Sql',this.pimworkflowMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"PIMWorkflow" },  notes = "Remove")
@@ -85,6 +76,7 @@ public class PIMWorkflowResource {
          return ResponseEntity.status(HttpStatus.OK).body(pimworkflowService.remove(pimworkflow_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"PIMWorkflow" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimworkflows/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -92,16 +84,14 @@ public class PIMWorkflowResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMWorkflow-Save-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMWorkflow-Save-all')")
     @ApiOperation(value = "Save", tags = {"PIMWorkflow" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimworkflows/save")
     public ResponseEntity<Boolean> save(@RequestBody PIMWorkflowDTO pimworkflowdto) {
         return ResponseEntity.status(HttpStatus.OK).body(pimworkflowService.save(pimworkflowMapping.toDomain(pimworkflowdto)));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"PIMWorkflow" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimworkflows/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PIMWorkflowDTO> pimworkflowdtos) {
@@ -109,10 +99,7 @@ public class PIMWorkflowResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMWorkflow-Sync-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMWorkflow-Sync-all')")
     @ApiOperation(value = "同步平台流程", tags = {"PIMWorkflow" },  notes = "同步平台流程")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimworkflows/{pimworkflow_id}/sync")
     @Transactional
@@ -123,9 +110,6 @@ public class PIMWorkflowResource {
         return ResponseEntity.status(HttpStatus.OK).body(pimworkflowdto);
     }
 
-
-
-
     @PreAuthorize("hasPermission(#pimworkflow_id,'Get',{'Sql',this.pimworkflowMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"PIMWorkflow" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimworkflows/{pimworkflow_id}")
@@ -134,9 +118,6 @@ public class PIMWorkflowResource {
         PIMWorkflowDTO dto = pimworkflowMapping.toDto(domain);
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#pimworkflow_id,'Update',{'Sql',this.pimworkflowMapping,#pimworkflowdto})")
     @ApiOperation(value = "Update", tags = {"PIMWorkflow" },  notes = "Update")
@@ -150,15 +131,13 @@ public class PIMWorkflowResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"PIMWorkflow" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimworkflows/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PIMWorkflowDTO> pimworkflowdtos) {
         pimworkflowService.updateBatch(pimworkflowMapping.toDomain(pimworkflowdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission('','Create',{'Sql',this.pimworkflowMapping,#pimworkflowdto})")
     @ApiOperation(value = "Create", tags = {"PIMWorkflow" },  notes = "Create")
@@ -171,6 +150,7 @@ public class PIMWorkflowResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatch", tags = {"PIMWorkflow" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimworkflows/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PIMWorkflowDTO> pimworkflowdtos) {
@@ -178,7 +158,7 @@ public class PIMWorkflowResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMWorkflow-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMWorkflow-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PIMWorkflow" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimworkflows/fetchdefault")
 	public ResponseEntity<List<PIMWorkflowDTO>> fetchDefault(PIMWorkflowSearchContext context) {
@@ -191,7 +171,7 @@ public class PIMWorkflowResource {
                 .body(list);
 	}
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMWorkflow-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMWorkflow-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PIMWorkflow" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pimworkflows/searchdefault")
 	public ResponseEntity<Page<PIMWorkflowDTO>> searchDefault(@RequestBody PIMWorkflowSearchContext context) {
@@ -199,8 +179,4 @@ public class PIMWorkflowResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimworkflowMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
 }
-
-

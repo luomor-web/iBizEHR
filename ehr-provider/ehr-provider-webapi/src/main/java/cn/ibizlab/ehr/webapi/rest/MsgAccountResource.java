@@ -54,9 +54,6 @@ public class MsgAccountResource {
 
     public MsgAccountDTO permissionDTO=new MsgAccountDTO();
 
-
-
-
     @PreAuthorize("hasPermission(#msgaccount_id,'Update',{'Sql',this.msgaccountMapping,#msgaccountdto})")
     @ApiOperation(value = "Update", tags = {"MsgAccount" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/msgaccounts/{msgaccount_id}")
@@ -69,15 +66,13 @@ public class MsgAccountResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"MsgAccount" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/msgaccounts/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<MsgAccountDTO> msgaccountdtos) {
         msgaccountService.updateBatch(msgaccountMapping.toDomain(msgaccountdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#msgaccount_id,'Remove',{'Sql',this.msgaccountMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"MsgAccount" },  notes = "Remove")
@@ -87,6 +82,7 @@ public class MsgAccountResource {
          return ResponseEntity.status(HttpStatus.OK).body(msgaccountService.remove(msgaccount_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"MsgAccount" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/msgaccounts/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -94,16 +90,14 @@ public class MsgAccountResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-MsgAccount-Save-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-MsgAccount-Save-all')")
     @ApiOperation(value = "Save", tags = {"MsgAccount" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/msgaccounts/save")
     public ResponseEntity<Boolean> save(@RequestBody MsgAccountDTO msgaccountdto) {
         return ResponseEntity.status(HttpStatus.OK).body(msgaccountService.save(msgaccountMapping.toDomain(msgaccountdto)));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"MsgAccount" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/msgaccounts/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<MsgAccountDTO> msgaccountdtos) {
@@ -111,18 +105,12 @@ public class MsgAccountResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-MsgAccount-CheckKey-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-MsgAccount-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"MsgAccount" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/msgaccounts/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody MsgAccountDTO msgaccountdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(msgaccountService.checkKey(msgaccountMapping.toDomain(msgaccountdto)));
     }
-
-
-
 
     @PreAuthorize("hasPermission(#msgaccount_id,'Get',{'Sql',this.msgaccountMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"MsgAccount" },  notes = "Get")
@@ -133,18 +121,12 @@ public class MsgAccountResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-MsgAccount-GetDraft-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-MsgAccount-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"MsgAccount" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/msgaccounts/getdraft")
     public ResponseEntity<MsgAccountDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(msgaccountMapping.toDto(msgaccountService.getDraft(new MsgAccount())));
     }
-
-
-
 
     @PreAuthorize("hasPermission('','Create',{'Sql',this.msgaccountMapping,#msgaccountdto})")
     @ApiOperation(value = "Create", tags = {"MsgAccount" },  notes = "Create")
@@ -157,6 +139,7 @@ public class MsgAccountResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatch", tags = {"MsgAccount" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/msgaccounts/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<MsgAccountDTO> msgaccountdtos) {
@@ -164,7 +147,7 @@ public class MsgAccountResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-MsgAccount-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-MsgAccount-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"MsgAccount" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/msgaccounts/fetchdefault")
 	public ResponseEntity<List<MsgAccountDTO>> fetchDefault(MsgAccountSearchContext context) {
@@ -177,7 +160,7 @@ public class MsgAccountResource {
                 .body(list);
 	}
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-MsgAccount-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-MsgAccount-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"MsgAccount" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/msgaccounts/searchdefault")
 	public ResponseEntity<Page<MsgAccountDTO>> searchDefault(@RequestBody MsgAccountSearchContext context) {
@@ -185,8 +168,4 @@ public class MsgAccountResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(msgaccountMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
 }
-
-

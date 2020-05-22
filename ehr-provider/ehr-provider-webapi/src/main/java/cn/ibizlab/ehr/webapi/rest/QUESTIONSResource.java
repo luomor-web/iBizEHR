@@ -54,10 +54,7 @@ public class QUESTIONSResource {
 
     public QUESTIONSDTO permissionDTO=new QUESTIONSDTO();
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-QUESTIONS-RemoveTemp-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-QUESTIONS-RemoveTemp-all')")
     @ApiOperation(value = "RemoveTemp", tags = {"QUESTIONS" },  notes = "RemoveTemp")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/questions/{questions_id}/removetemp")
     @Transactional
@@ -68,10 +65,7 @@ public class QUESTIONSResource {
         return ResponseEntity.status(HttpStatus.OK).body(questionsdto);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-QUESTIONS-GetTemp-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-QUESTIONS-GetTemp-all')")
     @ApiOperation(value = "GetTemp", tags = {"QUESTIONS" },  notes = "GetTemp")
 	@RequestMapping(method = RequestMethod.GET, value = "/questions/{questions_id}/gettemp")
     @Transactional
@@ -82,10 +76,7 @@ public class QUESTIONSResource {
         return ResponseEntity.status(HttpStatus.OK).body(questionsdto);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-QUESTIONS-GetDraftTempMajor-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-QUESTIONS-GetDraftTempMajor-all')")
     @ApiOperation(value = "GetDraftTempMajor", tags = {"QUESTIONS" },  notes = "GetDraftTempMajor")
 	@RequestMapping(method = RequestMethod.GET, value = "/questions/{questions_id}/getdrafttempmajor")
     @Transactional
@@ -96,10 +87,7 @@ public class QUESTIONSResource {
         return ResponseEntity.status(HttpStatus.OK).body(questionsdto);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-QUESTIONS-UpdateTemp-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-QUESTIONS-UpdateTemp-all')")
     @ApiOperation(value = "UpdateTemp", tags = {"QUESTIONS" },  notes = "UpdateTemp")
 	@RequestMapping(method = RequestMethod.PUT, value = "/questions/{questions_id}/updatetemp")
     @Transactional
@@ -110,16 +98,14 @@ public class QUESTIONSResource {
         return ResponseEntity.status(HttpStatus.OK).body(questionsdto);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-QUESTIONS-Save-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-QUESTIONS-Save-all')")
     @ApiOperation(value = "Save", tags = {"QUESTIONS" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/questions/save")
     public ResponseEntity<Boolean> save(@RequestBody QUESTIONSDTO questionsdto) {
         return ResponseEntity.status(HttpStatus.OK).body(questionsService.save(questionsMapping.toDomain(questionsdto)));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"QUESTIONS" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/questions/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<QUESTIONSDTO> questionsdtos) {
@@ -127,10 +113,7 @@ public class QUESTIONSResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-QUESTIONS-CreateTempMajor-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-QUESTIONS-CreateTempMajor-all')")
     @ApiOperation(value = "CreateTempMajor", tags = {"QUESTIONS" },  notes = "CreateTempMajor")
 	@RequestMapping(method = RequestMethod.POST, value = "/questions/{questions_id}/createtempmajor")
     @Transactional
@@ -140,9 +123,6 @@ public class QUESTIONSResource {
         questionsdto = questionsMapping.toDto(questions);
         return ResponseEntity.status(HttpStatus.OK).body(questionsdto);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#questions_id,'Update',{'Sql',this.questionsMapping,#questionsdto})")
     @ApiOperation(value = "Update", tags = {"QUESTIONS" },  notes = "Update")
@@ -156,15 +136,13 @@ public class QUESTIONSResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"QUESTIONS" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/questions/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<QUESTIONSDTO> questionsdtos) {
         questionsService.updateBatch(questionsMapping.toDomain(questionsdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#questions_id,'Get',{'Sql',this.questionsMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"QUESTIONS" },  notes = "Get")
@@ -175,10 +153,7 @@ public class QUESTIONSResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-QUESTIONS-UpdateTempMajor-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-QUESTIONS-UpdateTempMajor-all')")
     @ApiOperation(value = "UpdateTempMajor", tags = {"QUESTIONS" },  notes = "UpdateTempMajor")
 	@RequestMapping(method = RequestMethod.PUT, value = "/questions/{questions_id}/updatetempmajor")
     @Transactional
@@ -189,18 +164,12 @@ public class QUESTIONSResource {
         return ResponseEntity.status(HttpStatus.OK).body(questionsdto);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-QUESTIONS-CheckKey-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-QUESTIONS-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"QUESTIONS" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/questions/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody QUESTIONSDTO questionsdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(questionsService.checkKey(questionsMapping.toDomain(questionsdto)));
     }
-
-
-
 
     @PreAuthorize("hasPermission(#questions_id,'Remove',{'Sql',this.questionsMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"QUESTIONS" },  notes = "Remove")
@@ -210,15 +179,13 @@ public class QUESTIONSResource {
          return ResponseEntity.status(HttpStatus.OK).body(questionsService.remove(questions_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"QUESTIONS" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/questions/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         questionsService.removeBatch(ids);
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission('','Create',{'Sql',this.questionsMapping,#questionsdto})")
     @ApiOperation(value = "Create", tags = {"QUESTIONS" },  notes = "Create")
@@ -231,6 +198,7 @@ public class QUESTIONSResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatch", tags = {"QUESTIONS" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/questions/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<QUESTIONSDTO> questionsdtos) {
@@ -238,10 +206,7 @@ public class QUESTIONSResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-QUESTIONS-GetTempMajor-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-QUESTIONS-GetTempMajor-all')")
     @ApiOperation(value = "GetTempMajor", tags = {"QUESTIONS" },  notes = "GetTempMajor")
 	@RequestMapping(method = RequestMethod.GET, value = "/questions/{questions_id}/gettempmajor")
     @Transactional
@@ -252,20 +217,14 @@ public class QUESTIONSResource {
         return ResponseEntity.status(HttpStatus.OK).body(questionsdto);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-QUESTIONS-GetDraft-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-QUESTIONS-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"QUESTIONS" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/questions/getdraft")
     public ResponseEntity<QUESTIONSDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(questionsMapping.toDto(questionsService.getDraft(new QUESTIONS())));
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-QUESTIONS-CreateTemp-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-QUESTIONS-CreateTemp-all')")
     @ApiOperation(value = "CreateTemp", tags = {"QUESTIONS" },  notes = "CreateTemp")
 	@RequestMapping(method = RequestMethod.POST, value = "/questions/{questions_id}/createtemp")
     @Transactional
@@ -276,10 +235,7 @@ public class QUESTIONSResource {
         return ResponseEntity.status(HttpStatus.OK).body(questionsdto);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-QUESTIONS-RemoveTempMajor-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-QUESTIONS-RemoveTempMajor-all')")
     @ApiOperation(value = "RemoveTempMajor", tags = {"QUESTIONS" },  notes = "RemoveTempMajor")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/questions/{questions_id}/removetempmajor")
     @Transactional
@@ -290,10 +246,7 @@ public class QUESTIONSResource {
         return ResponseEntity.status(HttpStatus.OK).body(questionsdto);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-QUESTIONS-GetDraftTemp-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-QUESTIONS-GetDraftTemp-all')")
     @ApiOperation(value = "GetDraftTemp", tags = {"QUESTIONS" },  notes = "GetDraftTemp")
 	@RequestMapping(method = RequestMethod.GET, value = "/questions/{questions_id}/getdrafttemp")
     @Transactional
@@ -304,7 +257,7 @@ public class QUESTIONSResource {
         return ResponseEntity.status(HttpStatus.OK).body(questionsdto);
     }
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-QUESTIONS-QUERYcurrentQUESTION-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-QUESTIONS-QUERYcurrentQUESTION-all')")
 	@ApiOperation(value = "fetch查询当前页面问题", tags = {"QUESTIONS" } ,notes = "fetch查询当前页面问题")
     @RequestMapping(method= RequestMethod.GET , value="/questions/fetchquerycurrentquestion")
 	public ResponseEntity<List<QUESTIONSDTO>> fetchQUERYcurrentQUESTION(QUESTIONSSearchContext context) {
@@ -317,7 +270,7 @@ public class QUESTIONSResource {
                 .body(list);
 	}
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-QUESTIONS-QUERYcurrentQUESTION-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-QUESTIONS-QUERYcurrentQUESTION-all')")
 	@ApiOperation(value = "search查询当前页面问题", tags = {"QUESTIONS" } ,notes = "search查询当前页面问题")
     @RequestMapping(method= RequestMethod.POST , value="/questions/searchquerycurrentquestion")
 	public ResponseEntity<Page<QUESTIONSDTO>> searchQUERYcurrentQUESTION(@RequestBody QUESTIONSSearchContext context) {
@@ -325,8 +278,7 @@ public class QUESTIONSResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(questionsMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-QUESTIONS-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-QUESTIONS-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"QUESTIONS" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/questions/fetchdefault")
 	public ResponseEntity<List<QUESTIONSDTO>> fetchDefault(QUESTIONSSearchContext context) {
@@ -339,7 +291,7 @@ public class QUESTIONSResource {
                 .body(list);
 	}
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-QUESTIONS-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-QUESTIONS-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"QUESTIONS" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/questions/searchdefault")
 	public ResponseEntity<Page<QUESTIONSDTO>> searchDefault(@RequestBody QUESTIONSSearchContext context) {
@@ -347,8 +299,4 @@ public class QUESTIONSResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(questionsMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
 }
-
-

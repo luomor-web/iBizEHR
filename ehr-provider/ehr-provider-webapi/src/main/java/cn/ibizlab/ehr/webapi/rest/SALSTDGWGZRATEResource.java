@@ -54,18 +54,12 @@ public class SALSTDGWGZRATEResource {
 
     public SALSTDGWGZRATEDTO permissionDTO=new SALSTDGWGZRATEDTO();
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALSTDGWGZRATE-CheckKey-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALSTDGWGZRATE-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"SALSTDGWGZRATE" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/salstdgwgzrates/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody SALSTDGWGZRATEDTO salstdgwgzratedto) {
         return  ResponseEntity.status(HttpStatus.OK).body(salstdgwgzrateService.checkKey(salstdgwgzrateMapping.toDomain(salstdgwgzratedto)));
     }
-
-
-
 
     @PreAuthorize("hasPermission(#salstdgwgzrate_id,'Get',{'Sql',this.salstdgwgzrateMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"SALSTDGWGZRATE" },  notes = "Get")
@@ -76,9 +70,6 @@ public class SALSTDGWGZRATEResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-
-
-
     @PreAuthorize("hasPermission(#salstdgwgzrate_id,'Remove',{'Sql',this.salstdgwgzrateMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"SALSTDGWGZRATE" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/salstdgwgzrates/{salstdgwgzrate_id}")
@@ -87,15 +78,13 @@ public class SALSTDGWGZRATEResource {
          return ResponseEntity.status(HttpStatus.OK).body(salstdgwgzrateService.remove(salstdgwgzrate_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"SALSTDGWGZRATE" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/salstdgwgzrates/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         salstdgwgzrateService.removeBatch(ids);
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission('','Create',{'Sql',this.salstdgwgzrateMapping,#salstdgwgzratedto})")
     @ApiOperation(value = "Create", tags = {"SALSTDGWGZRATE" },  notes = "Create")
@@ -108,6 +97,7 @@ public class SALSTDGWGZRATEResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatch", tags = {"SALSTDGWGZRATE" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/salstdgwgzrates/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<SALSTDGWGZRATEDTO> salstdgwgzratedtos) {
@@ -115,25 +105,20 @@ public class SALSTDGWGZRATEResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALSTDGWGZRATE-Save-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALSTDGWGZRATE-Save-all')")
     @ApiOperation(value = "Save", tags = {"SALSTDGWGZRATE" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/salstdgwgzrates/save")
     public ResponseEntity<Boolean> save(@RequestBody SALSTDGWGZRATEDTO salstdgwgzratedto) {
         return ResponseEntity.status(HttpStatus.OK).body(salstdgwgzrateService.save(salstdgwgzrateMapping.toDomain(salstdgwgzratedto)));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"SALSTDGWGZRATE" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/salstdgwgzrates/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<SALSTDGWGZRATEDTO> salstdgwgzratedtos) {
         salstdgwgzrateService.saveBatch(salstdgwgzrateMapping.toDomain(salstdgwgzratedtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#salstdgwgzrate_id,'Update',{'Sql',this.salstdgwgzrateMapping,#salstdgwgzratedto})")
     @ApiOperation(value = "Update", tags = {"SALSTDGWGZRATE" },  notes = "Update")
@@ -147,6 +132,7 @@ public class SALSTDGWGZRATEResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"SALSTDGWGZRATE" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/salstdgwgzrates/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<SALSTDGWGZRATEDTO> salstdgwgzratedtos) {
@@ -154,17 +140,14 @@ public class SALSTDGWGZRATEResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALSTDGWGZRATE-GetDraft-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALSTDGWGZRATE-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"SALSTDGWGZRATE" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/salstdgwgzrates/getdraft")
     public ResponseEntity<SALSTDGWGZRATEDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(salstdgwgzrateMapping.toDto(salstdgwgzrateService.getDraft(new SALSTDGWGZRATE())));
     }
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALSTDGWGZRATE-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALSTDGWGZRATE-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"SALSTDGWGZRATE" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/salstdgwgzrates/fetchdefault")
 	public ResponseEntity<List<SALSTDGWGZRATEDTO>> fetchDefault(SALSTDGWGZRATESearchContext context) {
@@ -177,7 +160,7 @@ public class SALSTDGWGZRATEResource {
                 .body(list);
 	}
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALSTDGWGZRATE-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALSTDGWGZRATE-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"SALSTDGWGZRATE" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/salstdgwgzrates/searchdefault")
 	public ResponseEntity<Page<SALSTDGWGZRATEDTO>> searchDefault(@RequestBody SALSTDGWGZRATESearchContext context) {
@@ -185,8 +168,4 @@ public class SALSTDGWGZRATEResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(salstdgwgzrateMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
 }
-
-

@@ -54,18 +54,12 @@ public class PortalPageResource {
 
     public PortalPageDTO permissionDTO=new PortalPageDTO();
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PortalPage-CheckKey-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PortalPage-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"PortalPage" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/portalpages/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PortalPageDTO portalpagedto) {
         return  ResponseEntity.status(HttpStatus.OK).body(portalpageService.checkKey(portalpageMapping.toDomain(portalpagedto)));
     }
-
-
-
 
     @PreAuthorize("hasPermission(#portalpage_id,'Get',{'Sql',this.portalpageMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"PortalPage" },  notes = "Get")
@@ -76,9 +70,6 @@ public class PortalPageResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-
-
-
     @PreAuthorize("hasPermission(#portalpage_id,'Remove',{'Sql',this.portalpageMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"PortalPage" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/portalpages/{portalpage_id}")
@@ -87,15 +78,13 @@ public class PortalPageResource {
          return ResponseEntity.status(HttpStatus.OK).body(portalpageService.remove(portalpage_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"PortalPage" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/portalpages/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         portalpageService.removeBatch(ids);
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#portalpage_id,'Update',{'Sql',this.portalpageMapping,#portalpagedto})")
     @ApiOperation(value = "Update", tags = {"PortalPage" },  notes = "Update")
@@ -109,15 +98,13 @@ public class PortalPageResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"PortalPage" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/portalpages/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PortalPageDTO> portalpagedtos) {
         portalpageService.updateBatch(portalpageMapping.toDomain(portalpagedtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission('','Create',{'Sql',this.portalpageMapping,#portalpagedto})")
     @ApiOperation(value = "Create", tags = {"PortalPage" },  notes = "Create")
@@ -130,6 +117,7 @@ public class PortalPageResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatch", tags = {"PortalPage" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/portalpages/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PortalPageDTO> portalpagedtos) {
@@ -137,16 +125,14 @@ public class PortalPageResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PortalPage-Save-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PortalPage-Save-all')")
     @ApiOperation(value = "Save", tags = {"PortalPage" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/portalpages/save")
     public ResponseEntity<Boolean> save(@RequestBody PortalPageDTO portalpagedto) {
         return ResponseEntity.status(HttpStatus.OK).body(portalpageService.save(portalpageMapping.toDomain(portalpagedto)));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"PortalPage" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/portalpages/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PortalPageDTO> portalpagedtos) {
@@ -154,17 +140,14 @@ public class PortalPageResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PortalPage-GetDraft-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PortalPage-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"PortalPage" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/portalpages/getdraft")
     public ResponseEntity<PortalPageDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(portalpageMapping.toDto(portalpageService.getDraft(new PortalPage())));
     }
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PortalPage-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PortalPage-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PortalPage" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/portalpages/fetchdefault")
 	public ResponseEntity<List<PortalPageDTO>> fetchDefault(PortalPageSearchContext context) {
@@ -177,7 +160,7 @@ public class PortalPageResource {
                 .body(list);
 	}
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PortalPage-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PortalPage-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PortalPage" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/portalpages/searchdefault")
 	public ResponseEntity<Page<PortalPageDTO>> searchDefault(@RequestBody PortalPageSearchContext context) {
@@ -185,8 +168,4 @@ public class PortalPageResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(portalpageMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
 }
-
-

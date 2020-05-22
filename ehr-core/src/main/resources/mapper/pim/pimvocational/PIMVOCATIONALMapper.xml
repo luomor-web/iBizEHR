@@ -180,7 +180,7 @@
 
     <!--数据查询[REP_VOCATIONAL]-->
     <sql id="REP_VOCATIONAL" databaseId="mysql">
-       <![CDATA[	
+       <![CDATA[	select ifnull(t.PIMQUALMAJORNAME,d.PIMQUALTYPENAME) as zsmc,count(1) as countnum from T_PIMVOCATIONAL a   left join t_PIMPERSON c     on a.PIMPERSONID = c.PIMPERSONID   left join t_srforg b     on c.ormorgid = b.orgid   left join t_PIMQUALTYPE d     on c.PIMQUALTYPEID = d.PIMQUALTYPEID   left join T_PIMQUALMAJOR t     on t.PIMQUALMAJORID = a.PIMQUALMAJORID  where (a.jlss = 10 or a.jlss is null)    and a.enable = 1    and ifnull(t.PIMQUALMAJORNAME,d.PIMQUALTYPENAME) is not null     and c.ygzt != '40'    and c.ygzt != '60'    and c.ygzt != '50'    and c.ygzt != '51'    and c.ygzt != '130'    group by ifnull(t.PIMQUALMAJORNAME,d.PIMQUALTYPENAME) 
 			]]>
     </sql>
 

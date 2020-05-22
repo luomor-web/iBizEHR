@@ -54,9 +54,6 @@ public class OrgSecUserTypeResource {
 
     public OrgSecUserTypeDTO permissionDTO=new OrgSecUserTypeDTO();
 
-
-
-
     @PreAuthorize("hasPermission(#orgsecusertype_id,'Remove',{'Sql',this.orgsecusertypeMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"OrgSecUserType" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/orgsecusertypes/{orgsecusertype_id}")
@@ -65,15 +62,13 @@ public class OrgSecUserTypeResource {
          return ResponseEntity.status(HttpStatus.OK).body(orgsecusertypeService.remove(orgsecusertype_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"OrgSecUserType" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/orgsecusertypes/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         orgsecusertypeService.removeBatch(ids);
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#orgsecusertype_id,'Update',{'Sql',this.orgsecusertypeMapping,#orgsecusertypedto})")
     @ApiOperation(value = "Update", tags = {"OrgSecUserType" },  notes = "Update")
@@ -87,6 +82,7 @@ public class OrgSecUserTypeResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"OrgSecUserType" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/orgsecusertypes/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<OrgSecUserTypeDTO> orgsecusertypedtos) {
@@ -94,16 +90,14 @@ public class OrgSecUserTypeResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrgSecUserType-Save-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrgSecUserType-Save-all')")
     @ApiOperation(value = "Save", tags = {"OrgSecUserType" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/orgsecusertypes/save")
     public ResponseEntity<Boolean> save(@RequestBody OrgSecUserTypeDTO orgsecusertypedto) {
         return ResponseEntity.status(HttpStatus.OK).body(orgsecusertypeService.save(orgsecusertypeMapping.toDomain(orgsecusertypedto)));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"OrgSecUserType" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/orgsecusertypes/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<OrgSecUserTypeDTO> orgsecusertypedtos) {
@@ -111,28 +105,19 @@ public class OrgSecUserTypeResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrgSecUserType-CheckKey-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrgSecUserType-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"OrgSecUserType" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/orgsecusertypes/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody OrgSecUserTypeDTO orgsecusertypedto) {
         return  ResponseEntity.status(HttpStatus.OK).body(orgsecusertypeService.checkKey(orgsecusertypeMapping.toDomain(orgsecusertypedto)));
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrgSecUserType-GetDraft-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrgSecUserType-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"OrgSecUserType" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/orgsecusertypes/getdraft")
     public ResponseEntity<OrgSecUserTypeDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(orgsecusertypeMapping.toDto(orgsecusertypeService.getDraft(new OrgSecUserType())));
     }
-
-
-
 
     @PreAuthorize("hasPermission('','Create',{'Sql',this.orgsecusertypeMapping,#orgsecusertypedto})")
     @ApiOperation(value = "Create", tags = {"OrgSecUserType" },  notes = "Create")
@@ -145,15 +130,13 @@ public class OrgSecUserTypeResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatch", tags = {"OrgSecUserType" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/orgsecusertypes/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<OrgSecUserTypeDTO> orgsecusertypedtos) {
         orgsecusertypeService.createBatch(orgsecusertypeMapping.toDomain(orgsecusertypedtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#orgsecusertype_id,'Get',{'Sql',this.orgsecusertypeMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"OrgSecUserType" },  notes = "Get")
@@ -164,7 +147,7 @@ public class OrgSecUserTypeResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrgSecUserType-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrgSecUserType-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"OrgSecUserType" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/orgsecusertypes/fetchdefault")
 	public ResponseEntity<List<OrgSecUserTypeDTO>> fetchDefault(OrgSecUserTypeSearchContext context) {
@@ -177,7 +160,7 @@ public class OrgSecUserTypeResource {
                 .body(list);
 	}
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrgSecUserType-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrgSecUserType-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"OrgSecUserType" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/orgsecusertypes/searchdefault")
 	public ResponseEntity<Page<OrgSecUserTypeDTO>> searchDefault(@RequestBody OrgSecUserTypeSearchContext context) {
@@ -185,8 +168,4 @@ public class OrgSecUserTypeResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(orgsecusertypeMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
 }
-
-

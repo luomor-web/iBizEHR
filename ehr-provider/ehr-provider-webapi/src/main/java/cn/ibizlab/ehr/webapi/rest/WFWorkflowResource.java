@@ -54,9 +54,6 @@ public class WFWorkflowResource {
 
     public WFWorkflowDTO permissionDTO=new WFWorkflowDTO();
 
-
-
-
     @PreAuthorize("hasPermission('','Create',{'Sql',this.wfworkflowMapping,#wfworkflowdto})")
     @ApiOperation(value = "Create", tags = {"WFWorkflow" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/wfworkflows")
@@ -68,15 +65,13 @@ public class WFWorkflowResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatch", tags = {"WFWorkflow" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/wfworkflows/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<WFWorkflowDTO> wfworkflowdtos) {
         wfworkflowService.createBatch(wfworkflowMapping.toDomain(wfworkflowdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#wfworkflow_id,'Remove',{'Sql',this.wfworkflowMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"WFWorkflow" },  notes = "Remove")
@@ -86,6 +81,7 @@ public class WFWorkflowResource {
          return ResponseEntity.status(HttpStatus.OK).body(wfworkflowService.remove(wfworkflow_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"WFWorkflow" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/wfworkflows/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -93,25 +89,20 @@ public class WFWorkflowResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFWorkflow-Save-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFWorkflow-Save-all')")
     @ApiOperation(value = "Save", tags = {"WFWorkflow" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/wfworkflows/save")
     public ResponseEntity<Boolean> save(@RequestBody WFWorkflowDTO wfworkflowdto) {
         return ResponseEntity.status(HttpStatus.OK).body(wfworkflowService.save(wfworkflowMapping.toDomain(wfworkflowdto)));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"WFWorkflow" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/wfworkflows/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<WFWorkflowDTO> wfworkflowdtos) {
         wfworkflowService.saveBatch(wfworkflowMapping.toDomain(wfworkflowdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#wfworkflow_id,'Update',{'Sql',this.wfworkflowMapping,#wfworkflowdto})")
     @ApiOperation(value = "Update", tags = {"WFWorkflow" },  notes = "Update")
@@ -125,6 +116,7 @@ public class WFWorkflowResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"WFWorkflow" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/wfworkflows/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<WFWorkflowDTO> wfworkflowdtos) {
@@ -132,18 +124,12 @@ public class WFWorkflowResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFWorkflow-GetDraft-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFWorkflow-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"WFWorkflow" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/wfworkflows/getdraft")
     public ResponseEntity<WFWorkflowDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(wfworkflowMapping.toDto(wfworkflowService.getDraft(new WFWorkflow())));
     }
-
-
-
 
     @PreAuthorize("hasPermission(#wfworkflow_id,'Get',{'Sql',this.wfworkflowMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"WFWorkflow" },  notes = "Get")
@@ -154,17 +140,14 @@ public class WFWorkflowResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFWorkflow-CheckKey-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFWorkflow-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"WFWorkflow" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/wfworkflows/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody WFWorkflowDTO wfworkflowdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(wfworkflowService.checkKey(wfworkflowMapping.toDomain(wfworkflowdto)));
     }
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFWorkflow-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFWorkflow-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"WFWorkflow" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/wfworkflows/fetchdefault")
 	public ResponseEntity<List<WFWorkflowDTO>> fetchDefault(WFWorkflowSearchContext context) {
@@ -177,7 +160,7 @@ public class WFWorkflowResource {
                 .body(list);
 	}
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFWorkflow-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFWorkflow-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"WFWorkflow" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/wfworkflows/searchdefault")
 	public ResponseEntity<Page<WFWorkflowDTO>> searchDefault(@RequestBody WFWorkflowSearchContext context) {
@@ -185,8 +168,4 @@ public class WFWorkflowResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(wfworkflowMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
 }
-
-

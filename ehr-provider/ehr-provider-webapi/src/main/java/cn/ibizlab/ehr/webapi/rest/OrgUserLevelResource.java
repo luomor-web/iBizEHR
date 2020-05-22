@@ -54,25 +54,20 @@ public class OrgUserLevelResource {
 
     public OrgUserLevelDTO permissionDTO=new OrgUserLevelDTO();
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrgUserLevel-Save-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrgUserLevel-Save-all')")
     @ApiOperation(value = "Save", tags = {"OrgUserLevel" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/orguserlevels/save")
     public ResponseEntity<Boolean> save(@RequestBody OrgUserLevelDTO orguserleveldto) {
         return ResponseEntity.status(HttpStatus.OK).body(orguserlevelService.save(orguserlevelMapping.toDomain(orguserleveldto)));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"OrgUserLevel" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/orguserlevels/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<OrgUserLevelDTO> orguserleveldtos) {
         orguserlevelService.saveBatch(orguserlevelMapping.toDomain(orguserleveldtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#orguserlevel_id,'Remove',{'Sql',this.orguserlevelMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"OrgUserLevel" },  notes = "Remove")
@@ -82,15 +77,13 @@ public class OrgUserLevelResource {
          return ResponseEntity.status(HttpStatus.OK).body(orguserlevelService.remove(orguserlevel_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"OrgUserLevel" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/orguserlevels/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         orguserlevelService.removeBatch(ids);
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission('','Create',{'Sql',this.orguserlevelMapping,#orguserleveldto})")
     @ApiOperation(value = "Create", tags = {"OrgUserLevel" },  notes = "Create")
@@ -103,15 +96,13 @@ public class OrgUserLevelResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatch", tags = {"OrgUserLevel" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/orguserlevels/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<OrgUserLevelDTO> orguserleveldtos) {
         orguserlevelService.createBatch(orguserlevelMapping.toDomain(orguserleveldtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#orguserlevel_id,'Get',{'Sql',this.orguserlevelMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"OrgUserLevel" },  notes = "Get")
@@ -122,18 +113,12 @@ public class OrgUserLevelResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrgUserLevel-GetDraft-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrgUserLevel-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"OrgUserLevel" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/orguserlevels/getdraft")
     public ResponseEntity<OrgUserLevelDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(orguserlevelMapping.toDto(orguserlevelService.getDraft(new OrgUserLevel())));
     }
-
-
-
 
     @PreAuthorize("hasPermission(#orguserlevel_id,'Update',{'Sql',this.orguserlevelMapping,#orguserleveldto})")
     @ApiOperation(value = "Update", tags = {"OrgUserLevel" },  notes = "Update")
@@ -147,6 +132,7 @@ public class OrgUserLevelResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"OrgUserLevel" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/orguserlevels/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<OrgUserLevelDTO> orguserleveldtos) {
@@ -154,17 +140,14 @@ public class OrgUserLevelResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrgUserLevel-CheckKey-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrgUserLevel-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"OrgUserLevel" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/orguserlevels/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody OrgUserLevelDTO orguserleveldto) {
         return  ResponseEntity.status(HttpStatus.OK).body(orguserlevelService.checkKey(orguserlevelMapping.toDomain(orguserleveldto)));
     }
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrgUserLevel-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrgUserLevel-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"OrgUserLevel" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/orguserlevels/fetchdefault")
 	public ResponseEntity<List<OrgUserLevelDTO>> fetchDefault(OrgUserLevelSearchContext context) {
@@ -177,7 +160,7 @@ public class OrgUserLevelResource {
                 .body(list);
 	}
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrgUserLevel-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrgUserLevel-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"OrgUserLevel" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/orguserlevels/searchdefault")
 	public ResponseEntity<Page<OrgUserLevelDTO>> searchDefault(@RequestBody OrgUserLevelSearchContext context) {
@@ -185,8 +168,4 @@ public class OrgUserLevelResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(orguserlevelMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
 }
-
-

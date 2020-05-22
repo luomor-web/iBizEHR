@@ -54,16 +54,14 @@ public class DataSyncInResource {
 
     public DataSyncInDTO permissionDTO=new DataSyncInDTO();
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DataSyncIn-Save-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DataSyncIn-Save-all')")
     @ApiOperation(value = "Save", tags = {"DataSyncIn" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/datasyncins/save")
     public ResponseEntity<Boolean> save(@RequestBody DataSyncInDTO datasyncindto) {
         return ResponseEntity.status(HttpStatus.OK).body(datasyncinService.save(datasyncinMapping.toDomain(datasyncindto)));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"DataSyncIn" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/datasyncins/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<DataSyncInDTO> datasyncindtos) {
@@ -71,18 +69,12 @@ public class DataSyncInResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DataSyncIn-CheckKey-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DataSyncIn-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"DataSyncIn" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/datasyncins/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody DataSyncInDTO datasyncindto) {
         return  ResponseEntity.status(HttpStatus.OK).body(datasyncinService.checkKey(datasyncinMapping.toDomain(datasyncindto)));
     }
-
-
-
 
     @PreAuthorize("hasPermission(#datasyncin_id,'Update',{'Sql',this.datasyncinMapping,#datasyncindto})")
     @ApiOperation(value = "Update", tags = {"DataSyncIn" },  notes = "Update")
@@ -96,15 +88,13 @@ public class DataSyncInResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"DataSyncIn" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/datasyncins/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<DataSyncInDTO> datasyncindtos) {
         datasyncinService.updateBatch(datasyncinMapping.toDomain(datasyncindtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#datasyncin_id,'Get',{'Sql',this.datasyncinMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"DataSyncIn" },  notes = "Get")
@@ -115,18 +105,12 @@ public class DataSyncInResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DataSyncIn-GetDraft-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DataSyncIn-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"DataSyncIn" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/datasyncins/getdraft")
     public ResponseEntity<DataSyncInDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(datasyncinMapping.toDto(datasyncinService.getDraft(new DataSyncIn())));
     }
-
-
-
 
     @PreAuthorize("hasPermission(#datasyncin_id,'Remove',{'Sql',this.datasyncinMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"DataSyncIn" },  notes = "Remove")
@@ -136,15 +120,13 @@ public class DataSyncInResource {
          return ResponseEntity.status(HttpStatus.OK).body(datasyncinService.remove(datasyncin_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"DataSyncIn" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/datasyncins/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         datasyncinService.removeBatch(ids);
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission('','Create',{'Sql',this.datasyncinMapping,#datasyncindto})")
     @ApiOperation(value = "Create", tags = {"DataSyncIn" },  notes = "Create")
@@ -157,6 +139,7 @@ public class DataSyncInResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatch", tags = {"DataSyncIn" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/datasyncins/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<DataSyncInDTO> datasyncindtos) {
@@ -164,7 +147,7 @@ public class DataSyncInResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DataSyncIn-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DataSyncIn-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"DataSyncIn" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/datasyncins/fetchdefault")
 	public ResponseEntity<List<DataSyncInDTO>> fetchDefault(DataSyncInSearchContext context) {
@@ -177,7 +160,7 @@ public class DataSyncInResource {
                 .body(list);
 	}
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DataSyncIn-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DataSyncIn-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"DataSyncIn" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/datasyncins/searchdefault")
 	public ResponseEntity<Page<DataSyncInDTO>> searchDefault(@RequestBody DataSyncInSearchContext context) {
@@ -185,8 +168,4 @@ public class DataSyncInResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(datasyncinMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
 }
-
-

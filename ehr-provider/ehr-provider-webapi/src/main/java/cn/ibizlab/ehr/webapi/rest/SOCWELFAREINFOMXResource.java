@@ -54,9 +54,6 @@ public class SOCWELFAREINFOMXResource {
 
     public SOCWELFAREINFOMXDTO permissionDTO=new SOCWELFAREINFOMXDTO();
 
-
-
-
     @PreAuthorize("hasPermission(#socwelfareinfomx_id,'Remove',{'Sql',this.socwelfareinfomxMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"SOCWELFAREINFOMX" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/socwelfareinfomxes/{socwelfareinfomx_id}")
@@ -65,6 +62,7 @@ public class SOCWELFAREINFOMXResource {
          return ResponseEntity.status(HttpStatus.OK).body(socwelfareinfomxService.remove(socwelfareinfomx_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"SOCWELFAREINFOMX" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/socwelfareinfomxes/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -72,16 +70,14 @@ public class SOCWELFAREINFOMXResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SOCWELFAREINFOMX-Save-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SOCWELFAREINFOMX-Save-all')")
     @ApiOperation(value = "Save", tags = {"SOCWELFAREINFOMX" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/socwelfareinfomxes/save")
     public ResponseEntity<Boolean> save(@RequestBody SOCWELFAREINFOMXDTO socwelfareinfomxdto) {
         return ResponseEntity.status(HttpStatus.OK).body(socwelfareinfomxService.save(socwelfareinfomxMapping.toDomain(socwelfareinfomxdto)));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"SOCWELFAREINFOMX" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/socwelfareinfomxes/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<SOCWELFAREINFOMXDTO> socwelfareinfomxdtos) {
@@ -89,28 +85,19 @@ public class SOCWELFAREINFOMXResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SOCWELFAREINFOMX-CheckKey-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SOCWELFAREINFOMX-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"SOCWELFAREINFOMX" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/socwelfareinfomxes/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody SOCWELFAREINFOMXDTO socwelfareinfomxdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(socwelfareinfomxService.checkKey(socwelfareinfomxMapping.toDomain(socwelfareinfomxdto)));
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SOCWELFAREINFOMX-GetDraft-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SOCWELFAREINFOMX-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"SOCWELFAREINFOMX" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/socwelfareinfomxes/getdraft")
     public ResponseEntity<SOCWELFAREINFOMXDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(socwelfareinfomxMapping.toDto(socwelfareinfomxService.getDraft(new SOCWELFAREINFOMX())));
     }
-
-
-
 
     @PreAuthorize("hasPermission('','Create',{'Sql',this.socwelfareinfomxMapping,#socwelfareinfomxdto})")
     @ApiOperation(value = "Create", tags = {"SOCWELFAREINFOMX" },  notes = "Create")
@@ -123,15 +110,13 @@ public class SOCWELFAREINFOMXResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatch", tags = {"SOCWELFAREINFOMX" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/socwelfareinfomxes/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<SOCWELFAREINFOMXDTO> socwelfareinfomxdtos) {
         socwelfareinfomxService.createBatch(socwelfareinfomxMapping.toDomain(socwelfareinfomxdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#socwelfareinfomx_id,'Get',{'Sql',this.socwelfareinfomxMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"SOCWELFAREINFOMX" },  notes = "Get")
@@ -141,9 +126,6 @@ public class SOCWELFAREINFOMXResource {
         SOCWELFAREINFOMXDTO dto = socwelfareinfomxMapping.toDto(domain);
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#socwelfareinfomx_id,'Update',{'Sql',this.socwelfareinfomxMapping,#socwelfareinfomxdto})")
     @ApiOperation(value = "Update", tags = {"SOCWELFAREINFOMX" },  notes = "Update")
@@ -157,6 +139,7 @@ public class SOCWELFAREINFOMXResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"SOCWELFAREINFOMX" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/socwelfareinfomxes/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<SOCWELFAREINFOMXDTO> socwelfareinfomxdtos) {
@@ -164,7 +147,7 @@ public class SOCWELFAREINFOMXResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SOCWELFAREINFOMX-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SOCWELFAREINFOMX-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"SOCWELFAREINFOMX" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/socwelfareinfomxes/fetchdefault")
 	public ResponseEntity<List<SOCWELFAREINFOMXDTO>> fetchDefault(SOCWELFAREINFOMXSearchContext context) {
@@ -177,7 +160,7 @@ public class SOCWELFAREINFOMXResource {
                 .body(list);
 	}
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SOCWELFAREINFOMX-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SOCWELFAREINFOMX-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"SOCWELFAREINFOMX" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/socwelfareinfomxes/searchdefault")
 	public ResponseEntity<Page<SOCWELFAREINFOMXDTO>> searchDefault(@RequestBody SOCWELFAREINFOMXSearchContext context) {
@@ -185,8 +168,4 @@ public class SOCWELFAREINFOMXResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(socwelfareinfomxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
 }
-
-

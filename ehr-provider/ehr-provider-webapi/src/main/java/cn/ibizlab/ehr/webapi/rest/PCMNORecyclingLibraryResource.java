@@ -54,9 +54,6 @@ public class PCMNORecyclingLibraryResource {
 
     public PCMNORecyclingLibraryDTO permissionDTO=new PCMNORecyclingLibraryDTO();
 
-
-
-
     @PreAuthorize("hasPermission('','Create',{'Sql',this.pcmnorecyclinglibraryMapping,#pcmnorecyclinglibrarydto})")
     @ApiOperation(value = "Create", tags = {"PCMNORecyclingLibrary" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmnorecyclinglibraries")
@@ -68,6 +65,7 @@ public class PCMNORecyclingLibraryResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatch", tags = {"PCMNORecyclingLibrary" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmnorecyclinglibraries/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PCMNORecyclingLibraryDTO> pcmnorecyclinglibrarydtos) {
@@ -75,18 +73,12 @@ public class PCMNORecyclingLibraryResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMNORecyclingLibrary-GetDraft-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMNORecyclingLibrary-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"PCMNORecyclingLibrary" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmnorecyclinglibraries/getdraft")
     public ResponseEntity<PCMNORecyclingLibraryDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(pcmnorecyclinglibraryMapping.toDto(pcmnorecyclinglibraryService.getDraft(new PCMNORecyclingLibrary())));
     }
-
-
-
 
     @PreAuthorize("hasPermission(#pcmnorecyclinglibrary_id,'Get',{'Sql',this.pcmnorecyclinglibraryMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"PCMNORecyclingLibrary" },  notes = "Get")
@@ -97,9 +89,6 @@ public class PCMNORecyclingLibraryResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-
-
-
     @PreAuthorize("hasPermission(#pcmnorecyclinglibrary_id,'Remove',{'Sql',this.pcmnorecyclinglibraryMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"PCMNORecyclingLibrary" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmnorecyclinglibraries/{pcmnorecyclinglibrary_id}")
@@ -108,15 +97,13 @@ public class PCMNORecyclingLibraryResource {
          return ResponseEntity.status(HttpStatus.OK).body(pcmnorecyclinglibraryService.remove(pcmnorecyclinglibrary_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"PCMNORecyclingLibrary" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmnorecyclinglibraries/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         pcmnorecyclinglibraryService.removeBatch(ids);
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#pcmnorecyclinglibrary_id,'Update',{'Sql',this.pcmnorecyclinglibraryMapping,#pcmnorecyclinglibrarydto})")
     @ApiOperation(value = "Update", tags = {"PCMNORecyclingLibrary" },  notes = "Update")
@@ -130,6 +117,7 @@ public class PCMNORecyclingLibraryResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"PCMNORecyclingLibrary" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmnorecyclinglibraries/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PCMNORecyclingLibraryDTO> pcmnorecyclinglibrarydtos) {
@@ -137,26 +125,21 @@ public class PCMNORecyclingLibraryResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMNORecyclingLibrary-CheckKey-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMNORecyclingLibrary-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"PCMNORecyclingLibrary" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmnorecyclinglibraries/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PCMNORecyclingLibraryDTO pcmnorecyclinglibrarydto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pcmnorecyclinglibraryService.checkKey(pcmnorecyclinglibraryMapping.toDomain(pcmnorecyclinglibrarydto)));
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMNORecyclingLibrary-Save-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMNORecyclingLibrary-Save-all')")
     @ApiOperation(value = "Save", tags = {"PCMNORecyclingLibrary" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmnorecyclinglibraries/save")
     public ResponseEntity<Boolean> save(@RequestBody PCMNORecyclingLibraryDTO pcmnorecyclinglibrarydto) {
         return ResponseEntity.status(HttpStatus.OK).body(pcmnorecyclinglibraryService.save(pcmnorecyclinglibraryMapping.toDomain(pcmnorecyclinglibrarydto)));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"PCMNORecyclingLibrary" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmnorecyclinglibraries/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PCMNORecyclingLibraryDTO> pcmnorecyclinglibrarydtos) {
@@ -164,7 +147,7 @@ public class PCMNORecyclingLibraryResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMNORecyclingLibrary-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMNORecyclingLibrary-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PCMNORecyclingLibrary" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pcmnorecyclinglibraries/fetchdefault")
 	public ResponseEntity<List<PCMNORecyclingLibraryDTO>> fetchDefault(PCMNORecyclingLibrarySearchContext context) {
@@ -177,7 +160,7 @@ public class PCMNORecyclingLibraryResource {
                 .body(list);
 	}
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMNORecyclingLibrary-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMNORecyclingLibrary-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PCMNORecyclingLibrary" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pcmnorecyclinglibraries/searchdefault")
 	public ResponseEntity<Page<PCMNORecyclingLibraryDTO>> searchDefault(@RequestBody PCMNORecyclingLibrarySearchContext context) {
@@ -185,8 +168,4 @@ public class PCMNORecyclingLibraryResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pcmnorecyclinglibraryMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
 }
-
-

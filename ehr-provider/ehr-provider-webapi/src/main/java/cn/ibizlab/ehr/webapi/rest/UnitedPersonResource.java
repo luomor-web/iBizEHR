@@ -54,9 +54,6 @@ public class UnitedPersonResource {
 
     public UnitedPersonDTO permissionDTO=new UnitedPersonDTO();
 
-
-
-
     @PreAuthorize("hasPermission(#unitedperson_id,'Remove',{'Sql',this.unitedpersonMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"UnitedPerson" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/unitedpeople/{unitedperson_id}")
@@ -65,6 +62,7 @@ public class UnitedPersonResource {
          return ResponseEntity.status(HttpStatus.OK).body(unitedpersonService.remove(unitedperson_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"UnitedPerson" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/unitedpeople/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -72,16 +70,14 @@ public class UnitedPersonResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UnitedPerson-Save-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UnitedPerson-Save-all')")
     @ApiOperation(value = "Save", tags = {"UnitedPerson" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/unitedpeople/save")
     public ResponseEntity<Boolean> save(@RequestBody UnitedPersonDTO unitedpersondto) {
         return ResponseEntity.status(HttpStatus.OK).body(unitedpersonService.save(unitedpersonMapping.toDomain(unitedpersondto)));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"UnitedPerson" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/unitedpeople/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<UnitedPersonDTO> unitedpersondtos) {
@@ -89,10 +85,7 @@ public class UnitedPersonResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UnitedPerson-GetUnitedUser-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UnitedPerson-GetUnitedUser-all')")
     @ApiOperation(value = "同步人员", tags = {"UnitedPerson" },  notes = "同步人员")
 	@RequestMapping(method = RequestMethod.GET, value = "/unitedpeople/{unitedperson_id}/getuniteduser")
     @Transactional
@@ -103,18 +96,12 @@ public class UnitedPersonResource {
         return ResponseEntity.status(HttpStatus.OK).body(unitedpersondto);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UnitedPerson-GetDraft-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UnitedPerson-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"UnitedPerson" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/unitedpeople/getdraft")
     public ResponseEntity<UnitedPersonDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(unitedpersonMapping.toDto(unitedpersonService.getDraft(new UnitedPerson())));
     }
-
-
-
 
     @PreAuthorize("hasPermission('','Create',{'Sql',this.unitedpersonMapping,#unitedpersondto})")
     @ApiOperation(value = "Create", tags = {"UnitedPerson" },  notes = "Create")
@@ -127,6 +114,7 @@ public class UnitedPersonResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatch", tags = {"UnitedPerson" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/unitedpeople/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<UnitedPersonDTO> unitedpersondtos) {
@@ -134,18 +122,12 @@ public class UnitedPersonResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UnitedPerson-CheckKey-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UnitedPerson-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"UnitedPerson" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/unitedpeople/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody UnitedPersonDTO unitedpersondto) {
         return  ResponseEntity.status(HttpStatus.OK).body(unitedpersonService.checkKey(unitedpersonMapping.toDomain(unitedpersondto)));
     }
-
-
-
 
     @PreAuthorize("hasPermission(#unitedperson_id,'Get',{'Sql',this.unitedpersonMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"UnitedPerson" },  notes = "Get")
@@ -155,9 +137,6 @@ public class UnitedPersonResource {
         UnitedPersonDTO dto = unitedpersonMapping.toDto(domain);
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#unitedperson_id,'Update',{'Sql',this.unitedpersonMapping,#unitedpersondto})")
     @ApiOperation(value = "Update", tags = {"UnitedPerson" },  notes = "Update")
@@ -171,6 +150,7 @@ public class UnitedPersonResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"UnitedPerson" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/unitedpeople/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<UnitedPersonDTO> unitedpersondtos) {
@@ -178,7 +158,7 @@ public class UnitedPersonResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UnitedPerson-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UnitedPerson-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"UnitedPerson" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/unitedpeople/fetchdefault")
 	public ResponseEntity<List<UnitedPersonDTO>> fetchDefault(UnitedPersonSearchContext context) {
@@ -191,7 +171,7 @@ public class UnitedPersonResource {
                 .body(list);
 	}
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UnitedPerson-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UnitedPerson-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"UnitedPerson" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/unitedpeople/searchdefault")
 	public ResponseEntity<Page<UnitedPersonDTO>> searchDefault(@RequestBody UnitedPersonSearchContext context) {
@@ -199,8 +179,7 @@ public class UnitedPersonResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(unitedpersonMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UnitedPerson-CXYH-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UnitedPerson-CXYH-all')")
 	@ApiOperation(value = "fetch查询可用的OID用户", tags = {"UnitedPerson" } ,notes = "fetch查询可用的OID用户")
     @RequestMapping(method= RequestMethod.GET , value="/unitedpeople/fetchcxyh")
 	public ResponseEntity<List<UnitedPersonDTO>> fetchCXYH(UnitedPersonSearchContext context) {
@@ -213,7 +192,7 @@ public class UnitedPersonResource {
                 .body(list);
 	}
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UnitedPerson-CXYH-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UnitedPerson-CXYH-all')")
 	@ApiOperation(value = "search查询可用的OID用户", tags = {"UnitedPerson" } ,notes = "search查询可用的OID用户")
     @RequestMapping(method= RequestMethod.POST , value="/unitedpeople/searchcxyh")
 	public ResponseEntity<Page<UnitedPersonDTO>> searchCXYH(@RequestBody UnitedPersonSearchContext context) {
@@ -221,8 +200,7 @@ public class UnitedPersonResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(unitedpersonMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UnitedPerson-CurFQXJYH-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UnitedPerson-CurFQXJYH-all')")
 	@ApiOperation(value = "fetch新建用户", tags = {"UnitedPerson" } ,notes = "fetch新建用户")
     @RequestMapping(method= RequestMethod.GET , value="/unitedpeople/fetchcurfqxjyh")
 	public ResponseEntity<List<UnitedPersonDTO>> fetchCurFQXJYH(UnitedPersonSearchContext context) {
@@ -235,7 +213,7 @@ public class UnitedPersonResource {
                 .body(list);
 	}
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UnitedPerson-CurFQXJYH-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UnitedPerson-CurFQXJYH-all')")
 	@ApiOperation(value = "search新建用户", tags = {"UnitedPerson" } ,notes = "search新建用户")
     @RequestMapping(method= RequestMethod.POST , value="/unitedpeople/searchcurfqxjyh")
 	public ResponseEntity<Page<UnitedPersonDTO>> searchCurFQXJYH(@RequestBody UnitedPersonSearchContext context) {
@@ -243,8 +221,4 @@ public class UnitedPersonResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(unitedpersonMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
 }
-
-

@@ -54,18 +54,12 @@ public class PIMWorkflowRefResource {
 
     public PIMWorkflowRefDTO permissionDTO=new PIMWorkflowRefDTO();
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMWorkflowRef-GetDraft-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMWorkflowRef-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"PIMWorkflowRef" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimworkflowrefs/getdraft")
     public ResponseEntity<PIMWorkflowRefDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(pimworkflowrefMapping.toDto(pimworkflowrefService.getDraft(new PIMWorkflowRef())));
     }
-
-
-
 
     @PreAuthorize("hasPermission(#pimworkflowref_id,'Update',{'Sql',this.pimworkflowrefMapping,#pimworkflowrefdto})")
     @ApiOperation(value = "Update", tags = {"PIMWorkflowRef" },  notes = "Update")
@@ -79,15 +73,13 @@ public class PIMWorkflowRefResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"PIMWorkflowRef" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimworkflowrefs/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PIMWorkflowRefDTO> pimworkflowrefdtos) {
         pimworkflowrefService.updateBatch(pimworkflowrefMapping.toDomain(pimworkflowrefdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#pimworkflowref_id,'Get',{'Sql',this.pimworkflowrefMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"PIMWorkflowRef" },  notes = "Get")
@@ -98,25 +90,20 @@ public class PIMWorkflowRefResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMWorkflowRef-Save-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMWorkflowRef-Save-all')")
     @ApiOperation(value = "Save", tags = {"PIMWorkflowRef" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimworkflowrefs/save")
     public ResponseEntity<Boolean> save(@RequestBody PIMWorkflowRefDTO pimworkflowrefdto) {
         return ResponseEntity.status(HttpStatus.OK).body(pimworkflowrefService.save(pimworkflowrefMapping.toDomain(pimworkflowrefdto)));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"PIMWorkflowRef" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimworkflowrefs/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PIMWorkflowRefDTO> pimworkflowrefdtos) {
         pimworkflowrefService.saveBatch(pimworkflowrefMapping.toDomain(pimworkflowrefdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#pimworkflowref_id,'Remove',{'Sql',this.pimworkflowrefMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"PIMWorkflowRef" },  notes = "Remove")
@@ -126,15 +113,13 @@ public class PIMWorkflowRefResource {
          return ResponseEntity.status(HttpStatus.OK).body(pimworkflowrefService.remove(pimworkflowref_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"PIMWorkflowRef" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimworkflowrefs/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         pimworkflowrefService.removeBatch(ids);
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission('','Create',{'Sql',this.pimworkflowrefMapping,#pimworkflowrefdto})")
     @ApiOperation(value = "Create", tags = {"PIMWorkflowRef" },  notes = "Create")
@@ -147,6 +132,7 @@ public class PIMWorkflowRefResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatch", tags = {"PIMWorkflowRef" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimworkflowrefs/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PIMWorkflowRefDTO> pimworkflowrefdtos) {
@@ -154,17 +140,14 @@ public class PIMWorkflowRefResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMWorkflowRef-CheckKey-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMWorkflowRef-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"PIMWorkflowRef" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimworkflowrefs/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PIMWorkflowRefDTO pimworkflowrefdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pimworkflowrefService.checkKey(pimworkflowrefMapping.toDomain(pimworkflowrefdto)));
     }
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMWorkflowRef-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMWorkflowRef-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PIMWorkflowRef" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimworkflowrefs/fetchdefault")
 	public ResponseEntity<List<PIMWorkflowRefDTO>> fetchDefault(PIMWorkflowRefSearchContext context) {
@@ -177,7 +160,7 @@ public class PIMWorkflowRefResource {
                 .body(list);
 	}
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMWorkflowRef-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMWorkflowRef-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PIMWorkflowRef" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pimworkflowrefs/searchdefault")
 	public ResponseEntity<Page<PIMWorkflowRefDTO>> searchDefault(@RequestBody PIMWorkflowRefSearchContext context) {
@@ -185,8 +168,4 @@ public class PIMWorkflowRefResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimworkflowrefMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
 }
-
-

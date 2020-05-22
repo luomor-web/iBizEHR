@@ -194,7 +194,7 @@
 
     <!--数据查询[REP_EDU]-->
     <sql id="REP_EDU" databaseId="mysql">
-       <![CDATA[	
+       <![CDATA[	select highestdegree,count(1) as countnum from BIS_EMPLOYEEANALYSIS_T t where t.highestdegree is not null group by highestdegree
 			]]>
     </sql>
 

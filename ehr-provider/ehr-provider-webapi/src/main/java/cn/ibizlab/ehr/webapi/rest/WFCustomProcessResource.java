@@ -54,25 +54,20 @@ public class WFCustomProcessResource {
 
     public WFCustomProcessDTO permissionDTO=new WFCustomProcessDTO();
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFCustomProcess-Save-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFCustomProcess-Save-all')")
     @ApiOperation(value = "Save", tags = {"WFCustomProcess" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/wfcustomprocesses/save")
     public ResponseEntity<Boolean> save(@RequestBody WFCustomProcessDTO wfcustomprocessdto) {
         return ResponseEntity.status(HttpStatus.OK).body(wfcustomprocessService.save(wfcustomprocessMapping.toDomain(wfcustomprocessdto)));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"WFCustomProcess" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/wfcustomprocesses/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<WFCustomProcessDTO> wfcustomprocessdtos) {
         wfcustomprocessService.saveBatch(wfcustomprocessMapping.toDomain(wfcustomprocessdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#wfcustomprocess_id,'Get',{'Sql',this.wfcustomprocessMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"WFCustomProcess" },  notes = "Get")
@@ -83,9 +78,6 @@ public class WFCustomProcessResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-
-
-
     @PreAuthorize("hasPermission(#wfcustomprocess_id,'Remove',{'Sql',this.wfcustomprocessMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"WFCustomProcess" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/wfcustomprocesses/{wfcustomprocess_id}")
@@ -94,15 +86,13 @@ public class WFCustomProcessResource {
          return ResponseEntity.status(HttpStatus.OK).body(wfcustomprocessService.remove(wfcustomprocess_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"WFCustomProcess" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/wfcustomprocesses/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         wfcustomprocessService.removeBatch(ids);
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#wfcustomprocess_id,'Update',{'Sql',this.wfcustomprocessMapping,#wfcustomprocessdto})")
     @ApiOperation(value = "Update", tags = {"WFCustomProcess" },  notes = "Update")
@@ -116,6 +106,7 @@ public class WFCustomProcessResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"WFCustomProcess" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/wfcustomprocesses/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<WFCustomProcessDTO> wfcustomprocessdtos) {
@@ -123,28 +114,19 @@ public class WFCustomProcessResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFCustomProcess-GetDraft-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFCustomProcess-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"WFCustomProcess" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/wfcustomprocesses/getdraft")
     public ResponseEntity<WFCustomProcessDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(wfcustomprocessMapping.toDto(wfcustomprocessService.getDraft(new WFCustomProcess())));
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFCustomProcess-CheckKey-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFCustomProcess-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"WFCustomProcess" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/wfcustomprocesses/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody WFCustomProcessDTO wfcustomprocessdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(wfcustomprocessService.checkKey(wfcustomprocessMapping.toDomain(wfcustomprocessdto)));
     }
-
-
-
 
     @PreAuthorize("hasPermission('','Create',{'Sql',this.wfcustomprocessMapping,#wfcustomprocessdto})")
     @ApiOperation(value = "Create", tags = {"WFCustomProcess" },  notes = "Create")
@@ -157,6 +139,7 @@ public class WFCustomProcessResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatch", tags = {"WFCustomProcess" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/wfcustomprocesses/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<WFCustomProcessDTO> wfcustomprocessdtos) {
@@ -164,7 +147,7 @@ public class WFCustomProcessResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFCustomProcess-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFCustomProcess-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"WFCustomProcess" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/wfcustomprocesses/fetchdefault")
 	public ResponseEntity<List<WFCustomProcessDTO>> fetchDefault(WFCustomProcessSearchContext context) {
@@ -177,7 +160,7 @@ public class WFCustomProcessResource {
                 .body(list);
 	}
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFCustomProcess-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFCustomProcess-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"WFCustomProcess" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/wfcustomprocesses/searchdefault")
 	public ResponseEntity<Page<WFCustomProcessDTO>> searchDefault(@RequestBody WFCustomProcessSearchContext context) {
@@ -185,8 +168,4 @@ public class WFCustomProcessResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(wfcustomprocessMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
 }
-
-

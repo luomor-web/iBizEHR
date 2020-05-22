@@ -54,9 +54,6 @@ public class PCMPROFILEINITNUMBERResource {
 
     public PCMPROFILEINITNUMBERDTO permissionDTO=new PCMPROFILEINITNUMBERDTO();
 
-
-
-
     @PreAuthorize("hasPermission(#pcmprofileinitnumber_id,'Remove',{'Sql',this.pcmprofileinitnumberMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"PCMPROFILEINITNUMBER" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmprofileinitnumbers/{pcmprofileinitnumber_id}")
@@ -65,6 +62,7 @@ public class PCMPROFILEINITNUMBERResource {
          return ResponseEntity.status(HttpStatus.OK).body(pcmprofileinitnumberService.remove(pcmprofileinitnumber_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"PCMPROFILEINITNUMBER" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmprofileinitnumbers/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -72,25 +70,20 @@ public class PCMPROFILEINITNUMBERResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILEINITNUMBER-Save-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILEINITNUMBER-Save-all')")
     @ApiOperation(value = "Save", tags = {"PCMPROFILEINITNUMBER" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofileinitnumbers/save")
     public ResponseEntity<Boolean> save(@RequestBody PCMPROFILEINITNUMBERDTO pcmprofileinitnumberdto) {
         return ResponseEntity.status(HttpStatus.OK).body(pcmprofileinitnumberService.save(pcmprofileinitnumberMapping.toDomain(pcmprofileinitnumberdto)));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"PCMPROFILEINITNUMBER" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofileinitnumbers/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PCMPROFILEINITNUMBERDTO> pcmprofileinitnumberdtos) {
         pcmprofileinitnumberService.saveBatch(pcmprofileinitnumberMapping.toDomain(pcmprofileinitnumberdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#pcmprofileinitnumber_id,'Update',{'Sql',this.pcmprofileinitnumberMapping,#pcmprofileinitnumberdto})")
     @ApiOperation(value = "Update", tags = {"PCMPROFILEINITNUMBER" },  notes = "Update")
@@ -104,15 +97,13 @@ public class PCMPROFILEINITNUMBERResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"PCMPROFILEINITNUMBER" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmprofileinitnumbers/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PCMPROFILEINITNUMBERDTO> pcmprofileinitnumberdtos) {
         pcmprofileinitnumberService.updateBatch(pcmprofileinitnumberMapping.toDomain(pcmprofileinitnumberdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission('','Create',{'Sql',this.pcmprofileinitnumberMapping,#pcmprofileinitnumberdto})")
     @ApiOperation(value = "Create", tags = {"PCMPROFILEINITNUMBER" },  notes = "Create")
@@ -125,15 +116,13 @@ public class PCMPROFILEINITNUMBERResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatch", tags = {"PCMPROFILEINITNUMBER" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofileinitnumbers/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PCMPROFILEINITNUMBERDTO> pcmprofileinitnumberdtos) {
         pcmprofileinitnumberService.createBatch(pcmprofileinitnumberMapping.toDomain(pcmprofileinitnumberdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#pcmprofileinitnumber_id,'Get',{'Sql',this.pcmprofileinitnumberMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"PCMPROFILEINITNUMBER" },  notes = "Get")
@@ -144,27 +133,21 @@ public class PCMPROFILEINITNUMBERResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILEINITNUMBER-GetDraft-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILEINITNUMBER-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"PCMPROFILEINITNUMBER" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmprofileinitnumbers/getdraft")
     public ResponseEntity<PCMPROFILEINITNUMBERDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(pcmprofileinitnumberMapping.toDto(pcmprofileinitnumberService.getDraft(new PCMPROFILEINITNUMBER())));
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILEINITNUMBER-CheckKey-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILEINITNUMBER-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"PCMPROFILEINITNUMBER" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofileinitnumbers/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PCMPROFILEINITNUMBERDTO pcmprofileinitnumberdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pcmprofileinitnumberService.checkKey(pcmprofileinitnumberMapping.toDomain(pcmprofileinitnumberdto)));
     }
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILEINITNUMBER-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILEINITNUMBER-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PCMPROFILEINITNUMBER" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pcmprofileinitnumbers/fetchdefault")
 	public ResponseEntity<List<PCMPROFILEINITNUMBERDTO>> fetchDefault(PCMPROFILEINITNUMBERSearchContext context) {
@@ -177,7 +160,7 @@ public class PCMPROFILEINITNUMBERResource {
                 .body(list);
 	}
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILEINITNUMBER-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILEINITNUMBER-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PCMPROFILEINITNUMBER" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pcmprofileinitnumbers/searchdefault")
 	public ResponseEntity<Page<PCMPROFILEINITNUMBERDTO>> searchDefault(@RequestBody PCMPROFILEINITNUMBERSearchContext context) {
@@ -185,8 +168,4 @@ public class PCMPROFILEINITNUMBERResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pcmprofileinitnumberMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
 }
-
-

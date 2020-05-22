@@ -54,9 +54,6 @@ public class WXMessageResource {
 
     public WXMessageDTO permissionDTO=new WXMessageDTO();
 
-
-
-
     @PreAuthorize("hasPermission(#wxmessage_id,'Update',{'Sql',this.wxmessageMapping,#wxmessagedto})")
     @ApiOperation(value = "Update", tags = {"WXMessage" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/wxmessages/{wxmessage_id}")
@@ -69,6 +66,7 @@ public class WXMessageResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"WXMessage" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/wxmessages/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<WXMessageDTO> wxmessagedtos) {
@@ -76,28 +74,19 @@ public class WXMessageResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WXMessage-GetDraft-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WXMessage-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"WXMessage" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/wxmessages/getdraft")
     public ResponseEntity<WXMessageDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(wxmessageMapping.toDto(wxmessageService.getDraft(new WXMessage())));
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WXMessage-CheckKey-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WXMessage-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"WXMessage" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/wxmessages/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody WXMessageDTO wxmessagedto) {
         return  ResponseEntity.status(HttpStatus.OK).body(wxmessageService.checkKey(wxmessageMapping.toDomain(wxmessagedto)));
     }
-
-
-
 
     @PreAuthorize("hasPermission('','Create',{'Sql',this.wxmessageMapping,#wxmessagedto})")
     @ApiOperation(value = "Create", tags = {"WXMessage" },  notes = "Create")
@@ -110,6 +99,7 @@ public class WXMessageResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatch", tags = {"WXMessage" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/wxmessages/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<WXMessageDTO> wxmessagedtos) {
@@ -117,25 +107,20 @@ public class WXMessageResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WXMessage-Save-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WXMessage-Save-all')")
     @ApiOperation(value = "Save", tags = {"WXMessage" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/wxmessages/save")
     public ResponseEntity<Boolean> save(@RequestBody WXMessageDTO wxmessagedto) {
         return ResponseEntity.status(HttpStatus.OK).body(wxmessageService.save(wxmessageMapping.toDomain(wxmessagedto)));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"WXMessage" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/wxmessages/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<WXMessageDTO> wxmessagedtos) {
         wxmessageService.saveBatch(wxmessageMapping.toDomain(wxmessagedtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#wxmessage_id,'Get',{'Sql',this.wxmessageMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"WXMessage" },  notes = "Get")
@@ -146,9 +131,6 @@ public class WXMessageResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-
-
-
     @PreAuthorize("hasPermission(#wxmessage_id,'Remove',{'Sql',this.wxmessageMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"WXMessage" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/wxmessages/{wxmessage_id}")
@@ -157,6 +139,7 @@ public class WXMessageResource {
          return ResponseEntity.status(HttpStatus.OK).body(wxmessageService.remove(wxmessage_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"WXMessage" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/wxmessages/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -164,7 +147,7 @@ public class WXMessageResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WXMessage-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WXMessage-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"WXMessage" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/wxmessages/fetchdefault")
 	public ResponseEntity<List<WXMessageDTO>> fetchDefault(WXMessageSearchContext context) {
@@ -177,7 +160,7 @@ public class WXMessageResource {
                 .body(list);
 	}
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WXMessage-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WXMessage-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"WXMessage" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/wxmessages/searchdefault")
 	public ResponseEntity<Page<WXMessageDTO>> searchDefault(@RequestBody WXMessageSearchContext context) {
@@ -185,8 +168,4 @@ public class WXMessageResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(wxmessageMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
 }
-
-

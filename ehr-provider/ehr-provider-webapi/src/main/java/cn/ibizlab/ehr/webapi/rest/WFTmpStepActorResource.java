@@ -54,9 +54,6 @@ public class WFTmpStepActorResource {
 
     public WFTmpStepActorDTO permissionDTO=new WFTmpStepActorDTO();
 
-
-
-
     @PreAuthorize("hasPermission(#wftmpstepactor_id,'Update',{'Sql',this.wftmpstepactorMapping,#wftmpstepactordto})")
     @ApiOperation(value = "Update", tags = {"WFTmpStepActor" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/wftmpstepactors/{wftmpstepactor_id}")
@@ -69,6 +66,7 @@ public class WFTmpStepActorResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"WFTmpStepActor" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/wftmpstepactors/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<WFTmpStepActorDTO> wftmpstepactordtos) {
@@ -76,18 +74,12 @@ public class WFTmpStepActorResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFTmpStepActor-CheckKey-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFTmpStepActor-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"WFTmpStepActor" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/wftmpstepactors/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody WFTmpStepActorDTO wftmpstepactordto) {
         return  ResponseEntity.status(HttpStatus.OK).body(wftmpstepactorService.checkKey(wftmpstepactorMapping.toDomain(wftmpstepactordto)));
     }
-
-
-
 
     @PreAuthorize("hasPermission('','Create',{'Sql',this.wftmpstepactorMapping,#wftmpstepactordto})")
     @ApiOperation(value = "Create", tags = {"WFTmpStepActor" },  notes = "Create")
@@ -100,15 +92,13 @@ public class WFTmpStepActorResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatch", tags = {"WFTmpStepActor" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/wftmpstepactors/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<WFTmpStepActorDTO> wftmpstepactordtos) {
         wftmpstepactorService.createBatch(wftmpstepactorMapping.toDomain(wftmpstepactordtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#wftmpstepactor_id,'Remove',{'Sql',this.wftmpstepactorMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"WFTmpStepActor" },  notes = "Remove")
@@ -118,6 +108,7 @@ public class WFTmpStepActorResource {
          return ResponseEntity.status(HttpStatus.OK).body(wftmpstepactorService.remove(wftmpstepactor_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"WFTmpStepActor" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/wftmpstepactors/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -125,18 +116,12 @@ public class WFTmpStepActorResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFTmpStepActor-GetDraft-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFTmpStepActor-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"WFTmpStepActor" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/wftmpstepactors/getdraft")
     public ResponseEntity<WFTmpStepActorDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(wftmpstepactorMapping.toDto(wftmpstepactorService.getDraft(new WFTmpStepActor())));
     }
-
-
-
 
     @PreAuthorize("hasPermission(#wftmpstepactor_id,'Get',{'Sql',this.wftmpstepactorMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"WFTmpStepActor" },  notes = "Get")
@@ -147,16 +132,14 @@ public class WFTmpStepActorResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFTmpStepActor-Save-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFTmpStepActor-Save-all')")
     @ApiOperation(value = "Save", tags = {"WFTmpStepActor" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/wftmpstepactors/save")
     public ResponseEntity<Boolean> save(@RequestBody WFTmpStepActorDTO wftmpstepactordto) {
         return ResponseEntity.status(HttpStatus.OK).body(wftmpstepactorService.save(wftmpstepactorMapping.toDomain(wftmpstepactordto)));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"WFTmpStepActor" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/wftmpstepactors/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<WFTmpStepActorDTO> wftmpstepactordtos) {
@@ -164,7 +147,7 @@ public class WFTmpStepActorResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFTmpStepActor-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFTmpStepActor-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"WFTmpStepActor" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/wftmpstepactors/fetchdefault")
 	public ResponseEntity<List<WFTmpStepActorDTO>> fetchDefault(WFTmpStepActorSearchContext context) {
@@ -177,7 +160,7 @@ public class WFTmpStepActorResource {
                 .body(list);
 	}
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFTmpStepActor-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFTmpStepActor-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"WFTmpStepActor" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/wftmpstepactors/searchdefault")
 	public ResponseEntity<Page<WFTmpStepActorDTO>> searchDefault(@RequestBody WFTmpStepActorSearchContext context) {
@@ -185,8 +168,4 @@ public class WFTmpStepActorResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(wftmpstepactorMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
 }
-
-

@@ -54,18 +54,12 @@ public class PCMReasonResource {
 
     public PCMReasonDTO permissionDTO=new PCMReasonDTO();
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMReason-GetDraft-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMReason-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"PCMReason" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmreasons/getdraft")
     public ResponseEntity<PCMReasonDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(pcmreasonMapping.toDto(pcmreasonService.getDraft(new PCMReason())));
     }
-
-
-
 
     @PreAuthorize("hasPermission(#pcmreason_id,'Remove',{'Sql',this.pcmreasonMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"PCMReason" },  notes = "Remove")
@@ -75,15 +69,13 @@ public class PCMReasonResource {
          return ResponseEntity.status(HttpStatus.OK).body(pcmreasonService.remove(pcmreason_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"PCMReason" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmreasons/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         pcmreasonService.removeBatch(ids);
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#pcmreason_id,'Update',{'Sql',this.pcmreasonMapping,#pcmreasondto})")
     @ApiOperation(value = "Update", tags = {"PCMReason" },  notes = "Update")
@@ -97,15 +89,13 @@ public class PCMReasonResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"PCMReason" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmreasons/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PCMReasonDTO> pcmreasondtos) {
         pcmreasonService.updateBatch(pcmreasonMapping.toDomain(pcmreasondtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#pcmreason_id,'Get',{'Sql',this.pcmreasonMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"PCMReason" },  notes = "Get")
@@ -115,9 +105,6 @@ public class PCMReasonResource {
         PCMReasonDTO dto = pcmreasonMapping.toDto(domain);
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
-
-
 
     @PreAuthorize("hasPermission('','Create',{'Sql',this.pcmreasonMapping,#pcmreasondto})")
     @ApiOperation(value = "Create", tags = {"PCMReason" },  notes = "Create")
@@ -130,6 +117,7 @@ public class PCMReasonResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatch", tags = {"PCMReason" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmreasons/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PCMReasonDTO> pcmreasondtos) {
@@ -137,26 +125,21 @@ public class PCMReasonResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMReason-CheckKey-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMReason-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"PCMReason" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmreasons/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PCMReasonDTO pcmreasondto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pcmreasonService.checkKey(pcmreasonMapping.toDomain(pcmreasondto)));
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMReason-Save-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMReason-Save-all')")
     @ApiOperation(value = "Save", tags = {"PCMReason" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmreasons/save")
     public ResponseEntity<Boolean> save(@RequestBody PCMReasonDTO pcmreasondto) {
         return ResponseEntity.status(HttpStatus.OK).body(pcmreasonService.save(pcmreasonMapping.toDomain(pcmreasondto)));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"PCMReason" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmreasons/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PCMReasonDTO> pcmreasondtos) {
@@ -164,7 +147,7 @@ public class PCMReasonResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMReason-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMReason-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PCMReason" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pcmreasons/fetchdefault")
 	public ResponseEntity<List<PCMReasonDTO>> fetchDefault(PCMReasonSearchContext context) {
@@ -177,7 +160,7 @@ public class PCMReasonResource {
                 .body(list);
 	}
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMReason-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMReason-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PCMReason" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pcmreasons/searchdefault")
 	public ResponseEntity<Page<PCMReasonDTO>> searchDefault(@RequestBody PCMReasonSearchContext context) {
@@ -185,8 +168,4 @@ public class PCMReasonResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pcmreasonMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
 }
-
-

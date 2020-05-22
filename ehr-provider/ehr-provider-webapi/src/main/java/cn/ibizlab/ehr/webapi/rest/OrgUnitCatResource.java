@@ -54,9 +54,6 @@ public class OrgUnitCatResource {
 
     public OrgUnitCatDTO permissionDTO=new OrgUnitCatDTO();
 
-
-
-
     @PreAuthorize("hasPermission(#orgunitcat_id,'Update',{'Sql',this.orgunitcatMapping,#orgunitcatdto})")
     @ApiOperation(value = "Update", tags = {"OrgUnitCat" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/orgunitcats/{orgunitcat_id}")
@@ -69,15 +66,13 @@ public class OrgUnitCatResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"OrgUnitCat" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/orgunitcats/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<OrgUnitCatDTO> orgunitcatdtos) {
         orgunitcatService.updateBatch(orgunitcatMapping.toDomain(orgunitcatdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission('','Create',{'Sql',this.orgunitcatMapping,#orgunitcatdto})")
     @ApiOperation(value = "Create", tags = {"OrgUnitCat" },  notes = "Create")
@@ -90,15 +85,13 @@ public class OrgUnitCatResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatch", tags = {"OrgUnitCat" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/orgunitcats/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<OrgUnitCatDTO> orgunitcatdtos) {
         orgunitcatService.createBatch(orgunitcatMapping.toDomain(orgunitcatdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#orgunitcat_id,'Remove',{'Sql',this.orgunitcatMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"OrgUnitCat" },  notes = "Remove")
@@ -108,6 +101,7 @@ public class OrgUnitCatResource {
          return ResponseEntity.status(HttpStatus.OK).body(orgunitcatService.remove(orgunitcat_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"OrgUnitCat" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/orgunitcats/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -115,26 +109,21 @@ public class OrgUnitCatResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrgUnitCat-GetDraft-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrgUnitCat-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"OrgUnitCat" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/orgunitcats/getdraft")
     public ResponseEntity<OrgUnitCatDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(orgunitcatMapping.toDto(orgunitcatService.getDraft(new OrgUnitCat())));
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrgUnitCat-Save-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrgUnitCat-Save-all')")
     @ApiOperation(value = "Save", tags = {"OrgUnitCat" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/orgunitcats/save")
     public ResponseEntity<Boolean> save(@RequestBody OrgUnitCatDTO orgunitcatdto) {
         return ResponseEntity.status(HttpStatus.OK).body(orgunitcatService.save(orgunitcatMapping.toDomain(orgunitcatdto)));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"OrgUnitCat" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/orgunitcats/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<OrgUnitCatDTO> orgunitcatdtos) {
@@ -142,18 +131,12 @@ public class OrgUnitCatResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrgUnitCat-CheckKey-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrgUnitCat-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"OrgUnitCat" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/orgunitcats/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody OrgUnitCatDTO orgunitcatdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(orgunitcatService.checkKey(orgunitcatMapping.toDomain(orgunitcatdto)));
     }
-
-
-
 
     @PreAuthorize("hasPermission(#orgunitcat_id,'Get',{'Sql',this.orgunitcatMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"OrgUnitCat" },  notes = "Get")
@@ -164,7 +147,7 @@ public class OrgUnitCatResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrgUnitCat-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrgUnitCat-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"OrgUnitCat" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/orgunitcats/fetchdefault")
 	public ResponseEntity<List<OrgUnitCatDTO>> fetchDefault(OrgUnitCatSearchContext context) {
@@ -177,7 +160,7 @@ public class OrgUnitCatResource {
                 .body(list);
 	}
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrgUnitCat-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrgUnitCat-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"OrgUnitCat" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/orgunitcats/searchdefault")
 	public ResponseEntity<Page<OrgUnitCatDTO>> searchDefault(@RequestBody OrgUnitCatSearchContext context) {
@@ -185,8 +168,4 @@ public class OrgUnitCatResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(orgunitcatMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
 }
-
-

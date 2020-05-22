@@ -54,9 +54,6 @@ public class TSSDTaskResource {
 
     public TSSDTaskDTO permissionDTO=new TSSDTaskDTO();
 
-
-
-
     @PreAuthorize("hasPermission(#tssdtask_id,'Remove',{'Sql',this.tssdtaskMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"TSSDTask" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/tssdtasks/{tssdtask_id}")
@@ -65,15 +62,13 @@ public class TSSDTaskResource {
          return ResponseEntity.status(HttpStatus.OK).body(tssdtaskService.remove(tssdtask_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"TSSDTask" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/tssdtasks/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         tssdtaskService.removeBatch(ids);
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission('','Create',{'Sql',this.tssdtaskMapping,#tssdtaskdto})")
     @ApiOperation(value = "Create", tags = {"TSSDTask" },  notes = "Create")
@@ -86,15 +81,13 @@ public class TSSDTaskResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatch", tags = {"TSSDTask" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/tssdtasks/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<TSSDTaskDTO> tssdtaskdtos) {
         tssdtaskService.createBatch(tssdtaskMapping.toDomain(tssdtaskdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#tssdtask_id,'Update',{'Sql',this.tssdtaskMapping,#tssdtaskdto})")
     @ApiOperation(value = "Update", tags = {"TSSDTask" },  notes = "Update")
@@ -108,6 +101,7 @@ public class TSSDTaskResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"TSSDTask" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/tssdtasks/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<TSSDTaskDTO> tssdtaskdtos) {
@@ -115,45 +109,34 @@ public class TSSDTaskResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TSSDTask-CheckKey-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TSSDTask-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"TSSDTask" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/tssdtasks/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody TSSDTaskDTO tssdtaskdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(tssdtaskService.checkKey(tssdtaskMapping.toDomain(tssdtaskdto)));
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TSSDTask-GetDraft-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TSSDTask-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"TSSDTask" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/tssdtasks/getdraft")
     public ResponseEntity<TSSDTaskDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(tssdtaskMapping.toDto(tssdtaskService.getDraft(new TSSDTask())));
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TSSDTask-Save-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TSSDTask-Save-all')")
     @ApiOperation(value = "Save", tags = {"TSSDTask" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/tssdtasks/save")
     public ResponseEntity<Boolean> save(@RequestBody TSSDTaskDTO tssdtaskdto) {
         return ResponseEntity.status(HttpStatus.OK).body(tssdtaskService.save(tssdtaskMapping.toDomain(tssdtaskdto)));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"TSSDTask" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/tssdtasks/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<TSSDTaskDTO> tssdtaskdtos) {
         tssdtaskService.saveBatch(tssdtaskMapping.toDomain(tssdtaskdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#tssdtask_id,'Get',{'Sql',this.tssdtaskMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"TSSDTask" },  notes = "Get")
@@ -164,7 +147,7 @@ public class TSSDTaskResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TSSDTask-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TSSDTask-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"TSSDTask" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/tssdtasks/fetchdefault")
 	public ResponseEntity<List<TSSDTaskDTO>> fetchDefault(TSSDTaskSearchContext context) {
@@ -177,7 +160,7 @@ public class TSSDTaskResource {
                 .body(list);
 	}
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TSSDTask-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TSSDTask-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"TSSDTask" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/tssdtasks/searchdefault")
 	public ResponseEntity<Page<TSSDTaskDTO>> searchDefault(@RequestBody TSSDTaskSearchContext context) {
@@ -185,8 +168,4 @@ public class TSSDTaskResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(tssdtaskMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
 }
-
-

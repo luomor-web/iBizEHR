@@ -54,9 +54,6 @@ public class ORMEDITIONResource {
 
     public ORMEDITIONDTO permissionDTO=new ORMEDITIONDTO();
 
-
-
-
     @PreAuthorize("hasPermission(#ormedition_id,'Remove',{'Sql',this.ormeditionMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"ORMEDITION" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/ormeditions/{ormedition_id}")
@@ -65,15 +62,13 @@ public class ORMEDITIONResource {
          return ResponseEntity.status(HttpStatus.OK).body(ormeditionService.remove(ormedition_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"ORMEDITION" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/ormeditions/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         ormeditionService.removeBatch(ids);
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission('','Create',{'Sql',this.ormeditionMapping,#ormeditiondto})")
     @ApiOperation(value = "Create", tags = {"ORMEDITION" },  notes = "Create")
@@ -86,6 +81,7 @@ public class ORMEDITIONResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatch", tags = {"ORMEDITION" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormeditions/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<ORMEDITIONDTO> ormeditiondtos) {
@@ -93,16 +89,14 @@ public class ORMEDITIONResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMEDITION-Save-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMEDITION-Save-all')")
     @ApiOperation(value = "Save", tags = {"ORMEDITION" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormeditions/save")
     public ResponseEntity<Boolean> save(@RequestBody ORMEDITIONDTO ormeditiondto) {
         return ResponseEntity.status(HttpStatus.OK).body(ormeditionService.save(ormeditionMapping.toDomain(ormeditiondto)));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"ORMEDITION" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormeditions/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<ORMEDITIONDTO> ormeditiondtos) {
@@ -110,18 +104,12 @@ public class ORMEDITIONResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMEDITION-GetDraft-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMEDITION-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"ORMEDITION" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/ormeditions/getdraft")
     public ResponseEntity<ORMEDITIONDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(ormeditionMapping.toDto(ormeditionService.getDraft(new ORMEDITION())));
     }
-
-
-
 
     @PreAuthorize("hasPermission(#ormedition_id,'Update',{'Sql',this.ormeditionMapping,#ormeditiondto})")
     @ApiOperation(value = "Update", tags = {"ORMEDITION" },  notes = "Update")
@@ -135,6 +123,7 @@ public class ORMEDITIONResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"ORMEDITION" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/ormeditions/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<ORMEDITIONDTO> ormeditiondtos) {
@@ -142,18 +131,12 @@ public class ORMEDITIONResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMEDITION-CheckKey-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMEDITION-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"ORMEDITION" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormeditions/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody ORMEDITIONDTO ormeditiondto) {
         return  ResponseEntity.status(HttpStatus.OK).body(ormeditionService.checkKey(ormeditionMapping.toDomain(ormeditiondto)));
     }
-
-
-
 
     @PreAuthorize("hasPermission(#ormedition_id,'Get',{'Sql',this.ormeditionMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"ORMEDITION" },  notes = "Get")
@@ -164,7 +147,7 @@ public class ORMEDITIONResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMEDITION-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMEDITION-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"ORMEDITION" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/ormeditions/fetchdefault")
 	public ResponseEntity<List<ORMEDITIONDTO>> fetchDefault(ORMEDITIONSearchContext context) {
@@ -177,7 +160,7 @@ public class ORMEDITIONResource {
                 .body(list);
 	}
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMEDITION-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMEDITION-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"ORMEDITION" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/ormeditions/searchdefault")
 	public ResponseEntity<Page<ORMEDITIONDTO>> searchDefault(@RequestBody ORMEDITIONSearchContext context) {
@@ -185,8 +168,4 @@ public class ORMEDITIONResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(ormeditionMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
 }
-
-

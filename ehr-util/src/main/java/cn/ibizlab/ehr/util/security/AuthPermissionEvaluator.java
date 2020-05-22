@@ -10,8 +10,6 @@ import cn.ibizlab.ehr.util.domain.DTOBase;
 import cn.ibizlab.ehr.util.domain.EntityBase;
 import cn.ibizlab.ehr.util.domain.MappingBase;
 import cn.ibizlab.ehr.util.enums.DEPredefinedFieldType;
-import cn.ibizlab.ehr.util.filter.QueryBuildContext;
-import cn.ibizlab.ehr.util.filter.QueryWrapperContext;
 import cn.ibizlab.ehr.util.helper.DEFieldCacheMap;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Lazy;
@@ -50,24 +48,83 @@ public class AuthPermissionEvaluator implements PermissionEvaluator {
     @Lazy
     private MongoTemplate mongoTemplate;
 
-
+    /**
+     * 批处理权限检查[createBatch:updateBatch:removeBatch]
+     * @param authentication
+     * @param DEAction
+     * @param params
+     * @return
+     */
     @Override
-    public boolean hasPermission(Authentication authentication, Object deAction, Object gridParam) {
-            return true;
-    }
+    public boolean hasPermission(Authentication authentication, Object DEAction, Object params) {
 
+        //未开启权限校验、超级管理员则不进行权限检查
+        if(AuthenticationUser.getAuthenticationUser().getSuperuser()==1  || !enablePermissionValid)
+            return true;
+        List paramList = (ArrayList) params;
+        String deStorageMode= (String) paramList.get(0);
+        String action=String.valueOf(DEAction);
+        List<String> ids=null;
+        EntityBase entity;
+        List<EntityBase> entityList = null;
+        JSONObject userPermission= AuthenticationUser.getAuthenticationUser().getPermissionList();
+        if(userPermission==null)
+            return false;
+        MappingBase mappingBase= (MappingBase) paramList.get(1);
+        //参数准备
+        if(action.equalsIgnoreCase("remove")){
+            entity= (EntityBase) mappingBase.toDomain(paramList.get(2));
+            ids= (List<String>) paramList.get(3);
+        }
+        else{
+            List<DTOBase> dtoList = (List<DTOBase>) paramList.get(2);
+            if(dtoList.size()==0)
+                return false;
+            entityList =mappingBase.toDomain(dtoList);
+            entity = (EntityBase) mappingBase.toDomain(dtoList.get(0));
+        }
+        if (entity==null)
+            return false;
+
+        JSONObject permissionList=userPermission.getJSONObject("entities");
+        String entityName = entity.getClass().getSimpleName();
+
+        //拥有全部数据访问权限时，则跳过权限检查
+        if(isAllData(entityName,action,permissionList)){
+            return true;
+        }
+        //检查是否有操作权限[create.update.delete.read]
+        if(!validDEActionHasPermission(entityName,action,permissionList)){
+            return false;
+        }
+        JSONArray dataRangeList=getDataRange(entityName,action,permissionList);
+        if(dataRangeList.size()==0)
+            return false;
+
+        if(action.equalsIgnoreCase("create")){
+            return createBatchActionPermissionValid(entityList,dataRangeList);
+        }
+        else{
+            if(!action.equalsIgnoreCase("remove")){
+                ids=getIds(entity,entityList);
+            }
+            if(ids.size()==0)
+                return false;
+            return otherBatchActionPermissionValidRouter(deStorageMode, entity ,ids, dataRangeList);
+        }
+    }
 
     /**
      * 实体行为权限检查 ：用于检查当前用户是否拥有实体的新建、编辑、删除权限
      *
      * @param authentication
-     * @param srfKey         当前操作数据的主键
+     * @param id         当前操作数据的主键
      * @param action         当前操作行为：如：[READ、UPDATE、DELETE]
      * @param params         相关参数
      * @return true/false true则允许当前行为，false拒绝行为
      */
     @Override
-    public boolean hasPermission(Authentication authentication, Serializable srfKey, String action, Object params) {
+    public boolean hasPermission(Authentication authentication, Serializable id, String action, Object params) {
 
         //未开启权限校验、超级管理员则不进行权限检查
         if(AuthenticationUser.getAuthenticationUser().getSuperuser()==1  || !enablePermissionValid)
@@ -83,22 +140,118 @@ public class AuthPermissionEvaluator implements PermissionEvaluator {
             return false;
 
         JSONObject userPermission= AuthenticationUser.getAuthenticationUser().getPermissionList();
+        if(userPermission==null)
+            return false;
         JSONObject permissionList=userPermission.getJSONObject("entities");
         String entityName = entity.getClass().getSimpleName();
 
         //拥有全部数据访问权限时，则跳过权限检查
-        if(isAllData(permissionList,entityName,action)){
+        if(isAllData(entityName,action,permissionList)){
             return true;
         }
         //检查是否有操作权限[create.update.delete.read]
-        if(!validDEActionHasPermission(permissionList,entityName,action)){
+        if(!validDEActionHasPermission(entityName,action,permissionList)){
             return false;
         }
+        JSONArray dataRangeList=getDataRange(entityName,action,permissionList);
+        if(dataRangeList.size()==0)
+            return false;
+
         if(action.equalsIgnoreCase("create")){
-            return createActionPermissionValid(permissionList,entity, action);
+            return createActionPermissionValid(entity,dataRangeList);
         }
         else{
-            return otherActionPermissionValidRouter(deStorageMode, entity , action , srfKey, permissionList);
+            return otherActionPermissionValidRouter(deStorageMode, entity, id, dataRangeList);
+        }
+    }
+
+    /**
+     * 批处理新建权限校验
+     * @param entityList
+     * @param dataRangeList
+     * @return
+     */
+    private boolean createBatchActionPermissionValid(List<EntityBase> entityList,JSONArray dataRangeList){
+        for(EntityBase entity : entityList){
+            boolean isCreate = createActionPermissionValid(entity ,dataRangeList);
+            if(!isCreate){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    /**
+     * 批处理行为权限校验[get:update:delete]
+     * @param deStorageMode
+     * @param entity
+     * @param ids
+     * @param dataRangeList
+     * @return
+     */
+    private boolean otherBatchActionPermissionValidRouter(String deStorageMode , EntityBase entity , List<String> ids , JSONArray dataRangeList){
+
+        if(deStorageMode.equalsIgnoreCase("sql")){
+            return sqlBatchPermissionValid(entity ,ids, dataRangeList);
+        }
+        else if(deStorageMode.equalsIgnoreCase("nosql")){
+            return noSqlBatchPermissionValid(entity, ids , dataRangeList);
+        }
+        else if(deStorageMode.equalsIgnoreCase("serviceapi")){
+            return true;
+        }
+        else {
+            throw new RuntimeException(String.format("未能识别实体对应存储模式[%s]",deStorageMode));
+        }
+    }
+
+    /**
+     * SQL批处理权限校验
+     * @param entity
+     * @param ids
+     * @param dataRangeList
+     * @return
+     */
+    private boolean sqlBatchPermissionValid(EntityBase entity , List<String> ids,  JSONArray dataRangeList){
+
+        Map<String,String> permissionField=getPermissionField(entity);//获取组织、部门预置属性
+        String keyFieldName=permissionField.get(keyFieldTag);
+        ServiceImpl service= SpringContextHolder.getBean(String.format("%s%s",entity.getClass().getSimpleName(),"ServiceImpl"));//获取实体service对象
+        //通过权限表达式来获取sql
+        String permissionSQL= String.format(" (%s) AND ( %s in (%s) ) ",getPermissionSQL(entity,dataRangeList),keyFieldName,getEntityKeyCond(ids)); //拼接权限条件-编辑
+        //执行sql进行权限检查
+        QueryWrapper permissionWrapper=getPermissionWrapper(permissionSQL);//构造权限条件
+        List list=service.list(permissionWrapper);
+        if(list.size() == ids.size()){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    /**
+     * NoSQL批处理权限校验
+     * @param entity
+     * @param ids
+     * @param dataRange
+     * @return
+     */
+    private boolean noSqlBatchPermissionValid(EntityBase entity, List<String> ids,  JSONArray dataRange) {
+
+        Map<String,String> permissionField=getPermissionField(entity);//获取组织、部门预置属性
+        String keyFieldName=permissionField.get(keyFieldTag);
+        //根据权限表达式填充权限条件
+        QueryBuilder permissionCond=getNoSqlPermissionCond(entity,dataRange);
+        //权限条件拼接主键
+        permissionCond.and(keyFieldName).in(ids);
+        //执行权限检查
+        Query query = new BasicQuery(permissionCond.get().toString());
+        List list=mongoTemplate.find(query,entity.getClass());
+        if(list.size()==ids.size()){
+            return true;
+        }
+        else{
+            return false;
         }
     }
 
@@ -109,7 +262,7 @@ public class AuthPermissionEvaluator implements PermissionEvaluator {
      * @param action
      * @return
      */
-    private boolean isAllData(JSONObject permissionList, String entityName, String action) {
+    private boolean isAllData( String entityName, String action ,JSONObject permissionList) {
 
         if(permissionList==null)
             return false;
@@ -133,7 +286,7 @@ public class AuthPermissionEvaluator implements PermissionEvaluator {
      * userPermission:{"ENTITY":{"DEACTION":{"READ":["CURORG"]},"DATASET":{"Default":["CURORG"]}}}
      * @return
      */
-    private boolean validDEActionHasPermission(JSONObject userPermission,String entityName , String action ){
+    private boolean validDEActionHasPermission(String entityName , String action ,JSONObject userPermission){
 
         boolean hasPermission=false;
         if(userPermission==null)
@@ -152,28 +305,14 @@ public class AuthPermissionEvaluator implements PermissionEvaluator {
 
     /**
      * 新建行为校验
-     * @param permissionList
      * @param entity
-     * @param action
+     * @param dataRangeList
      * @return
      */
-    private boolean createActionPermissionValid(JSONObject permissionList,EntityBase entity, String action){
-
-        Map<String,String> permissionField=getPermissionField(entity);//获取组织、部门预置属性
-        String keyField=permissionField.get(keyFieldTag);
-        if(StringUtils.isEmpty(keyField)){
-            throw new RuntimeException("权限校验失败，请检查当前实体中是否已经配置主键属性!");
-        }
-
-        //获取权限表达式[全部数据、本单位、本部门等]
-        JSONObject entityObj=permissionList.getJSONObject(entity.getClass().getSimpleName());//获取实体
-        JSONObject permissionType= entityObj.getJSONObject(DEActionType);
-        JSONArray dataRangeList=permissionType.getJSONArray(action);//行为：read；insert...
-        if(dataRangeList.size()==0)
-            return false;
+    private boolean createActionPermissionValid(EntityBase entity, JSONArray dataRangeList){
 
         boolean isCreate=true;
-
+        Map<String,String> permissionField=getPermissionField(entity);//获取组织、部门预置属性
         String orgField=permissionField.get("orgfield");
         String orgDeptField=permissionField.get("orgsecfield");
         String createManField=permissionField.get("createmanfield");
@@ -230,18 +369,17 @@ public class AuthPermissionEvaluator implements PermissionEvaluator {
      * 根据实体存储模式，进行鉴权
      * @param deStorageMode
      * @param entity
-     * @param action
-     * @param srfKey
-     * @param permissionList
+     * @param id
+     * @param dataRangeList
      * @return
      */
-    private boolean otherActionPermissionValidRouter(String deStorageMode, EntityBase entity , String action , Object srfKey , JSONObject permissionList){
+    private boolean otherActionPermissionValidRouter(String deStorageMode, EntityBase entity , Object id , JSONArray dataRangeList){
 
         if(deStorageMode.equalsIgnoreCase("sql")){
-            return sqlPermissionValid(entity , action , srfKey, permissionList);
+            return sqlPermissionValid(entity , id, dataRangeList);
         }
         else if(deStorageMode.equalsIgnoreCase("nosql")){
-            return noSqlPermissionValid(entity , action , srfKey, permissionList);
+            return noSqlPermissionValid(entity , id, dataRangeList);
         }
         else if(deStorageMode.equalsIgnoreCase("serviceapi")){
             return true;
@@ -254,32 +392,16 @@ public class AuthPermissionEvaluator implements PermissionEvaluator {
     /**
      * sql存储模式实体行为鉴权
      * @param entity
-     * @param action
-     * @param srfKey
-     * @param permissionList
+     * @param id
+     * @param dataRangeList
      * @return
      */
-    private boolean sqlPermissionValid(EntityBase entity , String action , Object srfKey, JSONObject permissionList){
+    private boolean sqlPermissionValid(EntityBase entity , Object id, JSONArray dataRangeList){
 
-        String entityName=entity.getClass().getSimpleName();
-        ServiceImpl service= SpringContextHolder.getBean(String.format("%s%s",entityName,"ServiceImpl"));//获取实体service对象
-
+        ServiceImpl service= SpringContextHolder.getBean(String.format("%s%s",entity.getClass().getSimpleName(),"ServiceImpl"));//获取实体service对象
         Map<String,String> permissionField=getPermissionField(entity);//获取组织、部门预置属性
-        String keyField=permissionField.get(keyFieldTag);
-        if(StringUtils.isEmpty(keyField)){
-            throw new RuntimeException("权限校验失败，请检查当前实体中是否已经配置主键属性!");
-        }
-
-        //获取权限表达式[全部数据、本单位、本部门等]
-        JSONObject entityObj=permissionList.getJSONObject(entity.getClass().getSimpleName());//获取实体
-        JSONObject permissionType= entityObj.getJSONObject(DEActionType);
-        JSONArray opprivList=permissionType.getJSONArray(action);//行为：read；insert...
-        if(opprivList.size()==0)
-            return false;
-
         //通过权限表达式来获取sql
-        String tempPermissionSQL=getPermissionSQL(entity,opprivList);
-        String permissionSQL= String.format(" (%s) AND (%s='%s')",tempPermissionSQL,keyField,srfKey); //拼接权限条件-编辑
+        String permissionSQL= String.format(" (%s) AND (%s='%s')",getPermissionSQL(entity,dataRangeList),permissionField.get(keyFieldTag),id); //拼接权限条件-编辑
         //执行sql进行权限检查
         QueryWrapper permissionWrapper=getPermissionWrapper(permissionSQL);//构造权限条件
         List list=service.list(permissionWrapper);
@@ -294,32 +416,18 @@ public class AuthPermissionEvaluator implements PermissionEvaluator {
     /**
      * NoSQL实体行为鉴权
      * @param entity
-     * @param action
-     * @param srfKey
-     * @param permissionList
+     * @param id
+     * @param dataRangeList
      * @return
      */
-    private boolean noSqlPermissionValid(EntityBase entity, String action, Object srfKey, JSONObject permissionList) {
+    private boolean noSqlPermissionValid(EntityBase entity, Object id, JSONArray dataRangeList) {
 
         Map<String,String> permissionField=getPermissionField(entity);//获取组织、部门预置属性
-
         String keyField=permissionField.get(keyFieldTag);
-        if(StringUtils.isEmpty(keyField)){
-            throw new RuntimeException("权限校验失败，请检查当前实体中是否已经配置主键属性!");
-        }
-
-        //获取权限表达式[全部数据、本单位、本部门等]
-        JSONObject entityObj=permissionList.getJSONObject(entity.getClass().getSimpleName());//获取实体
-        JSONObject permissionType= entityObj.getJSONObject(DEActionType);
-        JSONArray dataRange=permissionType.getJSONArray(action);//行为：read；insert...
-        if(dataRange.size()==0)
-            return false;
-
         //根据权限表达式填充权限条件
-        QueryBuilder permissionCond=new QueryBuilder();
-        fillNoSqlPermissionCond(dataRange,entity,permissionCond);
+        QueryBuilder permissionCond=getNoSqlPermissionCond(entity,dataRangeList);
         //权限条件拼接主键
-        permissionCond.and(keyField).is(srfKey);
+        permissionCond.and(keyField).is(id);
         //执行权限检查
         Query query = new BasicQuery(permissionCond.get().toString());
         List list=mongoTemplate.find(query,entity.getClass());
@@ -334,12 +442,13 @@ public class AuthPermissionEvaluator implements PermissionEvaluator {
 
     /**
      * 为NoSQL存储模式的表格查询填充权限条件
-     * @param oppriList
      * @param entity
-     * @param permissionSQL
+     * @param dataRangeList
+     * @return
      */
-    private void fillNoSqlPermissionCond(JSONArray oppriList, EntityBase entity, QueryBuilder permissionSQL){
+    private QueryBuilder getNoSqlPermissionCond( EntityBase entity ,JSONArray dataRangeList ){
 
+        QueryBuilder permissionSQL=new QueryBuilder();
         Map<String,String> permissionField=getPermissionField(entity);//获取组织、部门预置属性
         String orgField=permissionField.get("orgfield");
         String orgDeptField=permissionField.get("orgsecfield");
@@ -351,8 +460,8 @@ public class AuthPermissionEvaluator implements PermissionEvaluator {
         Set<String> orgDeptParent = userInfo.get("parentdept");
         Set<String> orgDeptChild = userInfo.get("subdept");
 
-        for(int i=0;i<oppriList.size();i++){
-            String permissionCond=oppriList.getString(i);//权限配置条件
+        for(int i=0;i<dataRangeList.size();i++){
+            String permissionCond=dataRangeList.getString(i);//权限配置条件
             if(permissionCond.equals("curorg")){   //本单位
                 permissionSQL.or(new QueryBuilder().and(orgField).is(AuthenticationUser.getAuthenticationUser().getOrgid()).get());
             }
@@ -378,6 +487,8 @@ public class AuthPermissionEvaluator implements PermissionEvaluator {
                 permissionSQL.or(new QueryBuilder().get());
             }
         }
+
+        return permissionSQL;
     }
 
     /**
@@ -528,6 +639,55 @@ public class AuthPermissionEvaluator implements PermissionEvaluator {
         if (resultCond.endsWith(operator))
             resultCond = resultCond.substring(0, resultCond.lastIndexOf(operator));
         return resultCond;
+    }
+
+
+    /**
+     * 转换[a,b]格式字符串到 'a','b'格式
+     *
+     * @return
+     */
+    private String getEntityKeyCond(List<String> array) {
+        String[] arr = array.toArray(new String[array.size()]);
+        return "'" + String.join("','", arr) + "'";
+    }
+
+    /**
+     * 获取数据范围
+     * @param entityName
+     * @param action
+     * @param permissionList
+     * @return
+     */
+    private JSONArray getDataRange(String entityName, String action , JSONObject permissionList){
+        //获取权限表达式[全部数据、本单位、本部门等]
+        JSONObject entityObj=permissionList.getJSONObject(entityName);//获取实体
+        JSONObject permissionType= entityObj.getJSONObject(DEActionType);
+        JSONArray  dataRangeList=permissionType.getJSONArray(action);//行为：read；insert...
+        return dataRangeList;
+    }
+
+    /**
+     * 获取实体主键集合
+     * @param entityBase
+     * @param entityList
+     * @return
+     */
+    private List<String> getIds(EntityBase entityBase ,List<EntityBase> entityList) {
+
+        List<String> entityKeyList=new ArrayList<>();
+        Map<String,String> permissionField=getPermissionField(entityBase);//获取组织、部门预置属性
+        String keyFieldName=permissionField.get(keyFieldTag);
+        if(StringUtils.isEmpty(keyFieldName))
+            return entityKeyList;
+
+        for(EntityBase entity: entityList){
+            Object objEntityKey = entity.get(keyFieldName);
+            if(!ObjectUtils.isEmpty(objEntityKey)){
+                entityKeyList.add(String.valueOf(objEntityKey));
+            }
+        }
+        return entityKeyList;
     }
 
 }

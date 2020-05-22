@@ -54,18 +54,12 @@ public class MsgTemplateResource {
 
     public MsgTemplateDTO permissionDTO=new MsgTemplateDTO();
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-MsgTemplate-GetDraft-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-MsgTemplate-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"MsgTemplate" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/msgtemplates/getdraft")
     public ResponseEntity<MsgTemplateDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(msgtemplateMapping.toDto(msgtemplateService.getDraft(new MsgTemplate())));
     }
-
-
-
 
     @PreAuthorize("hasPermission(#msgtemplate_id,'Update',{'Sql',this.msgtemplateMapping,#msgtemplatedto})")
     @ApiOperation(value = "Update", tags = {"MsgTemplate" },  notes = "Update")
@@ -79,15 +73,13 @@ public class MsgTemplateResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"MsgTemplate" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/msgtemplates/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<MsgTemplateDTO> msgtemplatedtos) {
         msgtemplateService.updateBatch(msgtemplateMapping.toDomain(msgtemplatedtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#msgtemplate_id,'Get',{'Sql',this.msgtemplateMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"MsgTemplate" },  notes = "Get")
@@ -97,9 +89,6 @@ public class MsgTemplateResource {
         MsgTemplateDTO dto = msgtemplateMapping.toDto(domain);
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
-
-
 
     @PreAuthorize("hasPermission('','Create',{'Sql',this.msgtemplateMapping,#msgtemplatedto})")
     @ApiOperation(value = "Create", tags = {"MsgTemplate" },  notes = "Create")
@@ -112,6 +101,7 @@ public class MsgTemplateResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatch", tags = {"MsgTemplate" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/msgtemplates/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<MsgTemplateDTO> msgtemplatedtos) {
@@ -119,18 +109,12 @@ public class MsgTemplateResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-MsgTemplate-CheckKey-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-MsgTemplate-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"MsgTemplate" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/msgtemplates/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody MsgTemplateDTO msgtemplatedto) {
         return  ResponseEntity.status(HttpStatus.OK).body(msgtemplateService.checkKey(msgtemplateMapping.toDomain(msgtemplatedto)));
     }
-
-
-
 
     @PreAuthorize("hasPermission(#msgtemplate_id,'Remove',{'Sql',this.msgtemplateMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"MsgTemplate" },  notes = "Remove")
@@ -140,6 +124,7 @@ public class MsgTemplateResource {
          return ResponseEntity.status(HttpStatus.OK).body(msgtemplateService.remove(msgtemplate_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"MsgTemplate" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/msgtemplates/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -147,16 +132,14 @@ public class MsgTemplateResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-MsgTemplate-Save-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-MsgTemplate-Save-all')")
     @ApiOperation(value = "Save", tags = {"MsgTemplate" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/msgtemplates/save")
     public ResponseEntity<Boolean> save(@RequestBody MsgTemplateDTO msgtemplatedto) {
         return ResponseEntity.status(HttpStatus.OK).body(msgtemplateService.save(msgtemplateMapping.toDomain(msgtemplatedto)));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"MsgTemplate" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/msgtemplates/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<MsgTemplateDTO> msgtemplatedtos) {
@@ -164,7 +147,7 @@ public class MsgTemplateResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-MsgTemplate-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-MsgTemplate-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"MsgTemplate" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/msgtemplates/fetchdefault")
 	public ResponseEntity<List<MsgTemplateDTO>> fetchDefault(MsgTemplateSearchContext context) {
@@ -177,7 +160,7 @@ public class MsgTemplateResource {
                 .body(list);
 	}
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-MsgTemplate-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-MsgTemplate-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"MsgTemplate" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/msgtemplates/searchdefault")
 	public ResponseEntity<Page<MsgTemplateDTO>> searchDefault(@RequestBody MsgTemplateSearchContext context) {
@@ -185,8 +168,4 @@ public class MsgTemplateResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(msgtemplateMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
 }
-
-

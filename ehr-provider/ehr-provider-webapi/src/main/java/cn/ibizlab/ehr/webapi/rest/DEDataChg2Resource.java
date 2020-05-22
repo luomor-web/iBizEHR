@@ -54,9 +54,6 @@ public class DEDataChg2Resource {
 
     public DEDataChg2DTO permissionDTO=new DEDataChg2DTO();
 
-
-
-
     @PreAuthorize("hasPermission(#dedatachg2_id,'Remove',{'Sql',this.dedatachg2Mapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"DEDataChg2" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/dedatachg2s/{dedatachg2_id}")
@@ -65,15 +62,13 @@ public class DEDataChg2Resource {
          return ResponseEntity.status(HttpStatus.OK).body(dedatachg2Service.remove(dedatachg2_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"DEDataChg2" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/dedatachg2s/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         dedatachg2Service.removeBatch(ids);
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#dedatachg2_id,'Get',{'Sql',this.dedatachg2Mapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"DEDataChg2" },  notes = "Get")
@@ -83,9 +78,6 @@ public class DEDataChg2Resource {
         DEDataChg2DTO dto = dedatachg2Mapping.toDto(domain);
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#dedatachg2_id,'Update',{'Sql',this.dedatachg2Mapping,#dedatachg2dto})")
     @ApiOperation(value = "Update", tags = {"DEDataChg2" },  notes = "Update")
@@ -99,6 +91,7 @@ public class DEDataChg2Resource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"DEDataChg2" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/dedatachg2s/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<DEDataChg2DTO> dedatachg2dtos) {
@@ -106,18 +99,12 @@ public class DEDataChg2Resource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DEDataChg2-GetDraft-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DEDataChg2-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"DEDataChg2" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/dedatachg2s/getdraft")
     public ResponseEntity<DEDataChg2DTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(dedatachg2Mapping.toDto(dedatachg2Service.getDraft(new DEDataChg2())));
     }
-
-
-
 
     @PreAuthorize("hasPermission('','Create',{'Sql',this.dedatachg2Mapping,#dedatachg2dto})")
     @ApiOperation(value = "Create", tags = {"DEDataChg2" },  notes = "Create")
@@ -130,6 +117,7 @@ public class DEDataChg2Resource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatch", tags = {"DEDataChg2" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/dedatachg2s/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<DEDataChg2DTO> dedatachg2dtos) {
@@ -137,26 +125,21 @@ public class DEDataChg2Resource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DEDataChg2-CheckKey-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DEDataChg2-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"DEDataChg2" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/dedatachg2s/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody DEDataChg2DTO dedatachg2dto) {
         return  ResponseEntity.status(HttpStatus.OK).body(dedatachg2Service.checkKey(dedatachg2Mapping.toDomain(dedatachg2dto)));
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DEDataChg2-Save-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DEDataChg2-Save-all')")
     @ApiOperation(value = "Save", tags = {"DEDataChg2" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/dedatachg2s/save")
     public ResponseEntity<Boolean> save(@RequestBody DEDataChg2DTO dedatachg2dto) {
         return ResponseEntity.status(HttpStatus.OK).body(dedatachg2Service.save(dedatachg2Mapping.toDomain(dedatachg2dto)));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"DEDataChg2" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/dedatachg2s/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<DEDataChg2DTO> dedatachg2dtos) {
@@ -164,7 +147,7 @@ public class DEDataChg2Resource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DEDataChg2-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DEDataChg2-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"DEDataChg2" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/dedatachg2s/fetchdefault")
 	public ResponseEntity<List<DEDataChg2DTO>> fetchDefault(DEDataChg2SearchContext context) {
@@ -177,7 +160,7 @@ public class DEDataChg2Resource {
                 .body(list);
 	}
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DEDataChg2-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DEDataChg2-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"DEDataChg2" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/dedatachg2s/searchdefault")
 	public ResponseEntity<Page<DEDataChg2DTO>> searchDefault(@RequestBody DEDataChg2SearchContext context) {
@@ -185,8 +168,4 @@ public class DEDataChg2Resource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(dedatachg2Mapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
 }
-
-

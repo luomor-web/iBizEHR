@@ -54,9 +54,6 @@ public class PIMMAJORSETYPEResource {
 
     public PIMMAJORSETYPEDTO permissionDTO=new PIMMAJORSETYPEDTO();
 
-
-
-
     @PreAuthorize("hasPermission(#pimmajorsetype_id,'Remove',{'Sql',this.pimmajorsetypeMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"PIMMAJORSETYPE" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimmajorsetypes/{pimmajorsetype_id}")
@@ -65,6 +62,7 @@ public class PIMMAJORSETYPEResource {
          return ResponseEntity.status(HttpStatus.OK).body(pimmajorsetypeService.remove(pimmajorsetype_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"PIMMAJORSETYPE" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimmajorsetypes/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -72,18 +70,12 @@ public class PIMMAJORSETYPEResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMMAJORSETYPE-CheckKey-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMMAJORSETYPE-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"PIMMAJORSETYPE" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimmajorsetypes/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PIMMAJORSETYPEDTO pimmajorsetypedto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pimmajorsetypeService.checkKey(pimmajorsetypeMapping.toDomain(pimmajorsetypedto)));
     }
-
-
-
 
     @PreAuthorize("hasPermission(#pimmajorsetype_id,'Get',{'Sql',this.pimmajorsetypeMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"PIMMAJORSETYPE" },  notes = "Get")
@@ -94,25 +86,20 @@ public class PIMMAJORSETYPEResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMMAJORSETYPE-Save-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMMAJORSETYPE-Save-all')")
     @ApiOperation(value = "Save", tags = {"PIMMAJORSETYPE" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimmajorsetypes/save")
     public ResponseEntity<Boolean> save(@RequestBody PIMMAJORSETYPEDTO pimmajorsetypedto) {
         return ResponseEntity.status(HttpStatus.OK).body(pimmajorsetypeService.save(pimmajorsetypeMapping.toDomain(pimmajorsetypedto)));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"PIMMAJORSETYPE" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimmajorsetypes/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PIMMAJORSETYPEDTO> pimmajorsetypedtos) {
         pimmajorsetypeService.saveBatch(pimmajorsetypeMapping.toDomain(pimmajorsetypedtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission('','Create',{'Sql',this.pimmajorsetypeMapping,#pimmajorsetypedto})")
     @ApiOperation(value = "Create", tags = {"PIMMAJORSETYPE" },  notes = "Create")
@@ -125,6 +112,7 @@ public class PIMMAJORSETYPEResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatch", tags = {"PIMMAJORSETYPE" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimmajorsetypes/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PIMMAJORSETYPEDTO> pimmajorsetypedtos) {
@@ -132,18 +120,12 @@ public class PIMMAJORSETYPEResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMMAJORSETYPE-GetDraft-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMMAJORSETYPE-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"PIMMAJORSETYPE" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimmajorsetypes/getdraft")
     public ResponseEntity<PIMMAJORSETYPEDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(pimmajorsetypeMapping.toDto(pimmajorsetypeService.getDraft(new PIMMAJORSETYPE())));
     }
-
-
-
 
     @PreAuthorize("hasPermission(#pimmajorsetype_id,'Update',{'Sql',this.pimmajorsetypeMapping,#pimmajorsetypedto})")
     @ApiOperation(value = "Update", tags = {"PIMMAJORSETYPE" },  notes = "Update")
@@ -157,6 +139,7 @@ public class PIMMAJORSETYPEResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"PIMMAJORSETYPE" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimmajorsetypes/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PIMMAJORSETYPEDTO> pimmajorsetypedtos) {
@@ -164,7 +147,7 @@ public class PIMMAJORSETYPEResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMMAJORSETYPE-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMMAJORSETYPE-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PIMMAJORSETYPE" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimmajorsetypes/fetchdefault")
 	public ResponseEntity<List<PIMMAJORSETYPEDTO>> fetchDefault(PIMMAJORSETYPESearchContext context) {
@@ -177,7 +160,7 @@ public class PIMMAJORSETYPEResource {
                 .body(list);
 	}
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMMAJORSETYPE-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMMAJORSETYPE-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PIMMAJORSETYPE" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pimmajorsetypes/searchdefault")
 	public ResponseEntity<Page<PIMMAJORSETYPEDTO>> searchDefault(@RequestBody PIMMAJORSETYPESearchContext context) {
@@ -185,8 +168,4 @@ public class PIMMAJORSETYPEResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimmajorsetypeMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
 }
-
-

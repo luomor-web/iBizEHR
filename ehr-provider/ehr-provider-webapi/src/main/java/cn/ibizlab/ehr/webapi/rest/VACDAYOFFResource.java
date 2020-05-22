@@ -54,9 +54,6 @@ public class VACDAYOFFResource {
 
     public VACDAYOFFDTO permissionDTO=new VACDAYOFFDTO();
 
-
-
-
     @PreAuthorize("hasPermission(#vacdayoff_id,'Get',{'Sql',this.vacdayoffMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"VACDAYOFF" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/vacdayoffs/{vacdayoff_id}")
@@ -66,45 +63,34 @@ public class VACDAYOFFResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACDAYOFF-GetDraft-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACDAYOFF-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"VACDAYOFF" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/vacdayoffs/getdraft")
     public ResponseEntity<VACDAYOFFDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(vacdayoffMapping.toDto(vacdayoffService.getDraft(new VACDAYOFF())));
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACDAYOFF-CheckKey-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACDAYOFF-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"VACDAYOFF" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacdayoffs/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody VACDAYOFFDTO vacdayoffdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(vacdayoffService.checkKey(vacdayoffMapping.toDomain(vacdayoffdto)));
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACDAYOFF-Save-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACDAYOFF-Save-all')")
     @ApiOperation(value = "Save", tags = {"VACDAYOFF" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacdayoffs/save")
     public ResponseEntity<Boolean> save(@RequestBody VACDAYOFFDTO vacdayoffdto) {
         return ResponseEntity.status(HttpStatus.OK).body(vacdayoffService.save(vacdayoffMapping.toDomain(vacdayoffdto)));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"VACDAYOFF" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacdayoffs/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<VACDAYOFFDTO> vacdayoffdtos) {
         vacdayoffService.saveBatch(vacdayoffMapping.toDomain(vacdayoffdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission('','Create',{'Sql',this.vacdayoffMapping,#vacdayoffdto})")
     @ApiOperation(value = "Create", tags = {"VACDAYOFF" },  notes = "Create")
@@ -117,15 +103,13 @@ public class VACDAYOFFResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatch", tags = {"VACDAYOFF" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacdayoffs/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<VACDAYOFFDTO> vacdayoffdtos) {
         vacdayoffService.createBatch(vacdayoffMapping.toDomain(vacdayoffdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#vacdayoff_id,'Update',{'Sql',this.vacdayoffMapping,#vacdayoffdto})")
     @ApiOperation(value = "Update", tags = {"VACDAYOFF" },  notes = "Update")
@@ -139,15 +123,13 @@ public class VACDAYOFFResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"VACDAYOFF" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/vacdayoffs/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<VACDAYOFFDTO> vacdayoffdtos) {
         vacdayoffService.updateBatch(vacdayoffMapping.toDomain(vacdayoffdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#vacdayoff_id,'Remove',{'Sql',this.vacdayoffMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"VACDAYOFF" },  notes = "Remove")
@@ -157,6 +139,7 @@ public class VACDAYOFFResource {
          return ResponseEntity.status(HttpStatus.OK).body(vacdayoffService.remove(vacdayoff_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"VACDAYOFF" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/vacdayoffs/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -164,7 +147,7 @@ public class VACDAYOFFResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACDAYOFF-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACDAYOFF-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"VACDAYOFF" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/vacdayoffs/fetchdefault")
 	public ResponseEntity<List<VACDAYOFFDTO>> fetchDefault(VACDAYOFFSearchContext context) {
@@ -177,7 +160,7 @@ public class VACDAYOFFResource {
                 .body(list);
 	}
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACDAYOFF-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACDAYOFF-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"VACDAYOFF" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/vacdayoffs/searchdefault")
 	public ResponseEntity<Page<VACDAYOFFDTO>> searchDefault(@RequestBody VACDAYOFFSearchContext context) {
@@ -185,8 +168,4 @@ public class VACDAYOFFResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(vacdayoffMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
 }
-
-

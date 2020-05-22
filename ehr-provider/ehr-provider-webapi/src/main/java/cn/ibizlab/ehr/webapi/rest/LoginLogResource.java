@@ -54,9 +54,6 @@ public class LoginLogResource {
 
     public LoginLogDTO permissionDTO=new LoginLogDTO();
 
-
-
-
     @PreAuthorize("hasPermission('','Create',{'Sql',this.loginlogMapping,#loginlogdto})")
     @ApiOperation(value = "Create", tags = {"LoginLog" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/loginlogs")
@@ -68,6 +65,7 @@ public class LoginLogResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatch", tags = {"LoginLog" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/loginlogs/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<LoginLogDTO> loginlogdtos) {
@@ -75,16 +73,14 @@ public class LoginLogResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-LoginLog-Save-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-LoginLog-Save-all')")
     @ApiOperation(value = "Save", tags = {"LoginLog" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/loginlogs/save")
     public ResponseEntity<Boolean> save(@RequestBody LoginLogDTO loginlogdto) {
         return ResponseEntity.status(HttpStatus.OK).body(loginlogService.save(loginlogMapping.toDomain(loginlogdto)));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"LoginLog" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/loginlogs/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<LoginLogDTO> loginlogdtos) {
@@ -92,28 +88,19 @@ public class LoginLogResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-LoginLog-CheckKey-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-LoginLog-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"LoginLog" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/loginlogs/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody LoginLogDTO loginlogdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(loginlogService.checkKey(loginlogMapping.toDomain(loginlogdto)));
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-LoginLog-GetDraft-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-LoginLog-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"LoginLog" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/loginlogs/getdraft")
     public ResponseEntity<LoginLogDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(loginlogMapping.toDto(loginlogService.getDraft(new LoginLog())));
     }
-
-
-
 
     @PreAuthorize("hasPermission(#loginlog_id,'Get',{'Sql',this.loginlogMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"LoginLog" },  notes = "Get")
@@ -124,9 +111,6 @@ public class LoginLogResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-
-
-
     @PreAuthorize("hasPermission(#loginlog_id,'Remove',{'Sql',this.loginlogMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"LoginLog" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/loginlogs/{loginlog_id}")
@@ -135,15 +119,13 @@ public class LoginLogResource {
          return ResponseEntity.status(HttpStatus.OK).body(loginlogService.remove(loginlog_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"LoginLog" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/loginlogs/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         loginlogService.removeBatch(ids);
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#loginlog_id,'Update',{'Sql',this.loginlogMapping,#loginlogdto})")
     @ApiOperation(value = "Update", tags = {"LoginLog" },  notes = "Update")
@@ -157,6 +139,7 @@ public class LoginLogResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"LoginLog" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/loginlogs/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<LoginLogDTO> loginlogdtos) {
@@ -164,7 +147,7 @@ public class LoginLogResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-LoginLog-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-LoginLog-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"LoginLog" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/loginlogs/fetchdefault")
 	public ResponseEntity<List<LoginLogDTO>> fetchDefault(LoginLogSearchContext context) {
@@ -177,7 +160,7 @@ public class LoginLogResource {
                 .body(list);
 	}
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-LoginLog-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-LoginLog-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"LoginLog" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/loginlogs/searchdefault")
 	public ResponseEntity<Page<LoginLogDTO>> searchDefault(@RequestBody LoginLogSearchContext context) {
@@ -185,8 +168,4 @@ public class LoginLogResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(loginlogMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
 }
-
-

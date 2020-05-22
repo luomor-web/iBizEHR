@@ -54,9 +54,6 @@ public class VACSITUATIONResource {
 
     public VACSITUATIONDTO permissionDTO=new VACSITUATIONDTO();
 
-
-
-
     @PreAuthorize("hasPermission(#vacsituation_id,'Update',{'Sql',this.vacsituationMapping,#vacsituationdto})")
     @ApiOperation(value = "Update", tags = {"VACSITUATION" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/vacsituations/{vacsituation_id}")
@@ -69,15 +66,13 @@ public class VACSITUATIONResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"VACSITUATION" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/vacsituations/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<VACSITUATIONDTO> vacsituationdtos) {
         vacsituationService.updateBatch(vacsituationMapping.toDomain(vacsituationdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission('','Create',{'Sql',this.vacsituationMapping,#vacsituationdto})")
     @ApiOperation(value = "Create", tags = {"VACSITUATION" },  notes = "Create")
@@ -90,6 +85,7 @@ public class VACSITUATIONResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatch", tags = {"VACSITUATION" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacsituations/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<VACSITUATIONDTO> vacsituationdtos) {
@@ -97,45 +93,34 @@ public class VACSITUATIONResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACSITUATION-CheckKey-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACSITUATION-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"VACSITUATION" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacsituations/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody VACSITUATIONDTO vacsituationdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(vacsituationService.checkKey(vacsituationMapping.toDomain(vacsituationdto)));
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACSITUATION-GetDraft-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACSITUATION-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"VACSITUATION" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/vacsituations/getdraft")
     public ResponseEntity<VACSITUATIONDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(vacsituationMapping.toDto(vacsituationService.getDraft(new VACSITUATION())));
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACSITUATION-Save-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACSITUATION-Save-all')")
     @ApiOperation(value = "Save", tags = {"VACSITUATION" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacsituations/save")
     public ResponseEntity<Boolean> save(@RequestBody VACSITUATIONDTO vacsituationdto) {
         return ResponseEntity.status(HttpStatus.OK).body(vacsituationService.save(vacsituationMapping.toDomain(vacsituationdto)));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"VACSITUATION" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacsituations/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<VACSITUATIONDTO> vacsituationdtos) {
         vacsituationService.saveBatch(vacsituationMapping.toDomain(vacsituationdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#vacsituation_id,'Get',{'Sql',this.vacsituationMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"VACSITUATION" },  notes = "Get")
@@ -146,9 +131,6 @@ public class VACSITUATIONResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-
-
-
     @PreAuthorize("hasPermission(#vacsituation_id,'Remove',{'Sql',this.vacsituationMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"VACSITUATION" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/vacsituations/{vacsituation_id}")
@@ -157,6 +139,7 @@ public class VACSITUATIONResource {
          return ResponseEntity.status(HttpStatus.OK).body(vacsituationService.remove(vacsituation_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"VACSITUATION" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/vacsituations/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -164,7 +147,7 @@ public class VACSITUATIONResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACSITUATION-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACSITUATION-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"VACSITUATION" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/vacsituations/fetchdefault")
 	public ResponseEntity<List<VACSITUATIONDTO>> fetchDefault(VACSITUATIONSearchContext context) {
@@ -177,7 +160,7 @@ public class VACSITUATIONResource {
                 .body(list);
 	}
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACSITUATION-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACSITUATION-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"VACSITUATION" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/vacsituations/searchdefault")
 	public ResponseEntity<Page<VACSITUATIONDTO>> searchDefault(@RequestBody VACSITUATIONSearchContext context) {
@@ -185,8 +168,4 @@ public class VACSITUATIONResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(vacsituationMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
 }
-
-

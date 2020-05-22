@@ -54,9 +54,6 @@ public class PIMACHIEVEMENTSResource {
 
     public PIMACHIEVEMENTSDTO permissionDTO=new PIMACHIEVEMENTSDTO();
 
-
-
-
     @PreAuthorize("hasPermission(#pimachievements_id,'Update',{'Sql',this.pimachievementsMapping,#pimachievementsdto})")
     @ApiOperation(value = "Update", tags = {"PIMACHIEVEMENTS" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimachievements/{pimachievements_id}")
@@ -69,6 +66,7 @@ public class PIMACHIEVEMENTSResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"PIMACHIEVEMENTS" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimachievements/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PIMACHIEVEMENTSDTO> pimachievementsdtos) {
@@ -76,16 +74,14 @@ public class PIMACHIEVEMENTSResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMACHIEVEMENTS-Save-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMACHIEVEMENTS-Save-all')")
     @ApiOperation(value = "Save", tags = {"PIMACHIEVEMENTS" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimachievements/save")
     public ResponseEntity<Boolean> save(@RequestBody PIMACHIEVEMENTSDTO pimachievementsdto) {
         return ResponseEntity.status(HttpStatus.OK).body(pimachievementsService.save(pimachievementsMapping.toDomain(pimachievementsdto)));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"PIMACHIEVEMENTS" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimachievements/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PIMACHIEVEMENTSDTO> pimachievementsdtos) {
@@ -93,18 +89,12 @@ public class PIMACHIEVEMENTSResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMACHIEVEMENTS-GetDraft-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMACHIEVEMENTS-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"PIMACHIEVEMENTS" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimachievements/getdraft")
     public ResponseEntity<PIMACHIEVEMENTSDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(pimachievementsMapping.toDto(pimachievementsService.getDraft(new PIMACHIEVEMENTS())));
     }
-
-
-
 
     @PreAuthorize("hasPermission(#pimachievements_id,'Remove',{'Sql',this.pimachievementsMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"PIMACHIEVEMENTS" },  notes = "Remove")
@@ -114,15 +104,13 @@ public class PIMACHIEVEMENTSResource {
          return ResponseEntity.status(HttpStatus.OK).body(pimachievementsService.remove(pimachievements_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"PIMACHIEVEMENTS" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimachievements/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         pimachievementsService.removeBatch(ids);
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#pimachievements_id,'Get',{'Sql',this.pimachievementsMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"PIMACHIEVEMENTS" },  notes = "Get")
@@ -133,18 +121,12 @@ public class PIMACHIEVEMENTSResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMACHIEVEMENTS-CheckKey-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMACHIEVEMENTS-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"PIMACHIEVEMENTS" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimachievements/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PIMACHIEVEMENTSDTO pimachievementsdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pimachievementsService.checkKey(pimachievementsMapping.toDomain(pimachievementsdto)));
     }
-
-
-
 
     @PreAuthorize("hasPermission('','Create',{'Sql',this.pimachievementsMapping,#pimachievementsdto})")
     @ApiOperation(value = "Create", tags = {"PIMACHIEVEMENTS" },  notes = "Create")
@@ -157,6 +139,7 @@ public class PIMACHIEVEMENTSResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatch", tags = {"PIMACHIEVEMENTS" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimachievements/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PIMACHIEVEMENTSDTO> pimachievementsdtos) {
@@ -164,7 +147,7 @@ public class PIMACHIEVEMENTSResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMACHIEVEMENTS-JLSS-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMACHIEVEMENTS-JLSS-all')")
 	@ApiOperation(value = "fetch记录所属和人员ID不符的", tags = {"PIMACHIEVEMENTS" } ,notes = "fetch记录所属和人员ID不符的")
     @RequestMapping(method= RequestMethod.GET , value="/pimachievements/fetchjlss")
 	public ResponseEntity<List<PIMACHIEVEMENTSDTO>> fetchJLSS(PIMACHIEVEMENTSSearchContext context) {
@@ -177,7 +160,7 @@ public class PIMACHIEVEMENTSResource {
                 .body(list);
 	}
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMACHIEVEMENTS-JLSS-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMACHIEVEMENTS-JLSS-all')")
 	@ApiOperation(value = "search记录所属和人员ID不符的", tags = {"PIMACHIEVEMENTS" } ,notes = "search记录所属和人员ID不符的")
     @RequestMapping(method= RequestMethod.POST , value="/pimachievements/searchjlss")
 	public ResponseEntity<Page<PIMACHIEVEMENTSDTO>> searchJLSS(@RequestBody PIMACHIEVEMENTSSearchContext context) {
@@ -185,8 +168,7 @@ public class PIMACHIEVEMENTSResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimachievementsMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMACHIEVEMENTS-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMACHIEVEMENTS-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PIMACHIEVEMENTS" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimachievements/fetchdefault")
 	public ResponseEntity<List<PIMACHIEVEMENTSDTO>> fetchDefault(PIMACHIEVEMENTSSearchContext context) {
@@ -199,7 +181,7 @@ public class PIMACHIEVEMENTSResource {
                 .body(list);
 	}
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMACHIEVEMENTS-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMACHIEVEMENTS-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PIMACHIEVEMENTS" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pimachievements/searchdefault")
 	public ResponseEntity<Page<PIMACHIEVEMENTSDTO>> searchDefault(@RequestBody PIMACHIEVEMENTSSearchContext context) {
@@ -207,8 +189,7 @@ public class PIMACHIEVEMENTSResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimachievementsMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMACHIEVEMENTS-ZIZHU-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMACHIEVEMENTS-ZIZHU-all')")
 	@ApiOperation(value = "fetch自助(绩效信息)", tags = {"PIMACHIEVEMENTS" } ,notes = "fetch自助(绩效信息)")
     @RequestMapping(method= RequestMethod.GET , value="/pimachievements/fetchzizhu")
 	public ResponseEntity<List<PIMACHIEVEMENTSDTO>> fetchZIZHU(PIMACHIEVEMENTSSearchContext context) {
@@ -221,7 +202,7 @@ public class PIMACHIEVEMENTSResource {
                 .body(list);
 	}
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMACHIEVEMENTS-ZIZHU-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMACHIEVEMENTS-ZIZHU-all')")
 	@ApiOperation(value = "search自助(绩效信息)", tags = {"PIMACHIEVEMENTS" } ,notes = "search自助(绩效信息)")
     @RequestMapping(method= RequestMethod.POST , value="/pimachievements/searchzizhu")
 	public ResponseEntity<Page<PIMACHIEVEMENTSDTO>> searchZIZHU(@RequestBody PIMACHIEVEMENTSSearchContext context) {
@@ -229,9 +210,6 @@ public class PIMACHIEVEMENTSResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimachievementsMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
-
     //@PreAuthorize("hasPermission(#pimachievements_id,'Update',{'Sql',this.pimachievementsMapping,#pimachievementsdto})")
     @ApiOperation(value = "UpdateByPIMPERSON", tags = {"PIMACHIEVEMENTS" },  notes = "UpdateByPIMPERSON")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimpeople/{pimperson_id}/pimachievements/{pimachievements_id}")
@@ -245,6 +223,7 @@ public class PIMACHIEVEMENTSResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatchByPIMPERSON", tags = {"PIMACHIEVEMENTS" },  notes = "UpdateBatchByPIMPERSON")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimpeople/{pimperson_id}/pimachievements/batch")
     public ResponseEntity<Boolean> updateBatchByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody List<PIMACHIEVEMENTSDTO> pimachievementsdtos) {
@@ -256,7 +235,7 @@ public class PIMACHIEVEMENTSResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMACHIEVEMENTS-Save-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMACHIEVEMENTS-Save-all')")
     @ApiOperation(value = "SaveByPIMPERSON", tags = {"PIMACHIEVEMENTS" },  notes = "SaveByPIMPERSON")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimachievements/save")
     public ResponseEntity<Boolean> saveByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMACHIEVEMENTSDTO pimachievementsdto) {
@@ -265,6 +244,7 @@ public class PIMACHIEVEMENTSResource {
         return ResponseEntity.status(HttpStatus.OK).body(pimachievementsService.save(domain));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatchByPIMPERSON", tags = {"PIMACHIEVEMENTS" },  notes = "SaveBatchByPIMPERSON")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimachievements/savebatch")
     public ResponseEntity<Boolean> saveBatchByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody List<PIMACHIEVEMENTSDTO> pimachievementsdtos) {
@@ -276,7 +256,7 @@ public class PIMACHIEVEMENTSResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMACHIEVEMENTS-GetDraft-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMACHIEVEMENTS-GetDraft-all')")
     @ApiOperation(value = "GetDraftByPIMPERSON", tags = {"PIMACHIEVEMENTS" },  notes = "GetDraftByPIMPERSON")
     @RequestMapping(method = RequestMethod.GET, value = "/pimpeople/{pimperson_id}/pimachievements/getdraft")
     public ResponseEntity<PIMACHIEVEMENTSDTO> getDraftByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id) {
@@ -293,6 +273,7 @@ public class PIMACHIEVEMENTSResource {
 		return ResponseEntity.status(HttpStatus.OK).body(pimachievementsService.remove(pimachievements_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatchByPIMPERSON", tags = {"PIMACHIEVEMENTS" },  notes = "RemoveBatchByPIMPERSON")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimpeople/{pimperson_id}/pimachievements/batch")
     public ResponseEntity<Boolean> removeBatchByPIMPERSON(@RequestBody List<String> ids) {
@@ -309,7 +290,7 @@ public class PIMACHIEVEMENTSResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMACHIEVEMENTS-CheckKey-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMACHIEVEMENTS-CheckKey-all')")
     @ApiOperation(value = "CheckKeyByPIMPERSON", tags = {"PIMACHIEVEMENTS" },  notes = "CheckKeyByPIMPERSON")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimachievements/checkkey")
     public ResponseEntity<Boolean> checkKeyByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMACHIEVEMENTSDTO pimachievementsdto) {
@@ -328,6 +309,7 @@ public class PIMACHIEVEMENTSResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatchByPIMPERSON", tags = {"PIMACHIEVEMENTS" },  notes = "createBatchByPIMPERSON")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimachievements/batch")
     public ResponseEntity<Boolean> createBatchByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody List<PIMACHIEVEMENTSDTO> pimachievementsdtos) {
@@ -339,7 +321,7 @@ public class PIMACHIEVEMENTSResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMACHIEVEMENTS-JLSS-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMACHIEVEMENTS-JLSS-all')")
 	@ApiOperation(value = "fetch记录所属和人员ID不符的ByPIMPERSON", tags = {"PIMACHIEVEMENTS" } ,notes = "fetch记录所属和人员ID不符的ByPIMPERSON")
     @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/pimachievements/fetchjlss")
 	public ResponseEntity<List<PIMACHIEVEMENTSDTO>> fetchPIMACHIEVEMENTSJLSSByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id,PIMACHIEVEMENTSSearchContext context) {
@@ -353,7 +335,7 @@ public class PIMACHIEVEMENTSResource {
                 .body(list);
 	}
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMACHIEVEMENTS-JLSS-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMACHIEVEMENTS-JLSS-all')")
 	@ApiOperation(value = "search记录所属和人员ID不符的ByPIMPERSON", tags = {"PIMACHIEVEMENTS" } ,notes = "search记录所属和人员ID不符的ByPIMPERSON")
     @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/pimachievements/searchjlss")
 	public ResponseEntity<Page<PIMACHIEVEMENTSDTO>> searchPIMACHIEVEMENTSJLSSByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMACHIEVEMENTSSearchContext context) {
@@ -362,8 +344,7 @@ public class PIMACHIEVEMENTSResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimachievementsMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMACHIEVEMENTS-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMACHIEVEMENTS-Default-all')")
 	@ApiOperation(value = "fetchDEFAULTByPIMPERSON", tags = {"PIMACHIEVEMENTS" } ,notes = "fetchDEFAULTByPIMPERSON")
     @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/pimachievements/fetchdefault")
 	public ResponseEntity<List<PIMACHIEVEMENTSDTO>> fetchPIMACHIEVEMENTSDefaultByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id,PIMACHIEVEMENTSSearchContext context) {
@@ -377,7 +358,7 @@ public class PIMACHIEVEMENTSResource {
                 .body(list);
 	}
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMACHIEVEMENTS-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMACHIEVEMENTS-Default-all')")
 	@ApiOperation(value = "searchDEFAULTByPIMPERSON", tags = {"PIMACHIEVEMENTS" } ,notes = "searchDEFAULTByPIMPERSON")
     @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/pimachievements/searchdefault")
 	public ResponseEntity<Page<PIMACHIEVEMENTSDTO>> searchPIMACHIEVEMENTSDefaultByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMACHIEVEMENTSSearchContext context) {
@@ -386,8 +367,7 @@ public class PIMACHIEVEMENTSResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimachievementsMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMACHIEVEMENTS-ZIZHU-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMACHIEVEMENTS-ZIZHU-all')")
 	@ApiOperation(value = "fetch自助(绩效信息)ByPIMPERSON", tags = {"PIMACHIEVEMENTS" } ,notes = "fetch自助(绩效信息)ByPIMPERSON")
     @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/pimachievements/fetchzizhu")
 	public ResponseEntity<List<PIMACHIEVEMENTSDTO>> fetchPIMACHIEVEMENTSZIZHUByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id,PIMACHIEVEMENTSSearchContext context) {
@@ -401,7 +381,7 @@ public class PIMACHIEVEMENTSResource {
                 .body(list);
 	}
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMACHIEVEMENTS-ZIZHU-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMACHIEVEMENTS-ZIZHU-all')")
 	@ApiOperation(value = "search自助(绩效信息)ByPIMPERSON", tags = {"PIMACHIEVEMENTS" } ,notes = "search自助(绩效信息)ByPIMPERSON")
     @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/pimachievements/searchzizhu")
 	public ResponseEntity<Page<PIMACHIEVEMENTSDTO>> searchPIMACHIEVEMENTSZIZHUByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMACHIEVEMENTSSearchContext context) {
@@ -410,8 +390,4 @@ public class PIMACHIEVEMENTSResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimachievementsMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
 }
-
-

@@ -54,10 +54,7 @@ public class VACLEAVETIPSResource {
 
     public VACLEAVETIPSDTO permissionDTO=new VACLEAVETIPSDTO();
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACLEAVETIPS-CheckQJZL-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACLEAVETIPS-CheckQJZL-all')")
     @ApiOperation(value = "检查请假种类", tags = {"VACLEAVETIPS" },  notes = "检查请假种类")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacleavetips/{vacleavetips_id}/checkqjzl")
     @Transactional
@@ -67,9 +64,6 @@ public class VACLEAVETIPSResource {
         vacleavetipsdto = vacleavetipsMapping.toDto(vacleavetips);
         return ResponseEntity.status(HttpStatus.OK).body(vacleavetipsdto);
     }
-
-
-
 
     @PreAuthorize("hasPermission('','Create',{'Sql',this.vacleavetipsMapping,#vacleavetipsdto})")
     @ApiOperation(value = "Create", tags = {"VACLEAVETIPS" },  notes = "Create")
@@ -82,6 +76,7 @@ public class VACLEAVETIPSResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatch", tags = {"VACLEAVETIPS" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacleavetips/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<VACLEAVETIPSDTO> vacleavetipsdtos) {
@@ -89,18 +84,12 @@ public class VACLEAVETIPSResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACLEAVETIPS-GetDraft-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACLEAVETIPS-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"VACLEAVETIPS" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/vacleavetips/getdraft")
     public ResponseEntity<VACLEAVETIPSDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(vacleavetipsMapping.toDto(vacleavetipsService.getDraft(new VACLEAVETIPS())));
     }
-
-
-
 
     @PreAuthorize("hasPermission(#vacleavetips_id,'Remove',{'Sql',this.vacleavetipsMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"VACLEAVETIPS" },  notes = "Remove")
@@ -110,6 +99,7 @@ public class VACLEAVETIPSResource {
          return ResponseEntity.status(HttpStatus.OK).body(vacleavetipsService.remove(vacleavetips_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"VACLEAVETIPS" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/vacleavetips/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -117,20 +107,14 @@ public class VACLEAVETIPSResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACLEAVETIPS-CheckKey-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACLEAVETIPS-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"VACLEAVETIPS" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacleavetips/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody VACLEAVETIPSDTO vacleavetipsdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(vacleavetipsService.checkKey(vacleavetipsMapping.toDomain(vacleavetipsdto)));
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACLEAVETIPS-CheckRepeat-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACLEAVETIPS-CheckRepeat-all')")
     @ApiOperation(value = "检查重复", tags = {"VACLEAVETIPS" },  notes = "检查重复")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacleavetips/{vacleavetips_id}/checkrepeat")
     @Transactional
@@ -141,9 +125,6 @@ public class VACLEAVETIPSResource {
         return ResponseEntity.status(HttpStatus.OK).body(vacleavetipsdto);
     }
 
-
-
-
     @PreAuthorize("hasPermission(#vacleavetips_id,'Get',{'Sql',this.vacleavetipsMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"VACLEAVETIPS" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/vacleavetips/{vacleavetips_id}")
@@ -152,9 +133,6 @@ public class VACLEAVETIPSResource {
         VACLEAVETIPSDTO dto = vacleavetipsMapping.toDto(domain);
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#vacleavetips_id,'Update',{'Sql',this.vacleavetipsMapping,#vacleavetipsdto})")
     @ApiOperation(value = "Update", tags = {"VACLEAVETIPS" },  notes = "Update")
@@ -168,6 +146,7 @@ public class VACLEAVETIPSResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"VACLEAVETIPS" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/vacleavetips/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<VACLEAVETIPSDTO> vacleavetipsdtos) {
@@ -175,16 +154,14 @@ public class VACLEAVETIPSResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACLEAVETIPS-Save-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACLEAVETIPS-Save-all')")
     @ApiOperation(value = "Save", tags = {"VACLEAVETIPS" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacleavetips/save")
     public ResponseEntity<Boolean> save(@RequestBody VACLEAVETIPSDTO vacleavetipsdto) {
         return ResponseEntity.status(HttpStatus.OK).body(vacleavetipsService.save(vacleavetipsMapping.toDomain(vacleavetipsdto)));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"VACLEAVETIPS" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacleavetips/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<VACLEAVETIPSDTO> vacleavetipsdtos) {
@@ -192,7 +169,7 @@ public class VACLEAVETIPSResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACLEAVETIPS-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACLEAVETIPS-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"VACLEAVETIPS" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/vacleavetips/fetchdefault")
 	public ResponseEntity<List<VACLEAVETIPSDTO>> fetchDefault(VACLEAVETIPSSearchContext context) {
@@ -205,7 +182,7 @@ public class VACLEAVETIPSResource {
                 .body(list);
 	}
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACLEAVETIPS-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACLEAVETIPS-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"VACLEAVETIPS" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/vacleavetips/searchdefault")
 	public ResponseEntity<Page<VACLEAVETIPSDTO>> searchDefault(@RequestBody VACLEAVETIPSSearchContext context) {
@@ -213,8 +190,4 @@ public class VACLEAVETIPSResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(vacleavetipsMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
 }
-
-

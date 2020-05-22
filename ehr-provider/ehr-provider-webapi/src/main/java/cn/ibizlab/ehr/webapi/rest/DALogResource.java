@@ -54,25 +54,20 @@ public class DALogResource {
 
     public DALogDTO permissionDTO=new DALogDTO();
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DALog-Save-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DALog-Save-all')")
     @ApiOperation(value = "Save", tags = {"DALog" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/dalogs/save")
     public ResponseEntity<Boolean> save(@RequestBody DALogDTO dalogdto) {
         return ResponseEntity.status(HttpStatus.OK).body(dalogService.save(dalogMapping.toDomain(dalogdto)));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"DALog" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/dalogs/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<DALogDTO> dalogdtos) {
         dalogService.saveBatch(dalogMapping.toDomain(dalogdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#dalog_id,'Update',{'Sql',this.dalogMapping,#dalogdto})")
     @ApiOperation(value = "Update", tags = {"DALog" },  notes = "Update")
@@ -86,6 +81,7 @@ public class DALogResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"DALog" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/dalogs/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<DALogDTO> dalogdtos) {
@@ -93,18 +89,12 @@ public class DALogResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DALog-CheckKey-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DALog-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"DALog" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/dalogs/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody DALogDTO dalogdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(dalogService.checkKey(dalogMapping.toDomain(dalogdto)));
     }
-
-
-
 
     @PreAuthorize("hasPermission(#dalog_id,'Remove',{'Sql',this.dalogMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"DALog" },  notes = "Remove")
@@ -114,6 +104,7 @@ public class DALogResource {
          return ResponseEntity.status(HttpStatus.OK).body(dalogService.remove(dalog_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"DALog" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/dalogs/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -121,18 +112,12 @@ public class DALogResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DALog-GetDraft-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DALog-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"DALog" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/dalogs/getdraft")
     public ResponseEntity<DALogDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(dalogMapping.toDto(dalogService.getDraft(new DALog())));
     }
-
-
-
 
     @PreAuthorize("hasPermission('','Create',{'Sql',this.dalogMapping,#dalogdto})")
     @ApiOperation(value = "Create", tags = {"DALog" },  notes = "Create")
@@ -145,15 +130,13 @@ public class DALogResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatch", tags = {"DALog" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/dalogs/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<DALogDTO> dalogdtos) {
         dalogService.createBatch(dalogMapping.toDomain(dalogdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#dalog_id,'Get',{'Sql',this.dalogMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"DALog" },  notes = "Get")
@@ -164,7 +147,7 @@ public class DALogResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DALog-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DALog-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"DALog" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/dalogs/fetchdefault")
 	public ResponseEntity<List<DALogDTO>> fetchDefault(DALogSearchContext context) {
@@ -177,7 +160,7 @@ public class DALogResource {
                 .body(list);
 	}
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DALog-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DALog-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"DALog" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/dalogs/searchdefault")
 	public ResponseEntity<Page<DALogDTO>> searchDefault(@RequestBody DALogSearchContext context) {
@@ -185,8 +168,4 @@ public class DALogResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(dalogMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
 }
-
-

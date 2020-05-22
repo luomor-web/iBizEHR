@@ -54,18 +54,12 @@ public class ORMQYBZWHResource {
 
     public ORMQYBZWHDTO permissionDTO=new ORMQYBZWHDTO();
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMQYBZWH-CheckKey-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMQYBZWH-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"ORMQYBZWH" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormqybzwhs/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody ORMQYBZWHDTO ormqybzwhdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(ormqybzwhService.checkKey(ormqybzwhMapping.toDomain(ormqybzwhdto)));
     }
-
-
-
 
     @PreAuthorize("hasPermission(#ormqybzwh_id,'Get',{'Sql',this.ormqybzwhMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"ORMQYBZWH" },  notes = "Get")
@@ -76,25 +70,20 @@ public class ORMQYBZWHResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMQYBZWH-Save-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMQYBZWH-Save-all')")
     @ApiOperation(value = "Save", tags = {"ORMQYBZWH" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormqybzwhs/save")
     public ResponseEntity<Boolean> save(@RequestBody ORMQYBZWHDTO ormqybzwhdto) {
         return ResponseEntity.status(HttpStatus.OK).body(ormqybzwhService.save(ormqybzwhMapping.toDomain(ormqybzwhdto)));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"ORMQYBZWH" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormqybzwhs/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<ORMQYBZWHDTO> ormqybzwhdtos) {
         ormqybzwhService.saveBatch(ormqybzwhMapping.toDomain(ormqybzwhdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#ormqybzwh_id,'Remove',{'Sql',this.ormqybzwhMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"ORMQYBZWH" },  notes = "Remove")
@@ -104,15 +93,13 @@ public class ORMQYBZWHResource {
          return ResponseEntity.status(HttpStatus.OK).body(ormqybzwhService.remove(ormqybzwh_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"ORMQYBZWH" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/ormqybzwhs/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         ormqybzwhService.removeBatch(ids);
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#ormqybzwh_id,'Update',{'Sql',this.ormqybzwhMapping,#ormqybzwhdto})")
     @ApiOperation(value = "Update", tags = {"ORMQYBZWH" },  notes = "Update")
@@ -126,6 +113,7 @@ public class ORMQYBZWHResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"ORMQYBZWH" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/ormqybzwhs/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<ORMQYBZWHDTO> ormqybzwhdtos) {
@@ -133,18 +121,12 @@ public class ORMQYBZWHResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMQYBZWH-GetDraft-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMQYBZWH-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"ORMQYBZWH" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/ormqybzwhs/getdraft")
     public ResponseEntity<ORMQYBZWHDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(ormqybzwhMapping.toDto(ormqybzwhService.getDraft(new ORMQYBZWH())));
     }
-
-
-
 
     @PreAuthorize("hasPermission('','Create',{'Sql',this.ormqybzwhMapping,#ormqybzwhdto})")
     @ApiOperation(value = "Create", tags = {"ORMQYBZWH" },  notes = "Create")
@@ -157,6 +139,7 @@ public class ORMQYBZWHResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatch", tags = {"ORMQYBZWH" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormqybzwhs/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<ORMQYBZWHDTO> ormqybzwhdtos) {
@@ -164,7 +147,7 @@ public class ORMQYBZWHResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMQYBZWH-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMQYBZWH-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"ORMQYBZWH" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/ormqybzwhs/fetchdefault")
 	public ResponseEntity<List<ORMQYBZWHDTO>> fetchDefault(ORMQYBZWHSearchContext context) {
@@ -177,7 +160,7 @@ public class ORMQYBZWHResource {
                 .body(list);
 	}
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMQYBZWH-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMQYBZWH-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"ORMQYBZWH" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/ormqybzwhs/searchdefault")
 	public ResponseEntity<Page<ORMQYBZWHDTO>> searchDefault(@RequestBody ORMQYBZWHSearchContext context) {
@@ -185,8 +168,4 @@ public class ORMQYBZWHResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(ormqybzwhMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
 }
-
-

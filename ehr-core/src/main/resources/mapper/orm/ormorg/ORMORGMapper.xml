@@ -379,7 +379,7 @@
 
     <!--数据查询[REP_ORG]-->
     <sql id="REP_ORG" databaseId="mysql">
-       <![CDATA[	
+       <![CDATA[	select t2.orgid ,count(1) as countnum from t_pimperson t left outer join t_srforg t1 on t.ormorgid=t1.orgid left outer join t_srforg t2 on t1.companyflag=t2.orgid  where jlss='10' and t.YGZT not in ('40','50','51','60','130')  group by t2.orgid
 			]]>
     </sql>
 
@@ -391,7 +391,7 @@
 
     <!--数据查询[REP_ORGPNUM]-->
     <sql id="REP_ORGPNUM" databaseId="mysql">
-       <![CDATA[	
+       <![CDATA[	select * from  ( select shortname as orgname from t_srforg where orgcode like 'BG%' ) v1 left outer join  (  select count(1) as countnum from t_pimperson t  where jlss='10' and t.YGZT not in ('40','50','51','60','130')  ) v2 on 1=1
 			]]>
     </sql>
 

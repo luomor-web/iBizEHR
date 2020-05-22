@@ -54,9 +54,6 @@ public class SALSTDZJResource {
 
     public SALSTDZJDTO permissionDTO=new SALSTDZJDTO();
 
-
-
-
     @PreAuthorize("hasPermission(#salstdzj_id,'Get',{'Sql',this.salstdzjMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"SALSTDZJ" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/salstdzjs/{salstdzj_id}")
@@ -65,9 +62,6 @@ public class SALSTDZJResource {
         SALSTDZJDTO dto = salstdzjMapping.toDto(domain);
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
-
-
 
     @PreAuthorize("hasPermission('','Create',{'Sql',this.salstdzjMapping,#salstdzjdto})")
     @ApiOperation(value = "Create", tags = {"SALSTDZJ" },  notes = "Create")
@@ -80,6 +74,7 @@ public class SALSTDZJResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatch", tags = {"SALSTDZJ" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/salstdzjs/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<SALSTDZJDTO> salstdzjdtos) {
@@ -87,25 +82,20 @@ public class SALSTDZJResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALSTDZJ-Save-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALSTDZJ-Save-all')")
     @ApiOperation(value = "Save", tags = {"SALSTDZJ" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/salstdzjs/save")
     public ResponseEntity<Boolean> save(@RequestBody SALSTDZJDTO salstdzjdto) {
         return ResponseEntity.status(HttpStatus.OK).body(salstdzjService.save(salstdzjMapping.toDomain(salstdzjdto)));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"SALSTDZJ" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/salstdzjs/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<SALSTDZJDTO> salstdzjdtos) {
         salstdzjService.saveBatch(salstdzjMapping.toDomain(salstdzjdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#salstdzj_id,'Update',{'Sql',this.salstdzjMapping,#salstdzjdto})")
     @ApiOperation(value = "Update", tags = {"SALSTDZJ" },  notes = "Update")
@@ -119,15 +109,13 @@ public class SALSTDZJResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"SALSTDZJ" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/salstdzjs/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<SALSTDZJDTO> salstdzjdtos) {
         salstdzjService.updateBatch(salstdzjMapping.toDomain(salstdzjdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#salstdzj_id,'Remove',{'Sql',this.salstdzjMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"SALSTDZJ" },  notes = "Remove")
@@ -137,6 +125,7 @@ public class SALSTDZJResource {
          return ResponseEntity.status(HttpStatus.OK).body(salstdzjService.remove(salstdzj_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"SALSTDZJ" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/salstdzjs/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -144,27 +133,21 @@ public class SALSTDZJResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALSTDZJ-GetDraft-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALSTDZJ-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"SALSTDZJ" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/salstdzjs/getdraft")
     public ResponseEntity<SALSTDZJDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(salstdzjMapping.toDto(salstdzjService.getDraft(new SALSTDZJ())));
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALSTDZJ-CheckKey-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALSTDZJ-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"SALSTDZJ" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/salstdzjs/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody SALSTDZJDTO salstdzjdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(salstdzjService.checkKey(salstdzjMapping.toDomain(salstdzjdto)));
     }
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALSTDZJ-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALSTDZJ-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"SALSTDZJ" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/salstdzjs/fetchdefault")
 	public ResponseEntity<List<SALSTDZJDTO>> fetchDefault(SALSTDZJSearchContext context) {
@@ -177,7 +160,7 @@ public class SALSTDZJResource {
                 .body(list);
 	}
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALSTDZJ-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALSTDZJ-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"SALSTDZJ" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/salstdzjs/searchdefault")
 	public ResponseEntity<Page<SALSTDZJDTO>> searchDefault(@RequestBody SALSTDZJSearchContext context) {
@@ -185,8 +168,4 @@ public class SALSTDZJResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(salstdzjMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
 }
-
-

@@ -54,9 +54,6 @@ public class UserDictResource {
 
     public UserDictDTO permissionDTO=new UserDictDTO();
 
-
-
-
     @PreAuthorize("hasPermission(#userdict_id,'Remove',{'Sql',this.userdictMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"UserDict" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/userdicts/{userdict_id}")
@@ -65,6 +62,7 @@ public class UserDictResource {
          return ResponseEntity.status(HttpStatus.OK).body(userdictService.remove(userdict_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"UserDict" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/userdicts/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -72,18 +70,12 @@ public class UserDictResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UserDict-CheckKey-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UserDict-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"UserDict" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/userdicts/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody UserDictDTO userdictdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(userdictService.checkKey(userdictMapping.toDomain(userdictdto)));
     }
-
-
-
 
     @PreAuthorize("hasPermission('','Create',{'Sql',this.userdictMapping,#userdictdto})")
     @ApiOperation(value = "Create", tags = {"UserDict" },  notes = "Create")
@@ -96,6 +88,7 @@ public class UserDictResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatch", tags = {"UserDict" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/userdicts/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<UserDictDTO> userdictdtos) {
@@ -103,20 +96,14 @@ public class UserDictResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UserDict-GetDraft-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UserDict-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"UserDict" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/userdicts/getdraft")
     public ResponseEntity<UserDictDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(userdictMapping.toDto(userdictService.getDraft(new UserDict())));
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UserDict-ReloadCurUser-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UserDict-ReloadCurUser-all')")
     @ApiOperation(value = "重新加载当前用户词典", tags = {"UserDict" },  notes = "重新加载当前用户词典")
 	@RequestMapping(method = RequestMethod.POST, value = "/userdicts/{userdict_id}/reloadcuruser")
     @Transactional
@@ -127,9 +114,6 @@ public class UserDictResource {
         return ResponseEntity.status(HttpStatus.OK).body(userdictdto);
     }
 
-
-
-
     @PreAuthorize("hasPermission(#userdict_id,'Get',{'Sql',this.userdictMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"UserDict" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/userdicts/{userdict_id}")
@@ -139,25 +123,20 @@ public class UserDictResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UserDict-Save-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UserDict-Save-all')")
     @ApiOperation(value = "Save", tags = {"UserDict" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/userdicts/save")
     public ResponseEntity<Boolean> save(@RequestBody UserDictDTO userdictdto) {
         return ResponseEntity.status(HttpStatus.OK).body(userdictService.save(userdictMapping.toDomain(userdictdto)));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"UserDict" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/userdicts/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<UserDictDTO> userdictdtos) {
         userdictService.saveBatch(userdictMapping.toDomain(userdictdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#userdict_id,'Update',{'Sql',this.userdictMapping,#userdictdto})")
     @ApiOperation(value = "Update", tags = {"UserDict" },  notes = "Update")
@@ -171,6 +150,7 @@ public class UserDictResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"UserDict" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/userdicts/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<UserDictDTO> userdictdtos) {
@@ -178,7 +158,7 @@ public class UserDictResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UserDict-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UserDict-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"UserDict" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/userdicts/fetchdefault")
 	public ResponseEntity<List<UserDictDTO>> fetchDefault(UserDictSearchContext context) {
@@ -191,7 +171,7 @@ public class UserDictResource {
                 .body(list);
 	}
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UserDict-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UserDict-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"UserDict" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/userdicts/searchdefault")
 	public ResponseEntity<Page<UserDictDTO>> searchDefault(@RequestBody UserDictSearchContext context) {
@@ -199,8 +179,4 @@ public class UserDictResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(userdictMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
 }
-
-

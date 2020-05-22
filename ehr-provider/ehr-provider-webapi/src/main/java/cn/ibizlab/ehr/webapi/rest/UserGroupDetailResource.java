@@ -54,35 +54,27 @@ public class UserGroupDetailResource {
 
     public UserGroupDetailDTO permissionDTO=new UserGroupDetailDTO();
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UserGroupDetail-GetDraft-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UserGroupDetail-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"UserGroupDetail" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/usergroupdetails/getdraft")
     public ResponseEntity<UserGroupDetailDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(usergroupdetailMapping.toDto(usergroupdetailService.getDraft(new UserGroupDetail())));
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UserGroupDetail-Save-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UserGroupDetail-Save-all')")
     @ApiOperation(value = "Save", tags = {"UserGroupDetail" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/usergroupdetails/save")
     public ResponseEntity<Boolean> save(@RequestBody UserGroupDetailDTO usergroupdetaildto) {
         return ResponseEntity.status(HttpStatus.OK).body(usergroupdetailService.save(usergroupdetailMapping.toDomain(usergroupdetaildto)));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"UserGroupDetail" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/usergroupdetails/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<UserGroupDetailDTO> usergroupdetaildtos) {
         usergroupdetailService.saveBatch(usergroupdetailMapping.toDomain(usergroupdetaildtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#usergroupdetail_id,'Update',{'Sql',this.usergroupdetailMapping,#usergroupdetaildto})")
     @ApiOperation(value = "Update", tags = {"UserGroupDetail" },  notes = "Update")
@@ -96,15 +88,13 @@ public class UserGroupDetailResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"UserGroupDetail" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/usergroupdetails/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<UserGroupDetailDTO> usergroupdetaildtos) {
         usergroupdetailService.updateBatch(usergroupdetailMapping.toDomain(usergroupdetaildtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#usergroupdetail_id,'Get',{'Sql',this.usergroupdetailMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"UserGroupDetail" },  notes = "Get")
@@ -115,9 +105,6 @@ public class UserGroupDetailResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-
-
-
     @PreAuthorize("hasPermission(#usergroupdetail_id,'Remove',{'Sql',this.usergroupdetailMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"UserGroupDetail" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/usergroupdetails/{usergroupdetail_id}")
@@ -126,6 +113,7 @@ public class UserGroupDetailResource {
          return ResponseEntity.status(HttpStatus.OK).body(usergroupdetailService.remove(usergroupdetail_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"UserGroupDetail" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/usergroupdetails/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -133,18 +121,12 @@ public class UserGroupDetailResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UserGroupDetail-CheckKey-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UserGroupDetail-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"UserGroupDetail" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/usergroupdetails/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody UserGroupDetailDTO usergroupdetaildto) {
         return  ResponseEntity.status(HttpStatus.OK).body(usergroupdetailService.checkKey(usergroupdetailMapping.toDomain(usergroupdetaildto)));
     }
-
-
-
 
     @PreAuthorize("hasPermission('','Create',{'Sql',this.usergroupdetailMapping,#usergroupdetaildto})")
     @ApiOperation(value = "Create", tags = {"UserGroupDetail" },  notes = "Create")
@@ -157,6 +139,7 @@ public class UserGroupDetailResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatch", tags = {"UserGroupDetail" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/usergroupdetails/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<UserGroupDetailDTO> usergroupdetaildtos) {
@@ -164,7 +147,7 @@ public class UserGroupDetailResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UserGroupDetail-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UserGroupDetail-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"UserGroupDetail" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/usergroupdetails/fetchdefault")
 	public ResponseEntity<List<UserGroupDetailDTO>> fetchDefault(UserGroupDetailSearchContext context) {
@@ -177,7 +160,7 @@ public class UserGroupDetailResource {
                 .body(list);
 	}
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UserGroupDetail-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UserGroupDetail-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"UserGroupDetail" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/usergroupdetails/searchdefault")
 	public ResponseEntity<Page<UserGroupDetailDTO>> searchDefault(@RequestBody UserGroupDetailSearchContext context) {
@@ -185,8 +168,4 @@ public class UserGroupDetailResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(usergroupdetailMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
 }
-
-

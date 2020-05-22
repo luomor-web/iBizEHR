@@ -54,18 +54,12 @@ public class TSSDGroupResource {
 
     public TSSDGroupDTO permissionDTO=new TSSDGroupDTO();
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TSSDGroup-CheckKey-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TSSDGroup-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"TSSDGroup" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/tssdgroups/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody TSSDGroupDTO tssdgroupdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(tssdgroupService.checkKey(tssdgroupMapping.toDomain(tssdgroupdto)));
     }
-
-
-
 
     @PreAuthorize("hasPermission(#tssdgroup_id,'Remove',{'Sql',this.tssdgroupMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"TSSDGroup" },  notes = "Remove")
@@ -75,6 +69,7 @@ public class TSSDGroupResource {
          return ResponseEntity.status(HttpStatus.OK).body(tssdgroupService.remove(tssdgroup_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"TSSDGroup" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/tssdgroups/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -82,18 +77,12 @@ public class TSSDGroupResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TSSDGroup-GetDraft-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TSSDGroup-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"TSSDGroup" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/tssdgroups/getdraft")
     public ResponseEntity<TSSDGroupDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(tssdgroupMapping.toDto(tssdgroupService.getDraft(new TSSDGroup())));
     }
-
-
-
 
     @PreAuthorize("hasPermission(#tssdgroup_id,'Update',{'Sql',this.tssdgroupMapping,#tssdgroupdto})")
     @ApiOperation(value = "Update", tags = {"TSSDGroup" },  notes = "Update")
@@ -107,15 +96,13 @@ public class TSSDGroupResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"TSSDGroup" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/tssdgroups/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<TSSDGroupDTO> tssdgroupdtos) {
         tssdgroupService.updateBatch(tssdgroupMapping.toDomain(tssdgroupdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#tssdgroup_id,'Get',{'Sql',this.tssdgroupMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"TSSDGroup" },  notes = "Get")
@@ -126,25 +113,20 @@ public class TSSDGroupResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TSSDGroup-Save-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TSSDGroup-Save-all')")
     @ApiOperation(value = "Save", tags = {"TSSDGroup" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/tssdgroups/save")
     public ResponseEntity<Boolean> save(@RequestBody TSSDGroupDTO tssdgroupdto) {
         return ResponseEntity.status(HttpStatus.OK).body(tssdgroupService.save(tssdgroupMapping.toDomain(tssdgroupdto)));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"TSSDGroup" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/tssdgroups/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<TSSDGroupDTO> tssdgroupdtos) {
         tssdgroupService.saveBatch(tssdgroupMapping.toDomain(tssdgroupdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission('','Create',{'Sql',this.tssdgroupMapping,#tssdgroupdto})")
     @ApiOperation(value = "Create", tags = {"TSSDGroup" },  notes = "Create")
@@ -157,6 +139,7 @@ public class TSSDGroupResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatch", tags = {"TSSDGroup" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/tssdgroups/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<TSSDGroupDTO> tssdgroupdtos) {
@@ -164,7 +147,7 @@ public class TSSDGroupResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TSSDGroup-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TSSDGroup-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"TSSDGroup" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/tssdgroups/fetchdefault")
 	public ResponseEntity<List<TSSDGroupDTO>> fetchDefault(TSSDGroupSearchContext context) {
@@ -177,7 +160,7 @@ public class TSSDGroupResource {
                 .body(list);
 	}
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TSSDGroup-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TSSDGroup-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"TSSDGroup" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/tssdgroups/searchdefault")
 	public ResponseEntity<Page<TSSDGroupDTO>> searchDefault(@RequestBody TSSDGroupSearchContext context) {
@@ -185,8 +168,4 @@ public class TSSDGroupResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(tssdgroupMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
 }
-
-

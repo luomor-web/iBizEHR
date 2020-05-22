@@ -54,18 +54,12 @@ public class TRMSTAYResource {
 
     public TRMSTAYDTO permissionDTO=new TRMSTAYDTO();
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMSTAY-GetDraft-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMSTAY-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"TRMSTAY" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/trmstays/getdraft")
     public ResponseEntity<TRMSTAYDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(trmstayMapping.toDto(trmstayService.getDraft(new TRMSTAY())));
     }
-
-
-
 
     @PreAuthorize("hasPermission(#trmstay_id,'Get',{'Sql',this.trmstayMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"TRMSTAY" },  notes = "Get")
@@ -76,9 +70,6 @@ public class TRMSTAYResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-
-
-
     @PreAuthorize("hasPermission(#trmstay_id,'Remove',{'Sql',this.trmstayMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"TRMSTAY" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/trmstays/{trmstay_id}")
@@ -87,6 +78,7 @@ public class TRMSTAYResource {
          return ResponseEntity.status(HttpStatus.OK).body(trmstayService.remove(trmstay_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"TRMSTAY" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/trmstays/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -94,25 +86,20 @@ public class TRMSTAYResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMSTAY-Save-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMSTAY-Save-all')")
     @ApiOperation(value = "Save", tags = {"TRMSTAY" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmstays/save")
     public ResponseEntity<Boolean> save(@RequestBody TRMSTAYDTO trmstaydto) {
         return ResponseEntity.status(HttpStatus.OK).body(trmstayService.save(trmstayMapping.toDomain(trmstaydto)));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"TRMSTAY" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmstays/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<TRMSTAYDTO> trmstaydtos) {
         trmstayService.saveBatch(trmstayMapping.toDomain(trmstaydtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#trmstay_id,'Update',{'Sql',this.trmstayMapping,#trmstaydto})")
     @ApiOperation(value = "Update", tags = {"TRMSTAY" },  notes = "Update")
@@ -126,15 +113,13 @@ public class TRMSTAYResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"TRMSTAY" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/trmstays/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<TRMSTAYDTO> trmstaydtos) {
         trmstayService.updateBatch(trmstayMapping.toDomain(trmstaydtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission('','Create',{'Sql',this.trmstayMapping,#trmstaydto})")
     @ApiOperation(value = "Create", tags = {"TRMSTAY" },  notes = "Create")
@@ -147,6 +132,7 @@ public class TRMSTAYResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatch", tags = {"TRMSTAY" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmstays/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<TRMSTAYDTO> trmstaydtos) {
@@ -154,17 +140,14 @@ public class TRMSTAYResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMSTAY-CheckKey-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMSTAY-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"TRMSTAY" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmstays/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody TRMSTAYDTO trmstaydto) {
         return  ResponseEntity.status(HttpStatus.OK).body(trmstayService.checkKey(trmstayMapping.toDomain(trmstaydto)));
     }
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMSTAY-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMSTAY-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"TRMSTAY" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/trmstays/fetchdefault")
 	public ResponseEntity<List<TRMSTAYDTO>> fetchDefault(TRMSTAYSearchContext context) {
@@ -177,7 +160,7 @@ public class TRMSTAYResource {
                 .body(list);
 	}
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMSTAY-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMSTAY-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"TRMSTAY" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/trmstays/searchdefault")
 	public ResponseEntity<Page<TRMSTAYDTO>> searchDefault(@RequestBody TRMSTAYSearchContext context) {
@@ -185,8 +168,4 @@ public class TRMSTAYResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(trmstayMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
 }
-
-

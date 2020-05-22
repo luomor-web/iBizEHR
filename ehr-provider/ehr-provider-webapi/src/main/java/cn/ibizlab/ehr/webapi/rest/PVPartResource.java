@@ -54,9 +54,6 @@ public class PVPartResource {
 
     public PVPartDTO permissionDTO=new PVPartDTO();
 
-
-
-
     @PreAuthorize("hasPermission(#pvpart_id,'Update',{'Sql',this.pvpartMapping,#pvpartdto})")
     @ApiOperation(value = "Update", tags = {"PVPart" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pvparts/{pvpart_id}")
@@ -69,15 +66,13 @@ public class PVPartResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"PVPart" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pvparts/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PVPartDTO> pvpartdtos) {
         pvpartService.updateBatch(pvpartMapping.toDomain(pvpartdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#pvpart_id,'Get',{'Sql',this.pvpartMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"PVPart" },  notes = "Get")
@@ -88,45 +83,34 @@ public class PVPartResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PVPart-CheckKey-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PVPart-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"PVPart" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/pvparts/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PVPartDTO pvpartdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pvpartService.checkKey(pvpartMapping.toDomain(pvpartdto)));
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PVPart-GetDraft-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PVPart-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"PVPart" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/pvparts/getdraft")
     public ResponseEntity<PVPartDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(pvpartMapping.toDto(pvpartService.getDraft(new PVPart())));
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PVPart-Save-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PVPart-Save-all')")
     @ApiOperation(value = "Save", tags = {"PVPart" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/pvparts/save")
     public ResponseEntity<Boolean> save(@RequestBody PVPartDTO pvpartdto) {
         return ResponseEntity.status(HttpStatus.OK).body(pvpartService.save(pvpartMapping.toDomain(pvpartdto)));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"PVPart" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pvparts/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PVPartDTO> pvpartdtos) {
         pvpartService.saveBatch(pvpartMapping.toDomain(pvpartdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#pvpart_id,'Remove',{'Sql',this.pvpartMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"PVPart" },  notes = "Remove")
@@ -136,15 +120,13 @@ public class PVPartResource {
          return ResponseEntity.status(HttpStatus.OK).body(pvpartService.remove(pvpart_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"PVPart" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pvparts/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         pvpartService.removeBatch(ids);
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission('','Create',{'Sql',this.pvpartMapping,#pvpartdto})")
     @ApiOperation(value = "Create", tags = {"PVPart" },  notes = "Create")
@@ -157,6 +139,7 @@ public class PVPartResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatch", tags = {"PVPart" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pvparts/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PVPartDTO> pvpartdtos) {
@@ -164,7 +147,7 @@ public class PVPartResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PVPart-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PVPart-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PVPart" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pvparts/fetchdefault")
 	public ResponseEntity<List<PVPartDTO>> fetchDefault(PVPartSearchContext context) {
@@ -177,7 +160,7 @@ public class PVPartResource {
                 .body(list);
 	}
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PVPart-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PVPart-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PVPart" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pvparts/searchdefault")
 	public ResponseEntity<Page<PVPartDTO>> searchDefault(@RequestBody PVPartSearchContext context) {
@@ -185,8 +168,7 @@ public class PVPartResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pvpartMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PVPart-CurPV-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PVPart-CurPV-all')")
 	@ApiOperation(value = "fetch当前门户视图", tags = {"PVPart" } ,notes = "fetch当前门户视图")
     @RequestMapping(method= RequestMethod.GET , value="/pvparts/fetchcurpv")
 	public ResponseEntity<List<PVPartDTO>> fetchCurPV(PVPartSearchContext context) {
@@ -199,7 +181,7 @@ public class PVPartResource {
                 .body(list);
 	}
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PVPart-CurPV-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PVPart-CurPV-all')")
 	@ApiOperation(value = "search当前门户视图", tags = {"PVPart" } ,notes = "search当前门户视图")
     @RequestMapping(method= RequestMethod.POST , value="/pvparts/searchcurpv")
 	public ResponseEntity<Page<PVPartDTO>> searchCurPV(@RequestBody PVPartSearchContext context) {
@@ -207,8 +189,4 @@ public class PVPartResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pvpartMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
 }
-
-

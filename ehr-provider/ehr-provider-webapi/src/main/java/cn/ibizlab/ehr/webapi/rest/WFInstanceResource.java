@@ -54,9 +54,6 @@ public class WFInstanceResource {
 
     public WFInstanceDTO permissionDTO=new WFInstanceDTO();
 
-
-
-
     @PreAuthorize("hasPermission(#wfinstance_id,'Remove',{'Sql',this.wfinstanceMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"WFInstance" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/wfinstances/{wfinstance_id}")
@@ -65,6 +62,7 @@ public class WFInstanceResource {
          return ResponseEntity.status(HttpStatus.OK).body(wfinstanceService.remove(wfinstance_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"WFInstance" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/wfinstances/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -72,35 +70,27 @@ public class WFInstanceResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFInstance-GetDraft-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFInstance-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"WFInstance" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/wfinstances/getdraft")
     public ResponseEntity<WFInstanceDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(wfinstanceMapping.toDto(wfinstanceService.getDraft(new WFInstance())));
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFInstance-Save-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFInstance-Save-all')")
     @ApiOperation(value = "Save", tags = {"WFInstance" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/wfinstances/save")
     public ResponseEntity<Boolean> save(@RequestBody WFInstanceDTO wfinstancedto) {
         return ResponseEntity.status(HttpStatus.OK).body(wfinstanceService.save(wfinstanceMapping.toDomain(wfinstancedto)));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"WFInstance" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/wfinstances/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<WFInstanceDTO> wfinstancedtos) {
         wfinstanceService.saveBatch(wfinstanceMapping.toDomain(wfinstancedtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission('','Create',{'Sql',this.wfinstanceMapping,#wfinstancedto})")
     @ApiOperation(value = "Create", tags = {"WFInstance" },  notes = "Create")
@@ -113,15 +103,13 @@ public class WFInstanceResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatch", tags = {"WFInstance" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/wfinstances/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<WFInstanceDTO> wfinstancedtos) {
         wfinstanceService.createBatch(wfinstanceMapping.toDomain(wfinstancedtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#wfinstance_id,'Get',{'Sql',this.wfinstanceMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"WFInstance" },  notes = "Get")
@@ -131,9 +119,6 @@ public class WFInstanceResource {
         WFInstanceDTO dto = wfinstanceMapping.toDto(domain);
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#wfinstance_id,'Update',{'Sql',this.wfinstanceMapping,#wfinstancedto})")
     @ApiOperation(value = "Update", tags = {"WFInstance" },  notes = "Update")
@@ -147,6 +132,7 @@ public class WFInstanceResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"WFInstance" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/wfinstances/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<WFInstanceDTO> wfinstancedtos) {
@@ -154,20 +140,14 @@ public class WFInstanceResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFInstance-CheckKey-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFInstance-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"WFInstance" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/wfinstances/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody WFInstanceDTO wfinstancedto) {
         return  ResponseEntity.status(HttpStatus.OK).body(wfinstanceService.checkKey(wfinstanceMapping.toDomain(wfinstancedto)));
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFInstance-Restart-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFInstance-Restart-all')")
     @ApiOperation(value = "重新启动", tags = {"WFInstance" },  notes = "重新启动")
 	@RequestMapping(method = RequestMethod.POST, value = "/wfinstances/{wfinstance_id}/restart")
     @Transactional
@@ -178,10 +158,7 @@ public class WFInstanceResource {
         return ResponseEntity.status(HttpStatus.OK).body(wfinstancedto);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFInstance-UserCancel-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFInstance-UserCancel-all')")
     @ApiOperation(value = "取消流程", tags = {"WFInstance" },  notes = "取消流程")
 	@RequestMapping(method = RequestMethod.POST, value = "/wfinstances/{wfinstance_id}/usercancel")
     @Transactional
@@ -192,7 +169,7 @@ public class WFInstanceResource {
         return ResponseEntity.status(HttpStatus.OK).body(wfinstancedto);
     }
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFInstance-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFInstance-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"WFInstance" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/wfinstances/fetchdefault")
 	public ResponseEntity<List<WFInstanceDTO>> fetchDefault(WFInstanceSearchContext context) {
@@ -205,7 +182,7 @@ public class WFInstanceResource {
                 .body(list);
 	}
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFInstance-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFInstance-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"WFInstance" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/wfinstances/searchdefault")
 	public ResponseEntity<Page<WFInstanceDTO>> searchDefault(@RequestBody WFInstanceSearchContext context) {
@@ -213,8 +190,4 @@ public class WFInstanceResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(wfinstanceMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
 }
-
-

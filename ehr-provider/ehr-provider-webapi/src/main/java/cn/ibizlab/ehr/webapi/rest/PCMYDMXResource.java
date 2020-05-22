@@ -54,9 +54,6 @@ public class PCMYDMXResource {
 
     public PCMYDMXDTO permissionDTO=new PCMYDMXDTO();
 
-
-
-
     @PreAuthorize("hasPermission('','Create',{'Sql',this.pcmydmxMapping,#pcmydmxdto})")
     @ApiOperation(value = "Create", tags = {"PCMYDMX" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmydmxes")
@@ -68,6 +65,7 @@ public class PCMYDMXResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatch", tags = {"PCMYDMX" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmydmxes/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PCMYDMXDTO> pcmydmxdtos) {
@@ -75,16 +73,14 @@ public class PCMYDMXResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMYDMX-Save-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMYDMX-Save-all')")
     @ApiOperation(value = "Save", tags = {"PCMYDMX" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmydmxes/save")
     public ResponseEntity<Boolean> save(@RequestBody PCMYDMXDTO pcmydmxdto) {
         return ResponseEntity.status(HttpStatus.OK).body(pcmydmxService.save(pcmydmxMapping.toDomain(pcmydmxdto)));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"PCMYDMX" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmydmxes/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PCMYDMXDTO> pcmydmxdtos) {
@@ -92,10 +88,7 @@ public class PCMYDMXResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMYDMX-FillPersonInfo-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMYDMX-FillPersonInfo-all')")
     @ApiOperation(value = "填充员工信息", tags = {"PCMYDMX" },  notes = "填充员工信息")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmydmxes/{pcmydmx_id}/fillpersoninfo")
     @Transactional
@@ -106,18 +99,12 @@ public class PCMYDMXResource {
         return ResponseEntity.status(HttpStatus.OK).body(pcmydmxdto);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMYDMX-CheckKey-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMYDMX-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"PCMYDMX" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmydmxes/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PCMYDMXDTO pcmydmxdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pcmydmxService.checkKey(pcmydmxMapping.toDomain(pcmydmxdto)));
     }
-
-
-
 
     @PreAuthorize("hasPermission(#pcmydmx_id,'Remove',{'Sql',this.pcmydmxMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"PCMYDMX" },  notes = "Remove")
@@ -127,15 +114,13 @@ public class PCMYDMXResource {
          return ResponseEntity.status(HttpStatus.OK).body(pcmydmxService.remove(pcmydmx_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"PCMYDMX" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmydmxes/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         pcmydmxService.removeBatch(ids);
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#pcmydmx_id,'Update',{'Sql',this.pcmydmxMapping,#pcmydmxdto})")
     @ApiOperation(value = "Update", tags = {"PCMYDMX" },  notes = "Update")
@@ -149,6 +134,7 @@ public class PCMYDMXResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"PCMYDMX" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmydmxes/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PCMYDMXDTO> pcmydmxdtos) {
@@ -156,18 +142,12 @@ public class PCMYDMXResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMYDMX-GetDraft-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMYDMX-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"PCMYDMX" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmydmxes/getdraft")
     public ResponseEntity<PCMYDMXDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(pcmydmxMapping.toDto(pcmydmxService.getDraft(new PCMYDMX())));
     }
-
-
-
 
     @PreAuthorize("hasPermission(#pcmydmx_id,'Get',{'Sql',this.pcmydmxMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"PCMYDMX" },  notes = "Get")
@@ -178,7 +158,7 @@ public class PCMYDMXResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMYDMX-IndexDER-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMYDMX-IndexDER-all')")
 	@ApiOperation(value = "fetchIndexDER", tags = {"PCMYDMX" } ,notes = "fetchIndexDER")
     @RequestMapping(method= RequestMethod.GET , value="/pcmydmxes/fetchindexder")
 	public ResponseEntity<List<PCMYDMXDTO>> fetchIndexDER(PCMYDMXSearchContext context) {
@@ -191,7 +171,7 @@ public class PCMYDMXResource {
                 .body(list);
 	}
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMYDMX-IndexDER-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMYDMX-IndexDER-all')")
 	@ApiOperation(value = "searchIndexDER", tags = {"PCMYDMX" } ,notes = "searchIndexDER")
     @RequestMapping(method= RequestMethod.POST , value="/pcmydmxes/searchindexder")
 	public ResponseEntity<Page<PCMYDMXDTO>> searchIndexDER(@RequestBody PCMYDMXSearchContext context) {
@@ -199,8 +179,7 @@ public class PCMYDMXResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pcmydmxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMYDMX-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMYDMX-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PCMYDMX" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pcmydmxes/fetchdefault")
 	public ResponseEntity<List<PCMYDMXDTO>> fetchDefault(PCMYDMXSearchContext context) {
@@ -213,7 +192,7 @@ public class PCMYDMXResource {
                 .body(list);
 	}
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMYDMX-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMYDMX-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PCMYDMX" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pcmydmxes/searchdefault")
 	public ResponseEntity<Page<PCMYDMXDTO>> searchDefault(@RequestBody PCMYDMXSearchContext context) {
@@ -221,8 +200,4 @@ public class PCMYDMXResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pcmydmxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
 }
-
-

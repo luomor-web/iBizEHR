@@ -54,18 +54,12 @@ public class SysAdminResource {
 
     public SysAdminDTO permissionDTO=new SysAdminDTO();
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SysAdmin-GetDraft-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SysAdmin-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"SysAdmin" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/sysadmins/getdraft")
     public ResponseEntity<SysAdminDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(sysadminMapping.toDto(sysadminService.getDraft(new SysAdmin())));
     }
-
-
-
 
     @PreAuthorize("hasPermission(#sysadmin_id,'Update',{'Sql',this.sysadminMapping,#sysadmindto})")
     @ApiOperation(value = "Update", tags = {"SysAdmin" },  notes = "Update")
@@ -79,15 +73,13 @@ public class SysAdminResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"SysAdmin" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/sysadmins/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<SysAdminDTO> sysadmindtos) {
         sysadminService.updateBatch(sysadminMapping.toDomain(sysadmindtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission('','Create',{'Sql',this.sysadminMapping,#sysadmindto})")
     @ApiOperation(value = "Create", tags = {"SysAdmin" },  notes = "Create")
@@ -100,15 +92,13 @@ public class SysAdminResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatch", tags = {"SysAdmin" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/sysadmins/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<SysAdminDTO> sysadmindtos) {
         sysadminService.createBatch(sysadminMapping.toDomain(sysadmindtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#sysadmin_id,'Remove',{'Sql',this.sysadminMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"SysAdmin" },  notes = "Remove")
@@ -118,15 +108,13 @@ public class SysAdminResource {
          return ResponseEntity.status(HttpStatus.OK).body(sysadminService.remove(sysadmin_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"SysAdmin" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/sysadmins/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         sysadminService.removeBatch(ids);
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#sysadmin_id,'Get',{'Sql',this.sysadminMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"SysAdmin" },  notes = "Get")
@@ -137,16 +125,14 @@ public class SysAdminResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SysAdmin-Save-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SysAdmin-Save-all')")
     @ApiOperation(value = "Save", tags = {"SysAdmin" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/sysadmins/save")
     public ResponseEntity<Boolean> save(@RequestBody SysAdminDTO sysadmindto) {
         return ResponseEntity.status(HttpStatus.OK).body(sysadminService.save(sysadminMapping.toDomain(sysadmindto)));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"SysAdmin" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/sysadmins/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<SysAdminDTO> sysadmindtos) {
@@ -154,17 +140,14 @@ public class SysAdminResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SysAdmin-CheckKey-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SysAdmin-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"SysAdmin" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/sysadmins/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody SysAdminDTO sysadmindto) {
         return  ResponseEntity.status(HttpStatus.OK).body(sysadminService.checkKey(sysadminMapping.toDomain(sysadmindto)));
     }
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SysAdmin-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SysAdmin-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"SysAdmin" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/sysadmins/fetchdefault")
 	public ResponseEntity<List<SysAdminDTO>> fetchDefault(SysAdminSearchContext context) {
@@ -177,7 +160,7 @@ public class SysAdminResource {
                 .body(list);
 	}
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SysAdmin-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SysAdmin-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"SysAdmin" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/sysadmins/searchdefault")
 	public ResponseEntity<Page<SysAdminDTO>> searchDefault(@RequestBody SysAdminSearchContext context) {
@@ -185,8 +168,4 @@ public class SysAdminResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(sysadminMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
 }
-
-

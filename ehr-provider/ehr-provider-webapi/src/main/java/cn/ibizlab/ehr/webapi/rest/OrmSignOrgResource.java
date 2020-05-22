@@ -54,18 +54,12 @@ public class OrmSignOrgResource {
 
     public OrmSignOrgDTO permissionDTO=new OrmSignOrgDTO();
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmSignOrg-CheckKey-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmSignOrg-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"OrmSignOrg" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormsignorgs/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody OrmSignOrgDTO ormsignorgdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(ormsignorgService.checkKey(ormsignorgMapping.toDomain(ormsignorgdto)));
     }
-
-
-
 
     @PreAuthorize("hasPermission(#ormsignorg_id,'Update',{'Sql',this.ormsignorgMapping,#ormsignorgdto})")
     @ApiOperation(value = "Update", tags = {"OrmSignOrg" },  notes = "Update")
@@ -79,6 +73,7 @@ public class OrmSignOrgResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"OrmSignOrg" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/ormsignorgs/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<OrmSignOrgDTO> ormsignorgdtos) {
@@ -86,16 +81,14 @@ public class OrmSignOrgResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmSignOrg-Save-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmSignOrg-Save-all')")
     @ApiOperation(value = "Save", tags = {"OrmSignOrg" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormsignorgs/save")
     public ResponseEntity<Boolean> save(@RequestBody OrmSignOrgDTO ormsignorgdto) {
         return ResponseEntity.status(HttpStatus.OK).body(ormsignorgService.save(ormsignorgMapping.toDomain(ormsignorgdto)));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"OrmSignOrg" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormsignorgs/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<OrmSignOrgDTO> ormsignorgdtos) {
@@ -103,18 +96,12 @@ public class OrmSignOrgResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmSignOrg-GetDraft-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmSignOrg-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"OrmSignOrg" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/ormsignorgs/getdraft")
     public ResponseEntity<OrmSignOrgDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(ormsignorgMapping.toDto(ormsignorgService.getDraft(new OrmSignOrg())));
     }
-
-
-
 
     @PreAuthorize("hasPermission(#ormsignorg_id,'Get',{'Sql',this.ormsignorgMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"OrmSignOrg" },  notes = "Get")
@@ -124,9 +111,6 @@ public class OrmSignOrgResource {
         OrmSignOrgDTO dto = ormsignorgMapping.toDto(domain);
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
-
-
 
     @PreAuthorize("hasPermission('','Create',{'Sql',this.ormsignorgMapping,#ormsignorgdto})")
     @ApiOperation(value = "Create", tags = {"OrmSignOrg" },  notes = "Create")
@@ -139,15 +123,13 @@ public class OrmSignOrgResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatch", tags = {"OrmSignOrg" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormsignorgs/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<OrmSignOrgDTO> ormsignorgdtos) {
         ormsignorgService.createBatch(ormsignorgMapping.toDomain(ormsignorgdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#ormsignorg_id,'Remove',{'Sql',this.ormsignorgMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"OrmSignOrg" },  notes = "Remove")
@@ -157,6 +139,7 @@ public class OrmSignOrgResource {
          return ResponseEntity.status(HttpStatus.OK).body(ormsignorgService.remove(ormsignorg_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"OrmSignOrg" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/ormsignorgs/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -164,7 +147,7 @@ public class OrmSignOrgResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmSignOrg-HTQDDW-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmSignOrg-HTQDDW-all')")
 	@ApiOperation(value = "fetch合同签订单位", tags = {"OrmSignOrg" } ,notes = "fetch合同签订单位")
     @RequestMapping(method= RequestMethod.GET , value="/ormsignorgs/fetchhtqddw")
 	public ResponseEntity<List<OrmSignOrgDTO>> fetchHTQDDW(OrmSignOrgSearchContext context) {
@@ -177,7 +160,7 @@ public class OrmSignOrgResource {
                 .body(list);
 	}
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmSignOrg-HTQDDW-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmSignOrg-HTQDDW-all')")
 	@ApiOperation(value = "search合同签订单位", tags = {"OrmSignOrg" } ,notes = "search合同签订单位")
     @RequestMapping(method= RequestMethod.POST , value="/ormsignorgs/searchhtqddw")
 	public ResponseEntity<Page<OrmSignOrgDTO>> searchHTQDDW(@RequestBody OrmSignOrgSearchContext context) {
@@ -185,8 +168,7 @@ public class OrmSignOrgResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(ormsignorgMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmSignOrg-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmSignOrg-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"OrmSignOrg" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/ormsignorgs/fetchdefault")
 	public ResponseEntity<List<OrmSignOrgDTO>> fetchDefault(OrmSignOrgSearchContext context) {
@@ -199,7 +181,7 @@ public class OrmSignOrgResource {
                 .body(list);
 	}
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmSignOrg-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmSignOrg-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"OrmSignOrg" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/ormsignorgs/searchdefault")
 	public ResponseEntity<Page<OrmSignOrgDTO>> searchDefault(@RequestBody OrmSignOrgSearchContext context) {
@@ -207,8 +189,7 @@ public class OrmSignOrgResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(ormsignorgMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmSignOrg-CKBDWDFRZT-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmSignOrg-CKBDWDFRZT-all')")
 	@ApiOperation(value = "fetch证书注册单位", tags = {"OrmSignOrg" } ,notes = "fetch证书注册单位")
     @RequestMapping(method= RequestMethod.GET , value="/ormsignorgs/fetchckbdwdfrzt")
 	public ResponseEntity<List<OrmSignOrgDTO>> fetchCKBDWDFRZT(OrmSignOrgSearchContext context) {
@@ -221,7 +202,7 @@ public class OrmSignOrgResource {
                 .body(list);
 	}
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmSignOrg-CKBDWDFRZT-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmSignOrg-CKBDWDFRZT-all')")
 	@ApiOperation(value = "search证书注册单位", tags = {"OrmSignOrg" } ,notes = "search证书注册单位")
     @RequestMapping(method= RequestMethod.POST , value="/ormsignorgs/searchckbdwdfrzt")
 	public ResponseEntity<Page<OrmSignOrgDTO>> searchCKBDWDFRZT(@RequestBody OrmSignOrgSearchContext context) {
@@ -229,8 +210,4 @@ public class OrmSignOrgResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(ormsignorgMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
 }
-
-

@@ -54,9 +54,6 @@ public class TRMDEPARTResource {
 
     public TRMDEPARTDTO permissionDTO=new TRMDEPARTDTO();
 
-
-
-
     @PreAuthorize("hasPermission(#trmdepart_id,'Get',{'Sql',this.trmdepartMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"TRMDEPART" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/trmdeparts/{trmdepart_id}")
@@ -66,25 +63,20 @@ public class TRMDEPARTResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMDEPART-Save-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMDEPART-Save-all')")
     @ApiOperation(value = "Save", tags = {"TRMDEPART" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmdeparts/save")
     public ResponseEntity<Boolean> save(@RequestBody TRMDEPARTDTO trmdepartdto) {
         return ResponseEntity.status(HttpStatus.OK).body(trmdepartService.save(trmdepartMapping.toDomain(trmdepartdto)));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"TRMDEPART" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmdeparts/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<TRMDEPARTDTO> trmdepartdtos) {
         trmdepartService.saveBatch(trmdepartMapping.toDomain(trmdepartdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission('','Create',{'Sql',this.trmdepartMapping,#trmdepartdto})")
     @ApiOperation(value = "Create", tags = {"TRMDEPART" },  notes = "Create")
@@ -97,15 +89,13 @@ public class TRMDEPARTResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatch", tags = {"TRMDEPART" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmdeparts/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<TRMDEPARTDTO> trmdepartdtos) {
         trmdepartService.createBatch(trmdepartMapping.toDomain(trmdepartdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#trmdepart_id,'Remove',{'Sql',this.trmdepartMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"TRMDEPART" },  notes = "Remove")
@@ -115,6 +105,7 @@ public class TRMDEPARTResource {
          return ResponseEntity.status(HttpStatus.OK).body(trmdepartService.remove(trmdepart_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"TRMDEPART" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/trmdeparts/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -122,18 +113,12 @@ public class TRMDEPARTResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMDEPART-CheckKey-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMDEPART-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"TRMDEPART" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmdeparts/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody TRMDEPARTDTO trmdepartdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(trmdepartService.checkKey(trmdepartMapping.toDomain(trmdepartdto)));
     }
-
-
-
 
     @PreAuthorize("hasPermission(#trmdepart_id,'Update',{'Sql',this.trmdepartMapping,#trmdepartdto})")
     @ApiOperation(value = "Update", tags = {"TRMDEPART" },  notes = "Update")
@@ -147,6 +132,7 @@ public class TRMDEPARTResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"TRMDEPART" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/trmdeparts/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<TRMDEPARTDTO> trmdepartdtos) {
@@ -154,17 +140,14 @@ public class TRMDEPARTResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMDEPART-GetDraft-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMDEPART-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"TRMDEPART" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/trmdeparts/getdraft")
     public ResponseEntity<TRMDEPARTDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(trmdepartMapping.toDto(trmdepartService.getDraft(new TRMDEPART())));
     }
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMDEPART-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMDEPART-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"TRMDEPART" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/trmdeparts/fetchdefault")
 	public ResponseEntity<List<TRMDEPARTDTO>> fetchDefault(TRMDEPARTSearchContext context) {
@@ -177,7 +160,7 @@ public class TRMDEPARTResource {
                 .body(list);
 	}
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMDEPART-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMDEPART-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"TRMDEPART" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/trmdeparts/searchdefault")
 	public ResponseEntity<Page<TRMDEPARTDTO>> searchDefault(@RequestBody TRMDEPARTSearchContext context) {
@@ -185,8 +168,4 @@ public class TRMDEPARTResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(trmdepartMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
 }
-
-

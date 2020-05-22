@@ -54,9 +54,6 @@ public class PCMCERTOFREGResource {
 
     public PCMCERTOFREGDTO permissionDTO=new PCMCERTOFREGDTO();
 
-
-
-
     @PreAuthorize("hasPermission(#pcmcertofreg_id,'Remove',{'Sql',this.pcmcertofregMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"PCMCERTOFREG" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmcertofregs/{pcmcertofreg_id}")
@@ -65,6 +62,7 @@ public class PCMCERTOFREGResource {
          return ResponseEntity.status(HttpStatus.OK).body(pcmcertofregService.remove(pcmcertofreg_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"PCMCERTOFREG" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmcertofregs/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -72,16 +70,14 @@ public class PCMCERTOFREGResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMCERTOFREG-Save-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMCERTOFREG-Save-all')")
     @ApiOperation(value = "Save", tags = {"PCMCERTOFREG" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmcertofregs/save")
     public ResponseEntity<Boolean> save(@RequestBody PCMCERTOFREGDTO pcmcertofregdto) {
         return ResponseEntity.status(HttpStatus.OK).body(pcmcertofregService.save(pcmcertofregMapping.toDomain(pcmcertofregdto)));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"PCMCERTOFREG" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmcertofregs/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PCMCERTOFREGDTO> pcmcertofregdtos) {
@@ -89,18 +85,12 @@ public class PCMCERTOFREGResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMCERTOFREG-GetDraft-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMCERTOFREG-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"PCMCERTOFREG" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmcertofregs/getdraft")
     public ResponseEntity<PCMCERTOFREGDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(pcmcertofregMapping.toDto(pcmcertofregService.getDraft(new PCMCERTOFREG())));
     }
-
-
-
 
     @PreAuthorize("hasPermission('','Create',{'Sql',this.pcmcertofregMapping,#pcmcertofregdto})")
     @ApiOperation(value = "Create", tags = {"PCMCERTOFREG" },  notes = "Create")
@@ -113,15 +103,13 @@ public class PCMCERTOFREGResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatch", tags = {"PCMCERTOFREG" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmcertofregs/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PCMCERTOFREGDTO> pcmcertofregdtos) {
         pcmcertofregService.createBatch(pcmcertofregMapping.toDomain(pcmcertofregdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#pcmcertofreg_id,'Update',{'Sql',this.pcmcertofregMapping,#pcmcertofregdto})")
     @ApiOperation(value = "Update", tags = {"PCMCERTOFREG" },  notes = "Update")
@@ -135,15 +123,13 @@ public class PCMCERTOFREGResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"PCMCERTOFREG" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmcertofregs/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PCMCERTOFREGDTO> pcmcertofregdtos) {
         pcmcertofregService.updateBatch(pcmcertofregMapping.toDomain(pcmcertofregdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#pcmcertofreg_id,'Get',{'Sql',this.pcmcertofregMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"PCMCERTOFREG" },  notes = "Get")
@@ -154,17 +140,14 @@ public class PCMCERTOFREGResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMCERTOFREG-CheckKey-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMCERTOFREG-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"PCMCERTOFREG" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmcertofregs/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PCMCERTOFREGDTO pcmcertofregdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pcmcertofregService.checkKey(pcmcertofregMapping.toDomain(pcmcertofregdto)));
     }
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMCERTOFREG-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMCERTOFREG-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PCMCERTOFREG" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pcmcertofregs/fetchdefault")
 	public ResponseEntity<List<PCMCERTOFREGDTO>> fetchDefault(PCMCERTOFREGSearchContext context) {
@@ -177,7 +160,7 @@ public class PCMCERTOFREGResource {
                 .body(list);
 	}
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMCERTOFREG-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMCERTOFREG-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PCMCERTOFREG" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pcmcertofregs/searchdefault")
 	public ResponseEntity<Page<PCMCERTOFREGDTO>> searchDefault(@RequestBody PCMCERTOFREGSearchContext context) {
@@ -185,9 +168,6 @@ public class PCMCERTOFREGResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pcmcertofregMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
-
     //@PreAuthorize("hasPermission(#pcmcertofreg_id,'Remove',{'Sql',this.pcmcertofregMapping,this.permissionDTO})")
     @ApiOperation(value = "RemoveByPCMPROFILE", tags = {"PCMCERTOFREG" },  notes = "RemoveByPCMPROFILE")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmprofiles/{pcmprofile_id}/pcmcertofregs/{pcmcertofreg_id}")
@@ -196,6 +176,7 @@ public class PCMCERTOFREGResource {
 		return ResponseEntity.status(HttpStatus.OK).body(pcmcertofregService.remove(pcmcertofreg_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatchByPCMPROFILE", tags = {"PCMCERTOFREG" },  notes = "RemoveBatchByPCMPROFILE")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmprofiles/{pcmprofile_id}/pcmcertofregs/batch")
     public ResponseEntity<Boolean> removeBatchByPCMPROFILE(@RequestBody List<String> ids) {
@@ -203,7 +184,7 @@ public class PCMCERTOFREGResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMCERTOFREG-Save-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMCERTOFREG-Save-all')")
     @ApiOperation(value = "SaveByPCMPROFILE", tags = {"PCMCERTOFREG" },  notes = "SaveByPCMPROFILE")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/pcmcertofregs/save")
     public ResponseEntity<Boolean> saveByPCMPROFILE(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody PCMCERTOFREGDTO pcmcertofregdto) {
@@ -212,6 +193,7 @@ public class PCMCERTOFREGResource {
         return ResponseEntity.status(HttpStatus.OK).body(pcmcertofregService.save(domain));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatchByPCMPROFILE", tags = {"PCMCERTOFREG" },  notes = "SaveBatchByPCMPROFILE")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/pcmcertofregs/savebatch")
     public ResponseEntity<Boolean> saveBatchByPCMPROFILE(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody List<PCMCERTOFREGDTO> pcmcertofregdtos) {
@@ -223,7 +205,7 @@ public class PCMCERTOFREGResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMCERTOFREG-GetDraft-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMCERTOFREG-GetDraft-all')")
     @ApiOperation(value = "GetDraftByPCMPROFILE", tags = {"PCMCERTOFREG" },  notes = "GetDraftByPCMPROFILE")
     @RequestMapping(method = RequestMethod.GET, value = "/pcmprofiles/{pcmprofile_id}/pcmcertofregs/getdraft")
     public ResponseEntity<PCMCERTOFREGDTO> getDraftByPCMPROFILE(@PathVariable("pcmprofile_id") String pcmprofile_id) {
@@ -244,6 +226,7 @@ public class PCMCERTOFREGResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatchByPCMPROFILE", tags = {"PCMCERTOFREG" },  notes = "createBatchByPCMPROFILE")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/pcmcertofregs/batch")
     public ResponseEntity<Boolean> createBatchByPCMPROFILE(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody List<PCMCERTOFREGDTO> pcmcertofregdtos) {
@@ -268,6 +251,7 @@ public class PCMCERTOFREGResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatchByPCMPROFILE", tags = {"PCMCERTOFREG" },  notes = "UpdateBatchByPCMPROFILE")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmprofiles/{pcmprofile_id}/pcmcertofregs/batch")
     public ResponseEntity<Boolean> updateBatchByPCMPROFILE(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody List<PCMCERTOFREGDTO> pcmcertofregdtos) {
@@ -288,14 +272,14 @@ public class PCMCERTOFREGResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMCERTOFREG-CheckKey-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMCERTOFREG-CheckKey-all')")
     @ApiOperation(value = "CheckKeyByPCMPROFILE", tags = {"PCMCERTOFREG" },  notes = "CheckKeyByPCMPROFILE")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/pcmcertofregs/checkkey")
     public ResponseEntity<Boolean> checkKeyByPCMPROFILE(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody PCMCERTOFREGDTO pcmcertofregdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pcmcertofregService.checkKey(pcmcertofregMapping.toDomain(pcmcertofregdto)));
     }
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMCERTOFREG-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMCERTOFREG-Default-all')")
 	@ApiOperation(value = "fetchDEFAULTByPCMPROFILE", tags = {"PCMCERTOFREG" } ,notes = "fetchDEFAULTByPCMPROFILE")
     @RequestMapping(method= RequestMethod.GET , value="/pcmprofiles/{pcmprofile_id}/pcmcertofregs/fetchdefault")
 	public ResponseEntity<List<PCMCERTOFREGDTO>> fetchPCMCERTOFREGDefaultByPCMPROFILE(@PathVariable("pcmprofile_id") String pcmprofile_id,PCMCERTOFREGSearchContext context) {
@@ -309,7 +293,7 @@ public class PCMCERTOFREGResource {
                 .body(list);
 	}
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMCERTOFREG-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMCERTOFREG-Default-all')")
 	@ApiOperation(value = "searchDEFAULTByPCMPROFILE", tags = {"PCMCERTOFREG" } ,notes = "searchDEFAULTByPCMPROFILE")
     @RequestMapping(method= RequestMethod.POST , value="/pcmprofiles/{pcmprofile_id}/pcmcertofregs/searchdefault")
 	public ResponseEntity<Page<PCMCERTOFREGDTO>> searchPCMCERTOFREGDefaultByPCMPROFILE(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody PCMCERTOFREGSearchContext context) {
@@ -318,8 +302,4 @@ public class PCMCERTOFREGResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pcmcertofregMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
 }
-
-

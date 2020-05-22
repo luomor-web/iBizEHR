@@ -54,9 +54,6 @@ public class AttendRecordDetailResource {
 
     public AttendRecordDetailDTO permissionDTO=new AttendRecordDetailDTO();
 
-
-
-
     @PreAuthorize("hasPermission('','Create',{'Sql',this.attendrecorddetailMapping,#attendrecorddetaildto})")
     @ApiOperation(value = "Create", tags = {"AttendRecordDetail" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/attendrecorddetails")
@@ -68,6 +65,7 @@ public class AttendRecordDetailResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatch", tags = {"AttendRecordDetail" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/attendrecorddetails/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<AttendRecordDetailDTO> attendrecorddetaildtos) {
@@ -75,18 +73,12 @@ public class AttendRecordDetailResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-AttendRecordDetail-GetDraft-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-AttendRecordDetail-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"AttendRecordDetail" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/attendrecorddetails/getdraft")
     public ResponseEntity<AttendRecordDetailDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(attendrecorddetailMapping.toDto(attendrecorddetailService.getDraft(new AttendRecordDetail())));
     }
-
-
-
 
     @PreAuthorize("hasPermission(#attendrecorddetail_id,'Get',{'Sql',this.attendrecorddetailMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"AttendRecordDetail" },  notes = "Get")
@@ -97,35 +89,27 @@ public class AttendRecordDetailResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-AttendRecordDetail-CheckKey-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-AttendRecordDetail-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"AttendRecordDetail" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/attendrecorddetails/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody AttendRecordDetailDTO attendrecorddetaildto) {
         return  ResponseEntity.status(HttpStatus.OK).body(attendrecorddetailService.checkKey(attendrecorddetailMapping.toDomain(attendrecorddetaildto)));
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-AttendRecordDetail-Save-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-AttendRecordDetail-Save-all')")
     @ApiOperation(value = "Save", tags = {"AttendRecordDetail" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/attendrecorddetails/save")
     public ResponseEntity<Boolean> save(@RequestBody AttendRecordDetailDTO attendrecorddetaildto) {
         return ResponseEntity.status(HttpStatus.OK).body(attendrecorddetailService.save(attendrecorddetailMapping.toDomain(attendrecorddetaildto)));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"AttendRecordDetail" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/attendrecorddetails/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<AttendRecordDetailDTO> attendrecorddetaildtos) {
         attendrecorddetailService.saveBatch(attendrecorddetailMapping.toDomain(attendrecorddetaildtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#attendrecorddetail_id,'Update',{'Sql',this.attendrecorddetailMapping,#attendrecorddetaildto})")
     @ApiOperation(value = "Update", tags = {"AttendRecordDetail" },  notes = "Update")
@@ -139,15 +123,13 @@ public class AttendRecordDetailResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"AttendRecordDetail" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/attendrecorddetails/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<AttendRecordDetailDTO> attendrecorddetaildtos) {
         attendrecorddetailService.updateBatch(attendrecorddetailMapping.toDomain(attendrecorddetaildtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#attendrecorddetail_id,'Remove',{'Sql',this.attendrecorddetailMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"AttendRecordDetail" },  notes = "Remove")
@@ -157,6 +139,7 @@ public class AttendRecordDetailResource {
          return ResponseEntity.status(HttpStatus.OK).body(attendrecorddetailService.remove(attendrecorddetail_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"AttendRecordDetail" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/attendrecorddetails/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -164,7 +147,7 @@ public class AttendRecordDetailResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-AttendRecordDetail-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-AttendRecordDetail-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"AttendRecordDetail" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/attendrecorddetails/fetchdefault")
 	public ResponseEntity<List<AttendRecordDetailDTO>> fetchDefault(AttendRecordDetailSearchContext context) {
@@ -177,7 +160,7 @@ public class AttendRecordDetailResource {
                 .body(list);
 	}
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-AttendRecordDetail-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-AttendRecordDetail-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"AttendRecordDetail" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/attendrecorddetails/searchdefault")
 	public ResponseEntity<Page<AttendRecordDetailDTO>> searchDefault(@RequestBody AttendRecordDetailSearchContext context) {
@@ -185,8 +168,4 @@ public class AttendRecordDetailResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(attendrecorddetailMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
 }
-
-

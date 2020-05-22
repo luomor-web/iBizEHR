@@ -54,9 +54,6 @@ public class SALSTDZCResource {
 
     public SALSTDZCDTO permissionDTO=new SALSTDZCDTO();
 
-
-
-
     @PreAuthorize("hasPermission('','Create',{'Sql',this.salstdzcMapping,#salstdzcdto})")
     @ApiOperation(value = "Create", tags = {"SALSTDZC" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/salstdzcs")
@@ -68,15 +65,13 @@ public class SALSTDZCResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatch", tags = {"SALSTDZC" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/salstdzcs/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<SALSTDZCDTO> salstdzcdtos) {
         salstdzcService.createBatch(salstdzcMapping.toDomain(salstdzcdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#salstdzc_id,'Get',{'Sql',this.salstdzcMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"SALSTDZC" },  notes = "Get")
@@ -87,16 +82,14 @@ public class SALSTDZCResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALSTDZC-Save-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALSTDZC-Save-all')")
     @ApiOperation(value = "Save", tags = {"SALSTDZC" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/salstdzcs/save")
     public ResponseEntity<Boolean> save(@RequestBody SALSTDZCDTO salstdzcdto) {
         return ResponseEntity.status(HttpStatus.OK).body(salstdzcService.save(salstdzcMapping.toDomain(salstdzcdto)));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"SALSTDZC" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/salstdzcs/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<SALSTDZCDTO> salstdzcdtos) {
@@ -104,18 +97,12 @@ public class SALSTDZCResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALSTDZC-GetDraft-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALSTDZC-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"SALSTDZC" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/salstdzcs/getdraft")
     public ResponseEntity<SALSTDZCDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(salstdzcMapping.toDto(salstdzcService.getDraft(new SALSTDZC())));
     }
-
-
-
 
     @PreAuthorize("hasPermission(#salstdzc_id,'Remove',{'Sql',this.salstdzcMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"SALSTDZC" },  notes = "Remove")
@@ -125,15 +112,13 @@ public class SALSTDZCResource {
          return ResponseEntity.status(HttpStatus.OK).body(salstdzcService.remove(salstdzc_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"SALSTDZC" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/salstdzcs/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         salstdzcService.removeBatch(ids);
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#salstdzc_id,'Update',{'Sql',this.salstdzcMapping,#salstdzcdto})")
     @ApiOperation(value = "Update", tags = {"SALSTDZC" },  notes = "Update")
@@ -147,6 +132,7 @@ public class SALSTDZCResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"SALSTDZC" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/salstdzcs/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<SALSTDZCDTO> salstdzcdtos) {
@@ -154,17 +140,14 @@ public class SALSTDZCResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALSTDZC-CheckKey-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALSTDZC-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"SALSTDZC" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/salstdzcs/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody SALSTDZCDTO salstdzcdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(salstdzcService.checkKey(salstdzcMapping.toDomain(salstdzcdto)));
     }
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALSTDZC-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALSTDZC-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"SALSTDZC" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/salstdzcs/fetchdefault")
 	public ResponseEntity<List<SALSTDZCDTO>> fetchDefault(SALSTDZCSearchContext context) {
@@ -177,7 +160,7 @@ public class SALSTDZCResource {
                 .body(list);
 	}
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALSTDZC-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALSTDZC-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"SALSTDZC" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/salstdzcs/searchdefault")
 	public ResponseEntity<Page<SALSTDZCDTO>> searchDefault(@RequestBody SALSTDZCSearchContext context) {
@@ -185,8 +168,4 @@ public class SALSTDZCResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(salstdzcMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
 }
-
-

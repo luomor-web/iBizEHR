@@ -54,10 +54,7 @@ public class ServiceRTResource {
 
     public ServiceRTDTO permissionDTO=new ServiceRTDTO();
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ServiceRT-StopService-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ServiceRT-StopService-all')")
     @ApiOperation(value = "停止服务", tags = {"ServiceRT" },  notes = "停止服务")
 	@RequestMapping(method = RequestMethod.POST, value = "/servicerts/{servicert_id}/stopservice")
     @Transactional
@@ -68,18 +65,12 @@ public class ServiceRTResource {
         return ResponseEntity.status(HttpStatus.OK).body(servicertdto);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ServiceRT-GetDraft-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ServiceRT-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"ServiceRT" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/servicerts/getdraft")
     public ResponseEntity<ServiceRTDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(servicertMapping.toDto(servicertService.getDraft(new ServiceRT())));
     }
-
-
-
 
     @PreAuthorize("hasPermission('','Create',{'Sql',this.servicertMapping,#servicertdto})")
     @ApiOperation(value = "Create", tags = {"ServiceRT" },  notes = "Create")
@@ -92,15 +83,13 @@ public class ServiceRTResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatch", tags = {"ServiceRT" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/servicerts/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<ServiceRTDTO> servicertdtos) {
         servicertService.createBatch(servicertMapping.toDomain(servicertdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#servicert_id,'Get',{'Sql',this.servicertMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"ServiceRT" },  notes = "Get")
@@ -111,35 +100,27 @@ public class ServiceRTResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ServiceRT-CheckKey-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ServiceRT-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"ServiceRT" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/servicerts/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody ServiceRTDTO servicertdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(servicertService.checkKey(servicertMapping.toDomain(servicertdto)));
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ServiceRT-Save-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ServiceRT-Save-all')")
     @ApiOperation(value = "Save", tags = {"ServiceRT" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/servicerts/save")
     public ResponseEntity<Boolean> save(@RequestBody ServiceRTDTO servicertdto) {
         return ResponseEntity.status(HttpStatus.OK).body(servicertService.save(servicertMapping.toDomain(servicertdto)));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"ServiceRT" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/servicerts/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<ServiceRTDTO> servicertdtos) {
         servicertService.saveBatch(servicertMapping.toDomain(servicertdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#servicert_id,'Update',{'Sql',this.servicertMapping,#servicertdto})")
     @ApiOperation(value = "Update", tags = {"ServiceRT" },  notes = "Update")
@@ -153,15 +134,13 @@ public class ServiceRTResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"ServiceRT" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/servicerts/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<ServiceRTDTO> servicertdtos) {
         servicertService.updateBatch(servicertMapping.toDomain(servicertdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#servicert_id,'Remove',{'Sql',this.servicertMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"ServiceRT" },  notes = "Remove")
@@ -171,6 +150,7 @@ public class ServiceRTResource {
          return ResponseEntity.status(HttpStatus.OK).body(servicertService.remove(servicert_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"ServiceRT" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/servicerts/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -178,10 +158,7 @@ public class ServiceRTResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ServiceRT-StartService-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ServiceRT-StartService-all')")
     @ApiOperation(value = "启动服务", tags = {"ServiceRT" },  notes = "启动服务")
 	@RequestMapping(method = RequestMethod.POST, value = "/servicerts/{servicert_id}/startservice")
     @Transactional
@@ -192,7 +169,7 @@ public class ServiceRTResource {
         return ResponseEntity.status(HttpStatus.OK).body(servicertdto);
     }
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ServiceRT-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ServiceRT-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"ServiceRT" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/servicerts/fetchdefault")
 	public ResponseEntity<List<ServiceRTDTO>> fetchDefault(ServiceRTSearchContext context) {
@@ -205,7 +182,7 @@ public class ServiceRTResource {
                 .body(list);
 	}
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ServiceRT-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ServiceRT-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"ServiceRT" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/servicerts/searchdefault")
 	public ResponseEntity<Page<ServiceRTDTO>> searchDefault(@RequestBody ServiceRTSearchContext context) {
@@ -213,8 +190,4 @@ public class ServiceRTResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(servicertMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
 }
-
-

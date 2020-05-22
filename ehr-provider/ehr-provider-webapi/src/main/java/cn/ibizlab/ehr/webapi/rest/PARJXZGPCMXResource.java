@@ -54,18 +54,12 @@ public class PARJXZGPCMXResource {
 
     public PARJXZGPCMXDTO permissionDTO=new PARJXZGPCMXDTO();
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PARJXZGPCMX-GetDraft-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PARJXZGPCMX-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"PARJXZGPCMX" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/parjxzgpcmxes/getdraft")
     public ResponseEntity<PARJXZGPCMXDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(parjxzgpcmxMapping.toDto(parjxzgpcmxService.getDraft(new PARJXZGPCMX())));
     }
-
-
-
 
     @PreAuthorize("hasPermission(#parjxzgpcmx_id,'Update',{'Sql',this.parjxzgpcmxMapping,#parjxzgpcmxdto})")
     @ApiOperation(value = "Update", tags = {"PARJXZGPCMX" },  notes = "Update")
@@ -79,6 +73,7 @@ public class PARJXZGPCMXResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"PARJXZGPCMX" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/parjxzgpcmxes/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PARJXZGPCMXDTO> parjxzgpcmxdtos) {
@@ -86,25 +81,20 @@ public class PARJXZGPCMXResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PARJXZGPCMX-Save-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PARJXZGPCMX-Save-all')")
     @ApiOperation(value = "Save", tags = {"PARJXZGPCMX" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/parjxzgpcmxes/save")
     public ResponseEntity<Boolean> save(@RequestBody PARJXZGPCMXDTO parjxzgpcmxdto) {
         return ResponseEntity.status(HttpStatus.OK).body(parjxzgpcmxService.save(parjxzgpcmxMapping.toDomain(parjxzgpcmxdto)));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"PARJXZGPCMX" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/parjxzgpcmxes/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PARJXZGPCMXDTO> parjxzgpcmxdtos) {
         parjxzgpcmxService.saveBatch(parjxzgpcmxMapping.toDomain(parjxzgpcmxdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#parjxzgpcmx_id,'Remove',{'Sql',this.parjxzgpcmxMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"PARJXZGPCMX" },  notes = "Remove")
@@ -114,15 +104,13 @@ public class PARJXZGPCMXResource {
          return ResponseEntity.status(HttpStatus.OK).body(parjxzgpcmxService.remove(parjxzgpcmx_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"PARJXZGPCMX" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/parjxzgpcmxes/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         parjxzgpcmxService.removeBatch(ids);
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission('','Create',{'Sql',this.parjxzgpcmxMapping,#parjxzgpcmxdto})")
     @ApiOperation(value = "Create", tags = {"PARJXZGPCMX" },  notes = "Create")
@@ -135,15 +123,13 @@ public class PARJXZGPCMXResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatch", tags = {"PARJXZGPCMX" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/parjxzgpcmxes/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PARJXZGPCMXDTO> parjxzgpcmxdtos) {
         parjxzgpcmxService.createBatch(parjxzgpcmxMapping.toDomain(parjxzgpcmxdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#parjxzgpcmx_id,'Get',{'Sql',this.parjxzgpcmxMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"PARJXZGPCMX" },  notes = "Get")
@@ -154,17 +140,14 @@ public class PARJXZGPCMXResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PARJXZGPCMX-CheckKey-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PARJXZGPCMX-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"PARJXZGPCMX" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/parjxzgpcmxes/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PARJXZGPCMXDTO parjxzgpcmxdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(parjxzgpcmxService.checkKey(parjxzgpcmxMapping.toDomain(parjxzgpcmxdto)));
     }
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PARJXZGPCMX-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PARJXZGPCMX-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PARJXZGPCMX" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/parjxzgpcmxes/fetchdefault")
 	public ResponseEntity<List<PARJXZGPCMXDTO>> fetchDefault(PARJXZGPCMXSearchContext context) {
@@ -177,7 +160,7 @@ public class PARJXZGPCMXResource {
                 .body(list);
 	}
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PARJXZGPCMX-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PARJXZGPCMX-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PARJXZGPCMX" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/parjxzgpcmxes/searchdefault")
 	public ResponseEntity<Page<PARJXZGPCMXDTO>> searchDefault(@RequestBody PARJXZGPCMXSearchContext context) {
@@ -185,8 +168,4 @@ public class PARJXZGPCMXResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(parjxzgpcmxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
 }
-
-

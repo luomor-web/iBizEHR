@@ -54,9 +54,6 @@ public class SALSALARYBILLResource {
 
     public SALSALARYBILLDTO permissionDTO=new SALSALARYBILLDTO();
 
-
-
-
     @PreAuthorize("hasPermission(#salsalarybill_id,'Remove',{'Sql',this.salsalarybillMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"SALSALARYBILL" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/salsalarybills/{salsalarybill_id}")
@@ -65,6 +62,7 @@ public class SALSALARYBILLResource {
          return ResponseEntity.status(HttpStatus.OK).body(salsalarybillService.remove(salsalarybill_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"SALSALARYBILL" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/salsalarybills/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -72,18 +70,12 @@ public class SALSALARYBILLResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALSALARYBILL-CheckKey-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALSALARYBILL-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"SALSALARYBILL" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/salsalarybills/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody SALSALARYBILLDTO salsalarybilldto) {
         return  ResponseEntity.status(HttpStatus.OK).body(salsalarybillService.checkKey(salsalarybillMapping.toDomain(salsalarybilldto)));
     }
-
-
-
 
     @PreAuthorize("hasPermission('','Create',{'Sql',this.salsalarybillMapping,#salsalarybilldto})")
     @ApiOperation(value = "Create", tags = {"SALSALARYBILL" },  notes = "Create")
@@ -96,6 +88,7 @@ public class SALSALARYBILLResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatch", tags = {"SALSALARYBILL" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/salsalarybills/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<SALSALARYBILLDTO> salsalarybilldtos) {
@@ -103,18 +96,12 @@ public class SALSALARYBILLResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALSALARYBILL-GetDraft-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALSALARYBILL-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"SALSALARYBILL" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/salsalarybills/getdraft")
     public ResponseEntity<SALSALARYBILLDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(salsalarybillMapping.toDto(salsalarybillService.getDraft(new SALSALARYBILL())));
     }
-
-
-
 
     @PreAuthorize("hasPermission(#salsalarybill_id,'Update',{'Sql',this.salsalarybillMapping,#salsalarybilldto})")
     @ApiOperation(value = "Update", tags = {"SALSALARYBILL" },  notes = "Update")
@@ -128,15 +115,13 @@ public class SALSALARYBILLResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"SALSALARYBILL" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/salsalarybills/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<SALSALARYBILLDTO> salsalarybilldtos) {
         salsalarybillService.updateBatch(salsalarybillMapping.toDomain(salsalarybilldtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#salsalarybill_id,'Get',{'Sql',this.salsalarybillMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"SALSALARYBILL" },  notes = "Get")
@@ -147,16 +132,14 @@ public class SALSALARYBILLResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALSALARYBILL-Save-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALSALARYBILL-Save-all')")
     @ApiOperation(value = "Save", tags = {"SALSALARYBILL" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/salsalarybills/save")
     public ResponseEntity<Boolean> save(@RequestBody SALSALARYBILLDTO salsalarybilldto) {
         return ResponseEntity.status(HttpStatus.OK).body(salsalarybillService.save(salsalarybillMapping.toDomain(salsalarybilldto)));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"SALSALARYBILL" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/salsalarybills/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<SALSALARYBILLDTO> salsalarybilldtos) {
@@ -164,7 +147,7 @@ public class SALSALARYBILLResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALSALARYBILL-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALSALARYBILL-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"SALSALARYBILL" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/salsalarybills/fetchdefault")
 	public ResponseEntity<List<SALSALARYBILLDTO>> fetchDefault(SALSALARYBILLSearchContext context) {
@@ -177,7 +160,7 @@ public class SALSALARYBILLResource {
                 .body(list);
 	}
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALSALARYBILL-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALSALARYBILL-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"SALSALARYBILL" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/salsalarybills/searchdefault")
 	public ResponseEntity<Page<SALSALARYBILLDTO>> searchDefault(@RequestBody SALSALARYBILLSearchContext context) {
@@ -185,8 +168,4 @@ public class SALSALARYBILLResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(salsalarybillMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
 }
-
-

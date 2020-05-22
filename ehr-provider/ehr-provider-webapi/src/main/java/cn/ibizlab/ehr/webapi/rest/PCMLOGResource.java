@@ -54,9 +54,6 @@ public class PCMLOGResource {
 
     public PCMLOGDTO permissionDTO=new PCMLOGDTO();
 
-
-
-
     @PreAuthorize("hasPermission('','Create',{'Sql',this.pcmlogMapping,#pcmlogdto})")
     @ApiOperation(value = "Create", tags = {"PCMLOG" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmlogs")
@@ -68,15 +65,13 @@ public class PCMLOGResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatch", tags = {"PCMLOG" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmlogs/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PCMLOGDTO> pcmlogdtos) {
         pcmlogService.createBatch(pcmlogMapping.toDomain(pcmlogdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#pcmlog_id,'Update',{'Sql',this.pcmlogMapping,#pcmlogdto})")
     @ApiOperation(value = "Update", tags = {"PCMLOG" },  notes = "Update")
@@ -90,15 +85,13 @@ public class PCMLOGResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"PCMLOG" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmlogs/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PCMLOGDTO> pcmlogdtos) {
         pcmlogService.updateBatch(pcmlogMapping.toDomain(pcmlogdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#pcmlog_id,'Remove',{'Sql',this.pcmlogMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"PCMLOG" },  notes = "Remove")
@@ -108,6 +101,7 @@ public class PCMLOGResource {
          return ResponseEntity.status(HttpStatus.OK).body(pcmlogService.remove(pcmlog_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"PCMLOG" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmlogs/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -115,18 +109,12 @@ public class PCMLOGResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMLOG-GetDraft-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMLOG-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"PCMLOG" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmlogs/getdraft")
     public ResponseEntity<PCMLOGDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(pcmlogMapping.toDto(pcmlogService.getDraft(new PCMLOG())));
     }
-
-
-
 
     @PreAuthorize("hasPermission(#pcmlog_id,'Get',{'Sql',this.pcmlogMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"PCMLOG" },  notes = "Get")
@@ -137,26 +125,21 @@ public class PCMLOGResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMLOG-CheckKey-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMLOG-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"PCMLOG" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmlogs/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PCMLOGDTO pcmlogdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pcmlogService.checkKey(pcmlogMapping.toDomain(pcmlogdto)));
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMLOG-Save-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMLOG-Save-all')")
     @ApiOperation(value = "Save", tags = {"PCMLOG" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmlogs/save")
     public ResponseEntity<Boolean> save(@RequestBody PCMLOGDTO pcmlogdto) {
         return ResponseEntity.status(HttpStatus.OK).body(pcmlogService.save(pcmlogMapping.toDomain(pcmlogdto)));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"PCMLOG" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmlogs/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PCMLOGDTO> pcmlogdtos) {
@@ -164,7 +147,7 @@ public class PCMLOGResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMLOG-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMLOG-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PCMLOG" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pcmlogs/fetchdefault")
 	public ResponseEntity<List<PCMLOGDTO>> fetchDefault(PCMLOGSearchContext context) {
@@ -177,7 +160,7 @@ public class PCMLOGResource {
                 .body(list);
 	}
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMLOG-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMLOG-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PCMLOG" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pcmlogs/searchdefault")
 	public ResponseEntity<Page<PCMLOGDTO>> searchDefault(@RequestBody PCMLOGSearchContext context) {
@@ -185,8 +168,4 @@ public class PCMLOGResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pcmlogMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
 }
-
-

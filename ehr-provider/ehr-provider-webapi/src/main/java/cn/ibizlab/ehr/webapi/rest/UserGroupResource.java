@@ -54,9 +54,6 @@ public class UserGroupResource {
 
     public UserGroupDTO permissionDTO=new UserGroupDTO();
 
-
-
-
     @PreAuthorize("hasPermission(#usergroup_id,'Update',{'Sql',this.usergroupMapping,#usergroupdto})")
     @ApiOperation(value = "Update", tags = {"UserGroup" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/usergroups/{usergroup_id}")
@@ -69,15 +66,13 @@ public class UserGroupResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"UserGroup" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/usergroups/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<UserGroupDTO> usergroupdtos) {
         usergroupService.updateBatch(usergroupMapping.toDomain(usergroupdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#usergroup_id,'Remove',{'Sql',this.usergroupMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"UserGroup" },  notes = "Remove")
@@ -87,6 +82,7 @@ public class UserGroupResource {
          return ResponseEntity.status(HttpStatus.OK).body(usergroupService.remove(usergroup_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"UserGroup" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/usergroups/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -94,18 +90,12 @@ public class UserGroupResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UserGroup-CheckKey-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UserGroup-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"UserGroup" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/usergroups/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody UserGroupDTO usergroupdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(usergroupService.checkKey(usergroupMapping.toDomain(usergroupdto)));
     }
-
-
-
 
     @PreAuthorize("hasPermission('','Create',{'Sql',this.usergroupMapping,#usergroupdto})")
     @ApiOperation(value = "Create", tags = {"UserGroup" },  notes = "Create")
@@ -118,6 +108,7 @@ public class UserGroupResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatch", tags = {"UserGroup" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/usergroups/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<UserGroupDTO> usergroupdtos) {
@@ -125,25 +116,20 @@ public class UserGroupResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UserGroup-Save-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UserGroup-Save-all')")
     @ApiOperation(value = "Save", tags = {"UserGroup" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/usergroups/save")
     public ResponseEntity<Boolean> save(@RequestBody UserGroupDTO usergroupdto) {
         return ResponseEntity.status(HttpStatus.OK).body(usergroupService.save(usergroupMapping.toDomain(usergroupdto)));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"UserGroup" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/usergroups/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<UserGroupDTO> usergroupdtos) {
         usergroupService.saveBatch(usergroupMapping.toDomain(usergroupdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#usergroup_id,'Get',{'Sql',this.usergroupMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"UserGroup" },  notes = "Get")
@@ -154,17 +140,14 @@ public class UserGroupResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UserGroup-GetDraft-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UserGroup-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"UserGroup" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/usergroups/getdraft")
     public ResponseEntity<UserGroupDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(usergroupMapping.toDto(usergroupService.getDraft(new UserGroup())));
     }
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UserGroup-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UserGroup-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"UserGroup" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/usergroups/fetchdefault")
 	public ResponseEntity<List<UserGroupDTO>> fetchDefault(UserGroupSearchContext context) {
@@ -177,7 +160,7 @@ public class UserGroupResource {
                 .body(list);
 	}
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UserGroup-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UserGroup-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"UserGroup" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/usergroups/searchdefault")
 	public ResponseEntity<Page<UserGroupDTO>> searchDefault(@RequestBody UserGroupSearchContext context) {
@@ -185,8 +168,4 @@ public class UserGroupResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(usergroupMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
 }
-
-

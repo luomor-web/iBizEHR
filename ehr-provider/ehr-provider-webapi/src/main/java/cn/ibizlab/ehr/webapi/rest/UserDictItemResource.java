@@ -54,9 +54,6 @@ public class UserDictItemResource {
 
     public UserDictItemDTO permissionDTO=new UserDictItemDTO();
 
-
-
-
     @PreAuthorize("hasPermission(#userdictitem_id,'Update',{'Sql',this.userdictitemMapping,#userdictitemdto})")
     @ApiOperation(value = "Update", tags = {"UserDictItem" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/userdictitems/{userdictitem_id}")
@@ -69,6 +66,7 @@ public class UserDictItemResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"UserDictItem" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/userdictitems/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<UserDictItemDTO> userdictitemdtos) {
@@ -76,28 +74,19 @@ public class UserDictItemResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UserDictItem-GetDraft-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UserDictItem-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"UserDictItem" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/userdictitems/getdraft")
     public ResponseEntity<UserDictItemDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(userdictitemMapping.toDto(userdictitemService.getDraft(new UserDictItem())));
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UserDictItem-CheckKey-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UserDictItem-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"UserDictItem" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/userdictitems/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody UserDictItemDTO userdictitemdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(userdictitemService.checkKey(userdictitemMapping.toDomain(userdictitemdto)));
     }
-
-
-
 
     @PreAuthorize("hasPermission(#userdictitem_id,'Remove',{'Sql',this.userdictitemMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"UserDictItem" },  notes = "Remove")
@@ -107,15 +96,13 @@ public class UserDictItemResource {
          return ResponseEntity.status(HttpStatus.OK).body(userdictitemService.remove(userdictitem_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"UserDictItem" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/userdictitems/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         userdictitemService.removeBatch(ids);
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#userdictitem_id,'Get',{'Sql',this.userdictitemMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"UserDictItem" },  notes = "Get")
@@ -126,25 +113,20 @@ public class UserDictItemResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UserDictItem-Save-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UserDictItem-Save-all')")
     @ApiOperation(value = "Save", tags = {"UserDictItem" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/userdictitems/save")
     public ResponseEntity<Boolean> save(@RequestBody UserDictItemDTO userdictitemdto) {
         return ResponseEntity.status(HttpStatus.OK).body(userdictitemService.save(userdictitemMapping.toDomain(userdictitemdto)));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"UserDictItem" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/userdictitems/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<UserDictItemDTO> userdictitemdtos) {
         userdictitemService.saveBatch(userdictitemMapping.toDomain(userdictitemdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission('','Create',{'Sql',this.userdictitemMapping,#userdictitemdto})")
     @ApiOperation(value = "Create", tags = {"UserDictItem" },  notes = "Create")
@@ -157,6 +139,7 @@ public class UserDictItemResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatch", tags = {"UserDictItem" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/userdictitems/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<UserDictItemDTO> userdictitemdtos) {
@@ -164,7 +147,7 @@ public class UserDictItemResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UserDictItem-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UserDictItem-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"UserDictItem" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/userdictitems/fetchdefault")
 	public ResponseEntity<List<UserDictItemDTO>> fetchDefault(UserDictItemSearchContext context) {
@@ -177,7 +160,7 @@ public class UserDictItemResource {
                 .body(list);
 	}
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UserDictItem-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UserDictItem-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"UserDictItem" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/userdictitems/searchdefault")
 	public ResponseEntity<Page<UserDictItemDTO>> searchDefault(@RequestBody UserDictItemSearchContext context) {
@@ -185,8 +168,4 @@ public class UserDictItemResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(userdictitemMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
 }
-
-

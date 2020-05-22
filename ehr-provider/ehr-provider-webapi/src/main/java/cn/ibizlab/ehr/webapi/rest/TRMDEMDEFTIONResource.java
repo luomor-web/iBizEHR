@@ -54,18 +54,12 @@ public class TRMDEMDEFTIONResource {
 
     public TRMDEMDEFTIONDTO permissionDTO=new TRMDEMDEFTIONDTO();
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMDEMDEFTION-GetDraft-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMDEMDEFTION-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"TRMDEMDEFTION" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/trmdemdeftions/getdraft")
     public ResponseEntity<TRMDEMDEFTIONDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(trmdemdeftionMapping.toDto(trmdemdeftionService.getDraft(new TRMDEMDEFTION())));
     }
-
-
-
 
     @PreAuthorize("hasPermission('','Create',{'Sql',this.trmdemdeftionMapping,#trmdemdeftiondto})")
     @ApiOperation(value = "Create", tags = {"TRMDEMDEFTION" },  notes = "Create")
@@ -78,15 +72,13 @@ public class TRMDEMDEFTIONResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatch", tags = {"TRMDEMDEFTION" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmdemdeftions/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<TRMDEMDEFTIONDTO> trmdemdeftiondtos) {
         trmdemdeftionService.createBatch(trmdemdeftionMapping.toDomain(trmdemdeftiondtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#trmdemdeftion_id,'Update',{'Sql',this.trmdemdeftionMapping,#trmdemdeftiondto})")
     @ApiOperation(value = "Update", tags = {"TRMDEMDEFTION" },  notes = "Update")
@@ -100,15 +92,13 @@ public class TRMDEMDEFTIONResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"TRMDEMDEFTION" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/trmdemdeftions/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<TRMDEMDEFTIONDTO> trmdemdeftiondtos) {
         trmdemdeftionService.updateBatch(trmdemdeftionMapping.toDomain(trmdemdeftiondtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#trmdemdeftion_id,'Remove',{'Sql',this.trmdemdeftionMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"TRMDEMDEFTION" },  notes = "Remove")
@@ -118,6 +108,7 @@ public class TRMDEMDEFTIONResource {
          return ResponseEntity.status(HttpStatus.OK).body(trmdemdeftionService.remove(trmdemdeftion_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"TRMDEMDEFTION" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/trmdemdeftions/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -125,16 +116,14 @@ public class TRMDEMDEFTIONResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMDEMDEFTION-Save-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMDEMDEFTION-Save-all')")
     @ApiOperation(value = "Save", tags = {"TRMDEMDEFTION" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmdemdeftions/save")
     public ResponseEntity<Boolean> save(@RequestBody TRMDEMDEFTIONDTO trmdemdeftiondto) {
         return ResponseEntity.status(HttpStatus.OK).body(trmdemdeftionService.save(trmdemdeftionMapping.toDomain(trmdemdeftiondto)));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"TRMDEMDEFTION" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmdemdeftions/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<TRMDEMDEFTIONDTO> trmdemdeftiondtos) {
@@ -142,18 +131,12 @@ public class TRMDEMDEFTIONResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMDEMDEFTION-CheckKey-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMDEMDEFTION-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"TRMDEMDEFTION" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmdemdeftions/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody TRMDEMDEFTIONDTO trmdemdeftiondto) {
         return  ResponseEntity.status(HttpStatus.OK).body(trmdemdeftionService.checkKey(trmdemdeftionMapping.toDomain(trmdemdeftiondto)));
     }
-
-
-
 
     @PreAuthorize("hasPermission(#trmdemdeftion_id,'Get',{'Sql',this.trmdemdeftionMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"TRMDEMDEFTION" },  notes = "Get")
@@ -164,7 +147,7 @@ public class TRMDEMDEFTIONResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMDEMDEFTION-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMDEMDEFTION-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"TRMDEMDEFTION" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/trmdemdeftions/fetchdefault")
 	public ResponseEntity<List<TRMDEMDEFTIONDTO>> fetchDefault(TRMDEMDEFTIONSearchContext context) {
@@ -177,7 +160,7 @@ public class TRMDEMDEFTIONResource {
                 .body(list);
 	}
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMDEMDEFTION-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMDEMDEFTION-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"TRMDEMDEFTION" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/trmdemdeftions/searchdefault")
 	public ResponseEntity<Page<TRMDEMDEFTIONDTO>> searchDefault(@RequestBody TRMDEMDEFTIONSearchContext context) {
@@ -185,8 +168,4 @@ public class TRMDEMDEFTIONResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(trmdemdeftionMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
 }
-
-

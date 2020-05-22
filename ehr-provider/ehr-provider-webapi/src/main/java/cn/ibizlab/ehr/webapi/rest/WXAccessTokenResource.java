@@ -54,9 +54,6 @@ public class WXAccessTokenResource {
 
     public WXAccessTokenDTO permissionDTO=new WXAccessTokenDTO();
 
-
-
-
     @PreAuthorize("hasPermission(#wxaccesstoken_id,'Update',{'Sql',this.wxaccesstokenMapping,#wxaccesstokendto})")
     @ApiOperation(value = "Update", tags = {"WXAccessToken" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/wxaccesstokens/{wxaccesstoken_id}")
@@ -69,15 +66,13 @@ public class WXAccessTokenResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"WXAccessToken" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/wxaccesstokens/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<WXAccessTokenDTO> wxaccesstokendtos) {
         wxaccesstokenService.updateBatch(wxaccesstokenMapping.toDomain(wxaccesstokendtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#wxaccesstoken_id,'Get',{'Sql',this.wxaccesstokenMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"WXAccessToken" },  notes = "Get")
@@ -88,35 +83,27 @@ public class WXAccessTokenResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WXAccessToken-CheckKey-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WXAccessToken-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"WXAccessToken" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/wxaccesstokens/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody WXAccessTokenDTO wxaccesstokendto) {
         return  ResponseEntity.status(HttpStatus.OK).body(wxaccesstokenService.checkKey(wxaccesstokenMapping.toDomain(wxaccesstokendto)));
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WXAccessToken-Save-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WXAccessToken-Save-all')")
     @ApiOperation(value = "Save", tags = {"WXAccessToken" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/wxaccesstokens/save")
     public ResponseEntity<Boolean> save(@RequestBody WXAccessTokenDTO wxaccesstokendto) {
         return ResponseEntity.status(HttpStatus.OK).body(wxaccesstokenService.save(wxaccesstokenMapping.toDomain(wxaccesstokendto)));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"WXAccessToken" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/wxaccesstokens/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<WXAccessTokenDTO> wxaccesstokendtos) {
         wxaccesstokenService.saveBatch(wxaccesstokenMapping.toDomain(wxaccesstokendtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission('','Create',{'Sql',this.wxaccesstokenMapping,#wxaccesstokendto})")
     @ApiOperation(value = "Create", tags = {"WXAccessToken" },  notes = "Create")
@@ -129,15 +116,13 @@ public class WXAccessTokenResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatch", tags = {"WXAccessToken" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/wxaccesstokens/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<WXAccessTokenDTO> wxaccesstokendtos) {
         wxaccesstokenService.createBatch(wxaccesstokenMapping.toDomain(wxaccesstokendtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#wxaccesstoken_id,'Remove',{'Sql',this.wxaccesstokenMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"WXAccessToken" },  notes = "Remove")
@@ -147,6 +132,7 @@ public class WXAccessTokenResource {
          return ResponseEntity.status(HttpStatus.OK).body(wxaccesstokenService.remove(wxaccesstoken_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"WXAccessToken" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/wxaccesstokens/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -154,17 +140,14 @@ public class WXAccessTokenResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WXAccessToken-GetDraft-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WXAccessToken-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"WXAccessToken" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/wxaccesstokens/getdraft")
     public ResponseEntity<WXAccessTokenDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(wxaccesstokenMapping.toDto(wxaccesstokenService.getDraft(new WXAccessToken())));
     }
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WXAccessToken-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WXAccessToken-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"WXAccessToken" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/wxaccesstokens/fetchdefault")
 	public ResponseEntity<List<WXAccessTokenDTO>> fetchDefault(WXAccessTokenSearchContext context) {
@@ -177,7 +160,7 @@ public class WXAccessTokenResource {
                 .body(list);
 	}
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WXAccessToken-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WXAccessToken-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"WXAccessToken" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/wxaccesstokens/searchdefault")
 	public ResponseEntity<Page<WXAccessTokenDTO>> searchDefault(@RequestBody WXAccessTokenSearchContext context) {
@@ -185,8 +168,4 @@ public class WXAccessTokenResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(wxaccesstokenMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
 }
-
-

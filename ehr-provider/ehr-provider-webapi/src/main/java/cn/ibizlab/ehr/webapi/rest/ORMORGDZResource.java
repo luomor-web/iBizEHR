@@ -54,9 +54,6 @@ public class ORMORGDZResource {
 
     public ORMORGDZDTO permissionDTO=new ORMORGDZDTO();
 
-
-
-
     @PreAuthorize("hasPermission(#ormorgdz_id,'Get',{'Sql',this.ormorgdzMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"ORMORGDZ" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/ormorgdzs/{ormorgdz_id}")
@@ -66,18 +63,12 @@ public class ORMORGDZResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMORGDZ-GetDraft-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMORGDZ-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"ORMORGDZ" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/ormorgdzs/getdraft")
     public ResponseEntity<ORMORGDZDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(ormorgdzMapping.toDto(ormorgdzService.getDraft(new ORMORGDZ())));
     }
-
-
-
 
     @PreAuthorize("hasPermission(#ormorgdz_id,'Remove',{'Sql',this.ormorgdzMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"ORMORGDZ" },  notes = "Remove")
@@ -87,6 +78,7 @@ public class ORMORGDZResource {
          return ResponseEntity.status(HttpStatus.OK).body(ormorgdzService.remove(ormorgdz_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"ORMORGDZ" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/ormorgdzs/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -94,25 +86,20 @@ public class ORMORGDZResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMORGDZ-Save-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMORGDZ-Save-all')")
     @ApiOperation(value = "Save", tags = {"ORMORGDZ" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormorgdzs/save")
     public ResponseEntity<Boolean> save(@RequestBody ORMORGDZDTO ormorgdzdto) {
         return ResponseEntity.status(HttpStatus.OK).body(ormorgdzService.save(ormorgdzMapping.toDomain(ormorgdzdto)));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"ORMORGDZ" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormorgdzs/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<ORMORGDZDTO> ormorgdzdtos) {
         ormorgdzService.saveBatch(ormorgdzMapping.toDomain(ormorgdzdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission('','Create',{'Sql',this.ormorgdzMapping,#ormorgdzdto})")
     @ApiOperation(value = "Create", tags = {"ORMORGDZ" },  notes = "Create")
@@ -125,15 +112,13 @@ public class ORMORGDZResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatch", tags = {"ORMORGDZ" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormorgdzs/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<ORMORGDZDTO> ormorgdzdtos) {
         ormorgdzService.createBatch(ormorgdzMapping.toDomain(ormorgdzdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#ormorgdz_id,'Update',{'Sql',this.ormorgdzMapping,#ormorgdzdto})")
     @ApiOperation(value = "Update", tags = {"ORMORGDZ" },  notes = "Update")
@@ -147,6 +132,7 @@ public class ORMORGDZResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"ORMORGDZ" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/ormorgdzs/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<ORMORGDZDTO> ormorgdzdtos) {
@@ -154,17 +140,14 @@ public class ORMORGDZResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMORGDZ-CheckKey-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMORGDZ-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"ORMORGDZ" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormorgdzs/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody ORMORGDZDTO ormorgdzdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(ormorgdzService.checkKey(ormorgdzMapping.toDomain(ormorgdzdto)));
     }
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMORGDZ-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMORGDZ-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"ORMORGDZ" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/ormorgdzs/fetchdefault")
 	public ResponseEntity<List<ORMORGDZDTO>> fetchDefault(ORMORGDZSearchContext context) {
@@ -177,7 +160,7 @@ public class ORMORGDZResource {
                 .body(list);
 	}
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMORGDZ-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMORGDZ-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"ORMORGDZ" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/ormorgdzs/searchdefault")
 	public ResponseEntity<Page<ORMORGDZDTO>> searchDefault(@RequestBody ORMORGDZSearchContext context) {
@@ -185,8 +168,4 @@ public class ORMORGDZResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(ormorgdzMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
 }
-
-

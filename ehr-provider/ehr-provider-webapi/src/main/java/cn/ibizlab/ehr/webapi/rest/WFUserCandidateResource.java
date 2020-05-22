@@ -54,9 +54,6 @@ public class WFUserCandidateResource {
 
     public WFUserCandidateDTO permissionDTO=new WFUserCandidateDTO();
 
-
-
-
     @PreAuthorize("hasPermission(#wfusercandidate_id,'Get',{'Sql',this.wfusercandidateMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"WFUserCandidate" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/wfusercandidates/{wfusercandidate_id}")
@@ -65,9 +62,6 @@ public class WFUserCandidateResource {
         WFUserCandidateDTO dto = wfusercandidateMapping.toDto(domain);
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
-
-
 
     @PreAuthorize("hasPermission('','Create',{'Sql',this.wfusercandidateMapping,#wfusercandidatedto})")
     @ApiOperation(value = "Create", tags = {"WFUserCandidate" },  notes = "Create")
@@ -80,15 +74,13 @@ public class WFUserCandidateResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatch", tags = {"WFUserCandidate" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/wfusercandidates/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<WFUserCandidateDTO> wfusercandidatedtos) {
         wfusercandidateService.createBatch(wfusercandidateMapping.toDomain(wfusercandidatedtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#wfusercandidate_id,'Remove',{'Sql',this.wfusercandidateMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"WFUserCandidate" },  notes = "Remove")
@@ -98,15 +90,13 @@ public class WFUserCandidateResource {
          return ResponseEntity.status(HttpStatus.OK).body(wfusercandidateService.remove(wfusercandidate_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"WFUserCandidate" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/wfusercandidates/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         wfusercandidateService.removeBatch(ids);
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#wfusercandidate_id,'Update',{'Sql',this.wfusercandidateMapping,#wfusercandidatedto})")
     @ApiOperation(value = "Update", tags = {"WFUserCandidate" },  notes = "Update")
@@ -120,6 +110,7 @@ public class WFUserCandidateResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"WFUserCandidate" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/wfusercandidates/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<WFUserCandidateDTO> wfusercandidatedtos) {
@@ -127,16 +118,14 @@ public class WFUserCandidateResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFUserCandidate-Save-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFUserCandidate-Save-all')")
     @ApiOperation(value = "Save", tags = {"WFUserCandidate" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/wfusercandidates/save")
     public ResponseEntity<Boolean> save(@RequestBody WFUserCandidateDTO wfusercandidatedto) {
         return ResponseEntity.status(HttpStatus.OK).body(wfusercandidateService.save(wfusercandidateMapping.toDomain(wfusercandidatedto)));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"WFUserCandidate" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/wfusercandidates/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<WFUserCandidateDTO> wfusercandidatedtos) {
@@ -144,27 +133,21 @@ public class WFUserCandidateResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFUserCandidate-GetDraft-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFUserCandidate-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"WFUserCandidate" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/wfusercandidates/getdraft")
     public ResponseEntity<WFUserCandidateDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(wfusercandidateMapping.toDto(wfusercandidateService.getDraft(new WFUserCandidate())));
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFUserCandidate-CheckKey-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFUserCandidate-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"WFUserCandidate" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/wfusercandidates/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody WFUserCandidateDTO wfusercandidatedto) {
         return  ResponseEntity.status(HttpStatus.OK).body(wfusercandidateService.checkKey(wfusercandidateMapping.toDomain(wfusercandidatedto)));
     }
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFUserCandidate-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFUserCandidate-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"WFUserCandidate" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/wfusercandidates/fetchdefault")
 	public ResponseEntity<List<WFUserCandidateDTO>> fetchDefault(WFUserCandidateSearchContext context) {
@@ -177,7 +160,7 @@ public class WFUserCandidateResource {
                 .body(list);
 	}
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFUserCandidate-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFUserCandidate-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"WFUserCandidate" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/wfusercandidates/searchdefault")
 	public ResponseEntity<Page<WFUserCandidateDTO>> searchDefault(@RequestBody WFUserCandidateSearchContext context) {
@@ -185,8 +168,4 @@ public class WFUserCandidateResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(wfusercandidateMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
 }
-
-

@@ -85,7 +85,7 @@
 
     <!--数据查询[REP_OUTPUT]-->
     <sql id="REP_OUTPUT" databaseId="mysql">
-       <![CDATA[	
+       <![CDATA[	select outdate ,output/10000 as outnum from BIS_PIMOUTPUT_T t  where  timestampdiff(month,outdate,sysdate())>0 and timestampdiff(month,outdate,sysdate())<=12
 			]]>
     </sql>
 

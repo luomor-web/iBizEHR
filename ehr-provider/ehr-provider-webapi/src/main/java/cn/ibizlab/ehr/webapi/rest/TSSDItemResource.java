@@ -54,9 +54,6 @@ public class TSSDItemResource {
 
     public TSSDItemDTO permissionDTO=new TSSDItemDTO();
 
-
-
-
     @PreAuthorize("hasPermission('','Create',{'Sql',this.tssditemMapping,#tssditemdto})")
     @ApiOperation(value = "Create", tags = {"TSSDItem" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/tssditems")
@@ -68,15 +65,13 @@ public class TSSDItemResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatch", tags = {"TSSDItem" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/tssditems/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<TSSDItemDTO> tssditemdtos) {
         tssditemService.createBatch(tssditemMapping.toDomain(tssditemdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#tssditem_id,'Remove',{'Sql',this.tssditemMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"TSSDItem" },  notes = "Remove")
@@ -86,6 +81,7 @@ public class TSSDItemResource {
          return ResponseEntity.status(HttpStatus.OK).body(tssditemService.remove(tssditem_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"TSSDItem" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/tssditems/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -93,28 +89,19 @@ public class TSSDItemResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TSSDItem-CheckKey-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TSSDItem-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"TSSDItem" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/tssditems/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody TSSDItemDTO tssditemdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(tssditemService.checkKey(tssditemMapping.toDomain(tssditemdto)));
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TSSDItem-GetDraft-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TSSDItem-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"TSSDItem" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/tssditems/getdraft")
     public ResponseEntity<TSSDItemDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(tssditemMapping.toDto(tssditemService.getDraft(new TSSDItem())));
     }
-
-
-
 
     @PreAuthorize("hasPermission(#tssditem_id,'Get',{'Sql',this.tssditemMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"TSSDItem" },  notes = "Get")
@@ -124,9 +111,6 @@ public class TSSDItemResource {
         TSSDItemDTO dto = tssditemMapping.toDto(domain);
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#tssditem_id,'Update',{'Sql',this.tssditemMapping,#tssditemdto})")
     @ApiOperation(value = "Update", tags = {"TSSDItem" },  notes = "Update")
@@ -140,6 +124,7 @@ public class TSSDItemResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"TSSDItem" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/tssditems/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<TSSDItemDTO> tssditemdtos) {
@@ -147,16 +132,14 @@ public class TSSDItemResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TSSDItem-Save-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TSSDItem-Save-all')")
     @ApiOperation(value = "Save", tags = {"TSSDItem" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/tssditems/save")
     public ResponseEntity<Boolean> save(@RequestBody TSSDItemDTO tssditemdto) {
         return ResponseEntity.status(HttpStatus.OK).body(tssditemService.save(tssditemMapping.toDomain(tssditemdto)));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"TSSDItem" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/tssditems/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<TSSDItemDTO> tssditemdtos) {
@@ -164,7 +147,7 @@ public class TSSDItemResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TSSDItem-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TSSDItem-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"TSSDItem" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/tssditems/fetchdefault")
 	public ResponseEntity<List<TSSDItemDTO>> fetchDefault(TSSDItemSearchContext context) {
@@ -177,7 +160,7 @@ public class TSSDItemResource {
                 .body(list);
 	}
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TSSDItem-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TSSDItem-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"TSSDItem" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/tssditems/searchdefault")
 	public ResponseEntity<Page<TSSDItemDTO>> searchDefault(@RequestBody TSSDItemSearchContext context) {
@@ -185,8 +168,4 @@ public class TSSDItemResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(tssditemMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
 }
-
-

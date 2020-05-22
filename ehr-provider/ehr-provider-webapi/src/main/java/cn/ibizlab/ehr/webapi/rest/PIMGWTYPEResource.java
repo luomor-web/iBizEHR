@@ -54,16 +54,14 @@ public class PIMGWTYPEResource {
 
     public PIMGWTYPEDTO permissionDTO=new PIMGWTYPEDTO();
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMGWTYPE-Save-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMGWTYPE-Save-all')")
     @ApiOperation(value = "Save", tags = {"PIMGWTYPE" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimgwtypes/save")
     public ResponseEntity<Boolean> save(@RequestBody PIMGWTYPEDTO pimgwtypedto) {
         return ResponseEntity.status(HttpStatus.OK).body(pimgwtypeService.save(pimgwtypeMapping.toDomain(pimgwtypedto)));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"PIMGWTYPE" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimgwtypes/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PIMGWTYPEDTO> pimgwtypedtos) {
@@ -71,18 +69,12 @@ public class PIMGWTYPEResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMGWTYPE-GetDraft-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMGWTYPE-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"PIMGWTYPE" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimgwtypes/getdraft")
     public ResponseEntity<PIMGWTYPEDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(pimgwtypeMapping.toDto(pimgwtypeService.getDraft(new PIMGWTYPE())));
     }
-
-
-
 
     @PreAuthorize("hasPermission(#pimgwtype_id,'Get',{'Sql',this.pimgwtypeMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"PIMGWTYPE" },  notes = "Get")
@@ -93,9 +85,6 @@ public class PIMGWTYPEResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-
-
-
     @PreAuthorize("hasPermission(#pimgwtype_id,'Remove',{'Sql',this.pimgwtypeMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"PIMGWTYPE" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimgwtypes/{pimgwtype_id}")
@@ -104,6 +93,7 @@ public class PIMGWTYPEResource {
          return ResponseEntity.status(HttpStatus.OK).body(pimgwtypeService.remove(pimgwtype_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"PIMGWTYPE" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimgwtypes/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -111,18 +101,12 @@ public class PIMGWTYPEResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMGWTYPE-CheckKey-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMGWTYPE-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"PIMGWTYPE" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimgwtypes/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PIMGWTYPEDTO pimgwtypedto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pimgwtypeService.checkKey(pimgwtypeMapping.toDomain(pimgwtypedto)));
     }
-
-
-
 
     @PreAuthorize("hasPermission(#pimgwtype_id,'Update',{'Sql',this.pimgwtypeMapping,#pimgwtypedto})")
     @ApiOperation(value = "Update", tags = {"PIMGWTYPE" },  notes = "Update")
@@ -136,15 +120,13 @@ public class PIMGWTYPEResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"PIMGWTYPE" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimgwtypes/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PIMGWTYPEDTO> pimgwtypedtos) {
         pimgwtypeService.updateBatch(pimgwtypeMapping.toDomain(pimgwtypedtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission('','Create',{'Sql',this.pimgwtypeMapping,#pimgwtypedto})")
     @ApiOperation(value = "Create", tags = {"PIMGWTYPE" },  notes = "Create")
@@ -157,6 +139,7 @@ public class PIMGWTYPEResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatch", tags = {"PIMGWTYPE" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimgwtypes/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PIMGWTYPEDTO> pimgwtypedtos) {
@@ -164,7 +147,7 @@ public class PIMGWTYPEResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMGWTYPE-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMGWTYPE-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PIMGWTYPE" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimgwtypes/fetchdefault")
 	public ResponseEntity<List<PIMGWTYPEDTO>> fetchDefault(PIMGWTYPESearchContext context) {
@@ -177,7 +160,7 @@ public class PIMGWTYPEResource {
                 .body(list);
 	}
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMGWTYPE-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMGWTYPE-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PIMGWTYPE" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pimgwtypes/searchdefault")
 	public ResponseEntity<Page<PIMGWTYPEDTO>> searchDefault(@RequestBody PIMGWTYPESearchContext context) {
@@ -185,8 +168,4 @@ public class PIMGWTYPEResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimgwtypeMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
 }
-
-

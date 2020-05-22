@@ -54,9 +54,6 @@ public class ORMPostDetailsResource {
 
     public ORMPostDetailsDTO permissionDTO=new ORMPostDetailsDTO();
 
-
-
-
     @PreAuthorize("hasPermission('','Create',{'Sql',this.ormpostdetailsMapping,#ormpostdetailsdto})")
     @ApiOperation(value = "Create", tags = {"ORMPostDetails" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormpostdetails")
@@ -68,15 +65,13 @@ public class ORMPostDetailsResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatch", tags = {"ORMPostDetails" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormpostdetails/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<ORMPostDetailsDTO> ormpostdetailsdtos) {
         ormpostdetailsService.createBatch(ormpostdetailsMapping.toDomain(ormpostdetailsdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#ormpostdetails_id,'Get',{'Sql',this.ormpostdetailsMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"ORMPostDetails" },  notes = "Get")
@@ -87,18 +82,12 @@ public class ORMPostDetailsResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMPostDetails-CheckKey-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMPostDetails-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"ORMPostDetails" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormpostdetails/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody ORMPostDetailsDTO ormpostdetailsdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(ormpostdetailsService.checkKey(ormpostdetailsMapping.toDomain(ormpostdetailsdto)));
     }
-
-
-
 
     @PreAuthorize("hasPermission(#ormpostdetails_id,'Update',{'Sql',this.ormpostdetailsMapping,#ormpostdetailsdto})")
     @ApiOperation(value = "Update", tags = {"ORMPostDetails" },  notes = "Update")
@@ -112,6 +101,7 @@ public class ORMPostDetailsResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"ORMPostDetails" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/ormpostdetails/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<ORMPostDetailsDTO> ormpostdetailsdtos) {
@@ -119,35 +109,27 @@ public class ORMPostDetailsResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMPostDetails-GetDraft-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMPostDetails-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"ORMPostDetails" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/ormpostdetails/getdraft")
     public ResponseEntity<ORMPostDetailsDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(ormpostdetailsMapping.toDto(ormpostdetailsService.getDraft(new ORMPostDetails())));
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMPostDetails-Save-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMPostDetails-Save-all')")
     @ApiOperation(value = "Save", tags = {"ORMPostDetails" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormpostdetails/save")
     public ResponseEntity<Boolean> save(@RequestBody ORMPostDetailsDTO ormpostdetailsdto) {
         return ResponseEntity.status(HttpStatus.OK).body(ormpostdetailsService.save(ormpostdetailsMapping.toDomain(ormpostdetailsdto)));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"ORMPostDetails" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormpostdetails/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<ORMPostDetailsDTO> ormpostdetailsdtos) {
         ormpostdetailsService.saveBatch(ormpostdetailsMapping.toDomain(ormpostdetailsdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#ormpostdetails_id,'Remove',{'Sql',this.ormpostdetailsMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"ORMPostDetails" },  notes = "Remove")
@@ -157,6 +139,7 @@ public class ORMPostDetailsResource {
          return ResponseEntity.status(HttpStatus.OK).body(ormpostdetailsService.remove(ormpostdetails_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"ORMPostDetails" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/ormpostdetails/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -164,7 +147,7 @@ public class ORMPostDetailsResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMPostDetails-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMPostDetails-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"ORMPostDetails" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/ormpostdetails/fetchdefault")
 	public ResponseEntity<List<ORMPostDetailsDTO>> fetchDefault(ORMPostDetailsSearchContext context) {
@@ -177,7 +160,7 @@ public class ORMPostDetailsResource {
                 .body(list);
 	}
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMPostDetails-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMPostDetails-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"ORMPostDetails" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/ormpostdetails/searchdefault")
 	public ResponseEntity<Page<ORMPostDetailsDTO>> searchDefault(@RequestBody ORMPostDetailsSearchContext context) {
@@ -185,8 +168,4 @@ public class ORMPostDetailsResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(ormpostdetailsMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
 }
-
-

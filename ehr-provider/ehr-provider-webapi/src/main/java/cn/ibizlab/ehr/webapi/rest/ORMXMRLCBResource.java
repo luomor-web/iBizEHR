@@ -54,9 +54,6 @@ public class ORMXMRLCBResource {
 
     public ORMXMRLCBDTO permissionDTO=new ORMXMRLCBDTO();
 
-
-
-
     @PreAuthorize("hasPermission('','Create',{'Sql',this.ormxmrlcbMapping,#ormxmrlcbdto})")
     @ApiOperation(value = "Create", tags = {"ORMXMRLCB" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormxmrlcbs")
@@ -68,15 +65,13 @@ public class ORMXMRLCBResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatch", tags = {"ORMXMRLCB" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormxmrlcbs/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<ORMXMRLCBDTO> ormxmrlcbdtos) {
         ormxmrlcbService.createBatch(ormxmrlcbMapping.toDomain(ormxmrlcbdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#ormxmrlcb_id,'Remove',{'Sql',this.ormxmrlcbMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"ORMXMRLCB" },  notes = "Remove")
@@ -86,15 +81,13 @@ public class ORMXMRLCBResource {
          return ResponseEntity.status(HttpStatus.OK).body(ormxmrlcbService.remove(ormxmrlcb_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"ORMXMRLCB" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/ormxmrlcbs/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         ormxmrlcbService.removeBatch(ids);
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#ormxmrlcb_id,'Update',{'Sql',this.ormxmrlcbMapping,#ormxmrlcbdto})")
     @ApiOperation(value = "Update", tags = {"ORMXMRLCB" },  notes = "Update")
@@ -108,6 +101,7 @@ public class ORMXMRLCBResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"ORMXMRLCB" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/ormxmrlcbs/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<ORMXMRLCBDTO> ormxmrlcbdtos) {
@@ -115,26 +109,21 @@ public class ORMXMRLCBResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMXMRLCB-CheckKey-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMXMRLCB-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"ORMXMRLCB" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormxmrlcbs/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody ORMXMRLCBDTO ormxmrlcbdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(ormxmrlcbService.checkKey(ormxmrlcbMapping.toDomain(ormxmrlcbdto)));
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMXMRLCB-Save-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMXMRLCB-Save-all')")
     @ApiOperation(value = "Save", tags = {"ORMXMRLCB" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormxmrlcbs/save")
     public ResponseEntity<Boolean> save(@RequestBody ORMXMRLCBDTO ormxmrlcbdto) {
         return ResponseEntity.status(HttpStatus.OK).body(ormxmrlcbService.save(ormxmrlcbMapping.toDomain(ormxmrlcbdto)));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"ORMXMRLCB" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormxmrlcbs/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<ORMXMRLCBDTO> ormxmrlcbdtos) {
@@ -142,18 +131,12 @@ public class ORMXMRLCBResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMXMRLCB-GetDraft-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMXMRLCB-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"ORMXMRLCB" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/ormxmrlcbs/getdraft")
     public ResponseEntity<ORMXMRLCBDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(ormxmrlcbMapping.toDto(ormxmrlcbService.getDraft(new ORMXMRLCB())));
     }
-
-
-
 
     @PreAuthorize("hasPermission(#ormxmrlcb_id,'Get',{'Sql',this.ormxmrlcbMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"ORMXMRLCB" },  notes = "Get")
@@ -164,7 +147,7 @@ public class ORMXMRLCBResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMXMRLCB-CBCX-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMXMRLCB-CBCX-all')")
 	@ApiOperation(value = "fetch项目人工成本查询", tags = {"ORMXMRLCB" } ,notes = "fetch项目人工成本查询")
     @RequestMapping(method= RequestMethod.GET , value="/ormxmrlcbs/fetchcbcx")
 	public ResponseEntity<List<ORMXMRLCBDTO>> fetchCBCX(ORMXMRLCBSearchContext context) {
@@ -177,7 +160,7 @@ public class ORMXMRLCBResource {
                 .body(list);
 	}
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMXMRLCB-CBCX-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMXMRLCB-CBCX-all')")
 	@ApiOperation(value = "search项目人工成本查询", tags = {"ORMXMRLCB" } ,notes = "search项目人工成本查询")
     @RequestMapping(method= RequestMethod.POST , value="/ormxmrlcbs/searchcbcx")
 	public ResponseEntity<Page<ORMXMRLCBDTO>> searchCBCX(@RequestBody ORMXMRLCBSearchContext context) {
@@ -185,8 +168,7 @@ public class ORMXMRLCBResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(ormxmrlcbMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMXMRLCB-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMXMRLCB-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"ORMXMRLCB" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/ormxmrlcbs/fetchdefault")
 	public ResponseEntity<List<ORMXMRLCBDTO>> fetchDefault(ORMXMRLCBSearchContext context) {
@@ -199,7 +181,7 @@ public class ORMXMRLCBResource {
                 .body(list);
 	}
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMXMRLCB-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMXMRLCB-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"ORMXMRLCB" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/ormxmrlcbs/searchdefault")
 	public ResponseEntity<Page<ORMXMRLCBDTO>> searchDefault(@RequestBody ORMXMRLCBSearchContext context) {
@@ -207,8 +189,4 @@ public class ORMXMRLCBResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(ormxmrlcbMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
 }
-
-

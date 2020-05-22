@@ -54,18 +54,12 @@ public class PARLDKHQZResource {
 
     public PARLDKHQZDTO permissionDTO=new PARLDKHQZDTO();
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PARLDKHQZ-CheckKey-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PARLDKHQZ-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"PARLDKHQZ" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/parldkhqzs/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PARLDKHQZDTO parldkhqzdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(parldkhqzService.checkKey(parldkhqzMapping.toDomain(parldkhqzdto)));
     }
-
-
-
 
     @PreAuthorize("hasPermission('','Create',{'Sql',this.parldkhqzMapping,#parldkhqzdto})")
     @ApiOperation(value = "Create", tags = {"PARLDKHQZ" },  notes = "Create")
@@ -78,6 +72,7 @@ public class PARLDKHQZResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatch", tags = {"PARLDKHQZ" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/parldkhqzs/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PARLDKHQZDTO> parldkhqzdtos) {
@@ -85,18 +80,12 @@ public class PARLDKHQZResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PARLDKHQZ-GetDraft-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PARLDKHQZ-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"PARLDKHQZ" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/parldkhqzs/getdraft")
     public ResponseEntity<PARLDKHQZDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(parldkhqzMapping.toDto(parldkhqzService.getDraft(new PARLDKHQZ())));
     }
-
-
-
 
     @PreAuthorize("hasPermission(#parldkhqz_id,'Get',{'Sql',this.parldkhqzMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"PARLDKHQZ" },  notes = "Get")
@@ -107,9 +96,6 @@ public class PARLDKHQZResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-
-
-
     @PreAuthorize("hasPermission(#parldkhqz_id,'Remove',{'Sql',this.parldkhqzMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"PARLDKHQZ" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/parldkhqzs/{parldkhqz_id}")
@@ -118,6 +104,7 @@ public class PARLDKHQZResource {
          return ResponseEntity.status(HttpStatus.OK).body(parldkhqzService.remove(parldkhqz_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"PARLDKHQZ" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/parldkhqzs/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -125,25 +112,20 @@ public class PARLDKHQZResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PARLDKHQZ-Save-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PARLDKHQZ-Save-all')")
     @ApiOperation(value = "Save", tags = {"PARLDKHQZ" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/parldkhqzs/save")
     public ResponseEntity<Boolean> save(@RequestBody PARLDKHQZDTO parldkhqzdto) {
         return ResponseEntity.status(HttpStatus.OK).body(parldkhqzService.save(parldkhqzMapping.toDomain(parldkhqzdto)));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"PARLDKHQZ" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/parldkhqzs/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PARLDKHQZDTO> parldkhqzdtos) {
         parldkhqzService.saveBatch(parldkhqzMapping.toDomain(parldkhqzdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#parldkhqz_id,'Update',{'Sql',this.parldkhqzMapping,#parldkhqzdto})")
     @ApiOperation(value = "Update", tags = {"PARLDKHQZ" },  notes = "Update")
@@ -157,6 +139,7 @@ public class PARLDKHQZResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"PARLDKHQZ" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/parldkhqzs/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PARLDKHQZDTO> parldkhqzdtos) {
@@ -164,7 +147,7 @@ public class PARLDKHQZResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PARLDKHQZ-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PARLDKHQZ-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PARLDKHQZ" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/parldkhqzs/fetchdefault")
 	public ResponseEntity<List<PARLDKHQZDTO>> fetchDefault(PARLDKHQZSearchContext context) {
@@ -177,7 +160,7 @@ public class PARLDKHQZResource {
                 .body(list);
 	}
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PARLDKHQZ-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PARLDKHQZ-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PARLDKHQZ" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/parldkhqzs/searchdefault")
 	public ResponseEntity<Page<PARLDKHQZDTO>> searchDefault(@RequestBody PARLDKHQZSearchContext context) {
@@ -185,8 +168,4 @@ public class PARLDKHQZResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(parldkhqzMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
 }
-
-

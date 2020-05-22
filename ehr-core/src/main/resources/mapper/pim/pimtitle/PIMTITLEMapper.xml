@@ -129,7 +129,7 @@
 
     <!--数据查询[REP_TITLE]-->
     <sql id="REP_TITLE" databaseId="mysql">
-       <![CDATA[	
+       <![CDATA[	select PROFESSOR_TYPE,count(1) as countnum from BIS_PROFESSORANALYSIS_T group by PROFESSOR_TYPE
 			]]>
     </sql>
 

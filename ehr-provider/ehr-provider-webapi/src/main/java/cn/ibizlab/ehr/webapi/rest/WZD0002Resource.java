@@ -54,9 +54,6 @@ public class WZD0002Resource {
 
     public WZD0002DTO permissionDTO=new WZD0002DTO();
 
-
-
-
     @PreAuthorize("hasPermission(#wzd0002_id,'Remove',{'Sql',this.wzd0002Mapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"WZD0002" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/wzd0002s/{wzd0002_id}")
@@ -65,6 +62,7 @@ public class WZD0002Resource {
          return ResponseEntity.status(HttpStatus.OK).body(wzd0002Service.remove(wzd0002_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"WZD0002" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/wzd0002s/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -72,16 +70,14 @@ public class WZD0002Resource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WZD0002-Save-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WZD0002-Save-all')")
     @ApiOperation(value = "Save", tags = {"WZD0002" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/wzd0002s/save")
     public ResponseEntity<Boolean> save(@RequestBody WZD0002DTO wzd0002dto) {
         return ResponseEntity.status(HttpStatus.OK).body(wzd0002Service.save(wzd0002Mapping.toDomain(wzd0002dto)));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"WZD0002" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/wzd0002s/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<WZD0002DTO> wzd0002dtos) {
@@ -89,28 +85,19 @@ public class WZD0002Resource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WZD0002-GetDraft-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WZD0002-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"WZD0002" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/wzd0002s/getdraft")
     public ResponseEntity<WZD0002DTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(wzd0002Mapping.toDto(wzd0002Service.getDraft(new WZD0002())));
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WZD0002-CheckKey-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WZD0002-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"WZD0002" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/wzd0002s/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody WZD0002DTO wzd0002dto) {
         return  ResponseEntity.status(HttpStatus.OK).body(wzd0002Service.checkKey(wzd0002Mapping.toDomain(wzd0002dto)));
     }
-
-
-
 
     @PreAuthorize("hasPermission(#wzd0002_id,'Get',{'Sql',this.wzd0002Mapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"WZD0002" },  notes = "Get")
@@ -120,9 +107,6 @@ public class WZD0002Resource {
         WZD0002DTO dto = wzd0002Mapping.toDto(domain);
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
-
-
-
 
     @PreAuthorize("hasPermission('','Create',{'Sql',this.wzd0002Mapping,#wzd0002dto})")
     @ApiOperation(value = "Create", tags = {"WZD0002" },  notes = "Create")
@@ -135,15 +119,13 @@ public class WZD0002Resource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatch", tags = {"WZD0002" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/wzd0002s/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<WZD0002DTO> wzd0002dtos) {
         wzd0002Service.createBatch(wzd0002Mapping.toDomain(wzd0002dtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#wzd0002_id,'Update',{'Sql',this.wzd0002Mapping,#wzd0002dto})")
     @ApiOperation(value = "Update", tags = {"WZD0002" },  notes = "Update")
@@ -157,6 +139,7 @@ public class WZD0002Resource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"WZD0002" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/wzd0002s/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<WZD0002DTO> wzd0002dtos) {
@@ -164,7 +147,7 @@ public class WZD0002Resource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WZD0002-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WZD0002-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"WZD0002" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/wzd0002s/fetchdefault")
 	public ResponseEntity<List<WZD0002DTO>> fetchDefault(WZD0002SearchContext context) {
@@ -177,7 +160,7 @@ public class WZD0002Resource {
                 .body(list);
 	}
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WZD0002-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WZD0002-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"WZD0002" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/wzd0002s/searchdefault")
 	public ResponseEntity<Page<WZD0002DTO>> searchDefault(@RequestBody WZD0002SearchContext context) {
@@ -185,8 +168,4 @@ public class WZD0002Resource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(wzd0002Mapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
 }
-
-

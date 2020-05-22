@@ -54,9 +54,6 @@ public class TRMGRADECADRESResource {
 
     public TRMGRADECADRESDTO permissionDTO=new TRMGRADECADRESDTO();
 
-
-
-
     @PreAuthorize("hasPermission(#trmgradecadres_id,'Update',{'Sql',this.trmgradecadresMapping,#trmgradecadresdto})")
     @ApiOperation(value = "Update", tags = {"TRMGRADECADRES" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/trmgradecadres/{trmgradecadres_id}")
@@ -69,6 +66,7 @@ public class TRMGRADECADRESResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"TRMGRADECADRES" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/trmgradecadres/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<TRMGRADECADRESDTO> trmgradecadresdtos) {
@@ -76,18 +74,12 @@ public class TRMGRADECADRESResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMGRADECADRES-CheckKey-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMGRADECADRES-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"TRMGRADECADRES" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmgradecadres/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody TRMGRADECADRESDTO trmgradecadresdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(trmgradecadresService.checkKey(trmgradecadresMapping.toDomain(trmgradecadresdto)));
     }
-
-
-
 
     @PreAuthorize("hasPermission(#trmgradecadres_id,'Remove',{'Sql',this.trmgradecadresMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"TRMGRADECADRES" },  notes = "Remove")
@@ -97,15 +89,13 @@ public class TRMGRADECADRESResource {
          return ResponseEntity.status(HttpStatus.OK).body(trmgradecadresService.remove(trmgradecadres_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"TRMGRADECADRES" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/trmgradecadres/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         trmgradecadresService.removeBatch(ids);
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission('','Create',{'Sql',this.trmgradecadresMapping,#trmgradecadresdto})")
     @ApiOperation(value = "Create", tags = {"TRMGRADECADRES" },  notes = "Create")
@@ -118,6 +108,7 @@ public class TRMGRADECADRESResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatch", tags = {"TRMGRADECADRES" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmgradecadres/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<TRMGRADECADRESDTO> trmgradecadresdtos) {
@@ -125,35 +116,27 @@ public class TRMGRADECADRESResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMGRADECADRES-GetDraft-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMGRADECADRES-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"TRMGRADECADRES" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/trmgradecadres/getdraft")
     public ResponseEntity<TRMGRADECADRESDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(trmgradecadresMapping.toDto(trmgradecadresService.getDraft(new TRMGRADECADRES())));
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMGRADECADRES-Save-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMGRADECADRES-Save-all')")
     @ApiOperation(value = "Save", tags = {"TRMGRADECADRES" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmgradecadres/save")
     public ResponseEntity<Boolean> save(@RequestBody TRMGRADECADRESDTO trmgradecadresdto) {
         return ResponseEntity.status(HttpStatus.OK).body(trmgradecadresService.save(trmgradecadresMapping.toDomain(trmgradecadresdto)));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"TRMGRADECADRES" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmgradecadres/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<TRMGRADECADRESDTO> trmgradecadresdtos) {
         trmgradecadresService.saveBatch(trmgradecadresMapping.toDomain(trmgradecadresdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#trmgradecadres_id,'Get',{'Sql',this.trmgradecadresMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"TRMGRADECADRES" },  notes = "Get")
@@ -164,7 +147,7 @@ public class TRMGRADECADRESResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMGRADECADRES-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMGRADECADRES-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"TRMGRADECADRES" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/trmgradecadres/fetchdefault")
 	public ResponseEntity<List<TRMGRADECADRESDTO>> fetchDefault(TRMGRADECADRESSearchContext context) {
@@ -177,7 +160,7 @@ public class TRMGRADECADRESResource {
                 .body(list);
 	}
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMGRADECADRES-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMGRADECADRES-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"TRMGRADECADRES" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/trmgradecadres/searchdefault")
 	public ResponseEntity<Page<TRMGRADECADRESDTO>> searchDefault(@RequestBody TRMGRADECADRESSearchContext context) {
@@ -185,8 +168,4 @@ public class TRMGRADECADRESResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(trmgradecadresMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
 }
-
-

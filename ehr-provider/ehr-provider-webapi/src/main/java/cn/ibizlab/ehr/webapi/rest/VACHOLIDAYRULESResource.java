@@ -54,10 +54,7 @@ public class VACHOLIDAYRULESResource {
 
     public VACHOLIDAYRULESDTO permissionDTO=new VACHOLIDAYRULESDTO();
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACHOLIDAYRULES-CopyKQGZData-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACHOLIDAYRULES-CopyKQGZData-all')")
     @ApiOperation(value = "拷贝考勤规则", tags = {"VACHOLIDAYRULES" },  notes = "拷贝考勤规则")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacholidayrules/{vacholidayrules_id}/copykqgzdata")
     @Transactional
@@ -68,9 +65,6 @@ public class VACHOLIDAYRULESResource {
         return ResponseEntity.status(HttpStatus.OK).body(vacholidayrulesdto);
     }
 
-
-
-
     @PreAuthorize("hasPermission(#vacholidayrules_id,'Remove',{'Sql',this.vacholidayrulesMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"VACHOLIDAYRULES" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/vacholidayrules/{vacholidayrules_id}")
@@ -79,6 +73,7 @@ public class VACHOLIDAYRULESResource {
          return ResponseEntity.status(HttpStatus.OK).body(vacholidayrulesService.remove(vacholidayrules_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"VACHOLIDAYRULES" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/vacholidayrules/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -86,18 +81,12 @@ public class VACHOLIDAYRULESResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACHOLIDAYRULES-CheckKey-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACHOLIDAYRULES-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"VACHOLIDAYRULES" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacholidayrules/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody VACHOLIDAYRULESDTO vacholidayrulesdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(vacholidayrulesService.checkKey(vacholidayrulesMapping.toDomain(vacholidayrulesdto)));
     }
-
-
-
 
     @PreAuthorize("hasPermission('','Create',{'Sql',this.vacholidayrulesMapping,#vacholidayrulesdto})")
     @ApiOperation(value = "Create", tags = {"VACHOLIDAYRULES" },  notes = "Create")
@@ -110,6 +99,7 @@ public class VACHOLIDAYRULESResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatch", tags = {"VACHOLIDAYRULES" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacholidayrules/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<VACHOLIDAYRULESDTO> vacholidayrulesdtos) {
@@ -117,18 +107,12 @@ public class VACHOLIDAYRULESResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACHOLIDAYRULES-GetDraft-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACHOLIDAYRULES-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"VACHOLIDAYRULES" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/vacholidayrules/getdraft")
     public ResponseEntity<VACHOLIDAYRULESDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(vacholidayrulesMapping.toDto(vacholidayrulesService.getDraft(new VACHOLIDAYRULES())));
     }
-
-
-
 
     @PreAuthorize("hasPermission(#vacholidayrules_id,'Update',{'Sql',this.vacholidayrulesMapping,#vacholidayrulesdto})")
     @ApiOperation(value = "Update", tags = {"VACHOLIDAYRULES" },  notes = "Update")
@@ -142,15 +126,13 @@ public class VACHOLIDAYRULESResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"VACHOLIDAYRULES" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/vacholidayrules/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<VACHOLIDAYRULESDTO> vacholidayrulesdtos) {
         vacholidayrulesService.updateBatch(vacholidayrulesMapping.toDomain(vacholidayrulesdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#vacholidayrules_id,'Get',{'Sql',this.vacholidayrulesMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"VACHOLIDAYRULES" },  notes = "Get")
@@ -161,16 +143,14 @@ public class VACHOLIDAYRULESResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACHOLIDAYRULES-Save-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACHOLIDAYRULES-Save-all')")
     @ApiOperation(value = "Save", tags = {"VACHOLIDAYRULES" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacholidayrules/save")
     public ResponseEntity<Boolean> save(@RequestBody VACHOLIDAYRULESDTO vacholidayrulesdto) {
         return ResponseEntity.status(HttpStatus.OK).body(vacholidayrulesService.save(vacholidayrulesMapping.toDomain(vacholidayrulesdto)));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"VACHOLIDAYRULES" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacholidayrules/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<VACHOLIDAYRULESDTO> vacholidayrulesdtos) {
@@ -178,7 +158,7 @@ public class VACHOLIDAYRULESResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACHOLIDAYRULES-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACHOLIDAYRULES-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"VACHOLIDAYRULES" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/vacholidayrules/fetchdefault")
 	public ResponseEntity<List<VACHOLIDAYRULESDTO>> fetchDefault(VACHOLIDAYRULESSearchContext context) {
@@ -191,7 +171,7 @@ public class VACHOLIDAYRULESResource {
                 .body(list);
 	}
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACHOLIDAYRULES-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACHOLIDAYRULES-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"VACHOLIDAYRULES" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/vacholidayrules/searchdefault")
 	public ResponseEntity<Page<VACHOLIDAYRULESDTO>> searchDefault(@RequestBody VACHOLIDAYRULESSearchContext context) {
@@ -199,8 +179,7 @@ public class VACHOLIDAYRULESResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(vacholidayrulesMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACHOLIDAYRULES-CurOrmorg-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACHOLIDAYRULES-CurOrmorg-all')")
 	@ApiOperation(value = "fetch当前组织下的假期规则", tags = {"VACHOLIDAYRULES" } ,notes = "fetch当前组织下的假期规则")
     @RequestMapping(method= RequestMethod.GET , value="/vacholidayrules/fetchcurormorg")
 	public ResponseEntity<List<VACHOLIDAYRULESDTO>> fetchCurOrmorg(VACHOLIDAYRULESSearchContext context) {
@@ -213,7 +192,7 @@ public class VACHOLIDAYRULESResource {
                 .body(list);
 	}
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACHOLIDAYRULES-CurOrmorg-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACHOLIDAYRULES-CurOrmorg-all')")
 	@ApiOperation(value = "search当前组织下的假期规则", tags = {"VACHOLIDAYRULES" } ,notes = "search当前组织下的假期规则")
     @RequestMapping(method= RequestMethod.POST , value="/vacholidayrules/searchcurormorg")
 	public ResponseEntity<Page<VACHOLIDAYRULESDTO>> searchCurOrmorg(@RequestBody VACHOLIDAYRULESSearchContext context) {
@@ -221,8 +200,4 @@ public class VACHOLIDAYRULESResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(vacholidayrulesMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
 }
-
-

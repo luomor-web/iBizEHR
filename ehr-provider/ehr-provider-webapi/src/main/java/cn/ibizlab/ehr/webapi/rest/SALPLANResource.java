@@ -54,9 +54,6 @@ public class SALPLANResource {
 
     public SALPLANDTO permissionDTO=new SALPLANDTO();
 
-
-
-
     @PreAuthorize("hasPermission('','Create',{'Sql',this.salplanMapping,#salplandto})")
     @ApiOperation(value = "Create", tags = {"SALPLAN" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/salplans")
@@ -68,15 +65,13 @@ public class SALPLANResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatch", tags = {"SALPLAN" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/salplans/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<SALPLANDTO> salplandtos) {
         salplanService.createBatch(salplanMapping.toDomain(salplandtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#salplan_id,'Remove',{'Sql',this.salplanMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"SALPLAN" },  notes = "Remove")
@@ -86,6 +81,7 @@ public class SALPLANResource {
          return ResponseEntity.status(HttpStatus.OK).body(salplanService.remove(salplan_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"SALPLAN" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/salplans/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -93,26 +89,21 @@ public class SALPLANResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALPLAN-CheckKey-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALPLAN-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"SALPLAN" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/salplans/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody SALPLANDTO salplandto) {
         return  ResponseEntity.status(HttpStatus.OK).body(salplanService.checkKey(salplanMapping.toDomain(salplandto)));
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALPLAN-Save-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALPLAN-Save-all')")
     @ApiOperation(value = "Save", tags = {"SALPLAN" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/salplans/save")
     public ResponseEntity<Boolean> save(@RequestBody SALPLANDTO salplandto) {
         return ResponseEntity.status(HttpStatus.OK).body(salplanService.save(salplanMapping.toDomain(salplandto)));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"SALPLAN" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/salplans/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<SALPLANDTO> salplandtos) {
@@ -120,18 +111,12 @@ public class SALPLANResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALPLAN-GetDraft-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALPLAN-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"SALPLAN" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/salplans/getdraft")
     public ResponseEntity<SALPLANDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(salplanMapping.toDto(salplanService.getDraft(new SALPLAN())));
     }
-
-
-
 
     @PreAuthorize("hasPermission(#salplan_id,'Update',{'Sql',this.salplanMapping,#salplandto})")
     @ApiOperation(value = "Update", tags = {"SALPLAN" },  notes = "Update")
@@ -145,15 +130,13 @@ public class SALPLANResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"SALPLAN" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/salplans/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<SALPLANDTO> salplandtos) {
         salplanService.updateBatch(salplanMapping.toDomain(salplandtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#salplan_id,'Get',{'Sql',this.salplanMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"SALPLAN" },  notes = "Get")
@@ -164,7 +147,7 @@ public class SALPLANResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALPLAN-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALPLAN-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"SALPLAN" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/salplans/fetchdefault")
 	public ResponseEntity<List<SALPLANDTO>> fetchDefault(SALPLANSearchContext context) {
@@ -177,7 +160,7 @@ public class SALPLANResource {
                 .body(list);
 	}
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALPLAN-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALPLAN-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"SALPLAN" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/salplans/searchdefault")
 	public ResponseEntity<Page<SALPLANDTO>> searchDefault(@RequestBody SALPLANSearchContext context) {
@@ -185,8 +168,4 @@ public class SALPLANResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(salplanMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
 }
-
-

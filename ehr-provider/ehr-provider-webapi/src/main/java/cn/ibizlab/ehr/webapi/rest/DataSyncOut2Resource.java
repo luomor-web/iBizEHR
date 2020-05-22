@@ -54,9 +54,6 @@ public class DataSyncOut2Resource {
 
     public DataSyncOut2DTO permissionDTO=new DataSyncOut2DTO();
 
-
-
-
     @PreAuthorize("hasPermission(#datasyncout2_id,'Update',{'Sql',this.datasyncout2Mapping,#datasyncout2dto})")
     @ApiOperation(value = "Update", tags = {"DataSyncOut2" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/datasyncout2s/{datasyncout2_id}")
@@ -69,6 +66,7 @@ public class DataSyncOut2Resource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"DataSyncOut2" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/datasyncout2s/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<DataSyncOut2DTO> datasyncout2dtos) {
@@ -76,35 +74,27 @@ public class DataSyncOut2Resource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DataSyncOut2-GetDraft-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DataSyncOut2-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"DataSyncOut2" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/datasyncout2s/getdraft")
     public ResponseEntity<DataSyncOut2DTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(datasyncout2Mapping.toDto(datasyncout2Service.getDraft(new DataSyncOut2())));
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DataSyncOut2-Save-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DataSyncOut2-Save-all')")
     @ApiOperation(value = "Save", tags = {"DataSyncOut2" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/datasyncout2s/save")
     public ResponseEntity<Boolean> save(@RequestBody DataSyncOut2DTO datasyncout2dto) {
         return ResponseEntity.status(HttpStatus.OK).body(datasyncout2Service.save(datasyncout2Mapping.toDomain(datasyncout2dto)));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"DataSyncOut2" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/datasyncout2s/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<DataSyncOut2DTO> datasyncout2dtos) {
         datasyncout2Service.saveBatch(datasyncout2Mapping.toDomain(datasyncout2dtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission('','Create',{'Sql',this.datasyncout2Mapping,#datasyncout2dto})")
     @ApiOperation(value = "Create", tags = {"DataSyncOut2" },  notes = "Create")
@@ -117,6 +107,7 @@ public class DataSyncOut2Resource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatch", tags = {"DataSyncOut2" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/datasyncout2s/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<DataSyncOut2DTO> datasyncout2dtos) {
@@ -124,18 +115,12 @@ public class DataSyncOut2Resource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DataSyncOut2-CheckKey-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DataSyncOut2-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"DataSyncOut2" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/datasyncout2s/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody DataSyncOut2DTO datasyncout2dto) {
         return  ResponseEntity.status(HttpStatus.OK).body(datasyncout2Service.checkKey(datasyncout2Mapping.toDomain(datasyncout2dto)));
     }
-
-
-
 
     @PreAuthorize("hasPermission(#datasyncout2_id,'Remove',{'Sql',this.datasyncout2Mapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"DataSyncOut2" },  notes = "Remove")
@@ -145,15 +130,13 @@ public class DataSyncOut2Resource {
          return ResponseEntity.status(HttpStatus.OK).body(datasyncout2Service.remove(datasyncout2_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"DataSyncOut2" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/datasyncout2s/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         datasyncout2Service.removeBatch(ids);
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#datasyncout2_id,'Get',{'Sql',this.datasyncout2Mapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"DataSyncOut2" },  notes = "Get")
@@ -164,7 +147,7 @@ public class DataSyncOut2Resource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DataSyncOut2-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DataSyncOut2-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"DataSyncOut2" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/datasyncout2s/fetchdefault")
 	public ResponseEntity<List<DataSyncOut2DTO>> fetchDefault(DataSyncOut2SearchContext context) {
@@ -177,7 +160,7 @@ public class DataSyncOut2Resource {
                 .body(list);
 	}
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DataSyncOut2-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DataSyncOut2-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"DataSyncOut2" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/datasyncout2s/searchdefault")
 	public ResponseEntity<Page<DataSyncOut2DTO>> searchDefault(@RequestBody DataSyncOut2SearchContext context) {
@@ -185,8 +168,4 @@ public class DataSyncOut2Resource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(datasyncout2Mapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
 }
-
-

@@ -54,9 +54,6 @@ public class TRMLGBDETAILResource {
 
     public TRMLGBDETAILDTO permissionDTO=new TRMLGBDETAILDTO();
 
-
-
-
     @PreAuthorize("hasPermission(#trmlgbdetail_id,'Update',{'Sql',this.trmlgbdetailMapping,#trmlgbdetaildto})")
     @ApiOperation(value = "Update", tags = {"TRMLGBDETAIL" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/trmlgbdetails/{trmlgbdetail_id}")
@@ -69,15 +66,13 @@ public class TRMLGBDETAILResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"TRMLGBDETAIL" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/trmlgbdetails/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<TRMLGBDETAILDTO> trmlgbdetaildtos) {
         trmlgbdetailService.updateBatch(trmlgbdetailMapping.toDomain(trmlgbdetaildtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#trmlgbdetail_id,'Get',{'Sql',this.trmlgbdetailMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"TRMLGBDETAIL" },  notes = "Get")
@@ -88,16 +83,14 @@ public class TRMLGBDETAILResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMLGBDETAIL-Save-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMLGBDETAIL-Save-all')")
     @ApiOperation(value = "Save", tags = {"TRMLGBDETAIL" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmlgbdetails/save")
     public ResponseEntity<Boolean> save(@RequestBody TRMLGBDETAILDTO trmlgbdetaildto) {
         return ResponseEntity.status(HttpStatus.OK).body(trmlgbdetailService.save(trmlgbdetailMapping.toDomain(trmlgbdetaildto)));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"TRMLGBDETAIL" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmlgbdetails/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<TRMLGBDETAILDTO> trmlgbdetaildtos) {
@@ -105,28 +98,19 @@ public class TRMLGBDETAILResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMLGBDETAIL-CheckKey-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMLGBDETAIL-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"TRMLGBDETAIL" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmlgbdetails/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody TRMLGBDETAILDTO trmlgbdetaildto) {
         return  ResponseEntity.status(HttpStatus.OK).body(trmlgbdetailService.checkKey(trmlgbdetailMapping.toDomain(trmlgbdetaildto)));
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMLGBDETAIL-GetDraft-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMLGBDETAIL-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"TRMLGBDETAIL" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/trmlgbdetails/getdraft")
     public ResponseEntity<TRMLGBDETAILDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(trmlgbdetailMapping.toDto(trmlgbdetailService.getDraft(new TRMLGBDETAIL())));
     }
-
-
-
 
     @PreAuthorize("hasPermission('','Create',{'Sql',this.trmlgbdetailMapping,#trmlgbdetaildto})")
     @ApiOperation(value = "Create", tags = {"TRMLGBDETAIL" },  notes = "Create")
@@ -139,15 +123,13 @@ public class TRMLGBDETAILResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatch", tags = {"TRMLGBDETAIL" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmlgbdetails/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<TRMLGBDETAILDTO> trmlgbdetaildtos) {
         trmlgbdetailService.createBatch(trmlgbdetailMapping.toDomain(trmlgbdetaildtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#trmlgbdetail_id,'Remove',{'Sql',this.trmlgbdetailMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"TRMLGBDETAIL" },  notes = "Remove")
@@ -157,6 +139,7 @@ public class TRMLGBDETAILResource {
          return ResponseEntity.status(HttpStatus.OK).body(trmlgbdetailService.remove(trmlgbdetail_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"TRMLGBDETAIL" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/trmlgbdetails/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -164,7 +147,7 @@ public class TRMLGBDETAILResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMLGBDETAIL-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMLGBDETAIL-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"TRMLGBDETAIL" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/trmlgbdetails/fetchdefault")
 	public ResponseEntity<List<TRMLGBDETAILDTO>> fetchDefault(TRMLGBDETAILSearchContext context) {
@@ -177,7 +160,7 @@ public class TRMLGBDETAILResource {
                 .body(list);
 	}
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMLGBDETAIL-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMLGBDETAIL-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"TRMLGBDETAIL" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/trmlgbdetails/searchdefault")
 	public ResponseEntity<Page<TRMLGBDETAILDTO>> searchDefault(@RequestBody TRMLGBDETAILSearchContext context) {
@@ -185,8 +168,4 @@ public class TRMLGBDETAILResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(trmlgbdetailMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
 }
-
-

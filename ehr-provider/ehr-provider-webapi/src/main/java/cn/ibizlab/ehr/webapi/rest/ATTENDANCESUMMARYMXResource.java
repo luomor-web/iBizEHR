@@ -54,9 +54,6 @@ public class ATTENDANCESUMMARYMXResource {
 
     public ATTENDANCESUMMARYMXDTO permissionDTO=new ATTENDANCESUMMARYMXDTO();
 
-
-
-
     @PreAuthorize("hasPermission('','Create',{'Sql',this.attendancesummarymxMapping,#attendancesummarymxdto})")
     @ApiOperation(value = "Create", tags = {"ATTENDANCESUMMARYMX" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/attendancesummarymxes")
@@ -68,6 +65,7 @@ public class ATTENDANCESUMMARYMXResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatch", tags = {"ATTENDANCESUMMARYMX" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/attendancesummarymxes/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<ATTENDANCESUMMARYMXDTO> attendancesummarymxdtos) {
@@ -75,18 +73,12 @@ public class ATTENDANCESUMMARYMXResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ATTENDANCESUMMARYMX-CheckKey-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ATTENDANCESUMMARYMX-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"ATTENDANCESUMMARYMX" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/attendancesummarymxes/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody ATTENDANCESUMMARYMXDTO attendancesummarymxdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(attendancesummarymxService.checkKey(attendancesummarymxMapping.toDomain(attendancesummarymxdto)));
     }
-
-
-
 
     @PreAuthorize("hasPermission(#attendancesummarymx_id,'Get',{'Sql',this.attendancesummarymxMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"ATTENDANCESUMMARYMX" },  notes = "Get")
@@ -97,18 +89,12 @@ public class ATTENDANCESUMMARYMXResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ATTENDANCESUMMARYMX-GetDraft-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ATTENDANCESUMMARYMX-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"ATTENDANCESUMMARYMX" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/attendancesummarymxes/getdraft")
     public ResponseEntity<ATTENDANCESUMMARYMXDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(attendancesummarymxMapping.toDto(attendancesummarymxService.getDraft(new ATTENDANCESUMMARYMX())));
     }
-
-
-
 
     @PreAuthorize("hasPermission(#attendancesummarymx_id,'Remove',{'Sql',this.attendancesummarymxMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"ATTENDANCESUMMARYMX" },  notes = "Remove")
@@ -118,6 +104,7 @@ public class ATTENDANCESUMMARYMXResource {
          return ResponseEntity.status(HttpStatus.OK).body(attendancesummarymxService.remove(attendancesummarymx_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"ATTENDANCESUMMARYMX" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/attendancesummarymxes/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -125,25 +112,20 @@ public class ATTENDANCESUMMARYMXResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ATTENDANCESUMMARYMX-Save-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ATTENDANCESUMMARYMX-Save-all')")
     @ApiOperation(value = "Save", tags = {"ATTENDANCESUMMARYMX" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/attendancesummarymxes/save")
     public ResponseEntity<Boolean> save(@RequestBody ATTENDANCESUMMARYMXDTO attendancesummarymxdto) {
         return ResponseEntity.status(HttpStatus.OK).body(attendancesummarymxService.save(attendancesummarymxMapping.toDomain(attendancesummarymxdto)));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"ATTENDANCESUMMARYMX" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/attendancesummarymxes/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<ATTENDANCESUMMARYMXDTO> attendancesummarymxdtos) {
         attendancesummarymxService.saveBatch(attendancesummarymxMapping.toDomain(attendancesummarymxdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#attendancesummarymx_id,'Update',{'Sql',this.attendancesummarymxMapping,#attendancesummarymxdto})")
     @ApiOperation(value = "Update", tags = {"ATTENDANCESUMMARYMX" },  notes = "Update")
@@ -157,6 +139,7 @@ public class ATTENDANCESUMMARYMXResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"ATTENDANCESUMMARYMX" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/attendancesummarymxes/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<ATTENDANCESUMMARYMXDTO> attendancesummarymxdtos) {
@@ -164,7 +147,7 @@ public class ATTENDANCESUMMARYMXResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ATTENDANCESUMMARYMX-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ATTENDANCESUMMARYMX-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"ATTENDANCESUMMARYMX" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/attendancesummarymxes/fetchdefault")
 	public ResponseEntity<List<ATTENDANCESUMMARYMXDTO>> fetchDefault(ATTENDANCESUMMARYMXSearchContext context) {
@@ -177,7 +160,7 @@ public class ATTENDANCESUMMARYMXResource {
                 .body(list);
 	}
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ATTENDANCESUMMARYMX-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ATTENDANCESUMMARYMX-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"ATTENDANCESUMMARYMX" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/attendancesummarymxes/searchdefault")
 	public ResponseEntity<Page<ATTENDANCESUMMARYMXDTO>> searchDefault(@RequestBody ATTENDANCESUMMARYMXSearchContext context) {
@@ -185,8 +168,4 @@ public class ATTENDANCESUMMARYMXResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(attendancesummarymxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
 }
-
-

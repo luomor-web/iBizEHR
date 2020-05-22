@@ -54,9 +54,6 @@ public class SALSTDGLResource {
 
     public SALSTDGLDTO permissionDTO=new SALSTDGLDTO();
 
-
-
-
     @PreAuthorize("hasPermission(#salstdgl_id,'Remove',{'Sql',this.salstdglMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"SALSTDGL" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/salstdgls/{salstdgl_id}")
@@ -65,15 +62,13 @@ public class SALSTDGLResource {
          return ResponseEntity.status(HttpStatus.OK).body(salstdglService.remove(salstdgl_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"SALSTDGL" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/salstdgls/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         salstdglService.removeBatch(ids);
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#salstdgl_id,'Update',{'Sql',this.salstdglMapping,#salstdgldto})")
     @ApiOperation(value = "Update", tags = {"SALSTDGL" },  notes = "Update")
@@ -87,15 +82,13 @@ public class SALSTDGLResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"SALSTDGL" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/salstdgls/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<SALSTDGLDTO> salstdgldtos) {
         salstdglService.updateBatch(salstdglMapping.toDomain(salstdgldtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission('','Create',{'Sql',this.salstdglMapping,#salstdgldto})")
     @ApiOperation(value = "Create", tags = {"SALSTDGL" },  notes = "Create")
@@ -108,6 +101,7 @@ public class SALSTDGLResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatch", tags = {"SALSTDGL" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/salstdgls/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<SALSTDGLDTO> salstdgldtos) {
@@ -115,35 +109,27 @@ public class SALSTDGLResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALSTDGL-CheckKey-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALSTDGL-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"SALSTDGL" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/salstdgls/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody SALSTDGLDTO salstdgldto) {
         return  ResponseEntity.status(HttpStatus.OK).body(salstdglService.checkKey(salstdglMapping.toDomain(salstdgldto)));
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALSTDGL-Save-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALSTDGL-Save-all')")
     @ApiOperation(value = "Save", tags = {"SALSTDGL" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/salstdgls/save")
     public ResponseEntity<Boolean> save(@RequestBody SALSTDGLDTO salstdgldto) {
         return ResponseEntity.status(HttpStatus.OK).body(salstdglService.save(salstdglMapping.toDomain(salstdgldto)));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"SALSTDGL" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/salstdgls/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<SALSTDGLDTO> salstdgldtos) {
         salstdglService.saveBatch(salstdglMapping.toDomain(salstdgldtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#salstdgl_id,'Get',{'Sql',this.salstdglMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"SALSTDGL" },  notes = "Get")
@@ -154,17 +140,14 @@ public class SALSTDGLResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALSTDGL-GetDraft-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALSTDGL-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"SALSTDGL" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/salstdgls/getdraft")
     public ResponseEntity<SALSTDGLDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(salstdglMapping.toDto(salstdglService.getDraft(new SALSTDGL())));
     }
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALSTDGL-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALSTDGL-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"SALSTDGL" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/salstdgls/fetchdefault")
 	public ResponseEntity<List<SALSTDGLDTO>> fetchDefault(SALSTDGLSearchContext context) {
@@ -177,7 +160,7 @@ public class SALSTDGLResource {
                 .body(list);
 	}
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALSTDGL-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALSTDGL-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"SALSTDGL" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/salstdgls/searchdefault")
 	public ResponseEntity<Page<SALSTDGLDTO>> searchDefault(@RequestBody SALSTDGLSearchContext context) {
@@ -185,8 +168,4 @@ public class SALSTDGLResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(salstdglMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
 }
-
-

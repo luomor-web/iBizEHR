@@ -54,9 +54,6 @@ public class TRMLGBCOSTResource {
 
     public TRMLGBCOSTDTO permissionDTO=new TRMLGBCOSTDTO();
 
-
-
-
     @PreAuthorize("hasPermission(#trmlgbcost_id,'Get',{'Sql',this.trmlgbcostMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"TRMLGBCOST" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/trmlgbcosts/{trmlgbcost_id}")
@@ -66,9 +63,6 @@ public class TRMLGBCOSTResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-
-
-
     @PreAuthorize("hasPermission(#trmlgbcost_id,'Remove',{'Sql',this.trmlgbcostMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"TRMLGBCOST" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/trmlgbcosts/{trmlgbcost_id}")
@@ -77,6 +71,7 @@ public class TRMLGBCOSTResource {
          return ResponseEntity.status(HttpStatus.OK).body(trmlgbcostService.remove(trmlgbcost_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"TRMLGBCOST" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/trmlgbcosts/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -84,28 +79,19 @@ public class TRMLGBCOSTResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMLGBCOST-GetDraft-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMLGBCOST-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"TRMLGBCOST" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/trmlgbcosts/getdraft")
     public ResponseEntity<TRMLGBCOSTDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(trmlgbcostMapping.toDto(trmlgbcostService.getDraft(new TRMLGBCOST())));
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMLGBCOST-CheckKey-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMLGBCOST-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"TRMLGBCOST" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmlgbcosts/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody TRMLGBCOSTDTO trmlgbcostdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(trmlgbcostService.checkKey(trmlgbcostMapping.toDomain(trmlgbcostdto)));
     }
-
-
-
 
     @PreAuthorize("hasPermission(#trmlgbcost_id,'Update',{'Sql',this.trmlgbcostMapping,#trmlgbcostdto})")
     @ApiOperation(value = "Update", tags = {"TRMLGBCOST" },  notes = "Update")
@@ -119,15 +105,13 @@ public class TRMLGBCOSTResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"TRMLGBCOST" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/trmlgbcosts/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<TRMLGBCOSTDTO> trmlgbcostdtos) {
         trmlgbcostService.updateBatch(trmlgbcostMapping.toDomain(trmlgbcostdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission('','Create',{'Sql',this.trmlgbcostMapping,#trmlgbcostdto})")
     @ApiOperation(value = "Create", tags = {"TRMLGBCOST" },  notes = "Create")
@@ -140,6 +124,7 @@ public class TRMLGBCOSTResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatch", tags = {"TRMLGBCOST" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmlgbcosts/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<TRMLGBCOSTDTO> trmlgbcostdtos) {
@@ -147,16 +132,14 @@ public class TRMLGBCOSTResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMLGBCOST-Save-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMLGBCOST-Save-all')")
     @ApiOperation(value = "Save", tags = {"TRMLGBCOST" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmlgbcosts/save")
     public ResponseEntity<Boolean> save(@RequestBody TRMLGBCOSTDTO trmlgbcostdto) {
         return ResponseEntity.status(HttpStatus.OK).body(trmlgbcostService.save(trmlgbcostMapping.toDomain(trmlgbcostdto)));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"TRMLGBCOST" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmlgbcosts/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<TRMLGBCOSTDTO> trmlgbcostdtos) {
@@ -164,7 +147,7 @@ public class TRMLGBCOSTResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMLGBCOST-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMLGBCOST-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"TRMLGBCOST" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/trmlgbcosts/fetchdefault")
 	public ResponseEntity<List<TRMLGBCOSTDTO>> fetchDefault(TRMLGBCOSTSearchContext context) {
@@ -177,7 +160,7 @@ public class TRMLGBCOSTResource {
                 .body(list);
 	}
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMLGBCOST-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMLGBCOST-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"TRMLGBCOST" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/trmlgbcosts/searchdefault")
 	public ResponseEntity<Page<TRMLGBCOSTDTO>> searchDefault(@RequestBody TRMLGBCOSTSearchContext context) {
@@ -185,8 +168,4 @@ public class TRMLGBCOSTResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(trmlgbcostMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
 }
-
-

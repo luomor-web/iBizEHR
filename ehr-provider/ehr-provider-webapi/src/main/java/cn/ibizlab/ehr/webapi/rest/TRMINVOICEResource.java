@@ -54,9 +54,6 @@ public class TRMINVOICEResource {
 
     public TRMINVOICEDTO permissionDTO=new TRMINVOICEDTO();
 
-
-
-
     @PreAuthorize("hasPermission('','Create',{'Sql',this.trminvoiceMapping,#trminvoicedto})")
     @ApiOperation(value = "Create", tags = {"TRMINVOICE" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/trminvoices")
@@ -68,6 +65,7 @@ public class TRMINVOICEResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatch", tags = {"TRMINVOICE" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/trminvoices/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<TRMINVOICEDTO> trminvoicedtos) {
@@ -75,16 +73,14 @@ public class TRMINVOICEResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMINVOICE-Save-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMINVOICE-Save-all')")
     @ApiOperation(value = "Save", tags = {"TRMINVOICE" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/trminvoices/save")
     public ResponseEntity<Boolean> save(@RequestBody TRMINVOICEDTO trminvoicedto) {
         return ResponseEntity.status(HttpStatus.OK).body(trminvoiceService.save(trminvoiceMapping.toDomain(trminvoicedto)));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"TRMINVOICE" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/trminvoices/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<TRMINVOICEDTO> trminvoicedtos) {
@@ -92,28 +88,19 @@ public class TRMINVOICEResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMINVOICE-GetDraft-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMINVOICE-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"TRMINVOICE" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/trminvoices/getdraft")
     public ResponseEntity<TRMINVOICEDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(trminvoiceMapping.toDto(trminvoiceService.getDraft(new TRMINVOICE())));
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMINVOICE-CheckKey-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMINVOICE-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"TRMINVOICE" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/trminvoices/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody TRMINVOICEDTO trminvoicedto) {
         return  ResponseEntity.status(HttpStatus.OK).body(trminvoiceService.checkKey(trminvoiceMapping.toDomain(trminvoicedto)));
     }
-
-
-
 
     @PreAuthorize("hasPermission(#trminvoice_id,'Get',{'Sql',this.trminvoiceMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"TRMINVOICE" },  notes = "Get")
@@ -124,9 +111,6 @@ public class TRMINVOICEResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-
-
-
     @PreAuthorize("hasPermission(#trminvoice_id,'Remove',{'Sql',this.trminvoiceMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"TRMINVOICE" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/trminvoices/{trminvoice_id}")
@@ -135,15 +119,13 @@ public class TRMINVOICEResource {
          return ResponseEntity.status(HttpStatus.OK).body(trminvoiceService.remove(trminvoice_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"TRMINVOICE" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/trminvoices/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         trminvoiceService.removeBatch(ids);
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#trminvoice_id,'Update',{'Sql',this.trminvoiceMapping,#trminvoicedto})")
     @ApiOperation(value = "Update", tags = {"TRMINVOICE" },  notes = "Update")
@@ -157,6 +139,7 @@ public class TRMINVOICEResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"TRMINVOICE" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/trminvoices/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<TRMINVOICEDTO> trminvoicedtos) {
@@ -164,7 +147,7 @@ public class TRMINVOICEResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMINVOICE-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMINVOICE-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"TRMINVOICE" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/trminvoices/fetchdefault")
 	public ResponseEntity<List<TRMINVOICEDTO>> fetchDefault(TRMINVOICESearchContext context) {
@@ -177,7 +160,7 @@ public class TRMINVOICEResource {
                 .body(list);
 	}
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMINVOICE-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMINVOICE-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"TRMINVOICE" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/trminvoices/searchdefault")
 	public ResponseEntity<Page<TRMINVOICEDTO>> searchDefault(@RequestBody TRMINVOICESearchContext context) {
@@ -185,8 +168,4 @@ public class TRMINVOICEResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(trminvoiceMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
 }
-
-

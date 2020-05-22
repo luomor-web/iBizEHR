@@ -54,45 +54,34 @@ public class SOCSELFAREBASEResource {
 
     public SOCSELFAREBASEDTO permissionDTO=new SOCSELFAREBASEDTO();
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SOCSELFAREBASE-GetDraft-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SOCSELFAREBASE-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"SOCSELFAREBASE" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/socselfarebases/getdraft")
     public ResponseEntity<SOCSELFAREBASEDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(socselfarebaseMapping.toDto(socselfarebaseService.getDraft(new SOCSELFAREBASE())));
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SOCSELFAREBASE-CheckKey-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SOCSELFAREBASE-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"SOCSELFAREBASE" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/socselfarebases/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody SOCSELFAREBASEDTO socselfarebasedto) {
         return  ResponseEntity.status(HttpStatus.OK).body(socselfarebaseService.checkKey(socselfarebaseMapping.toDomain(socselfarebasedto)));
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SOCSELFAREBASE-Save-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SOCSELFAREBASE-Save-all')")
     @ApiOperation(value = "Save", tags = {"SOCSELFAREBASE" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/socselfarebases/save")
     public ResponseEntity<Boolean> save(@RequestBody SOCSELFAREBASEDTO socselfarebasedto) {
         return ResponseEntity.status(HttpStatus.OK).body(socselfarebaseService.save(socselfarebaseMapping.toDomain(socselfarebasedto)));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"SOCSELFAREBASE" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/socselfarebases/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<SOCSELFAREBASEDTO> socselfarebasedtos) {
         socselfarebaseService.saveBatch(socselfarebaseMapping.toDomain(socselfarebasedtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#socselfarebase_id,'Remove',{'Sql',this.socselfarebaseMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"SOCSELFAREBASE" },  notes = "Remove")
@@ -102,15 +91,13 @@ public class SOCSELFAREBASEResource {
          return ResponseEntity.status(HttpStatus.OK).body(socselfarebaseService.remove(socselfarebase_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"SOCSELFAREBASE" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/socselfarebases/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         socselfarebaseService.removeBatch(ids);
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission('','Create',{'Sql',this.socselfarebaseMapping,#socselfarebasedto})")
     @ApiOperation(value = "Create", tags = {"SOCSELFAREBASE" },  notes = "Create")
@@ -123,15 +110,13 @@ public class SOCSELFAREBASEResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatch", tags = {"SOCSELFAREBASE" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/socselfarebases/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<SOCSELFAREBASEDTO> socselfarebasedtos) {
         socselfarebaseService.createBatch(socselfarebaseMapping.toDomain(socselfarebasedtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#socselfarebase_id,'Update',{'Sql',this.socselfarebaseMapping,#socselfarebasedto})")
     @ApiOperation(value = "Update", tags = {"SOCSELFAREBASE" },  notes = "Update")
@@ -145,15 +130,13 @@ public class SOCSELFAREBASEResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"SOCSELFAREBASE" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/socselfarebases/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<SOCSELFAREBASEDTO> socselfarebasedtos) {
         socselfarebaseService.updateBatch(socselfarebaseMapping.toDomain(socselfarebasedtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#socselfarebase_id,'Get',{'Sql',this.socselfarebaseMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"SOCSELFAREBASE" },  notes = "Get")
@@ -164,7 +147,7 @@ public class SOCSELFAREBASEResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SOCSELFAREBASE-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SOCSELFAREBASE-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"SOCSELFAREBASE" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/socselfarebases/fetchdefault")
 	public ResponseEntity<List<SOCSELFAREBASEDTO>> fetchDefault(SOCSELFAREBASESearchContext context) {
@@ -177,7 +160,7 @@ public class SOCSELFAREBASEResource {
                 .body(list);
 	}
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SOCSELFAREBASE-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SOCSELFAREBASE-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"SOCSELFAREBASE" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/socselfarebases/searchdefault")
 	public ResponseEntity<Page<SOCSELFAREBASEDTO>> searchDefault(@RequestBody SOCSELFAREBASESearchContext context) {
@@ -185,8 +168,4 @@ public class SOCSELFAREBASEResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(socselfarebaseMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
 }
-
-

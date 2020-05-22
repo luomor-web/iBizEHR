@@ -54,16 +54,14 @@ public class PARBMFZJYXResource {
 
     public PARBMFZJYXDTO permissionDTO=new PARBMFZJYXDTO();
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PARBMFZJYX-Save-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PARBMFZJYX-Save-all')")
     @ApiOperation(value = "Save", tags = {"PARBMFZJYX" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/parbmfzjyxes/save")
     public ResponseEntity<Boolean> save(@RequestBody PARBMFZJYXDTO parbmfzjyxdto) {
         return ResponseEntity.status(HttpStatus.OK).body(parbmfzjyxService.save(parbmfzjyxMapping.toDomain(parbmfzjyxdto)));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"PARBMFZJYX" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/parbmfzjyxes/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PARBMFZJYXDTO> parbmfzjyxdtos) {
@@ -71,18 +69,12 @@ public class PARBMFZJYXResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PARBMFZJYX-GetDraft-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PARBMFZJYX-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"PARBMFZJYX" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/parbmfzjyxes/getdraft")
     public ResponseEntity<PARBMFZJYXDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(parbmfzjyxMapping.toDto(parbmfzjyxService.getDraft(new PARBMFZJYX())));
     }
-
-
-
 
     @PreAuthorize("hasPermission('','Create',{'Sql',this.parbmfzjyxMapping,#parbmfzjyxdto})")
     @ApiOperation(value = "Create", tags = {"PARBMFZJYX" },  notes = "Create")
@@ -95,6 +87,7 @@ public class PARBMFZJYXResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatch", tags = {"PARBMFZJYX" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/parbmfzjyxes/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PARBMFZJYXDTO> parbmfzjyxdtos) {
@@ -102,18 +95,12 @@ public class PARBMFZJYXResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PARBMFZJYX-CheckKey-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PARBMFZJYX-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"PARBMFZJYX" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/parbmfzjyxes/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PARBMFZJYXDTO parbmfzjyxdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(parbmfzjyxService.checkKey(parbmfzjyxMapping.toDomain(parbmfzjyxdto)));
     }
-
-
-
 
     @PreAuthorize("hasPermission(#parbmfzjyx_id,'Remove',{'Sql',this.parbmfzjyxMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"PARBMFZJYX" },  notes = "Remove")
@@ -123,15 +110,13 @@ public class PARBMFZJYXResource {
          return ResponseEntity.status(HttpStatus.OK).body(parbmfzjyxService.remove(parbmfzjyx_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"PARBMFZJYX" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/parbmfzjyxes/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         parbmfzjyxService.removeBatch(ids);
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#parbmfzjyx_id,'Update',{'Sql',this.parbmfzjyxMapping,#parbmfzjyxdto})")
     @ApiOperation(value = "Update", tags = {"PARBMFZJYX" },  notes = "Update")
@@ -145,15 +130,13 @@ public class PARBMFZJYXResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"PARBMFZJYX" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/parbmfzjyxes/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PARBMFZJYXDTO> parbmfzjyxdtos) {
         parbmfzjyxService.updateBatch(parbmfzjyxMapping.toDomain(parbmfzjyxdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#parbmfzjyx_id,'Get',{'Sql',this.parbmfzjyxMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"PARBMFZJYX" },  notes = "Get")
@@ -164,7 +147,7 @@ public class PARBMFZJYXResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PARBMFZJYX-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PARBMFZJYX-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"PARBMFZJYX" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/parbmfzjyxes/fetchdefault")
 	public ResponseEntity<List<PARBMFZJYXDTO>> fetchDefault(PARBMFZJYXSearchContext context) {
@@ -177,7 +160,7 @@ public class PARBMFZJYXResource {
                 .body(list);
 	}
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PARBMFZJYX-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PARBMFZJYX-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"PARBMFZJYX" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/parbmfzjyxes/searchdefault")
 	public ResponseEntity<Page<PARBMFZJYXDTO>> searchDefault(@RequestBody PARBMFZJYXSearchContext context) {
@@ -185,8 +168,4 @@ public class PARBMFZJYXResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(parbmfzjyxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
 }
-
-

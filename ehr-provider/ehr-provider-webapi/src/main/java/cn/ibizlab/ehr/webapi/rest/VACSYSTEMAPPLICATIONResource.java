@@ -54,9 +54,6 @@ public class VACSYSTEMAPPLICATIONResource {
 
     public VACSYSTEMAPPLICATIONDTO permissionDTO=new VACSYSTEMAPPLICATIONDTO();
 
-
-
-
     @PreAuthorize("hasPermission('','Create',{'Sql',this.vacsystemapplicationMapping,#vacsystemapplicationdto})")
     @ApiOperation(value = "Create", tags = {"VACSYSTEMAPPLICATION" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacsystemapplications")
@@ -68,15 +65,13 @@ public class VACSYSTEMAPPLICATIONResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatch", tags = {"VACSYSTEMAPPLICATION" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacsystemapplications/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<VACSYSTEMAPPLICATIONDTO> vacsystemapplicationdtos) {
         vacsystemapplicationService.createBatch(vacsystemapplicationMapping.toDomain(vacsystemapplicationdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#vacsystemapplication_id,'Remove',{'Sql',this.vacsystemapplicationMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"VACSYSTEMAPPLICATION" },  notes = "Remove")
@@ -86,15 +81,13 @@ public class VACSYSTEMAPPLICATIONResource {
          return ResponseEntity.status(HttpStatus.OK).body(vacsystemapplicationService.remove(vacsystemapplication_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"VACSYSTEMAPPLICATION" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/vacsystemapplications/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         vacsystemapplicationService.removeBatch(ids);
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#vacsystemapplication_id,'Update',{'Sql',this.vacsystemapplicationMapping,#vacsystemapplicationdto})")
     @ApiOperation(value = "Update", tags = {"VACSYSTEMAPPLICATION" },  notes = "Update")
@@ -108,15 +101,13 @@ public class VACSYSTEMAPPLICATIONResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"VACSYSTEMAPPLICATION" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/vacsystemapplications/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<VACSYSTEMAPPLICATIONDTO> vacsystemapplicationdtos) {
         vacsystemapplicationService.updateBatch(vacsystemapplicationMapping.toDomain(vacsystemapplicationdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#vacsystemapplication_id,'Get',{'Sql',this.vacsystemapplicationMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"VACSYSTEMAPPLICATION" },  notes = "Get")
@@ -127,16 +118,14 @@ public class VACSYSTEMAPPLICATIONResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACSYSTEMAPPLICATION-Save-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACSYSTEMAPPLICATION-Save-all')")
     @ApiOperation(value = "Save", tags = {"VACSYSTEMAPPLICATION" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacsystemapplications/save")
     public ResponseEntity<Boolean> save(@RequestBody VACSYSTEMAPPLICATIONDTO vacsystemapplicationdto) {
         return ResponseEntity.status(HttpStatus.OK).body(vacsystemapplicationService.save(vacsystemapplicationMapping.toDomain(vacsystemapplicationdto)));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"VACSYSTEMAPPLICATION" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacsystemapplications/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<VACSYSTEMAPPLICATIONDTO> vacsystemapplicationdtos) {
@@ -144,27 +133,21 @@ public class VACSYSTEMAPPLICATIONResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACSYSTEMAPPLICATION-GetDraft-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACSYSTEMAPPLICATION-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"VACSYSTEMAPPLICATION" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/vacsystemapplications/getdraft")
     public ResponseEntity<VACSYSTEMAPPLICATIONDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(vacsystemapplicationMapping.toDto(vacsystemapplicationService.getDraft(new VACSYSTEMAPPLICATION())));
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACSYSTEMAPPLICATION-CheckKey-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACSYSTEMAPPLICATION-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"VACSYSTEMAPPLICATION" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacsystemapplications/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody VACSYSTEMAPPLICATIONDTO vacsystemapplicationdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(vacsystemapplicationService.checkKey(vacsystemapplicationMapping.toDomain(vacsystemapplicationdto)));
     }
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACSYSTEMAPPLICATION-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACSYSTEMAPPLICATION-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"VACSYSTEMAPPLICATION" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/vacsystemapplications/fetchdefault")
 	public ResponseEntity<List<VACSYSTEMAPPLICATIONDTO>> fetchDefault(VACSYSTEMAPPLICATIONSearchContext context) {
@@ -177,7 +160,7 @@ public class VACSYSTEMAPPLICATIONResource {
                 .body(list);
 	}
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACSYSTEMAPPLICATION-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACSYSTEMAPPLICATION-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"VACSYSTEMAPPLICATION" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/vacsystemapplications/searchdefault")
 	public ResponseEntity<Page<VACSYSTEMAPPLICATIONDTO>> searchDefault(@RequestBody VACSYSTEMAPPLICATIONSearchContext context) {
@@ -185,8 +168,4 @@ public class VACSYSTEMAPPLICATIONResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(vacsystemapplicationMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
 }
-
-

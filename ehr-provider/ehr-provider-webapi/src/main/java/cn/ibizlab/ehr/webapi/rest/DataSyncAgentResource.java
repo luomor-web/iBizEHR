@@ -54,25 +54,20 @@ public class DataSyncAgentResource {
 
     public DataSyncAgentDTO permissionDTO=new DataSyncAgentDTO();
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DataSyncAgent-Save-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DataSyncAgent-Save-all')")
     @ApiOperation(value = "Save", tags = {"DataSyncAgent" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/datasyncagents/save")
     public ResponseEntity<Boolean> save(@RequestBody DataSyncAgentDTO datasyncagentdto) {
         return ResponseEntity.status(HttpStatus.OK).body(datasyncagentService.save(datasyncagentMapping.toDomain(datasyncagentdto)));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"DataSyncAgent" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/datasyncagents/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<DataSyncAgentDTO> datasyncagentdtos) {
         datasyncagentService.saveBatch(datasyncagentMapping.toDomain(datasyncagentdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission('','Create',{'Sql',this.datasyncagentMapping,#datasyncagentdto})")
     @ApiOperation(value = "Create", tags = {"DataSyncAgent" },  notes = "Create")
@@ -85,6 +80,7 @@ public class DataSyncAgentResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatch", tags = {"DataSyncAgent" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/datasyncagents/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<DataSyncAgentDTO> datasyncagentdtos) {
@@ -92,18 +88,12 @@ public class DataSyncAgentResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DataSyncAgent-CheckKey-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DataSyncAgent-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"DataSyncAgent" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/datasyncagents/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody DataSyncAgentDTO datasyncagentdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(datasyncagentService.checkKey(datasyncagentMapping.toDomain(datasyncagentdto)));
     }
-
-
-
 
     @PreAuthorize("hasPermission(#datasyncagent_id,'Update',{'Sql',this.datasyncagentMapping,#datasyncagentdto})")
     @ApiOperation(value = "Update", tags = {"DataSyncAgent" },  notes = "Update")
@@ -117,15 +107,13 @@ public class DataSyncAgentResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"DataSyncAgent" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/datasyncagents/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<DataSyncAgentDTO> datasyncagentdtos) {
         datasyncagentService.updateBatch(datasyncagentMapping.toDomain(datasyncagentdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#datasyncagent_id,'Remove',{'Sql',this.datasyncagentMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"DataSyncAgent" },  notes = "Remove")
@@ -135,6 +123,7 @@ public class DataSyncAgentResource {
          return ResponseEntity.status(HttpStatus.OK).body(datasyncagentService.remove(datasyncagent_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"DataSyncAgent" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/datasyncagents/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -142,18 +131,12 @@ public class DataSyncAgentResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DataSyncAgent-GetDraft-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DataSyncAgent-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"DataSyncAgent" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/datasyncagents/getdraft")
     public ResponseEntity<DataSyncAgentDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(datasyncagentMapping.toDto(datasyncagentService.getDraft(new DataSyncAgent())));
     }
-
-
-
 
     @PreAuthorize("hasPermission(#datasyncagent_id,'Get',{'Sql',this.datasyncagentMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"DataSyncAgent" },  notes = "Get")
@@ -164,7 +147,7 @@ public class DataSyncAgentResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DataSyncAgent-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DataSyncAgent-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"DataSyncAgent" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/datasyncagents/fetchdefault")
 	public ResponseEntity<List<DataSyncAgentDTO>> fetchDefault(DataSyncAgentSearchContext context) {
@@ -177,7 +160,7 @@ public class DataSyncAgentResource {
                 .body(list);
 	}
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DataSyncAgent-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DataSyncAgent-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"DataSyncAgent" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/datasyncagents/searchdefault")
 	public ResponseEntity<Page<DataSyncAgentDTO>> searchDefault(@RequestBody DataSyncAgentSearchContext context) {
@@ -185,8 +168,4 @@ public class DataSyncAgentResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(datasyncagentMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
 }
-
-

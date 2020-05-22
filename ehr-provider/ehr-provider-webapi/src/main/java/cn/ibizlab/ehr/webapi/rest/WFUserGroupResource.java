@@ -54,25 +54,20 @@ public class WFUserGroupResource {
 
     public WFUserGroupDTO permissionDTO=new WFUserGroupDTO();
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFUserGroup-Save-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFUserGroup-Save-all')")
     @ApiOperation(value = "Save", tags = {"WFUserGroup" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/wfusergroups/save")
     public ResponseEntity<Boolean> save(@RequestBody WFUserGroupDTO wfusergroupdto) {
         return ResponseEntity.status(HttpStatus.OK).body(wfusergroupService.save(wfusergroupMapping.toDomain(wfusergroupdto)));
     }
 
+    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"WFUserGroup" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/wfusergroups/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<WFUserGroupDTO> wfusergroupdtos) {
         wfusergroupService.saveBatch(wfusergroupMapping.toDomain(wfusergroupdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission('','Create',{'Sql',this.wfusergroupMapping,#wfusergroupdto})")
     @ApiOperation(value = "Create", tags = {"WFUserGroup" },  notes = "Create")
@@ -85,6 +80,7 @@ public class WFUserGroupResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "createBatch", tags = {"WFUserGroup" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/wfusergroups/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<WFUserGroupDTO> wfusergroupdtos) {
@@ -92,18 +88,12 @@ public class WFUserGroupResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFUserGroup-GetDraft-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFUserGroup-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"WFUserGroup" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/wfusergroups/getdraft")
     public ResponseEntity<WFUserGroupDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(wfusergroupMapping.toDto(wfusergroupService.getDraft(new WFUserGroup())));
     }
-
-
-
 
     @PreAuthorize("hasPermission(#wfusergroup_id,'Get',{'Sql',this.wfusergroupMapping,this.permissionDTO})")
     @ApiOperation(value = "Get", tags = {"WFUserGroup" },  notes = "Get")
@@ -114,18 +104,12 @@ public class WFUserGroupResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-
-
-
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFUserGroup-CheckKey-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFUserGroup-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"WFUserGroup" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/wfusergroups/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody WFUserGroupDTO wfusergroupdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(wfusergroupService.checkKey(wfusergroupMapping.toDomain(wfusergroupdto)));
     }
-
-
-
 
     @PreAuthorize("hasPermission(#wfusergroup_id,'Update',{'Sql',this.wfusergroupMapping,#wfusergroupdto})")
     @ApiOperation(value = "Update", tags = {"WFUserGroup" },  notes = "Update")
@@ -139,15 +123,13 @@ public class WFUserGroupResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"WFUserGroup" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/wfusergroups/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<WFUserGroupDTO> wfusergroupdtos) {
         wfusergroupService.updateBatch(wfusergroupMapping.toDomain(wfusergroupdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
-
-
-
 
     @PreAuthorize("hasPermission(#wfusergroup_id,'Remove',{'Sql',this.wfusergroupMapping,this.permissionDTO})")
     @ApiOperation(value = "Remove", tags = {"WFUserGroup" },  notes = "Remove")
@@ -157,6 +139,7 @@ public class WFUserGroupResource {
          return ResponseEntity.status(HttpStatus.OK).body(wfusergroupService.remove(wfusergroup_id));
     }
 
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"WFUserGroup" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/wfusergroups/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -164,7 +147,7 @@ public class WFUserGroupResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFUserGroup-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFUserGroup-Default-all')")
 	@ApiOperation(value = "fetchDEFAULT", tags = {"WFUserGroup" } ,notes = "fetchDEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/wfusergroups/fetchdefault")
 	public ResponseEntity<List<WFUserGroupDTO>> fetchDefault(WFUserGroupSearchContext context) {
@@ -177,7 +160,7 @@ public class WFUserGroupResource {
                 .body(list);
 	}
 
-    //@PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFUserGroup-Default-all')")
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFUserGroup-Default-all')")
 	@ApiOperation(value = "searchDEFAULT", tags = {"WFUserGroup" } ,notes = "searchDEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/wfusergroups/searchdefault")
 	public ResponseEntity<Page<WFUserGroupDTO>> searchDefault(@RequestBody WFUserGroupSearchContext context) {
@@ -185,8 +168,4 @@ public class WFUserGroupResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(wfusergroupMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-
-
 }
-
-
