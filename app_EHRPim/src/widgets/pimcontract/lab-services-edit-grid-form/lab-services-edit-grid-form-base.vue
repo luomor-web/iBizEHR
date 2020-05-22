@@ -74,7 +74,7 @@
   deMajorField='orgname'
   deKeyField='ormorg'
   :service="service"
-  :acParams="{ serviceName: 'ORMORGService', interfaceName: 'FetchHTGLDW'}"
+  :acParams="{ serviceName: 'ORMORGService', interfaceName: 'FetchDefault'}"
   valueitem='ormorgid' 
   :value="data.ormorgname" 
   editortype="" 
@@ -105,7 +105,7 @@
   deMajorField='pimlabourcampanyname'
   deKeyField='pimlabourcampany'
   :service="service"
-  :acParams="{ serviceName: 'PIMLABOURCAMPANYService', interfaceName: 'FetchAuthLab'}"
+  :acParams="{ serviceName: 'PIMLABOURCAMPANYService', interfaceName: 'FetchDefault'}"
   valueitem='pimlabourcampanyid' 
   :value="data.pimlabourcampanyname" 
   editortype="" 

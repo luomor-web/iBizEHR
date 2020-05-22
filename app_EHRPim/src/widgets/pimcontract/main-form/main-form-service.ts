@@ -119,14 +119,14 @@ export default class MainService extends ControlService {
         if (Object.is(serviceName, 'PIMPERSONService') && Object.is(interfaceName, 'FetchAuthPerson')) {
             return this.doItems(this.pimpersonService.FetchAuthPerson(JSON.parse(JSON.stringify(context)),data, isloading), 'pimpersonid', 'pimperson');
         }
-        if (Object.is(serviceName, 'ORMORGService') && Object.is(interfaceName, 'FetchHTGLDW')) {
-            return this.doItems(this.ormorgService.FetchHTGLDW(JSON.parse(JSON.stringify(context)),data, isloading), 'orgid', 'ormorg');
+        if (Object.is(serviceName, 'ORMORGService') && Object.is(interfaceName, 'FetchDefault')) {
+            return this.doItems(this.ormorgService.FetchDefault(JSON.parse(JSON.stringify(context)),data, isloading), 'orgid', 'ormorg');
         }
-        if (Object.is(serviceName, 'OrmSignOrgService') && Object.is(interfaceName, 'FetchHTQDDW')) {
-            return this.doItems(this.ormsignorgService.FetchHTQDDW(JSON.parse(JSON.stringify(context)),data, isloading), 'ormsignorgid', 'ormsignorg');
+        if (Object.is(serviceName, 'OrmSignOrgService') && Object.is(interfaceName, 'FetchDefault')) {
+            return this.doItems(this.ormsignorgService.FetchDefault(JSON.parse(JSON.stringify(context)),data, isloading), 'ormsignorgid', 'ormsignorg');
         }
-        if (Object.is(serviceName, 'PIMLABOURCAMPANYService') && Object.is(interfaceName, 'FetchAuthLab')) {
-            return this.doItems(this.pimlabourcampanyService.FetchAuthLab(JSON.parse(JSON.stringify(context)),data, isloading), 'pimlabourcampanyid', 'pimlabourcampany');
+        if (Object.is(serviceName, 'PIMLABOURCAMPANYService') && Object.is(interfaceName, 'FetchDefault')) {
+            return this.doItems(this.pimlabourcampanyService.FetchDefault(JSON.parse(JSON.stringify(context)),data, isloading), 'pimlabourcampanyid', 'pimlabourcampany');
         }
 
         return Promise.reject([])

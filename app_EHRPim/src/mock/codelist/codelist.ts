@@ -1226,7 +1226,7 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
                 text: '有效',
                 "data":"",
                 "codename":"Item_10",
-                value: 10,
+                value: '10',
                 
                 disabled: false,
             },
@@ -1236,7 +1236,7 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
                 text: '失效',
                 "data":"",
                 "codename":"Item_20",
-                value: 20,
+                value: '20',
                 
                 disabled: false,
             },

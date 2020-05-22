@@ -88,7 +88,7 @@
   deMajorField='orgname'
   deKeyField='ormorg'
   :service="service"
-  :acParams="{ serviceName: 'ORMORGService', interfaceName: 'FetchHTGLDW'}"
+  :acParams="{ serviceName: 'ORMORGService', interfaceName: 'FetchDefault'}"
   valueitem='ormorgid' 
   :value="data.ormorgname" 
   editortype="" 
@@ -113,7 +113,7 @@
   deMajorField='ormsignorgname'
   deKeyField='ormsignorg'
   :service="service"
-  :acParams="{ serviceName: 'OrmSignOrgService', interfaceName: 'FetchHTQDDW'}"
+  :acParams="{ serviceName: 'OrmSignOrgService', interfaceName: 'FetchDefault'}"
   valueitem='ormsignorgid' 
   :value="data.ormsignorgname" 
   editortype="" 
@@ -138,7 +138,7 @@
   deMajorField='pimlabourcampanyname'
   deKeyField='pimlabourcampany'
   :service="service"
-  :acParams="{ serviceName: 'PIMLABOURCAMPANYService', interfaceName: 'FetchAuthLab'}"
+  :acParams="{ serviceName: 'PIMLABOURCAMPANYService', interfaceName: 'FetchDefault'}"
   valueitem='pimlabourcampanyid' 
   :value="data.pimlabourcampanyname" 
   editortype="dropdown" 
@@ -641,8 +641,8 @@ export default class MainBase extends Vue implements ControlInterface {
         ormorgname: [
             { type: 'string', message: '合同管理单位 值必须为字符串类型', trigger: 'change' },
             { type: 'string', message: '合同管理单位 值必须为字符串类型', trigger: 'blur' },
-            { required: true, type: 'string', message: '合同管理单位 值不能为空', trigger: 'change' },
-            { required: true, type: 'string', message: '合同管理单位 值不能为空', trigger: 'blur' },
+            { required: false, type: 'string', message: '合同管理单位 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '合同管理单位 值不能为空', trigger: 'blur' },
         ],
         contractsignorgid: [
             { type: 'string', message: '签约主体单位标识 值必须为字符串类型', trigger: 'change' },

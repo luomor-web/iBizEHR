@@ -94,7 +94,7 @@
                 <el-table-column show-overflow-tooltip :prop="'dastate'" :label="$t('entities.pimarchives.main_2_grid.columns.dastate')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
-            <codelist :value="row.dastate" tag='DASTATE' codelistType='STATIC' renderMode="NUM" textSeparator="、" ></codelist>
+            <codelist :value="row.dastate" tag='DASTATE' codelistType='STATIC' renderMode="STR" valueSeparator=";" textSeparator="、" ></codelist>
                         </template>
                     </template>
                 </el-table-column>
@@ -979,9 +979,9 @@ export default class Main_2Base extends Vue implements ControlInterface {
             name: 'dastate',
             srfkey: 'DASTATE',
             codelistType : 'STATIC',
-            renderMode: 'number',
             textSeparator: '、',
-            valueSeparator: ',',
+            renderMode: 'string',
+            valueSeparator: ";",
           },
         ];
         let _this = this;
