@@ -131,13 +131,6 @@
                     </template>
                 </el-table-column>
             </template>
-            <template v-if="getColumnState('syyf')">
-                <el-table-column show-overflow-tooltip :prop="'syyf'" :label="$t('entities.pimdistirbution.maturityduegrid_2_grid.columns.syyf')" :width="100"  :align="'left'" :sortable="'custom'">
-                    <template v-slot="{row,column}">
-                        <span>{{row.syyf}}</span>
-                    </template>
-                </el-table-column>
-            </template>
             <template v-if="adaptiveState">
                 <el-table-column></el-table-column>
             </template>
@@ -701,13 +694,6 @@ export default class MaturityDueGrid_2Base extends Vue implements ControlInterfa
             name: 'rzjssj',
             label: '借调结束时间',
             langtag: 'entities.pimdistirbution.maturityduegrid_2_grid.columns.rzjssj',
-            show: true,
-            util: 'PX'
-        },
-        {
-            name: 'syyf',
-            label: '剩余月份',
-            langtag: 'entities.pimdistirbution.maturityduegrid_2_grid.columns.syyf',
             show: true,
             util: 'PX'
         },

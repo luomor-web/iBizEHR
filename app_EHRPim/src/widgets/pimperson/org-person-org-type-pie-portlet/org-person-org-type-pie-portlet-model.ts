@@ -126,9 +126,6 @@ export default class OrgPersonOrgTypePieModel {
         name: 'csd',
       },
       {
-        name: 'gzdq_color',
-      },
-      {
         name: 'jtlxrdh',
       },
       {
@@ -172,9 +169,6 @@ export default class OrgPersonOrgTypePieModel {
       },
       {
         name: 'zt',
-      },
-      {
-        name: 'gzdq',
       },
       {
         name: 'nl',

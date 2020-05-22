@@ -38,7 +38,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('xb')">
-                <el-table-column show-overflow-tooltip :prop="'xb'" :label="$t('entities.pimfaminfo.main_grid.columns.xb')" :width="50"  :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'xb'" :label="$t('entities.pimfaminfo.main_grid.columns.xb')" :width="80"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
             <codelist :value="row.xb" tag='PIMCL_XB' codelistType='DYNAMIC' ></codelist>
@@ -47,7 +47,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('nl')">
-                <el-table-column show-overflow-tooltip :prop="'nl'" :label="$t('entities.pimfaminfo.main_grid.columns.nl')" :width="50"  :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'nl'" :label="$t('entities.pimfaminfo.main_grid.columns.nl')" :width="80"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.nl}}</span>
                     </template>

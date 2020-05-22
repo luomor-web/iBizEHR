@@ -102,44 +102,26 @@ export default {
 		uiactions: {
 		},
 	},
-	gridviewtoolbar2_toolbar: {
+	gridviewtoolbar_toolbar: {
 		deuiaction1: {
-			caption: "New",
-			tip: "New",
+			caption: "新建",
+			tip: "新建",
 		},
 		deuiaction2: {
 			caption: "保存",
 			tip: "保存",
 		},
-		deuiaction4: {
+		deuiaction3: {
 			caption: "Remove",
 			tip: "Remove {0}",
 		},
-		deuiaction3: {
-			caption: "关闭行编辑",
-			tip: "关闭行编辑",
+		deuiaction4: {
+			caption: "导入",
+			tip: "导入",
 		},
-	},
-	gridviewtoolbar_toolbar: {
-		deuiaction1: {
-			caption: "开启行编辑",
-			tip: "开启行编辑",
-		},
-		tbitem16: {
-			caption: "其它",
-			tip: "其它",
-		},
-		tbitem23: {
-			caption: "数据导入",
-			tip: "数据导入",
-		},
-		tbitem13: {
+		deuiaction5: {
 			caption: "Export",
 			tip: "Export {0} Data To Excel",
-		},
-		tbitem18: {
-			caption: "Help",
-			tip: "Help",
 		},
 	},
 	editviewtoolbar_toolbar: {

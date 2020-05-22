@@ -53,7 +53,7 @@ export default class LabServices_EditGridService extends ControlService {
     public pimpersonService: PIMPERSONService = new PIMPERSONService();
 
     /**
-     * 组织管理***服务对象
+     * 组织管理服务对象
      *
      * @type {ORMORGService}
      * @memberof LabServices_EditGridService

@@ -67,11 +67,6 @@ export default class StopRemindGridModel {
           dataType: 'GUID',
         },
         {
-          name: 'personorgid',
-          prop: 'personorgid',
-          dataType: 'PICKUPDATA',
-        },
-        {
           name: 'htbh',
           prop: 'htbh',
           dataType: 'TEXT',
@@ -132,14 +127,14 @@ export default class StopRemindGridModel {
           dataType: 'PICKUPDATA',
         },
         {
-          name: 'ormsignorgid',
-          prop: 'ormsignorgid',
-          dataType: 'PICKUP',
-        },
-        {
           name: 'pimlabourcampanyname',
           prop: 'pimlabourcampanyname',
           dataType: 'PICKUPTEXT',
+        },
+        {
+          name: 'ormsignorgid',
+          prop: 'ormsignorgid',
+          dataType: 'PICKUP',
         },
         {
           name: 'contracttype_text',

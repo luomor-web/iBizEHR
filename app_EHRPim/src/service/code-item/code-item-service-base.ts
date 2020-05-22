@@ -4,7 +4,7 @@ import EntityService from '../entity-service';
 
 
 /**
- * 代码项***服务对象基类
+ * 代码项服务对象基类
  *
  * @export
  * @class CodeItemServiceBase

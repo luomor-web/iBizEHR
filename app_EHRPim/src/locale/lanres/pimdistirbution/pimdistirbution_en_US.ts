@@ -17,9 +17,7 @@ export default {
     gzdq: '工作地区',
     createdate: '建立时间',
     pimworkhistoryid: '履历id',
-    syyf_color: '剩余月份颜色',
     orgid: '组织ID',
-    syyf: '剩余月份',
     isoutrecord: '外单位履历',
     pimdistirbutionname: '分配信息名称',
     updatedate: '更新时间',
@@ -473,7 +471,6 @@ export default {
 			jdzt: "借调状态",
 			rzkssj: "借调开始时间",
 			rzjssj: "借调结束时间",
-			syyf: "剩余月份",
 		},
 		uiactions: {
 		},
@@ -492,7 +489,6 @@ export default {
 			ormpostname: "新岗位",
 			rzkssj: "借调开始时间",
 			rzjssj: "借调结束时间",
-			syyf: "剩余月份",
 		},
 		uiactions: {
 		},

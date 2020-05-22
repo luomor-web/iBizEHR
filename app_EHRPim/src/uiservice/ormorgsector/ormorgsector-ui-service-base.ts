@@ -5,7 +5,7 @@ import { Subject } from 'rxjs';
 import ORMORGSECTORService from '@/service/ormorgsector/ormorgsector-service';
 
 /**
- * 部门管理***UI服务对象基类
+ * 部门管理UI服务对象基类
  *
  * @export
  * @class ORMORGSECTORUIServiceBase

@@ -5,7 +5,7 @@ import { Subject } from 'rxjs';
 import CodeItemService from '@/service/code-item/code-item-service';
 
 /**
- * 代码项***UI服务对象基类
+ * 代码项UI服务对象基类
  *
  * @export
  * @class CodeItemUIServiceBase

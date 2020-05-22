@@ -32,11 +32,6 @@ export default class GZDQModel {
           dataType: 'TEXT',
         },
         {
-          name: 'gzdq',
-          prop: 'gzdq',
-          dataType: 'TEXT',
-        },
-        {
           name: 'gzkssj',
           prop: 'gzkssj',
           dataType: 'DATE',
@@ -114,11 +109,6 @@ export default class GZDQModel {
         {
           name: 'gzbm',
           prop: 'gzbm',
-          dataType: 'TEXT',
-        },
-        {
-          name: 'gzdq_color',
-          prop: 'gzdq_color',
           dataType: 'TEXT',
         },
         {

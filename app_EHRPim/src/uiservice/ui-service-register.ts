@@ -86,6 +86,7 @@ export class UIServiceRegister {
         this.allUIService.set('pimfaminfo', () => import('@/uiservice/pimfaminfo/pimfaminfo-ui-service'));
         this.allUIService.set('pimperson', () => import('@/uiservice/pimperson/pimperson-ui-service'));
         this.allUIService.set('pimtitlecatalogue', () => import('@/uiservice/pimtitlecatalogue/pimtitlecatalogue-ui-service'));
+        this.allUIService.set('ormuser', () => import('@/uiservice/ormuser/ormuser-ui-service'));
         this.allUIService.set('pimpatent', () => import('@/uiservice/pimpatent/pimpatent-ui-service'));
         this.allUIService.set('pimlwgz', () => import('@/uiservice/pimlwgz/pimlwgz-ui-service'));
         this.allUIService.set('pimeducation', () => import('@/uiservice/pimeducation/pimeducation-ui-service'));

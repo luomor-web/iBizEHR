@@ -1,7 +1,7 @@
 import ORMORGUIServiceBase from './ormorg-ui-service-base';
 
 /**
- * 组织管理***UI服务对象
+ * 组织管理UI服务对象
  *
  * @export
  * @class ORMORGUIService

@@ -231,25 +231,6 @@ export const viewstate: any = {
             ],
         },
         {
-            viewtag: '1e662f352a8f29e529e90f29e3b40f67',
-            viewmodule: 'PIM',
-            viewname: 'PIMSTAFFTYPEGridView',
-            viewaction: '',
-            viewdatachange: false,
-            refviews: [
-                '003c49714be39f21f9a26d87a41095c0',
-            ],
-        },
-        {
-            viewtag: '1ee4cf83c19e727d121adf1c843509ac',
-            viewmodule: 'PCM',
-            viewname: 'PCMJXSGZEditView',
-            viewaction: '',
-            viewdatachange: false,
-            refviews: [
-            ],
-        },
-        {
             viewtag: '202329c082bd388ad69e64e9dae9e1ee',
             viewmodule: 'PIM',
             viewname: 'PIMGWTYPEMPickupView',
@@ -257,16 +238,6 @@ export const viewstate: any = {
             viewdatachange: false,
             refviews: [
                 '0e6691a6a85dc66ca1339f4d8ad1e912',
-            ],
-        },
-        {
-            viewtag: '214df41357af6620ae908b4e429d558b',
-            viewmodule: 'PIM',
-            viewname: 'PIMMAJORSETYPEGridView',
-            viewaction: '',
-            viewdatachange: false,
-            refviews: [
-                '275b635e5e3dc5c88ddeb708e374cade',
             ],
         },
         {
@@ -328,16 +299,6 @@ export const viewstate: any = {
             viewdatachange: false,
             refviews: [
                 '96b58b12bf963897510cd9e131a6365b',
-            ],
-        },
-        {
-            viewtag: '25198e8aef450efde8ac670d85e3622c',
-            viewmodule: 'PCM',
-            viewname: 'PCMJXSGZGridView',
-            viewaction: '',
-            viewdatachange: false,
-            refviews: [
-                '1ee4cf83c19e727d121adf1c843509ac',
             ],
         },
         {
@@ -1123,16 +1084,6 @@ export const viewstate: any = {
             ],
         },
         {
-            viewtag: '81cf0534845590aa2ba94ec70460a34c',
-            viewmodule: 'PIM',
-            viewname: 'ARCHIVALCATALOGUEGridView',
-            viewaction: '',
-            viewdatachange: false,
-            refviews: [
-                '08c1c77ca3cea710c6744dfce3699e61',
-            ],
-        },
-        {
             viewtag: '826938fb17537ee4d18e8be9c06b4290',
             viewmodule: 'PIM',
             viewname: 'PIMTITLECATALOGUEPickupGridView',
@@ -1332,8 +1283,6 @@ export const viewstate: any = {
                 'e1fa33d9a9ef62606b265a129ed77cbe',
                 '08c5124c92aeb7656cc47a957f4d95a8',
                 'cf07226cf97f3e8429dd04917035b611',
-                '81cf0534845590aa2ba94ec70460a34c',
-                '1e662f352a8f29e529e90f29e3b40f67',
                 '64dfa07027b70064fc6dab4cbeac0d2d',
                 'a244f9fd24091560df1d952e8a6a282e',
                 'ed44db0490d330fba632498accfecc6a',
@@ -1342,7 +1291,6 @@ export const viewstate: any = {
                 '5c31c4266d7004246153b825cfa2ca7e',
                 '053ad31fdeb2b1fad51395e7e1a81c67',
                 '78feec040fa2971a96fac3dbd7030080',
-                '214df41357af6620ae908b4e429d558b',
                 '95c478e45c1b2660c25bb76dd2ea22d3',
                 'adafd3d52426b170e4c9731d99309ecb',
                 'b1b7fe14a7dd0761bcf4844d0377ddde',
@@ -1352,7 +1300,6 @@ export const viewstate: any = {
                 '31d665cddd46d10553d2cc3e093f0d3c',
                 'eb48eb4459e5cfe548c9a052b7097548',
                 'a9ed8a2bef67f5ccfcde130ed72c28ba',
-                '25198e8aef450efde8ac670d85e3622c',
                 '43e9630b7e34dc56c2ab28ebbea464d0',
                 'b67bcd30b457b30ca3f0de999d97cef4',
                 '7268dd996b966c5cc72c0f62ae16e162',

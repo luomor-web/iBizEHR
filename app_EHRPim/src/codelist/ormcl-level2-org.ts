@@ -61,7 +61,7 @@ export default class ORMCL_LEVEL2ORG {
     }
 
     /**
-     * 组织管理***应用实体服务对象
+     * 组织管理应用实体服务对象
      *
      * @type {ORMORGService}
      * @memberof ORMCL_LEVEL2ORG

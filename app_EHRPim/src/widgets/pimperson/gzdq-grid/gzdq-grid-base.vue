@@ -88,13 +88,6 @@
                     </template>
                 </el-table-column>
             </template>
-            <template v-if="getColumnState('gzdq')">
-                <el-table-column show-overflow-tooltip :prop="'gzdq'" :label="$t('entities.pimperson.gzdq_grid.columns.gzdq')" :width="150"  :align="'left'" :sortable="'custom'">
-                    <template v-slot="{row,column}">
-                        <span>{{row.gzdq}}</span>
-                    </template>
-                </el-table-column>
-            </template>
             <template v-if="adaptiveState">
                 <el-table-column></el-table-column>
             </template>
@@ -623,13 +616,6 @@ export default class GZDQBase extends Vue implements ControlInterface {
             name: 'gzjssj',
             label: '挂职结束时间',
             langtag: 'entities.pimperson.gzdq_grid.columns.gzjssj',
-            show: true,
-            util: 'PX'
-        },
-        {
-            name: 'gzdq',
-            label: '挂职到期(月)',
-            langtag: 'entities.pimperson.gzdq_grid.columns.gzdq',
             show: true,
             util: 'PX'
         },

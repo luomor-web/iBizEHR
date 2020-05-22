@@ -13,7 +13,7 @@ import OrgPNumModel from './org-pnum-list-model';
 export default class OrgPNumService extends ControlService {
 
     /**
-     * 组织管理***服务对象
+     * 组织管理服务对象
      *
      * @type {ORMORGService}
      * @memberof OrgPNumService

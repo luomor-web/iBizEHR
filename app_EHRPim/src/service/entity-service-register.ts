@@ -86,6 +86,7 @@ export class EntityServiceRegister {
         this.allEntityService.set('pimfaminfo', () => import('@/service/pimfaminfo/pimfaminfo-service'));
         this.allEntityService.set('pimperson', () => import('@/service/pimperson/pimperson-service'));
         this.allEntityService.set('pimtitlecatalogue', () => import('@/service/pimtitlecatalogue/pimtitlecatalogue-service'));
+        this.allEntityService.set('ormuser', () => import('@/service/ormuser/ormuser-service'));
         this.allEntityService.set('pimpatent', () => import('@/service/pimpatent/pimpatent-service'));
         this.allEntityService.set('pimlwgz', () => import('@/service/pimlwgz/pimlwgz-service'));
         this.allEntityService.set('pimeducation', () => import('@/service/pimeducation/pimeducation-service'));

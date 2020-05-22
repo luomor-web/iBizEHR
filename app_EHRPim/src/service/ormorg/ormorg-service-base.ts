@@ -4,7 +4,7 @@ import EntityService from '../entity-service';
 
 
 /**
- * 组织管理***服务对象基类
+ * 组织管理服务对象基类
  *
  * @export
  * @class ORMORGServiceBase

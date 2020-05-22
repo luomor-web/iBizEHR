@@ -45,6 +45,7 @@ import pimqualtype_zh_CN from '@locale/lanres/pimqualtype/pimqualtype_zh_CN';
 import pimfaminfo_zh_CN from '@locale/lanres/pimfaminfo/pimfaminfo_zh_CN';
 import pimperson_zh_CN from '@locale/lanres/pimperson/pimperson_zh_CN';
 import pimtitlecatalogue_zh_CN from '@locale/lanres/pimtitlecatalogue/pimtitlecatalogue_zh_CN';
+import ormuser_zh_CN from '@locale/lanres/ormuser/ormuser_zh_CN';
 import pimpatent_zh_CN from '@locale/lanres/pimpatent/pimpatent_zh_CN';
 import pimlwgz_zh_CN from '@locale/lanres/pimlwgz/pimlwgz_zh_CN';
 import pimeducation_zh_CN from '@locale/lanres/pimeducation/pimeducation_zh_CN';
@@ -168,15 +169,11 @@ export default {
                 menuitem33: '老干部活动',
                 menuitem34: '费用台账',
                 menuitem19: '标准化数据设置',
-                menuitem35: '员工类型',
                 menuitem36: '合同类别',
                 menuitem37: '合同类型',
-                menuitem38: '专业序列类型',
-                menuitem39: '见习期',
                 menuitem40: '执业资格证书',
                 menuitem41: '岗位(技能)证书',
                 menuitem43: '职称目录',
-                menuitem42: '档案类别',
                 menuitem44: '档案室',
             },
         },
@@ -229,6 +226,7 @@ export default {
         pimfaminfo: pimfaminfo_zh_CN,
         pimperson: pimperson_zh_CN,
         pimtitlecatalogue: pimtitlecatalogue_zh_CN,
+        ormuser: ormuser_zh_CN,
         pimpatent: pimpatent_zh_CN,
         pimlwgz: pimlwgz_zh_CN,
         pimeducation: pimeducation_zh_CN,

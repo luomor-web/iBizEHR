@@ -90,17 +90,6 @@ export default class MainModel {
           name: 'pimarchiveschange',
           prop: 'pimarchiveschangeid',
         },
-      {
-        name: 'n_ygbh_like',
-        prop: 'n_ygbh_like',
-        dataType: 'PICKUPDATA',
-      },
-      {
-        name: 'n_pimpersonname_like',
-        prop: 'n_pimpersonname_like',
-        dataType: 'PICKUPDATA',
-      },
-
         {
           name:'size',
           prop:'size'

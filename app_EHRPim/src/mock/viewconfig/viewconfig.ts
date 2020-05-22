@@ -505,7 +505,7 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
         },
         "ormorgpickupgridview": {
             "title": "组织管理选择表格视图",
-            "caption": "组织管理***",
+            "caption": "组织管理",
             "viewtype": "DEPICKUPGRIDVIEW",
             "viewmodule": "ORM",
             "viewname": "ORMORGPickupGridView",
@@ -1193,7 +1193,7 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
         },
         "ormorgxjpickupgridview": {
             "title": "组织管理选择表格视图",
-            "caption": "组织管理***",
+            "caption": "组织管理",
             "viewtype": "DEPICKUPGRIDVIEW",
             "viewmodule": "ORM",
             "viewname": "ORMORGXjPickupGridView",
@@ -2433,7 +2433,7 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
         },
         "ormorgsectorpickupgridview": {
             "title": "部门管理选择表格视图",
-            "caption": "部门管理***",
+            "caption": "部门管理",
             "viewtype": "DEPICKUPGRIDVIEW",
             "viewmodule": "ORM",
             "viewname": "ORMORGSECTORPickupGridView",
@@ -2641,7 +2641,7 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
         },
         "ormorgsectorpickupview": {
             "title": "部门管理数据选择视图",
-            "caption": "部门管理***",
+            "caption": "部门管理",
             "viewtype": "DEPICKUPVIEW",
             "viewmodule": "ORM",
             "viewname": "ORMORGSECTORPickupView",
@@ -2937,7 +2937,7 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
         },
         "ormorgallleveltwoorgpickupview": {
             "title": "管理单位",
-            "caption": "组织管理***",
+            "caption": "组织管理",
             "viewtype": "DEPICKUPVIEW",
             "viewmodule": "ORM",
             "viewname": "ORMORGAllLevelTwoOrgPickupView",
@@ -3921,7 +3921,7 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
         },
         "ormorgpickupview": {
             "title": "组织管理数据选择视图",
-            "caption": "组织管理***",
+            "caption": "组织管理",
             "viewtype": "DEPICKUPVIEW",
             "viewmodule": "ORM",
             "viewname": "ORMORGPickupView",
@@ -3977,7 +3977,7 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
         },
         "ormorgxjpickupview": {
             "title": "组织管理数据选择视图",
-            "caption": "组织管理***",
+            "caption": "组织管理",
             "viewtype": "DEPICKUPVIEW",
             "viewmodule": "ORM",
             "viewname": "ORMORGXjPickupView",

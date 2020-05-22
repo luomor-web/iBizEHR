@@ -27,14 +27,19 @@ export default class MaturityDueGrid_2Model {
     }else{
 		  return [
         {
+          name: 'ygw',
+          prop: 'ygw',
+          dataType: 'SSCODELIST',
+        },
+        {
           name: 'ygbh',
           prop: 'ygbh',
           dataType: 'PICKUPDATA',
         },
         {
-          name: 'ormpostname',
-          prop: 'ormpostname',
-          dataType: 'PICKUPTEXT',
+          name: 'ormpostid',
+          prop: 'ormpostid',
+          dataType: 'PICKUP',
         },
         {
           name: 'ormorgsectorid',
@@ -42,8 +47,18 @@ export default class MaturityDueGrid_2Model {
           dataType: 'PICKUP',
         },
         {
-          name: 'ormpostid',
-          prop: 'ormpostid',
+          name: 'ormpostname',
+          prop: 'ormpostname',
+          dataType: 'PICKUPTEXT',
+        },
+        {
+          name: 'rzkssj',
+          prop: 'rzkssj',
+          dataType: 'DATE',
+        },
+        {
+          name: 'pimpersonid',
+          prop: 'pimpersonid',
           dataType: 'PICKUP',
         },
         {
@@ -62,59 +77,14 @@ export default class MaturityDueGrid_2Model {
           dataType: 'PICKUPTEXT',
         },
         {
-          name: 'srfkey',
-          prop: 'pimdistirbutionid',
-          dataType: 'GUID',
-        },
-        {
           name: 'srfdataaccaction',
           prop: 'pimdistirbutionid',
           dataType: 'GUID',
         },
         {
-          name: 'ormdutyid',
-          prop: 'ormdutyid',
-          dataType: 'PICKUP',
-        },
-        {
-          name: 'yzw',
-          prop: 'yzw',
-          dataType: 'SSCODELIST',
-        },
-        {
-          name: 'ormpostid1',
-          prop: 'ormpostid1',
-          dataType: 'PICKUP',
-        },
-        {
-          name: 'shortname',
-          prop: 'shortname',
-          dataType: 'PICKUPDATA',
-        },
-        {
-          name: 'ygw',
-          prop: 'ygw',
-          dataType: 'SSCODELIST',
-        },
-        {
-          name: 'rzkssj',
-          prop: 'rzkssj',
-          dataType: 'DATE',
-        },
-        {
-          name: 'pimpersonid',
-          prop: 'pimpersonid',
-          dataType: 'PICKUP',
-        },
-        {
-          name: 'syyf',
-          prop: 'syyf',
-          dataType: 'TEXT',
-        },
-        {
-          name: 'syyf_color',
-          prop: 'syyf_color',
-          dataType: 'TEXT',
+          name: 'srfkey',
+          prop: 'pimdistirbutionid',
+          dataType: 'GUID',
         },
         {
           name: 'ormdutyname',
@@ -127,13 +97,18 @@ export default class MaturityDueGrid_2Model {
           dataType: 'TEXT',
         },
         {
+          name: 'yzzid',
+          prop: 'yzzid',
+          dataType: 'PICKUP',
+        },
+        {
           name: 'yzzzzdzs',
           prop: 'yzzzzdzs',
           dataType: 'PICKUPDATA',
         },
         {
-          name: 'yzzid',
-          prop: 'yzzid',
+          name: 'ormdutyid',
+          prop: 'ormdutyid',
           dataType: 'PICKUP',
         },
         {
@@ -142,9 +117,24 @@ export default class MaturityDueGrid_2Model {
           dataType: 'PICKUPDATA',
         },
         {
+          name: 'yzw',
+          prop: 'yzw',
+          dataType: 'SSCODELIST',
+        },
+        {
+          name: 'ormpostid1',
+          prop: 'ormpostid1',
+          dataType: 'PICKUP',
+        },
+        {
           name: 'ybmid',
           prop: 'ybmid',
           dataType: 'PICKUP',
+        },
+        {
+          name: 'shortname',
+          prop: 'shortname',
+          dataType: 'PICKUPDATA',
         },
         {
           name: 'rzjssj',

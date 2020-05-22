@@ -117,24 +117,6 @@ export default {
 		uiactions: {
 		},
 	},
-	gridviewtoolbar_toolbar: {
-		tbitem16: {
-			caption: "其它",
-			tip: "其它",
-		},
-		tbitem23: {
-			caption: "数据导入",
-			tip: "数据导入",
-		},
-		tbitem13: {
-			caption: "Export",
-			tip: "Export {0} Data To Excel",
-		},
-		tbitem18: {
-			caption: "Help",
-			tip: "Help",
-		},
-	},
 	editviewtoolbar_toolbar: {
 		tbitem3: {
 			caption: "Save",

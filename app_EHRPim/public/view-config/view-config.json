@@ -559,7 +559,7 @@
     },
     "ormorgpickupgridview": {
         "title": "组织管理选择表格视图",
-        "caption": "组织管理***",
+        "caption": "组织管理",
         "viewtype": "DEPICKUPGRIDVIEW",
         "viewmodule": "ORM",
         "viewname": "ORMORGPickupGridView",
@@ -1333,7 +1333,7 @@
     },
     "ormorgxjpickupgridview": {
         "title": "组织管理选择表格视图",
-        "caption": "组织管理***",
+        "caption": "组织管理",
         "viewtype": "DEPICKUPGRIDVIEW",
         "viewmodule": "ORM",
         "viewname": "ORMORGXjPickupGridView",
@@ -2728,7 +2728,7 @@
     },
     "ormorgsectorpickupgridview": {
         "title": "部门管理选择表格视图",
-        "caption": "部门管理***",
+        "caption": "部门管理",
         "viewtype": "DEPICKUPGRIDVIEW",
         "viewmodule": "ORM",
         "viewname": "ORMORGSECTORPickupGridView",
@@ -2962,7 +2962,7 @@
     },
     "ormorgsectorpickupview": {
         "title": "部门管理数据选择视图",
-        "caption": "部门管理***",
+        "caption": "部门管理",
         "viewtype": "DEPICKUPVIEW",
         "viewmodule": "ORM",
         "viewname": "ORMORGSECTORPickupView",
@@ -3295,7 +3295,7 @@
     },
     "ormorgallleveltwoorgpickupview": {
         "title": "管理单位",
-        "caption": "组织管理***",
+        "caption": "组织管理",
         "viewtype": "DEPICKUPVIEW",
         "viewmodule": "ORM",
         "viewname": "ORMORGAllLevelTwoOrgPickupView",
@@ -4402,7 +4402,7 @@
     },
     "ormorgpickupview": {
         "title": "组织管理数据选择视图",
-        "caption": "组织管理***",
+        "caption": "组织管理",
         "viewtype": "DEPICKUPVIEW",
         "viewmodule": "ORM",
         "viewname": "ORMORGPickupView",
@@ -4465,7 +4465,7 @@
     },
     "ormorgxjpickupview": {
         "title": "组织管理数据选择视图",
-        "caption": "组织管理***",
+        "caption": "组织管理",
         "viewtype": "DEPICKUPVIEW",
         "viewmodule": "ORM",
         "viewname": "ORMORGXjPickupView",

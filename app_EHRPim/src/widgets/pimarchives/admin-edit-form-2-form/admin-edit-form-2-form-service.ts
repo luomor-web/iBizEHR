@@ -52,7 +52,7 @@ export default class AdminEditForm_2Service extends ControlService {
     public pimpersonService: PIMPERSONService = new PIMPERSONService();
 
     /**
-     * 组织管理***服务对象
+     * 组织管理服务对象
      *
      * @type {ORMORGService}
      * @memberof AdminEditForm_2Service

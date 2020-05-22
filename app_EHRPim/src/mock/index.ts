@@ -54,6 +54,7 @@ import './entity/pimqualtypes/pimqualtypes';
 import './entity/pimfaminfos/pimfaminfos';
 import './entity/pimpersons/pimpersons';
 import './entity/pimtitlecatalogues/pimtitlecatalogues';
+import './entity/ormusers/ormusers';
 import './entity/pimpatents/pimpatents';
 import './entity/pimlwgzs/pimlwgzs';
 import './entity/pimeducations/pimeducations';
