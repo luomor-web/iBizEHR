@@ -5,3 +5,13 @@ spring:
     name: ehr
   main:
     allow-bean-definition-overriding: true
+
+  cloud:
+    nacos:
+      discovery:
+        register-enabled: false
+  datasource:
+    isSyncDBSchema: true
+    username: BPMEHR
+    password: 'sys'
+    #url: jdbc:oracle:thin:@127.0.0.1:1521:localorcl    
