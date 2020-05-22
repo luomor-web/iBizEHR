@@ -1938,7 +1938,7 @@
         </createTable>
     </changeSet>
     <!--输出实体[ORMRANK]数据结构 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="tab-ormrank-22-47">
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-ormrank-31-47">
         <createTable tableName="T_ORMRANK">
                 <column name="CREATEDATE" remarks="" type="DATETIME">
                 </column>
@@ -2396,7 +2396,7 @@
         </createTable>
     </changeSet>
     <!--输出实体[ORMORG]数据结构 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="tab-ormorg-332-58">
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-ormorg-334-58">
         <createTable tableName="T_SRFORG">
                 <column name="BTQY" remarks="" type="VARCHAR(60)">
                 </column>
@@ -8268,7 +8268,7 @@
         </createTable>
     </changeSet>
     <!--输出实体[ORMPOST]数据结构 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="tab-ormpost-61-214">
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-ormpost-81-214">
         <createTable tableName="T_ORMPOST">
                 <column name="CREATEMAN" remarks="" type="VARCHAR(60)">
                 </column>
@@ -10219,7 +10219,7 @@
         </createTable>
     </changeSet>
     <!--输出实体[ORMDUTY]数据结构 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="tab-ormduty-56-272">
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-ormduty-69-272">
         <createTable tableName="T_ORMDUTY">
                 <column name="ORMDUTYID" remarks="" type="VARCHAR(100)">
                     <constraints primaryKey="true" primaryKeyName="PK_ORMDUTY_ORMDUTYID"/>
@@ -11684,7 +11684,7 @@
         <!--输出实体[PARJXKHXHZ]外键关系 -->
         <!--输出实体[PCMRZGL]外键关系 -->
         <!--输出实体[ORMORG]外键关系 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-ormorg-332-385">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-ormorg-334-385">
        <addForeignKeyConstraint baseColumnNames="PORGID" baseTableName="T_SRFORG" constraintName="DER1N_ORMORG_ORMORG_PORGID" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="ORGID" referencedTableName="T_SRFORG" validate="true"/>
     </changeSet>
         <!--输出实体[SALSTDZX]外键关系 -->
@@ -12500,7 +12500,7 @@
        <addForeignKeyConstraint baseColumnNames="ORMPOSTID" baseTableName="T_PCMRECRUITMENT" constraintName="DER1N_PCMRECRUITMENT_ORMPOST_O" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="ORMPOSTID" referencedTableName="T_ORMPOST" validate="true"/>
     </changeSet>
         <!--输出实体[ORMPOST]外键关系 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-ormpost-61-621">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-ormpost-81-621">
        <addForeignKeyConstraint baseColumnNames="ORMORGID" baseTableName="T_ORMPOST" constraintName="DER1N_ORMPOST_ORMORG_ORMORGID" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="ORGID" referencedTableName="T_SRFORG" validate="true"/>
     </changeSet>
         <!--输出实体[PCMGBHMC]外键关系 -->
