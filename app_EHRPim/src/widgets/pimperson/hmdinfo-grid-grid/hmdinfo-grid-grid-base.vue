@@ -22,14 +22,14 @@
                 <el-table-column align="center" type='selection' :width="checkboxColWidth"></el-table-column>
             </template>
             <template v-if="getColumnState('ygbh')">
-                <el-table-column show-overflow-tooltip :prop="'ygbh'" :label="$t('entities.pimperson.hmdinfogrid_grid.columns.ygbh')" :width="120" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'ygbh'" :label="$t('entities.pimperson.hmdinfogrid_grid.columns.ygbh')" :width="120"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.ygbh}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('pimpersonname')">
-                <el-table-column show-overflow-tooltip :prop="'pimpersonname'" :label="$t('entities.pimperson.hmdinfogrid_grid.columns.pimpersonname')" :width="120" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'pimpersonname'" :label="$t('entities.pimperson.hmdinfogrid_grid.columns.pimpersonname')" :width="120"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <app-column-link deKeyField='pimperson' :context="JSON.parse(JSON.stringify(context))" :viewparams="JSON.parse(JSON.stringify(viewparams))" :data="row" :linkview="{viewname: 'pimpersonedit-view2', height: 0,width: 0,title: $t('entities.pimperson.views.editview2.title'),placement: 'DRAWER_TOP', isRedirectView: false,deResParameters: [
             ]
@@ -43,21 +43,21 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('zjhm')">
-                <el-table-column show-overflow-tooltip :prop="'zjhm'" :label="$t('entities.pimperson.hmdinfogrid_grid.columns.zjhm')" :width="200" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'zjhm'" :label="$t('entities.pimperson.hmdinfogrid_grid.columns.zjhm')" :width="200"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.zjhm}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('zzdzs')">
-                <el-table-column show-overflow-tooltip :prop="'zzdzs'" :label="$t('entities.pimperson.hmdinfogrid_grid.columns.zzdzs')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'zzdzs'" :label="$t('entities.pimperson.hmdinfogrid_grid.columns.zzdzs')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.zzdzs}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('ygzt')">
-                <el-table-column show-overflow-tooltip :prop="'ygzt'" :label="$t('entities.pimperson.hmdinfogrid_grid.columns.ygzt')" :width="120" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'ygzt'" :label="$t('entities.pimperson.hmdinfogrid_grid.columns.ygzt')" :width="120"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
             <codelist :value="row.ygzt" tag='PIMCL_YGZT' codelistType='DYNAMIC' ></codelist>
@@ -66,7 +66,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('hmd')">
-                <el-table-column show-overflow-tooltip :prop="'hmd'" :label="$t('entities.pimperson.hmdinfogrid_grid.columns.hmd')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'hmd'" :label="$t('entities.pimperson.hmdinfogrid_grid.columns.hmd')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
             <codelist :value="row.hmd" tag='YesNo' codelistType='STATIC' ></codelist>
@@ -75,7 +75,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('blacklistreasons')">
-                <el-table-column show-overflow-tooltip :prop="'blacklistreasons'" :label="$t('entities.pimperson.hmdinfogrid_grid.columns.blacklistreasons')" :width="500" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'blacklistreasons'" :label="$t('entities.pimperson.hmdinfogrid_grid.columns.blacklistreasons')" :width="500"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.blacklistreasons}}</span>
                     </template>
@@ -539,7 +539,7 @@ export default class HMDInfoGridBase extends Vue implements ControlInterface {
     * @type {number}
     * @memberof AppIndex
     */
-    protected checkboxColWidth: number = 34;
+    public checkboxColWidth: number = 34;
 
     /**
      * 是否允许拖动列宽
@@ -1282,7 +1282,7 @@ export default class HMDInfoGridBase extends Vue implements ControlInterface {
      * @memberof HMDInfoGrid
      */
 	public uiAction(row: any, tag: any, $event: any) {
-        this.rowClick(row, true);
+        // this.rowClick(row, true);
     }
 
     /**

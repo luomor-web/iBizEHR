@@ -62,8 +62,8 @@ export default class OrgVocNumListService extends ControlService {
             }else{
                 result =_appEntityService.FetchDefault(Context,Data, isloading);
             }
-            result.then((response) => {
-                this.handleResponse(action, response);
+            result.then(async (response) => {
+                await this.handleResponse(action, response);
                 resolve(response);
             }).catch(response => {
                 reject(response);

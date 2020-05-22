@@ -55,6 +55,15 @@ export default class PIMPERSONEditView2Base extends EditView2Base {
      */
     public appEntityService: PIMPERSONService = new PIMPERSONService;
 
+
+    /**
+     * 计数器服务对象集合
+     *
+     * @type {Array<*>}
+     * @memberof PIMPERSONEditView2Base
+     */    
+    public counterServiceArray:Array<any> = [];
+    
     /**
      * 数据变化
      *
@@ -90,7 +99,7 @@ export default class PIMPERSONEditView2Base extends EditView2Base {
 	 * @type {*}
 	 * @memberof PIMPERSONEditView2Base
 	 */
-    protected customViewNavContexts:any ={
+    public customViewNavContexts:any ={
     };
 
 	/**
@@ -99,7 +108,7 @@ export default class PIMPERSONEditView2Base extends EditView2Base {
 	 * @type {*}
 	 * @memberof PIMPERSONEditView2Base
 	 */
-    protected customViewParams:any ={
+    public customViewParams:any ={
     };
 
     /**
@@ -128,7 +137,7 @@ export default class PIMPERSONEditView2Base extends EditView2Base {
     /**
      * 视图状态订阅对象
      *
-     * @private
+     * @public
      * @type {Subject<{action: string, data: any}>}
      * @memberof PIMPERSONEditView2Base
      */

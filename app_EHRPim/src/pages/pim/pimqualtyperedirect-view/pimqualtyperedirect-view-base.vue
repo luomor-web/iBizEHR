@@ -35,6 +35,15 @@ export default class PIMQUALTYPERedirectViewBase extends WizardViewBase {
      */
     public appEntityService: PIMQUALTYPEService = new PIMQUALTYPEService;
 
+
+    /**
+     * 计数器服务对象集合
+     *
+     * @type {Array<*>}
+     * @memberof PIMQUALTYPERedirectViewBase
+     */    
+    public counterServiceArray:Array<any> = [];
+    
     /**
      * 数据变化
      *
@@ -70,7 +79,7 @@ export default class PIMQUALTYPERedirectViewBase extends WizardViewBase {
 	 * @type {*}
 	 * @memberof PIMQUALTYPERedirectViewBase
 	 */
-    protected customViewNavContexts:any ={
+    public customViewNavContexts:any ={
     };
 
 	/**
@@ -79,7 +88,7 @@ export default class PIMQUALTYPERedirectViewBase extends WizardViewBase {
 	 * @type {*}
 	 * @memberof PIMQUALTYPERedirectViewBase
 	 */
-    protected customViewParams:any ={
+    public customViewParams:any ={
     };
 
     /**
@@ -107,7 +116,7 @@ export default class PIMQUALTYPERedirectViewBase extends WizardViewBase {
     /**
      * 视图状态订阅对象
      *
-     * @private
+     * @public
      * @type {Subject<{action: string, data: any}>}
      * @memberof PIMQUALTYPERedirectViewBase
      */

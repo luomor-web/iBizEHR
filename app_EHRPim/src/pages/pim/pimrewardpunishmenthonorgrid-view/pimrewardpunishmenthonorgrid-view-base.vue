@@ -95,6 +95,15 @@ export default class PIMREWARDPUNISHMENTHONORGridViewBase extends GridViewBase {
      */
     public appEntityService: PIMREWARDPUNISHMENTService = new PIMREWARDPUNISHMENTService;
 
+
+    /**
+     * 计数器服务对象集合
+     *
+     * @type {Array<*>}
+     * @memberof PIMREWARDPUNISHMENTHONORGridViewBase
+     */    
+    public counterServiceArray:Array<any> = [];
+    
     /**
      * 数据变化
      *
@@ -130,7 +139,7 @@ export default class PIMREWARDPUNISHMENTHONORGridViewBase extends GridViewBase {
 	 * @type {*}
 	 * @memberof PIMREWARDPUNISHMENTHONORGridViewBase
 	 */
-    protected customViewNavContexts:any ={
+    public customViewNavContexts:any ={
     };
 
 	/**
@@ -139,7 +148,7 @@ export default class PIMREWARDPUNISHMENTHONORGridViewBase extends GridViewBase {
 	 * @type {*}
 	 * @memberof PIMREWARDPUNISHMENTHONORGridViewBase
 	 */
-    protected customViewParams:any ={
+    public customViewParams:any ={
     };
 
     /**
@@ -170,12 +179,11 @@ export default class PIMREWARDPUNISHMENTHONORGridViewBase extends GridViewBase {
     /**
      * 视图状态订阅对象
      *
-     * @private
+     * @public
      * @type {Subject<{action: string, data: any}>}
      * @memberof PIMREWARDPUNISHMENTHONORGridViewBase
      */
     public viewState: Subject<ViewState> = new Subject();
-
     /**
      * 工具栏模型
      *
@@ -332,6 +340,9 @@ export default class PIMREWARDPUNISHMENTHONORGridViewBase extends GridViewBase {
      */
     public newdata(args: any[],fullargs?:any[], params?: any, $event?: any, xData?: any) {
         const data: any = {};
+        if(args[0].srfsourcekey){
+            data.srfsourcekey = args[0].srfsourcekey;
+        }
         let curViewParam = JSON.parse(JSON.stringify(this.context));
         if(args.length >0){
             Object.assign(curViewParam,args[0]);

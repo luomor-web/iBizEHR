@@ -79,6 +79,15 @@ export default class PIMRESEARCHFINDINGSRESEARCHGridViewBase extends GridViewBas
      */
     public appEntityService: PIMRESEARCHFINDINGSService = new PIMRESEARCHFINDINGSService;
 
+
+    /**
+     * 计数器服务对象集合
+     *
+     * @type {Array<*>}
+     * @memberof PIMRESEARCHFINDINGSRESEARCHGridViewBase
+     */    
+    public counterServiceArray:Array<any> = [];
+    
     /**
      * 数据变化
      *
@@ -114,7 +123,7 @@ export default class PIMRESEARCHFINDINGSRESEARCHGridViewBase extends GridViewBas
 	 * @type {*}
 	 * @memberof PIMRESEARCHFINDINGSRESEARCHGridViewBase
 	 */
-    protected customViewNavContexts:any ={
+    public customViewNavContexts:any ={
     };
 
 	/**
@@ -123,7 +132,7 @@ export default class PIMRESEARCHFINDINGSRESEARCHGridViewBase extends GridViewBas
 	 * @type {*}
 	 * @memberof PIMRESEARCHFINDINGSRESEARCHGridViewBase
 	 */
-    protected customViewParams:any ={
+    public customViewParams:any ={
     };
 
     /**
@@ -153,12 +162,11 @@ export default class PIMRESEARCHFINDINGSRESEARCHGridViewBase extends GridViewBas
     /**
      * 视图状态订阅对象
      *
-     * @private
+     * @public
      * @type {Subject<{action: string, data: any}>}
      * @memberof PIMRESEARCHFINDINGSRESEARCHGridViewBase
      */
     public viewState: Subject<ViewState> = new Subject();
-
     /**
      * 工具栏模型
      *
@@ -224,19 +232,19 @@ export default class PIMRESEARCHFINDINGSRESEARCHGridViewBase extends GridViewBas
      */
     public toolbar_click($event: any, $event2?: any) {
         if (Object.is($event.tag, 'deuiaction1')) {
-            this.toolbar_deuiaction1_click($event, '', $event2);
+            this.toolbar_deuiaction1_click(null, '', $event2);
         }
         if (Object.is($event.tag, 'deuiaction2')) {
-            this.toolbar_deuiaction2_click($event, '', $event2);
+            this.toolbar_deuiaction2_click(null, '', $event2);
         }
         if (Object.is($event.tag, 'deuiaction3')) {
-            this.toolbar_deuiaction3_click($event, '', $event2);
+            this.toolbar_deuiaction3_click(null, '', $event2);
         }
         if (Object.is($event.tag, 'deuiaction4')) {
-            this.toolbar_deuiaction4_click($event, '', $event2);
+            this.toolbar_deuiaction4_click(null, '', $event2);
         }
         if (Object.is($event.tag, 'deuiaction5')) {
-            this.toolbar_deuiaction5_click($event, '', $event2);
+            this.toolbar_deuiaction5_click(null, '', $event2);
         }
     }
 
@@ -324,6 +332,9 @@ export default class PIMRESEARCHFINDINGSRESEARCHGridViewBase extends GridViewBas
         if (xData.getDatas && xData.getDatas instanceof Function) {
             datas = [...xData.getDatas()];
         }
+        if(params){
+          datas = [params];
+        }
         // 界面行为
         this.NewRow(datas, contextJO,paramJO,  $event, xData,this,"PIMRESEARCHFINDINGS");
     }
@@ -349,6 +360,9 @@ export default class PIMRESEARCHFINDINGSRESEARCHGridViewBase extends GridViewBas
         xData = this.$refs.grid;
         if (xData.getDatas && xData.getDatas instanceof Function) {
             datas = [...xData.getDatas()];
+        }
+        if(params){
+          datas = [params];
         }
         // 界面行为
         this.SaveRow(datas, contextJO,paramJO,  $event, xData,this,"PIMRESEARCHFINDINGS");
@@ -376,6 +390,9 @@ export default class PIMRESEARCHFINDINGSRESEARCHGridViewBase extends GridViewBas
         if (xData.getDatas && xData.getDatas instanceof Function) {
             datas = [...xData.getDatas()];
         }
+        if(params){
+          datas = [params];
+        }
         // 界面行为
         this.Remove(datas, contextJO,paramJO,  $event, xData,this,"PIMRESEARCHFINDINGS");
     }
@@ -401,6 +418,9 @@ export default class PIMRESEARCHFINDINGSRESEARCHGridViewBase extends GridViewBas
         xData = this.$refs.grid;
         if (xData.getDatas && xData.getDatas instanceof Function) {
             datas = [...xData.getDatas()];
+        }
+        if(params){
+          datas = [params];
         }
         // 界面行为
         this.Import(datas, contextJO,paramJO,  $event, xData,this,"PIMRESEARCHFINDINGS");
@@ -428,6 +448,9 @@ export default class PIMRESEARCHFINDINGSRESEARCHGridViewBase extends GridViewBas
         if (xData.getDatas && xData.getDatas instanceof Function) {
             datas = [...xData.getDatas()];
         }
+        if(params){
+          datas = [params];
+        }
         // 界面行为
         this.ExportExcel(datas, contextJO,paramJO,  $event, xData,this,"PIMRESEARCHFINDINGS");
     }
@@ -444,6 +467,9 @@ export default class PIMRESEARCHFINDINGSRESEARCHGridViewBase extends GridViewBas
      */
     public newdata(args: any[],fullargs?:any[], params?: any, $event?: any, xData?: any) {
         const data: any = {};
+        if(args[0].srfsourcekey){
+            data.srfsourcekey = args[0].srfsourcekey;
+        }
         let curViewParam = JSON.parse(JSON.stringify(this.context));
         if(args.length >0){
             Object.assign(curViewParam,args[0]);

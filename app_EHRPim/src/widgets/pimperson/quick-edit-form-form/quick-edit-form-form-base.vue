@@ -4,10 +4,10 @@
     <row >
             
 <div v-show="detailsModel.grouppanel1.visible">
-    <app-form-group layoutType="TABLE_12COL" titleStyle="" class='' uiActionGroup="detailsModel.grouppanel1.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.pimperson.quickeditform_form.details.grouppanel1')" :isShowCaption="false" uiStyle="DEFAULT" :titleBarCloseMode="0" :isInfoGroupMode="false" >    
+    <app-form-group layoutType="TABLE_12COL" titleStyle="" class='' :uiActionGroup="detailsModel.grouppanel1.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.pimperson.quickeditform_form.details.grouppanel1')" :isShowCaption="false" uiStyle="DEFAULT" :titleBarCloseMode="0" :isInfoGroupMode="false" >    
     <row>
         <div v-show="detailsModel.grouppanel4.visible">
-    <app-form-group layoutType="TABLE_12COL" titleStyle="" class='' uiActionGroup="detailsModel.grouppanel4.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.pimperson.quickeditform_form.details.grouppanel4')" :isShowCaption="false" uiStyle="DEFAULT" :titleBarCloseMode="0" :isInfoGroupMode="false" >    
+    <app-form-group layoutType="TABLE_12COL" titleStyle="" class='' :uiActionGroup="detailsModel.grouppanel4.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.pimperson.quickeditform_form.details.grouppanel4')" :isShowCaption="false" uiStyle="DEFAULT" :titleBarCloseMode="0" :isInfoGroupMode="false" >    
     <row>
         <i-col v-show="detailsModel.ygbh.visible" :style="{}"  :sm="{ span: 24, offset: 0 }" :md="{ span: 24, offset: 0 }" :lg="{ span: 24, offset: 0 }" :xl="{ span: 24, offset: 0 }">
     <app-form-item name='ygbh' :itemRules="this.rules.ygbh" class='' :caption="$t('entities.pimperson.quickeditform_form.details.ygbh')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.ygbh.error" :isEmptyCaption="false" labelPos="LEFT">
@@ -1296,7 +1296,11 @@ export default class QuickEditFormBase extends Vue implements ControlInterface {
                     this.load(data);
                 }
                 if (Object.is('loaddraft', action)) {
-                    this.loadDraft(data);
+                    if(this.context.srfsourcekey){
+                        this.copy(this.context.srfsourcekey);
+                    }else{
+                        this.loadDraft(data);
+                    }
                 }
                 if (Object.is('save', action)) {
                     this.save(data,data.showResultInfo);
@@ -1360,8 +1364,18 @@ export default class QuickEditFormBase extends Vue implements ControlInterface {
      * @param {*} [arg={}]
      * @memberof @memberof QuickEditForm
      */
-    public copy(arg: any = {}): void {
-        this.loadDraft(arg);
+    public copy(srfkey: string): void {
+        let copyData = this.$store.getters.getCopyData(srfkey);
+        copyData.srfkey = Util.createUUID();
+        copyData.pimperson = copyData.srfkey;
+        copyData.pimpersonid = copyData.srfkey;
+        Object.assign(this.context,{pimperson:copyData.pimperson})
+        this.data = copyData;
+        this.$nextTick(() => {
+          this.formState.next({ type: 'load', data: copyData });
+          this.data.srfuf = '0';
+          this.setFormEnableCond(this.data);
+        });
     }
 
     /**

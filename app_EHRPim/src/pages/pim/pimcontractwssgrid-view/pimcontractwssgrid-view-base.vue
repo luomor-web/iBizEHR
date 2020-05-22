@@ -9,7 +9,7 @@
     </template>
     <template slot="headerRight">
       <div class="view-header-right">
-        <app-header-menus :toolbarModel="toolBarModels" @menu-click="toolbar_click($event)" mode="view" :openMode="openMode" :isEnableQuickSearch="true" searchPlaceholder="请输入员工姓名" v-model="query" @search="onSearch($event)"/>
+        <app-header-menus :toolbarModel="toolBarModels" @menu-click="toolbar_click($event)" mode="view" :openMode="openMode" :isEnableQuickSearch="true" searchPlaceholder="员工姓名" v-model="query" @search="onSearch($event)"/>
       </div>
     </template>
     <template slot="content">
@@ -79,6 +79,15 @@ export default class PIMCONTRACTWSSGridViewBase extends GridViewBase {
      */
     public appEntityService: PIMCONTRACTService = new PIMCONTRACTService;
 
+
+    /**
+     * 计数器服务对象集合
+     *
+     * @type {Array<*>}
+     * @memberof PIMCONTRACTWSSGridViewBase
+     */    
+    public counterServiceArray:Array<any> = [];
+    
     /**
      * 数据变化
      *
@@ -114,7 +123,7 @@ export default class PIMCONTRACTWSSGridViewBase extends GridViewBase {
 	 * @type {*}
 	 * @memberof PIMCONTRACTWSSGridViewBase
 	 */
-    protected customViewNavContexts:any ={
+    public customViewNavContexts:any ={
     };
 
 	/**
@@ -123,7 +132,7 @@ export default class PIMCONTRACTWSSGridViewBase extends GridViewBase {
 	 * @type {*}
 	 * @memberof PIMCONTRACTWSSGridViewBase
 	 */
-    protected customViewParams:any ={
+    public customViewParams:any ={
     };
 
     /**
@@ -153,12 +162,11 @@ export default class PIMCONTRACTWSSGridViewBase extends GridViewBase {
     /**
      * 视图状态订阅对象
      *
-     * @private
+     * @public
      * @type {Subject<{action: string, data: any}>}
      * @memberof PIMCONTRACTWSSGridViewBase
      */
     public viewState: Subject<ViewState> = new Subject();
-
     /**
      * 工具栏模型
      *
@@ -218,10 +226,10 @@ export default class PIMCONTRACTWSSGridViewBase extends GridViewBase {
      */
     public toolbar_click($event: any, $event2?: any) {
         if (Object.is($event.tag, 'deuiaction4')) {
-            this.toolbar_deuiaction4_click($event, '', $event2);
+            this.toolbar_deuiaction4_click(null, '', $event2);
         }
         if (Object.is($event.tag, 'deuiaction5')) {
-            this.toolbar_deuiaction5_click($event, '', $event2);
+            this.toolbar_deuiaction5_click(null, '', $event2);
         }
     }
 
@@ -309,6 +317,9 @@ export default class PIMCONTRACTWSSGridViewBase extends GridViewBase {
         if (xData.getDatas && xData.getDatas instanceof Function) {
             datas = [...xData.getDatas()];
         }
+        if(params){
+          datas = [params];
+        }
         // 界面行为
         this.Import(datas, contextJO,paramJO,  $event, xData,this,"PIMCONTRACT");
     }
@@ -335,6 +346,9 @@ export default class PIMCONTRACTWSSGridViewBase extends GridViewBase {
         if (xData.getDatas && xData.getDatas instanceof Function) {
             datas = [...xData.getDatas()];
         }
+        if(params){
+          datas = [params];
+        }
         // 界面行为
         this.ExportExcel(datas, contextJO,paramJO,  $event, xData,this,"PIMCONTRACT");
     }
@@ -351,6 +365,9 @@ export default class PIMCONTRACTWSSGridViewBase extends GridViewBase {
      */
     public newdata(args: any[],fullargs?:any[], params?: any, $event?: any, xData?: any) {
         const data: any = {};
+        if(args[0].srfsourcekey){
+            data.srfsourcekey = args[0].srfsourcekey;
+        }
         let curViewParam = JSON.parse(JSON.stringify(this.context));
         if(args.length >0){
             Object.assign(curViewParam,args[0]);

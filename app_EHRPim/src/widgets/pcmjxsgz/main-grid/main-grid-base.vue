@@ -22,7 +22,7 @@
                 <el-table-column align="center" type='selection' :width="checkboxColWidth"></el-table-column>
             </template>
             <template v-if="getColumnState('xh')">
-                <el-table-column show-overflow-tooltip :prop="'xh'" :label="$t('entities.pcmjxsgz.main_grid.columns.xh')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'xh'" :label="$t('entities.pcmjxsgz.main_grid.columns.xh')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template v-if="actualIsOpenEdit">
                             <i-form style="height:100%;" :model="row">
@@ -46,7 +46,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('pcmjxsgzname')">
-                <el-table-column show-overflow-tooltip :prop="'pcmjxsgzname'" :label="$t('entities.pcmjxsgz.main_grid.columns.pcmjxsgzname')" :width="200" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'pcmjxsgzname'" :label="$t('entities.pcmjxsgz.main_grid.columns.pcmjxsgzname')" :width="200"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template v-if="actualIsOpenEdit">
                             <i-form style="height:100%;" :model="row">
@@ -70,7 +70,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('duration')">
-                <el-table-column show-overflow-tooltip :prop="'duration'" :label="$t('entities.pcmjxsgz.main_grid.columns.duration')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'duration'" :label="$t('entities.pcmjxsgz.main_grid.columns.duration')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template v-if="actualIsOpenEdit">
                             <i-form style="height:100%;" :model="row">
@@ -543,7 +543,7 @@ export default class MainBase extends Vue implements ControlInterface {
     * @type {number}
     * @memberof AppIndex
     */
-    protected checkboxColWidth: number = 34;
+    public checkboxColWidth: number = 34;
 
     /**
      * 是否允许拖动列宽
@@ -1262,7 +1262,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * @memberof Main
      */
 	public uiAction(row: any, tag: any, $event: any) {
-        this.rowClick(row, true);
+        // this.rowClick(row, true);
     }
 
     /**

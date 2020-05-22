@@ -22,14 +22,14 @@
                 <el-table-column align="center" type='selection' :width="checkboxColWidth"></el-table-column>
             </template>
             <template v-if="getColumnState('ygbh')">
-                <el-table-column show-overflow-tooltip :prop="'ygbh'" :label="$t('entities.pimexitandentry.main_grid.columns.ygbh')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'ygbh'" :label="$t('entities.pimexitandentry.main_grid.columns.ygbh')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.ygbh}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('pimpersonname')">
-                <el-table-column show-overflow-tooltip :prop="'pimpersonname'" :label="$t('entities.pimexitandentry.main_grid.columns.pimpersonname')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'pimpersonname'" :label="$t('entities.pimexitandentry.main_grid.columns.pimpersonname')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <app-column-link deKeyField='pimperson' :context="JSON.parse(JSON.stringify(context))" :viewparams="JSON.parse(JSON.stringify(viewparams))" :data="row" :linkview="{viewname: 'pimpersonedit-view2', height: 0,width: 0,title: $t('entities.pimperson.views.editview2.title'),placement: 'DRAWER_TOP', isRedirectView: false,deResParameters: [
             ]
@@ -43,14 +43,14 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('zzdzs')">
-                <el-table-column show-overflow-tooltip :prop="'zzdzs'" :label="$t('entities.pimexitandentry.main_grid.columns.zzdzs')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'zzdzs'" :label="$t('entities.pimexitandentry.main_grid.columns.zzdzs')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.zzdzs}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('rank')">
-                <el-table-column show-overflow-tooltip :prop="'rank'" :label="$t('entities.pimexitandentry.main_grid.columns.rank')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'rank'" :label="$t('entities.pimexitandentry.main_grid.columns.rank')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
             <codelist :value="row.rank" tag='PIMCL_RANK' codelistType='DYNAMIC' renderMode="STR" valueSeparator=";" textSeparator="、" ></codelist>
@@ -59,14 +59,14 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('qwfhgj')">
-                <el-table-column show-overflow-tooltip :prop="'qwfhgj'" :label="$t('entities.pimexitandentry.main_grid.columns.qwfhgj')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'qwfhgj'" :label="$t('entities.pimexitandentry.main_grid.columns.qwfhgj')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.qwfhgj}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('cjsj')">
-                <el-table-column show-overflow-tooltip :prop="'cjsj'" :label="$t('entities.pimexitandentry.main_grid.columns.cjsj')" :width="180" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'cjsj'" :label="$t('entities.pimexitandentry.main_grid.columns.cjsj')" :width="180"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
                                 <app-span name='cjsj' editorType="DATEPICKER" :value="row.cjsj"></app-span>
@@ -75,7 +75,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('rjsj')">
-                <el-table-column show-overflow-tooltip :prop="'rjsj'" :label="$t('entities.pimexitandentry.main_grid.columns.rjsj')" :width="180" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'rjsj'" :label="$t('entities.pimexitandentry.main_grid.columns.rjsj')" :width="180"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
                                 <app-span name='rjsj' editorType="DATEPICKER" :value="row.rjsj"></app-span>
@@ -84,7 +84,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('lx')">
-                <el-table-column show-overflow-tooltip :prop="'lx'" :label="$t('entities.pimexitandentry.main_grid.columns.lx')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'lx'" :label="$t('entities.pimexitandentry.main_grid.columns.lx')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
             <codelist :value="row.lx" tag='PIMCL_EXITANDENTRY_TYPE' codelistType='STATIC' ></codelist>
@@ -93,14 +93,14 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('sy')">
-                <el-table-column show-overflow-tooltip :prop="'sy'" :label="$t('entities.pimexitandentry.main_grid.columns.sy')" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'sy'" :label="$t('entities.pimexitandentry.main_grid.columns.sy')" :min-width="1"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.sy}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('workflowstate')">
-                <el-table-column show-overflow-tooltip :prop="'workflowstate'" :label="$t('entities.pimexitandentry.main_grid.columns.workflowstate')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'workflowstate'" :label="$t('entities.pimexitandentry.main_grid.columns.workflowstate')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
             <codelist :value="row.workflowstate" tag='PIMCL_EXITANDENTRY_WFState' codelistType='STATIC' ></codelist>
@@ -109,7 +109,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('updatedate')">
-                <el-table-column show-overflow-tooltip :prop="'updatedate'" :label="$t('entities.pimexitandentry.main_grid.columns.updatedate')" :width="180" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'updatedate'" :label="$t('entities.pimexitandentry.main_grid.columns.updatedate')" :width="180"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <app-format-data format="%1$tY-%1$tm-%1$td" :data="row.updatedate"></app-format-data>
                     </template>
@@ -573,7 +573,7 @@ export default class MainBase extends Vue implements ControlInterface {
     * @type {number}
     * @memberof AppIndex
     */
-    protected checkboxColWidth: number = 34;
+    public checkboxColWidth: number = 34;
 
     /**
      * 是否允许拖动列宽
@@ -1364,7 +1364,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * @memberof Main
      */
 	public uiAction(row: any, tag: any, $event: any) {
-        this.rowClick(row, true);
+        // this.rowClick(row, true);
     }
 
     /**

@@ -22,7 +22,7 @@
                 <el-table-column align="center" type='selection' :width="checkboxColWidth"></el-table-column>
             </template>
             <template v-if="getColumnState('trooptype')">
-                <el-table-column show-overflow-tooltip :prop="'trooptype'" :label="$t('entities.pimarmycadres.main_grid.columns.trooptype')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'trooptype'" :label="$t('entities.pimarmycadres.main_grid.columns.trooptype')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template v-if="actualIsOpenEdit">
                             <i-form style="height:100%;" :model="row">
@@ -38,7 +38,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('leveltype')">
-                <el-table-column show-overflow-tooltip :prop="'leveltype'" :label="$t('entities.pimarmycadres.main_grid.columns.leveltype')" :width="250" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'leveltype'" :label="$t('entities.pimarmycadres.main_grid.columns.leveltype')" :width="250"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template v-if="actualIsOpenEdit">
                             <i-form style="height:100%;" :model="row">
@@ -54,7 +54,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('fssj')">
-                <el-table-column show-overflow-tooltip :prop="'fssj'" :label="$t('entities.pimarmycadres.main_grid.columns.fssj')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'fssj'" :label="$t('entities.pimarmycadres.main_grid.columns.fssj')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template v-if="actualIsOpenEdit">
                             <i-form style="height:100%;" :model="row">
@@ -70,7 +70,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('fj')">
-                <el-table-column show-overflow-tooltip :prop="'fj'" :label="$t('entities.pimarmycadres.main_grid.columns.fj')" :width="200" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'fj'" :label="$t('entities.pimarmycadres.main_grid.columns.fj')" :width="200"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template v-if="actualIsOpenEdit">
                             <i-form style="height:100%;" :model="row">
@@ -555,7 +555,7 @@ export default class MainBase extends Vue implements ControlInterface {
     * @type {number}
     * @memberof AppIndex
     */
-    protected checkboxColWidth: number = 34;
+    public checkboxColWidth: number = 34;
 
     /**
      * 是否允许拖动列宽
@@ -1301,7 +1301,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * @memberof Main
      */
 	public uiAction(row: any, tag: any, $event: any) {
-        this.rowClick(row, true);
+        // this.rowClick(row, true);
     }
 
     /**

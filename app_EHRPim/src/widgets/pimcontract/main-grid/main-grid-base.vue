@@ -22,14 +22,14 @@
                 <el-table-column align="center" type='selection' :width="checkboxColWidth"></el-table-column>
             </template>
             <template v-if="getColumnState('ygbh')">
-                <el-table-column show-overflow-tooltip :prop="'ygbh'" :label="$t('entities.pimcontract.main_grid.columns.ygbh')" :width="115" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'ygbh'" :label="$t('entities.pimcontract.main_grid.columns.ygbh')" :width="115"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.ygbh}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('pimpersonname')">
-                <el-table-column show-overflow-tooltip :prop="'pimpersonname'" :label="$t('entities.pimcontract.main_grid.columns.pimpersonname')" :width="115" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'pimpersonname'" :label="$t('entities.pimcontract.main_grid.columns.pimpersonname')" :width="115"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <app-column-link deKeyField='pimperson' :context="JSON.parse(JSON.stringify(context))" :viewparams="JSON.parse(JSON.stringify(viewparams))" :data="row" :linkview="{viewname: 'pimpersonedit-view2', height: 0,width: 0,title: $t('entities.pimperson.views.editview2.title'),placement: 'DRAWER_TOP', isRedirectView: false,deResParameters: [
             ]
@@ -43,14 +43,14 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('personorgname')">
-                <el-table-column show-overflow-tooltip :prop="'personorgname'" :label="$t('entities.pimcontract.main_grid.columns.personorgname')" :width="135" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'personorgname'" :label="$t('entities.pimcontract.main_grid.columns.personorgname')" :width="135"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.personorgname}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('ygzt')">
-                <el-table-column show-overflow-tooltip :prop="'ygzt'" :label="$t('entities.pimcontract.main_grid.columns.ygzt')" :width="110" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'ygzt'" :label="$t('entities.pimcontract.main_grid.columns.ygzt')" :width="110"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
             <codelist :value="row.ygzt" tag='PIMCL_YGZT' codelistType='DYNAMIC' ></codelist>
@@ -59,14 +59,14 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('dbdwsj')">
-                <el-table-column show-overflow-tooltip :prop="'dbdwsj'" :label="$t('entities.pimcontract.main_grid.columns.dbdwsj')" :width="135" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'dbdwsj'" :label="$t('entities.pimcontract.main_grid.columns.dbdwsj')" :width="135"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.dbdwsj}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('htbh')">
-                <el-table-column show-overflow-tooltip :prop="'htbh'" :label="$t('entities.pimcontract.main_grid.columns.htbh')" :width="110" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'htbh'" :label="$t('entities.pimcontract.main_grid.columns.htbh')" :width="110"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
                                 <app-span name='htbh' editorType="TEXTBOX" :value="row.htbh"></app-span>
@@ -75,14 +75,14 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('signingunit')">
-                <el-table-column show-overflow-tooltip :prop="'signingunit'" :label="$t('entities.pimcontract.main_grid.columns.signingunit')" :width="135" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'signingunit'" :label="$t('entities.pimcontract.main_grid.columns.signingunit')" :width="135"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.signingunit}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('htlx')">
-                <el-table-column show-overflow-tooltip :prop="'htlx'" :label="$t('entities.pimcontract.main_grid.columns.htlx')" :width="110" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'htlx'" :label="$t('entities.pimcontract.main_grid.columns.htlx')" :width="110"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
             <codelist :value="row.htlx" tag='PIMCL_HTLX' codelistType='DYNAMIC' renderMode="STR" valueSeparator=";" textSeparator="、" ></codelist>
@@ -91,7 +91,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('contracttype')">
-                <el-table-column show-overflow-tooltip :prop="'contracttype'" :label="$t('entities.pimcontract.main_grid.columns.contracttype')" :width="110" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'contracttype'" :label="$t('entities.pimcontract.main_grid.columns.contracttype')" :width="110"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
             <codelist :value="row.contracttype" tag='PIMCL_TYPECONTRACT' codelistType='DYNAMIC' ></codelist>
@@ -100,7 +100,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('qsrq')">
-                <el-table-column show-overflow-tooltip :prop="'qsrq'" :label="$t('entities.pimcontract.main_grid.columns.qsrq')" :width="110" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'qsrq'" :label="$t('entities.pimcontract.main_grid.columns.qsrq')" :width="110"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
                                 <app-span name='qsrq' editorType="DATEPICKER" :value="row.qsrq"></app-span>
@@ -109,7 +109,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('jsrq')">
-                <el-table-column show-overflow-tooltip :prop="'jsrq'" :label="$t('entities.pimcontract.main_grid.columns.jsrq')" :width="110" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'jsrq'" :label="$t('entities.pimcontract.main_grid.columns.jsrq')" :width="110"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
                                 <app-span name='jsrq' editorType="DATEPICKER" :value="row.jsrq"></app-span>
@@ -118,7 +118,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('htzt')">
-                <el-table-column show-overflow-tooltip :prop="'htzt'" :label="$t('entities.pimcontract.main_grid.columns.htzt')" :width="110" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'htzt'" :label="$t('entities.pimcontract.main_grid.columns.htzt')" :width="110"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
             <codelist :value="row.htzt" tag='PIMCL_HTZT' codelistType='STATIC' renderMode="STR" valueSeparator=";" textSeparator="、" ></codelist>
@@ -127,14 +127,14 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('htsyts')">
-                <el-table-column show-overflow-tooltip :prop="'htsyts'" :label="$t('entities.pimcontract.main_grid.columns.htsyts')" :width="135" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'htsyts'" :label="$t('entities.pimcontract.main_grid.columns.htsyts')" :width="135"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.htsyts}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('sydqsj')">
-                <el-table-column show-overflow-tooltip :prop="'sydqsj'" :label="$t('entities.pimcontract.main_grid.columns.sydqsj')" :width="135" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'sydqsj'" :label="$t('entities.pimcontract.main_grid.columns.sydqsj')" :width="135"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <app-format-data format="YYYY-MM-DD" :data="row.sydqsj"></app-format-data>
                     </template>
@@ -598,7 +598,7 @@ export default class MainBase extends Vue implements ControlInterface {
     * @type {number}
     * @memberof AppIndex
     */
-    protected checkboxColWidth: number = 34;
+    public checkboxColWidth: number = 34;
 
     /**
      * 是否允许拖动列宽
@@ -1434,7 +1434,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * @memberof Main
      */
 	public uiAction(row: any, tag: any, $event: any) {
-        this.rowClick(row, true);
+        // this.rowClick(row, true);
     }
 
     /**

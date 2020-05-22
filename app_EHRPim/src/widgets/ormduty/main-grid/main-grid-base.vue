@@ -22,7 +22,7 @@
                 <el-table-column align="center" type='selection' :width="checkboxColWidth"></el-table-column>
             </template>
             <template v-if="getColumnState('xh')">
-                <el-table-column show-overflow-tooltip :prop="'xh'" :label="$t('entities.ormduty.main_grid.columns.xh')" :width="100" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'xh'" :label="$t('entities.ormduty.main_grid.columns.xh')" :width="100"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
                                 <app-span name='xh' editorType="TEXTBOX" :value="row.xh"></app-span>
@@ -31,7 +31,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('fglx')">
-                <el-table-column show-overflow-tooltip :prop="'fglx'" :label="$t('entities.ormduty.main_grid.columns.fglx')" :width="130" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'fglx'" :label="$t('entities.ormduty.main_grid.columns.fglx')" :width="130"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
                                 <app-span name='fglx' editorType="TEXTBOX" :value="row.fglx"></app-span>
@@ -40,7 +40,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('zwlb')">
-                <el-table-column show-overflow-tooltip :prop="'zwlb'" :label="$t('entities.ormduty.main_grid.columns.zwlb')" :width="350" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'zwlb'" :label="$t('entities.ormduty.main_grid.columns.zwlb')" :width="350"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
             <codelist :value="row.zwlb" tag='ORMCL_ZWLB' codelistType='STATIC' ></codelist>
@@ -49,7 +49,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('ormdutyname')">
-                <el-table-column show-overflow-tooltip :prop="'ormdutyname'" :label="$t('entities.ormduty.main_grid.columns.ormdutyname')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'ormdutyname'" :label="$t('entities.ormduty.main_grid.columns.ormdutyname')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
                                 <app-span name='ormdutyname' editorType="TEXTBOX" :value="row.ormdutyname"></app-span>
@@ -58,7 +58,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('updateman')">
-                <el-table-column show-overflow-tooltip :prop="'updateman'" :label="$t('entities.ormduty.main_grid.columns.updateman')" :width="120" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'updateman'" :label="$t('entities.ormduty.main_grid.columns.updateman')" :width="120"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
             <codelist :value="row.updateman" tag='SysOperator' codelistType='DYNAMIC' ></codelist>
@@ -67,7 +67,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('updatedate')">
-                <el-table-column show-overflow-tooltip :prop="'updatedate'" :label="$t('entities.ormduty.main_grid.columns.updatedate')" :width="170" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'updatedate'" :label="$t('entities.ormduty.main_grid.columns.updatedate')" :width="170"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <app-format-data format="%1$tY-%1$tm-%1$td" :data="row.updatedate"></app-format-data>
                     </template>
@@ -517,7 +517,7 @@ export default class MainBase extends Vue implements ControlInterface {
     * @type {number}
     * @memberof AppIndex
     */
-    protected checkboxColWidth: number = 34;
+    public checkboxColWidth: number = 34;
 
     /**
      * 是否允许拖动列宽
@@ -1265,7 +1265,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * @memberof Main
      */
 	public uiAction(row: any, tag: any, $event: any) {
-        this.rowClick(row, true);
+        // this.rowClick(row, true);
     }
 
     /**

@@ -80,7 +80,7 @@ export default class GetPersonOrgLogicBase {
     private async executePrepareparam1(context:any,params:any,isloading:boolean){
         // 准备参数节点
         Object.assign(params,{ormorgid:params.ormorgid});
-        Object.assign(context,{pimarchives:params.ormorgid});
+        Object.assign(context,{pimarchives:params.ormorgid ? params.ormorgid : null});
         Object.assign(params,{ormorgname:params.ormorgname});
         return params;
     }

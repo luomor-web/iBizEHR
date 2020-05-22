@@ -22,7 +22,7 @@
                 <el-table-column align="center" type='selection' :width="checkboxColWidth"></el-table-column>
             </template>
             <template v-if="getColumnState('serialno')">
-                <el-table-column show-overflow-tooltip :prop="'serialno'" :label="$t('entities.archivescenter.main_grid.columns.serialno')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'serialno'" :label="$t('entities.archivescenter.main_grid.columns.serialno')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template v-if="actualIsOpenEdit">
                             <i-form style="height:100%;" :model="row">
@@ -46,7 +46,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('archivescentername')">
-                <el-table-column show-overflow-tooltip :prop="'archivescentername'" :label="$t('entities.archivescenter.main_grid.columns.archivescentername')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'archivescentername'" :label="$t('entities.archivescenter.main_grid.columns.archivescentername')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template v-if="actualIsOpenEdit">
                             <i-form style="height:100%;" :model="row">
@@ -70,7 +70,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('cabinetno')">
-                <el-table-column show-overflow-tooltip :prop="'cabinetno'" :label="$t('entities.archivescenter.main_grid.columns.cabinetno')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'cabinetno'" :label="$t('entities.archivescenter.main_grid.columns.cabinetno')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template v-if="actualIsOpenEdit">
                             <i-form style="height:100%;" :model="row">
@@ -94,7 +94,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('layerno')">
-                <el-table-column show-overflow-tooltip :prop="'layerno'" :label="$t('entities.archivescenter.main_grid.columns.layerno')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'layerno'" :label="$t('entities.archivescenter.main_grid.columns.layerno')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template v-if="actualIsOpenEdit">
                             <i-form style="height:100%;" :model="row">
@@ -110,7 +110,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('bnumber')">
-                <el-table-column show-overflow-tooltip :prop="'bnumber'" :label="$t('entities.archivescenter.main_grid.columns.bnumber')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'bnumber'" :label="$t('entities.archivescenter.main_grid.columns.bnumber')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template v-if="actualIsOpenEdit">
                             <i-form style="height:100%;" :model="row">
@@ -591,7 +591,7 @@ export default class MainBase extends Vue implements ControlInterface {
     * @type {number}
     * @memberof AppIndex
     */
-    protected checkboxColWidth: number = 34;
+    public checkboxColWidth: number = 34;
 
     /**
      * 是否允许拖动列宽
@@ -1332,7 +1332,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * @memberof Main
      */
 	public uiAction(row: any, tag: any, $event: any) {
-        this.rowClick(row, true);
+        // this.rowClick(row, true);
     }
 
     /**

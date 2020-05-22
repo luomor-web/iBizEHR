@@ -35,6 +35,15 @@ export default class PIMREWARDPUNISHMENTRedirectViewBase extends WizardViewBase 
      */
     public appEntityService: PIMREWARDPUNISHMENTService = new PIMREWARDPUNISHMENTService;
 
+
+    /**
+     * 计数器服务对象集合
+     *
+     * @type {Array<*>}
+     * @memberof PIMREWARDPUNISHMENTRedirectViewBase
+     */    
+    public counterServiceArray:Array<any> = [];
+    
     /**
      * 数据变化
      *
@@ -70,7 +79,7 @@ export default class PIMREWARDPUNISHMENTRedirectViewBase extends WizardViewBase 
 	 * @type {*}
 	 * @memberof PIMREWARDPUNISHMENTRedirectViewBase
 	 */
-    protected customViewNavContexts:any ={
+    public customViewNavContexts:any ={
     };
 
 	/**
@@ -79,7 +88,7 @@ export default class PIMREWARDPUNISHMENTRedirectViewBase extends WizardViewBase 
 	 * @type {*}
 	 * @memberof PIMREWARDPUNISHMENTRedirectViewBase
 	 */
-    protected customViewParams:any ={
+    public customViewParams:any ={
     };
 
     /**
@@ -107,7 +116,7 @@ export default class PIMREWARDPUNISHMENTRedirectViewBase extends WizardViewBase 
     /**
      * 视图状态订阅对象
      *
-     * @private
+     * @public
      * @type {Subject<{action: string, data: any}>}
      * @memberof PIMREWARDPUNISHMENTRedirectViewBase
      */

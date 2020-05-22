@@ -263,7 +263,9 @@ export default class AppFormDRUIPart extends Vue {
             }
         }
         if(!this.isForbidLoad){
-            this.formDruipart.next({action:'load',data:{srfparentdename:this.parentName,srfparentkey:_paramitem}});
+            this.$nextTick(() => {
+                this.formDruipart.next({action:'load',data:{srfparentdename:this.parentName,srfparentkey:_paramitem}});
+            });
         }
     }
 

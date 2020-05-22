@@ -22,7 +22,7 @@
                 <el-table-column align="center" type='selection' :width="checkboxColWidth"></el-table-column>
             </template>
             <template v-if="getColumnState('rzkssj')">
-                <el-table-column show-overflow-tooltip :prop="'rzkssj'" :label="$t('entities.pimworkhistory.main_grid.columns.rzkssj')" :width="130" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'rzkssj'" :label="$t('entities.pimworkhistory.main_grid.columns.rzkssj')" :width="130"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template v-if="actualIsOpenEdit">
                             <i-form style="height:100%;" :model="row">
@@ -38,7 +38,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('rzjssj')">
-                <el-table-column show-overflow-tooltip :prop="'rzjssj'" :label="$t('entities.pimworkhistory.main_grid.columns.rzjssj')" :width="130" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'rzjssj'" :label="$t('entities.pimworkhistory.main_grid.columns.rzjssj')" :width="130"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template v-if="actualIsOpenEdit">
                             <i-form style="height:100%;" :model="row">
@@ -54,7 +54,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('ormorgname')">
-                <el-table-column show-overflow-tooltip :prop="'ormorgname'" :label="$t('entities.pimworkhistory.main_grid.columns.ormorgname')" :width="250" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'ormorgname'" :label="$t('entities.pimworkhistory.main_grid.columns.ormorgname')" :width="250"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template v-if="actualIsOpenEdit">
                             <i-form style="height:100%;" :model="row">
@@ -78,7 +78,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('ormorgsectorname')">
-                <el-table-column show-overflow-tooltip :prop="'ormorgsectorname'" :label="$t('entities.pimworkhistory.main_grid.columns.ormorgsectorname')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'ormorgsectorname'" :label="$t('entities.pimworkhistory.main_grid.columns.ormorgsectorname')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template v-if="actualIsOpenEdit">
                             <i-form style="height:100%;" :model="row">
@@ -102,7 +102,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('ormdutyname')">
-                <el-table-column show-overflow-tooltip :prop="'ormdutyname'" :label="$t('entities.pimworkhistory.main_grid.columns.ormdutyname')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'ormdutyname'" :label="$t('entities.pimworkhistory.main_grid.columns.ormdutyname')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template v-if="actualIsOpenEdit">
                             <i-form style="height:100%;" :model="row">
@@ -126,7 +126,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('ormpostname')">
-                <el-table-column show-overflow-tooltip :prop="'ormpostname'" :label="$t('entities.pimworkhistory.main_grid.columns.ormpostname')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'ormpostname'" :label="$t('entities.pimworkhistory.main_grid.columns.ormpostname')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template v-if="actualIsOpenEdit">
                             <i-form style="height:100%;" :model="row">
@@ -150,7 +150,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('cfplx')">
-                <el-table-column show-overflow-tooltip :prop="'cfplx'" :label="$t('entities.pimworkhistory.main_grid.columns.cfplx')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'cfplx'" :label="$t('entities.pimworkhistory.main_grid.columns.cfplx')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template v-if="actualIsOpenEdit">
                             <i-form style="height:100%;" :model="row">
@@ -166,7 +166,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('experience')">
-                <el-table-column show-overflow-tooltip :prop="'experience'" :label="$t('entities.pimworkhistory.main_grid.columns.experience')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'experience'" :label="$t('entities.pimworkhistory.main_grid.columns.experience')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template v-if="actualIsOpenEdit">
                             <i-form style="height:100%;" :model="row">
@@ -639,7 +639,7 @@ export default class MainBase extends Vue implements ControlInterface {
     * @type {number}
     * @memberof AppIndex
     */
-    protected checkboxColWidth: number = 34;
+    public checkboxColWidth: number = 34;
 
     /**
      * 是否允许拖动列宽
@@ -1429,7 +1429,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * @memberof Main
      */
 	public uiAction(row: any, tag: any, $event: any) {
-        this.rowClick(row, true);
+        // this.rowClick(row, true);
     }
 
     /**

@@ -101,6 +101,15 @@ export default class PIMGWTYPEMPickupViewBase extends MPickupViewBase {
      */
     public appEntityService: PIMGWTYPEService = new PIMGWTYPEService;
 
+
+    /**
+     * 计数器服务对象集合
+     *
+     * @type {Array<*>}
+     * @memberof PIMGWTYPEMPickupViewBase
+     */    
+    public counterServiceArray:Array<any> = [];
+    
     /**
      * 数据变化
      *
@@ -136,7 +145,7 @@ export default class PIMGWTYPEMPickupViewBase extends MPickupViewBase {
 	 * @type {*}
 	 * @memberof PIMGWTYPEMPickupViewBase
 	 */
-    protected customViewNavContexts:any ={
+    public customViewNavContexts:any ={
     };
 
 	/**
@@ -145,7 +154,7 @@ export default class PIMGWTYPEMPickupViewBase extends MPickupViewBase {
 	 * @type {*}
 	 * @memberof PIMGWTYPEMPickupViewBase
 	 */
-    protected customViewParams:any ={
+    public customViewParams:any ={
     };
 
     /**
@@ -180,7 +189,7 @@ export default class PIMGWTYPEMPickupViewBase extends MPickupViewBase {
     /**
      * 视图状态订阅对象
      *
-     * @private
+     * @public
      * @type {Subject<{action: string, data: any}>}
      * @memberof PIMGWTYPEMPickupViewBase
      */

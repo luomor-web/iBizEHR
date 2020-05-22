@@ -22,14 +22,14 @@
                 <el-table-column align="center" type='selection' :width="checkboxColWidth"></el-table-column>
             </template>
             <template v-if="getColumnState('snumber')">
-                <el-table-column show-overflow-tooltip :prop="'snumber'" :label="$t('entities.pcmrcxl.main_grid.columns.snumber')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'snumber'" :label="$t('entities.pcmrcxl.main_grid.columns.snumber')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.snumber}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('rcxllx')">
-                <el-table-column show-overflow-tooltip :prop="'rcxllx'" :label="$t('entities.pcmrcxl.main_grid.columns.rcxllx')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'rcxllx'" :label="$t('entities.pcmrcxl.main_grid.columns.rcxllx')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
             <codelist :value="row.rcxllx" tag='PCMCL_RCXLLX' codelistType='STATIC' ></codelist>
@@ -38,28 +38,28 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('rcxlmc')">
-                <el-table-column show-overflow-tooltip :prop="'rcxlmc'" :label="$t('entities.pcmrcxl.main_grid.columns.rcxlmc')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'rcxlmc'" :label="$t('entities.pcmrcxl.main_grid.columns.rcxlmc')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.rcxlmc}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('code')">
-                <el-table-column show-overflow-tooltip :prop="'code'" :label="$t('entities.pcmrcxl.main_grid.columns.code')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'code'" :label="$t('entities.pcmrcxl.main_grid.columns.code')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.code}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('xldj')">
-                <el-table-column show-overflow-tooltip :prop="'xldj'" :label="$t('entities.pcmrcxl.main_grid.columns.xldj')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'xldj'" :label="$t('entities.pcmrcxl.main_grid.columns.xldj')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.xldj}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('pcmrcxlname2')">
-                <el-table-column show-overflow-tooltip :prop="'pcmrcxlname2'" :label="$t('entities.pcmrcxl.main_grid.columns.pcmrcxlname2')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'pcmrcxlname2'" :label="$t('entities.pcmrcxl.main_grid.columns.pcmrcxlname2')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.pcmrcxlname2}}</span>
                     </template>
@@ -509,7 +509,7 @@ export default class MainBase extends Vue implements ControlInterface {
     * @type {number}
     * @memberof AppIndex
     */
-    protected checkboxColWidth: number = 34;
+    public checkboxColWidth: number = 34;
 
     /**
      * 是否允许拖动列宽
@@ -1237,7 +1237,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * @memberof Main
      */
 	public uiAction(row: any, tag: any, $event: any) {
-        this.rowClick(row, true);
+        // this.rowClick(row, true);
     }
 
     /**

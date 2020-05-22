@@ -4,7 +4,7 @@
     <row >
             
 <i-col v-show="detailsModel.group1.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
-    <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' uiActionGroup="detailsModel.group1.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.pcmdetail.main_form.details.group1')" :isShowCaption="true" uiStyle="DEFAULT" :titleBarCloseMode="0" :isInfoGroupMode="false" >    
+    <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' :uiActionGroup="detailsModel.group1.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.pcmdetail.main_form.details.group1')" :isShowCaption="true" uiStyle="DEFAULT" :titleBarCloseMode="0" :isInfoGroupMode="false" >    
     <row>
         <i-col v-show="detailsModel.ygbh.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='ygbh' :itemRules="this.rules.ygbh" class='' :caption="$t('entities.pcmdetail.main_form.details.ygbh')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.ygbh.error" :isEmptyCaption="false" labelPos="LEFT">
@@ -103,7 +103,7 @@
 
 </i-col>
 <i-col v-show="detailsModel.grouppanel2.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
-    <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' uiActionGroup="detailsModel.grouppanel2.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.pcmdetail.main_form.details.grouppanel2')" :isShowCaption="true" uiStyle="DEFAULT" :titleBarCloseMode="0" :isInfoGroupMode="false" >    
+    <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' :uiActionGroup="detailsModel.grouppanel2.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.pcmdetail.main_form.details.grouppanel2')" :isShowCaption="true" uiStyle="DEFAULT" :titleBarCloseMode="0" :isInfoGroupMode="false" >    
     <row>
         <i-col v-show="detailsModel.dyxlbyyx.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='dyxlbyyx' :itemRules="this.rules.dyxlbyyx" class='' :caption="$t('entities.pcmdetail.main_form.details.dyxlbyyx')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.dyxlbyyx.error" :isEmptyCaption="false" labelPos="LEFT">
@@ -189,7 +189,7 @@
 
 </i-col>
 <i-col v-show="detailsModel.grouppanel1.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
-    <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' uiActionGroup="detailsModel.grouppanel1.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.pcmdetail.main_form.details.grouppanel1')" :isShowCaption="true" uiStyle="DEFAULT" :titleBarCloseMode="0" :isInfoGroupMode="false" >    
+    <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' :uiActionGroup="detailsModel.grouppanel1.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.pcmdetail.main_form.details.grouppanel1')" :isShowCaption="true" uiStyle="DEFAULT" :titleBarCloseMode="0" :isInfoGroupMode="false" >    
     <row>
         <i-col v-show="detailsModel.bdwgznx.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='bdwgznx' :itemRules="this.rules.bdwgznx" class='' :caption="$t('entities.pcmdetail.main_form.details.bdwgznx')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.bdwgznx.error" :isEmptyCaption="false" labelPos="LEFT">
@@ -336,7 +336,7 @@
 
 </i-col>
 <i-col v-show="detailsModel.grouppanel3.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
-    <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' uiActionGroup="detailsModel.grouppanel3.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.pcmdetail.main_form.details.grouppanel3')" :isShowCaption="true" uiStyle="DEFAULT" :titleBarCloseMode="0" :isInfoGroupMode="false" >    
+    <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' :uiActionGroup="detailsModel.grouppanel3.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.pcmdetail.main_form.details.grouppanel3')" :isShowCaption="true" uiStyle="DEFAULT" :titleBarCloseMode="0" :isInfoGroupMode="false" >    
     <row>
         <i-col v-show="detailsModel.zgzsbh.visible" :style="{}"  :lg="{ span: 5, offset: 0 }">
     <app-form-item name='zgzsbh' :itemRules="this.rules.zgzsbh" class='' :caption="$t('entities.pcmdetail.main_form.details.zgzsbh')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.zgzsbh.error" :isEmptyCaption="false" labelPos="LEFT">
@@ -362,7 +362,7 @@
 
 </i-col>
 <i-col v-show="detailsModel.grouppanel4.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
-    <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' uiActionGroup="detailsModel.grouppanel4.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.pcmdetail.main_form.details.grouppanel4')" :isShowCaption="true" uiStyle="DEFAULT" :titleBarCloseMode="0" :isInfoGroupMode="false" >    
+    <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' :uiActionGroup="detailsModel.grouppanel4.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.pcmdetail.main_form.details.grouppanel4')" :isShowCaption="true" uiStyle="DEFAULT" :titleBarCloseMode="0" :isInfoGroupMode="false" >    
     <row>
         <i-col v-show="detailsModel.qsrq.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='qsrq' :itemRules="this.rules.qsrq" class='' :caption="$t('entities.pcmdetail.main_form.details.qsrq')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.qsrq.error" :isEmptyCaption="false" labelPos="LEFT">
@@ -2508,7 +2508,11 @@ export default class MainBase extends Vue implements ControlInterface {
                     this.load(data);
                 }
                 if (Object.is('loaddraft', action)) {
-                    this.loadDraft(data);
+                    if(this.context.srfsourcekey){
+                        this.copy(this.context.srfsourcekey);
+                    }else{
+                        this.loadDraft(data);
+                    }
                 }
                 if (Object.is('save', action)) {
                     this.save(data,data.showResultInfo);
@@ -2572,8 +2576,18 @@ export default class MainBase extends Vue implements ControlInterface {
      * @param {*} [arg={}]
      * @memberof @memberof Main
      */
-    public copy(arg: any = {}): void {
-        this.loadDraft(arg);
+    public copy(srfkey: string): void {
+        let copyData = this.$store.getters.getCopyData(srfkey);
+        copyData.srfkey = Util.createUUID();
+        copyData.pcmdetail = copyData.srfkey;
+        copyData.pcmdetailid = copyData.srfkey;
+        Object.assign(this.context,{pcmdetail:copyData.pcmdetail})
+        this.data = copyData;
+        this.$nextTick(() => {
+          this.formState.next({ type: 'load', data: copyData });
+          this.data.srfuf = '0';
+          this.setFormEnableCond(this.data);
+        });
     }
 
     /**

@@ -22,14 +22,14 @@
                 <el-table-column align="center" type='selection' :width="checkboxColWidth"></el-table-column>
             </template>
             <template v-if="getColumnState('ygbh')">
-                <el-table-column show-overflow-tooltip :prop="'ygbh'" :label="$t('entities.pimpersonchange.main_grid.columns.ygbh')" :width="130" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'ygbh'" :label="$t('entities.pimpersonchange.main_grid.columns.ygbh')" :width="130"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.ygbh}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('pimpersonname')">
-                <el-table-column show-overflow-tooltip :prop="'pimpersonname'" :label="$t('entities.pimpersonchange.main_grid.columns.pimpersonname')" :width="130" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'pimpersonname'" :label="$t('entities.pimpersonchange.main_grid.columns.pimpersonname')" :width="130"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <app-column-link deKeyField='pimperson' :context="JSON.parse(JSON.stringify(context))" :viewparams="JSON.parse(JSON.stringify(viewparams))" :data="row" :linkview="{viewname: 'pimpersonedit-view2', height: 0,width: 0,title: $t('entities.pimperson.views.editview2.title'),placement: 'DRAWER_TOP', isRedirectView: false,deResParameters: [
             ]
@@ -43,21 +43,21 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('bgnr')">
-                <el-table-column show-overflow-tooltip :prop="'bgnr'" :label="$t('entities.pimpersonchange.main_grid.columns.bgnr')" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'bgnr'" :label="$t('entities.pimpersonchange.main_grid.columns.bgnr')" :min-width="800"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.bgnr}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('fj')">
-                <el-table-column show-overflow-tooltip :prop="'fj'" :label="$t('entities.pimpersonchange.main_grid.columns.fj')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'fj'" :label="$t('entities.pimpersonchange.main_grid.columns.fj')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.fj}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('bglx')">
-                <el-table-column show-overflow-tooltip :prop="'bglx'" :label="$t('entities.pimpersonchange.main_grid.columns.bglx')" :width="130" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'bglx'" :label="$t('entities.pimpersonchange.main_grid.columns.bglx')" :width="130"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
             <codelist :value="row.bglx" tag='PIMCL_BGLX' codelistType='STATIC' ></codelist>
@@ -66,18 +66,20 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('sqsj')">
-                <el-table-column show-overflow-tooltip :prop="'sqsj'" :label="$t('entities.pimpersonchange.main_grid.columns.sqsj')" :width="130" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'sqsj'" :label="$t('entities.pimpersonchange.main_grid.columns.sqsj')" :width="130"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <app-format-data format="YYYY-MM-DD" :data="row.sqsj"></app-format-data>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('uagridcolumn1')">
-                <el-table-column :column-key="'uagridcolumn1'" :label="$t('entities.pimpersonchange.main_grid.columns.uagridcolumn1')" :width="100" :align="'center'">
+                <el-table-column :column-key="'uagridcolumn1'" :label="$t('entities.pimpersonchange.main_grid.columns.uagridcolumn1')" :width="100"  :align="'center'">
                     <template slot-scope="scope">
                         <span>
                             
-                            <a @click="uiAction(scope.row, 'Refuse', $event)">{{$t('entities.pimpersonchange.main_grid.uiactions.refuse')}}</a>
+                            <a @click="uiAction(scope.row, 'Refuse', $event)">
+                              {{$t('entities.pimpersonchange.main_grid.uiactions.refuse')}}
+                            </a>
                         </span>
                     </template>
                 </el-table-column>
@@ -241,6 +243,9 @@ export default class MainBase extends Vue implements ControlInterface {
         xData = this;
         if (_this.getDatas && _this.getDatas instanceof Function) {
             datas = [..._this.getDatas()];
+        }
+        if(params){
+          datas = [params];
         }
         // 界面行为
         const curUIService:PIMPERSONCHANGEUIService  = new PIMPERSONCHANGEUIService();
@@ -567,7 +572,7 @@ export default class MainBase extends Vue implements ControlInterface {
     * @type {number}
     * @memberof AppIndex
     */
-    protected checkboxColWidth: number = 34;
+    public checkboxColWidth: number = 34;
 
     /**
      * 是否允许拖动列宽
@@ -1302,7 +1307,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * @memberof Main
      */
 	public uiAction(row: any, tag: any, $event: any) {
-        this.rowClick(row, true);
+        // this.rowClick(row, true);
         if(Object.is('Refuse', tag)) {
             this.grid_uagridcolumn1_ub39742b_click(row, tag, $event);
         }

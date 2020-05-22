@@ -66,6 +66,15 @@ export default class PCMRCXLPickupViewBase extends PickupViewBase {
      */
     public appEntityService: PCMRCXLService = new PCMRCXLService;
 
+
+    /**
+     * 计数器服务对象集合
+     *
+     * @type {Array<*>}
+     * @memberof PCMRCXLPickupViewBase
+     */    
+    public counterServiceArray:Array<any> = [];
+    
     /**
      * 数据变化
      *
@@ -101,7 +110,7 @@ export default class PCMRCXLPickupViewBase extends PickupViewBase {
 	 * @type {*}
 	 * @memberof PCMRCXLPickupViewBase
 	 */
-    protected customViewNavContexts:any ={
+    public customViewNavContexts:any ={
     };
 
 	/**
@@ -110,7 +119,7 @@ export default class PCMRCXLPickupViewBase extends PickupViewBase {
 	 * @type {*}
 	 * @memberof PCMRCXLPickupViewBase
 	 */
-    protected customViewParams:any ={
+    public customViewParams:any ={
     };
 
     /**
@@ -146,7 +155,7 @@ export default class PCMRCXLPickupViewBase extends PickupViewBase {
     /**
      * 视图状态订阅对象
      *
-     * @private
+     * @public
      * @type {Subject<{action: string, data: any}>}
      * @memberof PCMRCXLPickupViewBase
      */

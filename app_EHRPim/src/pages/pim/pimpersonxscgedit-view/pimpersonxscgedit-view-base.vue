@@ -71,6 +71,15 @@ export default class PIMPERSONXSCGEditViewBase extends EditViewBase {
      */
     public appEntityService: PIMPERSONService = new PIMPERSONService;
 
+
+    /**
+     * 计数器服务对象集合
+     *
+     * @type {Array<*>}
+     * @memberof PIMPERSONXSCGEditViewBase
+     */    
+    public counterServiceArray:Array<any> = [];
+    
     /**
      * 数据变化
      *
@@ -106,7 +115,7 @@ export default class PIMPERSONXSCGEditViewBase extends EditViewBase {
 	 * @type {*}
 	 * @memberof PIMPERSONXSCGEditViewBase
 	 */
-    protected customViewNavContexts:any ={
+    public customViewNavContexts:any ={
     };
 
 	/**
@@ -115,7 +124,7 @@ export default class PIMPERSONXSCGEditViewBase extends EditViewBase {
 	 * @type {*}
 	 * @memberof PIMPERSONXSCGEditViewBase
 	 */
-    protected customViewParams:any ={
+    public customViewParams:any ={
     };
 
     /**
@@ -145,12 +154,11 @@ export default class PIMPERSONXSCGEditViewBase extends EditViewBase {
     /**
      * 视图状态订阅对象
      *
-     * @private
+     * @public
      * @type {Subject<{action: string, data: any}>}
      * @memberof PIMPERSONXSCGEditViewBase
      */
     public viewState: Subject<ViewState> = new Subject();
-
     /**
      * 工具栏模型
      *

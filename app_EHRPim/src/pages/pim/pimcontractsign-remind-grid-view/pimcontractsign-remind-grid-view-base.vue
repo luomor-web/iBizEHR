@@ -9,7 +9,7 @@
     </template>
     <template slot="headerRight">
       <div class="view-header-right">
-        <app-header-menus :toolbarModel="toolBarModels" @menu-click="toolbar_click($event)" mode="view" :openMode="openMode" :isEnableQuickSearch="true" searchPlaceholder="请输入员工姓名" v-model="query" @search="onSearch($event)"/>
+        <app-header-menus :toolbarModel="toolBarModels" @menu-click="toolbar_click($event)" mode="view" :openMode="openMode" :isEnableQuickSearch="true" searchPlaceholder="员工姓名" v-model="query" @search="onSearch($event)"/>
       </div>
     </template>
     <template slot="content">
@@ -95,6 +95,15 @@ export default class PIMCONTRACTSignRemindGridViewBase extends GridViewBase {
      */
     public appEntityService: PIMCONTRACTService = new PIMCONTRACTService;
 
+
+    /**
+     * 计数器服务对象集合
+     *
+     * @type {Array<*>}
+     * @memberof PIMCONTRACTSignRemindGridViewBase
+     */    
+    public counterServiceArray:Array<any> = [];
+    
     /**
      * 数据变化
      *
@@ -130,7 +139,7 @@ export default class PIMCONTRACTSignRemindGridViewBase extends GridViewBase {
 	 * @type {*}
 	 * @memberof PIMCONTRACTSignRemindGridViewBase
 	 */
-    protected customViewNavContexts:any ={
+    public customViewNavContexts:any ={
     };
 
 	/**
@@ -139,7 +148,7 @@ export default class PIMCONTRACTSignRemindGridViewBase extends GridViewBase {
 	 * @type {*}
 	 * @memberof PIMCONTRACTSignRemindGridViewBase
 	 */
-    protected customViewParams:any ={
+    public customViewParams:any ={
     };
 
     /**
@@ -170,12 +179,11 @@ export default class PIMCONTRACTSignRemindGridViewBase extends GridViewBase {
     /**
      * 视图状态订阅对象
      *
-     * @private
+     * @public
      * @type {Subject<{action: string, data: any}>}
      * @memberof PIMCONTRACTSignRemindGridViewBase
      */
     public viewState: Subject<ViewState> = new Subject();
-
     /**
      * 工具栏模型
      *
@@ -241,22 +249,22 @@ export default class PIMCONTRACTSignRemindGridViewBase extends GridViewBase {
      */
     public toolbar_click($event: any, $event2?: any) {
         if (Object.is($event.tag, 'deuiaction3')) {
-            this.toolbar_deuiaction3_click($event, '', $event2);
+            this.toolbar_deuiaction3_click(null, '', $event2);
         }
         if (Object.is($event.tag, 'deuiaction1')) {
-            this.toolbar_deuiaction1_click($event, '', $event2);
+            this.toolbar_deuiaction1_click(null, '', $event2);
         }
         if (Object.is($event.tag, 'deuiaction2')) {
-            this.toolbar_deuiaction2_click($event, '', $event2);
+            this.toolbar_deuiaction2_click(null, '', $event2);
         }
         if (Object.is($event.tag, 'tbitem18')) {
-            this.toolbar_tbitem18_click($event, '', $event2);
+            this.toolbar_tbitem18_click(null, '', $event2);
         }
         if (Object.is($event.tag, 'deuiaction4')) {
-            this.toolbar_deuiaction4_click($event, '', $event2);
+            this.toolbar_deuiaction4_click(null, '', $event2);
         }
         if (Object.is($event.tag, 'deuiaction5')) {
-            this.toolbar_deuiaction5_click($event, '', $event2);
+            this.toolbar_deuiaction5_click(null, '', $event2);
         }
     }
 
@@ -380,6 +388,9 @@ export default class PIMCONTRACTSignRemindGridViewBase extends GridViewBase {
         if (xData.getDatas && xData.getDatas instanceof Function) {
             datas = [...xData.getDatas()];
         }
+        if(params){
+          datas = [params];
+        }
         // 界面行为
         this.ToggleFilter(datas, contextJO,paramJO,  $event, xData,this,"PIMCONTRACT");
     }
@@ -405,6 +416,9 @@ export default class PIMCONTRACTSignRemindGridViewBase extends GridViewBase {
         xData = this.$refs.grid;
         if (xData.getDatas && xData.getDatas instanceof Function) {
             datas = [...xData.getDatas()];
+        }
+        if(params){
+          datas = [params];
         }
         // 界面行为
         this.Import(datas, contextJO,paramJO,  $event, xData,this,"PIMCONTRACT");
@@ -432,6 +446,9 @@ export default class PIMCONTRACTSignRemindGridViewBase extends GridViewBase {
         if (xData.getDatas && xData.getDatas instanceof Function) {
             datas = [...xData.getDatas()];
         }
+        if(params){
+          datas = [params];
+        }
         // 界面行为
         this.ExportExcel(datas, contextJO,paramJO,  $event, xData,this,"PIMCONTRACT");
     }
@@ -457,6 +474,9 @@ export default class PIMCONTRACTSignRemindGridViewBase extends GridViewBase {
         xData = this.$refs.grid;
         if (xData.getDatas && xData.getDatas instanceof Function) {
             datas = [...xData.getDatas()];
+        }
+        if(params){
+          datas = [params];
         }
         // 界面行为
         this.Help(datas, contextJO,paramJO,  $event, xData,this,"PIMCONTRACT");
@@ -484,6 +504,9 @@ export default class PIMCONTRACTSignRemindGridViewBase extends GridViewBase {
         if (xData.getDatas && xData.getDatas instanceof Function) {
             datas = [...xData.getDatas()];
         }
+        if(params){
+          datas = [params];
+        }
         // 界面行为
         const curUIService:PIMCONTRACTUIService  = new PIMCONTRACTUIService();
         curUIService.PIMCONTRACT_Signnew(datas,contextJO, paramJO,  $event, xData,this,"PIMCONTRACT");
@@ -510,6 +533,9 @@ export default class PIMCONTRACTSignRemindGridViewBase extends GridViewBase {
         xData = this.$refs.grid;
         if (xData.getDatas && xData.getDatas instanceof Function) {
             datas = [...xData.getDatas()];
+        }
+        if(params){
+          datas = [params];
         }
         // 界面行为
         const curUIService:PIMCONTRACTUIService  = new PIMCONTRACTUIService();

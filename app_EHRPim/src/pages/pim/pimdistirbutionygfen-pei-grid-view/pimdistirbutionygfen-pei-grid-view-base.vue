@@ -95,6 +95,15 @@ export default class PIMDISTIRBUTIONYGFenPeiGridViewBase extends GridViewBase {
      */
     public appEntityService: PIMDISTIRBUTIONService = new PIMDISTIRBUTIONService;
 
+
+    /**
+     * 计数器服务对象集合
+     *
+     * @type {Array<*>}
+     * @memberof PIMDISTIRBUTIONYGFenPeiGridViewBase
+     */    
+    public counterServiceArray:Array<any> = [];
+    
     /**
      * 数据变化
      *
@@ -130,7 +139,7 @@ export default class PIMDISTIRBUTIONYGFenPeiGridViewBase extends GridViewBase {
 	 * @type {*}
 	 * @memberof PIMDISTIRBUTIONYGFenPeiGridViewBase
 	 */
-    protected customViewNavContexts:any ={
+    public customViewNavContexts:any ={
     };
 
 	/**
@@ -139,7 +148,7 @@ export default class PIMDISTIRBUTIONYGFenPeiGridViewBase extends GridViewBase {
 	 * @type {*}
 	 * @memberof PIMDISTIRBUTIONYGFenPeiGridViewBase
 	 */
-    protected customViewParams:any ={
+    public customViewParams:any ={
     };
 
     /**
@@ -170,12 +179,11 @@ export default class PIMDISTIRBUTIONYGFenPeiGridViewBase extends GridViewBase {
     /**
      * 视图状态订阅对象
      *
-     * @private
+     * @public
      * @type {Subject<{action: string, data: any}>}
      * @memberof PIMDISTIRBUTIONYGFenPeiGridViewBase
      */
     public viewState: Subject<ViewState> = new Subject();
-
     /**
      * 工具栏模型
      *
@@ -240,16 +248,16 @@ export default class PIMDISTIRBUTIONYGFenPeiGridViewBase extends GridViewBase {
      */
     public toolbar_click($event: any, $event2?: any) {
         if (Object.is($event.tag, 'deuiaction1')) {
-            this.toolbar_deuiaction1_click($event, '', $event2);
+            this.toolbar_deuiaction1_click(null, '', $event2);
         }
         if (Object.is($event.tag, 'deuiaction3')) {
-            this.toolbar_deuiaction3_click($event, '', $event2);
+            this.toolbar_deuiaction3_click(null, '', $event2);
         }
         if (Object.is($event.tag, 'deuiaction4')) {
-            this.toolbar_deuiaction4_click($event, '', $event2);
+            this.toolbar_deuiaction4_click(null, '', $event2);
         }
         if (Object.is($event.tag, 'deuiaction5')) {
-            this.toolbar_deuiaction5_click($event, '', $event2);
+            this.toolbar_deuiaction5_click(null, '', $event2);
         }
     }
 
@@ -373,6 +381,9 @@ export default class PIMDISTIRBUTIONYGFenPeiGridViewBase extends GridViewBase {
         if (xData.getDatas && xData.getDatas instanceof Function) {
             datas = [...xData.getDatas()];
         }
+        if(params){
+          datas = [params];
+        }
         // 界面行为
         this.New(datas, contextJO,paramJO,  $event, xData,this,"PIMDISTIRBUTION");
     }
@@ -398,6 +409,9 @@ export default class PIMDISTIRBUTIONYGFenPeiGridViewBase extends GridViewBase {
         xData = this.$refs.grid;
         if (xData.getDatas && xData.getDatas instanceof Function) {
             datas = [...xData.getDatas()];
+        }
+        if(params){
+          datas = [params];
         }
         // 界面行为
         this.Remove(datas, contextJO,paramJO,  $event, xData,this,"PIMDISTIRBUTION");
@@ -425,6 +439,9 @@ export default class PIMDISTIRBUTIONYGFenPeiGridViewBase extends GridViewBase {
         if (xData.getDatas && xData.getDatas instanceof Function) {
             datas = [...xData.getDatas()];
         }
+        if(params){
+          datas = [params];
+        }
         // 界面行为
         this.Import(datas, contextJO,paramJO,  $event, xData,this,"PIMDISTIRBUTION");
     }
@@ -451,6 +468,9 @@ export default class PIMDISTIRBUTIONYGFenPeiGridViewBase extends GridViewBase {
         if (xData.getDatas && xData.getDatas instanceof Function) {
             datas = [...xData.getDatas()];
         }
+        if(params){
+          datas = [params];
+        }
         // 界面行为
         this.ExportExcel(datas, contextJO,paramJO,  $event, xData,this,"PIMDISTIRBUTION");
     }
@@ -467,6 +487,9 @@ export default class PIMDISTIRBUTIONYGFenPeiGridViewBase extends GridViewBase {
      */
     public newdata(args: any[],fullargs?:any[], params?: any, $event?: any, xData?: any) {
         const data: any = {};
+        if(args[0].srfsourcekey){
+            data.srfsourcekey = args[0].srfsourcekey;
+        }
         let curViewParam = JSON.parse(JSON.stringify(this.context));
         if(args.length >0){
             Object.assign(curViewParam,args[0]);

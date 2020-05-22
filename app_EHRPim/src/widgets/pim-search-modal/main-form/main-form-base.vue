@@ -2,9 +2,9 @@
     <i-form :model="this.data" class='app-form' ref='form'  id='form' style="">
     <input style="display:none;" />
     <row >
-    <tabs :animated="false" name='form' :value="detailsModel.form.activiedPage" 
+    <tabs :animated="false" name='main' :value="detailsModel.form.activiedPage" 
         @on-click="detailsModel.form.clickPage($event)">
-            <tab-pane v-show="detailsModel.formpage1.visible" name='formpage1' :index="0" tab='form' class=''  
+            <tab-pane v-show="detailsModel.formpage1.visible" name='formpage1' :index="0" tab='main' class=''  
                 :label="(h) =>{
                     return h('span',{
                         class:'caption'
@@ -14,7 +14,7 @@
                 }">
                     
 <i-col v-show="detailsModel.group1.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
-    <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' uiActionGroup="detailsModel.group1.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.pimsearchmodal.main_form.details.group1')" :isShowCaption="true" uiStyle="DEFAULT" :titleBarCloseMode="0" :isInfoGroupMode="false" >    
+    <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' :uiActionGroup="detailsModel.group1.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.pimsearchmodal.main_form.details.group1')" :isShowCaption="true" uiStyle="DEFAULT" :titleBarCloseMode="0" :isInfoGroupMode="false" >    
     <row>
         <i-col v-show="detailsModel.pimsearchmodalname.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
     <app-form-item name='pimsearchmodalname' :itemRules="this.rules.pimsearchmodalname" class='' :caption="$t('entities.pimsearchmodal.main_form.details.pimsearchmodalname')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.pimsearchmodalname.error" :isEmptyCaption="false" labelPos="LEFT">
@@ -30,7 +30,7 @@
 
 
             </tab-pane> 
-            <tab-pane v-show="detailsModel.formpage2.visible" name='formpage2' :index="1" tab='form' class=''  
+            <tab-pane v-show="detailsModel.formpage2.visible" name='formpage2' :index="1" tab='main' class=''  
                 :label="(h) =>{
                     return h('span',{
                         class:'caption'
@@ -40,7 +40,7 @@
                 }">
                     
 <i-col v-show="detailsModel.group2.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
-    <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' uiActionGroup="detailsModel.group2.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.pimsearchmodal.main_form.details.group2')" :isShowCaption="true" uiStyle="DEFAULT" :titleBarCloseMode="0" :isInfoGroupMode="false" >    
+    <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' :uiActionGroup="detailsModel.group2.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.pimsearchmodal.main_form.details.group2')" :isShowCaption="true" uiStyle="DEFAULT" :titleBarCloseMode="0" :isInfoGroupMode="false" >    
     <row>
         <i-col v-show="detailsModel.createman.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
     <app-form-item name='createman' :itemRules="this.rules.createman" class='' :caption="$t('entities.pimsearchmodal.main_form.details.createman')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.createman.error" :isEmptyCaption="false" labelPos="LEFT">
@@ -1010,7 +1010,11 @@ export default class MainBase extends Vue implements ControlInterface {
                     this.load(data);
                 }
                 if (Object.is('loaddraft', action)) {
-                    this.loadDraft(data);
+                    if(this.context.srfsourcekey){
+                        this.copy(this.context.srfsourcekey);
+                    }else{
+                        this.loadDraft(data);
+                    }
                 }
                 if (Object.is('save', action)) {
                     this.save(data,data.showResultInfo);
@@ -1074,8 +1078,18 @@ export default class MainBase extends Vue implements ControlInterface {
      * @param {*} [arg={}]
      * @memberof @memberof Main
      */
-    public copy(arg: any = {}): void {
-        this.loadDraft(arg);
+    public copy(srfkey: string): void {
+        let copyData = this.$store.getters.getCopyData(srfkey);
+        copyData.srfkey = Util.createUUID();
+        copyData.pimsearchmodal = copyData.srfkey;
+        copyData.pimsearchmodalid = copyData.srfkey;
+        Object.assign(this.context,{pimsearchmodal:copyData.pimsearchmodal})
+        this.data = copyData;
+        this.$nextTick(() => {
+          this.formState.next({ type: 'load', data: copyData });
+          this.data.srfuf = '0';
+          this.setFormEnableCond(this.data);
+        });
     }
 
     /**

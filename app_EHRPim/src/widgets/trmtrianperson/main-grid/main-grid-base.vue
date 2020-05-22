@@ -22,49 +22,49 @@
                 <el-table-column align="center" type='selection' :width="checkboxColWidth"></el-table-column>
             </template>
             <template v-if="getColumnState('pxbj')">
-                <el-table-column show-overflow-tooltip :prop="'pxbj'" :label="$t('entities.trmtrianperson.main_grid.columns.pxbj')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'pxbj'" :label="$t('entities.trmtrianperson.main_grid.columns.pxbj')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.pxbj}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('trainbegin')">
-                <el-table-column show-overflow-tooltip :prop="'trainbegin'" :label="$t('entities.trmtrianperson.main_grid.columns.trainbegin')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'trainbegin'" :label="$t('entities.trmtrianperson.main_grid.columns.trainbegin')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <app-format-data format="YYYY-MM-DD" :data="row.trainbegin"></app-format-data>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('trainend')">
-                <el-table-column show-overflow-tooltip :prop="'trainend'" :label="$t('entities.trmtrianperson.main_grid.columns.trainend')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'trainend'" :label="$t('entities.trmtrianperson.main_grid.columns.trainend')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <app-format-data format="YYYY-MM-DD" :data="row.trainend"></app-format-data>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('pxkc')">
-                <el-table-column show-overflow-tooltip :prop="'pxkc'" :label="$t('entities.trmtrianperson.main_grid.columns.pxkc')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'pxkc'" :label="$t('entities.trmtrianperson.main_grid.columns.pxkc')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.pxkc}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('pxjg')">
-                <el-table-column show-overflow-tooltip :prop="'pxjg'" :label="$t('entities.trmtrianperson.main_grid.columns.pxjg')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'pxjg'" :label="$t('entities.trmtrianperson.main_grid.columns.pxjg')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.pxjg}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('trainres')">
-                <el-table-column show-overflow-tooltip :prop="'trainres'" :label="$t('entities.trmtrianperson.main_grid.columns.trainres')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'trainres'" :label="$t('entities.trmtrianperson.main_grid.columns.trainres')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.trainres}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('fs')">
-                <el-table-column show-overflow-tooltip :prop="'fs'" :label="$t('entities.trmtrianperson.main_grid.columns.fs')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'fs'" :label="$t('entities.trmtrianperson.main_grid.columns.fs')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                             <app-format-data dataType="FLOAT" precision="0" :data="row.fs"></app-format-data>
                     </template>
@@ -528,7 +528,7 @@ export default class MainBase extends Vue implements ControlInterface {
     * @type {number}
     * @memberof AppIndex
     */
-    protected checkboxColWidth: number = 34;
+    public checkboxColWidth: number = 34;
 
     /**
      * 是否允许拖动列宽
@@ -1255,7 +1255,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * @memberof Main
      */
 	public uiAction(row: any, tag: any, $event: any) {
-        this.rowClick(row, true);
+        // this.rowClick(row, true);
     }
 
     /**

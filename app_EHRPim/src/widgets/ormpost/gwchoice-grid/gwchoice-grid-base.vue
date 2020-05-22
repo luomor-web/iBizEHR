@@ -22,7 +22,7 @@
                 <el-table-column align="center" type='selection' :width="checkboxColWidth"></el-table-column>
             </template>
             <template v-if="getColumnState('xh')">
-                <el-table-column show-overflow-tooltip :prop="'xh'" :label="$t('entities.ormpost.gwchoice_grid.columns.xh')" :width="100" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'xh'" :label="$t('entities.ormpost.gwchoice_grid.columns.xh')" :width="100"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
                                 <app-span name='xh' editorType="TEXTBOX" :value="row.xh"></app-span>
@@ -31,7 +31,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('ormorgname')">
-                <el-table-column show-overflow-tooltip :prop="'ormorgname'" :label="$t('entities.ormpost.gwchoice_grid.columns.ormorgname')" :width="300" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'ormorgname'" :label="$t('entities.ormpost.gwchoice_grid.columns.ormorgname')" :width="300"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
                                 <app-span name='ormorgname' editorType="PICKER" :value="row.ormorgname"></app-span>
@@ -40,7 +40,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('ormpostname')">
-                <el-table-column show-overflow-tooltip :prop="'ormpostname'" :label="$t('entities.ormpost.gwchoice_grid.columns.ormpostname')" :width="180" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'ormpostname'" :label="$t('entities.ormpost.gwchoice_grid.columns.ormpostname')" :width="180"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
                                 <app-span name='ormpostname' editorType="TEXTBOX" :value="row.ormpostname"></app-span>
@@ -49,7 +49,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('postnature')">
-                <el-table-column show-overflow-tooltip :prop="'postnature'" :label="$t('entities.ormpost.gwchoice_grid.columns.postnature')" :width="130" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'postnature'" :label="$t('entities.ormpost.gwchoice_grid.columns.postnature')" :width="130"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
             <codelist :value="row.postnature" tag='ORMCL_PostNature' codelistType='STATIC' ></codelist>
@@ -58,7 +58,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('createman')">
-                <el-table-column show-overflow-tooltip :prop="'createman'" :label="$t('entities.ormpost.gwchoice_grid.columns.createman')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'createman'" :label="$t('entities.ormpost.gwchoice_grid.columns.createman')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
             <codelist :value="row.createman" tag='SysOperator' codelistType='DYNAMIC' ></codelist>
@@ -67,7 +67,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('createdate')">
-                <el-table-column show-overflow-tooltip :prop="'createdate'" :label="$t('entities.ormpost.gwchoice_grid.columns.createdate')" :width="170" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'createdate'" :label="$t('entities.ormpost.gwchoice_grid.columns.createdate')" :width="170"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <app-format-data format="YYYY-MM-DD hh:mm:ss" :data="row.createdate"></app-format-data>
                     </template>
@@ -517,7 +517,7 @@ export default class GWChoiceBase extends Vue implements ControlInterface {
     * @type {number}
     * @memberof AppIndex
     */
-    protected checkboxColWidth: number = 34;
+    public checkboxColWidth: number = 34;
 
     /**
      * 是否允许拖动列宽
@@ -1269,7 +1269,7 @@ export default class GWChoiceBase extends Vue implements ControlInterface {
      * @memberof GWChoice
      */
 	public uiAction(row: any, tag: any, $event: any) {
-        this.rowClick(row, true);
+        // this.rowClick(row, true);
     }
 
     /**

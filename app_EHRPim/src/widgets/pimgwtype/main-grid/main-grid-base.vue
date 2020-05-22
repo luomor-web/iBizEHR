@@ -22,14 +22,14 @@
                 <el-table-column align="center" type='selection' :width="checkboxColWidth"></el-table-column>
             </template>
             <template v-if="getColumnState('ordervalue')">
-                <el-table-column show-overflow-tooltip :prop="'ordervalue'" :label="$t('entities.pimgwtype.main_grid.columns.ordervalue')" :width="120" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'ordervalue'" :label="$t('entities.pimgwtype.main_grid.columns.ordervalue')" :width="120"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.ordervalue}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('gwlx')">
-                <el-table-column show-overflow-tooltip :prop="'gwlx'" :label="$t('entities.pimgwtype.main_grid.columns.gwlx')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'gwlx'" :label="$t('entities.pimgwtype.main_grid.columns.gwlx')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
             <codelist :value="row.gwlx" tag='ORMCL_GWTYPE' codelistType='DYNAMIC' ></codelist>
@@ -38,14 +38,14 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('createdate')">
-                <el-table-column show-overflow-tooltip :prop="'createdate'" :label="$t('entities.pimgwtype.main_grid.columns.createdate')" :width="130" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'createdate'" :label="$t('entities.pimgwtype.main_grid.columns.createdate')" :width="130"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <app-format-data format="%1$tY-%1$tm-%1$td" :data="row.createdate"></app-format-data>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('createman')">
-                <el-table-column show-overflow-tooltip :prop="'createman'" :label="$t('entities.pimgwtype.main_grid.columns.createman')" :width="130" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'createman'" :label="$t('entities.pimgwtype.main_grid.columns.createman')" :width="130"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
             <codelist :value="row.createman" tag='SysOperator' codelistType='DYNAMIC' ></codelist>
@@ -497,7 +497,7 @@ export default class MainBase extends Vue implements ControlInterface {
     * @type {number}
     * @memberof AppIndex
     */
-    protected checkboxColWidth: number = 34;
+    public checkboxColWidth: number = 34;
 
     /**
      * 是否允许拖动列宽
@@ -1219,7 +1219,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * @memberof Main
      */
 	public uiAction(row: any, tag: any, $event: any) {
-        this.rowClick(row, true);
+        // this.rowClick(row, true);
     }
 
     /**

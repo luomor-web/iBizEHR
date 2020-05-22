@@ -81,6 +81,15 @@ export default class PIMLABOURCAMPANYPickupGridViewBase extends PickupViewBase {
      */
     public appEntityService: PIMLABOURCAMPANYService = new PIMLABOURCAMPANYService;
 
+
+    /**
+     * 计数器服务对象集合
+     *
+     * @type {Array<*>}
+     * @memberof PIMLABOURCAMPANYPickupGridViewBase
+     */    
+    public counterServiceArray:Array<any> = [];
+    
     /**
      * 数据变化
      *
@@ -116,7 +125,7 @@ export default class PIMLABOURCAMPANYPickupGridViewBase extends PickupViewBase {
 	 * @type {*}
 	 * @memberof PIMLABOURCAMPANYPickupGridViewBase
 	 */
-    protected customViewNavContexts:any ={
+    public customViewNavContexts:any ={
     };
 
 	/**
@@ -125,7 +134,7 @@ export default class PIMLABOURCAMPANYPickupGridViewBase extends PickupViewBase {
 	 * @type {*}
 	 * @memberof PIMLABOURCAMPANYPickupGridViewBase
 	 */
-    protected customViewParams:any ={
+    public customViewParams:any ={
     };
 
     /**
@@ -155,7 +164,7 @@ export default class PIMLABOURCAMPANYPickupGridViewBase extends PickupViewBase {
     /**
      * 视图状态订阅对象
      *
-     * @private
+     * @public
      * @type {Subject<{action: string, data: any}>}
      * @memberof PIMLABOURCAMPANYPickupGridViewBase
      */

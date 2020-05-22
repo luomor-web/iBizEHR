@@ -22,35 +22,35 @@
                 <el-table-column align="center" type='selection' :width="checkboxColWidth"></el-table-column>
             </template>
             <template v-if="getColumnState('zzdzs')">
-                <el-table-column show-overflow-tooltip :prop="'zzdzs'" :label="$t('entities.pcmdetail.main_grid.columns.zzdzs')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'zzdzs'" :label="$t('entities.pcmdetail.main_grid.columns.zzdzs')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.zzdzs}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('shortname')">
-                <el-table-column show-overflow-tooltip :prop="'shortname'" :label="$t('entities.pcmdetail.main_grid.columns.shortname')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'shortname'" :label="$t('entities.pcmdetail.main_grid.columns.shortname')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.shortname}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('ygbh')">
-                <el-table-column show-overflow-tooltip :prop="'ygbh'" :label="$t('entities.pcmdetail.main_grid.columns.ygbh')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'ygbh'" :label="$t('entities.pcmdetail.main_grid.columns.ygbh')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.ygbh}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('pimpersonname')">
-                <el-table-column show-overflow-tooltip :prop="'pimpersonname'" :label="$t('entities.pcmdetail.main_grid.columns.pimpersonname')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'pimpersonname'" :label="$t('entities.pcmdetail.main_grid.columns.pimpersonname')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.pimpersonname}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('xb')">
-                <el-table-column show-overflow-tooltip :prop="'xb'" :label="$t('entities.pcmdetail.main_grid.columns.xb')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'xb'" :label="$t('entities.pcmdetail.main_grid.columns.xb')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template v-if="actualIsOpenEdit">
                             <i-form style="height:100%;" :model="row">
@@ -66,7 +66,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('mz')">
-                <el-table-column show-overflow-tooltip :prop="'mz'" :label="$t('entities.pcmdetail.main_grid.columns.mz')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'mz'" :label="$t('entities.pcmdetail.main_grid.columns.mz')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template v-if="actualIsOpenEdit">
                             <i-form style="height:100%;" :model="row">
@@ -82,21 +82,21 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('csrq')">
-                <el-table-column show-overflow-tooltip :prop="'csrq'" :label="$t('entities.pcmdetail.main_grid.columns.csrq')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'csrq'" :label="$t('entities.pcmdetail.main_grid.columns.csrq')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <app-format-data format="YYYY-MM-DD" :data="row.csrq"></app-format-data>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('nj')">
-                <el-table-column show-overflow-tooltip :prop="'nj'" :label="$t('entities.pcmdetail.main_grid.columns.nj')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'nj'" :label="$t('entities.pcmdetail.main_grid.columns.nj')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.nj}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('hyzk')">
-                <el-table-column show-overflow-tooltip :prop="'hyzk'" :label="$t('entities.pcmdetail.main_grid.columns.hyzk')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'hyzk'" :label="$t('entities.pcmdetail.main_grid.columns.hyzk')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template v-if="actualIsOpenEdit">
                             <i-form style="height:100%;" :model="row">
@@ -112,14 +112,14 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('jg')">
-                <el-table-column show-overflow-tooltip :prop="'jg'" :label="$t('entities.pcmdetail.main_grid.columns.jg')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'jg'" :label="$t('entities.pcmdetail.main_grid.columns.jg')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.jg}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('zzmm')">
-                <el-table-column show-overflow-tooltip :prop="'zzmm'" :label="$t('entities.pcmdetail.main_grid.columns.zzmm')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'zzmm'" :label="$t('entities.pcmdetail.main_grid.columns.zzmm')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template v-if="actualIsOpenEdit">
                             <i-form style="height:100%;" :model="row">
@@ -135,21 +135,21 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('rdsj')">
-                <el-table-column show-overflow-tooltip :prop="'rdsj'" :label="$t('entities.pcmdetail.main_grid.columns.rdsj')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'rdsj'" :label="$t('entities.pcmdetail.main_grid.columns.rdsj')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <app-format-data format="YYYY-MM-DD" :data="row.rdsj"></app-format-data>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('zjhm')">
-                <el-table-column show-overflow-tooltip :prop="'zjhm'" :label="$t('entities.pcmdetail.main_grid.columns.zjhm')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'zjhm'" :label="$t('entities.pcmdetail.main_grid.columns.zjhm')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.zjhm}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('hkxz')">
-                <el-table-column show-overflow-tooltip :prop="'hkxz'" :label="$t('entities.pcmdetail.main_grid.columns.hkxz')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'hkxz'" :label="$t('entities.pcmdetail.main_grid.columns.hkxz')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template v-if="actualIsOpenEdit">
                             <i-form style="height:100%;" :model="row">
@@ -165,7 +165,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('hjdz')">
-                <el-table-column show-overflow-tooltip :prop="'hjdz'" :label="$t('entities.pcmdetail.main_grid.columns.hjdz')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'hjdz'" :label="$t('entities.pcmdetail.main_grid.columns.hjdz')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template v-if="actualIsOpenEdit">
                             <i-form style="height:100%;" :model="row">
@@ -189,14 +189,14 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('sbcjd')">
-                <el-table-column show-overflow-tooltip :prop="'sbcjd'" :label="$t('entities.pcmdetail.main_grid.columns.sbcjd')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'sbcjd'" :label="$t('entities.pcmdetail.main_grid.columns.sbcjd')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.sbcjd}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('dyxl')">
-                <el-table-column show-overflow-tooltip :prop="'dyxl'" :label="$t('entities.pcmdetail.main_grid.columns.dyxl')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'dyxl'" :label="$t('entities.pcmdetail.main_grid.columns.dyxl')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template v-if="actualIsOpenEdit">
                             <i-form style="height:100%;" :model="row">
@@ -212,7 +212,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('xxlb1')">
-                <el-table-column show-overflow-tooltip :prop="'xxlb1'" :label="$t('entities.pcmdetail.main_grid.columns.xxlb1')" :width="160" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'xxlb1'" :label="$t('entities.pcmdetail.main_grid.columns.xxlb1')" :width="160"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template v-if="actualIsOpenEdit">
                             <i-form style="height:100%;" :model="row">
@@ -228,7 +228,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('xllx1')">
-                <el-table-column show-overflow-tooltip :prop="'xllx1'" :label="$t('entities.pcmdetail.main_grid.columns.xllx1')" :width="160" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'xllx1'" :label="$t('entities.pcmdetail.main_grid.columns.xllx1')" :width="160"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template v-if="actualIsOpenEdit">
                             <i-form style="height:100%;" :model="row">
@@ -244,35 +244,35 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('dyxlsxzy')">
-                <el-table-column show-overflow-tooltip :prop="'dyxlsxzy'" :label="$t('entities.pcmdetail.main_grid.columns.dyxlsxzy')" :width="160" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'dyxlsxzy'" :label="$t('entities.pcmdetail.main_grid.columns.dyxlsxzy')" :width="160"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.dyxlsxzy}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('dyxljssj')">
-                <el-table-column show-overflow-tooltip :prop="'dyxljssj'" :label="$t('entities.pcmdetail.main_grid.columns.dyxljssj')" :width="160" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'dyxljssj'" :label="$t('entities.pcmdetail.main_grid.columns.dyxljssj')" :width="160"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <app-format-data format="YYYY-MM-DD" :data="row.dyxljssj"></app-format-data>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('dyxlbyyx')">
-                <el-table-column show-overflow-tooltip :prop="'dyxlbyyx'" :label="$t('entities.pcmdetail.main_grid.columns.dyxlbyyx')" :width="160" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'dyxlbyyx'" :label="$t('entities.pcmdetail.main_grid.columns.dyxlbyyx')" :width="160"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.dyxlbyyx}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('zgxlbyyx')">
-                <el-table-column show-overflow-tooltip :prop="'zgxlbyyx'" :label="$t('entities.pcmdetail.main_grid.columns.zgxlbyyx')" :width="160" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'zgxlbyyx'" :label="$t('entities.pcmdetail.main_grid.columns.zgxlbyyx')" :width="160"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.zgxlbyyx}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('zgxl')">
-                <el-table-column show-overflow-tooltip :prop="'zgxl'" :label="$t('entities.pcmdetail.main_grid.columns.zgxl')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'zgxl'" :label="$t('entities.pcmdetail.main_grid.columns.zgxl')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template v-if="actualIsOpenEdit">
                             <i-form style="height:100%;" :model="row">
@@ -288,7 +288,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('zgxxlb')">
-                <el-table-column show-overflow-tooltip :prop="'zgxxlb'" :label="$t('entities.pcmdetail.main_grid.columns.zgxxlb')" :width="160" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'zgxxlb'" :label="$t('entities.pcmdetail.main_grid.columns.zgxxlb')" :width="160"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template v-if="actualIsOpenEdit">
                             <i-form style="height:100%;" :model="row">
@@ -304,7 +304,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('zgxllx')">
-                <el-table-column show-overflow-tooltip :prop="'zgxllx'" :label="$t('entities.pcmdetail.main_grid.columns.zgxllx')" :width="160" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'zgxllx'" :label="$t('entities.pcmdetail.main_grid.columns.zgxllx')" :width="160"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template v-if="actualIsOpenEdit">
                             <i-form style="height:100%;" :model="row">
@@ -320,84 +320,84 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('zgxljssj')">
-                <el-table-column show-overflow-tooltip :prop="'zgxljssj'" :label="$t('entities.pcmdetail.main_grid.columns.zgxljssj')" :width="160" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'zgxljssj'" :label="$t('entities.pcmdetail.main_grid.columns.zgxljssj')" :width="160"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <app-format-data format="YYYY-MM-DD" :data="row.zgxljssj"></app-format-data>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('zgxlsxzy')">
-                <el-table-column show-overflow-tooltip :prop="'zgxlsxzy'" :label="$t('entities.pcmdetail.main_grid.columns.zgxlsxzy')" :width="160" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'zgxlsxzy'" :label="$t('entities.pcmdetail.main_grid.columns.zgxlsxzy')" :width="160"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.zgxlsxzy}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('cjgzsj')">
-                <el-table-column show-overflow-tooltip :prop="'cjgzsj'" :label="$t('entities.pcmdetail.main_grid.columns.cjgzsj')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'cjgzsj'" :label="$t('entities.pcmdetail.main_grid.columns.cjgzsj')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <app-format-data format="YYYY-MM-DD" :data="row.cjgzsj"></app-format-data>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('gznx')">
-                <el-table-column show-overflow-tooltip :prop="'gznx'" :label="$t('entities.pcmdetail.main_grid.columns.gznx')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'gznx'" :label="$t('entities.pcmdetail.main_grid.columns.gznx')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                             <app-format-data dataType="DECIMAL" precision="0" :data="row.gznx"></app-format-data>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('tozjdate')">
-                <el-table-column show-overflow-tooltip :prop="'tozjdate'" :label="$t('entities.pcmdetail.main_grid.columns.tozjdate')" :width="160" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'tozjdate'" :label="$t('entities.pcmdetail.main_grid.columns.tozjdate')" :width="160"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <app-format-data format="YYYY-MM-DD" :data="row.tozjdate"></app-format-data>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('zjxtgznx')">
-                <el-table-column show-overflow-tooltip :prop="'zjxtgznx'" :label="$t('entities.pcmdetail.main_grid.columns.zjxtgznx')" :width="160" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'zjxtgznx'" :label="$t('entities.pcmdetail.main_grid.columns.zjxtgznx')" :width="160"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                             <app-format-data dataType="DECIMAL" precision="0" :data="row.zjxtgznx"></app-format-data>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('dzjbjsj')">
-                <el-table-column show-overflow-tooltip :prop="'dzjbjsj'" :label="$t('entities.pcmdetail.main_grid.columns.dzjbjsj')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'dzjbjsj'" :label="$t('entities.pcmdetail.main_grid.columns.dzjbjsj')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <app-format-data format="YYYY-MM-DD" :data="row.dzjbjsj"></app-format-data>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('bjgznx')">
-                <el-table-column show-overflow-tooltip :prop="'bjgznx'" :label="$t('entities.pcmdetail.main_grid.columns.bjgznx')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'bjgznx'" :label="$t('entities.pcmdetail.main_grid.columns.bjgznx')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                             <app-format-data dataType="DECIMAL" precision="0" :data="row.bjgznx"></app-format-data>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('dbdwsj')">
-                <el-table-column show-overflow-tooltip :prop="'dbdwsj'" :label="$t('entities.pcmdetail.main_grid.columns.dbdwsj')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'dbdwsj'" :label="$t('entities.pcmdetail.main_grid.columns.dbdwsj')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <app-format-data format="YYYY-MM-DD" :data="row.dbdwsj"></app-format-data>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('bdwgznx')">
-                <el-table-column show-overflow-tooltip :prop="'bdwgznx'" :label="$t('entities.pcmdetail.main_grid.columns.bdwgznx')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'bdwgznx'" :label="$t('entities.pcmdetail.main_grid.columns.bdwgznx')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                             <app-format-data dataType="DECIMAL" precision="0" :data="row.bdwgznx"></app-format-data>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('pimmajorsetypename')">
-                <el-table-column show-overflow-tooltip :prop="'pimmajorsetypename'" :label="$t('entities.pcmdetail.main_grid.columns.pimmajorsetypename')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'pimmajorsetypename'" :label="$t('entities.pcmdetail.main_grid.columns.pimmajorsetypename')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.pimmajorsetypename}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('rank')">
-                <el-table-column show-overflow-tooltip :prop="'rank'" :label="$t('entities.pcmdetail.main_grid.columns.rank')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'rank'" :label="$t('entities.pcmdetail.main_grid.columns.rank')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template v-if="actualIsOpenEdit">
                             <i-form style="height:100%;" :model="row">
@@ -413,7 +413,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('zw')">
-                <el-table-column show-overflow-tooltip :prop="'zw'" :label="$t('entities.pcmdetail.main_grid.columns.zw')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'zw'" :label="$t('entities.pcmdetail.main_grid.columns.zw')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template v-if="actualIsOpenEdit">
                             <i-form style="height:100%;" :model="row">
@@ -429,14 +429,14 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('gw')">
-                <el-table-column show-overflow-tooltip :prop="'gw'" :label="$t('entities.pcmdetail.main_grid.columns.gw')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'gw'" :label="$t('entities.pcmdetail.main_grid.columns.gw')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.gw}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('gwtype')">
-                <el-table-column show-overflow-tooltip :prop="'gwtype'" :label="$t('entities.pcmdetail.main_grid.columns.gwtype')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'gwtype'" :label="$t('entities.pcmdetail.main_grid.columns.gwtype')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template v-if="actualIsOpenEdit">
                             <i-form style="height:100%;" :model="row">
@@ -452,35 +452,35 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('jxkhcj')">
-                <el-table-column show-overflow-tooltip :prop="'jxkhcj'" :label="$t('entities.pcmdetail.main_grid.columns.jxkhcj')" :width="200" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'jxkhcj'" :label="$t('entities.pcmdetail.main_grid.columns.jxkhcj')" :width="200"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.jxkhcj}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('pimqualtypename')">
-                <el-table-column show-overflow-tooltip :prop="'pimqualtypename'" :label="$t('entities.pcmdetail.main_grid.columns.pimqualtypename')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'pimqualtypename'" :label="$t('entities.pcmdetail.main_grid.columns.pimqualtypename')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.pimqualtypename}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('careername')">
-                <el-table-column show-overflow-tooltip :prop="'careername'" :label="$t('entities.pcmdetail.main_grid.columns.careername')" :width="180" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'careername'" :label="$t('entities.pcmdetail.main_grid.columns.careername')" :width="180"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.careername}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('zcbh')">
-                <el-table-column show-overflow-tooltip :prop="'zcbh'" :label="$t('entities.pcmdetail.main_grid.columns.zcbh')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'zcbh'" :label="$t('entities.pcmdetail.main_grid.columns.zcbh')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.zcbh}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('sfzckjs')">
-                <el-table-column show-overflow-tooltip :prop="'sfzckjs'" :label="$t('entities.pcmdetail.main_grid.columns.sfzckjs')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'sfzckjs'" :label="$t('entities.pcmdetail.main_grid.columns.sfzckjs')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template v-if="actualIsOpenEdit">
                             <i-form style="height:100%;" :model="row">
@@ -496,21 +496,21 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('zgzsbh')">
-                <el-table-column show-overflow-tooltip :prop="'zgzsbh'" :label="$t('entities.pcmdetail.main_grid.columns.zgzsbh')" :width="170" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'zgzsbh'" :label="$t('entities.pcmdetail.main_grid.columns.zgzsbh')" :width="170"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.zgzsbh}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('pimvocationalcatalogname')">
-                <el-table-column show-overflow-tooltip :prop="'pimvocationalcatalogname'" :label="$t('entities.pcmdetail.main_grid.columns.pimvocationalcatalogname')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'pimvocationalcatalogname'" :label="$t('entities.pcmdetail.main_grid.columns.pimvocationalcatalogname')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.pimvocationalcatalogname}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('rzqd')">
-                <el-table-column show-overflow-tooltip :prop="'rzqd'" :label="$t('entities.pcmdetail.main_grid.columns.rzqd')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'rzqd'" :label="$t('entities.pcmdetail.main_grid.columns.rzqd')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template v-if="actualIsOpenEdit">
                             <i-form style="height:100%;" :model="row">
@@ -526,7 +526,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('htlb')">
-                <el-table-column show-overflow-tooltip :prop="'htlb'" :label="$t('entities.pcmdetail.main_grid.columns.htlb')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'htlb'" :label="$t('entities.pcmdetail.main_grid.columns.htlb')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template v-if="actualIsOpenEdit">
                             <i-form style="height:100%;" :model="row">
@@ -542,7 +542,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('contracttype')">
-                <el-table-column show-overflow-tooltip :prop="'contracttype'" :label="$t('entities.pcmdetail.main_grid.columns.contracttype')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'contracttype'" :label="$t('entities.pcmdetail.main_grid.columns.contracttype')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template v-if="actualIsOpenEdit">
                             <i-form style="height:100%;" :model="row">
@@ -558,42 +558,42 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('qsrq')">
-                <el-table-column show-overflow-tooltip :prop="'qsrq'" :label="$t('entities.pcmdetail.main_grid.columns.qsrq')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'qsrq'" :label="$t('entities.pcmdetail.main_grid.columns.qsrq')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <app-format-data format="YYYY-MM-DD" :data="row.qsrq"></app-format-data>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('jsrq')">
-                <el-table-column show-overflow-tooltip :prop="'jsrq'" :label="$t('entities.pcmdetail.main_grid.columns.jsrq')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'jsrq'" :label="$t('entities.pcmdetail.main_grid.columns.jsrq')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <app-format-data format="YYYY-MM-DD" :data="row.jsrq"></app-format-data>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('htsyq')">
-                <el-table-column show-overflow-tooltip :prop="'htsyq'" :label="$t('entities.pcmdetail.main_grid.columns.htsyq')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'htsyq'" :label="$t('entities.pcmdetail.main_grid.columns.htsyq')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.htsyq}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('htqx')">
-                <el-table-column show-overflow-tooltip :prop="'htqx'" :label="$t('entities.pcmdetail.main_grid.columns.htqx')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'htqx'" :label="$t('entities.pcmdetail.main_grid.columns.htqx')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <app-format-data format="YYYY-MM-DD" :data="row.htqx"></app-format-data>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('lxdh')">
-                <el-table-column show-overflow-tooltip :prop="'lxdh'" :label="$t('entities.pcmdetail.main_grid.columns.lxdh')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'lxdh'" :label="$t('entities.pcmdetail.main_grid.columns.lxdh')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.lxdh}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('yglx')">
-                <el-table-column show-overflow-tooltip :prop="'yglx'" :label="$t('entities.pcmdetail.main_grid.columns.yglx')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'yglx'" :label="$t('entities.pcmdetail.main_grid.columns.yglx')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template v-if="actualIsOpenEdit">
                             <i-form style="height:100%;" :model="row">
@@ -1074,7 +1074,7 @@ export default class MainBase extends Vue implements ControlInterface {
     * @type {number}
     * @memberof AppIndex
     */
-    protected checkboxColWidth: number = 34;
+    public checkboxColWidth: number = 34;
 
     /**
      * 是否允许拖动列宽
@@ -2391,7 +2391,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * @memberof Main
      */
 	public uiAction(row: any, tag: any, $event: any) {
-        this.rowClick(row, true);
+        // this.rowClick(row, true);
     }
 
     /**

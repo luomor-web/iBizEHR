@@ -9,7 +9,7 @@
     </template>
     <template slot="headerRight">
       <div class="view-header-right">
-        <app-header-menus :toolbarModel="toolBarModels" @menu-click="toolbar_click($event)" mode="view" :openMode="openMode" :isEnableQuickSearch="true" searchPlaceholder="请输入岗位（技能）证书" v-model="query" @search="onSearch($event)"/>
+        <app-header-menus :toolbarModel="toolBarModels" @menu-click="toolbar_click($event)" mode="view" :openMode="openMode" :isEnableQuickSearch="true" searchPlaceholder="岗位（技能）证书" v-model="query" @search="onSearch($event)"/>
       </div>
     </template>
     <template slot="content">
@@ -95,6 +95,15 @@ export default class PIMQUALTYPEGridViewBase extends GridViewBase {
      */
     public appEntityService: PIMQUALTYPEService = new PIMQUALTYPEService;
 
+
+    /**
+     * 计数器服务对象集合
+     *
+     * @type {Array<*>}
+     * @memberof PIMQUALTYPEGridViewBase
+     */    
+    public counterServiceArray:Array<any> = [];
+    
     /**
      * 数据变化
      *
@@ -130,7 +139,7 @@ export default class PIMQUALTYPEGridViewBase extends GridViewBase {
 	 * @type {*}
 	 * @memberof PIMQUALTYPEGridViewBase
 	 */
-    protected customViewNavContexts:any ={
+    public customViewNavContexts:any ={
     };
 
 	/**
@@ -139,7 +148,7 @@ export default class PIMQUALTYPEGridViewBase extends GridViewBase {
 	 * @type {*}
 	 * @memberof PIMQUALTYPEGridViewBase
 	 */
-    protected customViewParams:any ={
+    public customViewParams:any ={
     };
 
     /**
@@ -171,12 +180,11 @@ export default class PIMQUALTYPEGridViewBase extends GridViewBase {
     /**
      * 视图状态订阅对象
      *
-     * @private
+     * @public
      * @type {Subject<{action: string, data: any}>}
      * @memberof PIMQUALTYPEGridViewBase
      */
     public viewState: Subject<ViewState> = new Subject();
-
     /**
      * 工具栏模型
      *
@@ -247,19 +255,19 @@ export default class PIMQUALTYPEGridViewBase extends GridViewBase {
      */
     public toolbar2_click($event: any, $event2?: any) {
         if (Object.is($event.tag, 'deuiaction1')) {
-            this.toolbar2_deuiaction1_click($event, '', $event2);
+            this.toolbar2_deuiaction1_click(null, '', $event2);
         }
         if (Object.is($event.tag, 'deuiaction2')) {
-            this.toolbar2_deuiaction2_click($event, '', $event2);
+            this.toolbar2_deuiaction2_click(null, '', $event2);
         }
         if (Object.is($event.tag, 'deuiaction3')) {
-            this.toolbar2_deuiaction3_click($event, '', $event2);
+            this.toolbar2_deuiaction3_click(null, '', $event2);
         }
         if (Object.is($event.tag, 'deuiaction4')) {
-            this.toolbar2_deuiaction4_click($event, '', $event2);
+            this.toolbar2_deuiaction4_click(null, '', $event2);
         }
         if (Object.is($event.tag, 'deuiaction5')) {
-            this.toolbar2_deuiaction5_click($event, '', $event2);
+            this.toolbar2_deuiaction5_click(null, '', $event2);
         }
     }
 
@@ -273,28 +281,28 @@ export default class PIMQUALTYPEGridViewBase extends GridViewBase {
      */
     public toolbar_click($event: any, $event2?: any) {
         if (Object.is($event.tag, 'tbitem3')) {
-            this.toolbar_tbitem3_click($event, '', $event2);
+            this.toolbar_tbitem3_click(null, '', $event2);
         }
         if (Object.is($event.tag, 'tbitem5')) {
-            this.toolbar_tbitem5_click($event, '', $event2);
+            this.toolbar_tbitem5_click(null, '', $event2);
         }
         if (Object.is($event.tag, 'tbitem8')) {
-            this.toolbar_tbitem8_click($event, '', $event2);
+            this.toolbar_tbitem8_click(null, '', $event2);
         }
         if (Object.is($event.tag, 'tbitem11')) {
-            this.toolbar_tbitem11_click($event, '', $event2);
+            this.toolbar_tbitem11_click(null, '', $event2);
         }
         if (Object.is($event.tag, 'tbitem23')) {
-            this.toolbar_tbitem23_click($event, '', $event2);
+            this.toolbar_tbitem23_click(null, '', $event2);
         }
         if (Object.is($event.tag, 'tbitem13')) {
-            this.toolbar_tbitem13_click($event, '', $event2);
+            this.toolbar_tbitem13_click(null, '', $event2);
         }
         if (Object.is($event.tag, 'deuiaction1')) {
-            this.toolbar_deuiaction1_click($event, '', $event2);
+            this.toolbar_deuiaction1_click(null, '', $event2);
         }
         if (Object.is($event.tag, 'tbitem18')) {
-            this.toolbar_tbitem18_click($event, '', $event2);
+            this.toolbar_tbitem18_click(null, '', $event2);
         }
     }
 
@@ -418,6 +426,9 @@ export default class PIMQUALTYPEGridViewBase extends GridViewBase {
         if (xData.getDatas && xData.getDatas instanceof Function) {
             datas = [...xData.getDatas()];
         }
+        if(params){
+          datas = [params];
+        }
         // 界面行为
         this.NewRow(datas, contextJO,paramJO,  $event, xData,this,"PIMQUALTYPE");
     }
@@ -443,6 +454,9 @@ export default class PIMQUALTYPEGridViewBase extends GridViewBase {
         xData = this.$refs.grid;
         if (xData.getDatas && xData.getDatas instanceof Function) {
             datas = [...xData.getDatas()];
+        }
+        if(params){
+          datas = [params];
         }
         // 界面行为
         this.SaveRow(datas, contextJO,paramJO,  $event, xData,this,"PIMQUALTYPE");
@@ -470,6 +484,9 @@ export default class PIMQUALTYPEGridViewBase extends GridViewBase {
         if (xData.getDatas && xData.getDatas instanceof Function) {
             datas = [...xData.getDatas()];
         }
+        if(params){
+          datas = [params];
+        }
         // 界面行为
         this.Remove(datas, contextJO,paramJO,  $event, xData,this,"PIMQUALTYPE");
     }
@@ -495,6 +512,9 @@ export default class PIMQUALTYPEGridViewBase extends GridViewBase {
         xData = this.$refs.grid;
         if (xData.getDatas && xData.getDatas instanceof Function) {
             datas = [...xData.getDatas()];
+        }
+        if(params){
+          datas = [params];
         }
         // 界面行为
         this.Import(datas, contextJO,paramJO,  $event, xData,this,"PIMQUALTYPE");
@@ -522,6 +542,9 @@ export default class PIMQUALTYPEGridViewBase extends GridViewBase {
         if (xData.getDatas && xData.getDatas instanceof Function) {
             datas = [...xData.getDatas()];
         }
+        if(params){
+          datas = [params];
+        }
         // 界面行为
         this.ExportExcel(datas, contextJO,paramJO,  $event, xData,this,"PIMQUALTYPE");
     }
@@ -547,6 +570,9 @@ export default class PIMQUALTYPEGridViewBase extends GridViewBase {
         xData = this.$refs.grid;
         if (xData.getDatas && xData.getDatas instanceof Function) {
             datas = [...xData.getDatas()];
+        }
+        if(params){
+          datas = [params];
         }
         // 界面行为
         this.New(datas, contextJO,paramJO,  $event, xData,this,"PIMQUALTYPE");
@@ -574,6 +600,9 @@ export default class PIMQUALTYPEGridViewBase extends GridViewBase {
         if (xData.getDatas && xData.getDatas instanceof Function) {
             datas = [...xData.getDatas()];
         }
+        if(params){
+          datas = [params];
+        }
         // 界面行为
         this.View(datas, contextJO,paramJO,  $event, xData,this,"PIMQUALTYPE");
     }
@@ -599,6 +628,9 @@ export default class PIMQUALTYPEGridViewBase extends GridViewBase {
         xData = this.$refs.grid;
         if (xData.getDatas && xData.getDatas instanceof Function) {
             datas = [...xData.getDatas()];
+        }
+        if(params){
+          datas = [params];
         }
         // 界面行为
         this.Remove(datas, contextJO,paramJO,  $event, xData,this,"PIMQUALTYPE");
@@ -626,6 +658,9 @@ export default class PIMQUALTYPEGridViewBase extends GridViewBase {
         if (xData.getDatas && xData.getDatas instanceof Function) {
             datas = [...xData.getDatas()];
         }
+        if(params){
+          datas = [params];
+        }
         // 界面行为
         this.Print(datas, contextJO,paramJO,  $event, xData,this,"PIMQUALTYPE");
     }
@@ -651,6 +686,9 @@ export default class PIMQUALTYPEGridViewBase extends GridViewBase {
         xData = this.$refs.grid;
         if (xData.getDatas && xData.getDatas instanceof Function) {
             datas = [...xData.getDatas()];
+        }
+        if(params){
+          datas = [params];
         }
         // 界面行为
         this.Import(datas, contextJO,paramJO,  $event, xData,this,"PIMQUALTYPE");
@@ -678,6 +716,9 @@ export default class PIMQUALTYPEGridViewBase extends GridViewBase {
         if (xData.getDatas && xData.getDatas instanceof Function) {
             datas = [...xData.getDatas()];
         }
+        if(params){
+          datas = [params];
+        }
         // 界面行为
         this.ExportExcel(datas, contextJO,paramJO,  $event, xData,this,"PIMQUALTYPE");
     }
@@ -703,6 +744,9 @@ export default class PIMQUALTYPEGridViewBase extends GridViewBase {
         xData = this.$refs.grid;
         if (xData.getDatas && xData.getDatas instanceof Function) {
             datas = [...xData.getDatas()];
+        }
+        if(params){
+          datas = [params];
         }
         // 界面行为
         this.OpenRowEdit(datas, contextJO,paramJO,  $event, xData,this,"PIMQUALTYPE");
@@ -730,6 +774,9 @@ export default class PIMQUALTYPEGridViewBase extends GridViewBase {
         if (xData.getDatas && xData.getDatas instanceof Function) {
             datas = [...xData.getDatas()];
         }
+        if(params){
+          datas = [params];
+        }
         // 界面行为
         this.Help(datas, contextJO,paramJO,  $event, xData,this,"PIMQUALTYPE");
     }
@@ -746,6 +793,9 @@ export default class PIMQUALTYPEGridViewBase extends GridViewBase {
      */
     public newdata(args: any[],fullargs?:any[], params?: any, $event?: any, xData?: any) {
         const data: any = {};
+        if(args[0].srfsourcekey){
+            data.srfsourcekey = args[0].srfsourcekey;
+        }
         let curViewParam = JSON.parse(JSON.stringify(this.context));
         if(args.length >0){
             Object.assign(curViewParam,args[0]);

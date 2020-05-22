@@ -142,7 +142,7 @@ export default class GetJTLXRDHLogicBase {
     private async executePrepareparam1(context:any,params:any,isloading:boolean){
         // 准备参数节点
         Object.assign(params,{pimfaminfoid:params.jtlxrid});
-        Object.assign(context,{pimfaminfo:params.jtlxrid});
+        Object.assign(context,{pimfaminfo:params.jtlxrid ? params.jtlxrid : null});
         if(this.compute2Cond(params)){
             return this.executeDeaction1(context,params,isloading);   
         }

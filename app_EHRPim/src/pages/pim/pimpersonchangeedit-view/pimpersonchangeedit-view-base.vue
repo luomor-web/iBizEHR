@@ -72,6 +72,15 @@ export default class PIMPERSONCHANGEEditViewBase extends EditViewBase {
      */
     public appEntityService: PIMPERSONCHANGEService = new PIMPERSONCHANGEService;
 
+
+    /**
+     * 计数器服务对象集合
+     *
+     * @type {Array<*>}
+     * @memberof PIMPERSONCHANGEEditViewBase
+     */    
+    public counterServiceArray:Array<any> = [];
+    
     /**
      * 数据变化
      *
@@ -107,7 +116,7 @@ export default class PIMPERSONCHANGEEditViewBase extends EditViewBase {
 	 * @type {*}
 	 * @memberof PIMPERSONCHANGEEditViewBase
 	 */
-    protected customViewNavContexts:any ={
+    public customViewNavContexts:any ={
     };
 
 	/**
@@ -116,7 +125,7 @@ export default class PIMPERSONCHANGEEditViewBase extends EditViewBase {
 	 * @type {*}
 	 * @memberof PIMPERSONCHANGEEditViewBase
 	 */
-    protected customViewParams:any ={
+    public customViewParams:any ={
     };
 
     /**
@@ -146,12 +155,11 @@ export default class PIMPERSONCHANGEEditViewBase extends EditViewBase {
     /**
      * 视图状态订阅对象
      *
-     * @private
+     * @public
      * @type {Subject<{action: string, data: any}>}
      * @memberof PIMPERSONCHANGEEditViewBase
      */
     public viewState: Subject<ViewState> = new Subject();
-
     /**
      * 工具栏模型
      *
@@ -207,13 +215,13 @@ export default class PIMPERSONCHANGEEditViewBase extends EditViewBase {
      */
     public toolbar_click($event: any, $event2?: any) {
         if (Object.is($event.tag, 'deuiaction2_qr')) {
-            this.toolbar_deuiaction2_qr_click($event, '', $event2);
+            this.toolbar_deuiaction2_qr_click(null, '', $event2);
         }
         if (Object.is($event.tag, 'deuiaction2_bh')) {
-            this.toolbar_deuiaction2_bh_click($event, '', $event2);
+            this.toolbar_deuiaction2_bh_click(null, '', $event2);
         }
         if (Object.is($event.tag, 'deuiaction1')) {
-            this.toolbar_deuiaction1_click($event, '', $event2);
+            this.toolbar_deuiaction1_click(null, '', $event2);
         }
     }
 
@@ -277,6 +285,9 @@ export default class PIMPERSONCHANGEEditViewBase extends EditViewBase {
         if (xData.getDatas && xData.getDatas instanceof Function) {
             datas = [...xData.getDatas()];
         }
+        if(params){
+          datas = [params];
+        }
         // 界面行为
         const curUIService:PIMPERSONCHANGEUIService  = new PIMPERSONCHANGEUIService();
         curUIService.PIMPERSONCHANGE_QR(datas,contextJO, paramJO,  $event, xData,this,"PIMPERSONCHANGE");
@@ -304,6 +315,9 @@ export default class PIMPERSONCHANGEEditViewBase extends EditViewBase {
         if (xData.getDatas && xData.getDatas instanceof Function) {
             datas = [...xData.getDatas()];
         }
+        if(params){
+          datas = [params];
+        }
         // 界面行为
         const curUIService:PIMPERSONCHANGEUIService  = new PIMPERSONCHANGEUIService();
         curUIService.PIMPERSONCHANGE_BH(datas,contextJO, paramJO,  $event, xData,this,"PIMPERSONCHANGE");
@@ -330,6 +344,9 @@ export default class PIMPERSONCHANGEEditViewBase extends EditViewBase {
         xData = this.$refs.form;
         if (xData.getDatas && xData.getDatas instanceof Function) {
             datas = [...xData.getDatas()];
+        }
+        if(params){
+          datas = [params];
         }
         // 界面行为
         this.Exit(datas, contextJO,paramJO,  $event, xData,this,"PIMPERSONCHANGE");

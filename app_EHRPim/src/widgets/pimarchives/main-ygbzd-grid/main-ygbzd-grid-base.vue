@@ -22,35 +22,35 @@
                 <el-table-column align="center" type='selection' :width="checkboxColWidth"></el-table-column>
             </template>
             <template v-if="getColumnState('drda')">
-                <el-table-column show-overflow-tooltip :prop="'drda'" :label="$t('entities.pimarchives.main_ygbzd_grid.columns.drda')" :width="100" :align="'center'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'drda'" :label="$t('entities.pimarchives.main_ygbzd_grid.columns.drda')" :width="100"  :align="'center'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.drda}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('dabh')">
-                <el-table-column show-overflow-tooltip :prop="'dabh'" :label="$t('entities.pimarchives.main_ygbzd_grid.columns.dabh')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'dabh'" :label="$t('entities.pimarchives.main_ygbzd_grid.columns.dabh')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.dabh}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('ormorgname3')">
-                <el-table-column show-overflow-tooltip :prop="'ormorgname3'" :label="$t('entities.pimarchives.main_ygbzd_grid.columns.ormorgname3')" :width="250" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'ormorgname3'" :label="$t('entities.pimarchives.main_ygbzd_grid.columns.ormorgname3')" :width="250"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.ormorgname3}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('dabgd')">
-                <el-table-column show-overflow-tooltip :prop="'dabgd'" :label="$t('entities.pimarchives.main_ygbzd_grid.columns.dabgd')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'dabgd'" :label="$t('entities.pimarchives.main_ygbzd_grid.columns.dabgd')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.dabgd}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('archivescentername')">
-                <el-table-column show-overflow-tooltip :prop="'archivescentername'" :label="$t('entities.pimarchives.main_ygbzd_grid.columns.archivescentername')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'archivescentername'" :label="$t('entities.pimarchives.main_ygbzd_grid.columns.archivescentername')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <app-column-link deKeyField='archivescenter' :context="JSON.parse(JSON.stringify(context))" :viewparams="JSON.parse(JSON.stringify(viewparams))" :data="row" :linkview="{viewname: 'archivescenterredirect-view', height: 0,width: 0,title: $t('entities.archivescenter.views.redirectview.title'),placement: '', isRedirectView: true,deResParameters: [
             ]
@@ -64,7 +64,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('dastate')">
-                <el-table-column show-overflow-tooltip :prop="'dastate'" :label="$t('entities.pimarchives.main_ygbzd_grid.columns.dastate')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'dastate'" :label="$t('entities.pimarchives.main_ygbzd_grid.columns.dastate')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
             <codelist :value="row.dastate" tag='DASTATE' codelistType='STATIC' renderMode="NUM" textSeparator="、" ></codelist>
@@ -73,14 +73,14 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('ygbh')">
-                <el-table-column show-overflow-tooltip :prop="'ygbh'" :label="$t('entities.pimarchives.main_ygbzd_grid.columns.ygbh')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'ygbh'" :label="$t('entities.pimarchives.main_ygbzd_grid.columns.ygbh')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.ygbh}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('pimpersonname')">
-                <el-table-column show-overflow-tooltip :prop="'pimpersonname'" :label="$t('entities.pimarchives.main_ygbzd_grid.columns.pimpersonname')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'pimpersonname'" :label="$t('entities.pimarchives.main_ygbzd_grid.columns.pimpersonname')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <app-column-link deKeyField='pimperson' :context="JSON.parse(JSON.stringify(context))" :viewparams="JSON.parse(JSON.stringify(viewparams))" :data="row" :linkview="{viewname: 'pimpersonedit-view2', height: 0,width: 0,title: $t('entities.pimperson.views.editview2.title'),placement: 'DRAWER_TOP', isRedirectView: false,deResParameters: [
             ]
@@ -94,14 +94,14 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('sszzdzs')">
-                <el-table-column show-overflow-tooltip :prop="'sszzdzs'" :label="$t('entities.pimarchives.main_ygbzd_grid.columns.sszzdzs')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'sszzdzs'" :label="$t('entities.pimarchives.main_ygbzd_grid.columns.sszzdzs')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.sszzdzs}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('ygzt')">
-                <el-table-column show-overflow-tooltip :prop="'ygzt'" :label="$t('entities.pimarchives.main_ygbzd_grid.columns.ygzt')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'ygzt'" :label="$t('entities.pimarchives.main_ygbzd_grid.columns.ygzt')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
             <codelist :value="row.ygzt" tag='PIMCL_YGZT' codelistType='DYNAMIC' ></codelist>
@@ -110,14 +110,14 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('duration')">
-                <el-table-column show-overflow-tooltip :prop="'duration'" :label="$t('entities.pimarchives.main_ygbzd_grid.columns.duration')" :width="200" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'duration'" :label="$t('entities.pimarchives.main_ygbzd_grid.columns.duration')" :width="200"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.duration}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('zt')">
-                <el-table-column show-overflow-tooltip :prop="'zt'" :label="$t('entities.pimarchives.main_ygbzd_grid.columns.zt')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'zt'" :label="$t('entities.pimarchives.main_ygbzd_grid.columns.zt')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
             <codelist :value="row.zt" tag='PIMCL_DAGHZT' codelistType='STATIC' renderMode="STR" valueSeparator=";" textSeparator="、" ></codelist>
@@ -583,7 +583,7 @@ export default class Main_YGBZDBase extends Vue implements ControlInterface {
     * @type {number}
     * @memberof AppIndex
     */
-    protected checkboxColWidth: number = 34;
+    public checkboxColWidth: number = 34;
 
     /**
      * 是否允许拖动列宽
@@ -1369,7 +1369,7 @@ export default class Main_YGBZDBase extends Vue implements ControlInterface {
      * @memberof Main_YGBZD
      */
 	public uiAction(row: any, tag: any, $event: any) {
-        this.rowClick(row, true);
+        // this.rowClick(row, true);
     }
 
     /**

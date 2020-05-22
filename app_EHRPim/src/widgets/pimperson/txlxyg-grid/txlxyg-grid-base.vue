@@ -22,14 +22,14 @@
                 <el-table-column align="center" type='selection' :width="checkboxColWidth"></el-table-column>
             </template>
             <template v-if="getColumnState('ygbh')">
-                <el-table-column show-overflow-tooltip :prop="'ygbh'" :label="$t('entities.pimperson.txlxyg_grid.columns.ygbh')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'ygbh'" :label="$t('entities.pimperson.txlxyg_grid.columns.ygbh')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.ygbh}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('pimpersonname')">
-                <el-table-column show-overflow-tooltip :prop="'pimpersonname'" :label="$t('entities.pimperson.txlxyg_grid.columns.pimpersonname')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'pimpersonname'" :label="$t('entities.pimperson.txlxyg_grid.columns.pimpersonname')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <app-column-link deKeyField='pimperson' :context="JSON.parse(JSON.stringify(context))" :viewparams="JSON.parse(JSON.stringify(viewparams))" :data="row" :linkview="{viewname: 'pimpersonedit-view2', height: 0,width: 0,title: $t('entities.pimperson.views.editview2.title'),placement: 'DRAWER_TOP', isRedirectView: false,deResParameters: [
             ]
@@ -43,7 +43,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('xb')">
-                <el-table-column show-overflow-tooltip :prop="'xb'" :label="$t('entities.pimperson.txlxyg_grid.columns.xb')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'xb'" :label="$t('entities.pimperson.txlxyg_grid.columns.xb')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
             <codelist :value="row.xb" tag='PIMCL_XB' codelistType='DYNAMIC' ></codelist>
@@ -52,56 +52,56 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('nj')">
-                <el-table-column show-overflow-tooltip :prop="'nj'" :label="$t('entities.pimperson.txlxyg_grid.columns.nj')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'nj'" :label="$t('entities.pimperson.txlxyg_grid.columns.nj')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.nj}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('postaladdress')">
-                <el-table-column show-overflow-tooltip :prop="'postaladdress'" :label="$t('entities.pimperson.txlxyg_grid.columns.postaladdress')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'postaladdress'" :label="$t('entities.pimperson.txlxyg_grid.columns.postaladdress')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.postaladdress}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('retiplace')">
-                <el-table-column show-overflow-tooltip :prop="'retiplace'" :label="$t('entities.pimperson.txlxyg_grid.columns.retiplace')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'retiplace'" :label="$t('entities.pimperson.txlxyg_grid.columns.retiplace')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.retiplace}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('jtlxr')">
-                <el-table-column show-overflow-tooltip :prop="'jtlxr'" :label="$t('entities.pimperson.txlxyg_grid.columns.jtlxr')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'jtlxr'" :label="$t('entities.pimperson.txlxyg_grid.columns.jtlxr')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.jtlxr}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('jtlxrdh')">
-                <el-table-column show-overflow-tooltip :prop="'jtlxrdh'" :label="$t('entities.pimperson.txlxyg_grid.columns.jtlxrdh')" :width="180" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'jtlxrdh'" :label="$t('entities.pimperson.txlxyg_grid.columns.jtlxrdh')" :width="180"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.jtlxrdh}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('zzdzs')">
-                <el-table-column show-overflow-tooltip :prop="'zzdzs'" :label="$t('entities.pimperson.txlxyg_grid.columns.zzdzs')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'zzdzs'" :label="$t('entities.pimperson.txlxyg_grid.columns.zzdzs')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.zzdzs}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('ormorgsectorname')">
-                <el-table-column show-overflow-tooltip :prop="'ormorgsectorname'" :label="$t('entities.pimperson.txlxyg_grid.columns.ormorgsectorname')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'ormorgsectorname'" :label="$t('entities.pimperson.txlxyg_grid.columns.ormorgsectorname')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.ormorgsectorname}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('rank')">
-                <el-table-column show-overflow-tooltip :prop="'rank'" :label="$t('entities.pimperson.txlxyg_grid.columns.rank')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'rank'" :label="$t('entities.pimperson.txlxyg_grid.columns.rank')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
             <codelist :value="row.rank" tag='PIMCL_RANK' codelistType='DYNAMIC' renderMode="STR" valueSeparator=";" textSeparator="、" ></codelist>
@@ -110,7 +110,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('zw')">
-                <el-table-column show-overflow-tooltip :prop="'zw'" :label="$t('entities.pimperson.txlxyg_grid.columns.zw')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'zw'" :label="$t('entities.pimperson.txlxyg_grid.columns.zw')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
             <codelist :value="row.zw" tag='ORMCL_ZW' codelistType='DYNAMIC' renderMode="STR" valueSeparator=";" textSeparator="、" ></codelist>
@@ -119,7 +119,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('gw')">
-                <el-table-column show-overflow-tooltip :prop="'gw'" :label="$t('entities.pimperson.txlxyg_grid.columns.gw')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'gw'" :label="$t('entities.pimperson.txlxyg_grid.columns.gw')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
             <codelist :value="row.gw" tag='ORMCL_GW' codelistType='DYNAMIC' renderMode="STR" valueSeparator=";" textSeparator="、" ></codelist>
@@ -128,28 +128,28 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('txdq')">
-                <el-table-column show-overflow-tooltip :prop="'txdq'" :label="$t('entities.pimperson.txlxyg_grid.columns.txdq')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'txdq'" :label="$t('entities.pimperson.txlxyg_grid.columns.txdq')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <app-format-data format="YYYY-MM-DD" :data="row.txdq"></app-format-data>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('sjtxrq')">
-                <el-table-column show-overflow-tooltip :prop="'sjtxrq'" :label="$t('entities.pimperson.txlxyg_grid.columns.sjtxrq')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'sjtxrq'" :label="$t('entities.pimperson.txlxyg_grid.columns.sjtxrq')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <app-format-data format="YYYY-MM-DD" :data="row.sjtxrq"></app-format-data>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('lxdh')">
-                <el-table-column show-overflow-tooltip :prop="'lxdh'" :label="$t('entities.pimperson.txlxyg_grid.columns.lxdh')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'lxdh'" :label="$t('entities.pimperson.txlxyg_grid.columns.lxdh')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.lxdh}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('spdylje')">
-                <el-table-column show-overflow-tooltip :prop="'spdylje'" :label="$t('entities.pimperson.txlxyg_grid.columns.spdylje')" :width="180" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'spdylje'" :label="$t('entities.pimperson.txlxyg_grid.columns.spdylje')" :width="180"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                             <app-format-data dataType="FLOAT" precision="0" :data="row.spdylje"></app-format-data>
                     </template>
@@ -613,7 +613,7 @@ export default class TXLXYGBase extends Vue implements ControlInterface {
     * @type {number}
     * @memberof AppIndex
     */
-    protected checkboxColWidth: number = 34;
+    public checkboxColWidth: number = 34;
 
     /**
      * 是否允许拖动列宽
@@ -1442,7 +1442,7 @@ export default class TXLXYGBase extends Vue implements ControlInterface {
      * @memberof TXLXYG
      */
 	public uiAction(row: any, tag: any, $event: any) {
-        this.rowClick(row, true);
+        // this.rowClick(row, true);
     }
 
     /**

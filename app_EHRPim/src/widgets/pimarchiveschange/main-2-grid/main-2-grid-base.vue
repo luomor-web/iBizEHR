@@ -22,35 +22,35 @@
                 <el-table-column align="center" type='selection' :width="checkboxColWidth"></el-table-column>
             </template>
             <template v-if="getColumnState('ygbh')">
-                <el-table-column show-overflow-tooltip :prop="'ygbh'" :label="$t('entities.pimarchiveschange.main_2_grid.columns.ygbh')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'ygbh'" :label="$t('entities.pimarchiveschange.main_2_grid.columns.ygbh')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.ygbh}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('pimpersonname')">
-                <el-table-column show-overflow-tooltip :prop="'pimpersonname'" :label="$t('entities.pimarchiveschange.main_2_grid.columns.pimpersonname')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'pimpersonname'" :label="$t('entities.pimarchiveschange.main_2_grid.columns.pimpersonname')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.pimpersonname}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('ormorgname')">
-                <el-table-column show-overflow-tooltip :prop="'ormorgname'" :label="$t('entities.pimarchiveschange.main_2_grid.columns.ormorgname')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'ormorgname'" :label="$t('entities.pimarchiveschange.main_2_grid.columns.ormorgname')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.ormorgname}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('ormorgname2')">
-                <el-table-column show-overflow-tooltip :prop="'ormorgname2'" :label="$t('entities.pimarchiveschange.main_2_grid.columns.ormorgname2')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'ormorgname2'" :label="$t('entities.pimarchiveschange.main_2_grid.columns.ormorgname2')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.ormorgname2}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('jlcssj')">
-                <el-table-column show-overflow-tooltip :prop="'jlcssj'" :label="$t('entities.pimarchiveschange.main_2_grid.columns.jlcssj')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'jlcssj'" :label="$t('entities.pimarchiveschange.main_2_grid.columns.jlcssj')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <app-format-data format="YYYY-MM-DD" :data="row.jlcssj"></app-format-data>
                     </template>
@@ -514,7 +514,7 @@ export default class Main_2Base extends Vue implements ControlInterface {
     * @type {number}
     * @memberof AppIndex
     */
-    protected checkboxColWidth: number = 34;
+    public checkboxColWidth: number = 34;
 
     /**
      * 是否允许拖动列宽
@@ -1231,7 +1231,7 @@ export default class Main_2Base extends Vue implements ControlInterface {
      * @memberof Main_2
      */
 	public uiAction(row: any, tag: any, $event: any) {
-        this.rowClick(row, true);
+        // this.rowClick(row, true);
     }
 
     /**

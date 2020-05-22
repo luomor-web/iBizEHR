@@ -22,7 +22,7 @@
                 <el-table-column align="center" type='selection' :width="checkboxColWidth"></el-table-column>
             </template>
             <template v-if="getColumnState('pimpersonname')">
-                <el-table-column show-overflow-tooltip :prop="'pimpersonname'" :label="$t('entities.attendancemreportmx.wscgrid_grid.columns.pimpersonname')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'pimpersonname'" :label="$t('entities.attendancemreportmx.wscgrid_grid.columns.pimpersonname')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <app-column-link deKeyField='pimperson' :context="JSON.parse(JSON.stringify(context))" :viewparams="JSON.parse(JSON.stringify(viewparams))" :data="row" :linkview="{viewname: 'pimpersonedit-view2', height: 0,width: 0,title: $t('entities.pimperson.views.editview2.title'),placement: 'DRAWER_TOP', isRedirectView: false,deResParameters: [
             ]
@@ -36,14 +36,14 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('ygbh')">
-                <el-table-column show-overflow-tooltip :prop="'ygbh'" :label="$t('entities.attendancemreportmx.wscgrid_grid.columns.ygbh')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'ygbh'" :label="$t('entities.attendancemreportmx.wscgrid_grid.columns.ygbh')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.ygbh}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('nd')">
-                <el-table-column show-overflow-tooltip :prop="'nd'" :label="$t('entities.attendancemreportmx.wscgrid_grid.columns.nd')" :width="85" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'nd'" :label="$t('entities.attendancemreportmx.wscgrid_grid.columns.nd')" :width="85"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
             <codelist :value="row.nd" tag='PIMCL_ND' codelistType='STATIC' renderMode="STR" valueSeparator=";" textSeparator="、" ></codelist>
@@ -52,7 +52,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('yf')">
-                <el-table-column show-overflow-tooltip :prop="'yf'" :label="$t('entities.attendancemreportmx.wscgrid_grid.columns.yf')" :width="85" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'yf'" :label="$t('entities.attendancemreportmx.wscgrid_grid.columns.yf')" :width="85"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
             <codelist :value="row.yf" tag='CodeList82' codelistType='STATIC' renderMode="STR" valueSeparator=";" textSeparator="、" ></codelist>
@@ -61,7 +61,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('day1')">
-                <el-table-column show-overflow-tooltip :prop="'day1'" :label="$t('entities.attendancemreportmx.wscgrid_grid.columns.day1')" :width="40" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'day1'" :label="$t('entities.attendancemreportmx.wscgrid_grid.columns.day1')" :width="40"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
             <codelist :value="row.day1" tag='ATTCL_KQLX' codelistType='DYNAMIC' renderMode="STR" valueSeparator=";" textSeparator="、" ></codelist>
@@ -70,7 +70,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('day2')">
-                <el-table-column show-overflow-tooltip :prop="'day2'" :label="$t('entities.attendancemreportmx.wscgrid_grid.columns.day2')" :width="40" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'day2'" :label="$t('entities.attendancemreportmx.wscgrid_grid.columns.day2')" :width="40"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
             <codelist :value="row.day2" tag='ATTCL_KQLX' codelistType='DYNAMIC' renderMode="STR" valueSeparator=";" textSeparator="、" ></codelist>
@@ -79,7 +79,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('day3')">
-                <el-table-column show-overflow-tooltip :prop="'day3'" :label="$t('entities.attendancemreportmx.wscgrid_grid.columns.day3')" :width="40" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'day3'" :label="$t('entities.attendancemreportmx.wscgrid_grid.columns.day3')" :width="40"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
             <codelist :value="row.day3" tag='ATTCL_KQLX' codelistType='DYNAMIC' renderMode="STR" valueSeparator=";" textSeparator="、" ></codelist>
@@ -88,7 +88,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('day4')">
-                <el-table-column show-overflow-tooltip :prop="'day4'" :label="$t('entities.attendancemreportmx.wscgrid_grid.columns.day4')" :width="40" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'day4'" :label="$t('entities.attendancemreportmx.wscgrid_grid.columns.day4')" :width="40"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
             <codelist :value="row.day4" tag='ATTCL_KQLX' codelistType='DYNAMIC' renderMode="STR" valueSeparator=";" textSeparator="、" ></codelist>
@@ -97,7 +97,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('day5')">
-                <el-table-column show-overflow-tooltip :prop="'day5'" :label="$t('entities.attendancemreportmx.wscgrid_grid.columns.day5')" :width="40" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'day5'" :label="$t('entities.attendancemreportmx.wscgrid_grid.columns.day5')" :width="40"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
             <codelist :value="row.day5" tag='ATTCL_KQLX' codelistType='DYNAMIC' renderMode="STR" valueSeparator=";" textSeparator="、" ></codelist>
@@ -106,7 +106,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('day6')">
-                <el-table-column show-overflow-tooltip :prop="'day6'" :label="$t('entities.attendancemreportmx.wscgrid_grid.columns.day6')" :width="40" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'day6'" :label="$t('entities.attendancemreportmx.wscgrid_grid.columns.day6')" :width="40"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
             <codelist :value="row.day6" tag='ATTCL_KQLX' codelistType='DYNAMIC' renderMode="STR" valueSeparator=";" textSeparator="、" ></codelist>
@@ -115,7 +115,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('day7')">
-                <el-table-column show-overflow-tooltip :prop="'day7'" :label="$t('entities.attendancemreportmx.wscgrid_grid.columns.day7')" :width="40" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'day7'" :label="$t('entities.attendancemreportmx.wscgrid_grid.columns.day7')" :width="40"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
             <codelist :value="row.day7" tag='ATTCL_KQLX' codelistType='DYNAMIC' renderMode="STR" valueSeparator=";" textSeparator="、" ></codelist>
@@ -124,7 +124,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('day8')">
-                <el-table-column show-overflow-tooltip :prop="'day8'" :label="$t('entities.attendancemreportmx.wscgrid_grid.columns.day8')" :width="40" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'day8'" :label="$t('entities.attendancemreportmx.wscgrid_grid.columns.day8')" :width="40"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
             <codelist :value="row.day8" tag='ATTCL_KQLX' codelistType='DYNAMIC' renderMode="STR" valueSeparator=";" textSeparator="、" ></codelist>
@@ -133,7 +133,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('day9')">
-                <el-table-column show-overflow-tooltip :prop="'day9'" :label="$t('entities.attendancemreportmx.wscgrid_grid.columns.day9')" :width="40" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'day9'" :label="$t('entities.attendancemreportmx.wscgrid_grid.columns.day9')" :width="40"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
             <codelist :value="row.day9" tag='ATTCL_KQLX' codelistType='DYNAMIC' renderMode="STR" valueSeparator=";" textSeparator="、" ></codelist>
@@ -142,7 +142,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('day10')">
-                <el-table-column show-overflow-tooltip :prop="'day10'" :label="$t('entities.attendancemreportmx.wscgrid_grid.columns.day10')" :width="40" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'day10'" :label="$t('entities.attendancemreportmx.wscgrid_grid.columns.day10')" :width="40"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
             <codelist :value="row.day10" tag='ATTCL_KQLX' codelistType='DYNAMIC' renderMode="STR" valueSeparator=";" textSeparator="、" ></codelist>
@@ -151,7 +151,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('day11')">
-                <el-table-column show-overflow-tooltip :prop="'day11'" :label="$t('entities.attendancemreportmx.wscgrid_grid.columns.day11')" :width="40" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'day11'" :label="$t('entities.attendancemreportmx.wscgrid_grid.columns.day11')" :width="40"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
             <codelist :value="row.day11" tag='ATTCL_KQLX' codelistType='DYNAMIC' renderMode="STR" valueSeparator=";" textSeparator="、" ></codelist>
@@ -160,7 +160,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('day12')">
-                <el-table-column show-overflow-tooltip :prop="'day12'" :label="$t('entities.attendancemreportmx.wscgrid_grid.columns.day12')" :width="40" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'day12'" :label="$t('entities.attendancemreportmx.wscgrid_grid.columns.day12')" :width="40"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
             <codelist :value="row.day12" tag='ATTCL_KQLX' codelistType='DYNAMIC' renderMode="STR" valueSeparator=";" textSeparator="、" ></codelist>
@@ -169,7 +169,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('day13')">
-                <el-table-column show-overflow-tooltip :prop="'day13'" :label="$t('entities.attendancemreportmx.wscgrid_grid.columns.day13')" :width="40" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'day13'" :label="$t('entities.attendancemreportmx.wscgrid_grid.columns.day13')" :width="40"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
             <codelist :value="row.day13" tag='ATTCL_KQLX' codelistType='DYNAMIC' renderMode="STR" valueSeparator=";" textSeparator="、" ></codelist>
@@ -178,7 +178,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('day14')">
-                <el-table-column show-overflow-tooltip :prop="'day14'" :label="$t('entities.attendancemreportmx.wscgrid_grid.columns.day14')" :width="40" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'day14'" :label="$t('entities.attendancemreportmx.wscgrid_grid.columns.day14')" :width="40"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
             <codelist :value="row.day14" tag='ATTCL_KQLX' codelistType='DYNAMIC' renderMode="STR" valueSeparator=";" textSeparator="、" ></codelist>
@@ -187,7 +187,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('day15')">
-                <el-table-column show-overflow-tooltip :prop="'day15'" :label="$t('entities.attendancemreportmx.wscgrid_grid.columns.day15')" :width="40" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'day15'" :label="$t('entities.attendancemreportmx.wscgrid_grid.columns.day15')" :width="40"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
             <codelist :value="row.day15" tag='ATTCL_KQLX' codelistType='DYNAMIC' renderMode="STR" valueSeparator=";" textSeparator="、" ></codelist>
@@ -196,7 +196,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('day16')">
-                <el-table-column show-overflow-tooltip :prop="'day16'" :label="$t('entities.attendancemreportmx.wscgrid_grid.columns.day16')" :width="40" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'day16'" :label="$t('entities.attendancemreportmx.wscgrid_grid.columns.day16')" :width="40"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
             <codelist :value="row.day16" tag='ATTCL_KQLX' codelistType='DYNAMIC' renderMode="STR" valueSeparator=";" textSeparator="、" ></codelist>
@@ -205,7 +205,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('day17')">
-                <el-table-column show-overflow-tooltip :prop="'day17'" :label="$t('entities.attendancemreportmx.wscgrid_grid.columns.day17')" :width="40" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'day17'" :label="$t('entities.attendancemreportmx.wscgrid_grid.columns.day17')" :width="40"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
             <codelist :value="row.day17" tag='ATTCL_KQLX' codelistType='DYNAMIC' renderMode="STR" valueSeparator=";" textSeparator="、" ></codelist>
@@ -214,7 +214,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('day18')">
-                <el-table-column show-overflow-tooltip :prop="'day18'" :label="$t('entities.attendancemreportmx.wscgrid_grid.columns.day18')" :width="40" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'day18'" :label="$t('entities.attendancemreportmx.wscgrid_grid.columns.day18')" :width="40"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
             <codelist :value="row.day18" tag='ATTCL_KQLX' codelistType='DYNAMIC' renderMode="STR" valueSeparator=";" textSeparator="、" ></codelist>
@@ -223,7 +223,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('day19')">
-                <el-table-column show-overflow-tooltip :prop="'day19'" :label="$t('entities.attendancemreportmx.wscgrid_grid.columns.day19')" :width="40" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'day19'" :label="$t('entities.attendancemreportmx.wscgrid_grid.columns.day19')" :width="40"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
             <codelist :value="row.day19" tag='ATTCL_KQLX' codelistType='DYNAMIC' renderMode="STR" valueSeparator=";" textSeparator="、" ></codelist>
@@ -232,7 +232,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('day20')">
-                <el-table-column show-overflow-tooltip :prop="'day20'" :label="$t('entities.attendancemreportmx.wscgrid_grid.columns.day20')" :width="40" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'day20'" :label="$t('entities.attendancemreportmx.wscgrid_grid.columns.day20')" :width="40"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
             <codelist :value="row.day20" tag='ATTCL_KQLX' codelistType='DYNAMIC' renderMode="STR" valueSeparator=";" textSeparator="、" ></codelist>
@@ -241,7 +241,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('day21')">
-                <el-table-column show-overflow-tooltip :prop="'day21'" :label="$t('entities.attendancemreportmx.wscgrid_grid.columns.day21')" :width="40" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'day21'" :label="$t('entities.attendancemreportmx.wscgrid_grid.columns.day21')" :width="40"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
             <codelist :value="row.day21" tag='ATTCL_KQLX' codelistType='DYNAMIC' renderMode="STR" valueSeparator=";" textSeparator="、" ></codelist>
@@ -250,7 +250,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('day22')">
-                <el-table-column show-overflow-tooltip :prop="'day22'" :label="$t('entities.attendancemreportmx.wscgrid_grid.columns.day22')" :width="40" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'day22'" :label="$t('entities.attendancemreportmx.wscgrid_grid.columns.day22')" :width="40"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
             <codelist :value="row.day22" tag='ATTCL_KQLX' codelistType='DYNAMIC' renderMode="STR" valueSeparator=";" textSeparator="、" ></codelist>
@@ -259,7 +259,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('day23')">
-                <el-table-column show-overflow-tooltip :prop="'day23'" :label="$t('entities.attendancemreportmx.wscgrid_grid.columns.day23')" :width="40" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'day23'" :label="$t('entities.attendancemreportmx.wscgrid_grid.columns.day23')" :width="40"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
             <codelist :value="row.day23" tag='ATTCL_KQLX' codelistType='DYNAMIC' renderMode="STR" valueSeparator=";" textSeparator="、" ></codelist>
@@ -268,7 +268,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('day24')">
-                <el-table-column show-overflow-tooltip :prop="'day24'" :label="$t('entities.attendancemreportmx.wscgrid_grid.columns.day24')" :width="40" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'day24'" :label="$t('entities.attendancemreportmx.wscgrid_grid.columns.day24')" :width="40"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
             <codelist :value="row.day24" tag='ATTCL_KQLX' codelistType='DYNAMIC' renderMode="STR" valueSeparator=";" textSeparator="、" ></codelist>
@@ -277,7 +277,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('day25')">
-                <el-table-column show-overflow-tooltip :prop="'day25'" :label="$t('entities.attendancemreportmx.wscgrid_grid.columns.day25')" :width="40" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'day25'" :label="$t('entities.attendancemreportmx.wscgrid_grid.columns.day25')" :width="40"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
             <codelist :value="row.day25" tag='ATTCL_KQLX' codelistType='DYNAMIC' renderMode="STR" valueSeparator=";" textSeparator="、" ></codelist>
@@ -286,7 +286,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('day26')">
-                <el-table-column show-overflow-tooltip :prop="'day26'" :label="$t('entities.attendancemreportmx.wscgrid_grid.columns.day26')" :width="40" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'day26'" :label="$t('entities.attendancemreportmx.wscgrid_grid.columns.day26')" :width="40"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
             <codelist :value="row.day26" tag='ATTCL_KQLX' codelistType='DYNAMIC' renderMode="STR" valueSeparator=";" textSeparator="、" ></codelist>
@@ -295,7 +295,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('day27')">
-                <el-table-column show-overflow-tooltip :prop="'day27'" :label="$t('entities.attendancemreportmx.wscgrid_grid.columns.day27')" :width="40" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'day27'" :label="$t('entities.attendancemreportmx.wscgrid_grid.columns.day27')" :width="40"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
             <codelist :value="row.day27" tag='ATTCL_KQLX' codelistType='DYNAMIC' renderMode="STR" valueSeparator=";" textSeparator="、" ></codelist>
@@ -304,7 +304,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('day28')">
-                <el-table-column show-overflow-tooltip :prop="'day28'" :label="$t('entities.attendancemreportmx.wscgrid_grid.columns.day28')" :width="40" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'day28'" :label="$t('entities.attendancemreportmx.wscgrid_grid.columns.day28')" :width="40"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
             <codelist :value="row.day28" tag='ATTCL_KQLX' codelistType='DYNAMIC' renderMode="STR" valueSeparator=";" textSeparator="、" ></codelist>
@@ -313,7 +313,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('day29')">
-                <el-table-column show-overflow-tooltip :prop="'day29'" :label="$t('entities.attendancemreportmx.wscgrid_grid.columns.day29')" :width="40" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'day29'" :label="$t('entities.attendancemreportmx.wscgrid_grid.columns.day29')" :width="40"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
             <codelist :value="row.day29" tag='ATTCL_KQLX' codelistType='DYNAMIC' renderMode="STR" valueSeparator=";" textSeparator="、" ></codelist>
@@ -322,7 +322,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('day30')">
-                <el-table-column show-overflow-tooltip :prop="'day30'" :label="$t('entities.attendancemreportmx.wscgrid_grid.columns.day30')" :width="40" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'day30'" :label="$t('entities.attendancemreportmx.wscgrid_grid.columns.day30')" :width="40"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
             <codelist :value="row.day30" tag='ATTCL_KQLX' codelistType='DYNAMIC' renderMode="STR" valueSeparator=";" textSeparator="、" ></codelist>
@@ -331,7 +331,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('day31')">
-                <el-table-column show-overflow-tooltip :prop="'day31'" :label="$t('entities.attendancemreportmx.wscgrid_grid.columns.day31')" :width="40" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'day31'" :label="$t('entities.attendancemreportmx.wscgrid_grid.columns.day31')" :width="40"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
             <codelist :value="row.day31" tag='ATTCL_KQLX' codelistType='DYNAMIC' renderMode="STR" valueSeparator=";" textSeparator="、" ></codelist>
@@ -797,7 +797,7 @@ export default class WscGridBase extends Vue implements ControlInterface {
     * @type {number}
     * @memberof AppIndex
     */
-    protected checkboxColWidth: number = 34;
+    public checkboxColWidth: number = 34;
 
     /**
      * 是否允许拖动列宽
@@ -1984,7 +1984,7 @@ export default class WscGridBase extends Vue implements ControlInterface {
      * @memberof WscGrid
      */
 	public uiAction(row: any, tag: any, $event: any) {
-        this.rowClick(row, true);
+        // this.rowClick(row, true);
     }
 
     /**

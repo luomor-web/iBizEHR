@@ -207,29 +207,29 @@ export default class PimPortalView_dbBase extends Vue implements ControlInterfac
     /**
      * 是否支持看板定制
      *
-     * @protected
+     * @public
      * @type {(boolean)}
      * @memberof PimPortalView_db
      */
-    @Prop() protected isEnableCustomized!:boolean;
+    @Prop() public isEnableCustomized!:boolean;
 
     /**
      * 是否已有看板定制
      *
-     * @protected
+     * @public
      * @type {(boolean)}
      * @memberof PimPortalView_db
      */
-    protected isHasCustomized:boolean = false;
+    public isHasCustomized:boolean = false;
 
     /**
      * 模型数据
      *
-     * @protected
+     * @public
      * @type {(*)}
      * @memberof PimPortalView_db
      */
-    protected modelDta:any;
+    public modelDta:any;
 
     /**
      * modleId
@@ -237,7 +237,7 @@ export default class PimPortalView_dbBase extends Vue implements ControlInterfac
      * @type {string}
      * @memberof PimPortalView_db
      */
-    protected modelId:string = "dashboard_app_pimportalview_db";
+    public modelId:string = "dashboard_app_pimportalview_db";
 
     /**
      * 建构功能服务对象
@@ -245,7 +245,7 @@ export default class PimPortalView_dbBase extends Vue implements ControlInterfac
      * @type {UtilService}
      * @memberof PimPortalView_db
      */
-    protected utilService:UtilService = new UtilService();
+    public utilService:UtilService = new UtilService();
 
     /**
      * 功能服务名称
@@ -253,7 +253,7 @@ export default class PimPortalView_dbBase extends Vue implements ControlInterfac
      * @type {string}
      * @memberof PimPortalView_db
      */
-    protected utilServiceName:string = "dynadashboard";
+    public utilServiceName:string = "dynadashboard";
 
     /**
      * 获取多项数据
@@ -280,7 +280,7 @@ export default class PimPortalView_dbBase extends Vue implements ControlInterfac
      *
      * @memberof PimPortalView_db
      */
-    protected created() {
+    public created() {
         this.afterCreated();
     }
 
@@ -289,7 +289,7 @@ export default class PimPortalView_dbBase extends Vue implements ControlInterfac
      *
      *  @memberof PimPortalView_db
      */    
-    protected afterCreated(){
+    public afterCreated(){
       if (this.viewState) {
           this.viewStateEvent = this.viewState.subscribe(({ tag, action, data }) => {
               if (!Object.is(tag, this.name)) {
@@ -353,7 +353,7 @@ export default class PimPortalView_dbBase extends Vue implements ControlInterfac
      *
      * @memberof PimPortalView_db
      */
-    protected loadModel(){
+    public loadModel(){
         if(this.isEnableCustomized){
           this.utilService.getService(this.utilServiceName).then((service:any) =>{
             service.loadModelData(JSON.parse(JSON.stringify(this.context)),{modelid:this.modelId}).then((res:any) =>{
@@ -384,7 +384,7 @@ export default class PimPortalView_dbBase extends Vue implements ControlInterfac
      *
      * @memberof PimPortalView_db
      */
-    protected handleClick(){
+    public handleClick(){
       const view:any ={
         viewname: 'app-portal-design',
         title: '面板设计',
@@ -409,7 +409,7 @@ export default class PimPortalView_dbBase extends Vue implements ControlInterfac
      *
      * @memberof PimPortalView_db
      */
-    protected destroyed() {
+    public destroyed() {
         this.afterDestroy();
     }
 
@@ -418,7 +418,7 @@ export default class PimPortalView_dbBase extends Vue implements ControlInterfac
      *
      * @memberof PimPortalView_db
      */
-    protected afterDestroy() {
+    public afterDestroy() {
         if (this.viewStateEvent) {
             this.viewStateEvent.unsubscribe();
         }

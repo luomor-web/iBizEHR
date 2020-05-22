@@ -81,9 +81,16 @@ export default class AppUser extends Vue {
      * @memberof AppUser
      */
     public logout() {
-        localStorage.removeItem('user');
-        localStorage.removeItem('token');
-        this.$router.push({ name: 'login' });
+        const get: Promise<any> = this.$http.get('v7/logout');
+        get.then((response:any) =>{
+            if (response && response.status === 200) {
+                localStorage.removeItem('user');
+                localStorage.removeItem('token');
+                this.$router.push({ name: 'login' });
+            }
+        }).catch((error: any) =>{
+            console.error(error);
+        })
     }
 }
 </script>

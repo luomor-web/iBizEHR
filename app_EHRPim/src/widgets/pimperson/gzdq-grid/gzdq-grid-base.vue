@@ -22,14 +22,14 @@
                 <el-table-column align="center" type='selection' :width="checkboxColWidth"></el-table-column>
             </template>
             <template v-if="getColumnState('ygbh')">
-                <el-table-column show-overflow-tooltip :prop="'ygbh'" :label="$t('entities.pimperson.gzdq_grid.columns.ygbh')" :width="120" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'ygbh'" :label="$t('entities.pimperson.gzdq_grid.columns.ygbh')" :width="120"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.ygbh}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('pimpersonname')">
-                <el-table-column show-overflow-tooltip :prop="'pimpersonname'" :label="$t('entities.pimperson.gzdq_grid.columns.pimpersonname')" :width="120" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'pimpersonname'" :label="$t('entities.pimperson.gzdq_grid.columns.pimpersonname')" :width="120"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <app-column-link deKeyField='pimperson' :context="JSON.parse(JSON.stringify(context))" :viewparams="JSON.parse(JSON.stringify(viewparams))" :data="row" :linkview="{viewname: 'pimpersonedit-view2', height: 0,width: 0,title: $t('entities.pimperson.views.editview2.title'),placement: 'DRAWER_TOP', isRedirectView: false,deResParameters: [
             ]
@@ -43,7 +43,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('ygzt')">
-                <el-table-column show-overflow-tooltip :prop="'ygzt'" :label="$t('entities.pimperson.gzdq_grid.columns.ygzt')" :width="120" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'ygzt'" :label="$t('entities.pimperson.gzdq_grid.columns.ygzt')" :width="120"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
             <codelist :value="row.ygzt" tag='PIMCL_YGZT' codelistType='DYNAMIC' ></codelist>
@@ -52,7 +52,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('gzzt')">
-                <el-table-column show-overflow-tooltip :prop="'gzzt'" :label="$t('entities.pimperson.gzdq_grid.columns.gzzt')" :width="120" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'gzzt'" :label="$t('entities.pimperson.gzdq_grid.columns.gzzt')" :width="120"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
             <codelist :value="row.gzzt" tag='PIMCL_GZZT' codelistType='STATIC' ></codelist>
@@ -61,35 +61,35 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('gzzz')">
-                <el-table-column show-overflow-tooltip :prop="'gzzz'" :label="$t('entities.pimperson.gzdq_grid.columns.gzzz')" :width="250" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'gzzz'" :label="$t('entities.pimperson.gzdq_grid.columns.gzzz')" :width="250"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.gzzz}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('gzbm')">
-                <el-table-column show-overflow-tooltip :prop="'gzbm'" :label="$t('entities.pimperson.gzdq_grid.columns.gzbm')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'gzbm'" :label="$t('entities.pimperson.gzdq_grid.columns.gzbm')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.gzbm}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('gzkssj')">
-                <el-table-column show-overflow-tooltip :prop="'gzkssj'" :label="$t('entities.pimperson.gzdq_grid.columns.gzkssj')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'gzkssj'" :label="$t('entities.pimperson.gzdq_grid.columns.gzkssj')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <app-format-data format="YYYY-MM-DD" :data="row.gzkssj"></app-format-data>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('gzjssj')">
-                <el-table-column show-overflow-tooltip :prop="'gzjssj'" :label="$t('entities.pimperson.gzdq_grid.columns.gzjssj')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'gzjssj'" :label="$t('entities.pimperson.gzdq_grid.columns.gzjssj')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <app-format-data format="YYYY-MM-DD" :data="row.gzjssj"></app-format-data>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('gzdq')">
-                <el-table-column show-overflow-tooltip :prop="'gzdq'" :label="$t('entities.pimperson.gzdq_grid.columns.gzdq')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'gzdq'" :label="$t('entities.pimperson.gzdq_grid.columns.gzdq')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.gzdq}}</span>
                     </template>
@@ -553,7 +553,7 @@ export default class GZDQBase extends Vue implements ControlInterface {
     * @type {number}
     * @memberof AppIndex
     */
-    protected checkboxColWidth: number = 34;
+    public checkboxColWidth: number = 34;
 
     /**
      * 是否允许拖动列宽
@@ -1310,7 +1310,7 @@ export default class GZDQBase extends Vue implements ControlInterface {
      * @memberof GZDQ
      */
 	public uiAction(row: any, tag: any, $event: any) {
-        this.rowClick(row, true);
+        // this.rowClick(row, true);
     }
 
     /**

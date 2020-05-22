@@ -22,42 +22,42 @@
                 <el-table-column align="center" type='selection' :width="checkboxColWidth"></el-table-column>
             </template>
             <template v-if="getColumnState('ordervalue')">
-                <el-table-column show-overflow-tooltip :prop="'ordervalue'" :label="$t('entities.ormorgsector.bmxmjc_grid.columns.ordervalue')" :width="100" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'ordervalue'" :label="$t('entities.ormorgsector.bmxmjc_grid.columns.ordervalue')" :width="100"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.ordervalue}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('orgsectorname')">
-                <el-table-column show-overflow-tooltip :prop="'orgsectorname'" :label="$t('entities.ormorgsector.bmxmjc_grid.columns.orgsectorname')" :width="400" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'orgsectorname'" :label="$t('entities.ormorgsector.bmxmjc_grid.columns.orgsectorname')" :width="400"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.orgsectorname}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('orgcode')">
-                <el-table-column show-overflow-tooltip :prop="'orgcode'" :label="$t('entities.ormorgsector.bmxmjc_grid.columns.orgcode')" :width="120" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'orgcode'" :label="$t('entities.ormorgsector.bmxmjc_grid.columns.orgcode')" :width="120"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.orgcode}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('shortname')">
-                <el-table-column show-overflow-tooltip :prop="'shortname'" :label="$t('entities.ormorgsector.bmxmjc_grid.columns.shortname')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'shortname'" :label="$t('entities.ormorgsector.bmxmjc_grid.columns.shortname')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.shortname}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('orgname')">
-                <el-table-column show-overflow-tooltip :prop="'orgname'" :label="$t('entities.ormorgsector.bmxmjc_grid.columns.orgname')" :width="250" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'orgname'" :label="$t('entities.ormorgsector.bmxmjc_grid.columns.orgname')" :width="250"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <span>{{row.orgname}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('belongregion')">
-                <el-table-column show-overflow-tooltip :prop="'belongregion'" :label="$t('entities.ormorgsector.bmxmjc_grid.columns.belongregion')" :width="150" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'belongregion'" :label="$t('entities.ormorgsector.bmxmjc_grid.columns.belongregion')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
             <codelist :value="row.belongregion" tag='SSQY' codelistType='DYNAMIC' ></codelist>
@@ -66,7 +66,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('qy')">
-                <el-table-column show-overflow-tooltip :prop="'qy'" :label="$t('entities.ormorgsector.bmxmjc_grid.columns.qy')" :width="130" :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'qy'" :label="$t('entities.ormorgsector.bmxmjc_grid.columns.qy')" :width="130"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
             <codelist :value="row.qy" tag='ORMCL_QY' codelistType='DYNAMIC' renderMode="STR" valueSeparator=";" textSeparator="、" ></codelist>
@@ -518,7 +518,7 @@ export default class BMXMJCBase extends Vue implements ControlInterface {
     * @type {number}
     * @memberof AppIndex
     */
-    protected checkboxColWidth: number = 34;
+    public checkboxColWidth: number = 34;
 
     /**
      * 是否允许拖动列宽
@@ -1261,7 +1261,7 @@ export default class BMXMJCBase extends Vue implements ControlInterface {
      * @memberof BMXMJC
      */
 	public uiAction(row: any, tag: any, $event: any) {
-        this.rowClick(row, true);
+        // this.rowClick(row, true);
     }
 
     /**

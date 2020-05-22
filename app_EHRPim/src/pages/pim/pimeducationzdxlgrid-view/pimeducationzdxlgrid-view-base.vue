@@ -94,6 +94,15 @@ export default class PIMEDUCATIONZDXLGridViewBase extends GridViewBase {
      */
     public appEntityService: PIMEDUCATIONService = new PIMEDUCATIONService;
 
+
+    /**
+     * 计数器服务对象集合
+     *
+     * @type {Array<*>}
+     * @memberof PIMEDUCATIONZDXLGridViewBase
+     */    
+    public counterServiceArray:Array<any> = [];
+    
     /**
      * 数据变化
      *
@@ -129,7 +138,7 @@ export default class PIMEDUCATIONZDXLGridViewBase extends GridViewBase {
 	 * @type {*}
 	 * @memberof PIMEDUCATIONZDXLGridViewBase
 	 */
-    protected customViewNavContexts:any ={
+    public customViewNavContexts:any ={
     };
 
 	/**
@@ -138,7 +147,7 @@ export default class PIMEDUCATIONZDXLGridViewBase extends GridViewBase {
 	 * @type {*}
 	 * @memberof PIMEDUCATIONZDXLGridViewBase
 	 */
-    protected customViewParams:any ={
+    public customViewParams:any ={
     };
 
     /**
@@ -169,12 +178,11 @@ export default class PIMEDUCATIONZDXLGridViewBase extends GridViewBase {
     /**
      * 视图状态订阅对象
      *
-     * @private
+     * @public
      * @type {Subject<{action: string, data: any}>}
      * @memberof PIMEDUCATIONZDXLGridViewBase
      */
     public viewState: Subject<ViewState> = new Subject();
-
     /**
      * 工具栏模型
      *

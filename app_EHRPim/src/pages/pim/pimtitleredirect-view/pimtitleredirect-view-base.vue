@@ -35,6 +35,15 @@ export default class PIMTITLERedirectViewBase extends WizardViewBase {
      */
     public appEntityService: PIMTITLEService = new PIMTITLEService;
 
+
+    /**
+     * 计数器服务对象集合
+     *
+     * @type {Array<*>}
+     * @memberof PIMTITLERedirectViewBase
+     */    
+    public counterServiceArray:Array<any> = [];
+    
     /**
      * 数据变化
      *
@@ -70,7 +79,7 @@ export default class PIMTITLERedirectViewBase extends WizardViewBase {
 	 * @type {*}
 	 * @memberof PIMTITLERedirectViewBase
 	 */
-    protected customViewNavContexts:any ={
+    public customViewNavContexts:any ={
     };
 
 	/**
@@ -79,7 +88,7 @@ export default class PIMTITLERedirectViewBase extends WizardViewBase {
 	 * @type {*}
 	 * @memberof PIMTITLERedirectViewBase
 	 */
-    protected customViewParams:any ={
+    public customViewParams:any ={
     };
 
     /**
@@ -107,7 +116,7 @@ export default class PIMTITLERedirectViewBase extends WizardViewBase {
     /**
      * 视图状态订阅对象
      *
-     * @private
+     * @public
      * @type {Subject<{action: string, data: any}>}
      * @memberof PIMTITLERedirectViewBase
      */
