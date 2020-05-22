@@ -55,7 +55,6 @@ export default class MainModel {
           name: 'pimtypecontract',
           prop: 'pimtypecontractid',
         },
-
         {
           name:'size',
           prop:'size'
