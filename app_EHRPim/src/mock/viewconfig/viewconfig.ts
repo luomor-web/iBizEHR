@@ -1271,14 +1271,6 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewname": "OrmSignOrgBDWPickupGridView",
             "viewtag": "4d05a18be99502a79a879d5794ff6ab2"
         },
-        "pimexitandentryredirectview": {
-            "title": "出入境管理数据重定向视图",
-            "caption": "出入境管理",
-            "viewtype": "DEREDIRECTVIEW",
-            "viewmodule": "PIM",
-            "viewname": "PIMEXITANDENTRYRedirectView",
-            "viewtag": "4d18ce5c2ced758971d6b38d64dd4a36"
-        },
         "pimpersonkqjrypickupgridview": {
             "title": "请假人员",
             "caption": "人员信息",

@@ -532,7 +532,6 @@ export const viewstate: any = {
             viewdatachange: false,
             refviews: [
                 'a957fe4f2b902f476f50342656f65d19',
-                '7d8b1b3a6370fbb573da9956e2bff736',
             ],
         },
         {
@@ -649,21 +648,6 @@ export const viewstate: any = {
             viewaction: '',
             viewdatachange: false,
             refviews: [
-            ],
-        },
-        {
-            viewtag: '4d18ce5c2ced758971d6b38d64dd4a36',
-            viewmodule: 'PIM',
-            viewname: 'PIMEXITANDENTRYRedirectView',
-            viewaction: '',
-            viewdatachange: false,
-            refviews: [
-                '9cf772c0ac3be570bc8030ffe0d000da',
-                'eb782be65606634b8d2dbd29b6c6c97a',
-                '999e09e8da9eb8e818b7b6c814e56e82',
-                '74e08b2ad6a09563954713cbecebbff4',
-                'f4345496a02e72acba25ebfded4323cd',
-                '1d1c1bd5b4f245658ffe5ff9004ac0af',
             ],
         },
         {

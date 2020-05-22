@@ -3580,17 +3580,6 @@ const router = new Router({
                 component: () => import('@pages/pim/pimarchiveschangeredirect-view/pimarchiveschangeredirect-view.vue'),
             },
             {
-                path: 'pimexitandentryredirectview/:pimexitandentryredirectview?',
-                meta: {
-                    caption: 'entities.pimexitandentry.views.redirectview.caption',
-                    parameters: [
-                        { pathName: 'pimexitandentryredirectview', parameterName: 'pimexitandentryredirectview' },
-                    ],
-                    requireAuth: true,
-                },
-                component: () => import('@pages/pim/pimexitandentryredirect-view/pimexitandentryredirect-view.vue'),
-            },
-            {
                 path: 'pimpersonabilitydetailredirectview/:pimpersonabilitydetailredirectview?',
                 meta: {
                     caption: 'entities.pimpersonabilitydetail.views.redirectview.caption',
@@ -5102,17 +5091,6 @@ const router = new Router({
         },
         component: () => import('@pages/orm/orm-sign-org-bdwpickup-grid-view/orm-sign-org-bdwpickup-grid-view.vue'),
     },
-            {
-                path: '/pimexitandentryredirectview/:pimexitandentryredirectview?',
-                meta: {
-                    caption: 'entities.pimexitandentry.views.redirectview.caption',
-                    parameters: [
-                        { pathName: 'pimexitandentryredirectview', parameterName: 'pimexitandentryredirectview' },
-                    ],
-                    requireAuth: true,
-                },
-                component: () => import('@pages/pim/pimexitandentryredirect-view/pimexitandentryredirect-view.vue'),
-            },
     {
         path: '/pimpeople/:pimperson?/pimcontracts/:pimcontract?/lwgridview/:lwgridview?',
         meta: {

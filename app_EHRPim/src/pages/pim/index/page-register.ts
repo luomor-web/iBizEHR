@@ -157,7 +157,6 @@ export const PageComponents = {
         Vue.component('pimvocationalcatalogredirect-view', () => import('@pages/pim/pimvocationalcatalogredirect-view/pimvocationalcatalogredirect-view.vue'));
         Vue.component('pimarchivesloanandreturnredirect-view', () => import('@pages/pim/pimarchivesloanandreturnredirect-view/pimarchivesloanandreturnredirect-view.vue'));
         Vue.component('pimarchiveschangeredirect-view', () => import('@pages/pim/pimarchiveschangeredirect-view/pimarchiveschangeredirect-view.vue'));
-        Vue.component('pimexitandentryredirect-view', () => import('@pages/pim/pimexitandentryredirect-view/pimexitandentryredirect-view.vue'));
         Vue.component('pimperson-ability-detail-redirect-view', () => import('@pages/pim/pimperson-ability-detail-redirect-view/pimperson-ability-detail-redirect-view.vue'));
         Vue.component('pim-search-modal-redirect-view', () => import('@pages/pim/pim-search-modal-redirect-view/pim-search-modal-redirect-view.vue'));
         Vue.component('pimarmycadresredirect-view', () => import('@pages/pim/pimarmycadresredirect-view/pimarmycadresredirect-view.vue'));

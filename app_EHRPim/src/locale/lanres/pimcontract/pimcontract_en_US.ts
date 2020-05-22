@@ -548,36 +548,18 @@ export default {
 			tip: "Help",
 		},
 	},
-	reneweditviewtoolbar_toolbar: {
-		tbitem5: {
-			caption: "Save And Close",
-			tip: "Save And Close Window",
-		},
-	},
 	gridviewtoolbar_toolbar: {
-		deuiaction3: {
-			caption: "Filter",
-			tip: "Filter",
+		tbitem3: {
+			caption: "New",
+			tip: "New",
 		},
 		deuiaction1: {
-			caption: "导入",
-			tip: "导入",
+			caption: "Edit",
+			tip: "Edit {0}",
 		},
-		deuiaction2: {
-			caption: "Export",
-			tip: "Export {0} Data To Excel",
-		},
-		tbitem18: {
-			caption: "Help",
-			tip: "Help",
-		},
-		deuiaction4: {
-			caption: "新签",
-			tip: "新签",
-		},
-		deuiaction5: {
-			caption: "续签",
-			tip: "续签",
+		tbitem19: {
+			caption: "Filter",
+			tip: "Filter",
 		},
 	},
 	grcontractgridviewtoolbar_toolbar: {
@@ -668,6 +650,12 @@ export default {
 		tbitem22: {
 			caption: "Help",
 			tip: "Help",
+		},
+	},
+	reneweditviewtoolbar_toolbar: {
+		tbitem5: {
+			caption: "Save And Close",
+			tip: "Save And Close Window",
 		},
 	},
 	signremindgridviewtoolbar_toolbar: {

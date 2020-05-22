@@ -547,36 +547,18 @@ export default {
 			tip: '帮助',
 		},
 	},
-	reneweditviewtoolbar_toolbar: {
-		tbitem5: {
-			caption: '确认签订',
-			tip: '确认签订',
-		},
-	},
 	gridviewtoolbar_toolbar: {
-		deuiaction3: {
-			caption: '过滤',
-			tip: '过滤',
+		tbitem3: {
+			caption: '新建',
+			tip: '新建',
 		},
 		deuiaction1: {
-			caption: '导入',
-			tip: '导入',
+			caption: '编辑',
+			tip: '编辑',
 		},
-		deuiaction2: {
-			caption: '导出',
-			tip: '导出',
-		},
-		tbitem18: {
-			caption: '帮助',
-			tip: '帮助',
-		},
-		deuiaction4: {
-			caption: '新签',
-			tip: '新签',
-		},
-		deuiaction5: {
-			caption: '续签',
-			tip: '续签',
+		tbitem19: {
+			caption: '过滤',
+			tip: '过滤',
 		},
 	},
 	grcontractgridviewtoolbar_toolbar: {
@@ -667,6 +649,12 @@ export default {
 		tbitem22: {
 			caption: '帮助',
 			tip: '帮助',
+		},
+	},
+	reneweditviewtoolbar_toolbar: {
+		tbitem5: {
+			caption: '确认签订',
+			tip: '确认签订',
 		},
 	},
 	signremindgridviewtoolbar_toolbar: {
