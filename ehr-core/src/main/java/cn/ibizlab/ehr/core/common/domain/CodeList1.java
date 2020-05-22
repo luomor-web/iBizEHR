@@ -27,7 +27,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 
 
 /**
- * 实体[代码表]
+ * 实体[代码表***]
  */
 @Data
 @TableName(value = "T_SRFCODELIST",resultMap = "CodeList1ResultMap")
