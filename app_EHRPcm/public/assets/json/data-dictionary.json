@@ -45,57 +45,6 @@
         ]
     }, 
     {
-        "srfkey": "PCM_CONDITION",
-        "emptytext": "未定义",
-        "codelisttype":"static",
-        "items": [
-             {
-                "id": "1",
-                "label": "全符合",
-                "text": "全符合",
-                "data":"",
-                "codename":"Item_1",
-                "color": "Blue",
-                "value": "1",
-                
-                "disabled": false
-            }
-            , {
-                "id": "2",
-                "label": "学科不符合",
-                "text": "学科不符合",
-                "data":"",
-                "codename":"Item_2",
-                "color": "Red",
-                "value": "2",
-                
-                "disabled": false
-            }
-            , {
-                "id": "3",
-                "label": "学校不符合",
-                "text": "学校不符合",
-                "data":"",
-                "codename":"Item_3",
-                "color": "Red",
-                "value": "3",
-                
-                "disabled": false
-            }
-            , {
-                "id": "4",
-                "label": "全不符合",
-                "text": "全不符合",
-                "data":"",
-                "codename":"Item_4",
-                "color": "Red",
-                "value": "4",
-                
-                "disabled": false
-            }
-        ]
-    }, 
-    {
         "srfkey": "PIMCL_XX",
         "emptytext": "",
         "codelisttype":"dynamic",

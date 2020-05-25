@@ -681,7 +681,6 @@ export default class XZYPZXXXDYBase extends Vue implements ControlInterface {
         yydj: null,
         yydjmc: null,
         profiletype: null,
-        condition: null,
         bz: null,
         polity: null,
         rdsj: null,
@@ -935,12 +934,6 @@ export default class XZYPZXXXDYBase extends Vue implements ControlInterface {
             { required: false, type: 'string', message: '应聘者状态 值不能为空', trigger: 'change' },
             { required: false, type: 'string', message: '应聘者状态 值不能为空', trigger: 'blur' },
         ],
-        condition: [
-            { type: 'string', message: '校验结果 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '校验结果 值必须为字符串类型', trigger: 'blur' },
-            { required: false, type: 'string', message: '校验结果 值不能为空', trigger: 'change' },
-            { required: false, type: 'string', message: '校验结果 值不能为空', trigger: 'blur' },
-        ],
         bz: [
             { type: 'string', message: '备注 值必须为字符串类型', trigger: 'change' },
             { type: 'string', message: '备注 值必须为字符串类型', trigger: 'blur' },
@@ -1113,8 +1106,6 @@ export default class XZYPZXXXDYBase extends Vue implements ControlInterface {
         yydjmc: new FormItemModel({ caption: '语言等级名称', detailType: 'FORMITEM', name: 'yydjmc', visible: false, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
         profiletype: new FormItemModel({ caption: '应聘者状态', detailType: 'FORMITEM', name: 'profiletype', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
-, 
-        condition: new FormItemModel({ caption: '校验结果', detailType: 'FORMITEM', name: 'condition', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
         bz: new FormItemModel({ caption: '备注', detailType: 'FORMITEM', name: 'bz', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
@@ -1541,18 +1532,6 @@ export default class XZYPZXXXDYBase extends Vue implements ControlInterface {
     }
 
     /**
-     * 监控表单属性 condition 值
-     *
-     * @param {*} newVal
-     * @param {*} oldVal
-     * @memberof XZYPZXXXDY
-     */
-    @Watch('data.condition')
-    onConditionChange(newVal: any, oldVal: any) {
-        this.formDataChange({ name: 'condition', newVal: newVal, oldVal: oldVal });
-    }
-
-    /**
      * 监控表单属性 bz 值
      *
      * @param {*} newVal
@@ -1817,7 +1796,6 @@ export default class XZYPZXXXDYBase extends Vue implements ControlInterface {
             }
             this.detailsModel.yydjmc.setVisible(ret);
         }
-
 
 
 
@@ -2772,9 +2750,6 @@ export default class XZYPZXXXDYBase extends Vue implements ControlInterface {
     public createDefault(){                    
         if (this.data.hasOwnProperty('profiletype')) {
             this.data['profiletype'] = '10';
-        }
-        if (this.data.hasOwnProperty('condition')) {
-            this.data['condition'] = '2';
         }
         if (this.data.hasOwnProperty('ormorgid')) {
             this.data['ormorgid'] = this.context['SRFORGID'];

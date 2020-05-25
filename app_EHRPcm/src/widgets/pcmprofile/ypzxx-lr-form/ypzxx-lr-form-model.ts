@@ -221,11 +221,6 @@ export default class YPZXX_LRModel {
         dataType: 'SSCODELIST',
       },
       {
-        name: 'condition',
-        prop: 'condition',
-        dataType: 'SSCODELIST',
-      },
-      {
         name: 'r_initializeapplydate',
         prop: 'r_initializeapplydate',
         dataType: 'DATETIME',

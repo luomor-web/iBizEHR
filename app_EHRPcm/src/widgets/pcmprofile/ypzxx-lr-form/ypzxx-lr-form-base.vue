@@ -1215,7 +1215,6 @@ export default class YPZXX_LRBase extends Vue implements ControlInterface {
         ywzdjbs: null,
         tjqk: null,
         profiletype: null,
-        condition: null,
         r_initializeapplydate: null,
         bz: null,
         polity: null,
@@ -1533,12 +1532,6 @@ export default class YPZXX_LRBase extends Vue implements ControlInterface {
             { required: false, type: 'string', message: '应聘者状态 值不能为空', trigger: 'change' },
             { required: false, type: 'string', message: '应聘者状态 值不能为空', trigger: 'blur' },
         ],
-        condition: [
-            { type: 'string', message: '校验结果 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '校验结果 值必须为字符串类型', trigger: 'blur' },
-            { required: false, type: 'string', message: '校验结果 值不能为空', trigger: 'change' },
-            { required: false, type: 'string', message: '校验结果 值不能为空', trigger: 'blur' },
-        ],
         r_initializeapplydate: [
             { type: 'string', message: '最新投递时间 值必须为字符串类型', trigger: 'change' },
             { type: 'string', message: '最新投递时间 值必须为字符串类型', trigger: 'blur' },
@@ -1722,7 +1715,7 @@ export default class YPZXX_LRBase extends Vue implements ControlInterface {
      * @memberof YPZXX_LR
      */
     public detailsModel: any = {
-        grouppanel15: new FormGroupPanelModel({ caption: '选择三局内部人员', detailType: 'GROUPPANEL', name: 'grouppanel15', visible: false, isShowCaption: true, form: this, uiActionGroup: { caption: '', langbase: 'entities.pcmprofile.ypzxx_lr_form', extractMode: 'ITEM', details: [] } })
+        grouppanel15: new FormGroupPanelModel({ caption: '选择内部人员', detailType: 'GROUPPANEL', name: 'grouppanel15', visible: false, isShowCaption: true, form: this, uiActionGroup: { caption: '', langbase: 'entities.pcmprofile.ypzxx_lr_form', extractMode: 'ITEM', details: [] } })
 , 
         grouppanel3: new FormGroupPanelModel({ caption: '', detailType: 'GROUPPANEL', name: 'grouppanel3', visible: true, isShowCaption: false, form: this, uiActionGroup: { caption: '', langbase: 'entities.pcmprofile.ypzxx_lr_form', extractMode: 'ITEM', details: [] } })
 , 
@@ -1879,8 +1872,6 @@ export default class YPZXX_LRBase extends Vue implements ControlInterface {
         tjqk: new FormItemModel({ caption: '体检情况', detailType: 'FORMITEM', name: 'tjqk', visible: false, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
         profiletype: new FormItemModel({ caption: '应聘者状态', detailType: 'FORMITEM', name: 'profiletype', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
-, 
-        condition: new FormItemModel({ caption: '校验结果', detailType: 'FORMITEM', name: 'condition', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
         r_initializeapplydate: new FormItemModel({ caption: '最新投递时间', detailType: 'FORMITEM', name: 'r_initializeapplydate', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
@@ -2432,18 +2423,6 @@ export default class YPZXX_LRBase extends Vue implements ControlInterface {
     @Watch('data.profiletype')
     onProfiletypeChange(newVal: any, oldVal: any) {
         this.formDataChange({ name: 'profiletype', newVal: newVal, oldVal: oldVal });
-    }
-
-    /**
-     * 监控表单属性 condition 值
-     *
-     * @param {*} newVal
-     * @param {*} oldVal
-     * @memberof YPZXX_LR
-     */
-    @Watch('data.condition')
-    onConditionChange(newVal: any, oldVal: any) {
-        this.formDataChange({ name: 'condition', newVal: newVal, oldVal: oldVal });
     }
 
     /**
@@ -3099,7 +3078,6 @@ export default class YPZXX_LRBase extends Vue implements ControlInterface {
             }
             this.detailsModel.tjqk.setVisible(ret);
         }
-
 
 
 
@@ -4178,9 +4156,6 @@ export default class YPZXX_LRBase extends Vue implements ControlInterface {
     public createDefault(){                    
         if (this.data.hasOwnProperty('profiletype')) {
             this.data['profiletype'] = '10';
-        }
-        if (this.data.hasOwnProperty('condition')) {
-            this.data['condition'] = '2';
         }
         if (this.data.hasOwnProperty('ormorgid')) {
             this.data['ormorgid'] = this.context['SRFORGID'];

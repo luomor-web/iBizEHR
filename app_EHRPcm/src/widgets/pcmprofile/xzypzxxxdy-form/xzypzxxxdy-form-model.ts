@@ -181,11 +181,6 @@ export default class XZYPZXXXDYModel {
         dataType: 'SSCODELIST',
       },
       {
-        name: 'condition',
-        prop: 'condition',
-        dataType: 'SSCODELIST',
-      },
-      {
         name: 'bz',
         prop: 'bz',
         dataType: 'TEXT',

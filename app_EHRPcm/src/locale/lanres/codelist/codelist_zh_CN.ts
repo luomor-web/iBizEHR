@@ -10,13 +10,6 @@ export default {
         '20': '非标准工时制',
         empty: '',
     },
-    PCM_CONDITION: {
-        '1': '全符合',
-        '2': '学科不符合',
-        '3': '学校不符合',
-        '4': '全不符合',
-        empty: '',
-    },
     PIMCL_XX: {
         empty: '',
     },

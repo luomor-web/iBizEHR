@@ -115,11 +115,6 @@ export default class YPZXX_LRModel {
           dataType: 'PICKUP',
         },
         {
-          name: 'condition',
-          prop: 'condition',
-          dataType: 'SSCODELIST',
-        },
-        {
           name: 'ztyy',
           prop: 'ztyy',
           dataType: 'TEXT',

@@ -20,7 +20,6 @@ export default {
     phaseinfo: '简历状态',
     createman: '建立人',
     gzkssj: '挂职开始时间',
-    condition: '校验结果',
     nqdldhtqx: '拟签订劳动合同期',
     yglxshgz: '员工类型审核规则',
     highestdegree: '最高学位',
@@ -123,6 +122,7 @@ export default {
     ormpostid: '挂职进岗位标识',
     ormdutyid: '挂职进职务标识',
     ormorgid: '组织标识',
+    checkresult: '校验结果',
   },
 	views: {
 		xzwizardview: {
@@ -183,7 +183,6 @@ export default {
 			yydj: '语言等级', 
 			yydjmc: '语言等级名称', 
 			profiletype: '应聘者状态', 
-			condition: '校验结果', 
 			bz: '备注', 
 			polity: '政治面貌', 
 			rdsj: '入党时间', 
@@ -311,7 +310,7 @@ export default {
 	},
 	ypzxx_lr_form: {
 		details: {
-			grouppanel15: '选择三局内部人员', 
+			grouppanel15: '选择内部人员', 
 			grouppanel3: '', 
 			grouppanel4: '照片', 
 			grouppanel5: '相关信息', 
@@ -390,7 +389,6 @@ export default {
 			ywzdjbs: '有无重大疾病史', 
 			tjqk: '体检情况', 
 			profiletype: '应聘者状态', 
-			condition: '校验结果', 
 			r_initializeapplydate: '最新投递时间', 
 			bz: '备注', 
 			polity: '政治面貌', 
@@ -437,7 +435,6 @@ export default {
 			r_lastdiscipline: '专业名称',
 			xxxz: '学校性质',
 			yydjmc: '语言等级名称',
-			condition: '校验结果',
 			certificatetype: '证件类型',
 			certificatenumber: '证件号码',
 			gender: '性别',

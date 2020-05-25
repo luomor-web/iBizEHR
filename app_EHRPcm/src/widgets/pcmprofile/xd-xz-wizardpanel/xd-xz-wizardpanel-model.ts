@@ -95,10 +95,6 @@ export default class XD_XZModel {
         prop: 'gzkssj',
       },
       {
-        name: 'condition',
-        prop: 'condition',
-      },
-      {
         name: 'nqdldhtqx',
         prop: 'nqdldhtqx',
       },
@@ -505,6 +501,10 @@ export default class XD_XZModel {
       {
         name: 'ormorgid',
         prop: 'ormorgid',
+      },
+      {
+        name: 'checkresult',
+        prop: 'checkresult',
       },
     ]
   }

@@ -110,15 +110,6 @@
                     </template>
                 </el-table-column>
             </template>
-            <template v-if="getColumnState('condition')">
-                <el-table-column show-overflow-tooltip :prop="'condition'" :label="$t('entities.pcmprofile.ypzxx_lr_grid.columns.condition')" :width="150"  :align="'left'" :sortable="'custom'">
-                    <template v-slot="{row,column}">
-                        <template >
-            <codelist :value="row.condition" tag='PCM_CONDITION' codelistType='STATIC' ></codelist>
-                        </template>
-                    </template>
-                </el-table-column>
-            </template>
             <template v-if="getColumnState('certificatetype')">
                 <el-table-column show-overflow-tooltip :prop="'certificatetype'" :label="$t('entities.pcmprofile.ypzxx_lr_grid.columns.certificatetype')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
@@ -727,13 +718,6 @@ export default class YPZXX_LRBase extends Vue implements ControlInterface {
             util: 'px'
         },
         {
-            name: 'condition',
-            label: '校验结果',
-            langtag: 'entities.pcmprofile.ypzxx_lr_grid.columns.condition',
-            show: true,
-            util: 'PX'
-        },
-        {
             name: 'certificatetype',
             label: '证件类型',
             langtag: 'entities.pcmprofile.ypzxx_lr_grid.columns.certificatetype',
@@ -1155,14 +1139,6 @@ export default class YPZXX_LRBase extends Vue implements ControlInterface {
             textSeparator: '、',
             renderMode: 'string',
             valueSeparator: ";",
-          },
-          {
-            name: 'condition',
-            srfkey: 'PCM_CONDITION',
-            codelistType : 'STATIC',
-            renderMode: 'other',
-            textSeparator: '、',
-            valueSeparator: ',',
           },
           {
             name: 'certificatetype',
