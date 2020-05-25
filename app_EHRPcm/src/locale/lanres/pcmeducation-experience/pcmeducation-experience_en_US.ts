@@ -39,9 +39,68 @@ export default {
     pcmprofileid: '应聘者ID',
   },
 	views: {
+		editview: {
+			caption: "教育背景",
+      title: '教育背景',
+		},
+		jybj_wsswbjgridview: {
+			caption: "教育信息",
+      title: '教育信息',
+		},
 		jybjgridview: {
 			caption: "教育信息（要求：1.高中以上，2.带*必填，3.大专学位证用毕业证代替）",
       title: '教育信息（要求：1.高中以上，2.带*必填，3.大专学位证用毕业证代替）',
+		},
+	},
+	main_form: {
+		details: {
+			group1: "教育背景", 
+			grouppanel1: "附件上传", 
+			formpage1: "基本信息", 
+			srfupdatedate: "更新时间", 
+			srforikey: "", 
+			srfkey: "教育背景标识", 
+			srfmajortext: "教育背景名称", 
+			srftempmode: "", 
+			srfuf: "", 
+			srfdeid: "", 
+			srfsourcekey: "", 
+			pcmprofileid: "应聘者ID", 
+			xl: "学历", 
+			starttime: "入学时间", 
+			endtime: "毕业时间", 
+			schoolname: "毕业院校", 
+			xkml: "一级学科", 
+			majorname: "专业名称", 
+			xxxz: "学校性质", 
+			formsoflearning: "学习形式", 
+			firstxl: "是否第一学历", 
+			higestxl: "是否最高学历", 
+			byz: "毕业证", 
+			xwz: "学位证", 
+			xlyz: "学历验证", 
+			pcmeducationexperienceid: "教育背景标识", 
+		},
+		uiactions: {
+		},
+	},
+	ck_grid: {
+		columns: {
+			xl: "学历（*）",
+			starttime: "入学时间（*）",
+			endtime: "毕业时间（*）",
+			schoolname: "毕业院校（*）",
+			xkml: "一级学科（*）",
+			majorname: "专业名称（*）",
+			xxxz: "学校性质",
+			formsoflearning: "学习形式",
+			firstxl: "是否第一学历",
+			higestxl: "是否最高学历",
+			byz: "毕业证（*）",
+			xwz: "学位证（*）",
+			xlyz: "学历验证",
+		},
+		uiactions: {
 		},
 	},
 	main_grid: {
@@ -69,6 +128,30 @@ export default {
 		},
 		uiactions: {
 		},
+	},
+	editviewtoolbar_toolbar: {
+		tbitem3: {
+			caption: "Save",
+			tip: "Save",
+		},
+		tbitem4: {
+			caption: "Save And New",
+			tip: "Save And New",
+		},
+		tbitem5: {
+			caption: "Save And Close",
+			tip: "Save And Close Window",
+		},
+		tbitem7: {
+			caption: "Remove And Close",
+			tip: "Remove And Close Window",
+		},
+		tbitem22: {
+			caption: "Help",
+			tip: "Help",
+		},
+	},
+	jybj_wsswbjgridviewtoolbar_toolbar: {
 	},
 	jybjgridviewtoolbar2_toolbar: {
 		deuiaction1: {

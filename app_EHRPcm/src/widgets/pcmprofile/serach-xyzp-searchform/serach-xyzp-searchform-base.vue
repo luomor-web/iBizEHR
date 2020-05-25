@@ -757,7 +757,7 @@ export default class Serach_XYZPBase extends Vue implements ControlInterface {
      */
     public load(opt: any = {}): void {
         if(!this.loadAction){
-            this.$Notice.error({ title: '错误', desc: 'PCMPROFILEYPZXX_LRGridView视图搜索表单loadAction参数未配置' });
+            this.$Notice.error({ title: '错误', desc: 'PCMPROFILEZPDWSHGridView视图搜索表单loadAction参数未配置' });
             return;
         }
         const arg: any = { ...opt };
@@ -794,7 +794,7 @@ export default class Serach_XYZPBase extends Vue implements ControlInterface {
      */
     public loadDraft(opt: any = {},mode?:string): void {
         if(!this.loaddraftAction){
-            this.$Notice.error({ title: '错误', desc: 'PCMPROFILEYPZXX_LRGridView视图搜索表单loaddraftAction参数未配置' });
+            this.$Notice.error({ title: '错误', desc: 'PCMPROFILEZPDWSHGridView视图搜索表单loaddraftAction参数未配置' });
             return;
         }
         const arg: any = { ...opt } ;

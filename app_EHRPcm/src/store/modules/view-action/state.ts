@@ -4,6 +4,16 @@
 export const viewstate: any = {
     appviews: [
         {
+            viewtag: '01a06bd6730d3199229fd1b9f8aca1a8',
+            viewmodule: 'PCM',
+            viewname: 'PCMWORKRESUMEGZLL_WSSWBJGridView',
+            viewaction: '',
+            viewdatachange: false,
+            refviews: [
+                'eca902f7ff75f15ff107b7f7c49f13ab',
+            ],
+        },
+        {
             viewtag: '09de889eff18f3439d11da7604fda3fb',
             viewmodule: 'ORM',
             viewname: 'ORMPOSTEJORMORGIDPickupView',
@@ -20,6 +30,7 @@ export const viewstate: any = {
             viewaction: '',
             viewdatachange: false,
             refviews: [
+                'eca902f7ff75f15ff107b7f7c49f13ab',
             ],
         },
         {
@@ -33,9 +44,55 @@ export const viewstate: any = {
             ],
         },
         {
+            viewtag: '0e0ec3aacabc80d01e9fd4d788aa8dc5',
+            viewmodule: 'PCM',
+            viewname: 'PCMSCHOOLOFFICEEditView',
+            viewaction: '',
+            viewdatachange: false,
+            refviews: [
+            ],
+        },
+        {
             viewtag: '128376d374a95b9d98fb658a9d33dc77',
             viewmodule: 'ORM',
             viewname: 'ORMORGYPZXXSYPickupGridView',
+            viewaction: '',
+            viewdatachange: false,
+            refviews: [
+            ],
+        },
+        {
+            viewtag: '1977e8d438054097b13de37ff789b517',
+            viewmodule: 'PCM',
+            viewname: 'PCMPROFILEFJEditView',
+            viewaction: '',
+            viewdatachange: false,
+            refviews: [
+            ],
+        },
+        {
+            viewtag: '19cce11f58776909dbd6caa9a9fd3946',
+            viewmodule: 'PCM',
+            viewname: 'PCMEducationExperienceEditView',
+            viewaction: '',
+            viewdatachange: false,
+            refviews: [
+            ],
+        },
+        {
+            viewtag: '1c918b48d7fa656129630687c6f681e5',
+            viewmodule: 'PCM',
+            viewname: 'PCMEducationExperienceJYBJ_WSSWBJGridView',
+            viewaction: '',
+            viewdatachange: false,
+            refviews: [
+                '19cce11f58776909dbd6caa9a9fd3946',
+            ],
+        },
+        {
+            viewtag: '26f69f4ff507ad80fa6fb9a194aca149',
+            viewmodule: 'PCM',
+            viewname: 'TDZWXXEditView',
             viewaction: '',
             viewdatachange: false,
             refviews: [
@@ -48,6 +105,7 @@ export const viewstate: any = {
             viewaction: '',
             viewdatachange: false,
             refviews: [
+                '642e7abba6964fca1715f07242cc34b1',
             ],
         },
         {
@@ -87,12 +145,22 @@ export const viewstate: any = {
             ],
         },
         {
+            viewtag: '47328693892b4aabde90acf085237c98',
+            viewmodule: 'PCM',
+            viewname: 'PCMPRACTICEEXPERIENCEEditView',
+            viewaction: '',
+            viewdatachange: false,
+            refviews: [
+            ],
+        },
+        {
             viewtag: '56c145537274f073f9b98375809e6010',
             viewmodule: 'PCM',
             viewname: 'PCMSCHOOLOFFICEZXZWGridView',
             viewaction: '',
             viewdatachange: false,
             refviews: [
+                '0e0ec3aacabc80d01e9fd4d788aa8dc5',
             ],
         },
         {
@@ -103,6 +171,25 @@ export const viewstate: any = {
             viewdatachange: false,
             refviews: [
                 '79011b4b8919b94eaf3c825f6acc8102',
+            ],
+        },
+        {
+            viewtag: '642e7abba6964fca1715f07242cc34b1',
+            viewmodule: 'PCM',
+            viewname: 'TestResultEditView',
+            viewaction: '',
+            viewdatachange: false,
+            refviews: [
+            ],
+        },
+        {
+            viewtag: '71cdb539d218e7a24362fa84ffa78813',
+            viewmodule: 'PCM',
+            viewname: 'PCMAWARDSWONSHJQK_WSSWBJGridView',
+            viewaction: '',
+            viewdatachange: false,
+            refviews: [
+                'd29ed45e3397bfcda1f4763b9b3e8686',
             ],
         },
         {
@@ -122,6 +209,16 @@ export const viewstate: any = {
             viewdatachange: false,
             refviews: [
                 'fe2c9423e322f159b6b437009463be03',
+            ],
+        },
+        {
+            viewtag: '95bcee42df5fcece9493f5aabfd9f42c',
+            viewmodule: 'PCM',
+            viewname: 'PCMCERTOFREGZCZS_WSSWBJGridView',
+            viewaction: '',
+            viewdatachange: false,
+            refviews: [
+                '61ab26467e764252135370d1e6451aed',
             ],
         },
         {
@@ -168,6 +265,16 @@ export const viewstate: any = {
             ],
         },
         {
+            viewtag: 'b11d32b948546b8182fe02016f89ec41',
+            viewmodule: 'PCM',
+            viewname: 'TestResultCPJG_WSSWBJGridView',
+            viewaction: '',
+            viewdatachange: false,
+            refviews: [
+                '642e7abba6964fca1715f07242cc34b1',
+            ],
+        },
+        {
             viewtag: 'b147b7948f382bb3a0d15382e3663687',
             viewmodule: 'PIM',
             viewname: 'PIMPERSONTXRYPickupGridView',
@@ -183,6 +290,7 @@ export const viewstate: any = {
             viewaction: '',
             viewdatachange: false,
             refviews: [
+                'd29ed45e3397bfcda1f4763b9b3e8686',
             ],
         },
         {
@@ -192,6 +300,7 @@ export const viewstate: any = {
             viewaction: '',
             viewdatachange: false,
             refviews: [
+                '47328693892b4aabde90acf085237c98',
             ],
         },
         {
@@ -201,6 +310,7 @@ export const viewstate: any = {
             viewaction: '',
             viewdatachange: false,
             refviews: [
+                '19cce11f58776909dbd6caa9a9fd3946',
             ],
         },
         {
@@ -211,6 +321,17 @@ export const viewstate: any = {
             viewdatachange: false,
             refviews: [
                 '43659d36205f0188071e2809bae87960',
+                'f666d946fa169ea6c954caff48070694',
+            ],
+        },
+        {
+            viewtag: 'c8ed6bc3b1fb98097433f84d7b885917',
+            viewmodule: 'PCM',
+            viewname: 'PCMPRACTICEEXPERIENCESXJY_WSSWBJGridView',
+            viewaction: '',
+            viewdatachange: false,
+            refviews: [
+                '47328693892b4aabde90acf085237c98',
             ],
         },
         {
@@ -224,12 +345,90 @@ export const viewstate: any = {
             ],
         },
         {
+            viewtag: 'd11d7cff3a3a81ba0788cddd5506d701',
+            viewmodule: 'PCM',
+            viewname: 'TDZWXXTDZW_WSSWBJGridView',
+            viewaction: '',
+            viewdatachange: false,
+            refviews: [
+                '26f69f4ff507ad80fa6fb9a194aca149',
+            ],
+        },
+        {
+            viewtag: 'd29ed45e3397bfcda1f4763b9b3e8686',
+            viewmodule: 'PCM',
+            viewname: 'PCMAWARDSWONSEditView',
+            viewaction: '',
+            viewdatachange: false,
+            refviews: [
+            ],
+        },
+        {
+            viewtag: 'db6481cf0fd233088402d584a67338a8',
+            viewmodule: 'PCM',
+            viewname: 'PCMPROFILEZPDWSHEditView',
+            viewaction: '',
+            viewdatachange: false,
+            refviews: [
+                'd11d7cff3a3a81ba0788cddd5506d701',
+                '0b217f6381763746161a9725cee6cafc',
+                '1c918b48d7fa656129630687c6f681e5',
+                'b11d32b948546b8182fe02016f89ec41',
+                'c8ed6bc3b1fb98097433f84d7b885917',
+                'd0d1c5e2fea8eb48ebcb507b6126df20',
+                'fa6e04043d654177e570ab09a58791bd',
+                '95bcee42df5fcece9493f5aabfd9f42c',
+                'eab174bdd0d26c696e5a0e0d433af6c6',
+                '71cdb539d218e7a24362fa84ffa78813',
+                '01a06bd6730d3199229fd1b9f8aca1a8',
+            ],
+        },
+        {
+            viewtag: 'eab174bdd0d26c696e5a0e0d433af6c6',
+            viewmodule: 'PCM',
+            viewname: 'PCMPROFILEFJProfileFJGridView',
+            viewaction: '',
+            viewdatachange: false,
+            refviews: [
+                '1977e8d438054097b13de37ff789b517',
+            ],
+        },
+        {
             viewtag: 'ebd5595f0455c8bbeefdf665db2d754b',
             viewmodule: 'ORM',
             viewname: 'ORMORGSECTORYDBMPickupGridView',
             viewaction: '',
             viewdatachange: false,
             refviews: [
+            ],
+        },
+        {
+            viewtag: 'eca902f7ff75f15ff107b7f7c49f13ab',
+            viewmodule: 'PCM',
+            viewname: 'PCMWORKRESUMEEditView',
+            viewaction: '',
+            viewdatachange: false,
+            refviews: [
+            ],
+        },
+        {
+            viewtag: 'f666d946fa169ea6c954caff48070694',
+            viewmodule: 'PCM',
+            viewname: 'PCMPROFILEZPDWSHGridView',
+            viewaction: '',
+            viewdatachange: false,
+            refviews: [
+                'db6481cf0fd233088402d584a67338a8',
+            ],
+        },
+        {
+            viewtag: 'fa6e04043d654177e570ab09a58791bd',
+            viewmodule: 'PCM',
+            viewname: 'PCMSCHOOLOFFICEZXZW_WSSWBJGridView',
+            viewaction: '',
+            viewdatachange: false,
+            refviews: [
+                '0e0ec3aacabc80d01e9fd4d788aa8dc5',
             ],
         },
         {
@@ -248,6 +447,7 @@ export const viewstate: any = {
             viewaction: '',
             viewdatachange: false,
             refviews: [
+                '26f69f4ff507ad80fa6fb9a194aca149',
             ],
         },
         {

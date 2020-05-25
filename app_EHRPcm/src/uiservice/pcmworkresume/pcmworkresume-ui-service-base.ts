@@ -79,7 +79,9 @@ export default class PCMWORKRESUMEUIServiceBase extends UIService {
      * @memberof  PCMWORKRESUMEUIServiceBase
      */  
     public initViewMap(){
+        this.allViewMap.set(':',{viewname:'gzll_wsswbjgridview',srfappde:'pcmworkresumes'});
         this.allViewMap.set(':',{viewname:'gzllgridview',srfappde:'pcmworkresumes'});
+        this.allViewMap.set('EDITVIEW:',{viewname:'editview',srfappde:'pcmworkresumes'});
     }
 
     /**

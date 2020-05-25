@@ -65,7 +65,6 @@ export default class MainModel {
           name: 'testresult',
           prop: 'testresultid',
         },
-
         {
           name:'size',
           prop:'size'

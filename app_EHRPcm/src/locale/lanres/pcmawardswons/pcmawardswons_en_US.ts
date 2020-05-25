@@ -19,9 +19,39 @@ export default {
     pcmprofileid: '应聘者ID',
   },
 	views: {
+		hjqk_wsswbjgridview: {
+			caption: "获奖情况",
+      title: '获奖情况',
+		},
 		hjqkgridview: {
 			caption: "获奖情况（要求：带*必填）",
       title: '获奖情况（要求：带*必填）',
+		},
+		editview: {
+			caption: "获奖情况",
+      title: '获奖情况',
+		},
+	},
+	main_form: {
+		details: {
+			group1: "获奖情况", 
+			formpage1: "基本信息", 
+			srfupdatedate: "更新时间", 
+			srforikey: "", 
+			srfkey: "获奖情况标识", 
+			srfmajortext: "获奖情况名称", 
+			srftempmode: "", 
+			srfuf: "", 
+			srfdeid: "", 
+			srfsourcekey: "", 
+			pcmprofileid: "应聘者ID", 
+			awardname: "获奖名称", 
+			awardtime: "获奖时间", 
+			awardlevel: "获奖等级", 
+			judgeorg: "评定机构", 
+			pcmawardswonsid: "获奖情况标识", 
+		},
+		uiactions: {
 		},
 	},
 	main_grid: {
@@ -76,5 +106,29 @@ export default {
 			caption: "Filter",
 			tip: "Filter",
 		},
+	},
+	editviewtoolbar_toolbar: {
+		tbitem3: {
+			caption: "Save",
+			tip: "Save",
+		},
+		tbitem4: {
+			caption: "Save And New",
+			tip: "Save And New",
+		},
+		tbitem5: {
+			caption: "Save And Close",
+			tip: "Save And Close Window",
+		},
+		tbitem7: {
+			caption: "Remove And Close",
+			tip: "Remove And Close Window",
+		},
+		tbitem22: {
+			caption: "Help",
+			tip: "Help",
+		},
+	},
+	hjqk_wsswbjgridviewtoolbar_toolbar: {
 	},
 };

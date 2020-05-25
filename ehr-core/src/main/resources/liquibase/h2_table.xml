@@ -1208,7 +1208,7 @@
 
 
     <!--输出实体[PCMCERTOFREG]数据结构 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="tab-pcmcertofreg-15-98">
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-pcmcertofreg-16-98">
         <createTable tableName="T_PCMCERTOFREG">
                 <column name="LX" remarks="" type="VARCHAR(60)">
                 </column>
@@ -3145,10 +3145,10 @@
         <!--输出实体[PCMPROFILESZYJTJ]外键关系 -->
         <!--输出实体[SOCCOMPANYWEL]外键关系 -->
         <!--输出实体[PCMCERTOFREG]外键关系 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-pcmcertofreg-15-446">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-pcmcertofreg-16-446">
        <addForeignKeyConstraint baseColumnNames="PCMPROFILEID" baseTableName="T_PCMCERTOFREG" constraintName="DER1N_PCMCERTOFREG_PCMPROFILE_" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="PCMPROFILEID" referencedTableName="T_PCMPROFILE" validate="true"/>
     </changeSet>
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-pcmcertofreg-15-447">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-pcmcertofreg-16-447">
        <addForeignKeyConstraint baseColumnNames="PIMQUALMAJORID" baseTableName="T_PCMCERTOFREG" constraintName="DER1N_PCMCERTOFREG_PIMQUALMAJO" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="PIMQUALMAJORID" referencedTableName="T_PIMQUALMAJOR" validate="true"/>
     </changeSet>
         <!--输出实体[PIMDISTIRBUTION]外键关系 -->

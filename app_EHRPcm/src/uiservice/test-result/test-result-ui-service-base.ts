@@ -80,6 +80,8 @@ export default class TestResultUIServiceBase extends UIService {
      */  
     public initViewMap(){
         this.allViewMap.set(':',{viewname:'cpjggridview',srfappde:'testresults'});
+        this.allViewMap.set('EDITVIEW:',{viewname:'editview',srfappde:'testresults'});
+        this.allViewMap.set(':',{viewname:'cpjg_wsswbjgridview',srfappde:'testresults'});
     }
 
     /**

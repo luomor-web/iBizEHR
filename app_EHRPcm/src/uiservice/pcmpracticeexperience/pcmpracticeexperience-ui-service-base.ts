@@ -79,7 +79,9 @@ export default class PCMPRACTICEEXPERIENCEUIServiceBase extends UIService {
      * @memberof  PCMPRACTICEEXPERIENCEUIServiceBase
      */  
     public initViewMap(){
+        this.allViewMap.set('EDITVIEW:',{viewname:'editview',srfappde:'pcmpracticeexperiences'});
         this.allViewMap.set(':',{viewname:'sxjygridview',srfappde:'pcmpracticeexperiences'});
+        this.allViewMap.set(':',{viewname:'sxjy_wsswbjgridview',srfappde:'pcmpracticeexperiences'});
     }
 
     /**

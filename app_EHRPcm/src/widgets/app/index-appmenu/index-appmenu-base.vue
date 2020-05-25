@@ -62,6 +62,9 @@ export default class IndexBase extends AppMenusCtrlBase {
     protected click(item: any) {
         if (item) {
             switch (item.appfunctag) {
+                case '_2': 
+                    this.click_2(item);
+                    return;
                 case 'Auto499': 
                     this.clickAuto499(item);
                     return;
@@ -69,6 +72,24 @@ export default class IndexBase extends AppMenusCtrlBase {
                     console.warn('未指定应用功能');
             }
         }
+    }
+    
+    /**
+     * 校招招聘单位初审
+     *
+     * @param {*} [item={}]
+     * @memberof Index
+     */
+    public click_2(item: any = {}) {
+        const viewparam: any = {};
+        Object.assign(viewparam, {});
+        const deResParameters: any[] = [];
+        const parameters: any[] = [
+            { pathName: 'pcmprofiles', parameterName: 'pcmprofile' },
+            { pathName: 'zpdwshgridview', parameterName: 'zpdwshgridview' },
+        ];
+        const path: string = this.$viewTool.buildUpRoutePath(this.$route, {}, deResParameters, parameters, [], viewparam);
+        this.$router.push(path);
     }
     
     /**

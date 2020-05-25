@@ -21,6 +21,10 @@ export default {
 			caption: "注册证书",
       title: '注册证书',
 		},
+		zczs_wsswbjgridview: {
+			caption: "注册证书",
+      title: '注册证书',
+		},
 		zczsgridview: {
 			caption: "注册证书（要求：带*必填）",
       title: '注册证书（要求：带*必填）',
@@ -48,6 +52,14 @@ export default {
 		},
 	},
 	main_grid: {
+		columns: {
+			zyzgzy: "证书名称（*）",
+			zsfj: "证书附件",
+		},
+		uiactions: {
+		},
+	},
+	ck_grid: {
 		columns: {
 			zyzgzy: "证书名称（*）",
 			zsfj: "证书附件",
@@ -119,5 +131,7 @@ export default {
 			caption: "Help",
 			tip: "Help",
 		},
+	},
+	zczs_wsswbjgridviewtoolbar_toolbar: {
 	},
 };

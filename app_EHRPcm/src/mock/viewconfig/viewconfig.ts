@@ -7,7 +7,15 @@ import Mock from 'mockjs'
 mock.onGet('./assets/json/view-config.json').reply((config: any) => {
     let status = MockAdapter.mockStatus(config);
     return [status,{
-                "ormpostejormorgidpickupview": {
+                "pcmworkresumegzll_wsswbjgridview": {
+            "title": "工作履历表格视图",
+            "caption": "工作履历",
+            "viewtype": "DEGRIDVIEW",
+            "viewmodule": "PCM",
+            "viewname": "PCMWORKRESUMEGZLL_WSSWBJGridView",
+            "viewtag": "01a06bd6730d3199229fd1b9f8aca1a8"
+        },
+        "ormpostejormorgidpickupview": {
             "title": "岗位管理数据选择视图",
             "caption": "岗位集",
             "viewtype": "DEPICKUPVIEW",
@@ -31,6 +39,14 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewname": "PIMPERSONTXRYPickupView",
             "viewtag": "0b217f6381763746161a9725cee6cafc"
         },
+        "pcmschoolofficeeditview": {
+            "title": "在校职务",
+            "caption": "在校职务",
+            "viewtype": "DEEDITVIEW",
+            "viewmodule": "PCM",
+            "viewname": "PCMSCHOOLOFFICEEditView",
+            "viewtag": "0e0ec3aacabc80d01e9fd4d788aa8dc5"
+        },
         "ormorgypzxxsypickupgridview": {
             "title": "组织选择表格视图",
             "caption": "组织选择表格视图",
@@ -38,6 +54,38 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewmodule": "ORM",
             "viewname": "ORMORGYPZXXSYPickupGridView",
             "viewtag": "128376d374a95b9d98fb658a9d33dc77"
+        },
+        "pcmprofilefjeditview": {
+            "title": "应聘者附件编辑视图",
+            "caption": "应聘者附件",
+            "viewtype": "DEEDITVIEW",
+            "viewmodule": "PCM",
+            "viewname": "PCMPROFILEFJEditView",
+            "viewtag": "1977e8d438054097b13de37ff789b517"
+        },
+        "pcmeducationexperienceeditview": {
+            "title": "教育背景",
+            "caption": "教育背景",
+            "viewtype": "DEEDITVIEW",
+            "viewmodule": "PCM",
+            "viewname": "PCMEducationExperienceEditView",
+            "viewtag": "19cce11f58776909dbd6caa9a9fd3946"
+        },
+        "pcmeducationexperiencejybj_wsswbjgridview": {
+            "title": "教育信息",
+            "caption": "教育信息",
+            "viewtype": "DEGRIDVIEW",
+            "viewmodule": "PCM",
+            "viewname": "PCMEducationExperienceJYBJ_WSSWBJGridView",
+            "viewtag": "1c918b48d7fa656129630687c6f681e5"
+        },
+        "tdzwxxeditview": {
+            "title": "投递职位摘要信息",
+            "caption": "投递职位摘要信息",
+            "viewtype": "DEEDITVIEW",
+            "viewmodule": "PCM",
+            "viewname": "TDZWXXEditView",
+            "viewtag": "26f69f4ff507ad80fa6fb9a194aca149"
         },
         "testresultcpjggridview": {
             "title": "测评结果摘要信息（要求：带*必填）",
@@ -71,6 +119,14 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewname": "ORMPOSTEJORMORGIDPickupGridView",
             "viewtag": "44bf9eda90dffdccfacfac9a8c182e91"
         },
+        "pcmpracticeexperienceeditview": {
+            "title": "实习经验",
+            "caption": "实习经验",
+            "viewtype": "DEEDITVIEW",
+            "viewmodule": "PCM",
+            "viewname": "PCMPRACTICEEXPERIENCEEditView",
+            "viewtag": "47328693892b4aabde90acf085237c98"
+        },
         "pcmschoolofficezxzwgridview": {
             "title": "在校职务（要求：带*必填）",
             "caption": "在校职务（要求：带*必填）",
@@ -87,6 +143,22 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewname": "PCMCERTOFREGEditView",
             "viewtag": "61ab26467e764252135370d1e6451aed"
         },
+        "testresulteditview": {
+            "title": "测评结果摘要信息",
+            "caption": "测评结果摘要信息",
+            "viewtype": "DEEDITVIEW",
+            "viewmodule": "PCM",
+            "viewname": "TestResultEditView",
+            "viewtag": "642e7abba6964fca1715f07242cc34b1"
+        },
+        "pcmawardswonshjqk_wsswbjgridview": {
+            "title": "获奖情况表格视图",
+            "caption": "获奖情况",
+            "viewtype": "DEGRIDVIEW",
+            "viewmodule": "PCM",
+            "viewname": "PCMAWARDSWONSHJQK_WSSWBJGridView",
+            "viewtag": "71cdb539d218e7a24362fa84ffa78813"
+        },
         "ormdutyormorgsectorpickupgridview": {
             "title": "职务库",
             "caption": "职务库",
@@ -102,6 +174,14 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewmodule": "PIM",
             "viewname": "PIMQUALMAJORPickupView",
             "viewtag": "79011b4b8919b94eaf3c825f6acc8102"
+        },
+        "pcmcertofregzczs_wsswbjgridview": {
+            "title": "注册证书",
+            "caption": "注册证书",
+            "viewtype": "DEGRIDVIEW",
+            "viewmodule": "PCM",
+            "viewname": "PCMCERTOFREGZCZS_WSSWBJGridView",
+            "viewtag": "95bcee42df5fcece9493f5aabfd9f42c"
         },
         "pcmprofileypzxx_lreditview": {
             "title": "应聘者信息",
@@ -126,6 +206,14 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewmodule": "ORM",
             "viewname": "ORMDUTYOrmOrgSectorPickupView",
             "viewtag": "ad50beef4cfa8848053a8e607ed0d7a6"
+        },
+        "testresultcpjg_wsswbjgridview": {
+            "title": "测评结果摘要信息",
+            "caption": "测评结果摘要信息",
+            "viewtype": "DEGRIDVIEW",
+            "viewmodule": "PCM",
+            "viewname": "TestResultCPJG_WSSWBJGridView",
+            "viewtag": "b11d32b948546b8182fe02016f89ec41"
         },
         "pimpersontxrypickupgridview": {
             "title": "退休人员",
@@ -167,6 +255,14 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewname": "Index",
             "viewtag": "c6b154dd2f5d680dda854191ae62d388"
         },
+        "pcmpracticeexperiencesxjy_wsswbjgridview": {
+            "title": "实习信息",
+            "caption": "实习信息",
+            "viewtype": "DEGRIDVIEW",
+            "viewmodule": "PCM",
+            "viewname": "PCMPRACTICEEXPERIENCESXJY_WSSWBJGridView",
+            "viewtag": "c8ed6bc3b1fb98097433f84d7b885917"
+        },
         "ormorgypzsyfpxxpickupview": {
             "title": "组织数据选择视图",
             "caption": "组织数据选择视图",
@@ -175,6 +271,38 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewname": "ORMORGYPZSYFPXXPickupView",
             "viewtag": "d0d1c5e2fea8eb48ebcb507b6126df20"
         },
+        "tdzwxxtdzw_wsswbjgridview": {
+            "title": "投递职位摘要信息",
+            "caption": "投递职位摘要信息",
+            "viewtype": "DEGRIDVIEW",
+            "viewmodule": "PCM",
+            "viewname": "TDZWXXTDZW_WSSWBJGridView",
+            "viewtag": "d11d7cff3a3a81ba0788cddd5506d701"
+        },
+        "pcmawardswonseditview": {
+            "title": "获奖情况",
+            "caption": "获奖情况",
+            "viewtype": "DEEDITVIEW",
+            "viewmodule": "PCM",
+            "viewname": "PCMAWARDSWONSEditView",
+            "viewtag": "d29ed45e3397bfcda1f4763b9b3e8686"
+        },
+        "pcmprofilezpdwsheditview": {
+            "title": "用人单位初审",
+            "caption": "用人单位初审",
+            "viewtype": "DEEDITVIEW",
+            "viewmodule": "PCM",
+            "viewname": "PCMPROFILEZPDWSHEditView",
+            "viewtag": "db6481cf0fd233088402d584a67338a8"
+        },
+        "pcmprofilefjprofilefjgridview": {
+            "title": "应聘者附件",
+            "caption": "应聘者附件",
+            "viewtype": "DEGRIDVIEW",
+            "viewmodule": "PCM",
+            "viewname": "PCMPROFILEFJProfileFJGridView",
+            "viewtag": "eab174bdd0d26c696e5a0e0d433af6c6"
+        },
         "ormorgsectorydbmpickupgridview": {
             "title": "部门选择",
             "caption": "部门选择",
@@ -182,6 +310,30 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewmodule": "ORM",
             "viewname": "ORMORGSECTORYDBMPickupGridView",
             "viewtag": "ebd5595f0455c8bbeefdf665db2d754b"
+        },
+        "pcmworkresumeeditview": {
+            "title": "工作履历",
+            "caption": "工作履历",
+            "viewtype": "DEEDITVIEW",
+            "viewmodule": "PCM",
+            "viewname": "PCMWORKRESUMEEditView",
+            "viewtag": "eca902f7ff75f15ff107b7f7c49f13ab"
+        },
+        "pcmprofilezpdwshgridview": {
+            "title": "用人单位初审",
+            "caption": "用人单位初审",
+            "viewtype": "DEGRIDVIEW",
+            "viewmodule": "PCM",
+            "viewname": "PCMPROFILEZPDWSHGridView",
+            "viewtag": "f666d946fa169ea6c954caff48070694"
+        },
+        "pcmschoolofficezxzw_wsswbjgridview": {
+            "title": "在校职务",
+            "caption": "在校职务",
+            "viewtype": "DEGRIDVIEW",
+            "viewmodule": "PCM",
+            "viewname": "PCMSCHOOLOFFICEZXZW_WSSWBJGridView",
+            "viewtag": "fa6e04043d654177e570ab09a58791bd"
         },
         "pimqualmajorpickupgridview": {
             "title": "执业资格专业选择表格视图",

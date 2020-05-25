@@ -79,6 +79,8 @@ export default class PCMPROFILEFJUIServiceBase extends UIService {
      * @memberof  PCMPROFILEFJUIServiceBase
      */  
     public initViewMap(){
+        this.allViewMap.set('EDITVIEW:',{viewname:'editview',srfappde:'pcmprofilefjs'});
+        this.allViewMap.set(':',{viewname:'profilefjgridview',srfappde:'pcmprofilefjs'});
     }
 
     /**

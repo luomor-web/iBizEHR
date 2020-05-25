@@ -79,7 +79,9 @@ export default class PCMSCHOOLOFFICEUIServiceBase extends UIService {
      * @memberof  PCMSCHOOLOFFICEUIServiceBase
      */  
     public initViewMap(){
+        this.allViewMap.set('EDITVIEW:',{viewname:'editview',srfappde:'pcmschooloffices'});
         this.allViewMap.set(':',{viewname:'zxzwgridview',srfappde:'pcmschooloffices'});
+        this.allViewMap.set(':',{viewname:'zxzw_wsswbjgridview',srfappde:'pcmschooloffices'});
     }
 
     /**

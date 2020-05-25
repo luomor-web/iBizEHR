@@ -80,6 +80,7 @@ export default class PCMCERTOFREGUIServiceBase extends UIService {
      */  
     public initViewMap(){
         this.allViewMap.set('EDITVIEW:',{viewname:'editview',srfappde:'pcmcertofregs'});
+        this.allViewMap.set(':',{viewname:'zczs_wsswbjgridview',srfappde:'pcmcertofregs'});
         this.allViewMap.set(':',{viewname:'zczsgridview',srfappde:'pcmcertofregs'});
     }
 

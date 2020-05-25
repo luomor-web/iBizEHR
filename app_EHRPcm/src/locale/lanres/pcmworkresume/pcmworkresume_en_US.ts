@@ -19,9 +19,42 @@ export default {
     pcmprofileid: '应聘者ID',
   },
 	views: {
+		gzll_wsswbjgridview: {
+			caption: "工作履历",
+      title: '工作履历',
+		},
 		gzllgridview: {
 			caption: "工作履历（要求：带*必填）",
       title: '工作履历（要求：带*必填）',
+		},
+		editview: {
+			caption: "工作履历",
+      title: '工作履历',
+		},
+	},
+	main_form: {
+		details: {
+			group1: "工作履历基本信息", 
+			formpage1: "基本信息", 
+			srfupdatedate: "更新时间", 
+			srforikey: "", 
+			srfkey: "工作履历标识", 
+			srfmajortext: "工作履历名称", 
+			srftempmode: "", 
+			srfuf: "", 
+			srfdeid: "", 
+			srfsourcekey: "", 
+			pcmprofileid: "应聘者ID", 
+			servebegintime: "任职开始时间", 
+			serveendtime: "任职结束时间", 
+			workunit: "工作单位", 
+			bm: "部门", 
+			zw: "职务", 
+			gw: "岗位", 
+			resumecontent: "履历说明", 
+			pcmworkresumeid: "工作履历标识", 
+		},
+		uiactions: {
 		},
 	},
 	main_grid: {
@@ -42,6 +75,30 @@ export default {
 			formpage1: "常规条件", 
 		},
 		uiactions: {
+		},
+	},
+	gzll_wsswbjgridviewtoolbar_toolbar: {
+	},
+	editviewtoolbar_toolbar: {
+		tbitem3: {
+			caption: "Save",
+			tip: "Save",
+		},
+		tbitem4: {
+			caption: "Save And New",
+			tip: "Save And New",
+		},
+		tbitem5: {
+			caption: "Save And Close",
+			tip: "Save And Close Window",
+		},
+		tbitem7: {
+			caption: "Remove And Close",
+			tip: "Remove And Close Window",
+		},
+		tbitem22: {
+			caption: "Help",
+			tip: "Help",
 		},
 	},
 	gzllgridviewtoolbar2_toolbar: {

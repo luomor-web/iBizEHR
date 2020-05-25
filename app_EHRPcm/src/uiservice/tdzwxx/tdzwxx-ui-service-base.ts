@@ -79,6 +79,8 @@ export default class TDZWXXUIServiceBase extends UIService {
      * @memberof  TDZWXXUIServiceBase
      */  
     public initViewMap(){
+        this.allViewMap.set('EDITVIEW:',{viewname:'editview',srfappde:'tdzwxxes'});
+        this.allViewMap.set(':',{viewname:'tdzw_wsswbjgridview',srfappde:'tdzwxxes'});
         this.allViewMap.set(':',{viewname:'tdzwgridview',srfappde:'tdzwxxes'});
     }
 

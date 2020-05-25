@@ -70,7 +70,6 @@ export default class MainModel {
           name: 'pcmschooloffice',
           prop: 'pcmschoolofficeid',
         },
-
         {
           name:'size',
           prop:'size'

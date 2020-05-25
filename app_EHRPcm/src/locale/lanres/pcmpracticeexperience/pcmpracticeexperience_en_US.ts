@@ -26,9 +26,41 @@ export default {
     pcmprofileid: '应聘者ID',
   },
 	views: {
+		editview: {
+			caption: "实习经验",
+      title: '实习经验',
+		},
 		sxjygridview: {
 			caption: "实习信息（要求：带*必填）",
       title: '实习信息（要求：带*必填）',
+		},
+		sxjy_wsswbjgridview: {
+			caption: "实习信息",
+      title: '实习信息',
+		},
+	},
+	main_form: {
+		details: {
+			group1: "实习经验", 
+			formpage1: "基本信息", 
+			srfupdatedate: "更新时间", 
+			srforikey: "", 
+			srfkey: "实习经验标识", 
+			srfmajortext: "实习经验名称", 
+			srftempmode: "", 
+			srfuf: "", 
+			srfdeid: "", 
+			srfsourcekey: "", 
+			pcmprofileid: "应聘者ID", 
+			practicecompanyname: "实习单位", 
+			starttime: "开始时间", 
+			endtime: "结束时间", 
+			sxgw: "实习岗位", 
+			practicecontent: "实习内容", 
+			sxpj: "实习评价", 
+			pcmpracticeexperienceid: "实习经验标识", 
+		},
+		uiactions: {
 		},
 	},
 	main_grid: {
@@ -85,5 +117,29 @@ export default {
 			caption: "Filter",
 			tip: "Filter",
 		},
+	},
+	editviewtoolbar_toolbar: {
+		tbitem3: {
+			caption: "Save",
+			tip: "Save",
+		},
+		tbitem4: {
+			caption: "Save And New",
+			tip: "Save And New",
+		},
+		tbitem5: {
+			caption: "Save And Close",
+			tip: "Save And Close Window",
+		},
+		tbitem7: {
+			caption: "Remove And Close",
+			tip: "Remove And Close Window",
+		},
+		tbitem22: {
+			caption: "Help",
+			tip: "Help",
+		},
+	},
+	sxjy_wsswbjgridviewtoolbar_toolbar: {
 	},
 };

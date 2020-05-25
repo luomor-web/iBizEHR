@@ -31,6 +31,35 @@ export default {
 			caption: "测评结果摘要信息（要求：带*必填）",
       title: '测评结果摘要信息（要求：带*必填）',
 		},
+		editview: {
+			caption: "测评结果摘要信息",
+      title: '测评结果摘要信息',
+		},
+		cpjg_wsswbjgridview: {
+			caption: "测评结果摘要信息",
+      title: '测评结果摘要信息',
+		},
+	},
+	main_form: {
+		details: {
+			group1: "测评结果摘要信息", 
+			formpage1: "基本信息", 
+			srfupdatedate: "更新时间", 
+			srforikey: "", 
+			srfkey: "测评结果信息标识", 
+			srfmajortext: "测评结果信息名称", 
+			srftempmode: "", 
+			srfuf: "", 
+			srfdeid: "", 
+			srfsourcekey: "", 
+			psychologystatus: "心理健康", 
+			abilitygrade: "能力", 
+			jobfitdegree: "胜任力", 
+			pcmprofileid: "应聘者ID", 
+			testresultid: "测评结果信息标识", 
+		},
+		uiactions: {
+		},
 	},
 	main_grid: {
 		columns: {
@@ -83,5 +112,29 @@ export default {
 			caption: "Filter",
 			tip: "Filter",
 		},
+	},
+	editviewtoolbar_toolbar: {
+		tbitem3: {
+			caption: "Save",
+			tip: "Save",
+		},
+		tbitem4: {
+			caption: "Save And New",
+			tip: "Save And New",
+		},
+		tbitem5: {
+			caption: "Save And Close",
+			tip: "Save And Close Window",
+		},
+		tbitem7: {
+			caption: "Remove And Close",
+			tip: "Remove And Close Window",
+		},
+		tbitem22: {
+			caption: "Help",
+			tip: "Help",
+		},
+	},
+	cpjg_wsswbjgridviewtoolbar_toolbar: {
 	},
 };

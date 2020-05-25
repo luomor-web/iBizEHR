@@ -624,7 +624,32 @@ export default class TDZWXXTDZWGridViewBase extends GridViewBase {
      * @memberof TDZWXXTDZWGridView
      */
     public newdata(args: any[],fullargs?:any[], params?: any, $event?: any, xData?: any) {
-    this.$Notice.warning({ title: '错误', desc: '未指定关系视图' });
+        const data: any = {};
+        if(args[0].srfsourcekey){
+            data.srfsourcekey = args[0].srfsourcekey;
+        }
+        let curViewParam = JSON.parse(JSON.stringify(this.context));
+        if(args.length >0){
+            Object.assign(curViewParam,args[0]);
+        }
+        let deResParameters: any[] = [];
+        if(curViewParam.pcmprofile && true){
+            deResParameters = [
+            { pathName: 'pcmprofiles', parameterName: 'pcmprofile' },
+            ]
+        }
+        const parameters: any[] = [
+            { pathName: 'tdzwxxes', parameterName: 'tdzwxx' },
+            { pathName: 'editview', parameterName: 'editview' },
+        ];
+        const _this: any = this;
+        const openIndexViewTab = (data: any) => {
+            const _data: any = { w: (new Date().getTime()) };
+            Object.assign(_data, data);
+            const routePath = this.$viewTool.buildUpRoutePath(this.$route, curViewParam, deResParameters, parameters, args, _data);
+            this.$router.push(routePath);
+        }
+        openIndexViewTab(data);
     }
 
 
@@ -639,7 +664,27 @@ export default class TDZWXXTDZWGridViewBase extends GridViewBase {
      * @memberof TDZWXXTDZWGridView
      */
     public opendata(args: any[],fullargs?:any[],params?: any, $event?: any, xData?: any) {
-    this.$Notice.warning({ title: '错误', desc: '未指定关系视图' });
+        const data: any = {};
+        let curViewParam = JSON.parse(JSON.stringify(this.context));
+        if(args.length >0){
+            Object.assign(curViewParam,args[0]);
+        }
+        let deResParameters: any[] = [];
+        if(curViewParam.pcmprofile && true){
+            deResParameters = [
+            { pathName: 'pcmprofiles', parameterName: 'pcmprofile' },
+            ]
+        }
+        const parameters: any[] = [
+            { pathName: 'tdzwxxes', parameterName: 'tdzwxx' },
+            { pathName: 'editview', parameterName: 'editview' },
+        ];
+        const _this: any = this;
+        const openIndexViewTab = (data: any) => {
+            const routePath = this.$viewTool.buildUpRoutePath(this.$route, curViewParam, deResParameters, parameters, args, data);
+            this.$router.push(routePath);
+        }
+        openIndexViewTab(data);
     }
 
 

@@ -79,7 +79,9 @@ export default class PCMAWARDSWONSUIServiceBase extends UIService {
      * @memberof  PCMAWARDSWONSUIServiceBase
      */  
     public initViewMap(){
+        this.allViewMap.set(':',{viewname:'hjqk_wsswbjgridview',srfappde:'pcmawardswons'});
         this.allViewMap.set(':',{viewname:'hjqkgridview',srfappde:'pcmawardswons'});
+        this.allViewMap.set('EDITVIEW:',{viewname:'editview',srfappde:'pcmawardswons'});
     }
 
     /**

@@ -20,9 +20,41 @@ export default {
     pcmprofileid: '应聘者ID',
   },
 	views: {
+		editview: {
+			caption: '投递职位摘要信息',
+      title: '投递职位摘要信息',
+		},
+		tdzw_wsswbjgridview: {
+			caption: '投递职位摘要信息',
+      title: '投递职位摘要信息',
+		},
 		tdzwgridview: {
 			caption: '投递职位摘要信息（要求：带*必填）',
       title: '投递职位摘要信息（要求：带*必填）',
+		},
+	},
+	main_form: {
+		details: {
+			group1: '投递职位摘要信息', 
+			formpage1: '基本信息', 
+			srfupdatedate: '更新时间', 
+			srforikey: '', 
+			srfkey: '投递职位摘要信息标识', 
+			srfmajortext: '职位名称', 
+			srftempmode: '', 
+			srfuf: '', 
+			srfdeid: '', 
+			srfsourcekey: '', 
+			pcmprofileid: '应聘者ID', 
+			jobid: '职位ID', 
+			tdzwxxname: '职位名称', 
+			initapplydate: '最初投递时间', 
+			department: '投递组织', 
+			phaseinfo: '所在阶段信息', 
+			statusinfo: '所在状态信息', 
+			tdzwxxid: '投递职位摘要信息标识', 
+		},
+		uiactions: {
 		},
 	},
 	main_grid: {
@@ -42,6 +74,28 @@ export default {
 			formpage1: '常规条件', 
 		},
 		uiactions: {
+		},
+	},
+	editviewtoolbar_toolbar: {
+		tbitem3: {
+			caption: '保存',
+			tip: '保存',
+		},
+		tbitem4: {
+			caption: '保存并新建',
+			tip: '保存并新建',
+		},
+		tbitem5: {
+			caption: '保存并关闭',
+			tip: '保存并关闭',
+		},
+		tbitem7: {
+			caption: '删除并关闭',
+			tip: '删除并关闭',
+		},
+		tbitem22: {
+			caption: '帮助',
+			tip: '帮助',
 		},
 	},
 	tdzwgridviewtoolbar2_toolbar: {
@@ -79,5 +133,7 @@ export default {
 			caption: '过滤',
 			tip: '过滤',
 		},
+	},
+	tdzw_wsswbjgridviewtoolbar_toolbar: {
 	},
 };
