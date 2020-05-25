@@ -928,6 +928,14 @@ public class PCMPROFILE extends EntityMP implements Serializable {
     @JSONField(name = "ormorgid")
     @JsonProperty("ormorgid")
     private String ormorgid;
+    /**
+     * 校验结果
+     */
+    @DEField(defaultValue = "4")
+    @TableField(value = "checkresult")
+    @JSONField(name = "checkresult")
+    @JsonProperty("checkresult")
+    private String checkresult;
 
     /**
      * 挂职进职务
@@ -1726,6 +1734,13 @@ public class PCMPROFILE extends EntityMP implements Serializable {
     public void setOrmorgid(String ormorgid){
         this.ormorgid = ormorgid ;
         this.modify("ormorgid",ormorgid);
+    }
+    /**
+     * 设置 [校验结果]
+     */
+    public void setCheckresult(String checkresult){
+        this.checkresult = checkresult ;
+        this.modify("checkresult",checkresult);
     }
 
 }

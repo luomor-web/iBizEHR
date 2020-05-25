@@ -391,6 +391,13 @@ public class PCMPROFILESearchContext extends QueryWrapperContext<PCMPROFILE> {
             this.getSelectCond().eq("ormorgid", n_ormorgid_eq);
         }
     }
+	private String n_checkresult_eq;//[校验结果]
+	public void setN_checkresult_eq(String n_checkresult_eq) {
+        this.n_checkresult_eq = n_checkresult_eq;
+        if(!ObjectUtils.isEmpty(this.n_checkresult_eq)){
+            this.getSelectCond().eq("checkresult", n_checkresult_eq);
+        }
+    }
 
     /**
 	 * 启用快速搜索

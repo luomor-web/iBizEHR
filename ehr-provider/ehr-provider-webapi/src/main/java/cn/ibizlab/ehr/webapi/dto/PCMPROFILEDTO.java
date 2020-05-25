@@ -1020,6 +1020,14 @@ public class PCMPROFILEDTO extends DTOBase implements Serializable {
     @JsonProperty("ormorgid")
     private String ormorgid;
 
+    /**
+     * 属性 [CHECKRESULT]
+     *
+     */
+    @JSONField(name = "checkresult")
+    @JsonProperty("checkresult")
+    private String checkresult;
+
 
     /**
      * 设置 [GWLB]
@@ -1883,6 +1891,14 @@ public class PCMPROFILEDTO extends DTOBase implements Serializable {
     public void setOrmorgid(String  ormorgid){
         this.ormorgid = ormorgid ;
         this.modify("ormorgid",ormorgid);
+    }
+
+    /**
+     * 设置 [CHECKRESULT]
+     */
+    public void setCheckresult(String  checkresult){
+        this.checkresult = checkresult ;
+        this.modify("checkresult",checkresult);
     }
 
 

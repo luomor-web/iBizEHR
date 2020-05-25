@@ -2823,7 +2823,7 @@
             {
                "appid":"EHRPcm",
                "appname":"EHRPCM（招聘管理）",
-               "appmenu":[{"menuid":"Index", "menuname":"Index", "menuitem":[{ "id":"menuitem1" , "name":"校招应聘者" }] }]
+               "appmenu":[{"menuid":"Index", "menuname":"Index", "menuitem":[{ "id":"menuitem2" , "name":"校园招聘" , "items":[{ "id":"menuitem1" , "name":"应聘者" },{ "id":"menuitem3" , "name":"用人单位审核" },{ "id":"menuitem4" , "name":"人力上报" },{ "id":"menuitem5" , "name":"总部审核" },{ "id":"menuitem6" , "name":"编号审批" },{ "id":"menuitem7" , "name":"拟录用人员" }]},{ "id":"menuitem8" , "name":"成熟人才引进" , "items":[{ "id":"menuitem9" , "name":"应聘者" },{ "id":"menuitem10" , "name":"用人单位审核" },{ "id":"menuitem11" , "name":"人力上报" },{ "id":"menuitem12" , "name":"总部审核" },{ "id":"menuitem13" , "name":"编号审批" },{ "id":"menuitem14" , "name":"拟录用人员" }]}] }]
             }
             ,
             {
