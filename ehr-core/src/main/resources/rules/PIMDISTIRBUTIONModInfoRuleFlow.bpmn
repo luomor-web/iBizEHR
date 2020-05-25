@@ -13,21 +13,10 @@
      <endEvent id="9AE226BA-BDC6-444A-B97F-0E61F8F21622_End" name="End"/>
      <sequenceFlow id="9AE226BA-BDC6-444A-B97F-0E61F8F21622_End_Line" sourceRef="9AE226BA-BDC6-444A-B97F-0E61F8F21622" targetRef="9AE226BA-BDC6-444A-B97F-0E61F8F21622_End"/>
      <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="pimdistirbutionmodinfoprepareparam1" id="453621C5-3EC5-4918-984A-96E5521D668A" implementation="http://www.jboss.org/drools/rule" name="根据分配中的组织、部门更新"/>
-     <sequenceFlow id="56E6D381-46CA-4045-A122-21930F874412" sourceRef="gateway-065FC36E-3752-4BFC-AD3E-DDD8D2F72506" targetRef="453621C5-3EC5-4918-984A-96E5521D668A">
-            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
-            $pimdistirbutionmodinfodefault:PIMDISTIRBUTION();
-            $pimdistirbutionmodinfopimperson:PIMPERSON();
-            eval($pimdistirbutionmodinfodefault==pimdistirbutionmodinfodefault && $pimdistirbutionmodinfopimperson==pimdistirbutionmodinfopimperson);
-                eval(((RuleUtils.test($pimdistirbutionmodinfodefault.get("FPLX"),"EQ","ZFP"))))
-                ]]>
-            </conditionExpression>
+     <sequenceFlow id="AE71159E-CDB0-4146-9470-3AB6F4447CBC" sourceRef="065FC36E-3752-4BFC-AD3E-DDD8D2F72506" targetRef="453621C5-3EC5-4918-984A-96E5521D668A">
      </sequenceFlow>
      <sequenceFlow id="11D53990-69AC-4D08-98D4-2EA044A8C56F" sourceRef="453621C5-3EC5-4918-984A-96E5521D668A" targetRef="9AE226BA-BDC6-444A-B97F-0E61F8F21622">
      </sequenceFlow>
-    <exclusiveGateway id="gateway-065FC36E-3752-4BFC-AD3E-DDD8D2F72506" name="Gateway" gatewayDirection="Diverging" default="gateway-065FC36E-3752-4BFC-AD3E-DDD8D2F72506_End_Line"></exclusiveGateway>
-    <sequenceFlow id="56E6D381-46CA-4045-A122-21930F874412-gatewayline" sourceRef="065FC36E-3752-4BFC-AD3E-DDD8D2F72506" targetRef="gateway-065FC36E-3752-4BFC-AD3E-DDD8D2F72506"></sequenceFlow>
-    <sequenceFlow id="gateway-065FC36E-3752-4BFC-AD3E-DDD8D2F72506_End_Line" sourceRef="gateway-065FC36E-3752-4BFC-AD3E-DDD8D2F72506" targetRef="gateway-065FC36E-3752-4BFC-AD3E-DDD8D2F72506_End"/>
-    <endEvent id="gateway-065FC36E-3752-4BFC-AD3E-DDD8D2F72506_End" name="End"/>
     </process>
 </definitions>
 
