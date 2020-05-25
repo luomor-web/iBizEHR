@@ -62,13 +62,6 @@ public class PCMPROFILESearchContext extends QueryWrapperContext<PCMPROFILE> {
             this.getSelectCond().eq("jzpspyjyy", n_jzpspyjyy_eq);
         }
     }
-	private String n_condition_eq;//[校验结果]
-	public void setN_condition_eq(String n_condition_eq) {
-        this.n_condition_eq = n_condition_eq;
-        if(!ObjectUtils.isEmpty(this.n_condition_eq)){
-            this.getSelectCond().eq("condition", n_condition_eq);
-        }
-    }
 	private String n_yglxshgz_eq;//[员工类型审核规则]
 	public void setN_yglxshgz_eq(String n_yglxshgz_eq) {
         this.n_yglxshgz_eq = n_yglxshgz_eq;

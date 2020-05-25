@@ -186,14 +186,6 @@ public class PCMPROFILEDTO extends DTOBase implements Serializable {
     private Timestamp gzkssj;
 
     /**
-     * 属性 [CONDITION]
-     *
-     */
-    @JSONField(name = "condition")
-    @JsonProperty("condition")
-    private String condition;
-
-    /**
      * 属性 [NQDLDHTQX]
      *
      */
@@ -1179,14 +1171,6 @@ public class PCMPROFILEDTO extends DTOBase implements Serializable {
     public void setGzkssj(Timestamp  gzkssj){
         this.gzkssj = gzkssj ;
         this.modify("gzkssj",gzkssj);
-    }
-
-    /**
-     * 设置 [CONDITION]
-     */
-    public void setCondition(String  condition){
-        this.condition = condition ;
-        this.modify("condition",condition);
     }
 
     /**

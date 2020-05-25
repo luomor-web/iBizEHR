@@ -183,14 +183,6 @@ public class PCMPROFILE extends EntityMP implements Serializable {
     @JsonProperty("gzkssj")
     private Timestamp gzkssj;
     /**
-     * 校验结果
-     */
-    @DEField(defaultValue = "4")
-    @TableField(value = "condition")
-    @JSONField(name = "condition")
-    @JsonProperty("condition")
-    private String condition;
-    /**
      * 拟签订劳动合同期
      */
     @TableField(value = "nqdldhtqx")
@@ -1111,13 +1103,6 @@ public class PCMPROFILE extends EntityMP implements Serializable {
     public void setGzkssj(Timestamp gzkssj){
         this.gzkssj = gzkssj ;
         this.modify("gzkssj",gzkssj);
-    }
-    /**
-     * 设置 [校验结果]
-     */
-    public void setCondition(String condition){
-        this.condition = condition ;
-        this.modify("condition",condition);
     }
     /**
      * 设置 [拟签订劳动合同期]
