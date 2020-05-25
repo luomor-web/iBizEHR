@@ -1,5 +1,6 @@
 import { Http,Util } from '@/utils';
 import EntityService from '../entity-service';
+import ModInfoLogic from '@/service/pimdistirbution/mod-info-logic';
 import SetPIMDISTIRBUTIONNameLogic from '@/service/pimdistirbution/set-pimdistirbutionname-logic';
 
 

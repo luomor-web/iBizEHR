@@ -26,6 +26,13 @@ public class PIMDISTIRBUTIONModInfoLogicImpl implements IPIMDISTIRBUTIONModInfoL
     @Autowired
     private KieContainer kieContainer;
 
+    @Autowired
+    private cn.ibizlab.ehr.core.pim.service.IPIMPERSONService pimpersonservice;
+
+    public cn.ibizlab.ehr.core.pim.service.IPIMPERSONService getPimpersonService() {
+        return this.pimpersonservice;
+    }
+
 
     @Autowired
     private cn.ibizlab.ehr.core.pim.service.IPIMDISTIRBUTIONService iBzSysDefaultService;
@@ -44,6 +51,7 @@ public class PIMDISTIRBUTIONModInfoLogicImpl implements IPIMDISTIRBUTIONModInfoL
            cn.ibizlab.ehr.core.pim.domain.PIMPERSON  pimdistirbutionmodinfopimperson =new cn.ibizlab.ehr.core.pim.domain.PIMPERSON();
            kieSession.insert(pimdistirbutionmodinfopimperson); 
            kieSession.setGlobal("pimdistirbutionmodinfopimperson",pimdistirbutionmodinfopimperson);
+           kieSession.setGlobal("pimpersonservice",pimpersonservice);
            kieSession.setGlobal("iBzSysPimdistirbutionDefaultService",iBzSysDefaultService);
            kieSession.setGlobal("curuser", cn.ibizlab.ehr.util.security.AuthenticationUser.getAuthenticationUser());
            kieSession.startProcess("cn.ibizlab.ehr.core.pim.service.logic.pimdistirbutionmodinfo");
