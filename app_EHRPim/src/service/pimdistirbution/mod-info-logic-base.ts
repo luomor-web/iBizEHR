@@ -48,11 +48,7 @@ export default class ModInfoLogicBase {
      * @param params 传入参数
      */
     public compute0Cond(params:any):boolean{
-        if(Verify.testCond(params.fplx, 'EQ', 'ZFP')){
-           return true;
-        }else{
-            return false;
-        }
+        return true;
     }
 
     /**
