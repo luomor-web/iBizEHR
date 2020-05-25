@@ -6,10 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
-
 import lombok.extern.slf4j.Slf4j;
 import com.alibaba.fastjson.JSONObject;
-
 import javax.servlet.ServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cglib.beans.BeanCopier;
@@ -24,20 +22,15 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
-
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
-
 import cn.ibizlab.ehr.webapi.dto.*;
 import cn.ibizlab.ehr.webapi.mapping.*;
 import cn.ibizlab.ehr.core.pcm.domain.TDZWXX;
 import cn.ibizlab.ehr.core.pcm.service.ITDZWXXService;
 import cn.ibizlab.ehr.core.pcm.filter.TDZWXXSearchContext;
-
-
-
 
 @Slf4j
 @Api(tags = {"TDZWXX" })
@@ -96,7 +89,7 @@ public class TDZWXXResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TDZWXX-Save-all')")
+    @PreAuthorize("hasPermission('','Save',{'Sql',this.tdzwxxMapping,#tdzwxxdto})")
     @ApiOperation(value = "Save", tags = {"TDZWXX" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/tdzwxxes/save")
     public ResponseEntity<Boolean> save(@RequestBody TDZWXXDTO tdzwxxdto) {
@@ -168,7 +161,7 @@ public class TDZWXXResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(tdzwxxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-    //@PreAuthorize("hasPermission('','Create',{'Sql',this.tdzwxxMapping,#tdzwxxdto})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.tdzwxxMapping,#tdzwxxdto})")
     @ApiOperation(value = "CreateByPCMPROFILE", tags = {"TDZWXX" },  notes = "CreateByPCMPROFILE")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/tdzwxxes")
     @Transactional
@@ -201,7 +194,7 @@ public class TDZWXXResource {
         return ResponseEntity.status(HttpStatus.OK).body(tdzwxxMapping.toDto(tdzwxxService.getDraft(domain)));
     }
 
-    //@PreAuthorize("hasPermission(#tdzwxx_id,'Remove',{'Sql',this.tdzwxxMapping,this.permissionDTO})")
+    @PreAuthorize("hasPermission(#tdzwxx_id,'Remove',{'Sql',this.tdzwxxMapping,this.permissionDTO})")
     @ApiOperation(value = "RemoveByPCMPROFILE", tags = {"TDZWXX" },  notes = "RemoveByPCMPROFILE")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmprofiles/{pcmprofile_id}/tdzwxxes/{tdzwxx_id}")
     @Transactional
@@ -217,7 +210,7 @@ public class TDZWXXResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TDZWXX-Save-all')")
+    @PreAuthorize("hasPermission('','Save',{'Sql',this.tdzwxxMapping,#tdzwxxdto})")
     @ApiOperation(value = "SaveByPCMPROFILE", tags = {"TDZWXX" },  notes = "SaveByPCMPROFILE")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/tdzwxxes/save")
     public ResponseEntity<Boolean> saveByPCMPROFILE(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody TDZWXXDTO tdzwxxdto) {
@@ -238,7 +231,7 @@ public class TDZWXXResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    //@PreAuthorize("hasPermission(#tdzwxx_id,'Update',{'Sql',this.tdzwxxMapping,#tdzwxxdto})")
+    @PreAuthorize("hasPermission(#tdzwxx_id,'Update',{'Sql',this.tdzwxxMapping,#tdzwxxdto})")
     @ApiOperation(value = "UpdateByPCMPROFILE", tags = {"TDZWXX" },  notes = "UpdateByPCMPROFILE")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmprofiles/{pcmprofile_id}/tdzwxxes/{tdzwxx_id}")
     @Transactional
@@ -270,7 +263,7 @@ public class TDZWXXResource {
         return  ResponseEntity.status(HttpStatus.OK).body(tdzwxxService.checkKey(tdzwxxMapping.toDomain(tdzwxxdto)));
     }
 
-    //@PreAuthorize("hasPermission(#tdzwxx_id,'Get',{'Sql',this.tdzwxxMapping,this.permissionDTO})")
+    @PreAuthorize("hasPermission(#tdzwxx_id,'Get',{'Sql',this.tdzwxxMapping,this.permissionDTO})")
     @ApiOperation(value = "GetByPCMPROFILE", tags = {"TDZWXX" },  notes = "GetByPCMPROFILE")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmprofiles/{pcmprofile_id}/tdzwxxes/{tdzwxx_id}")
     public ResponseEntity<TDZWXXDTO> getByPCMPROFILE(@PathVariable("pcmprofile_id") String pcmprofile_id, @PathVariable("tdzwxx_id") String tdzwxx_id) {

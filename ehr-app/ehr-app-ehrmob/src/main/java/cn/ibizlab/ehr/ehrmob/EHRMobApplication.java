@@ -23,7 +23,7 @@ import java.util.List;
 @Configuration
 @EnableFeignClients(basePackages = {"cn.ibizlab.ehr" })
 @EnableZuulProxy
-@ComponentScan(basePackages = {"cn.ibizlab.ehr"})
+@ComponentScan(basePackages = {"cn.ibizlab.ehr.ehrmob","cn.ibizlab.ehr.util"})
 @MapperScan("cn.ibizlab.ehr.*.mapper")
 @SpringBootApplication(exclude = {
         org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration.class,

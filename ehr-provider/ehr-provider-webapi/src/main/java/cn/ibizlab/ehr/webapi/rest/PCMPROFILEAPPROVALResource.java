@@ -6,10 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
-
 import lombok.extern.slf4j.Slf4j;
 import com.alibaba.fastjson.JSONObject;
-
 import javax.servlet.ServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cglib.beans.BeanCopier;
@@ -24,20 +22,15 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
-
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
-
 import cn.ibizlab.ehr.webapi.dto.*;
 import cn.ibizlab.ehr.webapi.mapping.*;
 import cn.ibizlab.ehr.core.pcm.domain.PCMPROFILEAPPROVAL;
 import cn.ibizlab.ehr.core.pcm.service.IPCMPROFILEAPPROVALService;
 import cn.ibizlab.ehr.core.pcm.filter.PCMPROFILEAPPROVALSearchContext;
-
-
-
 
 @Slf4j
 @Api(tags = {"PCMPROFILEAPPROVAL" })
@@ -100,7 +93,7 @@ public class PCMPROFILEAPPROVALResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILEAPPROVAL-Save-all')")
+    @PreAuthorize("hasPermission('','Save',{'Sql',this.pcmprofileapprovalMapping,#pcmprofileapprovaldto})")
     @ApiOperation(value = "Save", tags = {"PCMPROFILEAPPROVAL" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofileapprovals/save")
     public ResponseEntity<Boolean> save(@RequestBody PCMPROFILEAPPROVALDTO pcmprofileapprovaldto) {
@@ -189,7 +182,7 @@ public class PCMPROFILEAPPROVALResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pcmprofileapprovalMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-    //@PreAuthorize("hasPermission(#pcmprofileapproval_id,'Update',{'Sql',this.pcmprofileapprovalMapping,#pcmprofileapprovaldto})")
+    @PreAuthorize("hasPermission(#pcmprofileapproval_id,'Update',{'Sql',this.pcmprofileapprovalMapping,#pcmprofileapprovaldto})")
     @ApiOperation(value = "UpdateByPCMPROFILE", tags = {"PCMPROFILEAPPROVAL" },  notes = "UpdateByPCMPROFILE")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmprofiles/{pcmprofile_id}/pcmprofileapprovals/{pcmprofileapproval_id}")
     @Transactional
@@ -223,7 +216,7 @@ public class PCMPROFILEAPPROVALResource {
         return ResponseEntity.status(HttpStatus.OK).body(pcmprofileapprovalMapping.toDto(pcmprofileapprovalService.getDraft(domain)));
     }
 
-    //@PreAuthorize("hasPermission('','Create',{'Sql',this.pcmprofileapprovalMapping,#pcmprofileapprovaldto})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.pcmprofileapprovalMapping,#pcmprofileapprovaldto})")
     @ApiOperation(value = "CreateByPCMPROFILE", tags = {"PCMPROFILEAPPROVAL" },  notes = "CreateByPCMPROFILE")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/pcmprofileapprovals")
     @Transactional
@@ -247,7 +240,7 @@ public class PCMPROFILEAPPROVALResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILEAPPROVAL-Save-all')")
+    @PreAuthorize("hasPermission('','Save',{'Sql',this.pcmprofileapprovalMapping,#pcmprofileapprovaldto})")
     @ApiOperation(value = "SaveByPCMPROFILE", tags = {"PCMPROFILEAPPROVAL" },  notes = "SaveByPCMPROFILE")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/pcmprofileapprovals/save")
     public ResponseEntity<Boolean> saveByPCMPROFILE(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody PCMPROFILEAPPROVALDTO pcmprofileapprovaldto) {
@@ -268,7 +261,7 @@ public class PCMPROFILEAPPROVALResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    //@PreAuthorize("hasPermission(#pcmprofileapproval_id,'Remove',{'Sql',this.pcmprofileapprovalMapping,this.permissionDTO})")
+    @PreAuthorize("hasPermission(#pcmprofileapproval_id,'Remove',{'Sql',this.pcmprofileapprovalMapping,this.permissionDTO})")
     @ApiOperation(value = "RemoveByPCMPROFILE", tags = {"PCMPROFILEAPPROVAL" },  notes = "RemoveByPCMPROFILE")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmprofiles/{pcmprofile_id}/pcmprofileapprovals/{pcmprofileapproval_id}")
     @Transactional
@@ -284,7 +277,7 @@ public class PCMPROFILEAPPROVALResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    //@PreAuthorize("hasPermission(#pcmprofileapproval_id,'Get',{'Sql',this.pcmprofileapprovalMapping,this.permissionDTO})")
+    @PreAuthorize("hasPermission(#pcmprofileapproval_id,'Get',{'Sql',this.pcmprofileapprovalMapping,this.permissionDTO})")
     @ApiOperation(value = "GetByPCMPROFILE", tags = {"PCMPROFILEAPPROVAL" },  notes = "GetByPCMPROFILE")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmprofiles/{pcmprofile_id}/pcmprofileapprovals/{pcmprofileapproval_id}")
     public ResponseEntity<PCMPROFILEAPPROVALDTO> getByPCMPROFILE(@PathVariable("pcmprofile_id") String pcmprofile_id, @PathVariable("pcmprofileapproval_id") String pcmprofileapproval_id) {

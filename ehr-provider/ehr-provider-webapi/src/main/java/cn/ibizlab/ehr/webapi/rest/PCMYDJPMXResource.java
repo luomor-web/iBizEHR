@@ -6,10 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
-
 import lombok.extern.slf4j.Slf4j;
 import com.alibaba.fastjson.JSONObject;
-
 import javax.servlet.ServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cglib.beans.BeanCopier;
@@ -24,20 +22,15 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
-
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
-
 import cn.ibizlab.ehr.webapi.dto.*;
 import cn.ibizlab.ehr.webapi.mapping.*;
 import cn.ibizlab.ehr.core.pcm.domain.PCMYDJPMX;
 import cn.ibizlab.ehr.core.pcm.service.IPCMYDJPMXService;
 import cn.ibizlab.ehr.core.pcm.filter.PCMYDJPMXSearchContext;
-
-
-
 
 @Slf4j
 @Api(tags = {"PCMYDJPMX" })
@@ -99,7 +92,7 @@ public class PCMYDJPMXResource {
         return  ResponseEntity.status(HttpStatus.OK).body(pcmydjpmxService.checkKey(pcmydjpmxMapping.toDomain(pcmydjpmxdto)));
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMYDJPMX-Save-all')")
+    @PreAuthorize("hasPermission('','Save',{'Sql',this.pcmydjpmxMapping,#pcmydjpmxdto})")
     @ApiOperation(value = "Save", tags = {"PCMYDJPMX" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmydjpmxes/save")
     public ResponseEntity<Boolean> save(@RequestBody PCMYDJPMXDTO pcmydjpmxdto) {

@@ -6,10 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
-
 import lombok.extern.slf4j.Slf4j;
 import com.alibaba.fastjson.JSONObject;
-
 import javax.servlet.ServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cglib.beans.BeanCopier;
@@ -24,20 +22,15 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
-
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
-
 import cn.ibizlab.ehr.webapi.dto.*;
 import cn.ibizlab.ehr.webapi.mapping.*;
 import cn.ibizlab.ehr.core.pcm.domain.PCMBDSQDMX;
 import cn.ibizlab.ehr.core.pcm.service.IPCMBDSQDMXService;
 import cn.ibizlab.ehr.core.pcm.filter.PCMBDSQDMXSearchContext;
-
-
-
 
 @Slf4j
 @Api(tags = {"PCMBDSQDMX" })
@@ -194,7 +187,7 @@ public class PCMBDSQDMXResource {
         return ResponseEntity.status(HttpStatus.OK).body(pcmbdsqdmxdto);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMBDSQDMX-Save-all')")
+    @PreAuthorize("hasPermission('','Save',{'Sql',this.pcmbdsqdmxMapping,#pcmbdsqdmxdto})")
     @ApiOperation(value = "Save", tags = {"PCMBDSQDMX" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmbdsqdmxes/save")
     public ResponseEntity<Boolean> save(@RequestBody PCMBDSQDMXDTO pcmbdsqdmxdto) {

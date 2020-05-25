@@ -6,10 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
-
 import lombok.extern.slf4j.Slf4j;
 import com.alibaba.fastjson.JSONObject;
-
 import javax.servlet.ServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cglib.beans.BeanCopier;
@@ -24,20 +22,15 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
-
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
-
 import cn.ibizlab.ehr.webapi.dto.*;
 import cn.ibizlab.ehr.webapi.mapping.*;
 import cn.ibizlab.ehr.core.par.domain.PARJXMTFK;
 import cn.ibizlab.ehr.core.par.service.IPARJXMTFKService;
 import cn.ibizlab.ehr.core.par.filter.PARJXMTFKSearchContext;
-
-
-
 
 @Slf4j
 @Api(tags = {"PARJXMTFK" })
@@ -132,7 +125,7 @@ public class PARJXMTFKResource {
         return  ResponseEntity.status(HttpStatus.OK).body(parjxmtfkService.checkKey(parjxmtfkMapping.toDomain(parjxmtfkdto)));
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PARJXMTFK-Save-all')")
+    @PreAuthorize("hasPermission('','Save',{'Sql',this.parjxmtfkMapping,#parjxmtfkdto})")
     @ApiOperation(value = "Save", tags = {"PARJXMTFK" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/parjxmtfks/save")
     public ResponseEntity<Boolean> save(@RequestBody PARJXMTFKDTO parjxmtfkdto) {

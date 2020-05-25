@@ -6,10 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
-
 import lombok.extern.slf4j.Slf4j;
 import com.alibaba.fastjson.JSONObject;
-
 import javax.servlet.ServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cglib.beans.BeanCopier;
@@ -24,20 +22,15 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
-
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
-
 import cn.ibizlab.ehr.webapi.dto.*;
 import cn.ibizlab.ehr.webapi.mapping.*;
 import cn.ibizlab.ehr.core.pim.domain.PIMWORKHISTORY;
 import cn.ibizlab.ehr.core.pim.service.IPIMWORKHISTORYService;
 import cn.ibizlab.ehr.core.pim.filter.PIMWORKHISTORYSearchContext;
-
-
-
 
 @Slf4j
 @Api(tags = {"PIMWORKHISTORY" })
@@ -82,7 +75,7 @@ public class PIMWORKHISTORYResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMWORKHISTORY-Save-all')")
+    @PreAuthorize("hasPermission('','Save',{'Sql',this.pimworkhistoryMapping,#pimworkhistorydto})")
     @ApiOperation(value = "Save", tags = {"PIMWORKHISTORY" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimworkhistories/save")
     public ResponseEntity<Boolean> save(@RequestBody PIMWORKHISTORYDTO pimworkhistorydto) {
@@ -294,7 +287,7 @@ public class PIMWORKHISTORYResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimworkhistoryMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-    //@PreAuthorize("hasPermission(#pimworkhistory_id,'Get',{'Sql',this.pimworkhistoryMapping,this.permissionDTO})")
+    @PreAuthorize("hasPermission(#pimworkhistory_id,'Get',{'Sql',this.pimworkhistoryMapping,this.permissionDTO})")
     @ApiOperation(value = "GetByPIMPERSON", tags = {"PIMWORKHISTORY" },  notes = "GetByPIMPERSON")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimpeople/{pimperson_id}/pimworkhistories/{pimworkhistory_id}")
     public ResponseEntity<PIMWORKHISTORYDTO> getByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimworkhistory_id") String pimworkhistory_id) {
@@ -303,7 +296,7 @@ public class PIMWORKHISTORYResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    //@PreAuthorize("hasPermission('','Create',{'Sql',this.pimworkhistoryMapping,#pimworkhistorydto})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.pimworkhistoryMapping,#pimworkhistorydto})")
     @ApiOperation(value = "CreateByPIMPERSON", tags = {"PIMWORKHISTORY" },  notes = "CreateByPIMPERSON")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimworkhistories")
     @Transactional
@@ -327,7 +320,7 @@ public class PIMWORKHISTORYResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMWORKHISTORY-Save-all')")
+    @PreAuthorize("hasPermission('','Save',{'Sql',this.pimworkhistoryMapping,#pimworkhistorydto})")
     @ApiOperation(value = "SaveByPIMPERSON", tags = {"PIMWORKHISTORY" },  notes = "SaveByPIMPERSON")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimworkhistories/save")
     public ResponseEntity<Boolean> saveByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMWORKHISTORYDTO pimworkhistorydto) {
@@ -348,7 +341,7 @@ public class PIMWORKHISTORYResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    //@PreAuthorize("hasPermission(#pimworkhistory_id,'Update',{'Sql',this.pimworkhistoryMapping,#pimworkhistorydto})")
+    @PreAuthorize("hasPermission(#pimworkhistory_id,'Update',{'Sql',this.pimworkhistoryMapping,#pimworkhistorydto})")
     @ApiOperation(value = "UpdateByPIMPERSON", tags = {"PIMWORKHISTORY" },  notes = "UpdateByPIMPERSON")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimpeople/{pimperson_id}/pimworkhistories/{pimworkhistory_id}")
     @Transactional
@@ -380,7 +373,7 @@ public class PIMWORKHISTORYResource {
         return  ResponseEntity.status(HttpStatus.OK).body(pimworkhistoryService.checkKey(pimworkhistoryMapping.toDomain(pimworkhistorydto)));
     }
 
-    //@PreAuthorize("hasPermission(#pimworkhistory_id,'Remove',{'Sql',this.pimworkhistoryMapping,this.permissionDTO})")
+    @PreAuthorize("hasPermission(#pimworkhistory_id,'Remove',{'Sql',this.pimworkhistoryMapping,this.permissionDTO})")
     @ApiOperation(value = "RemoveByPIMPERSON", tags = {"PIMWORKHISTORY" },  notes = "RemoveByPIMPERSON")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimpeople/{pimperson_id}/pimworkhistories/{pimworkhistory_id}")
     @Transactional

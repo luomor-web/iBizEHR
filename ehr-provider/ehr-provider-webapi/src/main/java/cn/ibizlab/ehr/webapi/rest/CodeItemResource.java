@@ -6,10 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
-
 import lombok.extern.slf4j.Slf4j;
 import com.alibaba.fastjson.JSONObject;
-
 import javax.servlet.ServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cglib.beans.BeanCopier;
@@ -24,20 +22,15 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
-
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
-
 import cn.ibizlab.ehr.webapi.dto.*;
 import cn.ibizlab.ehr.webapi.mapping.*;
 import cn.ibizlab.ehr.core.common.domain.CodeItem;
 import cn.ibizlab.ehr.core.common.service.ICodeItemService;
 import cn.ibizlab.ehr.core.common.filter.CodeItemSearchContext;
-
-
-
 
 @Slf4j
 @Api(tags = {"CodeItem" })
@@ -54,7 +47,7 @@ public class CodeItemResource {
 
     public CodeItemDTO permissionDTO=new CodeItemDTO();
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-CodeItem-Save-all')")
+    @PreAuthorize("hasPermission('','Save',{'Sql',this.codeitemMapping,#codeitemdto})")
     @ApiOperation(value = "Save", tags = {"CodeItem" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/codeitems/save")
     public ResponseEntity<Boolean> save(@RequestBody CodeItemDTO codeitemdto) {

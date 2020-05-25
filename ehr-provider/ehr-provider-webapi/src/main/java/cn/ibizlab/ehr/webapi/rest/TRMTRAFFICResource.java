@@ -6,10 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
-
 import lombok.extern.slf4j.Slf4j;
 import com.alibaba.fastjson.JSONObject;
-
 import javax.servlet.ServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cglib.beans.BeanCopier;
@@ -24,20 +22,15 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
-
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
-
 import cn.ibizlab.ehr.webapi.dto.*;
 import cn.ibizlab.ehr.webapi.mapping.*;
 import cn.ibizlab.ehr.core.trm.domain.TRMTRAFFIC;
 import cn.ibizlab.ehr.core.trm.service.ITRMTRAFFICService;
 import cn.ibizlab.ehr.core.trm.filter.TRMTRAFFICSearchContext;
-
-
-
 
 @Slf4j
 @Api(tags = {"TRMTRAFFIC" })
@@ -77,7 +70,7 @@ public class TRMTRAFFICResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMTRAFFIC-Save-all')")
+    @PreAuthorize("hasPermission('','Save',{'Sql',this.trmtrafficMapping,#trmtrafficdto})")
     @ApiOperation(value = "Save", tags = {"TRMTRAFFIC" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmtraffics/save")
     public ResponseEntity<Boolean> save(@RequestBody TRMTRAFFICDTO trmtrafficdto) {

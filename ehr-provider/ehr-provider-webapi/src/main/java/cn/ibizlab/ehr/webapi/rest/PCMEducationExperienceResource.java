@@ -6,10 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
-
 import lombok.extern.slf4j.Slf4j;
 import com.alibaba.fastjson.JSONObject;
-
 import javax.servlet.ServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cglib.beans.BeanCopier;
@@ -24,20 +22,15 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
-
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
-
 import cn.ibizlab.ehr.webapi.dto.*;
 import cn.ibizlab.ehr.webapi.mapping.*;
 import cn.ibizlab.ehr.core.pcm.domain.PCMEducationExperience;
 import cn.ibizlab.ehr.core.pcm.service.IPCMEducationExperienceService;
 import cn.ibizlab.ehr.core.pcm.filter.PCMEducationExperienceSearchContext;
-
-
-
 
 @Slf4j
 @Api(tags = {"PCMEducationExperience" })
@@ -111,7 +104,7 @@ public class PCMEducationExperienceResource {
         return ResponseEntity.status(HttpStatus.OK).body(pcmeducationexperiencedto);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMEducationExperience-Save-all')")
+    @PreAuthorize("hasPermission('','Save',{'Sql',this.pcmeducationexperienceMapping,#pcmeducationexperiencedto})")
     @ApiOperation(value = "Save", tags = {"PCMEducationExperience" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmeducationexperiences/save")
     public ResponseEntity<Boolean> save(@RequestBody PCMEducationExperienceDTO pcmeducationexperiencedto) {
@@ -208,7 +201,7 @@ public class PCMEducationExperienceResource {
         return  ResponseEntity.status(HttpStatus.OK).body(pcmeducationexperienceService.checkKey(pcmeducationexperienceMapping.toDomain(pcmeducationexperiencedto)));
     }
 
-    //@PreAuthorize("hasPermission(#pcmeducationexperience_id,'Get',{'Sql',this.pcmeducationexperienceMapping,this.permissionDTO})")
+    @PreAuthorize("hasPermission(#pcmeducationexperience_id,'Get',{'Sql',this.pcmeducationexperienceMapping,this.permissionDTO})")
     @ApiOperation(value = "GetByPCMPROFILE", tags = {"PCMEducationExperience" },  notes = "GetByPCMPROFILE")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmprofiles/{pcmprofile_id}/pcmeducationexperiences/{pcmeducationexperience_id}")
     public ResponseEntity<PCMEducationExperienceDTO> getByPCMPROFILE(@PathVariable("pcmprofile_id") String pcmprofile_id, @PathVariable("pcmeducationexperience_id") String pcmeducationexperience_id) {
@@ -219,7 +212,7 @@ public class PCMEducationExperienceResource {
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMEducationExperience-CheckHighestEdu-all')")
     @ApiOperation(value = "检查第一学历、最高学历ByPCMPROFILE", tags = {"PCMEducationExperience" },  notes = "检查第一学历、最高学历ByPCMPROFILE")
-	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/pcmeducationexperiences/{pcmeducationexperiencepcmeducationexperienceid}/checkhighestedu")
+	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/pcmeducationexperiences/{pcmeducationexperience_id}/checkhighestedu")
     @Transactional
     public ResponseEntity<PCMEducationExperienceDTO> checkHighestEduByPCMPROFILE(@PathVariable("pcmprofile_id") String pcmprofile_id, @PathVariable("pcmeducationexperience_id") String pcmeducationexperience_id, @RequestBody PCMEducationExperienceDTO pcmeducationexperiencedto) {
         PCMEducationExperience domain = pcmeducationexperienceMapping.toDomain(pcmeducationexperiencedto);
@@ -229,7 +222,7 @@ public class PCMEducationExperienceResource {
         return ResponseEntity.status(HttpStatus.OK).body(pcmeducationexperiencedto);
     }
 
-    //@PreAuthorize("hasPermission('','Create',{'Sql',this.pcmeducationexperienceMapping,#pcmeducationexperiencedto})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.pcmeducationexperienceMapping,#pcmeducationexperiencedto})")
     @ApiOperation(value = "CreateByPCMPROFILE", tags = {"PCMEducationExperience" },  notes = "CreateByPCMPROFILE")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/pcmeducationexperiences")
     @Transactional
@@ -255,7 +248,7 @@ public class PCMEducationExperienceResource {
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMEducationExperience-CheckRepeatXL-all')")
     @ApiOperation(value = "检查学历是否重复ByPCMPROFILE", tags = {"PCMEducationExperience" },  notes = "检查学历是否重复ByPCMPROFILE")
-	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/pcmeducationexperiences/{pcmeducationexperiencepcmeducationexperienceid}/checkrepeatxl")
+	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/pcmeducationexperiences/{pcmeducationexperience_id}/checkrepeatxl")
     @Transactional
     public ResponseEntity<PCMEducationExperienceDTO> checkRepeatXLByPCMPROFILE(@PathVariable("pcmprofile_id") String pcmprofile_id, @PathVariable("pcmeducationexperience_id") String pcmeducationexperience_id, @RequestBody PCMEducationExperienceDTO pcmeducationexperiencedto) {
         PCMEducationExperience domain = pcmeducationexperienceMapping.toDomain(pcmeducationexperiencedto);
@@ -265,7 +258,7 @@ public class PCMEducationExperienceResource {
         return ResponseEntity.status(HttpStatus.OK).body(pcmeducationexperiencedto);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMEducationExperience-Save-all')")
+    @PreAuthorize("hasPermission('','Save',{'Sql',this.pcmeducationexperienceMapping,#pcmeducationexperiencedto})")
     @ApiOperation(value = "SaveByPCMPROFILE", tags = {"PCMEducationExperience" },  notes = "SaveByPCMPROFILE")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/pcmeducationexperiences/save")
     public ResponseEntity<Boolean> saveByPCMPROFILE(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody PCMEducationExperienceDTO pcmeducationexperiencedto) {
@@ -295,7 +288,7 @@ public class PCMEducationExperienceResource {
         return ResponseEntity.status(HttpStatus.OK).body(pcmeducationexperienceMapping.toDto(pcmeducationexperienceService.getDraft(domain)));
     }
 
-    //@PreAuthorize("hasPermission(#pcmeducationexperience_id,'Remove',{'Sql',this.pcmeducationexperienceMapping,this.permissionDTO})")
+    @PreAuthorize("hasPermission(#pcmeducationexperience_id,'Remove',{'Sql',this.pcmeducationexperienceMapping,this.permissionDTO})")
     @ApiOperation(value = "RemoveByPCMPROFILE", tags = {"PCMEducationExperience" },  notes = "RemoveByPCMPROFILE")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmprofiles/{pcmprofile_id}/pcmeducationexperiences/{pcmeducationexperience_id}")
     @Transactional
@@ -311,7 +304,7 @@ public class PCMEducationExperienceResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    //@PreAuthorize("hasPermission(#pcmeducationexperience_id,'Update',{'Sql',this.pcmeducationexperienceMapping,#pcmeducationexperiencedto})")
+    @PreAuthorize("hasPermission(#pcmeducationexperience_id,'Update',{'Sql',this.pcmeducationexperienceMapping,#pcmeducationexperiencedto})")
     @ApiOperation(value = "UpdateByPCMPROFILE", tags = {"PCMEducationExperience" },  notes = "UpdateByPCMPROFILE")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmprofiles/{pcmprofile_id}/pcmeducationexperiences/{pcmeducationexperience_id}")
     @Transactional
@@ -338,7 +331,7 @@ public class PCMEducationExperienceResource {
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMEducationExperience-CheckTime-all')")
     @ApiOperation(value = "校验入学、毕业时间ByPCMPROFILE", tags = {"PCMEducationExperience" },  notes = "校验入学、毕业时间ByPCMPROFILE")
-	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/pcmeducationexperiences/{pcmeducationexperiencepcmeducationexperienceid}/checktime")
+	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/pcmeducationexperiences/{pcmeducationexperience_id}/checktime")
     @Transactional
     public ResponseEntity<PCMEducationExperienceDTO> checkTimeByPCMPROFILE(@PathVariable("pcmprofile_id") String pcmprofile_id, @PathVariable("pcmeducationexperience_id") String pcmeducationexperience_id, @RequestBody PCMEducationExperienceDTO pcmeducationexperiencedto) {
         PCMEducationExperience domain = pcmeducationexperienceMapping.toDomain(pcmeducationexperiencedto);

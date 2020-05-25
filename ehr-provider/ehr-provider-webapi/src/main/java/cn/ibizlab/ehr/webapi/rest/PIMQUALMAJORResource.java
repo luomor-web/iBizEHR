@@ -6,10 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
-
 import lombok.extern.slf4j.Slf4j;
 import com.alibaba.fastjson.JSONObject;
-
 import javax.servlet.ServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cglib.beans.BeanCopier;
@@ -24,20 +22,15 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
-
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
-
 import cn.ibizlab.ehr.webapi.dto.*;
 import cn.ibizlab.ehr.webapi.mapping.*;
 import cn.ibizlab.ehr.core.pim.domain.PIMQUALMAJOR;
 import cn.ibizlab.ehr.core.pim.service.IPIMQUALMAJORService;
 import cn.ibizlab.ehr.core.pim.filter.PIMQUALMAJORSearchContext;
-
-
-
 
 @Slf4j
 @Api(tags = {"PIMQUALMAJOR" })
@@ -123,7 +116,7 @@ public class PIMQUALMAJORResource {
         return ResponseEntity.status(HttpStatus.OK).body(pimqualmajorMapping.toDto(pimqualmajorService.getDraft(new PIMQUALMAJOR())));
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMQUALMAJOR-Save-all')")
+    @PreAuthorize("hasPermission('','Save',{'Sql',this.pimqualmajorMapping,#pimqualmajordto})")
     @ApiOperation(value = "Save", tags = {"PIMQUALMAJOR" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimqualmajors/save")
     public ResponseEntity<Boolean> save(@RequestBody PIMQUALMAJORDTO pimqualmajordto) {

@@ -6,10 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
-
 import lombok.extern.slf4j.Slf4j;
 import com.alibaba.fastjson.JSONObject;
-
 import javax.servlet.ServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cglib.beans.BeanCopier;
@@ -24,20 +22,15 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
-
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
-
 import cn.ibizlab.ehr.webapi.dto.*;
 import cn.ibizlab.ehr.webapi.mapping.*;
 import cn.ibizlab.ehr.core.pim.domain.PIMFAMINFO;
 import cn.ibizlab.ehr.core.pim.service.IPIMFAMINFOService;
 import cn.ibizlab.ehr.core.pim.filter.PIMFAMINFOSearchContext;
-
-
-
 
 @Slf4j
 @Api(tags = {"PIMFAMINFO" })
@@ -145,7 +138,7 @@ public class PIMFAMINFOResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMFAMINFO-Save-all')")
+    @PreAuthorize("hasPermission('','Save',{'Sql',this.pimfaminfoMapping,#pimfaminfodto})")
     @ApiOperation(value = "Save", tags = {"PIMFAMINFO" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimfaminfos/save")
     public ResponseEntity<Boolean> save(@RequestBody PIMFAMINFODTO pimfaminfodto) {
@@ -325,7 +318,7 @@ public class PIMFAMINFOResource {
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMFAMINFO-UpdateInfo-all')")
     @ApiOperation(value = "根据证件号更改出生日期、性别、年龄ByPIMPERSON", tags = {"PIMFAMINFO" },  notes = "根据证件号更改出生日期、性别、年龄ByPIMPERSON")
-	@RequestMapping(method = RequestMethod.PUT, value = "/pimpeople/{pimperson_id}/pimfaminfos/{pimfaminfopimfaminfoid}/updateinfo")
+	@RequestMapping(method = RequestMethod.PUT, value = "/pimpeople/{pimperson_id}/pimfaminfos/{pimfaminfo_id}/updateinfo")
     @Transactional
     public ResponseEntity<PIMFAMINFODTO> updateInfoByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimfaminfo_id") String pimfaminfo_id, @RequestBody PIMFAMINFODTO pimfaminfodto) {
         PIMFAMINFO domain = pimfaminfoMapping.toDomain(pimfaminfodto);
@@ -337,7 +330,7 @@ public class PIMFAMINFOResource {
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMFAMINFO-UpdateContact-all')")
     @ApiOperation(value = "更新紧急联络人ByPIMPERSON", tags = {"PIMFAMINFO" },  notes = "更新紧急联络人ByPIMPERSON")
-	@RequestMapping(method = RequestMethod.PUT, value = "/pimpeople/{pimperson_id}/pimfaminfos/{pimfaminfopimfaminfoid}/updatecontact")
+	@RequestMapping(method = RequestMethod.PUT, value = "/pimpeople/{pimperson_id}/pimfaminfos/{pimfaminfo_id}/updatecontact")
     @Transactional
     public ResponseEntity<PIMFAMINFODTO> updateContactByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimfaminfo_id") String pimfaminfo_id, @RequestBody PIMFAMINFODTO pimfaminfodto) {
         PIMFAMINFO domain = pimfaminfoMapping.toDomain(pimfaminfodto);
@@ -347,7 +340,7 @@ public class PIMFAMINFOResource {
         return ResponseEntity.status(HttpStatus.OK).body(pimfaminfodto);
     }
 
-    //@PreAuthorize("hasPermission('','Create',{'Sql',this.pimfaminfoMapping,#pimfaminfodto})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.pimfaminfoMapping,#pimfaminfodto})")
     @ApiOperation(value = "CreateByPIMPERSON", tags = {"PIMFAMINFO" },  notes = "CreateByPIMPERSON")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimfaminfos")
     @Transactional
@@ -371,7 +364,7 @@ public class PIMFAMINFOResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    //@PreAuthorize("hasPermission(#pimfaminfo_id,'Update',{'Sql',this.pimfaminfoMapping,#pimfaminfodto})")
+    @PreAuthorize("hasPermission(#pimfaminfo_id,'Update',{'Sql',this.pimfaminfoMapping,#pimfaminfodto})")
     @ApiOperation(value = "UpdateByPIMPERSON", tags = {"PIMFAMINFO" },  notes = "UpdateByPIMPERSON")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimpeople/{pimperson_id}/pimfaminfos/{pimfaminfo_id}")
     @Transactional
@@ -405,7 +398,7 @@ public class PIMFAMINFOResource {
         return ResponseEntity.status(HttpStatus.OK).body(pimfaminfoMapping.toDto(pimfaminfoService.getDraft(domain)));
     }
 
-    //@PreAuthorize("hasPermission(#pimfaminfo_id,'Remove',{'Sql',this.pimfaminfoMapping,this.permissionDTO})")
+    @PreAuthorize("hasPermission(#pimfaminfo_id,'Remove',{'Sql',this.pimfaminfoMapping,this.permissionDTO})")
     @ApiOperation(value = "RemoveByPIMPERSON", tags = {"PIMFAMINFO" },  notes = "RemoveByPIMPERSON")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimpeople/{pimperson_id}/pimfaminfos/{pimfaminfo_id}")
     @Transactional
@@ -421,7 +414,7 @@ public class PIMFAMINFOResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMFAMINFO-Save-all')")
+    @PreAuthorize("hasPermission('','Save',{'Sql',this.pimfaminfoMapping,#pimfaminfodto})")
     @ApiOperation(value = "SaveByPIMPERSON", tags = {"PIMFAMINFO" },  notes = "SaveByPIMPERSON")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimfaminfos/save")
     public ResponseEntity<Boolean> saveByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMFAMINFODTO pimfaminfodto) {
@@ -442,7 +435,7 @@ public class PIMFAMINFOResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    //@PreAuthorize("hasPermission(#pimfaminfo_id,'Get',{'Sql',this.pimfaminfoMapping,this.permissionDTO})")
+    @PreAuthorize("hasPermission(#pimfaminfo_id,'Get',{'Sql',this.pimfaminfoMapping,this.permissionDTO})")
     @ApiOperation(value = "GetByPIMPERSON", tags = {"PIMFAMINFO" },  notes = "GetByPIMPERSON")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimpeople/{pimperson_id}/pimfaminfos/{pimfaminfo_id}")
     public ResponseEntity<PIMFAMINFODTO> getByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimfaminfo_id") String pimfaminfo_id) {

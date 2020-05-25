@@ -6,10 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
-
 import lombok.extern.slf4j.Slf4j;
 import com.alibaba.fastjson.JSONObject;
-
 import javax.servlet.ServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cglib.beans.BeanCopier;
@@ -24,20 +22,15 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
-
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
-
 import cn.ibizlab.ehr.webapi.dto.*;
 import cn.ibizlab.ehr.webapi.mapping.*;
 import cn.ibizlab.ehr.core.sal.domain.SALPERSONSTD;
 import cn.ibizlab.ehr.core.sal.service.ISALPERSONSTDService;
 import cn.ibizlab.ehr.core.sal.filter.SALPERSONSTDSearchContext;
-
-
-
 
 @Slf4j
 @Api(tags = {"SALPERSONSTD" })
@@ -54,7 +47,7 @@ public class SALPERSONSTDResource {
 
     public SALPERSONSTDDTO permissionDTO=new SALPERSONSTDDTO();
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALPERSONSTD-Save-all')")
+    @PreAuthorize("hasPermission('','Save',{'Sql',this.salpersonstdMapping,#salpersonstddto})")
     @ApiOperation(value = "Save", tags = {"SALPERSONSTD" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/salpersonstds/save")
     public ResponseEntity<Boolean> save(@RequestBody SALPERSONSTDDTO salpersonstddto) {

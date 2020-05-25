@@ -6,10 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
-
 import lombok.extern.slf4j.Slf4j;
 import com.alibaba.fastjson.JSONObject;
-
 import javax.servlet.ServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cglib.beans.BeanCopier;
@@ -24,20 +22,15 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
-
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
-
 import cn.ibizlab.ehr.webapi.dto.*;
 import cn.ibizlab.ehr.webapi.mapping.*;
 import cn.ibizlab.ehr.core.pcm.domain.PCMJXSYGZZJLMX;
 import cn.ibizlab.ehr.core.pcm.service.IPCMJXSYGZZJLMXService;
 import cn.ibizlab.ehr.core.pcm.filter.PCMJXSYGZZJLMXSearchContext;
-
-
-
 
 @Slf4j
 @Api(tags = {"PCMJXSYGZZJLMX" })
@@ -76,7 +69,7 @@ public class PCMJXSYGZZJLMXResource {
         return ResponseEntity.status(HttpStatus.OK).body(pcmjxsygzzjlmxdto);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMJXSYGZZJLMX-Save-all')")
+    @PreAuthorize("hasPermission('','Save',{'Sql',this.pcmjxsygzzjlmxMapping,#pcmjxsygzzjlmxdto})")
     @ApiOperation(value = "Save", tags = {"PCMJXSYGZZJLMX" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmjxsygzzjlmxes/save")
     public ResponseEntity<Boolean> save(@RequestBody PCMJXSYGZZJLMXDTO pcmjxsygzzjlmxdto) {

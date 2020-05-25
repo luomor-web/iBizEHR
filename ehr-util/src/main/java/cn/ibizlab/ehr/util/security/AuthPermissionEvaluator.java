@@ -104,6 +104,9 @@ public class AuthPermissionEvaluator implements PermissionEvaluator {
         if(action.equalsIgnoreCase("create")){
             return createBatchActionPermissionValid(entityList,dataRangeList);
         }
+        else if(action.equalsIgnoreCase("save")){
+            return saveBatchActionPermissionValid(deStorageMode, entityList, dataRangeList);
+        }
         else{
             if(!action.equalsIgnoreCase("remove")){
                 ids=getIds(entity,entityList);
@@ -157,12 +160,58 @@ public class AuthPermissionEvaluator implements PermissionEvaluator {
         if(dataRangeList.size()==0)
             return false;
 
+        if(action.equalsIgnoreCase("save")){
+            Map<String,String> permissionField=getPermissionField(entity);
+            String keyFieldName=permissionField.get(keyFieldTag);
+            Object srfKey=entity.get(keyFieldName);
+            if(ObjectUtils.isEmpty(srfKey))
+                action="create";
+            else
+                action="update";
+        }
         if(action.equalsIgnoreCase("create")){
             return createActionPermissionValid(entity,dataRangeList);
         }
         else{
             return otherActionPermissionValidRouter(deStorageMode, entity, id, dataRangeList);
         }
+    }
+
+    /**
+     * 批save校验
+     * @param deStorageMode
+     * @param entityList
+     * @param dataRangeList
+     * @return
+     */
+    private boolean saveBatchActionPermissionValid(String deStorageMode, List<EntityBase> entityList, JSONArray dataRangeList) {
+
+        if(entityList==null || entityList.size()==0)
+            return false;
+        EntityBase tempEntity=entityList.get(0);
+        Map<String,String> permissionField=getPermissionField(tempEntity);
+        String keyFieldName=permissionField.get(keyFieldTag);
+        List createList=new ArrayList();
+        List<String> updateList =new ArrayList();
+
+        for(EntityBase entity : entityList){
+            Object id = entity.get(keyFieldName);
+            if(ObjectUtils.isEmpty(id))
+                createList.add(entity);
+            else
+                updateList.add(String.valueOf(id));
+        }
+        if(updateList.size()>0){
+            boolean isUpdate = otherBatchActionPermissionValidRouter(deStorageMode, tempEntity ,updateList, dataRangeList);
+            if(!isUpdate)
+                return false;
+        }
+        if(createList.size()>0){
+            boolean isCreate=createBatchActionPermissionValid(entityList,dataRangeList);
+            if(!isCreate)
+                return false;
+        }
+        return true;
     }
 
     /**

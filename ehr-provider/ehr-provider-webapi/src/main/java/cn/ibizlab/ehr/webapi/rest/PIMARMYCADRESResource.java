@@ -6,10 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
-
 import lombok.extern.slf4j.Slf4j;
 import com.alibaba.fastjson.JSONObject;
-
 import javax.servlet.ServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cglib.beans.BeanCopier;
@@ -24,20 +22,15 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
-
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
-
 import cn.ibizlab.ehr.webapi.dto.*;
 import cn.ibizlab.ehr.webapi.mapping.*;
 import cn.ibizlab.ehr.core.pim.domain.PIMARMYCADRES;
 import cn.ibizlab.ehr.core.pim.service.IPIMARMYCADRESService;
 import cn.ibizlab.ehr.core.pim.filter.PIMARMYCADRESSearchContext;
-
-
-
 
 @Slf4j
 @Api(tags = {"PIMARMYCADRES" })
@@ -132,7 +125,7 @@ public class PIMARMYCADRESResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMARMYCADRES-Save-all')")
+    @PreAuthorize("hasPermission('','Save',{'Sql',this.pimarmycadresMapping,#pimarmycadresdto})")
     @ApiOperation(value = "Save", tags = {"PIMARMYCADRES" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimarmycadres/save")
     public ResponseEntity<Boolean> save(@RequestBody PIMARMYCADRESDTO pimarmycadresdto) {
@@ -210,7 +203,7 @@ public class PIMARMYCADRESResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimarmycadresMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-    //@PreAuthorize("hasPermission(#pimarmycadres_id,'Remove',{'Sql',this.pimarmycadresMapping,this.permissionDTO})")
+    @PreAuthorize("hasPermission(#pimarmycadres_id,'Remove',{'Sql',this.pimarmycadresMapping,this.permissionDTO})")
     @ApiOperation(value = "RemoveByPIMPERSON", tags = {"PIMARMYCADRES" },  notes = "RemoveByPIMPERSON")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimpeople/{pimperson_id}/pimarmycadres/{pimarmycadres_id}")
     @Transactional
@@ -242,7 +235,7 @@ public class PIMARMYCADRESResource {
         return  ResponseEntity.status(HttpStatus.OK).body(pimarmycadresService.checkKey(pimarmycadresMapping.toDomain(pimarmycadresdto)));
     }
 
-    //@PreAuthorize("hasPermission('','Create',{'Sql',this.pimarmycadresMapping,#pimarmycadresdto})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.pimarmycadresMapping,#pimarmycadresdto})")
     @ApiOperation(value = "CreateByPIMPERSON", tags = {"PIMARMYCADRES" },  notes = "CreateByPIMPERSON")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimarmycadres")
     @Transactional
@@ -266,7 +259,7 @@ public class PIMARMYCADRESResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    //@PreAuthorize("hasPermission(#pimarmycadres_id,'Update',{'Sql',this.pimarmycadresMapping,#pimarmycadresdto})")
+    @PreAuthorize("hasPermission(#pimarmycadres_id,'Update',{'Sql',this.pimarmycadresMapping,#pimarmycadresdto})")
     @ApiOperation(value = "UpdateByPIMPERSON", tags = {"PIMARMYCADRES" },  notes = "UpdateByPIMPERSON")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimpeople/{pimperson_id}/pimarmycadres/{pimarmycadres_id}")
     @Transactional
@@ -291,7 +284,7 @@ public class PIMARMYCADRESResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    //@PreAuthorize("hasPermission(#pimarmycadres_id,'Get',{'Sql',this.pimarmycadresMapping,this.permissionDTO})")
+    @PreAuthorize("hasPermission(#pimarmycadres_id,'Get',{'Sql',this.pimarmycadresMapping,this.permissionDTO})")
     @ApiOperation(value = "GetByPIMPERSON", tags = {"PIMARMYCADRES" },  notes = "GetByPIMPERSON")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimpeople/{pimperson_id}/pimarmycadres/{pimarmycadres_id}")
     public ResponseEntity<PIMARMYCADRESDTO> getByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimarmycadres_id") String pimarmycadres_id) {
@@ -300,7 +293,7 @@ public class PIMARMYCADRESResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMARMYCADRES-Save-all')")
+    @PreAuthorize("hasPermission('','Save',{'Sql',this.pimarmycadresMapping,#pimarmycadresdto})")
     @ApiOperation(value = "SaveByPIMPERSON", tags = {"PIMARMYCADRES" },  notes = "SaveByPIMPERSON")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimarmycadres/save")
     public ResponseEntity<Boolean> saveByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMARMYCADRESDTO pimarmycadresdto) {

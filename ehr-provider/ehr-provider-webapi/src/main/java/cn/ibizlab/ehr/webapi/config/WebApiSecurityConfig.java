@@ -40,6 +40,21 @@ public class WebApiSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     AuthorizationTokenFilter authenticationTokenFilter;
 
+    @Value("${ibiz.auth.path:v7/login}")
+    private String loginPath;
+
+    @Value("${ibiz.auth.logoutpath:v7/logout}")
+    private String logoutPath;
+
+    @Value("${ibiz.file.uploadpath:ibizutil/upload}")
+    private String uploadpath;
+
+    @Value("${ibiz.file.downloadpath:ibizutil/download}")
+    private String downloadpath;
+
+    @Value("${ibiz.file.previewpath:ibizutil/preview}")
+    private String previewpath;
+
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth
@@ -67,13 +82,16 @@ public class WebApiSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
 
-               httpSecurity
+       httpSecurity
                 // 禁用 CSRF
                 .csrf().disable()
+
                 // 授权异常
                 .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
+
                 // 不创建会话
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
+
                 // 过滤请求
                 .authorizeRequests()
                 .antMatchers(
@@ -88,15 +106,21 @@ public class WebApiSecurityConfig extends WebSecurityConfigurerAdapter {
                         "/**/fonts/**",
                         "/**/js/**",
                         "/**/img/**",
-                        "/",
-                        "/webjars/**",
-                        "/swagger-resources/**",
-                        "/v2/**"
+                        "/"
                 ).permitAll()
-                // 服务中暂时只为重构用户身份，不进行身份认证
-                .anyRequest().permitAll()
+                //放行登录请求
+                .antMatchers( HttpMethod.POST,"/"+loginPath).permitAll()
+                //放行注销请求
+                .antMatchers( HttpMethod.GET,"/"+logoutPath).permitAll()
+                // 文件操作
+                .antMatchers("/"+downloadpath+"/**").permitAll()
+                .antMatchers("/"+uploadpath).permitAll()
+                .antMatchers("/"+previewpath+"/**").permitAll()
+                // 所有请求都需要认证
+                .anyRequest().authenticated()
                 // 防止iframe 造成跨域
                 .and().headers().frameOptions().disable();
+
         httpSecurity
                 .addFilterBefore(authenticationTokenFilter, UsernamePasswordAuthenticationFilter.class);
     }

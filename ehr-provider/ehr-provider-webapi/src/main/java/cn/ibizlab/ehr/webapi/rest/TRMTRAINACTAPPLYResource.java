@@ -6,10 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
-
 import lombok.extern.slf4j.Slf4j;
 import com.alibaba.fastjson.JSONObject;
-
 import javax.servlet.ServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cglib.beans.BeanCopier;
@@ -24,20 +22,15 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
-
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
-
 import cn.ibizlab.ehr.webapi.dto.*;
 import cn.ibizlab.ehr.webapi.mapping.*;
 import cn.ibizlab.ehr.core.trm.domain.TRMTRAINACTAPPLY;
 import cn.ibizlab.ehr.core.trm.service.ITRMTRAINACTAPPLYService;
 import cn.ibizlab.ehr.core.trm.filter.TRMTRAINACTAPPLYSearchContext;
-
-
-
 
 @Slf4j
 @Api(tags = {"TRMTRAINACTAPPLY" })
@@ -96,7 +89,7 @@ public class TRMTRAINACTAPPLYResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMTRAINACTAPPLY-Save-all')")
+    @PreAuthorize("hasPermission('','Save',{'Sql',this.trmtrainactapplyMapping,#trmtrainactapplydto})")
     @ApiOperation(value = "Save", tags = {"TRMTRAINACTAPPLY" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmtrainactapplies/save")
     public ResponseEntity<Boolean> save(@RequestBody TRMTRAINACTAPPLYDTO trmtrainactapplydto) {

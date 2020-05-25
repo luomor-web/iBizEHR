@@ -6,10 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
-
 import lombok.extern.slf4j.Slf4j;
 import com.alibaba.fastjson.JSONObject;
-
 import javax.servlet.ServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cglib.beans.BeanCopier;
@@ -24,20 +22,15 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
-
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
-
 import cn.ibizlab.ehr.webapi.dto.*;
 import cn.ibizlab.ehr.webapi.mapping.*;
 import cn.ibizlab.ehr.core.pcm.domain.WZD0001;
 import cn.ibizlab.ehr.core.pcm.service.IWZD0001Service;
 import cn.ibizlab.ehr.core.pcm.filter.WZD0001SearchContext;
-
-
-
 
 @Slf4j
 @Api(tags = {"WZD0001" })
@@ -77,7 +70,7 @@ public class WZD0001Resource {
         return ResponseEntity.status(HttpStatus.OK).body(wzd0001Mapping.toDto(wzd0001Service.getDraft(new WZD0001())));
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WZD0001-Save-all')")
+    @PreAuthorize("hasPermission('','Save',{'Sql',this.wzd0001Mapping,#wzd0001dto})")
     @ApiOperation(value = "Save", tags = {"WZD0001" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/wzd0001s/save")
     public ResponseEntity<Boolean> save(@RequestBody WZD0001DTO wzd0001dto) {

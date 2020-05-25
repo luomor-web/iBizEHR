@@ -6,10 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
-
 import lombok.extern.slf4j.Slf4j;
 import com.alibaba.fastjson.JSONObject;
-
 import javax.servlet.ServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cglib.beans.BeanCopier;
@@ -24,20 +22,15 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
-
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
-
 import cn.ibizlab.ehr.webapi.dto.*;
 import cn.ibizlab.ehr.webapi.mapping.*;
 import cn.ibizlab.ehr.core.r7rt_dyna.domain.DynaDashboard;
 import cn.ibizlab.ehr.core.r7rt_dyna.service.IDynaDashboardService;
 import cn.ibizlab.ehr.core.r7rt_dyna.filter.DynaDashboardSearchContext;
-
-
-
 
 @Slf4j
 @Api(tags = {"DynaDashboard" })
@@ -54,7 +47,7 @@ public class DynaDashboardResource {
 
     public DynaDashboardDTO permissionDTO=new DynaDashboardDTO();
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DynaDashboard-Save-all')")
+    @PreAuthorize("hasPermission('','Save',{'ServiceApi',this.dynadashboardMapping,#dynadashboarddto})")
     @ApiOperation(value = "Save", tags = {"DynaDashboard" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/dynadashboards/save")
     public ResponseEntity<Boolean> save(@RequestBody DynaDashboardDTO dynadashboarddto) {

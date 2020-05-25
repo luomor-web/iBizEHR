@@ -6,10 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
-
 import lombok.extern.slf4j.Slf4j;
 import com.alibaba.fastjson.JSONObject;
-
 import javax.servlet.ServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cglib.beans.BeanCopier;
@@ -24,20 +22,15 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
-
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
-
 import cn.ibizlab.ehr.webapi.dto.*;
 import cn.ibizlab.ehr.webapi.mapping.*;
 import cn.ibizlab.ehr.core.pim.domain.PIMEXITANDENTRY;
 import cn.ibizlab.ehr.core.pim.service.IPIMEXITANDENTRYService;
 import cn.ibizlab.ehr.core.pim.filter.PIMEXITANDENTRYSearchContext;
-
-
-
 
 @Slf4j
 @Api(tags = {"PIMEXITANDENTRY" })
@@ -74,7 +67,7 @@ public class PIMEXITANDENTRYResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMEXITANDENTRY-Save-all')")
+    @PreAuthorize("hasPermission('','Save',{'Sql',this.pimexitandentryMapping,#pimexitandentrydto})")
     @ApiOperation(value = "Save", tags = {"PIMEXITANDENTRY" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimexitandentries/save")
     public ResponseEntity<Boolean> save(@RequestBody PIMEXITANDENTRYDTO pimexitandentrydto) {
@@ -317,7 +310,7 @@ public class PIMEXITANDENTRYResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimexitandentryMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-    //@PreAuthorize("hasPermission(#pimexitandentry_id,'Update',{'Sql',this.pimexitandentryMapping,#pimexitandentrydto})")
+    @PreAuthorize("hasPermission(#pimexitandentry_id,'Update',{'Sql',this.pimexitandentryMapping,#pimexitandentrydto})")
     @ApiOperation(value = "UpdateByPIMPERSON", tags = {"PIMEXITANDENTRY" },  notes = "UpdateByPIMPERSON")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimpeople/{pimperson_id}/pimexitandentries/{pimexitandentry_id}")
     @Transactional
@@ -342,7 +335,7 @@ public class PIMEXITANDENTRYResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMEXITANDENTRY-Save-all')")
+    @PreAuthorize("hasPermission('','Save',{'Sql',this.pimexitandentryMapping,#pimexitandentrydto})")
     @ApiOperation(value = "SaveByPIMPERSON", tags = {"PIMEXITANDENTRY" },  notes = "SaveByPIMPERSON")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimexitandentries/save")
     public ResponseEntity<Boolean> saveByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMEXITANDENTRYDTO pimexitandentrydto) {
@@ -365,7 +358,7 @@ public class PIMEXITANDENTRYResource {
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMEXITANDENTRY-CX-all')")
     @ApiOperation(value = "撤销ByPIMPERSON", tags = {"PIMEXITANDENTRY" },  notes = "撤销ByPIMPERSON")
-	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimexitandentries/{pimexitandentrypimexitandentryid}/cx")
+	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimexitandentries/{pimexitandentry_id}/cx")
     @Transactional
     public ResponseEntity<PIMEXITANDENTRYDTO> cXByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimexitandentry_id") String pimexitandentry_id, @RequestBody PIMEXITANDENTRYDTO pimexitandentrydto) {
         PIMEXITANDENTRY domain = pimexitandentryMapping.toDomain(pimexitandentrydto);
@@ -375,7 +368,7 @@ public class PIMEXITANDENTRYResource {
         return ResponseEntity.status(HttpStatus.OK).body(pimexitandentrydto);
     }
 
-    //@PreAuthorize("hasPermission(#pimexitandentry_id,'Get',{'Sql',this.pimexitandentryMapping,this.permissionDTO})")
+    @PreAuthorize("hasPermission(#pimexitandentry_id,'Get',{'Sql',this.pimexitandentryMapping,this.permissionDTO})")
     @ApiOperation(value = "GetByPIMPERSON", tags = {"PIMEXITANDENTRY" },  notes = "GetByPIMPERSON")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimpeople/{pimperson_id}/pimexitandentries/{pimexitandentry_id}")
     public ResponseEntity<PIMEXITANDENTRYDTO> getByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimexitandentry_id") String pimexitandentry_id) {
@@ -395,7 +388,7 @@ public class PIMEXITANDENTRYResource {
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMEXITANDENTRY-MobStart-all')")
     @ApiOperation(value = "移动端启动流程ByPIMPERSON", tags = {"PIMEXITANDENTRY" },  notes = "移动端启动流程ByPIMPERSON")
-	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimexitandentries/{pimexitandentrypimexitandentryid}/mobstart")
+	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimexitandentries/{pimexitandentry_id}/mobstart")
     @Transactional
     public ResponseEntity<PIMEXITANDENTRYDTO> mobStartByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimexitandentry_id") String pimexitandentry_id, @RequestBody PIMEXITANDENTRYDTO pimexitandentrydto) {
         PIMEXITANDENTRY domain = pimexitandentryMapping.toDomain(pimexitandentrydto);
@@ -405,7 +398,7 @@ public class PIMEXITANDENTRYResource {
         return ResponseEntity.status(HttpStatus.OK).body(pimexitandentrydto);
     }
 
-    //@PreAuthorize("hasPermission('','Create',{'Sql',this.pimexitandentryMapping,#pimexitandentrydto})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.pimexitandentryMapping,#pimexitandentrydto})")
     @ApiOperation(value = "CreateByPIMPERSON", tags = {"PIMEXITANDENTRY" },  notes = "CreateByPIMPERSON")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimexitandentries")
     @Transactional
@@ -429,7 +422,7 @@ public class PIMEXITANDENTRYResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    //@PreAuthorize("hasPermission(#pimexitandentry_id,'Remove',{'Sql',this.pimexitandentryMapping,this.permissionDTO})")
+    @PreAuthorize("hasPermission(#pimexitandentry_id,'Remove',{'Sql',this.pimexitandentryMapping,this.permissionDTO})")
     @ApiOperation(value = "RemoveByPIMPERSON", tags = {"PIMEXITANDENTRY" },  notes = "RemoveByPIMPERSON")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimpeople/{pimperson_id}/pimexitandentries/{pimexitandentry_id}")
     @Transactional
@@ -447,7 +440,7 @@ public class PIMEXITANDENTRYResource {
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMEXITANDENTRY-CB-all')")
     @ApiOperation(value = "催办ByPIMPERSON", tags = {"PIMEXITANDENTRY" },  notes = "催办ByPIMPERSON")
-	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimexitandentries/{pimexitandentrypimexitandentryid}/cb")
+	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimexitandentries/{pimexitandentry_id}/cb")
     @Transactional
     public ResponseEntity<PIMEXITANDENTRYDTO> cBByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimexitandentry_id") String pimexitandentry_id, @RequestBody PIMEXITANDENTRYDTO pimexitandentrydto) {
         PIMEXITANDENTRY domain = pimexitandentryMapping.toDomain(pimexitandentrydto);
@@ -466,7 +459,7 @@ public class PIMEXITANDENTRYResource {
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMEXITANDENTRY-Start-all')")
     @ApiOperation(value = "启动流程ByPIMPERSON", tags = {"PIMEXITANDENTRY" },  notes = "启动流程ByPIMPERSON")
-	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimexitandentries/{pimexitandentrypimexitandentryid}/start")
+	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimexitandentries/{pimexitandentry_id}/start")
     @Transactional
     public ResponseEntity<PIMEXITANDENTRYDTO> startByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimexitandentry_id") String pimexitandentry_id, @RequestBody PIMEXITANDENTRYDTO pimexitandentrydto) {
         PIMEXITANDENTRY domain = pimexitandentryMapping.toDomain(pimexitandentrydto);

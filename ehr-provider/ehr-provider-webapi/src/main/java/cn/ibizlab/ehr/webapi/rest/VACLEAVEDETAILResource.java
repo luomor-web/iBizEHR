@@ -6,10 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
-
 import lombok.extern.slf4j.Slf4j;
 import com.alibaba.fastjson.JSONObject;
-
 import javax.servlet.ServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cglib.beans.BeanCopier;
@@ -24,20 +22,15 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
-
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
-
 import cn.ibizlab.ehr.webapi.dto.*;
 import cn.ibizlab.ehr.webapi.mapping.*;
 import cn.ibizlab.ehr.core.vac.domain.VACLEAVEDETAIL;
 import cn.ibizlab.ehr.core.vac.service.IVACLEAVEDETAILService;
 import cn.ibizlab.ehr.core.vac.filter.VACLEAVEDETAILSearchContext;
-
-
-
 
 @Slf4j
 @Api(tags = {"VACLEAVEDETAIL" })
@@ -131,7 +124,7 @@ public class VACLEAVEDETAILResource {
         return ResponseEntity.status(HttpStatus.OK).body(vacleavedetaildto);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACLEAVEDETAIL-Save-all')")
+    @PreAuthorize("hasPermission('','Save',{'Sql',this.vacleavedetailMapping,#vacleavedetaildto})")
     @ApiOperation(value = "Save", tags = {"VACLEAVEDETAIL" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacleavedetails/save")
     public ResponseEntity<Boolean> save(@RequestBody VACLEAVEDETAILDTO vacleavedetaildto) {

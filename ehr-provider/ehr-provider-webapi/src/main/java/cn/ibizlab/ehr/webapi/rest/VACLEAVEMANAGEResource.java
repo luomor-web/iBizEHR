@@ -6,10 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
-
 import lombok.extern.slf4j.Slf4j;
 import com.alibaba.fastjson.JSONObject;
-
 import javax.servlet.ServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cglib.beans.BeanCopier;
@@ -24,20 +22,15 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
-
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
-
 import cn.ibizlab.ehr.webapi.dto.*;
 import cn.ibizlab.ehr.webapi.mapping.*;
 import cn.ibizlab.ehr.core.vac.domain.VACLEAVEMANAGE;
 import cn.ibizlab.ehr.core.vac.service.IVACLEAVEMANAGEService;
 import cn.ibizlab.ehr.core.vac.filter.VACLEAVEMANAGESearchContext;
-
-
-
 
 @Slf4j
 @Api(tags = {"VACLEAVEMANAGE" })
@@ -141,7 +134,7 @@ public class VACLEAVEMANAGEResource {
         return ResponseEntity.status(HttpStatus.OK).body(vacleavemanagedto);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACLEAVEMANAGE-Save-all')")
+    @PreAuthorize("hasPermission('','Save',{'Sql',this.vacleavemanageMapping,#vacleavemanagedto})")
     @ApiOperation(value = "Save", tags = {"VACLEAVEMANAGE" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacleavemanages/save")
     public ResponseEntity<Boolean> save(@RequestBody VACLEAVEMANAGEDTO vacleavemanagedto) {
@@ -330,7 +323,7 @@ public class VACLEAVEMANAGEResource {
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACLEAVEMANAGE-UpdateQJMX-all')")
     @ApiOperation(value = "更新请假明细ByPIMPERSON", tags = {"VACLEAVEMANAGE" },  notes = "更新请假明细ByPIMPERSON")
-	@RequestMapping(method = RequestMethod.PUT, value = "/pimpeople/{pimperson_id}/vacleavemanages/{vacleavemanagevacleavemanageid}/updateqjmx")
+	@RequestMapping(method = RequestMethod.PUT, value = "/pimpeople/{pimperson_id}/vacleavemanages/{vacleavemanage_id}/updateqjmx")
     @Transactional
     public ResponseEntity<VACLEAVEMANAGEDTO> updateQJMXByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("vacleavemanage_id") String vacleavemanage_id, @RequestBody VACLEAVEMANAGEDTO vacleavemanagedto) {
         VACLEAVEMANAGE domain = vacleavemanageMapping.toDomain(vacleavemanagedto);
@@ -342,7 +335,7 @@ public class VACLEAVEMANAGEResource {
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACLEAVEMANAGE-CB-all')")
     @ApiOperation(value = "催办ByPIMPERSON", tags = {"VACLEAVEMANAGE" },  notes = "催办ByPIMPERSON")
-	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/vacleavemanages/{vacleavemanagevacleavemanageid}/cb")
+	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/vacleavemanages/{vacleavemanage_id}/cb")
     @Transactional
     public ResponseEntity<VACLEAVEMANAGEDTO> cBByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("vacleavemanage_id") String vacleavemanage_id, @RequestBody VACLEAVEMANAGEDTO vacleavemanagedto) {
         VACLEAVEMANAGE domain = vacleavemanageMapping.toDomain(vacleavemanagedto);
@@ -363,7 +356,7 @@ public class VACLEAVEMANAGEResource {
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACLEAVEMANAGE-CX-all')")
     @ApiOperation(value = "撤销ByPIMPERSON", tags = {"VACLEAVEMANAGE" },  notes = "撤销ByPIMPERSON")
-	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/vacleavemanages/{vacleavemanagevacleavemanageid}/cx")
+	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/vacleavemanages/{vacleavemanage_id}/cx")
     @Transactional
     public ResponseEntity<VACLEAVEMANAGEDTO> cXByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("vacleavemanage_id") String vacleavemanage_id, @RequestBody VACLEAVEMANAGEDTO vacleavemanagedto) {
         VACLEAVEMANAGE domain = vacleavemanageMapping.toDomain(vacleavemanagedto);
@@ -373,7 +366,7 @@ public class VACLEAVEMANAGEResource {
         return ResponseEntity.status(HttpStatus.OK).body(vacleavemanagedto);
     }
 
-    //@PreAuthorize("hasPermission(#vacleavemanage_id,'Update',{'Sql',this.vacleavemanageMapping,#vacleavemanagedto})")
+    @PreAuthorize("hasPermission(#vacleavemanage_id,'Update',{'Sql',this.vacleavemanageMapping,#vacleavemanagedto})")
     @ApiOperation(value = "UpdateByPIMPERSON", tags = {"VACLEAVEMANAGE" },  notes = "UpdateByPIMPERSON")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimpeople/{pimperson_id}/vacleavemanages/{vacleavemanage_id}")
     @Transactional
@@ -398,7 +391,7 @@ public class VACLEAVEMANAGEResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    //@PreAuthorize("hasPermission(#vacleavemanage_id,'Remove',{'Sql',this.vacleavemanageMapping,this.permissionDTO})")
+    @PreAuthorize("hasPermission(#vacleavemanage_id,'Remove',{'Sql',this.vacleavemanageMapping,this.permissionDTO})")
     @ApiOperation(value = "RemoveByPIMPERSON", tags = {"VACLEAVEMANAGE" },  notes = "RemoveByPIMPERSON")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimpeople/{pimperson_id}/vacleavemanages/{vacleavemanage_id}")
     @Transactional
@@ -416,7 +409,7 @@ public class VACLEAVEMANAGEResource {
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACLEAVEMANAGE-GetFJSJofPerson-all')")
     @ApiOperation(value = "获取员工附加数据ByPIMPERSON", tags = {"VACLEAVEMANAGE" },  notes = "获取员工附加数据ByPIMPERSON")
-	@RequestMapping(method = RequestMethod.GET, value = "/pimpeople/{pimperson_id}/vacleavemanages/{vacleavemanagevacleavemanageid}/getfjsjofperson")
+	@RequestMapping(method = RequestMethod.GET, value = "/pimpeople/{pimperson_id}/vacleavemanages/{vacleavemanage_id}/getfjsjofperson")
     @Transactional
     public ResponseEntity<VACLEAVEMANAGEDTO> getFJSJofPersonByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("vacleavemanage_id") String vacleavemanage_id, @RequestBody VACLEAVEMANAGEDTO vacleavemanagedto) {
         VACLEAVEMANAGE domain = vacleavemanageMapping.toDomain(vacleavemanagedto);
@@ -426,7 +419,7 @@ public class VACLEAVEMANAGEResource {
         return ResponseEntity.status(HttpStatus.OK).body(vacleavemanagedto);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACLEAVEMANAGE-Save-all')")
+    @PreAuthorize("hasPermission('','Save',{'Sql',this.vacleavemanageMapping,#vacleavemanagedto})")
     @ApiOperation(value = "SaveByPIMPERSON", tags = {"VACLEAVEMANAGE" },  notes = "SaveByPIMPERSON")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/vacleavemanages/save")
     public ResponseEntity<Boolean> saveByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody VACLEAVEMANAGEDTO vacleavemanagedto) {
@@ -447,7 +440,7 @@ public class VACLEAVEMANAGEResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    //@PreAuthorize("hasPermission('','Create',{'Sql',this.vacleavemanageMapping,#vacleavemanagedto})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.vacleavemanageMapping,#vacleavemanagedto})")
     @ApiOperation(value = "CreateByPIMPERSON", tags = {"VACLEAVEMANAGE" },  notes = "CreateByPIMPERSON")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/vacleavemanages")
     @Transactional
@@ -471,7 +464,7 @@ public class VACLEAVEMANAGEResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    //@PreAuthorize("hasPermission(#vacleavemanage_id,'Get',{'Sql',this.vacleavemanageMapping,this.permissionDTO})")
+    @PreAuthorize("hasPermission(#vacleavemanage_id,'Get',{'Sql',this.vacleavemanageMapping,this.permissionDTO})")
     @ApiOperation(value = "GetByPIMPERSON", tags = {"VACLEAVEMANAGE" },  notes = "GetByPIMPERSON")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimpeople/{pimperson_id}/vacleavemanages/{vacleavemanage_id}")
     public ResponseEntity<VACLEAVEMANAGEDTO> getByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("vacleavemanage_id") String vacleavemanage_id) {
@@ -489,7 +482,7 @@ public class VACLEAVEMANAGEResource {
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACLEAVEMANAGE-MobStart-all')")
     @ApiOperation(value = "移动端启动流程ByPIMPERSON", tags = {"VACLEAVEMANAGE" },  notes = "移动端启动流程ByPIMPERSON")
-	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/vacleavemanages/{vacleavemanagevacleavemanageid}/mobstart")
+	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/vacleavemanages/{vacleavemanage_id}/mobstart")
     @Transactional
     public ResponseEntity<VACLEAVEMANAGEDTO> mobStartByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("vacleavemanage_id") String vacleavemanage_id, @RequestBody VACLEAVEMANAGEDTO vacleavemanagedto) {
         VACLEAVEMANAGE domain = vacleavemanageMapping.toDomain(vacleavemanagedto);

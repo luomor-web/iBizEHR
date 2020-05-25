@@ -6,10 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
-
 import lombok.extern.slf4j.Slf4j;
 import com.alibaba.fastjson.JSONObject;
-
 import javax.servlet.ServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cglib.beans.BeanCopier;
@@ -24,20 +22,15 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
-
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
-
 import cn.ibizlab.ehr.webapi.dto.*;
 import cn.ibizlab.ehr.webapi.mapping.*;
 import cn.ibizlab.ehr.core.sal.domain.SALITEMSUB;
 import cn.ibizlab.ehr.core.sal.service.ISALITEMSUBService;
 import cn.ibizlab.ehr.core.sal.filter.SALITEMSUBSearchContext;
-
-
-
 
 @Slf4j
 @Api(tags = {"SALITEMSUB" })
@@ -106,7 +99,7 @@ public class SALITEMSUBResource {
         return  ResponseEntity.status(HttpStatus.OK).body(salitemsubService.checkKey(salitemsubMapping.toDomain(salitemsubdto)));
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALITEMSUB-Save-all')")
+    @PreAuthorize("hasPermission('','Save',{'Sql',this.salitemsubMapping,#salitemsubdto})")
     @ApiOperation(value = "Save", tags = {"SALITEMSUB" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/salitemsubs/save")
     public ResponseEntity<Boolean> save(@RequestBody SALITEMSUBDTO salitemsubdto) {

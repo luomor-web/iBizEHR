@@ -6,10 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
-
 import lombok.extern.slf4j.Slf4j;
 import com.alibaba.fastjson.JSONObject;
-
 import javax.servlet.ServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cglib.beans.BeanCopier;
@@ -24,20 +22,15 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
-
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
-
 import cn.ibizlab.ehr.webapi.dto.*;
 import cn.ibizlab.ehr.webapi.mapping.*;
 import cn.ibizlab.ehr.core.pim.domain.PIMCONTRACT;
 import cn.ibizlab.ehr.core.pim.service.IPIMCONTRACTService;
 import cn.ibizlab.ehr.core.pim.filter.PIMCONTRACTSearchContext;
-
-
-
 
 @Slf4j
 @Api(tags = {"PIMCONTRACT" })
@@ -116,7 +109,7 @@ public class PIMCONTRACTResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMCONTRACT-Save-all')")
+    @PreAuthorize("hasPermission('','Save',{'Sql',this.pimcontractMapping,#pimcontractdto})")
     @ApiOperation(value = "Save", tags = {"PIMCONTRACT" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimcontracts/save")
     public ResponseEntity<Boolean> save(@RequestBody PIMCONTRACTDTO pimcontractdto) {
@@ -388,7 +381,7 @@ public class PIMCONTRACTResource {
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMCONTRACT-CalContractTime-all')")
     @ApiOperation(value = "计算合同签订次数ByPIMPERSON", tags = {"PIMCONTRACT" },  notes = "计算合同签订次数ByPIMPERSON")
-	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimcontracts/{pimcontractpimcontractid}/calcontracttime")
+	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimcontracts/{pimcontract_id}/calcontracttime")
     @Transactional
     public ResponseEntity<PIMCONTRACTDTO> calContractTimeByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimcontract_id") String pimcontract_id, @RequestBody PIMCONTRACTDTO pimcontractdto) {
         PIMCONTRACT domain = pimcontractMapping.toDomain(pimcontractdto);
@@ -398,7 +391,7 @@ public class PIMCONTRACTResource {
         return ResponseEntity.status(HttpStatus.OK).body(pimcontractdto);
     }
 
-    //@PreAuthorize("hasPermission(#pimcontract_id,'Remove',{'Sql',this.pimcontractMapping,this.permissionDTO})")
+    @PreAuthorize("hasPermission(#pimcontract_id,'Remove',{'Sql',this.pimcontractMapping,this.permissionDTO})")
     @ApiOperation(value = "RemoveByPIMPERSON", tags = {"PIMCONTRACT" },  notes = "RemoveByPIMPERSON")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimpeople/{pimperson_id}/pimcontracts/{pimcontract_id}")
     @Transactional
@@ -414,7 +407,7 @@ public class PIMCONTRACTResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    //@PreAuthorize("hasPermission(#pimcontract_id,'Get',{'Sql',this.pimcontractMapping,this.permissionDTO})")
+    @PreAuthorize("hasPermission(#pimcontract_id,'Get',{'Sql',this.pimcontractMapping,this.permissionDTO})")
     @ApiOperation(value = "GetByPIMPERSON", tags = {"PIMCONTRACT" },  notes = "GetByPIMPERSON")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimpeople/{pimperson_id}/pimcontracts/{pimcontract_id}")
     public ResponseEntity<PIMCONTRACTDTO> getByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimcontract_id") String pimcontract_id) {
@@ -423,7 +416,7 @@ public class PIMCONTRACTResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    //@PreAuthorize("hasPermission('','Create',{'Sql',this.pimcontractMapping,#pimcontractdto})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.pimcontractMapping,#pimcontractdto})")
     @ApiOperation(value = "CreateByPIMPERSON", tags = {"PIMCONTRACT" },  notes = "CreateByPIMPERSON")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimcontracts")
     @Transactional
@@ -447,7 +440,7 @@ public class PIMCONTRACTResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMCONTRACT-Save-all')")
+    @PreAuthorize("hasPermission('','Save',{'Sql',this.pimcontractMapping,#pimcontractdto})")
     @ApiOperation(value = "SaveByPIMPERSON", tags = {"PIMCONTRACT" },  notes = "SaveByPIMPERSON")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimcontracts/save")
     public ResponseEntity<Boolean> saveByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMCONTRACTDTO pimcontractdto) {
@@ -470,7 +463,7 @@ public class PIMCONTRACTResource {
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMCONTRACT-StopContract-all')")
     @ApiOperation(value = "终止合同ByPIMPERSON", tags = {"PIMCONTRACT" },  notes = "终止合同ByPIMPERSON")
-	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimcontracts/{pimcontractpimcontractid}/stopcontract")
+	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimcontracts/{pimcontract_id}/stopcontract")
     @Transactional
     public ResponseEntity<PIMCONTRACTDTO> stopContractByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimcontract_id") String pimcontract_id, @RequestBody PIMCONTRACTDTO pimcontractdto) {
         PIMCONTRACT domain = pimcontractMapping.toDomain(pimcontractdto);
@@ -480,7 +473,7 @@ public class PIMCONTRACTResource {
         return ResponseEntity.status(HttpStatus.OK).body(pimcontractdto);
     }
 
-    //@PreAuthorize("hasPermission(#pimcontract_id,'Update',{'Sql',this.pimcontractMapping,#pimcontractdto})")
+    @PreAuthorize("hasPermission(#pimcontract_id,'Update',{'Sql',this.pimcontractMapping,#pimcontractdto})")
     @ApiOperation(value = "UpdateByPIMPERSON", tags = {"PIMCONTRACT" },  notes = "UpdateByPIMPERSON")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimpeople/{pimperson_id}/pimcontracts/{pimcontract_id}")
     @Transactional

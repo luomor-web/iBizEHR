@@ -6,10 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
-
 import lombok.extern.slf4j.Slf4j;
 import com.alibaba.fastjson.JSONObject;
-
 import javax.servlet.ServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cglib.beans.BeanCopier;
@@ -24,20 +22,15 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
-
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
-
 import cn.ibizlab.ehr.webapi.dto.*;
 import cn.ibizlab.ehr.webapi.mapping.*;
 import cn.ibizlab.ehr.core.pim.domain.PIMTITLE;
 import cn.ibizlab.ehr.core.pim.service.IPIMTITLEService;
 import cn.ibizlab.ehr.core.pim.filter.PIMTITLESearchContext;
-
-
-
 
 @Slf4j
 @Api(tags = {"PIMTITLE" })
@@ -107,7 +100,7 @@ public class PIMTITLEResource {
         return ResponseEntity.status(HttpStatus.OK).body(pimtitleMapping.toDto(pimtitleService.getDraft(new PIMTITLE())));
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMTITLE-Save-all')")
+    @PreAuthorize("hasPermission('','Save',{'Sql',this.pimtitleMapping,#pimtitledto})")
     @ApiOperation(value = "Save", tags = {"PIMTITLE" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimtitles/save")
     public ResponseEntity<Boolean> save(@RequestBody PIMTITLEDTO pimtitledto) {
@@ -269,7 +262,7 @@ public class PIMTITLEResource {
         return  ResponseEntity.status(HttpStatus.OK).body(pimtitleService.checkKey(pimtitleMapping.toDomain(pimtitledto)));
     }
 
-    //@PreAuthorize("hasPermission(#pimtitle_id,'Update',{'Sql',this.pimtitleMapping,#pimtitledto})")
+    @PreAuthorize("hasPermission(#pimtitle_id,'Update',{'Sql',this.pimtitleMapping,#pimtitledto})")
     @ApiOperation(value = "UpdateByPIMPERSON", tags = {"PIMTITLE" },  notes = "UpdateByPIMPERSON")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimpeople/{pimperson_id}/pimtitles/{pimtitle_id}")
     @Transactional
@@ -294,7 +287,7 @@ public class PIMTITLEResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    //@PreAuthorize("hasPermission('','Create',{'Sql',this.pimtitleMapping,#pimtitledto})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.pimtitleMapping,#pimtitledto})")
     @ApiOperation(value = "CreateByPIMPERSON", tags = {"PIMTITLE" },  notes = "CreateByPIMPERSON")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimtitles")
     @Transactional
@@ -327,7 +320,7 @@ public class PIMTITLEResource {
         return ResponseEntity.status(HttpStatus.OK).body(pimtitleMapping.toDto(pimtitleService.getDraft(domain)));
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMTITLE-Save-all')")
+    @PreAuthorize("hasPermission('','Save',{'Sql',this.pimtitleMapping,#pimtitledto})")
     @ApiOperation(value = "SaveByPIMPERSON", tags = {"PIMTITLE" },  notes = "SaveByPIMPERSON")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimtitles/save")
     public ResponseEntity<Boolean> saveByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMTITLEDTO pimtitledto) {
@@ -350,7 +343,7 @@ public class PIMTITLEResource {
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMTITLE-EnsureHighestTech-all')")
     @ApiOperation(value = "确认唯一最高职称ByPIMPERSON", tags = {"PIMTITLE" },  notes = "确认唯一最高职称ByPIMPERSON")
-	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimtitles/{pimtitlepimtitleid}/ensurehighesttech")
+	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimtitles/{pimtitle_id}/ensurehighesttech")
     @Transactional
     public ResponseEntity<PIMTITLEDTO> ensureHighestTechByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimtitle_id") String pimtitle_id, @RequestBody PIMTITLEDTO pimtitledto) {
         PIMTITLE domain = pimtitleMapping.toDomain(pimtitledto);
@@ -360,7 +353,7 @@ public class PIMTITLEResource {
         return ResponseEntity.status(HttpStatus.OK).body(pimtitledto);
     }
 
-    //@PreAuthorize("hasPermission(#pimtitle_id,'Get',{'Sql',this.pimtitleMapping,this.permissionDTO})")
+    @PreAuthorize("hasPermission(#pimtitle_id,'Get',{'Sql',this.pimtitleMapping,this.permissionDTO})")
     @ApiOperation(value = "GetByPIMPERSON", tags = {"PIMTITLE" },  notes = "GetByPIMPERSON")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimpeople/{pimperson_id}/pimtitles/{pimtitle_id}")
     public ResponseEntity<PIMTITLEDTO> getByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimtitle_id") String pimtitle_id) {
@@ -369,7 +362,7 @@ public class PIMTITLEResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    //@PreAuthorize("hasPermission(#pimtitle_id,'Remove',{'Sql',this.pimtitleMapping,this.permissionDTO})")
+    @PreAuthorize("hasPermission(#pimtitle_id,'Remove',{'Sql',this.pimtitleMapping,this.permissionDTO})")
     @ApiOperation(value = "RemoveByPIMPERSON", tags = {"PIMTITLE" },  notes = "RemoveByPIMPERSON")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimpeople/{pimperson_id}/pimtitles/{pimtitle_id}")
     @Transactional
