@@ -68,6 +68,12 @@ public class ATTENDENCETYPEServiceImpl extends ServiceImpl<ATTENDENCETYPEMapper,
     }
 
     @Override
+    public boolean saveBatch(Collection<ATTENDENCETYPE> list) {
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<ATTENDENCETYPE> list) {
         saveOrUpdateBatch(list,batchSize);
     }

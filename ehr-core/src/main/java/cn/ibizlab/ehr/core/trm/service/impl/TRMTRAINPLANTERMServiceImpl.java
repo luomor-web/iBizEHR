@@ -156,6 +156,13 @@ public class TRMTRAINPLANTERMServiceImpl extends ServiceImpl<TRMTRAINPLANTERMMap
     }
 
     @Override
+    public boolean saveBatch(Collection<TRMTRAINPLANTERM> list) {
+        list.forEach(item->fillParentData(item));
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<TRMTRAINPLANTERM> list) {
         list.forEach(item->fillParentData(item));
         saveOrUpdateBatch(list,batchSize);

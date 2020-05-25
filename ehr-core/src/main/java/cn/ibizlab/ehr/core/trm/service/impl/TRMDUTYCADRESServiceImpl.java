@@ -98,6 +98,13 @@ public class TRMDUTYCADRESServiceImpl extends ServiceImpl<TRMDUTYCADRESMapper, T
     }
 
     @Override
+    public boolean saveBatch(Collection<TRMDUTYCADRES> list) {
+        list.forEach(item->fillParentData(item));
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<TRMDUTYCADRES> list) {
         list.forEach(item->fillParentData(item));
         saveOrUpdateBatch(list,batchSize);

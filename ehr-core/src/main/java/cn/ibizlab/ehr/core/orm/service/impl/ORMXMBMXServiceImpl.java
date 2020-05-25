@@ -74,6 +74,13 @@ public class ORMXMBMXServiceImpl extends ServiceImpl<ORMXMBMXMapper, ORMXMBMX> i
     }
 
     @Override
+    public boolean saveBatch(Collection<ORMXMBMX> list) {
+        list.forEach(item->fillParentData(item));
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<ORMXMBMX> list) {
         list.forEach(item->fillParentData(item));
         saveOrUpdateBatch(list,batchSize);

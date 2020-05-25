@@ -113,6 +113,12 @@ public class PCMCSRCMSPJServiceImpl extends ServiceImpl<PCMCSRCMSPJMapper, PCMCS
     }
 
     @Override
+    public boolean saveBatch(Collection<PCMCSRCMSPJ> list) {
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<PCMCSRCMSPJ> list) {
         saveOrUpdateBatch(list,batchSize);
     }

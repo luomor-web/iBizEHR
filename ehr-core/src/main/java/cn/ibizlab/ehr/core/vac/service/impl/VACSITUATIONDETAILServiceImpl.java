@@ -119,6 +119,12 @@ public class VACSITUATIONDETAILServiceImpl extends ServiceImpl<VACSITUATIONDETAI
     }
 
     @Override
+    public boolean saveBatch(Collection<VACSITUATIONDETAIL> list) {
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<VACSITUATIONDETAIL> list) {
         saveOrUpdateBatch(list,batchSize);
     }

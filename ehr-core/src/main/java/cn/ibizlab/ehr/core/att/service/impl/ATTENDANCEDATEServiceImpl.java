@@ -112,6 +112,12 @@ public class ATTENDANCEDATEServiceImpl extends ServiceImpl<ATTENDANCEDATEMapper,
     }
 
     @Override
+    public boolean saveBatch(Collection<ATTENDANCEDATE> list) {
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<ATTENDANCEDATE> list) {
         saveOrUpdateBatch(list,batchSize);
     }

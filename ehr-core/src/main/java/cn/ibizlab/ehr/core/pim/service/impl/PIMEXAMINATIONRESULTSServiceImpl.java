@@ -85,6 +85,12 @@ public class PIMEXAMINATIONRESULTSServiceImpl extends ServiceImpl<PIMEXAMINATION
     }
 
     @Override
+    public boolean saveBatch(Collection<PIMEXAMINATIONRESULTS> list) {
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<PIMEXAMINATIONRESULTS> list) {
         saveOrUpdateBatch(list,batchSize);
     }

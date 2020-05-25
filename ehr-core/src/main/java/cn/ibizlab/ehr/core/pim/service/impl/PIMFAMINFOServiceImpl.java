@@ -140,6 +140,13 @@ public class PIMFAMINFOServiceImpl extends ServiceImpl<PIMFAMINFOMapper, PIMFAMI
     }
 
     @Override
+    public boolean saveBatch(Collection<PIMFAMINFO> list) {
+        list.forEach(item->fillParentData(item));
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<PIMFAMINFO> list) {
         list.forEach(item->fillParentData(item));
         saveOrUpdateBatch(list,batchSize);

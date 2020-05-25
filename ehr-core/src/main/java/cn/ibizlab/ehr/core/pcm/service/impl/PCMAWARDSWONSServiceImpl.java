@@ -127,6 +127,13 @@ public class PCMAWARDSWONSServiceImpl extends ServiceImpl<PCMAWARDSWONSMapper, P
     }
 
     @Override
+    public boolean saveBatch(Collection<PCMAWARDSWONS> list) {
+        list.forEach(item->fillParentData(item));
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<PCMAWARDSWONS> list) {
         list.forEach(item->fillParentData(item));
         saveOrUpdateBatch(list,batchSize);

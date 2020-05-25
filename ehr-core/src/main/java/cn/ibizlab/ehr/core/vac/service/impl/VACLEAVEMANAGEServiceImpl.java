@@ -136,6 +136,13 @@ public class VACLEAVEMANAGEServiceImpl extends ServiceImpl<VACLEAVEMANAGEMapper,
     }
 
     @Override
+    public boolean saveBatch(Collection<VACLEAVEMANAGE> list) {
+        list.forEach(item->fillParentData(item));
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<VACLEAVEMANAGE> list) {
         list.forEach(item->fillParentData(item));
         saveOrUpdateBatch(list,batchSize);

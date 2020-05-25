@@ -97,6 +97,13 @@ public class PIMWorkflowServiceImpl extends ServiceImpl<PIMWorkflowMapper, PIMWo
     }
 
     @Override
+    public boolean saveBatch(Collection<PIMWorkflow> list) {
+        list.forEach(item->fillParentData(item));
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<PIMWorkflow> list) {
         list.forEach(item->fillParentData(item));
         saveOrUpdateBatch(list,batchSize);

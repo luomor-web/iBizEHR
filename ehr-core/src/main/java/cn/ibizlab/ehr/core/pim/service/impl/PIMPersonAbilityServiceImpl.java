@@ -115,6 +115,13 @@ public class PIMPersonAbilityServiceImpl extends ServiceImpl<PIMPersonAbilityMap
     }
 
     @Override
+    public boolean saveBatch(Collection<PIMPersonAbility> list) {
+        list.forEach(item->fillParentData(item));
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<PIMPersonAbility> list) {
         list.forEach(item->fillParentData(item));
         saveOrUpdateBatch(list,batchSize);

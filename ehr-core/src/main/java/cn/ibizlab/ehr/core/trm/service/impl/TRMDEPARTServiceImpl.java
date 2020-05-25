@@ -96,6 +96,13 @@ public class TRMDEPARTServiceImpl extends ServiceImpl<TRMDEPARTMapper, TRMDEPART
     }
 
     @Override
+    public boolean saveBatch(Collection<TRMDEPART> list) {
+        list.forEach(item->fillParentData(item));
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<TRMDEPART> list) {
         list.forEach(item->fillParentData(item));
         saveOrUpdateBatch(list,batchSize);

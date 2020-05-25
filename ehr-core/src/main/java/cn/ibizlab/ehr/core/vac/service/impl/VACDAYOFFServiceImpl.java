@@ -91,6 +91,12 @@ public class VACDAYOFFServiceImpl extends ServiceImpl<VACDAYOFFMapper, VACDAYOFF
     }
 
     @Override
+    public boolean saveBatch(Collection<VACDAYOFF> list) {
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<VACDAYOFF> list) {
         saveOrUpdateBatch(list,batchSize);
     }

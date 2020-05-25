@@ -100,6 +100,13 @@ public class PARJXQDSZServiceImpl extends ServiceImpl<PARJXQDSZMapper, PARJXQDSZ
     }
 
     @Override
+    public boolean saveBatch(Collection<PARJXQDSZ> list) {
+        list.forEach(item->fillParentData(item));
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<PARJXQDSZ> list) {
         list.forEach(item->fillParentData(item));
         saveOrUpdateBatch(list,batchSize);

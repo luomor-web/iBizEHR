@@ -102,6 +102,13 @@ public class ORMORGDZServiceImpl extends ServiceImpl<ORMORGDZMapper, ORMORGDZ> i
     }
 
     @Override
+    public boolean saveBatch(Collection<ORMORGDZ> list) {
+        list.forEach(item->fillParentData(item));
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<ORMORGDZ> list) {
         list.forEach(item->fillParentData(item));
         saveOrUpdateBatch(list,batchSize);

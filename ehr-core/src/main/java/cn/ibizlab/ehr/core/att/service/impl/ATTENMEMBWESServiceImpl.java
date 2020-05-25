@@ -98,6 +98,12 @@ public class ATTENMEMBWESServiceImpl extends ServiceImpl<ATTENMEMBWESMapper, ATT
     }
 
     @Override
+    public boolean saveBatch(Collection<ATTENMEMBWES> list) {
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<ATTENMEMBWES> list) {
         saveOrUpdateBatch(list,batchSize);
     }

@@ -127,6 +127,13 @@ public class PCMZPMEGLMXServiceImpl extends ServiceImpl<PCMZPMEGLMXMapper, PCMZP
     }
 
     @Override
+    public boolean saveBatch(Collection<PCMZPMEGLMX> list) {
+        list.forEach(item->fillParentData(item));
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<PCMZPMEGLMX> list) {
         list.forEach(item->fillParentData(item));
         saveOrUpdateBatch(list,batchSize);

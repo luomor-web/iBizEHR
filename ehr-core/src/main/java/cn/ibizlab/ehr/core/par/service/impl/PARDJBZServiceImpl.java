@@ -95,6 +95,12 @@ public class PARDJBZServiceImpl extends ServiceImpl<PARDJBZMapper, PARDJBZ> impl
     }
 
     @Override
+    public boolean saveBatch(Collection<PARDJBZ> list) {
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<PARDJBZ> list) {
         saveOrUpdateBatch(list,batchSize);
     }

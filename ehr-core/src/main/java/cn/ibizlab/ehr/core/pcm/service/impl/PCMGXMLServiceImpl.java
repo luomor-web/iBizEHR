@@ -85,6 +85,12 @@ public class PCMGXMLServiceImpl extends ServiceImpl<PCMGXMLMapper, PCMGXML> impl
     }
 
     @Override
+    public boolean saveBatch(Collection<PCMGXML> list) {
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<PCMGXML> list) {
         saveOrUpdateBatch(list,batchSize);
     }

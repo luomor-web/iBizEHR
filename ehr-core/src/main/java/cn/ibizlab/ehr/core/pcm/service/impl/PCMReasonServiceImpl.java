@@ -131,6 +131,12 @@ public class PCMReasonServiceImpl extends ServiceImpl<PCMReasonMapper, PCMReason
     }
 
     @Override
+    public boolean saveBatch(Collection<PCMReason> list) {
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<PCMReason> list) {
         saveOrUpdateBatch(list,batchSize);
     }

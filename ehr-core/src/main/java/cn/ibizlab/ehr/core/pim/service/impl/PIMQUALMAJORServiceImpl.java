@@ -130,6 +130,12 @@ public class PIMQUALMAJORServiceImpl extends ServiceImpl<PIMQUALMAJORMapper, PIM
     }
 
     @Override
+    public boolean saveBatch(Collection<PIMQUALMAJOR> list) {
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<PIMQUALMAJOR> list) {
         saveOrUpdateBatch(list,batchSize);
     }

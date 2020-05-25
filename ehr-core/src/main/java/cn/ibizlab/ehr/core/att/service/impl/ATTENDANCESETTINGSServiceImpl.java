@@ -113,6 +113,13 @@ public class ATTENDANCESETTINGSServiceImpl extends ServiceImpl<ATTENDANCESETTING
     }
 
     @Override
+    public boolean saveBatch(Collection<ATTENDANCESETTINGS> list) {
+        list.forEach(item->fillParentData(item));
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<ATTENDANCESETTINGS> list) {
         list.forEach(item->fillParentData(item));
         saveOrUpdateBatch(list,batchSize);

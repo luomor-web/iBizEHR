@@ -189,6 +189,12 @@ public class ORMDUTYServiceImpl extends ServiceImpl<ORMDUTYMapper, ORMDUTY> impl
     }
 
     @Override
+    public boolean saveBatch(Collection<ORMDUTY> list) {
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<ORMDUTY> list) {
         saveOrUpdateBatch(list,batchSize);
     }

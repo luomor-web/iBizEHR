@@ -101,6 +101,13 @@ public class PIMCORRECTIONAPPLYServiceImpl extends ServiceImpl<PIMCORRECTIONAPPL
     }
 
     @Override
+    public boolean saveBatch(Collection<PIMCORRECTIONAPPLY> list) {
+        list.forEach(item->fillParentData(item));
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<PIMCORRECTIONAPPLY> list) {
         list.forEach(item->fillParentData(item));
         saveOrUpdateBatch(list,batchSize);

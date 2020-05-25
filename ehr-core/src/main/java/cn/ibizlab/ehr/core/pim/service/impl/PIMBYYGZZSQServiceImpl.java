@@ -113,6 +113,12 @@ public class PIMBYYGZZSQServiceImpl extends ServiceImpl<PIMBYYGZZSQMapper, PIMBY
     }
 
     @Override
+    public boolean saveBatch(Collection<PIMBYYGZZSQ> list) {
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<PIMBYYGZZSQ> list) {
         saveOrUpdateBatch(list,batchSize);
     }

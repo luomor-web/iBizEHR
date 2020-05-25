@@ -99,6 +99,12 @@ public class ORMTITLEServiceImpl extends ServiceImpl<ORMTITLEMapper, ORMTITLE> i
     }
 
     @Override
+    public boolean saveBatch(Collection<ORMTITLE> list) {
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<ORMTITLE> list) {
         saveOrUpdateBatch(list,batchSize);
     }

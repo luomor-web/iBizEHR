@@ -142,6 +142,13 @@ public class ORMDepEstManServiceImpl extends ServiceImpl<ORMDepEstManMapper, ORM
     }
 
     @Override
+    public boolean saveBatch(Collection<ORMDepEstMan> list) {
+        list.forEach(item->fillParentData(item));
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<ORMDepEstMan> list) {
         list.forEach(item->fillParentData(item));
         saveOrUpdateBatch(list,batchSize);

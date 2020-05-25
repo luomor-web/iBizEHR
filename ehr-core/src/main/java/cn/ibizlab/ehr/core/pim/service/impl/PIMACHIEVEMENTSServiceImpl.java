@@ -87,6 +87,13 @@ public class PIMACHIEVEMENTSServiceImpl extends ServiceImpl<PIMACHIEVEMENTSMappe
     }
 
     @Override
+    public boolean saveBatch(Collection<PIMACHIEVEMENTS> list) {
+        list.forEach(item->fillParentData(item));
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<PIMACHIEVEMENTS> list) {
         list.forEach(item->fillParentData(item));
         saveOrUpdateBatch(list,batchSize);

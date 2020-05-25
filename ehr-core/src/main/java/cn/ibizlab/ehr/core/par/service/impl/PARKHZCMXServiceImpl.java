@@ -93,6 +93,13 @@ public class PARKHZCMXServiceImpl extends ServiceImpl<PARKHZCMXMapper, PARKHZCMX
     }
 
     @Override
+    public boolean saveBatch(Collection<PARKHZCMX> list) {
+        list.forEach(item->fillParentData(item));
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<PARKHZCMX> list) {
         list.forEach(item->fillParentData(item));
         saveOrUpdateBatch(list,batchSize);

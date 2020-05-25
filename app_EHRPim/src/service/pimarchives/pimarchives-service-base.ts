@@ -85,8 +85,8 @@ export default class PIMARCHIVESServiceBase extends EntityService {
         }
         let res:any = await  Http.getInstance().get(`/pimarchives/getdraft`,isloading);
         res.data.pimarchives = data.pimarchives;
-            this.tempStorage.setItem(context.srfsessionkey+'_pimarchivesrecords',JSON.stringify(res.data.pimarchivesrecords));
             this.tempStorage.setItem(context.srfsessionkey+'_pimarchivesloanandreturns',JSON.stringify(res.data.pimarchivesloanandreturns));
+            this.tempStorage.setItem(context.srfsessionkey+'_pimarchivesrecords',JSON.stringify(res.data.pimarchivesrecords));
             this.tempStorage.setItem(context.srfsessionkey+'_pimarchiveschanges',JSON.stringify(res.data.pimarchiveschanges));
         return res;
     }
@@ -105,21 +105,6 @@ export default class PIMARCHIVESServiceBase extends EntityService {
             return Http.getInstance().post(`/pimpeople/${context.pimperson}/pimarchives/${context.pimarchives}/save`,data,isloading);
         }
         let masterData:any = {};
-        let pimarchivesrecordsData:any = [];
-        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_pimarchivesrecords'),'undefined')){
-            pimarchivesrecordsData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_pimarchivesrecords') as any);
-            if(pimarchivesrecordsData && pimarchivesrecordsData.length && pimarchivesrecordsData.length > 0){
-                pimarchivesrecordsData.forEach((item:any) => {
-                    if(item.srffrontuf){
-                        if(Object.is(item.srffrontuf,"0")){
-                            item.pimarchivesrecordid = null;
-                        }
-                        delete item.srffrontuf;
-                    }
-                });
-            }
-        }
-        masterData.pimarchivesrecords = pimarchivesrecordsData;
         let pimarchivesloanandreturnsData:any = [];
         if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_pimarchivesloanandreturns'),'undefined')){
             pimarchivesloanandreturnsData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_pimarchivesloanandreturns') as any);
@@ -135,6 +120,21 @@ export default class PIMARCHIVESServiceBase extends EntityService {
             }
         }
         masterData.pimarchivesloanandreturns = pimarchivesloanandreturnsData;
+        let pimarchivesrecordsData:any = [];
+        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_pimarchivesrecords'),'undefined')){
+            pimarchivesrecordsData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_pimarchivesrecords') as any);
+            if(pimarchivesrecordsData && pimarchivesrecordsData.length && pimarchivesrecordsData.length > 0){
+                pimarchivesrecordsData.forEach((item:any) => {
+                    if(item.srffrontuf){
+                        if(Object.is(item.srffrontuf,"0")){
+                            item.pimarchivesrecordid = null;
+                        }
+                        delete item.srffrontuf;
+                    }
+                });
+            }
+        }
+        masterData.pimarchivesrecords = pimarchivesrecordsData;
         let pimarchiveschangesData:any = [];
         if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_pimarchiveschanges'),'undefined')){
             pimarchiveschangesData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_pimarchiveschanges') as any);
@@ -152,8 +152,8 @@ export default class PIMARCHIVESServiceBase extends EntityService {
         masterData.pimarchiveschanges = pimarchiveschangesData;
         Object.assign(data,masterData);
             let res:any = await  Http.getInstance().post(`/pimarchives/${context.pimarchives}/save`,data,isloading);
-            this.tempStorage.setItem(context.srfsessionkey+'_pimarchivesrecords',JSON.stringify(res.data.pimarchivesrecords));
             this.tempStorage.setItem(context.srfsessionkey+'_pimarchivesloanandreturns',JSON.stringify(res.data.pimarchivesloanandreturns));
+            this.tempStorage.setItem(context.srfsessionkey+'_pimarchivesrecords',JSON.stringify(res.data.pimarchivesrecords));
             this.tempStorage.setItem(context.srfsessionkey+'_pimarchiveschanges',JSON.stringify(res.data.pimarchiveschanges));
             return res;
     }
@@ -172,8 +172,8 @@ export default class PIMARCHIVESServiceBase extends EntityService {
             return Http.getInstance().get(`/pimpeople/${context.pimperson}/pimarchives/${context.pimarchives}`,isloading);
         }
             let res:any = await Http.getInstance().get(`/pimarchives/${context.pimarchives}`,isloading);
-            this.tempStorage.setItem(context.srfsessionkey+'_pimarchivesrecords',JSON.stringify(res.data.pimarchivesrecords));
             this.tempStorage.setItem(context.srfsessionkey+'_pimarchivesloanandreturns',JSON.stringify(res.data.pimarchivesloanandreturns));
+            this.tempStorage.setItem(context.srfsessionkey+'_pimarchivesrecords',JSON.stringify(res.data.pimarchivesrecords));
             this.tempStorage.setItem(context.srfsessionkey+'_pimarchiveschanges',JSON.stringify(res.data.pimarchiveschanges));
             return res;
 
@@ -193,21 +193,6 @@ export default class PIMARCHIVESServiceBase extends EntityService {
             return Http.getInstance().put(`/pimpeople/${context.pimperson}/pimarchives/${context.pimarchives}`,data,isloading);
         }
         let masterData:any = {};
-        let pimarchivesrecordsData:any = [];
-        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_pimarchivesrecords'),'undefined')){
-            pimarchivesrecordsData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_pimarchivesrecords') as any);
-            if(pimarchivesrecordsData && pimarchivesrecordsData.length && pimarchivesrecordsData.length > 0){
-                pimarchivesrecordsData.forEach((item:any) => {
-                    if(item.srffrontuf){
-                        if(Object.is(item.srffrontuf,"0")){
-                            item.pimarchivesrecordid = null;
-                        }
-                        delete item.srffrontuf;
-                    }
-                });
-            }
-        }
-        masterData.pimarchivesrecords = pimarchivesrecordsData;
         let pimarchivesloanandreturnsData:any = [];
         if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_pimarchivesloanandreturns'),'undefined')){
             pimarchivesloanandreturnsData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_pimarchivesloanandreturns') as any);
@@ -223,6 +208,21 @@ export default class PIMARCHIVESServiceBase extends EntityService {
             }
         }
         masterData.pimarchivesloanandreturns = pimarchivesloanandreturnsData;
+        let pimarchivesrecordsData:any = [];
+        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_pimarchivesrecords'),'undefined')){
+            pimarchivesrecordsData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_pimarchivesrecords') as any);
+            if(pimarchivesrecordsData && pimarchivesrecordsData.length && pimarchivesrecordsData.length > 0){
+                pimarchivesrecordsData.forEach((item:any) => {
+                    if(item.srffrontuf){
+                        if(Object.is(item.srffrontuf,"0")){
+                            item.pimarchivesrecordid = null;
+                        }
+                        delete item.srffrontuf;
+                    }
+                });
+            }
+        }
+        masterData.pimarchivesrecords = pimarchivesrecordsData;
         let pimarchiveschangesData:any = [];
         if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_pimarchiveschanges'),'undefined')){
             pimarchiveschangesData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_pimarchiveschanges') as any);
@@ -240,8 +240,8 @@ export default class PIMARCHIVESServiceBase extends EntityService {
         masterData.pimarchiveschanges = pimarchiveschangesData;
         Object.assign(data,masterData);
             let res:any = await  Http.getInstance().put(`/pimarchives/${context.pimarchives}`,data,isloading);
-            this.tempStorage.setItem(context.srfsessionkey+'_pimarchivesrecords',JSON.stringify(res.data.pimarchivesrecords));
             this.tempStorage.setItem(context.srfsessionkey+'_pimarchivesloanandreturns',JSON.stringify(res.data.pimarchivesloanandreturns));
+            this.tempStorage.setItem(context.srfsessionkey+'_pimarchivesrecords',JSON.stringify(res.data.pimarchivesrecords));
             this.tempStorage.setItem(context.srfsessionkey+'_pimarchiveschanges',JSON.stringify(res.data.pimarchiveschanges));
             return res;
     }
@@ -282,21 +282,6 @@ export default class PIMARCHIVESServiceBase extends EntityService {
             return Http.getInstance().post(`/pimpeople/${context.pimperson}/pimarchives`,data,isloading);
         }
         let masterData:any = {};
-        let pimarchivesrecordsData:any = [];
-        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_pimarchivesrecords'),'undefined')){
-            pimarchivesrecordsData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_pimarchivesrecords') as any);
-            if(pimarchivesrecordsData && pimarchivesrecordsData.length && pimarchivesrecordsData.length > 0){
-                pimarchivesrecordsData.forEach((item:any) => {
-                    if(item.srffrontuf){
-                        if(Object.is(item.srffrontuf,"0")){
-                            item.pimarchivesrecordid = null;
-                        }
-                        delete item.srffrontuf;
-                    }
-                });
-            }
-        }
-        masterData.pimarchivesrecords = pimarchivesrecordsData;
         let pimarchivesloanandreturnsData:any = [];
         if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_pimarchivesloanandreturns'),'undefined')){
             pimarchivesloanandreturnsData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_pimarchivesloanandreturns') as any);
@@ -312,6 +297,21 @@ export default class PIMARCHIVESServiceBase extends EntityService {
             }
         }
         masterData.pimarchivesloanandreturns = pimarchivesloanandreturnsData;
+        let pimarchivesrecordsData:any = [];
+        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_pimarchivesrecords'),'undefined')){
+            pimarchivesrecordsData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_pimarchivesrecords') as any);
+            if(pimarchivesrecordsData && pimarchivesrecordsData.length && pimarchivesrecordsData.length > 0){
+                pimarchivesrecordsData.forEach((item:any) => {
+                    if(item.srffrontuf){
+                        if(Object.is(item.srffrontuf,"0")){
+                            item.pimarchivesrecordid = null;
+                        }
+                        delete item.srffrontuf;
+                    }
+                });
+            }
+        }
+        masterData.pimarchivesrecords = pimarchivesrecordsData;
         let pimarchiveschangesData:any = [];
         if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_pimarchiveschanges'),'undefined')){
             pimarchiveschangesData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_pimarchiveschanges') as any);
@@ -336,8 +336,8 @@ export default class PIMARCHIVESServiceBase extends EntityService {
         }
         let tempContext:any = JSON.parse(JSON.stringify(context));
         let res:any = await Http.getInstance().post(`/pimarchives`,data,isloading);
-        this.tempStorage.setItem(tempContext.srfsessionkey+'_pimarchivesrecords',JSON.stringify(res.data.pimarchivesrecords));
         this.tempStorage.setItem(tempContext.srfsessionkey+'_pimarchivesloanandreturns',JSON.stringify(res.data.pimarchivesloanandreturns));
+        this.tempStorage.setItem(tempContext.srfsessionkey+'_pimarchivesrecords',JSON.stringify(res.data.pimarchivesrecords));
         this.tempStorage.setItem(tempContext.srfsessionkey+'_pimarchiveschanges',JSON.stringify(res.data.pimarchiveschanges));
         return res;
     }

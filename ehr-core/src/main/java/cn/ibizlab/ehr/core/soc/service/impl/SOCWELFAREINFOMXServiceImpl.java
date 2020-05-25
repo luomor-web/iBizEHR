@@ -86,6 +86,13 @@ public class SOCWELFAREINFOMXServiceImpl extends ServiceImpl<SOCWELFAREINFOMXMap
     }
 
     @Override
+    public boolean saveBatch(Collection<SOCWELFAREINFOMX> list) {
+        list.forEach(item->fillParentData(item));
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<SOCWELFAREINFOMX> list) {
         list.forEach(item->fillParentData(item));
         saveOrUpdateBatch(list,batchSize);

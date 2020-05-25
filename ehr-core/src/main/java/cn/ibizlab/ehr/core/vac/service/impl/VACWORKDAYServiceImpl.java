@@ -73,6 +73,12 @@ public class VACWORKDAYServiceImpl extends ServiceImpl<VACWORKDAYMapper, VACWORK
     }
 
     @Override
+    public boolean saveBatch(Collection<VACWORKDAY> list) {
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<VACWORKDAY> list) {
         saveOrUpdateBatch(list,batchSize);
     }

@@ -155,6 +155,13 @@ public class PCMPROFILEServiceImpl extends ServiceImpl<PCMPROFILEMapper, PCMPROF
     }
 
     @Override
+    public boolean saveBatch(Collection<PCMPROFILE> list) {
+        list.forEach(item->fillParentData(item));
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<PCMPROFILE> list) {
         list.forEach(item->fillParentData(item));
         saveOrUpdateBatch(list,batchSize);

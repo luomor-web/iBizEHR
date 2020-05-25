@@ -415,6 +415,13 @@ public class PIMPERSONServiceImpl extends ServiceImpl<PIMPERSONMapper, PIMPERSON
     }
 
     @Override
+    public boolean saveBatch(Collection<PIMPERSON> list) {
+        list.forEach(item->fillParentData(item));
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<PIMPERSON> list) {
         list.forEach(item->fillParentData(item));
         saveOrUpdateBatch(list,batchSize);

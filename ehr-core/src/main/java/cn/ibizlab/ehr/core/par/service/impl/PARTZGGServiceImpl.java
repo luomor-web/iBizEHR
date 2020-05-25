@@ -94,6 +94,12 @@ public class PARTZGGServiceImpl extends ServiceImpl<PARTZGGMapper, PARTZGG> impl
     }
 
     @Override
+    public boolean saveBatch(Collection<PARTZGG> list) {
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<PARTZGG> list) {
         saveOrUpdateBatch(list,batchSize);
     }

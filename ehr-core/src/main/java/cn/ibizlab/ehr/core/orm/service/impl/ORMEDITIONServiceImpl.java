@@ -94,6 +94,12 @@ public class ORMEDITIONServiceImpl extends ServiceImpl<ORMEDITIONMapper, ORMEDIT
     }
 
     @Override
+    public boolean saveBatch(Collection<ORMEDITION> list) {
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<ORMEDITION> list) {
         saveOrUpdateBatch(list,batchSize);
     }

@@ -99,6 +99,12 @@ public class PCMYDJPMXServiceImpl extends ServiceImpl<PCMYDJPMXMapper, PCMYDJPMX
     }
 
     @Override
+    public boolean saveBatch(Collection<PCMYDJPMX> list) {
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<PCMYDJPMX> list) {
         saveOrUpdateBatch(list,batchSize);
     }

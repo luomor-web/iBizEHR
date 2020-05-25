@@ -94,6 +94,12 @@ public class PCMMonthServiceImpl extends ServiceImpl<PCMMonthMapper, PCMMonth> i
     }
 
     @Override
+    public boolean saveBatch(Collection<PCMMonth> list) {
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<PCMMonth> list) {
         saveOrUpdateBatch(list,batchSize);
     }

@@ -131,6 +131,12 @@ public class ORMXMSFHZServiceImpl extends ServiceImpl<ORMXMSFHZMapper, ORMXMSFHZ
     }
 
     @Override
+    public boolean saveBatch(Collection<ORMXMSFHZ> list) {
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<ORMXMSFHZ> list) {
         saveOrUpdateBatch(list,batchSize);
     }

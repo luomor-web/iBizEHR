@@ -142,6 +142,13 @@ public class ATTENDENCEORMORGSECTORServiceImpl extends ServiceImpl<ATTENDENCEORM
     }
 
     @Override
+    public boolean saveBatch(Collection<ATTENDENCEORMORGSECTOR> list) {
+        list.forEach(item->fillParentData(item));
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<ATTENDENCEORMORGSECTOR> list) {
         list.forEach(item->fillParentData(item));
         saveOrUpdateBatch(list,batchSize);

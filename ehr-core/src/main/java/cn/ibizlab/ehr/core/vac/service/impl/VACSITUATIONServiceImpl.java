@@ -114,6 +114,13 @@ public class VACSITUATIONServiceImpl extends ServiceImpl<VACSITUATIONMapper, VAC
     }
 
     @Override
+    public boolean saveBatch(Collection<VACSITUATION> list) {
+        list.forEach(item->fillParentData(item));
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<VACSITUATION> list) {
         list.forEach(item->fillParentData(item));
         saveOrUpdateBatch(list,batchSize);

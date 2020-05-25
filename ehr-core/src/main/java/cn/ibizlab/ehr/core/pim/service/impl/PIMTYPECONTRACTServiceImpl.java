@@ -126,6 +126,12 @@ public class PIMTYPECONTRACTServiceImpl extends ServiceImpl<PIMTYPECONTRACTMappe
     }
 
     @Override
+    public boolean saveBatch(Collection<PIMTYPECONTRACT> list) {
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<PIMTYPECONTRACT> list) {
         saveOrUpdateBatch(list,batchSize);
     }

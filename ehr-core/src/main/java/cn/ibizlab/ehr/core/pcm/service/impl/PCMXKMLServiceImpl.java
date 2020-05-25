@@ -124,6 +124,12 @@ public class PCMXKMLServiceImpl extends ServiceImpl<PCMXKMLMapper, PCMXKML> impl
     }
 
     @Override
+    public boolean saveBatch(Collection<PCMXKML> list) {
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<PCMXKML> list) {
         saveOrUpdateBatch(list,batchSize);
     }

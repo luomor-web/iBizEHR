@@ -139,6 +139,13 @@ public class SALSTDZYZGServiceImpl extends ServiceImpl<SALSTDZYZGMapper, SALSTDZ
     }
 
     @Override
+    public boolean saveBatch(Collection<SALSTDZYZG> list) {
+        list.forEach(item->fillParentData(item));
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<SALSTDZYZG> list) {
         list.forEach(item->fillParentData(item));
         saveOrUpdateBatch(list,batchSize);

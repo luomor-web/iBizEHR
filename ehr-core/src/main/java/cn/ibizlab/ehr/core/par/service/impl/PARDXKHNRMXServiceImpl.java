@@ -86,6 +86,13 @@ public class PARDXKHNRMXServiceImpl extends ServiceImpl<PARDXKHNRMXMapper, PARDX
     }
 
     @Override
+    public boolean saveBatch(Collection<PARDXKHNRMX> list) {
+        list.forEach(item->fillParentData(item));
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<PARDXKHNRMX> list) {
         list.forEach(item->fillParentData(item));
         saveOrUpdateBatch(list,batchSize);

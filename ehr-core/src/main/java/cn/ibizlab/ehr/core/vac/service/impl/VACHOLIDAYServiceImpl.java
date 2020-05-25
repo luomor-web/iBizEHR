@@ -133,6 +133,13 @@ public class VACHOLIDAYServiceImpl extends ServiceImpl<VACHOLIDAYMapper, VACHOLI
     }
 
     @Override
+    public boolean saveBatch(Collection<VACHOLIDAY> list) {
+        list.forEach(item->fillParentData(item));
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<VACHOLIDAY> list) {
         list.forEach(item->fillParentData(item));
         saveOrUpdateBatch(list,batchSize);

@@ -139,6 +139,13 @@ public class PIMOUTPUTServiceImpl extends ServiceImpl<PIMOUTPUTMapper, PIMOUTPUT
     }
 
     @Override
+    public boolean saveBatch(Collection<PIMOUTPUT> list) {
+        list.forEach(item->fillParentData(item));
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<PIMOUTPUT> list) {
         list.forEach(item->fillParentData(item));
         saveOrUpdateBatch(list,batchSize);

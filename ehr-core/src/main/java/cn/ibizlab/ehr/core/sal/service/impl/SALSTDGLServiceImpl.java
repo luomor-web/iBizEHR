@@ -120,6 +120,13 @@ public class SALSTDGLServiceImpl extends ServiceImpl<SALSTDGLMapper, SALSTDGL> i
     }
 
     @Override
+    public boolean saveBatch(Collection<SALSTDGL> list) {
+        list.forEach(item->fillParentData(item));
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<SALSTDGL> list) {
         list.forEach(item->fillParentData(item));
         saveOrUpdateBatch(list,batchSize);

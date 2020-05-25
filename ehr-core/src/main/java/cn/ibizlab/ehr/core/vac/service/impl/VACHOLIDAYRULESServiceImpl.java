@@ -155,6 +155,13 @@ public class VACHOLIDAYRULESServiceImpl extends ServiceImpl<VACHOLIDAYRULESMappe
     }
 
     @Override
+    public boolean saveBatch(Collection<VACHOLIDAYRULES> list) {
+        list.forEach(item->fillParentData(item));
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<VACHOLIDAYRULES> list) {
         list.forEach(item->fillParentData(item));
         saveOrUpdateBatch(list,batchSize);

@@ -117,6 +117,12 @@ public class PCMZSGLServiceImpl extends ServiceImpl<PCMZSGLMapper, PCMZSGL> impl
     }
 
     @Override
+    public boolean saveBatch(Collection<PCMZSGL> list) {
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<PCMZSGL> list) {
         saveOrUpdateBatch(list,batchSize);
     }

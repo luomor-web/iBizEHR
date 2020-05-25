@@ -74,6 +74,13 @@ public class SALPERSONSTDDETAILServiceImpl extends ServiceImpl<SALPERSONSTDDETAI
     }
 
     @Override
+    public boolean saveBatch(Collection<SALPERSONSTDDETAIL> list) {
+        list.forEach(item->fillParentData(item));
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<SALPERSONSTDDETAIL> list) {
         list.forEach(item->fillParentData(item));
         saveOrUpdateBatch(list,batchSize);

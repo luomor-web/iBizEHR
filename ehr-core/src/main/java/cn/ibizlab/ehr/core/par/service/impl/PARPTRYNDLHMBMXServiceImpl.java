@@ -107,6 +107,13 @@ public class PARPTRYNDLHMBMXServiceImpl extends ServiceImpl<PARPTRYNDLHMBMXMappe
     }
 
     @Override
+    public boolean saveBatch(Collection<PARPTRYNDLHMBMX> list) {
+        list.forEach(item->fillParentData(item));
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<PARPTRYNDLHMBMX> list) {
         list.forEach(item->fillParentData(item));
         saveOrUpdateBatch(list,batchSize);

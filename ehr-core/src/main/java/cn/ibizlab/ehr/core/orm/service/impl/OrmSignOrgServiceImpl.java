@@ -96,6 +96,12 @@ public class OrmSignOrgServiceImpl extends ServiceImpl<OrmSignOrgMapper, OrmSign
     }
 
     @Override
+    public boolean saveBatch(Collection<OrmSignOrg> list) {
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<OrmSignOrg> list) {
         saveOrUpdateBatch(list,batchSize);
     }

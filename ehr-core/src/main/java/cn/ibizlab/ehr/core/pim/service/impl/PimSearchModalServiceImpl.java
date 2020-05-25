@@ -119,6 +119,12 @@ public class PimSearchModalServiceImpl extends ServiceImpl<PimSearchModalMapper,
     }
 
     @Override
+    public boolean saveBatch(Collection<PimSearchModal> list) {
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<PimSearchModal> list) {
         saveOrUpdateBatch(list,batchSize);
     }

@@ -112,6 +112,12 @@ public class PCMYDBXMXServiceImpl extends ServiceImpl<PCMYDBXMXMapper, PCMYDBXMX
     }
 
     @Override
+    public boolean saveBatch(Collection<PCMYDBXMX> list) {
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<PCMYDBXMX> list) {
         saveOrUpdateBatch(list,batchSize);
     }

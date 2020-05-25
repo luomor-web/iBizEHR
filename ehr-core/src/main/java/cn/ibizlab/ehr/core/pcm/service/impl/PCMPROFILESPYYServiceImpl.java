@@ -91,6 +91,12 @@ public class PCMPROFILESPYYServiceImpl extends ServiceImpl<PCMPROFILESPYYMapper,
     }
 
     @Override
+    public boolean saveBatch(Collection<PCMPROFILESPYY> list) {
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<PCMPROFILESPYY> list) {
         saveOrUpdateBatch(list,batchSize);
     }

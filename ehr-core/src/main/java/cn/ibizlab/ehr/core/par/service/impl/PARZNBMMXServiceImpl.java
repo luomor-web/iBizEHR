@@ -129,6 +129,13 @@ public class PARZNBMMXServiceImpl extends ServiceImpl<PARZNBMMXMapper, PARZNBMMX
     }
 
     @Override
+    public boolean saveBatch(Collection<PARZNBMMX> list) {
+        list.forEach(item->fillParentData(item));
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<PARZNBMMX> list) {
         list.forEach(item->fillParentData(item));
         saveOrUpdateBatch(list,batchSize);

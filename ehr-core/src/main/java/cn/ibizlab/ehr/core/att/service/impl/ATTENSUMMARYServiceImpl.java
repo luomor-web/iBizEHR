@@ -134,6 +134,13 @@ public class ATTENSUMMARYServiceImpl extends ServiceImpl<ATTENSUMMARYMapper, ATT
     }
 
     @Override
+    public boolean saveBatch(Collection<ATTENSUMMARY> list) {
+        list.forEach(item->fillParentData(item));
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<ATTENSUMMARY> list) {
         list.forEach(item->fillParentData(item));
         saveOrUpdateBatch(list,batchSize);

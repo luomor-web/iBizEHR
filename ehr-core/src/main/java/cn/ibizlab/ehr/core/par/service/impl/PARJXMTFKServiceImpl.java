@@ -139,6 +139,13 @@ public class PARJXMTFKServiceImpl extends ServiceImpl<PARJXMTFKMapper, PARJXMTFK
     }
 
     @Override
+    public boolean saveBatch(Collection<PARJXMTFK> list) {
+        list.forEach(item->fillParentData(item));
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<PARJXMTFK> list) {
         list.forEach(item->fillParentData(item));
         saveOrUpdateBatch(list,batchSize);

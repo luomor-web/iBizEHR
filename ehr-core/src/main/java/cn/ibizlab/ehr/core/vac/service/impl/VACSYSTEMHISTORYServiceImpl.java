@@ -102,6 +102,13 @@ public class VACSYSTEMHISTORYServiceImpl extends ServiceImpl<VACSYSTEMHISTORYMap
     }
 
     @Override
+    public boolean saveBatch(Collection<VACSYSTEMHISTORY> list) {
+        list.forEach(item->fillParentData(item));
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<VACSYSTEMHISTORY> list) {
         list.forEach(item->fillParentData(item));
         saveOrUpdateBatch(list,batchSize);

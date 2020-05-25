@@ -147,6 +147,13 @@ public class PIMARCHIVESLOANANDRETURNServiceImpl extends ServiceImpl<PIMARCHIVES
     }
 
     @Override
+    public boolean saveBatch(Collection<PIMARCHIVESLOANANDRETURN> list) {
+        list.forEach(item->fillParentData(item));
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<PIMARCHIVESLOANANDRETURN> list) {
         list.forEach(item->fillParentData(item));
         saveOrUpdateBatch(list,batchSize);

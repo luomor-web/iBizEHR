@@ -123,6 +123,13 @@ public class VACINITNXJServiceImpl extends ServiceImpl<VACINITNXJMapper, VACINIT
     }
 
     @Override
+    public boolean saveBatch(Collection<VACINITNXJ> list) {
+        list.forEach(item->fillParentData(item));
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<VACINITNXJ> list) {
         list.forEach(item->fillParentData(item));
         saveOrUpdateBatch(list,batchSize);

@@ -200,6 +200,13 @@ public class ORMXMRYPZXQServiceImpl extends ServiceImpl<ORMXMRYPZXQMapper, ORMXM
     }
 
     @Override
+    public boolean saveBatch(Collection<ORMXMRYPZXQ> list) {
+        list.forEach(item->fillParentData(item));
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<ORMXMRYPZXQ> list) {
         list.forEach(item->fillParentData(item));
         saveOrUpdateBatch(list,batchSize);

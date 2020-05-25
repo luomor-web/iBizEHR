@@ -144,6 +144,12 @@ public class ORMXMGLServiceImpl extends ServiceImpl<ORMXMGLMapper, ORMXMGL> impl
     }
 
     @Override
+    public boolean saveBatch(Collection<ORMXMGL> list) {
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<ORMXMGL> list) {
         saveOrUpdateBatch(list,batchSize);
     }

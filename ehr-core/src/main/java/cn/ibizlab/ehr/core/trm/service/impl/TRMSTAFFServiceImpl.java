@@ -145,6 +145,13 @@ public class TRMSTAFFServiceImpl extends ServiceImpl<TRMSTAFFMapper, TRMSTAFF> i
     }
 
     @Override
+    public boolean saveBatch(Collection<TRMSTAFF> list) {
+        list.forEach(item->fillParentData(item));
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<TRMSTAFF> list) {
         list.forEach(item->fillParentData(item));
         saveOrUpdateBatch(list,batchSize);

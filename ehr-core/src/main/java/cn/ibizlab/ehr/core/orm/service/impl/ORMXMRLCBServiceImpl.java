@@ -113,6 +113,12 @@ public class ORMXMRLCBServiceImpl extends ServiceImpl<ORMXMRLCBMapper, ORMXMRLCB
     }
 
     @Override
+    public boolean saveBatch(Collection<ORMXMRLCB> list) {
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<ORMXMRLCB> list) {
         saveOrUpdateBatch(list,batchSize);
     }

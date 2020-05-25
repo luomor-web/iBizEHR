@@ -118,6 +118,12 @@ public class PCMPROFILEYJTJTEMPServiceImpl extends ServiceImpl<PCMPROFILEYJTJTEM
     }
 
     @Override
+    public boolean saveBatch(Collection<PCMPROFILEYJTJTEMP> list) {
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<PCMPROFILEYJTJTEMP> list) {
         saveOrUpdateBatch(list,batchSize);
     }

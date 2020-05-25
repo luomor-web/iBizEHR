@@ -100,6 +100,13 @@ public class SALSTDZCServiceImpl extends ServiceImpl<SALSTDZCMapper, SALSTDZC> i
     }
 
     @Override
+    public boolean saveBatch(Collection<SALSTDZC> list) {
+        list.forEach(item->fillParentData(item));
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<SALSTDZC> list) {
         list.forEach(item->fillParentData(item));
         saveOrUpdateBatch(list,batchSize);

@@ -142,6 +142,13 @@ public class TRMLGBCOSTServiceImpl extends ServiceImpl<TRMLGBCOSTMapper, TRMLGBC
     }
 
     @Override
+    public boolean saveBatch(Collection<TRMLGBCOST> list) {
+        list.forEach(item->fillParentData(item));
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<TRMLGBCOST> list) {
         list.forEach(item->fillParentData(item));
         saveOrUpdateBatch(list,batchSize);

@@ -126,6 +126,13 @@ public class PARJXKHMBServiceImpl extends ServiceImpl<PARJXKHMBMapper, PARJXKHMB
     }
 
     @Override
+    public boolean saveBatch(Collection<PARJXKHMB> list) {
+        list.forEach(item->fillParentData(item));
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<PARJXKHMB> list) {
         list.forEach(item->fillParentData(item));
         saveOrUpdateBatch(list,batchSize);

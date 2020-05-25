@@ -76,6 +76,12 @@ public class PIMTITLECATALOGUEServiceImpl extends ServiceImpl<PIMTITLECATALOGUEM
     }
 
     @Override
+    public boolean saveBatch(Collection<PIMTITLECATALOGUE> list) {
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<PIMTITLECATALOGUE> list) {
         saveOrUpdateBatch(list,batchSize);
     }

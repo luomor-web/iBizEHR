@@ -93,6 +93,13 @@ public class TRMCOURSESYSTEMServiceImpl extends ServiceImpl<TRMCOURSESYSTEMMappe
     }
 
     @Override
+    public boolean saveBatch(Collection<TRMCOURSESYSTEM> list) {
+        list.forEach(item->fillParentData(item));
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<TRMCOURSESYSTEM> list) {
         list.forEach(item->fillParentData(item));
         saveOrUpdateBatch(list,batchSize);

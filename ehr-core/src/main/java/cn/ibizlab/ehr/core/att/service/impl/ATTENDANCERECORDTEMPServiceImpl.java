@@ -105,6 +105,13 @@ public class ATTENDANCERECORDTEMPServiceImpl extends ServiceImpl<ATTENDANCERECOR
     }
 
     @Override
+    public boolean saveBatch(Collection<ATTENDANCERECORDTEMP> list) {
+        list.forEach(item->fillParentData(item));
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<ATTENDANCERECORDTEMP> list) {
         list.forEach(item->fillParentData(item));
         saveOrUpdateBatch(list,batchSize);

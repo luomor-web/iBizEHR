@@ -113,6 +113,12 @@ public class VACLEACETYPEServiceImpl extends ServiceImpl<VACLEACETYPEMapper, VAC
     }
 
     @Override
+    public boolean saveBatch(Collection<VACLEACETYPE> list) {
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<VACLEACETYPE> list) {
         saveOrUpdateBatch(list,batchSize);
     }

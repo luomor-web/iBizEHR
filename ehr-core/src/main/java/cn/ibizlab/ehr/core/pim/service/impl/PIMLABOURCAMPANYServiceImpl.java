@@ -77,6 +77,13 @@ public class PIMLABOURCAMPANYServiceImpl extends ServiceImpl<PIMLABOURCAMPANYMap
     }
 
     @Override
+    public boolean saveBatch(Collection<PIMLABOURCAMPANY> list) {
+        list.forEach(item->fillParentData(item));
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<PIMLABOURCAMPANY> list) {
         list.forEach(item->fillParentData(item));
         saveOrUpdateBatch(list,batchSize);

@@ -117,6 +117,13 @@ public class SALSTDGWGZRATEServiceImpl extends ServiceImpl<SALSTDGWGZRATEMapper,
     }
 
     @Override
+    public boolean saveBatch(Collection<SALSTDGWGZRATE> list) {
+        list.forEach(item->fillParentData(item));
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<SALSTDGWGZRATE> list) {
         list.forEach(item->fillParentData(item));
         saveOrUpdateBatch(list,batchSize);

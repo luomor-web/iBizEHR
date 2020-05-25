@@ -123,6 +123,13 @@ public class PARLDKHQZServiceImpl extends ServiceImpl<PARLDKHQZMapper, PARLDKHQZ
     }
 
     @Override
+    public boolean saveBatch(Collection<PARLDKHQZ> list) {
+        list.forEach(item->fillParentData(item));
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<PARLDKHQZ> list) {
         list.forEach(item->fillParentData(item));
         saveOrUpdateBatch(list,batchSize);

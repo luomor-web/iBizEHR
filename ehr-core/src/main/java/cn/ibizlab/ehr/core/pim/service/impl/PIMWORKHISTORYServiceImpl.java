@@ -103,6 +103,13 @@ public class PIMWORKHISTORYServiceImpl extends ServiceImpl<PIMWORKHISTORYMapper,
     }
 
     @Override
+    public boolean saveBatch(Collection<PIMWORKHISTORY> list) {
+        list.forEach(item->fillParentData(item));
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<PIMWORKHISTORY> list) {
         list.forEach(item->fillParentData(item));
         saveOrUpdateBatch(list,batchSize);

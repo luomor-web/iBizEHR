@@ -98,6 +98,13 @@ public class TestResultServiceImpl extends ServiceImpl<TestResultMapper, TestRes
     }
 
     @Override
+    public boolean saveBatch(Collection<TestResult> list) {
+        list.forEach(item->fillParentData(item));
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<TestResult> list) {
         list.forEach(item->fillParentData(item));
         saveOrUpdateBatch(list,batchSize);

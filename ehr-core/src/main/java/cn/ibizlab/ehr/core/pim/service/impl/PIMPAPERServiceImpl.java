@@ -134,6 +134,13 @@ public class PIMPAPERServiceImpl extends ServiceImpl<PIMPAPERMapper, PIMPAPER> i
     }
 
     @Override
+    public boolean saveBatch(Collection<PIMPAPER> list) {
+        list.forEach(item->fillParentData(item));
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<PIMPAPER> list) {
         list.forEach(item->fillParentData(item));
         saveOrUpdateBatch(list,batchSize);

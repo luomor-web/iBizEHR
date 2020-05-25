@@ -73,6 +73,13 @@ public class CodeItemServiceImpl extends ServiceImpl<CodeItemMapper, CodeItem> i
     }
 
     @Override
+    public boolean saveBatch(Collection<CodeItem> list) {
+        list.forEach(item->fillParentData(item));
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<CodeItem> list) {
         list.forEach(item->fillParentData(item));
         saveOrUpdateBatch(list,batchSize);
