@@ -915,21 +915,6 @@ const router = new Router({
                     component: () => import('@pages/pcm/pcmprofilezpdwshedit-view/pcmprofilezpdwshedit-view.vue'),
                 },
                 {
-                    path: 'pcmzpmeglmxes/:pcmzpmeglmx?/zpmeglmxgridview/:zpmeglmxgridview?',
-                    meta: {
-                        caption: 'entities.pcmzpmeglmx.views.zpmeglmxgridview.caption',
-                        imgPath: '../../../img/pzgl/1/xiaoyuanzhaopin.png',
-                        iconCls: '',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'pcmzpmeglmxes', parameterName: 'pcmzpmeglmx' },
-                            { pathName: 'zpmeglmxgridview', parameterName: 'zpmeglmxgridview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/pcm/pcmzpmeglmxzpmeglmxgrid-view/pcmzpmeglmxzpmeglmxgrid-view.vue'),
-                },
-                {
                     path: 'pcmprofiles/:pcmprofile?/rlsb_xgeditview/:rlsb_xgeditview?',
                     meta: {
                         caption: 'entities.pcmprofile.views.rlsb_xgeditview.caption',
@@ -3164,20 +3149,6 @@ const router = new Router({
             requireAuth: true,
         },
         component: () => import('@pages/pcm/pcmprofilezpdwshedit-view/pcmprofilezpdwshedit-view.vue'),
-    },
-    {
-        path: '/pcmzpmeglmxes/:pcmzpmeglmx?/zpmeglmxgridview/:zpmeglmxgridview?',
-        meta: {
-            caption: 'entities.pcmzpmeglmx.views.zpmeglmxgridview.caption',
-            imgPath: '../../../img/pzgl/1/xiaoyuanzhaopin.png',
-            iconCls: '',
-            parameters: [
-                { pathName: 'pcmzpmeglmxes', parameterName: 'pcmzpmeglmx' },
-                { pathName: 'zpmeglmxgridview', parameterName: 'zpmeglmxgridview' },
-            ],
-            requireAuth: true,
-        },
-        component: () => import('@pages/pcm/pcmzpmeglmxzpmeglmxgrid-view/pcmzpmeglmxzpmeglmxgrid-view.vue'),
     },
     {
         path: '/pcmprofilespyys/:pcmprofilespyy?/editview/:editview?',

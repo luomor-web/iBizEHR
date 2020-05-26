@@ -682,7 +682,6 @@ export const viewstate: any = {
             viewaction: '',
             viewdatachange: false,
             refviews: [
-                'df39bc60733c4cefb8b8230033645777',
                 '654b0d69b59342ca52e3ae8392ec318d',
             ],
         },
@@ -924,15 +923,6 @@ export const viewstate: any = {
                 'eab174bdd0d26c696e5a0e0d433af6c6',
                 '71cdb539d218e7a24362fa84ffa78813',
                 '01a06bd6730d3199229fd1b9f8aca1a8',
-            ],
-        },
-        {
-            viewtag: 'df39bc60733c4cefb8b8230033645777',
-            viewmodule: 'PCM',
-            viewname: 'PCMZPMEGLMXZPMEGLMXGridView',
-            viewaction: '',
-            viewdatachange: false,
-            refviews: [
             ],
         },
         {

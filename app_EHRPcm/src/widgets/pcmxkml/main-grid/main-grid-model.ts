@@ -42,19 +42,9 @@ export default class MainModel {
           dataType: 'SSCODELIST',
         },
         {
-          name: 'updateman',
-          prop: 'updateman',
-          dataType: 'TEXT',
-        },
-        {
           name: 'pcmxkmlname',
           prop: 'pcmxkmlname',
           dataType: 'TEXT',
-        },
-        {
-          name: 'updatedate',
-          prop: 'updatedate',
-          dataType: 'DATETIME',
         },
         {
           name: 'srfmajortext',

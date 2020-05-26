@@ -1,5 +1,5 @@
 <template>
-  <app-layout viewName="pcmxkmlxkmltreeexpview" viewTitle="学科目录树导航视图" :isShowToolbar="false" :className="{ 'view-container': true, 'default-mode-view': true, 'detreeexpview': true, 'pcmxkmlxkmltree-exp-view': true }" layoutMode="VIEW" :isShowUserInfo="isDefaultView()" :openMode="openMode" @close-view="closeView($event)">
+  <app-layout viewName="pcmxkmlxkmltreeexpview" viewTitle="学科目录树导航视图" :isShowCaptionBar="false" :isShowToolbar="false" :className="{ 'view-container': true, 'default-mode-view': true, 'detreeexpview': true, 'pcmxkmlxkmltree-exp-view': true }" layoutMode="VIEW" :isShowUserInfo="isDefaultView()" :openMode="openMode" @close-view="closeView($event)">
     <template slot="headerLeft">
       <div class="view-header-left">
 

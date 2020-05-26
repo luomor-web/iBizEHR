@@ -152,7 +152,7 @@ export default class RZSPModel {
         {
           name: 'jzbspyj',
           prop: 'jzbspyj',
-          dataType: 'INT',
+          dataType: 'TEXT',
         },
         {
           name: 'r_lastschool',

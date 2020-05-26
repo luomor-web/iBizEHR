@@ -101,22 +101,6 @@
                     </template>
                 </el-table-column>
             </template>
-            <template v-if="getColumnState('updateman')">
-                <el-table-column show-overflow-tooltip :prop="'updateman'" :label="$t('entities.pcmxkml.main_grid.columns.updateman')" :width="120"  :align="'left'" :sortable="'custom'">
-                    <template v-slot="{row,column}">
-                        <template >
-            <codelist :value="row.updateman" tag='SysOperator' codelistType='DYNAMIC' ></codelist>
-                        </template>
-                    </template>
-                </el-table-column>
-            </template>
-            <template v-if="getColumnState('updatedate')">
-                <el-table-column show-overflow-tooltip :prop="'updatedate'" :label="$t('entities.pcmxkml.main_grid.columns.updatedate')" :width="200"  :align="'left'" :sortable="'custom'">
-                    <template v-slot="{row,column}">
-                        <app-format-data format="%1$tY-%1$tm-%1$td" :data="row.updatedate"></app-format-data>
-                    </template>
-                </el-table-column>
-            </template>
             <template v-if="adaptiveState">
                 <el-table-column></el-table-column>
             </template>
@@ -620,20 +604,6 @@ export default class MainBase extends Vue implements ControlInterface {
             show: true,
             util: 'PX'
         },
-        {
-            name: 'updateman',
-            label: '更新人',
-            langtag: 'entities.pcmxkml.main_grid.columns.updateman',
-            show: true,
-            util: 'PX'
-        },
-        {
-            name: 'updatedate',
-            label: '更新时间',
-            langtag: 'entities.pcmxkml.main_grid.columns.updatedate',
-            show: true,
-            util: 'PX'
-        },
     ]
 
     /**
@@ -979,14 +949,6 @@ export default class MainBase extends Vue implements ControlInterface {
           {
             name: 'xkml',
             srfkey: 'PIMCL_XKML',
-            codelistType : 'DYNAMIC',
-            renderMode: 'other',
-            textSeparator: '、',
-            valueSeparator: ',',
-          },
-          {
-            name: 'updateman',
-            srfkey: 'SysOperator',
             codelistType : 'DYNAMIC',
             renderMode: 'other',
             textSeparator: '、',

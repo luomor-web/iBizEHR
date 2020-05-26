@@ -176,37 +176,6 @@
 </app-form-group>
 
 </i-col>
-<i-col v-show="detailsModel.grouppanel1.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
-    <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' :uiActionGroup="detailsModel.grouppanel1.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.pcmzpmegl.main_form.details.grouppanel1')" :isShowCaption="false" uiStyle="DEFAULT" :titleBarCloseMode="0" :isInfoGroupMode="false" >    
-    <row>
-        <i-col v-show="detailsModel.druipart1.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
-    <app-form-druipart
-    
-    :formState="formState"
-    :isForbidLoad="this.data.srfuf === '0'"
-    paramItem='pcmzpmegl' 
-    :parentdata='{"srfparentdefname":"PCMZPMEGLID","srfparentdename":"PCMZPMEGL","SRFPARENTTYPE":"DER1N","srfparentmode":"DER1N_PCMZPMEGLMX_PCMZPMEGL_PCMZPMEGLID","SRFDER1NID":"DER1N_PCMZPMEGLMX_PCMZPMEGL_PCMZPMEGLID"}'
-    :parameters="[
-    ]"
-    :context="context"
-    :viewparams="viewparams"
-    parameterName='pcmzpmegl'
-    parentName="PCMZPMEGL"  
-    refviewtype='DEGRIDVIEW' 
-    refreshitems='' 
-    :ignorefieldvaluechange="ignorefieldvaluechange"
-    viewname='pcmzpmeglmxzpmeglmxgrid-view' 
-    :data="JSON.stringify(this.data)" 
-    @drdatasaved="drdatasaved($event)"
-    style=";overflow: auto;">
-</app-form-druipart>
-
-</i-col>
-    
-    </row>
-</app-form-group>
-
-</i-col>
 
 
     </row>
@@ -785,10 +754,6 @@ export default class MainBase extends Vue implements ControlInterface {
 , 
         grouppanel2: new FormGroupPanelModel({ caption: '招聘名额分类', detailType: 'GROUPPANEL', name: 'grouppanel2', visible: true, isShowCaption: false, form: this, uiActionGroup: { caption: '', langbase: 'entities.pcmzpmegl.main_form', extractMode: 'ITEM', details: [] } })
 , 
-        druipart1: new FormDRUIPartModel({ caption: '', detailType: 'DRUIPART', name: 'druipart1', visible: true, isShowCaption: true, form: this })
-, 
-        grouppanel1: new FormGroupPanelModel({ caption: '招聘名额管理明细', detailType: 'GROUPPANEL', name: 'grouppanel1', visible: true, isShowCaption: false, form: this, uiActionGroup: { caption: '', langbase: 'entities.pcmzpmegl.main_form', extractMode: 'ITEM', details: [] } })
-, 
         formpage1: new FormPageModel({ caption: '基本信息', detailType: 'FORMPAGE', name: 'formpage1', visible: true, isShowCaption: true, form: this })
 , 
         srfupdatedate: new FormItemModel({ caption: '更新时间', detailType: 'FORMITEM', name: 'srfupdatedate', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
@@ -1291,8 +1256,6 @@ export default class MainBase extends Vue implements ControlInterface {
      */
     public formLogic({ name, newVal, oldVal }: { name: string, newVal: any, oldVal: any }): void {
                 
-
-
 
 
 
@@ -1852,7 +1815,7 @@ export default class MainBase extends Vue implements ControlInterface {
             Object.assign(arg, data);
             Object.assign(arg, this.context);
             if (ifStateNext) {
-                this.drcounter = 1;
+                this.drcounter = 0;
                 if(this.drcounter !== 0){
                     this.drsaveopt = opt;
                     this.formState.next({ type: 'beforesave', data: arg });//先通知关系界面保存

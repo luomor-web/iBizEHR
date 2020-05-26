@@ -61,8 +61,6 @@ export default {
 		details: {
 			group1: "招聘名额信息", 
 			grouppanel2: "招聘名额分类", 
-			druipart1: "", 
-			grouppanel1: "招聘名额管理明细", 
 			formpage1: "基本信息", 
 			srfupdatedate: "更新时间", 
 			srforikey: "", 

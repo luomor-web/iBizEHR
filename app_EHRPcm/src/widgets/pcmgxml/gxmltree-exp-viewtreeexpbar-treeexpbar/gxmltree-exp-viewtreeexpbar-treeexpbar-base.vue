@@ -290,7 +290,7 @@ export default class GXMLTreeExpViewtreeexpbarBase extends Vue implements Contro
         if (Object.is(expmode, 'PCMGXML')) {
             return {  
                 viewname: 'pcmgxmlcur-ndgrid-view', 
-                parentdata: {"nodeid":"%NODEID%"},
+                parentdata: {"srfparentdefname":"n_nd_eq","nodeid":"%NODEID%"},
                 deKeyField:'pcmgxml'
 			};
         }

@@ -267,6 +267,7 @@ export default class GXMLtreeService extends ControlService {
                     strNodeId += item.value;
                     Object.assign(item, { id: strNodeId });
                     Object.assign(item, { expanded: filter.isautoexpand });
+                    Object.assign(item, { navfilter: "n_nd_eq" });
                     Object.assign(item, { navparams: '{"nodeid":"%NODEID%"}' });
                     Object.assign(item, { nodeid: item.srfkey });
                     Object.assign(item, { nodeid2: item.pvalue });
@@ -285,6 +286,7 @@ export default class GXMLtreeService extends ControlService {
                     Object.assign(treeNode, { id: strNodeId });
                     Object.assign(treeNode, { expanded: filter.isautoexpand });
                     Object.assign(treeNode, { leaf: true });
+                    Object.assign(treeNode, { navfilter: "n_nd_eq" });
                     Object.assign(treeNode, { navparams: '{"nodeid":"%NODEID%"}' });
                     if(item.children && item.children.length >0){
                         Object.assign(treeNode, { children: item.children });

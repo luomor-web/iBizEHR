@@ -44,7 +44,6 @@ export const PageComponents = {
         Vue.component('pcmprofilezpdwshgrid-view', () => import('@pages/pcm/pcmprofilezpdwshgrid-view/pcmprofilezpdwshgrid-view.vue'));
         Vue.component('pcmeducation-experience-edit-view', () => import('@pages/pcm/pcmeducation-experience-edit-view/pcmeducation-experience-edit-view.vue'));
         Vue.component('pcmprofilezpdwshedit-view', () => import('@pages/pcm/pcmprofilezpdwshedit-view/pcmprofilezpdwshedit-view.vue'));
-        Vue.component('pcmzpmeglmxzpmeglmxgrid-view', () => import('@pages/pcm/pcmzpmeglmxzpmeglmxgrid-view/pcmzpmeglmxzpmeglmxgrid-view.vue'));
         Vue.component('pcmprofilerlsb-xgedit-view', () => import('@pages/pcm/pcmprofilerlsb-xgedit-view/pcmprofilerlsb-xgedit-view.vue'));
         Vue.component('ormorgypzxxsypickup-grid-view', () => import('@pages/orm/ormorgypzxxsypickup-grid-view/ormorgypzxxsypickup-grid-view.vue'));
         Vue.component('pcmgxmlgxmltree-exp-view', () => import('@pages/pcm/pcmgxmlgxmltree-exp-view/pcmgxmlgxmltree-exp-view.vue'));
