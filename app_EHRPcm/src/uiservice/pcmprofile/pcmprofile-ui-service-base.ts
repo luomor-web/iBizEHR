@@ -476,43 +476,6 @@ export default class PCMPROFILEUIServiceBase extends UIService {
     }
 
     /**
-     * 删除
-     *
-     * @param {any[]} args 当前数据
-     * @param {any} context 行为附加上下文
-     * @param {*} [params] 附加参数
-     * @param {*} [$event] 事件源
-     * @param {*} [xData]  执行行为所需当前部件
-     * @param {*} [actionContext]  执行行为上下文
-     * @param {*} [srfParentDeName] 父实体名称
-     * @returns {Promise<any>}
-     */
-    public async PCMPROFILE_KSCYPZ(args: any[],context:any = {}, params?: any, $event?: any, xData?: any,actionContext?: any,srfParentDeName?:string){
-        let data: any = {};
-        const _args: any[] = Util.deepCopy(args);
-        const _this: any = actionContext;
-        const actionTarget: string | null = 'SINGLEKEY';
-        Object.assign(context, { pcmprofile: '%pcmprofile%' });
-        Object.assign(params, { pcmprofileid: '%pcmprofile%' });
-        Object.assign(params, { pcmprofilename: '%pcmprofilename%' });
-        context = UIActionTool.handleContextParam(actionTarget,_args,context);
-        data = UIActionTool.handleActionParam(actionTarget,_args,params);
-        context = Object.assign({},actionContext.context,context);
-        let parentObj:any = {srfparentdename:srfParentDeName?srfParentDeName:null,srfparentkey:srfParentDeName?context[srfParentDeName.toLowerCase()]:null};
-        Object.assign(data,parentObj);
-        Object.assign(context,parentObj);
-        // 直接调实体服务需要转换的数据
-        if(context && context.srfsessionid){
-          context.srfsessionkey = context.srfsessionid;
-            delete context.srfsessionid;
-        }
-        const backend = () => {
-            actionContext.$Notice.error({ title: '错误', desc: '模型异常，应用实体方法不存在' });
-        };
-        backend();
-    }
-
-    /**
      * 修改
      *
      * @param {any[]} args 当前数据

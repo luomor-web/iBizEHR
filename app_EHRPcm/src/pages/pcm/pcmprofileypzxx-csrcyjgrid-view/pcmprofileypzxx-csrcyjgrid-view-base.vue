@@ -200,8 +200,6 @@ export default class PCMPROFILEYPZXX_CSRCYJGridViewBase extends GridViewBase {
 
         tbitem1_qtzp: { name: 'tbitem1_qtzp', caption: '其他招聘','isShowCaption':true,'isShowIcon':true, tooltip: '其他招聘', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: '', uiaction: { tag: 'QTZP', target: 'NONE' }, class: '' },
 
-        tbitem1_kscypz: { name: 'tbitem1_kscypz', caption: '删除','isShowCaption':true,'isShowIcon':true, tooltip: '删除', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: 'SRFUR__YPZXXCZAN', uiaction: { tag: 'KSCYPZ', target: 'SINGLEKEY' }, class: '' },
-
         tbitem8: { name: 'tbitem8', caption: '删除','isShowCaption':true,'isShowIcon':true, tooltip: '删除', iconcls: 'fa fa-remove', icon: '', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: 'SRFUR__JGLYGXML', uiaction: { tag: 'Remove', target: 'MULTIKEY' }, class: '' },
 
         deuiaction3: { name: 'deuiaction3', caption: '导入','isShowCaption':true,'isShowIcon':true, tooltip: '导入', iconcls: 'fa fa-upload', icon: '', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: 'SRFUR__JGLYYPZSZYJTJ', uiaction: { tag: 'Import', target: '' }, class: '' },
@@ -269,9 +267,6 @@ export default class PCMPROFILEYPZXX_CSRCYJGridViewBase extends GridViewBase {
         }
         if (Object.is($event.tag, 'tbitem1_qtzp')) {
             this.toolbar_tbitem1_qtzp_click(null, '', $event2);
-        }
-        if (Object.is($event.tag, 'tbitem1_kscypz')) {
-            this.toolbar_tbitem1_kscypz_click(null, '', $event2);
         }
         if (Object.is($event.tag, 'tbitem8')) {
             this.toolbar_tbitem8_click(null, '', $event2);
@@ -506,36 +501,6 @@ export default class PCMPROFILEYPZXX_CSRCYJGridViewBase extends GridViewBase {
         // 界面行为
         const curUIService:PCMPROFILEUIService  = new PCMPROFILEUIService();
         curUIService.PCMPROFILE_QTZP(datas,contextJO, paramJO,  $event, xData,this,"PCMPROFILE");
-    }
-
-    /**
-     * 逻辑事件
-     *
-     * @param {*} [params={}]
-     * @param {*} [tag]
-     * @param {*} [$event]
-     * @memberof 
-     */
-    public toolbar_tbitem1_kscypz_click(params: any = {}, tag?: any, $event?: any) {
-        // 参数
-        // 取数
-        let datas: any[] = [];
-        let xData: any = null;
-        // _this 指向容器对象
-        const _this: any = this;
-        let paramJO:any = {};
-        
-        let contextJO:any = {};
-        xData = this.$refs.grid;
-        if (xData.getDatas && xData.getDatas instanceof Function) {
-            datas = [...xData.getDatas()];
-        }
-        if(params){
-          datas = [params];
-        }
-        // 界面行为
-        const curUIService:PCMPROFILEUIService  = new PCMPROFILEUIService();
-        curUIService.PCMPROFILE_KSCYPZ(datas,contextJO, paramJO,  $event, xData,this,"PCMPROFILE");
     }
 
     /**

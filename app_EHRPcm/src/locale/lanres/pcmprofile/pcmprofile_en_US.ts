@@ -2429,10 +2429,6 @@ export default {
 			caption: "校招",
 			tip: "校招",
 		},
-		tbitem1_kscypz: {
-			caption: "删除",
-			tip: "删除",
-		},
 		tbitem8: {
 			caption: "Remove",
 			tip: "Remove {0}",
@@ -2704,10 +2700,6 @@ export default {
 		tbitem1_qtzp: {
 			caption: "其他招聘",
 			tip: "其他招聘",
-		},
-		tbitem1_kscypz: {
-			caption: "删除",
-			tip: "删除",
 		},
 		tbitem8: {
 			caption: "Remove",

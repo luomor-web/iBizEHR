@@ -114,15 +114,15 @@ export default class PCMPROFILEServiceBase extends EntityService {
      */
     public async GetYPZNL(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
             let res:any = await Http.getInstance().get(`/pcmprofiles/${context.pcmprofile}/getypznl`,isloading);
-            this.tempStorage.setItem(context.srfsessionkey+'_testresults',JSON.stringify(res.data.testresults));
-            this.tempStorage.setItem(context.srfsessionkey+'_pcmawardswons',JSON.stringify(res.data.pcmawardswons));
-            this.tempStorage.setItem(context.srfsessionkey+'_pcmschooloffices',JSON.stringify(res.data.pcmschooloffices));
-            this.tempStorage.setItem(context.srfsessionkey+'_pcmeducationexperiences',JSON.stringify(res.data.pcmeducationexperiences));
-            this.tempStorage.setItem(context.srfsessionkey+'_tdzwxxes',JSON.stringify(res.data.tdzwxxes));
-            this.tempStorage.setItem(context.srfsessionkey+'_pcmpracticeexperiences',JSON.stringify(res.data.pcmpracticeexperiences));
             this.tempStorage.setItem(context.srfsessionkey+'_pcmcertofregs',JSON.stringify(res.data.pcmcertofregs));
             this.tempStorage.setItem(context.srfsessionkey+'_pcmworkresumes',JSON.stringify(res.data.pcmworkresumes));
+            this.tempStorage.setItem(context.srfsessionkey+'_testresults',JSON.stringify(res.data.testresults));
+            this.tempStorage.setItem(context.srfsessionkey+'_pcmawardswons',JSON.stringify(res.data.pcmawardswons));
+            this.tempStorage.setItem(context.srfsessionkey+'_pcmpracticeexperiences',JSON.stringify(res.data.pcmpracticeexperiences));
+            this.tempStorage.setItem(context.srfsessionkey+'_pcmschooloffices',JSON.stringify(res.data.pcmschooloffices));
+            this.tempStorage.setItem(context.srfsessionkey+'_pcmeducationexperiences',JSON.stringify(res.data.pcmeducationexperiences));
             this.tempStorage.setItem(context.srfsessionkey+'_pcmprofileapprovals',JSON.stringify(res.data.pcmprofileapprovals));
+            this.tempStorage.setItem(context.srfsessionkey+'_tdzwxxes',JSON.stringify(res.data.tdzwxxes));
             return res;
 
     }
@@ -151,96 +151,6 @@ export default class PCMPROFILEServiceBase extends EntityService {
      */
     public async Save(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
         let masterData:any = {};
-        let testresultsData:any = [];
-        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_testresults'),'undefined')){
-            testresultsData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_testresults') as any);
-            if(testresultsData && testresultsData.length && testresultsData.length > 0){
-                testresultsData.forEach((item:any) => {
-                    if(item.srffrontuf){
-                        if(Object.is(item.srffrontuf,"0")){
-                            item.testresultid = null;
-                        }
-                        delete item.srffrontuf;
-                    }
-                });
-            }
-        }
-        masterData.testresults = testresultsData;
-        let pcmawardswonsData:any = [];
-        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_pcmawardswons'),'undefined')){
-            pcmawardswonsData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_pcmawardswons') as any);
-            if(pcmawardswonsData && pcmawardswonsData.length && pcmawardswonsData.length > 0){
-                pcmawardswonsData.forEach((item:any) => {
-                    if(item.srffrontuf){
-                        if(Object.is(item.srffrontuf,"0")){
-                            item.pcmawardswonsid = null;
-                        }
-                        delete item.srffrontuf;
-                    }
-                });
-            }
-        }
-        masterData.pcmawardswons = pcmawardswonsData;
-        let pcmschoolofficesData:any = [];
-        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_pcmschooloffices'),'undefined')){
-            pcmschoolofficesData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_pcmschooloffices') as any);
-            if(pcmschoolofficesData && pcmschoolofficesData.length && pcmschoolofficesData.length > 0){
-                pcmschoolofficesData.forEach((item:any) => {
-                    if(item.srffrontuf){
-                        if(Object.is(item.srffrontuf,"0")){
-                            item.pcmschoolofficeid = null;
-                        }
-                        delete item.srffrontuf;
-                    }
-                });
-            }
-        }
-        masterData.pcmschooloffices = pcmschoolofficesData;
-        let pcmeducationexperiencesData:any = [];
-        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_pcmeducationexperiences'),'undefined')){
-            pcmeducationexperiencesData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_pcmeducationexperiences') as any);
-            if(pcmeducationexperiencesData && pcmeducationexperiencesData.length && pcmeducationexperiencesData.length > 0){
-                pcmeducationexperiencesData.forEach((item:any) => {
-                    if(item.srffrontuf){
-                        if(Object.is(item.srffrontuf,"0")){
-                            item.pcmeducationexperienceid = null;
-                        }
-                        delete item.srffrontuf;
-                    }
-                });
-            }
-        }
-        masterData.pcmeducationexperiences = pcmeducationexperiencesData;
-        let tdzwxxesData:any = [];
-        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_tdzwxxes'),'undefined')){
-            tdzwxxesData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_tdzwxxes') as any);
-            if(tdzwxxesData && tdzwxxesData.length && tdzwxxesData.length > 0){
-                tdzwxxesData.forEach((item:any) => {
-                    if(item.srffrontuf){
-                        if(Object.is(item.srffrontuf,"0")){
-                            item.tdzwxxid = null;
-                        }
-                        delete item.srffrontuf;
-                    }
-                });
-            }
-        }
-        masterData.tdzwxxes = tdzwxxesData;
-        let pcmpracticeexperiencesData:any = [];
-        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_pcmpracticeexperiences'),'undefined')){
-            pcmpracticeexperiencesData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_pcmpracticeexperiences') as any);
-            if(pcmpracticeexperiencesData && pcmpracticeexperiencesData.length && pcmpracticeexperiencesData.length > 0){
-                pcmpracticeexperiencesData.forEach((item:any) => {
-                    if(item.srffrontuf){
-                        if(Object.is(item.srffrontuf,"0")){
-                            item.pcmpracticeexperienceid = null;
-                        }
-                        delete item.srffrontuf;
-                    }
-                });
-            }
-        }
-        masterData.pcmpracticeexperiences = pcmpracticeexperiencesData;
         let pcmcertofregsData:any = [];
         if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_pcmcertofregs'),'undefined')){
             pcmcertofregsData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_pcmcertofregs') as any);
@@ -271,6 +181,81 @@ export default class PCMPROFILEServiceBase extends EntityService {
             }
         }
         masterData.pcmworkresumes = pcmworkresumesData;
+        let testresultsData:any = [];
+        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_testresults'),'undefined')){
+            testresultsData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_testresults') as any);
+            if(testresultsData && testresultsData.length && testresultsData.length > 0){
+                testresultsData.forEach((item:any) => {
+                    if(item.srffrontuf){
+                        if(Object.is(item.srffrontuf,"0")){
+                            item.testresultid = null;
+                        }
+                        delete item.srffrontuf;
+                    }
+                });
+            }
+        }
+        masterData.testresults = testresultsData;
+        let pcmawardswonsData:any = [];
+        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_pcmawardswons'),'undefined')){
+            pcmawardswonsData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_pcmawardswons') as any);
+            if(pcmawardswonsData && pcmawardswonsData.length && pcmawardswonsData.length > 0){
+                pcmawardswonsData.forEach((item:any) => {
+                    if(item.srffrontuf){
+                        if(Object.is(item.srffrontuf,"0")){
+                            item.pcmawardswonsid = null;
+                        }
+                        delete item.srffrontuf;
+                    }
+                });
+            }
+        }
+        masterData.pcmawardswons = pcmawardswonsData;
+        let pcmpracticeexperiencesData:any = [];
+        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_pcmpracticeexperiences'),'undefined')){
+            pcmpracticeexperiencesData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_pcmpracticeexperiences') as any);
+            if(pcmpracticeexperiencesData && pcmpracticeexperiencesData.length && pcmpracticeexperiencesData.length > 0){
+                pcmpracticeexperiencesData.forEach((item:any) => {
+                    if(item.srffrontuf){
+                        if(Object.is(item.srffrontuf,"0")){
+                            item.pcmpracticeexperienceid = null;
+                        }
+                        delete item.srffrontuf;
+                    }
+                });
+            }
+        }
+        masterData.pcmpracticeexperiences = pcmpracticeexperiencesData;
+        let pcmschoolofficesData:any = [];
+        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_pcmschooloffices'),'undefined')){
+            pcmschoolofficesData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_pcmschooloffices') as any);
+            if(pcmschoolofficesData && pcmschoolofficesData.length && pcmschoolofficesData.length > 0){
+                pcmschoolofficesData.forEach((item:any) => {
+                    if(item.srffrontuf){
+                        if(Object.is(item.srffrontuf,"0")){
+                            item.pcmschoolofficeid = null;
+                        }
+                        delete item.srffrontuf;
+                    }
+                });
+            }
+        }
+        masterData.pcmschooloffices = pcmschoolofficesData;
+        let pcmeducationexperiencesData:any = [];
+        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_pcmeducationexperiences'),'undefined')){
+            pcmeducationexperiencesData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_pcmeducationexperiences') as any);
+            if(pcmeducationexperiencesData && pcmeducationexperiencesData.length && pcmeducationexperiencesData.length > 0){
+                pcmeducationexperiencesData.forEach((item:any) => {
+                    if(item.srffrontuf){
+                        if(Object.is(item.srffrontuf,"0")){
+                            item.pcmeducationexperienceid = null;
+                        }
+                        delete item.srffrontuf;
+                    }
+                });
+            }
+        }
+        masterData.pcmeducationexperiences = pcmeducationexperiencesData;
         let pcmprofileapprovalsData:any = [];
         if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_pcmprofileapprovals'),'undefined')){
             pcmprofileapprovalsData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_pcmprofileapprovals') as any);
@@ -286,17 +271,32 @@ export default class PCMPROFILEServiceBase extends EntityService {
             }
         }
         masterData.pcmprofileapprovals = pcmprofileapprovalsData;
+        let tdzwxxesData:any = [];
+        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_tdzwxxes'),'undefined')){
+            tdzwxxesData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_tdzwxxes') as any);
+            if(tdzwxxesData && tdzwxxesData.length && tdzwxxesData.length > 0){
+                tdzwxxesData.forEach((item:any) => {
+                    if(item.srffrontuf){
+                        if(Object.is(item.srffrontuf,"0")){
+                            item.tdzwxxid = null;
+                        }
+                        delete item.srffrontuf;
+                    }
+                });
+            }
+        }
+        masterData.tdzwxxes = tdzwxxesData;
         Object.assign(data,masterData);
             let res:any = await  Http.getInstance().post(`/pcmprofiles/${context.pcmprofile}/save`,data,isloading);
-            this.tempStorage.setItem(context.srfsessionkey+'_testresults',JSON.stringify(res.data.testresults));
-            this.tempStorage.setItem(context.srfsessionkey+'_pcmawardswons',JSON.stringify(res.data.pcmawardswons));
-            this.tempStorage.setItem(context.srfsessionkey+'_pcmschooloffices',JSON.stringify(res.data.pcmschooloffices));
-            this.tempStorage.setItem(context.srfsessionkey+'_pcmeducationexperiences',JSON.stringify(res.data.pcmeducationexperiences));
-            this.tempStorage.setItem(context.srfsessionkey+'_tdzwxxes',JSON.stringify(res.data.tdzwxxes));
-            this.tempStorage.setItem(context.srfsessionkey+'_pcmpracticeexperiences',JSON.stringify(res.data.pcmpracticeexperiences));
             this.tempStorage.setItem(context.srfsessionkey+'_pcmcertofregs',JSON.stringify(res.data.pcmcertofregs));
             this.tempStorage.setItem(context.srfsessionkey+'_pcmworkresumes',JSON.stringify(res.data.pcmworkresumes));
+            this.tempStorage.setItem(context.srfsessionkey+'_testresults',JSON.stringify(res.data.testresults));
+            this.tempStorage.setItem(context.srfsessionkey+'_pcmawardswons',JSON.stringify(res.data.pcmawardswons));
+            this.tempStorage.setItem(context.srfsessionkey+'_pcmpracticeexperiences',JSON.stringify(res.data.pcmpracticeexperiences));
+            this.tempStorage.setItem(context.srfsessionkey+'_pcmschooloffices',JSON.stringify(res.data.pcmschooloffices));
+            this.tempStorage.setItem(context.srfsessionkey+'_pcmeducationexperiences',JSON.stringify(res.data.pcmeducationexperiences));
             this.tempStorage.setItem(context.srfsessionkey+'_pcmprofileapprovals',JSON.stringify(res.data.pcmprofileapprovals));
+            this.tempStorage.setItem(context.srfsessionkey+'_tdzwxxes',JSON.stringify(res.data.tdzwxxes));
             return res;
     }
 
@@ -389,15 +389,15 @@ export default class PCMPROFILEServiceBase extends EntityService {
      */
     public async GetPcmprofileInfo(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
             let res:any = await Http.getInstance().get(`/pcmprofiles/${context.pcmprofile}/getpcmprofileinfo`,isloading);
-            this.tempStorage.setItem(context.srfsessionkey+'_testresults',JSON.stringify(res.data.testresults));
-            this.tempStorage.setItem(context.srfsessionkey+'_pcmawardswons',JSON.stringify(res.data.pcmawardswons));
-            this.tempStorage.setItem(context.srfsessionkey+'_pcmschooloffices',JSON.stringify(res.data.pcmschooloffices));
-            this.tempStorage.setItem(context.srfsessionkey+'_pcmeducationexperiences',JSON.stringify(res.data.pcmeducationexperiences));
-            this.tempStorage.setItem(context.srfsessionkey+'_tdzwxxes',JSON.stringify(res.data.tdzwxxes));
-            this.tempStorage.setItem(context.srfsessionkey+'_pcmpracticeexperiences',JSON.stringify(res.data.pcmpracticeexperiences));
             this.tempStorage.setItem(context.srfsessionkey+'_pcmcertofregs',JSON.stringify(res.data.pcmcertofregs));
             this.tempStorage.setItem(context.srfsessionkey+'_pcmworkresumes',JSON.stringify(res.data.pcmworkresumes));
+            this.tempStorage.setItem(context.srfsessionkey+'_testresults',JSON.stringify(res.data.testresults));
+            this.tempStorage.setItem(context.srfsessionkey+'_pcmawardswons',JSON.stringify(res.data.pcmawardswons));
+            this.tempStorage.setItem(context.srfsessionkey+'_pcmpracticeexperiences',JSON.stringify(res.data.pcmpracticeexperiences));
+            this.tempStorage.setItem(context.srfsessionkey+'_pcmschooloffices',JSON.stringify(res.data.pcmschooloffices));
+            this.tempStorage.setItem(context.srfsessionkey+'_pcmeducationexperiences',JSON.stringify(res.data.pcmeducationexperiences));
             this.tempStorage.setItem(context.srfsessionkey+'_pcmprofileapprovals',JSON.stringify(res.data.pcmprofileapprovals));
+            this.tempStorage.setItem(context.srfsessionkey+'_tdzwxxes',JSON.stringify(res.data.tdzwxxes));
             return res;
 
     }
@@ -413,96 +413,6 @@ export default class PCMPROFILEServiceBase extends EntityService {
      */
     public async Create(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
         let masterData:any = {};
-        let testresultsData:any = [];
-        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_testresults'),'undefined')){
-            testresultsData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_testresults') as any);
-            if(testresultsData && testresultsData.length && testresultsData.length > 0){
-                testresultsData.forEach((item:any) => {
-                    if(item.srffrontuf){
-                        if(Object.is(item.srffrontuf,"0")){
-                            item.testresultid = null;
-                        }
-                        delete item.srffrontuf;
-                    }
-                });
-            }
-        }
-        masterData.testresults = testresultsData;
-        let pcmawardswonsData:any = [];
-        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_pcmawardswons'),'undefined')){
-            pcmawardswonsData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_pcmawardswons') as any);
-            if(pcmawardswonsData && pcmawardswonsData.length && pcmawardswonsData.length > 0){
-                pcmawardswonsData.forEach((item:any) => {
-                    if(item.srffrontuf){
-                        if(Object.is(item.srffrontuf,"0")){
-                            item.pcmawardswonsid = null;
-                        }
-                        delete item.srffrontuf;
-                    }
-                });
-            }
-        }
-        masterData.pcmawardswons = pcmawardswonsData;
-        let pcmschoolofficesData:any = [];
-        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_pcmschooloffices'),'undefined')){
-            pcmschoolofficesData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_pcmschooloffices') as any);
-            if(pcmschoolofficesData && pcmschoolofficesData.length && pcmschoolofficesData.length > 0){
-                pcmschoolofficesData.forEach((item:any) => {
-                    if(item.srffrontuf){
-                        if(Object.is(item.srffrontuf,"0")){
-                            item.pcmschoolofficeid = null;
-                        }
-                        delete item.srffrontuf;
-                    }
-                });
-            }
-        }
-        masterData.pcmschooloffices = pcmschoolofficesData;
-        let pcmeducationexperiencesData:any = [];
-        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_pcmeducationexperiences'),'undefined')){
-            pcmeducationexperiencesData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_pcmeducationexperiences') as any);
-            if(pcmeducationexperiencesData && pcmeducationexperiencesData.length && pcmeducationexperiencesData.length > 0){
-                pcmeducationexperiencesData.forEach((item:any) => {
-                    if(item.srffrontuf){
-                        if(Object.is(item.srffrontuf,"0")){
-                            item.pcmeducationexperienceid = null;
-                        }
-                        delete item.srffrontuf;
-                    }
-                });
-            }
-        }
-        masterData.pcmeducationexperiences = pcmeducationexperiencesData;
-        let tdzwxxesData:any = [];
-        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_tdzwxxes'),'undefined')){
-            tdzwxxesData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_tdzwxxes') as any);
-            if(tdzwxxesData && tdzwxxesData.length && tdzwxxesData.length > 0){
-                tdzwxxesData.forEach((item:any) => {
-                    if(item.srffrontuf){
-                        if(Object.is(item.srffrontuf,"0")){
-                            item.tdzwxxid = null;
-                        }
-                        delete item.srffrontuf;
-                    }
-                });
-            }
-        }
-        masterData.tdzwxxes = tdzwxxesData;
-        let pcmpracticeexperiencesData:any = [];
-        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_pcmpracticeexperiences'),'undefined')){
-            pcmpracticeexperiencesData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_pcmpracticeexperiences') as any);
-            if(pcmpracticeexperiencesData && pcmpracticeexperiencesData.length && pcmpracticeexperiencesData.length > 0){
-                pcmpracticeexperiencesData.forEach((item:any) => {
-                    if(item.srffrontuf){
-                        if(Object.is(item.srffrontuf,"0")){
-                            item.pcmpracticeexperienceid = null;
-                        }
-                        delete item.srffrontuf;
-                    }
-                });
-            }
-        }
-        masterData.pcmpracticeexperiences = pcmpracticeexperiencesData;
         let pcmcertofregsData:any = [];
         if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_pcmcertofregs'),'undefined')){
             pcmcertofregsData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_pcmcertofregs') as any);
@@ -533,6 +443,81 @@ export default class PCMPROFILEServiceBase extends EntityService {
             }
         }
         masterData.pcmworkresumes = pcmworkresumesData;
+        let testresultsData:any = [];
+        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_testresults'),'undefined')){
+            testresultsData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_testresults') as any);
+            if(testresultsData && testresultsData.length && testresultsData.length > 0){
+                testresultsData.forEach((item:any) => {
+                    if(item.srffrontuf){
+                        if(Object.is(item.srffrontuf,"0")){
+                            item.testresultid = null;
+                        }
+                        delete item.srffrontuf;
+                    }
+                });
+            }
+        }
+        masterData.testresults = testresultsData;
+        let pcmawardswonsData:any = [];
+        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_pcmawardswons'),'undefined')){
+            pcmawardswonsData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_pcmawardswons') as any);
+            if(pcmawardswonsData && pcmawardswonsData.length && pcmawardswonsData.length > 0){
+                pcmawardswonsData.forEach((item:any) => {
+                    if(item.srffrontuf){
+                        if(Object.is(item.srffrontuf,"0")){
+                            item.pcmawardswonsid = null;
+                        }
+                        delete item.srffrontuf;
+                    }
+                });
+            }
+        }
+        masterData.pcmawardswons = pcmawardswonsData;
+        let pcmpracticeexperiencesData:any = [];
+        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_pcmpracticeexperiences'),'undefined')){
+            pcmpracticeexperiencesData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_pcmpracticeexperiences') as any);
+            if(pcmpracticeexperiencesData && pcmpracticeexperiencesData.length && pcmpracticeexperiencesData.length > 0){
+                pcmpracticeexperiencesData.forEach((item:any) => {
+                    if(item.srffrontuf){
+                        if(Object.is(item.srffrontuf,"0")){
+                            item.pcmpracticeexperienceid = null;
+                        }
+                        delete item.srffrontuf;
+                    }
+                });
+            }
+        }
+        masterData.pcmpracticeexperiences = pcmpracticeexperiencesData;
+        let pcmschoolofficesData:any = [];
+        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_pcmschooloffices'),'undefined')){
+            pcmschoolofficesData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_pcmschooloffices') as any);
+            if(pcmschoolofficesData && pcmschoolofficesData.length && pcmschoolofficesData.length > 0){
+                pcmschoolofficesData.forEach((item:any) => {
+                    if(item.srffrontuf){
+                        if(Object.is(item.srffrontuf,"0")){
+                            item.pcmschoolofficeid = null;
+                        }
+                        delete item.srffrontuf;
+                    }
+                });
+            }
+        }
+        masterData.pcmschooloffices = pcmschoolofficesData;
+        let pcmeducationexperiencesData:any = [];
+        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_pcmeducationexperiences'),'undefined')){
+            pcmeducationexperiencesData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_pcmeducationexperiences') as any);
+            if(pcmeducationexperiencesData && pcmeducationexperiencesData.length && pcmeducationexperiencesData.length > 0){
+                pcmeducationexperiencesData.forEach((item:any) => {
+                    if(item.srffrontuf){
+                        if(Object.is(item.srffrontuf,"0")){
+                            item.pcmeducationexperienceid = null;
+                        }
+                        delete item.srffrontuf;
+                    }
+                });
+            }
+        }
+        masterData.pcmeducationexperiences = pcmeducationexperiencesData;
         let pcmprofileapprovalsData:any = [];
         if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_pcmprofileapprovals'),'undefined')){
             pcmprofileapprovalsData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_pcmprofileapprovals') as any);
@@ -548,6 +533,21 @@ export default class PCMPROFILEServiceBase extends EntityService {
             }
         }
         masterData.pcmprofileapprovals = pcmprofileapprovalsData;
+        let tdzwxxesData:any = [];
+        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_tdzwxxes'),'undefined')){
+            tdzwxxesData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_tdzwxxes') as any);
+            if(tdzwxxesData && tdzwxxesData.length && tdzwxxesData.length > 0){
+                tdzwxxesData.forEach((item:any) => {
+                    if(item.srffrontuf){
+                        if(Object.is(item.srffrontuf,"0")){
+                            item.tdzwxxid = null;
+                        }
+                        delete item.srffrontuf;
+                    }
+                });
+            }
+        }
+        masterData.tdzwxxes = tdzwxxesData;
         Object.assign(data,masterData);
         if(!data.srffrontuf || data.srffrontuf !== "1"){
             data[this.APPDEKEY] = null;
@@ -557,15 +557,15 @@ export default class PCMPROFILEServiceBase extends EntityService {
         }
         let tempContext:any = JSON.parse(JSON.stringify(context));
         let res:any = await Http.getInstance().post(`/pcmprofiles`,data,isloading);
-        this.tempStorage.setItem(tempContext.srfsessionkey+'_testresults',JSON.stringify(res.data.testresults));
-        this.tempStorage.setItem(tempContext.srfsessionkey+'_pcmawardswons',JSON.stringify(res.data.pcmawardswons));
-        this.tempStorage.setItem(tempContext.srfsessionkey+'_pcmschooloffices',JSON.stringify(res.data.pcmschooloffices));
-        this.tempStorage.setItem(tempContext.srfsessionkey+'_pcmeducationexperiences',JSON.stringify(res.data.pcmeducationexperiences));
-        this.tempStorage.setItem(tempContext.srfsessionkey+'_tdzwxxes',JSON.stringify(res.data.tdzwxxes));
-        this.tempStorage.setItem(tempContext.srfsessionkey+'_pcmpracticeexperiences',JSON.stringify(res.data.pcmpracticeexperiences));
         this.tempStorage.setItem(tempContext.srfsessionkey+'_pcmcertofregs',JSON.stringify(res.data.pcmcertofregs));
         this.tempStorage.setItem(tempContext.srfsessionkey+'_pcmworkresumes',JSON.stringify(res.data.pcmworkresumes));
+        this.tempStorage.setItem(tempContext.srfsessionkey+'_testresults',JSON.stringify(res.data.testresults));
+        this.tempStorage.setItem(tempContext.srfsessionkey+'_pcmawardswons',JSON.stringify(res.data.pcmawardswons));
+        this.tempStorage.setItem(tempContext.srfsessionkey+'_pcmpracticeexperiences',JSON.stringify(res.data.pcmpracticeexperiences));
+        this.tempStorage.setItem(tempContext.srfsessionkey+'_pcmschooloffices',JSON.stringify(res.data.pcmschooloffices));
+        this.tempStorage.setItem(tempContext.srfsessionkey+'_pcmeducationexperiences',JSON.stringify(res.data.pcmeducationexperiences));
         this.tempStorage.setItem(tempContext.srfsessionkey+'_pcmprofileapprovals',JSON.stringify(res.data.pcmprofileapprovals));
+        this.tempStorage.setItem(tempContext.srfsessionkey+'_tdzwxxes',JSON.stringify(res.data.tdzwxxes));
         return res;
     }
 
@@ -580,96 +580,6 @@ export default class PCMPROFILEServiceBase extends EntityService {
      */
     public async Update(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
         let masterData:any = {};
-        let testresultsData:any = [];
-        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_testresults'),'undefined')){
-            testresultsData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_testresults') as any);
-            if(testresultsData && testresultsData.length && testresultsData.length > 0){
-                testresultsData.forEach((item:any) => {
-                    if(item.srffrontuf){
-                        if(Object.is(item.srffrontuf,"0")){
-                            item.testresultid = null;
-                        }
-                        delete item.srffrontuf;
-                    }
-                });
-            }
-        }
-        masterData.testresults = testresultsData;
-        let pcmawardswonsData:any = [];
-        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_pcmawardswons'),'undefined')){
-            pcmawardswonsData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_pcmawardswons') as any);
-            if(pcmawardswonsData && pcmawardswonsData.length && pcmawardswonsData.length > 0){
-                pcmawardswonsData.forEach((item:any) => {
-                    if(item.srffrontuf){
-                        if(Object.is(item.srffrontuf,"0")){
-                            item.pcmawardswonsid = null;
-                        }
-                        delete item.srffrontuf;
-                    }
-                });
-            }
-        }
-        masterData.pcmawardswons = pcmawardswonsData;
-        let pcmschoolofficesData:any = [];
-        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_pcmschooloffices'),'undefined')){
-            pcmschoolofficesData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_pcmschooloffices') as any);
-            if(pcmschoolofficesData && pcmschoolofficesData.length && pcmschoolofficesData.length > 0){
-                pcmschoolofficesData.forEach((item:any) => {
-                    if(item.srffrontuf){
-                        if(Object.is(item.srffrontuf,"0")){
-                            item.pcmschoolofficeid = null;
-                        }
-                        delete item.srffrontuf;
-                    }
-                });
-            }
-        }
-        masterData.pcmschooloffices = pcmschoolofficesData;
-        let pcmeducationexperiencesData:any = [];
-        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_pcmeducationexperiences'),'undefined')){
-            pcmeducationexperiencesData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_pcmeducationexperiences') as any);
-            if(pcmeducationexperiencesData && pcmeducationexperiencesData.length && pcmeducationexperiencesData.length > 0){
-                pcmeducationexperiencesData.forEach((item:any) => {
-                    if(item.srffrontuf){
-                        if(Object.is(item.srffrontuf,"0")){
-                            item.pcmeducationexperienceid = null;
-                        }
-                        delete item.srffrontuf;
-                    }
-                });
-            }
-        }
-        masterData.pcmeducationexperiences = pcmeducationexperiencesData;
-        let tdzwxxesData:any = [];
-        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_tdzwxxes'),'undefined')){
-            tdzwxxesData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_tdzwxxes') as any);
-            if(tdzwxxesData && tdzwxxesData.length && tdzwxxesData.length > 0){
-                tdzwxxesData.forEach((item:any) => {
-                    if(item.srffrontuf){
-                        if(Object.is(item.srffrontuf,"0")){
-                            item.tdzwxxid = null;
-                        }
-                        delete item.srffrontuf;
-                    }
-                });
-            }
-        }
-        masterData.tdzwxxes = tdzwxxesData;
-        let pcmpracticeexperiencesData:any = [];
-        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_pcmpracticeexperiences'),'undefined')){
-            pcmpracticeexperiencesData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_pcmpracticeexperiences') as any);
-            if(pcmpracticeexperiencesData && pcmpracticeexperiencesData.length && pcmpracticeexperiencesData.length > 0){
-                pcmpracticeexperiencesData.forEach((item:any) => {
-                    if(item.srffrontuf){
-                        if(Object.is(item.srffrontuf,"0")){
-                            item.pcmpracticeexperienceid = null;
-                        }
-                        delete item.srffrontuf;
-                    }
-                });
-            }
-        }
-        masterData.pcmpracticeexperiences = pcmpracticeexperiencesData;
         let pcmcertofregsData:any = [];
         if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_pcmcertofregs'),'undefined')){
             pcmcertofregsData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_pcmcertofregs') as any);
@@ -700,6 +610,81 @@ export default class PCMPROFILEServiceBase extends EntityService {
             }
         }
         masterData.pcmworkresumes = pcmworkresumesData;
+        let testresultsData:any = [];
+        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_testresults'),'undefined')){
+            testresultsData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_testresults') as any);
+            if(testresultsData && testresultsData.length && testresultsData.length > 0){
+                testresultsData.forEach((item:any) => {
+                    if(item.srffrontuf){
+                        if(Object.is(item.srffrontuf,"0")){
+                            item.testresultid = null;
+                        }
+                        delete item.srffrontuf;
+                    }
+                });
+            }
+        }
+        masterData.testresults = testresultsData;
+        let pcmawardswonsData:any = [];
+        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_pcmawardswons'),'undefined')){
+            pcmawardswonsData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_pcmawardswons') as any);
+            if(pcmawardswonsData && pcmawardswonsData.length && pcmawardswonsData.length > 0){
+                pcmawardswonsData.forEach((item:any) => {
+                    if(item.srffrontuf){
+                        if(Object.is(item.srffrontuf,"0")){
+                            item.pcmawardswonsid = null;
+                        }
+                        delete item.srffrontuf;
+                    }
+                });
+            }
+        }
+        masterData.pcmawardswons = pcmawardswonsData;
+        let pcmpracticeexperiencesData:any = [];
+        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_pcmpracticeexperiences'),'undefined')){
+            pcmpracticeexperiencesData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_pcmpracticeexperiences') as any);
+            if(pcmpracticeexperiencesData && pcmpracticeexperiencesData.length && pcmpracticeexperiencesData.length > 0){
+                pcmpracticeexperiencesData.forEach((item:any) => {
+                    if(item.srffrontuf){
+                        if(Object.is(item.srffrontuf,"0")){
+                            item.pcmpracticeexperienceid = null;
+                        }
+                        delete item.srffrontuf;
+                    }
+                });
+            }
+        }
+        masterData.pcmpracticeexperiences = pcmpracticeexperiencesData;
+        let pcmschoolofficesData:any = [];
+        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_pcmschooloffices'),'undefined')){
+            pcmschoolofficesData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_pcmschooloffices') as any);
+            if(pcmschoolofficesData && pcmschoolofficesData.length && pcmschoolofficesData.length > 0){
+                pcmschoolofficesData.forEach((item:any) => {
+                    if(item.srffrontuf){
+                        if(Object.is(item.srffrontuf,"0")){
+                            item.pcmschoolofficeid = null;
+                        }
+                        delete item.srffrontuf;
+                    }
+                });
+            }
+        }
+        masterData.pcmschooloffices = pcmschoolofficesData;
+        let pcmeducationexperiencesData:any = [];
+        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_pcmeducationexperiences'),'undefined')){
+            pcmeducationexperiencesData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_pcmeducationexperiences') as any);
+            if(pcmeducationexperiencesData && pcmeducationexperiencesData.length && pcmeducationexperiencesData.length > 0){
+                pcmeducationexperiencesData.forEach((item:any) => {
+                    if(item.srffrontuf){
+                        if(Object.is(item.srffrontuf,"0")){
+                            item.pcmeducationexperienceid = null;
+                        }
+                        delete item.srffrontuf;
+                    }
+                });
+            }
+        }
+        masterData.pcmeducationexperiences = pcmeducationexperiencesData;
         let pcmprofileapprovalsData:any = [];
         if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_pcmprofileapprovals'),'undefined')){
             pcmprofileapprovalsData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_pcmprofileapprovals') as any);
@@ -715,17 +700,32 @@ export default class PCMPROFILEServiceBase extends EntityService {
             }
         }
         masterData.pcmprofileapprovals = pcmprofileapprovalsData;
+        let tdzwxxesData:any = [];
+        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_tdzwxxes'),'undefined')){
+            tdzwxxesData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_tdzwxxes') as any);
+            if(tdzwxxesData && tdzwxxesData.length && tdzwxxesData.length > 0){
+                tdzwxxesData.forEach((item:any) => {
+                    if(item.srffrontuf){
+                        if(Object.is(item.srffrontuf,"0")){
+                            item.tdzwxxid = null;
+                        }
+                        delete item.srffrontuf;
+                    }
+                });
+            }
+        }
+        masterData.tdzwxxes = tdzwxxesData;
         Object.assign(data,masterData);
             let res:any = await  Http.getInstance().put(`/pcmprofiles/${context.pcmprofile}`,data,isloading);
-            this.tempStorage.setItem(context.srfsessionkey+'_testresults',JSON.stringify(res.data.testresults));
-            this.tempStorage.setItem(context.srfsessionkey+'_pcmawardswons',JSON.stringify(res.data.pcmawardswons));
-            this.tempStorage.setItem(context.srfsessionkey+'_pcmschooloffices',JSON.stringify(res.data.pcmschooloffices));
-            this.tempStorage.setItem(context.srfsessionkey+'_pcmeducationexperiences',JSON.stringify(res.data.pcmeducationexperiences));
-            this.tempStorage.setItem(context.srfsessionkey+'_tdzwxxes',JSON.stringify(res.data.tdzwxxes));
-            this.tempStorage.setItem(context.srfsessionkey+'_pcmpracticeexperiences',JSON.stringify(res.data.pcmpracticeexperiences));
             this.tempStorage.setItem(context.srfsessionkey+'_pcmcertofregs',JSON.stringify(res.data.pcmcertofregs));
             this.tempStorage.setItem(context.srfsessionkey+'_pcmworkresumes',JSON.stringify(res.data.pcmworkresumes));
+            this.tempStorage.setItem(context.srfsessionkey+'_testresults',JSON.stringify(res.data.testresults));
+            this.tempStorage.setItem(context.srfsessionkey+'_pcmawardswons',JSON.stringify(res.data.pcmawardswons));
+            this.tempStorage.setItem(context.srfsessionkey+'_pcmpracticeexperiences',JSON.stringify(res.data.pcmpracticeexperiences));
+            this.tempStorage.setItem(context.srfsessionkey+'_pcmschooloffices',JSON.stringify(res.data.pcmschooloffices));
+            this.tempStorage.setItem(context.srfsessionkey+'_pcmeducationexperiences',JSON.stringify(res.data.pcmeducationexperiences));
             this.tempStorage.setItem(context.srfsessionkey+'_pcmprofileapprovals',JSON.stringify(res.data.pcmprofileapprovals));
+            this.tempStorage.setItem(context.srfsessionkey+'_tdzwxxes',JSON.stringify(res.data.tdzwxxes));
             return res;
     }
 
@@ -753,15 +753,15 @@ export default class PCMPROFILEServiceBase extends EntityService {
      */
     public async Get(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
             let res:any = await Http.getInstance().get(`/pcmprofiles/${context.pcmprofile}`,isloading);
-            this.tempStorage.setItem(context.srfsessionkey+'_testresults',JSON.stringify(res.data.testresults));
-            this.tempStorage.setItem(context.srfsessionkey+'_pcmawardswons',JSON.stringify(res.data.pcmawardswons));
-            this.tempStorage.setItem(context.srfsessionkey+'_pcmschooloffices',JSON.stringify(res.data.pcmschooloffices));
-            this.tempStorage.setItem(context.srfsessionkey+'_pcmeducationexperiences',JSON.stringify(res.data.pcmeducationexperiences));
-            this.tempStorage.setItem(context.srfsessionkey+'_tdzwxxes',JSON.stringify(res.data.tdzwxxes));
-            this.tempStorage.setItem(context.srfsessionkey+'_pcmpracticeexperiences',JSON.stringify(res.data.pcmpracticeexperiences));
             this.tempStorage.setItem(context.srfsessionkey+'_pcmcertofregs',JSON.stringify(res.data.pcmcertofregs));
             this.tempStorage.setItem(context.srfsessionkey+'_pcmworkresumes',JSON.stringify(res.data.pcmworkresumes));
+            this.tempStorage.setItem(context.srfsessionkey+'_testresults',JSON.stringify(res.data.testresults));
+            this.tempStorage.setItem(context.srfsessionkey+'_pcmawardswons',JSON.stringify(res.data.pcmawardswons));
+            this.tempStorage.setItem(context.srfsessionkey+'_pcmpracticeexperiences',JSON.stringify(res.data.pcmpracticeexperiences));
+            this.tempStorage.setItem(context.srfsessionkey+'_pcmschooloffices',JSON.stringify(res.data.pcmschooloffices));
+            this.tempStorage.setItem(context.srfsessionkey+'_pcmeducationexperiences',JSON.stringify(res.data.pcmeducationexperiences));
             this.tempStorage.setItem(context.srfsessionkey+'_pcmprofileapprovals',JSON.stringify(res.data.pcmprofileapprovals));
+            this.tempStorage.setItem(context.srfsessionkey+'_tdzwxxes',JSON.stringify(res.data.tdzwxxes));
             return res;
 
     }
@@ -882,15 +882,15 @@ export default class PCMPROFILEServiceBase extends EntityService {
     public async GetDraft(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
         let res:any = await  Http.getInstance().get(`/pcmprofiles/getdraft`,isloading);
         res.data.pcmprofile = data.pcmprofile;
-            this.tempStorage.setItem(context.srfsessionkey+'_testresults',JSON.stringify(res.data.testresults));
-            this.tempStorage.setItem(context.srfsessionkey+'_pcmawardswons',JSON.stringify(res.data.pcmawardswons));
-            this.tempStorage.setItem(context.srfsessionkey+'_pcmschooloffices',JSON.stringify(res.data.pcmschooloffices));
-            this.tempStorage.setItem(context.srfsessionkey+'_pcmeducationexperiences',JSON.stringify(res.data.pcmeducationexperiences));
-            this.tempStorage.setItem(context.srfsessionkey+'_tdzwxxes',JSON.stringify(res.data.tdzwxxes));
-            this.tempStorage.setItem(context.srfsessionkey+'_pcmpracticeexperiences',JSON.stringify(res.data.pcmpracticeexperiences));
             this.tempStorage.setItem(context.srfsessionkey+'_pcmcertofregs',JSON.stringify(res.data.pcmcertofregs));
             this.tempStorage.setItem(context.srfsessionkey+'_pcmworkresumes',JSON.stringify(res.data.pcmworkresumes));
+            this.tempStorage.setItem(context.srfsessionkey+'_testresults',JSON.stringify(res.data.testresults));
+            this.tempStorage.setItem(context.srfsessionkey+'_pcmawardswons',JSON.stringify(res.data.pcmawardswons));
+            this.tempStorage.setItem(context.srfsessionkey+'_pcmpracticeexperiences',JSON.stringify(res.data.pcmpracticeexperiences));
+            this.tempStorage.setItem(context.srfsessionkey+'_pcmschooloffices',JSON.stringify(res.data.pcmschooloffices));
+            this.tempStorage.setItem(context.srfsessionkey+'_pcmeducationexperiences',JSON.stringify(res.data.pcmeducationexperiences));
             this.tempStorage.setItem(context.srfsessionkey+'_pcmprofileapprovals',JSON.stringify(res.data.pcmprofileapprovals));
+            this.tempStorage.setItem(context.srfsessionkey+'_tdzwxxes',JSON.stringify(res.data.tdzwxxes));
         return res;
     }
 
