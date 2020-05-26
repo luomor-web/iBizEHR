@@ -17,7 +17,7 @@ mock.onGet('v7/app-index-viewappmenu').reply((config: any) => {
 	type: 'MENUITEM',
 	counterid: '',
 	tooltip: '组织管理',
-	expanded: false,
+	expanded: true,
 	separator: false,
 	hidden: false,
 	hidesidebar: false,

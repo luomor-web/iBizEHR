@@ -21,7 +21,7 @@ export default class AppIndexViewModel {
 	type: 'MENUITEM',
 	counterid: '',
 	tooltip: '组织管理',
-	expanded: false,
+	expanded: true,
 	separator: false,
 	hidden: false,
 	hidesidebar: false,
