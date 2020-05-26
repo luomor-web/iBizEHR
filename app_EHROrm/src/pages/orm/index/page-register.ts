@@ -40,7 +40,6 @@ export const PageComponents = {
         Vue.component('ormorgsectorxmbbzgledit-view', () => import('@pages/orm/ormorgsectorxmbbzgledit-view/ormorgsectorxmbbzgledit-view.vue'));
         Vue.component('ormdutyest-man-pickup-grid-view', () => import('@pages/orm/ormdutyest-man-pickup-grid-view/ormdutyest-man-pickup-grid-view.vue'));
         Vue.component('ormorgsectoredit-view', () => import('@pages/orm/ormorgsectoredit-view/ormorgsectoredit-view.vue'));
-        Vue.component('ormpost-lib-cxgrid-view', () => import('@pages/orm/ormpost-lib-cxgrid-view/ormpost-lib-cxgrid-view.vue'));
         Vue.component('ormerporgedit-view', () => import('@pages/orm/ormerporgedit-view/ormerporgedit-view.vue'));
         Vue.component('ormdep-est-man-zwedit-view', () => import('@pages/orm/ormdep-est-man-zwedit-view/ormdep-est-man-zwedit-view.vue'));
         Vue.component('ormdutyedit-view', () => import('@pages/orm/ormdutyedit-view/ormdutyedit-view.vue'));

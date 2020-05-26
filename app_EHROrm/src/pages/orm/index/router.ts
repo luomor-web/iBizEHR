@@ -573,19 +573,6 @@ const router = new Router({
                     component: () => import('@pages/orm/ormorgsectoredit-view/ormorgsectoredit-view.vue'),
                 },
                 {
-                    path: 'ormpostlibs/:ormpostlib?/cxgridview/:cxgridview?',
-                    meta: {
-                        caption: 'entities.ormpostlib.views.cxgridview.caption',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'ormpostlibs', parameterName: 'ormpostlib' },
-                            { pathName: 'cxgridview', parameterName: 'cxgridview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/orm/ormpost-lib-cxgrid-view/ormpost-lib-cxgrid-view.vue'),
-                },
-                {
                     path: 'ormerporgs/:ormerporg?/editview/:editview?',
                     meta: {
                         caption: 'entities.ormerporg.views.editview.caption',
@@ -1687,18 +1674,6 @@ const router = new Router({
             requireAuth: true,
         },
         component: () => import('@pages/orm/ormorgedit-view/ormorgedit-view.vue'),
-    },
-    {
-        path: '/ormpostlibs/:ormpostlib?/cxgridview/:cxgridview?',
-        meta: {
-            caption: 'entities.ormpostlib.views.cxgridview.caption',
-            parameters: [
-                { pathName: 'ormpostlibs', parameterName: 'ormpostlib' },
-                { pathName: 'cxgridview', parameterName: 'cxgridview' },
-            ],
-            requireAuth: true,
-        },
-        component: () => import('@pages/orm/ormpost-lib-cxgrid-view/ormpost-lib-cxgrid-view.vue'),
     },
             {
                 path: '/ormorginforedirectview/:ormorginforedirectview?',

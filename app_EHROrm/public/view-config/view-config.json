@@ -1701,8 +1701,8 @@
         "memo": ""
     },
     "index": {
-        "title": "组织管理",
-        "caption": "组织管理",
+        "title": "EHR—组织管理",
+        "caption": "EHR—组织管理",
         "viewtype": "APPINDEXVIEW",
         "viewmodule": "ORM",
         "viewname": "Index",

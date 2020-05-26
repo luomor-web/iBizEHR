@@ -80,9 +80,6 @@ export default class AppIndexViewBase extends AppMenusCtrlBase {
                 case 'Auto465': 
                     this.clickAuto465(item);
                     return;
-                case 'Auto478': 
-                    this.clickAuto478(item);
-                    return;
                 case 'Auto483': 
                     this.clickAuto483(item);
                     return;
@@ -201,24 +198,6 @@ export default class AppIndexViewBase extends AppMenusCtrlBase {
         const parameters: any[] = [
             { pathName: 'ormposts', parameterName: 'ormpost' },
             { pathName: 'gwxhwhgridview', parameterName: 'gwxhwhgridview' },
-        ];
-        const path: string = this.$viewTool.buildUpRoutePath(this.$route, {}, deResParameters, parameters, [], viewparam);
-        this.$router.push(path);
-    }
-    
-    /**
-     * 标准岗位查询<组织管理模块>
-     *
-     * @param {*} [item={}]
-     * @memberof AppIndexView
-     */
-    public clickAuto478(item: any = {}) {
-        const viewparam: any = {};
-        Object.assign(viewparam, {});
-        const deResParameters: any[] = [];
-        const parameters: any[] = [
-            { pathName: 'ormpostlibs', parameterName: 'ormpostlib' },
-            { pathName: 'cxgridview', parameterName: 'cxgridview' },
         ];
         const path: string = this.$viewTool.buildUpRoutePath(this.$route, {}, deResParameters, parameters, [], viewparam);
         this.$router.push(path);

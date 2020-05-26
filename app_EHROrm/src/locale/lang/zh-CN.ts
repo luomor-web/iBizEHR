@@ -68,8 +68,8 @@ export default {
         // 非实体视图
         views: {
             index: {
-                caption: '组织管理',
-                title: '组织管理',
+                caption: 'EHR—组织管理',
+                title: 'EHR—组织管理',
             },
         },
         utilview:{
@@ -82,10 +82,8 @@ export default {
                 menuitem1: '组织管理',
                 menuitem3: '组织管理',
                 menuitem2: '编制查询',
-                menuitem4: '标准化数据',
                 menuitem5: '职务设置',
                 menuitem6: '标准岗位设置',
-                menuitem8: '标准岗位查询',
                 menuitem9: '岗位集设置',
                 menuitem10: '项目标签',
                 menuitem7: 'ERP项目',

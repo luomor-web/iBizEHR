@@ -1520,8 +1520,8 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewtag": "b9bdc1f0d93821bd1469c503a4468782"
         },
         "index": {
-            "title": "组织管理",
-            "caption": "组织管理",
+            "title": "EHR—组织管理",
+            "caption": "EHR—组织管理",
             "viewtype": "APPINDEXVIEW",
             "viewmodule": "ORM",
             "viewname": "Index",

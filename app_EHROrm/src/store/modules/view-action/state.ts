@@ -295,16 +295,6 @@ export const viewstate: any = {
             ],
         },
         {
-            viewtag: '343ea136eea85ae2077e353b63f159c3',
-            viewmodule: 'ORM',
-            viewname: 'ORMPostLibCXGridView',
-            viewaction: '',
-            viewdatachange: false,
-            refviews: [
-                'def85fb885bc5ea11c35f98f9a134761',
-            ],
-        },
-        {
             viewtag: '361b0b77c05e7358f23b20765d79080f',
             viewmodule: 'ORM',
             viewname: 'ORMORGInfoRedirectView',
@@ -850,7 +840,6 @@ export const viewstate: any = {
                 'b8413e7b06a47ff51bd81c164e87c9ea',
                 '989a45ab2da4c6aa3c2a0867061a1a95',
                 '33707b04587e169b829099ecc00f4215',
-                '343ea136eea85ae2077e353b63f159c3',
             ],
         },
         {
