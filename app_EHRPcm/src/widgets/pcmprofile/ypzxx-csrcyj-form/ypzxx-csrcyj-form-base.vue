@@ -341,7 +341,7 @@
 </app-form-item>
 
 </i-col>
-<i-col v-show="detailsModel.isblacklistreason.visible" :style="{}"  :lg="{ span: 16, offset: 0 }">
+<i-col v-show="detailsModel.isblacklistreason.visible" :style="{}"  :lg="{ span: 24, offset: 0 }" :xl="{ span: 24, offset: 0 }">
     <app-form-item name='isblacklistreason' :itemRules="this.rules.isblacklistreason" class='' :caption="$t('entities.pcmprofile.ypzxx_csrcyj_form.details.isblacklistreason')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.isblacklistreason.error" :isEmptyCaption="false" labelPos="LEFT">
     <div class="ivu-input-wrapper ivu-input-wrapper-default ivu-input-type">
     <textarea class="ivu-input" :rows="10" v-model="data.isblacklistreason" :disabled="detailsModel.isblacklistreason.disabled" style="height:200px;"></textarea>
@@ -1376,10 +1376,10 @@ export default class YPZXX_CSRCYJBase extends Vue implements ControlInterface {
             { required: false, type: 'string', message: ' 值不能为空', trigger: 'blur' },
         ],
         sfxzbjnbry: [
-            { type: 'string', message: '选择局内部人员 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '选择局内部人员 值必须为字符串类型', trigger: 'blur' },
-            { required: false, type: 'string', message: '选择局内部人员 值不能为空', trigger: 'change' },
-            { required: false, type: 'string', message: '选择局内部人员 值不能为空', trigger: 'blur' },
+            { type: 'string', message: '选择内部人员 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '选择内部人员 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '选择内部人员 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '选择内部人员 值不能为空', trigger: 'blur' },
         ],
         pimpersonid: [
             { type: 'string', message: '人员信息标识 值必须为字符串类型', trigger: 'change' },
@@ -1872,7 +1872,7 @@ export default class YPZXX_CSRCYJBase extends Vue implements ControlInterface {
 , 
         srfsourcekey: new FormItemModel({ caption: '', detailType: 'FORMITEM', name: 'srfsourcekey', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
-        sfxzbjnbry: new FormItemModel({ caption: '选择局内部人员', detailType: 'FORMITEM', name: 'sfxzbjnbry', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 0 })
+        sfxzbjnbry: new FormItemModel({ caption: '选择内部人员', detailType: 'FORMITEM', name: 'sfxzbjnbry', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 0 })
 , 
         pimpersonid: new FormItemModel({ caption: '人员信息标识', detailType: 'FORMITEM', name: 'pimpersonid', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
@@ -4311,9 +4311,6 @@ export default class YPZXX_CSRCYJBase extends Vue implements ControlInterface {
         if (this.data.hasOwnProperty('ormorgid')) {
             this.data['ormorgid'] = this.context['SRFORGID'];
         }
-        if (this.data.hasOwnProperty('ormorgname')) {
-            this.data['ormorgname'] = this.context['SRFORGNAME'];
-        }
     }
 
     /**
@@ -4323,9 +4320,6 @@ export default class YPZXX_CSRCYJBase extends Vue implements ControlInterface {
     public updateDefault(){                    
         if (this.data.hasOwnProperty('ormorgid') && !this.data.ormorgid) {
             this.data['ormorgid'] = this.context['SRFORGID'];
-        }
-        if (this.data.hasOwnProperty('ormorgname') && !this.data.ormorgname) {
-            this.data['ormorgname'] = this.context['SRFORGNAME'];
         }
     }
 

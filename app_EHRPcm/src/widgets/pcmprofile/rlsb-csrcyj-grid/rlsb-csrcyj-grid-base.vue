@@ -22,7 +22,7 @@
                 <el-table-column align="center" type='selection' :width="checkboxColWidth"></el-table-column>
             </template>
             <template v-if="getColumnState('uagridcolumn1')">
-                <el-table-column :column-key="'uagridcolumn1'" :label="$t('entities.pcmprofile.rlsb_csrcyj_grid.columns.uagridcolumn1')" :width="100"  :align="'right'">
+                <el-table-column :column-key="'uagridcolumn1'" :label="$t('entities.pcmprofile.rlsb_csrcyj_grid.columns.uagridcolumn1')" :width="150"  :align="'right'">
                     <template slot-scope="scope">
                         <span>
                             

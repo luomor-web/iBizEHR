@@ -209,7 +209,7 @@ public class PCMPROFILESearchContext extends QueryWrapperContext<PCMPROFILE> {
             this.getSelectCond().eq("xxxz", n_xxxz_eq);
         }
     }
-	private String n_sfxzbjnbry_eq;//[选择局内部人员]
+	private String n_sfxzbjnbry_eq;//[选择内部人员]
 	public void setN_sfxzbjnbry_eq(String n_sfxzbjnbry_eq) {
         this.n_sfxzbjnbry_eq = n_sfxzbjnbry_eq;
         if(!ObjectUtils.isEmpty(this.n_sfxzbjnbry_eq)){

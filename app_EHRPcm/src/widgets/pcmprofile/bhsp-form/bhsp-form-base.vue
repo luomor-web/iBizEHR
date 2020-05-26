@@ -1206,10 +1206,10 @@ export default class BHSPBase extends Vue implements ControlInterface {
             { required: false, type: 'string', message: ' 值不能为空', trigger: 'blur' },
         ],
         sfxzbjnbry: [
-            { type: 'string', message: '选择局内部人员 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '选择局内部人员 值必须为字符串类型', trigger: 'blur' },
-            { required: false, type: 'string', message: '选择局内部人员 值不能为空', trigger: 'change' },
-            { required: false, type: 'string', message: '选择局内部人员 值不能为空', trigger: 'blur' },
+            { type: 'string', message: '选择内部人员 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '选择内部人员 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '选择内部人员 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '选择内部人员 值不能为空', trigger: 'blur' },
         ],
         pimpersonid: [
             { type: 'string', message: '人员信息标识 值必须为字符串类型', trigger: 'change' },
@@ -1604,7 +1604,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
 , 
         srfsourcekey: new FormItemModel({ caption: '', detailType: 'FORMITEM', name: 'srfsourcekey', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
-        sfxzbjnbry: new FormItemModel({ caption: '选择局内部人员', detailType: 'FORMITEM', name: 'sfxzbjnbry', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 0 })
+        sfxzbjnbry: new FormItemModel({ caption: '选择内部人员', detailType: 'FORMITEM', name: 'sfxzbjnbry', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 0 })
 , 
         pimpersonid: new FormItemModel({ caption: '人员信息标识', detailType: 'FORMITEM', name: 'pimpersonid', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
