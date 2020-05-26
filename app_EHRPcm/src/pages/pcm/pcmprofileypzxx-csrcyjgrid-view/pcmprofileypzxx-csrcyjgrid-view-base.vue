@@ -717,14 +717,28 @@ export default class PCMPROFILEYPZXX_CSRCYJGridViewBase extends GridViewBase {
         const deResParameters: any[] = [];
         const parameters: any[] = [
             { pathName: 'pcmprofiles', parameterName: 'pcmprofile' },
-            { pathName: 'ypzxx_csrcyjeditview', parameterName: 'ypzxx_csrcyjeditview' },
         ];
         const _this: any = this;
-        const openIndexViewTab = (data: any) => {
-            const routePath = this.$viewTool.buildUpRoutePath(this.$route, curViewParam, deResParameters, parameters, args, data);
-            this.$router.push(routePath);
+        const openDrawer = (view: any, data: any) => {
+            let container: Subject<any> = this.$appdrawer.openDrawer(view, curViewParam, data);
+            container.subscribe((result: any) => {
+                if (!result || !Object.is(result.ret, 'OK')) {
+                    return;
+                }
+                if (!xData || !(xData.refresh instanceof Function)) {
+                    return;
+                }
+                xData.refresh(result.datas);
+            });
         }
-        openIndexViewTab(data);
+        const view: any = {
+            viewname: 'pcmprofileypzxx-csrcyjedit-view', 
+            height: 0, 
+            width: 0,  
+            title: this.$t('entities.pcmprofile.views.ypzxx_csrcyjeditview.title'),
+            placement: 'DRAWER_TOP',
+        };
+        openDrawer(view, data);
     }
 
 

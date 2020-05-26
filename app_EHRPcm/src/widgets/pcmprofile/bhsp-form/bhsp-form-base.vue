@@ -94,7 +94,7 @@
     <row>
         <i-col v-show="detailsModel.zp.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='zp' :itemRules="this.rules.zp" class='' :caption="$t('entities.pcmprofile.bhsp_form.details.zp')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.zp.error" :isEmptyCaption="false" labelPos="LEFT">
-     <app-image-upload :multiple="true" :formState="formState" :ignorefieldvaluechange="ignorefieldvaluechange" @formitemvaluechange="onFormItemValueChange" :data="JSON.stringify(this.data)" name='zp' :value="data.zp" :disabled="detailsModel.zp.disabled" uploadparams='' exportparams='' :customparams="{}" style="height:400px;width:300px;overflow: auto;"></app-image-upload>
+     <app-image-upload :multiple="true" :formState="formState" :ignorefieldvaluechange="ignorefieldvaluechange" @formitemvaluechange="onFormItemValueChange" :data="JSON.stringify(this.data)" name='zp' :value="data.zp" :disabled="detailsModel.zp.disabled" uploadparams='' exportparams='' :customparams="{}" style="height:160px;width:150px;overflow: auto;"></app-image-upload>
 </app-form-item>
 
 </i-col>
@@ -754,43 +754,6 @@
     refreshitems='' 
     :ignorefieldvaluechange="ignorefieldvaluechange"
     viewname='tdzwxxtdzw-wsswbjgrid-view' 
-    :data="JSON.stringify(this.data)" 
-    @drdatasaved="drdatasaved($event)"
-    style=";overflow: auto;">
-</app-form-druipart>
-
-</i-col>
-    
-    </row>
-</app-form-group>
-
-</i-col>
-<i-col v-show="detailsModel.rawitem9.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
-    <div class="" style="height: 30px;">
-    
-</div>
-
-</i-col>
-<i-col v-show="detailsModel.grouppanel16.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
-    <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' :uiActionGroup="detailsModel.grouppanel16.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.pcmprofile.bhsp_form.details.grouppanel16')" :isShowCaption="false" uiStyle="DEFAULT" :titleBarCloseMode="0" :isInfoGroupMode="false" >    
-    <row>
-        <i-col v-show="detailsModel.druipart9.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
-    <app-form-druipart
-    
-    :formState="formState"
-    :isForbidLoad="this.data.srfuf === '0'"
-    paramItem='pcmprofile' 
-    :parentdata='{"srfparentdename":"PCMPROFILE","SRFPARENTTYPE":"CUSTOM"}'
-    :parameters="[
-    ]"
-    :context="context"
-    :viewparams="viewparams"
-    parameterName='pcmprofile'
-    parentName="PCMPROFILE"  
-    refviewtype='DEGRIDVIEW' 
-    refreshitems='' 
-    :ignorefieldvaluechange="ignorefieldvaluechange"
-    viewname='pcmprofilefjprofile-fjgrid-view' 
     :data="JSON.stringify(this.data)" 
     @drdatasaved="drdatasaved($event)"
     style=";overflow: auto;">
@@ -1622,12 +1585,6 @@ export default class BHSPBase extends Vue implements ControlInterface {
         druipart7: new FormDRUIPartModel({ caption: '', detailType: 'DRUIPART', name: 'druipart7', visible: true, isShowCaption: true, form: this })
 , 
         grouppanel13: new FormGroupPanelModel({ caption: '投递职位摘要信息', detailType: 'GROUPPANEL', name: 'grouppanel13', visible: false, isShowCaption: false, form: this, uiActionGroup: { caption: '', langbase: 'entities.pcmprofile.bhsp_form', extractMode: 'ITEM', details: [] } })
-, 
-        rawitem9: new FormRowItemModel({ caption: '', detailType: 'RAWITEM', name: 'rawitem9', visible: true, isShowCaption: true, form: this })
-, 
-        druipart9: new FormDRUIPartModel({ caption: '', detailType: 'DRUIPART', name: 'druipart9', visible: true, isShowCaption: true, form: this })
-, 
-        grouppanel16: new FormGroupPanelModel({ caption: '应聘者附件', detailType: 'GROUPPANEL', name: 'grouppanel16', visible: true, isShowCaption: false, form: this, uiActionGroup: { caption: '', langbase: 'entities.pcmprofile.bhsp_form', extractMode: 'ITEM', details: [] } })
 , 
         formpage1: new FormPageModel({ caption: '基本信息', detailType: 'FORMPAGE', name: 'formpage1', visible: true, isShowCaption: true, form: this })
 , 
@@ -2632,9 +2589,6 @@ export default class BHSPBase extends Vue implements ControlInterface {
 
 
 
-
-
-
         if (Object.is(name, '') || Object.is(name, 'sfxzbjnbry')) {
             let ret = false;
             const _sfxzbjnbry = this.data.sfxzbjnbry;
@@ -3315,7 +3269,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
             Object.assign(arg, data);
             Object.assign(arg, this.context);
             if (ifStateNext) {
-                this.drcounter = 9;
+                this.drcounter = 8;
                 if(this.drcounter !== 0){
                     this.drsaveopt = opt;
                     this.formState.next({ type: 'beforesave', data: arg });//先通知关系界面保存
