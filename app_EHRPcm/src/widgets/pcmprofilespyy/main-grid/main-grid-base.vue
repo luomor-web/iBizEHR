@@ -69,13 +69,6 @@
                     </template>
                 </el-table-column>
             </template>
-            <template v-if="getColumnState('updatedate')">
-                <el-table-column show-overflow-tooltip :prop="'updatedate'" :label="$t('entities.pcmprofilespyy.main_grid.columns.updatedate')" :width="180"  :align="'left'" :sortable="'custom'">
-                    <template v-slot="{row,column}">
-                        <app-format-data format="%1$tY-%1$tm-%1$td" :data="row.updatedate"></app-format-data>
-                    </template>
-                </el-table-column>
-            </template>
             <template v-if="adaptiveState">
                 <el-table-column></el-table-column>
             </template>
@@ -562,13 +555,6 @@ export default class MainBase extends Vue implements ControlInterface {
             name: 'yymc',
             label: '原因名称',
             langtag: 'entities.pcmprofilespyy.main_grid.columns.yymc',
-            show: true,
-            util: 'PX'
-        },
-        {
-            name: 'updatedate',
-            label: '更新时间',
-            langtag: 'entities.pcmprofilespyy.main_grid.columns.updatedate',
             show: true,
             util: 'PX'
         },

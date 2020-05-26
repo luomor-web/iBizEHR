@@ -37,11 +37,6 @@ export default class MainModel {
           dataType: 'TEXT',
         },
         {
-          name: 'updatedate',
-          prop: 'updatedate',
-          dataType: 'DATETIME',
-        },
-        {
           name: 'srfmajortext',
           prop: 'pcmprofilespyyname',
           dataType: 'TEXT',
@@ -60,7 +55,6 @@ export default class MainModel {
           name: 'pcmprofilespyy',
           prop: 'pcmprofilespyyid',
         },
-
         {
           name:'size',
           prop:'size'

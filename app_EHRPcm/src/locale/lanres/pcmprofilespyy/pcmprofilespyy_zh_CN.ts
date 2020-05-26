@@ -42,19 +42,11 @@ export default {
 		columns: {
 			yybm: '原因编码',
 			yymc: '原因名称',
-			updatedate: '更新时间',
 		},
 		uiactions: {
 		},
 	},
-	default_searchform: {
-		details: {
-			formpage1: '常规条件', 
-		},
-		uiactions: {
-		},
-	},
-	gridviewtoolbar2_toolbar: {
+	gridviewtoolbar_toolbar: {
 		deuiaction1: {
 			caption: '新建',
 			tip: '新建',
@@ -64,34 +56,16 @@ export default {
 			tip: '保存',
 		},
 		deuiaction3: {
-			caption: '关闭行编辑',
-			tip: '关闭行编辑',
-		},
-	},
-	gridviewtoolbar_toolbar: {
-		tbitem3: {
-			caption: '新建',
-			tip: '新建',
-		},
-		tbitem8: {
 			caption: '删除',
 			tip: '删除',
 		},
-		deuiaction1: {
-			caption: '开启行编辑',
-			tip: '开启行编辑',
-		},
-		deuiaction3: {
+		deuiaction4: {
 			caption: '导入',
 			tip: '导入',
 		},
-		tbitem13: {
+		deuiaction5: {
 			caption: '导出',
 			tip: '导出',
-		},
-		deuiaction2: {
-			caption: '过滤',
-			tip: '过滤',
 		},
 	},
 	editviewtoolbar_toolbar: {

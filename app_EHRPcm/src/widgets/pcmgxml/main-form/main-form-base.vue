@@ -52,6 +52,7 @@
     paramItem='pcmgxml' 
     :parentdata='{"srfparentdefname":"PCMGXMLID","srfparentdename":"PCMGXML","SRFPARENTTYPE":"DER1N","srfparentmode":"DER1N_PCMGXXKTEMP_PCMGXML_PCMGXMLID","SRFDER1NID":"DER1N_PCMGXXKTEMP_PCMGXML_PCMGXMLID"}'
     :parameters="[
+        { pathName: 'pcmgxmls', parameterName: 'pcmgxml' },
     ]"
     :context="context"
     :viewparams="viewparams"
