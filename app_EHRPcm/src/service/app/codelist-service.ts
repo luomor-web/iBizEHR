@@ -1,9 +1,11 @@
 import PCMCL_REASON from '@/codelist/pcmcl-reason';   
+import PIMCL_XKML from '@/codelist/pimcl-xkml';   
 import PIMCL_ZJLX from '@/codelist/pimcl-zjlx';   
 import PIM_XL2 from '@/codelist/pim-xl2';   
 import PIMCL_XX from '@/codelist/pimcl-xx';   
 import PCMCL_XKML from '@/codelist/pcmcl-xkml';   
 import PIMCL_RANK from '@/codelist/pimcl-rank';   
+import PIMCL_YGLX from '@/codelist/pimcl-yglx';   
 import ORMCL_QY from '@/codelist/ormcl-qy';   
 import PIMCL_XXXZ from '@/codelist/pimcl-xxxz';   
 import PCMCL_SBLX from '@/codelist/pcmcl-sblx';   
@@ -73,6 +75,14 @@ export default class CodeListService {
     public PCMCL_REASON: PCMCL_REASON = new PCMCL_REASON();
 
     /**
+     * 代码表--学科门类
+     *
+     * @type {PIMCL_XKML}
+     * @memberof CodeListService
+     */
+    public PIMCL_XKML: PIMCL_XKML = new PIMCL_XKML();
+
+    /**
      * 代码表--证件类型
      *
      * @type {PIMCL_ZJLX}
@@ -111,6 +121,14 @@ export default class CodeListService {
      * @memberof CodeListService
      */
     public PIMCL_RANK: PIMCL_RANK = new PIMCL_RANK();
+
+    /**
+     * 代码表--员工类型
+     *
+     * @type {PIMCL_YGLX}
+     * @memberof CodeListService
+     */
+    public PIMCL_YGLX: PIMCL_YGLX = new PIMCL_YGLX();
 
     /**
      * 代码表--补贴标准

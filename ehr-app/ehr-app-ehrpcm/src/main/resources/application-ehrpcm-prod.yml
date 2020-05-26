@@ -11,6 +11,10 @@ zuul:
       path: /pcmprofileapprovals/**
       serviceId: ehr-webapi
       stripPrefix: false
+    pcmgxml:
+      path: /pcmgxmls/**
+      serviceId: ehr-webapi
+      stripPrefix: false
     ormorg:
       path: /ormorgs/**
       serviceId: ehr-webapi
@@ -59,6 +63,10 @@ zuul:
       path: /pcmprofilefjs/**
       serviceId: ehr-webapi
       stripPrefix: false
+    pcmzpmeglmx:
+      path: /pcmzpmeglmxes/**
+      serviceId: ehr-webapi
+      stripPrefix: false
     codeitem:
       path: /codeitems/**
       serviceId: ehr-webapi
@@ -91,6 +99,10 @@ zuul:
       path: /testresults/**
       serviceId: ehr-webapi
       stripPrefix: false
+    pcmzpmegl:
+      path: /pcmzpmegls/**
+      serviceId: ehr-webapi
+      stripPrefix: false
     pcmprofile:
       path: /pcmprofiles/**
       serviceId: ehr-webapi
@@ -117,6 +129,10 @@ zuul:
       stripPrefix: false
     pimperson:
       path: /pimpeople/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pcmgxxktemp:
+      path: /pcmgxxktemps/**
       serviceId: ehr-webapi
       stripPrefix: false
   sensitive-headers:

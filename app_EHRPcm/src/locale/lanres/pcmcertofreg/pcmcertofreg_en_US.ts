@@ -51,7 +51,7 @@ export default {
 		uiactions: {
 		},
 	},
-	main_grid: {
+	ck_grid: {
 		columns: {
 			zyzgzy: "证书名称（*）",
 			zsfj: "证书附件",
@@ -59,7 +59,7 @@ export default {
 		uiactions: {
 		},
 	},
-	ck_grid: {
+	main_grid: {
 		columns: {
 			zyzgzy: "证书名称（*）",
 			zsfj: "证书附件",
@@ -72,6 +72,30 @@ export default {
 			formpage1: "常规条件", 
 		},
 		uiactions: {
+		},
+	},
+	zczs_wsswbjgridviewtoolbar_toolbar: {
+	},
+	editviewtoolbar_toolbar: {
+		tbitem3: {
+			caption: "Save",
+			tip: "Save",
+		},
+		tbitem4: {
+			caption: "Save And New",
+			tip: "Save And New",
+		},
+		tbitem5: {
+			caption: "Save And Close",
+			tip: "Save And Close Window",
+		},
+		tbitem7: {
+			caption: "Remove And Close",
+			tip: "Remove And Close Window",
+		},
+		tbitem22: {
+			caption: "Help",
+			tip: "Help",
 		},
 	},
 	zczsgridviewtoolbar2_toolbar: {
@@ -109,29 +133,5 @@ export default {
 			caption: "Filter",
 			tip: "Filter",
 		},
-	},
-	editviewtoolbar_toolbar: {
-		tbitem3: {
-			caption: "Save",
-			tip: "Save",
-		},
-		tbitem4: {
-			caption: "Save And New",
-			tip: "Save And New",
-		},
-		tbitem5: {
-			caption: "Save And Close",
-			tip: "Save And Close Window",
-		},
-		tbitem7: {
-			caption: "Remove And Close",
-			tip: "Remove And Close Window",
-		},
-		tbitem22: {
-			caption: "Help",
-			tip: "Help",
-		},
-	},
-	zczs_wsswbjgridviewtoolbar_toolbar: {
 	},
 };

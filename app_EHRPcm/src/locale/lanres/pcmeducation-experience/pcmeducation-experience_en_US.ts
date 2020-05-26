@@ -129,6 +129,8 @@ export default {
 		uiactions: {
 		},
 	},
+	jybj_wsswbjgridviewtoolbar_toolbar: {
+	},
 	editviewtoolbar_toolbar: {
 		tbitem3: {
 			caption: "Save",
@@ -150,8 +152,6 @@ export default {
 			caption: "Help",
 			tip: "Help",
 		},
-	},
-	jybj_wsswbjgridviewtoolbar_toolbar: {
 	},
 	jybjgridviewtoolbar2_toolbar: {
 		deuiaction1: {

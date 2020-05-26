@@ -70,6 +70,30 @@ export default {
 		uiactions: {
 		},
 	},
+	hjqk_wsswbjgridviewtoolbar_toolbar: {
+	},
+	editviewtoolbar_toolbar: {
+		tbitem3: {
+			caption: '保存',
+			tip: '保存',
+		},
+		tbitem4: {
+			caption: '保存并新建',
+			tip: '保存并新建',
+		},
+		tbitem5: {
+			caption: '保存并关闭',
+			tip: '保存并关闭',
+		},
+		tbitem7: {
+			caption: '删除并关闭',
+			tip: '删除并关闭',
+		},
+		tbitem22: {
+			caption: '帮助',
+			tip: '帮助',
+		},
+	},
 	hjqkgridviewtoolbar2_toolbar: {
 		deuiaction1: {
 			caption: '新建',
@@ -105,29 +129,5 @@ export default {
 			caption: '过滤',
 			tip: '过滤',
 		},
-	},
-	editviewtoolbar_toolbar: {
-		tbitem3: {
-			caption: '保存',
-			tip: '保存',
-		},
-		tbitem4: {
-			caption: '保存并新建',
-			tip: '保存并新建',
-		},
-		tbitem5: {
-			caption: '保存并关闭',
-			tip: '保存并关闭',
-		},
-		tbitem7: {
-			caption: '删除并关闭',
-			tip: '删除并关闭',
-		},
-		tbitem22: {
-			caption: '帮助',
-			tip: '帮助',
-		},
-	},
-	hjqk_wsswbjgridviewtoolbar_toolbar: {
 	},
 };

@@ -92,6 +92,8 @@ export default {
 			tip: "Help",
 		},
 	},
+	zxzw_wsswbjgridviewtoolbar_toolbar: {
+	},
 	zxzwgridviewtoolbar2_toolbar: {
 		deuiaction1: {
 			caption: "新建",
@@ -127,7 +129,5 @@ export default {
 			caption: "Filter",
 			tip: "Filter",
 		},
-	},
-	zxzw_wsswbjgridviewtoolbar_toolbar: {
 	},
 };

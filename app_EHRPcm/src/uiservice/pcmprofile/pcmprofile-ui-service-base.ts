@@ -79,18 +79,34 @@ export default class PCMPROFILEUIServiceBase extends UIService {
      * @memberof  PCMPROFILEUIServiceBase
      */  
     public initViewMap(){
+        this.allViewMap.set(':',{viewname:'ypzbd_csrcyjgridview',srfappde:'pcmprofiles'});
+        this.allViewMap.set(':',{viewname:'rlsb_csrcyjgridview',srfappde:'pcmprofiles'});
+        this.allViewMap.set(':',{viewname:'bhsp_csrcyjeditview',srfappde:'pcmprofiles'});
+        this.allViewMap.set(':',{viewname:'bhsp_csrcyjgridview',srfappde:'pcmprofiles'});
         this.allViewMap.set(':',{viewname:'rlsb_xgeditview',srfappde:'pcmprofiles'});
         this.allViewMap.set(':',{viewname:'xzwizardview',srfappde:'pcmprofiles'});
         this.allViewMap.set(':',{viewname:'ypzxx_lrgridview',srfappde:'pcmprofiles'});
+        this.allViewMap.set(':',{viewname:'rzsp_csrcyjgridview',srfappde:'pcmprofiles'});
         this.allViewMap.set(':',{viewname:'rlsbgridview',srfappde:'pcmprofiles'});
         this.allViewMap.set(':',{viewname:'ypzbdeditview',srfappde:'pcmprofiles'});
+        this.allViewMap.set(':',{viewname:'rlsb_csrcyjxgeditview',srfappde:'pcmprofiles'});
+        this.allViewMap.set(':',{viewname:'fpwizardview',srfappde:'pcmprofiles'});
+        this.allViewMap.set(':',{viewname:'yrdwcs_csrcyjgridview',srfappde:'pcmprofiles'});
+        this.allViewMap.set(':',{viewname:'rzsp_csrcyjeditview',srfappde:'pcmprofiles'});
+        this.allViewMap.set(':',{viewname:'rlsb_csrcyjeditview',srfappde:'pcmprofiles'});
         this.allViewMap.set(':',{viewname:'ypzxx_lreditview',srfappde:'pcmprofiles'});
+        this.allViewMap.set(':',{viewname:'ypzxx_csrcyjeditview',srfappde:'pcmprofiles'});
         this.allViewMap.set(':',{viewname:'bhspgridview',srfappde:'pcmprofiles'});
+        this.allViewMap.set(':',{viewname:'ypzbd_csrcyjeditview',srfappde:'pcmprofiles'});
+        this.allViewMap.set(':',{viewname:'qtzpwizardview',srfappde:'pcmprofiles'});
         this.allViewMap.set(':',{viewname:'ypzbdgridview',srfappde:'pcmprofiles'});
+        this.allViewMap.set(':',{viewname:'szwizardview',srfappde:'pcmprofiles'});
         this.allViewMap.set(':',{viewname:'bhspeditview',srfappde:'pcmprofiles'});
+        this.allViewMap.set(':',{viewname:'yrdwcs_csrcyjeditview',srfappde:'pcmprofiles'});
         this.allViewMap.set(':',{viewname:'rlsbeditview',srfappde:'pcmprofiles'});
         this.allViewMap.set(':',{viewname:'zpdwsheditview',srfappde:'pcmprofiles'});
         this.allViewMap.set(':',{viewname:'rzspeditview',srfappde:'pcmprofiles'});
+        this.allViewMap.set(':',{viewname:'ypzxx_csrcyjgridview',srfappde:'pcmprofiles'});
         this.allViewMap.set(':',{viewname:'zpdwshgridview',srfappde:'pcmprofiles'});
         this.allViewMap.set(':',{viewname:'rzspgridview',srfappde:'pcmprofiles'});
     }
@@ -102,62 +118,6 @@ export default class PCMPROFILEUIServiceBase extends UIService {
      */  
     public initDeMainStateMap(){
         this.allDeMainStateMap.set('10','10');
-    }
-
-    /**
-     * 报到
-     *
-     * @param {any[]} args 当前数据
-     * @param {any} context 行为附加上下文
-     * @param {*} [params] 附加参数
-     * @param {*} [$event] 事件源
-     * @param {*} [xData]  执行行为所需当前部件
-     * @param {*} [actionContext]  执行行为上下文
-     * @param {*} [srfParentDeName] 父实体名称
-     * @returns {Promise<any>}
-     */
-    public async PCMPROFILE_BD(args: any[], context:any = {} ,params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
-        let data: any = {};
-        const _args: any[] = Util.deepCopy(args);
-        const _this: any = actionContext;
-        const actionTarget: string | null = 'MULTIKEY';
-        Object.assign(context, { pcmprofile: '%pcmprofile%' });
-        Object.assign(params, { pcmprofileid: '%pcmprofile%' });
-        Object.assign(params, { pcmprofilename: '%pcmprofilename%' });
-        context = UIActionTool.handleContextParam(actionTarget,_args,context);
-        data = UIActionTool.handleActionParam(actionTarget,_args,params);
-        context = Object.assign({},actionContext.context,context);
-        let parentObj:any = {srfparentdename:srfParentDeName?srfParentDeName:null,srfparentkey:srfParentDeName?context[srfParentDeName.toLowerCase()]:null};
-        Object.assign(data,parentObj);
-        Object.assign(context,parentObj);
-        let deResParameters: any[] = [];
-        const parameters: any[] = [
-            { pathName: 'wzd0001s', parameterName: 'wzd0001' },
-        ];
-            const openPopupModal = (view: any, data: any) => {
-                let container: Subject<any> = actionContext.$appmodal.openModal(view, context, data);
-                container.subscribe((result: any) => {
-                    if (!result || !Object.is(result.ret, 'OK')) {
-                        return;
-                    }
-                    const _this: any = actionContext;
-                    if (xData && xData.refresh && xData.refresh instanceof Function) {
-                        xData.refresh(args);
-                    }
-                    if(window.opener){
-                        window.opener.postMessage({status:'OK',identification:'WF'},Environment.uniteAddress);
-                        window.close();
-                    }
-                    return result.datas;
-                });
-            }
-            const view: any = {
-                viewname: 'wzd0001-ypzbdoption-view', 
-                height: 400, 
-                width: 800,  
-                title: actionContext.$t('entities.wzd0001.views.ypzbdoptionview.title'),
-            };
-            openPopupModal(view, data);
     }
 
     /**
@@ -217,6 +177,62 @@ export default class PCMPROFILEUIServiceBase extends UIService {
             });
         };
         backend();
+    }
+
+    /**
+     * 报到
+     *
+     * @param {any[]} args 当前数据
+     * @param {any} context 行为附加上下文
+     * @param {*} [params] 附加参数
+     * @param {*} [$event] 事件源
+     * @param {*} [xData]  执行行为所需当前部件
+     * @param {*} [actionContext]  执行行为上下文
+     * @param {*} [srfParentDeName] 父实体名称
+     * @returns {Promise<any>}
+     */
+    public async PCMPROFILE_BD(args: any[], context:any = {} ,params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
+        let data: any = {};
+        const _args: any[] = Util.deepCopy(args);
+        const _this: any = actionContext;
+        const actionTarget: string | null = 'MULTIKEY';
+        Object.assign(context, { pcmprofile: '%pcmprofile%' });
+        Object.assign(params, { pcmprofileid: '%pcmprofile%' });
+        Object.assign(params, { pcmprofilename: '%pcmprofilename%' });
+        context = UIActionTool.handleContextParam(actionTarget,_args,context);
+        data = UIActionTool.handleActionParam(actionTarget,_args,params);
+        context = Object.assign({},actionContext.context,context);
+        let parentObj:any = {srfparentdename:srfParentDeName?srfParentDeName:null,srfparentkey:srfParentDeName?context[srfParentDeName.toLowerCase()]:null};
+        Object.assign(data,parentObj);
+        Object.assign(context,parentObj);
+        let deResParameters: any[] = [];
+        const parameters: any[] = [
+            { pathName: 'wzd0001s', parameterName: 'wzd0001' },
+        ];
+            const openPopupModal = (view: any, data: any) => {
+                let container: Subject<any> = actionContext.$appmodal.openModal(view, context, data);
+                container.subscribe((result: any) => {
+                    if (!result || !Object.is(result.ret, 'OK')) {
+                        return;
+                    }
+                    const _this: any = actionContext;
+                    if (xData && xData.refresh && xData.refresh instanceof Function) {
+                        xData.refresh(args);
+                    }
+                    if(window.opener){
+                        window.opener.postMessage({status:'OK',identification:'WF'},Environment.uniteAddress);
+                        window.close();
+                    }
+                    return result.datas;
+                });
+            }
+            const view: any = {
+                viewname: 'wzd0001-ypzbdoption-view', 
+                height: 400, 
+                width: 800,  
+                title: actionContext.$t('entities.wzd0001.views.ypzbdoptionview.title'),
+            };
+            openPopupModal(view, data);
     }
 
     /**
@@ -497,6 +513,48 @@ export default class PCMPROFILEUIServiceBase extends UIService {
     }
 
     /**
+     * 修改
+     *
+     * @param {any[]} args 当前数据
+     * @param {any} context 行为附加上下文
+     * @param {*} [params] 附加参数
+     * @param {*} [$event] 事件源
+     * @param {*} [xData]  执行行为所需当前部件
+     * @param {*} [actionContext]  执行行为上下文
+     * @param {*} [srfParentDeName] 父实体名称
+     * @returns {Promise<any>}
+     */
+    public async PCMPROFILE_ModifyYPZ2(args: any[], context:any = {} ,params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
+        let data: any = {};
+        const _args: any[] = Util.deepCopy(args);
+        const _this: any = actionContext;
+        const actionTarget: string | null = 'SINGLEKEY';
+        Object.assign(context, { pcmprofile: '%pcmprofile%' });
+        Object.assign(params, { pcmprofileid: '%pcmprofile%' });
+        Object.assign(params, { pcmprofilename: '%pcmprofilename%' });
+        context = UIActionTool.handleContextParam(actionTarget,_args,context);
+        data = UIActionTool.handleActionParam(actionTarget,_args,params);
+        context = Object.assign({},actionContext.context,context);
+        let parentObj:any = {srfparentdename:srfParentDeName?srfParentDeName:null,srfparentkey:srfParentDeName?context[srfParentDeName.toLowerCase()]:null};
+        Object.assign(data,parentObj);
+        Object.assign(context,parentObj);
+        let deResParameters: any[] = [];
+        const parameters: any[] = [
+            { pathName: 'pcmprofiles', parameterName: 'pcmprofile' },
+            { pathName: 'rlsb_csrcyjxgeditview', parameterName: 'rlsb_csrcyjxgeditview' },
+        ];
+        const openIndexViewTab = (data: any) => {
+            const routePath = actionContext.$viewTool.buildUpRoutePath(actionContext.$route, context, deResParameters, parameters, _args, data);
+            actionContext.$router.push(routePath);
+            if (xData && xData.refresh && xData.refresh instanceof Function) {
+                xData.refresh(args);
+            }
+            return null;
+        }
+        openIndexViewTab(data);
+    }
+
+    /**
      * 拒绝
      *
      * @param {any[]} args 当前数据
@@ -738,6 +796,84 @@ export default class PCMPROFILEUIServiceBase extends UIService {
     }
 
     /**
+     * 返聘
+     *
+     * @param {any[]} args 当前数据
+     * @param {any} context 行为附加上下文
+     * @param {*} [params] 附加参数
+     * @param {*} [$event] 事件源
+     * @param {*} [xData]  执行行为所需当前部件
+     * @param {*} [actionContext]  执行行为上下文
+     * @param {*} [srfParentDeName] 父实体名称
+     * @returns {Promise<any>}
+     */
+    public async PCMPROFILE_FP(args: any[], context:any = {} ,params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
+        let data: any = {};
+        const _args: any[] = Util.deepCopy(args);
+        const _this: any = actionContext;
+        const actionTarget: string | null = 'NONE';
+        context = UIActionTool.handleContextParam(actionTarget,_args,context);
+        data = UIActionTool.handleActionParam(actionTarget,_args,params);
+        context = Object.assign({},actionContext.context,context);
+        let parentObj:any = {srfparentdename:srfParentDeName?srfParentDeName:null,srfparentkey:srfParentDeName?context[srfParentDeName.toLowerCase()]:null};
+        Object.assign(data,parentObj);
+        Object.assign(context,parentObj);
+        let deResParameters: any[] = [];
+        const parameters: any[] = [
+            { pathName: 'pcmprofiles', parameterName: 'pcmprofile' },
+            { pathName: 'fpwizardview', parameterName: 'fpwizardview' },
+        ];
+        const openIndexViewTab = (data: any) => {
+            const routePath = actionContext.$viewTool.buildUpRoutePath(actionContext.$route, context, deResParameters, parameters, _args, data);
+            actionContext.$router.push(routePath);
+            if (xData && xData.refresh && xData.refresh instanceof Function) {
+                xData.refresh(args);
+            }
+            return null;
+        }
+        openIndexViewTab(data);
+    }
+
+    /**
+     * 社招
+     *
+     * @param {any[]} args 当前数据
+     * @param {any} context 行为附加上下文
+     * @param {*} [params] 附加参数
+     * @param {*} [$event] 事件源
+     * @param {*} [xData]  执行行为所需当前部件
+     * @param {*} [actionContext]  执行行为上下文
+     * @param {*} [srfParentDeName] 父实体名称
+     * @returns {Promise<any>}
+     */
+    public async PCMPROFILE_SZ(args: any[], context:any = {} ,params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
+        let data: any = {};
+        const _args: any[] = Util.deepCopy(args);
+        const _this: any = actionContext;
+        const actionTarget: string | null = 'NONE';
+        context = UIActionTool.handleContextParam(actionTarget,_args,context);
+        data = UIActionTool.handleActionParam(actionTarget,_args,params);
+        context = Object.assign({},actionContext.context,context);
+        let parentObj:any = {srfparentdename:srfParentDeName?srfParentDeName:null,srfparentkey:srfParentDeName?context[srfParentDeName.toLowerCase()]:null};
+        Object.assign(data,parentObj);
+        Object.assign(context,parentObj);
+        let deResParameters: any[] = [];
+        const parameters: any[] = [
+            { pathName: 'pcmprofiles', parameterName: 'pcmprofile' },
+            { pathName: 'szwizardview', parameterName: 'szwizardview' },
+        ];
+        const openIndexViewTab = (data: any) => {
+            const routePath = actionContext.$viewTool.buildUpRoutePath(actionContext.$route, context, deResParameters, parameters, _args, data);
+            actionContext.$router.push(routePath);
+            if (xData && xData.refresh && xData.refresh instanceof Function) {
+                xData.refresh(args);
+            }
+            return null;
+        }
+        openIndexViewTab(data);
+    }
+
+    /**
      * 初审通过
      *
      * @param {any[]} args 当前数据
@@ -973,6 +1109,154 @@ export default class PCMPROFILEUIServiceBase extends UIService {
             });
         };
         backend();
+    }
+
+    /**
+     * 初审通过
+     *
+     * @param {any[]} args 当前数据
+     * @param {any} context 行为附加上下文
+     * @param {*} [params] 附加参数
+     * @param {*} [$event] 事件源
+     * @param {*} [xData]  执行行为所需当前部件
+     * @param {*} [actionContext]  执行行为上下文
+     * @param {*} [srfParentDeName] 父实体名称
+     * @returns {Promise<any>}
+     */
+    public async PCMPROFILE_SZSPTG(args: any[], context:any = {} ,params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
+        let data: any = {};
+        const _args: any[] = Util.deepCopy(args);
+        const _this: any = actionContext;
+        const actionTarget: string | null = 'SINGLEKEY';
+        Object.assign(context, { pcmprofile: '%pcmprofile%' });
+        Object.assign(params, { pcmprofileid: '%pcmprofile%' });
+        Object.assign(params, { pcmprofilename: '%pcmprofilename%' });
+        context = UIActionTool.handleContextParam(actionTarget,_args,context);
+        data = UIActionTool.handleActionParam(actionTarget,_args,params);
+        context = Object.assign({},actionContext.context,context);
+        let parentObj:any = {srfparentdename:srfParentDeName?srfParentDeName:null,srfparentkey:srfParentDeName?context[srfParentDeName.toLowerCase()]:null};
+        Object.assign(data,parentObj);
+        Object.assign(context,parentObj);
+        let deResParameters: any[] = [];
+        const parameters: any[] = [
+            { pathName: 'pcmprofiles', parameterName: 'pcmprofile' },
+            { pathName: 'rzsp_csrcyjeditview', parameterName: 'rzsp_csrcyjeditview' },
+        ];
+        const openIndexViewTab = (data: any) => {
+            const routePath = actionContext.$viewTool.buildUpRoutePath(actionContext.$route, context, deResParameters, parameters, _args, data);
+            actionContext.$router.push(routePath);
+            return null;
+        }
+        openIndexViewTab(data);
+    }
+
+    /**
+     * 使用原编号
+     *
+     * @param {any[]} args 当前数据
+     * @param {any} context 行为附加上下文
+     * @param {*} [params] 附加参数
+     * @param {*} [$event] 事件源
+     * @param {*} [xData]  执行行为所需当前部件
+     * @param {*} [actionContext]  执行行为上下文
+     * @param {*} [srfParentDeName] 父实体名称
+     * @returns {Promise<any>}
+     */
+    public async PCMPROFILE_USEYBH(args: any[],context:any = {}, params?: any, $event?: any, xData?: any,actionContext?: any,srfParentDeName?:string){
+        let confirmResult:boolean = await new Promise((resolve: any, reject: any) => {
+          actionContext.$Modal.confirm({
+              title: '警告',
+              content: '确定使用原编号吗？',
+              onOk: () => {resolve(true);},
+              onCancel: () => {resolve(false);}
+          });
+        });
+        if(!confirmResult){
+            return;
+        }
+        let data: any = {};
+        const _args: any[] = Util.deepCopy(args);
+        const _this: any = actionContext;
+        const actionTarget: string | null = 'SINGLEKEY';
+        Object.assign(context, { pcmprofile: '%pcmprofile%' });
+        Object.assign(params, { pcmprofileid: '%pcmprofile%' });
+        Object.assign(params, { pcmprofilename: '%pcmprofilename%' });
+        context = UIActionTool.handleContextParam(actionTarget,_args,context);
+        data = UIActionTool.handleActionParam(actionTarget,_args,params);
+        context = Object.assign({},actionContext.context,context);
+        let parentObj:any = {srfparentdename:srfParentDeName?srfParentDeName:null,srfparentkey:srfParentDeName?context[srfParentDeName.toLowerCase()]:null};
+        Object.assign(data,parentObj);
+        Object.assign(context,parentObj);
+        // 直接调实体服务需要转换的数据
+        if(context && context.srfsessionid){
+          context.srfsessionkey = context.srfsessionid;
+            delete context.srfsessionid;
+        }
+        const backend = () => {
+            const curService:PCMPROFILEService =  new PCMPROFILEService();
+            curService.USEYBH(context,data, true).then((response: any) => {
+                if (!response || response.status !== 200) {
+                    actionContext.$Notice.error({ title: '错误', desc: response.message });
+                    return;
+                }
+                actionContext.$Notice.success({ title: '成功', desc: '使用原编号成功！' });
+
+                const _this: any = actionContext;
+                if (xData && xData.refresh && xData.refresh instanceof Function) {
+                    xData.refresh(args);
+                }
+                return response;
+            }).catch((response: any) => {
+                if (!response || !response.status || !response.data) {
+                    actionContext.$Notice.error({ title: '错误', desc: '系统异常！' });
+                    return;
+                }
+                if (response.status === 401) {
+                    return;
+                }
+                return response;
+            });
+        };
+        backend();
+    }
+
+    /**
+     * 其他招聘
+     *
+     * @param {any[]} args 当前数据
+     * @param {any} context 行为附加上下文
+     * @param {*} [params] 附加参数
+     * @param {*} [$event] 事件源
+     * @param {*} [xData]  执行行为所需当前部件
+     * @param {*} [actionContext]  执行行为上下文
+     * @param {*} [srfParentDeName] 父实体名称
+     * @returns {Promise<any>}
+     */
+    public async PCMPROFILE_QTZP(args: any[], context:any = {} ,params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
+        let data: any = {};
+        const _args: any[] = Util.deepCopy(args);
+        const _this: any = actionContext;
+        const actionTarget: string | null = 'NONE';
+        context = UIActionTool.handleContextParam(actionTarget,_args,context);
+        data = UIActionTool.handleActionParam(actionTarget,_args,params);
+        context = Object.assign({},actionContext.context,context);
+        let parentObj:any = {srfparentdename:srfParentDeName?srfParentDeName:null,srfparentkey:srfParentDeName?context[srfParentDeName.toLowerCase()]:null};
+        Object.assign(data,parentObj);
+        Object.assign(context,parentObj);
+        let deResParameters: any[] = [];
+        const parameters: any[] = [
+            { pathName: 'pcmprofiles', parameterName: 'pcmprofile' },
+            { pathName: 'qtzpwizardview', parameterName: 'qtzpwizardview' },
+        ];
+        const openIndexViewTab = (data: any) => {
+            const routePath = actionContext.$viewTool.buildUpRoutePath(actionContext.$route, context, deResParameters, parameters, _args, data);
+            actionContext.$router.push(routePath);
+            if (xData && xData.refresh && xData.refresh instanceof Function) {
+                xData.refresh(args);
+            }
+            return null;
+        }
+        openIndexViewTab(data);
     }
 
     /**

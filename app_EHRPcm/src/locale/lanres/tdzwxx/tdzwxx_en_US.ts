@@ -77,6 +77,8 @@ export default {
 		uiactions: {
 		},
 	},
+	tdzw_wsswbjgridviewtoolbar_toolbar: {
+	},
 	editviewtoolbar_toolbar: {
 		tbitem3: {
 			caption: "Save",
@@ -134,7 +136,5 @@ export default {
 			caption: "Filter",
 			tip: "Filter",
 		},
-	},
-	tdzw_wsswbjgridviewtoolbar_toolbar: {
 	},
 };

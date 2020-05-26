@@ -71,6 +71,30 @@ export default {
 		uiactions: {
 		},
 	},
+	hjqk_wsswbjgridviewtoolbar_toolbar: {
+	},
+	editviewtoolbar_toolbar: {
+		tbitem3: {
+			caption: "Save",
+			tip: "Save",
+		},
+		tbitem4: {
+			caption: "Save And New",
+			tip: "Save And New",
+		},
+		tbitem5: {
+			caption: "Save And Close",
+			tip: "Save And Close Window",
+		},
+		tbitem7: {
+			caption: "Remove And Close",
+			tip: "Remove And Close Window",
+		},
+		tbitem22: {
+			caption: "Help",
+			tip: "Help",
+		},
+	},
 	hjqkgridviewtoolbar2_toolbar: {
 		deuiaction1: {
 			caption: "新建",
@@ -106,29 +130,5 @@ export default {
 			caption: "Filter",
 			tip: "Filter",
 		},
-	},
-	editviewtoolbar_toolbar: {
-		tbitem3: {
-			caption: "Save",
-			tip: "Save",
-		},
-		tbitem4: {
-			caption: "Save And New",
-			tip: "Save And New",
-		},
-		tbitem5: {
-			caption: "Save And Close",
-			tip: "Save And Close Window",
-		},
-		tbitem7: {
-			caption: "Remove And Close",
-			tip: "Remove And Close Window",
-		},
-		tbitem22: {
-			caption: "Help",
-			tip: "Help",
-		},
-	},
-	hjqk_wsswbjgridviewtoolbar_toolbar: {
 	},
 };

@@ -91,6 +91,8 @@ export default {
 			tip: '帮助',
 		},
 	},
+	zxzw_wsswbjgridviewtoolbar_toolbar: {
+	},
 	zxzwgridviewtoolbar2_toolbar: {
 		deuiaction1: {
 			caption: '新建',
@@ -126,7 +128,5 @@ export default {
 			caption: '过滤',
 			tip: '过滤',
 		},
-	},
-	zxzw_wsswbjgridviewtoolbar_toolbar: {
 	},
 };

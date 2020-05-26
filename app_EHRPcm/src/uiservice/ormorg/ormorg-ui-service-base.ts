@@ -80,7 +80,9 @@ export default class ORMORGUIServiceBase extends UIService {
      */  
     public initViewMap(){
         this.allViewMap.set(':',{viewname:'ypzxxsypickupgridview',srfappde:'ormorgs'});
+        this.allViewMap.set('PICKUPVIEW:',{viewname:'pickupview',srfappde:'ormorgs'});
         this.allViewMap.set(':',{viewname:'ypzsyfpxxpickupview',srfappde:'ormorgs'});
+        this.allViewMap.set(':',{viewname:'pickupgridview',srfappde:'ormorgs'});
     }
 
     /**

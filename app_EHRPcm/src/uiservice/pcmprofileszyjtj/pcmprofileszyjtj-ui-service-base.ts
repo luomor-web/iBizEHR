@@ -79,6 +79,8 @@ export default class PCMPROFILESZYJTJUIServiceBase extends UIService {
      * @memberof  PCMPROFILESZYJTJUIServiceBase
      */  
     public initViewMap(){
+        this.allViewMap.set('MPICKUPVIEW:',{viewname:'mpickupview',srfappde:'pcmprofileszyjtjs'});
+        this.allViewMap.set(':',{viewname:'pickupgridview',srfappde:'pcmprofileszyjtjs'});
     }
 
     /**

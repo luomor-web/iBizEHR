@@ -9,4 +9,31 @@ export default {
     pcmprofileszyjtjname: '应聘者社招引进条件',
     updateman: '更新人',
   },
+	views: {
+		mpickupview: {
+			caption: '应聘者社招引进条件',
+      title: '应聘者社招引进条件',
+		},
+		pickupgridview: {
+			caption: '应聘者社招引进条件',
+      title: '应聘者社招引进条件',
+		},
+	},
+	ypzsy_grid: {
+		columns: {
+			yglx: '申报类型',
+			pcmprofileszyjtjname: '应聘者社招引进条件',
+		},
+		uiactions: {
+		},
+	},
+	default_searchform: {
+		details: {
+			formpage1: '常规条件', 
+			n_yglx_eq: '申报类型', 
+			n_pcmprofileszyjtjname_like: '应聘者社招引进条件', 
+		},
+		uiactions: {
+		},
+	},
 };

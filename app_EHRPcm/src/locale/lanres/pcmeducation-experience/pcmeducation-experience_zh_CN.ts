@@ -128,6 +128,8 @@ export default {
 		uiactions: {
 		},
 	},
+	jybj_wsswbjgridviewtoolbar_toolbar: {
+	},
 	editviewtoolbar_toolbar: {
 		tbitem3: {
 			caption: '保存',
@@ -149,8 +151,6 @@ export default {
 			caption: '帮助',
 			tip: '帮助',
 		},
-	},
-	jybj_wsswbjgridviewtoolbar_toolbar: {
 	},
 	jybjgridviewtoolbar2_toolbar: {
 		deuiaction1: {

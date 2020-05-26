@@ -1,5 +1,6 @@
 import pcmworkresume_zh_CN from '@locale/lanres/pcmworkresume/pcmworkresume_zh_CN';
 import pcmprofileapproval_zh_CN from '@locale/lanres/pcmprofileapproval/pcmprofileapproval_zh_CN';
+import pcmgxml_zh_CN from '@locale/lanres/pcmgxml/pcmgxml_zh_CN';
 import ormorg_zh_CN from '@locale/lanres/ormorg/ormorg_zh_CN';
 import pcmpracticeexperience_zh_CN from '@locale/lanres/pcmpracticeexperience/pcmpracticeexperience_zh_CN';
 import ormduty_zh_CN from '@locale/lanres/ormduty/ormduty_zh_CN';
@@ -12,6 +13,7 @@ import pcmprofileyjtjtemp_zh_CN from '@locale/lanres/pcmprofileyjtjtemp/pcmprofi
 import pcmprofilespyy_zh_CN from '@locale/lanres/pcmprofilespyy/pcmprofilespyy_zh_CN';
 import ormqygl_zh_CN from '@locale/lanres/ormqygl/ormqygl_zh_CN';
 import pcmprofilefj_zh_CN from '@locale/lanres/pcmprofilefj/pcmprofilefj_zh_CN';
+import pcmzpmeglmx_zh_CN from '@locale/lanres/pcmzpmeglmx/pcmzpmeglmx_zh_CN';
 import codeitem_zh_CN from '@locale/lanres/code-item/code-item_zh_CN';
 import pcmprofilenumbeprefix_zh_CN from '@locale/lanres/pcmprofilenumbeprefix/pcmprofilenumbeprefix_zh_CN';
 import pcmcertofreg_zh_CN from '@locale/lanres/pcmcertofreg/pcmcertofreg_zh_CN';
@@ -20,6 +22,7 @@ import codelist1_zh_CN from '@locale/lanres/code-list1/code-list1_zh_CN';
 import ormorgsector_zh_CN from '@locale/lanres/ormorgsector/ormorgsector_zh_CN';
 import pcmschooloffice_zh_CN from '@locale/lanres/pcmschooloffice/pcmschooloffice_zh_CN';
 import testresult_zh_CN from '@locale/lanres/test-result/test-result_zh_CN';
+import pcmzpmegl_zh_CN from '@locale/lanres/pcmzpmegl/pcmzpmegl_zh_CN';
 import pcmprofile_zh_CN from '@locale/lanres/pcmprofile/pcmprofile_zh_CN';
 import pcmawardswons_zh_CN from '@locale/lanres/pcmawardswons/pcmawardswons_zh_CN';
 import pcmeducationexperience_zh_CN from '@locale/lanres/pcmeducation-experience/pcmeducation-experience_zh_CN';
@@ -27,6 +30,7 @@ import ormpost_zh_CN from '@locale/lanres/ormpost/ormpost_zh_CN';
 import pimqualmajor_zh_CN from '@locale/lanres/pimqualmajor/pimqualmajor_zh_CN';
 import wzd0001_zh_CN from '@locale/lanres/wzd0001/wzd0001_zh_CN';
 import pimperson_zh_CN from '@locale/lanres/pimperson/pimperson_zh_CN';
+import pcmgxxktemp_zh_CN from '@locale/lanres/pcmgxxktemp/pcmgxxktemp_zh_CN';
 import components_zh_CN from '@locale/lanres/components/components_zh_CN';
 import codelist_zh_CN from '@locale/lanres/codelist/codelist_zh_CN';
 import userCustom_zh_CN from '@locale/lanres/userCustom/userCustom_zh_CN';
@@ -103,13 +107,13 @@ export default {
                 menuitem17: '高校名录',
                 menuitem18: '学科目录',
                 menuitem19: '应聘者审批原因',
-                menuitem20: '应聘者社招引进条件',
             },
         },
     },
     entities: {
         pcmworkresume: pcmworkresume_zh_CN,
         pcmprofileapproval: pcmprofileapproval_zh_CN,
+        pcmgxml: pcmgxml_zh_CN,
         ormorg: ormorg_zh_CN,
         pcmpracticeexperience: pcmpracticeexperience_zh_CN,
         ormduty: ormduty_zh_CN,
@@ -122,6 +126,7 @@ export default {
         pcmprofilespyy: pcmprofilespyy_zh_CN,
         ormqygl: ormqygl_zh_CN,
         pcmprofilefj: pcmprofilefj_zh_CN,
+        pcmzpmeglmx: pcmzpmeglmx_zh_CN,
         codeitem: codeitem_zh_CN,
         pcmprofilenumbeprefix: pcmprofilenumbeprefix_zh_CN,
         pcmcertofreg: pcmcertofreg_zh_CN,
@@ -130,6 +135,7 @@ export default {
         ormorgsector: ormorgsector_zh_CN,
         pcmschooloffice: pcmschooloffice_zh_CN,
         testresult: testresult_zh_CN,
+        pcmzpmegl: pcmzpmegl_zh_CN,
         pcmprofile: pcmprofile_zh_CN,
         pcmawardswons: pcmawardswons_zh_CN,
         pcmeducationexperience: pcmeducationexperience_zh_CN,
@@ -137,6 +143,7 @@ export default {
         pimqualmajor: pimqualmajor_zh_CN,
         wzd0001: wzd0001_zh_CN,
         pimperson: pimperson_zh_CN,
+        pcmgxxktemp: pcmgxxktemp_zh_CN,
     },
     components: components_zh_CN,
     codelist: codelist_zh_CN,

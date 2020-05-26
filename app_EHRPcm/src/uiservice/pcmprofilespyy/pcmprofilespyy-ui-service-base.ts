@@ -79,6 +79,8 @@ export default class PCMPROFILESPYYUIServiceBase extends UIService {
      * @memberof  PCMPROFILESPYYUIServiceBase
      */  
     public initViewMap(){
+        this.allViewMap.set('MDATAVIEW:',{viewname:'gridview',srfappde:'pcmprofilespyys'});
+        this.allViewMap.set('EDITVIEW:',{viewname:'editview',srfappde:'pcmprofilespyys'});
     }
 
     /**

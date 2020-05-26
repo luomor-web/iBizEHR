@@ -1,5 +1,6 @@
 import pcmworkresume_en_US from '@locale/lanres/pcmworkresume/pcmworkresume_en_US';
 import pcmprofileapproval_en_US from '@locale/lanres/pcmprofileapproval/pcmprofileapproval_en_US';
+import pcmgxml_en_US from '@locale/lanres/pcmgxml/pcmgxml_en_US';
 import ormorg_en_US from '@locale/lanres/ormorg/ormorg_en_US';
 import pcmpracticeexperience_en_US from '@locale/lanres/pcmpracticeexperience/pcmpracticeexperience_en_US';
 import ormduty_en_US from '@locale/lanres/ormduty/ormduty_en_US';
@@ -12,6 +13,7 @@ import pcmprofileyjtjtemp_en_US from '@locale/lanres/pcmprofileyjtjtemp/pcmprofi
 import pcmprofilespyy_en_US from '@locale/lanres/pcmprofilespyy/pcmprofilespyy_en_US';
 import ormqygl_en_US from '@locale/lanres/ormqygl/ormqygl_en_US';
 import pcmprofilefj_en_US from '@locale/lanres/pcmprofilefj/pcmprofilefj_en_US';
+import pcmzpmeglmx_en_US from '@locale/lanres/pcmzpmeglmx/pcmzpmeglmx_en_US';
 import codeitem_en_US from '@locale/lanres/code-item/code-item_en_US';
 import pcmprofilenumbeprefix_en_US from '@locale/lanres/pcmprofilenumbeprefix/pcmprofilenumbeprefix_en_US';
 import pcmcertofreg_en_US from '@locale/lanres/pcmcertofreg/pcmcertofreg_en_US';
@@ -20,6 +22,7 @@ import codelist1_en_US from '@locale/lanres/code-list1/code-list1_en_US';
 import ormorgsector_en_US from '@locale/lanres/ormorgsector/ormorgsector_en_US';
 import pcmschooloffice_en_US from '@locale/lanres/pcmschooloffice/pcmschooloffice_en_US';
 import testresult_en_US from '@locale/lanres/test-result/test-result_en_US';
+import pcmzpmegl_en_US from '@locale/lanres/pcmzpmegl/pcmzpmegl_en_US';
 import pcmprofile_en_US from '@locale/lanres/pcmprofile/pcmprofile_en_US';
 import pcmawardswons_en_US from '@locale/lanres/pcmawardswons/pcmawardswons_en_US';
 import pcmeducationexperience_en_US from '@locale/lanres/pcmeducation-experience/pcmeducation-experience_en_US';
@@ -27,6 +30,7 @@ import ormpost_en_US from '@locale/lanres/ormpost/ormpost_en_US';
 import pimqualmajor_en_US from '@locale/lanres/pimqualmajor/pimqualmajor_en_US';
 import wzd0001_en_US from '@locale/lanres/wzd0001/wzd0001_en_US';
 import pimperson_en_US from '@locale/lanres/pimperson/pimperson_en_US';
+import pcmgxxktemp_en_US from '@locale/lanres/pcmgxxktemp/pcmgxxktemp_en_US';
 import components_en_US from '@locale/lanres/components/components_en_US';
 import codelist_en_US from '@locale/lanres/codelist/codelist_en_US';
 import userCustom_en_US from '@locale/lanres/userCustom/userCustom_en_US';
@@ -103,13 +107,13 @@ export default {
                 menuitem17: '高校名录',
                 menuitem18: '学科目录',
                 menuitem19: '应聘者审批原因',
-                menuitem20: '应聘者社招引进条件',
             },
         },
     },
     entities: {
         pcmworkresume: pcmworkresume_en_US,
         pcmprofileapproval: pcmprofileapproval_en_US,
+        pcmgxml: pcmgxml_en_US,
         ormorg: ormorg_en_US,
         pcmpracticeexperience: pcmpracticeexperience_en_US,
         ormduty: ormduty_en_US,
@@ -122,6 +126,7 @@ export default {
         pcmprofilespyy: pcmprofilespyy_en_US,
         ormqygl: ormqygl_en_US,
         pcmprofilefj: pcmprofilefj_en_US,
+        pcmzpmeglmx: pcmzpmeglmx_en_US,
         codeitem: codeitem_en_US,
         pcmprofilenumbeprefix: pcmprofilenumbeprefix_en_US,
         pcmcertofreg: pcmcertofreg_en_US,
@@ -130,6 +135,7 @@ export default {
         ormorgsector: ormorgsector_en_US,
         pcmschooloffice: pcmschooloffice_en_US,
         testresult: testresult_en_US,
+        pcmzpmegl: pcmzpmegl_en_US,
         pcmprofile: pcmprofile_en_US,
         pcmawardswons: pcmawardswons_en_US,
         pcmeducationexperience: pcmeducationexperience_en_US,
@@ -137,6 +143,7 @@ export default {
         pimqualmajor: pimqualmajor_en_US,
         wzd0001: wzd0001_en_US,
         pimperson: pimperson_en_US,
+        pcmgxxktemp: pcmgxxktemp_en_US,
     },
     components: components_en_US,
     codelist: codelist_en_US,

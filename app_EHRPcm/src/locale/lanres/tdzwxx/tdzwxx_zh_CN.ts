@@ -76,6 +76,8 @@ export default {
 		uiactions: {
 		},
 	},
+	tdzw_wsswbjgridviewtoolbar_toolbar: {
+	},
 	editviewtoolbar_toolbar: {
 		tbitem3: {
 			caption: '保存',
@@ -133,7 +135,5 @@ export default {
 			caption: '过滤',
 			tip: '过滤',
 		},
-	},
-	tdzw_wsswbjgridviewtoolbar_toolbar: {
 	},
 };
