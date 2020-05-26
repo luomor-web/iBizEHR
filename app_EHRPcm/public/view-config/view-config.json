@@ -17,6 +17,15 @@
         "viewtag": "09de889eff18f3439d11da7604fda3fb",
         "memo": "系统自动添加"
     },
+    "wzd0001ypzbdoptionview": {
+        "title": "报到",
+        "caption": "报到",
+        "viewtype": "DEOPTVIEW",
+        "viewmodule": "PCM",
+        "viewname": "WZD0001YPZBDOptionView",
+        "viewtag": "0a35c2cf7b8d373478092b5561546a82",
+        "memo": "系统自动添加"
+    },
     "pcmworkresumegzllgridview": {
         "title": "工作履历（要求：带*必填）",
         "caption": "工作履历（要求：带*必填）",
@@ -98,6 +107,15 @@
         "viewtag": "3d7985f2b41ff52bea5ebcf3bacc6169",
         "memo": "系统自动添加"
     },
+    "pcmprofilerlsb_xgeditview": {
+        "title": "人力上报",
+        "caption": "人力上报",
+        "viewtype": "DEEDITVIEW",
+        "viewmodule": "PCM",
+        "viewname": "PCMPROFILERLSB_XGEditView",
+        "viewtag": "42097975f67e4a2a8b076ce6dbd228cf",
+        "memo": "系统自动添加"
+    },
     "pcmprofilexzwizardview": {
         "title": "校招应聘者信息录入向导",
         "caption": "校招应聘者信息录入向导",
@@ -134,6 +152,15 @@
         "viewtag": "47328693892b4aabde90acf085237c98",
         "memo": "系统自动添加"
     },
+    "pcmprofilerlsbgridview": {
+        "title": "人力上报",
+        "caption": "人力上报",
+        "viewtype": "DEGRIDVIEW",
+        "viewmodule": "PCM",
+        "viewname": "PCMPROFILERLSBGridView",
+        "viewtag": "542a69a23fcce66c228b0a9dd3d8ac3a",
+        "memo": ""
+    },
     "pcmschoolofficezxzwgridview": {
         "title": "在校职务（要求：带*必填）",
         "caption": "在校职务（要求：带*必填）",
@@ -159,6 +186,15 @@
         "viewmodule": "PCM",
         "viewname": "TestResultEditView",
         "viewtag": "642e7abba6964fca1715f07242cc34b1",
+        "memo": "系统自动添加"
+    },
+    "pcmprofileypzbdeditview": {
+        "title": "拟录用人员",
+        "caption": "拟录用人员",
+        "viewtype": "DEEDITVIEW",
+        "viewmodule": "PCM",
+        "viewname": "PCMPROFILEYPZBDEditView",
+        "viewtag": "65c9c019ec8de91077c1d8c58da97caf",
         "memo": "系统自动添加"
     },
     "pcmawardswonshjqk_wsswbjgridview": {
@@ -188,6 +224,15 @@
         "viewtag": "79011b4b8919b94eaf3c825f6acc8102",
         "memo": "系统自动添加"
     },
+    "pcmprofileapprovaljjgridview": {
+        "title": "应聘者审批表",
+        "caption": "应聘者审批表",
+        "viewtype": "DEGRIDVIEW",
+        "viewmodule": "PCM",
+        "viewname": "PCMPROFILEAPPROVALJJGridView",
+        "viewtag": "7e25063f664b76124359fc1ffcaacb51",
+        "memo": "系统自动添加"
+    },
     "pcmcertofregzczs_wsswbjgridview": {
         "title": "注册证书",
         "caption": "注册证书",
@@ -205,6 +250,15 @@
         "viewname": "PCMPROFILEYPZXX_LREditView",
         "viewtag": "992ecee21f22b4daf3ecaf7ad516c1e3",
         "memo": "系统自动添加"
+    },
+    "pcmprofilebhspgridview": {
+        "title": "编号审批",
+        "caption": "编号审批",
+        "viewtype": "DEGRIDVIEW",
+        "viewmodule": "PCM",
+        "viewname": "PCMPROFILEBHSPGridView",
+        "viewtag": "a5ff9e62a82d14a07d81db0c0ef586e1",
+        "memo": ""
     },
     "pcmcertofregzczsgridview": {
         "title": "注册证书（要求：带*必填）",
@@ -260,6 +314,24 @@
         "viewtag": "b7850952c7fc5ac38fe2077bbe70485b",
         "memo": "系统自动添加"
     },
+    "wzd0001jcsoptionview": {
+        "title": "局总部初审",
+        "caption": "局总部初审",
+        "viewtype": "DEOPTVIEW",
+        "viewmodule": "PCM",
+        "viewname": "WZD0001JCSOptionView",
+        "viewtag": "b8a34744d439abfff6ca42202a0c9d85",
+        "memo": "系统自动添加"
+    },
+    "pcmprofileypzbdgridview": {
+        "title": "拟录用人员",
+        "caption": "拟录用人员",
+        "viewtype": "DEGRIDVIEW",
+        "viewmodule": "PCM",
+        "viewname": "PCMPROFILEYPZBDGridView",
+        "viewtag": "bf2d5739527f564355ffe5ffce92d9a6",
+        "memo": ""
+    },
     "pcmeducationexperiencejybjgridview": {
         "title": "教育信息（要求：1.高中以上，2.带*必填，3.大专学位证用毕业证代替）",
         "caption": "教育信息（要求：1.高中以上，2.带*必填，3.大专学位证用毕业证代替）",
@@ -267,6 +339,15 @@
         "viewmodule": "PCM",
         "viewname": "PCMEducationExperienceJYBJGridView",
         "viewtag": "c1296113c6baff077df6b1f1b1711266",
+        "memo": "系统自动添加"
+    },
+    "pcmprofilebhspeditview": {
+        "title": "编号审批",
+        "caption": "编号审批",
+        "viewtype": "DEEDITVIEW",
+        "viewmodule": "PCM",
+        "viewname": "PCMPROFILEBHSPEditView",
+        "viewtag": "c2c9f03c03a45ea71e0fc82836b8e5a0",
         "memo": "系统自动添加"
     },
     "index": {
@@ -314,6 +395,15 @@
         "viewtag": "d29ed45e3397bfcda1f4763b9b3e8686",
         "memo": "系统自动添加"
     },
+    "pcmprofilerlsbeditview": {
+        "title": "人力上报",
+        "caption": "人力上报",
+        "viewtype": "DEEDITVIEW",
+        "viewmodule": "PCM",
+        "viewname": "PCMPROFILERLSBEditView",
+        "viewtag": "dafc83fe4f8c489f4209eb5852c38a3b",
+        "memo": "系统自动添加"
+    },
     "pcmprofilezpdwsheditview": {
         "title": "用人单位初审",
         "caption": "用人单位初审",
@@ -350,6 +440,15 @@
         "viewtag": "eca902f7ff75f15ff107b7f7c49f13ab",
         "memo": "系统自动添加"
     },
+    "pcmprofilerzspeditview": {
+        "title": "局总部初审",
+        "caption": "局总部初审",
+        "viewtype": "DEEDITVIEW",
+        "viewmodule": "PCM",
+        "viewname": "PCMPROFILERZSPEditView",
+        "viewtag": "f41dc12715664fd5a5678c0442e3e962",
+        "memo": "系统自动添加"
+    },
     "pcmprofilezpdwshgridview": {
         "title": "用人单位初审",
         "caption": "用人单位初审",
@@ -376,6 +475,15 @@
         "viewname": "PIMQUALMAJORPickupGridView",
         "viewtag": "fe2c9423e322f159b6b437009463be03",
         "memo": "系统自动添加"
+    },
+    "pcmprofilerzspgridview": {
+        "title": "局总部初审",
+        "caption": "局总部初审",
+        "viewtype": "DEGRIDVIEW",
+        "viewmodule": "PCM",
+        "viewname": "PCMPROFILERZSPGridView",
+        "viewtag": "feaa15f9310a9dc4cc089eac9844e85f",
+        "memo": ""
     },
     "tdzwxxtdzwgridview": {
         "title": "投递职位摘要信息（要求：带*必填）",

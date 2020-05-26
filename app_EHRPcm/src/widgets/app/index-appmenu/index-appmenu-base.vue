@@ -62,8 +62,20 @@ export default class IndexBase extends AppMenusCtrlBase {
     protected click(item: any) {
         if (item) {
             switch (item.appfunctag) {
+                case '_5': 
+                    this.click_5(item);
+                    return;
+                case '_4': 
+                    this.click_4(item);
+                    return;
                 case '_2': 
                     this.click_2(item);
+                    return;
+                case '_6': 
+                    this.click_6(item);
+                    return;
+                case '_3': 
+                    this.click_3(item);
                     return;
                 case 'Auto499': 
                     this.clickAuto499(item);
@@ -72,6 +84,42 @@ export default class IndexBase extends AppMenusCtrlBase {
                     console.warn('未指定应用功能');
             }
         }
+    }
+    
+    /**
+     * 人力上报(校园招聘)
+     *
+     * @param {*} [item={}]
+     * @memberof Index
+     */
+    public click_5(item: any = {}) {
+        const viewparam: any = {};
+        Object.assign(viewparam, {});
+        const deResParameters: any[] = [];
+        const parameters: any[] = [
+            { pathName: 'pcmprofiles', parameterName: 'pcmprofile' },
+            { pathName: 'rlsbgridview', parameterName: 'rlsbgridview' },
+        ];
+        const path: string = this.$viewTool.buildUpRoutePath(this.$route, {}, deResParameters, parameters, [], viewparam);
+        this.$router.push(path);
+    }
+    
+    /**
+     * 拟录用人员(校园招聘)
+     *
+     * @param {*} [item={}]
+     * @memberof Index
+     */
+    public click_4(item: any = {}) {
+        const viewparam: any = {};
+        Object.assign(viewparam, {});
+        const deResParameters: any[] = [];
+        const parameters: any[] = [
+            { pathName: 'pcmprofiles', parameterName: 'pcmprofile' },
+            { pathName: 'ypzbdgridview', parameterName: 'ypzbdgridview' },
+        ];
+        const path: string = this.$viewTool.buildUpRoutePath(this.$route, {}, deResParameters, parameters, [], viewparam);
+        this.$router.push(path);
     }
     
     /**
@@ -87,6 +135,42 @@ export default class IndexBase extends AppMenusCtrlBase {
         const parameters: any[] = [
             { pathName: 'pcmprofiles', parameterName: 'pcmprofile' },
             { pathName: 'zpdwshgridview', parameterName: 'zpdwshgridview' },
+        ];
+        const path: string = this.$viewTool.buildUpRoutePath(this.$route, {}, deResParameters, parameters, [], viewparam);
+        this.$router.push(path);
+    }
+    
+    /**
+     * 编号审批(校园招聘)
+     *
+     * @param {*} [item={}]
+     * @memberof Index
+     */
+    public click_6(item: any = {}) {
+        const viewparam: any = {};
+        Object.assign(viewparam, {});
+        const deResParameters: any[] = [];
+        const parameters: any[] = [
+            { pathName: 'pcmprofiles', parameterName: 'pcmprofile' },
+            { pathName: 'bhspgridview', parameterName: 'bhspgridview' },
+        ];
+        const path: string = this.$viewTool.buildUpRoutePath(this.$route, {}, deResParameters, parameters, [], viewparam);
+        this.$router.push(path);
+    }
+    
+    /**
+     * 总部初审(校园招聘)
+     *
+     * @param {*} [item={}]
+     * @memberof Index
+     */
+    public click_3(item: any = {}) {
+        const viewparam: any = {};
+        Object.assign(viewparam, {});
+        const deResParameters: any[] = [];
+        const parameters: any[] = [
+            { pathName: 'pcmprofiles', parameterName: 'pcmprofile' },
+            { pathName: 'rzspgridview', parameterName: 'rzspgridview' },
         ];
         const path: string = this.$viewTool.buildUpRoutePath(this.$route, {}, deResParameters, parameters, [], viewparam);
         this.$router.push(path);

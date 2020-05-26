@@ -1,3 +1,4 @@
+import PCMCL_REASON from '@/codelist/pcmcl-reason';   
 import PIMCL_ZJLX from '@/codelist/pimcl-zjlx';   
 import PIM_XL2 from '@/codelist/pim-xl2';   
 import PIMCL_XX from '@/codelist/pimcl-xx';   
@@ -62,6 +63,14 @@ export default class CodeListService {
      */
     public static codelistCache:Map<string,any> = new Map();
 
+
+    /**
+     * 代码表--应聘者审批意见原因
+     *
+     * @type {PCMCL_REASON}
+     * @memberof CodeListService
+     */
+    public PCMCL_REASON: PCMCL_REASON = new PCMCL_REASON();
 
     /**
      * 代码表--证件类型

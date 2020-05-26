@@ -66,6 +66,7 @@ export class EntityServiceRegister {
         this.allEntityService.set('pcmeducationexperience', () => import('@/service/pcmeducation-experience/pcmeducation-experience-service'));
         this.allEntityService.set('ormpost', () => import('@/service/ormpost/ormpost-service'));
         this.allEntityService.set('pimqualmajor', () => import('@/service/pimqualmajor/pimqualmajor-service'));
+        this.allEntityService.set('wzd0001', () => import('@/service/wzd0001/wzd0001-service'));
         this.allEntityService.set('pimperson', () => import('@/service/pimperson/pimperson-service'));
     }
 

@@ -25,6 +25,7 @@ import pcmawardswons_zh_CN from '@locale/lanres/pcmawardswons/pcmawardswons_zh_C
 import pcmeducationexperience_zh_CN from '@locale/lanres/pcmeducation-experience/pcmeducation-experience_zh_CN';
 import ormpost_zh_CN from '@locale/lanres/ormpost/ormpost_zh_CN';
 import pimqualmajor_zh_CN from '@locale/lanres/pimqualmajor/pimqualmajor_zh_CN';
+import wzd0001_zh_CN from '@locale/lanres/wzd0001/wzd0001_zh_CN';
 import pimperson_zh_CN from '@locale/lanres/pimperson/pimperson_zh_CN';
 import components_zh_CN from '@locale/lanres/components/components_zh_CN';
 import codelist_zh_CN from '@locale/lanres/codelist/codelist_zh_CN';
@@ -134,6 +135,7 @@ export default {
         pcmeducationexperience: pcmeducationexperience_zh_CN,
         ormpost: ormpost_zh_CN,
         pimqualmajor: pimqualmajor_zh_CN,
+        wzd0001: wzd0001_zh_CN,
         pimperson: pimperson_zh_CN,
     },
     components: components_zh_CN,

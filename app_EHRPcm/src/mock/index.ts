@@ -34,4 +34,5 @@ import './entity/pcmawardswonss/pcmawardswonss';
 import './entity/pcmeducation-experiences/pcmeducation-experiences';
 import './entity/ormposts/ormposts';
 import './entity/pimqualmajors/pimqualmajors';
+import './entity/wzd0001s/wzd0001s';
 import './entity/pimpersons/pimpersons';

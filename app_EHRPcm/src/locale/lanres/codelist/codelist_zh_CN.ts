@@ -1,4 +1,12 @@
 export default {
+    PCMCL_REASON: {
+        empty: '',
+    },
+    PCMCL_PASSORREJECT: {
+        '10': '通过',
+        '20': '拒绝',
+        empty: '',
+    },
     PIMCL_ZJLX: {
         empty: '',
     },
@@ -162,6 +170,19 @@ export default {
         empty: '',
     },
     PIMCL_HKLX: {
+        empty: '',
+    },
+    PCMCL_PROFILEType_Search: {
+        '65': '待报到',
+        '70': '已报到',
+        '80': '逾期未报到',
+        empty: '',
+    },
+    PCMCL_RLSBPROFILEType: {
+        '10': '待上报',
+        '20': '待局总部审批',
+        '30': '局总部审批不通过',
+        '40': '待审批编号',
         empty: '',
     },
 };

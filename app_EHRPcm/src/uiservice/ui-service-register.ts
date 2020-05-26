@@ -66,6 +66,7 @@ export class UIServiceRegister {
         this.allUIService.set('pcmeducationexperience', () => import('@/uiservice/pcmeducation-experience/pcmeducation-experience-ui-service'));
         this.allUIService.set('ormpost', () => import('@/uiservice/ormpost/ormpost-ui-service'));
         this.allUIService.set('pimqualmajor', () => import('@/uiservice/pimqualmajor/pimqualmajor-ui-service'));
+        this.allUIService.set('wzd0001', () => import('@/uiservice/wzd0001/wzd0001-ui-service'));
         this.allUIService.set('pimperson', () => import('@/uiservice/pimperson/pimperson-ui-service'));
     }
 

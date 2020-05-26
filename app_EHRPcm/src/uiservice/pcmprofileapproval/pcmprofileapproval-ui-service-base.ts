@@ -79,6 +79,7 @@ export default class PCMPROFILEAPPROVALUIServiceBase extends UIService {
      * @memberof  PCMPROFILEAPPROVALUIServiceBase
      */  
     public initViewMap(){
+        this.allViewMap.set(':',{viewname:'jjgridview',srfappde:'pcmprofileapprovals'});
     }
 
     /**

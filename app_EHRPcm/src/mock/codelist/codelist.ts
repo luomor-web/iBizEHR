@@ -8,6 +8,43 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
     let status = MockAdapter.mockStatus(config);
     return [status, [
         {
+        "srfkey": "PCMCL_REASON",
+        "emptytext": "",
+        "codelisttype":"dynamic",
+        "appdataentity":"PCMPROFILESPYY",
+        "appdedataset":"FetchDefault",
+        "items": []
+    },
+    {
+        srfkey: 'PCMCL_PASSORREJECT',
+        emptytext: '未定义',
+        "codelisttype":"static",
+        items: [
+            {
+                id: '10',
+                label: '通过',
+                text: '通过',
+                "data":"",
+                "codename":"Item_10",
+                "color": "Blue",
+                value: '10',
+                
+                disabled: false,
+            },
+            {
+                id: '20',
+                label: '拒绝',
+                text: '拒绝',
+                "data":"",
+                "codename":"Item_20",
+                "color": "Red",
+                value: '20',
+                
+                disabled: false,
+            },
+        ]
+    },
+    {
         "srfkey": "PIMCL_ZJLX",
         "emptytext": "",
         "codelisttype":"dynamic",
@@ -920,6 +957,96 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
         "appdataentity":"CodeItem",
         "appdedataset":"FetchCurCL",
         "items": []
+    },
+    {
+        srfkey: 'PCMCL_PROFILEType_Search',
+        emptytext: '未定义',
+        "codelisttype":"static",
+        items: [
+            {
+                id: '65',
+                label: '待报到',
+                text: '待报到',
+                "data":"",
+                "codename":"Item_65",
+                "color": "Blue",
+                value: '65',
+                
+                disabled: false,
+            },
+            {
+                id: '70',
+                label: '已报到',
+                text: '已报到',
+                "data":"",
+                "codename":"Item_70",
+                "color": "Green",
+                value: '70',
+                
+                disabled: false,
+            },
+            {
+                id: '80',
+                label: '逾期未报到',
+                text: '逾期未报到',
+                "data":"",
+                "codename":"Item_80",
+                "color": "Red",
+                value: '80',
+                
+                disabled: false,
+            },
+        ]
+    },
+    {
+        srfkey: 'PCMCL_RLSBPROFILEType',
+        emptytext: '未定义',
+        "codelisttype":"static",
+        items: [
+            {
+                id: '10',
+                label: '待上报',
+                text: '待上报',
+                "data":"",
+                "codename":"Item_10",
+                value: '10',
+                
+                disabled: false,
+            },
+            {
+                id: '20',
+                label: '待局总部审批',
+                text: '待局总部审批',
+                "data":"",
+                "codename":"Item_20",
+                "color": "Blue",
+                value: '20',
+                
+                disabled: false,
+            },
+            {
+                id: '30',
+                label: '局总部审批不通过',
+                text: '局总部审批不通过',
+                "data":"",
+                "codename":"Item_30",
+                "color": "Red",
+                value: '30',
+                
+                disabled: false,
+            },
+            {
+                id: '40',
+                label: '待审批编号',
+                text: '待审批编号',
+                "data":"",
+                "codename":"Item_40",
+                "color": "Green",
+                value: '40',
+                
+                disabled: false,
+            },
+        ]
     }
     ]];
 });

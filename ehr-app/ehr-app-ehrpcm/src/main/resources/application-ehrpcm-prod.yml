@@ -111,6 +111,10 @@ zuul:
       path: /pimqualmajors/**
       serviceId: ehr-webapi
       stripPrefix: false
+    wzd0001:
+      path: /wzd0001s/**
+      serviceId: ehr-webapi
+      stripPrefix: false
     pimperson:
       path: /pimpeople/**
       serviceId: ehr-webapi
