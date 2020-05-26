@@ -27,6 +27,13 @@ import cn.ibizlab.ehr.core.pcm.domain.PCMSYQGZ;
 @Data
 public class PCMSYQGZSearchContext extends QueryWrapperContext<PCMSYQGZ> {
 
+	private String n_duration_eq;//[试用期限]
+	public void setN_duration_eq(String n_duration_eq) {
+        this.n_duration_eq = n_duration_eq;
+        if(!ObjectUtils.isEmpty(this.n_duration_eq)){
+            this.getSelectCond().eq("duration", n_duration_eq);
+        }
+    }
 	private String n_pcmsyqgzname_eq;//[试用期规则名称]
 	public void setN_pcmsyqgzname_eq(String n_pcmsyqgzname_eq) {
         this.n_pcmsyqgzname_eq = n_pcmsyqgzname_eq;

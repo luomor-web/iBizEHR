@@ -79,6 +79,37 @@
 
 
     <!--输出实体[PCMSCHOOLOFFICE]数据结构 -->
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-pcmschooloffice-17-12">
+        <createTable tableName="T_PCMSCHOOLOFFICE">
+                <column name="PCMSCHOOLOFFICENAME" remarks="" type="VARCHAR(200)">
+                </column>
+                <column name="CADRENAME" remarks="" type="VARCHAR(200)">
+                </column>
+                <column name="CADREENDDATETIME" remarks="" type="DATETIME">
+                </column>
+                <column name="BBSJ" remarks="" type="DATETIME">
+                </column>
+                <column name="FLAG" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="CREATEMAN" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="UPDATEMAN" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="PCMSCHOOLOFFICEID" remarks="" type="VARCHAR(100)">
+                    <constraints primaryKey="true" primaryKeyName="PK_PCMSCHOOLOFFICE_PCMSCHOOLOF"/>
+                </column>
+                <column name="UPDATEDATE" remarks="" type="DATETIME">
+                </column>
+                <column name="CADRESTARTDATETIME" remarks="" type="DATETIME">
+                </column>
+                <column name="CADREDESCRIPTION" remarks="" type="VARCHAR(500)">
+                </column>
+                <column name="CREATEDATE" remarks="" type="DATETIME">
+                </column>
+                <column name="PCMPROFILEID" remarks="" type="VARCHAR(100)">
+                </column>
+        </createTable>
+    </changeSet>
 
 
     <!--输出实体[PIMARCHIVESRECORD]数据结构 -->
@@ -97,6 +128,43 @@
 
 
     <!--输出实体[PCMPROFILEAPPROVAL]数据结构 -->
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-pcmprofileapproval-20-18">
+        <createTable tableName="T_PCMPROFILEAPPROVAL">
+                <column name="PCMPROFILEAPPROVALID" remarks="" type="VARCHAR(100)">
+                    <constraints primaryKey="true" primaryKeyName="PK_PCMPROFILEAPPROVAL_PCMPROFI"/>
+                </column>
+                <column name="FASTATE" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="PASSORREJECT" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="APPROVER" remarks="" type="VARCHAR(100)">
+                </column>
+                <column name="ENABLE" remarks="" type="INT">
+                </column>
+                <column name="APPROVALDATE" remarks="" type="DATETIME">
+                </column>
+                <column name="APPROVALOPINION" remarks="" type="VARCHAR(200)">
+                </column>
+                <column name="CREATEDATE" remarks="" type="DATETIME">
+                </column>
+                <column name="YJYY" remarks="" type="VARCHAR(1000)">
+                </column>
+                <column name="CREATEMAN" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="UPDATEDATE" remarks="" type="DATETIME">
+                </column>
+                <column name="APPROVALSTAGE" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="UPDATEMAN" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="PCMPROFILEAPPROVALNAME" remarks="" type="VARCHAR(200)">
+                </column>
+                <column name="PCMPROFILEID" remarks="" type="VARCHAR(100)">
+                </column>
+                <column name="PIMBYZZJLMXID" remarks="" type="VARCHAR(100)">
+                </column>
+        </createTable>
+    </changeSet>
 
 
     <!--输出实体[TRMLGBDETAIL]数据结构 -->
@@ -181,6 +249,33 @@
 
 
     <!--输出实体[PCMGXML]数据结构 -->
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-pcmgxml-21-24">
+        <createTable tableName="T_PCMGXML">
+                <column name="ND" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="PCMGXMLID" remarks="" type="VARCHAR(100)">
+                    <constraints primaryKey="true" primaryKeyName="PK_PCMGXML_PCMGXMLID"/>
+                </column>
+                <column name="CREATEMAN" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="XH" remarks="" type="INT">
+                </column>
+                <column name="UPDATEDATE" remarks="" type="DATETIME">
+                </column>
+                <column name="UPDATEMAN" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="XXXZ" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="CREATEDATE" remarks="" type="DATETIME">
+                </column>
+                <column name="GXLB" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="NATIONAREA" remarks="" type="VARCHAR(100)">
+                </column>
+                <column name="PCMGXMLNAME" remarks="" type="VARCHAR(200)">
+                </column>
+        </createTable>
+    </changeSet>
 
 
     <!--输出实体[PIMMAJORSETYPE]数据结构 -->
@@ -218,9 +313,69 @@
 
 
     <!--输出实体[PCMRCXL]数据结构 -->
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-pcmrcxl-1-30">
+        <createTable tableName="T_PCMRCXL">
+                <column name="CREATEDATE" remarks="" type="DATETIME">
+                </column>
+                <column name="UPDATEMAN" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="CODE" remarks="" type="VARCHAR(100)">
+                </column>
+                <column name="UPDATEDATE" remarks="" type="DATETIME">
+                </column>
+                <column name="PCMRCXLID" remarks="" type="VARCHAR(100)">
+                    <constraints primaryKey="true" primaryKeyName="PK_PCMRCXL_PCMRCXLID"/>
+                </column>
+                <column name="SNUMBER" remarks="" type="INT">
+                </column>
+                <column name="RCXLLX" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="PCMRCXLNAME" remarks="" type="VARCHAR(200)">
+                </column>
+                <column name="XLDJ" remarks="" type="VARCHAR(100)">
+                </column>
+                <column name="CREATEMAN" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="PCMRCXLID2" remarks="" type="VARCHAR(100)">
+                </column>
+        </createTable>
+    </changeSet>
 
 
     <!--输出实体[PCMJXSYGZZSQ]数据结构 -->
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-pcmjxsygzzsq-3-31">
+        <createTable tableName="T_PCMJXSYGZZSQ">
+                <column name="CZRQ" remarks="" type="DATETIME">
+                </column>
+                <column name="ORGID" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="CZR" remarks="" type="VARCHAR(100)">
+                </column>
+                <column name="ISTEMP" remarks="" type="INT">
+                </column>
+                <column name="BZ" remarks="" type="VARCHAR(2000)">
+                </column>
+                <column name="UPDATEMAN" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="CREATEDATE" remarks="" type="DATETIME">
+                </column>
+                <column name="UPDATEDATE" remarks="" type="DATETIME">
+                </column>
+                <column name="CZRID" remarks="" type="VARCHAR(100)">
+                </column>
+                <column name="PCMJXSYGZZSQNAME" remarks="" type="VARCHAR(200)">
+                </column>
+                <column name="SXRQ" remarks="" type="DATETIME">
+                </column>
+                <column name="CREATEMAN" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="ZZLX" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="PCMJXSYGZZSQID" remarks="" type="VARCHAR(100)">
+                    <constraints primaryKey="true" primaryKeyName="PK_PCMJXSYGZZSQ_PCMJXSYGZZSQID"/>
+                </column>
+        </createTable>
+    </changeSet>
 
 
     <!--输出实体[PCMYDGZMX]数据结构 -->
@@ -271,6 +426,43 @@
 
 
     <!--输出实体[PCMMSPJXX]数据结构 -->
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-pcmmspjxx-17-40">
+        <createTable tableName="T_PCMMSPJXX">
+                <column name="OFFICER" remarks="" type="VARCHAR(200)">
+                </column>
+                <column name="INTERVIEWTIME" remarks="" type="DATETIME">
+                </column>
+                <column name="CREATEDATE" remarks="" type="DATETIME">
+                </column>
+                <column name="UPDATEDATE" remarks="" type="DATETIME">
+                </column>
+                <column name="CREATEMAN" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="PCMMSPJXXNAME" remarks="" type="VARCHAR(200)">
+                </column>
+                <column name="EVALUATE" remarks="" type="VARCHAR(500)">
+                </column>
+                <column name="INTERVIEWID" remarks="" type="INT">
+                </column>
+                <column name="PCMMSPJXXID" remarks="" type="VARCHAR(100)">
+                    <constraints primaryKey="true" primaryKeyName="PK_PCMMSPJXX_PCMMSPJXXID"/>
+                </column>
+                <column name="INTERVIEWRESULTID" remarks="" type="INT">
+                </column>
+                <column name="EVALUATETIME" remarks="" type="DATETIME">
+                </column>
+                <column name="SCORE" remarks="" type="FLOAT">
+                </column>
+                <column name="CONCLUSION" remarks="" type="VARCHAR(100)">
+                </column>
+                <column name="UPDATEMAN" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="OFFICEREMAIL" remarks="" type="VARCHAR(200)">
+                </column>
+                <column name="LOCATION" remarks="" type="VARCHAR(300)">
+                </column>
+        </createTable>
+    </changeSet>
 
 
     <!--输出实体[VACSYNJCX]数据结构 -->
@@ -829,6 +1021,27 @@
 
 
     <!--输出实体[PCMGXXKTEMP]数据结构 -->
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-pcmgxxktemp-17-67">
+        <createTable tableName="T_PCMGXXKTEMP">
+                <column name="UPDATEDATE" remarks="" type="DATETIME">
+                </column>
+                <column name="CREATEDATE" remarks="" type="DATETIME">
+                </column>
+                <column name="UPDATEMAN" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="PCMGXXKTEMPID" remarks="" type="VARCHAR(100)">
+                    <constraints primaryKey="true" primaryKeyName="PK_PCMGXXKTEMP_PCMGXXKTEMPID"/>
+                </column>
+                <column name="PCMGXXKTEMPNAME" remarks="" type="VARCHAR(200)">
+                </column>
+                <column name="CREATEMAN" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="PCMXKMLID" remarks="" type="VARCHAR(100)">
+                </column>
+                <column name="PCMGXMLID" remarks="" type="VARCHAR(100)">
+                </column>
+        </createTable>
+    </changeSet>
 
 
     <!--输出实体[PIMBYYGZZSQ]数据结构 -->
@@ -956,6 +1169,29 @@
 
 
     <!--输出实体[PCMPROFILEINITNUMBER]数据结构 -->
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-pcmprofileinitnumber-11-70">
+        <createTable tableName="T_PCMPROFILEINITNUMBER">
+                <column name="CREATEMAN" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="UPDATEDATE" remarks="" type="DATETIME">
+                </column>
+                <column name="YGLX" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="INITNUM" remarks="" type="INT">
+                </column>
+                <column name="PCMPROFILEINITNUMBERNAME" remarks="" type="VARCHAR(200)">
+                </column>
+                <column name="PCMPROFILEINITNUMBERID" remarks="" type="VARCHAR(100)">
+                    <constraints primaryKey="true" primaryKeyName="PK_PCMPROFILEINITNUMBER_PCMPRO"/>
+                </column>
+                <column name="CREATEDATE" remarks="" type="DATETIME">
+                </column>
+                <column name="UPDATEMAN" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="ORMORGID" remarks="" type="VARCHAR(100)">
+                </column>
+        </createTable>
+    </changeSet>
 
 
     <!--输出实体[SALITEM]数据结构 -->
@@ -974,9 +1210,95 @@
 
 
     <!--输出实体[PCMNOTICE]数据结构 -->
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-pcmnotice-23-76">
+        <createTable tableName="T_PCMNOTICE">
+                <column name="UPDATEDATE" remarks="" type="DATETIME">
+                </column>
+                <column name="SXRQ" remarks="" type="DATETIME">
+                </column>
+                <column name="NOTICETYPE" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="ROLETYPE" remarks="" type="INT">
+                </column>
+                <column name="DONE" remarks="" type="INT">
+                </column>
+                <column name="PCMNOTICENAME" remarks="" type="VARCHAR(200)">
+                </column>
+                <column name="CREATEMAN" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="SSFW" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="CREATEDATE" remarks="" type="DATETIME">
+                </column>
+                <column name="PCMNOTICEID" remarks="" type="VARCHAR(100)">
+                    <constraints primaryKey="true" primaryKeyName="PK_PCMNOTICE_PCMNOTICEID"/>
+                </column>
+                <column name="NOTICE" remarks="" type="VARCHAR(2000)">
+                </column>
+                <column name="UPDATEMAN" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="YGBH" remarks="" type="VARCHAR(200)">
+                </column>
+                <column name="PIMPERSONID" remarks="" type="VARCHAR(100)">
+                </column>
+                <column name="PIMDISTIRBUTIONID" remarks="" type="VARCHAR(100)">
+                </column>
+                <column name="ORMORGSECTORID" remarks="" type="VARCHAR(100)">
+                </column>
+                <column name="ORMORGID" remarks="" type="VARCHAR(100)">
+                </column>
+        </createTable>
+    </changeSet>
 
 
     <!--输出实体[PCMPRACTICEEXPERIENCE]数据结构 -->
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-pcmpracticeexperience-25-77">
+        <createTable tableName="T_PCMPRACTICEEXPERIENCE">
+                <column name="PRACTICEREFERENCESPOSITION" remarks="" type="VARCHAR(300)">
+                </column>
+                <column name="UPDATEDATE" remarks="" type="DATETIME">
+                </column>
+                <column name="PRACTICECOMPANYDESCRIPTION" remarks="" type="VARCHAR(500)">
+                </column>
+                <column name="UPDATEMAN" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="ENDTIME" remarks="" type="DATETIME">
+                </column>
+                <column name="CREATEDATE" remarks="" type="DATETIME">
+                </column>
+                <column name="PRACTICECOMPANYNAME" remarks="" type="VARCHAR(300)">
+                </column>
+                <column name="FLAG" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="CREATEMAN" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="BBSJ" remarks="" type="DATETIME">
+                </column>
+                <column name="PRACTICECONTENT" remarks="" type="VARCHAR(500)">
+                </column>
+                <column name="PRACTICEREFERENCESNAME" remarks="" type="VARCHAR(200)">
+                </column>
+                <column name="PRACTICEREFERENCESCONTACT" remarks="" type="VARCHAR(200)">
+                </column>
+                <column name="SXPJ" remarks="" type="VARCHAR(500)">
+                </column>
+                <column name="PCMPRACTICEEXPERIENCENAME" remarks="" type="VARCHAR(200)">
+                </column>
+                <column name="PCMPRACTICEEXPERIENCEID" remarks="" type="VARCHAR(100)">
+                    <constraints primaryKey="true" primaryKeyName="PK_PCMPRACTICEEXPERIENCE_PCMPR"/>
+                </column>
+                <column name="PRACTICEADDRESS" remarks="" type="VARCHAR(300)">
+                </column>
+                <column name="SXGW" remarks="" type="VARCHAR(100)">
+                </column>
+                <column name="PRACTICEREFERENCESRELATION" remarks="" type="VARCHAR(100)">
+                </column>
+                <column name="STARTTIME" remarks="" type="DATETIME">
+                </column>
+                <column name="PCMPROFILEID" remarks="" type="VARCHAR(100)">
+                </column>
+        </createTable>
+    </changeSet>
 
 
     <!--输出实体[BUDGET]数据结构 -->
@@ -1058,6 +1380,65 @@
 
 
     <!--输出实体[PCMDDSQDMX]数据结构 -->
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-pcmddsqdmx-39-80">
+        <createTable tableName="T_PCMDDSQDMX">
+                <column name="PCMDDSQDMXID" remarks="" type="VARCHAR(100)">
+                    <constraints primaryKey="true" primaryKeyName="PK_PCMDDSQDMX_PCMDDSQDMXID"/>
+                </column>
+                <column name="FINISHDD" remarks="" type="INT">
+                </column>
+                <column name="CHECKSTATUS" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="LX" remarks="" type="VARCHAR(100)">
+                </column>
+                <column name="SFGBDD" remarks="" type="INT">
+                </column>
+                <column name="UPDATEMAN" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="JDJSSJ" remarks="" type="DATETIME">
+                </column>
+                <column name="SXRQ" remarks="" type="DATETIME">
+                </column>
+                <column name="SFJZB" remarks="" type="INT">
+                </column>
+                <column name="CREATEMAN" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="DDTYPE" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="RZWJ" remarks="" type="VARCHAR(2000)">
+                </column>
+                <column name="UPDATEDATE" remarks="" type="DATETIME">
+                </column>
+                <column name="PCMDDSQDMXNAME" remarks="" type="VARCHAR(200)">
+                </column>
+                <column name="JDKSSJ" remarks="" type="DATETIME">
+                </column>
+                <column name="CREATEDATE" remarks="" type="DATETIME">
+                </column>
+                <column name="ORMORGNAME" remarks="" type="VARCHAR(500)">
+                </column>
+                <column name="ORMYGW" remarks="" type="VARCHAR(200)">
+                </column>
+                <column name="ORMYZW" remarks="" type="VARCHAR(200)">
+                </column>
+                <column name="YGBH" remarks="" type="VARCHAR(200)">
+                </column>
+                <column name="ORMORGSECTORNAME" remarks="" type="VARCHAR(100)">
+                </column>
+                <column name="ORMPOSTID" remarks="" type="VARCHAR(100)">
+                </column>
+                <column name="ORMDUTYID" remarks="" type="VARCHAR(100)">
+                </column>
+                <column name="ORGID" remarks="" type="VARCHAR(100)">
+                </column>
+                <column name="PCMDDSQDID" remarks="" type="VARCHAR(100)">
+                </column>
+                <column name="PIMDISTIRBUTIONID" remarks="" type="VARCHAR(100)">
+                </column>
+                <column name="ORGSECTORID" remarks="" type="VARCHAR(100)">
+                </column>
+        </createTable>
+    </changeSet>
 
 
     <!--输出实体[ORMRANK]数据结构 -->
@@ -1202,6 +1583,27 @@
 
 
     <!--输出实体[PCMPROFILESZYJTJ]数据结构 -->
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-pcmprofileszyjtj-11-96">
+        <createTable tableName="T_PCMPROFILESZYJTJ">
+                <column name="CREATEMAN" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="XH" remarks="" type="INT">
+                </column>
+                <column name="UPDATEDATE" remarks="" type="DATETIME">
+                </column>
+                <column name="CREATEDATE" remarks="" type="DATETIME">
+                </column>
+                <column name="PCMPROFILESZYJTJID" remarks="" type="VARCHAR(100)">
+                    <constraints primaryKey="true" primaryKeyName="PK_PCMPROFILESZYJTJ_PCMPROFILE"/>
+                </column>
+                <column name="YGLX" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="PCMPROFILESZYJTJNAME" remarks="" type="VARCHAR(1000)">
+                </column>
+                <column name="UPDATEMAN" remarks="" type="VARCHAR(60)">
+                </column>
+        </createTable>
+    </changeSet>
 
 
     <!--输出实体[SOCCOMPANYWEL]数据结构 -->
@@ -1312,12 +1714,92 @@
 
 
     <!--输出实体[PCMNORECYCLINGLIBRARY]数据结构 -->
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-pcmnorecyclinglibrary-11-107">
+        <createTable tableName="T_PCMNORECYCLINGLIBRARY">
+                <column name="PCMNORECYCLINGLIBRARYID" remarks="" type="VARCHAR(100)">
+                    <constraints primaryKey="true" primaryKeyName="PK_PCMNORECYCLINGLIBRARY_PCMNO"/>
+                </column>
+                <column name="UPDATEMAN" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="CREATEMAN" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="YGLX" remarks="" type="VARCHAR(100)">
+                </column>
+                <column name="ORMORGID" remarks="" type="VARCHAR(100)">
+                </column>
+                <column name="PCMNORECYCLINGLIBRARYNAME" remarks="" type="VARCHAR(200)">
+                </column>
+                <column name="CREATEDATE" remarks="" type="DATETIME">
+                </column>
+                <column name="USEFUL" remarks="" type="INT">
+                </column>
+                <column name="UPDATEDATE" remarks="" type="DATETIME">
+                </column>
+                <column name="YGBH" remarks="" type="VARCHAR(100)">
+                </column>
+        </createTable>
+    </changeSet>
 
 
     <!--输出实体[ORMTITLE]数据结构 -->
 
 
     <!--输出实体[PCMRZGL]数据结构 -->
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-pcmrzgl-26-109">
+        <createTable tableName="T_PCMRZGL">
+                <column name="RZNX_COLOR" remarks="" type="VARCHAR(100)">
+                </column>
+                <column name="ORMORGSECTORNAME" remarks="" type="VARCHAR(200)">
+                </column>
+                <column name="NLDQ" remarks="" type="INT">
+                </column>
+                <column name="CREATEMAN" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="ZJNX_COLOR" remarks="" type="VARCHAR(100)">
+                </column>
+                <column name="ZJ" remarks="" type="VARCHAR(200)">
+                </column>
+                <column name="DQZJXZW" remarks="" type="VARCHAR(200)">
+                </column>
+                <column name="UPDATEDATE" remarks="" type="DATETIME">
+                </column>
+                <column name="ORMORGNAME" remarks="" type="VARCHAR(200)">
+                </column>
+                <column name="RZNX" remarks="" type="INT">
+                </column>
+                <column name="ZJNX" remarks="" type="INT">
+                </column>
+                <column name="PCMRZGLNAME" remarks="" type="VARCHAR(200)">
+                </column>
+                <column name="ZWRQ" remarks="" type="DATETIME">
+                </column>
+                <column name="ORGSECTORID" remarks="" type="VARCHAR(100)">
+                </column>
+                <column name="YGID" remarks="" type="VARCHAR(200)">
+                </column>
+                <column name="PCMRZGLID" remarks="" type="VARCHAR(100)">
+                    <constraints primaryKey="true" primaryKeyName="PK_PCMRZGL_PCMRZGLID"/>
+                </column>
+                <column name="CREATEDATE" remarks="" type="DATETIME">
+                </column>
+                <column name="YGNAME" remarks="" type="VARCHAR(200)">
+                </column>
+                <column name="SEX" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="ZJRQ" remarks="" type="DATETIME">
+                </column>
+                <column name="YGBH" remarks="" type="VARCHAR(200)">
+                </column>
+                <column name="UPDATEMAN" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="NL" remarks="" type="INT">
+                </column>
+                <column name="ORGID" remarks="" type="VARCHAR(100)">
+                </column>
+                <column name="GW" remarks="" type="VARCHAR(100)">
+                </column>
+        </createTable>
+    </changeSet>
 
 
     <!--输出实体[PARJXKHXHZ]数据结构 -->
@@ -1592,12 +2074,58 @@
 
 
     <!--输出实体[PCMPROFILESPYY]数据结构 -->
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-pcmprofilespyy-13-132">
+        <createTable tableName="T_PCMPROFILESPYY">
+                <column name="YYBM" remarks="" type="VARCHAR(100)">
+                </column>
+                <column name="CREATEMAN" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="PCMPROFILESPYYNAME" remarks="" type="VARCHAR(200)">
+                </column>
+                <column name="UPDATEDATE" remarks="" type="DATETIME">
+                </column>
+                <column name="PCMPROFILESPYYID" remarks="" type="VARCHAR(100)">
+                    <constraints primaryKey="true" primaryKeyName="PK_PCMPROFILESPYY_PCMPROFILESP"/>
+                </column>
+                <column name="CREATEDATE" remarks="" type="DATETIME">
+                </column>
+                <column name="UPDATEMAN" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="YYMC" remarks="" type="VARCHAR(100)">
+                </column>
+        </createTable>
+    </changeSet>
 
 
     <!--输出实体[PCMXYGZZKHJGJL]数据结构 -->
 
 
     <!--输出实体[PCMCSRCMSPJ]数据结构 -->
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-pcmcsrcmspj-11-134">
+        <createTable tableName="T_PCMCSRCMSPJ">
+                <column name="PCMCSRCMSPJID" remarks="" type="VARCHAR(100)">
+                    <constraints primaryKey="true" primaryKeyName="PK_PCMCSRCMSPJ_PCMCSRCMSPJID"/>
+                </column>
+                <column name="UPDATEMAN" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="MSPJ" remarks="" type="VARCHAR(200)">
+                </column>
+                <column name="MSCJ" remarks="" type="FLOAT">
+                </column>
+                <column name="YGMC" remarks="" type="VARCHAR(200)">
+                </column>
+                <column name="CREATEDATE" remarks="" type="DATETIME">
+                </column>
+                <column name="YGBH" remarks="" type="VARCHAR(200)">
+                </column>
+                <column name="UPDATEDATE" remarks="" type="DATETIME">
+                </column>
+                <column name="CREATEMAN" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="PCMCSRCMSPJNAME" remarks="" type="VARCHAR(200)">
+                </column>
+        </createTable>
+    </changeSet>
 
 
     <!--输出实体[ORMORGSECTOR]数据结构 -->
@@ -1663,6 +2191,41 @@
 
 
     <!--输出实体[PCMRECRUITMENT]数据结构 -->
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-pcmrecruitment-20-144">
+        <createTable tableName="T_PCMRECRUITMENT">
+                <column name="CREATEMAN" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="UPDATEDATE" remarks="" type="DATETIME">
+                </column>
+                <column name="CREATEDATE" remarks="" type="DATETIME">
+                </column>
+                <column name="UPDATEMAN" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="PCMRECRUITMENTID" remarks="" type="VARCHAR(100)">
+                    <constraints primaryKey="true" primaryKeyName="PK_PCMRECRUITMENT_PCMRECRUITME"/>
+                </column>
+                <column name="REQUIREMENTS" remarks="" type="VARCHAR(2000)">
+                </column>
+                <column name="SJZPRS" remarks="" type="INT">
+                </column>
+                <column name="PCMRECRUITMENTNAME" remarks="" type="VARCHAR(200)">
+                </column>
+                <column name="YJZPRS" remarks="" type="INT">
+                </column>
+                <column name="SFZPWC" remarks="" type="INT">
+                </column>
+                <column name="RECRUITMENTTYPE" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="ORMORGSECTORID" remarks="" type="VARCHAR(100)">
+                </column>
+                <column name="ORMORGID" remarks="" type="VARCHAR(100)">
+                </column>
+                <column name="ORMPOSTID" remarks="" type="VARCHAR(100)">
+                </column>
+                <column name="ORMDUTYID" remarks="" type="VARCHAR(100)">
+                </column>
+        </createTable>
+    </changeSet>
 
 
     <!--输出实体[NATIONMGR]数据结构 -->
@@ -1854,12 +2417,108 @@
 
 
     <!--输出实体[PCMEDUCATIONEXPERIENCE]数据结构 -->
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-pcmeducationexperience-37-163">
+        <createTable tableName="T_PCMEDUCATIONEXPERIENCE">
+                <column name="MAJORDESCRIPTION" remarks="" type="VARCHAR(500)">
+                </column>
+                <column name="FLAG" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="SUBJECTRESEARCH" remarks="" type="VARCHAR(500)">
+                </column>
+                <column name="TRAININGMODE" remarks="" type="VARCHAR(200)">
+                </column>
+                <column name="MAJORCATEGORY" remarks="" type="VARCHAR(200)">
+                </column>
+                <column name="PCMEDUCATIONEXPERIENCENAME" remarks="" type="VARCHAR(200)">
+                </column>
+                <column name="FORMSOFLEARNING" remarks="" type="VARCHAR(200)">
+                </column>
+                <column name="EDUCATIONLEVEL" remarks="" type="VARCHAR(200)">
+                </column>
+                <column name="XWZ" remarks="" type="VARCHAR(1000)">
+                </column>
+                <column name="BBSJ" remarks="" type="DATETIME">
+                </column>
+                <column name="MAJORCOURSES" remarks="" type="VARCHAR(200)">
+                </column>
+                <column name="COLLEGENAME" remarks="" type="VARCHAR(200)">
+                </column>
+                <column name="BYZ" remarks="" type="VARCHAR(1000)">
+                </column>
+                <column name="UPDATEMAN" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="CREATEDATE" remarks="" type="DATETIME">
+                </column>
+                <column name="XLYZ" remarks="" type="VARCHAR(1000)">
+                </column>
+                <column name="ISABROAD" remarks="" type="VARCHAR(100)">
+                </column>
+                <column name="STARTTIME" remarks="" type="DATETIME">
+                </column>
+                <column name="SFXZY" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="XKML" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="HIGESTXL" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="MAJORNAME" remarks="" type="VARCHAR(100)">
+                </column>
+                <column name="SCHOOLNAME" remarks="" type="VARCHAR(300)">
+                </column>
+                <column name="CITY" remarks="" type="VARCHAR(200)">
+                </column>
+                <column name="XXXZ" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="XL" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="UPDATEDATE" remarks="" type="DATETIME">
+                </column>
+                <column name="ENDTIME" remarks="" type="DATETIME">
+                </column>
+                <column name="DEGREE" remarks="" type="VARCHAR(200)">
+                </column>
+                <column name="CREATEMAN" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="FIRSTXL" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="PCMEDUCATIONEXPERIENCEID" remarks="" type="VARCHAR(100)">
+                    <constraints primaryKey="true" primaryKeyName="PK_PCMEDUCATIONEXPERIENCE_PCME"/>
+                </column>
+                <column name="PCMPROFILEID" remarks="" type="VARCHAR(100)">
+                </column>
+        </createTable>
+    </changeSet>
 
 
     <!--输出实体[ORMORGDZ]数据结构 -->
 
 
     <!--输出实体[PCMREASON]数据结构 -->
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-pcmreason-11-165">
+        <createTable tableName="T_PCMREASON">
+                <column name="UPDATEMAN" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="BZ" remarks="" type="VARCHAR(2000)">
+                </column>
+                <column name="PX" remarks="" type="DECIMAL(38,2)">
+                </column>
+                <column name="UPDATEDATE" remarks="" type="DATETIME">
+                </column>
+                <column name="LX" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="ENABLE" remarks="" type="INT">
+                </column>
+                <column name="CREATEMAN" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="CREATEDATE" remarks="" type="DATETIME">
+                </column>
+                <column name="PCMREASONNAME" remarks="" type="VARCHAR(200)">
+                </column>
+                <column name="PCMREASONID" remarks="" type="VARCHAR(100)">
+                    <constraints primaryKey="true" primaryKeyName="PK_PCMREASON_PCMREASONID"/>
+                </column>
+        </createTable>
+    </changeSet>
 
 
     <!--输出实体[ORMDEPESTMAN]数据结构 -->
@@ -1971,6 +2630,27 @@
 
 
     <!--输出实体[PCMPROFILENUMBEPREFIX]数据结构 -->
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-pcmprofilenumbeprefix-10-182">
+        <createTable tableName="T_PCMPROFILENUMBEPREFIX">
+                <column name="UPDATEDATE" remarks="" type="DATETIME">
+                </column>
+                <column name="CREATEMAN" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="NUMBERPREFIX" remarks="" type="VARCHAR(100)">
+                </column>
+                <column name="PCMPROFILENUMBEPREFIXID" remarks="" type="VARCHAR(100)">
+                    <constraints primaryKey="true" primaryKeyName="PK_PCMPROFILENUMBEPREFIX_PCMPR"/>
+                </column>
+                <column name="UPDATEMAN" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="CREATEDATE" remarks="" type="DATETIME">
+                </column>
+                <column name="PCMPROFILENUMBEPREFIXNAME" remarks="" type="VARCHAR(200)">
+                </column>
+                <column name="ORMORGID" remarks="" type="VARCHAR(100)">
+                </column>
+        </createTable>
+    </changeSet>
 
 
     <!--输出实体[PIMARCHIVESCHANGE]数据结构 -->
@@ -2015,6 +2695,27 @@
 
 
     <!--输出实体[PCMPROFILEFJ]数据结构 -->
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-pcmprofilefj-11-189">
+        <createTable tableName="T_PCMPROFILEFJ">
+                <column name="CREATEDATE" remarks="" type="DATETIME">
+                </column>
+                <column name="FJNAME" remarks="" type="VARCHAR(2000)">
+                </column>
+                <column name="CREATEMAN" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="PCMPROFILEFJID" remarks="" type="VARCHAR(100)">
+                    <constraints primaryKey="true" primaryKeyName="PK_PCMPROFILEFJ_PCMPROFILEFJID"/>
+                </column>
+                <column name="UPDATEMAN" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="FJ" remarks="" type="VARCHAR(2000)">
+                </column>
+                <column name="PCMPROFILEFJNAME" remarks="" type="VARCHAR(200)">
+                </column>
+                <column name="UPDATEDATE" remarks="" type="DATETIME">
+                </column>
+        </createTable>
+    </changeSet>
 
 
     <!--输出实体[TRMTRIANPERSON]数据结构 -->
@@ -2027,6 +2728,39 @@
 
 
     <!--输出实体[PCMAWARDSWONS]数据结构 -->
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-pcmawardswons-18-193">
+        <createTable tableName="T_PCMAWARDSWONS">
+                <column name="AWARDLEVEL" remarks="" type="VARCHAR(200)">
+                </column>
+                <column name="FLAG" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="CREATEDATE" remarks="" type="DATETIME">
+                </column>
+                <column name="AWARDNAME" remarks="" type="VARCHAR(200)">
+                </column>
+                <column name="AWARDTIME" remarks="" type="DATETIME">
+                </column>
+                <column name="CREATEMAN" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="AWARDDESCRIPTION" remarks="" type="VARCHAR(500)">
+                </column>
+                <column name="PCMAWARDSWONSNAME" remarks="" type="VARCHAR(200)">
+                </column>
+                <column name="PCMAWARDSWONSID" remarks="" type="VARCHAR(100)">
+                    <constraints primaryKey="true" primaryKeyName="PK_PCMAWARDSWONS_PCMAWARDSWONS"/>
+                </column>
+                <column name="BBSJ" remarks="" type="DATETIME">
+                </column>
+                <column name="UPDATEMAN" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="JUDGEORG" remarks="" type="VARCHAR(100)">
+                </column>
+                <column name="UPDATEDATE" remarks="" type="DATETIME">
+                </column>
+                <column name="PCMPROFILEID" remarks="" type="VARCHAR(100)">
+                </column>
+        </createTable>
+    </changeSet>
 
 
     <!--输出实体[ORMZWDQGZ]数据结构 -->
@@ -2064,6 +2798,39 @@
 
 
     <!--输出实体[PCMSGQMGR]数据结构 -->
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-pcmsgqmgr-1-197">
+        <createTable tableName="T_PCMSGQMGR">
+                <column name="KSSJ" remarks="" type="DATETIME">
+                </column>
+                <column name="JSSJ" remarks="" type="DATETIME">
+                </column>
+                <column name="UPDATEDATE" remarks="" type="DATETIME">
+                </column>
+                <column name="SFTGSH" remarks="" type="INT">
+                </column>
+                <column name="UPDATEMAN" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="BZ" remarks="" type="VARCHAR(2000)">
+                </column>
+                <column name="PCMSGQMGRID" remarks="" type="VARCHAR(100)">
+                    <constraints primaryKey="true" primaryKeyName="PK_PCMSGQMGR_PCMSGQMGRID"/>
+                </column>
+                <column name="SGZT" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="PCMSGQMGRNAME" remarks="" type="VARCHAR(200)">
+                </column>
+                <column name="CREATEDATE" remarks="" type="DATETIME">
+                </column>
+                <column name="CREATEMAN" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="YGBH" remarks="" type="VARCHAR(200)">
+                </column>
+                <column name="PIMPERSONID" remarks="" type="VARCHAR(100)">
+                </column>
+                <column name="PCMBDSQDMXID" remarks="" type="VARCHAR(100)">
+                </column>
+        </createTable>
+    </changeSet>
 
 
     <!--输出实体[ORMBMGWBZ]数据结构 -->
@@ -2073,6 +2840,39 @@
 
 
     <!--输出实体[PCMJXSYGZZSQMX]数据结构 -->
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-pcmjxsygzzsqmx-22-200">
+        <createTable tableName="T_PCMJXSYGZZSQMX">
+                <column name="CREATEMAN" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="UPDATEDATE" remarks="" type="DATETIME">
+                </column>
+                <column name="UPDATEMAN" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="STATUS" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="PCMJXSYGZZSQMXID" remarks="" type="VARCHAR(100)">
+                    <constraints primaryKey="true" primaryKeyName="PK_PCMJXSYGZZSQMX_PCMJXSYGZZSQ"/>
+                </column>
+                <column name="CREATEDATE" remarks="" type="DATETIME">
+                </column>
+                <column name="PCMJXSYGZZSQMXNAME" remarks="" type="VARCHAR(200)">
+                </column>
+                <column name="BM" remarks="" type="VARCHAR(100)">
+                </column>
+                <column name="ZZ" remarks="" type="VARCHAR(200)">
+                </column>
+                <column name="GW" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="ZJ" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="ZW" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="PIMPERSONID" remarks="" type="VARCHAR(100)">
+                </column>
+                <column name="PCMJXSYGZZSQID" remarks="" type="VARCHAR(100)">
+                </column>
+        </createTable>
+    </changeSet>
 
 
     <!--输出实体[PCMYDMX]数据结构 -->
@@ -2144,6 +2944,39 @@
 
 
     <!--输出实体[PCMSYQGZ]数据结构 -->
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-pcmsyqgz-16-205">
+        <createTable tableName="T_PCMSYQGZ">
+                <column name="UPDATEDATE" remarks="" type="DATETIME">
+                </column>
+                <column name="XH" remarks="" type="VARCHAR(100)">
+                </column>
+                <column name="UPDATEMAN" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="MINPERIOD" remarks="" type="FLOAT">
+                </column>
+                <column name="LDHTQXJS" remarks="" type="FLOAT">
+                </column>
+                <column name="CREATEDATE" remarks="" type="DATETIME">
+                </column>
+                <column name="LDHTQX" remarks="" type="VARCHAR(200)">
+                </column>
+                <column name="PCMSYQGZID" remarks="" type="VARCHAR(100)">
+                    <constraints primaryKey="true" primaryKeyName="PK_PCMSYQGZ_PCMSYQGZID"/>
+                </column>
+                <column name="CREATEMAN" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="DURATION" remarks="" type="VARCHAR(100)">
+                </column>
+                <column name="SYQJS" remarks="" type="FLOAT">
+                </column>
+                <column name="PCMSYQGZNAME" remarks="" type="VARCHAR(200)">
+                </column>
+                <column name="MAXPERIOD" remarks="" type="FLOAT">
+                </column>
+                <column name="ORMORGID" remarks="" type="VARCHAR(100)">
+                </column>
+        </createTable>
+    </changeSet>
 
 
     <!--输出实体[PARKHFA]数据结构 -->
@@ -2254,6 +3087,33 @@
 
 
     <!--输出实体[PCMDDSQD]数据结构 -->
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-pcmddsqd-15-223">
+        <createTable tableName="T_PCMDDSQD">
+                <column name="UPDATEMAN" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="SQSJ" remarks="" type="DATETIME">
+                </column>
+                <column name="PCMDDSQDID" remarks="" type="VARCHAR(100)">
+                    <constraints primaryKey="true" primaryKeyName="PK_PCMDDSQD_PCMDDSQDID"/>
+                </column>
+                <column name="UPDATEDATE" remarks="" type="DATETIME">
+                </column>
+                <column name="BZSM" remarks="" type="VARCHAR(1000)">
+                </column>
+                <column name="CREATEDATE" remarks="" type="DATETIME">
+                </column>
+                <column name="PCMDDSQDNAME" remarks="" type="VARCHAR(200)">
+                </column>
+                <column name="LX" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="CREATEMAN" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="ORGID" remarks="" type="VARCHAR(100)">
+                </column>
+                <column name="PIMPERSONID" remarks="" type="VARCHAR(100)">
+                </column>
+        </createTable>
+    </changeSet>
 
 
     <!--输出实体[QUESTIONS]数据结构 -->
@@ -2307,6 +3167,37 @@
 
 
     <!--输出实体[PCMJXSGZ]数据结构 -->
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-pcmjxsgz-14-231">
+        <createTable tableName="T_PCMJXSGZ">
+                <column name="JXQJS" remarks="" type="FLOAT">
+                </column>
+                <column name="KSRQ" remarks="" type="DATETIME">
+                </column>
+                <column name="XLLX" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="UPDATEMAN" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="APPLYEDU" remarks="" type="VARCHAR(100)">
+                </column>
+                <column name="PCMJXSGZID" remarks="" type="VARCHAR(100)">
+                    <constraints primaryKey="true" primaryKeyName="PK_PCMJXSGZ_PCMJXSGZID"/>
+                </column>
+                <column name="CREATEMAN" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="DURATION" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="UPDATEDATE" remarks="" type="DATETIME">
+                </column>
+                <column name="PCMJXSGZNAME" remarks="" type="VARCHAR(200)">
+                </column>
+                <column name="JSRQ" remarks="" type="DATETIME">
+                </column>
+                <column name="XH" remarks="" type="INT">
+                </column>
+                <column name="CREATEDATE" remarks="" type="DATETIME">
+                </column>
+        </createTable>
+    </changeSet>
 
 
     <!--输出实体[ORMRELATION]数据结构 -->
@@ -2316,6 +3207,31 @@
 
 
     <!--输出实体[PCMBDSQD]数据结构 -->
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-pcmbdsqd-1-234">
+        <createTable tableName="T_PCMBDSQD">
+                <column name="BZSM" remarks="" type="VARCHAR(1000)">
+                </column>
+                <column name="CREATEMAN" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="LX" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="PCMBDSQDNAME" remarks="" type="VARCHAR(200)">
+                </column>
+                <column name="UPDATEDATE" remarks="" type="DATETIME">
+                </column>
+                <column name="UPDATEMAN" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="PCMBDSQDID" remarks="" type="VARCHAR(100)">
+                    <constraints primaryKey="true" primaryKeyName="PK_PCMBDSQD_PCMBDSQDID"/>
+                </column>
+                <column name="SQSJ" remarks="" type="DATETIME">
+                </column>
+                <column name="CREATEDATE" remarks="" type="DATETIME">
+                </column>
+                <column name="PIMPERSONID" remarks="" type="VARCHAR(100)">
+                </column>
+        </createTable>
+    </changeSet>
 
 
     <!--输出实体[PCMXYGZZSQ]数据结构 -->
@@ -2328,6 +3244,23 @@
 
 
     <!--输出实体[PCMMONTH]数据结构 -->
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-pcmmonth-7-238">
+        <createTable tableName="T_PCMMONTH">
+                <column name="PCMMONTHID" remarks="" type="VARCHAR(100)">
+                    <constraints primaryKey="true" primaryKeyName="PK_PCMMONTH_PCMMONTHID"/>
+                </column>
+                <column name="UPDATEMAN" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="CREATEDATE" remarks="" type="DATETIME">
+                </column>
+                <column name="CREATEMAN" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="PCMMONTHNAME" remarks="" type="VARCHAR(200)">
+                </column>
+                <column name="UPDATEDATE" remarks="" type="DATETIME">
+                </column>
+        </createTable>
+    </changeSet>
 
 
     <!--输出实体[PIMQUALMAJOR]数据结构 -->
@@ -2528,6 +3461,39 @@
 
 
     <!--输出实体[PARJXZGPCMX]数据结构 -->
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-parjxzgpcmx-16-261">
+        <createTable tableName="T_PARJXZGPCMX">
+                <column name="FZFW" remarks="" type="VARCHAR(200)">
+                </column>
+                <column name="ZGDF" remarks="" type="DECIMAL(38,2)">
+                </column>
+                <column name="CREATEMAN" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="ZB" remarks="" type="VARCHAR(500)">
+                </column>
+                <column name="PARJXZGPCMXNAME" remarks="" type="VARCHAR(200)">
+                </column>
+                <column name="CREATEDATE" remarks="" type="DATETIME">
+                </column>
+                <column name="PF" remarks="" type="DECIMAL(38,2)">
+                </column>
+                <column name="UPDATEMAN" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="UPDATEDATE" remarks="" type="DATETIME">
+                </column>
+                <column name="PARJXZGPCMXID" remarks="" type="VARCHAR(100)">
+                    <constraints primaryKey="true" primaryKeyName="PK_PARJXZGPCMX_PARJXZGPCMXID"/>
+                </column>
+                <column name="XH" remarks="" type="INT">
+                </column>
+                <column name="ZDDF" remarks="" type="DECIMAL(38,2)">
+                </column>
+                <column name="BZ" remarks="" type="VARCHAR(2000)">
+                </column>
+                <column name="PARJXZGPCID" remarks="" type="VARCHAR(100)">
+                </column>
+        </createTable>
+    </changeSet>
 
 
     <!--输出实体[PIMEXITANDENTRY]数据结构 -->
@@ -2666,15 +3632,92 @@
 
 
     <!--输出实体[PCMJXSZZKHJGJL]数据结构 -->
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-pcmjxszzkhjgjl-1-267">
+        <createTable tableName="T_PCMJXSZZKHJGJL">
+                <column name="ENABLE" remarks="" type="INT">
+                </column>
+                <column name="PJ" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="PCMJXSZZKHJGJLNAME" remarks="" type="VARCHAR(200)">
+                </column>
+                <column name="YGBH" remarks="" type="VARCHAR(100)">
+                </column>
+                <column name="UPDATEMAN" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="JSSJ" remarks="" type="DATETIME">
+                </column>
+                <column name="CREATEDATE" remarks="" type="DATETIME">
+                </column>
+                <column name="FS" remarks="" type="FLOAT">
+                </column>
+                <column name="UPDATEDATE" remarks="" type="DATETIME">
+                </column>
+                <column name="CREATEMAN" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="PCMJXSZZKHJGJLID" remarks="" type="VARCHAR(100)">
+                    <constraints primaryKey="true" primaryKeyName="PK_PCMJXSZZKHJGJL_PCMJXSZZKHJG"/>
+                </column>
+                <column name="QSSJ" remarks="" type="DATETIME">
+                </column>
+        </createTable>
+    </changeSet>
 
 
     <!--输出实体[PCMPROFILEYJTJTEMP]数据结构 -->
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-pcmprofileyjtjtemp-7-268">
+        <createTable tableName="T_PCMPROFILEYJTJTEMP">
+                <column name="CREATEDATE" remarks="" type="DATETIME">
+                </column>
+                <column name="PCMPROFILEYJTJTEMPID" remarks="" type="VARCHAR(100)">
+                    <constraints primaryKey="true" primaryKeyName="PK_PCMPROFILEYJTJTEMP_PCMPROFI"/>
+                </column>
+                <column name="PCMPROFILEYJTJTEMPNAME" remarks="" type="VARCHAR(200)">
+                </column>
+                <column name="CREATEMAN" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="UPDATEDATE" remarks="" type="DATETIME">
+                </column>
+                <column name="UPDATEMAN" remarks="" type="VARCHAR(60)">
+                </column>
+        </createTable>
+    </changeSet>
 
 
     <!--输出实体[TRMTEACHERTRAIN]数据结构 -->
 
 
     <!--输出实体[PCMJXSBDJL]数据结构 -->
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-pcmjxsbdjl-18-270">
+        <createTable tableName="T_PCMJXSBDJL">
+                <column name="PCMJXSBDJLNAME" remarks="" type="VARCHAR(200)">
+                </column>
+                <column name="CREATEDATE" remarks="" type="DATETIME">
+                </column>
+                <column name="UPDATEDATE" remarks="" type="DATETIME">
+                </column>
+                <column name="PCMJXSBDJLID" remarks="" type="VARCHAR(100)">
+                    <constraints primaryKey="true" primaryKeyName="PK_PCMJXSBDJL_PCMJXSBDJLID"/>
+                </column>
+                <column name="CREATEMAN" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="UPDATEMAN" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="BDSJSJ" remarks="" type="DATETIME">
+                </column>
+                <column name="BDQSSJ" remarks="" type="DATETIME">
+                </column>
+                <column name="BDQKSM" remarks="" type="VARCHAR(300)">
+                </column>
+                <column name="PIMPERSONID" remarks="" type="VARCHAR(100)">
+                </column>
+                <column name="ORMPOSTID" remarks="" type="VARCHAR(100)">
+                </column>
+                <column name="ORMORGID" remarks="" type="VARCHAR(100)">
+                </column>
+                <column name="ORMORGSECTORID" remarks="" type="VARCHAR(100)">
+                </column>
+        </createTable>
+    </changeSet>
 
 
     <!--输出实体[PIMWORKFLOW]数据结构 -->
@@ -2702,12 +3745,166 @@
 
 
     <!--输出实体[PCMBDSQDMX]数据结构 -->
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-pcmbdsqdmx-3-279">
+        <createTable tableName="T_PCMBDSQDMX">
+                <column name="FJ" remarks="" type="VARCHAR(2000)">
+                </column>
+                <column name="CREATEMAN" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="UPDATEDATE" remarks="" type="DATETIME">
+                </column>
+                <column name="SFMZ" remarks="" type="INT">
+                </column>
+                <column name="GZKSSJ" remarks="" type="DATETIME">
+                </column>
+                <column name="LZFJ" remarks="" type="VARCHAR(2000)">
+                </column>
+                <column name="PCMBDSQDMXID" remarks="" type="VARCHAR(100)">
+                    <constraints primaryKey="true" primaryKeyName="PK_PCMBDSQDMX_PCMBDSQDMXID"/>
+                </column>
+                <column name="FINISHED" remarks="" type="INT">
+                </column>
+                <column name="PCJE" remarks="" type="FLOAT">
+                </column>
+                <column name="LZYY" remarks="" type="VARCHAR(500)">
+                </column>
+                <column name="WFRESULT" remarks="" type="VARCHAR(100)">
+                </column>
+                <column name="LDZYTYPE" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="LZQX" remarks="" type="VARCHAR(500)">
+                </column>
+                <column name="SXRQ" remarks="" type="DATETIME">
+                </column>
+                <column name="LZSJ" remarks="" type="DATETIME">
+                </column>
+                <column name="RZWH" remarks="" type="VARCHAR(300)">
+                </column>
+                <column name="GZZT" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="SFJRHMD" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="CHECKSTATUS" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="SFTSDD" remarks="" type="INT">
+                </column>
+                <column name="LX" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="UPDATEMAN" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="SFZFLZBCJ" remarks="" type="INT">
+                </column>
+                <column name="PCMBDSQDMXNAME" remarks="" type="VARCHAR(200)">
+                </column>
+                <column name="BZ" remarks="" type="VARCHAR(2000)">
+                </column>
+                <column name="SFLDZY" remarks="" type="INT">
+                </column>
+                <column name="BCJSE" remarks="" type="FLOAT">
+                </column>
+                <column name="XRANK" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="CREATEDATE" remarks="" type="DATETIME">
+                </column>
+                <column name="GZJSSJ" remarks="" type="DATETIME">
+                </column>
+                <column name="DGLX" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="ZJHM" remarks="" type="VARCHAR(200)">
+                </column>
+                <column name="ORMORGSECTORNAME" remarks="" type="VARCHAR(500)">
+                </column>
+                <column name="LZMTR" remarks="" type="VARCHAR(200)">
+                </column>
+                <column name="LXDH" remarks="" type="VARCHAR(200)">
+                </column>
+                <column name="ORMPOSTNAME" remarks="" type="VARCHAR(200)">
+                </column>
+                <column name="BM" remarks="" type="VARCHAR(200)">
+                </column>
+                <column name="ZZ" remarks="" type="VARCHAR(200)">
+                </column>
+                <column name="ZZID" remarks="" type="VARCHAR(200)">
+                </column>
+                <column name="RANK" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="YGBH" remarks="" type="VARCHAR(200)">
+                </column>
+                <column name="BMID" remarks="" type="VARCHAR(200)">
+                </column>
+                <column name="ORMORGNAME" remarks="" type="VARCHAR(200)">
+                </column>
+                <column name="YZW" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="YWG" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="NL" remarks="" type="INT">
+                </column>
+                <column name="ORMORGSECTORID2" remarks="" type="VARCHAR(100)">
+                </column>
+                <column name="ORMDUTYID" remarks="" type="VARCHAR(100)">
+                </column>
+                <column name="PCMBDSQDID" remarks="" type="VARCHAR(100)">
+                </column>
+                <column name="LZMTRID" remarks="" type="VARCHAR(100)">
+                </column>
+                <column name="PIMPERSONID" remarks="" type="VARCHAR(100)">
+                </column>
+                <column name="ORMORGID" remarks="" type="VARCHAR(100)">
+                </column>
+                <column name="ORMPOSTID" remarks="" type="VARCHAR(100)">
+                </column>
+                <column name="ORMORGSECTORID" remarks="" type="VARCHAR(100)">
+                </column>
+        </createTable>
+    </changeSet>
 
 
     <!--输出实体[TRMDUTYCADRES]数据结构 -->
 
 
     <!--输出实体[PCMLOG]数据结构 -->
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-pcmlog-21-281">
+        <createTable tableName="T_PCMLOG">
+                <column name="OPTDEID" remarks="" type="VARCHAR(100)">
+                </column>
+                <column name="TYPE" remarks="" type="VARCHAR(100)">
+                </column>
+                <column name="OPTDEACTION" remarks="" type="VARCHAR(100)">
+                </column>
+                <column name="OPTDENAME" remarks="" type="VARCHAR(200)">
+                </column>
+                <column name="PCMLOGID" remarks="" type="VARCHAR(100)">
+                    <constraints primaryKey="true" primaryKeyName="PK_PCMLOG_PCMLOGID"/>
+                </column>
+                <column name="SFSX" remarks="" type="INT">
+                </column>
+                <column name="CREATEMAN" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="PCMLOGNAME" remarks="" type="VARCHAR(200)">
+                </column>
+                <column name="UPDATEDATE" remarks="" type="DATETIME">
+                </column>
+                <column name="CONTENT" remarks="" type="VARCHAR(2000)">
+                </column>
+                <column name="CREATEDATE" remarks="" type="DATETIME">
+                </column>
+                <column name="UPDATEMAN" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="OPTCONTENT" remarks="" type="TEXT(1048576)">
+                </column>
+                <column name="NEEDOPT" remarks="" type="INT">
+                </column>
+                <column name="SXRQ" remarks="" type="DATETIME">
+                </column>
+                <column name="ORGID" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="YGBH" remarks="" type="VARCHAR(200)">
+                </column>
+                <column name="PIMPERSONID" remarks="" type="VARCHAR(100)">
+                </column>
+        </createTable>
+    </changeSet>
 
 
     <!--输出实体[SALSCHEMEITEM]数据结构 -->
@@ -2905,9 +4102,287 @@
 
 
     <!--输出实体[PCMJXSYGZZJLMX]数据结构 -->
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-pcmjxsygzzjlmx-1-291">
+        <createTable tableName="T_PCMJXSYGZZJLMX">
+                <column name="CREATEMAN" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="FINISHED" remarks="" type="INT">
+                </column>
+                <column name="CHECKSTATUS" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="ISTEMP" remarks="" type="INT">
+                </column>
+                <column name="UPDATEMAN" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="CREATEDATE" remarks="" type="DATETIME">
+                </column>
+                <column name="PCMJXSYGZZJLMXID" remarks="" type="VARCHAR(100)">
+                    <constraints primaryKey="true" primaryKeyName="PK_PCMJXSYGZZJLMX_PCMJXSYGZZJL"/>
+                </column>
+                <column name="UPDATEDATE" remarks="" type="DATETIME">
+                </column>
+                <column name="PCMJXSYGZZJLMXNAME" remarks="" type="VARCHAR(200)">
+                </column>
+                <column name="BMID" remarks="" type="VARCHAR(100)">
+                </column>
+                <column name="RZQD" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="DURATION" remarks="" type="VARCHAR(200)">
+                </column>
+                <column name="ZZ" remarks="" type="VARCHAR(500)">
+                </column>
+                <column name="BM" remarks="" type="VARCHAR(100)">
+                </column>
+                <column name="ZZID" remarks="" type="VARCHAR(100)">
+                </column>
+                <column name="FS" remarks="" type="FLOAT">
+                </column>
+                <column name="PJ" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="ZZGW" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="PCMJXSYGZZSQID" remarks="" type="VARCHAR(100)">
+                </column>
+                <column name="PCMJXSZZKHJGJLID" remarks="" type="VARCHAR(100)">
+                </column>
+                <column name="PIMPERSONID" remarks="" type="VARCHAR(100)">
+                </column>
+        </createTable>
+    </changeSet>
 
 
     <!--输出实体[PCMPROFILE]数据结构 -->
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-pcmprofile-255-292">
+        <createTable tableName="T_PCMPROFILE">
+                <column name="GWLB" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="R_LASTDISCIPLINE" remarks="" type="VARCHAR(300)">
+                </column>
+                <column name="RDSJ" remarks="" type="DATETIME">
+                </column>
+                <column name="WBZZJGDM" remarks="" type="VARCHAR(100)">
+                </column>
+                <column name="BLOODTYPE" remarks="" type="VARCHAR(200)">
+                </column>
+                <column name="TJQK" remarks="" type="VARCHAR(100)">
+                </column>
+                <column name="R_SCHOOLIS211" remarks="" type="VARCHAR(100)">
+                </column>
+                <column name="SZYJTJ" remarks="" type="TEXT(1048576)">
+                </column>
+                <column name="APPLICANTID" remarks="" type="VARCHAR(100)">
+                </column>
+                <column name="R_SCHOOLIS985" remarks="" type="VARCHAR(200)">
+                </column>
+                <column name="YZBM" remarks="" type="VARCHAR(100)">
+                </column>
+                <column name="RESIDENCESTATE" remarks="" type="VARCHAR(500)">
+                </column>
+                <column name="XKML" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="JZPSPYJYY" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="BZ" remarks="" type="VARCHAR(1000)">
+                </column>
+                <column name="CZ2" remarks="" type="VARCHAR(100)">
+                </column>
+                <column name="NF" remarks="" type="VARCHAR(100)">
+                </column>
+                <column name="PHASEINFO" remarks="" type="VARCHAR(200)">
+                </column>
+                <column name="CREATEMAN" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="GZKSSJ" remarks="" type="DATETIME">
+                </column>
+                <column name="NQDLDHTQX" remarks="" type="VARCHAR(100)">
+                </column>
+                <column name="YGLXSHGZ" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="HIGHESTDEGREE" remarks="" type="VARCHAR(200)">
+                </column>
+                <column name="PCMPROFILENAME" remarks="" type="VARCHAR(200)">
+                </column>
+                <column name="RZQD" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="CYM" remarks="" type="VARCHAR(200)">
+                </column>
+                <column name="RPR" remarks="" type="VARCHAR(300)">
+                </column>
+                <column name="JZBSPYJYY" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="YGLX" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="YWZDJBS" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="HOBBIES" remarks="" type="VARCHAR(100)">
+                </column>
+                <column name="ELINKURL" remarks="" type="TEXT(2000)">
+                </column>
+                <column name="MOBILE" remarks="" type="VARCHAR(200)">
+                </column>
+                <column name="WBZW" remarks="" type="VARCHAR(100)">
+                </column>
+                <column name="PERSONNELFILEPLACE" remarks="" type="VARCHAR(300)">
+                </column>
+                <column name="ZTYY" remarks="" type="VARCHAR(200)">
+                </column>
+                <column name="UPDATEDATE" remarks="" type="DATETIME">
+                </column>
+                <column name="ZCZS" remarks="" type="TEXT(1000)">
+                </column>
+                <column name="CZ" remarks="" type="VARCHAR(100)">
+                </column>
+                <column name="CADIDATEID" remarks="" type="VARCHAR(300)">
+                </column>
+                <column name="ISBLACKLISTREASON" remarks="" type="TEXT(1000)">
+                </column>
+                <column name="QZFJ" remarks="" type="TEXT(1000)">
+                </column>
+                <column name="EDUCATIONLEVEL" remarks="" type="VARCHAR(200)">
+                </column>
+                <column name="DEGREETYPE" remarks="" type="VARCHAR(200)">
+                </column>
+                <column name="HJDZ" remarks="" type="VARCHAR(300)">
+                </column>
+                <column name="ZPLX" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="YJSNF" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="ADDRESS" remarks="" type="VARCHAR(500)">
+                </column>
+                <column name="PCMPROFILEID" remarks="" type="VARCHAR(100)">
+                    <constraints primaryKey="true" primaryKeyName="PK_PCMPROFILE_PCMPROFILEID"/>
+                </column>
+                <column name="SYQDQSJ" remarks="" type="DATETIME">
+                </column>
+                <column name="R_LASTSCHOOL" remarks="" type="VARCHAR(300)">
+                </column>
+                <column name="R_INITIALIZEAPPLYDATE" remarks="" type="DATETIME">
+                </column>
+                <column name="NATIVEPLACE" remarks="" type="VARCHAR(300)">
+                </column>
+                <column name="CZ5" remarks="" type="VARCHAR(100)">
+                </column>
+                <column name="CERTIFICATENUMBER" remarks="" type="VARCHAR(300)">
+                </column>
+                <column name="JZBSPYJ" remarks="" type="VARCHAR(1000)">
+                </column>
+                <column name="GRADUATIONDATE" remarks="" type="DATETIME">
+                </column>
+                <column name="SFZ" remarks="" type="TEXT(1000)">
+                </column>
+                <column name="CERTIFICATETYPE" remarks="" type="VARCHAR(200)">
+                </column>
+                <column name="ISBLACKLIST" remarks="" type="INT">
+                </column>
+                <column name="OTHERFILE" remarks="" type="TEXT(1000)">
+                </column>
+                <column name="NATION" remarks="" type="VARCHAR(200)">
+                </column>
+                <column name="EMAIL" remarks="" type="VARCHAR(300)">
+                </column>
+                <column name="ISABROAD" remarks="" type="VARCHAR(100)">
+                </column>
+                <column name="YGBH" remarks="" type="VARCHAR(100)">
+                </column>
+                <column name="SFTGCP" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="JKZK" remarks="" type="VARCHAR(400)">
+                </column>
+                <column name="CSD" remarks="" type="VARCHAR(500)">
+                </column>
+                <column name="JLDSPYJYY" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="PCMYDGZMXID" remarks="" type="VARCHAR(100)">
+                </column>
+                <column name="NL" remarks="" type="INT">
+                </column>
+                <column name="ZP" remarks="" type="TEXT(2000)">
+                </column>
+                <column name="NAPXMJGWMC" remarks="" type="VARCHAR(100)">
+                </column>
+                <column name="SFXZY" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="ZCZS2" remarks="" type="TEXT(1000)">
+                </column>
+                <column name="CREATEDATE" remarks="" type="DATETIME">
+                </column>
+                <column name="GENDER" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="WORKBEGINDATE" remarks="" type="DATETIME">
+                </column>
+                <column name="WBGW" remarks="" type="VARCHAR(100)">
+                </column>
+                <column name="WBZZ" remarks="" type="VARCHAR(100)">
+                </column>
+                <column name="R_CERTNAMES" remarks="" type="VARCHAR(200)">
+                </column>
+                <column name="SBSJ" remarks="" type="DATETIME">
+                </column>
+                <column name="GZBT" remarks="" type="FLOAT">
+                </column>
+                <column name="RTSJ" remarks="" type="DATETIME">
+                </column>
+                <column name="NAPXM" remarks="" type="VARCHAR(100)">
+                </column>
+                <column name="XXXZ" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="CZ3" remarks="" type="VARCHAR(100)">
+                </column>
+                <column name="JLDSPYJ" remarks="" type="TEXT(1000)">
+                </column>
+                <column name="WBBM" remarks="" type="VARCHAR(100)">
+                </column>
+                <column name="SFXZBJNBRY" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="ENTRANTDATE" remarks="" type="DATETIME">
+                </column>
+                <column name="JZPSPYJ" remarks="" type="TEXT(1000)">
+                </column>
+                <column name="UPDATEMAN" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="YYDJMC" remarks="" type="VARCHAR(100)">
+                </column>
+                <column name="BIRTHDAY" remarks="" type="DATETIME">
+                </column>
+                <column name="YYDJ" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="POLITY" remarks="" type="VARCHAR(200)">
+                </column>
+                <column name="GZJSSJ" remarks="" type="DATETIME">
+                </column>
+                <column name="WEDSTATE" remarks="" type="VARCHAR(200)">
+                </column>
+                <column name="CZ4" remarks="" type="VARCHAR(100)">
+                </column>
+                <column name="RGJYTG" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="XZC" remarks="" type="VARCHAR(100)">
+                </column>
+                <column name="HKLX" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="QZSM" remarks="" type="VARCHAR(100)">
+                </column>
+                <column name="XZNF" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="EDUCATIONSTUDYMODE" remarks="" type="VARCHAR(200)">
+                </column>
+                <column name="PROFILETYPE" remarks="" type="VARCHAR(200)">
+                </column>
+                <column name="PIMPERSONID" remarks="" type="VARCHAR(100)">
+                </column>
+                <column name="ORMORGSECTORID" remarks="" type="VARCHAR(100)">
+                </column>
+                <column name="ORMPOSTID" remarks="" type="VARCHAR(100)">
+                </column>
+                <column name="ORMDUTYID" remarks="" type="VARCHAR(100)">
+                </column>
+                <column name="ORMORGID" remarks="" type="VARCHAR(100)">
+                </column>
+                <column name="CHECKRESULT" remarks="" type="VARCHAR(60)">
+                </column>
+        </createTable>
+    </changeSet>
 
 
     <!--输出实体[SALPERSONSTDDETAIL]数据结构 -->
@@ -2975,12 +4450,21 @@
         <!--输出实体[ORMXMBMX]外键关系 -->
         <!--输出实体[PARJXJG]外键关系 -->
         <!--输出实体[PCMSCHOOLOFFICE]外键关系 -->
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-pcmschooloffice-17-310">
+       <addForeignKeyConstraint baseColumnNames="PCMPROFILEID" baseTableName="T_PCMSCHOOLOFFICE" constraintName="DER1N_PCMSCHOOLOFFICE_PCMPROFI" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="PCMPROFILEID" referencedTableName="T_PCMPROFILE" validate="true"/>
+    </changeSet>
         <!--输出实体[PIMARCHIVESRECORD]外键关系 -->
         <!--输出实体[PIMTYPECONTRACT]外键关系 -->
         <!--输出实体[SALLOG]外键关系 -->
         <!--输出实体[TRMSTAY]外键关系 -->
         <!--输出实体[PARLDKHQZ]外键关系 -->
         <!--输出实体[PCMPROFILEAPPROVAL]外键关系 -->
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-pcmprofileapproval-20-317">
+       <addForeignKeyConstraint baseColumnNames="PCMPROFILEID" baseTableName="T_PCMPROFILEAPPROVAL" constraintName="DER1N_PCMPROFILEAPPROVAL_PCMPR" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="PCMPROFILEID" referencedTableName="T_PCMPROFILE" validate="true"/>
+    </changeSet>
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-pcmprofileapproval-20-318">
+       <addForeignKeyConstraint baseColumnNames="PIMBYZZJLMXID" baseTableName="T_PCMPROFILEAPPROVAL" constraintName="DER1N_PCMPROFILEAPPROVAL_PIMBY" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="PIMBYZZJLMXID" referencedTableName="T_PIMBYZZJLMX" validate="true"/>
+    </changeSet>
         <!--输出实体[TRMLGBDETAIL]外键关系 -->
         <!--输出实体[PIMOUTPUT]外键关系 -->
     <changeSet author="a_LAB01_bd0ca3178" id="fk-pimoutput-14-321">
@@ -2999,6 +4483,9 @@
         <!--输出实体[PIMGWTYPE]外键关系 -->
         <!--输出实体[SALSALARYBILL]外键关系 -->
         <!--输出实体[PCMRCXL]外键关系 -->
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-pcmrcxl-1-330">
+       <addForeignKeyConstraint baseColumnNames="PCMRCXLID2" baseTableName="T_PCMRCXL" constraintName="DER1N_PCMRCXL_PCMRCXL_PCMRCXLI" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="PCMRCXLID" referencedTableName="T_PCMRCXL" validate="true"/>
+    </changeSet>
         <!--输出实体[PCMJXSYGZZSQ]外键关系 -->
         <!--输出实体[PCMYDGZMX]外键关系 -->
         <!--输出实体[PIMLWGZ]外键关系 -->
@@ -3078,6 +4565,12 @@
         <!--输出实体[TRMINVOICE]外键关系 -->
         <!--输出实体[VACLEAVEDETAIL]外键关系 -->
         <!--输出实体[PCMGXXKTEMP]外键关系 -->
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-pcmgxxktemp-17-384">
+       <addForeignKeyConstraint baseColumnNames="PCMGXMLID" baseTableName="T_PCMGXXKTEMP" constraintName="DER1N_PCMGXXKTEMP_PCMGXML_PCMG" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="PCMGXMLID" referencedTableName="T_PCMGXML" validate="true"/>
+    </changeSet>
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-pcmgxxktemp-17-385">
+       <addForeignKeyConstraint baseColumnNames="PCMXKMLID" baseTableName="T_PCMGXXKTEMP" constraintName="DER1N_PCMGXXKTEMP_PCMXKML_PCMX" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="PCMXKMLID" referencedTableName="T_PCMXKML" validate="true"/>
+    </changeSet>
         <!--输出实体[PIMBYYGZZSQ]外键关系 -->
         <!--输出实体[PIMVOCATIONAL]外键关系 -->
     <changeSet author="a_LAB01_bd0ca3178" id="fk-pimvocational-2-386">
@@ -3102,13 +4595,31 @@
        <addForeignKeyConstraint baseColumnNames="PIMVOCATIONALCATALOGID" baseTableName="T_PIMVOCATIONAL" constraintName="DER1N_PIMVOCATIONAL_PIMVOCATIO" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="PIMVOCATIONALCATALOGID" referencedTableName="T_PIMVOCATIONALCATALOG" validate="true"/>
     </changeSet>
         <!--输出实体[PCMPROFILEINITNUMBER]外键关系 -->
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-pcmprofileinitnumber-11-393">
+       <addForeignKeyConstraint baseColumnNames="ORMORGID" baseTableName="T_PCMPROFILEINITNUMBER" constraintName="DER1N_PCMPROFILEINITNUMBER_ORM" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="ORGID" referencedTableName="T_SRFORG" validate="true"/>
+    </changeSet>
         <!--输出实体[SALITEM]外键关系 -->
         <!--输出实体[TRMDEMDEFTION]外键关系 -->
         <!--输出实体[PARZNBMNDLHMBMX]外键关系 -->
         <!--输出实体[ORMXMSFHZ]外键关系 -->
         <!--输出实体[PARZNBMNDLHMB]外键关系 -->
         <!--输出实体[PCMNOTICE]外键关系 -->
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-pcmnotice-23-402">
+       <addForeignKeyConstraint baseColumnNames="ORMORGSECTORID" baseTableName="T_PCMNOTICE" constraintName="DER1N_PCMNOTICE_ORMORGSECTOR_O" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="ORGSECTORID" referencedTableName="T_SRFORGSECTOR" validate="true"/>
+    </changeSet>
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-pcmnotice-23-403">
+       <addForeignKeyConstraint baseColumnNames="ORMORGID" baseTableName="T_PCMNOTICE" constraintName="DER1N_PCMNOTICE_ORMORG_ORMORGI" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="ORGID" referencedTableName="T_SRFORG" validate="true"/>
+    </changeSet>
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-pcmnotice-23-404">
+       <addForeignKeyConstraint baseColumnNames="PIMDISTIRBUTIONID" baseTableName="T_PCMNOTICE" constraintName="DER1N_PCMNOTICE_PIMDISTIRBUTIO" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="PIMDISTIRBUTIONID" referencedTableName="T_PIMDISTIRBUTION" validate="true"/>
+    </changeSet>
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-pcmnotice-23-405">
+       <addForeignKeyConstraint baseColumnNames="PIMPERSONID" baseTableName="T_PCMNOTICE" constraintName="DER1N_PCMNOTICE_PIMPERSON_PIMP" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="PIMPERSONID" referencedTableName="T_PIMPERSON" validate="true"/>
+    </changeSet>
         <!--输出实体[PCMPRACTICEEXPERIENCE]外键关系 -->
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-pcmpracticeexperience-25-406">
+       <addForeignKeyConstraint baseColumnNames="PCMPROFILEID" baseTableName="T_PCMPRACTICEEXPERIENCE" constraintName="DER1N_PCMPRACTICEEXPERIENCE_PC" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="PCMPROFILEID" referencedTableName="T_PCMPROFILE" validate="true"/>
+    </changeSet>
         <!--输出实体[BUDGET]外键关系 -->
     <changeSet author="a_LAB01_bd0ca3178" id="fk-budget-14-407">
        <addForeignKeyConstraint baseColumnNames="ORMORGID" baseTableName="T_BUDGET" constraintName="DER1N_BUDGET_ORMORG_ORMORGID" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="ORGID" referencedTableName="T_SRFORG" validate="true"/>
@@ -3118,6 +4629,24 @@
        <addForeignKeyConstraint baseColumnNames="PIMPERSONID" baseTableName="T_PIMPERSONCHANGE" constraintName="DER1N_PIMPERSONCHANGE_PIMPERSO" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="PIMPERSONID" referencedTableName="T_PIMPERSON" validate="true"/>
     </changeSet>
         <!--输出实体[PCMDDSQDMX]外键关系 -->
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-pcmddsqdmx-39-409">
+       <addForeignKeyConstraint baseColumnNames="ORMDUTYID" baseTableName="T_PCMDDSQDMX" constraintName="DER1N_PCMDDSQDMX_ORMDUTY_ORMDU" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="ORMDUTYID" referencedTableName="T_ORMDUTY" validate="true"/>
+    </changeSet>
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-pcmddsqdmx-39-410">
+       <addForeignKeyConstraint baseColumnNames="ORGSECTORID" baseTableName="T_PCMDDSQDMX" constraintName="DER1N_PCMDDSQDMX_ORMORGSECTOR_" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="ORGSECTORID" referencedTableName="T_SRFORGSECTOR" validate="true"/>
+    </changeSet>
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-pcmddsqdmx-39-411">
+       <addForeignKeyConstraint baseColumnNames="ORGID" baseTableName="T_PCMDDSQDMX" constraintName="DER1N_PCMDDSQDMX_ORMORG_ORGID" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="ORGID" referencedTableName="T_SRFORG" validate="true"/>
+    </changeSet>
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-pcmddsqdmx-39-412">
+       <addForeignKeyConstraint baseColumnNames="ORMPOSTID" baseTableName="T_PCMDDSQDMX" constraintName="DER1N_PCMDDSQDMX_ORMPOST_ORMPO" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="ORMPOSTID" referencedTableName="T_ORMPOST" validate="true"/>
+    </changeSet>
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-pcmddsqdmx-39-413">
+       <addForeignKeyConstraint baseColumnNames="PCMDDSQDID" baseTableName="T_PCMDDSQDMX" constraintName="DER1N_PCMDDSQDMX_PCMDDSQD_PCMD" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="PCMDDSQDID" referencedTableName="T_PCMDDSQD" validate="true"/>
+    </changeSet>
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-pcmddsqdmx-39-414">
+       <addForeignKeyConstraint baseColumnNames="PIMDISTIRBUTIONID" baseTableName="T_PCMDDSQDMX" constraintName="DER1N_PCMDDSQDMX_PIMDISTIRBUTI" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="PIMDISTIRBUTIONID" referencedTableName="T_PIMDISTIRBUTION" validate="true"/>
+    </changeSet>
         <!--输出实体[ORMRANK]外键关系 -->
         <!--输出实体[ORMPOSTDETAILS]外键关系 -->
         <!--输出实体[PIMPERSONABILITY]外键关系 -->
@@ -3224,6 +4753,18 @@
     </changeSet>
         <!--输出实体[ORMPOST]外键关系 -->
         <!--输出实体[PCMRECRUITMENT]外键关系 -->
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-pcmrecruitment-20-507">
+       <addForeignKeyConstraint baseColumnNames="ORMDUTYID" baseTableName="T_PCMRECRUITMENT" constraintName="DER1N_PCMRECRUITMENT_ORMDUTY_O" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="ORMDUTYID" referencedTableName="T_ORMDUTY" validate="true"/>
+    </changeSet>
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-pcmrecruitment-20-508">
+       <addForeignKeyConstraint baseColumnNames="ORMORGSECTORID" baseTableName="T_PCMRECRUITMENT" constraintName="DER1N_PCMRECRUITMENT_ORMORGSEC" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="ORGSECTORID" referencedTableName="T_SRFORGSECTOR" validate="true"/>
+    </changeSet>
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-pcmrecruitment-20-509">
+       <addForeignKeyConstraint baseColumnNames="ORMORGID" baseTableName="T_PCMRECRUITMENT" constraintName="DER1N_PCMRECRUITMENT_ORMORG_OR" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="ORGID" referencedTableName="T_SRFORG" validate="true"/>
+    </changeSet>
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-pcmrecruitment-20-510">
+       <addForeignKeyConstraint baseColumnNames="ORMPOSTID" baseTableName="T_PCMRECRUITMENT" constraintName="DER1N_PCMRECRUITMENT_ORMPOST_O" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="ORMPOSTID" referencedTableName="T_ORMPOST" validate="true"/>
+    </changeSet>
         <!--输出实体[NATIONMGR]外键关系 -->
         <!--输出实体[ATTENDENCETYPE]外键关系 -->
         <!--输出实体[PCMGBHMC]外键关系 -->
@@ -3258,6 +4799,9 @@
         <!--输出实体[SALSTDZYZG]外键关系 -->
         <!--输出实体[PIMEXAMINATIONRESULTS]外键关系 -->
         <!--输出实体[PCMEDUCATIONEXPERIENCE]外键关系 -->
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-pcmeducationexperience-37-528">
+       <addForeignKeyConstraint baseColumnNames="PCMPROFILEID" baseTableName="T_PCMEDUCATIONEXPERIENCE" constraintName="DER1N_PCMEDUCATIONEXPERIENCE_P" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="PCMPROFILEID" referencedTableName="T_PCMPROFILE" validate="true"/>
+    </changeSet>
         <!--输出实体[ORMORGDZ]外键关系 -->
         <!--输出实体[PCMREASON]外键关系 -->
         <!--输出实体[ORMDEPESTMAN]外键关系 -->
@@ -3280,6 +4824,9 @@
         <!--输出实体[PCMYPZJKXX]外键关系 -->
         <!--输出实体[VACSYSTEMHISTORY]外键关系 -->
         <!--输出实体[PCMPROFILENUMBEPREFIX]外键关系 -->
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-pcmprofilenumbeprefix-10-553">
+       <addForeignKeyConstraint baseColumnNames="ORMORGID" baseTableName="T_PCMPROFILENUMBEPREFIX" constraintName="DER1N_PCMPROFILENUMBEPREFIX_OR" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="ORGID" referencedTableName="T_SRFORG" validate="true"/>
+    </changeSet>
         <!--输出实体[PIMARCHIVESCHANGE]外键关系 -->
         <!--输出实体[PARJXKHMBMX]外键关系 -->
         <!--输出实体[ATTENDENCEORMORGSECTOR]外键关系 -->
@@ -3297,13 +4844,28 @@
         <!--输出实体[ORMXMXQJH]外键关系 -->
         <!--输出实体[SALSTDGWGZRATE]外键关系 -->
         <!--输出实体[PCMAWARDSWONS]外键关系 -->
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-pcmawardswons-18-575">
+       <addForeignKeyConstraint baseColumnNames="PCMPROFILEID" baseTableName="T_PCMAWARDSWONS" constraintName="DER1N_PCMAWARDSWONS_PCMPROFILE" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="PCMPROFILEID" referencedTableName="T_PCMPROFILE" validate="true"/>
+    </changeSet>
         <!--输出实体[ORMZWDQGZ]外键关系 -->
         <!--输出实体[PCMYDNTMX]外键关系 -->
         <!--输出实体[ATTENSUMMARYMX]外键关系 -->
         <!--输出实体[PCMSGQMGR]外键关系 -->
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-pcmsgqmgr-1-579">
+       <addForeignKeyConstraint baseColumnNames="PCMBDSQDMXID" baseTableName="T_PCMSGQMGR" constraintName="DER1N_PCMSGQMGR_PCMBDSQDMX_PCM" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="PCMBDSQDMXID" referencedTableName="T_PCMBDSQDMX" validate="true"/>
+    </changeSet>
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-pcmsgqmgr-1-580">
+       <addForeignKeyConstraint baseColumnNames="PIMPERSONID" baseTableName="T_PCMSGQMGR" constraintName="DER1N_PCMSGQMGR_PIMPERSON_PIMP" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="PIMPERSONID" referencedTableName="T_PIMPERSON" validate="true"/>
+    </changeSet>
         <!--输出实体[ORMBMGWBZ]外键关系 -->
         <!--输出实体[PCMXKML]外键关系 -->
         <!--输出实体[PCMJXSYGZZSQMX]外键关系 -->
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-pcmjxsygzzsqmx-22-583">
+       <addForeignKeyConstraint baseColumnNames="PCMJXSYGZZSQID" baseTableName="T_PCMJXSYGZZSQMX" constraintName="DER1N_PCMJXSYGZZSQMX_PCMJXSYGZ" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="PCMJXSYGZZSQID" referencedTableName="T_PCMJXSYGZZSQ" validate="true"/>
+    </changeSet>
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-pcmjxsygzzsqmx-22-584">
+       <addForeignKeyConstraint baseColumnNames="PIMPERSONID" baseTableName="T_PCMJXSYGZZSQMX" constraintName="DER1N_PCMJXSYGZZSQMX_PIMPERSON" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="PIMPERSONID" referencedTableName="T_PIMPERSON" validate="true"/>
+    </changeSet>
         <!--输出实体[PCMYDMX]外键关系 -->
         <!--输出实体[SALSTDGW]外键关系 -->
         <!--输出实体[ATTENDENCECALENDAR]外键关系 -->
@@ -3318,6 +4880,9 @@
        <addForeignKeyConstraint baseColumnNames="ATTENDANCERECORDID" baseTableName="T_ATTENDRECORDDETAIL" constraintName="DER1N_ATTENDRECORDDETAIL_ATTEN" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="ATTENDANCERECORDID" referencedTableName="T_ATTENDANCERECORD" validate="true"/>
     </changeSet>
         <!--输出实体[PCMSYQGZ]外键关系 -->
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-pcmsyqgz-16-592">
+       <addForeignKeyConstraint baseColumnNames="ORMORGID" baseTableName="T_PCMSYQGZ" constraintName="DER1N_PCMSYQGZ_ORMORG_ORMORGID" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="ORGID" referencedTableName="T_SRFORG" validate="true"/>
+    </changeSet>
         <!--输出实体[PARKHFA]外键关系 -->
         <!--输出实体[TRMAGENCYRECORD]外键关系 -->
         <!--输出实体[DATERULE]外键关系 -->
@@ -3339,6 +4904,9 @@
         <!--输出实体[PARLHMBKHMX]外键关系 -->
         <!--输出实体[PIMPROVINCE]外键关系 -->
         <!--输出实体[PCMDDSQD]外键关系 -->
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-pcmddsqd-15-617">
+       <addForeignKeyConstraint baseColumnNames="PIMPERSONID" baseTableName="T_PCMDDSQD" constraintName="DER1N_PCMDDSQD_PIMPERSON_PIMPE" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="PIMPERSONID" referencedTableName="T_PIMPERSON" validate="true"/>
+    </changeSet>
         <!--输出实体[QUESTIONS]外键关系 -->
         <!--输出实体[PIMWORKHISTORY]外键关系 -->
         <!--输出实体[PCMYDJPMX]外键关系 -->
@@ -3356,6 +4924,9 @@
         <!--输出实体[ORMRELATION]外键关系 -->
         <!--输出实体[VACLEAVESYSTEM]外键关系 -->
         <!--输出实体[PCMBDSQD]外键关系 -->
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-pcmbdsqd-1-626">
+       <addForeignKeyConstraint baseColumnNames="PIMPERSONID" baseTableName="T_PCMBDSQD" constraintName="DER1N_PCMBDSQD_PIMPERSON_PIMPE" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="PIMPERSONID" referencedTableName="T_PIMPERSON" validate="true"/>
+    </changeSet>
         <!--输出实体[PCMXYGZZSQ]外键关系 -->
         <!--输出实体[PCMZPMEGLMX]外键关系 -->
         <!--输出实体[PIMSOCIALSECURITY]外键关系 -->
@@ -3410,6 +4981,9 @@
         <!--输出实体[PIMVOCATIONALCATALOG]外键关系 -->
         <!--输出实体[PARNDLHMBKH]外键关系 -->
         <!--输出实体[PARJXZGPCMX]外键关系 -->
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-parjxzgpcmx-16-669">
+       <addForeignKeyConstraint baseColumnNames="PARJXZGPCID" baseTableName="T_PARJXZGPCMX" constraintName="DER1N_PARJXZGPCMX_PARJXZGPC_PA" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="PARJXZGPCID" referencedTableName="T_PARJXZGPC" validate="true"/>
+    </changeSet>
         <!--输出实体[PIMEXITANDENTRY]外键关系 -->
     <changeSet author="a_LAB01_bd0ca3178" id="fk-pimexitandentry-21-670">
        <addForeignKeyConstraint baseColumnNames="PIMPERSONID" baseTableName="T_PIMEXITANDENTRY" constraintName="DER1N_PIMEXITANDENTRY_PIMPERSO" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="PIMPERSONID" referencedTableName="T_PIMPERSON" validate="true"/>
@@ -3431,6 +5005,18 @@
         <!--输出实体[PCMPROFILEYJTJTEMP]外键关系 -->
         <!--输出实体[TRMTEACHERTRAIN]外键关系 -->
         <!--输出实体[PCMJXSBDJL]外键关系 -->
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-pcmjxsbdjl-18-686">
+       <addForeignKeyConstraint baseColumnNames="ORMORGSECTORID" baseTableName="T_PCMJXSBDJL" constraintName="DER1N_PCMJXSBDJL_ORMORGSECTOR_" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="ORGSECTORID" referencedTableName="T_SRFORGSECTOR" validate="true"/>
+    </changeSet>
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-pcmjxsbdjl-18-687">
+       <addForeignKeyConstraint baseColumnNames="ORMORGID" baseTableName="T_PCMJXSBDJL" constraintName="DER1N_PCMJXSBDJL_ORMORG_ORMORG" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="ORGID" referencedTableName="T_SRFORG" validate="true"/>
+    </changeSet>
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-pcmjxsbdjl-18-688">
+       <addForeignKeyConstraint baseColumnNames="ORMPOSTID" baseTableName="T_PCMJXSBDJL" constraintName="DER1N_PCMJXSBDJL_ORMPOST_ORMPO" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="ORMPOSTID" referencedTableName="T_ORMPOST" validate="true"/>
+    </changeSet>
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-pcmjxsbdjl-18-689">
+       <addForeignKeyConstraint baseColumnNames="PIMPERSONID" baseTableName="T_PCMJXSBDJL" constraintName="DER1N_PCMJXSBDJL_PIMPERSON_PIM" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="PIMPERSONID" referencedTableName="T_PIMPERSON" validate="true"/>
+    </changeSet>
         <!--输出实体[PIMWORKFLOW]外键关系 -->
         <!--输出实体[TRMTRAINPLANTERM]外键关系 -->
         <!--输出实体[SGQMGR]外键关系 -->
@@ -3440,8 +5026,32 @@
         <!--输出实体[PIMACHIEVEMENTS]外键关系 -->
         <!--输出实体[PCMXYGZZJGWH]外键关系 -->
         <!--输出实体[PCMBDSQDMX]外键关系 -->
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-pcmbdsqdmx-3-701">
+       <addForeignKeyConstraint baseColumnNames="ORMDUTYID" baseTableName="T_PCMBDSQDMX" constraintName="DER1N_PCMBDSQDMX_ORMDUTY_ORMDU" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="ORMDUTYID" referencedTableName="T_ORMDUTY" validate="true"/>
+    </changeSet>
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-pcmbdsqdmx-3-702">
+       <addForeignKeyConstraint baseColumnNames="ORMORGSECTORID" baseTableName="T_PCMBDSQDMX" constraintName="DER1N_PCMBDSQDMX_ORMORGSECTOR_" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="ORGSECTORID" referencedTableName="T_SRFORGSECTOR" validate="true"/>
+    </changeSet>
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-pcmbdsqdmx-3-704">
+       <addForeignKeyConstraint baseColumnNames="ORMORGID" baseTableName="T_PCMBDSQDMX" constraintName="DER1N_PCMBDSQDMX_ORMORG_ORMORG" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="ORGID" referencedTableName="T_SRFORG" validate="true"/>
+    </changeSet>
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-pcmbdsqdmx-3-705">
+       <addForeignKeyConstraint baseColumnNames="ORMPOSTID" baseTableName="T_PCMBDSQDMX" constraintName="DER1N_PCMBDSQDMX_ORMPOST_ORMPO" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="ORMPOSTID" referencedTableName="T_ORMPOST" validate="true"/>
+    </changeSet>
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-pcmbdsqdmx-3-706">
+       <addForeignKeyConstraint baseColumnNames="PCMBDSQDID" baseTableName="T_PCMBDSQDMX" constraintName="DER1N_PCMBDSQDMX_PCMBDSQD_PCMB" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="PCMBDSQDID" referencedTableName="T_PCMBDSQD" validate="true"/>
+    </changeSet>
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-pcmbdsqdmx-3-707">
+       <addForeignKeyConstraint baseColumnNames="LZMTRID" baseTableName="T_PCMBDSQDMX" constraintName="DER1N_PCMBDSQDMX_PIMPERSON_LZM" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="PIMPERSONID" referencedTableName="T_PIMPERSON" validate="true"/>
+    </changeSet>
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-pcmbdsqdmx-3-708">
+       <addForeignKeyConstraint baseColumnNames="PIMPERSONID" baseTableName="T_PCMBDSQDMX" constraintName="DER1N_PCMBDSQDMX_PIMPERSON_PIM" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="PIMPERSONID" referencedTableName="T_PIMPERSON" validate="true"/>
+    </changeSet>
         <!--输出实体[TRMDUTYCADRES]外键关系 -->
         <!--输出实体[PCMLOG]外键关系 -->
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-pcmlog-21-716">
+       <addForeignKeyConstraint baseColumnNames="PIMPERSONID" baseTableName="T_PCMLOG" constraintName="DER1N_PCMLOG_PIMPERSON_PIMPERS" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="PIMPERSONID" referencedTableName="T_PIMPERSON" validate="true"/>
+    </changeSet>
         <!--输出实体[SALSCHEMEITEM]外键关系 -->
         <!--输出实体[TRMEMPLOYEERETION]外键关系 -->
         <!--输出实体[PIMVACATION]外键关系 -->
@@ -3461,7 +5071,31 @@
         <!--输出实体[ORMSIGNORG]外键关系 -->
         <!--输出实体[PARJXNDKHJG]外键关系 -->
         <!--输出实体[PCMJXSYGZZJLMX]外键关系 -->
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-pcmjxsygzzjlmx-1-730">
+       <addForeignKeyConstraint baseColumnNames="PCMJXSYGZZSQID" baseTableName="T_PCMJXSYGZZJLMX" constraintName="DER1N_PCMJXSYGZZJLMX_PCMJXSYGZ" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="PCMJXSYGZZSQID" referencedTableName="T_PCMJXSYGZZSQ" validate="true"/>
+    </changeSet>
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-pcmjxsygzzjlmx-1-731">
+       <addForeignKeyConstraint baseColumnNames="PCMJXSZZKHJGJLID" baseTableName="T_PCMJXSYGZZJLMX" constraintName="DER1N_PCMJXSYGZZJLMX_PCMJXSZZK" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="PCMJXSZZKHJGJLID" referencedTableName="T_PCMJXSZZKHJGJL" validate="true"/>
+    </changeSet>
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-pcmjxsygzzjlmx-1-732">
+       <addForeignKeyConstraint baseColumnNames="PIMPERSONID" baseTableName="T_PCMJXSYGZZJLMX" constraintName="DER1N_PCMJXSYGZZJLMX_PIMPERSON" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="PIMPERSONID" referencedTableName="T_PIMPERSON" validate="true"/>
+    </changeSet>
         <!--输出实体[PCMPROFILE]外键关系 -->
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-pcmprofile-255-733">
+       <addForeignKeyConstraint baseColumnNames="ORMDUTYID" baseTableName="T_PCMPROFILE" constraintName="DER1N_PCMPROFILE_ORMDUTY_ORMDU" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="ORMDUTYID" referencedTableName="T_ORMDUTY" validate="true"/>
+    </changeSet>
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-pcmprofile-255-734">
+       <addForeignKeyConstraint baseColumnNames="ORMORGSECTORID" baseTableName="T_PCMPROFILE" constraintName="DER1N_PCMPROFILE_ORMORGSECTOR_" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="ORGSECTORID" referencedTableName="T_SRFORGSECTOR" validate="true"/>
+    </changeSet>
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-pcmprofile-255-735">
+       <addForeignKeyConstraint baseColumnNames="ORMORGID" baseTableName="T_PCMPROFILE" constraintName="DER1N_PCMPROFILE_ORMORG_ORMORG" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="ORGID" referencedTableName="T_SRFORG" validate="true"/>
+    </changeSet>
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-pcmprofile-255-736">
+       <addForeignKeyConstraint baseColumnNames="ORMPOSTID" baseTableName="T_PCMPROFILE" constraintName="DER1N_PCMPROFILE_ORMPOST_ORMPO" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="ORMPOSTID" referencedTableName="T_ORMPOST" validate="true"/>
+    </changeSet>
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-pcmprofile-255-737">
+       <addForeignKeyConstraint baseColumnNames="PIMPERSONID" baseTableName="T_PCMPROFILE" constraintName="DER1N_PCMPROFILE_PIMPERSON_PIM" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="PIMPERSONID" referencedTableName="T_PIMPERSON" validate="true"/>
+    </changeSet>
         <!--输出实体[SALPERSONSTDDETAIL]外键关系 -->
         <!--输出实体[VACWORKDAY]外键关系 -->
         <!--输出实体[SALSUBJECT]外键关系 -->
