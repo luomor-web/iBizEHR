@@ -118,7 +118,6 @@
     <!--数据查询[CurOrmorgsector]-->
     <sql id="CurOrmorgsector" databaseId="oracle">
        <![CDATA[	SELECT t1.BXJLNX, t1.CREATEDATE, t1.CREATEMAN, t1.DYZJ, t1.FGLX, t1.NX, t1.ORMDUTYID, t1.ORMDUTYNAME, t1.UPDATEDATE, t1.UPDATEMAN, t1.XH, t1.ZWJB, t1.ZWLB FROM T_ORMDUTY t1  
-				 WHERE 	( instr(t1.ZWLB,( select REFERJOBLEVEL from T_SRFORGSECTOR where ORGSECTORID =  #{srf.datacontext.ormorgsectorid} ))>0 )
 			]]>
     </sql>
 
