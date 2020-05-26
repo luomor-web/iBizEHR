@@ -55,7 +55,7 @@ public class WZD0001Resource {
          return ResponseEntity.status(HttpStatus.OK).body(wzd0001Service.remove(wzd0001_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.wzd0001Mapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"WZD0001" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/wzd0001s/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -77,7 +77,7 @@ public class WZD0001Resource {
         return ResponseEntity.status(HttpStatus.OK).body(wzd0001Service.save(wzd0001Mapping.toDomain(wzd0001dto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.wzd0001Mapping,#wzd0001dtos})")
     @ApiOperation(value = "SaveBatch", tags = {"WZD0001" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/wzd0001s/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<WZD0001DTO> wzd0001dtos) {
@@ -99,14 +99,14 @@ public class WZD0001Resource {
 	@RequestMapping(method = RequestMethod.PUT, value = "/wzd0001s/{wzd0001_id}")
     @Transactional
     public ResponseEntity<WZD0001DTO> update(@PathVariable("wzd0001_id") String wzd0001_id, @RequestBody WZD0001DTO wzd0001dto) {
-		WZD0001 domain = wzd0001Mapping.toDomain(wzd0001dto);
-        domain.setWzd0001id(wzd0001_id);
-		wzd0001Service.update(domain);
-		WZD0001DTO dto = wzd0001Mapping.toDto(domain);
+		WZD0001 domain  = wzd0001Mapping.toDomain(wzd0001dto);
+        domain .setWzd0001id(wzd0001_id);
+		wzd0001Service.update(domain );
+		WZD0001DTO dto = wzd0001Mapping.toDto(domain );
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.wzd0001Mapping,#wzd0001dtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"WZD0001" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/wzd0001s/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<WZD0001DTO> wzd0001dtos) {
@@ -132,7 +132,7 @@ public class WZD0001Resource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.wzd0001Mapping,#wzd0001dtos})")
     @ApiOperation(value = "createBatch", tags = {"WZD0001" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/wzd0001s/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<WZD0001DTO> wzd0001dtos) {
@@ -146,6 +146,7 @@ public class WZD0001Resource {
     @Transactional
     public ResponseEntity<WZD0001DTO> updatePeopleNum(@PathVariable("wzd0001_id") String wzd0001_id, @RequestBody WZD0001DTO wzd0001dto) {
         WZD0001 wzd0001 = wzd0001Mapping.toDomain(wzd0001dto);
+        wzd0001.setWzd0001id(wzd0001_id);
         wzd0001 = wzd0001Service.updatePeopleNum(wzd0001);
         wzd0001dto = wzd0001Mapping.toDto(wzd0001);
         return ResponseEntity.status(HttpStatus.OK).body(wzd0001dto);

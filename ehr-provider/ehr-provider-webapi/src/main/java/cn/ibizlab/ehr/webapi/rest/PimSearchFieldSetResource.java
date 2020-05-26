@@ -53,6 +53,7 @@ public class PimSearchFieldSetResource {
     @Transactional
     public ResponseEntity<PimSearchFieldSetDTO> initDictionary(@PathVariable("pimsearchfieldset_id") String pimsearchfieldset_id, @RequestBody PimSearchFieldSetDTO pimsearchfieldsetdto) {
         PimSearchFieldSet pimsearchfieldset = pimsearchfieldsetMapping.toDomain(pimsearchfieldsetdto);
+        pimsearchfieldset.setPimsearchfieldsetid(pimsearchfieldset_id);
         pimsearchfieldset = pimsearchfieldsetService.initDictionary(pimsearchfieldset);
         pimsearchfieldsetdto = pimsearchfieldsetMapping.toDto(pimsearchfieldset);
         return ResponseEntity.status(HttpStatus.OK).body(pimsearchfieldsetdto);
@@ -65,7 +66,7 @@ public class PimSearchFieldSetResource {
         return ResponseEntity.status(HttpStatus.OK).body(pimsearchfieldsetService.save(pimsearchfieldsetMapping.toDomain(pimsearchfieldsetdto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.pimsearchfieldsetMapping,#pimsearchfieldsetdtos})")
     @ApiOperation(value = "SaveBatch", tags = {"PimSearchFieldSet" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimsearchfieldsets/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PimSearchFieldSetDTO> pimsearchfieldsetdtos) {
@@ -78,14 +79,14 @@ public class PimSearchFieldSetResource {
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimsearchfieldsets/{pimsearchfieldset_id}")
     @Transactional
     public ResponseEntity<PimSearchFieldSetDTO> update(@PathVariable("pimsearchfieldset_id") String pimsearchfieldset_id, @RequestBody PimSearchFieldSetDTO pimsearchfieldsetdto) {
-		PimSearchFieldSet domain = pimsearchfieldsetMapping.toDomain(pimsearchfieldsetdto);
-        domain.setPimsearchfieldsetid(pimsearchfieldset_id);
-		pimsearchfieldsetService.update(domain);
-		PimSearchFieldSetDTO dto = pimsearchfieldsetMapping.toDto(domain);
+		PimSearchFieldSet domain  = pimsearchfieldsetMapping.toDomain(pimsearchfieldsetdto);
+        domain .setPimsearchfieldsetid(pimsearchfieldset_id);
+		pimsearchfieldsetService.update(domain );
+		PimSearchFieldSetDTO dto = pimsearchfieldsetMapping.toDto(domain );
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.pimsearchfieldsetMapping,#pimsearchfieldsetdtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"PimSearchFieldSet" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimsearchfieldsets/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PimSearchFieldSetDTO> pimsearchfieldsetdtos) {
@@ -115,7 +116,7 @@ public class PimSearchFieldSetResource {
          return ResponseEntity.status(HttpStatus.OK).body(pimsearchfieldsetService.remove(pimsearchfieldset_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.pimsearchfieldsetMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"PimSearchFieldSet" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimsearchfieldsets/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -143,7 +144,7 @@ public class PimSearchFieldSetResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.pimsearchfieldsetMapping,#pimsearchfieldsetdtos})")
     @ApiOperation(value = "createBatch", tags = {"PimSearchFieldSet" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimsearchfieldsets/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PimSearchFieldSetDTO> pimsearchfieldsetdtos) {

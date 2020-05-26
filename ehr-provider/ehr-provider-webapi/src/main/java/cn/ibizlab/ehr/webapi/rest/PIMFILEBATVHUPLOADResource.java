@@ -54,7 +54,7 @@ public class PIMFILEBATVHUPLOADResource {
         return ResponseEntity.status(HttpStatus.OK).body(pimfilebatvhuploadService.save(pimfilebatvhuploadMapping.toDomain(pimfilebatvhuploaddto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.pimfilebatvhuploadMapping,#pimfilebatvhuploaddtos})")
     @ApiOperation(value = "SaveBatch", tags = {"PIMFILEBATVHUPLOAD" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimfilebatvhuploads/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PIMFILEBATVHUPLOADDTO> pimfilebatvhuploaddtos) {
@@ -83,14 +83,14 @@ public class PIMFILEBATVHUPLOADResource {
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimfilebatvhuploads/{pimfilebatvhupload_id}")
     @Transactional
     public ResponseEntity<PIMFILEBATVHUPLOADDTO> update(@PathVariable("pimfilebatvhupload_id") String pimfilebatvhupload_id, @RequestBody PIMFILEBATVHUPLOADDTO pimfilebatvhuploaddto) {
-		PIMFILEBATVHUPLOAD domain = pimfilebatvhuploadMapping.toDomain(pimfilebatvhuploaddto);
-        domain.setPimfilebatvhuploadid(pimfilebatvhupload_id);
-		pimfilebatvhuploadService.update(domain);
-		PIMFILEBATVHUPLOADDTO dto = pimfilebatvhuploadMapping.toDto(domain);
+		PIMFILEBATVHUPLOAD domain  = pimfilebatvhuploadMapping.toDomain(pimfilebatvhuploaddto);
+        domain .setPimfilebatvhuploadid(pimfilebatvhupload_id);
+		pimfilebatvhuploadService.update(domain );
+		PIMFILEBATVHUPLOADDTO dto = pimfilebatvhuploadMapping.toDto(domain );
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.pimfilebatvhuploadMapping,#pimfilebatvhuploaddtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"PIMFILEBATVHUPLOAD" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimfilebatvhuploads/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PIMFILEBATVHUPLOADDTO> pimfilebatvhuploaddtos) {
@@ -109,7 +109,7 @@ public class PIMFILEBATVHUPLOADResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.pimfilebatvhuploadMapping,#pimfilebatvhuploaddtos})")
     @ApiOperation(value = "createBatch", tags = {"PIMFILEBATVHUPLOAD" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimfilebatvhuploads/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PIMFILEBATVHUPLOADDTO> pimfilebatvhuploaddtos) {
@@ -132,7 +132,7 @@ public class PIMFILEBATVHUPLOADResource {
          return ResponseEntity.status(HttpStatus.OK).body(pimfilebatvhuploadService.remove(pimfilebatvhupload_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.pimfilebatvhuploadMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"PIMFILEBATVHUPLOAD" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimfilebatvhuploads/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {

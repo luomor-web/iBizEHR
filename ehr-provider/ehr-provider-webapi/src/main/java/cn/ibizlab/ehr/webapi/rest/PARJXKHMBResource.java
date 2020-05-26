@@ -62,7 +62,7 @@ public class PARJXKHMBResource {
          return ResponseEntity.status(HttpStatus.OK).body(parjxkhmbService.remove(parjxkhmb_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.parjxkhmbMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"PARJXKHMB" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/parjxkhmbs/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -90,7 +90,7 @@ public class PARJXKHMBResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.parjxkhmbMapping,#parjxkhmbdtos})")
     @ApiOperation(value = "createBatch", tags = {"PARJXKHMB" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/parjxkhmbs/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PARJXKHMBDTO> parjxkhmbdtos) {
@@ -112,7 +112,7 @@ public class PARJXKHMBResource {
         return ResponseEntity.status(HttpStatus.OK).body(parjxkhmbService.save(parjxkhmbMapping.toDomain(parjxkhmbdto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.parjxkhmbMapping,#parjxkhmbdtos})")
     @ApiOperation(value = "SaveBatch", tags = {"PARJXKHMB" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/parjxkhmbs/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PARJXKHMBDTO> parjxkhmbdtos) {
@@ -125,14 +125,14 @@ public class PARJXKHMBResource {
 	@RequestMapping(method = RequestMethod.PUT, value = "/parjxkhmbs/{parjxkhmb_id}")
     @Transactional
     public ResponseEntity<PARJXKHMBDTO> update(@PathVariable("parjxkhmb_id") String parjxkhmb_id, @RequestBody PARJXKHMBDTO parjxkhmbdto) {
-		PARJXKHMB domain = parjxkhmbMapping.toDomain(parjxkhmbdto);
-        domain.setParjxkhmbid(parjxkhmb_id);
-		parjxkhmbService.update(domain);
-		PARJXKHMBDTO dto = parjxkhmbMapping.toDto(domain);
+		PARJXKHMB domain  = parjxkhmbMapping.toDomain(parjxkhmbdto);
+        domain .setParjxkhmbid(parjxkhmb_id);
+		parjxkhmbService.update(domain );
+		PARJXKHMBDTO dto = parjxkhmbMapping.toDto(domain );
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.parjxkhmbMapping,#parjxkhmbdtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"PARJXKHMB" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/parjxkhmbs/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PARJXKHMBDTO> parjxkhmbdtos) {

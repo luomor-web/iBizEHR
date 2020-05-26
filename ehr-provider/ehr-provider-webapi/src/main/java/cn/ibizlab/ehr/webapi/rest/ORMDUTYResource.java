@@ -58,7 +58,7 @@ public class ORMDUTYResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.ormdutyMapping,#ormdutydtos})")
     @ApiOperation(value = "createBatch", tags = {"ORMDUTY" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormduties/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<ORMDUTYDTO> ormdutydtos) {
@@ -72,6 +72,7 @@ public class ORMDUTYResource {
     @Transactional
     public ResponseEntity<ORMDUTYDTO> synOrderNum(@PathVariable("ormduty_id") String ormduty_id, @RequestBody ORMDUTYDTO ormdutydto) {
         ORMDUTY ormduty = ormdutyMapping.toDomain(ormdutydto);
+        ormduty.setOrmdutyid(ormduty_id);
         ormduty = ormdutyService.synOrderNum(ormduty);
         ormdutydto = ormdutyMapping.toDto(ormduty);
         return ResponseEntity.status(HttpStatus.OK).body(ormdutydto);
@@ -82,14 +83,14 @@ public class ORMDUTYResource {
 	@RequestMapping(method = RequestMethod.PUT, value = "/ormduties/{ormduty_id}")
     @Transactional
     public ResponseEntity<ORMDUTYDTO> update(@PathVariable("ormduty_id") String ormduty_id, @RequestBody ORMDUTYDTO ormdutydto) {
-		ORMDUTY domain = ormdutyMapping.toDomain(ormdutydto);
-        domain.setOrmdutyid(ormduty_id);
-		ormdutyService.update(domain);
-		ORMDUTYDTO dto = ormdutyMapping.toDto(domain);
+		ORMDUTY domain  = ormdutyMapping.toDomain(ormdutydto);
+        domain .setOrmdutyid(ormduty_id);
+		ormdutyService.update(domain );
+		ORMDUTYDTO dto = ormdutyMapping.toDto(domain );
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.ormdutyMapping,#ormdutydtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"ORMDUTY" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/ormduties/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<ORMDUTYDTO> ormdutydtos) {
@@ -112,7 +113,7 @@ public class ORMDUTYResource {
          return ResponseEntity.status(HttpStatus.OK).body(ormdutyService.remove(ormduty_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.ormdutyMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"ORMDUTY" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/ormduties/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -143,7 +144,7 @@ public class ORMDUTYResource {
         return ResponseEntity.status(HttpStatus.OK).body(ormdutyService.save(ormdutyMapping.toDomain(ormdutydto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.ormdutyMapping,#ormdutydtos})")
     @ApiOperation(value = "SaveBatch", tags = {"ORMDUTY" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormduties/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<ORMDUTYDTO> ormdutydtos) {

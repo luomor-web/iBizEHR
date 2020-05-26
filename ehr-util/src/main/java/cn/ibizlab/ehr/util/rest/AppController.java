@@ -1,17 +1,20 @@
 package cn.ibizlab.ehr.util.rest;
 
-import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import cn.ibizlab.ehr.util.security.AuthenticationUser;
+import cn.ibizlab.ehr.util.service.AuthenticationUserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.util.ObjectUtils;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.beans.factory.annotation.Autowired;
-import cn.ibizlab.ehr.util.security.AuthenticationUser;
-import cn.ibizlab.ehr.util.service.AuthenticationUserService;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
 
 @RestController
 @RequestMapping(value = "")
@@ -27,14 +30,20 @@ public class AppController {
 	public ResponseEntity<JSONObject> getAppData() {
 
 		JSONObject appData = new JSONObject() ;
-		JSONArray uniRes=new JSONArray();
-    	JSONArray appMenu=new JSONArray();
+		Set<String> appMenu = new HashSet();
+		Set<String> uniRes = new HashSet();
+
 		if(enablePermissionValid){
-			JSONObject userPermission=AuthenticationUser.getAuthenticationUser().getPermissionList();
-			if(!ObjectUtils.isEmpty(userPermission)){
-				uniRes = userPermission.getJSONArray("unires");
-    			appMenu = userPermission.getJSONArray("appmenu");
-			}
+			Collection<GrantedAuthority> authorities=AuthenticationUser.getAuthenticationUser().getAuthorities();
+				Iterator it = authorities.iterator();
+				while(it.hasNext()) {
+					GrantedAuthority authority = (GrantedAuthority)it.next();
+					String strAuthority=authority.getAuthority();
+					if(strAuthority.startsWith("UNIRES"))
+						uniRes.add(strAuthority);
+					else if(strAuthority.startsWith("APPMENU"))
+						appMenu.add(strAuthority);
+				}
 		}
 		appData.put("unires",uniRes);
     	appData.put("appmenu",appMenu);

@@ -61,14 +61,14 @@ public class SALLOGResource {
 	@RequestMapping(method = RequestMethod.PUT, value = "/sallogs/{sallog_id}")
     @Transactional
     public ResponseEntity<SALLOGDTO> update(@PathVariable("sallog_id") String sallog_id, @RequestBody SALLOGDTO sallogdto) {
-		SALLOG domain = sallogMapping.toDomain(sallogdto);
-        domain.setSallogid(sallog_id);
-		sallogService.update(domain);
-		SALLOGDTO dto = sallogMapping.toDto(domain);
+		SALLOG domain  = sallogMapping.toDomain(sallogdto);
+        domain .setSallogid(sallog_id);
+		sallogService.update(domain );
+		SALLOGDTO dto = sallogMapping.toDto(domain );
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.sallogMapping,#sallogdtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"SALLOG" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/sallogs/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<SALLOGDTO> sallogdtos) {
@@ -84,7 +84,7 @@ public class SALLOGResource {
          return ResponseEntity.status(HttpStatus.OK).body(sallogService.remove(sallog_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.sallogMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"SALLOG" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/sallogs/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -103,7 +103,7 @@ public class SALLOGResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.sallogMapping,#sallogdtos})")
     @ApiOperation(value = "createBatch", tags = {"SALLOG" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/sallogs/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<SALLOGDTO> sallogdtos) {
@@ -118,7 +118,7 @@ public class SALLOGResource {
         return ResponseEntity.status(HttpStatus.OK).body(sallogService.save(sallogMapping.toDomain(sallogdto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.sallogMapping,#sallogdtos})")
     @ApiOperation(value = "SaveBatch", tags = {"SALLOG" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/sallogs/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<SALLOGDTO> sallogdtos) {

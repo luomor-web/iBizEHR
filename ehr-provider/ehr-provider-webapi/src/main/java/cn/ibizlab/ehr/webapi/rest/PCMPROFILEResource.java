@@ -53,6 +53,7 @@ public class PCMPROFILEResource {
     @Transactional
     public ResponseEntity<PCMPROFILEDTO> jZBTG(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody PCMPROFILEDTO pcmprofiledto) {
         PCMPROFILE pcmprofile = pcmprofileMapping.toDomain(pcmprofiledto);
+        pcmprofile.setPcmprofileid(pcmprofile_id);
         pcmprofile = pcmprofileService.jZBTG(pcmprofile);
         pcmprofiledto = pcmprofileMapping.toDto(pcmprofile);
         return ResponseEntity.status(HttpStatus.OK).body(pcmprofiledto);
@@ -64,6 +65,7 @@ public class PCMPROFILEResource {
     @Transactional
     public ResponseEntity<PCMPROFILEDTO> sBJZB(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody PCMPROFILEDTO pcmprofiledto) {
         PCMPROFILE pcmprofile = pcmprofileMapping.toDomain(pcmprofiledto);
+        pcmprofile.setPcmprofileid(pcmprofile_id);
         pcmprofile = pcmprofileService.sBJZB(pcmprofile);
         pcmprofiledto = pcmprofileMapping.toDto(pcmprofile);
         return ResponseEntity.status(HttpStatus.OK).body(pcmprofiledto);
@@ -75,6 +77,7 @@ public class PCMPROFILEResource {
     @Transactional
     public ResponseEntity<PCMPROFILEDTO> jSPBTG(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody PCMPROFILEDTO pcmprofiledto) {
         PCMPROFILE pcmprofile = pcmprofileMapping.toDomain(pcmprofiledto);
+        pcmprofile.setPcmprofileid(pcmprofile_id);
         pcmprofile = pcmprofileService.jSPBTG(pcmprofile);
         pcmprofiledto = pcmprofileMapping.toDto(pcmprofile);
         return ResponseEntity.status(HttpStatus.OK).body(pcmprofiledto);
@@ -86,6 +89,7 @@ public class PCMPROFILEResource {
     @Transactional
     public ResponseEntity<PCMPROFILEDTO> printSPB(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody PCMPROFILEDTO pcmprofiledto) {
         PCMPROFILE pcmprofile = pcmprofileMapping.toDomain(pcmprofiledto);
+        pcmprofile.setPcmprofileid(pcmprofile_id);
         pcmprofile = pcmprofileService.printSPB(pcmprofile);
         pcmprofiledto = pcmprofileMapping.toDto(pcmprofile);
         return ResponseEntity.status(HttpStatus.OK).body(pcmprofiledto);
@@ -97,6 +101,7 @@ public class PCMPROFILEResource {
     @Transactional
     public ResponseEntity<PCMPROFILEDTO> getYPZNL(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody PCMPROFILEDTO pcmprofiledto) {
         PCMPROFILE pcmprofile = pcmprofileMapping.toDomain(pcmprofiledto);
+        pcmprofile.setPcmprofileid(pcmprofile_id);
         pcmprofile = pcmprofileService.getYPZNL(pcmprofile);
         pcmprofiledto = pcmprofileMapping.toDto(pcmprofile);
         return ResponseEntity.status(HttpStatus.OK).body(pcmprofiledto);
@@ -108,6 +113,7 @@ public class PCMPROFILEResource {
     @Transactional
     public ResponseEntity<PCMPROFILEDTO> clearPersonUpdateInfo(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody PCMPROFILEDTO pcmprofiledto) {
         PCMPROFILE pcmprofile = pcmprofileMapping.toDomain(pcmprofiledto);
+        pcmprofile.setPcmprofileid(pcmprofile_id);
         pcmprofile = pcmprofileService.clearPersonUpdateInfo(pcmprofile);
         pcmprofiledto = pcmprofileMapping.toDto(pcmprofile);
         return ResponseEntity.status(HttpStatus.OK).body(pcmprofiledto);
@@ -120,7 +126,7 @@ public class PCMPROFILEResource {
         return ResponseEntity.status(HttpStatus.OK).body(pcmprofileService.save(pcmprofileMapping.toDomain(pcmprofiledto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.pcmprofileMapping,#pcmprofiledtos})")
     @ApiOperation(value = "SaveBatch", tags = {"PCMPROFILE" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PCMPROFILEDTO> pcmprofiledtos) {
@@ -134,6 +140,7 @@ public class PCMPROFILEResource {
     @Transactional
     public ResponseEntity<PCMPROFILEDTO> invalid2(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody PCMPROFILEDTO pcmprofiledto) {
         PCMPROFILE pcmprofile = pcmprofileMapping.toDomain(pcmprofiledto);
+        pcmprofile.setPcmprofileid(pcmprofile_id);
         pcmprofile = pcmprofileService.invalid2(pcmprofile);
         pcmprofiledto = pcmprofileMapping.toDto(pcmprofile);
         return ResponseEntity.status(HttpStatus.OK).body(pcmprofiledto);
@@ -145,6 +152,7 @@ public class PCMPROFILEResource {
     @Transactional
     public ResponseEntity<PCMPROFILEDTO> bD(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody PCMPROFILEDTO pcmprofiledto) {
         PCMPROFILE pcmprofile = pcmprofileMapping.toDomain(pcmprofiledto);
+        pcmprofile.setPcmprofileid(pcmprofile_id);
         pcmprofile = pcmprofileService.bD(pcmprofile);
         pcmprofiledto = pcmprofileMapping.toDto(pcmprofile);
         return ResponseEntity.status(HttpStatus.OK).body(pcmprofiledto);
@@ -156,6 +164,7 @@ public class PCMPROFILEResource {
     @Transactional
     public ResponseEntity<PCMPROFILEDTO> jLDTG(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody PCMPROFILEDTO pcmprofiledto) {
         PCMPROFILE pcmprofile = pcmprofileMapping.toDomain(pcmprofiledto);
+        pcmprofile.setPcmprofileid(pcmprofile_id);
         pcmprofile = pcmprofileService.jLDTG(pcmprofile);
         pcmprofiledto = pcmprofileMapping.toDto(pcmprofile);
         return ResponseEntity.status(HttpStatus.OK).body(pcmprofiledto);
@@ -167,6 +176,7 @@ public class PCMPROFILEResource {
     @Transactional
     public ResponseEntity<PCMPROFILEDTO> checkYJSNF(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody PCMPROFILEDTO pcmprofiledto) {
         PCMPROFILE pcmprofile = pcmprofileMapping.toDomain(pcmprofiledto);
+        pcmprofile.setPcmprofileid(pcmprofile_id);
         pcmprofile = pcmprofileService.checkYJSNF(pcmprofile);
         pcmprofiledto = pcmprofileMapping.toDto(pcmprofile);
         return ResponseEntity.status(HttpStatus.OK).body(pcmprofiledto);
@@ -178,6 +188,7 @@ public class PCMPROFILEResource {
     @Transactional
     public ResponseEntity<PCMPROFILEDTO> gSSP(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody PCMPROFILEDTO pcmprofiledto) {
         PCMPROFILE pcmprofile = pcmprofileMapping.toDomain(pcmprofiledto);
+        pcmprofile.setPcmprofileid(pcmprofile_id);
         pcmprofile = pcmprofileService.gSSP(pcmprofile);
         pcmprofiledto = pcmprofileMapping.toDto(pcmprofile);
         return ResponseEntity.status(HttpStatus.OK).body(pcmprofiledto);
@@ -189,6 +200,7 @@ public class PCMPROFILEResource {
     @Transactional
     public ResponseEntity<PCMPROFILEDTO> checkEmail(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody PCMPROFILEDTO pcmprofiledto) {
         PCMPROFILE pcmprofile = pcmprofileMapping.toDomain(pcmprofiledto);
+        pcmprofile.setPcmprofileid(pcmprofile_id);
         pcmprofile = pcmprofileService.checkEmail(pcmprofile);
         pcmprofiledto = pcmprofileMapping.toDto(pcmprofile);
         return ResponseEntity.status(HttpStatus.OK).body(pcmprofiledto);
@@ -200,6 +212,7 @@ public class PCMPROFILEResource {
     @Transactional
     public ResponseEntity<PCMPROFILEDTO> getPcmprofileInfo(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody PCMPROFILEDTO pcmprofiledto) {
         PCMPROFILE pcmprofile = pcmprofileMapping.toDomain(pcmprofiledto);
+        pcmprofile.setPcmprofileid(pcmprofile_id);
         pcmprofile = pcmprofileService.getPcmprofileInfo(pcmprofile);
         pcmprofiledto = pcmprofileMapping.toDto(pcmprofile);
         return ResponseEntity.status(HttpStatus.OK).body(pcmprofiledto);
@@ -216,7 +229,7 @@ public class PCMPROFILEResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.pcmprofileMapping,#pcmprofiledtos})")
     @ApiOperation(value = "createBatch", tags = {"PCMPROFILE" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PCMPROFILEDTO> pcmprofiledtos) {
@@ -229,14 +242,14 @@ public class PCMPROFILEResource {
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmprofiles/{pcmprofile_id}")
     @Transactional
     public ResponseEntity<PCMPROFILEDTO> update(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody PCMPROFILEDTO pcmprofiledto) {
-		PCMPROFILE domain = pcmprofileMapping.toDomain(pcmprofiledto);
-        domain.setPcmprofileid(pcmprofile_id);
-		pcmprofileService.update(domain);
-		PCMPROFILEDTO dto = pcmprofileMapping.toDto(domain);
+		PCMPROFILE domain  = pcmprofileMapping.toDomain(pcmprofiledto);
+        domain .setPcmprofileid(pcmprofile_id);
+		pcmprofileService.update(domain );
+		PCMPROFILEDTO dto = pcmprofileMapping.toDto(domain );
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.pcmprofileMapping,#pcmprofiledtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"PCMPROFILE" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmprofiles/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PCMPROFILEDTO> pcmprofiledtos) {
@@ -250,6 +263,7 @@ public class PCMPROFILEResource {
     @Transactional
     public ResponseEntity<PCMPROFILEDTO> returnYPZ(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody PCMPROFILEDTO pcmprofiledto) {
         PCMPROFILE pcmprofile = pcmprofileMapping.toDomain(pcmprofiledto);
+        pcmprofile.setPcmprofileid(pcmprofile_id);
         pcmprofile = pcmprofileService.returnYPZ(pcmprofile);
         pcmprofiledto = pcmprofileMapping.toDto(pcmprofile);
         return ResponseEntity.status(HttpStatus.OK).body(pcmprofiledto);
@@ -270,6 +284,7 @@ public class PCMPROFILEResource {
     @Transactional
     public ResponseEntity<PCMPROFILEDTO> checkYglxIsChanged(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody PCMPROFILEDTO pcmprofiledto) {
         PCMPROFILE pcmprofile = pcmprofileMapping.toDomain(pcmprofiledto);
+        pcmprofile.setPcmprofileid(pcmprofile_id);
         pcmprofile = pcmprofileService.checkYglxIsChanged(pcmprofile);
         pcmprofiledto = pcmprofileMapping.toDto(pcmprofile);
         return ResponseEntity.status(HttpStatus.OK).body(pcmprofiledto);
@@ -281,6 +296,7 @@ public class PCMPROFILEResource {
     @Transactional
     public ResponseEntity<PCMPROFILEDTO> sX(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody PCMPROFILEDTO pcmprofiledto) {
         PCMPROFILE pcmprofile = pcmprofileMapping.toDomain(pcmprofiledto);
+        pcmprofile.setPcmprofileid(pcmprofile_id);
         pcmprofile = pcmprofileService.sX(pcmprofile);
         pcmprofiledto = pcmprofileMapping.toDto(pcmprofile);
         return ResponseEntity.status(HttpStatus.OK).body(pcmprofiledto);
@@ -299,6 +315,7 @@ public class PCMPROFILEResource {
     @Transactional
     public ResponseEntity<PCMPROFILEDTO> invalid(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody PCMPROFILEDTO pcmprofiledto) {
         PCMPROFILE pcmprofile = pcmprofileMapping.toDomain(pcmprofiledto);
+        pcmprofile.setPcmprofileid(pcmprofile_id);
         pcmprofile = pcmprofileService.invalid(pcmprofile);
         pcmprofiledto = pcmprofileMapping.toDto(pcmprofile);
         return ResponseEntity.status(HttpStatus.OK).body(pcmprofiledto);
@@ -310,6 +327,7 @@ public class PCMPROFILEResource {
     @Transactional
     public ResponseEntity<PCMPROFILEDTO> jZBBTG(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody PCMPROFILEDTO pcmprofiledto) {
         PCMPROFILE pcmprofile = pcmprofileMapping.toDomain(pcmprofiledto);
+        pcmprofile.setPcmprofileid(pcmprofile_id);
         pcmprofile = pcmprofileService.jZBBTG(pcmprofile);
         pcmprofiledto = pcmprofileMapping.toDto(pcmprofile);
         return ResponseEntity.status(HttpStatus.OK).body(pcmprofiledto);
@@ -321,6 +339,7 @@ public class PCMPROFILEResource {
     @Transactional
     public ResponseEntity<PCMPROFILEDTO> clearYPZ(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody PCMPROFILEDTO pcmprofiledto) {
         PCMPROFILE pcmprofile = pcmprofileMapping.toDomain(pcmprofiledto);
+        pcmprofile.setPcmprofileid(pcmprofile_id);
         pcmprofile = pcmprofileService.clearYPZ(pcmprofile);
         pcmprofiledto = pcmprofileMapping.toDto(pcmprofile);
         return ResponseEntity.status(HttpStatus.OK).body(pcmprofiledto);
@@ -332,6 +351,7 @@ public class PCMPROFILEResource {
     @Transactional
     public ResponseEntity<PCMPROFILEDTO> checkFP(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody PCMPROFILEDTO pcmprofiledto) {
         PCMPROFILE pcmprofile = pcmprofileMapping.toDomain(pcmprofiledto);
+        pcmprofile.setPcmprofileid(pcmprofile_id);
         pcmprofile = pcmprofileService.checkFP(pcmprofile);
         pcmprofiledto = pcmprofileMapping.toDto(pcmprofile);
         return ResponseEntity.status(HttpStatus.OK).body(pcmprofiledto);
@@ -343,6 +363,7 @@ public class PCMPROFILEResource {
     @Transactional
     public ResponseEntity<PCMPROFILEDTO> sCBH(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody PCMPROFILEDTO pcmprofiledto) {
         PCMPROFILE pcmprofile = pcmprofileMapping.toDomain(pcmprofiledto);
+        pcmprofile.setPcmprofileid(pcmprofile_id);
         pcmprofile = pcmprofileService.sCBH(pcmprofile);
         pcmprofiledto = pcmprofileMapping.toDto(pcmprofile);
         return ResponseEntity.status(HttpStatus.OK).body(pcmprofiledto);
@@ -361,6 +382,7 @@ public class PCMPROFILEResource {
     @Transactional
     public ResponseEntity<PCMPROFILEDTO> clearYYDJMC(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody PCMPROFILEDTO pcmprofiledto) {
         PCMPROFILE pcmprofile = pcmprofileMapping.toDomain(pcmprofiledto);
+        pcmprofile.setPcmprofileid(pcmprofile_id);
         pcmprofile = pcmprofileService.clearYYDJMC(pcmprofile);
         pcmprofiledto = pcmprofileMapping.toDto(pcmprofile);
         return ResponseEntity.status(HttpStatus.OK).body(pcmprofiledto);
@@ -372,6 +394,7 @@ public class PCMPROFILEResource {
     @Transactional
     public ResponseEntity<PCMPROFILEDTO> submit(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody PCMPROFILEDTO pcmprofiledto) {
         PCMPROFILE pcmprofile = pcmprofileMapping.toDomain(pcmprofiledto);
+        pcmprofile.setPcmprofileid(pcmprofile_id);
         pcmprofile = pcmprofileService.submit(pcmprofile);
         pcmprofiledto = pcmprofileMapping.toDto(pcmprofile);
         return ResponseEntity.status(HttpStatus.OK).body(pcmprofiledto);
@@ -383,6 +406,7 @@ public class PCMPROFILEResource {
     @Transactional
     public ResponseEntity<PCMPROFILEDTO> personUpdateInfo(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody PCMPROFILEDTO pcmprofiledto) {
         PCMPROFILE pcmprofile = pcmprofileMapping.toDomain(pcmprofiledto);
+        pcmprofile.setPcmprofileid(pcmprofile_id);
         pcmprofile = pcmprofileService.personUpdateInfo(pcmprofile);
         pcmprofiledto = pcmprofileMapping.toDto(pcmprofile);
         return ResponseEntity.status(HttpStatus.OK).body(pcmprofiledto);
@@ -394,6 +418,7 @@ public class PCMPROFILEResource {
     @Transactional
     public ResponseEntity<PCMPROFILEDTO> gSCS(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody PCMPROFILEDTO pcmprofiledto) {
         PCMPROFILE pcmprofile = pcmprofileMapping.toDomain(pcmprofiledto);
+        pcmprofile.setPcmprofileid(pcmprofile_id);
         pcmprofile = pcmprofileService.gSCS(pcmprofile);
         pcmprofiledto = pcmprofileMapping.toDto(pcmprofile);
         return ResponseEntity.status(HttpStatus.OK).body(pcmprofiledto);
@@ -405,6 +430,7 @@ public class PCMPROFILEResource {
     @Transactional
     public ResponseEntity<PCMPROFILEDTO> fillingYPZ(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody PCMPROFILEDTO pcmprofiledto) {
         PCMPROFILE pcmprofile = pcmprofileMapping.toDomain(pcmprofiledto);
+        pcmprofile.setPcmprofileid(pcmprofile_id);
         pcmprofile = pcmprofileService.fillingYPZ(pcmprofile);
         pcmprofiledto = pcmprofileMapping.toDto(pcmprofile);
         return ResponseEntity.status(HttpStatus.OK).body(pcmprofiledto);
@@ -416,6 +442,7 @@ public class PCMPROFILEResource {
     @Transactional
     public ResponseEntity<PCMPROFILEDTO> yQWBD(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody PCMPROFILEDTO pcmprofiledto) {
         PCMPROFILE pcmprofile = pcmprofileMapping.toDomain(pcmprofiledto);
+        pcmprofile.setPcmprofileid(pcmprofile_id);
         pcmprofile = pcmprofileService.yQWBD(pcmprofile);
         pcmprofiledto = pcmprofileMapping.toDto(pcmprofile);
         return ResponseEntity.status(HttpStatus.OK).body(pcmprofiledto);
@@ -427,6 +454,7 @@ public class PCMPROFILEResource {
     @Transactional
     public ResponseEntity<PCMPROFILEDTO> uSEYBH(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody PCMPROFILEDTO pcmprofiledto) {
         PCMPROFILE pcmprofile = pcmprofileMapping.toDomain(pcmprofiledto);
+        pcmprofile.setPcmprofileid(pcmprofile_id);
         pcmprofile = pcmprofileService.uSEYBH(pcmprofile);
         pcmprofiledto = pcmprofileMapping.toDto(pcmprofile);
         return ResponseEntity.status(HttpStatus.OK).body(pcmprofiledto);
@@ -438,6 +466,7 @@ public class PCMPROFILEResource {
     @Transactional
     public ResponseEntity<PCMPROFILEDTO> checkMobieNumber(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody PCMPROFILEDTO pcmprofiledto) {
         PCMPROFILE pcmprofile = pcmprofileMapping.toDomain(pcmprofiledto);
+        pcmprofile.setPcmprofileid(pcmprofile_id);
         pcmprofile = pcmprofileService.checkMobieNumber(pcmprofile);
         pcmprofiledto = pcmprofileMapping.toDto(pcmprofile);
         return ResponseEntity.status(HttpStatus.OK).body(pcmprofiledto);
@@ -451,7 +480,7 @@ public class PCMPROFILEResource {
          return ResponseEntity.status(HttpStatus.OK).body(pcmprofileService.remove(pcmprofile_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.pcmprofileMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"PCMPROFILE" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmprofiles/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -465,6 +494,7 @@ public class PCMPROFILEResource {
     @Transactional
     public ResponseEntity<PCMPROFILEDTO> jLDBTG(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody PCMPROFILEDTO pcmprofiledto) {
         PCMPROFILE pcmprofile = pcmprofileMapping.toDomain(pcmprofiledto);
+        pcmprofile.setPcmprofileid(pcmprofile_id);
         pcmprofile = pcmprofileService.jLDBTG(pcmprofile);
         pcmprofiledto = pcmprofileMapping.toDto(pcmprofile);
         return ResponseEntity.status(HttpStatus.OK).body(pcmprofiledto);
@@ -476,6 +506,7 @@ public class PCMPROFILEResource {
     @Transactional
     public ResponseEntity<PCMPROFILEDTO> jSPTG(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody PCMPROFILEDTO pcmprofiledto) {
         PCMPROFILE pcmprofile = pcmprofileMapping.toDomain(pcmprofiledto);
+        pcmprofile.setPcmprofileid(pcmprofile_id);
         pcmprofile = pcmprofileService.jSPTG(pcmprofile);
         pcmprofiledto = pcmprofileMapping.toDto(pcmprofile);
         return ResponseEntity.status(HttpStatus.OK).body(pcmprofiledto);
@@ -487,6 +518,7 @@ public class PCMPROFILEResource {
     @Transactional
     public ResponseEntity<PCMPROFILEDTO> setNQDLDHTQX(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody PCMPROFILEDTO pcmprofiledto) {
         PCMPROFILE pcmprofile = pcmprofileMapping.toDomain(pcmprofiledto);
+        pcmprofile.setPcmprofileid(pcmprofile_id);
         pcmprofile = pcmprofileService.setNQDLDHTQX(pcmprofile);
         pcmprofiledto = pcmprofileMapping.toDto(pcmprofile);
         return ResponseEntity.status(HttpStatus.OK).body(pcmprofiledto);

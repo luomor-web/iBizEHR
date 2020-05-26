@@ -52,14 +52,14 @@ public class ORMRANKResource {
 	@RequestMapping(method = RequestMethod.PUT, value = "/ormranks/{ormrank_id}")
     @Transactional
     public ResponseEntity<ORMRANKDTO> update(@PathVariable("ormrank_id") String ormrank_id, @RequestBody ORMRANKDTO ormrankdto) {
-		ORMRANK domain = ormrankMapping.toDomain(ormrankdto);
-        domain.setOrmrankid(ormrank_id);
-		ormrankService.update(domain);
-		ORMRANKDTO dto = ormrankMapping.toDto(domain);
+		ORMRANK domain  = ormrankMapping.toDomain(ormrankdto);
+        domain .setOrmrankid(ormrank_id);
+		ormrankService.update(domain );
+		ORMRANKDTO dto = ormrankMapping.toDto(domain );
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.ormrankMapping,#ormrankdtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"ORMRANK" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/ormranks/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<ORMRANKDTO> ormrankdtos) {
@@ -75,7 +75,7 @@ public class ORMRANKResource {
          return ResponseEntity.status(HttpStatus.OK).body(ormrankService.remove(ormrank_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.ormrankMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"ORMRANK" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/ormranks/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -90,7 +90,7 @@ public class ORMRANKResource {
         return ResponseEntity.status(HttpStatus.OK).body(ormrankService.save(ormrankMapping.toDomain(ormrankdto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.ormrankMapping,#ormrankdtos})")
     @ApiOperation(value = "SaveBatch", tags = {"ORMRANK" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormranks/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<ORMRANKDTO> ormrankdtos) {
@@ -132,7 +132,7 @@ public class ORMRANKResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.ormrankMapping,#ormrankdtos})")
     @ApiOperation(value = "createBatch", tags = {"ORMRANK" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormranks/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<ORMRANKDTO> ormrankdtos) {

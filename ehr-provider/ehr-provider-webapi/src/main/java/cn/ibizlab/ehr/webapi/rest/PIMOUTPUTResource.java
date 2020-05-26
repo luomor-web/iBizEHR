@@ -52,14 +52,14 @@ public class PIMOUTPUTResource {
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimoutputs/{pimoutput_id}")
     @Transactional
     public ResponseEntity<PIMOUTPUTDTO> update(@PathVariable("pimoutput_id") String pimoutput_id, @RequestBody PIMOUTPUTDTO pimoutputdto) {
-		PIMOUTPUT domain = pimoutputMapping.toDomain(pimoutputdto);
-        domain.setPimoutputid(pimoutput_id);
-		pimoutputService.update(domain);
-		PIMOUTPUTDTO dto = pimoutputMapping.toDto(domain);
+		PIMOUTPUT domain  = pimoutputMapping.toDomain(pimoutputdto);
+        domain .setPimoutputid(pimoutput_id);
+		pimoutputService.update(domain );
+		PIMOUTPUTDTO dto = pimoutputMapping.toDto(domain );
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.pimoutputMapping,#pimoutputdtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"PIMOUTPUT" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimoutputs/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PIMOUTPUTDTO> pimoutputdtos) {
@@ -87,7 +87,7 @@ public class PIMOUTPUTResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.pimoutputMapping,#pimoutputdtos})")
     @ApiOperation(value = "createBatch", tags = {"PIMOUTPUT" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimoutputs/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PIMOUTPUTDTO> pimoutputdtos) {
@@ -117,7 +117,7 @@ public class PIMOUTPUTResource {
          return ResponseEntity.status(HttpStatus.OK).body(pimoutputService.remove(pimoutput_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.pimoutputMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"PIMOUTPUT" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimoutputs/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -132,7 +132,7 @@ public class PIMOUTPUTResource {
         return ResponseEntity.status(HttpStatus.OK).body(pimoutputService.save(pimoutputMapping.toDomain(pimoutputdto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.pimoutputMapping,#pimoutputdtos})")
     @ApiOperation(value = "SaveBatch", tags = {"PIMOUTPUT" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimoutputs/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PIMOUTPUTDTO> pimoutputdtos) {

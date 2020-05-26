@@ -58,7 +58,7 @@ public class TRMINVOICEResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.trminvoiceMapping,#trminvoicedtos})")
     @ApiOperation(value = "createBatch", tags = {"TRMINVOICE" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/trminvoices/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<TRMINVOICEDTO> trminvoicedtos) {
@@ -73,7 +73,7 @@ public class TRMINVOICEResource {
         return ResponseEntity.status(HttpStatus.OK).body(trminvoiceService.save(trminvoiceMapping.toDomain(trminvoicedto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.trminvoiceMapping,#trminvoicedtos})")
     @ApiOperation(value = "SaveBatch", tags = {"TRMINVOICE" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/trminvoices/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<TRMINVOICEDTO> trminvoicedtos) {
@@ -112,7 +112,7 @@ public class TRMINVOICEResource {
          return ResponseEntity.status(HttpStatus.OK).body(trminvoiceService.remove(trminvoice_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.trminvoiceMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"TRMINVOICE" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/trminvoices/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -125,14 +125,14 @@ public class TRMINVOICEResource {
 	@RequestMapping(method = RequestMethod.PUT, value = "/trminvoices/{trminvoice_id}")
     @Transactional
     public ResponseEntity<TRMINVOICEDTO> update(@PathVariable("trminvoice_id") String trminvoice_id, @RequestBody TRMINVOICEDTO trminvoicedto) {
-		TRMINVOICE domain = trminvoiceMapping.toDomain(trminvoicedto);
-        domain.setTrminvoiceid(trminvoice_id);
-		trminvoiceService.update(domain);
-		TRMINVOICEDTO dto = trminvoiceMapping.toDto(domain);
+		TRMINVOICE domain  = trminvoiceMapping.toDomain(trminvoicedto);
+        domain .setTrminvoiceid(trminvoice_id);
+		trminvoiceService.update(domain );
+		TRMINVOICEDTO dto = trminvoiceMapping.toDto(domain );
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.trminvoiceMapping,#trminvoicedtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"TRMINVOICE" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/trminvoices/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<TRMINVOICEDTO> trminvoicedtos) {

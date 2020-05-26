@@ -62,7 +62,7 @@ public class SALRULEResource {
          return ResponseEntity.status(HttpStatus.OK).body(salruleService.remove(salrule_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.salruleMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"SALRULE" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/salrules/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -90,7 +90,7 @@ public class SALRULEResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.salruleMapping,#salruledtos})")
     @ApiOperation(value = "createBatch", tags = {"SALRULE" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/salrules/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<SALRULEDTO> salruledtos) {
@@ -103,14 +103,14 @@ public class SALRULEResource {
 	@RequestMapping(method = RequestMethod.PUT, value = "/salrules/{salrule_id}")
     @Transactional
     public ResponseEntity<SALRULEDTO> update(@PathVariable("salrule_id") String salrule_id, @RequestBody SALRULEDTO salruledto) {
-		SALRULE domain = salruleMapping.toDomain(salruledto);
-        domain.setSalruleid(salrule_id);
-		salruleService.update(domain);
-		SALRULEDTO dto = salruleMapping.toDto(domain);
+		SALRULE domain  = salruleMapping.toDomain(salruledto);
+        domain .setSalruleid(salrule_id);
+		salruleService.update(domain );
+		SALRULEDTO dto = salruleMapping.toDto(domain );
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.salruleMapping,#salruledtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"SALRULE" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/salrules/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<SALRULEDTO> salruledtos) {
@@ -125,7 +125,7 @@ public class SALRULEResource {
         return ResponseEntity.status(HttpStatus.OK).body(salruleService.save(salruleMapping.toDomain(salruledto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.salruleMapping,#salruledtos})")
     @ApiOperation(value = "SaveBatch", tags = {"SALRULE" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/salrules/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<SALRULEDTO> salruledtos) {

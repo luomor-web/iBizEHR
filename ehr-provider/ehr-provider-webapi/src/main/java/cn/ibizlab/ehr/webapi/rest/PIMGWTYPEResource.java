@@ -54,7 +54,7 @@ public class PIMGWTYPEResource {
         return ResponseEntity.status(HttpStatus.OK).body(pimgwtypeService.save(pimgwtypeMapping.toDomain(pimgwtypedto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.pimgwtypeMapping,#pimgwtypedtos})")
     @ApiOperation(value = "SaveBatch", tags = {"PIMGWTYPE" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimgwtypes/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PIMGWTYPEDTO> pimgwtypedtos) {
@@ -86,7 +86,7 @@ public class PIMGWTYPEResource {
          return ResponseEntity.status(HttpStatus.OK).body(pimgwtypeService.remove(pimgwtype_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.pimgwtypeMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"PIMGWTYPE" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimgwtypes/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -106,14 +106,14 @@ public class PIMGWTYPEResource {
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimgwtypes/{pimgwtype_id}")
     @Transactional
     public ResponseEntity<PIMGWTYPEDTO> update(@PathVariable("pimgwtype_id") String pimgwtype_id, @RequestBody PIMGWTYPEDTO pimgwtypedto) {
-		PIMGWTYPE domain = pimgwtypeMapping.toDomain(pimgwtypedto);
-        domain.setPimgwtypeid(pimgwtype_id);
-		pimgwtypeService.update(domain);
-		PIMGWTYPEDTO dto = pimgwtypeMapping.toDto(domain);
+		PIMGWTYPE domain  = pimgwtypeMapping.toDomain(pimgwtypedto);
+        domain .setPimgwtypeid(pimgwtype_id);
+		pimgwtypeService.update(domain );
+		PIMGWTYPEDTO dto = pimgwtypeMapping.toDto(domain );
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.pimgwtypeMapping,#pimgwtypedtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"PIMGWTYPE" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimgwtypes/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PIMGWTYPEDTO> pimgwtypedtos) {
@@ -132,7 +132,7 @@ public class PIMGWTYPEResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.pimgwtypeMapping,#pimgwtypedtos})")
     @ApiOperation(value = "createBatch", tags = {"PIMGWTYPE" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimgwtypes/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PIMGWTYPEDTO> pimgwtypedtos) {

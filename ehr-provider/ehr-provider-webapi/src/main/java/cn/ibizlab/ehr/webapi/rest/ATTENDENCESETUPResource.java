@@ -52,14 +52,14 @@ public class ATTENDENCESETUPResource {
 	@RequestMapping(method = RequestMethod.PUT, value = "/attendencesetups/{attendencesetup_id}")
     @Transactional
     public ResponseEntity<ATTENDENCESETUPDTO> update(@PathVariable("attendencesetup_id") String attendencesetup_id, @RequestBody ATTENDENCESETUPDTO attendencesetupdto) {
-		ATTENDENCESETUP domain = attendencesetupMapping.toDomain(attendencesetupdto);
-        domain.setAttendencesetupid(attendencesetup_id);
-		attendencesetupService.update(domain);
-		ATTENDENCESETUPDTO dto = attendencesetupMapping.toDto(domain);
+		ATTENDENCESETUP domain  = attendencesetupMapping.toDomain(attendencesetupdto);
+        domain .setAttendencesetupid(attendencesetup_id);
+		attendencesetupService.update(domain );
+		ATTENDENCESETUPDTO dto = attendencesetupMapping.toDto(domain );
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.attendencesetupMapping,#attendencesetupdtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"ATTENDENCESETUP" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/attendencesetups/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<ATTENDENCESETUPDTO> attendencesetupdtos) {
@@ -74,7 +74,7 @@ public class ATTENDENCESETUPResource {
         return ResponseEntity.status(HttpStatus.OK).body(attendencesetupService.save(attendencesetupMapping.toDomain(attendencesetupdto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.attendencesetupMapping,#attendencesetupdtos})")
     @ApiOperation(value = "SaveBatch", tags = {"ATTENDENCESETUP" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/attendencesetups/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<ATTENDENCESETUPDTO> attendencesetupdtos) {
@@ -106,7 +106,7 @@ public class ATTENDENCESETUPResource {
          return ResponseEntity.status(HttpStatus.OK).body(attendencesetupService.remove(attendencesetup_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.attendencesetupMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"ATTENDENCESETUP" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/attendencesetups/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -125,7 +125,7 @@ public class ATTENDENCESETUPResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.attendencesetupMapping,#attendencesetupdtos})")
     @ApiOperation(value = "createBatch", tags = {"ATTENDENCESETUP" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/attendencesetups/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<ATTENDENCESETUPDTO> attendencesetupdtos) {

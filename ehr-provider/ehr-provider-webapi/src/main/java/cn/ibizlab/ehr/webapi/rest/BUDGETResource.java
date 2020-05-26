@@ -61,7 +61,7 @@ public class BUDGETResource {
         return ResponseEntity.status(HttpStatus.OK).body(budgetService.save(budgetMapping.toDomain(budgetdto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.budgetMapping,#budgetdtos})")
     @ApiOperation(value = "SaveBatch", tags = {"BUDGET" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/budgets/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<BUDGETDTO> budgetdtos) {
@@ -80,7 +80,7 @@ public class BUDGETResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.budgetMapping,#budgetdtos})")
     @ApiOperation(value = "createBatch", tags = {"BUDGET" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/budgets/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<BUDGETDTO> budgetdtos) {
@@ -100,14 +100,14 @@ public class BUDGETResource {
 	@RequestMapping(method = RequestMethod.PUT, value = "/budgets/{budget_id}")
     @Transactional
     public ResponseEntity<BUDGETDTO> update(@PathVariable("budget_id") String budget_id, @RequestBody BUDGETDTO budgetdto) {
-		BUDGET domain = budgetMapping.toDomain(budgetdto);
-        domain.setBudgetid(budget_id);
-		budgetService.update(domain);
-		BUDGETDTO dto = budgetMapping.toDto(domain);
+		BUDGET domain  = budgetMapping.toDomain(budgetdto);
+        domain .setBudgetid(budget_id);
+		budgetService.update(domain );
+		BUDGETDTO dto = budgetMapping.toDto(domain );
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.budgetMapping,#budgetdtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"BUDGET" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/budgets/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<BUDGETDTO> budgetdtos) {
@@ -132,7 +132,7 @@ public class BUDGETResource {
          return ResponseEntity.status(HttpStatus.OK).body(budgetService.remove(budget_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.budgetMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"BUDGET" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/budgets/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {

@@ -58,7 +58,7 @@ public class PCMLOGResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.pcmlogMapping,#pcmlogdtos})")
     @ApiOperation(value = "createBatch", tags = {"PCMLOG" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmlogs/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PCMLOGDTO> pcmlogdtos) {
@@ -71,14 +71,14 @@ public class PCMLOGResource {
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmlogs/{pcmlog_id}")
     @Transactional
     public ResponseEntity<PCMLOGDTO> update(@PathVariable("pcmlog_id") String pcmlog_id, @RequestBody PCMLOGDTO pcmlogdto) {
-		PCMLOG domain = pcmlogMapping.toDomain(pcmlogdto);
-        domain.setPcmlogid(pcmlog_id);
-		pcmlogService.update(domain);
-		PCMLOGDTO dto = pcmlogMapping.toDto(domain);
+		PCMLOG domain  = pcmlogMapping.toDomain(pcmlogdto);
+        domain .setPcmlogid(pcmlog_id);
+		pcmlogService.update(domain );
+		PCMLOGDTO dto = pcmlogMapping.toDto(domain );
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.pcmlogMapping,#pcmlogdtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"PCMLOG" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmlogs/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PCMLOGDTO> pcmlogdtos) {
@@ -94,7 +94,7 @@ public class PCMLOGResource {
          return ResponseEntity.status(HttpStatus.OK).body(pcmlogService.remove(pcmlog_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.pcmlogMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"PCMLOG" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmlogs/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -132,7 +132,7 @@ public class PCMLOGResource {
         return ResponseEntity.status(HttpStatus.OK).body(pcmlogService.save(pcmlogMapping.toDomain(pcmlogdto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.pcmlogMapping,#pcmlogdtos})")
     @ApiOperation(value = "SaveBatch", tags = {"PCMLOG" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmlogs/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PCMLOGDTO> pcmlogdtos) {

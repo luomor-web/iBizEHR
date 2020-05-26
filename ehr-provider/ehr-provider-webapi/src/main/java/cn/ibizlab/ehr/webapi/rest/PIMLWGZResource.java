@@ -58,7 +58,7 @@ public class PIMLWGZResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.pimlwgzMapping,#pimlwgzdtos})")
     @ApiOperation(value = "createBatch", tags = {"PIMLWGZ" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimlwgzs/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PIMLWGZDTO> pimlwgzdtos) {
@@ -83,7 +83,7 @@ public class PIMLWGZResource {
          return ResponseEntity.status(HttpStatus.OK).body(pimlwgzService.remove(pimlwgz_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.pimlwgzMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"PIMLWGZ" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimlwgzs/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -105,7 +105,7 @@ public class PIMLWGZResource {
         return ResponseEntity.status(HttpStatus.OK).body(pimlwgzService.save(pimlwgzMapping.toDomain(pimlwgzdto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.pimlwgzMapping,#pimlwgzdtos})")
     @ApiOperation(value = "SaveBatch", tags = {"PIMLWGZ" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimlwgzs/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PIMLWGZDTO> pimlwgzdtos) {
@@ -118,14 +118,14 @@ public class PIMLWGZResource {
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimlwgzs/{pimlwgz_id}")
     @Transactional
     public ResponseEntity<PIMLWGZDTO> update(@PathVariable("pimlwgz_id") String pimlwgz_id, @RequestBody PIMLWGZDTO pimlwgzdto) {
-		PIMLWGZ domain = pimlwgzMapping.toDomain(pimlwgzdto);
-        domain.setPimlwgzid(pimlwgz_id);
-		pimlwgzService.update(domain);
-		PIMLWGZDTO dto = pimlwgzMapping.toDto(domain);
+		PIMLWGZ domain  = pimlwgzMapping.toDomain(pimlwgzdto);
+        domain .setPimlwgzid(pimlwgz_id);
+		pimlwgzService.update(domain );
+		PIMLWGZDTO dto = pimlwgzMapping.toDto(domain );
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.pimlwgzMapping,#pimlwgzdtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"PIMLWGZ" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimlwgzs/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PIMLWGZDTO> pimlwgzdtos) {

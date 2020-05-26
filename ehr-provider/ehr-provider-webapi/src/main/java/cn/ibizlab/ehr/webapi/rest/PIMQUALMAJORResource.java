@@ -58,7 +58,7 @@ public class PIMQUALMAJORResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.pimqualmajorMapping,#pimqualmajordtos})")
     @ApiOperation(value = "createBatch", tags = {"PIMQUALMAJOR" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimqualmajors/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PIMQUALMAJORDTO> pimqualmajordtos) {
@@ -78,14 +78,14 @@ public class PIMQUALMAJORResource {
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimqualmajors/{pimqualmajor_id}")
     @Transactional
     public ResponseEntity<PIMQUALMAJORDTO> update(@PathVariable("pimqualmajor_id") String pimqualmajor_id, @RequestBody PIMQUALMAJORDTO pimqualmajordto) {
-		PIMQUALMAJOR domain = pimqualmajorMapping.toDomain(pimqualmajordto);
-        domain.setPimqualmajorid(pimqualmajor_id);
-		pimqualmajorService.update(domain);
-		PIMQUALMAJORDTO dto = pimqualmajorMapping.toDto(domain);
+		PIMQUALMAJOR domain  = pimqualmajorMapping.toDomain(pimqualmajordto);
+        domain .setPimqualmajorid(pimqualmajor_id);
+		pimqualmajorService.update(domain );
+		PIMQUALMAJORDTO dto = pimqualmajorMapping.toDto(domain );
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.pimqualmajorMapping,#pimqualmajordtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"PIMQUALMAJOR" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimqualmajors/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PIMQUALMAJORDTO> pimqualmajordtos) {
@@ -101,7 +101,7 @@ public class PIMQUALMAJORResource {
          return ResponseEntity.status(HttpStatus.OK).body(pimqualmajorService.remove(pimqualmajor_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.pimqualmajorMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"PIMQUALMAJOR" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimqualmajors/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -123,7 +123,7 @@ public class PIMQUALMAJORResource {
         return ResponseEntity.status(HttpStatus.OK).body(pimqualmajorService.save(pimqualmajorMapping.toDomain(pimqualmajordto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.pimqualmajorMapping,#pimqualmajordtos})")
     @ApiOperation(value = "SaveBatch", tags = {"PIMQUALMAJOR" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimqualmajors/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PIMQUALMAJORDTO> pimqualmajordtos) {

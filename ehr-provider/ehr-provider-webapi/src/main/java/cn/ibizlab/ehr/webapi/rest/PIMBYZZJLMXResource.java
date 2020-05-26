@@ -53,6 +53,7 @@ public class PIMBYZZJLMXResource {
     @Transactional
     public ResponseEntity<PIMBYZZJLMXDTO> sHTG(@PathVariable("pimbyzzjlmx_id") String pimbyzzjlmx_id, @RequestBody PIMBYZZJLMXDTO pimbyzzjlmxdto) {
         PIMBYZZJLMX pimbyzzjlmx = pimbyzzjlmxMapping.toDomain(pimbyzzjlmxdto);
+        pimbyzzjlmx.setPimbyzzjlmxid(pimbyzzjlmx_id);
         pimbyzzjlmx = pimbyzzjlmxService.sHTG(pimbyzzjlmx);
         pimbyzzjlmxdto = pimbyzzjlmxMapping.toDto(pimbyzzjlmx);
         return ResponseEntity.status(HttpStatus.OK).body(pimbyzzjlmxdto);
@@ -73,6 +74,7 @@ public class PIMBYZZJLMXResource {
     @Transactional
     public ResponseEntity<PIMBYZZJLMXDTO> returnYPZ(@PathVariable("pimbyzzjlmx_id") String pimbyzzjlmx_id, @RequestBody PIMBYZZJLMXDTO pimbyzzjlmxdto) {
         PIMBYZZJLMX pimbyzzjlmx = pimbyzzjlmxMapping.toDomain(pimbyzzjlmxdto);
+        pimbyzzjlmx.setPimbyzzjlmxid(pimbyzzjlmx_id);
         pimbyzzjlmx = pimbyzzjlmxService.returnYPZ(pimbyzzjlmx);
         pimbyzzjlmxdto = pimbyzzjlmxMapping.toDto(pimbyzzjlmx);
         return ResponseEntity.status(HttpStatus.OK).body(pimbyzzjlmxdto);
@@ -84,6 +86,7 @@ public class PIMBYZZJLMXResource {
     @Transactional
     public ResponseEntity<PIMBYZZJLMXDTO> jSPTG(@PathVariable("pimbyzzjlmx_id") String pimbyzzjlmx_id, @RequestBody PIMBYZZJLMXDTO pimbyzzjlmxdto) {
         PIMBYZZJLMX pimbyzzjlmx = pimbyzzjlmxMapping.toDomain(pimbyzzjlmxdto);
+        pimbyzzjlmx.setPimbyzzjlmxid(pimbyzzjlmx_id);
         pimbyzzjlmx = pimbyzzjlmxService.jSPTG(pimbyzzjlmx);
         pimbyzzjlmxdto = pimbyzzjlmxMapping.toDto(pimbyzzjlmx);
         return ResponseEntity.status(HttpStatus.OK).body(pimbyzzjlmxdto);
@@ -95,6 +98,7 @@ public class PIMBYZZJLMXResource {
     @Transactional
     public ResponseEntity<PIMBYZZJLMXDTO> fillPersonInfo(@PathVariable("pimbyzzjlmx_id") String pimbyzzjlmx_id, @RequestBody PIMBYZZJLMXDTO pimbyzzjlmxdto) {
         PIMBYZZJLMX pimbyzzjlmx = pimbyzzjlmxMapping.toDomain(pimbyzzjlmxdto);
+        pimbyzzjlmx.setPimbyzzjlmxid(pimbyzzjlmx_id);
         pimbyzzjlmx = pimbyzzjlmxService.fillPersonInfo(pimbyzzjlmx);
         pimbyzzjlmxdto = pimbyzzjlmxMapping.toDto(pimbyzzjlmx);
         return ResponseEntity.status(HttpStatus.OK).body(pimbyzzjlmxdto);
@@ -113,6 +117,7 @@ public class PIMBYZZJLMXResource {
     @Transactional
     public ResponseEntity<PIMBYZZJLMXDTO> jSHTG(@PathVariable("pimbyzzjlmx_id") String pimbyzzjlmx_id, @RequestBody PIMBYZZJLMXDTO pimbyzzjlmxdto) {
         PIMBYZZJLMX pimbyzzjlmx = pimbyzzjlmxMapping.toDomain(pimbyzzjlmxdto);
+        pimbyzzjlmx.setPimbyzzjlmxid(pimbyzzjlmx_id);
         pimbyzzjlmx = pimbyzzjlmxService.jSHTG(pimbyzzjlmx);
         pimbyzzjlmxdto = pimbyzzjlmxMapping.toDto(pimbyzzjlmx);
         return ResponseEntity.status(HttpStatus.OK).body(pimbyzzjlmxdto);
@@ -124,6 +129,7 @@ public class PIMBYZZJLMXResource {
     @Transactional
     public ResponseEntity<PIMBYZZJLMXDTO> jSHBTG(@PathVariable("pimbyzzjlmx_id") String pimbyzzjlmx_id, @RequestBody PIMBYZZJLMXDTO pimbyzzjlmxdto) {
         PIMBYZZJLMX pimbyzzjlmx = pimbyzzjlmxMapping.toDomain(pimbyzzjlmxdto);
+        pimbyzzjlmx.setPimbyzzjlmxid(pimbyzzjlmx_id);
         pimbyzzjlmx = pimbyzzjlmxService.jSHBTG(pimbyzzjlmx);
         pimbyzzjlmxdto = pimbyzzjlmxMapping.toDto(pimbyzzjlmx);
         return ResponseEntity.status(HttpStatus.OK).body(pimbyzzjlmxdto);
@@ -135,6 +141,7 @@ public class PIMBYZZJLMXResource {
     @Transactional
     public ResponseEntity<PIMBYZZJLMXDTO> ensure(@PathVariable("pimbyzzjlmx_id") String pimbyzzjlmx_id, @RequestBody PIMBYZZJLMXDTO pimbyzzjlmxdto) {
         PIMBYZZJLMX pimbyzzjlmx = pimbyzzjlmxMapping.toDomain(pimbyzzjlmxdto);
+        pimbyzzjlmx.setPimbyzzjlmxid(pimbyzzjlmx_id);
         pimbyzzjlmx = pimbyzzjlmxService.ensure(pimbyzzjlmx);
         pimbyzzjlmxdto = pimbyzzjlmxMapping.toDto(pimbyzzjlmx);
         return ResponseEntity.status(HttpStatus.OK).body(pimbyzzjlmxdto);
@@ -146,6 +153,7 @@ public class PIMBYZZJLMXResource {
     @Transactional
     public ResponseEntity<PIMBYZZJLMXDTO> sHBTG(@PathVariable("pimbyzzjlmx_id") String pimbyzzjlmx_id, @RequestBody PIMBYZZJLMXDTO pimbyzzjlmxdto) {
         PIMBYZZJLMX pimbyzzjlmx = pimbyzzjlmxMapping.toDomain(pimbyzzjlmxdto);
+        pimbyzzjlmx.setPimbyzzjlmxid(pimbyzzjlmx_id);
         pimbyzzjlmx = pimbyzzjlmxService.sHBTG(pimbyzzjlmx);
         pimbyzzjlmxdto = pimbyzzjlmxMapping.toDto(pimbyzzjlmx);
         return ResponseEntity.status(HttpStatus.OK).body(pimbyzzjlmxdto);
@@ -159,7 +167,7 @@ public class PIMBYZZJLMXResource {
          return ResponseEntity.status(HttpStatus.OK).body(pimbyzzjlmxService.remove(pimbyzzjlmx_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.pimbyzzjlmxMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"PIMBYZZJLMX" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimbyzzjlmxes/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -173,6 +181,7 @@ public class PIMBYZZJLMXResource {
     @Transactional
     public ResponseEntity<PIMBYZZJLMXDTO> gSDSZSP(@PathVariable("pimbyzzjlmx_id") String pimbyzzjlmx_id, @RequestBody PIMBYZZJLMXDTO pimbyzzjlmxdto) {
         PIMBYZZJLMX pimbyzzjlmx = pimbyzzjlmxMapping.toDomain(pimbyzzjlmxdto);
+        pimbyzzjlmx.setPimbyzzjlmxid(pimbyzzjlmx_id);
         pimbyzzjlmx = pimbyzzjlmxService.gSDSZSP(pimbyzzjlmx);
         pimbyzzjlmxdto = pimbyzzjlmxMapping.toDto(pimbyzzjlmx);
         return ResponseEntity.status(HttpStatus.OK).body(pimbyzzjlmxdto);
@@ -184,6 +193,7 @@ public class PIMBYZZJLMXResource {
     @Transactional
     public ResponseEntity<PIMBYZZJLMXDTO> zZCZ(@PathVariable("pimbyzzjlmx_id") String pimbyzzjlmx_id, @RequestBody PIMBYZZJLMXDTO pimbyzzjlmxdto) {
         PIMBYZZJLMX pimbyzzjlmx = pimbyzzjlmxMapping.toDomain(pimbyzzjlmxdto);
+        pimbyzzjlmx.setPimbyzzjlmxid(pimbyzzjlmx_id);
         pimbyzzjlmx = pimbyzzjlmxService.zZCZ(pimbyzzjlmx);
         pimbyzzjlmxdto = pimbyzzjlmxMapping.toDto(pimbyzzjlmx);
         return ResponseEntity.status(HttpStatus.OK).body(pimbyzzjlmxdto);
@@ -195,6 +205,7 @@ public class PIMBYZZJLMXResource {
     @Transactional
     public ResponseEntity<PIMBYZZJLMXDTO> dSB(@PathVariable("pimbyzzjlmx_id") String pimbyzzjlmx_id, @RequestBody PIMBYZZJLMXDTO pimbyzzjlmxdto) {
         PIMBYZZJLMX pimbyzzjlmx = pimbyzzjlmxMapping.toDomain(pimbyzzjlmxdto);
+        pimbyzzjlmx.setPimbyzzjlmxid(pimbyzzjlmx_id);
         pimbyzzjlmx = pimbyzzjlmxService.dSB(pimbyzzjlmx);
         pimbyzzjlmxdto = pimbyzzjlmxMapping.toDto(pimbyzzjlmx);
         return ResponseEntity.status(HttpStatus.OK).body(pimbyzzjlmxdto);
@@ -205,14 +216,14 @@ public class PIMBYZZJLMXResource {
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimbyzzjlmxes/{pimbyzzjlmx_id}")
     @Transactional
     public ResponseEntity<PIMBYZZJLMXDTO> update(@PathVariable("pimbyzzjlmx_id") String pimbyzzjlmx_id, @RequestBody PIMBYZZJLMXDTO pimbyzzjlmxdto) {
-		PIMBYZZJLMX domain = pimbyzzjlmxMapping.toDomain(pimbyzzjlmxdto);
-        domain.setPimbyzzjlmxid(pimbyzzjlmx_id);
-		pimbyzzjlmxService.update(domain);
-		PIMBYZZJLMXDTO dto = pimbyzzjlmxMapping.toDto(domain);
+		PIMBYZZJLMX domain  = pimbyzzjlmxMapping.toDomain(pimbyzzjlmxdto);
+        domain .setPimbyzzjlmxid(pimbyzzjlmx_id);
+		pimbyzzjlmxService.update(domain );
+		PIMBYZZJLMXDTO dto = pimbyzzjlmxMapping.toDto(domain );
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.pimbyzzjlmxMapping,#pimbyzzjlmxdtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"PIMBYZZJLMX" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimbyzzjlmxes/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PIMBYZZJLMXDTO> pimbyzzjlmxdtos) {
@@ -231,7 +242,7 @@ public class PIMBYZZJLMXResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.pimbyzzjlmxMapping,#pimbyzzjlmxdtos})")
     @ApiOperation(value = "createBatch", tags = {"PIMBYZZJLMX" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimbyzzjlmxes/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PIMBYZZJLMXDTO> pimbyzzjlmxdtos) {
@@ -245,6 +256,7 @@ public class PIMBYZZJLMXResource {
     @Transactional
     public ResponseEntity<PIMBYZZJLMXDTO> jZBSHQR(@PathVariable("pimbyzzjlmx_id") String pimbyzzjlmx_id, @RequestBody PIMBYZZJLMXDTO pimbyzzjlmxdto) {
         PIMBYZZJLMX pimbyzzjlmx = pimbyzzjlmxMapping.toDomain(pimbyzzjlmxdto);
+        pimbyzzjlmx.setPimbyzzjlmxid(pimbyzzjlmx_id);
         pimbyzzjlmx = pimbyzzjlmxService.jZBSHQR(pimbyzzjlmx);
         pimbyzzjlmxdto = pimbyzzjlmxMapping.toDto(pimbyzzjlmx);
         return ResponseEntity.status(HttpStatus.OK).body(pimbyzzjlmxdto);
@@ -256,6 +268,7 @@ public class PIMBYZZJLMXResource {
     @Transactional
     public ResponseEntity<PIMBYZZJLMXDTO> gSDSZSPBTG(@PathVariable("pimbyzzjlmx_id") String pimbyzzjlmx_id, @RequestBody PIMBYZZJLMXDTO pimbyzzjlmxdto) {
         PIMBYZZJLMX pimbyzzjlmx = pimbyzzjlmxMapping.toDomain(pimbyzzjlmxdto);
+        pimbyzzjlmx.setPimbyzzjlmxid(pimbyzzjlmx_id);
         pimbyzzjlmx = pimbyzzjlmxService.gSDSZSPBTG(pimbyzzjlmx);
         pimbyzzjlmxdto = pimbyzzjlmxMapping.toDto(pimbyzzjlmx);
         return ResponseEntity.status(HttpStatus.OK).body(pimbyzzjlmxdto);
@@ -267,6 +280,7 @@ public class PIMBYZZJLMXResource {
     @Transactional
     public ResponseEntity<PIMBYZZJLMXDTO> gSCSBTG(@PathVariable("pimbyzzjlmx_id") String pimbyzzjlmx_id, @RequestBody PIMBYZZJLMXDTO pimbyzzjlmxdto) {
         PIMBYZZJLMX pimbyzzjlmx = pimbyzzjlmxMapping.toDomain(pimbyzzjlmxdto);
+        pimbyzzjlmx.setPimbyzzjlmxid(pimbyzzjlmx_id);
         pimbyzzjlmx = pimbyzzjlmxService.gSCSBTG(pimbyzzjlmx);
         pimbyzzjlmxdto = pimbyzzjlmxMapping.toDto(pimbyzzjlmx);
         return ResponseEntity.status(HttpStatus.OK).body(pimbyzzjlmxdto);
@@ -278,6 +292,7 @@ public class PIMBYZZJLMXResource {
     @Transactional
     public ResponseEntity<PIMBYZZJLMXDTO> jSPBTG(@PathVariable("pimbyzzjlmx_id") String pimbyzzjlmx_id, @RequestBody PIMBYZZJLMXDTO pimbyzzjlmxdto) {
         PIMBYZZJLMX pimbyzzjlmx = pimbyzzjlmxMapping.toDomain(pimbyzzjlmxdto);
+        pimbyzzjlmx.setPimbyzzjlmxid(pimbyzzjlmx_id);
         pimbyzzjlmx = pimbyzzjlmxService.jSPBTG(pimbyzzjlmx);
         pimbyzzjlmxdto = pimbyzzjlmxMapping.toDto(pimbyzzjlmx);
         return ResponseEntity.status(HttpStatus.OK).body(pimbyzzjlmxdto);
@@ -290,7 +305,7 @@ public class PIMBYZZJLMXResource {
         return ResponseEntity.status(HttpStatus.OK).body(pimbyzzjlmxService.save(pimbyzzjlmxMapping.toDomain(pimbyzzjlmxdto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.pimbyzzjlmxMapping,#pimbyzzjlmxdtos})")
     @ApiOperation(value = "SaveBatch", tags = {"PIMBYZZJLMX" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimbyzzjlmxes/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PIMBYZZJLMXDTO> pimbyzzjlmxdtos) {
@@ -304,6 +319,7 @@ public class PIMBYZZJLMXResource {
     @Transactional
     public ResponseEntity<PIMBYZZJLMXDTO> gSCS(@PathVariable("pimbyzzjlmx_id") String pimbyzzjlmx_id, @RequestBody PIMBYZZJLMXDTO pimbyzzjlmxdto) {
         PIMBYZZJLMX pimbyzzjlmx = pimbyzzjlmxMapping.toDomain(pimbyzzjlmxdto);
+        pimbyzzjlmx.setPimbyzzjlmxid(pimbyzzjlmx_id);
         pimbyzzjlmx = pimbyzzjlmxService.gSCS(pimbyzzjlmx);
         pimbyzzjlmxdto = pimbyzzjlmxMapping.toDto(pimbyzzjlmx);
         return ResponseEntity.status(HttpStatus.OK).body(pimbyzzjlmxdto);
@@ -322,6 +338,7 @@ public class PIMBYZZJLMXResource {
     @Transactional
     public ResponseEntity<PIMBYZZJLMXDTO> updatePeopleNum(@PathVariable("pimbyzzjlmx_id") String pimbyzzjlmx_id, @RequestBody PIMBYZZJLMXDTO pimbyzzjlmxdto) {
         PIMBYZZJLMX pimbyzzjlmx = pimbyzzjlmxMapping.toDomain(pimbyzzjlmxdto);
+        pimbyzzjlmx.setPimbyzzjlmxid(pimbyzzjlmx_id);
         pimbyzzjlmx = pimbyzzjlmxService.updatePeopleNum(pimbyzzjlmx);
         pimbyzzjlmxdto = pimbyzzjlmxMapping.toDto(pimbyzzjlmx);
         return ResponseEntity.status(HttpStatus.OK).body(pimbyzzjlmxdto);
@@ -333,6 +350,7 @@ public class PIMBYZZJLMXResource {
     @Transactional
     public ResponseEntity<PIMBYZZJLMXDTO> jZBSPQR(@PathVariable("pimbyzzjlmx_id") String pimbyzzjlmx_id, @RequestBody PIMBYZZJLMXDTO pimbyzzjlmxdto) {
         PIMBYZZJLMX pimbyzzjlmx = pimbyzzjlmxMapping.toDomain(pimbyzzjlmxdto);
+        pimbyzzjlmx.setPimbyzzjlmxid(pimbyzzjlmx_id);
         pimbyzzjlmx = pimbyzzjlmxService.jZBSPQR(pimbyzzjlmx);
         pimbyzzjlmxdto = pimbyzzjlmxMapping.toDto(pimbyzzjlmx);
         return ResponseEntity.status(HttpStatus.OK).body(pimbyzzjlmxdto);

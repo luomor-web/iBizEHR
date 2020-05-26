@@ -62,7 +62,7 @@ public class SOCSELFAREBASEMXResource {
          return ResponseEntity.status(HttpStatus.OK).body(socselfarebasemxService.remove(socselfarebasemx_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.socselfarebasemxMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"SOCSELFAREBASEMX" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/socselfarebasemxes/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -97,7 +97,7 @@ public class SOCSELFAREBASEMXResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.socselfarebasemxMapping,#socselfarebasemxdtos})")
     @ApiOperation(value = "createBatch", tags = {"SOCSELFAREBASEMX" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/socselfarebasemxes/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<SOCSELFAREBASEMXDTO> socselfarebasemxdtos) {
@@ -112,7 +112,7 @@ public class SOCSELFAREBASEMXResource {
         return ResponseEntity.status(HttpStatus.OK).body(socselfarebasemxService.save(socselfarebasemxMapping.toDomain(socselfarebasemxdto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.socselfarebasemxMapping,#socselfarebasemxdtos})")
     @ApiOperation(value = "SaveBatch", tags = {"SOCSELFAREBASEMX" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/socselfarebasemxes/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<SOCSELFAREBASEMXDTO> socselfarebasemxdtos) {
@@ -125,14 +125,14 @@ public class SOCSELFAREBASEMXResource {
 	@RequestMapping(method = RequestMethod.PUT, value = "/socselfarebasemxes/{socselfarebasemx_id}")
     @Transactional
     public ResponseEntity<SOCSELFAREBASEMXDTO> update(@PathVariable("socselfarebasemx_id") String socselfarebasemx_id, @RequestBody SOCSELFAREBASEMXDTO socselfarebasemxdto) {
-		SOCSELFAREBASEMX domain = socselfarebasemxMapping.toDomain(socselfarebasemxdto);
-        domain.setSocselfarebasemxid(socselfarebasemx_id);
-		socselfarebasemxService.update(domain);
-		SOCSELFAREBASEMXDTO dto = socselfarebasemxMapping.toDto(domain);
+		SOCSELFAREBASEMX domain  = socselfarebasemxMapping.toDomain(socselfarebasemxdto);
+        domain .setSocselfarebasemxid(socselfarebasemx_id);
+		socselfarebasemxService.update(domain );
+		SOCSELFAREBASEMXDTO dto = socselfarebasemxMapping.toDto(domain );
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.socselfarebasemxMapping,#socselfarebasemxdtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"SOCSELFAREBASEMX" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/socselfarebasemxes/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<SOCSELFAREBASEMXDTO> socselfarebasemxdtos) {

@@ -52,14 +52,14 @@ public class VACLEACETYPEResource {
 	@RequestMapping(method = RequestMethod.PUT, value = "/vacleacetypes/{vacleacetype_id}")
     @Transactional
     public ResponseEntity<VACLEACETYPEDTO> update(@PathVariable("vacleacetype_id") String vacleacetype_id, @RequestBody VACLEACETYPEDTO vacleacetypedto) {
-		VACLEACETYPE domain = vacleacetypeMapping.toDomain(vacleacetypedto);
-        domain.setVacleacetypeid(vacleacetype_id);
-		vacleacetypeService.update(domain);
-		VACLEACETYPEDTO dto = vacleacetypeMapping.toDto(domain);
+		VACLEACETYPE domain  = vacleacetypeMapping.toDomain(vacleacetypedto);
+        domain .setVacleacetypeid(vacleacetype_id);
+		vacleacetypeService.update(domain );
+		VACLEACETYPEDTO dto = vacleacetypeMapping.toDto(domain );
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.vacleacetypeMapping,#vacleacetypedtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"VACLEACETYPE" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/vacleacetypes/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<VACLEACETYPEDTO> vacleacetypedtos) {
@@ -75,7 +75,7 @@ public class VACLEACETYPEResource {
          return ResponseEntity.status(HttpStatus.OK).body(vacleacetypeService.remove(vacleacetype_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.vacleacetypeMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"VACLEACETYPE" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/vacleacetypes/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -94,7 +94,7 @@ public class VACLEACETYPEResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.vacleacetypeMapping,#vacleacetypedtos})")
     @ApiOperation(value = "createBatch", tags = {"VACLEACETYPE" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacleacetypes/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<VACLEACETYPEDTO> vacleacetypedtos) {
@@ -116,7 +116,7 @@ public class VACLEACETYPEResource {
         return ResponseEntity.status(HttpStatus.OK).body(vacleacetypeService.save(vacleacetypeMapping.toDomain(vacleacetypedto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.vacleacetypeMapping,#vacleacetypedtos})")
     @ApiOperation(value = "SaveBatch", tags = {"VACLEACETYPE" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacleacetypes/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<VACLEACETYPEDTO> vacleacetypedtos) {

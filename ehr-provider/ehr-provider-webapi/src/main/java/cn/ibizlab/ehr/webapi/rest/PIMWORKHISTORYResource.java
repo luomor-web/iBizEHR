@@ -67,7 +67,7 @@ public class PIMWORKHISTORYResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.pimworkhistoryMapping,#pimworkhistorydtos})")
     @ApiOperation(value = "createBatch", tags = {"PIMWORKHISTORY" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimworkhistories/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PIMWORKHISTORYDTO> pimworkhistorydtos) {
@@ -82,7 +82,7 @@ public class PIMWORKHISTORYResource {
         return ResponseEntity.status(HttpStatus.OK).body(pimworkhistoryService.save(pimworkhistoryMapping.toDomain(pimworkhistorydto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.pimworkhistoryMapping,#pimworkhistorydtos})")
     @ApiOperation(value = "SaveBatch", tags = {"PIMWORKHISTORY" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimworkhistories/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PIMWORKHISTORYDTO> pimworkhistorydtos) {
@@ -95,14 +95,14 @@ public class PIMWORKHISTORYResource {
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimworkhistories/{pimworkhistory_id}")
     @Transactional
     public ResponseEntity<PIMWORKHISTORYDTO> update(@PathVariable("pimworkhistory_id") String pimworkhistory_id, @RequestBody PIMWORKHISTORYDTO pimworkhistorydto) {
-		PIMWORKHISTORY domain = pimworkhistoryMapping.toDomain(pimworkhistorydto);
-        domain.setPimworkhistoryid(pimworkhistory_id);
-		pimworkhistoryService.update(domain);
-		PIMWORKHISTORYDTO dto = pimworkhistoryMapping.toDto(domain);
+		PIMWORKHISTORY domain  = pimworkhistoryMapping.toDomain(pimworkhistorydto);
+        domain .setPimworkhistoryid(pimworkhistory_id);
+		pimworkhistoryService.update(domain );
+		PIMWORKHISTORYDTO dto = pimworkhistoryMapping.toDto(domain );
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.pimworkhistoryMapping,#pimworkhistorydtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"PIMWORKHISTORY" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimworkhistories/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PIMWORKHISTORYDTO> pimworkhistorydtos) {
@@ -125,7 +125,7 @@ public class PIMWORKHISTORYResource {
          return ResponseEntity.status(HttpStatus.OK).body(pimworkhistoryService.remove(pimworkhistory_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.pimworkhistoryMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"PIMWORKHISTORY" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimworkhistories/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -308,7 +308,7 @@ public class PIMWORKHISTORYResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.pimworkhistoryMapping,#pimworkhistorydtos})")
     @ApiOperation(value = "createBatchByPIMPERSON", tags = {"PIMWORKHISTORY" },  notes = "createBatchByPIMPERSON")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimworkhistories/batch")
     public ResponseEntity<Boolean> createBatchByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody List<PIMWORKHISTORYDTO> pimworkhistorydtos) {
@@ -329,7 +329,7 @@ public class PIMWORKHISTORYResource {
         return ResponseEntity.status(HttpStatus.OK).body(pimworkhistoryService.save(domain));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.pimworkhistoryMapping,#pimworkhistorydtos})")
     @ApiOperation(value = "SaveBatchByPIMPERSON", tags = {"PIMWORKHISTORY" },  notes = "SaveBatchByPIMPERSON")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimworkhistories/savebatch")
     public ResponseEntity<Boolean> saveBatchByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody List<PIMWORKHISTORYDTO> pimworkhistorydtos) {
@@ -354,7 +354,7 @@ public class PIMWORKHISTORYResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.pimworkhistoryMapping,#pimworkhistorydtos})")
     @ApiOperation(value = "UpdateBatchByPIMPERSON", tags = {"PIMWORKHISTORY" },  notes = "UpdateBatchByPIMPERSON")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimpeople/{pimperson_id}/pimworkhistories/batch")
     public ResponseEntity<Boolean> updateBatchByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody List<PIMWORKHISTORYDTO> pimworkhistorydtos) {
@@ -381,7 +381,7 @@ public class PIMWORKHISTORYResource {
 		return ResponseEntity.status(HttpStatus.OK).body(pimworkhistoryService.remove(pimworkhistory_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.pimworkhistoryMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatchByPIMPERSON", tags = {"PIMWORKHISTORY" },  notes = "RemoveBatchByPIMPERSON")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimpeople/{pimperson_id}/pimworkhistories/batch")
     public ResponseEntity<Boolean> removeBatchByPIMPERSON(@RequestBody List<String> ids) {

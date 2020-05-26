@@ -62,7 +62,7 @@ public class PIMPROVINCEResource {
          return ResponseEntity.status(HttpStatus.OK).body(pimprovinceService.remove(pimprovince_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.pimprovinceMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"PIMPROVINCE" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimprovinces/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -90,7 +90,7 @@ public class PIMPROVINCEResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.pimprovinceMapping,#pimprovincedtos})")
     @ApiOperation(value = "createBatch", tags = {"PIMPROVINCE" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimprovinces/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PIMPROVINCEDTO> pimprovincedtos) {
@@ -110,14 +110,14 @@ public class PIMPROVINCEResource {
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimprovinces/{pimprovince_id}")
     @Transactional
     public ResponseEntity<PIMPROVINCEDTO> update(@PathVariable("pimprovince_id") String pimprovince_id, @RequestBody PIMPROVINCEDTO pimprovincedto) {
-		PIMPROVINCE domain = pimprovinceMapping.toDomain(pimprovincedto);
-        domain.setPimprovinceid(pimprovince_id);
-		pimprovinceService.update(domain);
-		PIMPROVINCEDTO dto = pimprovinceMapping.toDto(domain);
+		PIMPROVINCE domain  = pimprovinceMapping.toDomain(pimprovincedto);
+        domain .setPimprovinceid(pimprovince_id);
+		pimprovinceService.update(domain );
+		PIMPROVINCEDTO dto = pimprovinceMapping.toDto(domain );
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.pimprovinceMapping,#pimprovincedtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"PIMPROVINCE" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimprovinces/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PIMPROVINCEDTO> pimprovincedtos) {
@@ -132,7 +132,7 @@ public class PIMPROVINCEResource {
         return ResponseEntity.status(HttpStatus.OK).body(pimprovinceService.save(pimprovinceMapping.toDomain(pimprovincedto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.pimprovinceMapping,#pimprovincedtos})")
     @ApiOperation(value = "SaveBatch", tags = {"PIMPROVINCE" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimprovinces/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PIMPROVINCEDTO> pimprovincedtos) {

@@ -52,14 +52,14 @@ public class PIMEXAMINATIONRESULTSResource {
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimexaminationresults/{pimexaminationresults_id}")
     @Transactional
     public ResponseEntity<PIMEXAMINATIONRESULTSDTO> update(@PathVariable("pimexaminationresults_id") String pimexaminationresults_id, @RequestBody PIMEXAMINATIONRESULTSDTO pimexaminationresultsdto) {
-		PIMEXAMINATIONRESULTS domain = pimexaminationresultsMapping.toDomain(pimexaminationresultsdto);
-        domain.setPimexaminationresultsid(pimexaminationresults_id);
-		pimexaminationresultsService.update(domain);
-		PIMEXAMINATIONRESULTSDTO dto = pimexaminationresultsMapping.toDto(domain);
+		PIMEXAMINATIONRESULTS domain  = pimexaminationresultsMapping.toDomain(pimexaminationresultsdto);
+        domain .setPimexaminationresultsid(pimexaminationresults_id);
+		pimexaminationresultsService.update(domain );
+		PIMEXAMINATIONRESULTSDTO dto = pimexaminationresultsMapping.toDto(domain );
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.pimexaminationresultsMapping,#pimexaminationresultsdtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"PIMEXAMINATIONRESULTS" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimexaminationresults/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PIMEXAMINATIONRESULTSDTO> pimexaminationresultsdtos) {
@@ -74,7 +74,7 @@ public class PIMEXAMINATIONRESULTSResource {
         return ResponseEntity.status(HttpStatus.OK).body(pimexaminationresultsService.save(pimexaminationresultsMapping.toDomain(pimexaminationresultsdto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.pimexaminationresultsMapping,#pimexaminationresultsdtos})")
     @ApiOperation(value = "SaveBatch", tags = {"PIMEXAMINATIONRESULTS" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimexaminationresults/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PIMEXAMINATIONRESULTSDTO> pimexaminationresultsdtos) {
@@ -100,7 +100,7 @@ public class PIMEXAMINATIONRESULTSResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.pimexaminationresultsMapping,#pimexaminationresultsdtos})")
     @ApiOperation(value = "createBatch", tags = {"PIMEXAMINATIONRESULTS" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimexaminationresults/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PIMEXAMINATIONRESULTSDTO> pimexaminationresultsdtos) {
@@ -116,7 +116,7 @@ public class PIMEXAMINATIONRESULTSResource {
          return ResponseEntity.status(HttpStatus.OK).body(pimexaminationresultsService.remove(pimexaminationresults_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.pimexaminationresultsMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"PIMEXAMINATIONRESULTS" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimexaminationresults/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {

@@ -69,7 +69,7 @@ public class PCMJXSZZKHJGJLResource {
          return ResponseEntity.status(HttpStatus.OK).body(pcmjxszzkhjgjlService.remove(pcmjxszzkhjgjl_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.pcmjxszzkhjgjlMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"PCMJXSZZKHJGJL" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmjxszzkhjgjls/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -97,7 +97,7 @@ public class PCMJXSZZKHJGJLResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.pcmjxszzkhjgjlMapping,#pcmjxszzkhjgjldtos})")
     @ApiOperation(value = "createBatch", tags = {"PCMJXSZZKHJGJL" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmjxszzkhjgjls/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PCMJXSZZKHJGJLDTO> pcmjxszzkhjgjldtos) {
@@ -110,14 +110,14 @@ public class PCMJXSZZKHJGJLResource {
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmjxszzkhjgjls/{pcmjxszzkhjgjl_id}")
     @Transactional
     public ResponseEntity<PCMJXSZZKHJGJLDTO> update(@PathVariable("pcmjxszzkhjgjl_id") String pcmjxszzkhjgjl_id, @RequestBody PCMJXSZZKHJGJLDTO pcmjxszzkhjgjldto) {
-		PCMJXSZZKHJGJL domain = pcmjxszzkhjgjlMapping.toDomain(pcmjxszzkhjgjldto);
-        domain.setPcmjxszzkhjgjlid(pcmjxszzkhjgjl_id);
-		pcmjxszzkhjgjlService.update(domain);
-		PCMJXSZZKHJGJLDTO dto = pcmjxszzkhjgjlMapping.toDto(domain);
+		PCMJXSZZKHJGJL domain  = pcmjxszzkhjgjlMapping.toDomain(pcmjxszzkhjgjldto);
+        domain .setPcmjxszzkhjgjlid(pcmjxszzkhjgjl_id);
+		pcmjxszzkhjgjlService.update(domain );
+		PCMJXSZZKHJGJLDTO dto = pcmjxszzkhjgjlMapping.toDto(domain );
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.pcmjxszzkhjgjlMapping,#pcmjxszzkhjgjldtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"PCMJXSZZKHJGJL" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmjxszzkhjgjls/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PCMJXSZZKHJGJLDTO> pcmjxszzkhjgjldtos) {
@@ -132,7 +132,7 @@ public class PCMJXSZZKHJGJLResource {
         return ResponseEntity.status(HttpStatus.OK).body(pcmjxszzkhjgjlService.save(pcmjxszzkhjgjlMapping.toDomain(pcmjxszzkhjgjldto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.pcmjxszzkhjgjlMapping,#pcmjxszzkhjgjldtos})")
     @ApiOperation(value = "SaveBatch", tags = {"PCMJXSZZKHJGJL" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmjxszzkhjgjls/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PCMJXSZZKHJGJLDTO> pcmjxszzkhjgjldtos) {

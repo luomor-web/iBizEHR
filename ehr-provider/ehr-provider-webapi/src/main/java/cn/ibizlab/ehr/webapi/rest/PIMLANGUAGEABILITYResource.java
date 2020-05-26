@@ -69,6 +69,7 @@ public class PIMLANGUAGEABILITYResource {
     @Transactional
     public ResponseEntity<PIMLANGUAGEABILITYDTO> custRemove(@PathVariable("pimlanguageability_id") String pimlanguageability_id, @RequestBody PIMLANGUAGEABILITYDTO pimlanguageabilitydto) {
         PIMLANGUAGEABILITY pimlanguageability = pimlanguageabilityMapping.toDomain(pimlanguageabilitydto);
+        pimlanguageability.setPimlanguageabilityid(pimlanguageability_id);
         pimlanguageability = pimlanguageabilityService.custRemove(pimlanguageability);
         pimlanguageabilitydto = pimlanguageabilityMapping.toDto(pimlanguageability);
         return ResponseEntity.status(HttpStatus.OK).body(pimlanguageabilitydto);
@@ -81,7 +82,7 @@ public class PIMLANGUAGEABILITYResource {
         return ResponseEntity.status(HttpStatus.OK).body(pimlanguageabilityService.save(pimlanguageabilityMapping.toDomain(pimlanguageabilitydto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.pimlanguageabilityMapping,#pimlanguageabilitydtos})")
     @ApiOperation(value = "SaveBatch", tags = {"PIMLANGUAGEABILITY" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimlanguageabilities/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PIMLANGUAGEABILITYDTO> pimlanguageabilitydtos) {
@@ -104,7 +105,7 @@ public class PIMLANGUAGEABILITYResource {
          return ResponseEntity.status(HttpStatus.OK).body(pimlanguageabilityService.remove(pimlanguageability_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.pimlanguageabilityMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"PIMLANGUAGEABILITY" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimlanguageabilities/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -117,14 +118,14 @@ public class PIMLANGUAGEABILITYResource {
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimlanguageabilities/{pimlanguageability_id}")
     @Transactional
     public ResponseEntity<PIMLANGUAGEABILITYDTO> update(@PathVariable("pimlanguageability_id") String pimlanguageability_id, @RequestBody PIMLANGUAGEABILITYDTO pimlanguageabilitydto) {
-		PIMLANGUAGEABILITY domain = pimlanguageabilityMapping.toDomain(pimlanguageabilitydto);
-        domain.setPimlanguageabilityid(pimlanguageability_id);
-		pimlanguageabilityService.update(domain);
-		PIMLANGUAGEABILITYDTO dto = pimlanguageabilityMapping.toDto(domain);
+		PIMLANGUAGEABILITY domain  = pimlanguageabilityMapping.toDomain(pimlanguageabilitydto);
+        domain .setPimlanguageabilityid(pimlanguageability_id);
+		pimlanguageabilityService.update(domain );
+		PIMLANGUAGEABILITYDTO dto = pimlanguageabilityMapping.toDto(domain );
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.pimlanguageabilityMapping,#pimlanguageabilitydtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"PIMLANGUAGEABILITY" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimlanguageabilities/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PIMLANGUAGEABILITYDTO> pimlanguageabilitydtos) {
@@ -143,7 +144,7 @@ public class PIMLANGUAGEABILITYResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.pimlanguageabilityMapping,#pimlanguageabilitydtos})")
     @ApiOperation(value = "createBatch", tags = {"PIMLANGUAGEABILITY" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimlanguageabilities/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PIMLANGUAGEABILITYDTO> pimlanguageabilitydtos) {
@@ -295,7 +296,7 @@ public class PIMLANGUAGEABILITYResource {
         return ResponseEntity.status(HttpStatus.OK).body(pimlanguageabilityService.save(domain));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.pimlanguageabilityMapping,#pimlanguageabilitydtos})")
     @ApiOperation(value = "SaveBatchByPIMPERSON", tags = {"PIMLANGUAGEABILITY" },  notes = "SaveBatchByPIMPERSON")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimlanguageabilities/savebatch")
     public ResponseEntity<Boolean> saveBatchByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody List<PIMLANGUAGEABILITYDTO> pimlanguageabilitydtos) {
@@ -322,7 +323,7 @@ public class PIMLANGUAGEABILITYResource {
 		return ResponseEntity.status(HttpStatus.OK).body(pimlanguageabilityService.remove(pimlanguageability_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.pimlanguageabilityMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatchByPIMPERSON", tags = {"PIMLANGUAGEABILITY" },  notes = "RemoveBatchByPIMPERSON")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimpeople/{pimperson_id}/pimlanguageabilities/batch")
     public ResponseEntity<Boolean> removeBatchByPIMPERSON(@RequestBody List<String> ids) {
@@ -343,7 +344,7 @@ public class PIMLANGUAGEABILITYResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.pimlanguageabilityMapping,#pimlanguageabilitydtos})")
     @ApiOperation(value = "UpdateBatchByPIMPERSON", tags = {"PIMLANGUAGEABILITY" },  notes = "UpdateBatchByPIMPERSON")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimpeople/{pimperson_id}/pimlanguageabilities/batch")
     public ResponseEntity<Boolean> updateBatchByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody List<PIMLANGUAGEABILITYDTO> pimlanguageabilitydtos) {
@@ -367,7 +368,7 @@ public class PIMLANGUAGEABILITYResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.pimlanguageabilityMapping,#pimlanguageabilitydtos})")
     @ApiOperation(value = "createBatchByPIMPERSON", tags = {"PIMLANGUAGEABILITY" },  notes = "createBatchByPIMPERSON")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimlanguageabilities/batch")
     public ResponseEntity<Boolean> createBatchByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody List<PIMLANGUAGEABILITYDTO> pimlanguageabilitydtos) {

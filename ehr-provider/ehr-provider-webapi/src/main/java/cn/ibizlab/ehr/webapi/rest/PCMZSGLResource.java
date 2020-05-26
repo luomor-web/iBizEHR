@@ -55,7 +55,7 @@ public class PCMZSGLResource {
          return ResponseEntity.status(HttpStatus.OK).body(pcmzsglService.remove(pcmzsgl_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.pcmzsglMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"PCMZSGL" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmzsgls/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -91,14 +91,14 @@ public class PCMZSGLResource {
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmzsgls/{pcmzsgl_id}")
     @Transactional
     public ResponseEntity<PCMZSGLDTO> update(@PathVariable("pcmzsgl_id") String pcmzsgl_id, @RequestBody PCMZSGLDTO pcmzsgldto) {
-		PCMZSGL domain = pcmzsglMapping.toDomain(pcmzsgldto);
-        domain.setPcmzsglid(pcmzsgl_id);
-		pcmzsglService.update(domain);
-		PCMZSGLDTO dto = pcmzsglMapping.toDto(domain);
+		PCMZSGL domain  = pcmzsglMapping.toDomain(pcmzsgldto);
+        domain .setPcmzsglid(pcmzsgl_id);
+		pcmzsglService.update(domain );
+		PCMZSGLDTO dto = pcmzsglMapping.toDto(domain );
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.pcmzsglMapping,#pcmzsgldtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"PCMZSGL" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmzsgls/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PCMZSGLDTO> pcmzsgldtos) {
@@ -113,7 +113,7 @@ public class PCMZSGLResource {
         return ResponseEntity.status(HttpStatus.OK).body(pcmzsglService.save(pcmzsglMapping.toDomain(pcmzsgldto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.pcmzsglMapping,#pcmzsgldtos})")
     @ApiOperation(value = "SaveBatch", tags = {"PCMZSGL" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmzsgls/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PCMZSGLDTO> pcmzsgldtos) {
@@ -132,7 +132,7 @@ public class PCMZSGLResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.pcmzsglMapping,#pcmzsgldtos})")
     @ApiOperation(value = "createBatch", tags = {"PCMZSGL" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmzsgls/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PCMZSGLDTO> pcmzsgldtos) {

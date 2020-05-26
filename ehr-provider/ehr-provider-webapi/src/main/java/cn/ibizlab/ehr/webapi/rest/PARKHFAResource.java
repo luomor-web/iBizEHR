@@ -55,7 +55,7 @@ public class PARKHFAResource {
          return ResponseEntity.status(HttpStatus.OK).body(parkhfaService.remove(parkhfa_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.parkhfaMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"PARKHFA" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/parkhfas/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -70,7 +70,7 @@ public class PARKHFAResource {
         return ResponseEntity.status(HttpStatus.OK).body(parkhfaService.save(parkhfaMapping.toDomain(parkhfadto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.parkhfaMapping,#parkhfadtos})")
     @ApiOperation(value = "SaveBatch", tags = {"PARKHFA" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/parkhfas/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PARKHFADTO> parkhfadtos) {
@@ -89,7 +89,7 @@ public class PARKHFAResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.parkhfaMapping,#parkhfadtos})")
     @ApiOperation(value = "createBatch", tags = {"PARKHFA" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/parkhfas/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PARKHFADTO> parkhfadtos) {
@@ -125,14 +125,14 @@ public class PARKHFAResource {
 	@RequestMapping(method = RequestMethod.PUT, value = "/parkhfas/{parkhfa_id}")
     @Transactional
     public ResponseEntity<PARKHFADTO> update(@PathVariable("parkhfa_id") String parkhfa_id, @RequestBody PARKHFADTO parkhfadto) {
-		PARKHFA domain = parkhfaMapping.toDomain(parkhfadto);
-        domain.setParkhfaid(parkhfa_id);
-		parkhfaService.update(domain);
-		PARKHFADTO dto = parkhfaMapping.toDto(domain);
+		PARKHFA domain  = parkhfaMapping.toDomain(parkhfadto);
+        domain .setParkhfaid(parkhfa_id);
+		parkhfaService.update(domain );
+		PARKHFADTO dto = parkhfaMapping.toDto(domain );
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.parkhfaMapping,#parkhfadtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"PARKHFA" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/parkhfas/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PARKHFADTO> parkhfadtos) {

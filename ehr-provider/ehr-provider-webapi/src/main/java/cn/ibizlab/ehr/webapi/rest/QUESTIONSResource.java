@@ -53,6 +53,7 @@ public class QUESTIONSResource {
     @Transactional
     public ResponseEntity<QUESTIONSDTO> removeTemp(@PathVariable("questions_id") String questions_id, @RequestBody QUESTIONSDTO questionsdto) {
         QUESTIONS questions = questionsMapping.toDomain(questionsdto);
+        questions.setQuestionsid(questions_id);
         questions = questionsService.removeTemp(questions);
         questionsdto = questionsMapping.toDto(questions);
         return ResponseEntity.status(HttpStatus.OK).body(questionsdto);
@@ -64,6 +65,7 @@ public class QUESTIONSResource {
     @Transactional
     public ResponseEntity<QUESTIONSDTO> getTemp(@PathVariable("questions_id") String questions_id, @RequestBody QUESTIONSDTO questionsdto) {
         QUESTIONS questions = questionsMapping.toDomain(questionsdto);
+        questions.setQuestionsid(questions_id);
         questions = questionsService.getTemp(questions);
         questionsdto = questionsMapping.toDto(questions);
         return ResponseEntity.status(HttpStatus.OK).body(questionsdto);
@@ -75,6 +77,7 @@ public class QUESTIONSResource {
     @Transactional
     public ResponseEntity<QUESTIONSDTO> getDraftTempMajor(@PathVariable("questions_id") String questions_id, @RequestBody QUESTIONSDTO questionsdto) {
         QUESTIONS questions = questionsMapping.toDomain(questionsdto);
+        questions.setQuestionsid(questions_id);
         questions = questionsService.getDraftTempMajor(questions);
         questionsdto = questionsMapping.toDto(questions);
         return ResponseEntity.status(HttpStatus.OK).body(questionsdto);
@@ -86,6 +89,7 @@ public class QUESTIONSResource {
     @Transactional
     public ResponseEntity<QUESTIONSDTO> updateTemp(@PathVariable("questions_id") String questions_id, @RequestBody QUESTIONSDTO questionsdto) {
         QUESTIONS questions = questionsMapping.toDomain(questionsdto);
+        questions.setQuestionsid(questions_id);
         questions = questionsService.updateTemp(questions);
         questionsdto = questionsMapping.toDto(questions);
         return ResponseEntity.status(HttpStatus.OK).body(questionsdto);
@@ -98,7 +102,7 @@ public class QUESTIONSResource {
         return ResponseEntity.status(HttpStatus.OK).body(questionsService.save(questionsMapping.toDomain(questionsdto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.questionsMapping,#questionsdtos})")
     @ApiOperation(value = "SaveBatch", tags = {"QUESTIONS" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/questions/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<QUESTIONSDTO> questionsdtos) {
@@ -112,6 +116,7 @@ public class QUESTIONSResource {
     @Transactional
     public ResponseEntity<QUESTIONSDTO> createTempMajor(@PathVariable("questions_id") String questions_id, @RequestBody QUESTIONSDTO questionsdto) {
         QUESTIONS questions = questionsMapping.toDomain(questionsdto);
+        questions.setQuestionsid(questions_id);
         questions = questionsService.createTempMajor(questions);
         questionsdto = questionsMapping.toDto(questions);
         return ResponseEntity.status(HttpStatus.OK).body(questionsdto);
@@ -122,14 +127,14 @@ public class QUESTIONSResource {
 	@RequestMapping(method = RequestMethod.PUT, value = "/questions/{questions_id}")
     @Transactional
     public ResponseEntity<QUESTIONSDTO> update(@PathVariable("questions_id") String questions_id, @RequestBody QUESTIONSDTO questionsdto) {
-		QUESTIONS domain = questionsMapping.toDomain(questionsdto);
-        domain.setQuestionsid(questions_id);
-		questionsService.update(domain);
-		QUESTIONSDTO dto = questionsMapping.toDto(domain);
+		QUESTIONS domain  = questionsMapping.toDomain(questionsdto);
+        domain .setQuestionsid(questions_id);
+		questionsService.update(domain );
+		QUESTIONSDTO dto = questionsMapping.toDto(domain );
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.questionsMapping,#questionsdtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"QUESTIONS" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/questions/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<QUESTIONSDTO> questionsdtos) {
@@ -152,6 +157,7 @@ public class QUESTIONSResource {
     @Transactional
     public ResponseEntity<QUESTIONSDTO> updateTempMajor(@PathVariable("questions_id") String questions_id, @RequestBody QUESTIONSDTO questionsdto) {
         QUESTIONS questions = questionsMapping.toDomain(questionsdto);
+        questions.setQuestionsid(questions_id);
         questions = questionsService.updateTempMajor(questions);
         questionsdto = questionsMapping.toDto(questions);
         return ResponseEntity.status(HttpStatus.OK).body(questionsdto);
@@ -172,7 +178,7 @@ public class QUESTIONSResource {
          return ResponseEntity.status(HttpStatus.OK).body(questionsService.remove(questions_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.questionsMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"QUESTIONS" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/questions/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -191,7 +197,7 @@ public class QUESTIONSResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.questionsMapping,#questionsdtos})")
     @ApiOperation(value = "createBatch", tags = {"QUESTIONS" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/questions/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<QUESTIONSDTO> questionsdtos) {
@@ -205,6 +211,7 @@ public class QUESTIONSResource {
     @Transactional
     public ResponseEntity<QUESTIONSDTO> getTempMajor(@PathVariable("questions_id") String questions_id, @RequestBody QUESTIONSDTO questionsdto) {
         QUESTIONS questions = questionsMapping.toDomain(questionsdto);
+        questions.setQuestionsid(questions_id);
         questions = questionsService.getTempMajor(questions);
         questionsdto = questionsMapping.toDto(questions);
         return ResponseEntity.status(HttpStatus.OK).body(questionsdto);
@@ -223,6 +230,7 @@ public class QUESTIONSResource {
     @Transactional
     public ResponseEntity<QUESTIONSDTO> createTemp(@PathVariable("questions_id") String questions_id, @RequestBody QUESTIONSDTO questionsdto) {
         QUESTIONS questions = questionsMapping.toDomain(questionsdto);
+        questions.setQuestionsid(questions_id);
         questions = questionsService.createTemp(questions);
         questionsdto = questionsMapping.toDto(questions);
         return ResponseEntity.status(HttpStatus.OK).body(questionsdto);
@@ -234,6 +242,7 @@ public class QUESTIONSResource {
     @Transactional
     public ResponseEntity<QUESTIONSDTO> removeTempMajor(@PathVariable("questions_id") String questions_id, @RequestBody QUESTIONSDTO questionsdto) {
         QUESTIONS questions = questionsMapping.toDomain(questionsdto);
+        questions.setQuestionsid(questions_id);
         questions = questionsService.removeTempMajor(questions);
         questionsdto = questionsMapping.toDto(questions);
         return ResponseEntity.status(HttpStatus.OK).body(questionsdto);
@@ -245,6 +254,7 @@ public class QUESTIONSResource {
     @Transactional
     public ResponseEntity<QUESTIONSDTO> getDraftTemp(@PathVariable("questions_id") String questions_id, @RequestBody QUESTIONSDTO questionsdto) {
         QUESTIONS questions = questionsMapping.toDomain(questionsdto);
+        questions.setQuestionsid(questions_id);
         questions = questionsService.getDraftTemp(questions);
         questionsdto = questionsMapping.toDto(questions);
         return ResponseEntity.status(HttpStatus.OK).body(questionsdto);

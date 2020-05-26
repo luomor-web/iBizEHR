@@ -52,14 +52,14 @@ public class ORMQYGLResource {
 	@RequestMapping(method = RequestMethod.PUT, value = "/ormqygls/{ormqygl_id}")
     @Transactional
     public ResponseEntity<ORMQYGLDTO> update(@PathVariable("ormqygl_id") String ormqygl_id, @RequestBody ORMQYGLDTO ormqygldto) {
-		ORMQYGL domain = ormqyglMapping.toDomain(ormqygldto);
-        domain.setOrmqyglid(ormqygl_id);
-		ormqyglService.update(domain);
-		ORMQYGLDTO dto = ormqyglMapping.toDto(domain);
+		ORMQYGL domain  = ormqyglMapping.toDomain(ormqygldto);
+        domain .setOrmqyglid(ormqygl_id);
+		ormqyglService.update(domain );
+		ORMQYGLDTO dto = ormqyglMapping.toDto(domain );
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.ormqyglMapping,#ormqygldtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"ORMQYGL" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/ormqygls/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<ORMQYGLDTO> ormqygldtos) {
@@ -87,7 +87,7 @@ public class ORMQYGLResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.ormqyglMapping,#ormqygldtos})")
     @ApiOperation(value = "createBatch", tags = {"ORMQYGL" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormqygls/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<ORMQYGLDTO> ormqygldtos) {
@@ -110,7 +110,7 @@ public class ORMQYGLResource {
          return ResponseEntity.status(HttpStatus.OK).body(ormqyglService.remove(ormqygl_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.ormqyglMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"ORMQYGL" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/ormqygls/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -125,7 +125,7 @@ public class ORMQYGLResource {
         return ResponseEntity.status(HttpStatus.OK).body(ormqyglService.save(ormqyglMapping.toDomain(ormqygldto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.ormqyglMapping,#ormqygldtos})")
     @ApiOperation(value = "SaveBatch", tags = {"ORMQYGL" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormqygls/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<ORMQYGLDTO> ormqygldtos) {

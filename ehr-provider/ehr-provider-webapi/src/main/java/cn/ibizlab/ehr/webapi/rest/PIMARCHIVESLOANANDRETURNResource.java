@@ -61,14 +61,14 @@ public class PIMARCHIVESLOANANDRETURNResource {
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimarchivesloanandreturns/{pimarchivesloanandreturn_id}")
     @Transactional
     public ResponseEntity<PIMARCHIVESLOANANDRETURNDTO> update(@PathVariable("pimarchivesloanandreturn_id") String pimarchivesloanandreturn_id, @RequestBody PIMARCHIVESLOANANDRETURNDTO pimarchivesloanandreturndto) {
-		PIMARCHIVESLOANANDRETURN domain = pimarchivesloanandreturnMapping.toDomain(pimarchivesloanandreturndto);
-        domain.setPimarchivesloanandreturnid(pimarchivesloanandreturn_id);
-		pimarchivesloanandreturnService.update(domain);
-		PIMARCHIVESLOANANDRETURNDTO dto = pimarchivesloanandreturnMapping.toDto(domain);
+		PIMARCHIVESLOANANDRETURN domain  = pimarchivesloanandreturnMapping.toDomain(pimarchivesloanandreturndto);
+        domain .setPimarchivesloanandreturnid(pimarchivesloanandreturn_id);
+		pimarchivesloanandreturnService.update(domain );
+		PIMARCHIVESLOANANDRETURNDTO dto = pimarchivesloanandreturnMapping.toDto(domain );
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.pimarchivesloanandreturnMapping,#pimarchivesloanandreturndtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"PIMARCHIVESLOANANDRETURN" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimarchivesloanandreturns/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PIMARCHIVESLOANANDRETURNDTO> pimarchivesloanandreturndtos) {
@@ -87,7 +87,7 @@ public class PIMARCHIVESLOANANDRETURNResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.pimarchivesloanandreturnMapping,#pimarchivesloanandreturndtos})")
     @ApiOperation(value = "createBatch", tags = {"PIMARCHIVESLOANANDRETURN" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimarchivesloanandreturns/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PIMARCHIVESLOANANDRETURNDTO> pimarchivesloanandreturndtos) {
@@ -115,6 +115,7 @@ public class PIMARCHIVESLOANANDRETURNResource {
     @Transactional
     public ResponseEntity<PIMARCHIVESLOANANDRETURNDTO> updateState(@PathVariable("pimarchivesloanandreturn_id") String pimarchivesloanandreturn_id, @RequestBody PIMARCHIVESLOANANDRETURNDTO pimarchivesloanandreturndto) {
         PIMARCHIVESLOANANDRETURN pimarchivesloanandreturn = pimarchivesloanandreturnMapping.toDomain(pimarchivesloanandreturndto);
+        pimarchivesloanandreturn.setPimarchivesloanandreturnid(pimarchivesloanandreturn_id);
         pimarchivesloanandreturn = pimarchivesloanandreturnService.updateState(pimarchivesloanandreturn);
         pimarchivesloanandreturndto = pimarchivesloanandreturnMapping.toDto(pimarchivesloanandreturn);
         return ResponseEntity.status(HttpStatus.OK).body(pimarchivesloanandreturndto);
@@ -127,7 +128,7 @@ public class PIMARCHIVESLOANANDRETURNResource {
         return ResponseEntity.status(HttpStatus.OK).body(pimarchivesloanandreturnService.save(pimarchivesloanandreturnMapping.toDomain(pimarchivesloanandreturndto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.pimarchivesloanandreturnMapping,#pimarchivesloanandreturndtos})")
     @ApiOperation(value = "SaveBatch", tags = {"PIMARCHIVESLOANANDRETURN" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimarchivesloanandreturns/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PIMARCHIVESLOANANDRETURNDTO> pimarchivesloanandreturndtos) {
@@ -143,7 +144,7 @@ public class PIMARCHIVESLOANANDRETURNResource {
          return ResponseEntity.status(HttpStatus.OK).body(pimarchivesloanandreturnService.remove(pimarchivesloanandreturn_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.pimarchivesloanandreturnMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"PIMARCHIVESLOANANDRETURN" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimarchivesloanandreturns/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -157,6 +158,7 @@ public class PIMARCHIVESLOANANDRETURNResource {
     @Transactional
     public ResponseEntity<PIMARCHIVESLOANANDRETURNDTO> updateArchiveState(@PathVariable("pimarchivesloanandreturn_id") String pimarchivesloanandreturn_id, @RequestBody PIMARCHIVESLOANANDRETURNDTO pimarchivesloanandreturndto) {
         PIMARCHIVESLOANANDRETURN pimarchivesloanandreturn = pimarchivesloanandreturnMapping.toDomain(pimarchivesloanandreturndto);
+        pimarchivesloanandreturn.setPimarchivesloanandreturnid(pimarchivesloanandreturn_id);
         pimarchivesloanandreturn = pimarchivesloanandreturnService.updateArchiveState(pimarchivesloanandreturn);
         pimarchivesloanandreturndto = pimarchivesloanandreturnMapping.toDto(pimarchivesloanandreturn);
         return ResponseEntity.status(HttpStatus.OK).body(pimarchivesloanandreturndto);
@@ -205,7 +207,7 @@ public class PIMARCHIVESLOANANDRETURNResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.pimarchivesloanandreturnMapping,#pimarchivesloanandreturndtos})")
     @ApiOperation(value = "UpdateBatchByPIMARCHIVES", tags = {"PIMARCHIVESLOANANDRETURN" },  notes = "UpdateBatchByPIMARCHIVES")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimarchives/{pimarchives_id}/pimarchivesloanandreturns/batch")
     public ResponseEntity<Boolean> updateBatchByPIMARCHIVES(@PathVariable("pimarchives_id") String pimarchives_id, @RequestBody List<PIMARCHIVESLOANANDRETURNDTO> pimarchivesloanandreturndtos) {
@@ -229,7 +231,7 @@ public class PIMARCHIVESLOANANDRETURNResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.pimarchivesloanandreturnMapping,#pimarchivesloanandreturndtos})")
     @ApiOperation(value = "createBatchByPIMARCHIVES", tags = {"PIMARCHIVESLOANANDRETURN" },  notes = "createBatchByPIMARCHIVES")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimarchives/{pimarchives_id}/pimarchivesloanandreturns/batch")
     public ResponseEntity<Boolean> createBatchByPIMARCHIVES(@PathVariable("pimarchives_id") String pimarchives_id, @RequestBody List<PIMARCHIVESLOANANDRETURNDTO> pimarchivesloanandreturndtos) {
@@ -278,7 +280,7 @@ public class PIMARCHIVESLOANANDRETURNResource {
         return ResponseEntity.status(HttpStatus.OK).body(pimarchivesloanandreturnService.save(domain));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.pimarchivesloanandreturnMapping,#pimarchivesloanandreturndtos})")
     @ApiOperation(value = "SaveBatchByPIMARCHIVES", tags = {"PIMARCHIVESLOANANDRETURN" },  notes = "SaveBatchByPIMARCHIVES")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimarchives/{pimarchives_id}/pimarchivesloanandreturns/savebatch")
     public ResponseEntity<Boolean> saveBatchByPIMARCHIVES(@PathVariable("pimarchives_id") String pimarchives_id, @RequestBody List<PIMARCHIVESLOANANDRETURNDTO> pimarchivesloanandreturndtos) {
@@ -298,7 +300,7 @@ public class PIMARCHIVESLOANANDRETURNResource {
 		return ResponseEntity.status(HttpStatus.OK).body(pimarchivesloanandreturnService.remove(pimarchivesloanandreturn_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.pimarchivesloanandreturnMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatchByPIMARCHIVES", tags = {"PIMARCHIVESLOANANDRETURN" },  notes = "RemoveBatchByPIMARCHIVES")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimarchives/{pimarchives_id}/pimarchivesloanandreturns/batch")
     public ResponseEntity<Boolean> removeBatchByPIMARCHIVES(@RequestBody List<String> ids) {
@@ -363,7 +365,7 @@ public class PIMARCHIVESLOANANDRETURNResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.pimarchivesloanandreturnMapping,#pimarchivesloanandreturndtos})")
     @ApiOperation(value = "UpdateBatchByPIMPERSONPIMARCHIVES", tags = {"PIMARCHIVESLOANANDRETURN" },  notes = "UpdateBatchByPIMPERSONPIMARCHIVES")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimpeople/{pimperson_id}/pimarchives/{pimarchives_id}/pimarchivesloanandreturns/batch")
     public ResponseEntity<Boolean> updateBatchByPIMPERSONPIMARCHIVES(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimarchives_id") String pimarchives_id, @RequestBody List<PIMARCHIVESLOANANDRETURNDTO> pimarchivesloanandreturndtos) {
@@ -387,7 +389,7 @@ public class PIMARCHIVESLOANANDRETURNResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.pimarchivesloanandreturnMapping,#pimarchivesloanandreturndtos})")
     @ApiOperation(value = "createBatchByPIMPERSONPIMARCHIVES", tags = {"PIMARCHIVESLOANANDRETURN" },  notes = "createBatchByPIMPERSONPIMARCHIVES")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimarchives/{pimarchives_id}/pimarchivesloanandreturns/batch")
     public ResponseEntity<Boolean> createBatchByPIMPERSONPIMARCHIVES(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimarchives_id") String pimarchives_id, @RequestBody List<PIMARCHIVESLOANANDRETURNDTO> pimarchivesloanandreturndtos) {
@@ -436,7 +438,7 @@ public class PIMARCHIVESLOANANDRETURNResource {
         return ResponseEntity.status(HttpStatus.OK).body(pimarchivesloanandreturnService.save(domain));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.pimarchivesloanandreturnMapping,#pimarchivesloanandreturndtos})")
     @ApiOperation(value = "SaveBatchByPIMPERSONPIMARCHIVES", tags = {"PIMARCHIVESLOANANDRETURN" },  notes = "SaveBatchByPIMPERSONPIMARCHIVES")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimarchives/{pimarchives_id}/pimarchivesloanandreturns/savebatch")
     public ResponseEntity<Boolean> saveBatchByPIMPERSONPIMARCHIVES(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimarchives_id") String pimarchives_id, @RequestBody List<PIMARCHIVESLOANANDRETURNDTO> pimarchivesloanandreturndtos) {
@@ -456,7 +458,7 @@ public class PIMARCHIVESLOANANDRETURNResource {
 		return ResponseEntity.status(HttpStatus.OK).body(pimarchivesloanandreturnService.remove(pimarchivesloanandreturn_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.pimarchivesloanandreturnMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatchByPIMPERSONPIMARCHIVES", tags = {"PIMARCHIVESLOANANDRETURN" },  notes = "RemoveBatchByPIMPERSONPIMARCHIVES")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimpeople/{pimperson_id}/pimarchives/{pimarchives_id}/pimarchivesloanandreturns/batch")
     public ResponseEntity<Boolean> removeBatchByPIMPERSONPIMARCHIVES(@RequestBody List<String> ids) {

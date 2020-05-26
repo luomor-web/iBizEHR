@@ -64,7 +64,7 @@ public class TRMTRAINPLANTERMResource {
          return ResponseEntity.status(HttpStatus.OK).body(trmtrainplantermService.remove(trmtrainplanterm_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.trmtrainplantermMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"TRMTRAINPLANTERM" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/trmtrainplanterms/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -84,14 +84,14 @@ public class TRMTRAINPLANTERMResource {
 	@RequestMapping(method = RequestMethod.PUT, value = "/trmtrainplanterms/{trmtrainplanterm_id}")
     @Transactional
     public ResponseEntity<TRMTRAINPLANTERMDTO> update(@PathVariable("trmtrainplanterm_id") String trmtrainplanterm_id, @RequestBody TRMTRAINPLANTERMDTO trmtrainplantermdto) {
-		TRMTRAINPLANTERM domain = trmtrainplantermMapping.toDomain(trmtrainplantermdto);
-        domain.setTrmtrainplantermid(trmtrainplanterm_id);
-		trmtrainplantermService.update(domain);
-		TRMTRAINPLANTERMDTO dto = trmtrainplantermMapping.toDto(domain);
+		TRMTRAINPLANTERM domain  = trmtrainplantermMapping.toDomain(trmtrainplantermdto);
+        domain .setTrmtrainplantermid(trmtrainplanterm_id);
+		trmtrainplantermService.update(domain );
+		TRMTRAINPLANTERMDTO dto = trmtrainplantermMapping.toDto(domain );
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.trmtrainplantermMapping,#trmtrainplantermdtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"TRMTRAINPLANTERM" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/trmtrainplanterms/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<TRMTRAINPLANTERMDTO> trmtrainplantermdtos) {
@@ -106,7 +106,7 @@ public class TRMTRAINPLANTERMResource {
         return ResponseEntity.status(HttpStatus.OK).body(trmtrainplantermService.save(trmtrainplantermMapping.toDomain(trmtrainplantermdto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.trmtrainplantermMapping,#trmtrainplantermdtos})")
     @ApiOperation(value = "SaveBatch", tags = {"TRMTRAINPLANTERM" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmtrainplanterms/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<TRMTRAINPLANTERMDTO> trmtrainplantermdtos) {
@@ -127,6 +127,7 @@ public class TRMTRAINPLANTERMResource {
     @Transactional
     public ResponseEntity<TRMTRAINPLANTERMDTO> kB(@PathVariable("trmtrainplanterm_id") String trmtrainplanterm_id, @RequestBody TRMTRAINPLANTERMDTO trmtrainplantermdto) {
         TRMTRAINPLANTERM trmtrainplanterm = trmtrainplantermMapping.toDomain(trmtrainplantermdto);
+        trmtrainplanterm.setTrmtrainplantermid(trmtrainplanterm_id);
         trmtrainplanterm = trmtrainplantermService.kB(trmtrainplanterm);
         trmtrainplantermdto = trmtrainplantermMapping.toDto(trmtrainplanterm);
         return ResponseEntity.status(HttpStatus.OK).body(trmtrainplantermdto);
@@ -143,7 +144,7 @@ public class TRMTRAINPLANTERMResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.trmtrainplantermMapping,#trmtrainplantermdtos})")
     @ApiOperation(value = "createBatch", tags = {"TRMTRAINPLANTERM" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmtrainplanterms/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<TRMTRAINPLANTERMDTO> trmtrainplantermdtos) {
@@ -157,6 +158,7 @@ public class TRMTRAINPLANTERMResource {
     @Transactional
     public ResponseEntity<TRMTRAINPLANTERMDTO> qX(@PathVariable("trmtrainplanterm_id") String trmtrainplanterm_id, @RequestBody TRMTRAINPLANTERMDTO trmtrainplantermdto) {
         TRMTRAINPLANTERM trmtrainplanterm = trmtrainplantermMapping.toDomain(trmtrainplantermdto);
+        trmtrainplanterm.setTrmtrainplantermid(trmtrainplanterm_id);
         trmtrainplanterm = trmtrainplantermService.qX(trmtrainplanterm);
         trmtrainplantermdto = trmtrainplantermMapping.toDto(trmtrainplanterm);
         return ResponseEntity.status(HttpStatus.OK).body(trmtrainplantermdto);
@@ -168,6 +170,7 @@ public class TRMTRAINPLANTERMResource {
     @Transactional
     public ResponseEntity<TRMTRAINPLANTERMDTO> lX(@PathVariable("trmtrainplanterm_id") String trmtrainplanterm_id, @RequestBody TRMTRAINPLANTERMDTO trmtrainplantermdto) {
         TRMTRAINPLANTERM trmtrainplanterm = trmtrainplantermMapping.toDomain(trmtrainplantermdto);
+        trmtrainplanterm.setTrmtrainplantermid(trmtrainplanterm_id);
         trmtrainplanterm = trmtrainplantermService.lX(trmtrainplanterm);
         trmtrainplantermdto = trmtrainplantermMapping.toDto(trmtrainplanterm);
         return ResponseEntity.status(HttpStatus.OK).body(trmtrainplantermdto);

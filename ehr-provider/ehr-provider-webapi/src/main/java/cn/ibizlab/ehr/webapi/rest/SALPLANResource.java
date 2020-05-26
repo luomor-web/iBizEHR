@@ -58,7 +58,7 @@ public class SALPLANResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.salplanMapping,#salplandtos})")
     @ApiOperation(value = "createBatch", tags = {"SALPLAN" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/salplans/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<SALPLANDTO> salplandtos) {
@@ -74,7 +74,7 @@ public class SALPLANResource {
          return ResponseEntity.status(HttpStatus.OK).body(salplanService.remove(salplan_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.salplanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"SALPLAN" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/salplans/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -96,7 +96,7 @@ public class SALPLANResource {
         return ResponseEntity.status(HttpStatus.OK).body(salplanService.save(salplanMapping.toDomain(salplandto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.salplanMapping,#salplandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"SALPLAN" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/salplans/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<SALPLANDTO> salplandtos) {
@@ -116,14 +116,14 @@ public class SALPLANResource {
 	@RequestMapping(method = RequestMethod.PUT, value = "/salplans/{salplan_id}")
     @Transactional
     public ResponseEntity<SALPLANDTO> update(@PathVariable("salplan_id") String salplan_id, @RequestBody SALPLANDTO salplandto) {
-		SALPLAN domain = salplanMapping.toDomain(salplandto);
-        domain.setSalplanid(salplan_id);
-		salplanService.update(domain);
-		SALPLANDTO dto = salplanMapping.toDto(domain);
+		SALPLAN domain  = salplanMapping.toDomain(salplandto);
+        domain .setSalplanid(salplan_id);
+		salplanService.update(domain );
+		SALPLANDTO dto = salplanMapping.toDto(domain );
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.salplanMapping,#salplandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"SALPLAN" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/salplans/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<SALPLANDTO> salplandtos) {

@@ -52,14 +52,14 @@ public class PIMEXITANDENTRYResource {
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimexitandentries/{pimexitandentry_id}")
     @Transactional
     public ResponseEntity<PIMEXITANDENTRYDTO> update(@PathVariable("pimexitandentry_id") String pimexitandentry_id, @RequestBody PIMEXITANDENTRYDTO pimexitandentrydto) {
-		PIMEXITANDENTRY domain = pimexitandentryMapping.toDomain(pimexitandentrydto);
-        domain.setPimexitandentryid(pimexitandentry_id);
-		pimexitandentryService.update(domain);
-		PIMEXITANDENTRYDTO dto = pimexitandentryMapping.toDto(domain);
+		PIMEXITANDENTRY domain  = pimexitandentryMapping.toDomain(pimexitandentrydto);
+        domain .setPimexitandentryid(pimexitandentry_id);
+		pimexitandentryService.update(domain );
+		PIMEXITANDENTRYDTO dto = pimexitandentryMapping.toDto(domain );
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.pimexitandentryMapping,#pimexitandentrydtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"PIMEXITANDENTRY" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimexitandentries/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PIMEXITANDENTRYDTO> pimexitandentrydtos) {
@@ -74,7 +74,7 @@ public class PIMEXITANDENTRYResource {
         return ResponseEntity.status(HttpStatus.OK).body(pimexitandentryService.save(pimexitandentryMapping.toDomain(pimexitandentrydto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.pimexitandentryMapping,#pimexitandentrydtos})")
     @ApiOperation(value = "SaveBatch", tags = {"PIMEXITANDENTRY" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimexitandentries/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PIMEXITANDENTRYDTO> pimexitandentrydtos) {
@@ -88,6 +88,7 @@ public class PIMEXITANDENTRYResource {
     @Transactional
     public ResponseEntity<PIMEXITANDENTRYDTO> cX(@PathVariable("pimexitandentry_id") String pimexitandentry_id, @RequestBody PIMEXITANDENTRYDTO pimexitandentrydto) {
         PIMEXITANDENTRY pimexitandentry = pimexitandentryMapping.toDomain(pimexitandentrydto);
+        pimexitandentry.setPimexitandentryid(pimexitandentry_id);
         pimexitandentry = pimexitandentryService.cX(pimexitandentry);
         pimexitandentrydto = pimexitandentryMapping.toDto(pimexitandentry);
         return ResponseEntity.status(HttpStatus.OK).body(pimexitandentrydto);
@@ -115,6 +116,7 @@ public class PIMEXITANDENTRYResource {
     @Transactional
     public ResponseEntity<PIMEXITANDENTRYDTO> mobStart(@PathVariable("pimexitandentry_id") String pimexitandentry_id, @RequestBody PIMEXITANDENTRYDTO pimexitandentrydto) {
         PIMEXITANDENTRY pimexitandentry = pimexitandentryMapping.toDomain(pimexitandentrydto);
+        pimexitandentry.setPimexitandentryid(pimexitandentry_id);
         pimexitandentry = pimexitandentryService.mobStart(pimexitandentry);
         pimexitandentrydto = pimexitandentryMapping.toDto(pimexitandentry);
         return ResponseEntity.status(HttpStatus.OK).body(pimexitandentrydto);
@@ -131,7 +133,7 @@ public class PIMEXITANDENTRYResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.pimexitandentryMapping,#pimexitandentrydtos})")
     @ApiOperation(value = "createBatch", tags = {"PIMEXITANDENTRY" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimexitandentries/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PIMEXITANDENTRYDTO> pimexitandentrydtos) {
@@ -147,7 +149,7 @@ public class PIMEXITANDENTRYResource {
          return ResponseEntity.status(HttpStatus.OK).body(pimexitandentryService.remove(pimexitandentry_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.pimexitandentryMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"PIMEXITANDENTRY" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimexitandentries/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -161,6 +163,7 @@ public class PIMEXITANDENTRYResource {
     @Transactional
     public ResponseEntity<PIMEXITANDENTRYDTO> cB(@PathVariable("pimexitandentry_id") String pimexitandentry_id, @RequestBody PIMEXITANDENTRYDTO pimexitandentrydto) {
         PIMEXITANDENTRY pimexitandentry = pimexitandentryMapping.toDomain(pimexitandentrydto);
+        pimexitandentry.setPimexitandentryid(pimexitandentry_id);
         pimexitandentry = pimexitandentryService.cB(pimexitandentry);
         pimexitandentrydto = pimexitandentryMapping.toDto(pimexitandentry);
         return ResponseEntity.status(HttpStatus.OK).body(pimexitandentrydto);
@@ -179,6 +182,7 @@ public class PIMEXITANDENTRYResource {
     @Transactional
     public ResponseEntity<PIMEXITANDENTRYDTO> start(@PathVariable("pimexitandentry_id") String pimexitandentry_id, @RequestBody PIMEXITANDENTRYDTO pimexitandentrydto) {
         PIMEXITANDENTRY pimexitandentry = pimexitandentryMapping.toDomain(pimexitandentrydto);
+        pimexitandentry.setPimexitandentryid(pimexitandentry_id);
         pimexitandentry = pimexitandentryService.start(pimexitandentry);
         pimexitandentrydto = pimexitandentryMapping.toDto(pimexitandentry);
         return ResponseEntity.status(HttpStatus.OK).body(pimexitandentrydto);
@@ -323,7 +327,7 @@ public class PIMEXITANDENTRYResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.pimexitandentryMapping,#pimexitandentrydtos})")
     @ApiOperation(value = "UpdateBatchByPIMPERSON", tags = {"PIMEXITANDENTRY" },  notes = "UpdateBatchByPIMPERSON")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimpeople/{pimperson_id}/pimexitandentries/batch")
     public ResponseEntity<Boolean> updateBatchByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody List<PIMEXITANDENTRYDTO> pimexitandentrydtos) {
@@ -344,7 +348,7 @@ public class PIMEXITANDENTRYResource {
         return ResponseEntity.status(HttpStatus.OK).body(pimexitandentryService.save(domain));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.pimexitandentryMapping,#pimexitandentrydtos})")
     @ApiOperation(value = "SaveBatchByPIMPERSON", tags = {"PIMEXITANDENTRY" },  notes = "SaveBatchByPIMPERSON")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimexitandentries/savebatch")
     public ResponseEntity<Boolean> saveBatchByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody List<PIMEXITANDENTRYDTO> pimexitandentrydtos) {
@@ -410,7 +414,7 @@ public class PIMEXITANDENTRYResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.pimexitandentryMapping,#pimexitandentrydtos})")
     @ApiOperation(value = "createBatchByPIMPERSON", tags = {"PIMEXITANDENTRY" },  notes = "createBatchByPIMPERSON")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimexitandentries/batch")
     public ResponseEntity<Boolean> createBatchByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody List<PIMEXITANDENTRYDTO> pimexitandentrydtos) {
@@ -430,7 +434,7 @@ public class PIMEXITANDENTRYResource {
 		return ResponseEntity.status(HttpStatus.OK).body(pimexitandentryService.remove(pimexitandentry_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.pimexitandentryMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatchByPIMPERSON", tags = {"PIMEXITANDENTRY" },  notes = "RemoveBatchByPIMPERSON")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimpeople/{pimperson_id}/pimexitandentries/batch")
     public ResponseEntity<Boolean> removeBatchByPIMPERSON(@RequestBody List<String> ids) {

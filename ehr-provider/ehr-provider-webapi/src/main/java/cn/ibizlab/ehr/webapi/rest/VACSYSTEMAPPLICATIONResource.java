@@ -58,7 +58,7 @@ public class VACSYSTEMAPPLICATIONResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.vacsystemapplicationMapping,#vacsystemapplicationdtos})")
     @ApiOperation(value = "createBatch", tags = {"VACSYSTEMAPPLICATION" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacsystemapplications/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<VACSYSTEMAPPLICATIONDTO> vacsystemapplicationdtos) {
@@ -74,7 +74,7 @@ public class VACSYSTEMAPPLICATIONResource {
          return ResponseEntity.status(HttpStatus.OK).body(vacsystemapplicationService.remove(vacsystemapplication_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.vacsystemapplicationMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"VACSYSTEMAPPLICATION" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/vacsystemapplications/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -87,14 +87,14 @@ public class VACSYSTEMAPPLICATIONResource {
 	@RequestMapping(method = RequestMethod.PUT, value = "/vacsystemapplications/{vacsystemapplication_id}")
     @Transactional
     public ResponseEntity<VACSYSTEMAPPLICATIONDTO> update(@PathVariable("vacsystemapplication_id") String vacsystemapplication_id, @RequestBody VACSYSTEMAPPLICATIONDTO vacsystemapplicationdto) {
-		VACSYSTEMAPPLICATION domain = vacsystemapplicationMapping.toDomain(vacsystemapplicationdto);
-        domain.setVacsystemapplicationid(vacsystemapplication_id);
-		vacsystemapplicationService.update(domain);
-		VACSYSTEMAPPLICATIONDTO dto = vacsystemapplicationMapping.toDto(domain);
+		VACSYSTEMAPPLICATION domain  = vacsystemapplicationMapping.toDomain(vacsystemapplicationdto);
+        domain .setVacsystemapplicationid(vacsystemapplication_id);
+		vacsystemapplicationService.update(domain );
+		VACSYSTEMAPPLICATIONDTO dto = vacsystemapplicationMapping.toDto(domain );
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.vacsystemapplicationMapping,#vacsystemapplicationdtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"VACSYSTEMAPPLICATION" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/vacsystemapplications/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<VACSYSTEMAPPLICATIONDTO> vacsystemapplicationdtos) {
@@ -118,7 +118,7 @@ public class VACSYSTEMAPPLICATIONResource {
         return ResponseEntity.status(HttpStatus.OK).body(vacsystemapplicationService.save(vacsystemapplicationMapping.toDomain(vacsystemapplicationdto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.vacsystemapplicationMapping,#vacsystemapplicationdtos})")
     @ApiOperation(value = "SaveBatch", tags = {"VACSYSTEMAPPLICATION" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacsystemapplications/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<VACSYSTEMAPPLICATIONDTO> vacsystemapplicationdtos) {

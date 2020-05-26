@@ -71,7 +71,7 @@ public class TRMSTAYResource {
          return ResponseEntity.status(HttpStatus.OK).body(trmstayService.remove(trmstay_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.trmstayMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"TRMSTAY" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/trmstays/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -86,7 +86,7 @@ public class TRMSTAYResource {
         return ResponseEntity.status(HttpStatus.OK).body(trmstayService.save(trmstayMapping.toDomain(trmstaydto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.trmstayMapping,#trmstaydtos})")
     @ApiOperation(value = "SaveBatch", tags = {"TRMSTAY" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmstays/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<TRMSTAYDTO> trmstaydtos) {
@@ -99,14 +99,14 @@ public class TRMSTAYResource {
 	@RequestMapping(method = RequestMethod.PUT, value = "/trmstays/{trmstay_id}")
     @Transactional
     public ResponseEntity<TRMSTAYDTO> update(@PathVariable("trmstay_id") String trmstay_id, @RequestBody TRMSTAYDTO trmstaydto) {
-		TRMSTAY domain = trmstayMapping.toDomain(trmstaydto);
-        domain.setTrmstayid(trmstay_id);
-		trmstayService.update(domain);
-		TRMSTAYDTO dto = trmstayMapping.toDto(domain);
+		TRMSTAY domain  = trmstayMapping.toDomain(trmstaydto);
+        domain .setTrmstayid(trmstay_id);
+		trmstayService.update(domain );
+		TRMSTAYDTO dto = trmstayMapping.toDto(domain );
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.trmstayMapping,#trmstaydtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"TRMSTAY" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/trmstays/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<TRMSTAYDTO> trmstaydtos) {
@@ -125,7 +125,7 @@ public class TRMSTAYResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.trmstayMapping,#trmstaydtos})")
     @ApiOperation(value = "createBatch", tags = {"TRMSTAY" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmstays/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<TRMSTAYDTO> trmstaydtos) {

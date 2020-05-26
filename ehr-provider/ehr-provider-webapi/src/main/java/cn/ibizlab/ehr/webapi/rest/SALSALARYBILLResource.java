@@ -55,7 +55,7 @@ public class SALSALARYBILLResource {
          return ResponseEntity.status(HttpStatus.OK).body(salsalarybillService.remove(salsalarybill_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.salsalarybillMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"SALSALARYBILL" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/salsalarybills/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -81,7 +81,7 @@ public class SALSALARYBILLResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.salsalarybillMapping,#salsalarybilldtos})")
     @ApiOperation(value = "createBatch", tags = {"SALSALARYBILL" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/salsalarybills/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<SALSALARYBILLDTO> salsalarybilldtos) {
@@ -101,14 +101,14 @@ public class SALSALARYBILLResource {
 	@RequestMapping(method = RequestMethod.PUT, value = "/salsalarybills/{salsalarybill_id}")
     @Transactional
     public ResponseEntity<SALSALARYBILLDTO> update(@PathVariable("salsalarybill_id") String salsalarybill_id, @RequestBody SALSALARYBILLDTO salsalarybilldto) {
-		SALSALARYBILL domain = salsalarybillMapping.toDomain(salsalarybilldto);
-        domain.setSalsalarybillid(salsalarybill_id);
-		salsalarybillService.update(domain);
-		SALSALARYBILLDTO dto = salsalarybillMapping.toDto(domain);
+		SALSALARYBILL domain  = salsalarybillMapping.toDomain(salsalarybilldto);
+        domain .setSalsalarybillid(salsalarybill_id);
+		salsalarybillService.update(domain );
+		SALSALARYBILLDTO dto = salsalarybillMapping.toDto(domain );
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.salsalarybillMapping,#salsalarybilldtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"SALSALARYBILL" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/salsalarybills/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<SALSALARYBILLDTO> salsalarybilldtos) {
@@ -132,7 +132,7 @@ public class SALSALARYBILLResource {
         return ResponseEntity.status(HttpStatus.OK).body(salsalarybillService.save(salsalarybillMapping.toDomain(salsalarybilldto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.salsalarybillMapping,#salsalarybilldtos})")
     @ApiOperation(value = "SaveBatch", tags = {"SALSALARYBILL" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/salsalarybills/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<SALSALARYBILLDTO> salsalarybilldtos) {

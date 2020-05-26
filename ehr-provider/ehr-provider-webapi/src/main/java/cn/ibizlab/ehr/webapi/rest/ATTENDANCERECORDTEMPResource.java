@@ -52,14 +52,14 @@ public class ATTENDANCERECORDTEMPResource {
 	@RequestMapping(method = RequestMethod.PUT, value = "/attendancerecordtemps/{attendancerecordtemp_id}")
     @Transactional
     public ResponseEntity<ATTENDANCERECORDTEMPDTO> update(@PathVariable("attendancerecordtemp_id") String attendancerecordtemp_id, @RequestBody ATTENDANCERECORDTEMPDTO attendancerecordtempdto) {
-		ATTENDANCERECORDTEMP domain = attendancerecordtempMapping.toDomain(attendancerecordtempdto);
-        domain.setAttendancerecordtempid(attendancerecordtemp_id);
-		attendancerecordtempService.update(domain);
-		ATTENDANCERECORDTEMPDTO dto = attendancerecordtempMapping.toDto(domain);
+		ATTENDANCERECORDTEMP domain  = attendancerecordtempMapping.toDomain(attendancerecordtempdto);
+        domain .setAttendancerecordtempid(attendancerecordtemp_id);
+		attendancerecordtempService.update(domain );
+		ATTENDANCERECORDTEMPDTO dto = attendancerecordtempMapping.toDto(domain );
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.attendancerecordtempMapping,#attendancerecordtempdtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"ATTENDANCERECORDTEMP" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/attendancerecordtemps/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<ATTENDANCERECORDTEMPDTO> attendancerecordtempdtos) {
@@ -75,7 +75,7 @@ public class ATTENDANCERECORDTEMPResource {
          return ResponseEntity.status(HttpStatus.OK).body(attendancerecordtempService.remove(attendancerecordtemp_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.attendancerecordtempMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"ATTENDANCERECORDTEMP" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/attendancerecordtemps/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -90,7 +90,7 @@ public class ATTENDANCERECORDTEMPResource {
         return ResponseEntity.status(HttpStatus.OK).body(attendancerecordtempService.save(attendancerecordtempMapping.toDomain(attendancerecordtempdto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.attendancerecordtempMapping,#attendancerecordtempdtos})")
     @ApiOperation(value = "SaveBatch", tags = {"ATTENDANCERECORDTEMP" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/attendancerecordtemps/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<ATTENDANCERECORDTEMPDTO> attendancerecordtempdtos) {
@@ -125,7 +125,7 @@ public class ATTENDANCERECORDTEMPResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.attendancerecordtempMapping,#attendancerecordtempdtos})")
     @ApiOperation(value = "createBatch", tags = {"ATTENDANCERECORDTEMP" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/attendancerecordtemps/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<ATTENDANCERECORDTEMPDTO> attendancerecordtempdtos) {

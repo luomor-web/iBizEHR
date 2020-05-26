@@ -65,7 +65,7 @@ public class VACINITNXJResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.vacinitnxjMapping,#vacinitnxjdtos})")
     @ApiOperation(value = "createBatch", tags = {"VACINITNXJ" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacinitnxjs/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<VACINITNXJDTO> vacinitnxjdtos) {
@@ -88,7 +88,7 @@ public class VACINITNXJResource {
          return ResponseEntity.status(HttpStatus.OK).body(vacinitnxjService.remove(vacinitnxj_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.vacinitnxjMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"VACINITNXJ" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/vacinitnxjs/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -112,7 +112,7 @@ public class VACINITNXJResource {
         return ResponseEntity.status(HttpStatus.OK).body(vacinitnxjService.save(vacinitnxjMapping.toDomain(vacinitnxjdto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.vacinitnxjMapping,#vacinitnxjdtos})")
     @ApiOperation(value = "SaveBatch", tags = {"VACINITNXJ" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacinitnxjs/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<VACINITNXJDTO> vacinitnxjdtos) {
@@ -125,14 +125,14 @@ public class VACINITNXJResource {
 	@RequestMapping(method = RequestMethod.PUT, value = "/vacinitnxjs/{vacinitnxj_id}")
     @Transactional
     public ResponseEntity<VACINITNXJDTO> update(@PathVariable("vacinitnxj_id") String vacinitnxj_id, @RequestBody VACINITNXJDTO vacinitnxjdto) {
-		VACINITNXJ domain = vacinitnxjMapping.toDomain(vacinitnxjdto);
-        domain.setVacinitnxjid(vacinitnxj_id);
-		vacinitnxjService.update(domain);
-		VACINITNXJDTO dto = vacinitnxjMapping.toDto(domain);
+		VACINITNXJ domain  = vacinitnxjMapping.toDomain(vacinitnxjdto);
+        domain .setVacinitnxjid(vacinitnxj_id);
+		vacinitnxjService.update(domain );
+		VACINITNXJDTO dto = vacinitnxjMapping.toDto(domain );
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.vacinitnxjMapping,#vacinitnxjdtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"VACINITNXJ" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/vacinitnxjs/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<VACINITNXJDTO> vacinitnxjdtos) {

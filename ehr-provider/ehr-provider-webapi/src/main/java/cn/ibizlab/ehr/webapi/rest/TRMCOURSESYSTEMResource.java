@@ -52,14 +52,14 @@ public class TRMCOURSESYSTEMResource {
 	@RequestMapping(method = RequestMethod.PUT, value = "/trmcoursesystems/{trmcoursesystem_id}")
     @Transactional
     public ResponseEntity<TRMCOURSESYSTEMDTO> update(@PathVariable("trmcoursesystem_id") String trmcoursesystem_id, @RequestBody TRMCOURSESYSTEMDTO trmcoursesystemdto) {
-		TRMCOURSESYSTEM domain = trmcoursesystemMapping.toDomain(trmcoursesystemdto);
-        domain.setTrmcoursesystemid(trmcoursesystem_id);
-		trmcoursesystemService.update(domain);
-		TRMCOURSESYSTEMDTO dto = trmcoursesystemMapping.toDto(domain);
+		TRMCOURSESYSTEM domain  = trmcoursesystemMapping.toDomain(trmcoursesystemdto);
+        domain .setTrmcoursesystemid(trmcoursesystem_id);
+		trmcoursesystemService.update(domain );
+		TRMCOURSESYSTEMDTO dto = trmcoursesystemMapping.toDto(domain );
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.trmcoursesystemMapping,#trmcoursesystemdtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"TRMCOURSESYSTEM" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/trmcoursesystems/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<TRMCOURSESYSTEMDTO> trmcoursesystemdtos) {
@@ -74,7 +74,7 @@ public class TRMCOURSESYSTEMResource {
         return ResponseEntity.status(HttpStatus.OK).body(trmcoursesystemService.save(trmcoursesystemMapping.toDomain(trmcoursesystemdto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.trmcoursesystemMapping,#trmcoursesystemdtos})")
     @ApiOperation(value = "SaveBatch", tags = {"TRMCOURSESYSTEM" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmcoursesystems/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<TRMCOURSESYSTEMDTO> trmcoursesystemdtos) {
@@ -113,7 +113,7 @@ public class TRMCOURSESYSTEMResource {
          return ResponseEntity.status(HttpStatus.OK).body(trmcoursesystemService.remove(trmcoursesystem_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.trmcoursesystemMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"TRMCOURSESYSTEM" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/trmcoursesystems/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -132,7 +132,7 @@ public class TRMCOURSESYSTEMResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.trmcoursesystemMapping,#trmcoursesystemdtos})")
     @ApiOperation(value = "createBatch", tags = {"TRMCOURSESYSTEM" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmcoursesystems/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<TRMCOURSESYSTEMDTO> trmcoursesystemdtos) {

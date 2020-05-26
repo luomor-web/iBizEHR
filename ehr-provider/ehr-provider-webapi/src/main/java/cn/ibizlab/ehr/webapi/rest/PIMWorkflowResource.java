@@ -69,7 +69,7 @@ public class PIMWorkflowResource {
          return ResponseEntity.status(HttpStatus.OK).body(pimworkflowService.remove(pimworkflow_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.pimworkflowMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"PIMWorkflow" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimworkflows/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -84,7 +84,7 @@ public class PIMWorkflowResource {
         return ResponseEntity.status(HttpStatus.OK).body(pimworkflowService.save(pimworkflowMapping.toDomain(pimworkflowdto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.pimworkflowMapping,#pimworkflowdtos})")
     @ApiOperation(value = "SaveBatch", tags = {"PIMWorkflow" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimworkflows/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PIMWorkflowDTO> pimworkflowdtos) {
@@ -98,6 +98,7 @@ public class PIMWorkflowResource {
     @Transactional
     public ResponseEntity<PIMWorkflowDTO> sync(@PathVariable("pimworkflow_id") String pimworkflow_id, @RequestBody PIMWorkflowDTO pimworkflowdto) {
         PIMWorkflow pimworkflow = pimworkflowMapping.toDomain(pimworkflowdto);
+        pimworkflow.setPimworkflowid(pimworkflow_id);
         pimworkflow = pimworkflowService.sync(pimworkflow);
         pimworkflowdto = pimworkflowMapping.toDto(pimworkflow);
         return ResponseEntity.status(HttpStatus.OK).body(pimworkflowdto);
@@ -117,14 +118,14 @@ public class PIMWorkflowResource {
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimworkflows/{pimworkflow_id}")
     @Transactional
     public ResponseEntity<PIMWorkflowDTO> update(@PathVariable("pimworkflow_id") String pimworkflow_id, @RequestBody PIMWorkflowDTO pimworkflowdto) {
-		PIMWorkflow domain = pimworkflowMapping.toDomain(pimworkflowdto);
-        domain.setPimworkflowid(pimworkflow_id);
-		pimworkflowService.update(domain);
-		PIMWorkflowDTO dto = pimworkflowMapping.toDto(domain);
+		PIMWorkflow domain  = pimworkflowMapping.toDomain(pimworkflowdto);
+        domain .setPimworkflowid(pimworkflow_id);
+		pimworkflowService.update(domain );
+		PIMWorkflowDTO dto = pimworkflowMapping.toDto(domain );
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.pimworkflowMapping,#pimworkflowdtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"PIMWorkflow" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimworkflows/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PIMWorkflowDTO> pimworkflowdtos) {
@@ -143,7 +144,7 @@ public class PIMWorkflowResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.pimworkflowMapping,#pimworkflowdtos})")
     @ApiOperation(value = "createBatch", tags = {"PIMWorkflow" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimworkflows/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PIMWorkflowDTO> pimworkflowdtos) {

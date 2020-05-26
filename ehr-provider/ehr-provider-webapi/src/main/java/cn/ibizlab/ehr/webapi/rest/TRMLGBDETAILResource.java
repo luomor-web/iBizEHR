@@ -52,14 +52,14 @@ public class TRMLGBDETAILResource {
 	@RequestMapping(method = RequestMethod.PUT, value = "/trmlgbdetails/{trmlgbdetail_id}")
     @Transactional
     public ResponseEntity<TRMLGBDETAILDTO> update(@PathVariable("trmlgbdetail_id") String trmlgbdetail_id, @RequestBody TRMLGBDETAILDTO trmlgbdetaildto) {
-		TRMLGBDETAIL domain = trmlgbdetailMapping.toDomain(trmlgbdetaildto);
-        domain.setTrmlgbdetailid(trmlgbdetail_id);
-		trmlgbdetailService.update(domain);
-		TRMLGBDETAILDTO dto = trmlgbdetailMapping.toDto(domain);
+		TRMLGBDETAIL domain  = trmlgbdetailMapping.toDomain(trmlgbdetaildto);
+        domain .setTrmlgbdetailid(trmlgbdetail_id);
+		trmlgbdetailService.update(domain );
+		TRMLGBDETAILDTO dto = trmlgbdetailMapping.toDto(domain );
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.trmlgbdetailMapping,#trmlgbdetaildtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"TRMLGBDETAIL" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/trmlgbdetails/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<TRMLGBDETAILDTO> trmlgbdetaildtos) {
@@ -83,7 +83,7 @@ public class TRMLGBDETAILResource {
         return ResponseEntity.status(HttpStatus.OK).body(trmlgbdetailService.save(trmlgbdetailMapping.toDomain(trmlgbdetaildto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.trmlgbdetailMapping,#trmlgbdetaildtos})")
     @ApiOperation(value = "SaveBatch", tags = {"TRMLGBDETAIL" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmlgbdetails/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<TRMLGBDETAILDTO> trmlgbdetaildtos) {
@@ -116,7 +116,7 @@ public class TRMLGBDETAILResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.trmlgbdetailMapping,#trmlgbdetaildtos})")
     @ApiOperation(value = "createBatch", tags = {"TRMLGBDETAIL" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmlgbdetails/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<TRMLGBDETAILDTO> trmlgbdetaildtos) {
@@ -132,7 +132,7 @@ public class TRMLGBDETAILResource {
          return ResponseEntity.status(HttpStatus.OK).body(trmlgbdetailService.remove(trmlgbdetail_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.trmlgbdetailMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"TRMLGBDETAIL" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/trmlgbdetails/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {

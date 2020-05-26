@@ -55,7 +55,7 @@ public class ORMEDITIONResource {
          return ResponseEntity.status(HttpStatus.OK).body(ormeditionService.remove(ormedition_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.ormeditionMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"ORMEDITION" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/ormeditions/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -74,7 +74,7 @@ public class ORMEDITIONResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.ormeditionMapping,#ormeditiondtos})")
     @ApiOperation(value = "createBatch", tags = {"ORMEDITION" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormeditions/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<ORMEDITIONDTO> ormeditiondtos) {
@@ -89,7 +89,7 @@ public class ORMEDITIONResource {
         return ResponseEntity.status(HttpStatus.OK).body(ormeditionService.save(ormeditionMapping.toDomain(ormeditiondto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.ormeditionMapping,#ormeditiondtos})")
     @ApiOperation(value = "SaveBatch", tags = {"ORMEDITION" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormeditions/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<ORMEDITIONDTO> ormeditiondtos) {
@@ -109,14 +109,14 @@ public class ORMEDITIONResource {
 	@RequestMapping(method = RequestMethod.PUT, value = "/ormeditions/{ormedition_id}")
     @Transactional
     public ResponseEntity<ORMEDITIONDTO> update(@PathVariable("ormedition_id") String ormedition_id, @RequestBody ORMEDITIONDTO ormeditiondto) {
-		ORMEDITION domain = ormeditionMapping.toDomain(ormeditiondto);
-        domain.setOrmeditionid(ormedition_id);
-		ormeditionService.update(domain);
-		ORMEDITIONDTO dto = ormeditionMapping.toDto(domain);
+		ORMEDITION domain  = ormeditionMapping.toDomain(ormeditiondto);
+        domain .setOrmeditionid(ormedition_id);
+		ormeditionService.update(domain );
+		ORMEDITIONDTO dto = ormeditionMapping.toDto(domain );
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.ormeditionMapping,#ormeditiondtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"ORMEDITION" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/ormeditions/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<ORMEDITIONDTO> ormeditiondtos) {

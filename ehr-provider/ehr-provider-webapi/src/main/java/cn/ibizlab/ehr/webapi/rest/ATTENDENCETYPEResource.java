@@ -54,7 +54,7 @@ public class ATTENDENCETYPEResource {
         return ResponseEntity.status(HttpStatus.OK).body(attendencetypeService.save(attendencetypeMapping.toDomain(attendencetypedto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.attendencetypeMapping,#attendencetypedtos})")
     @ApiOperation(value = "SaveBatch", tags = {"ATTENDENCETYPE" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/attendencetypes/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<ATTENDENCETYPEDTO> attendencetypedtos) {
@@ -73,7 +73,7 @@ public class ATTENDENCETYPEResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.attendencetypeMapping,#attendencetypedtos})")
     @ApiOperation(value = "createBatch", tags = {"ATTENDENCETYPE" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/attendencetypes/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<ATTENDENCETYPEDTO> attendencetypedtos) {
@@ -96,7 +96,7 @@ public class ATTENDENCETYPEResource {
          return ResponseEntity.status(HttpStatus.OK).body(attendencetypeService.remove(attendencetype_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.attendencetypeMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"ATTENDENCETYPE" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/attendencetypes/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -125,14 +125,14 @@ public class ATTENDENCETYPEResource {
 	@RequestMapping(method = RequestMethod.PUT, value = "/attendencetypes/{attendencetype_id}")
     @Transactional
     public ResponseEntity<ATTENDENCETYPEDTO> update(@PathVariable("attendencetype_id") String attendencetype_id, @RequestBody ATTENDENCETYPEDTO attendencetypedto) {
-		ATTENDENCETYPE domain = attendencetypeMapping.toDomain(attendencetypedto);
-        domain.setAttendencetypeid(attendencetype_id);
-		attendencetypeService.update(domain);
-		ATTENDENCETYPEDTO dto = attendencetypeMapping.toDto(domain);
+		ATTENDENCETYPE domain  = attendencetypeMapping.toDomain(attendencetypedto);
+        domain .setAttendencetypeid(attendencetype_id);
+		attendencetypeService.update(domain );
+		ATTENDENCETYPEDTO dto = attendencetypeMapping.toDto(domain );
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.attendencetypeMapping,#attendencetypedtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"ATTENDENCETYPE" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/attendencetypes/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<ATTENDENCETYPEDTO> attendencetypedtos) {

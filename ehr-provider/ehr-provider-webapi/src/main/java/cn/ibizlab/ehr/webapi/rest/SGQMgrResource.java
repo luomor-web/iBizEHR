@@ -74,7 +74,7 @@ public class SGQMgrResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.sgqmgrMapping,#sgqmgrdtos})")
     @ApiOperation(value = "createBatch", tags = {"SGQMgr" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/sgqmgrs/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<SGQMgrDTO> sgqmgrdtos) {
@@ -87,14 +87,14 @@ public class SGQMgrResource {
 	@RequestMapping(method = RequestMethod.PUT, value = "/sgqmgrs/{sgqmgr_id}")
     @Transactional
     public ResponseEntity<SGQMgrDTO> update(@PathVariable("sgqmgr_id") String sgqmgr_id, @RequestBody SGQMgrDTO sgqmgrdto) {
-		SGQMgr domain = sgqmgrMapping.toDomain(sgqmgrdto);
-        domain.setSgqmgrid(sgqmgr_id);
-		sgqmgrService.update(domain);
-		SGQMgrDTO dto = sgqmgrMapping.toDto(domain);
+		SGQMgr domain  = sgqmgrMapping.toDomain(sgqmgrdto);
+        domain .setSgqmgrid(sgqmgr_id);
+		sgqmgrService.update(domain );
+		SGQMgrDTO dto = sgqmgrMapping.toDto(domain );
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.sgqmgrMapping,#sgqmgrdtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"SGQMgr" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/sgqmgrs/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<SGQMgrDTO> sgqmgrdtos) {
@@ -110,7 +110,7 @@ public class SGQMgrResource {
          return ResponseEntity.status(HttpStatus.OK).body(sgqmgrService.remove(sgqmgr_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.sgqmgrMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"SGQMgr" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/sgqmgrs/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -132,7 +132,7 @@ public class SGQMgrResource {
         return ResponseEntity.status(HttpStatus.OK).body(sgqmgrService.save(sgqmgrMapping.toDomain(sgqmgrdto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.sgqmgrMapping,#sgqmgrdtos})")
     @ApiOperation(value = "SaveBatch", tags = {"SGQMgr" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/sgqmgrs/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<SGQMgrDTO> sgqmgrdtos) {

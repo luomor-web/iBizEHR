@@ -75,14 +75,14 @@ public class ORMXMGLResource {
 	@RequestMapping(method = RequestMethod.PUT, value = "/ormxmgls/{ormxmgl_id}")
     @Transactional
     public ResponseEntity<ORMXMGLDTO> update(@PathVariable("ormxmgl_id") String ormxmgl_id, @RequestBody ORMXMGLDTO ormxmgldto) {
-		ORMXMGL domain = ormxmglMapping.toDomain(ormxmgldto);
-        domain.setOrmxmglid(ormxmgl_id);
-		ormxmglService.update(domain);
-		ORMXMGLDTO dto = ormxmglMapping.toDto(domain);
+		ORMXMGL domain  = ormxmglMapping.toDomain(ormxmgldto);
+        domain .setOrmxmglid(ormxmgl_id);
+		ormxmglService.update(domain );
+		ORMXMGLDTO dto = ormxmglMapping.toDto(domain );
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.ormxmglMapping,#ormxmgldtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"ORMXMGL" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/ormxmgls/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<ORMXMGLDTO> ormxmgldtos) {
@@ -101,7 +101,7 @@ public class ORMXMGLResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.ormxmglMapping,#ormxmgldtos})")
     @ApiOperation(value = "createBatch", tags = {"ORMXMGL" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormxmgls/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<ORMXMGLDTO> ormxmgldtos) {
@@ -117,7 +117,7 @@ public class ORMXMGLResource {
          return ResponseEntity.status(HttpStatus.OK).body(ormxmglService.remove(ormxmgl_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.ormxmglMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"ORMXMGL" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/ormxmgls/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -131,6 +131,7 @@ public class ORMXMGLResource {
     @Transactional
     public ResponseEntity<ORMXMGLDTO> synchro(@PathVariable("ormxmgl_id") String ormxmgl_id, @RequestBody ORMXMGLDTO ormxmgldto) {
         ORMXMGL ormxmgl = ormxmglMapping.toDomain(ormxmgldto);
+        ormxmgl.setOrmxmglid(ormxmgl_id);
         ormxmgl = ormxmglService.synchro(ormxmgl);
         ormxmgldto = ormxmglMapping.toDto(ormxmgl);
         return ResponseEntity.status(HttpStatus.OK).body(ormxmgldto);
@@ -143,7 +144,7 @@ public class ORMXMGLResource {
         return ResponseEntity.status(HttpStatus.OK).body(ormxmglService.save(ormxmglMapping.toDomain(ormxmgldto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.ormxmglMapping,#ormxmgldtos})")
     @ApiOperation(value = "SaveBatch", tags = {"ORMXMGL" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormxmgls/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<ORMXMGLDTO> ormxmgldtos) {

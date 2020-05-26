@@ -52,14 +52,14 @@ public class PIMRESEARCHFINDINGSResource {
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimresearchfindings/{pimresearchfindings_id}")
     @Transactional
     public ResponseEntity<PIMRESEARCHFINDINGSDTO> update(@PathVariable("pimresearchfindings_id") String pimresearchfindings_id, @RequestBody PIMRESEARCHFINDINGSDTO pimresearchfindingsdto) {
-		PIMRESEARCHFINDINGS domain = pimresearchfindingsMapping.toDomain(pimresearchfindingsdto);
-        domain.setPimresearchfindingsid(pimresearchfindings_id);
-		pimresearchfindingsService.update(domain);
-		PIMRESEARCHFINDINGSDTO dto = pimresearchfindingsMapping.toDto(domain);
+		PIMRESEARCHFINDINGS domain  = pimresearchfindingsMapping.toDomain(pimresearchfindingsdto);
+        domain .setPimresearchfindingsid(pimresearchfindings_id);
+		pimresearchfindingsService.update(domain );
+		PIMRESEARCHFINDINGSDTO dto = pimresearchfindingsMapping.toDto(domain );
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.pimresearchfindingsMapping,#pimresearchfindingsdtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"PIMRESEARCHFINDINGS" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimresearchfindings/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PIMRESEARCHFINDINGSDTO> pimresearchfindingsdtos) {
@@ -75,7 +75,7 @@ public class PIMRESEARCHFINDINGSResource {
          return ResponseEntity.status(HttpStatus.OK).body(pimresearchfindingsService.remove(pimresearchfindings_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.pimresearchfindingsMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"PIMRESEARCHFINDINGS" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimresearchfindings/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -113,7 +113,7 @@ public class PIMRESEARCHFINDINGSResource {
         return ResponseEntity.status(HttpStatus.OK).body(pimresearchfindingsService.save(pimresearchfindingsMapping.toDomain(pimresearchfindingsdto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.pimresearchfindingsMapping,#pimresearchfindingsdtos})")
     @ApiOperation(value = "SaveBatch", tags = {"PIMRESEARCHFINDINGS" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimresearchfindings/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PIMRESEARCHFINDINGSDTO> pimresearchfindingsdtos) {
@@ -132,7 +132,7 @@ public class PIMRESEARCHFINDINGSResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.pimresearchfindingsMapping,#pimresearchfindingsdtos})")
     @ApiOperation(value = "createBatch", tags = {"PIMRESEARCHFINDINGS" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimresearchfindings/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PIMRESEARCHFINDINGSDTO> pimresearchfindingsdtos) {
@@ -216,7 +216,7 @@ public class PIMRESEARCHFINDINGSResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.pimresearchfindingsMapping,#pimresearchfindingsdtos})")
     @ApiOperation(value = "UpdateBatchByPIMPERSON", tags = {"PIMRESEARCHFINDINGS" },  notes = "UpdateBatchByPIMPERSON")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimpeople/{pimperson_id}/pimresearchfindings/batch")
     public ResponseEntity<Boolean> updateBatchByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody List<PIMRESEARCHFINDINGSDTO> pimresearchfindingsdtos) {
@@ -236,7 +236,7 @@ public class PIMRESEARCHFINDINGSResource {
 		return ResponseEntity.status(HttpStatus.OK).body(pimresearchfindingsService.remove(pimresearchfindings_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.pimresearchfindingsMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatchByPIMPERSON", tags = {"PIMRESEARCHFINDINGS" },  notes = "RemoveBatchByPIMPERSON")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimpeople/{pimperson_id}/pimresearchfindings/batch")
     public ResponseEntity<Boolean> removeBatchByPIMPERSON(@RequestBody List<String> ids) {
@@ -278,7 +278,7 @@ public class PIMRESEARCHFINDINGSResource {
         return ResponseEntity.status(HttpStatus.OK).body(pimresearchfindingsService.save(domain));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.pimresearchfindingsMapping,#pimresearchfindingsdtos})")
     @ApiOperation(value = "SaveBatchByPIMPERSON", tags = {"PIMRESEARCHFINDINGS" },  notes = "SaveBatchByPIMPERSON")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimresearchfindings/savebatch")
     public ResponseEntity<Boolean> saveBatchByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody List<PIMRESEARCHFINDINGSDTO> pimresearchfindingsdtos) {
@@ -302,7 +302,7 @@ public class PIMRESEARCHFINDINGSResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.pimresearchfindingsMapping,#pimresearchfindingsdtos})")
     @ApiOperation(value = "createBatchByPIMPERSON", tags = {"PIMRESEARCHFINDINGS" },  notes = "createBatchByPIMPERSON")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimresearchfindings/batch")
     public ResponseEntity<Boolean> createBatchByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody List<PIMRESEARCHFINDINGSDTO> pimresearchfindingsdtos) {

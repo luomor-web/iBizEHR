@@ -55,7 +55,7 @@ public class PIMEXPACCOUNTResource {
          return ResponseEntity.status(HttpStatus.OK).body(pimexpaccountService.remove(pimexpaccount_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.pimexpaccountMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"PIMEXPACCOUNT" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimexpaccounts/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -79,7 +79,7 @@ public class PIMEXPACCOUNTResource {
         return ResponseEntity.status(HttpStatus.OK).body(pimexpaccountService.save(pimexpaccountMapping.toDomain(pimexpaccountdto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.pimexpaccountMapping,#pimexpaccountdtos})")
     @ApiOperation(value = "SaveBatch", tags = {"PIMEXPACCOUNT" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimexpaccounts/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PIMEXPACCOUNTDTO> pimexpaccountdtos) {
@@ -92,14 +92,14 @@ public class PIMEXPACCOUNTResource {
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimexpaccounts/{pimexpaccount_id}")
     @Transactional
     public ResponseEntity<PIMEXPACCOUNTDTO> update(@PathVariable("pimexpaccount_id") String pimexpaccount_id, @RequestBody PIMEXPACCOUNTDTO pimexpaccountdto) {
-		PIMEXPACCOUNT domain = pimexpaccountMapping.toDomain(pimexpaccountdto);
-        domain.setPimexpaccountid(pimexpaccount_id);
-		pimexpaccountService.update(domain);
-		PIMEXPACCOUNTDTO dto = pimexpaccountMapping.toDto(domain);
+		PIMEXPACCOUNT domain  = pimexpaccountMapping.toDomain(pimexpaccountdto);
+        domain .setPimexpaccountid(pimexpaccount_id);
+		pimexpaccountService.update(domain );
+		PIMEXPACCOUNTDTO dto = pimexpaccountMapping.toDto(domain );
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.pimexpaccountMapping,#pimexpaccountdtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"PIMEXPACCOUNT" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimexpaccounts/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PIMEXPACCOUNTDTO> pimexpaccountdtos) {
@@ -132,7 +132,7 @@ public class PIMEXPACCOUNTResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.pimexpaccountMapping,#pimexpaccountdtos})")
     @ApiOperation(value = "createBatch", tags = {"PIMEXPACCOUNT" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimexpaccounts/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PIMEXPACCOUNTDTO> pimexpaccountdtos) {

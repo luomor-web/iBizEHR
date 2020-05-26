@@ -60,6 +60,7 @@ public class SOCWELFAREINFOResource {
     @Transactional
     public ResponseEntity<SOCWELFAREINFODTO> getFJSJofPerson(@PathVariable("socwelfareinfo_id") String socwelfareinfo_id, @RequestBody SOCWELFAREINFODTO socwelfareinfodto) {
         SOCWELFAREINFO socwelfareinfo = socwelfareinfoMapping.toDomain(socwelfareinfodto);
+        socwelfareinfo.setSocwelfareinfoid(socwelfareinfo_id);
         socwelfareinfo = socwelfareinfoService.getFJSJofPerson(socwelfareinfo);
         socwelfareinfodto = socwelfareinfoMapping.toDto(socwelfareinfo);
         return ResponseEntity.status(HttpStatus.OK).body(socwelfareinfodto);
@@ -72,7 +73,7 @@ public class SOCWELFAREINFOResource {
         return ResponseEntity.status(HttpStatus.OK).body(socwelfareinfoService.save(socwelfareinfoMapping.toDomain(socwelfareinfodto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.socwelfareinfoMapping,#socwelfareinfodtos})")
     @ApiOperation(value = "SaveBatch", tags = {"SOCWELFAREINFO" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/socwelfareinfos/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<SOCWELFAREINFODTO> socwelfareinfodtos) {
@@ -102,6 +103,7 @@ public class SOCWELFAREINFOResource {
     @Transactional
     public ResponseEntity<SOCWELFAREINFODTO> getCBDofSOCCOMPANYWEL(@PathVariable("socwelfareinfo_id") String socwelfareinfo_id, @RequestBody SOCWELFAREINFODTO socwelfareinfodto) {
         SOCWELFAREINFO socwelfareinfo = socwelfareinfoMapping.toDomain(socwelfareinfodto);
+        socwelfareinfo.setSocwelfareinfoid(socwelfareinfo_id);
         socwelfareinfo = socwelfareinfoService.getCBDofSOCCOMPANYWEL(socwelfareinfo);
         socwelfareinfodto = socwelfareinfoMapping.toDto(socwelfareinfo);
         return ResponseEntity.status(HttpStatus.OK).body(socwelfareinfodto);
@@ -112,14 +114,14 @@ public class SOCWELFAREINFOResource {
 	@RequestMapping(method = RequestMethod.PUT, value = "/socwelfareinfos/{socwelfareinfo_id}")
     @Transactional
     public ResponseEntity<SOCWELFAREINFODTO> update(@PathVariable("socwelfareinfo_id") String socwelfareinfo_id, @RequestBody SOCWELFAREINFODTO socwelfareinfodto) {
-		SOCWELFAREINFO domain = socwelfareinfoMapping.toDomain(socwelfareinfodto);
-        domain.setSocwelfareinfoid(socwelfareinfo_id);
-		socwelfareinfoService.update(domain);
-		SOCWELFAREINFODTO dto = socwelfareinfoMapping.toDto(domain);
+		SOCWELFAREINFO domain  = socwelfareinfoMapping.toDomain(socwelfareinfodto);
+        domain .setSocwelfareinfoid(socwelfareinfo_id);
+		socwelfareinfoService.update(domain );
+		SOCWELFAREINFODTO dto = socwelfareinfoMapping.toDto(domain );
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.socwelfareinfoMapping,#socwelfareinfodtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"SOCWELFAREINFO" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/socwelfareinfos/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<SOCWELFAREINFODTO> socwelfareinfodtos) {
@@ -135,7 +137,7 @@ public class SOCWELFAREINFOResource {
          return ResponseEntity.status(HttpStatus.OK).body(socwelfareinfoService.remove(socwelfareinfo_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.socwelfareinfoMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"SOCWELFAREINFO" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/socwelfareinfos/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -154,7 +156,7 @@ public class SOCWELFAREINFOResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.socwelfareinfoMapping,#socwelfareinfodtos})")
     @ApiOperation(value = "createBatch", tags = {"SOCWELFAREINFO" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/socwelfareinfos/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<SOCWELFAREINFODTO> socwelfareinfodtos) {

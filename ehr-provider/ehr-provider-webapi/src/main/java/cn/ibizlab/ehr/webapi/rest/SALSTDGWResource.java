@@ -58,7 +58,7 @@ public class SALSTDGWResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.salstdgwMapping,#salstdgwdtos})")
     @ApiOperation(value = "createBatch", tags = {"SALSTDGW" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/salstdgws/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<SALSTDGWDTO> salstdgwdtos) {
@@ -81,7 +81,7 @@ public class SALSTDGWResource {
          return ResponseEntity.status(HttpStatus.OK).body(salstdgwService.remove(salstdgw_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.salstdgwMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"SALSTDGW" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/salstdgws/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -112,7 +112,7 @@ public class SALSTDGWResource {
         return ResponseEntity.status(HttpStatus.OK).body(salstdgwService.save(salstdgwMapping.toDomain(salstdgwdto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.salstdgwMapping,#salstdgwdtos})")
     @ApiOperation(value = "SaveBatch", tags = {"SALSTDGW" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/salstdgws/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<SALSTDGWDTO> salstdgwdtos) {
@@ -125,14 +125,14 @@ public class SALSTDGWResource {
 	@RequestMapping(method = RequestMethod.PUT, value = "/salstdgws/{salstdgw_id}")
     @Transactional
     public ResponseEntity<SALSTDGWDTO> update(@PathVariable("salstdgw_id") String salstdgw_id, @RequestBody SALSTDGWDTO salstdgwdto) {
-		SALSTDGW domain = salstdgwMapping.toDomain(salstdgwdto);
-        domain.setSalstdgwid(salstdgw_id);
-		salstdgwService.update(domain);
-		SALSTDGWDTO dto = salstdgwMapping.toDto(domain);
+		SALSTDGW domain  = salstdgwMapping.toDomain(salstdgwdto);
+        domain .setSalstdgwid(salstdgw_id);
+		salstdgwService.update(domain );
+		SALSTDGWDTO dto = salstdgwMapping.toDto(domain );
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.salstdgwMapping,#salstdgwdtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"SALSTDGW" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/salstdgws/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<SALSTDGWDTO> salstdgwdtos) {

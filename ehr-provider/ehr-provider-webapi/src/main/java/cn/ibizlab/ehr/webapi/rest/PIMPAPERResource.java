@@ -52,14 +52,14 @@ public class PIMPAPERResource {
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimpapers/{pimpaper_id}")
     @Transactional
     public ResponseEntity<PIMPAPERDTO> update(@PathVariable("pimpaper_id") String pimpaper_id, @RequestBody PIMPAPERDTO pimpaperdto) {
-		PIMPAPER domain = pimpaperMapping.toDomain(pimpaperdto);
-        domain.setPimpaperid(pimpaper_id);
-		pimpaperService.update(domain);
-		PIMPAPERDTO dto = pimpaperMapping.toDto(domain);
+		PIMPAPER domain  = pimpaperMapping.toDomain(pimpaperdto);
+        domain .setPimpaperid(pimpaper_id);
+		pimpaperService.update(domain );
+		PIMPAPERDTO dto = pimpaperMapping.toDto(domain );
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.pimpaperMapping,#pimpaperdtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"PIMPAPER" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimpapers/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PIMPAPERDTO> pimpaperdtos) {
@@ -82,7 +82,7 @@ public class PIMPAPERResource {
          return ResponseEntity.status(HttpStatus.OK).body(pimpaperService.remove(pimpaper_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.pimpaperMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"PIMPAPER" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimpapers/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -101,7 +101,7 @@ public class PIMPAPERResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.pimpaperMapping,#pimpaperdtos})")
     @ApiOperation(value = "createBatch", tags = {"PIMPAPER" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpapers/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PIMPAPERDTO> pimpaperdtos) {
@@ -125,7 +125,7 @@ public class PIMPAPERResource {
         return ResponseEntity.status(HttpStatus.OK).body(pimpaperService.save(pimpaperMapping.toDomain(pimpaperdto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.pimpaperMapping,#pimpaperdtos})")
     @ApiOperation(value = "SaveBatch", tags = {"PIMPAPER" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpapers/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PIMPAPERDTO> pimpaperdtos) {
@@ -216,7 +216,7 @@ public class PIMPAPERResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.pimpaperMapping,#pimpaperdtos})")
     @ApiOperation(value = "UpdateBatchByPIMPERSON", tags = {"PIMPAPER" },  notes = "UpdateBatchByPIMPERSON")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimpeople/{pimperson_id}/pimpapers/batch")
     public ResponseEntity<Boolean> updateBatchByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody List<PIMPAPERDTO> pimpaperdtos) {
@@ -245,7 +245,7 @@ public class PIMPAPERResource {
 		return ResponseEntity.status(HttpStatus.OK).body(pimpaperService.remove(pimpaper_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.pimpaperMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatchByPIMPERSON", tags = {"PIMPAPER" },  notes = "RemoveBatchByPIMPERSON")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimpeople/{pimperson_id}/pimpapers/batch")
     public ResponseEntity<Boolean> removeBatchByPIMPERSON(@RequestBody List<String> ids) {
@@ -265,7 +265,7 @@ public class PIMPAPERResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.pimpaperMapping,#pimpaperdtos})")
     @ApiOperation(value = "createBatchByPIMPERSON", tags = {"PIMPAPER" },  notes = "createBatchByPIMPERSON")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimpapers/batch")
     public ResponseEntity<Boolean> createBatchByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody List<PIMPAPERDTO> pimpaperdtos) {
@@ -295,7 +295,7 @@ public class PIMPAPERResource {
         return ResponseEntity.status(HttpStatus.OK).body(pimpaperService.save(domain));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.pimpaperMapping,#pimpaperdtos})")
     @ApiOperation(value = "SaveBatchByPIMPERSON", tags = {"PIMPAPER" },  notes = "SaveBatchByPIMPERSON")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimpapers/savebatch")
     public ResponseEntity<Boolean> saveBatchByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody List<PIMPAPERDTO> pimpaperdtos) {

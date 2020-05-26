@@ -59,14 +59,14 @@ public class ATTENDANCEMREPORTMXResource {
 	@RequestMapping(method = RequestMethod.PUT, value = "/attendancemreportmxes/{attendancemreportmx_id}")
     @Transactional
     public ResponseEntity<ATTENDANCEMREPORTMXDTO> update(@PathVariable("attendancemreportmx_id") String attendancemreportmx_id, @RequestBody ATTENDANCEMREPORTMXDTO attendancemreportmxdto) {
-		ATTENDANCEMREPORTMX domain = attendancemreportmxMapping.toDomain(attendancemreportmxdto);
-        domain.setAttendancemreportmxid(attendancemreportmx_id);
-		attendancemreportmxService.update(domain);
-		ATTENDANCEMREPORTMXDTO dto = attendancemreportmxMapping.toDto(domain);
+		ATTENDANCEMREPORTMX domain  = attendancemreportmxMapping.toDomain(attendancemreportmxdto);
+        domain .setAttendancemreportmxid(attendancemreportmx_id);
+		attendancemreportmxService.update(domain );
+		ATTENDANCEMREPORTMXDTO dto = attendancemreportmxMapping.toDto(domain );
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.attendancemreportmxMapping,#attendancemreportmxdtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"ATTENDANCEMREPORTMX" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/attendancemreportmxes/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<ATTENDANCEMREPORTMXDTO> attendancemreportmxdtos) {
@@ -82,7 +82,7 @@ public class ATTENDANCEMREPORTMXResource {
          return ResponseEntity.status(HttpStatus.OK).body(attendancemreportmxService.remove(attendancemreportmx_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.attendancemreportmxMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"ATTENDANCEMREPORTMX" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/attendancemreportmxes/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -113,7 +113,7 @@ public class ATTENDANCEMREPORTMXResource {
         return ResponseEntity.status(HttpStatus.OK).body(attendancemreportmxService.save(attendancemreportmxMapping.toDomain(attendancemreportmxdto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.attendancemreportmxMapping,#attendancemreportmxdtos})")
     @ApiOperation(value = "SaveBatch", tags = {"ATTENDANCEMREPORTMX" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/attendancemreportmxes/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<ATTENDANCEMREPORTMXDTO> attendancemreportmxdtos) {
@@ -132,7 +132,7 @@ public class ATTENDANCEMREPORTMXResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.attendancemreportmxMapping,#attendancemreportmxdtos})")
     @ApiOperation(value = "createBatch", tags = {"ATTENDANCEMREPORTMX" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/attendancemreportmxes/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<ATTENDANCEMREPORTMXDTO> attendancemreportmxdtos) {
@@ -146,6 +146,7 @@ public class ATTENDANCEMREPORTMXResource {
     @Transactional
     public ResponseEntity<ATTENDANCEMREPORTMXDTO> export2Excel(@PathVariable("attendancemreportmx_id") String attendancemreportmx_id, @RequestBody ATTENDANCEMREPORTMXDTO attendancemreportmxdto) {
         ATTENDANCEMREPORTMX attendancemreportmx = attendancemreportmxMapping.toDomain(attendancemreportmxdto);
+        attendancemreportmx.setAttendancemreportmxid(attendancemreportmx_id);
         attendancemreportmx = attendancemreportmxService.export2Excel(attendancemreportmx);
         attendancemreportmxdto = attendancemreportmxMapping.toDto(attendancemreportmx);
         return ResponseEntity.status(HttpStatus.OK).body(attendancemreportmxdto);
@@ -236,7 +237,7 @@ public class ATTENDANCEMREPORTMXResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.attendancemreportmxMapping,#attendancemreportmxdtos})")
     @ApiOperation(value = "UpdateBatchByPIMPERSON", tags = {"ATTENDANCEMREPORTMX" },  notes = "UpdateBatchByPIMPERSON")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimpeople/{pimperson_id}/attendancemreportmxes/batch")
     public ResponseEntity<Boolean> updateBatchByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody List<ATTENDANCEMREPORTMXDTO> attendancemreportmxdtos) {
@@ -256,7 +257,7 @@ public class ATTENDANCEMREPORTMXResource {
 		return ResponseEntity.status(HttpStatus.OK).body(attendancemreportmxService.remove(attendancemreportmx_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.attendancemreportmxMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatchByPIMPERSON", tags = {"ATTENDANCEMREPORTMX" },  notes = "RemoveBatchByPIMPERSON")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimpeople/{pimperson_id}/attendancemreportmxes/batch")
     public ResponseEntity<Boolean> removeBatchByPIMPERSON(@RequestBody List<String> ids) {
@@ -289,7 +290,7 @@ public class ATTENDANCEMREPORTMXResource {
         return ResponseEntity.status(HttpStatus.OK).body(attendancemreportmxService.save(domain));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.attendancemreportmxMapping,#attendancemreportmxdtos})")
     @ApiOperation(value = "SaveBatchByPIMPERSON", tags = {"ATTENDANCEMREPORTMX" },  notes = "SaveBatchByPIMPERSON")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/attendancemreportmxes/savebatch")
     public ResponseEntity<Boolean> saveBatchByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody List<ATTENDANCEMREPORTMXDTO> attendancemreportmxdtos) {
@@ -313,7 +314,7 @@ public class ATTENDANCEMREPORTMXResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.attendancemreportmxMapping,#attendancemreportmxdtos})")
     @ApiOperation(value = "createBatchByPIMPERSON", tags = {"ATTENDANCEMREPORTMX" },  notes = "createBatchByPIMPERSON")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/attendancemreportmxes/batch")
     public ResponseEntity<Boolean> createBatchByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody List<ATTENDANCEMREPORTMXDTO> attendancemreportmxdtos) {

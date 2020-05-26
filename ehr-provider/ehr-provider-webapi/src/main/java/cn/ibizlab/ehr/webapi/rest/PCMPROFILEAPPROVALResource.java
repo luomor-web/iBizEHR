@@ -52,14 +52,14 @@ public class PCMPROFILEAPPROVALResource {
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmprofileapprovals/{pcmprofileapproval_id}")
     @Transactional
     public ResponseEntity<PCMPROFILEAPPROVALDTO> update(@PathVariable("pcmprofileapproval_id") String pcmprofileapproval_id, @RequestBody PCMPROFILEAPPROVALDTO pcmprofileapprovaldto) {
-		PCMPROFILEAPPROVAL domain = pcmprofileapprovalMapping.toDomain(pcmprofileapprovaldto);
-        domain.setPcmprofileapprovalid(pcmprofileapproval_id);
-		pcmprofileapprovalService.update(domain);
-		PCMPROFILEAPPROVALDTO dto = pcmprofileapprovalMapping.toDto(domain);
+		PCMPROFILEAPPROVAL domain  = pcmprofileapprovalMapping.toDomain(pcmprofileapprovaldto);
+        domain .setPcmprofileapprovalid(pcmprofileapproval_id);
+		pcmprofileapprovalService.update(domain );
+		PCMPROFILEAPPROVALDTO dto = pcmprofileapprovalMapping.toDto(domain );
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.pcmprofileapprovalMapping,#pcmprofileapprovaldtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"PCMPROFILEAPPROVAL" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmprofileapprovals/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PCMPROFILEAPPROVALDTO> pcmprofileapprovaldtos) {
@@ -85,7 +85,7 @@ public class PCMPROFILEAPPROVALResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.pcmprofileapprovalMapping,#pcmprofileapprovaldtos})")
     @ApiOperation(value = "createBatch", tags = {"PCMPROFILEAPPROVAL" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofileapprovals/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PCMPROFILEAPPROVALDTO> pcmprofileapprovaldtos) {
@@ -100,7 +100,7 @@ public class PCMPROFILEAPPROVALResource {
         return ResponseEntity.status(HttpStatus.OK).body(pcmprofileapprovalService.save(pcmprofileapprovalMapping.toDomain(pcmprofileapprovaldto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.pcmprofileapprovalMapping,#pcmprofileapprovaldtos})")
     @ApiOperation(value = "SaveBatch", tags = {"PCMPROFILEAPPROVAL" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofileapprovals/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PCMPROFILEAPPROVALDTO> pcmprofileapprovaldtos) {
@@ -116,7 +116,7 @@ public class PCMPROFILEAPPROVALResource {
          return ResponseEntity.status(HttpStatus.OK).body(pcmprofileapprovalService.remove(pcmprofileapproval_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.pcmprofileapprovalMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"PCMPROFILEAPPROVAL" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmprofileapprovals/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -195,7 +195,7 @@ public class PCMPROFILEAPPROVALResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.pcmprofileapprovalMapping,#pcmprofileapprovaldtos})")
     @ApiOperation(value = "UpdateBatchByPCMPROFILE", tags = {"PCMPROFILEAPPROVAL" },  notes = "UpdateBatchByPCMPROFILE")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmprofiles/{pcmprofile_id}/pcmprofileapprovals/batch")
     public ResponseEntity<Boolean> updateBatchByPCMPROFILE(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody List<PCMPROFILEAPPROVALDTO> pcmprofileapprovaldtos) {
@@ -228,7 +228,7 @@ public class PCMPROFILEAPPROVALResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.pcmprofileapprovalMapping,#pcmprofileapprovaldtos})")
     @ApiOperation(value = "createBatchByPCMPROFILE", tags = {"PCMPROFILEAPPROVAL" },  notes = "createBatchByPCMPROFILE")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/pcmprofileapprovals/batch")
     public ResponseEntity<Boolean> createBatchByPCMPROFILE(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody List<PCMPROFILEAPPROVALDTO> pcmprofileapprovaldtos) {
@@ -249,7 +249,7 @@ public class PCMPROFILEAPPROVALResource {
         return ResponseEntity.status(HttpStatus.OK).body(pcmprofileapprovalService.save(domain));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.pcmprofileapprovalMapping,#pcmprofileapprovaldtos})")
     @ApiOperation(value = "SaveBatchByPCMPROFILE", tags = {"PCMPROFILEAPPROVAL" },  notes = "SaveBatchByPCMPROFILE")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/pcmprofileapprovals/savebatch")
     public ResponseEntity<Boolean> saveBatchByPCMPROFILE(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody List<PCMPROFILEAPPROVALDTO> pcmprofileapprovaldtos) {
@@ -269,7 +269,7 @@ public class PCMPROFILEAPPROVALResource {
 		return ResponseEntity.status(HttpStatus.OK).body(pcmprofileapprovalService.remove(pcmprofileapproval_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.pcmprofileapprovalMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatchByPCMPROFILE", tags = {"PCMPROFILEAPPROVAL" },  notes = "RemoveBatchByPCMPROFILE")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmprofiles/{pcmprofile_id}/pcmprofileapprovals/batch")
     public ResponseEntity<Boolean> removeBatchByPCMPROFILE(@RequestBody List<String> ids) {

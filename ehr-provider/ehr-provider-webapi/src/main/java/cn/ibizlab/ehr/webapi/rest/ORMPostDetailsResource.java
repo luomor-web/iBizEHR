@@ -58,7 +58,7 @@ public class ORMPostDetailsResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.ormpostdetailsMapping,#ormpostdetailsdtos})")
     @ApiOperation(value = "createBatch", tags = {"ORMPostDetails" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormpostdetails/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<ORMPostDetailsDTO> ormpostdetailsdtos) {
@@ -87,14 +87,14 @@ public class ORMPostDetailsResource {
 	@RequestMapping(method = RequestMethod.PUT, value = "/ormpostdetails/{ormpostdetails_id}")
     @Transactional
     public ResponseEntity<ORMPostDetailsDTO> update(@PathVariable("ormpostdetails_id") String ormpostdetails_id, @RequestBody ORMPostDetailsDTO ormpostdetailsdto) {
-		ORMPostDetails domain = ormpostdetailsMapping.toDomain(ormpostdetailsdto);
-        domain.setOrmpostdetailsid(ormpostdetails_id);
-		ormpostdetailsService.update(domain);
-		ORMPostDetailsDTO dto = ormpostdetailsMapping.toDto(domain);
+		ORMPostDetails domain  = ormpostdetailsMapping.toDomain(ormpostdetailsdto);
+        domain .setOrmpostdetailsid(ormpostdetails_id);
+		ormpostdetailsService.update(domain );
+		ORMPostDetailsDTO dto = ormpostdetailsMapping.toDto(domain );
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.ormpostdetailsMapping,#ormpostdetailsdtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"ORMPostDetails" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/ormpostdetails/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<ORMPostDetailsDTO> ormpostdetailsdtos) {
@@ -116,7 +116,7 @@ public class ORMPostDetailsResource {
         return ResponseEntity.status(HttpStatus.OK).body(ormpostdetailsService.save(ormpostdetailsMapping.toDomain(ormpostdetailsdto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.ormpostdetailsMapping,#ormpostdetailsdtos})")
     @ApiOperation(value = "SaveBatch", tags = {"ORMPostDetails" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormpostdetails/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<ORMPostDetailsDTO> ormpostdetailsdtos) {
@@ -132,7 +132,7 @@ public class ORMPostDetailsResource {
          return ResponseEntity.status(HttpStatus.OK).body(ormpostdetailsService.remove(ormpostdetails_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.ormpostdetailsMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"ORMPostDetails" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/ormpostdetails/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {

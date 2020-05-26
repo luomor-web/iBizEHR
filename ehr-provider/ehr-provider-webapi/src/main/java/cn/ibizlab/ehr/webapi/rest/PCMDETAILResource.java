@@ -55,7 +55,7 @@ public class PCMDETAILResource {
          return ResponseEntity.status(HttpStatus.OK).body(pcmdetailService.remove(pcmdetail_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.pcmdetailMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"PCMDETAIL" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmdetails/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -68,14 +68,14 @@ public class PCMDETAILResource {
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmdetails/{pcmdetail_id}")
     @Transactional
     public ResponseEntity<PCMDETAILDTO> update(@PathVariable("pcmdetail_id") String pcmdetail_id, @RequestBody PCMDETAILDTO pcmdetaildto) {
-		PCMDETAIL domain = pcmdetailMapping.toDomain(pcmdetaildto);
-        domain.setPcmdetailid(pcmdetail_id);
-		pcmdetailService.update(domain);
-		PCMDETAILDTO dto = pcmdetailMapping.toDto(domain);
+		PCMDETAIL domain  = pcmdetailMapping.toDomain(pcmdetaildto);
+        domain .setPcmdetailid(pcmdetail_id);
+		pcmdetailService.update(domain );
+		PCMDETAILDTO dto = pcmdetailMapping.toDto(domain );
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.pcmdetailMapping,#pcmdetaildtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"PCMDETAIL" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmdetails/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PCMDETAILDTO> pcmdetaildtos) {
@@ -94,7 +94,7 @@ public class PCMDETAILResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.pcmdetailMapping,#pcmdetaildtos})")
     @ApiOperation(value = "createBatch", tags = {"PCMDETAIL" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmdetails/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PCMDETAILDTO> pcmdetaildtos) {
@@ -125,7 +125,7 @@ public class PCMDETAILResource {
         return ResponseEntity.status(HttpStatus.OK).body(pcmdetailService.save(pcmdetailMapping.toDomain(pcmdetaildto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.pcmdetailMapping,#pcmdetaildtos})")
     @ApiOperation(value = "SaveBatch", tags = {"PCMDETAIL" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmdetails/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PCMDETAILDTO> pcmdetaildtos) {

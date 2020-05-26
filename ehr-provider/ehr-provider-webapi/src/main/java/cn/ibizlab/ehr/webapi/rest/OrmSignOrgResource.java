@@ -59,14 +59,14 @@ public class OrmSignOrgResource {
 	@RequestMapping(method = RequestMethod.PUT, value = "/ormsignorgs/{ormsignorg_id}")
     @Transactional
     public ResponseEntity<OrmSignOrgDTO> update(@PathVariable("ormsignorg_id") String ormsignorg_id, @RequestBody OrmSignOrgDTO ormsignorgdto) {
-		OrmSignOrg domain = ormsignorgMapping.toDomain(ormsignorgdto);
-        domain.setOrmsignorgid(ormsignorg_id);
-		ormsignorgService.update(domain);
-		OrmSignOrgDTO dto = ormsignorgMapping.toDto(domain);
+		OrmSignOrg domain  = ormsignorgMapping.toDomain(ormsignorgdto);
+        domain .setOrmsignorgid(ormsignorg_id);
+		ormsignorgService.update(domain );
+		OrmSignOrgDTO dto = ormsignorgMapping.toDto(domain );
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.ormsignorgMapping,#ormsignorgdtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"OrmSignOrg" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/ormsignorgs/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<OrmSignOrgDTO> ormsignorgdtos) {
@@ -81,7 +81,7 @@ public class OrmSignOrgResource {
         return ResponseEntity.status(HttpStatus.OK).body(ormsignorgService.save(ormsignorgMapping.toDomain(ormsignorgdto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.ormsignorgMapping,#ormsignorgdtos})")
     @ApiOperation(value = "SaveBatch", tags = {"OrmSignOrg" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormsignorgs/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<OrmSignOrgDTO> ormsignorgdtos) {
@@ -116,7 +116,7 @@ public class OrmSignOrgResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.ormsignorgMapping,#ormsignorgdtos})")
     @ApiOperation(value = "createBatch", tags = {"OrmSignOrg" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormsignorgs/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<OrmSignOrgDTO> ormsignorgdtos) {
@@ -132,7 +132,7 @@ public class OrmSignOrgResource {
          return ResponseEntity.status(HttpStatus.OK).body(ormsignorgService.remove(ormsignorg_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.ormsignorgMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"OrmSignOrg" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/ormsignorgs/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {

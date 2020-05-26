@@ -58,7 +58,7 @@ public class PCMRCXLResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.pcmrcxlMapping,#pcmrcxldtos})")
     @ApiOperation(value = "createBatch", tags = {"PCMRCXL" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmrcxls/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PCMRCXLDTO> pcmrcxldtos) {
@@ -90,7 +90,7 @@ public class PCMRCXLResource {
          return ResponseEntity.status(HttpStatus.OK).body(pcmrcxlService.remove(pcmrcxl_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.pcmrcxlMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"PCMRCXL" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmrcxls/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -103,14 +103,14 @@ public class PCMRCXLResource {
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmrcxls/{pcmrcxl_id}")
     @Transactional
     public ResponseEntity<PCMRCXLDTO> update(@PathVariable("pcmrcxl_id") String pcmrcxl_id, @RequestBody PCMRCXLDTO pcmrcxldto) {
-		PCMRCXL domain = pcmrcxlMapping.toDomain(pcmrcxldto);
-        domain.setPcmrcxlid(pcmrcxl_id);
-		pcmrcxlService.update(domain);
-		PCMRCXLDTO dto = pcmrcxlMapping.toDto(domain);
+		PCMRCXL domain  = pcmrcxlMapping.toDomain(pcmrcxldto);
+        domain .setPcmrcxlid(pcmrcxl_id);
+		pcmrcxlService.update(domain );
+		PCMRCXLDTO dto = pcmrcxlMapping.toDto(domain );
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.pcmrcxlMapping,#pcmrcxldtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"PCMRCXL" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmrcxls/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PCMRCXLDTO> pcmrcxldtos) {
@@ -132,7 +132,7 @@ public class PCMRCXLResource {
         return ResponseEntity.status(HttpStatus.OK).body(pcmrcxlService.save(pcmrcxlMapping.toDomain(pcmrcxldto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.pcmrcxlMapping,#pcmrcxldtos})")
     @ApiOperation(value = "SaveBatch", tags = {"PCMRCXL" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmrcxls/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PCMRCXLDTO> pcmrcxldtos) {

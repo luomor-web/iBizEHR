@@ -54,7 +54,7 @@ public class SALSTDDSZNResource {
         return ResponseEntity.status(HttpStatus.OK).body(salstddsznService.save(salstddsznMapping.toDomain(salstddszndto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.salstddsznMapping,#salstddszndtos})")
     @ApiOperation(value = "SaveBatch", tags = {"SALSTDDSZN" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/salstddszns/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<SALSTDDSZNDTO> salstddszndtos) {
@@ -70,7 +70,7 @@ public class SALSTDDSZNResource {
          return ResponseEntity.status(HttpStatus.OK).body(salstddsznService.remove(salstddszn_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.salstddsznMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"SALSTDDSZN" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/salstddszns/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -92,14 +92,14 @@ public class SALSTDDSZNResource {
 	@RequestMapping(method = RequestMethod.PUT, value = "/salstddszns/{salstddszn_id}")
     @Transactional
     public ResponseEntity<SALSTDDSZNDTO> update(@PathVariable("salstddszn_id") String salstddszn_id, @RequestBody SALSTDDSZNDTO salstddszndto) {
-		SALSTDDSZN domain = salstddsznMapping.toDomain(salstddszndto);
-        domain.setSalstddsznid(salstddszn_id);
-		salstddsznService.update(domain);
-		SALSTDDSZNDTO dto = salstddsznMapping.toDto(domain);
+		SALSTDDSZN domain  = salstddsznMapping.toDomain(salstddszndto);
+        domain .setSalstddsznid(salstddszn_id);
+		salstddsznService.update(domain );
+		SALSTDDSZNDTO dto = salstddsznMapping.toDto(domain );
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.salstddsznMapping,#salstddszndtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"SALSTDDSZN" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/salstddszns/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<SALSTDDSZNDTO> salstddszndtos) {
@@ -118,7 +118,7 @@ public class SALSTDDSZNResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.salstddsznMapping,#salstddszndtos})")
     @ApiOperation(value = "createBatch", tags = {"SALSTDDSZN" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/salstddszns/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<SALSTDDSZNDTO> salstddszndtos) {

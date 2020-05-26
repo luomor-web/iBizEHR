@@ -1,6 +1,7 @@
     {
+    "systemid":"ehr",
     "unires":[
-               
+        
        {
             "unirescode":"OTHER",
             "uniresname":"配置管理-标准化数据"

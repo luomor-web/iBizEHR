@@ -69,6 +69,7 @@ public class PCMEducationExperienceResource {
     @Transactional
     public ResponseEntity<PCMEducationExperienceDTO> checkHighestEdu(@PathVariable("pcmeducationexperience_id") String pcmeducationexperience_id, @RequestBody PCMEducationExperienceDTO pcmeducationexperiencedto) {
         PCMEducationExperience pcmeducationexperience = pcmeducationexperienceMapping.toDomain(pcmeducationexperiencedto);
+        pcmeducationexperience.setPcmeducationexperienceid(pcmeducationexperience_id);
         pcmeducationexperience = pcmeducationexperienceService.checkHighestEdu(pcmeducationexperience);
         pcmeducationexperiencedto = pcmeducationexperienceMapping.toDto(pcmeducationexperience);
         return ResponseEntity.status(HttpStatus.OK).body(pcmeducationexperiencedto);
@@ -85,7 +86,7 @@ public class PCMEducationExperienceResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.pcmeducationexperienceMapping,#pcmeducationexperiencedtos})")
     @ApiOperation(value = "createBatch", tags = {"PCMEducationExperience" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmeducationexperiences/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PCMEducationExperienceDTO> pcmeducationexperiencedtos) {
@@ -99,6 +100,7 @@ public class PCMEducationExperienceResource {
     @Transactional
     public ResponseEntity<PCMEducationExperienceDTO> checkRepeatXL(@PathVariable("pcmeducationexperience_id") String pcmeducationexperience_id, @RequestBody PCMEducationExperienceDTO pcmeducationexperiencedto) {
         PCMEducationExperience pcmeducationexperience = pcmeducationexperienceMapping.toDomain(pcmeducationexperiencedto);
+        pcmeducationexperience.setPcmeducationexperienceid(pcmeducationexperience_id);
         pcmeducationexperience = pcmeducationexperienceService.checkRepeatXL(pcmeducationexperience);
         pcmeducationexperiencedto = pcmeducationexperienceMapping.toDto(pcmeducationexperience);
         return ResponseEntity.status(HttpStatus.OK).body(pcmeducationexperiencedto);
@@ -111,7 +113,7 @@ public class PCMEducationExperienceResource {
         return ResponseEntity.status(HttpStatus.OK).body(pcmeducationexperienceService.save(pcmeducationexperienceMapping.toDomain(pcmeducationexperiencedto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.pcmeducationexperienceMapping,#pcmeducationexperiencedtos})")
     @ApiOperation(value = "SaveBatch", tags = {"PCMEducationExperience" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmeducationexperiences/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PCMEducationExperienceDTO> pcmeducationexperiencedtos) {
@@ -134,7 +136,7 @@ public class PCMEducationExperienceResource {
          return ResponseEntity.status(HttpStatus.OK).body(pcmeducationexperienceService.remove(pcmeducationexperience_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.pcmeducationexperienceMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"PCMEducationExperience" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmeducationexperiences/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -147,14 +149,14 @@ public class PCMEducationExperienceResource {
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmeducationexperiences/{pcmeducationexperience_id}")
     @Transactional
     public ResponseEntity<PCMEducationExperienceDTO> update(@PathVariable("pcmeducationexperience_id") String pcmeducationexperience_id, @RequestBody PCMEducationExperienceDTO pcmeducationexperiencedto) {
-		PCMEducationExperience domain = pcmeducationexperienceMapping.toDomain(pcmeducationexperiencedto);
-        domain.setPcmeducationexperienceid(pcmeducationexperience_id);
-		pcmeducationexperienceService.update(domain);
-		PCMEducationExperienceDTO dto = pcmeducationexperienceMapping.toDto(domain);
+		PCMEducationExperience domain  = pcmeducationexperienceMapping.toDomain(pcmeducationexperiencedto);
+        domain .setPcmeducationexperienceid(pcmeducationexperience_id);
+		pcmeducationexperienceService.update(domain );
+		PCMEducationExperienceDTO dto = pcmeducationexperienceMapping.toDto(domain );
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.pcmeducationexperienceMapping,#pcmeducationexperiencedtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"PCMEducationExperience" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmeducationexperiences/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PCMEducationExperienceDTO> pcmeducationexperiencedtos) {
@@ -168,6 +170,7 @@ public class PCMEducationExperienceResource {
     @Transactional
     public ResponseEntity<PCMEducationExperienceDTO> checkTime(@PathVariable("pcmeducationexperience_id") String pcmeducationexperience_id, @RequestBody PCMEducationExperienceDTO pcmeducationexperiencedto) {
         PCMEducationExperience pcmeducationexperience = pcmeducationexperienceMapping.toDomain(pcmeducationexperiencedto);
+        pcmeducationexperience.setPcmeducationexperienceid(pcmeducationexperience_id);
         pcmeducationexperience = pcmeducationexperienceService.checkTime(pcmeducationexperience);
         pcmeducationexperiencedto = pcmeducationexperienceMapping.toDto(pcmeducationexperience);
         return ResponseEntity.status(HttpStatus.OK).body(pcmeducationexperiencedto);
@@ -234,7 +237,7 @@ public class PCMEducationExperienceResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.pcmeducationexperienceMapping,#pcmeducationexperiencedtos})")
     @ApiOperation(value = "createBatchByPCMPROFILE", tags = {"PCMEducationExperience" },  notes = "createBatchByPCMPROFILE")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/pcmeducationexperiences/batch")
     public ResponseEntity<Boolean> createBatchByPCMPROFILE(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody List<PCMEducationExperienceDTO> pcmeducationexperiencedtos) {
@@ -267,7 +270,7 @@ public class PCMEducationExperienceResource {
         return ResponseEntity.status(HttpStatus.OK).body(pcmeducationexperienceService.save(domain));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.pcmeducationexperienceMapping,#pcmeducationexperiencedtos})")
     @ApiOperation(value = "SaveBatchByPCMPROFILE", tags = {"PCMEducationExperience" },  notes = "SaveBatchByPCMPROFILE")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/pcmeducationexperiences/savebatch")
     public ResponseEntity<Boolean> saveBatchByPCMPROFILE(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody List<PCMEducationExperienceDTO> pcmeducationexperiencedtos) {
@@ -296,7 +299,7 @@ public class PCMEducationExperienceResource {
 		return ResponseEntity.status(HttpStatus.OK).body(pcmeducationexperienceService.remove(pcmeducationexperience_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.pcmeducationexperienceMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatchByPCMPROFILE", tags = {"PCMEducationExperience" },  notes = "RemoveBatchByPCMPROFILE")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmprofiles/{pcmprofile_id}/pcmeducationexperiences/batch")
     public ResponseEntity<Boolean> removeBatchByPCMPROFILE(@RequestBody List<String> ids) {
@@ -317,7 +320,7 @@ public class PCMEducationExperienceResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.pcmeducationexperienceMapping,#pcmeducationexperiencedtos})")
     @ApiOperation(value = "UpdateBatchByPCMPROFILE", tags = {"PCMEducationExperience" },  notes = "UpdateBatchByPCMPROFILE")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmprofiles/{pcmprofile_id}/pcmeducationexperiences/batch")
     public ResponseEntity<Boolean> updateBatchByPCMPROFILE(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody List<PCMEducationExperienceDTO> pcmeducationexperiencedtos) {

@@ -54,7 +54,7 @@ public class PIMVOCATIONALCATALOGResource {
         return ResponseEntity.status(HttpStatus.OK).body(pimvocationalcatalogService.save(pimvocationalcatalogMapping.toDomain(pimvocationalcatalogdto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.pimvocationalcatalogMapping,#pimvocationalcatalogdtos})")
     @ApiOperation(value = "SaveBatch", tags = {"PIMVOCATIONALCATALOG" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimvocationalcatalogs/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PIMVOCATIONALCATALOGDTO> pimvocationalcatalogdtos) {
@@ -90,14 +90,14 @@ public class PIMVOCATIONALCATALOGResource {
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimvocationalcatalogs/{pimvocationalcatalog_id}")
     @Transactional
     public ResponseEntity<PIMVOCATIONALCATALOGDTO> update(@PathVariable("pimvocationalcatalog_id") String pimvocationalcatalog_id, @RequestBody PIMVOCATIONALCATALOGDTO pimvocationalcatalogdto) {
-		PIMVOCATIONALCATALOG domain = pimvocationalcatalogMapping.toDomain(pimvocationalcatalogdto);
-        domain.setPimvocationalcatalogid(pimvocationalcatalog_id);
-		pimvocationalcatalogService.update(domain);
-		PIMVOCATIONALCATALOGDTO dto = pimvocationalcatalogMapping.toDto(domain);
+		PIMVOCATIONALCATALOG domain  = pimvocationalcatalogMapping.toDomain(pimvocationalcatalogdto);
+        domain .setPimvocationalcatalogid(pimvocationalcatalog_id);
+		pimvocationalcatalogService.update(domain );
+		PIMVOCATIONALCATALOGDTO dto = pimvocationalcatalogMapping.toDto(domain );
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.pimvocationalcatalogMapping,#pimvocationalcatalogdtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"PIMVOCATIONALCATALOG" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimvocationalcatalogs/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PIMVOCATIONALCATALOGDTO> pimvocationalcatalogdtos) {
@@ -116,7 +116,7 @@ public class PIMVOCATIONALCATALOGResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.pimvocationalcatalogMapping,#pimvocationalcatalogdtos})")
     @ApiOperation(value = "createBatch", tags = {"PIMVOCATIONALCATALOG" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimvocationalcatalogs/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PIMVOCATIONALCATALOGDTO> pimvocationalcatalogdtos) {
@@ -132,7 +132,7 @@ public class PIMVOCATIONALCATALOGResource {
          return ResponseEntity.status(HttpStatus.OK).body(pimvocationalcatalogService.remove(pimvocationalcatalog_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.pimvocationalcatalogMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"PIMVOCATIONALCATALOG" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimvocationalcatalogs/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {

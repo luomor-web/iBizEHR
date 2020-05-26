@@ -58,7 +58,7 @@ public class AttendRecordDetailResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.attendrecorddetailMapping,#attendrecorddetaildtos})")
     @ApiOperation(value = "createBatch", tags = {"AttendRecordDetail" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/attendrecorddetails/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<AttendRecordDetailDTO> attendrecorddetaildtos) {
@@ -96,7 +96,7 @@ public class AttendRecordDetailResource {
         return ResponseEntity.status(HttpStatus.OK).body(attendrecorddetailService.save(attendrecorddetailMapping.toDomain(attendrecorddetaildto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.attendrecorddetailMapping,#attendrecorddetaildtos})")
     @ApiOperation(value = "SaveBatch", tags = {"AttendRecordDetail" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/attendrecorddetails/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<AttendRecordDetailDTO> attendrecorddetaildtos) {
@@ -109,14 +109,14 @@ public class AttendRecordDetailResource {
 	@RequestMapping(method = RequestMethod.PUT, value = "/attendrecorddetails/{attendrecorddetail_id}")
     @Transactional
     public ResponseEntity<AttendRecordDetailDTO> update(@PathVariable("attendrecorddetail_id") String attendrecorddetail_id, @RequestBody AttendRecordDetailDTO attendrecorddetaildto) {
-		AttendRecordDetail domain = attendrecorddetailMapping.toDomain(attendrecorddetaildto);
-        domain.setAttendrecorddetailid(attendrecorddetail_id);
-		attendrecorddetailService.update(domain);
-		AttendRecordDetailDTO dto = attendrecorddetailMapping.toDto(domain);
+		AttendRecordDetail domain  = attendrecorddetailMapping.toDomain(attendrecorddetaildto);
+        domain .setAttendrecorddetailid(attendrecorddetail_id);
+		attendrecorddetailService.update(domain );
+		AttendRecordDetailDTO dto = attendrecorddetailMapping.toDto(domain );
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.attendrecorddetailMapping,#attendrecorddetaildtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"AttendRecordDetail" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/attendrecorddetails/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<AttendRecordDetailDTO> attendrecorddetaildtos) {
@@ -132,7 +132,7 @@ public class AttendRecordDetailResource {
          return ResponseEntity.status(HttpStatus.OK).body(attendrecorddetailService.remove(attendrecorddetail_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.attendrecorddetailMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"AttendRecordDetail" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/attendrecorddetails/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {

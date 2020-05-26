@@ -58,7 +58,7 @@ public class PCMNORecyclingLibraryResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.pcmnorecyclinglibraryMapping,#pcmnorecyclinglibrarydtos})")
     @ApiOperation(value = "createBatch", tags = {"PCMNORecyclingLibrary" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmnorecyclinglibraries/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PCMNORecyclingLibraryDTO> pcmnorecyclinglibrarydtos) {
@@ -90,7 +90,7 @@ public class PCMNORecyclingLibraryResource {
          return ResponseEntity.status(HttpStatus.OK).body(pcmnorecyclinglibraryService.remove(pcmnorecyclinglibrary_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.pcmnorecyclinglibraryMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"PCMNORecyclingLibrary" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmnorecyclinglibraries/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -103,14 +103,14 @@ public class PCMNORecyclingLibraryResource {
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmnorecyclinglibraries/{pcmnorecyclinglibrary_id}")
     @Transactional
     public ResponseEntity<PCMNORecyclingLibraryDTO> update(@PathVariable("pcmnorecyclinglibrary_id") String pcmnorecyclinglibrary_id, @RequestBody PCMNORecyclingLibraryDTO pcmnorecyclinglibrarydto) {
-		PCMNORecyclingLibrary domain = pcmnorecyclinglibraryMapping.toDomain(pcmnorecyclinglibrarydto);
-        domain.setPcmnorecyclinglibraryid(pcmnorecyclinglibrary_id);
-		pcmnorecyclinglibraryService.update(domain);
-		PCMNORecyclingLibraryDTO dto = pcmnorecyclinglibraryMapping.toDto(domain);
+		PCMNORecyclingLibrary domain  = pcmnorecyclinglibraryMapping.toDomain(pcmnorecyclinglibrarydto);
+        domain .setPcmnorecyclinglibraryid(pcmnorecyclinglibrary_id);
+		pcmnorecyclinglibraryService.update(domain );
+		PCMNORecyclingLibraryDTO dto = pcmnorecyclinglibraryMapping.toDto(domain );
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.pcmnorecyclinglibraryMapping,#pcmnorecyclinglibrarydtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"PCMNORecyclingLibrary" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmnorecyclinglibraries/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PCMNORecyclingLibraryDTO> pcmnorecyclinglibrarydtos) {
@@ -132,7 +132,7 @@ public class PCMNORecyclingLibraryResource {
         return ResponseEntity.status(HttpStatus.OK).body(pcmnorecyclinglibraryService.save(pcmnorecyclinglibraryMapping.toDomain(pcmnorecyclinglibrarydto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.pcmnorecyclinglibraryMapping,#pcmnorecyclinglibrarydtos})")
     @ApiOperation(value = "SaveBatch", tags = {"PCMNORecyclingLibrary" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmnorecyclinglibraries/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PCMNORecyclingLibraryDTO> pcmnorecyclinglibrarydtos) {

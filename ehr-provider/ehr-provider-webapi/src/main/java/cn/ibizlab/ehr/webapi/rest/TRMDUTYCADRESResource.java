@@ -54,7 +54,7 @@ public class TRMDUTYCADRESResource {
         return ResponseEntity.status(HttpStatus.OK).body(trmdutycadresService.save(trmdutycadresMapping.toDomain(trmdutycadresdto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.trmdutycadresMapping,#trmdutycadresdtos})")
     @ApiOperation(value = "SaveBatch", tags = {"TRMDUTYCADRES" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmdutycadres/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<TRMDUTYCADRESDTO> trmdutycadresdtos) {
@@ -68,6 +68,7 @@ public class TRMDUTYCADRESResource {
     @Transactional
     public ResponseEntity<TRMDUTYCADRESDTO> setNQGBXX(@PathVariable("trmdutycadres_id") String trmdutycadres_id, @RequestBody TRMDUTYCADRESDTO trmdutycadresdto) {
         TRMDUTYCADRES trmdutycadres = trmdutycadresMapping.toDomain(trmdutycadresdto);
+        trmdutycadres.setTrmdutycadresid(trmdutycadres_id);
         trmdutycadres = trmdutycadresService.setNQGBXX(trmdutycadres);
         trmdutycadresdto = trmdutycadresMapping.toDto(trmdutycadres);
         return ResponseEntity.status(HttpStatus.OK).body(trmdutycadresdto);
@@ -79,6 +80,7 @@ public class TRMDUTYCADRESResource {
     @Transactional
     public ResponseEntity<TRMDUTYCADRESDTO> sX(@PathVariable("trmdutycadres_id") String trmdutycadres_id, @RequestBody TRMDUTYCADRESDTO trmdutycadresdto) {
         TRMDUTYCADRES trmdutycadres = trmdutycadresMapping.toDomain(trmdutycadresdto);
+        trmdutycadres.setTrmdutycadresid(trmdutycadres_id);
         trmdutycadres = trmdutycadresService.sX(trmdutycadres);
         trmdutycadresdto = trmdutycadresMapping.toDto(trmdutycadres);
         return ResponseEntity.status(HttpStatus.OK).body(trmdutycadresdto);
@@ -95,7 +97,7 @@ public class TRMDUTYCADRESResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.trmdutycadresMapping,#trmdutycadresdtos})")
     @ApiOperation(value = "createBatch", tags = {"TRMDUTYCADRES" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmdutycadres/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<TRMDUTYCADRESDTO> trmdutycadresdtos) {
@@ -123,6 +125,7 @@ public class TRMDUTYCADRESResource {
     @Transactional
     public ResponseEntity<TRMDUTYCADRESDTO> xX(@PathVariable("trmdutycadres_id") String trmdutycadres_id, @RequestBody TRMDUTYCADRESDTO trmdutycadresdto) {
         TRMDUTYCADRES trmdutycadres = trmdutycadresMapping.toDomain(trmdutycadresdto);
+        trmdutycadres.setTrmdutycadresid(trmdutycadres_id);
         trmdutycadres = trmdutycadresService.xX(trmdutycadres);
         trmdutycadresdto = trmdutycadresMapping.toDto(trmdutycadres);
         return ResponseEntity.status(HttpStatus.OK).body(trmdutycadresdto);
@@ -142,14 +145,14 @@ public class TRMDUTYCADRESResource {
 	@RequestMapping(method = RequestMethod.PUT, value = "/trmdutycadres/{trmdutycadres_id}")
     @Transactional
     public ResponseEntity<TRMDUTYCADRESDTO> update(@PathVariable("trmdutycadres_id") String trmdutycadres_id, @RequestBody TRMDUTYCADRESDTO trmdutycadresdto) {
-		TRMDUTYCADRES domain = trmdutycadresMapping.toDomain(trmdutycadresdto);
-        domain.setTrmdutycadresid(trmdutycadres_id);
-		trmdutycadresService.update(domain);
-		TRMDUTYCADRESDTO dto = trmdutycadresMapping.toDto(domain);
+		TRMDUTYCADRES domain  = trmdutycadresMapping.toDomain(trmdutycadresdto);
+        domain .setTrmdutycadresid(trmdutycadres_id);
+		trmdutycadresService.update(domain );
+		TRMDUTYCADRESDTO dto = trmdutycadresMapping.toDto(domain );
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.trmdutycadresMapping,#trmdutycadresdtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"TRMDUTYCADRES" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/trmdutycadres/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<TRMDUTYCADRESDTO> trmdutycadresdtos) {
@@ -165,7 +168,7 @@ public class TRMDUTYCADRESResource {
          return ResponseEntity.status(HttpStatus.OK).body(trmdutycadresService.remove(trmdutycadres_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.trmdutycadresMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"TRMDUTYCADRES" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/trmdutycadres/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {

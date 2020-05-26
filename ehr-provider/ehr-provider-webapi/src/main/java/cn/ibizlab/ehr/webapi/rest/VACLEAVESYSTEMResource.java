@@ -67,7 +67,7 @@ public class VACLEAVESYSTEMResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.vacleavesystemMapping,#vacleavesystemdtos})")
     @ApiOperation(value = "createBatch", tags = {"VACLEAVESYSTEM" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacleavesystems/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<VACLEAVESYSTEMDTO> vacleavesystemdtos) {
@@ -87,14 +87,14 @@ public class VACLEAVESYSTEMResource {
 	@RequestMapping(method = RequestMethod.PUT, value = "/vacleavesystems/{vacleavesystem_id}")
     @Transactional
     public ResponseEntity<VACLEAVESYSTEMDTO> update(@PathVariable("vacleavesystem_id") String vacleavesystem_id, @RequestBody VACLEAVESYSTEMDTO vacleavesystemdto) {
-		VACLEAVESYSTEM domain = vacleavesystemMapping.toDomain(vacleavesystemdto);
-        domain.setVacleavesystemid(vacleavesystem_id);
-		vacleavesystemService.update(domain);
-		VACLEAVESYSTEMDTO dto = vacleavesystemMapping.toDto(domain);
+		VACLEAVESYSTEM domain  = vacleavesystemMapping.toDomain(vacleavesystemdto);
+        domain .setVacleavesystemid(vacleavesystem_id);
+		vacleavesystemService.update(domain );
+		VACLEAVESYSTEMDTO dto = vacleavesystemMapping.toDto(domain );
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.vacleavesystemMapping,#vacleavesystemdtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"VACLEAVESYSTEM" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/vacleavesystems/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<VACLEAVESYSTEMDTO> vacleavesystemdtos) {
@@ -110,7 +110,7 @@ public class VACLEAVESYSTEMResource {
          return ResponseEntity.status(HttpStatus.OK).body(vacleavesystemService.remove(vacleavesystem_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.vacleavesystemMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"VACLEAVESYSTEM" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/vacleavesystems/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -125,7 +125,7 @@ public class VACLEAVESYSTEMResource {
         return ResponseEntity.status(HttpStatus.OK).body(vacleavesystemService.save(vacleavesystemMapping.toDomain(vacleavesystemdto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.vacleavesystemMapping,#vacleavesystemdtos})")
     @ApiOperation(value = "SaveBatch", tags = {"VACLEAVESYSTEM" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacleavesystems/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<VACLEAVESYSTEMDTO> vacleavesystemdtos) {

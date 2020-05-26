@@ -66,14 +66,14 @@ public class PCMPROFILEFJResource {
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmprofilefjs/{pcmprofilefj_id}")
     @Transactional
     public ResponseEntity<PCMPROFILEFJDTO> update(@PathVariable("pcmprofilefj_id") String pcmprofilefj_id, @RequestBody PCMPROFILEFJDTO pcmprofilefjdto) {
-		PCMPROFILEFJ domain = pcmprofilefjMapping.toDomain(pcmprofilefjdto);
-        domain.setPcmprofilefjid(pcmprofilefj_id);
-		pcmprofilefjService.update(domain);
-		PCMPROFILEFJDTO dto = pcmprofilefjMapping.toDto(domain);
+		PCMPROFILEFJ domain  = pcmprofilefjMapping.toDomain(pcmprofilefjdto);
+        domain .setPcmprofilefjid(pcmprofilefj_id);
+		pcmprofilefjService.update(domain );
+		PCMPROFILEFJDTO dto = pcmprofilefjMapping.toDto(domain );
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.pcmprofilefjMapping,#pcmprofilefjdtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"PCMPROFILEFJ" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmprofilefjs/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PCMPROFILEFJDTO> pcmprofilefjdtos) {
@@ -89,7 +89,7 @@ public class PCMPROFILEFJResource {
          return ResponseEntity.status(HttpStatus.OK).body(pcmprofilefjService.remove(pcmprofilefj_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.pcmprofilefjMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"PCMPROFILEFJ" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmprofilefjs/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -113,7 +113,7 @@ public class PCMPROFILEFJResource {
         return ResponseEntity.status(HttpStatus.OK).body(pcmprofilefjService.save(pcmprofilefjMapping.toDomain(pcmprofilefjdto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.pcmprofilefjMapping,#pcmprofilefjdtos})")
     @ApiOperation(value = "SaveBatch", tags = {"PCMPROFILEFJ" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofilefjs/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PCMPROFILEFJDTO> pcmprofilefjdtos) {
@@ -132,7 +132,7 @@ public class PCMPROFILEFJResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.pcmprofilefjMapping,#pcmprofilefjdtos})")
     @ApiOperation(value = "createBatch", tags = {"PCMPROFILEFJ" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofilefjs/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PCMPROFILEFJDTO> pcmprofilefjdtos) {

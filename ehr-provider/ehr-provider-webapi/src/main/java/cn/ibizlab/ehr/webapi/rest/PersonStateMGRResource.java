@@ -54,7 +54,7 @@ public class PersonStateMGRResource {
         return ResponseEntity.status(HttpStatus.OK).body(personstatemgrService.save(personstatemgrMapping.toDomain(personstatemgrdto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.personstatemgrMapping,#personstatemgrdtos})")
     @ApiOperation(value = "SaveBatch", tags = {"PersonStateMGR" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/personstatemgrs/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PersonStateMGRDTO> personstatemgrdtos) {
@@ -96,7 +96,7 @@ public class PersonStateMGRResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.personstatemgrMapping,#personstatemgrdtos})")
     @ApiOperation(value = "createBatch", tags = {"PersonStateMGR" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/personstatemgrs/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PersonStateMGRDTO> personstatemgrdtos) {
@@ -109,14 +109,14 @@ public class PersonStateMGRResource {
 	@RequestMapping(method = RequestMethod.PUT, value = "/personstatemgrs/{personstatemgr_id}")
     @Transactional
     public ResponseEntity<PersonStateMGRDTO> update(@PathVariable("personstatemgr_id") String personstatemgr_id, @RequestBody PersonStateMGRDTO personstatemgrdto) {
-		PersonStateMGR domain = personstatemgrMapping.toDomain(personstatemgrdto);
-        domain.setPersonstatemgrid(personstatemgr_id);
-		personstatemgrService.update(domain);
-		PersonStateMGRDTO dto = personstatemgrMapping.toDto(domain);
+		PersonStateMGR domain  = personstatemgrMapping.toDomain(personstatemgrdto);
+        domain .setPersonstatemgrid(personstatemgr_id);
+		personstatemgrService.update(domain );
+		PersonStateMGRDTO dto = personstatemgrMapping.toDto(domain );
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.personstatemgrMapping,#personstatemgrdtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"PersonStateMGR" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/personstatemgrs/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PersonStateMGRDTO> personstatemgrdtos) {
@@ -132,7 +132,7 @@ public class PersonStateMGRResource {
          return ResponseEntity.status(HttpStatus.OK).body(personstatemgrService.remove(personstatemgr_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.personstatemgrMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"PersonStateMGR" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/personstatemgrs/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {

@@ -53,6 +53,7 @@ public class VACHOLIDAYRULESResource {
     @Transactional
     public ResponseEntity<VACHOLIDAYRULESDTO> copyKQGZData(@PathVariable("vacholidayrules_id") String vacholidayrules_id, @RequestBody VACHOLIDAYRULESDTO vacholidayrulesdto) {
         VACHOLIDAYRULES vacholidayrules = vacholidayrulesMapping.toDomain(vacholidayrulesdto);
+        vacholidayrules.setVacholidayrulesid(vacholidayrules_id);
         vacholidayrules = vacholidayrulesService.copyKQGZData(vacholidayrules);
         vacholidayrulesdto = vacholidayrulesMapping.toDto(vacholidayrules);
         return ResponseEntity.status(HttpStatus.OK).body(vacholidayrulesdto);
@@ -66,7 +67,7 @@ public class VACHOLIDAYRULESResource {
          return ResponseEntity.status(HttpStatus.OK).body(vacholidayrulesService.remove(vacholidayrules_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.vacholidayrulesMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"VACHOLIDAYRULES" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/vacholidayrules/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -92,7 +93,7 @@ public class VACHOLIDAYRULESResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.vacholidayrulesMapping,#vacholidayrulesdtos})")
     @ApiOperation(value = "createBatch", tags = {"VACHOLIDAYRULES" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacholidayrules/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<VACHOLIDAYRULESDTO> vacholidayrulesdtos) {
@@ -112,14 +113,14 @@ public class VACHOLIDAYRULESResource {
 	@RequestMapping(method = RequestMethod.PUT, value = "/vacholidayrules/{vacholidayrules_id}")
     @Transactional
     public ResponseEntity<VACHOLIDAYRULESDTO> update(@PathVariable("vacholidayrules_id") String vacholidayrules_id, @RequestBody VACHOLIDAYRULESDTO vacholidayrulesdto) {
-		VACHOLIDAYRULES domain = vacholidayrulesMapping.toDomain(vacholidayrulesdto);
-        domain.setVacholidayrulesid(vacholidayrules_id);
-		vacholidayrulesService.update(domain);
-		VACHOLIDAYRULESDTO dto = vacholidayrulesMapping.toDto(domain);
+		VACHOLIDAYRULES domain  = vacholidayrulesMapping.toDomain(vacholidayrulesdto);
+        domain .setVacholidayrulesid(vacholidayrules_id);
+		vacholidayrulesService.update(domain );
+		VACHOLIDAYRULESDTO dto = vacholidayrulesMapping.toDto(domain );
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.vacholidayrulesMapping,#vacholidayrulesdtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"VACHOLIDAYRULES" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/vacholidayrules/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<VACHOLIDAYRULESDTO> vacholidayrulesdtos) {
@@ -143,7 +144,7 @@ public class VACHOLIDAYRULESResource {
         return ResponseEntity.status(HttpStatus.OK).body(vacholidayrulesService.save(vacholidayrulesMapping.toDomain(vacholidayrulesdto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.vacholidayrulesMapping,#vacholidayrulesdtos})")
     @ApiOperation(value = "SaveBatch", tags = {"VACHOLIDAYRULES" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacholidayrules/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<VACHOLIDAYRULESDTO> vacholidayrulesdtos) {

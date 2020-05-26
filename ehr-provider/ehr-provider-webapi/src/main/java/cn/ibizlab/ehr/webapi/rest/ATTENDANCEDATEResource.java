@@ -64,7 +64,7 @@ public class ATTENDANCEDATEResource {
          return ResponseEntity.status(HttpStatus.OK).body(attendancedateService.remove(attendancedate_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.attendancedateMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"ATTENDANCEDATE" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/attendancedates/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -83,7 +83,7 @@ public class ATTENDANCEDATEResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.attendancedateMapping,#attendancedatedtos})")
     @ApiOperation(value = "createBatch", tags = {"ATTENDANCEDATE" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/attendancedates/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<ATTENDANCEDATEDTO> attendancedatedtos) {
@@ -105,7 +105,7 @@ public class ATTENDANCEDATEResource {
         return ResponseEntity.status(HttpStatus.OK).body(attendancedateService.save(attendancedateMapping.toDomain(attendancedatedto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.attendancedateMapping,#attendancedatedtos})")
     @ApiOperation(value = "SaveBatch", tags = {"ATTENDANCEDATE" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/attendancedates/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<ATTENDANCEDATEDTO> attendancedatedtos) {
@@ -118,14 +118,14 @@ public class ATTENDANCEDATEResource {
 	@RequestMapping(method = RequestMethod.PUT, value = "/attendancedates/{attendancedate_id}")
     @Transactional
     public ResponseEntity<ATTENDANCEDATEDTO> update(@PathVariable("attendancedate_id") String attendancedate_id, @RequestBody ATTENDANCEDATEDTO attendancedatedto) {
-		ATTENDANCEDATE domain = attendancedateMapping.toDomain(attendancedatedto);
-        domain.setAttendancedateid(attendancedate_id);
-		attendancedateService.update(domain);
-		ATTENDANCEDATEDTO dto = attendancedateMapping.toDto(domain);
+		ATTENDANCEDATE domain  = attendancedateMapping.toDomain(attendancedatedto);
+        domain .setAttendancedateid(attendancedate_id);
+		attendancedateService.update(domain );
+		ATTENDANCEDATEDTO dto = attendancedateMapping.toDto(domain );
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.attendancedateMapping,#attendancedatedtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"ATTENDANCEDATE" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/attendancedates/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<ATTENDANCEDATEDTO> attendancedatedtos) {

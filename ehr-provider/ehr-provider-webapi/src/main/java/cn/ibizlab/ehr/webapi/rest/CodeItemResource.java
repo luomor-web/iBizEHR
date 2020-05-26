@@ -54,7 +54,7 @@ public class CodeItemResource {
         return ResponseEntity.status(HttpStatus.OK).body(codeitemService.save(codeitemMapping.toDomain(codeitemdto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.codeitemMapping,#codeitemdtos})")
     @ApiOperation(value = "SaveBatch", tags = {"CodeItem" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/codeitems/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<CodeItemDTO> codeitemdtos) {
@@ -77,7 +77,7 @@ public class CodeItemResource {
          return ResponseEntity.status(HttpStatus.OK).body(codeitemService.remove(codeitem_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.codeitemMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"CodeItem" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/codeitems/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -90,14 +90,14 @@ public class CodeItemResource {
 	@RequestMapping(method = RequestMethod.PUT, value = "/codeitems/{codeitem_id}")
     @Transactional
     public ResponseEntity<CodeItemDTO> update(@PathVariable("codeitem_id") String codeitem_id, @RequestBody CodeItemDTO codeitemdto) {
-		CodeItem domain = codeitemMapping.toDomain(codeitemdto);
-        domain.setCodeitemid(codeitem_id);
-		codeitemService.update(domain);
-		CodeItemDTO dto = codeitemMapping.toDto(domain);
+		CodeItem domain  = codeitemMapping.toDomain(codeitemdto);
+        domain .setCodeitemid(codeitem_id);
+		codeitemService.update(domain );
+		CodeItemDTO dto = codeitemMapping.toDto(domain );
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.codeitemMapping,#codeitemdtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"CodeItem" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/codeitems/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<CodeItemDTO> codeitemdtos) {
@@ -116,7 +116,7 @@ public class CodeItemResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.codeitemMapping,#codeitemdtos})")
     @ApiOperation(value = "createBatch", tags = {"CodeItem" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/codeitems/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<CodeItemDTO> codeitemdtos) {

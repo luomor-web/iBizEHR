@@ -55,7 +55,7 @@ public class ARCHIVESMANAGEResource {
          return ResponseEntity.status(HttpStatus.OK).body(archivesmanageService.remove(archivesmanage_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.archivesmanageMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"ARCHIVESMANAGE" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/archivesmanages/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -75,14 +75,14 @@ public class ARCHIVESMANAGEResource {
 	@RequestMapping(method = RequestMethod.PUT, value = "/archivesmanages/{archivesmanage_id}")
     @Transactional
     public ResponseEntity<ARCHIVESMANAGEDTO> update(@PathVariable("archivesmanage_id") String archivesmanage_id, @RequestBody ARCHIVESMANAGEDTO archivesmanagedto) {
-		ARCHIVESMANAGE domain = archivesmanageMapping.toDomain(archivesmanagedto);
-        domain.setArchivesmanageid(archivesmanage_id);
-		archivesmanageService.update(domain);
-		ARCHIVESMANAGEDTO dto = archivesmanageMapping.toDto(domain);
+		ARCHIVESMANAGE domain  = archivesmanageMapping.toDomain(archivesmanagedto);
+        domain .setArchivesmanageid(archivesmanage_id);
+		archivesmanageService.update(domain );
+		ARCHIVESMANAGEDTO dto = archivesmanageMapping.toDto(domain );
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.archivesmanageMapping,#archivesmanagedtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"ARCHIVESMANAGE" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/archivesmanages/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<ARCHIVESMANAGEDTO> archivesmanagedtos) {
@@ -101,7 +101,7 @@ public class ARCHIVESMANAGEResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.archivesmanageMapping,#archivesmanagedtos})")
     @ApiOperation(value = "createBatch", tags = {"ARCHIVESMANAGE" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/archivesmanages/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<ARCHIVESMANAGEDTO> archivesmanagedtos) {
@@ -116,7 +116,7 @@ public class ARCHIVESMANAGEResource {
         return ResponseEntity.status(HttpStatus.OK).body(archivesmanageService.save(archivesmanageMapping.toDomain(archivesmanagedto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.archivesmanageMapping,#archivesmanagedtos})")
     @ApiOperation(value = "SaveBatch", tags = {"ARCHIVESMANAGE" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/archivesmanages/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<ARCHIVESMANAGEDTO> archivesmanagedtos) {

@@ -72,7 +72,7 @@ public class ORMDepEstManResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.ormdepestmanMapping,#ormdepestmandtos})")
     @ApiOperation(value = "createBatch", tags = {"ORMDepEstMan" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormdepestmen/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<ORMDepEstManDTO> ormdepestmandtos) {
@@ -97,7 +97,7 @@ public class ORMDepEstManResource {
          return ResponseEntity.status(HttpStatus.OK).body(ormdepestmanService.remove(ormdepestman_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.ormdepestmanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"ORMDepEstMan" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/ormdepestmen/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -110,14 +110,14 @@ public class ORMDepEstManResource {
 	@RequestMapping(method = RequestMethod.PUT, value = "/ormdepestmen/{ormdepestman_id}")
     @Transactional
     public ResponseEntity<ORMDepEstManDTO> update(@PathVariable("ormdepestman_id") String ormdepestman_id, @RequestBody ORMDepEstManDTO ormdepestmandto) {
-		ORMDepEstMan domain = ormdepestmanMapping.toDomain(ormdepestmandto);
-        domain.setOrmdepestmanid(ormdepestman_id);
-		ormdepestmanService.update(domain);
-		ORMDepEstManDTO dto = ormdepestmanMapping.toDto(domain);
+		ORMDepEstMan domain  = ormdepestmanMapping.toDomain(ormdepestmandto);
+        domain .setOrmdepestmanid(ormdepestman_id);
+		ormdepestmanService.update(domain );
+		ORMDepEstManDTO dto = ormdepestmanMapping.toDto(domain );
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.ormdepestmanMapping,#ormdepestmandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"ORMDepEstMan" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/ormdepestmen/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<ORMDepEstManDTO> ormdepestmandtos) {
@@ -132,7 +132,7 @@ public class ORMDepEstManResource {
         return ResponseEntity.status(HttpStatus.OK).body(ormdepestmanService.save(ormdepestmanMapping.toDomain(ormdepestmandto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.ormdepestmanMapping,#ormdepestmandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"ORMDepEstMan" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormdepestmen/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<ORMDepEstManDTO> ormdepestmandtos) {

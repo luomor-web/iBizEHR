@@ -68,14 +68,14 @@ public class ContractSignORGResource {
 	@RequestMapping(method = RequestMethod.PUT, value = "/contractsignorgs/{contractsignorg_id}")
     @Transactional
     public ResponseEntity<ContractSignORGDTO> update(@PathVariable("contractsignorg_id") String contractsignorg_id, @RequestBody ContractSignORGDTO contractsignorgdto) {
-		ContractSignORG domain = contractsignorgMapping.toDomain(contractsignorgdto);
-        domain.setContractsignorgid(contractsignorg_id);
-		contractsignorgService.update(domain);
-		ContractSignORGDTO dto = contractsignorgMapping.toDto(domain);
+		ContractSignORG domain  = contractsignorgMapping.toDomain(contractsignorgdto);
+        domain .setContractsignorgid(contractsignorg_id);
+		contractsignorgService.update(domain );
+		ContractSignORGDTO dto = contractsignorgMapping.toDto(domain );
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.contractsignorgMapping,#contractsignorgdtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"ContractSignORG" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/contractsignorgs/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<ContractSignORGDTO> contractsignorgdtos) {
@@ -91,7 +91,7 @@ public class ContractSignORGResource {
          return ResponseEntity.status(HttpStatus.OK).body(contractsignorgService.remove(contractsignorg_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.contractsignorgMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"ContractSignORG" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/contractsignorgs/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -110,7 +110,7 @@ public class ContractSignORGResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.contractsignorgMapping,#contractsignorgdtos})")
     @ApiOperation(value = "createBatch", tags = {"ContractSignORG" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/contractsignorgs/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<ContractSignORGDTO> contractsignorgdtos) {
@@ -132,7 +132,7 @@ public class ContractSignORGResource {
         return ResponseEntity.status(HttpStatus.OK).body(contractsignorgService.save(contractsignorgMapping.toDomain(contractsignorgdto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.contractsignorgMapping,#contractsignorgdtos})")
     @ApiOperation(value = "SaveBatch", tags = {"ContractSignORG" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/contractsignorgs/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<ContractSignORGDTO> contractsignorgdtos) {

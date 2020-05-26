@@ -78,7 +78,7 @@ public class TRMAGENCYRECORDResource {
          return ResponseEntity.status(HttpStatus.OK).body(trmagencyrecordService.remove(trmagencyrecord_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.trmagencyrecordMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"TRMAGENCYRECORD" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/trmagencyrecords/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -93,7 +93,7 @@ public class TRMAGENCYRECORDResource {
         return ResponseEntity.status(HttpStatus.OK).body(trmagencyrecordService.save(trmagencyrecordMapping.toDomain(trmagencyrecorddto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.trmagencyrecordMapping,#trmagencyrecorddtos})")
     @ApiOperation(value = "SaveBatch", tags = {"TRMAGENCYRECORD" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmagencyrecords/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<TRMAGENCYRECORDDTO> trmagencyrecorddtos) {
@@ -106,14 +106,14 @@ public class TRMAGENCYRECORDResource {
 	@RequestMapping(method = RequestMethod.PUT, value = "/trmagencyrecords/{trmagencyrecord_id}")
     @Transactional
     public ResponseEntity<TRMAGENCYRECORDDTO> update(@PathVariable("trmagencyrecord_id") String trmagencyrecord_id, @RequestBody TRMAGENCYRECORDDTO trmagencyrecorddto) {
-		TRMAGENCYRECORD domain = trmagencyrecordMapping.toDomain(trmagencyrecorddto);
-        domain.setTrmagencyrecordid(trmagencyrecord_id);
-		trmagencyrecordService.update(domain);
-		TRMAGENCYRECORDDTO dto = trmagencyrecordMapping.toDto(domain);
+		TRMAGENCYRECORD domain  = trmagencyrecordMapping.toDomain(trmagencyrecorddto);
+        domain .setTrmagencyrecordid(trmagencyrecord_id);
+		trmagencyrecordService.update(domain );
+		TRMAGENCYRECORDDTO dto = trmagencyrecordMapping.toDto(domain );
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.trmagencyrecordMapping,#trmagencyrecorddtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"TRMAGENCYRECORD" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/trmagencyrecords/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<TRMAGENCYRECORDDTO> trmagencyrecorddtos) {
@@ -132,7 +132,7 @@ public class TRMAGENCYRECORDResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.trmagencyrecordMapping,#trmagencyrecorddtos})")
     @ApiOperation(value = "createBatch", tags = {"TRMAGENCYRECORD" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmagencyrecords/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<TRMAGENCYRECORDDTO> trmagencyrecorddtos) {

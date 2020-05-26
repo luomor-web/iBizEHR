@@ -55,7 +55,7 @@ public class PIMMAJORSETYPEResource {
          return ResponseEntity.status(HttpStatus.OK).body(pimmajorsetypeService.remove(pimmajorsetype_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.pimmajorsetypeMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"PIMMAJORSETYPE" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimmajorsetypes/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -86,7 +86,7 @@ public class PIMMAJORSETYPEResource {
         return ResponseEntity.status(HttpStatus.OK).body(pimmajorsetypeService.save(pimmajorsetypeMapping.toDomain(pimmajorsetypedto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.pimmajorsetypeMapping,#pimmajorsetypedtos})")
     @ApiOperation(value = "SaveBatch", tags = {"PIMMAJORSETYPE" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimmajorsetypes/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PIMMAJORSETYPEDTO> pimmajorsetypedtos) {
@@ -105,7 +105,7 @@ public class PIMMAJORSETYPEResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.pimmajorsetypeMapping,#pimmajorsetypedtos})")
     @ApiOperation(value = "createBatch", tags = {"PIMMAJORSETYPE" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimmajorsetypes/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PIMMAJORSETYPEDTO> pimmajorsetypedtos) {
@@ -125,14 +125,14 @@ public class PIMMAJORSETYPEResource {
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimmajorsetypes/{pimmajorsetype_id}")
     @Transactional
     public ResponseEntity<PIMMAJORSETYPEDTO> update(@PathVariable("pimmajorsetype_id") String pimmajorsetype_id, @RequestBody PIMMAJORSETYPEDTO pimmajorsetypedto) {
-		PIMMAJORSETYPE domain = pimmajorsetypeMapping.toDomain(pimmajorsetypedto);
-        domain.setPimmajorsetypeid(pimmajorsetype_id);
-		pimmajorsetypeService.update(domain);
-		PIMMAJORSETYPEDTO dto = pimmajorsetypeMapping.toDto(domain);
+		PIMMAJORSETYPE domain  = pimmajorsetypeMapping.toDomain(pimmajorsetypedto);
+        domain .setPimmajorsetypeid(pimmajorsetype_id);
+		pimmajorsetypeService.update(domain );
+		PIMMAJORSETYPEDTO dto = pimmajorsetypeMapping.toDto(domain );
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.pimmajorsetypeMapping,#pimmajorsetypedtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"PIMMAJORSETYPE" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimmajorsetypes/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PIMMAJORSETYPEDTO> pimmajorsetypedtos) {

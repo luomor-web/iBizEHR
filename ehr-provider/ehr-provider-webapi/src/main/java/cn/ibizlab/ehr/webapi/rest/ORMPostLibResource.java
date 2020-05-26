@@ -55,7 +55,7 @@ public class ORMPostLibResource {
          return ResponseEntity.status(HttpStatus.OK).body(ormpostlibService.remove(ormpostlib_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.ormpostlibMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"ORMPostLib" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/ormpostlibs/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -70,7 +70,7 @@ public class ORMPostLibResource {
         return ResponseEntity.status(HttpStatus.OK).body(ormpostlibService.save(ormpostlibMapping.toDomain(ormpostlibdto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.ormpostlibMapping,#ormpostlibdtos})")
     @ApiOperation(value = "SaveBatch", tags = {"ORMPostLib" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormpostlibs/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<ORMPostLibDTO> ormpostlibdtos) {
@@ -83,14 +83,14 @@ public class ORMPostLibResource {
 	@RequestMapping(method = RequestMethod.PUT, value = "/ormpostlibs/{ormpostlib_id}")
     @Transactional
     public ResponseEntity<ORMPostLibDTO> update(@PathVariable("ormpostlib_id") String ormpostlib_id, @RequestBody ORMPostLibDTO ormpostlibdto) {
-		ORMPostLib domain = ormpostlibMapping.toDomain(ormpostlibdto);
-        domain.setOrmpostlibid(ormpostlib_id);
-		ormpostlibService.update(domain);
-		ORMPostLibDTO dto = ormpostlibMapping.toDto(domain);
+		ORMPostLib domain  = ormpostlibMapping.toDomain(ormpostlibdto);
+        domain .setOrmpostlibid(ormpostlib_id);
+		ormpostlibService.update(domain );
+		ORMPostLibDTO dto = ormpostlibMapping.toDto(domain );
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.ormpostlibMapping,#ormpostlibdtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"ORMPostLib" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/ormpostlibs/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<ORMPostLibDTO> ormpostlibdtos) {
@@ -109,7 +109,7 @@ public class ORMPostLibResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.ormpostlibMapping,#ormpostlibdtos})")
     @ApiOperation(value = "createBatch", tags = {"ORMPostLib" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormpostlibs/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<ORMPostLibDTO> ormpostlibdtos) {

@@ -59,14 +59,14 @@ public class PimSearchModalResource {
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimsearchmodals/{pimsearchmodal_id}")
     @Transactional
     public ResponseEntity<PimSearchModalDTO> update(@PathVariable("pimsearchmodal_id") String pimsearchmodal_id, @RequestBody PimSearchModalDTO pimsearchmodaldto) {
-		PimSearchModal domain = pimsearchmodalMapping.toDomain(pimsearchmodaldto);
-        domain.setPimsearchmodalid(pimsearchmodal_id);
-		pimsearchmodalService.update(domain);
-		PimSearchModalDTO dto = pimsearchmodalMapping.toDto(domain);
+		PimSearchModal domain  = pimsearchmodalMapping.toDomain(pimsearchmodaldto);
+        domain .setPimsearchmodalid(pimsearchmodal_id);
+		pimsearchmodalService.update(domain );
+		PimSearchModalDTO dto = pimsearchmodalMapping.toDto(domain );
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.pimsearchmodalMapping,#pimsearchmodaldtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"PimSearchModal" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimsearchmodals/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PimSearchModalDTO> pimsearchmodaldtos) {
@@ -94,7 +94,7 @@ public class PimSearchModalResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.pimsearchmodalMapping,#pimsearchmodaldtos})")
     @ApiOperation(value = "createBatch", tags = {"PimSearchModal" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimsearchmodals/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PimSearchModalDTO> pimsearchmodaldtos) {
@@ -116,7 +116,7 @@ public class PimSearchModalResource {
         return ResponseEntity.status(HttpStatus.OK).body(pimsearchmodalService.save(pimsearchmodalMapping.toDomain(pimsearchmodaldto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.pimsearchmodalMapping,#pimsearchmodaldtos})")
     @ApiOperation(value = "SaveBatch", tags = {"PimSearchModal" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimsearchmodals/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PimSearchModalDTO> pimsearchmodaldtos) {
@@ -132,7 +132,7 @@ public class PimSearchModalResource {
          return ResponseEntity.status(HttpStatus.OK).body(pimsearchmodalService.remove(pimsearchmodal_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.pimsearchmodalMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"PimSearchModal" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimsearchmodals/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {

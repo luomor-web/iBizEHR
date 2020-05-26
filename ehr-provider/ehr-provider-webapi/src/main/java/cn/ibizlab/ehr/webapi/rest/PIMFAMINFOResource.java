@@ -60,6 +60,7 @@ public class PIMFAMINFOResource {
     @Transactional
     public ResponseEntity<PIMFAMINFODTO> updateInfo(@PathVariable("pimfaminfo_id") String pimfaminfo_id, @RequestBody PIMFAMINFODTO pimfaminfodto) {
         PIMFAMINFO pimfaminfo = pimfaminfoMapping.toDomain(pimfaminfodto);
+        pimfaminfo.setPimfaminfoid(pimfaminfo_id);
         pimfaminfo = pimfaminfoService.updateInfo(pimfaminfo);
         pimfaminfodto = pimfaminfoMapping.toDto(pimfaminfo);
         return ResponseEntity.status(HttpStatus.OK).body(pimfaminfodto);
@@ -71,6 +72,7 @@ public class PIMFAMINFOResource {
     @Transactional
     public ResponseEntity<PIMFAMINFODTO> updateContact(@PathVariable("pimfaminfo_id") String pimfaminfo_id, @RequestBody PIMFAMINFODTO pimfaminfodto) {
         PIMFAMINFO pimfaminfo = pimfaminfoMapping.toDomain(pimfaminfodto);
+        pimfaminfo.setPimfaminfoid(pimfaminfo_id);
         pimfaminfo = pimfaminfoService.updateContact(pimfaminfo);
         pimfaminfodto = pimfaminfoMapping.toDto(pimfaminfo);
         return ResponseEntity.status(HttpStatus.OK).body(pimfaminfodto);
@@ -87,7 +89,7 @@ public class PIMFAMINFOResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.pimfaminfoMapping,#pimfaminfodtos})")
     @ApiOperation(value = "createBatch", tags = {"PIMFAMINFO" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimfaminfos/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PIMFAMINFODTO> pimfaminfodtos) {
@@ -100,14 +102,14 @@ public class PIMFAMINFOResource {
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimfaminfos/{pimfaminfo_id}")
     @Transactional
     public ResponseEntity<PIMFAMINFODTO> update(@PathVariable("pimfaminfo_id") String pimfaminfo_id, @RequestBody PIMFAMINFODTO pimfaminfodto) {
-		PIMFAMINFO domain = pimfaminfoMapping.toDomain(pimfaminfodto);
-        domain.setPimfaminfoid(pimfaminfo_id);
-		pimfaminfoService.update(domain);
-		PIMFAMINFODTO dto = pimfaminfoMapping.toDto(domain);
+		PIMFAMINFO domain  = pimfaminfoMapping.toDomain(pimfaminfodto);
+        domain .setPimfaminfoid(pimfaminfo_id);
+		pimfaminfoService.update(domain );
+		PIMFAMINFODTO dto = pimfaminfoMapping.toDto(domain );
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.pimfaminfoMapping,#pimfaminfodtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"PIMFAMINFO" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimfaminfos/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PIMFAMINFODTO> pimfaminfodtos) {
@@ -130,7 +132,7 @@ public class PIMFAMINFOResource {
          return ResponseEntity.status(HttpStatus.OK).body(pimfaminfoService.remove(pimfaminfo_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.pimfaminfoMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"PIMFAMINFO" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimfaminfos/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -145,7 +147,7 @@ public class PIMFAMINFOResource {
         return ResponseEntity.status(HttpStatus.OK).body(pimfaminfoService.save(pimfaminfoMapping.toDomain(pimfaminfodto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.pimfaminfoMapping,#pimfaminfodtos})")
     @ApiOperation(value = "SaveBatch", tags = {"PIMFAMINFO" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimfaminfos/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PIMFAMINFODTO> pimfaminfodtos) {
@@ -352,7 +354,7 @@ public class PIMFAMINFOResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.pimfaminfoMapping,#pimfaminfodtos})")
     @ApiOperation(value = "createBatchByPIMPERSON", tags = {"PIMFAMINFO" },  notes = "createBatchByPIMPERSON")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimfaminfos/batch")
     public ResponseEntity<Boolean> createBatchByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody List<PIMFAMINFODTO> pimfaminfodtos) {
@@ -377,7 +379,7 @@ public class PIMFAMINFOResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.pimfaminfoMapping,#pimfaminfodtos})")
     @ApiOperation(value = "UpdateBatchByPIMPERSON", tags = {"PIMFAMINFO" },  notes = "UpdateBatchByPIMPERSON")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimpeople/{pimperson_id}/pimfaminfos/batch")
     public ResponseEntity<Boolean> updateBatchByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody List<PIMFAMINFODTO> pimfaminfodtos) {
@@ -406,7 +408,7 @@ public class PIMFAMINFOResource {
 		return ResponseEntity.status(HttpStatus.OK).body(pimfaminfoService.remove(pimfaminfo_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.pimfaminfoMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatchByPIMPERSON", tags = {"PIMFAMINFO" },  notes = "RemoveBatchByPIMPERSON")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimpeople/{pimperson_id}/pimfaminfos/batch")
     public ResponseEntity<Boolean> removeBatchByPIMPERSON(@RequestBody List<String> ids) {
@@ -423,7 +425,7 @@ public class PIMFAMINFOResource {
         return ResponseEntity.status(HttpStatus.OK).body(pimfaminfoService.save(domain));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.pimfaminfoMapping,#pimfaminfodtos})")
     @ApiOperation(value = "SaveBatchByPIMPERSON", tags = {"PIMFAMINFO" },  notes = "SaveBatchByPIMPERSON")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimfaminfos/savebatch")
     public ResponseEntity<Boolean> saveBatchByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody List<PIMFAMINFODTO> pimfaminfodtos) {

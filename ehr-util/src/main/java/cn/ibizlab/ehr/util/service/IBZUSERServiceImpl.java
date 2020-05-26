@@ -14,6 +14,7 @@ import cn.ibizlab.ehr.util.domain.IBZUSER;
 import org.springframework.util.DigestUtils;
 import org.springframework.util.StringUtils;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnExpression;
+import org.springframework.security.core.authority.AuthorityUtils;
 
 /**
  * 实体[IBZUSER] 服务对象接口实现
@@ -72,6 +73,9 @@ public class IBZUSERServiceImpl extends ServiceImpl<IBZUSERMapper, IBZUSER> impl
 	public  AuthenticationUser createUserDetails(IBZUSER user) {
 		AuthenticationUser userdatail = new AuthenticationUser();
 		CachedBeanCopier.copy(user,userdatail);
+    	if(userdatail.getSuperuser()==1){
+    		userdatail.setAuthorities(AuthorityUtils.createAuthorityList("ROLE_SUPERADMIN"));
+    	}
 		return userdatail;
 	}
 }
