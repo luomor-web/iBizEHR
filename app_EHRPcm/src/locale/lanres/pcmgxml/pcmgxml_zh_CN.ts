@@ -21,7 +21,15 @@ export default {
 			caption: '高校名录',
       title: '高校名录',
 		},
+		pickupgridview: {
+			caption: '高校名录',
+      title: '高校名录',
+		},
 		editview: {
+			caption: '高校名录',
+      title: '高校名录',
+		},
+		mpickupview: {
 			caption: '高校名录',
       title: '高校名录',
 		},

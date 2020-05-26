@@ -11,11 +11,19 @@ export default {
     xkml: '学科门类',
   },
 	views: {
+		pickupgridview: {
+			caption: '学科目录',
+      title: '学科目录',
+		},
 		xkmltreeexpview: {
 			caption: '学科目录',
       title: '学科目录',
 		},
 		editview: {
+			caption: '学科目录',
+      title: '学科目录',
+		},
+		mpickupview: {
 			caption: '学科目录',
       title: '学科目录',
 		},

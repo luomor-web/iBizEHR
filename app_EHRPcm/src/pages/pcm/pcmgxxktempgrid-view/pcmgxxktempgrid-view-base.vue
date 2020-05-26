@@ -398,6 +398,14 @@ export default class PCMGXXKTEMPGridViewBase extends GridViewBase {
      * @memberof PCMGXXKTEMPGridView
      */
     public newdata(args: any[],fullargs?:any[], params?: any, $event?: any, xData?: any) {
+        const batchAddPSAppViews=[
+            {view:{viewname:'pcmgxmlmpickup-view',height: 0,width: 0,title: '高校名录数据多项选择视图'},
+            res:[],
+            'resAppKey':''},
+            {view:{viewname:'pcmxkmlmpickup-view',height: 0,width: 0,title: '学科目录数据多项选择视图'},
+            res:[],
+            'resAppKey':''}
+        ];
         if(batchAddPSAppViews.length == 0 || !this.context.srfparentdename){
             this.$Notice.warning({ title: '错误', desc: '批量添加需添加N:N关系' });
             return;

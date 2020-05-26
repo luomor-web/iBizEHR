@@ -81,7 +81,9 @@ export default class PCMGXMLUIServiceBase extends UIService {
     public initViewMap(){
         this.allViewMap.set(':',{viewname:'curndgridview',srfappde:'pcmgxmls'});
         this.allViewMap.set(':',{viewname:'gxmltreeexpview',srfappde:'pcmgxmls'});
+        this.allViewMap.set(':',{viewname:'pickupgridview',srfappde:'pcmgxmls'});
         this.allViewMap.set('EDITVIEW:',{viewname:'editview',srfappde:'pcmgxmls'});
+        this.allViewMap.set('MPICKUPVIEW:',{viewname:'mpickupview',srfappde:'pcmgxmls'});
     }
 
     /**

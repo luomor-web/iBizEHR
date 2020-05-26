@@ -48,6 +48,19 @@ const router = new Router({
                     component: () => import('@pages/orm/ormdutyorm-org-sector-pickup-grid-view/ormdutyorm-org-sector-pickup-grid-view.vue'),
                 },
                 {
+                    path: 'pcmxkmls/:pcmxkml?/pickupgridview/:pickupgridview?',
+                    meta: {
+                        caption: 'entities.pcmxkml.views.pickupgridview.caption',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'pcmxkmls', parameterName: 'pcmxkml' },
+                            { pathName: 'pickupgridview', parameterName: 'pickupgridview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/pcm/pcmxkmlpickup-grid-view/pcmxkmlpickup-grid-view.vue'),
+                },
+                {
                     path: 'pcmprofiles/:pcmprofile?/testresults/:testresult?/editview/:editview?',
                     meta: {
                         caption: 'entities.testresult.views.editview.caption',
@@ -328,6 +341,19 @@ const router = new Router({
                         requireAuth: true,
                     },
                     component: () => import('@pages/pcm/pcmprofilefpwizard-view/pcmprofilefpwizard-view.vue'),
+                },
+                {
+                    path: 'pcmgxmls/:pcmgxml?/pickupgridview/:pickupgridview?',
+                    meta: {
+                        caption: 'entities.pcmgxml.views.pickupgridview.caption',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'pcmgxmls', parameterName: 'pcmgxml' },
+                            { pathName: 'pickupgridview', parameterName: 'pickupgridview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/pcm/pcmgxmlpickup-grid-view/pcmgxmlpickup-grid-view.vue'),
                 },
                 {
                     path: 'pcmprofiles/:pcmprofile?/szwizardview/:szwizardview?',
@@ -1048,6 +1074,19 @@ const router = new Router({
                     component: () => import('@pages/pcm/pcmawardswonshjqkgrid-view/pcmawardswonshjqkgrid-view.vue'),
                 },
                 {
+                    path: 'pcmgxmls/:pcmgxml?/mpickupview/:mpickupview?',
+                    meta: {
+                        caption: 'entities.pcmgxml.views.mpickupview.caption',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'pcmgxmls', parameterName: 'pcmgxml' },
+                            { pathName: 'mpickupview', parameterName: 'mpickupview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/pcm/pcmgxmlmpickup-view/pcmgxmlmpickup-view.vue'),
+                },
+                {
                     path: 'pcmprofiles/:pcmprofile?/ypzbdeditview/:ypzbdeditview?',
                     meta: {
                         caption: 'entities.pcmprofile.views.ypzbdeditview.caption',
@@ -1308,6 +1347,19 @@ const router = new Router({
                         requireAuth: true,
                     },
                     component: () => import('@pages/pcm/pcmprofileypzbdgrid-view/pcmprofileypzbdgrid-view.vue'),
+                },
+                {
+                    path: 'pcmxkmls/:pcmxkml?/mpickupview/:mpickupview?',
+                    meta: {
+                        caption: 'entities.pcmxkml.views.mpickupview.caption',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'pcmxkmls', parameterName: 'pcmxkml' },
+                            { pathName: 'mpickupview', parameterName: 'mpickupview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/pcm/pcmxkmlmpickup-view/pcmxkmlmpickup-view.vue'),
                 },
                 {
                     path: 'pcmprofiles/:pcmprofile?/ypzxx_csrcyjeditview/:ypzxx_csrcyjeditview?',
@@ -2044,6 +2096,18 @@ const router = new Router({
             requireAuth: true,
         },
         component: () => import('@pages/pcm/tdzwxxedit-view/tdzwxxedit-view.vue'),
+    },
+    {
+        path: '/pcmxkmls/:pcmxkml?/pickupgridview/:pickupgridview?',
+        meta: {
+            caption: 'entities.pcmxkml.views.pickupgridview.caption',
+            parameters: [
+                { pathName: 'pcmxkmls', parameterName: 'pcmxkml' },
+                { pathName: 'pickupgridview', parameterName: 'pickupgridview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/pcm/pcmxkmlpickup-grid-view/pcmxkmlpickup-grid-view.vue'),
     },
     {
         path: '/pcmprofiles/:pcmprofile?/testresults/:testresult?/cpjggridview/:cpjggridview?',
@@ -2847,6 +2911,18 @@ const router = new Router({
         component: () => import('@pages/pcm/pcmeducation-experience-jybjgrid-view/pcmeducation-experience-jybjgrid-view.vue'),
     },
     {
+        path: '/pcmgxmls/:pcmgxml?/pickupgridview/:pickupgridview?',
+        meta: {
+            caption: 'entities.pcmgxml.views.pickupgridview.caption',
+            parameters: [
+                { pathName: 'pcmgxmls', parameterName: 'pcmgxml' },
+                { pathName: 'pickupgridview', parameterName: 'pickupgridview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/pcm/pcmgxmlpickup-grid-view/pcmgxmlpickup-grid-view.vue'),
+    },
+    {
         path: '/pcmprofiles/:pcmprofile?/szwizardview/:szwizardview?',
         meta: {
             caption: 'entities.pcmprofile.views.szwizardview.caption',
@@ -3070,6 +3146,18 @@ const router = new Router({
         component: () => import('@pages/pcm/pcmgxmledit-view/pcmgxmledit-view.vue'),
     },
     {
+        path: '/pcmxkmls/:pcmxkml?/mpickupview/:mpickupview?',
+        meta: {
+            caption: 'entities.pcmxkml.views.mpickupview.caption',
+            parameters: [
+                { pathName: 'pcmxkmls', parameterName: 'pcmxkml' },
+                { pathName: 'mpickupview', parameterName: 'mpickupview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/pcm/pcmxkmlmpickup-view/pcmxkmlmpickup-view.vue'),
+    },
+    {
         path: '/pcmprofilefjs/:pcmprofilefj?/profilefjgridview/:profilefjgridview?',
         meta: {
             caption: 'entities.pcmprofilefj.views.profilefjgridview.caption',
@@ -3208,6 +3296,18 @@ const router = new Router({
             requireAuth: true,
         },
         component: () => import('@pages/pcm/pcmxkmlcur-ndgrid-view/pcmxkmlcur-ndgrid-view.vue'),
+    },
+    {
+        path: '/pcmgxmls/:pcmgxml?/mpickupview/:mpickupview?',
+        meta: {
+            caption: 'entities.pcmgxml.views.mpickupview.caption',
+            parameters: [
+                { pathName: 'pcmgxmls', parameterName: 'pcmgxml' },
+                { pathName: 'mpickupview', parameterName: 'mpickupview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/pcm/pcmgxmlmpickup-view/pcmgxmlmpickup-view.vue'),
     },
     {
         path: '/pimqualmajors/:pimqualmajor?/pickupgridview/:pickupgridview?',

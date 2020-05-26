@@ -79,8 +79,10 @@ export default class PCMXKMLUIServiceBase extends UIService {
      * @memberof  PCMXKMLUIServiceBase
      */  
     public initViewMap(){
+        this.allViewMap.set(':',{viewname:'pickupgridview',srfappde:'pcmxkmls'});
         this.allViewMap.set(':',{viewname:'xkmltreeexpview',srfappde:'pcmxkmls'});
         this.allViewMap.set('EDITVIEW:',{viewname:'editview',srfappde:'pcmxkmls'});
+        this.allViewMap.set('MPICKUPVIEW:',{viewname:'mpickupview',srfappde:'pcmxkmls'});
         this.allViewMap.set(':',{viewname:'curndgridview',srfappde:'pcmxkmls'});
     }
 

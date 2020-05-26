@@ -190,6 +190,15 @@ export const viewstate: any = {
             ],
         },
         {
+            viewtag: '37004b147c76141470829eebc5f12e99',
+            viewmodule: 'PCM',
+            viewname: 'PCMXKMLPickupGridView',
+            viewaction: '',
+            viewdatachange: false,
+            refviews: [
+            ],
+        },
+        {
             viewtag: '3d7985f2b41ff52bea5ebcf3bacc6169',
             viewmodule: 'PCM',
             viewname: 'TestResultCPJGGridView',
@@ -474,6 +483,8 @@ export const viewstate: any = {
             viewaction: '',
             viewdatachange: false,
             refviews: [
+                'fd4aa1f72c775c6e42df2c41c6d5f6f6',
+                'e8ecbd69de09c2f47066ca1d9eb04d71',
             ],
         },
         {
@@ -739,6 +750,15 @@ export const viewstate: any = {
             ],
         },
         {
+            viewtag: 'c17373aefb5d5528751aef889fdd9862',
+            viewmodule: 'PCM',
+            viewname: 'PCMGXMLPickupGridView',
+            viewaction: '',
+            viewdatachange: false,
+            refviews: [
+            ],
+        },
+        {
             viewtag: 'c20756541eb3db24da51a2a9e8db3b80',
             viewmodule: 'PCM',
             viewname: 'PCMPROFILESZWizardView',
@@ -935,6 +955,16 @@ export const viewstate: any = {
             ],
         },
         {
+            viewtag: 'e8ecbd69de09c2f47066ca1d9eb04d71',
+            viewmodule: 'PCM',
+            viewname: 'PCMXKMLMPickupView',
+            viewaction: '',
+            viewdatachange: false,
+            refviews: [
+                '37004b147c76141470829eebc5f12e99',
+            ],
+        },
+        {
             viewtag: 'eab174bdd0d26c696e5a0e0d433af6c6',
             viewmodule: 'PCM',
             viewname: 'PCMPROFILEFJProfileFJGridView',
@@ -1025,6 +1055,16 @@ export const viewstate: any = {
             viewdatachange: false,
             refviews: [
                 '5c8f3c9220d882d449e521694f4896e0',
+            ],
+        },
+        {
+            viewtag: 'fd4aa1f72c775c6e42df2c41c6d5f6f6',
+            viewmodule: 'PCM',
+            viewname: 'PCMGXMLMPickupView',
+            viewaction: '',
+            viewdatachange: false,
+            refviews: [
+                'c17373aefb5d5528751aef889fdd9862',
             ],
         },
         {

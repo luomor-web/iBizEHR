@@ -151,6 +151,14 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewname": "TDZWXXEditView",
             "viewtag": "26f69f4ff507ad80fa6fb9a194aca149"
         },
+        "pcmxkmlpickupgridview": {
+            "title": "学科目录选择表格视图",
+            "caption": "学科目录",
+            "viewtype": "DEPICKUPGRIDVIEW",
+            "viewmodule": "PCM",
+            "viewname": "PCMXKMLPickupGridView",
+            "viewtag": "37004b147c76141470829eebc5f12e99"
+        },
         "testresultcpjggridview": {
             "title": "测评结果摘要信息（要求：带*必填）",
             "caption": "测评结果摘要信息（要求：带*必填）",
@@ -511,6 +519,14 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewname": "PCMEducationExperienceJYBJGridView",
             "viewtag": "c1296113c6baff077df6b1f1b1711266"
         },
+        "pcmgxmlpickupgridview": {
+            "title": "高校名录选择表格视图",
+            "caption": "高校名录",
+            "viewtype": "DEPICKUPGRIDVIEW",
+            "viewmodule": "PCM",
+            "viewname": "PCMGXMLPickupGridView",
+            "viewtag": "c17373aefb5d5528751aef889fdd9862"
+        },
         "pcmprofileszwizardview": {
             "title": "社招应聘者信息录入向导",
             "caption": "社招应聘者信息录入向导",
@@ -623,6 +639,14 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewname": "PCMGXMLEditView",
             "viewtag": "e8cca29d9578f296af25b69b86bb4a45"
         },
+        "pcmxkmlmpickupview": {
+            "title": "学科目录数据多项选择视图",
+            "caption": "学科目录",
+            "viewtype": "DEMPICKUPVIEW",
+            "viewmodule": "PCM",
+            "viewname": "PCMXKMLMPickupView",
+            "viewtag": "e8ecbd69de09c2f47066ca1d9eb04d71"
+        },
         "pcmprofilefjprofilefjgridview": {
             "title": "应聘者附件",
             "caption": "应聘者附件",
@@ -686,6 +710,14 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewmodule": "PCM",
             "viewname": "PCMXKMLCurNDGridView",
             "viewtag": "fb83d5b87842f3c688ba91ee5d031233"
+        },
+        "pcmgxmlmpickupview": {
+            "title": "高校名录数据多项选择视图",
+            "caption": "高校名录",
+            "viewtype": "DEMPICKUPVIEW",
+            "viewmodule": "PCM",
+            "viewname": "PCMGXMLMPickupView",
+            "viewtag": "fd4aa1f72c775c6e42df2c41c6d5f6f6"
         },
         "pimqualmajorpickupgridview": {
             "title": "执业资格专业选择表格视图",
