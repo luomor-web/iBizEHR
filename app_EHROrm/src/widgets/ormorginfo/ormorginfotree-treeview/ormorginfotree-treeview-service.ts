@@ -382,10 +382,6 @@ export default class ORMORGINFOTreeService extends ControlService {
         filter = this.handleResNavParams(context,filter,rsNavParams,rsParams);
         return new Promise((resolve:any,reject:any) =>{
             let searchFilter: any = {};
-            if (Object.is(filter.strNodeType, this.TREENODE_ORMORGINFO)) {
-                Object.assign(searchFilter, { n_orgid_eq: filter.nodeid });
-            }
-
             Object.assign(searchFilter, { total: false });
             Object.assign(searchFilter, { query: filter.srfnodefilter });
             let bFirst: boolean = true;
@@ -843,22 +839,12 @@ export default class ORMORGINFOTreeService extends ControlService {
     @Errorlog
     public async fillOrmorginfoNodeChilds(context:any={}, filter: any, list: any[]): Promise<any> {
 		if (filter.srfnodefilter && !Object.is(filter.srfnodefilter,"")) {
-			// 填充部门
-            let SubormorginfoRsNavContext:any = {};
-            let SubormorginfoRsNavParams:any = {};
-            let SubormorginfoRsParams:any = {};
-			await this.fillSubormorginfoNodes(context, filter, list ,SubormorginfoRsNavContext,SubormorginfoRsNavParams,SubormorginfoRsParams);
 			// 填充子组织
             let ChildorgRsNavContext:any = {};
             let ChildorgRsNavParams:any = {};
             let ChildorgRsParams:any = {};
 			await this.fillChildorgNodes(context, filter, list ,ChildorgRsNavContext,ChildorgRsNavParams,ChildorgRsParams);
 		} else {
-			// 填充部门
-            let SubormorginfoRsNavContext:any = {};
-            let SubormorginfoRsNavParams:any = {};
-            let SubormorginfoRsParams:any = {};
-			await this.fillSubormorginfoNodes(context, filter, list ,SubormorginfoRsNavContext,SubormorginfoRsNavParams,SubormorginfoRsParams);
 			// 填充子组织
             let ChildorgRsNavContext:any = {};
             let ChildorgRsNavParams:any = {};
