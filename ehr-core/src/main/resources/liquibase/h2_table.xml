@@ -1746,7 +1746,7 @@
 
 
     <!--输出实体[PIMCONTRACT]数据结构 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="tab-pimcontract-10-157">
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-pimcontract-11-157">
         <createTable tableName="T_PIMCONTRACT">
                 <column name="SSLWPQGS" remarks="" type="VARCHAR(60)">
                 </column>
@@ -3237,19 +3237,19 @@
         <!--输出实体[TESTRESULT]外键关系 -->
         <!--输出实体[ORMXMRLCB]外键关系 -->
         <!--输出实体[PIMCONTRACT]外键关系 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-pimcontract-10-519">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-pimcontract-11-519">
        <addForeignKeyConstraint baseColumnNames="CONTRACTSIGNORGID" baseTableName="T_PIMCONTRACT" constraintName="DER1N_PIMCONTRACT_CONTRACTSIGN" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="CONTRACTSIGNORGID" referencedTableName="T_CONTRACTSIGNORG" validate="true"/>
     </changeSet>
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-pimcontract-10-520">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-pimcontract-11-520">
        <addForeignKeyConstraint baseColumnNames="ORMORGID" baseTableName="T_PIMCONTRACT" constraintName="DER1N_PIMCONTRACT_ORMORG_ORMOR" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="ORGID" referencedTableName="T_SRFORG" validate="true"/>
     </changeSet>
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-pimcontract-10-521">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-pimcontract-11-521">
        <addForeignKeyConstraint baseColumnNames="ORMSIGNORGID" baseTableName="T_PIMCONTRACT" constraintName="DER1N_PIMCONTRACT_ORMSIGNORG_O" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="ORMSIGNORGID" referencedTableName="T_ORMSIGNORG" validate="true"/>
     </changeSet>
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-pimcontract-10-522">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-pimcontract-11-522">
        <addForeignKeyConstraint baseColumnNames="PIMLABOURCAMPANYID" baseTableName="T_PIMCONTRACT" constraintName="DER1N_PIMCONTRACT_PIMLABOURCAM" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="PIMLABOURCAMPANYID" referencedTableName="T_PIMLABOURCAMPANY" validate="true"/>
     </changeSet>
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-pimcontract-10-523">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-pimcontract-11-523">
        <addForeignKeyConstraint baseColumnNames="PIMPERSONID" baseTableName="T_PIMCONTRACT" constraintName="DER1N_PIMCONTRACT_PIMPERSON_PI" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="PIMPERSONID" referencedTableName="T_PIMPERSON" validate="true"/>
     </changeSet>
         <!--输出实体[ORMXMXQHZ]外键关系 -->

@@ -296,7 +296,7 @@ export default class TreeExpViewtreeexpbarBase extends Vue implements ControlInt
         if (Object.is(expmode, 'ORG')) {
             return {  
                 viewname: 'pimcontractgrid-view', 
-                parentdata: {"srfparentdefname":"n_ormorgid_eq","srfparentdename":"ORMORG","srfparentmode":"DER1N_PIMCONTRACT_ORMORG_ORMORGID"},
+                parentdata: {},
                 deKeyField:'pimcontract'
 			};
         }
