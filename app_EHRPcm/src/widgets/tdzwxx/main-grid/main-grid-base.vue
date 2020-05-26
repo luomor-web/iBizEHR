@@ -21,30 +21,6 @@
             <template v-if="!isSingleSelect">
                 <el-table-column align="center" type='selection' :width="checkboxColWidth"></el-table-column>
             </template>
-            <template v-if="getColumnState('jobid')">
-                <el-table-column show-overflow-tooltip :prop="'jobid'" :label="$t('entities.tdzwxx.main_grid.columns.jobid')" :width="150"  :align="'left'" :sortable="'custom'">
-                    <template v-slot="{row,column}">
-                        <template v-if="actualIsOpenEdit">
-                            <i-form style="height:100%;" :model="row">
-                                <app-form-item :name="column.property" :itemRules="rules[column.property]">
-                                    <input-box 
-              :disabled="row.srfuf === 1 ? (3 & 2) !== 2 : (3 & 1) !== 1" 
-              v-model="row[column.property]" 
-              style=""
-              type="text"
-              
-              
-              @change="($event)=>{gridEditItemChange(row, column.property, $event)}">
-            </input-box>
-                                </app-form-item>
-                            </i-form>
-                        </template>
-                        <template v-if="!actualIsOpenEdit">
-                                <app-span name='jobid' editorType="TEXTBOX" :value="row.jobid"></app-span>
-                        </template>
-                    </template>
-                </el-table-column>
-            </template>
             <template v-if="getColumnState('tdzwxxname')">
                 <el-table-column show-overflow-tooltip :prop="'tdzwxxname'" :label="$t('entities.tdzwxx.main_grid.columns.tdzwxxname')" :width="180"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
@@ -597,13 +573,6 @@ export default class MainBase extends Vue implements ControlInterface {
      * @memberof Main
      */
     public allColumns: any[] = [
-        {
-            name: 'jobid',
-            label: '职位ID',
-            langtag: 'entities.tdzwxx.main_grid.columns.jobid',
-            show: true,
-            util: 'PX'
-        },
         {
             name: 'tdzwxxname',
             label: '职位名称（*）',

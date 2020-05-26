@@ -60,7 +60,6 @@ export default {
 	},
 	main_grid: {
 		columns: {
-			jobid: "职位ID",
 			tdzwxxname: "职位名称（*）",
 			initapplydate: "最初投递时间（*）",
 			department: "投递组织（*）",
@@ -101,7 +100,7 @@ export default {
 			tip: "Help",
 		},
 	},
-	tdzwgridviewtoolbar2_toolbar: {
+	tdzwgridviewtoolbar_toolbar: {
 		deuiaction1: {
 			caption: "新建",
 			tip: "新建",
@@ -121,20 +120,6 @@ export default {
 		deuiaction5: {
 			caption: "Export",
 			tip: "Export {0} Data To Excel",
-		},
-	},
-	tdzwgridviewtoolbar_toolbar: {
-		deuiaction3: {
-			caption: "开启行编辑",
-			tip: "开启行编辑",
-		},
-		deuiaction6: {
-			caption: "Export",
-			tip: "Export {0} Data To Excel",
-		},
-		deuiaction2: {
-			caption: "Filter",
-			tip: "Filter",
 		},
 	},
 };

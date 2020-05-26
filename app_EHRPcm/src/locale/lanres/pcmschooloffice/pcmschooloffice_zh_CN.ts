@@ -93,7 +93,7 @@ export default {
 	},
 	zxzw_wsswbjgridviewtoolbar_toolbar: {
 	},
-	zxzwgridviewtoolbar2_toolbar: {
+	zxzwgridviewtoolbar_toolbar: {
 		deuiaction1: {
 			caption: '新建',
 			tip: '新建',
@@ -113,20 +113,6 @@ export default {
 		deuiaction5: {
 			caption: '导出',
 			tip: '导出',
-		},
-	},
-	zxzwgridviewtoolbar_toolbar: {
-		deuiaction3: {
-			caption: '开启行编辑',
-			tip: '开启行编辑',
-		},
-		deuiaction6: {
-			caption: '导出',
-			tip: '导出',
-		},
-		deuiaction2: {
-			caption: '过滤',
-			tip: '过滤',
 		},
 	},
 };

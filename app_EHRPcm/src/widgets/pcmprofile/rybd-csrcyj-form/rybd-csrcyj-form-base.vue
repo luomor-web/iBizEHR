@@ -349,7 +349,7 @@
 </app-form-item>
 
 </i-col>
-<i-col v-show="detailsModel.isblacklistreason.visible" :style="{}"  :lg="{ span: 16, offset: 0 }">
+<i-col v-show="detailsModel.isblacklistreason.visible" :style="{}"  :lg="{ span: 24, offset: 0 }" :xl="{ span: 24, offset: 0 }">
     <app-form-item name='isblacklistreason' :itemRules="this.rules.isblacklistreason" class='' :caption="$t('entities.pcmprofile.rybd_csrcyj_form.details.isblacklistreason')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.isblacklistreason.error" :isEmptyCaption="false" labelPos="LEFT">
     <div class="ivu-input-wrapper ivu-input-wrapper-default ivu-input-type">
     <textarea class="ivu-input" :rows="10" v-model="data.isblacklistreason" :disabled="detailsModel.isblacklistreason.disabled" style="height:200px;"></textarea>
@@ -380,20 +380,6 @@
 <i-col v-show="detailsModel.otherfile.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='otherfile' :itemRules="this.rules.otherfile" class='' :caption="$t('entities.pcmprofile.rybd_csrcyj_form.details.otherfile')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.otherfile.error" :isEmptyCaption="false" labelPos="LEFT">
     <app-file-upload :formState="formState" :ignorefieldvaluechange="ignorefieldvaluechange" @formitemvaluechange="onFormItemValueChange" :data="JSON.stringify(this.data)" name='otherfile' :value="data.otherfile" :disabled="detailsModel.otherfile.disabled" uploadparams='' exportparams='' :customparams="{}" style="overflow: auto;"></app-file-upload>
-</app-form-item>
-
-</i-col>
-    
-    </row>
-</app-form-group>
-
-</i-col>
-<i-col v-show="detailsModel.grouppanel18.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
-    <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' :uiActionGroup="detailsModel.grouppanel18.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.pcmprofile.rybd_csrcyj_form.details.grouppanel18')" :isShowCaption="true" uiStyle="DEFAULT" :titleBarCloseMode="0" :isInfoGroupMode="false" >    
-    <row>
-        <i-col v-show="detailsModel.qzsm.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
-    <app-form-item name='qzsm' :itemRules="this.rules.qzsm" class='' :caption="$t('entities.pcmprofile.rybd_csrcyj_form.details.qzsm')" uiStyle="DEFAULT" :labelWidth="250" :isShowCaption="true" :error="detailsModel.qzsm.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-radio-group v-model="data.qzsm"  :disabled="detailsModel.qzsm.disabled"  name="qzsm" tag='PIMCL_SFLJ' codelistType='STATIC'  style=""></app-radio-group>
 </app-form-item>
 
 </i-col>
@@ -471,12 +457,6 @@
         <i-col v-show="detailsModel.yglx.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='yglx' :itemRules="this.rules.yglx" class='' :caption="$t('entities.pcmprofile.rybd_csrcyj_form.details.yglx')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.yglx.error" :isEmptyCaption="false" labelPos="LEFT">
      <dropdown-list v-model="data.yglx" :data="data" :itemParam="{}" :disabled="detailsModel.yglx.disabled"  tag='PCMCL_SBLX' codelistType='DYNAMIC' placeholder='请选择...' style=""></dropdown-list>
-</app-form-item>
-
-</i-col>
-<i-col v-show="detailsModel.szyjtj.visible" :style="{}"  :sm="{ span: 24, offset: 0 }" :md="{ span: 24, offset: 0 }" :lg="{ span: 24, offset: 0 }" :xl="{ span: 24, offset: 0 }">
-    <app-form-item name='szyjtj' :itemRules="this.rules.szyjtj" class='' :caption="$t('entities.pcmprofile.rybd_csrcyj_form.details.szyjtj')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.szyjtj.error" :isEmptyCaption="false" labelPos="LEFT">
-    
 </app-form-item>
 
 </i-col>
@@ -1133,7 +1113,6 @@ export default class RYBD_CSRCYJBase extends Vue implements ControlInterface {
         sfz: null,
         zczs2: null,
         otherfile: null,
-        qzsm: null,
         ormorgid: null,
         ormorgname: null,
         rzqd: null,
@@ -1142,7 +1121,6 @@ export default class RYBD_CSRCYJBase extends Vue implements ControlInterface {
         napxmjgwmc: null,
         gzbt: null,
         yglx: null,
-        szyjtj: null,
         pcmprofile:null,
     };
 
@@ -1497,12 +1475,6 @@ export default class RYBD_CSRCYJBase extends Vue implements ControlInterface {
             { required: false, type: 'string', message: '语言等级证书 值不能为空', trigger: 'change' },
             { required: false, type: 'string', message: '语言等级证书 值不能为空', trigger: 'blur' },
         ],
-        qzsm: [
-            { type: 'string', message: '本人承诺以上内容均属实并签字 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '本人承诺以上内容均属实并签字 值必须为字符串类型', trigger: 'blur' },
-            { required: true, type: 'string', message: '本人承诺以上内容均属实并签字 值不能为空', trigger: 'change' },
-            { required: true, type: 'string', message: '本人承诺以上内容均属实并签字 值不能为空', trigger: 'blur' },
-        ],
         ormorgid: [
             { type: 'string', message: '组织标识 值必须为字符串类型', trigger: 'change' },
             { type: 'string', message: '组织标识 值必须为字符串类型', trigger: 'blur' },
@@ -1551,12 +1523,6 @@ export default class RYBD_CSRCYJBase extends Vue implements ControlInterface {
             { required: false, type: 'string', message: '申报类型 值不能为空', trigger: 'change' },
             { required: false, type: 'string', message: '申报类型 值不能为空', trigger: 'blur' },
         ],
-        szyjtj: [
-            { type: 'string', message: '社招引进条件 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '社招引进条件 值必须为字符串类型', trigger: 'blur' },
-            { required: false, type: 'string', message: '社招引进条件 值不能为空', trigger: 'change' },
-            { required: false, type: 'string', message: '社招引进条件 值不能为空', trigger: 'blur' },
-        ],
     }
 
     /**
@@ -1583,8 +1549,6 @@ export default class RYBD_CSRCYJBase extends Vue implements ControlInterface {
         grouppanel6: new FormGroupPanelModel({ caption: '是否黑名单', detailType: 'GROUPPANEL', name: 'grouppanel6', visible: false, isShowCaption: true, form: this, uiActionGroup: { caption: '', langbase: 'entities.pcmprofile.rybd_csrcyj_form', extractMode: 'ITEM', details: [] } })
 , 
         grouppanel14: new FormGroupPanelModel({ caption: '附件上传', detailType: 'GROUPPANEL', name: 'grouppanel14', visible: false, isShowCaption: true, form: this, uiActionGroup: { caption: '', langbase: 'entities.pcmprofile.rybd_csrcyj_form', extractMode: 'ITEM', details: [] } })
-, 
-        grouppanel18: new FormGroupPanelModel({ caption: '承诺签字', detailType: 'GROUPPANEL', name: 'grouppanel18', visible: false, isShowCaption: true, form: this, uiActionGroup: { caption: '', langbase: 'entities.pcmprofile.rybd_csrcyj_form', extractMode: 'ITEM', details: [] } })
 , 
         grouppanel2: new FormGroupPanelModel({ caption: '职务相关', detailType: 'GROUPPANEL', name: 'grouppanel2', visible: true, isShowCaption: true, form: this, uiActionGroup: { caption: '', langbase: 'entities.pcmprofile.rybd_csrcyj_form', extractMode: 'ITEM', details: [] } })
 , 
@@ -1744,8 +1708,6 @@ export default class RYBD_CSRCYJBase extends Vue implements ControlInterface {
 , 
         otherfile: new FormItemModel({ caption: '语言等级证书', detailType: 'FORMITEM', name: 'otherfile', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 0 })
 , 
-        qzsm: new FormItemModel({ caption: '本人承诺以上内容均属实并签字', detailType: 'FORMITEM', name: 'qzsm', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 0 })
-, 
         ormorgid: new FormItemModel({ caption: '组织标识', detailType: 'FORMITEM', name: 'ormorgid', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
         ormorgname: new FormItemModel({ caption: '组织名称', detailType: 'FORMITEM', name: 'ormorgname', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 0 })
@@ -1761,8 +1723,6 @@ export default class RYBD_CSRCYJBase extends Vue implements ControlInterface {
         gzbt: new FormItemModel({ caption: '工资补贴', detailType: 'FORMITEM', name: 'gzbt', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 0 })
 , 
         yglx: new FormItemModel({ caption: '申报类型', detailType: 'FORMITEM', name: 'yglx', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 0 })
-, 
-        szyjtj: new FormItemModel({ caption: '社招引进条件', detailType: 'FORMITEM', name: 'szyjtj', visible: false, isShowCaption: true, form: this, disabled: false, enableCond: 0 })
 , 
     };
 
@@ -2391,18 +2351,6 @@ export default class RYBD_CSRCYJBase extends Vue implements ControlInterface {
     }
 
     /**
-     * 监控表单属性 qzsm 值
-     *
-     * @param {*} newVal
-     * @param {*} oldVal
-     * @memberof RYBD_CSRCYJ
-     */
-    @Watch('data.qzsm')
-    onQzsmChange(newVal: any, oldVal: any) {
-        this.formDataChange({ name: 'qzsm', newVal: newVal, oldVal: oldVal });
-    }
-
-    /**
      * 监控表单属性 ormorgid 值
      *
      * @param {*} newVal
@@ -2498,18 +2446,6 @@ export default class RYBD_CSRCYJBase extends Vue implements ControlInterface {
         this.formDataChange({ name: 'yglx', newVal: newVal, oldVal: oldVal });
     }
 
-    /**
-     * 监控表单属性 szyjtj 值
-     *
-     * @param {*} newVal
-     * @param {*} oldVal
-     * @memberof RYBD_CSRCYJ
-     */
-    @Watch('data.szyjtj')
-    onSzyjtjChange(newVal: any, oldVal: any) {
-        this.formDataChange({ name: 'szyjtj', newVal: newVal, oldVal: oldVal });
-    }
-
 
     /**
      * 重置表单项值
@@ -2577,15 +2513,6 @@ export default class RYBD_CSRCYJBase extends Vue implements ControlInterface {
                 ret = true;
             }
             this.detailsModel.grouppanel14.setVisible(ret);
-        }
-
-        if (Object.is(name, '') || Object.is(name, 'rzqd')) {
-            let ret = false;
-            const _rzqd = this.data.rzqd;
-            if (this.$verify.testCond(_rzqd, 'NOTEQ', '85')) {
-                ret = true;
-            }
-            this.detailsModel.grouppanel18.setVisible(ret);
         }
 
 
@@ -2811,19 +2738,6 @@ export default class RYBD_CSRCYJBase extends Vue implements ControlInterface {
 
 
 
-        if (Object.is(name, '') || Object.is(name, 'rzqd')) {
-            let ret = true;
-            const _rzqd = this.data.rzqd;
-            if (this.$verify.testCond(_rzqd, 'EQ', '85')) {
-                ret = false;
-            }
-            this.rules.qzsm.some((rule: any) => {
-                if (rule.hasOwnProperty('required')) {
-                    rule.required = ret;
-                }
-                return false;
-            });
-        }
 
 
 
@@ -2831,17 +2745,6 @@ export default class RYBD_CSRCYJBase extends Vue implements ControlInterface {
 
 
 
-
-
-        if (Object.is(name, '') || Object.is(name, 'rzqd') || Object.is(name, 'yglx')) {
-            let ret = false;
-            const _rzqd = this.data.rzqd;
-            const _yglx = this.data.yglx;
-            if (this.$verify.testCond(_yglx, 'EQ', 'A') || this.$verify.testCond(_yglx, 'EQ', 'Y') && this.$verify.testCond(_rzqd, 'EQ', '20')) {
-                ret = true;
-            }
-            this.detailsModel.szyjtj.setVisible(ret);
-        }
 
     }
 

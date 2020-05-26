@@ -380,20 +380,6 @@
 </app-form-group>
 
 </i-col>
-<i-col v-show="detailsModel.grouppanel18.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
-    <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' :uiActionGroup="detailsModel.grouppanel18.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.pcmprofile.ypzxx_csrcyj_form.details.grouppanel18')" :isShowCaption="true" uiStyle="DEFAULT" :titleBarCloseMode="0" :isInfoGroupMode="false" >    
-    <row>
-        <i-col v-show="detailsModel.qzsm.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
-    <app-form-item name='qzsm' :itemRules="this.rules.qzsm" class='' :caption="$t('entities.pcmprofile.ypzxx_csrcyj_form.details.qzsm')" uiStyle="DEFAULT" :labelWidth="250" :isShowCaption="true" :error="detailsModel.qzsm.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-radio-group v-model="data.qzsm"  :disabled="detailsModel.qzsm.disabled"  name="qzsm" tag='PIMCL_SFLJ' codelistType='STATIC'  style=""></app-radio-group>
-</app-form-item>
-
-</i-col>
-    
-    </row>
-</app-form-group>
-
-</i-col>
 <i-col v-show="detailsModel.grouppanel2.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
     <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' :uiActionGroup="detailsModel.grouppanel2.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.pcmprofile.ypzxx_csrcyj_form.details.grouppanel2')" :isShowCaption="true" uiStyle="DEFAULT" :titleBarCloseMode="0" :isInfoGroupMode="false" >    
     <row>
@@ -588,25 +574,6 @@
         <i-col v-show="detailsModel.yglx.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='yglx' :itemRules="this.rules.yglx" class='' :caption="$t('entities.pcmprofile.ypzxx_csrcyj_form.details.yglx')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.yglx.error" :isEmptyCaption="false" labelPos="LEFT">
      <dropdown-list v-model="data.yglx" :data="data" :itemParam="{}" :disabled="detailsModel.yglx.disabled"  tag='PCMCL_SBLX' codelistType='DYNAMIC' placeholder='请选择...' style=""></dropdown-list>
-</app-form-item>
-
-</i-col>
-<i-col v-show="detailsModel.szyjtj.visible" :style="{}"  :sm="{ span: 24, offset: 0 }" :md="{ span: 24, offset: 0 }" :lg="{ span: 24, offset: 0 }" :xl="{ span: 24, offset: 0 }">
-    <app-form-item name='szyjtj' :itemRules="this.rules.szyjtj" class='' :caption="$t('entities.pcmprofile.ypzxx_csrcyj_form.details.szyjtj')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.szyjtj.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-mpicker
-    :activeData="data"
-    :disabled="detailsModel.szyjtj.disabled"
-    :curvalue="data.szyjtj"
-    name="szyjtj"
-    :context="context"
-    :viewparams="viewparams"
-    :service="service"
-    :acParams="{ }"
-    :pickupView="{ viewname: 'pcmprofileszyjtjmpickup-view', title: $t('entities.pcmprofileszyjtj.views.mpickupview.title'), deResParameters: [], parameters: [{ pathName: 'pcmprofileszyjtjs', parameterName: 'pcmprofileszyjtj' }, { pathName: 'mpickupview', parameterName: 'mpickupview' } ], placement:'' }"
-    @formitemvaluechange="onFormItemValueChange" 
-    style="">
-</app-mpicker>
-
 </app-form-item>
 
 </i-col>
@@ -1262,7 +1229,6 @@ export default class YPZXX_CSRCYJBase extends Vue implements ControlInterface {
         sfz: null,
         zczs2: null,
         otherfile: null,
-        qzsm: null,
         ormorgid: null,
         ormorgname: null,
         rzqd: null,
@@ -1284,7 +1250,6 @@ export default class YPZXX_CSRCYJBase extends Vue implements ControlInterface {
         wbgw: null,
         wbzw: null,
         yglx: null,
-        szyjtj: null,
         pcmprofile:null,
     };
 
@@ -1633,12 +1598,6 @@ export default class YPZXX_CSRCYJBase extends Vue implements ControlInterface {
             { required: false, type: 'string', message: '语言等级证书 值不能为空', trigger: 'change' },
             { required: false, type: 'string', message: '语言等级证书 值不能为空', trigger: 'blur' },
         ],
-        qzsm: [
-            { type: 'string', message: '本人承诺以上内容均属实并签字 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '本人承诺以上内容均属实并签字 值必须为字符串类型', trigger: 'blur' },
-            { required: true, type: 'string', message: '本人承诺以上内容均属实并签字 值不能为空', trigger: 'change' },
-            { required: true, type: 'string', message: '本人承诺以上内容均属实并签字 值不能为空', trigger: 'blur' },
-        ],
         ormorgid: [
             { type: 'string', message: '组织标识 值必须为字符串类型', trigger: 'change' },
             { type: 'string', message: '组织标识 值必须为字符串类型', trigger: 'blur' },
@@ -1765,12 +1724,6 @@ export default class YPZXX_CSRCYJBase extends Vue implements ControlInterface {
             { required: true, type: 'string', message: '申报类型 值不能为空', trigger: 'change' },
             { required: true, type: 'string', message: '申报类型 值不能为空', trigger: 'blur' },
         ],
-        szyjtj: [
-            { type: 'string', message: '社招引进条件 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '社招引进条件 值必须为字符串类型', trigger: 'blur' },
-            { required: true, type: 'string', message: '社招引进条件 值不能为空', trigger: 'change' },
-            { required: true, type: 'string', message: '社招引进条件 值不能为空', trigger: 'blur' },
-        ],
     }
 
     /**
@@ -1797,8 +1750,6 @@ export default class YPZXX_CSRCYJBase extends Vue implements ControlInterface {
         grouppanel6: new FormGroupPanelModel({ caption: '是否黑名单', detailType: 'GROUPPANEL', name: 'grouppanel6', visible: false, isShowCaption: true, form: this, uiActionGroup: { caption: '', langbase: 'entities.pcmprofile.ypzxx_csrcyj_form', extractMode: 'ITEM', details: [] } })
 , 
         grouppanel14: new FormGroupPanelModel({ caption: '附件上传', detailType: 'GROUPPANEL', name: 'grouppanel14', visible: false, isShowCaption: true, form: this, uiActionGroup: { caption: '', langbase: 'entities.pcmprofile.ypzxx_csrcyj_form', extractMode: 'ITEM', details: [] } })
-, 
-        grouppanel18: new FormGroupPanelModel({ caption: '承诺签字', detailType: 'GROUPPANEL', name: 'grouppanel18', visible: false, isShowCaption: true, form: this, uiActionGroup: { caption: '', langbase: 'entities.pcmprofile.ypzxx_csrcyj_form', extractMode: 'ITEM', details: [] } })
 , 
         grouppanel19: new FormGroupPanelModel({ caption: '挂职调入设置', detailType: 'GROUPPANEL', name: 'grouppanel19', visible: false, isShowCaption: false, form: this, uiActionGroup: { caption: '', langbase: 'entities.pcmprofile.ypzxx_csrcyj_form', extractMode: 'ITEM', details: [] } })
 , 
@@ -1958,8 +1909,6 @@ export default class YPZXX_CSRCYJBase extends Vue implements ControlInterface {
 , 
         otherfile: new FormItemModel({ caption: '语言等级证书', detailType: 'FORMITEM', name: 'otherfile', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
-        qzsm: new FormItemModel({ caption: '本人承诺以上内容均属实并签字', detailType: 'FORMITEM', name: 'qzsm', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
-, 
         ormorgid: new FormItemModel({ caption: '组织标识', detailType: 'FORMITEM', name: 'ormorgid', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
         ormorgname: new FormItemModel({ caption: '组织名称', detailType: 'FORMITEM', name: 'ormorgname', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
@@ -2001,8 +1950,6 @@ export default class YPZXX_CSRCYJBase extends Vue implements ControlInterface {
         wbzw: new FormItemModel({ caption: '外部职务', detailType: 'FORMITEM', name: 'wbzw', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
         yglx: new FormItemModel({ caption: '申报类型', detailType: 'FORMITEM', name: 'yglx', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
-, 
-        szyjtj: new FormItemModel({ caption: '社招引进条件', detailType: 'FORMITEM', name: 'szyjtj', visible: false, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
     };
 
@@ -2619,18 +2566,6 @@ export default class YPZXX_CSRCYJBase extends Vue implements ControlInterface {
     }
 
     /**
-     * 监控表单属性 qzsm 值
-     *
-     * @param {*} newVal
-     * @param {*} oldVal
-     * @memberof YPZXX_CSRCYJ
-     */
-    @Watch('data.qzsm')
-    onQzsmChange(newVal: any, oldVal: any) {
-        this.formDataChange({ name: 'qzsm', newVal: newVal, oldVal: oldVal });
-    }
-
-    /**
      * 监控表单属性 ormorgid 值
      *
      * @param {*} newVal
@@ -2882,18 +2817,6 @@ export default class YPZXX_CSRCYJBase extends Vue implements ControlInterface {
         this.formDataChange({ name: 'yglx', newVal: newVal, oldVal: oldVal });
     }
 
-    /**
-     * 监控表单属性 szyjtj 值
-     *
-     * @param {*} newVal
-     * @param {*} oldVal
-     * @memberof YPZXX_CSRCYJ
-     */
-    @Watch('data.szyjtj')
-    onSzyjtjChange(newVal: any, oldVal: any) {
-        this.formDataChange({ name: 'szyjtj', newVal: newVal, oldVal: oldVal });
-    }
-
 
     /**
      * 重置表单项值
@@ -2903,9 +2826,6 @@ export default class YPZXX_CSRCYJBase extends Vue implements ControlInterface {
      * @memberof YPZXX_CSRCYJ
      */
     public resetFormData({ name, newVal, oldVal }: { name: string, newVal: any, oldVal: any }): void {
-        if (Object.is(name, 'yglx')) {
-            this.onFormItemValueChange({ name: 'szyjtj', value: null });
-        }
     }
 
     /**
@@ -2964,15 +2884,6 @@ export default class YPZXX_CSRCYJBase extends Vue implements ControlInterface {
                 ret = true;
             }
             this.detailsModel.grouppanel14.setVisible(ret);
-        }
-
-        if (Object.is(name, '') || Object.is(name, 'rzqd')) {
-            let ret = false;
-            const _rzqd = this.data.rzqd;
-            if (this.$verify.testCond(_rzqd, 'NOTEQ', '85')) {
-                ret = true;
-            }
-            this.detailsModel.grouppanel18.setVisible(ret);
         }
 
         if (Object.is(name, '') || Object.is(name, 'rzqd')) {
@@ -3227,28 +3138,6 @@ export default class YPZXX_CSRCYJBase extends Vue implements ControlInterface {
 
 
 
-        if (Object.is(name, '') || Object.is(name, 'rzqd')) {
-            let ret = true;
-            const _rzqd = this.data.rzqd;
-            if (this.$verify.testCond(_rzqd, 'EQ', '85')) {
-                ret = false;
-            }
-            this.rules.qzsm.some((rule: any) => {
-                if (rule.hasOwnProperty('required')) {
-                    rule.required = ret;
-                }
-                return false;
-            });
-        }
-        if (Object.is(name, '') || Object.is(name, 'qzsm')) {
-            let ret = false;
-            const _qzsm = this.data.qzsm;
-            if (this.$verify.testCond(_qzsm, 'NOTEQ', '1')) {
-                ret = true;
-            }
-            this.detailsModel.qzsm.setDisabled(!ret);
-        }
-
 
 
         if (Object.is(name, '') || Object.is(name, 'rzqd')) {
@@ -3352,30 +3241,6 @@ export default class YPZXX_CSRCYJBase extends Vue implements ControlInterface {
                 ret = true;
             }
             this.detailsModel.yglx.setDisabled(!ret);
-        }
-
-        if (Object.is(name, '') || Object.is(name, 'rzqd') || Object.is(name, 'yglx')) {
-            let ret = true;
-            const _rzqd = this.data.rzqd;
-            const _yglx = this.data.yglx;
-            if (this.$verify.testCond(_rzqd, 'NOTEQ', '20') || this.$verify.testCond(_yglx, 'NOTEQ', 'A') && this.$verify.testCond(_yglx, 'NOTEQ', 'Y') && this.$verify.testCond(_rzqd, 'EQ', '20')) {
-                ret = false;
-            }
-            this.rules.szyjtj.some((rule: any) => {
-                if (rule.hasOwnProperty('required')) {
-                    rule.required = ret;
-                }
-                return false;
-            });
-        }
-        if (Object.is(name, '') || Object.is(name, 'rzqd') || Object.is(name, 'yglx')) {
-            let ret = false;
-            const _rzqd = this.data.rzqd;
-            const _yglx = this.data.yglx;
-            if (this.$verify.testCond(_rzqd, 'EQ', '20') && this.$verify.testCond(_yglx, 'EQ', 'A') || this.$verify.testCond(_yglx, 'EQ', 'Y')) {
-                ret = true;
-            }
-            this.detailsModel.szyjtj.setVisible(ret);
         }
 
 

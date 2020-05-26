@@ -106,7 +106,7 @@ export default {
 			tip: "Help",
 		},
 	},
-	sxjygridviewtoolbar2_toolbar: {
+	sxjygridviewtoolbar_toolbar: {
 		deuiaction1: {
 			caption: "新建",
 			tip: "新建",
@@ -126,20 +126,6 @@ export default {
 		deuiaction5: {
 			caption: "Export",
 			tip: "Export {0} Data To Excel",
-		},
-	},
-	sxjygridviewtoolbar_toolbar: {
-		deuiaction3: {
-			caption: "开启行编辑",
-			tip: "开启行编辑",
-		},
-		deuiaction6: {
-			caption: "Export",
-			tip: "Export {0} Data To Excel",
-		},
-		deuiaction2: {
-			caption: "Filter",
-			tip: "Filter",
 		},
 	},
 };

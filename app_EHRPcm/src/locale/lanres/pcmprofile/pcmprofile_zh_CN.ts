@@ -257,7 +257,6 @@ export default {
 			grouppanel1: '政治面貌', 
 			grouppanel6: '是否黑名单', 
 			grouppanel14: '附件上传', 
-			grouppanel18: '承诺签字', 
 			grouppanel2: '职务相关', 
 			grouppanel20: '申报类型', 
 			rawitem1: '', 
@@ -337,7 +336,6 @@ export default {
 			sfz: '身份证', 
 			zczs2: '其他证书', 
 			otherfile: '语言等级证书', 
-			qzsm: '本人承诺以上内容均属实并签字', 
 			ormorgid: '组织标识', 
 			ormorgname: '组织名称', 
 			rzqd: '入职渠道', 
@@ -346,7 +344,6 @@ export default {
 			napxmjgwmc: '拟安排岗位', 
 			gzbt: '工资补贴', 
 			yglx: '申报类型', 
-			szyjtj: '社招引进条件', 
 		},
 		uiactions: {
 		},
@@ -362,7 +359,6 @@ export default {
 			grouppanel1: '政治面貌', 
 			grouppanel6: '是否黑名单', 
 			grouppanel14: '附件上传', 
-			grouppanel18: '承诺签字', 
 			grouppanel19: '挂职调入设置', 
 			grouppanel2: '职务相关', 
 			grouppanel16: '申报类型', 
@@ -442,7 +438,6 @@ export default {
 			sfz: '身份证', 
 			zczs2: '其他证书', 
 			otherfile: '语言等级证书', 
-			qzsm: '本人承诺以上内容均属实并签字', 
 			ormorgid: '组织标识', 
 			ormorgname: '组织名称', 
 			rzqd: '入职渠道', 
@@ -464,7 +459,6 @@ export default {
 			wbgw: '外部岗位', 
 			wbzw: '外部职务', 
 			yglx: '申报类型', 
-			szyjtj: '社招引进条件', 
 		},
 		uiactions: {
 		},
@@ -480,7 +474,6 @@ export default {
 			grouppanel1: '政治面貌', 
 			grouppanel6: '是否黑名单', 
 			grouppanel14: '附件上传', 
-			grouppanel18: '承诺签字', 
 			grouppanel2: '职务相关', 
 			grouppanel20: '申报类型', 
 			rawitem1: '', 
@@ -560,7 +553,6 @@ export default {
 			sfz: '身份证', 
 			zczs2: '其他证书', 
 			otherfile: '语言等级证书', 
-			qzsm: '本人承诺以上内容均属实并签字', 
 			ormorgid: '组织标识', 
 			ormorgname: '组织名称', 
 			rzqd: '入职渠道', 
@@ -569,7 +561,6 @@ export default {
 			napxmjgwmc: '拟安排岗位', 
 			gzbt: '工资补贴', 
 			yglx: '申报类型', 
-			szyjtj: '社招引进条件', 
 		},
 		uiactions: {
 		},
@@ -585,7 +576,6 @@ export default {
 			grouppanel1: '政治面貌', 
 			grouppanel6: '是否黑名单', 
 			grouppanel14: '附件上传', 
-			grouppanel18: '承诺签字', 
 			grouppanel2: '职务相关', 
 			grouppanel20: '申报类型', 
 			rawitem1: '', 
@@ -665,7 +655,6 @@ export default {
 			sfz: '身份证', 
 			zczs2: '其他证书', 
 			otherfile: '语言等级证书', 
-			qzsm: '本人承诺以上内容均属实并签字', 
 			ormorgid: '组织标识', 
 			ormorgname: '组织名称', 
 			rzqd: '入职渠道', 
@@ -674,7 +663,6 @@ export default {
 			napxmjgwmc: '拟安排岗位', 
 			gzbt: '工资补贴', 
 			yglx: '申报类型', 
-			szyjtj: '社招引进条件', 
 		},
 		uiactions: {
 		},
@@ -974,7 +962,6 @@ export default {
 			grouppanel1: '政治面貌', 
 			grouppanel6: '是否黑名单', 
 			grouppanel14: '附件上传', 
-			grouppanel18: '承诺签字', 
 			grouppanel2: '职务相关', 
 			grouppanel22: '申报类型', 
 			rawitem1: '', 
@@ -1058,7 +1045,6 @@ export default {
 			sfz: '身份证', 
 			zczs2: '其他证书', 
 			otherfile: '语言等级证书', 
-			qzsm: '本人承诺以上内容均属实并签字', 
 			ormorgid: '组织标识', 
 			ormorgname: '组织名称', 
 			rzqd: '入职渠道', 
@@ -1067,7 +1053,6 @@ export default {
 			napxmjgwmc: '拟安排岗位', 
 			gzbt: '工资补贴', 
 			yglx: '申报类型', 
-			szyjtj: '社招引进条件', 
 		},
 		uiactions: {
 		},
@@ -1356,7 +1341,6 @@ export default {
 			grouppanel1: '政治面貌', 
 			grouppanel6: '是否黑名单', 
 			grouppanel14: '附件上传', 
-			grouppanel18: '承诺签字', 
 			grouppanel2: '职务相关', 
 			grouppanel20: '申报类型', 
 			rawitem1: '', 
@@ -1436,7 +1420,6 @@ export default {
 			sfz: '身份证', 
 			zczs2: '其他证书', 
 			otherfile: '语言等级证书', 
-			qzsm: '本人承诺以上内容均属实并签字', 
 			ormorgid: '组织标识', 
 			ormorgname: '组织名称', 
 			rzqd: '入职渠道', 
@@ -1445,7 +1428,6 @@ export default {
 			napxmjgwmc: '拟安排岗位', 
 			gzbt: '工资补贴', 
 			yglx: '申报类型', 
-			szyjtj: '社招引进条件', 
 		},
 		uiactions: {
 		},
@@ -1984,7 +1966,6 @@ export default {
 	},
 	bhsp_csrcyj_grid: {
 		columns: {
-			cz5: '操作',
 			zzdzs: '组织名称',
 			pcmprofilename: '姓名',
 			ygbh: '员工编号',
@@ -2087,7 +2068,7 @@ export default {
 	},
 	yrdwcs_csrcyj_grid: {
 		columns: {
-			cz2: '操作',
+			uagridcolumn1: '操作列',
 			zzdzs: '组织名称',
 			pcmprofilename: '姓名',
 			rzqd: '入职渠道',
@@ -2108,6 +2089,7 @@ export default {
 			profiletype: '应聘者状态',
 		},
 		uiactions: {
+			invalid: '拒绝',
 		},
 	},
 	bhsp_grid: {
@@ -2154,7 +2136,7 @@ export default {
 	},
 	zpdwsh_grid: {
 		columns: {
-			cz2: '操作',
+			uagridcolumn1: '操作列',
 			zzdzs: '组织名称',
 			pcmprofilename: '姓名',
 			rzqd: '入职渠道',
@@ -2175,6 +2157,7 @@ export default {
 			profiletype: '应聘者状态',
 		},
 		uiactions: {
+			invalid: '拒绝',
 		},
 	},
 	rzsp_grid: {

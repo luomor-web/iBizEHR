@@ -21,13 +21,6 @@
             <template v-if="!isSingleSelect">
                 <el-table-column align="center" type='selection' :width="checkboxColWidth"></el-table-column>
             </template>
-            <template v-if="getColumnState('cz5')">
-                <el-table-column show-overflow-tooltip :prop="'cz5'" :label="$t('entities.pcmprofile.bhsp_csrcyj_grid.columns.cz5')" :width="150"  :align="'left'" :sortable="'custom'">
-                    <template v-slot="{row,column}">
-                        <span>{{row.cz5}}</span>
-                    </template>
-                </el-table-column>
-            </template>
             <template v-if="getColumnState('zzdzs')">
                 <el-table-column show-overflow-tooltip :prop="'zzdzs'" :label="$t('entities.pcmprofile.bhsp_csrcyj_grid.columns.zzdzs')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
@@ -656,13 +649,6 @@ export default class BHSP_CSRCYJBase extends Vue implements ControlInterface {
      * @memberof BHSP_CSRCYJ
      */
     public allColumns: any[] = [
-        {
-            name: 'cz5',
-            label: '操作',
-            langtag: 'entities.pcmprofile.bhsp_csrcyj_grid.columns.cz5',
-            show: true,
-            util: 'PX'
-        },
         {
             name: 'zzdzs',
             label: '组织名称',

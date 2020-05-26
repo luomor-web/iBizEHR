@@ -59,7 +59,6 @@ export default {
 	},
 	main_grid: {
 		columns: {
-			jobid: '职位ID',
 			tdzwxxname: '职位名称（*）',
 			initapplydate: '最初投递时间（*）',
 			department: '投递组织（*）',
@@ -100,7 +99,7 @@ export default {
 			tip: '帮助',
 		},
 	},
-	tdzwgridviewtoolbar2_toolbar: {
+	tdzwgridviewtoolbar_toolbar: {
 		deuiaction1: {
 			caption: '新建',
 			tip: '新建',
@@ -120,20 +119,6 @@ export default {
 		deuiaction5: {
 			caption: '导出',
 			tip: '导出',
-		},
-	},
-	tdzwgridviewtoolbar_toolbar: {
-		deuiaction3: {
-			caption: '开启行编辑',
-			tip: '开启行编辑',
-		},
-		deuiaction6: {
-			caption: '导出',
-			tip: '导出',
-		},
-		deuiaction2: {
-			caption: '过滤',
-			tip: '过滤',
 		},
 	},
 };

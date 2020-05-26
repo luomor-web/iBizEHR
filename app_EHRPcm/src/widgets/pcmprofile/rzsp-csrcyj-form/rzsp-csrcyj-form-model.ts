@@ -281,11 +281,6 @@ export default class RZSP_CSRCYJModel {
         dataType: 'LONGTEXT',
       },
       {
-        name: 'qzsm',
-        prop: 'qzsm',
-        dataType: 'SSCODELIST',
-      },
-      {
         name: 'ormorgid',
         prop: 'ormorgid',
         dataType: 'PICKUP',
@@ -324,11 +319,6 @@ export default class RZSP_CSRCYJModel {
         name: 'yglx',
         prop: 'yglx',
         dataType: 'SSCODELIST',
-      },
-      {
-        name: 'szyjtj',
-        prop: 'szyjtj',
-        dataType: 'LONGTEXT',
       },
       {
         name: 'pcmprofile',
