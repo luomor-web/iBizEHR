@@ -98,9 +98,9 @@
 <i-col v-show="detailsModel.grouppanel4.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' :uiActionGroup="detailsModel.grouppanel4.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.pcmprofile.ypzxx_csrcyj_form.details.grouppanel4')" :isShowCaption="false" uiStyle="DEFAULT" :titleBarCloseMode="0" :isInfoGroupMode="false" >    
     <row>
-        <i-col v-show="detailsModel.zp.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
+        <i-col v-show="detailsModel.zp.visible" :style="{}"  :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
     <app-form-item name='zp' :itemRules="this.rules.zp" class='' :caption="$t('entities.pcmprofile.ypzxx_csrcyj_form.details.zp')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.zp.error" :isEmptyCaption="false" labelPos="LEFT">
-     <app-image-upload :multiple="true" :formState="formState" :ignorefieldvaluechange="ignorefieldvaluechange" @formitemvaluechange="onFormItemValueChange" :data="JSON.stringify(this.data)" name='zp' :value="data.zp" :disabled="detailsModel.zp.disabled" uploadparams='' exportparams='' :customparams="{'foldertype': 'PHOTO'}" style="height:400px;width:300px;overflow: auto;"></app-image-upload>
+     <app-image-upload :multiple="true" :formState="formState" :ignorefieldvaluechange="ignorefieldvaluechange" @formitemvaluechange="onFormItemValueChange" :data="JSON.stringify(this.data)" name='zp' :value="data.zp" :disabled="detailsModel.zp.disabled" uploadparams='' exportparams='' :customparams="{'foldertype': 'PHOTO'}" style="height:160px;width:150px;overflow: auto;"></app-image-upload>
 </app-form-item>
 
 </i-col>
@@ -1780,7 +1780,7 @@ export default class YPZXX_CSRCYJBase extends Vue implements ControlInterface {
      * @memberof YPZXX_CSRCYJ
      */
     public detailsModel: any = {
-        grouppanel15: new FormGroupPanelModel({ caption: '选择三局内部人员', detailType: 'GROUPPANEL', name: 'grouppanel15', visible: false, isShowCaption: true, form: this, uiActionGroup: { caption: '', langbase: 'entities.pcmprofile.ypzxx_csrcyj_form', extractMode: 'ITEM', details: [] } })
+        grouppanel15: new FormGroupPanelModel({ caption: '选择内部人员', detailType: 'GROUPPANEL', name: 'grouppanel15', visible: false, isShowCaption: true, form: this, uiActionGroup: { caption: '', langbase: 'entities.pcmprofile.ypzxx_csrcyj_form', extractMode: 'ITEM', details: [] } })
 , 
         grouppanel3: new FormGroupPanelModel({ caption: '', detailType: 'GROUPPANEL', name: 'grouppanel3', visible: true, isShowCaption: false, form: this, uiActionGroup: { caption: '', langbase: 'entities.pcmprofile.ypzxx_csrcyj_form', extractMode: 'ITEM', details: [] } })
 , 
