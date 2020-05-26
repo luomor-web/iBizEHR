@@ -296,14 +296,14 @@ export default class OrgTreeExpViewtreeexpbarBase extends Vue implements Control
         if (Object.is(expmode, 'SUBORMORGINFO')) {
             return {  
                 viewname: 'ormorginfo-sub-sub-org-grid-view', 
-                parentdata: {"orgtype":"%NODEID%","nodeid":"%NODEID%"},
+                parentdata: {"srfparentdefname":"ORMORGSECTORID","orgtype":"%NODEID%","srfparentdename":"ORMORGSECTOR","srfparentmode":"DER1N_PIMPERSON_ORMORGSECTOR_ORMORGSECTORID","nodeid":"%NODEID%"},
                 deKeyField:'ormorginfo'
 			};
         }
         if (Object.is(expmode, 'CHILDORG')) {
             return {  
                 viewname: 'ormorginfo-org-tree-grid-view', 
-                parentdata: {"nodeid":"%NODEID%"},
+                parentdata: {"srfparentdefname":"n_porgid_eq","srfparentdename":"ORMORG","srfparentmode":"DER1N_ORMORG_ORMORG_PORGID","nodeid":"%NODEID%"},
                 deKeyField:'ormorginfo'
 			};
         }
