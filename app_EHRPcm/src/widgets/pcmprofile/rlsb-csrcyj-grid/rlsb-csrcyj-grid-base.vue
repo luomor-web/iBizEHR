@@ -21,10 +21,15 @@
             <template v-if="!isSingleSelect">
                 <el-table-column align="center" type='selection' :width="checkboxColWidth"></el-table-column>
             </template>
-            <template v-if="getColumnState('cz4')">
-                <el-table-column show-overflow-tooltip :prop="'cz4'" :label="$t('entities.pcmprofile.rlsb_csrcyj_grid.columns.cz4')" :width="150"  :align="'left'" :sortable="'custom'">
-                    <template v-slot="{row,column}">
-                        <span>{{row.cz4}}</span>
+            <template v-if="getColumnState('uagridcolumn1')">
+                <el-table-column :column-key="'uagridcolumn1'" :label="$t('entities.pcmprofile.rlsb_csrcyj_grid.columns.uagridcolumn1')" :width="100"  :align="'right'">
+                    <template slot-scope="scope">
+                        <span>
+                            
+                            <a @click="uiAction(scope.row, 'ModifyYPZ2', $event)">
+                              {{$t('entities.pcmprofile.rlsb_csrcyj_grid.uiactions.modifyypz2')}}
+                            </a>
+                        </span>
                     </template>
                 </el-table-column>
             </template>
@@ -231,6 +236,7 @@ import { UIActionTool,Util } from '@/utils';
 import PCMPROFILEService from '@/service/pcmprofile/pcmprofile-service';
 import RLSB_CSRCYJService from './rlsb-csrcyj-grid-service';
 
+import PCMPROFILEUIService from '@/uiservice/pcmprofile/pcmprofile-ui-service';
 import CodeListService from "@service/app/codelist-service";
 
 
@@ -318,6 +324,35 @@ export default class RLSB_CSRCYJBase extends Vue implements ControlInterface {
      */
     public appEntityService: PCMPROFILEService = new PCMPROFILEService({ $store: this.$store });
     
+
+    /**
+     * 逻辑事件
+     *
+     * @param {*} [params={}]
+     * @param {*} [tag]
+     * @param {*} [$event]
+     * @memberof 
+     */
+    public grid_uagridcolumn1_u7e9fcd9_click(params: any = {}, tag?: any, $event?: any) {
+        // 取数
+        let datas: any[] = [];
+        let xData: any = null;
+        // _this 指向容器对象
+        const _this: any = this;
+        let paramJO:any = {};
+        
+        let contextJO:any = {};
+        xData = this;
+        if (_this.getDatas && _this.getDatas instanceof Function) {
+            datas = [..._this.getDatas()];
+        }
+        if(params){
+          datas = [params];
+        }
+        // 界面行为
+        const curUIService:PCMPROFILEUIService  = new PCMPROFILEUIService();
+        curUIService.PCMPROFILE_ModifyYPZ2(datas,contextJO, paramJO,  $event, xData,this,"PCMPROFILE");
+    }
 
 
     /**
@@ -657,9 +692,9 @@ export default class RLSB_CSRCYJBase extends Vue implements ControlInterface {
      */
     public allColumns: any[] = [
         {
-            name: 'cz4',
-            label: '操作',
-            langtag: 'entities.pcmprofile.rlsb_csrcyj_grid.columns.cz4',
+            name: 'uagridcolumn1',
+            label: '操作列',
+            langtag: 'entities.pcmprofile.rlsb_csrcyj_grid.columns.uagridcolumn1',
             show: true,
             util: 'PX'
         },
@@ -1535,6 +1570,9 @@ export default class RLSB_CSRCYJBase extends Vue implements ControlInterface {
      */
 	public uiAction(row: any, tag: any, $event: any) {
         // this.rowClick(row, true);
+        if(Object.is('ModifyYPZ2', tag)) {
+            this.grid_uagridcolumn1_u7e9fcd9_click(row, tag, $event);
+        }
     }
 
     /**

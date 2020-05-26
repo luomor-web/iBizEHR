@@ -602,21 +602,6 @@ const router = new Router({
                     component: () => import('@pages/pcm/pcmawardswonsedit-view/pcmawardswonsedit-view.vue'),
                 },
                 {
-                    path: 'pcmprofilefjs/:pcmprofilefj?/profilefjgridview/:profilefjgridview?',
-                    meta: {
-                        caption: 'entities.pcmprofilefj.views.profilefjgridview.caption',
-                        imgPath: '../../../img/jcgl/1/fujianxinxi.png',
-                        iconCls: '',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'pcmprofilefjs', parameterName: 'pcmprofilefj' },
-                            { pathName: 'profilefjgridview', parameterName: 'profilefjgridview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/pcm/pcmprofilefjprofile-fjgrid-view/pcmprofilefjprofile-fjgrid-view.vue'),
-                },
-                {
                     path: 'ormorgsectors/:ormorgsector?/ydbmpickupview/:ydbmpickupview?',
                     meta: {
                         caption: 'entities.ormorgsector.views.ydbmpickupview.caption',
@@ -1247,19 +1232,6 @@ const router = new Router({
                         requireAuth: true,
                     },
                     component: () => import('@pages/pcm/pcmprofilerzspgrid-view/pcmprofilerzspgrid-view.vue'),
-                },
-                {
-                    path: 'pcmprofilefjs/:pcmprofilefj?/editview/:editview?',
-                    meta: {
-                        caption: 'entities.pcmprofilefj.views.editview.caption',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'pcmprofilefjs', parameterName: 'pcmprofilefj' },
-                            { pathName: 'editview', parameterName: 'editview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/pcm/pcmprofilefjedit-view/pcmprofilefjedit-view.vue'),
                 },
                 {
                     path: 'pcmprofiles/:pcmprofile?/rzspeditview/:rzspeditview?',
@@ -1986,18 +1958,6 @@ const router = new Router({
             requireAuth: true,
         },
         component: () => import('@pages/pcm/pcmprofilebhsp-csrcyjedit-view/pcmprofilebhsp-csrcyjedit-view.vue'),
-    },
-    {
-        path: '/pcmprofilefjs/:pcmprofilefj?/editview/:editview?',
-        meta: {
-            caption: 'entities.pcmprofilefj.views.editview.caption',
-            parameters: [
-                { pathName: 'pcmprofilefjs', parameterName: 'pcmprofilefj' },
-                { pathName: 'editview', parameterName: 'editview' },
-            ],
-            requireAuth: true,
-        },
-        component: () => import('@pages/pcm/pcmprofilefjedit-view/pcmprofilefjedit-view.vue'),
     },
     {
         path: '/pcmprofiles/:pcmprofile?/pcmeducationexperiences/:pcmeducationexperience?/editview/:editview?',
@@ -3189,20 +3149,6 @@ const router = new Router({
             requireAuth: true,
         },
         component: () => import('@pages/pcm/pcmxkmlmpickup-view/pcmxkmlmpickup-view.vue'),
-    },
-    {
-        path: '/pcmprofilefjs/:pcmprofilefj?/profilefjgridview/:profilefjgridview?',
-        meta: {
-            caption: 'entities.pcmprofilefj.views.profilefjgridview.caption',
-            imgPath: '../../../img/jcgl/1/fujianxinxi.png',
-            iconCls: '',
-            parameters: [
-                { pathName: 'pcmprofilefjs', parameterName: 'pcmprofilefj' },
-                { pathName: 'profilefjgridview', parameterName: 'profilefjgridview' },
-            ],
-            requireAuth: true,
-        },
-        component: () => import('@pages/pcm/pcmprofilefjprofile-fjgrid-view/pcmprofilefjprofile-fjgrid-view.vue'),
     },
     {
         path: '/ormorgsectors/:ormorgsector?/ydbmpickupgridview/:ydbmpickupgridview?',

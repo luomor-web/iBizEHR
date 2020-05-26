@@ -165,14 +165,14 @@ export default class RLSBModel {
           dataType: 'TEXT',
         },
         {
-          name: 'yglx_text',
-          prop: 'yglx',
-          dataType: 'SSCODELIST',
-        },
-        {
           name: 'r_lastdiscipline',
           prop: 'r_lastdiscipline',
           dataType: 'TEXT',
+        },
+        {
+          name: 'yglx_text',
+          prop: 'yglx',
+          dataType: 'SSCODELIST',
         },
         {
           name: 'certificatetype',

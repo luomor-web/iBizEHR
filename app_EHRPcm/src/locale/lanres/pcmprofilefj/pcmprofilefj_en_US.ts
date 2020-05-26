@@ -52,8 +52,6 @@ export default {
 		uiactions: {
 		},
 	},
-	profilefjgridviewtoolbar_toolbar: {
-	},
 	editviewtoolbar_toolbar: {
 		tbitem3: {
 			caption: "Save",
@@ -75,5 +73,7 @@ export default {
 			caption: "Help",
 			tip: "Help",
 		},
+	},
+	profilefjgridviewtoolbar_toolbar: {
 	},
 };

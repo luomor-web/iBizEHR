@@ -508,9 +508,6 @@ export default {
 			rawitem8: "", 
 			druipart7: "", 
 			grouppanel13: "投递职位摘要信息", 
-			rawitem9: "", 
-			druipart9: "", 
-			grouppanel16: "应聘者附件", 
 			formpage1: "基本信息", 
 			srfupdatedate: "更新时间", 
 			srforikey: "", 
@@ -1962,7 +1959,7 @@ export default {
 	},
 	rlsb_csrcyj_grid: {
 		columns: {
-			cz4: "操作",
+			uagridcolumn1: "操作列",
 			zzdzs: "组织名称",
 			pcmprofilename: "姓名",
 			rzqd: "入职渠道",
@@ -1983,6 +1980,7 @@ export default {
 			mobile: "手机号",
 		},
 		uiactions: {
+			modifyypz2: "修改",
 		},
 	},
 	bhsp_csrcyj_grid: {
@@ -2064,7 +2062,7 @@ export default {
 	},
 	rlsb_grid: {
 		columns: {
-			cz4: "操作",
+			uagridcolumn1: "操作列",
 			zzdzs: "组织名称",
 			pcmprofilename: "姓名",
 			rzqd: "入职渠道",
@@ -2085,6 +2083,7 @@ export default {
 			mobile: "手机号",
 		},
 		uiactions: {
+			modifyypz: "修改",
 		},
 	},
 	yrdwcs_csrcyj_grid: {

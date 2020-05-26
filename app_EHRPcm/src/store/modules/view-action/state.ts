@@ -132,15 +132,6 @@ export const viewstate: any = {
             ],
         },
         {
-            viewtag: '1977e8d438054097b13de37ff789b517',
-            viewmodule: 'PCM',
-            viewname: 'PCMPROFILEFJEditView',
-            viewaction: '',
-            viewdatachange: false,
-            refviews: [
-            ],
-        },
-        {
             viewtag: '19cce11f58776909dbd6caa9a9fd3946',
             viewmodule: 'PCM',
             viewname: 'PCMEducationExperienceEditView',
@@ -531,7 +522,6 @@ export const viewstate: any = {
                 'd0d1c5e2fea8eb48ebcb507b6126df20',
                 'fa6e04043d654177e570ab09a58791bd',
                 '95bcee42df5fcece9493f5aabfd9f42c',
-                'eab174bdd0d26c696e5a0e0d433af6c6',
                 '71cdb539d218e7a24362fa84ffa78813',
                 '01a06bd6730d3199229fd1b9f8aca1a8',
             ],
@@ -944,16 +934,6 @@ export const viewstate: any = {
             viewdatachange: false,
             refviews: [
                 '37004b147c76141470829eebc5f12e99',
-            ],
-        },
-        {
-            viewtag: 'eab174bdd0d26c696e5a0e0d433af6c6',
-            viewmodule: 'PCM',
-            viewname: 'PCMPROFILEFJProfileFJGridView',
-            viewaction: '',
-            viewdatachange: false,
-            refviews: [
-                '1977e8d438054097b13de37ff789b517',
             ],
         },
         {
