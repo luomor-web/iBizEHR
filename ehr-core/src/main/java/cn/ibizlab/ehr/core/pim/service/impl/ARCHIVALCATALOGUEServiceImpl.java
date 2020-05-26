@@ -74,6 +74,13 @@ public class ARCHIVALCATALOGUEServiceImpl extends ServiceImpl<ARCHIVALCATALOGUEM
     }
 
     @Override
+    public boolean saveBatch(Collection<ARCHIVALCATALOGUE> list) {
+        list.forEach(item->fillParentData(item));
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<ARCHIVALCATALOGUE> list) {
         list.forEach(item->fillParentData(item));
         saveOrUpdateBatch(list,batchSize);

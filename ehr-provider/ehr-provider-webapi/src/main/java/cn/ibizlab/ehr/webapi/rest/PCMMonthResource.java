@@ -6,10 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
-
 import lombok.extern.slf4j.Slf4j;
 import com.alibaba.fastjson.JSONObject;
-
 import javax.servlet.ServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cglib.beans.BeanCopier;
@@ -24,20 +22,15 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
-
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
-
 import cn.ibizlab.ehr.webapi.dto.*;
 import cn.ibizlab.ehr.webapi.mapping.*;
 import cn.ibizlab.ehr.core.pcm.domain.PCMMonth;
 import cn.ibizlab.ehr.core.pcm.service.IPCMMonthService;
 import cn.ibizlab.ehr.core.pcm.filter.PCMMonthSearchContext;
-
-
-
 
 @Slf4j
 @Api(tags = {"PCMMonth" })
@@ -59,14 +52,14 @@ public class PCMMonthResource {
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmmonths/{pcmmonth_id}")
     @Transactional
     public ResponseEntity<PCMMonthDTO> update(@PathVariable("pcmmonth_id") String pcmmonth_id, @RequestBody PCMMonthDTO pcmmonthdto) {
-		PCMMonth domain = pcmmonthMapping.toDomain(pcmmonthdto);
-        domain.setPcmmonthid(pcmmonth_id);
-		pcmmonthService.update(domain);
-		PCMMonthDTO dto = pcmmonthMapping.toDto(domain);
+		PCMMonth domain  = pcmmonthMapping.toDomain(pcmmonthdto);
+        domain .setPcmmonthid(pcmmonth_id);
+		pcmmonthService.update(domain );
+		PCMMonthDTO dto = pcmmonthMapping.toDto(domain );
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.pcmmonthMapping,#pcmmonthdtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"PCMMonth" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmmonths/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PCMMonthDTO> pcmmonthdtos) {
@@ -82,7 +75,7 @@ public class PCMMonthResource {
          return ResponseEntity.status(HttpStatus.OK).body(pcmmonthService.remove(pcmmonth_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.pcmmonthMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"PCMMonth" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmmonths/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -90,14 +83,14 @@ public class PCMMonthResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMMonth-Save-all')")
+    @PreAuthorize("hasPermission('','Save',{'Sql',this.pcmmonthMapping,#pcmmonthdto})")
     @ApiOperation(value = "Save", tags = {"PCMMonth" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmmonths/save")
     public ResponseEntity<Boolean> save(@RequestBody PCMMonthDTO pcmmonthdto) {
         return ResponseEntity.status(HttpStatus.OK).body(pcmmonthService.save(pcmmonthMapping.toDomain(pcmmonthdto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.pcmmonthMapping,#pcmmonthdtos})")
     @ApiOperation(value = "SaveBatch", tags = {"PCMMonth" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmmonths/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PCMMonthDTO> pcmmonthdtos) {
@@ -116,7 +109,7 @@ public class PCMMonthResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.pcmmonthMapping,#pcmmonthdtos})")
     @ApiOperation(value = "createBatch", tags = {"PCMMonth" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmmonths/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PCMMonthDTO> pcmmonthdtos) {

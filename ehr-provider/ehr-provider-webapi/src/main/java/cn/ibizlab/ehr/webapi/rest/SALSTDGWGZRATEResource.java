@@ -6,10 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
-
 import lombok.extern.slf4j.Slf4j;
 import com.alibaba.fastjson.JSONObject;
-
 import javax.servlet.ServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cglib.beans.BeanCopier;
@@ -24,20 +22,15 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
-
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
-
 import cn.ibizlab.ehr.webapi.dto.*;
 import cn.ibizlab.ehr.webapi.mapping.*;
 import cn.ibizlab.ehr.core.sal.domain.SALSTDGWGZRATE;
 import cn.ibizlab.ehr.core.sal.service.ISALSTDGWGZRATEService;
 import cn.ibizlab.ehr.core.sal.filter.SALSTDGWGZRATESearchContext;
-
-
-
 
 @Slf4j
 @Api(tags = {"SALSTDGWGZRATE" })
@@ -78,7 +71,7 @@ public class SALSTDGWGZRATEResource {
          return ResponseEntity.status(HttpStatus.OK).body(salstdgwgzrateService.remove(salstdgwgzrate_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.salstdgwgzrateMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"SALSTDGWGZRATE" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/salstdgwgzrates/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -97,7 +90,7 @@ public class SALSTDGWGZRATEResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.salstdgwgzrateMapping,#salstdgwgzratedtos})")
     @ApiOperation(value = "createBatch", tags = {"SALSTDGWGZRATE" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/salstdgwgzrates/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<SALSTDGWGZRATEDTO> salstdgwgzratedtos) {
@@ -105,14 +98,14 @@ public class SALSTDGWGZRATEResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALSTDGWGZRATE-Save-all')")
+    @PreAuthorize("hasPermission('','Save',{'Sql',this.salstdgwgzrateMapping,#salstdgwgzratedto})")
     @ApiOperation(value = "Save", tags = {"SALSTDGWGZRATE" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/salstdgwgzrates/save")
     public ResponseEntity<Boolean> save(@RequestBody SALSTDGWGZRATEDTO salstdgwgzratedto) {
         return ResponseEntity.status(HttpStatus.OK).body(salstdgwgzrateService.save(salstdgwgzrateMapping.toDomain(salstdgwgzratedto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.salstdgwgzrateMapping,#salstdgwgzratedtos})")
     @ApiOperation(value = "SaveBatch", tags = {"SALSTDGWGZRATE" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/salstdgwgzrates/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<SALSTDGWGZRATEDTO> salstdgwgzratedtos) {
@@ -125,14 +118,14 @@ public class SALSTDGWGZRATEResource {
 	@RequestMapping(method = RequestMethod.PUT, value = "/salstdgwgzrates/{salstdgwgzrate_id}")
     @Transactional
     public ResponseEntity<SALSTDGWGZRATEDTO> update(@PathVariable("salstdgwgzrate_id") String salstdgwgzrate_id, @RequestBody SALSTDGWGZRATEDTO salstdgwgzratedto) {
-		SALSTDGWGZRATE domain = salstdgwgzrateMapping.toDomain(salstdgwgzratedto);
-        domain.setSalstdgwgzrateid(salstdgwgzrate_id);
-		salstdgwgzrateService.update(domain);
-		SALSTDGWGZRATEDTO dto = salstdgwgzrateMapping.toDto(domain);
+		SALSTDGWGZRATE domain  = salstdgwgzrateMapping.toDomain(salstdgwgzratedto);
+        domain .setSalstdgwgzrateid(salstdgwgzrate_id);
+		salstdgwgzrateService.update(domain );
+		SALSTDGWGZRATEDTO dto = salstdgwgzrateMapping.toDto(domain );
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.salstdgwgzrateMapping,#salstdgwgzratedtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"SALSTDGWGZRATE" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/salstdgwgzrates/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<SALSTDGWGZRATEDTO> salstdgwgzratedtos) {

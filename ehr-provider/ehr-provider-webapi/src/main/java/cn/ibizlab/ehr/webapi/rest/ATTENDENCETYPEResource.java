@@ -6,10 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
-
 import lombok.extern.slf4j.Slf4j;
 import com.alibaba.fastjson.JSONObject;
-
 import javax.servlet.ServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cglib.beans.BeanCopier;
@@ -24,20 +22,15 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
-
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
-
 import cn.ibizlab.ehr.webapi.dto.*;
 import cn.ibizlab.ehr.webapi.mapping.*;
 import cn.ibizlab.ehr.core.att.domain.ATTENDENCETYPE;
 import cn.ibizlab.ehr.core.att.service.IATTENDENCETYPEService;
 import cn.ibizlab.ehr.core.att.filter.ATTENDENCETYPESearchContext;
-
-
-
 
 @Slf4j
 @Api(tags = {"ATTENDENCETYPE" })
@@ -54,14 +47,14 @@ public class ATTENDENCETYPEResource {
 
     public ATTENDENCETYPEDTO permissionDTO=new ATTENDENCETYPEDTO();
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ATTENDENCETYPE-Save-all')")
+    @PreAuthorize("hasPermission('','Save',{'Sql',this.attendencetypeMapping,#attendencetypedto})")
     @ApiOperation(value = "Save", tags = {"ATTENDENCETYPE" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/attendencetypes/save")
     public ResponseEntity<Boolean> save(@RequestBody ATTENDENCETYPEDTO attendencetypedto) {
         return ResponseEntity.status(HttpStatus.OK).body(attendencetypeService.save(attendencetypeMapping.toDomain(attendencetypedto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.attendencetypeMapping,#attendencetypedtos})")
     @ApiOperation(value = "SaveBatch", tags = {"ATTENDENCETYPE" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/attendencetypes/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<ATTENDENCETYPEDTO> attendencetypedtos) {
@@ -80,7 +73,7 @@ public class ATTENDENCETYPEResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.attendencetypeMapping,#attendencetypedtos})")
     @ApiOperation(value = "createBatch", tags = {"ATTENDENCETYPE" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/attendencetypes/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<ATTENDENCETYPEDTO> attendencetypedtos) {
@@ -103,7 +96,7 @@ public class ATTENDENCETYPEResource {
          return ResponseEntity.status(HttpStatus.OK).body(attendencetypeService.remove(attendencetype_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.attendencetypeMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"ATTENDENCETYPE" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/attendencetypes/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -132,14 +125,14 @@ public class ATTENDENCETYPEResource {
 	@RequestMapping(method = RequestMethod.PUT, value = "/attendencetypes/{attendencetype_id}")
     @Transactional
     public ResponseEntity<ATTENDENCETYPEDTO> update(@PathVariable("attendencetype_id") String attendencetype_id, @RequestBody ATTENDENCETYPEDTO attendencetypedto) {
-		ATTENDENCETYPE domain = attendencetypeMapping.toDomain(attendencetypedto);
-        domain.setAttendencetypeid(attendencetype_id);
-		attendencetypeService.update(domain);
-		ATTENDENCETYPEDTO dto = attendencetypeMapping.toDto(domain);
+		ATTENDENCETYPE domain  = attendencetypeMapping.toDomain(attendencetypedto);
+        domain .setAttendencetypeid(attendencetype_id);
+		attendencetypeService.update(domain );
+		ATTENDENCETYPEDTO dto = attendencetypeMapping.toDto(domain );
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.attendencetypeMapping,#attendencetypedtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"ATTENDENCETYPE" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/attendencetypes/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<ATTENDENCETYPEDTO> attendencetypedtos) {

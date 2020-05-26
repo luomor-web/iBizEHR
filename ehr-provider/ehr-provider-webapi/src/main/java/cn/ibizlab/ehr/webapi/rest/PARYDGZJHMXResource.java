@@ -6,10 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
-
 import lombok.extern.slf4j.Slf4j;
 import com.alibaba.fastjson.JSONObject;
-
 import javax.servlet.ServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cglib.beans.BeanCopier;
@@ -24,20 +22,15 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
-
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
-
 import cn.ibizlab.ehr.webapi.dto.*;
 import cn.ibizlab.ehr.webapi.mapping.*;
 import cn.ibizlab.ehr.core.par.domain.PARYDGZJHMX;
 import cn.ibizlab.ehr.core.par.service.IPARYDGZJHMXService;
 import cn.ibizlab.ehr.core.par.filter.PARYDGZJHMXSearchContext;
-
-
-
 
 @Slf4j
 @Api(tags = {"PARYDGZJHMX" })
@@ -59,14 +52,14 @@ public class PARYDGZJHMXResource {
 	@RequestMapping(method = RequestMethod.PUT, value = "/parydgzjhmxes/{parydgzjhmx_id}")
     @Transactional
     public ResponseEntity<PARYDGZJHMXDTO> update(@PathVariable("parydgzjhmx_id") String parydgzjhmx_id, @RequestBody PARYDGZJHMXDTO parydgzjhmxdto) {
-		PARYDGZJHMX domain = parydgzjhmxMapping.toDomain(parydgzjhmxdto);
-        domain.setParydgzjhmxid(parydgzjhmx_id);
-		parydgzjhmxService.update(domain);
-		PARYDGZJHMXDTO dto = parydgzjhmxMapping.toDto(domain);
+		PARYDGZJHMX domain  = parydgzjhmxMapping.toDomain(parydgzjhmxdto);
+        domain .setParydgzjhmxid(parydgzjhmx_id);
+		parydgzjhmxService.update(domain );
+		PARYDGZJHMXDTO dto = parydgzjhmxMapping.toDto(domain );
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.parydgzjhmxMapping,#parydgzjhmxdtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"PARYDGZJHMX" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/parydgzjhmxes/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PARYDGZJHMXDTO> parydgzjhmxdtos) {
@@ -74,14 +67,14 @@ public class PARYDGZJHMXResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PARYDGZJHMX-Save-all')")
+    @PreAuthorize("hasPermission('','Save',{'Sql',this.parydgzjhmxMapping,#parydgzjhmxdto})")
     @ApiOperation(value = "Save", tags = {"PARYDGZJHMX" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/parydgzjhmxes/save")
     public ResponseEntity<Boolean> save(@RequestBody PARYDGZJHMXDTO parydgzjhmxdto) {
         return ResponseEntity.status(HttpStatus.OK).body(parydgzjhmxService.save(parydgzjhmxMapping.toDomain(parydgzjhmxdto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.parydgzjhmxMapping,#parydgzjhmxdtos})")
     @ApiOperation(value = "SaveBatch", tags = {"PARYDGZJHMX" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/parydgzjhmxes/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PARYDGZJHMXDTO> parydgzjhmxdtos) {
@@ -97,7 +90,7 @@ public class PARYDGZJHMXResource {
          return ResponseEntity.status(HttpStatus.OK).body(parydgzjhmxService.remove(parydgzjhmx_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.parydgzjhmxMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"PARYDGZJHMX" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/parydgzjhmxes/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -139,7 +132,7 @@ public class PARYDGZJHMXResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.parydgzjhmxMapping,#parydgzjhmxdtos})")
     @ApiOperation(value = "createBatch", tags = {"PARYDGZJHMX" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/parydgzjhmxes/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PARYDGZJHMXDTO> parydgzjhmxdtos) {

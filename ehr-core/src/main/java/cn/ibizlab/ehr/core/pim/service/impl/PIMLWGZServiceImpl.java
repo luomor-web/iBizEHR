@@ -112,6 +112,12 @@ public class PIMLWGZServiceImpl extends ServiceImpl<PIMLWGZMapper, PIMLWGZ> impl
     }
 
     @Override
+    public boolean saveBatch(Collection<PIMLWGZ> list) {
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<PIMLWGZ> list) {
         saveOrUpdateBatch(list,batchSize);
     }

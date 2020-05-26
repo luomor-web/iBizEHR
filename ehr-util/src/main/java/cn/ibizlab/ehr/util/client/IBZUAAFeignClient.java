@@ -5,19 +5,17 @@ import cn.ibizlab.ehr.util.security.AuthorizationLogin;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.*;
 import com.alibaba.fastjson.JSONObject;
-import java.util.Map;
 
 @FeignClient(value = "ibzuaa-api",fallback = IBZUAAFallback.class)
 public interface IBZUAAFeignClient
 {
 	/**
-	 * 推送系统权限数据到uaa
-	 * @param systemPermissionData
-	 * @param systemId
+	 * 同步系统资源到uaa
+	 * @param system 系统资源信息
 	 * @return
 	 */
-	@PostMapping("/uaa/permission/save")
-	JSONObject pushSystemPermissionData(@RequestBody Map<String, Object> systemPermissionData,  @RequestParam("systemid") String systemId);
+	@PostMapping("/syspssystems/save")
+	Boolean syncSysAuthority(@RequestBody JSONObject system);
 
 	/**
 	 * 用户登录

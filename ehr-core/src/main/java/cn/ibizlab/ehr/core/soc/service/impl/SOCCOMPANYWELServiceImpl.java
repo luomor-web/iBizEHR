@@ -101,6 +101,13 @@ public class SOCCOMPANYWELServiceImpl extends ServiceImpl<SOCCOMPANYWELMapper, S
     }
 
     @Override
+    public boolean saveBatch(Collection<SOCCOMPANYWEL> list) {
+        list.forEach(item->fillParentData(item));
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<SOCCOMPANYWEL> list) {
         list.forEach(item->fillParentData(item));
         saveOrUpdateBatch(list,batchSize);

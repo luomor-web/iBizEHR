@@ -86,6 +86,13 @@ public class SALPERSONSTDServiceImpl extends ServiceImpl<SALPERSONSTDMapper, SAL
     }
 
     @Override
+    public boolean saveBatch(Collection<SALPERSONSTD> list) {
+        list.forEach(item->fillParentData(item));
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<SALPERSONSTD> list) {
         list.forEach(item->fillParentData(item));
         saveOrUpdateBatch(list,batchSize);

@@ -145,6 +145,13 @@ public class SALSALARYBILLServiceImpl extends ServiceImpl<SALSALARYBILLMapper, S
     }
 
     @Override
+    public boolean saveBatch(Collection<SALSALARYBILL> list) {
+        list.forEach(item->fillParentData(item));
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<SALSALARYBILL> list) {
         list.forEach(item->fillParentData(item));
         saveOrUpdateBatch(list,batchSize);

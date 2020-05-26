@@ -6,10 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
-
 import lombok.extern.slf4j.Slf4j;
 import com.alibaba.fastjson.JSONObject;
-
 import javax.servlet.ServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cglib.beans.BeanCopier;
@@ -24,20 +22,15 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
-
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
-
 import cn.ibizlab.ehr.webapi.dto.*;
 import cn.ibizlab.ehr.webapi.mapping.*;
 import cn.ibizlab.ehr.core.pim.domain.PIMARCHIVESCHANGE;
 import cn.ibizlab.ehr.core.pim.service.IPIMARCHIVESCHANGEService;
 import cn.ibizlab.ehr.core.pim.filter.PIMARCHIVESCHANGESearchContext;
-
-
-
 
 @Slf4j
 @Api(tags = {"PIMARCHIVESCHANGE" })
@@ -59,14 +52,14 @@ public class PIMARCHIVESCHANGEResource {
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimarchiveschanges/{pimarchiveschange_id}")
     @Transactional
     public ResponseEntity<PIMARCHIVESCHANGEDTO> update(@PathVariable("pimarchiveschange_id") String pimarchiveschange_id, @RequestBody PIMARCHIVESCHANGEDTO pimarchiveschangedto) {
-		PIMARCHIVESCHANGE domain = pimarchiveschangeMapping.toDomain(pimarchiveschangedto);
-        domain.setPimarchiveschangeid(pimarchiveschange_id);
-		pimarchiveschangeService.update(domain);
-		PIMARCHIVESCHANGEDTO dto = pimarchiveschangeMapping.toDto(domain);
+		PIMARCHIVESCHANGE domain  = pimarchiveschangeMapping.toDomain(pimarchiveschangedto);
+        domain .setPimarchiveschangeid(pimarchiveschange_id);
+		pimarchiveschangeService.update(domain );
+		PIMARCHIVESCHANGEDTO dto = pimarchiveschangeMapping.toDto(domain );
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.pimarchiveschangeMapping,#pimarchiveschangedtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"PIMARCHIVESCHANGE" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimarchiveschanges/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PIMARCHIVESCHANGEDTO> pimarchiveschangedtos) {
@@ -94,7 +87,7 @@ public class PIMARCHIVESCHANGEResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.pimarchiveschangeMapping,#pimarchiveschangedtos})")
     @ApiOperation(value = "createBatch", tags = {"PIMARCHIVESCHANGE" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimarchiveschanges/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PIMARCHIVESCHANGEDTO> pimarchiveschangedtos) {
@@ -122,19 +115,20 @@ public class PIMARCHIVESCHANGEResource {
     @Transactional
     public ResponseEntity<PIMARCHIVESCHANGEDTO> updatePersonFile(@PathVariable("pimarchiveschange_id") String pimarchiveschange_id, @RequestBody PIMARCHIVESCHANGEDTO pimarchiveschangedto) {
         PIMARCHIVESCHANGE pimarchiveschange = pimarchiveschangeMapping.toDomain(pimarchiveschangedto);
+        pimarchiveschange.setPimarchiveschangeid(pimarchiveschange_id);
         pimarchiveschange = pimarchiveschangeService.updatePersonFile(pimarchiveschange);
         pimarchiveschangedto = pimarchiveschangeMapping.toDto(pimarchiveschange);
         return ResponseEntity.status(HttpStatus.OK).body(pimarchiveschangedto);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMARCHIVESCHANGE-Save-all')")
+    @PreAuthorize("hasPermission('','Save',{'Sql',this.pimarchiveschangeMapping,#pimarchiveschangedto})")
     @ApiOperation(value = "Save", tags = {"PIMARCHIVESCHANGE" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimarchiveschanges/save")
     public ResponseEntity<Boolean> save(@RequestBody PIMARCHIVESCHANGEDTO pimarchiveschangedto) {
         return ResponseEntity.status(HttpStatus.OK).body(pimarchiveschangeService.save(pimarchiveschangeMapping.toDomain(pimarchiveschangedto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.pimarchiveschangeMapping,#pimarchiveschangedtos})")
     @ApiOperation(value = "SaveBatch", tags = {"PIMARCHIVESCHANGE" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimarchiveschanges/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PIMARCHIVESCHANGEDTO> pimarchiveschangedtos) {
@@ -150,7 +144,7 @@ public class PIMARCHIVESCHANGEResource {
          return ResponseEntity.status(HttpStatus.OK).body(pimarchiveschangeService.remove(pimarchiveschange_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.pimarchiveschangeMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"PIMARCHIVESCHANGE" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimarchiveschanges/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -200,7 +194,7 @@ public class PIMARCHIVESCHANGEResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimarchiveschangeMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-    //@PreAuthorize("hasPermission(#pimarchiveschange_id,'Update',{'Sql',this.pimarchiveschangeMapping,#pimarchiveschangedto})")
+    @PreAuthorize("hasPermission(#pimarchiveschange_id,'Update',{'Sql',this.pimarchiveschangeMapping,#pimarchiveschangedto})")
     @ApiOperation(value = "UpdateByPIMARCHIVES", tags = {"PIMARCHIVESCHANGE" },  notes = "UpdateByPIMARCHIVES")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimarchives/{pimarchives_id}/pimarchiveschanges/{pimarchiveschange_id}")
     @Transactional
@@ -213,7 +207,7 @@ public class PIMARCHIVESCHANGEResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.pimarchiveschangeMapping,#pimarchiveschangedtos})")
     @ApiOperation(value = "UpdateBatchByPIMARCHIVES", tags = {"PIMARCHIVESCHANGE" },  notes = "UpdateBatchByPIMARCHIVES")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimarchives/{pimarchives_id}/pimarchiveschanges/batch")
     public ResponseEntity<Boolean> updateBatchByPIMARCHIVES(@PathVariable("pimarchives_id") String pimarchives_id, @RequestBody List<PIMARCHIVESCHANGEDTO> pimarchiveschangedtos) {
@@ -225,7 +219,7 @@ public class PIMARCHIVESCHANGEResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    //@PreAuthorize("hasPermission(#pimarchiveschange_id,'Get',{'Sql',this.pimarchiveschangeMapping,this.permissionDTO})")
+    @PreAuthorize("hasPermission(#pimarchiveschange_id,'Get',{'Sql',this.pimarchiveschangeMapping,this.permissionDTO})")
     @ApiOperation(value = "GetByPIMARCHIVES", tags = {"PIMARCHIVESCHANGE" },  notes = "GetByPIMARCHIVES")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimarchives/{pimarchives_id}/pimarchiveschanges/{pimarchiveschange_id}")
     public ResponseEntity<PIMARCHIVESCHANGEDTO> getByPIMARCHIVES(@PathVariable("pimarchives_id") String pimarchives_id, @PathVariable("pimarchiveschange_id") String pimarchiveschange_id) {
@@ -234,7 +228,7 @@ public class PIMARCHIVESCHANGEResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    //@PreAuthorize("hasPermission('','Create',{'Sql',this.pimarchiveschangeMapping,#pimarchiveschangedto})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.pimarchiveschangeMapping,#pimarchiveschangedto})")
     @ApiOperation(value = "CreateByPIMARCHIVES", tags = {"PIMARCHIVESCHANGE" },  notes = "CreateByPIMARCHIVES")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimarchives/{pimarchives_id}/pimarchiveschanges")
     @Transactional
@@ -246,7 +240,7 @@ public class PIMARCHIVESCHANGEResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.pimarchiveschangeMapping,#pimarchiveschangedtos})")
     @ApiOperation(value = "createBatchByPIMARCHIVES", tags = {"PIMARCHIVESCHANGE" },  notes = "createBatchByPIMARCHIVES")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimarchives/{pimarchives_id}/pimarchiveschanges/batch")
     public ResponseEntity<Boolean> createBatchByPIMARCHIVES(@PathVariable("pimarchives_id") String pimarchives_id, @RequestBody List<PIMARCHIVESCHANGEDTO> pimarchiveschangedtos) {
@@ -276,7 +270,7 @@ public class PIMARCHIVESCHANGEResource {
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMARCHIVESCHANGE-UpdatePersonFile-all')")
     @ApiOperation(value = "更新档案信息ByPIMARCHIVES", tags = {"PIMARCHIVESCHANGE" },  notes = "更新档案信息ByPIMARCHIVES")
-	@RequestMapping(method = RequestMethod.PUT, value = "/pimarchives/{pimarchives_id}/pimarchiveschanges/{pimarchiveschangepimarchiveschangeid}/updatepersonfile")
+	@RequestMapping(method = RequestMethod.PUT, value = "/pimarchives/{pimarchives_id}/pimarchiveschanges/{pimarchiveschange_id}/updatepersonfile")
     @Transactional
     public ResponseEntity<PIMARCHIVESCHANGEDTO> updatePersonFileByPIMARCHIVES(@PathVariable("pimarchives_id") String pimarchives_id, @PathVariable("pimarchiveschange_id") String pimarchiveschange_id, @RequestBody PIMARCHIVESCHANGEDTO pimarchiveschangedto) {
         PIMARCHIVESCHANGE domain = pimarchiveschangeMapping.toDomain(pimarchiveschangedto);
@@ -286,7 +280,7 @@ public class PIMARCHIVESCHANGEResource {
         return ResponseEntity.status(HttpStatus.OK).body(pimarchiveschangedto);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMARCHIVESCHANGE-Save-all')")
+    @PreAuthorize("hasPermission('','Save',{'Sql',this.pimarchiveschangeMapping,#pimarchiveschangedto})")
     @ApiOperation(value = "SaveByPIMARCHIVES", tags = {"PIMARCHIVESCHANGE" },  notes = "SaveByPIMARCHIVES")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimarchives/{pimarchives_id}/pimarchiveschanges/save")
     public ResponseEntity<Boolean> saveByPIMARCHIVES(@PathVariable("pimarchives_id") String pimarchives_id, @RequestBody PIMARCHIVESCHANGEDTO pimarchiveschangedto) {
@@ -295,7 +289,7 @@ public class PIMARCHIVESCHANGEResource {
         return ResponseEntity.status(HttpStatus.OK).body(pimarchiveschangeService.save(domain));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.pimarchiveschangeMapping,#pimarchiveschangedtos})")
     @ApiOperation(value = "SaveBatchByPIMARCHIVES", tags = {"PIMARCHIVESCHANGE" },  notes = "SaveBatchByPIMARCHIVES")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimarchives/{pimarchives_id}/pimarchiveschanges/savebatch")
     public ResponseEntity<Boolean> saveBatchByPIMARCHIVES(@PathVariable("pimarchives_id") String pimarchives_id, @RequestBody List<PIMARCHIVESCHANGEDTO> pimarchiveschangedtos) {
@@ -307,7 +301,7 @@ public class PIMARCHIVESCHANGEResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    //@PreAuthorize("hasPermission(#pimarchiveschange_id,'Remove',{'Sql',this.pimarchiveschangeMapping,this.permissionDTO})")
+    @PreAuthorize("hasPermission(#pimarchiveschange_id,'Remove',{'Sql',this.pimarchiveschangeMapping,this.permissionDTO})")
     @ApiOperation(value = "RemoveByPIMARCHIVES", tags = {"PIMARCHIVESCHANGE" },  notes = "RemoveByPIMARCHIVES")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimarchives/{pimarchives_id}/pimarchiveschanges/{pimarchiveschange_id}")
     @Transactional
@@ -315,7 +309,7 @@ public class PIMARCHIVESCHANGEResource {
 		return ResponseEntity.status(HttpStatus.OK).body(pimarchiveschangeService.remove(pimarchiveschange_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.pimarchiveschangeMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatchByPIMARCHIVES", tags = {"PIMARCHIVESCHANGE" },  notes = "RemoveBatchByPIMARCHIVES")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimarchives/{pimarchives_id}/pimarchiveschanges/batch")
     public ResponseEntity<Boolean> removeBatchByPIMARCHIVES(@RequestBody List<String> ids) {
@@ -369,7 +363,7 @@ public class PIMARCHIVESCHANGEResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimarchiveschangeMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-    //@PreAuthorize("hasPermission(#pimarchiveschange_id,'Update',{'Sql',this.pimarchiveschangeMapping,#pimarchiveschangedto})")
+    @PreAuthorize("hasPermission(#pimarchiveschange_id,'Update',{'Sql',this.pimarchiveschangeMapping,#pimarchiveschangedto})")
     @ApiOperation(value = "UpdateByPIMPERSONPIMARCHIVES", tags = {"PIMARCHIVESCHANGE" },  notes = "UpdateByPIMPERSONPIMARCHIVES")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimpeople/{pimperson_id}/pimarchives/{pimarchives_id}/pimarchiveschanges/{pimarchiveschange_id}")
     @Transactional
@@ -382,7 +376,7 @@ public class PIMARCHIVESCHANGEResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.pimarchiveschangeMapping,#pimarchiveschangedtos})")
     @ApiOperation(value = "UpdateBatchByPIMPERSONPIMARCHIVES", tags = {"PIMARCHIVESCHANGE" },  notes = "UpdateBatchByPIMPERSONPIMARCHIVES")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimpeople/{pimperson_id}/pimarchives/{pimarchives_id}/pimarchiveschanges/batch")
     public ResponseEntity<Boolean> updateBatchByPIMPERSONPIMARCHIVES(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimarchives_id") String pimarchives_id, @RequestBody List<PIMARCHIVESCHANGEDTO> pimarchiveschangedtos) {
@@ -394,7 +388,7 @@ public class PIMARCHIVESCHANGEResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    //@PreAuthorize("hasPermission(#pimarchiveschange_id,'Get',{'Sql',this.pimarchiveschangeMapping,this.permissionDTO})")
+    @PreAuthorize("hasPermission(#pimarchiveschange_id,'Get',{'Sql',this.pimarchiveschangeMapping,this.permissionDTO})")
     @ApiOperation(value = "GetByPIMPERSONPIMARCHIVES", tags = {"PIMARCHIVESCHANGE" },  notes = "GetByPIMPERSONPIMARCHIVES")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimpeople/{pimperson_id}/pimarchives/{pimarchives_id}/pimarchiveschanges/{pimarchiveschange_id}")
     public ResponseEntity<PIMARCHIVESCHANGEDTO> getByPIMPERSONPIMARCHIVES(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimarchives_id") String pimarchives_id, @PathVariable("pimarchiveschange_id") String pimarchiveschange_id) {
@@ -403,7 +397,7 @@ public class PIMARCHIVESCHANGEResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    //@PreAuthorize("hasPermission('','Create',{'Sql',this.pimarchiveschangeMapping,#pimarchiveschangedto})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.pimarchiveschangeMapping,#pimarchiveschangedto})")
     @ApiOperation(value = "CreateByPIMPERSONPIMARCHIVES", tags = {"PIMARCHIVESCHANGE" },  notes = "CreateByPIMPERSONPIMARCHIVES")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimarchives/{pimarchives_id}/pimarchiveschanges")
     @Transactional
@@ -415,7 +409,7 @@ public class PIMARCHIVESCHANGEResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.pimarchiveschangeMapping,#pimarchiveschangedtos})")
     @ApiOperation(value = "createBatchByPIMPERSONPIMARCHIVES", tags = {"PIMARCHIVESCHANGE" },  notes = "createBatchByPIMPERSONPIMARCHIVES")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimarchives/{pimarchives_id}/pimarchiveschanges/batch")
     public ResponseEntity<Boolean> createBatchByPIMPERSONPIMARCHIVES(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimarchives_id") String pimarchives_id, @RequestBody List<PIMARCHIVESCHANGEDTO> pimarchiveschangedtos) {
@@ -445,7 +439,7 @@ public class PIMARCHIVESCHANGEResource {
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMARCHIVESCHANGE-UpdatePersonFile-all')")
     @ApiOperation(value = "更新档案信息ByPIMPERSONPIMARCHIVES", tags = {"PIMARCHIVESCHANGE" },  notes = "更新档案信息ByPIMPERSONPIMARCHIVES")
-	@RequestMapping(method = RequestMethod.PUT, value = "/pimpeople/{pimperson_id}/pimarchives/{pimarchives_id}/pimarchiveschanges/{pimarchiveschangepimarchiveschangeid}/updatepersonfile")
+	@RequestMapping(method = RequestMethod.PUT, value = "/pimpeople/{pimperson_id}/pimarchives/{pimarchives_id}/pimarchiveschanges/{pimarchiveschange_id}/updatepersonfile")
     @Transactional
     public ResponseEntity<PIMARCHIVESCHANGEDTO> updatePersonFileByPIMPERSONPIMARCHIVES(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimarchives_id") String pimarchives_id, @PathVariable("pimarchiveschange_id") String pimarchiveschange_id, @RequestBody PIMARCHIVESCHANGEDTO pimarchiveschangedto) {
         PIMARCHIVESCHANGE domain = pimarchiveschangeMapping.toDomain(pimarchiveschangedto);
@@ -455,7 +449,7 @@ public class PIMARCHIVESCHANGEResource {
         return ResponseEntity.status(HttpStatus.OK).body(pimarchiveschangedto);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMARCHIVESCHANGE-Save-all')")
+    @PreAuthorize("hasPermission('','Save',{'Sql',this.pimarchiveschangeMapping,#pimarchiveschangedto})")
     @ApiOperation(value = "SaveByPIMPERSONPIMARCHIVES", tags = {"PIMARCHIVESCHANGE" },  notes = "SaveByPIMPERSONPIMARCHIVES")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimarchives/{pimarchives_id}/pimarchiveschanges/save")
     public ResponseEntity<Boolean> saveByPIMPERSONPIMARCHIVES(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimarchives_id") String pimarchives_id, @RequestBody PIMARCHIVESCHANGEDTO pimarchiveschangedto) {
@@ -464,7 +458,7 @@ public class PIMARCHIVESCHANGEResource {
         return ResponseEntity.status(HttpStatus.OK).body(pimarchiveschangeService.save(domain));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.pimarchiveschangeMapping,#pimarchiveschangedtos})")
     @ApiOperation(value = "SaveBatchByPIMPERSONPIMARCHIVES", tags = {"PIMARCHIVESCHANGE" },  notes = "SaveBatchByPIMPERSONPIMARCHIVES")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimarchives/{pimarchives_id}/pimarchiveschanges/savebatch")
     public ResponseEntity<Boolean> saveBatchByPIMPERSONPIMARCHIVES(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimarchives_id") String pimarchives_id, @RequestBody List<PIMARCHIVESCHANGEDTO> pimarchiveschangedtos) {
@@ -476,7 +470,7 @@ public class PIMARCHIVESCHANGEResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    //@PreAuthorize("hasPermission(#pimarchiveschange_id,'Remove',{'Sql',this.pimarchiveschangeMapping,this.permissionDTO})")
+    @PreAuthorize("hasPermission(#pimarchiveschange_id,'Remove',{'Sql',this.pimarchiveschangeMapping,this.permissionDTO})")
     @ApiOperation(value = "RemoveByPIMPERSONPIMARCHIVES", tags = {"PIMARCHIVESCHANGE" },  notes = "RemoveByPIMPERSONPIMARCHIVES")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimpeople/{pimperson_id}/pimarchives/{pimarchives_id}/pimarchiveschanges/{pimarchiveschange_id}")
     @Transactional
@@ -484,7 +478,7 @@ public class PIMARCHIVESCHANGEResource {
 		return ResponseEntity.status(HttpStatus.OK).body(pimarchiveschangeService.remove(pimarchiveschange_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.pimarchiveschangeMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatchByPIMPERSONPIMARCHIVES", tags = {"PIMARCHIVESCHANGE" },  notes = "RemoveBatchByPIMPERSONPIMARCHIVES")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimpeople/{pimperson_id}/pimarchives/{pimarchives_id}/pimarchiveschanges/batch")
     public ResponseEntity<Boolean> removeBatchByPIMPERSONPIMARCHIVES(@RequestBody List<String> ids) {

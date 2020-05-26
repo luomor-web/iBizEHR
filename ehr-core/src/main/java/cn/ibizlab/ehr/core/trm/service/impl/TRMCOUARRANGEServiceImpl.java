@@ -153,6 +153,13 @@ public class TRMCOUARRANGEServiceImpl extends ServiceImpl<TRMCOUARRANGEMapper, T
     }
 
     @Override
+    public boolean saveBatch(Collection<TRMCOUARRANGE> list) {
+        list.forEach(item->fillParentData(item));
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<TRMCOUARRANGE> list) {
         list.forEach(item->fillParentData(item));
         saveOrUpdateBatch(list,batchSize);

@@ -131,6 +131,12 @@ public class PARJXKHXHZServiceImpl extends ServiceImpl<PARJXKHXHZMapper, PARJXKH
     }
 
     @Override
+    public boolean saveBatch(Collection<PARJXKHXHZ> list) {
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<PARJXKHXHZ> list) {
         saveOrUpdateBatch(list,batchSize);
     }

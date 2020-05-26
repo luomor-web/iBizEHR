@@ -6,10 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
-
 import lombok.extern.slf4j.Slf4j;
 import com.alibaba.fastjson.JSONObject;
-
 import javax.servlet.ServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cglib.beans.BeanCopier;
@@ -24,20 +22,15 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
-
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
-
 import cn.ibizlab.ehr.webapi.dto.*;
 import cn.ibizlab.ehr.webapi.mapping.*;
 import cn.ibizlab.ehr.core.trm.domain.TRMCOUARRANGE;
 import cn.ibizlab.ehr.core.trm.service.ITRMCOUARRANGEService;
 import cn.ibizlab.ehr.core.trm.filter.TRMCOUARRANGESearchContext;
-
-
-
 
 @Slf4j
 @Api(tags = {"TRMCOUARRANGE" })
@@ -65,7 +58,7 @@ public class TRMCOUARRANGEResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.trmcouarrangeMapping,#trmcouarrangedtos})")
     @ApiOperation(value = "createBatch", tags = {"TRMCOUARRANGE" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmcouarranges/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<TRMCOUARRANGEDTO> trmcouarrangedtos) {
@@ -90,7 +83,7 @@ public class TRMCOUARRANGEResource {
          return ResponseEntity.status(HttpStatus.OK).body(trmcouarrangeService.remove(trmcouarrange_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.trmcouarrangeMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"TRMCOUARRANGE" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/trmcouarranges/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -112,14 +105,14 @@ public class TRMCOUARRANGEResource {
         return  ResponseEntity.status(HttpStatus.OK).body(trmcouarrangeService.checkKey(trmcouarrangeMapping.toDomain(trmcouarrangedto)));
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMCOUARRANGE-Save-all')")
+    @PreAuthorize("hasPermission('','Save',{'Sql',this.trmcouarrangeMapping,#trmcouarrangedto})")
     @ApiOperation(value = "Save", tags = {"TRMCOUARRANGE" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmcouarranges/save")
     public ResponseEntity<Boolean> save(@RequestBody TRMCOUARRANGEDTO trmcouarrangedto) {
         return ResponseEntity.status(HttpStatus.OK).body(trmcouarrangeService.save(trmcouarrangeMapping.toDomain(trmcouarrangedto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.trmcouarrangeMapping,#trmcouarrangedtos})")
     @ApiOperation(value = "SaveBatch", tags = {"TRMCOUARRANGE" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmcouarranges/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<TRMCOUARRANGEDTO> trmcouarrangedtos) {
@@ -132,14 +125,14 @@ public class TRMCOUARRANGEResource {
 	@RequestMapping(method = RequestMethod.PUT, value = "/trmcouarranges/{trmcouarrange_id}")
     @Transactional
     public ResponseEntity<TRMCOUARRANGEDTO> update(@PathVariable("trmcouarrange_id") String trmcouarrange_id, @RequestBody TRMCOUARRANGEDTO trmcouarrangedto) {
-		TRMCOUARRANGE domain = trmcouarrangeMapping.toDomain(trmcouarrangedto);
-        domain.setTrmcouarrangeid(trmcouarrange_id);
-		trmcouarrangeService.update(domain);
-		TRMCOUARRANGEDTO dto = trmcouarrangeMapping.toDto(domain);
+		TRMCOUARRANGE domain  = trmcouarrangeMapping.toDomain(trmcouarrangedto);
+        domain .setTrmcouarrangeid(trmcouarrange_id);
+		trmcouarrangeService.update(domain );
+		TRMCOUARRANGEDTO dto = trmcouarrangeMapping.toDto(domain );
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.trmcouarrangeMapping,#trmcouarrangedtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"TRMCOUARRANGE" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/trmcouarranges/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<TRMCOUARRANGEDTO> trmcouarrangedtos) {

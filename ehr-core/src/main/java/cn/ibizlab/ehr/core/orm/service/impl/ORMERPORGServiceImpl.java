@@ -119,6 +119,12 @@ public class ORMERPORGServiceImpl extends ServiceImpl<ORMERPORGMapper, ORMERPORG
     }
 
     @Override
+    public boolean saveBatch(Collection<ORMERPORG> list) {
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<ORMERPORG> list) {
         saveOrUpdateBatch(list,batchSize);
     }

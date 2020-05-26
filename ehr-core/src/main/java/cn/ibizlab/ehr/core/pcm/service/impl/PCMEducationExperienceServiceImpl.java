@@ -119,6 +119,13 @@ public class PCMEducationExperienceServiceImpl extends ServiceImpl<PCMEducationE
     }
 
     @Override
+    public boolean saveBatch(Collection<PCMEducationExperience> list) {
+        list.forEach(item->fillParentData(item));
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<PCMEducationExperience> list) {
         list.forEach(item->fillParentData(item));
         saveOrUpdateBatch(list,batchSize);

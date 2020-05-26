@@ -87,6 +87,13 @@ public class PIMEXITANDENTRYServiceImpl extends ServiceImpl<PIMEXITANDENTRYMappe
     }
 
     @Override
+    public boolean saveBatch(Collection<PIMEXITANDENTRY> list) {
+        list.forEach(item->fillParentData(item));
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<PIMEXITANDENTRY> list) {
         list.forEach(item->fillParentData(item));
         saveOrUpdateBatch(list,batchSize);

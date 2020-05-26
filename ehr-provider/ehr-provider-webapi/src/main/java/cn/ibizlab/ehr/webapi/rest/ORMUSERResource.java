@@ -6,10 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
-
 import lombok.extern.slf4j.Slf4j;
 import com.alibaba.fastjson.JSONObject;
-
 import javax.servlet.ServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cglib.beans.BeanCopier;
@@ -24,20 +22,15 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
-
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
-
 import cn.ibizlab.ehr.webapi.dto.*;
 import cn.ibizlab.ehr.webapi.mapping.*;
 import cn.ibizlab.ehr.core.orm.domain.ORMUSER;
 import cn.ibizlab.ehr.core.orm.service.IORMUSERService;
 import cn.ibizlab.ehr.core.orm.filter.ORMUSERSearchContext;
-
-
-
 
 @Slf4j
 @Api(tags = {"ORMUSER" })
@@ -74,7 +67,7 @@ public class ORMUSERResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.ormuserMapping,#ormuserdtos})")
     @ApiOperation(value = "createBatch", tags = {"ORMUSER" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormusers/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<ORMUSERDTO> ormuserdtos) {
@@ -90,7 +83,7 @@ public class ORMUSERResource {
          return ResponseEntity.status(HttpStatus.OK).body(ormuserService.remove(ormuser_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.ormuserMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"ORMUSER" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/ormusers/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -103,14 +96,14 @@ public class ORMUSERResource {
 	@RequestMapping(method = RequestMethod.PUT, value = "/ormusers/{ormuser_id}")
     @Transactional
     public ResponseEntity<ORMUSERDTO> update(@PathVariable("ormuser_id") String ormuser_id, @RequestBody ORMUSERDTO ormuserdto) {
-		ORMUSER domain = ormuserMapping.toDomain(ormuserdto);
-        domain.setOrguserid(ormuser_id);
-		ormuserService.update(domain);
-		ORMUSERDTO dto = ormuserMapping.toDto(domain);
+		ORMUSER domain  = ormuserMapping.toDomain(ormuserdto);
+        domain .setOrguserid(ormuser_id);
+		ormuserService.update(domain );
+		ORMUSERDTO dto = ormuserMapping.toDto(domain );
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.ormuserMapping,#ormuserdtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"ORMUSER" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/ormusers/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<ORMUSERDTO> ormuserdtos) {
@@ -125,14 +118,14 @@ public class ORMUSERResource {
         return  ResponseEntity.status(HttpStatus.OK).body(ormuserService.checkKey(ormuserMapping.toDomain(ormuserdto)));
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMUSER-Save-all')")
+    @PreAuthorize("hasPermission('','Save',{'Sql',this.ormuserMapping,#ormuserdto})")
     @ApiOperation(value = "Save", tags = {"ORMUSER" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormusers/save")
     public ResponseEntity<Boolean> save(@RequestBody ORMUSERDTO ormuserdto) {
         return ResponseEntity.status(HttpStatus.OK).body(ormuserService.save(ormuserMapping.toDomain(ormuserdto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.ormuserMapping,#ormuserdtos})")
     @ApiOperation(value = "SaveBatch", tags = {"ORMUSER" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormusers/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<ORMUSERDTO> ormuserdtos) {

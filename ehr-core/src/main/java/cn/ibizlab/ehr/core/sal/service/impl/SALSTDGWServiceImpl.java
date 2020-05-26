@@ -123,6 +123,13 @@ public class SALSTDGWServiceImpl extends ServiceImpl<SALSTDGWMapper, SALSTDGW> i
     }
 
     @Override
+    public boolean saveBatch(Collection<SALSTDGW> list) {
+        list.forEach(item->fillParentData(item));
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<SALSTDGW> list) {
         list.forEach(item->fillParentData(item));
         saveOrUpdateBatch(list,batchSize);

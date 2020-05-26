@@ -144,6 +144,13 @@ public class PCMXYGZZSQMXServiceImpl extends ServiceImpl<PCMXYGZZSQMXMapper, PCM
     }
 
     @Override
+    public boolean saveBatch(Collection<PCMXYGZZSQMX> list) {
+        list.forEach(item->fillParentData(item));
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<PCMXYGZZSQMX> list) {
         list.forEach(item->fillParentData(item));
         saveOrUpdateBatch(list,batchSize);

@@ -123,6 +123,13 @@ public class SALITEMSUBServiceImpl extends ServiceImpl<SALITEMSUBMapper, SALITEM
     }
 
     @Override
+    public boolean saveBatch(Collection<SALITEMSUB> list) {
+        list.forEach(item->fillParentData(item));
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<SALITEMSUB> list) {
         list.forEach(item->fillParentData(item));
         saveOrUpdateBatch(list,batchSize);

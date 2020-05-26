@@ -6,10 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
-
 import lombok.extern.slf4j.Slf4j;
 import com.alibaba.fastjson.JSONObject;
-
 import javax.servlet.ServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cglib.beans.BeanCopier;
@@ -24,20 +22,15 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
-
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
-
 import cn.ibizlab.ehr.webapi.dto.*;
 import cn.ibizlab.ehr.webapi.mapping.*;
 import cn.ibizlab.ehr.core.pim.domain.ARCHIVESCENTER;
 import cn.ibizlab.ehr.core.pim.service.IARCHIVESCENTERService;
 import cn.ibizlab.ehr.core.pim.filter.ARCHIVESCENTERSearchContext;
-
-
-
 
 @Slf4j
 @Api(tags = {"ARCHIVESCENTER" })
@@ -54,14 +47,14 @@ public class ARCHIVESCENTERResource {
 
     public ARCHIVESCENTERDTO permissionDTO=new ARCHIVESCENTERDTO();
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ARCHIVESCENTER-Save-all')")
+    @PreAuthorize("hasPermission('','Save',{'Sql',this.archivescenterMapping,#archivescenterdto})")
     @ApiOperation(value = "Save", tags = {"ARCHIVESCENTER" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/archivescenters/save")
     public ResponseEntity<Boolean> save(@RequestBody ARCHIVESCENTERDTO archivescenterdto) {
         return ResponseEntity.status(HttpStatus.OK).body(archivescenterService.save(archivescenterMapping.toDomain(archivescenterdto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.archivescenterMapping,#archivescenterdtos})")
     @ApiOperation(value = "SaveBatch", tags = {"ARCHIVESCENTER" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/archivescenters/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<ARCHIVESCENTERDTO> archivescenterdtos) {
@@ -77,7 +70,7 @@ public class ARCHIVESCENTERResource {
          return ResponseEntity.status(HttpStatus.OK).body(archivescenterService.remove(archivescenter_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.archivescenterMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"ARCHIVESCENTER" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/archivescenters/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -96,7 +89,7 @@ public class ARCHIVESCENTERResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.archivescenterMapping,#archivescenterdtos})")
     @ApiOperation(value = "createBatch", tags = {"ARCHIVESCENTER" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/archivescenters/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<ARCHIVESCENTERDTO> archivescenterdtos) {
@@ -123,14 +116,14 @@ public class ARCHIVESCENTERResource {
 	@RequestMapping(method = RequestMethod.PUT, value = "/archivescenters/{archivescenter_id}")
     @Transactional
     public ResponseEntity<ARCHIVESCENTERDTO> update(@PathVariable("archivescenter_id") String archivescenter_id, @RequestBody ARCHIVESCENTERDTO archivescenterdto) {
-		ARCHIVESCENTER domain = archivescenterMapping.toDomain(archivescenterdto);
-        domain.setArchivescenterid(archivescenter_id);
-		archivescenterService.update(domain);
-		ARCHIVESCENTERDTO dto = archivescenterMapping.toDto(domain);
+		ARCHIVESCENTER domain  = archivescenterMapping.toDomain(archivescenterdto);
+        domain .setArchivescenterid(archivescenter_id);
+		archivescenterService.update(domain );
+		ARCHIVESCENTERDTO dto = archivescenterMapping.toDto(domain );
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.archivescenterMapping,#archivescenterdtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"ARCHIVESCENTER" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/archivescenters/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<ARCHIVESCENTERDTO> archivescenterdtos) {

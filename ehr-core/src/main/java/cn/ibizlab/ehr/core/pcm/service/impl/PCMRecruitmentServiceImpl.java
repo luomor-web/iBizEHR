@@ -99,6 +99,13 @@ public class PCMRecruitmentServiceImpl extends ServiceImpl<PCMRecruitmentMapper,
     }
 
     @Override
+    public boolean saveBatch(Collection<PCMRecruitment> list) {
+        list.forEach(item->fillParentData(item));
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<PCMRecruitment> list) {
         list.forEach(item->fillParentData(item));
         saveOrUpdateBatch(list,batchSize);

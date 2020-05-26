@@ -6,10 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
-
 import lombok.extern.slf4j.Slf4j;
 import com.alibaba.fastjson.JSONObject;
-
 import javax.servlet.ServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cglib.beans.BeanCopier;
@@ -24,20 +22,15 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
-
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
-
 import cn.ibizlab.ehr.webapi.dto.*;
 import cn.ibizlab.ehr.webapi.mapping.*;
 import cn.ibizlab.ehr.core.pcm.domain.PCMYDDGMX;
 import cn.ibizlab.ehr.core.pcm.service.IPCMYDDGMXService;
 import cn.ibizlab.ehr.core.pcm.filter.PCMYDDGMXSearchContext;
-
-
-
 
 @Slf4j
 @Api(tags = {"PCMYDDGMX" })
@@ -62,7 +55,7 @@ public class PCMYDDGMXResource {
          return ResponseEntity.status(HttpStatus.OK).body(pcmyddgmxService.remove(pcmyddgmx_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.pcmyddgmxMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"PCMYDDGMX" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmyddgmxes/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -86,14 +79,14 @@ public class PCMYDDGMXResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMYDDGMX-Save-all')")
+    @PreAuthorize("hasPermission('','Save',{'Sql',this.pcmyddgmxMapping,#pcmyddgmxdto})")
     @ApiOperation(value = "Save", tags = {"PCMYDDGMX" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmyddgmxes/save")
     public ResponseEntity<Boolean> save(@RequestBody PCMYDDGMXDTO pcmyddgmxdto) {
         return ResponseEntity.status(HttpStatus.OK).body(pcmyddgmxService.save(pcmyddgmxMapping.toDomain(pcmyddgmxdto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.pcmyddgmxMapping,#pcmyddgmxdtos})")
     @ApiOperation(value = "SaveBatch", tags = {"PCMYDDGMX" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmyddgmxes/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PCMYDDGMXDTO> pcmyddgmxdtos) {
@@ -112,7 +105,7 @@ public class PCMYDDGMXResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.pcmyddgmxMapping,#pcmyddgmxdtos})")
     @ApiOperation(value = "createBatch", tags = {"PCMYDDGMX" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmyddgmxes/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PCMYDDGMXDTO> pcmyddgmxdtos) {
@@ -126,6 +119,7 @@ public class PCMYDDGMXResource {
     @Transactional
     public ResponseEntity<PCMYDDGMXDTO> fillPersonInfo(@PathVariable("pcmyddgmx_id") String pcmyddgmx_id, @RequestBody PCMYDDGMXDTO pcmyddgmxdto) {
         PCMYDDGMX pcmyddgmx = pcmyddgmxMapping.toDomain(pcmyddgmxdto);
+        pcmyddgmx.setPcmyddgmxid(pcmyddgmx_id);
         pcmyddgmx = pcmyddgmxService.fillPersonInfo(pcmyddgmx);
         pcmyddgmxdto = pcmyddgmxMapping.toDto(pcmyddgmx);
         return ResponseEntity.status(HttpStatus.OK).body(pcmyddgmxdto);
@@ -144,6 +138,7 @@ public class PCMYDDGMXResource {
     @Transactional
     public ResponseEntity<PCMYDDGMXDTO> qXDG(@PathVariable("pcmyddgmx_id") String pcmyddgmx_id, @RequestBody PCMYDDGMXDTO pcmyddgmxdto) {
         PCMYDDGMX pcmyddgmx = pcmyddgmxMapping.toDomain(pcmyddgmxdto);
+        pcmyddgmx.setPcmyddgmxid(pcmyddgmx_id);
         pcmyddgmx = pcmyddgmxService.qXDG(pcmyddgmx);
         pcmyddgmxdto = pcmyddgmxMapping.toDto(pcmyddgmx);
         return ResponseEntity.status(HttpStatus.OK).body(pcmyddgmxdto);
@@ -154,14 +149,14 @@ public class PCMYDDGMXResource {
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmyddgmxes/{pcmyddgmx_id}")
     @Transactional
     public ResponseEntity<PCMYDDGMXDTO> update(@PathVariable("pcmyddgmx_id") String pcmyddgmx_id, @RequestBody PCMYDDGMXDTO pcmyddgmxdto) {
-		PCMYDDGMX domain = pcmyddgmxMapping.toDomain(pcmyddgmxdto);
-        domain.setPcmyddgmxid(pcmyddgmx_id);
-		pcmyddgmxService.update(domain);
-		PCMYDDGMXDTO dto = pcmyddgmxMapping.toDto(domain);
+		PCMYDDGMX domain  = pcmyddgmxMapping.toDomain(pcmyddgmxdto);
+        domain .setPcmyddgmxid(pcmyddgmx_id);
+		pcmyddgmxService.update(domain );
+		PCMYDDGMXDTO dto = pcmyddgmxMapping.toDto(domain );
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.pcmyddgmxMapping,#pcmyddgmxdtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"PCMYDDGMX" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmyddgmxes/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PCMYDDGMXDTO> pcmyddgmxdtos) {

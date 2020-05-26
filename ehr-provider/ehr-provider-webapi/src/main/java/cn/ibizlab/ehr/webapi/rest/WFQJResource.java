@@ -6,10 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
-
 import lombok.extern.slf4j.Slf4j;
 import com.alibaba.fastjson.JSONObject;
-
 import javax.servlet.ServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cglib.beans.BeanCopier;
@@ -24,20 +22,15 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
-
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
-
 import cn.ibizlab.ehr.webapi.dto.*;
 import cn.ibizlab.ehr.webapi.mapping.*;
 import cn.ibizlab.ehr.core.vac.domain.WFQJ;
 import cn.ibizlab.ehr.core.vac.service.IWFQJService;
 import cn.ibizlab.ehr.core.vac.filter.WFQJSearchContext;
-
-
-
 
 @Slf4j
 @Api(tags = {"WFQJ" })
@@ -59,14 +52,14 @@ public class WFQJResource {
 	@RequestMapping(method = RequestMethod.PUT, value = "/wfqjs/{wfqj_id}")
     @Transactional
     public ResponseEntity<WFQJDTO> update(@PathVariable("wfqj_id") String wfqj_id, @RequestBody WFQJDTO wfqjdto) {
-		WFQJ domain = wfqjMapping.toDomain(wfqjdto);
-        domain.setWfqjid(wfqj_id);
-		wfqjService.update(domain);
-		WFQJDTO dto = wfqjMapping.toDto(domain);
+		WFQJ domain  = wfqjMapping.toDomain(wfqjdto);
+        domain .setWfqjid(wfqj_id);
+		wfqjService.update(domain );
+		WFQJDTO dto = wfqjMapping.toDto(domain );
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.wfqjMapping,#wfqjdtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"WFQJ" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/wfqjs/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<WFQJDTO> wfqjdtos) {
@@ -92,7 +85,7 @@ public class WFQJResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.wfqjMapping,#wfqjdtos})")
     @ApiOperation(value = "createBatch", tags = {"WFQJ" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/wfqjs/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<WFQJDTO> wfqjdtos) {
@@ -100,14 +93,14 @@ public class WFQJResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFQJ-Save-all')")
+    @PreAuthorize("hasPermission('','Save',{'Sql',this.wfqjMapping,#wfqjdto})")
     @ApiOperation(value = "Save", tags = {"WFQJ" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/wfqjs/save")
     public ResponseEntity<Boolean> save(@RequestBody WFQJDTO wfqjdto) {
         return ResponseEntity.status(HttpStatus.OK).body(wfqjService.save(wfqjMapping.toDomain(wfqjdto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.wfqjMapping,#wfqjdtos})")
     @ApiOperation(value = "SaveBatch", tags = {"WFQJ" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/wfqjs/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<WFQJDTO> wfqjdtos) {
@@ -130,7 +123,7 @@ public class WFQJResource {
          return ResponseEntity.status(HttpStatus.OK).body(wfqjService.remove(wfqj_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.wfqjMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"WFQJ" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/wfqjs/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {

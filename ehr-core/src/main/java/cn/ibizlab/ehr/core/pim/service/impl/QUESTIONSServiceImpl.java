@@ -96,6 +96,12 @@ public class QUESTIONSServiceImpl extends ServiceImpl<QUESTIONSMapper, QUESTIONS
     }
 
     @Override
+    public boolean saveBatch(Collection<QUESTIONS> list) {
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<QUESTIONS> list) {
         saveOrUpdateBatch(list,batchSize);
     }

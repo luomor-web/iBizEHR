@@ -6,10 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
-
 import lombok.extern.slf4j.Slf4j;
 import com.alibaba.fastjson.JSONObject;
-
 import javax.servlet.ServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cglib.beans.BeanCopier;
@@ -24,20 +22,15 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
-
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
-
 import cn.ibizlab.ehr.webapi.dto.*;
 import cn.ibizlab.ehr.webapi.mapping.*;
 import cn.ibizlab.ehr.core.pim.domain.PIMSOCIALSECURITY;
 import cn.ibizlab.ehr.core.pim.service.IPIMSOCIALSECURITYService;
 import cn.ibizlab.ehr.core.pim.filter.PIMSOCIALSECURITYSearchContext;
-
-
-
 
 @Slf4j
 @Api(tags = {"PIMSOCIALSECURITY" })
@@ -62,7 +55,7 @@ public class PIMSOCIALSECURITYResource {
          return ResponseEntity.status(HttpStatus.OK).body(pimsocialsecurityService.remove(pimsocialsecurity_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.pimsocialsecurityMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"PIMSOCIALSECURITY" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimsocialsecurities/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -98,14 +91,14 @@ public class PIMSOCIALSECURITYResource {
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimsocialsecurities/{pimsocialsecurity_id}")
     @Transactional
     public ResponseEntity<PIMSOCIALSECURITYDTO> update(@PathVariable("pimsocialsecurity_id") String pimsocialsecurity_id, @RequestBody PIMSOCIALSECURITYDTO pimsocialsecuritydto) {
-		PIMSOCIALSECURITY domain = pimsocialsecurityMapping.toDomain(pimsocialsecuritydto);
-        domain.setPimsocialsecurityid(pimsocialsecurity_id);
-		pimsocialsecurityService.update(domain);
-		PIMSOCIALSECURITYDTO dto = pimsocialsecurityMapping.toDto(domain);
+		PIMSOCIALSECURITY domain  = pimsocialsecurityMapping.toDomain(pimsocialsecuritydto);
+        domain .setPimsocialsecurityid(pimsocialsecurity_id);
+		pimsocialsecurityService.update(domain );
+		PIMSOCIALSECURITYDTO dto = pimsocialsecurityMapping.toDto(domain );
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.pimsocialsecurityMapping,#pimsocialsecuritydtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"PIMSOCIALSECURITY" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimsocialsecurities/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PIMSOCIALSECURITYDTO> pimsocialsecuritydtos) {
@@ -124,7 +117,7 @@ public class PIMSOCIALSECURITYResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.pimsocialsecurityMapping,#pimsocialsecuritydtos})")
     @ApiOperation(value = "createBatch", tags = {"PIMSOCIALSECURITY" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimsocialsecurities/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PIMSOCIALSECURITYDTO> pimsocialsecuritydtos) {
@@ -132,14 +125,14 @@ public class PIMSOCIALSECURITYResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMSOCIALSECURITY-Save-all')")
+    @PreAuthorize("hasPermission('','Save',{'Sql',this.pimsocialsecurityMapping,#pimsocialsecuritydto})")
     @ApiOperation(value = "Save", tags = {"PIMSOCIALSECURITY" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimsocialsecurities/save")
     public ResponseEntity<Boolean> save(@RequestBody PIMSOCIALSECURITYDTO pimsocialsecuritydto) {
         return ResponseEntity.status(HttpStatus.OK).body(pimsocialsecurityService.save(pimsocialsecurityMapping.toDomain(pimsocialsecuritydto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.pimsocialsecurityMapping,#pimsocialsecuritydtos})")
     @ApiOperation(value = "SaveBatch", tags = {"PIMSOCIALSECURITY" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimsocialsecurities/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PIMSOCIALSECURITYDTO> pimsocialsecuritydtos) {

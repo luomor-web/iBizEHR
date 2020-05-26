@@ -183,7 +183,7 @@ public class DEFieldCacheMap {
 		Field field = DEFieldCacheMap.getField(clazz,fieldname);
 		if(field!=null) {
 			DEField deField=field.getAnnotation(DEField.class);
-			if(deField!=null&&deField.name()!=null)
+			if(deField!=null&& !StringUtils.isEmpty(deField.name()))
 				return deField.name();
 		}
 		return fieldname;

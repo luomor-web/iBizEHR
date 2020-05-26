@@ -132,6 +132,13 @@ public class TRMTRAINFILLINServiceImpl extends ServiceImpl<TRMTRAINFILLINMapper,
     }
 
     @Override
+    public boolean saveBatch(Collection<TRMTRAINFILLIN> list) {
+        list.forEach(item->fillParentData(item));
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<TRMTRAINFILLIN> list) {
         list.forEach(item->fillParentData(item));
         saveOrUpdateBatch(list,batchSize);

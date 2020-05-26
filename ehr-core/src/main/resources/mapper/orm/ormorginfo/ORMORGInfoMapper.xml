@@ -4,6 +4,9 @@
 <mapper	namespace="cn.ibizlab.ehr.core.orm.mapper.ORMORGInfoMapper">
 
     <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
+	<select id="selectById"  resultMap="ORMORGInfoResultMap" databaseId="mysql">
+        <![CDATA[select t1.* from (SELECT t1.`BELONGREGION`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ORDERNUM`, t1.`ORGCODE`, t1.`ORGTYPE`, t1.`ORGTYPENAME`, t1.`ORMORGINFOID`, t1.`ORMORGINFONAME`, t1.`OUID`, t1.`PORGID`, t1.`PORGSECTORID`, t1.`POSTINFO`, t1.`SHORTNAME`, t1.`STARTSTOPSIGN`, t1.`SUBSTANDARD`, t1.`UPDATEDATE`, t1.`UPDATEMAN` FROM `T_ORMORGINFO` t1  ) t1 where ormorginfoid=#{id}]]>
+    </select>
 
     <!--通过mybatis将查询结果注入到entity中,通过配置autoMapping="true"由mybatis自动处理映射关系 -->
     <resultMap id="ORMORGInfoResultMap" type="cn.ibizlab.ehr.core.orm.domain.ORMORGInfo" autoMapping="true">
@@ -87,7 +90,8 @@
 
     <!--数据查询[CurChild]-->
     <sql id="CurChild" databaseId="mysql">
-       <![CDATA[	
+       <![CDATA[	SELECT * FROM   (SELECT t1.gsss as BELONGREGION, t1.createdate as CREATEDATE, t1.createman as CREATEMAN, t1.px as ORDERNUM, t1.orgcode as ORGCODE, 'CCEED5' as ORGTYPE, '组织结构' as ORGTYPENAME, t1.orgid as ORMORGINFOID, t1.orgname as ORMORGINFONAME, t1.ssou as OUID, t1.porgid as PORGID, '' AS PORGNAME, t1.SHORTNAME as SHORTNAME, t1.btqy as SUBSTANDARD, t1.updatedate as UPDATEDATE, t1.updatedate as UPDATEMAN, t1.STARTSTOPSIGN  as  STARTSTOPSIGN, '' as POSTINFO     FROM t_srforg t1) t1 
+				 WHERE 	t1.STARTSTOPSIGN ='1'
 			]]>
     </sql>
 
@@ -100,20 +104,21 @@
 
     <!--数据查询[CurOrgsector]-->
     <sql id="CurOrgsector" databaseId="mysql">
-       <![CDATA[	
+       <![CDATA[	SELECT * FROM   (SELECT t1.BELONGREGION as BELONGREGION, t1.createdate as CREATEDATE, t1.createman as CREATEMAN, t1.ORDERVALUE as ORDERNUM, t1.orgcode as ORGCODE, 'CCEED6' as ORGTYPE, '部门' as ORGTYPENAME, t1.orgsectorid as ORMORGINFOID, t1.orgsectorname as ORMORGINFONAME, t1.BELONGOU as OUID, t1.orgid as PORGID, '' AS PORGNAME, t1.SHORTNAME as SHORTNAME, t1.qy as SUBSTANDARD, t1.updatedate as UPDATEDATE, t1.updatedate as UPDATEMAN, t1.STARTSTOPSIGN  as  STARTSTOPSIGN, '' as POSTINFO, t1.porgsectorid as PORGSECTORID  FROM t_srforgsector t1 where t1.bmlx='10' and t1.orgtype='CCEED6'   UNION  SELECT t1.BELONGREGION as BELONGREGION, t1.createdate as CREATEDATE, t1.createman as CREATEMAN, t1.ORDERVALUE as ORDERNUM, t1.orgcode as ORGCODE, 'CCEED7' as ORGTYPE, '项目部' as ORGTYPENAME, t1.orgsectorid as ORMORGINFOID, t1.orgsectorname as ORMORGINFONAME, t1.BELONGOU as OUID, t1.orgid as PORGID, '' AS PORGNAME, t1.SHORTNAME as SHORTNAME, t1.qy as SUBSTANDARD, t1.updatedate as UPDATEDATE, t1.updatedate as UPDATEMAN, t1.STARTSTOPSIGN  as  STARTSTOPSIGN, '' as POSTINFO, t1.porgsectorid as PORGSECTORID   FROM t_srforgsector t1 where t1.bmlx='20'   UNION  SELECT t1.BELONGREGION as BELONGREGION, t1.createdate as CREATEDATE, t1.createman as CREATEMAN, t1.ORDERVALUE as ORDERNUM, t1.orgcode as ORGCODE, 'CCEED9' as ORGTYPE, '领导班子' as ORGTYPENAME, t1.orgsectorid as ORMORGINFOID, t1.orgsectorname as ORMORGINFONAME, t1.BELONGOU as OUID, t1.orgid as PORGID, '' AS PORGNAME, t1.SHORTNAME as SHORTNAME, t1.qy as SUBSTANDARD, t1.updatedate as UPDATEDATE, t1.updatedate as UPDATEMAN, t1.STARTSTOPSIGN  as  STARTSTOPSIGN, '' as POSTINFO, t1.porgsectorid as PORGSECTORID   FROM t_srforgsector t1 where t1.bmlx='10' and t1.orgtype='CCEED9') t1
 			]]>
     </sql>
 
     <!--数据查询[CurOrgsector]-->
     <sql id="CurOrgsector" databaseId="oracle">
        <![CDATA[	SELECT * FROM   (SELECT t1.BELONGREGION as BELONGREGION, t1.createdate as CREATEDATE, t1.createman as CREATEMAN, t1.ORDERVALUE as ORDERNUM, t1.orgcode as ORGCODE, 'CCEED6' as ORGTYPE, '部门' as ORGTYPENAME, t1.orgsectorid as ORMORGINFOID, t1.orgsectorname as ORMORGINFONAME, t1.BELONGOU as OUID, t1.orgid as PORGID, '' AS PORGNAME, t1.SHORTNAME as SHORTNAME, t1.qy as SUBSTANDARD, t1.updatedate as UPDATEDATE, t1.updatedate as UPDATEMAN, t1.STARTSTOPSIGN  as  STARTSTOPSIGN, '' as POSTINFO, t1.porgsectorid as PORGSECTORID  FROM v_ormorgsector t1 where t1.bmlx='10'  and  t1.orgtype='CCEED6'   UNION  SELECT t1.BELONGREGION as BELONGREGION, t1.createdate as CREATEDATE, t1.createman as CREATEMAN, t1.ORDERVALUE as ORDERNUM, t1.orgcode as ORGCODE, 'CCEED7' as ORGTYPE, '项目部' as ORGTYPENAME, t1.orgsectorid as ORMORGINFOID, t1.orgsectorname as ORMORGINFONAME, t1.BELONGOU as OUID, t1.orgid as PORGID, '' AS PORGNAME, t1.SHORTNAME as SHORTNAME, t1.qy as SUBSTANDARD, t1.updatedate as UPDATEDATE, t1.updatedate as UPDATEMAN, t1.STARTSTOPSIGN  as  STARTSTOPSIGN, '' as POSTINFO, t1.porgsectorid as PORGSECTORID   FROM v_ormorgsector t1 where t1.bmlx='20'   UNION  SELECT t1.BELONGREGION as BELONGREGION, t1.createdate as CREATEDATE, t1.createman as CREATEMAN, t1.ORDERVALUE as ORDERNUM, t1.orgcode as ORGCODE, 'CCEED9' as ORGTYPE, '领导班子' as ORGTYPENAME, t1.orgsectorid as ORMORGINFOID, t1.orgsectorname as ORMORGINFONAME, t1.BELONGOU as OUID, t1.orgid as PORGID, '' AS PORGNAME, t1.SHORTNAME as SHORTNAME, t1.qy as SUBSTANDARD, t1.updatedate as UPDATEDATE, t1.updatedate as UPDATEMAN, t1.STARTSTOPSIGN  as  STARTSTOPSIGN, '' as POSTINFO, t1.porgsectorid as PORGSECTORID   FROM v_ormorgsector t1 where t1.bmlx='10' and t1.orgtype='CCEED9') t1  
-				 WHERE 	(t1.PORGID =  #{srf.datacontext.nodeid')} and t1.STARTSTOPSIGN ='1' and ( t1.PORGSECTORID is null ))
+				 WHERE 	(t1.STARTSTOPSIGN ='1' and (t1.PORGSECTORID is null))
 			]]>
     </sql>
 
     <!--数据查询[CurPorg]-->
     <sql id="CurPorg" databaseId="mysql">
-       <![CDATA[	
+       <![CDATA[	SELECT * FROM   (SELECT t1.gsss as BELONGREGION, t1.createdate as CREATEDATE, t1.createman as CREATEMAN, t1.px as ORDERNUM, t1.orgcode as ORGCODE, 'CCEED5' as ORGTYPE, '组织结构' as ORGTYPENAME, t1.orgid as ORMORGINFOID, t1.orgname as ORMORGINFONAME, t1.ssou as OUID, t1.porgid as PORGID, '' AS PORGNAME, t1.SHORTNAME as SHORTNAME, t1.btqy as SUBSTANDARD, t1.updatedate as UPDATEDATE, t1.updatedate as UPDATEMAN, t1.STARTSTOPSIGN  as  STARTSTOPSIGN, '' as POSTINFO   FROM t_srforg t1   UNION  SELECT t1.BELONGREGION as BELONGREGION, t1.createdate as CREATEDATE, t1.createman as CREATEMAN, t1.ORDERVALUE as ORDERNUM, t1.orgcode as ORGCODE, 'CCEED6' as ORGTYPE, '部门' as ORGTYPENAME, t1.orgsectorid as ORMORGINFOID, t1.orgsectorname as ORMORGINFONAME, t1.BELONGOU as OUID, t1.orgid as PORGID, '' AS PORGNAME, t1.SHORTNAME as SHORTNAME, t1.qy as SUBSTANDARD, t1.updatedate as UPDATEDATE, t1.updatedate as UPDATEMAN, t1.STARTSTOPSIGN  as  STARTSTOPSIGN, '' as POSTINFO    FROM t_srforgsector t1 where t1.bmlx='10' and t1.orgtype='CCEED6'    UNION  SELECT t1.BELONGREGION as BELONGREGION, t1.createdate as CREATEDATE, t1.createman as CREATEMAN, t1.ORDERVALUE as ORDERNUM, t1.orgcode as ORGCODE, 'CCEED7' as ORGTYPE, '项目部' as ORGTYPENAME, t1.orgsectorid as ORMORGINFOID, t1.orgsectorname as ORMORGINFONAME, t1.BELONGOU as OUID, t1.orgid as PORGID, '' AS PORGNAME, t1.SHORTNAME as SHORTNAME, t1.qy as SUBSTANDARD, t1.updatedate as UPDATEDATE, t1.updatedate as UPDATEMAN, t1.STARTSTOPSIGN  as  STARTSTOPSIGN, '' as POSTINFO    FROM t_srforgsector t1 where t1.bmlx='20'  UNION  SELECT t1.BELONGREGION as BELONGREGION, t1.createdate as CREATEDATE, t1.createman as CREATEMAN, t1.ORDERVALUE as ORDERNUM, t1.orgcode as ORGCODE, 'CCEED9' as ORGTYPE, '领导班子' as ORGTYPENAME, t1.orgsectorid as ORMORGINFOID, t1.orgsectorname as ORMORGINFONAME, t1.BELONGOU as OUID, t1.orgid as PORGID, '' AS PORGNAME, t1.SHORTNAME as SHORTNAME, t1.qy as SUBSTANDARD, t1.updatedate as UPDATEDATE, t1.updatedate as UPDATEMAN, t1.STARTSTOPSIGN  as  STARTSTOPSIGN, '' as POSTINFO       FROM t_srforgsector t1 where t1.bmlx='10' and t1.orgtype='CCEED9') t1 
+				 WHERE 	(t1.STARTSTOPSIGN ='1' and t1.porgid is null and t1.ORMORGINFOID<>'DEFAULT')
 			]]>
     </sql>
 
@@ -150,7 +155,7 @@
 
     <!--数据查询[Suborg]-->
     <sql id="Suborg" databaseId="mysql">
-       <![CDATA[	
+       <![CDATA[	SELECT * FROM   (SELECT t1.gsss as BELONGREGION, t1.createdate as CREATEDATE, t1.createman as CREATEMAN, t1.px as ORDERNUM, t1.orgcode as ORGCODE, 'CCEED5' as ORGTYPE, '组织结构' as ORGTYPENAME, t1.orgid as ORMORGINFOID, t1.orgname as ORMORGINFONAME, t1.ssou as OUID, t1.porgid as PORGID, '' AS PORGNAME, t1.SHORTNAME as SHORTNAME, t1.btqy as SUBSTANDARD, t1.updatedate as UPDATEDATE, t1.updatedate as UPDATEMAN, t1.STARTSTOPSIGN  as  STARTSTOPSIGN, '' as POSTINFO  FROM t_srforg t1   UNION  SELECT t1.BELONGREGION as BELONGREGION, t1.createdate as CREATEDATE, t1.createman as CREATEMAN, t1.ORDERVALUE as ORDERNUM, t1.orgcode as ORGCODE, 'CCEED6' as ORGTYPE, '部门' as ORGTYPENAME, t1.orgsectorid as ORMORGINFOID, t1.orgsectorname as ORMORGINFONAME, t1.BELONGOU as OUID, t1.orgid as PORGID, '' AS PORGNAME, t1.SHORTNAME as SHORTNAME, t1.qy as SUBSTANDARD, t1.updatedate as UPDATEDATE, t1.updatedate as UPDATEMAN, t1.STARTSTOPSIGN  as  STARTSTOPSIGN, '' as POSTINFO  FROM t_srforgsector t1 where t1.bmlx='10' and t1.orgtype='CCEED6'    UNION  SELECT t1.BELONGREGION as BELONGREGION, t1.createdate as CREATEDATE, t1.createman as CREATEMAN, t1.ORDERVALUE as ORDERNUM, t1.orgcode as ORGCODE, 'CCEED7' as ORGTYPE, '项目部' as ORGTYPENAME, t1.orgsectorid as ORMORGINFOID, t1.orgsectorname as ORMORGINFONAME, t1.BELONGOU as OUID, t1.orgid as PORGID, '' AS PORGNAME, t1.SHORTNAME as SHORTNAME, t1.qy as SUBSTANDARD, t1.updatedate as UPDATEDATE, t1.updatedate as UPDATEMAN, t1.STARTSTOPSIGN  as  STARTSTOPSIGN,  '' as POSTINFO    FROM t_srforgsector t1 where t1.bmlx='20'     UNION  SELECT t1.BELONGREGION as BELONGREGION, t1.createdate as CREATEDATE, t1.createman as CREATEMAN, t1.ORDERVALUE as ORDERNUM, t1.orgcode as ORGCODE, 'CCEED9' as ORGTYPE, '领导班子' as ORGTYPENAME, t1.orgsectorid as ORMORGINFOID, t1.orgsectorname as ORMORGINFONAME, t1.BELONGOU as OUID, t1.orgid as PORGID, '' AS PORGNAME, t1.SHORTNAME as SHORTNAME, t1.qy as SUBSTANDARD, t1.updatedate as UPDATEDATE, t1.updatedate as UPDATEMAN, t1.STARTSTOPSIGN  as  STARTSTOPSIGN, '' as POSTINFO  FROM t_srforgsector t1 where t1.bmlx='10' and t1.orgtype='CCEED9'   ) t1
 			]]>
     </sql>
 
@@ -184,6 +189,12 @@
     <sql id="SubPerson" databaseId="oracle">
        <![CDATA[	SELECT  *  FROM  V_ORGINFO  t1  
 				 WHERE 	( t1.PORGID =  #{srf.webcontext.nodeid')}  or  t1.PORGID in (select a.orgsectorid from v_ormorgsector a where a.porgsectorid=#{srf.webcontext.nodeid')} ) )
+			]]>
+    </sql>
+
+    <!--数据查询[View]-->
+    <sql id="View" databaseId="mysql">
+       <![CDATA[	SELECT t1.`BELONGREGION`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ORDERNUM`, t1.`ORGCODE`, t1.`ORGTYPE`, t1.`ORGTYPENAME`, t1.`ORMORGINFOID`, t1.`ORMORGINFONAME`, t1.`OUID`, t1.`PORGID`, t1.`PORGSECTORID`, t1.`POSTINFO`, t1.`SHORTNAME`, t1.`STARTSTOPSIGN`, t1.`SUBSTANDARD`, t1.`UPDATEDATE`, t1.`UPDATEMAN` FROM `T_ORMORGINFO` t1  
 			]]>
     </sql>
 

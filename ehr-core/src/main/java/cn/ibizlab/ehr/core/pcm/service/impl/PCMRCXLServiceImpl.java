@@ -141,6 +141,13 @@ public class PCMRCXLServiceImpl extends ServiceImpl<PCMRCXLMapper, PCMRCXL> impl
     }
 
     @Override
+    public boolean saveBatch(Collection<PCMRCXL> list) {
+        list.forEach(item->fillParentData(item));
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<PCMRCXL> list) {
         list.forEach(item->fillParentData(item));
         saveOrUpdateBatch(list,batchSize);

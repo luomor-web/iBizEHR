@@ -6,10 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
-
 import lombok.extern.slf4j.Slf4j;
 import com.alibaba.fastjson.JSONObject;
-
 import javax.servlet.ServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cglib.beans.BeanCopier;
@@ -24,20 +22,15 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
-
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
-
 import cn.ibizlab.ehr.webapi.dto.*;
 import cn.ibizlab.ehr.webapi.mapping.*;
 import cn.ibizlab.ehr.core.pim.domain.PIMPERSON;
 import cn.ibizlab.ehr.core.pim.service.IPIMPERSONService;
 import cn.ibizlab.ehr.core.pim.filter.PIMPERSONSearchContext;
-
-
-
 
 @Slf4j
 @Api(tags = {"PIMPERSON" })
@@ -59,14 +52,14 @@ public class PIMPERSONResource {
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimpeople/{pimperson_id}")
     @Transactional
     public ResponseEntity<PIMPERSONDTO> update(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMPERSONDTO pimpersondto) {
-		PIMPERSON domain = pimpersonMapping.toDomain(pimpersondto);
-        domain.setPimpersonid(pimperson_id);
-		pimpersonService.update(domain);
-		PIMPERSONDTO dto = pimpersonMapping.toDto(domain);
+		PIMPERSON domain  = pimpersonMapping.toDomain(pimpersondto);
+        domain .setPimpersonid(pimperson_id);
+		pimpersonService.update(domain );
+		PIMPERSONDTO dto = pimpersonMapping.toDto(domain );
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.pimpersonMapping,#pimpersondtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"PIMPERSON" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimpeople/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PIMPERSONDTO> pimpersondtos) {
@@ -80,6 +73,7 @@ public class PIMPERSONResource {
     @Transactional
     public ResponseEntity<PIMPERSONDTO> yZSFYZFP(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMPERSONDTO pimpersondto) {
         PIMPERSON pimperson = pimpersonMapping.toDomain(pimpersondto);
+        pimperson.setPimpersonid(pimperson_id);
         pimperson = pimpersonService.yZSFYZFP(pimperson);
         pimpersondto = pimpersonMapping.toDto(pimperson);
         return ResponseEntity.status(HttpStatus.OK).body(pimpersondto);
@@ -91,6 +85,7 @@ public class PIMPERSONResource {
     @Transactional
     public ResponseEntity<PIMPERSONDTO> toggleLeader(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMPERSONDTO pimpersondto) {
         PIMPERSON pimperson = pimpersonMapping.toDomain(pimpersondto);
+        pimperson.setPimpersonid(pimperson_id);
         pimperson = pimpersonService.toggleLeader(pimperson);
         pimpersondto = pimpersonMapping.toDto(pimperson);
         return ResponseEntity.status(HttpStatus.OK).body(pimpersondto);
@@ -111,6 +106,7 @@ public class PIMPERSONResource {
     @Transactional
     public ResponseEntity<PIMPERSONDTO> personUpdateInfo(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMPERSONDTO pimpersondto) {
         PIMPERSON pimperson = pimpersonMapping.toDomain(pimpersondto);
+        pimperson.setPimpersonid(pimperson_id);
         pimperson = pimpersonService.personUpdateInfo(pimperson);
         pimpersondto = pimpersonMapping.toDto(pimperson);
         return ResponseEntity.status(HttpStatus.OK).body(pimpersondto);
@@ -122,6 +118,7 @@ public class PIMPERSONResource {
     @Transactional
     public ResponseEntity<PIMPERSONDTO> fillPersonType(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMPERSONDTO pimpersondto) {
         PIMPERSON pimperson = pimpersonMapping.toDomain(pimpersondto);
+        pimperson.setPimpersonid(pimperson_id);
         pimperson = pimpersonService.fillPersonType(pimperson);
         pimpersondto = pimpersonMapping.toDto(pimperson);
         return ResponseEntity.status(HttpStatus.OK).body(pimpersondto);
@@ -138,7 +135,7 @@ public class PIMPERSONResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.pimpersonMapping,#pimpersondtos})")
     @ApiOperation(value = "createBatch", tags = {"PIMPERSON" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PIMPERSONDTO> pimpersondtos) {
@@ -146,14 +143,14 @@ public class PIMPERSONResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMPERSON-Save-all')")
+    @PreAuthorize("hasPermission('','Save',{'Sql',this.pimpersonMapping,#pimpersondto})")
     @ApiOperation(value = "Save", tags = {"PIMPERSON" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/save")
     public ResponseEntity<Boolean> save(@RequestBody PIMPERSONDTO pimpersondto) {
         return ResponseEntity.status(HttpStatus.OK).body(pimpersonService.save(pimpersonMapping.toDomain(pimpersondto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.pimpersonMapping,#pimpersondtos})")
     @ApiOperation(value = "SaveBatch", tags = {"PIMPERSON" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PIMPERSONDTO> pimpersondtos) {
@@ -167,6 +164,7 @@ public class PIMPERSONResource {
     @Transactional
     public ResponseEntity<PIMPERSONDTO> getJTLXRDH(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMPERSONDTO pimpersondto) {
         PIMPERSON pimperson = pimpersonMapping.toDomain(pimpersondto);
+        pimperson.setPimpersonid(pimperson_id);
         pimperson = pimpersonService.getJTLXRDH(pimperson);
         pimpersondto = pimpersonMapping.toDto(pimperson);
         return ResponseEntity.status(HttpStatus.OK).body(pimpersondto);
@@ -178,6 +176,7 @@ public class PIMPERSONResource {
     @Transactional
     public ResponseEntity<PIMPERSONDTO> synPerson(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMPERSONDTO pimpersondto) {
         PIMPERSON pimperson = pimpersonMapping.toDomain(pimpersondto);
+        pimperson.setPimpersonid(pimperson_id);
         pimperson = pimpersonService.synPerson(pimperson);
         pimpersondto = pimpersonMapping.toDto(pimperson);
         return ResponseEntity.status(HttpStatus.OK).body(pimpersondto);
@@ -191,7 +190,7 @@ public class PIMPERSONResource {
          return ResponseEntity.status(HttpStatus.OK).body(pimpersonService.remove(pimperson_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.pimpersonMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"PIMPERSON" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimpeople/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -212,6 +211,7 @@ public class PIMPERSONResource {
     @Transactional
     public ResponseEntity<PIMPERSONDTO> qRTX(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMPERSONDTO pimpersondto) {
         PIMPERSON pimperson = pimpersonMapping.toDomain(pimpersondto);
+        pimperson.setPimpersonid(pimperson_id);
         pimperson = pimpersonService.qRTX(pimperson);
         pimpersondto = pimpersonMapping.toDto(pimperson);
         return ResponseEntity.status(HttpStatus.OK).body(pimpersondto);
@@ -230,6 +230,7 @@ public class PIMPERSONResource {
     @Transactional
     public ResponseEntity<PIMPERSONDTO> generatePersonFile(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMPERSONDTO pimpersondto) {
         PIMPERSON pimperson = pimpersonMapping.toDomain(pimpersondto);
+        pimperson.setPimpersonid(pimperson_id);
         pimperson = pimpersonService.generatePersonFile(pimperson);
         pimpersondto = pimpersonMapping.toDto(pimperson);
         return ResponseEntity.status(HttpStatus.OK).body(pimpersondto);

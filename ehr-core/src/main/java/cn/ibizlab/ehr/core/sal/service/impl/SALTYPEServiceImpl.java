@@ -103,6 +103,12 @@ public class SALTYPEServiceImpl extends ServiceImpl<SALTYPEMapper, SALTYPE> impl
     }
 
     @Override
+    public boolean saveBatch(Collection<SALTYPE> list) {
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<SALTYPE> list) {
         saveOrUpdateBatch(list,batchSize);
     }

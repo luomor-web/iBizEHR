@@ -6,10 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
-
 import lombok.extern.slf4j.Slf4j;
 import com.alibaba.fastjson.JSONObject;
-
 import javax.servlet.ServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cglib.beans.BeanCopier;
@@ -24,20 +22,15 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
-
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
-
 import cn.ibizlab.ehr.webapi.dto.*;
 import cn.ibizlab.ehr.webapi.mapping.*;
 import cn.ibizlab.ehr.core.pim.domain.PIMOUTPUT;
 import cn.ibizlab.ehr.core.pim.service.IPIMOUTPUTService;
 import cn.ibizlab.ehr.core.pim.filter.PIMOUTPUTSearchContext;
-
-
-
 
 @Slf4j
 @Api(tags = {"PIMOUTPUT" })
@@ -59,14 +52,14 @@ public class PIMOUTPUTResource {
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimoutputs/{pimoutput_id}")
     @Transactional
     public ResponseEntity<PIMOUTPUTDTO> update(@PathVariable("pimoutput_id") String pimoutput_id, @RequestBody PIMOUTPUTDTO pimoutputdto) {
-		PIMOUTPUT domain = pimoutputMapping.toDomain(pimoutputdto);
-        domain.setPimoutputid(pimoutput_id);
-		pimoutputService.update(domain);
-		PIMOUTPUTDTO dto = pimoutputMapping.toDto(domain);
+		PIMOUTPUT domain  = pimoutputMapping.toDomain(pimoutputdto);
+        domain .setPimoutputid(pimoutput_id);
+		pimoutputService.update(domain );
+		PIMOUTPUTDTO dto = pimoutputMapping.toDto(domain );
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.pimoutputMapping,#pimoutputdtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"PIMOUTPUT" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimoutputs/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PIMOUTPUTDTO> pimoutputdtos) {
@@ -94,7 +87,7 @@ public class PIMOUTPUTResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.pimoutputMapping,#pimoutputdtos})")
     @ApiOperation(value = "createBatch", tags = {"PIMOUTPUT" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimoutputs/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PIMOUTPUTDTO> pimoutputdtos) {
@@ -124,7 +117,7 @@ public class PIMOUTPUTResource {
          return ResponseEntity.status(HttpStatus.OK).body(pimoutputService.remove(pimoutput_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.pimoutputMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"PIMOUTPUT" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimoutputs/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -132,14 +125,14 @@ public class PIMOUTPUTResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMOUTPUT-Save-all')")
+    @PreAuthorize("hasPermission('','Save',{'Sql',this.pimoutputMapping,#pimoutputdto})")
     @ApiOperation(value = "Save", tags = {"PIMOUTPUT" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimoutputs/save")
     public ResponseEntity<Boolean> save(@RequestBody PIMOUTPUTDTO pimoutputdto) {
         return ResponseEntity.status(HttpStatus.OK).body(pimoutputService.save(pimoutputMapping.toDomain(pimoutputdto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.pimoutputMapping,#pimoutputdtos})")
     @ApiOperation(value = "SaveBatch", tags = {"PIMOUTPUT" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimoutputs/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PIMOUTPUTDTO> pimoutputdtos) {

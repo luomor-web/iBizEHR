@@ -6,10 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
-
 import lombok.extern.slf4j.Slf4j;
 import com.alibaba.fastjson.JSONObject;
-
 import javax.servlet.ServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cglib.beans.BeanCopier;
@@ -24,20 +22,15 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
-
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
-
 import cn.ibizlab.ehr.webapi.dto.*;
 import cn.ibizlab.ehr.webapi.mapping.*;
 import cn.ibizlab.ehr.core.trm.domain.TRMDEMDEFTION;
 import cn.ibizlab.ehr.core.trm.service.ITRMDEMDEFTIONService;
 import cn.ibizlab.ehr.core.trm.filter.TRMDEMDEFTIONSearchContext;
-
-
-
 
 @Slf4j
 @Api(tags = {"TRMDEMDEFTION" })
@@ -72,7 +65,7 @@ public class TRMDEMDEFTIONResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.trmdemdeftionMapping,#trmdemdeftiondtos})")
     @ApiOperation(value = "createBatch", tags = {"TRMDEMDEFTION" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmdemdeftions/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<TRMDEMDEFTIONDTO> trmdemdeftiondtos) {
@@ -85,14 +78,14 @@ public class TRMDEMDEFTIONResource {
 	@RequestMapping(method = RequestMethod.PUT, value = "/trmdemdeftions/{trmdemdeftion_id}")
     @Transactional
     public ResponseEntity<TRMDEMDEFTIONDTO> update(@PathVariable("trmdemdeftion_id") String trmdemdeftion_id, @RequestBody TRMDEMDEFTIONDTO trmdemdeftiondto) {
-		TRMDEMDEFTION domain = trmdemdeftionMapping.toDomain(trmdemdeftiondto);
-        domain.setTrmdemdeftionid(trmdemdeftion_id);
-		trmdemdeftionService.update(domain);
-		TRMDEMDEFTIONDTO dto = trmdemdeftionMapping.toDto(domain);
+		TRMDEMDEFTION domain  = trmdemdeftionMapping.toDomain(trmdemdeftiondto);
+        domain .setTrmdemdeftionid(trmdemdeftion_id);
+		trmdemdeftionService.update(domain );
+		TRMDEMDEFTIONDTO dto = trmdemdeftionMapping.toDto(domain );
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.trmdemdeftionMapping,#trmdemdeftiondtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"TRMDEMDEFTION" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/trmdemdeftions/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<TRMDEMDEFTIONDTO> trmdemdeftiondtos) {
@@ -108,7 +101,7 @@ public class TRMDEMDEFTIONResource {
          return ResponseEntity.status(HttpStatus.OK).body(trmdemdeftionService.remove(trmdemdeftion_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.trmdemdeftionMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"TRMDEMDEFTION" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/trmdemdeftions/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -116,14 +109,14 @@ public class TRMDEMDEFTIONResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMDEMDEFTION-Save-all')")
+    @PreAuthorize("hasPermission('','Save',{'Sql',this.trmdemdeftionMapping,#trmdemdeftiondto})")
     @ApiOperation(value = "Save", tags = {"TRMDEMDEFTION" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmdemdeftions/save")
     public ResponseEntity<Boolean> save(@RequestBody TRMDEMDEFTIONDTO trmdemdeftiondto) {
         return ResponseEntity.status(HttpStatus.OK).body(trmdemdeftionService.save(trmdemdeftionMapping.toDomain(trmdemdeftiondto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.trmdemdeftionMapping,#trmdemdeftiondtos})")
     @ApiOperation(value = "SaveBatch", tags = {"TRMDEMDEFTION" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmdemdeftions/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<TRMDEMDEFTIONDTO> trmdemdeftiondtos) {

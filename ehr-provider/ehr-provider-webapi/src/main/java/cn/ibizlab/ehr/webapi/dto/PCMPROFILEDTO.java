@@ -186,14 +186,6 @@ public class PCMPROFILEDTO extends DTOBase implements Serializable {
     private Timestamp gzkssj;
 
     /**
-     * 属性 [CONDITION]
-     *
-     */
-    @JSONField(name = "condition")
-    @JsonProperty("condition")
-    private String condition;
-
-    /**
      * 属性 [NQDLDHTQX]
      *
      */
@@ -506,7 +498,7 @@ public class PCMPROFILEDTO extends DTOBase implements Serializable {
      */
     @JSONField(name = "jzbspyj")
     @JsonProperty("jzbspyj")
-    private Integer jzbspyj;
+    private String jzbspyj;
 
     /**
      * 属性 [GRADUATIONDATE]
@@ -1020,6 +1012,14 @@ public class PCMPROFILEDTO extends DTOBase implements Serializable {
     @JsonProperty("ormorgid")
     private String ormorgid;
 
+    /**
+     * 属性 [CHECKRESULT]
+     *
+     */
+    @JSONField(name = "checkresult")
+    @JsonProperty("checkresult")
+    private String checkresult;
+
 
     /**
      * 设置 [GWLB]
@@ -1171,14 +1171,6 @@ public class PCMPROFILEDTO extends DTOBase implements Serializable {
     public void setGzkssj(Timestamp  gzkssj){
         this.gzkssj = gzkssj ;
         this.modify("gzkssj",gzkssj);
-    }
-
-    /**
-     * 设置 [CONDITION]
-     */
-    public void setCondition(String  condition){
-        this.condition = condition ;
-        this.modify("condition",condition);
     }
 
     /**
@@ -1448,7 +1440,7 @@ public class PCMPROFILEDTO extends DTOBase implements Serializable {
     /**
      * 设置 [JZBSPYJ]
      */
-    public void setJzbspyj(Integer  jzbspyj){
+    public void setJzbspyj(String  jzbspyj){
         this.jzbspyj = jzbspyj ;
         this.modify("jzbspyj",jzbspyj);
     }
@@ -1883,6 +1875,14 @@ public class PCMPROFILEDTO extends DTOBase implements Serializable {
     public void setOrmorgid(String  ormorgid){
         this.ormorgid = ormorgid ;
         this.modify("ormorgid",ormorgid);
+    }
+
+    /**
+     * 设置 [CHECKRESULT]
+     */
+    public void setCheckresult(String  checkresult){
+        this.checkresult = checkresult ;
+        this.modify("checkresult",checkresult);
     }
 
 

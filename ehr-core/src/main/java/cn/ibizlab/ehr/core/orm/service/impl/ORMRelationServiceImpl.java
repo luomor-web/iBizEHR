@@ -131,6 +131,12 @@ public class ORMRelationServiceImpl extends ServiceImpl<ORMRelationMapper, ORMRe
     }
 
     @Override
+    public boolean saveBatch(Collection<ORMRelation> list) {
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<ORMRelation> list) {
         saveOrUpdateBatch(list,batchSize);
     }

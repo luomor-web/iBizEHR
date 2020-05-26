@@ -126,6 +126,13 @@ public class DateRuleServiceImpl extends ServiceImpl<DateRuleMapper, DateRule> i
     }
 
     @Override
+    public boolean saveBatch(Collection<DateRule> list) {
+        list.forEach(item->fillParentData(item));
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<DateRule> list) {
         list.forEach(item->fillParentData(item));
         saveOrUpdateBatch(list,batchSize);

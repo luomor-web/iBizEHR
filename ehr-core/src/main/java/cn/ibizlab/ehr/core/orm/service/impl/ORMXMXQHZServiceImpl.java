@@ -82,6 +82,12 @@ public class ORMXMXQHZServiceImpl extends ServiceImpl<ORMXMXQHZMapper, ORMXMXQHZ
     }
 
     @Override
+    public boolean saveBatch(Collection<ORMXMXQHZ> list) {
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<ORMXMXQHZ> list) {
         saveOrUpdateBatch(list,batchSize);
     }

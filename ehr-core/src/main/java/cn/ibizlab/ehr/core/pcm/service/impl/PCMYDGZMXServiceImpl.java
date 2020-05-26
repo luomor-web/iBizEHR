@@ -128,6 +128,12 @@ public class PCMYDGZMXServiceImpl extends ServiceImpl<PCMYDGZMXMapper, PCMYDGZMX
     }
 
     @Override
+    public boolean saveBatch(Collection<PCMYDGZMX> list) {
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<PCMYDGZMX> list) {
         saveOrUpdateBatch(list,batchSize);
     }

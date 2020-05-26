@@ -328,8 +328,6 @@ export default {
 			pimpersonname: '员工姓名',
 			sszzdzs: '所属单位',
 			ygzt: '员工状态',
-			duration: '档案未转出月数',
-			zt: '档案借阅状态',
 			uagridcolumn1: '操作列',
 		},
 		uiactions: {
@@ -364,8 +362,6 @@ export default {
 			pimpersonname: '员工姓名',
 			sszzdzs: '所属单位',
 			ygzt: '员工状态',
-			duration: '档案未转出月数',
-			zt: '档案借阅状态',
 			uagridcolumn1: '操作列',
 		},
 		uiactions: {

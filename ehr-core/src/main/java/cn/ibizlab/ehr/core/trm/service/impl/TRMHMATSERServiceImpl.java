@@ -89,6 +89,13 @@ public class TRMHMATSERServiceImpl extends ServiceImpl<TRMHMATSERMapper, TRMHMAT
     }
 
     @Override
+    public boolean saveBatch(Collection<TRMHMATSER> list) {
+        list.forEach(item->fillParentData(item));
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<TRMHMATSER> list) {
         list.forEach(item->fillParentData(item));
         saveOrUpdateBatch(list,batchSize);

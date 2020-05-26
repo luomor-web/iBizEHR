@@ -6,10 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
-
 import lombok.extern.slf4j.Slf4j;
 import com.alibaba.fastjson.JSONObject;
-
 import javax.servlet.ServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cglib.beans.BeanCopier;
@@ -24,20 +22,15 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
-
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
-
 import cn.ibizlab.ehr.webapi.dto.*;
 import cn.ibizlab.ehr.webapi.mapping.*;
 import cn.ibizlab.ehr.core.pim.domain.PCMDETAIL;
 import cn.ibizlab.ehr.core.pim.service.IPCMDETAILService;
 import cn.ibizlab.ehr.core.pim.filter.PCMDETAILSearchContext;
-
-
-
 
 @Slf4j
 @Api(tags = {"PCMDETAIL" })
@@ -62,7 +55,7 @@ public class PCMDETAILResource {
          return ResponseEntity.status(HttpStatus.OK).body(pcmdetailService.remove(pcmdetail_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.pcmdetailMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"PCMDETAIL" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmdetails/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -75,14 +68,14 @@ public class PCMDETAILResource {
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmdetails/{pcmdetail_id}")
     @Transactional
     public ResponseEntity<PCMDETAILDTO> update(@PathVariable("pcmdetail_id") String pcmdetail_id, @RequestBody PCMDETAILDTO pcmdetaildto) {
-		PCMDETAIL domain = pcmdetailMapping.toDomain(pcmdetaildto);
-        domain.setPcmdetailid(pcmdetail_id);
-		pcmdetailService.update(domain);
-		PCMDETAILDTO dto = pcmdetailMapping.toDto(domain);
+		PCMDETAIL domain  = pcmdetailMapping.toDomain(pcmdetaildto);
+        domain .setPcmdetailid(pcmdetail_id);
+		pcmdetailService.update(domain );
+		PCMDETAILDTO dto = pcmdetailMapping.toDto(domain );
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.pcmdetailMapping,#pcmdetaildtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"PCMDETAIL" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmdetails/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PCMDETAILDTO> pcmdetaildtos) {
@@ -101,7 +94,7 @@ public class PCMDETAILResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.pcmdetailMapping,#pcmdetaildtos})")
     @ApiOperation(value = "createBatch", tags = {"PCMDETAIL" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmdetails/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PCMDETAILDTO> pcmdetaildtos) {
@@ -125,14 +118,14 @@ public class PCMDETAILResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMDETAIL-Save-all')")
+    @PreAuthorize("hasPermission('','Save',{'Sql',this.pcmdetailMapping,#pcmdetaildto})")
     @ApiOperation(value = "Save", tags = {"PCMDETAIL" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmdetails/save")
     public ResponseEntity<Boolean> save(@RequestBody PCMDETAILDTO pcmdetaildto) {
         return ResponseEntity.status(HttpStatus.OK).body(pcmdetailService.save(pcmdetailMapping.toDomain(pcmdetaildto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.pcmdetailMapping,#pcmdetaildtos})")
     @ApiOperation(value = "SaveBatch", tags = {"PCMDETAIL" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmdetails/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PCMDETAILDTO> pcmdetaildtos) {

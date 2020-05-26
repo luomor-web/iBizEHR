@@ -6,10 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
-
 import lombok.extern.slf4j.Slf4j;
 import com.alibaba.fastjson.JSONObject;
-
 import javax.servlet.ServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cglib.beans.BeanCopier;
@@ -24,20 +22,15 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
-
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
-
 import cn.ibizlab.ehr.webapi.dto.*;
 import cn.ibizlab.ehr.webapi.mapping.*;
 import cn.ibizlab.ehr.core.att.domain.ATTENDANCESETTINGS;
 import cn.ibizlab.ehr.core.att.service.IATTENDANCESETTINGSService;
 import cn.ibizlab.ehr.core.att.filter.ATTENDANCESETTINGSSearchContext;
-
-
-
 
 @Slf4j
 @Api(tags = {"ATTENDANCESETTINGS" })
@@ -60,6 +53,7 @@ public class ATTENDANCESETTINGSResource {
     @Transactional
     public ResponseEntity<ATTENDANCESETTINGSDTO> addToKqz(@PathVariable("attendancesettings_id") String attendancesettings_id, @RequestBody ATTENDANCESETTINGSDTO attendancesettingsdto) {
         ATTENDANCESETTINGS attendancesettings = attendancesettingsMapping.toDomain(attendancesettingsdto);
+        attendancesettings.setAttendancesettingsid(attendancesettings_id);
         attendancesettings = attendancesettingsService.addToKqz(attendancesettings);
         attendancesettingsdto = attendancesettingsMapping.toDto(attendancesettings);
         return ResponseEntity.status(HttpStatus.OK).body(attendancesettingsdto);
@@ -70,14 +64,14 @@ public class ATTENDANCESETTINGSResource {
 	@RequestMapping(method = RequestMethod.PUT, value = "/attendancesettings/{attendancesettings_id}")
     @Transactional
     public ResponseEntity<ATTENDANCESETTINGSDTO> update(@PathVariable("attendancesettings_id") String attendancesettings_id, @RequestBody ATTENDANCESETTINGSDTO attendancesettingsdto) {
-		ATTENDANCESETTINGS domain = attendancesettingsMapping.toDomain(attendancesettingsdto);
-        domain.setAttendancesettingsid(attendancesettings_id);
-		attendancesettingsService.update(domain);
-		ATTENDANCESETTINGSDTO dto = attendancesettingsMapping.toDto(domain);
+		ATTENDANCESETTINGS domain  = attendancesettingsMapping.toDomain(attendancesettingsdto);
+        domain .setAttendancesettingsid(attendancesettings_id);
+		attendancesettingsService.update(domain );
+		ATTENDANCESETTINGSDTO dto = attendancesettingsMapping.toDto(domain );
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.attendancesettingsMapping,#attendancesettingsdtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"ATTENDANCESETTINGS" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/attendancesettings/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<ATTENDANCESETTINGSDTO> attendancesettingsdtos) {
@@ -96,7 +90,7 @@ public class ATTENDANCESETTINGSResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.attendancesettingsMapping,#attendancesettingsdtos})")
     @ApiOperation(value = "createBatch", tags = {"ATTENDANCESETTINGS" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/attendancesettings/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<ATTENDANCESETTINGSDTO> attendancesettingsdtos) {
@@ -104,14 +98,14 @@ public class ATTENDANCESETTINGSResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ATTENDANCESETTINGS-Save-all')")
+    @PreAuthorize("hasPermission('','Save',{'Sql',this.attendancesettingsMapping,#attendancesettingsdto})")
     @ApiOperation(value = "Save", tags = {"ATTENDANCESETTINGS" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/attendancesettings/save")
     public ResponseEntity<Boolean> save(@RequestBody ATTENDANCESETTINGSDTO attendancesettingsdto) {
         return ResponseEntity.status(HttpStatus.OK).body(attendancesettingsService.save(attendancesettingsMapping.toDomain(attendancesettingsdto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.attendancesettingsMapping,#attendancesettingsdtos})")
     @ApiOperation(value = "SaveBatch", tags = {"ATTENDANCESETTINGS" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/attendancesettings/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<ATTENDANCESETTINGSDTO> attendancesettingsdtos) {
@@ -136,7 +130,7 @@ public class ATTENDANCESETTINGSResource {
          return ResponseEntity.status(HttpStatus.OK).body(attendancesettingsService.remove(attendancesettings_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.attendancesettingsMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"ATTENDANCESETTINGS" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/attendancesettings/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {

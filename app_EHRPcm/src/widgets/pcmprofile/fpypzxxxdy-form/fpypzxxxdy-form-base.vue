@@ -1,0 +1,3062 @@
+<template>
+    <i-form :model="this.data" class='app-form' ref='wizardpanel_form_wizard01'  id='wizardpanel_form_wizard01' style="">
+    <input style="display:none;" />
+    <row >
+            
+<i-col v-show="detailsModel.grouppanel7.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
+    <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' :uiActionGroup="detailsModel.grouppanel7.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.pcmprofile.fpypzxxxdy_form.details.grouppanel7')" :isShowCaption="true" uiStyle="DEFAULT" :titleBarCloseMode="0" :isInfoGroupMode="false" >    
+    <row>
+        <i-col v-show="detailsModel.sfxzbjnbry.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
+    <app-form-item name='sfxzbjnbry' :itemRules="this.rules.sfxzbjnbry" class='' :caption="$t('entities.pcmprofile.fpypzxxxdy_form.details.sfxzbjnbry')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.sfxzbjnbry.error" :isEmptyCaption="false" labelPos="LEFT">
+    <app-radio-group v-model="data.sfxzbjnbry"  :disabled="detailsModel.sfxzbjnbry.disabled"  name="sfxzbjnbry" tag='PIMCL_SFLJ' codelistType='STATIC'  style=""></app-radio-group>
+</app-form-item>
+
+</i-col>
+<i-col v-show="detailsModel.pimpersonname.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
+    <app-form-item name='pimpersonname' :itemRules="this.rules.pimpersonname" class='' :caption="$t('entities.pcmprofile.fpypzxxxdy_form.details.pimpersonname')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.pimpersonname.error" :isEmptyCaption="false" labelPos="LEFT">
+    <app-picker 
+  :formState="formState"
+  :data="data"
+  :context="context"
+  :viewparams="viewparams"
+  :itemParam='{ }' 
+  :disabled="detailsModel.pimpersonname.disabled"
+  name='pimpersonname'
+  deMajorField='pimpersonname'
+  deKeyField='pimperson'
+  :service="service"
+  :acParams="{ serviceName: 'PIMPERSONService', interfaceName: 'FetchTXRYCX'}"
+  valueitem='pimpersonid' 
+  :value="data.pimpersonname" 
+  editortype="" 
+  :pickupView="{ viewname: 'pimpersontxrypickup-view', title: $t('entities.pimperson.views.txrypickupview.title'), deResParameters: [], parameters: [{ pathName: 'pimpeople', parameterName: 'pimperson' }, { pathName: 'txrypickupview', parameterName: 'txrypickupview' } ], placement:'' }"
+  style=""  
+  @formitemvaluechange="onFormItemValueChange">
+</app-picker>
+
+</app-form-item>
+
+</i-col>
+    
+    </row>
+</app-form-group>
+
+</i-col>
+<i-col v-show="detailsModel.group1.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
+    <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' :uiActionGroup="detailsModel.group1.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.pcmprofile.fpypzxxxdy_form.details.group1')" :isShowCaption="true" uiStyle="DEFAULT" :titleBarCloseMode="0" :isInfoGroupMode="false" >    
+    <row>
+        <i-col v-show="detailsModel.grouppanel3.visible" :style="{}"  :lg="{ span: 16, offset: 0 }">
+    <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' :uiActionGroup="detailsModel.grouppanel3.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.pcmprofile.fpypzxxxdy_form.details.grouppanel3')" :isShowCaption="false" uiStyle="DEFAULT" :titleBarCloseMode="0" :isInfoGroupMode="false" >    
+    <row>
+        <i-col v-show="detailsModel.pcmprofilename.visible" :style="{}"  :lg="{ span: 12, offset: 0 }">
+    <app-form-item name='pcmprofilename' :itemRules="this.rules.pcmprofilename" class='' :caption="$t('entities.pcmprofile.fpypzxxxdy_form.details.pcmprofilename')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.pcmprofilename.error" :isEmptyCaption="false" labelPos="LEFT">
+    <input-box v-model="data.pcmprofilename"  @enter="onEnter($event)"   unit=""  :disabled="detailsModel.pcmprofilename.disabled" type='text'  style=""></input-box>
+</app-form-item>
+
+</i-col>
+<i-col v-show="detailsModel.certificatetype.visible" :style="{}"  :lg="{ span: 12, offset: 0 }">
+    <app-form-item name='certificatetype' :itemRules="this.rules.certificatetype" class='' :caption="$t('entities.pcmprofile.fpypzxxxdy_form.details.certificatetype')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.certificatetype.error" :isEmptyCaption="false" labelPos="LEFT">
+     <dropdown-list v-model="data.certificatetype" :data="data" :itemParam="{}" :disabled="detailsModel.certificatetype.disabled"  tag='PIMCL_ZJLX' codelistType='DYNAMIC' placeholder='请选择...' style=""></dropdown-list>
+</app-form-item>
+
+</i-col>
+<i-col v-show="detailsModel.certificatenumber.visible" :style="{}"  :lg="{ span: 12, offset: 0 }">
+    <app-form-item name='certificatenumber' :itemRules="this.rules.certificatenumber" class='' :caption="$t('entities.pcmprofile.fpypzxxxdy_form.details.certificatenumber')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.certificatenumber.error" :isEmptyCaption="false" labelPos="LEFT">
+    <input-box v-model="data.certificatenumber"  @enter="onEnter($event)"   unit=""  :disabled="detailsModel.certificatenumber.disabled" type='text'  style=""></input-box>
+</app-form-item>
+
+</i-col>
+<i-col v-show="detailsModel.birthday.visible" :style="{}"  :lg="{ span: 12, offset: 0 }">
+    <app-form-item name='birthday' :itemRules="this.rules.birthday" class='' :caption="$t('entities.pcmprofile.fpypzxxxdy_form.details.birthday')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.birthday.error" :isEmptyCaption="false" labelPos="LEFT">
+    <date-picker type="date" :transfer="true" format="yyyy-MM-dd" placeholder="请选择时间..." :value="data.birthday" :disabled="detailsModel.birthday.disabled" style="min-width: 150px; width:100px;width:100%;" @on-change="(val1, val2) => { this.data.birthday = val1 }"></date-picker>
+</app-form-item>
+
+</i-col>
+<i-col v-show="detailsModel.nl.visible" :style="{}"  :lg="{ span: 12, offset: 0 }">
+    <app-form-item name='nl' :itemRules="this.rules.nl" class='' :caption="$t('entities.pcmprofile.fpypzxxxdy_form.details.nl')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.nl.error" :isEmptyCaption="false" labelPos="LEFT">
+    <input-box v-model="data.nl"  @enter="onEnter($event)"   unit=""  :disabled="detailsModel.nl.disabled" type='number'  style=""></input-box>
+</app-form-item>
+
+</i-col>
+<i-col v-show="detailsModel.gender.visible" :style="{}"  :lg="{ span: 12, offset: 0 }">
+    <app-form-item name='gender' :itemRules="this.rules.gender" class='' :caption="$t('entities.pcmprofile.fpypzxxxdy_form.details.gender')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.gender.error" :isEmptyCaption="false" labelPos="LEFT">
+     <dropdown-list v-model="data.gender" :data="data" :itemParam="{}" :disabled="detailsModel.gender.disabled"  tag='PIMCL_XB' codelistType='DYNAMIC' placeholder='请选择...' style=""></dropdown-list>
+</app-form-item>
+
+</i-col>
+    
+    </row>
+</app-form-group>
+
+</i-col>
+<i-col v-show="detailsModel.grouppanel4.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
+    <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' :uiActionGroup="detailsModel.grouppanel4.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.pcmprofile.fpypzxxxdy_form.details.grouppanel4')" :isShowCaption="false" uiStyle="DEFAULT" :titleBarCloseMode="0" :isInfoGroupMode="false" >    
+    <row>
+        <i-col v-show="detailsModel.zp.visible" :style="{}"  :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
+    <app-form-item name='zp' :itemRules="this.rules.zp" class='' :caption="$t('entities.pcmprofile.fpypzxxxdy_form.details.zp')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.zp.error" :isEmptyCaption="false" labelPos="LEFT">
+     <app-image-upload :multiple="true" :formState="formState" :ignorefieldvaluechange="ignorefieldvaluechange" @formitemvaluechange="onFormItemValueChange" :data="JSON.stringify(this.data)" name='zp' :value="data.zp" :disabled="detailsModel.zp.disabled" uploadparams='' exportparams='' :customparams="{'foldertype': 'PHOTO'}" style="height:160px;width:150px;overflow: auto;"></app-image-upload>
+</app-form-item>
+
+</i-col>
+    
+    </row>
+</app-form-group>
+
+</i-col>
+<i-col v-show="detailsModel.grouppanel5.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
+    <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' :uiActionGroup="detailsModel.grouppanel5.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.pcmprofile.fpypzxxxdy_form.details.grouppanel5')" :isShowCaption="false" uiStyle="DEFAULT" :titleBarCloseMode="0" :isInfoGroupMode="false" >    
+    <row>
+        <i-col v-show="detailsModel.nation.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
+    <app-form-item name='nation' :itemRules="this.rules.nation" class='' :caption="$t('entities.pcmprofile.fpypzxxxdy_form.details.nation')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.nation.error" :isEmptyCaption="false" labelPos="LEFT">
+     <dropdown-list v-model="data.nation" :data="data" :itemParam="{}" :disabled="detailsModel.nation.disabled"  tag='PIMCL_NATION' codelistType='DYNAMIC' placeholder='请选择...' style=""></dropdown-list>
+</app-form-item>
+
+</i-col>
+<i-col v-show="detailsModel.wedstate.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
+    <app-form-item name='wedstate' :itemRules="this.rules.wedstate" class='' :caption="$t('entities.pcmprofile.fpypzxxxdy_form.details.wedstate')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.wedstate.error" :isEmptyCaption="false" labelPos="LEFT">
+     <dropdown-list v-model="data.wedstate" :data="data" :itemParam="{}" :disabled="detailsModel.wedstate.disabled"  tag='PIMCL_HY' codelistType='DYNAMIC' placeholder='请选择...' style=""></dropdown-list>
+</app-form-item>
+
+</i-col>
+<i-col v-show="detailsModel.bloodtype.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
+    <app-form-item name='bloodtype' :itemRules="this.rules.bloodtype" class='' :caption="$t('entities.pcmprofile.fpypzxxxdy_form.details.bloodtype')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.bloodtype.error" :isEmptyCaption="false" labelPos="LEFT">
+     <dropdown-list v-model="data.bloodtype" :data="data" :itemParam="{}" :disabled="detailsModel.bloodtype.disabled"  tag='PIMCL_XX' codelistType='DYNAMIC' placeholder='请选择...' style=""></dropdown-list>
+</app-form-item>
+
+</i-col>
+<i-col v-show="detailsModel.nativeplace.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
+    <app-form-item name='nativeplace' :itemRules="this.rules.nativeplace" class='' :caption="$t('entities.pcmprofile.fpypzxxxdy_form.details.nativeplace')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.nativeplace.error" :isEmptyCaption="false" labelPos="LEFT">
+    <app-autocomplete 
+    :data="data"
+    :disabled="detailsModel.nativeplace.disabled" 
+    name='nativeplace'
+    :context="context"
+    :viewparams="viewparams"
+    deMajorField='pimcityname'
+    deKeyField='pimcity'
+    :itemParam='{ }' 
+    :service="service"
+    :acParams="{ serviceName: 'PIMCITYService', interfaceName: 'FetchDefault'}"
+    valueitem='' 
+    :value="data.nativeplace" 
+    @formitemvaluechange="onFormItemValueChange"
+    style="">
+</app-autocomplete>
+</app-form-item>
+
+</i-col>
+<i-col v-show="detailsModel.hklx.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
+    <app-form-item name='hklx' :itemRules="this.rules.hklx" class='' :caption="$t('entities.pcmprofile.fpypzxxxdy_form.details.hklx')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.hklx.error" :isEmptyCaption="false" labelPos="LEFT">
+     <dropdown-list v-model="data.hklx" :data="data" :itemParam="{}" :disabled="detailsModel.hklx.disabled"  tag='PIMCL_HKLX' codelistType='DYNAMIC' placeholder='请选择...' style=""></dropdown-list>
+</app-form-item>
+
+</i-col>
+<i-col v-show="detailsModel.rpr.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
+    <app-form-item name='rpr' :itemRules="this.rules.rpr" class='' :caption="$t('entities.pcmprofile.fpypzxxxdy_form.details.rpr')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.rpr.error" :isEmptyCaption="false" labelPos="LEFT">
+     <dropdown-list v-model="data.rpr" :data="data" :itemParam="{}" :disabled="detailsModel.rpr.disabled"  tag='NATIVEPLACE' codelistType='DYNAMIC' placeholder='请选择...' style=""></dropdown-list>
+</app-form-item>
+
+</i-col>
+<i-col v-show="detailsModel.hjdz.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
+    <app-form-item name='hjdz' :itemRules="this.rules.hjdz" class='' :caption="$t('entities.pcmprofile.fpypzxxxdy_form.details.hjdz')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.hjdz.error" :isEmptyCaption="false" labelPos="LEFT">
+    <app-autocomplete 
+    :data="data"
+    :disabled="detailsModel.hjdz.disabled" 
+    name='hjdz'
+    :context="context"
+    :viewparams="viewparams"
+    deMajorField='pimcityname'
+    deKeyField='pimcity'
+    :itemParam='{ }' 
+    :service="service"
+    :acParams="{ serviceName: 'PIMCITYService', interfaceName: 'FetchDefault'}"
+    valueitem='' 
+    :value="data.hjdz" 
+    @formitemvaluechange="onFormItemValueChange"
+    style="">
+</app-autocomplete>
+</app-form-item>
+
+</i-col>
+<i-col v-show="detailsModel.csd.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
+    <app-form-item name='csd' :itemRules="this.rules.csd" class='' :caption="$t('entities.pcmprofile.fpypzxxxdy_form.details.csd')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.csd.error" :isEmptyCaption="false" labelPos="LEFT">
+    <app-autocomplete 
+    :data="data"
+    :disabled="detailsModel.csd.disabled" 
+    name='csd'
+    :context="context"
+    :viewparams="viewparams"
+    deMajorField='pimcityname'
+    deKeyField='pimcity'
+    :itemParam='{ }' 
+    :service="service"
+    :acParams="{ serviceName: 'PIMCITYService', interfaceName: 'FetchDefault'}"
+    valueitem='' 
+    :value="data.csd" 
+    @formitemvaluechange="onFormItemValueChange"
+    style="">
+</app-autocomplete>
+</app-form-item>
+
+</i-col>
+<i-col v-show="detailsModel.address.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
+    <app-form-item name='address' :itemRules="this.rules.address" class='' :caption="$t('entities.pcmprofile.fpypzxxxdy_form.details.address')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.address.error" :isEmptyCaption="false" labelPos="LEFT">
+    <app-autocomplete 
+    :data="data"
+    :disabled="detailsModel.address.disabled" 
+    name='address'
+    :context="context"
+    :viewparams="viewparams"
+    deMajorField='pimcityname'
+    deKeyField='pimcity'
+    :itemParam='{ }' 
+    :service="service"
+    :acParams="{ serviceName: 'PIMCITYService', interfaceName: 'FetchDefault'}"
+    valueitem='' 
+    :value="data.address" 
+    @formitemvaluechange="onFormItemValueChange"
+    style="">
+</app-autocomplete>
+</app-form-item>
+
+</i-col>
+<i-col v-show="detailsModel.mobile.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
+    <app-form-item name='mobile' :itemRules="this.rules.mobile" class='' :caption="$t('entities.pcmprofile.fpypzxxxdy_form.details.mobile')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.mobile.error" :isEmptyCaption="false" labelPos="LEFT">
+    <input-box v-model="data.mobile"  @enter="onEnter($event)"   unit=""  :disabled="detailsModel.mobile.disabled" type='text'  style=""></input-box>
+</app-form-item>
+
+</i-col>
+<i-col v-show="detailsModel.email.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
+    <app-form-item name='email' :itemRules="this.rules.email" class='' :caption="$t('entities.pcmprofile.fpypzxxxdy_form.details.email')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.email.error" :isEmptyCaption="false" labelPos="LEFT">
+    <input-box v-model="data.email"  @enter="onEnter($event)"   unit=""  :disabled="detailsModel.email.disabled" type='text'  style=""></input-box>
+</app-form-item>
+
+</i-col>
+<i-col v-show="detailsModel.xznf.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
+    <app-form-item name='xznf' :itemRules="this.rules.xznf" class='' :caption="$t('entities.pcmprofile.fpypzxxxdy_form.details.xznf')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.xznf.error" :isEmptyCaption="false" labelPos="LEFT">
+     <dropdown-list v-model="data.xznf" :data="data" :itemParam="{}" :disabled="detailsModel.xznf.disabled"  tag='PIMCL_ND2' codelistType='STATIC' placeholder='请选择...' style=""></dropdown-list>
+</app-form-item>
+
+</i-col>
+<i-col v-show="detailsModel.workbegindate.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
+    <app-form-item name='workbegindate' :itemRules="this.rules.workbegindate" class='' :caption="$t('entities.pcmprofile.fpypzxxxdy_form.details.workbegindate')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.workbegindate.error" :isEmptyCaption="false" labelPos="LEFT">
+    <date-picker type="date" :transfer="true" format="yyyy-MM-dd" placeholder="请选择时间..." :value="data.workbegindate" :disabled="detailsModel.workbegindate.disabled" style="min-width: 150px; width:100px;width:100%;" @on-change="(val1, val2) => { this.data.workbegindate = val1 }"></date-picker>
+</app-form-item>
+
+</i-col>
+<i-col v-show="detailsModel.yydj.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
+    <app-form-item name='yydj' :itemRules="this.rules.yydj" class='' :caption="$t('entities.pcmprofile.fpypzxxxdy_form.details.yydj')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.yydj.error" :isEmptyCaption="false" labelPos="LEFT">
+     <dropdown-list v-model="data.yydj" :data="data" :itemParam="{}" :disabled="detailsModel.yydj.disabled"  tag='PCMCL_YYDJ' codelistType='STATIC' placeholder='请选择...' style=""></dropdown-list>
+</app-form-item>
+
+</i-col>
+<i-col v-show="detailsModel.yydjmc.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
+    <app-form-item name='yydjmc' :itemRules="this.rules.yydjmc" class='' :caption="$t('entities.pcmprofile.fpypzxxxdy_form.details.yydjmc')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.yydjmc.error" :isEmptyCaption="false" labelPos="LEFT">
+    <input-box v-model="data.yydjmc"  @enter="onEnter($event)"   unit=""  :disabled="detailsModel.yydjmc.disabled" type='text'  style=""></input-box>
+</app-form-item>
+
+</i-col>
+<i-col v-show="detailsModel.bz.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
+    <app-form-item name='bz' :itemRules="this.rules.bz" class='' :caption="$t('entities.pcmprofile.fpypzxxxdy_form.details.bz')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.bz.error" :isEmptyCaption="false" labelPos="LEFT">
+    <div class="ivu-input-wrapper ivu-input-wrapper-default ivu-input-type">
+    <textarea class="ivu-input" v-model="data.bz" :disabled="detailsModel.bz.disabled" style=""></textarea>
+</div>
+</app-form-item>
+
+</i-col>
+    
+    </row>
+</app-form-group>
+
+</i-col>
+    
+    </row>
+</app-form-group>
+
+</i-col>
+<i-col v-show="detailsModel.grouppanel1.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
+    <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' :uiActionGroup="detailsModel.grouppanel1.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.pcmprofile.fpypzxxxdy_form.details.grouppanel1')" :isShowCaption="true" uiStyle="DEFAULT" :titleBarCloseMode="0" :isInfoGroupMode="false" >    
+    <row>
+        <i-col v-show="detailsModel.polity.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
+    <app-form-item name='polity' :itemRules="this.rules.polity" class='' :caption="$t('entities.pcmprofile.fpypzxxxdy_form.details.polity')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.polity.error" :isEmptyCaption="false" labelPos="LEFT">
+     <dropdown-list v-model="data.polity" :data="data" :itemParam="{}" :disabled="detailsModel.polity.disabled"  tag='PIMCL_ZZMM' codelistType='DYNAMIC' placeholder='请选择...' style=""></dropdown-list>
+</app-form-item>
+
+</i-col>
+<i-col v-show="detailsModel.rdsj.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
+    <app-form-item name='rdsj' :itemRules="this.rules.rdsj" class='' :caption="$t('entities.pcmprofile.fpypzxxxdy_form.details.rdsj')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.rdsj.error" :isEmptyCaption="false" labelPos="LEFT">
+    <date-picker type="date" :transfer="true" format="yyyy-MM-dd" placeholder="请选择时间..." :value="data.rdsj" :disabled="detailsModel.rdsj.disabled" style="min-width: 150px; width:100px;width:100%;" @on-change="(val1, val2) => { this.data.rdsj = val1 }"></date-picker>
+</app-form-item>
+
+</i-col>
+    
+    </row>
+</app-form-group>
+
+</i-col>
+<i-col v-show="detailsModel.grouppanel2.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
+    <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' :uiActionGroup="detailsModel.grouppanel2.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.pcmprofile.fpypzxxxdy_form.details.grouppanel2')" :isShowCaption="true" uiStyle="DEFAULT" :titleBarCloseMode="0" :isInfoGroupMode="false" >    
+    <row>
+        <i-col v-show="detailsModel.yglx.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
+    <app-form-item name='yglx' :itemRules="this.rules.yglx" class='' :caption="$t('entities.pcmprofile.fpypzxxxdy_form.details.yglx')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.yglx.error" :isEmptyCaption="false" labelPos="LEFT">
+    <input-box v-model="data.yglx"  @enter="onEnter($event)"   unit=""  :disabled="detailsModel.yglx.disabled" type='text'  style=""></input-box>
+</app-form-item>
+
+</i-col>
+<i-col v-show="detailsModel.ormorgname.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
+    <app-form-item name='ormorgname' :itemRules="this.rules.ormorgname" class='' :caption="$t('entities.pcmprofile.fpypzxxxdy_form.details.ormorgname')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.ormorgname.error" :isEmptyCaption="false" labelPos="LEFT">
+    <app-picker 
+  :formState="formState"
+  :data="data"
+  :context="context"
+  :viewparams="viewparams"
+  :itemParam='{ }' 
+  :disabled="detailsModel.ormorgname.disabled"
+  name='ormorgname'
+  deMajorField='orgname'
+  deKeyField='ormorg'
+  :service="service"
+  :acParams="{ serviceName: 'ORMORGService', interfaceName: 'FetchOrglist_Profile'}"
+  valueitem='ormorgid' 
+  :value="data.ormorgname" 
+  editortype="" 
+  :pickupView="{ viewname: 'ormorgypzsyfpxxpickup-view', title: $t('entities.ormorg.views.ypzsyfpxxpickupview.title'), deResParameters: [], parameters: [{ pathName: 'ormorgs', parameterName: 'ormorg' }, { pathName: 'ypzsyfpxxpickupview', parameterName: 'ypzsyfpxxpickupview' } ], placement:'' }"
+  style=""  
+  @formitemvaluechange="onFormItemValueChange">
+</app-picker>
+
+</app-form-item>
+
+</i-col>
+<i-col v-show="detailsModel.rzqd.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
+    <app-form-item name='rzqd' :itemRules="this.rules.rzqd" class='' :caption="$t('entities.pcmprofile.fpypzxxxdy_form.details.rzqd')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.rzqd.error" :isEmptyCaption="false" labelPos="LEFT">
+     <dropdown-list v-model="data.rzqd" :data="data" :itemParam="{}" :disabled="detailsModel.rzqd.disabled"  tag='PIMCL_RZLB' codelistType='DYNAMIC' placeholder='请选择...' style=""></dropdown-list>
+</app-form-item>
+
+</i-col>
+<i-col v-show="detailsModel.gwlb.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
+    <app-form-item name='gwlb' :itemRules="this.rules.gwlb" class='' :caption="$t('entities.pcmprofile.fpypzxxxdy_form.details.gwlb')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.gwlb.error" :isEmptyCaption="false" labelPos="LEFT">
+     <dropdown-list v-model="data.gwlb" :data="data" :itemParam="{}" :disabled="detailsModel.gwlb.disabled"  tag='PCMCL_YPZGWLB' codelistType='STATIC' placeholder='请选择...' style=""></dropdown-list>
+</app-form-item>
+
+</i-col>
+<i-col v-show="detailsModel.napxm.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
+    <app-form-item name='napxm' :itemRules="this.rules.napxm" class='' :caption="$t('entities.pcmprofile.fpypzxxxdy_form.details.napxm')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.napxm.error" :isEmptyCaption="false" labelPos="LEFT">
+    <input-box v-model="data.napxm"  @enter="onEnter($event)"   unit=""  :disabled="detailsModel.napxm.disabled" type='text'  style=""></input-box>
+</app-form-item>
+
+</i-col>
+<i-col v-show="detailsModel.napxmjgwmc.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
+    <app-form-item name='napxmjgwmc' :itemRules="this.rules.napxmjgwmc" class='' :caption="$t('entities.pcmprofile.fpypzxxxdy_form.details.napxmjgwmc')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.napxmjgwmc.error" :isEmptyCaption="false" labelPos="LEFT">
+    <input-box v-model="data.napxmjgwmc"  @enter="onEnter($event)"   unit=""  :disabled="detailsModel.napxmjgwmc.disabled" type='text'  style=""></input-box>
+</app-form-item>
+
+</i-col>
+<i-col v-show="detailsModel.gzbt.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
+    <app-form-item name='gzbt' :itemRules="this.rules.gzbt" class='' :caption="$t('entities.pcmprofile.fpypzxxxdy_form.details.gzbt')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.gzbt.error" :isEmptyCaption="false" labelPos="LEFT">
+    <input-box v-model="data.gzbt"  @enter="onEnter($event)"   unit=""  :disabled="detailsModel.gzbt.disabled" type='number'  style=""></input-box>
+</app-form-item>
+
+</i-col>
+    
+    </row>
+</app-form-group>
+
+</i-col>
+<i-col v-show="detailsModel.grouppanel6.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
+    <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' :uiActionGroup="detailsModel.grouppanel6.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.pcmprofile.fpypzxxxdy_form.details.grouppanel6')" :isShowCaption="true" uiStyle="DEFAULT" :titleBarCloseMode="0" :isInfoGroupMode="false" >    
+    <row>
+        <i-col v-show="detailsModel.isblacklist.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
+    <app-form-item name='isblacklist' :itemRules="this.rules.isblacklist" class='' :caption="$t('entities.pcmprofile.fpypzxxxdy_form.details.isblacklist')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.isblacklist.error" :isEmptyCaption="false" labelPos="LEFT">
+    <app-radio-group v-model="data.isblacklist"  :disabled="detailsModel.isblacklist.disabled"  name="isblacklist" tag='YesNo' codelistType='STATIC'  style=""></app-radio-group>
+</app-form-item>
+
+</i-col>
+<i-col v-show="detailsModel.isblacklistreason.visible" :style="{}"  :lg="{ span: 16, offset: 0 }">
+    <app-form-item name='isblacklistreason' :itemRules="this.rules.isblacklistreason" class='' :caption="$t('entities.pcmprofile.fpypzxxxdy_form.details.isblacklistreason')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.isblacklistreason.error" :isEmptyCaption="false" labelPos="LEFT">
+    <div class="ivu-input-wrapper ivu-input-wrapper-default ivu-input-type">
+    <textarea class="ivu-input" :rows="10" v-model="data.isblacklistreason" :disabled="detailsModel.isblacklistreason.disabled" style="height:200px;"></textarea>
+</div>
+</app-form-item>
+
+</i-col>
+    
+    </row>
+</app-form-group>
+
+</i-col>
+<i-col v-show="detailsModel.grouppanel8.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
+    <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' :uiActionGroup="detailsModel.grouppanel8.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.pcmprofile.fpypzxxxdy_form.details.grouppanel8')" :isShowCaption="true" uiStyle="DEFAULT" :titleBarCloseMode="0" :isInfoGroupMode="false" >    
+    <row>
+        <i-col v-show="detailsModel.sfz.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
+    <app-form-item name='sfz' :itemRules="this.rules.sfz" class='' :caption="$t('entities.pcmprofile.fpypzxxxdy_form.details.sfz')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.sfz.error" :isEmptyCaption="false" labelPos="LEFT">
+    <app-file-upload :formState="formState" :ignorefieldvaluechange="ignorefieldvaluechange" @formitemvaluechange="onFormItemValueChange" :data="JSON.stringify(this.data)" name='sfz' :value="data.sfz" :disabled="detailsModel.sfz.disabled" uploadparams='' exportparams='' :customparams="{'foldertype': 'IDCARD'}" style="overflow: auto;"></app-file-upload>
+</app-form-item>
+
+</i-col>
+<i-col v-show="detailsModel.zczs2.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
+    <app-form-item name='zczs2' :itemRules="this.rules.zczs2" class='' :caption="$t('entities.pcmprofile.fpypzxxxdy_form.details.zczs2')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.zczs2.error" :isEmptyCaption="false" labelPos="LEFT">
+    <app-file-upload :formState="formState" :ignorefieldvaluechange="ignorefieldvaluechange" @formitemvaluechange="onFormItemValueChange" :data="JSON.stringify(this.data)" name='zczs2' :value="data.zczs2" :disabled="detailsModel.zczs2.disabled" uploadparams='' exportparams='' :customparams="{'foldertype': 'PRCERT'}" style="overflow: auto;"></app-file-upload>
+</app-form-item>
+
+</i-col>
+<i-col v-show="detailsModel.otherfile.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
+    <app-form-item name='otherfile' :itemRules="this.rules.otherfile" class='' :caption="$t('entities.pcmprofile.fpypzxxxdy_form.details.otherfile')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.otherfile.error" :isEmptyCaption="false" labelPos="LEFT">
+    <app-file-upload :formState="formState" :ignorefieldvaluechange="ignorefieldvaluechange" @formitemvaluechange="onFormItemValueChange" :data="JSON.stringify(this.data)" name='otherfile' :value="data.otherfile" :disabled="detailsModel.otherfile.disabled" uploadparams='' exportparams='' :customparams="{'foldertype': 'OTCERT'}" style="overflow: auto;"></app-file-upload>
+</app-form-item>
+
+</i-col>
+    
+    </row>
+</app-form-group>
+
+</i-col>
+<i-col v-show="detailsModel.grouppanel9.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
+    <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' :uiActionGroup="detailsModel.grouppanel9.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.pcmprofile.fpypzxxxdy_form.details.grouppanel9')" :isShowCaption="true" uiStyle="DEFAULT" :titleBarCloseMode="0" :isInfoGroupMode="false" >    
+    <row>
+        <i-col v-show="detailsModel.qzsm.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
+    <app-form-item name='qzsm' :itemRules="this.rules.qzsm" class='' :caption="$t('entities.pcmprofile.fpypzxxxdy_form.details.qzsm')" uiStyle="DEFAULT" :labelWidth="250" :isShowCaption="true" :error="detailsModel.qzsm.error" :isEmptyCaption="false" labelPos="LEFT">
+    <app-radio-group v-model="data.qzsm"  :disabled="detailsModel.qzsm.disabled"  name="qzsm" tag='PIMCL_SFLJ' codelistType='STATIC'  style=""></app-radio-group>
+</app-form-item>
+
+</i-col>
+    
+    </row>
+</app-form-group>
+
+</i-col>
+
+
+    </row>
+</i-form>
+</template>
+
+<script lang='tsx'>
+import { Vue, Component, Prop, Provide, Emit, Watch, Model } from 'vue-property-decorator';
+import { CreateElement } from 'vue';
+import { Subject, Subscription } from 'rxjs';
+import { ControlInterface } from '@/interface/control';
+import { UIActionTool,Util } from '@/utils';
+import PCMPROFILEService from '@/service/pcmprofile/pcmprofile-service';
+import FPYPZXXXDYService from './fpypzxxxdy-form-service';
+
+import { FormButtonModel, FormPageModel, FormItemModel, FormDRUIPartModel, FormPartModel, FormGroupPanelModel, FormIFrameModel, FormRowItemModel, FormTabPageModel, FormTabPanelModel, FormUserControlModel } from '@/model/form-detail';
+import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
+
+
+@Component({
+    components: {
+      
+    }
+})
+export default class FPYPZXXXDYBase extends Vue implements ControlInterface {
+
+    /**
+     * 名称
+     *
+     * @type {string}
+     * @memberof FPYPZXXXDY
+     */
+    @Prop() public name?: string;
+
+    /**
+     * 视图通讯对象
+     *
+     * @type {Subject<ViewState>}
+     * @memberof FPYPZXXXDY
+     */
+    @Prop() public viewState!: Subject<ViewState>;
+
+    /**
+     * 应用上下文
+     *
+     * @type {*}
+     * @memberof FPYPZXXXDY
+     */
+    @Prop() public context: any;
+
+    /**
+     * 视图参数
+     *
+     * @type {*}
+     * @memberof FPYPZXXXDY
+     */
+    @Prop() public viewparams: any;
+
+    /**
+     * 视图状态事件
+     *
+     * @public
+     * @type {(Subscription | undefined)}
+     * @memberof FPYPZXXXDY
+     */
+    public viewStateEvent: Subscription | undefined;
+
+    /**
+     * 获取部件类型
+     *
+     * @returns {string}
+     * @memberof FPYPZXXXDY
+     */
+    public getControlType(): string {
+        return 'FORM'
+    }
+
+
+
+    /**
+     * 计数器服务对象集合
+     *
+     * @type {Array<*>}
+     * @memberof FPYPZXXXDY
+     */    
+    public counterServiceArray:Array<any> = [];
+
+    /**
+     * 建构部件服务对象
+     *
+     * @type {FPYPZXXXDYService}
+     * @memberof FPYPZXXXDY
+     */
+    public service: FPYPZXXXDYService = new FPYPZXXXDYService({ $store: this.$store });
+
+    /**
+     * 实体服务对象
+     *
+     * @type {PCMPROFILEService}
+     * @memberof FPYPZXXXDY
+     */
+    public appEntityService: PCMPROFILEService = new PCMPROFILEService({ $store: this.$store });
+    
+
+
+    /**
+     * 关闭视图
+     *
+     * @param {any} args
+     * @memberof FPYPZXXXDY
+     */
+    public closeView(args: any): void {
+        let _this: any = this;
+        _this.$emit('closeview', [args]);
+    }
+
+    /**
+     *  计数器刷新
+     *
+     * @memberof FPYPZXXXDY
+     */
+    public counterRefresh(){
+        const _this:any =this;
+        if(_this.counterServiceArray && _this.counterServiceArray.length >0){
+            _this.counterServiceArray.forEach((item:any) =>{
+                if(item.refreshData && item.refreshData instanceof Function){
+                    item.refreshData();
+                }
+            })
+        }
+    }
+
+
+    
+    /**
+     * 获取多项数据
+     *
+     * @returns {any[]}
+     * @memberof FPYPZXXXDY
+     */
+    public getDatas(): any[] {
+        return [this.data];
+    }
+
+    /**
+     * 获取单项树
+     *
+     * @returns {*}
+     * @memberof FPYPZXXXDY
+     */
+    public getData(): any {
+        return this.data;
+    }
+
+    /**
+     * 是否默认保存
+     *
+     * @type {boolean}
+     * @memberof FPYPZXXXDY
+     */
+    @Prop({ default: false }) public autosave?: boolean;
+
+    /**
+     * 显示处理提示
+     *
+     * @type {boolean}
+     * @memberof FPYPZXXXDY
+     */
+    @Prop({ default: true }) public showBusyIndicator?: boolean;
+
+    /**
+     * 部件行为--submit
+     *
+     * @type {string}
+     * @memberof FPYPZXXXDY
+     */
+    @Prop() public WFSubmitAction!: string;
+    
+    /**
+     * 部件行为--start
+     *
+     * @type {string}
+     * @memberof FPYPZXXXDY
+     */
+    @Prop() public WFStartAction!: string;
+    
+    /**
+     * 部件行为--update
+     *
+     * @type {string}
+     * @memberof FPYPZXXXDY
+     */
+    @Prop() public updateAction!: string;
+    
+    /**
+     * 部件行为--remove
+     *
+     * @type {string}
+     * @memberof FPYPZXXXDY
+     */
+    @Prop() public removeAction!: string;
+    
+    /**
+     * 部件行为--loaddraft
+     *
+     * @type {string}
+     * @memberof FPYPZXXXDY
+     */
+    @Prop() public loaddraftAction!: string;
+    
+    /**
+     * 部件行为--load
+     *
+     * @type {string}
+     * @memberof FPYPZXXXDY
+     */
+    @Prop() public loadAction!: string;
+    
+    /**
+     * 部件行为--create
+     *
+     * @type {string}
+     * @memberof FPYPZXXXDY
+     */
+    @Prop() public createAction!: string;
+
+    /**
+     * 部件行为--create
+     *
+     * @type {string}
+     * @memberof FPYPZXXXDY
+     */
+    @Prop() public searchAction!: string;
+
+    /**
+     * 视图标识
+     *
+     * @type {string}
+     * @memberof FPYPZXXXDY
+     */
+    @Prop() public viewtag!: string;
+
+    /**
+     * 表单状态
+     *
+     * @type {Subject<any>}
+     * @memberof FPYPZXXXDY
+     */
+    public formState: Subject<any> = new Subject();
+
+    /**
+     * 忽略表单项值变化
+     *
+     * @type {boolean}
+     * @memberof FPYPZXXXDY
+     */
+    public ignorefieldvaluechange: boolean = false;
+
+    /**
+     * 数据变化
+     *
+     * @public
+     * @type {Subject<any>}
+     * @memberof FPYPZXXXDY
+     */
+    public dataChang: Subject<any> = new Subject();
+
+    /**
+     * 视图状态事件
+     *
+     * @public
+     * @type {(Subscription | undefined)}
+     * @memberof FPYPZXXXDY
+     */
+    public dataChangEvent: Subscription | undefined;
+
+    /**
+     * 原始数据
+     *
+     * @public
+     * @type {*}
+     * @memberof FPYPZXXXDY
+     */
+    public oldData: any = {};
+
+    /**
+     * 表单数据对象
+     *
+     * @type {*}
+     * @memberof FPYPZXXXDY
+     */
+    public data: any = {
+        srfupdatedate: null,
+        srforikey: null,
+        srfkey: null,
+        srfmajortext: null,
+        srftempmode: null,
+        srfuf: null,
+        srfdeid: null,
+        srfsourcekey: null,
+        sfxzbjnbry: null,
+        pimpersonid: null,
+        pimpersonname: null,
+        pcmprofileid: null,
+        cadidateid: null,
+        elinkurl: null,
+        pcmprofilename: null,
+        certificatetype: null,
+        certificatenumber: null,
+        birthday: null,
+        nl: null,
+        gender: null,
+        zp: null,
+        nation: null,
+        wedstate: null,
+        bloodtype: null,
+        nativeplace: null,
+        hklx: null,
+        rpr: null,
+        hjdz: null,
+        csd: null,
+        address: null,
+        mobile: null,
+        email: null,
+        xznf: null,
+        profiletype: null,
+        workbegindate: null,
+        yydj: null,
+        yydjmc: null,
+        bz: null,
+        polity: null,
+        rdsj: null,
+        yglx: null,
+        ormorgid: null,
+        ormorgname: null,
+        rzqd: null,
+        gwlb: null,
+        napxm: null,
+        napxmjgwmc: null,
+        gzbt: null,
+        isblacklist: null,
+        isblacklistreason: null,
+        sfz: null,
+        zczs2: null,
+        otherfile: null,
+        qzsm: null,
+        pcmprofile:null,
+    };
+
+    /**
+      * 当前执行的行为逻辑
+      *
+      * @type {string}
+      * @memberof FPYPZXXXDY
+      */
+    public currentAction: string = "";
+
+    /**
+      * 关系界面计数器
+      *
+      * @type {number}
+      * @memberof FPYPZXXXDY
+      */
+    public drcounter: number = 0;
+
+    /**
+      * 需要等待关系界面保存时，第一次调用save参数的备份
+      *
+      * @type {number}
+      * @memberof FPYPZXXXDY
+      */
+    public drsaveopt: any = {};
+
+    /**
+      * 表单保存回调存储对象
+      *
+      * @type {any}
+      * @memberof FPYPZXXXDY
+      */
+    public saveState:any ;
+
+    /**
+     * 属性值规则
+     *
+     * @type {*}
+     * @memberof FPYPZXXXDY
+     */
+    public rules: any = {
+        srfupdatedate: [
+            { type: 'string', message: '更新时间 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '更新时间 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '更新时间 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '更新时间 值不能为空', trigger: 'blur' },
+        ],
+        srforikey: [
+            { type: 'string', message: ' 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: ' 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: ' 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: ' 值不能为空', trigger: 'blur' },
+        ],
+        srfkey: [
+            { type: 'string', message: '应聘者ID 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '应聘者ID 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '应聘者ID 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '应聘者ID 值不能为空', trigger: 'blur' },
+        ],
+        srfmajortext: [
+            { type: 'string', message: '姓名 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '姓名 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '姓名 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '姓名 值不能为空', trigger: 'blur' },
+        ],
+        srftempmode: [
+            { type: 'string', message: ' 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: ' 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: ' 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: ' 值不能为空', trigger: 'blur' },
+        ],
+        srfuf: [
+            { type: 'string', message: ' 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: ' 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: ' 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: ' 值不能为空', trigger: 'blur' },
+        ],
+        srfdeid: [
+            { type: 'string', message: ' 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: ' 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: ' 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: ' 值不能为空', trigger: 'blur' },
+        ],
+        srfsourcekey: [
+            { type: 'string', message: ' 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: ' 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: ' 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: ' 值不能为空', trigger: 'blur' },
+        ],
+        sfxzbjnbry: [
+            { type: 'string', message: '选择内部人员 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '选择内部人员 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '选择内部人员 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '选择内部人员 值不能为空', trigger: 'blur' },
+        ],
+        pimpersonid: [
+            { type: 'string', message: '人员信息标识 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '人员信息标识 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '人员信息标识 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '人员信息标识 值不能为空', trigger: 'blur' },
+        ],
+        pimpersonname: [
+            { type: 'string', message: '退休员工姓名 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '退休员工姓名 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '退休员工姓名 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '退休员工姓名 值不能为空', trigger: 'blur' },
+        ],
+        pcmprofileid: [
+            { type: 'string', message: '应聘者ID 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '应聘者ID 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '应聘者ID 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '应聘者ID 值不能为空', trigger: 'blur' },
+        ],
+        cadidateid: [
+            { type: 'string', message: '应聘者编号 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '应聘者编号 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '应聘者编号 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '应聘者编号 值不能为空', trigger: 'blur' },
+        ],
+        elinkurl: [
+            { type: 'string', message: '应聘者Elink详情 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '应聘者Elink详情 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '应聘者Elink详情 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '应聘者Elink详情 值不能为空', trigger: 'blur' },
+        ],
+        pcmprofilename: [
+            { type: 'string', message: '姓名 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '姓名 值必须为字符串类型', trigger: 'blur' },
+            { required: true, type: 'string', message: '姓名 值不能为空', trigger: 'change' },
+            { required: true, type: 'string', message: '姓名 值不能为空', trigger: 'blur' },
+        ],
+        certificatetype: [
+            { type: 'string', message: '证件类型 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '证件类型 值必须为字符串类型', trigger: 'blur' },
+            { required: true, type: 'string', message: '证件类型 值不能为空', trigger: 'change' },
+            { required: true, type: 'string', message: '证件类型 值不能为空', trigger: 'blur' },
+        ],
+        certificatenumber: [
+            { type: 'string', message: '证件号码 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '证件号码 值必须为字符串类型', trigger: 'blur' },
+            { required: true, type: 'string', message: '证件号码 值不能为空', trigger: 'change' },
+            { required: true, type: 'string', message: '证件号码 值不能为空', trigger: 'blur' },
+        ],
+        birthday: [
+            { type: 'string', message: '出生日期 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '出生日期 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '出生日期 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '出生日期 值不能为空', trigger: 'blur' },
+        ],
+        nl: [
+            { type: 'number', message: '年龄 值必须为数值类型', trigger: 'change' },
+            { type: 'number', message: '年龄 值必须为数值类型', trigger: 'blur' },
+            { required: false, type: 'number', message: '年龄 值不能为空', trigger: 'change' },
+            { required: false, type: 'number', message: '年龄 值不能为空', trigger: 'blur' },
+        ],
+        gender: [
+            { type: 'string', message: '性别 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '性别 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '性别 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '性别 值不能为空', trigger: 'blur' },
+        ],
+        zp: [
+            { type: 'string', message: '照片 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '照片 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '照片 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '照片 值不能为空', trigger: 'blur' },
+        ],
+        nation: [
+            { type: 'string', message: '民族 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '民族 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '民族 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '民族 值不能为空', trigger: 'blur' },
+        ],
+        wedstate: [
+            { type: 'string', message: '婚姻状况 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '婚姻状况 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '婚姻状况 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '婚姻状况 值不能为空', trigger: 'blur' },
+        ],
+        bloodtype: [
+            { type: 'string', message: '血型 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '血型 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '血型 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '血型 值不能为空', trigger: 'blur' },
+        ],
+        nativeplace: [
+            { type: 'string', message: '籍贯 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '籍贯 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '籍贯 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '籍贯 值不能为空', trigger: 'blur' },
+        ],
+        hklx: [
+            { type: 'string', message: '户口类型 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '户口类型 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '户口类型 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '户口类型 值不能为空', trigger: 'blur' },
+        ],
+        rpr: [
+            { type: 'string', message: '户籍所在地 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '户籍所在地 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '户籍所在地 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '户籍所在地 值不能为空', trigger: 'blur' },
+        ],
+        hjdz: [
+            { type: 'string', message: '户籍地址 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '户籍地址 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '户籍地址 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '户籍地址 值不能为空', trigger: 'blur' },
+        ],
+        csd: [
+            { type: 'string', message: '出生地 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '出生地 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '出生地 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '出生地 值不能为空', trigger: 'blur' },
+        ],
+        address: [
+            { type: 'string', message: '通讯地址 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '通讯地址 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '通讯地址 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '通讯地址 值不能为空', trigger: 'blur' },
+        ],
+        mobile: [
+            { type: 'string', message: '手机号 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '手机号 值必须为字符串类型', trigger: 'blur' },
+            { required: true, type: 'string', message: '手机号 值不能为空', trigger: 'change' },
+            { required: true, type: 'string', message: '手机号 值不能为空', trigger: 'blur' },
+        ],
+        email: [
+            { type: 'string', message: '邮箱 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '邮箱 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '邮箱 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '邮箱 值不能为空', trigger: 'blur' },
+        ],
+        xznf: [
+            { type: 'string', message: '招聘年份 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '招聘年份 值必须为字符串类型', trigger: 'blur' },
+            { required: true, type: 'string', message: '招聘年份 值不能为空', trigger: 'change' },
+            { required: true, type: 'string', message: '招聘年份 值不能为空', trigger: 'blur' },
+        ],
+        profiletype: [
+            { type: 'string', message: '应聘者状态 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '应聘者状态 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '应聘者状态 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '应聘者状态 值不能为空', trigger: 'blur' },
+        ],
+        workbegindate: [
+            { type: 'string', message: '参加工作时间 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '参加工作时间 值必须为字符串类型', trigger: 'blur' },
+            { required: true, type: 'string', message: '参加工作时间 值不能为空', trigger: 'change' },
+            { required: true, type: 'string', message: '参加工作时间 值不能为空', trigger: 'blur' },
+        ],
+        yydj: [
+            { type: 'string', message: '语言等级 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '语言等级 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '语言等级 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '语言等级 值不能为空', trigger: 'blur' },
+        ],
+        yydjmc: [
+            { type: 'string', message: '语言等级名称 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '语言等级名称 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '语言等级名称 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '语言等级名称 值不能为空', trigger: 'blur' },
+        ],
+        bz: [
+            { type: 'string', message: '备注 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '备注 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '备注 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '备注 值不能为空', trigger: 'blur' },
+        ],
+        polity: [
+            { type: 'string', message: '政治面貌 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '政治面貌 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '政治面貌 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '政治面貌 值不能为空', trigger: 'blur' },
+        ],
+        rdsj: [
+            { type: 'string', message: '入党时间 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '入党时间 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '入党时间 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '入党时间 值不能为空', trigger: 'blur' },
+        ],
+        yglx: [
+            { type: 'string', message: '申报类型 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '申报类型 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '申报类型 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '申报类型 值不能为空', trigger: 'blur' },
+        ],
+        ormorgid: [
+            { type: 'string', message: '组织标识 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '组织标识 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '组织标识 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '组织标识 值不能为空', trigger: 'blur' },
+        ],
+        ormorgname: [
+            { type: 'string', message: '组织名称 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '组织名称 值必须为字符串类型', trigger: 'blur' },
+            { required: true, type: 'string', message: '组织名称 值不能为空', trigger: 'change' },
+            { required: true, type: 'string', message: '组织名称 值不能为空', trigger: 'blur' },
+        ],
+        rzqd: [
+            { type: 'string', message: '入职渠道 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '入职渠道 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '入职渠道 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '入职渠道 值不能为空', trigger: 'blur' },
+        ],
+        gwlb: [
+            { type: 'string', message: '岗位类别 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '岗位类别 值必须为字符串类型', trigger: 'blur' },
+            { required: true, type: 'string', message: '岗位类别 值不能为空', trigger: 'change' },
+            { required: true, type: 'string', message: '岗位类别 值不能为空', trigger: 'blur' },
+        ],
+        napxm: [
+            { type: 'string', message: '拟安排项目 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '拟安排项目 值必须为字符串类型', trigger: 'blur' },
+            { required: true, type: 'string', message: '拟安排项目 值不能为空', trigger: 'change' },
+            { required: true, type: 'string', message: '拟安排项目 值不能为空', trigger: 'blur' },
+        ],
+        napxmjgwmc: [
+            { type: 'string', message: '拟安排岗位 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '拟安排岗位 值必须为字符串类型', trigger: 'blur' },
+            { required: true, type: 'string', message: '拟安排岗位 值不能为空', trigger: 'change' },
+            { required: true, type: 'string', message: '拟安排岗位 值不能为空', trigger: 'blur' },
+        ],
+        gzbt: [
+            { type: 'number', message: '工资补贴 值必须为数值类型', trigger: 'change' },
+            { type: 'number', message: '工资补贴 值必须为数值类型', trigger: 'blur' },
+            { required: false, type: 'number', message: '工资补贴 值不能为空', trigger: 'change' },
+            { required: false, type: 'number', message: '工资补贴 值不能为空', trigger: 'blur' },
+        ],
+        isblacklist: [
+            { type: 'number', message: '是否黑名单 值必须为数值类型', trigger: 'change' },
+            { type: 'number', message: '是否黑名单 值必须为数值类型', trigger: 'blur' },
+            { required: false, type: 'number', message: '是否黑名单 值不能为空', trigger: 'change' },
+            { required: false, type: 'number', message: '是否黑名单 值不能为空', trigger: 'blur' },
+        ],
+        isblacklistreason: [
+            { type: 'string', message: '黑名单原因 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '黑名单原因 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '黑名单原因 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '黑名单原因 值不能为空', trigger: 'blur' },
+        ],
+        sfz: [
+            { type: 'string', message: '身份证 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '身份证 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '身份证 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '身份证 值不能为空', trigger: 'blur' },
+        ],
+        zczs2: [
+            { type: 'string', message: '其他证书 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '其他证书 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '其他证书 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '其他证书 值不能为空', trigger: 'blur' },
+        ],
+        otherfile: [
+            { type: 'string', message: '语言等级证书 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '语言等级证书 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '语言等级证书 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '语言等级证书 值不能为空', trigger: 'blur' },
+        ],
+        qzsm: [
+            { type: 'string', message: '本人承诺以上内容均属实并签字 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '本人承诺以上内容均属实并签字 值必须为字符串类型', trigger: 'blur' },
+            { required: true, type: 'string', message: '本人承诺以上内容均属实并签字 值不能为空', trigger: 'change' },
+            { required: true, type: 'string', message: '本人承诺以上内容均属实并签字 值不能为空', trigger: 'blur' },
+        ],
+    }
+
+    /**
+     * 详情模型集合
+     *
+     * @type {*}
+     * @memberof FPYPZXXXDY
+     */
+    public detailsModel: any = {
+        grouppanel7: new FormGroupPanelModel({ caption: '选择内部人员', detailType: 'GROUPPANEL', name: 'grouppanel7', visible: true, isShowCaption: true, form: this, uiActionGroup: { caption: '', langbase: 'entities.pcmprofile.fpypzxxxdy_form', extractMode: 'ITEM', details: [] } })
+, 
+        grouppanel3: new FormGroupPanelModel({ caption: '', detailType: 'GROUPPANEL', name: 'grouppanel3', visible: true, isShowCaption: false, form: this, uiActionGroup: { caption: '', langbase: 'entities.pcmprofile.fpypzxxxdy_form', extractMode: 'ITEM', details: [] } })
+, 
+        grouppanel4: new FormGroupPanelModel({ caption: '照片', detailType: 'GROUPPANEL', name: 'grouppanel4', visible: true, isShowCaption: false, form: this, uiActionGroup: { caption: '', langbase: 'entities.pcmprofile.fpypzxxxdy_form', extractMode: 'ITEM', details: [] } })
+, 
+        grouppanel5: new FormGroupPanelModel({ caption: '相关信息', detailType: 'GROUPPANEL', name: 'grouppanel5', visible: true, isShowCaption: false, form: this, uiActionGroup: { caption: '', langbase: 'entities.pcmprofile.fpypzxxxdy_form', extractMode: 'ITEM', details: [] } })
+, 
+        group1: new FormGroupPanelModel({ caption: '基本信息', detailType: 'GROUPPANEL', name: 'group1', visible: true, isShowCaption: true, form: this, uiActionGroup: { caption: '', langbase: 'entities.pcmprofile.fpypzxxxdy_form', extractMode: 'ITEM', details: [] } })
+, 
+        grouppanel1: new FormGroupPanelModel({ caption: '政治面貌', detailType: 'GROUPPANEL', name: 'grouppanel1', visible: true, isShowCaption: true, form: this, uiActionGroup: { caption: '', langbase: 'entities.pcmprofile.fpypzxxxdy_form', extractMode: 'ITEM', details: [] } })
+, 
+        grouppanel2: new FormGroupPanelModel({ caption: '职务相关', detailType: 'GROUPPANEL', name: 'grouppanel2', visible: true, isShowCaption: true, form: this, uiActionGroup: { caption: '', langbase: 'entities.pcmprofile.fpypzxxxdy_form', extractMode: 'ITEM', details: [] } })
+, 
+        grouppanel6: new FormGroupPanelModel({ caption: '是否黑名单', detailType: 'GROUPPANEL', name: 'grouppanel6', visible: false, isShowCaption: true, form: this, uiActionGroup: { caption: '', langbase: 'entities.pcmprofile.fpypzxxxdy_form', extractMode: 'ITEM', details: [] } })
+, 
+        grouppanel8: new FormGroupPanelModel({ caption: '附件上传', detailType: 'GROUPPANEL', name: 'grouppanel8', visible: true, isShowCaption: true, form: this, uiActionGroup: { caption: '', langbase: 'entities.pcmprofile.fpypzxxxdy_form', extractMode: 'ITEM', details: [] } })
+, 
+        grouppanel9: new FormGroupPanelModel({ caption: '承诺签字', detailType: 'GROUPPANEL', name: 'grouppanel9', visible: true, isShowCaption: true, form: this, uiActionGroup: { caption: '', langbase: 'entities.pcmprofile.fpypzxxxdy_form', extractMode: 'ITEM', details: [] } })
+, 
+        formpage1: new FormPageModel({ caption: '基本信息', detailType: 'FORMPAGE', name: 'formpage1', visible: true, isShowCaption: true, form: this })
+, 
+        srfupdatedate: new FormItemModel({ caption: '更新时间', detailType: 'FORMITEM', name: 'srfupdatedate', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+, 
+        srforikey: new FormItemModel({ caption: '', detailType: 'FORMITEM', name: 'srforikey', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+, 
+        srfkey: new FormItemModel({ caption: '应聘者ID', detailType: 'FORMITEM', name: 'srfkey', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+, 
+        srfmajortext: new FormItemModel({ caption: '姓名', detailType: 'FORMITEM', name: 'srfmajortext', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+, 
+        srftempmode: new FormItemModel({ caption: '', detailType: 'FORMITEM', name: 'srftempmode', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+, 
+        srfuf: new FormItemModel({ caption: '', detailType: 'FORMITEM', name: 'srfuf', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+, 
+        srfdeid: new FormItemModel({ caption: '', detailType: 'FORMITEM', name: 'srfdeid', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+, 
+        srfsourcekey: new FormItemModel({ caption: '', detailType: 'FORMITEM', name: 'srfsourcekey', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+, 
+        sfxzbjnbry: new FormItemModel({ caption: '选择内部人员', detailType: 'FORMITEM', name: 'sfxzbjnbry', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+, 
+        pimpersonid: new FormItemModel({ caption: '人员信息标识', detailType: 'FORMITEM', name: 'pimpersonid', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+, 
+        pimpersonname: new FormItemModel({ caption: '退休员工姓名', detailType: 'FORMITEM', name: 'pimpersonname', visible: false, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+, 
+        pcmprofileid: new FormItemModel({ caption: '应聘者ID', detailType: 'FORMITEM', name: 'pcmprofileid', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+, 
+        cadidateid: new FormItemModel({ caption: '应聘者编号', detailType: 'FORMITEM', name: 'cadidateid', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+, 
+        elinkurl: new FormItemModel({ caption: '应聘者Elink详情', detailType: 'FORMITEM', name: 'elinkurl', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+, 
+        pcmprofilename: new FormItemModel({ caption: '姓名', detailType: 'FORMITEM', name: 'pcmprofilename', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+, 
+        certificatetype: new FormItemModel({ caption: '证件类型', detailType: 'FORMITEM', name: 'certificatetype', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+, 
+        certificatenumber: new FormItemModel({ caption: '证件号码', detailType: 'FORMITEM', name: 'certificatenumber', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+, 
+        birthday: new FormItemModel({ caption: '出生日期', detailType: 'FORMITEM', name: 'birthday', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 0 })
+, 
+        nl: new FormItemModel({ caption: '年龄', detailType: 'FORMITEM', name: 'nl', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 0 })
+, 
+        gender: new FormItemModel({ caption: '性别', detailType: 'FORMITEM', name: 'gender', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 0 })
+, 
+        zp: new FormItemModel({ caption: '照片', detailType: 'FORMITEM', name: 'zp', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+, 
+        nation: new FormItemModel({ caption: '民族', detailType: 'FORMITEM', name: 'nation', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+, 
+        wedstate: new FormItemModel({ caption: '婚姻状况', detailType: 'FORMITEM', name: 'wedstate', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+, 
+        bloodtype: new FormItemModel({ caption: '血型', detailType: 'FORMITEM', name: 'bloodtype', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+, 
+        nativeplace: new FormItemModel({ caption: '籍贯', detailType: 'FORMITEM', name: 'nativeplace', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+, 
+        hklx: new FormItemModel({ caption: '户口类型', detailType: 'FORMITEM', name: 'hklx', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+, 
+        rpr: new FormItemModel({ caption: '户籍所在地', detailType: 'FORMITEM', name: 'rpr', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+, 
+        hjdz: new FormItemModel({ caption: '户籍地址', detailType: 'FORMITEM', name: 'hjdz', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+, 
+        csd: new FormItemModel({ caption: '出生地', detailType: 'FORMITEM', name: 'csd', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+, 
+        address: new FormItemModel({ caption: '通讯地址', detailType: 'FORMITEM', name: 'address', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+, 
+        mobile: new FormItemModel({ caption: '手机号', detailType: 'FORMITEM', name: 'mobile', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+, 
+        email: new FormItemModel({ caption: '邮箱', detailType: 'FORMITEM', name: 'email', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+, 
+        xznf: new FormItemModel({ caption: '招聘年份', detailType: 'FORMITEM', name: 'xznf', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+, 
+        profiletype: new FormItemModel({ caption: '应聘者状态', detailType: 'FORMITEM', name: 'profiletype', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+, 
+        workbegindate: new FormItemModel({ caption: '参加工作时间', detailType: 'FORMITEM', name: 'workbegindate', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+, 
+        yydj: new FormItemModel({ caption: '语言等级', detailType: 'FORMITEM', name: 'yydj', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+, 
+        yydjmc: new FormItemModel({ caption: '语言等级名称', detailType: 'FORMITEM', name: 'yydjmc', visible: false, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+, 
+        bz: new FormItemModel({ caption: '备注', detailType: 'FORMITEM', name: 'bz', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+, 
+        polity: new FormItemModel({ caption: '政治面貌', detailType: 'FORMITEM', name: 'polity', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+, 
+        rdsj: new FormItemModel({ caption: '入党时间', detailType: 'FORMITEM', name: 'rdsj', visible: false, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+, 
+        yglx: new FormItemModel({ caption: '申报类型', detailType: 'FORMITEM', name: 'yglx', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 0 })
+, 
+        ormorgid: new FormItemModel({ caption: '组织标识', detailType: 'FORMITEM', name: 'ormorgid', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+, 
+        ormorgname: new FormItemModel({ caption: '组织名称', detailType: 'FORMITEM', name: 'ormorgname', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+, 
+        rzqd: new FormItemModel({ caption: '入职渠道', detailType: 'FORMITEM', name: 'rzqd', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 0 })
+, 
+        gwlb: new FormItemModel({ caption: '岗位类别', detailType: 'FORMITEM', name: 'gwlb', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+, 
+        napxm: new FormItemModel({ caption: '拟安排项目', detailType: 'FORMITEM', name: 'napxm', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+, 
+        napxmjgwmc: new FormItemModel({ caption: '拟安排岗位', detailType: 'FORMITEM', name: 'napxmjgwmc', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+, 
+        gzbt: new FormItemModel({ caption: '工资补贴', detailType: 'FORMITEM', name: 'gzbt', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+, 
+        isblacklist: new FormItemModel({ caption: '是否黑名单', detailType: 'FORMITEM', name: 'isblacklist', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+, 
+        isblacklistreason: new FormItemModel({ caption: '黑名单原因', detailType: 'FORMITEM', name: 'isblacklistreason', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+, 
+        sfz: new FormItemModel({ caption: '身份证', detailType: 'FORMITEM', name: 'sfz', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+, 
+        zczs2: new FormItemModel({ caption: '其他证书', detailType: 'FORMITEM', name: 'zczs2', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+, 
+        otherfile: new FormItemModel({ caption: '语言等级证书', detailType: 'FORMITEM', name: 'otherfile', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+, 
+        qzsm: new FormItemModel({ caption: '本人承诺以上内容均属实并签字', detailType: 'FORMITEM', name: 'qzsm', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+, 
+    };
+
+    /**
+     * 监控表单属性 srfupdatedate 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof FPYPZXXXDY
+     */
+    @Watch('data.srfupdatedate')
+    onSrfupdatedateChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'srfupdatedate', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 srforikey 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof FPYPZXXXDY
+     */
+    @Watch('data.srforikey')
+    onSrforikeyChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'srforikey', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 srfkey 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof FPYPZXXXDY
+     */
+    @Watch('data.srfkey')
+    onSrfkeyChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'srfkey', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 srfmajortext 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof FPYPZXXXDY
+     */
+    @Watch('data.srfmajortext')
+    onSrfmajortextChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'srfmajortext', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 srftempmode 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof FPYPZXXXDY
+     */
+    @Watch('data.srftempmode')
+    onSrftempmodeChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'srftempmode', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 srfuf 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof FPYPZXXXDY
+     */
+    @Watch('data.srfuf')
+    onSrfufChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'srfuf', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 srfdeid 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof FPYPZXXXDY
+     */
+    @Watch('data.srfdeid')
+    onSrfdeidChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'srfdeid', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 srfsourcekey 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof FPYPZXXXDY
+     */
+    @Watch('data.srfsourcekey')
+    onSrfsourcekeyChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'srfsourcekey', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 sfxzbjnbry 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof FPYPZXXXDY
+     */
+    @Watch('data.sfxzbjnbry')
+    onSfxzbjnbryChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'sfxzbjnbry', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 pimpersonid 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof FPYPZXXXDY
+     */
+    @Watch('data.pimpersonid')
+    onPimpersonidChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'pimpersonid', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 pimpersonname 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof FPYPZXXXDY
+     */
+    @Watch('data.pimpersonname')
+    onPimpersonnameChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'pimpersonname', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 pcmprofileid 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof FPYPZXXXDY
+     */
+    @Watch('data.pcmprofileid')
+    onPcmprofileidChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'pcmprofileid', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 cadidateid 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof FPYPZXXXDY
+     */
+    @Watch('data.cadidateid')
+    onCadidateidChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'cadidateid', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 elinkurl 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof FPYPZXXXDY
+     */
+    @Watch('data.elinkurl')
+    onElinkurlChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'elinkurl', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 pcmprofilename 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof FPYPZXXXDY
+     */
+    @Watch('data.pcmprofilename')
+    onPcmprofilenameChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'pcmprofilename', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 certificatetype 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof FPYPZXXXDY
+     */
+    @Watch('data.certificatetype')
+    onCertificatetypeChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'certificatetype', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 certificatenumber 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof FPYPZXXXDY
+     */
+    @Watch('data.certificatenumber')
+    onCertificatenumberChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'certificatenumber', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 birthday 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof FPYPZXXXDY
+     */
+    @Watch('data.birthday')
+    onBirthdayChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'birthday', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 nl 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof FPYPZXXXDY
+     */
+    @Watch('data.nl')
+    onNlChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'nl', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 gender 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof FPYPZXXXDY
+     */
+    @Watch('data.gender')
+    onGenderChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'gender', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 zp 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof FPYPZXXXDY
+     */
+    @Watch('data.zp')
+    onZpChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'zp', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 nation 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof FPYPZXXXDY
+     */
+    @Watch('data.nation')
+    onNationChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'nation', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 wedstate 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof FPYPZXXXDY
+     */
+    @Watch('data.wedstate')
+    onWedstateChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'wedstate', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 bloodtype 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof FPYPZXXXDY
+     */
+    @Watch('data.bloodtype')
+    onBloodtypeChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'bloodtype', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 nativeplace 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof FPYPZXXXDY
+     */
+    @Watch('data.nativeplace')
+    onNativeplaceChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'nativeplace', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 hklx 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof FPYPZXXXDY
+     */
+    @Watch('data.hklx')
+    onHklxChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'hklx', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 rpr 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof FPYPZXXXDY
+     */
+    @Watch('data.rpr')
+    onRprChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'rpr', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 hjdz 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof FPYPZXXXDY
+     */
+    @Watch('data.hjdz')
+    onHjdzChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'hjdz', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 csd 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof FPYPZXXXDY
+     */
+    @Watch('data.csd')
+    onCsdChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'csd', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 address 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof FPYPZXXXDY
+     */
+    @Watch('data.address')
+    onAddressChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'address', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 mobile 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof FPYPZXXXDY
+     */
+    @Watch('data.mobile')
+    onMobileChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'mobile', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 email 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof FPYPZXXXDY
+     */
+    @Watch('data.email')
+    onEmailChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'email', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 xznf 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof FPYPZXXXDY
+     */
+    @Watch('data.xznf')
+    onXznfChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'xznf', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 profiletype 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof FPYPZXXXDY
+     */
+    @Watch('data.profiletype')
+    onProfiletypeChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'profiletype', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 workbegindate 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof FPYPZXXXDY
+     */
+    @Watch('data.workbegindate')
+    onWorkbegindateChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'workbegindate', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 yydj 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof FPYPZXXXDY
+     */
+    @Watch('data.yydj')
+    onYydjChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'yydj', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 yydjmc 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof FPYPZXXXDY
+     */
+    @Watch('data.yydjmc')
+    onYydjmcChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'yydjmc', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 bz 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof FPYPZXXXDY
+     */
+    @Watch('data.bz')
+    onBzChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'bz', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 polity 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof FPYPZXXXDY
+     */
+    @Watch('data.polity')
+    onPolityChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'polity', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 rdsj 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof FPYPZXXXDY
+     */
+    @Watch('data.rdsj')
+    onRdsjChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'rdsj', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 yglx 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof FPYPZXXXDY
+     */
+    @Watch('data.yglx')
+    onYglxChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'yglx', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 ormorgid 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof FPYPZXXXDY
+     */
+    @Watch('data.ormorgid')
+    onOrmorgidChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'ormorgid', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 ormorgname 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof FPYPZXXXDY
+     */
+    @Watch('data.ormorgname')
+    onOrmorgnameChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'ormorgname', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 rzqd 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof FPYPZXXXDY
+     */
+    @Watch('data.rzqd')
+    onRzqdChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'rzqd', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 gwlb 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof FPYPZXXXDY
+     */
+    @Watch('data.gwlb')
+    onGwlbChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'gwlb', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 napxm 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof FPYPZXXXDY
+     */
+    @Watch('data.napxm')
+    onNapxmChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'napxm', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 napxmjgwmc 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof FPYPZXXXDY
+     */
+    @Watch('data.napxmjgwmc')
+    onNapxmjgwmcChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'napxmjgwmc', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 gzbt 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof FPYPZXXXDY
+     */
+    @Watch('data.gzbt')
+    onGzbtChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'gzbt', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 isblacklist 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof FPYPZXXXDY
+     */
+    @Watch('data.isblacklist')
+    onIsblacklistChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'isblacklist', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 isblacklistreason 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof FPYPZXXXDY
+     */
+    @Watch('data.isblacklistreason')
+    onIsblacklistreasonChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'isblacklistreason', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 sfz 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof FPYPZXXXDY
+     */
+    @Watch('data.sfz')
+    onSfzChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'sfz', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 zczs2 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof FPYPZXXXDY
+     */
+    @Watch('data.zczs2')
+    onZczs2Change(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'zczs2', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 otherfile 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof FPYPZXXXDY
+     */
+    @Watch('data.otherfile')
+    onOtherfileChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'otherfile', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 qzsm 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof FPYPZXXXDY
+     */
+    @Watch('data.qzsm')
+    onQzsmChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'qzsm', newVal: newVal, oldVal: oldVal });
+    }
+
+
+    /**
+     * 重置表单项值
+     *
+     * @public
+     * @param {{ name: string, newVal: any, oldVal: any }} { name, newVal, oldVal }
+     * @memberof FPYPZXXXDY
+     */
+    public resetFormData({ name, newVal, oldVal }: { name: string, newVal: any, oldVal: any }): void {
+    }
+
+    /**
+      * 置空对象
+      *
+      * @param {any[]} args
+      * @memberof EditForm
+      */
+    public ResetData(_datas:any){
+        if(Object.keys(_datas).length >0){
+            Object.keys(_datas).forEach((name: string) => {
+                if (this.data.hasOwnProperty(name)) {
+                    this.data[name] = null;
+                }
+            });
+        }
+    }
+
+    /**
+     * 表单逻辑
+     *
+     * @public
+     * @param {{ name: string, newVal: any, oldVal: any }} { name, newVal, oldVal }
+     * @memberof FPYPZXXXDY
+     */
+    public formLogic({ name, newVal, oldVal }: { name: string, newVal: any, oldVal: any }): void {
+                
+
+
+
+
+
+
+
+        if (Object.is(name, '') || Object.is(name, 'isblacklist')) {
+            let ret = false;
+            const _isblacklist = this.data.isblacklist;
+            if (this.$verify.testCond(_isblacklist, 'EQ', '1')) {
+                ret = true;
+            }
+            this.detailsModel.grouppanel6.setVisible(ret);
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        if (Object.is(name, '') || Object.is(name, 'sfxzbjnbry')) {
+            let ret = false;
+            const _sfxzbjnbry = this.data.sfxzbjnbry;
+            if (this.$verify.testCond(_sfxzbjnbry, 'EQ', '1')) {
+                ret = true;
+            }
+            this.detailsModel.pimpersonname.setVisible(ret);
+        }
+
+
+
+
+
+
+
+        if (Object.is(name, '') || Object.is(name, 'certificatetype')) {
+            let ret = false;
+            const _certificatetype = this.data.certificatetype;
+            if (this.$verify.testCond(_certificatetype, 'NOTEQ', '10')) {
+                ret = true;
+            }
+            this.detailsModel.birthday.setDisabled(!ret);
+        }
+
+
+        if (Object.is(name, '') || Object.is(name, 'certificatetype')) {
+            let ret = false;
+            const _certificatetype = this.data.certificatetype;
+            if (this.$verify.testCond(_certificatetype, 'NOTEQ', '10')) {
+                ret = true;
+            }
+            this.detailsModel.gender.setDisabled(!ret);
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        if (Object.is(name, '') || Object.is(name, 'yydj')) {
+            let ret = false;
+            const _yydj = this.data.yydj;
+            if (this.$verify.testCond(_yydj, 'EQ', '50')) {
+                ret = true;
+            }
+            this.detailsModel.yydjmc.setVisible(ret);
+        }
+
+
+
+        if (Object.is(name, '') || Object.is(name, 'polity')) {
+            let ret = false;
+            const _polity = this.data.polity;
+            if (this.$verify.testCond(_polity, 'EQ', '10')) {
+                ret = true;
+            }
+            this.detailsModel.rdsj.setVisible(ret);
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        if (Object.is(name, '') || Object.is(name, 'qzsm')) {
+            let ret = false;
+            const _qzsm = this.data.qzsm;
+            if (this.$verify.testCond(_qzsm, 'NOTEQ', '1')) {
+                ret = true;
+            }
+            this.detailsModel.qzsm.setDisabled(!ret);
+        }
+
+
+        if(Object.is(name, 'sfxzbjnbry')){
+            const details: string[] = ['pimpersonname', 'certificatetype', 'otherfile', 'bloodtype', 'email', 'yydjmc', 'yydj', 'rpr', 'workbegindate', 'mobile', 'isblacklist', 'wedstate', 'pimpersonid', 'birthday', 'zp', 'sfz', 'certificatenumber', 'rdsj', 'nl', 'xznf', 'nation', 'hjdz', 'pcmprofilename', 'polity', 'csd', 'hklx', 'zczs2', 'address', 'nativeplace', 'bz', 'gender', 'isblacklistreason'];
+            this.updateFormItems('ClearYPZ', this.data, details, true);
+        }
+
+        if(Object.is(name, 'pimpersonname')){
+            const details: string[] = ['isblacklistreason', 'bloodtype', 'hklx', 'hjdz', 'nativeplace', 'zp', 'pcmprofilename', 'sfz', 'nation', 'isblacklist', 'certificatetype', 'nl', 'birthday', 'wedstate', 'gender', 'polity', 'workbegindate', 'email', 'mobile', 'certificatenumber', 'rpr', 'csd', 'address', 'rdsj'];
+            this.updateFormItems('FillingYPZ', this.data, details, true);
+        }
+
+        if(Object.is(name, 'certificatetype')){
+            const details: string[] = ['birthday', 'gender', 'certificatenumber', 'nl'];
+            this.updateFormItems('ClearPersonUpdateInfo', this.data, details, true);
+        }
+
+        if(Object.is(name, 'certificatenumber')){
+            const details: string[] = ['isblacklist', 'nl', 'birthday', 'isblacklistreason', 'gender'];
+            this.updateFormItems('PersonUpdateInfo', this.data, details, true);
+        }
+
+        if(Object.is(name, 'birthday')){
+            const details: string[] = ['nl'];
+            this.updateFormItems('getYPZNL', this.data, details, true);
+        }
+
+        if(Object.is(name, 'mobile')){
+            const details: string[] = ['mobile'];
+            this.updateFormItems('CheckMobieNumber', this.data, details, true);
+        }
+
+        if(Object.is(name, 'email')){
+            const details: string[] = ['email'];
+            this.updateFormItems('CheckEmail', this.data, details, true);
+        }
+
+        if(Object.is(name, 'yydj')){
+            const details: string[] = ['yydjmc'];
+            this.updateFormItems('ClearYYDJMC', this.data, details, true);
+        }
+    }
+
+    /**
+     * 表单值变化
+     *
+     * @public
+     * @param {{ name: string, newVal: any, oldVal: any }} { name, newVal, oldVal }
+     * @returns {void}
+     * @memberof FPYPZXXXDY
+     */
+    public formDataChange({ name, newVal, oldVal }: { name: string, newVal: any, oldVal: any }): void {
+        if (this.ignorefieldvaluechange) {
+            return;
+        }
+        this.resetFormData({ name: name, newVal: newVal, oldVal: oldVal });
+        this.formLogic({ name: name, newVal: newVal, oldVal: oldVal });
+        this.dataChang.next(JSON.stringify(this.data));
+    }
+
+    /**
+     * 表单加载完成
+     *
+     * @public
+     * @param {*} [data={}]
+     * @param {string} [action]
+     * @memberof FPYPZXXXDY
+     */
+    public onFormLoad(data: any = {},action:string): void {
+        if(Object.is(action,"save") || Object.is(action,"autoSave") || Object.is(action,"submit"))
+        // 更新context的实体主键
+        if(data.pcmprofile){
+            Object.assign(this.context,{pcmprofile:data.pcmprofile})
+        }
+        this.setFormEnableCond(data);
+        this.fillForm(data,action);
+        this.oldData = {};
+        Object.assign(this.oldData, JSON.parse(JSON.stringify(this.data)));
+        this.$store.commit('viewaction/setViewDataChange', { viewtag: this.viewtag, viewdatachange: false });
+        this.formLogic({ name: '', newVal: null, oldVal: null });
+    }
+
+    /**
+     * 值填充
+     *
+     * @param {*} [_datas={}]
+     * @param {string} [action]
+     * @memberof FPYPZXXXDY
+     */
+    public fillForm(_datas: any = {},action:string): void {
+        this.ignorefieldvaluechange = true;
+        Object.keys(_datas).forEach((name: string) => {
+            if (this.data.hasOwnProperty(name)) {
+                this.data[name] = _datas[name];
+            }
+        });
+        if(Object.is(action,'loadDraft')){
+            this.createDefault();
+        }
+        if(Object.is(action,'load')){
+            this.updateDefault();
+        }
+        this.$nextTick(function () {
+            this.ignorefieldvaluechange = false;
+        })
+    }
+
+    /**
+     * 设置表单项是否启用
+     *
+     * @public
+     * @param {*} data
+     * @memberof FPYPZXXXDY
+     */
+    public setFormEnableCond(data: any): void {
+        Object.values(this.detailsModel).forEach((detail: any) => {
+            if (!Object.is(detail.detailType, 'FORMITEM')) {
+                return;
+            }
+            const formItem: FormItemModel = detail;
+            formItem.setEnableCond(data.srfuf);
+        });
+    }
+
+    /**
+     * 重置草稿表单状态
+     *
+     * @public
+     * @memberof FPYPZXXXDY
+     */
+    public resetDraftFormStates(): void {
+        const form: any = this.$refs.form;
+        if (form) {
+            form.resetFields();
+        }
+    }
+
+    /**
+     * 重置校验结果
+     *
+     * @memberof FPYPZXXXDY
+     */
+    public resetValidates(): void {
+        Object.values(this.detailsModel).forEach((detail: any) => {
+            if (!Object.is(detail.detailType, 'FORMITEM')) {
+                return;
+            }
+            const formItem: FormItemModel = detail;
+            formItem.setError('');
+        });
+    }
+
+    /**
+     * 填充校验结果 （后台）
+     *
+     * @param {any[]} fieldErrors
+     * @memberof FPYPZXXXDY
+     */
+    public fillValidates(fieldErrors: any[]): void {
+        fieldErrors.forEach((error: any) => {
+            const formItem: FormItemModel = this.detailsModel[error.field];
+            if (!formItem) {
+                return;
+            }
+            this.$nextTick(() => {
+                formItem.setError(error.message);
+            });
+        });
+    }
+
+    /**
+     * 表单校验状态
+     *
+     * @returns {boolean} 
+     * @memberof FPYPZXXXDY
+     */
+    public formValidateStatus(): boolean {
+        const form: any = this.$refs.wizardpanel_form_wizard01;
+        let validatestate: boolean = true;
+        form.validate((valid: boolean) => {
+            validatestate = valid ? true : false;
+        });
+        return validatestate
+    }
+
+    /**
+     * 获取全部值
+     *
+     * @returns {*}
+     * @memberof FPYPZXXXDY
+     */
+    public getValues(): any {
+        return this.data;
+    }
+
+    /**
+     * 表单项值变更
+     *
+     * @param {{ name: string, value: any }} $event
+     * @returns {void}
+     * @memberof FPYPZXXXDY
+     */
+    public onFormItemValueChange($event: { name: string, value: any }): void {
+        if (!$event) {
+            return;
+        }
+        if (!$event.name || Object.is($event.name, '') || !this.data.hasOwnProperty($event.name)) {
+            return;
+        }
+        this.data[$event.name] = $event.value;
+    }
+
+    /**
+     * 设置数据项值
+     *
+     * @param {string} name
+     * @param {*} value
+     * @returns {void}
+     * @memberof FPYPZXXXDY
+     */
+    public setDataItemValue(name: string, value: any): void {
+        if (!name || Object.is(name, '') || !this.data.hasOwnProperty(name)) {
+            return;
+        }
+        if (Object.is(this.data[name], value)) {
+            return;
+        }
+        this.data[name] = value;
+    }
+
+
+
+    /**
+     * 分组界面行为事件
+     *
+     * @param {*} $event
+     * @memberof FPYPZXXXDY
+     */
+    public groupUIActionClick($event: any): void {
+        if (!$event) {
+            return;
+        }
+        const item:any = $event.item;
+    }
+
+    /**
+     * Vue声明周期(处理组件的输入属性)
+     *
+     * @memberof FPYPZXXXDY
+     */
+    public created(): void {
+        this.afterCreated();
+    }
+
+    /**
+     * 执行created后的逻辑
+     *
+     *  @memberof FPYPZXXXDY
+     */    
+    public afterCreated(){
+        if (this.viewState) {
+            this.viewStateEvent = this.viewState.subscribe(({ tag, action, data }) => {
+                if (!Object.is(tag, this.name)) {
+                    return;
+                }
+                if (Object.is('autoload', action)) {
+                    this.autoLoad(data);
+                }
+                if (Object.is('load', action)) {
+                    this.load(data);
+                }
+                if (Object.is('loaddraft', action)) {
+                    if(this.context.srfsourcekey){
+                        this.copy(this.context.srfsourcekey);
+                    }else{
+                        this.loadDraft(data);
+                    }
+                }
+                if (Object.is('save', action)) {
+                    this.save(data,data.showResultInfo);
+                }
+                if (Object.is('remove', action)) {
+                    this.remove(data);
+                }
+                if (Object.is('saveandexit', action)) {
+                    this.saveAndExit(data);
+                }
+                if (Object.is('saveandnew', action)) {
+                    this.saveAndNew(data);
+                }
+                if (Object.is('removeandexit', action)) {
+                    this.removeAndExit(data);
+                }
+                if (Object.is('refresh', action)) {
+                    this.refresh(data);
+                }
+            });
+        }
+        this.dataChang
+            .pipe(
+                debounceTime(300),
+                distinctUntilChanged()
+            ).subscribe((data: any) => {
+                if (this.autosave) {
+                    this.autoSave();
+                }
+                const state = !Object.is(JSON.stringify(this.oldData), JSON.stringify(this.data)) ? true : false;
+                this.$store.commit('viewaction/setViewDataChange', { viewtag: this.viewtag, viewdatachange: state });
+            });
+    }
+
+    /**
+     * vue 生命周期
+     *
+     * @memberof FPYPZXXXDY
+     */
+    public destroyed() {
+        this.afterDestroy();
+    }
+
+    /**
+     * 执行destroyed后的逻辑
+     *
+     * @memberof FPYPZXXXDY
+     */
+    public afterDestroy() {
+        if (this.viewStateEvent) {
+            this.viewStateEvent.unsubscribe();
+        }
+        if (this.dataChangEvent) {
+            this.dataChangEvent.unsubscribe();
+        }
+    }
+
+    /**
+     * 拷贝内容
+     *
+     * @param {*} [arg={}]
+     * @memberof @memberof FPYPZXXXDY
+     */
+    public copy(srfkey: string): void {
+        let copyData = this.$store.getters.getCopyData(srfkey);
+        copyData.srfkey = Util.createUUID();
+        copyData.pcmprofile = copyData.srfkey;
+        copyData.pcmprofileid = copyData.srfkey;
+        Object.assign(this.context,{pcmprofile:copyData.pcmprofile})
+        this.data = copyData;
+        this.$nextTick(() => {
+          this.formState.next({ type: 'load', data: copyData });
+          this.data.srfuf = '0';
+          this.setFormEnableCond(this.data);
+        });
+    }
+
+    /**
+     *打印
+     *@memberof @memberof FPYPZXXXDY
+     */
+    public print(){
+        let _this:any = this;
+        _this.$print({id:'wizardpanel_form_wizard01',popTitle:'返聘应聘者信息向导页'});
+    }
+
+    /**
+     * 部件刷新
+     *
+     * @param {any[]} args
+     * @memberof FPYPZXXXDY
+     */
+    public refresh(args: any[]): void {
+        let arg: any = {};
+        Object.assign(arg,args[0]);
+        if (this.data.srfkey && !Object.is(this.data.srfkey, '')) {
+            Object.assign(arg, { srfkey: this.data.srfkey });
+            this.load(arg);
+            return;
+        }
+        if (this.data.srfkeys && !Object.is(this.data.srfkeys, '')) {
+            Object.assign(arg, { srfkey: this.data.srfkeys });
+            this.load(arg);
+            return;
+        }
+    }
+
+    /**
+     * 自动加载
+     *
+     * @param {*} [arg={}]
+     * @returns {void}
+     * @memberof FPYPZXXXDY
+     */
+    public autoLoad(arg: any = {}): void {
+        if (arg.srfkey && !Object.is(arg.srfkey, '')) {
+            Object.assign(arg, { srfkey: arg.srfkey });
+            this.load(arg);
+            return;
+        }
+        if (arg.srfkeys && !Object.is(arg.srfkeys, '')) {
+            Object.assign(arg, { srfkey: arg.srfkeys });
+            this.load(arg);
+            return;
+        }
+        this.loadDraft(arg);
+    }
+
+    /**
+     * 加载
+     *
+     * @public
+     * @param {*} [opt={}]
+     * @memberof FPYPZXXXDY
+     */
+    public load(opt: any = {}): void {
+        if(!this.loadAction){
+            this.$Notice.error({ title: '错误', desc: 'PCMPROFILEFPWizardView视图表单loadAction参数未配置' });
+            return;
+        }
+        const arg: any = { ...opt };
+        let viewparamResult:any = Object.assign(arg,this.viewparams);
+        const get: Promise<any> = this.service.get(this.loadAction,JSON.parse(JSON.stringify(this.context)),{viewparams:viewparamResult}, this.showBusyIndicator);
+        get.then((response: any) => {
+            if (response && response.status === 200) {
+                const data = response.data;
+                this.onFormLoad(data,'load');
+                this.$emit('load', data);
+                this.$nextTick(() => {
+                    this.formState.next({ type: 'load', data: data });
+                });
+            }
+        }).catch((response: any) => {
+            if (response && response.status && response.data) {
+                this.$Notice.error({ title: '错误', desc: response.data.message });
+                return;
+            }
+            if (!response || !response.status || !response.data) {
+                this.$Notice.error({ title: '错误', desc: '系统异常' });
+                return;
+            }
+        });
+    }
+
+    /**
+     * 加载草稿
+     *
+     * @param {*} [opt={}]
+     * @memberof FPYPZXXXDY
+     */
+    public loadDraft(opt: any = {}): void {
+        if(!this.loaddraftAction){
+            this.$Notice.error({ title: '错误', desc: 'PCMPROFILEFPWizardView视图表单loaddraftAction参数未配置' });
+            return;
+        }
+        const arg: any = { ...opt } ;
+        let viewparamResult:any = Object.assign(arg,this.viewparams);
+        let post: Promise<any> = this.service.loadDraft(this.loaddraftAction,JSON.parse(JSON.stringify(this.context)),{viewparams:viewparamResult}, this.showBusyIndicator);
+        post.then((response: any) => {
+            if (!response.status || response.status !== 200) {
+                if (response.data) {
+                    this.$Notice.error({ title: '错误', desc: response.data.message });
+                }
+                return;
+            }
+
+            const data = response.data;
+            if(data.pcmprofile){
+                Object.assign(this.context,{pcmprofile:data.pcmprofile})
+            }
+            this.resetDraftFormStates();
+            this.onFormLoad(data,'loadDraft');
+            this.$emit('load', data);
+            this.$nextTick(() => {
+                this.formState.next({ type: 'load', data: data });
+            });
+            setTimeout(() => {
+                const form: any = this.$refs.form;
+                if (form) {
+                    form.fields.forEach((field: any) => {
+                        field.validateMessage = "";
+                        field.validateState = "";
+                        field.validateStatus = false;
+                    });
+                }
+            });
+        }).catch((response: any) => {
+            if (response && response.status  && response.data) {
+                this.$Notice.error({ title: '错误', desc: response.data.message });
+                return;
+            }
+            if (!response || !response.status || !response.data) {
+                this.$Notice.error({ title: '错误', desc: '系统异常' });
+                return;
+            }
+        });
+    }
+
+    /**
+     * 自动保存
+     *
+     * @param {*} [opt={}]
+     * @memberof FPYPZXXXDY
+     */
+    public autoSave(opt: any = {}): void {
+        if (!this.formValidateStatus()) {
+            return;
+        }
+        const arg: any = { ...opt };
+        const data = this.getValues();
+        Object.assign(arg, data);
+        const action: any = Object.is(data.srfuf, '1') ? this.updateAction : this.createAction;
+        if(!action){
+            let actionName:any = Object.is(data.srfuf, '1')?"updateAction":"createAction";
+            this.$Notice.error({ title: '错误', desc: 'PCMPROFILEFPWizardView视图表单'+actionName+'参数未配置' });
+            return;
+        }
+        Object.assign(arg,{viewparams:this.viewparams});
+        const post: Promise<any> = this.service.add(action, JSON.parse(JSON.stringify(this.context)),arg, this.showBusyIndicator);
+        post.then((response: any) => {
+            if (!response.status || response.status !== 200) {
+                if (response.data) {
+                    this.$Notice.error({ title: '错误', desc: response.data.message });
+                }
+                return;
+            }
+
+            const data = response.data;
+            this.onFormLoad(data,'autoSave');
+            this.$emit('save', data);
+            this.$store.dispatch('viewaction/datasaved', { viewtag: this.viewtag });
+            this.$nextTick(() => {
+                this.formState.next({ type: 'save', data: data });
+            });
+        }).catch((response: any) => {
+            if (response && response.status && response.data) {
+                this.$Notice.error({ title: '错误', desc: response.data.message });
+                return;
+            }
+            if (!response || !response.status || !response.data) {
+                this.$Notice.error({ title: '错误', desc: '系统异常' });
+                return;
+            }
+        });
+    }
+
+    /**
+     * 保存
+     *
+     * @param {*} [opt={}]
+     * @param {boolean} [showResultInfo] 
+     * @param {boolean} [ifStateNext] formState是否下发通知
+     * @returns {Promise<any>}
+     * @memberof FPYPZXXXDY
+     */
+    public async save(opt: any = {}, showResultInfo?: boolean, ifStateNext: boolean = true): Promise<any> {
+        return new Promise((resolve: any, reject: any) => {
+            showResultInfo = showResultInfo === undefined ? true : false;
+            if (!this.formValidateStatus()) {
+                this.$Notice.error({ title: '错误', desc: '值规则校验异常' });
+                return;
+            }
+            const arg: any = { ...opt };
+            const data = this.getValues();
+            Object.assign(arg, data);
+            Object.assign(arg, this.context);
+            if (ifStateNext) {
+                this.drcounter = 0;
+                if(this.drcounter !== 0){
+                    this.drsaveopt = opt;
+                    this.formState.next({ type: 'beforesave', data: arg });//先通知关系界面保存
+                    this.saveState = resolve;
+                    return;
+                }
+            }
+            const action: any = Object.is(data.srfuf, '1') ? this.updateAction : this.createAction;
+            if(!action){
+                let actionName:any = Object.is(data.srfuf, '1')?"updateAction":"createAction";
+                this.$Notice.error({ title: '错误', desc: 'PCMPROFILEFPWizardView视图表单'+actionName+'参数未配置' });
+                return;
+            }
+            Object.assign(arg,{viewparams:this.viewparams});
+            const post: Promise<any> = Object.is(data.srfuf, '1')?this.service.update(action, JSON.parse(JSON.stringify(this.context)),arg, this.showBusyIndicator):this.service.add(action,JSON.parse(JSON.stringify(this.context)),arg, this.showBusyIndicator);
+            post.then((response: any) => {
+                if (!response.status || response.status !== 200) {
+                    if (response.data) {
+                        this.$Notice.error({ title: '错误', desc: response.data.message });
+                    }
+                    return;
+                }
+
+                const data = response.data;
+                this.onFormLoad(data,'save');
+                this.$emit('save', data);
+                this.$store.dispatch('viewaction/datasaved', { viewtag: this.viewtag });
+                this.$nextTick(() => {
+                    this.formState.next({ type: 'save', data: data });
+                });
+                resolve(response);
+            }).catch((response: any) => {
+                if (response && response.status  && response.data) {
+                    this.$Notice.error({ title: '错误', desc: response.data.message });
+                    reject(response);
+                    return;
+                }
+                if (!response || !response.status || !response.data) {
+                    this.$Notice.error({ title: '错误', desc: '系统异常' });
+                    reject(response);
+                    return;
+                }
+                reject(response);
+            });
+        })
+    }
+
+    /**
+    * 删除
+    *
+    * @public
+    * @param {*} [opt={}]
+    * @memberof Wizardpanel_form_wizard01
+    */
+    public remove(opt:Array<any> = [],showResultInfo?: boolean): Promise<any> {
+        return new Promise((resolve: any, reject: any) => {
+            if(!this.removeAction){
+                this.$Notice.error({ title: '错误', desc: 'PCMPROFILEFPWizardView视图表单removeAction参数未配置' });
+                return;
+            }
+            const arg: any = opt[0];
+            const _this: any = this;
+            Object.assign(arg,{viewparams:this.viewparams});
+            this.service.delete(_this.removeAction, JSON.parse(JSON.stringify(this.context)),arg, showResultInfo).then((response: any) => {
+                if (response) {
+                    const data = response.data;
+                    this.$emit('remove',data);
+                    this.formState.next({ type: 'remove', data: data });
+                    this.data.ismodify = false;
+                    this.$Notice.success({ title: '', desc: (data.srfmajortext ? data.srfmajortext : '') + '&nbsp;删除成功！' });
+                    resolve(response);
+                }
+            }).catch((error: any) => {
+                const { data: _data } = error;
+                this.$Notice.error({ title: _data.title, desc: _data.message });
+                reject(error);
+            });
+        });
+    }
+
+    /**
+     * 工作流启动
+     *
+     * @param {*} [data={}]
+     * @param {*} [localdata={}]
+     * @returns {Promise<any>}
+     * @memberof FPYPZXXXDY
+     */
+    public async wfstart(data: any,localdata?:any): Promise<any> {
+        return new Promise((resolve: any, reject: any) => {
+            const _this: any = this;
+            const post: Promise<any> = _this.save({},false);
+            post.then((response:any) =>{
+                const arg:any = response.data;
+                if(this.viewparams){
+                    Object.assign(arg,{viewparams:this.viewparams});
+                }
+                const result: Promise<any> = this.service.wfstart(_this.WFStartAction, JSON.parse(JSON.stringify(this.context)),arg, this.showBusyIndicator,localdata);
+                result.then((response: any) => {
+                    if (!response || response.status !== 200) {
+                        if(response.data){
+                            this.$Notice.error({ title: '', desc: '工作流启动失败, ' + response.data.message });
+                        }
+                        return;
+                    }
+                    this.$Notice.info({ title: '', desc: '工作流启动成功' });
+                    resolve(response);
+            }).catch((response: any) => {
+                if (response && response.status && response.data) {
+                    this.$Notice.error({ title: '错误', desc: response.data.message });
+                    reject(response);
+                    return;
+                }
+                if (!response || !response.status || !response.data) {
+                    this.$Notice.error({ title: '错误', desc: '系统异常' });
+                    reject(response);
+                    return;
+                }
+                reject(response);
+            });
+            }).catch((response: any) => {
+                    if (response && response.status && response.data) {
+                        this.$Notice.error({ title: '错误', desc: response.data.message });
+                        reject(response);
+                        return;
+                    }
+                    if (!response || !response.status || !response.data) {
+                        this.$Notice.error({ title: '错误', desc: '系统异常' });
+                        reject(response);
+                        return;
+                    }
+                    reject(response);
+            })
+        });
+    }
+
+    /**
+     * 工作流提交
+     *
+     * @param {*} [data={}]
+     * @param {*} [localdata={}]
+     * @returns {Promise<any>}
+     * @memberof FPYPZXXXDY
+     */
+    public async wfsubmit(data: any,localdata?:any): Promise<any> {
+        return new Promise((resolve: any, reject: any) => {
+        const _this: any = this;
+        const arg: any = data[0];
+        Object.assign(arg,{viewparams:this.viewparams});
+        if (!arg.pcmprofile || Object.is(arg.pcmprofile, '')) {
+            return;
+        }
+        const post: Promise<any> = Object.is(arg.srfuf, '1')?this.service.update(this.updateAction, JSON.parse(JSON.stringify(this.context)),arg, this.showBusyIndicator):this.service.add(this.createAction,JSON.parse(JSON.stringify(this.context)),arg, this.showBusyIndicator);
+        post.then((response:any) =>{
+                const arg:any = response.data;
+                // 保存完成UI处理
+                this.onFormLoad(arg,'save');
+                this.$emit('save', arg);
+                this.$nextTick(() => {
+                    this.formState.next({ type: 'save', data: arg });
+                });
+                // 准备提交参数
+                if(this.viewparams){
+                    Object.assign(arg,{viewparams:this.viewparams});
+                }
+                const result: Promise<any> = this.service.wfsubmit(_this.WFSubmitAction, JSON.parse(JSON.stringify(this.context)),arg, this.showBusyIndicator,localdata);
+                result.then((response: any) => {
+                    if (!response || response.status !== 200) {
+                        if(response.data){
+                            this.$Notice.error({ title: '', desc: '工作流提交失败, ' + response.data.message });
+                        }
+                        return;
+                    }
+                    this.onFormLoad(arg,'submit');
+                    this.$store.dispatch('viewaction/datasaved', { viewtag: this.viewtag });
+                    this.$Notice.info({ title: '', desc: '工作流提交成功' });
+                    resolve(response);
+            }).catch((response: any) => {
+                if (response && response.status && response.data) {
+                    this.$Notice.error({ title: '错误', desc: response.data.message });
+                    reject(response);
+                    return;
+                }
+                if (!response || !response.status || !response.data) {
+                    this.$Notice.error({ title: '错误', desc: '系统异常' });
+                    reject(response);
+                    return;
+                }
+                reject(response);
+            });
+            }).catch((response: any) => {
+                    if (response && response.status && response.data) {
+                        this.$Notice.error({ title: '错误', desc: response.data.message });
+                        reject(response);
+                        return;
+                    }
+                    if (!response || !response.status || !response.data) {
+                        this.$Notice.error({ title: '错误', desc: '系统异常' });
+                        reject(response);
+                        return;
+                    }
+                    reject(response);
+            })
+        })
+    }
+
+    /**
+     * 表单项更新
+     *
+     * @param {string} mode 界面行为名称
+     * @param {*} [data={}] 请求数据
+     * @param {string[]} updateDetails 更新项
+     * @param {boolean} [showloading] 是否显示加载状态
+     * @returns {void}
+     * @memberof FPYPZXXXDY
+     */
+    public updateFormItems(mode: string, data: any = {}, updateDetails: string[], showloading?: boolean): void {
+        if (!mode || (mode && Object.is(mode, ''))) {
+            return;
+        }
+        const arg: any = { ...data };
+        Object.assign(arg,this.viewparams);
+        const post: Promise<any> = this.service.frontLogic(mode,JSON.parse(JSON.stringify(this.context)),arg, showloading);
+        post.then((response: any) => {
+            if (!response || response.status !== 200) {
+                this.$Notice.error({ title: '错误', desc: '表单项更新失败' });
+                return;
+            }
+            const data = response.data;
+            const _data: any = {};
+            updateDetails.forEach((name: string) => {
+                if (!data.hasOwnProperty(name)) {
+                    return;
+                }
+                Object.assign(_data, { [name]: data[name] });
+            });
+            this.setFormEnableCond(_data);
+            this.fillForm(_data,'updateFormItem');
+            this.formLogic({ name: '', newVal: null, oldVal: null });
+            this.dataChang.next(JSON.stringify(this.data));
+            this.$nextTick(() => {
+                this.formState.next({ type: 'updateformitem', ufimode: arg.srfufimode, data: _data });
+            });
+        }).catch((response: any) => {
+            if (response && response.status && response.data) {
+                this.$Notice.error({ title: '错误', desc: response.data.message });
+                return;
+            }
+            if (!response || !response.status || !response.data) {
+                this.$Notice.error({ title: '错误', desc: '系统异常' });
+                return;
+            }
+        });
+    }
+
+    /**
+     * 回车事件
+     *
+     * @param {*} $event
+     * @memberof FPYPZXXXDY
+     */
+    public onEnter($event: any): void {
+    }
+
+    /**
+     * 保存并退出
+     *
+     * @param {any[]} args
+     * @memberof FPYPZXXXDY
+     */
+    public saveAndExit(data:any[]):Promise<any>{
+        let _this = this;
+        return new Promise((resolve: any, reject: any) =>{
+            let arg: any = {};
+            if(data && data.length > 0){
+                Object.assign(arg,data[0]);
+            }
+            _this.currentAction = "saveAndExit";
+            _this.save([arg]).then((res) =>{
+                if(res){
+                    _this.closeView(res.data);
+                }
+                resolve(res);
+            }).catch((error) =>{
+                reject(error);
+            })
+        })
+    }
+
+    /**
+     * 保存并新建
+     *
+     * @param {any[]} args
+     * @memberof FPYPZXXXDY
+     */
+    public saveAndNew(data:any[]):Promise<any>{
+        let _this = this;
+        return new Promise((resolve: any, reject: any) =>{
+            let arg: any = {};
+            if(data && data.length > 0){
+                Object.assign(arg,data[0]);
+            }
+            _this.currentAction = "saveAndNew";
+            _this.save([arg]).then((res) =>{
+                _this.ResetData(res);
+                _this.loadDraft({});
+            }).catch((error) =>{
+                reject(error);
+            })
+        })
+    }
+
+    /**
+     * 删除并退出
+     *
+     * @param {any[]} args
+     * @memberof FPYPZXXXDY
+     */
+    public removeAndExit(data:any[]):Promise<any>{
+        let _this = this;
+        return new Promise((resolve: any, reject: any) =>{
+            let arg: any = {};
+            if(data && data.length > 0){
+                Object.assign(arg,data[0]);
+            }
+            _this.remove([arg]).then((res) =>{
+                if(res){
+                  _this.closeView(res.data);
+                }
+                resolve(res);
+            }).catch((error) =>{
+                reject(error);
+            })
+        })
+    }
+
+    /**
+    * 关系界面数据保存完成
+    *
+    * @param {any} $event
+    * @memberof FPYPZXXXDY
+    */
+    public drdatasaved($event:any){
+        let _this = this;
+        this.drcounter--;
+        if(this.drcounter > 0){
+            return;
+        }
+        this.save(this.drsaveopt, undefined, false).then((res) =>{
+            this.saveState(res);
+            this.drsaveopt = {};
+            if(Object.is(_this.currentAction, "saveAndNew")){
+                _this.ResetData(res);
+                _this.loadDraft({});
+            }else if(Object.is(_this.currentAction, "saveAndExit")){
+                if(res){
+                    _this.closeView(res.data);
+                }
+            }
+        });
+    }
+
+    /**
+     * 新建默认值
+     * @memberof FPYPZXXXDY
+     */
+    public createDefault(){                    
+        if (this.data.hasOwnProperty('sfxzbjnbry')) {
+            this.data['sfxzbjnbry'] = '0';
+        }
+        if (this.data.hasOwnProperty('profiletype')) {
+            this.data['profiletype'] = '10';
+        }
+        if (this.data.hasOwnProperty('yglx')) {
+            this.data['yglx'] = 'C';
+        }
+        if (this.data.hasOwnProperty('ormorgid')) {
+            this.data['ormorgid'] = this.context['SRFORGID'];
+        }
+        if (this.data.hasOwnProperty('ormorgname')) {
+            this.data['ormorgname'] = this.context['SRFORGNAME'];
+        }
+        if (this.data.hasOwnProperty('rzqd')) {
+            this.data['rzqd'] = '50';
+        }
+        if (this.data.hasOwnProperty('isblacklist')) {
+            this.data['isblacklist'] = 0;
+        }
+        if (this.data.hasOwnProperty('qzsm')) {
+            this.data['qzsm'] = '0';
+        }
+    }
+
+    /**
+     * 更新默认值
+     * @memberof FPYPZXXXDY
+     */
+    public updateDefault(){                    
+        if (this.data.hasOwnProperty('ormorgid') && !this.data.ormorgid) {
+            this.data['ormorgid'] = this.context['SRFORGID'];
+        }
+        if (this.data.hasOwnProperty('ormorgname') && !this.data.ormorgname) {
+            this.data['ormorgname'] = this.context['SRFORGNAME'];
+        }
+    }
+
+    
+}
+</script>
+
+<style lang='less'>
+@import './fpypzxxxdy-form.less';
+</style>

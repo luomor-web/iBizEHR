@@ -6,10 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
-
 import lombok.extern.slf4j.Slf4j;
 import com.alibaba.fastjson.JSONObject;
-
 import javax.servlet.ServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cglib.beans.BeanCopier;
@@ -24,20 +22,15 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
-
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
-
 import cn.ibizlab.ehr.webapi.dto.*;
 import cn.ibizlab.ehr.webapi.mapping.*;
 import cn.ibizlab.ehr.core.pcm.domain.PCMLOG;
 import cn.ibizlab.ehr.core.pcm.service.IPCMLOGService;
 import cn.ibizlab.ehr.core.pcm.filter.PCMLOGSearchContext;
-
-
-
 
 @Slf4j
 @Api(tags = {"PCMLOG" })
@@ -65,7 +58,7 @@ public class PCMLOGResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.pcmlogMapping,#pcmlogdtos})")
     @ApiOperation(value = "createBatch", tags = {"PCMLOG" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmlogs/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PCMLOGDTO> pcmlogdtos) {
@@ -78,14 +71,14 @@ public class PCMLOGResource {
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmlogs/{pcmlog_id}")
     @Transactional
     public ResponseEntity<PCMLOGDTO> update(@PathVariable("pcmlog_id") String pcmlog_id, @RequestBody PCMLOGDTO pcmlogdto) {
-		PCMLOG domain = pcmlogMapping.toDomain(pcmlogdto);
-        domain.setPcmlogid(pcmlog_id);
-		pcmlogService.update(domain);
-		PCMLOGDTO dto = pcmlogMapping.toDto(domain);
+		PCMLOG domain  = pcmlogMapping.toDomain(pcmlogdto);
+        domain .setPcmlogid(pcmlog_id);
+		pcmlogService.update(domain );
+		PCMLOGDTO dto = pcmlogMapping.toDto(domain );
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.pcmlogMapping,#pcmlogdtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"PCMLOG" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmlogs/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PCMLOGDTO> pcmlogdtos) {
@@ -101,7 +94,7 @@ public class PCMLOGResource {
          return ResponseEntity.status(HttpStatus.OK).body(pcmlogService.remove(pcmlog_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.pcmlogMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"PCMLOG" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmlogs/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -132,14 +125,14 @@ public class PCMLOGResource {
         return  ResponseEntity.status(HttpStatus.OK).body(pcmlogService.checkKey(pcmlogMapping.toDomain(pcmlogdto)));
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMLOG-Save-all')")
+    @PreAuthorize("hasPermission('','Save',{'Sql',this.pcmlogMapping,#pcmlogdto})")
     @ApiOperation(value = "Save", tags = {"PCMLOG" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmlogs/save")
     public ResponseEntity<Boolean> save(@RequestBody PCMLOGDTO pcmlogdto) {
         return ResponseEntity.status(HttpStatus.OK).body(pcmlogService.save(pcmlogMapping.toDomain(pcmlogdto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.pcmlogMapping,#pcmlogdtos})")
     @ApiOperation(value = "SaveBatch", tags = {"PCMLOG" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmlogs/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PCMLOGDTO> pcmlogdtos) {

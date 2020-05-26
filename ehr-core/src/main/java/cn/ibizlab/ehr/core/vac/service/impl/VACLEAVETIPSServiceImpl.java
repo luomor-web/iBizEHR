@@ -153,6 +153,13 @@ public class VACLEAVETIPSServiceImpl extends ServiceImpl<VACLEAVETIPSMapper, VAC
     }
 
     @Override
+    public boolean saveBatch(Collection<VACLEAVETIPS> list) {
+        list.forEach(item->fillParentData(item));
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<VACLEAVETIPS> list) {
         list.forEach(item->fillParentData(item));
         saveOrUpdateBatch(list,batchSize);

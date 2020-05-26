@@ -57,12 +57,12 @@ export default class Main_YGBZDModel {
           dataType: 'PICKUPTEXT',
         },
         {
-          name: 'srfdataaccaction',
+          name: 'srfkey',
           prop: 'pimarchivesid',
           dataType: 'GUID',
         },
         {
-          name: 'srfkey',
+          name: 'srfdataaccaction',
           prop: 'pimarchivesid',
           dataType: 'GUID',
         },
@@ -70,11 +70,6 @@ export default class Main_YGBZDModel {
           name: 'ormorgname3',
           prop: 'ormorgname3',
           dataType: 'PICKUPTEXT',
-        },
-        {
-          name: 'duration',
-          prop: 'duration',
-          dataType: 'INT',
         },
         {
           name: 'drda',
@@ -95,11 +90,6 @@ export default class Main_YGBZDModel {
           name: 'sszzdzs',
           prop: 'sszzdzs',
           dataType: 'PICKUPDATA',
-        },
-        {
-          name: 'zt',
-          prop: 'zt',
-          dataType: 'SSCODELIST',
         },
         {
           name: 'archivescenterid',

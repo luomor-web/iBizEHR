@@ -71,6 +71,12 @@ public class PIMVOCATIONALCATALOGServiceImpl extends ServiceImpl<PIMVOCATIONALCA
     }
 
     @Override
+    public boolean saveBatch(Collection<PIMVOCATIONALCATALOG> list) {
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<PIMVOCATIONALCATALOG> list) {
         saveOrUpdateBatch(list,batchSize);
     }

@@ -6,10 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
-
 import lombok.extern.slf4j.Slf4j;
 import com.alibaba.fastjson.JSONObject;
-
 import javax.servlet.ServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cglib.beans.BeanCopier;
@@ -24,20 +22,15 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
-
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
-
 import cn.ibizlab.ehr.webapi.dto.*;
 import cn.ibizlab.ehr.webapi.mapping.*;
 import cn.ibizlab.ehr.core.trm.domain.TRMDEPART;
 import cn.ibizlab.ehr.core.trm.service.ITRMDEPARTService;
 import cn.ibizlab.ehr.core.trm.filter.TRMDEPARTSearchContext;
-
-
-
 
 @Slf4j
 @Api(tags = {"TRMDEPART" })
@@ -63,14 +56,14 @@ public class TRMDEPARTResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMDEPART-Save-all')")
+    @PreAuthorize("hasPermission('','Save',{'Sql',this.trmdepartMapping,#trmdepartdto})")
     @ApiOperation(value = "Save", tags = {"TRMDEPART" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmdeparts/save")
     public ResponseEntity<Boolean> save(@RequestBody TRMDEPARTDTO trmdepartdto) {
         return ResponseEntity.status(HttpStatus.OK).body(trmdepartService.save(trmdepartMapping.toDomain(trmdepartdto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.trmdepartMapping,#trmdepartdtos})")
     @ApiOperation(value = "SaveBatch", tags = {"TRMDEPART" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmdeparts/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<TRMDEPARTDTO> trmdepartdtos) {
@@ -89,7 +82,7 @@ public class TRMDEPARTResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.trmdepartMapping,#trmdepartdtos})")
     @ApiOperation(value = "createBatch", tags = {"TRMDEPART" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmdeparts/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<TRMDEPARTDTO> trmdepartdtos) {
@@ -105,7 +98,7 @@ public class TRMDEPARTResource {
          return ResponseEntity.status(HttpStatus.OK).body(trmdepartService.remove(trmdepart_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.trmdepartMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"TRMDEPART" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/trmdeparts/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -125,14 +118,14 @@ public class TRMDEPARTResource {
 	@RequestMapping(method = RequestMethod.PUT, value = "/trmdeparts/{trmdepart_id}")
     @Transactional
     public ResponseEntity<TRMDEPARTDTO> update(@PathVariable("trmdepart_id") String trmdepart_id, @RequestBody TRMDEPARTDTO trmdepartdto) {
-		TRMDEPART domain = trmdepartMapping.toDomain(trmdepartdto);
-        domain.setTrmdepartid(trmdepart_id);
-		trmdepartService.update(domain);
-		TRMDEPARTDTO dto = trmdepartMapping.toDto(domain);
+		TRMDEPART domain  = trmdepartMapping.toDomain(trmdepartdto);
+        domain .setTrmdepartid(trmdepart_id);
+		trmdepartService.update(domain );
+		TRMDEPARTDTO dto = trmdepartMapping.toDto(domain );
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.trmdepartMapping,#trmdepartdtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"TRMDEPART" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/trmdeparts/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<TRMDEPARTDTO> trmdepartdtos) {

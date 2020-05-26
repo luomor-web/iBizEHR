@@ -83,6 +83,13 @@ public class TRMTRIANPERSONServiceImpl extends ServiceImpl<TRMTRIANPERSONMapper,
     }
 
     @Override
+    public boolean saveBatch(Collection<TRMTRIANPERSON> list) {
+        list.forEach(item->fillParentData(item));
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<TRMTRIANPERSON> list) {
         list.forEach(item->fillParentData(item));
         saveOrUpdateBatch(list,batchSize);

@@ -105,6 +105,13 @@ public class TDZWXXServiceImpl extends ServiceImpl<TDZWXXMapper, TDZWXX> impleme
     }
 
     @Override
+    public boolean saveBatch(Collection<TDZWXX> list) {
+        list.forEach(item->fillParentData(item));
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<TDZWXX> list) {
         list.forEach(item->fillParentData(item));
         saveOrUpdateBatch(list,batchSize);

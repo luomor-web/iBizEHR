@@ -6,10 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
-
 import lombok.extern.slf4j.Slf4j;
 import com.alibaba.fastjson.JSONObject;
-
 import javax.servlet.ServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cglib.beans.BeanCopier;
@@ -24,20 +22,15 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
-
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
-
 import cn.ibizlab.ehr.webapi.dto.*;
 import cn.ibizlab.ehr.webapi.mapping.*;
 import cn.ibizlab.ehr.core.pim.domain.PimSearchFieldSet;
 import cn.ibizlab.ehr.core.pim.service.IPimSearchFieldSetService;
 import cn.ibizlab.ehr.core.pim.filter.PimSearchFieldSetSearchContext;
-
-
-
 
 @Slf4j
 @Api(tags = {"PimSearchFieldSet" })
@@ -60,19 +53,20 @@ public class PimSearchFieldSetResource {
     @Transactional
     public ResponseEntity<PimSearchFieldSetDTO> initDictionary(@PathVariable("pimsearchfieldset_id") String pimsearchfieldset_id, @RequestBody PimSearchFieldSetDTO pimsearchfieldsetdto) {
         PimSearchFieldSet pimsearchfieldset = pimsearchfieldsetMapping.toDomain(pimsearchfieldsetdto);
+        pimsearchfieldset.setPimsearchfieldsetid(pimsearchfieldset_id);
         pimsearchfieldset = pimsearchfieldsetService.initDictionary(pimsearchfieldset);
         pimsearchfieldsetdto = pimsearchfieldsetMapping.toDto(pimsearchfieldset);
         return ResponseEntity.status(HttpStatus.OK).body(pimsearchfieldsetdto);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimSearchFieldSet-Save-all')")
+    @PreAuthorize("hasPermission('','Save',{'Sql',this.pimsearchfieldsetMapping,#pimsearchfieldsetdto})")
     @ApiOperation(value = "Save", tags = {"PimSearchFieldSet" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimsearchfieldsets/save")
     public ResponseEntity<Boolean> save(@RequestBody PimSearchFieldSetDTO pimsearchfieldsetdto) {
         return ResponseEntity.status(HttpStatus.OK).body(pimsearchfieldsetService.save(pimsearchfieldsetMapping.toDomain(pimsearchfieldsetdto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.pimsearchfieldsetMapping,#pimsearchfieldsetdtos})")
     @ApiOperation(value = "SaveBatch", tags = {"PimSearchFieldSet" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimsearchfieldsets/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PimSearchFieldSetDTO> pimsearchfieldsetdtos) {
@@ -85,14 +79,14 @@ public class PimSearchFieldSetResource {
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimsearchfieldsets/{pimsearchfieldset_id}")
     @Transactional
     public ResponseEntity<PimSearchFieldSetDTO> update(@PathVariable("pimsearchfieldset_id") String pimsearchfieldset_id, @RequestBody PimSearchFieldSetDTO pimsearchfieldsetdto) {
-		PimSearchFieldSet domain = pimsearchfieldsetMapping.toDomain(pimsearchfieldsetdto);
-        domain.setPimsearchfieldsetid(pimsearchfieldset_id);
-		pimsearchfieldsetService.update(domain);
-		PimSearchFieldSetDTO dto = pimsearchfieldsetMapping.toDto(domain);
+		PimSearchFieldSet domain  = pimsearchfieldsetMapping.toDomain(pimsearchfieldsetdto);
+        domain .setPimsearchfieldsetid(pimsearchfieldset_id);
+		pimsearchfieldsetService.update(domain );
+		PimSearchFieldSetDTO dto = pimsearchfieldsetMapping.toDto(domain );
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.pimsearchfieldsetMapping,#pimsearchfieldsetdtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"PimSearchFieldSet" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimsearchfieldsets/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PimSearchFieldSetDTO> pimsearchfieldsetdtos) {
@@ -122,7 +116,7 @@ public class PimSearchFieldSetResource {
          return ResponseEntity.status(HttpStatus.OK).body(pimsearchfieldsetService.remove(pimsearchfieldset_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.pimsearchfieldsetMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"PimSearchFieldSet" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimsearchfieldsets/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -150,7 +144,7 @@ public class PimSearchFieldSetResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.pimsearchfieldsetMapping,#pimsearchfieldsetdtos})")
     @ApiOperation(value = "createBatch", tags = {"PimSearchFieldSet" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimsearchfieldsets/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PimSearchFieldSetDTO> pimsearchfieldsetdtos) {

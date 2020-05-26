@@ -6,10 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
-
 import lombok.extern.slf4j.Slf4j;
 import com.alibaba.fastjson.JSONObject;
-
 import javax.servlet.ServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cglib.beans.BeanCopier;
@@ -24,20 +22,15 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
-
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
-
 import cn.ibizlab.ehr.webapi.dto.*;
 import cn.ibizlab.ehr.webapi.mapping.*;
 import cn.ibizlab.ehr.core.pim.domain.PIMREWARDPUNISHMENT;
 import cn.ibizlab.ehr.core.pim.service.IPIMREWARDPUNISHMENTService;
 import cn.ibizlab.ehr.core.pim.filter.PIMREWARDPUNISHMENTSearchContext;
-
-
-
 
 @Slf4j
 @Api(tags = {"PIMREWARDPUNISHMENT" })
@@ -78,7 +71,7 @@ public class PIMREWARDPUNISHMENTResource {
          return ResponseEntity.status(HttpStatus.OK).body(pimrewardpunishmentService.remove(pimrewardpunishment_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.pimrewardpunishmentMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"PIMREWARDPUNISHMENT" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimrewardpunishments/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -86,14 +79,14 @@ public class PIMREWARDPUNISHMENTResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMREWARDPUNISHMENT-Save-all')")
+    @PreAuthorize("hasPermission('','Save',{'Sql',this.pimrewardpunishmentMapping,#pimrewardpunishmentdto})")
     @ApiOperation(value = "Save", tags = {"PIMREWARDPUNISHMENT" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimrewardpunishments/save")
     public ResponseEntity<Boolean> save(@RequestBody PIMREWARDPUNISHMENTDTO pimrewardpunishmentdto) {
         return ResponseEntity.status(HttpStatus.OK).body(pimrewardpunishmentService.save(pimrewardpunishmentMapping.toDomain(pimrewardpunishmentdto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.pimrewardpunishmentMapping,#pimrewardpunishmentdtos})")
     @ApiOperation(value = "SaveBatch", tags = {"PIMREWARDPUNISHMENT" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimrewardpunishments/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PIMREWARDPUNISHMENTDTO> pimrewardpunishmentdtos) {
@@ -119,7 +112,7 @@ public class PIMREWARDPUNISHMENTResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.pimrewardpunishmentMapping,#pimrewardpunishmentdtos})")
     @ApiOperation(value = "createBatch", tags = {"PIMREWARDPUNISHMENT" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimrewardpunishments/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PIMREWARDPUNISHMENTDTO> pimrewardpunishmentdtos) {
@@ -132,14 +125,14 @@ public class PIMREWARDPUNISHMENTResource {
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimrewardpunishments/{pimrewardpunishment_id}")
     @Transactional
     public ResponseEntity<PIMREWARDPUNISHMENTDTO> update(@PathVariable("pimrewardpunishment_id") String pimrewardpunishment_id, @RequestBody PIMREWARDPUNISHMENTDTO pimrewardpunishmentdto) {
-		PIMREWARDPUNISHMENT domain = pimrewardpunishmentMapping.toDomain(pimrewardpunishmentdto);
-        domain.setPimrewardpunishmentid(pimrewardpunishment_id);
-		pimrewardpunishmentService.update(domain);
-		PIMREWARDPUNISHMENTDTO dto = pimrewardpunishmentMapping.toDto(domain);
+		PIMREWARDPUNISHMENT domain  = pimrewardpunishmentMapping.toDomain(pimrewardpunishmentdto);
+        domain .setPimrewardpunishmentid(pimrewardpunishment_id);
+		pimrewardpunishmentService.update(domain );
+		PIMREWARDPUNISHMENTDTO dto = pimrewardpunishmentMapping.toDto(domain );
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.pimrewardpunishmentMapping,#pimrewardpunishmentdtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"PIMREWARDPUNISHMENT" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimrewardpunishments/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PIMREWARDPUNISHMENTDTO> pimrewardpunishmentdtos) {
@@ -238,7 +231,7 @@ public class PIMREWARDPUNISHMENTResource {
         return  ResponseEntity.status(HttpStatus.OK).body(pimrewardpunishmentService.checkKey(pimrewardpunishmentMapping.toDomain(pimrewardpunishmentdto)));
     }
 
-    //@PreAuthorize("hasPermission(#pimrewardpunishment_id,'Get',{'Sql',this.pimrewardpunishmentMapping,this.permissionDTO})")
+    @PreAuthorize("hasPermission(#pimrewardpunishment_id,'Get',{'Sql',this.pimrewardpunishmentMapping,this.permissionDTO})")
     @ApiOperation(value = "GetByPIMPERSON", tags = {"PIMREWARDPUNISHMENT" },  notes = "GetByPIMPERSON")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimpeople/{pimperson_id}/pimrewardpunishments/{pimrewardpunishment_id}")
     public ResponseEntity<PIMREWARDPUNISHMENTDTO> getByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimrewardpunishment_id") String pimrewardpunishment_id) {
@@ -247,7 +240,7 @@ public class PIMREWARDPUNISHMENTResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    //@PreAuthorize("hasPermission(#pimrewardpunishment_id,'Remove',{'Sql',this.pimrewardpunishmentMapping,this.permissionDTO})")
+    @PreAuthorize("hasPermission(#pimrewardpunishment_id,'Remove',{'Sql',this.pimrewardpunishmentMapping,this.permissionDTO})")
     @ApiOperation(value = "RemoveByPIMPERSON", tags = {"PIMREWARDPUNISHMENT" },  notes = "RemoveByPIMPERSON")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimpeople/{pimperson_id}/pimrewardpunishments/{pimrewardpunishment_id}")
     @Transactional
@@ -255,7 +248,7 @@ public class PIMREWARDPUNISHMENTResource {
 		return ResponseEntity.status(HttpStatus.OK).body(pimrewardpunishmentService.remove(pimrewardpunishment_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.pimrewardpunishmentMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatchByPIMPERSON", tags = {"PIMREWARDPUNISHMENT" },  notes = "RemoveBatchByPIMPERSON")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimpeople/{pimperson_id}/pimrewardpunishments/batch")
     public ResponseEntity<Boolean> removeBatchByPIMPERSON(@RequestBody List<String> ids) {
@@ -263,7 +256,7 @@ public class PIMREWARDPUNISHMENTResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMREWARDPUNISHMENT-Save-all')")
+    @PreAuthorize("hasPermission('','Save',{'Sql',this.pimrewardpunishmentMapping,#pimrewardpunishmentdto})")
     @ApiOperation(value = "SaveByPIMPERSON", tags = {"PIMREWARDPUNISHMENT" },  notes = "SaveByPIMPERSON")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimrewardpunishments/save")
     public ResponseEntity<Boolean> saveByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMREWARDPUNISHMENTDTO pimrewardpunishmentdto) {
@@ -272,7 +265,7 @@ public class PIMREWARDPUNISHMENTResource {
         return ResponseEntity.status(HttpStatus.OK).body(pimrewardpunishmentService.save(domain));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.pimrewardpunishmentMapping,#pimrewardpunishmentdtos})")
     @ApiOperation(value = "SaveBatchByPIMPERSON", tags = {"PIMREWARDPUNISHMENT" },  notes = "SaveBatchByPIMPERSON")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimrewardpunishments/savebatch")
     public ResponseEntity<Boolean> saveBatchByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody List<PIMREWARDPUNISHMENTDTO> pimrewardpunishmentdtos) {
@@ -293,7 +286,7 @@ public class PIMREWARDPUNISHMENTResource {
         return ResponseEntity.status(HttpStatus.OK).body(pimrewardpunishmentMapping.toDto(pimrewardpunishmentService.getDraft(domain)));
     }
 
-    //@PreAuthorize("hasPermission('','Create',{'Sql',this.pimrewardpunishmentMapping,#pimrewardpunishmentdto})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.pimrewardpunishmentMapping,#pimrewardpunishmentdto})")
     @ApiOperation(value = "CreateByPIMPERSON", tags = {"PIMREWARDPUNISHMENT" },  notes = "CreateByPIMPERSON")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimrewardpunishments")
     @Transactional
@@ -305,7 +298,7 @@ public class PIMREWARDPUNISHMENTResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.pimrewardpunishmentMapping,#pimrewardpunishmentdtos})")
     @ApiOperation(value = "createBatchByPIMPERSON", tags = {"PIMREWARDPUNISHMENT" },  notes = "createBatchByPIMPERSON")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimrewardpunishments/batch")
     public ResponseEntity<Boolean> createBatchByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody List<PIMREWARDPUNISHMENTDTO> pimrewardpunishmentdtos) {
@@ -317,7 +310,7 @@ public class PIMREWARDPUNISHMENTResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    //@PreAuthorize("hasPermission(#pimrewardpunishment_id,'Update',{'Sql',this.pimrewardpunishmentMapping,#pimrewardpunishmentdto})")
+    @PreAuthorize("hasPermission(#pimrewardpunishment_id,'Update',{'Sql',this.pimrewardpunishmentMapping,#pimrewardpunishmentdto})")
     @ApiOperation(value = "UpdateByPIMPERSON", tags = {"PIMREWARDPUNISHMENT" },  notes = "UpdateByPIMPERSON")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimpeople/{pimperson_id}/pimrewardpunishments/{pimrewardpunishment_id}")
     @Transactional
@@ -330,7 +323,7 @@ public class PIMREWARDPUNISHMENTResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.pimrewardpunishmentMapping,#pimrewardpunishmentdtos})")
     @ApiOperation(value = "UpdateBatchByPIMPERSON", tags = {"PIMREWARDPUNISHMENT" },  notes = "UpdateBatchByPIMPERSON")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimpeople/{pimperson_id}/pimrewardpunishments/batch")
     public ResponseEntity<Boolean> updateBatchByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody List<PIMREWARDPUNISHMENTDTO> pimrewardpunishmentdtos) {

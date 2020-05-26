@@ -6,10 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
-
 import lombok.extern.slf4j.Slf4j;
 import com.alibaba.fastjson.JSONObject;
-
 import javax.servlet.ServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cglib.beans.BeanCopier;
@@ -24,20 +22,15 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
-
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
-
 import cn.ibizlab.ehr.webapi.dto.*;
 import cn.ibizlab.ehr.webapi.mapping.*;
 import cn.ibizlab.ehr.core.orm.domain.ORMORGSECTOR;
 import cn.ibizlab.ehr.core.orm.service.IORMORGSECTORService;
 import cn.ibizlab.ehr.core.orm.filter.ORMORGSECTORSearchContext;
-
-
-
 
 @Slf4j
 @Api(tags = {"ORMORGSECTOR" })
@@ -60,6 +53,7 @@ public class ORMORGSECTORResource {
     @Transactional
     public ResponseEntity<ORMORGSECTORDTO> changeEdition(@PathVariable("ormorgsector_id") String ormorgsector_id, @RequestBody ORMORGSECTORDTO ormorgsectordto) {
         ORMORGSECTOR ormorgsector = ormorgsectorMapping.toDomain(ormorgsectordto);
+        ormorgsector.setOrgsectorid(ormorgsector_id);
         ormorgsector = ormorgsectorService.changeEdition(ormorgsector);
         ormorgsectordto = ormorgsectorMapping.toDto(ormorgsector);
         return ResponseEntity.status(HttpStatus.OK).body(ormorgsectordto);
@@ -76,7 +70,7 @@ public class ORMORGSECTORResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.ormorgsectorMapping,#ormorgsectordtos})")
     @ApiOperation(value = "createBatch", tags = {"ORMORGSECTOR" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormorgsectors/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<ORMORGSECTORDTO> ormorgsectordtos) {
@@ -90,6 +84,7 @@ public class ORMORGSECTORResource {
     @Transactional
     public ResponseEntity<ORMORGSECTORDTO> synOrgSectPro(@PathVariable("ormorgsector_id") String ormorgsector_id, @RequestBody ORMORGSECTORDTO ormorgsectordto) {
         ORMORGSECTOR ormorgsector = ormorgsectorMapping.toDomain(ormorgsectordto);
+        ormorgsector.setOrgsectorid(ormorgsector_id);
         ormorgsector = ormorgsectorService.synOrgSectPro(ormorgsector);
         ormorgsectordto = ormorgsectorMapping.toDto(ormorgsector);
         return ResponseEntity.status(HttpStatus.OK).body(ormorgsectordto);
@@ -101,6 +96,7 @@ public class ORMORGSECTORResource {
     @Transactional
     public ResponseEntity<ORMORGSECTORDTO> cLWC(@PathVariable("ormorgsector_id") String ormorgsector_id, @RequestBody ORMORGSECTORDTO ormorgsectordto) {
         ORMORGSECTOR ormorgsector = ormorgsectorMapping.toDomain(ormorgsectordto);
+        ormorgsector.setOrgsectorid(ormorgsector_id);
         ormorgsector = ormorgsectorService.cLWC(ormorgsector);
         ormorgsectordto = ormorgsectorMapping.toDto(ormorgsector);
         return ResponseEntity.status(HttpStatus.OK).body(ormorgsectordto);
@@ -113,14 +109,14 @@ public class ORMORGSECTORResource {
         return  ResponseEntity.status(HttpStatus.OK).body(ormorgsectorService.checkKey(ormorgsectorMapping.toDomain(ormorgsectordto)));
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMORGSECTOR-Save-all')")
+    @PreAuthorize("hasPermission('','Save',{'Sql',this.ormorgsectorMapping,#ormorgsectordto})")
     @ApiOperation(value = "Save", tags = {"ORMORGSECTOR" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormorgsectors/save")
     public ResponseEntity<Boolean> save(@RequestBody ORMORGSECTORDTO ormorgsectordto) {
         return ResponseEntity.status(HttpStatus.OK).body(ormorgsectorService.save(ormorgsectorMapping.toDomain(ormorgsectordto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.ormorgsectorMapping,#ormorgsectordtos})")
     @ApiOperation(value = "SaveBatch", tags = {"ORMORGSECTOR" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormorgsectors/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<ORMORGSECTORDTO> ormorgsectordtos) {
@@ -141,6 +137,7 @@ public class ORMORGSECTORResource {
     @Transactional
     public ResponseEntity<ORMORGSECTORDTO> tJ(@PathVariable("ormorgsector_id") String ormorgsector_id, @RequestBody ORMORGSECTORDTO ormorgsectordto) {
         ORMORGSECTOR ormorgsector = ormorgsectorMapping.toDomain(ormorgsectordto);
+        ormorgsector.setOrgsectorid(ormorgsector_id);
         ormorgsector = ormorgsectorService.tJ(ormorgsector);
         ormorgsectordto = ormorgsectorMapping.toDto(ormorgsector);
         return ResponseEntity.status(HttpStatus.OK).body(ormorgsectordto);
@@ -151,14 +148,14 @@ public class ORMORGSECTORResource {
 	@RequestMapping(method = RequestMethod.PUT, value = "/ormorgsectors/{ormorgsector_id}")
     @Transactional
     public ResponseEntity<ORMORGSECTORDTO> update(@PathVariable("ormorgsector_id") String ormorgsector_id, @RequestBody ORMORGSECTORDTO ormorgsectordto) {
-		ORMORGSECTOR domain = ormorgsectorMapping.toDomain(ormorgsectordto);
-        domain.setOrgsectorid(ormorgsector_id);
-		ormorgsectorService.update(domain);
-		ORMORGSECTORDTO dto = ormorgsectorMapping.toDto(domain);
+		ORMORGSECTOR domain  = ormorgsectorMapping.toDomain(ormorgsectordto);
+        domain .setOrgsectorid(ormorgsector_id);
+		ormorgsectorService.update(domain );
+		ORMORGSECTORDTO dto = ormorgsectorMapping.toDto(domain );
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.ormorgsectorMapping,#ormorgsectordtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"ORMORGSECTOR" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/ormorgsectors/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<ORMORGSECTORDTO> ormorgsectordtos) {
@@ -181,6 +178,7 @@ public class ORMORGSECTORResource {
     @Transactional
     public ResponseEntity<ORMORGSECTORDTO> synOrgSectOderNum(@PathVariable("ormorgsector_id") String ormorgsector_id, @RequestBody ORMORGSECTORDTO ormorgsectordto) {
         ORMORGSECTOR ormorgsector = ormorgsectorMapping.toDomain(ormorgsectordto);
+        ormorgsector.setOrgsectorid(ormorgsector_id);
         ormorgsector = ormorgsectorService.synOrgSectOderNum(ormorgsector);
         ormorgsectordto = ormorgsectorMapping.toDto(ormorgsector);
         return ResponseEntity.status(HttpStatus.OK).body(ormorgsectordto);
@@ -194,7 +192,7 @@ public class ORMORGSECTORResource {
          return ResponseEntity.status(HttpStatus.OK).body(ormorgsectorService.remove(ormorgsector_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.ormorgsectorMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"ORMORGSECTOR" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/ormorgsectors/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -208,6 +206,7 @@ public class ORMORGSECTORResource {
     @Transactional
     public ResponseEntity<ORMORGSECTORDTO> synOrgSec(@PathVariable("ormorgsector_id") String ormorgsector_id, @RequestBody ORMORGSECTORDTO ormorgsectordto) {
         ORMORGSECTOR ormorgsector = ormorgsectorMapping.toDomain(ormorgsectordto);
+        ormorgsector.setOrgsectorid(ormorgsector_id);
         ormorgsector = ormorgsectorService.synOrgSec(ormorgsector);
         ormorgsectordto = ormorgsectorMapping.toDto(ormorgsector);
         return ResponseEntity.status(HttpStatus.OK).body(ormorgsectordto);

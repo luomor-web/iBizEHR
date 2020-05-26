@@ -183,14 +183,6 @@ public class PCMPROFILE extends EntityMP implements Serializable {
     @JsonProperty("gzkssj")
     private Timestamp gzkssj;
     /**
-     * 校验结果
-     */
-    @DEField(defaultValue = "4")
-    @TableField(value = "condition")
-    @JSONField(name = "condition")
-    @JsonProperty("condition")
-    private String condition;
-    /**
      * 拟签订劳动合同期
      */
     @TableField(value = "nqdldhtqx")
@@ -471,7 +463,7 @@ public class PCMPROFILE extends EntityMP implements Serializable {
     @TableField(value = "jzbspyj")
     @JSONField(name = "jzbspyj")
     @JsonProperty("jzbspyj")
-    private Integer jzbspyj;
+    private String jzbspyj;
     /**
      * 毕业时间
      */
@@ -720,7 +712,7 @@ public class PCMPROFILE extends EntityMP implements Serializable {
     @JsonProperty("wbbm")
     private String wbbm;
     /**
-     * 选择局内部人员
+     * 选择内部人员
      */
     @TableField(value = "sfxzbjnbry")
     @JSONField(name = "sfxzbjnbry")
@@ -928,6 +920,14 @@ public class PCMPROFILE extends EntityMP implements Serializable {
     @JSONField(name = "ormorgid")
     @JsonProperty("ormorgid")
     private String ormorgid;
+    /**
+     * 校验结果
+     */
+    @DEField(defaultValue = "4")
+    @TableField(value = "checkresult")
+    @JSONField(name = "checkresult")
+    @JsonProperty("checkresult")
+    private String checkresult;
 
     /**
      * 挂职进职务
@@ -1103,13 +1103,6 @@ public class PCMPROFILE extends EntityMP implements Serializable {
     public void setGzkssj(Timestamp gzkssj){
         this.gzkssj = gzkssj ;
         this.modify("gzkssj",gzkssj);
-    }
-    /**
-     * 设置 [校验结果]
-     */
-    public void setCondition(String condition){
-        this.condition = condition ;
-        this.modify("condition",condition);
     }
     /**
      * 设置 [拟签订劳动合同期]
@@ -1345,7 +1338,7 @@ public class PCMPROFILE extends EntityMP implements Serializable {
     /**
      * 设置 [局审批意见]
      */
-    public void setJzbspyj(Integer jzbspyj){
+    public void setJzbspyj(String jzbspyj){
         this.jzbspyj = jzbspyj ;
         this.modify("jzbspyj",jzbspyj);
     }
@@ -1574,7 +1567,7 @@ public class PCMPROFILE extends EntityMP implements Serializable {
         this.modify("wbbm",wbbm);
     }
     /**
-     * 设置 [选择局内部人员]
+     * 设置 [选择内部人员]
      */
     public void setSfxzbjnbry(String sfxzbjnbry){
         this.sfxzbjnbry = sfxzbjnbry ;
@@ -1726,6 +1719,13 @@ public class PCMPROFILE extends EntityMP implements Serializable {
     public void setOrmorgid(String ormorgid){
         this.ormorgid = ormorgid ;
         this.modify("ormorgid",ormorgid);
+    }
+    /**
+     * 设置 [校验结果]
+     */
+    public void setCheckresult(String checkresult){
+        this.checkresult = checkresult ;
+        this.modify("checkresult",checkresult);
     }
 
 }

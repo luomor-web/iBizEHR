@@ -62,19 +62,14 @@ export default class Main_FYGZDModel {
           dataType: 'PICKUPTEXT',
         },
         {
-          name: 'srfdataaccaction',
-          prop: 'pimarchivesid',
-          dataType: 'GUID',
-        },
-        {
           name: 'srfkey',
           prop: 'pimarchivesid',
           dataType: 'GUID',
         },
         {
-          name: 'duration',
-          prop: 'duration',
-          dataType: 'INT',
+          name: 'srfdataaccaction',
+          prop: 'pimarchivesid',
+          dataType: 'GUID',
         },
         {
           name: 'dastate',
@@ -90,11 +85,6 @@ export default class Main_FYGZDModel {
           name: 'sszzdzs',
           prop: 'sszzdzs',
           dataType: 'PICKUPDATA',
-        },
-        {
-          name: 'zt',
-          prop: 'zt',
-          dataType: 'SSCODELIST',
         },
         {
           name: 'glzzdzs',

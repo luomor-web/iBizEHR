@@ -93,6 +93,13 @@ public class PARJXBZGLServiceImpl extends ServiceImpl<PARJXBZGLMapper, PARJXBZGL
     }
 
     @Override
+    public boolean saveBatch(Collection<PARJXBZGL> list) {
+        list.forEach(item->fillParentData(item));
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<PARJXBZGL> list) {
         list.forEach(item->fillParentData(item));
         saveOrUpdateBatch(list,batchSize);

@@ -129,6 +129,13 @@ public class SOCSELFAREBASEMXServiceImpl extends ServiceImpl<SOCSELFAREBASEMXMap
     }
 
     @Override
+    public boolean saveBatch(Collection<SOCSELFAREBASEMX> list) {
+        list.forEach(item->fillParentData(item));
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<SOCSELFAREBASEMX> list) {
         list.forEach(item->fillParentData(item));
         saveOrUpdateBatch(list,batchSize);

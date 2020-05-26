@@ -136,6 +136,13 @@ public class ORMUSERServiceImpl extends ServiceImpl<ORMUSERMapper, ORMUSER> impl
     }
 
     @Override
+    public boolean saveBatch(Collection<ORMUSER> list) {
+        list.forEach(item->fillParentData(item));
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<ORMUSER> list) {
         list.forEach(item->fillParentData(item));
         saveOrUpdateBatch(list,batchSize);

@@ -6,10 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
-
 import lombok.extern.slf4j.Slf4j;
 import com.alibaba.fastjson.JSONObject;
-
 import javax.servlet.ServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cglib.beans.BeanCopier;
@@ -24,20 +22,15 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
-
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
-
 import cn.ibizlab.ehr.webapi.dto.*;
 import cn.ibizlab.ehr.webapi.mapping.*;
 import cn.ibizlab.ehr.core.soc.domain.SOCCOMPANYWEL;
 import cn.ibizlab.ehr.core.soc.service.ISOCCOMPANYWELService;
 import cn.ibizlab.ehr.core.soc.filter.SOCCOMPANYWELSearchContext;
-
-
-
 
 @Slf4j
 @Api(tags = {"SOCCOMPANYWEL" })
@@ -65,7 +58,7 @@ public class SOCCOMPANYWELResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.soccompanywelMapping,#soccompanyweldtos})")
     @ApiOperation(value = "createBatch", tags = {"SOCCOMPANYWEL" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/soccompanywels/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<SOCCOMPANYWELDTO> soccompanyweldtos) {
@@ -80,14 +73,14 @@ public class SOCCOMPANYWELResource {
         return  ResponseEntity.status(HttpStatus.OK).body(soccompanywelService.checkKey(soccompanywelMapping.toDomain(soccompanyweldto)));
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SOCCOMPANYWEL-Save-all')")
+    @PreAuthorize("hasPermission('','Save',{'Sql',this.soccompanywelMapping,#soccompanyweldto})")
     @ApiOperation(value = "Save", tags = {"SOCCOMPANYWEL" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/soccompanywels/save")
     public ResponseEntity<Boolean> save(@RequestBody SOCCOMPANYWELDTO soccompanyweldto) {
         return ResponseEntity.status(HttpStatus.OK).body(soccompanywelService.save(soccompanywelMapping.toDomain(soccompanyweldto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.soccompanywelMapping,#soccompanyweldtos})")
     @ApiOperation(value = "SaveBatch", tags = {"SOCCOMPANYWEL" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/soccompanywels/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<SOCCOMPANYWELDTO> soccompanyweldtos) {
@@ -100,14 +93,14 @@ public class SOCCOMPANYWELResource {
 	@RequestMapping(method = RequestMethod.PUT, value = "/soccompanywels/{soccompanywel_id}")
     @Transactional
     public ResponseEntity<SOCCOMPANYWELDTO> update(@PathVariable("soccompanywel_id") String soccompanywel_id, @RequestBody SOCCOMPANYWELDTO soccompanyweldto) {
-		SOCCOMPANYWEL domain = soccompanywelMapping.toDomain(soccompanyweldto);
-        domain.setSoccompanywelid(soccompanywel_id);
-		soccompanywelService.update(domain);
-		SOCCOMPANYWELDTO dto = soccompanywelMapping.toDto(domain);
+		SOCCOMPANYWEL domain  = soccompanywelMapping.toDomain(soccompanyweldto);
+        domain .setSoccompanywelid(soccompanywel_id);
+		soccompanywelService.update(domain );
+		SOCCOMPANYWELDTO dto = soccompanywelMapping.toDto(domain );
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.soccompanywelMapping,#soccompanyweldtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"SOCCOMPANYWEL" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/soccompanywels/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<SOCCOMPANYWELDTO> soccompanyweldtos) {
@@ -132,7 +125,7 @@ public class SOCCOMPANYWELResource {
          return ResponseEntity.status(HttpStatus.OK).body(soccompanywelService.remove(soccompanywel_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.soccompanywelMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"SOCCOMPANYWEL" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/soccompanywels/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {

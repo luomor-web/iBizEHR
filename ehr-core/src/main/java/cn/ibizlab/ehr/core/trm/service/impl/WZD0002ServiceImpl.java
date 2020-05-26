@@ -80,6 +80,12 @@ public class WZD0002ServiceImpl extends ServiceImpl<WZD0002Mapper, WZD0002> impl
     }
 
     @Override
+    public boolean saveBatch(Collection<WZD0002> list) {
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<WZD0002> list) {
         saveOrUpdateBatch(list,batchSize);
     }

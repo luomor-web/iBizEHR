@@ -139,6 +139,13 @@ public class PCMPRACTICEEXPERIENCEServiceImpl extends ServiceImpl<PCMPRACTICEEXP
     }
 
     @Override
+    public boolean saveBatch(Collection<PCMPRACTICEEXPERIENCE> list) {
+        list.forEach(item->fillParentData(item));
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<PCMPRACTICEEXPERIENCE> list) {
         list.forEach(item->fillParentData(item));
         saveOrUpdateBatch(list,batchSize);

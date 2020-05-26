@@ -90,6 +90,12 @@ public class PIMPersonAbilityDetailServiceImpl extends ServiceImpl<PIMPersonAbil
     }
 
     @Override
+    public boolean saveBatch(Collection<PIMPersonAbilityDetail> list) {
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<PIMPersonAbilityDetail> list) {
         saveOrUpdateBatch(list,batchSize);
     }

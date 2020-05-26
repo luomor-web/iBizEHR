@@ -106,6 +106,12 @@ public class TRMZZOBMServiceImpl extends ServiceImpl<TRMZZOBMMapper, TRMZZOBM> i
     }
 
     @Override
+    public boolean saveBatch(Collection<TRMZZOBM> list) {
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<TRMZZOBM> list) {
         saveOrUpdateBatch(list,batchSize);
     }

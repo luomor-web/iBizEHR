@@ -107,6 +107,12 @@ public class PIMCITYServiceImpl extends ServiceImpl<PIMCITYMapper, PIMCITY> impl
     }
 
     @Override
+    public boolean saveBatch(Collection<PIMCITY> list) {
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<PIMCITY> list) {
         saveOrUpdateBatch(list,batchSize);
     }

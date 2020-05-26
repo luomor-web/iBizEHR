@@ -80,6 +80,12 @@ public class PARKHFAServiceImpl extends ServiceImpl<PARKHFAMapper, PARKHFA> impl
     }
 
     @Override
+    public boolean saveBatch(Collection<PARKHFA> list) {
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<PARKHFA> list) {
         saveOrUpdateBatch(list,batchSize);
     }

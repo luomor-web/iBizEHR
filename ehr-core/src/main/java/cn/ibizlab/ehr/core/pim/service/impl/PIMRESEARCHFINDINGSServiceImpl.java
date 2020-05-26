@@ -123,6 +123,13 @@ public class PIMRESEARCHFINDINGSServiceImpl extends ServiceImpl<PIMRESEARCHFINDI
     }
 
     @Override
+    public boolean saveBatch(Collection<PIMRESEARCHFINDINGS> list) {
+        list.forEach(item->fillParentData(item));
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<PIMRESEARCHFINDINGS> list) {
         list.forEach(item->fillParentData(item));
         saveOrUpdateBatch(list,batchSize);

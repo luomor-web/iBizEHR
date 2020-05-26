@@ -137,6 +137,12 @@ public class SGQMgrServiceImpl extends ServiceImpl<SGQMgrMapper, SGQMgr> impleme
     }
 
     @Override
+    public boolean saveBatch(Collection<SGQMgr> list) {
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<SGQMgr> list) {
         saveOrUpdateBatch(list,batchSize);
     }

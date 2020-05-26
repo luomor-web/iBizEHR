@@ -6,10 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
-
 import lombok.extern.slf4j.Slf4j;
 import com.alibaba.fastjson.JSONObject;
-
 import javax.servlet.ServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cglib.beans.BeanCopier;
@@ -24,20 +22,15 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
-
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
-
 import cn.ibizlab.ehr.webapi.dto.*;
 import cn.ibizlab.ehr.webapi.mapping.*;
 import cn.ibizlab.ehr.core.pim.domain.PIMLABOURCAMPANY;
 import cn.ibizlab.ehr.core.pim.service.IPIMLABOURCAMPANYService;
 import cn.ibizlab.ehr.core.pim.filter.PIMLABOURCAMPANYSearchContext;
-
-
-
 
 @Slf4j
 @Api(tags = {"PIMLABOURCAMPANY" })
@@ -54,14 +47,14 @@ public class PIMLABOURCAMPANYResource {
 
     public PIMLABOURCAMPANYDTO permissionDTO=new PIMLABOURCAMPANYDTO();
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMLABOURCAMPANY-Save-all')")
+    @PreAuthorize("hasPermission('','Save',{'Sql',this.pimlabourcampanyMapping,#pimlabourcampanydto})")
     @ApiOperation(value = "Save", tags = {"PIMLABOURCAMPANY" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimlabourcampanies/save")
     public ResponseEntity<Boolean> save(@RequestBody PIMLABOURCAMPANYDTO pimlabourcampanydto) {
         return ResponseEntity.status(HttpStatus.OK).body(pimlabourcampanyService.save(pimlabourcampanyMapping.toDomain(pimlabourcampanydto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.pimlabourcampanyMapping,#pimlabourcampanydtos})")
     @ApiOperation(value = "SaveBatch", tags = {"PIMLABOURCAMPANY" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimlabourcampanies/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PIMLABOURCAMPANYDTO> pimlabourcampanydtos) {
@@ -81,14 +74,14 @@ public class PIMLABOURCAMPANYResource {
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimlabourcampanies/{pimlabourcampany_id}")
     @Transactional
     public ResponseEntity<PIMLABOURCAMPANYDTO> update(@PathVariable("pimlabourcampany_id") String pimlabourcampany_id, @RequestBody PIMLABOURCAMPANYDTO pimlabourcampanydto) {
-		PIMLABOURCAMPANY domain = pimlabourcampanyMapping.toDomain(pimlabourcampanydto);
-        domain.setPimlabourcampanyid(pimlabourcampany_id);
-		pimlabourcampanyService.update(domain);
-		PIMLABOURCAMPANYDTO dto = pimlabourcampanyMapping.toDto(domain);
+		PIMLABOURCAMPANY domain  = pimlabourcampanyMapping.toDomain(pimlabourcampanydto);
+        domain .setPimlabourcampanyid(pimlabourcampany_id);
+		pimlabourcampanyService.update(domain );
+		PIMLABOURCAMPANYDTO dto = pimlabourcampanyMapping.toDto(domain );
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.pimlabourcampanyMapping,#pimlabourcampanydtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"PIMLABOURCAMPANY" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimlabourcampanies/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PIMLABOURCAMPANYDTO> pimlabourcampanydtos) {
@@ -107,7 +100,7 @@ public class PIMLABOURCAMPANYResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.pimlabourcampanyMapping,#pimlabourcampanydtos})")
     @ApiOperation(value = "createBatch", tags = {"PIMLABOURCAMPANY" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimlabourcampanies/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PIMLABOURCAMPANYDTO> pimlabourcampanydtos) {
@@ -123,7 +116,7 @@ public class PIMLABOURCAMPANYResource {
          return ResponseEntity.status(HttpStatus.OK).body(pimlabourcampanyService.remove(pimlabourcampany_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.pimlabourcampanyMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"PIMLABOURCAMPANY" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimlabourcampanies/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {

@@ -92,6 +92,12 @@ public class PARJXJGServiceImpl extends ServiceImpl<PARJXJGMapper, PARJXJG> impl
     }
 
     @Override
+    public boolean saveBatch(Collection<PARJXJG> list) {
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<PARJXJG> list) {
         saveOrUpdateBatch(list,batchSize);
     }

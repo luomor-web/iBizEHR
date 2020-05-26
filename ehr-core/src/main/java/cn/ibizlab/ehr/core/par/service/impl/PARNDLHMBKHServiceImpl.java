@@ -121,6 +121,12 @@ public class PARNDLHMBKHServiceImpl extends ServiceImpl<PARNDLHMBKHMapper, PARND
     }
 
     @Override
+    public boolean saveBatch(Collection<PARNDLHMBKH> list) {
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<PARNDLHMBKH> list) {
         saveOrUpdateBatch(list,batchSize);
     }

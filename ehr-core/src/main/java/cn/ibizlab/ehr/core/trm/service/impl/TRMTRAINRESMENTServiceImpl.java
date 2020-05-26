@@ -87,6 +87,12 @@ public class TRMTRAINRESMENTServiceImpl extends ServiceImpl<TRMTRAINRESMENTMappe
     }
 
     @Override
+    public boolean saveBatch(Collection<TRMTRAINRESMENT> list) {
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<TRMTRAINRESMENT> list) {
         saveOrUpdateBatch(list,batchSize);
     }

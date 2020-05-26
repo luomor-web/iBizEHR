@@ -73,6 +73,12 @@ public class ORMORGInfoServiceImpl extends ServiceImpl<ORMORGInfoMapper, ORMORGI
     }
 
     @Override
+    public boolean saveBatch(Collection<ORMORGInfo> list) {
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<ORMORGInfo> list) {
         saveOrUpdateBatch(list,batchSize);
     }

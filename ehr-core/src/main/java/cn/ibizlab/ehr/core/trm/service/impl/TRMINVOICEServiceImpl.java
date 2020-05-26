@@ -87,6 +87,13 @@ public class TRMINVOICEServiceImpl extends ServiceImpl<TRMINVOICEMapper, TRMINVO
     }
 
     @Override
+    public boolean saveBatch(Collection<TRMINVOICE> list) {
+        list.forEach(item->fillParentData(item));
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<TRMINVOICE> list) {
         list.forEach(item->fillParentData(item));
         saveOrUpdateBatch(list,batchSize);

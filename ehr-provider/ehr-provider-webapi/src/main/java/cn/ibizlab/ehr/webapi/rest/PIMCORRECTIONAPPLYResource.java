@@ -6,10 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
-
 import lombok.extern.slf4j.Slf4j;
 import com.alibaba.fastjson.JSONObject;
-
 import javax.servlet.ServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cglib.beans.BeanCopier;
@@ -24,20 +22,15 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
-
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
-
 import cn.ibizlab.ehr.webapi.dto.*;
 import cn.ibizlab.ehr.webapi.mapping.*;
 import cn.ibizlab.ehr.core.pim.domain.PIMCORRECTIONAPPLY;
 import cn.ibizlab.ehr.core.pim.service.IPIMCORRECTIONAPPLYService;
 import cn.ibizlab.ehr.core.pim.filter.PIMCORRECTIONAPPLYSearchContext;
-
-
-
 
 @Slf4j
 @Api(tags = {"PIMCORRECTIONAPPLY" })
@@ -65,7 +58,7 @@ public class PIMCORRECTIONAPPLYResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.pimcorrectionapplyMapping,#pimcorrectionapplydtos})")
     @ApiOperation(value = "createBatch", tags = {"PIMCORRECTIONAPPLY" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimcorrectionapplies/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PIMCORRECTIONAPPLYDTO> pimcorrectionapplydtos) {
@@ -87,14 +80,14 @@ public class PIMCORRECTIONAPPLYResource {
         return  ResponseEntity.status(HttpStatus.OK).body(pimcorrectionapplyService.checkKey(pimcorrectionapplyMapping.toDomain(pimcorrectionapplydto)));
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMCORRECTIONAPPLY-Save-all')")
+    @PreAuthorize("hasPermission('','Save',{'Sql',this.pimcorrectionapplyMapping,#pimcorrectionapplydto})")
     @ApiOperation(value = "Save", tags = {"PIMCORRECTIONAPPLY" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimcorrectionapplies/save")
     public ResponseEntity<Boolean> save(@RequestBody PIMCORRECTIONAPPLYDTO pimcorrectionapplydto) {
         return ResponseEntity.status(HttpStatus.OK).body(pimcorrectionapplyService.save(pimcorrectionapplyMapping.toDomain(pimcorrectionapplydto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.pimcorrectionapplyMapping,#pimcorrectionapplydtos})")
     @ApiOperation(value = "SaveBatch", tags = {"PIMCORRECTIONAPPLY" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimcorrectionapplies/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PIMCORRECTIONAPPLYDTO> pimcorrectionapplydtos) {
@@ -116,14 +109,14 @@ public class PIMCORRECTIONAPPLYResource {
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimcorrectionapplies/{pimcorrectionapply_id}")
     @Transactional
     public ResponseEntity<PIMCORRECTIONAPPLYDTO> update(@PathVariable("pimcorrectionapply_id") String pimcorrectionapply_id, @RequestBody PIMCORRECTIONAPPLYDTO pimcorrectionapplydto) {
-		PIMCORRECTIONAPPLY domain = pimcorrectionapplyMapping.toDomain(pimcorrectionapplydto);
-        domain.setPimcorrectionapplyid(pimcorrectionapply_id);
-		pimcorrectionapplyService.update(domain);
-		PIMCORRECTIONAPPLYDTO dto = pimcorrectionapplyMapping.toDto(domain);
+		PIMCORRECTIONAPPLY domain  = pimcorrectionapplyMapping.toDomain(pimcorrectionapplydto);
+        domain .setPimcorrectionapplyid(pimcorrectionapply_id);
+		pimcorrectionapplyService.update(domain );
+		PIMCORRECTIONAPPLYDTO dto = pimcorrectionapplyMapping.toDto(domain );
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.pimcorrectionapplyMapping,#pimcorrectionapplydtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"PIMCORRECTIONAPPLY" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimcorrectionapplies/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PIMCORRECTIONAPPLYDTO> pimcorrectionapplydtos) {
@@ -139,7 +132,7 @@ public class PIMCORRECTIONAPPLYResource {
          return ResponseEntity.status(HttpStatus.OK).body(pimcorrectionapplyService.remove(pimcorrectionapply_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.pimcorrectionapplyMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"PIMCORRECTIONAPPLY" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimcorrectionapplies/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {

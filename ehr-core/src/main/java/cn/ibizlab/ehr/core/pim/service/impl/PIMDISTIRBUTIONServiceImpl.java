@@ -69,6 +69,10 @@ public class PIMDISTIRBUTIONServiceImpl extends ServiceImpl<PIMDISTIRBUTIONMappe
     @Lazy
     private cn.ibizlab.ehr.core.pim.service.IPIMPERSONService pimpersonService;
 
+    @Autowired
+    @Lazy
+    private cn.ibizlab.ehr.core.pim.service.logic.IPIMDISTIRBUTIONModInfoLogic modinfoLogic;
+
     private int batchSize = 500;
 
     @Override
@@ -95,6 +99,7 @@ public class PIMDISTIRBUTIONServiceImpl extends ServiceImpl<PIMDISTIRBUTIONMappe
         if(!update(et,(Wrapper) et.getUpdateWrapper(true).eq("pimdistirbutionid",et.getPimdistirbutionid())))
             return false;
         CachedBeanCopier.copy(get(et.getPimdistirbutionid()),et);
+        modinfoLogic.execute(et);
         return true;
     }
 
@@ -135,6 +140,13 @@ public class PIMDISTIRBUTIONServiceImpl extends ServiceImpl<PIMDISTIRBUTIONMappe
         } else {
             return checkKey(et) ? this.update(et) : this.create(et);
         }
+    }
+
+    @Override
+    public boolean saveBatch(Collection<PIMDISTIRBUTION> list) {
+        list.forEach(item->fillParentData(item));
+        saveOrUpdateBatch(list,batchSize);
+        return true;
     }
 
     @Override

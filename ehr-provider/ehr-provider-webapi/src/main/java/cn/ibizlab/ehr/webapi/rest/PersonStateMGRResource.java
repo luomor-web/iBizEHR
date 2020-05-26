@@ -6,10 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
-
 import lombok.extern.slf4j.Slf4j;
 import com.alibaba.fastjson.JSONObject;
-
 import javax.servlet.ServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cglib.beans.BeanCopier;
@@ -24,20 +22,15 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
-
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
-
 import cn.ibizlab.ehr.webapi.dto.*;
 import cn.ibizlab.ehr.webapi.mapping.*;
 import cn.ibizlab.ehr.core.pim.domain.PersonStateMGR;
 import cn.ibizlab.ehr.core.pim.service.IPersonStateMGRService;
 import cn.ibizlab.ehr.core.pim.filter.PersonStateMGRSearchContext;
-
-
-
 
 @Slf4j
 @Api(tags = {"PersonStateMGR" })
@@ -54,14 +47,14 @@ public class PersonStateMGRResource {
 
     public PersonStateMGRDTO permissionDTO=new PersonStateMGRDTO();
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PersonStateMGR-Save-all')")
+    @PreAuthorize("hasPermission('','Save',{'Sql',this.personstatemgrMapping,#personstatemgrdto})")
     @ApiOperation(value = "Save", tags = {"PersonStateMGR" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/personstatemgrs/save")
     public ResponseEntity<Boolean> save(@RequestBody PersonStateMGRDTO personstatemgrdto) {
         return ResponseEntity.status(HttpStatus.OK).body(personstatemgrService.save(personstatemgrMapping.toDomain(personstatemgrdto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.personstatemgrMapping,#personstatemgrdtos})")
     @ApiOperation(value = "SaveBatch", tags = {"PersonStateMGR" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/personstatemgrs/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PersonStateMGRDTO> personstatemgrdtos) {
@@ -103,7 +96,7 @@ public class PersonStateMGRResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.personstatemgrMapping,#personstatemgrdtos})")
     @ApiOperation(value = "createBatch", tags = {"PersonStateMGR" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/personstatemgrs/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PersonStateMGRDTO> personstatemgrdtos) {
@@ -116,14 +109,14 @@ public class PersonStateMGRResource {
 	@RequestMapping(method = RequestMethod.PUT, value = "/personstatemgrs/{personstatemgr_id}")
     @Transactional
     public ResponseEntity<PersonStateMGRDTO> update(@PathVariable("personstatemgr_id") String personstatemgr_id, @RequestBody PersonStateMGRDTO personstatemgrdto) {
-		PersonStateMGR domain = personstatemgrMapping.toDomain(personstatemgrdto);
-        domain.setPersonstatemgrid(personstatemgr_id);
-		personstatemgrService.update(domain);
-		PersonStateMGRDTO dto = personstatemgrMapping.toDto(domain);
+		PersonStateMGR domain  = personstatemgrMapping.toDomain(personstatemgrdto);
+        domain .setPersonstatemgrid(personstatemgr_id);
+		personstatemgrService.update(domain );
+		PersonStateMGRDTO dto = personstatemgrMapping.toDto(domain );
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.personstatemgrMapping,#personstatemgrdtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"PersonStateMGR" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/personstatemgrs/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PersonStateMGRDTO> personstatemgrdtos) {
@@ -139,7 +132,7 @@ public class PersonStateMGRResource {
          return ResponseEntity.status(HttpStatus.OK).body(personstatemgrService.remove(personstatemgr_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.personstatemgrMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"PersonStateMGR" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/personstatemgrs/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {

@@ -75,6 +75,12 @@ public class PimSearchFieldSetServiceImpl extends ServiceImpl<PimSearchFieldSetM
     }
 
     @Override
+    public boolean saveBatch(Collection<PimSearchFieldSet> list) {
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<PimSearchFieldSet> list) {
         saveOrUpdateBatch(list,batchSize);
     }

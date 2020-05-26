@@ -6,10 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
-
 import lombok.extern.slf4j.Slf4j;
 import com.alibaba.fastjson.JSONObject;
-
 import javax.servlet.ServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cglib.beans.BeanCopier;
@@ -24,20 +22,15 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
-
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
-
 import cn.ibizlab.ehr.webapi.dto.*;
 import cn.ibizlab.ehr.webapi.mapping.*;
 import cn.ibizlab.ehr.core.pcm.domain.PCMPROFILESPYY;
 import cn.ibizlab.ehr.core.pcm.service.IPCMPROFILESPYYService;
 import cn.ibizlab.ehr.core.pcm.filter.PCMPROFILESPYYSearchContext;
-
-
-
 
 @Slf4j
 @Api(tags = {"PCMPROFILESPYY" })
@@ -77,14 +70,14 @@ public class PCMPROFILESPYYResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILESPYY-Save-all')")
+    @PreAuthorize("hasPermission('','Save',{'Sql',this.pcmprofilespyyMapping,#pcmprofilespyydto})")
     @ApiOperation(value = "Save", tags = {"PCMPROFILESPYY" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofilespyys/save")
     public ResponseEntity<Boolean> save(@RequestBody PCMPROFILESPYYDTO pcmprofilespyydto) {
         return ResponseEntity.status(HttpStatus.OK).body(pcmprofilespyyService.save(pcmprofilespyyMapping.toDomain(pcmprofilespyydto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.pcmprofilespyyMapping,#pcmprofilespyydtos})")
     @ApiOperation(value = "SaveBatch", tags = {"PCMPROFILESPYY" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofilespyys/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PCMPROFILESPYYDTO> pcmprofilespyydtos) {
@@ -103,7 +96,7 @@ public class PCMPROFILESPYYResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.pcmprofilespyyMapping,#pcmprofilespyydtos})")
     @ApiOperation(value = "createBatch", tags = {"PCMPROFILESPYY" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofilespyys/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PCMPROFILESPYYDTO> pcmprofilespyydtos) {
@@ -116,14 +109,14 @@ public class PCMPROFILESPYYResource {
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmprofilespyys/{pcmprofilespyy_id}")
     @Transactional
     public ResponseEntity<PCMPROFILESPYYDTO> update(@PathVariable("pcmprofilespyy_id") String pcmprofilespyy_id, @RequestBody PCMPROFILESPYYDTO pcmprofilespyydto) {
-		PCMPROFILESPYY domain = pcmprofilespyyMapping.toDomain(pcmprofilespyydto);
-        domain.setPcmprofilespyyid(pcmprofilespyy_id);
-		pcmprofilespyyService.update(domain);
-		PCMPROFILESPYYDTO dto = pcmprofilespyyMapping.toDto(domain);
+		PCMPROFILESPYY domain  = pcmprofilespyyMapping.toDomain(pcmprofilespyydto);
+        domain .setPcmprofilespyyid(pcmprofilespyy_id);
+		pcmprofilespyyService.update(domain );
+		PCMPROFILESPYYDTO dto = pcmprofilespyyMapping.toDto(domain );
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.pcmprofilespyyMapping,#pcmprofilespyydtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"PCMPROFILESPYY" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmprofilespyys/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PCMPROFILESPYYDTO> pcmprofilespyydtos) {
@@ -139,7 +132,7 @@ public class PCMPROFILESPYYResource {
          return ResponseEntity.status(HttpStatus.OK).body(pcmprofilespyyService.remove(pcmprofilespyy_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.pcmprofilespyyMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"PCMPROFILESPYY" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmprofilespyys/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {

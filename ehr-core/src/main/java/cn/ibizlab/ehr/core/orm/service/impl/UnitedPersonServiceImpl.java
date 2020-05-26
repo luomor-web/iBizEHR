@@ -80,6 +80,12 @@ public class UnitedPersonServiceImpl extends ServiceImpl<UnitedPersonMapper, Uni
     }
 
     @Override
+    public boolean saveBatch(Collection<UnitedPerson> list) {
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<UnitedPerson> list) {
         saveOrUpdateBatch(list,batchSize);
     }

@@ -139,6 +139,13 @@ public class PIMARMYCADRESServiceImpl extends ServiceImpl<PIMARMYCADRESMapper, P
     }
 
     @Override
+    public boolean saveBatch(Collection<PIMARMYCADRES> list) {
+        list.forEach(item->fillParentData(item));
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<PIMARMYCADRES> list) {
         list.forEach(item->fillParentData(item));
         saveOrUpdateBatch(list,batchSize);

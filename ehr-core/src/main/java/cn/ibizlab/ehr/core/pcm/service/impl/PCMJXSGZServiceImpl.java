@@ -131,6 +131,12 @@ public class PCMJXSGZServiceImpl extends ServiceImpl<PCMJXSGZMapper, PCMJXSGZ> i
     }
 
     @Override
+    public boolean saveBatch(Collection<PCMJXSGZ> list) {
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<PCMJXSGZ> list) {
         saveOrUpdateBatch(list,batchSize);
     }

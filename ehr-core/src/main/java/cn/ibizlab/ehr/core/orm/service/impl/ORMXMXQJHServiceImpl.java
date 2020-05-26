@@ -96,6 +96,13 @@ public class ORMXMXQJHServiceImpl extends ServiceImpl<ORMXMXQJHMapper, ORMXMXQJH
     }
 
     @Override
+    public boolean saveBatch(Collection<ORMXMXQJH> list) {
+        list.forEach(item->fillParentData(item));
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<ORMXMXQJH> list) {
         list.forEach(item->fillParentData(item));
         saveOrUpdateBatch(list,batchSize);

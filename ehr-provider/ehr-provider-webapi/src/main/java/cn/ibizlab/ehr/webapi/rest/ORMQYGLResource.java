@@ -6,10 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
-
 import lombok.extern.slf4j.Slf4j;
 import com.alibaba.fastjson.JSONObject;
-
 import javax.servlet.ServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cglib.beans.BeanCopier;
@@ -24,20 +22,15 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
-
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
-
 import cn.ibizlab.ehr.webapi.dto.*;
 import cn.ibizlab.ehr.webapi.mapping.*;
 import cn.ibizlab.ehr.core.orm.domain.ORMQYGL;
 import cn.ibizlab.ehr.core.orm.service.IORMQYGLService;
 import cn.ibizlab.ehr.core.orm.filter.ORMQYGLSearchContext;
-
-
-
 
 @Slf4j
 @Api(tags = {"ORMQYGL" })
@@ -59,14 +52,14 @@ public class ORMQYGLResource {
 	@RequestMapping(method = RequestMethod.PUT, value = "/ormqygls/{ormqygl_id}")
     @Transactional
     public ResponseEntity<ORMQYGLDTO> update(@PathVariable("ormqygl_id") String ormqygl_id, @RequestBody ORMQYGLDTO ormqygldto) {
-		ORMQYGL domain = ormqyglMapping.toDomain(ormqygldto);
-        domain.setOrmqyglid(ormqygl_id);
-		ormqyglService.update(domain);
-		ORMQYGLDTO dto = ormqyglMapping.toDto(domain);
+		ORMQYGL domain  = ormqyglMapping.toDomain(ormqygldto);
+        domain .setOrmqyglid(ormqygl_id);
+		ormqyglService.update(domain );
+		ORMQYGLDTO dto = ormqyglMapping.toDto(domain );
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.ormqyglMapping,#ormqygldtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"ORMQYGL" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/ormqygls/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<ORMQYGLDTO> ormqygldtos) {
@@ -94,7 +87,7 @@ public class ORMQYGLResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.ormqyglMapping,#ormqygldtos})")
     @ApiOperation(value = "createBatch", tags = {"ORMQYGL" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormqygls/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<ORMQYGLDTO> ormqygldtos) {
@@ -117,7 +110,7 @@ public class ORMQYGLResource {
          return ResponseEntity.status(HttpStatus.OK).body(ormqyglService.remove(ormqygl_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.ormqyglMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"ORMQYGL" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/ormqygls/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -125,14 +118,14 @@ public class ORMQYGLResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMQYGL-Save-all')")
+    @PreAuthorize("hasPermission('','Save',{'Sql',this.ormqyglMapping,#ormqygldto})")
     @ApiOperation(value = "Save", tags = {"ORMQYGL" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormqygls/save")
     public ResponseEntity<Boolean> save(@RequestBody ORMQYGLDTO ormqygldto) {
         return ResponseEntity.status(HttpStatus.OK).body(ormqyglService.save(ormqyglMapping.toDomain(ormqygldto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.ormqyglMapping,#ormqygldtos})")
     @ApiOperation(value = "SaveBatch", tags = {"ORMQYGL" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormqygls/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<ORMQYGLDTO> ormqygldtos) {

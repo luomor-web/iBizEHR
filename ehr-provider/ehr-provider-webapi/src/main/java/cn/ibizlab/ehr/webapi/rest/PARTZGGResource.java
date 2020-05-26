@@ -6,10 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
-
 import lombok.extern.slf4j.Slf4j;
 import com.alibaba.fastjson.JSONObject;
-
 import javax.servlet.ServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cglib.beans.BeanCopier;
@@ -24,20 +22,15 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
-
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
-
 import cn.ibizlab.ehr.webapi.dto.*;
 import cn.ibizlab.ehr.webapi.mapping.*;
 import cn.ibizlab.ehr.core.par.domain.PARTZGG;
 import cn.ibizlab.ehr.core.par.service.IPARTZGGService;
 import cn.ibizlab.ehr.core.par.filter.PARTZGGSearchContext;
-
-
-
 
 @Slf4j
 @Api(tags = {"PARTZGG" })
@@ -69,7 +62,7 @@ public class PARTZGGResource {
          return ResponseEntity.status(HttpStatus.OK).body(partzggService.remove(partzgg_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.partzggMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"PARTZGG" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/partzggs/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -77,14 +70,14 @@ public class PARTZGGResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PARTZGG-Save-all')")
+    @PreAuthorize("hasPermission('','Save',{'Sql',this.partzggMapping,#partzggdto})")
     @ApiOperation(value = "Save", tags = {"PARTZGG" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/partzggs/save")
     public ResponseEntity<Boolean> save(@RequestBody PARTZGGDTO partzggdto) {
         return ResponseEntity.status(HttpStatus.OK).body(partzggService.save(partzggMapping.toDomain(partzggdto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.partzggMapping,#partzggdtos})")
     @ApiOperation(value = "SaveBatch", tags = {"PARTZGG" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/partzggs/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PARTZGGDTO> partzggdtos) {
@@ -103,7 +96,7 @@ public class PARTZGGResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.partzggMapping,#partzggdtos})")
     @ApiOperation(value = "createBatch", tags = {"PARTZGG" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/partzggs/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PARTZGGDTO> partzggdtos) {
@@ -132,14 +125,14 @@ public class PARTZGGResource {
 	@RequestMapping(method = RequestMethod.PUT, value = "/partzggs/{partzgg_id}")
     @Transactional
     public ResponseEntity<PARTZGGDTO> update(@PathVariable("partzgg_id") String partzgg_id, @RequestBody PARTZGGDTO partzggdto) {
-		PARTZGG domain = partzggMapping.toDomain(partzggdto);
-        domain.setPartzggid(partzgg_id);
-		partzggService.update(domain);
-		PARTZGGDTO dto = partzggMapping.toDto(domain);
+		PARTZGG domain  = partzggMapping.toDomain(partzggdto);
+        domain .setPartzggid(partzgg_id);
+		partzggService.update(domain );
+		PARTZGGDTO dto = partzggMapping.toDto(domain );
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.partzggMapping,#partzggdtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"PARTZGG" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/partzggs/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PARTZGGDTO> partzggdtos) {

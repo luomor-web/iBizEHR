@@ -6,10 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
-
 import lombok.extern.slf4j.Slf4j;
 import com.alibaba.fastjson.JSONObject;
-
 import javax.servlet.ServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cglib.beans.BeanCopier;
@@ -24,20 +22,15 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
-
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
-
 import cn.ibizlab.ehr.webapi.dto.*;
 import cn.ibizlab.ehr.webapi.mapping.*;
 import cn.ibizlab.ehr.core.sal.domain.SALSALARYDETAIL;
 import cn.ibizlab.ehr.core.sal.service.ISALSALARYDETAILService;
 import cn.ibizlab.ehr.core.sal.filter.SALSALARYDETAILSearchContext;
-
-
-
 
 @Slf4j
 @Api(tags = {"SALSALARYDETAIL" })
@@ -59,14 +52,14 @@ public class SALSALARYDETAILResource {
 	@RequestMapping(method = RequestMethod.PUT, value = "/salsalarydetails/{salsalarydetail_id}")
     @Transactional
     public ResponseEntity<SALSALARYDETAILDTO> update(@PathVariable("salsalarydetail_id") String salsalarydetail_id, @RequestBody SALSALARYDETAILDTO salsalarydetaildto) {
-		SALSALARYDETAIL domain = salsalarydetailMapping.toDomain(salsalarydetaildto);
-        domain.setSalsalarydetailid(salsalarydetail_id);
-		salsalarydetailService.update(domain);
-		SALSALARYDETAILDTO dto = salsalarydetailMapping.toDto(domain);
+		SALSALARYDETAIL domain  = salsalarydetailMapping.toDomain(salsalarydetaildto);
+        domain .setSalsalarydetailid(salsalarydetail_id);
+		salsalarydetailService.update(domain );
+		SALSALARYDETAILDTO dto = salsalarydetailMapping.toDto(domain );
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.salsalarydetailMapping,#salsalarydetaildtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"SALSALARYDETAIL" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/salsalarydetails/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<SALSALARYDETAILDTO> salsalarydetaildtos) {
@@ -85,7 +78,7 @@ public class SALSALARYDETAILResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.salsalarydetailMapping,#salsalarydetaildtos})")
     @ApiOperation(value = "createBatch", tags = {"SALSALARYDETAIL" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/salsalarydetails/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<SALSALARYDETAILDTO> salsalarydetaildtos) {
@@ -108,7 +101,7 @@ public class SALSALARYDETAILResource {
          return ResponseEntity.status(HttpStatus.OK).body(salsalarydetailService.remove(salsalarydetail_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.salsalarydetailMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"SALSALARYDETAIL" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/salsalarydetails/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -132,14 +125,14 @@ public class SALSALARYDETAILResource {
         return  ResponseEntity.status(HttpStatus.OK).body(salsalarydetailService.checkKey(salsalarydetailMapping.toDomain(salsalarydetaildto)));
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALSALARYDETAIL-Save-all')")
+    @PreAuthorize("hasPermission('','Save',{'Sql',this.salsalarydetailMapping,#salsalarydetaildto})")
     @ApiOperation(value = "Save", tags = {"SALSALARYDETAIL" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/salsalarydetails/save")
     public ResponseEntity<Boolean> save(@RequestBody SALSALARYDETAILDTO salsalarydetaildto) {
         return ResponseEntity.status(HttpStatus.OK).body(salsalarydetailService.save(salsalarydetailMapping.toDomain(salsalarydetaildto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.salsalarydetailMapping,#salsalarydetaildtos})")
     @ApiOperation(value = "SaveBatch", tags = {"SALSALARYDETAIL" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/salsalarydetails/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<SALSALARYDETAILDTO> salsalarydetaildtos) {

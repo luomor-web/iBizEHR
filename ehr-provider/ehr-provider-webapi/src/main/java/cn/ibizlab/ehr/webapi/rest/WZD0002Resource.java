@@ -6,10 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
-
 import lombok.extern.slf4j.Slf4j;
 import com.alibaba.fastjson.JSONObject;
-
 import javax.servlet.ServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cglib.beans.BeanCopier;
@@ -24,20 +22,15 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
-
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
-
 import cn.ibizlab.ehr.webapi.dto.*;
 import cn.ibizlab.ehr.webapi.mapping.*;
 import cn.ibizlab.ehr.core.trm.domain.WZD0002;
 import cn.ibizlab.ehr.core.trm.service.IWZD0002Service;
 import cn.ibizlab.ehr.core.trm.filter.WZD0002SearchContext;
-
-
-
 
 @Slf4j
 @Api(tags = {"WZD0002" })
@@ -62,7 +55,7 @@ public class WZD0002Resource {
          return ResponseEntity.status(HttpStatus.OK).body(wzd0002Service.remove(wzd0002_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.wzd0002Mapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"WZD0002" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/wzd0002s/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -70,14 +63,14 @@ public class WZD0002Resource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WZD0002-Save-all')")
+    @PreAuthorize("hasPermission('','Save',{'Sql',this.wzd0002Mapping,#wzd0002dto})")
     @ApiOperation(value = "Save", tags = {"WZD0002" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/wzd0002s/save")
     public ResponseEntity<Boolean> save(@RequestBody WZD0002DTO wzd0002dto) {
         return ResponseEntity.status(HttpStatus.OK).body(wzd0002Service.save(wzd0002Mapping.toDomain(wzd0002dto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.wzd0002Mapping,#wzd0002dtos})")
     @ApiOperation(value = "SaveBatch", tags = {"WZD0002" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/wzd0002s/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<WZD0002DTO> wzd0002dtos) {
@@ -119,7 +112,7 @@ public class WZD0002Resource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.wzd0002Mapping,#wzd0002dtos})")
     @ApiOperation(value = "createBatch", tags = {"WZD0002" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/wzd0002s/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<WZD0002DTO> wzd0002dtos) {
@@ -132,14 +125,14 @@ public class WZD0002Resource {
 	@RequestMapping(method = RequestMethod.PUT, value = "/wzd0002s/{wzd0002_id}")
     @Transactional
     public ResponseEntity<WZD0002DTO> update(@PathVariable("wzd0002_id") String wzd0002_id, @RequestBody WZD0002DTO wzd0002dto) {
-		WZD0002 domain = wzd0002Mapping.toDomain(wzd0002dto);
-        domain.setWzd0002id(wzd0002_id);
-		wzd0002Service.update(domain);
-		WZD0002DTO dto = wzd0002Mapping.toDto(domain);
+		WZD0002 domain  = wzd0002Mapping.toDomain(wzd0002dto);
+        domain .setWzd0002id(wzd0002_id);
+		wzd0002Service.update(domain );
+		WZD0002DTO dto = wzd0002Mapping.toDto(domain );
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.wzd0002Mapping,#wzd0002dtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"WZD0002" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/wzd0002s/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<WZD0002DTO> wzd0002dtos) {

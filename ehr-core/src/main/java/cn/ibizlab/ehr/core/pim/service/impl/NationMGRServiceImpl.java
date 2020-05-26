@@ -68,6 +68,12 @@ public class NationMGRServiceImpl extends ServiceImpl<NationMGRMapper, NationMGR
     }
 
     @Override
+    public boolean saveBatch(Collection<NationMGR> list) {
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<NationMGR> list) {
         saveOrUpdateBatch(list,batchSize);
     }

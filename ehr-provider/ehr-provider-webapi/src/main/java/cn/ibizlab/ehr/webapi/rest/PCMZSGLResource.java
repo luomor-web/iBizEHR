@@ -6,10 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
-
 import lombok.extern.slf4j.Slf4j;
 import com.alibaba.fastjson.JSONObject;
-
 import javax.servlet.ServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cglib.beans.BeanCopier;
@@ -24,20 +22,15 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
-
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
-
 import cn.ibizlab.ehr.webapi.dto.*;
 import cn.ibizlab.ehr.webapi.mapping.*;
 import cn.ibizlab.ehr.core.pcm.domain.PCMZSGL;
 import cn.ibizlab.ehr.core.pcm.service.IPCMZSGLService;
 import cn.ibizlab.ehr.core.pcm.filter.PCMZSGLSearchContext;
-
-
-
 
 @Slf4j
 @Api(tags = {"PCMZSGL" })
@@ -62,7 +55,7 @@ public class PCMZSGLResource {
          return ResponseEntity.status(HttpStatus.OK).body(pcmzsglService.remove(pcmzsgl_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.pcmzsglMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"PCMZSGL" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmzsgls/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -98,14 +91,14 @@ public class PCMZSGLResource {
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmzsgls/{pcmzsgl_id}")
     @Transactional
     public ResponseEntity<PCMZSGLDTO> update(@PathVariable("pcmzsgl_id") String pcmzsgl_id, @RequestBody PCMZSGLDTO pcmzsgldto) {
-		PCMZSGL domain = pcmzsglMapping.toDomain(pcmzsgldto);
-        domain.setPcmzsglid(pcmzsgl_id);
-		pcmzsglService.update(domain);
-		PCMZSGLDTO dto = pcmzsglMapping.toDto(domain);
+		PCMZSGL domain  = pcmzsglMapping.toDomain(pcmzsgldto);
+        domain .setPcmzsglid(pcmzsgl_id);
+		pcmzsglService.update(domain );
+		PCMZSGLDTO dto = pcmzsglMapping.toDto(domain );
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.pcmzsglMapping,#pcmzsgldtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"PCMZSGL" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmzsgls/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PCMZSGLDTO> pcmzsgldtos) {
@@ -113,14 +106,14 @@ public class PCMZSGLResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMZSGL-Save-all')")
+    @PreAuthorize("hasPermission('','Save',{'Sql',this.pcmzsglMapping,#pcmzsgldto})")
     @ApiOperation(value = "Save", tags = {"PCMZSGL" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmzsgls/save")
     public ResponseEntity<Boolean> save(@RequestBody PCMZSGLDTO pcmzsgldto) {
         return ResponseEntity.status(HttpStatus.OK).body(pcmzsglService.save(pcmzsglMapping.toDomain(pcmzsgldto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.pcmzsglMapping,#pcmzsgldtos})")
     @ApiOperation(value = "SaveBatch", tags = {"PCMZSGL" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmzsgls/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PCMZSGLDTO> pcmzsgldtos) {
@@ -139,7 +132,7 @@ public class PCMZSGLResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.pcmzsglMapping,#pcmzsgldtos})")
     @ApiOperation(value = "createBatch", tags = {"PCMZSGL" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmzsgls/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PCMZSGLDTO> pcmzsgldtos) {

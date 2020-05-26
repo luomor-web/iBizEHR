@@ -108,6 +108,13 @@ public class SALRULEDETAILServiceImpl extends ServiceImpl<SALRULEDETAILMapper, S
     }
 
     @Override
+    public boolean saveBatch(Collection<SALRULEDETAIL> list) {
+        list.forEach(item->fillParentData(item));
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<SALRULEDETAIL> list) {
         list.forEach(item->fillParentData(item));
         saveOrUpdateBatch(list,batchSize);

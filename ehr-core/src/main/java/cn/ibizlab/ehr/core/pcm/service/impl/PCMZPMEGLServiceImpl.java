@@ -91,6 +91,13 @@ public class PCMZPMEGLServiceImpl extends ServiceImpl<PCMZPMEGLMapper, PCMZPMEGL
     }
 
     @Override
+    public boolean saveBatch(Collection<PCMZPMEGL> list) {
+        list.forEach(item->fillParentData(item));
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<PCMZPMEGL> list) {
         list.forEach(item->fillParentData(item));
         saveOrUpdateBatch(list,batchSize);

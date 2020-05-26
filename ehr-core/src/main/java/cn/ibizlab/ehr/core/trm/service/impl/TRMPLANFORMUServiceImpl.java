@@ -80,6 +80,13 @@ public class TRMPLANFORMUServiceImpl extends ServiceImpl<TRMPLANFORMUMapper, TRM
     }
 
     @Override
+    public boolean saveBatch(Collection<TRMPLANFORMU> list) {
+        list.forEach(item->fillParentData(item));
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<TRMPLANFORMU> list) {
         list.forEach(item->fillParentData(item));
         saveOrUpdateBatch(list,batchSize);

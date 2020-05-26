@@ -123,6 +123,13 @@ public class TRMSTAFFNODESServiceImpl extends ServiceImpl<TRMSTAFFNODESMapper, T
     }
 
     @Override
+    public boolean saveBatch(Collection<TRMSTAFFNODES> list) {
+        list.forEach(item->fillParentData(item));
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<TRMSTAFFNODES> list) {
         list.forEach(item->fillParentData(item));
         saveOrUpdateBatch(list,batchSize);

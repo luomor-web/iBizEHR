@@ -83,6 +83,12 @@ public class ORMPostLibServiceImpl extends ServiceImpl<ORMPostLibMapper, ORMPost
     }
 
     @Override
+    public boolean saveBatch(Collection<ORMPostLib> list) {
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<ORMPostLib> list) {
         saveOrUpdateBatch(list,batchSize);
     }

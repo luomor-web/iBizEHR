@@ -6,10 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
-
 import lombok.extern.slf4j.Slf4j;
 import com.alibaba.fastjson.JSONObject;
-
 import javax.servlet.ServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cglib.beans.BeanCopier;
@@ -24,20 +22,15 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
-
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
-
 import cn.ibizlab.ehr.webapi.dto.*;
 import cn.ibizlab.ehr.webapi.mapping.*;
 import cn.ibizlab.ehr.core.orm.domain.ORMEDITION;
 import cn.ibizlab.ehr.core.orm.service.IORMEDITIONService;
 import cn.ibizlab.ehr.core.orm.filter.ORMEDITIONSearchContext;
-
-
-
 
 @Slf4j
 @Api(tags = {"ORMEDITION" })
@@ -62,7 +55,7 @@ public class ORMEDITIONResource {
          return ResponseEntity.status(HttpStatus.OK).body(ormeditionService.remove(ormedition_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.ormeditionMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"ORMEDITION" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/ormeditions/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -81,7 +74,7 @@ public class ORMEDITIONResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.ormeditionMapping,#ormeditiondtos})")
     @ApiOperation(value = "createBatch", tags = {"ORMEDITION" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormeditions/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<ORMEDITIONDTO> ormeditiondtos) {
@@ -89,14 +82,14 @@ public class ORMEDITIONResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMEDITION-Save-all')")
+    @PreAuthorize("hasPermission('','Save',{'Sql',this.ormeditionMapping,#ormeditiondto})")
     @ApiOperation(value = "Save", tags = {"ORMEDITION" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormeditions/save")
     public ResponseEntity<Boolean> save(@RequestBody ORMEDITIONDTO ormeditiondto) {
         return ResponseEntity.status(HttpStatus.OK).body(ormeditionService.save(ormeditionMapping.toDomain(ormeditiondto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.ormeditionMapping,#ormeditiondtos})")
     @ApiOperation(value = "SaveBatch", tags = {"ORMEDITION" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormeditions/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<ORMEDITIONDTO> ormeditiondtos) {
@@ -116,14 +109,14 @@ public class ORMEDITIONResource {
 	@RequestMapping(method = RequestMethod.PUT, value = "/ormeditions/{ormedition_id}")
     @Transactional
     public ResponseEntity<ORMEDITIONDTO> update(@PathVariable("ormedition_id") String ormedition_id, @RequestBody ORMEDITIONDTO ormeditiondto) {
-		ORMEDITION domain = ormeditionMapping.toDomain(ormeditiondto);
-        domain.setOrmeditionid(ormedition_id);
-		ormeditionService.update(domain);
-		ORMEDITIONDTO dto = ormeditionMapping.toDto(domain);
+		ORMEDITION domain  = ormeditionMapping.toDomain(ormeditiondto);
+        domain .setOrmeditionid(ormedition_id);
+		ormeditionService.update(domain );
+		ORMEDITIONDTO dto = ormeditionMapping.toDto(domain );
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.ormeditionMapping,#ormeditiondtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"ORMEDITION" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/ormeditions/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<ORMEDITIONDTO> ormeditiondtos) {

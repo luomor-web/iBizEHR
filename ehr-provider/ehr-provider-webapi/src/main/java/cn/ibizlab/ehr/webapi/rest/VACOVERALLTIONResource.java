@@ -6,10 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
-
 import lombok.extern.slf4j.Slf4j;
 import com.alibaba.fastjson.JSONObject;
-
 import javax.servlet.ServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cglib.beans.BeanCopier;
@@ -24,20 +22,15 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
-
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
-
 import cn.ibizlab.ehr.webapi.dto.*;
 import cn.ibizlab.ehr.webapi.mapping.*;
 import cn.ibizlab.ehr.core.vac.domain.VACOVERALLTION;
 import cn.ibizlab.ehr.core.vac.service.IVACOVERALLTIONService;
 import cn.ibizlab.ehr.core.vac.filter.VACOVERALLTIONSearchContext;
-
-
-
 
 @Slf4j
 @Api(tags = {"VACOVERALLTION" })
@@ -61,14 +54,14 @@ public class VACOVERALLTIONResource {
         return ResponseEntity.status(HttpStatus.OK).body(vacoveralltionMapping.toDto(vacoveralltionService.getDraft(new VACOVERALLTION())));
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACOVERALLTION-Save-all')")
+    @PreAuthorize("hasPermission('','Save',{'Sql',this.vacoveralltionMapping,#vacoveralltiondto})")
     @ApiOperation(value = "Save", tags = {"VACOVERALLTION" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacoveralltions/save")
     public ResponseEntity<Boolean> save(@RequestBody VACOVERALLTIONDTO vacoveralltiondto) {
         return ResponseEntity.status(HttpStatus.OK).body(vacoveralltionService.save(vacoveralltionMapping.toDomain(vacoveralltiondto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.vacoveralltionMapping,#vacoveralltiondtos})")
     @ApiOperation(value = "SaveBatch", tags = {"VACOVERALLTION" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacoveralltions/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<VACOVERALLTIONDTO> vacoveralltiondtos) {
@@ -88,14 +81,14 @@ public class VACOVERALLTIONResource {
 	@RequestMapping(method = RequestMethod.PUT, value = "/vacoveralltions/{vacoveralltion_id}")
     @Transactional
     public ResponseEntity<VACOVERALLTIONDTO> update(@PathVariable("vacoveralltion_id") String vacoveralltion_id, @RequestBody VACOVERALLTIONDTO vacoveralltiondto) {
-		VACOVERALLTION domain = vacoveralltionMapping.toDomain(vacoveralltiondto);
-        domain.setVacoveralltionid(vacoveralltion_id);
-		vacoveralltionService.update(domain);
-		VACOVERALLTIONDTO dto = vacoveralltionMapping.toDto(domain);
+		VACOVERALLTION domain  = vacoveralltionMapping.toDomain(vacoveralltiondto);
+        domain .setVacoveralltionid(vacoveralltion_id);
+		vacoveralltionService.update(domain );
+		VACOVERALLTIONDTO dto = vacoveralltionMapping.toDto(domain );
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.vacoveralltionMapping,#vacoveralltiondtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"VACOVERALLTION" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/vacoveralltions/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<VACOVERALLTIONDTO> vacoveralltiondtos) {
@@ -111,7 +104,7 @@ public class VACOVERALLTIONResource {
          return ResponseEntity.status(HttpStatus.OK).body(vacoveralltionService.remove(vacoveralltion_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.vacoveralltionMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"VACOVERALLTION" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/vacoveralltions/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -130,7 +123,7 @@ public class VACOVERALLTIONResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.vacoveralltionMapping,#vacoveralltiondtos})")
     @ApiOperation(value = "createBatch", tags = {"VACOVERALLTION" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacoveralltions/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<VACOVERALLTIONDTO> vacoveralltiondtos) {

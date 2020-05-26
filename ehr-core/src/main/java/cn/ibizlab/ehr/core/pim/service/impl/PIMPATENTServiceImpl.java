@@ -122,6 +122,13 @@ public class PIMPATENTServiceImpl extends ServiceImpl<PIMPATENTMapper, PIMPATENT
     }
 
     @Override
+    public boolean saveBatch(Collection<PIMPATENT> list) {
+        list.forEach(item->fillParentData(item));
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<PIMPATENT> list) {
         list.forEach(item->fillParentData(item));
         saveOrUpdateBatch(list,batchSize);

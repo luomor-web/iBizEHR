@@ -110,6 +110,13 @@ public class TRMAGENCYRECORDServiceImpl extends ServiceImpl<TRMAGENCYRECORDMappe
     }
 
     @Override
+    public boolean saveBatch(Collection<TRMAGENCYRECORD> list) {
+        list.forEach(item->fillParentData(item));
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<TRMAGENCYRECORD> list) {
         list.forEach(item->fillParentData(item));
         saveOrUpdateBatch(list,batchSize);

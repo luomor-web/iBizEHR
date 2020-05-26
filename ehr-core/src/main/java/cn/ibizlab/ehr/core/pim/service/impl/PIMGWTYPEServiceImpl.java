@@ -68,6 +68,12 @@ public class PIMGWTYPEServiceImpl extends ServiceImpl<PIMGWTYPEMapper, PIMGWTYPE
     }
 
     @Override
+    public boolean saveBatch(Collection<PIMGWTYPE> list) {
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<PIMGWTYPE> list) {
         saveOrUpdateBatch(list,batchSize);
     }

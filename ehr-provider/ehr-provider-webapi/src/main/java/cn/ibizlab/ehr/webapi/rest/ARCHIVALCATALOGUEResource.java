@@ -6,10 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
-
 import lombok.extern.slf4j.Slf4j;
 import com.alibaba.fastjson.JSONObject;
-
 import javax.servlet.ServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cglib.beans.BeanCopier;
@@ -24,20 +22,15 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
-
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
-
 import cn.ibizlab.ehr.webapi.dto.*;
 import cn.ibizlab.ehr.webapi.mapping.*;
 import cn.ibizlab.ehr.core.pim.domain.ARCHIVALCATALOGUE;
 import cn.ibizlab.ehr.core.pim.service.IARCHIVALCATALOGUEService;
 import cn.ibizlab.ehr.core.pim.filter.ARCHIVALCATALOGUESearchContext;
-
-
-
 
 @Slf4j
 @Api(tags = {"ARCHIVALCATALOGUE" })
@@ -54,14 +47,14 @@ public class ARCHIVALCATALOGUEResource {
 
     public ARCHIVALCATALOGUEDTO permissionDTO=new ARCHIVALCATALOGUEDTO();
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ARCHIVALCATALOGUE-Save-all')")
+    @PreAuthorize("hasPermission('','Save',{'Sql',this.archivalcatalogueMapping,#archivalcataloguedto})")
     @ApiOperation(value = "Save", tags = {"ARCHIVALCATALOGUE" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/archivalcatalogues/save")
     public ResponseEntity<Boolean> save(@RequestBody ARCHIVALCATALOGUEDTO archivalcataloguedto) {
         return ResponseEntity.status(HttpStatus.OK).body(archivalcatalogueService.save(archivalcatalogueMapping.toDomain(archivalcataloguedto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.archivalcatalogueMapping,#archivalcataloguedtos})")
     @ApiOperation(value = "SaveBatch", tags = {"ARCHIVALCATALOGUE" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/archivalcatalogues/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<ARCHIVALCATALOGUEDTO> archivalcataloguedtos) {
@@ -100,7 +93,7 @@ public class ARCHIVALCATALOGUEResource {
          return ResponseEntity.status(HttpStatus.OK).body(archivalcatalogueService.remove(archivalcatalogue_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.archivalcatalogueMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"ARCHIVALCATALOGUE" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/archivalcatalogues/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -113,14 +106,14 @@ public class ARCHIVALCATALOGUEResource {
 	@RequestMapping(method = RequestMethod.PUT, value = "/archivalcatalogues/{archivalcatalogue_id}")
     @Transactional
     public ResponseEntity<ARCHIVALCATALOGUEDTO> update(@PathVariable("archivalcatalogue_id") String archivalcatalogue_id, @RequestBody ARCHIVALCATALOGUEDTO archivalcataloguedto) {
-		ARCHIVALCATALOGUE domain = archivalcatalogueMapping.toDomain(archivalcataloguedto);
-        domain.setArchivalcatalogueid(archivalcatalogue_id);
-		archivalcatalogueService.update(domain);
-		ARCHIVALCATALOGUEDTO dto = archivalcatalogueMapping.toDto(domain);
+		ARCHIVALCATALOGUE domain  = archivalcatalogueMapping.toDomain(archivalcataloguedto);
+        domain .setArchivalcatalogueid(archivalcatalogue_id);
+		archivalcatalogueService.update(domain );
+		ARCHIVALCATALOGUEDTO dto = archivalcatalogueMapping.toDto(domain );
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.archivalcatalogueMapping,#archivalcataloguedtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"ARCHIVALCATALOGUE" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/archivalcatalogues/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<ARCHIVALCATALOGUEDTO> archivalcataloguedtos) {
@@ -139,7 +132,7 @@ public class ARCHIVALCATALOGUEResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.archivalcatalogueMapping,#archivalcataloguedtos})")
     @ApiOperation(value = "createBatch", tags = {"ARCHIVALCATALOGUE" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/archivalcatalogues/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<ARCHIVALCATALOGUEDTO> archivalcataloguedtos) {

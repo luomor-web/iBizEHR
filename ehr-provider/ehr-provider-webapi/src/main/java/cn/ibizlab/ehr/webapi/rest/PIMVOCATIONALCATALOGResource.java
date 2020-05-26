@@ -6,10 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
-
 import lombok.extern.slf4j.Slf4j;
 import com.alibaba.fastjson.JSONObject;
-
 import javax.servlet.ServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cglib.beans.BeanCopier;
@@ -24,20 +22,15 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
-
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
-
 import cn.ibizlab.ehr.webapi.dto.*;
 import cn.ibizlab.ehr.webapi.mapping.*;
 import cn.ibizlab.ehr.core.pim.domain.PIMVOCATIONALCATALOG;
 import cn.ibizlab.ehr.core.pim.service.IPIMVOCATIONALCATALOGService;
 import cn.ibizlab.ehr.core.pim.filter.PIMVOCATIONALCATALOGSearchContext;
-
-
-
 
 @Slf4j
 @Api(tags = {"PIMVOCATIONALCATALOG" })
@@ -54,14 +47,14 @@ public class PIMVOCATIONALCATALOGResource {
 
     public PIMVOCATIONALCATALOGDTO permissionDTO=new PIMVOCATIONALCATALOGDTO();
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMVOCATIONALCATALOG-Save-all')")
+    @PreAuthorize("hasPermission('','Save',{'Sql',this.pimvocationalcatalogMapping,#pimvocationalcatalogdto})")
     @ApiOperation(value = "Save", tags = {"PIMVOCATIONALCATALOG" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimvocationalcatalogs/save")
     public ResponseEntity<Boolean> save(@RequestBody PIMVOCATIONALCATALOGDTO pimvocationalcatalogdto) {
         return ResponseEntity.status(HttpStatus.OK).body(pimvocationalcatalogService.save(pimvocationalcatalogMapping.toDomain(pimvocationalcatalogdto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.pimvocationalcatalogMapping,#pimvocationalcatalogdtos})")
     @ApiOperation(value = "SaveBatch", tags = {"PIMVOCATIONALCATALOG" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimvocationalcatalogs/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PIMVOCATIONALCATALOGDTO> pimvocationalcatalogdtos) {
@@ -97,14 +90,14 @@ public class PIMVOCATIONALCATALOGResource {
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimvocationalcatalogs/{pimvocationalcatalog_id}")
     @Transactional
     public ResponseEntity<PIMVOCATIONALCATALOGDTO> update(@PathVariable("pimvocationalcatalog_id") String pimvocationalcatalog_id, @RequestBody PIMVOCATIONALCATALOGDTO pimvocationalcatalogdto) {
-		PIMVOCATIONALCATALOG domain = pimvocationalcatalogMapping.toDomain(pimvocationalcatalogdto);
-        domain.setPimvocationalcatalogid(pimvocationalcatalog_id);
-		pimvocationalcatalogService.update(domain);
-		PIMVOCATIONALCATALOGDTO dto = pimvocationalcatalogMapping.toDto(domain);
+		PIMVOCATIONALCATALOG domain  = pimvocationalcatalogMapping.toDomain(pimvocationalcatalogdto);
+        domain .setPimvocationalcatalogid(pimvocationalcatalog_id);
+		pimvocationalcatalogService.update(domain );
+		PIMVOCATIONALCATALOGDTO dto = pimvocationalcatalogMapping.toDto(domain );
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.pimvocationalcatalogMapping,#pimvocationalcatalogdtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"PIMVOCATIONALCATALOG" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimvocationalcatalogs/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PIMVOCATIONALCATALOGDTO> pimvocationalcatalogdtos) {
@@ -123,7 +116,7 @@ public class PIMVOCATIONALCATALOGResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.pimvocationalcatalogMapping,#pimvocationalcatalogdtos})")
     @ApiOperation(value = "createBatch", tags = {"PIMVOCATIONALCATALOG" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimvocationalcatalogs/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PIMVOCATIONALCATALOGDTO> pimvocationalcatalogdtos) {
@@ -139,7 +132,7 @@ public class PIMVOCATIONALCATALOGResource {
          return ResponseEntity.status(HttpStatus.OK).body(pimvocationalcatalogService.remove(pimvocationalcatalog_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.pimvocationalcatalogMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"PIMVOCATIONALCATALOG" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimvocationalcatalogs/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {

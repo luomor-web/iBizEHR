@@ -384,7 +384,6 @@ export default class TreeService extends ControlService {
                         Object.assign(treeNode, { id: strNodeId });
                         Object.assign(treeNode, { expanded: true });
                         Object.assign(treeNode, { leaf: false });
-                        Object.assign(treeNode, { navfilter: "n_ormorgid_eq" });
                         Object.assign(treeNode, { navparams: '{}' });
                         Object.assign(treeNode, { nodeid: treeNode.srfkey });
                         Object.assign(treeNode, { nodeid2: filter.strRealNodeId });

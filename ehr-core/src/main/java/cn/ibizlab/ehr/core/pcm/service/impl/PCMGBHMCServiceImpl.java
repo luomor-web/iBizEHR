@@ -133,6 +133,12 @@ public class PCMGBHMCServiceImpl extends ServiceImpl<PCMGBHMCMapper, PCMGBHMC> i
     }
 
     @Override
+    public boolean saveBatch(Collection<PCMGBHMC> list) {
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<PCMGBHMC> list) {
         saveOrUpdateBatch(list,batchSize);
     }

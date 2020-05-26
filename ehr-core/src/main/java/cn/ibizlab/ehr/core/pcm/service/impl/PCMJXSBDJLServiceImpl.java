@@ -126,6 +126,13 @@ public class PCMJXSBDJLServiceImpl extends ServiceImpl<PCMJXSBDJLMapper, PCMJXSB
     }
 
     @Override
+    public boolean saveBatch(Collection<PCMJXSBDJL> list) {
+        list.forEach(item->fillParentData(item));
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<PCMJXSBDJL> list) {
         list.forEach(item->fillParentData(item));
         saveOrUpdateBatch(list,batchSize);

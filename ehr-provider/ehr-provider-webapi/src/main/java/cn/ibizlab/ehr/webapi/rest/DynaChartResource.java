@@ -6,10 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
-
 import lombok.extern.slf4j.Slf4j;
 import com.alibaba.fastjson.JSONObject;
-
 import javax.servlet.ServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cglib.beans.BeanCopier;
@@ -24,20 +22,15 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
-
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
-
 import cn.ibizlab.ehr.webapi.dto.*;
 import cn.ibizlab.ehr.webapi.mapping.*;
 import cn.ibizlab.ehr.core.r7rt_dyna.domain.DynaChart;
 import cn.ibizlab.ehr.core.r7rt_dyna.service.IDynaChartService;
 import cn.ibizlab.ehr.core.r7rt_dyna.filter.DynaChartSearchContext;
-
-
-
 
 @Slf4j
 @Api(tags = {"DynaChart" })
@@ -82,14 +75,14 @@ public class DynaChartResource {
 	@RequestMapping(method = RequestMethod.PUT, value = "/dynacharts/{dynachart_id}")
 
     public ResponseEntity<DynaChartDTO> update(@PathVariable("dynachart_id") String dynachart_id, @RequestBody DynaChartDTO dynachartdto) {
-		DynaChart domain = dynachartMapping.toDomain(dynachartdto);
-        domain.setDynachartid(dynachart_id);
-		dynachartService.update(domain);
-		DynaChartDTO dto = dynachartMapping.toDto(domain);
+		DynaChart domain  = dynachartMapping.toDomain(dynachartdto);
+        domain .setDynachartid(dynachart_id);
+		dynachartService.update(domain );
+		DynaChartDTO dto = dynachartMapping.toDto(domain );
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'ServiceApi',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'ServiceApi',this.dynachartMapping,#dynachartdtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"DynaChart" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/dynacharts/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<DynaChartDTO> dynachartdtos) {
@@ -105,7 +98,7 @@ public class DynaChartResource {
          return ResponseEntity.status(HttpStatus.OK).body(dynachartService.remove(dynachart_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'ServiceApi',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'ServiceApi',this.dynachartMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"DynaChart" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/dynacharts/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -124,7 +117,7 @@ public class DynaChartResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'ServiceApi',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'ServiceApi',this.dynachartMapping,#dynachartdtos})")
     @ApiOperation(value = "createBatch", tags = {"DynaChart" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/dynacharts/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<DynaChartDTO> dynachartdtos) {
@@ -132,14 +125,14 @@ public class DynaChartResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DynaChart-Save-all')")
+    @PreAuthorize("hasPermission('','Save',{'ServiceApi',this.dynachartMapping,#dynachartdto})")
     @ApiOperation(value = "Save", tags = {"DynaChart" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/dynacharts/save")
     public ResponseEntity<Boolean> save(@RequestBody DynaChartDTO dynachartdto) {
         return ResponseEntity.status(HttpStatus.OK).body(dynachartService.save(dynachartMapping.toDomain(dynachartdto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'ServiceApi',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'ServiceApi',this.dynachartMapping,#dynachartdtos})")
     @ApiOperation(value = "SaveBatch", tags = {"DynaChart" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/dynacharts/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<DynaChartDTO> dynachartdtos) {

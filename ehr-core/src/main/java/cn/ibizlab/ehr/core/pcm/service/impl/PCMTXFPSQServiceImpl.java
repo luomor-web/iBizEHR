@@ -153,6 +153,13 @@ public class PCMTXFPSQServiceImpl extends ServiceImpl<PCMTXFPSQMapper, PCMTXFPSQ
     }
 
     @Override
+    public boolean saveBatch(Collection<PCMTXFPSQ> list) {
+        list.forEach(item->fillParentData(item));
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<PCMTXFPSQ> list) {
         list.forEach(item->fillParentData(item));
         saveOrUpdateBatch(list,batchSize);

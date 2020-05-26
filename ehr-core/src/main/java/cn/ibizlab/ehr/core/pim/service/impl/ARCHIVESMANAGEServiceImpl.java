@@ -113,6 +113,12 @@ public class ARCHIVESMANAGEServiceImpl extends ServiceImpl<ARCHIVESMANAGEMapper,
     }
 
     @Override
+    public boolean saveBatch(Collection<ARCHIVESMANAGE> list) {
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<ARCHIVESMANAGE> list) {
         saveOrUpdateBatch(list,batchSize);
     }

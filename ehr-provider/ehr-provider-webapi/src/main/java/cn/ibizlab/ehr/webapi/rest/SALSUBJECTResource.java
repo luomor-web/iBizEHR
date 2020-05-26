@@ -6,10 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
-
 import lombok.extern.slf4j.Slf4j;
 import com.alibaba.fastjson.JSONObject;
-
 import javax.servlet.ServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cglib.beans.BeanCopier;
@@ -24,20 +22,15 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
-
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
-
 import cn.ibizlab.ehr.webapi.dto.*;
 import cn.ibizlab.ehr.webapi.mapping.*;
 import cn.ibizlab.ehr.core.sal.domain.SALSUBJECT;
 import cn.ibizlab.ehr.core.sal.service.ISALSUBJECTService;
 import cn.ibizlab.ehr.core.sal.filter.SALSUBJECTSearchContext;
-
-
-
 
 @Slf4j
 @Api(tags = {"SALSUBJECT" })
@@ -61,14 +54,14 @@ public class SALSUBJECTResource {
         return ResponseEntity.status(HttpStatus.OK).body(salsubjectMapping.toDto(salsubjectService.getDraft(new SALSUBJECT())));
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALSUBJECT-Save-all')")
+    @PreAuthorize("hasPermission('','Save',{'Sql',this.salsubjectMapping,#salsubjectdto})")
     @ApiOperation(value = "Save", tags = {"SALSUBJECT" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/salsubjects/save")
     public ResponseEntity<Boolean> save(@RequestBody SALSUBJECTDTO salsubjectdto) {
         return ResponseEntity.status(HttpStatus.OK).body(salsubjectService.save(salsubjectMapping.toDomain(salsubjectdto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.salsubjectMapping,#salsubjectdtos})")
     @ApiOperation(value = "SaveBatch", tags = {"SALSUBJECT" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/salsubjects/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<SALSUBJECTDTO> salsubjectdtos) {
@@ -88,14 +81,14 @@ public class SALSUBJECTResource {
 	@RequestMapping(method = RequestMethod.PUT, value = "/salsubjects/{salsubject_id}")
     @Transactional
     public ResponseEntity<SALSUBJECTDTO> update(@PathVariable("salsubject_id") String salsubject_id, @RequestBody SALSUBJECTDTO salsubjectdto) {
-		SALSUBJECT domain = salsubjectMapping.toDomain(salsubjectdto);
-        domain.setSalsubjectid(salsubject_id);
-		salsubjectService.update(domain);
-		SALSUBJECTDTO dto = salsubjectMapping.toDto(domain);
+		SALSUBJECT domain  = salsubjectMapping.toDomain(salsubjectdto);
+        domain .setSalsubjectid(salsubject_id);
+		salsubjectService.update(domain );
+		SALSUBJECTDTO dto = salsubjectMapping.toDto(domain );
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.salsubjectMapping,#salsubjectdtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"SALSUBJECT" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/salsubjects/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<SALSUBJECTDTO> salsubjectdtos) {
@@ -111,7 +104,7 @@ public class SALSUBJECTResource {
          return ResponseEntity.status(HttpStatus.OK).body(salsubjectService.remove(salsubject_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.salsubjectMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"SALSUBJECT" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/salsubjects/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -139,7 +132,7 @@ public class SALSUBJECTResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.salsubjectMapping,#salsubjectdtos})")
     @ApiOperation(value = "createBatch", tags = {"SALSUBJECT" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/salsubjects/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<SALSUBJECTDTO> salsubjectdtos) {

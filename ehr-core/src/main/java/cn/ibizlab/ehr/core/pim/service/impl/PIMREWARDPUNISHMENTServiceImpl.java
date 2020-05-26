@@ -101,6 +101,13 @@ public class PIMREWARDPUNISHMENTServiceImpl extends ServiceImpl<PIMREWARDPUNISHM
     }
 
     @Override
+    public boolean saveBatch(Collection<PIMREWARDPUNISHMENT> list) {
+        list.forEach(item->fillParentData(item));
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<PIMREWARDPUNISHMENT> list) {
         list.forEach(item->fillParentData(item));
         saveOrUpdateBatch(list,batchSize);

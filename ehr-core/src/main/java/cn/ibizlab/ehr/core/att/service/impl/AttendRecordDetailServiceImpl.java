@@ -111,6 +111,13 @@ public class AttendRecordDetailServiceImpl extends ServiceImpl<AttendRecordDetai
     }
 
     @Override
+    public boolean saveBatch(Collection<AttendRecordDetail> list) {
+        list.forEach(item->fillParentData(item));
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<AttendRecordDetail> list) {
         list.forEach(item->fillParentData(item));
         saveOrUpdateBatch(list,batchSize);

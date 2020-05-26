@@ -7,6 +7,9 @@
 	<select id="selectById"  resultMap="PIMBYYGZZSQResultMap" databaseId="mysql">
         <![CDATA[select t1.* from (SELECT t1.`BZ`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`CZR`, t1.`CZRQ`, t1.`ISTEMP`, t1.`PIMBYYGZZSQID`, t1.`PIMBYYGZZSQNAME`, t1.`SXRQ`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`ZZLX` FROM `T_PIMBYYGZZSQ` t1  ) t1 where pimbyygzzsqid=#{id}]]>
     </select>
+	<select id="selectById"  resultMap="PIMBYYGZZSQResultMap" databaseId="oracle">
+        <![CDATA[select t1.* from (SELECT t1.BZ, t1.CREATEDATE, t1.CREATEMAN, t1.CZR, t1.CZRQ, t1.ISTEMP, t1.PIMBYYGZZSQID, t1.PIMBYYGZZSQNAME, t1.SXRQ, t1.UPDATEDATE, t1.UPDATEMAN, t1.ZZLX FROM T_PIMBYYGZZSQ t1  ) t1 where pimbyygzzsqid=#{id}]]>
+    </select>
 
     <!--通过mybatis将查询结果注入到entity中,通过配置autoMapping="true"由mybatis自动处理映射关系 -->
     <resultMap id="PIMBYYGZZSQResultMap" type="cn.ibizlab.ehr.core.pim.domain.PIMBYYGZZSQ" autoMapping="true">
@@ -40,6 +43,12 @@
     <!--数据查询[View]-->
     <sql id="View" databaseId="mysql">
        <![CDATA[	SELECT t1.`BZ`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`CZR`, t1.`CZRQ`, t1.`ISTEMP`, t1.`PIMBYYGZZSQID`, t1.`PIMBYYGZZSQNAME`, t1.`SXRQ`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`ZZLX` FROM `T_PIMBYYGZZSQ` t1  
+			]]>
+    </sql>
+
+    <!--数据查询[View]-->
+    <sql id="View" databaseId="oracle">
+       <![CDATA[	SELECT t1.BZ, t1.CREATEDATE, t1.CREATEMAN, t1.CZR, t1.CZRQ, t1.ISTEMP, t1.PIMBYYGZZSQID, t1.PIMBYYGZZSQNAME, t1.SXRQ, t1.UPDATEDATE, t1.UPDATEMAN, t1.ZZLX FROM T_PIMBYYGZZSQ t1  
 			]]>
     </sql>
 

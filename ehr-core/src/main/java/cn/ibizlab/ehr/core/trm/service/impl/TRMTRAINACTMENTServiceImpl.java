@@ -107,6 +107,13 @@ public class TRMTRAINACTMENTServiceImpl extends ServiceImpl<TRMTRAINACTMENTMappe
     }
 
     @Override
+    public boolean saveBatch(Collection<TRMTRAINACTMENT> list) {
+        list.forEach(item->fillParentData(item));
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<TRMTRAINACTMENT> list) {
         list.forEach(item->fillParentData(item));
         saveOrUpdateBatch(list,batchSize);

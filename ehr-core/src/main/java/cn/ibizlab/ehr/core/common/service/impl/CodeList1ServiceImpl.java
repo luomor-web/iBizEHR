@@ -141,6 +141,12 @@ public class CodeList1ServiceImpl extends ServiceImpl<CodeList1Mapper, CodeList1
     }
 
     @Override
+    public boolean saveBatch(Collection<CodeList1> list) {
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<CodeList1> list) {
         saveOrUpdateBatch(list,batchSize);
     }

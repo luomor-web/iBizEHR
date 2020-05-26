@@ -6,10 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
-
 import lombok.extern.slf4j.Slf4j;
 import com.alibaba.fastjson.JSONObject;
-
 import javax.servlet.ServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cglib.beans.BeanCopier;
@@ -24,20 +22,15 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
-
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
-
 import cn.ibizlab.ehr.webapi.dto.*;
 import cn.ibizlab.ehr.webapi.mapping.*;
 import cn.ibizlab.ehr.core.vac.domain.VACWORKDAY;
 import cn.ibizlab.ehr.core.vac.service.IVACWORKDAYService;
 import cn.ibizlab.ehr.core.vac.filter.VACWORKDAYSearchContext;
-
-
-
 
 @Slf4j
 @Api(tags = {"VACWORKDAY" })
@@ -61,14 +54,14 @@ public class VACWORKDAYResource {
         return  ResponseEntity.status(HttpStatus.OK).body(vacworkdayService.checkKey(vacworkdayMapping.toDomain(vacworkdaydto)));
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACWORKDAY-Save-all')")
+    @PreAuthorize("hasPermission('','Save',{'Sql',this.vacworkdayMapping,#vacworkdaydto})")
     @ApiOperation(value = "Save", tags = {"VACWORKDAY" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacworkdays/save")
     public ResponseEntity<Boolean> save(@RequestBody VACWORKDAYDTO vacworkdaydto) {
         return ResponseEntity.status(HttpStatus.OK).body(vacworkdayService.save(vacworkdayMapping.toDomain(vacworkdaydto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.vacworkdayMapping,#vacworkdaydtos})")
     @ApiOperation(value = "SaveBatch", tags = {"VACWORKDAY" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacworkdays/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<VACWORKDAYDTO> vacworkdaydtos) {
@@ -84,7 +77,7 @@ public class VACWORKDAYResource {
          return ResponseEntity.status(HttpStatus.OK).body(vacworkdayService.remove(vacworkday_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.vacworkdayMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"VACWORKDAY" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/vacworkdays/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -103,7 +96,7 @@ public class VACWORKDAYResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.vacworkdayMapping,#vacworkdaydtos})")
     @ApiOperation(value = "createBatch", tags = {"VACWORKDAY" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacworkdays/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<VACWORKDAYDTO> vacworkdaydtos) {
@@ -116,14 +109,14 @@ public class VACWORKDAYResource {
 	@RequestMapping(method = RequestMethod.PUT, value = "/vacworkdays/{vacworkday_id}")
     @Transactional
     public ResponseEntity<VACWORKDAYDTO> update(@PathVariable("vacworkday_id") String vacworkday_id, @RequestBody VACWORKDAYDTO vacworkdaydto) {
-		VACWORKDAY domain = vacworkdayMapping.toDomain(vacworkdaydto);
-        domain.setVacworkdayid(vacworkday_id);
-		vacworkdayService.update(domain);
-		VACWORKDAYDTO dto = vacworkdayMapping.toDto(domain);
+		VACWORKDAY domain  = vacworkdayMapping.toDomain(vacworkdaydto);
+        domain .setVacworkdayid(vacworkday_id);
+		vacworkdayService.update(domain );
+		VACWORKDAYDTO dto = vacworkdayMapping.toDto(domain );
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.vacworkdayMapping,#vacworkdaydtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"VACWORKDAY" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/vacworkdays/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<VACWORKDAYDTO> vacworkdaydtos) {

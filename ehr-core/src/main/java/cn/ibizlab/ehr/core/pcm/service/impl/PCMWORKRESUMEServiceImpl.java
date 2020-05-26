@@ -93,6 +93,13 @@ public class PCMWORKRESUMEServiceImpl extends ServiceImpl<PCMWORKRESUMEMapper, P
     }
 
     @Override
+    public boolean saveBatch(Collection<PCMWORKRESUME> list) {
+        list.forEach(item->fillParentData(item));
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<PCMWORKRESUME> list) {
         list.forEach(item->fillParentData(item));
         saveOrUpdateBatch(list,batchSize);

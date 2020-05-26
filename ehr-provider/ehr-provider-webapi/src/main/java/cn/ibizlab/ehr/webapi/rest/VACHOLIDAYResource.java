@@ -6,10 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
-
 import lombok.extern.slf4j.Slf4j;
 import com.alibaba.fastjson.JSONObject;
-
 import javax.servlet.ServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cglib.beans.BeanCopier;
@@ -24,20 +22,15 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
-
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
-
 import cn.ibizlab.ehr.webapi.dto.*;
 import cn.ibizlab.ehr.webapi.mapping.*;
 import cn.ibizlab.ehr.core.vac.domain.VACHOLIDAY;
 import cn.ibizlab.ehr.core.vac.service.IVACHOLIDAYService;
 import cn.ibizlab.ehr.core.vac.filter.VACHOLIDAYSearchContext;
-
-
-
 
 @Slf4j
 @Api(tags = {"VACHOLIDAY" })
@@ -60,6 +53,7 @@ public class VACHOLIDAYResource {
     @Transactional
     public ResponseEntity<VACHOLIDAYDTO> aPPOINTJZBJJR(@PathVariable("vacholiday_id") String vacholiday_id, @RequestBody VACHOLIDAYDTO vacholidaydto) {
         VACHOLIDAY vacholiday = vacholidayMapping.toDomain(vacholidaydto);
+        vacholiday.setVacholidayid(vacholiday_id);
         vacholiday = vacholidayService.aPPOINTJZBJJR(vacholiday);
         vacholidaydto = vacholidayMapping.toDto(vacholiday);
         return ResponseEntity.status(HttpStatus.OK).body(vacholidaydto);
@@ -70,14 +64,14 @@ public class VACHOLIDAYResource {
 	@RequestMapping(method = RequestMethod.PUT, value = "/vacholidays/{vacholiday_id}")
     @Transactional
     public ResponseEntity<VACHOLIDAYDTO> update(@PathVariable("vacholiday_id") String vacholiday_id, @RequestBody VACHOLIDAYDTO vacholidaydto) {
-		VACHOLIDAY domain = vacholidayMapping.toDomain(vacholidaydto);
-        domain.setVacholidayid(vacholiday_id);
-		vacholidayService.update(domain);
-		VACHOLIDAYDTO dto = vacholidayMapping.toDto(domain);
+		VACHOLIDAY domain  = vacholidayMapping.toDomain(vacholidaydto);
+        domain .setVacholidayid(vacholiday_id);
+		vacholidayService.update(domain );
+		VACHOLIDAYDTO dto = vacholidayMapping.toDto(domain );
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.vacholidayMapping,#vacholidaydtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"VACHOLIDAY" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/vacholidays/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<VACHOLIDAYDTO> vacholidaydtos) {
@@ -93,7 +87,7 @@ public class VACHOLIDAYResource {
          return ResponseEntity.status(HttpStatus.OK).body(vacholidayService.remove(vacholiday_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.vacholidayMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"VACHOLIDAY" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/vacholidays/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -124,14 +118,14 @@ public class VACHOLIDAYResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACHOLIDAY-Save-all')")
+    @PreAuthorize("hasPermission('','Save',{'Sql',this.vacholidayMapping,#vacholidaydto})")
     @ApiOperation(value = "Save", tags = {"VACHOLIDAY" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacholidays/save")
     public ResponseEntity<Boolean> save(@RequestBody VACHOLIDAYDTO vacholidaydto) {
         return ResponseEntity.status(HttpStatus.OK).body(vacholidayService.save(vacholidayMapping.toDomain(vacholidaydto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.vacholidayMapping,#vacholidaydtos})")
     @ApiOperation(value = "SaveBatch", tags = {"VACHOLIDAY" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacholidays/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<VACHOLIDAYDTO> vacholidaydtos) {
@@ -150,7 +144,7 @@ public class VACHOLIDAYResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.vacholidayMapping,#vacholidaydtos})")
     @ApiOperation(value = "createBatch", tags = {"VACHOLIDAY" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacholidays/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<VACHOLIDAYDTO> vacholidaydtos) {
@@ -164,6 +158,7 @@ public class VACHOLIDAYResource {
     @Transactional
     public ResponseEntity<VACHOLIDAYDTO> checkTime(@PathVariable("vacholiday_id") String vacholiday_id, @RequestBody VACHOLIDAYDTO vacholidaydto) {
         VACHOLIDAY vacholiday = vacholidayMapping.toDomain(vacholidaydto);
+        vacholiday.setVacholidayid(vacholiday_id);
         vacholiday = vacholidayService.checkTime(vacholiday);
         vacholidaydto = vacholidayMapping.toDto(vacholiday);
         return ResponseEntity.status(HttpStatus.OK).body(vacholidaydto);

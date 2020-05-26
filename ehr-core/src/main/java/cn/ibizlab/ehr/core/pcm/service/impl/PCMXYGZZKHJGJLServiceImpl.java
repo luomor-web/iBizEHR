@@ -124,6 +124,12 @@ public class PCMXYGZZKHJGJLServiceImpl extends ServiceImpl<PCMXYGZZKHJGJLMapper,
     }
 
     @Override
+    public boolean saveBatch(Collection<PCMXYGZZKHJGJL> list) {
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<PCMXYGZZKHJGJL> list) {
         saveOrUpdateBatch(list,batchSize);
     }

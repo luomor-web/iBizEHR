@@ -6,10 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
-
 import lombok.extern.slf4j.Slf4j;
 import com.alibaba.fastjson.JSONObject;
-
 import javax.servlet.ServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cglib.beans.BeanCopier;
@@ -24,20 +22,15 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
-
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
-
 import cn.ibizlab.ehr.webapi.dto.*;
 import cn.ibizlab.ehr.webapi.mapping.*;
 import cn.ibizlab.ehr.core.orm.domain.ORMDepEstMan;
 import cn.ibizlab.ehr.core.orm.service.IORMDepEstManService;
 import cn.ibizlab.ehr.core.orm.filter.ORMDepEstManSearchContext;
-
-
-
 
 @Slf4j
 @Api(tags = {"ORMDepEstMan" })
@@ -79,7 +72,7 @@ public class ORMDepEstManResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.ormdepestmanMapping,#ormdepestmandtos})")
     @ApiOperation(value = "createBatch", tags = {"ORMDepEstMan" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormdepestmen/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<ORMDepEstManDTO> ormdepestmandtos) {
@@ -104,7 +97,7 @@ public class ORMDepEstManResource {
          return ResponseEntity.status(HttpStatus.OK).body(ormdepestmanService.remove(ormdepestman_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.ormdepestmanMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"ORMDepEstMan" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/ormdepestmen/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -117,14 +110,14 @@ public class ORMDepEstManResource {
 	@RequestMapping(method = RequestMethod.PUT, value = "/ormdepestmen/{ormdepestman_id}")
     @Transactional
     public ResponseEntity<ORMDepEstManDTO> update(@PathVariable("ormdepestman_id") String ormdepestman_id, @RequestBody ORMDepEstManDTO ormdepestmandto) {
-		ORMDepEstMan domain = ormdepestmanMapping.toDomain(ormdepestmandto);
-        domain.setOrmdepestmanid(ormdepestman_id);
-		ormdepestmanService.update(domain);
-		ORMDepEstManDTO dto = ormdepestmanMapping.toDto(domain);
+		ORMDepEstMan domain  = ormdepestmanMapping.toDomain(ormdepestmandto);
+        domain .setOrmdepestmanid(ormdepestman_id);
+		ormdepestmanService.update(domain );
+		ORMDepEstManDTO dto = ormdepestmanMapping.toDto(domain );
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.ormdepestmanMapping,#ormdepestmandtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"ORMDepEstMan" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/ormdepestmen/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<ORMDepEstManDTO> ormdepestmandtos) {
@@ -132,14 +125,14 @@ public class ORMDepEstManResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMDepEstMan-Save-all')")
+    @PreAuthorize("hasPermission('','Save',{'Sql',this.ormdepestmanMapping,#ormdepestmandto})")
     @ApiOperation(value = "Save", tags = {"ORMDepEstMan" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormdepestmen/save")
     public ResponseEntity<Boolean> save(@RequestBody ORMDepEstManDTO ormdepestmandto) {
         return ResponseEntity.status(HttpStatus.OK).body(ormdepestmanService.save(ormdepestmanMapping.toDomain(ormdepestmandto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.ormdepestmanMapping,#ormdepestmandtos})")
     @ApiOperation(value = "SaveBatch", tags = {"ORMDepEstMan" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormdepestmen/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<ORMDepEstManDTO> ormdepestmandtos) {

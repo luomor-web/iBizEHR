@@ -131,6 +131,13 @@ public class SALLOGServiceImpl extends ServiceImpl<SALLOGMapper, SALLOG> impleme
     }
 
     @Override
+    public boolean saveBatch(Collection<SALLOG> list) {
+        list.forEach(item->fillParentData(item));
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<SALLOG> list) {
         list.forEach(item->fillParentData(item));
         saveOrUpdateBatch(list,batchSize);

@@ -6,10 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
-
 import lombok.extern.slf4j.Slf4j;
 import com.alibaba.fastjson.JSONObject;
-
 import javax.servlet.ServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cglib.beans.BeanCopier;
@@ -24,20 +22,15 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
-
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
-
 import cn.ibizlab.ehr.webapi.dto.*;
 import cn.ibizlab.ehr.webapi.mapping.*;
 import cn.ibizlab.ehr.core.pcm.domain.PCMGXML;
 import cn.ibizlab.ehr.core.pcm.service.IPCMGXMLService;
 import cn.ibizlab.ehr.core.pcm.filter.PCMGXMLSearchContext;
-
-
-
 
 @Slf4j
 @Api(tags = {"PCMGXML" })
@@ -59,14 +52,14 @@ public class PCMGXMLResource {
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmgxmls/{pcmgxml_id}")
     @Transactional
     public ResponseEntity<PCMGXMLDTO> update(@PathVariable("pcmgxml_id") String pcmgxml_id, @RequestBody PCMGXMLDTO pcmgxmldto) {
-		PCMGXML domain = pcmgxmlMapping.toDomain(pcmgxmldto);
-        domain.setPcmgxmlid(pcmgxml_id);
-		pcmgxmlService.update(domain);
-		PCMGXMLDTO dto = pcmgxmlMapping.toDto(domain);
+		PCMGXML domain  = pcmgxmlMapping.toDomain(pcmgxmldto);
+        domain .setPcmgxmlid(pcmgxml_id);
+		pcmgxmlService.update(domain );
+		PCMGXMLDTO dto = pcmgxmlMapping.toDto(domain );
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.pcmgxmlMapping,#pcmgxmldtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"PCMGXML" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmgxmls/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PCMGXMLDTO> pcmgxmldtos) {
@@ -74,14 +67,14 @@ public class PCMGXMLResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMGXML-Save-all')")
+    @PreAuthorize("hasPermission('','Save',{'Sql',this.pcmgxmlMapping,#pcmgxmldto})")
     @ApiOperation(value = "Save", tags = {"PCMGXML" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmgxmls/save")
     public ResponseEntity<Boolean> save(@RequestBody PCMGXMLDTO pcmgxmldto) {
         return ResponseEntity.status(HttpStatus.OK).body(pcmgxmlService.save(pcmgxmlMapping.toDomain(pcmgxmldto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.pcmgxmlMapping,#pcmgxmldtos})")
     @ApiOperation(value = "SaveBatch", tags = {"PCMGXML" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmgxmls/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PCMGXMLDTO> pcmgxmldtos) {
@@ -123,7 +116,7 @@ public class PCMGXMLResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.pcmgxmlMapping,#pcmgxmldtos})")
     @ApiOperation(value = "createBatch", tags = {"PCMGXML" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmgxmls/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PCMGXMLDTO> pcmgxmldtos) {
@@ -139,7 +132,7 @@ public class PCMGXMLResource {
          return ResponseEntity.status(HttpStatus.OK).body(pcmgxmlService.remove(pcmgxml_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.pcmgxmlMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"PCMGXML" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmgxmls/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {

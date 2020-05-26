@@ -6,10 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
-
 import lombok.extern.slf4j.Slf4j;
 import com.alibaba.fastjson.JSONObject;
-
 import javax.servlet.ServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cglib.beans.BeanCopier;
@@ -24,20 +22,15 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
-
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
-
 import cn.ibizlab.ehr.webapi.dto.*;
 import cn.ibizlab.ehr.webapi.mapping.*;
 import cn.ibizlab.ehr.core.att.domain.ATTENDENCECALENDAR;
 import cn.ibizlab.ehr.core.att.service.IATTENDENCECALENDARService;
 import cn.ibizlab.ehr.core.att.filter.ATTENDENCECALENDARSearchContext;
-
-
-
 
 @Slf4j
 @Api(tags = {"ATTENDENCECALENDAR" })
@@ -65,7 +58,7 @@ public class ATTENDENCECALENDARResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.attendencecalendarMapping,#attendencecalendardtos})")
     @ApiOperation(value = "createBatch", tags = {"ATTENDENCECALENDAR" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/attendencecalendars/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<ATTENDENCECALENDARDTO> attendencecalendardtos) {
@@ -73,14 +66,14 @@ public class ATTENDENCECALENDARResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ATTENDENCECALENDAR-Save-all')")
+    @PreAuthorize("hasPermission('','Save',{'Sql',this.attendencecalendarMapping,#attendencecalendardto})")
     @ApiOperation(value = "Save", tags = {"ATTENDENCECALENDAR" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/attendencecalendars/save")
     public ResponseEntity<Boolean> save(@RequestBody ATTENDENCECALENDARDTO attendencecalendardto) {
         return ResponseEntity.status(HttpStatus.OK).body(attendencecalendarService.save(attendencecalendarMapping.toDomain(attendencecalendardto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.attendencecalendarMapping,#attendencecalendardtos})")
     @ApiOperation(value = "SaveBatch", tags = {"ATTENDENCECALENDAR" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/attendencecalendars/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<ATTENDENCECALENDARDTO> attendencecalendardtos) {
@@ -93,14 +86,14 @@ public class ATTENDENCECALENDARResource {
 	@RequestMapping(method = RequestMethod.PUT, value = "/attendencecalendars/{attendencecalendar_id}")
     @Transactional
     public ResponseEntity<ATTENDENCECALENDARDTO> update(@PathVariable("attendencecalendar_id") String attendencecalendar_id, @RequestBody ATTENDENCECALENDARDTO attendencecalendardto) {
-		ATTENDENCECALENDAR domain = attendencecalendarMapping.toDomain(attendencecalendardto);
-        domain.setAttendencecalendarid(attendencecalendar_id);
-		attendencecalendarService.update(domain);
-		ATTENDENCECALENDARDTO dto = attendencecalendarMapping.toDto(domain);
+		ATTENDENCECALENDAR domain  = attendencecalendarMapping.toDomain(attendencecalendardto);
+        domain .setAttendencecalendarid(attendencecalendar_id);
+		attendencecalendarService.update(domain );
+		ATTENDENCECALENDARDTO dto = attendencecalendarMapping.toDto(domain );
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.attendencecalendarMapping,#attendencecalendardtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"ATTENDENCECALENDAR" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/attendencecalendars/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<ATTENDENCECALENDARDTO> attendencecalendardtos) {
@@ -132,7 +125,7 @@ public class ATTENDENCECALENDARResource {
          return ResponseEntity.status(HttpStatus.OK).body(attendencecalendarService.remove(attendencecalendar_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.attendencecalendarMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"ATTENDENCECALENDAR" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/attendencecalendars/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {

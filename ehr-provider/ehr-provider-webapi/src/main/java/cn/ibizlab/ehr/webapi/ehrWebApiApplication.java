@@ -6,6 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.mybatis.spring.annotation.MapperScan;
@@ -18,12 +19,19 @@ import java.util.List;
 @EnableDiscoveryClient
 @Configuration
 @EnableTransactionManagement
-@ComponentScan(basePackages = {"cn.ibizlab.ehr"})
+@ComponentScan(basePackages = {"cn.ibizlab.ehr"}
+//        ,excludeFilters={
+//                @ComponentScan.Filter(type= org.springframework.context.annotation.FilterType.REGEX,pattern="cn.ibizlab.ehr.webapi.rest.xxx"),
+//        }
+)
 @EnableMongoRepositories(basePackages = {"cn.ibizlab.ehr"})
 @MapperScan("cn.ibizlab.ehr.*.mapper")
 @SpringBootApplication(exclude = {
         org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration.class,
             org.springframework.boot.autoconfigure.mongo.MongoAutoConfiguration.class,
+})
+@Import({
+        org.springframework.cloud.openfeign.FeignClientsConfiguration.class
 })
 @EnableFeignClients(basePackages = {"cn.ibizlab.ehr" })
 public class ehrWebApiApplication extends WebMvcConfigurerAdapter{

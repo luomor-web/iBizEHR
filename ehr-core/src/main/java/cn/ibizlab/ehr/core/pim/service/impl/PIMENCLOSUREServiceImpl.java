@@ -82,6 +82,13 @@ public class PIMENCLOSUREServiceImpl extends ServiceImpl<PIMENCLOSUREMapper, PIM
     }
 
     @Override
+    public boolean saveBatch(Collection<PIMENCLOSURE> list) {
+        list.forEach(item->fillParentData(item));
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<PIMENCLOSURE> list) {
         list.forEach(item->fillParentData(item));
         saveOrUpdateBatch(list,batchSize);

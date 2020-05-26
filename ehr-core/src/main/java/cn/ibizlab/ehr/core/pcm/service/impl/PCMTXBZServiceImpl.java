@@ -119,6 +119,12 @@ public class PCMTXBZServiceImpl extends ServiceImpl<PCMTXBZMapper, PCMTXBZ> impl
     }
 
     @Override
+    public boolean saveBatch(Collection<PCMTXBZ> list) {
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<PCMTXBZ> list) {
         saveOrUpdateBatch(list,batchSize);
     }

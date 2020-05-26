@@ -6,10 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
-
 import lombok.extern.slf4j.Slf4j;
 import com.alibaba.fastjson.JSONObject;
-
 import javax.servlet.ServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cglib.beans.BeanCopier;
@@ -24,20 +22,15 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
-
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
-
 import cn.ibizlab.ehr.webapi.dto.*;
 import cn.ibizlab.ehr.webapi.mapping.*;
 import cn.ibizlab.ehr.core.r7rt_dyna.domain.DynaDashboard;
 import cn.ibizlab.ehr.core.r7rt_dyna.service.IDynaDashboardService;
 import cn.ibizlab.ehr.core.r7rt_dyna.filter.DynaDashboardSearchContext;
-
-
-
 
 @Slf4j
 @Api(tags = {"DynaDashboard" })
@@ -54,14 +47,14 @@ public class DynaDashboardResource {
 
     public DynaDashboardDTO permissionDTO=new DynaDashboardDTO();
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DynaDashboard-Save-all')")
+    @PreAuthorize("hasPermission('','Save',{'ServiceApi',this.dynadashboardMapping,#dynadashboarddto})")
     @ApiOperation(value = "Save", tags = {"DynaDashboard" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/dynadashboards/save")
     public ResponseEntity<Boolean> save(@RequestBody DynaDashboardDTO dynadashboarddto) {
         return ResponseEntity.status(HttpStatus.OK).body(dynadashboardService.save(dynadashboardMapping.toDomain(dynadashboarddto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'ServiceApi',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'ServiceApi',this.dynadashboardMapping,#dynadashboarddtos})")
     @ApiOperation(value = "SaveBatch", tags = {"DynaDashboard" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/dynadashboards/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<DynaDashboardDTO> dynadashboarddtos) {
@@ -74,14 +67,14 @@ public class DynaDashboardResource {
 	@RequestMapping(method = RequestMethod.PUT, value = "/dynadashboards/{dynadashboard_id}")
 
     public ResponseEntity<DynaDashboardDTO> update(@PathVariable("dynadashboard_id") String dynadashboard_id, @RequestBody DynaDashboardDTO dynadashboarddto) {
-		DynaDashboard domain = dynadashboardMapping.toDomain(dynadashboarddto);
-        domain.setDynadashboardid(dynadashboard_id);
-		dynadashboardService.update(domain);
-		DynaDashboardDTO dto = dynadashboardMapping.toDto(domain);
+		DynaDashboard domain  = dynadashboardMapping.toDomain(dynadashboarddto);
+        domain .setDynadashboardid(dynadashboard_id);
+		dynadashboardService.update(domain );
+		DynaDashboardDTO dto = dynadashboardMapping.toDto(domain );
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'ServiceApi',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'ServiceApi',this.dynadashboardMapping,#dynadashboarddtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"DynaDashboard" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/dynadashboards/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<DynaDashboardDTO> dynadashboarddtos) {
@@ -106,7 +99,7 @@ public class DynaDashboardResource {
          return ResponseEntity.status(HttpStatus.OK).body(dynadashboardService.remove(dynadashboard_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'ServiceApi',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'ServiceApi',this.dynadashboardMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"DynaDashboard" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/dynadashboards/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -139,7 +132,7 @@ public class DynaDashboardResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'ServiceApi',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'ServiceApi',this.dynadashboardMapping,#dynadashboarddtos})")
     @ApiOperation(value = "createBatch", tags = {"DynaDashboard" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/dynadashboards/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<DynaDashboardDTO> dynadashboarddtos) {

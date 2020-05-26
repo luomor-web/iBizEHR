@@ -146,6 +146,12 @@ public class PCMSgqMgrServiceImpl extends ServiceImpl<PCMSgqMgrMapper, PCMSgqMgr
     }
 
     @Override
+    public boolean saveBatch(Collection<PCMSgqMgr> list) {
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<PCMSgqMgr> list) {
         saveOrUpdateBatch(list,batchSize);
     }

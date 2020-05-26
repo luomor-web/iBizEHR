@@ -6,10 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
-
 import lombok.extern.slf4j.Slf4j;
 import com.alibaba.fastjson.JSONObject;
-
 import javax.servlet.ServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cglib.beans.BeanCopier;
@@ -24,20 +22,15 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
-
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
-
 import cn.ibizlab.ehr.webapi.dto.*;
 import cn.ibizlab.ehr.webapi.mapping.*;
 import cn.ibizlab.ehr.core.pcm.domain.PCMPRACTICEEXPERIENCE;
 import cn.ibizlab.ehr.core.pcm.service.IPCMPRACTICEEXPERIENCEService;
 import cn.ibizlab.ehr.core.pcm.filter.PCMPRACTICEEXPERIENCESearchContext;
-
-
-
 
 @Slf4j
 @Api(tags = {"PCMPRACTICEEXPERIENCE" })
@@ -62,7 +55,7 @@ public class PCMPRACTICEEXPERIENCEResource {
          return ResponseEntity.status(HttpStatus.OK).body(pcmpracticeexperienceService.remove(pcmpracticeexperience_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.pcmpracticeexperienceMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"PCMPRACTICEEXPERIENCE" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmpracticeexperiences/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -81,7 +74,7 @@ public class PCMPRACTICEEXPERIENCEResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.pcmpracticeexperienceMapping,#pcmpracticeexperiencedtos})")
     @ApiOperation(value = "createBatch", tags = {"PCMPRACTICEEXPERIENCE" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmpracticeexperiences/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PCMPRACTICEEXPERIENCEDTO> pcmpracticeexperiencedtos) {
@@ -94,14 +87,14 @@ public class PCMPRACTICEEXPERIENCEResource {
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmpracticeexperiences/{pcmpracticeexperience_id}")
     @Transactional
     public ResponseEntity<PCMPRACTICEEXPERIENCEDTO> update(@PathVariable("pcmpracticeexperience_id") String pcmpracticeexperience_id, @RequestBody PCMPRACTICEEXPERIENCEDTO pcmpracticeexperiencedto) {
-		PCMPRACTICEEXPERIENCE domain = pcmpracticeexperienceMapping.toDomain(pcmpracticeexperiencedto);
-        domain.setPcmpracticeexperienceid(pcmpracticeexperience_id);
-		pcmpracticeexperienceService.update(domain);
-		PCMPRACTICEEXPERIENCEDTO dto = pcmpracticeexperienceMapping.toDto(domain);
+		PCMPRACTICEEXPERIENCE domain  = pcmpracticeexperienceMapping.toDomain(pcmpracticeexperiencedto);
+        domain .setPcmpracticeexperienceid(pcmpracticeexperience_id);
+		pcmpracticeexperienceService.update(domain );
+		PCMPRACTICEEXPERIENCEDTO dto = pcmpracticeexperienceMapping.toDto(domain );
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.pcmpracticeexperienceMapping,#pcmpracticeexperiencedtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"PCMPRACTICEEXPERIENCE" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmpracticeexperiences/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PCMPRACTICEEXPERIENCEDTO> pcmpracticeexperiencedtos) {
@@ -132,14 +125,14 @@ public class PCMPRACTICEEXPERIENCEResource {
         return  ResponseEntity.status(HttpStatus.OK).body(pcmpracticeexperienceService.checkKey(pcmpracticeexperienceMapping.toDomain(pcmpracticeexperiencedto)));
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPRACTICEEXPERIENCE-Save-all')")
+    @PreAuthorize("hasPermission('','Save',{'Sql',this.pcmpracticeexperienceMapping,#pcmpracticeexperiencedto})")
     @ApiOperation(value = "Save", tags = {"PCMPRACTICEEXPERIENCE" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmpracticeexperiences/save")
     public ResponseEntity<Boolean> save(@RequestBody PCMPRACTICEEXPERIENCEDTO pcmpracticeexperiencedto) {
         return ResponseEntity.status(HttpStatus.OK).body(pcmpracticeexperienceService.save(pcmpracticeexperienceMapping.toDomain(pcmpracticeexperiencedto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.pcmpracticeexperienceMapping,#pcmpracticeexperiencedtos})")
     @ApiOperation(value = "SaveBatch", tags = {"PCMPRACTICEEXPERIENCE" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmpracticeexperiences/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PCMPRACTICEEXPERIENCEDTO> pcmpracticeexperiencedtos) {
@@ -168,7 +161,7 @@ public class PCMPRACTICEEXPERIENCEResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pcmpracticeexperienceMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-    //@PreAuthorize("hasPermission(#pcmpracticeexperience_id,'Remove',{'Sql',this.pcmpracticeexperienceMapping,this.permissionDTO})")
+    @PreAuthorize("hasPermission(#pcmpracticeexperience_id,'Remove',{'Sql',this.pcmpracticeexperienceMapping,this.permissionDTO})")
     @ApiOperation(value = "RemoveByPCMPROFILE", tags = {"PCMPRACTICEEXPERIENCE" },  notes = "RemoveByPCMPROFILE")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmprofiles/{pcmprofile_id}/pcmpracticeexperiences/{pcmpracticeexperience_id}")
     @Transactional
@@ -176,7 +169,7 @@ public class PCMPRACTICEEXPERIENCEResource {
 		return ResponseEntity.status(HttpStatus.OK).body(pcmpracticeexperienceService.remove(pcmpracticeexperience_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.pcmpracticeexperienceMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatchByPCMPROFILE", tags = {"PCMPRACTICEEXPERIENCE" },  notes = "RemoveBatchByPCMPROFILE")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmprofiles/{pcmprofile_id}/pcmpracticeexperiences/batch")
     public ResponseEntity<Boolean> removeBatchByPCMPROFILE(@RequestBody List<String> ids) {
@@ -184,7 +177,7 @@ public class PCMPRACTICEEXPERIENCEResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    //@PreAuthorize("hasPermission('','Create',{'Sql',this.pcmpracticeexperienceMapping,#pcmpracticeexperiencedto})")
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.pcmpracticeexperienceMapping,#pcmpracticeexperiencedto})")
     @ApiOperation(value = "CreateByPCMPROFILE", tags = {"PCMPRACTICEEXPERIENCE" },  notes = "CreateByPCMPROFILE")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/pcmpracticeexperiences")
     @Transactional
@@ -196,7 +189,7 @@ public class PCMPRACTICEEXPERIENCEResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.pcmpracticeexperienceMapping,#pcmpracticeexperiencedtos})")
     @ApiOperation(value = "createBatchByPCMPROFILE", tags = {"PCMPRACTICEEXPERIENCE" },  notes = "createBatchByPCMPROFILE")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/pcmpracticeexperiences/batch")
     public ResponseEntity<Boolean> createBatchByPCMPROFILE(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody List<PCMPRACTICEEXPERIENCEDTO> pcmpracticeexperiencedtos) {
@@ -208,7 +201,7 @@ public class PCMPRACTICEEXPERIENCEResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    //@PreAuthorize("hasPermission(#pcmpracticeexperience_id,'Update',{'Sql',this.pcmpracticeexperienceMapping,#pcmpracticeexperiencedto})")
+    @PreAuthorize("hasPermission(#pcmpracticeexperience_id,'Update',{'Sql',this.pcmpracticeexperienceMapping,#pcmpracticeexperiencedto})")
     @ApiOperation(value = "UpdateByPCMPROFILE", tags = {"PCMPRACTICEEXPERIENCE" },  notes = "UpdateByPCMPROFILE")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmprofiles/{pcmprofile_id}/pcmpracticeexperiences/{pcmpracticeexperience_id}")
     @Transactional
@@ -221,7 +214,7 @@ public class PCMPRACTICEEXPERIENCEResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.pcmpracticeexperienceMapping,#pcmpracticeexperiencedtos})")
     @ApiOperation(value = "UpdateBatchByPCMPROFILE", tags = {"PCMPRACTICEEXPERIENCE" },  notes = "UpdateBatchByPCMPROFILE")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmprofiles/{pcmprofile_id}/pcmpracticeexperiences/batch")
     public ResponseEntity<Boolean> updateBatchByPCMPROFILE(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody List<PCMPRACTICEEXPERIENCEDTO> pcmpracticeexperiencedtos) {
@@ -242,7 +235,7 @@ public class PCMPRACTICEEXPERIENCEResource {
         return ResponseEntity.status(HttpStatus.OK).body(pcmpracticeexperienceMapping.toDto(pcmpracticeexperienceService.getDraft(domain)));
     }
 
-    //@PreAuthorize("hasPermission(#pcmpracticeexperience_id,'Get',{'Sql',this.pcmpracticeexperienceMapping,this.permissionDTO})")
+    @PreAuthorize("hasPermission(#pcmpracticeexperience_id,'Get',{'Sql',this.pcmpracticeexperienceMapping,this.permissionDTO})")
     @ApiOperation(value = "GetByPCMPROFILE", tags = {"PCMPRACTICEEXPERIENCE" },  notes = "GetByPCMPROFILE")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmprofiles/{pcmprofile_id}/pcmpracticeexperiences/{pcmpracticeexperience_id}")
     public ResponseEntity<PCMPRACTICEEXPERIENCEDTO> getByPCMPROFILE(@PathVariable("pcmprofile_id") String pcmprofile_id, @PathVariable("pcmpracticeexperience_id") String pcmpracticeexperience_id) {
@@ -258,7 +251,7 @@ public class PCMPRACTICEEXPERIENCEResource {
         return  ResponseEntity.status(HttpStatus.OK).body(pcmpracticeexperienceService.checkKey(pcmpracticeexperienceMapping.toDomain(pcmpracticeexperiencedto)));
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPRACTICEEXPERIENCE-Save-all')")
+    @PreAuthorize("hasPermission('','Save',{'Sql',this.pcmpracticeexperienceMapping,#pcmpracticeexperiencedto})")
     @ApiOperation(value = "SaveByPCMPROFILE", tags = {"PCMPRACTICEEXPERIENCE" },  notes = "SaveByPCMPROFILE")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/pcmpracticeexperiences/save")
     public ResponseEntity<Boolean> saveByPCMPROFILE(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody PCMPRACTICEEXPERIENCEDTO pcmpracticeexperiencedto) {
@@ -267,7 +260,7 @@ public class PCMPRACTICEEXPERIENCEResource {
         return ResponseEntity.status(HttpStatus.OK).body(pcmpracticeexperienceService.save(domain));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.pcmpracticeexperienceMapping,#pcmpracticeexperiencedtos})")
     @ApiOperation(value = "SaveBatchByPCMPROFILE", tags = {"PCMPRACTICEEXPERIENCE" },  notes = "SaveBatchByPCMPROFILE")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/pcmpracticeexperiences/savebatch")
     public ResponseEntity<Boolean> saveBatchByPCMPROFILE(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody List<PCMPRACTICEEXPERIENCEDTO> pcmpracticeexperiencedtos) {

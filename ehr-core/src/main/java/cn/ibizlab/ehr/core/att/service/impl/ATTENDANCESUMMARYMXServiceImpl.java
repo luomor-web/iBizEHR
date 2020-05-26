@@ -117,6 +117,12 @@ public class ATTENDANCESUMMARYMXServiceImpl extends ServiceImpl<ATTENDANCESUMMAR
     }
 
     @Override
+    public boolean saveBatch(Collection<ATTENDANCESUMMARYMX> list) {
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<ATTENDANCESUMMARYMX> list) {
         saveOrUpdateBatch(list,batchSize);
     }

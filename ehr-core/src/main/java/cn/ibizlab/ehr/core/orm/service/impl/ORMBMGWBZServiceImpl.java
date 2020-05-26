@@ -108,6 +108,13 @@ public class ORMBMGWBZServiceImpl extends ServiceImpl<ORMBMGWBZMapper, ORMBMGWBZ
     }
 
     @Override
+    public boolean saveBatch(Collection<ORMBMGWBZ> list) {
+        list.forEach(item->fillParentData(item));
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<ORMBMGWBZ> list) {
         list.forEach(item->fillParentData(item));
         saveOrUpdateBatch(list,batchSize);

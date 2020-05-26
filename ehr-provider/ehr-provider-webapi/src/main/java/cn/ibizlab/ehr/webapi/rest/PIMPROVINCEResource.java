@@ -6,10 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
-
 import lombok.extern.slf4j.Slf4j;
 import com.alibaba.fastjson.JSONObject;
-
 import javax.servlet.ServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cglib.beans.BeanCopier;
@@ -24,20 +22,15 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
-
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
-
 import cn.ibizlab.ehr.webapi.dto.*;
 import cn.ibizlab.ehr.webapi.mapping.*;
 import cn.ibizlab.ehr.core.pim.domain.PIMPROVINCE;
 import cn.ibizlab.ehr.core.pim.service.IPIMPROVINCEService;
 import cn.ibizlab.ehr.core.pim.filter.PIMPROVINCESearchContext;
-
-
-
 
 @Slf4j
 @Api(tags = {"PIMPROVINCE" })
@@ -69,7 +62,7 @@ public class PIMPROVINCEResource {
          return ResponseEntity.status(HttpStatus.OK).body(pimprovinceService.remove(pimprovince_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.pimprovinceMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"PIMPROVINCE" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimprovinces/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -97,7 +90,7 @@ public class PIMPROVINCEResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.pimprovinceMapping,#pimprovincedtos})")
     @ApiOperation(value = "createBatch", tags = {"PIMPROVINCE" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimprovinces/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PIMPROVINCEDTO> pimprovincedtos) {
@@ -117,14 +110,14 @@ public class PIMPROVINCEResource {
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimprovinces/{pimprovince_id}")
     @Transactional
     public ResponseEntity<PIMPROVINCEDTO> update(@PathVariable("pimprovince_id") String pimprovince_id, @RequestBody PIMPROVINCEDTO pimprovincedto) {
-		PIMPROVINCE domain = pimprovinceMapping.toDomain(pimprovincedto);
-        domain.setPimprovinceid(pimprovince_id);
-		pimprovinceService.update(domain);
-		PIMPROVINCEDTO dto = pimprovinceMapping.toDto(domain);
+		PIMPROVINCE domain  = pimprovinceMapping.toDomain(pimprovincedto);
+        domain .setPimprovinceid(pimprovince_id);
+		pimprovinceService.update(domain );
+		PIMPROVINCEDTO dto = pimprovinceMapping.toDto(domain );
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.pimprovinceMapping,#pimprovincedtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"PIMPROVINCE" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimprovinces/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PIMPROVINCEDTO> pimprovincedtos) {
@@ -132,14 +125,14 @@ public class PIMPROVINCEResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMPROVINCE-Save-all')")
+    @PreAuthorize("hasPermission('','Save',{'Sql',this.pimprovinceMapping,#pimprovincedto})")
     @ApiOperation(value = "Save", tags = {"PIMPROVINCE" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimprovinces/save")
     public ResponseEntity<Boolean> save(@RequestBody PIMPROVINCEDTO pimprovincedto) {
         return ResponseEntity.status(HttpStatus.OK).body(pimprovinceService.save(pimprovinceMapping.toDomain(pimprovincedto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.pimprovinceMapping,#pimprovincedtos})")
     @ApiOperation(value = "SaveBatch", tags = {"PIMPROVINCE" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimprovinces/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PIMPROVINCEDTO> pimprovincedtos) {

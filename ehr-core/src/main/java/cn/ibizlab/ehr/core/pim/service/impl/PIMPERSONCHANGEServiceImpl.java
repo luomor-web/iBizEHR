@@ -71,6 +71,13 @@ public class PIMPERSONCHANGEServiceImpl extends ServiceImpl<PIMPERSONCHANGEMappe
     }
 
     @Override
+    public boolean saveBatch(Collection<PIMPERSONCHANGE> list) {
+        list.forEach(item->fillParentData(item));
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<PIMPERSONCHANGE> list) {
         list.forEach(item->fillParentData(item));
         saveOrUpdateBatch(list,batchSize);

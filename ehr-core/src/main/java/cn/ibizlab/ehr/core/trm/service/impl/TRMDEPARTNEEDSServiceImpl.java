@@ -115,6 +115,13 @@ public class TRMDEPARTNEEDSServiceImpl extends ServiceImpl<TRMDEPARTNEEDSMapper,
     }
 
     @Override
+    public boolean saveBatch(Collection<TRMDEPARTNEEDS> list) {
+        list.forEach(item->fillParentData(item));
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<TRMDEPARTNEEDS> list) {
         list.forEach(item->fillParentData(item));
         saveOrUpdateBatch(list,batchSize);

@@ -106,6 +106,13 @@ public class PIMARCHIVESServiceImpl extends ServiceImpl<PIMARCHIVESMapper, PIMAR
     }
 
     @Override
+    public boolean saveBatch(Collection<PIMARCHIVES> list) {
+        list.forEach(item->fillParentData(item));
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<PIMARCHIVES> list) {
         list.forEach(item->fillParentData(item));
         saveOrUpdateBatch(list,batchSize);

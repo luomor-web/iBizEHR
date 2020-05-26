@@ -109,6 +109,12 @@ public class ORMRANKServiceImpl extends ServiceImpl<ORMRANKMapper, ORMRANK> impl
     }
 
     @Override
+    public boolean saveBatch(Collection<ORMRANK> list) {
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<ORMRANK> list) {
         saveOrUpdateBatch(list,batchSize);
     }

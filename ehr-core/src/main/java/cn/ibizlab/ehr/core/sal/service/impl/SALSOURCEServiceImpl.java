@@ -84,6 +84,12 @@ public class SALSOURCEServiceImpl extends ServiceImpl<SALSOURCEMapper, SALSOURCE
     }
 
     @Override
+    public boolean saveBatch(Collection<SALSOURCE> list) {
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<SALSOURCE> list) {
         saveOrUpdateBatch(list,batchSize);
     }

@@ -80,6 +80,13 @@ public class VACOVERALLTIONServiceImpl extends ServiceImpl<VACOVERALLTIONMapper,
     }
 
     @Override
+    public boolean saveBatch(Collection<VACOVERALLTION> list) {
+        list.forEach(item->fillParentData(item));
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<VACOVERALLTION> list) {
         list.forEach(item->fillParentData(item));
         saveOrUpdateBatch(list,batchSize);

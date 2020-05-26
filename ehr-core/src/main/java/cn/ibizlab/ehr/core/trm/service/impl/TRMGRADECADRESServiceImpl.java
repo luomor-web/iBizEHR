@@ -138,6 +138,13 @@ public class TRMGRADECADRESServiceImpl extends ServiceImpl<TRMGRADECADRESMapper,
     }
 
     @Override
+    public boolean saveBatch(Collection<TRMGRADECADRES> list) {
+        list.forEach(item->fillParentData(item));
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<TRMGRADECADRES> list) {
         list.forEach(item->fillParentData(item));
         saveOrUpdateBatch(list,batchSize);

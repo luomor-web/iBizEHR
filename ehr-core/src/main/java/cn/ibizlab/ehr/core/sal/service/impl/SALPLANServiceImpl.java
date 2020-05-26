@@ -110,6 +110,13 @@ public class SALPLANServiceImpl extends ServiceImpl<SALPLANMapper, SALPLAN> impl
     }
 
     @Override
+    public boolean saveBatch(Collection<SALPLAN> list) {
+        list.forEach(item->fillParentData(item));
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<SALPLAN> list) {
         list.forEach(item->fillParentData(item));
         saveOrUpdateBatch(list,batchSize);

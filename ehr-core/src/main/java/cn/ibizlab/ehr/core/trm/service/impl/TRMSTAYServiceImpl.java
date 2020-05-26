@@ -102,6 +102,13 @@ public class TRMSTAYServiceImpl extends ServiceImpl<TRMSTAYMapper, TRMSTAY> impl
     }
 
     @Override
+    public boolean saveBatch(Collection<TRMSTAY> list) {
+        list.forEach(item->fillParentData(item));
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<TRMSTAY> list) {
         list.forEach(item->fillParentData(item));
         saveOrUpdateBatch(list,batchSize);

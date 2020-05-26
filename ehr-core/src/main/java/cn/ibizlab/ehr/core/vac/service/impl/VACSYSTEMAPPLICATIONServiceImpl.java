@@ -134,6 +134,13 @@ public class VACSYSTEMAPPLICATIONServiceImpl extends ServiceImpl<VACSYSTEMAPPLIC
     }
 
     @Override
+    public boolean saveBatch(Collection<VACSYSTEMAPPLICATION> list) {
+        list.forEach(item->fillParentData(item));
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<VACSYSTEMAPPLICATION> list) {
         list.forEach(item->fillParentData(item));
         saveOrUpdateBatch(list,batchSize);

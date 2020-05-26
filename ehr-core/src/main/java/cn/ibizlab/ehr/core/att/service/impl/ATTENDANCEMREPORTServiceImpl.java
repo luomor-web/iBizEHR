@@ -84,6 +84,13 @@ public class ATTENDANCEMREPORTServiceImpl extends ServiceImpl<ATTENDANCEMREPORTM
     }
 
     @Override
+    public boolean saveBatch(Collection<ATTENDANCEMREPORT> list) {
+        list.forEach(item->fillParentData(item));
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<ATTENDANCEMREPORT> list) {
         list.forEach(item->fillParentData(item));
         saveOrUpdateBatch(list,batchSize);

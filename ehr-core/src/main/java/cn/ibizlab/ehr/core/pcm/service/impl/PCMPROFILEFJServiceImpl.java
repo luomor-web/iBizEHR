@@ -117,6 +117,12 @@ public class PCMPROFILEFJServiceImpl extends ServiceImpl<PCMPROFILEFJMapper, PCM
     }
 
     @Override
+    public boolean saveBatch(Collection<PCMPROFILEFJ> list) {
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<PCMPROFILEFJ> list) {
         saveOrUpdateBatch(list,batchSize);
     }

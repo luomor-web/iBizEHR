@@ -105,6 +105,13 @@ public class PIMVACATIONServiceImpl extends ServiceImpl<PIMVACATIONMapper, PIMVA
     }
 
     @Override
+    public boolean saveBatch(Collection<PIMVACATION> list) {
+        list.forEach(item->fillParentData(item));
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<PIMVACATION> list) {
         list.forEach(item->fillParentData(item));
         saveOrUpdateBatch(list,batchSize);

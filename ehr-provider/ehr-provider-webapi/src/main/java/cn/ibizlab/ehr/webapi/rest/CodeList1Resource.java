@@ -6,10 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
-
 import lombok.extern.slf4j.Slf4j;
 import com.alibaba.fastjson.JSONObject;
-
 import javax.servlet.ServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cglib.beans.BeanCopier;
@@ -24,20 +22,15 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
-
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
-
 import cn.ibizlab.ehr.webapi.dto.*;
 import cn.ibizlab.ehr.webapi.mapping.*;
 import cn.ibizlab.ehr.core.common.domain.CodeList1;
 import cn.ibizlab.ehr.core.common.service.ICodeList1Service;
 import cn.ibizlab.ehr.core.common.filter.CodeList1SearchContext;
-
-
-
 
 @Slf4j
 @Api(tags = {"CodeList1" })
@@ -75,14 +68,14 @@ public class CodeList1Resource {
 	@RequestMapping(method = RequestMethod.PUT, value = "/codelist1s/{codelist1_id}")
     @Transactional
     public ResponseEntity<CodeList1DTO> update(@PathVariable("codelist1_id") String codelist1_id, @RequestBody CodeList1DTO codelist1dto) {
-		CodeList1 domain = codelist1Mapping.toDomain(codelist1dto);
-        domain.setCodelistid(codelist1_id);
-		codelist1Service.update(domain);
-		CodeList1DTO dto = codelist1Mapping.toDto(domain);
+		CodeList1 domain  = codelist1Mapping.toDomain(codelist1dto);
+        domain .setCodelistid(codelist1_id);
+		codelist1Service.update(domain );
+		CodeList1DTO dto = codelist1Mapping.toDto(domain );
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.codelist1Mapping,#codelist1dtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"CodeList1" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/codelist1s/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<CodeList1DTO> codelist1dtos) {
@@ -96,6 +89,7 @@ public class CodeList1Resource {
     @Transactional
     public ResponseEntity<CodeList1DTO> refreshModel(@PathVariable("codelist1_id") String codelist1_id, @RequestBody CodeList1DTO codelist1dto) {
         CodeList1 codelist1 = codelist1Mapping.toDomain(codelist1dto);
+        codelist1.setCodelistid(codelist1_id);
         codelist1 = codelist1Service.refreshModel(codelist1);
         codelist1dto = codelist1Mapping.toDto(codelist1);
         return ResponseEntity.status(HttpStatus.OK).body(codelist1dto);
@@ -119,7 +113,7 @@ public class CodeList1Resource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.codelist1Mapping,#codelist1dtos})")
     @ApiOperation(value = "createBatch", tags = {"CodeList1" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/codelist1s/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<CodeList1DTO> codelist1dtos) {
@@ -135,7 +129,7 @@ public class CodeList1Resource {
          return ResponseEntity.status(HttpStatus.OK).body(codelist1Service.remove(codelist1_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.codelist1Mapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"CodeList1" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/codelist1s/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -143,14 +137,14 @@ public class CodeList1Resource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-CodeList1-Save-all')")
+    @PreAuthorize("hasPermission('','Save',{'Sql',this.codelist1Mapping,#codelist1dto})")
     @ApiOperation(value = "Save", tags = {"CodeList1" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/codelist1s/save")
     public ResponseEntity<Boolean> save(@RequestBody CodeList1DTO codelist1dto) {
         return ResponseEntity.status(HttpStatus.OK).body(codelist1Service.save(codelist1Mapping.toDomain(codelist1dto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.codelist1Mapping,#codelist1dtos})")
     @ApiOperation(value = "SaveBatch", tags = {"CodeList1" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/codelist1s/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<CodeList1DTO> codelist1dtos) {

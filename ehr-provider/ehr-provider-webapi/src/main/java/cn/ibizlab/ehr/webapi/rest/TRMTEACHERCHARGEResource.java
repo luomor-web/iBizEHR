@@ -6,10 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
-
 import lombok.extern.slf4j.Slf4j;
 import com.alibaba.fastjson.JSONObject;
-
 import javax.servlet.ServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cglib.beans.BeanCopier;
@@ -24,20 +22,15 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
-
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
-
 import cn.ibizlab.ehr.webapi.dto.*;
 import cn.ibizlab.ehr.webapi.mapping.*;
 import cn.ibizlab.ehr.core.trm.domain.TRMTEACHERCHARGE;
 import cn.ibizlab.ehr.core.trm.service.ITRMTEACHERCHARGEService;
 import cn.ibizlab.ehr.core.trm.filter.TRMTEACHERCHARGESearchContext;
-
-
-
 
 @Slf4j
 @Api(tags = {"TRMTEACHERCHARGE" })
@@ -54,14 +47,14 @@ public class TRMTEACHERCHARGEResource {
 
     public TRMTEACHERCHARGEDTO permissionDTO=new TRMTEACHERCHARGEDTO();
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMTEACHERCHARGE-Save-all')")
+    @PreAuthorize("hasPermission('','Save',{'Sql',this.trmteacherchargeMapping,#trmteacherchargedto})")
     @ApiOperation(value = "Save", tags = {"TRMTEACHERCHARGE" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmteachercharges/save")
     public ResponseEntity<Boolean> save(@RequestBody TRMTEACHERCHARGEDTO trmteacherchargedto) {
         return ResponseEntity.status(HttpStatus.OK).body(trmteacherchargeService.save(trmteacherchargeMapping.toDomain(trmteacherchargedto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.trmteacherchargeMapping,#trmteacherchargedtos})")
     @ApiOperation(value = "SaveBatch", tags = {"TRMTEACHERCHARGE" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmteachercharges/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<TRMTEACHERCHARGEDTO> trmteacherchargedtos) {
@@ -86,7 +79,7 @@ public class TRMTEACHERCHARGEResource {
          return ResponseEntity.status(HttpStatus.OK).body(trmteacherchargeService.remove(trmteachercharge_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.trmteacherchargeMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"TRMTEACHERCHARGE" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/trmteachercharges/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -99,14 +92,14 @@ public class TRMTEACHERCHARGEResource {
 	@RequestMapping(method = RequestMethod.PUT, value = "/trmteachercharges/{trmteachercharge_id}")
     @Transactional
     public ResponseEntity<TRMTEACHERCHARGEDTO> update(@PathVariable("trmteachercharge_id") String trmteachercharge_id, @RequestBody TRMTEACHERCHARGEDTO trmteacherchargedto) {
-		TRMTEACHERCHARGE domain = trmteacherchargeMapping.toDomain(trmteacherchargedto);
-        domain.setTrmteacherchargeid(trmteachercharge_id);
-		trmteacherchargeService.update(domain);
-		TRMTEACHERCHARGEDTO dto = trmteacherchargeMapping.toDto(domain);
+		TRMTEACHERCHARGE domain  = trmteacherchargeMapping.toDomain(trmteacherchargedto);
+        domain .setTrmteacherchargeid(trmteachercharge_id);
+		trmteacherchargeService.update(domain );
+		TRMTEACHERCHARGEDTO dto = trmteacherchargeMapping.toDto(domain );
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.trmteacherchargeMapping,#trmteacherchargedtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"TRMTEACHERCHARGE" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/trmteachercharges/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<TRMTEACHERCHARGEDTO> trmteacherchargedtos) {
@@ -125,7 +118,7 @@ public class TRMTEACHERCHARGEResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.trmteacherchargeMapping,#trmteacherchargedtos})")
     @ApiOperation(value = "createBatch", tags = {"TRMTEACHERCHARGE" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmteachercharges/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<TRMTEACHERCHARGEDTO> trmteacherchargedtos) {

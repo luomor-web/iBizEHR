@@ -91,6 +91,13 @@ public class PIMEDUCATIONServiceImpl extends ServiceImpl<PIMEDUCATIONMapper, PIM
     }
 
     @Override
+    public boolean saveBatch(Collection<PIMEDUCATION> list) {
+        list.forEach(item->fillParentData(item));
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<PIMEDUCATION> list) {
         list.forEach(item->fillParentData(item));
         saveOrUpdateBatch(list,batchSize);

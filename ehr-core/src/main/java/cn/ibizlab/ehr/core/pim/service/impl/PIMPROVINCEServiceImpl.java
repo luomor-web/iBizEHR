@@ -131,6 +131,12 @@ public class PIMPROVINCEServiceImpl extends ServiceImpl<PIMPROVINCEMapper, PIMPR
     }
 
     @Override
+    public boolean saveBatch(Collection<PIMPROVINCE> list) {
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<PIMPROVINCE> list) {
         saveOrUpdateBatch(list,batchSize);
     }

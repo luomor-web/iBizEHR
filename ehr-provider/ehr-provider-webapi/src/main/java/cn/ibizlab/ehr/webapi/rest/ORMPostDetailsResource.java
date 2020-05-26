@@ -6,10 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
-
 import lombok.extern.slf4j.Slf4j;
 import com.alibaba.fastjson.JSONObject;
-
 import javax.servlet.ServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cglib.beans.BeanCopier;
@@ -24,20 +22,15 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
-
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
-
 import cn.ibizlab.ehr.webapi.dto.*;
 import cn.ibizlab.ehr.webapi.mapping.*;
 import cn.ibizlab.ehr.core.orm.domain.ORMPostDetails;
 import cn.ibizlab.ehr.core.orm.service.IORMPostDetailsService;
 import cn.ibizlab.ehr.core.orm.filter.ORMPostDetailsSearchContext;
-
-
-
 
 @Slf4j
 @Api(tags = {"ORMPostDetails" })
@@ -65,7 +58,7 @@ public class ORMPostDetailsResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.ormpostdetailsMapping,#ormpostdetailsdtos})")
     @ApiOperation(value = "createBatch", tags = {"ORMPostDetails" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormpostdetails/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<ORMPostDetailsDTO> ormpostdetailsdtos) {
@@ -94,14 +87,14 @@ public class ORMPostDetailsResource {
 	@RequestMapping(method = RequestMethod.PUT, value = "/ormpostdetails/{ormpostdetails_id}")
     @Transactional
     public ResponseEntity<ORMPostDetailsDTO> update(@PathVariable("ormpostdetails_id") String ormpostdetails_id, @RequestBody ORMPostDetailsDTO ormpostdetailsdto) {
-		ORMPostDetails domain = ormpostdetailsMapping.toDomain(ormpostdetailsdto);
-        domain.setOrmpostdetailsid(ormpostdetails_id);
-		ormpostdetailsService.update(domain);
-		ORMPostDetailsDTO dto = ormpostdetailsMapping.toDto(domain);
+		ORMPostDetails domain  = ormpostdetailsMapping.toDomain(ormpostdetailsdto);
+        domain .setOrmpostdetailsid(ormpostdetails_id);
+		ormpostdetailsService.update(domain );
+		ORMPostDetailsDTO dto = ormpostdetailsMapping.toDto(domain );
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.ormpostdetailsMapping,#ormpostdetailsdtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"ORMPostDetails" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/ormpostdetails/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<ORMPostDetailsDTO> ormpostdetailsdtos) {
@@ -116,14 +109,14 @@ public class ORMPostDetailsResource {
         return ResponseEntity.status(HttpStatus.OK).body(ormpostdetailsMapping.toDto(ormpostdetailsService.getDraft(new ORMPostDetails())));
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMPostDetails-Save-all')")
+    @PreAuthorize("hasPermission('','Save',{'Sql',this.ormpostdetailsMapping,#ormpostdetailsdto})")
     @ApiOperation(value = "Save", tags = {"ORMPostDetails" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormpostdetails/save")
     public ResponseEntity<Boolean> save(@RequestBody ORMPostDetailsDTO ormpostdetailsdto) {
         return ResponseEntity.status(HttpStatus.OK).body(ormpostdetailsService.save(ormpostdetailsMapping.toDomain(ormpostdetailsdto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.ormpostdetailsMapping,#ormpostdetailsdtos})")
     @ApiOperation(value = "SaveBatch", tags = {"ORMPostDetails" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormpostdetails/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<ORMPostDetailsDTO> ormpostdetailsdtos) {
@@ -139,7 +132,7 @@ public class ORMPostDetailsResource {
          return ResponseEntity.status(HttpStatus.OK).body(ormpostdetailsService.remove(ormpostdetails_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.ormpostdetailsMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"ORMPostDetails" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/ormpostdetails/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {

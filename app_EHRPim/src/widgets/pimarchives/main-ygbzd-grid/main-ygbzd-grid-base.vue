@@ -102,22 +102,6 @@
                     </template>
                 </el-table-column>
             </template>
-            <template v-if="getColumnState('duration')">
-                <el-table-column show-overflow-tooltip :prop="'duration'" :label="$t('entities.pimarchives.main_ygbzd_grid.columns.duration')" :width="200"  :align="'left'" :sortable="'custom'">
-                    <template v-slot="{row,column}">
-                        <span>{{row.duration}}</span>
-                    </template>
-                </el-table-column>
-            </template>
-            <template v-if="getColumnState('zt')">
-                <el-table-column show-overflow-tooltip :prop="'zt'" :label="$t('entities.pimarchives.main_ygbzd_grid.columns.zt')" :width="150"  :align="'left'" :sortable="'custom'">
-                    <template v-slot="{row,column}">
-                        <template >
-            <codelist :value="row.zt" tag='PIMCL_DAGHZT' codelistType='STATIC' renderMode="STR" valueSeparator=";" textSeparator="、" ></codelist>
-                        </template>
-                    </template>
-                </el-table-column>
-            </template>
             <template v-if="getColumnState('uagridcolumn1')">
                 <el-table-column :column-key="'uagridcolumn1'" :label="$t('entities.pimarchives.main_ygbzd_grid.columns.uagridcolumn1')" :width="100"  :align="'right'">
                     <template slot-scope="scope">
@@ -699,20 +683,6 @@ export default class Main_YGBZDBase extends Vue implements ControlInterface {
             util: 'px'
         },
         {
-            name: 'duration',
-            label: '档案未转出月数',
-            langtag: 'entities.pimarchives.main_ygbzd_grid.columns.duration',
-            show: true,
-            util: 'PX'
-        },
-        {
-            name: 'zt',
-            label: '档案借阅状态',
-            langtag: 'entities.pimarchives.main_ygbzd_grid.columns.zt',
-            show: true,
-            util: 'px'
-        },
-        {
             name: 'uagridcolumn1',
             label: '操作列',
             langtag: 'entities.pimarchives.main_ygbzd_grid.columns.uagridcolumn1',
@@ -1052,14 +1022,6 @@ export default class Main_YGBZDBase extends Vue implements ControlInterface {
             renderMode: 'other',
             textSeparator: '、',
             valueSeparator: ',',
-          },
-          {
-            name: 'zt',
-            srfkey: 'PIMCL_DAGHZT',
-            codelistType : 'STATIC',
-            textSeparator: '、',
-            renderMode: 'string',
-            valueSeparator: ";",
           },
         ];
         let _this = this;

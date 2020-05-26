@@ -138,6 +138,13 @@ public class PIMVOCATIONALServiceImpl extends ServiceImpl<PIMVOCATIONALMapper, P
     }
 
     @Override
+    public boolean saveBatch(Collection<PIMVOCATIONAL> list) {
+        list.forEach(item->fillParentData(item));
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<PIMVOCATIONAL> list) {
         list.forEach(item->fillParentData(item));
         saveOrUpdateBatch(list,batchSize);

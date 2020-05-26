@@ -62,13 +62,6 @@ public class PCMPROFILESearchContext extends QueryWrapperContext<PCMPROFILE> {
             this.getSelectCond().eq("jzpspyjyy", n_jzpspyjyy_eq);
         }
     }
-	private String n_condition_eq;//[校验结果]
-	public void setN_condition_eq(String n_condition_eq) {
-        this.n_condition_eq = n_condition_eq;
-        if(!ObjectUtils.isEmpty(this.n_condition_eq)){
-            this.getSelectCond().eq("condition", n_condition_eq);
-        }
-    }
 	private String n_yglxshgz_eq;//[员工类型审核规则]
 	public void setN_yglxshgz_eq(String n_yglxshgz_eq) {
         this.n_yglxshgz_eq = n_yglxshgz_eq;
@@ -216,7 +209,7 @@ public class PCMPROFILESearchContext extends QueryWrapperContext<PCMPROFILE> {
             this.getSelectCond().eq("xxxz", n_xxxz_eq);
         }
     }
-	private String n_sfxzbjnbry_eq;//[选择局内部人员]
+	private String n_sfxzbjnbry_eq;//[选择内部人员]
 	public void setN_sfxzbjnbry_eq(String n_sfxzbjnbry_eq) {
         this.n_sfxzbjnbry_eq = n_sfxzbjnbry_eq;
         if(!ObjectUtils.isEmpty(this.n_sfxzbjnbry_eq)){
@@ -389,6 +382,13 @@ public class PCMPROFILESearchContext extends QueryWrapperContext<PCMPROFILE> {
         this.n_ormorgid_eq = n_ormorgid_eq;
         if(!ObjectUtils.isEmpty(this.n_ormorgid_eq)){
             this.getSelectCond().eq("ormorgid", n_ormorgid_eq);
+        }
+    }
+	private String n_checkresult_eq;//[校验结果]
+	public void setN_checkresult_eq(String n_checkresult_eq) {
+        this.n_checkresult_eq = n_checkresult_eq;
+        if(!ObjectUtils.isEmpty(this.n_checkresult_eq)){
+            this.getSelectCond().eq("checkresult", n_checkresult_eq);
         }
     }
 

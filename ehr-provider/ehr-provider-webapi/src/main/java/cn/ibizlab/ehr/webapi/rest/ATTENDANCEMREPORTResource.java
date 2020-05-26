@@ -6,10 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
-
 import lombok.extern.slf4j.Slf4j;
 import com.alibaba.fastjson.JSONObject;
-
 import javax.servlet.ServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cglib.beans.BeanCopier;
@@ -24,20 +22,15 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
-
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
-
 import cn.ibizlab.ehr.webapi.dto.*;
 import cn.ibizlab.ehr.webapi.mapping.*;
 import cn.ibizlab.ehr.core.att.domain.ATTENDANCEMREPORT;
 import cn.ibizlab.ehr.core.att.service.IATTENDANCEMREPORTService;
 import cn.ibizlab.ehr.core.att.filter.ATTENDANCEMREPORTSearchContext;
-
-
-
 
 @Slf4j
 @Api(tags = {"ATTENDANCEMREPORT" })
@@ -60,19 +53,20 @@ public class ATTENDANCEMREPORTResource {
     @Transactional
     public ResponseEntity<ATTENDANCEMREPORTDTO> getAttendencemanOfKQSZ(@PathVariable("attendancemreport_id") String attendancemreport_id, @RequestBody ATTENDANCEMREPORTDTO attendancemreportdto) {
         ATTENDANCEMREPORT attendancemreport = attendancemreportMapping.toDomain(attendancemreportdto);
+        attendancemreport.setAttendancemreportid(attendancemreport_id);
         attendancemreport = attendancemreportService.getAttendencemanOfKQSZ(attendancemreport);
         attendancemreportdto = attendancemreportMapping.toDto(attendancemreport);
         return ResponseEntity.status(HttpStatus.OK).body(attendancemreportdto);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ATTENDANCEMREPORT-Save-all')")
+    @PreAuthorize("hasPermission('','Save',{'Sql',this.attendancemreportMapping,#attendancemreportdto})")
     @ApiOperation(value = "Save", tags = {"ATTENDANCEMREPORT" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/attendancemreports/save")
     public ResponseEntity<Boolean> save(@RequestBody ATTENDANCEMREPORTDTO attendancemreportdto) {
         return ResponseEntity.status(HttpStatus.OK).body(attendancemreportService.save(attendancemreportMapping.toDomain(attendancemreportdto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.attendancemreportMapping,#attendancemreportdtos})")
     @ApiOperation(value = "SaveBatch", tags = {"ATTENDANCEMREPORT" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/attendancemreports/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<ATTENDANCEMREPORTDTO> attendancemreportdtos) {
@@ -88,7 +82,7 @@ public class ATTENDANCEMREPORTResource {
          return ResponseEntity.status(HttpStatus.OK).body(attendancemreportService.remove(attendancemreport_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.attendancemreportMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"ATTENDANCEMREPORT" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/attendancemreports/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -102,6 +96,7 @@ public class ATTENDANCEMREPORTResource {
     @Transactional
     public ResponseEntity<ATTENDANCEMREPORTDTO> exportKQYB(@PathVariable("attendancemreport_id") String attendancemreport_id, @RequestBody ATTENDANCEMREPORTDTO attendancemreportdto) {
         ATTENDANCEMREPORT attendancemreport = attendancemreportMapping.toDomain(attendancemreportdto);
+        attendancemreport.setAttendancemreportid(attendancemreport_id);
         attendancemreport = attendancemreportService.exportKQYB(attendancemreport);
         attendancemreportdto = attendancemreportMapping.toDto(attendancemreport);
         return ResponseEntity.status(HttpStatus.OK).body(attendancemreportdto);
@@ -118,7 +113,7 @@ public class ATTENDANCEMREPORTResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.attendancemreportMapping,#attendancemreportdtos})")
     @ApiOperation(value = "createBatch", tags = {"ATTENDANCEMREPORT" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/attendancemreports/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<ATTENDANCEMREPORTDTO> attendancemreportdtos) {
@@ -132,6 +127,7 @@ public class ATTENDANCEMREPORTResource {
     @Transactional
     public ResponseEntity<ATTENDANCEMREPORTDTO> sCKQYB(@PathVariable("attendancemreport_id") String attendancemreport_id, @RequestBody ATTENDANCEMREPORTDTO attendancemreportdto) {
         ATTENDANCEMREPORT attendancemreport = attendancemreportMapping.toDomain(attendancemreportdto);
+        attendancemreport.setAttendancemreportid(attendancemreport_id);
         attendancemreport = attendancemreportService.sCKQYB(attendancemreport);
         attendancemreportdto = attendancemreportMapping.toDto(attendancemreport);
         return ResponseEntity.status(HttpStatus.OK).body(attendancemreportdto);
@@ -159,6 +155,7 @@ public class ATTENDANCEMREPORTResource {
     @Transactional
     public ResponseEntity<ATTENDANCEMREPORTDTO> qR(@PathVariable("attendancemreport_id") String attendancemreport_id, @RequestBody ATTENDANCEMREPORTDTO attendancemreportdto) {
         ATTENDANCEMREPORT attendancemreport = attendancemreportMapping.toDomain(attendancemreportdto);
+        attendancemreport.setAttendancemreportid(attendancemreport_id);
         attendancemreport = attendancemreportService.qR(attendancemreport);
         attendancemreportdto = attendancemreportMapping.toDto(attendancemreport);
         return ResponseEntity.status(HttpStatus.OK).body(attendancemreportdto);
@@ -169,14 +166,14 @@ public class ATTENDANCEMREPORTResource {
 	@RequestMapping(method = RequestMethod.PUT, value = "/attendancemreports/{attendancemreport_id}")
     @Transactional
     public ResponseEntity<ATTENDANCEMREPORTDTO> update(@PathVariable("attendancemreport_id") String attendancemreport_id, @RequestBody ATTENDANCEMREPORTDTO attendancemreportdto) {
-		ATTENDANCEMREPORT domain = attendancemreportMapping.toDomain(attendancemreportdto);
-        domain.setAttendancemreportid(attendancemreport_id);
-		attendancemreportService.update(domain);
-		ATTENDANCEMREPORTDTO dto = attendancemreportMapping.toDto(domain);
+		ATTENDANCEMREPORT domain  = attendancemreportMapping.toDomain(attendancemreportdto);
+        domain .setAttendancemreportid(attendancemreport_id);
+		attendancemreportService.update(domain );
+		ATTENDANCEMREPORTDTO dto = attendancemreportMapping.toDto(domain );
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.attendancemreportMapping,#attendancemreportdtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"ATTENDANCEMREPORT" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/attendancemreports/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<ATTENDANCEMREPORTDTO> attendancemreportdtos) {

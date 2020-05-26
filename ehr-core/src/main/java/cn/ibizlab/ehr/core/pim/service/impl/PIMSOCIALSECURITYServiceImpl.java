@@ -134,6 +134,12 @@ public class PIMSOCIALSECURITYServiceImpl extends ServiceImpl<PIMSOCIALSECURITYM
     }
 
     @Override
+    public boolean saveBatch(Collection<PIMSOCIALSECURITY> list) {
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<PIMSOCIALSECURITY> list) {
         saveOrUpdateBatch(list,batchSize);
     }

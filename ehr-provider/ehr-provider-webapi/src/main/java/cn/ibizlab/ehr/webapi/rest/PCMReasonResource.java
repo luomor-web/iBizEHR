@@ -6,10 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
-
 import lombok.extern.slf4j.Slf4j;
 import com.alibaba.fastjson.JSONObject;
-
 import javax.servlet.ServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cglib.beans.BeanCopier;
@@ -24,20 +22,15 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
-
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
-
 import cn.ibizlab.ehr.webapi.dto.*;
 import cn.ibizlab.ehr.webapi.mapping.*;
 import cn.ibizlab.ehr.core.pcm.domain.PCMReason;
 import cn.ibizlab.ehr.core.pcm.service.IPCMReasonService;
 import cn.ibizlab.ehr.core.pcm.filter.PCMReasonSearchContext;
-
-
-
 
 @Slf4j
 @Api(tags = {"PCMReason" })
@@ -69,7 +62,7 @@ public class PCMReasonResource {
          return ResponseEntity.status(HttpStatus.OK).body(pcmreasonService.remove(pcmreason_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.humanMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.pcmreasonMapping,this.permissionDTO,#ids})")
     @ApiOperation(value = "RemoveBatch", tags = {"PCMReason" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmreasons/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -82,14 +75,14 @@ public class PCMReasonResource {
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmreasons/{pcmreason_id}")
     @Transactional
     public ResponseEntity<PCMReasonDTO> update(@PathVariable("pcmreason_id") String pcmreason_id, @RequestBody PCMReasonDTO pcmreasondto) {
-		PCMReason domain = pcmreasonMapping.toDomain(pcmreasondto);
-        domain.setPcmreasonid(pcmreason_id);
-		pcmreasonService.update(domain);
-		PCMReasonDTO dto = pcmreasonMapping.toDto(domain);
+		PCMReason domain  = pcmreasonMapping.toDomain(pcmreasondto);
+        domain .setPcmreasonid(pcmreason_id);
+		pcmreasonService.update(domain );
+		PCMReasonDTO dto = pcmreasonMapping.toDto(domain );
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Update',{'Sql',this.pcmreasonMapping,#pcmreasondtos})")
     @ApiOperation(value = "UpdateBatch", tags = {"PCMReason" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmreasons/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PCMReasonDTO> pcmreasondtos) {
@@ -117,7 +110,7 @@ public class PCMReasonResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Create',{'Sql',this.pcmreasonMapping,#pcmreasondtos})")
     @ApiOperation(value = "createBatch", tags = {"PCMReason" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmreasons/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PCMReasonDTO> pcmreasondtos) {
@@ -132,14 +125,14 @@ public class PCMReasonResource {
         return  ResponseEntity.status(HttpStatus.OK).body(pcmreasonService.checkKey(pcmreasonMapping.toDomain(pcmreasondto)));
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMReason-Save-all')")
+    @PreAuthorize("hasPermission('','Save',{'Sql',this.pcmreasonMapping,#pcmreasondto})")
     @ApiOperation(value = "Save", tags = {"PCMReason" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmreasons/save")
     public ResponseEntity<Boolean> save(@RequestBody PCMReasonDTO pcmreasondto) {
         return ResponseEntity.status(HttpStatus.OK).body(pcmreasonService.save(pcmreasonMapping.toDomain(pcmreasondto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.humanMapping,#humandtos})")
+    @PreAuthorize("hasPermission('Save',{'Sql',this.pcmreasonMapping,#pcmreasondtos})")
     @ApiOperation(value = "SaveBatch", tags = {"PCMReason" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmreasons/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PCMReasonDTO> pcmreasondtos) {

@@ -68,6 +68,12 @@ public class PersonStateMGRServiceImpl extends ServiceImpl<PersonStateMGRMapper,
     }
 
     @Override
+    public boolean saveBatch(Collection<PersonStateMGR> list) {
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<PersonStateMGR> list) {
         saveOrUpdateBatch(list,batchSize);
     }

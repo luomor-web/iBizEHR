@@ -134,6 +134,13 @@ public class ORMQYGLServiceImpl extends ServiceImpl<ORMQYGLMapper, ORMQYGL> impl
     }
 
     @Override
+    public boolean saveBatch(Collection<ORMQYGL> list) {
+        list.forEach(item->fillParentData(item));
+        saveOrUpdateBatch(list,batchSize);
+        return true;
+    }
+
+    @Override
     public void saveBatch(List<ORMQYGL> list) {
         list.forEach(item->fillParentData(item));
         saveOrUpdateBatch(list,batchSize);
