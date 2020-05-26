@@ -79,7 +79,7 @@
 
 
     <!--输出实体[PCMSCHOOLOFFICE]数据结构 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="tab-pcmschooloffice-18-12">
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-pcmschooloffice-19-12">
         <createTable tableName="T_PCMSCHOOLOFFICE">
                 <column name="PCMSCHOOLOFFICENAME" remarks="" type="VARCHAR(200)">
                 </column>
@@ -304,7 +304,7 @@
 
 
     <!--输出实体[ORMORGINFO]数据结构 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="tab-ormorginfo-27-27">
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-ormorginfo-30-27">
         <createTable tableName="T_ORMORGINFO">
                 <column name="POSTINFO" remarks="" type="VARCHAR(60)">
                 </column>
@@ -1293,7 +1293,7 @@
 
 
     <!--输出实体[PCMPRACTICEEXPERIENCE]数据结构 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="tab-pcmpracticeexperience-26-77">
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-pcmpracticeexperience-27-77">
         <createTable tableName="T_PCMPRACTICEEXPERIENCE">
                 <column name="PRACTICEREFERENCESPOSITION" remarks="" type="VARCHAR(300)">
                 </column>
@@ -1651,7 +1651,7 @@
 
 
     <!--输出实体[PCMCERTOFREG]数据结构 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="tab-pcmcertofreg-16-98">
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-pcmcertofreg-17-98">
         <createTable tableName="T_PCMCERTOFREG">
                 <column name="LX" remarks="" type="VARCHAR(60)">
                 </column>
@@ -2458,7 +2458,7 @@
 
 
     <!--输出实体[PCMEDUCATIONEXPERIENCE]数据结构 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="tab-pcmeducationexperience-38-163">
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-pcmeducationexperience-39-163">
         <createTable tableName="T_PCMEDUCATIONEXPERIENCE">
                 <column name="MAJORDESCRIPTION" remarks="" type="VARCHAR(500)">
                 </column>
@@ -2769,7 +2769,7 @@
 
 
     <!--输出实体[PCMAWARDSWONS]数据结构 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="tab-pcmawardswons-19-193">
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-pcmawardswons-20-193">
         <createTable tableName="T_PCMAWARDSWONS">
                 <column name="AWARDLEVEL" remarks="" type="VARCHAR(200)">
                 </column>
@@ -4193,7 +4193,7 @@
 
 
     <!--输出实体[PCMPROFILE]数据结构 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="tab-pcmprofile-274-292">
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-pcmprofile-295-292">
         <createTable tableName="T_PCMPROFILE">
                 <column name="GWLB" remarks="" type="VARCHAR(60)">
                 </column>
@@ -4491,7 +4491,7 @@
         <!--输出实体[ORMXMBMX]外键关系 -->
         <!--输出实体[PARJXJG]外键关系 -->
         <!--输出实体[PCMSCHOOLOFFICE]外键关系 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-pcmschooloffice-18-310">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-pcmschooloffice-19-310">
        <addForeignKeyConstraint baseColumnNames="PCMPROFILEID" baseTableName="T_PCMSCHOOLOFFICE" constraintName="DER1N_PCMSCHOOLOFFICE_PCMPROFI" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="PCMPROFILEID" referencedTableName="T_PCMPROFILE" validate="true"/>
     </changeSet>
         <!--输出实体[PIMARCHIVESRECORD]外键关系 -->
@@ -4658,7 +4658,7 @@
        <addForeignKeyConstraint baseColumnNames="PIMPERSONID" baseTableName="T_PCMNOTICE" constraintName="DER1N_PCMNOTICE_PIMPERSON_PIMP" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="PIMPERSONID" referencedTableName="T_PIMPERSON" validate="true"/>
     </changeSet>
         <!--输出实体[PCMPRACTICEEXPERIENCE]外键关系 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-pcmpracticeexperience-26-406">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-pcmpracticeexperience-27-406">
        <addForeignKeyConstraint baseColumnNames="PCMPROFILEID" baseTableName="T_PCMPRACTICEEXPERIENCE" constraintName="DER1N_PCMPRACTICEEXPERIENCE_PC" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="PCMPROFILEID" referencedTableName="T_PCMPROFILE" validate="true"/>
     </changeSet>
         <!--输出实体[BUDGET]外键关系 -->
@@ -4715,10 +4715,10 @@
         <!--输出实体[PCMPROFILESZYJTJ]外键关系 -->
         <!--输出实体[SOCCOMPANYWEL]外键关系 -->
         <!--输出实体[PCMCERTOFREG]外键关系 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-pcmcertofreg-16-446">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-pcmcertofreg-17-446">
        <addForeignKeyConstraint baseColumnNames="PCMPROFILEID" baseTableName="T_PCMCERTOFREG" constraintName="DER1N_PCMCERTOFREG_PCMPROFILE_" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="PCMPROFILEID" referencedTableName="T_PCMPROFILE" validate="true"/>
     </changeSet>
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-pcmcertofreg-16-447">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-pcmcertofreg-17-447">
        <addForeignKeyConstraint baseColumnNames="PIMQUALMAJORID" baseTableName="T_PCMCERTOFREG" constraintName="DER1N_PCMCERTOFREG_PIMQUALMAJO" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="PIMQUALMAJORID" referencedTableName="T_PIMQUALMAJOR" validate="true"/>
     </changeSet>
         <!--输出实体[PIMDISTIRBUTION]外键关系 -->
@@ -4840,7 +4840,7 @@
         <!--输出实体[SALSTDZYZG]外键关系 -->
         <!--输出实体[PIMEXAMINATIONRESULTS]外键关系 -->
         <!--输出实体[PCMEDUCATIONEXPERIENCE]外键关系 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-pcmeducationexperience-38-528">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-pcmeducationexperience-39-528">
        <addForeignKeyConstraint baseColumnNames="PCMPROFILEID" baseTableName="T_PCMEDUCATIONEXPERIENCE" constraintName="DER1N_PCMEDUCATIONEXPERIENCE_P" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="PCMPROFILEID" referencedTableName="T_PCMPROFILE" validate="true"/>
     </changeSet>
         <!--输出实体[ORMORGDZ]外键关系 -->
@@ -4885,7 +4885,7 @@
         <!--输出实体[ORMXMXQJH]外键关系 -->
         <!--输出实体[SALSTDGWGZRATE]外键关系 -->
         <!--输出实体[PCMAWARDSWONS]外键关系 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-pcmawardswons-19-575">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-pcmawardswons-20-575">
        <addForeignKeyConstraint baseColumnNames="PCMPROFILEID" baseTableName="T_PCMAWARDSWONS" constraintName="DER1N_PCMAWARDSWONS_PCMPROFILE" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="PCMPROFILEID" referencedTableName="T_PCMPROFILE" validate="true"/>
     </changeSet>
         <!--输出实体[ORMZWDQGZ]外键关系 -->
@@ -5122,19 +5122,19 @@
        <addForeignKeyConstraint baseColumnNames="PIMPERSONID" baseTableName="T_PCMJXSYGZZJLMX" constraintName="DER1N_PCMJXSYGZZJLMX_PIMPERSON" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="PIMPERSONID" referencedTableName="T_PIMPERSON" validate="true"/>
     </changeSet>
         <!--输出实体[PCMPROFILE]外键关系 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-pcmprofile-274-733">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-pcmprofile-295-733">
        <addForeignKeyConstraint baseColumnNames="ORMDUTYID" baseTableName="T_PCMPROFILE" constraintName="DER1N_PCMPROFILE_ORMDUTY_ORMDU" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="ORMDUTYID" referencedTableName="T_ORMDUTY" validate="true"/>
     </changeSet>
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-pcmprofile-274-734">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-pcmprofile-295-734">
        <addForeignKeyConstraint baseColumnNames="ORMORGSECTORID" baseTableName="T_PCMPROFILE" constraintName="DER1N_PCMPROFILE_ORMORGSECTOR_" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="ORGSECTORID" referencedTableName="T_SRFORGSECTOR" validate="true"/>
     </changeSet>
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-pcmprofile-274-735">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-pcmprofile-295-735">
        <addForeignKeyConstraint baseColumnNames="ORMORGID" baseTableName="T_PCMPROFILE" constraintName="DER1N_PCMPROFILE_ORMORG_ORMORG" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="ORGID" referencedTableName="T_SRFORG" validate="true"/>
     </changeSet>
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-pcmprofile-274-736">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-pcmprofile-295-736">
        <addForeignKeyConstraint baseColumnNames="ORMPOSTID" baseTableName="T_PCMPROFILE" constraintName="DER1N_PCMPROFILE_ORMPOST_ORMPO" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="ORMPOSTID" referencedTableName="T_ORMPOST" validate="true"/>
     </changeSet>
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-pcmprofile-274-737">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-pcmprofile-295-737">
        <addForeignKeyConstraint baseColumnNames="PIMPERSONID" baseTableName="T_PCMPROFILE" constraintName="DER1N_PCMPROFILE_PIMPERSON_PIM" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="PIMPERSONID" referencedTableName="T_PIMPERSON" validate="true"/>
     </changeSet>
         <!--输出实体[SALPERSONSTDDETAIL]外键关系 -->
