@@ -1728,6 +1728,39 @@
 
 
     <!--输出实体[PCMYDJDMX]数据结构 -->
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-pcmydjdmx-1-105">
+        <createTable tableName="T_PCMYDJDMX">
+                <column name="JDJSRQ" remarks="" type="DATETIME">
+                </column>
+                <column name="JDKSRQ" remarks="" type="DATETIME">
+                </column>
+                <column name="UPDATEDATE" remarks="" type="DATETIME">
+                </column>
+                <column name="CREATEMAN" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="CREATEDATE" remarks="" type="DATETIME">
+                </column>
+                <column name="CZ" remarks="" type="VARCHAR(100)">
+                </column>
+                <column name="PCMYDJDMXID" remarks="" type="VARCHAR(100)">
+                    <constraints primaryKey="true" primaryKeyName="PK_PCMYDJDMX_PCMYDJDMXID"/>
+                </column>
+                <column name="UPDATEMAN" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="PCMYDJDMXNAME" remarks="" type="VARCHAR(200)">
+                </column>
+                <column name="ORMORGSECTORID" remarks="" type="VARCHAR(100)">
+                </column>
+                <column name="ORMDUTYID" remarks="" type="VARCHAR(100)">
+                </column>
+                <column name="ORMORGID" remarks="" type="VARCHAR(100)">
+                </column>
+                <column name="ORMPOSTID" remarks="" type="VARCHAR(100)">
+                </column>
+                <column name="PIMDISTIRBUTIONID" remarks="" type="VARCHAR(100)">
+                </column>
+        </createTable>
+    </changeSet>
 
 
     <!--输出实体[PIMCITY]数据结构 -->
@@ -1880,6 +1913,63 @@
 
 
     <!--输出实体[ORMERPORG]数据结构 -->
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-ormerporg-1-113">
+        <createTable tableName="T_ORMERPORG">
+                <column name="ORGTYPE" remarks="" type="VARCHAR(200)">
+                </column>
+                <column name="TOWNCITY" remarks="" type="VARCHAR(200)">
+                </column>
+                <column name="ISENABLE" remarks="" type="VARCHAR(100)">
+                </column>
+                <column name="UPDATEMAN" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="DATETO" remarks="" type="VARCHAR(200)">
+                </column>
+                <column name="ORGADDRESSLINE1" remarks="" type="VARCHAR(500)">
+                </column>
+                <column name="CREATEMAN" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="ORGTYPENAME" remarks="" type="VARCHAR(200)">
+                </column>
+                <column name="ORGADDRESSLINE3" remarks="" type="VARCHAR(500)">
+                </column>
+                <column name="ORGADDRESSLINE2" remarks="" type="VARCHAR(500)">
+                </column>
+                <column name="CREATEDATE" remarks="" type="DATETIME">
+                </column>
+                <column name="ORMERPORGID" remarks="" type="VARCHAR(200)">
+                    <constraints primaryKey="true" primaryKeyName="PK_ORMERPORG_ORMERPORGID"/>
+                </column>
+                <column name="OUCODE" remarks="" type="VARCHAR(200)">
+                </column>
+                <column name="LASTUPDATEDATE" remarks="" type="VARCHAR(300)">
+                </column>
+                <column name="DATEFROM" remarks="" type="VARCHAR(200)">
+                </column>
+                <column name="YYFLAG" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="ORGSHORTNAME" remarks="" type="VARCHAR(200)">
+                </column>
+                <column name="ORMERPORGNAME" remarks="" type="VARCHAR(500)">
+                </column>
+                <column name="ORGCREATEDATE" remarks="" type="VARCHAR(300)">
+                </column>
+                <column name="PARENTORGID" remarks="" type="VARCHAR(200)">
+                </column>
+                <column name="ORDERNUM" remarks="" type="VARCHAR(200)">
+                </column>
+                <column name="UPDATEDATE" remarks="" type="DATETIME">
+                </column>
+                <column name="ORGZIPCODE" remarks="" type="VARCHAR(200)">
+                </column>
+                <column name="OUID" remarks="" type="VARCHAR(200)">
+                </column>
+                <column name="NUMCOMP" remarks="" type="INT">
+                </column>
+                <column name="ORGCODE" remarks="" type="VARCHAR(200)">
+                </column>
+        </createTable>
+    </changeSet>
 
 
     <!--输出实体[VACDAYOFF]数据结构 -->
@@ -1889,6 +1979,63 @@
 
 
     <!--输出实体[ORMORG]数据结构 -->
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-ormorg-186-116">
+        <createTable tableName="T_SRFORG">
+                <column name="BTQY" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="CREATEDATE" remarks="" type="DATETIME">
+                </column>
+                <column name="STARTSTOPSIGN" remarks="" type="VARCHAR(100)">
+                </column>
+                <column name="COMPANYFLAG" remarks="" type="VARCHAR(300)">
+                </column>
+                <column name="LEGALENTITY" remarks="" type="VARCHAR(100)">
+                </column>
+                <column name="SSOU" remarks="" type="VARCHAR(200)">
+                </column>
+                <column name="UPDATEMAN" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="ZZDZBM" remarks="" type="VARCHAR(200)">
+                </column>
+                <column name="GSSS" remarks="" type="VARCHAR(200)">
+                </column>
+                <column name="LEVELCODE" remarks="" type="VARCHAR(300)">
+                </column>
+                <column name="PX" remarks="" type="INT">
+                </column>
+                <column name="ZZCJSJ" remarks="" type="DATETIME">
+                </column>
+                <column name="ZZDZY" remarks="" type="VARCHAR(500)">
+                </column>
+                <column name="UPDATEDATE" remarks="" type="DATETIME">
+                </column>
+                <column name="CORRESPONDINGORG" remarks="" type="VARCHAR(4000)">
+                </column>
+                <column name="XN" remarks="" type="INT">
+                </column>
+                <column name="CREATEMAN" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="ZZDZE" remarks="" type="VARCHAR(500)">
+                </column>
+                <column name="ORGCODE" remarks="" type="VARCHAR(500)">
+                </column>
+                <column name="ORGID" remarks="" type="VARCHAR(100)">
+                    <constraints primaryKey="true" primaryKeyName="PK_ORMORG_ORGID"/>
+                </column>
+                <column name="ZZDZS" remarks="" type="VARCHAR(500)">
+                </column>
+                <column name="SHORTNAME" remarks="" type="VARCHAR(100)">
+                </column>
+                <column name="ERPORGID" remarks="" type="VARCHAR(200)">
+                </column>
+                <column name="ZZLX" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="ORGNAME" remarks="" type="VARCHAR(200)">
+                </column>
+                <column name="PORGID" remarks="" type="VARCHAR(100)">
+                </column>
+        </createTable>
+    </changeSet>
 
 
     <!--输出实体[PARPTRYNDLHMBMX]数据结构 -->
@@ -2067,6 +2214,25 @@
 
 
     <!--输出实体[ORMEDITION]数据结构 -->
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-ormedition-8-127">
+        <createTable tableName="T_ORMEDITION">
+                <column name="ORMEDITIONNAME" remarks="" type="VARCHAR(200)">
+                </column>
+                <column name="ORMEDITIONID" remarks="" type="VARCHAR(100)">
+                    <constraints primaryKey="true" primaryKeyName="PK_ORMEDITION_ORMEDITIONID"/>
+                </column>
+                <column name="BBH" remarks="" type="FLOAT">
+                </column>
+                <column name="UPDATEDATE" remarks="" type="DATETIME">
+                </column>
+                <column name="UPDATEMAN" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="CREATEMAN" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="CREATEDATE" remarks="" type="DATETIME">
+                </column>
+        </createTable>
+    </changeSet>
 
 
     <!--输出实体[PIMTITLECATALOGUE]数据结构 -->
@@ -2270,6 +2436,27 @@
 
 
     <!--输出实体[NATIONMGR]数据结构 -->
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-nationmgr-9-145">
+        <createTable tableName="T_NATIONMGR">
+                <column name="ORDERNO" remarks="" type="INT">
+                </column>
+                <column name="UPDATEMAN" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="NATIONCODE" remarks="" type="VARCHAR(100)">
+                </column>
+                <column name="NATIONMGRID" remarks="" type="VARCHAR(100)">
+                    <constraints primaryKey="true" primaryKeyName="PK_NATIONMGR_NATIONMGRID"/>
+                </column>
+                <column name="UPDATEDATE" remarks="" type="DATETIME">
+                </column>
+                <column name="CREATEMAN" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="CREATEDATE" remarks="" type="DATETIME">
+                </column>
+                <column name="NATIONMGRNAME" remarks="" type="VARCHAR(200)">
+                </column>
+        </createTable>
+    </changeSet>
 
 
     <!--输出实体[ATTENDENCETYPE]数据结构 -->
@@ -2532,6 +2719,29 @@
 
 
     <!--输出实体[ORMORGDZ]数据结构 -->
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-ormorgdz-11-164">
+        <createTable tableName="T_ORMORGDZ">
+                <column name="UPDATEDATE" remarks="" type="DATETIME">
+                </column>
+                <column name="DEFORGADDRESS" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="ORMORGDZID" remarks="" type="VARCHAR(100)">
+                    <constraints primaryKey="true" primaryKeyName="PK_ORMORGDZ_ORMORGDZID"/>
+                </column>
+                <column name="CREATEMAN" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="XH" remarks="" type="INT">
+                </column>
+                <column name="CREATEDATE" remarks="" type="DATETIME">
+                </column>
+                <column name="UPDATEMAN" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="ORMORGDZNAME" remarks="" type="VARCHAR(500)">
+                </column>
+                <column name="ORMORGID" remarks="" type="VARCHAR(100)">
+                </column>
+        </createTable>
+    </changeSet>
 
 
     <!--输出实体[PCMREASON]数据结构 -->
@@ -2563,6 +2773,33 @@
 
 
     <!--输出实体[ORMDEPESTMAN]数据结构 -->
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-ormdepestman-14-166">
+        <createTable tableName="T_ORMDEPESTMAN">
+                <column name="UPDATEDATE" remarks="" type="DATETIME">
+                </column>
+                <column name="CREATEDATE" remarks="" type="DATETIME">
+                </column>
+                <column name="XH" remarks="" type="INT">
+                </column>
+                <column name="NUMCOMPILATION" remarks="" type="INT">
+                </column>
+                <column name="ORMDEPESTMANNAME" remarks="" type="VARCHAR(200)">
+                </column>
+                <column name="UPDATEMAN" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="CREATEMAN" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="ORMDEPESTMANID" remarks="" type="VARCHAR(100)">
+                    <constraints primaryKey="true" primaryKeyName="PK_ORMDEPESTMAN_ORMDEPESTMANID"/>
+                </column>
+                <column name="ZWZZSM" remarks="" type="VARCHAR(500)">
+                </column>
+                <column name="ORMZWBZID" remarks="" type="VARCHAR(100)">
+                </column>
+                <column name="ORMDUTYID" remarks="" type="VARCHAR(100)">
+                </column>
+        </createTable>
+    </changeSet>
 
 
     <!--输出实体[SALRULEDETAIL]数据结构 -->
@@ -2581,12 +2818,72 @@
 
 
     <!--输出实体[PARJXKHJCSZ]数据结构 -->
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-parjxkhjcsz-16-172">
+        <createTable tableName="T_PARJXKHJCSZ">
+                <column name="KHLX" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="CREATEDATE" remarks="" type="DATETIME">
+                </column>
+                <column name="UPDATEMAN" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="SZSJ" remarks="" type="DATETIME">
+                </column>
+                <column name="CREATEMAN" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="PARJXKHJCSZID" remarks="" type="VARCHAR(100)">
+                    <constraints primaryKey="true" primaryKeyName="PK_PARJXKHJCSZ_PARJXKHJCSZID"/>
+                </column>
+                <column name="ENABLE" remarks="" type="INT">
+                </column>
+                <column name="SFQY" remarks="" type="INT">
+                </column>
+                <column name="UPDATEDATE" remarks="" type="DATETIME">
+                </column>
+                <column name="PARJXKHJCSZNAME" remarks="" type="VARCHAR(200)">
+                </column>
+                <column name="KHND" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="ORMORGID" remarks="" type="VARCHAR(100)">
+                </column>
+        </createTable>
+    </changeSet>
 
 
     <!--输出实体[PCMYDBXMX]数据结构 -->
 
 
     <!--输出实体[ORMBMKQDZ]数据结构 -->
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-ormbmkqdz-17-174">
+        <createTable tableName="T_ORMBMKQDZ">
+                <column name="ORMORGDZID" remarks="" type="VARCHAR(200)">
+                </column>
+                <column name="ORMBMKQDZNAME" remarks="" type="VARCHAR(200)">
+                </column>
+                <column name="CREATEDATE" remarks="" type="DATETIME">
+                </column>
+                <column name="CREATEMAN" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="ORMBMKQDZID" remarks="" type="VARCHAR(100)">
+                    <constraints primaryKey="true" primaryKeyName="PK_ORMBMKQDZ_ORMBMKQDZID"/>
+                </column>
+                <column name="LNG" remarks="" type="FLOAT">
+                </column>
+                <column name="RANGE" remarks="" type="INT">
+                </column>
+                <column name="SFMRKQDZ" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="UPDATEMAN" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="UPDATEDATE" remarks="" type="DATETIME">
+                </column>
+                <column name="LAT" remarks="" type="FLOAT">
+                </column>
+                <column name="XH" remarks="" type="INT">
+                </column>
+                <column name="ORMORGSECTORID" remarks="" type="VARCHAR(100)">
+                </column>
+        </createTable>
+    </changeSet>
 
 
     <!--输出实体[ARCHIVESMANAGE]数据结构 -->
@@ -2875,6 +3172,33 @@
 
 
     <!--输出实体[ORMBMGWBZ]数据结构 -->
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-ormbmgwbz-14-198">
+        <createTable tableName="T_ORMBMGWBZ">
+                <column name="GWZZSM" remarks="" type="VARCHAR(500)">
+                </column>
+                <column name="UPDATEMAN" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="ORMBMGWBZID" remarks="" type="VARCHAR(100)">
+                    <constraints primaryKey="true" primaryKeyName="PK_ORMBMGWBZ_ORMBMGWBZID"/>
+                </column>
+                <column name="CREATEDATE" remarks="" type="DATETIME">
+                </column>
+                <column name="CREATEMAN" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="XH" remarks="" type="INT">
+                </column>
+                <column name="UPDATEDATE" remarks="" type="DATETIME">
+                </column>
+                <column name="NUMCOMPILATION" remarks="" type="INT">
+                </column>
+                <column name="ORMBMGWBZNAME" remarks="" type="VARCHAR(200)">
+                </column>
+                <column name="ORMPOSTID" remarks="" type="VARCHAR(100)">
+                </column>
+                <column name="ORMGWBZID" remarks="" type="VARCHAR(100)">
+                </column>
+        </createTable>
+    </changeSet>
 
 
     <!--输出实体[PCMXKML]数据结构 -->
@@ -3027,6 +3351,29 @@
 
 
     <!--输出实体[DATERULE]数据结构 -->
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-daterule-11-208">
+        <createTable tableName="T_DATERULE">
+                <column name="STARTDATE" remarks="" type="DATETIME">
+                </column>
+                <column name="UPDATEMAN" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="CREATEMAN" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="DATERULENAME" remarks="" type="VARCHAR(200)">
+                </column>
+                <column name="DATERULEID" remarks="" type="VARCHAR(100)">
+                    <constraints primaryKey="true" primaryKeyName="PK_DATERULE_DATERULEID"/>
+                </column>
+                <column name="CREATEDATE" remarks="" type="DATETIME">
+                </column>
+                <column name="UPDATEDATE" remarks="" type="DATETIME">
+                </column>
+                <column name="ENDDATE" remarks="" type="DATETIME">
+                </column>
+                <column name="ORMORGID" remarks="" type="VARCHAR(100)">
+                </column>
+        </createTable>
+    </changeSet>
 
 
     <!--输出实体[PIMENCLOSURE]数据结构 -->
@@ -3098,6 +3445,63 @@
 
 
     <!--输出实体[CODELIST]数据结构 -->
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-codelist-4-213">
+        <createTable tableName="T_SRFCODELIST">
+                <column name="VALUESEPERATOR" remarks="" type="VARCHAR(50)">
+                </column>
+                <column name="CLPATH" remarks="" type="VARCHAR(500)">
+                </column>
+                <column name="ISUSERSCOPE" remarks="" type="INT">
+                </column>
+                <column name="ISSYSTEM" remarks="" type="INT">
+                </column>
+                <column name="SEPERATOR" remarks="" type="VARCHAR(50)">
+                </column>
+                <column name="UPDATEMAN" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="SRFSYSPUB" remarks="" type="INT">
+                </column>
+                <column name="UPDATEDATE" remarks="" type="DATETIME">
+                </column>
+                <column name="RESERVER5" remarks="" type="DATETIME">
+                </column>
+                <column name="CREATEDATE" remarks="" type="DATETIME">
+                </column>
+                <column name="RESERVER" remarks="" type="VARCHAR(100)">
+                </column>
+                <column name="RESERVER4" remarks="" type="VARCHAR(200)">
+                </column>
+                <column name="RESERVER3" remarks="" type="VARCHAR(200)">
+                </column>
+                <column name="ORMODE" remarks="" type="VARCHAR(100)">
+                </column>
+                <column name="EMPTYTEXT" remarks="" type="VARCHAR(500)">
+                </column>
+                <column name="FILLER" remarks="" type="VARCHAR(200)">
+                </column>
+                <column name="CREATEMAN" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="CODELISTID" remarks="" type="VARCHAR(100)">
+                    <constraints primaryKey="true" primaryKeyName="PK_CODELIST_CODELISTID"/>
+                </column>
+                <column name="CLVERSION" remarks="" type="INT">
+                </column>
+                <column name="NOVALUEEMPTY" remarks="" type="INT">
+                </column>
+                <column name="CODELISTNAME" remarks="" type="VARCHAR(200)">
+                </column>
+                <column name="CLMODEL" remarks="" type="TEXT(1048576)">
+                </column>
+                <column name="MEMO" remarks="" type="VARCHAR(2000)">
+                </column>
+                <column name="RESERVER2" remarks="" type="VARCHAR(100)">
+                </column>
+                <column name="CLPARAM" remarks="" type="TEXT(1048576)">
+                </column>
+                <column name="SRFUSERPUB" remarks="" type="INT">
+                </column>
+        </createTable>
+    </changeSet>
 
 
     <!--输出实体[TRMTRAINRESMENT]数据结构 -->
@@ -3326,6 +3730,37 @@
 
 
     <!--输出实体[ORMDUTY]数据结构 -->
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-ormduty-31-246">
+        <createTable tableName="T_ORMDUTY">
+                <column name="ORMDUTYID" remarks="" type="VARCHAR(100)">
+                    <constraints primaryKey="true" primaryKeyName="PK_ORMDUTY_ORMDUTYID"/>
+                </column>
+                <column name="FGLX" remarks="" type="VARCHAR(300)">
+                </column>
+                <column name="UPDATEMAN" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="UPDATEDATE" remarks="" type="DATETIME">
+                </column>
+                <column name="XH" remarks="" type="INT">
+                </column>
+                <column name="CREATEMAN" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="ZWJB" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="CREATEDATE" remarks="" type="DATETIME">
+                </column>
+                <column name="DYZJ" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="NX" remarks="" type="INT">
+                </column>
+                <column name="ZWLB" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="BXJLNX" remarks="" type="INT">
+                </column>
+                <column name="ORMDUTYNAME" remarks="" type="VARCHAR(200)">
+                </column>
+        </createTable>
+    </changeSet>
 
 
     <!--输出实体[PIMTITLE]数据结构 -->
@@ -3397,6 +3832,31 @@
 
 
     <!--输出实体[CONTRACTSIGNORG]数据结构 -->
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-contractsignorg-1-250">
+        <createTable tableName="T_CONTRACTSIGNORG">
+                <column name="UPDATEMAN" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="CONTRACTSIGNORGNAME" remarks="" type="VARCHAR(200)">
+                </column>
+                <column name="CONTRACTSIGNORGID" remarks="" type="VARCHAR(100)">
+                    <constraints primaryKey="true" primaryKeyName="PK_CONTRACTSIGNORG_CONTRACTSIG"/>
+                </column>
+                <column name="CREATEMAN" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="CREATEDATE" remarks="" type="DATETIME">
+                </column>
+                <column name="UPDATEDATE" remarks="" type="DATETIME">
+                </column>
+                <column name="ENABLE" remarks="" type="INT">
+                </column>
+                <column name="ISDEFAULTSIGNORG" remarks="" type="INT">
+                </column>
+                <column name="ORMSIGNORGID" remarks="" type="VARCHAR(100)">
+                </column>
+                <column name="ORMORGID" remarks="" type="VARCHAR(100)">
+                </column>
+        </createTable>
+    </changeSet>
 
 
     <!--输出实体[ORMXMRYPZXQ]数据结构 -->
@@ -4734,6 +5194,21 @@
     </changeSet>
         <!--输出实体[PARJZSZPSJG]外键关系 -->
         <!--输出实体[PCMYDJDMX]外键关系 -->
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-pcmydjdmx-1-462">
+       <addForeignKeyConstraint baseColumnNames="ORMDUTYID" baseTableName="T_PCMYDJDMX" constraintName="DER1N_PCMYDJDMX_ORMDUTY_ORMDUT" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="ORMDUTYID" referencedTableName="T_ORMDUTY" validate="true"/>
+    </changeSet>
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-pcmydjdmx-1-463">
+       <addForeignKeyConstraint baseColumnNames="ORMORGSECTORID" baseTableName="T_PCMYDJDMX" constraintName="DER1N_PCMYDJDMX_ORMORGSECTOR_O" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="ORGSECTORID" referencedTableName="T_SRFORGSECTOR" validate="true"/>
+    </changeSet>
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-pcmydjdmx-1-464">
+       <addForeignKeyConstraint baseColumnNames="ORMORGID" baseTableName="T_PCMYDJDMX" constraintName="DER1N_PCMYDJDMX_ORMORG_ORMORGI" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="ORGID" referencedTableName="T_SRFORG" validate="true"/>
+    </changeSet>
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-pcmydjdmx-1-465">
+       <addForeignKeyConstraint baseColumnNames="ORMPOSTID" baseTableName="T_PCMYDJDMX" constraintName="DER1N_PCMYDJDMX_ORMPOST_ORMPOS" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="ORMPOSTID" referencedTableName="T_ORMPOST" validate="true"/>
+    </changeSet>
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-pcmydjdmx-1-466">
+       <addForeignKeyConstraint baseColumnNames="PIMDISTIRBUTIONID" baseTableName="T_PCMYDJDMX" constraintName="DER1N_PCMYDJDMX_PIMDISTIRBUTIO" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="PIMDISTIRBUTIONID" referencedTableName="T_PIMDISTIRBUTION" validate="true"/>
+    </changeSet>
         <!--输出实体[PIMCITY]外键关系 -->
         <!--输出实体[PCMNORECYCLINGLIBRARY]外键关系 -->
         <!--输出实体[ORMTITLE]外键关系 -->
@@ -4751,6 +5226,9 @@
         <!--输出实体[VACDAYOFF]外键关系 -->
         <!--输出实体[SALSTDZX]外键关系 -->
         <!--输出实体[ORMORG]外键关系 -->
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-ormorg-186-474">
+       <addForeignKeyConstraint baseColumnNames="PORGID" baseTableName="T_SRFORG" constraintName="DER1N_ORMORG_ORMORG_PORGID" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="ORGID" referencedTableName="T_SRFORG" validate="true"/>
+    </changeSet>
         <!--输出实体[PARPTRYNDLHMBMX]外键关系 -->
         <!--输出实体[SOCWELFAREINFOMX]外键关系 -->
         <!--输出实体[TRMTRAINOUTAPPLY]外键关系 -->
@@ -4844,16 +5322,31 @@
        <addForeignKeyConstraint baseColumnNames="PCMPROFILEID" baseTableName="T_PCMEDUCATIONEXPERIENCE" constraintName="DER1N_PCMEDUCATIONEXPERIENCE_P" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="PCMPROFILEID" referencedTableName="T_PCMPROFILE" validate="true"/>
     </changeSet>
         <!--输出实体[ORMORGDZ]外键关系 -->
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-ormorgdz-11-529">
+       <addForeignKeyConstraint baseColumnNames="ORMORGID" baseTableName="T_ORMORGDZ" constraintName="DER1N_ORMORGDZ_ORMORG_ORMORGID" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="ORGID" referencedTableName="T_SRFORG" validate="true"/>
+    </changeSet>
         <!--输出实体[PCMREASON]外键关系 -->
         <!--输出实体[ORMDEPESTMAN]外键关系 -->
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-ormdepestman-14-530">
+       <addForeignKeyConstraint baseColumnNames="ORMDUTYID" baseTableName="T_ORMDEPESTMAN" constraintName="DER1N_ORMDEPESTMAN_ORMDUTY_ORM" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="ORMDUTYID" referencedTableName="T_ORMDUTY" validate="true"/>
+    </changeSet>
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-ormdepestman-14-531">
+       <addForeignKeyConstraint baseColumnNames="ORMZWBZID" baseTableName="T_ORMDEPESTMAN" constraintName="DER1N_ORMDEPESTMAN_ORMORGSECTO" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="ORGSECTORID" referencedTableName="T_SRFORGSECTOR" validate="true"/>
+    </changeSet>
         <!--输出实体[SALRULEDETAIL]外键关系 -->
         <!--输出实体[PARJXMTFK]外键关系 -->
         <!--输出实体[PIMWORKFLOWREF]外键关系 -->
         <!--输出实体[TRMTRAINAGENCY]外键关系 -->
         <!--输出实体[PIMLANGUAGEABILITY]外键关系 -->
         <!--输出实体[PARJXKHJCSZ]外键关系 -->
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-parjxkhjcsz-16-540">
+       <addForeignKeyConstraint baseColumnNames="ORMORGID" baseTableName="T_PARJXKHJCSZ" constraintName="DER1N_PARJXKHJCSZ_ORMORG_ORMOR" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="ORGID" referencedTableName="T_SRFORG" validate="true"/>
+    </changeSet>
         <!--输出实体[PCMYDBXMX]外键关系 -->
         <!--输出实体[ORMBMKQDZ]外键关系 -->
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-ormbmkqdz-17-541">
+       <addForeignKeyConstraint baseColumnNames="ORMORGSECTORID" baseTableName="T_ORMBMKQDZ" constraintName="DER1N_ORMBMKQDZ_ORMORGSECTOR_O" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="ORGSECTORID" referencedTableName="T_SRFORGSECTOR" validate="true"/>
+    </changeSet>
         <!--输出实体[ARCHIVESMANAGE]外键关系 -->
         <!--输出实体[SALITEMSUB]外键关系 -->
         <!--输出实体[TRMTRAINACTAPPLY]外键关系 -->
@@ -4899,6 +5392,12 @@
        <addForeignKeyConstraint baseColumnNames="PIMPERSONID" baseTableName="T_PCMSGQMGR" constraintName="DER1N_PCMSGQMGR_PIMPERSON_PIMP" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="PIMPERSONID" referencedTableName="T_PIMPERSON" validate="true"/>
     </changeSet>
         <!--输出实体[ORMBMGWBZ]外键关系 -->
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-ormbmgwbz-14-581">
+       <addForeignKeyConstraint baseColumnNames="ORMGWBZID" baseTableName="T_ORMBMGWBZ" constraintName="DER1N_ORMBMGWBZ_ORMORGSECTOR_O" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="ORGSECTORID" referencedTableName="T_SRFORGSECTOR" validate="true"/>
+    </changeSet>
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-ormbmgwbz-14-582">
+       <addForeignKeyConstraint baseColumnNames="ORMPOSTID" baseTableName="T_ORMBMGWBZ" constraintName="DER1N_ORMBMGWBZ_ORMPOST_ORMPOS" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="ORMPOSTID" referencedTableName="T_ORMPOST" validate="true"/>
+    </changeSet>
         <!--输出实体[PCMXKML]外键关系 -->
         <!--输出实体[PCMJXSYGZZSQMX]外键关系 -->
     <changeSet author="a_LAB01_bd0ca3178" id="fk-pcmjxsygzzsqmx-23-583">
@@ -4927,6 +5426,9 @@
         <!--输出实体[PARKHFA]外键关系 -->
         <!--输出实体[TRMAGENCYRECORD]外键关系 -->
         <!--输出实体[DATERULE]外键关系 -->
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-daterule-11-594">
+       <addForeignKeyConstraint baseColumnNames="ORMORGID" baseTableName="T_DATERULE" constraintName="DER1N_DATERULE_ORMORG_ORMORGID" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="ORGID" referencedTableName="T_SRFORG" validate="true"/>
+    </changeSet>
         <!--输出实体[PIMENCLOSURE]外键关系 -->
     <changeSet author="a_LAB01_bd0ca3178" id="fk-pimenclosure-16-595">
        <addForeignKeyConstraint baseColumnNames="PIMPERSONID" baseTableName="T_PIMENCLOSURE" constraintName="DER1N_PIMENCLOSURE_PIMPERSON_P" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="PIMPERSONID" referencedTableName="T_PIMPERSON" validate="true"/>
@@ -4990,6 +5492,12 @@
         <!--输出实体[PCMTXFPSQ]外键关系 -->
         <!--输出实体[PIMPAPER]外键关系 -->
         <!--输出实体[CONTRACTSIGNORG]外键关系 -->
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-contractsignorg-1-646">
+       <addForeignKeyConstraint baseColumnNames="ORMORGID" baseTableName="T_CONTRACTSIGNORG" constraintName="DER1N_CONTRACTSIGNORG_ORMORG_O" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="ORGID" referencedTableName="T_SRFORG" validate="true"/>
+    </changeSet>
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-contractsignorg-1-647">
+       <addForeignKeyConstraint baseColumnNames="ORMSIGNORGID" baseTableName="T_CONTRACTSIGNORG" constraintName="DER1N_CONTRACTSIGNORG_ORMSIGNO" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="ORMSIGNORGID" referencedTableName="T_ORMSIGNORG" validate="true"/>
+    </changeSet>
         <!--输出实体[ORMXMRYPZXQ]外键关系 -->
         <!--输出实体[ATTENDENCESETUP]外键关系 -->
     <changeSet author="a_LAB01_bd0ca3178" id="fk-attendencesetup-7-654">

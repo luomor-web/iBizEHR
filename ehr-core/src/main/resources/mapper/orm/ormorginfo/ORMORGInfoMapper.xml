@@ -91,7 +91,7 @@
     <!--数据查询[CurChild]-->
     <sql id="CurChild" databaseId="mysql">
        <![CDATA[	SELECT * FROM   (SELECT t1.gsss as BELONGREGION, t1.createdate as CREATEDATE, t1.createman as CREATEMAN, t1.px as ORDERNUM, t1.orgcode as ORGCODE, 'CCEED5' as ORGTYPE, '组织结构' as ORGTYPENAME, t1.orgid as ORMORGINFOID, t1.orgname as ORMORGINFONAME, t1.ssou as OUID, t1.porgid as PORGID, '' AS PORGNAME, t1.SHORTNAME as SHORTNAME, t1.btqy as SUBSTANDARD, t1.updatedate as UPDATEDATE, t1.updatedate as UPDATEMAN, t1.STARTSTOPSIGN  as  STARTSTOPSIGN, '' as POSTINFO     FROM t_srforg t1) t1 
-				 WHERE 	(t1.PORGID =  #{srf.datacontext.srfparentkey')} and t1.STARTSTOPSIGN ='1')
+				 WHERE 	( t1.STARTSTOPSIGN ='1')
 			]]>
     </sql>
 

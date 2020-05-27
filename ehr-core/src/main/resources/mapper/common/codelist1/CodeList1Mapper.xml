@@ -4,6 +4,9 @@
 <mapper	namespace="cn.ibizlab.ehr.core.common.mapper.CodeList1Mapper">
 
     <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
+	<select id="selectById"  resultMap="CodeList1ResultMap" databaseId="mysql">
+        <![CDATA[select t1.* from (SELECT t1.`CLMODEL`, t1.`CLPARAM`, t1.`CLPATH`, t1.`CLVERSION`, t1.`CODELISTID`, t1.`CODELISTNAME`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`EMPTYTEXT`, t1.`FILLER`, t1.`ISSYSTEM`, t1.`ISUSERSCOPE`, t1.`MEMO`, t1.`NOVALUEEMPTY`, t1.`ORMODE`, t1.`RESERVER`, t1.`RESERVER2`, t1.`RESERVER3`, t1.`RESERVER4`, t1.`RESERVER5`, t1.`SEPERATOR`, t1.`SRFSYSPUB`, t1.`SRFUSERPUB`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`VALUESEPERATOR` FROM `T_SRFCODELIST` t1  ) t1 where codelistid=#{id}]]>
+    </select>
 
     <!--通过mybatis将查询结果注入到entity中,通过配置autoMapping="true"由mybatis自动处理映射关系 -->
     <resultMap id="CodeList1ResultMap" type="cn.ibizlab.ehr.core.common.domain.CodeList1" autoMapping="true">
@@ -65,6 +68,12 @@
     <sql id="PersonUse" databaseId="mysql">
        <![CDATA[	SELECT t1.`CLPATH`, t1.`CLVERSION`, t1.`CODELISTID`, t1.`CODELISTNAME`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`EMPTYTEXT`, t1.`FILLER`, t1.`ISSYSTEM`, t1.`ISUSERSCOPE`, t1.`MEMO`, t1.`NOVALUEEMPTY`, t1.`ORMODE`, t1.`RESERVER`, t1.`RESERVER2`, t1.`RESERVER3`, t1.`RESERVER4`, t1.`RESERVER5`, t1.`SEPERATOR`, t1.`SRFSYSPUB`, t1.`SRFUSERPUB`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`VALUESEPERATOR` FROM `T_SRFCODELIST` t1  
 				 WHERE 	( t1.`RESERVER3` = '1' )
+			]]>
+    </sql>
+
+    <!--数据查询[View]-->
+    <sql id="View" databaseId="mysql">
+       <![CDATA[	SELECT t1.`CLMODEL`, t1.`CLPARAM`, t1.`CLPATH`, t1.`CLVERSION`, t1.`CODELISTID`, t1.`CODELISTNAME`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`EMPTYTEXT`, t1.`FILLER`, t1.`ISSYSTEM`, t1.`ISUSERSCOPE`, t1.`MEMO`, t1.`NOVALUEEMPTY`, t1.`ORMODE`, t1.`RESERVER`, t1.`RESERVER2`, t1.`RESERVER3`, t1.`RESERVER4`, t1.`RESERVER5`, t1.`SEPERATOR`, t1.`SRFSYSPUB`, t1.`SRFUSERPUB`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`VALUESEPERATOR` FROM `T_SRFCODELIST` t1  
 			]]>
     </sql>
 
