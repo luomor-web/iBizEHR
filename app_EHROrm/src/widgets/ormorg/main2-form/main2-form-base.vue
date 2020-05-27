@@ -78,26 +78,8 @@
 </i-col>
 <i-col v-show="detailsModel.startstopsign.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='startstopsign' :itemRules="this.rules.startstopsign" class='' :caption="$t('entities.ormorg.main2_form.details.startstopsign')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.startstopsign.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-radio-group v-model="data.startstopsign"  :disabled="detailsModel.startstopsign.disabled"  name="startstopsign" tag='ORMCL_QTBS' codelistType='STATIC'  style=""></app-radio-group>
-</app-form-item>
-
-</i-col>
-<i-col v-show="detailsModel.correspondingorg.visible" :style="{}"  :sm="{ span: 24, offset: 0 }" :md="{ span: 24, offset: 0 }" :lg="{ span: 24, offset: 0 }" :xl="{ span: 24, offset: 0 }">
-    <app-form-item name='correspondingorg' :itemRules="this.rules.correspondingorg" class='' :caption="$t('entities.ormorg.main2_form.details.correspondingorg')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.correspondingorg.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-mpicker
-    :activeData="data"
-    :disabled="detailsModel.correspondingorg.disabled"
-    :curvalue="data.correspondingorg"
-    name="correspondingorg"
-    :context="context"
-    :viewparams="viewparams"
-    :service="service"
-    :acParams="{ }"
-    :pickupView="{ viewname: 'ormerporglegal-mpickup-view', title: $t('entities.ormerporg.views.legalmpickupview.title'), deResParameters: [], parameters: [{ pathName: 'ormerporgs', parameterName: 'ormerporg' }, { pathName: 'legalmpickupview', parameterName: 'legalmpickupview' } ], placement:'' }"
-    @formitemvaluechange="onFormItemValueChange" 
-    style="">
-</app-mpicker>
-
+    <app-span   name='startstopsign'
+:value="data.startstopsign" tag='ORMCL_QTBS' codelistType='STATIC' style=""></app-span>
 </app-form-item>
 
 </i-col>
@@ -107,7 +89,7 @@
 
 </i-col>
 <i-col v-show="detailsModel.grouppanel1.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
-    <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' :uiActionGroup="detailsModel.grouppanel1.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.ormorg.main2_form.details.grouppanel1')" :isShowCaption="true" uiStyle="DEFAULT" :titleBarCloseMode="0" :isInfoGroupMode="true" >    
+    <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' :uiActionGroup="detailsModel.grouppanel1.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.ormorg.main2_form.details.grouppanel1')" :isShowCaption="false" uiStyle="DEFAULT" :titleBarCloseMode="0" :isInfoGroupMode="true" >    
     <row>
         <i-col v-show="detailsModel.druipart1.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
     <app-form-druipart
@@ -620,8 +602,8 @@ export default class Main2Base extends Vue implements ControlInterface {
         startstopsign: [
             { type: 'string', message: '启停标识 值必须为字符串类型', trigger: 'change' },
             { type: 'string', message: '启停标识 值必须为字符串类型', trigger: 'blur' },
-            { required: true, type: 'string', message: '启停标识 值不能为空', trigger: 'change' },
-            { required: true, type: 'string', message: '启停标识 值不能为空', trigger: 'blur' },
+            { required: false, type: 'string', message: '启停标识 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '启停标识 值不能为空', trigger: 'blur' },
         ],
         correspondingorg: [
             { type: 'string', message: '对应OU 值必须为字符串类型', trigger: 'change' },
@@ -664,9 +646,9 @@ export default class Main2Base extends Vue implements ControlInterface {
     public detailsModel: any = {
         group1: new FormGroupPanelModel({ caption: '组织信息', detailType: 'GROUPPANEL', name: 'group1', visible: true, isShowCaption: true, form: this, uiActionGroup: { caption: '', langbase: 'entities.ormorg.main2_form', extractMode: 'ITEM', details: [] } })
 , 
-        druipart1: new FormDRUIPartModel({ caption: '', detailType: 'DRUIPART', name: 'druipart1', visible: true, isShowCaption: true, form: this })
+        druipart1: new FormDRUIPartModel({ caption: '地址信息', detailType: 'DRUIPART', name: 'druipart1', visible: true, isShowCaption: true, form: this })
 , 
-        grouppanel1: new FormGroupPanelModel({ caption: '组织地址信息', detailType: 'GROUPPANEL', name: 'grouppanel1', visible: true, isShowCaption: true, form: this, uiActionGroup: { caption: '', langbase: 'entities.ormorg.main2_form', extractMode: 'ITEM', details: [] } })
+        grouppanel1: new FormGroupPanelModel({ caption: '组织地址信息', detailType: 'GROUPPANEL', name: 'grouppanel1', visible: true, isShowCaption: false, form: this, uiActionGroup: { caption: '', langbase: 'entities.ormorg.main2_form', extractMode: 'ITEM', details: [] } })
 , 
         formpage1: new FormPageModel({ caption: '组织基本信息', detailType: 'FORMPAGE', name: 'formpage1', visible: true, isShowCaption: true, form: this })
 , 

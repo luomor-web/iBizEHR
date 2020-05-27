@@ -226,10 +226,10 @@ export default class ORMORGUIServiceBase extends UIService {
                 });
             }
             const view: any = {
-                viewname: 'ormorgedit-view9', 
+                viewname: 'ormorgedit-view9-edit-mode', 
                 height: 0, 
                 width: 0,  
-                title: actionContext.$t('entities.ormorg.views.editview9.title'),
+                title: actionContext.$t('entities.ormorg.views.editview9_editmode.title'),
                 placement: 'DRAWER_TOP',
             };
             openDrawer(view, data);

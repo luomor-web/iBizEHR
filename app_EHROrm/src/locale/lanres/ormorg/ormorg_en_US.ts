@@ -212,7 +212,7 @@ export default {
 	main2_form: {
 		details: {
 			group1: "组织信息", 
-			druipart1: "", 
+			druipart1: "地址信息", 
 			grouppanel1: "组织地址信息", 
 			formpage1: "组织基本信息", 
 			srfupdatedate: "更新时间", 
