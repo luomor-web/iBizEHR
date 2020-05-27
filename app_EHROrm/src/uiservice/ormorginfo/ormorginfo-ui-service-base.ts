@@ -165,6 +165,11 @@ export default class ORMORGInfoUIServiceBase extends UIService {
         Object.assign(data,parentObj);
         Object.assign(context,parentObj);
         let deResParameters: any[] = [];
+        if(context.ormorg && true){
+            deResParameters = [
+            { pathName: 'ormorgs', parameterName: 'ormorg' },
+            ]
+        }
         const parameters: any[] = [
             { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
             { pathName: 'xmbbzgleditview', parameterName: 'xmbbzgleditview' },

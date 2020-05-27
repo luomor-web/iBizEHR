@@ -46,6 +46,7 @@
                 <el-table-column show-overflow-tooltip :prop="'ormorgsectorname'" :label="$t('entities.pimperson.main_grid.columns.ormorgsectorname')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <app-column-link deKeyField='ormorgsector' :context="JSON.parse(JSON.stringify(context))" :viewparams="JSON.parse(JSON.stringify(viewparams))" :data="row" :linkview="{viewname: 'ormorgsectorredirect-view', height: 0,width: 0,title: $t('entities.ormorgsector.views.redirectview.title'),placement: '', isRedirectView: true,deResParameters: [
+            { pathName: 'ormorgs', parameterName: 'ormorg' },
             ]
             ,parameters: [
             { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },

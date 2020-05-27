@@ -100,7 +100,7 @@
   valueitem='prodepid' 
   :value="data.prodepname" 
   editortype="" 
-  :pickupView="{ viewname: 'ormorgsectorpxmbpickup-view', title: $t('entities.ormorgsector.views.pxmbpickupview.title'), deResParameters: [], parameters: [{ pathName: 'ormorgsectors', parameterName: 'ormorgsector' }, { pathName: 'pxmbpickupview', parameterName: 'pxmbpickupview' } ], placement:'' }"
+  :pickupView="{ viewname: 'ormorgsectorpxmbpickup-view', title: $t('entities.ormorgsector.views.pxmbpickupview.title'), deResParameters: [{ pathName: 'ormorgs', parameterName: 'ormorg' }, ], parameters: [{ pathName: 'ormorgsectors', parameterName: 'ormorgsector' }, { pathName: 'pxmbpickupview', parameterName: 'pxmbpickupview' } ], placement:'' }"
   style=""  
   @formitemvaluechange="onFormItemValueChange">
 </app-picker>
@@ -279,6 +279,7 @@
     paramItem='ormorgsector' 
     :parentdata='{"srfparentdefname":"ORMZWBZID","srfparentdename":"ORMORGSECTOR","SRFPARENTTYPE":"DER1N","srfparentmode":"DER1N_ORMDEPESTMAN_ORMORGSECTOR_ORMZWBZID","SRFDER1NID":"DER1N_ORMDEPESTMAN_ORMORGSECTOR_ORMZWBZID"}'
     :parameters="[
+        { pathName: 'ormduties', parameterName: 'ormduty' },
     ]"
     :context="context"
     :viewparams="viewparams"
@@ -310,6 +311,7 @@
     paramItem='ormorgsector' 
     :parentdata='{"srfparentdefname":"ORMGWBZID","srfparentdename":"ORMORGSECTOR","SRFPARENTTYPE":"DER1N","srfparentmode":"DER1N_ORMBMGWBZ_ORMORGSECTOR_ORMGWBZID","SRFDER1NID":"DER1N_ORMBMGWBZ_ORMORGSECTOR_ORMGWBZID"}'
     :parameters="[
+        { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
     ]"
     :context="context"
     :viewparams="viewparams"
@@ -350,6 +352,7 @@
     paramItem='ormorgsector' 
     :parentdata='{"srfparentdefname":"ORMORGSECTORID","srfparentdename":"ORMORGSECTOR","SRFPARENTTYPE":"DER1N","srfparentmode":"DER1N_ORMXMBMX_ORMORGSECTOR_ORMORGSECTORID","SRFDER1NID":"DER1N_ORMXMBMX_ORMORGSECTOR_ORMORGSECTORID"}'
     :parameters="[
+        { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
     ]"
     :context="context"
     :viewparams="viewparams"

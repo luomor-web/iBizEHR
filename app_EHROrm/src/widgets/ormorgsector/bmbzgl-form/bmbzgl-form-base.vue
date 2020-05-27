@@ -66,7 +66,7 @@
   valueitem='porgsectorid' 
   :value="data.porgsectorname" 
   editortype="" 
-  :pickupView="{ viewname: 'ormorgsectorpickup-view', title: $t('entities.ormorgsector.views.pickupview.title'), deResParameters: [], parameters: [{ pathName: 'ormorgsectors', parameterName: 'ormorgsector' }, { pathName: 'pickupview', parameterName: 'pickupview' } ], placement:'' }"
+  :pickupView="{ viewname: 'ormorgsectorpickup-view', title: $t('entities.ormorgsector.views.pickupview.title'), deResParameters: [{ pathName: 'ormorgs', parameterName: 'ormorg' }, ], parameters: [{ pathName: 'ormorgsectors', parameterName: 'ormorgsector' }, { pathName: 'pickupview', parameterName: 'pickupview' } ], placement:'' }"
   style=""  
   @formitemvaluechange="onFormItemValueChange">
 </app-picker>
@@ -207,6 +207,7 @@
     paramItem='ormorgsector' 
     :parentdata='{"srfparentdefname":"ORMZWBZID","srfparentdename":"ORMORGSECTOR","SRFPARENTTYPE":"DER1N","srfparentmode":"DER1N_ORMDEPESTMAN_ORMORGSECTOR_ORMZWBZID","SRFDER1NID":"DER1N_ORMDEPESTMAN_ORMORGSECTOR_ORMZWBZID"}'
     :parameters="[
+        { pathName: 'ormduties', parameterName: 'ormduty' },
     ]"
     :context="context"
     :viewparams="viewparams"
@@ -238,6 +239,7 @@
     paramItem='ormorgsector' 
     :parentdata='{"srfparentdefname":"ORMGWBZID","srfparentdename":"ORMORGSECTOR","SRFPARENTTYPE":"DER1N","srfparentmode":"DER1N_ORMBMGWBZ_ORMORGSECTOR_ORMGWBZID","SRFDER1NID":"DER1N_ORMBMGWBZ_ORMORGSECTOR_ORMGWBZID"}'
     :parameters="[
+        { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
     ]"
     :context="context"
     :viewparams="viewparams"

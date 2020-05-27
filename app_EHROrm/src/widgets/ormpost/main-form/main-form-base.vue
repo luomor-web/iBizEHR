@@ -95,6 +95,7 @@
     paramItem='ormpost' 
     :parentdata='{"srfparentdefname":"ORMPOSTID","srfparentdename":"ORMPOST","SRFPARENTTYPE":"DER1N","srfparentmode":"DER1N_ORMPOSTDETAILS_ORMPOST_ORMPOSTID","SRFDER1NID":"DER1N_ORMPOSTDETAILS_ORMPOST_ORMPOSTID"}'
     :parameters="[
+        { pathName: 'ormpostlibs', parameterName: 'ormpostlib' },
     ]"
     :context="context"
     :viewparams="viewparams"

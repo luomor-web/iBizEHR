@@ -562,11 +562,11 @@ export default class ORMDepEstManZWGridViewBase extends GridViewBase {
     public newdata(args: any[],fullargs?:any[], params?: any, $event?: any, xData?: any) {
         const batchAddPSAppViews=[
             {view:{viewname:'ormorgsectormpickup-view',height: 0,width: 0,title: '部门管理数据多项选择视图'},
-            res:[],
-            'resAppKey':''},
+            res:['ORMORGSECTOR'],
+            'resAppKey':'ormzwbzid'},
             {view:{viewname:'ormdutyest-man-mpickup-view',height: 0,width: 0,title: '职务库'},
-            res:[],
-            'resAppKey':''}
+            res:['ORMDUTY'],
+            'resAppKey':'ormdutyid'}
         ];
         if(batchAddPSAppViews.length == 0 || !this.context.srfparentdename){
             this.$Notice.warning({ title: '错误', desc: '批量添加需添加N:N关系' });
@@ -623,7 +623,12 @@ export default class ORMDepEstManZWGridViewBase extends GridViewBase {
         if(args.length >0){
             Object.assign(curViewParam,args[0]);
         }
-        const deResParameters: any[] = [];
+        let deResParameters: any[] = [];
+        if(curViewParam.ormduty && true){
+            deResParameters = [
+            { pathName: 'ormduties', parameterName: 'ormduty' },
+            ]
+        }
         const parameters: any[] = [
             { pathName: 'ormdepestmen', parameterName: 'ormdepestman' },
             { pathName: 'zweditview', parameterName: 'zweditview' },

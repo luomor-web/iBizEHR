@@ -392,7 +392,12 @@ export default class ORMORGSECTORBZCXGridViewBase extends GridViewBase {
         if(args.length >0){
             Object.assign(curViewParam,args[0]);
         }
-        const deResParameters: any[] = [];
+        let deResParameters: any[] = [];
+        if(curViewParam.ormorg && true){
+            deResParameters = [
+            { pathName: 'ormorgs', parameterName: 'ormorg' },
+            ]
+        }
         const parameters: any[] = [
             { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
             { pathName: 'editview', parameterName: 'editview' },
@@ -424,7 +429,12 @@ export default class ORMORGSECTORBZCXGridViewBase extends GridViewBase {
         if(args.length >0){
             Object.assign(curViewParam,args[0]);
         }
-        const deResParameters: any[] = [];
+        let deResParameters: any[] = [];
+        if(curViewParam.ormorg && true){
+            deResParameters = [
+            { pathName: 'ormorgs', parameterName: 'ormorg' },
+            ]
+        }
         const parameters: any[] = [
             { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
             { pathName: 'editview', parameterName: 'editview' },

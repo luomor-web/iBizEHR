@@ -76,8 +76,24 @@ export default class ORMPostLibServiceBase extends EntityService {
      */
     public async Save(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
         let masterData:any = {};
+        let ormpostdetailsData:any = [];
+        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_ormpostdetails'),'undefined')){
+            ormpostdetailsData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_ormpostdetails') as any);
+            if(ormpostdetailsData && ormpostdetailsData.length && ormpostdetailsData.length > 0){
+                ormpostdetailsData.forEach((item:any) => {
+                    if(item.srffrontuf){
+                        if(Object.is(item.srffrontuf,"0")){
+                            item.ormpostdetailsid = null;
+                        }
+                        delete item.srffrontuf;
+                    }
+                });
+            }
+        }
+        masterData.ormpostdetails = ormpostdetailsData;
         Object.assign(data,masterData);
             let res:any = await  Http.getInstance().post(`/ormpostlibs/${context.ormpostlib}/save`,data,isloading);
+            this.tempStorage.setItem(context.srfsessionkey+'_ormpostdetails',JSON.stringify(res.data.ormpostdetails));
             return res;
     }
 
@@ -92,8 +108,24 @@ export default class ORMPostLibServiceBase extends EntityService {
      */
     public async Update(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
         let masterData:any = {};
+        let ormpostdetailsData:any = [];
+        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_ormpostdetails'),'undefined')){
+            ormpostdetailsData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_ormpostdetails') as any);
+            if(ormpostdetailsData && ormpostdetailsData.length && ormpostdetailsData.length > 0){
+                ormpostdetailsData.forEach((item:any) => {
+                    if(item.srffrontuf){
+                        if(Object.is(item.srffrontuf,"0")){
+                            item.ormpostdetailsid = null;
+                        }
+                        delete item.srffrontuf;
+                    }
+                });
+            }
+        }
+        masterData.ormpostdetails = ormpostdetailsData;
         Object.assign(data,masterData);
             let res:any = await  Http.getInstance().put(`/ormpostlibs/${context.ormpostlib}`,data,isloading);
+            this.tempStorage.setItem(context.srfsessionkey+'_ormpostdetails',JSON.stringify(res.data.ormpostdetails));
             return res;
     }
 
@@ -108,6 +140,21 @@ export default class ORMPostLibServiceBase extends EntityService {
      */
     public async Create(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
         let masterData:any = {};
+        let ormpostdetailsData:any = [];
+        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_ormpostdetails'),'undefined')){
+            ormpostdetailsData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_ormpostdetails') as any);
+            if(ormpostdetailsData && ormpostdetailsData.length && ormpostdetailsData.length > 0){
+                ormpostdetailsData.forEach((item:any) => {
+                    if(item.srffrontuf){
+                        if(Object.is(item.srffrontuf,"0")){
+                            item.ormpostdetailsid = null;
+                        }
+                        delete item.srffrontuf;
+                    }
+                });
+            }
+        }
+        masterData.ormpostdetails = ormpostdetailsData;
         Object.assign(data,masterData);
         if(!data.srffrontuf || data.srffrontuf !== "1"){
             data[this.APPDEKEY] = null;
@@ -117,6 +164,7 @@ export default class ORMPostLibServiceBase extends EntityService {
         }
         let tempContext:any = JSON.parse(JSON.stringify(context));
         let res:any = await Http.getInstance().post(`/ormpostlibs`,data,isloading);
+        this.tempStorage.setItem(tempContext.srfsessionkey+'_ormpostdetails',JSON.stringify(res.data.ormpostdetails));
         return res;
     }
 
@@ -132,6 +180,7 @@ export default class ORMPostLibServiceBase extends EntityService {
     public async GetDraft(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
         let res:any = await  Http.getInstance().get(`/ormpostlibs/getdraft`,isloading);
         res.data.ormpostlib = data.ormpostlib;
+            this.tempStorage.setItem(context.srfsessionkey+'_ormpostdetails',JSON.stringify(res.data.ormpostdetails));
         return res;
     }
 
@@ -146,6 +195,7 @@ export default class ORMPostLibServiceBase extends EntityService {
      */
     public async Get(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
             let res:any = await Http.getInstance().get(`/ormpostlibs/${context.ormpostlib}`,isloading);
+            this.tempStorage.setItem(context.srfsessionkey+'_ormpostdetails',JSON.stringify(res.data.ormpostdetails));
             return res;
 
     }

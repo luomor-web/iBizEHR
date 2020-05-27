@@ -462,8 +462,8 @@ export default class ORMXMBMXGridViewBase extends GridViewBase {
     public newdata(args: any[],fullargs?:any[], params?: any, $event?: any, xData?: any) {
         const batchAddPSAppViews=[
             {view:{viewname:'ormorgsectormpickup-view',height: 0,width: 0,title: '部门管理数据多项选择视图'},
-            res:[],
-            'resAppKey':''}
+            res:['ORMORGSECTOR'],
+            'resAppKey':'ormorgsectorid'}
         ];
         if(batchAddPSAppViews.length == 0 || !this.context.srfparentdename){
             this.$Notice.warning({ title: '错误', desc: '批量添加需添加N:N关系' });
@@ -520,7 +520,12 @@ export default class ORMXMBMXGridViewBase extends GridViewBase {
         if(args.length >0){
             Object.assign(curViewParam,args[0]);
         }
-        const deResParameters: any[] = [];
+        let deResParameters: any[] = [];
+        if(curViewParam.ormorgsector && true){
+            deResParameters = [
+            { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
+            ]
+        }
         const parameters: any[] = [
             { pathName: 'ormxmbmxes', parameterName: 'ormxmbmx' },
             { pathName: 'editview', parameterName: 'editview' },
