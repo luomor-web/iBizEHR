@@ -52,6 +52,17 @@ export const viewstate: any = {
             ],
         },
         {
+            viewtag: '0873c4b0b1d17e12e06877c537c308f6',
+            viewmodule: 'ORM',
+            viewname: 'ORMORGEditView9_EditMode',
+            viewaction: '',
+            viewdatachange: false,
+            refviews: [
+                '6062c2d2018e65fc93001312538b2dc8',
+                'a9e8848adebb1372086602b973419f50',
+            ],
+        },
+        {
             viewtag: '0a73019b4898b090e1b0888e7243e623',
             viewmodule: 'ORM',
             viewname: 'ORMPostLibMPickupView',
@@ -218,7 +229,6 @@ export const viewstate: any = {
             viewaction: '',
             viewdatachange: false,
             refviews: [
-                '69d1ca3780b5660c1e6ac964f38a47fa',
                 '6062c2d2018e65fc93001312538b2dc8',
                 'a9e8848adebb1372086602b973419f50',
             ],
@@ -504,6 +514,17 @@ export const viewstate: any = {
             ],
         },
         {
+            viewtag: '975252aa8b53de1912591cca23064124',
+            viewmodule: 'ORM',
+            viewname: 'ORMORGEditView9',
+            viewaction: '',
+            viewdatachange: false,
+            refviews: [
+                '69d1ca3780b5660c1e6ac964f38a47fa',
+                'a9e8848adebb1372086602b973419f50',
+            ],
+        },
+        {
             viewtag: '9851f29e3a4f62727ef164d964f3c2fd',
             viewmodule: 'ORM',
             viewname: 'ORMORGInfoEditView',
@@ -683,7 +704,8 @@ export const viewstate: any = {
             viewaction: '',
             viewdatachange: false,
             refviews: [
-                '34201778b70a0175b7664955bd8ae2bf',
+                '975252aa8b53de1912591cca23064124',
+                '0873c4b0b1d17e12e06877c537c308f6',
             ],
         },
         {

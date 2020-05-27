@@ -34,6 +34,10 @@ export default {
 			caption: "组织选择表格视图",
       title: '组织选择表格视图',
 		},
+		editview9_editmode: {
+			caption: "组织信息",
+      title: '组织信息',
+		},
 		qbzzpickupview: {
 			caption: "组织管理",
       title: '组织管理',
@@ -59,8 +63,8 @@ export default {
       title: '组织管理',
 		},
 		editview: {
-			caption: "组织管理",
-      title: '组织管理',
+			caption: "组织信息",
+      title: '组织信息',
 		},
 		htgldwpickupview: {
 			caption: "组织选择",
@@ -118,6 +122,10 @@ export default {
 			caption: "组织管理",
       title: '组织管理',
 		},
+		editview9: {
+			caption: "组织信息",
+      title: '组织信息',
+		},
 		sjyxzzqxpickupgridview: {
 			caption: "组织选择",
       title: '组织选择',
@@ -139,8 +147,8 @@ export default {
       title: '组织选择表格视图',
 		},
 		orgtreegridview: {
-			caption: "组织管理",
-      title: '组织管理',
+			caption: "组织信息",
+      title: '组织信息',
 		},
 		pickupgridview: {
 			caption: "组织管理",
@@ -170,8 +178,42 @@ export default {
 	main_form: {
 		details: {
 			group1: "组织信息", 
+			formpage1: "组织基本信息", 
+			srfupdatedate: "更新时间", 
+			srforikey: "", 
+			srfkey: "组织标识", 
+			srfmajortext: "组织名称", 
+			srftempmode: "", 
+			srfuf: "", 
+			srfdeid: "", 
+			srfsourcekey: "", 
+			orgname: "组织名称", 
+			orgcode: "组织编号", 
+			shortname: "组织简称", 
+			porgid: "上级组织ID", 
+			porgname: "上级组织", 
+			px: "排序号", 
+			zzlx: "组织类型", 
+			gsss: "所属区域", 
+			btqy: "补贴标准", 
+			ssou: "所属OU", 
+			zzcjsj: "组织启用时间", 
+			legalentity: "组织性质", 
+			startstopsign: "启停标识", 
+			correspondingorg: "对应OU", 
+			xn: "虚拟组织", 
+			levelcode: "级别编码", 
+			erporgid: "ERP组织ID", 
+			orgid: "组织标识", 
+		},
+		uiactions: {
+		},
+	},
+	main2_form: {
+		details: {
+			group1: "组织信息", 
 			druipart1: "", 
-			grouppanel1: "地址维护", 
+			grouppanel1: "组织地址信息", 
 			formpage1: "组织基本信息", 
 			srfupdatedate: "更新时间", 
 			srforikey: "", 
@@ -245,44 +287,38 @@ export default {
 			tip: "Save And Close Window",
 		},
 	},
-	orgtreegridviewtoolbar2_toolbar: {
-		deuiaction1: {
-			caption: "New",
-			tip: "New",
+	editview9_editmodetoolbar_toolbar: {
+		tbitem3: {
+			caption: "Save",
+			tip: "Save",
 		},
-		deuiaction2: {
-			caption: "保存",
-			tip: "保存",
-		},
-		deuiaction3: {
-			caption: "关闭行编辑",
-			tip: "关闭行编辑",
+		tbitem5: {
+			caption: "Save And Close",
+			tip: "Save And Close Window",
 		},
 	},
 	orgtreegridviewtoolbar_toolbar: {
-		tbitem3: {
+		deuiaction1: {
 			caption: "New",
 			tip: "New",
 		},
-		tbitem8: {
+		deuiaction3: {
 			caption: "Remove",
 			tip: "Remove {0}",
 		},
-		deuiaction1: {
-			caption: "开启行编辑",
-			tip: "开启行编辑",
+		deuiaction4: {
+			caption: "导入",
+			tip: "导入",
 		},
-		tbitem16: {
-			caption: "其它",
-			tip: "其它",
-		},
-		tbitem13: {
+		deuiaction5: {
 			caption: "Export",
 			tip: "Export {0} Data To Excel",
 		},
-		tbitem23: {
-			caption: "数据导入",
-			tip: "数据导入",
+	},
+	editview9toolbar_toolbar: {
+		deuiaction1: {
+			caption: "编辑",
+			tip: "编辑",
 		},
 	},
 	suborggridviewtoolbar2_toolbar: {

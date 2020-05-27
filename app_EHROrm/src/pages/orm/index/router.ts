@@ -423,6 +423,19 @@ const router = new Router({
                     component: () => import('@pages/orm/ormpost-lib-pickup-view/ormpost-lib-pickup-view.vue'),
                 },
                 {
+                    path: 'ormorgs/:ormorg?/editview9/:editview9?',
+                    meta: {
+                        caption: 'entities.ormorg.views.editview9.caption',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'ormorgs', parameterName: 'ormorg' },
+                            { pathName: 'editview9', parameterName: 'editview9' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/orm/ormorgedit-view9/ormorgedit-view9.vue'),
+                },
+                {
                     path: 'ormorgs/:ormorg?/xmbqpickupgridview/:xmbqpickupgridview?',
                     meta: {
                         caption: 'entities.ormorg.views.xmbqpickupgridview.caption',
@@ -764,6 +777,19 @@ const router = new Router({
                     },
                     component: () => import('@pages/orm/ormorgsectoredit-view/ormorgsectoredit-view.vue'),
                 },
+                {
+                    path: 'ormorgs/:ormorg?/editview9_editmode/:editview9_editmode?',
+                    meta: {
+                        caption: 'entities.ormorg.views.editview9_editmode.caption',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'ormorgs', parameterName: 'ormorg' },
+                            { pathName: 'editview9_editmode', parameterName: 'editview9_editmode' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/orm/ormorgedit-view9-edit-mode/ormorgedit-view9-edit-mode.vue'),
+                },
             {
                 path: 'ormxmbqredirectview/:ormxmbqredirectview?',
                 meta: {
@@ -1066,6 +1092,18 @@ const router = new Router({
             requireAuth: true,
         },
         component: () => import('@pages/orm/ormxmgledit-view/ormxmgledit-view.vue'),
+    },
+    {
+        path: '/ormorgs/:ormorg?/editview9_editmode/:editview9_editmode?',
+        meta: {
+            caption: 'entities.ormorg.views.editview9_editmode.caption',
+            parameters: [
+                { pathName: 'ormorgs', parameterName: 'ormorg' },
+                { pathName: 'editview9_editmode', parameterName: 'editview9_editmode' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/orm/ormorgedit-view9-edit-mode/ormorgedit-view9-edit-mode.vue'),
     },
     {
         path: '/ormpostlibs/:ormpostlib?/mpickupview/:mpickupview?',
@@ -1706,6 +1744,18 @@ const router = new Router({
                 },
                 component: () => import('@pages/orm/ormeditionredirect-view/ormeditionredirect-view.vue'),
             },
+    {
+        path: '/ormorgs/:ormorg?/editview9/:editview9?',
+        meta: {
+            caption: 'entities.ormorg.views.editview9.caption',
+            parameters: [
+                { pathName: 'ormorgs', parameterName: 'ormorg' },
+                { pathName: 'editview9', parameterName: 'editview9' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/orm/ormorgedit-view9/ormorgedit-view9.vue'),
+    },
     {
         path: '/ormorginfos/:ormorginfo?/editview/:editview?',
         meta: {

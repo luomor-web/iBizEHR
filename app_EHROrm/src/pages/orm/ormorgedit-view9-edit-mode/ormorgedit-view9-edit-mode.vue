@@ -1,6 +1,6 @@
 <script lang='tsx'>
 import { Component } from 'vue-property-decorator';
-import ORMORGEditViewBase from './ormorgedit-view-base.vue';
+import ORMORGEditView9_EditModeBase from './ormorgedit-view9-edit-mode-base.vue';
 
 import view_form from '@widgets/ormorg/main-form/main-form.vue';
 
@@ -8,8 +8,8 @@ import view_form from '@widgets/ormorg/main-form/main-form.vue';
  * 组织信息
  *
  * @export
- * @class ORMORGEditView
- * @extends {ORMORGEditViewBase}
+ * @class ORMORGEditView9_EditMode
+ * @extends {ORMORGEditView9_EditModeBase}
  */
 @Component({
     components: {
@@ -21,5 +21,5 @@ import view_form from '@widgets/ormorg/main-form/main-form.vue';
         });
     },
 })
-export default class ORMORGEditView extends ORMORGEditViewBase { }
+export default class ORMORGEditView9_EditMode extends ORMORGEditView9_EditModeBase { }
 </script>

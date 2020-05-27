@@ -255,7 +255,7 @@ export default class ORMORGTree2Service extends ControlService {
                         strNodeId += this.TREENODE_SEPARATOR;
                         strNodeId += strId;
                         Object.assign(treeNode, { id: strNodeId });
-                        Object.assign(treeNode, { icon: '../../../img/zzgl/1/zuzhiguanli.png' });
+                        Object.assign(treeNode, { iconcls: 'copy' });
                         Object.assign(treeNode, { expanded: true });
                         Object.assign(treeNode, { leaf: false });
                         Object.assign(treeNode, { navparams: '{"nodeid":"%NODEID%"}' });
@@ -404,7 +404,7 @@ export default class ORMORGTree2Service extends ControlService {
                         strNodeId += this.TREENODE_SEPARATOR;
                         strNodeId += strId;
                         Object.assign(treeNode, { id: strNodeId });
-                        Object.assign(treeNode, { icon: '../../../img/zzgl/1/zuzhiguanli.png' });
+                        Object.assign(treeNode, { iconcls: 'copy' });
                         Object.assign(treeNode, { expanded: filter.isautoexpand });
                         Object.assign(treeNode, { leaf: false });
                         Object.assign(treeNode, { navfilter: "n_porgid_eq" });
@@ -554,7 +554,7 @@ export default class ORMORGTree2Service extends ControlService {
                         strNodeId += this.TREENODE_SEPARATOR;
                         strNodeId += strId;
                         Object.assign(treeNode, { id: strNodeId });
-                        Object.assign(treeNode, { icon: '../../../img/zzgl/1/zuzhiguanli.png' });
+                        Object.assign(treeNode, { iconcls: 'copy' });
                         Object.assign(treeNode, { expanded: filter.isautoexpand });
                         Object.assign(treeNode, { leaf: false });
                         Object.assign(treeNode, { navfilter: "n_porgid_eq" });
@@ -704,6 +704,7 @@ export default class ORMORGTree2Service extends ControlService {
                         strNodeId += this.TREENODE_SEPARATOR;
                         strNodeId += strId;
                         Object.assign(treeNode, { id: strNodeId });
+                        Object.assign(treeNode, { iconcls: 'copy' });
                         Object.assign(treeNode, { expanded: filter.isautoexpand });
                         Object.assign(treeNode, { leaf: true });
                         Object.assign(treeNode, { navfilter: "n_orgid_eq" });

@@ -80,6 +80,7 @@ export default class ORMORGUIServiceBase extends UIService {
      */  
     public initViewMap(){
         this.allViewMap.set(':',{viewname:'xmbqpickupgridview',srfappde:'ormorgs'});
+        this.allViewMap.set(':',{viewname:'editview9_editmode',srfappde:'ormorgs'});
         this.allViewMap.set(':',{viewname:'qbzzpickupview',srfappde:'ormorgs'});
         this.allViewMap.set(':',{viewname:'sjyxzzpickupgridview',srfappde:'ormorgs'});
         this.allViewMap.set(':',{viewname:'orgtreeexpview',srfappde:'ormorgs'});
@@ -101,6 +102,7 @@ export default class ORMORGUIServiceBase extends UIService {
         this.allViewMap.set('MPICKUPVIEW:',{viewname:'mpickupview',srfappde:'ormorgs'});
         this.allViewMap.set(':',{viewname:'xjpickupview',srfappde:'ormorgs'});
         this.allViewMap.set(':',{viewname:'sjyxzzpickupview',srfappde:'ormorgs'});
+        this.allViewMap.set(':',{viewname:'editview9',srfappde:'ormorgs'});
         this.allViewMap.set(':',{viewname:'sjyxzzqxpickupgridview',srfappde:'ormorgs'});
         this.allViewMap.set(':',{viewname:'allleveltwoorgpickupgridview',srfappde:'ormorgs'});
         this.allViewMap.set(':',{viewname:'ypzsyfpxxpickupview',srfappde:'ormorgs'});
@@ -177,6 +179,60 @@ export default class ORMORGUIServiceBase extends UIService {
             });
         };
         backend();
+    }
+
+    /**
+     * 编辑
+     *
+     * @param {any[]} args 当前数据
+     * @param {any} context 行为附加上下文
+     * @param {*} [params] 附加参数
+     * @param {*} [$event] 事件源
+     * @param {*} [xData]  执行行为所需当前部件
+     * @param {*} [actionContext]  执行行为上下文
+     * @param {*} [srfParentDeName] 父实体名称
+     * @returns {Promise<any>}
+     */
+    public async ORMORG_OpenEditView(args: any[], context:any = {} ,params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
+        let data: any = {};
+        const _args: any[] = Util.deepCopy(args);
+        const _this: any = actionContext;
+        const actionTarget: string | null = 'SINGLEKEY';
+        Object.assign(context, { ormorg: '%ormorg%' });
+        Object.assign(params, { orgid: '%ormorg%' });
+        Object.assign(params, { orgname: '%orgname%' });
+        context = UIActionTool.handleContextParam(actionTarget,_args,context);
+        data = UIActionTool.handleActionParam(actionTarget,_args,params);
+        context = Object.assign({},actionContext.context,context);
+        let parentObj:any = {srfparentdename:srfParentDeName?srfParentDeName:null,srfparentkey:srfParentDeName?context[srfParentDeName.toLowerCase()]:null};
+        Object.assign(data,parentObj);
+        Object.assign(context,parentObj);
+        let deResParameters: any[] = [];
+        const parameters: any[] = [
+            { pathName: 'ormorgs', parameterName: 'ormorg' },
+        ];
+            const openDrawer = (view: any, data: any) => {
+                let container: Subject<any> = actionContext.$appdrawer.openDrawer(view, context,data);
+                container.subscribe((result: any) => {
+                    if (!result || !Object.is(result.ret, 'OK')) {
+                        return;
+                    }
+                    const _this: any = actionContext;
+                    if(window.opener){
+                        window.opener.postMessage({status:'OK',identification:'WF'},Environment.uniteAddress);
+                        window.close();
+                    }
+                    return result.datas;
+                });
+            }
+            const view: any = {
+                viewname: 'ormorgedit-view9', 
+                height: 0, 
+                width: 0,  
+                title: actionContext.$t('entities.ormorg.views.editview9.title'),
+                placement: 'DRAWER_BOTTOM',
+            };
+            openDrawer(view, data);
     }
 
 

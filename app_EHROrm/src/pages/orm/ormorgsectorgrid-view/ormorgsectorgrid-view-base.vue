@@ -44,7 +44,7 @@
     loaddraftAction=""
     loadAction=""
     createAction=""
-    fetchAction="FetchBMBZGL"
+    fetchAction="FetchDefault"
     :newdata="newdata"
     :opendata="opendata"
     name="grid"  

@@ -98,6 +98,15 @@
         "viewtag": "07f5aba18665e67110b05f8c81b40d25",
         "memo": ""
     },
+    "ormorgeditview9_editmode": {
+        "title": "组织信息",
+        "caption": "组织信息",
+        "viewtype": "DEEDITVIEW9",
+        "viewmodule": "ORM",
+        "viewname": "ORMORGEditView9_EditMode",
+        "viewtag": "0873c4b0b1d17e12e06877c537c308f6",
+        "memo": ""
+    },
     "ormpostlibmpickupview": {
         "title": "标准岗位",
         "caption": "标准岗位",
@@ -522,8 +531,8 @@
         "memo": ""
     },
     "ormorgeditview": {
-        "title": "组织管理",
-        "caption": "组织管理",
+        "title": "组织信息",
+        "caption": "组织信息",
         "viewtype": "DEEDITVIEW",
         "viewmodule": "ORM",
         "viewname": "ORMORGEditView",
@@ -1403,6 +1412,15 @@
         "viewtag": "95aacaf44febff28c01f69ca936f8fd1",
         "memo": ""
     },
+    "ormorgeditview9": {
+        "title": "组织信息",
+        "caption": "组织信息",
+        "viewtype": "DEEDITVIEW9",
+        "viewmodule": "ORM",
+        "viewname": "ORMORGEditView9",
+        "viewtag": "975252aa8b53de1912591cca23064124",
+        "memo": ""
+    },
     "ormqybzwhmpickupview": {
         "title": "区域标准维护数据多项选择视图",
         "caption": "区域标准维护",
@@ -1890,8 +1908,8 @@
         "memo": ""
     },
     "ormorgorgtreegridview": {
-        "title": "组织管理",
-        "caption": "组织管理",
+        "title": "组织信息",
+        "caption": "组织信息",
         "viewtype": "DEGRIDVIEW",
         "viewmodule": "ORM",
         "viewname": "ORMORGOrgTreeGridView",

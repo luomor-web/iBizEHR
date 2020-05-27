@@ -95,6 +95,14 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewname": "ORMORGDZEditView2",
             "viewtag": "07f5aba18665e67110b05f8c81b40d25"
         },
+        "ormorgeditview9_editmode": {
+            "title": "组织信息",
+            "caption": "组织信息",
+            "viewtype": "DEEDITVIEW9",
+            "viewmodule": "ORM",
+            "viewname": "ORMORGEditView9_EditMode",
+            "viewtag": "0873c4b0b1d17e12e06877c537c308f6"
+        },
         "ormpostlibmpickupview": {
             "title": "标准岗位",
             "caption": "标准岗位",
@@ -472,8 +480,8 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewtag": "337991e5e3d2ae798ba40ee685f3197a"
         },
         "ormorgeditview": {
-            "title": "组织管理",
-            "caption": "组织管理",
+            "title": "组织信息",
+            "caption": "组织信息",
             "viewtype": "DEEDITVIEW",
             "viewmodule": "ORM",
             "viewname": "ORMORGEditView",
@@ -1255,6 +1263,14 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewname": "ORMPostLibEditView2",
             "viewtag": "95aacaf44febff28c01f69ca936f8fd1"
         },
+        "ormorgeditview9": {
+            "title": "组织信息",
+            "caption": "组织信息",
+            "viewtype": "DEEDITVIEW9",
+            "viewmodule": "ORM",
+            "viewname": "ORMORGEditView9",
+            "viewtag": "975252aa8b53de1912591cca23064124"
+        },
         "ormqybzwhmpickupview": {
             "title": "区域标准维护数据多项选择视图",
             "caption": "区域标准维护",
@@ -1688,8 +1704,8 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewtag": "d3d98ee89379969df1fd76a2982d659d"
         },
         "ormorgorgtreegridview": {
-            "title": "组织管理",
-            "caption": "组织管理",
+            "title": "组织信息",
+            "caption": "组织信息",
             "viewtype": "DEGRIDVIEW",
             "viewmodule": "ORM",
             "viewname": "ORMORGOrgTreeGridView",

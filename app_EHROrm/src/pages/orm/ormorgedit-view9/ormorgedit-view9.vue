@@ -1,15 +1,15 @@
 <script lang='tsx'>
 import { Component } from 'vue-property-decorator';
-import ORMORGEditViewBase from './ormorgedit-view-base.vue';
+import ORMORGEditView9Base from './ormorgedit-view9-base.vue';
 
-import view_form from '@widgets/ormorg/main-form/main-form.vue';
+import view_form from '@widgets/ormorg/main2-form/main2-form.vue';
 
 /**
  * 组织信息
  *
  * @export
- * @class ORMORGEditView
- * @extends {ORMORGEditViewBase}
+ * @class ORMORGEditView9
+ * @extends {ORMORGEditView9Base}
  */
 @Component({
     components: {
@@ -21,5 +21,5 @@ import view_form from '@widgets/ormorg/main-form/main-form.vue';
         });
     },
 })
-export default class ORMORGEditView extends ORMORGEditViewBase { }
+export default class ORMORGEditView9 extends ORMORGEditView9Base { }
 </script>
