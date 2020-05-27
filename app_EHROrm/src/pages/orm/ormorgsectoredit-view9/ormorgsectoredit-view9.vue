@@ -1,0 +1,25 @@
+<script lang='tsx'>
+import { Component } from 'vue-property-decorator';
+import ORMORGSECTOREditView9Base from './ormorgsectoredit-view9-base.vue';
+
+import view_form from '@widgets/ormorgsector/main2-form/main2-form.vue';
+
+/**
+ * 部门/项目部信息
+ *
+ * @export
+ * @class ORMORGSECTOREditView9
+ * @extends {ORMORGSECTOREditView9Base}
+ */
+@Component({
+    components: {
+        view_form, 
+    },
+    beforeRouteEnter: (to: any, from: any, next: any) => {
+        next((vm: any) => {
+            vm.$store.commit('addCurPageViewtag', { fullPath: to.fullPath, viewtag: vm.viewtag });
+        });
+    },
+})
+export default class ORMORGSECTOREditView9 extends ORMORGSECTOREditView9Base { }
+</script>

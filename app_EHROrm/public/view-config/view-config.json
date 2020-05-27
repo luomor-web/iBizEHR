@@ -1376,6 +1376,15 @@
         "viewtag": "917714c6b3de7ed13424d76ca50070e2",
         "memo": ""
     },
+    "ormorgsectoreditview9": {
+        "title": "部门/项目部信息",
+        "caption": "部门/项目部信息",
+        "viewtype": "DEEDITVIEW9",
+        "viewmodule": "ORM",
+        "viewname": "ORMORGSECTOREditView9",
+        "viewtag": "91d1827444477b9939c3989b4c924b82",
+        "memo": ""
+    },
     "ormeditionredirectview": {
         "title": "版本对照表数据重定向视图",
         "caption": "版本对照表",
@@ -1512,8 +1521,8 @@
         "memo": ""
     },
     "ormorgsectorgridview": {
-        "title": "部门",
-        "caption": "部门管理",
+        "title": "部门/项目部信息",
+        "caption": "部门/项目部信息",
         "viewtype": "DEGRIDVIEW",
         "viewmodule": "ORM",
         "viewname": "ORMORGSECTORGridView",
@@ -2229,6 +2238,15 @@
         "viewmodule": "ORM",
         "viewname": "ORMORGHTGLDWQPickupGridView",
         "viewtag": "f797c6c9c7b6410519ceb908dfd0a27f",
+        "memo": ""
+    },
+    "ormorgsectoreditview9_editmode": {
+        "title": "部门/项目部信息",
+        "caption": "部门/项目部信息",
+        "viewtype": "DEEDITVIEW9",
+        "viewmodule": "ORM",
+        "viewname": "ORMORGSECTOREditView9_EditMode",
+        "viewtag": "f8da0542fa59713cb39573af12afc068",
         "memo": ""
     },
     "ormxmbmxpickupgridview": {

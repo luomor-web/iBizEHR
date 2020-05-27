@@ -4,9 +4,15 @@
     <row >
             
 <i-col v-show="detailsModel.group1.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
-    <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' :uiActionGroup="detailsModel.group1.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.ormorgsector.bmbzgl_form.details.group1')" :isShowCaption="false" uiStyle="DEFAULT" :titleBarCloseMode="0" :isInfoGroupMode="false" >    
+    <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' :uiActionGroup="detailsModel.group1.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.ormorgsector.bmbzgl_form.details.group1')" :isShowCaption="true" uiStyle="DEFAULT" :titleBarCloseMode="0" :isInfoGroupMode="false" >    
     <row>
-        <i-col v-show="detailsModel.orgsectorname.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
+        <i-col v-show="detailsModel.ordervalue.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
+    <app-form-item name='ordervalue' :itemRules="this.rules.ordervalue" class='' :caption="$t('entities.ormorgsector.bmbzgl_form.details.ordervalue')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.ordervalue.error" :isEmptyCaption="false" labelPos="LEFT">
+    <input-box v-model="data.ordervalue"  @enter="onEnter($event)"   unit=""  :disabled="detailsModel.ordervalue.disabled" type='number'  style=""></input-box>
+</app-form-item>
+
+</i-col>
+<i-col v-show="detailsModel.orgsectorname.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='orgsectorname' :itemRules="this.rules.orgsectorname" class='' :caption="$t('entities.ormorgsector.bmbzgl_form.details.orgsectorname')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.orgsectorname.error" :isEmptyCaption="false" labelPos="LEFT">
     <input-box v-model="data.orgsectorname"  @enter="onEnter($event)"   unit=""  :disabled="detailsModel.orgsectorname.disabled" type='text'  style=""></input-box>
 </app-form-item>
@@ -21,6 +27,12 @@
 <i-col v-show="detailsModel.shortname.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='shortname' :itemRules="this.rules.shortname" class='' :caption="$t('entities.ormorgsector.bmbzgl_form.details.shortname')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.shortname.error" :isEmptyCaption="false" labelPos="LEFT">
     <input-box v-model="data.shortname"  @enter="onEnter($event)"   unit=""  :disabled="detailsModel.shortname.disabled" type='text'  style=""></input-box>
+</app-form-item>
+
+</i-col>
+<i-col v-show="detailsModel.bmlx.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
+    <app-form-item name='bmlx' :itemRules="this.rules.bmlx" class='' :caption="$t('entities.ormorgsector.bmbzgl_form.details.bmlx')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.bmlx.error" :isEmptyCaption="false" labelPos="LEFT">
+     <dropdown-list v-model="data.bmlx" :data="data" :itemParam="{}" :disabled="detailsModel.bmlx.disabled"  tag='PIMCL_BMLX' codelistType='STATIC' placeholder='请选择...' style=""></dropdown-list>
 </app-form-item>
 
 </i-col>
@@ -46,37 +58,6 @@
   @formitemvaluechange="onFormItemValueChange">
 </app-picker>
 
-</app-form-item>
-
-</i-col>
-<i-col v-show="detailsModel.porgsectorname.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
-    <app-form-item name='porgsectorname' :itemRules="this.rules.porgsectorname" class='' :caption="$t('entities.ormorgsector.bmbzgl_form.details.porgsectorname')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.porgsectorname.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-picker 
-  :formState="formState"
-  :data="data"
-  :context="context"
-  :viewparams="viewparams"
-  :itemParam='{ }' 
-  :disabled="detailsModel.porgsectorname.disabled"
-  name='porgsectorname'
-  deMajorField='orgsectorname'
-  deKeyField='ormorgsector'
-  :service="service"
-  :acParams="{ serviceName: 'ORMORGSECTORService', interfaceName: 'FetchDefault'}"
-  valueitem='porgsectorid' 
-  :value="data.porgsectorname" 
-  editortype="" 
-  :pickupView="{ viewname: 'ormorgsectorpickup-view', title: $t('entities.ormorgsector.views.pickupview.title'), deResParameters: [{ pathName: 'ormorgs', parameterName: 'ormorg' }, ], parameters: [{ pathName: 'ormorgsectors', parameterName: 'ormorgsector' }, { pathName: 'pickupview', parameterName: 'pickupview' } ], placement:'' }"
-  style=""  
-  @formitemvaluechange="onFormItemValueChange">
-</app-picker>
-
-</app-form-item>
-
-</i-col>
-<i-col v-show="detailsModel.ordervalue.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
-    <app-form-item name='ordervalue' :itemRules="this.rules.ordervalue" class='' :caption="$t('entities.ormorgsector.bmbzgl_form.details.ordervalue')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.ordervalue.error" :isEmptyCaption="false" labelPos="LEFT">
-    <input-box v-model="data.ordervalue"  @enter="onEnter($event)"   unit=""  :disabled="detailsModel.ordervalue.disabled" type='number'  style=""></input-box>
 </app-form-item>
 
 </i-col>
@@ -116,50 +97,6 @@
 </app-form-item>
 
 </i-col>
-<i-col v-show="detailsModel.pimpersonname.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
-    <app-form-item name='pimpersonname' :itemRules="this.rules.pimpersonname" class='' :caption="$t('entities.ormorgsector.bmbzgl_form.details.pimpersonname')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.pimpersonname.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-picker 
-  :formState="formState"
-  :data="data"
-  :context="context"
-  :viewparams="viewparams"
-  :itemParam='{ }' 
-  :disabled="detailsModel.pimpersonname.disabled"
-  name='pimpersonname'
-  deMajorField='pimpersonname'
-  deKeyField='pimperson'
-  :service="service"
-  :acParams="{ serviceName: 'PIMPERSONService', interfaceName: 'FetchCurLeader'}"
-  valueitem='pimpersonid' 
-  :value="data.pimpersonname" 
-  editortype="" 
-  :pickupView="{ viewname: 'pimpersoncur-leader-pickup-view', title: $t('entities.pimperson.views.curleaderpickupview.title'), deResParameters: [], parameters: [{ pathName: 'pimpeople', parameterName: 'pimperson' }, { pathName: 'curleaderpickupview', parameterName: 'curleaderpickupview' } ], placement:'' }"
-  style=""  
-  @formitemvaluechange="onFormItemValueChange">
-</app-picker>
-
-</app-form-item>
-
-</i-col>
-<i-col v-show="detailsModel.title.visible" :style="{}"  :sm="{ span: 24, offset: 0 }" :md="{ span: 24, offset: 0 }" :lg="{ span: 24, offset: 0 }" :xl="{ span: 24, offset: 0 }">
-    <app-form-item name='title' :itemRules="this.rules.title" class='' :caption="$t('entities.ormorgsector.bmbzgl_form.details.title')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.title.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-mpicker
-    :activeData="data"
-    :disabled="detailsModel.title.disabled"
-    :curvalue="data.title"
-    name="title"
-    :context="context"
-    :viewparams="viewparams"
-    :service="service"
-    :acParams="{ }"
-    :pickupView="{ viewname: 'ormtitlempickup-view', title: $t('entities.ormtitle.views.mpickupview.title'), deResParameters: [], parameters: [{ pathName: 'ormtitles', parameterName: 'ormtitle' }, { pathName: 'mpickupview', parameterName: 'mpickupview' } ], placement:'' }"
-    @formitemvaluechange="onFormItemValueChange" 
-    style="">
-</app-mpicker>
-
-</app-form-item>
-
-</i-col>
     
     </row>
 </app-form-group>
@@ -185,70 +122,6 @@
     refreshitems='' 
     :ignorefieldvaluechange="ignorefieldvaluechange"
     viewname='ormbmkqdzbmkqdzgrid-view' 
-    :data="JSON.stringify(this.data)" 
-    @drdatasaved="drdatasaved($event)"
-    style="height:400px;overflow: auto;">
-</app-form-druipart>
-
-</i-col>
-    
-    </row>
-</app-form-group>
-
-</i-col>
-<i-col v-show="detailsModel.grouppanel2.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
-    <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' :uiActionGroup="detailsModel.grouppanel2.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.ormorgsector.bmbzgl_form.details.grouppanel2')" :isShowCaption="false" uiStyle="DEFAULT" :titleBarCloseMode="0" :isInfoGroupMode="false" >    
-    <row>
-        <i-col v-show="detailsModel.druipart1.visible" :style="{'height': '400px !important',}"  :lg="{ span: 24, offset: 0 }">
-    <app-form-druipart
-    
-    :formState="formState"
-    :isForbidLoad="this.data.srfuf === '0'"
-    paramItem='ormorgsector' 
-    :parentdata='{"srfparentdefname":"ORMZWBZID","srfparentdename":"ORMORGSECTOR","SRFPARENTTYPE":"DER1N","srfparentmode":"DER1N_ORMDEPESTMAN_ORMORGSECTOR_ORMZWBZID","SRFDER1NID":"DER1N_ORMDEPESTMAN_ORMORGSECTOR_ORMZWBZID"}'
-    :parameters="[
-        { pathName: 'ormduties', parameterName: 'ormduty' },
-    ]"
-    :context="context"
-    :viewparams="viewparams"
-    parameterName='ormorgsector'
-    parentName="ORMORGSECTOR"  
-    refviewtype='DEGRIDVIEW' 
-    refreshitems='' 
-    :ignorefieldvaluechange="ignorefieldvaluechange"
-    viewname='ormdep-est-man-zwgrid-view' 
-    :data="JSON.stringify(this.data)" 
-    @drdatasaved="drdatasaved($event)"
-    style="height:400px;overflow: auto;">
-</app-form-druipart>
-
-</i-col>
-    
-    </row>
-</app-form-group>
-
-</i-col>
-<i-col v-show="detailsModel.grouppanel3.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
-    <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' :uiActionGroup="detailsModel.grouppanel3.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.ormorgsector.bmbzgl_form.details.grouppanel3')" :isShowCaption="false" uiStyle="DEFAULT" :titleBarCloseMode="0" :isInfoGroupMode="false" >    
-    <row>
-        <i-col v-show="detailsModel.druipart2.visible" :style="{'height': '400px !important',}"  :lg="{ span: 24, offset: 0 }">
-    <app-form-druipart
-    
-    :formState="formState"
-    :isForbidLoad="this.data.srfuf === '0'"
-    paramItem='ormorgsector' 
-    :parentdata='{"srfparentdefname":"ORMGWBZID","srfparentdename":"ORMORGSECTOR","SRFPARENTTYPE":"DER1N","srfparentmode":"DER1N_ORMBMGWBZ_ORMORGSECTOR_ORMGWBZID","SRFDER1NID":"DER1N_ORMBMGWBZ_ORMORGSECTOR_ORMGWBZID"}'
-    :parameters="[
-        { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
-    ]"
-    :context="context"
-    :viewparams="viewparams"
-    parameterName='ormorgsector'
-    parentName="ORMORGSECTOR"  
-    refviewtype='DEGRIDVIEW' 
-    refreshitems='' 
-    :ignorefieldvaluechange="ignorefieldvaluechange"
-    viewname='ormbmgwbzgrid-view' 
     :data="JSON.stringify(this.data)" 
     @drdatasaved="drdatasaved($event)"
     style="height:400px;overflow: auto;">
@@ -560,13 +433,12 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
         srfuf: null,
         srfdeid: null,
         srfsourcekey: null,
+        ordervalue: null,
         orgsectorname: null,
         orgcode: null,
         shortname: null,
+        bmlx: null,
         orgname: null,
-        porgsectorid: null,
-        porgsectorname: null,
-        ordervalue: null,
         belongregion: null,
         qy: null,
         gkjz: null,
@@ -574,18 +446,11 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
         sjbzrs: null,
         startstopsign: null,
         belongou: null,
-        pimpersonname: null,
         validflag: null,
-        erporgid: null,
-        bmlx: null,
         orgid: null,
         referjoblevel: null,
         orgtype: null,
-        title: null,
-        zwbzsl: null,
-        gwbzsl: null,
         orgsectorid: null,
-        pimpersonid: null,
         ormorgsector:null,
     };
 
@@ -676,47 +541,41 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
             { required: false, type: 'string', message: ' 值不能为空', trigger: 'change' },
             { required: false, type: 'string', message: ' 值不能为空', trigger: 'blur' },
         ],
+        ordervalue: [
+            { type: 'number', message: '排序 值必须为数值类型', trigger: 'change' },
+            { type: 'number', message: '排序 值必须为数值类型', trigger: 'blur' },
+            { required: true, type: 'number', message: '排序 值不能为空', trigger: 'change' },
+            { required: true, type: 'number', message: '排序 值不能为空', trigger: 'blur' },
+        ],
         orgsectorname: [
-            { type: 'string', message: '部门名称 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '部门名称 值必须为字符串类型', trigger: 'blur' },
-            { required: true, type: 'string', message: '部门名称 值不能为空', trigger: 'change' },
-            { required: true, type: 'string', message: '部门名称 值不能为空', trigger: 'blur' },
+            { type: 'string', message: '名称 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '名称 值必须为字符串类型', trigger: 'blur' },
+            { required: true, type: 'string', message: '名称 值不能为空', trigger: 'change' },
+            { required: true, type: 'string', message: '名称 值不能为空', trigger: 'blur' },
         ],
         orgcode: [
-            { type: 'string', message: '部门编号 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '部门编号 值必须为字符串类型', trigger: 'blur' },
-            { required: false, type: 'string', message: '部门编号 值不能为空', trigger: 'change' },
-            { required: false, type: 'string', message: '部门编号 值不能为空', trigger: 'blur' },
+            { type: 'string', message: '编号 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '编号 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '编号 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '编号 值不能为空', trigger: 'blur' },
         ],
         shortname: [
-            { type: 'string', message: '部门简称 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '部门简称 值必须为字符串类型', trigger: 'blur' },
-            { required: true, type: 'string', message: '部门简称 值不能为空', trigger: 'change' },
-            { required: true, type: 'string', message: '部门简称 值不能为空', trigger: 'blur' },
+            { type: 'string', message: '简称 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '简称 值必须为字符串类型', trigger: 'blur' },
+            { required: true, type: 'string', message: '简称 值不能为空', trigger: 'change' },
+            { required: true, type: 'string', message: '简称 值不能为空', trigger: 'blur' },
+        ],
+        bmlx: [
+            { type: 'string', message: '类型 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '类型 值必须为字符串类型', trigger: 'blur' },
+            { required: true, type: 'string', message: '类型 值不能为空', trigger: 'change' },
+            { required: true, type: 'string', message: '类型 值不能为空', trigger: 'blur' },
         ],
         orgname: [
             { type: 'string', message: '所属组织 值必须为字符串类型', trigger: 'change' },
             { type: 'string', message: '所属组织 值必须为字符串类型', trigger: 'blur' },
             { required: true, type: 'string', message: '所属组织 值不能为空', trigger: 'change' },
             { required: true, type: 'string', message: '所属组织 值不能为空', trigger: 'blur' },
-        ],
-        porgsectorid: [
-            { type: 'string', message: '上级部门ID 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '上级部门ID 值必须为字符串类型', trigger: 'blur' },
-            { required: false, type: 'string', message: '上级部门ID 值不能为空', trigger: 'change' },
-            { required: false, type: 'string', message: '上级部门ID 值不能为空', trigger: 'blur' },
-        ],
-        porgsectorname: [
-            { type: 'string', message: '上级部门 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '上级部门 值必须为字符串类型', trigger: 'blur' },
-            { required: false, type: 'string', message: '上级部门 值不能为空', trigger: 'change' },
-            { required: false, type: 'string', message: '上级部门 值不能为空', trigger: 'blur' },
-        ],
-        ordervalue: [
-            { type: 'number', message: '排序 值必须为数值类型', trigger: 'change' },
-            { type: 'number', message: '排序 值必须为数值类型', trigger: 'blur' },
-            { required: true, type: 'number', message: '排序 值不能为空', trigger: 'change' },
-            { required: true, type: 'number', message: '排序 值不能为空', trigger: 'blur' },
         ],
         belongregion: [
             { type: 'string', message: '所属区域 值必须为字符串类型', trigger: 'change' },
@@ -760,29 +619,11 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
             { required: false, type: 'string', message: '所属OU 值不能为空', trigger: 'change' },
             { required: false, type: 'string', message: '所属OU 值不能为空', trigger: 'blur' },
         ],
-        pimpersonname: [
-            { type: 'string', message: '部门负责人 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '部门负责人 值必须为字符串类型', trigger: 'blur' },
-            { required: true, type: 'string', message: '部门负责人 值不能为空', trigger: 'change' },
-            { required: true, type: 'string', message: '部门负责人 值不能为空', trigger: 'blur' },
-        ],
         validflag: [
             { type: 'number', message: '启用标志 值必须为数值类型', trigger: 'change' },
             { type: 'number', message: '启用标志 值必须为数值类型', trigger: 'blur' },
             { required: false, type: 'number', message: '启用标志 值不能为空', trigger: 'change' },
             { required: false, type: 'number', message: '启用标志 值不能为空', trigger: 'blur' },
-        ],
-        erporgid: [
-            { type: 'string', message: 'ERP部门ID 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: 'ERP部门ID 值必须为字符串类型', trigger: 'blur' },
-            { required: false, type: 'string', message: 'ERP部门ID 值不能为空', trigger: 'change' },
-            { required: false, type: 'string', message: 'ERP部门ID 值不能为空', trigger: 'blur' },
-        ],
-        bmlx: [
-            { type: 'string', message: '部门类型 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '部门类型 值必须为字符串类型', trigger: 'blur' },
-            { required: false, type: 'string', message: '部门类型 值不能为空', trigger: 'change' },
-            { required: false, type: 'string', message: '部门类型 值不能为空', trigger: 'blur' },
         ],
         orgid: [
             { type: 'string', message: '组织机构标识 值必须为字符串类型', trigger: 'change' },
@@ -802,35 +643,11 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
             { required: false, type: 'string', message: '组织类型 值不能为空', trigger: 'change' },
             { required: false, type: 'string', message: '组织类型 值不能为空', trigger: 'blur' },
         ],
-        title: [
-            { type: 'string', message: '头衔 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '头衔 值必须为字符串类型', trigger: 'blur' },
-            { required: false, type: 'string', message: '头衔 值不能为空', trigger: 'change' },
-            { required: false, type: 'string', message: '头衔 值不能为空', trigger: 'blur' },
-        ],
-        zwbzsl: [
-            { type: 'string', message: '职务数量（合计） 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '职务数量（合计） 值必须为字符串类型', trigger: 'blur' },
-            { required: false, type: 'string', message: '职务数量（合计） 值不能为空', trigger: 'change' },
-            { required: false, type: 'string', message: '职务数量（合计） 值不能为空', trigger: 'blur' },
-        ],
-        gwbzsl: [
-            { type: 'string', message: '岗位数量（合计） 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '岗位数量（合计） 值必须为字符串类型', trigger: 'blur' },
-            { required: false, type: 'string', message: '岗位数量（合计） 值不能为空', trigger: 'change' },
-            { required: false, type: 'string', message: '岗位数量（合计） 值不能为空', trigger: 'blur' },
-        ],
         orgsectorid: [
             { type: 'string', message: '部门标识 值必须为字符串类型', trigger: 'change' },
             { type: 'string', message: '部门标识 值必须为字符串类型', trigger: 'blur' },
             { required: false, type: 'string', message: '部门标识 值不能为空', trigger: 'change' },
             { required: false, type: 'string', message: '部门标识 值不能为空', trigger: 'blur' },
-        ],
-        pimpersonid: [
-            { type: 'string', message: '部门负责人ID 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '部门负责人ID 值必须为字符串类型', trigger: 'blur' },
-            { required: false, type: 'string', message: '部门负责人ID 值不能为空', trigger: 'change' },
-            { required: false, type: 'string', message: '部门负责人ID 值不能为空', trigger: 'blur' },
         ],
     }
 
@@ -841,19 +658,11 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
      * @memberof BMBZGL
      */
     public detailsModel: any = {
-        group1: new FormGroupPanelModel({ caption: '部门信息', detailType: 'GROUPPANEL', name: 'group1', visible: true, isShowCaption: false, form: this, uiActionGroup: { caption: '', langbase: 'entities.ormorgsector.bmbzgl_form', extractMode: 'ITEM', details: [] } })
+        group1: new FormGroupPanelModel({ caption: '部门/项目部信息', detailType: 'GROUPPANEL', name: 'group1', visible: true, isShowCaption: true, form: this, uiActionGroup: { caption: '', langbase: 'entities.ormorgsector.bmbzgl_form', extractMode: 'ITEM', details: [] } })
 , 
-        druipart3: new FormDRUIPartModel({ caption: '', detailType: 'DRUIPART', name: 'druipart3', visible: true, isShowCaption: true, form: this })
+        druipart3: new FormDRUIPartModel({ caption: '考勤地址信息', detailType: 'DRUIPART', name: 'druipart3', visible: true, isShowCaption: true, form: this })
 , 
         grouppanel1: new FormGroupPanelModel({ caption: '考勤地址', detailType: 'GROUPPANEL', name: 'grouppanel1', visible: true, isShowCaption: false, form: this, uiActionGroup: { caption: '', langbase: 'entities.ormorgsector.bmbzgl_form', extractMode: 'ITEM', details: [] } })
-, 
-        druipart1: new FormDRUIPartModel({ caption: '', detailType: 'DRUIPART', name: 'druipart1', visible: true, isShowCaption: true, form: this })
-, 
-        grouppanel2: new FormGroupPanelModel({ caption: '职务编制明细', detailType: 'GROUPPANEL', name: 'grouppanel2', visible: true, isShowCaption: false, form: this, uiActionGroup: { caption: '', langbase: 'entities.ormorgsector.bmbzgl_form', extractMode: 'ITEM', details: [] } })
-, 
-        druipart2: new FormDRUIPartModel({ caption: '', detailType: 'DRUIPART', name: 'druipart2', visible: true, isShowCaption: true, form: this })
-, 
-        grouppanel3: new FormGroupPanelModel({ caption: '岗位编制明细', detailType: 'GROUPPANEL', name: 'grouppanel3', visible: true, isShowCaption: false, form: this, uiActionGroup: { caption: '', langbase: 'entities.ormorgsector.bmbzgl_form', extractMode: 'ITEM', details: [] } })
 , 
         formpage1: new FormPageModel({ caption: '部门信息', detailType: 'FORMPAGE', name: 'formpage1', visible: true, isShowCaption: true, form: this })
 , 
@@ -873,19 +682,17 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
 , 
         srfsourcekey: new FormItemModel({ caption: '', detailType: 'FORMITEM', name: 'srfsourcekey', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
-        orgsectorname: new FormItemModel({ caption: '部门名称', detailType: 'FORMITEM', name: 'orgsectorname', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 0 })
-, 
-        orgcode: new FormItemModel({ caption: '部门编号', detailType: 'FORMITEM', name: 'orgcode', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 0 })
-, 
-        shortname: new FormItemModel({ caption: '部门简称', detailType: 'FORMITEM', name: 'shortname', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 0 })
-, 
-        orgname: new FormItemModel({ caption: '所属组织', detailType: 'FORMITEM', name: 'orgname', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 0 })
-, 
-        porgsectorid: new FormItemModel({ caption: '上级部门ID', detailType: 'FORMITEM', name: 'porgsectorid', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
-, 
-        porgsectorname: new FormItemModel({ caption: '上级部门', detailType: 'FORMITEM', name: 'porgsectorname', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 0 })
-, 
         ordervalue: new FormItemModel({ caption: '排序', detailType: 'FORMITEM', name: 'ordervalue', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+, 
+        orgsectorname: new FormItemModel({ caption: '名称', detailType: 'FORMITEM', name: 'orgsectorname', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+, 
+        orgcode: new FormItemModel({ caption: '编号', detailType: 'FORMITEM', name: 'orgcode', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+, 
+        shortname: new FormItemModel({ caption: '简称', detailType: 'FORMITEM', name: 'shortname', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+, 
+        bmlx: new FormItemModel({ caption: '类型', detailType: 'FORMITEM', name: 'bmlx', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+, 
+        orgname: new FormItemModel({ caption: '所属组织', detailType: 'FORMITEM', name: 'orgname', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
         belongregion: new FormItemModel({ caption: '所属区域', detailType: 'FORMITEM', name: 'belongregion', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
@@ -901,13 +708,7 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
 , 
         belongou: new FormItemModel({ caption: '所属OU', detailType: 'FORMITEM', name: 'belongou', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 0 })
 , 
-        pimpersonname: new FormItemModel({ caption: '部门负责人', detailType: 'FORMITEM', name: 'pimpersonname', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
-, 
         validflag: new FormItemModel({ caption: '启用标志', detailType: 'FORMITEM', name: 'validflag', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
-, 
-        erporgid: new FormItemModel({ caption: 'ERP部门ID', detailType: 'FORMITEM', name: 'erporgid', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
-, 
-        bmlx: new FormItemModel({ caption: '部门类型', detailType: 'FORMITEM', name: 'bmlx', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
         orgid: new FormItemModel({ caption: '组织机构标识', detailType: 'FORMITEM', name: 'orgid', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
@@ -915,15 +716,7 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
 , 
         orgtype: new FormItemModel({ caption: '组织类型', detailType: 'FORMITEM', name: 'orgtype', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
-        title: new FormItemModel({ caption: '头衔', detailType: 'FORMITEM', name: 'title', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
-, 
-        zwbzsl: new FormItemModel({ caption: '职务数量（合计）', detailType: 'FORMITEM', name: 'zwbzsl', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
-, 
-        gwbzsl: new FormItemModel({ caption: '岗位数量（合计）', detailType: 'FORMITEM', name: 'gwbzsl', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
-, 
         orgsectorid: new FormItemModel({ caption: '部门标识', detailType: 'FORMITEM', name: 'orgsectorid', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
-, 
-        pimpersonid: new FormItemModel({ caption: '部门负责人ID', detailType: 'FORMITEM', name: 'pimpersonid', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
     };
 
@@ -1024,6 +817,18 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
     }
 
     /**
+     * 监控表单属性 ordervalue 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof BMBZGL
+     */
+    @Watch('data.ordervalue')
+    onOrdervalueChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'ordervalue', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
      * 监控表单属性 orgsectorname 值
      *
      * @param {*} newVal
@@ -1060,6 +865,18 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
     }
 
     /**
+     * 监控表单属性 bmlx 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof BMBZGL
+     */
+    @Watch('data.bmlx')
+    onBmlxChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'bmlx', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
      * 监控表单属性 orgname 值
      *
      * @param {*} newVal
@@ -1069,42 +886,6 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
     @Watch('data.orgname')
     onOrgnameChange(newVal: any, oldVal: any) {
         this.formDataChange({ name: 'orgname', newVal: newVal, oldVal: oldVal });
-    }
-
-    /**
-     * 监控表单属性 porgsectorid 值
-     *
-     * @param {*} newVal
-     * @param {*} oldVal
-     * @memberof BMBZGL
-     */
-    @Watch('data.porgsectorid')
-    onPorgsectoridChange(newVal: any, oldVal: any) {
-        this.formDataChange({ name: 'porgsectorid', newVal: newVal, oldVal: oldVal });
-    }
-
-    /**
-     * 监控表单属性 porgsectorname 值
-     *
-     * @param {*} newVal
-     * @param {*} oldVal
-     * @memberof BMBZGL
-     */
-    @Watch('data.porgsectorname')
-    onPorgsectornameChange(newVal: any, oldVal: any) {
-        this.formDataChange({ name: 'porgsectorname', newVal: newVal, oldVal: oldVal });
-    }
-
-    /**
-     * 监控表单属性 ordervalue 值
-     *
-     * @param {*} newVal
-     * @param {*} oldVal
-     * @memberof BMBZGL
-     */
-    @Watch('data.ordervalue')
-    onOrdervalueChange(newVal: any, oldVal: any) {
-        this.formDataChange({ name: 'ordervalue', newVal: newVal, oldVal: oldVal });
     }
 
     /**
@@ -1192,18 +973,6 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
     }
 
     /**
-     * 监控表单属性 pimpersonname 值
-     *
-     * @param {*} newVal
-     * @param {*} oldVal
-     * @memberof BMBZGL
-     */
-    @Watch('data.pimpersonname')
-    onPimpersonnameChange(newVal: any, oldVal: any) {
-        this.formDataChange({ name: 'pimpersonname', newVal: newVal, oldVal: oldVal });
-    }
-
-    /**
      * 监控表单属性 validflag 值
      *
      * @param {*} newVal
@@ -1213,30 +982,6 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
     @Watch('data.validflag')
     onValidflagChange(newVal: any, oldVal: any) {
         this.formDataChange({ name: 'validflag', newVal: newVal, oldVal: oldVal });
-    }
-
-    /**
-     * 监控表单属性 erporgid 值
-     *
-     * @param {*} newVal
-     * @param {*} oldVal
-     * @memberof BMBZGL
-     */
-    @Watch('data.erporgid')
-    onErporgidChange(newVal: any, oldVal: any) {
-        this.formDataChange({ name: 'erporgid', newVal: newVal, oldVal: oldVal });
-    }
-
-    /**
-     * 监控表单属性 bmlx 值
-     *
-     * @param {*} newVal
-     * @param {*} oldVal
-     * @memberof BMBZGL
-     */
-    @Watch('data.bmlx')
-    onBmlxChange(newVal: any, oldVal: any) {
-        this.formDataChange({ name: 'bmlx', newVal: newVal, oldVal: oldVal });
     }
 
     /**
@@ -1276,42 +1021,6 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
     }
 
     /**
-     * 监控表单属性 title 值
-     *
-     * @param {*} newVal
-     * @param {*} oldVal
-     * @memberof BMBZGL
-     */
-    @Watch('data.title')
-    onTitleChange(newVal: any, oldVal: any) {
-        this.formDataChange({ name: 'title', newVal: newVal, oldVal: oldVal });
-    }
-
-    /**
-     * 监控表单属性 zwbzsl 值
-     *
-     * @param {*} newVal
-     * @param {*} oldVal
-     * @memberof BMBZGL
-     */
-    @Watch('data.zwbzsl')
-    onZwbzslChange(newVal: any, oldVal: any) {
-        this.formDataChange({ name: 'zwbzsl', newVal: newVal, oldVal: oldVal });
-    }
-
-    /**
-     * 监控表单属性 gwbzsl 值
-     *
-     * @param {*} newVal
-     * @param {*} oldVal
-     * @memberof BMBZGL
-     */
-    @Watch('data.gwbzsl')
-    onGwbzslChange(newVal: any, oldVal: any) {
-        this.formDataChange({ name: 'gwbzsl', newVal: newVal, oldVal: oldVal });
-    }
-
-    /**
      * 监控表单属性 orgsectorid 值
      *
      * @param {*} newVal
@@ -1321,18 +1030,6 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
     @Watch('data.orgsectorid')
     onOrgsectoridChange(newVal: any, oldVal: any) {
         this.formDataChange({ name: 'orgsectorid', newVal: newVal, oldVal: oldVal });
-    }
-
-    /**
-     * 监控表单属性 pimpersonid 值
-     *
-     * @param {*} newVal
-     * @param {*} oldVal
-     * @memberof BMBZGL
-     */
-    @Watch('data.pimpersonid')
-    onPimpersonidChange(newVal: any, oldVal: any) {
-        this.formDataChange({ name: 'pimpersonid', newVal: newVal, oldVal: oldVal });
     }
 
 
@@ -1391,11 +1088,6 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
 
 
 
-
-
-
-
-
         if (Object.is(name, '') || Object.is(name, 'startstopsign')) {
             let ret = true;
             const _startstopsign = this.data.startstopsign;
@@ -1423,26 +1115,6 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
                 return false;
             });
         }
-
-
-
-
-        if (Object.is(name, '') || Object.is(name, 'startstopsign')) {
-            let ret = true;
-            const _startstopsign = this.data.startstopsign;
-            if (this.$verify.testCond(_startstopsign, 'NOTEQ', '1')) {
-                ret = false;
-            }
-            this.rules.pimpersonname.some((rule: any) => {
-                if (rule.hasOwnProperty('required')) {
-                    rule.required = ret;
-                }
-                return false;
-            });
-        }
-
-
-
 
 
 
@@ -1776,7 +1448,7 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
      */
     public print(){
         let _this:any = this;
-        _this.$print({id:'form',popTitle:'部门编制管理'});
+        _this.$print({id:'form',popTitle:'部门/项目部信息<主编辑>'});
     }
 
     /**
@@ -1830,7 +1502,7 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
      */
     public load(opt: any = {}): void {
         if(!this.loadAction){
-            this.$Notice.error({ title: '错误', desc: 'ORMORGSECTORBMBZGLEditView视图表单loadAction参数未配置' });
+            this.$Notice.error({ title: '错误', desc: 'ORMORGSECTOREditView9_EditMode视图表单loadAction参数未配置' });
             return;
         }
         const arg: any = { ...opt };
@@ -1865,7 +1537,7 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
      */
     public loadDraft(opt: any = {}): void {
         if(!this.loaddraftAction){
-            this.$Notice.error({ title: '错误', desc: 'ORMORGSECTORBMBZGLEditView视图表单loaddraftAction参数未配置' });
+            this.$Notice.error({ title: '错误', desc: 'ORMORGSECTOREditView9_EditMode视图表单loaddraftAction参数未配置' });
             return;
         }
         const arg: any = { ...opt } ;
@@ -1927,7 +1599,7 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
         const action: any = Object.is(data.srfuf, '1') ? this.updateAction : this.createAction;
         if(!action){
             let actionName:any = Object.is(data.srfuf, '1')?"updateAction":"createAction";
-            this.$Notice.error({ title: '错误', desc: 'ORMORGSECTORBMBZGLEditView视图表单'+actionName+'参数未配置' });
+            this.$Notice.error({ title: '错误', desc: 'ORMORGSECTOREditView9_EditMode视图表单'+actionName+'参数未配置' });
             return;
         }
         Object.assign(arg,{viewparams:this.viewparams});
@@ -1980,7 +1652,7 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
             Object.assign(arg, data);
             Object.assign(arg, this.context);
             if (ifStateNext) {
-                this.drcounter = 3;
+                this.drcounter = 1;
                 if(this.drcounter !== 0){
                     this.drsaveopt = opt;
                     this.formState.next({ type: 'beforesave', data: arg });//先通知关系界面保存
@@ -1991,7 +1663,7 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
             const action: any = Object.is(data.srfuf, '1') ? this.updateAction : this.createAction;
             if(!action){
                 let actionName:any = Object.is(data.srfuf, '1')?"updateAction":"createAction";
-                this.$Notice.error({ title: '错误', desc: 'ORMORGSECTORBMBZGLEditView视图表单'+actionName+'参数未配置' });
+                this.$Notice.error({ title: '错误', desc: 'ORMORGSECTOREditView9_EditMode视图表单'+actionName+'参数未配置' });
                 return;
             }
             Object.assign(arg,{viewparams:this.viewparams});
@@ -2041,7 +1713,7 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
     public remove(opt:Array<any> = [],showResultInfo?: boolean): Promise<any> {
         return new Promise((resolve: any, reject: any) => {
             if(!this.removeAction){
-                this.$Notice.error({ title: '错误', desc: 'ORMORGSECTORBMBZGLEditView视图表单removeAction参数未配置' });
+                this.$Notice.error({ title: '错误', desc: 'ORMORGSECTOREditView9_EditMode视图表单removeAction参数未配置' });
                 return;
             }
             const arg: any = opt[0];
@@ -2359,9 +2031,6 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
         }
         if (this.data.hasOwnProperty('validflag')) {
             this.data['validflag'] = 1;
-        }
-        if (this.data.hasOwnProperty('bmlx')) {
-            this.data['bmlx'] = '10';
         }
     }
 

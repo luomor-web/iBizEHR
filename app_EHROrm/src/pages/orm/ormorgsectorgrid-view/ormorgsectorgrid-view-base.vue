@@ -1,5 +1,5 @@
 <template>
-  <app-layout viewName="ormorgsectorgridview" viewTitle="部门" :className="{ 'view-container': true, 'default-mode-view': true, 'degridview': true, 'ormorgsectorgrid-view': true }" layoutMode="VIEW" :isShowUserInfo="isDefaultView()" :openMode="openMode" @close-view="closeView($event)">
+  <app-layout viewName="ormorgsectorgridview" viewTitle="部门/项目部信息" :className="{ 'view-container': true, 'default-mode-view': true, 'degridview': true, 'ormorgsectorgrid-view': true }" layoutMode="VIEW" :isShowUserInfo="isDefaultView()" :openMode="openMode" @close-view="closeView($event)">
     <template slot="headerLeft">
       <div class="view-header-left">
 
@@ -77,7 +77,7 @@ import CodeListService from "@service/app/codelist-service";
 
 
 /**
- * 部门基类
+ * 部门/项目部信息基类
  *
  * @export
  * @class ORMORGSECTORGridViewBase
@@ -568,16 +568,28 @@ export default class ORMORGSECTORGridViewBase extends GridViewBase {
         }
         const parameters: any[] = [
             { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
-            { pathName: 'editview', parameterName: 'editview' },
         ];
         const _this: any = this;
-        const openIndexViewTab = (data: any) => {
-            const _data: any = { w: (new Date().getTime()) };
-            Object.assign(_data, data);
-            const routePath = this.$viewTool.buildUpRoutePath(this.$route, curViewParam, deResParameters, parameters, args, _data);
-            this.$router.push(routePath);
+        const openDrawer = (view: any, data: any) => {
+            let container: Subject<any> = this.$appdrawer.openDrawer(view, curViewParam, data);
+            container.subscribe((result: any) => {
+                if (!result || !Object.is(result.ret, 'OK')) {
+                    return;
+                }
+                if (!xData || !(xData.refresh instanceof Function)) {
+                    return;
+                }
+                xData.refresh(result.datas);
+            });
         }
-        openIndexViewTab(data);
+        const view: any = {
+            viewname: 'ormorgsectoredit-view9-edit-mode', 
+            height: 0, 
+            width: 0,  
+            title: this.$t('entities.ormorgsector.views.editview9_editmode.title'),
+            placement: 'DRAWER_TOP',
+        };
+        openDrawer(view, data);
     }
 
 
@@ -605,14 +617,28 @@ export default class ORMORGSECTORGridViewBase extends GridViewBase {
         }
         const parameters: any[] = [
             { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
-            { pathName: 'editview', parameterName: 'editview' },
         ];
         const _this: any = this;
-        const openIndexViewTab = (data: any) => {
-            const routePath = this.$viewTool.buildUpRoutePath(this.$route, curViewParam, deResParameters, parameters, args, data);
-            this.$router.push(routePath);
+        const openDrawer = (view: any, data: any) => {
+            let container: Subject<any> = this.$appdrawer.openDrawer(view, curViewParam, data);
+            container.subscribe((result: any) => {
+                if (!result || !Object.is(result.ret, 'OK')) {
+                    return;
+                }
+                if (!xData || !(xData.refresh instanceof Function)) {
+                    return;
+                }
+                xData.refresh(result.datas);
+            });
         }
-        openIndexViewTab(data);
+        const view: any = {
+            viewname: 'ormorgsectoredit-view9', 
+            height: 0, 
+            width: 0,  
+            title: this.$t('entities.ormorgsector.views.editview9.title'),
+            placement: 'DRAWER_TOP',
+        };
+        openDrawer(view, data);
     }
 
 

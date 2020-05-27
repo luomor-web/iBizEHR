@@ -6,7 +6,7 @@ import view_grid from '@widgets/ormorgsector/main-grid/main-grid.vue';
 import view_searchform from '@widgets/ormorgsector/default-searchform/default-searchform.vue';
 
 /**
- * 部门
+ * 部门/项目部信息
  *
  * @export
  * @class ORMORGSECTORGridView

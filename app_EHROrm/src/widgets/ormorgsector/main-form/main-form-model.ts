@@ -81,6 +81,11 @@ export default class MainModel {
         dataType: 'TEXT',
       },
       {
+        name: 'bmlx',
+        prop: 'bmlx',
+        dataType: 'SSCODELIST',
+      },
+      {
         name: 'orgname',
         prop: 'orgname',
         dataType: 'PICKUPTEXT',
@@ -109,11 +114,6 @@ export default class MainModel {
         name: 'validflag',
         prop: 'validflag',
         dataType: 'YESNO',
-      },
-      {
-        name: 'bmlx',
-        prop: 'bmlx',
-        dataType: 'SSCODELIST',
       },
       {
         name: 'orgsectorid',

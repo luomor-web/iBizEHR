@@ -1,23 +1,22 @@
 import { Http,Util,Errorlog } from '@/utils';
 import ControlService from '@/widgets/control-service';
 import ORMORGSECTORService from '@/service/ormorgsector/ormorgsector-service';
-import BMBZGLModel from './bmbzgl-form-model';
-import ORMORGService from '@/service/ormorg/ormorg-service';
+import Main2Model from './main2-form-model';
 
 
 /**
- * BMBZGL 部件服务对象
+ * Main2 部件服务对象
  *
  * @export
- * @class BMBZGLService
+ * @class Main2Service
  */
-export default class BMBZGLService extends ControlService {
+export default class Main2Service extends ControlService {
 
     /**
      * 部门管理服务对象
      *
      * @type {ORMORGSECTORService}
-     * @memberof BMBZGLService
+     * @memberof Main2Service
      */
     public appEntityService: ORMORGSECTORService = new ORMORGSECTORService({ $store: this.getStore() });
 
@@ -25,30 +24,22 @@ export default class BMBZGLService extends ControlService {
      * 设置从数据模式
      *
      * @type {boolean}
-     * @memberof BMBZGLService
+     * @memberof Main2Service
      */
     public setTempMode(){
         this.isTempMode = false;
     }
 
     /**
-     * Creates an instance of BMBZGLService.
+     * Creates an instance of Main2Service.
      * 
      * @param {*} [opts={}]
-     * @memberof BMBZGLService
+     * @memberof Main2Service
      */
     constructor(opts: any = {}) {
         super(opts);
-        this.model = new BMBZGLModel();
+        this.model = new Main2Model();
     }
-
-    /**
-     * 组织管理服务对象
-     *
-     * @type {ORMORGService}
-     * @memberof BMBZGLService
-     */
-    public ormorgService: ORMORGService = new ORMORGService();
 
     /**
      * 处理数据
@@ -56,7 +47,7 @@ export default class BMBZGLService extends ControlService {
      * @private
      * @param {Promise<any>} promise
      * @returns {Promise<any>}
-     * @memberof BMBZGLService
+     * @memberof Main2Service
      */
     private doItems(promise: Promise<any>, deKeyField: string, deName: string): Promise<any> {
         return new Promise((resolve, reject) => {
@@ -85,13 +76,10 @@ export default class BMBZGLService extends ControlService {
      * @param {*} data
      * @param {boolean} [isloading]
      * @returns {Promise<any[]>}
-     * @memberof  BMBZGLService
+     * @memberof  Main2Service
      */
     @Errorlog
     public getItems(serviceName: string, interfaceName: string, context: any = {}, data: any, isloading?: boolean): Promise<any[]> {
-        if (Object.is(serviceName, 'ORMORGService') && Object.is(interfaceName, 'FetchKZXLXZ')) {
-            return this.doItems(this.ormorgService.FetchKZXLXZ(JSON.parse(JSON.stringify(context)),data, isloading), 'orgid', 'ormorg');
-        }
 
         return Promise.reject([])
     }
@@ -105,7 +93,7 @@ export default class BMBZGLService extends ControlService {
      * @param {boolean} [isloading]
      * @param {*} [localdata]
      * @returns {Promise<any>}
-     * @memberof BMBZGLService
+     * @memberof Main2Service
      */
     @Errorlog
     public wfstart(action: string,context: any = {},data: any = {}, isloading?: boolean,localdata?:any): Promise<any> {
@@ -137,7 +125,7 @@ export default class BMBZGLService extends ControlService {
      * @param {boolean} [isloading]
      * @param {*} [localdata]
      * @returns {Promise<any>}
-     * @memberof BMBZGLService
+     * @memberof Main2Service
      */
     @Errorlog
     public wfsubmit(action: string,context: any = {}, data: any = {}, isloading?: boolean,localdata?:any): Promise<any> {
@@ -169,7 +157,7 @@ export default class BMBZGLService extends ControlService {
      * @param {*} [data={}]
      * @param {boolean} [isloading]
      * @returns {Promise<any>}
-     * @memberof BMBZGLService
+     * @memberof Main2Service
      */
     @Errorlog
     public add(action: string, context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
@@ -199,7 +187,7 @@ export default class BMBZGLService extends ControlService {
      * @param {*} [data={}]
      * @param {boolean} [isloading]
      * @returns {Promise<any>}
-     * @memberof BMBZGLService
+     * @memberof Main2Service
      */
     @Errorlog
     public delete(action: string, context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
@@ -228,7 +216,7 @@ export default class BMBZGLService extends ControlService {
      * @param {*} [data={}]
      * @param {boolean} [isloading]
      * @returns {Promise<any>}
-     * @memberof BMBZGLService
+     * @memberof Main2Service
      */
     @Errorlog
     public update(action: string, context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
@@ -258,7 +246,7 @@ export default class BMBZGLService extends ControlService {
      * @param {*} [data={}]
      * @param {boolean} [isloading]
      * @returns {Promise<any>}
-     * @memberof BMBZGLService
+     * @memberof Main2Service
      */
     @Errorlog
     public get(action: string,context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
@@ -288,7 +276,7 @@ export default class BMBZGLService extends ControlService {
      * @param {*} [data={}]
      * @param {boolean} [isloading]
      * @returns {Promise<any>}
-     * @memberof BMBZGLService
+     * @memberof Main2Service
      */
     @Errorlog
     public loadDraft(action: string,context: any = {}, data: any = {}, isloading?: boolean): Promise<any> {
@@ -322,7 +310,7 @@ export default class BMBZGLService extends ControlService {
      * @param {*} [data={}]
      * @param {boolean} [isloading]
      * @returns {Promise<any>}
-     * @memberof BMBZGLService
+     * @memberof Main2Service
      */
     @Errorlog
     public frontLogic(action:string,context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
@@ -349,7 +337,7 @@ export default class BMBZGLService extends ControlService {
      * 
      * @param action 行为 
      * @param data 数据
-     * @memberof BMBZGLService
+     * @memberof Main2Service
      */
     public handleRequestData(action: string,context:any, data: any = {}){
         let mode: any = this.getMode();

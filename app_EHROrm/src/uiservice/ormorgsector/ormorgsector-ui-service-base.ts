@@ -103,6 +103,7 @@ export default class ORMORGSECTORUIServiceBase extends UIService {
         this.allViewMap.set(':',{viewname:'pickupgridview',srfappde:'ormorgsectors'});
         this.allViewMap.set(':',{viewname:'kqsztreeexpview',srfappde:'ormorgsectors'});
         this.allViewMap.set(':',{viewname:'xmbbzglgridview',srfappde:'ormorgsectors'});
+        this.allViewMap.set(':',{viewname:'editview9',srfappde:'ormorgsectors'});
         this.allViewMap.set(':',{viewname:'xmbmeditview',srfappde:'ormorgsectors'});
         this.allViewMap.set(':',{viewname:'pxmbpickupgridview',srfappde:'ormorgsectors'});
         this.allViewMap.set('MDATAVIEW:',{viewname:'gridview',srfappde:'ormorgsectors'});
@@ -113,6 +114,7 @@ export default class ORMORGSECTORUIServiceBase extends UIService {
         this.allViewMap.set(':',{viewname:'setproleadereditview',srfappde:'ormorgsectors'});
         this.allViewMap.set(':',{viewname:'bzcxgridview',srfappde:'ormorgsectors'});
         this.allViewMap.set(':',{viewname:'fpxxpickupview',srfappde:'ormorgsectors'});
+        this.allViewMap.set(':',{viewname:'editview9_editmode',srfappde:'ormorgsectors'});
     }
 
     /**
@@ -121,6 +123,65 @@ export default class ORMORGSECTORUIServiceBase extends UIService {
      * @memberof  ORMORGSECTORUIServiceBase
      */  
     public initDeMainStateMap(){
+    }
+
+    /**
+     * 编辑
+     *
+     * @param {any[]} args 当前数据
+     * @param {any} context 行为附加上下文
+     * @param {*} [params] 附加参数
+     * @param {*} [$event] 事件源
+     * @param {*} [xData]  执行行为所需当前部件
+     * @param {*} [actionContext]  执行行为上下文
+     * @param {*} [srfParentDeName] 父实体名称
+     * @returns {Promise<any>}
+     */
+    public async ORMORGSECTOR_OpenEditView(args: any[], context:any = {} ,params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
+        let data: any = {};
+        const _args: any[] = Util.deepCopy(args);
+        const _this: any = actionContext;
+        const actionTarget: string | null = 'SINGLEKEY';
+        Object.assign(context, { ormorgsector: '%ormorgsector%' });
+        Object.assign(params, { orgsectorid: '%ormorgsector%' });
+        Object.assign(params, { orgsectorname: '%orgsectorname%' });
+        context = UIActionTool.handleContextParam(actionTarget,_args,context);
+        data = UIActionTool.handleActionParam(actionTarget,_args,params);
+        context = Object.assign({},actionContext.context,context);
+        let parentObj:any = {srfparentdename:srfParentDeName?srfParentDeName:null,srfparentkey:srfParentDeName?context[srfParentDeName.toLowerCase()]:null};
+        Object.assign(data,parentObj);
+        Object.assign(context,parentObj);
+        let deResParameters: any[] = [];
+        if(context.ormorg && true){
+            deResParameters = [
+            { pathName: 'ormorgs', parameterName: 'ormorg' },
+            ]
+        }
+        const parameters: any[] = [
+            { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
+        ];
+            const openDrawer = (view: any, data: any) => {
+                let container: Subject<any> = actionContext.$appdrawer.openDrawer(view, context,data);
+                container.subscribe((result: any) => {
+                    if (!result || !Object.is(result.ret, 'OK')) {
+                        return;
+                    }
+                    const _this: any = actionContext;
+                    if(window.opener){
+                        window.opener.postMessage({status:'OK',identification:'WF'},Environment.uniteAddress);
+                        window.close();
+                    }
+                    return result.datas;
+                });
+            }
+            const view: any = {
+                viewname: 'ormorgsectoredit-view9-edit-mode', 
+                height: 0, 
+                width: 0,  
+                title: actionContext.$t('entities.ormorgsector.views.editview9_editmode.title'),
+                placement: 'DRAWER_TOP',
+            };
+            openDrawer(view, data);
     }
 
 

@@ -503,6 +503,17 @@ export const viewstate: any = {
             ],
         },
         {
+            viewtag: '91d1827444477b9939c3989b4c924b82',
+            viewmodule: 'ORM',
+            viewname: 'ORMORGSECTOREditView9',
+            viewaction: '',
+            viewdatachange: false,
+            refviews: [
+                '5b5a2a575f87e5f3a62bdf7fef751bf8',
+                'f8da0542fa59713cb39573af12afc068',
+            ],
+        },
+        {
             viewtag: '91ff0900099e3673ffa5934e43993ffe',
             viewmodule: 'ORM',
             viewname: 'ORMEDITIONRedirectView',
@@ -570,7 +581,8 @@ export const viewstate: any = {
             viewaction: '',
             viewdatachange: false,
             refviews: [
-                'bd56cd87a670c82e4ab85c12b09dc433',
+                '91d1827444477b9939c3989b4c924b82',
+                'f8da0542fa59713cb39573af12afc068',
             ],
         },
         {
@@ -812,6 +824,17 @@ export const viewstate: any = {
             viewdatachange: false,
             refviews: [
                 'bbe5d21a65d912e9b17acac2ecd276fb',
+            ],
+        },
+        {
+            viewtag: 'f8da0542fa59713cb39573af12afc068',
+            viewmodule: 'ORM',
+            viewname: 'ORMORGSECTOREditView9_EditMode',
+            viewaction: '',
+            viewdatachange: false,
+            refviews: [
+                '2b2d9880ef43097b9378bde74e87788d',
+                '5b5a2a575f87e5f3a62bdf7fef751bf8',
             ],
         },
         {

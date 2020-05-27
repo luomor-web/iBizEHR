@@ -1,16 +1,16 @@
 /**
- * BMBZGL 部件模型
+ * Main2 部件模型
  *
  * @export
- * @class BMBZGLModel
+ * @class Main2Model
  */
-export default class BMBZGLModel {
+export default class Main2Model {
 
   /**
   * 获取数据项集合
   *
   * @returns {any[]}
-  * @memberof BMBZGLModel
+  * @memberof Main2Model
   */
   public getDataItems(): any[] {
     return [

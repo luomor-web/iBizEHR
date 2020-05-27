@@ -1,5 +1,5 @@
 <template>
-  <app-layout viewName="ormorgsectoreditview" viewTitle="部门" :className="{ 'view-container': true, 'default-mode-view': true, 'deeditview': true, 'ormorgsectoredit-view': true }" layoutMode="VIEW" :isShowUserInfo="isDefaultView()" :openMode="openMode" @close-view="closeView($event)">
+  <app-layout viewName="ormorgsectoreditview9_editmode" viewTitle="部门/项目部信息" :className="{ 'view-container': true, 'default-mode-view': true, 'deeditview9': true, 'ormorgsectoredit-view9-edit-mode': true }" layoutMode="VIEW" :isShowUserInfo="isDefaultView()" :openMode="openMode" @close-view="closeView($event)">
     <template slot="headerLeft">
       <div class="view-header-left">
 
@@ -46,28 +46,28 @@
 import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorator';
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
-import { VueLifeCycleProcessing, EditViewBase } from '@/crm-core';
+import { VueLifeCycleProcessing, EditView9Base } from '@/crm-core';
 import ORMORGSECTORService from '@/service/ormorgsector/ormorgsector-service';
 
-import EditViewEngine from '@engine/view/edit-view-engine';
+import EditView9Engine from '@engine/view/edit-view9-engine';
 
 
 /**
- * 部门基类
+ * 部门/项目部信息基类
  *
  * @export
- * @class ORMORGSECTOREditViewBase
- * @extends {EditViewBase}
+ * @class ORMORGSECTOREditView9_EditModeBase
+ * @extends {EditView9Base}
  */
 @Component({})
 @VueLifeCycleProcessing
-export default class ORMORGSECTOREditViewBase extends EditViewBase {
+export default class ORMORGSECTOREditView9_EditModeBase extends EditView9Base {
 
     /**
      * 实体服务对象
      *
      * @type {ORMORGSECTORService}
-     * @memberof ORMORGSECTOREditViewBase
+     * @memberof ORMORGSECTOREditView9_EditModeBase
      */
     public appEntityService: ORMORGSECTORService = new ORMORGSECTORService;
 
@@ -76,7 +76,7 @@ export default class ORMORGSECTOREditViewBase extends EditViewBase {
      * 计数器服务对象集合
      *
      * @type {Array<*>}
-     * @memberof ORMORGSECTOREditViewBase
+     * @memberof ORMORGSECTOREditView9_EditModeBase
      */    
     public counterServiceArray:Array<any> = [];
     
@@ -85,7 +85,7 @@ export default class ORMORGSECTOREditViewBase extends EditViewBase {
      *
      * @param {*} val
      * @returns {*}
-     * @memberof ORMORGSECTOREditViewBase
+     * @memberof ORMORGSECTOREditView9_EditModeBase
      */
     @Emit() 
     public viewDatasChange(val: any):any {
@@ -96,16 +96,16 @@ export default class ORMORGSECTOREditViewBase extends EditViewBase {
 	 * 视图标识
 	 *
 	 * @type {string}
-	 * @memberof ORMORGSECTOREditViewBase
+	 * @memberof ORMORGSECTOREditView9_EditModeBase
 	 */
-	public viewtag: string = 'bd56cd87a670c82e4ab85c12b09dc433';
+	public viewtag: string = 'f8da0542fa59713cb39573af12afc068';
 
     /**
      * 父数据对象
      *
      * @protected
      * @type {*}
-     * @memberof ORMORGSECTOREditViewBase
+     * @memberof ORMORGSECTOREditView9_EditModeBase
      */
     protected srfparentdata: any = {};
 
@@ -113,7 +113,7 @@ export default class ORMORGSECTOREditViewBase extends EditViewBase {
 	 * 自定义视图导航上下文集合
 	 *
 	 * @type {*}
-	 * @memberof ORMORGSECTOREditViewBase
+	 * @memberof ORMORGSECTOREditView9_EditModeBase
 	 */
     public customViewNavContexts:any ={
     };
@@ -122,7 +122,7 @@ export default class ORMORGSECTOREditViewBase extends EditViewBase {
 	 * 自定义视图导航参数集合
 	 *
 	 * @type {*}
-	 * @memberof ORMORGSECTOREditViewBase
+	 * @memberof ORMORGSECTOREditView9_EditModeBase
 	 */
     public customViewParams:any ={
     };
@@ -131,12 +131,12 @@ export default class ORMORGSECTOREditViewBase extends EditViewBase {
      * 视图模型数据
      *
      * @type {*}
-     * @memberof ORMORGSECTOREditViewBase
+     * @memberof ORMORGSECTOREditView9_EditModeBase
      */
     public model: any = {
-        srfCaption: 'entities.ormorgsector.views.editview.caption',
-        srfTitle: 'entities.ormorgsector.views.editview.title',
-        srfSubTitle: 'entities.ormorgsector.views.editview.subtitle',
+        srfCaption: 'entities.ormorgsector.views.editview9_editmode.caption',
+        srfTitle: 'entities.ormorgsector.views.editview9_editmode.title',
+        srfSubTitle: 'entities.ormorgsector.views.editview9_editmode.subtitle',
         dataInfo: ''
     }
 
@@ -144,7 +144,7 @@ export default class ORMORGSECTOREditViewBase extends EditViewBase {
      * 容器模型
      *
      * @type {*}
-     * @memberof ORMORGSECTOREditViewBase
+     * @memberof ORMORGSECTOREditView9_EditModeBase
      */
     public containerModel: any = {
         view_toolbar: { name: 'toolbar', type: 'TOOLBAR' },
@@ -156,14 +156,14 @@ export default class ORMORGSECTOREditViewBase extends EditViewBase {
      *
      * @public
      * @type {Subject<{action: string, data: any}>}
-     * @memberof ORMORGSECTOREditViewBase
+     * @memberof ORMORGSECTOREditView9_EditModeBase
      */
     public viewState: Subject<ViewState> = new Subject();
     /**
      * 工具栏模型
      *
      * @type {*}
-     * @memberof ORMORGSECTOREditView
+     * @memberof ORMORGSECTOREditView9_EditMode
      */
     public toolBarModels: any = {
         tbitem3: { name: 'tbitem3', caption: '保存','isShowCaption':true,'isShowIcon':true, tooltip: '保存', iconcls: 'fa fa-save', icon: '', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: 'SRFUR__JGLYZPMXME', uiaction: { tag: 'Save', target: '' }, class: '' },
@@ -174,22 +174,21 @@ export default class ORMORGSECTOREditViewBase extends EditViewBase {
 
 
 
-
     /**
      * 视图引擎
      *
      * @public
      * @type {Engine}
-     * @memberof ORMORGSECTOREditViewBase
+     * @memberof ORMORGSECTOREditView9_EditModeBase
      */
-    public engine: EditViewEngine = new EditViewEngine();
+    public engine: EditView9Engine = new EditView9Engine();
 	
 
     /**
      * 引擎初始化
      *
      * @public
-     * @memberof ORMORGSECTOREditViewBase
+     * @memberof ORMORGSECTOREditView9_EditModeBase
      */
     public engineInit(): void {
         this.engine.init({
@@ -208,7 +207,7 @@ export default class ORMORGSECTOREditViewBase extends EditViewBase {
      *
      * @param {*} [args={}]
      * @param {*} $event
-     * @memberof ORMORGSECTOREditViewBase
+     * @memberof ORMORGSECTOREditView9_EditModeBase
      */
     public toolbar_click($event: any, $event2?: any) {
         if (Object.is($event.tag, 'tbitem3')) {
@@ -225,7 +224,7 @@ export default class ORMORGSECTOREditViewBase extends EditViewBase {
      *
      * @param {*} [args={}]
      * @param {*} $event
-     * @memberof ORMORGSECTOREditViewBase
+     * @memberof ORMORGSECTOREditView9_EditModeBase
      */
     public form_save($event: any, $event2?: any) {
         this.engine.onCtrlEvent('form', 'save', $event);
@@ -237,7 +236,7 @@ export default class ORMORGSECTOREditViewBase extends EditViewBase {
      *
      * @param {*} [args={}]
      * @param {*} $event
-     * @memberof ORMORGSECTOREditViewBase
+     * @memberof ORMORGSECTOREditView9_EditModeBase
      */
     public form_remove($event: any, $event2?: any) {
         this.engine.onCtrlEvent('form', 'remove', $event);
@@ -249,7 +248,7 @@ export default class ORMORGSECTOREditViewBase extends EditViewBase {
      *
      * @param {*} [args={}]
      * @param {*} $event
-     * @memberof ORMORGSECTOREditViewBase
+     * @memberof ORMORGSECTOREditView9_EditModeBase
      */
     public form_load($event: any, $event2?: any) {
         this.engine.onCtrlEvent('form', 'load', $event);
@@ -324,7 +323,7 @@ export default class ORMORGSECTOREditViewBase extends EditViewBase {
      * @param {*} [$event] 事件源
      * @param {*} [xData]  执行行为所需当前部件
      * @param {*} [actionContext]  执行行为上下文
-     * @memberof ORMORGSECTOREditViewBase
+     * @memberof ORMORGSECTOREditView9_EditModeBase
      */
     public Save(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
         // 界面行为容器对象 _this
@@ -350,7 +349,7 @@ export default class ORMORGSECTOREditViewBase extends EditViewBase {
      * @param {*} [$event] 事件源
      * @param {*} [xData]  执行行为所需当前部件
      * @param {*} [actionContext]  执行行为上下文
-     * @memberof ORMORGSECTOREditViewBase
+     * @memberof ORMORGSECTOREditView9_EditModeBase
      */
     public SaveAndExit(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
         const _this: any = this;
@@ -379,7 +378,7 @@ export default class ORMORGSECTOREditViewBase extends EditViewBase {
     /**
      * 销毁视图回调
      *
-     * @memberof ORMORGSECTOREditViewBase
+     * @memberof ORMORGSECTOREditView9_EditModeBase
      */
     public destroyed(){
         if(this.viewDefaultUsage){
@@ -393,11 +392,40 @@ export default class ORMORGSECTOREditViewBase extends EditViewBase {
             }
         }
     }
+        /**
+    * meditview9状态下发变量
+    *
+    * @memberof IBZSAM02MobEditView
+    */
+    @Prop() public panelState ?:Subject<ViewState>;
 
+
+
+
+    /**
+     * 视图组件挂载完毕
+     *
+     * @protected
+     * @memberof ViewBase
+     */
+    protected viewMounted(): void {
+        if(this.panelState){
+            this.panelState.subscribe((res:any) =>{
+                if(Object.is(res.tag,'meditviewpanel')){
+                    if(Object.is(res.action,'save')){
+                        this.viewState.next({ tag:'form', action: 'save', data:res.data});
+                    }
+                    if(Object.is(res.action,'remove')){
+                        this.viewState.next({ tag:'form', action: 'remove', data:res.data});
+                    }
+                }
+            });
+        }
+    }
 
 }
 </script>
 
 <style lang='less'>
-@import './ormorgsectoredit-view.less';
+@import './ormorgsectoredit-view9-edit-mode.less';
 </style>

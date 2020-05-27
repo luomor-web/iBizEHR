@@ -1231,6 +1231,14 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewname": "OrmSignOrgEditView",
             "viewtag": "917714c6b3de7ed13424d76ca50070e2"
         },
+        "ormorgsectoreditview9": {
+            "title": "部门/项目部信息",
+            "caption": "部门/项目部信息",
+            "viewtype": "DEEDITVIEW9",
+            "viewmodule": "ORM",
+            "viewname": "ORMORGSECTOREditView9",
+            "viewtag": "91d1827444477b9939c3989b4c924b82"
+        },
         "ormeditionredirectview": {
             "title": "版本对照表数据重定向视图",
             "caption": "版本对照表",
@@ -1352,8 +1360,8 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewtag": "9e36a0160fadc5393ac7a39def748e83"
         },
         "ormorgsectorgridview": {
-            "title": "部门",
-            "caption": "部门管理",
+            "title": "部门/项目部信息",
+            "caption": "部门/项目部信息",
             "viewtype": "DEGRIDVIEW",
             "viewmodule": "ORM",
             "viewname": "ORMORGSECTORGridView",
@@ -1990,6 +1998,14 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewmodule": "ORM",
             "viewname": "ORMORGHTGLDWQPickupGridView",
             "viewtag": "f797c6c9c7b6410519ceb908dfd0a27f"
+        },
+        "ormorgsectoreditview9_editmode": {
+            "title": "部门/项目部信息",
+            "caption": "部门/项目部信息",
+            "viewtype": "DEEDITVIEW9",
+            "viewmodule": "ORM",
+            "viewname": "ORMORGSECTOREditView9_EditMode",
+            "viewtag": "f8da0542fa59713cb39573af12afc068"
         },
         "ormxmbmxpickupgridview": {
             "title": "项目部明细选择表格视图",
