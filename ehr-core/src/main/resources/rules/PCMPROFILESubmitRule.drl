@@ -15,7 +15,6 @@ rule "prepareparam1"
 ruleflow-group "pcmprofilesubmitprepareparam1"
     when
     then
-    pcmprofilesubmitdefault.set("pcmprofileid",pcmprofilesubmitdefault.get("pcmprofileid"));
     pcmprofilesubmitdefault.set("profiletype","15");
     update(pcmprofilesubmitdefault);//更新fact中变量值
     end
