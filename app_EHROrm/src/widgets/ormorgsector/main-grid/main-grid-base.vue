@@ -21,6 +21,15 @@
             <template v-if="!isSingleSelect">
                 <el-table-column align="center" type='selection' :width="checkboxColWidth"></el-table-column>
             </template>
+            <template v-if="getColumnState('bmlx')">
+                <el-table-column show-overflow-tooltip :prop="'bmlx'" :label="$t('entities.ormorgsector.main_grid.columns.bmlx')" :width="150"  :align="'left'" :sortable="'custom'">
+                    <template v-slot="{row,column}">
+                        <template >
+            <codelist :value="row.bmlx" tag='PIMCL_BMLX' codelistType='STATIC' ></codelist>
+                        </template>
+                    </template>
+                </el-table-column>
+            </template>
             <template v-if="getColumnState('ordervalue')">
                 <el-table-column show-overflow-tooltip :prop="'ordervalue'" :label="$t('entities.ormorgsector.main_grid.columns.ordervalue')" :width="100"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
@@ -72,11 +81,20 @@
                     </template>
                 </el-table-column>
             </template>
-            <template v-if="getColumnState('validflag')">
-                <el-table-column show-overflow-tooltip :prop="'validflag'" :label="$t('entities.ormorgsector.main_grid.columns.validflag')" :width="120"  :align="'left'" :sortable="'custom'">
+            <template v-if="getColumnState('belongregion')">
+                <el-table-column show-overflow-tooltip :prop="'belongregion'" :label="$t('entities.ormorgsector.main_grid.columns.belongregion')" :width="100"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
-            <codelist :value="row.validflag" tag='YesNo' codelistType='STATIC' ></codelist>
+            <codelist :value="row.belongregion" tag='SSQY' codelistType='DYNAMIC' ></codelist>
+                        </template>
+                    </template>
+                </el-table-column>
+            </template>
+            <template v-if="getColumnState('startstopsign')">
+                <el-table-column show-overflow-tooltip :prop="'startstopsign'" :label="$t('entities.ormorgsector.main_grid.columns.startstopsign')" :width="120"  :align="'left'" :sortable="'custom'">
+                    <template v-slot="{row,column}">
+                        <template >
+            <codelist :value="row.startstopsign" tag='ORMCL_QTBS' codelistType='STATIC' ></codelist>
                         </template>
                     </template>
                 </el-table-column>
@@ -557,6 +575,13 @@ export default class MainBase extends Vue implements ControlInterface {
      */
     public allColumns: any[] = [
         {
+            name: 'bmlx',
+            label: '类型',
+            langtag: 'entities.ormorgsector.main_grid.columns.bmlx',
+            show: true,
+            util: 'PX'
+        },
+        {
             name: 'ordervalue',
             label: '排序',
             langtag: 'entities.ormorgsector.main_grid.columns.ordervalue',
@@ -565,21 +590,21 @@ export default class MainBase extends Vue implements ControlInterface {
         },
         {
             name: 'orgsectorname',
-            label: '部门名称',
+            label: '名称',
             langtag: 'entities.ormorgsector.main_grid.columns.orgsectorname',
             show: true,
             util: 'PX'
         },
         {
             name: 'orgcode',
-            label: '部门编号',
+            label: '编号',
             langtag: 'entities.ormorgsector.main_grid.columns.orgcode',
             show: true,
             util: 'PX'
         },
         {
             name: 'shortname',
-            label: '部门简称',
+            label: '简称',
             langtag: 'entities.ormorgsector.main_grid.columns.shortname',
             show: true,
             util: 'PX'
@@ -593,15 +618,22 @@ export default class MainBase extends Vue implements ControlInterface {
         },
         {
             name: 'qy',
-            label: '地区分类',
+            label: '补贴标准',
             langtag: 'entities.ormorgsector.main_grid.columns.qy',
             show: true,
             util: 'PX'
         },
         {
-            name: 'validflag',
-            label: '启用标志',
-            langtag: 'entities.ormorgsector.main_grid.columns.validflag',
+            name: 'belongregion',
+            label: '所属区域',
+            langtag: 'entities.ormorgsector.main_grid.columns.belongregion',
+            show: true,
+            util: 'PX'
+        },
+        {
+            name: 'startstopsign',
+            label: '启停标识',
+            langtag: 'entities.ormorgsector.main_grid.columns.startstopsign',
             show: true,
             util: 'PX'
         },
@@ -924,6 +956,14 @@ export default class MainBase extends Vue implements ControlInterface {
     public async formatExcelData(filterVal:any, jsonData:any) {
         let codelistColumns:Array<any> = [
           {
+            name: 'bmlx',
+            srfkey: 'PIMCL_BMLX',
+            codelistType : 'STATIC',
+            renderMode: 'other',
+            textSeparator: '、',
+            valueSeparator: ',',
+          },
+          {
             name: 'qy',
             srfkey: 'ORMCL_QY',
             codelistType : 'DYNAMIC',
@@ -932,8 +972,16 @@ export default class MainBase extends Vue implements ControlInterface {
             valueSeparator: ";",
           },
           {
-            name: 'validflag',
-            srfkey: 'YesNo',
+            name: 'belongregion',
+            srfkey: 'SSQY',
+            codelistType : 'DYNAMIC',
+            renderMode: 'other',
+            textSeparator: '、',
+            valueSeparator: ',',
+          },
+          {
+            name: 'startstopsign',
+            srfkey: 'ORMCL_QTBS',
             codelistType : 'STATIC',
             renderMode: 'other',
             textSeparator: '、',

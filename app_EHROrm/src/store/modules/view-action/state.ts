@@ -630,7 +630,6 @@ export const viewstate: any = {
             viewaction: '',
             viewdatachange: false,
             refviews: [
-                'fb74be88e4689d3acd8a423c89d4b9ba',
                 '6fcc75caf7850e6ca18c135f0916f948',
                 '1c14464d67d8176e1e3836cbe5f262b9',
                 '59540c7e4db29bd446ff4a470ac24af5',
@@ -835,16 +834,6 @@ export const viewstate: any = {
             refviews: [
                 '2b2d9880ef43097b9378bde74e87788d',
                 '5b5a2a575f87e5f3a62bdf7fef751bf8',
-            ],
-        },
-        {
-            viewtag: 'fb74be88e4689d3acd8a423c89d4b9ba',
-            viewmodule: 'ORM',
-            viewname: 'ORMXMGLGridView',
-            viewaction: '',
-            viewdatachange: false,
-            refviews: [
-                '0510210a4b9130f383d5bede5257acfa',
             ],
         },
         {

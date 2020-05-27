@@ -197,19 +197,6 @@ const router = new Router({
                     component: () => import('@pages/orm/ormorgsjorg-pickup-grid-view/ormorgsjorg-pickup-grid-view.vue'),
                 },
                 {
-                    path: 'ormxmgls/:ormxmgl?/gridview/:gridview?',
-                    meta: {
-                        caption: 'entities.ormxmgl.views.gridview.caption',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'ormxmgls', parameterName: 'ormxmgl' },
-                            { pathName: 'gridview', parameterName: 'gridview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/orm/ormxmglgrid-view/ormxmglgrid-view.vue'),
-                },
-                {
                     path: 'ormpostlibs/:ormpostlib?/editview/:editview?',
                     meta: {
                         caption: 'entities.ormpostlib.views.editview.caption',
@@ -596,19 +583,6 @@ const router = new Router({
                         requireAuth: true,
                     },
                     component: () => import('@pages/orm/ormpostmpickup-view/ormpostmpickup-view.vue'),
-                },
-                {
-                    path: 'ormxmgls/:ormxmgl?/editview/:editview?',
-                    meta: {
-                        caption: 'entities.ormxmgl.views.editview.caption',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'ormxmgls', parameterName: 'ormxmgl' },
-                            { pathName: 'editview', parameterName: 'editview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/orm/ormxmgledit-view/ormxmgledit-view.vue'),
                 },
                 {
                     path: 'ormerporgs/:ormerporg?/legalpickupgridview/:legalpickupgridview?',
@@ -2302,18 +2276,6 @@ const router = new Router({
             requireAuth: true,
         },
         component: () => import('@pages/orm/ormorgsectoredit-view9-edit-mode/ormorgsectoredit-view9-edit-mode.vue'),
-    },
-    {
-        path: '/ormxmgls/:ormxmgl?/gridview/:gridview?',
-        meta: {
-            caption: 'entities.ormxmgl.views.gridview.caption',
-            parameters: [
-                { pathName: 'ormxmgls', parameterName: 'ormxmgl' },
-                { pathName: 'gridview', parameterName: 'gridview' },
-            ],
-            requireAuth: true,
-        },
-        component: () => import('@pages/orm/ormxmglgrid-view/ormxmglgrid-view.vue'),
     },
             {
                 path: '/ormqyglredirectview/:ormqyglredirectview?',

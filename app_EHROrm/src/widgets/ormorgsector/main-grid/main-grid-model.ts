@@ -37,6 +37,11 @@ export default class MainModel {
           dataType: 'PICKUP',
         },
         {
+          name: 'belongregion',
+          prop: 'belongregion',
+          dataType: 'SSCODELIST',
+        },
+        {
           name: 'porgsectorid',
           prop: 'porgsectorid',
           dataType: 'PICKUP',
@@ -62,11 +67,6 @@ export default class MainModel {
           dataType: 'GUID',
         },
         {
-          name: 'validflag',
-          prop: 'validflag',
-          dataType: 'YESNO',
-        },
-        {
           name: 'prodepid',
           prop: 'prodepid',
           dataType: 'PICKUP',
@@ -77,8 +77,18 @@ export default class MainModel {
           dataType: 'TEXT',
         },
         {
+          name: 'startstopsign',
+          prop: 'startstopsign',
+          dataType: 'SSCODELIST',
+        },
+        {
           name: 'orgid',
           prop: 'orgid',
+          dataType: 'PICKUP',
+        },
+        {
+          name: 'ormxmglid',
+          prop: 'ormxmglid',
           dataType: 'PICKUP',
         },
         {
@@ -90,11 +100,6 @@ export default class MainModel {
           name: 'qy',
           prop: 'qy',
           dataType: 'SSCODELIST',
-        },
-        {
-          name: 'ormxmglid',
-          prop: 'ormxmglid',
-          dataType: 'PICKUP',
         },
         {
           name: 'shortname',

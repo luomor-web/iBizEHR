@@ -86,7 +86,6 @@ export default {
                 menuitem6: '标准岗位设置',
                 menuitem9: '岗位集设置',
                 menuitem10: '项目标签',
-                menuitem7: 'ERP项目',
                 menuitem11: '法人主体维护',
                 menuitem12: '法人主体设置',
             },

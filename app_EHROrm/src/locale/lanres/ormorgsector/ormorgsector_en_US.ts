@@ -540,13 +540,15 @@ export default {
 	},
 	main_grid: {
 		columns: {
+			bmlx: "类型",
 			ordervalue: "排序",
-			orgsectorname: "部门名称",
-			orgcode: "部门编号",
-			shortname: "部门简称",
+			orgsectorname: "名称",
+			orgcode: "编号",
+			shortname: "简称",
 			orgname: "所属组织",
-			qy: "地区分类",
-			validflag: "启用标志",
+			qy: "补贴标准",
+			belongregion: "所属区域",
+			startstopsign: "启停标识",
 		},
 		uiactions: {
 		},
