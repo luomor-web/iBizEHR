@@ -92,26 +92,58 @@ public class PCMPROFILEServiceImpl extends ServiceImpl<PCMPROFILEMapper, PCMPROF
 
     @Autowired
     @Lazy
+    private cn.ibizlab.ehr.core.pcm.service.logic.IPCMPROFILEGroupConfirmLogic groupconfirmLogic;
+
+    @Autowired
+    @Lazy
+    private cn.ibizlab.ehr.core.pcm.service.logic.IPCMPROFILEForwardLogic forwardLogic;
+
+    @Autowired
+    @Lazy
+    private cn.ibizlab.ehr.core.pcm.service.logic.IPCMPROFILECheckInLogic checkinLogic;
+
+    @Autowired
+    @Lazy
     private cn.ibizlab.ehr.core.pcm.service.logic.IPCMPROFILECompanyConfirmLogic companyconfirmLogic;
 
     @Autowired
     @Lazy
+    private cn.ibizlab.ehr.core.pcm.service.logic.IPCMPROFILEInvalidLogic invalidLogic;
+
+    @Autowired
+    @Lazy
+    private cn.ibizlab.ehr.core.pcm.service.logic.IPCMPROFILECompanyRejectLogic companyrejectLogic;
+
+    @Autowired
+    @Lazy
+    private cn.ibizlab.ehr.core.pcm.service.logic.IPCMPROFILEGroupRejectLogic grouprejectLogic;
+
+    @Autowired
+    @Lazy
+    private cn.ibizlab.ehr.core.pcm.service.logic.IPCMPROFILEPreCheckInLogic precheckinLogic;
+
+    @Autowired
+    @Lazy
     private cn.ibizlab.ehr.core.pcm.service.logic.IPCMPROFILESubmitLogic submitLogic;
+
+    @Autowired
+    @Lazy
+    private cn.ibizlab.ehr.core.pcm.service.logic.IPCMPROFILEUnCheckInLogic uncheckinLogic;
 
     private int batchSize = 500;
 
     @Override
     @Transactional
     public PCMPROFILE jZBTG(PCMPROFILE et) {
-        //自定义代码
-        return et;
+        groupconfirmLogic.execute(et);
+         return et ;
     }
 
     @Override
     @Transactional
     public PCMPROFILE sBJZB(PCMPROFILE et) {
-        //自定义代码
-        return et;
+        forwardLogic.execute(et);
+         return et ;
     }
 
     @Override
@@ -185,8 +217,8 @@ public class PCMPROFILEServiceImpl extends ServiceImpl<PCMPROFILEMapper, PCMPROF
     @Override
     @Transactional
     public PCMPROFILE bD(PCMPROFILE et) {
-        //自定义代码
-        return et;
+        checkinLogic.execute(et);
+         return et ;
     }
 
     @Override
@@ -259,8 +291,8 @@ public class PCMPROFILEServiceImpl extends ServiceImpl<PCMPROFILEMapper, PCMPROF
     @Override
     @Transactional
     public PCMPROFILE returnYPZ(PCMPROFILE et) {
-        //自定义代码
-        return et;
+        invalidLogic.execute(et);
+         return et ;
     }
 
     @Override
@@ -298,15 +330,15 @@ public class PCMPROFILEServiceImpl extends ServiceImpl<PCMPROFILEMapper, PCMPROF
     @Override
     @Transactional
     public PCMPROFILE invalid(PCMPROFILE et) {
-        //自定义代码
-        return et;
+        companyrejectLogic.execute(et);
+         return et ;
     }
 
     @Override
     @Transactional
     public PCMPROFILE jZBBTG(PCMPROFILE et) {
-        //自定义代码
-        return et;
+        grouprejectLogic.execute(et);
+         return et ;
     }
 
     @Override
@@ -326,8 +358,8 @@ public class PCMPROFILEServiceImpl extends ServiceImpl<PCMPROFILEMapper, PCMPROF
     @Override
     @Transactional
     public PCMPROFILE sCBH(PCMPROFILE et) {
-        //自定义代码
-        return et;
+        precheckinLogic.execute(et);
+         return et ;
     }
 
     @Override
@@ -374,8 +406,8 @@ public class PCMPROFILEServiceImpl extends ServiceImpl<PCMPROFILEMapper, PCMPROF
     @Override
     @Transactional
     public PCMPROFILE yQWBD(PCMPROFILE et) {
-        //自定义代码
-        return et;
+        uncheckinLogic.execute(et);
+         return et ;
     }
 
     @Override

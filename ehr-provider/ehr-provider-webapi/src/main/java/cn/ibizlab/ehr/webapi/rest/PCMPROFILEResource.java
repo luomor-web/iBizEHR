@@ -60,7 +60,7 @@ public class PCMPROFILEResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILE-SBJZB-all')")
-    @ApiOperation(value = "上报局总部", tags = {"PCMPROFILE" },  notes = "上报局总部")
+    @ApiOperation(value = "上报总部", tags = {"PCMPROFILE" },  notes = "上报总部")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/sbjzb")
     @Transactional
     public ResponseEntity<PCMPROFILEDTO> sBJZB(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody PCMPROFILEDTO pcmprofiledto) {

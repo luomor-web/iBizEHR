@@ -22,11 +22,11 @@ rule "prepareparam1"
 ruleflow-group "pcmprofilecompanyrejectprepareparam1"
     when
     then
-    pcmprofilecompanyrejectdefault.set("profiletype","25");
+    pcmprofilecompanyrejectdefault.set("profiletype","20");
     update(pcmprofilecompanyrejectdefault);//更新fact中变量值
     end
 
-//逻辑处理节点[变更状态为待上报]
+//逻辑处理节点[变更状态为公司审批不通过]
 rule "deaction1"
 ruleflow-group "pcmprofilecompanyrejectdeaction1"
     when

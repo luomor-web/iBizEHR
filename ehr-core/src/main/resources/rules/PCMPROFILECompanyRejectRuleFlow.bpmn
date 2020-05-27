@@ -9,7 +9,7 @@
         </extensionElements>
      <startEvent id="7D34461F-4E10-45E1-BC8B-42B6188E1AA8" isInterrupting="true"/>
      <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="pcmprofilecompanyrejectprepareparam1" id="6FF4E69D-3B3E-47B2-9ABF-3E40EF59E587" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
-     <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="pcmprofilecompanyrejectdeaction1" id="9C72436C-846E-4C3E-B174-6042B157F7BD" implementation="http://www.jboss.org/drools/rule" name="变更状态为待上报"/>
+     <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="pcmprofilecompanyrejectdeaction1" id="9C72436C-846E-4C3E-B174-6042B157F7BD" implementation="http://www.jboss.org/drools/rule" name="变更状态为公司审批不通过"/>
      <endEvent id="9C72436C-846E-4C3E-B174-6042B157F7BD_End" name="End"/>
      <sequenceFlow id="9C72436C-846E-4C3E-B174-6042B157F7BD_End_Line" sourceRef="9C72436C-846E-4C3E-B174-6042B157F7BD" targetRef="9C72436C-846E-4C3E-B174-6042B157F7BD_End"/>
      <sequenceFlow id="FB402E75-E916-457E-834F-89F1442C6C0E" sourceRef="6FF4E69D-3B3E-47B2-9ABF-3E40EF59E587" targetRef="9C72436C-846E-4C3E-B174-6042B157F7BD">
