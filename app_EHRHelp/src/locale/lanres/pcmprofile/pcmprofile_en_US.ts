@@ -21,7 +21,6 @@ export default {
     phaseinfo: '简历状态',
     createman: '建立人',
     gzkssj: '挂职开始时间',
-    condition: '校验结果',
     nqdldhtqx: '拟签订劳动合同期',
     yglxshgz: '员工类型审核规则',
     highestdegree: '最高学位',
@@ -95,7 +94,7 @@ export default {
     cz3: '操作3',
     jldspyj: '局审核意见',
     wbbm: '外部部门',
-    sfxzbjnbry: '选择局内部人员',
+    sfxzbjnbry: '选择内部人员',
     entrantdate: '报到时间',
     jzpspyj: '局初审意见',
     updateman: '更新人',
@@ -124,5 +123,6 @@ export default {
     ormpostid: '挂职进岗位标识',
     ormdutyid: '挂职进职务标识',
     ormorgid: '组织标识',
+    checkresult: '校验结果',
   },
 };

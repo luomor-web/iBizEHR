@@ -34,6 +34,13 @@ public class ORMPostLibSearchContext extends QueryWrapperContext<ORMPostLib> {
             this.getSelectCond().eq("postnature", n_postnature_eq);
         }
     }
+	private String n_gwflag_eq;//[岗位标签]
+	public void setN_gwflag_eq(String n_gwflag_eq) {
+        this.n_gwflag_eq = n_gwflag_eq;
+        if(!ObjectUtils.isEmpty(this.n_gwflag_eq)){
+            this.getSelectCond().eq("gwflag", n_gwflag_eq);
+        }
+    }
 	private String n_gwtype_eq;//[岗位类型]
 	public void setN_gwtype_eq(String n_gwtype_eq) {
         this.n_gwtype_eq = n_gwtype_eq;

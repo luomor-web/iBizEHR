@@ -48,6 +48,12 @@ export default class SALSCHEMEITEMServiceBase extends EntityService {
      * @memberof SALSCHEMEITEMServiceBase
      */
     public async Select(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.salscheme && context.salschemeitem){
+            return Http.getInstance().get(`/salschemes/${context.salscheme}/salschemeitems/${context.salschemeitem}/select`,isloading);
+        }
+        if(context.salitem && context.salschemeitem){
+            return Http.getInstance().get(`/salitems/${context.salitem}/salschemeitems/${context.salschemeitem}/select`,isloading);
+        }
             return Http.getInstance().get(`/salschemeitems/${context.salschemeitem}/select`,isloading);
     }
 
@@ -61,6 +67,12 @@ export default class SALSCHEMEITEMServiceBase extends EntityService {
      * @memberof SALSCHEMEITEMServiceBase
      */
     public async Update(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.salscheme && context.salschemeitem){
+            return Http.getInstance().put(`/salschemes/${context.salscheme}/salschemeitems/${context.salschemeitem}`,data,isloading);
+        }
+        if(context.salitem && context.salschemeitem){
+            return Http.getInstance().put(`/salitems/${context.salitem}/salschemeitems/${context.salschemeitem}`,data,isloading);
+        }
         let masterData:any = {};
         Object.assign(data,masterData);
             let res:any = await  Http.getInstance().put(`/salschemeitems/${context.salschemeitem}`,data,isloading);
@@ -77,6 +89,12 @@ export default class SALSCHEMEITEMServiceBase extends EntityService {
      * @memberof SALSCHEMEITEMServiceBase
      */
     public async Save(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.salscheme && context.salschemeitem){
+            return Http.getInstance().post(`/salschemes/${context.salscheme}/salschemeitems/${context.salschemeitem}/save`,data,isloading);
+        }
+        if(context.salitem && context.salschemeitem){
+            return Http.getInstance().post(`/salitems/${context.salitem}/salschemeitems/${context.salschemeitem}/save`,data,isloading);
+        }
         let masterData:any = {};
         Object.assign(data,masterData);
             let res:any = await  Http.getInstance().post(`/salschemeitems/${context.salschemeitem}/save`,data,isloading);
@@ -93,6 +111,12 @@ export default class SALSCHEMEITEMServiceBase extends EntityService {
      * @memberof SALSCHEMEITEMServiceBase
      */
     public async Get(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.salscheme && context.salschemeitem){
+            return Http.getInstance().get(`/salschemes/${context.salscheme}/salschemeitems/${context.salschemeitem}`,isloading);
+        }
+        if(context.salitem && context.salschemeitem){
+            return Http.getInstance().get(`/salitems/${context.salitem}/salschemeitems/${context.salschemeitem}`,isloading);
+        }
             let res:any = await Http.getInstance().get(`/salschemeitems/${context.salschemeitem}`,isloading);
             return res;
 
@@ -108,6 +132,12 @@ export default class SALSCHEMEITEMServiceBase extends EntityService {
      * @memberof SALSCHEMEITEMServiceBase
      */
     public async Remove(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.salscheme && context.salschemeitem){
+            return Http.getInstance().delete(`/salschemes/${context.salscheme}/salschemeitems/${context.salschemeitem}`,isloading);
+        }
+        if(context.salitem && context.salschemeitem){
+            return Http.getInstance().delete(`/salitems/${context.salitem}/salschemeitems/${context.salschemeitem}`,isloading);
+        }
             return Http.getInstance().delete(`/salschemeitems/${context.salschemeitem}`,isloading);
 
     }
@@ -122,6 +152,12 @@ export default class SALSCHEMEITEMServiceBase extends EntityService {
      * @memberof SALSCHEMEITEMServiceBase
      */
     public async CheckKey(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.salscheme && context.salschemeitem){
+            return Http.getInstance().post(`/salschemes/${context.salscheme}/salschemeitems/${context.salschemeitem}/checkkey`,data,isloading);
+        }
+        if(context.salitem && context.salschemeitem){
+            return Http.getInstance().post(`/salitems/${context.salitem}/salschemeitems/${context.salschemeitem}/checkkey`,data,isloading);
+        }
             return Http.getInstance().post(`/salschemeitems/${context.salschemeitem}/checkkey`,data,isloading);
     }
 
@@ -135,6 +171,24 @@ export default class SALSCHEMEITEMServiceBase extends EntityService {
      * @memberof SALSCHEMEITEMServiceBase
      */
     public async Create(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.salscheme && true){
+            if(!data.srffrontuf || data.srffrontuf !== "1"){
+                data[this.APPDEKEY] = null;
+            }
+            if(data.srffrontuf){
+                delete data.srffrontuf;
+            }
+            return Http.getInstance().post(`/salschemes/${context.salscheme}/salschemeitems`,data,isloading);
+        }
+        if(context.salitem && true){
+            if(!data.srffrontuf || data.srffrontuf !== "1"){
+                data[this.APPDEKEY] = null;
+            }
+            if(data.srffrontuf){
+                delete data.srffrontuf;
+            }
+            return Http.getInstance().post(`/salitems/${context.salitem}/salschemeitems`,data,isloading);
+        }
         let masterData:any = {};
         Object.assign(data,masterData);
         if(!data.srffrontuf || data.srffrontuf !== "1"){
@@ -158,6 +212,12 @@ export default class SALSCHEMEITEMServiceBase extends EntityService {
      * @memberof SALSCHEMEITEMServiceBase
      */
     public async GetDraft(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.salscheme && true){
+            return Http.getInstance().get(`/salschemes/${context.salscheme}/salschemeitems/getdraft`,isloading);
+        }
+        if(context.salitem && true){
+            return Http.getInstance().get(`/salitems/${context.salitem}/salschemeitems/getdraft`,isloading);
+        }
         let res:any = await  Http.getInstance().get(`/salschemeitems/getdraft`,isloading);
         res.data.salschemeitem = data.salschemeitem;
         return res;
@@ -173,6 +233,14 @@ export default class SALSCHEMEITEMServiceBase extends EntityService {
      * @memberof SALSCHEMEITEMServiceBase
      */
     public async FetchDefault(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.salscheme && true){
+            let tempData:any = JSON.parse(JSON.stringify(data));
+            return Http.getInstance().get(`/salschemes/${context.salscheme}/salschemeitems/fetchdefault`,tempData,isloading);
+        }
+        if(context.salitem && true){
+            let tempData:any = JSON.parse(JSON.stringify(data));
+            return Http.getInstance().get(`/salitems/${context.salitem}/salschemeitems/fetchdefault`,tempData,isloading);
+        }
         let tempData:any = JSON.parse(JSON.stringify(data));
         return Http.getInstance().get(`/salschemeitems/fetchdefault`,tempData,isloading);
     }

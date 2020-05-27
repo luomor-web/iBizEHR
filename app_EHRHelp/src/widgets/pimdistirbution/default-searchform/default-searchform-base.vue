@@ -58,7 +58,7 @@
             valueitem='n_ormorgsectorid_eq' 
             :value="data.n_ormorgsectorname_eq" 
             editortype="" 
-            :pickupView="{ viewname: 'ormorgsectorfpxxpickup-view', title: $t('entities.ormorgsector.views.fpxxpickupview.title'), deResParameters: [], parameters: [{ pathName: 'ormorgsectors', parameterName: 'ormorgsector' }, { pathName: 'fpxxpickupview', parameterName: 'fpxxpickupview' } ], placement:'' }"
+            :pickupView="{ viewname: 'ormorgsectorfpxxpickup-view', title: $t('entities.ormorgsector.views.fpxxpickupview.title'), deResParameters: [{ pathName: 'ormorgs', parameterName: 'ormorg' }, ], parameters: [{ pathName: 'ormorgsectors', parameterName: 'ormorgsector' }, { pathName: 'fpxxpickupview', parameterName: 'fpxxpickupview' } ], placement:'' }"
             style=""  
             @formitemvaluechange="onFormItemValueChange">
           </app-picker>
@@ -681,6 +681,10 @@ export default class DefaultBase extends Vue implements ControlInterface {
         if (Object.is(name, 'ormorgid')) {
             this.onFormItemValueChange({ name: 'n_ormorgsectorname_eq', value: null });
             this.onFormItemValueChange({ name: 'n_ormorgsectorid_eq', value: null });
+        }
+        if (Object.is(name, 'ormorgid')) {
+            this.onFormItemValueChange({ name: 'n_ormpostname_eq', value: null });
+            this.onFormItemValueChange({ name: 'n_ormpostid_eq', value: null });
         }
     }
 

@@ -4,6 +4,9 @@
 <mapper	namespace="cn.ibizlab.ehr.core.trm.mapper.TRMTRAINOUTAPPLYMapper">
 
     <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
+	<select id="selectById"  resultMap="TRMTRAINOUTAPPLYResultMap" databaseId="mysql">
+        <![CDATA[select t1.* from (SELECT t21.`SHORTNAME` AS `BM`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`DJBH`, t1.`ENABLE`, t1.`PIMPERSONID`, t11.`PIMPERSONNAME`, t1.`PXDD`, t1.`PXFS`, t1.`PXJSRQ`, t1.`PXKSRQ`, t1.`PXLB`, t1.`PXMB`, t1.`PXNR`, t1.`SQRQ`, t1.`TRMTRAINOUTAPPLYID`, t1.`TRMTRAINOUTAPPLYNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`WBPXJG`, t1.`YWLX`, t11.`ORMORGNAME` AS `ZZ` FROM `T_TRMTRAINOUTAPPLY` t1  LEFT JOIN T_PIMPERSON t11 ON t1.PIMPERSONID = t11.PIMPERSONID  LEFT JOIN T_SRFORGSECTOR t21 ON t11.ORMORGSECTORID = t21.ORGSECTORID  ) t1 where trmtrainoutapplyid=#{id}]]>
+    </select>
 
     <!--通过mybatis将查询结果注入到entity中,通过配置autoMapping="true"由mybatis自动处理映射关系 -->
     <resultMap id="TRMTRAINOUTAPPLYResultMap" type="cn.ibizlab.ehr.core.trm.domain.TRMTRAINOUTAPPLY" autoMapping="true">
@@ -34,6 +37,13 @@
 
     <!--数据查询[Default]-->
     <sql id="Default" databaseId="mysql">
+       <![CDATA[	SELECT t21.`SHORTNAME` AS `BM`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`DJBH`, t1.`ENABLE`, t1.`PIMPERSONID`, t11.`PIMPERSONNAME`, t1.`PXDD`, t1.`PXFS`, t1.`PXJSRQ`, t1.`PXKSRQ`, t1.`PXLB`, t1.`PXMB`, t1.`PXNR`, t1.`SQRQ`, t1.`TRMTRAINOUTAPPLYID`, t1.`TRMTRAINOUTAPPLYNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`WBPXJG`, t1.`YWLX`, t11.`ORMORGNAME` AS `ZZ` FROM `T_TRMTRAINOUTAPPLY` t1  LEFT JOIN T_PIMPERSON t11 ON t1.PIMPERSONID = t11.PIMPERSONID  LEFT JOIN T_SRFORGSECTOR t21 ON t11.ORMORGSECTORID = t21.ORGSECTORID  
+				 WHERE 	t1.ENABLE = 1
+			]]>
+    </sql>
+
+    <!--数据查询[View]-->
+    <sql id="View" databaseId="mysql">
        <![CDATA[	SELECT t21.`SHORTNAME` AS `BM`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`DJBH`, t1.`ENABLE`, t1.`PIMPERSONID`, t11.`PIMPERSONNAME`, t1.`PXDD`, t1.`PXFS`, t1.`PXJSRQ`, t1.`PXKSRQ`, t1.`PXLB`, t1.`PXMB`, t1.`PXNR`, t1.`SQRQ`, t1.`TRMTRAINOUTAPPLYID`, t1.`TRMTRAINOUTAPPLYNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`WBPXJG`, t1.`YWLX`, t11.`ORMORGNAME` AS `ZZ` FROM `T_TRMTRAINOUTAPPLY` t1  LEFT JOIN T_PIMPERSON t11 ON t1.PIMPERSONID = t11.PIMPERSONID  LEFT JOIN T_SRFORGSECTOR t21 ON t11.ORMORGSECTORID = t21.ORGSECTORID  
 				 WHERE 	t1.ENABLE = 1
 			]]>

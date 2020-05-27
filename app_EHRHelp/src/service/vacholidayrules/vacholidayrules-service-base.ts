@@ -102,6 +102,21 @@ export default class VACHOLIDAYRULESServiceBase extends EntityService {
      */
     public async Create(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
         let masterData:any = {};
+        let vacholidaysData:any = [];
+        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_vacholidays'),'undefined')){
+            vacholidaysData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_vacholidays') as any);
+            if(vacholidaysData && vacholidaysData.length && vacholidaysData.length > 0){
+                vacholidaysData.forEach((item:any) => {
+                    if(item.srffrontuf){
+                        if(Object.is(item.srffrontuf,"0")){
+                            item.vacholidayid = null;
+                        }
+                        delete item.srffrontuf;
+                    }
+                });
+            }
+        }
+        masterData.vacholidays = vacholidaysData;
         Object.assign(data,masterData);
         if(!data.srffrontuf || data.srffrontuf !== "1"){
             data[this.APPDEKEY] = null;
@@ -111,6 +126,7 @@ export default class VACHOLIDAYRULESServiceBase extends EntityService {
         }
         let tempContext:any = JSON.parse(JSON.stringify(context));
         let res:any = await Http.getInstance().post(`/vacholidayrules`,data,isloading);
+        this.tempStorage.setItem(tempContext.srfsessionkey+'_vacholidays',JSON.stringify(res.data.vacholidays));
         return res;
     }
 
@@ -126,6 +142,7 @@ export default class VACHOLIDAYRULESServiceBase extends EntityService {
     public async GetDraft(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
         let res:any = await  Http.getInstance().get(`/vacholidayrules/getdraft`,isloading);
         res.data.vacholidayrules = data.vacholidayrules;
+            this.tempStorage.setItem(context.srfsessionkey+'_vacholidays',JSON.stringify(res.data.vacholidays));
         return res;
     }
 
@@ -140,8 +157,24 @@ export default class VACHOLIDAYRULESServiceBase extends EntityService {
      */
     public async Update(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
         let masterData:any = {};
+        let vacholidaysData:any = [];
+        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_vacholidays'),'undefined')){
+            vacholidaysData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_vacholidays') as any);
+            if(vacholidaysData && vacholidaysData.length && vacholidaysData.length > 0){
+                vacholidaysData.forEach((item:any) => {
+                    if(item.srffrontuf){
+                        if(Object.is(item.srffrontuf,"0")){
+                            item.vacholidayid = null;
+                        }
+                        delete item.srffrontuf;
+                    }
+                });
+            }
+        }
+        masterData.vacholidays = vacholidaysData;
         Object.assign(data,masterData);
             let res:any = await  Http.getInstance().put(`/vacholidayrules/${context.vacholidayrules}`,data,isloading);
+            this.tempStorage.setItem(context.srfsessionkey+'_vacholidays',JSON.stringify(res.data.vacholidays));
             return res;
     }
 
@@ -156,6 +189,7 @@ export default class VACHOLIDAYRULESServiceBase extends EntityService {
      */
     public async Get(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
             let res:any = await Http.getInstance().get(`/vacholidayrules/${context.vacholidayrules}`,isloading);
+            this.tempStorage.setItem(context.srfsessionkey+'_vacholidays',JSON.stringify(res.data.vacholidays));
             return res;
 
     }
@@ -171,8 +205,24 @@ export default class VACHOLIDAYRULESServiceBase extends EntityService {
      */
     public async Save(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
         let masterData:any = {};
+        let vacholidaysData:any = [];
+        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_vacholidays'),'undefined')){
+            vacholidaysData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_vacholidays') as any);
+            if(vacholidaysData && vacholidaysData.length && vacholidaysData.length > 0){
+                vacholidaysData.forEach((item:any) => {
+                    if(item.srffrontuf){
+                        if(Object.is(item.srffrontuf,"0")){
+                            item.vacholidayid = null;
+                        }
+                        delete item.srffrontuf;
+                    }
+                });
+            }
+        }
+        masterData.vacholidays = vacholidaysData;
         Object.assign(data,masterData);
             let res:any = await  Http.getInstance().post(`/vacholidayrules/${context.vacholidayrules}/save`,data,isloading);
+            this.tempStorage.setItem(context.srfsessionkey+'_vacholidays',JSON.stringify(res.data.vacholidays));
             return res;
     }
 

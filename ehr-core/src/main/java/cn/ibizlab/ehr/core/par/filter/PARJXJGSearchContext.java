@@ -48,6 +48,13 @@ public class PARJXJGSearchContext extends QueryWrapperContext<PARJXJG> {
             this.getSelectCond().eq("nd", n_nd_eq);
         }
     }
+	private String n_khlx_eq;//[考核对象]
+	public void setN_khlx_eq(String n_khlx_eq) {
+        this.n_khlx_eq = n_khlx_eq;
+        if(!ObjectUtils.isEmpty(this.n_khlx_eq)){
+            this.getSelectCond().eq("khlx", n_khlx_eq);
+        }
+    }
 
     /**
 	 * 启用快速搜索

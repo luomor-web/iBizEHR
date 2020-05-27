@@ -104,6 +104,13 @@ public class ORMORGSECTORSearchContext extends QueryWrapperContext<ORMORGSECTOR>
             this.getSelectCond().eq("gkjz", n_gkjz_eq);
         }
     }
+	private String n_editionstate_eq;//[版本状态]
+	public void setN_editionstate_eq(String n_editionstate_eq) {
+        this.n_editionstate_eq = n_editionstate_eq;
+        if(!ObjectUtils.isEmpty(this.n_editionstate_eq)){
+            this.getSelectCond().eq("editionstate", n_editionstate_eq);
+        }
+    }
 	private String n_belongregion_eq;//[所属区域]
 	public void setN_belongregion_eq(String n_belongregion_eq) {
         this.n_belongregion_eq = n_belongregion_eq;

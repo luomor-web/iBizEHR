@@ -62,6 +62,7 @@ export default class SALITEMServiceBase extends EntityService {
      */
     public async Get(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
             let res:any = await Http.getInstance().get(`/salitems/${context.salitem}`,isloading);
+            this.tempStorage.setItem(context.srfsessionkey+'_salschemeitems',JSON.stringify(res.data.salschemeitems));
             return res;
 
     }
@@ -91,8 +92,24 @@ export default class SALITEMServiceBase extends EntityService {
      */
     public async Save(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
         let masterData:any = {};
+        let salschemeitemsData:any = [];
+        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_salschemeitems'),'undefined')){
+            salschemeitemsData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_salschemeitems') as any);
+            if(salschemeitemsData && salschemeitemsData.length && salschemeitemsData.length > 0){
+                salschemeitemsData.forEach((item:any) => {
+                    if(item.srffrontuf){
+                        if(Object.is(item.srffrontuf,"0")){
+                            item.salschemeitemid = null;
+                        }
+                        delete item.srffrontuf;
+                    }
+                });
+            }
+        }
+        masterData.salschemeitems = salschemeitemsData;
         Object.assign(data,masterData);
             let res:any = await  Http.getInstance().post(`/salitems/${context.salitem}/save`,data,isloading);
+            this.tempStorage.setItem(context.srfsessionkey+'_salschemeitems',JSON.stringify(res.data.salschemeitems));
             return res;
     }
 
@@ -108,6 +125,7 @@ export default class SALITEMServiceBase extends EntityService {
     public async GetDraft(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
         let res:any = await  Http.getInstance().get(`/salitems/getdraft`,isloading);
         res.data.salitem = data.salitem;
+            this.tempStorage.setItem(context.srfsessionkey+'_salschemeitems',JSON.stringify(res.data.salschemeitems));
         return res;
     }
 
@@ -135,8 +153,24 @@ export default class SALITEMServiceBase extends EntityService {
      */
     public async Update(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
         let masterData:any = {};
+        let salschemeitemsData:any = [];
+        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_salschemeitems'),'undefined')){
+            salschemeitemsData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_salschemeitems') as any);
+            if(salschemeitemsData && salschemeitemsData.length && salschemeitemsData.length > 0){
+                salschemeitemsData.forEach((item:any) => {
+                    if(item.srffrontuf){
+                        if(Object.is(item.srffrontuf,"0")){
+                            item.salschemeitemid = null;
+                        }
+                        delete item.srffrontuf;
+                    }
+                });
+            }
+        }
+        masterData.salschemeitems = salschemeitemsData;
         Object.assign(data,masterData);
             let res:any = await  Http.getInstance().put(`/salitems/${context.salitem}`,data,isloading);
+            this.tempStorage.setItem(context.srfsessionkey+'_salschemeitems',JSON.stringify(res.data.salschemeitems));
             return res;
     }
 
@@ -151,6 +185,21 @@ export default class SALITEMServiceBase extends EntityService {
      */
     public async Create(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
         let masterData:any = {};
+        let salschemeitemsData:any = [];
+        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_salschemeitems'),'undefined')){
+            salschemeitemsData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_salschemeitems') as any);
+            if(salschemeitemsData && salschemeitemsData.length && salschemeitemsData.length > 0){
+                salschemeitemsData.forEach((item:any) => {
+                    if(item.srffrontuf){
+                        if(Object.is(item.srffrontuf,"0")){
+                            item.salschemeitemid = null;
+                        }
+                        delete item.srffrontuf;
+                    }
+                });
+            }
+        }
+        masterData.salschemeitems = salschemeitemsData;
         Object.assign(data,masterData);
         if(!data.srffrontuf || data.srffrontuf !== "1"){
             data[this.APPDEKEY] = null;
@@ -160,6 +209,7 @@ export default class SALITEMServiceBase extends EntityService {
         }
         let tempContext:any = JSON.parse(JSON.stringify(context));
         let res:any = await Http.getInstance().post(`/salitems`,data,isloading);
+        this.tempStorage.setItem(tempContext.srfsessionkey+'_salschemeitems',JSON.stringify(res.data.salschemeitems));
         return res;
     }
 

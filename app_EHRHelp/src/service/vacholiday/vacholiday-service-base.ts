@@ -48,6 +48,9 @@ export default class VACHOLIDAYServiceBase extends EntityService {
      * @memberof VACHOLIDAYServiceBase
      */
     public async Select(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.vacholidayrules && context.vacholiday){
+            return Http.getInstance().get(`/vacholidayrules/${context.vacholidayrules}/vacholidays/${context.vacholiday}/select`,isloading);
+        }
             return Http.getInstance().get(`/vacholidays/${context.vacholiday}/select`,isloading);
     }
 
@@ -61,6 +64,9 @@ export default class VACHOLIDAYServiceBase extends EntityService {
      * @memberof VACHOLIDAYServiceBase
      */
     public async APPOINTJZBJJR(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.vacholidayrules && context.vacholiday){
+            return Http.getInstance().post(`/vacholidayrules/${context.vacholidayrules}/vacholidays/${context.vacholiday}/appointjzbjjr`,data,isloading);
+        }
             return Http.getInstance().post(`/vacholidays/${context.vacholiday}/appointjzbjjr`,data,isloading);
     }
 
@@ -74,6 +80,9 @@ export default class VACHOLIDAYServiceBase extends EntityService {
      * @memberof VACHOLIDAYServiceBase
      */
     public async Update(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.vacholidayrules && context.vacholiday){
+            return Http.getInstance().put(`/vacholidayrules/${context.vacholidayrules}/vacholidays/${context.vacholiday}`,data,isloading);
+        }
         let masterData:any = {};
         Object.assign(data,masterData);
             let res:any = await  Http.getInstance().put(`/vacholidays/${context.vacholiday}`,data,isloading);
@@ -90,6 +99,9 @@ export default class VACHOLIDAYServiceBase extends EntityService {
      * @memberof VACHOLIDAYServiceBase
      */
     public async Remove(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.vacholidayrules && context.vacholiday){
+            return Http.getInstance().delete(`/vacholidayrules/${context.vacholidayrules}/vacholidays/${context.vacholiday}`,isloading);
+        }
             return Http.getInstance().delete(`/vacholidays/${context.vacholiday}`,isloading);
 
     }
@@ -104,6 +116,9 @@ export default class VACHOLIDAYServiceBase extends EntityService {
      * @memberof VACHOLIDAYServiceBase
      */
     public async CheckKey(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.vacholidayrules && context.vacholiday){
+            return Http.getInstance().post(`/vacholidayrules/${context.vacholidayrules}/vacholidays/${context.vacholiday}/checkkey`,data,isloading);
+        }
             return Http.getInstance().post(`/vacholidays/${context.vacholiday}/checkkey`,data,isloading);
     }
 
@@ -117,6 +132,9 @@ export default class VACHOLIDAYServiceBase extends EntityService {
      * @memberof VACHOLIDAYServiceBase
      */
     public async GetDraft(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.vacholidayrules && true){
+            return Http.getInstance().get(`/vacholidayrules/${context.vacholidayrules}/vacholidays/getdraft`,isloading);
+        }
         let res:any = await  Http.getInstance().get(`/vacholidays/getdraft`,isloading);
         res.data.vacholiday = data.vacholiday;
         return res;
@@ -132,6 +150,9 @@ export default class VACHOLIDAYServiceBase extends EntityService {
      * @memberof VACHOLIDAYServiceBase
      */
     public async Get(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.vacholidayrules && context.vacholiday){
+            return Http.getInstance().get(`/vacholidayrules/${context.vacholidayrules}/vacholidays/${context.vacholiday}`,isloading);
+        }
             let res:any = await Http.getInstance().get(`/vacholidays/${context.vacholiday}`,isloading);
             return res;
 
@@ -147,6 +168,9 @@ export default class VACHOLIDAYServiceBase extends EntityService {
      * @memberof VACHOLIDAYServiceBase
      */
     public async Save(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.vacholidayrules && context.vacholiday){
+            return Http.getInstance().post(`/vacholidayrules/${context.vacholidayrules}/vacholidays/${context.vacholiday}/save`,data,isloading);
+        }
         let masterData:any = {};
         Object.assign(data,masterData);
             let res:any = await  Http.getInstance().post(`/vacholidays/${context.vacholiday}/save`,data,isloading);
@@ -163,6 +187,15 @@ export default class VACHOLIDAYServiceBase extends EntityService {
      * @memberof VACHOLIDAYServiceBase
      */
     public async Create(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.vacholidayrules && true){
+            if(!data.srffrontuf || data.srffrontuf !== "1"){
+                data[this.APPDEKEY] = null;
+            }
+            if(data.srffrontuf){
+                delete data.srffrontuf;
+            }
+            return Http.getInstance().post(`/vacholidayrules/${context.vacholidayrules}/vacholidays`,data,isloading);
+        }
         let masterData:any = {};
         Object.assign(data,masterData);
         if(!data.srffrontuf || data.srffrontuf !== "1"){
@@ -186,6 +219,9 @@ export default class VACHOLIDAYServiceBase extends EntityService {
      * @memberof VACHOLIDAYServiceBase
      */
     public async CheckTime(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.vacholidayrules && context.vacholiday){
+            return Http.getInstance().post(`/vacholidayrules/${context.vacholidayrules}/vacholidays/${context.vacholiday}/checktime`,data,isloading);
+        }
             return Http.getInstance().post(`/vacholidays/${context.vacholiday}/checktime`,data,isloading);
     }
 
@@ -199,6 +235,10 @@ export default class VACHOLIDAYServiceBase extends EntityService {
      * @memberof VACHOLIDAYServiceBase
      */
     public async FetchDefault(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.vacholidayrules && true){
+            let tempData:any = JSON.parse(JSON.stringify(data));
+            return Http.getInstance().get(`/vacholidayrules/${context.vacholidayrules}/vacholidays/fetchdefault`,tempData,isloading);
+        }
         let tempData:any = JSON.parse(JSON.stringify(data));
         return Http.getInstance().get(`/vacholidays/fetchdefault`,tempData,isloading);
     }

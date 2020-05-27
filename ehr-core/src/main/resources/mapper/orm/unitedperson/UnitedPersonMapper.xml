@@ -4,6 +4,9 @@
 <mapper	namespace="cn.ibizlab.ehr.core.orm.mapper.UnitedPersonMapper">
 
     <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
+	<select id="selectById"  resultMap="UnitedPersonResultMap" databaseId="mysql">
+        <![CDATA[select t1.* from (SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`EHREMPID`, t1.`EMPID`, t1.`EMPLOYEENAME`, t1.`EMPLOYEENUMBER`, t1.`ENABLE`, t1.`FULLNAME`, t1.`IDNUMBER`, t1.`ISEMPLOYEE`, t1.`REFERMARK`, t1.`SEX`, t1.`UNITEDPERSONID`, t1.`UNITEDPERSONNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`USERNAME` FROM `T_UNITEDPERSON` t1  ) t1 where unitedpersonid=#{id}]]>
+    </select>
 
     <!--通过mybatis将查询结果注入到entity中,通过配置autoMapping="true"由mybatis自动处理映射关系 -->
     <resultMap id="UnitedPersonResultMap" type="cn.ibizlab.ehr.core.orm.domain.UnitedPerson" autoMapping="true">
@@ -58,6 +61,13 @@
 
     <!--数据查询[Default]-->
     <sql id="Default" databaseId="mysql">
+       <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`EHREMPID`, t1.`EMPID`, t1.`EMPLOYEENAME`, t1.`EMPLOYEENUMBER`, t1.`ENABLE`, t1.`FULLNAME`, t1.`IDNUMBER`, t1.`ISEMPLOYEE`, t1.`REFERMARK`, t1.`SEX`, t1.`UNITEDPERSONID`, t1.`UNITEDPERSONNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`USERNAME` FROM `T_UNITEDPERSON` t1  
+				 WHERE 	t1.ENABLE = 1
+			]]>
+    </sql>
+
+    <!--数据查询[View]-->
+    <sql id="View" databaseId="mysql">
        <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`EHREMPID`, t1.`EMPID`, t1.`EMPLOYEENAME`, t1.`EMPLOYEENUMBER`, t1.`ENABLE`, t1.`FULLNAME`, t1.`IDNUMBER`, t1.`ISEMPLOYEE`, t1.`REFERMARK`, t1.`SEX`, t1.`UNITEDPERSONID`, t1.`UNITEDPERSONNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`USERNAME` FROM `T_UNITEDPERSON` t1  
 				 WHERE 	t1.ENABLE = 1
 			]]>

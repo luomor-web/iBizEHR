@@ -62,8 +62,24 @@ export default class PCMXKMLServiceBase extends EntityService {
      */
     public async Update(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
         let masterData:any = {};
+        let pcmgxxktempsData:any = [];
+        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_pcmgxxktemps'),'undefined')){
+            pcmgxxktempsData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_pcmgxxktemps') as any);
+            if(pcmgxxktempsData && pcmgxxktempsData.length && pcmgxxktempsData.length > 0){
+                pcmgxxktempsData.forEach((item:any) => {
+                    if(item.srffrontuf){
+                        if(Object.is(item.srffrontuf,"0")){
+                            item.pcmgxxktempid = null;
+                        }
+                        delete item.srffrontuf;
+                    }
+                });
+            }
+        }
+        masterData.pcmgxxktemps = pcmgxxktempsData;
         Object.assign(data,masterData);
             let res:any = await  Http.getInstance().put(`/pcmxkmls/${context.pcmxkml}`,data,isloading);
+            this.tempStorage.setItem(context.srfsessionkey+'_pcmgxxktemps',JSON.stringify(res.data.pcmgxxktemps));
             return res;
     }
 
@@ -92,6 +108,7 @@ export default class PCMXKMLServiceBase extends EntityService {
      */
     public async Get(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
             let res:any = await Http.getInstance().get(`/pcmxkmls/${context.pcmxkml}`,isloading);
+            this.tempStorage.setItem(context.srfsessionkey+'_pcmgxxktemps',JSON.stringify(res.data.pcmgxxktemps));
             return res;
 
     }
@@ -107,6 +124,21 @@ export default class PCMXKMLServiceBase extends EntityService {
      */
     public async Create(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
         let masterData:any = {};
+        let pcmgxxktempsData:any = [];
+        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_pcmgxxktemps'),'undefined')){
+            pcmgxxktempsData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_pcmgxxktemps') as any);
+            if(pcmgxxktempsData && pcmgxxktempsData.length && pcmgxxktempsData.length > 0){
+                pcmgxxktempsData.forEach((item:any) => {
+                    if(item.srffrontuf){
+                        if(Object.is(item.srffrontuf,"0")){
+                            item.pcmgxxktempid = null;
+                        }
+                        delete item.srffrontuf;
+                    }
+                });
+            }
+        }
+        masterData.pcmgxxktemps = pcmgxxktempsData;
         Object.assign(data,masterData);
         if(!data.srffrontuf || data.srffrontuf !== "1"){
             data[this.APPDEKEY] = null;
@@ -116,6 +148,7 @@ export default class PCMXKMLServiceBase extends EntityService {
         }
         let tempContext:any = JSON.parse(JSON.stringify(context));
         let res:any = await Http.getInstance().post(`/pcmxkmls`,data,isloading);
+        this.tempStorage.setItem(tempContext.srfsessionkey+'_pcmgxxktemps',JSON.stringify(res.data.pcmgxxktemps));
         return res;
     }
 
@@ -130,8 +163,24 @@ export default class PCMXKMLServiceBase extends EntityService {
      */
     public async Save(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
         let masterData:any = {};
+        let pcmgxxktempsData:any = [];
+        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_pcmgxxktemps'),'undefined')){
+            pcmgxxktempsData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_pcmgxxktemps') as any);
+            if(pcmgxxktempsData && pcmgxxktempsData.length && pcmgxxktempsData.length > 0){
+                pcmgxxktempsData.forEach((item:any) => {
+                    if(item.srffrontuf){
+                        if(Object.is(item.srffrontuf,"0")){
+                            item.pcmgxxktempid = null;
+                        }
+                        delete item.srffrontuf;
+                    }
+                });
+            }
+        }
+        masterData.pcmgxxktemps = pcmgxxktempsData;
         Object.assign(data,masterData);
             let res:any = await  Http.getInstance().post(`/pcmxkmls/${context.pcmxkml}/save`,data,isloading);
+            this.tempStorage.setItem(context.srfsessionkey+'_pcmgxxktemps',JSON.stringify(res.data.pcmgxxktemps));
             return res;
     }
 
@@ -160,6 +209,7 @@ export default class PCMXKMLServiceBase extends EntityService {
     public async GetDraft(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
         let res:any = await  Http.getInstance().get(`/pcmxkmls/getdraft`,isloading);
         res.data.pcmxkml = data.pcmxkml;
+            this.tempStorage.setItem(context.srfsessionkey+'_pcmgxxktemps',JSON.stringify(res.data.pcmgxxktemps));
         return res;
     }
 

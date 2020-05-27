@@ -62,6 +62,21 @@ export default class PCMDDSQDServiceBase extends EntityService {
      */
     public async Create(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
         let masterData:any = {};
+        let pcmddsqdmxesData:any = [];
+        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_pcmddsqdmxes'),'undefined')){
+            pcmddsqdmxesData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_pcmddsqdmxes') as any);
+            if(pcmddsqdmxesData && pcmddsqdmxesData.length && pcmddsqdmxesData.length > 0){
+                pcmddsqdmxesData.forEach((item:any) => {
+                    if(item.srffrontuf){
+                        if(Object.is(item.srffrontuf,"0")){
+                            item.pcmddsqdmxid = null;
+                        }
+                        delete item.srffrontuf;
+                    }
+                });
+            }
+        }
+        masterData.pcmddsqdmxes = pcmddsqdmxesData;
         Object.assign(data,masterData);
         if(!data.srffrontuf || data.srffrontuf !== "1"){
             data[this.APPDEKEY] = null;
@@ -71,6 +86,7 @@ export default class PCMDDSQDServiceBase extends EntityService {
         }
         let tempContext:any = JSON.parse(JSON.stringify(context));
         let res:any = await Http.getInstance().post(`/pcmddsqds`,data,isloading);
+        this.tempStorage.setItem(tempContext.srfsessionkey+'_pcmddsqdmxes',JSON.stringify(res.data.pcmddsqdmxes));
         return res;
     }
 
@@ -98,6 +114,7 @@ export default class PCMDDSQDServiceBase extends EntityService {
      */
     public async Get(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
             let res:any = await Http.getInstance().get(`/pcmddsqds/${context.pcmddsqd}`,isloading);
+            this.tempStorage.setItem(context.srfsessionkey+'_pcmddsqdmxes',JSON.stringify(res.data.pcmddsqdmxes));
             return res;
 
     }
@@ -113,8 +130,24 @@ export default class PCMDDSQDServiceBase extends EntityService {
      */
     public async Update(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
         let masterData:any = {};
+        let pcmddsqdmxesData:any = [];
+        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_pcmddsqdmxes'),'undefined')){
+            pcmddsqdmxesData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_pcmddsqdmxes') as any);
+            if(pcmddsqdmxesData && pcmddsqdmxesData.length && pcmddsqdmxesData.length > 0){
+                pcmddsqdmxesData.forEach((item:any) => {
+                    if(item.srffrontuf){
+                        if(Object.is(item.srffrontuf,"0")){
+                            item.pcmddsqdmxid = null;
+                        }
+                        delete item.srffrontuf;
+                    }
+                });
+            }
+        }
+        masterData.pcmddsqdmxes = pcmddsqdmxesData;
         Object.assign(data,masterData);
             let res:any = await  Http.getInstance().put(`/pcmddsqds/${context.pcmddsqd}`,data,isloading);
+            this.tempStorage.setItem(context.srfsessionkey+'_pcmddsqdmxes',JSON.stringify(res.data.pcmddsqdmxes));
             return res;
     }
 
@@ -142,8 +175,24 @@ export default class PCMDDSQDServiceBase extends EntityService {
      */
     public async Save(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
         let masterData:any = {};
+        let pcmddsqdmxesData:any = [];
+        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_pcmddsqdmxes'),'undefined')){
+            pcmddsqdmxesData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_pcmddsqdmxes') as any);
+            if(pcmddsqdmxesData && pcmddsqdmxesData.length && pcmddsqdmxesData.length > 0){
+                pcmddsqdmxesData.forEach((item:any) => {
+                    if(item.srffrontuf){
+                        if(Object.is(item.srffrontuf,"0")){
+                            item.pcmddsqdmxid = null;
+                        }
+                        delete item.srffrontuf;
+                    }
+                });
+            }
+        }
+        masterData.pcmddsqdmxes = pcmddsqdmxesData;
         Object.assign(data,masterData);
             let res:any = await  Http.getInstance().post(`/pcmddsqds/${context.pcmddsqd}/save`,data,isloading);
+            this.tempStorage.setItem(context.srfsessionkey+'_pcmddsqdmxes',JSON.stringify(res.data.pcmddsqdmxes));
             return res;
     }
 
@@ -173,6 +222,7 @@ export default class PCMDDSQDServiceBase extends EntityService {
     public async GetDraft(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
         let res:any = await  Http.getInstance().get(`/pcmddsqds/getdraft`,isloading);
         res.data.pcmddsqd = data.pcmddsqd;
+            this.tempStorage.setItem(context.srfsessionkey+'_pcmddsqdmxes',JSON.stringify(res.data.pcmddsqdmxes));
         return res;
     }
 

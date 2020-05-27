@@ -62,6 +62,7 @@ export default class PARJXBZGLServiceBase extends EntityService {
      */
     public async Get(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
             let res:any = await Http.getInstance().get(`/parjxbzgls/${context.parjxbzgl}`,isloading);
+            this.tempStorage.setItem(context.srfsessionkey+'_parjxbzglmxes',JSON.stringify(res.data.parjxbzglmxes));
             return res;
 
     }
@@ -78,6 +79,7 @@ export default class PARJXBZGLServiceBase extends EntityService {
     public async GetDraft(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
         let res:any = await  Http.getInstance().get(`/parjxbzgls/getdraft`,isloading);
         res.data.parjxbzgl = data.parjxbzgl;
+            this.tempStorage.setItem(context.srfsessionkey+'_parjxbzglmxes',JSON.stringify(res.data.parjxbzglmxes));
         return res;
     }
 
@@ -92,8 +94,24 @@ export default class PARJXBZGLServiceBase extends EntityService {
      */
     public async Save(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
         let masterData:any = {};
+        let parjxbzglmxesData:any = [];
+        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_parjxbzglmxes'),'undefined')){
+            parjxbzglmxesData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_parjxbzglmxes') as any);
+            if(parjxbzglmxesData && parjxbzglmxesData.length && parjxbzglmxesData.length > 0){
+                parjxbzglmxesData.forEach((item:any) => {
+                    if(item.srffrontuf){
+                        if(Object.is(item.srffrontuf,"0")){
+                            item.parjxbzglmxid = null;
+                        }
+                        delete item.srffrontuf;
+                    }
+                });
+            }
+        }
+        masterData.parjxbzglmxes = parjxbzglmxesData;
         Object.assign(data,masterData);
             let res:any = await  Http.getInstance().post(`/parjxbzgls/${context.parjxbzgl}/save`,data,isloading);
+            this.tempStorage.setItem(context.srfsessionkey+'_parjxbzglmxes',JSON.stringify(res.data.parjxbzglmxes));
             return res;
     }
 
@@ -108,6 +126,21 @@ export default class PARJXBZGLServiceBase extends EntityService {
      */
     public async Create(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
         let masterData:any = {};
+        let parjxbzglmxesData:any = [];
+        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_parjxbzglmxes'),'undefined')){
+            parjxbzglmxesData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_parjxbzglmxes') as any);
+            if(parjxbzglmxesData && parjxbzglmxesData.length && parjxbzglmxesData.length > 0){
+                parjxbzglmxesData.forEach((item:any) => {
+                    if(item.srffrontuf){
+                        if(Object.is(item.srffrontuf,"0")){
+                            item.parjxbzglmxid = null;
+                        }
+                        delete item.srffrontuf;
+                    }
+                });
+            }
+        }
+        masterData.parjxbzglmxes = parjxbzglmxesData;
         Object.assign(data,masterData);
         if(!data.srffrontuf || data.srffrontuf !== "1"){
             data[this.APPDEKEY] = null;
@@ -117,6 +150,7 @@ export default class PARJXBZGLServiceBase extends EntityService {
         }
         let tempContext:any = JSON.parse(JSON.stringify(context));
         let res:any = await Http.getInstance().post(`/parjxbzgls`,data,isloading);
+        this.tempStorage.setItem(tempContext.srfsessionkey+'_parjxbzglmxes',JSON.stringify(res.data.parjxbzglmxes));
         return res;
     }
 
@@ -131,8 +165,24 @@ export default class PARJXBZGLServiceBase extends EntityService {
      */
     public async Update(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
         let masterData:any = {};
+        let parjxbzglmxesData:any = [];
+        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_parjxbzglmxes'),'undefined')){
+            parjxbzglmxesData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_parjxbzglmxes') as any);
+            if(parjxbzglmxesData && parjxbzglmxesData.length && parjxbzglmxesData.length > 0){
+                parjxbzglmxesData.forEach((item:any) => {
+                    if(item.srffrontuf){
+                        if(Object.is(item.srffrontuf,"0")){
+                            item.parjxbzglmxid = null;
+                        }
+                        delete item.srffrontuf;
+                    }
+                });
+            }
+        }
+        masterData.parjxbzglmxes = parjxbzglmxesData;
         Object.assign(data,masterData);
             let res:any = await  Http.getInstance().put(`/parjxbzgls/${context.parjxbzgl}`,data,isloading);
+            this.tempStorage.setItem(context.srfsessionkey+'_parjxbzglmxes',JSON.stringify(res.data.parjxbzglmxes));
             return res;
     }
 

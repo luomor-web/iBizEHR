@@ -27,6 +27,13 @@ import cn.ibizlab.ehr.core.pcm.domain.PCMYDNTMX;
 @Data
 public class PCMYDNTMXSearchContext extends QueryWrapperContext<PCMYDNTMX> {
 
+	private String n_pcmydntmxname_like;//[异动内退明细名称]
+	public void setN_pcmydntmxname_like(String n_pcmydntmxname_like) {
+        this.n_pcmydntmxname_like = n_pcmydntmxname_like;
+        if(!ObjectUtils.isEmpty(this.n_pcmydntmxname_like)){
+            this.getSelectCond().like("pcmydntmxname", n_pcmydntmxname_like);
+        }
+    }
 	private String n_ygbh_like;//[员工编号]
 	public void setN_ygbh_like(String n_ygbh_like) {
         this.n_ygbh_like = n_ygbh_like;

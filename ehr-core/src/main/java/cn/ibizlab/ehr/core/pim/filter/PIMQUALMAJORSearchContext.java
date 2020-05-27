@@ -41,6 +41,13 @@ public class PIMQUALMAJORSearchContext extends QueryWrapperContext<PIMQUALMAJOR>
             this.getSelectCond().like("pimqualmajorid", n_pimqualmajorid_like);
         }
     }
+	private String n_zyzgzy_like;//[执业资格名称]
+	public void setN_zyzgzy_like(String n_zyzgzy_like) {
+        this.n_zyzgzy_like = n_zyzgzy_like;
+        if(!ObjectUtils.isEmpty(this.n_zyzgzy_like)){
+            this.getSelectCond().like("zyzgzy", n_zyzgzy_like);
+        }
+    }
 	private String n_pimqualmajorname_like;//[执业资格]
 	public void setN_pimqualmajorname_like(String n_pimqualmajorname_like) {
         this.n_pimqualmajorname_like = n_pimqualmajorname_like;

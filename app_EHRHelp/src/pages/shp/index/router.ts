@@ -1577,6 +1577,20 @@ const router = new Router({
                     component: () => import('@pages/shp/pimexitandentryedit-view-ytg/pimexitandentryedit-view-ytg.vue'),
                 },
                 {
+                    path: 'ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/fpxxpickupgridview/:fpxxpickupgridview?',
+                    meta: {
+                        caption: 'entities.ormorgsector.views.fpxxpickupgridview.caption',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'ormorgs', parameterName: 'ormorg' },
+                            { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
+                            { pathName: 'fpxxpickupgridview', parameterName: 'fpxxpickupgridview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/shp/ormorgsectorfpxxpickup-grid-view/ormorgsectorfpxxpickup-grid-view.vue'),
+                },
+                {
                     path: 'ormorgsectors/:ormorgsector?/fpxxpickupgridview/:fpxxpickupgridview?',
                     meta: {
                         caption: 'entities.ormorgsector.views.fpxxpickupgridview.caption',
@@ -1818,6 +1832,20 @@ const router = new Router({
                         requireAuth: true,
                     },
                     component: () => import('@pages/shp/pimvocationalgredit-view/pimvocationalgredit-view.vue'),
+                },
+                {
+                    path: 'ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/fpxxpickupview/:fpxxpickupview?',
+                    meta: {
+                        caption: 'entities.ormorgsector.views.fpxxpickupview.caption',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'ormorgs', parameterName: 'ormorg' },
+                            { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
+                            { pathName: 'fpxxpickupview', parameterName: 'fpxxpickupview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/shp/ormorgsectorfpxxpickup-view/ormorgsectorfpxxpickup-view.vue'),
                 },
                 {
                     path: 'ormorgsectors/:ormorgsector?/fpxxpickupview/:fpxxpickupview?',
@@ -3106,6 +3134,19 @@ const router = new Router({
         component: () => import('@pages/shp/pimpersonpickup-view/pimpersonpickup-view.vue'),
     },
     {
+        path: '/ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/fpxxpickupview/:fpxxpickupview?',
+        meta: {
+            caption: 'entities.ormorgsector.views.fpxxpickupview.caption',
+            parameters: [
+                { pathName: 'ormorgs', parameterName: 'ormorg' },
+                { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
+                { pathName: 'fpxxpickupview', parameterName: 'fpxxpickupview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/shp/ormorgsectorfpxxpickup-view/ormorgsectorfpxxpickup-view.vue'),
+    },
+    {
         path: '/ormorgsectors/:ormorgsector?/fpxxpickupview/:fpxxpickupview?',
         meta: {
             caption: 'entities.ormorgsector.views.fpxxpickupview.caption',
@@ -3489,6 +3530,19 @@ const router = new Router({
             requireAuth: true,
         },
         component: () => import('@pages/shp/pimpapergr-papergrid-view/pimpapergr-papergrid-view.vue'),
+    },
+    {
+        path: '/ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/fpxxpickupgridview/:fpxxpickupgridview?',
+        meta: {
+            caption: 'entities.ormorgsector.views.fpxxpickupgridview.caption',
+            parameters: [
+                { pathName: 'ormorgs', parameterName: 'ormorg' },
+                { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
+                { pathName: 'fpxxpickupgridview', parameterName: 'fpxxpickupgridview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/shp/ormorgsectorfpxxpickup-grid-view/ormorgsectorfpxxpickup-grid-view.vue'),
     },
     {
         path: '/ormorgsectors/:ormorgsector?/fpxxpickupgridview/:fpxxpickupgridview?',

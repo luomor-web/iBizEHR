@@ -48,6 +48,12 @@ export default class PIMCORRECTIONAPPLYServiceBase extends EntityService {
      * @memberof PIMCORRECTIONAPPLYServiceBase
      */
     public async Select(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.pimperson && context.pimcorrectionapply){
+            return Http.getInstance().get(`/pimpeople/${context.pimperson}/pimcorrectionapplies/${context.pimcorrectionapply}/select`,isloading);
+        }
+        if(context.pimbyygzzsq && context.pimcorrectionapply){
+            return Http.getInstance().get(`/pimbyygzzsqs/${context.pimbyygzzsq}/pimcorrectionapplies/${context.pimcorrectionapply}/select`,isloading);
+        }
             return Http.getInstance().get(`/pimcorrectionapplies/${context.pimcorrectionapply}/select`,isloading);
     }
 
@@ -61,6 +67,24 @@ export default class PIMCORRECTIONAPPLYServiceBase extends EntityService {
      * @memberof PIMCORRECTIONAPPLYServiceBase
      */
     public async Create(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.pimperson && true){
+            if(!data.srffrontuf || data.srffrontuf !== "1"){
+                data[this.APPDEKEY] = null;
+            }
+            if(data.srffrontuf){
+                delete data.srffrontuf;
+            }
+            return Http.getInstance().post(`/pimpeople/${context.pimperson}/pimcorrectionapplies`,data,isloading);
+        }
+        if(context.pimbyygzzsq && true){
+            if(!data.srffrontuf || data.srffrontuf !== "1"){
+                data[this.APPDEKEY] = null;
+            }
+            if(data.srffrontuf){
+                delete data.srffrontuf;
+            }
+            return Http.getInstance().post(`/pimbyygzzsqs/${context.pimbyygzzsq}/pimcorrectionapplies`,data,isloading);
+        }
         let masterData:any = {};
         Object.assign(data,masterData);
         if(!data.srffrontuf || data.srffrontuf !== "1"){
@@ -84,6 +108,12 @@ export default class PIMCORRECTIONAPPLYServiceBase extends EntityService {
      * @memberof PIMCORRECTIONAPPLYServiceBase
      */
     public async GetDraft(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.pimperson && true){
+            return Http.getInstance().get(`/pimpeople/${context.pimperson}/pimcorrectionapplies/getdraft`,isloading);
+        }
+        if(context.pimbyygzzsq && true){
+            return Http.getInstance().get(`/pimbyygzzsqs/${context.pimbyygzzsq}/pimcorrectionapplies/getdraft`,isloading);
+        }
         let res:any = await  Http.getInstance().get(`/pimcorrectionapplies/getdraft`,isloading);
         res.data.pimcorrectionapply = data.pimcorrectionapply;
         return res;
@@ -99,6 +129,12 @@ export default class PIMCORRECTIONAPPLYServiceBase extends EntityService {
      * @memberof PIMCORRECTIONAPPLYServiceBase
      */
     public async CheckKey(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.pimperson && context.pimcorrectionapply){
+            return Http.getInstance().post(`/pimpeople/${context.pimperson}/pimcorrectionapplies/${context.pimcorrectionapply}/checkkey`,data,isloading);
+        }
+        if(context.pimbyygzzsq && context.pimcorrectionapply){
+            return Http.getInstance().post(`/pimbyygzzsqs/${context.pimbyygzzsq}/pimcorrectionapplies/${context.pimcorrectionapply}/checkkey`,data,isloading);
+        }
             return Http.getInstance().post(`/pimcorrectionapplies/${context.pimcorrectionapply}/checkkey`,data,isloading);
     }
 
@@ -112,6 +148,12 @@ export default class PIMCORRECTIONAPPLYServiceBase extends EntityService {
      * @memberof PIMCORRECTIONAPPLYServiceBase
      */
     public async Save(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.pimperson && context.pimcorrectionapply){
+            return Http.getInstance().post(`/pimpeople/${context.pimperson}/pimcorrectionapplies/${context.pimcorrectionapply}/save`,data,isloading);
+        }
+        if(context.pimbyygzzsq && context.pimcorrectionapply){
+            return Http.getInstance().post(`/pimbyygzzsqs/${context.pimbyygzzsq}/pimcorrectionapplies/${context.pimcorrectionapply}/save`,data,isloading);
+        }
         let masterData:any = {};
         Object.assign(data,masterData);
             let res:any = await  Http.getInstance().post(`/pimcorrectionapplies/${context.pimcorrectionapply}/save`,data,isloading);
@@ -128,6 +170,12 @@ export default class PIMCORRECTIONAPPLYServiceBase extends EntityService {
      * @memberof PIMCORRECTIONAPPLYServiceBase
      */
     public async Get(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.pimperson && context.pimcorrectionapply){
+            return Http.getInstance().get(`/pimpeople/${context.pimperson}/pimcorrectionapplies/${context.pimcorrectionapply}`,isloading);
+        }
+        if(context.pimbyygzzsq && context.pimcorrectionapply){
+            return Http.getInstance().get(`/pimbyygzzsqs/${context.pimbyygzzsq}/pimcorrectionapplies/${context.pimcorrectionapply}`,isloading);
+        }
             let res:any = await Http.getInstance().get(`/pimcorrectionapplies/${context.pimcorrectionapply}`,isloading);
             return res;
 
@@ -143,6 +191,12 @@ export default class PIMCORRECTIONAPPLYServiceBase extends EntityService {
      * @memberof PIMCORRECTIONAPPLYServiceBase
      */
     public async Update(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.pimperson && context.pimcorrectionapply){
+            return Http.getInstance().put(`/pimpeople/${context.pimperson}/pimcorrectionapplies/${context.pimcorrectionapply}`,data,isloading);
+        }
+        if(context.pimbyygzzsq && context.pimcorrectionapply){
+            return Http.getInstance().put(`/pimbyygzzsqs/${context.pimbyygzzsq}/pimcorrectionapplies/${context.pimcorrectionapply}`,data,isloading);
+        }
         let masterData:any = {};
         Object.assign(data,masterData);
             let res:any = await  Http.getInstance().put(`/pimcorrectionapplies/${context.pimcorrectionapply}`,data,isloading);
@@ -159,6 +213,12 @@ export default class PIMCORRECTIONAPPLYServiceBase extends EntityService {
      * @memberof PIMCORRECTIONAPPLYServiceBase
      */
     public async Remove(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.pimperson && context.pimcorrectionapply){
+            return Http.getInstance().delete(`/pimpeople/${context.pimperson}/pimcorrectionapplies/${context.pimcorrectionapply}`,isloading);
+        }
+        if(context.pimbyygzzsq && context.pimcorrectionapply){
+            return Http.getInstance().delete(`/pimbyygzzsqs/${context.pimbyygzzsq}/pimcorrectionapplies/${context.pimcorrectionapply}`,isloading);
+        }
             return Http.getInstance().delete(`/pimcorrectionapplies/${context.pimcorrectionapply}`,isloading);
 
     }
@@ -173,6 +233,14 @@ export default class PIMCORRECTIONAPPLYServiceBase extends EntityService {
      * @memberof PIMCORRECTIONAPPLYServiceBase
      */
     public async FetchDefault(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.pimperson && true){
+            let tempData:any = JSON.parse(JSON.stringify(data));
+            return Http.getInstance().get(`/pimpeople/${context.pimperson}/pimcorrectionapplies/fetchdefault`,tempData,isloading);
+        }
+        if(context.pimbyygzzsq && true){
+            let tempData:any = JSON.parse(JSON.stringify(data));
+            return Http.getInstance().get(`/pimbyygzzsqs/${context.pimbyygzzsq}/pimcorrectionapplies/fetchdefault`,tempData,isloading);
+        }
         let tempData:any = JSON.parse(JSON.stringify(data));
         return Http.getInstance().get(`/pimcorrectionapplies/fetchdefault`,tempData,isloading);
     }

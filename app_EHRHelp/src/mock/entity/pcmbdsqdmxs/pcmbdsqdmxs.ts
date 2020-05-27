@@ -87,6 +87,64 @@ mock.onDelete(new RegExp(/^\/pcmbdsqdmxes\/batch$/)).reply((config: any) => {
 });
 
 
+
+// Select
+mock.onGet(new RegExp(/^\/pimpeople\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/([a-zA-Z0-9\-\;]{1,35})\/select$/)).reply((config: any) => {
+    console.groupCollapsed("实体:pcmbdsqdmx 方法: Select");
+    console.table({url:config.url, method: config.method, data:config.data});
+    let status = MockAdapter.mockStatus(config);
+    if (status !== 200) {
+        return [status, null];
+    }
+    const paramArray:Array<any> = ['pimpersonid','pcmbdsqdmxid'];
+    const matchArray:any = new RegExp(/^\/pimpeople\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/([a-zA-Z0-9\-\;]{1,35})\/select$/).exec(config.url);
+    let tempValue: any = {};
+    if(matchArray && matchArray.length >1 && paramArray && paramArray.length >0){
+        paramArray.forEach((item: any, index: number) => {
+            Object.defineProperty(tempValue, item, {
+                enumerable: true,
+                value: matchArray[index + 1]
+            });
+        });
+    }
+    let items = mockDatas ? mockDatas : [];
+    let _items = items.find((item: any) => Object.is(item.pcmbdsqdmxid, tempValue.pcmbdsqdmxid));
+    console.groupCollapsed("response数据  status: "+status+" data: ");
+    console.table(_items);
+    console.groupEnd();
+    console.groupEnd();
+    return [status, _items];
+});
+
+
+// Select
+mock.onGet(new RegExp(/^\/pcmbdsqds\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/([a-zA-Z0-9\-\;]{1,35})\/select$/)).reply((config: any) => {
+    console.groupCollapsed("实体:pcmbdsqdmx 方法: Select");
+    console.table({url:config.url, method: config.method, data:config.data});
+    let status = MockAdapter.mockStatus(config);
+    if (status !== 200) {
+        return [status, null];
+    }
+    const paramArray:Array<any> = ['pcmbdsqdid','pcmbdsqdmxid'];
+    const matchArray:any = new RegExp(/^\/pcmbdsqds\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/([a-zA-Z0-9\-\;]{1,35})\/select$/).exec(config.url);
+    let tempValue: any = {};
+    if(matchArray && matchArray.length >1 && paramArray && paramArray.length >0){
+        paramArray.forEach((item: any, index: number) => {
+            Object.defineProperty(tempValue, item, {
+                enumerable: true,
+                value: matchArray[index + 1]
+            });
+        });
+    }
+    let items = mockDatas ? mockDatas : [];
+    let _items = items.find((item: any) => Object.is(item.pcmbdsqdmxid, tempValue.pcmbdsqdmxid));
+    console.groupCollapsed("response数据  status: "+status+" data: ");
+    console.table(_items);
+    console.groupEnd();
+    console.groupEnd();
+    return [status, _items];
+});
+
 // Select
 mock.onGet(new RegExp(/^\/pcmbdsqdmxes\/([a-zA-Z0-9\-\;]{1,35})\/select$/)).reply((config: any) => {
     console.groupCollapsed("实体:pcmbdsqdmx 方法: Select");
@@ -113,6 +171,60 @@ mock.onGet(new RegExp(/^\/pcmbdsqdmxes\/([a-zA-Z0-9\-\;]{1,35})\/select$/)).repl
     console.groupEnd();
     console.groupEnd();
     return [status, _items];
+});
+
+    
+// ZJJSDMB
+mock.onPost(new RegExp(/^\/pimpeople\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/([a-zA-Z0-9\-\;]{1,35})\/zjjsdmb$/)).reply((config: any) => {
+    console.groupCollapsed("实体:pcmbdsqdmx 方法: ZJJSDMB");
+    console.table({url:config.url, method: config.method, data:config.data});
+    let status = MockAdapter.mockStatus(config);
+    if (status !== 200) {
+        return [status, null];
+    }
+    const paramArray:Array<any> = ['pimpersonid','pcmbdsqdmxid'];
+    const matchArray:any = new RegExp(/^\/pimpeople\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/([a-zA-Z0-9\-\;]{1,35})\/zjjsdmb$/).exec(config.url);
+    let tempValue: any = {};
+    if(matchArray && matchArray.length >1 && paramArray && paramArray.length >0){
+        paramArray.forEach((item: any, index: number) => {
+            Object.defineProperty(tempValue, item, {
+                enumerable: true,
+                value: matchArray[index + 1]
+            });
+        });
+    }
+    console.groupCollapsed("response数据  status: "+status+" data: ");
+    console.table({});
+    console.groupEnd();
+    console.groupEnd();
+    return [status, {}];
+});
+
+    
+// ZJJSDMB
+mock.onPost(new RegExp(/^\/pcmbdsqds\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/([a-zA-Z0-9\-\;]{1,35})\/zjjsdmb$/)).reply((config: any) => {
+    console.groupCollapsed("实体:pcmbdsqdmx 方法: ZJJSDMB");
+    console.table({url:config.url, method: config.method, data:config.data});
+    let status = MockAdapter.mockStatus(config);
+    if (status !== 200) {
+        return [status, null];
+    }
+    const paramArray:Array<any> = ['pcmbdsqdid','pcmbdsqdmxid'];
+    const matchArray:any = new RegExp(/^\/pcmbdsqds\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/([a-zA-Z0-9\-\;]{1,35})\/zjjsdmb$/).exec(config.url);
+    let tempValue: any = {};
+    if(matchArray && matchArray.length >1 && paramArray && paramArray.length >0){
+        paramArray.forEach((item: any, index: number) => {
+            Object.defineProperty(tempValue, item, {
+                enumerable: true,
+                value: matchArray[index + 1]
+            });
+        });
+    }
+    console.groupCollapsed("response数据  status: "+status+" data: ");
+    console.table({});
+    console.groupEnd();
+    console.groupEnd();
+    return [status, {}];
 });
         
 // ZJJSDMB
@@ -152,6 +264,60 @@ mock.onPost(new RegExp(/^\/pcmbdsqdmxes\/?([a-zA-Z0-9\-\;]{0,35})\/zjjsdmb$/)).r
     console.groupEnd();
     return [status, data];
 });
+
+    
+// CQBXCZ
+mock.onPost(new RegExp(/^\/pimpeople\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/([a-zA-Z0-9\-\;]{1,35})\/cqbxcz$/)).reply((config: any) => {
+    console.groupCollapsed("实体:pcmbdsqdmx 方法: CQBXCZ");
+    console.table({url:config.url, method: config.method, data:config.data});
+    let status = MockAdapter.mockStatus(config);
+    if (status !== 200) {
+        return [status, null];
+    }
+    const paramArray:Array<any> = ['pimpersonid','pcmbdsqdmxid'];
+    const matchArray:any = new RegExp(/^\/pimpeople\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/([a-zA-Z0-9\-\;]{1,35})\/cqbxcz$/).exec(config.url);
+    let tempValue: any = {};
+    if(matchArray && matchArray.length >1 && paramArray && paramArray.length >0){
+        paramArray.forEach((item: any, index: number) => {
+            Object.defineProperty(tempValue, item, {
+                enumerable: true,
+                value: matchArray[index + 1]
+            });
+        });
+    }
+    console.groupCollapsed("response数据  status: "+status+" data: ");
+    console.table({});
+    console.groupEnd();
+    console.groupEnd();
+    return [status, {}];
+});
+
+    
+// CQBXCZ
+mock.onPost(new RegExp(/^\/pcmbdsqds\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/([a-zA-Z0-9\-\;]{1,35})\/cqbxcz$/)).reply((config: any) => {
+    console.groupCollapsed("实体:pcmbdsqdmx 方法: CQBXCZ");
+    console.table({url:config.url, method: config.method, data:config.data});
+    let status = MockAdapter.mockStatus(config);
+    if (status !== 200) {
+        return [status, null];
+    }
+    const paramArray:Array<any> = ['pcmbdsqdid','pcmbdsqdmxid'];
+    const matchArray:any = new RegExp(/^\/pcmbdsqds\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/([a-zA-Z0-9\-\;]{1,35})\/cqbxcz$/).exec(config.url);
+    let tempValue: any = {};
+    if(matchArray && matchArray.length >1 && paramArray && paramArray.length >0){
+        paramArray.forEach((item: any, index: number) => {
+            Object.defineProperty(tempValue, item, {
+                enumerable: true,
+                value: matchArray[index + 1]
+            });
+        });
+    }
+    console.groupCollapsed("response数据  status: "+status+" data: ");
+    console.table({});
+    console.groupEnd();
+    console.groupEnd();
+    return [status, {}];
+});
         
 // CQBXCZ
 mock.onPost(new RegExp(/^\/pcmbdsqdmxes\/?([a-zA-Z0-9\-\;]{0,35})\/cqbxcz$/)).reply((config: any) => {
@@ -189,6 +355,60 @@ mock.onPost(new RegExp(/^\/pcmbdsqdmxes\/?([a-zA-Z0-9\-\;]{0,35})\/cqbxcz$/)).re
     console.groupEnd();
     console.groupEnd();
     return [status, data];
+});
+
+    
+// SXJSDMB
+mock.onPost(new RegExp(/^\/pimpeople\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/([a-zA-Z0-9\-\;]{1,35})\/sxjsdmb$/)).reply((config: any) => {
+    console.groupCollapsed("实体:pcmbdsqdmx 方法: SXJSDMB");
+    console.table({url:config.url, method: config.method, data:config.data});
+    let status = MockAdapter.mockStatus(config);
+    if (status !== 200) {
+        return [status, null];
+    }
+    const paramArray:Array<any> = ['pimpersonid','pcmbdsqdmxid'];
+    const matchArray:any = new RegExp(/^\/pimpeople\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/([a-zA-Z0-9\-\;]{1,35})\/sxjsdmb$/).exec(config.url);
+    let tempValue: any = {};
+    if(matchArray && matchArray.length >1 && paramArray && paramArray.length >0){
+        paramArray.forEach((item: any, index: number) => {
+            Object.defineProperty(tempValue, item, {
+                enumerable: true,
+                value: matchArray[index + 1]
+            });
+        });
+    }
+    console.groupCollapsed("response数据  status: "+status+" data: ");
+    console.table({});
+    console.groupEnd();
+    console.groupEnd();
+    return [status, {}];
+});
+
+    
+// SXJSDMB
+mock.onPost(new RegExp(/^\/pcmbdsqds\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/([a-zA-Z0-9\-\;]{1,35})\/sxjsdmb$/)).reply((config: any) => {
+    console.groupCollapsed("实体:pcmbdsqdmx 方法: SXJSDMB");
+    console.table({url:config.url, method: config.method, data:config.data});
+    let status = MockAdapter.mockStatus(config);
+    if (status !== 200) {
+        return [status, null];
+    }
+    const paramArray:Array<any> = ['pcmbdsqdid','pcmbdsqdmxid'];
+    const matchArray:any = new RegExp(/^\/pcmbdsqds\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/([a-zA-Z0-9\-\;]{1,35})\/sxjsdmb$/).exec(config.url);
+    let tempValue: any = {};
+    if(matchArray && matchArray.length >1 && paramArray && paramArray.length >0){
+        paramArray.forEach((item: any, index: number) => {
+            Object.defineProperty(tempValue, item, {
+                enumerable: true,
+                value: matchArray[index + 1]
+            });
+        });
+    }
+    console.groupCollapsed("response数据  status: "+status+" data: ");
+    console.table({});
+    console.groupEnd();
+    console.groupEnd();
+    return [status, {}];
 });
         
 // SXJSDMB
@@ -228,6 +448,60 @@ mock.onPost(new RegExp(/^\/pcmbdsqdmxes\/?([a-zA-Z0-9\-\;]{0,35})\/sxjsdmb$/)).r
     console.groupEnd();
     return [status, data];
 });
+
+    
+// PDZJ
+mock.onPost(new RegExp(/^\/pimpeople\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/([a-zA-Z0-9\-\;]{1,35})\/pdzj$/)).reply((config: any) => {
+    console.groupCollapsed("实体:pcmbdsqdmx 方法: PDZJ");
+    console.table({url:config.url, method: config.method, data:config.data});
+    let status = MockAdapter.mockStatus(config);
+    if (status !== 200) {
+        return [status, null];
+    }
+    const paramArray:Array<any> = ['pimpersonid','pcmbdsqdmxid'];
+    const matchArray:any = new RegExp(/^\/pimpeople\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/([a-zA-Z0-9\-\;]{1,35})\/pdzj$/).exec(config.url);
+    let tempValue: any = {};
+    if(matchArray && matchArray.length >1 && paramArray && paramArray.length >0){
+        paramArray.forEach((item: any, index: number) => {
+            Object.defineProperty(tempValue, item, {
+                enumerable: true,
+                value: matchArray[index + 1]
+            });
+        });
+    }
+    console.groupCollapsed("response数据  status: "+status+" data: ");
+    console.table({});
+    console.groupEnd();
+    console.groupEnd();
+    return [status, {}];
+});
+
+    
+// PDZJ
+mock.onPost(new RegExp(/^\/pcmbdsqds\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/([a-zA-Z0-9\-\;]{1,35})\/pdzj$/)).reply((config: any) => {
+    console.groupCollapsed("实体:pcmbdsqdmx 方法: PDZJ");
+    console.table({url:config.url, method: config.method, data:config.data});
+    let status = MockAdapter.mockStatus(config);
+    if (status !== 200) {
+        return [status, null];
+    }
+    const paramArray:Array<any> = ['pcmbdsqdid','pcmbdsqdmxid'];
+    const matchArray:any = new RegExp(/^\/pcmbdsqds\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/([a-zA-Z0-9\-\;]{1,35})\/pdzj$/).exec(config.url);
+    let tempValue: any = {};
+    if(matchArray && matchArray.length >1 && paramArray && paramArray.length >0){
+        paramArray.forEach((item: any, index: number) => {
+            Object.defineProperty(tempValue, item, {
+                enumerable: true,
+                value: matchArray[index + 1]
+            });
+        });
+    }
+    console.groupCollapsed("response数据  status: "+status+" data: ");
+    console.table({});
+    console.groupEnd();
+    console.groupEnd();
+    return [status, {}];
+});
         
 // PDZJ
 mock.onPost(new RegExp(/^\/pcmbdsqdmxes\/?([a-zA-Z0-9\-\;]{0,35})\/pdzj$/)).reply((config: any) => {
@@ -265,6 +539,60 @@ mock.onPost(new RegExp(/^\/pcmbdsqdmxes\/?([a-zA-Z0-9\-\;]{0,35})\/pdzj$/)).repl
     console.groupEnd();
     console.groupEnd();
     return [status, data];
+});
+
+    
+// SXJSDMB2
+mock.onPost(new RegExp(/^\/pimpeople\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/([a-zA-Z0-9\-\;]{1,35})\/sxjsdmb2$/)).reply((config: any) => {
+    console.groupCollapsed("实体:pcmbdsqdmx 方法: SXJSDMB2");
+    console.table({url:config.url, method: config.method, data:config.data});
+    let status = MockAdapter.mockStatus(config);
+    if (status !== 200) {
+        return [status, null];
+    }
+    const paramArray:Array<any> = ['pimpersonid','pcmbdsqdmxid'];
+    const matchArray:any = new RegExp(/^\/pimpeople\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/([a-zA-Z0-9\-\;]{1,35})\/sxjsdmb2$/).exec(config.url);
+    let tempValue: any = {};
+    if(matchArray && matchArray.length >1 && paramArray && paramArray.length >0){
+        paramArray.forEach((item: any, index: number) => {
+            Object.defineProperty(tempValue, item, {
+                enumerable: true,
+                value: matchArray[index + 1]
+            });
+        });
+    }
+    console.groupCollapsed("response数据  status: "+status+" data: ");
+    console.table({});
+    console.groupEnd();
+    console.groupEnd();
+    return [status, {}];
+});
+
+    
+// SXJSDMB2
+mock.onPost(new RegExp(/^\/pcmbdsqds\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/([a-zA-Z0-9\-\;]{1,35})\/sxjsdmb2$/)).reply((config: any) => {
+    console.groupCollapsed("实体:pcmbdsqdmx 方法: SXJSDMB2");
+    console.table({url:config.url, method: config.method, data:config.data});
+    let status = MockAdapter.mockStatus(config);
+    if (status !== 200) {
+        return [status, null];
+    }
+    const paramArray:Array<any> = ['pcmbdsqdid','pcmbdsqdmxid'];
+    const matchArray:any = new RegExp(/^\/pcmbdsqds\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/([a-zA-Z0-9\-\;]{1,35})\/sxjsdmb2$/).exec(config.url);
+    let tempValue: any = {};
+    if(matchArray && matchArray.length >1 && paramArray && paramArray.length >0){
+        paramArray.forEach((item: any, index: number) => {
+            Object.defineProperty(tempValue, item, {
+                enumerable: true,
+                value: matchArray[index + 1]
+            });
+        });
+    }
+    console.groupCollapsed("response数据  status: "+status+" data: ");
+    console.table({});
+    console.groupEnd();
+    console.groupEnd();
+    return [status, {}];
 });
         
 // SXJSDMB2
@@ -304,6 +632,60 @@ mock.onPost(new RegExp(/^\/pcmbdsqdmxes\/?([a-zA-Z0-9\-\;]{0,35})\/sxjsdmb2$/)).
     console.groupEnd();
     return [status, data];
 });
+
+    
+// Create
+mock.onPost(new RegExp(/^\/pimpeople\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/([a-zA-Z0-9\-\;]{1,35})$/)).reply((config: any) => {
+    console.groupCollapsed("实体:pcmbdsqdmx 方法: Create");
+    console.table({url:config.url, method: config.method, data:config.data});
+    let status = MockAdapter.mockStatus(config);
+    if (status !== 200) {
+        return [status, null];
+    }
+    const paramArray:Array<any> = ['pimpersonid','pcmbdsqdmxid'];
+    const matchArray:any = new RegExp(/^\/pimpeople\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/([a-zA-Z0-9\-\;]{1,35})$/).exec(config.url);
+    let tempValue: any = {};
+    if(matchArray && matchArray.length >1 && paramArray && paramArray.length >0){
+        paramArray.forEach((item: any, index: number) => {
+            Object.defineProperty(tempValue, item, {
+                enumerable: true,
+                value: matchArray[index + 1]
+            });
+        });
+    }
+    console.groupCollapsed("response数据  status: "+status+" data: ");
+    console.table({});
+    console.groupEnd();
+    console.groupEnd();
+    return [status, {}];
+});
+
+    
+// Create
+mock.onPost(new RegExp(/^\/pcmbdsqds\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/([a-zA-Z0-9\-\;]{1,35})$/)).reply((config: any) => {
+    console.groupCollapsed("实体:pcmbdsqdmx 方法: Create");
+    console.table({url:config.url, method: config.method, data:config.data});
+    let status = MockAdapter.mockStatus(config);
+    if (status !== 200) {
+        return [status, null];
+    }
+    const paramArray:Array<any> = ['pcmbdsqdid','pcmbdsqdmxid'];
+    const matchArray:any = new RegExp(/^\/pcmbdsqds\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/([a-zA-Z0-9\-\;]{1,35})$/).exec(config.url);
+    let tempValue: any = {};
+    if(matchArray && matchArray.length >1 && paramArray && paramArray.length >0){
+        paramArray.forEach((item: any, index: number) => {
+            Object.defineProperty(tempValue, item, {
+                enumerable: true,
+                value: matchArray[index + 1]
+            });
+        });
+    }
+    console.groupCollapsed("response数据  status: "+status+" data: ");
+    console.table({});
+    console.groupEnd();
+    console.groupEnd();
+    return [status, {}];
+});
         
 // Create
 mock.onPost(new RegExp(/^\/pcmbdsqdmxes\/?([a-zA-Z0-9\-\;]{0,35})$/)).reply((config: any) => {
@@ -329,6 +711,60 @@ mock.onPost(new RegExp(/^\/pcmbdsqdmxes\/?([a-zA-Z0-9\-\;]{0,35})$/)).reply((con
     console.groupEnd();
     console.groupEnd();
     return [status, mockDatas[0]];
+});
+
+    
+// ZZSQ
+mock.onPost(new RegExp(/^\/pimpeople\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/([a-zA-Z0-9\-\;]{1,35})\/zzsq$/)).reply((config: any) => {
+    console.groupCollapsed("实体:pcmbdsqdmx 方法: ZZSQ");
+    console.table({url:config.url, method: config.method, data:config.data});
+    let status = MockAdapter.mockStatus(config);
+    if (status !== 200) {
+        return [status, null];
+    }
+    const paramArray:Array<any> = ['pimpersonid','pcmbdsqdmxid'];
+    const matchArray:any = new RegExp(/^\/pimpeople\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/([a-zA-Z0-9\-\;]{1,35})\/zzsq$/).exec(config.url);
+    let tempValue: any = {};
+    if(matchArray && matchArray.length >1 && paramArray && paramArray.length >0){
+        paramArray.forEach((item: any, index: number) => {
+            Object.defineProperty(tempValue, item, {
+                enumerable: true,
+                value: matchArray[index + 1]
+            });
+        });
+    }
+    console.groupCollapsed("response数据  status: "+status+" data: ");
+    console.table({});
+    console.groupEnd();
+    console.groupEnd();
+    return [status, {}];
+});
+
+    
+// ZZSQ
+mock.onPost(new RegExp(/^\/pcmbdsqds\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/([a-zA-Z0-9\-\;]{1,35})\/zzsq$/)).reply((config: any) => {
+    console.groupCollapsed("实体:pcmbdsqdmx 方法: ZZSQ");
+    console.table({url:config.url, method: config.method, data:config.data});
+    let status = MockAdapter.mockStatus(config);
+    if (status !== 200) {
+        return [status, null];
+    }
+    const paramArray:Array<any> = ['pcmbdsqdid','pcmbdsqdmxid'];
+    const matchArray:any = new RegExp(/^\/pcmbdsqds\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/([a-zA-Z0-9\-\;]{1,35})\/zzsq$/).exec(config.url);
+    let tempValue: any = {};
+    if(matchArray && matchArray.length >1 && paramArray && paramArray.length >0){
+        paramArray.forEach((item: any, index: number) => {
+            Object.defineProperty(tempValue, item, {
+                enumerable: true,
+                value: matchArray[index + 1]
+            });
+        });
+    }
+    console.groupCollapsed("response数据  status: "+status+" data: ");
+    console.table({});
+    console.groupEnd();
+    console.groupEnd();
+    return [status, {}];
 });
         
 // ZZSQ
@@ -368,6 +804,60 @@ mock.onPost(new RegExp(/^\/pcmbdsqdmxes\/?([a-zA-Z0-9\-\;]{0,35})\/zzsq$/)).repl
     console.groupEnd();
     return [status, data];
 });
+
+    
+// SXDMB
+mock.onPost(new RegExp(/^\/pimpeople\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/([a-zA-Z0-9\-\;]{1,35})\/sxdmb$/)).reply((config: any) => {
+    console.groupCollapsed("实体:pcmbdsqdmx 方法: SXDMB");
+    console.table({url:config.url, method: config.method, data:config.data});
+    let status = MockAdapter.mockStatus(config);
+    if (status !== 200) {
+        return [status, null];
+    }
+    const paramArray:Array<any> = ['pimpersonid','pcmbdsqdmxid'];
+    const matchArray:any = new RegExp(/^\/pimpeople\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/([a-zA-Z0-9\-\;]{1,35})\/sxdmb$/).exec(config.url);
+    let tempValue: any = {};
+    if(matchArray && matchArray.length >1 && paramArray && paramArray.length >0){
+        paramArray.forEach((item: any, index: number) => {
+            Object.defineProperty(tempValue, item, {
+                enumerable: true,
+                value: matchArray[index + 1]
+            });
+        });
+    }
+    console.groupCollapsed("response数据  status: "+status+" data: ");
+    console.table({});
+    console.groupEnd();
+    console.groupEnd();
+    return [status, {}];
+});
+
+    
+// SXDMB
+mock.onPost(new RegExp(/^\/pcmbdsqds\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/([a-zA-Z0-9\-\;]{1,35})\/sxdmb$/)).reply((config: any) => {
+    console.groupCollapsed("实体:pcmbdsqdmx 方法: SXDMB");
+    console.table({url:config.url, method: config.method, data:config.data});
+    let status = MockAdapter.mockStatus(config);
+    if (status !== 200) {
+        return [status, null];
+    }
+    const paramArray:Array<any> = ['pcmbdsqdid','pcmbdsqdmxid'];
+    const matchArray:any = new RegExp(/^\/pcmbdsqds\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/([a-zA-Z0-9\-\;]{1,35})\/sxdmb$/).exec(config.url);
+    let tempValue: any = {};
+    if(matchArray && matchArray.length >1 && paramArray && paramArray.length >0){
+        paramArray.forEach((item: any, index: number) => {
+            Object.defineProperty(tempValue, item, {
+                enumerable: true,
+                value: matchArray[index + 1]
+            });
+        });
+    }
+    console.groupCollapsed("response数据  status: "+status+" data: ");
+    console.table({});
+    console.groupEnd();
+    console.groupEnd();
+    return [status, {}];
+});
         
 // SXDMB
 mock.onPost(new RegExp(/^\/pcmbdsqdmxes\/?([a-zA-Z0-9\-\;]{0,35})\/sxdmb$/)).reply((config: any) => {
@@ -405,6 +895,60 @@ mock.onPost(new RegExp(/^\/pcmbdsqdmxes\/?([a-zA-Z0-9\-\;]{0,35})\/sxdmb$/)).rep
     console.groupEnd();
     console.groupEnd();
     return [status, data];
+});
+
+    
+// DGCZ
+mock.onPost(new RegExp(/^\/pimpeople\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/([a-zA-Z0-9\-\;]{1,35})\/dgcz$/)).reply((config: any) => {
+    console.groupCollapsed("实体:pcmbdsqdmx 方法: DGCZ");
+    console.table({url:config.url, method: config.method, data:config.data});
+    let status = MockAdapter.mockStatus(config);
+    if (status !== 200) {
+        return [status, null];
+    }
+    const paramArray:Array<any> = ['pimpersonid','pcmbdsqdmxid'];
+    const matchArray:any = new RegExp(/^\/pimpeople\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/([a-zA-Z0-9\-\;]{1,35})\/dgcz$/).exec(config.url);
+    let tempValue: any = {};
+    if(matchArray && matchArray.length >1 && paramArray && paramArray.length >0){
+        paramArray.forEach((item: any, index: number) => {
+            Object.defineProperty(tempValue, item, {
+                enumerable: true,
+                value: matchArray[index + 1]
+            });
+        });
+    }
+    console.groupCollapsed("response数据  status: "+status+" data: ");
+    console.table({});
+    console.groupEnd();
+    console.groupEnd();
+    return [status, {}];
+});
+
+    
+// DGCZ
+mock.onPost(new RegExp(/^\/pcmbdsqds\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/([a-zA-Z0-9\-\;]{1,35})\/dgcz$/)).reply((config: any) => {
+    console.groupCollapsed("实体:pcmbdsqdmx 方法: DGCZ");
+    console.table({url:config.url, method: config.method, data:config.data});
+    let status = MockAdapter.mockStatus(config);
+    if (status !== 200) {
+        return [status, null];
+    }
+    const paramArray:Array<any> = ['pcmbdsqdid','pcmbdsqdmxid'];
+    const matchArray:any = new RegExp(/^\/pcmbdsqds\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/([a-zA-Z0-9\-\;]{1,35})\/dgcz$/).exec(config.url);
+    let tempValue: any = {};
+    if(matchArray && matchArray.length >1 && paramArray && paramArray.length >0){
+        paramArray.forEach((item: any, index: number) => {
+            Object.defineProperty(tempValue, item, {
+                enumerable: true,
+                value: matchArray[index + 1]
+            });
+        });
+    }
+    console.groupCollapsed("response数据  status: "+status+" data: ");
+    console.table({});
+    console.groupEnd();
+    console.groupEnd();
+    return [status, {}];
 });
         
 // DGCZ
@@ -444,6 +988,60 @@ mock.onPost(new RegExp(/^\/pcmbdsqdmxes\/?([a-zA-Z0-9\-\;]{0,35})\/dgcz$/)).repl
     console.groupEnd();
     return [status, data];
 });
+
+    
+// SetPersonInfo
+mock.onPost(new RegExp(/^\/pimpeople\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/([a-zA-Z0-9\-\;]{1,35})\/setpersoninfo$/)).reply((config: any) => {
+    console.groupCollapsed("实体:pcmbdsqdmx 方法: SetPersonInfo");
+    console.table({url:config.url, method: config.method, data:config.data});
+    let status = MockAdapter.mockStatus(config);
+    if (status !== 200) {
+        return [status, null];
+    }
+    const paramArray:Array<any> = ['pimpersonid','pcmbdsqdmxid'];
+    const matchArray:any = new RegExp(/^\/pimpeople\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/([a-zA-Z0-9\-\;]{1,35})\/setpersoninfo$/).exec(config.url);
+    let tempValue: any = {};
+    if(matchArray && matchArray.length >1 && paramArray && paramArray.length >0){
+        paramArray.forEach((item: any, index: number) => {
+            Object.defineProperty(tempValue, item, {
+                enumerable: true,
+                value: matchArray[index + 1]
+            });
+        });
+    }
+    console.groupCollapsed("response数据  status: "+status+" data: ");
+    console.table({});
+    console.groupEnd();
+    console.groupEnd();
+    return [status, {}];
+});
+
+    
+// SetPersonInfo
+mock.onPost(new RegExp(/^\/pcmbdsqds\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/([a-zA-Z0-9\-\;]{1,35})\/setpersoninfo$/)).reply((config: any) => {
+    console.groupCollapsed("实体:pcmbdsqdmx 方法: SetPersonInfo");
+    console.table({url:config.url, method: config.method, data:config.data});
+    let status = MockAdapter.mockStatus(config);
+    if (status !== 200) {
+        return [status, null];
+    }
+    const paramArray:Array<any> = ['pcmbdsqdid','pcmbdsqdmxid'];
+    const matchArray:any = new RegExp(/^\/pcmbdsqds\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/([a-zA-Z0-9\-\;]{1,35})\/setpersoninfo$/).exec(config.url);
+    let tempValue: any = {};
+    if(matchArray && matchArray.length >1 && paramArray && paramArray.length >0){
+        paramArray.forEach((item: any, index: number) => {
+            Object.defineProperty(tempValue, item, {
+                enumerable: true,
+                value: matchArray[index + 1]
+            });
+        });
+    }
+    console.groupCollapsed("response数据  status: "+status+" data: ");
+    console.table({});
+    console.groupEnd();
+    console.groupEnd();
+    return [status, {}];
+});
         
 // SetPersonInfo
 mock.onPost(new RegExp(/^\/pcmbdsqdmxes\/?([a-zA-Z0-9\-\;]{0,35})\/setpersoninfo$/)).reply((config: any) => {
@@ -481,6 +1079,60 @@ mock.onPost(new RegExp(/^\/pcmbdsqdmxes\/?([a-zA-Z0-9\-\;]{0,35})\/setpersoninfo
     console.groupEnd();
     console.groupEnd();
     return [status, data];
+});
+
+    
+// GZCZ
+mock.onPost(new RegExp(/^\/pimpeople\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/([a-zA-Z0-9\-\;]{1,35})\/gzcz$/)).reply((config: any) => {
+    console.groupCollapsed("实体:pcmbdsqdmx 方法: GZCZ");
+    console.table({url:config.url, method: config.method, data:config.data});
+    let status = MockAdapter.mockStatus(config);
+    if (status !== 200) {
+        return [status, null];
+    }
+    const paramArray:Array<any> = ['pimpersonid','pcmbdsqdmxid'];
+    const matchArray:any = new RegExp(/^\/pimpeople\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/([a-zA-Z0-9\-\;]{1,35})\/gzcz$/).exec(config.url);
+    let tempValue: any = {};
+    if(matchArray && matchArray.length >1 && paramArray && paramArray.length >0){
+        paramArray.forEach((item: any, index: number) => {
+            Object.defineProperty(tempValue, item, {
+                enumerable: true,
+                value: matchArray[index + 1]
+            });
+        });
+    }
+    console.groupCollapsed("response数据  status: "+status+" data: ");
+    console.table({});
+    console.groupEnd();
+    console.groupEnd();
+    return [status, {}];
+});
+
+    
+// GZCZ
+mock.onPost(new RegExp(/^\/pcmbdsqds\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/([a-zA-Z0-9\-\;]{1,35})\/gzcz$/)).reply((config: any) => {
+    console.groupCollapsed("实体:pcmbdsqdmx 方法: GZCZ");
+    console.table({url:config.url, method: config.method, data:config.data});
+    let status = MockAdapter.mockStatus(config);
+    if (status !== 200) {
+        return [status, null];
+    }
+    const paramArray:Array<any> = ['pcmbdsqdid','pcmbdsqdmxid'];
+    const matchArray:any = new RegExp(/^\/pcmbdsqds\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/([a-zA-Z0-9\-\;]{1,35})\/gzcz$/).exec(config.url);
+    let tempValue: any = {};
+    if(matchArray && matchArray.length >1 && paramArray && paramArray.length >0){
+        paramArray.forEach((item: any, index: number) => {
+            Object.defineProperty(tempValue, item, {
+                enumerable: true,
+                value: matchArray[index + 1]
+            });
+        });
+    }
+    console.groupCollapsed("response数据  status: "+status+" data: ");
+    console.table({});
+    console.groupEnd();
+    console.groupEnd();
+    return [status, {}];
 });
         
 // GZCZ
@@ -520,6 +1172,60 @@ mock.onPost(new RegExp(/^\/pcmbdsqdmxes\/?([a-zA-Z0-9\-\;]{0,35})\/gzcz$/)).repl
     console.groupEnd();
     return [status, data];
 });
+
+    
+// JPCZ
+mock.onPost(new RegExp(/^\/pimpeople\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/([a-zA-Z0-9\-\;]{1,35})\/jpcz$/)).reply((config: any) => {
+    console.groupCollapsed("实体:pcmbdsqdmx 方法: JPCZ");
+    console.table({url:config.url, method: config.method, data:config.data});
+    let status = MockAdapter.mockStatus(config);
+    if (status !== 200) {
+        return [status, null];
+    }
+    const paramArray:Array<any> = ['pimpersonid','pcmbdsqdmxid'];
+    const matchArray:any = new RegExp(/^\/pimpeople\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/([a-zA-Z0-9\-\;]{1,35})\/jpcz$/).exec(config.url);
+    let tempValue: any = {};
+    if(matchArray && matchArray.length >1 && paramArray && paramArray.length >0){
+        paramArray.forEach((item: any, index: number) => {
+            Object.defineProperty(tempValue, item, {
+                enumerable: true,
+                value: matchArray[index + 1]
+            });
+        });
+    }
+    console.groupCollapsed("response数据  status: "+status+" data: ");
+    console.table({});
+    console.groupEnd();
+    console.groupEnd();
+    return [status, {}];
+});
+
+    
+// JPCZ
+mock.onPost(new RegExp(/^\/pcmbdsqds\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/([a-zA-Z0-9\-\;]{1,35})\/jpcz$/)).reply((config: any) => {
+    console.groupCollapsed("实体:pcmbdsqdmx 方法: JPCZ");
+    console.table({url:config.url, method: config.method, data:config.data});
+    let status = MockAdapter.mockStatus(config);
+    if (status !== 200) {
+        return [status, null];
+    }
+    const paramArray:Array<any> = ['pcmbdsqdid','pcmbdsqdmxid'];
+    const matchArray:any = new RegExp(/^\/pcmbdsqds\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/([a-zA-Z0-9\-\;]{1,35})\/jpcz$/).exec(config.url);
+    let tempValue: any = {};
+    if(matchArray && matchArray.length >1 && paramArray && paramArray.length >0){
+        paramArray.forEach((item: any, index: number) => {
+            Object.defineProperty(tempValue, item, {
+                enumerable: true,
+                value: matchArray[index + 1]
+            });
+        });
+    }
+    console.groupCollapsed("response数据  status: "+status+" data: ");
+    console.table({});
+    console.groupEnd();
+    console.groupEnd();
+    return [status, {}];
+});
         
 // JPCZ
 mock.onPost(new RegExp(/^\/pcmbdsqdmxes\/?([a-zA-Z0-9\-\;]{0,35})\/jpcz$/)).reply((config: any) => {
@@ -557,6 +1263,60 @@ mock.onPost(new RegExp(/^\/pcmbdsqdmxes\/?([a-zA-Z0-9\-\;]{0,35})\/jpcz$/)).repl
     console.groupEnd();
     console.groupEnd();
     return [status, data];
+});
+
+    
+// Save
+mock.onPost(new RegExp(/^\/pimpeople\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/([a-zA-Z0-9\-\;]{1,35})\/save$/)).reply((config: any) => {
+    console.groupCollapsed("实体:pcmbdsqdmx 方法: Save");
+    console.table({url:config.url, method: config.method, data:config.data});
+    let status = MockAdapter.mockStatus(config);
+    if (status !== 200) {
+        return [status, null];
+    }
+    const paramArray:Array<any> = ['pimpersonid','pcmbdsqdmxid'];
+    const matchArray:any = new RegExp(/^\/pimpeople\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/([a-zA-Z0-9\-\;]{1,35})\/save$/).exec(config.url);
+    let tempValue: any = {};
+    if(matchArray && matchArray.length >1 && paramArray && paramArray.length >0){
+        paramArray.forEach((item: any, index: number) => {
+            Object.defineProperty(tempValue, item, {
+                enumerable: true,
+                value: matchArray[index + 1]
+            });
+        });
+    }
+    console.groupCollapsed("response数据  status: "+status+" data: ");
+    console.table({});
+    console.groupEnd();
+    console.groupEnd();
+    return [status, {}];
+});
+
+    
+// Save
+mock.onPost(new RegExp(/^\/pcmbdsqds\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/([a-zA-Z0-9\-\;]{1,35})\/save$/)).reply((config: any) => {
+    console.groupCollapsed("实体:pcmbdsqdmx 方法: Save");
+    console.table({url:config.url, method: config.method, data:config.data});
+    let status = MockAdapter.mockStatus(config);
+    if (status !== 200) {
+        return [status, null];
+    }
+    const paramArray:Array<any> = ['pcmbdsqdid','pcmbdsqdmxid'];
+    const matchArray:any = new RegExp(/^\/pcmbdsqds\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/([a-zA-Z0-9\-\;]{1,35})\/save$/).exec(config.url);
+    let tempValue: any = {};
+    if(matchArray && matchArray.length >1 && paramArray && paramArray.length >0){
+        paramArray.forEach((item: any, index: number) => {
+            Object.defineProperty(tempValue, item, {
+                enumerable: true,
+                value: matchArray[index + 1]
+            });
+        });
+    }
+    console.groupCollapsed("response数据  status: "+status+" data: ");
+    console.table({});
+    console.groupEnd();
+    console.groupEnd();
+    return [status, {}];
 });
         
 // Save
@@ -596,6 +1356,60 @@ mock.onPost(new RegExp(/^\/pcmbdsqdmxes\/?([a-zA-Z0-9\-\;]{0,35})\/save$/)).repl
     console.groupEnd();
     return [status, data];
 });
+
+    
+// LZCZ
+mock.onPost(new RegExp(/^\/pimpeople\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/([a-zA-Z0-9\-\;]{1,35})\/lzcz$/)).reply((config: any) => {
+    console.groupCollapsed("实体:pcmbdsqdmx 方法: LZCZ");
+    console.table({url:config.url, method: config.method, data:config.data});
+    let status = MockAdapter.mockStatus(config);
+    if (status !== 200) {
+        return [status, null];
+    }
+    const paramArray:Array<any> = ['pimpersonid','pcmbdsqdmxid'];
+    const matchArray:any = new RegExp(/^\/pimpeople\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/([a-zA-Z0-9\-\;]{1,35})\/lzcz$/).exec(config.url);
+    let tempValue: any = {};
+    if(matchArray && matchArray.length >1 && paramArray && paramArray.length >0){
+        paramArray.forEach((item: any, index: number) => {
+            Object.defineProperty(tempValue, item, {
+                enumerable: true,
+                value: matchArray[index + 1]
+            });
+        });
+    }
+    console.groupCollapsed("response数据  status: "+status+" data: ");
+    console.table({});
+    console.groupEnd();
+    console.groupEnd();
+    return [status, {}];
+});
+
+    
+// LZCZ
+mock.onPost(new RegExp(/^\/pcmbdsqds\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/([a-zA-Z0-9\-\;]{1,35})\/lzcz$/)).reply((config: any) => {
+    console.groupCollapsed("实体:pcmbdsqdmx 方法: LZCZ");
+    console.table({url:config.url, method: config.method, data:config.data});
+    let status = MockAdapter.mockStatus(config);
+    if (status !== 200) {
+        return [status, null];
+    }
+    const paramArray:Array<any> = ['pcmbdsqdid','pcmbdsqdmxid'];
+    const matchArray:any = new RegExp(/^\/pcmbdsqds\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/([a-zA-Z0-9\-\;]{1,35})\/lzcz$/).exec(config.url);
+    let tempValue: any = {};
+    if(matchArray && matchArray.length >1 && paramArray && paramArray.length >0){
+        paramArray.forEach((item: any, index: number) => {
+            Object.defineProperty(tempValue, item, {
+                enumerable: true,
+                value: matchArray[index + 1]
+            });
+        });
+    }
+    console.groupCollapsed("response数据  status: "+status+" data: ");
+    console.table({});
+    console.groupEnd();
+    console.groupEnd();
+    return [status, {}];
+});
         
 // LZCZ
 mock.onPost(new RegExp(/^\/pcmbdsqdmxes\/?([a-zA-Z0-9\-\;]{0,35})\/lzcz$/)).reply((config: any) => {
@@ -634,6 +1448,60 @@ mock.onPost(new RegExp(/^\/pcmbdsqdmxes\/?([a-zA-Z0-9\-\;]{0,35})\/lzcz$/)).repl
     console.groupEnd();
     return [status, data];
 });
+
+    
+// NTCZ
+mock.onPost(new RegExp(/^\/pimpeople\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/([a-zA-Z0-9\-\;]{1,35})\/ntcz$/)).reply((config: any) => {
+    console.groupCollapsed("实体:pcmbdsqdmx 方法: NTCZ");
+    console.table({url:config.url, method: config.method, data:config.data});
+    let status = MockAdapter.mockStatus(config);
+    if (status !== 200) {
+        return [status, null];
+    }
+    const paramArray:Array<any> = ['pimpersonid','pcmbdsqdmxid'];
+    const matchArray:any = new RegExp(/^\/pimpeople\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/([a-zA-Z0-9\-\;]{1,35})\/ntcz$/).exec(config.url);
+    let tempValue: any = {};
+    if(matchArray && matchArray.length >1 && paramArray && paramArray.length >0){
+        paramArray.forEach((item: any, index: number) => {
+            Object.defineProperty(tempValue, item, {
+                enumerable: true,
+                value: matchArray[index + 1]
+            });
+        });
+    }
+    console.groupCollapsed("response数据  status: "+status+" data: ");
+    console.table({});
+    console.groupEnd();
+    console.groupEnd();
+    return [status, {}];
+});
+
+    
+// NTCZ
+mock.onPost(new RegExp(/^\/pcmbdsqds\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/([a-zA-Z0-9\-\;]{1,35})\/ntcz$/)).reply((config: any) => {
+    console.groupCollapsed("实体:pcmbdsqdmx 方法: NTCZ");
+    console.table({url:config.url, method: config.method, data:config.data});
+    let status = MockAdapter.mockStatus(config);
+    if (status !== 200) {
+        return [status, null];
+    }
+    const paramArray:Array<any> = ['pcmbdsqdid','pcmbdsqdmxid'];
+    const matchArray:any = new RegExp(/^\/pcmbdsqds\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/([a-zA-Z0-9\-\;]{1,35})\/ntcz$/).exec(config.url);
+    let tempValue: any = {};
+    if(matchArray && matchArray.length >1 && paramArray && paramArray.length >0){
+        paramArray.forEach((item: any, index: number) => {
+            Object.defineProperty(tempValue, item, {
+                enumerable: true,
+                value: matchArray[index + 1]
+            });
+        });
+    }
+    console.groupCollapsed("response数据  status: "+status+" data: ");
+    console.table({});
+    console.groupEnd();
+    console.groupEnd();
+    return [status, {}];
+});
         
 // NTCZ
 mock.onPost(new RegExp(/^\/pcmbdsqdmxes\/?([a-zA-Z0-9\-\;]{0,35})\/ntcz$/)).reply((config: any) => {
@@ -671,6 +1539,60 @@ mock.onPost(new RegExp(/^\/pcmbdsqdmxes\/?([a-zA-Z0-9\-\;]{0,35})\/ntcz$/)).repl
     console.groupEnd();
     console.groupEnd();
     return [status, data];
+});
+
+    
+// Update
+mock.onPut(new RegExp(/^\/pimpeople\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/([a-zA-Z0-9\-\;]{1,35})$/)).reply((config: any) => {
+    console.groupCollapsed("实体:pcmbdsqdmx 方法: Update");
+    console.table({url:config.url, method: config.method, data:config.data});
+    let status = MockAdapter.mockStatus(config);
+    if (status !== 200) {
+        return [status, null];
+    }
+    const paramArray:Array<any> = ['pimpersonid','pcmbdsqdmxid'];
+    const matchArray:any = new RegExp(/^\/pimpeople\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/([a-zA-Z0-9\-\;]{1,35})$/).exec(config.url);
+    let tempValue: any = {};
+    if(matchArray && matchArray.length >1 && paramArray && paramArray.length >0){
+        paramArray.forEach((item: any, index: number) => {
+            Object.defineProperty(tempValue, item, {
+                enumerable: true,
+                value: matchArray[index + 1]
+            });
+        });
+    }
+    console.groupCollapsed("response数据  status: "+status+" data: ");
+    console.table({});
+    console.groupEnd();
+    console.groupEnd();
+    return [status, {}];
+});
+
+    
+// Update
+mock.onPut(new RegExp(/^\/pcmbdsqds\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/([a-zA-Z0-9\-\;]{1,35})$/)).reply((config: any) => {
+    console.groupCollapsed("实体:pcmbdsqdmx 方法: Update");
+    console.table({url:config.url, method: config.method, data:config.data});
+    let status = MockAdapter.mockStatus(config);
+    if (status !== 200) {
+        return [status, null];
+    }
+    const paramArray:Array<any> = ['pcmbdsqdid','pcmbdsqdmxid'];
+    const matchArray:any = new RegExp(/^\/pcmbdsqds\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/([a-zA-Z0-9\-\;]{1,35})$/).exec(config.url);
+    let tempValue: any = {};
+    if(matchArray && matchArray.length >1 && paramArray && paramArray.length >0){
+        paramArray.forEach((item: any, index: number) => {
+            Object.defineProperty(tempValue, item, {
+                enumerable: true,
+                value: matchArray[index + 1]
+            });
+        });
+    }
+    console.groupCollapsed("response数据  status: "+status+" data: ");
+    console.table({});
+    console.groupEnd();
+    console.groupEnd();
+    return [status, {}];
 });
         
 // Update
@@ -711,6 +1633,44 @@ mock.onPut(new RegExp(/^\/pcmbdsqdmxes\/?([a-zA-Z0-9\-\;]{0,35})$/)).reply((conf
     return [status, data];
 });
 
+
+
+
+
+
+// GetDraft
+mock.onGet(new RegExp(/^\/pimpeople\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/getdraft$/)).reply((config: any) => {
+    console.groupCollapsed("实体:pcmbdsqdmx 方法: GetDraft");
+    console.table({url:config.url, method: config.method, data:config.data});
+    // GetDraft
+    let status = MockAdapter.mockStatus(config);
+    if (status !== 200) {
+        return [status, null];
+    }
+    console.groupCollapsed("response数据  status: "+status+" data: ");
+    console.table({});
+    console.groupEnd();
+    console.groupEnd();
+    return [status, {}];
+});
+
+
+// GetDraft
+mock.onGet(new RegExp(/^\/pcmbdsqds\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/getdraft$/)).reply((config: any) => {
+    console.groupCollapsed("实体:pcmbdsqdmx 方法: GetDraft");
+    console.table({url:config.url, method: config.method, data:config.data});
+    // GetDraft
+    let status = MockAdapter.mockStatus(config);
+    if (status !== 200) {
+        return [status, null];
+    }
+    console.groupCollapsed("response数据  status: "+status+" data: ");
+    console.table({});
+    console.groupEnd();
+    console.groupEnd();
+    return [status, {}];
+});
+
 // GetDraft
 mock.onGet(new RegExp(/^\/pcmbdsqdmxes\/getdraft$/)).reply((config: any) => {
     console.groupCollapsed("实体:pcmbdsqdmx 方法: GetDraft");
@@ -719,6 +1679,60 @@ mock.onGet(new RegExp(/^\/pcmbdsqdmxes\/getdraft$/)).reply((config: any) => {
     let status = MockAdapter.mockStatus(config);
     if (status !== 200) {
         return [status, null];
+    }
+    console.groupCollapsed("response数据  status: "+status+" data: ");
+    console.table({});
+    console.groupEnd();
+    console.groupEnd();
+    return [status, {}];
+});
+
+    
+// SHBTG
+mock.onPost(new RegExp(/^\/pimpeople\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/([a-zA-Z0-9\-\;]{1,35})\/shbtg$/)).reply((config: any) => {
+    console.groupCollapsed("实体:pcmbdsqdmx 方法: SHBTG");
+    console.table({url:config.url, method: config.method, data:config.data});
+    let status = MockAdapter.mockStatus(config);
+    if (status !== 200) {
+        return [status, null];
+    }
+    const paramArray:Array<any> = ['pimpersonid','pcmbdsqdmxid'];
+    const matchArray:any = new RegExp(/^\/pimpeople\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/([a-zA-Z0-9\-\;]{1,35})\/shbtg$/).exec(config.url);
+    let tempValue: any = {};
+    if(matchArray && matchArray.length >1 && paramArray && paramArray.length >0){
+        paramArray.forEach((item: any, index: number) => {
+            Object.defineProperty(tempValue, item, {
+                enumerable: true,
+                value: matchArray[index + 1]
+            });
+        });
+    }
+    console.groupCollapsed("response数据  status: "+status+" data: ");
+    console.table({});
+    console.groupEnd();
+    console.groupEnd();
+    return [status, {}];
+});
+
+    
+// SHBTG
+mock.onPost(new RegExp(/^\/pcmbdsqds\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/([a-zA-Z0-9\-\;]{1,35})\/shbtg$/)).reply((config: any) => {
+    console.groupCollapsed("实体:pcmbdsqdmx 方法: SHBTG");
+    console.table({url:config.url, method: config.method, data:config.data});
+    let status = MockAdapter.mockStatus(config);
+    if (status !== 200) {
+        return [status, null];
+    }
+    const paramArray:Array<any> = ['pcmbdsqdid','pcmbdsqdmxid'];
+    const matchArray:any = new RegExp(/^\/pcmbdsqds\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/([a-zA-Z0-9\-\;]{1,35})\/shbtg$/).exec(config.url);
+    let tempValue: any = {};
+    if(matchArray && matchArray.length >1 && paramArray && paramArray.length >0){
+        paramArray.forEach((item: any, index: number) => {
+            Object.defineProperty(tempValue, item, {
+                enumerable: true,
+                value: matchArray[index + 1]
+            });
+        });
     }
     console.groupCollapsed("response数据  status: "+status+" data: ");
     console.table({});
@@ -764,6 +1778,60 @@ mock.onPost(new RegExp(/^\/pcmbdsqdmxes\/?([a-zA-Z0-9\-\;]{0,35})\/shbtg$/)).rep
     console.groupEnd();
     return [status, data];
 });
+
+    
+// ZJBDCZ
+mock.onPost(new RegExp(/^\/pimpeople\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/([a-zA-Z0-9\-\;]{1,35})\/zjbdcz$/)).reply((config: any) => {
+    console.groupCollapsed("实体:pcmbdsqdmx 方法: ZJBDCZ");
+    console.table({url:config.url, method: config.method, data:config.data});
+    let status = MockAdapter.mockStatus(config);
+    if (status !== 200) {
+        return [status, null];
+    }
+    const paramArray:Array<any> = ['pimpersonid','pcmbdsqdmxid'];
+    const matchArray:any = new RegExp(/^\/pimpeople\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/([a-zA-Z0-9\-\;]{1,35})\/zjbdcz$/).exec(config.url);
+    let tempValue: any = {};
+    if(matchArray && matchArray.length >1 && paramArray && paramArray.length >0){
+        paramArray.forEach((item: any, index: number) => {
+            Object.defineProperty(tempValue, item, {
+                enumerable: true,
+                value: matchArray[index + 1]
+            });
+        });
+    }
+    console.groupCollapsed("response数据  status: "+status+" data: ");
+    console.table({});
+    console.groupEnd();
+    console.groupEnd();
+    return [status, {}];
+});
+
+    
+// ZJBDCZ
+mock.onPost(new RegExp(/^\/pcmbdsqds\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/([a-zA-Z0-9\-\;]{1,35})\/zjbdcz$/)).reply((config: any) => {
+    console.groupCollapsed("实体:pcmbdsqdmx 方法: ZJBDCZ");
+    console.table({url:config.url, method: config.method, data:config.data});
+    let status = MockAdapter.mockStatus(config);
+    if (status !== 200) {
+        return [status, null];
+    }
+    const paramArray:Array<any> = ['pcmbdsqdid','pcmbdsqdmxid'];
+    const matchArray:any = new RegExp(/^\/pcmbdsqds\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/([a-zA-Z0-9\-\;]{1,35})\/zjbdcz$/).exec(config.url);
+    let tempValue: any = {};
+    if(matchArray && matchArray.length >1 && paramArray && paramArray.length >0){
+        paramArray.forEach((item: any, index: number) => {
+            Object.defineProperty(tempValue, item, {
+                enumerable: true,
+                value: matchArray[index + 1]
+            });
+        });
+    }
+    console.groupCollapsed("response数据  status: "+status+" data: ");
+    console.table({});
+    console.groupEnd();
+    console.groupEnd();
+    return [status, {}];
+});
         
 // ZJBDCZ
 mock.onPost(new RegExp(/^\/pcmbdsqdmxes\/?([a-zA-Z0-9\-\;]{0,35})\/zjbdcz$/)).reply((config: any) => {
@@ -801,6 +1869,60 @@ mock.onPost(new RegExp(/^\/pcmbdsqdmxes\/?([a-zA-Z0-9\-\;]{0,35})\/zjbdcz$/)).re
     console.groupEnd();
     console.groupEnd();
     return [status, data];
+});
+
+    
+// CheckKey
+mock.onPost(new RegExp(/^\/pimpeople\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/([a-zA-Z0-9\-\;]{1,35})\/checkkey$/)).reply((config: any) => {
+    console.groupCollapsed("实体:pcmbdsqdmx 方法: CheckKey");
+    console.table({url:config.url, method: config.method, data:config.data});
+    let status = MockAdapter.mockStatus(config);
+    if (status !== 200) {
+        return [status, null];
+    }
+    const paramArray:Array<any> = ['pimpersonid','pcmbdsqdmxid'];
+    const matchArray:any = new RegExp(/^\/pimpeople\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/([a-zA-Z0-9\-\;]{1,35})\/checkkey$/).exec(config.url);
+    let tempValue: any = {};
+    if(matchArray && matchArray.length >1 && paramArray && paramArray.length >0){
+        paramArray.forEach((item: any, index: number) => {
+            Object.defineProperty(tempValue, item, {
+                enumerable: true,
+                value: matchArray[index + 1]
+            });
+        });
+    }
+    console.groupCollapsed("response数据  status: "+status+" data: ");
+    console.table({});
+    console.groupEnd();
+    console.groupEnd();
+    return [status, {}];
+});
+
+    
+// CheckKey
+mock.onPost(new RegExp(/^\/pcmbdsqds\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/([a-zA-Z0-9\-\;]{1,35})\/checkkey$/)).reply((config: any) => {
+    console.groupCollapsed("实体:pcmbdsqdmx 方法: CheckKey");
+    console.table({url:config.url, method: config.method, data:config.data});
+    let status = MockAdapter.mockStatus(config);
+    if (status !== 200) {
+        return [status, null];
+    }
+    const paramArray:Array<any> = ['pcmbdsqdid','pcmbdsqdmxid'];
+    const matchArray:any = new RegExp(/^\/pcmbdsqds\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/([a-zA-Z0-9\-\;]{1,35})\/checkkey$/).exec(config.url);
+    let tempValue: any = {};
+    if(matchArray && matchArray.length >1 && paramArray && paramArray.length >0){
+        paramArray.forEach((item: any, index: number) => {
+            Object.defineProperty(tempValue, item, {
+                enumerable: true,
+                value: matchArray[index + 1]
+            });
+        });
+    }
+    console.groupCollapsed("response数据  status: "+status+" data: ");
+    console.table({});
+    console.groupEnd();
+    console.groupEnd();
+    return [status, {}];
 });
         
 // CheckKey
@@ -840,6 +1962,60 @@ mock.onPost(new RegExp(/^\/pcmbdsqdmxes\/?([a-zA-Z0-9\-\;]{0,35})\/checkkey$/)).
     console.groupEnd();
     return [status, data];
 });
+
+    
+// TXCZ
+mock.onPost(new RegExp(/^\/pimpeople\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/([a-zA-Z0-9\-\;]{1,35})\/txcz$/)).reply((config: any) => {
+    console.groupCollapsed("实体:pcmbdsqdmx 方法: TXCZ");
+    console.table({url:config.url, method: config.method, data:config.data});
+    let status = MockAdapter.mockStatus(config);
+    if (status !== 200) {
+        return [status, null];
+    }
+    const paramArray:Array<any> = ['pimpersonid','pcmbdsqdmxid'];
+    const matchArray:any = new RegExp(/^\/pimpeople\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/([a-zA-Z0-9\-\;]{1,35})\/txcz$/).exec(config.url);
+    let tempValue: any = {};
+    if(matchArray && matchArray.length >1 && paramArray && paramArray.length >0){
+        paramArray.forEach((item: any, index: number) => {
+            Object.defineProperty(tempValue, item, {
+                enumerable: true,
+                value: matchArray[index + 1]
+            });
+        });
+    }
+    console.groupCollapsed("response数据  status: "+status+" data: ");
+    console.table({});
+    console.groupEnd();
+    console.groupEnd();
+    return [status, {}];
+});
+
+    
+// TXCZ
+mock.onPost(new RegExp(/^\/pcmbdsqds\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/([a-zA-Z0-9\-\;]{1,35})\/txcz$/)).reply((config: any) => {
+    console.groupCollapsed("实体:pcmbdsqdmx 方法: TXCZ");
+    console.table({url:config.url, method: config.method, data:config.data});
+    let status = MockAdapter.mockStatus(config);
+    if (status !== 200) {
+        return [status, null];
+    }
+    const paramArray:Array<any> = ['pcmbdsqdid','pcmbdsqdmxid'];
+    const matchArray:any = new RegExp(/^\/pcmbdsqds\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/([a-zA-Z0-9\-\;]{1,35})\/txcz$/).exec(config.url);
+    let tempValue: any = {};
+    if(matchArray && matchArray.length >1 && paramArray && paramArray.length >0){
+        paramArray.forEach((item: any, index: number) => {
+            Object.defineProperty(tempValue, item, {
+                enumerable: true,
+                value: matchArray[index + 1]
+            });
+        });
+    }
+    console.groupCollapsed("response数据  status: "+status+" data: ");
+    console.table({});
+    console.groupEnd();
+    console.groupEnd();
+    return [status, {}];
+});
         
 // TXCZ
 mock.onPost(new RegExp(/^\/pcmbdsqdmxes\/?([a-zA-Z0-9\-\;]{0,35})\/txcz$/)).reply((config: any) => {
@@ -877,6 +2053,60 @@ mock.onPost(new RegExp(/^\/pcmbdsqdmxes\/?([a-zA-Z0-9\-\;]{0,35})\/txcz$/)).repl
     console.groupEnd();
     console.groupEnd();
     return [status, data];
+});
+
+    
+// JZJJSDMB
+mock.onPost(new RegExp(/^\/pimpeople\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/([a-zA-Z0-9\-\;]{1,35})\/jzjjsdmb$/)).reply((config: any) => {
+    console.groupCollapsed("实体:pcmbdsqdmx 方法: JZJJSDMB");
+    console.table({url:config.url, method: config.method, data:config.data});
+    let status = MockAdapter.mockStatus(config);
+    if (status !== 200) {
+        return [status, null];
+    }
+    const paramArray:Array<any> = ['pimpersonid','pcmbdsqdmxid'];
+    const matchArray:any = new RegExp(/^\/pimpeople\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/([a-zA-Z0-9\-\;]{1,35})\/jzjjsdmb$/).exec(config.url);
+    let tempValue: any = {};
+    if(matchArray && matchArray.length >1 && paramArray && paramArray.length >0){
+        paramArray.forEach((item: any, index: number) => {
+            Object.defineProperty(tempValue, item, {
+                enumerable: true,
+                value: matchArray[index + 1]
+            });
+        });
+    }
+    console.groupCollapsed("response数据  status: "+status+" data: ");
+    console.table({});
+    console.groupEnd();
+    console.groupEnd();
+    return [status, {}];
+});
+
+    
+// JZJJSDMB
+mock.onPost(new RegExp(/^\/pcmbdsqds\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/([a-zA-Z0-9\-\;]{1,35})\/jzjjsdmb$/)).reply((config: any) => {
+    console.groupCollapsed("实体:pcmbdsqdmx 方法: JZJJSDMB");
+    console.table({url:config.url, method: config.method, data:config.data});
+    let status = MockAdapter.mockStatus(config);
+    if (status !== 200) {
+        return [status, null];
+    }
+    const paramArray:Array<any> = ['pcmbdsqdid','pcmbdsqdmxid'];
+    const matchArray:any = new RegExp(/^\/pcmbdsqds\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/([a-zA-Z0-9\-\;]{1,35})\/jzjjsdmb$/).exec(config.url);
+    let tempValue: any = {};
+    if(matchArray && matchArray.length >1 && paramArray && paramArray.length >0){
+        paramArray.forEach((item: any, index: number) => {
+            Object.defineProperty(tempValue, item, {
+                enumerable: true,
+                value: matchArray[index + 1]
+            });
+        });
+    }
+    console.groupCollapsed("response数据  status: "+status+" data: ");
+    console.table({});
+    console.groupEnd();
+    console.groupEnd();
+    return [status, {}];
 });
         
 // JZJJSDMB
@@ -916,6 +2146,60 @@ mock.onPost(new RegExp(/^\/pcmbdsqdmxes\/?([a-zA-Z0-9\-\;]{0,35})\/jzjjsdmb$/)).
     console.groupEnd();
     return [status, data];
 });
+
+    
+// SHTG
+mock.onPost(new RegExp(/^\/pimpeople\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/([a-zA-Z0-9\-\;]{1,35})\/shtg$/)).reply((config: any) => {
+    console.groupCollapsed("实体:pcmbdsqdmx 方法: SHTG");
+    console.table({url:config.url, method: config.method, data:config.data});
+    let status = MockAdapter.mockStatus(config);
+    if (status !== 200) {
+        return [status, null];
+    }
+    const paramArray:Array<any> = ['pimpersonid','pcmbdsqdmxid'];
+    const matchArray:any = new RegExp(/^\/pimpeople\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/([a-zA-Z0-9\-\;]{1,35})\/shtg$/).exec(config.url);
+    let tempValue: any = {};
+    if(matchArray && matchArray.length >1 && paramArray && paramArray.length >0){
+        paramArray.forEach((item: any, index: number) => {
+            Object.defineProperty(tempValue, item, {
+                enumerable: true,
+                value: matchArray[index + 1]
+            });
+        });
+    }
+    console.groupCollapsed("response数据  status: "+status+" data: ");
+    console.table({});
+    console.groupEnd();
+    console.groupEnd();
+    return [status, {}];
+});
+
+    
+// SHTG
+mock.onPost(new RegExp(/^\/pcmbdsqds\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/([a-zA-Z0-9\-\;]{1,35})\/shtg$/)).reply((config: any) => {
+    console.groupCollapsed("实体:pcmbdsqdmx 方法: SHTG");
+    console.table({url:config.url, method: config.method, data:config.data});
+    let status = MockAdapter.mockStatus(config);
+    if (status !== 200) {
+        return [status, null];
+    }
+    const paramArray:Array<any> = ['pcmbdsqdid','pcmbdsqdmxid'];
+    const matchArray:any = new RegExp(/^\/pcmbdsqds\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/([a-zA-Z0-9\-\;]{1,35})\/shtg$/).exec(config.url);
+    let tempValue: any = {};
+    if(matchArray && matchArray.length >1 && paramArray && paramArray.length >0){
+        paramArray.forEach((item: any, index: number) => {
+            Object.defineProperty(tempValue, item, {
+                enumerable: true,
+                value: matchArray[index + 1]
+            });
+        });
+    }
+    console.groupCollapsed("response数据  status: "+status+" data: ");
+    console.table({});
+    console.groupEnd();
+    console.groupEnd();
+    return [status, {}];
+});
         
 // SHTG
 mock.onPost(new RegExp(/^\/pcmbdsqdmxes\/?([a-zA-Z0-9\-\;]{0,35})\/shtg$/)).reply((config: any) => {
@@ -953,6 +2237,96 @@ mock.onPost(new RegExp(/^\/pcmbdsqdmxes\/?([a-zA-Z0-9\-\;]{0,35})\/shtg$/)).repl
     console.groupEnd();
     console.groupEnd();
     return [status, data];
+});
+
+
+// FetchJPSQMX
+mock.onGet(new RegExp(/^\/pimpeople\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/fetchjpsqmx$/)).reply((config: any) => {
+    console.groupCollapsed("实体:pcmbdsqdmx 方法: FetchJPSQMX");
+    console.table({url:config.url, method: config.method, data:config.data});
+    let status = MockAdapter.mockStatus(config);
+    if (status !== 200) {
+        return [status, null];
+    }
+    const paramArray:Array<any> = ['pimpersonid'];
+    let tempValue: any = {};
+    const matchArray:any = new RegExp(/^\/pimpeople\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/fetchjpsqmx$/).exec(config.url);
+    if(matchArray && matchArray.length >1 && paramArray && paramArray.length >0){
+        paramArray.forEach((item: any, index: number) => {
+            Object.defineProperty(tempValue, item, {
+                enumerable: true,
+                value: matchArray[index + 1]
+            });
+        });
+    }
+    let items = mockDatas ? mockDatas : [];
+    if (items.length > 0 && paramArray.length > 0) {
+        paramArray.forEach((paramkey: any) => {
+            if (tempValue[paramkey] && tempValue[paramkey].indexOf(";") > 0) {
+                let keysGrounp: Array<any> = tempValue[paramkey].split(new RegExp(/[\;]/));
+                let tempArray: Array<any> = [];
+                keysGrounp.forEach((singlekey: any) => {
+                    let _items =  items.filter((item: any) => { return item[paramkey] == singlekey });
+                   if(_items.length >0){
+                    tempArray.push(..._items);
+                   }
+                })
+                items = tempArray;
+            } else {
+                items = items.filter((item: any) => { return item[paramkey] == tempValue[paramkey] });
+            }
+        })
+    }
+    console.groupCollapsed("response数据  status: "+status+" data: ");
+    console.table(items);
+    console.groupEnd();
+    console.groupEnd();
+    return [status, items];
+});
+
+
+// FetchJPSQMX
+mock.onGet(new RegExp(/^\/pcmbdsqds\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/fetchjpsqmx$/)).reply((config: any) => {
+    console.groupCollapsed("实体:pcmbdsqdmx 方法: FetchJPSQMX");
+    console.table({url:config.url, method: config.method, data:config.data});
+    let status = MockAdapter.mockStatus(config);
+    if (status !== 200) {
+        return [status, null];
+    }
+    const paramArray:Array<any> = ['pcmbdsqdid'];
+    let tempValue: any = {};
+    const matchArray:any = new RegExp(/^\/pcmbdsqds\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/fetchjpsqmx$/).exec(config.url);
+    if(matchArray && matchArray.length >1 && paramArray && paramArray.length >0){
+        paramArray.forEach((item: any, index: number) => {
+            Object.defineProperty(tempValue, item, {
+                enumerable: true,
+                value: matchArray[index + 1]
+            });
+        });
+    }
+    let items = mockDatas ? mockDatas : [];
+    if (items.length > 0 && paramArray.length > 0) {
+        paramArray.forEach((paramkey: any) => {
+            if (tempValue[paramkey] && tempValue[paramkey].indexOf(";") > 0) {
+                let keysGrounp: Array<any> = tempValue[paramkey].split(new RegExp(/[\;]/));
+                let tempArray: Array<any> = [];
+                keysGrounp.forEach((singlekey: any) => {
+                    let _items =  items.filter((item: any) => { return item[paramkey] == singlekey });
+                   if(_items.length >0){
+                    tempArray.push(..._items);
+                   }
+                })
+                items = tempArray;
+            } else {
+                items = items.filter((item: any) => { return item[paramkey] == tempValue[paramkey] });
+            }
+        })
+    }
+    console.groupCollapsed("response数据  status: "+status+" data: ");
+    console.table(items);
+    console.groupEnd();
+    console.groupEnd();
+    return [status, items];
 });
     
 // FetchJPSQMX
@@ -998,6 +2372,96 @@ mock.onGet(new RegExp(/^\/pcmbdsqdmxes\/fetchjpsqmx(\?[\w-./?%&=,]*)*$/)).reply(
     console.groupEnd();
     return [status, records ?  records : []];
 });
+
+
+// FetchNTSQMX
+mock.onGet(new RegExp(/^\/pimpeople\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/fetchntsqmx$/)).reply((config: any) => {
+    console.groupCollapsed("实体:pcmbdsqdmx 方法: FetchNTSQMX");
+    console.table({url:config.url, method: config.method, data:config.data});
+    let status = MockAdapter.mockStatus(config);
+    if (status !== 200) {
+        return [status, null];
+    }
+    const paramArray:Array<any> = ['pimpersonid'];
+    let tempValue: any = {};
+    const matchArray:any = new RegExp(/^\/pimpeople\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/fetchntsqmx$/).exec(config.url);
+    if(matchArray && matchArray.length >1 && paramArray && paramArray.length >0){
+        paramArray.forEach((item: any, index: number) => {
+            Object.defineProperty(tempValue, item, {
+                enumerable: true,
+                value: matchArray[index + 1]
+            });
+        });
+    }
+    let items = mockDatas ? mockDatas : [];
+    if (items.length > 0 && paramArray.length > 0) {
+        paramArray.forEach((paramkey: any) => {
+            if (tempValue[paramkey] && tempValue[paramkey].indexOf(";") > 0) {
+                let keysGrounp: Array<any> = tempValue[paramkey].split(new RegExp(/[\;]/));
+                let tempArray: Array<any> = [];
+                keysGrounp.forEach((singlekey: any) => {
+                    let _items =  items.filter((item: any) => { return item[paramkey] == singlekey });
+                   if(_items.length >0){
+                    tempArray.push(..._items);
+                   }
+                })
+                items = tempArray;
+            } else {
+                items = items.filter((item: any) => { return item[paramkey] == tempValue[paramkey] });
+            }
+        })
+    }
+    console.groupCollapsed("response数据  status: "+status+" data: ");
+    console.table(items);
+    console.groupEnd();
+    console.groupEnd();
+    return [status, items];
+});
+
+
+// FetchNTSQMX
+mock.onGet(new RegExp(/^\/pcmbdsqds\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/fetchntsqmx$/)).reply((config: any) => {
+    console.groupCollapsed("实体:pcmbdsqdmx 方法: FetchNTSQMX");
+    console.table({url:config.url, method: config.method, data:config.data});
+    let status = MockAdapter.mockStatus(config);
+    if (status !== 200) {
+        return [status, null];
+    }
+    const paramArray:Array<any> = ['pcmbdsqdid'];
+    let tempValue: any = {};
+    const matchArray:any = new RegExp(/^\/pcmbdsqds\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/fetchntsqmx$/).exec(config.url);
+    if(matchArray && matchArray.length >1 && paramArray && paramArray.length >0){
+        paramArray.forEach((item: any, index: number) => {
+            Object.defineProperty(tempValue, item, {
+                enumerable: true,
+                value: matchArray[index + 1]
+            });
+        });
+    }
+    let items = mockDatas ? mockDatas : [];
+    if (items.length > 0 && paramArray.length > 0) {
+        paramArray.forEach((paramkey: any) => {
+            if (tempValue[paramkey] && tempValue[paramkey].indexOf(";") > 0) {
+                let keysGrounp: Array<any> = tempValue[paramkey].split(new RegExp(/[\;]/));
+                let tempArray: Array<any> = [];
+                keysGrounp.forEach((singlekey: any) => {
+                    let _items =  items.filter((item: any) => { return item[paramkey] == singlekey });
+                   if(_items.length >0){
+                    tempArray.push(..._items);
+                   }
+                })
+                items = tempArray;
+            } else {
+                items = items.filter((item: any) => { return item[paramkey] == tempValue[paramkey] });
+            }
+        })
+    }
+    console.groupCollapsed("response数据  status: "+status+" data: ");
+    console.table(items);
+    console.groupEnd();
+    console.groupEnd();
+    return [status, items];
+});
     
 // FetchNTSQMX
 mock.onGet(new RegExp(/^\/pcmbdsqdmxes\/fetchntsqmx$/)).reply((config: any) => {
@@ -1041,6 +2505,96 @@ mock.onGet(new RegExp(/^\/pcmbdsqdmxes\/fetchntsqmx(\?[\w-./?%&=,]*)*$/)).reply(
     console.groupEnd();
     console.groupEnd();
     return [status, records ?  records : []];
+});
+
+
+// FetchNTSQMXGR
+mock.onGet(new RegExp(/^\/pimpeople\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/fetchntsqmxgr$/)).reply((config: any) => {
+    console.groupCollapsed("实体:pcmbdsqdmx 方法: FetchNTSQMXGR");
+    console.table({url:config.url, method: config.method, data:config.data});
+    let status = MockAdapter.mockStatus(config);
+    if (status !== 200) {
+        return [status, null];
+    }
+    const paramArray:Array<any> = ['pimpersonid'];
+    let tempValue: any = {};
+    const matchArray:any = new RegExp(/^\/pimpeople\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/fetchntsqmxgr$/).exec(config.url);
+    if(matchArray && matchArray.length >1 && paramArray && paramArray.length >0){
+        paramArray.forEach((item: any, index: number) => {
+            Object.defineProperty(tempValue, item, {
+                enumerable: true,
+                value: matchArray[index + 1]
+            });
+        });
+    }
+    let items = mockDatas ? mockDatas : [];
+    if (items.length > 0 && paramArray.length > 0) {
+        paramArray.forEach((paramkey: any) => {
+            if (tempValue[paramkey] && tempValue[paramkey].indexOf(";") > 0) {
+                let keysGrounp: Array<any> = tempValue[paramkey].split(new RegExp(/[\;]/));
+                let tempArray: Array<any> = [];
+                keysGrounp.forEach((singlekey: any) => {
+                    let _items =  items.filter((item: any) => { return item[paramkey] == singlekey });
+                   if(_items.length >0){
+                    tempArray.push(..._items);
+                   }
+                })
+                items = tempArray;
+            } else {
+                items = items.filter((item: any) => { return item[paramkey] == tempValue[paramkey] });
+            }
+        })
+    }
+    console.groupCollapsed("response数据  status: "+status+" data: ");
+    console.table(items);
+    console.groupEnd();
+    console.groupEnd();
+    return [status, items];
+});
+
+
+// FetchNTSQMXGR
+mock.onGet(new RegExp(/^\/pcmbdsqds\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/fetchntsqmxgr$/)).reply((config: any) => {
+    console.groupCollapsed("实体:pcmbdsqdmx 方法: FetchNTSQMXGR");
+    console.table({url:config.url, method: config.method, data:config.data});
+    let status = MockAdapter.mockStatus(config);
+    if (status !== 200) {
+        return [status, null];
+    }
+    const paramArray:Array<any> = ['pcmbdsqdid'];
+    let tempValue: any = {};
+    const matchArray:any = new RegExp(/^\/pcmbdsqds\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/fetchntsqmxgr$/).exec(config.url);
+    if(matchArray && matchArray.length >1 && paramArray && paramArray.length >0){
+        paramArray.forEach((item: any, index: number) => {
+            Object.defineProperty(tempValue, item, {
+                enumerable: true,
+                value: matchArray[index + 1]
+            });
+        });
+    }
+    let items = mockDatas ? mockDatas : [];
+    if (items.length > 0 && paramArray.length > 0) {
+        paramArray.forEach((paramkey: any) => {
+            if (tempValue[paramkey] && tempValue[paramkey].indexOf(";") > 0) {
+                let keysGrounp: Array<any> = tempValue[paramkey].split(new RegExp(/[\;]/));
+                let tempArray: Array<any> = [];
+                keysGrounp.forEach((singlekey: any) => {
+                    let _items =  items.filter((item: any) => { return item[paramkey] == singlekey });
+                   if(_items.length >0){
+                    tempArray.push(..._items);
+                   }
+                })
+                items = tempArray;
+            } else {
+                items = items.filter((item: any) => { return item[paramkey] == tempValue[paramkey] });
+            }
+        })
+    }
+    console.groupCollapsed("response数据  status: "+status+" data: ");
+    console.table(items);
+    console.groupEnd();
+    console.groupEnd();
+    return [status, items];
 });
     
 // FetchNTSQMXGR
@@ -1086,6 +2640,96 @@ mock.onGet(new RegExp(/^\/pcmbdsqdmxes\/fetchntsqmxgr(\?[\w-./?%&=,]*)*$/)).repl
     console.groupEnd();
     return [status, records ?  records : []];
 });
+
+
+// FetchTXSQMX
+mock.onGet(new RegExp(/^\/pimpeople\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/fetchtxsqmx$/)).reply((config: any) => {
+    console.groupCollapsed("实体:pcmbdsqdmx 方法: FetchTXSQMX");
+    console.table({url:config.url, method: config.method, data:config.data});
+    let status = MockAdapter.mockStatus(config);
+    if (status !== 200) {
+        return [status, null];
+    }
+    const paramArray:Array<any> = ['pimpersonid'];
+    let tempValue: any = {};
+    const matchArray:any = new RegExp(/^\/pimpeople\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/fetchtxsqmx$/).exec(config.url);
+    if(matchArray && matchArray.length >1 && paramArray && paramArray.length >0){
+        paramArray.forEach((item: any, index: number) => {
+            Object.defineProperty(tempValue, item, {
+                enumerable: true,
+                value: matchArray[index + 1]
+            });
+        });
+    }
+    let items = mockDatas ? mockDatas : [];
+    if (items.length > 0 && paramArray.length > 0) {
+        paramArray.forEach((paramkey: any) => {
+            if (tempValue[paramkey] && tempValue[paramkey].indexOf(";") > 0) {
+                let keysGrounp: Array<any> = tempValue[paramkey].split(new RegExp(/[\;]/));
+                let tempArray: Array<any> = [];
+                keysGrounp.forEach((singlekey: any) => {
+                    let _items =  items.filter((item: any) => { return item[paramkey] == singlekey });
+                   if(_items.length >0){
+                    tempArray.push(..._items);
+                   }
+                })
+                items = tempArray;
+            } else {
+                items = items.filter((item: any) => { return item[paramkey] == tempValue[paramkey] });
+            }
+        })
+    }
+    console.groupCollapsed("response数据  status: "+status+" data: ");
+    console.table(items);
+    console.groupEnd();
+    console.groupEnd();
+    return [status, items];
+});
+
+
+// FetchTXSQMX
+mock.onGet(new RegExp(/^\/pcmbdsqds\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/fetchtxsqmx$/)).reply((config: any) => {
+    console.groupCollapsed("实体:pcmbdsqdmx 方法: FetchTXSQMX");
+    console.table({url:config.url, method: config.method, data:config.data});
+    let status = MockAdapter.mockStatus(config);
+    if (status !== 200) {
+        return [status, null];
+    }
+    const paramArray:Array<any> = ['pcmbdsqdid'];
+    let tempValue: any = {};
+    const matchArray:any = new RegExp(/^\/pcmbdsqds\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/fetchtxsqmx$/).exec(config.url);
+    if(matchArray && matchArray.length >1 && paramArray && paramArray.length >0){
+        paramArray.forEach((item: any, index: number) => {
+            Object.defineProperty(tempValue, item, {
+                enumerable: true,
+                value: matchArray[index + 1]
+            });
+        });
+    }
+    let items = mockDatas ? mockDatas : [];
+    if (items.length > 0 && paramArray.length > 0) {
+        paramArray.forEach((paramkey: any) => {
+            if (tempValue[paramkey] && tempValue[paramkey].indexOf(";") > 0) {
+                let keysGrounp: Array<any> = tempValue[paramkey].split(new RegExp(/[\;]/));
+                let tempArray: Array<any> = [];
+                keysGrounp.forEach((singlekey: any) => {
+                    let _items =  items.filter((item: any) => { return item[paramkey] == singlekey });
+                   if(_items.length >0){
+                    tempArray.push(..._items);
+                   }
+                })
+                items = tempArray;
+            } else {
+                items = items.filter((item: any) => { return item[paramkey] == tempValue[paramkey] });
+            }
+        })
+    }
+    console.groupCollapsed("response数据  status: "+status+" data: ");
+    console.table(items);
+    console.groupEnd();
+    console.groupEnd();
+    return [status, items];
+});
     
 // FetchTXSQMX
 mock.onGet(new RegExp(/^\/pcmbdsqdmxes\/fetchtxsqmx$/)).reply((config: any) => {
@@ -1129,6 +2773,96 @@ mock.onGet(new RegExp(/^\/pcmbdsqdmxes\/fetchtxsqmx(\?[\w-./?%&=,]*)*$/)).reply(
     console.groupEnd();
     console.groupEnd();
     return [status, records ?  records : []];
+});
+
+
+// FetchGZSQMX
+mock.onGet(new RegExp(/^\/pimpeople\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/fetchgzsqmx$/)).reply((config: any) => {
+    console.groupCollapsed("实体:pcmbdsqdmx 方法: FetchGZSQMX");
+    console.table({url:config.url, method: config.method, data:config.data});
+    let status = MockAdapter.mockStatus(config);
+    if (status !== 200) {
+        return [status, null];
+    }
+    const paramArray:Array<any> = ['pimpersonid'];
+    let tempValue: any = {};
+    const matchArray:any = new RegExp(/^\/pimpeople\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/fetchgzsqmx$/).exec(config.url);
+    if(matchArray && matchArray.length >1 && paramArray && paramArray.length >0){
+        paramArray.forEach((item: any, index: number) => {
+            Object.defineProperty(tempValue, item, {
+                enumerable: true,
+                value: matchArray[index + 1]
+            });
+        });
+    }
+    let items = mockDatas ? mockDatas : [];
+    if (items.length > 0 && paramArray.length > 0) {
+        paramArray.forEach((paramkey: any) => {
+            if (tempValue[paramkey] && tempValue[paramkey].indexOf(";") > 0) {
+                let keysGrounp: Array<any> = tempValue[paramkey].split(new RegExp(/[\;]/));
+                let tempArray: Array<any> = [];
+                keysGrounp.forEach((singlekey: any) => {
+                    let _items =  items.filter((item: any) => { return item[paramkey] == singlekey });
+                   if(_items.length >0){
+                    tempArray.push(..._items);
+                   }
+                })
+                items = tempArray;
+            } else {
+                items = items.filter((item: any) => { return item[paramkey] == tempValue[paramkey] });
+            }
+        })
+    }
+    console.groupCollapsed("response数据  status: "+status+" data: ");
+    console.table(items);
+    console.groupEnd();
+    console.groupEnd();
+    return [status, items];
+});
+
+
+// FetchGZSQMX
+mock.onGet(new RegExp(/^\/pcmbdsqds\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/fetchgzsqmx$/)).reply((config: any) => {
+    console.groupCollapsed("实体:pcmbdsqdmx 方法: FetchGZSQMX");
+    console.table({url:config.url, method: config.method, data:config.data});
+    let status = MockAdapter.mockStatus(config);
+    if (status !== 200) {
+        return [status, null];
+    }
+    const paramArray:Array<any> = ['pcmbdsqdid'];
+    let tempValue: any = {};
+    const matchArray:any = new RegExp(/^\/pcmbdsqds\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/fetchgzsqmx$/).exec(config.url);
+    if(matchArray && matchArray.length >1 && paramArray && paramArray.length >0){
+        paramArray.forEach((item: any, index: number) => {
+            Object.defineProperty(tempValue, item, {
+                enumerable: true,
+                value: matchArray[index + 1]
+            });
+        });
+    }
+    let items = mockDatas ? mockDatas : [];
+    if (items.length > 0 && paramArray.length > 0) {
+        paramArray.forEach((paramkey: any) => {
+            if (tempValue[paramkey] && tempValue[paramkey].indexOf(";") > 0) {
+                let keysGrounp: Array<any> = tempValue[paramkey].split(new RegExp(/[\;]/));
+                let tempArray: Array<any> = [];
+                keysGrounp.forEach((singlekey: any) => {
+                    let _items =  items.filter((item: any) => { return item[paramkey] == singlekey });
+                   if(_items.length >0){
+                    tempArray.push(..._items);
+                   }
+                })
+                items = tempArray;
+            } else {
+                items = items.filter((item: any) => { return item[paramkey] == tempValue[paramkey] });
+            }
+        })
+    }
+    console.groupCollapsed("response数据  status: "+status+" data: ");
+    console.table(items);
+    console.groupEnd();
+    console.groupEnd();
+    return [status, items];
 });
     
 // FetchGZSQMX
@@ -1174,6 +2908,96 @@ mock.onGet(new RegExp(/^\/pcmbdsqdmxes\/fetchgzsqmx(\?[\w-./?%&=,]*)*$/)).reply(
     console.groupEnd();
     return [status, records ?  records : []];
 });
+
+
+// FetchZJBDSQMX
+mock.onGet(new RegExp(/^\/pimpeople\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/fetchzjbdsqmx$/)).reply((config: any) => {
+    console.groupCollapsed("实体:pcmbdsqdmx 方法: FetchZJBDSQMX");
+    console.table({url:config.url, method: config.method, data:config.data});
+    let status = MockAdapter.mockStatus(config);
+    if (status !== 200) {
+        return [status, null];
+    }
+    const paramArray:Array<any> = ['pimpersonid'];
+    let tempValue: any = {};
+    const matchArray:any = new RegExp(/^\/pimpeople\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/fetchzjbdsqmx$/).exec(config.url);
+    if(matchArray && matchArray.length >1 && paramArray && paramArray.length >0){
+        paramArray.forEach((item: any, index: number) => {
+            Object.defineProperty(tempValue, item, {
+                enumerable: true,
+                value: matchArray[index + 1]
+            });
+        });
+    }
+    let items = mockDatas ? mockDatas : [];
+    if (items.length > 0 && paramArray.length > 0) {
+        paramArray.forEach((paramkey: any) => {
+            if (tempValue[paramkey] && tempValue[paramkey].indexOf(";") > 0) {
+                let keysGrounp: Array<any> = tempValue[paramkey].split(new RegExp(/[\;]/));
+                let tempArray: Array<any> = [];
+                keysGrounp.forEach((singlekey: any) => {
+                    let _items =  items.filter((item: any) => { return item[paramkey] == singlekey });
+                   if(_items.length >0){
+                    tempArray.push(..._items);
+                   }
+                })
+                items = tempArray;
+            } else {
+                items = items.filter((item: any) => { return item[paramkey] == tempValue[paramkey] });
+            }
+        })
+    }
+    console.groupCollapsed("response数据  status: "+status+" data: ");
+    console.table(items);
+    console.groupEnd();
+    console.groupEnd();
+    return [status, items];
+});
+
+
+// FetchZJBDSQMX
+mock.onGet(new RegExp(/^\/pcmbdsqds\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/fetchzjbdsqmx$/)).reply((config: any) => {
+    console.groupCollapsed("实体:pcmbdsqdmx 方法: FetchZJBDSQMX");
+    console.table({url:config.url, method: config.method, data:config.data});
+    let status = MockAdapter.mockStatus(config);
+    if (status !== 200) {
+        return [status, null];
+    }
+    const paramArray:Array<any> = ['pcmbdsqdid'];
+    let tempValue: any = {};
+    const matchArray:any = new RegExp(/^\/pcmbdsqds\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/fetchzjbdsqmx$/).exec(config.url);
+    if(matchArray && matchArray.length >1 && paramArray && paramArray.length >0){
+        paramArray.forEach((item: any, index: number) => {
+            Object.defineProperty(tempValue, item, {
+                enumerable: true,
+                value: matchArray[index + 1]
+            });
+        });
+    }
+    let items = mockDatas ? mockDatas : [];
+    if (items.length > 0 && paramArray.length > 0) {
+        paramArray.forEach((paramkey: any) => {
+            if (tempValue[paramkey] && tempValue[paramkey].indexOf(";") > 0) {
+                let keysGrounp: Array<any> = tempValue[paramkey].split(new RegExp(/[\;]/));
+                let tempArray: Array<any> = [];
+                keysGrounp.forEach((singlekey: any) => {
+                    let _items =  items.filter((item: any) => { return item[paramkey] == singlekey });
+                   if(_items.length >0){
+                    tempArray.push(..._items);
+                   }
+                })
+                items = tempArray;
+            } else {
+                items = items.filter((item: any) => { return item[paramkey] == tempValue[paramkey] });
+            }
+        })
+    }
+    console.groupCollapsed("response数据  status: "+status+" data: ");
+    console.table(items);
+    console.groupEnd();
+    console.groupEnd();
+    return [status, items];
+});
     
 // FetchZJBDSQMX
 mock.onGet(new RegExp(/^\/pcmbdsqdmxes\/fetchzjbdsqmx$/)).reply((config: any) => {
@@ -1217,6 +3041,96 @@ mock.onGet(new RegExp(/^\/pcmbdsqdmxes\/fetchzjbdsqmx(\?[\w-./?%&=,]*)*$/)).repl
     console.groupEnd();
     console.groupEnd();
     return [status, records ?  records : []];
+});
+
+
+// FetchDGSQMX
+mock.onGet(new RegExp(/^\/pimpeople\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/fetchdgsqmx$/)).reply((config: any) => {
+    console.groupCollapsed("实体:pcmbdsqdmx 方法: FetchDGSQMX");
+    console.table({url:config.url, method: config.method, data:config.data});
+    let status = MockAdapter.mockStatus(config);
+    if (status !== 200) {
+        return [status, null];
+    }
+    const paramArray:Array<any> = ['pimpersonid'];
+    let tempValue: any = {};
+    const matchArray:any = new RegExp(/^\/pimpeople\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/fetchdgsqmx$/).exec(config.url);
+    if(matchArray && matchArray.length >1 && paramArray && paramArray.length >0){
+        paramArray.forEach((item: any, index: number) => {
+            Object.defineProperty(tempValue, item, {
+                enumerable: true,
+                value: matchArray[index + 1]
+            });
+        });
+    }
+    let items = mockDatas ? mockDatas : [];
+    if (items.length > 0 && paramArray.length > 0) {
+        paramArray.forEach((paramkey: any) => {
+            if (tempValue[paramkey] && tempValue[paramkey].indexOf(";") > 0) {
+                let keysGrounp: Array<any> = tempValue[paramkey].split(new RegExp(/[\;]/));
+                let tempArray: Array<any> = [];
+                keysGrounp.forEach((singlekey: any) => {
+                    let _items =  items.filter((item: any) => { return item[paramkey] == singlekey });
+                   if(_items.length >0){
+                    tempArray.push(..._items);
+                   }
+                })
+                items = tempArray;
+            } else {
+                items = items.filter((item: any) => { return item[paramkey] == tempValue[paramkey] });
+            }
+        })
+    }
+    console.groupCollapsed("response数据  status: "+status+" data: ");
+    console.table(items);
+    console.groupEnd();
+    console.groupEnd();
+    return [status, items];
+});
+
+
+// FetchDGSQMX
+mock.onGet(new RegExp(/^\/pcmbdsqds\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/fetchdgsqmx$/)).reply((config: any) => {
+    console.groupCollapsed("实体:pcmbdsqdmx 方法: FetchDGSQMX");
+    console.table({url:config.url, method: config.method, data:config.data});
+    let status = MockAdapter.mockStatus(config);
+    if (status !== 200) {
+        return [status, null];
+    }
+    const paramArray:Array<any> = ['pcmbdsqdid'];
+    let tempValue: any = {};
+    const matchArray:any = new RegExp(/^\/pcmbdsqds\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/fetchdgsqmx$/).exec(config.url);
+    if(matchArray && matchArray.length >1 && paramArray && paramArray.length >0){
+        paramArray.forEach((item: any, index: number) => {
+            Object.defineProperty(tempValue, item, {
+                enumerable: true,
+                value: matchArray[index + 1]
+            });
+        });
+    }
+    let items = mockDatas ? mockDatas : [];
+    if (items.length > 0 && paramArray.length > 0) {
+        paramArray.forEach((paramkey: any) => {
+            if (tempValue[paramkey] && tempValue[paramkey].indexOf(";") > 0) {
+                let keysGrounp: Array<any> = tempValue[paramkey].split(new RegExp(/[\;]/));
+                let tempArray: Array<any> = [];
+                keysGrounp.forEach((singlekey: any) => {
+                    let _items =  items.filter((item: any) => { return item[paramkey] == singlekey });
+                   if(_items.length >0){
+                    tempArray.push(..._items);
+                   }
+                })
+                items = tempArray;
+            } else {
+                items = items.filter((item: any) => { return item[paramkey] == tempValue[paramkey] });
+            }
+        })
+    }
+    console.groupCollapsed("response数据  status: "+status+" data: ");
+    console.table(items);
+    console.groupEnd();
+    console.groupEnd();
+    return [status, items];
 });
     
 // FetchDGSQMX
@@ -1262,6 +3176,96 @@ mock.onGet(new RegExp(/^\/pcmbdsqdmxes\/fetchdgsqmx(\?[\w-./?%&=,]*)*$/)).reply(
     console.groupEnd();
     return [status, records ?  records : []];
 });
+
+
+// FetchCQBXSQMXDS
+mock.onGet(new RegExp(/^\/pimpeople\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/fetchcqbxsqmxds$/)).reply((config: any) => {
+    console.groupCollapsed("实体:pcmbdsqdmx 方法: FetchCQBXSQMXDS");
+    console.table({url:config.url, method: config.method, data:config.data});
+    let status = MockAdapter.mockStatus(config);
+    if (status !== 200) {
+        return [status, null];
+    }
+    const paramArray:Array<any> = ['pimpersonid'];
+    let tempValue: any = {};
+    const matchArray:any = new RegExp(/^\/pimpeople\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/fetchcqbxsqmxds$/).exec(config.url);
+    if(matchArray && matchArray.length >1 && paramArray && paramArray.length >0){
+        paramArray.forEach((item: any, index: number) => {
+            Object.defineProperty(tempValue, item, {
+                enumerable: true,
+                value: matchArray[index + 1]
+            });
+        });
+    }
+    let items = mockDatas ? mockDatas : [];
+    if (items.length > 0 && paramArray.length > 0) {
+        paramArray.forEach((paramkey: any) => {
+            if (tempValue[paramkey] && tempValue[paramkey].indexOf(";") > 0) {
+                let keysGrounp: Array<any> = tempValue[paramkey].split(new RegExp(/[\;]/));
+                let tempArray: Array<any> = [];
+                keysGrounp.forEach((singlekey: any) => {
+                    let _items =  items.filter((item: any) => { return item[paramkey] == singlekey });
+                   if(_items.length >0){
+                    tempArray.push(..._items);
+                   }
+                })
+                items = tempArray;
+            } else {
+                items = items.filter((item: any) => { return item[paramkey] == tempValue[paramkey] });
+            }
+        })
+    }
+    console.groupCollapsed("response数据  status: "+status+" data: ");
+    console.table(items);
+    console.groupEnd();
+    console.groupEnd();
+    return [status, items];
+});
+
+
+// FetchCQBXSQMXDS
+mock.onGet(new RegExp(/^\/pcmbdsqds\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/fetchcqbxsqmxds$/)).reply((config: any) => {
+    console.groupCollapsed("实体:pcmbdsqdmx 方法: FetchCQBXSQMXDS");
+    console.table({url:config.url, method: config.method, data:config.data});
+    let status = MockAdapter.mockStatus(config);
+    if (status !== 200) {
+        return [status, null];
+    }
+    const paramArray:Array<any> = ['pcmbdsqdid'];
+    let tempValue: any = {};
+    const matchArray:any = new RegExp(/^\/pcmbdsqds\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/fetchcqbxsqmxds$/).exec(config.url);
+    if(matchArray && matchArray.length >1 && paramArray && paramArray.length >0){
+        paramArray.forEach((item: any, index: number) => {
+            Object.defineProperty(tempValue, item, {
+                enumerable: true,
+                value: matchArray[index + 1]
+            });
+        });
+    }
+    let items = mockDatas ? mockDatas : [];
+    if (items.length > 0 && paramArray.length > 0) {
+        paramArray.forEach((paramkey: any) => {
+            if (tempValue[paramkey] && tempValue[paramkey].indexOf(";") > 0) {
+                let keysGrounp: Array<any> = tempValue[paramkey].split(new RegExp(/[\;]/));
+                let tempArray: Array<any> = [];
+                keysGrounp.forEach((singlekey: any) => {
+                    let _items =  items.filter((item: any) => { return item[paramkey] == singlekey });
+                   if(_items.length >0){
+                    tempArray.push(..._items);
+                   }
+                })
+                items = tempArray;
+            } else {
+                items = items.filter((item: any) => { return item[paramkey] == tempValue[paramkey] });
+            }
+        })
+    }
+    console.groupCollapsed("response数据  status: "+status+" data: ");
+    console.table(items);
+    console.groupEnd();
+    console.groupEnd();
+    return [status, items];
+});
     
 // FetchCQBXSQMXDS
 mock.onGet(new RegExp(/^\/pcmbdsqdmxes\/fetchcqbxsqmxds$/)).reply((config: any) => {
@@ -1305,6 +3309,96 @@ mock.onGet(new RegExp(/^\/pcmbdsqdmxes\/fetchcqbxsqmxds(\?[\w-./?%&=,]*)*$/)).re
     console.groupEnd();
     console.groupEnd();
     return [status, records ?  records : []];
+});
+
+
+// FetchLZSQMX
+mock.onGet(new RegExp(/^\/pimpeople\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/fetchlzsqmx$/)).reply((config: any) => {
+    console.groupCollapsed("实体:pcmbdsqdmx 方法: FetchLZSQMX");
+    console.table({url:config.url, method: config.method, data:config.data});
+    let status = MockAdapter.mockStatus(config);
+    if (status !== 200) {
+        return [status, null];
+    }
+    const paramArray:Array<any> = ['pimpersonid'];
+    let tempValue: any = {};
+    const matchArray:any = new RegExp(/^\/pimpeople\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/fetchlzsqmx$/).exec(config.url);
+    if(matchArray && matchArray.length >1 && paramArray && paramArray.length >0){
+        paramArray.forEach((item: any, index: number) => {
+            Object.defineProperty(tempValue, item, {
+                enumerable: true,
+                value: matchArray[index + 1]
+            });
+        });
+    }
+    let items = mockDatas ? mockDatas : [];
+    if (items.length > 0 && paramArray.length > 0) {
+        paramArray.forEach((paramkey: any) => {
+            if (tempValue[paramkey] && tempValue[paramkey].indexOf(";") > 0) {
+                let keysGrounp: Array<any> = tempValue[paramkey].split(new RegExp(/[\;]/));
+                let tempArray: Array<any> = [];
+                keysGrounp.forEach((singlekey: any) => {
+                    let _items =  items.filter((item: any) => { return item[paramkey] == singlekey });
+                   if(_items.length >0){
+                    tempArray.push(..._items);
+                   }
+                })
+                items = tempArray;
+            } else {
+                items = items.filter((item: any) => { return item[paramkey] == tempValue[paramkey] });
+            }
+        })
+    }
+    console.groupCollapsed("response数据  status: "+status+" data: ");
+    console.table(items);
+    console.groupEnd();
+    console.groupEnd();
+    return [status, items];
+});
+
+
+// FetchLZSQMX
+mock.onGet(new RegExp(/^\/pcmbdsqds\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/fetchlzsqmx$/)).reply((config: any) => {
+    console.groupCollapsed("实体:pcmbdsqdmx 方法: FetchLZSQMX");
+    console.table({url:config.url, method: config.method, data:config.data});
+    let status = MockAdapter.mockStatus(config);
+    if (status !== 200) {
+        return [status, null];
+    }
+    const paramArray:Array<any> = ['pcmbdsqdid'];
+    let tempValue: any = {};
+    const matchArray:any = new RegExp(/^\/pcmbdsqds\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/fetchlzsqmx$/).exec(config.url);
+    if(matchArray && matchArray.length >1 && paramArray && paramArray.length >0){
+        paramArray.forEach((item: any, index: number) => {
+            Object.defineProperty(tempValue, item, {
+                enumerable: true,
+                value: matchArray[index + 1]
+            });
+        });
+    }
+    let items = mockDatas ? mockDatas : [];
+    if (items.length > 0 && paramArray.length > 0) {
+        paramArray.forEach((paramkey: any) => {
+            if (tempValue[paramkey] && tempValue[paramkey].indexOf(";") > 0) {
+                let keysGrounp: Array<any> = tempValue[paramkey].split(new RegExp(/[\;]/));
+                let tempArray: Array<any> = [];
+                keysGrounp.forEach((singlekey: any) => {
+                    let _items =  items.filter((item: any) => { return item[paramkey] == singlekey });
+                   if(_items.length >0){
+                    tempArray.push(..._items);
+                   }
+                })
+                items = tempArray;
+            } else {
+                items = items.filter((item: any) => { return item[paramkey] == tempValue[paramkey] });
+            }
+        })
+    }
+    console.groupCollapsed("response数据  status: "+status+" data: ");
+    console.table(items);
+    console.groupEnd();
+    console.groupEnd();
+    return [status, items];
 });
     
 // FetchLZSQMX
@@ -1350,6 +3444,96 @@ mock.onGet(new RegExp(/^\/pcmbdsqdmxes\/fetchlzsqmx(\?[\w-./?%&=,]*)*$/)).reply(
     console.groupEnd();
     return [status, records ?  records : []];
 });
+
+
+// FetchLZSQMXGR
+mock.onGet(new RegExp(/^\/pimpeople\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/fetchlzsqmxgr$/)).reply((config: any) => {
+    console.groupCollapsed("实体:pcmbdsqdmx 方法: FetchLZSQMXGR");
+    console.table({url:config.url, method: config.method, data:config.data});
+    let status = MockAdapter.mockStatus(config);
+    if (status !== 200) {
+        return [status, null];
+    }
+    const paramArray:Array<any> = ['pimpersonid'];
+    let tempValue: any = {};
+    const matchArray:any = new RegExp(/^\/pimpeople\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/fetchlzsqmxgr$/).exec(config.url);
+    if(matchArray && matchArray.length >1 && paramArray && paramArray.length >0){
+        paramArray.forEach((item: any, index: number) => {
+            Object.defineProperty(tempValue, item, {
+                enumerable: true,
+                value: matchArray[index + 1]
+            });
+        });
+    }
+    let items = mockDatas ? mockDatas : [];
+    if (items.length > 0 && paramArray.length > 0) {
+        paramArray.forEach((paramkey: any) => {
+            if (tempValue[paramkey] && tempValue[paramkey].indexOf(";") > 0) {
+                let keysGrounp: Array<any> = tempValue[paramkey].split(new RegExp(/[\;]/));
+                let tempArray: Array<any> = [];
+                keysGrounp.forEach((singlekey: any) => {
+                    let _items =  items.filter((item: any) => { return item[paramkey] == singlekey });
+                   if(_items.length >0){
+                    tempArray.push(..._items);
+                   }
+                })
+                items = tempArray;
+            } else {
+                items = items.filter((item: any) => { return item[paramkey] == tempValue[paramkey] });
+            }
+        })
+    }
+    console.groupCollapsed("response数据  status: "+status+" data: ");
+    console.table(items);
+    console.groupEnd();
+    console.groupEnd();
+    return [status, items];
+});
+
+
+// FetchLZSQMXGR
+mock.onGet(new RegExp(/^\/pcmbdsqds\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/fetchlzsqmxgr$/)).reply((config: any) => {
+    console.groupCollapsed("实体:pcmbdsqdmx 方法: FetchLZSQMXGR");
+    console.table({url:config.url, method: config.method, data:config.data});
+    let status = MockAdapter.mockStatus(config);
+    if (status !== 200) {
+        return [status, null];
+    }
+    const paramArray:Array<any> = ['pcmbdsqdid'];
+    let tempValue: any = {};
+    const matchArray:any = new RegExp(/^\/pcmbdsqds\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/fetchlzsqmxgr$/).exec(config.url);
+    if(matchArray && matchArray.length >1 && paramArray && paramArray.length >0){
+        paramArray.forEach((item: any, index: number) => {
+            Object.defineProperty(tempValue, item, {
+                enumerable: true,
+                value: matchArray[index + 1]
+            });
+        });
+    }
+    let items = mockDatas ? mockDatas : [];
+    if (items.length > 0 && paramArray.length > 0) {
+        paramArray.forEach((paramkey: any) => {
+            if (tempValue[paramkey] && tempValue[paramkey].indexOf(";") > 0) {
+                let keysGrounp: Array<any> = tempValue[paramkey].split(new RegExp(/[\;]/));
+                let tempArray: Array<any> = [];
+                keysGrounp.forEach((singlekey: any) => {
+                    let _items =  items.filter((item: any) => { return item[paramkey] == singlekey });
+                   if(_items.length >0){
+                    tempArray.push(..._items);
+                   }
+                })
+                items = tempArray;
+            } else {
+                items = items.filter((item: any) => { return item[paramkey] == tempValue[paramkey] });
+            }
+        })
+    }
+    console.groupCollapsed("response数据  status: "+status+" data: ");
+    console.table(items);
+    console.groupEnd();
+    console.groupEnd();
+    return [status, items];
+});
     
 // FetchLZSQMXGR
 mock.onGet(new RegExp(/^\/pcmbdsqdmxes\/fetchlzsqmxgr$/)).reply((config: any) => {
@@ -1393,6 +3577,96 @@ mock.onGet(new RegExp(/^\/pcmbdsqdmxes\/fetchlzsqmxgr(\?[\w-./?%&=,]*)*$/)).repl
     console.groupEnd();
     console.groupEnd();
     return [status, records ?  records : []];
+});
+
+
+// FetchDefault
+mock.onGet(new RegExp(/^\/pimpeople\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/fetchdefault$/)).reply((config: any) => {
+    console.groupCollapsed("实体:pcmbdsqdmx 方法: FetchDefault");
+    console.table({url:config.url, method: config.method, data:config.data});
+    let status = MockAdapter.mockStatus(config);
+    if (status !== 200) {
+        return [status, null];
+    }
+    const paramArray:Array<any> = ['pimpersonid'];
+    let tempValue: any = {};
+    const matchArray:any = new RegExp(/^\/pimpeople\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/fetchdefault$/).exec(config.url);
+    if(matchArray && matchArray.length >1 && paramArray && paramArray.length >0){
+        paramArray.forEach((item: any, index: number) => {
+            Object.defineProperty(tempValue, item, {
+                enumerable: true,
+                value: matchArray[index + 1]
+            });
+        });
+    }
+    let items = mockDatas ? mockDatas : [];
+    if (items.length > 0 && paramArray.length > 0) {
+        paramArray.forEach((paramkey: any) => {
+            if (tempValue[paramkey] && tempValue[paramkey].indexOf(";") > 0) {
+                let keysGrounp: Array<any> = tempValue[paramkey].split(new RegExp(/[\;]/));
+                let tempArray: Array<any> = [];
+                keysGrounp.forEach((singlekey: any) => {
+                    let _items =  items.filter((item: any) => { return item[paramkey] == singlekey });
+                   if(_items.length >0){
+                    tempArray.push(..._items);
+                   }
+                })
+                items = tempArray;
+            } else {
+                items = items.filter((item: any) => { return item[paramkey] == tempValue[paramkey] });
+            }
+        })
+    }
+    console.groupCollapsed("response数据  status: "+status+" data: ");
+    console.table(items);
+    console.groupEnd();
+    console.groupEnd();
+    return [status, items];
+});
+
+
+// FetchDefault
+mock.onGet(new RegExp(/^\/pcmbdsqds\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/fetchdefault$/)).reply((config: any) => {
+    console.groupCollapsed("实体:pcmbdsqdmx 方法: FetchDefault");
+    console.table({url:config.url, method: config.method, data:config.data});
+    let status = MockAdapter.mockStatus(config);
+    if (status !== 200) {
+        return [status, null];
+    }
+    const paramArray:Array<any> = ['pcmbdsqdid'];
+    let tempValue: any = {};
+    const matchArray:any = new RegExp(/^\/pcmbdsqds\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/fetchdefault$/).exec(config.url);
+    if(matchArray && matchArray.length >1 && paramArray && paramArray.length >0){
+        paramArray.forEach((item: any, index: number) => {
+            Object.defineProperty(tempValue, item, {
+                enumerable: true,
+                value: matchArray[index + 1]
+            });
+        });
+    }
+    let items = mockDatas ? mockDatas : [];
+    if (items.length > 0 && paramArray.length > 0) {
+        paramArray.forEach((paramkey: any) => {
+            if (tempValue[paramkey] && tempValue[paramkey].indexOf(";") > 0) {
+                let keysGrounp: Array<any> = tempValue[paramkey].split(new RegExp(/[\;]/));
+                let tempArray: Array<any> = [];
+                keysGrounp.forEach((singlekey: any) => {
+                    let _items =  items.filter((item: any) => { return item[paramkey] == singlekey });
+                   if(_items.length >0){
+                    tempArray.push(..._items);
+                   }
+                })
+                items = tempArray;
+            } else {
+                items = items.filter((item: any) => { return item[paramkey] == tempValue[paramkey] });
+            }
+        })
+    }
+    console.groupCollapsed("response数据  status: "+status+" data: ");
+    console.table(items);
+    console.groupEnd();
+    console.groupEnd();
+    return [status, items];
 });
     
 // FetchDefault
@@ -1438,14 +3712,98 @@ mock.onGet(new RegExp(/^\/pcmbdsqdmxes\/fetchdefault(\?[\w-./?%&=,]*)*$/)).reply
     console.groupEnd();
     return [status, records ?  records : []];
 });
+
 // URI参数传递情况未实现
-// URI参数传递情况未实现
-// URI参数传递情况未实现
-// URI参数传递情况未实现
-// URI参数传递情况未实现
+
 // URI参数传递情况未实现
 // URI参数传递情况未实现
 
+// URI参数传递情况未实现
+
+// URI参数传递情况未实现
+// URI参数传递情况未实现
+
+// URI参数传递情况未实现
+
+// URI参数传递情况未实现
+// URI参数传递情况未实现
+
+// URI参数传递情况未实现
+
+// URI参数传递情况未实现
+// URI参数传递情况未实现
+
+// URI参数传递情况未实现
+
+// URI参数传递情况未实现
+// URI参数传递情况未实现
+
+// URI参数传递情况未实现
+
+// URI参数传递情况未实现
+// URI参数传递情况未实现
+
+// URI参数传递情况未实现
+
+// URI参数传递情况未实现
+// URI参数传递情况未实现
+
+
+// Get
+mock.onGet(new RegExp(/^\/pimpeople\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/([a-zA-Z0-9\-\;]{1,35})$/)).reply((config: any) => {
+    console.groupCollapsed("实体:pcmbdsqdmx 方法: Get");
+    console.table({url:config.url, method: config.method, data:config.data});
+    let status = MockAdapter.mockStatus(config);
+    if (status !== 200) {
+        return [status, null];
+    }    
+    const paramArray:Array<any> = ['pimpersonid','pcmbdsqdmxid'];
+    const matchArray:any = new RegExp(/^\/pimpeople\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/([a-zA-Z0-9\-\;]{1,35})$/).exec(config.url);
+    let tempValue: any = {};
+    if(matchArray && matchArray.length >1 && paramArray && paramArray.length >0){
+        paramArray.forEach((item: any, index: number) => {
+            Object.defineProperty(tempValue, item, {
+                enumerable: true,
+                value: matchArray[index + 1]
+            });
+        });
+    }
+    let items = mockDatas ? mockDatas : [];
+    let _items = items.find((item: any) => Object.is(item.pcmbdsqdmxid, tempValue.pcmbdsqdmxid));
+    console.groupCollapsed("response数据  status: "+status+" data: ");
+    console.table(_items?_items:{});
+    console.groupEnd();
+    console.groupEnd();
+    return [status, _items?_items:{}];
+});
+
+// Get
+mock.onGet(new RegExp(/^\/pcmbdsqds\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/([a-zA-Z0-9\-\;]{1,35})$/)).reply((config: any) => {
+    console.groupCollapsed("实体:pcmbdsqdmx 方法: Get");
+    console.table({url:config.url, method: config.method, data:config.data});
+    let status = MockAdapter.mockStatus(config);
+    if (status !== 200) {
+        return [status, null];
+    }    
+    const paramArray:Array<any> = ['pcmbdsqdid','pcmbdsqdmxid'];
+    const matchArray:any = new RegExp(/^\/pcmbdsqds\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/([a-zA-Z0-9\-\;]{1,35})$/).exec(config.url);
+    let tempValue: any = {};
+    if(matchArray && matchArray.length >1 && paramArray && paramArray.length >0){
+        paramArray.forEach((item: any, index: number) => {
+            Object.defineProperty(tempValue, item, {
+                enumerable: true,
+                value: matchArray[index + 1]
+            });
+        });
+    }
+    let items = mockDatas ? mockDatas : [];
+    let _items = items.find((item: any) => Object.is(item.pcmbdsqdmxid, tempValue.pcmbdsqdmxid));
+    console.groupCollapsed("response数据  status: "+status+" data: ");
+    console.table(_items?_items:{});
+    console.groupEnd();
+    console.groupEnd();
+    return [status, _items?_items:{}];
+});
 
 // Get
 mock.onGet(new RegExp(/^\/pcmbdsqdmxes\/([a-zA-Z0-9\-\;]{1,35})$/)).reply((config: any) => {
@@ -1457,6 +3815,62 @@ mock.onGet(new RegExp(/^\/pcmbdsqdmxes\/([a-zA-Z0-9\-\;]{1,35})$/)).reply((confi
     }    
     const paramArray:Array<any> = ['pcmbdsqdmxid'];
     const matchArray:any = new RegExp(/^\/pcmbdsqdmxes\/([a-zA-Z0-9\-\;]{1,35})$/).exec(config.url);
+    let tempValue: any = {};
+    if(matchArray && matchArray.length >1 && paramArray && paramArray.length >0){
+        paramArray.forEach((item: any, index: number) => {
+            Object.defineProperty(tempValue, item, {
+                enumerable: true,
+                value: matchArray[index + 1]
+            });
+        });
+    }
+    let items = mockDatas ? mockDatas : [];
+    let _items = items.find((item: any) => Object.is(item.pcmbdsqdmxid, tempValue.pcmbdsqdmxid));
+    console.groupCollapsed("response数据  status: "+status+" data: ");
+    console.table(_items?_items:{});
+    console.groupEnd();
+    console.groupEnd();
+    return [status, _items?_items:{}];
+});
+
+// Remove
+mock.onDelete(new RegExp(/^\/pimpeople\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/([a-zA-Z0-9\-\;]{1,35})$/)).reply((config: any) => {
+    console.groupCollapsed("实体:pcmbdsqdmx 方法: Remove");
+    console.table({url:config.url, method: config.method, data:config.data});
+    let status = MockAdapter.mockStatus(config);
+    if (status !== 200) {
+        return [status, null];
+    }    
+    const paramArray:Array<any> = ['pimpersonid','pcmbdsqdmxid'];
+    const matchArray:any = new RegExp(/^\/pimpeople\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/([a-zA-Z0-9\-\;]{1,35})$/).exec(config.url);
+    let tempValue: any = {};
+    if(matchArray && matchArray.length >1 && paramArray && paramArray.length >0){
+        paramArray.forEach((item: any, index: number) => {
+            Object.defineProperty(tempValue, item, {
+                enumerable: true,
+                value: matchArray[index + 1]
+            });
+        });
+    }
+    let items = mockDatas ? mockDatas : [];
+    let _items = items.find((item: any) => Object.is(item.pcmbdsqdmxid, tempValue.pcmbdsqdmxid));
+    console.groupCollapsed("response数据  status: "+status+" data: ");
+    console.table(_items?_items:{});
+    console.groupEnd();
+    console.groupEnd();
+    return [status, _items?_items:{}];
+});
+
+// Remove
+mock.onDelete(new RegExp(/^\/pcmbdsqds\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/([a-zA-Z0-9\-\;]{1,35})$/)).reply((config: any) => {
+    console.groupCollapsed("实体:pcmbdsqdmx 方法: Remove");
+    console.table({url:config.url, method: config.method, data:config.data});
+    let status = MockAdapter.mockStatus(config);
+    if (status !== 200) {
+        return [status, null];
+    }    
+    const paramArray:Array<any> = ['pcmbdsqdid','pcmbdsqdmxid'];
+    const matchArray:any = new RegExp(/^\/pcmbdsqds\/([a-zA-Z0-9\-\;]{1,35})\/pcmbdsqdmxes\/([a-zA-Z0-9\-\;]{1,35})$/).exec(config.url);
     let tempValue: any = {};
     if(matchArray && matchArray.length >1 && paramArray && paramArray.length >0){
         paramArray.forEach((item: any, index: number) => {

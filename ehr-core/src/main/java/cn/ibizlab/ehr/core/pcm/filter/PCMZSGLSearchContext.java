@@ -27,6 +27,13 @@ import cn.ibizlab.ehr.core.pcm.domain.PCMZSGL;
 @Data
 public class PCMZSGLSearchContext extends QueryWrapperContext<PCMZSGL> {
 
+	private String n_zjname_eq;//[职级]
+	public void setN_zjname_eq(String n_zjname_eq) {
+        this.n_zjname_eq = n_zjname_eq;
+        if(!ObjectUtils.isEmpty(this.n_zjname_eq)){
+            this.getSelectCond().eq("zjname", n_zjname_eq);
+        }
+    }
 	private String n_pcmzsglname_like;//[职数管理名称]
 	public void setN_pcmzsglname_like(String n_pcmzsglname_like) {
         this.n_pcmzsglname_like = n_pcmzsglname_like;

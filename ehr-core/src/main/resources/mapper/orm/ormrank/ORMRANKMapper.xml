@@ -4,6 +4,9 @@
 <mapper	namespace="cn.ibizlab.ehr.core.orm.mapper.ORMRANKMapper">
 
     <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
+	<select id="selectById"  resultMap="ORMRANKResultMap" databaseId="mysql">
+        <![CDATA[select t1.* from (SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`JYJLNX`, t1.`ORMRANKID`, t1.`ORMRANKNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XH`, t1.`ZJSM` FROM `T_ORMRANK` t1  ) t1 where ormrankid=#{id}]]>
+    </select>
 
     <!--通过mybatis将查询结果注入到entity中,通过配置autoMapping="true"由mybatis自动处理映射关系 -->
     <resultMap id="ORMRANKResultMap" type="cn.ibizlab.ehr.core.orm.domain.ORMRANK" autoMapping="true">
@@ -105,6 +108,12 @@
     <sql id="JZRANK" databaseId="mysql">
        <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`JYJLNX`, t1.`ORMRANKID`, t1.`ORMRANKNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XH`, t1.`ZJSM` FROM `T_ORMRANK` t1  
 				 WHERE 	( ( t1.xh>(select xh from t_ormrank a where a.ormrankname=(select b.rank from v_pimperson b where b.PIMPERSONID=#{srf.datacontext.PIMPERSONID')}))  OR  t1.xh>(select xh from t_ormrank a where a.ormrankname=(select b.rank from v_pimperson b where b.PIMPERSONID=#{srf.webcontext.pimpersonid')})) ) )
+			]]>
+    </sql>
+
+    <!--数据查询[View]-->
+    <sql id="View" databaseId="mysql">
+       <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`JYJLNX`, t1.`ORMRANKID`, t1.`ORMRANKNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XH`, t1.`ZJSM` FROM `T_ORMRANK` t1  
 			]]>
     </sql>
 

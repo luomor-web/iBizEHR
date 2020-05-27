@@ -62,6 +62,7 @@ export default class TRMDEPARTServiceBase extends EntityService {
      */
     public async Get(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
             let res:any = await Http.getInstance().get(`/trmdeparts/${context.trmdepart}`,isloading);
+            this.tempStorage.setItem(context.srfsessionkey+'_trmtrainfillins',JSON.stringify(res.data.trmtrainfillins));
             return res;
 
     }
@@ -77,8 +78,24 @@ export default class TRMDEPARTServiceBase extends EntityService {
      */
     public async Save(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
         let masterData:any = {};
+        let trmtrainfillinsData:any = [];
+        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_trmtrainfillins'),'undefined')){
+            trmtrainfillinsData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_trmtrainfillins') as any);
+            if(trmtrainfillinsData && trmtrainfillinsData.length && trmtrainfillinsData.length > 0){
+                trmtrainfillinsData.forEach((item:any) => {
+                    if(item.srffrontuf){
+                        if(Object.is(item.srffrontuf,"0")){
+                            item.trmtrainfillinid = null;
+                        }
+                        delete item.srffrontuf;
+                    }
+                });
+            }
+        }
+        masterData.trmtrainfillins = trmtrainfillinsData;
         Object.assign(data,masterData);
             let res:any = await  Http.getInstance().post(`/trmdeparts/${context.trmdepart}/save`,data,isloading);
+            this.tempStorage.setItem(context.srfsessionkey+'_trmtrainfillins',JSON.stringify(res.data.trmtrainfillins));
             return res;
     }
 
@@ -93,6 +110,21 @@ export default class TRMDEPARTServiceBase extends EntityService {
      */
     public async Create(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
         let masterData:any = {};
+        let trmtrainfillinsData:any = [];
+        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_trmtrainfillins'),'undefined')){
+            trmtrainfillinsData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_trmtrainfillins') as any);
+            if(trmtrainfillinsData && trmtrainfillinsData.length && trmtrainfillinsData.length > 0){
+                trmtrainfillinsData.forEach((item:any) => {
+                    if(item.srffrontuf){
+                        if(Object.is(item.srffrontuf,"0")){
+                            item.trmtrainfillinid = null;
+                        }
+                        delete item.srffrontuf;
+                    }
+                });
+            }
+        }
+        masterData.trmtrainfillins = trmtrainfillinsData;
         Object.assign(data,masterData);
         if(!data.srffrontuf || data.srffrontuf !== "1"){
             data[this.APPDEKEY] = null;
@@ -102,6 +134,7 @@ export default class TRMDEPARTServiceBase extends EntityService {
         }
         let tempContext:any = JSON.parse(JSON.stringify(context));
         let res:any = await Http.getInstance().post(`/trmdeparts`,data,isloading);
+        this.tempStorage.setItem(tempContext.srfsessionkey+'_trmtrainfillins',JSON.stringify(res.data.trmtrainfillins));
         return res;
     }
 
@@ -143,8 +176,24 @@ export default class TRMDEPARTServiceBase extends EntityService {
      */
     public async Update(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
         let masterData:any = {};
+        let trmtrainfillinsData:any = [];
+        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_trmtrainfillins'),'undefined')){
+            trmtrainfillinsData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_trmtrainfillins') as any);
+            if(trmtrainfillinsData && trmtrainfillinsData.length && trmtrainfillinsData.length > 0){
+                trmtrainfillinsData.forEach((item:any) => {
+                    if(item.srffrontuf){
+                        if(Object.is(item.srffrontuf,"0")){
+                            item.trmtrainfillinid = null;
+                        }
+                        delete item.srffrontuf;
+                    }
+                });
+            }
+        }
+        masterData.trmtrainfillins = trmtrainfillinsData;
         Object.assign(data,masterData);
             let res:any = await  Http.getInstance().put(`/trmdeparts/${context.trmdepart}`,data,isloading);
+            this.tempStorage.setItem(context.srfsessionkey+'_trmtrainfillins',JSON.stringify(res.data.trmtrainfillins));
             return res;
     }
 
@@ -160,6 +209,7 @@ export default class TRMDEPARTServiceBase extends EntityService {
     public async GetDraft(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
         let res:any = await  Http.getInstance().get(`/trmdeparts/getdraft`,isloading);
         res.data.trmdepart = data.trmdepart;
+            this.tempStorage.setItem(context.srfsessionkey+'_trmtrainfillins',JSON.stringify(res.data.trmtrainfillins));
         return res;
     }
 

@@ -57,6 +57,12 @@ export default class PCMBDSQDMXServiceBase extends EntityService {
      * @memberof PCMBDSQDMXServiceBase
      */
     public async Select(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.pimperson && context.pcmbdsqdmx){
+            return Http.getInstance().get(`/pimpeople/${context.pimperson}/pcmbdsqdmxes/${context.pcmbdsqdmx}/select`,isloading);
+        }
+        if(context.pcmbdsqd && context.pcmbdsqdmx){
+            return Http.getInstance().get(`/pcmbdsqds/${context.pcmbdsqd}/pcmbdsqdmxes/${context.pcmbdsqdmx}/select`,isloading);
+        }
             return Http.getInstance().get(`/pcmbdsqdmxes/${context.pcmbdsqdmx}/select`,isloading);
     }
 
@@ -85,6 +91,12 @@ export default class PCMBDSQDMXServiceBase extends EntityService {
      * @memberof PCMBDSQDMXServiceBase
      */
     public async CQBXCZ(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.pimperson && context.pcmbdsqdmx){
+            return Http.getInstance().post(`/pimpeople/${context.pimperson}/pcmbdsqdmxes/${context.pcmbdsqdmx}/cqbxcz`,data,isloading);
+        }
+        if(context.pcmbdsqd && context.pcmbdsqdmx){
+            return Http.getInstance().post(`/pcmbdsqds/${context.pcmbdsqd}/pcmbdsqdmxes/${context.pcmbdsqdmx}/cqbxcz`,data,isloading);
+        }
             return Http.getInstance().post(`/pcmbdsqdmxes/${context.pcmbdsqdmx}/cqbxcz`,data,isloading);
     }
 
@@ -113,6 +125,12 @@ export default class PCMBDSQDMXServiceBase extends EntityService {
      * @memberof PCMBDSQDMXServiceBase
      */
     public async PDZJ(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.pimperson && context.pcmbdsqdmx){
+            return Http.getInstance().post(`/pimpeople/${context.pimperson}/pcmbdsqdmxes/${context.pcmbdsqdmx}/pdzj`,data,isloading);
+        }
+        if(context.pcmbdsqd && context.pcmbdsqdmx){
+            return Http.getInstance().post(`/pcmbdsqds/${context.pcmbdsqd}/pcmbdsqdmxes/${context.pcmbdsqdmx}/pdzj`,data,isloading);
+        }
             return Http.getInstance().post(`/pcmbdsqdmxes/${context.pcmbdsqdmx}/pdzj`,data,isloading);
     }
 
@@ -141,6 +159,24 @@ export default class PCMBDSQDMXServiceBase extends EntityService {
      * @memberof PCMBDSQDMXServiceBase
      */
     public async Create(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.pimperson && true){
+            if(!data.srffrontuf || data.srffrontuf !== "1"){
+                data[this.APPDEKEY] = null;
+            }
+            if(data.srffrontuf){
+                delete data.srffrontuf;
+            }
+            return Http.getInstance().post(`/pimpeople/${context.pimperson}/pcmbdsqdmxes`,data,isloading);
+        }
+        if(context.pcmbdsqd && true){
+            if(!data.srffrontuf || data.srffrontuf !== "1"){
+                data[this.APPDEKEY] = null;
+            }
+            if(data.srffrontuf){
+                delete data.srffrontuf;
+            }
+            return Http.getInstance().post(`/pcmbdsqds/${context.pcmbdsqd}/pcmbdsqdmxes`,data,isloading);
+        }
         let masterData:any = {};
         Object.assign(data,masterData);
         if(!data.srffrontuf || data.srffrontuf !== "1"){
@@ -164,6 +200,12 @@ export default class PCMBDSQDMXServiceBase extends EntityService {
      * @memberof PCMBDSQDMXServiceBase
      */
     public async ZZSQ(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.pimperson && context.pcmbdsqdmx){
+            return Http.getInstance().post(`/pimpeople/${context.pimperson}/pcmbdsqdmxes/${context.pcmbdsqdmx}/zzsq`,data,isloading);
+        }
+        if(context.pcmbdsqd && context.pcmbdsqdmx){
+            return Http.getInstance().post(`/pcmbdsqds/${context.pcmbdsqd}/pcmbdsqdmxes/${context.pcmbdsqdmx}/zzsq`,data,isloading);
+        }
             return Http.getInstance().post(`/pcmbdsqdmxes/${context.pcmbdsqdmx}/zzsq`,data,isloading);
     }
 
@@ -192,6 +234,12 @@ export default class PCMBDSQDMXServiceBase extends EntityService {
      * @memberof PCMBDSQDMXServiceBase
      */
     public async DGCZ(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.pimperson && context.pcmbdsqdmx){
+            return Http.getInstance().post(`/pimpeople/${context.pimperson}/pcmbdsqdmxes/${context.pcmbdsqdmx}/dgcz`,data,isloading);
+        }
+        if(context.pcmbdsqd && context.pcmbdsqdmx){
+            return Http.getInstance().post(`/pcmbdsqds/${context.pcmbdsqd}/pcmbdsqdmxes/${context.pcmbdsqdmx}/dgcz`,data,isloading);
+        }
             return Http.getInstance().post(`/pcmbdsqdmxes/${context.pcmbdsqdmx}/dgcz`,data,isloading);
     }
 
@@ -220,6 +268,12 @@ export default class PCMBDSQDMXServiceBase extends EntityService {
      * @memberof PCMBDSQDMXServiceBase
      */
     public async GZCZ(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.pimperson && context.pcmbdsqdmx){
+            return Http.getInstance().post(`/pimpeople/${context.pimperson}/pcmbdsqdmxes/${context.pcmbdsqdmx}/gzcz`,data,isloading);
+        }
+        if(context.pcmbdsqd && context.pcmbdsqdmx){
+            return Http.getInstance().post(`/pcmbdsqds/${context.pcmbdsqd}/pcmbdsqdmxes/${context.pcmbdsqdmx}/gzcz`,data,isloading);
+        }
             return Http.getInstance().post(`/pcmbdsqdmxes/${context.pcmbdsqdmx}/gzcz`,data,isloading);
     }
 
@@ -233,6 +287,12 @@ export default class PCMBDSQDMXServiceBase extends EntityService {
      * @memberof PCMBDSQDMXServiceBase
      */
     public async JPCZ(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.pimperson && context.pcmbdsqdmx){
+            return Http.getInstance().post(`/pimpeople/${context.pimperson}/pcmbdsqdmxes/${context.pcmbdsqdmx}/jpcz`,data,isloading);
+        }
+        if(context.pcmbdsqd && context.pcmbdsqdmx){
+            return Http.getInstance().post(`/pcmbdsqds/${context.pcmbdsqd}/pcmbdsqdmxes/${context.pcmbdsqdmx}/jpcz`,data,isloading);
+        }
             return Http.getInstance().post(`/pcmbdsqdmxes/${context.pcmbdsqdmx}/jpcz`,data,isloading);
     }
 
@@ -246,6 +306,12 @@ export default class PCMBDSQDMXServiceBase extends EntityService {
      * @memberof PCMBDSQDMXServiceBase
      */
     public async Save(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.pimperson && context.pcmbdsqdmx){
+            return Http.getInstance().post(`/pimpeople/${context.pimperson}/pcmbdsqdmxes/${context.pcmbdsqdmx}/save`,data,isloading);
+        }
+        if(context.pcmbdsqd && context.pcmbdsqdmx){
+            return Http.getInstance().post(`/pcmbdsqds/${context.pcmbdsqd}/pcmbdsqdmxes/${context.pcmbdsqdmx}/save`,data,isloading);
+        }
         let masterData:any = {};
         Object.assign(data,masterData);
             let res:any = await  Http.getInstance().post(`/pcmbdsqdmxes/${context.pcmbdsqdmx}/save`,data,isloading);
@@ -262,6 +328,12 @@ export default class PCMBDSQDMXServiceBase extends EntityService {
      * @memberof PCMBDSQDMXServiceBase
      */
     public async LZCZ(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.pimperson && context.pcmbdsqdmx){
+            return Http.getInstance().post(`/pimpeople/${context.pimperson}/pcmbdsqdmxes/${context.pcmbdsqdmx}/lzcz`,data,isloading);
+        }
+        if(context.pcmbdsqd && context.pcmbdsqdmx){
+            return Http.getInstance().post(`/pcmbdsqds/${context.pcmbdsqd}/pcmbdsqdmxes/${context.pcmbdsqdmx}/lzcz`,data,isloading);
+        }
             return Http.getInstance().post(`/pcmbdsqdmxes/${context.pcmbdsqdmx}/lzcz`,data,isloading);
     }
 
@@ -275,6 +347,12 @@ export default class PCMBDSQDMXServiceBase extends EntityService {
      * @memberof PCMBDSQDMXServiceBase
      */
     public async NTCZ(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.pimperson && context.pcmbdsqdmx){
+            return Http.getInstance().post(`/pimpeople/${context.pimperson}/pcmbdsqdmxes/${context.pcmbdsqdmx}/ntcz`,data,isloading);
+        }
+        if(context.pcmbdsqd && context.pcmbdsqdmx){
+            return Http.getInstance().post(`/pcmbdsqds/${context.pcmbdsqd}/pcmbdsqdmxes/${context.pcmbdsqdmx}/ntcz`,data,isloading);
+        }
             return Http.getInstance().post(`/pcmbdsqdmxes/${context.pcmbdsqdmx}/ntcz`,data,isloading);
     }
 
@@ -288,6 +366,12 @@ export default class PCMBDSQDMXServiceBase extends EntityService {
      * @memberof PCMBDSQDMXServiceBase
      */
     public async Update(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.pimperson && context.pcmbdsqdmx){
+            return Http.getInstance().put(`/pimpeople/${context.pimperson}/pcmbdsqdmxes/${context.pcmbdsqdmx}`,data,isloading);
+        }
+        if(context.pcmbdsqd && context.pcmbdsqdmx){
+            return Http.getInstance().put(`/pcmbdsqds/${context.pcmbdsqd}/pcmbdsqdmxes/${context.pcmbdsqdmx}`,data,isloading);
+        }
         let masterData:any = {};
         Object.assign(data,masterData);
             let res:any = await  Http.getInstance().put(`/pcmbdsqdmxes/${context.pcmbdsqdmx}`,data,isloading);
@@ -304,6 +388,12 @@ export default class PCMBDSQDMXServiceBase extends EntityService {
      * @memberof PCMBDSQDMXServiceBase
      */
     public async Get(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.pimperson && context.pcmbdsqdmx){
+            return Http.getInstance().get(`/pimpeople/${context.pimperson}/pcmbdsqdmxes/${context.pcmbdsqdmx}`,isloading);
+        }
+        if(context.pcmbdsqd && context.pcmbdsqdmx){
+            return Http.getInstance().get(`/pcmbdsqds/${context.pcmbdsqd}/pcmbdsqdmxes/${context.pcmbdsqdmx}`,isloading);
+        }
             let res:any = await Http.getInstance().get(`/pcmbdsqdmxes/${context.pcmbdsqdmx}`,isloading);
             return res;
 
@@ -319,6 +409,12 @@ export default class PCMBDSQDMXServiceBase extends EntityService {
      * @memberof PCMBDSQDMXServiceBase
      */
     public async Remove(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.pimperson && context.pcmbdsqdmx){
+            return Http.getInstance().delete(`/pimpeople/${context.pimperson}/pcmbdsqdmxes/${context.pcmbdsqdmx}`,isloading);
+        }
+        if(context.pcmbdsqd && context.pcmbdsqdmx){
+            return Http.getInstance().delete(`/pcmbdsqds/${context.pcmbdsqd}/pcmbdsqdmxes/${context.pcmbdsqdmx}`,isloading);
+        }
             return Http.getInstance().delete(`/pcmbdsqdmxes/${context.pcmbdsqdmx}`,isloading);
 
     }
@@ -333,6 +429,12 @@ export default class PCMBDSQDMXServiceBase extends EntityService {
      * @memberof PCMBDSQDMXServiceBase
      */
     public async GetDraft(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.pimperson && true){
+            return Http.getInstance().get(`/pimpeople/${context.pimperson}/pcmbdsqdmxes/getdraft`,isloading);
+        }
+        if(context.pcmbdsqd && true){
+            return Http.getInstance().get(`/pcmbdsqds/${context.pcmbdsqd}/pcmbdsqdmxes/getdraft`,isloading);
+        }
         let res:any = await  Http.getInstance().get(`/pcmbdsqdmxes/getdraft`,isloading);
         res.data.pcmbdsqdmx = data.pcmbdsqdmx;
         return res;
@@ -348,6 +450,12 @@ export default class PCMBDSQDMXServiceBase extends EntityService {
      * @memberof PCMBDSQDMXServiceBase
      */
     public async SHBTG(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.pimperson && context.pcmbdsqdmx){
+            return Http.getInstance().post(`/pimpeople/${context.pimperson}/pcmbdsqdmxes/${context.pcmbdsqdmx}/shbtg`,data,isloading);
+        }
+        if(context.pcmbdsqd && context.pcmbdsqdmx){
+            return Http.getInstance().post(`/pcmbdsqds/${context.pcmbdsqd}/pcmbdsqdmxes/${context.pcmbdsqdmx}/shbtg`,data,isloading);
+        }
             return Http.getInstance().post(`/pcmbdsqdmxes/${context.pcmbdsqdmx}/shbtg`,data,isloading);
     }
 
@@ -361,6 +469,12 @@ export default class PCMBDSQDMXServiceBase extends EntityService {
      * @memberof PCMBDSQDMXServiceBase
      */
     public async ZJBDCZ(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.pimperson && context.pcmbdsqdmx){
+            return Http.getInstance().post(`/pimpeople/${context.pimperson}/pcmbdsqdmxes/${context.pcmbdsqdmx}/zjbdcz`,data,isloading);
+        }
+        if(context.pcmbdsqd && context.pcmbdsqdmx){
+            return Http.getInstance().post(`/pcmbdsqds/${context.pcmbdsqd}/pcmbdsqdmxes/${context.pcmbdsqdmx}/zjbdcz`,data,isloading);
+        }
             return Http.getInstance().post(`/pcmbdsqdmxes/${context.pcmbdsqdmx}/zjbdcz`,data,isloading);
     }
 
@@ -374,6 +488,12 @@ export default class PCMBDSQDMXServiceBase extends EntityService {
      * @memberof PCMBDSQDMXServiceBase
      */
     public async CheckKey(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.pimperson && context.pcmbdsqdmx){
+            return Http.getInstance().post(`/pimpeople/${context.pimperson}/pcmbdsqdmxes/${context.pcmbdsqdmx}/checkkey`,data,isloading);
+        }
+        if(context.pcmbdsqd && context.pcmbdsqdmx){
+            return Http.getInstance().post(`/pcmbdsqds/${context.pcmbdsqd}/pcmbdsqdmxes/${context.pcmbdsqdmx}/checkkey`,data,isloading);
+        }
             return Http.getInstance().post(`/pcmbdsqdmxes/${context.pcmbdsqdmx}/checkkey`,data,isloading);
     }
 
@@ -387,6 +507,12 @@ export default class PCMBDSQDMXServiceBase extends EntityService {
      * @memberof PCMBDSQDMXServiceBase
      */
     public async TXCZ(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.pimperson && context.pcmbdsqdmx){
+            return Http.getInstance().post(`/pimpeople/${context.pimperson}/pcmbdsqdmxes/${context.pcmbdsqdmx}/txcz`,data,isloading);
+        }
+        if(context.pcmbdsqd && context.pcmbdsqdmx){
+            return Http.getInstance().post(`/pcmbdsqds/${context.pcmbdsqd}/pcmbdsqdmxes/${context.pcmbdsqdmx}/txcz`,data,isloading);
+        }
             return Http.getInstance().post(`/pcmbdsqdmxes/${context.pcmbdsqdmx}/txcz`,data,isloading);
     }
 
@@ -415,6 +541,12 @@ export default class PCMBDSQDMXServiceBase extends EntityService {
      * @memberof PCMBDSQDMXServiceBase
      */
     public async SHTG(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.pimperson && context.pcmbdsqdmx){
+            return Http.getInstance().post(`/pimpeople/${context.pimperson}/pcmbdsqdmxes/${context.pcmbdsqdmx}/shtg`,data,isloading);
+        }
+        if(context.pcmbdsqd && context.pcmbdsqdmx){
+            return Http.getInstance().post(`/pcmbdsqds/${context.pcmbdsqd}/pcmbdsqdmxes/${context.pcmbdsqdmx}/shtg`,data,isloading);
+        }
             return Http.getInstance().post(`/pcmbdsqdmxes/${context.pcmbdsqdmx}/shtg`,data,isloading);
     }
 
@@ -428,6 +560,14 @@ export default class PCMBDSQDMXServiceBase extends EntityService {
      * @memberof PCMBDSQDMXServiceBase
      */
     public async FetchJPSQMX(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.pimperson && true){
+            let tempData:any = JSON.parse(JSON.stringify(data));
+            return Http.getInstance().get(`/pimpeople/${context.pimperson}/pcmbdsqdmxes/fetchjpsqmx`,tempData,isloading);
+        }
+        if(context.pcmbdsqd && true){
+            let tempData:any = JSON.parse(JSON.stringify(data));
+            return Http.getInstance().get(`/pcmbdsqds/${context.pcmbdsqd}/pcmbdsqdmxes/fetchjpsqmx`,tempData,isloading);
+        }
         let tempData:any = JSON.parse(JSON.stringify(data));
         return Http.getInstance().get(`/pcmbdsqdmxes/fetchjpsqmx`,tempData,isloading);
     }
@@ -442,6 +582,14 @@ export default class PCMBDSQDMXServiceBase extends EntityService {
      * @memberof PCMBDSQDMXServiceBase
      */
     public async FetchNTSQMX(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.pimperson && true){
+            let tempData:any = JSON.parse(JSON.stringify(data));
+            return Http.getInstance().get(`/pimpeople/${context.pimperson}/pcmbdsqdmxes/fetchntsqmx`,tempData,isloading);
+        }
+        if(context.pcmbdsqd && true){
+            let tempData:any = JSON.parse(JSON.stringify(data));
+            return Http.getInstance().get(`/pcmbdsqds/${context.pcmbdsqd}/pcmbdsqdmxes/fetchntsqmx`,tempData,isloading);
+        }
         let tempData:any = JSON.parse(JSON.stringify(data));
         return Http.getInstance().get(`/pcmbdsqdmxes/fetchntsqmx`,tempData,isloading);
     }
@@ -456,6 +604,14 @@ export default class PCMBDSQDMXServiceBase extends EntityService {
      * @memberof PCMBDSQDMXServiceBase
      */
     public async FetchNTSQMXGR(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.pimperson && true){
+            let tempData:any = JSON.parse(JSON.stringify(data));
+            return Http.getInstance().get(`/pimpeople/${context.pimperson}/pcmbdsqdmxes/fetchntsqmxgr`,tempData,isloading);
+        }
+        if(context.pcmbdsqd && true){
+            let tempData:any = JSON.parse(JSON.stringify(data));
+            return Http.getInstance().get(`/pcmbdsqds/${context.pcmbdsqd}/pcmbdsqdmxes/fetchntsqmxgr`,tempData,isloading);
+        }
         let tempData:any = JSON.parse(JSON.stringify(data));
         return Http.getInstance().get(`/pcmbdsqdmxes/fetchntsqmxgr`,tempData,isloading);
     }
@@ -470,6 +626,14 @@ export default class PCMBDSQDMXServiceBase extends EntityService {
      * @memberof PCMBDSQDMXServiceBase
      */
     public async FetchTXSQMX(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.pimperson && true){
+            let tempData:any = JSON.parse(JSON.stringify(data));
+            return Http.getInstance().get(`/pimpeople/${context.pimperson}/pcmbdsqdmxes/fetchtxsqmx`,tempData,isloading);
+        }
+        if(context.pcmbdsqd && true){
+            let tempData:any = JSON.parse(JSON.stringify(data));
+            return Http.getInstance().get(`/pcmbdsqds/${context.pcmbdsqd}/pcmbdsqdmxes/fetchtxsqmx`,tempData,isloading);
+        }
         let tempData:any = JSON.parse(JSON.stringify(data));
         return Http.getInstance().get(`/pcmbdsqdmxes/fetchtxsqmx`,tempData,isloading);
     }
@@ -484,6 +648,14 @@ export default class PCMBDSQDMXServiceBase extends EntityService {
      * @memberof PCMBDSQDMXServiceBase
      */
     public async FetchGZSQMX(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.pimperson && true){
+            let tempData:any = JSON.parse(JSON.stringify(data));
+            return Http.getInstance().get(`/pimpeople/${context.pimperson}/pcmbdsqdmxes/fetchgzsqmx`,tempData,isloading);
+        }
+        if(context.pcmbdsqd && true){
+            let tempData:any = JSON.parse(JSON.stringify(data));
+            return Http.getInstance().get(`/pcmbdsqds/${context.pcmbdsqd}/pcmbdsqdmxes/fetchgzsqmx`,tempData,isloading);
+        }
         let tempData:any = JSON.parse(JSON.stringify(data));
         return Http.getInstance().get(`/pcmbdsqdmxes/fetchgzsqmx`,tempData,isloading);
     }
@@ -498,6 +670,14 @@ export default class PCMBDSQDMXServiceBase extends EntityService {
      * @memberof PCMBDSQDMXServiceBase
      */
     public async FetchZJBDSQMX(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.pimperson && true){
+            let tempData:any = JSON.parse(JSON.stringify(data));
+            return Http.getInstance().get(`/pimpeople/${context.pimperson}/pcmbdsqdmxes/fetchzjbdsqmx`,tempData,isloading);
+        }
+        if(context.pcmbdsqd && true){
+            let tempData:any = JSON.parse(JSON.stringify(data));
+            return Http.getInstance().get(`/pcmbdsqds/${context.pcmbdsqd}/pcmbdsqdmxes/fetchzjbdsqmx`,tempData,isloading);
+        }
         let tempData:any = JSON.parse(JSON.stringify(data));
         return Http.getInstance().get(`/pcmbdsqdmxes/fetchzjbdsqmx`,tempData,isloading);
     }
@@ -512,6 +692,14 @@ export default class PCMBDSQDMXServiceBase extends EntityService {
      * @memberof PCMBDSQDMXServiceBase
      */
     public async FetchDGSQMX(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.pimperson && true){
+            let tempData:any = JSON.parse(JSON.stringify(data));
+            return Http.getInstance().get(`/pimpeople/${context.pimperson}/pcmbdsqdmxes/fetchdgsqmx`,tempData,isloading);
+        }
+        if(context.pcmbdsqd && true){
+            let tempData:any = JSON.parse(JSON.stringify(data));
+            return Http.getInstance().get(`/pcmbdsqds/${context.pcmbdsqd}/pcmbdsqdmxes/fetchdgsqmx`,tempData,isloading);
+        }
         let tempData:any = JSON.parse(JSON.stringify(data));
         return Http.getInstance().get(`/pcmbdsqdmxes/fetchdgsqmx`,tempData,isloading);
     }
@@ -526,6 +714,14 @@ export default class PCMBDSQDMXServiceBase extends EntityService {
      * @memberof PCMBDSQDMXServiceBase
      */
     public async FetchCQBXSQMXDS(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.pimperson && true){
+            let tempData:any = JSON.parse(JSON.stringify(data));
+            return Http.getInstance().get(`/pimpeople/${context.pimperson}/pcmbdsqdmxes/fetchcqbxsqmxds`,tempData,isloading);
+        }
+        if(context.pcmbdsqd && true){
+            let tempData:any = JSON.parse(JSON.stringify(data));
+            return Http.getInstance().get(`/pcmbdsqds/${context.pcmbdsqd}/pcmbdsqdmxes/fetchcqbxsqmxds`,tempData,isloading);
+        }
         let tempData:any = JSON.parse(JSON.stringify(data));
         return Http.getInstance().get(`/pcmbdsqdmxes/fetchcqbxsqmxds`,tempData,isloading);
     }
@@ -540,6 +736,14 @@ export default class PCMBDSQDMXServiceBase extends EntityService {
      * @memberof PCMBDSQDMXServiceBase
      */
     public async FetchLZSQMX(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.pimperson && true){
+            let tempData:any = JSON.parse(JSON.stringify(data));
+            return Http.getInstance().get(`/pimpeople/${context.pimperson}/pcmbdsqdmxes/fetchlzsqmx`,tempData,isloading);
+        }
+        if(context.pcmbdsqd && true){
+            let tempData:any = JSON.parse(JSON.stringify(data));
+            return Http.getInstance().get(`/pcmbdsqds/${context.pcmbdsqd}/pcmbdsqdmxes/fetchlzsqmx`,tempData,isloading);
+        }
         let tempData:any = JSON.parse(JSON.stringify(data));
         return Http.getInstance().get(`/pcmbdsqdmxes/fetchlzsqmx`,tempData,isloading);
     }
@@ -554,6 +758,14 @@ export default class PCMBDSQDMXServiceBase extends EntityService {
      * @memberof PCMBDSQDMXServiceBase
      */
     public async FetchLZSQMXGR(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.pimperson && true){
+            let tempData:any = JSON.parse(JSON.stringify(data));
+            return Http.getInstance().get(`/pimpeople/${context.pimperson}/pcmbdsqdmxes/fetchlzsqmxgr`,tempData,isloading);
+        }
+        if(context.pcmbdsqd && true){
+            let tempData:any = JSON.parse(JSON.stringify(data));
+            return Http.getInstance().get(`/pcmbdsqds/${context.pcmbdsqd}/pcmbdsqdmxes/fetchlzsqmxgr`,tempData,isloading);
+        }
         let tempData:any = JSON.parse(JSON.stringify(data));
         return Http.getInstance().get(`/pcmbdsqdmxes/fetchlzsqmxgr`,tempData,isloading);
     }
@@ -568,6 +780,14 @@ export default class PCMBDSQDMXServiceBase extends EntityService {
      * @memberof PCMBDSQDMXServiceBase
      */
     public async FetchDefault(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.pimperson && true){
+            let tempData:any = JSON.parse(JSON.stringify(data));
+            return Http.getInstance().get(`/pimpeople/${context.pimperson}/pcmbdsqdmxes/fetchdefault`,tempData,isloading);
+        }
+        if(context.pcmbdsqd && true){
+            let tempData:any = JSON.parse(JSON.stringify(data));
+            return Http.getInstance().get(`/pcmbdsqds/${context.pcmbdsqd}/pcmbdsqdmxes/fetchdefault`,tempData,isloading);
+        }
         let tempData:any = JSON.parse(JSON.stringify(data));
         return Http.getInstance().get(`/pcmbdsqdmxes/fetchdefault`,tempData,isloading);
     }

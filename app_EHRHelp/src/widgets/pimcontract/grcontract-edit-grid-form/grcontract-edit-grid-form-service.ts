@@ -89,8 +89,8 @@ export default class GRContractEditGridService extends ControlService {
      */
     @Errorlog
     public getItems(serviceName: string, interfaceName: string, context: any = {}, data: any, isloading?: boolean): Promise<any[]> {
-        if (Object.is(serviceName, 'ORMORGService') && Object.is(interfaceName, 'FetchHTGLDW')) {
-            return this.doItems(this.ormorgService.FetchHTGLDW(JSON.parse(JSON.stringify(context)),data, isloading), 'orgid', 'ormorg');
+        if (Object.is(serviceName, 'ORMORGService') && Object.is(interfaceName, 'FetchDefault')) {
+            return this.doItems(this.ormorgService.FetchDefault(JSON.parse(JSON.stringify(context)),data, isloading), 'orgid', 'ormorg');
         }
 
         return Promise.reject([])

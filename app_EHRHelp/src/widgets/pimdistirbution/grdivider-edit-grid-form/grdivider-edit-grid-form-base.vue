@@ -66,7 +66,7 @@
   valueitem='ormorgsectorid' 
   :value="data.ormorgsectorname" 
   editortype="" 
-  :pickupView="{ viewname: 'ormorgsectorfpxxpickup-view', title: $t('entities.ormorgsector.views.fpxxpickupview.title'), deResParameters: [], parameters: [{ pathName: 'ormorgsectors', parameterName: 'ormorgsector' }, { pathName: 'fpxxpickupview', parameterName: 'fpxxpickupview' } ], placement:'' }"
+  :pickupView="{ viewname: 'ormorgsectorfpxxpickup-view', title: $t('entities.ormorgsector.views.fpxxpickupview.title'), deResParameters: [{ pathName: 'ormorgs', parameterName: 'ormorg' }, ], parameters: [{ pathName: 'ormorgsectors', parameterName: 'ormorgsector' }, { pathName: 'fpxxpickupview', parameterName: 'fpxxpickupview' } ], placement:'' }"
   style=""  
   @formitemvaluechange="onFormItemValueChange">
 </app-picker>
@@ -106,7 +106,7 @@
   :data="data"
   :context="context"
   :viewparams="viewparams"
-  :itemParam='{ }' 
+  :itemParam='{ context:{"ORMORG":"%ormorgid%"},param:{"n_ormorgid_eq":"%ormorgid%"},}' 
   :disabled="detailsModel.ormpostname.disabled"
   name='ormpostname'
   deMajorField='ormpostname'
@@ -1005,6 +1005,9 @@ export default class GRDividerEditGridBase extends Vue implements ControlInterfa
     public resetFormData({ name, newVal, oldVal }: { name: string, newVal: any, oldVal: any }): void {
         if (Object.is(name, 'ormorgid')) {
             this.onFormItemValueChange({ name: 'ormorgsectorid', value: null });
+        }
+        if (Object.is(name, 'ormorgid')) {
+            this.onFormItemValueChange({ name: 'ormpostid', value: null });
         }
         if (Object.is(name, 'ormorgid')) {
             this.onFormItemValueChange({ name: 'ormorgsectorname', value: null });

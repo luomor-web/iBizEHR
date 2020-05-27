@@ -157,8 +157,8 @@ export default {
         empty: '',
     },
     DASTATE: {
-        10: '有效',
-        20: '失效',
+        '10': '有效',
+        '20': '失效',
         empty: '',
     },
     PIMCL_HKLX: {

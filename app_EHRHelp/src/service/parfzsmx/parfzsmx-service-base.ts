@@ -48,6 +48,12 @@ export default class PARFZSMXServiceBase extends EntityService {
      * @memberof PARFZSMXServiceBase
      */
     public async Select(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.pimperson && context.parfzsmx){
+            return Http.getInstance().get(`/pimpeople/${context.pimperson}/parfzsmxes/${context.parfzsmx}/select`,isloading);
+        }
+        if(context.partzgg && context.parfzsmx){
+            return Http.getInstance().get(`/partzggs/${context.partzgg}/parfzsmxes/${context.parfzsmx}/select`,isloading);
+        }
             return Http.getInstance().get(`/parfzsmxes/${context.parfzsmx}/select`,isloading);
     }
 
@@ -61,6 +67,12 @@ export default class PARFZSMXServiceBase extends EntityService {
      * @memberof PARFZSMXServiceBase
      */
     public async GetDraft(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.pimperson && true){
+            return Http.getInstance().get(`/pimpeople/${context.pimperson}/parfzsmxes/getdraft`,isloading);
+        }
+        if(context.partzgg && true){
+            return Http.getInstance().get(`/partzggs/${context.partzgg}/parfzsmxes/getdraft`,isloading);
+        }
         let res:any = await  Http.getInstance().get(`/parfzsmxes/getdraft`,isloading);
         res.data.parfzsmx = data.parfzsmx;
         return res;
@@ -76,6 +88,12 @@ export default class PARFZSMXServiceBase extends EntityService {
      * @memberof PARFZSMXServiceBase
      */
     public async Update(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.pimperson && context.parfzsmx){
+            return Http.getInstance().put(`/pimpeople/${context.pimperson}/parfzsmxes/${context.parfzsmx}`,data,isloading);
+        }
+        if(context.partzgg && context.parfzsmx){
+            return Http.getInstance().put(`/partzggs/${context.partzgg}/parfzsmxes/${context.parfzsmx}`,data,isloading);
+        }
         let masterData:any = {};
         Object.assign(data,masterData);
             let res:any = await  Http.getInstance().put(`/parfzsmxes/${context.parfzsmx}`,data,isloading);
@@ -92,6 +110,12 @@ export default class PARFZSMXServiceBase extends EntityService {
      * @memberof PARFZSMXServiceBase
      */
     public async Remove(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.pimperson && context.parfzsmx){
+            return Http.getInstance().delete(`/pimpeople/${context.pimperson}/parfzsmxes/${context.parfzsmx}`,isloading);
+        }
+        if(context.partzgg && context.parfzsmx){
+            return Http.getInstance().delete(`/partzggs/${context.partzgg}/parfzsmxes/${context.parfzsmx}`,isloading);
+        }
             return Http.getInstance().delete(`/parfzsmxes/${context.parfzsmx}`,isloading);
 
     }
@@ -106,6 +130,24 @@ export default class PARFZSMXServiceBase extends EntityService {
      * @memberof PARFZSMXServiceBase
      */
     public async Create(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.pimperson && true){
+            if(!data.srffrontuf || data.srffrontuf !== "1"){
+                data[this.APPDEKEY] = null;
+            }
+            if(data.srffrontuf){
+                delete data.srffrontuf;
+            }
+            return Http.getInstance().post(`/pimpeople/${context.pimperson}/parfzsmxes`,data,isloading);
+        }
+        if(context.partzgg && true){
+            if(!data.srffrontuf || data.srffrontuf !== "1"){
+                data[this.APPDEKEY] = null;
+            }
+            if(data.srffrontuf){
+                delete data.srffrontuf;
+            }
+            return Http.getInstance().post(`/partzggs/${context.partzgg}/parfzsmxes`,data,isloading);
+        }
         let masterData:any = {};
         Object.assign(data,masterData);
         if(!data.srffrontuf || data.srffrontuf !== "1"){
@@ -129,6 +171,12 @@ export default class PARFZSMXServiceBase extends EntityService {
      * @memberof PARFZSMXServiceBase
      */
     public async CheckKey(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.pimperson && context.parfzsmx){
+            return Http.getInstance().post(`/pimpeople/${context.pimperson}/parfzsmxes/${context.parfzsmx}/checkkey`,data,isloading);
+        }
+        if(context.partzgg && context.parfzsmx){
+            return Http.getInstance().post(`/partzggs/${context.partzgg}/parfzsmxes/${context.parfzsmx}/checkkey`,data,isloading);
+        }
             return Http.getInstance().post(`/parfzsmxes/${context.parfzsmx}/checkkey`,data,isloading);
     }
 
@@ -142,6 +190,12 @@ export default class PARFZSMXServiceBase extends EntityService {
      * @memberof PARFZSMXServiceBase
      */
     public async Save(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.pimperson && context.parfzsmx){
+            return Http.getInstance().post(`/pimpeople/${context.pimperson}/parfzsmxes/${context.parfzsmx}/save`,data,isloading);
+        }
+        if(context.partzgg && context.parfzsmx){
+            return Http.getInstance().post(`/partzggs/${context.partzgg}/parfzsmxes/${context.parfzsmx}/save`,data,isloading);
+        }
         let masterData:any = {};
         Object.assign(data,masterData);
             let res:any = await  Http.getInstance().post(`/parfzsmxes/${context.parfzsmx}/save`,data,isloading);
@@ -158,6 +212,12 @@ export default class PARFZSMXServiceBase extends EntityService {
      * @memberof PARFZSMXServiceBase
      */
     public async Get(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.pimperson && context.parfzsmx){
+            return Http.getInstance().get(`/pimpeople/${context.pimperson}/parfzsmxes/${context.parfzsmx}`,isloading);
+        }
+        if(context.partzgg && context.parfzsmx){
+            return Http.getInstance().get(`/partzggs/${context.partzgg}/parfzsmxes/${context.parfzsmx}`,isloading);
+        }
             let res:any = await Http.getInstance().get(`/parfzsmxes/${context.parfzsmx}`,isloading);
             return res;
 
@@ -173,6 +233,14 @@ export default class PARFZSMXServiceBase extends EntityService {
      * @memberof PARFZSMXServiceBase
      */
     public async FetchDefault(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.pimperson && true){
+            let tempData:any = JSON.parse(JSON.stringify(data));
+            return Http.getInstance().get(`/pimpeople/${context.pimperson}/parfzsmxes/fetchdefault`,tempData,isloading);
+        }
+        if(context.partzgg && true){
+            let tempData:any = JSON.parse(JSON.stringify(data));
+            return Http.getInstance().get(`/partzggs/${context.partzgg}/parfzsmxes/fetchdefault`,tempData,isloading);
+        }
         let tempData:any = JSON.parse(JSON.stringify(data));
         return Http.getInstance().get(`/parfzsmxes/fetchdefault`,tempData,isloading);
     }
