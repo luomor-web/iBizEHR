@@ -705,6 +705,28 @@ export default {
 			tip: "Help",
 		},
 	},
+	gridviewtoolbar_toolbar: {
+		tbitem3: {
+			caption: "New",
+			tip: "New",
+		},
+		tbitem8: {
+			caption: "Remove",
+			tip: "Remove {0}",
+		},
+		tbitem19: {
+			caption: "Filter",
+			tip: "Filter",
+		},
+		tbitem13: {
+			caption: "Export",
+			tip: "Export {0} Data To Excel",
+		},
+		tbitem18: {
+			caption: "Help",
+			tip: "Help",
+		},
+	},
 	bmbzglgridviewtoolbar_toolbar: {
 		tbitem3: {
 			caption: "New",
@@ -859,28 +881,6 @@ export default {
 		tbitem19: {
 			caption: "Filter",
 			tip: "Filter",
-		},
-	},
-	gridviewtoolbar_toolbar: {
-		tbitem3: {
-			caption: "New",
-			tip: "New",
-		},
-		tbitem8: {
-			caption: "Remove",
-			tip: "Remove {0}",
-		},
-		tbitem19: {
-			caption: "Filter",
-			tip: "Filter",
-		},
-		tbitem13: {
-			caption: "Export",
-			tip: "Export {0} Data To Excel",
-		},
-		tbitem18: {
-			caption: "Help",
-			tip: "Help",
 		},
 	},
 	bzcxgridviewtoolbar_toolbar: {

@@ -704,6 +704,28 @@ export default {
 			tip: '帮助',
 		},
 	},
+	gridviewtoolbar_toolbar: {
+		tbitem3: {
+			caption: '新建',
+			tip: '新建',
+		},
+		tbitem8: {
+			caption: '删除',
+			tip: '删除',
+		},
+		tbitem19: {
+			caption: '过滤',
+			tip: '过滤',
+		},
+		tbitem13: {
+			caption: '导出',
+			tip: '导出',
+		},
+		tbitem18: {
+			caption: '帮助',
+			tip: '帮助',
+		},
+	},
 	bmbzglgridviewtoolbar_toolbar: {
 		tbitem3: {
 			caption: '新建',
@@ -858,28 +880,6 @@ export default {
 		tbitem19: {
 			caption: '查询',
 			tip: '查询',
-		},
-	},
-	gridviewtoolbar_toolbar: {
-		tbitem3: {
-			caption: '新建',
-			tip: '新建',
-		},
-		tbitem8: {
-			caption: '删除',
-			tip: '删除',
-		},
-		tbitem19: {
-			caption: '过滤',
-			tip: '过滤',
-		},
-		tbitem13: {
-			caption: '导出',
-			tip: '导出',
-		},
-		tbitem18: {
-			caption: '帮助',
-			tip: '帮助',
 		},
 	},
 	bzcxgridviewtoolbar_toolbar: {

@@ -48,6 +48,21 @@ const router = new Router({
                     component: () => import('@pages/orm/ormpost-lib-grid-view/ormpost-lib-grid-view.vue'),
                 },
                 {
+                    path: 'ormduties/:ormduty?/editview/:editview?',
+                    meta: {
+                        caption: 'entities.ormduty.views.editview.caption',
+                        imgPath: '../../../img/zzgl/1/zhiwuguanli.png',
+                        iconCls: '',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'ormduties', parameterName: 'ormduty' },
+                            { pathName: 'editview', parameterName: 'editview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/orm/ormdutyedit-view/ormdutyedit-view.vue'),
+                },
+                {
                     path: 'ormposts/:ormpost?/gwxhwhgridview/:gwxhwhgridview?',
                     meta: {
                         caption: 'entities.ormpost.views.gwxhwhgridview.caption',
@@ -59,6 +74,34 @@ const router = new Router({
                         requireAuth: true,
                     },
                     component: () => import('@pages/orm/ormpostgwxhwhgrid-view/ormpostgwxhwhgrid-view.vue'),
+                },
+                {
+                    path: 'pimpeople/:pimperson?/curleaderpickupview/:curleaderpickupview?',
+                    meta: {
+                        caption: 'entities.pimperson.views.curleaderpickupview.caption',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'pimpeople', parameterName: 'pimperson' },
+                            { pathName: 'curleaderpickupview', parameterName: 'curleaderpickupview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/orm/pimpersoncur-leader-pickup-view/pimpersoncur-leader-pickup-view.vue'),
+                },
+                {
+                    path: 'ormorgs/:ormorg?/orgtreeexpview/:orgtreeexpview?',
+                    meta: {
+                        caption: 'entities.ormorg.views.orgtreeexpview.caption',
+                        imgPath: '../../../img/zzgl/1/xiangmurenyuanpeizhi.png',
+                        iconCls: '',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'ormorgs', parameterName: 'ormorg' },
+                            { pathName: 'orgtreeexpview', parameterName: 'orgtreeexpview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/orm/ormorgorg-tree-exp-view/ormorgorg-tree-exp-view.vue'),
                 },
                 {
                     path: 'ormorgdzs/:ormorgdz?/editview/:editview?',
@@ -74,17 +117,17 @@ const router = new Router({
                     component: () => import('@pages/orm/ormorgdzedit-view/ormorgdzedit-view.vue'),
                 },
                 {
-                    path: 'pimpeople/:pimperson?/pickupgridview/:pickupgridview?',
+                    path: 'ormsignorgs/:ormsignorg?/pickupgridview/:pickupgridview?',
                     meta: {
-                        caption: 'entities.pimperson.views.pickupgridview.caption',
+                        caption: 'entities.ormsignorg.views.pickupgridview.caption',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'pimpeople', parameterName: 'pimperson' },
+                            { pathName: 'ormsignorgs', parameterName: 'ormsignorg' },
                             { pathName: 'pickupgridview', parameterName: 'pickupgridview' },
                         ],
                         requireAuth: true,
                     },
-                    component: () => import('@pages/orm/pimpersonpickup-grid-view/pimpersonpickup-grid-view.vue'),
+                    component: () => import('@pages/orm/orm-sign-org-pickup-grid-view/orm-sign-org-pickup-grid-view.vue'),
                 },
                 {
                     path: 'ormduties/:ormduty?/gridview/:gridview?',
@@ -102,6 +145,19 @@ const router = new Router({
                     component: () => import('@pages/orm/ormdutygrid-view/ormdutygrid-view.vue'),
                 },
                 {
+                    path: 'ormorgs/:ormorg?/pickupview/:pickupview?',
+                    meta: {
+                        caption: 'entities.ormorg.views.pickupview.caption',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'ormorgs', parameterName: 'ormorg' },
+                            { pathName: 'pickupview', parameterName: 'pickupview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/orm/ormorgpickup-view/ormorgpickup-view.vue'),
+                },
+                {
                     path: 'ormerporgs/:ormerporg?/legalmpickupview/:legalmpickupview?',
                     meta: {
                         caption: 'entities.ormerporg.views.legalmpickupview.caption',
@@ -113,19 +169,6 @@ const router = new Router({
                         requireAuth: true,
                     },
                     component: () => import('@pages/orm/ormerporglegal-mpickup-view/ormerporglegal-mpickup-view.vue'),
-                },
-                {
-                    path: 'ormposts/:ormpost?/pickupview/:pickupview?',
-                    meta: {
-                        caption: 'entities.ormpost.views.pickupview.caption',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'ormposts', parameterName: 'ormpost' },
-                            { pathName: 'pickupview', parameterName: 'pickupview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/orm/ormpostpickup-view/ormpostpickup-view.vue'),
                 },
                 {
                     path: 'ormpostlibs/:ormpostlib?/pickupgridview/:pickupgridview?',
@@ -141,44 +184,58 @@ const router = new Router({
                     component: () => import('@pages/orm/ormpost-lib-pickup-grid-view/ormpost-lib-pickup-grid-view.vue'),
                 },
                 {
-                    path: 'ormposts/:ormpost?/gwbzxzpickupgridview/:gwbzxzpickupgridview?',
+                    path: 'ormorgs/:ormorg?/sjorgpickupgridview/:sjorgpickupgridview?',
                     meta: {
-                        caption: 'entities.ormpost.views.gwbzxzpickupgridview.caption',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'ormposts', parameterName: 'ormpost' },
-                            { pathName: 'gwbzxzpickupgridview', parameterName: 'gwbzxzpickupgridview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/orm/ormpostgwbzxzpickup-grid-view/ormpostgwbzxzpickup-grid-view.vue'),
-                },
-                {
-                    path: 'ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/pickupview/:pickupview?',
-                    meta: {
-                        caption: 'entities.ormorgsector.views.pickupview.caption',
+                        caption: 'entities.ormorg.views.sjorgpickupgridview.caption',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'ormorgs', parameterName: 'ormorg' },
-                            { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
-                            { pathName: 'pickupview', parameterName: 'pickupview' },
+                            { pathName: 'sjorgpickupgridview', parameterName: 'sjorgpickupgridview' },
                         ],
                         requireAuth: true,
                     },
-                    component: () => import('@pages/orm/ormorgsectorpickup-view/ormorgsectorpickup-view.vue'),
+                    component: () => import('@pages/orm/ormorgsjorg-pickup-grid-view/ormorgsjorg-pickup-grid-view.vue'),
                 },
                 {
-                    path: 'ormorgsectors/:ormorgsector?/pickupview/:pickupview?',
+                    path: 'ormxmgls/:ormxmgl?/gridview/:gridview?',
                     meta: {
-                        caption: 'entities.ormorgsector.views.pickupview.caption',
+                        caption: 'entities.ormxmgl.views.gridview.caption',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
-                            { pathName: 'pickupview', parameterName: 'pickupview' },
+                            { pathName: 'ormxmgls', parameterName: 'ormxmgl' },
+                            { pathName: 'gridview', parameterName: 'gridview' },
                         ],
                         requireAuth: true,
                     },
-                    component: () => import('@pages/orm/ormorgsectorpickup-view/ormorgsectorpickup-view.vue'),
+                    component: () => import('@pages/orm/ormxmglgrid-view/ormxmglgrid-view.vue'),
+                },
+                {
+                    path: 'ormpostlibs/:ormpostlib?/editview/:editview?',
+                    meta: {
+                        caption: 'entities.ormpostlib.views.editview.caption',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'ormpostlibs', parameterName: 'ormpostlib' },
+                            { pathName: 'editview', parameterName: 'editview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/orm/ormpost-lib-edit-view/ormpost-lib-edit-view.vue'),
+                },
+                {
+                    path: 'ormorgdzs/:ormorgdz?/gridview/:gridview?',
+                    meta: {
+                        caption: 'entities.ormorgdz.views.gridview.caption',
+                        imgPath: '../../../img/pzgl/1/rencaixulie.png',
+                        iconCls: '',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'ormorgdzs', parameterName: 'ormorgdz' },
+                            { pathName: 'gridview', parameterName: 'gridview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/orm/ormorgdzgrid-view/ormorgdzgrid-view.vue'),
                 },
                 {
                     path: 'contractsignorgs/:contractsignorg?/gridview/:gridview?',
@@ -196,6 +253,19 @@ const router = new Router({
                     component: () => import('@pages/orm/contract-sign-orggrid-view/contract-sign-orggrid-view.vue'),
                 },
                 {
+                    path: 'ormxmbqs/:ormxmbq?/gridview/:gridview?',
+                    meta: {
+                        caption: 'entities.ormxmbq.views.gridview.caption',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'ormxmbqs', parameterName: 'ormxmbq' },
+                            { pathName: 'gridview', parameterName: 'gridview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/orm/ormxmbqgrid-view/ormxmbqgrid-view.vue'),
+                },
+                {
                     path: 'ormorgs/:ormorg?/sjorgpickupview/:sjorgpickupview?',
                     meta: {
                         caption: 'entities.ormorg.views.sjorgpickupview.caption',
@@ -207,6 +277,21 @@ const router = new Router({
                         requireAuth: true,
                     },
                     component: () => import('@pages/orm/ormorgsjorg-pickup-view/ormorgsjorg-pickup-view.vue'),
+                },
+                {
+                    path: 'ormbmkqdzs/:ormbmkqdz?/bmkqdzgridview/:bmkqdzgridview?',
+                    meta: {
+                        caption: 'entities.ormbmkqdz.views.bmkqdzgridview.caption',
+                        imgPath: '../../../img/zzgl/1/bumenguanli.png',
+                        iconCls: '',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'ormbmkqdzs', parameterName: 'ormbmkqdz' },
+                            { pathName: 'bmkqdzgridview', parameterName: 'bmkqdzgridview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/orm/ormbmkqdzbmkqdzgrid-view/ormbmkqdzbmkqdzgrid-view.vue'),
                 },
                 {
                     path: 'ormposts/:ormpost?/ormpostdetails/:ormpostdetails?/editview/:editview?',
@@ -248,952 +333,6 @@ const router = new Router({
                         requireAuth: true,
                     },
                     component: () => import('@pages/orm/ormpost-details-edit-view/ormpost-details-edit-view.vue'),
-                },
-                {
-                    path: 'ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/ormxmbmxes/:ormxmbmx?/gridview/:gridview?',
-                    meta: {
-                        caption: 'entities.ormxmbmx.views.gridview.caption',
-                        imgPath: '../../../img/zzgl/1/xiangmurenyuanpeizhi.png',
-                        iconCls: '',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'ormorgs', parameterName: 'ormorg' },
-                            { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
-                            { pathName: 'ormxmbmxes', parameterName: 'ormxmbmx' },
-                            { pathName: 'gridview', parameterName: 'gridview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/orm/ormxmbmxgrid-view/ormxmbmxgrid-view.vue'),
-                },
-                {
-                    path: 'pimpeople/:pimperson?/ormxmbmxes/:ormxmbmx?/gridview/:gridview?',
-                    meta: {
-                        caption: 'entities.ormxmbmx.views.gridview.caption',
-                        imgPath: '../../../img/zzgl/1/xiangmurenyuanpeizhi.png',
-                        iconCls: '',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'pimpeople', parameterName: 'pimperson' },
-                            { pathName: 'ormxmbmxes', parameterName: 'ormxmbmx' },
-                            { pathName: 'gridview', parameterName: 'gridview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/orm/ormxmbmxgrid-view/ormxmbmxgrid-view.vue'),
-                },
-                {
-                    path: 'ormorgsectors/:ormorgsector?/ormxmbmxes/:ormxmbmx?/gridview/:gridview?',
-                    meta: {
-                        caption: 'entities.ormxmbmx.views.gridview.caption',
-                        imgPath: '../../../img/zzgl/1/xiangmurenyuanpeizhi.png',
-                        iconCls: '',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
-                            { pathName: 'ormxmbmxes', parameterName: 'ormxmbmx' },
-                            { pathName: 'gridview', parameterName: 'gridview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/orm/ormxmbmxgrid-view/ormxmbmxgrid-view.vue'),
-                },
-                {
-                    path: 'ormxmbmxes/:ormxmbmx?/gridview/:gridview?',
-                    meta: {
-                        caption: 'entities.ormxmbmx.views.gridview.caption',
-                        imgPath: '../../../img/zzgl/1/xiangmurenyuanpeizhi.png',
-                        iconCls: '',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'ormxmbmxes', parameterName: 'ormxmbmx' },
-                            { pathName: 'gridview', parameterName: 'gridview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/orm/ormxmbmxgrid-view/ormxmbmxgrid-view.vue'),
-                },
-                {
-                    path: 'ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/pickupgridview/:pickupgridview?',
-                    meta: {
-                        caption: 'entities.ormorgsector.views.pickupgridview.caption',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'ormorgs', parameterName: 'ormorg' },
-                            { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
-                            { pathName: 'pickupgridview', parameterName: 'pickupgridview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/orm/ormorgsectorpickup-grid-view/ormorgsectorpickup-grid-view.vue'),
-                },
-                {
-                    path: 'ormorgsectors/:ormorgsector?/pickupgridview/:pickupgridview?',
-                    meta: {
-                        caption: 'entities.ormorgsector.views.pickupgridview.caption',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
-                            { pathName: 'pickupgridview', parameterName: 'pickupgridview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/orm/ormorgsectorpickup-grid-view/ormorgsectorpickup-grid-view.vue'),
-                },
-                {
-                    path: 'ormorgs/:ormorg?/allleveltwoorgpickupgridview/:allleveltwoorgpickupgridview?',
-                    meta: {
-                        caption: 'entities.ormorg.views.allleveltwoorgpickupgridview.caption',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'ormorgs', parameterName: 'ormorg' },
-                            { pathName: 'allleveltwoorgpickupgridview', parameterName: 'allleveltwoorgpickupgridview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/orm/ormorgall-level-two-org-pickup-grid-view/ormorgall-level-two-org-pickup-grid-view.vue'),
-                },
-                {
-                    path: 'ormpostlibs/:ormpostlib?/pickupview/:pickupview?',
-                    meta: {
-                        caption: 'entities.ormpostlib.views.pickupview.caption',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'ormpostlibs', parameterName: 'ormpostlib' },
-                            { pathName: 'pickupview', parameterName: 'pickupview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/orm/ormpost-lib-pickup-view/ormpost-lib-pickup-view.vue'),
-                },
-                {
-                    path: 'ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/ormbmgwbzs/:ormbmgwbz?/editview/:editview?',
-                    meta: {
-                        caption: 'entities.ormbmgwbz.views.editview.caption',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'ormorgs', parameterName: 'ormorg' },
-                            { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
-                            { pathName: 'ormbmgwbzs', parameterName: 'ormbmgwbz' },
-                            { pathName: 'editview', parameterName: 'editview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/orm/ormbmgwbzedit-view/ormbmgwbzedit-view.vue'),
-                },
-                {
-                    path: 'ormposts/:ormpost?/ormbmgwbzs/:ormbmgwbz?/editview/:editview?',
-                    meta: {
-                        caption: 'entities.ormbmgwbz.views.editview.caption',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'ormposts', parameterName: 'ormpost' },
-                            { pathName: 'ormbmgwbzs', parameterName: 'ormbmgwbz' },
-                            { pathName: 'editview', parameterName: 'editview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/orm/ormbmgwbzedit-view/ormbmgwbzedit-view.vue'),
-                },
-                {
-                    path: 'ormorgsectors/:ormorgsector?/ormbmgwbzs/:ormbmgwbz?/editview/:editview?',
-                    meta: {
-                        caption: 'entities.ormbmgwbz.views.editview.caption',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
-                            { pathName: 'ormbmgwbzs', parameterName: 'ormbmgwbz' },
-                            { pathName: 'editview', parameterName: 'editview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/orm/ormbmgwbzedit-view/ormbmgwbzedit-view.vue'),
-                },
-                {
-                    path: 'ormbmgwbzs/:ormbmgwbz?/editview/:editview?',
-                    meta: {
-                        caption: 'entities.ormbmgwbz.views.editview.caption',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'ormbmgwbzs', parameterName: 'ormbmgwbz' },
-                            { pathName: 'editview', parameterName: 'editview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/orm/ormbmgwbzedit-view/ormbmgwbzedit-view.vue'),
-                },
-                {
-                    path: 'ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/pxmbpickupgridview/:pxmbpickupgridview?',
-                    meta: {
-                        caption: 'entities.ormorgsector.views.pxmbpickupgridview.caption',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'ormorgs', parameterName: 'ormorg' },
-                            { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
-                            { pathName: 'pxmbpickupgridview', parameterName: 'pxmbpickupgridview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/orm/ormorgsectorpxmbpickup-grid-view/ormorgsectorpxmbpickup-grid-view.vue'),
-                },
-                {
-                    path: 'ormorgsectors/:ormorgsector?/pxmbpickupgridview/:pxmbpickupgridview?',
-                    meta: {
-                        caption: 'entities.ormorgsector.views.pxmbpickupgridview.caption',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
-                            { pathName: 'pxmbpickupgridview', parameterName: 'pxmbpickupgridview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/orm/ormorgsectorpxmbpickup-grid-view/ormorgsectorpxmbpickup-grid-view.vue'),
-                },
-                {
-                    path: 'ormorgs/:ormorg?/xmbqpickupgridview/:xmbqpickupgridview?',
-                    meta: {
-                        caption: 'entities.ormorg.views.xmbqpickupgridview.caption',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'ormorgs', parameterName: 'ormorg' },
-                            { pathName: 'xmbqpickupgridview', parameterName: 'xmbqpickupgridview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/orm/ormorgxmbqpickup-grid-view/ormorgxmbqpickup-grid-view.vue'),
-                },
-                {
-                    path: 'ormpostlibs/:ormpostlib?/mpickupview/:mpickupview?',
-                    meta: {
-                        caption: 'entities.ormpostlib.views.mpickupview.caption',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'ormpostlibs', parameterName: 'ormpostlib' },
-                            { pathName: 'mpickupview', parameterName: 'mpickupview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/orm/ormpost-lib-mpickup-view/ormpost-lib-mpickup-view.vue'),
-                },
-                {
-                    path: 'contractsignorgs/:contractsignorg?/editview/:editview?',
-                    meta: {
-                        caption: 'entities.contractsignorg.views.editview.caption',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'contractsignorgs', parameterName: 'contractsignorg' },
-                            { pathName: 'editview', parameterName: 'editview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/orm/contract-sign-orgedit-view/contract-sign-orgedit-view.vue'),
-                },
-                {
-                    path: 'ormorgs/:ormorg?/allleveltwoorgpickupview/:allleveltwoorgpickupview?',
-                    meta: {
-                        caption: 'entities.ormorg.views.allleveltwoorgpickupview.caption',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'ormorgs', parameterName: 'ormorg' },
-                            { pathName: 'allleveltwoorgpickupview', parameterName: 'allleveltwoorgpickupview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/orm/ormorgall-level-two-org-pickup-view/ormorgall-level-two-org-pickup-view.vue'),
-                },
-                {
-                    path: 'ormorginfos/:ormorginfo?/orgtreeexpview/:orgtreeexpview?',
-                    meta: {
-                        caption: 'entities.ormorginfo.views.orgtreeexpview.caption',
-                        imgPath: '../../../img/zzgl/1/xiangmurenyuanpeizhi.png',
-                        iconCls: '',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'ormorginfos', parameterName: 'ormorginfo' },
-                            { pathName: 'orgtreeexpview', parameterName: 'orgtreeexpview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/orm/ormorginfo-org-tree-exp-view/ormorginfo-org-tree-exp-view.vue'),
-                },
-                {
-                    path: 'ormposts/:ormpost?/mpickupview/:mpickupview?',
-                    meta: {
-                        caption: 'entities.ormpost.views.mpickupview.caption',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'ormposts', parameterName: 'ormpost' },
-                            { pathName: 'mpickupview', parameterName: 'mpickupview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/orm/ormpostmpickup-view/ormpostmpickup-view.vue'),
-                },
-                {
-                    path: 'ormxmgls/:ormxmgl?/pickupgridview/:pickupgridview?',
-                    meta: {
-                        caption: 'entities.ormxmgl.views.pickupgridview.caption',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'ormxmgls', parameterName: 'ormxmgl' },
-                            { pathName: 'pickupgridview', parameterName: 'pickupgridview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/orm/ormxmglpickup-grid-view/ormxmglpickup-grid-view.vue'),
-                },
-                {
-                    path: 'ormxmgls/:ormxmgl?/editview/:editview?',
-                    meta: {
-                        caption: 'entities.ormxmgl.views.editview.caption',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'ormxmgls', parameterName: 'ormxmgl' },
-                            { pathName: 'editview', parameterName: 'editview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/orm/ormxmgledit-view/ormxmgledit-view.vue'),
-                },
-                {
-                    path: 'ormerporgs/:ormerporg?/suborgsectorgridview/:suborgsectorgridview?',
-                    meta: {
-                        caption: 'entities.ormerporg.views.suborgsectorgridview.caption',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'ormerporgs', parameterName: 'ormerporg' },
-                            { pathName: 'suborgsectorgridview', parameterName: 'suborgsectorgridview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/orm/ormerporgsub-orgsector-grid-view/ormerporgsub-orgsector-grid-view.vue'),
-                },
-                {
-                    path: 'ormorginfos/:ormorginfo?/subsubsuborggridview/:subsubsuborggridview?',
-                    meta: {
-                        caption: 'entities.ormorginfo.views.subsubsuborggridview.caption',
-                        imgPath: '../../../img/pzgl/1/rencaixulie.png',
-                        iconCls: '',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'ormorginfos', parameterName: 'ormorginfo' },
-                            { pathName: 'subsubsuborggridview', parameterName: 'subsubsuborggridview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/orm/ormorginfo-sub-sub-sub-org-grid-view/ormorginfo-sub-sub-sub-org-grid-view.vue'),
-                },
-                {
-                    path: 'ormorgs/:ormorg?/editview/:editview?',
-                    meta: {
-                        caption: 'entities.ormorg.views.editview.caption',
-                        imgPath: '../../../img/zzgl/1/zuzhiguanli.png',
-                        iconCls: '',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'ormorgs', parameterName: 'ormorg' },
-                            { pathName: 'editview', parameterName: 'editview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/orm/ormorgedit-view/ormorgedit-view.vue'),
-                },
-                {
-                    path: 'ormerporgs/:ormerporg?/orgsectorgridview/:orgsectorgridview?',
-                    meta: {
-                        caption: 'entities.ormerporg.views.orgsectorgridview.caption',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'ormerporgs', parameterName: 'ormerporg' },
-                            { pathName: 'orgsectorgridview', parameterName: 'orgsectorgridview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/orm/ormerporgorgsector-grid-view/ormerporgorgsector-grid-view.vue'),
-                },
-                {
-                    path: 'ormorginfos/:ormorginfo?/orgtreegridview/:orgtreegridview?',
-                    meta: {
-                        caption: 'entities.ormorginfo.views.orgtreegridview.caption',
-                        imgPath: '../../../img/pzgl/1/rencaixulie.png',
-                        iconCls: '',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'ormorginfos', parameterName: 'ormorginfo' },
-                            { pathName: 'orgtreegridview', parameterName: 'orgtreegridview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/orm/ormorginfo-org-tree-grid-view/ormorginfo-org-tree-grid-view.vue'),
-                },
-                {
-                    path: 'ormsignorgs/:ormsignorg?/pickupview/:pickupview?',
-                    meta: {
-                        caption: 'entities.ormsignorg.views.pickupview.caption',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'ormsignorgs', parameterName: 'ormsignorg' },
-                            { pathName: 'pickupview', parameterName: 'pickupview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/orm/orm-sign-org-pickup-view/orm-sign-org-pickup-view.vue'),
-                },
-                {
-                    path: 'ormorginfos/:ormorginfo?/subsuborggridview/:subsuborggridview?',
-                    meta: {
-                        caption: 'entities.ormorginfo.views.subsuborggridview.caption',
-                        imgPath: '../../../img/pzgl/1/rencaixulie.png',
-                        iconCls: '',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'ormorginfos', parameterName: 'ormorginfo' },
-                            { pathName: 'subsuborggridview', parameterName: 'subsuborggridview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/orm/ormorginfo-sub-sub-org-grid-view/ormorginfo-sub-sub-org-grid-view.vue'),
-                },
-                {
-                    path: 'ormerporgs/:ormerporg?/gridview/:gridview?',
-                    meta: {
-                        caption: 'entities.ormerporg.views.gridview.caption',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'ormerporgs', parameterName: 'ormerporg' },
-                            { pathName: 'gridview', parameterName: 'gridview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/orm/ormerporggrid-view/ormerporggrid-view.vue'),
-                },
-                {
-                    path: 'ormduties/:ormduty?/estmanmpickupview/:estmanmpickupview?',
-                    meta: {
-                        caption: 'entities.ormduty.views.estmanmpickupview.caption',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'ormduties', parameterName: 'ormduty' },
-                            { pathName: 'estmanmpickupview', parameterName: 'estmanmpickupview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/orm/ormdutyest-man-mpickup-view/ormdutyest-man-mpickup-view.vue'),
-                },
-                {
-                    path: 'ormtitles/:ormtitle?/pickupgridview/:pickupgridview?',
-                    meta: {
-                        caption: 'entities.ormtitle.views.pickupgridview.caption',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'ormtitles', parameterName: 'ormtitle' },
-                            { pathName: 'pickupgridview', parameterName: 'pickupgridview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/orm/ormtitlepickup-grid-view/ormtitlepickup-grid-view.vue'),
-                },
-                {
-                    path: 'ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/xmbbzgleditview/:xmbbzgleditview?',
-                    meta: {
-                        caption: 'entities.ormorgsector.views.xmbbzgleditview.caption',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'ormorgs', parameterName: 'ormorg' },
-                            { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
-                            { pathName: 'xmbbzgleditview', parameterName: 'xmbbzgleditview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/orm/ormorgsectorxmbbzgledit-view/ormorgsectorxmbbzgledit-view.vue'),
-                },
-                {
-                    path: 'ormorgsectors/:ormorgsector?/xmbbzgleditview/:xmbbzgleditview?',
-                    meta: {
-                        caption: 'entities.ormorgsector.views.xmbbzgleditview.caption',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
-                            { pathName: 'xmbbzgleditview', parameterName: 'xmbbzgleditview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/orm/ormorgsectorxmbbzgledit-view/ormorgsectorxmbbzgledit-view.vue'),
-                },
-                {
-                    path: 'ormduties/:ormduty?/estmanpickupgridview/:estmanpickupgridview?',
-                    meta: {
-                        caption: 'entities.ormduty.views.estmanpickupgridview.caption',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'ormduties', parameterName: 'ormduty' },
-                            { pathName: 'estmanpickupgridview', parameterName: 'estmanpickupgridview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/orm/ormdutyest-man-pickup-grid-view/ormdutyest-man-pickup-grid-view.vue'),
-                },
-                {
-                    path: 'ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/editview/:editview?',
-                    meta: {
-                        caption: 'entities.ormorgsector.views.editview.caption',
-                        imgPath: '../../../img/zzgl/1/bumenguanli.png',
-                        iconCls: '',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'ormorgs', parameterName: 'ormorg' },
-                            { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
-                            { pathName: 'editview', parameterName: 'editview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/orm/ormorgsectoredit-view/ormorgsectoredit-view.vue'),
-                },
-                {
-                    path: 'ormorgsectors/:ormorgsector?/editview/:editview?',
-                    meta: {
-                        caption: 'entities.ormorgsector.views.editview.caption',
-                        imgPath: '../../../img/zzgl/1/bumenguanli.png',
-                        iconCls: '',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
-                            { pathName: 'editview', parameterName: 'editview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/orm/ormorgsectoredit-view/ormorgsectoredit-view.vue'),
-                },
-                {
-                    path: 'ormerporgs/:ormerporg?/editview/:editview?',
-                    meta: {
-                        caption: 'entities.ormerporg.views.editview.caption',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'ormerporgs', parameterName: 'ormerporg' },
-                            { pathName: 'editview', parameterName: 'editview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/orm/ormerporgedit-view/ormerporgedit-view.vue'),
-                },
-                {
-                    path: 'ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/ormdepestmen/:ormdepestman?/zweditview/:zweditview?',
-                    meta: {
-                        caption: 'entities.ormdepestman.views.zweditview.caption',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'ormorgs', parameterName: 'ormorg' },
-                            { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
-                            { pathName: 'ormdepestmen', parameterName: 'ormdepestman' },
-                            { pathName: 'zweditview', parameterName: 'zweditview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/orm/ormdep-est-man-zwedit-view/ormdep-est-man-zwedit-view.vue'),
-                },
-                {
-                    path: 'ormorgsectors/:ormorgsector?/ormdepestmen/:ormdepestman?/zweditview/:zweditview?',
-                    meta: {
-                        caption: 'entities.ormdepestman.views.zweditview.caption',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
-                            { pathName: 'ormdepestmen', parameterName: 'ormdepestman' },
-                            { pathName: 'zweditview', parameterName: 'zweditview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/orm/ormdep-est-man-zwedit-view/ormdep-est-man-zwedit-view.vue'),
-                },
-                {
-                    path: 'ormduties/:ormduty?/ormdepestmen/:ormdepestman?/zweditview/:zweditview?',
-                    meta: {
-                        caption: 'entities.ormdepestman.views.zweditview.caption',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'ormduties', parameterName: 'ormduty' },
-                            { pathName: 'ormdepestmen', parameterName: 'ormdepestman' },
-                            { pathName: 'zweditview', parameterName: 'zweditview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/orm/ormdep-est-man-zwedit-view/ormdep-est-man-zwedit-view.vue'),
-                },
-                {
-                    path: 'ormdepestmen/:ormdepestman?/zweditview/:zweditview?',
-                    meta: {
-                        caption: 'entities.ormdepestman.views.zweditview.caption',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'ormdepestmen', parameterName: 'ormdepestman' },
-                            { pathName: 'zweditview', parameterName: 'zweditview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/orm/ormdep-est-man-zwedit-view/ormdep-est-man-zwedit-view.vue'),
-                },
-                {
-                    path: 'ormduties/:ormduty?/editview/:editview?',
-                    meta: {
-                        caption: 'entities.ormduty.views.editview.caption',
-                        imgPath: '../../../img/zzgl/1/zhiwuguanli.png',
-                        iconCls: '',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'ormduties', parameterName: 'ormduty' },
-                            { pathName: 'editview', parameterName: 'editview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/orm/ormdutyedit-view/ormdutyedit-view.vue'),
-                },
-                {
-                    path: 'ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/ormxmbmxes/:ormxmbmx?/editview/:editview?',
-                    meta: {
-                        caption: 'entities.ormxmbmx.views.editview.caption',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'ormorgs', parameterName: 'ormorg' },
-                            { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
-                            { pathName: 'ormxmbmxes', parameterName: 'ormxmbmx' },
-                            { pathName: 'editview', parameterName: 'editview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/orm/ormxmbmxedit-view/ormxmbmxedit-view.vue'),
-                },
-                {
-                    path: 'pimpeople/:pimperson?/ormxmbmxes/:ormxmbmx?/editview/:editview?',
-                    meta: {
-                        caption: 'entities.ormxmbmx.views.editview.caption',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'pimpeople', parameterName: 'pimperson' },
-                            { pathName: 'ormxmbmxes', parameterName: 'ormxmbmx' },
-                            { pathName: 'editview', parameterName: 'editview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/orm/ormxmbmxedit-view/ormxmbmxedit-view.vue'),
-                },
-                {
-                    path: 'ormorgsectors/:ormorgsector?/ormxmbmxes/:ormxmbmx?/editview/:editview?',
-                    meta: {
-                        caption: 'entities.ormxmbmx.views.editview.caption',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
-                            { pathName: 'ormxmbmxes', parameterName: 'ormxmbmx' },
-                            { pathName: 'editview', parameterName: 'editview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/orm/ormxmbmxedit-view/ormxmbmxedit-view.vue'),
-                },
-                {
-                    path: 'ormxmbmxes/:ormxmbmx?/editview/:editview?',
-                    meta: {
-                        caption: 'entities.ormxmbmx.views.editview.caption',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'ormxmbmxes', parameterName: 'ormxmbmx' },
-                            { pathName: 'editview', parameterName: 'editview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/orm/ormxmbmxedit-view/ormxmbmxedit-view.vue'),
-                },
-                {
-                    path: 'pimpeople/:pimperson?/curleaderpickupview/:curleaderpickupview?',
-                    meta: {
-                        caption: 'entities.pimperson.views.curleaderpickupview.caption',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'pimpeople', parameterName: 'pimperson' },
-                            { pathName: 'curleaderpickupview', parameterName: 'curleaderpickupview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/orm/pimpersoncur-leader-pickup-view/pimpersoncur-leader-pickup-view.vue'),
-                },
-                {
-                    path: 'ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/bmbzgleditview/:bmbzgleditview?',
-                    meta: {
-                        caption: 'entities.ormorgsector.views.bmbzgleditview.caption',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'ormorgs', parameterName: 'ormorg' },
-                            { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
-                            { pathName: 'bmbzgleditview', parameterName: 'bmbzgleditview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/orm/ormorgsectorbmbzgledit-view/ormorgsectorbmbzgledit-view.vue'),
-                },
-                {
-                    path: 'ormorgsectors/:ormorgsector?/bmbzgleditview/:bmbzgleditview?',
-                    meta: {
-                        caption: 'entities.ormorgsector.views.bmbzgleditview.caption',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
-                            { pathName: 'bmbzgleditview', parameterName: 'bmbzgleditview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/orm/ormorgsectorbmbzgledit-view/ormorgsectorbmbzgledit-view.vue'),
-                },
-                {
-                    path: 'ormorgs/:ormorg?/pickupview/:pickupview?',
-                    meta: {
-                        caption: 'entities.ormorg.views.pickupview.caption',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'ormorgs', parameterName: 'ormorg' },
-                            { pathName: 'pickupview', parameterName: 'pickupview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/orm/ormorgpickup-view/ormorgpickup-view.vue'),
-                },
-                {
-                    path: 'ormsignorgs/:ormsignorg?/pickupgridview/:pickupgridview?',
-                    meta: {
-                        caption: 'entities.ormsignorg.views.pickupgridview.caption',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'ormsignorgs', parameterName: 'ormsignorg' },
-                            { pathName: 'pickupgridview', parameterName: 'pickupgridview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/orm/orm-sign-org-pickup-grid-view/orm-sign-org-pickup-grid-view.vue'),
-                },
-                {
-                    path: 'ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/ormbmgwbzs/:ormbmgwbz?/gridview/:gridview?',
-                    meta: {
-                        caption: 'entities.ormbmgwbz.views.gridview.caption',
-                        imgPath: '../../../img/zzgl/1/xiangmurenyuanpeizhi.png',
-                        iconCls: '',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'ormorgs', parameterName: 'ormorg' },
-                            { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
-                            { pathName: 'ormbmgwbzs', parameterName: 'ormbmgwbz' },
-                            { pathName: 'gridview', parameterName: 'gridview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/orm/ormbmgwbzgrid-view/ormbmgwbzgrid-view.vue'),
-                },
-                {
-                    path: 'ormposts/:ormpost?/ormbmgwbzs/:ormbmgwbz?/gridview/:gridview?',
-                    meta: {
-                        caption: 'entities.ormbmgwbz.views.gridview.caption',
-                        imgPath: '../../../img/zzgl/1/xiangmurenyuanpeizhi.png',
-                        iconCls: '',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'ormposts', parameterName: 'ormpost' },
-                            { pathName: 'ormbmgwbzs', parameterName: 'ormbmgwbz' },
-                            { pathName: 'gridview', parameterName: 'gridview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/orm/ormbmgwbzgrid-view/ormbmgwbzgrid-view.vue'),
-                },
-                {
-                    path: 'ormorgsectors/:ormorgsector?/ormbmgwbzs/:ormbmgwbz?/gridview/:gridview?',
-                    meta: {
-                        caption: 'entities.ormbmgwbz.views.gridview.caption',
-                        imgPath: '../../../img/zzgl/1/xiangmurenyuanpeizhi.png',
-                        iconCls: '',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
-                            { pathName: 'ormbmgwbzs', parameterName: 'ormbmgwbz' },
-                            { pathName: 'gridview', parameterName: 'gridview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/orm/ormbmgwbzgrid-view/ormbmgwbzgrid-view.vue'),
-                },
-                {
-                    path: 'ormbmgwbzs/:ormbmgwbz?/gridview/:gridview?',
-                    meta: {
-                        caption: 'entities.ormbmgwbz.views.gridview.caption',
-                        imgPath: '../../../img/zzgl/1/xiangmurenyuanpeizhi.png',
-                        iconCls: '',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'ormbmgwbzs', parameterName: 'ormbmgwbz' },
-                            { pathName: 'gridview', parameterName: 'gridview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/orm/ormbmgwbzgrid-view/ormbmgwbzgrid-view.vue'),
-                },
-                {
-                    path: 'ormorgs/:ormorg?/sjorgpickupgridview/:sjorgpickupgridview?',
-                    meta: {
-                        caption: 'entities.ormorg.views.sjorgpickupgridview.caption',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'ormorgs', parameterName: 'ormorg' },
-                            { pathName: 'sjorgpickupgridview', parameterName: 'sjorgpickupgridview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/orm/ormorgsjorg-pickup-grid-view/ormorgsjorg-pickup-grid-view.vue'),
-                },
-                {
-                    path: 'ormxmgls/:ormxmgl?/gridview/:gridview?',
-                    meta: {
-                        caption: 'entities.ormxmgl.views.gridview.caption',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'ormxmgls', parameterName: 'ormxmgl' },
-                            { pathName: 'gridview', parameterName: 'gridview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/orm/ormxmglgrid-view/ormxmglgrid-view.vue'),
-                },
-                {
-                    path: 'ormxmgls/:ormxmgl?/pickupview/:pickupview?',
-                    meta: {
-                        caption: 'entities.ormxmgl.views.pickupview.caption',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'ormxmgls', parameterName: 'ormxmgl' },
-                            { pathName: 'pickupview', parameterName: 'pickupview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/orm/ormxmglpickup-view/ormxmglpickup-view.vue'),
-                },
-                {
-                    path: 'ormpostlibs/:ormpostlib?/editview/:editview?',
-                    meta: {
-                        caption: 'entities.ormpostlib.views.editview.caption',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'ormpostlibs', parameterName: 'ormpostlib' },
-                            { pathName: 'editview', parameterName: 'editview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/orm/ormpost-lib-edit-view/ormpost-lib-edit-view.vue'),
-                },
-                {
-                    path: 'ormxmbqs/:ormxmbq?/mpickupview/:mpickupview?',
-                    meta: {
-                        caption: 'entities.ormxmbq.views.mpickupview.caption',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'ormxmbqs', parameterName: 'ormxmbq' },
-                            { pathName: 'mpickupview', parameterName: 'mpickupview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/orm/ormxmbqmpickup-view/ormxmbqmpickup-view.vue'),
-                },
-                {
-                    path: 'pimpeople/:pimperson?/pickupview/:pickupview?',
-                    meta: {
-                        caption: 'entities.pimperson.views.pickupview.caption',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'pimpeople', parameterName: 'pimperson' },
-                            { pathName: 'pickupview', parameterName: 'pickupview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/orm/pimpersonpickup-view/pimpersonpickup-view.vue'),
-                },
-                {
-                    path: 'ormorgdzs/:ormorgdz?/gridview/:gridview?',
-                    meta: {
-                        caption: 'entities.ormorgdz.views.gridview.caption',
-                        imgPath: '../../../img/pzgl/1/rencaixulie.png',
-                        iconCls: '',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'ormorgdzs', parameterName: 'ormorgdz' },
-                            { pathName: 'gridview', parameterName: 'gridview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/orm/ormorgdzgrid-view/ormorgdzgrid-view.vue'),
-                },
-                {
-                    path: 'ormxmbqs/:ormxmbq?/gridview/:gridview?',
-                    meta: {
-                        caption: 'entities.ormxmbq.views.gridview.caption',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'ormxmbqs', parameterName: 'ormxmbq' },
-                            { pathName: 'gridview', parameterName: 'gridview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/orm/ormxmbqgrid-view/ormxmbqgrid-view.vue'),
-                },
-                {
-                    path: 'ormtitles/:ormtitle?/mpickupview/:mpickupview?',
-                    meta: {
-                        caption: 'entities.ormtitle.views.mpickupview.caption',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'ormtitles', parameterName: 'ormtitle' },
-                            { pathName: 'mpickupview', parameterName: 'mpickupview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/orm/ormtitlempickup-view/ormtitlempickup-view.vue'),
-                },
-                {
-                    path: 'ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/mpickupview/:mpickupview?',
-                    meta: {
-                        caption: 'entities.ormorgsector.views.mpickupview.caption',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'ormorgs', parameterName: 'ormorg' },
-                            { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
-                            { pathName: 'mpickupview', parameterName: 'mpickupview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/orm/ormorgsectormpickup-view/ormorgsectormpickup-view.vue'),
-                },
-                {
-                    path: 'ormorgsectors/:ormorgsector?/mpickupview/:mpickupview?',
-                    meta: {
-                        caption: 'entities.ormorgsector.views.mpickupview.caption',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
-                            { pathName: 'mpickupview', parameterName: 'mpickupview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/orm/ormorgsectormpickup-view/ormorgsectormpickup-view.vue'),
-                },
-                {
-                    path: 'ormbmkqdzs/:ormbmkqdz?/bmkqdzgridview/:bmkqdzgridview?',
-                    meta: {
-                        caption: 'entities.ormbmkqdz.views.bmkqdzgridview.caption',
-                        imgPath: '../../../img/zzgl/1/bumenguanli.png',
-                        iconCls: '',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'ormbmkqdzs', parameterName: 'ormbmkqdz' },
-                            { pathName: 'bmkqdzgridview', parameterName: 'bmkqdzgridview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/orm/ormbmkqdzbmkqdzgrid-view/ormbmkqdzbmkqdzgrid-view.vue'),
                 },
                 {
                     path: 'ormbmkqdzs/:ormbmkqdz?/bmkqdzeditview/:bmkqdzeditview?',
@@ -1258,6 +397,45 @@ const router = new Router({
                     component: () => import('@pages/orm/ormpost-details-grid-view/ormpost-details-grid-view.vue'),
                 },
                 {
+                    path: 'ormorgs/:ormorg?/allleveltwoorgpickupgridview/:allleveltwoorgpickupgridview?',
+                    meta: {
+                        caption: 'entities.ormorg.views.allleveltwoorgpickupgridview.caption',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'ormorgs', parameterName: 'ormorg' },
+                            { pathName: 'allleveltwoorgpickupgridview', parameterName: 'allleveltwoorgpickupgridview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/orm/ormorgall-level-two-org-pickup-grid-view/ormorgall-level-two-org-pickup-grid-view.vue'),
+                },
+                {
+                    path: 'ormpostlibs/:ormpostlib?/pickupview/:pickupview?',
+                    meta: {
+                        caption: 'entities.ormpostlib.views.pickupview.caption',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'ormpostlibs', parameterName: 'ormpostlib' },
+                            { pathName: 'pickupview', parameterName: 'pickupview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/orm/ormpost-lib-pickup-view/ormpost-lib-pickup-view.vue'),
+                },
+                {
+                    path: 'ormorgs/:ormorg?/xmbqpickupgridview/:xmbqpickupgridview?',
+                    meta: {
+                        caption: 'entities.ormorg.views.xmbqpickupgridview.caption',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'ormorgs', parameterName: 'ormorg' },
+                            { pathName: 'xmbqpickupgridview', parameterName: 'xmbqpickupgridview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/orm/ormorgxmbqpickup-grid-view/ormorgxmbqpickup-grid-view.vue'),
+                },
+                {
                     path: 'ormorgs/:ormorg?/xmbqpickupview/:xmbqpickupview?',
                     meta: {
                         caption: 'entities.ormorg.views.xmbqpickupview.caption',
@@ -1271,44 +449,74 @@ const router = new Router({
                     component: () => import('@pages/orm/ormorgxmbqpickup-view/ormorgxmbqpickup-view.vue'),
                 },
                 {
-                    path: 'ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/pxmbpickupview/:pxmbpickupview?',
+                    path: 'ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/gridview/:gridview?',
                     meta: {
-                        caption: 'entities.ormorgsector.views.pxmbpickupview.caption',
+                        caption: 'entities.ormorgsector.views.gridview.caption',
+                        imgPath: '../../../img/zzgl/1/bumenguanli.png',
+                        iconCls: '',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'ormorgs', parameterName: 'ormorg' },
                             { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
-                            { pathName: 'pxmbpickupview', parameterName: 'pxmbpickupview' },
+                            { pathName: 'gridview', parameterName: 'gridview' },
                         ],
                         requireAuth: true,
                     },
-                    component: () => import('@pages/orm/ormorgsectorpxmbpickup-view/ormorgsectorpxmbpickup-view.vue'),
+                    component: () => import('@pages/orm/ormorgsectorgrid-view/ormorgsectorgrid-view.vue'),
                 },
                 {
-                    path: 'ormorgsectors/:ormorgsector?/pxmbpickupview/:pxmbpickupview?',
+                    path: 'ormorgsectors/:ormorgsector?/gridview/:gridview?',
                     meta: {
-                        caption: 'entities.ormorgsector.views.pxmbpickupview.caption',
+                        caption: 'entities.ormorgsector.views.gridview.caption',
+                        imgPath: '../../../img/zzgl/1/bumenguanli.png',
+                        iconCls: '',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
-                            { pathName: 'pxmbpickupview', parameterName: 'pxmbpickupview' },
+                            { pathName: 'gridview', parameterName: 'gridview' },
                         ],
                         requireAuth: true,
                     },
-                    component: () => import('@pages/orm/ormorgsectorpxmbpickup-view/ormorgsectorpxmbpickup-view.vue'),
+                    component: () => import('@pages/orm/ormorgsectorgrid-view/ormorgsectorgrid-view.vue'),
                 },
                 {
-                    path: 'ormduties/:ormduty?/estmanpickupview/:estmanpickupview?',
+                    path: 'ormpostlibs/:ormpostlib?/mpickupview/:mpickupview?',
                     meta: {
-                        caption: 'entities.ormduty.views.estmanpickupview.caption',
+                        caption: 'entities.ormpostlib.views.mpickupview.caption',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'ormduties', parameterName: 'ormduty' },
-                            { pathName: 'estmanpickupview', parameterName: 'estmanpickupview' },
+                            { pathName: 'ormpostlibs', parameterName: 'ormpostlib' },
+                            { pathName: 'mpickupview', parameterName: 'mpickupview' },
                         ],
                         requireAuth: true,
                     },
-                    component: () => import('@pages/orm/ormdutyest-man-pickup-view/ormdutyest-man-pickup-view.vue'),
+                    component: () => import('@pages/orm/ormpost-lib-mpickup-view/ormpost-lib-mpickup-view.vue'),
+                },
+                {
+                    path: 'ormorgs/:ormorg?/allleveltwoorgpickupview/:allleveltwoorgpickupview?',
+                    meta: {
+                        caption: 'entities.ormorg.views.allleveltwoorgpickupview.caption',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'ormorgs', parameterName: 'ormorg' },
+                            { pathName: 'allleveltwoorgpickupview', parameterName: 'allleveltwoorgpickupview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/orm/ormorgall-level-two-org-pickup-view/ormorgall-level-two-org-pickup-view.vue'),
+                },
+                {
+                    path: 'contractsignorgs/:contractsignorg?/editview/:editview?',
+                    meta: {
+                        caption: 'entities.contractsignorg.views.editview.caption',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'contractsignorgs', parameterName: 'contractsignorg' },
+                            { pathName: 'editview', parameterName: 'editview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/orm/contract-sign-orgedit-view/contract-sign-orgedit-view.vue'),
                 },
                 {
                     path: 'ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/bzcxgridview/:bzcxgridview?',
@@ -1338,19 +546,6 @@ const router = new Router({
                     component: () => import('@pages/orm/ormorgsectorbzcxgrid-view/ormorgsectorbzcxgrid-view.vue'),
                 },
                 {
-                    path: 'ormposts/:ormpost?/gwbzxzmpickupview/:gwbzxzmpickupview?',
-                    meta: {
-                        caption: 'entities.ormpost.views.gwbzxzmpickupview.caption',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'ormposts', parameterName: 'ormpost' },
-                            { pathName: 'gwbzxzmpickupview', parameterName: 'gwbzxzmpickupview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/orm/ormpostgwbzxzmpickup-view/ormpostgwbzxzmpickup-view.vue'),
-                },
-                {
                     path: 'ormsignorgs/:ormsignorg?/gridview/:gridview?',
                     meta: {
                         caption: 'entities.ormsignorg.views.gridview.caption',
@@ -1377,81 +572,30 @@ const router = new Router({
                     component: () => import('@pages/orm/ormpostpickup-grid-view/ormpostpickup-grid-view.vue'),
                 },
                 {
-                    path: 'ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/ormdepestmen/:ormdepestman?/zwgridview/:zwgridview?',
+                    path: 'ormposts/:ormpost?/mpickupview/:mpickupview?',
                     meta: {
-                        caption: 'entities.ormdepestman.views.zwgridview.caption',
-                        imgPath: '../../../img/zzgl/1/xiangmurenyuanpeizhi.png',
-                        iconCls: '',
+                        caption: 'entities.ormpost.views.mpickupview.caption',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'ormorgs', parameterName: 'ormorg' },
-                            { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
-                            { pathName: 'ormdepestmen', parameterName: 'ormdepestman' },
-                            { pathName: 'zwgridview', parameterName: 'zwgridview' },
+                            { pathName: 'ormposts', parameterName: 'ormpost' },
+                            { pathName: 'mpickupview', parameterName: 'mpickupview' },
                         ],
                         requireAuth: true,
                     },
-                    component: () => import('@pages/orm/ormdep-est-man-zwgrid-view/ormdep-est-man-zwgrid-view.vue'),
+                    component: () => import('@pages/orm/ormpostmpickup-view/ormpostmpickup-view.vue'),
                 },
                 {
-                    path: 'ormorgsectors/:ormorgsector?/ormdepestmen/:ormdepestman?/zwgridview/:zwgridview?',
+                    path: 'ormxmgls/:ormxmgl?/editview/:editview?',
                     meta: {
-                        caption: 'entities.ormdepestman.views.zwgridview.caption',
-                        imgPath: '../../../img/zzgl/1/xiangmurenyuanpeizhi.png',
-                        iconCls: '',
+                        caption: 'entities.ormxmgl.views.editview.caption',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
-                            { pathName: 'ormdepestmen', parameterName: 'ormdepestman' },
-                            { pathName: 'zwgridview', parameterName: 'zwgridview' },
+                            { pathName: 'ormxmgls', parameterName: 'ormxmgl' },
+                            { pathName: 'editview', parameterName: 'editview' },
                         ],
                         requireAuth: true,
                     },
-                    component: () => import('@pages/orm/ormdep-est-man-zwgrid-view/ormdep-est-man-zwgrid-view.vue'),
-                },
-                {
-                    path: 'ormduties/:ormduty?/ormdepestmen/:ormdepestman?/zwgridview/:zwgridview?',
-                    meta: {
-                        caption: 'entities.ormdepestman.views.zwgridview.caption',
-                        imgPath: '../../../img/zzgl/1/xiangmurenyuanpeizhi.png',
-                        iconCls: '',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'ormduties', parameterName: 'ormduty' },
-                            { pathName: 'ormdepestmen', parameterName: 'ormdepestman' },
-                            { pathName: 'zwgridview', parameterName: 'zwgridview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/orm/ormdep-est-man-zwgrid-view/ormdep-est-man-zwgrid-view.vue'),
-                },
-                {
-                    path: 'ormdepestmen/:ormdepestman?/zwgridview/:zwgridview?',
-                    meta: {
-                        caption: 'entities.ormdepestman.views.zwgridview.caption',
-                        imgPath: '../../../img/zzgl/1/xiangmurenyuanpeizhi.png',
-                        iconCls: '',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'ormdepestmen', parameterName: 'ormdepestman' },
-                            { pathName: 'zwgridview', parameterName: 'zwgridview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/orm/ormdep-est-man-zwgrid-view/ormdep-est-man-zwgrid-view.vue'),
-                },
-                {
-                    path: 'ormxmbqs/:ormxmbq?/pickupgridview/:pickupgridview?',
-                    meta: {
-                        caption: 'entities.ormxmbq.views.pickupgridview.caption',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'ormxmbqs', parameterName: 'ormxmbq' },
-                            { pathName: 'pickupgridview', parameterName: 'pickupgridview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/orm/ormxmbqpickup-grid-view/ormxmbqpickup-grid-view.vue'),
+                    component: () => import('@pages/orm/ormxmgledit-view/ormxmgledit-view.vue'),
                 },
                 {
                     path: 'ormerporgs/:ormerporg?/legalpickupgridview/:legalpickupgridview?',
@@ -1465,6 +609,21 @@ const router = new Router({
                         requireAuth: true,
                     },
                     component: () => import('@pages/orm/ormerporglegal-pickup-grid-view/ormerporglegal-pickup-grid-view.vue'),
+                },
+                {
+                    path: 'ormorgs/:ormorg?/editview/:editview?',
+                    meta: {
+                        caption: 'entities.ormorg.views.editview.caption',
+                        imgPath: '../../../img/zzgl/1/zuzhiguanli.png',
+                        iconCls: '',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'ormorgs', parameterName: 'ormorg' },
+                            { pathName: 'editview', parameterName: 'editview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/orm/ormorgedit-view/ormorgedit-view.vue'),
                 },
                 {
                     path: 'ormorgs/:ormorg?/pickupgridview/:pickupgridview?',
@@ -1506,17 +665,47 @@ const router = new Router({
                     component: () => import('@pages/orm/pimpersoncur-leader-pickup-grid-view/pimpersoncur-leader-pickup-grid-view.vue'),
                 },
                 {
-                    path: 'ormxmbqs/:ormxmbq?/editview/:editview?',
+                    path: 'ormorgs/:ormorg?/suborggridview/:suborggridview?',
                     meta: {
-                        caption: 'entities.ormxmbq.views.editview.caption',
+                        caption: 'entities.ormorg.views.suborggridview.caption',
+                        imgPath: '../../../img/pzgl/1/rencaixulie.png',
+                        iconCls: '',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'ormxmbqs', parameterName: 'ormxmbq' },
-                            { pathName: 'editview', parameterName: 'editview' },
+                            { pathName: 'ormorgs', parameterName: 'ormorg' },
+                            { pathName: 'suborggridview', parameterName: 'suborggridview' },
                         ],
                         requireAuth: true,
                     },
-                    component: () => import('@pages/orm/ormxmbqedit-view/ormxmbqedit-view.vue'),
+                    component: () => import('@pages/orm/ormorgsub-org-grid-view/ormorgsub-org-grid-view.vue'),
+                },
+                {
+                    path: 'ormorgs/:ormorg?/orgtreegridview/:orgtreegridview?',
+                    meta: {
+                        caption: 'entities.ormorg.views.orgtreegridview.caption',
+                        imgPath: '../../../img/pzgl/1/rencaixulie.png',
+                        iconCls: '',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'ormorgs', parameterName: 'ormorg' },
+                            { pathName: 'orgtreegridview', parameterName: 'orgtreegridview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/orm/ormorgorg-tree-grid-view/ormorgorg-tree-grid-view.vue'),
+                },
+                {
+                    path: 'ormsignorgs/:ormsignorg?/pickupview/:pickupview?',
+                    meta: {
+                        caption: 'entities.ormsignorg.views.pickupview.caption',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'ormsignorgs', parameterName: 'ormsignorg' },
+                            { pathName: 'pickupview', parameterName: 'pickupview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/orm/orm-sign-org-pickup-view/orm-sign-org-pickup-view.vue'),
                 },
                 {
                     path: 'ormposts/:ormpost?/gwxhwheditview/:gwxhwheditview?',
@@ -1532,17 +721,48 @@ const router = new Router({
                     component: () => import('@pages/orm/ormpostgwxhwhedit-view/ormpostgwxhwhedit-view.vue'),
                 },
                 {
-                    path: 'ormorginfos/:ormorginfo?/editview/:editview?',
+                    path: 'ormxmbqs/:ormxmbq?/editview/:editview?',
                     meta: {
-                        caption: 'entities.ormorginfo.views.editview.caption',
+                        caption: 'entities.ormxmbq.views.editview.caption',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'ormorginfos', parameterName: 'ormorginfo' },
+                            { pathName: 'ormxmbqs', parameterName: 'ormxmbq' },
                             { pathName: 'editview', parameterName: 'editview' },
                         ],
                         requireAuth: true,
                     },
-                    component: () => import('@pages/orm/ormorginfo-edit-view/ormorginfo-edit-view.vue'),
+                    component: () => import('@pages/orm/ormxmbqedit-view/ormxmbqedit-view.vue'),
+                },
+                {
+                    path: 'ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/editview/:editview?',
+                    meta: {
+                        caption: 'entities.ormorgsector.views.editview.caption',
+                        imgPath: '../../../img/zzgl/1/bumenguanli.png',
+                        iconCls: '',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'ormorgs', parameterName: 'ormorg' },
+                            { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
+                            { pathName: 'editview', parameterName: 'editview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/orm/ormorgsectoredit-view/ormorgsectoredit-view.vue'),
+                },
+                {
+                    path: 'ormorgsectors/:ormorgsector?/editview/:editview?',
+                    meta: {
+                        caption: 'entities.ormorgsector.views.editview.caption',
+                        imgPath: '../../../img/zzgl/1/bumenguanli.png',
+                        iconCls: '',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
+                            { pathName: 'editview', parameterName: 'editview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/orm/ormorgsectoredit-view/ormorgsectoredit-view.vue'),
                 },
             {
                 path: 'ormxmbqredirectview/:ormxmbqredirectview?',
@@ -1801,31 +1021,6 @@ const router = new Router({
         },
         component: () => import('@pages/orm/ormxmbqedit-view/ormxmbqedit-view.vue'),
     },
-    {
-        path: '/ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/pxmbpickupview/:pxmbpickupview?',
-        meta: {
-            caption: 'entities.ormorgsector.views.pxmbpickupview.caption',
-            parameters: [
-                { pathName: 'ormorgs', parameterName: 'ormorg' },
-                { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
-                { pathName: 'pxmbpickupview', parameterName: 'pxmbpickupview' },
-            ],
-            requireAuth: true,
-        },
-        component: () => import('@pages/orm/ormorgsectorpxmbpickup-view/ormorgsectorpxmbpickup-view.vue'),
-    },
-    {
-        path: '/ormorgsectors/:ormorgsector?/pxmbpickupview/:pxmbpickupview?',
-        meta: {
-            caption: 'entities.ormorgsector.views.pxmbpickupview.caption',
-            parameters: [
-                { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
-                { pathName: 'pxmbpickupview', parameterName: 'pxmbpickupview' },
-            ],
-            requireAuth: true,
-        },
-        component: () => import('@pages/orm/ormorgsectorpxmbpickup-view/ormorgsectorpxmbpickup-view.vue'),
-    },
             {
                 path: '/ormxmbqredirectview/:ormxmbqredirectview?',
                 meta: {
@@ -1885,18 +1080,6 @@ const router = new Router({
         component: () => import('@pages/orm/ormpost-lib-mpickup-view/ormpost-lib-mpickup-view.vue'),
     },
     {
-        path: '/ormxmgls/:ormxmgl?/pickupview/:pickupview?',
-        meta: {
-            caption: 'entities.ormxmgl.views.pickupview.caption',
-            parameters: [
-                { pathName: 'ormxmgls', parameterName: 'ormxmgl' },
-                { pathName: 'pickupview', parameterName: 'pickupview' },
-            ],
-            requireAuth: true,
-        },
-        component: () => import('@pages/orm/ormxmglpickup-view/ormxmglpickup-view.vue'),
-    },
-    {
         path: '/pimpeople/:pimperson?/pickupgridview/:pickupgridview?',
         meta: {
             caption: 'entities.pimperson.views.pickupgridview.caption',
@@ -1907,45 +1090,6 @@ const router = new Router({
             requireAuth: true,
         },
         component: () => import('@pages/orm/pimpersonpickup-grid-view/pimpersonpickup-grid-view.vue'),
-    },
-    {
-        path: '/ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/mpickupview/:mpickupview?',
-        meta: {
-            caption: 'entities.ormorgsector.views.mpickupview.caption',
-            parameters: [
-                { pathName: 'ormorgs', parameterName: 'ormorg' },
-                { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
-                { pathName: 'mpickupview', parameterName: 'mpickupview' },
-            ],
-            requireAuth: true,
-        },
-        component: () => import('@pages/orm/ormorgsectormpickup-view/ormorgsectormpickup-view.vue'),
-    },
-    {
-        path: '/ormorgsectors/:ormorgsector?/mpickupview/:mpickupview?',
-        meta: {
-            caption: 'entities.ormorgsector.views.mpickupview.caption',
-            parameters: [
-                { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
-                { pathName: 'mpickupview', parameterName: 'mpickupview' },
-            ],
-            requireAuth: true,
-        },
-        component: () => import('@pages/orm/ormorgsectormpickup-view/ormorgsectormpickup-view.vue'),
-    },
-    {
-        path: '/ormorginfos/:ormorginfo?/subsubsuborggridview/:subsubsuborggridview?',
-        meta: {
-            caption: 'entities.ormorginfo.views.subsubsuborggridview.caption',
-            imgPath: '../../../img/pzgl/1/rencaixulie.png',
-            iconCls: '',
-            parameters: [
-                { pathName: 'ormorginfos', parameterName: 'ormorginfo' },
-                { pathName: 'subsubsuborggridview', parameterName: 'subsubsuborggridview' },
-            ],
-            requireAuth: true,
-        },
-        component: () => import('@pages/orm/ormorginfo-sub-sub-sub-org-grid-view/ormorginfo-sub-sub-sub-org-grid-view.vue'),
     },
     {
         path: '/ormbmkqdzs/:ormbmkqdz?/editview/:editview?',
@@ -1970,66 +1114,6 @@ const router = new Router({
                 },
                 component: () => import('@pages/orm/ormdep-est-man-redirect-view/ormdep-est-man-redirect-view.vue'),
             },
-    {
-        path: '/ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/ormdepestmen/:ormdepestman?/zwgridview/:zwgridview?',
-        meta: {
-            caption: 'entities.ormdepestman.views.zwgridview.caption',
-            imgPath: '../../../img/zzgl/1/xiangmurenyuanpeizhi.png',
-            iconCls: '',
-            parameters: [
-                { pathName: 'ormorgs', parameterName: 'ormorg' },
-                { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
-                { pathName: 'ormdepestmen', parameterName: 'ormdepestman' },
-                { pathName: 'zwgridview', parameterName: 'zwgridview' },
-            ],
-            requireAuth: true,
-        },
-        component: () => import('@pages/orm/ormdep-est-man-zwgrid-view/ormdep-est-man-zwgrid-view.vue'),
-    },
-    {
-        path: '/ormorgsectors/:ormorgsector?/ormdepestmen/:ormdepestman?/zwgridview/:zwgridview?',
-        meta: {
-            caption: 'entities.ormdepestman.views.zwgridview.caption',
-            imgPath: '../../../img/zzgl/1/xiangmurenyuanpeizhi.png',
-            iconCls: '',
-            parameters: [
-                { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
-                { pathName: 'ormdepestmen', parameterName: 'ormdepestman' },
-                { pathName: 'zwgridview', parameterName: 'zwgridview' },
-            ],
-            requireAuth: true,
-        },
-        component: () => import('@pages/orm/ormdep-est-man-zwgrid-view/ormdep-est-man-zwgrid-view.vue'),
-    },
-    {
-        path: '/ormduties/:ormduty?/ormdepestmen/:ormdepestman?/zwgridview/:zwgridview?',
-        meta: {
-            caption: 'entities.ormdepestman.views.zwgridview.caption',
-            imgPath: '../../../img/zzgl/1/xiangmurenyuanpeizhi.png',
-            iconCls: '',
-            parameters: [
-                { pathName: 'ormduties', parameterName: 'ormduty' },
-                { pathName: 'ormdepestmen', parameterName: 'ormdepestman' },
-                { pathName: 'zwgridview', parameterName: 'zwgridview' },
-            ],
-            requireAuth: true,
-        },
-        component: () => import('@pages/orm/ormdep-est-man-zwgrid-view/ormdep-est-man-zwgrid-view.vue'),
-    },
-    {
-        path: '/ormdepestmen/:ormdepestman?/zwgridview/:zwgridview?',
-        meta: {
-            caption: 'entities.ormdepestman.views.zwgridview.caption',
-            imgPath: '../../../img/zzgl/1/xiangmurenyuanpeizhi.png',
-            iconCls: '',
-            parameters: [
-                { pathName: 'ormdepestmen', parameterName: 'ormdepestman' },
-                { pathName: 'zwgridview', parameterName: 'zwgridview' },
-            ],
-            requireAuth: true,
-        },
-        component: () => import('@pages/orm/ormdep-est-man-zwgrid-view/ormdep-est-man-zwgrid-view.vue'),
-    },
             {
                 path: '/contractsignorgredirectview/:contractsignorgredirectview?',
                 meta: {
@@ -2041,6 +1125,20 @@ const router = new Router({
                 },
                 component: () => import('@pages/orm/contract-sign-orgredirect-view/contract-sign-orgredirect-view.vue'),
             },
+    {
+        path: '/ormorgs/:ormorg?/orgtreeexpview/:orgtreeexpview?',
+        meta: {
+            caption: 'entities.ormorg.views.orgtreeexpview.caption',
+            imgPath: '../../../img/zzgl/1/xiangmurenyuanpeizhi.png',
+            iconCls: '',
+            parameters: [
+                { pathName: 'ormorgs', parameterName: 'ormorg' },
+                { pathName: 'orgtreeexpview', parameterName: 'orgtreeexpview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/orm/ormorgorg-tree-exp-view/ormorgorg-tree-exp-view.vue'),
+    },
             {
                 path: '/ormorgdzredirectview/:ormorgdzredirectview?',
                 meta: {
@@ -2153,30 +1251,6 @@ const router = new Router({
         component: () => import('@pages/orm/ormtitleedit-view/ormtitleedit-view.vue'),
     },
     {
-        path: '/ormduties/:ormduty?/estmanpickupview/:estmanpickupview?',
-        meta: {
-            caption: 'entities.ormduty.views.estmanpickupview.caption',
-            parameters: [
-                { pathName: 'ormduties', parameterName: 'ormduty' },
-                { pathName: 'estmanpickupview', parameterName: 'estmanpickupview' },
-            ],
-            requireAuth: true,
-        },
-        component: () => import('@pages/orm/ormdutyest-man-pickup-view/ormdutyest-man-pickup-view.vue'),
-    },
-    {
-        path: '/ormxmbqs/:ormxmbq?/mpickupview/:mpickupview?',
-        meta: {
-            caption: 'entities.ormxmbq.views.mpickupview.caption',
-            parameters: [
-                { pathName: 'ormxmbqs', parameterName: 'ormxmbq' },
-                { pathName: 'mpickupview', parameterName: 'mpickupview' },
-            ],
-            requireAuth: true,
-        },
-        component: () => import('@pages/orm/ormxmbqmpickup-view/ormxmbqmpickup-view.vue'),
-    },
-    {
         path: '/ormorgs/:ormorg?/xmbqpickupview/:xmbqpickupview?',
         meta: {
             caption: 'entities.ormorg.views.xmbqpickupview.caption',
@@ -2224,18 +1298,6 @@ const router = new Router({
             requireAuth: true,
         },
         component: () => import('@pages/orm/ormdutygrid-view/ormdutygrid-view.vue'),
-    },
-    {
-        path: '/ormtitles/:ormtitle?/mpickupview/:mpickupview?',
-        meta: {
-            caption: 'entities.ormtitle.views.mpickupview.caption',
-            parameters: [
-                { pathName: 'ormtitles', parameterName: 'ormtitle' },
-                { pathName: 'mpickupview', parameterName: 'mpickupview' },
-            ],
-            requireAuth: true,
-        },
-        component: () => import('@pages/orm/ormtitlempickup-view/ormtitlempickup-view.vue'),
     },
     {
         path: '/ormorgs/:ormorg?/editview/:editview?',
@@ -2341,32 +1403,6 @@ const router = new Router({
         },
         component: () => import('@pages/orm/ormpostmpickup-view/ormpostmpickup-view.vue'),
     },
-    {
-        path: '/ormduties/:ormduty?/estmanpickupgridview/:estmanpickupgridview?',
-        meta: {
-            caption: 'entities.ormduty.views.estmanpickupgridview.caption',
-            parameters: [
-                { pathName: 'ormduties', parameterName: 'ormduty' },
-                { pathName: 'estmanpickupgridview', parameterName: 'estmanpickupgridview' },
-            ],
-            requireAuth: true,
-        },
-        component: () => import('@pages/orm/ormdutyest-man-pickup-grid-view/ormdutyest-man-pickup-grid-view.vue'),
-    },
-    {
-        path: '/ormorginfos/:ormorginfo?/subsuborggridview/:subsuborggridview?',
-        meta: {
-            caption: 'entities.ormorginfo.views.subsuborggridview.caption',
-            imgPath: '../../../img/pzgl/1/rencaixulie.png',
-            iconCls: '',
-            parameters: [
-                { pathName: 'ormorginfos', parameterName: 'ormorginfo' },
-                { pathName: 'subsuborggridview', parameterName: 'subsuborggridview' },
-            ],
-            requireAuth: true,
-        },
-        component: () => import('@pages/orm/ormorginfo-sub-sub-org-grid-view/ormorginfo-sub-sub-org-grid-view.vue'),
-    },
             {
                 path: '/ormorgredirectview/:ormorgredirectview?',
                 meta: {
@@ -2429,56 +1465,6 @@ const router = new Router({
         component: () => import('@pages/orm/ormpost-details-edit-view/ormpost-details-edit-view.vue'),
     },
     {
-        path: '/ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/xmbbzgleditview/:xmbbzgleditview?',
-        meta: {
-            caption: 'entities.ormorgsector.views.xmbbzgleditview.caption',
-            parameters: [
-                { pathName: 'ormorgs', parameterName: 'ormorg' },
-                { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
-                { pathName: 'xmbbzgleditview', parameterName: 'xmbbzgleditview' },
-            ],
-            requireAuth: true,
-        },
-        component: () => import('@pages/orm/ormorgsectorxmbbzgledit-view/ormorgsectorxmbbzgledit-view.vue'),
-    },
-    {
-        path: '/ormorgsectors/:ormorgsector?/xmbbzgleditview/:xmbbzgleditview?',
-        meta: {
-            caption: 'entities.ormorgsector.views.xmbbzgleditview.caption',
-            parameters: [
-                { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
-                { pathName: 'xmbbzgleditview', parameterName: 'xmbbzgleditview' },
-            ],
-            requireAuth: true,
-        },
-        component: () => import('@pages/orm/ormorgsectorxmbbzgledit-view/ormorgsectorxmbbzgledit-view.vue'),
-    },
-    {
-        path: '/ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/bmbzgleditview/:bmbzgleditview?',
-        meta: {
-            caption: 'entities.ormorgsector.views.bmbzgleditview.caption',
-            parameters: [
-                { pathName: 'ormorgs', parameterName: 'ormorg' },
-                { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
-                { pathName: 'bmbzgleditview', parameterName: 'bmbzgleditview' },
-            ],
-            requireAuth: true,
-        },
-        component: () => import('@pages/orm/ormorgsectorbmbzgledit-view/ormorgsectorbmbzgledit-view.vue'),
-    },
-    {
-        path: '/ormorgsectors/:ormorgsector?/bmbzgleditview/:bmbzgleditview?',
-        meta: {
-            caption: 'entities.ormorgsector.views.bmbzgleditview.caption',
-            parameters: [
-                { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
-                { pathName: 'bmbzgleditview', parameterName: 'bmbzgleditview' },
-            ],
-            requireAuth: true,
-        },
-        component: () => import('@pages/orm/ormorgsectorbmbzgledit-view/ormorgsectorbmbzgledit-view.vue'),
-    },
-    {
         path: '/ormerporgs/:ormerporg?/editview/:editview?',
         meta: {
             caption: 'entities.ormerporg.views.editview.caption',
@@ -2501,18 +1487,6 @@ const router = new Router({
             requireAuth: true,
         },
         component: () => import('@pages/orm/ormorgall-level-two-org-pickup-view/ormorgall-level-two-org-pickup-view.vue'),
-    },
-    {
-        path: '/ormposts/:ormpost?/gwbzxzmpickupview/:gwbzxzmpickupview?',
-        meta: {
-            caption: 'entities.ormpost.views.gwbzxzmpickupview.caption',
-            parameters: [
-                { pathName: 'ormposts', parameterName: 'ormpost' },
-                { pathName: 'gwbzxzmpickupview', parameterName: 'gwbzxzmpickupview' },
-            ],
-            requireAuth: true,
-        },
-        component: () => import('@pages/orm/ormpostgwbzxzmpickup-view/ormpostgwbzxzmpickup-view.vue'),
     },
     {
         path: '/ormxmbqs/:ormxmbq?/gridview/:gridview?',
@@ -2539,45 +1513,6 @@ const router = new Router({
             requireAuth: true,
         },
         component: () => import('@pages/orm/ormbmkqdzbmkqdzgrid-view/ormbmkqdzbmkqdzgrid-view.vue'),
-    },
-    {
-        path: '/ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/pickupview/:pickupview?',
-        meta: {
-            caption: 'entities.ormorgsector.views.pickupview.caption',
-            parameters: [
-                { pathName: 'ormorgs', parameterName: 'ormorg' },
-                { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
-                { pathName: 'pickupview', parameterName: 'pickupview' },
-            ],
-            requireAuth: true,
-        },
-        component: () => import('@pages/orm/ormorgsectorpickup-view/ormorgsectorpickup-view.vue'),
-    },
-    {
-        path: '/ormorgsectors/:ormorgsector?/pickupview/:pickupview?',
-        meta: {
-            caption: 'entities.ormorgsector.views.pickupview.caption',
-            parameters: [
-                { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
-                { pathName: 'pickupview', parameterName: 'pickupview' },
-            ],
-            requireAuth: true,
-        },
-        component: () => import('@pages/orm/ormorgsectorpickup-view/ormorgsectorpickup-view.vue'),
-    },
-    {
-        path: '/ormorginfos/:ormorginfo?/orgtreegridview/:orgtreegridview?',
-        meta: {
-            caption: 'entities.ormorginfo.views.orgtreegridview.caption',
-            imgPath: '../../../img/pzgl/1/rencaixulie.png',
-            iconCls: '',
-            parameters: [
-                { pathName: 'ormorginfos', parameterName: 'ormorginfo' },
-                { pathName: 'orgtreegridview', parameterName: 'orgtreegridview' },
-            ],
-            requireAuth: true,
-        },
-        component: () => import('@pages/orm/ormorginfo-org-tree-grid-view/ormorginfo-org-tree-grid-view.vue'),
     },
     {
         path: '/ormposts/:ormpost?/pickupview/:pickupview?',
@@ -2616,18 +1551,6 @@ const router = new Router({
         component: () => import('@pages/orm/ormorgsjorg-pickup-grid-view/ormorgsjorg-pickup-grid-view.vue'),
     },
     {
-        path: '/ormerporgs/:ormerporg?/orgsectorgridview/:orgsectorgridview?',
-        meta: {
-            caption: 'entities.ormerporg.views.orgsectorgridview.caption',
-            parameters: [
-                { pathName: 'ormerporgs', parameterName: 'ormerporg' },
-                { pathName: 'orgsectorgridview', parameterName: 'orgsectorgridview' },
-            ],
-            requireAuth: true,
-        },
-        component: () => import('@pages/orm/ormerporgorgsector-grid-view/ormerporgorgsector-grid-view.vue'),
-    },
-    {
         path: '/ormorgdzs/:ormorgdz?/gridview/:gridview?',
         meta: {
             caption: 'entities.ormorgdz.views.gridview.caption',
@@ -2640,31 +1563,6 @@ const router = new Router({
             requireAuth: true,
         },
         component: () => import('@pages/orm/ormorgdzgrid-view/ormorgdzgrid-view.vue'),
-    },
-    {
-        path: '/ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/pickupgridview/:pickupgridview?',
-        meta: {
-            caption: 'entities.ormorgsector.views.pickupgridview.caption',
-            parameters: [
-                { pathName: 'ormorgs', parameterName: 'ormorg' },
-                { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
-                { pathName: 'pickupgridview', parameterName: 'pickupgridview' },
-            ],
-            requireAuth: true,
-        },
-        component: () => import('@pages/orm/ormorgsectorpickup-grid-view/ormorgsectorpickup-grid-view.vue'),
-    },
-    {
-        path: '/ormorgsectors/:ormorgsector?/pickupgridview/:pickupgridview?',
-        meta: {
-            caption: 'entities.ormorgsector.views.pickupgridview.caption',
-            parameters: [
-                { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
-                { pathName: 'pickupgridview', parameterName: 'pickupgridview' },
-            ],
-            requireAuth: true,
-        },
-        component: () => import('@pages/orm/ormorgsectorpickup-grid-view/ormorgsectorpickup-grid-view.vue'),
     },
     {
         path: '/ormpostlibs/:ormpostlib?/gridview/:gridview?',
@@ -2714,66 +1612,6 @@ const router = new Router({
         component: () => import('@pages/orm/contract-sign-orgedit-view/contract-sign-orgedit-view.vue'),
     },
     {
-        path: '/ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/ormxmbmxes/:ormxmbmx?/gridview/:gridview?',
-        meta: {
-            caption: 'entities.ormxmbmx.views.gridview.caption',
-            imgPath: '../../../img/zzgl/1/xiangmurenyuanpeizhi.png',
-            iconCls: '',
-            parameters: [
-                { pathName: 'ormorgs', parameterName: 'ormorg' },
-                { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
-                { pathName: 'ormxmbmxes', parameterName: 'ormxmbmx' },
-                { pathName: 'gridview', parameterName: 'gridview' },
-            ],
-            requireAuth: true,
-        },
-        component: () => import('@pages/orm/ormxmbmxgrid-view/ormxmbmxgrid-view.vue'),
-    },
-    {
-        path: '/pimpeople/:pimperson?/ormxmbmxes/:ormxmbmx?/gridview/:gridview?',
-        meta: {
-            caption: 'entities.ormxmbmx.views.gridview.caption',
-            imgPath: '../../../img/zzgl/1/xiangmurenyuanpeizhi.png',
-            iconCls: '',
-            parameters: [
-                { pathName: 'pimpeople', parameterName: 'pimperson' },
-                { pathName: 'ormxmbmxes', parameterName: 'ormxmbmx' },
-                { pathName: 'gridview', parameterName: 'gridview' },
-            ],
-            requireAuth: true,
-        },
-        component: () => import('@pages/orm/ormxmbmxgrid-view/ormxmbmxgrid-view.vue'),
-    },
-    {
-        path: '/ormorgsectors/:ormorgsector?/ormxmbmxes/:ormxmbmx?/gridview/:gridview?',
-        meta: {
-            caption: 'entities.ormxmbmx.views.gridview.caption',
-            imgPath: '../../../img/zzgl/1/xiangmurenyuanpeizhi.png',
-            iconCls: '',
-            parameters: [
-                { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
-                { pathName: 'ormxmbmxes', parameterName: 'ormxmbmx' },
-                { pathName: 'gridview', parameterName: 'gridview' },
-            ],
-            requireAuth: true,
-        },
-        component: () => import('@pages/orm/ormxmbmxgrid-view/ormxmbmxgrid-view.vue'),
-    },
-    {
-        path: '/ormxmbmxes/:ormxmbmx?/gridview/:gridview?',
-        meta: {
-            caption: 'entities.ormxmbmx.views.gridview.caption',
-            imgPath: '../../../img/zzgl/1/xiangmurenyuanpeizhi.png',
-            iconCls: '',
-            parameters: [
-                { pathName: 'ormxmbmxes', parameterName: 'ormxmbmx' },
-                { pathName: 'gridview', parameterName: 'gridview' },
-            ],
-            requireAuth: true,
-        },
-        component: () => import('@pages/orm/ormxmbmxgrid-view/ormxmbmxgrid-view.vue'),
-    },
-    {
         path: '/ormorgdzs/:ormorgdz?/editview/:editview?',
         meta: {
             caption: 'entities.ormorgdz.views.editview.caption',
@@ -2808,58 +1646,6 @@ const router = new Router({
             requireAuth: true,
         },
         component: () => import('@pages/orm/ormpostpickup-grid-view/ormpostpickup-grid-view.vue'),
-    },
-    {
-        path: '/ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/ormdepestmen/:ormdepestman?/zweditview/:zweditview?',
-        meta: {
-            caption: 'entities.ormdepestman.views.zweditview.caption',
-            parameters: [
-                { pathName: 'ormorgs', parameterName: 'ormorg' },
-                { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
-                { pathName: 'ormdepestmen', parameterName: 'ormdepestman' },
-                { pathName: 'zweditview', parameterName: 'zweditview' },
-            ],
-            requireAuth: true,
-        },
-        component: () => import('@pages/orm/ormdep-est-man-zwedit-view/ormdep-est-man-zwedit-view.vue'),
-    },
-    {
-        path: '/ormorgsectors/:ormorgsector?/ormdepestmen/:ormdepestman?/zweditview/:zweditview?',
-        meta: {
-            caption: 'entities.ormdepestman.views.zweditview.caption',
-            parameters: [
-                { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
-                { pathName: 'ormdepestmen', parameterName: 'ormdepestman' },
-                { pathName: 'zweditview', parameterName: 'zweditview' },
-            ],
-            requireAuth: true,
-        },
-        component: () => import('@pages/orm/ormdep-est-man-zwedit-view/ormdep-est-man-zwedit-view.vue'),
-    },
-    {
-        path: '/ormduties/:ormduty?/ormdepestmen/:ormdepestman?/zweditview/:zweditview?',
-        meta: {
-            caption: 'entities.ormdepestman.views.zweditview.caption',
-            parameters: [
-                { pathName: 'ormduties', parameterName: 'ormduty' },
-                { pathName: 'ormdepestmen', parameterName: 'ormdepestman' },
-                { pathName: 'zweditview', parameterName: 'zweditview' },
-            ],
-            requireAuth: true,
-        },
-        component: () => import('@pages/orm/ormdep-est-man-zwedit-view/ormdep-est-man-zwedit-view.vue'),
-    },
-    {
-        path: '/ormdepestmen/:ormdepestman?/zweditview/:zweditview?',
-        meta: {
-            caption: 'entities.ormdepestman.views.zweditview.caption',
-            parameters: [
-                { pathName: 'ormdepestmen', parameterName: 'ormdepestman' },
-                { pathName: 'zweditview', parameterName: 'zweditview' },
-            ],
-            requireAuth: true,
-        },
-        component: () => import('@pages/orm/ormdep-est-man-zwedit-view/ormdep-est-man-zwedit-view.vue'),
     },
             {
                 path: '/ormdutyredirectview/:ormdutyredirectview?',
@@ -3008,29 +1794,33 @@ const router = new Router({
                 component: () => import('@pages/orm/ormxmglredirect-view/ormxmglredirect-view.vue'),
             },
     {
-        path: '/ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/pxmbpickupgridview/:pxmbpickupgridview?',
+        path: '/ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/gridview/:gridview?',
         meta: {
-            caption: 'entities.ormorgsector.views.pxmbpickupgridview.caption',
+            caption: 'entities.ormorgsector.views.gridview.caption',
+            imgPath: '../../../img/zzgl/1/bumenguanli.png',
+            iconCls: '',
             parameters: [
                 { pathName: 'ormorgs', parameterName: 'ormorg' },
                 { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
-                { pathName: 'pxmbpickupgridview', parameterName: 'pxmbpickupgridview' },
+                { pathName: 'gridview', parameterName: 'gridview' },
             ],
             requireAuth: true,
         },
-        component: () => import('@pages/orm/ormorgsectorpxmbpickup-grid-view/ormorgsectorpxmbpickup-grid-view.vue'),
+        component: () => import('@pages/orm/ormorgsectorgrid-view/ormorgsectorgrid-view.vue'),
     },
     {
-        path: '/ormorgsectors/:ormorgsector?/pxmbpickupgridview/:pxmbpickupgridview?',
+        path: '/ormorgsectors/:ormorgsector?/gridview/:gridview?',
         meta: {
-            caption: 'entities.ormorgsector.views.pxmbpickupgridview.caption',
+            caption: 'entities.ormorgsector.views.gridview.caption',
+            imgPath: '../../../img/zzgl/1/bumenguanli.png',
+            iconCls: '',
             parameters: [
                 { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
-                { pathName: 'pxmbpickupgridview', parameterName: 'pxmbpickupgridview' },
+                { pathName: 'gridview', parameterName: 'gridview' },
             ],
             requireAuth: true,
         },
-        component: () => import('@pages/orm/ormorgsectorpxmbpickup-grid-view/ormorgsectorpxmbpickup-grid-view.vue'),
+        component: () => import('@pages/orm/ormorgsectorgrid-view/ormorgsectorgrid-view.vue'),
     },
     {
         path: '/ormorgs/:ormorg?/allleveltwoorgpickupgridview/:allleveltwoorgpickupgridview?',
@@ -3067,92 +1857,6 @@ const router = new Router({
             requireAuth: true,
         },
         component: () => import('@pages/orm/ormerporglegal-mpickup-view/ormerporglegal-mpickup-view.vue'),
-    },
-    {
-        path: '/ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/ormbmgwbzs/:ormbmgwbz?/gridview/:gridview?',
-        meta: {
-            caption: 'entities.ormbmgwbz.views.gridview.caption',
-            imgPath: '../../../img/zzgl/1/xiangmurenyuanpeizhi.png',
-            iconCls: '',
-            parameters: [
-                { pathName: 'ormorgs', parameterName: 'ormorg' },
-                { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
-                { pathName: 'ormbmgwbzs', parameterName: 'ormbmgwbz' },
-                { pathName: 'gridview', parameterName: 'gridview' },
-            ],
-            requireAuth: true,
-        },
-        component: () => import('@pages/orm/ormbmgwbzgrid-view/ormbmgwbzgrid-view.vue'),
-    },
-    {
-        path: '/ormposts/:ormpost?/ormbmgwbzs/:ormbmgwbz?/gridview/:gridview?',
-        meta: {
-            caption: 'entities.ormbmgwbz.views.gridview.caption',
-            imgPath: '../../../img/zzgl/1/xiangmurenyuanpeizhi.png',
-            iconCls: '',
-            parameters: [
-                { pathName: 'ormposts', parameterName: 'ormpost' },
-                { pathName: 'ormbmgwbzs', parameterName: 'ormbmgwbz' },
-                { pathName: 'gridview', parameterName: 'gridview' },
-            ],
-            requireAuth: true,
-        },
-        component: () => import('@pages/orm/ormbmgwbzgrid-view/ormbmgwbzgrid-view.vue'),
-    },
-    {
-        path: '/ormorgsectors/:ormorgsector?/ormbmgwbzs/:ormbmgwbz?/gridview/:gridview?',
-        meta: {
-            caption: 'entities.ormbmgwbz.views.gridview.caption',
-            imgPath: '../../../img/zzgl/1/xiangmurenyuanpeizhi.png',
-            iconCls: '',
-            parameters: [
-                { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
-                { pathName: 'ormbmgwbzs', parameterName: 'ormbmgwbz' },
-                { pathName: 'gridview', parameterName: 'gridview' },
-            ],
-            requireAuth: true,
-        },
-        component: () => import('@pages/orm/ormbmgwbzgrid-view/ormbmgwbzgrid-view.vue'),
-    },
-    {
-        path: '/ormbmgwbzs/:ormbmgwbz?/gridview/:gridview?',
-        meta: {
-            caption: 'entities.ormbmgwbz.views.gridview.caption',
-            imgPath: '../../../img/zzgl/1/xiangmurenyuanpeizhi.png',
-            iconCls: '',
-            parameters: [
-                { pathName: 'ormbmgwbzs', parameterName: 'ormbmgwbz' },
-                { pathName: 'gridview', parameterName: 'gridview' },
-            ],
-            requireAuth: true,
-        },
-        component: () => import('@pages/orm/ormbmgwbzgrid-view/ormbmgwbzgrid-view.vue'),
-    },
-    {
-        path: '/ormtitles/:ormtitle?/pickupgridview/:pickupgridview?',
-        meta: {
-            caption: 'entities.ormtitle.views.pickupgridview.caption',
-            parameters: [
-                { pathName: 'ormtitles', parameterName: 'ormtitle' },
-                { pathName: 'pickupgridview', parameterName: 'pickupgridview' },
-            ],
-            requireAuth: true,
-        },
-        component: () => import('@pages/orm/ormtitlepickup-grid-view/ormtitlepickup-grid-view.vue'),
-    },
-    {
-        path: '/ormorginfos/:ormorginfo?/orgtreeexpview/:orgtreeexpview?',
-        meta: {
-            caption: 'entities.ormorginfo.views.orgtreeexpview.caption',
-            imgPath: '../../../img/zzgl/1/xiangmurenyuanpeizhi.png',
-            iconCls: '',
-            parameters: [
-                { pathName: 'ormorginfos', parameterName: 'ormorginfo' },
-                { pathName: 'orgtreeexpview', parameterName: 'orgtreeexpview' },
-            ],
-            requireAuth: true,
-        },
-        component: () => import('@pages/orm/ormorginfo-org-tree-exp-view/ormorginfo-org-tree-exp-view.vue'),
     },
     {
         path: '/ormerporgs/:ormerporg?/legalpickupgridview/:legalpickupgridview?',
@@ -3247,18 +1951,6 @@ const router = new Router({
         component: () => import('@pages/orm/ormorgsectorbzcxgrid-view/ormorgsectorbzcxgrid-view.vue'),
     },
     {
-        path: '/ormerporgs/:ormerporg?/gridview/:gridview?',
-        meta: {
-            caption: 'entities.ormerporg.views.gridview.caption',
-            parameters: [
-                { pathName: 'ormerporgs', parameterName: 'ormerporg' },
-                { pathName: 'gridview', parameterName: 'gridview' },
-            ],
-            requireAuth: true,
-        },
-        component: () => import('@pages/orm/ormerporggrid-view/ormerporggrid-view.vue'),
-    },
-    {
         path: '/ormrelations/:ormrelation?/editview/:editview?',
         meta: {
             caption: 'entities.ormrelation.views.editview.caption',
@@ -3269,18 +1961,6 @@ const router = new Router({
             requireAuth: true,
         },
         component: () => import('@pages/orm/ormrelation-edit-view/ormrelation-edit-view.vue'),
-    },
-    {
-        path: '/ormxmgls/:ormxmgl?/pickupgridview/:pickupgridview?',
-        meta: {
-            caption: 'entities.ormxmgl.views.pickupgridview.caption',
-            parameters: [
-                { pathName: 'ormxmgls', parameterName: 'ormxmgl' },
-                { pathName: 'pickupgridview', parameterName: 'pickupgridview' },
-            ],
-            requireAuth: true,
-        },
-        component: () => import('@pages/orm/ormxmglpickup-grid-view/ormxmglpickup-grid-view.vue'),
     },
     {
         path: '/ormbmkqdzs/:ormbmkqdz?/bmkqdzeditview/:bmkqdzeditview?',
@@ -3309,16 +1989,18 @@ const router = new Router({
         component: () => import('@pages/orm/ormeditionedit-view/ormeditionedit-view.vue'),
     },
     {
-        path: '/ormxmbqs/:ormxmbq?/pickupgridview/:pickupgridview?',
+        path: '/ormorgs/:ormorg?/orgtreegridview/:orgtreegridview?',
         meta: {
-            caption: 'entities.ormxmbq.views.pickupgridview.caption',
+            caption: 'entities.ormorg.views.orgtreegridview.caption',
+            imgPath: '../../../img/pzgl/1/rencaixulie.png',
+            iconCls: '',
             parameters: [
-                { pathName: 'ormxmbqs', parameterName: 'ormxmbq' },
-                { pathName: 'pickupgridview', parameterName: 'pickupgridview' },
+                { pathName: 'ormorgs', parameterName: 'ormorg' },
+                { pathName: 'orgtreegridview', parameterName: 'orgtreegridview' },
             ],
             requireAuth: true,
         },
-        component: () => import('@pages/orm/ormxmbqpickup-grid-view/ormxmbqpickup-grid-view.vue'),
+        component: () => import('@pages/orm/ormorgorg-tree-grid-view/ormorgorg-tree-grid-view.vue'),
     },
             {
                 path: '/ormpostredirectview/:ormpostredirectview?',
@@ -3354,18 +2036,6 @@ const router = new Router({
                 },
                 component: () => import('@pages/orm/ormbmkqdzredirect-view/ormbmkqdzredirect-view.vue'),
             },
-    {
-        path: '/ormduties/:ormduty?/estmanmpickupview/:estmanmpickupview?',
-        meta: {
-            caption: 'entities.ormduty.views.estmanmpickupview.caption',
-            parameters: [
-                { pathName: 'ormduties', parameterName: 'ormduty' },
-                { pathName: 'estmanmpickupview', parameterName: 'estmanmpickupview' },
-            ],
-            requireAuth: true,
-        },
-        component: () => import('@pages/orm/ormdutyest-man-mpickup-view/ormdutyest-man-mpickup-view.vue'),
-    },
             {
                 path: '/ormsignorgredirectview/:ormsignorgredirectview?',
                 meta: {
@@ -3439,16 +2109,18 @@ const router = new Router({
                 component: () => import('@pages/orm/ormpost-details-redirect-view/ormpost-details-redirect-view.vue'),
             },
     {
-        path: '/ormerporgs/:ormerporg?/suborgsectorgridview/:suborgsectorgridview?',
+        path: '/ormorgs/:ormorg?/suborggridview/:suborggridview?',
         meta: {
-            caption: 'entities.ormerporg.views.suborgsectorgridview.caption',
+            caption: 'entities.ormorg.views.suborggridview.caption',
+            imgPath: '../../../img/pzgl/1/rencaixulie.png',
+            iconCls: '',
             parameters: [
-                { pathName: 'ormerporgs', parameterName: 'ormerporg' },
-                { pathName: 'suborgsectorgridview', parameterName: 'suborgsectorgridview' },
+                { pathName: 'ormorgs', parameterName: 'ormorg' },
+                { pathName: 'suborggridview', parameterName: 'suborggridview' },
             ],
             requireAuth: true,
         },
-        component: () => import('@pages/orm/ormerporgsub-orgsector-grid-view/ormerporgsub-orgsector-grid-view.vue'),
+        component: () => import('@pages/orm/ormorgsub-org-grid-view/ormorgsub-org-grid-view.vue'),
     },
     {
         path: '/ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/ormdepestmen/:ormdepestman?/editview/:editview?',
@@ -3544,18 +2216,6 @@ const router = new Router({
                 },
                 component: () => import('@pages/orm/ormqyglredirect-view/ormqyglredirect-view.vue'),
             },
-    {
-        path: '/ormposts/:ormpost?/gwbzxzpickupgridview/:gwbzxzpickupgridview?',
-        meta: {
-            caption: 'entities.ormpost.views.gwbzxzpickupgridview.caption',
-            parameters: [
-                { pathName: 'ormposts', parameterName: 'ormpost' },
-                { pathName: 'gwbzxzpickupgridview', parameterName: 'gwbzxzpickupgridview' },
-            ],
-            requireAuth: true,
-        },
-        component: () => import('@pages/orm/ormpostgwbzxzpickup-grid-view/ormpostgwbzxzpickup-grid-view.vue'),
-    },
     {
         path: '/ormorgs/:ormorg?/pickupview/:pickupview?',
         meta: {

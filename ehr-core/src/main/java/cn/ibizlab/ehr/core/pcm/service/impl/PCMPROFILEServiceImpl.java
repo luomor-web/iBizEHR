@@ -92,6 +92,10 @@ public class PCMPROFILEServiceImpl extends ServiceImpl<PCMPROFILEMapper, PCMPROF
 
     @Autowired
     @Lazy
+    private cn.ibizlab.ehr.core.pcm.service.logic.IPCMPROFILECompanyConfirmLogic companyconfirmLogic;
+
+    @Autowired
+    @Lazy
     private cn.ibizlab.ehr.core.pcm.service.logic.IPCMPROFILESubmitLogic submitLogic;
 
     private int batchSize = 500;
@@ -202,8 +206,8 @@ public class PCMPROFILEServiceImpl extends ServiceImpl<PCMPROFILEMapper, PCMPROF
     @Override
     @Transactional
     public PCMPROFILE gSSP(PCMPROFILE et) {
-        //自定义代码
-        return et;
+        companyconfirmLogic.execute(et);
+         return et ;
     }
 
     @Override

@@ -178,7 +178,7 @@ export default class AppIndexViewBase extends AppMenusCtrlBase {
         Object.assign(viewparam, {});
         const deResParameters: any[] = [];
         const parameters: any[] = [
-            { pathName: 'ormorginfos', parameterName: 'ormorginfo' },
+            { pathName: 'ormorgs', parameterName: 'ormorg' },
             { pathName: 'orgtreeexpview', parameterName: 'orgtreeexpview' },
         ];
         const path: string = this.$viewTool.buildUpRoutePath(this.$route, {}, deResParameters, parameters, [], viewparam);
