@@ -215,6 +215,26 @@ public class PCMSYQGZServiceImpl extends ServiceImpl<PCMSYQGZMapper, PCMSYQGZ> i
         return true;
     }
 
+    @Override
+    public List<PCMSYQGZ> getPcmsyqgzByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<PCMSYQGZ> getPcmsyqgzByEntities(List<PCMSYQGZ> entities) {
+        List ids =new ArrayList();
+        for(PCMSYQGZ entity : entities){
+            Serializable id=entity.getPcmsyqgzid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

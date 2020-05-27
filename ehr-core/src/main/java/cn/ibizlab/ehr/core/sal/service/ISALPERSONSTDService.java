@@ -62,6 +62,9 @@ public interface ISALPERSONSTDService extends IService<SALPERSONSTD>{
      */
     boolean execute(String sql, Map param);
 
+    List<SALPERSONSTD> getSalpersonstdByIds(List<String> ids) ;
+    List<SALPERSONSTD> getSalpersonstdByEntities(List<SALPERSONSTD> entities) ;
+
 }
 
 

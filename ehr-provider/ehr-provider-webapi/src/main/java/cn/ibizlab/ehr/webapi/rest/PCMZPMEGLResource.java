@@ -22,6 +22,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.access.prepost.PostAuthorize;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -39,15 +40,13 @@ import cn.ibizlab.ehr.core.pcm.filter.PCMZPMEGLSearchContext;
 public class PCMZPMEGLResource {
 
     @Autowired
-    private IPCMZPMEGLService pcmzpmeglService;
+    public IPCMZPMEGLService pcmzpmeglService;
 
     @Autowired
     @Lazy
     public PCMZPMEGLMapping pcmzpmeglMapping;
 
-    public PCMZPMEGLDTO permissionDTO=new PCMZPMEGLDTO();
-
-    @PreAuthorize("hasPermission(#pcmzpmegl_id,'Remove',{'Sql',this.pcmzpmeglMapping,this.permissionDTO})")
+    @PreAuthorize("hasPermission(this.pcmzpmeglService.get(#pcmzpmegl_id),'ehr-PCMZPMEGL-Remove')")
     @ApiOperation(value = "Remove", tags = {"PCMZPMEGL" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmzpmegls/{pcmzpmegl_id}")
     @Transactional
@@ -55,7 +54,7 @@ public class PCMZPMEGLResource {
          return ResponseEntity.status(HttpStatus.OK).body(pcmzpmeglService.remove(pcmzpmegl_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.pcmzpmeglMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission(this.pcmzpmeglService.getPcmzpmeglByIds(#ids),'ehr-PCMZPMEGL-Remove')")
     @ApiOperation(value = "RemoveBatch", tags = {"PCMZPMEGL" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmzpmegls/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -63,21 +62,20 @@ public class PCMZPMEGLResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMZPMEGL-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"PCMZPMEGL" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmzpmegls/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PCMZPMEGLDTO pcmzpmegldto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pcmzpmeglService.checkKey(pcmzpmeglMapping.toDomain(pcmzpmegldto)));
     }
 
-    @PreAuthorize("hasPermission('','Save',{'Sql',this.pcmzpmeglMapping,#pcmzpmegldto})")
+    @PreAuthorize("hasPermission(this.pcmzpmeglMapping.toDomain(#pcmzpmegldto),'ehr-PCMZPMEGL-Save')")
     @ApiOperation(value = "Save", tags = {"PCMZPMEGL" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmzpmegls/save")
     public ResponseEntity<Boolean> save(@RequestBody PCMZPMEGLDTO pcmzpmegldto) {
         return ResponseEntity.status(HttpStatus.OK).body(pcmzpmeglService.save(pcmzpmeglMapping.toDomain(pcmzpmegldto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.pcmzpmeglMapping,#pcmzpmegldtos})")
+    @PreAuthorize("hasPermission(this.pcmzpmeglMapping.toDomain(#pcmzpmegldtos),'ehr-PCMZPMEGL-Save')")
     @ApiOperation(value = "SaveBatch", tags = {"PCMZPMEGL" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmzpmegls/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PCMZPMEGLDTO> pcmzpmegldtos) {
@@ -85,7 +83,7 @@ public class PCMZPMEGLResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission(#pcmzpmegl_id,'Update',{'Sql',this.pcmzpmeglMapping,#pcmzpmegldto})")
+    @PreAuthorize("hasPermission(this.pcmzpmeglService.get(#pcmzpmegl_id),'ehr-PCMZPMEGL-Update')")
     @ApiOperation(value = "Update", tags = {"PCMZPMEGL" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmzpmegls/{pcmzpmegl_id}")
     @Transactional
@@ -97,7 +95,7 @@ public class PCMZPMEGLResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.pcmzpmeglMapping,#pcmzpmegldtos})")
+    @PreAuthorize("hasPermission(this.pcmzpmeglService.getPcmzpmeglByEntities(this.pcmzpmeglMapping.toDomain(#pcmzpmegldtos)),'ehr-PCMZPMEGL-Update')")
     @ApiOperation(value = "UpdateBatch", tags = {"PCMZPMEGL" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmzpmegls/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PCMZPMEGLDTO> pcmzpmegldtos) {
@@ -105,7 +103,7 @@ public class PCMZPMEGLResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('','Create',{'Sql',this.pcmzpmeglMapping,#pcmzpmegldto})")
+    @PreAuthorize("hasPermission(this.pcmzpmeglMapping.toDomain(#pcmzpmegldto),'ehr-PCMZPMEGL-Create')")
     @ApiOperation(value = "Create", tags = {"PCMZPMEGL" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmzpmegls")
     @Transactional
@@ -116,7 +114,7 @@ public class PCMZPMEGLResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.pcmzpmeglMapping,#pcmzpmegldtos})")
+    @PreAuthorize("hasPermission(this.pcmzpmeglMapping.toDomain(#pcmzpmegldtos),'ehr-PCMZPMEGL-Create')")
     @ApiOperation(value = "createBatch", tags = {"PCMZPMEGL" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmzpmegls/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PCMZPMEGLDTO> pcmzpmegldtos) {
@@ -124,7 +122,7 @@ public class PCMZPMEGLResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission(#pcmzpmegl_id,'Get',{'Sql',this.pcmzpmeglMapping,this.permissionDTO})")
+    @PostAuthorize("hasPermission(this.pcmzpmeglMapping.toDomain(returnObject.body),'ehr-PCMZPMEGL-Get')")
     @ApiOperation(value = "Get", tags = {"PCMZPMEGL" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmzpmegls/{pcmzpmegl_id}")
     public ResponseEntity<PCMZPMEGLDTO> get(@PathVariable("pcmzpmegl_id") String pcmzpmegl_id) {
@@ -133,7 +131,6 @@ public class PCMZPMEGLResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMZPMEGL-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"PCMZPMEGL" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmzpmegls/getdraft")
     public ResponseEntity<PCMZPMEGLDTO> getDraft() {
@@ -183,3 +180,4 @@ public class PCMZPMEGLResource {
                 .body(new PageImpl(pcmzpmeglMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 }
+

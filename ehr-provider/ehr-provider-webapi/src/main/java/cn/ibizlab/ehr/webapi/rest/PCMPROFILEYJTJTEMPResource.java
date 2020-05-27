@@ -22,6 +22,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.access.prepost.PostAuthorize;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -39,15 +40,13 @@ import cn.ibizlab.ehr.core.pcm.filter.PCMPROFILEYJTJTEMPSearchContext;
 public class PCMPROFILEYJTJTEMPResource {
 
     @Autowired
-    private IPCMPROFILEYJTJTEMPService pcmprofileyjtjtempService;
+    public IPCMPROFILEYJTJTEMPService pcmprofileyjtjtempService;
 
     @Autowired
     @Lazy
     public PCMPROFILEYJTJTEMPMapping pcmprofileyjtjtempMapping;
 
-    public PCMPROFILEYJTJTEMPDTO permissionDTO=new PCMPROFILEYJTJTEMPDTO();
-
-    @PreAuthorize("hasPermission(#pcmprofileyjtjtemp_id,'Update',{'Sql',this.pcmprofileyjtjtempMapping,#pcmprofileyjtjtempdto})")
+    @PreAuthorize("hasPermission(this.pcmprofileyjtjtempService.get(#pcmprofileyjtjtemp_id),'ehr-PCMPROFILEYJTJTEMP-Update')")
     @ApiOperation(value = "Update", tags = {"PCMPROFILEYJTJTEMP" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmprofileyjtjtemps/{pcmprofileyjtjtemp_id}")
     @Transactional
@@ -59,7 +58,7 @@ public class PCMPROFILEYJTJTEMPResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.pcmprofileyjtjtempMapping,#pcmprofileyjtjtempdtos})")
+    @PreAuthorize("hasPermission(this.pcmprofileyjtjtempService.getPcmprofileyjtjtempByEntities(this.pcmprofileyjtjtempMapping.toDomain(#pcmprofileyjtjtempdtos)),'ehr-PCMPROFILEYJTJTEMP-Update')")
     @ApiOperation(value = "UpdateBatch", tags = {"PCMPROFILEYJTJTEMP" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmprofileyjtjtemps/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PCMPROFILEYJTJTEMPDTO> pcmprofileyjtjtempdtos) {
@@ -67,14 +66,13 @@ public class PCMPROFILEYJTJTEMPResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILEYJTJTEMP-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"PCMPROFILEYJTJTEMP" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmprofileyjtjtemps/getdraft")
     public ResponseEntity<PCMPROFILEYJTJTEMPDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(pcmprofileyjtjtempMapping.toDto(pcmprofileyjtjtempService.getDraft(new PCMPROFILEYJTJTEMP())));
     }
 
-    @PreAuthorize("hasPermission('','Create',{'Sql',this.pcmprofileyjtjtempMapping,#pcmprofileyjtjtempdto})")
+    @PreAuthorize("hasPermission(this.pcmprofileyjtjtempMapping.toDomain(#pcmprofileyjtjtempdto),'ehr-PCMPROFILEYJTJTEMP-Create')")
     @ApiOperation(value = "Create", tags = {"PCMPROFILEYJTJTEMP" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofileyjtjtemps")
     @Transactional
@@ -85,7 +83,7 @@ public class PCMPROFILEYJTJTEMPResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.pcmprofileyjtjtempMapping,#pcmprofileyjtjtempdtos})")
+    @PreAuthorize("hasPermission(this.pcmprofileyjtjtempMapping.toDomain(#pcmprofileyjtjtempdtos),'ehr-PCMPROFILEYJTJTEMP-Create')")
     @ApiOperation(value = "createBatch", tags = {"PCMPROFILEYJTJTEMP" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofileyjtjtemps/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PCMPROFILEYJTJTEMPDTO> pcmprofileyjtjtempdtos) {
@@ -93,14 +91,13 @@ public class PCMPROFILEYJTJTEMPResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILEYJTJTEMP-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"PCMPROFILEYJTJTEMP" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofileyjtjtemps/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PCMPROFILEYJTJTEMPDTO pcmprofileyjtjtempdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pcmprofileyjtjtempService.checkKey(pcmprofileyjtjtempMapping.toDomain(pcmprofileyjtjtempdto)));
     }
 
-    @PreAuthorize("hasPermission(#pcmprofileyjtjtemp_id,'Remove',{'Sql',this.pcmprofileyjtjtempMapping,this.permissionDTO})")
+    @PreAuthorize("hasPermission(this.pcmprofileyjtjtempService.get(#pcmprofileyjtjtemp_id),'ehr-PCMPROFILEYJTJTEMP-Remove')")
     @ApiOperation(value = "Remove", tags = {"PCMPROFILEYJTJTEMP" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmprofileyjtjtemps/{pcmprofileyjtjtemp_id}")
     @Transactional
@@ -108,7 +105,7 @@ public class PCMPROFILEYJTJTEMPResource {
          return ResponseEntity.status(HttpStatus.OK).body(pcmprofileyjtjtempService.remove(pcmprofileyjtjtemp_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.pcmprofileyjtjtempMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission(this.pcmprofileyjtjtempService.getPcmprofileyjtjtempByIds(#ids),'ehr-PCMPROFILEYJTJTEMP-Remove')")
     @ApiOperation(value = "RemoveBatch", tags = {"PCMPROFILEYJTJTEMP" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmprofileyjtjtemps/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -116,14 +113,14 @@ public class PCMPROFILEYJTJTEMPResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('','Save',{'Sql',this.pcmprofileyjtjtempMapping,#pcmprofileyjtjtempdto})")
+    @PreAuthorize("hasPermission(this.pcmprofileyjtjtempMapping.toDomain(#pcmprofileyjtjtempdto),'ehr-PCMPROFILEYJTJTEMP-Save')")
     @ApiOperation(value = "Save", tags = {"PCMPROFILEYJTJTEMP" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofileyjtjtemps/save")
     public ResponseEntity<Boolean> save(@RequestBody PCMPROFILEYJTJTEMPDTO pcmprofileyjtjtempdto) {
         return ResponseEntity.status(HttpStatus.OK).body(pcmprofileyjtjtempService.save(pcmprofileyjtjtempMapping.toDomain(pcmprofileyjtjtempdto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.pcmprofileyjtjtempMapping,#pcmprofileyjtjtempdtos})")
+    @PreAuthorize("hasPermission(this.pcmprofileyjtjtempMapping.toDomain(#pcmprofileyjtjtempdtos),'ehr-PCMPROFILEYJTJTEMP-Save')")
     @ApiOperation(value = "SaveBatch", tags = {"PCMPROFILEYJTJTEMP" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofileyjtjtemps/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PCMPROFILEYJTJTEMPDTO> pcmprofileyjtjtempdtos) {
@@ -131,7 +128,7 @@ public class PCMPROFILEYJTJTEMPResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission(#pcmprofileyjtjtemp_id,'Get',{'Sql',this.pcmprofileyjtjtempMapping,this.permissionDTO})")
+    @PostAuthorize("hasPermission(this.pcmprofileyjtjtempMapping.toDomain(returnObject.body),'ehr-PCMPROFILEYJTJTEMP-Get')")
     @ApiOperation(value = "Get", tags = {"PCMPROFILEYJTJTEMP" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmprofileyjtjtemps/{pcmprofileyjtjtemp_id}")
     public ResponseEntity<PCMPROFILEYJTJTEMPDTO> get(@PathVariable("pcmprofileyjtjtemp_id") String pcmprofileyjtjtemp_id) {
@@ -162,3 +159,4 @@ public class PCMPROFILEYJTJTEMPResource {
                 .body(new PageImpl(pcmprofileyjtjtempMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 }
+

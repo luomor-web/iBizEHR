@@ -298,6 +298,26 @@ public class TRMTRAINAGENCYServiceImpl extends ServiceImpl<TRMTRAINAGENCYMapper,
         return true;
     }
 
+    @Override
+    public List<TRMTRAINAGENCY> getTrmtrainagencyByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<TRMTRAINAGENCY> getTrmtrainagencyByEntities(List<TRMTRAINAGENCY> entities) {
+        List ids =new ArrayList();
+        for(TRMTRAINAGENCY entity : entities){
+            Serializable id=entity.getTrmtrainagencyid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

@@ -54,6 +54,9 @@ public interface ITRMSTAYService extends IService<TRMSTAY>{
      */
     boolean execute(String sql, Map param);
 
+    List<TRMSTAY> getTrmstayByIds(List<String> ids) ;
+    List<TRMSTAY> getTrmstayByEntities(List<TRMSTAY> entities) ;
+
 }
 
 

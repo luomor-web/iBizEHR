@@ -369,6 +369,26 @@ public class PIMARCHIVESServiceImpl extends ServiceImpl<PIMARCHIVESMapper, PIMAR
         return true;
     }
 
+    @Override
+    public List<PIMARCHIVES> getPimarchivesByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<PIMARCHIVES> getPimarchivesByEntities(List<PIMARCHIVES> entities) {
+        List ids =new ArrayList();
+        for(PIMARCHIVES entity : entities){
+            Serializable id=entity.getPimarchivesid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

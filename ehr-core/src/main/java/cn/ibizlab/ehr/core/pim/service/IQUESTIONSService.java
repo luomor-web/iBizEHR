@@ -63,6 +63,9 @@ public interface IQUESTIONSService extends IService<QUESTIONS>{
      */
     boolean execute(String sql, Map param);
 
+    List<QUESTIONS> getQuestionsByIds(List<String> ids) ;
+    List<QUESTIONS> getQuestionsByEntities(List<QUESTIONS> entities) ;
+
 }
 
 

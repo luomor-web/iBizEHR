@@ -57,6 +57,9 @@ public interface IContractSignORGService extends IService<ContractSignORG>{
      */
     boolean execute(String sql, Map param);
 
+    List<ContractSignORG> getContractsignorgByIds(List<String> ids) ;
+    List<ContractSignORG> getContractsignorgByEntities(List<ContractSignORG> entities) ;
+
 }
 
 

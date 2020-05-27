@@ -52,6 +52,9 @@ public interface IATTENDENCETYPEService extends IService<ATTENDENCETYPE>{
      */
     boolean execute(String sql, Map param);
 
+    List<ATTENDENCETYPE> getAttendencetypeByIds(List<String> ids) ;
+    List<ATTENDENCETYPE> getAttendencetypeByEntities(List<ATTENDENCETYPE> entities) ;
+
 }
 
 

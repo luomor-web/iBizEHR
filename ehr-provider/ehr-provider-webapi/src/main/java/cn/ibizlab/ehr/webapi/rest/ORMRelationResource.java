@@ -22,6 +22,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.access.prepost.PostAuthorize;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -39,15 +40,13 @@ import cn.ibizlab.ehr.core.orm.filter.ORMRelationSearchContext;
 public class ORMRelationResource {
 
     @Autowired
-    private IORMRelationService ormrelationService;
+    public IORMRelationService ormrelationService;
 
     @Autowired
     @Lazy
     public ORMRelationMapping ormrelationMapping;
 
-    public ORMRelationDTO permissionDTO=new ORMRelationDTO();
-
-    @PreAuthorize("hasPermission('','Create',{'Sql',this.ormrelationMapping,#ormrelationdto})")
+    @PreAuthorize("hasPermission(this.ormrelationMapping.toDomain(#ormrelationdto),'ehr-ORMRelation-Create')")
     @ApiOperation(value = "Create", tags = {"ORMRelation" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormrelations")
     @Transactional
@@ -58,7 +57,7 @@ public class ORMRelationResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.ormrelationMapping,#ormrelationdtos})")
+    @PreAuthorize("hasPermission(this.ormrelationMapping.toDomain(#ormrelationdtos),'ehr-ORMRelation-Create')")
     @ApiOperation(value = "createBatch", tags = {"ORMRelation" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormrelations/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<ORMRelationDTO> ormrelationdtos) {
@@ -66,7 +65,7 @@ public class ORMRelationResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission(#ormrelation_id,'Update',{'Sql',this.ormrelationMapping,#ormrelationdto})")
+    @PreAuthorize("hasPermission(this.ormrelationService.get(#ormrelation_id),'ehr-ORMRelation-Update')")
     @ApiOperation(value = "Update", tags = {"ORMRelation" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/ormrelations/{ormrelation_id}")
     @Transactional
@@ -78,7 +77,7 @@ public class ORMRelationResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.ormrelationMapping,#ormrelationdtos})")
+    @PreAuthorize("hasPermission(this.ormrelationService.getOrmrelationByEntities(this.ormrelationMapping.toDomain(#ormrelationdtos)),'ehr-ORMRelation-Update')")
     @ApiOperation(value = "UpdateBatch", tags = {"ORMRelation" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/ormrelations/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<ORMRelationDTO> ormrelationdtos) {
@@ -86,7 +85,7 @@ public class ORMRelationResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission(#ormrelation_id,'Get',{'Sql',this.ormrelationMapping,this.permissionDTO})")
+    @PostAuthorize("hasPermission(this.ormrelationMapping.toDomain(returnObject.body),'ehr-ORMRelation-Get')")
     @ApiOperation(value = "Get", tags = {"ORMRelation" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/ormrelations/{ormrelation_id}")
     public ResponseEntity<ORMRelationDTO> get(@PathVariable("ormrelation_id") String ormrelation_id) {
@@ -95,7 +94,7 @@ public class ORMRelationResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#ormrelation_id,'Remove',{'Sql',this.ormrelationMapping,this.permissionDTO})")
+    @PreAuthorize("hasPermission(this.ormrelationService.get(#ormrelation_id),'ehr-ORMRelation-Remove')")
     @ApiOperation(value = "Remove", tags = {"ORMRelation" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/ormrelations/{ormrelation_id}")
     @Transactional
@@ -103,7 +102,7 @@ public class ORMRelationResource {
          return ResponseEntity.status(HttpStatus.OK).body(ormrelationService.remove(ormrelation_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.ormrelationMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission(this.ormrelationService.getOrmrelationByIds(#ids),'ehr-ORMRelation-Remove')")
     @ApiOperation(value = "RemoveBatch", tags = {"ORMRelation" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/ormrelations/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -111,28 +110,26 @@ public class ORMRelationResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMRelation-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"ORMRelation" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/ormrelations/getdraft")
     public ResponseEntity<ORMRelationDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(ormrelationMapping.toDto(ormrelationService.getDraft(new ORMRelation())));
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMRelation-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"ORMRelation" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormrelations/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody ORMRelationDTO ormrelationdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(ormrelationService.checkKey(ormrelationMapping.toDomain(ormrelationdto)));
     }
 
-    @PreAuthorize("hasPermission('','Save',{'Sql',this.ormrelationMapping,#ormrelationdto})")
+    @PreAuthorize("hasPermission(this.ormrelationMapping.toDomain(#ormrelationdto),'ehr-ORMRelation-Save')")
     @ApiOperation(value = "Save", tags = {"ORMRelation" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormrelations/save")
     public ResponseEntity<Boolean> save(@RequestBody ORMRelationDTO ormrelationdto) {
         return ResponseEntity.status(HttpStatus.OK).body(ormrelationService.save(ormrelationMapping.toDomain(ormrelationdto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.ormrelationMapping,#ormrelationdtos})")
+    @PreAuthorize("hasPermission(this.ormrelationMapping.toDomain(#ormrelationdtos),'ehr-ORMRelation-Save')")
     @ApiOperation(value = "SaveBatch", tags = {"ORMRelation" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormrelations/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<ORMRelationDTO> ormrelationdtos) {
@@ -162,3 +159,4 @@ public class ORMRelationResource {
                 .body(new PageImpl(ormrelationMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 }
+

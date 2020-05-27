@@ -238,6 +238,26 @@ public class SALPERSONSTDDETAILServiceImpl extends ServiceImpl<SALPERSONSTDDETAI
         return true;
     }
 
+    @Override
+    public List<SALPERSONSTDDETAIL> getSalpersonstddetailByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<SALPERSONSTDDETAIL> getSalpersonstddetailByEntities(List<SALPERSONSTDDETAIL> entities) {
+        List ids =new ArrayList();
+        for(SALPERSONSTDDETAIL entity : entities){
+            Serializable id=entity.getSalpersonstddetailid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

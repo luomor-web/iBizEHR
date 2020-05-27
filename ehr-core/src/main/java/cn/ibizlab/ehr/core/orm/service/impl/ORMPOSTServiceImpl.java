@@ -339,6 +339,26 @@ public class ORMPOSTServiceImpl extends ServiceImpl<ORMPOSTMapper, ORMPOST> impl
         return true;
     }
 
+    @Override
+    public List<ORMPOST> getOrmpostByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<ORMPOST> getOrmpostByEntities(List<ORMPOST> entities) {
+        List ids =new ArrayList();
+        for(ORMPOST entity : entities){
+            Serializable id=entity.getOrmpostid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

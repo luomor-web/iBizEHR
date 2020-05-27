@@ -54,6 +54,9 @@ public interface IPARPTRYNDLHMBService extends IService<PARPTRYNDLHMB>{
      */
     boolean execute(String sql, Map param);
 
+    List<PARPTRYNDLHMB> getParptryndlhmbByIds(List<String> ids) ;
+    List<PARPTRYNDLHMB> getParptryndlhmbByEntities(List<PARPTRYNDLHMB> entities) ;
+
 }
 
 

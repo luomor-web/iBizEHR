@@ -617,6 +617,26 @@ public class ORMORGSECTORServiceImpl extends ServiceImpl<ORMORGSECTORMapper, ORM
         return true;
     }
 
+    @Override
+    public List<ORMORGSECTOR> getOrmorgsectorByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<ORMORGSECTOR> getOrmorgsectorByEntities(List<ORMORGSECTOR> entities) {
+        List ids =new ArrayList();
+        for(ORMORGSECTOR entity : entities){
+            Serializable id=entity.getOrgsectorid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

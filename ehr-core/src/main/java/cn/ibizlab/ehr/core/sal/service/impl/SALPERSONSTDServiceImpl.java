@@ -310,6 +310,26 @@ public class SALPERSONSTDServiceImpl extends ServiceImpl<SALPERSONSTDMapper, SAL
         return true;
     }
 
+    @Override
+    public List<SALPERSONSTD> getSalpersonstdByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<SALPERSONSTD> getSalpersonstdByEntities(List<SALPERSONSTD> entities) {
+        List ids =new ArrayList();
+        for(SALPERSONSTD entity : entities){
+            Serializable id=entity.getSalpersonstdid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

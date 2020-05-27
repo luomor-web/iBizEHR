@@ -54,6 +54,9 @@ public interface IPCMSCHOOLOFFICEService extends IService<PCMSCHOOLOFFICE>{
      */
     boolean execute(String sql, Map param);
 
+    List<PCMSCHOOLOFFICE> getPcmschoolofficeByIds(List<String> ids) ;
+    List<PCMSCHOOLOFFICE> getPcmschoolofficeByEntities(List<PCMSCHOOLOFFICE> entities) ;
+
 }
 
 

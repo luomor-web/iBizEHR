@@ -215,6 +215,26 @@ public class PIMVACATIONServiceImpl extends ServiceImpl<PIMVACATIONMapper, PIMVA
         return true;
     }
 
+    @Override
+    public List<PIMVACATION> getPimvacationByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<PIMVACATION> getPimvacationByEntities(List<PIMVACATION> entities) {
+        List ids =new ArrayList();
+        for(PIMVACATION entity : entities){
+            Serializable id=entity.getPimvacationid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

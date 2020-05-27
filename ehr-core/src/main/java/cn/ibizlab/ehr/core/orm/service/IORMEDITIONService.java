@@ -52,6 +52,9 @@ public interface IORMEDITIONService extends IService<ORMEDITION>{
      */
     boolean execute(String sql, Map param);
 
+    List<ORMEDITION> getOrmeditionByIds(List<String> ids) ;
+    List<ORMEDITION> getOrmeditionByEntities(List<ORMEDITION> entities) ;
+
 }
 
 

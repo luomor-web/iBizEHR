@@ -52,6 +52,9 @@ public interface IVACWORKDAYService extends IService<VACWORKDAY>{
      */
     boolean execute(String sql, Map param);
 
+    List<VACWORKDAY> getVacworkdayByIds(List<String> ids) ;
+    List<VACWORKDAY> getVacworkdayByEntities(List<VACWORKDAY> entities) ;
+
 }
 
 

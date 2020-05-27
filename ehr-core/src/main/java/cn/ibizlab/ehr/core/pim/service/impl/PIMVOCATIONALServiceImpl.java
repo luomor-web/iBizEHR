@@ -394,6 +394,26 @@ public class PIMVOCATIONALServiceImpl extends ServiceImpl<PIMVOCATIONALMapper, P
         return true;
     }
 
+    @Override
+    public List<PIMVOCATIONAL> getPimvocationalByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<PIMVOCATIONAL> getPimvocationalByEntities(List<PIMVOCATIONAL> entities) {
+        List ids =new ArrayList();
+        for(PIMVOCATIONAL entity : entities){
+            Serializable id=entity.getPimvocationalid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

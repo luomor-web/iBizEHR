@@ -255,6 +255,26 @@ public class TRMTRIANPERSONServiceImpl extends ServiceImpl<TRMTRIANPERSONMapper,
         return true;
     }
 
+    @Override
+    public List<TRMTRIANPERSON> getTrmtrianpersonByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<TRMTRIANPERSON> getTrmtrianpersonByEntities(List<TRMTRIANPERSON> entities) {
+        List ids =new ArrayList();
+        for(TRMTRIANPERSON entity : entities){
+            Serializable id=entity.getTrmtrianpersonid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

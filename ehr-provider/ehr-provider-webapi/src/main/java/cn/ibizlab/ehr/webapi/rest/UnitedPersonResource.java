@@ -22,6 +22,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.access.prepost.PostAuthorize;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -39,15 +40,13 @@ import cn.ibizlab.ehr.core.orm.filter.UnitedPersonSearchContext;
 public class UnitedPersonResource {
 
     @Autowired
-    private IUnitedPersonService unitedpersonService;
+    public IUnitedPersonService unitedpersonService;
 
     @Autowired
     @Lazy
     public UnitedPersonMapping unitedpersonMapping;
 
-    public UnitedPersonDTO permissionDTO=new UnitedPersonDTO();
-
-    @PreAuthorize("hasPermission(#unitedperson_id,'Remove',{'Sql',this.unitedpersonMapping,this.permissionDTO})")
+    @PreAuthorize("hasPermission(this.unitedpersonService.get(#unitedperson_id),'ehr-UnitedPerson-Remove')")
     @ApiOperation(value = "Remove", tags = {"UnitedPerson" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/unitedpeople/{unitedperson_id}")
     @Transactional
@@ -55,7 +54,7 @@ public class UnitedPersonResource {
          return ResponseEntity.status(HttpStatus.OK).body(unitedpersonService.remove(unitedperson_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.unitedpersonMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission(this.unitedpersonService.getUnitedpersonByIds(#ids),'ehr-UnitedPerson-Remove')")
     @ApiOperation(value = "RemoveBatch", tags = {"UnitedPerson" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/unitedpeople/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -63,14 +62,14 @@ public class UnitedPersonResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('','Save',{'Sql',this.unitedpersonMapping,#unitedpersondto})")
+    @PreAuthorize("hasPermission(this.unitedpersonMapping.toDomain(#unitedpersondto),'ehr-UnitedPerson-Save')")
     @ApiOperation(value = "Save", tags = {"UnitedPerson" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/unitedpeople/save")
     public ResponseEntity<Boolean> save(@RequestBody UnitedPersonDTO unitedpersondto) {
         return ResponseEntity.status(HttpStatus.OK).body(unitedpersonService.save(unitedpersonMapping.toDomain(unitedpersondto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.unitedpersonMapping,#unitedpersondtos})")
+    @PreAuthorize("hasPermission(this.unitedpersonMapping.toDomain(#unitedpersondtos),'ehr-UnitedPerson-Save')")
     @ApiOperation(value = "SaveBatch", tags = {"UnitedPerson" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/unitedpeople/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<UnitedPersonDTO> unitedpersondtos) {
@@ -90,14 +89,13 @@ public class UnitedPersonResource {
         return ResponseEntity.status(HttpStatus.OK).body(unitedpersondto);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UnitedPerson-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"UnitedPerson" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/unitedpeople/getdraft")
     public ResponseEntity<UnitedPersonDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(unitedpersonMapping.toDto(unitedpersonService.getDraft(new UnitedPerson())));
     }
 
-    @PreAuthorize("hasPermission('','Create',{'Sql',this.unitedpersonMapping,#unitedpersondto})")
+    @PreAuthorize("hasPermission(this.unitedpersonMapping.toDomain(#unitedpersondto),'ehr-UnitedPerson-Create')")
     @ApiOperation(value = "Create", tags = {"UnitedPerson" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/unitedpeople")
     @Transactional
@@ -108,7 +106,7 @@ public class UnitedPersonResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.unitedpersonMapping,#unitedpersondtos})")
+    @PreAuthorize("hasPermission(this.unitedpersonMapping.toDomain(#unitedpersondtos),'ehr-UnitedPerson-Create')")
     @ApiOperation(value = "createBatch", tags = {"UnitedPerson" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/unitedpeople/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<UnitedPersonDTO> unitedpersondtos) {
@@ -116,14 +114,13 @@ public class UnitedPersonResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UnitedPerson-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"UnitedPerson" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/unitedpeople/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody UnitedPersonDTO unitedpersondto) {
         return  ResponseEntity.status(HttpStatus.OK).body(unitedpersonService.checkKey(unitedpersonMapping.toDomain(unitedpersondto)));
     }
 
-    @PreAuthorize("hasPermission(#unitedperson_id,'Get',{'Sql',this.unitedpersonMapping,this.permissionDTO})")
+    @PostAuthorize("hasPermission(this.unitedpersonMapping.toDomain(returnObject.body),'ehr-UnitedPerson-Get')")
     @ApiOperation(value = "Get", tags = {"UnitedPerson" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/unitedpeople/{unitedperson_id}")
     public ResponseEntity<UnitedPersonDTO> get(@PathVariable("unitedperson_id") String unitedperson_id) {
@@ -132,7 +129,7 @@ public class UnitedPersonResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#unitedperson_id,'Update',{'Sql',this.unitedpersonMapping,#unitedpersondto})")
+    @PreAuthorize("hasPermission(this.unitedpersonService.get(#unitedperson_id),'ehr-UnitedPerson-Update')")
     @ApiOperation(value = "Update", tags = {"UnitedPerson" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/unitedpeople/{unitedperson_id}")
     @Transactional
@@ -144,7 +141,7 @@ public class UnitedPersonResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.unitedpersonMapping,#unitedpersondtos})")
+    @PreAuthorize("hasPermission(this.unitedpersonService.getUnitedpersonByEntities(this.unitedpersonMapping.toDomain(#unitedpersondtos)),'ehr-UnitedPerson-Update')")
     @ApiOperation(value = "UpdateBatch", tags = {"UnitedPerson" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/unitedpeople/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<UnitedPersonDTO> unitedpersondtos) {
@@ -216,3 +213,4 @@ public class UnitedPersonResource {
                 .body(new PageImpl(unitedpersonMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 }
+

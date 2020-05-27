@@ -192,6 +192,26 @@ public class PIMCONTRACTTYPEServiceImpl extends ServiceImpl<PIMCONTRACTTYPEMappe
         return true;
     }
 
+    @Override
+    public List<PIMCONTRACTTYPE> getPimcontracttypeByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<PIMCONTRACTTYPE> getPimcontracttypeByEntities(List<PIMCONTRACTTYPE> entities) {
+        List ids =new ArrayList();
+        for(PIMCONTRACTTYPE entity : entities){
+            Serializable id=entity.getPimcontracttypeid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

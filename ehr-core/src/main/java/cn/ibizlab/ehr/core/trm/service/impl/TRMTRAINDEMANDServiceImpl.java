@@ -218,6 +218,26 @@ public class TRMTRAINDEMANDServiceImpl extends ServiceImpl<TRMTRAINDEMANDMapper,
         return true;
     }
 
+    @Override
+    public List<TRMTRAINDEMAND> getTrmtraindemandByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<TRMTRAINDEMAND> getTrmtraindemandByEntities(List<TRMTRAINDEMAND> entities) {
+        List ids =new ArrayList();
+        for(TRMTRAINDEMAND entity : entities){
+            Serializable id=entity.getTrmtraindemandid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

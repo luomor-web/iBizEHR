@@ -55,6 +55,9 @@ public interface IPCMDDSQDService extends IService<PCMDDSQD>{
      */
     boolean execute(String sql, Map param);
 
+    List<PCMDDSQD> getPcmddsqdByIds(List<String> ids) ;
+    List<PCMDDSQD> getPcmddsqdByEntities(List<PCMDDSQD> entities) ;
+
 }
 
 

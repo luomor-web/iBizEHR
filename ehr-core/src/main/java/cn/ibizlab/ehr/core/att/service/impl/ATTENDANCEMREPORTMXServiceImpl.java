@@ -269,6 +269,26 @@ public class ATTENDANCEMREPORTMXServiceImpl extends ServiceImpl<ATTENDANCEMREPOR
         return true;
     }
 
+    @Override
+    public List<ATTENDANCEMREPORTMX> getAttendancemreportmxByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<ATTENDANCEMREPORTMX> getAttendancemreportmxByEntities(List<ATTENDANCEMREPORTMX> entities) {
+        List ids =new ArrayList();
+        for(ATTENDANCEMREPORTMX entity : entities){
+            Serializable id=entity.getAttendancemreportmxid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

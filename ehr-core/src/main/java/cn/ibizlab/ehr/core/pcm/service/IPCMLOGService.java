@@ -54,6 +54,9 @@ public interface IPCMLOGService extends IService<PCMLOG>{
      */
     boolean execute(String sql, Map param);
 
+    List<PCMLOG> getPcmlogByIds(List<String> ids) ;
+    List<PCMLOG> getPcmlogByEntities(List<PCMLOG> entities) ;
+
 }
 
 

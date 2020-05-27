@@ -59,6 +59,9 @@ public interface IORMORGInfoService extends IService<ORMORGInfo>{
      */
     boolean execute(String sql, Map param);
 
+    List<ORMORGInfo> getOrmorginfoByIds(List<String> ids) ;
+    List<ORMORGInfo> getOrmorginfoByEntities(List<ORMORGInfo> entities) ;
+
 }
 
 

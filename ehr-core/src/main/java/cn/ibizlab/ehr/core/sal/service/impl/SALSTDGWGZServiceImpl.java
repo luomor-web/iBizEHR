@@ -238,6 +238,26 @@ public class SALSTDGWGZServiceImpl extends ServiceImpl<SALSTDGWGZMapper, SALSTDG
         return true;
     }
 
+    @Override
+    public List<SALSTDGWGZ> getSalstdgwgzByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<SALSTDGWGZ> getSalstdgwgzByEntities(List<SALSTDGWGZ> entities) {
+        List ids =new ArrayList();
+        for(SALSTDGWGZ entity : entities){
+            Serializable id=entity.getSalstdgwgzid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

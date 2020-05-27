@@ -361,6 +361,26 @@ public class SALSALARYServiceImpl extends ServiceImpl<SALSALARYMapper, SALSALARY
         return true;
     }
 
+    @Override
+    public List<SALSALARY> getSalsalaryByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<SALSALARY> getSalsalaryByEntities(List<SALSALARY> entities) {
+        List ids =new ArrayList();
+        for(SALSALARY entity : entities){
+            Serializable id=entity.getSalsalaryid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

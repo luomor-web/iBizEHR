@@ -316,6 +316,26 @@ public class PCMTXFPSQServiceImpl extends ServiceImpl<PCMTXFPSQMapper, PCMTXFPSQ
         return true;
     }
 
+    @Override
+    public List<PCMTXFPSQ> getPcmtxfpsqByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<PCMTXFPSQ> getPcmtxfpsqByEntities(List<PCMTXFPSQ> entities) {
+        List ids =new ArrayList();
+        for(PCMTXFPSQ entity : entities){
+            Serializable id=entity.getPcmtxfpsqid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

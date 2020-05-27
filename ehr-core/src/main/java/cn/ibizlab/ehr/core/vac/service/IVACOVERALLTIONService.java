@@ -56,6 +56,9 @@ public interface IVACOVERALLTIONService extends IService<VACOVERALLTION>{
      */
     boolean execute(String sql, Map param);
 
+    List<VACOVERALLTION> getVacoveralltionByIds(List<String> ids) ;
+    List<VACOVERALLTION> getVacoveralltionByEntities(List<VACOVERALLTION> entities) ;
+
 }
 
 

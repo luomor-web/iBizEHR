@@ -367,6 +367,26 @@ public class TRMGRADECADRESServiceImpl extends ServiceImpl<TRMGRADECADRESMapper,
         return true;
     }
 
+    @Override
+    public List<TRMGRADECADRES> getTrmgradecadresByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<TRMGRADECADRES> getTrmgradecadresByEntities(List<TRMGRADECADRES> entities) {
+        List ids =new ArrayList();
+        for(TRMGRADECADRES entity : entities){
+            Serializable id=entity.getTrmgradecadresid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

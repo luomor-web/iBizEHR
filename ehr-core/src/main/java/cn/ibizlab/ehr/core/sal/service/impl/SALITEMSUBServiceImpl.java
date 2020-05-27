@@ -261,6 +261,26 @@ public class SALITEMSUBServiceImpl extends ServiceImpl<SALITEMSUBMapper, SALITEM
         return true;
     }
 
+    @Override
+    public List<SALITEMSUB> getSalitemsubByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<SALITEMSUB> getSalitemsubByEntities(List<SALITEMSUB> entities) {
+        List ids =new ArrayList();
+        for(SALITEMSUB entity : entities){
+            Serializable id=entity.getSalitemsubid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

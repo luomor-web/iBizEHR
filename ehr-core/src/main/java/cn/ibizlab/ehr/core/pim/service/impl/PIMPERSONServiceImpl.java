@@ -993,6 +993,26 @@ public class PIMPERSONServiceImpl extends ServiceImpl<PIMPERSONMapper, PIMPERSON
         return true;
     }
 
+    @Override
+    public List<PIMPERSON> getPimpersonByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<PIMPERSON> getPimpersonByEntities(List<PIMPERSON> entities) {
+        List ids =new ArrayList();
+        for(PIMPERSON entity : entities){
+            Serializable id=entity.getPimpersonid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

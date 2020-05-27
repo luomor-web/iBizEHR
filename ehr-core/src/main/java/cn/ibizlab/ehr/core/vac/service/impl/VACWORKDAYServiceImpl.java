@@ -179,6 +179,26 @@ public class VACWORKDAYServiceImpl extends ServiceImpl<VACWORKDAYMapper, VACWORK
         return true;
     }
 
+    @Override
+    public List<VACWORKDAY> getVacworkdayByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<VACWORKDAY> getVacworkdayByEntities(List<VACWORKDAY> entities) {
+        List ids =new ArrayList();
+        for(VACWORKDAY entity : entities){
+            Serializable id=entity.getVacworkdayid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

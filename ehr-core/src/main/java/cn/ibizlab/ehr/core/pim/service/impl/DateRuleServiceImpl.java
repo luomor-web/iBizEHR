@@ -215,6 +215,26 @@ public class DateRuleServiceImpl extends ServiceImpl<DateRuleMapper, DateRule> i
         return true;
     }
 
+    @Override
+    public List<DateRule> getDateruleByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<DateRule> getDateruleByEntities(List<DateRule> entities) {
+        List ids =new ArrayList();
+        for(DateRule entity : entities){
+            Serializable id=entity.getDateruleid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

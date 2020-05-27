@@ -52,6 +52,9 @@ public interface IORMRelationService extends IService<ORMRelation>{
      */
     boolean execute(String sql, Map param);
 
+    List<ORMRelation> getOrmrelationByIds(List<String> ids) ;
+    List<ORMRelation> getOrmrelationByEntities(List<ORMRelation> entities) ;
+
 }
 
 

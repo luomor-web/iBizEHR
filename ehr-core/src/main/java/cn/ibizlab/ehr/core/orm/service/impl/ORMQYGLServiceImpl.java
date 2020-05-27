@@ -215,6 +215,26 @@ public class ORMQYGLServiceImpl extends ServiceImpl<ORMQYGLMapper, ORMQYGL> impl
         return true;
     }
 
+    @Override
+    public List<ORMQYGL> getOrmqyglByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<ORMQYGL> getOrmqyglByEntities(List<ORMQYGL> entities) {
+        List ids =new ArrayList();
+        for(ORMQYGL entity : entities){
+            Serializable id=entity.getOrmqyglid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

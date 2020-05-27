@@ -22,6 +22,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.access.prepost.PostAuthorize;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -39,15 +40,13 @@ import cn.ibizlab.ehr.core.orm.filter.ORMTITLESearchContext;
 public class ORMTITLEResource {
 
     @Autowired
-    private IORMTITLEService ormtitleService;
+    public IORMTITLEService ormtitleService;
 
     @Autowired
     @Lazy
     public ORMTITLEMapping ormtitleMapping;
 
-    public ORMTITLEDTO permissionDTO=new ORMTITLEDTO();
-
-    @PreAuthorize("hasPermission(#ormtitle_id,'Remove',{'Sql',this.ormtitleMapping,this.permissionDTO})")
+    @PreAuthorize("hasPermission(this.ormtitleService.get(#ormtitle_id),'ehr-ORMTITLE-Remove')")
     @ApiOperation(value = "Remove", tags = {"ORMTITLE" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/ormtitles/{ormtitle_id}")
     @Transactional
@@ -55,7 +54,7 @@ public class ORMTITLEResource {
          return ResponseEntity.status(HttpStatus.OK).body(ormtitleService.remove(ormtitle_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.ormtitleMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission(this.ormtitleService.getOrmtitleByIds(#ids),'ehr-ORMTITLE-Remove')")
     @ApiOperation(value = "RemoveBatch", tags = {"ORMTITLE" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/ormtitles/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -63,7 +62,7 @@ public class ORMTITLEResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission(#ormtitle_id,'Update',{'Sql',this.ormtitleMapping,#ormtitledto})")
+    @PreAuthorize("hasPermission(this.ormtitleService.get(#ormtitle_id),'ehr-ORMTITLE-Update')")
     @ApiOperation(value = "Update", tags = {"ORMTITLE" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/ormtitles/{ormtitle_id}")
     @Transactional
@@ -75,7 +74,7 @@ public class ORMTITLEResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.ormtitleMapping,#ormtitledtos})")
+    @PreAuthorize("hasPermission(this.ormtitleService.getOrmtitleByEntities(this.ormtitleMapping.toDomain(#ormtitledtos)),'ehr-ORMTITLE-Update')")
     @ApiOperation(value = "UpdateBatch", tags = {"ORMTITLE" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/ormtitles/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<ORMTITLEDTO> ormtitledtos) {
@@ -83,21 +82,20 @@ public class ORMTITLEResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMTITLE-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"ORMTITLE" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/ormtitles/getdraft")
     public ResponseEntity<ORMTITLEDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(ormtitleMapping.toDto(ormtitleService.getDraft(new ORMTITLE())));
     }
 
-    @PreAuthorize("hasPermission('','Save',{'Sql',this.ormtitleMapping,#ormtitledto})")
+    @PreAuthorize("hasPermission(this.ormtitleMapping.toDomain(#ormtitledto),'ehr-ORMTITLE-Save')")
     @ApiOperation(value = "Save", tags = {"ORMTITLE" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormtitles/save")
     public ResponseEntity<Boolean> save(@RequestBody ORMTITLEDTO ormtitledto) {
         return ResponseEntity.status(HttpStatus.OK).body(ormtitleService.save(ormtitleMapping.toDomain(ormtitledto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.ormtitleMapping,#ormtitledtos})")
+    @PreAuthorize("hasPermission(this.ormtitleMapping.toDomain(#ormtitledtos),'ehr-ORMTITLE-Save')")
     @ApiOperation(value = "SaveBatch", tags = {"ORMTITLE" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormtitles/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<ORMTITLEDTO> ormtitledtos) {
@@ -105,14 +103,13 @@ public class ORMTITLEResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMTITLE-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"ORMTITLE" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormtitles/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody ORMTITLEDTO ormtitledto) {
         return  ResponseEntity.status(HttpStatus.OK).body(ormtitleService.checkKey(ormtitleMapping.toDomain(ormtitledto)));
     }
 
-    @PreAuthorize("hasPermission(#ormtitle_id,'Get',{'Sql',this.ormtitleMapping,this.permissionDTO})")
+    @PostAuthorize("hasPermission(this.ormtitleMapping.toDomain(returnObject.body),'ehr-ORMTITLE-Get')")
     @ApiOperation(value = "Get", tags = {"ORMTITLE" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/ormtitles/{ormtitle_id}")
     public ResponseEntity<ORMTITLEDTO> get(@PathVariable("ormtitle_id") String ormtitle_id) {
@@ -121,7 +118,7 @@ public class ORMTITLEResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('','Create',{'Sql',this.ormtitleMapping,#ormtitledto})")
+    @PreAuthorize("hasPermission(this.ormtitleMapping.toDomain(#ormtitledto),'ehr-ORMTITLE-Create')")
     @ApiOperation(value = "Create", tags = {"ORMTITLE" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormtitles")
     @Transactional
@@ -132,7 +129,7 @@ public class ORMTITLEResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.ormtitleMapping,#ormtitledtos})")
+    @PreAuthorize("hasPermission(this.ormtitleMapping.toDomain(#ormtitledtos),'ehr-ORMTITLE-Create')")
     @ApiOperation(value = "createBatch", tags = {"ORMTITLE" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormtitles/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<ORMTITLEDTO> ormtitledtos) {
@@ -162,3 +159,4 @@ public class ORMTITLEResource {
                 .body(new PageImpl(ormtitleMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 }
+

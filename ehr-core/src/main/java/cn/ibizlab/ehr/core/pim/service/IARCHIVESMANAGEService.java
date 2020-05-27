@@ -52,6 +52,9 @@ public interface IARCHIVESMANAGEService extends IService<ARCHIVESMANAGE>{
      */
     boolean execute(String sql, Map param);
 
+    List<ARCHIVESMANAGE> getArchivesmanageByIds(List<String> ids) ;
+    List<ARCHIVESMANAGE> getArchivesmanageByEntities(List<ARCHIVESMANAGE> entities) ;
+
 }
 
 

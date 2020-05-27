@@ -215,6 +215,26 @@ public class TRMTRAFFICServiceImpl extends ServiceImpl<TRMTRAFFICMapper, TRMTRAF
         return true;
     }
 
+    @Override
+    public List<TRMTRAFFIC> getTrmtrafficByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<TRMTRAFFIC> getTrmtrafficByEntities(List<TRMTRAFFIC> entities) {
+        List ids =new ArrayList();
+        for(TRMTRAFFIC entity : entities){
+            Serializable id=entity.getTrmtrafficid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

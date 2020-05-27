@@ -56,6 +56,9 @@ public interface IPIMSOCIALSECURITYService extends IService<PIMSOCIALSECURITY>{
      */
     boolean execute(String sql, Map param);
 
+    List<PIMSOCIALSECURITY> getPimsocialsecurityByIds(List<String> ids) ;
+    List<PIMSOCIALSECURITY> getPimsocialsecurityByEntities(List<PIMSOCIALSECURITY> entities) ;
+
 }
 
 

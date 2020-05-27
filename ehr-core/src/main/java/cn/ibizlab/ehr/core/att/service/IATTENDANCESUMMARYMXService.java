@@ -52,6 +52,9 @@ public interface IATTENDANCESUMMARYMXService extends IService<ATTENDANCESUMMARYM
      */
     boolean execute(String sql, Map param);
 
+    List<ATTENDANCESUMMARYMX> getAttendancesummarymxByIds(List<String> ids) ;
+    List<ATTENDANCESUMMARYMX> getAttendancesummarymxByEntities(List<ATTENDANCESUMMARYMX> entities) ;
+
 }
 
 

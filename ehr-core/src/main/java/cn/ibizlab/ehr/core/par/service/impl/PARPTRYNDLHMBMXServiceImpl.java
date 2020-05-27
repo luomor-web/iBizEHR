@@ -215,6 +215,26 @@ public class PARPTRYNDLHMBMXServiceImpl extends ServiceImpl<PARPTRYNDLHMBMXMappe
         return true;
     }
 
+    @Override
+    public List<PARPTRYNDLHMBMX> getParptryndlhmbmxByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<PARPTRYNDLHMBMX> getParptryndlhmbmxByEntities(List<PARPTRYNDLHMBMX> entities) {
+        List ids =new ArrayList();
+        for(PARPTRYNDLHMBMX entity : entities){
+            Serializable id=entity.getParptryndlhmbmxid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

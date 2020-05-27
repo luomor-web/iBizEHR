@@ -191,6 +191,26 @@ public class PCMGXMLServiceImpl extends ServiceImpl<PCMGXMLMapper, PCMGXML> impl
         return true;
     }
 
+    @Override
+    public List<PCMGXML> getPcmgxmlByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<PCMGXML> getPcmgxmlByEntities(List<PCMGXML> entities) {
+        List ids =new ArrayList();
+        for(PCMGXML entity : entities){
+            Serializable id=entity.getPcmgxmlid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

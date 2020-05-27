@@ -57,6 +57,9 @@ public interface IPIMLABOURCAMPANYService extends IService<PIMLABOURCAMPANY>{
      */
     boolean execute(String sql, Map param);
 
+    List<PIMLABOURCAMPANY> getPimlabourcampanyByIds(List<String> ids) ;
+    List<PIMLABOURCAMPANY> getPimlabourcampanyByEntities(List<PIMLABOURCAMPANY> entities) ;
+
 }
 
 

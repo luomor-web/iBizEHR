@@ -301,6 +301,26 @@ public class ATTENDANCERECORDServiceImpl extends ServiceImpl<ATTENDANCERECORDMap
         return true;
     }
 
+    @Override
+    public List<ATTENDANCERECORD> getAttendancerecordByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<ATTENDANCERECORD> getAttendancerecordByEntities(List<ATTENDANCERECORD> entities) {
+        List ids =new ArrayList();
+        for(ATTENDANCERECORD entity : entities){
+            Serializable id=entity.getAttendancerecordid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

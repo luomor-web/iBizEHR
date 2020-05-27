@@ -225,6 +225,26 @@ public class PIMTITLECATALOGUEServiceImpl extends ServiceImpl<PIMTITLECATALOGUEM
         return true;
     }
 
+    @Override
+    public List<PIMTITLECATALOGUE> getPimtitlecatalogueByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<PIMTITLECATALOGUE> getPimtitlecatalogueByEntities(List<PIMTITLECATALOGUE> entities) {
+        List ids =new ArrayList();
+        for(PIMTITLECATALOGUE entity : entities){
+            Serializable id=entity.getPimtitlecatalogueid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

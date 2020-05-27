@@ -545,6 +545,26 @@ public class PIMDISTIRBUTIONServiceImpl extends ServiceImpl<PIMDISTIRBUTIONMappe
         return true;
     }
 
+    @Override
+    public List<PIMDISTIRBUTION> getPimdistirbutionByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<PIMDISTIRBUTION> getPimdistirbutionByEntities(List<PIMDISTIRBUTION> entities) {
+        List ids =new ArrayList();
+        for(PIMDISTIRBUTION entity : entities){
+            Serializable id=entity.getPimdistirbutionid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

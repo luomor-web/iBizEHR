@@ -179,6 +179,26 @@ public class ATTENDANCESUMMARYMXServiceImpl extends ServiceImpl<ATTENDANCESUMMAR
         return true;
     }
 
+    @Override
+    public List<ATTENDANCESUMMARYMX> getAttendancesummarymxByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<ATTENDANCESUMMARYMX> getAttendancesummarymxByEntities(List<ATTENDANCESUMMARYMX> entities) {
+        List ids =new ArrayList();
+        for(ATTENDANCESUMMARYMX entity : entities){
+            Serializable id=entity.getAttendancesummarymxid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

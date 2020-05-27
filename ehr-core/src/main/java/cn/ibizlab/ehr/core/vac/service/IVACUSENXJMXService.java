@@ -54,6 +54,9 @@ public interface IVACUSENXJMXService extends IService<VACUSENXJMX>{
      */
     boolean execute(String sql, Map param);
 
+    List<VACUSENXJMX> getVacusenxjmxByIds(List<String> ids) ;
+    List<VACUSENXJMX> getVacusenxjmxByEntities(List<VACUSENXJMX> entities) ;
+
 }
 
 

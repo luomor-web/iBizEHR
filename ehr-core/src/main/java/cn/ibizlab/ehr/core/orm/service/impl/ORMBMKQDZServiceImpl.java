@@ -218,6 +218,26 @@ public class ORMBMKQDZServiceImpl extends ServiceImpl<ORMBMKQDZMapper, ORMBMKQDZ
         return true;
     }
 
+    @Override
+    public List<ORMBMKQDZ> getOrmbmkqdzByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<ORMBMKQDZ> getOrmbmkqdzByEntities(List<ORMBMKQDZ> entities) {
+        List ids =new ArrayList();
+        for(ORMBMKQDZ entity : entities){
+            Serializable id=entity.getOrmbmkqdzid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

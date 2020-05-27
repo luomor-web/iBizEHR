@@ -216,6 +216,26 @@ public class TDZWXXServiceImpl extends ServiceImpl<TDZWXXMapper, TDZWXX> impleme
         return true;
     }
 
+    @Override
+    public List<TDZWXX> getTdzwxxByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<TDZWXX> getTdzwxxByEntities(List<TDZWXX> entities) {
+        List ids =new ArrayList();
+        for(TDZWXX entity : entities){
+            Serializable id=entity.getTdzwxxid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

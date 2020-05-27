@@ -52,6 +52,9 @@ public interface IWFQJService extends IService<WFQJ>{
      */
     boolean execute(String sql, Map param);
 
+    List<WFQJ> getWfqjByIds(List<String> ids) ;
+    List<WFQJ> getWfqjByEntities(List<WFQJ> entities) ;
+
 }
 
 

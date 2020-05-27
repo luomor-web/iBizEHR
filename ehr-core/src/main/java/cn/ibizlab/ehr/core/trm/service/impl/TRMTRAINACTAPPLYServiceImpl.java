@@ -224,6 +224,26 @@ public class TRMTRAINACTAPPLYServiceImpl extends ServiceImpl<TRMTRAINACTAPPLYMap
         return true;
     }
 
+    @Override
+    public List<TRMTRAINACTAPPLY> getTrmtrainactapplyByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<TRMTRAINACTAPPLY> getTrmtrainactapplyByEntities(List<TRMTRAINACTAPPLY> entities) {
+        List ids =new ArrayList();
+        for(TRMTRAINACTAPPLY entity : entities){
+            Serializable id=entity.getTrmtrainactapplyid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

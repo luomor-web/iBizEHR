@@ -240,6 +240,26 @@ public class ATTENDENCECALENDARServiceImpl extends ServiceImpl<ATTENDENCECALENDA
         return true;
     }
 
+    @Override
+    public List<ATTENDENCECALENDAR> getAttendencecalendarByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<ATTENDENCECALENDAR> getAttendencecalendarByEntities(List<ATTENDENCECALENDAR> entities) {
+        List ids =new ArrayList();
+        for(ATTENDENCECALENDAR entity : entities){
+            Serializable id=entity.getAttendencecalendarid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

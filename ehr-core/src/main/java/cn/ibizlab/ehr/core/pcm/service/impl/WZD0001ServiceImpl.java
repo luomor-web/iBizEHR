@@ -186,6 +186,26 @@ public class WZD0001ServiceImpl extends ServiceImpl<WZD0001Mapper, WZD0001> impl
         return true;
     }
 
+    @Override
+    public List<WZD0001> getWzd0001ByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<WZD0001> getWzd0001ByEntities(List<WZD0001> entities) {
+        List ids =new ArrayList();
+        for(WZD0001 entity : entities){
+            Serializable id=entity.getWzd0001id();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

@@ -239,6 +239,26 @@ public class PCMDETAILServiceImpl extends ServiceImpl<PCMDETAILMapper, PCMDETAIL
         return true;
     }
 
+    @Override
+    public List<PCMDETAIL> getPcmdetailByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<PCMDETAIL> getPcmdetailByEntities(List<PCMDETAIL> entities) {
+        List ids =new ArrayList();
+        for(PCMDETAIL entity : entities){
+            Serializable id=entity.getPcmdetailid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

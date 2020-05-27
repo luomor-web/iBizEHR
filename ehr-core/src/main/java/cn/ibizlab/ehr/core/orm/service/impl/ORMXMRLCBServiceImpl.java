@@ -188,6 +188,26 @@ public class ORMXMRLCBServiceImpl extends ServiceImpl<ORMXMRLCBMapper, ORMXMRLCB
         return true;
     }
 
+    @Override
+    public List<ORMXMRLCB> getOrmxmrlcbByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<ORMXMRLCB> getOrmxmrlcbByEntities(List<ORMXMRLCB> entities) {
+        List ids =new ArrayList();
+        for(ORMXMRLCB entity : entities){
+            Serializable id=entity.getOrmxmrlcbid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

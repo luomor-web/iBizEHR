@@ -58,6 +58,9 @@ public interface IPCMGBHMCService extends IService<PCMGBHMC>{
      */
     boolean execute(String sql, Map param);
 
+    List<PCMGBHMC> getPcmgbhmcByIds(List<String> ids) ;
+    List<PCMGBHMC> getPcmgbhmcByEntities(List<PCMGBHMC> entities) ;
+
 }
 
 

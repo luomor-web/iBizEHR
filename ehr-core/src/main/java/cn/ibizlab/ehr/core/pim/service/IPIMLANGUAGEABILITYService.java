@@ -59,6 +59,9 @@ public interface IPIMLANGUAGEABILITYService extends IService<PIMLANGUAGEABILITY>
      */
     boolean execute(String sql, Map param);
 
+    List<PIMLANGUAGEABILITY> getPimlanguageabilityByIds(List<String> ids) ;
+    List<PIMLANGUAGEABILITY> getPimlanguageabilityByEntities(List<PIMLANGUAGEABILITY> entities) ;
+
 }
 
 

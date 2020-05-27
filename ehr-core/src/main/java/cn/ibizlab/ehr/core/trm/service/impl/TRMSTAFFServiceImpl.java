@@ -263,6 +263,26 @@ public class TRMSTAFFServiceImpl extends ServiceImpl<TRMSTAFFMapper, TRMSTAFF> i
         return true;
     }
 
+    @Override
+    public List<TRMSTAFF> getTrmstaffByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<TRMSTAFF> getTrmstaffByEntities(List<TRMSTAFF> entities) {
+        List ids =new ArrayList();
+        for(TRMSTAFF entity : entities){
+            Serializable id=entity.getTrmstaffid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

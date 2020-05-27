@@ -231,6 +231,26 @@ public class TRMTRAINADDRESSServiceImpl extends ServiceImpl<TRMTRAINADDRESSMappe
         return true;
     }
 
+    @Override
+    public List<TRMTRAINADDRESS> getTrmtrainaddressByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<TRMTRAINADDRESS> getTrmtrainaddressByEntities(List<TRMTRAINADDRESS> entities) {
+        List ids =new ArrayList();
+        for(TRMTRAINADDRESS entity : entities){
+            Serializable id=entity.getTrmtrainaddressid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

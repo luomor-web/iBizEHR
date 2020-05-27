@@ -65,6 +65,9 @@ public interface IATTENDANCEMREPORTService extends IService<ATTENDANCEMREPORT>{
      */
     boolean execute(String sql, Map param);
 
+    List<ATTENDANCEMREPORT> getAttendancemreportByIds(List<String> ids) ;
+    List<ATTENDANCEMREPORT> getAttendancemreportByEntities(List<ATTENDANCEMREPORT> entities) ;
+
 }
 
 

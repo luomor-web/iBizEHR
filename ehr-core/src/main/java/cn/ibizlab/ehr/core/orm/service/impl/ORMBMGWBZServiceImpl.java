@@ -238,6 +238,26 @@ public class ORMBMGWBZServiceImpl extends ServiceImpl<ORMBMGWBZMapper, ORMBMGWBZ
         return true;
     }
 
+    @Override
+    public List<ORMBMGWBZ> getOrmbmgwbzByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<ORMBMGWBZ> getOrmbmgwbzByEntities(List<ORMBMGWBZ> entities) {
+        List ids =new ArrayList();
+        for(ORMBMGWBZ entity : entities){
+            Serializable id=entity.getOrmbmgwbzid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

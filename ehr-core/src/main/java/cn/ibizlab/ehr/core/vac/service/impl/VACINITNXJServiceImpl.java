@@ -215,6 +215,26 @@ public class VACINITNXJServiceImpl extends ServiceImpl<VACINITNXJMapper, VACINIT
         return true;
     }
 
+    @Override
+    public List<VACINITNXJ> getVacinitnxjByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<VACINITNXJ> getVacinitnxjByEntities(List<VACINITNXJ> entities) {
+        List ids =new ArrayList();
+        for(VACINITNXJ entity : entities){
+            Serializable id=entity.getVacinitnxjid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

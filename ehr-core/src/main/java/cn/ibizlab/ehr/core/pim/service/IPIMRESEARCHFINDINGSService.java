@@ -56,6 +56,9 @@ public interface IPIMRESEARCHFINDINGSService extends IService<PIMRESEARCHFINDING
      */
     boolean execute(String sql, Map param);
 
+    List<PIMRESEARCHFINDINGS> getPimresearchfindingsByIds(List<String> ids) ;
+    List<PIMRESEARCHFINDINGS> getPimresearchfindingsByEntities(List<PIMRESEARCHFINDINGS> entities) ;
+
 }
 
 

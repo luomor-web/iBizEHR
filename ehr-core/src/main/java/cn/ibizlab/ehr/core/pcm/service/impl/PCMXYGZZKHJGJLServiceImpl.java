@@ -182,6 +182,26 @@ public class PCMXYGZZKHJGJLServiceImpl extends ServiceImpl<PCMXYGZZKHJGJLMapper,
         return true;
     }
 
+    @Override
+    public List<PCMXYGZZKHJGJL> getPcmxygzzkhjgjlByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<PCMXYGZZKHJGJL> getPcmxygzzkhjgjlByEntities(List<PCMXYGZZKHJGJL> entities) {
+        List ids =new ArrayList();
+        for(PCMXYGZZKHJGJL entity : entities){
+            Serializable id=entity.getPcmxygzzkhjgjlid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

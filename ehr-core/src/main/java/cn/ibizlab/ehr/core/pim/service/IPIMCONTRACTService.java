@@ -73,6 +73,9 @@ public interface IPIMCONTRACTService extends IService<PIMCONTRACT>{
      */
     boolean execute(String sql, Map param);
 
+    List<PIMCONTRACT> getPimcontractByIds(List<String> ids) ;
+    List<PIMCONTRACT> getPimcontractByEntities(List<PIMCONTRACT> entities) ;
+
 }
 
 

@@ -54,6 +54,9 @@ public interface IPARLDKHQZService extends IService<PARLDKHQZ>{
      */
     boolean execute(String sql, Map param);
 
+    List<PARLDKHQZ> getParldkhqzByIds(List<String> ids) ;
+    List<PARLDKHQZ> getParldkhqzByEntities(List<PARLDKHQZ> entities) ;
+
 }
 
 

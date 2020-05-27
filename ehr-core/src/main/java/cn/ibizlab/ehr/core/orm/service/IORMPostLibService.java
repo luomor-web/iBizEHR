@@ -52,6 +52,9 @@ public interface IORMPostLibService extends IService<ORMPostLib>{
      */
     boolean execute(String sql, Map param);
 
+    List<ORMPostLib> getOrmpostlibByIds(List<String> ids) ;
+    List<ORMPostLib> getOrmpostlibByEntities(List<ORMPostLib> entities) ;
+
 }
 
 

@@ -665,6 +665,26 @@ public class ORMORGServiceImpl extends ServiceImpl<ORMORGMapper, ORMORG> impleme
         return true;
     }
 
+    @Override
+    public List<ORMORG> getOrmorgByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<ORMORG> getOrmorgByEntities(List<ORMORG> entities) {
+        List ids =new ArrayList();
+        for(ORMORG entity : entities){
+            Serializable id=entity.getOrgid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

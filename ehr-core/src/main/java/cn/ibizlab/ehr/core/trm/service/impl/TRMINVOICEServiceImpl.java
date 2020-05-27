@@ -215,6 +215,26 @@ public class TRMINVOICEServiceImpl extends ServiceImpl<TRMINVOICEMapper, TRMINVO
         return true;
     }
 
+    @Override
+    public List<TRMINVOICE> getTrminvoiceByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<TRMINVOICE> getTrminvoiceByEntities(List<TRMINVOICE> entities) {
+        List ids =new ArrayList();
+        for(TRMINVOICE entity : entities){
+            Serializable id=entity.getTrminvoiceid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

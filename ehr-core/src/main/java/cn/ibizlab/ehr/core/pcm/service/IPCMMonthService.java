@@ -52,6 +52,9 @@ public interface IPCMMonthService extends IService<PCMMonth>{
      */
     boolean execute(String sql, Map param);
 
+    List<PCMMonth> getPcmmonthByIds(List<String> ids) ;
+    List<PCMMonth> getPcmmonthByEntities(List<PCMMonth> entities) ;
+
 }
 
 

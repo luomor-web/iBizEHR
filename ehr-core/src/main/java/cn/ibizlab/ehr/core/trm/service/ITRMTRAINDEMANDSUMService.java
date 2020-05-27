@@ -58,6 +58,9 @@ public interface ITRMTRAINDEMANDSUMService extends IService<TRMTRAINDEMANDSUM>{
      */
     boolean execute(String sql, Map param);
 
+    List<TRMTRAINDEMANDSUM> getTrmtraindemandsumByIds(List<String> ids) ;
+    List<TRMTRAINDEMANDSUM> getTrmtraindemandsumByEntities(List<TRMTRAINDEMANDSUM> entities) ;
+
 }
 
 

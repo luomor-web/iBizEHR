@@ -261,6 +261,26 @@ public class VACSYSTEMAPPLICATIONServiceImpl extends ServiceImpl<VACSYSTEMAPPLIC
         return true;
     }
 
+    @Override
+    public List<VACSYSTEMAPPLICATION> getVacsystemapplicationByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<VACSYSTEMAPPLICATION> getVacsystemapplicationByEntities(List<VACSYSTEMAPPLICATION> entities) {
+        List ids =new ArrayList();
+        for(VACSYSTEMAPPLICATION entity : entities){
+            Serializable id=entity.getVacsystemapplicationid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

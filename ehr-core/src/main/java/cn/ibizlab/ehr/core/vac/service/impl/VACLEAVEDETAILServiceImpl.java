@@ -243,6 +243,26 @@ public class VACLEAVEDETAILServiceImpl extends ServiceImpl<VACLEAVEDETAILMapper,
         return true;
     }
 
+    @Override
+    public List<VACLEAVEDETAIL> getVacleavedetailByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<VACLEAVEDETAIL> getVacleavedetailByEntities(List<VACLEAVEDETAIL> entities) {
+        List ids =new ArrayList();
+        for(VACLEAVEDETAIL entity : entities){
+            Serializable id=entity.getVacleavedetailid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

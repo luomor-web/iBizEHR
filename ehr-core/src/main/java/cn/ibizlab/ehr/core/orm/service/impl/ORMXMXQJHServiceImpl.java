@@ -297,6 +297,26 @@ public class ORMXMXQJHServiceImpl extends ServiceImpl<ORMXMXQJHMapper, ORMXMXQJH
         return true;
     }
 
+    @Override
+    public List<ORMXMXQJH> getOrmxmxqjhByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<ORMXMXQJH> getOrmxmxqjhByEntities(List<ORMXMXQJH> entities) {
+        List ids =new ArrayList();
+        for(ORMXMXQJH entity : entities){
+            Serializable id=entity.getOrmxmxqjhid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

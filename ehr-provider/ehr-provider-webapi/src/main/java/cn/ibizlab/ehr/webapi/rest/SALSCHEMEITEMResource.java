@@ -22,6 +22,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.access.prepost.PostAuthorize;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -39,15 +40,13 @@ import cn.ibizlab.ehr.core.sal.filter.SALSCHEMEITEMSearchContext;
 public class SALSCHEMEITEMResource {
 
     @Autowired
-    private ISALSCHEMEITEMService salschemeitemService;
+    public ISALSCHEMEITEMService salschemeitemService;
 
     @Autowired
     @Lazy
     public SALSCHEMEITEMMapping salschemeitemMapping;
 
-    public SALSCHEMEITEMDTO permissionDTO=new SALSCHEMEITEMDTO();
-
-    @PreAuthorize("hasPermission(#salschemeitem_id,'Update',{'Sql',this.salschemeitemMapping,#salschemeitemdto})")
+    @PreAuthorize("hasPermission(this.salschemeitemService.get(#salschemeitem_id),'ehr-SALSCHEMEITEM-Update')")
     @ApiOperation(value = "Update", tags = {"SALSCHEMEITEM" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/salschemeitems/{salschemeitem_id}")
     @Transactional
@@ -59,7 +58,7 @@ public class SALSCHEMEITEMResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.salschemeitemMapping,#salschemeitemdtos})")
+    @PreAuthorize("hasPermission(this.salschemeitemService.getSalschemeitemByEntities(this.salschemeitemMapping.toDomain(#salschemeitemdtos)),'ehr-SALSCHEMEITEM-Update')")
     @ApiOperation(value = "UpdateBatch", tags = {"SALSCHEMEITEM" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/salschemeitems/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<SALSCHEMEITEMDTO> salschemeitemdtos) {
@@ -67,14 +66,14 @@ public class SALSCHEMEITEMResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('','Save',{'Sql',this.salschemeitemMapping,#salschemeitemdto})")
+    @PreAuthorize("hasPermission(this.salschemeitemMapping.toDomain(#salschemeitemdto),'ehr-SALSCHEMEITEM-Save')")
     @ApiOperation(value = "Save", tags = {"SALSCHEMEITEM" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/salschemeitems/save")
     public ResponseEntity<Boolean> save(@RequestBody SALSCHEMEITEMDTO salschemeitemdto) {
         return ResponseEntity.status(HttpStatus.OK).body(salschemeitemService.save(salschemeitemMapping.toDomain(salschemeitemdto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.salschemeitemMapping,#salschemeitemdtos})")
+    @PreAuthorize("hasPermission(this.salschemeitemMapping.toDomain(#salschemeitemdtos),'ehr-SALSCHEMEITEM-Save')")
     @ApiOperation(value = "SaveBatch", tags = {"SALSCHEMEITEM" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/salschemeitems/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<SALSCHEMEITEMDTO> salschemeitemdtos) {
@@ -82,7 +81,7 @@ public class SALSCHEMEITEMResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission(#salschemeitem_id,'Get',{'Sql',this.salschemeitemMapping,this.permissionDTO})")
+    @PostAuthorize("hasPermission(this.salschemeitemMapping.toDomain(returnObject.body),'ehr-SALSCHEMEITEM-Get')")
     @ApiOperation(value = "Get", tags = {"SALSCHEMEITEM" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/salschemeitems/{salschemeitem_id}")
     public ResponseEntity<SALSCHEMEITEMDTO> get(@PathVariable("salschemeitem_id") String salschemeitem_id) {
@@ -91,7 +90,7 @@ public class SALSCHEMEITEMResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#salschemeitem_id,'Remove',{'Sql',this.salschemeitemMapping,this.permissionDTO})")
+    @PreAuthorize("hasPermission(this.salschemeitemService.get(#salschemeitem_id),'ehr-SALSCHEMEITEM-Remove')")
     @ApiOperation(value = "Remove", tags = {"SALSCHEMEITEM" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/salschemeitems/{salschemeitem_id}")
     @Transactional
@@ -99,7 +98,7 @@ public class SALSCHEMEITEMResource {
          return ResponseEntity.status(HttpStatus.OK).body(salschemeitemService.remove(salschemeitem_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.salschemeitemMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission(this.salschemeitemService.getSalschemeitemByIds(#ids),'ehr-SALSCHEMEITEM-Remove')")
     @ApiOperation(value = "RemoveBatch", tags = {"SALSCHEMEITEM" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/salschemeitems/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -107,14 +106,13 @@ public class SALSCHEMEITEMResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALSCHEMEITEM-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"SALSCHEMEITEM" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/salschemeitems/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody SALSCHEMEITEMDTO salschemeitemdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(salschemeitemService.checkKey(salschemeitemMapping.toDomain(salschemeitemdto)));
     }
 
-    @PreAuthorize("hasPermission('','Create',{'Sql',this.salschemeitemMapping,#salschemeitemdto})")
+    @PreAuthorize("hasPermission(this.salschemeitemMapping.toDomain(#salschemeitemdto),'ehr-SALSCHEMEITEM-Create')")
     @ApiOperation(value = "Create", tags = {"SALSCHEMEITEM" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/salschemeitems")
     @Transactional
@@ -125,7 +123,7 @@ public class SALSCHEMEITEMResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.salschemeitemMapping,#salschemeitemdtos})")
+    @PreAuthorize("hasPermission(this.salschemeitemMapping.toDomain(#salschemeitemdtos),'ehr-SALSCHEMEITEM-Create')")
     @ApiOperation(value = "createBatch", tags = {"SALSCHEMEITEM" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/salschemeitems/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<SALSCHEMEITEMDTO> salschemeitemdtos) {
@@ -133,7 +131,6 @@ public class SALSCHEMEITEMResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALSCHEMEITEM-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"SALSCHEMEITEM" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/salschemeitems/getdraft")
     public ResponseEntity<SALSCHEMEITEMDTO> getDraft() {
@@ -161,7 +158,7 @@ public class SALSCHEMEITEMResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(salschemeitemMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-    @PreAuthorize("hasPermission(#salschemeitem_id,'Update',{'Sql',this.salschemeitemMapping,#salschemeitemdto})")
+    @PreAuthorize("hasPermission(this.salschemeitemService.get(#salschemeitem_id),'ehr-SALSCHEMEITEM-Update')")
     @ApiOperation(value = "UpdateBySALITEM", tags = {"SALSCHEMEITEM" },  notes = "UpdateBySALITEM")
 	@RequestMapping(method = RequestMethod.PUT, value = "/salitems/{salitem_id}/salschemeitems/{salschemeitem_id}")
     @Transactional
@@ -174,7 +171,7 @@ public class SALSCHEMEITEMResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.salschemeitemMapping,#salschemeitemdtos})")
+    @PreAuthorize("hasPermission(this.salschemeitemService.getSalschemeitemByEntities(this.salschemeitemMapping.toDomain(#salschemeitemdtos)),'ehr-SALSCHEMEITEM-Update')")
     @ApiOperation(value = "UpdateBatchBySALITEM", tags = {"SALSCHEMEITEM" },  notes = "UpdateBatchBySALITEM")
 	@RequestMapping(method = RequestMethod.PUT, value = "/salitems/{salitem_id}/salschemeitems/batch")
     public ResponseEntity<Boolean> updateBatchBySALITEM(@PathVariable("salitem_id") String salitem_id, @RequestBody List<SALSCHEMEITEMDTO> salschemeitemdtos) {
@@ -186,7 +183,7 @@ public class SALSCHEMEITEMResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('','Save',{'Sql',this.salschemeitemMapping,#salschemeitemdto})")
+    @PreAuthorize("hasPermission(this.salschemeitemMapping.toDomain(#salschemeitemdto),'ehr-SALSCHEMEITEM-Save')")
     @ApiOperation(value = "SaveBySALITEM", tags = {"SALSCHEMEITEM" },  notes = "SaveBySALITEM")
 	@RequestMapping(method = RequestMethod.POST, value = "/salitems/{salitem_id}/salschemeitems/save")
     public ResponseEntity<Boolean> saveBySALITEM(@PathVariable("salitem_id") String salitem_id, @RequestBody SALSCHEMEITEMDTO salschemeitemdto) {
@@ -195,7 +192,7 @@ public class SALSCHEMEITEMResource {
         return ResponseEntity.status(HttpStatus.OK).body(salschemeitemService.save(domain));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.salschemeitemMapping,#salschemeitemdtos})")
+    @PreAuthorize("hasPermission(this.salschemeitemMapping.toDomain(#salschemeitemdtos),'ehr-SALSCHEMEITEM-Save')")
     @ApiOperation(value = "SaveBatchBySALITEM", tags = {"SALSCHEMEITEM" },  notes = "SaveBatchBySALITEM")
 	@RequestMapping(method = RequestMethod.POST, value = "/salitems/{salitem_id}/salschemeitems/savebatch")
     public ResponseEntity<Boolean> saveBatchBySALITEM(@PathVariable("salitem_id") String salitem_id, @RequestBody List<SALSCHEMEITEMDTO> salschemeitemdtos) {
@@ -207,7 +204,7 @@ public class SALSCHEMEITEMResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission(#salschemeitem_id,'Get',{'Sql',this.salschemeitemMapping,this.permissionDTO})")
+    @PostAuthorize("hasPermission(this.salschemeitemMapping.toDomain(returnObject.body),'ehr-SALSCHEMEITEM-Get')")
     @ApiOperation(value = "GetBySALITEM", tags = {"SALSCHEMEITEM" },  notes = "GetBySALITEM")
 	@RequestMapping(method = RequestMethod.GET, value = "/salitems/{salitem_id}/salschemeitems/{salschemeitem_id}")
     public ResponseEntity<SALSCHEMEITEMDTO> getBySALITEM(@PathVariable("salitem_id") String salitem_id, @PathVariable("salschemeitem_id") String salschemeitem_id) {
@@ -216,7 +213,7 @@ public class SALSCHEMEITEMResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#salschemeitem_id,'Remove',{'Sql',this.salschemeitemMapping,this.permissionDTO})")
+    @PreAuthorize("hasPermission(this.salschemeitemService.get(#salschemeitem_id),'ehr-SALSCHEMEITEM-Remove')")
     @ApiOperation(value = "RemoveBySALITEM", tags = {"SALSCHEMEITEM" },  notes = "RemoveBySALITEM")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/salitems/{salitem_id}/salschemeitems/{salschemeitem_id}")
     @Transactional
@@ -224,7 +221,7 @@ public class SALSCHEMEITEMResource {
 		return ResponseEntity.status(HttpStatus.OK).body(salschemeitemService.remove(salschemeitem_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.salschemeitemMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission(this.salschemeitemService.getSalschemeitemByIds(#ids),'ehr-SALSCHEMEITEM-Remove')")
     @ApiOperation(value = "RemoveBatchBySALITEM", tags = {"SALSCHEMEITEM" },  notes = "RemoveBatchBySALITEM")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/salitems/{salitem_id}/salschemeitems/batch")
     public ResponseEntity<Boolean> removeBatchBySALITEM(@RequestBody List<String> ids) {
@@ -232,14 +229,13 @@ public class SALSCHEMEITEMResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALSCHEMEITEM-CheckKey-all')")
     @ApiOperation(value = "CheckKeyBySALITEM", tags = {"SALSCHEMEITEM" },  notes = "CheckKeyBySALITEM")
 	@RequestMapping(method = RequestMethod.POST, value = "/salitems/{salitem_id}/salschemeitems/checkkey")
     public ResponseEntity<Boolean> checkKeyBySALITEM(@PathVariable("salitem_id") String salitem_id, @RequestBody SALSCHEMEITEMDTO salschemeitemdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(salschemeitemService.checkKey(salschemeitemMapping.toDomain(salschemeitemdto)));
     }
 
-    @PreAuthorize("hasPermission('','Create',{'Sql',this.salschemeitemMapping,#salschemeitemdto})")
+    @PreAuthorize("hasPermission(this.salschemeitemMapping.toDomain(#salschemeitemdto),'ehr-SALSCHEMEITEM-Create')")
     @ApiOperation(value = "CreateBySALITEM", tags = {"SALSCHEMEITEM" },  notes = "CreateBySALITEM")
 	@RequestMapping(method = RequestMethod.POST, value = "/salitems/{salitem_id}/salschemeitems")
     @Transactional
@@ -251,7 +247,7 @@ public class SALSCHEMEITEMResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.salschemeitemMapping,#salschemeitemdtos})")
+    @PreAuthorize("hasPermission(this.salschemeitemMapping.toDomain(#salschemeitemdtos),'ehr-SALSCHEMEITEM-Create')")
     @ApiOperation(value = "createBatchBySALITEM", tags = {"SALSCHEMEITEM" },  notes = "createBatchBySALITEM")
 	@RequestMapping(method = RequestMethod.POST, value = "/salitems/{salitem_id}/salschemeitems/batch")
     public ResponseEntity<Boolean> createBatchBySALITEM(@PathVariable("salitem_id") String salitem_id, @RequestBody List<SALSCHEMEITEMDTO> salschemeitemdtos) {
@@ -263,7 +259,6 @@ public class SALSCHEMEITEMResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALSCHEMEITEM-GetDraft-all')")
     @ApiOperation(value = "GetDraftBySALITEM", tags = {"SALSCHEMEITEM" },  notes = "GetDraftBySALITEM")
     @RequestMapping(method = RequestMethod.GET, value = "/salitems/{salitem_id}/salschemeitems/getdraft")
     public ResponseEntity<SALSCHEMEITEMDTO> getDraftBySALITEM(@PathVariable("salitem_id") String salitem_id) {
@@ -295,7 +290,7 @@ public class SALSCHEMEITEMResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(salschemeitemMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-    @PreAuthorize("hasPermission(#salschemeitem_id,'Update',{'Sql',this.salschemeitemMapping,#salschemeitemdto})")
+    @PreAuthorize("hasPermission(this.salschemeitemService.get(#salschemeitem_id),'ehr-SALSCHEMEITEM-Update')")
     @ApiOperation(value = "UpdateBySALSCHEME", tags = {"SALSCHEMEITEM" },  notes = "UpdateBySALSCHEME")
 	@RequestMapping(method = RequestMethod.PUT, value = "/salschemes/{salscheme_id}/salschemeitems/{salschemeitem_id}")
     @Transactional
@@ -308,7 +303,7 @@ public class SALSCHEMEITEMResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.salschemeitemMapping,#salschemeitemdtos})")
+    @PreAuthorize("hasPermission(this.salschemeitemService.getSalschemeitemByEntities(this.salschemeitemMapping.toDomain(#salschemeitemdtos)),'ehr-SALSCHEMEITEM-Update')")
     @ApiOperation(value = "UpdateBatchBySALSCHEME", tags = {"SALSCHEMEITEM" },  notes = "UpdateBatchBySALSCHEME")
 	@RequestMapping(method = RequestMethod.PUT, value = "/salschemes/{salscheme_id}/salschemeitems/batch")
     public ResponseEntity<Boolean> updateBatchBySALSCHEME(@PathVariable("salscheme_id") String salscheme_id, @RequestBody List<SALSCHEMEITEMDTO> salschemeitemdtos) {
@@ -320,7 +315,7 @@ public class SALSCHEMEITEMResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('','Save',{'Sql',this.salschemeitemMapping,#salschemeitemdto})")
+    @PreAuthorize("hasPermission(this.salschemeitemMapping.toDomain(#salschemeitemdto),'ehr-SALSCHEMEITEM-Save')")
     @ApiOperation(value = "SaveBySALSCHEME", tags = {"SALSCHEMEITEM" },  notes = "SaveBySALSCHEME")
 	@RequestMapping(method = RequestMethod.POST, value = "/salschemes/{salscheme_id}/salschemeitems/save")
     public ResponseEntity<Boolean> saveBySALSCHEME(@PathVariable("salscheme_id") String salscheme_id, @RequestBody SALSCHEMEITEMDTO salschemeitemdto) {
@@ -329,7 +324,7 @@ public class SALSCHEMEITEMResource {
         return ResponseEntity.status(HttpStatus.OK).body(salschemeitemService.save(domain));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.salschemeitemMapping,#salschemeitemdtos})")
+    @PreAuthorize("hasPermission(this.salschemeitemMapping.toDomain(#salschemeitemdtos),'ehr-SALSCHEMEITEM-Save')")
     @ApiOperation(value = "SaveBatchBySALSCHEME", tags = {"SALSCHEMEITEM" },  notes = "SaveBatchBySALSCHEME")
 	@RequestMapping(method = RequestMethod.POST, value = "/salschemes/{salscheme_id}/salschemeitems/savebatch")
     public ResponseEntity<Boolean> saveBatchBySALSCHEME(@PathVariable("salscheme_id") String salscheme_id, @RequestBody List<SALSCHEMEITEMDTO> salschemeitemdtos) {
@@ -341,7 +336,7 @@ public class SALSCHEMEITEMResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission(#salschemeitem_id,'Get',{'Sql',this.salschemeitemMapping,this.permissionDTO})")
+    @PostAuthorize("hasPermission(this.salschemeitemMapping.toDomain(returnObject.body),'ehr-SALSCHEMEITEM-Get')")
     @ApiOperation(value = "GetBySALSCHEME", tags = {"SALSCHEMEITEM" },  notes = "GetBySALSCHEME")
 	@RequestMapping(method = RequestMethod.GET, value = "/salschemes/{salscheme_id}/salschemeitems/{salschemeitem_id}")
     public ResponseEntity<SALSCHEMEITEMDTO> getBySALSCHEME(@PathVariable("salscheme_id") String salscheme_id, @PathVariable("salschemeitem_id") String salschemeitem_id) {
@@ -350,7 +345,7 @@ public class SALSCHEMEITEMResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#salschemeitem_id,'Remove',{'Sql',this.salschemeitemMapping,this.permissionDTO})")
+    @PreAuthorize("hasPermission(this.salschemeitemService.get(#salschemeitem_id),'ehr-SALSCHEMEITEM-Remove')")
     @ApiOperation(value = "RemoveBySALSCHEME", tags = {"SALSCHEMEITEM" },  notes = "RemoveBySALSCHEME")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/salschemes/{salscheme_id}/salschemeitems/{salschemeitem_id}")
     @Transactional
@@ -358,7 +353,7 @@ public class SALSCHEMEITEMResource {
 		return ResponseEntity.status(HttpStatus.OK).body(salschemeitemService.remove(salschemeitem_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.salschemeitemMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission(this.salschemeitemService.getSalschemeitemByIds(#ids),'ehr-SALSCHEMEITEM-Remove')")
     @ApiOperation(value = "RemoveBatchBySALSCHEME", tags = {"SALSCHEMEITEM" },  notes = "RemoveBatchBySALSCHEME")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/salschemes/{salscheme_id}/salschemeitems/batch")
     public ResponseEntity<Boolean> removeBatchBySALSCHEME(@RequestBody List<String> ids) {
@@ -366,14 +361,13 @@ public class SALSCHEMEITEMResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALSCHEMEITEM-CheckKey-all')")
     @ApiOperation(value = "CheckKeyBySALSCHEME", tags = {"SALSCHEMEITEM" },  notes = "CheckKeyBySALSCHEME")
 	@RequestMapping(method = RequestMethod.POST, value = "/salschemes/{salscheme_id}/salschemeitems/checkkey")
     public ResponseEntity<Boolean> checkKeyBySALSCHEME(@PathVariable("salscheme_id") String salscheme_id, @RequestBody SALSCHEMEITEMDTO salschemeitemdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(salschemeitemService.checkKey(salschemeitemMapping.toDomain(salschemeitemdto)));
     }
 
-    @PreAuthorize("hasPermission('','Create',{'Sql',this.salschemeitemMapping,#salschemeitemdto})")
+    @PreAuthorize("hasPermission(this.salschemeitemMapping.toDomain(#salschemeitemdto),'ehr-SALSCHEMEITEM-Create')")
     @ApiOperation(value = "CreateBySALSCHEME", tags = {"SALSCHEMEITEM" },  notes = "CreateBySALSCHEME")
 	@RequestMapping(method = RequestMethod.POST, value = "/salschemes/{salscheme_id}/salschemeitems")
     @Transactional
@@ -385,7 +379,7 @@ public class SALSCHEMEITEMResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.salschemeitemMapping,#salschemeitemdtos})")
+    @PreAuthorize("hasPermission(this.salschemeitemMapping.toDomain(#salschemeitemdtos),'ehr-SALSCHEMEITEM-Create')")
     @ApiOperation(value = "createBatchBySALSCHEME", tags = {"SALSCHEMEITEM" },  notes = "createBatchBySALSCHEME")
 	@RequestMapping(method = RequestMethod.POST, value = "/salschemes/{salscheme_id}/salschemeitems/batch")
     public ResponseEntity<Boolean> createBatchBySALSCHEME(@PathVariable("salscheme_id") String salscheme_id, @RequestBody List<SALSCHEMEITEMDTO> salschemeitemdtos) {
@@ -397,7 +391,6 @@ public class SALSCHEMEITEMResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALSCHEMEITEM-GetDraft-all')")
     @ApiOperation(value = "GetDraftBySALSCHEME", tags = {"SALSCHEMEITEM" },  notes = "GetDraftBySALSCHEME")
     @RequestMapping(method = RequestMethod.GET, value = "/salschemes/{salscheme_id}/salschemeitems/getdraft")
     public ResponseEntity<SALSCHEMEITEMDTO> getDraftBySALSCHEME(@PathVariable("salscheme_id") String salscheme_id) {
@@ -430,3 +423,4 @@ public class SALSCHEMEITEMResource {
                 .body(new PageImpl(salschemeitemMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 }
+

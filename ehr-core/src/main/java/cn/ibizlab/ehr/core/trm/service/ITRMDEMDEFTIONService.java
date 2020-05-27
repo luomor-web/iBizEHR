@@ -62,6 +62,9 @@ public interface ITRMDEMDEFTIONService extends IService<TRMDEMDEFTION>{
      */
     boolean execute(String sql, Map param);
 
+    List<TRMDEMDEFTION> getTrmdemdeftionByIds(List<String> ids) ;
+    List<TRMDEMDEFTION> getTrmdemdeftionByEntities(List<TRMDEMDEFTION> entities) ;
+
 }
 
 

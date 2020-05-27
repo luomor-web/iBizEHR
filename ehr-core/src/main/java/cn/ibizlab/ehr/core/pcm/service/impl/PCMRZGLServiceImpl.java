@@ -197,6 +197,26 @@ public class PCMRZGLServiceImpl extends ServiceImpl<PCMRZGLMapper, PCMRZGL> impl
         return true;
     }
 
+    @Override
+    public List<PCMRZGL> getPcmrzglByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<PCMRZGL> getPcmrzglByEntities(List<PCMRZGL> entities) {
+        List ids =new ArrayList();
+        for(PCMRZGL entity : entities){
+            Serializable id=entity.getPcmrzglid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

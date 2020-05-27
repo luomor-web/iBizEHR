@@ -22,6 +22,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.access.prepost.PostAuthorize;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -39,22 +40,20 @@ import cn.ibizlab.ehr.core.trm.filter.TRMTRAINDATASearchContext;
 public class TRMTRAINDATAResource {
 
     @Autowired
-    private ITRMTRAINDATAService trmtraindataService;
+    public ITRMTRAINDATAService trmtraindataService;
 
     @Autowired
     @Lazy
     public TRMTRAINDATAMapping trmtraindataMapping;
 
-    public TRMTRAINDATADTO permissionDTO=new TRMTRAINDATADTO();
-
-    @PreAuthorize("hasPermission('','Save',{'Sql',this.trmtraindataMapping,#trmtraindatadto})")
+    @PreAuthorize("hasPermission(this.trmtraindataMapping.toDomain(#trmtraindatadto),'ehr-TRMTRAINDATA-Save')")
     @ApiOperation(value = "Save", tags = {"TRMTRAINDATA" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmtraindata/save")
     public ResponseEntity<Boolean> save(@RequestBody TRMTRAINDATADTO trmtraindatadto) {
         return ResponseEntity.status(HttpStatus.OK).body(trmtraindataService.save(trmtraindataMapping.toDomain(trmtraindatadto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.trmtraindataMapping,#trmtraindatadtos})")
+    @PreAuthorize("hasPermission(this.trmtraindataMapping.toDomain(#trmtraindatadtos),'ehr-TRMTRAINDATA-Save')")
     @ApiOperation(value = "SaveBatch", tags = {"TRMTRAINDATA" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmtraindata/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<TRMTRAINDATADTO> trmtraindatadtos) {
@@ -62,7 +61,7 @@ public class TRMTRAINDATAResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission(#trmtraindata_id,'Remove',{'Sql',this.trmtraindataMapping,this.permissionDTO})")
+    @PreAuthorize("hasPermission(this.trmtraindataService.get(#trmtraindata_id),'ehr-TRMTRAINDATA-Remove')")
     @ApiOperation(value = "Remove", tags = {"TRMTRAINDATA" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/trmtraindata/{trmtraindata_id}")
     @Transactional
@@ -70,7 +69,7 @@ public class TRMTRAINDATAResource {
          return ResponseEntity.status(HttpStatus.OK).body(trmtraindataService.remove(trmtraindata_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.trmtraindataMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission(this.trmtraindataService.getTrmtraindataByIds(#ids),'ehr-TRMTRAINDATA-Remove')")
     @ApiOperation(value = "RemoveBatch", tags = {"TRMTRAINDATA" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/trmtraindata/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -78,7 +77,7 @@ public class TRMTRAINDATAResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission(#trmtraindata_id,'Get',{'Sql',this.trmtraindataMapping,this.permissionDTO})")
+    @PostAuthorize("hasPermission(this.trmtraindataMapping.toDomain(returnObject.body),'ehr-TRMTRAINDATA-Get')")
     @ApiOperation(value = "Get", tags = {"TRMTRAINDATA" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/trmtraindata/{trmtraindata_id}")
     public ResponseEntity<TRMTRAINDATADTO> get(@PathVariable("trmtraindata_id") String trmtraindata_id) {
@@ -87,14 +86,13 @@ public class TRMTRAINDATAResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMTRAINDATA-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"TRMTRAINDATA" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/trmtraindata/getdraft")
     public ResponseEntity<TRMTRAINDATADTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(trmtraindataMapping.toDto(trmtraindataService.getDraft(new TRMTRAINDATA())));
     }
 
-    @PreAuthorize("hasPermission(#trmtraindata_id,'Update',{'Sql',this.trmtraindataMapping,#trmtraindatadto})")
+    @PreAuthorize("hasPermission(this.trmtraindataService.get(#trmtraindata_id),'ehr-TRMTRAINDATA-Update')")
     @ApiOperation(value = "Update", tags = {"TRMTRAINDATA" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/trmtraindata/{trmtraindata_id}")
     @Transactional
@@ -106,7 +104,7 @@ public class TRMTRAINDATAResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.trmtraindataMapping,#trmtraindatadtos})")
+    @PreAuthorize("hasPermission(this.trmtraindataService.getTrmtraindataByEntities(this.trmtraindataMapping.toDomain(#trmtraindatadtos)),'ehr-TRMTRAINDATA-Update')")
     @ApiOperation(value = "UpdateBatch", tags = {"TRMTRAINDATA" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/trmtraindata/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<TRMTRAINDATADTO> trmtraindatadtos) {
@@ -114,14 +112,13 @@ public class TRMTRAINDATAResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMTRAINDATA-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"TRMTRAINDATA" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmtraindata/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody TRMTRAINDATADTO trmtraindatadto) {
         return  ResponseEntity.status(HttpStatus.OK).body(trmtraindataService.checkKey(trmtraindataMapping.toDomain(trmtraindatadto)));
     }
 
-    @PreAuthorize("hasPermission('','Create',{'Sql',this.trmtraindataMapping,#trmtraindatadto})")
+    @PreAuthorize("hasPermission(this.trmtraindataMapping.toDomain(#trmtraindatadto),'ehr-TRMTRAINDATA-Create')")
     @ApiOperation(value = "Create", tags = {"TRMTRAINDATA" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmtraindata")
     @Transactional
@@ -132,7 +129,7 @@ public class TRMTRAINDATAResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.trmtraindataMapping,#trmtraindatadtos})")
+    @PreAuthorize("hasPermission(this.trmtraindataMapping.toDomain(#trmtraindatadtos),'ehr-TRMTRAINDATA-Create')")
     @ApiOperation(value = "createBatch", tags = {"TRMTRAINDATA" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmtraindata/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<TRMTRAINDATADTO> trmtraindatadtos) {
@@ -162,3 +159,4 @@ public class TRMTRAINDATAResource {
                 .body(new PageImpl(trmtraindataMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 }
+

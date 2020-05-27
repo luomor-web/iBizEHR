@@ -185,6 +185,26 @@ public class PIMQUALTYPEServiceImpl extends ServiceImpl<PIMQUALTYPEMapper, PIMQU
         return true;
     }
 
+    @Override
+    public List<PIMQUALTYPE> getPimqualtypeByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<PIMQUALTYPE> getPimqualtypeByEntities(List<PIMQUALTYPE> entities) {
+        List ids =new ArrayList();
+        for(PIMQUALTYPE entity : entities){
+            Serializable id=entity.getPimqualtypeid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

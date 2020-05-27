@@ -293,6 +293,26 @@ public class PIMARCHIVESCHANGEServiceImpl extends ServiceImpl<PIMARCHIVESCHANGEM
         return true;
     }
 
+    @Override
+    public List<PIMARCHIVESCHANGE> getPimarchiveschangeByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<PIMARCHIVESCHANGE> getPimarchiveschangeByEntities(List<PIMARCHIVESCHANGE> entities) {
+        List ids =new ArrayList();
+        for(PIMARCHIVESCHANGE entity : entities){
+            Serializable id=entity.getPimarchiveschangeid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

@@ -215,6 +215,26 @@ public class PARJXQDSZServiceImpl extends ServiceImpl<PARJXQDSZMapper, PARJXQDSZ
         return true;
     }
 
+    @Override
+    public List<PARJXQDSZ> getParjxqdszByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<PARJXQDSZ> getParjxqdszByEntities(List<PARJXQDSZ> entities) {
+        List ids =new ArrayList();
+        for(PARJXQDSZ entity : entities){
+            Serializable id=entity.getParjxqdszid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

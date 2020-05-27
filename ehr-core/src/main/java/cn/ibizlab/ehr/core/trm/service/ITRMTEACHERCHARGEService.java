@@ -56,6 +56,9 @@ public interface ITRMTEACHERCHARGEService extends IService<TRMTEACHERCHARGE>{
      */
     boolean execute(String sql, Map param);
 
+    List<TRMTEACHERCHARGE> getTrmteacherchargeByIds(List<String> ids) ;
+    List<TRMTEACHERCHARGE> getTrmteacherchargeByEntities(List<TRMTEACHERCHARGE> entities) ;
+
 }
 
 

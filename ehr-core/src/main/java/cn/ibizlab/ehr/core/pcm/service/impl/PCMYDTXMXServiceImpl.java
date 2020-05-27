@@ -204,6 +204,26 @@ public class PCMYDTXMXServiceImpl extends ServiceImpl<PCMYDTXMXMapper, PCMYDTXMX
         return true;
     }
 
+    @Override
+    public List<PCMYDTXMX> getPcmydtxmxByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<PCMYDTXMX> getPcmydtxmxByEntities(List<PCMYDTXMX> entities) {
+        List ids =new ArrayList();
+        for(PCMYDTXMX entity : entities){
+            Serializable id=entity.getPcmydtxmxid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

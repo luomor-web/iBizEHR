@@ -58,6 +58,9 @@ public interface ITRMHMATSERService extends IService<TRMHMATSER>{
      */
     boolean execute(String sql, Map param);
 
+    List<TRMHMATSER> getTrmhmatserByIds(List<String> ids) ;
+    List<TRMHMATSER> getTrmhmatserByEntities(List<TRMHMATSER> entities) ;
+
 }
 
 

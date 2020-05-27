@@ -57,6 +57,9 @@ public interface IORMERPORGService extends IService<ORMERPORG>{
      */
     boolean execute(String sql, Map param);
 
+    List<ORMERPORG> getOrmerporgByIds(List<String> ids) ;
+    List<ORMERPORG> getOrmerporgByEntities(List<ORMERPORG> entities) ;
+
 }
 
 

@@ -22,6 +22,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.access.prepost.PostAuthorize;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -39,22 +40,20 @@ import cn.ibizlab.ehr.core.trm.filter.TRMDUTYCADRESSearchContext;
 public class TRMDUTYCADRESResource {
 
     @Autowired
-    private ITRMDUTYCADRESService trmdutycadresService;
+    public ITRMDUTYCADRESService trmdutycadresService;
 
     @Autowired
     @Lazy
     public TRMDUTYCADRESMapping trmdutycadresMapping;
 
-    public TRMDUTYCADRESDTO permissionDTO=new TRMDUTYCADRESDTO();
-
-    @PreAuthorize("hasPermission('','Save',{'Sql',this.trmdutycadresMapping,#trmdutycadresdto})")
+    @PreAuthorize("hasPermission(this.trmdutycadresMapping.toDomain(#trmdutycadresdto),'ehr-TRMDUTYCADRES-Save')")
     @ApiOperation(value = "Save", tags = {"TRMDUTYCADRES" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmdutycadres/save")
     public ResponseEntity<Boolean> save(@RequestBody TRMDUTYCADRESDTO trmdutycadresdto) {
         return ResponseEntity.status(HttpStatus.OK).body(trmdutycadresService.save(trmdutycadresMapping.toDomain(trmdutycadresdto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.trmdutycadresMapping,#trmdutycadresdtos})")
+    @PreAuthorize("hasPermission(this.trmdutycadresMapping.toDomain(#trmdutycadresdtos),'ehr-TRMDUTYCADRES-Save')")
     @ApiOperation(value = "SaveBatch", tags = {"TRMDUTYCADRES" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmdutycadres/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<TRMDUTYCADRESDTO> trmdutycadresdtos) {
@@ -86,7 +85,7 @@ public class TRMDUTYCADRESResource {
         return ResponseEntity.status(HttpStatus.OK).body(trmdutycadresdto);
     }
 
-    @PreAuthorize("hasPermission('','Create',{'Sql',this.trmdutycadresMapping,#trmdutycadresdto})")
+    @PreAuthorize("hasPermission(this.trmdutycadresMapping.toDomain(#trmdutycadresdto),'ehr-TRMDUTYCADRES-Create')")
     @ApiOperation(value = "Create", tags = {"TRMDUTYCADRES" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmdutycadres")
     @Transactional
@@ -97,7 +96,7 @@ public class TRMDUTYCADRESResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.trmdutycadresMapping,#trmdutycadresdtos})")
+    @PreAuthorize("hasPermission(this.trmdutycadresMapping.toDomain(#trmdutycadresdtos),'ehr-TRMDUTYCADRES-Create')")
     @ApiOperation(value = "createBatch", tags = {"TRMDUTYCADRES" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmdutycadres/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<TRMDUTYCADRESDTO> trmdutycadresdtos) {
@@ -105,14 +104,12 @@ public class TRMDUTYCADRESResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMDUTYCADRES-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"TRMDUTYCADRES" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/trmdutycadres/getdraft")
     public ResponseEntity<TRMDUTYCADRESDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(trmdutycadresMapping.toDto(trmdutycadresService.getDraft(new TRMDUTYCADRES())));
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMDUTYCADRES-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"TRMDUTYCADRES" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmdutycadres/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody TRMDUTYCADRESDTO trmdutycadresdto) {
@@ -131,7 +128,7 @@ public class TRMDUTYCADRESResource {
         return ResponseEntity.status(HttpStatus.OK).body(trmdutycadresdto);
     }
 
-    @PreAuthorize("hasPermission(#trmdutycadres_id,'Get',{'Sql',this.trmdutycadresMapping,this.permissionDTO})")
+    @PostAuthorize("hasPermission(this.trmdutycadresMapping.toDomain(returnObject.body),'ehr-TRMDUTYCADRES-Get')")
     @ApiOperation(value = "Get", tags = {"TRMDUTYCADRES" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/trmdutycadres/{trmdutycadres_id}")
     public ResponseEntity<TRMDUTYCADRESDTO> get(@PathVariable("trmdutycadres_id") String trmdutycadres_id) {
@@ -140,7 +137,7 @@ public class TRMDUTYCADRESResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#trmdutycadres_id,'Update',{'Sql',this.trmdutycadresMapping,#trmdutycadresdto})")
+    @PreAuthorize("hasPermission(this.trmdutycadresService.get(#trmdutycadres_id),'ehr-TRMDUTYCADRES-Update')")
     @ApiOperation(value = "Update", tags = {"TRMDUTYCADRES" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/trmdutycadres/{trmdutycadres_id}")
     @Transactional
@@ -152,7 +149,7 @@ public class TRMDUTYCADRESResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.trmdutycadresMapping,#trmdutycadresdtos})")
+    @PreAuthorize("hasPermission(this.trmdutycadresService.getTrmdutycadresByEntities(this.trmdutycadresMapping.toDomain(#trmdutycadresdtos)),'ehr-TRMDUTYCADRES-Update')")
     @ApiOperation(value = "UpdateBatch", tags = {"TRMDUTYCADRES" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/trmdutycadres/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<TRMDUTYCADRESDTO> trmdutycadresdtos) {
@@ -160,7 +157,7 @@ public class TRMDUTYCADRESResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission(#trmdutycadres_id,'Remove',{'Sql',this.trmdutycadresMapping,this.permissionDTO})")
+    @PreAuthorize("hasPermission(this.trmdutycadresService.get(#trmdutycadres_id),'ehr-TRMDUTYCADRES-Remove')")
     @ApiOperation(value = "Remove", tags = {"TRMDUTYCADRES" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/trmdutycadres/{trmdutycadres_id}")
     @Transactional
@@ -168,7 +165,7 @@ public class TRMDUTYCADRESResource {
          return ResponseEntity.status(HttpStatus.OK).body(trmdutycadresService.remove(trmdutycadres_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.trmdutycadresMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission(this.trmdutycadresService.getTrmdutycadresByIds(#ids),'ehr-TRMDUTYCADRES-Remove')")
     @ApiOperation(value = "RemoveBatch", tags = {"TRMDUTYCADRES" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/trmdutycadres/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -219,3 +216,4 @@ public class TRMDUTYCADRESResource {
                 .body(new PageImpl(trmdutycadresMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 }
+

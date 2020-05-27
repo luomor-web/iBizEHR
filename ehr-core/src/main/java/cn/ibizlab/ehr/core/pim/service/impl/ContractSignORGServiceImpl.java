@@ -250,6 +250,26 @@ public class ContractSignORGServiceImpl extends ServiceImpl<ContractSignORGMappe
         return true;
     }
 
+    @Override
+    public List<ContractSignORG> getContractsignorgByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<ContractSignORG> getContractsignorgByEntities(List<ContractSignORG> entities) {
+        List ids =new ArrayList();
+        for(ContractSignORG entity : entities){
+            Serializable id=entity.getContractsignorgid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

@@ -56,6 +56,9 @@ public interface ITRMLGBDETAILService extends IService<TRMLGBDETAIL>{
      */
     boolean execute(String sql, Map param);
 
+    List<TRMLGBDETAIL> getTrmlgbdetailByIds(List<String> ids) ;
+    List<TRMLGBDETAIL> getTrmlgbdetailByEntities(List<TRMLGBDETAIL> entities) ;
+
 }
 
 

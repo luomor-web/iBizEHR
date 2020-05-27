@@ -262,6 +262,26 @@ public class ATTENDANCERECORDTEMPServiceImpl extends ServiceImpl<ATTENDANCERECOR
         return true;
     }
 
+    @Override
+    public List<ATTENDANCERECORDTEMP> getAttendancerecordtempByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<ATTENDANCERECORDTEMP> getAttendancerecordtempByEntities(List<ATTENDANCERECORDTEMP> entities) {
+        List ids =new ArrayList();
+        for(ATTENDANCERECORDTEMP entity : entities){
+            Serializable id=entity.getAttendancerecordtempid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

@@ -56,6 +56,9 @@ public interface ISOCCOMPANYWELService extends IService<SOCCOMPANYWEL>{
      */
     boolean execute(String sql, Map param);
 
+    List<SOCCOMPANYWEL> getSoccompanywelByIds(List<String> ids) ;
+    List<SOCCOMPANYWEL> getSoccompanywelByEntities(List<SOCCOMPANYWEL> entities) ;
+
 }
 
 

@@ -54,6 +54,9 @@ public interface IARCHIVALCATALOGUEService extends IService<ARCHIVALCATALOGUE>{
      */
     boolean execute(String sql, Map param);
 
+    List<ARCHIVALCATALOGUE> getArchivalcatalogueByIds(List<String> ids) ;
+    List<ARCHIVALCATALOGUE> getArchivalcatalogueByEntities(List<ARCHIVALCATALOGUE> entities) ;
+
 }
 
 

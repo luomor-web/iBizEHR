@@ -22,6 +22,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.access.prepost.PostAuthorize;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -39,22 +40,20 @@ import cn.ibizlab.ehr.core.trm.filter.TRMTRAINDEMANDSUMSearchContext;
 public class TRMTRAINDEMANDSUMResource {
 
     @Autowired
-    private ITRMTRAINDEMANDSUMService trmtraindemandsumService;
+    public ITRMTRAINDEMANDSUMService trmtraindemandsumService;
 
     @Autowired
     @Lazy
     public TRMTRAINDEMANDSUMMapping trmtraindemandsumMapping;
 
-    public TRMTRAINDEMANDSUMDTO permissionDTO=new TRMTRAINDEMANDSUMDTO();
-
-    @PreAuthorize("hasPermission('','Save',{'Sql',this.trmtraindemandsumMapping,#trmtraindemandsumdto})")
+    @PreAuthorize("hasPermission(this.trmtraindemandsumMapping.toDomain(#trmtraindemandsumdto),'ehr-TRMTRAINDEMANDSUM-Save')")
     @ApiOperation(value = "Save", tags = {"TRMTRAINDEMANDSUM" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmtraindemandsums/save")
     public ResponseEntity<Boolean> save(@RequestBody TRMTRAINDEMANDSUMDTO trmtraindemandsumdto) {
         return ResponseEntity.status(HttpStatus.OK).body(trmtraindemandsumService.save(trmtraindemandsumMapping.toDomain(trmtraindemandsumdto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.trmtraindemandsumMapping,#trmtraindemandsumdtos})")
+    @PreAuthorize("hasPermission(this.trmtraindemandsumMapping.toDomain(#trmtraindemandsumdtos),'ehr-TRMTRAINDEMANDSUM-Save')")
     @ApiOperation(value = "SaveBatch", tags = {"TRMTRAINDEMANDSUM" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmtraindemandsums/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<TRMTRAINDEMANDSUMDTO> trmtraindemandsumdtos) {
@@ -62,7 +61,7 @@ public class TRMTRAINDEMANDSUMResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission(#trmtraindemandsum_id,'Get',{'Sql',this.trmtraindemandsumMapping,this.permissionDTO})")
+    @PostAuthorize("hasPermission(this.trmtraindemandsumMapping.toDomain(returnObject.body),'ehr-TRMTRAINDEMANDSUM-Get')")
     @ApiOperation(value = "Get", tags = {"TRMTRAINDEMANDSUM" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/trmtraindemandsums/{trmtraindemandsum_id}")
     public ResponseEntity<TRMTRAINDEMANDSUMDTO> get(@PathVariable("trmtraindemandsum_id") String trmtraindemandsum_id) {
@@ -71,7 +70,7 @@ public class TRMTRAINDEMANDSUMResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('','Create',{'Sql',this.trmtraindemandsumMapping,#trmtraindemandsumdto})")
+    @PreAuthorize("hasPermission(this.trmtraindemandsumMapping.toDomain(#trmtraindemandsumdto),'ehr-TRMTRAINDEMANDSUM-Create')")
     @ApiOperation(value = "Create", tags = {"TRMTRAINDEMANDSUM" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmtraindemandsums")
     @Transactional
@@ -82,7 +81,7 @@ public class TRMTRAINDEMANDSUMResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.trmtraindemandsumMapping,#trmtraindemandsumdtos})")
+    @PreAuthorize("hasPermission(this.trmtraindemandsumMapping.toDomain(#trmtraindemandsumdtos),'ehr-TRMTRAINDEMANDSUM-Create')")
     @ApiOperation(value = "createBatch", tags = {"TRMTRAINDEMANDSUM" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmtraindemandsums/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<TRMTRAINDEMANDSUMDTO> trmtraindemandsumdtos) {
@@ -90,7 +89,7 @@ public class TRMTRAINDEMANDSUMResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission(#trmtraindemandsum_id,'Remove',{'Sql',this.trmtraindemandsumMapping,this.permissionDTO})")
+    @PreAuthorize("hasPermission(this.trmtraindemandsumService.get(#trmtraindemandsum_id),'ehr-TRMTRAINDEMANDSUM-Remove')")
     @ApiOperation(value = "Remove", tags = {"TRMTRAINDEMANDSUM" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/trmtraindemandsums/{trmtraindemandsum_id}")
     @Transactional
@@ -98,7 +97,7 @@ public class TRMTRAINDEMANDSUMResource {
          return ResponseEntity.status(HttpStatus.OK).body(trmtraindemandsumService.remove(trmtraindemandsum_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.trmtraindemandsumMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission(this.trmtraindemandsumService.getTrmtraindemandsumByIds(#ids),'ehr-TRMTRAINDEMANDSUM-Remove')")
     @ApiOperation(value = "RemoveBatch", tags = {"TRMTRAINDEMANDSUM" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/trmtraindemandsums/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -106,14 +105,13 @@ public class TRMTRAINDEMANDSUMResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMTRAINDEMANDSUM-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"TRMTRAINDEMANDSUM" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/trmtraindemandsums/getdraft")
     public ResponseEntity<TRMTRAINDEMANDSUMDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(trmtraindemandsumMapping.toDto(trmtraindemandsumService.getDraft(new TRMTRAINDEMANDSUM())));
     }
 
-    @PreAuthorize("hasPermission(#trmtraindemandsum_id,'Update',{'Sql',this.trmtraindemandsumMapping,#trmtraindemandsumdto})")
+    @PreAuthorize("hasPermission(this.trmtraindemandsumService.get(#trmtraindemandsum_id),'ehr-TRMTRAINDEMANDSUM-Update')")
     @ApiOperation(value = "Update", tags = {"TRMTRAINDEMANDSUM" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/trmtraindemandsums/{trmtraindemandsum_id}")
     @Transactional
@@ -125,7 +123,7 @@ public class TRMTRAINDEMANDSUMResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.trmtraindemandsumMapping,#trmtraindemandsumdtos})")
+    @PreAuthorize("hasPermission(this.trmtraindemandsumService.getTrmtraindemandsumByEntities(this.trmtraindemandsumMapping.toDomain(#trmtraindemandsumdtos)),'ehr-TRMTRAINDEMANDSUM-Update')")
     @ApiOperation(value = "UpdateBatch", tags = {"TRMTRAINDEMANDSUM" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/trmtraindemandsums/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<TRMTRAINDEMANDSUMDTO> trmtraindemandsumdtos) {
@@ -133,7 +131,6 @@ public class TRMTRAINDEMANDSUMResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMTRAINDEMANDSUM-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"TRMTRAINDEMANDSUM" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmtraindemandsums/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody TRMTRAINDEMANDSUMDTO trmtraindemandsumdto) {
@@ -162,3 +159,4 @@ public class TRMTRAINDEMANDSUMResource {
                 .body(new PageImpl(trmtraindemandsumMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 }
+

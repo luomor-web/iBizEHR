@@ -22,6 +22,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.access.prepost.PostAuthorize;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -39,22 +40,19 @@ import cn.ibizlab.ehr.core.pcm.filter.PCMAWARDSWONSSearchContext;
 public class PCMAWARDSWONSResource {
 
     @Autowired
-    private IPCMAWARDSWONSService pcmawardswonsService;
+    public IPCMAWARDSWONSService pcmawardswonsService;
 
     @Autowired
     @Lazy
     public PCMAWARDSWONSMapping pcmawardswonsMapping;
 
-    public PCMAWARDSWONSDTO permissionDTO=new PCMAWARDSWONSDTO();
-
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMAWARDSWONS-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"PCMAWARDSWONS" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmawardswons/getdraft")
     public ResponseEntity<PCMAWARDSWONSDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(pcmawardswonsMapping.toDto(pcmawardswonsService.getDraft(new PCMAWARDSWONS())));
     }
 
-    @PreAuthorize("hasPermission(#pcmawardswons_id,'Get',{'Sql',this.pcmawardswonsMapping,this.permissionDTO})")
+    @PostAuthorize("hasPermission(this.pcmawardswonsMapping.toDomain(returnObject.body),'ehr-PCMAWARDSWONS-Get')")
     @ApiOperation(value = "Get", tags = {"PCMAWARDSWONS" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmawardswons/{pcmawardswons_id}")
     public ResponseEntity<PCMAWARDSWONSDTO> get(@PathVariable("pcmawardswons_id") String pcmawardswons_id) {
@@ -63,7 +61,7 @@ public class PCMAWARDSWONSResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#pcmawardswons_id,'Update',{'Sql',this.pcmawardswonsMapping,#pcmawardswonsdto})")
+    @PreAuthorize("hasPermission(this.pcmawardswonsService.get(#pcmawardswons_id),'ehr-PCMAWARDSWONS-Update')")
     @ApiOperation(value = "Update", tags = {"PCMAWARDSWONS" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmawardswons/{pcmawardswons_id}")
     @Transactional
@@ -75,7 +73,7 @@ public class PCMAWARDSWONSResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.pcmawardswonsMapping,#pcmawardswonsdtos})")
+    @PreAuthorize("hasPermission(this.pcmawardswonsService.getPcmawardswonsByEntities(this.pcmawardswonsMapping.toDomain(#pcmawardswonsdtos)),'ehr-PCMAWARDSWONS-Update')")
     @ApiOperation(value = "UpdateBatch", tags = {"PCMAWARDSWONS" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmawardswons/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PCMAWARDSWONSDTO> pcmawardswonsdtos) {
@@ -83,7 +81,7 @@ public class PCMAWARDSWONSResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('','Create',{'Sql',this.pcmawardswonsMapping,#pcmawardswonsdto})")
+    @PreAuthorize("hasPermission(this.pcmawardswonsMapping.toDomain(#pcmawardswonsdto),'ehr-PCMAWARDSWONS-Create')")
     @ApiOperation(value = "Create", tags = {"PCMAWARDSWONS" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmawardswons")
     @Transactional
@@ -94,7 +92,7 @@ public class PCMAWARDSWONSResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.pcmawardswonsMapping,#pcmawardswonsdtos})")
+    @PreAuthorize("hasPermission(this.pcmawardswonsMapping.toDomain(#pcmawardswonsdtos),'ehr-PCMAWARDSWONS-Create')")
     @ApiOperation(value = "createBatch", tags = {"PCMAWARDSWONS" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmawardswons/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PCMAWARDSWONSDTO> pcmawardswonsdtos) {
@@ -102,21 +100,20 @@ public class PCMAWARDSWONSResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMAWARDSWONS-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"PCMAWARDSWONS" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmawardswons/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PCMAWARDSWONSDTO pcmawardswonsdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pcmawardswonsService.checkKey(pcmawardswonsMapping.toDomain(pcmawardswonsdto)));
     }
 
-    @PreAuthorize("hasPermission('','Save',{'Sql',this.pcmawardswonsMapping,#pcmawardswonsdto})")
+    @PreAuthorize("hasPermission(this.pcmawardswonsMapping.toDomain(#pcmawardswonsdto),'ehr-PCMAWARDSWONS-Save')")
     @ApiOperation(value = "Save", tags = {"PCMAWARDSWONS" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmawardswons/save")
     public ResponseEntity<Boolean> save(@RequestBody PCMAWARDSWONSDTO pcmawardswonsdto) {
         return ResponseEntity.status(HttpStatus.OK).body(pcmawardswonsService.save(pcmawardswonsMapping.toDomain(pcmawardswonsdto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.pcmawardswonsMapping,#pcmawardswonsdtos})")
+    @PreAuthorize("hasPermission(this.pcmawardswonsMapping.toDomain(#pcmawardswonsdtos),'ehr-PCMAWARDSWONS-Save')")
     @ApiOperation(value = "SaveBatch", tags = {"PCMAWARDSWONS" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmawardswons/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PCMAWARDSWONSDTO> pcmawardswonsdtos) {
@@ -124,7 +121,7 @@ public class PCMAWARDSWONSResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission(#pcmawardswons_id,'Remove',{'Sql',this.pcmawardswonsMapping,this.permissionDTO})")
+    @PreAuthorize("hasPermission(this.pcmawardswonsService.get(#pcmawardswons_id),'ehr-PCMAWARDSWONS-Remove')")
     @ApiOperation(value = "Remove", tags = {"PCMAWARDSWONS" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmawardswons/{pcmawardswons_id}")
     @Transactional
@@ -132,7 +129,7 @@ public class PCMAWARDSWONSResource {
          return ResponseEntity.status(HttpStatus.OK).body(pcmawardswonsService.remove(pcmawardswons_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.pcmawardswonsMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission(this.pcmawardswonsService.getPcmawardswonsByIds(#ids),'ehr-PCMAWARDSWONS-Remove')")
     @ApiOperation(value = "RemoveBatch", tags = {"PCMAWARDSWONS" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmawardswons/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -161,7 +158,6 @@ public class PCMAWARDSWONSResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pcmawardswonsMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMAWARDSWONS-GetDraft-all')")
     @ApiOperation(value = "GetDraftByPCMPROFILE", tags = {"PCMAWARDSWONS" },  notes = "GetDraftByPCMPROFILE")
     @RequestMapping(method = RequestMethod.GET, value = "/pcmprofiles/{pcmprofile_id}/pcmawardswons/getdraft")
     public ResponseEntity<PCMAWARDSWONSDTO> getDraftByPCMPROFILE(@PathVariable("pcmprofile_id") String pcmprofile_id) {
@@ -170,7 +166,7 @@ public class PCMAWARDSWONSResource {
         return ResponseEntity.status(HttpStatus.OK).body(pcmawardswonsMapping.toDto(pcmawardswonsService.getDraft(domain)));
     }
 
-    @PreAuthorize("hasPermission(#pcmawardswons_id,'Get',{'Sql',this.pcmawardswonsMapping,this.permissionDTO})")
+    @PostAuthorize("hasPermission(this.pcmawardswonsMapping.toDomain(returnObject.body),'ehr-PCMAWARDSWONS-Get')")
     @ApiOperation(value = "GetByPCMPROFILE", tags = {"PCMAWARDSWONS" },  notes = "GetByPCMPROFILE")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmprofiles/{pcmprofile_id}/pcmawardswons/{pcmawardswons_id}")
     public ResponseEntity<PCMAWARDSWONSDTO> getByPCMPROFILE(@PathVariable("pcmprofile_id") String pcmprofile_id, @PathVariable("pcmawardswons_id") String pcmawardswons_id) {
@@ -179,7 +175,7 @@ public class PCMAWARDSWONSResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#pcmawardswons_id,'Update',{'Sql',this.pcmawardswonsMapping,#pcmawardswonsdto})")
+    @PreAuthorize("hasPermission(this.pcmawardswonsService.get(#pcmawardswons_id),'ehr-PCMAWARDSWONS-Update')")
     @ApiOperation(value = "UpdateByPCMPROFILE", tags = {"PCMAWARDSWONS" },  notes = "UpdateByPCMPROFILE")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmprofiles/{pcmprofile_id}/pcmawardswons/{pcmawardswons_id}")
     @Transactional
@@ -192,7 +188,7 @@ public class PCMAWARDSWONSResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.pcmawardswonsMapping,#pcmawardswonsdtos})")
+    @PreAuthorize("hasPermission(this.pcmawardswonsService.getPcmawardswonsByEntities(this.pcmawardswonsMapping.toDomain(#pcmawardswonsdtos)),'ehr-PCMAWARDSWONS-Update')")
     @ApiOperation(value = "UpdateBatchByPCMPROFILE", tags = {"PCMAWARDSWONS" },  notes = "UpdateBatchByPCMPROFILE")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmprofiles/{pcmprofile_id}/pcmawardswons/batch")
     public ResponseEntity<Boolean> updateBatchByPCMPROFILE(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody List<PCMAWARDSWONSDTO> pcmawardswonsdtos) {
@@ -204,7 +200,7 @@ public class PCMAWARDSWONSResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('','Create',{'Sql',this.pcmawardswonsMapping,#pcmawardswonsdto})")
+    @PreAuthorize("hasPermission(this.pcmawardswonsMapping.toDomain(#pcmawardswonsdto),'ehr-PCMAWARDSWONS-Create')")
     @ApiOperation(value = "CreateByPCMPROFILE", tags = {"PCMAWARDSWONS" },  notes = "CreateByPCMPROFILE")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/pcmawardswons")
     @Transactional
@@ -216,7 +212,7 @@ public class PCMAWARDSWONSResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.pcmawardswonsMapping,#pcmawardswonsdtos})")
+    @PreAuthorize("hasPermission(this.pcmawardswonsMapping.toDomain(#pcmawardswonsdtos),'ehr-PCMAWARDSWONS-Create')")
     @ApiOperation(value = "createBatchByPCMPROFILE", tags = {"PCMAWARDSWONS" },  notes = "createBatchByPCMPROFILE")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/pcmawardswons/batch")
     public ResponseEntity<Boolean> createBatchByPCMPROFILE(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody List<PCMAWARDSWONSDTO> pcmawardswonsdtos) {
@@ -228,14 +224,13 @@ public class PCMAWARDSWONSResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMAWARDSWONS-CheckKey-all')")
     @ApiOperation(value = "CheckKeyByPCMPROFILE", tags = {"PCMAWARDSWONS" },  notes = "CheckKeyByPCMPROFILE")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/pcmawardswons/checkkey")
     public ResponseEntity<Boolean> checkKeyByPCMPROFILE(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody PCMAWARDSWONSDTO pcmawardswonsdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pcmawardswonsService.checkKey(pcmawardswonsMapping.toDomain(pcmawardswonsdto)));
     }
 
-    @PreAuthorize("hasPermission('','Save',{'Sql',this.pcmawardswonsMapping,#pcmawardswonsdto})")
+    @PreAuthorize("hasPermission(this.pcmawardswonsMapping.toDomain(#pcmawardswonsdto),'ehr-PCMAWARDSWONS-Save')")
     @ApiOperation(value = "SaveByPCMPROFILE", tags = {"PCMAWARDSWONS" },  notes = "SaveByPCMPROFILE")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/pcmawardswons/save")
     public ResponseEntity<Boolean> saveByPCMPROFILE(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody PCMAWARDSWONSDTO pcmawardswonsdto) {
@@ -244,7 +239,7 @@ public class PCMAWARDSWONSResource {
         return ResponseEntity.status(HttpStatus.OK).body(pcmawardswonsService.save(domain));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.pcmawardswonsMapping,#pcmawardswonsdtos})")
+    @PreAuthorize("hasPermission(this.pcmawardswonsMapping.toDomain(#pcmawardswonsdtos),'ehr-PCMAWARDSWONS-Save')")
     @ApiOperation(value = "SaveBatchByPCMPROFILE", tags = {"PCMAWARDSWONS" },  notes = "SaveBatchByPCMPROFILE")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/pcmawardswons/savebatch")
     public ResponseEntity<Boolean> saveBatchByPCMPROFILE(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody List<PCMAWARDSWONSDTO> pcmawardswonsdtos) {
@@ -256,7 +251,7 @@ public class PCMAWARDSWONSResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission(#pcmawardswons_id,'Remove',{'Sql',this.pcmawardswonsMapping,this.permissionDTO})")
+    @PreAuthorize("hasPermission(this.pcmawardswonsService.get(#pcmawardswons_id),'ehr-PCMAWARDSWONS-Remove')")
     @ApiOperation(value = "RemoveByPCMPROFILE", tags = {"PCMAWARDSWONS" },  notes = "RemoveByPCMPROFILE")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmprofiles/{pcmprofile_id}/pcmawardswons/{pcmawardswons_id}")
     @Transactional
@@ -264,7 +259,7 @@ public class PCMAWARDSWONSResource {
 		return ResponseEntity.status(HttpStatus.OK).body(pcmawardswonsService.remove(pcmawardswons_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.pcmawardswonsMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission(this.pcmawardswonsService.getPcmawardswonsByIds(#ids),'ehr-PCMAWARDSWONS-Remove')")
     @ApiOperation(value = "RemoveBatchByPCMPROFILE", tags = {"PCMAWARDSWONS" },  notes = "RemoveBatchByPCMPROFILE")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmprofiles/{pcmprofile_id}/pcmawardswons/batch")
     public ResponseEntity<Boolean> removeBatchByPCMPROFILE(@RequestBody List<String> ids) {
@@ -296,3 +291,4 @@ public class PCMAWARDSWONSResource {
                 .body(new PageImpl(pcmawardswonsMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 }
+

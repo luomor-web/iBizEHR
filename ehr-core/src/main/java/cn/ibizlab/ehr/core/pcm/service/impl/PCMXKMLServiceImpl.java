@@ -191,6 +191,26 @@ public class PCMXKMLServiceImpl extends ServiceImpl<PCMXKMLMapper, PCMXKML> impl
         return true;
     }
 
+    @Override
+    public List<PCMXKML> getPcmxkmlByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<PCMXKML> getPcmxkmlByEntities(List<PCMXKML> entities) {
+        List ids =new ArrayList();
+        for(PCMXKML entity : entities){
+            Serializable id=entity.getPcmxkmlid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

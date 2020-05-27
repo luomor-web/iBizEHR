@@ -56,6 +56,9 @@ public interface IPIMCORRECTIONAPPLYService extends IService<PIMCORRECTIONAPPLY>
      */
     boolean execute(String sql, Map param);
 
+    List<PIMCORRECTIONAPPLY> getPimcorrectionapplyByIds(List<String> ids) ;
+    List<PIMCORRECTIONAPPLY> getPimcorrectionapplyByEntities(List<PIMCORRECTIONAPPLY> entities) ;
+
 }
 
 

@@ -22,6 +22,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.access.prepost.PostAuthorize;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -39,22 +40,20 @@ import cn.ibizlab.ehr.core.trm.filter.TRMPLANFORMUSearchContext;
 public class TRMPLANFORMUResource {
 
     @Autowired
-    private ITRMPLANFORMUService trmplanformuService;
+    public ITRMPLANFORMUService trmplanformuService;
 
     @Autowired
     @Lazy
     public TRMPLANFORMUMapping trmplanformuMapping;
 
-    public TRMPLANFORMUDTO permissionDTO=new TRMPLANFORMUDTO();
-
-    @PreAuthorize("hasPermission('','Save',{'Sql',this.trmplanformuMapping,#trmplanformudto})")
+    @PreAuthorize("hasPermission(this.trmplanformuMapping.toDomain(#trmplanformudto),'ehr-TRMPLANFORMU-Save')")
     @ApiOperation(value = "Save", tags = {"TRMPLANFORMU" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmplanformus/save")
     public ResponseEntity<Boolean> save(@RequestBody TRMPLANFORMUDTO trmplanformudto) {
         return ResponseEntity.status(HttpStatus.OK).body(trmplanformuService.save(trmplanformuMapping.toDomain(trmplanformudto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.trmplanformuMapping,#trmplanformudtos})")
+    @PreAuthorize("hasPermission(this.trmplanformuMapping.toDomain(#trmplanformudtos),'ehr-TRMPLANFORMU-Save')")
     @ApiOperation(value = "SaveBatch", tags = {"TRMPLANFORMU" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmplanformus/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<TRMPLANFORMUDTO> trmplanformudtos) {
@@ -62,7 +61,7 @@ public class TRMPLANFORMUResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission(#trmplanformu_id,'Remove',{'Sql',this.trmplanformuMapping,this.permissionDTO})")
+    @PreAuthorize("hasPermission(this.trmplanformuService.get(#trmplanformu_id),'ehr-TRMPLANFORMU-Remove')")
     @ApiOperation(value = "Remove", tags = {"TRMPLANFORMU" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/trmplanformus/{trmplanformu_id}")
     @Transactional
@@ -70,7 +69,7 @@ public class TRMPLANFORMUResource {
          return ResponseEntity.status(HttpStatus.OK).body(trmplanformuService.remove(trmplanformu_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.trmplanformuMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission(this.trmplanformuService.getTrmplanformuByIds(#ids),'ehr-TRMPLANFORMU-Remove')")
     @ApiOperation(value = "RemoveBatch", tags = {"TRMPLANFORMU" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/trmplanformus/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -78,7 +77,7 @@ public class TRMPLANFORMUResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission(#trmplanformu_id,'Get',{'Sql',this.trmplanformuMapping,this.permissionDTO})")
+    @PostAuthorize("hasPermission(this.trmplanformuMapping.toDomain(returnObject.body),'ehr-TRMPLANFORMU-Get')")
     @ApiOperation(value = "Get", tags = {"TRMPLANFORMU" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/trmplanformus/{trmplanformu_id}")
     public ResponseEntity<TRMPLANFORMUDTO> get(@PathVariable("trmplanformu_id") String trmplanformu_id) {
@@ -87,7 +86,7 @@ public class TRMPLANFORMUResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#trmplanformu_id,'Update',{'Sql',this.trmplanformuMapping,#trmplanformudto})")
+    @PreAuthorize("hasPermission(this.trmplanformuService.get(#trmplanformu_id),'ehr-TRMPLANFORMU-Update')")
     @ApiOperation(value = "Update", tags = {"TRMPLANFORMU" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/trmplanformus/{trmplanformu_id}")
     @Transactional
@@ -99,7 +98,7 @@ public class TRMPLANFORMUResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.trmplanformuMapping,#trmplanformudtos})")
+    @PreAuthorize("hasPermission(this.trmplanformuService.getTrmplanformuByEntities(this.trmplanformuMapping.toDomain(#trmplanformudtos)),'ehr-TRMPLANFORMU-Update')")
     @ApiOperation(value = "UpdateBatch", tags = {"TRMPLANFORMU" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/trmplanformus/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<TRMPLANFORMUDTO> trmplanformudtos) {
@@ -107,7 +106,7 @@ public class TRMPLANFORMUResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('','Create',{'Sql',this.trmplanformuMapping,#trmplanformudto})")
+    @PreAuthorize("hasPermission(this.trmplanformuMapping.toDomain(#trmplanformudto),'ehr-TRMPLANFORMU-Create')")
     @ApiOperation(value = "Create", tags = {"TRMPLANFORMU" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmplanformus")
     @Transactional
@@ -118,7 +117,7 @@ public class TRMPLANFORMUResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.trmplanformuMapping,#trmplanformudtos})")
+    @PreAuthorize("hasPermission(this.trmplanformuMapping.toDomain(#trmplanformudtos),'ehr-TRMPLANFORMU-Create')")
     @ApiOperation(value = "createBatch", tags = {"TRMPLANFORMU" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmplanformus/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<TRMPLANFORMUDTO> trmplanformudtos) {
@@ -126,14 +125,12 @@ public class TRMPLANFORMUResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMPLANFORMU-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"TRMPLANFORMU" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/trmplanformus/getdraft")
     public ResponseEntity<TRMPLANFORMUDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(trmplanformuMapping.toDto(trmplanformuService.getDraft(new TRMPLANFORMU())));
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMPLANFORMU-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"TRMPLANFORMU" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmplanformus/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody TRMPLANFORMUDTO trmplanformudto) {
@@ -162,3 +159,4 @@ public class TRMPLANFORMUResource {
                 .body(new PageImpl(trmplanformuMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 }
+

@@ -238,6 +238,26 @@ public class VACOVERALLTIONServiceImpl extends ServiceImpl<VACOVERALLTIONMapper,
         return true;
     }
 
+    @Override
+    public List<VACOVERALLTION> getVacoveralltionByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<VACOVERALLTION> getVacoveralltionByEntities(List<VACOVERALLTION> entities) {
+        List ids =new ArrayList();
+        for(VACOVERALLTION entity : entities){
+            Serializable id=entity.getVacoveralltionid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

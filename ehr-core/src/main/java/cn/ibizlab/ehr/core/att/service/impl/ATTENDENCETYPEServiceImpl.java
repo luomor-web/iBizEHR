@@ -179,6 +179,26 @@ public class ATTENDENCETYPEServiceImpl extends ServiceImpl<ATTENDENCETYPEMapper,
         return true;
     }
 
+    @Override
+    public List<ATTENDENCETYPE> getAttendencetypeByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<ATTENDENCETYPE> getAttendencetypeByEntities(List<ATTENDENCETYPE> entities) {
+        List ids =new ArrayList();
+        for(ATTENDENCETYPE entity : entities){
+            Serializable id=entity.getAttendencetypeid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

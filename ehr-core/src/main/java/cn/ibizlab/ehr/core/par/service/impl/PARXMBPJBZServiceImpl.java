@@ -237,6 +237,26 @@ public class PARXMBPJBZServiceImpl extends ServiceImpl<PARXMBPJBZMapper, PARXMBP
         return true;
     }
 
+    @Override
+    public List<PARXMBPJBZ> getParxmbpjbzByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<PARXMBPJBZ> getParxmbpjbzByEntities(List<PARXMBPJBZ> entities) {
+        List ids =new ArrayList();
+        for(PARXMBPJBZ entity : entities){
+            Serializable id=entity.getParxmbpjbzid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

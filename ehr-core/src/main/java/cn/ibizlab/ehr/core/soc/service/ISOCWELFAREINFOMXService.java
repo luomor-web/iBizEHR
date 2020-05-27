@@ -56,6 +56,9 @@ public interface ISOCWELFAREINFOMXService extends IService<SOCWELFAREINFOMX>{
      */
     boolean execute(String sql, Map param);
 
+    List<SOCWELFAREINFOMX> getSocwelfareinfomxByIds(List<String> ids) ;
+    List<SOCWELFAREINFOMX> getSocwelfareinfomxByEntities(List<SOCWELFAREINFOMX> entities) ;
+
 }
 
 

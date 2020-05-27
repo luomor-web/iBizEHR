@@ -266,6 +266,26 @@ public class TRMPLANFORMUServiceImpl extends ServiceImpl<TRMPLANFORMUMapper, TRM
         return true;
     }
 
+    @Override
+    public List<TRMPLANFORMU> getTrmplanformuByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<TRMPLANFORMU> getTrmplanformuByEntities(List<TRMPLANFORMU> entities) {
+        List ids =new ArrayList();
+        for(TRMPLANFORMU entity : entities){
+            Serializable id=entity.getTrmplanformuid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

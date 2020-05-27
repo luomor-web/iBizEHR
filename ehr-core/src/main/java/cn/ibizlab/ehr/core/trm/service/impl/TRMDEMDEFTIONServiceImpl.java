@@ -310,6 +310,26 @@ public class TRMDEMDEFTIONServiceImpl extends ServiceImpl<TRMDEMDEFTIONMapper, T
         return true;
     }
 
+    @Override
+    public List<TRMDEMDEFTION> getTrmdemdeftionByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<TRMDEMDEFTION> getTrmdemdeftionByEntities(List<TRMDEMDEFTION> entities) {
+        List ids =new ArrayList();
+        for(TRMDEMDEFTION entity : entities){
+            Serializable id=entity.getTrmdemdeftionid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

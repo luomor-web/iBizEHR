@@ -22,6 +22,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.access.prepost.PostAuthorize;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -39,15 +40,13 @@ import cn.ibizlab.ehr.core.orm.filter.ORMORGSearchContext;
 public class ORMORGResource {
 
     @Autowired
-    private IORMORGService ormorgService;
+    public IORMORGService ormorgService;
 
     @Autowired
     @Lazy
     public ORMORGMapping ormorgMapping;
 
-    public ORMORGDTO permissionDTO=new ORMORGDTO();
-
-    @PreAuthorize("hasPermission(#ormorg_id,'Update',{'Sql',this.ormorgMapping,#ormorgdto})")
+    @PreAuthorize("hasPermission(this.ormorgService.get(#ormorg_id),'ehr-ORMORG-Update')")
     @ApiOperation(value = "Update", tags = {"ORMORG" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/ormorgs/{ormorg_id}")
     @Transactional
@@ -59,7 +58,7 @@ public class ORMORGResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.ormorgMapping,#ormorgdtos})")
+    @PreAuthorize("hasPermission(this.ormorgService.getOrmorgByEntities(this.ormorgMapping.toDomain(#ormorgdtos)),'ehr-ORMORG-Update')")
     @ApiOperation(value = "UpdateBatch", tags = {"ORMORG" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/ormorgs/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<ORMORGDTO> ormorgdtos) {
@@ -79,7 +78,7 @@ public class ORMORGResource {
         return ResponseEntity.status(HttpStatus.OK).body(ormorgdto);
     }
 
-    @PreAuthorize("hasPermission(#ormorg_id,'Remove',{'Sql',this.ormorgMapping,this.permissionDTO})")
+    @PreAuthorize("hasPermission(this.ormorgService.get(#ormorg_id),'ehr-ORMORG-Remove')")
     @ApiOperation(value = "Remove", tags = {"ORMORG" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/ormorgs/{ormorg_id}")
     @Transactional
@@ -87,7 +86,7 @@ public class ORMORGResource {
          return ResponseEntity.status(HttpStatus.OK).body(ormorgService.remove(ormorg_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.ormorgMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission(this.ormorgService.getOrmorgByIds(#ids),'ehr-ORMORG-Remove')")
     @ApiOperation(value = "RemoveBatch", tags = {"ORMORG" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/ormorgs/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -95,14 +94,13 @@ public class ORMORGResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMORG-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"ORMORG" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/ormorgs/getdraft")
     public ResponseEntity<ORMORGDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(ormorgMapping.toDto(ormorgService.getDraft(new ORMORG())));
     }
 
-    @PreAuthorize("hasPermission(#ormorg_id,'Get',{'Sql',this.ormorgMapping,this.permissionDTO})")
+    @PostAuthorize("hasPermission(this.ormorgMapping.toDomain(returnObject.body),'ehr-ORMORG-Get')")
     @ApiOperation(value = "Get", tags = {"ORMORG" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/ormorgs/{ormorg_id}")
     public ResponseEntity<ORMORGDTO> get(@PathVariable("ormorg_id") String ormorg_id) {
@@ -111,14 +109,13 @@ public class ORMORGResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMORG-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"ORMORG" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormorgs/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody ORMORGDTO ormorgdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(ormorgService.checkKey(ormorgMapping.toDomain(ormorgdto)));
     }
 
-    @PreAuthorize("hasPermission('','Create',{'Sql',this.ormorgMapping,#ormorgdto})")
+    @PreAuthorize("hasPermission(this.ormorgMapping.toDomain(#ormorgdto),'ehr-ORMORG-Create')")
     @ApiOperation(value = "Create", tags = {"ORMORG" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormorgs")
     @Transactional
@@ -129,7 +126,7 @@ public class ORMORGResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.ormorgMapping,#ormorgdtos})")
+    @PreAuthorize("hasPermission(this.ormorgMapping.toDomain(#ormorgdtos),'ehr-ORMORG-Create')")
     @ApiOperation(value = "createBatch", tags = {"ORMORG" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormorgs/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<ORMORGDTO> ormorgdtos) {
@@ -137,14 +134,14 @@ public class ORMORGResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('','Save',{'Sql',this.ormorgMapping,#ormorgdto})")
+    @PreAuthorize("hasPermission(this.ormorgMapping.toDomain(#ormorgdto),'ehr-ORMORG-Save')")
     @ApiOperation(value = "Save", tags = {"ORMORG" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormorgs/save")
     public ResponseEntity<Boolean> save(@RequestBody ORMORGDTO ormorgdto) {
         return ResponseEntity.status(HttpStatus.OK).body(ormorgService.save(ormorgMapping.toDomain(ormorgdto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.ormorgMapping,#ormorgdtos})")
+    @PreAuthorize("hasPermission(this.ormorgMapping.toDomain(#ormorgdtos),'ehr-ORMORG-Save')")
     @ApiOperation(value = "SaveBatch", tags = {"ORMORG" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormorgs/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<ORMORGDTO> ormorgdtos) {
@@ -571,3 +568,4 @@ public class ORMORGResource {
                 .body(new PageImpl(ormorgMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 }
+

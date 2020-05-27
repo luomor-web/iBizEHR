@@ -271,6 +271,26 @@ public class ATTENDANCESETTINGSServiceImpl extends ServiceImpl<ATTENDANCESETTING
         return true;
     }
 
+    @Override
+    public List<ATTENDANCESETTINGS> getAttendancesettingsByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<ATTENDANCESETTINGS> getAttendancesettingsByEntities(List<ATTENDANCESETTINGS> entities) {
+        List ids =new ArrayList();
+        for(ATTENDANCESETTINGS entity : entities){
+            Serializable id=entity.getAttendancesettingsid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

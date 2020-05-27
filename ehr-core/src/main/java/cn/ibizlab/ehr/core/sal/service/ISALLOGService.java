@@ -56,6 +56,9 @@ public interface ISALLOGService extends IService<SALLOG>{
      */
     boolean execute(String sql, Map param);
 
+    List<SALLOG> getSallogByIds(List<String> ids) ;
+    List<SALLOG> getSallogByEntities(List<SALLOG> entities) ;
+
 }
 
 

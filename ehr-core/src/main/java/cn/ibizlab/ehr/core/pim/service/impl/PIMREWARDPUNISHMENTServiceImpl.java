@@ -245,6 +245,26 @@ public class PIMREWARDPUNISHMENTServiceImpl extends ServiceImpl<PIMREWARDPUNISHM
         return true;
     }
 
+    @Override
+    public List<PIMREWARDPUNISHMENT> getPimrewardpunishmentByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<PIMREWARDPUNISHMENT> getPimrewardpunishmentByEntities(List<PIMREWARDPUNISHMENT> entities) {
+        List ids =new ArrayList();
+        for(PIMREWARDPUNISHMENT entity : entities){
+            Serializable id=entity.getPimrewardpunishmentid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

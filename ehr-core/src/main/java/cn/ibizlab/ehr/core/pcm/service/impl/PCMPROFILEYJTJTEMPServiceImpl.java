@@ -179,6 +179,26 @@ public class PCMPROFILEYJTJTEMPServiceImpl extends ServiceImpl<PCMPROFILEYJTJTEM
         return true;
     }
 
+    @Override
+    public List<PCMPROFILEYJTJTEMP> getPcmprofileyjtjtempByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<PCMPROFILEYJTJTEMP> getPcmprofileyjtjtempByEntities(List<PCMPROFILEYJTJTEMP> entities) {
+        List ids =new ArrayList();
+        for(PCMPROFILEYJTJTEMP entity : entities){
+            Serializable id=entity.getPcmprofileyjtjtempid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

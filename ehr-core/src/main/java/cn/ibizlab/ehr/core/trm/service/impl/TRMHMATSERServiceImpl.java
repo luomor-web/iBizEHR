@@ -265,6 +265,26 @@ public class TRMHMATSERServiceImpl extends ServiceImpl<TRMHMATSERMapper, TRMHMAT
         return true;
     }
 
+    @Override
+    public List<TRMHMATSER> getTrmhmatserByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<TRMHMATSER> getTrmhmatserByEntities(List<TRMHMATSER> entities) {
+        List ids =new ArrayList();
+        for(TRMHMATSER entity : entities){
+            Serializable id=entity.getTrmhmatserid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

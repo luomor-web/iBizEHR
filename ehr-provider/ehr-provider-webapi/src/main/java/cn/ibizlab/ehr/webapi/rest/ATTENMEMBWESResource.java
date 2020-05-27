@@ -22,6 +22,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.access.prepost.PostAuthorize;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -39,22 +40,19 @@ import cn.ibizlab.ehr.core.att.filter.ATTENMEMBWESSearchContext;
 public class ATTENMEMBWESResource {
 
     @Autowired
-    private IATTENMEMBWESService attenmembwesService;
+    public IATTENMEMBWESService attenmembwesService;
 
     @Autowired
     @Lazy
     public ATTENMEMBWESMapping attenmembwesMapping;
 
-    public ATTENMEMBWESDTO permissionDTO=new ATTENMEMBWESDTO();
-
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ATTENMEMBWES-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"ATTENMEMBWES" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/attenmembwes/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody ATTENMEMBWESDTO attenmembwesdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(attenmembwesService.checkKey(attenmembwesMapping.toDomain(attenmembwesdto)));
     }
 
-    @PreAuthorize("hasPermission(#attenmembwes_id,'Get',{'Sql',this.attenmembwesMapping,this.permissionDTO})")
+    @PostAuthorize("hasPermission(this.attenmembwesMapping.toDomain(returnObject.body),'ehr-ATTENMEMBWES-Get')")
     @ApiOperation(value = "Get", tags = {"ATTENMEMBWES" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/attenmembwes/{attenmembwes_id}")
     public ResponseEntity<ATTENMEMBWESDTO> get(@PathVariable("attenmembwes_id") String attenmembwes_id) {
@@ -63,7 +61,7 @@ public class ATTENMEMBWESResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#attenmembwes_id,'Remove',{'Sql',this.attenmembwesMapping,this.permissionDTO})")
+    @PreAuthorize("hasPermission(this.attenmembwesService.get(#attenmembwes_id),'ehr-ATTENMEMBWES-Remove')")
     @ApiOperation(value = "Remove", tags = {"ATTENMEMBWES" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/attenmembwes/{attenmembwes_id}")
     @Transactional
@@ -71,7 +69,7 @@ public class ATTENMEMBWESResource {
          return ResponseEntity.status(HttpStatus.OK).body(attenmembwesService.remove(attenmembwes_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.attenmembwesMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission(this.attenmembwesService.getAttenmembwesByIds(#ids),'ehr-ATTENMEMBWES-Remove')")
     @ApiOperation(value = "RemoveBatch", tags = {"ATTENMEMBWES" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/attenmembwes/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -79,14 +77,14 @@ public class ATTENMEMBWESResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('','Save',{'Sql',this.attenmembwesMapping,#attenmembwesdto})")
+    @PreAuthorize("hasPermission(this.attenmembwesMapping.toDomain(#attenmembwesdto),'ehr-ATTENMEMBWES-Save')")
     @ApiOperation(value = "Save", tags = {"ATTENMEMBWES" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/attenmembwes/save")
     public ResponseEntity<Boolean> save(@RequestBody ATTENMEMBWESDTO attenmembwesdto) {
         return ResponseEntity.status(HttpStatus.OK).body(attenmembwesService.save(attenmembwesMapping.toDomain(attenmembwesdto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.attenmembwesMapping,#attenmembwesdtos})")
+    @PreAuthorize("hasPermission(this.attenmembwesMapping.toDomain(#attenmembwesdtos),'ehr-ATTENMEMBWES-Save')")
     @ApiOperation(value = "SaveBatch", tags = {"ATTENMEMBWES" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/attenmembwes/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<ATTENMEMBWESDTO> attenmembwesdtos) {
@@ -94,14 +92,13 @@ public class ATTENMEMBWESResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ATTENMEMBWES-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"ATTENMEMBWES" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/attenmembwes/getdraft")
     public ResponseEntity<ATTENMEMBWESDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(attenmembwesMapping.toDto(attenmembwesService.getDraft(new ATTENMEMBWES())));
     }
 
-    @PreAuthorize("hasPermission(#attenmembwes_id,'Update',{'Sql',this.attenmembwesMapping,#attenmembwesdto})")
+    @PreAuthorize("hasPermission(this.attenmembwesService.get(#attenmembwes_id),'ehr-ATTENMEMBWES-Update')")
     @ApiOperation(value = "Update", tags = {"ATTENMEMBWES" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/attenmembwes/{attenmembwes_id}")
     @Transactional
@@ -113,7 +110,7 @@ public class ATTENMEMBWESResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.attenmembwesMapping,#attenmembwesdtos})")
+    @PreAuthorize("hasPermission(this.attenmembwesService.getAttenmembwesByEntities(this.attenmembwesMapping.toDomain(#attenmembwesdtos)),'ehr-ATTENMEMBWES-Update')")
     @ApiOperation(value = "UpdateBatch", tags = {"ATTENMEMBWES" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/attenmembwes/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<ATTENMEMBWESDTO> attenmembwesdtos) {
@@ -121,7 +118,7 @@ public class ATTENMEMBWESResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('','Create',{'Sql',this.attenmembwesMapping,#attenmembwesdto})")
+    @PreAuthorize("hasPermission(this.attenmembwesMapping.toDomain(#attenmembwesdto),'ehr-ATTENMEMBWES-Create')")
     @ApiOperation(value = "Create", tags = {"ATTENMEMBWES" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/attenmembwes")
     @Transactional
@@ -132,7 +129,7 @@ public class ATTENMEMBWESResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.attenmembwesMapping,#attenmembwesdtos})")
+    @PreAuthorize("hasPermission(this.attenmembwesMapping.toDomain(#attenmembwesdtos),'ehr-ATTENMEMBWES-Create')")
     @ApiOperation(value = "createBatch", tags = {"ATTENMEMBWES" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/attenmembwes/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<ATTENMEMBWESDTO> attenmembwesdtos) {
@@ -162,3 +159,4 @@ public class ATTENMEMBWESResource {
                 .body(new PageImpl(attenmembwesMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 }
+

@@ -54,6 +54,9 @@ public interface ISALSTDGWGZRATEService extends IService<SALSTDGWGZRATE>{
      */
     boolean execute(String sql, Map param);
 
+    List<SALSTDGWGZRATE> getSalstdgwgzrateByIds(List<String> ids) ;
+    List<SALSTDGWGZRATE> getSalstdgwgzrateByEntities(List<SALSTDGWGZRATE> entities) ;
+
 }
 
 

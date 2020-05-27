@@ -182,6 +182,26 @@ public class PARJXZGPCServiceImpl extends ServiceImpl<PARJXZGPCMapper, PARJXZGPC
         return true;
     }
 
+    @Override
+    public List<PARJXZGPC> getParjxzgpcByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<PARJXZGPC> getParjxzgpcByEntities(List<PARJXZGPC> entities) {
+        List ids =new ArrayList();
+        for(PARJXZGPC entity : entities){
+            Serializable id=entity.getParjxzgpcid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

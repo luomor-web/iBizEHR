@@ -58,6 +58,9 @@ public interface IPCMSgqMgrService extends IService<PCMSgqMgr>{
      */
     boolean execute(String sql, Map param);
 
+    List<PCMSgqMgr> getPcmsgqmgrByIds(List<String> ids) ;
+    List<PCMSgqMgr> getPcmsgqmgrByEntities(List<PCMSgqMgr> entities) ;
+
 }
 
 

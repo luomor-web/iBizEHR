@@ -54,6 +54,9 @@ public interface IAttendRecordDetailService extends IService<AttendRecordDetail>
      */
     boolean execute(String sql, Map param);
 
+    List<AttendRecordDetail> getAttendrecorddetailByIds(List<String> ids) ;
+    List<AttendRecordDetail> getAttendrecorddetailByEntities(List<AttendRecordDetail> entities) ;
+
 }
 
 

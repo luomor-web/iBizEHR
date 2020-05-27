@@ -22,6 +22,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.access.prepost.PostAuthorize;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -39,22 +40,20 @@ import cn.ibizlab.ehr.core.common.filter.CodeItemSearchContext;
 public class CodeItemResource {
 
     @Autowired
-    private ICodeItemService codeitemService;
+    public ICodeItemService codeitemService;
 
     @Autowired
     @Lazy
     public CodeItemMapping codeitemMapping;
 
-    public CodeItemDTO permissionDTO=new CodeItemDTO();
-
-    @PreAuthorize("hasPermission('','Save',{'Sql',this.codeitemMapping,#codeitemdto})")
+    @PreAuthorize("hasPermission(this.codeitemMapping.toDomain(#codeitemdto),'ehr-CodeItem-Save')")
     @ApiOperation(value = "Save", tags = {"CodeItem" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/codeitems/save")
     public ResponseEntity<Boolean> save(@RequestBody CodeItemDTO codeitemdto) {
         return ResponseEntity.status(HttpStatus.OK).body(codeitemService.save(codeitemMapping.toDomain(codeitemdto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.codeitemMapping,#codeitemdtos})")
+    @PreAuthorize("hasPermission(this.codeitemMapping.toDomain(#codeitemdtos),'ehr-CodeItem-Save')")
     @ApiOperation(value = "SaveBatch", tags = {"CodeItem" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/codeitems/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<CodeItemDTO> codeitemdtos) {
@@ -62,14 +61,13 @@ public class CodeItemResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-CodeItem-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"CodeItem" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/codeitems/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody CodeItemDTO codeitemdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(codeitemService.checkKey(codeitemMapping.toDomain(codeitemdto)));
     }
 
-    @PreAuthorize("hasPermission(#codeitem_id,'Remove',{'Sql',this.codeitemMapping,this.permissionDTO})")
+    @PreAuthorize("hasPermission(this.codeitemService.get(#codeitem_id),'ehr-CodeItem-Remove')")
     @ApiOperation(value = "Remove", tags = {"CodeItem" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/codeitems/{codeitem_id}")
     @Transactional
@@ -77,7 +75,7 @@ public class CodeItemResource {
          return ResponseEntity.status(HttpStatus.OK).body(codeitemService.remove(codeitem_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.codeitemMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission(this.codeitemService.getCodeitemByIds(#ids),'ehr-CodeItem-Remove')")
     @ApiOperation(value = "RemoveBatch", tags = {"CodeItem" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/codeitems/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -85,7 +83,7 @@ public class CodeItemResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission(#codeitem_id,'Update',{'Sql',this.codeitemMapping,#codeitemdto})")
+    @PreAuthorize("hasPermission(this.codeitemService.get(#codeitem_id),'ehr-CodeItem-Update')")
     @ApiOperation(value = "Update", tags = {"CodeItem" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/codeitems/{codeitem_id}")
     @Transactional
@@ -97,7 +95,7 @@ public class CodeItemResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.codeitemMapping,#codeitemdtos})")
+    @PreAuthorize("hasPermission(this.codeitemService.getCodeitemByEntities(this.codeitemMapping.toDomain(#codeitemdtos)),'ehr-CodeItem-Update')")
     @ApiOperation(value = "UpdateBatch", tags = {"CodeItem" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/codeitems/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<CodeItemDTO> codeitemdtos) {
@@ -105,7 +103,7 @@ public class CodeItemResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('','Create',{'Sql',this.codeitemMapping,#codeitemdto})")
+    @PreAuthorize("hasPermission(this.codeitemMapping.toDomain(#codeitemdto),'ehr-CodeItem-Create')")
     @ApiOperation(value = "Create", tags = {"CodeItem" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/codeitems")
     @Transactional
@@ -116,7 +114,7 @@ public class CodeItemResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.codeitemMapping,#codeitemdtos})")
+    @PreAuthorize("hasPermission(this.codeitemMapping.toDomain(#codeitemdtos),'ehr-CodeItem-Create')")
     @ApiOperation(value = "createBatch", tags = {"CodeItem" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/codeitems/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<CodeItemDTO> codeitemdtos) {
@@ -124,14 +122,13 @@ public class CodeItemResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-CodeItem-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"CodeItem" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/codeitems/getdraft")
     public ResponseEntity<CodeItemDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(codeitemMapping.toDto(codeitemService.getDraft(new CodeItem())));
     }
 
-    @PreAuthorize("hasPermission(#codeitem_id,'Get',{'Sql',this.codeitemMapping,this.permissionDTO})")
+    @PostAuthorize("hasPermission(this.codeitemMapping.toDomain(returnObject.body),'ehr-CodeItem-Get')")
     @ApiOperation(value = "Get", tags = {"CodeItem" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/codeitems/{codeitem_id}")
     public ResponseEntity<CodeItemDTO> get(@PathVariable("codeitem_id") String codeitem_id) {
@@ -183,3 +180,4 @@ public class CodeItemResource {
                 .body(new PageImpl(codeitemMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 }
+

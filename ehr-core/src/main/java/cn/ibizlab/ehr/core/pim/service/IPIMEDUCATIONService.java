@@ -62,6 +62,9 @@ public interface IPIMEDUCATIONService extends IService<PIMEDUCATION>{
      */
     boolean execute(String sql, Map param);
 
+    List<PIMEDUCATION> getPimeducationByIds(List<String> ids) ;
+    List<PIMEDUCATION> getPimeducationByEntities(List<PIMEDUCATION> entities) ;
+
 }
 
 

@@ -54,6 +54,9 @@ public interface ITRMTRAINFACIESService extends IService<TRMTRAINFACIES>{
      */
     boolean execute(String sql, Map param);
 
+    List<TRMTRAINFACIES> getTrmtrainfaciesByIds(List<String> ids) ;
+    List<TRMTRAINFACIES> getTrmtrainfaciesByEntities(List<TRMTRAINFACIES> entities) ;
+
 }
 
 

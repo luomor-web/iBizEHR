@@ -215,6 +215,26 @@ public class AttendRecordDetailServiceImpl extends ServiceImpl<AttendRecordDetai
         return true;
     }
 
+    @Override
+    public List<AttendRecordDetail> getAttendrecorddetailByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<AttendRecordDetail> getAttendrecorddetailByEntities(List<AttendRecordDetail> entities) {
+        List ids =new ArrayList();
+        for(AttendRecordDetail entity : entities){
+            Serializable id=entity.getAttendrecorddetailid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

@@ -215,6 +215,26 @@ public class VACLEAVESYSTEMDETAILServiceImpl extends ServiceImpl<VACLEAVESYSTEMD
         return true;
     }
 
+    @Override
+    public List<VACLEAVESYSTEMDETAIL> getVacleavesystemdetailByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<VACLEAVESYSTEMDETAIL> getVacleavesystemdetailByEntities(List<VACLEAVESYSTEMDETAIL> entities) {
+        List ids =new ArrayList();
+        for(VACLEAVESYSTEMDETAIL entity : entities){
+            Serializable id=entity.getVacleavesystemdetailid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

@@ -216,6 +216,26 @@ public class VACUSENXJMXServiceImpl extends ServiceImpl<VACUSENXJMXMapper, VACUS
         return true;
     }
 
+    @Override
+    public List<VACUSENXJMX> getVacusenxjmxByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<VACUSENXJMX> getVacusenxjmxByEntities(List<VACUSENXJMX> entities) {
+        List ids =new ArrayList();
+        for(VACUSENXJMX entity : entities){
+            Serializable id=entity.getVacusenxjmxid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

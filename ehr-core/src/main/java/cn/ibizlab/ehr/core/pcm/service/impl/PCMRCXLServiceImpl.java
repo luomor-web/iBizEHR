@@ -253,6 +253,26 @@ public class PCMRCXLServiceImpl extends ServiceImpl<PCMRCXLMapper, PCMRCXL> impl
         return true;
     }
 
+    @Override
+    public List<PCMRCXL> getPcmrcxlByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<PCMRCXL> getPcmrcxlByEntities(List<PCMRCXL> entities) {
+        List ids =new ArrayList();
+        for(PCMRCXL entity : entities){
+            Serializable id=entity.getPcmrcxlid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

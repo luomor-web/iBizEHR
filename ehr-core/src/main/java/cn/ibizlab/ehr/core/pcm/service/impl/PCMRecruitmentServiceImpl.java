@@ -293,6 +293,26 @@ public class PCMRecruitmentServiceImpl extends ServiceImpl<PCMRecruitmentMapper,
         return true;
     }
 
+    @Override
+    public List<PCMRecruitment> getPcmrecruitmentByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<PCMRecruitment> getPcmrecruitmentByEntities(List<PCMRecruitment> entities) {
+        List ids =new ArrayList();
+        for(PCMRecruitment entity : entities){
+            Serializable id=entity.getPcmrecruitmentid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

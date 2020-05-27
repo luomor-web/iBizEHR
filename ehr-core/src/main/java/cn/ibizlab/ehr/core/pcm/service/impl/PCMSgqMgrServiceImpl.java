@@ -219,6 +219,26 @@ public class PCMSgqMgrServiceImpl extends ServiceImpl<PCMSgqMgrMapper, PCMSgqMgr
         return true;
     }
 
+    @Override
+    public List<PCMSgqMgr> getPcmsgqmgrByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<PCMSgqMgr> getPcmsgqmgrByEntities(List<PCMSgqMgr> entities) {
+        List ids =new ArrayList();
+        for(PCMSgqMgr entity : entities){
+            Serializable id=entity.getPcmsgqmgrid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

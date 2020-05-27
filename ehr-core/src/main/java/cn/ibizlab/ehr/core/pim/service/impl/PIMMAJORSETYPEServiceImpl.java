@@ -182,6 +182,26 @@ public class PIMMAJORSETYPEServiceImpl extends ServiceImpl<PIMMAJORSETYPEMapper,
         return true;
     }
 
+    @Override
+    public List<PIMMAJORSETYPE> getPimmajorsetypeByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<PIMMAJORSETYPE> getPimmajorsetypeByEntities(List<PIMMAJORSETYPE> entities) {
+        List ids =new ArrayList();
+        for(PIMMAJORSETYPE entity : entities){
+            Serializable id=entity.getPimmajorsetypeid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

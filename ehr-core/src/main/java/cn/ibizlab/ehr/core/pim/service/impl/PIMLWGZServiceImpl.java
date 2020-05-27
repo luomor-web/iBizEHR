@@ -179,6 +179,26 @@ public class PIMLWGZServiceImpl extends ServiceImpl<PIMLWGZMapper, PIMLWGZ> impl
         return true;
     }
 
+    @Override
+    public List<PIMLWGZ> getPimlwgzByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<PIMLWGZ> getPimlwgzByEntities(List<PIMLWGZ> entities) {
+        List ids =new ArrayList();
+        for(PIMLWGZ entity : entities){
+            Serializable id=entity.getPimlwgzid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

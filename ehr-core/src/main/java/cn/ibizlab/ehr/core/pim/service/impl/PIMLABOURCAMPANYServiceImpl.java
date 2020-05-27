@@ -251,6 +251,26 @@ public class PIMLABOURCAMPANYServiceImpl extends ServiceImpl<PIMLABOURCAMPANYMap
         return true;
     }
 
+    @Override
+    public List<PIMLABOURCAMPANY> getPimlabourcampanyByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<PIMLABOURCAMPANY> getPimlabourcampanyByEntities(List<PIMLABOURCAMPANY> entities) {
+        List ids =new ArrayList();
+        for(PIMLABOURCAMPANY entity : entities){
+            Serializable id=entity.getPimlabourcampanyid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

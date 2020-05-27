@@ -54,6 +54,9 @@ public interface ICodeList1Service extends IService<CodeList1>{
      */
     boolean execute(String sql, Map param);
 
+    List<CodeList1> getCodelist1ByIds(List<String> ids) ;
+    List<CodeList1> getCodelist1ByEntities(List<CodeList1> entities) ;
+
 }
 
 

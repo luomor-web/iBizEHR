@@ -52,6 +52,9 @@ public interface IPIMGWTYPEService extends IService<PIMGWTYPE>{
      */
     boolean execute(String sql, Map param);
 
+    List<PIMGWTYPE> getPimgwtypeByIds(List<String> ids) ;
+    List<PIMGWTYPE> getPimgwtypeByEntities(List<PIMGWTYPE> entities) ;
+
 }
 
 

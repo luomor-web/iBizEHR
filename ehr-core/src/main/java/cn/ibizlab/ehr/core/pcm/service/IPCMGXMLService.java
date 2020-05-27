@@ -53,6 +53,9 @@ public interface IPCMGXMLService extends IService<PCMGXML>{
      */
     boolean execute(String sql, Map param);
 
+    List<PCMGXML> getPcmgxmlByIds(List<String> ids) ;
+    List<PCMGXML> getPcmgxmlByEntities(List<PCMGXML> entities) ;
+
 }
 
 

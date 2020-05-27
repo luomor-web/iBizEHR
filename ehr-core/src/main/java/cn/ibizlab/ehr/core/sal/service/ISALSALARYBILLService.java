@@ -56,6 +56,9 @@ public interface ISALSALARYBILLService extends IService<SALSALARYBILL>{
      */
     boolean execute(String sql, Map param);
 
+    List<SALSALARYBILL> getSalsalarybillByIds(List<String> ids) ;
+    List<SALSALARYBILL> getSalsalarybillByEntities(List<SALSALARYBILL> entities) ;
+
 }
 
 

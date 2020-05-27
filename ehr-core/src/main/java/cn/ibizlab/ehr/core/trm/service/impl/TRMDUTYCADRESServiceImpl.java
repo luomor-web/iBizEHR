@@ -400,6 +400,26 @@ public class TRMDUTYCADRESServiceImpl extends ServiceImpl<TRMDUTYCADRESMapper, T
         return true;
     }
 
+    @Override
+    public List<TRMDUTYCADRES> getTrmdutycadresByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<TRMDUTYCADRES> getTrmdutycadresByEntities(List<TRMDUTYCADRES> entities) {
+        List ids =new ArrayList();
+        for(TRMDUTYCADRES entity : entities){
+            Serializable id=entity.getTrmdutycadresid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

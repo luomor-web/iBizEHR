@@ -54,6 +54,9 @@ public interface IPCMPRACTICEEXPERIENCEService extends IService<PCMPRACTICEEXPER
      */
     boolean execute(String sql, Map param);
 
+    List<PCMPRACTICEEXPERIENCE> getPcmpracticeexperienceByIds(List<String> ids) ;
+    List<PCMPRACTICEEXPERIENCE> getPcmpracticeexperienceByEntities(List<PCMPRACTICEEXPERIENCE> entities) ;
+
 }
 
 

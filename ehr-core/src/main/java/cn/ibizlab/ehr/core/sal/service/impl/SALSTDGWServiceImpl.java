@@ -215,6 +215,26 @@ public class SALSTDGWServiceImpl extends ServiceImpl<SALSTDGWMapper, SALSTDGW> i
         return true;
     }
 
+    @Override
+    public List<SALSTDGW> getSalstdgwByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<SALSTDGW> getSalstdgwByEntities(List<SALSTDGW> entities) {
+        List ids =new ArrayList();
+        for(SALSTDGW entity : entities){
+            Serializable id=entity.getSalstdgwid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

@@ -261,6 +261,26 @@ public class TRMSTAFFNODESServiceImpl extends ServiceImpl<TRMSTAFFNODESMapper, T
         return true;
     }
 
+    @Override
+    public List<TRMSTAFFNODES> getTrmstaffnodesByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<TRMSTAFFNODES> getTrmstaffnodesByEntities(List<TRMSTAFFNODES> entities) {
+        List ids =new ArrayList();
+        for(TRMSTAFFNODES entity : entities){
+            Serializable id=entity.getTrmstaffnodesid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

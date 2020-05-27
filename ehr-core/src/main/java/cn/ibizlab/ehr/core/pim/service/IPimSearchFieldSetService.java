@@ -54,6 +54,9 @@ public interface IPimSearchFieldSetService extends IService<PimSearchFieldSet>{
      */
     boolean execute(String sql, Map param);
 
+    List<PimSearchFieldSet> getPimsearchfieldsetByIds(List<String> ids) ;
+    List<PimSearchFieldSet> getPimsearchfieldsetByEntities(List<PimSearchFieldSet> entities) ;
+
 }
 
 

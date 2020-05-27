@@ -22,6 +22,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.access.prepost.PostAuthorize;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -39,13 +40,11 @@ import cn.ibizlab.ehr.core.pim.filter.PIMEDUCATIONSearchContext;
 public class PIMEDUCATIONResource {
 
     @Autowired
-    private IPIMEDUCATIONService pimeducationService;
+    public IPIMEDUCATIONService pimeducationService;
 
     @Autowired
     @Lazy
     public PIMEDUCATIONMapping pimeducationMapping;
-
-    public PIMEDUCATIONDTO permissionDTO=new PIMEDUCATIONDTO();
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMEDUCATION-CheckHighestEdu-all')")
     @ApiOperation(value = "检查最高学历", tags = {"PIMEDUCATION" },  notes = "检查最高学历")
@@ -59,7 +58,7 @@ public class PIMEDUCATIONResource {
         return ResponseEntity.status(HttpStatus.OK).body(pimeducationdto);
     }
 
-    @PreAuthorize("hasPermission(#pimeducation_id,'Get',{'Sql',this.pimeducationMapping,this.permissionDTO})")
+    @PostAuthorize("hasPermission(this.pimeducationMapping.toDomain(returnObject.body),'ehr-PIMEDUCATION-Get')")
     @ApiOperation(value = "Get", tags = {"PIMEDUCATION" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimeducations/{pimeducation_id}")
     public ResponseEntity<PIMEDUCATIONDTO> get(@PathVariable("pimeducation_id") String pimeducation_id) {
@@ -68,14 +67,14 @@ public class PIMEDUCATIONResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('','Save',{'Sql',this.pimeducationMapping,#pimeducationdto})")
+    @PreAuthorize("hasPermission(this.pimeducationMapping.toDomain(#pimeducationdto),'ehr-PIMEDUCATION-Save')")
     @ApiOperation(value = "Save", tags = {"PIMEDUCATION" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimeducations/save")
     public ResponseEntity<Boolean> save(@RequestBody PIMEDUCATIONDTO pimeducationdto) {
         return ResponseEntity.status(HttpStatus.OK).body(pimeducationService.save(pimeducationMapping.toDomain(pimeducationdto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.pimeducationMapping,#pimeducationdtos})")
+    @PreAuthorize("hasPermission(this.pimeducationMapping.toDomain(#pimeducationdtos),'ehr-PIMEDUCATION-Save')")
     @ApiOperation(value = "SaveBatch", tags = {"PIMEDUCATION" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimeducations/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PIMEDUCATIONDTO> pimeducationdtos) {
@@ -83,7 +82,7 @@ public class PIMEDUCATIONResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('','Create',{'Sql',this.pimeducationMapping,#pimeducationdto})")
+    @PreAuthorize("hasPermission(this.pimeducationMapping.toDomain(#pimeducationdto),'ehr-PIMEDUCATION-Create')")
     @ApiOperation(value = "Create", tags = {"PIMEDUCATION" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimeducations")
     @Transactional
@@ -94,7 +93,7 @@ public class PIMEDUCATIONResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.pimeducationMapping,#pimeducationdtos})")
+    @PreAuthorize("hasPermission(this.pimeducationMapping.toDomain(#pimeducationdtos),'ehr-PIMEDUCATION-Create')")
     @ApiOperation(value = "createBatch", tags = {"PIMEDUCATION" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimeducations/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PIMEDUCATIONDTO> pimeducationdtos) {
@@ -102,21 +101,19 @@ public class PIMEDUCATIONResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMEDUCATION-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"PIMEDUCATION" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimeducations/getdraft")
     public ResponseEntity<PIMEDUCATIONDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(pimeducationMapping.toDto(pimeducationService.getDraft(new PIMEDUCATION())));
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMEDUCATION-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"PIMEDUCATION" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimeducations/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PIMEDUCATIONDTO pimeducationdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pimeducationService.checkKey(pimeducationMapping.toDomain(pimeducationdto)));
     }
 
-    @PreAuthorize("hasPermission(#pimeducation_id,'Remove',{'Sql',this.pimeducationMapping,this.permissionDTO})")
+    @PreAuthorize("hasPermission(this.pimeducationService.get(#pimeducation_id),'ehr-PIMEDUCATION-Remove')")
     @ApiOperation(value = "Remove", tags = {"PIMEDUCATION" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimeducations/{pimeducation_id}")
     @Transactional
@@ -124,7 +121,7 @@ public class PIMEDUCATIONResource {
          return ResponseEntity.status(HttpStatus.OK).body(pimeducationService.remove(pimeducation_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.pimeducationMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission(this.pimeducationService.getPimeducationByIds(#ids),'ehr-PIMEDUCATION-Remove')")
     @ApiOperation(value = "RemoveBatch", tags = {"PIMEDUCATION" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimeducations/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -132,7 +129,7 @@ public class PIMEDUCATIONResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission(#pimeducation_id,'Update',{'Sql',this.pimeducationMapping,#pimeducationdto})")
+    @PreAuthorize("hasPermission(this.pimeducationService.get(#pimeducation_id),'ehr-PIMEDUCATION-Update')")
     @ApiOperation(value = "Update", tags = {"PIMEDUCATION" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimeducations/{pimeducation_id}")
     @Transactional
@@ -144,7 +141,7 @@ public class PIMEDUCATIONResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.pimeducationMapping,#pimeducationdtos})")
+    @PreAuthorize("hasPermission(this.pimeducationService.getPimeducationByEntities(this.pimeducationMapping.toDomain(#pimeducationdtos)),'ehr-PIMEDUCATION-Update')")
     @ApiOperation(value = "UpdateBatch", tags = {"PIMEDUCATION" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimeducations/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PIMEDUCATIONDTO> pimeducationdtos) {
@@ -331,7 +328,7 @@ public class PIMEDUCATIONResource {
         return ResponseEntity.status(HttpStatus.OK).body(pimeducationdto);
     }
 
-    @PreAuthorize("hasPermission(#pimeducation_id,'Get',{'Sql',this.pimeducationMapping,this.permissionDTO})")
+    @PostAuthorize("hasPermission(this.pimeducationMapping.toDomain(returnObject.body),'ehr-PIMEDUCATION-Get')")
     @ApiOperation(value = "GetByPIMPERSON", tags = {"PIMEDUCATION" },  notes = "GetByPIMPERSON")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimpeople/{pimperson_id}/pimeducations/{pimeducation_id}")
     public ResponseEntity<PIMEDUCATIONDTO> getByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimeducation_id") String pimeducation_id) {
@@ -340,7 +337,7 @@ public class PIMEDUCATIONResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('','Save',{'Sql',this.pimeducationMapping,#pimeducationdto})")
+    @PreAuthorize("hasPermission(this.pimeducationMapping.toDomain(#pimeducationdto),'ehr-PIMEDUCATION-Save')")
     @ApiOperation(value = "SaveByPIMPERSON", tags = {"PIMEDUCATION" },  notes = "SaveByPIMPERSON")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimeducations/save")
     public ResponseEntity<Boolean> saveByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMEDUCATIONDTO pimeducationdto) {
@@ -349,7 +346,7 @@ public class PIMEDUCATIONResource {
         return ResponseEntity.status(HttpStatus.OK).body(pimeducationService.save(domain));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.pimeducationMapping,#pimeducationdtos})")
+    @PreAuthorize("hasPermission(this.pimeducationMapping.toDomain(#pimeducationdtos),'ehr-PIMEDUCATION-Save')")
     @ApiOperation(value = "SaveBatchByPIMPERSON", tags = {"PIMEDUCATION" },  notes = "SaveBatchByPIMPERSON")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimeducations/savebatch")
     public ResponseEntity<Boolean> saveBatchByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody List<PIMEDUCATIONDTO> pimeducationdtos) {
@@ -361,7 +358,7 @@ public class PIMEDUCATIONResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('','Create',{'Sql',this.pimeducationMapping,#pimeducationdto})")
+    @PreAuthorize("hasPermission(this.pimeducationMapping.toDomain(#pimeducationdto),'ehr-PIMEDUCATION-Create')")
     @ApiOperation(value = "CreateByPIMPERSON", tags = {"PIMEDUCATION" },  notes = "CreateByPIMPERSON")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimeducations")
     @Transactional
@@ -373,7 +370,7 @@ public class PIMEDUCATIONResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.pimeducationMapping,#pimeducationdtos})")
+    @PreAuthorize("hasPermission(this.pimeducationMapping.toDomain(#pimeducationdtos),'ehr-PIMEDUCATION-Create')")
     @ApiOperation(value = "createBatchByPIMPERSON", tags = {"PIMEDUCATION" },  notes = "createBatchByPIMPERSON")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimeducations/batch")
     public ResponseEntity<Boolean> createBatchByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody List<PIMEDUCATIONDTO> pimeducationdtos) {
@@ -385,7 +382,6 @@ public class PIMEDUCATIONResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMEDUCATION-GetDraft-all')")
     @ApiOperation(value = "GetDraftByPIMPERSON", tags = {"PIMEDUCATION" },  notes = "GetDraftByPIMPERSON")
     @RequestMapping(method = RequestMethod.GET, value = "/pimpeople/{pimperson_id}/pimeducations/getdraft")
     public ResponseEntity<PIMEDUCATIONDTO> getDraftByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id) {
@@ -394,14 +390,13 @@ public class PIMEDUCATIONResource {
         return ResponseEntity.status(HttpStatus.OK).body(pimeducationMapping.toDto(pimeducationService.getDraft(domain)));
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMEDUCATION-CheckKey-all')")
     @ApiOperation(value = "CheckKeyByPIMPERSON", tags = {"PIMEDUCATION" },  notes = "CheckKeyByPIMPERSON")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimeducations/checkkey")
     public ResponseEntity<Boolean> checkKeyByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMEDUCATIONDTO pimeducationdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pimeducationService.checkKey(pimeducationMapping.toDomain(pimeducationdto)));
     }
 
-    @PreAuthorize("hasPermission(#pimeducation_id,'Remove',{'Sql',this.pimeducationMapping,this.permissionDTO})")
+    @PreAuthorize("hasPermission(this.pimeducationService.get(#pimeducation_id),'ehr-PIMEDUCATION-Remove')")
     @ApiOperation(value = "RemoveByPIMPERSON", tags = {"PIMEDUCATION" },  notes = "RemoveByPIMPERSON")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimpeople/{pimperson_id}/pimeducations/{pimeducation_id}")
     @Transactional
@@ -409,7 +404,7 @@ public class PIMEDUCATIONResource {
 		return ResponseEntity.status(HttpStatus.OK).body(pimeducationService.remove(pimeducation_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.pimeducationMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission(this.pimeducationService.getPimeducationByIds(#ids),'ehr-PIMEDUCATION-Remove')")
     @ApiOperation(value = "RemoveBatchByPIMPERSON", tags = {"PIMEDUCATION" },  notes = "RemoveBatchByPIMPERSON")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimpeople/{pimperson_id}/pimeducations/batch")
     public ResponseEntity<Boolean> removeBatchByPIMPERSON(@RequestBody List<String> ids) {
@@ -417,7 +412,7 @@ public class PIMEDUCATIONResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission(#pimeducation_id,'Update',{'Sql',this.pimeducationMapping,#pimeducationdto})")
+    @PreAuthorize("hasPermission(this.pimeducationService.get(#pimeducation_id),'ehr-PIMEDUCATION-Update')")
     @ApiOperation(value = "UpdateByPIMPERSON", tags = {"PIMEDUCATION" },  notes = "UpdateByPIMPERSON")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimpeople/{pimperson_id}/pimeducations/{pimeducation_id}")
     @Transactional
@@ -430,7 +425,7 @@ public class PIMEDUCATIONResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.pimeducationMapping,#pimeducationdtos})")
+    @PreAuthorize("hasPermission(this.pimeducationService.getPimeducationByEntities(this.pimeducationMapping.toDomain(#pimeducationdtos)),'ehr-PIMEDUCATION-Update')")
     @ApiOperation(value = "UpdateBatchByPIMPERSON", tags = {"PIMEDUCATION" },  notes = "UpdateBatchByPIMPERSON")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimpeople/{pimperson_id}/pimeducations/batch")
     public ResponseEntity<Boolean> updateBatchByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody List<PIMEDUCATIONDTO> pimeducationdtos) {
@@ -626,3 +621,4 @@ public class PIMEDUCATIONResource {
                 .body(new PageImpl(domains.getContent(), context.getPageable(), domains.getTotalElements()));
 	}
 }
+

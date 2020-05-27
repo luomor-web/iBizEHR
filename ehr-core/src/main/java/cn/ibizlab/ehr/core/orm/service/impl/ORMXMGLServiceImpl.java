@@ -201,6 +201,26 @@ public class ORMXMGLServiceImpl extends ServiceImpl<ORMXMGLMapper, ORMXMGL> impl
         return true;
     }
 
+    @Override
+    public List<ORMXMGL> getOrmxmglByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<ORMXMGL> getOrmxmglByEntities(List<ORMXMGL> entities) {
+        List ids =new ArrayList();
+        for(ORMXMGL entity : entities){
+            Serializable id=entity.getOrmxmglid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

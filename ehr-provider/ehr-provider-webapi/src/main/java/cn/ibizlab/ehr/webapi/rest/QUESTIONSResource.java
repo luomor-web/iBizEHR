@@ -22,6 +22,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.access.prepost.PostAuthorize;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -39,13 +40,11 @@ import cn.ibizlab.ehr.core.pim.filter.QUESTIONSSearchContext;
 public class QUESTIONSResource {
 
     @Autowired
-    private IQUESTIONSService questionsService;
+    public IQUESTIONSService questionsService;
 
     @Autowired
     @Lazy
     public QUESTIONSMapping questionsMapping;
-
-    public QUESTIONSDTO permissionDTO=new QUESTIONSDTO();
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-QUESTIONS-RemoveTemp-all')")
     @ApiOperation(value = "RemoveTemp", tags = {"QUESTIONS" },  notes = "RemoveTemp")
@@ -95,14 +94,14 @@ public class QUESTIONSResource {
         return ResponseEntity.status(HttpStatus.OK).body(questionsdto);
     }
 
-    @PreAuthorize("hasPermission('','Save',{'Sql',this.questionsMapping,#questionsdto})")
+    @PreAuthorize("hasPermission(this.questionsMapping.toDomain(#questionsdto),'ehr-QUESTIONS-Save')")
     @ApiOperation(value = "Save", tags = {"QUESTIONS" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/questions/save")
     public ResponseEntity<Boolean> save(@RequestBody QUESTIONSDTO questionsdto) {
         return ResponseEntity.status(HttpStatus.OK).body(questionsService.save(questionsMapping.toDomain(questionsdto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.questionsMapping,#questionsdtos})")
+    @PreAuthorize("hasPermission(this.questionsMapping.toDomain(#questionsdtos),'ehr-QUESTIONS-Save')")
     @ApiOperation(value = "SaveBatch", tags = {"QUESTIONS" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/questions/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<QUESTIONSDTO> questionsdtos) {
@@ -122,7 +121,7 @@ public class QUESTIONSResource {
         return ResponseEntity.status(HttpStatus.OK).body(questionsdto);
     }
 
-    @PreAuthorize("hasPermission(#questions_id,'Update',{'Sql',this.questionsMapping,#questionsdto})")
+    @PreAuthorize("hasPermission(this.questionsService.get(#questions_id),'ehr-QUESTIONS-Update')")
     @ApiOperation(value = "Update", tags = {"QUESTIONS" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/questions/{questions_id}")
     @Transactional
@@ -134,7 +133,7 @@ public class QUESTIONSResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.questionsMapping,#questionsdtos})")
+    @PreAuthorize("hasPermission(this.questionsService.getQuestionsByEntities(this.questionsMapping.toDomain(#questionsdtos)),'ehr-QUESTIONS-Update')")
     @ApiOperation(value = "UpdateBatch", tags = {"QUESTIONS" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/questions/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<QUESTIONSDTO> questionsdtos) {
@@ -142,7 +141,7 @@ public class QUESTIONSResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission(#questions_id,'Get',{'Sql',this.questionsMapping,this.permissionDTO})")
+    @PostAuthorize("hasPermission(this.questionsMapping.toDomain(returnObject.body),'ehr-QUESTIONS-Get')")
     @ApiOperation(value = "Get", tags = {"QUESTIONS" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/questions/{questions_id}")
     public ResponseEntity<QUESTIONSDTO> get(@PathVariable("questions_id") String questions_id) {
@@ -163,14 +162,13 @@ public class QUESTIONSResource {
         return ResponseEntity.status(HttpStatus.OK).body(questionsdto);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-QUESTIONS-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"QUESTIONS" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/questions/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody QUESTIONSDTO questionsdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(questionsService.checkKey(questionsMapping.toDomain(questionsdto)));
     }
 
-    @PreAuthorize("hasPermission(#questions_id,'Remove',{'Sql',this.questionsMapping,this.permissionDTO})")
+    @PreAuthorize("hasPermission(this.questionsService.get(#questions_id),'ehr-QUESTIONS-Remove')")
     @ApiOperation(value = "Remove", tags = {"QUESTIONS" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/questions/{questions_id}")
     @Transactional
@@ -178,7 +176,7 @@ public class QUESTIONSResource {
          return ResponseEntity.status(HttpStatus.OK).body(questionsService.remove(questions_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.questionsMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission(this.questionsService.getQuestionsByIds(#ids),'ehr-QUESTIONS-Remove')")
     @ApiOperation(value = "RemoveBatch", tags = {"QUESTIONS" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/questions/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -186,7 +184,7 @@ public class QUESTIONSResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('','Create',{'Sql',this.questionsMapping,#questionsdto})")
+    @PreAuthorize("hasPermission(this.questionsMapping.toDomain(#questionsdto),'ehr-QUESTIONS-Create')")
     @ApiOperation(value = "Create", tags = {"QUESTIONS" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/questions")
     @Transactional
@@ -197,7 +195,7 @@ public class QUESTIONSResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.questionsMapping,#questionsdtos})")
+    @PreAuthorize("hasPermission(this.questionsMapping.toDomain(#questionsdtos),'ehr-QUESTIONS-Create')")
     @ApiOperation(value = "createBatch", tags = {"QUESTIONS" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/questions/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<QUESTIONSDTO> questionsdtos) {
@@ -217,7 +215,6 @@ public class QUESTIONSResource {
         return ResponseEntity.status(HttpStatus.OK).body(questionsdto);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-QUESTIONS-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"QUESTIONS" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/questions/getdraft")
     public ResponseEntity<QUESTIONSDTO> getDraft() {
@@ -303,3 +300,4 @@ public class QUESTIONSResource {
                 .body(new PageImpl(questionsMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 }
+

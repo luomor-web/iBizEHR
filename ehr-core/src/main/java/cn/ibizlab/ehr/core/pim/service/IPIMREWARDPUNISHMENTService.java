@@ -57,6 +57,9 @@ public interface IPIMREWARDPUNISHMENTService extends IService<PIMREWARDPUNISHMEN
      */
     boolean execute(String sql, Map param);
 
+    List<PIMREWARDPUNISHMENT> getPimrewardpunishmentByIds(List<String> ids) ;
+    List<PIMREWARDPUNISHMENT> getPimrewardpunishmentByEntities(List<PIMREWARDPUNISHMENT> entities) ;
+
 }
 
 

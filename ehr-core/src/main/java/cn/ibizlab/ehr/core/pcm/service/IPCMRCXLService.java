@@ -58,6 +58,9 @@ public interface IPCMRCXLService extends IService<PCMRCXL>{
      */
     boolean execute(String sql, Map param);
 
+    List<PCMRCXL> getPcmrcxlByIds(List<String> ids) ;
+    List<PCMRCXL> getPcmrcxlByEntities(List<PCMRCXL> entities) ;
+
 }
 
 

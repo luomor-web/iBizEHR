@@ -239,6 +239,26 @@ public class TRMLGBDETAILServiceImpl extends ServiceImpl<TRMLGBDETAILMapper, TRM
         return true;
     }
 
+    @Override
+    public List<TRMLGBDETAIL> getTrmlgbdetailByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<TRMLGBDETAIL> getTrmlgbdetailByEntities(List<TRMLGBDETAIL> entities) {
+        List ids =new ArrayList();
+        for(TRMLGBDETAIL entity : entities){
+            Serializable id=entity.getTrmlgbdetailid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

@@ -235,6 +235,26 @@ public class PIMOUTPUTServiceImpl extends ServiceImpl<PIMOUTPUTMapper, PIMOUTPUT
         return true;
     }
 
+    @Override
+    public List<PIMOUTPUT> getPimoutputByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<PIMOUTPUT> getPimoutputByEntities(List<PIMOUTPUT> entities) {
+        List ids =new ArrayList();
+        for(PIMOUTPUT entity : entities){
+            Serializable id=entity.getPimoutputid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

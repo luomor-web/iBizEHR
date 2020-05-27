@@ -22,6 +22,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.access.prepost.PostAuthorize;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -39,29 +40,26 @@ import cn.ibizlab.ehr.core.orm.filter.ORMORGInfoSearchContext;
 public class ORMORGInfoResource {
 
     @Autowired
-    private IORMORGInfoService ormorginfoService;
+    public IORMORGInfoService ormorginfoService;
 
     @Autowired
     @Lazy
     public ORMORGInfoMapping ormorginfoMapping;
 
-    public ORMORGInfoDTO permissionDTO=new ORMORGInfoDTO();
-
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMORGInfo-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"ORMORGInfo" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormorginfos/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody ORMORGInfoDTO ormorginfodto) {
         return  ResponseEntity.status(HttpStatus.OK).body(ormorginfoService.checkKey(ormorginfoMapping.toDomain(ormorginfodto)));
     }
 
-    @PreAuthorize("hasPermission('','Save',{'Sql',this.ormorginfoMapping,#ormorginfodto})")
+    @PreAuthorize("hasPermission(this.ormorginfoMapping.toDomain(#ormorginfodto),'ehr-ORMORGInfo-Save')")
     @ApiOperation(value = "Save", tags = {"ORMORGInfo" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormorginfos/save")
     public ResponseEntity<Boolean> save(@RequestBody ORMORGInfoDTO ormorginfodto) {
         return ResponseEntity.status(HttpStatus.OK).body(ormorginfoService.save(ormorginfoMapping.toDomain(ormorginfodto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.ormorginfoMapping,#ormorginfodtos})")
+    @PreAuthorize("hasPermission(this.ormorginfoMapping.toDomain(#ormorginfodtos),'ehr-ORMORGInfo-Save')")
     @ApiOperation(value = "SaveBatch", tags = {"ORMORGInfo" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormorginfos/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<ORMORGInfoDTO> ormorginfodtos) {
@@ -69,14 +67,13 @@ public class ORMORGInfoResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMORGInfo-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"ORMORGInfo" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/ormorginfos/getdraft")
     public ResponseEntity<ORMORGInfoDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(ormorginfoMapping.toDto(ormorginfoService.getDraft(new ORMORGInfo())));
     }
 
-    @PreAuthorize("hasPermission(#ormorginfo_id,'Remove',{'Sql',this.ormorginfoMapping,this.permissionDTO})")
+    @PreAuthorize("hasPermission(this.ormorginfoService.get(#ormorginfo_id),'ehr-ORMORGInfo-Remove')")
     @ApiOperation(value = "Remove", tags = {"ORMORGInfo" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/ormorginfos/{ormorginfo_id}")
     @Transactional
@@ -84,7 +81,7 @@ public class ORMORGInfoResource {
          return ResponseEntity.status(HttpStatus.OK).body(ormorginfoService.remove(ormorginfo_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.ormorginfoMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission(this.ormorginfoService.getOrmorginfoByIds(#ids),'ehr-ORMORGInfo-Remove')")
     @ApiOperation(value = "RemoveBatch", tags = {"ORMORGInfo" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/ormorginfos/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -92,7 +89,7 @@ public class ORMORGInfoResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission(#ormorginfo_id,'Get',{'Sql',this.ormorginfoMapping,this.permissionDTO})")
+    @PostAuthorize("hasPermission(this.ormorginfoMapping.toDomain(returnObject.body),'ehr-ORMORGInfo-Get')")
     @ApiOperation(value = "Get", tags = {"ORMORGInfo" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/ormorginfos/{ormorginfo_id}")
     public ResponseEntity<ORMORGInfoDTO> get(@PathVariable("ormorginfo_id") String ormorginfo_id) {
@@ -101,7 +98,7 @@ public class ORMORGInfoResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('','Create',{'Sql',this.ormorginfoMapping,#ormorginfodto})")
+    @PreAuthorize("hasPermission(this.ormorginfoMapping.toDomain(#ormorginfodto),'ehr-ORMORGInfo-Create')")
     @ApiOperation(value = "Create", tags = {"ORMORGInfo" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormorginfos")
     @Transactional
@@ -112,7 +109,7 @@ public class ORMORGInfoResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.ormorginfoMapping,#ormorginfodtos})")
+    @PreAuthorize("hasPermission(this.ormorginfoMapping.toDomain(#ormorginfodtos),'ehr-ORMORGInfo-Create')")
     @ApiOperation(value = "createBatch", tags = {"ORMORGInfo" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormorginfos/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<ORMORGInfoDTO> ormorginfodtos) {
@@ -120,7 +117,7 @@ public class ORMORGInfoResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission(#ormorginfo_id,'Update',{'Sql',this.ormorginfoMapping,#ormorginfodto})")
+    @PreAuthorize("hasPermission(this.ormorginfoService.get(#ormorginfo_id),'ehr-ORMORGInfo-Update')")
     @ApiOperation(value = "Update", tags = {"ORMORGInfo" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/ormorginfos/{ormorginfo_id}")
     @Transactional
@@ -132,7 +129,7 @@ public class ORMORGInfoResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.ormorginfoMapping,#ormorginfodtos})")
+    @PreAuthorize("hasPermission(this.ormorginfoService.getOrmorginfoByEntities(this.ormorginfoMapping.toDomain(#ormorginfodtos)),'ehr-ORMORGInfo-Update')")
     @ApiOperation(value = "UpdateBatch", tags = {"ORMORGInfo" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/ormorginfos/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<ORMORGInfoDTO> ormorginfodtos) {
@@ -309,3 +306,4 @@ public class ORMORGInfoResource {
                 .body(new PageImpl(ormorginfoMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 }
+

@@ -22,6 +22,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.access.prepost.PostAuthorize;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -39,15 +40,13 @@ import cn.ibizlab.ehr.core.orm.filter.ORMBMGWBZSearchContext;
 public class ORMBMGWBZResource {
 
     @Autowired
-    private IORMBMGWBZService ormbmgwbzService;
+    public IORMBMGWBZService ormbmgwbzService;
 
     @Autowired
     @Lazy
     public ORMBMGWBZMapping ormbmgwbzMapping;
 
-    public ORMBMGWBZDTO permissionDTO=new ORMBMGWBZDTO();
-
-    @PreAuthorize("hasPermission('','Create',{'Sql',this.ormbmgwbzMapping,#ormbmgwbzdto})")
+    @PreAuthorize("hasPermission(this.ormbmgwbzMapping.toDomain(#ormbmgwbzdto),'ehr-ORMBMGWBZ-Create')")
     @ApiOperation(value = "Create", tags = {"ORMBMGWBZ" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormbmgwbzs")
     @Transactional
@@ -58,7 +57,7 @@ public class ORMBMGWBZResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.ormbmgwbzMapping,#ormbmgwbzdtos})")
+    @PreAuthorize("hasPermission(this.ormbmgwbzMapping.toDomain(#ormbmgwbzdtos),'ehr-ORMBMGWBZ-Create')")
     @ApiOperation(value = "createBatch", tags = {"ORMBMGWBZ" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormbmgwbzs/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<ORMBMGWBZDTO> ormbmgwbzdtos) {
@@ -66,14 +65,13 @@ public class ORMBMGWBZResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMBMGWBZ-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"ORMBMGWBZ" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormbmgwbzs/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody ORMBMGWBZDTO ormbmgwbzdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(ormbmgwbzService.checkKey(ormbmgwbzMapping.toDomain(ormbmgwbzdto)));
     }
 
-    @PreAuthorize("hasPermission(#ormbmgwbz_id,'Get',{'Sql',this.ormbmgwbzMapping,this.permissionDTO})")
+    @PostAuthorize("hasPermission(this.ormbmgwbzMapping.toDomain(returnObject.body),'ehr-ORMBMGWBZ-Get')")
     @ApiOperation(value = "Get", tags = {"ORMBMGWBZ" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/ormbmgwbzs/{ormbmgwbz_id}")
     public ResponseEntity<ORMBMGWBZDTO> get(@PathVariable("ormbmgwbz_id") String ormbmgwbz_id) {
@@ -82,14 +80,14 @@ public class ORMBMGWBZResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('','Save',{'Sql',this.ormbmgwbzMapping,#ormbmgwbzdto})")
+    @PreAuthorize("hasPermission(this.ormbmgwbzMapping.toDomain(#ormbmgwbzdto),'ehr-ORMBMGWBZ-Save')")
     @ApiOperation(value = "Save", tags = {"ORMBMGWBZ" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormbmgwbzs/save")
     public ResponseEntity<Boolean> save(@RequestBody ORMBMGWBZDTO ormbmgwbzdto) {
         return ResponseEntity.status(HttpStatus.OK).body(ormbmgwbzService.save(ormbmgwbzMapping.toDomain(ormbmgwbzdto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.ormbmgwbzMapping,#ormbmgwbzdtos})")
+    @PreAuthorize("hasPermission(this.ormbmgwbzMapping.toDomain(#ormbmgwbzdtos),'ehr-ORMBMGWBZ-Save')")
     @ApiOperation(value = "SaveBatch", tags = {"ORMBMGWBZ" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormbmgwbzs/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<ORMBMGWBZDTO> ormbmgwbzdtos) {
@@ -97,7 +95,7 @@ public class ORMBMGWBZResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission(#ormbmgwbz_id,'Update',{'Sql',this.ormbmgwbzMapping,#ormbmgwbzdto})")
+    @PreAuthorize("hasPermission(this.ormbmgwbzService.get(#ormbmgwbz_id),'ehr-ORMBMGWBZ-Update')")
     @ApiOperation(value = "Update", tags = {"ORMBMGWBZ" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/ormbmgwbzs/{ormbmgwbz_id}")
     @Transactional
@@ -109,7 +107,7 @@ public class ORMBMGWBZResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.ormbmgwbzMapping,#ormbmgwbzdtos})")
+    @PreAuthorize("hasPermission(this.ormbmgwbzService.getOrmbmgwbzByEntities(this.ormbmgwbzMapping.toDomain(#ormbmgwbzdtos)),'ehr-ORMBMGWBZ-Update')")
     @ApiOperation(value = "UpdateBatch", tags = {"ORMBMGWBZ" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/ormbmgwbzs/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<ORMBMGWBZDTO> ormbmgwbzdtos) {
@@ -117,14 +115,13 @@ public class ORMBMGWBZResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMBMGWBZ-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"ORMBMGWBZ" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/ormbmgwbzs/getdraft")
     public ResponseEntity<ORMBMGWBZDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(ormbmgwbzMapping.toDto(ormbmgwbzService.getDraft(new ORMBMGWBZ())));
     }
 
-    @PreAuthorize("hasPermission(#ormbmgwbz_id,'Remove',{'Sql',this.ormbmgwbzMapping,this.permissionDTO})")
+    @PreAuthorize("hasPermission(this.ormbmgwbzService.get(#ormbmgwbz_id),'ehr-ORMBMGWBZ-Remove')")
     @ApiOperation(value = "Remove", tags = {"ORMBMGWBZ" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/ormbmgwbzs/{ormbmgwbz_id}")
     @Transactional
@@ -132,7 +129,7 @@ public class ORMBMGWBZResource {
          return ResponseEntity.status(HttpStatus.OK).body(ormbmgwbzService.remove(ormbmgwbz_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.ormbmgwbzMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission(this.ormbmgwbzService.getOrmbmgwbzByIds(#ids),'ehr-ORMBMGWBZ-Remove')")
     @ApiOperation(value = "RemoveBatch", tags = {"ORMBMGWBZ" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/ormbmgwbzs/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -161,7 +158,7 @@ public class ORMBMGWBZResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(ormbmgwbzMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-    @PreAuthorize("hasPermission('','Create',{'Sql',this.ormbmgwbzMapping,#ormbmgwbzdto})")
+    @PreAuthorize("hasPermission(this.ormbmgwbzMapping.toDomain(#ormbmgwbzdto),'ehr-ORMBMGWBZ-Create')")
     @ApiOperation(value = "CreateByORMORGSECTOR", tags = {"ORMBMGWBZ" },  notes = "CreateByORMORGSECTOR")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormorgsectors/{ormorgsector_id}/ormbmgwbzs")
     @Transactional
@@ -173,7 +170,7 @@ public class ORMBMGWBZResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.ormbmgwbzMapping,#ormbmgwbzdtos})")
+    @PreAuthorize("hasPermission(this.ormbmgwbzMapping.toDomain(#ormbmgwbzdtos),'ehr-ORMBMGWBZ-Create')")
     @ApiOperation(value = "createBatchByORMORGSECTOR", tags = {"ORMBMGWBZ" },  notes = "createBatchByORMORGSECTOR")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormorgsectors/{ormorgsector_id}/ormbmgwbzs/batch")
     public ResponseEntity<Boolean> createBatchByORMORGSECTOR(@PathVariable("ormorgsector_id") String ormorgsector_id, @RequestBody List<ORMBMGWBZDTO> ormbmgwbzdtos) {
@@ -185,14 +182,13 @@ public class ORMBMGWBZResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMBMGWBZ-CheckKey-all')")
     @ApiOperation(value = "CheckKeyByORMORGSECTOR", tags = {"ORMBMGWBZ" },  notes = "CheckKeyByORMORGSECTOR")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormorgsectors/{ormorgsector_id}/ormbmgwbzs/checkkey")
     public ResponseEntity<Boolean> checkKeyByORMORGSECTOR(@PathVariable("ormorgsector_id") String ormorgsector_id, @RequestBody ORMBMGWBZDTO ormbmgwbzdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(ormbmgwbzService.checkKey(ormbmgwbzMapping.toDomain(ormbmgwbzdto)));
     }
 
-    @PreAuthorize("hasPermission(#ormbmgwbz_id,'Get',{'Sql',this.ormbmgwbzMapping,this.permissionDTO})")
+    @PostAuthorize("hasPermission(this.ormbmgwbzMapping.toDomain(returnObject.body),'ehr-ORMBMGWBZ-Get')")
     @ApiOperation(value = "GetByORMORGSECTOR", tags = {"ORMBMGWBZ" },  notes = "GetByORMORGSECTOR")
 	@RequestMapping(method = RequestMethod.GET, value = "/ormorgsectors/{ormorgsector_id}/ormbmgwbzs/{ormbmgwbz_id}")
     public ResponseEntity<ORMBMGWBZDTO> getByORMORGSECTOR(@PathVariable("ormorgsector_id") String ormorgsector_id, @PathVariable("ormbmgwbz_id") String ormbmgwbz_id) {
@@ -201,7 +197,7 @@ public class ORMBMGWBZResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('','Save',{'Sql',this.ormbmgwbzMapping,#ormbmgwbzdto})")
+    @PreAuthorize("hasPermission(this.ormbmgwbzMapping.toDomain(#ormbmgwbzdto),'ehr-ORMBMGWBZ-Save')")
     @ApiOperation(value = "SaveByORMORGSECTOR", tags = {"ORMBMGWBZ" },  notes = "SaveByORMORGSECTOR")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormorgsectors/{ormorgsector_id}/ormbmgwbzs/save")
     public ResponseEntity<Boolean> saveByORMORGSECTOR(@PathVariable("ormorgsector_id") String ormorgsector_id, @RequestBody ORMBMGWBZDTO ormbmgwbzdto) {
@@ -210,7 +206,7 @@ public class ORMBMGWBZResource {
         return ResponseEntity.status(HttpStatus.OK).body(ormbmgwbzService.save(domain));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.ormbmgwbzMapping,#ormbmgwbzdtos})")
+    @PreAuthorize("hasPermission(this.ormbmgwbzMapping.toDomain(#ormbmgwbzdtos),'ehr-ORMBMGWBZ-Save')")
     @ApiOperation(value = "SaveBatchByORMORGSECTOR", tags = {"ORMBMGWBZ" },  notes = "SaveBatchByORMORGSECTOR")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormorgsectors/{ormorgsector_id}/ormbmgwbzs/savebatch")
     public ResponseEntity<Boolean> saveBatchByORMORGSECTOR(@PathVariable("ormorgsector_id") String ormorgsector_id, @RequestBody List<ORMBMGWBZDTO> ormbmgwbzdtos) {
@@ -222,7 +218,7 @@ public class ORMBMGWBZResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission(#ormbmgwbz_id,'Update',{'Sql',this.ormbmgwbzMapping,#ormbmgwbzdto})")
+    @PreAuthorize("hasPermission(this.ormbmgwbzService.get(#ormbmgwbz_id),'ehr-ORMBMGWBZ-Update')")
     @ApiOperation(value = "UpdateByORMORGSECTOR", tags = {"ORMBMGWBZ" },  notes = "UpdateByORMORGSECTOR")
 	@RequestMapping(method = RequestMethod.PUT, value = "/ormorgsectors/{ormorgsector_id}/ormbmgwbzs/{ormbmgwbz_id}")
     @Transactional
@@ -235,7 +231,7 @@ public class ORMBMGWBZResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.ormbmgwbzMapping,#ormbmgwbzdtos})")
+    @PreAuthorize("hasPermission(this.ormbmgwbzService.getOrmbmgwbzByEntities(this.ormbmgwbzMapping.toDomain(#ormbmgwbzdtos)),'ehr-ORMBMGWBZ-Update')")
     @ApiOperation(value = "UpdateBatchByORMORGSECTOR", tags = {"ORMBMGWBZ" },  notes = "UpdateBatchByORMORGSECTOR")
 	@RequestMapping(method = RequestMethod.PUT, value = "/ormorgsectors/{ormorgsector_id}/ormbmgwbzs/batch")
     public ResponseEntity<Boolean> updateBatchByORMORGSECTOR(@PathVariable("ormorgsector_id") String ormorgsector_id, @RequestBody List<ORMBMGWBZDTO> ormbmgwbzdtos) {
@@ -247,7 +243,6 @@ public class ORMBMGWBZResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMBMGWBZ-GetDraft-all')")
     @ApiOperation(value = "GetDraftByORMORGSECTOR", tags = {"ORMBMGWBZ" },  notes = "GetDraftByORMORGSECTOR")
     @RequestMapping(method = RequestMethod.GET, value = "/ormorgsectors/{ormorgsector_id}/ormbmgwbzs/getdraft")
     public ResponseEntity<ORMBMGWBZDTO> getDraftByORMORGSECTOR(@PathVariable("ormorgsector_id") String ormorgsector_id) {
@@ -256,7 +251,7 @@ public class ORMBMGWBZResource {
         return ResponseEntity.status(HttpStatus.OK).body(ormbmgwbzMapping.toDto(ormbmgwbzService.getDraft(domain)));
     }
 
-    @PreAuthorize("hasPermission(#ormbmgwbz_id,'Remove',{'Sql',this.ormbmgwbzMapping,this.permissionDTO})")
+    @PreAuthorize("hasPermission(this.ormbmgwbzService.get(#ormbmgwbz_id),'ehr-ORMBMGWBZ-Remove')")
     @ApiOperation(value = "RemoveByORMORGSECTOR", tags = {"ORMBMGWBZ" },  notes = "RemoveByORMORGSECTOR")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/ormorgsectors/{ormorgsector_id}/ormbmgwbzs/{ormbmgwbz_id}")
     @Transactional
@@ -264,7 +259,7 @@ public class ORMBMGWBZResource {
 		return ResponseEntity.status(HttpStatus.OK).body(ormbmgwbzService.remove(ormbmgwbz_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.ormbmgwbzMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission(this.ormbmgwbzService.getOrmbmgwbzByIds(#ids),'ehr-ORMBMGWBZ-Remove')")
     @ApiOperation(value = "RemoveBatchByORMORGSECTOR", tags = {"ORMBMGWBZ" },  notes = "RemoveBatchByORMORGSECTOR")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/ormorgsectors/{ormorgsector_id}/ormbmgwbzs/batch")
     public ResponseEntity<Boolean> removeBatchByORMORGSECTOR(@RequestBody List<String> ids) {
@@ -295,7 +290,7 @@ public class ORMBMGWBZResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(ormbmgwbzMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-    @PreAuthorize("hasPermission('','Create',{'Sql',this.ormbmgwbzMapping,#ormbmgwbzdto})")
+    @PreAuthorize("hasPermission(this.ormbmgwbzMapping.toDomain(#ormbmgwbzdto),'ehr-ORMBMGWBZ-Create')")
     @ApiOperation(value = "CreateByORMPOST", tags = {"ORMBMGWBZ" },  notes = "CreateByORMPOST")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormposts/{ormpost_id}/ormbmgwbzs")
     @Transactional
@@ -307,7 +302,7 @@ public class ORMBMGWBZResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.ormbmgwbzMapping,#ormbmgwbzdtos})")
+    @PreAuthorize("hasPermission(this.ormbmgwbzMapping.toDomain(#ormbmgwbzdtos),'ehr-ORMBMGWBZ-Create')")
     @ApiOperation(value = "createBatchByORMPOST", tags = {"ORMBMGWBZ" },  notes = "createBatchByORMPOST")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormposts/{ormpost_id}/ormbmgwbzs/batch")
     public ResponseEntity<Boolean> createBatchByORMPOST(@PathVariable("ormpost_id") String ormpost_id, @RequestBody List<ORMBMGWBZDTO> ormbmgwbzdtos) {
@@ -319,14 +314,13 @@ public class ORMBMGWBZResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMBMGWBZ-CheckKey-all')")
     @ApiOperation(value = "CheckKeyByORMPOST", tags = {"ORMBMGWBZ" },  notes = "CheckKeyByORMPOST")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormposts/{ormpost_id}/ormbmgwbzs/checkkey")
     public ResponseEntity<Boolean> checkKeyByORMPOST(@PathVariable("ormpost_id") String ormpost_id, @RequestBody ORMBMGWBZDTO ormbmgwbzdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(ormbmgwbzService.checkKey(ormbmgwbzMapping.toDomain(ormbmgwbzdto)));
     }
 
-    @PreAuthorize("hasPermission(#ormbmgwbz_id,'Get',{'Sql',this.ormbmgwbzMapping,this.permissionDTO})")
+    @PostAuthorize("hasPermission(this.ormbmgwbzMapping.toDomain(returnObject.body),'ehr-ORMBMGWBZ-Get')")
     @ApiOperation(value = "GetByORMPOST", tags = {"ORMBMGWBZ" },  notes = "GetByORMPOST")
 	@RequestMapping(method = RequestMethod.GET, value = "/ormposts/{ormpost_id}/ormbmgwbzs/{ormbmgwbz_id}")
     public ResponseEntity<ORMBMGWBZDTO> getByORMPOST(@PathVariable("ormpost_id") String ormpost_id, @PathVariable("ormbmgwbz_id") String ormbmgwbz_id) {
@@ -335,7 +329,7 @@ public class ORMBMGWBZResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('','Save',{'Sql',this.ormbmgwbzMapping,#ormbmgwbzdto})")
+    @PreAuthorize("hasPermission(this.ormbmgwbzMapping.toDomain(#ormbmgwbzdto),'ehr-ORMBMGWBZ-Save')")
     @ApiOperation(value = "SaveByORMPOST", tags = {"ORMBMGWBZ" },  notes = "SaveByORMPOST")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormposts/{ormpost_id}/ormbmgwbzs/save")
     public ResponseEntity<Boolean> saveByORMPOST(@PathVariable("ormpost_id") String ormpost_id, @RequestBody ORMBMGWBZDTO ormbmgwbzdto) {
@@ -344,7 +338,7 @@ public class ORMBMGWBZResource {
         return ResponseEntity.status(HttpStatus.OK).body(ormbmgwbzService.save(domain));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.ormbmgwbzMapping,#ormbmgwbzdtos})")
+    @PreAuthorize("hasPermission(this.ormbmgwbzMapping.toDomain(#ormbmgwbzdtos),'ehr-ORMBMGWBZ-Save')")
     @ApiOperation(value = "SaveBatchByORMPOST", tags = {"ORMBMGWBZ" },  notes = "SaveBatchByORMPOST")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormposts/{ormpost_id}/ormbmgwbzs/savebatch")
     public ResponseEntity<Boolean> saveBatchByORMPOST(@PathVariable("ormpost_id") String ormpost_id, @RequestBody List<ORMBMGWBZDTO> ormbmgwbzdtos) {
@@ -356,7 +350,7 @@ public class ORMBMGWBZResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission(#ormbmgwbz_id,'Update',{'Sql',this.ormbmgwbzMapping,#ormbmgwbzdto})")
+    @PreAuthorize("hasPermission(this.ormbmgwbzService.get(#ormbmgwbz_id),'ehr-ORMBMGWBZ-Update')")
     @ApiOperation(value = "UpdateByORMPOST", tags = {"ORMBMGWBZ" },  notes = "UpdateByORMPOST")
 	@RequestMapping(method = RequestMethod.PUT, value = "/ormposts/{ormpost_id}/ormbmgwbzs/{ormbmgwbz_id}")
     @Transactional
@@ -369,7 +363,7 @@ public class ORMBMGWBZResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.ormbmgwbzMapping,#ormbmgwbzdtos})")
+    @PreAuthorize("hasPermission(this.ormbmgwbzService.getOrmbmgwbzByEntities(this.ormbmgwbzMapping.toDomain(#ormbmgwbzdtos)),'ehr-ORMBMGWBZ-Update')")
     @ApiOperation(value = "UpdateBatchByORMPOST", tags = {"ORMBMGWBZ" },  notes = "UpdateBatchByORMPOST")
 	@RequestMapping(method = RequestMethod.PUT, value = "/ormposts/{ormpost_id}/ormbmgwbzs/batch")
     public ResponseEntity<Boolean> updateBatchByORMPOST(@PathVariable("ormpost_id") String ormpost_id, @RequestBody List<ORMBMGWBZDTO> ormbmgwbzdtos) {
@@ -381,7 +375,6 @@ public class ORMBMGWBZResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMBMGWBZ-GetDraft-all')")
     @ApiOperation(value = "GetDraftByORMPOST", tags = {"ORMBMGWBZ" },  notes = "GetDraftByORMPOST")
     @RequestMapping(method = RequestMethod.GET, value = "/ormposts/{ormpost_id}/ormbmgwbzs/getdraft")
     public ResponseEntity<ORMBMGWBZDTO> getDraftByORMPOST(@PathVariable("ormpost_id") String ormpost_id) {
@@ -390,7 +383,7 @@ public class ORMBMGWBZResource {
         return ResponseEntity.status(HttpStatus.OK).body(ormbmgwbzMapping.toDto(ormbmgwbzService.getDraft(domain)));
     }
 
-    @PreAuthorize("hasPermission(#ormbmgwbz_id,'Remove',{'Sql',this.ormbmgwbzMapping,this.permissionDTO})")
+    @PreAuthorize("hasPermission(this.ormbmgwbzService.get(#ormbmgwbz_id),'ehr-ORMBMGWBZ-Remove')")
     @ApiOperation(value = "RemoveByORMPOST", tags = {"ORMBMGWBZ" },  notes = "RemoveByORMPOST")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/ormposts/{ormpost_id}/ormbmgwbzs/{ormbmgwbz_id}")
     @Transactional
@@ -398,7 +391,7 @@ public class ORMBMGWBZResource {
 		return ResponseEntity.status(HttpStatus.OK).body(ormbmgwbzService.remove(ormbmgwbz_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.ormbmgwbzMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission(this.ormbmgwbzService.getOrmbmgwbzByIds(#ids),'ehr-ORMBMGWBZ-Remove')")
     @ApiOperation(value = "RemoveBatchByORMPOST", tags = {"ORMBMGWBZ" },  notes = "RemoveBatchByORMPOST")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/ormposts/{ormpost_id}/ormbmgwbzs/batch")
     public ResponseEntity<Boolean> removeBatchByORMPOST(@RequestBody List<String> ids) {
@@ -429,7 +422,7 @@ public class ORMBMGWBZResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(ormbmgwbzMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-    @PreAuthorize("hasPermission('','Create',{'Sql',this.ormbmgwbzMapping,#ormbmgwbzdto})")
+    @PreAuthorize("hasPermission(this.ormbmgwbzMapping.toDomain(#ormbmgwbzdto),'ehr-ORMBMGWBZ-Create')")
     @ApiOperation(value = "CreateByORMORGORMORGSECTOR", tags = {"ORMBMGWBZ" },  notes = "CreateByORMORGORMORGSECTOR")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormorgs/{ormorg_id}/ormorgsectors/{ormorgsector_id}/ormbmgwbzs")
     @Transactional
@@ -441,7 +434,7 @@ public class ORMBMGWBZResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.ormbmgwbzMapping,#ormbmgwbzdtos})")
+    @PreAuthorize("hasPermission(this.ormbmgwbzMapping.toDomain(#ormbmgwbzdtos),'ehr-ORMBMGWBZ-Create')")
     @ApiOperation(value = "createBatchByORMORGORMORGSECTOR", tags = {"ORMBMGWBZ" },  notes = "createBatchByORMORGORMORGSECTOR")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormorgs/{ormorg_id}/ormorgsectors/{ormorgsector_id}/ormbmgwbzs/batch")
     public ResponseEntity<Boolean> createBatchByORMORGORMORGSECTOR(@PathVariable("ormorg_id") String ormorg_id, @PathVariable("ormorgsector_id") String ormorgsector_id, @RequestBody List<ORMBMGWBZDTO> ormbmgwbzdtos) {
@@ -453,14 +446,13 @@ public class ORMBMGWBZResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMBMGWBZ-CheckKey-all')")
     @ApiOperation(value = "CheckKeyByORMORGORMORGSECTOR", tags = {"ORMBMGWBZ" },  notes = "CheckKeyByORMORGORMORGSECTOR")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormorgs/{ormorg_id}/ormorgsectors/{ormorgsector_id}/ormbmgwbzs/checkkey")
     public ResponseEntity<Boolean> checkKeyByORMORGORMORGSECTOR(@PathVariable("ormorg_id") String ormorg_id, @PathVariable("ormorgsector_id") String ormorgsector_id, @RequestBody ORMBMGWBZDTO ormbmgwbzdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(ormbmgwbzService.checkKey(ormbmgwbzMapping.toDomain(ormbmgwbzdto)));
     }
 
-    @PreAuthorize("hasPermission(#ormbmgwbz_id,'Get',{'Sql',this.ormbmgwbzMapping,this.permissionDTO})")
+    @PostAuthorize("hasPermission(this.ormbmgwbzMapping.toDomain(returnObject.body),'ehr-ORMBMGWBZ-Get')")
     @ApiOperation(value = "GetByORMORGORMORGSECTOR", tags = {"ORMBMGWBZ" },  notes = "GetByORMORGORMORGSECTOR")
 	@RequestMapping(method = RequestMethod.GET, value = "/ormorgs/{ormorg_id}/ormorgsectors/{ormorgsector_id}/ormbmgwbzs/{ormbmgwbz_id}")
     public ResponseEntity<ORMBMGWBZDTO> getByORMORGORMORGSECTOR(@PathVariable("ormorg_id") String ormorg_id, @PathVariable("ormorgsector_id") String ormorgsector_id, @PathVariable("ormbmgwbz_id") String ormbmgwbz_id) {
@@ -469,7 +461,7 @@ public class ORMBMGWBZResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('','Save',{'Sql',this.ormbmgwbzMapping,#ormbmgwbzdto})")
+    @PreAuthorize("hasPermission(this.ormbmgwbzMapping.toDomain(#ormbmgwbzdto),'ehr-ORMBMGWBZ-Save')")
     @ApiOperation(value = "SaveByORMORGORMORGSECTOR", tags = {"ORMBMGWBZ" },  notes = "SaveByORMORGORMORGSECTOR")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormorgs/{ormorg_id}/ormorgsectors/{ormorgsector_id}/ormbmgwbzs/save")
     public ResponseEntity<Boolean> saveByORMORGORMORGSECTOR(@PathVariable("ormorg_id") String ormorg_id, @PathVariable("ormorgsector_id") String ormorgsector_id, @RequestBody ORMBMGWBZDTO ormbmgwbzdto) {
@@ -478,7 +470,7 @@ public class ORMBMGWBZResource {
         return ResponseEntity.status(HttpStatus.OK).body(ormbmgwbzService.save(domain));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.ormbmgwbzMapping,#ormbmgwbzdtos})")
+    @PreAuthorize("hasPermission(this.ormbmgwbzMapping.toDomain(#ormbmgwbzdtos),'ehr-ORMBMGWBZ-Save')")
     @ApiOperation(value = "SaveBatchByORMORGORMORGSECTOR", tags = {"ORMBMGWBZ" },  notes = "SaveBatchByORMORGORMORGSECTOR")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormorgs/{ormorg_id}/ormorgsectors/{ormorgsector_id}/ormbmgwbzs/savebatch")
     public ResponseEntity<Boolean> saveBatchByORMORGORMORGSECTOR(@PathVariable("ormorg_id") String ormorg_id, @PathVariable("ormorgsector_id") String ormorgsector_id, @RequestBody List<ORMBMGWBZDTO> ormbmgwbzdtos) {
@@ -490,7 +482,7 @@ public class ORMBMGWBZResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission(#ormbmgwbz_id,'Update',{'Sql',this.ormbmgwbzMapping,#ormbmgwbzdto})")
+    @PreAuthorize("hasPermission(this.ormbmgwbzService.get(#ormbmgwbz_id),'ehr-ORMBMGWBZ-Update')")
     @ApiOperation(value = "UpdateByORMORGORMORGSECTOR", tags = {"ORMBMGWBZ" },  notes = "UpdateByORMORGORMORGSECTOR")
 	@RequestMapping(method = RequestMethod.PUT, value = "/ormorgs/{ormorg_id}/ormorgsectors/{ormorgsector_id}/ormbmgwbzs/{ormbmgwbz_id}")
     @Transactional
@@ -503,7 +495,7 @@ public class ORMBMGWBZResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.ormbmgwbzMapping,#ormbmgwbzdtos})")
+    @PreAuthorize("hasPermission(this.ormbmgwbzService.getOrmbmgwbzByEntities(this.ormbmgwbzMapping.toDomain(#ormbmgwbzdtos)),'ehr-ORMBMGWBZ-Update')")
     @ApiOperation(value = "UpdateBatchByORMORGORMORGSECTOR", tags = {"ORMBMGWBZ" },  notes = "UpdateBatchByORMORGORMORGSECTOR")
 	@RequestMapping(method = RequestMethod.PUT, value = "/ormorgs/{ormorg_id}/ormorgsectors/{ormorgsector_id}/ormbmgwbzs/batch")
     public ResponseEntity<Boolean> updateBatchByORMORGORMORGSECTOR(@PathVariable("ormorg_id") String ormorg_id, @PathVariable("ormorgsector_id") String ormorgsector_id, @RequestBody List<ORMBMGWBZDTO> ormbmgwbzdtos) {
@@ -515,7 +507,6 @@ public class ORMBMGWBZResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMBMGWBZ-GetDraft-all')")
     @ApiOperation(value = "GetDraftByORMORGORMORGSECTOR", tags = {"ORMBMGWBZ" },  notes = "GetDraftByORMORGORMORGSECTOR")
     @RequestMapping(method = RequestMethod.GET, value = "/ormorgs/{ormorg_id}/ormorgsectors/{ormorgsector_id}/ormbmgwbzs/getdraft")
     public ResponseEntity<ORMBMGWBZDTO> getDraftByORMORGORMORGSECTOR(@PathVariable("ormorg_id") String ormorg_id, @PathVariable("ormorgsector_id") String ormorgsector_id) {
@@ -524,7 +515,7 @@ public class ORMBMGWBZResource {
         return ResponseEntity.status(HttpStatus.OK).body(ormbmgwbzMapping.toDto(ormbmgwbzService.getDraft(domain)));
     }
 
-    @PreAuthorize("hasPermission(#ormbmgwbz_id,'Remove',{'Sql',this.ormbmgwbzMapping,this.permissionDTO})")
+    @PreAuthorize("hasPermission(this.ormbmgwbzService.get(#ormbmgwbz_id),'ehr-ORMBMGWBZ-Remove')")
     @ApiOperation(value = "RemoveByORMORGORMORGSECTOR", tags = {"ORMBMGWBZ" },  notes = "RemoveByORMORGORMORGSECTOR")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/ormorgs/{ormorg_id}/ormorgsectors/{ormorgsector_id}/ormbmgwbzs/{ormbmgwbz_id}")
     @Transactional
@@ -532,7 +523,7 @@ public class ORMBMGWBZResource {
 		return ResponseEntity.status(HttpStatus.OK).body(ormbmgwbzService.remove(ormbmgwbz_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.ormbmgwbzMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission(this.ormbmgwbzService.getOrmbmgwbzByIds(#ids),'ehr-ORMBMGWBZ-Remove')")
     @ApiOperation(value = "RemoveBatchByORMORGORMORGSECTOR", tags = {"ORMBMGWBZ" },  notes = "RemoveBatchByORMORGORMORGSECTOR")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/ormorgs/{ormorg_id}/ormorgsectors/{ormorgsector_id}/ormbmgwbzs/batch")
     public ResponseEntity<Boolean> removeBatchByORMORGORMORGSECTOR(@RequestBody List<String> ids) {
@@ -564,3 +555,4 @@ public class ORMBMGWBZResource {
                 .body(new PageImpl(ormbmgwbzMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 }
+

@@ -322,6 +322,26 @@ public class PCMNoticeServiceImpl extends ServiceImpl<PCMNoticeMapper, PCMNotice
         return true;
     }
 
+    @Override
+    public List<PCMNotice> getPcmnoticeByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<PCMNotice> getPcmnoticeByEntities(List<PCMNotice> entities) {
+        List ids =new ArrayList();
+        for(PCMNotice entity : entities){
+            Serializable id=entity.getPcmnoticeid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

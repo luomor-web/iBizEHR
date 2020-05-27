@@ -56,6 +56,9 @@ public interface IATTENDENCECALENDARService extends IService<ATTENDENCECALENDAR>
      */
     boolean execute(String sql, Map param);
 
+    List<ATTENDENCECALENDAR> getAttendencecalendarByIds(List<String> ids) ;
+    List<ATTENDENCECALENDAR> getAttendencecalendarByEntities(List<ATTENDENCECALENDAR> entities) ;
+
 }
 
 

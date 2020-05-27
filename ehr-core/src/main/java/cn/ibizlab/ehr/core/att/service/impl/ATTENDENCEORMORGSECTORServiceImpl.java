@@ -240,6 +240,26 @@ public class ATTENDENCEORMORGSECTORServiceImpl extends ServiceImpl<ATTENDENCEORM
         return true;
     }
 
+    @Override
+    public List<ATTENDENCEORMORGSECTOR> getAttendenceormorgsectorByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<ATTENDENCEORMORGSECTOR> getAttendenceormorgsectorByEntities(List<ATTENDENCEORMORGSECTOR> entities) {
+        List ids =new ArrayList();
+        for(ATTENDENCEORMORGSECTOR entity : entities){
+            Serializable id=entity.getAttendenceormorgsectorid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

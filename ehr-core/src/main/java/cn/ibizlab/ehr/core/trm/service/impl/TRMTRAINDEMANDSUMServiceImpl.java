@@ -262,6 +262,26 @@ public class TRMTRAINDEMANDSUMServiceImpl extends ServiceImpl<TRMTRAINDEMANDSUMM
         return true;
     }
 
+    @Override
+    public List<TRMTRAINDEMANDSUM> getTrmtraindemandsumByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<TRMTRAINDEMANDSUM> getTrmtraindemandsumByEntities(List<TRMTRAINDEMANDSUM> entities) {
+        List ids =new ArrayList();
+        for(TRMTRAINDEMANDSUM entity : entities){
+            Serializable id=entity.getTrmtraindemandsumid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

@@ -52,6 +52,9 @@ public interface IATTENMEMBWESService extends IService<ATTENMEMBWES>{
      */
     boolean execute(String sql, Map param);
 
+    List<ATTENMEMBWES> getAttenmembwesByIds(List<String> ids) ;
+    List<ATTENMEMBWES> getAttenmembwesByEntities(List<ATTENMEMBWES> entities) ;
+
 }
 
 

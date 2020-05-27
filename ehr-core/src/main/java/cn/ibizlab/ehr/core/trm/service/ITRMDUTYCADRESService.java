@@ -70,6 +70,9 @@ public interface ITRMDUTYCADRESService extends IService<TRMDUTYCADRES>{
      */
     boolean execute(String sql, Map param);
 
+    List<TRMDUTYCADRES> getTrmdutycadresByIds(List<String> ids) ;
+    List<TRMDUTYCADRES> getTrmdutycadresByEntities(List<TRMDUTYCADRES> entities) ;
+
 }
 
 

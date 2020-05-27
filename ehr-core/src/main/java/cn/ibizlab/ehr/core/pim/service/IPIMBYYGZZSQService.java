@@ -52,6 +52,9 @@ public interface IPIMBYYGZZSQService extends IService<PIMBYYGZZSQ>{
      */
     boolean execute(String sql, Map param);
 
+    List<PIMBYYGZZSQ> getPimbyygzzsqByIds(List<String> ids) ;
+    List<PIMBYYGZZSQ> getPimbyygzzsqByEntities(List<PIMBYYGZZSQ> entities) ;
+
 }
 
 

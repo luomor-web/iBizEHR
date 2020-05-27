@@ -22,6 +22,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.access.prepost.PostAuthorize;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -39,15 +40,13 @@ import cn.ibizlab.ehr.core.pim.filter.PIMDISTIRBUTIONSearchContext;
 public class PIMDISTIRBUTIONResource {
 
     @Autowired
-    private IPIMDISTIRBUTIONService pimdistirbutionService;
+    public IPIMDISTIRBUTIONService pimdistirbutionService;
 
     @Autowired
     @Lazy
     public PIMDISTIRBUTIONMapping pimdistirbutionMapping;
 
-    public PIMDISTIRBUTIONDTO permissionDTO=new PIMDISTIRBUTIONDTO();
-
-    @PreAuthorize("hasPermission(#pimdistirbution_id,'Remove',{'Sql',this.pimdistirbutionMapping,this.permissionDTO})")
+    @PreAuthorize("hasPermission(this.pimdistirbutionService.get(#pimdistirbution_id),'ehr-PIMDISTIRBUTION-Remove')")
     @ApiOperation(value = "Remove", tags = {"PIMDISTIRBUTION" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimdistirbutions/{pimdistirbution_id}")
     @Transactional
@@ -55,7 +54,7 @@ public class PIMDISTIRBUTIONResource {
          return ResponseEntity.status(HttpStatus.OK).body(pimdistirbutionService.remove(pimdistirbution_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.pimdistirbutionMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission(this.pimdistirbutionService.getPimdistirbutionByIds(#ids),'ehr-PIMDISTIRBUTION-Remove')")
     @ApiOperation(value = "RemoveBatch", tags = {"PIMDISTIRBUTION" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimdistirbutions/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -63,14 +62,13 @@ public class PIMDISTIRBUTIONResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMDISTIRBUTION-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"PIMDISTIRBUTION" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimdistirbutions/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PIMDISTIRBUTIONDTO pimdistirbutiondto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pimdistirbutionService.checkKey(pimdistirbutionMapping.toDomain(pimdistirbutiondto)));
     }
 
-    @PreAuthorize("hasPermission(#pimdistirbution_id,'Update',{'Sql',this.pimdistirbutionMapping,#pimdistirbutiondto})")
+    @PreAuthorize("hasPermission(this.pimdistirbutionService.get(#pimdistirbution_id),'ehr-PIMDISTIRBUTION-Update')")
     @ApiOperation(value = "Update", tags = {"PIMDISTIRBUTION" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimdistirbutions/{pimdistirbution_id}")
     @Transactional
@@ -82,7 +80,7 @@ public class PIMDISTIRBUTIONResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.pimdistirbutionMapping,#pimdistirbutiondtos})")
+    @PreAuthorize("hasPermission(this.pimdistirbutionService.getPimdistirbutionByEntities(this.pimdistirbutionMapping.toDomain(#pimdistirbutiondtos)),'ehr-PIMDISTIRBUTION-Update')")
     @ApiOperation(value = "UpdateBatch", tags = {"PIMDISTIRBUTION" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimdistirbutions/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PIMDISTIRBUTIONDTO> pimdistirbutiondtos) {
@@ -90,7 +88,6 @@ public class PIMDISTIRBUTIONResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMDISTIRBUTION-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"PIMDISTIRBUTION" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimdistirbutions/getdraft")
     public ResponseEntity<PIMDISTIRBUTIONDTO> getDraft() {
@@ -109,14 +106,14 @@ public class PIMDISTIRBUTIONResource {
         return ResponseEntity.status(HttpStatus.OK).body(pimdistirbutiondto);
     }
 
-    @PreAuthorize("hasPermission('','Save',{'Sql',this.pimdistirbutionMapping,#pimdistirbutiondto})")
+    @PreAuthorize("hasPermission(this.pimdistirbutionMapping.toDomain(#pimdistirbutiondto),'ehr-PIMDISTIRBUTION-Save')")
     @ApiOperation(value = "Save", tags = {"PIMDISTIRBUTION" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimdistirbutions/save")
     public ResponseEntity<Boolean> save(@RequestBody PIMDISTIRBUTIONDTO pimdistirbutiondto) {
         return ResponseEntity.status(HttpStatus.OK).body(pimdistirbutionService.save(pimdistirbutionMapping.toDomain(pimdistirbutiondto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.pimdistirbutionMapping,#pimdistirbutiondtos})")
+    @PreAuthorize("hasPermission(this.pimdistirbutionMapping.toDomain(#pimdistirbutiondtos),'ehr-PIMDISTIRBUTION-Save')")
     @ApiOperation(value = "SaveBatch", tags = {"PIMDISTIRBUTION" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimdistirbutions/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PIMDISTIRBUTIONDTO> pimdistirbutiondtos) {
@@ -124,7 +121,7 @@ public class PIMDISTIRBUTIONResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('','Create',{'Sql',this.pimdistirbutionMapping,#pimdistirbutiondto})")
+    @PreAuthorize("hasPermission(this.pimdistirbutionMapping.toDomain(#pimdistirbutiondto),'ehr-PIMDISTIRBUTION-Create')")
     @ApiOperation(value = "Create", tags = {"PIMDISTIRBUTION" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimdistirbutions")
     @Transactional
@@ -135,7 +132,7 @@ public class PIMDISTIRBUTIONResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.pimdistirbutionMapping,#pimdistirbutiondtos})")
+    @PreAuthorize("hasPermission(this.pimdistirbutionMapping.toDomain(#pimdistirbutiondtos),'ehr-PIMDISTIRBUTION-Create')")
     @ApiOperation(value = "createBatch", tags = {"PIMDISTIRBUTION" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimdistirbutions/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PIMDISTIRBUTIONDTO> pimdistirbutiondtos) {
@@ -143,7 +140,7 @@ public class PIMDISTIRBUTIONResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission(#pimdistirbution_id,'Get',{'Sql',this.pimdistirbutionMapping,this.permissionDTO})")
+    @PostAuthorize("hasPermission(this.pimdistirbutionMapping.toDomain(returnObject.body),'ehr-PIMDISTIRBUTION-Get')")
     @ApiOperation(value = "Get", tags = {"PIMDISTIRBUTION" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimdistirbutions/{pimdistirbution_id}")
     public ResponseEntity<PIMDISTIRBUTIONDTO> get(@PathVariable("pimdistirbution_id") String pimdistirbution_id) {
@@ -509,7 +506,7 @@ public class PIMDISTIRBUTIONResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimdistirbutionMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-    @PreAuthorize("hasPermission(#pimdistirbution_id,'Remove',{'Sql',this.pimdistirbutionMapping,this.permissionDTO})")
+    @PreAuthorize("hasPermission(this.pimdistirbutionService.get(#pimdistirbution_id),'ehr-PIMDISTIRBUTION-Remove')")
     @ApiOperation(value = "RemoveByPIMPERSON", tags = {"PIMDISTIRBUTION" },  notes = "RemoveByPIMPERSON")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimpeople/{pimperson_id}/pimdistirbutions/{pimdistirbution_id}")
     @Transactional
@@ -517,7 +514,7 @@ public class PIMDISTIRBUTIONResource {
 		return ResponseEntity.status(HttpStatus.OK).body(pimdistirbutionService.remove(pimdistirbution_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.pimdistirbutionMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission(this.pimdistirbutionService.getPimdistirbutionByIds(#ids),'ehr-PIMDISTIRBUTION-Remove')")
     @ApiOperation(value = "RemoveBatchByPIMPERSON", tags = {"PIMDISTIRBUTION" },  notes = "RemoveBatchByPIMPERSON")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimpeople/{pimperson_id}/pimdistirbutions/batch")
     public ResponseEntity<Boolean> removeBatchByPIMPERSON(@RequestBody List<String> ids) {
@@ -525,14 +522,13 @@ public class PIMDISTIRBUTIONResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMDISTIRBUTION-CheckKey-all')")
     @ApiOperation(value = "CheckKeyByPIMPERSON", tags = {"PIMDISTIRBUTION" },  notes = "CheckKeyByPIMPERSON")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimdistirbutions/checkkey")
     public ResponseEntity<Boolean> checkKeyByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMDISTIRBUTIONDTO pimdistirbutiondto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pimdistirbutionService.checkKey(pimdistirbutionMapping.toDomain(pimdistirbutiondto)));
     }
 
-    @PreAuthorize("hasPermission(#pimdistirbution_id,'Update',{'Sql',this.pimdistirbutionMapping,#pimdistirbutiondto})")
+    @PreAuthorize("hasPermission(this.pimdistirbutionService.get(#pimdistirbution_id),'ehr-PIMDISTIRBUTION-Update')")
     @ApiOperation(value = "UpdateByPIMPERSON", tags = {"PIMDISTIRBUTION" },  notes = "UpdateByPIMPERSON")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimpeople/{pimperson_id}/pimdistirbutions/{pimdistirbution_id}")
     @Transactional
@@ -545,7 +541,7 @@ public class PIMDISTIRBUTIONResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.pimdistirbutionMapping,#pimdistirbutiondtos})")
+    @PreAuthorize("hasPermission(this.pimdistirbutionService.getPimdistirbutionByEntities(this.pimdistirbutionMapping.toDomain(#pimdistirbutiondtos)),'ehr-PIMDISTIRBUTION-Update')")
     @ApiOperation(value = "UpdateBatchByPIMPERSON", tags = {"PIMDISTIRBUTION" },  notes = "UpdateBatchByPIMPERSON")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimpeople/{pimperson_id}/pimdistirbutions/batch")
     public ResponseEntity<Boolean> updateBatchByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody List<PIMDISTIRBUTIONDTO> pimdistirbutiondtos) {
@@ -557,7 +553,6 @@ public class PIMDISTIRBUTIONResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMDISTIRBUTION-GetDraft-all')")
     @ApiOperation(value = "GetDraftByPIMPERSON", tags = {"PIMDISTIRBUTION" },  notes = "GetDraftByPIMPERSON")
     @RequestMapping(method = RequestMethod.GET, value = "/pimpeople/{pimperson_id}/pimdistirbutions/getdraft")
     public ResponseEntity<PIMDISTIRBUTIONDTO> getDraftByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id) {
@@ -578,7 +573,7 @@ public class PIMDISTIRBUTIONResource {
         return ResponseEntity.status(HttpStatus.OK).body(pimdistirbutiondto);
     }
 
-    @PreAuthorize("hasPermission('','Save',{'Sql',this.pimdistirbutionMapping,#pimdistirbutiondto})")
+    @PreAuthorize("hasPermission(this.pimdistirbutionMapping.toDomain(#pimdistirbutiondto),'ehr-PIMDISTIRBUTION-Save')")
     @ApiOperation(value = "SaveByPIMPERSON", tags = {"PIMDISTIRBUTION" },  notes = "SaveByPIMPERSON")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimdistirbutions/save")
     public ResponseEntity<Boolean> saveByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMDISTIRBUTIONDTO pimdistirbutiondto) {
@@ -587,7 +582,7 @@ public class PIMDISTIRBUTIONResource {
         return ResponseEntity.status(HttpStatus.OK).body(pimdistirbutionService.save(domain));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.pimdistirbutionMapping,#pimdistirbutiondtos})")
+    @PreAuthorize("hasPermission(this.pimdistirbutionMapping.toDomain(#pimdistirbutiondtos),'ehr-PIMDISTIRBUTION-Save')")
     @ApiOperation(value = "SaveBatchByPIMPERSON", tags = {"PIMDISTIRBUTION" },  notes = "SaveBatchByPIMPERSON")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimdistirbutions/savebatch")
     public ResponseEntity<Boolean> saveBatchByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody List<PIMDISTIRBUTIONDTO> pimdistirbutiondtos) {
@@ -599,7 +594,7 @@ public class PIMDISTIRBUTIONResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('','Create',{'Sql',this.pimdistirbutionMapping,#pimdistirbutiondto})")
+    @PreAuthorize("hasPermission(this.pimdistirbutionMapping.toDomain(#pimdistirbutiondto),'ehr-PIMDISTIRBUTION-Create')")
     @ApiOperation(value = "CreateByPIMPERSON", tags = {"PIMDISTIRBUTION" },  notes = "CreateByPIMPERSON")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimdistirbutions")
     @Transactional
@@ -611,7 +606,7 @@ public class PIMDISTIRBUTIONResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.pimdistirbutionMapping,#pimdistirbutiondtos})")
+    @PreAuthorize("hasPermission(this.pimdistirbutionMapping.toDomain(#pimdistirbutiondtos),'ehr-PIMDISTIRBUTION-Create')")
     @ApiOperation(value = "createBatchByPIMPERSON", tags = {"PIMDISTIRBUTION" },  notes = "createBatchByPIMPERSON")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimdistirbutions/batch")
     public ResponseEntity<Boolean> createBatchByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody List<PIMDISTIRBUTIONDTO> pimdistirbutiondtos) {
@@ -623,7 +618,7 @@ public class PIMDISTIRBUTIONResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission(#pimdistirbution_id,'Get',{'Sql',this.pimdistirbutionMapping,this.permissionDTO})")
+    @PostAuthorize("hasPermission(this.pimdistirbutionMapping.toDomain(returnObject.body),'ehr-PIMDISTIRBUTION-Get')")
     @ApiOperation(value = "GetByPIMPERSON", tags = {"PIMDISTIRBUTION" },  notes = "GetByPIMPERSON")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimpeople/{pimperson_id}/pimdistirbutions/{pimdistirbution_id}")
     public ResponseEntity<PIMDISTIRBUTIONDTO> getByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimdistirbution_id") String pimdistirbution_id) {
@@ -1024,3 +1019,4 @@ public class PIMDISTIRBUTIONResource {
                 .body(new PageImpl(pimdistirbutionMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 }
+

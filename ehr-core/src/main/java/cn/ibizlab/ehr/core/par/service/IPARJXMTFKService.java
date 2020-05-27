@@ -54,6 +54,9 @@ public interface IPARJXMTFKService extends IService<PARJXMTFK>{
      */
     boolean execute(String sql, Map param);
 
+    List<PARJXMTFK> getParjxmtfkByIds(List<String> ids) ;
+    List<PARJXMTFK> getParjxmtfkByEntities(List<PARJXMTFK> entities) ;
+
 }
 
 

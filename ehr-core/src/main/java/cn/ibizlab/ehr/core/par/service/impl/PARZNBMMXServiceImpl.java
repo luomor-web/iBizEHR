@@ -240,6 +240,26 @@ public class PARZNBMMXServiceImpl extends ServiceImpl<PARZNBMMXMapper, PARZNBMMX
         return true;
     }
 
+    @Override
+    public List<PARZNBMMX> getParznbmmxByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<PARZNBMMX> getParznbmmxByEntities(List<PARZNBMMX> entities) {
+        List ids =new ArrayList();
+        for(PARZNBMMX entity : entities){
+            Serializable id=entity.getParznbmmxid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

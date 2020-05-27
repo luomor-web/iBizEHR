@@ -273,6 +273,26 @@ public class PCMXYGZZSQMXServiceImpl extends ServiceImpl<PCMXYGZZSQMXMapper, PCM
         return true;
     }
 
+    @Override
+    public List<PCMXYGZZSQMX> getPcmxygzzsqmxByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<PCMXYGZZSQMX> getPcmxygzzsqmxByEntities(List<PCMXYGZZSQMX> entities) {
+        List ids =new ArrayList();
+        for(PCMXYGZZSQMX entity : entities){
+            Serializable id=entity.getPcmxygzzsqmxid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

@@ -52,6 +52,9 @@ public interface IVACLEACETYPEService extends IService<VACLEACETYPE>{
      */
     boolean execute(String sql, Map param);
 
+    List<VACLEACETYPE> getVacleacetypeByIds(List<String> ids) ;
+    List<VACLEACETYPE> getVacleacetypeByEntities(List<VACLEACETYPE> entities) ;
+
 }
 
 

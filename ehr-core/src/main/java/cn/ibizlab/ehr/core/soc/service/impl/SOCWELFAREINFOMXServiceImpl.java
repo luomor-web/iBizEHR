@@ -242,6 +242,26 @@ public class SOCWELFAREINFOMXServiceImpl extends ServiceImpl<SOCWELFAREINFOMXMap
         return true;
     }
 
+    @Override
+    public List<SOCWELFAREINFOMX> getSocwelfareinfomxByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<SOCWELFAREINFOMX> getSocwelfareinfomxByEntities(List<SOCWELFAREINFOMX> entities) {
+        List ids =new ArrayList();
+        for(SOCWELFAREINFOMX entity : entities){
+            Serializable id=entity.getSocwelfareinfomxid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

@@ -53,6 +53,9 @@ public interface IPCMXKMLService extends IService<PCMXKML>{
      */
     boolean execute(String sql, Map param);
 
+    List<PCMXKML> getPcmxkmlByIds(List<String> ids) ;
+    List<PCMXKML> getPcmxkmlByEntities(List<PCMXKML> entities) ;
+
 }
 
 

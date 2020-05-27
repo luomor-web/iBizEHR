@@ -22,6 +22,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.access.prepost.PostAuthorize;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -39,15 +40,13 @@ import cn.ibizlab.ehr.core.vac.filter.VACLEAVEDETAILSearchContext;
 public class VACLEAVEDETAILResource {
 
     @Autowired
-    private IVACLEAVEDETAILService vacleavedetailService;
+    public IVACLEAVEDETAILService vacleavedetailService;
 
     @Autowired
     @Lazy
     public VACLEAVEDETAILMapping vacleavedetailMapping;
 
-    public VACLEAVEDETAILDTO permissionDTO=new VACLEAVEDETAILDTO();
-
-    @PreAuthorize("hasPermission(#vacleavedetail_id,'Remove',{'Sql',this.vacleavedetailMapping,this.permissionDTO})")
+    @PreAuthorize("hasPermission(this.vacleavedetailService.get(#vacleavedetail_id),'ehr-VACLEAVEDETAIL-Remove')")
     @ApiOperation(value = "Remove", tags = {"VACLEAVEDETAIL" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/vacleavedetails/{vacleavedetail_id}")
     @Transactional
@@ -55,7 +54,7 @@ public class VACLEAVEDETAILResource {
          return ResponseEntity.status(HttpStatus.OK).body(vacleavedetailService.remove(vacleavedetail_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.vacleavedetailMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission(this.vacleavedetailService.getVacleavedetailByIds(#ids),'ehr-VACLEAVEDETAIL-Remove')")
     @ApiOperation(value = "RemoveBatch", tags = {"VACLEAVEDETAIL" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/vacleavedetails/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -75,7 +74,7 @@ public class VACLEAVEDETAILResource {
         return ResponseEntity.status(HttpStatus.OK).body(vacleavedetaildto);
     }
 
-    @PreAuthorize("hasPermission('','Create',{'Sql',this.vacleavedetailMapping,#vacleavedetaildto})")
+    @PreAuthorize("hasPermission(this.vacleavedetailMapping.toDomain(#vacleavedetaildto),'ehr-VACLEAVEDETAIL-Create')")
     @ApiOperation(value = "Create", tags = {"VACLEAVEDETAIL" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacleavedetails")
     @Transactional
@@ -86,7 +85,7 @@ public class VACLEAVEDETAILResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.vacleavedetailMapping,#vacleavedetaildtos})")
+    @PreAuthorize("hasPermission(this.vacleavedetailMapping.toDomain(#vacleavedetaildtos),'ehr-VACLEAVEDETAIL-Create')")
     @ApiOperation(value = "createBatch", tags = {"VACLEAVEDETAIL" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacleavedetails/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<VACLEAVEDETAILDTO> vacleavedetaildtos) {
@@ -94,7 +93,7 @@ public class VACLEAVEDETAILResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission(#vacleavedetail_id,'Update',{'Sql',this.vacleavedetailMapping,#vacleavedetaildto})")
+    @PreAuthorize("hasPermission(this.vacleavedetailService.get(#vacleavedetail_id),'ehr-VACLEAVEDETAIL-Update')")
     @ApiOperation(value = "Update", tags = {"VACLEAVEDETAIL" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/vacleavedetails/{vacleavedetail_id}")
     @Transactional
@@ -106,7 +105,7 @@ public class VACLEAVEDETAILResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.vacleavedetailMapping,#vacleavedetaildtos})")
+    @PreAuthorize("hasPermission(this.vacleavedetailService.getVacleavedetailByEntities(this.vacleavedetailMapping.toDomain(#vacleavedetaildtos)),'ehr-VACLEAVEDETAIL-Update')")
     @ApiOperation(value = "UpdateBatch", tags = {"VACLEAVEDETAIL" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/vacleavedetails/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<VACLEAVEDETAILDTO> vacleavedetaildtos) {
@@ -126,14 +125,14 @@ public class VACLEAVEDETAILResource {
         return ResponseEntity.status(HttpStatus.OK).body(vacleavedetaildto);
     }
 
-    @PreAuthorize("hasPermission('','Save',{'Sql',this.vacleavedetailMapping,#vacleavedetaildto})")
+    @PreAuthorize("hasPermission(this.vacleavedetailMapping.toDomain(#vacleavedetaildto),'ehr-VACLEAVEDETAIL-Save')")
     @ApiOperation(value = "Save", tags = {"VACLEAVEDETAIL" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacleavedetails/save")
     public ResponseEntity<Boolean> save(@RequestBody VACLEAVEDETAILDTO vacleavedetaildto) {
         return ResponseEntity.status(HttpStatus.OK).body(vacleavedetailService.save(vacleavedetailMapping.toDomain(vacleavedetaildto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.vacleavedetailMapping,#vacleavedetaildtos})")
+    @PreAuthorize("hasPermission(this.vacleavedetailMapping.toDomain(#vacleavedetaildtos),'ehr-VACLEAVEDETAIL-Save')")
     @ApiOperation(value = "SaveBatch", tags = {"VACLEAVEDETAIL" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacleavedetails/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<VACLEAVEDETAILDTO> vacleavedetaildtos) {
@@ -153,7 +152,7 @@ public class VACLEAVEDETAILResource {
         return ResponseEntity.status(HttpStatus.OK).body(vacleavedetaildto);
     }
 
-    @PreAuthorize("hasPermission(#vacleavedetail_id,'Get',{'Sql',this.vacleavedetailMapping,this.permissionDTO})")
+    @PostAuthorize("hasPermission(this.vacleavedetailMapping.toDomain(returnObject.body),'ehr-VACLEAVEDETAIL-Get')")
     @ApiOperation(value = "Get", tags = {"VACLEAVEDETAIL" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/vacleavedetails/{vacleavedetail_id}")
     public ResponseEntity<VACLEAVEDETAILDTO> get(@PathVariable("vacleavedetail_id") String vacleavedetail_id) {
@@ -162,14 +161,12 @@ public class VACLEAVEDETAILResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACLEAVEDETAIL-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"VACLEAVEDETAIL" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacleavedetails/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody VACLEAVEDETAILDTO vacleavedetaildto) {
         return  ResponseEntity.status(HttpStatus.OK).body(vacleavedetailService.checkKey(vacleavedetailMapping.toDomain(vacleavedetaildto)));
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACLEAVEDETAIL-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"VACLEAVEDETAIL" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/vacleavedetails/getdraft")
     public ResponseEntity<VACLEAVEDETAILDTO> getDraft() {
@@ -198,3 +195,4 @@ public class VACLEAVEDETAILResource {
                 .body(new PageImpl(vacleavedetailMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 }
+

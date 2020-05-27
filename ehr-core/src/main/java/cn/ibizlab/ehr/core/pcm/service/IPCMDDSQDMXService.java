@@ -80,6 +80,9 @@ public interface IPCMDDSQDMXService extends IService<PCMDDSQDMX>{
      */
     boolean execute(String sql, Map param);
 
+    List<PCMDDSQDMX> getPcmddsqdmxByIds(List<String> ids) ;
+    List<PCMDDSQDMX> getPcmddsqdmxByEntities(List<PCMDDSQDMX> entities) ;
+
 }
 
 

@@ -182,6 +182,26 @@ public class SALSOURCEServiceImpl extends ServiceImpl<SALSOURCEMapper, SALSOURCE
         return true;
     }
 
+    @Override
+    public List<SALSOURCE> getSalsourceByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<SALSOURCE> getSalsourceByEntities(List<SALSOURCE> entities) {
+        List ids =new ArrayList();
+        for(SALSOURCE entity : entities){
+            Serializable id=entity.getSalsourceid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

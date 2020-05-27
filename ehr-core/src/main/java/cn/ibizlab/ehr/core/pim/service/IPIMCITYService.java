@@ -52,6 +52,9 @@ public interface IPIMCITYService extends IService<PIMCITY>{
      */
     boolean execute(String sql, Map param);
 
+    List<PIMCITY> getPimcityByIds(List<String> ids) ;
+    List<PIMCITY> getPimcityByEntities(List<PIMCITY> entities) ;
+
 }
 
 

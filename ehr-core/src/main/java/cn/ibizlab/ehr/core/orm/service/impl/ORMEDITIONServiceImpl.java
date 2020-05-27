@@ -179,6 +179,26 @@ public class ORMEDITIONServiceImpl extends ServiceImpl<ORMEDITIONMapper, ORMEDIT
         return true;
     }
 
+    @Override
+    public List<ORMEDITION> getOrmeditionByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<ORMEDITION> getOrmeditionByEntities(List<ORMEDITION> entities) {
+        List ids =new ArrayList();
+        for(ORMEDITION entity : entities){
+            Serializable id=entity.getOrmeditionid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

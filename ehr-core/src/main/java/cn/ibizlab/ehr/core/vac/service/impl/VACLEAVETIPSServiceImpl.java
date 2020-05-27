@@ -229,6 +229,26 @@ public class VACLEAVETIPSServiceImpl extends ServiceImpl<VACLEAVETIPSMapper, VAC
         return true;
     }
 
+    @Override
+    public List<VACLEAVETIPS> getVacleavetipsByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<VACLEAVETIPS> getVacleavetipsByEntities(List<VACLEAVETIPS> entities) {
+        List ids =new ArrayList();
+        for(VACLEAVETIPS entity : entities){
+            Serializable id=entity.getVacleavetipsid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

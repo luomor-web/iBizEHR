@@ -54,6 +54,9 @@ public interface IPARZNBMNDLHMBService extends IService<PARZNBMNDLHMB>{
      */
     boolean execute(String sql, Map param);
 
+    List<PARZNBMNDLHMB> getParznbmndlhmbByIds(List<String> ids) ;
+    List<PARZNBMNDLHMB> getParznbmndlhmbByEntities(List<PARZNBMNDLHMB> entities) ;
+
 }
 
 

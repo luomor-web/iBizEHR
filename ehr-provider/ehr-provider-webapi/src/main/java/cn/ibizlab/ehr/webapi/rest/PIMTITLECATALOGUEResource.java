@@ -22,6 +22,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.access.prepost.PostAuthorize;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -39,22 +40,20 @@ import cn.ibizlab.ehr.core.pim.filter.PIMTITLECATALOGUESearchContext;
 public class PIMTITLECATALOGUEResource {
 
     @Autowired
-    private IPIMTITLECATALOGUEService pimtitlecatalogueService;
+    public IPIMTITLECATALOGUEService pimtitlecatalogueService;
 
     @Autowired
     @Lazy
     public PIMTITLECATALOGUEMapping pimtitlecatalogueMapping;
 
-    public PIMTITLECATALOGUEDTO permissionDTO=new PIMTITLECATALOGUEDTO();
-
-    @PreAuthorize("hasPermission('','Save',{'Sql',this.pimtitlecatalogueMapping,#pimtitlecataloguedto})")
+    @PreAuthorize("hasPermission(this.pimtitlecatalogueMapping.toDomain(#pimtitlecataloguedto),'ehr-PIMTITLECATALOGUE-Save')")
     @ApiOperation(value = "Save", tags = {"PIMTITLECATALOGUE" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimtitlecatalogues/save")
     public ResponseEntity<Boolean> save(@RequestBody PIMTITLECATALOGUEDTO pimtitlecataloguedto) {
         return ResponseEntity.status(HttpStatus.OK).body(pimtitlecatalogueService.save(pimtitlecatalogueMapping.toDomain(pimtitlecataloguedto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.pimtitlecatalogueMapping,#pimtitlecataloguedtos})")
+    @PreAuthorize("hasPermission(this.pimtitlecatalogueMapping.toDomain(#pimtitlecataloguedtos),'ehr-PIMTITLECATALOGUE-Save')")
     @ApiOperation(value = "SaveBatch", tags = {"PIMTITLECATALOGUE" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimtitlecatalogues/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PIMTITLECATALOGUEDTO> pimtitlecataloguedtos) {
@@ -62,7 +61,7 @@ public class PIMTITLECATALOGUEResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission(#pimtitlecatalogue_id,'Update',{'Sql',this.pimtitlecatalogueMapping,#pimtitlecataloguedto})")
+    @PreAuthorize("hasPermission(this.pimtitlecatalogueService.get(#pimtitlecatalogue_id),'ehr-PIMTITLECATALOGUE-Update')")
     @ApiOperation(value = "Update", tags = {"PIMTITLECATALOGUE" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimtitlecatalogues/{pimtitlecatalogue_id}")
     @Transactional
@@ -74,7 +73,7 @@ public class PIMTITLECATALOGUEResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.pimtitlecatalogueMapping,#pimtitlecataloguedtos})")
+    @PreAuthorize("hasPermission(this.pimtitlecatalogueService.getPimtitlecatalogueByEntities(this.pimtitlecatalogueMapping.toDomain(#pimtitlecataloguedtos)),'ehr-PIMTITLECATALOGUE-Update')")
     @ApiOperation(value = "UpdateBatch", tags = {"PIMTITLECATALOGUE" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimtitlecatalogues/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PIMTITLECATALOGUEDTO> pimtitlecataloguedtos) {
@@ -82,14 +81,13 @@ public class PIMTITLECATALOGUEResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMTITLECATALOGUE-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"PIMTITLECATALOGUE" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimtitlecatalogues/getdraft")
     public ResponseEntity<PIMTITLECATALOGUEDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(pimtitlecatalogueMapping.toDto(pimtitlecatalogueService.getDraft(new PIMTITLECATALOGUE())));
     }
 
-    @PreAuthorize("hasPermission('','Create',{'Sql',this.pimtitlecatalogueMapping,#pimtitlecataloguedto})")
+    @PreAuthorize("hasPermission(this.pimtitlecatalogueMapping.toDomain(#pimtitlecataloguedto),'ehr-PIMTITLECATALOGUE-Create')")
     @ApiOperation(value = "Create", tags = {"PIMTITLECATALOGUE" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimtitlecatalogues")
     @Transactional
@@ -100,7 +98,7 @@ public class PIMTITLECATALOGUEResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.pimtitlecatalogueMapping,#pimtitlecataloguedtos})")
+    @PreAuthorize("hasPermission(this.pimtitlecatalogueMapping.toDomain(#pimtitlecataloguedtos),'ehr-PIMTITLECATALOGUE-Create')")
     @ApiOperation(value = "createBatch", tags = {"PIMTITLECATALOGUE" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimtitlecatalogues/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PIMTITLECATALOGUEDTO> pimtitlecataloguedtos) {
@@ -108,14 +106,13 @@ public class PIMTITLECATALOGUEResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMTITLECATALOGUE-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"PIMTITLECATALOGUE" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimtitlecatalogues/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PIMTITLECATALOGUEDTO pimtitlecataloguedto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pimtitlecatalogueService.checkKey(pimtitlecatalogueMapping.toDomain(pimtitlecataloguedto)));
     }
 
-    @PreAuthorize("hasPermission(#pimtitlecatalogue_id,'Remove',{'Sql',this.pimtitlecatalogueMapping,this.permissionDTO})")
+    @PreAuthorize("hasPermission(this.pimtitlecatalogueService.get(#pimtitlecatalogue_id),'ehr-PIMTITLECATALOGUE-Remove')")
     @ApiOperation(value = "Remove", tags = {"PIMTITLECATALOGUE" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimtitlecatalogues/{pimtitlecatalogue_id}")
     @Transactional
@@ -123,7 +120,7 @@ public class PIMTITLECATALOGUEResource {
          return ResponseEntity.status(HttpStatus.OK).body(pimtitlecatalogueService.remove(pimtitlecatalogue_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.pimtitlecatalogueMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission(this.pimtitlecatalogueService.getPimtitlecatalogueByIds(#ids),'ehr-PIMTITLECATALOGUE-Remove')")
     @ApiOperation(value = "RemoveBatch", tags = {"PIMTITLECATALOGUE" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimtitlecatalogues/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -131,7 +128,7 @@ public class PIMTITLECATALOGUEResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission(#pimtitlecatalogue_id,'Get',{'Sql',this.pimtitlecatalogueMapping,this.permissionDTO})")
+    @PostAuthorize("hasPermission(this.pimtitlecatalogueMapping.toDomain(returnObject.body),'ehr-PIMTITLECATALOGUE-Get')")
     @ApiOperation(value = "Get", tags = {"PIMTITLECATALOGUE" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimtitlecatalogues/{pimtitlecatalogue_id}")
     public ResponseEntity<PIMTITLECATALOGUEDTO> get(@PathVariable("pimtitlecatalogue_id") String pimtitlecatalogue_id) {
@@ -204,3 +201,4 @@ public class PIMTITLECATALOGUEResource {
                 .body(new PageImpl(pimtitlecatalogueMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 }
+

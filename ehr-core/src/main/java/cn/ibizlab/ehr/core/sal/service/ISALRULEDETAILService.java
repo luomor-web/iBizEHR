@@ -58,6 +58,9 @@ public interface ISALRULEDETAILService extends IService<SALRULEDETAIL>{
      */
     boolean execute(String sql, Map param);
 
+    List<SALRULEDETAIL> getSalruledetailByIds(List<String> ids) ;
+    List<SALRULEDETAIL> getSalruledetailByEntities(List<SALRULEDETAIL> entities) ;
+
 }
 
 

@@ -56,6 +56,9 @@ public interface ISALPLANService extends IService<SALPLAN>{
      */
     boolean execute(String sql, Map param);
 
+    List<SALPLAN> getSalplanByIds(List<String> ids) ;
+    List<SALPLAN> getSalplanByEntities(List<SALPLAN> entities) ;
+
 }
 
 

@@ -258,6 +258,26 @@ public class QUESTIONSServiceImpl extends ServiceImpl<QUESTIONSMapper, QUESTIONS
         return true;
     }
 
+    @Override
+    public List<QUESTIONS> getQuestionsByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<QUESTIONS> getQuestionsByEntities(List<QUESTIONS> entities) {
+        List ids =new ArrayList();
+        for(QUESTIONS entity : entities){
+            Serializable id=entity.getQuestionsid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

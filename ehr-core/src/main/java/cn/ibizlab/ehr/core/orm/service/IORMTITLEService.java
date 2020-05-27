@@ -52,6 +52,9 @@ public interface IORMTITLEService extends IService<ORMTITLE>{
      */
     boolean execute(String sql, Map param);
 
+    List<ORMTITLE> getOrmtitleByIds(List<String> ids) ;
+    List<ORMTITLE> getOrmtitleByEntities(List<ORMTITLE> entities) ;
+
 }
 
 

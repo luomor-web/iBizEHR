@@ -54,6 +54,9 @@ public interface ITRMCOURSESYSTEMService extends IService<TRMCOURSESYSTEM>{
      */
     boolean execute(String sql, Map param);
 
+    List<TRMCOURSESYSTEM> getTrmcoursesystemByIds(List<String> ids) ;
+    List<TRMCOURSESYSTEM> getTrmcoursesystemByEntities(List<TRMCOURSESYSTEM> entities) ;
+
 }
 
 

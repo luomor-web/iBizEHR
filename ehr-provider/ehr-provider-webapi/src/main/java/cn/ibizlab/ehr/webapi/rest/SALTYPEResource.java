@@ -22,6 +22,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.access.prepost.PostAuthorize;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -39,22 +40,19 @@ import cn.ibizlab.ehr.core.sal.filter.SALTYPESearchContext;
 public class SALTYPEResource {
 
     @Autowired
-    private ISALTYPEService saltypeService;
+    public ISALTYPEService saltypeService;
 
     @Autowired
     @Lazy
     public SALTYPEMapping saltypeMapping;
 
-    public SALTYPEDTO permissionDTO=new SALTYPEDTO();
-
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALTYPE-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"SALTYPE" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/saltypes/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody SALTYPEDTO saltypedto) {
         return  ResponseEntity.status(HttpStatus.OK).body(saltypeService.checkKey(saltypeMapping.toDomain(saltypedto)));
     }
 
-    @PreAuthorize("hasPermission(#saltype_id,'Get',{'Sql',this.saltypeMapping,this.permissionDTO})")
+    @PostAuthorize("hasPermission(this.saltypeMapping.toDomain(returnObject.body),'ehr-SALTYPE-Get')")
     @ApiOperation(value = "Get", tags = {"SALTYPE" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/saltypes/{saltype_id}")
     public ResponseEntity<SALTYPEDTO> get(@PathVariable("saltype_id") String saltype_id) {
@@ -63,14 +61,13 @@ public class SALTYPEResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALTYPE-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"SALTYPE" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/saltypes/getdraft")
     public ResponseEntity<SALTYPEDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(saltypeMapping.toDto(saltypeService.getDraft(new SALTYPE())));
     }
 
-    @PreAuthorize("hasPermission(#saltype_id,'Remove',{'Sql',this.saltypeMapping,this.permissionDTO})")
+    @PreAuthorize("hasPermission(this.saltypeService.get(#saltype_id),'ehr-SALTYPE-Remove')")
     @ApiOperation(value = "Remove", tags = {"SALTYPE" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/saltypes/{saltype_id}")
     @Transactional
@@ -78,7 +75,7 @@ public class SALTYPEResource {
          return ResponseEntity.status(HttpStatus.OK).body(saltypeService.remove(saltype_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.saltypeMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission(this.saltypeService.getSaltypeByIds(#ids),'ehr-SALTYPE-Remove')")
     @ApiOperation(value = "RemoveBatch", tags = {"SALTYPE" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/saltypes/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -86,14 +83,14 @@ public class SALTYPEResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('','Save',{'Sql',this.saltypeMapping,#saltypedto})")
+    @PreAuthorize("hasPermission(this.saltypeMapping.toDomain(#saltypedto),'ehr-SALTYPE-Save')")
     @ApiOperation(value = "Save", tags = {"SALTYPE" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/saltypes/save")
     public ResponseEntity<Boolean> save(@RequestBody SALTYPEDTO saltypedto) {
         return ResponseEntity.status(HttpStatus.OK).body(saltypeService.save(saltypeMapping.toDomain(saltypedto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.saltypeMapping,#saltypedtos})")
+    @PreAuthorize("hasPermission(this.saltypeMapping.toDomain(#saltypedtos),'ehr-SALTYPE-Save')")
     @ApiOperation(value = "SaveBatch", tags = {"SALTYPE" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/saltypes/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<SALTYPEDTO> saltypedtos) {
@@ -101,7 +98,7 @@ public class SALTYPEResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('','Create',{'Sql',this.saltypeMapping,#saltypedto})")
+    @PreAuthorize("hasPermission(this.saltypeMapping.toDomain(#saltypedto),'ehr-SALTYPE-Create')")
     @ApiOperation(value = "Create", tags = {"SALTYPE" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/saltypes")
     @Transactional
@@ -112,7 +109,7 @@ public class SALTYPEResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.saltypeMapping,#saltypedtos})")
+    @PreAuthorize("hasPermission(this.saltypeMapping.toDomain(#saltypedtos),'ehr-SALTYPE-Create')")
     @ApiOperation(value = "createBatch", tags = {"SALTYPE" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/saltypes/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<SALTYPEDTO> saltypedtos) {
@@ -120,7 +117,7 @@ public class SALTYPEResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission(#saltype_id,'Update',{'Sql',this.saltypeMapping,#saltypedto})")
+    @PreAuthorize("hasPermission(this.saltypeService.get(#saltype_id),'ehr-SALTYPE-Update')")
     @ApiOperation(value = "Update", tags = {"SALTYPE" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/saltypes/{saltype_id}")
     @Transactional
@@ -132,7 +129,7 @@ public class SALTYPEResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.saltypeMapping,#saltypedtos})")
+    @PreAuthorize("hasPermission(this.saltypeService.getSaltypeByEntities(this.saltypeMapping.toDomain(#saltypedtos)),'ehr-SALTYPE-Update')")
     @ApiOperation(value = "UpdateBatch", tags = {"SALTYPE" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/saltypes/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<SALTYPEDTO> saltypedtos) {
@@ -162,3 +159,4 @@ public class SALTYPEResource {
                 .body(new PageImpl(saltypeMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 }
+

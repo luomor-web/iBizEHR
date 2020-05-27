@@ -238,6 +238,26 @@ public class ORMDepEstManServiceImpl extends ServiceImpl<ORMDepEstManMapper, ORM
         return true;
     }
 
+    @Override
+    public List<ORMDepEstMan> getOrmdepestmanByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<ORMDepEstMan> getOrmdepestmanByEntities(List<ORMDepEstMan> entities) {
+        List ids =new ArrayList();
+        for(ORMDepEstMan entity : entities){
+            Serializable id=entity.getOrmdepestmanid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

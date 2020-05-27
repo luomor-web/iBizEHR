@@ -54,6 +54,9 @@ public interface ISALITEMService extends IService<SALITEM>{
      */
     boolean execute(String sql, Map param);
 
+    List<SALITEM> getSalitemByIds(List<String> ids) ;
+    List<SALITEM> getSalitemByEntities(List<SALITEM> entities) ;
+
 }
 
 

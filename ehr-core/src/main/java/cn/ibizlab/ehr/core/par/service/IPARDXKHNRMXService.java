@@ -56,6 +56,9 @@ public interface IPARDXKHNRMXService extends IService<PARDXKHNRMX>{
      */
     boolean execute(String sql, Map param);
 
+    List<PARDXKHNRMX> getPardxkhnrmxByIds(List<String> ids) ;
+    List<PARDXKHNRMX> getPardxkhnrmxByEntities(List<PARDXKHNRMX> entities) ;
+
 }
 
 

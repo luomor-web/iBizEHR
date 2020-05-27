@@ -62,6 +62,9 @@ public interface IPIMFAMINFOService extends IService<PIMFAMINFO>{
      */
     boolean execute(String sql, Map param);
 
+    List<PIMFAMINFO> getPimfaminfoByIds(List<String> ids) ;
+    List<PIMFAMINFO> getPimfaminfoByEntities(List<PIMFAMINFO> entities) ;
+
 }
 
 

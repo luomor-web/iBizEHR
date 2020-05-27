@@ -56,6 +56,9 @@ public interface ITRMTRIANPERSONService extends IService<TRMTRIANPERSON>{
      */
     boolean execute(String sql, Map param);
 
+    List<TRMTRIANPERSON> getTrmtrianpersonByIds(List<String> ids) ;
+    List<TRMTRIANPERSON> getTrmtrianpersonByEntities(List<TRMTRIANPERSON> entities) ;
+
 }
 
 

@@ -221,6 +221,26 @@ public class SALSCHEMEServiceImpl extends ServiceImpl<SALSCHEMEMapper, SALSCHEME
         return true;
     }
 
+    @Override
+    public List<SALSCHEME> getSalschemeByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<SALSCHEME> getSalschemeByEntities(List<SALSCHEME> entities) {
+        List ids =new ArrayList();
+        for(SALSCHEME entity : entities){
+            Serializable id=entity.getSalschemeid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

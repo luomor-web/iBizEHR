@@ -238,6 +238,26 @@ public class TRMTRAINBUAPPLYServiceImpl extends ServiceImpl<TRMTRAINBUAPPLYMappe
         return true;
     }
 
+    @Override
+    public List<TRMTRAINBUAPPLY> getTrmtrainbuapplyByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<TRMTRAINBUAPPLY> getTrmtrainbuapplyByEntities(List<TRMTRAINBUAPPLY> entities) {
+        List ids =new ArrayList();
+        for(TRMTRAINBUAPPLY entity : entities){
+            Serializable id=entity.getTrmtrainbuapplyid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

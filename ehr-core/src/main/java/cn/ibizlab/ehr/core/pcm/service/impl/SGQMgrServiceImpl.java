@@ -205,6 +205,26 @@ public class SGQMgrServiceImpl extends ServiceImpl<SGQMgrMapper, SGQMgr> impleme
         return true;
     }
 
+    @Override
+    public List<SGQMgr> getSgqmgrByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<SGQMgr> getSgqmgrByEntities(List<SGQMgr> entities) {
+        List ids =new ArrayList();
+        for(SGQMgr entity : entities){
+            Serializable id=entity.getSgqmgrid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

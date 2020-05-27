@@ -261,6 +261,26 @@ public class SOCWELFAREINFOServiceImpl extends ServiceImpl<SOCWELFAREINFOMapper,
         return true;
     }
 
+    @Override
+    public List<SOCWELFAREINFO> getSocwelfareinfoByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<SOCWELFAREINFO> getSocwelfareinfoByEntities(List<SOCWELFAREINFO> entities) {
+        List ids =new ArrayList();
+        for(SOCWELFAREINFO entity : entities){
+            Serializable id=entity.getSocwelfareinfoid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

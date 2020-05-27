@@ -52,6 +52,9 @@ public interface IPIMMAJORSETYPEService extends IService<PIMMAJORSETYPE>{
      */
     boolean execute(String sql, Map param);
 
+    List<PIMMAJORSETYPE> getPimmajorsetypeByIds(List<String> ids) ;
+    List<PIMMAJORSETYPE> getPimmajorsetypeByEntities(List<PIMMAJORSETYPE> entities) ;
+
 }
 
 

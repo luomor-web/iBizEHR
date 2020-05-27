@@ -218,6 +218,26 @@ public class ARCHIVESCENTERServiceImpl extends ServiceImpl<ARCHIVESCENTERMapper,
         return true;
     }
 
+    @Override
+    public List<ARCHIVESCENTER> getArchivescenterByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<ARCHIVESCENTER> getArchivescenterByEntities(List<ARCHIVESCENTER> entities) {
+        List ids =new ArrayList();
+        for(ARCHIVESCENTER entity : entities){
+            Serializable id=entity.getArchivescenterid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

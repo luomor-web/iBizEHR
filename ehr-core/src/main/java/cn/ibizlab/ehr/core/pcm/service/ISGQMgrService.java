@@ -56,6 +56,9 @@ public interface ISGQMgrService extends IService<SGQMgr>{
      */
     boolean execute(String sql, Map param);
 
+    List<SGQMgr> getSgqmgrByIds(List<String> ids) ;
+    List<SGQMgr> getSgqmgrByEntities(List<SGQMgr> entities) ;
+
 }
 
 

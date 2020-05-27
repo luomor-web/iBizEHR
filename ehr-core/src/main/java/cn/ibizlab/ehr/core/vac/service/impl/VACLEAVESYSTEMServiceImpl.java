@@ -225,6 +225,26 @@ public class VACLEAVESYSTEMServiceImpl extends ServiceImpl<VACLEAVESYSTEMMapper,
         return true;
     }
 
+    @Override
+    public List<VACLEAVESYSTEM> getVacleavesystemByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<VACLEAVESYSTEM> getVacleavesystemByEntities(List<VACLEAVESYSTEM> entities) {
+        List ids =new ArrayList();
+        for(VACLEAVESYSTEM entity : entities){
+            Serializable id=entity.getVacleavesystemid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

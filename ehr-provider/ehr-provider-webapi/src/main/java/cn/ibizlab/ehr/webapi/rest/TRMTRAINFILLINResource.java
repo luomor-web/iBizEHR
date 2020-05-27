@@ -22,6 +22,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.access.prepost.PostAuthorize;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -39,15 +40,13 @@ import cn.ibizlab.ehr.core.trm.filter.TRMTRAINFILLINSearchContext;
 public class TRMTRAINFILLINResource {
 
     @Autowired
-    private ITRMTRAINFILLINService trmtrainfillinService;
+    public ITRMTRAINFILLINService trmtrainfillinService;
 
     @Autowired
     @Lazy
     public TRMTRAINFILLINMapping trmtrainfillinMapping;
 
-    public TRMTRAINFILLINDTO permissionDTO=new TRMTRAINFILLINDTO();
-
-    @PreAuthorize("hasPermission(#trmtrainfillin_id,'Get',{'Sql',this.trmtrainfillinMapping,this.permissionDTO})")
+    @PostAuthorize("hasPermission(this.trmtrainfillinMapping.toDomain(returnObject.body),'ehr-TRMTRAINFILLIN-Get')")
     @ApiOperation(value = "Get", tags = {"TRMTRAINFILLIN" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/trmtrainfillins/{trmtrainfillin_id}")
     public ResponseEntity<TRMTRAINFILLINDTO> get(@PathVariable("trmtrainfillin_id") String trmtrainfillin_id) {
@@ -56,7 +55,7 @@ public class TRMTRAINFILLINResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#trmtrainfillin_id,'Update',{'Sql',this.trmtrainfillinMapping,#trmtrainfillindto})")
+    @PreAuthorize("hasPermission(this.trmtrainfillinService.get(#trmtrainfillin_id),'ehr-TRMTRAINFILLIN-Update')")
     @ApiOperation(value = "Update", tags = {"TRMTRAINFILLIN" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/trmtrainfillins/{trmtrainfillin_id}")
     @Transactional
@@ -68,7 +67,7 @@ public class TRMTRAINFILLINResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.trmtrainfillinMapping,#trmtrainfillindtos})")
+    @PreAuthorize("hasPermission(this.trmtrainfillinService.getTrmtrainfillinByEntities(this.trmtrainfillinMapping.toDomain(#trmtrainfillindtos)),'ehr-TRMTRAINFILLIN-Update')")
     @ApiOperation(value = "UpdateBatch", tags = {"TRMTRAINFILLIN" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/trmtrainfillins/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<TRMTRAINFILLINDTO> trmtrainfillindtos) {
@@ -76,14 +75,13 @@ public class TRMTRAINFILLINResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMTRAINFILLIN-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"TRMTRAINFILLIN" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmtrainfillins/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody TRMTRAINFILLINDTO trmtrainfillindto) {
         return  ResponseEntity.status(HttpStatus.OK).body(trmtrainfillinService.checkKey(trmtrainfillinMapping.toDomain(trmtrainfillindto)));
     }
 
-    @PreAuthorize("hasPermission('','Create',{'Sql',this.trmtrainfillinMapping,#trmtrainfillindto})")
+    @PreAuthorize("hasPermission(this.trmtrainfillinMapping.toDomain(#trmtrainfillindto),'ehr-TRMTRAINFILLIN-Create')")
     @ApiOperation(value = "Create", tags = {"TRMTRAINFILLIN" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmtrainfillins")
     @Transactional
@@ -94,7 +92,7 @@ public class TRMTRAINFILLINResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.trmtrainfillinMapping,#trmtrainfillindtos})")
+    @PreAuthorize("hasPermission(this.trmtrainfillinMapping.toDomain(#trmtrainfillindtos),'ehr-TRMTRAINFILLIN-Create')")
     @ApiOperation(value = "createBatch", tags = {"TRMTRAINFILLIN" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmtrainfillins/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<TRMTRAINFILLINDTO> trmtrainfillindtos) {
@@ -102,14 +100,14 @@ public class TRMTRAINFILLINResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('','Save',{'Sql',this.trmtrainfillinMapping,#trmtrainfillindto})")
+    @PreAuthorize("hasPermission(this.trmtrainfillinMapping.toDomain(#trmtrainfillindto),'ehr-TRMTRAINFILLIN-Save')")
     @ApiOperation(value = "Save", tags = {"TRMTRAINFILLIN" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmtrainfillins/save")
     public ResponseEntity<Boolean> save(@RequestBody TRMTRAINFILLINDTO trmtrainfillindto) {
         return ResponseEntity.status(HttpStatus.OK).body(trmtrainfillinService.save(trmtrainfillinMapping.toDomain(trmtrainfillindto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.trmtrainfillinMapping,#trmtrainfillindtos})")
+    @PreAuthorize("hasPermission(this.trmtrainfillinMapping.toDomain(#trmtrainfillindtos),'ehr-TRMTRAINFILLIN-Save')")
     @ApiOperation(value = "SaveBatch", tags = {"TRMTRAINFILLIN" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmtrainfillins/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<TRMTRAINFILLINDTO> trmtrainfillindtos) {
@@ -117,14 +115,13 @@ public class TRMTRAINFILLINResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMTRAINFILLIN-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"TRMTRAINFILLIN" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/trmtrainfillins/getdraft")
     public ResponseEntity<TRMTRAINFILLINDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(trmtrainfillinMapping.toDto(trmtrainfillinService.getDraft(new TRMTRAINFILLIN())));
     }
 
-    @PreAuthorize("hasPermission(#trmtrainfillin_id,'Remove',{'Sql',this.trmtrainfillinMapping,this.permissionDTO})")
+    @PreAuthorize("hasPermission(this.trmtrainfillinService.get(#trmtrainfillin_id),'ehr-TRMTRAINFILLIN-Remove')")
     @ApiOperation(value = "Remove", tags = {"TRMTRAINFILLIN" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/trmtrainfillins/{trmtrainfillin_id}")
     @Transactional
@@ -132,7 +129,7 @@ public class TRMTRAINFILLINResource {
          return ResponseEntity.status(HttpStatus.OK).body(trmtrainfillinService.remove(trmtrainfillin_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.trmtrainfillinMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission(this.trmtrainfillinService.getTrmtrainfillinByIds(#ids),'ehr-TRMTRAINFILLIN-Remove')")
     @ApiOperation(value = "RemoveBatch", tags = {"TRMTRAINFILLIN" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/trmtrainfillins/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -161,7 +158,7 @@ public class TRMTRAINFILLINResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(trmtrainfillinMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-    @PreAuthorize("hasPermission(#trmtrainfillin_id,'Get',{'Sql',this.trmtrainfillinMapping,this.permissionDTO})")
+    @PostAuthorize("hasPermission(this.trmtrainfillinMapping.toDomain(returnObject.body),'ehr-TRMTRAINFILLIN-Get')")
     @ApiOperation(value = "GetByORMORGSECTOR", tags = {"TRMTRAINFILLIN" },  notes = "GetByORMORGSECTOR")
 	@RequestMapping(method = RequestMethod.GET, value = "/ormorgsectors/{ormorgsector_id}/trmtrainfillins/{trmtrainfillin_id}")
     public ResponseEntity<TRMTRAINFILLINDTO> getByORMORGSECTOR(@PathVariable("ormorgsector_id") String ormorgsector_id, @PathVariable("trmtrainfillin_id") String trmtrainfillin_id) {
@@ -170,7 +167,7 @@ public class TRMTRAINFILLINResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#trmtrainfillin_id,'Update',{'Sql',this.trmtrainfillinMapping,#trmtrainfillindto})")
+    @PreAuthorize("hasPermission(this.trmtrainfillinService.get(#trmtrainfillin_id),'ehr-TRMTRAINFILLIN-Update')")
     @ApiOperation(value = "UpdateByORMORGSECTOR", tags = {"TRMTRAINFILLIN" },  notes = "UpdateByORMORGSECTOR")
 	@RequestMapping(method = RequestMethod.PUT, value = "/ormorgsectors/{ormorgsector_id}/trmtrainfillins/{trmtrainfillin_id}")
     @Transactional
@@ -183,7 +180,7 @@ public class TRMTRAINFILLINResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.trmtrainfillinMapping,#trmtrainfillindtos})")
+    @PreAuthorize("hasPermission(this.trmtrainfillinService.getTrmtrainfillinByEntities(this.trmtrainfillinMapping.toDomain(#trmtrainfillindtos)),'ehr-TRMTRAINFILLIN-Update')")
     @ApiOperation(value = "UpdateBatchByORMORGSECTOR", tags = {"TRMTRAINFILLIN" },  notes = "UpdateBatchByORMORGSECTOR")
 	@RequestMapping(method = RequestMethod.PUT, value = "/ormorgsectors/{ormorgsector_id}/trmtrainfillins/batch")
     public ResponseEntity<Boolean> updateBatchByORMORGSECTOR(@PathVariable("ormorgsector_id") String ormorgsector_id, @RequestBody List<TRMTRAINFILLINDTO> trmtrainfillindtos) {
@@ -195,14 +192,13 @@ public class TRMTRAINFILLINResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMTRAINFILLIN-CheckKey-all')")
     @ApiOperation(value = "CheckKeyByORMORGSECTOR", tags = {"TRMTRAINFILLIN" },  notes = "CheckKeyByORMORGSECTOR")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormorgsectors/{ormorgsector_id}/trmtrainfillins/checkkey")
     public ResponseEntity<Boolean> checkKeyByORMORGSECTOR(@PathVariable("ormorgsector_id") String ormorgsector_id, @RequestBody TRMTRAINFILLINDTO trmtrainfillindto) {
         return  ResponseEntity.status(HttpStatus.OK).body(trmtrainfillinService.checkKey(trmtrainfillinMapping.toDomain(trmtrainfillindto)));
     }
 
-    @PreAuthorize("hasPermission('','Create',{'Sql',this.trmtrainfillinMapping,#trmtrainfillindto})")
+    @PreAuthorize("hasPermission(this.trmtrainfillinMapping.toDomain(#trmtrainfillindto),'ehr-TRMTRAINFILLIN-Create')")
     @ApiOperation(value = "CreateByORMORGSECTOR", tags = {"TRMTRAINFILLIN" },  notes = "CreateByORMORGSECTOR")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormorgsectors/{ormorgsector_id}/trmtrainfillins")
     @Transactional
@@ -214,7 +210,7 @@ public class TRMTRAINFILLINResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.trmtrainfillinMapping,#trmtrainfillindtos})")
+    @PreAuthorize("hasPermission(this.trmtrainfillinMapping.toDomain(#trmtrainfillindtos),'ehr-TRMTRAINFILLIN-Create')")
     @ApiOperation(value = "createBatchByORMORGSECTOR", tags = {"TRMTRAINFILLIN" },  notes = "createBatchByORMORGSECTOR")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormorgsectors/{ormorgsector_id}/trmtrainfillins/batch")
     public ResponseEntity<Boolean> createBatchByORMORGSECTOR(@PathVariable("ormorgsector_id") String ormorgsector_id, @RequestBody List<TRMTRAINFILLINDTO> trmtrainfillindtos) {
@@ -226,7 +222,7 @@ public class TRMTRAINFILLINResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('','Save',{'Sql',this.trmtrainfillinMapping,#trmtrainfillindto})")
+    @PreAuthorize("hasPermission(this.trmtrainfillinMapping.toDomain(#trmtrainfillindto),'ehr-TRMTRAINFILLIN-Save')")
     @ApiOperation(value = "SaveByORMORGSECTOR", tags = {"TRMTRAINFILLIN" },  notes = "SaveByORMORGSECTOR")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormorgsectors/{ormorgsector_id}/trmtrainfillins/save")
     public ResponseEntity<Boolean> saveByORMORGSECTOR(@PathVariable("ormorgsector_id") String ormorgsector_id, @RequestBody TRMTRAINFILLINDTO trmtrainfillindto) {
@@ -235,7 +231,7 @@ public class TRMTRAINFILLINResource {
         return ResponseEntity.status(HttpStatus.OK).body(trmtrainfillinService.save(domain));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.trmtrainfillinMapping,#trmtrainfillindtos})")
+    @PreAuthorize("hasPermission(this.trmtrainfillinMapping.toDomain(#trmtrainfillindtos),'ehr-TRMTRAINFILLIN-Save')")
     @ApiOperation(value = "SaveBatchByORMORGSECTOR", tags = {"TRMTRAINFILLIN" },  notes = "SaveBatchByORMORGSECTOR")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormorgsectors/{ormorgsector_id}/trmtrainfillins/savebatch")
     public ResponseEntity<Boolean> saveBatchByORMORGSECTOR(@PathVariable("ormorgsector_id") String ormorgsector_id, @RequestBody List<TRMTRAINFILLINDTO> trmtrainfillindtos) {
@@ -247,7 +243,6 @@ public class TRMTRAINFILLINResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMTRAINFILLIN-GetDraft-all')")
     @ApiOperation(value = "GetDraftByORMORGSECTOR", tags = {"TRMTRAINFILLIN" },  notes = "GetDraftByORMORGSECTOR")
     @RequestMapping(method = RequestMethod.GET, value = "/ormorgsectors/{ormorgsector_id}/trmtrainfillins/getdraft")
     public ResponseEntity<TRMTRAINFILLINDTO> getDraftByORMORGSECTOR(@PathVariable("ormorgsector_id") String ormorgsector_id) {
@@ -256,7 +251,7 @@ public class TRMTRAINFILLINResource {
         return ResponseEntity.status(HttpStatus.OK).body(trmtrainfillinMapping.toDto(trmtrainfillinService.getDraft(domain)));
     }
 
-    @PreAuthorize("hasPermission(#trmtrainfillin_id,'Remove',{'Sql',this.trmtrainfillinMapping,this.permissionDTO})")
+    @PreAuthorize("hasPermission(this.trmtrainfillinService.get(#trmtrainfillin_id),'ehr-TRMTRAINFILLIN-Remove')")
     @ApiOperation(value = "RemoveByORMORGSECTOR", tags = {"TRMTRAINFILLIN" },  notes = "RemoveByORMORGSECTOR")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/ormorgsectors/{ormorgsector_id}/trmtrainfillins/{trmtrainfillin_id}")
     @Transactional
@@ -264,7 +259,7 @@ public class TRMTRAINFILLINResource {
 		return ResponseEntity.status(HttpStatus.OK).body(trmtrainfillinService.remove(trmtrainfillin_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.trmtrainfillinMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission(this.trmtrainfillinService.getTrmtrainfillinByIds(#ids),'ehr-TRMTRAINFILLIN-Remove')")
     @ApiOperation(value = "RemoveBatchByORMORGSECTOR", tags = {"TRMTRAINFILLIN" },  notes = "RemoveBatchByORMORGSECTOR")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/ormorgsectors/{ormorgsector_id}/trmtrainfillins/batch")
     public ResponseEntity<Boolean> removeBatchByORMORGSECTOR(@RequestBody List<String> ids) {
@@ -295,7 +290,7 @@ public class TRMTRAINFILLINResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(trmtrainfillinMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-    @PreAuthorize("hasPermission(#trmtrainfillin_id,'Get',{'Sql',this.trmtrainfillinMapping,this.permissionDTO})")
+    @PostAuthorize("hasPermission(this.trmtrainfillinMapping.toDomain(returnObject.body),'ehr-TRMTRAINFILLIN-Get')")
     @ApiOperation(value = "GetByTRMDEPART", tags = {"TRMTRAINFILLIN" },  notes = "GetByTRMDEPART")
 	@RequestMapping(method = RequestMethod.GET, value = "/trmdeparts/{trmdepart_id}/trmtrainfillins/{trmtrainfillin_id}")
     public ResponseEntity<TRMTRAINFILLINDTO> getByTRMDEPART(@PathVariable("trmdepart_id") String trmdepart_id, @PathVariable("trmtrainfillin_id") String trmtrainfillin_id) {
@@ -304,7 +299,7 @@ public class TRMTRAINFILLINResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#trmtrainfillin_id,'Update',{'Sql',this.trmtrainfillinMapping,#trmtrainfillindto})")
+    @PreAuthorize("hasPermission(this.trmtrainfillinService.get(#trmtrainfillin_id),'ehr-TRMTRAINFILLIN-Update')")
     @ApiOperation(value = "UpdateByTRMDEPART", tags = {"TRMTRAINFILLIN" },  notes = "UpdateByTRMDEPART")
 	@RequestMapping(method = RequestMethod.PUT, value = "/trmdeparts/{trmdepart_id}/trmtrainfillins/{trmtrainfillin_id}")
     @Transactional
@@ -317,7 +312,7 @@ public class TRMTRAINFILLINResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.trmtrainfillinMapping,#trmtrainfillindtos})")
+    @PreAuthorize("hasPermission(this.trmtrainfillinService.getTrmtrainfillinByEntities(this.trmtrainfillinMapping.toDomain(#trmtrainfillindtos)),'ehr-TRMTRAINFILLIN-Update')")
     @ApiOperation(value = "UpdateBatchByTRMDEPART", tags = {"TRMTRAINFILLIN" },  notes = "UpdateBatchByTRMDEPART")
 	@RequestMapping(method = RequestMethod.PUT, value = "/trmdeparts/{trmdepart_id}/trmtrainfillins/batch")
     public ResponseEntity<Boolean> updateBatchByTRMDEPART(@PathVariable("trmdepart_id") String trmdepart_id, @RequestBody List<TRMTRAINFILLINDTO> trmtrainfillindtos) {
@@ -329,14 +324,13 @@ public class TRMTRAINFILLINResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMTRAINFILLIN-CheckKey-all')")
     @ApiOperation(value = "CheckKeyByTRMDEPART", tags = {"TRMTRAINFILLIN" },  notes = "CheckKeyByTRMDEPART")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmdeparts/{trmdepart_id}/trmtrainfillins/checkkey")
     public ResponseEntity<Boolean> checkKeyByTRMDEPART(@PathVariable("trmdepart_id") String trmdepart_id, @RequestBody TRMTRAINFILLINDTO trmtrainfillindto) {
         return  ResponseEntity.status(HttpStatus.OK).body(trmtrainfillinService.checkKey(trmtrainfillinMapping.toDomain(trmtrainfillindto)));
     }
 
-    @PreAuthorize("hasPermission('','Create',{'Sql',this.trmtrainfillinMapping,#trmtrainfillindto})")
+    @PreAuthorize("hasPermission(this.trmtrainfillinMapping.toDomain(#trmtrainfillindto),'ehr-TRMTRAINFILLIN-Create')")
     @ApiOperation(value = "CreateByTRMDEPART", tags = {"TRMTRAINFILLIN" },  notes = "CreateByTRMDEPART")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmdeparts/{trmdepart_id}/trmtrainfillins")
     @Transactional
@@ -348,7 +342,7 @@ public class TRMTRAINFILLINResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.trmtrainfillinMapping,#trmtrainfillindtos})")
+    @PreAuthorize("hasPermission(this.trmtrainfillinMapping.toDomain(#trmtrainfillindtos),'ehr-TRMTRAINFILLIN-Create')")
     @ApiOperation(value = "createBatchByTRMDEPART", tags = {"TRMTRAINFILLIN" },  notes = "createBatchByTRMDEPART")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmdeparts/{trmdepart_id}/trmtrainfillins/batch")
     public ResponseEntity<Boolean> createBatchByTRMDEPART(@PathVariable("trmdepart_id") String trmdepart_id, @RequestBody List<TRMTRAINFILLINDTO> trmtrainfillindtos) {
@@ -360,7 +354,7 @@ public class TRMTRAINFILLINResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('','Save',{'Sql',this.trmtrainfillinMapping,#trmtrainfillindto})")
+    @PreAuthorize("hasPermission(this.trmtrainfillinMapping.toDomain(#trmtrainfillindto),'ehr-TRMTRAINFILLIN-Save')")
     @ApiOperation(value = "SaveByTRMDEPART", tags = {"TRMTRAINFILLIN" },  notes = "SaveByTRMDEPART")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmdeparts/{trmdepart_id}/trmtrainfillins/save")
     public ResponseEntity<Boolean> saveByTRMDEPART(@PathVariable("trmdepart_id") String trmdepart_id, @RequestBody TRMTRAINFILLINDTO trmtrainfillindto) {
@@ -369,7 +363,7 @@ public class TRMTRAINFILLINResource {
         return ResponseEntity.status(HttpStatus.OK).body(trmtrainfillinService.save(domain));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.trmtrainfillinMapping,#trmtrainfillindtos})")
+    @PreAuthorize("hasPermission(this.trmtrainfillinMapping.toDomain(#trmtrainfillindtos),'ehr-TRMTRAINFILLIN-Save')")
     @ApiOperation(value = "SaveBatchByTRMDEPART", tags = {"TRMTRAINFILLIN" },  notes = "SaveBatchByTRMDEPART")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmdeparts/{trmdepart_id}/trmtrainfillins/savebatch")
     public ResponseEntity<Boolean> saveBatchByTRMDEPART(@PathVariable("trmdepart_id") String trmdepart_id, @RequestBody List<TRMTRAINFILLINDTO> trmtrainfillindtos) {
@@ -381,7 +375,6 @@ public class TRMTRAINFILLINResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMTRAINFILLIN-GetDraft-all')")
     @ApiOperation(value = "GetDraftByTRMDEPART", tags = {"TRMTRAINFILLIN" },  notes = "GetDraftByTRMDEPART")
     @RequestMapping(method = RequestMethod.GET, value = "/trmdeparts/{trmdepart_id}/trmtrainfillins/getdraft")
     public ResponseEntity<TRMTRAINFILLINDTO> getDraftByTRMDEPART(@PathVariable("trmdepart_id") String trmdepart_id) {
@@ -390,7 +383,7 @@ public class TRMTRAINFILLINResource {
         return ResponseEntity.status(HttpStatus.OK).body(trmtrainfillinMapping.toDto(trmtrainfillinService.getDraft(domain)));
     }
 
-    @PreAuthorize("hasPermission(#trmtrainfillin_id,'Remove',{'Sql',this.trmtrainfillinMapping,this.permissionDTO})")
+    @PreAuthorize("hasPermission(this.trmtrainfillinService.get(#trmtrainfillin_id),'ehr-TRMTRAINFILLIN-Remove')")
     @ApiOperation(value = "RemoveByTRMDEPART", tags = {"TRMTRAINFILLIN" },  notes = "RemoveByTRMDEPART")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/trmdeparts/{trmdepart_id}/trmtrainfillins/{trmtrainfillin_id}")
     @Transactional
@@ -398,7 +391,7 @@ public class TRMTRAINFILLINResource {
 		return ResponseEntity.status(HttpStatus.OK).body(trmtrainfillinService.remove(trmtrainfillin_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.trmtrainfillinMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission(this.trmtrainfillinService.getTrmtrainfillinByIds(#ids),'ehr-TRMTRAINFILLIN-Remove')")
     @ApiOperation(value = "RemoveBatchByTRMDEPART", tags = {"TRMTRAINFILLIN" },  notes = "RemoveBatchByTRMDEPART")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/trmdeparts/{trmdepart_id}/trmtrainfillins/batch")
     public ResponseEntity<Boolean> removeBatchByTRMDEPART(@RequestBody List<String> ids) {
@@ -429,7 +422,7 @@ public class TRMTRAINFILLINResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(trmtrainfillinMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-    @PreAuthorize("hasPermission(#trmtrainfillin_id,'Get',{'Sql',this.trmtrainfillinMapping,this.permissionDTO})")
+    @PostAuthorize("hasPermission(this.trmtrainfillinMapping.toDomain(returnObject.body),'ehr-TRMTRAINFILLIN-Get')")
     @ApiOperation(value = "GetByORMORGORMORGSECTOR", tags = {"TRMTRAINFILLIN" },  notes = "GetByORMORGORMORGSECTOR")
 	@RequestMapping(method = RequestMethod.GET, value = "/ormorgs/{ormorg_id}/ormorgsectors/{ormorgsector_id}/trmtrainfillins/{trmtrainfillin_id}")
     public ResponseEntity<TRMTRAINFILLINDTO> getByORMORGORMORGSECTOR(@PathVariable("ormorg_id") String ormorg_id, @PathVariable("ormorgsector_id") String ormorgsector_id, @PathVariable("trmtrainfillin_id") String trmtrainfillin_id) {
@@ -438,7 +431,7 @@ public class TRMTRAINFILLINResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#trmtrainfillin_id,'Update',{'Sql',this.trmtrainfillinMapping,#trmtrainfillindto})")
+    @PreAuthorize("hasPermission(this.trmtrainfillinService.get(#trmtrainfillin_id),'ehr-TRMTRAINFILLIN-Update')")
     @ApiOperation(value = "UpdateByORMORGORMORGSECTOR", tags = {"TRMTRAINFILLIN" },  notes = "UpdateByORMORGORMORGSECTOR")
 	@RequestMapping(method = RequestMethod.PUT, value = "/ormorgs/{ormorg_id}/ormorgsectors/{ormorgsector_id}/trmtrainfillins/{trmtrainfillin_id}")
     @Transactional
@@ -451,7 +444,7 @@ public class TRMTRAINFILLINResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.trmtrainfillinMapping,#trmtrainfillindtos})")
+    @PreAuthorize("hasPermission(this.trmtrainfillinService.getTrmtrainfillinByEntities(this.trmtrainfillinMapping.toDomain(#trmtrainfillindtos)),'ehr-TRMTRAINFILLIN-Update')")
     @ApiOperation(value = "UpdateBatchByORMORGORMORGSECTOR", tags = {"TRMTRAINFILLIN" },  notes = "UpdateBatchByORMORGORMORGSECTOR")
 	@RequestMapping(method = RequestMethod.PUT, value = "/ormorgs/{ormorg_id}/ormorgsectors/{ormorgsector_id}/trmtrainfillins/batch")
     public ResponseEntity<Boolean> updateBatchByORMORGORMORGSECTOR(@PathVariable("ormorg_id") String ormorg_id, @PathVariable("ormorgsector_id") String ormorgsector_id, @RequestBody List<TRMTRAINFILLINDTO> trmtrainfillindtos) {
@@ -463,14 +456,13 @@ public class TRMTRAINFILLINResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMTRAINFILLIN-CheckKey-all')")
     @ApiOperation(value = "CheckKeyByORMORGORMORGSECTOR", tags = {"TRMTRAINFILLIN" },  notes = "CheckKeyByORMORGORMORGSECTOR")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormorgs/{ormorg_id}/ormorgsectors/{ormorgsector_id}/trmtrainfillins/checkkey")
     public ResponseEntity<Boolean> checkKeyByORMORGORMORGSECTOR(@PathVariable("ormorg_id") String ormorg_id, @PathVariable("ormorgsector_id") String ormorgsector_id, @RequestBody TRMTRAINFILLINDTO trmtrainfillindto) {
         return  ResponseEntity.status(HttpStatus.OK).body(trmtrainfillinService.checkKey(trmtrainfillinMapping.toDomain(trmtrainfillindto)));
     }
 
-    @PreAuthorize("hasPermission('','Create',{'Sql',this.trmtrainfillinMapping,#trmtrainfillindto})")
+    @PreAuthorize("hasPermission(this.trmtrainfillinMapping.toDomain(#trmtrainfillindto),'ehr-TRMTRAINFILLIN-Create')")
     @ApiOperation(value = "CreateByORMORGORMORGSECTOR", tags = {"TRMTRAINFILLIN" },  notes = "CreateByORMORGORMORGSECTOR")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormorgs/{ormorg_id}/ormorgsectors/{ormorgsector_id}/trmtrainfillins")
     @Transactional
@@ -482,7 +474,7 @@ public class TRMTRAINFILLINResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.trmtrainfillinMapping,#trmtrainfillindtos})")
+    @PreAuthorize("hasPermission(this.trmtrainfillinMapping.toDomain(#trmtrainfillindtos),'ehr-TRMTRAINFILLIN-Create')")
     @ApiOperation(value = "createBatchByORMORGORMORGSECTOR", tags = {"TRMTRAINFILLIN" },  notes = "createBatchByORMORGORMORGSECTOR")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormorgs/{ormorg_id}/ormorgsectors/{ormorgsector_id}/trmtrainfillins/batch")
     public ResponseEntity<Boolean> createBatchByORMORGORMORGSECTOR(@PathVariable("ormorg_id") String ormorg_id, @PathVariable("ormorgsector_id") String ormorgsector_id, @RequestBody List<TRMTRAINFILLINDTO> trmtrainfillindtos) {
@@ -494,7 +486,7 @@ public class TRMTRAINFILLINResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('','Save',{'Sql',this.trmtrainfillinMapping,#trmtrainfillindto})")
+    @PreAuthorize("hasPermission(this.trmtrainfillinMapping.toDomain(#trmtrainfillindto),'ehr-TRMTRAINFILLIN-Save')")
     @ApiOperation(value = "SaveByORMORGORMORGSECTOR", tags = {"TRMTRAINFILLIN" },  notes = "SaveByORMORGORMORGSECTOR")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormorgs/{ormorg_id}/ormorgsectors/{ormorgsector_id}/trmtrainfillins/save")
     public ResponseEntity<Boolean> saveByORMORGORMORGSECTOR(@PathVariable("ormorg_id") String ormorg_id, @PathVariable("ormorgsector_id") String ormorgsector_id, @RequestBody TRMTRAINFILLINDTO trmtrainfillindto) {
@@ -503,7 +495,7 @@ public class TRMTRAINFILLINResource {
         return ResponseEntity.status(HttpStatus.OK).body(trmtrainfillinService.save(domain));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.trmtrainfillinMapping,#trmtrainfillindtos})")
+    @PreAuthorize("hasPermission(this.trmtrainfillinMapping.toDomain(#trmtrainfillindtos),'ehr-TRMTRAINFILLIN-Save')")
     @ApiOperation(value = "SaveBatchByORMORGORMORGSECTOR", tags = {"TRMTRAINFILLIN" },  notes = "SaveBatchByORMORGORMORGSECTOR")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormorgs/{ormorg_id}/ormorgsectors/{ormorgsector_id}/trmtrainfillins/savebatch")
     public ResponseEntity<Boolean> saveBatchByORMORGORMORGSECTOR(@PathVariable("ormorg_id") String ormorg_id, @PathVariable("ormorgsector_id") String ormorgsector_id, @RequestBody List<TRMTRAINFILLINDTO> trmtrainfillindtos) {
@@ -515,7 +507,6 @@ public class TRMTRAINFILLINResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMTRAINFILLIN-GetDraft-all')")
     @ApiOperation(value = "GetDraftByORMORGORMORGSECTOR", tags = {"TRMTRAINFILLIN" },  notes = "GetDraftByORMORGORMORGSECTOR")
     @RequestMapping(method = RequestMethod.GET, value = "/ormorgs/{ormorg_id}/ormorgsectors/{ormorgsector_id}/trmtrainfillins/getdraft")
     public ResponseEntity<TRMTRAINFILLINDTO> getDraftByORMORGORMORGSECTOR(@PathVariable("ormorg_id") String ormorg_id, @PathVariable("ormorgsector_id") String ormorgsector_id) {
@@ -524,7 +515,7 @@ public class TRMTRAINFILLINResource {
         return ResponseEntity.status(HttpStatus.OK).body(trmtrainfillinMapping.toDto(trmtrainfillinService.getDraft(domain)));
     }
 
-    @PreAuthorize("hasPermission(#trmtrainfillin_id,'Remove',{'Sql',this.trmtrainfillinMapping,this.permissionDTO})")
+    @PreAuthorize("hasPermission(this.trmtrainfillinService.get(#trmtrainfillin_id),'ehr-TRMTRAINFILLIN-Remove')")
     @ApiOperation(value = "RemoveByORMORGORMORGSECTOR", tags = {"TRMTRAINFILLIN" },  notes = "RemoveByORMORGORMORGSECTOR")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/ormorgs/{ormorg_id}/ormorgsectors/{ormorgsector_id}/trmtrainfillins/{trmtrainfillin_id}")
     @Transactional
@@ -532,7 +523,7 @@ public class TRMTRAINFILLINResource {
 		return ResponseEntity.status(HttpStatus.OK).body(trmtrainfillinService.remove(trmtrainfillin_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.trmtrainfillinMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission(this.trmtrainfillinService.getTrmtrainfillinByIds(#ids),'ehr-TRMTRAINFILLIN-Remove')")
     @ApiOperation(value = "RemoveBatchByORMORGORMORGSECTOR", tags = {"TRMTRAINFILLIN" },  notes = "RemoveBatchByORMORGORMORGSECTOR")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/ormorgs/{ormorg_id}/ormorgsectors/{ormorgsector_id}/trmtrainfillins/batch")
     public ResponseEntity<Boolean> removeBatchByORMORGORMORGSECTOR(@RequestBody List<String> ids) {
@@ -564,3 +555,4 @@ public class TRMTRAINFILLINResource {
                 .body(new PageImpl(trmtrainfillinMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 }
+

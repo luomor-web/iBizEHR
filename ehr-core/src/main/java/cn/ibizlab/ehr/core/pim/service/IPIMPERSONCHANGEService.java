@@ -60,6 +60,9 @@ public interface IPIMPERSONCHANGEService extends IService<PIMPERSONCHANGE>{
      */
     boolean execute(String sql, Map param);
 
+    List<PIMPERSONCHANGE> getPimpersonchangeByIds(List<String> ids) ;
+    List<PIMPERSONCHANGE> getPimpersonchangeByEntities(List<PIMPERSONCHANGE> entities) ;
+
 }
 
 

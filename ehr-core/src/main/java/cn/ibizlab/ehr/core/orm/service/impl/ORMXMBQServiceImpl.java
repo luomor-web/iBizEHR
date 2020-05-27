@@ -215,6 +215,26 @@ public class ORMXMBQServiceImpl extends ServiceImpl<ORMXMBQMapper, ORMXMBQ> impl
         return true;
     }
 
+    @Override
+    public List<ORMXMBQ> getOrmxmbqByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<ORMXMBQ> getOrmxmbqByEntities(List<ORMXMBQ> entities) {
+        List ids =new ArrayList();
+        for(ORMXMBQ entity : entities){
+            Serializable id=entity.getOrmxmbqid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

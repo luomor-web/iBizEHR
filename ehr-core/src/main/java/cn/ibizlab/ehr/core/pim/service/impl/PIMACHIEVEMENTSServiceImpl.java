@@ -236,6 +236,26 @@ public class PIMACHIEVEMENTSServiceImpl extends ServiceImpl<PIMACHIEVEMENTSMappe
         return true;
     }
 
+    @Override
+    public List<PIMACHIEVEMENTS> getPimachievementsByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<PIMACHIEVEMENTS> getPimachievementsByEntities(List<PIMACHIEVEMENTS> entities) {
+        List ids =new ArrayList();
+        for(PIMACHIEVEMENTS entity : entities){
+            Serializable id=entity.getPimachievementsid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

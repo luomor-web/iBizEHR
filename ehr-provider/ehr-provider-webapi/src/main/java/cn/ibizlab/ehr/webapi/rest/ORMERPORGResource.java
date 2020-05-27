@@ -22,6 +22,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.access.prepost.PostAuthorize;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -39,15 +40,13 @@ import cn.ibizlab.ehr.core.orm.filter.ORMERPORGSearchContext;
 public class ORMERPORGResource {
 
     @Autowired
-    private IORMERPORGService ormerporgService;
+    public IORMERPORGService ormerporgService;
 
     @Autowired
     @Lazy
     public ORMERPORGMapping ormerporgMapping;
 
-    public ORMERPORGDTO permissionDTO=new ORMERPORGDTO();
-
-    @PreAuthorize("hasPermission(#ormerporg_id,'Get',{'Sql',this.ormerporgMapping,this.permissionDTO})")
+    @PostAuthorize("hasPermission(this.ormerporgMapping.toDomain(returnObject.body),'ehr-ORMERPORG-Get')")
     @ApiOperation(value = "Get", tags = {"ORMERPORG" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/ormerporgs/{ormerporg_id}")
     public ResponseEntity<ORMERPORGDTO> get(@PathVariable("ormerporg_id") String ormerporg_id) {
@@ -56,7 +55,7 @@ public class ORMERPORGResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#ormerporg_id,'Update',{'Sql',this.ormerporgMapping,#ormerporgdto})")
+    @PreAuthorize("hasPermission(this.ormerporgService.get(#ormerporg_id),'ehr-ORMERPORG-Update')")
     @ApiOperation(value = "Update", tags = {"ORMERPORG" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/ormerporgs/{ormerporg_id}")
     @Transactional
@@ -68,7 +67,7 @@ public class ORMERPORGResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.ormerporgMapping,#ormerporgdtos})")
+    @PreAuthorize("hasPermission(this.ormerporgService.getOrmerporgByEntities(this.ormerporgMapping.toDomain(#ormerporgdtos)),'ehr-ORMERPORG-Update')")
     @ApiOperation(value = "UpdateBatch", tags = {"ORMERPORG" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/ormerporgs/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<ORMERPORGDTO> ormerporgdtos) {
@@ -76,7 +75,7 @@ public class ORMERPORGResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission(#ormerporg_id,'Remove',{'Sql',this.ormerporgMapping,this.permissionDTO})")
+    @PreAuthorize("hasPermission(this.ormerporgService.get(#ormerporg_id),'ehr-ORMERPORG-Remove')")
     @ApiOperation(value = "Remove", tags = {"ORMERPORG" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/ormerporgs/{ormerporg_id}")
     @Transactional
@@ -84,7 +83,7 @@ public class ORMERPORGResource {
          return ResponseEntity.status(HttpStatus.OK).body(ormerporgService.remove(ormerporg_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.ormerporgMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission(this.ormerporgService.getOrmerporgByIds(#ids),'ehr-ORMERPORG-Remove')")
     @ApiOperation(value = "RemoveBatch", tags = {"ORMERPORG" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/ormerporgs/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -104,21 +103,20 @@ public class ORMERPORGResource {
         return ResponseEntity.status(HttpStatus.OK).body(ormerporgdto);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMERPORG-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"ORMERPORG" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/ormerporgs/getdraft")
     public ResponseEntity<ORMERPORGDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(ormerporgMapping.toDto(ormerporgService.getDraft(new ORMERPORG())));
     }
 
-    @PreAuthorize("hasPermission('','Save',{'Sql',this.ormerporgMapping,#ormerporgdto})")
+    @PreAuthorize("hasPermission(this.ormerporgMapping.toDomain(#ormerporgdto),'ehr-ORMERPORG-Save')")
     @ApiOperation(value = "Save", tags = {"ORMERPORG" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormerporgs/save")
     public ResponseEntity<Boolean> save(@RequestBody ORMERPORGDTO ormerporgdto) {
         return ResponseEntity.status(HttpStatus.OK).body(ormerporgService.save(ormerporgMapping.toDomain(ormerporgdto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.ormerporgMapping,#ormerporgdtos})")
+    @PreAuthorize("hasPermission(this.ormerporgMapping.toDomain(#ormerporgdtos),'ehr-ORMERPORG-Save')")
     @ApiOperation(value = "SaveBatch", tags = {"ORMERPORG" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormerporgs/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<ORMERPORGDTO> ormerporgdtos) {
@@ -126,7 +124,7 @@ public class ORMERPORGResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('','Create',{'Sql',this.ormerporgMapping,#ormerporgdto})")
+    @PreAuthorize("hasPermission(this.ormerporgMapping.toDomain(#ormerporgdto),'ehr-ORMERPORG-Create')")
     @ApiOperation(value = "Create", tags = {"ORMERPORG" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormerporgs")
     @Transactional
@@ -137,7 +135,7 @@ public class ORMERPORGResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.ormerporgMapping,#ormerporgdtos})")
+    @PreAuthorize("hasPermission(this.ormerporgMapping.toDomain(#ormerporgdtos),'ehr-ORMERPORG-Create')")
     @ApiOperation(value = "createBatch", tags = {"ORMERPORG" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormerporgs/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<ORMERPORGDTO> ormerporgdtos) {
@@ -145,7 +143,6 @@ public class ORMERPORGResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMERPORG-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"ORMERPORG" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormerporgs/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody ORMERPORGDTO ormerporgdto) {
@@ -258,3 +255,4 @@ public class ORMERPORGResource {
                 .body(new PageImpl(ormerporgMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 }
+

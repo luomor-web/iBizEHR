@@ -54,6 +54,9 @@ public interface IORMORGDZService extends IService<ORMORGDZ>{
      */
     boolean execute(String sql, Map param);
 
+    List<ORMORGDZ> getOrmorgdzByIds(List<String> ids) ;
+    List<ORMORGDZ> getOrmorgdzByEntities(List<ORMORGDZ> entities) ;
+
 }
 
 

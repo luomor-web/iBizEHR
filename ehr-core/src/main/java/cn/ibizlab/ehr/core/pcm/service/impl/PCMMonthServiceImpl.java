@@ -179,6 +179,26 @@ public class PCMMonthServiceImpl extends ServiceImpl<PCMMonthMapper, PCMMonth> i
         return true;
     }
 
+    @Override
+    public List<PCMMonth> getPcmmonthByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<PCMMonth> getPcmmonthByEntities(List<PCMMonth> entities) {
+        List ids =new ArrayList();
+        for(PCMMonth entity : entities){
+            Serializable id=entity.getPcmmonthid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

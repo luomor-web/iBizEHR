@@ -288,6 +288,26 @@ public class TRMEMPLOYRETIONServiceImpl extends ServiceImpl<TRMEMPLOYRETIONMappe
         return true;
     }
 
+    @Override
+    public List<TRMEMPLOYRETION> getTrmemployretionByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<TRMEMPLOYRETION> getTrmemployretionByEntities(List<TRMEMPLOYRETION> entities) {
+        List ids =new ArrayList();
+        for(TRMEMPLOYRETION entity : entities){
+            Serializable id=entity.getTrmemployretionid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

@@ -54,6 +54,9 @@ public interface IARCHIVESCENTERService extends IService<ARCHIVESCENTER>{
      */
     boolean execute(String sql, Map param);
 
+    List<ARCHIVESCENTER> getArchivescenterByIds(List<String> ids) ;
+    List<ARCHIVESCENTER> getArchivescenterByEntities(List<ARCHIVESCENTER> entities) ;
+
 }
 
 

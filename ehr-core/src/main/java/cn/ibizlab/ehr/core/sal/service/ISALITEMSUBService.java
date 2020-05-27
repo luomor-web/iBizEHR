@@ -58,6 +58,9 @@ public interface ISALITEMSUBService extends IService<SALITEMSUB>{
      */
     boolean execute(String sql, Map param);
 
+    List<SALITEMSUB> getSalitemsubByIds(List<String> ids) ;
+    List<SALITEMSUB> getSalitemsubByEntities(List<SALITEMSUB> entities) ;
+
 }
 
 

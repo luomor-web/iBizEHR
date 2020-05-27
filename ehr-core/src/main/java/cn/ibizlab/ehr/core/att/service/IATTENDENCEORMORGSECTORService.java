@@ -56,6 +56,9 @@ public interface IATTENDENCEORMORGSECTORService extends IService<ATTENDENCEORMOR
      */
     boolean execute(String sql, Map param);
 
+    List<ATTENDENCEORMORGSECTOR> getAttendenceormorgsectorByIds(List<String> ids) ;
+    List<ATTENDENCEORMORGSECTOR> getAttendenceormorgsectorByEntities(List<ATTENDENCEORMORGSECTOR> entities) ;
+
 }
 
 

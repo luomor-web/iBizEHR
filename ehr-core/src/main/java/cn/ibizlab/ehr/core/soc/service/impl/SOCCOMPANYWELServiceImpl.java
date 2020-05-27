@@ -244,6 +244,26 @@ public class SOCCOMPANYWELServiceImpl extends ServiceImpl<SOCCOMPANYWELMapper, S
         return true;
     }
 
+    @Override
+    public List<SOCCOMPANYWEL> getSoccompanywelByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<SOCCOMPANYWEL> getSoccompanywelByEntities(List<SOCCOMPANYWEL> entities) {
+        List ids =new ArrayList();
+        for(SOCCOMPANYWEL entity : entities){
+            Serializable id=entity.getSoccompanywelid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

@@ -282,6 +282,26 @@ public class ORMDUTYServiceImpl extends ServiceImpl<ORMDUTYMapper, ORMDUTY> impl
         return true;
     }
 
+    @Override
+    public List<ORMDUTY> getOrmdutyByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<ORMDUTY> getOrmdutyByEntities(List<ORMDUTY> entities) {
+        List ids =new ArrayList();
+        for(ORMDUTY entity : entities){
+            Serializable id=entity.getOrmdutyid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

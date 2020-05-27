@@ -266,6 +266,26 @@ public class PIMPERSONCHANGEServiceImpl extends ServiceImpl<PIMPERSONCHANGEMappe
         return true;
     }
 
+    @Override
+    public List<PIMPERSONCHANGE> getPimpersonchangeByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<PIMPERSONCHANGE> getPimpersonchangeByEntities(List<PIMPERSONCHANGE> entities) {
+        List ids =new ArrayList();
+        for(PIMPERSONCHANGE entity : entities){
+            Serializable id=entity.getPimpersonchangeid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

@@ -52,6 +52,9 @@ public interface IWZD0002Service extends IService<WZD0002>{
      */
     boolean execute(String sql, Map param);
 
+    List<WZD0002> getWzd0002ByIds(List<String> ids) ;
+    List<WZD0002> getWzd0002ByEntities(List<WZD0002> entities) ;
+
 }
 
 

@@ -86,6 +86,9 @@ public interface IORMORGSECTORService extends IService<ORMORGSECTOR>{
      */
     boolean execute(String sql, Map param);
 
+    List<ORMORGSECTOR> getOrmorgsectorByIds(List<String> ids) ;
+    List<ORMORGSECTOR> getOrmorgsectorByEntities(List<ORMORGSECTOR> entities) ;
+
 }
 
 

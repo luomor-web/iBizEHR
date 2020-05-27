@@ -56,6 +56,9 @@ public interface IPCMCERTOFREGService extends IService<PCMCERTOFREG>{
      */
     boolean execute(String sql, Map param);
 
+    List<PCMCERTOFREG> getPcmcertofregByIds(List<String> ids) ;
+    List<PCMCERTOFREG> getPcmcertofregByEntities(List<PCMCERTOFREG> entities) ;
+
 }
 
 

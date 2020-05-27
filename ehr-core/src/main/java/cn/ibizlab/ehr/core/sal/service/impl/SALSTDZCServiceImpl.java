@@ -215,6 +215,26 @@ public class SALSTDZCServiceImpl extends ServiceImpl<SALSTDZCMapper, SALSTDZC> i
         return true;
     }
 
+    @Override
+    public List<SALSTDZC> getSalstdzcByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<SALSTDZC> getSalstdzcByEntities(List<SALSTDZC> entities) {
+        List ids =new ArrayList();
+        for(SALSTDZC entity : entities){
+            Serializable id=entity.getSalstdzcid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

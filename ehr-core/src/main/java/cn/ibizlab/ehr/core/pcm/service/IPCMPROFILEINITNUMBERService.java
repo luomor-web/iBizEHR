@@ -54,6 +54,9 @@ public interface IPCMPROFILEINITNUMBERService extends IService<PCMPROFILEINITNUM
      */
     boolean execute(String sql, Map param);
 
+    List<PCMPROFILEINITNUMBER> getPcmprofileinitnumberByIds(List<String> ids) ;
+    List<PCMPROFILEINITNUMBER> getPcmprofileinitnumberByEntities(List<PCMPROFILEINITNUMBER> entities) ;
+
 }
 
 

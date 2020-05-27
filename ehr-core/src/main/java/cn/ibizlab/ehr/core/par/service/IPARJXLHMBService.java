@@ -54,6 +54,9 @@ public interface IPARJXLHMBService extends IService<PARJXLHMB>{
      */
     boolean execute(String sql, Map param);
 
+    List<PARJXLHMB> getParjxlhmbByIds(List<String> ids) ;
+    List<PARJXLHMB> getParjxlhmbByEntities(List<PARJXLHMB> entities) ;
+
 }
 
 

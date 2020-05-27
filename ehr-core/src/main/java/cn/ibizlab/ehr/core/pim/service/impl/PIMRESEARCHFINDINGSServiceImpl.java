@@ -235,6 +235,26 @@ public class PIMRESEARCHFINDINGSServiceImpl extends ServiceImpl<PIMRESEARCHFINDI
         return true;
     }
 
+    @Override
+    public List<PIMRESEARCHFINDINGS> getPimresearchfindingsByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<PIMRESEARCHFINDINGS> getPimresearchfindingsByEntities(List<PIMRESEARCHFINDINGS> entities) {
+        List ids =new ArrayList();
+        for(PIMRESEARCHFINDINGS entity : entities){
+            Serializable id=entity.getPimresearchfindingsid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

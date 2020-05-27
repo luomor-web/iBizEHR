@@ -52,6 +52,9 @@ public interface IPIMPROVINCEService extends IService<PIMPROVINCE>{
      */
     boolean execute(String sql, Map param);
 
+    List<PIMPROVINCE> getPimprovinceByIds(List<String> ids) ;
+    List<PIMPROVINCE> getPimprovinceByEntities(List<PIMPROVINCE> entities) ;
+
 }
 
 

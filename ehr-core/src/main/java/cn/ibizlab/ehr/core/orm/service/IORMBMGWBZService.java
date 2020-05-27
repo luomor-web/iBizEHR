@@ -56,6 +56,9 @@ public interface IORMBMGWBZService extends IService<ORMBMGWBZ>{
      */
     boolean execute(String sql, Map param);
 
+    List<ORMBMGWBZ> getOrmbmgwbzByIds(List<String> ids) ;
+    List<ORMBMGWBZ> getOrmbmgwbzByEntities(List<ORMBMGWBZ> entities) ;
+
 }
 
 

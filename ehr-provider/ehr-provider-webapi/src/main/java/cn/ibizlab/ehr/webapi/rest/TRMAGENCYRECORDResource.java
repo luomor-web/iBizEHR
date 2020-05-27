@@ -22,6 +22,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.access.prepost.PostAuthorize;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -39,22 +40,19 @@ import cn.ibizlab.ehr.core.trm.filter.TRMAGENCYRECORDSearchContext;
 public class TRMAGENCYRECORDResource {
 
     @Autowired
-    private ITRMAGENCYRECORDService trmagencyrecordService;
+    public ITRMAGENCYRECORDService trmagencyrecordService;
 
     @Autowired
     @Lazy
     public TRMAGENCYRECORDMapping trmagencyrecordMapping;
 
-    public TRMAGENCYRECORDDTO permissionDTO=new TRMAGENCYRECORDDTO();
-
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMAGENCYRECORD-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"TRMAGENCYRECORD" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/trmagencyrecords/getdraft")
     public ResponseEntity<TRMAGENCYRECORDDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(trmagencyrecordMapping.toDto(trmagencyrecordService.getDraft(new TRMAGENCYRECORD())));
     }
 
-    @PreAuthorize("hasPermission(#trmagencyrecord_id,'Get',{'Sql',this.trmagencyrecordMapping,this.permissionDTO})")
+    @PostAuthorize("hasPermission(this.trmagencyrecordMapping.toDomain(returnObject.body),'ehr-TRMAGENCYRECORD-Get')")
     @ApiOperation(value = "Get", tags = {"TRMAGENCYRECORD" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/trmagencyrecords/{trmagencyrecord_id}")
     public ResponseEntity<TRMAGENCYRECORDDTO> get(@PathVariable("trmagencyrecord_id") String trmagencyrecord_id) {
@@ -63,14 +61,13 @@ public class TRMAGENCYRECORDResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMAGENCYRECORD-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"TRMAGENCYRECORD" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmagencyrecords/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody TRMAGENCYRECORDDTO trmagencyrecorddto) {
         return  ResponseEntity.status(HttpStatus.OK).body(trmagencyrecordService.checkKey(trmagencyrecordMapping.toDomain(trmagencyrecorddto)));
     }
 
-    @PreAuthorize("hasPermission(#trmagencyrecord_id,'Remove',{'Sql',this.trmagencyrecordMapping,this.permissionDTO})")
+    @PreAuthorize("hasPermission(this.trmagencyrecordService.get(#trmagencyrecord_id),'ehr-TRMAGENCYRECORD-Remove')")
     @ApiOperation(value = "Remove", tags = {"TRMAGENCYRECORD" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/trmagencyrecords/{trmagencyrecord_id}")
     @Transactional
@@ -78,7 +75,7 @@ public class TRMAGENCYRECORDResource {
          return ResponseEntity.status(HttpStatus.OK).body(trmagencyrecordService.remove(trmagencyrecord_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.trmagencyrecordMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission(this.trmagencyrecordService.getTrmagencyrecordByIds(#ids),'ehr-TRMAGENCYRECORD-Remove')")
     @ApiOperation(value = "RemoveBatch", tags = {"TRMAGENCYRECORD" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/trmagencyrecords/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -86,14 +83,14 @@ public class TRMAGENCYRECORDResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('','Save',{'Sql',this.trmagencyrecordMapping,#trmagencyrecorddto})")
+    @PreAuthorize("hasPermission(this.trmagencyrecordMapping.toDomain(#trmagencyrecorddto),'ehr-TRMAGENCYRECORD-Save')")
     @ApiOperation(value = "Save", tags = {"TRMAGENCYRECORD" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmagencyrecords/save")
     public ResponseEntity<Boolean> save(@RequestBody TRMAGENCYRECORDDTO trmagencyrecorddto) {
         return ResponseEntity.status(HttpStatus.OK).body(trmagencyrecordService.save(trmagencyrecordMapping.toDomain(trmagencyrecorddto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.trmagencyrecordMapping,#trmagencyrecorddtos})")
+    @PreAuthorize("hasPermission(this.trmagencyrecordMapping.toDomain(#trmagencyrecorddtos),'ehr-TRMAGENCYRECORD-Save')")
     @ApiOperation(value = "SaveBatch", tags = {"TRMAGENCYRECORD" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmagencyrecords/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<TRMAGENCYRECORDDTO> trmagencyrecorddtos) {
@@ -101,7 +98,7 @@ public class TRMAGENCYRECORDResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission(#trmagencyrecord_id,'Update',{'Sql',this.trmagencyrecordMapping,#trmagencyrecorddto})")
+    @PreAuthorize("hasPermission(this.trmagencyrecordService.get(#trmagencyrecord_id),'ehr-TRMAGENCYRECORD-Update')")
     @ApiOperation(value = "Update", tags = {"TRMAGENCYRECORD" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/trmagencyrecords/{trmagencyrecord_id}")
     @Transactional
@@ -113,7 +110,7 @@ public class TRMAGENCYRECORDResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.trmagencyrecordMapping,#trmagencyrecorddtos})")
+    @PreAuthorize("hasPermission(this.trmagencyrecordService.getTrmagencyrecordByEntities(this.trmagencyrecordMapping.toDomain(#trmagencyrecorddtos)),'ehr-TRMAGENCYRECORD-Update')")
     @ApiOperation(value = "UpdateBatch", tags = {"TRMAGENCYRECORD" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/trmagencyrecords/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<TRMAGENCYRECORDDTO> trmagencyrecorddtos) {
@@ -121,7 +118,7 @@ public class TRMAGENCYRECORDResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('','Create',{'Sql',this.trmagencyrecordMapping,#trmagencyrecorddto})")
+    @PreAuthorize("hasPermission(this.trmagencyrecordMapping.toDomain(#trmagencyrecorddto),'ehr-TRMAGENCYRECORD-Create')")
     @ApiOperation(value = "Create", tags = {"TRMAGENCYRECORD" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmagencyrecords")
     @Transactional
@@ -132,7 +129,7 @@ public class TRMAGENCYRECORDResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.trmagencyrecordMapping,#trmagencyrecorddtos})")
+    @PreAuthorize("hasPermission(this.trmagencyrecordMapping.toDomain(#trmagencyrecorddtos),'ehr-TRMAGENCYRECORD-Create')")
     @ApiOperation(value = "createBatch", tags = {"TRMAGENCYRECORD" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmagencyrecords/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<TRMAGENCYRECORDDTO> trmagencyrecorddtos) {
@@ -162,3 +159,4 @@ public class TRMAGENCYRECORDResource {
                 .body(new PageImpl(trmagencyrecordMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 }
+

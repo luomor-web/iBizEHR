@@ -215,6 +215,26 @@ public class TRMTRAINACTMENTServiceImpl extends ServiceImpl<TRMTRAINACTMENTMappe
         return true;
     }
 
+    @Override
+    public List<TRMTRAINACTMENT> getTrmtrainactmentByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<TRMTRAINACTMENT> getTrmtrainactmentByEntities(List<TRMTRAINACTMENT> entities) {
+        List ids =new ArrayList();
+        for(TRMTRAINACTMENT entity : entities){
+            Serializable id=entity.getTrmtrainactmentid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

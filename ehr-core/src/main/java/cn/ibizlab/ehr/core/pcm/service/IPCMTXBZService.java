@@ -52,6 +52,9 @@ public interface IPCMTXBZService extends IService<PCMTXBZ>{
      */
     boolean execute(String sql, Map param);
 
+    List<PCMTXBZ> getPcmtxbzByIds(List<String> ids) ;
+    List<PCMTXBZ> getPcmtxbzByEntities(List<PCMTXBZ> entities) ;
+
 }
 
 

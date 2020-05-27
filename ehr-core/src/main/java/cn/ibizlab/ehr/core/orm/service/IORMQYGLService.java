@@ -54,6 +54,9 @@ public interface IORMQYGLService extends IService<ORMQYGL>{
      */
     boolean execute(String sql, Map param);
 
+    List<ORMQYGL> getOrmqyglByIds(List<String> ids) ;
+    List<ORMQYGL> getOrmqyglByEntities(List<ORMQYGL> entities) ;
+
 }
 
 

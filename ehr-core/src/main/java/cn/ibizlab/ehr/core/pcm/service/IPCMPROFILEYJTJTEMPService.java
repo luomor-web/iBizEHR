@@ -52,6 +52,9 @@ public interface IPCMPROFILEYJTJTEMPService extends IService<PCMPROFILEYJTJTEMP>
      */
     boolean execute(String sql, Map param);
 
+    List<PCMPROFILEYJTJTEMP> getPcmprofileyjtjtempByIds(List<String> ids) ;
+    List<PCMPROFILEYJTJTEMP> getPcmprofileyjtjtempByEntities(List<PCMPROFILEYJTJTEMP> entities) ;
+
 }
 
 

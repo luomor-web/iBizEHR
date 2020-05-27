@@ -238,6 +238,26 @@ public class TRMTEACHERCHARGEServiceImpl extends ServiceImpl<TRMTEACHERCHARGEMap
         return true;
     }
 
+    @Override
+    public List<TRMTEACHERCHARGE> getTrmteacherchargeByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<TRMTEACHERCHARGE> getTrmteacherchargeByEntities(List<TRMTEACHERCHARGE> entities) {
+        List ids =new ArrayList();
+        for(TRMTEACHERCHARGE entity : entities){
+            Serializable id=entity.getTrmteacherchargeid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

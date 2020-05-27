@@ -179,6 +179,26 @@ public class VACDAYOFFServiceImpl extends ServiceImpl<VACDAYOFFMapper, VACDAYOFF
         return true;
     }
 
+    @Override
+    public List<VACDAYOFF> getVacdayoffByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<VACDAYOFF> getVacdayoffByEntities(List<VACDAYOFF> entities) {
+        List ids =new ArrayList();
+        for(VACDAYOFF entity : entities){
+            Serializable id=entity.getVacdayoffid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

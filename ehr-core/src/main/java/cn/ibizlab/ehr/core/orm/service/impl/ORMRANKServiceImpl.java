@@ -239,6 +239,26 @@ public class ORMRANKServiceImpl extends ServiceImpl<ORMRANKMapper, ORMRANK> impl
         return true;
     }
 
+    @Override
+    public List<ORMRANK> getOrmrankByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<ORMRANK> getOrmrankByEntities(List<ORMRANK> entities) {
+        List ids =new ArrayList();
+        for(ORMRANK entity : entities){
+            Serializable id=entity.getOrmrankid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

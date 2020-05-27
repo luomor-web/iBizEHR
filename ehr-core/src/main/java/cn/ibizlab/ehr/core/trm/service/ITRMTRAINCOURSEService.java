@@ -58,6 +58,9 @@ public interface ITRMTRAINCOURSEService extends IService<TRMTRAINCOURSE>{
      */
     boolean execute(String sql, Map param);
 
+    List<TRMTRAINCOURSE> getTrmtraincourseByIds(List<String> ids) ;
+    List<TRMTRAINCOURSE> getTrmtraincourseByEntities(List<TRMTRAINCOURSE> entities) ;
+
 }
 
 

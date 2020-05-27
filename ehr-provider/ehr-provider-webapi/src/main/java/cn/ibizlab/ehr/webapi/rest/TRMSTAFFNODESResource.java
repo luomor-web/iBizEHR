@@ -22,6 +22,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.access.prepost.PostAuthorize;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -39,15 +40,13 @@ import cn.ibizlab.ehr.core.trm.filter.TRMSTAFFNODESSearchContext;
 public class TRMSTAFFNODESResource {
 
     @Autowired
-    private ITRMSTAFFNODESService trmstaffnodesService;
+    public ITRMSTAFFNODESService trmstaffnodesService;
 
     @Autowired
     @Lazy
     public TRMSTAFFNODESMapping trmstaffnodesMapping;
 
-    public TRMSTAFFNODESDTO permissionDTO=new TRMSTAFFNODESDTO();
-
-    @PreAuthorize("hasPermission(#trmstaffnodes_id,'Remove',{'Sql',this.trmstaffnodesMapping,this.permissionDTO})")
+    @PreAuthorize("hasPermission(this.trmstaffnodesService.get(#trmstaffnodes_id),'ehr-TRMSTAFFNODES-Remove')")
     @ApiOperation(value = "Remove", tags = {"TRMSTAFFNODES" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/trmstaffnodes/{trmstaffnodes_id}")
     @Transactional
@@ -55,7 +54,7 @@ public class TRMSTAFFNODESResource {
          return ResponseEntity.status(HttpStatus.OK).body(trmstaffnodesService.remove(trmstaffnodes_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.trmstaffnodesMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission(this.trmstaffnodesService.getTrmstaffnodesByIds(#ids),'ehr-TRMSTAFFNODES-Remove')")
     @ApiOperation(value = "RemoveBatch", tags = {"TRMSTAFFNODES" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/trmstaffnodes/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -63,7 +62,7 @@ public class TRMSTAFFNODESResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission(#trmstaffnodes_id,'Get',{'Sql',this.trmstaffnodesMapping,this.permissionDTO})")
+    @PostAuthorize("hasPermission(this.trmstaffnodesMapping.toDomain(returnObject.body),'ehr-TRMSTAFFNODES-Get')")
     @ApiOperation(value = "Get", tags = {"TRMSTAFFNODES" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/trmstaffnodes/{trmstaffnodes_id}")
     public ResponseEntity<TRMSTAFFNODESDTO> get(@PathVariable("trmstaffnodes_id") String trmstaffnodes_id) {
@@ -72,14 +71,13 @@ public class TRMSTAFFNODESResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMSTAFFNODES-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"TRMSTAFFNODES" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmstaffnodes/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody TRMSTAFFNODESDTO trmstaffnodesdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(trmstaffnodesService.checkKey(trmstaffnodesMapping.toDomain(trmstaffnodesdto)));
     }
 
-    @PreAuthorize("hasPermission(#trmstaffnodes_id,'Update',{'Sql',this.trmstaffnodesMapping,#trmstaffnodesdto})")
+    @PreAuthorize("hasPermission(this.trmstaffnodesService.get(#trmstaffnodes_id),'ehr-TRMSTAFFNODES-Update')")
     @ApiOperation(value = "Update", tags = {"TRMSTAFFNODES" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/trmstaffnodes/{trmstaffnodes_id}")
     @Transactional
@@ -91,7 +89,7 @@ public class TRMSTAFFNODESResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.trmstaffnodesMapping,#trmstaffnodesdtos})")
+    @PreAuthorize("hasPermission(this.trmstaffnodesService.getTrmstaffnodesByEntities(this.trmstaffnodesMapping.toDomain(#trmstaffnodesdtos)),'ehr-TRMSTAFFNODES-Update')")
     @ApiOperation(value = "UpdateBatch", tags = {"TRMSTAFFNODES" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/trmstaffnodes/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<TRMSTAFFNODESDTO> trmstaffnodesdtos) {
@@ -99,14 +97,14 @@ public class TRMSTAFFNODESResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('','Save',{'Sql',this.trmstaffnodesMapping,#trmstaffnodesdto})")
+    @PreAuthorize("hasPermission(this.trmstaffnodesMapping.toDomain(#trmstaffnodesdto),'ehr-TRMSTAFFNODES-Save')")
     @ApiOperation(value = "Save", tags = {"TRMSTAFFNODES" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmstaffnodes/save")
     public ResponseEntity<Boolean> save(@RequestBody TRMSTAFFNODESDTO trmstaffnodesdto) {
         return ResponseEntity.status(HttpStatus.OK).body(trmstaffnodesService.save(trmstaffnodesMapping.toDomain(trmstaffnodesdto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.trmstaffnodesMapping,#trmstaffnodesdtos})")
+    @PreAuthorize("hasPermission(this.trmstaffnodesMapping.toDomain(#trmstaffnodesdtos),'ehr-TRMSTAFFNODES-Save')")
     @ApiOperation(value = "SaveBatch", tags = {"TRMSTAFFNODES" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmstaffnodes/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<TRMSTAFFNODESDTO> trmstaffnodesdtos) {
@@ -114,14 +112,13 @@ public class TRMSTAFFNODESResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMSTAFFNODES-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"TRMSTAFFNODES" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/trmstaffnodes/getdraft")
     public ResponseEntity<TRMSTAFFNODESDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(trmstaffnodesMapping.toDto(trmstaffnodesService.getDraft(new TRMSTAFFNODES())));
     }
 
-    @PreAuthorize("hasPermission('','Create',{'Sql',this.trmstaffnodesMapping,#trmstaffnodesdto})")
+    @PreAuthorize("hasPermission(this.trmstaffnodesMapping.toDomain(#trmstaffnodesdto),'ehr-TRMSTAFFNODES-Create')")
     @ApiOperation(value = "Create", tags = {"TRMSTAFFNODES" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmstaffnodes")
     @Transactional
@@ -132,7 +129,7 @@ public class TRMSTAFFNODESResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.trmstaffnodesMapping,#trmstaffnodesdtos})")
+    @PreAuthorize("hasPermission(this.trmstaffnodesMapping.toDomain(#trmstaffnodesdtos),'ehr-TRMSTAFFNODES-Create')")
     @ApiOperation(value = "createBatch", tags = {"TRMSTAFFNODES" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmstaffnodes/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<TRMSTAFFNODESDTO> trmstaffnodesdtos) {
@@ -162,3 +159,4 @@ public class TRMSTAFFNODESResource {
                 .body(new PageImpl(trmstaffnodesMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 }
+

@@ -52,6 +52,9 @@ public interface IPARNDLHMBKHService extends IService<PARNDLHMBKH>{
      */
     boolean execute(String sql, Map param);
 
+    List<PARNDLHMBKH> getParndlhmbkhByIds(List<String> ids) ;
+    List<PARNDLHMBKH> getParndlhmbkhByEntities(List<PARNDLHMBKH> entities) ;
+
 }
 
 

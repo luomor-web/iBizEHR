@@ -56,6 +56,9 @@ public interface IPCMZJDYZWService extends IService<PCMZJDYZW>{
      */
     boolean execute(String sql, Map param);
 
+    List<PCMZJDYZW> getPcmzjdyzwByIds(List<String> ids) ;
+    List<PCMZJDYZW> getPcmzjdyzwByEntities(List<PCMZJDYZW> entities) ;
+
 }
 
 

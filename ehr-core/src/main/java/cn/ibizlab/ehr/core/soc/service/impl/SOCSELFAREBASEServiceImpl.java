@@ -221,6 +221,26 @@ public class SOCSELFAREBASEServiceImpl extends ServiceImpl<SOCSELFAREBASEMapper,
         return true;
     }
 
+    @Override
+    public List<SOCSELFAREBASE> getSocselfarebaseByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<SOCSELFAREBASE> getSocselfarebaseByEntities(List<SOCSELFAREBASE> entities) {
+        List ids =new ArrayList();
+        for(SOCSELFAREBASE entity : entities){
+            Serializable id=entity.getSocselfarebaseid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

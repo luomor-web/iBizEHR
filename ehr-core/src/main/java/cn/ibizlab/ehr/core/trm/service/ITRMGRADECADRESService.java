@@ -68,6 +68,9 @@ public interface ITRMGRADECADRESService extends IService<TRMGRADECADRES>{
      */
     boolean execute(String sql, Map param);
 
+    List<TRMGRADECADRES> getTrmgradecadresByIds(List<String> ids) ;
+    List<TRMGRADECADRES> getTrmgradecadresByEntities(List<TRMGRADECADRES> entities) ;
+
 }
 
 

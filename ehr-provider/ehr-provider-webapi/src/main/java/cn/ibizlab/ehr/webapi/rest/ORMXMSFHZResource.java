@@ -22,6 +22,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.access.prepost.PostAuthorize;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -39,15 +40,13 @@ import cn.ibizlab.ehr.core.orm.filter.ORMXMSFHZSearchContext;
 public class ORMXMSFHZResource {
 
     @Autowired
-    private IORMXMSFHZService ormxmsfhzService;
+    public IORMXMSFHZService ormxmsfhzService;
 
     @Autowired
     @Lazy
     public ORMXMSFHZMapping ormxmsfhzMapping;
 
-    public ORMXMSFHZDTO permissionDTO=new ORMXMSFHZDTO();
-
-    @PreAuthorize("hasPermission(#ormxmsfhz_id,'Remove',{'Sql',this.ormxmsfhzMapping,this.permissionDTO})")
+    @PreAuthorize("hasPermission(this.ormxmsfhzService.get(#ormxmsfhz_id),'ehr-ORMXMSFHZ-Remove')")
     @ApiOperation(value = "Remove", tags = {"ORMXMSFHZ" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/ormxmsfhzs/{ormxmsfhz_id}")
     @Transactional
@@ -55,7 +54,7 @@ public class ORMXMSFHZResource {
          return ResponseEntity.status(HttpStatus.OK).body(ormxmsfhzService.remove(ormxmsfhz_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.ormxmsfhzMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission(this.ormxmsfhzService.getOrmxmsfhzByIds(#ids),'ehr-ORMXMSFHZ-Remove')")
     @ApiOperation(value = "RemoveBatch", tags = {"ORMXMSFHZ" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/ormxmsfhzs/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -63,7 +62,7 @@ public class ORMXMSFHZResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('','Create',{'Sql',this.ormxmsfhzMapping,#ormxmsfhzdto})")
+    @PreAuthorize("hasPermission(this.ormxmsfhzMapping.toDomain(#ormxmsfhzdto),'ehr-ORMXMSFHZ-Create')")
     @ApiOperation(value = "Create", tags = {"ORMXMSFHZ" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormxmsfhzs")
     @Transactional
@@ -74,7 +73,7 @@ public class ORMXMSFHZResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.ormxmsfhzMapping,#ormxmsfhzdtos})")
+    @PreAuthorize("hasPermission(this.ormxmsfhzMapping.toDomain(#ormxmsfhzdtos),'ehr-ORMXMSFHZ-Create')")
     @ApiOperation(value = "createBatch", tags = {"ORMXMSFHZ" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormxmsfhzs/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<ORMXMSFHZDTO> ormxmsfhzdtos) {
@@ -82,7 +81,7 @@ public class ORMXMSFHZResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission(#ormxmsfhz_id,'Update',{'Sql',this.ormxmsfhzMapping,#ormxmsfhzdto})")
+    @PreAuthorize("hasPermission(this.ormxmsfhzService.get(#ormxmsfhz_id),'ehr-ORMXMSFHZ-Update')")
     @ApiOperation(value = "Update", tags = {"ORMXMSFHZ" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/ormxmsfhzs/{ormxmsfhz_id}")
     @Transactional
@@ -94,7 +93,7 @@ public class ORMXMSFHZResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.ormxmsfhzMapping,#ormxmsfhzdtos})")
+    @PreAuthorize("hasPermission(this.ormxmsfhzService.getOrmxmsfhzByEntities(this.ormxmsfhzMapping.toDomain(#ormxmsfhzdtos)),'ehr-ORMXMSFHZ-Update')")
     @ApiOperation(value = "UpdateBatch", tags = {"ORMXMSFHZ" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/ormxmsfhzs/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<ORMXMSFHZDTO> ormxmsfhzdtos) {
@@ -102,21 +101,19 @@ public class ORMXMSFHZResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMXMSFHZ-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"ORMXMSFHZ" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/ormxmsfhzs/getdraft")
     public ResponseEntity<ORMXMSFHZDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(ormxmsfhzMapping.toDto(ormxmsfhzService.getDraft(new ORMXMSFHZ())));
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMXMSFHZ-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"ORMXMSFHZ" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormxmsfhzs/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody ORMXMSFHZDTO ormxmsfhzdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(ormxmsfhzService.checkKey(ormxmsfhzMapping.toDomain(ormxmsfhzdto)));
     }
 
-    @PreAuthorize("hasPermission(#ormxmsfhz_id,'Get',{'Sql',this.ormxmsfhzMapping,this.permissionDTO})")
+    @PostAuthorize("hasPermission(this.ormxmsfhzMapping.toDomain(returnObject.body),'ehr-ORMXMSFHZ-Get')")
     @ApiOperation(value = "Get", tags = {"ORMXMSFHZ" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/ormxmsfhzs/{ormxmsfhz_id}")
     public ResponseEntity<ORMXMSFHZDTO> get(@PathVariable("ormxmsfhz_id") String ormxmsfhz_id) {
@@ -125,14 +122,14 @@ public class ORMXMSFHZResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('','Save',{'Sql',this.ormxmsfhzMapping,#ormxmsfhzdto})")
+    @PreAuthorize("hasPermission(this.ormxmsfhzMapping.toDomain(#ormxmsfhzdto),'ehr-ORMXMSFHZ-Save')")
     @ApiOperation(value = "Save", tags = {"ORMXMSFHZ" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormxmsfhzs/save")
     public ResponseEntity<Boolean> save(@RequestBody ORMXMSFHZDTO ormxmsfhzdto) {
         return ResponseEntity.status(HttpStatus.OK).body(ormxmsfhzService.save(ormxmsfhzMapping.toDomain(ormxmsfhzdto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.ormxmsfhzMapping,#ormxmsfhzdtos})")
+    @PreAuthorize("hasPermission(this.ormxmsfhzMapping.toDomain(#ormxmsfhzdtos),'ehr-ORMXMSFHZ-Save')")
     @ApiOperation(value = "SaveBatch", tags = {"ORMXMSFHZ" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormxmsfhzs/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<ORMXMSFHZDTO> ormxmsfhzdtos) {
@@ -183,3 +180,4 @@ public class ORMXMSFHZResource {
                 .body(new PageImpl(ormxmsfhzMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 }
+

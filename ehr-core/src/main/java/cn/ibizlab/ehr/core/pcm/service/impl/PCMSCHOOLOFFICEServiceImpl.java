@@ -216,6 +216,26 @@ public class PCMSCHOOLOFFICEServiceImpl extends ServiceImpl<PCMSCHOOLOFFICEMappe
         return true;
     }
 
+    @Override
+    public List<PCMSCHOOLOFFICE> getPcmschoolofficeByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<PCMSCHOOLOFFICE> getPcmschoolofficeByEntities(List<PCMSCHOOLOFFICE> entities) {
+        List ids =new ArrayList();
+        for(PCMSCHOOLOFFICE entity : entities){
+            Serializable id=entity.getPcmschoolofficeid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

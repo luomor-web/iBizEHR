@@ -305,6 +305,26 @@ public class ATTENDENCESETUPServiceImpl extends ServiceImpl<ATTENDENCESETUPMappe
         return true;
     }
 
+    @Override
+    public List<ATTENDENCESETUP> getAttendencesetupByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<ATTENDENCESETUP> getAttendencesetupByEntities(List<ATTENDENCESETUP> entities) {
+        List ids =new ArrayList();
+        for(ATTENDENCESETUP entity : entities){
+            Serializable id=entity.getAttendencesetupid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

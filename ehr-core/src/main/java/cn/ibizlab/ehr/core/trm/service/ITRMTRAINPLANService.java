@@ -60,6 +60,9 @@ public interface ITRMTRAINPLANService extends IService<TRMTRAINPLAN>{
      */
     boolean execute(String sql, Map param);
 
+    List<TRMTRAINPLAN> getTrmtrainplanByIds(List<String> ids) ;
+    List<TRMTRAINPLAN> getTrmtrainplanByEntities(List<TRMTRAINPLAN> entities) ;
+
 }
 
 

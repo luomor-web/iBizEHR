@@ -55,6 +55,9 @@ public interface IVACSYNJCXService extends IService<VACSYNJCX>{
      */
     boolean execute(String sql, Map param);
 
+    List<VACSYNJCX> getVacsynjcxByIds(List<String> ids) ;
+    List<VACSYNJCX> getVacsynjcxByEntities(List<VACSYNJCX> entities) ;
+
 }
 
 

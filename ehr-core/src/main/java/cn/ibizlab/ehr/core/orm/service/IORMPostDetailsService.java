@@ -56,6 +56,9 @@ public interface IORMPostDetailsService extends IService<ORMPostDetails>{
      */
     boolean execute(String sql, Map param);
 
+    List<ORMPostDetails> getOrmpostdetailsByIds(List<String> ids) ;
+    List<ORMPostDetails> getOrmpostdetailsByEntities(List<ORMPostDetails> entities) ;
+
 }
 
 

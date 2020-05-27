@@ -800,6 +800,26 @@ public class PCMPROFILEServiceImpl extends ServiceImpl<PCMPROFILEMapper, PCMPROF
         return true;
     }
 
+    @Override
+    public List<PCMPROFILE> getPcmprofileByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<PCMPROFILE> getPcmprofileByEntities(List<PCMPROFILE> entities) {
+        List ids =new ArrayList();
+        for(PCMPROFILE entity : entities){
+            Serializable id=entity.getPcmprofileid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

@@ -52,6 +52,9 @@ public interface ISALSUBJECTService extends IService<SALSUBJECT>{
      */
     boolean execute(String sql, Map param);
 
+    List<SALSUBJECT> getSalsubjectByIds(List<String> ids) ;
+    List<SALSUBJECT> getSalsubjectByEntities(List<SALSUBJECT> entities) ;
+
 }
 
 

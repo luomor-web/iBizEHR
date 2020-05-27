@@ -416,6 +416,26 @@ public class PIMCONTRACTServiceImpl extends ServiceImpl<PIMCONTRACTMapper, PIMCO
         return true;
     }
 
+    @Override
+    public List<PIMCONTRACT> getPimcontractByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<PIMCONTRACT> getPimcontractByEntities(List<PIMCONTRACT> entities) {
+        List ids =new ArrayList();
+        for(PIMCONTRACT entity : entities){
+            Serializable id=entity.getPimcontractid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

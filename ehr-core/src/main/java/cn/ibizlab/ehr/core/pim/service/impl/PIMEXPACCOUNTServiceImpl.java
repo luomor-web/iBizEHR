@@ -215,6 +215,26 @@ public class PIMEXPACCOUNTServiceImpl extends ServiceImpl<PIMEXPACCOUNTMapper, P
         return true;
     }
 
+    @Override
+    public List<PIMEXPACCOUNT> getPimexpaccountByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<PIMEXPACCOUNT> getPimexpaccountByEntities(List<PIMEXPACCOUNT> entities) {
+        List ids =new ArrayList();
+        for(PIMEXPACCOUNT entity : entities){
+            Serializable id=entity.getPimexpaccountid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

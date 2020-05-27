@@ -182,6 +182,26 @@ public class PIMEXAMINATIONRESULTSServiceImpl extends ServiceImpl<PIMEXAMINATION
         return true;
     }
 
+    @Override
+    public List<PIMEXAMINATIONRESULTS> getPimexaminationresultsByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<PIMEXAMINATIONRESULTS> getPimexaminationresultsByEntities(List<PIMEXAMINATIONRESULTS> entities) {
+        List ids =new ArrayList();
+        for(PIMEXAMINATIONRESULTS entity : entities){
+            Serializable id=entity.getPimexaminationresultsid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

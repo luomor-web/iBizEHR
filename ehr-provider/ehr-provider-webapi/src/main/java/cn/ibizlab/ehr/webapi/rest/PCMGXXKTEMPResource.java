@@ -22,6 +22,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.access.prepost.PostAuthorize;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -39,22 +40,19 @@ import cn.ibizlab.ehr.core.pcm.filter.PCMGXXKTEMPSearchContext;
 public class PCMGXXKTEMPResource {
 
     @Autowired
-    private IPCMGXXKTEMPService pcmgxxktempService;
+    public IPCMGXXKTEMPService pcmgxxktempService;
 
     @Autowired
     @Lazy
     public PCMGXXKTEMPMapping pcmgxxktempMapping;
 
-    public PCMGXXKTEMPDTO permissionDTO=new PCMGXXKTEMPDTO();
-
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMGXXKTEMP-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"PCMGXXKTEMP" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmgxxktemps/getdraft")
     public ResponseEntity<PCMGXXKTEMPDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(pcmgxxktempMapping.toDto(pcmgxxktempService.getDraft(new PCMGXXKTEMP())));
     }
 
-    @PreAuthorize("hasPermission('','Create',{'Sql',this.pcmgxxktempMapping,#pcmgxxktempdto})")
+    @PreAuthorize("hasPermission(this.pcmgxxktempMapping.toDomain(#pcmgxxktempdto),'ehr-PCMGXXKTEMP-Create')")
     @ApiOperation(value = "Create", tags = {"PCMGXXKTEMP" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmgxxktemps")
     @Transactional
@@ -65,7 +63,7 @@ public class PCMGXXKTEMPResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.pcmgxxktempMapping,#pcmgxxktempdtos})")
+    @PreAuthorize("hasPermission(this.pcmgxxktempMapping.toDomain(#pcmgxxktempdtos),'ehr-PCMGXXKTEMP-Create')")
     @ApiOperation(value = "createBatch", tags = {"PCMGXXKTEMP" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmgxxktemps/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PCMGXXKTEMPDTO> pcmgxxktempdtos) {
@@ -73,7 +71,7 @@ public class PCMGXXKTEMPResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission(#pcmgxxktemp_id,'Remove',{'Sql',this.pcmgxxktempMapping,this.permissionDTO})")
+    @PreAuthorize("hasPermission(this.pcmgxxktempService.get(#pcmgxxktemp_id),'ehr-PCMGXXKTEMP-Remove')")
     @ApiOperation(value = "Remove", tags = {"PCMGXXKTEMP" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmgxxktemps/{pcmgxxktemp_id}")
     @Transactional
@@ -81,7 +79,7 @@ public class PCMGXXKTEMPResource {
          return ResponseEntity.status(HttpStatus.OK).body(pcmgxxktempService.remove(pcmgxxktemp_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.pcmgxxktempMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission(this.pcmgxxktempService.getPcmgxxktempByIds(#ids),'ehr-PCMGXXKTEMP-Remove')")
     @ApiOperation(value = "RemoveBatch", tags = {"PCMGXXKTEMP" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmgxxktemps/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -89,21 +87,20 @@ public class PCMGXXKTEMPResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMGXXKTEMP-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"PCMGXXKTEMP" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmgxxktemps/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PCMGXXKTEMPDTO pcmgxxktempdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pcmgxxktempService.checkKey(pcmgxxktempMapping.toDomain(pcmgxxktempdto)));
     }
 
-    @PreAuthorize("hasPermission('','Save',{'Sql',this.pcmgxxktempMapping,#pcmgxxktempdto})")
+    @PreAuthorize("hasPermission(this.pcmgxxktempMapping.toDomain(#pcmgxxktempdto),'ehr-PCMGXXKTEMP-Save')")
     @ApiOperation(value = "Save", tags = {"PCMGXXKTEMP" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmgxxktemps/save")
     public ResponseEntity<Boolean> save(@RequestBody PCMGXXKTEMPDTO pcmgxxktempdto) {
         return ResponseEntity.status(HttpStatus.OK).body(pcmgxxktempService.save(pcmgxxktempMapping.toDomain(pcmgxxktempdto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.pcmgxxktempMapping,#pcmgxxktempdtos})")
+    @PreAuthorize("hasPermission(this.pcmgxxktempMapping.toDomain(#pcmgxxktempdtos),'ehr-PCMGXXKTEMP-Save')")
     @ApiOperation(value = "SaveBatch", tags = {"PCMGXXKTEMP" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmgxxktemps/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PCMGXXKTEMPDTO> pcmgxxktempdtos) {
@@ -111,7 +108,7 @@ public class PCMGXXKTEMPResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission(#pcmgxxktemp_id,'Get',{'Sql',this.pcmgxxktempMapping,this.permissionDTO})")
+    @PostAuthorize("hasPermission(this.pcmgxxktempMapping.toDomain(returnObject.body),'ehr-PCMGXXKTEMP-Get')")
     @ApiOperation(value = "Get", tags = {"PCMGXXKTEMP" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmgxxktemps/{pcmgxxktemp_id}")
     public ResponseEntity<PCMGXXKTEMPDTO> get(@PathVariable("pcmgxxktemp_id") String pcmgxxktemp_id) {
@@ -120,7 +117,7 @@ public class PCMGXXKTEMPResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#pcmgxxktemp_id,'Update',{'Sql',this.pcmgxxktempMapping,#pcmgxxktempdto})")
+    @PreAuthorize("hasPermission(this.pcmgxxktempService.get(#pcmgxxktemp_id),'ehr-PCMGXXKTEMP-Update')")
     @ApiOperation(value = "Update", tags = {"PCMGXXKTEMP" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmgxxktemps/{pcmgxxktemp_id}")
     @Transactional
@@ -132,7 +129,7 @@ public class PCMGXXKTEMPResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.pcmgxxktempMapping,#pcmgxxktempdtos})")
+    @PreAuthorize("hasPermission(this.pcmgxxktempService.getPcmgxxktempByEntities(this.pcmgxxktempMapping.toDomain(#pcmgxxktempdtos)),'ehr-PCMGXXKTEMP-Update')")
     @ApiOperation(value = "UpdateBatch", tags = {"PCMGXXKTEMP" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmgxxktemps/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PCMGXXKTEMPDTO> pcmgxxktempdtos) {
@@ -161,7 +158,6 @@ public class PCMGXXKTEMPResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pcmgxxktempMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMGXXKTEMP-GetDraft-all')")
     @ApiOperation(value = "GetDraftByPCMGXML", tags = {"PCMGXXKTEMP" },  notes = "GetDraftByPCMGXML")
     @RequestMapping(method = RequestMethod.GET, value = "/pcmgxmls/{pcmgxml_id}/pcmgxxktemps/getdraft")
     public ResponseEntity<PCMGXXKTEMPDTO> getDraftByPCMGXML(@PathVariable("pcmgxml_id") String pcmgxml_id) {
@@ -170,7 +166,7 @@ public class PCMGXXKTEMPResource {
         return ResponseEntity.status(HttpStatus.OK).body(pcmgxxktempMapping.toDto(pcmgxxktempService.getDraft(domain)));
     }
 
-    @PreAuthorize("hasPermission('','Create',{'Sql',this.pcmgxxktempMapping,#pcmgxxktempdto})")
+    @PreAuthorize("hasPermission(this.pcmgxxktempMapping.toDomain(#pcmgxxktempdto),'ehr-PCMGXXKTEMP-Create')")
     @ApiOperation(value = "CreateByPCMGXML", tags = {"PCMGXXKTEMP" },  notes = "CreateByPCMGXML")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmgxmls/{pcmgxml_id}/pcmgxxktemps")
     @Transactional
@@ -182,7 +178,7 @@ public class PCMGXXKTEMPResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.pcmgxxktempMapping,#pcmgxxktempdtos})")
+    @PreAuthorize("hasPermission(this.pcmgxxktempMapping.toDomain(#pcmgxxktempdtos),'ehr-PCMGXXKTEMP-Create')")
     @ApiOperation(value = "createBatchByPCMGXML", tags = {"PCMGXXKTEMP" },  notes = "createBatchByPCMGXML")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmgxmls/{pcmgxml_id}/pcmgxxktemps/batch")
     public ResponseEntity<Boolean> createBatchByPCMGXML(@PathVariable("pcmgxml_id") String pcmgxml_id, @RequestBody List<PCMGXXKTEMPDTO> pcmgxxktempdtos) {
@@ -194,7 +190,7 @@ public class PCMGXXKTEMPResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission(#pcmgxxktemp_id,'Remove',{'Sql',this.pcmgxxktempMapping,this.permissionDTO})")
+    @PreAuthorize("hasPermission(this.pcmgxxktempService.get(#pcmgxxktemp_id),'ehr-PCMGXXKTEMP-Remove')")
     @ApiOperation(value = "RemoveByPCMGXML", tags = {"PCMGXXKTEMP" },  notes = "RemoveByPCMGXML")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmgxmls/{pcmgxml_id}/pcmgxxktemps/{pcmgxxktemp_id}")
     @Transactional
@@ -202,7 +198,7 @@ public class PCMGXXKTEMPResource {
 		return ResponseEntity.status(HttpStatus.OK).body(pcmgxxktempService.remove(pcmgxxktemp_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.pcmgxxktempMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission(this.pcmgxxktempService.getPcmgxxktempByIds(#ids),'ehr-PCMGXXKTEMP-Remove')")
     @ApiOperation(value = "RemoveBatchByPCMGXML", tags = {"PCMGXXKTEMP" },  notes = "RemoveBatchByPCMGXML")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmgxmls/{pcmgxml_id}/pcmgxxktemps/batch")
     public ResponseEntity<Boolean> removeBatchByPCMGXML(@RequestBody List<String> ids) {
@@ -210,14 +206,13 @@ public class PCMGXXKTEMPResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMGXXKTEMP-CheckKey-all')")
     @ApiOperation(value = "CheckKeyByPCMGXML", tags = {"PCMGXXKTEMP" },  notes = "CheckKeyByPCMGXML")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmgxmls/{pcmgxml_id}/pcmgxxktemps/checkkey")
     public ResponseEntity<Boolean> checkKeyByPCMGXML(@PathVariable("pcmgxml_id") String pcmgxml_id, @RequestBody PCMGXXKTEMPDTO pcmgxxktempdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pcmgxxktempService.checkKey(pcmgxxktempMapping.toDomain(pcmgxxktempdto)));
     }
 
-    @PreAuthorize("hasPermission('','Save',{'Sql',this.pcmgxxktempMapping,#pcmgxxktempdto})")
+    @PreAuthorize("hasPermission(this.pcmgxxktempMapping.toDomain(#pcmgxxktempdto),'ehr-PCMGXXKTEMP-Save')")
     @ApiOperation(value = "SaveByPCMGXML", tags = {"PCMGXXKTEMP" },  notes = "SaveByPCMGXML")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmgxmls/{pcmgxml_id}/pcmgxxktemps/save")
     public ResponseEntity<Boolean> saveByPCMGXML(@PathVariable("pcmgxml_id") String pcmgxml_id, @RequestBody PCMGXXKTEMPDTO pcmgxxktempdto) {
@@ -226,7 +221,7 @@ public class PCMGXXKTEMPResource {
         return ResponseEntity.status(HttpStatus.OK).body(pcmgxxktempService.save(domain));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.pcmgxxktempMapping,#pcmgxxktempdtos})")
+    @PreAuthorize("hasPermission(this.pcmgxxktempMapping.toDomain(#pcmgxxktempdtos),'ehr-PCMGXXKTEMP-Save')")
     @ApiOperation(value = "SaveBatchByPCMGXML", tags = {"PCMGXXKTEMP" },  notes = "SaveBatchByPCMGXML")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmgxmls/{pcmgxml_id}/pcmgxxktemps/savebatch")
     public ResponseEntity<Boolean> saveBatchByPCMGXML(@PathVariable("pcmgxml_id") String pcmgxml_id, @RequestBody List<PCMGXXKTEMPDTO> pcmgxxktempdtos) {
@@ -238,7 +233,7 @@ public class PCMGXXKTEMPResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission(#pcmgxxktemp_id,'Get',{'Sql',this.pcmgxxktempMapping,this.permissionDTO})")
+    @PostAuthorize("hasPermission(this.pcmgxxktempMapping.toDomain(returnObject.body),'ehr-PCMGXXKTEMP-Get')")
     @ApiOperation(value = "GetByPCMGXML", tags = {"PCMGXXKTEMP" },  notes = "GetByPCMGXML")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmgxmls/{pcmgxml_id}/pcmgxxktemps/{pcmgxxktemp_id}")
     public ResponseEntity<PCMGXXKTEMPDTO> getByPCMGXML(@PathVariable("pcmgxml_id") String pcmgxml_id, @PathVariable("pcmgxxktemp_id") String pcmgxxktemp_id) {
@@ -247,7 +242,7 @@ public class PCMGXXKTEMPResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#pcmgxxktemp_id,'Update',{'Sql',this.pcmgxxktempMapping,#pcmgxxktempdto})")
+    @PreAuthorize("hasPermission(this.pcmgxxktempService.get(#pcmgxxktemp_id),'ehr-PCMGXXKTEMP-Update')")
     @ApiOperation(value = "UpdateByPCMGXML", tags = {"PCMGXXKTEMP" },  notes = "UpdateByPCMGXML")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmgxmls/{pcmgxml_id}/pcmgxxktemps/{pcmgxxktemp_id}")
     @Transactional
@@ -260,7 +255,7 @@ public class PCMGXXKTEMPResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.pcmgxxktempMapping,#pcmgxxktempdtos})")
+    @PreAuthorize("hasPermission(this.pcmgxxktempService.getPcmgxxktempByEntities(this.pcmgxxktempMapping.toDomain(#pcmgxxktempdtos)),'ehr-PCMGXXKTEMP-Update')")
     @ApiOperation(value = "UpdateBatchByPCMGXML", tags = {"PCMGXXKTEMP" },  notes = "UpdateBatchByPCMGXML")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmgxmls/{pcmgxml_id}/pcmgxxktemps/batch")
     public ResponseEntity<Boolean> updateBatchByPCMGXML(@PathVariable("pcmgxml_id") String pcmgxml_id, @RequestBody List<PCMGXXKTEMPDTO> pcmgxxktempdtos) {
@@ -295,7 +290,6 @@ public class PCMGXXKTEMPResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pcmgxxktempMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMGXXKTEMP-GetDraft-all')")
     @ApiOperation(value = "GetDraftByPCMXKML", tags = {"PCMGXXKTEMP" },  notes = "GetDraftByPCMXKML")
     @RequestMapping(method = RequestMethod.GET, value = "/pcmxkmls/{pcmxkml_id}/pcmgxxktemps/getdraft")
     public ResponseEntity<PCMGXXKTEMPDTO> getDraftByPCMXKML(@PathVariable("pcmxkml_id") String pcmxkml_id) {
@@ -304,7 +298,7 @@ public class PCMGXXKTEMPResource {
         return ResponseEntity.status(HttpStatus.OK).body(pcmgxxktempMapping.toDto(pcmgxxktempService.getDraft(domain)));
     }
 
-    @PreAuthorize("hasPermission('','Create',{'Sql',this.pcmgxxktempMapping,#pcmgxxktempdto})")
+    @PreAuthorize("hasPermission(this.pcmgxxktempMapping.toDomain(#pcmgxxktempdto),'ehr-PCMGXXKTEMP-Create')")
     @ApiOperation(value = "CreateByPCMXKML", tags = {"PCMGXXKTEMP" },  notes = "CreateByPCMXKML")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmxkmls/{pcmxkml_id}/pcmgxxktemps")
     @Transactional
@@ -316,7 +310,7 @@ public class PCMGXXKTEMPResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.pcmgxxktempMapping,#pcmgxxktempdtos})")
+    @PreAuthorize("hasPermission(this.pcmgxxktempMapping.toDomain(#pcmgxxktempdtos),'ehr-PCMGXXKTEMP-Create')")
     @ApiOperation(value = "createBatchByPCMXKML", tags = {"PCMGXXKTEMP" },  notes = "createBatchByPCMXKML")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmxkmls/{pcmxkml_id}/pcmgxxktemps/batch")
     public ResponseEntity<Boolean> createBatchByPCMXKML(@PathVariable("pcmxkml_id") String pcmxkml_id, @RequestBody List<PCMGXXKTEMPDTO> pcmgxxktempdtos) {
@@ -328,7 +322,7 @@ public class PCMGXXKTEMPResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission(#pcmgxxktemp_id,'Remove',{'Sql',this.pcmgxxktempMapping,this.permissionDTO})")
+    @PreAuthorize("hasPermission(this.pcmgxxktempService.get(#pcmgxxktemp_id),'ehr-PCMGXXKTEMP-Remove')")
     @ApiOperation(value = "RemoveByPCMXKML", tags = {"PCMGXXKTEMP" },  notes = "RemoveByPCMXKML")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmxkmls/{pcmxkml_id}/pcmgxxktemps/{pcmgxxktemp_id}")
     @Transactional
@@ -336,7 +330,7 @@ public class PCMGXXKTEMPResource {
 		return ResponseEntity.status(HttpStatus.OK).body(pcmgxxktempService.remove(pcmgxxktemp_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.pcmgxxktempMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission(this.pcmgxxktempService.getPcmgxxktempByIds(#ids),'ehr-PCMGXXKTEMP-Remove')")
     @ApiOperation(value = "RemoveBatchByPCMXKML", tags = {"PCMGXXKTEMP" },  notes = "RemoveBatchByPCMXKML")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmxkmls/{pcmxkml_id}/pcmgxxktemps/batch")
     public ResponseEntity<Boolean> removeBatchByPCMXKML(@RequestBody List<String> ids) {
@@ -344,14 +338,13 @@ public class PCMGXXKTEMPResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMGXXKTEMP-CheckKey-all')")
     @ApiOperation(value = "CheckKeyByPCMXKML", tags = {"PCMGXXKTEMP" },  notes = "CheckKeyByPCMXKML")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmxkmls/{pcmxkml_id}/pcmgxxktemps/checkkey")
     public ResponseEntity<Boolean> checkKeyByPCMXKML(@PathVariable("pcmxkml_id") String pcmxkml_id, @RequestBody PCMGXXKTEMPDTO pcmgxxktempdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pcmgxxktempService.checkKey(pcmgxxktempMapping.toDomain(pcmgxxktempdto)));
     }
 
-    @PreAuthorize("hasPermission('','Save',{'Sql',this.pcmgxxktempMapping,#pcmgxxktempdto})")
+    @PreAuthorize("hasPermission(this.pcmgxxktempMapping.toDomain(#pcmgxxktempdto),'ehr-PCMGXXKTEMP-Save')")
     @ApiOperation(value = "SaveByPCMXKML", tags = {"PCMGXXKTEMP" },  notes = "SaveByPCMXKML")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmxkmls/{pcmxkml_id}/pcmgxxktemps/save")
     public ResponseEntity<Boolean> saveByPCMXKML(@PathVariable("pcmxkml_id") String pcmxkml_id, @RequestBody PCMGXXKTEMPDTO pcmgxxktempdto) {
@@ -360,7 +353,7 @@ public class PCMGXXKTEMPResource {
         return ResponseEntity.status(HttpStatus.OK).body(pcmgxxktempService.save(domain));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.pcmgxxktempMapping,#pcmgxxktempdtos})")
+    @PreAuthorize("hasPermission(this.pcmgxxktempMapping.toDomain(#pcmgxxktempdtos),'ehr-PCMGXXKTEMP-Save')")
     @ApiOperation(value = "SaveBatchByPCMXKML", tags = {"PCMGXXKTEMP" },  notes = "SaveBatchByPCMXKML")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmxkmls/{pcmxkml_id}/pcmgxxktemps/savebatch")
     public ResponseEntity<Boolean> saveBatchByPCMXKML(@PathVariable("pcmxkml_id") String pcmxkml_id, @RequestBody List<PCMGXXKTEMPDTO> pcmgxxktempdtos) {
@@ -372,7 +365,7 @@ public class PCMGXXKTEMPResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission(#pcmgxxktemp_id,'Get',{'Sql',this.pcmgxxktempMapping,this.permissionDTO})")
+    @PostAuthorize("hasPermission(this.pcmgxxktempMapping.toDomain(returnObject.body),'ehr-PCMGXXKTEMP-Get')")
     @ApiOperation(value = "GetByPCMXKML", tags = {"PCMGXXKTEMP" },  notes = "GetByPCMXKML")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmxkmls/{pcmxkml_id}/pcmgxxktemps/{pcmgxxktemp_id}")
     public ResponseEntity<PCMGXXKTEMPDTO> getByPCMXKML(@PathVariable("pcmxkml_id") String pcmxkml_id, @PathVariable("pcmgxxktemp_id") String pcmgxxktemp_id) {
@@ -381,7 +374,7 @@ public class PCMGXXKTEMPResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#pcmgxxktemp_id,'Update',{'Sql',this.pcmgxxktempMapping,#pcmgxxktempdto})")
+    @PreAuthorize("hasPermission(this.pcmgxxktempService.get(#pcmgxxktemp_id),'ehr-PCMGXXKTEMP-Update')")
     @ApiOperation(value = "UpdateByPCMXKML", tags = {"PCMGXXKTEMP" },  notes = "UpdateByPCMXKML")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmxkmls/{pcmxkml_id}/pcmgxxktemps/{pcmgxxktemp_id}")
     @Transactional
@@ -394,7 +387,7 @@ public class PCMGXXKTEMPResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.pcmgxxktempMapping,#pcmgxxktempdtos})")
+    @PreAuthorize("hasPermission(this.pcmgxxktempService.getPcmgxxktempByEntities(this.pcmgxxktempMapping.toDomain(#pcmgxxktempdtos)),'ehr-PCMGXXKTEMP-Update')")
     @ApiOperation(value = "UpdateBatchByPCMXKML", tags = {"PCMGXXKTEMP" },  notes = "UpdateBatchByPCMXKML")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmxkmls/{pcmxkml_id}/pcmgxxktemps/batch")
     public ResponseEntity<Boolean> updateBatchByPCMXKML(@PathVariable("pcmxkml_id") String pcmxkml_id, @RequestBody List<PCMGXXKTEMPDTO> pcmgxxktempdtos) {
@@ -430,3 +423,4 @@ public class PCMGXXKTEMPResource {
                 .body(new PageImpl(pcmgxxktempMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 }
+

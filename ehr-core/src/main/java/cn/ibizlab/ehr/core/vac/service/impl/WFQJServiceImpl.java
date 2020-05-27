@@ -199,6 +199,26 @@ public class WFQJServiceImpl extends ServiceImpl<WFQJMapper, WFQJ> implements IW
         return true;
     }
 
+    @Override
+    public List<WFQJ> getWfqjByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<WFQJ> getWfqjByEntities(List<WFQJ> entities) {
+        List ids =new ArrayList();
+        for(WFQJ entity : entities){
+            Serializable id=entity.getWfqjid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

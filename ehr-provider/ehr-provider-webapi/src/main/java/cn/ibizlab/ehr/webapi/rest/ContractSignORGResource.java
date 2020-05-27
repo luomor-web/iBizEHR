@@ -22,6 +22,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.access.prepost.PostAuthorize;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -39,15 +40,13 @@ import cn.ibizlab.ehr.core.pim.filter.ContractSignORGSearchContext;
 public class ContractSignORGResource {
 
     @Autowired
-    private IContractSignORGService contractsignorgService;
+    public IContractSignORGService contractsignorgService;
 
     @Autowired
     @Lazy
     public ContractSignORGMapping contractsignorgMapping;
 
-    public ContractSignORGDTO permissionDTO=new ContractSignORGDTO();
-
-    @PreAuthorize("hasPermission(#contractsignorg_id,'Get',{'Sql',this.contractsignorgMapping,this.permissionDTO})")
+    @PostAuthorize("hasPermission(this.contractsignorgMapping.toDomain(returnObject.body),'ehr-ContractSignORG-Get')")
     @ApiOperation(value = "Get", tags = {"ContractSignORG" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/contractsignorgs/{contractsignorg_id}")
     public ResponseEntity<ContractSignORGDTO> get(@PathVariable("contractsignorg_id") String contractsignorg_id) {
@@ -56,14 +55,13 @@ public class ContractSignORGResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ContractSignORG-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"ContractSignORG" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/contractsignorgs/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody ContractSignORGDTO contractsignorgdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(contractsignorgService.checkKey(contractsignorgMapping.toDomain(contractsignorgdto)));
     }
 
-    @PreAuthorize("hasPermission(#contractsignorg_id,'Update',{'Sql',this.contractsignorgMapping,#contractsignorgdto})")
+    @PreAuthorize("hasPermission(this.contractsignorgService.get(#contractsignorg_id),'ehr-ContractSignORG-Update')")
     @ApiOperation(value = "Update", tags = {"ContractSignORG" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/contractsignorgs/{contractsignorg_id}")
     @Transactional
@@ -75,7 +73,7 @@ public class ContractSignORGResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.contractsignorgMapping,#contractsignorgdtos})")
+    @PreAuthorize("hasPermission(this.contractsignorgService.getContractsignorgByEntities(this.contractsignorgMapping.toDomain(#contractsignorgdtos)),'ehr-ContractSignORG-Update')")
     @ApiOperation(value = "UpdateBatch", tags = {"ContractSignORG" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/contractsignorgs/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<ContractSignORGDTO> contractsignorgdtos) {
@@ -83,7 +81,7 @@ public class ContractSignORGResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission(#contractsignorg_id,'Remove',{'Sql',this.contractsignorgMapping,this.permissionDTO})")
+    @PreAuthorize("hasPermission(this.contractsignorgService.get(#contractsignorg_id),'ehr-ContractSignORG-Remove')")
     @ApiOperation(value = "Remove", tags = {"ContractSignORG" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/contractsignorgs/{contractsignorg_id}")
     @Transactional
@@ -91,7 +89,7 @@ public class ContractSignORGResource {
          return ResponseEntity.status(HttpStatus.OK).body(contractsignorgService.remove(contractsignorg_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.contractsignorgMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission(this.contractsignorgService.getContractsignorgByIds(#ids),'ehr-ContractSignORG-Remove')")
     @ApiOperation(value = "RemoveBatch", tags = {"ContractSignORG" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/contractsignorgs/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -99,7 +97,7 @@ public class ContractSignORGResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('','Create',{'Sql',this.contractsignorgMapping,#contractsignorgdto})")
+    @PreAuthorize("hasPermission(this.contractsignorgMapping.toDomain(#contractsignorgdto),'ehr-ContractSignORG-Create')")
     @ApiOperation(value = "Create", tags = {"ContractSignORG" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/contractsignorgs")
     @Transactional
@@ -110,7 +108,7 @@ public class ContractSignORGResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.contractsignorgMapping,#contractsignorgdtos})")
+    @PreAuthorize("hasPermission(this.contractsignorgMapping.toDomain(#contractsignorgdtos),'ehr-ContractSignORG-Create')")
     @ApiOperation(value = "createBatch", tags = {"ContractSignORG" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/contractsignorgs/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<ContractSignORGDTO> contractsignorgdtos) {
@@ -118,21 +116,20 @@ public class ContractSignORGResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ContractSignORG-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"ContractSignORG" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/contractsignorgs/getdraft")
     public ResponseEntity<ContractSignORGDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(contractsignorgMapping.toDto(contractsignorgService.getDraft(new ContractSignORG())));
     }
 
-    @PreAuthorize("hasPermission('','Save',{'Sql',this.contractsignorgMapping,#contractsignorgdto})")
+    @PreAuthorize("hasPermission(this.contractsignorgMapping.toDomain(#contractsignorgdto),'ehr-ContractSignORG-Save')")
     @ApiOperation(value = "Save", tags = {"ContractSignORG" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/contractsignorgs/save")
     public ResponseEntity<Boolean> save(@RequestBody ContractSignORGDTO contractsignorgdto) {
         return ResponseEntity.status(HttpStatus.OK).body(contractsignorgService.save(contractsignorgMapping.toDomain(contractsignorgdto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.contractsignorgMapping,#contractsignorgdtos})")
+    @PreAuthorize("hasPermission(this.contractsignorgMapping.toDomain(#contractsignorgdtos),'ehr-ContractSignORG-Save')")
     @ApiOperation(value = "SaveBatch", tags = {"ContractSignORG" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/contractsignorgs/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<ContractSignORGDTO> contractsignorgdtos) {
@@ -183,3 +180,4 @@ public class ContractSignORGResource {
                 .body(new PageImpl(contractsignorgMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 }
+

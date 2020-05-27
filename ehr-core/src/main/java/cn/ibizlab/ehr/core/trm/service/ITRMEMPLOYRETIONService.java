@@ -60,6 +60,9 @@ public interface ITRMEMPLOYRETIONService extends IService<TRMEMPLOYRETION>{
      */
     boolean execute(String sql, Map param);
 
+    List<TRMEMPLOYRETION> getTrmemployretionByIds(List<String> ids) ;
+    List<TRMEMPLOYRETION> getTrmemployretionByEntities(List<TRMEMPLOYRETION> entities) ;
+
 }
 
 

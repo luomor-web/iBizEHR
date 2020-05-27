@@ -218,6 +218,26 @@ public class PARJXKHMBServiceImpl extends ServiceImpl<PARJXKHMBMapper, PARJXKHMB
         return true;
     }
 
+    @Override
+    public List<PARJXKHMB> getParjxkhmbByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<PARJXKHMB> getParjxkhmbByEntities(List<PARJXKHMB> entities) {
+        List ids =new ArrayList();
+        for(PARJXKHMB entity : entities){
+            Serializable id=entity.getParjxkhmbid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

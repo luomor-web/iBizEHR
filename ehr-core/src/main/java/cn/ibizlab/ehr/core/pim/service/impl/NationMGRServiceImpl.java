@@ -179,6 +179,26 @@ public class NationMGRServiceImpl extends ServiceImpl<NationMGRMapper, NationMGR
         return true;
     }
 
+    @Override
+    public List<NationMGR> getNationmgrByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<NationMGR> getNationmgrByEntities(List<NationMGR> entities) {
+        List ids =new ArrayList();
+        for(NationMGR entity : entities){
+            Serializable id=entity.getNationmgrid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

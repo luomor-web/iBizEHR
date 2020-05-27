@@ -58,6 +58,9 @@ public interface ISALSCHEMEITEMService extends IService<SALSCHEMEITEM>{
      */
     boolean execute(String sql, Map param);
 
+    List<SALSCHEMEITEM> getSalschemeitemByIds(List<String> ids) ;
+    List<SALSCHEMEITEM> getSalschemeitemByEntities(List<SALSCHEMEITEM> entities) ;
+
 }
 
 

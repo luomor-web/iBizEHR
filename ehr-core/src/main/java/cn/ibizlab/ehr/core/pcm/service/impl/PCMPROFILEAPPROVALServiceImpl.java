@@ -247,6 +247,26 @@ public class PCMPROFILEAPPROVALServiceImpl extends ServiceImpl<PCMPROFILEAPPROVA
         return true;
     }
 
+    @Override
+    public List<PCMPROFILEAPPROVAL> getPcmprofileapprovalByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<PCMPROFILEAPPROVAL> getPcmprofileapprovalByEntities(List<PCMPROFILEAPPROVAL> entities) {
+        List ids =new ArrayList();
+        for(PCMPROFILEAPPROVAL entity : entities){
+            Serializable id=entity.getPcmprofileapprovalid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

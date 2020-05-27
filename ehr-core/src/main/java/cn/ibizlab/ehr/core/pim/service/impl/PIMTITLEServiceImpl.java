@@ -286,6 +286,26 @@ public class PIMTITLEServiceImpl extends ServiceImpl<PIMTITLEMapper, PIMTITLE> i
         return true;
     }
 
+    @Override
+    public List<PIMTITLE> getPimtitleByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<PIMTITLE> getPimtitleByEntities(List<PIMTITLE> entities) {
+        List ids =new ArrayList();
+        for(PIMTITLE entity : entities){
+            Serializable id=entity.getPimtitleid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

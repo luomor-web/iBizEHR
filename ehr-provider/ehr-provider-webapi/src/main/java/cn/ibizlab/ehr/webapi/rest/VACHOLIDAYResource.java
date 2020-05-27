@@ -22,6 +22,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.access.prepost.PostAuthorize;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -39,13 +40,11 @@ import cn.ibizlab.ehr.core.vac.filter.VACHOLIDAYSearchContext;
 public class VACHOLIDAYResource {
 
     @Autowired
-    private IVACHOLIDAYService vacholidayService;
+    public IVACHOLIDAYService vacholidayService;
 
     @Autowired
     @Lazy
     public VACHOLIDAYMapping vacholidayMapping;
-
-    public VACHOLIDAYDTO permissionDTO=new VACHOLIDAYDTO();
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACHOLIDAY-APPOINTJZBJJR-all')")
     @ApiOperation(value = "引用局总部节假日", tags = {"VACHOLIDAY" },  notes = "引用局总部节假日")
@@ -59,7 +58,7 @@ public class VACHOLIDAYResource {
         return ResponseEntity.status(HttpStatus.OK).body(vacholidaydto);
     }
 
-    @PreAuthorize("hasPermission(#vacholiday_id,'Update',{'Sql',this.vacholidayMapping,#vacholidaydto})")
+    @PreAuthorize("hasPermission(this.vacholidayService.get(#vacholiday_id),'ehr-VACHOLIDAY-Update')")
     @ApiOperation(value = "Update", tags = {"VACHOLIDAY" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/vacholidays/{vacholiday_id}")
     @Transactional
@@ -71,7 +70,7 @@ public class VACHOLIDAYResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.vacholidayMapping,#vacholidaydtos})")
+    @PreAuthorize("hasPermission(this.vacholidayService.getVacholidayByEntities(this.vacholidayMapping.toDomain(#vacholidaydtos)),'ehr-VACHOLIDAY-Update')")
     @ApiOperation(value = "UpdateBatch", tags = {"VACHOLIDAY" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/vacholidays/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<VACHOLIDAYDTO> vacholidaydtos) {
@@ -79,7 +78,7 @@ public class VACHOLIDAYResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission(#vacholiday_id,'Remove',{'Sql',this.vacholidayMapping,this.permissionDTO})")
+    @PreAuthorize("hasPermission(this.vacholidayService.get(#vacholiday_id),'ehr-VACHOLIDAY-Remove')")
     @ApiOperation(value = "Remove", tags = {"VACHOLIDAY" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/vacholidays/{vacholiday_id}")
     @Transactional
@@ -87,7 +86,7 @@ public class VACHOLIDAYResource {
          return ResponseEntity.status(HttpStatus.OK).body(vacholidayService.remove(vacholiday_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.vacholidayMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission(this.vacholidayService.getVacholidayByIds(#ids),'ehr-VACHOLIDAY-Remove')")
     @ApiOperation(value = "RemoveBatch", tags = {"VACHOLIDAY" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/vacholidays/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -95,21 +94,19 @@ public class VACHOLIDAYResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACHOLIDAY-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"VACHOLIDAY" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacholidays/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody VACHOLIDAYDTO vacholidaydto) {
         return  ResponseEntity.status(HttpStatus.OK).body(vacholidayService.checkKey(vacholidayMapping.toDomain(vacholidaydto)));
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACHOLIDAY-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"VACHOLIDAY" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/vacholidays/getdraft")
     public ResponseEntity<VACHOLIDAYDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(vacholidayMapping.toDto(vacholidayService.getDraft(new VACHOLIDAY())));
     }
 
-    @PreAuthorize("hasPermission(#vacholiday_id,'Get',{'Sql',this.vacholidayMapping,this.permissionDTO})")
+    @PostAuthorize("hasPermission(this.vacholidayMapping.toDomain(returnObject.body),'ehr-VACHOLIDAY-Get')")
     @ApiOperation(value = "Get", tags = {"VACHOLIDAY" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/vacholidays/{vacholiday_id}")
     public ResponseEntity<VACHOLIDAYDTO> get(@PathVariable("vacholiday_id") String vacholiday_id) {
@@ -118,14 +115,14 @@ public class VACHOLIDAYResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('','Save',{'Sql',this.vacholidayMapping,#vacholidaydto})")
+    @PreAuthorize("hasPermission(this.vacholidayMapping.toDomain(#vacholidaydto),'ehr-VACHOLIDAY-Save')")
     @ApiOperation(value = "Save", tags = {"VACHOLIDAY" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacholidays/save")
     public ResponseEntity<Boolean> save(@RequestBody VACHOLIDAYDTO vacholidaydto) {
         return ResponseEntity.status(HttpStatus.OK).body(vacholidayService.save(vacholidayMapping.toDomain(vacholidaydto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.vacholidayMapping,#vacholidaydtos})")
+    @PreAuthorize("hasPermission(this.vacholidayMapping.toDomain(#vacholidaydtos),'ehr-VACHOLIDAY-Save')")
     @ApiOperation(value = "SaveBatch", tags = {"VACHOLIDAY" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacholidays/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<VACHOLIDAYDTO> vacholidaydtos) {
@@ -133,7 +130,7 @@ public class VACHOLIDAYResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('','Create',{'Sql',this.vacholidayMapping,#vacholidaydto})")
+    @PreAuthorize("hasPermission(this.vacholidayMapping.toDomain(#vacholidaydto),'ehr-VACHOLIDAY-Create')")
     @ApiOperation(value = "Create", tags = {"VACHOLIDAY" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacholidays")
     @Transactional
@@ -144,7 +141,7 @@ public class VACHOLIDAYResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.vacholidayMapping,#vacholidaydtos})")
+    @PreAuthorize("hasPermission(this.vacholidayMapping.toDomain(#vacholidaydtos),'ehr-VACHOLIDAY-Create')")
     @ApiOperation(value = "createBatch", tags = {"VACHOLIDAY" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacholidays/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<VACHOLIDAYDTO> vacholidaydtos) {
@@ -197,7 +194,7 @@ public class VACHOLIDAYResource {
         return ResponseEntity.status(HttpStatus.OK).body(vacholidaydto);
     }
 
-    @PreAuthorize("hasPermission(#vacholiday_id,'Update',{'Sql',this.vacholidayMapping,#vacholidaydto})")
+    @PreAuthorize("hasPermission(this.vacholidayService.get(#vacholiday_id),'ehr-VACHOLIDAY-Update')")
     @ApiOperation(value = "UpdateByVACHOLIDAYRULES", tags = {"VACHOLIDAY" },  notes = "UpdateByVACHOLIDAYRULES")
 	@RequestMapping(method = RequestMethod.PUT, value = "/vacholidayrules/{vacholidayrules_id}/vacholidays/{vacholiday_id}")
     @Transactional
@@ -210,7 +207,7 @@ public class VACHOLIDAYResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.vacholidayMapping,#vacholidaydtos})")
+    @PreAuthorize("hasPermission(this.vacholidayService.getVacholidayByEntities(this.vacholidayMapping.toDomain(#vacholidaydtos)),'ehr-VACHOLIDAY-Update')")
     @ApiOperation(value = "UpdateBatchByVACHOLIDAYRULES", tags = {"VACHOLIDAY" },  notes = "UpdateBatchByVACHOLIDAYRULES")
 	@RequestMapping(method = RequestMethod.PUT, value = "/vacholidayrules/{vacholidayrules_id}/vacholidays/batch")
     public ResponseEntity<Boolean> updateBatchByVACHOLIDAYRULES(@PathVariable("vacholidayrules_id") String vacholidayrules_id, @RequestBody List<VACHOLIDAYDTO> vacholidaydtos) {
@@ -222,7 +219,7 @@ public class VACHOLIDAYResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission(#vacholiday_id,'Remove',{'Sql',this.vacholidayMapping,this.permissionDTO})")
+    @PreAuthorize("hasPermission(this.vacholidayService.get(#vacholiday_id),'ehr-VACHOLIDAY-Remove')")
     @ApiOperation(value = "RemoveByVACHOLIDAYRULES", tags = {"VACHOLIDAY" },  notes = "RemoveByVACHOLIDAYRULES")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/vacholidayrules/{vacholidayrules_id}/vacholidays/{vacholiday_id}")
     @Transactional
@@ -230,7 +227,7 @@ public class VACHOLIDAYResource {
 		return ResponseEntity.status(HttpStatus.OK).body(vacholidayService.remove(vacholiday_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.vacholidayMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission(this.vacholidayService.getVacholidayByIds(#ids),'ehr-VACHOLIDAY-Remove')")
     @ApiOperation(value = "RemoveBatchByVACHOLIDAYRULES", tags = {"VACHOLIDAY" },  notes = "RemoveBatchByVACHOLIDAYRULES")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/vacholidayrules/{vacholidayrules_id}/vacholidays/batch")
     public ResponseEntity<Boolean> removeBatchByVACHOLIDAYRULES(@RequestBody List<String> ids) {
@@ -238,14 +235,12 @@ public class VACHOLIDAYResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACHOLIDAY-CheckKey-all')")
     @ApiOperation(value = "CheckKeyByVACHOLIDAYRULES", tags = {"VACHOLIDAY" },  notes = "CheckKeyByVACHOLIDAYRULES")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacholidayrules/{vacholidayrules_id}/vacholidays/checkkey")
     public ResponseEntity<Boolean> checkKeyByVACHOLIDAYRULES(@PathVariable("vacholidayrules_id") String vacholidayrules_id, @RequestBody VACHOLIDAYDTO vacholidaydto) {
         return  ResponseEntity.status(HttpStatus.OK).body(vacholidayService.checkKey(vacholidayMapping.toDomain(vacholidaydto)));
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACHOLIDAY-GetDraft-all')")
     @ApiOperation(value = "GetDraftByVACHOLIDAYRULES", tags = {"VACHOLIDAY" },  notes = "GetDraftByVACHOLIDAYRULES")
     @RequestMapping(method = RequestMethod.GET, value = "/vacholidayrules/{vacholidayrules_id}/vacholidays/getdraft")
     public ResponseEntity<VACHOLIDAYDTO> getDraftByVACHOLIDAYRULES(@PathVariable("vacholidayrules_id") String vacholidayrules_id) {
@@ -254,7 +249,7 @@ public class VACHOLIDAYResource {
         return ResponseEntity.status(HttpStatus.OK).body(vacholidayMapping.toDto(vacholidayService.getDraft(domain)));
     }
 
-    @PreAuthorize("hasPermission(#vacholiday_id,'Get',{'Sql',this.vacholidayMapping,this.permissionDTO})")
+    @PostAuthorize("hasPermission(this.vacholidayMapping.toDomain(returnObject.body),'ehr-VACHOLIDAY-Get')")
     @ApiOperation(value = "GetByVACHOLIDAYRULES", tags = {"VACHOLIDAY" },  notes = "GetByVACHOLIDAYRULES")
 	@RequestMapping(method = RequestMethod.GET, value = "/vacholidayrules/{vacholidayrules_id}/vacholidays/{vacholiday_id}")
     public ResponseEntity<VACHOLIDAYDTO> getByVACHOLIDAYRULES(@PathVariable("vacholidayrules_id") String vacholidayrules_id, @PathVariable("vacholiday_id") String vacholiday_id) {
@@ -263,7 +258,7 @@ public class VACHOLIDAYResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('','Save',{'Sql',this.vacholidayMapping,#vacholidaydto})")
+    @PreAuthorize("hasPermission(this.vacholidayMapping.toDomain(#vacholidaydto),'ehr-VACHOLIDAY-Save')")
     @ApiOperation(value = "SaveByVACHOLIDAYRULES", tags = {"VACHOLIDAY" },  notes = "SaveByVACHOLIDAYRULES")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacholidayrules/{vacholidayrules_id}/vacholidays/save")
     public ResponseEntity<Boolean> saveByVACHOLIDAYRULES(@PathVariable("vacholidayrules_id") String vacholidayrules_id, @RequestBody VACHOLIDAYDTO vacholidaydto) {
@@ -272,7 +267,7 @@ public class VACHOLIDAYResource {
         return ResponseEntity.status(HttpStatus.OK).body(vacholidayService.save(domain));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.vacholidayMapping,#vacholidaydtos})")
+    @PreAuthorize("hasPermission(this.vacholidayMapping.toDomain(#vacholidaydtos),'ehr-VACHOLIDAY-Save')")
     @ApiOperation(value = "SaveBatchByVACHOLIDAYRULES", tags = {"VACHOLIDAY" },  notes = "SaveBatchByVACHOLIDAYRULES")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacholidayrules/{vacholidayrules_id}/vacholidays/savebatch")
     public ResponseEntity<Boolean> saveBatchByVACHOLIDAYRULES(@PathVariable("vacholidayrules_id") String vacholidayrules_id, @RequestBody List<VACHOLIDAYDTO> vacholidaydtos) {
@@ -284,7 +279,7 @@ public class VACHOLIDAYResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('','Create',{'Sql',this.vacholidayMapping,#vacholidaydto})")
+    @PreAuthorize("hasPermission(this.vacholidayMapping.toDomain(#vacholidaydto),'ehr-VACHOLIDAY-Create')")
     @ApiOperation(value = "CreateByVACHOLIDAYRULES", tags = {"VACHOLIDAY" },  notes = "CreateByVACHOLIDAYRULES")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacholidayrules/{vacholidayrules_id}/vacholidays")
     @Transactional
@@ -296,7 +291,7 @@ public class VACHOLIDAYResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.vacholidayMapping,#vacholidaydtos})")
+    @PreAuthorize("hasPermission(this.vacholidayMapping.toDomain(#vacholidaydtos),'ehr-VACHOLIDAY-Create')")
     @ApiOperation(value = "createBatchByVACHOLIDAYRULES", tags = {"VACHOLIDAY" },  notes = "createBatchByVACHOLIDAYRULES")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacholidayrules/{vacholidayrules_id}/vacholidays/batch")
     public ResponseEntity<Boolean> createBatchByVACHOLIDAYRULES(@PathVariable("vacholidayrules_id") String vacholidayrules_id, @RequestBody List<VACHOLIDAYDTO> vacholidaydtos) {
@@ -344,3 +339,4 @@ public class VACHOLIDAYResource {
                 .body(new PageImpl(vacholidayMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 }
+

@@ -56,6 +56,9 @@ public interface IPIMACHIEVEMENTSService extends IService<PIMACHIEVEMENTS>{
      */
     boolean execute(String sql, Map param);
 
+    List<PIMACHIEVEMENTS> getPimachievementsByIds(List<String> ids) ;
+    List<PIMACHIEVEMENTS> getPimachievementsByEntities(List<PIMACHIEVEMENTS> entities) ;
+
 }
 
 

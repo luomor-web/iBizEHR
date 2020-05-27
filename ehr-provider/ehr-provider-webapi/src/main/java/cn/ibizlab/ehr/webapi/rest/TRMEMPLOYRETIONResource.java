@@ -22,6 +22,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.access.prepost.PostAuthorize;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -39,15 +40,13 @@ import cn.ibizlab.ehr.core.trm.filter.TRMEMPLOYRETIONSearchContext;
 public class TRMEMPLOYRETIONResource {
 
     @Autowired
-    private ITRMEMPLOYRETIONService trmemployretionService;
+    public ITRMEMPLOYRETIONService trmemployretionService;
 
     @Autowired
     @Lazy
     public TRMEMPLOYRETIONMapping trmemployretionMapping;
 
-    public TRMEMPLOYRETIONDTO permissionDTO=new TRMEMPLOYRETIONDTO();
-
-    @PreAuthorize("hasPermission(#trmemployretion_id,'Remove',{'Sql',this.trmemployretionMapping,this.permissionDTO})")
+    @PreAuthorize("hasPermission(this.trmemployretionService.get(#trmemployretion_id),'ehr-TRMEMPLOYRETION-Remove')")
     @ApiOperation(value = "Remove", tags = {"TRMEMPLOYRETION" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/trmemployretions/{trmemployretion_id}")
     @Transactional
@@ -55,7 +54,7 @@ public class TRMEMPLOYRETIONResource {
          return ResponseEntity.status(HttpStatus.OK).body(trmemployretionService.remove(trmemployretion_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.trmemployretionMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission(this.trmemployretionService.getTrmemployretionByIds(#ids),'ehr-TRMEMPLOYRETION-Remove')")
     @ApiOperation(value = "RemoveBatch", tags = {"TRMEMPLOYRETION" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/trmemployretions/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -63,14 +62,13 @@ public class TRMEMPLOYRETIONResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMEMPLOYRETION-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"TRMEMPLOYRETION" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/trmemployretions/getdraft")
     public ResponseEntity<TRMEMPLOYRETIONDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(trmemployretionMapping.toDto(trmemployretionService.getDraft(new TRMEMPLOYRETION())));
     }
 
-    @PreAuthorize("hasPermission(#trmemployretion_id,'Update',{'Sql',this.trmemployretionMapping,#trmemployretiondto})")
+    @PreAuthorize("hasPermission(this.trmemployretionService.get(#trmemployretion_id),'ehr-TRMEMPLOYRETION-Update')")
     @ApiOperation(value = "Update", tags = {"TRMEMPLOYRETION" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/trmemployretions/{trmemployretion_id}")
     @Transactional
@@ -82,7 +80,7 @@ public class TRMEMPLOYRETIONResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.trmemployretionMapping,#trmemployretiondtos})")
+    @PreAuthorize("hasPermission(this.trmemployretionService.getTrmemployretionByEntities(this.trmemployretionMapping.toDomain(#trmemployretiondtos)),'ehr-TRMEMPLOYRETION-Update')")
     @ApiOperation(value = "UpdateBatch", tags = {"TRMEMPLOYRETION" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/trmemployretions/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<TRMEMPLOYRETIONDTO> trmemployretiondtos) {
@@ -90,14 +88,14 @@ public class TRMEMPLOYRETIONResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('','Save',{'Sql',this.trmemployretionMapping,#trmemployretiondto})")
+    @PreAuthorize("hasPermission(this.trmemployretionMapping.toDomain(#trmemployretiondto),'ehr-TRMEMPLOYRETION-Save')")
     @ApiOperation(value = "Save", tags = {"TRMEMPLOYRETION" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmemployretions/save")
     public ResponseEntity<Boolean> save(@RequestBody TRMEMPLOYRETIONDTO trmemployretiondto) {
         return ResponseEntity.status(HttpStatus.OK).body(trmemployretionService.save(trmemployretionMapping.toDomain(trmemployretiondto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.trmemployretionMapping,#trmemployretiondtos})")
+    @PreAuthorize("hasPermission(this.trmemployretionMapping.toDomain(#trmemployretiondtos),'ehr-TRMEMPLOYRETION-Save')")
     @ApiOperation(value = "SaveBatch", tags = {"TRMEMPLOYRETION" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmemployretions/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<TRMEMPLOYRETIONDTO> trmemployretiondtos) {
@@ -105,7 +103,7 @@ public class TRMEMPLOYRETIONResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('','Create',{'Sql',this.trmemployretionMapping,#trmemployretiondto})")
+    @PreAuthorize("hasPermission(this.trmemployretionMapping.toDomain(#trmemployretiondto),'ehr-TRMEMPLOYRETION-Create')")
     @ApiOperation(value = "Create", tags = {"TRMEMPLOYRETION" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmemployretions")
     @Transactional
@@ -116,7 +114,7 @@ public class TRMEMPLOYRETIONResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.trmemployretionMapping,#trmemployretiondtos})")
+    @PreAuthorize("hasPermission(this.trmemployretionMapping.toDomain(#trmemployretiondtos),'ehr-TRMEMPLOYRETION-Create')")
     @ApiOperation(value = "createBatch", tags = {"TRMEMPLOYRETION" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmemployretions/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<TRMEMPLOYRETIONDTO> trmemployretiondtos) {
@@ -124,14 +122,13 @@ public class TRMEMPLOYRETIONResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMEMPLOYRETION-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"TRMEMPLOYRETION" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmemployretions/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody TRMEMPLOYRETIONDTO trmemployretiondto) {
         return  ResponseEntity.status(HttpStatus.OK).body(trmemployretionService.checkKey(trmemployretionMapping.toDomain(trmemployretiondto)));
     }
 
-    @PreAuthorize("hasPermission(#trmemployretion_id,'Get',{'Sql',this.trmemployretionMapping,this.permissionDTO})")
+    @PostAuthorize("hasPermission(this.trmemployretionMapping.toDomain(returnObject.body),'ehr-TRMEMPLOYRETION-Get')")
     @ApiOperation(value = "Get", tags = {"TRMEMPLOYRETION" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/trmemployretions/{trmemployretion_id}")
     public ResponseEntity<TRMEMPLOYRETIONDTO> get(@PathVariable("trmemployretion_id") String trmemployretion_id) {
@@ -162,3 +159,4 @@ public class TRMEMPLOYRETIONResource {
                 .body(new PageImpl(trmemployretionMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 }
+

@@ -54,6 +54,9 @@ public interface ISALPARAMService extends IService<SALPARAM>{
      */
     boolean execute(String sql, Map param);
 
+    List<SALPARAM> getSalparamByIds(List<String> ids) ;
+    List<SALPARAM> getSalparamByEntities(List<SALPARAM> entities) ;
+
 }
 
 

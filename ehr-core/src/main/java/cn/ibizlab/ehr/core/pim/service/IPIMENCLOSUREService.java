@@ -55,6 +55,9 @@ public interface IPIMENCLOSUREService extends IService<PIMENCLOSURE>{
      */
     boolean execute(String sql, Map param);
 
+    List<PIMENCLOSURE> getPimenclosureByIds(List<String> ids) ;
+    List<PIMENCLOSURE> getPimenclosureByEntities(List<PIMENCLOSURE> entities) ;
+
 }
 
 

@@ -179,6 +179,26 @@ public class ORMRelationServiceImpl extends ServiceImpl<ORMRelationMapper, ORMRe
         return true;
     }
 
+    @Override
+    public List<ORMRelation> getOrmrelationByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<ORMRelation> getOrmrelationByEntities(List<ORMRelation> entities) {
+        List ids =new ArrayList();
+        for(ORMRelation entity : entities){
+            Serializable id=entity.getOrmorgrelationid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

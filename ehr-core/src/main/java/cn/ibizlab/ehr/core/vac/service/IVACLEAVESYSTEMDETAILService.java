@@ -54,6 +54,9 @@ public interface IVACLEAVESYSTEMDETAILService extends IService<VACLEAVESYSTEMDET
      */
     boolean execute(String sql, Map param);
 
+    List<VACLEAVESYSTEMDETAIL> getVacleavesystemdetailByIds(List<String> ids) ;
+    List<VACLEAVESYSTEMDETAIL> getVacleavesystemdetailByEntities(List<VACLEAVESYSTEMDETAIL> entities) ;
+
 }
 
 

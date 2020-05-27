@@ -54,6 +54,9 @@ public interface ISALSTDGLService extends IService<SALSTDGL>{
      */
     boolean execute(String sql, Map param);
 
+    List<SALSTDGL> getSalstdglByIds(List<String> ids) ;
+    List<SALSTDGL> getSalstdglByEntities(List<SALSTDGL> entities) ;
+
 }
 
 

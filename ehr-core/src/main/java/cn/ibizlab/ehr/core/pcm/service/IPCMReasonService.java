@@ -52,6 +52,9 @@ public interface IPCMReasonService extends IService<PCMReason>{
      */
     boolean execute(String sql, Map param);
 
+    List<PCMReason> getPcmreasonByIds(List<String> ids) ;
+    List<PCMReason> getPcmreasonByEntities(List<PCMReason> entities) ;
+
 }
 
 

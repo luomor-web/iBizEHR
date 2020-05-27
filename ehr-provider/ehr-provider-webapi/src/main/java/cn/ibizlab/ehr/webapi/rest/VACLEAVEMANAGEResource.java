@@ -22,6 +22,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.access.prepost.PostAuthorize;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -39,13 +40,11 @@ import cn.ibizlab.ehr.core.vac.filter.VACLEAVEMANAGESearchContext;
 public class VACLEAVEMANAGEResource {
 
     @Autowired
-    private IVACLEAVEMANAGEService vacleavemanageService;
+    public IVACLEAVEMANAGEService vacleavemanageService;
 
     @Autowired
     @Lazy
     public VACLEAVEMANAGEMapping vacleavemanageMapping;
-
-    public VACLEAVEMANAGEDTO permissionDTO=new VACLEAVEMANAGEDTO();
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACLEAVEMANAGE-UpdateQJMX-all')")
     @ApiOperation(value = "更新请假明细", tags = {"VACLEAVEMANAGE" },  notes = "更新请假明细")
@@ -71,7 +70,6 @@ public class VACLEAVEMANAGEResource {
         return ResponseEntity.status(HttpStatus.OK).body(vacleavemanagedto);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACLEAVEMANAGE-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"VACLEAVEMANAGE" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/vacleavemanages/getdraft")
     public ResponseEntity<VACLEAVEMANAGEDTO> getDraft() {
@@ -90,7 +88,7 @@ public class VACLEAVEMANAGEResource {
         return ResponseEntity.status(HttpStatus.OK).body(vacleavemanagedto);
     }
 
-    @PreAuthorize("hasPermission(#vacleavemanage_id,'Update',{'Sql',this.vacleavemanageMapping,#vacleavemanagedto})")
+    @PreAuthorize("hasPermission(this.vacleavemanageService.get(#vacleavemanage_id),'ehr-VACLEAVEMANAGE-Update')")
     @ApiOperation(value = "Update", tags = {"VACLEAVEMANAGE" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/vacleavemanages/{vacleavemanage_id}")
     @Transactional
@@ -102,7 +100,7 @@ public class VACLEAVEMANAGEResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.vacleavemanageMapping,#vacleavemanagedtos})")
+    @PreAuthorize("hasPermission(this.vacleavemanageService.getVacleavemanageByEntities(this.vacleavemanageMapping.toDomain(#vacleavemanagedtos)),'ehr-VACLEAVEMANAGE-Update')")
     @ApiOperation(value = "UpdateBatch", tags = {"VACLEAVEMANAGE" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/vacleavemanages/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<VACLEAVEMANAGEDTO> vacleavemanagedtos) {
@@ -110,7 +108,7 @@ public class VACLEAVEMANAGEResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission(#vacleavemanage_id,'Remove',{'Sql',this.vacleavemanageMapping,this.permissionDTO})")
+    @PreAuthorize("hasPermission(this.vacleavemanageService.get(#vacleavemanage_id),'ehr-VACLEAVEMANAGE-Remove')")
     @ApiOperation(value = "Remove", tags = {"VACLEAVEMANAGE" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/vacleavemanages/{vacleavemanage_id}")
     @Transactional
@@ -118,7 +116,7 @@ public class VACLEAVEMANAGEResource {
          return ResponseEntity.status(HttpStatus.OK).body(vacleavemanageService.remove(vacleavemanage_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.vacleavemanageMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission(this.vacleavemanageService.getVacleavemanageByIds(#ids),'ehr-VACLEAVEMANAGE-Remove')")
     @ApiOperation(value = "RemoveBatch", tags = {"VACLEAVEMANAGE" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/vacleavemanages/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -138,14 +136,14 @@ public class VACLEAVEMANAGEResource {
         return ResponseEntity.status(HttpStatus.OK).body(vacleavemanagedto);
     }
 
-    @PreAuthorize("hasPermission('','Save',{'Sql',this.vacleavemanageMapping,#vacleavemanagedto})")
+    @PreAuthorize("hasPermission(this.vacleavemanageMapping.toDomain(#vacleavemanagedto),'ehr-VACLEAVEMANAGE-Save')")
     @ApiOperation(value = "Save", tags = {"VACLEAVEMANAGE" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacleavemanages/save")
     public ResponseEntity<Boolean> save(@RequestBody VACLEAVEMANAGEDTO vacleavemanagedto) {
         return ResponseEntity.status(HttpStatus.OK).body(vacleavemanageService.save(vacleavemanageMapping.toDomain(vacleavemanagedto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.vacleavemanageMapping,#vacleavemanagedtos})")
+    @PreAuthorize("hasPermission(this.vacleavemanageMapping.toDomain(#vacleavemanagedtos),'ehr-VACLEAVEMANAGE-Save')")
     @ApiOperation(value = "SaveBatch", tags = {"VACLEAVEMANAGE" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacleavemanages/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<VACLEAVEMANAGEDTO> vacleavemanagedtos) {
@@ -153,7 +151,7 @@ public class VACLEAVEMANAGEResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('','Create',{'Sql',this.vacleavemanageMapping,#vacleavemanagedto})")
+    @PreAuthorize("hasPermission(this.vacleavemanageMapping.toDomain(#vacleavemanagedto),'ehr-VACLEAVEMANAGE-Create')")
     @ApiOperation(value = "Create", tags = {"VACLEAVEMANAGE" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacleavemanages")
     @Transactional
@@ -164,7 +162,7 @@ public class VACLEAVEMANAGEResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.vacleavemanageMapping,#vacleavemanagedtos})")
+    @PreAuthorize("hasPermission(this.vacleavemanageMapping.toDomain(#vacleavemanagedtos),'ehr-VACLEAVEMANAGE-Create')")
     @ApiOperation(value = "createBatch", tags = {"VACLEAVEMANAGE" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacleavemanages/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<VACLEAVEMANAGEDTO> vacleavemanagedtos) {
@@ -172,7 +170,7 @@ public class VACLEAVEMANAGEResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission(#vacleavemanage_id,'Get',{'Sql',this.vacleavemanageMapping,this.permissionDTO})")
+    @PostAuthorize("hasPermission(this.vacleavemanageMapping.toDomain(returnObject.body),'ehr-VACLEAVEMANAGE-Get')")
     @ApiOperation(value = "Get", tags = {"VACLEAVEMANAGE" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/vacleavemanages/{vacleavemanage_id}")
     public ResponseEntity<VACLEAVEMANAGEDTO> get(@PathVariable("vacleavemanage_id") String vacleavemanage_id) {
@@ -181,7 +179,6 @@ public class VACLEAVEMANAGEResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACLEAVEMANAGE-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"VACLEAVEMANAGE" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacleavemanages/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody VACLEAVEMANAGEDTO vacleavemanagedto) {
@@ -350,7 +347,6 @@ public class VACLEAVEMANAGEResource {
         return ResponseEntity.status(HttpStatus.OK).body(vacleavemanagedto);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACLEAVEMANAGE-GetDraft-all')")
     @ApiOperation(value = "GetDraftByPIMPERSON", tags = {"VACLEAVEMANAGE" },  notes = "GetDraftByPIMPERSON")
     @RequestMapping(method = RequestMethod.GET, value = "/pimpeople/{pimperson_id}/vacleavemanages/getdraft")
     public ResponseEntity<VACLEAVEMANAGEDTO> getDraftByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id) {
@@ -371,7 +367,7 @@ public class VACLEAVEMANAGEResource {
         return ResponseEntity.status(HttpStatus.OK).body(vacleavemanagedto);
     }
 
-    @PreAuthorize("hasPermission(#vacleavemanage_id,'Update',{'Sql',this.vacleavemanageMapping,#vacleavemanagedto})")
+    @PreAuthorize("hasPermission(this.vacleavemanageService.get(#vacleavemanage_id),'ehr-VACLEAVEMANAGE-Update')")
     @ApiOperation(value = "UpdateByPIMPERSON", tags = {"VACLEAVEMANAGE" },  notes = "UpdateByPIMPERSON")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimpeople/{pimperson_id}/vacleavemanages/{vacleavemanage_id}")
     @Transactional
@@ -384,7 +380,7 @@ public class VACLEAVEMANAGEResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.vacleavemanageMapping,#vacleavemanagedtos})")
+    @PreAuthorize("hasPermission(this.vacleavemanageService.getVacleavemanageByEntities(this.vacleavemanageMapping.toDomain(#vacleavemanagedtos)),'ehr-VACLEAVEMANAGE-Update')")
     @ApiOperation(value = "UpdateBatchByPIMPERSON", tags = {"VACLEAVEMANAGE" },  notes = "UpdateBatchByPIMPERSON")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimpeople/{pimperson_id}/vacleavemanages/batch")
     public ResponseEntity<Boolean> updateBatchByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody List<VACLEAVEMANAGEDTO> vacleavemanagedtos) {
@@ -396,7 +392,7 @@ public class VACLEAVEMANAGEResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission(#vacleavemanage_id,'Remove',{'Sql',this.vacleavemanageMapping,this.permissionDTO})")
+    @PreAuthorize("hasPermission(this.vacleavemanageService.get(#vacleavemanage_id),'ehr-VACLEAVEMANAGE-Remove')")
     @ApiOperation(value = "RemoveByPIMPERSON", tags = {"VACLEAVEMANAGE" },  notes = "RemoveByPIMPERSON")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimpeople/{pimperson_id}/vacleavemanages/{vacleavemanage_id}")
     @Transactional
@@ -404,7 +400,7 @@ public class VACLEAVEMANAGEResource {
 		return ResponseEntity.status(HttpStatus.OK).body(vacleavemanageService.remove(vacleavemanage_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.vacleavemanageMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission(this.vacleavemanageService.getVacleavemanageByIds(#ids),'ehr-VACLEAVEMANAGE-Remove')")
     @ApiOperation(value = "RemoveBatchByPIMPERSON", tags = {"VACLEAVEMANAGE" },  notes = "RemoveBatchByPIMPERSON")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimpeople/{pimperson_id}/vacleavemanages/batch")
     public ResponseEntity<Boolean> removeBatchByPIMPERSON(@RequestBody List<String> ids) {
@@ -424,7 +420,7 @@ public class VACLEAVEMANAGEResource {
         return ResponseEntity.status(HttpStatus.OK).body(vacleavemanagedto);
     }
 
-    @PreAuthorize("hasPermission('','Save',{'Sql',this.vacleavemanageMapping,#vacleavemanagedto})")
+    @PreAuthorize("hasPermission(this.vacleavemanageMapping.toDomain(#vacleavemanagedto),'ehr-VACLEAVEMANAGE-Save')")
     @ApiOperation(value = "SaveByPIMPERSON", tags = {"VACLEAVEMANAGE" },  notes = "SaveByPIMPERSON")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/vacleavemanages/save")
     public ResponseEntity<Boolean> saveByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody VACLEAVEMANAGEDTO vacleavemanagedto) {
@@ -433,7 +429,7 @@ public class VACLEAVEMANAGEResource {
         return ResponseEntity.status(HttpStatus.OK).body(vacleavemanageService.save(domain));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.vacleavemanageMapping,#vacleavemanagedtos})")
+    @PreAuthorize("hasPermission(this.vacleavemanageMapping.toDomain(#vacleavemanagedtos),'ehr-VACLEAVEMANAGE-Save')")
     @ApiOperation(value = "SaveBatchByPIMPERSON", tags = {"VACLEAVEMANAGE" },  notes = "SaveBatchByPIMPERSON")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/vacleavemanages/savebatch")
     public ResponseEntity<Boolean> saveBatchByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody List<VACLEAVEMANAGEDTO> vacleavemanagedtos) {
@@ -445,7 +441,7 @@ public class VACLEAVEMANAGEResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('','Create',{'Sql',this.vacleavemanageMapping,#vacleavemanagedto})")
+    @PreAuthorize("hasPermission(this.vacleavemanageMapping.toDomain(#vacleavemanagedto),'ehr-VACLEAVEMANAGE-Create')")
     @ApiOperation(value = "CreateByPIMPERSON", tags = {"VACLEAVEMANAGE" },  notes = "CreateByPIMPERSON")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/vacleavemanages")
     @Transactional
@@ -457,7 +453,7 @@ public class VACLEAVEMANAGEResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.vacleavemanageMapping,#vacleavemanagedtos})")
+    @PreAuthorize("hasPermission(this.vacleavemanageMapping.toDomain(#vacleavemanagedtos),'ehr-VACLEAVEMANAGE-Create')")
     @ApiOperation(value = "createBatchByPIMPERSON", tags = {"VACLEAVEMANAGE" },  notes = "createBatchByPIMPERSON")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/vacleavemanages/batch")
     public ResponseEntity<Boolean> createBatchByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody List<VACLEAVEMANAGEDTO> vacleavemanagedtos) {
@@ -469,7 +465,7 @@ public class VACLEAVEMANAGEResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission(#vacleavemanage_id,'Get',{'Sql',this.vacleavemanageMapping,this.permissionDTO})")
+    @PostAuthorize("hasPermission(this.vacleavemanageMapping.toDomain(returnObject.body),'ehr-VACLEAVEMANAGE-Get')")
     @ApiOperation(value = "GetByPIMPERSON", tags = {"VACLEAVEMANAGE" },  notes = "GetByPIMPERSON")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimpeople/{pimperson_id}/vacleavemanages/{vacleavemanage_id}")
     public ResponseEntity<VACLEAVEMANAGEDTO> getByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("vacleavemanage_id") String vacleavemanage_id) {
@@ -478,7 +474,6 @@ public class VACLEAVEMANAGEResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACLEAVEMANAGE-CheckKey-all')")
     @ApiOperation(value = "CheckKeyByPIMPERSON", tags = {"VACLEAVEMANAGE" },  notes = "CheckKeyByPIMPERSON")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/vacleavemanages/checkkey")
     public ResponseEntity<Boolean> checkKeyByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody VACLEAVEMANAGEDTO vacleavemanagedto) {
@@ -636,3 +631,4 @@ public class VACLEAVEMANAGEResource {
                 .body(new PageImpl(vacleavemanageMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 }
+

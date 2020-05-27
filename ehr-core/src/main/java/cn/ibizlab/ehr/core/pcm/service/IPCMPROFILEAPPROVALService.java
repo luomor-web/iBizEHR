@@ -57,6 +57,9 @@ public interface IPCMPROFILEAPPROVALService extends IService<PCMPROFILEAPPROVAL>
      */
     boolean execute(String sql, Map param);
 
+    List<PCMPROFILEAPPROVAL> getPcmprofileapprovalByIds(List<String> ids) ;
+    List<PCMPROFILEAPPROVAL> getPcmprofileapprovalByEntities(List<PCMPROFILEAPPROVAL> entities) ;
+
 }
 
 

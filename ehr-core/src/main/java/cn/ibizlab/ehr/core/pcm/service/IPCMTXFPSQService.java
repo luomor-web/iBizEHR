@@ -64,6 +64,9 @@ public interface IPCMTXFPSQService extends IService<PCMTXFPSQ>{
      */
     boolean execute(String sql, Map param);
 
+    List<PCMTXFPSQ> getPcmtxfpsqByIds(List<String> ids) ;
+    List<PCMTXFPSQ> getPcmtxfpsqByEntities(List<PCMTXFPSQ> entities) ;
+
 }
 
 

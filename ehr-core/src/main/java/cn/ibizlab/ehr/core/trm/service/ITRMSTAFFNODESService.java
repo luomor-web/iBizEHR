@@ -58,6 +58,9 @@ public interface ITRMSTAFFNODESService extends IService<TRMSTAFFNODES>{
      */
     boolean execute(String sql, Map param);
 
+    List<TRMSTAFFNODES> getTrmstaffnodesByIds(List<String> ids) ;
+    List<TRMSTAFFNODES> getTrmstaffnodesByEntities(List<TRMSTAFFNODES> entities) ;
+
 }
 
 

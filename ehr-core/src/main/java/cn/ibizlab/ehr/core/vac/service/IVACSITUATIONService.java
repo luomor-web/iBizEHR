@@ -54,6 +54,9 @@ public interface IVACSITUATIONService extends IService<VACSITUATION>{
      */
     boolean execute(String sql, Map param);
 
+    List<VACSITUATION> getVacsituationByIds(List<String> ids) ;
+    List<VACSITUATION> getVacsituationByEntities(List<VACSITUATION> entities) ;
+
 }
 
 

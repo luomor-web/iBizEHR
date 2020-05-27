@@ -222,6 +222,26 @@ public class ORMERPORGServiceImpl extends ServiceImpl<ORMERPORGMapper, ORMERPORG
         return true;
     }
 
+    @Override
+    public List<ORMERPORG> getOrmerporgByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<ORMERPORG> getOrmerporgByEntities(List<ORMERPORG> entities) {
+        List ids =new ArrayList();
+        for(ORMERPORG entity : entities){
+            Serializable id=entity.getOrmerporgid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

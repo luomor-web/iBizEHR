@@ -63,6 +63,9 @@ public interface IPIMEXITANDENTRYService extends IService<PIMEXITANDENTRY>{
      */
     boolean execute(String sql, Map param);
 
+    List<PIMEXITANDENTRY> getPimexitandentryByIds(List<String> ids) ;
+    List<PIMEXITANDENTRY> getPimexitandentryByEntities(List<PIMEXITANDENTRY> entities) ;
+
 }
 
 

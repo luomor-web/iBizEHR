@@ -220,6 +220,26 @@ public class PIMQUALMAJORServiceImpl extends ServiceImpl<PIMQUALMAJORMapper, PIM
         return true;
     }
 
+    @Override
+    public List<PIMQUALMAJOR> getPimqualmajorByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<PIMQUALMAJOR> getPimqualmajorByEntities(List<PIMQUALMAJOR> entities) {
+        List ids =new ArrayList();
+        for(PIMQUALMAJOR entity : entities){
+            Serializable id=entity.getPimqualmajorid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

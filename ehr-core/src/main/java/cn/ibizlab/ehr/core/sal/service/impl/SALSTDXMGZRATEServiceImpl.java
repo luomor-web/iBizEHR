@@ -215,6 +215,26 @@ public class SALSTDXMGZRATEServiceImpl extends ServiceImpl<SALSTDXMGZRATEMapper,
         return true;
     }
 
+    @Override
+    public List<SALSTDXMGZRATE> getSalstdxmgzrateByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<SALSTDXMGZRATE> getSalstdxmgzrateByEntities(List<SALSTDXMGZRATE> entities) {
+        List ids =new ArrayList();
+        for(SALSTDXMGZRATE entity : entities){
+            Serializable id=entity.getSalstdxmgzrateid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

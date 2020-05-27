@@ -247,6 +247,26 @@ public class ORMUSERServiceImpl extends ServiceImpl<ORMUSERMapper, ORMUSER> impl
         return true;
     }
 
+    @Override
+    public List<ORMUSER> getOrmuserByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<ORMUSER> getOrmuserByEntities(List<ORMUSER> entities) {
+        List ids =new ArrayList();
+        for(ORMUSER entity : entities){
+            Serializable id=entity.getOrguserid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

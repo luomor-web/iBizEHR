@@ -218,6 +218,26 @@ public class TRMLGBCOSTServiceImpl extends ServiceImpl<TRMLGBCOSTMapper, TRMLGBC
         return true;
     }
 
+    @Override
+    public List<TRMLGBCOST> getTrmlgbcostByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<TRMLGBCOST> getTrmlgbcostByEntities(List<TRMLGBCOST> entities) {
+        List ids =new ArrayList();
+        for(TRMLGBCOST entity : entities){
+            Serializable id=entity.getTrmlgbcostid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

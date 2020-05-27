@@ -215,6 +215,26 @@ public class ORMORGDZServiceImpl extends ServiceImpl<ORMORGDZMapper, ORMORGDZ> i
         return true;
     }
 
+    @Override
+    public List<ORMORGDZ> getOrmorgdzByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<ORMORGDZ> getOrmorgdzByEntities(List<ORMORGDZ> entities) {
+        List ids =new ArrayList();
+        for(ORMORGDZ entity : entities){
+            Serializable id=entity.getOrmorgdzid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

@@ -241,6 +241,26 @@ public class VACHOLIDAYRULESServiceImpl extends ServiceImpl<VACHOLIDAYRULESMappe
         return true;
     }
 
+    @Override
+    public List<VACHOLIDAYRULES> getVacholidayrulesByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<VACHOLIDAYRULES> getVacholidayrulesByEntities(List<VACHOLIDAYRULES> entities) {
+        List ids =new ArrayList();
+        for(VACHOLIDAYRULES entity : entities){
+            Serializable id=entity.getVacholidayrulesid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

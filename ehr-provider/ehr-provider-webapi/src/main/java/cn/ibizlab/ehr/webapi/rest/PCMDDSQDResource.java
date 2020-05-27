@@ -22,6 +22,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.access.prepost.PostAuthorize;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -39,15 +40,13 @@ import cn.ibizlab.ehr.core.pcm.filter.PCMDDSQDSearchContext;
 public class PCMDDSQDResource {
 
     @Autowired
-    private IPCMDDSQDService pcmddsqdService;
+    public IPCMDDSQDService pcmddsqdService;
 
     @Autowired
     @Lazy
     public PCMDDSQDMapping pcmddsqdMapping;
 
-    public PCMDDSQDDTO permissionDTO=new PCMDDSQDDTO();
-
-    @PreAuthorize("hasPermission('','Create',{'Sql',this.pcmddsqdMapping,#pcmddsqddto})")
+    @PreAuthorize("hasPermission(this.pcmddsqdMapping.toDomain(#pcmddsqddto),'ehr-PCMDDSQD-Create')")
     @ApiOperation(value = "Create", tags = {"PCMDDSQD" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmddsqds")
     @Transactional
@@ -58,7 +57,7 @@ public class PCMDDSQDResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.pcmddsqdMapping,#pcmddsqddtos})")
+    @PreAuthorize("hasPermission(this.pcmddsqdMapping.toDomain(#pcmddsqddtos),'ehr-PCMDDSQD-Create')")
     @ApiOperation(value = "createBatch", tags = {"PCMDDSQD" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmddsqds/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PCMDDSQDDTO> pcmddsqddtos) {
@@ -78,7 +77,7 @@ public class PCMDDSQDResource {
         return ResponseEntity.status(HttpStatus.OK).body(pcmddsqddto);
     }
 
-    @PreAuthorize("hasPermission(#pcmddsqd_id,'Get',{'Sql',this.pcmddsqdMapping,this.permissionDTO})")
+    @PostAuthorize("hasPermission(this.pcmddsqdMapping.toDomain(returnObject.body),'ehr-PCMDDSQD-Get')")
     @ApiOperation(value = "Get", tags = {"PCMDDSQD" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmddsqds/{pcmddsqd_id}")
     public ResponseEntity<PCMDDSQDDTO> get(@PathVariable("pcmddsqd_id") String pcmddsqd_id) {
@@ -87,7 +86,7 @@ public class PCMDDSQDResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#pcmddsqd_id,'Update',{'Sql',this.pcmddsqdMapping,#pcmddsqddto})")
+    @PreAuthorize("hasPermission(this.pcmddsqdService.get(#pcmddsqd_id),'ehr-PCMDDSQD-Update')")
     @ApiOperation(value = "Update", tags = {"PCMDDSQD" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmddsqds/{pcmddsqd_id}")
     @Transactional
@@ -99,7 +98,7 @@ public class PCMDDSQDResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.pcmddsqdMapping,#pcmddsqddtos})")
+    @PreAuthorize("hasPermission(this.pcmddsqdService.getPcmddsqdByEntities(this.pcmddsqdMapping.toDomain(#pcmddsqddtos)),'ehr-PCMDDSQD-Update')")
     @ApiOperation(value = "UpdateBatch", tags = {"PCMDDSQD" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmddsqds/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PCMDDSQDDTO> pcmddsqddtos) {
@@ -107,21 +106,20 @@ public class PCMDDSQDResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMDDSQD-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"PCMDDSQD" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmddsqds/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PCMDDSQDDTO pcmddsqddto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pcmddsqdService.checkKey(pcmddsqdMapping.toDomain(pcmddsqddto)));
     }
 
-    @PreAuthorize("hasPermission('','Save',{'Sql',this.pcmddsqdMapping,#pcmddsqddto})")
+    @PreAuthorize("hasPermission(this.pcmddsqdMapping.toDomain(#pcmddsqddto),'ehr-PCMDDSQD-Save')")
     @ApiOperation(value = "Save", tags = {"PCMDDSQD" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmddsqds/save")
     public ResponseEntity<Boolean> save(@RequestBody PCMDDSQDDTO pcmddsqddto) {
         return ResponseEntity.status(HttpStatus.OK).body(pcmddsqdService.save(pcmddsqdMapping.toDomain(pcmddsqddto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.pcmddsqdMapping,#pcmddsqddtos})")
+    @PreAuthorize("hasPermission(this.pcmddsqdMapping.toDomain(#pcmddsqddtos),'ehr-PCMDDSQD-Save')")
     @ApiOperation(value = "SaveBatch", tags = {"PCMDDSQD" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmddsqds/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PCMDDSQDDTO> pcmddsqddtos) {
@@ -129,7 +127,7 @@ public class PCMDDSQDResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission(#pcmddsqd_id,'Remove',{'Sql',this.pcmddsqdMapping,this.permissionDTO})")
+    @PreAuthorize("hasPermission(this.pcmddsqdService.get(#pcmddsqd_id),'ehr-PCMDDSQD-Remove')")
     @ApiOperation(value = "Remove", tags = {"PCMDDSQD" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmddsqds/{pcmddsqd_id}")
     @Transactional
@@ -137,7 +135,7 @@ public class PCMDDSQDResource {
          return ResponseEntity.status(HttpStatus.OK).body(pcmddsqdService.remove(pcmddsqd_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.pcmddsqdMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission(this.pcmddsqdService.getPcmddsqdByIds(#ids),'ehr-PCMDDSQD-Remove')")
     @ApiOperation(value = "RemoveBatch", tags = {"PCMDDSQD" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmddsqds/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -145,7 +143,6 @@ public class PCMDDSQDResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMDDSQD-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"PCMDDSQD" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmddsqds/getdraft")
     public ResponseEntity<PCMDDSQDDTO> getDraft() {
@@ -174,3 +171,4 @@ public class PCMDDSQDResource {
                 .body(new PageImpl(pcmddsqdMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 }
+

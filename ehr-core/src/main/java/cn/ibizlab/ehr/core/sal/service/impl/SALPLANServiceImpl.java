@@ -241,6 +241,26 @@ public class SALPLANServiceImpl extends ServiceImpl<SALPLANMapper, SALPLAN> impl
         return true;
     }
 
+    @Override
+    public List<SALPLAN> getSalplanByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<SALPLAN> getSalplanByEntities(List<SALPLAN> entities) {
+        List ids =new ArrayList();
+        for(SALPLAN entity : entities){
+            Serializable id=entity.getSalplanid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

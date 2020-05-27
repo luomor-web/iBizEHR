@@ -216,6 +216,26 @@ public class PIMWorkflowRefServiceImpl extends ServiceImpl<PIMWorkflowRefMapper,
         return true;
     }
 
+    @Override
+    public List<PIMWorkflowRef> getPimworkflowrefByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<PIMWorkflowRef> getPimworkflowrefByEntities(List<PIMWorkflowRef> entities) {
+        List ids =new ArrayList();
+        for(PIMWorkflowRef entity : entities){
+            Serializable id=entity.getPimworkflowrefid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

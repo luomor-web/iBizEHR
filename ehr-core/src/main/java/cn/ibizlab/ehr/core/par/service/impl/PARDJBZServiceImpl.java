@@ -179,6 +179,26 @@ public class PARDJBZServiceImpl extends ServiceImpl<PARDJBZMapper, PARDJBZ> impl
         return true;
     }
 
+    @Override
+    public List<PARDJBZ> getPardjbzByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<PARDJBZ> getPardjbzByEntities(List<PARDJBZ> entities) {
+        List ids =new ArrayList();
+        for(PARDJBZ entity : entities){
+            Serializable id=entity.getPardjbzid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

@@ -225,6 +225,26 @@ public class PIMWorkflowServiceImpl extends ServiceImpl<PIMWorkflowMapper, PIMWo
         return true;
     }
 
+    @Override
+    public List<PIMWorkflow> getPimworkflowByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<PIMWorkflow> getPimworkflowByEntities(List<PIMWorkflow> entities) {
+        List ids =new ArrayList();
+        for(PIMWorkflow entity : entities){
+            Serializable id=entity.getPimworkflowid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

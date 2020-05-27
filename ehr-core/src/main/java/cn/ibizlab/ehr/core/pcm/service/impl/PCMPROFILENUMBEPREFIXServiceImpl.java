@@ -216,6 +216,26 @@ public class PCMPROFILENUMBEPREFIXServiceImpl extends ServiceImpl<PCMPROFILENUMB
         return true;
     }
 
+    @Override
+    public List<PCMPROFILENUMBEPREFIX> getPcmprofilenumbeprefixByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<PCMPROFILENUMBEPREFIX> getPcmprofilenumbeprefixByEntities(List<PCMPROFILENUMBEPREFIX> entities) {
+        List ids =new ArrayList();
+        for(PCMPROFILENUMBEPREFIX entity : entities){
+            Serializable id=entity.getPcmprofilenumbeprefixid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 
