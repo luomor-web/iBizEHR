@@ -258,6 +258,7 @@ export default class ORMORGTree2Service extends ControlService {
                         Object.assign(treeNode, { iconcls: 'copy' });
                         Object.assign(treeNode, { expanded: true });
                         Object.assign(treeNode, { leaf: false });
+                        Object.assign(treeNode, { navfilter: "n_porgid_eq" });
                         Object.assign(treeNode, { navparams: '{"nodeid":"%NODEID%"}' });
                         Object.assign(treeNode, { nodeid: treeNode.srfkey });
                         Object.assign(treeNode, { nodeid2: filter.strRealNodeId });

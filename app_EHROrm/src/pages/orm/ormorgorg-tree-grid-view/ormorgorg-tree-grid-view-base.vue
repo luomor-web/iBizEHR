@@ -516,7 +516,7 @@ export default class ORMORGOrgTreeGridViewBase extends GridViewBase {
             height: 0, 
             width: 0,  
             title: this.$t('entities.ormorg.views.editview9_editmode.title'),
-            placement: 'DRAWER_BOTTOM',
+            placement: 'DRAWER_TOP',
         };
         openDrawer(view, data);
     }
@@ -560,7 +560,7 @@ export default class ORMORGOrgTreeGridViewBase extends GridViewBase {
             height: 0, 
             width: 0,  
             title: this.$t('entities.ormorg.views.editview9.title'),
-            placement: 'DRAWER_BOTTOM',
+            placement: 'DRAWER_TOP',
         };
         openDrawer(view, data);
     }

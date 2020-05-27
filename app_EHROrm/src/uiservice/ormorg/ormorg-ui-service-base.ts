@@ -230,7 +230,7 @@ export default class ORMORGUIServiceBase extends UIService {
                 height: 0, 
                 width: 0,  
                 title: actionContext.$t('entities.ormorg.views.editview9.title'),
-                placement: 'DRAWER_BOTTOM',
+                placement: 'DRAWER_TOP',
             };
             openDrawer(view, data);
     }
