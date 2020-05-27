@@ -161,4 +161,272 @@ public class PARJXBZGLMXResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(parjxbzglmxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
+    @PreAuthorize("hasPermission(#parjxbzglmx_id,'Update',{'Sql',this.parjxbzglmxMapping,#parjxbzglmxdto})")
+    @ApiOperation(value = "UpdateByPARJXBZGL", tags = {"PARJXBZGLMX" },  notes = "UpdateByPARJXBZGL")
+	@RequestMapping(method = RequestMethod.PUT, value = "/parjxbzgls/{parjxbzgl_id}/parjxbzglmxes/{parjxbzglmx_id}")
+    @Transactional
+    public ResponseEntity<PARJXBZGLMXDTO> updateByPARJXBZGL(@PathVariable("parjxbzgl_id") String parjxbzgl_id, @PathVariable("parjxbzglmx_id") String parjxbzglmx_id, @RequestBody PARJXBZGLMXDTO parjxbzglmxdto) {
+        PARJXBZGLMX domain = parjxbzglmxMapping.toDomain(parjxbzglmxdto);
+        domain.setParjxbzglid(parjxbzgl_id);
+        domain.setParjxbzglmxid(parjxbzglmx_id);
+		parjxbzglmxService.update(domain);
+        PARJXBZGLMXDTO dto = parjxbzglmxMapping.toDto(domain);
+        return ResponseEntity.status(HttpStatus.OK).body(dto);
+    }
+
+    @PreAuthorize("hasPermission('Update',{'Sql',this.parjxbzglmxMapping,#parjxbzglmxdtos})")
+    @ApiOperation(value = "UpdateBatchByPARJXBZGL", tags = {"PARJXBZGLMX" },  notes = "UpdateBatchByPARJXBZGL")
+	@RequestMapping(method = RequestMethod.PUT, value = "/parjxbzgls/{parjxbzgl_id}/parjxbzglmxes/batch")
+    public ResponseEntity<Boolean> updateBatchByPARJXBZGL(@PathVariable("parjxbzgl_id") String parjxbzgl_id, @RequestBody List<PARJXBZGLMXDTO> parjxbzglmxdtos) {
+        List<PARJXBZGLMX> domainlist=parjxbzglmxMapping.toDomain(parjxbzglmxdtos);
+        for(PARJXBZGLMX domain:domainlist){
+            domain.setParjxbzglid(parjxbzgl_id);
+        }
+        parjxbzglmxService.updateBatch(domainlist);
+        return  ResponseEntity.status(HttpStatus.OK).body(true);
+    }
+
+    @PreAuthorize("hasPermission('','Save',{'Sql',this.parjxbzglmxMapping,#parjxbzglmxdto})")
+    @ApiOperation(value = "SaveByPARJXBZGL", tags = {"PARJXBZGLMX" },  notes = "SaveByPARJXBZGL")
+	@RequestMapping(method = RequestMethod.POST, value = "/parjxbzgls/{parjxbzgl_id}/parjxbzglmxes/save")
+    public ResponseEntity<Boolean> saveByPARJXBZGL(@PathVariable("parjxbzgl_id") String parjxbzgl_id, @RequestBody PARJXBZGLMXDTO parjxbzglmxdto) {
+        PARJXBZGLMX domain = parjxbzglmxMapping.toDomain(parjxbzglmxdto);
+        domain.setParjxbzglid(parjxbzgl_id);
+        return ResponseEntity.status(HttpStatus.OK).body(parjxbzglmxService.save(domain));
+    }
+
+    @PreAuthorize("hasPermission('Save',{'Sql',this.parjxbzglmxMapping,#parjxbzglmxdtos})")
+    @ApiOperation(value = "SaveBatchByPARJXBZGL", tags = {"PARJXBZGLMX" },  notes = "SaveBatchByPARJXBZGL")
+	@RequestMapping(method = RequestMethod.POST, value = "/parjxbzgls/{parjxbzgl_id}/parjxbzglmxes/savebatch")
+    public ResponseEntity<Boolean> saveBatchByPARJXBZGL(@PathVariable("parjxbzgl_id") String parjxbzgl_id, @RequestBody List<PARJXBZGLMXDTO> parjxbzglmxdtos) {
+        List<PARJXBZGLMX> domainlist=parjxbzglmxMapping.toDomain(parjxbzglmxdtos);
+        for(PARJXBZGLMX domain:domainlist){
+             domain.setParjxbzglid(parjxbzgl_id);
+        }
+        parjxbzglmxService.saveBatch(domainlist);
+        return  ResponseEntity.status(HttpStatus.OK).body(true);
+    }
+
+    @PreAuthorize("hasPermission(#parjxbzglmx_id,'Get',{'Sql',this.parjxbzglmxMapping,this.permissionDTO})")
+    @ApiOperation(value = "GetByPARJXBZGL", tags = {"PARJXBZGLMX" },  notes = "GetByPARJXBZGL")
+	@RequestMapping(method = RequestMethod.GET, value = "/parjxbzgls/{parjxbzgl_id}/parjxbzglmxes/{parjxbzglmx_id}")
+    public ResponseEntity<PARJXBZGLMXDTO> getByPARJXBZGL(@PathVariable("parjxbzgl_id") String parjxbzgl_id, @PathVariable("parjxbzglmx_id") String parjxbzglmx_id) {
+        PARJXBZGLMX domain = parjxbzglmxService.get(parjxbzglmx_id);
+        PARJXBZGLMXDTO dto = parjxbzglmxMapping.toDto(domain);
+        return ResponseEntity.status(HttpStatus.OK).body(dto);
+    }
+
+    @PreAuthorize("hasPermission(#parjxbzglmx_id,'Remove',{'Sql',this.parjxbzglmxMapping,this.permissionDTO})")
+    @ApiOperation(value = "RemoveByPARJXBZGL", tags = {"PARJXBZGLMX" },  notes = "RemoveByPARJXBZGL")
+	@RequestMapping(method = RequestMethod.DELETE, value = "/parjxbzgls/{parjxbzgl_id}/parjxbzglmxes/{parjxbzglmx_id}")
+    @Transactional
+    public ResponseEntity<Boolean> removeByPARJXBZGL(@PathVariable("parjxbzgl_id") String parjxbzgl_id, @PathVariable("parjxbzglmx_id") String parjxbzglmx_id) {
+		return ResponseEntity.status(HttpStatus.OK).body(parjxbzglmxService.remove(parjxbzglmx_id));
+    }
+
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.parjxbzglmxMapping,this.permissionDTO,#ids})")
+    @ApiOperation(value = "RemoveBatchByPARJXBZGL", tags = {"PARJXBZGLMX" },  notes = "RemoveBatchByPARJXBZGL")
+	@RequestMapping(method = RequestMethod.DELETE, value = "/parjxbzgls/{parjxbzgl_id}/parjxbzglmxes/batch")
+    public ResponseEntity<Boolean> removeBatchByPARJXBZGL(@RequestBody List<String> ids) {
+        parjxbzglmxService.removeBatch(ids);
+        return  ResponseEntity.status(HttpStatus.OK).body(true);
+    }
+
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.parjxbzglmxMapping,#parjxbzglmxdto})")
+    @ApiOperation(value = "CreateByPARJXBZGL", tags = {"PARJXBZGLMX" },  notes = "CreateByPARJXBZGL")
+	@RequestMapping(method = RequestMethod.POST, value = "/parjxbzgls/{parjxbzgl_id}/parjxbzglmxes")
+    @Transactional
+    public ResponseEntity<PARJXBZGLMXDTO> createByPARJXBZGL(@PathVariable("parjxbzgl_id") String parjxbzgl_id, @RequestBody PARJXBZGLMXDTO parjxbzglmxdto) {
+        PARJXBZGLMX domain = parjxbzglmxMapping.toDomain(parjxbzglmxdto);
+        domain.setParjxbzglid(parjxbzgl_id);
+		parjxbzglmxService.create(domain);
+        PARJXBZGLMXDTO dto = parjxbzglmxMapping.toDto(domain);
+		return ResponseEntity.status(HttpStatus.OK).body(dto);
+    }
+
+    @PreAuthorize("hasPermission('Create',{'Sql',this.parjxbzglmxMapping,#parjxbzglmxdtos})")
+    @ApiOperation(value = "createBatchByPARJXBZGL", tags = {"PARJXBZGLMX" },  notes = "createBatchByPARJXBZGL")
+	@RequestMapping(method = RequestMethod.POST, value = "/parjxbzgls/{parjxbzgl_id}/parjxbzglmxes/batch")
+    public ResponseEntity<Boolean> createBatchByPARJXBZGL(@PathVariable("parjxbzgl_id") String parjxbzgl_id, @RequestBody List<PARJXBZGLMXDTO> parjxbzglmxdtos) {
+        List<PARJXBZGLMX> domainlist=parjxbzglmxMapping.toDomain(parjxbzglmxdtos);
+        for(PARJXBZGLMX domain:domainlist){
+            domain.setParjxbzglid(parjxbzgl_id);
+        }
+        parjxbzglmxService.createBatch(domainlist);
+        return  ResponseEntity.status(HttpStatus.OK).body(true);
+    }
+
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PARJXBZGLMX-GetDraft-all')")
+    @ApiOperation(value = "GetDraftByPARJXBZGL", tags = {"PARJXBZGLMX" },  notes = "GetDraftByPARJXBZGL")
+    @RequestMapping(method = RequestMethod.GET, value = "/parjxbzgls/{parjxbzgl_id}/parjxbzglmxes/getdraft")
+    public ResponseEntity<PARJXBZGLMXDTO> getDraftByPARJXBZGL(@PathVariable("parjxbzgl_id") String parjxbzgl_id) {
+        PARJXBZGLMX domain = new PARJXBZGLMX();
+        domain.setParjxbzglid(parjxbzgl_id);
+        return ResponseEntity.status(HttpStatus.OK).body(parjxbzglmxMapping.toDto(parjxbzglmxService.getDraft(domain)));
+    }
+
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PARJXBZGLMX-CheckKey-all')")
+    @ApiOperation(value = "CheckKeyByPARJXBZGL", tags = {"PARJXBZGLMX" },  notes = "CheckKeyByPARJXBZGL")
+	@RequestMapping(method = RequestMethod.POST, value = "/parjxbzgls/{parjxbzgl_id}/parjxbzglmxes/checkkey")
+    public ResponseEntity<Boolean> checkKeyByPARJXBZGL(@PathVariable("parjxbzgl_id") String parjxbzgl_id, @RequestBody PARJXBZGLMXDTO parjxbzglmxdto) {
+        return  ResponseEntity.status(HttpStatus.OK).body(parjxbzglmxService.checkKey(parjxbzglmxMapping.toDomain(parjxbzglmxdto)));
+    }
+
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PARJXBZGLMX-Default-all')")
+	@ApiOperation(value = "fetchDEFAULTByPARJXBZGL", tags = {"PARJXBZGLMX" } ,notes = "fetchDEFAULTByPARJXBZGL")
+    @RequestMapping(method= RequestMethod.GET , value="/parjxbzgls/{parjxbzgl_id}/parjxbzglmxes/fetchdefault")
+	public ResponseEntity<List<PARJXBZGLMXDTO>> fetchPARJXBZGLMXDefaultByPARJXBZGL(@PathVariable("parjxbzgl_id") String parjxbzgl_id,PARJXBZGLMXSearchContext context) {
+        context.setN_parjxbzglid_eq(parjxbzgl_id);
+        Page<PARJXBZGLMX> domains = parjxbzglmxService.searchDefault(context) ;
+        List<PARJXBZGLMXDTO> list = parjxbzglmxMapping.toDto(domains.getContent());
+	    return ResponseEntity.status(HttpStatus.OK)
+                .header("x-page", String.valueOf(context.getPageable().getPageNumber()))
+                .header("x-per-page", String.valueOf(context.getPageable().getPageSize()))
+                .header("x-total", String.valueOf(domains.getTotalElements()))
+                .body(list);
+	}
+
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PARJXBZGLMX-Default-all')")
+	@ApiOperation(value = "searchDEFAULTByPARJXBZGL", tags = {"PARJXBZGLMX" } ,notes = "searchDEFAULTByPARJXBZGL")
+    @RequestMapping(method= RequestMethod.POST , value="/parjxbzgls/{parjxbzgl_id}/parjxbzglmxes/searchdefault")
+	public ResponseEntity<Page<PARJXBZGLMXDTO>> searchPARJXBZGLMXDefaultByPARJXBZGL(@PathVariable("parjxbzgl_id") String parjxbzgl_id, @RequestBody PARJXBZGLMXSearchContext context) {
+        context.setN_parjxbzglid_eq(parjxbzgl_id);
+        Page<PARJXBZGLMX> domains = parjxbzglmxService.searchDefault(context) ;
+	    return ResponseEntity.status(HttpStatus.OK)
+                .body(new PageImpl(parjxbzglmxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
+	}
+    @PreAuthorize("hasPermission(#parjxbzglmx_id,'Update',{'Sql',this.parjxbzglmxMapping,#parjxbzglmxdto})")
+    @ApiOperation(value = "UpdateByPIMPERSON", tags = {"PARJXBZGLMX" },  notes = "UpdateByPIMPERSON")
+	@RequestMapping(method = RequestMethod.PUT, value = "/pimpeople/{pimperson_id}/parjxbzglmxes/{parjxbzglmx_id}")
+    @Transactional
+    public ResponseEntity<PARJXBZGLMXDTO> updateByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("parjxbzglmx_id") String parjxbzglmx_id, @RequestBody PARJXBZGLMXDTO parjxbzglmxdto) {
+        PARJXBZGLMX domain = parjxbzglmxMapping.toDomain(parjxbzglmxdto);
+        domain.setPimpersonid(pimperson_id);
+        domain.setParjxbzglmxid(parjxbzglmx_id);
+		parjxbzglmxService.update(domain);
+        PARJXBZGLMXDTO dto = parjxbzglmxMapping.toDto(domain);
+        return ResponseEntity.status(HttpStatus.OK).body(dto);
+    }
+
+    @PreAuthorize("hasPermission('Update',{'Sql',this.parjxbzglmxMapping,#parjxbzglmxdtos})")
+    @ApiOperation(value = "UpdateBatchByPIMPERSON", tags = {"PARJXBZGLMX" },  notes = "UpdateBatchByPIMPERSON")
+	@RequestMapping(method = RequestMethod.PUT, value = "/pimpeople/{pimperson_id}/parjxbzglmxes/batch")
+    public ResponseEntity<Boolean> updateBatchByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody List<PARJXBZGLMXDTO> parjxbzglmxdtos) {
+        List<PARJXBZGLMX> domainlist=parjxbzglmxMapping.toDomain(parjxbzglmxdtos);
+        for(PARJXBZGLMX domain:domainlist){
+            domain.setPimpersonid(pimperson_id);
+        }
+        parjxbzglmxService.updateBatch(domainlist);
+        return  ResponseEntity.status(HttpStatus.OK).body(true);
+    }
+
+    @PreAuthorize("hasPermission('','Save',{'Sql',this.parjxbzglmxMapping,#parjxbzglmxdto})")
+    @ApiOperation(value = "SaveByPIMPERSON", tags = {"PARJXBZGLMX" },  notes = "SaveByPIMPERSON")
+	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/parjxbzglmxes/save")
+    public ResponseEntity<Boolean> saveByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PARJXBZGLMXDTO parjxbzglmxdto) {
+        PARJXBZGLMX domain = parjxbzglmxMapping.toDomain(parjxbzglmxdto);
+        domain.setPimpersonid(pimperson_id);
+        return ResponseEntity.status(HttpStatus.OK).body(parjxbzglmxService.save(domain));
+    }
+
+    @PreAuthorize("hasPermission('Save',{'Sql',this.parjxbzglmxMapping,#parjxbzglmxdtos})")
+    @ApiOperation(value = "SaveBatchByPIMPERSON", tags = {"PARJXBZGLMX" },  notes = "SaveBatchByPIMPERSON")
+	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/parjxbzglmxes/savebatch")
+    public ResponseEntity<Boolean> saveBatchByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody List<PARJXBZGLMXDTO> parjxbzglmxdtos) {
+        List<PARJXBZGLMX> domainlist=parjxbzglmxMapping.toDomain(parjxbzglmxdtos);
+        for(PARJXBZGLMX domain:domainlist){
+             domain.setPimpersonid(pimperson_id);
+        }
+        parjxbzglmxService.saveBatch(domainlist);
+        return  ResponseEntity.status(HttpStatus.OK).body(true);
+    }
+
+    @PreAuthorize("hasPermission(#parjxbzglmx_id,'Get',{'Sql',this.parjxbzglmxMapping,this.permissionDTO})")
+    @ApiOperation(value = "GetByPIMPERSON", tags = {"PARJXBZGLMX" },  notes = "GetByPIMPERSON")
+	@RequestMapping(method = RequestMethod.GET, value = "/pimpeople/{pimperson_id}/parjxbzglmxes/{parjxbzglmx_id}")
+    public ResponseEntity<PARJXBZGLMXDTO> getByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("parjxbzglmx_id") String parjxbzglmx_id) {
+        PARJXBZGLMX domain = parjxbzglmxService.get(parjxbzglmx_id);
+        PARJXBZGLMXDTO dto = parjxbzglmxMapping.toDto(domain);
+        return ResponseEntity.status(HttpStatus.OK).body(dto);
+    }
+
+    @PreAuthorize("hasPermission(#parjxbzglmx_id,'Remove',{'Sql',this.parjxbzglmxMapping,this.permissionDTO})")
+    @ApiOperation(value = "RemoveByPIMPERSON", tags = {"PARJXBZGLMX" },  notes = "RemoveByPIMPERSON")
+	@RequestMapping(method = RequestMethod.DELETE, value = "/pimpeople/{pimperson_id}/parjxbzglmxes/{parjxbzglmx_id}")
+    @Transactional
+    public ResponseEntity<Boolean> removeByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("parjxbzglmx_id") String parjxbzglmx_id) {
+		return ResponseEntity.status(HttpStatus.OK).body(parjxbzglmxService.remove(parjxbzglmx_id));
+    }
+
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.parjxbzglmxMapping,this.permissionDTO,#ids})")
+    @ApiOperation(value = "RemoveBatchByPIMPERSON", tags = {"PARJXBZGLMX" },  notes = "RemoveBatchByPIMPERSON")
+	@RequestMapping(method = RequestMethod.DELETE, value = "/pimpeople/{pimperson_id}/parjxbzglmxes/batch")
+    public ResponseEntity<Boolean> removeBatchByPIMPERSON(@RequestBody List<String> ids) {
+        parjxbzglmxService.removeBatch(ids);
+        return  ResponseEntity.status(HttpStatus.OK).body(true);
+    }
+
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.parjxbzglmxMapping,#parjxbzglmxdto})")
+    @ApiOperation(value = "CreateByPIMPERSON", tags = {"PARJXBZGLMX" },  notes = "CreateByPIMPERSON")
+	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/parjxbzglmxes")
+    @Transactional
+    public ResponseEntity<PARJXBZGLMXDTO> createByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PARJXBZGLMXDTO parjxbzglmxdto) {
+        PARJXBZGLMX domain = parjxbzglmxMapping.toDomain(parjxbzglmxdto);
+        domain.setPimpersonid(pimperson_id);
+		parjxbzglmxService.create(domain);
+        PARJXBZGLMXDTO dto = parjxbzglmxMapping.toDto(domain);
+		return ResponseEntity.status(HttpStatus.OK).body(dto);
+    }
+
+    @PreAuthorize("hasPermission('Create',{'Sql',this.parjxbzglmxMapping,#parjxbzglmxdtos})")
+    @ApiOperation(value = "createBatchByPIMPERSON", tags = {"PARJXBZGLMX" },  notes = "createBatchByPIMPERSON")
+	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/parjxbzglmxes/batch")
+    public ResponseEntity<Boolean> createBatchByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody List<PARJXBZGLMXDTO> parjxbzglmxdtos) {
+        List<PARJXBZGLMX> domainlist=parjxbzglmxMapping.toDomain(parjxbzglmxdtos);
+        for(PARJXBZGLMX domain:domainlist){
+            domain.setPimpersonid(pimperson_id);
+        }
+        parjxbzglmxService.createBatch(domainlist);
+        return  ResponseEntity.status(HttpStatus.OK).body(true);
+    }
+
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PARJXBZGLMX-GetDraft-all')")
+    @ApiOperation(value = "GetDraftByPIMPERSON", tags = {"PARJXBZGLMX" },  notes = "GetDraftByPIMPERSON")
+    @RequestMapping(method = RequestMethod.GET, value = "/pimpeople/{pimperson_id}/parjxbzglmxes/getdraft")
+    public ResponseEntity<PARJXBZGLMXDTO> getDraftByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id) {
+        PARJXBZGLMX domain = new PARJXBZGLMX();
+        domain.setPimpersonid(pimperson_id);
+        return ResponseEntity.status(HttpStatus.OK).body(parjxbzglmxMapping.toDto(parjxbzglmxService.getDraft(domain)));
+    }
+
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PARJXBZGLMX-CheckKey-all')")
+    @ApiOperation(value = "CheckKeyByPIMPERSON", tags = {"PARJXBZGLMX" },  notes = "CheckKeyByPIMPERSON")
+	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/parjxbzglmxes/checkkey")
+    public ResponseEntity<Boolean> checkKeyByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PARJXBZGLMXDTO parjxbzglmxdto) {
+        return  ResponseEntity.status(HttpStatus.OK).body(parjxbzglmxService.checkKey(parjxbzglmxMapping.toDomain(parjxbzglmxdto)));
+    }
+
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PARJXBZGLMX-Default-all')")
+	@ApiOperation(value = "fetchDEFAULTByPIMPERSON", tags = {"PARJXBZGLMX" } ,notes = "fetchDEFAULTByPIMPERSON")
+    @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/parjxbzglmxes/fetchdefault")
+	public ResponseEntity<List<PARJXBZGLMXDTO>> fetchPARJXBZGLMXDefaultByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id,PARJXBZGLMXSearchContext context) {
+        context.setN_pimpersonid_eq(pimperson_id);
+        Page<PARJXBZGLMX> domains = parjxbzglmxService.searchDefault(context) ;
+        List<PARJXBZGLMXDTO> list = parjxbzglmxMapping.toDto(domains.getContent());
+	    return ResponseEntity.status(HttpStatus.OK)
+                .header("x-page", String.valueOf(context.getPageable().getPageNumber()))
+                .header("x-per-page", String.valueOf(context.getPageable().getPageSize()))
+                .header("x-total", String.valueOf(domains.getTotalElements()))
+                .body(list);
+	}
+
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PARJXBZGLMX-Default-all')")
+	@ApiOperation(value = "searchDEFAULTByPIMPERSON", tags = {"PARJXBZGLMX" } ,notes = "searchDEFAULTByPIMPERSON")
+    @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/parjxbzglmxes/searchdefault")
+	public ResponseEntity<Page<PARJXBZGLMXDTO>> searchPARJXBZGLMXDefaultByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PARJXBZGLMXSearchContext context) {
+        context.setN_pimpersonid_eq(pimperson_id);
+        Page<PARJXBZGLMX> domains = parjxbzglmxService.searchDefault(context) ;
+	    return ResponseEntity.status(HttpStatus.OK)
+                .body(new PageImpl(parjxbzglmxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
+	}
 }

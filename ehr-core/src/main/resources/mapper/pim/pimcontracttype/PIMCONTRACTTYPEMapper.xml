@@ -39,12 +39,5 @@
 			]]>
     </sql>
 
-    <!--数据查询[Default]-->
-    <sql id="Default" databaseId="oracle">
-       <![CDATA[	SELECT t1.CREATEDATE, t1.CREATEMAN, t1.ENABLE, t1.LX, t1.ORMORGID, t1.PIMCONTRACTTYPEID, t1.PIMCONTRACTTYPENAME, t1.SBM, t1.UPDATEDATE, t1.UPDATEMAN FROM T_PIMCONTRACTTYPE t1  
-				 WHERE 	t1.ENABLE = 1
-			]]>
-    </sql>
-
 </mapper>
 

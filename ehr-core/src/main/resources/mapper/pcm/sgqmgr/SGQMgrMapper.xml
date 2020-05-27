@@ -48,11 +48,5 @@
 			]]>
     </sql>
 
-    <!--数据查询[Default]-->
-    <sql id="Default" databaseId="oracle">
-       <![CDATA[	SELECT t1.BZ, t1.CREATEDATE, t1.CREATEMAN, t1.JSSJ, t1.KSSJ, t1.PCMBDSQDMXID, t1.PIMPERSONID, t11.PIMPERSONNAME, t1.SFTGSH, t1.SGQMGRID, t1.SGQMGRNAME, t1.UPDATEDATE, t1.UPDATEMAN, t1.YGBH FROM T_SGQMGR t1  LEFT JOIN T_PIMPERSON t11 ON t1.PIMPERSONID = t11.PIMPERSONID  
-			]]>
-    </sql>
-
 </mapper>
 

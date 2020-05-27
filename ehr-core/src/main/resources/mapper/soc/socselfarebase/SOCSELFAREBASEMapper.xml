@@ -39,12 +39,5 @@
 			]]>
     </sql>
 
-    <!--数据查询[Default]-->
-    <sql id="Default" databaseId="oracle">
-       <![CDATA[	SELECT t1.CBDQ, t1.CBDW, t1.CREATEDATE, t1.CREATEMAN, t1.DWSBBLI, t1.ENABLE, t1.GRSBBL, t1.ORMORGID AS ORGID, t1.ORMORGID, t11.ORGNAME AS ORMORGNAME, t1.SBLX, t1.SOCSELFAREBASEID, t1.SOCSELFAREBASENAME, t1.UPDATEDATE, t1.UPDATEMAN, t1.XH FROM T_SOCSELFAREBASE t1  LEFT JOIN T_SRFORG t11 ON t1.ORMORGID = t11.ORGID  
-				 WHERE 	t1.ENABLE = 1
-			]]>
-    </sql>
-
 </mapper>
 

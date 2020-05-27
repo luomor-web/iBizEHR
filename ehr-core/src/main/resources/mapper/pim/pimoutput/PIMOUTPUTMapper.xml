@@ -7,9 +7,6 @@
 	<select id="selectById"  resultMap="PIMOUTPUTResultMap" databaseId="mysql">
         <![CDATA[select t1.* from (SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t1.`ND`, t11.`ORGCODE`, t1.`ORMORGID`, t11.`SHORTNAME` AS `ORMORGNAME`, t1.`OUTPUT`, t1.`PIMOUTPUTID`, t1.`PIMOUTPUTNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`YD`, t11.`ZZDZS` AS `ZZXS` FROM `T_PIMOUTPUT` t1  LEFT JOIN T_SRFORG t11 ON t1.ORMORGID = t11.ORGID  ) t1 where pimoutputid=#{id}]]>
     </select>
-	<select id="selectById"  resultMap="PIMOUTPUTResultMap" databaseId="oracle">
-        <![CDATA[select t1.* from (SELECT t1.CREATEDATE, t1.CREATEMAN, t1.ENABLE, t1.ND, t11.ORGCODE, t1.ORMORGID, t11.SHORTNAME AS ORMORGNAME, t1.OUTPUT, t1.PIMOUTPUTID, t1.PIMOUTPUTNAME, t1.UPDATEDATE, t1.UPDATEMAN, t1.YD, t11.ZZDZS AS ZZXS FROM T_PIMOUTPUT t1  LEFT JOIN T_SRFORG t11 ON t1.ORMORGID = t11.ORGID  ) t1 where pimoutputid=#{id}]]>
-    </select>
 
     <!--通过mybatis将查询结果注入到entity中,通过配置autoMapping="true"由mybatis自动处理映射关系 -->
     <resultMap id="PIMOUTPUTResultMap" type="cn.ibizlab.ehr.core.pim.domain.PIMOUTPUT" autoMapping="true">
@@ -67,24 +64,9 @@
 			]]>
     </sql>
 
-    <!--数据查询[CurOrg]-->
-    <sql id="CurOrg" databaseId="oracle">
-       <![CDATA[	SELECT t1.CREATEDATE, t1.CREATEMAN, t1.ENABLE, t1.ND, t11.ORGCODE, t1.ORMORGID, t11.SHORTNAME AS ORMORGNAME, t1.OUTPUT, t1.PIMOUTPUTID, t1.PIMOUTPUTNAME, t1.UPDATEDATE, t1.UPDATEMAN, t1.YD, t11.ZZDZS AS ZZXS FROM T_PIMOUTPUT t1  LEFT JOIN T_SRFORG t11 ON t1.ORMORGID = t11.ORGID  
-				 WHERE 	t1.ENABLE = 1
-					 AND ( ( ((length(t1.orgcode) = 3) and ((select a.orgcode from t_srforg a where a.orgid = #{srf.sessioncontext.SRFORGID')})  in  ('100','BG')))   or ((length(t1.orgcode) = 5) and ((select a.orgcode from t_srforg a where a.orgid = #{srf.sessioncontext.SRFORGID')})  not in  ('100','BG')  and a.orgcode = substr(t1.orgcode,1,3))) ) )
-			]]>
-    </sql>
-
     <!--数据查询[Default]-->
     <sql id="Default" databaseId="mysql">
        <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t1.`ND`, t11.`ORGCODE`, t1.`ORMORGID`, t11.`SHORTNAME` AS `ORMORGNAME`, t1.`OUTPUT`, t1.`PIMOUTPUTID`, t1.`PIMOUTPUTNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`YD`, t11.`ZZDZS` AS `ZZXS` FROM `T_PIMOUTPUT` t1  LEFT JOIN T_SRFORG t11 ON t1.ORMORGID = t11.ORGID  
-				 WHERE 	t1.ENABLE = 1
-			]]>
-    </sql>
-
-    <!--数据查询[Default]-->
-    <sql id="Default" databaseId="oracle">
-       <![CDATA[	SELECT t1.CREATEDATE, t1.CREATEMAN, t1.ENABLE, t1.ND, t11.ORGCODE, t1.ORMORGID, t11.SHORTNAME AS ORMORGNAME, t1.OUTPUT, t1.PIMOUTPUTID, t1.PIMOUTPUTNAME, t1.UPDATEDATE, t1.UPDATEMAN, t1.YD, t11.ZZDZS AS ZZXS FROM T_PIMOUTPUT t1  LEFT JOIN T_SRFORG t11 ON t1.ORMORGID = t11.ORGID  
 				 WHERE 	t1.ENABLE = 1
 			]]>
     </sql>
@@ -95,22 +77,9 @@
 			]]>
     </sql>
 
-    <!--数据查询[REP_OUTPUT]-->
-    <sql id="REP_OUTPUT" databaseId="oracle">
-       <![CDATA[	select outdate ,output/10000 as outnum from BIS_PIMOUTPUT_T t  where  trunc(months_between(sysdate,outdate))>0  and trunc(months_between(sysdate,outdate))<=12
-			]]>
-    </sql>
-
     <!--数据查询[View]-->
     <sql id="View" databaseId="mysql">
        <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t1.`ND`, t11.`ORGCODE`, t1.`ORMORGID`, t11.`SHORTNAME` AS `ORMORGNAME`, t1.`OUTPUT`, t1.`PIMOUTPUTID`, t1.`PIMOUTPUTNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`YD`, t11.`ZZDZS` AS `ZZXS` FROM `T_PIMOUTPUT` t1  LEFT JOIN T_SRFORG t11 ON t1.ORMORGID = t11.ORGID  
-				 WHERE 	t1.ENABLE = 1
-			]]>
-    </sql>
-
-    <!--数据查询[View]-->
-    <sql id="View" databaseId="oracle">
-       <![CDATA[	SELECT t1.CREATEDATE, t1.CREATEMAN, t1.ENABLE, t1.ND, t11.ORGCODE, t1.ORMORGID, t11.SHORTNAME AS ORMORGNAME, t1.OUTPUT, t1.PIMOUTPUTID, t1.PIMOUTPUTNAME, t1.UPDATEDATE, t1.UPDATEMAN, t1.YD, t11.ZZDZS AS ZZXS FROM T_PIMOUTPUT t1  LEFT JOIN T_SRFORG t11 ON t1.ORMORGID = t11.ORGID  
 				 WHERE 	t1.ENABLE = 1
 			]]>
     </sql>

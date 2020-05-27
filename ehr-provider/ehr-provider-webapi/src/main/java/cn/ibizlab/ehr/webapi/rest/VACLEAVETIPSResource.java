@@ -185,4 +185,162 @@ public class VACLEAVETIPSResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(vacleavetipsMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACLEAVETIPS-CheckQJZL-all')")
+    @ApiOperation(value = "检查请假种类ByVACHOLIDAYRULES", tags = {"VACLEAVETIPS" },  notes = "检查请假种类ByVACHOLIDAYRULES")
+	@RequestMapping(method = RequestMethod.POST, value = "/vacholidayrules/{vacholidayrules_id}/vacleavetips/{vacleavetips_id}/checkqjzl")
+    @Transactional
+    public ResponseEntity<VACLEAVETIPSDTO> checkQJZLByVACHOLIDAYRULES(@PathVariable("vacholidayrules_id") String vacholidayrules_id, @PathVariable("vacleavetips_id") String vacleavetips_id, @RequestBody VACLEAVETIPSDTO vacleavetipsdto) {
+        VACLEAVETIPS domain = vacleavetipsMapping.toDomain(vacleavetipsdto);
+        domain.setVacholidayrulesid(vacholidayrules_id);
+        domain = vacleavetipsService.checkQJZL(domain) ;
+        vacleavetipsdto = vacleavetipsMapping.toDto(domain);
+        return ResponseEntity.status(HttpStatus.OK).body(vacleavetipsdto);
+    }
+
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.vacleavetipsMapping,#vacleavetipsdto})")
+    @ApiOperation(value = "CreateByVACHOLIDAYRULES", tags = {"VACLEAVETIPS" },  notes = "CreateByVACHOLIDAYRULES")
+	@RequestMapping(method = RequestMethod.POST, value = "/vacholidayrules/{vacholidayrules_id}/vacleavetips")
+    @Transactional
+    public ResponseEntity<VACLEAVETIPSDTO> createByVACHOLIDAYRULES(@PathVariable("vacholidayrules_id") String vacholidayrules_id, @RequestBody VACLEAVETIPSDTO vacleavetipsdto) {
+        VACLEAVETIPS domain = vacleavetipsMapping.toDomain(vacleavetipsdto);
+        domain.setVacholidayrulesid(vacholidayrules_id);
+		vacleavetipsService.create(domain);
+        VACLEAVETIPSDTO dto = vacleavetipsMapping.toDto(domain);
+		return ResponseEntity.status(HttpStatus.OK).body(dto);
+    }
+
+    @PreAuthorize("hasPermission('Create',{'Sql',this.vacleavetipsMapping,#vacleavetipsdtos})")
+    @ApiOperation(value = "createBatchByVACHOLIDAYRULES", tags = {"VACLEAVETIPS" },  notes = "createBatchByVACHOLIDAYRULES")
+	@RequestMapping(method = RequestMethod.POST, value = "/vacholidayrules/{vacholidayrules_id}/vacleavetips/batch")
+    public ResponseEntity<Boolean> createBatchByVACHOLIDAYRULES(@PathVariable("vacholidayrules_id") String vacholidayrules_id, @RequestBody List<VACLEAVETIPSDTO> vacleavetipsdtos) {
+        List<VACLEAVETIPS> domainlist=vacleavetipsMapping.toDomain(vacleavetipsdtos);
+        for(VACLEAVETIPS domain:domainlist){
+            domain.setVacholidayrulesid(vacholidayrules_id);
+        }
+        vacleavetipsService.createBatch(domainlist);
+        return  ResponseEntity.status(HttpStatus.OK).body(true);
+    }
+
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACLEAVETIPS-GetDraft-all')")
+    @ApiOperation(value = "GetDraftByVACHOLIDAYRULES", tags = {"VACLEAVETIPS" },  notes = "GetDraftByVACHOLIDAYRULES")
+    @RequestMapping(method = RequestMethod.GET, value = "/vacholidayrules/{vacholidayrules_id}/vacleavetips/getdraft")
+    public ResponseEntity<VACLEAVETIPSDTO> getDraftByVACHOLIDAYRULES(@PathVariable("vacholidayrules_id") String vacholidayrules_id) {
+        VACLEAVETIPS domain = new VACLEAVETIPS();
+        domain.setVacholidayrulesid(vacholidayrules_id);
+        return ResponseEntity.status(HttpStatus.OK).body(vacleavetipsMapping.toDto(vacleavetipsService.getDraft(domain)));
+    }
+
+    @PreAuthorize("hasPermission(#vacleavetips_id,'Remove',{'Sql',this.vacleavetipsMapping,this.permissionDTO})")
+    @ApiOperation(value = "RemoveByVACHOLIDAYRULES", tags = {"VACLEAVETIPS" },  notes = "RemoveByVACHOLIDAYRULES")
+	@RequestMapping(method = RequestMethod.DELETE, value = "/vacholidayrules/{vacholidayrules_id}/vacleavetips/{vacleavetips_id}")
+    @Transactional
+    public ResponseEntity<Boolean> removeByVACHOLIDAYRULES(@PathVariable("vacholidayrules_id") String vacholidayrules_id, @PathVariable("vacleavetips_id") String vacleavetips_id) {
+		return ResponseEntity.status(HttpStatus.OK).body(vacleavetipsService.remove(vacleavetips_id));
+    }
+
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.vacleavetipsMapping,this.permissionDTO,#ids})")
+    @ApiOperation(value = "RemoveBatchByVACHOLIDAYRULES", tags = {"VACLEAVETIPS" },  notes = "RemoveBatchByVACHOLIDAYRULES")
+	@RequestMapping(method = RequestMethod.DELETE, value = "/vacholidayrules/{vacholidayrules_id}/vacleavetips/batch")
+    public ResponseEntity<Boolean> removeBatchByVACHOLIDAYRULES(@RequestBody List<String> ids) {
+        vacleavetipsService.removeBatch(ids);
+        return  ResponseEntity.status(HttpStatus.OK).body(true);
+    }
+
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACLEAVETIPS-CheckKey-all')")
+    @ApiOperation(value = "CheckKeyByVACHOLIDAYRULES", tags = {"VACLEAVETIPS" },  notes = "CheckKeyByVACHOLIDAYRULES")
+	@RequestMapping(method = RequestMethod.POST, value = "/vacholidayrules/{vacholidayrules_id}/vacleavetips/checkkey")
+    public ResponseEntity<Boolean> checkKeyByVACHOLIDAYRULES(@PathVariable("vacholidayrules_id") String vacholidayrules_id, @RequestBody VACLEAVETIPSDTO vacleavetipsdto) {
+        return  ResponseEntity.status(HttpStatus.OK).body(vacleavetipsService.checkKey(vacleavetipsMapping.toDomain(vacleavetipsdto)));
+    }
+
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACLEAVETIPS-CheckRepeat-all')")
+    @ApiOperation(value = "检查重复ByVACHOLIDAYRULES", tags = {"VACLEAVETIPS" },  notes = "检查重复ByVACHOLIDAYRULES")
+	@RequestMapping(method = RequestMethod.POST, value = "/vacholidayrules/{vacholidayrules_id}/vacleavetips/{vacleavetips_id}/checkrepeat")
+    @Transactional
+    public ResponseEntity<VACLEAVETIPSDTO> checkRepeatByVACHOLIDAYRULES(@PathVariable("vacholidayrules_id") String vacholidayrules_id, @PathVariable("vacleavetips_id") String vacleavetips_id, @RequestBody VACLEAVETIPSDTO vacleavetipsdto) {
+        VACLEAVETIPS domain = vacleavetipsMapping.toDomain(vacleavetipsdto);
+        domain.setVacholidayrulesid(vacholidayrules_id);
+        domain = vacleavetipsService.checkRepeat(domain) ;
+        vacleavetipsdto = vacleavetipsMapping.toDto(domain);
+        return ResponseEntity.status(HttpStatus.OK).body(vacleavetipsdto);
+    }
+
+    @PreAuthorize("hasPermission(#vacleavetips_id,'Get',{'Sql',this.vacleavetipsMapping,this.permissionDTO})")
+    @ApiOperation(value = "GetByVACHOLIDAYRULES", tags = {"VACLEAVETIPS" },  notes = "GetByVACHOLIDAYRULES")
+	@RequestMapping(method = RequestMethod.GET, value = "/vacholidayrules/{vacholidayrules_id}/vacleavetips/{vacleavetips_id}")
+    public ResponseEntity<VACLEAVETIPSDTO> getByVACHOLIDAYRULES(@PathVariable("vacholidayrules_id") String vacholidayrules_id, @PathVariable("vacleavetips_id") String vacleavetips_id) {
+        VACLEAVETIPS domain = vacleavetipsService.get(vacleavetips_id);
+        VACLEAVETIPSDTO dto = vacleavetipsMapping.toDto(domain);
+        return ResponseEntity.status(HttpStatus.OK).body(dto);
+    }
+
+    @PreAuthorize("hasPermission(#vacleavetips_id,'Update',{'Sql',this.vacleavetipsMapping,#vacleavetipsdto})")
+    @ApiOperation(value = "UpdateByVACHOLIDAYRULES", tags = {"VACLEAVETIPS" },  notes = "UpdateByVACHOLIDAYRULES")
+	@RequestMapping(method = RequestMethod.PUT, value = "/vacholidayrules/{vacholidayrules_id}/vacleavetips/{vacleavetips_id}")
+    @Transactional
+    public ResponseEntity<VACLEAVETIPSDTO> updateByVACHOLIDAYRULES(@PathVariable("vacholidayrules_id") String vacholidayrules_id, @PathVariable("vacleavetips_id") String vacleavetips_id, @RequestBody VACLEAVETIPSDTO vacleavetipsdto) {
+        VACLEAVETIPS domain = vacleavetipsMapping.toDomain(vacleavetipsdto);
+        domain.setVacholidayrulesid(vacholidayrules_id);
+        domain.setVacleavetipsid(vacleavetips_id);
+		vacleavetipsService.update(domain);
+        VACLEAVETIPSDTO dto = vacleavetipsMapping.toDto(domain);
+        return ResponseEntity.status(HttpStatus.OK).body(dto);
+    }
+
+    @PreAuthorize("hasPermission('Update',{'Sql',this.vacleavetipsMapping,#vacleavetipsdtos})")
+    @ApiOperation(value = "UpdateBatchByVACHOLIDAYRULES", tags = {"VACLEAVETIPS" },  notes = "UpdateBatchByVACHOLIDAYRULES")
+	@RequestMapping(method = RequestMethod.PUT, value = "/vacholidayrules/{vacholidayrules_id}/vacleavetips/batch")
+    public ResponseEntity<Boolean> updateBatchByVACHOLIDAYRULES(@PathVariable("vacholidayrules_id") String vacholidayrules_id, @RequestBody List<VACLEAVETIPSDTO> vacleavetipsdtos) {
+        List<VACLEAVETIPS> domainlist=vacleavetipsMapping.toDomain(vacleavetipsdtos);
+        for(VACLEAVETIPS domain:domainlist){
+            domain.setVacholidayrulesid(vacholidayrules_id);
+        }
+        vacleavetipsService.updateBatch(domainlist);
+        return  ResponseEntity.status(HttpStatus.OK).body(true);
+    }
+
+    @PreAuthorize("hasPermission('','Save',{'Sql',this.vacleavetipsMapping,#vacleavetipsdto})")
+    @ApiOperation(value = "SaveByVACHOLIDAYRULES", tags = {"VACLEAVETIPS" },  notes = "SaveByVACHOLIDAYRULES")
+	@RequestMapping(method = RequestMethod.POST, value = "/vacholidayrules/{vacholidayrules_id}/vacleavetips/save")
+    public ResponseEntity<Boolean> saveByVACHOLIDAYRULES(@PathVariable("vacholidayrules_id") String vacholidayrules_id, @RequestBody VACLEAVETIPSDTO vacleavetipsdto) {
+        VACLEAVETIPS domain = vacleavetipsMapping.toDomain(vacleavetipsdto);
+        domain.setVacholidayrulesid(vacholidayrules_id);
+        return ResponseEntity.status(HttpStatus.OK).body(vacleavetipsService.save(domain));
+    }
+
+    @PreAuthorize("hasPermission('Save',{'Sql',this.vacleavetipsMapping,#vacleavetipsdtos})")
+    @ApiOperation(value = "SaveBatchByVACHOLIDAYRULES", tags = {"VACLEAVETIPS" },  notes = "SaveBatchByVACHOLIDAYRULES")
+	@RequestMapping(method = RequestMethod.POST, value = "/vacholidayrules/{vacholidayrules_id}/vacleavetips/savebatch")
+    public ResponseEntity<Boolean> saveBatchByVACHOLIDAYRULES(@PathVariable("vacholidayrules_id") String vacholidayrules_id, @RequestBody List<VACLEAVETIPSDTO> vacleavetipsdtos) {
+        List<VACLEAVETIPS> domainlist=vacleavetipsMapping.toDomain(vacleavetipsdtos);
+        for(VACLEAVETIPS domain:domainlist){
+             domain.setVacholidayrulesid(vacholidayrules_id);
+        }
+        vacleavetipsService.saveBatch(domainlist);
+        return  ResponseEntity.status(HttpStatus.OK).body(true);
+    }
+
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACLEAVETIPS-Default-all')")
+	@ApiOperation(value = "fetchDEFAULTByVACHOLIDAYRULES", tags = {"VACLEAVETIPS" } ,notes = "fetchDEFAULTByVACHOLIDAYRULES")
+    @RequestMapping(method= RequestMethod.GET , value="/vacholidayrules/{vacholidayrules_id}/vacleavetips/fetchdefault")
+	public ResponseEntity<List<VACLEAVETIPSDTO>> fetchVACLEAVETIPSDefaultByVACHOLIDAYRULES(@PathVariable("vacholidayrules_id") String vacholidayrules_id,VACLEAVETIPSSearchContext context) {
+        context.setN_vacholidayrulesid_eq(vacholidayrules_id);
+        Page<VACLEAVETIPS> domains = vacleavetipsService.searchDefault(context) ;
+        List<VACLEAVETIPSDTO> list = vacleavetipsMapping.toDto(domains.getContent());
+	    return ResponseEntity.status(HttpStatus.OK)
+                .header("x-page", String.valueOf(context.getPageable().getPageNumber()))
+                .header("x-per-page", String.valueOf(context.getPageable().getPageSize()))
+                .header("x-total", String.valueOf(domains.getTotalElements()))
+                .body(list);
+	}
+
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACLEAVETIPS-Default-all')")
+	@ApiOperation(value = "searchDEFAULTByVACHOLIDAYRULES", tags = {"VACLEAVETIPS" } ,notes = "searchDEFAULTByVACHOLIDAYRULES")
+    @RequestMapping(method= RequestMethod.POST , value="/vacholidayrules/{vacholidayrules_id}/vacleavetips/searchdefault")
+	public ResponseEntity<Page<VACLEAVETIPSDTO>> searchVACLEAVETIPSDefaultByVACHOLIDAYRULES(@PathVariable("vacholidayrules_id") String vacholidayrules_id, @RequestBody VACLEAVETIPSSearchContext context) {
+        context.setN_vacholidayrulesid_eq(vacholidayrules_id);
+        Page<VACLEAVETIPS> domains = vacleavetipsService.searchDefault(context) ;
+	    return ResponseEntity.status(HttpStatus.OK)
+                .body(new PageImpl(vacleavetipsMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
+	}
 }

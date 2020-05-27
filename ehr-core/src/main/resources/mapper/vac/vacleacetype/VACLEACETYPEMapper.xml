@@ -29,12 +29,5 @@
 			]]>
     </sql>
 
-    <!--数据查询[Default]-->
-    <sql id="Default" databaseId="oracle">
-       <![CDATA[	SELECT t1.CREATEDATE, t1.CREATEMAN, t1.ENABLE, t1.TYPECODE, t1.UPDATEDATE, t1.UPDATEMAN, t1.VACLEACETYPEID, t1.VACLEACETYPENAME FROM T_VACLEACETYPE t1  
-				 WHERE 	t1.ENABLE = 1
-			]]>
-    </sql>
-
 </mapper>
 

@@ -48,14 +48,6 @@
 			]]>
     </sql>
 
-    <!--数据查询[CurFQXJYH]-->
-    <sql id="CurFQXJYH" databaseId="oracle">
-       <![CDATA[	SELECT t1.CREATEDATE, t1.CREATEMAN, t1.EHREMPID, t1.EMPID, t1.EMPLOYEENAME, t1.EMPLOYEENUMBER, t1.ENABLE, t1.FULLNAME, t1.IDNUMBER, t1.ISEMPLOYEE, t1.REFERMARK, t1.SEX, t1.UNITEDPERSONID, t1.UNITEDPERSONNAME, t1.UPDATEDATE, t1.UPDATEMAN, t1.USERNAME FROM T_UNITEDPERSON t1  
-				 WHERE 	t1.ENABLE = 1
-					 AND ( t1.REFERMARK = '0' )
-			]]>
-    </sql>
-
     <!--数据查询[CXYH]-->
     <sql id="CXYH" databaseId="mysql">
        <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`EHREMPID`, t1.`EMPID`, t1.`EMPLOYEENAME`, t1.`EMPLOYEENUMBER`, t1.`ENABLE`, t1.`FULLNAME`, t1.`IDNUMBER`, t1.`ISEMPLOYEE`, t1.`REFERMARK`, t1.`SEX`, t1.`UNITEDPERSONID`, t1.`UNITEDPERSONNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`USERNAME` FROM `T_UNITEDPERSON` t1  
@@ -64,24 +56,9 @@
 			]]>
     </sql>
 
-    <!--数据查询[CXYH]-->
-    <sql id="CXYH" databaseId="oracle">
-       <![CDATA[	SELECT t1.CREATEDATE, t1.CREATEMAN, t1.EHREMPID, t1.EMPID, t1.EMPLOYEENAME, t1.EMPLOYEENUMBER, t1.ENABLE, t1.FULLNAME, t1.IDNUMBER, t1.ISEMPLOYEE, t1.REFERMARK, t1.SEX, t1.UNITEDPERSONID, t1.UNITEDPERSONNAME, t1.UPDATEDATE, t1.UPDATEMAN, t1.USERNAME FROM T_UNITEDPERSON t1  
-				 WHERE 	t1.ENABLE = 1
-					 AND ( ( t1.employeenumber in (select ygbh from t_pimperson a where a.jlss='10' and   a.ormorgid in (select t.orgid from t_srforg t where instr(t.levelcode, ( select b.levelcode from t_srforg b where b.orgid = #{srf.sessioncontext.SRFORGID')} ))=1 ))  OR  'ibzadmin' = ( select t.loginaccountname from t_srfloginaccount t where t.loginaccountid  =  #{srf.sessioncontext.SRFPERSONID')} ) ) )
-			]]>
-    </sql>
-
     <!--数据查询[Default]-->
     <sql id="Default" databaseId="mysql">
        <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`EHREMPID`, t1.`EMPID`, t1.`EMPLOYEENAME`, t1.`EMPLOYEENUMBER`, t1.`ENABLE`, t1.`FULLNAME`, t1.`IDNUMBER`, t1.`ISEMPLOYEE`, t1.`REFERMARK`, t1.`SEX`, t1.`UNITEDPERSONID`, t1.`UNITEDPERSONNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`USERNAME` FROM `T_UNITEDPERSON` t1  
-				 WHERE 	t1.ENABLE = 1
-			]]>
-    </sql>
-
-    <!--数据查询[Default]-->
-    <sql id="Default" databaseId="oracle">
-       <![CDATA[	SELECT t1.CREATEDATE, t1.CREATEMAN, t1.EHREMPID, t1.EMPID, t1.EMPLOYEENAME, t1.EMPLOYEENUMBER, t1.ENABLE, t1.FULLNAME, t1.IDNUMBER, t1.ISEMPLOYEE, t1.REFERMARK, t1.SEX, t1.UNITEDPERSONID, t1.UNITEDPERSONNAME, t1.UPDATEDATE, t1.UPDATEMAN, t1.USERNAME FROM T_UNITEDPERSON t1  
 				 WHERE 	t1.ENABLE = 1
 			]]>
     </sql>

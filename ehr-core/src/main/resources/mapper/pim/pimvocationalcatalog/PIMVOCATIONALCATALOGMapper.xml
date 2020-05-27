@@ -29,12 +29,5 @@
 			]]>
     </sql>
 
-    <!--数据查询[Default]-->
-    <sql id="Default" databaseId="oracle">
-       <![CDATA[	SELECT t1.CREATEDATE, t1.CREATEMAN, t1.DH, t1.ENABLE, t1.PIMVOCATIONALCATALOGID, t1.PIMVOCATIONALCATALOGNAME, t1.PXH, t1.UPDATEDATE, t1.UPDATEMAN FROM T_PIMVOCATIONALCATALOG t1  
-				 WHERE 	t1.ENABLE = 1
-			]]>
-    </sql>
-
 </mapper>
 

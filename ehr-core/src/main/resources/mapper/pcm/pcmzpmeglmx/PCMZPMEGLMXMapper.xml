@@ -38,11 +38,5 @@
 			]]>
     </sql>
 
-    <!--数据查询[Default]-->
-    <sql id="Default" databaseId="oracle">
-       <![CDATA[	SELECT t1.CREATEDATE, t1.CREATEMAN, t1.PCMZPMEGLID, t1.PCMZPMEGLMXID, t1.PCMZPMEGLMXNAME, t11.PCMZPMEGLNAME, t1.PFRQ, t1.UPDATEDATE, t1.UPDATEMAN FROM T_PCMZPMEGLMX t1  LEFT JOIN T_PCMZPMEGL t11 ON t1.PCMZPMEGLID = t11.PCMZPMEGLID  
-			]]>
-    </sql>
-
 </mapper>
 

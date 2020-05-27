@@ -28,11 +28,5 @@
 			]]>
     </sql>
 
-    <!--数据查询[Default]-->
-    <sql id="Default" databaseId="oracle">
-       <![CDATA[	SELECT t1.CONTAIN, t1.CREATEDATE, t1.CREATEMAN, t1.ISQUICK, t1.PIMSEARCHMODALID, t1.PIMSEARCHMODALNAME, t1.UPDATEDATE, t1.UPDATEMAN FROM T_PIMSEARCHMODAL t1  
-			]]>
-    </sql>
-
 </mapper>
 

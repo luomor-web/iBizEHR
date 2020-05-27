@@ -7,9 +7,6 @@
 	<select id="selectById"  resultMap="ARCHIVESMANAGEResultMap" databaseId="mysql">
         <![CDATA[select t1.* from (SELECT t1.`ARCHIVESMANAGEID`, t1.`ARCHIVESMANAGENAME`, t1.`ARCHIVESNO`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t1.`UPDATEDATE`, t1.`UPDATEMAN` FROM `T_ARCHIVESMANAGE` t1  ) t1 where archivesmanageid=#{id}]]>
     </select>
-	<select id="selectById"  resultMap="ARCHIVESMANAGEResultMap" databaseId="oracle">
-        <![CDATA[select t1.* from (SELECT t1.ARCHIVESMANAGEID, t1.ARCHIVESMANAGENAME, t1.ARCHIVESNO, t1.CREATEDATE, t1.CREATEMAN, t1.ENABLE, t1.UPDATEDATE, t1.UPDATEMAN FROM T_ARCHIVESMANAGE t1  ) t1 where archivesmanageid=#{id}]]>
-    </select>
 
     <!--通过mybatis将查询结果注入到entity中,通过配置autoMapping="true"由mybatis自动处理映射关系 -->
     <resultMap id="ARCHIVESMANAGEResultMap" type="cn.ibizlab.ehr.core.pim.domain.ARCHIVESMANAGE" autoMapping="true">
@@ -35,23 +32,9 @@
 			]]>
     </sql>
 
-    <!--数据查询[Default]-->
-    <sql id="Default" databaseId="oracle">
-       <![CDATA[	SELECT t1.ARCHIVESMANAGEID, t1.ARCHIVESMANAGENAME, t1.ARCHIVESNO, t1.CREATEDATE, t1.CREATEMAN, t1.ENABLE, t1.UPDATEDATE, t1.UPDATEMAN FROM T_ARCHIVESMANAGE t1  
-				 WHERE 	t1.ENABLE = 1
-			]]>
-    </sql>
-
     <!--数据查询[View]-->
     <sql id="View" databaseId="mysql">
        <![CDATA[	SELECT t1.`ARCHIVESMANAGEID`, t1.`ARCHIVESMANAGENAME`, t1.`ARCHIVESNO`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t1.`UPDATEDATE`, t1.`UPDATEMAN` FROM `T_ARCHIVESMANAGE` t1  
-				 WHERE 	t1.ENABLE = 1
-			]]>
-    </sql>
-
-    <!--数据查询[View]-->
-    <sql id="View" databaseId="oracle">
-       <![CDATA[	SELECT t1.ARCHIVESMANAGEID, t1.ARCHIVESMANAGENAME, t1.ARCHIVESNO, t1.CREATEDATE, t1.CREATEMAN, t1.ENABLE, t1.UPDATEDATE, t1.UPDATEMAN FROM T_ARCHIVESMANAGE t1  
 				 WHERE 	t1.ENABLE = 1
 			]]>
     </sql>

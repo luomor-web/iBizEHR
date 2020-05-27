@@ -31,12 +31,6 @@
 			]]>
     </sql>
 
-    <!--数据查询[Default]-->
-    <sql id="Default" databaseId="oracle">
-       <![CDATA[	SELECT t1.APPLYEDU, t1.CREATEDATE, t1.CREATEMAN, t1.DURATION, t1.JSRQ, t1.JXQJS, t1.KSRQ, t1.PCMJXSGZID, t1.PCMJXSGZNAME, t1.UPDATEDATE, t1.UPDATEMAN, t1.XH, t1.XLLX FROM T_PCMJXSGZ t1  
-			]]>
-    </sql>
-
     <!--数据查询[View]-->
     <sql id="View" databaseId="mysql">
        <![CDATA[	SELECT t1.`APPLYEDU`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`DURATION`, t1.`JSRQ`, t1.`JXQJS`, t1.`KSRQ`, t1.`PCMJXSGZID`, t1.`PCMJXSGZNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XH`, t1.`XLLX` FROM `T_PCMJXSGZ` t1  

@@ -28,11 +28,5 @@
 			]]>
     </sql>
 
-    <!--数据查询[Default]-->
-    <sql id="Default" databaseId="oracle">
-       <![CDATA[	SELECT t1.BM, t1.CREATEDATE, t1.CREATEMAN, t1.KHLX, t1.KHPGDJ, t1.ND, t1.PARJXJGID, t1.PARJXJGNAME, t1.PM, t1.UPDATEDATE, t1.UPDATEMAN, t1.YG, t1.YGID, t1.ZF, t1.ZZ FROM T_PARJXJG t1  
-			]]>
-    </sql>
-
 </mapper>
 

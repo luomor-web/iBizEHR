@@ -29,12 +29,5 @@
 			]]>
     </sql>
 
-    <!--数据查询[Default]-->
-    <sql id="Default" databaseId="oracle">
-       <![CDATA[	SELECT t1.CREATEDATE, t1.CREATEMAN, t1.ENABLE, t1.SALSUBJECTID, t1.SALSUBJECTNAME, t1.SUBCODE, t1.UPDATEDATE, t1.UPDATEMAN FROM T_SALSUBJECT t1  
-				 WHERE 	t1.ENABLE = 1
-			]]>
-    </sql>
-
 </mapper>
 

@@ -161,4 +161,406 @@ public class ORMDepEstManResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(ormdepestmanMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMDepEstMan-GetDraft-all')")
+    @ApiOperation(value = "GetDraftByORMDUTY", tags = {"ORMDepEstMan" },  notes = "GetDraftByORMDUTY")
+    @RequestMapping(method = RequestMethod.GET, value = "/ormduties/{ormduty_id}/ormdepestmen/getdraft")
+    public ResponseEntity<ORMDepEstManDTO> getDraftByORMDUTY(@PathVariable("ormduty_id") String ormduty_id) {
+        ORMDepEstMan domain = new ORMDepEstMan();
+        domain.setOrmdutyid(ormduty_id);
+        return ResponseEntity.status(HttpStatus.OK).body(ormdepestmanMapping.toDto(ormdepestmanService.getDraft(domain)));
+    }
+
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMDepEstMan-CheckKey-all')")
+    @ApiOperation(value = "CheckKeyByORMDUTY", tags = {"ORMDepEstMan" },  notes = "CheckKeyByORMDUTY")
+	@RequestMapping(method = RequestMethod.POST, value = "/ormduties/{ormduty_id}/ormdepestmen/checkkey")
+    public ResponseEntity<Boolean> checkKeyByORMDUTY(@PathVariable("ormduty_id") String ormduty_id, @RequestBody ORMDepEstManDTO ormdepestmandto) {
+        return  ResponseEntity.status(HttpStatus.OK).body(ormdepestmanService.checkKey(ormdepestmanMapping.toDomain(ormdepestmandto)));
+    }
+
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.ormdepestmanMapping,#ormdepestmandto})")
+    @ApiOperation(value = "CreateByORMDUTY", tags = {"ORMDepEstMan" },  notes = "CreateByORMDUTY")
+	@RequestMapping(method = RequestMethod.POST, value = "/ormduties/{ormduty_id}/ormdepestmen")
+    @Transactional
+    public ResponseEntity<ORMDepEstManDTO> createByORMDUTY(@PathVariable("ormduty_id") String ormduty_id, @RequestBody ORMDepEstManDTO ormdepestmandto) {
+        ORMDepEstMan domain = ormdepestmanMapping.toDomain(ormdepestmandto);
+        domain.setOrmdutyid(ormduty_id);
+		ormdepestmanService.create(domain);
+        ORMDepEstManDTO dto = ormdepestmanMapping.toDto(domain);
+		return ResponseEntity.status(HttpStatus.OK).body(dto);
+    }
+
+    @PreAuthorize("hasPermission('Create',{'Sql',this.ormdepestmanMapping,#ormdepestmandtos})")
+    @ApiOperation(value = "createBatchByORMDUTY", tags = {"ORMDepEstMan" },  notes = "createBatchByORMDUTY")
+	@RequestMapping(method = RequestMethod.POST, value = "/ormduties/{ormduty_id}/ormdepestmen/batch")
+    public ResponseEntity<Boolean> createBatchByORMDUTY(@PathVariable("ormduty_id") String ormduty_id, @RequestBody List<ORMDepEstManDTO> ormdepestmandtos) {
+        List<ORMDepEstMan> domainlist=ormdepestmanMapping.toDomain(ormdepestmandtos);
+        for(ORMDepEstMan domain:domainlist){
+            domain.setOrmdutyid(ormduty_id);
+        }
+        ormdepestmanService.createBatch(domainlist);
+        return  ResponseEntity.status(HttpStatus.OK).body(true);
+    }
+
+    @PreAuthorize("hasPermission(#ormdepestman_id,'Get',{'Sql',this.ormdepestmanMapping,this.permissionDTO})")
+    @ApiOperation(value = "GetByORMDUTY", tags = {"ORMDepEstMan" },  notes = "GetByORMDUTY")
+	@RequestMapping(method = RequestMethod.GET, value = "/ormduties/{ormduty_id}/ormdepestmen/{ormdepestman_id}")
+    public ResponseEntity<ORMDepEstManDTO> getByORMDUTY(@PathVariable("ormduty_id") String ormduty_id, @PathVariable("ormdepestman_id") String ormdepestman_id) {
+        ORMDepEstMan domain = ormdepestmanService.get(ormdepestman_id);
+        ORMDepEstManDTO dto = ormdepestmanMapping.toDto(domain);
+        return ResponseEntity.status(HttpStatus.OK).body(dto);
+    }
+
+    @PreAuthorize("hasPermission(#ormdepestman_id,'Remove',{'Sql',this.ormdepestmanMapping,this.permissionDTO})")
+    @ApiOperation(value = "RemoveByORMDUTY", tags = {"ORMDepEstMan" },  notes = "RemoveByORMDUTY")
+	@RequestMapping(method = RequestMethod.DELETE, value = "/ormduties/{ormduty_id}/ormdepestmen/{ormdepestman_id}")
+    @Transactional
+    public ResponseEntity<Boolean> removeByORMDUTY(@PathVariable("ormduty_id") String ormduty_id, @PathVariable("ormdepestman_id") String ormdepestman_id) {
+		return ResponseEntity.status(HttpStatus.OK).body(ormdepestmanService.remove(ormdepestman_id));
+    }
+
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.ormdepestmanMapping,this.permissionDTO,#ids})")
+    @ApiOperation(value = "RemoveBatchByORMDUTY", tags = {"ORMDepEstMan" },  notes = "RemoveBatchByORMDUTY")
+	@RequestMapping(method = RequestMethod.DELETE, value = "/ormduties/{ormduty_id}/ormdepestmen/batch")
+    public ResponseEntity<Boolean> removeBatchByORMDUTY(@RequestBody List<String> ids) {
+        ormdepestmanService.removeBatch(ids);
+        return  ResponseEntity.status(HttpStatus.OK).body(true);
+    }
+
+    @PreAuthorize("hasPermission(#ormdepestman_id,'Update',{'Sql',this.ormdepestmanMapping,#ormdepestmandto})")
+    @ApiOperation(value = "UpdateByORMDUTY", tags = {"ORMDepEstMan" },  notes = "UpdateByORMDUTY")
+	@RequestMapping(method = RequestMethod.PUT, value = "/ormduties/{ormduty_id}/ormdepestmen/{ormdepestman_id}")
+    @Transactional
+    public ResponseEntity<ORMDepEstManDTO> updateByORMDUTY(@PathVariable("ormduty_id") String ormduty_id, @PathVariable("ormdepestman_id") String ormdepestman_id, @RequestBody ORMDepEstManDTO ormdepestmandto) {
+        ORMDepEstMan domain = ormdepestmanMapping.toDomain(ormdepestmandto);
+        domain.setOrmdutyid(ormduty_id);
+        domain.setOrmdepestmanid(ormdepestman_id);
+		ormdepestmanService.update(domain);
+        ORMDepEstManDTO dto = ormdepestmanMapping.toDto(domain);
+        return ResponseEntity.status(HttpStatus.OK).body(dto);
+    }
+
+    @PreAuthorize("hasPermission('Update',{'Sql',this.ormdepestmanMapping,#ormdepestmandtos})")
+    @ApiOperation(value = "UpdateBatchByORMDUTY", tags = {"ORMDepEstMan" },  notes = "UpdateBatchByORMDUTY")
+	@RequestMapping(method = RequestMethod.PUT, value = "/ormduties/{ormduty_id}/ormdepestmen/batch")
+    public ResponseEntity<Boolean> updateBatchByORMDUTY(@PathVariable("ormduty_id") String ormduty_id, @RequestBody List<ORMDepEstManDTO> ormdepestmandtos) {
+        List<ORMDepEstMan> domainlist=ormdepestmanMapping.toDomain(ormdepestmandtos);
+        for(ORMDepEstMan domain:domainlist){
+            domain.setOrmdutyid(ormduty_id);
+        }
+        ormdepestmanService.updateBatch(domainlist);
+        return  ResponseEntity.status(HttpStatus.OK).body(true);
+    }
+
+    @PreAuthorize("hasPermission('','Save',{'Sql',this.ormdepestmanMapping,#ormdepestmandto})")
+    @ApiOperation(value = "SaveByORMDUTY", tags = {"ORMDepEstMan" },  notes = "SaveByORMDUTY")
+	@RequestMapping(method = RequestMethod.POST, value = "/ormduties/{ormduty_id}/ormdepestmen/save")
+    public ResponseEntity<Boolean> saveByORMDUTY(@PathVariable("ormduty_id") String ormduty_id, @RequestBody ORMDepEstManDTO ormdepestmandto) {
+        ORMDepEstMan domain = ormdepestmanMapping.toDomain(ormdepestmandto);
+        domain.setOrmdutyid(ormduty_id);
+        return ResponseEntity.status(HttpStatus.OK).body(ormdepestmanService.save(domain));
+    }
+
+    @PreAuthorize("hasPermission('Save',{'Sql',this.ormdepestmanMapping,#ormdepestmandtos})")
+    @ApiOperation(value = "SaveBatchByORMDUTY", tags = {"ORMDepEstMan" },  notes = "SaveBatchByORMDUTY")
+	@RequestMapping(method = RequestMethod.POST, value = "/ormduties/{ormduty_id}/ormdepestmen/savebatch")
+    public ResponseEntity<Boolean> saveBatchByORMDUTY(@PathVariable("ormduty_id") String ormduty_id, @RequestBody List<ORMDepEstManDTO> ormdepestmandtos) {
+        List<ORMDepEstMan> domainlist=ormdepestmanMapping.toDomain(ormdepestmandtos);
+        for(ORMDepEstMan domain:domainlist){
+             domain.setOrmdutyid(ormduty_id);
+        }
+        ormdepestmanService.saveBatch(domainlist);
+        return  ResponseEntity.status(HttpStatus.OK).body(true);
+    }
+
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMDepEstMan-Default-all')")
+	@ApiOperation(value = "fetchDEFAULTByORMDUTY", tags = {"ORMDepEstMan" } ,notes = "fetchDEFAULTByORMDUTY")
+    @RequestMapping(method= RequestMethod.GET , value="/ormduties/{ormduty_id}/ormdepestmen/fetchdefault")
+	public ResponseEntity<List<ORMDepEstManDTO>> fetchORMDepEstManDefaultByORMDUTY(@PathVariable("ormduty_id") String ormduty_id,ORMDepEstManSearchContext context) {
+        context.setN_ormdutyid_eq(ormduty_id);
+        Page<ORMDepEstMan> domains = ormdepestmanService.searchDefault(context) ;
+        List<ORMDepEstManDTO> list = ormdepestmanMapping.toDto(domains.getContent());
+	    return ResponseEntity.status(HttpStatus.OK)
+                .header("x-page", String.valueOf(context.getPageable().getPageNumber()))
+                .header("x-per-page", String.valueOf(context.getPageable().getPageSize()))
+                .header("x-total", String.valueOf(domains.getTotalElements()))
+                .body(list);
+	}
+
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMDepEstMan-Default-all')")
+	@ApiOperation(value = "searchDEFAULTByORMDUTY", tags = {"ORMDepEstMan" } ,notes = "searchDEFAULTByORMDUTY")
+    @RequestMapping(method= RequestMethod.POST , value="/ormduties/{ormduty_id}/ormdepestmen/searchdefault")
+	public ResponseEntity<Page<ORMDepEstManDTO>> searchORMDepEstManDefaultByORMDUTY(@PathVariable("ormduty_id") String ormduty_id, @RequestBody ORMDepEstManSearchContext context) {
+        context.setN_ormdutyid_eq(ormduty_id);
+        Page<ORMDepEstMan> domains = ormdepestmanService.searchDefault(context) ;
+	    return ResponseEntity.status(HttpStatus.OK)
+                .body(new PageImpl(ormdepestmanMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
+	}
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMDepEstMan-GetDraft-all')")
+    @ApiOperation(value = "GetDraftByORMORGSECTOR", tags = {"ORMDepEstMan" },  notes = "GetDraftByORMORGSECTOR")
+    @RequestMapping(method = RequestMethod.GET, value = "/ormorgsectors/{ormorgsector_id}/ormdepestmen/getdraft")
+    public ResponseEntity<ORMDepEstManDTO> getDraftByORMORGSECTOR(@PathVariable("ormorgsector_id") String ormorgsector_id) {
+        ORMDepEstMan domain = new ORMDepEstMan();
+        domain.setOrmzwbzid(ormorgsector_id);
+        return ResponseEntity.status(HttpStatus.OK).body(ormdepestmanMapping.toDto(ormdepestmanService.getDraft(domain)));
+    }
+
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMDepEstMan-CheckKey-all')")
+    @ApiOperation(value = "CheckKeyByORMORGSECTOR", tags = {"ORMDepEstMan" },  notes = "CheckKeyByORMORGSECTOR")
+	@RequestMapping(method = RequestMethod.POST, value = "/ormorgsectors/{ormorgsector_id}/ormdepestmen/checkkey")
+    public ResponseEntity<Boolean> checkKeyByORMORGSECTOR(@PathVariable("ormorgsector_id") String ormorgsector_id, @RequestBody ORMDepEstManDTO ormdepestmandto) {
+        return  ResponseEntity.status(HttpStatus.OK).body(ormdepestmanService.checkKey(ormdepestmanMapping.toDomain(ormdepestmandto)));
+    }
+
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.ormdepestmanMapping,#ormdepestmandto})")
+    @ApiOperation(value = "CreateByORMORGSECTOR", tags = {"ORMDepEstMan" },  notes = "CreateByORMORGSECTOR")
+	@RequestMapping(method = RequestMethod.POST, value = "/ormorgsectors/{ormorgsector_id}/ormdepestmen")
+    @Transactional
+    public ResponseEntity<ORMDepEstManDTO> createByORMORGSECTOR(@PathVariable("ormorgsector_id") String ormorgsector_id, @RequestBody ORMDepEstManDTO ormdepestmandto) {
+        ORMDepEstMan domain = ormdepestmanMapping.toDomain(ormdepestmandto);
+        domain.setOrmzwbzid(ormorgsector_id);
+		ormdepestmanService.create(domain);
+        ORMDepEstManDTO dto = ormdepestmanMapping.toDto(domain);
+		return ResponseEntity.status(HttpStatus.OK).body(dto);
+    }
+
+    @PreAuthorize("hasPermission('Create',{'Sql',this.ormdepestmanMapping,#ormdepestmandtos})")
+    @ApiOperation(value = "createBatchByORMORGSECTOR", tags = {"ORMDepEstMan" },  notes = "createBatchByORMORGSECTOR")
+	@RequestMapping(method = RequestMethod.POST, value = "/ormorgsectors/{ormorgsector_id}/ormdepestmen/batch")
+    public ResponseEntity<Boolean> createBatchByORMORGSECTOR(@PathVariable("ormorgsector_id") String ormorgsector_id, @RequestBody List<ORMDepEstManDTO> ormdepestmandtos) {
+        List<ORMDepEstMan> domainlist=ormdepestmanMapping.toDomain(ormdepestmandtos);
+        for(ORMDepEstMan domain:domainlist){
+            domain.setOrmzwbzid(ormorgsector_id);
+        }
+        ormdepestmanService.createBatch(domainlist);
+        return  ResponseEntity.status(HttpStatus.OK).body(true);
+    }
+
+    @PreAuthorize("hasPermission(#ormdepestman_id,'Get',{'Sql',this.ormdepestmanMapping,this.permissionDTO})")
+    @ApiOperation(value = "GetByORMORGSECTOR", tags = {"ORMDepEstMan" },  notes = "GetByORMORGSECTOR")
+	@RequestMapping(method = RequestMethod.GET, value = "/ormorgsectors/{ormorgsector_id}/ormdepestmen/{ormdepestman_id}")
+    public ResponseEntity<ORMDepEstManDTO> getByORMORGSECTOR(@PathVariable("ormorgsector_id") String ormorgsector_id, @PathVariable("ormdepestman_id") String ormdepestman_id) {
+        ORMDepEstMan domain = ormdepestmanService.get(ormdepestman_id);
+        ORMDepEstManDTO dto = ormdepestmanMapping.toDto(domain);
+        return ResponseEntity.status(HttpStatus.OK).body(dto);
+    }
+
+    @PreAuthorize("hasPermission(#ormdepestman_id,'Remove',{'Sql',this.ormdepestmanMapping,this.permissionDTO})")
+    @ApiOperation(value = "RemoveByORMORGSECTOR", tags = {"ORMDepEstMan" },  notes = "RemoveByORMORGSECTOR")
+	@RequestMapping(method = RequestMethod.DELETE, value = "/ormorgsectors/{ormorgsector_id}/ormdepestmen/{ormdepestman_id}")
+    @Transactional
+    public ResponseEntity<Boolean> removeByORMORGSECTOR(@PathVariable("ormorgsector_id") String ormorgsector_id, @PathVariable("ormdepestman_id") String ormdepestman_id) {
+		return ResponseEntity.status(HttpStatus.OK).body(ormdepestmanService.remove(ormdepestman_id));
+    }
+
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.ormdepestmanMapping,this.permissionDTO,#ids})")
+    @ApiOperation(value = "RemoveBatchByORMORGSECTOR", tags = {"ORMDepEstMan" },  notes = "RemoveBatchByORMORGSECTOR")
+	@RequestMapping(method = RequestMethod.DELETE, value = "/ormorgsectors/{ormorgsector_id}/ormdepestmen/batch")
+    public ResponseEntity<Boolean> removeBatchByORMORGSECTOR(@RequestBody List<String> ids) {
+        ormdepestmanService.removeBatch(ids);
+        return  ResponseEntity.status(HttpStatus.OK).body(true);
+    }
+
+    @PreAuthorize("hasPermission(#ormdepestman_id,'Update',{'Sql',this.ormdepestmanMapping,#ormdepestmandto})")
+    @ApiOperation(value = "UpdateByORMORGSECTOR", tags = {"ORMDepEstMan" },  notes = "UpdateByORMORGSECTOR")
+	@RequestMapping(method = RequestMethod.PUT, value = "/ormorgsectors/{ormorgsector_id}/ormdepestmen/{ormdepestman_id}")
+    @Transactional
+    public ResponseEntity<ORMDepEstManDTO> updateByORMORGSECTOR(@PathVariable("ormorgsector_id") String ormorgsector_id, @PathVariable("ormdepestman_id") String ormdepestman_id, @RequestBody ORMDepEstManDTO ormdepestmandto) {
+        ORMDepEstMan domain = ormdepestmanMapping.toDomain(ormdepestmandto);
+        domain.setOrmzwbzid(ormorgsector_id);
+        domain.setOrmdepestmanid(ormdepestman_id);
+		ormdepestmanService.update(domain);
+        ORMDepEstManDTO dto = ormdepestmanMapping.toDto(domain);
+        return ResponseEntity.status(HttpStatus.OK).body(dto);
+    }
+
+    @PreAuthorize("hasPermission('Update',{'Sql',this.ormdepestmanMapping,#ormdepestmandtos})")
+    @ApiOperation(value = "UpdateBatchByORMORGSECTOR", tags = {"ORMDepEstMan" },  notes = "UpdateBatchByORMORGSECTOR")
+	@RequestMapping(method = RequestMethod.PUT, value = "/ormorgsectors/{ormorgsector_id}/ormdepestmen/batch")
+    public ResponseEntity<Boolean> updateBatchByORMORGSECTOR(@PathVariable("ormorgsector_id") String ormorgsector_id, @RequestBody List<ORMDepEstManDTO> ormdepestmandtos) {
+        List<ORMDepEstMan> domainlist=ormdepestmanMapping.toDomain(ormdepestmandtos);
+        for(ORMDepEstMan domain:domainlist){
+            domain.setOrmzwbzid(ormorgsector_id);
+        }
+        ormdepestmanService.updateBatch(domainlist);
+        return  ResponseEntity.status(HttpStatus.OK).body(true);
+    }
+
+    @PreAuthorize("hasPermission('','Save',{'Sql',this.ormdepestmanMapping,#ormdepestmandto})")
+    @ApiOperation(value = "SaveByORMORGSECTOR", tags = {"ORMDepEstMan" },  notes = "SaveByORMORGSECTOR")
+	@RequestMapping(method = RequestMethod.POST, value = "/ormorgsectors/{ormorgsector_id}/ormdepestmen/save")
+    public ResponseEntity<Boolean> saveByORMORGSECTOR(@PathVariable("ormorgsector_id") String ormorgsector_id, @RequestBody ORMDepEstManDTO ormdepestmandto) {
+        ORMDepEstMan domain = ormdepestmanMapping.toDomain(ormdepestmandto);
+        domain.setOrmzwbzid(ormorgsector_id);
+        return ResponseEntity.status(HttpStatus.OK).body(ormdepestmanService.save(domain));
+    }
+
+    @PreAuthorize("hasPermission('Save',{'Sql',this.ormdepestmanMapping,#ormdepestmandtos})")
+    @ApiOperation(value = "SaveBatchByORMORGSECTOR", tags = {"ORMDepEstMan" },  notes = "SaveBatchByORMORGSECTOR")
+	@RequestMapping(method = RequestMethod.POST, value = "/ormorgsectors/{ormorgsector_id}/ormdepestmen/savebatch")
+    public ResponseEntity<Boolean> saveBatchByORMORGSECTOR(@PathVariable("ormorgsector_id") String ormorgsector_id, @RequestBody List<ORMDepEstManDTO> ormdepestmandtos) {
+        List<ORMDepEstMan> domainlist=ormdepestmanMapping.toDomain(ormdepestmandtos);
+        for(ORMDepEstMan domain:domainlist){
+             domain.setOrmzwbzid(ormorgsector_id);
+        }
+        ormdepestmanService.saveBatch(domainlist);
+        return  ResponseEntity.status(HttpStatus.OK).body(true);
+    }
+
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMDepEstMan-Default-all')")
+	@ApiOperation(value = "fetchDEFAULTByORMORGSECTOR", tags = {"ORMDepEstMan" } ,notes = "fetchDEFAULTByORMORGSECTOR")
+    @RequestMapping(method= RequestMethod.GET , value="/ormorgsectors/{ormorgsector_id}/ormdepestmen/fetchdefault")
+	public ResponseEntity<List<ORMDepEstManDTO>> fetchORMDepEstManDefaultByORMORGSECTOR(@PathVariable("ormorgsector_id") String ormorgsector_id,ORMDepEstManSearchContext context) {
+        context.setN_ormzwbzid_eq(ormorgsector_id);
+        Page<ORMDepEstMan> domains = ormdepestmanService.searchDefault(context) ;
+        List<ORMDepEstManDTO> list = ormdepestmanMapping.toDto(domains.getContent());
+	    return ResponseEntity.status(HttpStatus.OK)
+                .header("x-page", String.valueOf(context.getPageable().getPageNumber()))
+                .header("x-per-page", String.valueOf(context.getPageable().getPageSize()))
+                .header("x-total", String.valueOf(domains.getTotalElements()))
+                .body(list);
+	}
+
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMDepEstMan-Default-all')")
+	@ApiOperation(value = "searchDEFAULTByORMORGSECTOR", tags = {"ORMDepEstMan" } ,notes = "searchDEFAULTByORMORGSECTOR")
+    @RequestMapping(method= RequestMethod.POST , value="/ormorgsectors/{ormorgsector_id}/ormdepestmen/searchdefault")
+	public ResponseEntity<Page<ORMDepEstManDTO>> searchORMDepEstManDefaultByORMORGSECTOR(@PathVariable("ormorgsector_id") String ormorgsector_id, @RequestBody ORMDepEstManSearchContext context) {
+        context.setN_ormzwbzid_eq(ormorgsector_id);
+        Page<ORMDepEstMan> domains = ormdepestmanService.searchDefault(context) ;
+	    return ResponseEntity.status(HttpStatus.OK)
+                .body(new PageImpl(ormdepestmanMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
+	}
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMDepEstMan-GetDraft-all')")
+    @ApiOperation(value = "GetDraftByORMORGORMORGSECTOR", tags = {"ORMDepEstMan" },  notes = "GetDraftByORMORGORMORGSECTOR")
+    @RequestMapping(method = RequestMethod.GET, value = "/ormorgs/{ormorg_id}/ormorgsectors/{ormorgsector_id}/ormdepestmen/getdraft")
+    public ResponseEntity<ORMDepEstManDTO> getDraftByORMORGORMORGSECTOR(@PathVariable("ormorg_id") String ormorg_id, @PathVariable("ormorgsector_id") String ormorgsector_id) {
+        ORMDepEstMan domain = new ORMDepEstMan();
+        domain.setOrmzwbzid(ormorgsector_id);
+        return ResponseEntity.status(HttpStatus.OK).body(ormdepestmanMapping.toDto(ormdepestmanService.getDraft(domain)));
+    }
+
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMDepEstMan-CheckKey-all')")
+    @ApiOperation(value = "CheckKeyByORMORGORMORGSECTOR", tags = {"ORMDepEstMan" },  notes = "CheckKeyByORMORGORMORGSECTOR")
+	@RequestMapping(method = RequestMethod.POST, value = "/ormorgs/{ormorg_id}/ormorgsectors/{ormorgsector_id}/ormdepestmen/checkkey")
+    public ResponseEntity<Boolean> checkKeyByORMORGORMORGSECTOR(@PathVariable("ormorg_id") String ormorg_id, @PathVariable("ormorgsector_id") String ormorgsector_id, @RequestBody ORMDepEstManDTO ormdepestmandto) {
+        return  ResponseEntity.status(HttpStatus.OK).body(ormdepestmanService.checkKey(ormdepestmanMapping.toDomain(ormdepestmandto)));
+    }
+
+    @PreAuthorize("hasPermission('','Create',{'Sql',this.ormdepestmanMapping,#ormdepestmandto})")
+    @ApiOperation(value = "CreateByORMORGORMORGSECTOR", tags = {"ORMDepEstMan" },  notes = "CreateByORMORGORMORGSECTOR")
+	@RequestMapping(method = RequestMethod.POST, value = "/ormorgs/{ormorg_id}/ormorgsectors/{ormorgsector_id}/ormdepestmen")
+    @Transactional
+    public ResponseEntity<ORMDepEstManDTO> createByORMORGORMORGSECTOR(@PathVariable("ormorg_id") String ormorg_id, @PathVariable("ormorgsector_id") String ormorgsector_id, @RequestBody ORMDepEstManDTO ormdepestmandto) {
+        ORMDepEstMan domain = ormdepestmanMapping.toDomain(ormdepestmandto);
+        domain.setOrmzwbzid(ormorgsector_id);
+		ormdepestmanService.create(domain);
+        ORMDepEstManDTO dto = ormdepestmanMapping.toDto(domain);
+		return ResponseEntity.status(HttpStatus.OK).body(dto);
+    }
+
+    @PreAuthorize("hasPermission('Create',{'Sql',this.ormdepestmanMapping,#ormdepestmandtos})")
+    @ApiOperation(value = "createBatchByORMORGORMORGSECTOR", tags = {"ORMDepEstMan" },  notes = "createBatchByORMORGORMORGSECTOR")
+	@RequestMapping(method = RequestMethod.POST, value = "/ormorgs/{ormorg_id}/ormorgsectors/{ormorgsector_id}/ormdepestmen/batch")
+    public ResponseEntity<Boolean> createBatchByORMORGORMORGSECTOR(@PathVariable("ormorg_id") String ormorg_id, @PathVariable("ormorgsector_id") String ormorgsector_id, @RequestBody List<ORMDepEstManDTO> ormdepestmandtos) {
+        List<ORMDepEstMan> domainlist=ormdepestmanMapping.toDomain(ormdepestmandtos);
+        for(ORMDepEstMan domain:domainlist){
+            domain.setOrmzwbzid(ormorgsector_id);
+        }
+        ormdepestmanService.createBatch(domainlist);
+        return  ResponseEntity.status(HttpStatus.OK).body(true);
+    }
+
+    @PreAuthorize("hasPermission(#ormdepestman_id,'Get',{'Sql',this.ormdepestmanMapping,this.permissionDTO})")
+    @ApiOperation(value = "GetByORMORGORMORGSECTOR", tags = {"ORMDepEstMan" },  notes = "GetByORMORGORMORGSECTOR")
+	@RequestMapping(method = RequestMethod.GET, value = "/ormorgs/{ormorg_id}/ormorgsectors/{ormorgsector_id}/ormdepestmen/{ormdepestman_id}")
+    public ResponseEntity<ORMDepEstManDTO> getByORMORGORMORGSECTOR(@PathVariable("ormorg_id") String ormorg_id, @PathVariable("ormorgsector_id") String ormorgsector_id, @PathVariable("ormdepestman_id") String ormdepestman_id) {
+        ORMDepEstMan domain = ormdepestmanService.get(ormdepestman_id);
+        ORMDepEstManDTO dto = ormdepestmanMapping.toDto(domain);
+        return ResponseEntity.status(HttpStatus.OK).body(dto);
+    }
+
+    @PreAuthorize("hasPermission(#ormdepestman_id,'Remove',{'Sql',this.ormdepestmanMapping,this.permissionDTO})")
+    @ApiOperation(value = "RemoveByORMORGORMORGSECTOR", tags = {"ORMDepEstMan" },  notes = "RemoveByORMORGORMORGSECTOR")
+	@RequestMapping(method = RequestMethod.DELETE, value = "/ormorgs/{ormorg_id}/ormorgsectors/{ormorgsector_id}/ormdepestmen/{ormdepestman_id}")
+    @Transactional
+    public ResponseEntity<Boolean> removeByORMORGORMORGSECTOR(@PathVariable("ormorg_id") String ormorg_id, @PathVariable("ormorgsector_id") String ormorgsector_id, @PathVariable("ormdepestman_id") String ormdepestman_id) {
+		return ResponseEntity.status(HttpStatus.OK).body(ormdepestmanService.remove(ormdepestman_id));
+    }
+
+    @PreAuthorize("hasPermission('Remove',{'Sql',this.ormdepestmanMapping,this.permissionDTO,#ids})")
+    @ApiOperation(value = "RemoveBatchByORMORGORMORGSECTOR", tags = {"ORMDepEstMan" },  notes = "RemoveBatchByORMORGORMORGSECTOR")
+	@RequestMapping(method = RequestMethod.DELETE, value = "/ormorgs/{ormorg_id}/ormorgsectors/{ormorgsector_id}/ormdepestmen/batch")
+    public ResponseEntity<Boolean> removeBatchByORMORGORMORGSECTOR(@RequestBody List<String> ids) {
+        ormdepestmanService.removeBatch(ids);
+        return  ResponseEntity.status(HttpStatus.OK).body(true);
+    }
+
+    @PreAuthorize("hasPermission(#ormdepestman_id,'Update',{'Sql',this.ormdepestmanMapping,#ormdepestmandto})")
+    @ApiOperation(value = "UpdateByORMORGORMORGSECTOR", tags = {"ORMDepEstMan" },  notes = "UpdateByORMORGORMORGSECTOR")
+	@RequestMapping(method = RequestMethod.PUT, value = "/ormorgs/{ormorg_id}/ormorgsectors/{ormorgsector_id}/ormdepestmen/{ormdepestman_id}")
+    @Transactional
+    public ResponseEntity<ORMDepEstManDTO> updateByORMORGORMORGSECTOR(@PathVariable("ormorg_id") String ormorg_id, @PathVariable("ormorgsector_id") String ormorgsector_id, @PathVariable("ormdepestman_id") String ormdepestman_id, @RequestBody ORMDepEstManDTO ormdepestmandto) {
+        ORMDepEstMan domain = ormdepestmanMapping.toDomain(ormdepestmandto);
+        domain.setOrmzwbzid(ormorgsector_id);
+        domain.setOrmdepestmanid(ormdepestman_id);
+		ormdepestmanService.update(domain);
+        ORMDepEstManDTO dto = ormdepestmanMapping.toDto(domain);
+        return ResponseEntity.status(HttpStatus.OK).body(dto);
+    }
+
+    @PreAuthorize("hasPermission('Update',{'Sql',this.ormdepestmanMapping,#ormdepestmandtos})")
+    @ApiOperation(value = "UpdateBatchByORMORGORMORGSECTOR", tags = {"ORMDepEstMan" },  notes = "UpdateBatchByORMORGORMORGSECTOR")
+	@RequestMapping(method = RequestMethod.PUT, value = "/ormorgs/{ormorg_id}/ormorgsectors/{ormorgsector_id}/ormdepestmen/batch")
+    public ResponseEntity<Boolean> updateBatchByORMORGORMORGSECTOR(@PathVariable("ormorg_id") String ormorg_id, @PathVariable("ormorgsector_id") String ormorgsector_id, @RequestBody List<ORMDepEstManDTO> ormdepestmandtos) {
+        List<ORMDepEstMan> domainlist=ormdepestmanMapping.toDomain(ormdepestmandtos);
+        for(ORMDepEstMan domain:domainlist){
+            domain.setOrmzwbzid(ormorgsector_id);
+        }
+        ormdepestmanService.updateBatch(domainlist);
+        return  ResponseEntity.status(HttpStatus.OK).body(true);
+    }
+
+    @PreAuthorize("hasPermission('','Save',{'Sql',this.ormdepestmanMapping,#ormdepestmandto})")
+    @ApiOperation(value = "SaveByORMORGORMORGSECTOR", tags = {"ORMDepEstMan" },  notes = "SaveByORMORGORMORGSECTOR")
+	@RequestMapping(method = RequestMethod.POST, value = "/ormorgs/{ormorg_id}/ormorgsectors/{ormorgsector_id}/ormdepestmen/save")
+    public ResponseEntity<Boolean> saveByORMORGORMORGSECTOR(@PathVariable("ormorg_id") String ormorg_id, @PathVariable("ormorgsector_id") String ormorgsector_id, @RequestBody ORMDepEstManDTO ormdepestmandto) {
+        ORMDepEstMan domain = ormdepestmanMapping.toDomain(ormdepestmandto);
+        domain.setOrmzwbzid(ormorgsector_id);
+        return ResponseEntity.status(HttpStatus.OK).body(ormdepestmanService.save(domain));
+    }
+
+    @PreAuthorize("hasPermission('Save',{'Sql',this.ormdepestmanMapping,#ormdepestmandtos})")
+    @ApiOperation(value = "SaveBatchByORMORGORMORGSECTOR", tags = {"ORMDepEstMan" },  notes = "SaveBatchByORMORGORMORGSECTOR")
+	@RequestMapping(method = RequestMethod.POST, value = "/ormorgs/{ormorg_id}/ormorgsectors/{ormorgsector_id}/ormdepestmen/savebatch")
+    public ResponseEntity<Boolean> saveBatchByORMORGORMORGSECTOR(@PathVariable("ormorg_id") String ormorg_id, @PathVariable("ormorgsector_id") String ormorgsector_id, @RequestBody List<ORMDepEstManDTO> ormdepestmandtos) {
+        List<ORMDepEstMan> domainlist=ormdepestmanMapping.toDomain(ormdepestmandtos);
+        for(ORMDepEstMan domain:domainlist){
+             domain.setOrmzwbzid(ormorgsector_id);
+        }
+        ormdepestmanService.saveBatch(domainlist);
+        return  ResponseEntity.status(HttpStatus.OK).body(true);
+    }
+
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMDepEstMan-Default-all')")
+	@ApiOperation(value = "fetchDEFAULTByORMORGORMORGSECTOR", tags = {"ORMDepEstMan" } ,notes = "fetchDEFAULTByORMORGORMORGSECTOR")
+    @RequestMapping(method= RequestMethod.GET , value="/ormorgs/{ormorg_id}/ormorgsectors/{ormorgsector_id}/ormdepestmen/fetchdefault")
+	public ResponseEntity<List<ORMDepEstManDTO>> fetchORMDepEstManDefaultByORMORGORMORGSECTOR(@PathVariable("ormorg_id") String ormorg_id, @PathVariable("ormorgsector_id") String ormorgsector_id,ORMDepEstManSearchContext context) {
+        context.setN_ormzwbzid_eq(ormorgsector_id);
+        Page<ORMDepEstMan> domains = ormdepestmanService.searchDefault(context) ;
+        List<ORMDepEstManDTO> list = ormdepestmanMapping.toDto(domains.getContent());
+	    return ResponseEntity.status(HttpStatus.OK)
+                .header("x-page", String.valueOf(context.getPageable().getPageNumber()))
+                .header("x-per-page", String.valueOf(context.getPageable().getPageSize()))
+                .header("x-total", String.valueOf(domains.getTotalElements()))
+                .body(list);
+	}
+
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMDepEstMan-Default-all')")
+	@ApiOperation(value = "searchDEFAULTByORMORGORMORGSECTOR", tags = {"ORMDepEstMan" } ,notes = "searchDEFAULTByORMORGORMORGSECTOR")
+    @RequestMapping(method= RequestMethod.POST , value="/ormorgs/{ormorg_id}/ormorgsectors/{ormorgsector_id}/ormdepestmen/searchdefault")
+	public ResponseEntity<Page<ORMDepEstManDTO>> searchORMDepEstManDefaultByORMORGORMORGSECTOR(@PathVariable("ormorg_id") String ormorg_id, @PathVariable("ormorgsector_id") String ormorgsector_id, @RequestBody ORMDepEstManSearchContext context) {
+        context.setN_ormzwbzid_eq(ormorgsector_id);
+        Page<ORMDepEstMan> domains = ormdepestmanService.searchDefault(context) ;
+	    return ResponseEntity.status(HttpStatus.OK)
+                .body(new PageImpl(ormdepestmanMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
+	}
 }
