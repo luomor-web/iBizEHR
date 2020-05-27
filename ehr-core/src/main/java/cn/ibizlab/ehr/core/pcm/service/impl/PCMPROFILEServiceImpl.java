@@ -90,6 +90,10 @@ public class PCMPROFILEServiceImpl extends ServiceImpl<PCMPROFILEMapper, PCMPROF
     @Lazy
     private cn.ibizlab.ehr.core.pim.service.IPIMPERSONService pimpersonService;
 
+    @Autowired
+    @Lazy
+    private cn.ibizlab.ehr.core.pcm.service.logic.IPCMPROFILESubmitLogic submitLogic;
+
     private int batchSize = 500;
 
     @Override
@@ -338,8 +342,8 @@ public class PCMPROFILEServiceImpl extends ServiceImpl<PCMPROFILEMapper, PCMPROF
     @Override
     @Transactional
     public PCMPROFILE submit(PCMPROFILE et) {
-        //自定义代码
-        return et;
+        submitLogic.execute(et);
+         return et ;
     }
 
     @Override
