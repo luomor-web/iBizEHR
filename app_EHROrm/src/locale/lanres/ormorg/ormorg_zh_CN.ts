@@ -320,46 +320,6 @@ export default {
 			tip: '编辑',
 		},
 	},
-	suborggridviewtoolbar2_toolbar: {
-		deuiaction1: {
-			caption: '新建',
-			tip: '新建',
-		},
-		deuiaction2: {
-			caption: '保存',
-			tip: '保存',
-		},
-		deuiaction3: {
-			caption: '关闭行编辑',
-			tip: '关闭行编辑',
-		},
-	},
-	suborggridviewtoolbar_toolbar: {
-		tbitem3: {
-			caption: '新建',
-			tip: '新建',
-		},
-		tbitem8: {
-			caption: '删除',
-			tip: '删除',
-		},
-		deuiaction1: {
-			caption: '开启行编辑',
-			tip: '开启行编辑',
-		},
-		tbitem16: {
-			caption: '其它',
-			tip: '其它',
-		},
-		tbitem13: {
-			caption: '导出数据',
-			tip: '导出数据',
-		},
-		tbitem23: {
-			caption: '数据导入',
-			tip: '数据导入',
-		},
-	},
 	gridviewtoolbar2_toolbar: {
 		deuiaction1: {
 			caption: '新建',
@@ -428,6 +388,46 @@ export default {
 		tbitem22: {
 			caption: '帮助',
 			tip: '帮助',
+		},
+	},
+	suborggridviewtoolbar2_toolbar: {
+		deuiaction1: {
+			caption: '新建',
+			tip: '新建',
+		},
+		deuiaction2: {
+			caption: '保存',
+			tip: '保存',
+		},
+		deuiaction3: {
+			caption: '关闭行编辑',
+			tip: '关闭行编辑',
+		},
+	},
+	suborggridviewtoolbar_toolbar: {
+		tbitem3: {
+			caption: '新建',
+			tip: '新建',
+		},
+		tbitem8: {
+			caption: '删除',
+			tip: '删除',
+		},
+		deuiaction1: {
+			caption: '开启行编辑',
+			tip: '开启行编辑',
+		},
+		tbitem16: {
+			caption: '其它',
+			tip: '其它',
+		},
+		tbitem13: {
+			caption: '导出数据',
+			tip: '导出数据',
+		},
+		tbitem23: {
+			caption: '数据导入',
+			tip: '数据导入',
 		},
 	},
 	ormorgtree2_treeview: {

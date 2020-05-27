@@ -624,21 +624,6 @@ const router = new Router({
                     component: () => import('@pages/orm/ormerporglegal-pickup-grid-view/ormerporglegal-pickup-grid-view.vue'),
                 },
                 {
-                    path: 'ormorgs/:ormorg?/editview/:editview?',
-                    meta: {
-                        caption: 'entities.ormorg.views.editview.caption',
-                        imgPath: '../../../img/zzgl/1/zuzhiguanli.png',
-                        iconCls: '',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'ormorgs', parameterName: 'ormorg' },
-                            { pathName: 'editview', parameterName: 'editview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/orm/ormorgedit-view/ormorgedit-view.vue'),
-                },
-                {
                     path: 'ormorgs/:ormorg?/pickupgridview/:pickupgridview?',
                     meta: {
                         caption: 'entities.ormorg.views.pickupgridview.caption',
@@ -676,21 +661,6 @@ const router = new Router({
                         requireAuth: true,
                     },
                     component: () => import('@pages/orm/pimpersoncur-leader-pickup-grid-view/pimpersoncur-leader-pickup-grid-view.vue'),
-                },
-                {
-                    path: 'ormorgs/:ormorg?/suborggridview/:suborggridview?',
-                    meta: {
-                        caption: 'entities.ormorg.views.suborggridview.caption',
-                        imgPath: '../../../img/pzgl/1/rencaixulie.png',
-                        iconCls: '',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'ormorgs', parameterName: 'ormorg' },
-                            { pathName: 'suborggridview', parameterName: 'suborggridview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/orm/ormorgsub-org-grid-view/ormorgsub-org-grid-view.vue'),
                 },
                 {
                     path: 'ormorgs/:ormorg?/orgtreegridview/:orgtreegridview?',
@@ -2158,20 +2128,6 @@ const router = new Router({
                 },
                 component: () => import('@pages/orm/ormpost-details-redirect-view/ormpost-details-redirect-view.vue'),
             },
-    {
-        path: '/ormorgs/:ormorg?/suborggridview/:suborggridview?',
-        meta: {
-            caption: 'entities.ormorg.views.suborggridview.caption',
-            imgPath: '../../../img/pzgl/1/rencaixulie.png',
-            iconCls: '',
-            parameters: [
-                { pathName: 'ormorgs', parameterName: 'ormorg' },
-                { pathName: 'suborggridview', parameterName: 'suborggridview' },
-            ],
-            requireAuth: true,
-        },
-        component: () => import('@pages/orm/ormorgsub-org-grid-view/ormorgsub-org-grid-view.vue'),
-    },
     {
         path: '/ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/ormdepestmen/:ormdepestman?/editview/:editview?',
         meta: {

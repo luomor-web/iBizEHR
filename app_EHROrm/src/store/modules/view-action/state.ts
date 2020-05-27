@@ -118,7 +118,6 @@ export const viewstate: any = {
             viewdatachange: false,
             refviews: [
                 '9f4101d02ad189096c5513d1896de595',
-                'f48f4ab3198fccc18f177d106869633d',
                 'd4cde7471b5b2946fa12d64bb56ee2be',
             ],
         },
@@ -793,16 +792,6 @@ export const viewstate: any = {
             viewdatachange: false,
             refviews: [
                 '4c23c804046de5b0f9af83bda3c44d65',
-            ],
-        },
-        {
-            viewtag: 'f48f4ab3198fccc18f177d106869633d',
-            viewmodule: 'ORM',
-            viewname: 'ORMORGSubOrgGridView',
-            viewaction: '',
-            viewdatachange: false,
-            refviews: [
-                '34201778b70a0175b7664955bd8ae2bf',
             ],
         },
         {
