@@ -77,8 +77,8 @@ export default {
         // 非实体视图
         views: {
             index: {
-                caption: '招聘管理',
-                title: '招聘管理',
+                caption: 'EHR—招聘管理',
+                title: 'EHR—招聘管理',
             },
         },
         utilview:{

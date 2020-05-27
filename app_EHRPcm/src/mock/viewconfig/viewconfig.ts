@@ -544,8 +544,8 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewtag": "c2c9f03c03a45ea71e0fc82836b8e5a0"
         },
         "index": {
-            "title": "招聘管理",
-            "caption": "招聘管理",
+            "title": "EHR—招聘管理",
+            "caption": "EHR—招聘管理",
             "viewtype": "APPINDEXVIEW",
             "viewmodule": "PCM",
             "viewname": "Index",

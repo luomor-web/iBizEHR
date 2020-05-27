@@ -470,7 +470,7 @@
   valueitem='ormorgsectorid' 
   :value="data.ormorgsectorname" 
   editortype="" 
-  :pickupView="{ viewname: 'ormorgsectorydbmpickup-view', title: $t('entities.ormorgsector.views.ydbmpickupview.title'), deResParameters: [], parameters: [{ pathName: 'ormorgsectors', parameterName: 'ormorgsector' }, { pathName: 'ydbmpickupview', parameterName: 'ydbmpickupview' } ], placement:'' }"
+  :pickupView="{ viewname: 'ormorgsectorydbmpickup-view', title: $t('entities.ormorgsector.views.ydbmpickupview.title'), deResParameters: [{ pathName: 'ormorgs', parameterName: 'ormorg' }, ], parameters: [{ pathName: 'ormorgsectors', parameterName: 'ormorgsector' }, { pathName: 'ydbmpickupview', parameterName: 'ydbmpickupview' } ], placement:'' }"
   style=""  
   @formitemvaluechange="onFormItemValueChange">
 </app-picker>

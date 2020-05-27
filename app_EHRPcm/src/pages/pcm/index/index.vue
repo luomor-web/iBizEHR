@@ -6,7 +6,7 @@ import IndexBase from './index-base.vue';
 import view_appmenu from '@widgets/app/index-appmenu/index-appmenu.vue';
 
 /**
- * 招聘管理
+ * EHR—招聘管理
  *
  * @export
  * @class Index
