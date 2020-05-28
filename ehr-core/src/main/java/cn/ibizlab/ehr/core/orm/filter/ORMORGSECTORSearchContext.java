@@ -30,7 +30,7 @@ import cn.ibizlab.ehr.core.orm.domain.ORMORGSECTOR;
 @AllArgsConstructor
 public class ORMORGSECTORSearchContext extends QueryWrapperContext<ORMORGSECTOR> {
 
-	private String n_qy_eq;//[地区分类]
+	private String n_qy_eq;//[补贴标准]
 	public void setN_qy_eq(String n_qy_eq) {
         this.n_qy_eq = n_qy_eq;
         if(!ObjectUtils.isEmpty(this.n_qy_eq)){

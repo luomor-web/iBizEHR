@@ -62,7 +62,7 @@ public class ORMORGSECTOR extends EntityMP implements Serializable {
     @JsonProperty("ordervalue")
     private Integer ordervalue;
     /**
-     * 地区分类
+     * 补贴标准
      */
     @TableField(value = "qy")
     @JSONField(name = "qy")
@@ -621,7 +621,7 @@ public class ORMORGSECTOR extends EntityMP implements Serializable {
         this.modify("ordervalue",ordervalue);
     }
     /**
-     * 设置 [地区分类]
+     * 设置 [补贴标准]
      */
     public void setQy(String qy){
         this.qy = qy ;
