@@ -5,7 +5,7 @@ import ORMBMKQDZEditViewBase from './ormbmkqdzedit-view-base.vue';
 import view_form from '@widgets/ormbmkqdz/main-form/main-form.vue';
 
 /**
- * 部门考勤地址维护
+ * 考勤地址信息
  *
  * @export
  * @class ORMBMKQDZEditView

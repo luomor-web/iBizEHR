@@ -1,5 +1,5 @@
 <template>
-  <app-layout viewName="ormorgorgtreegridview" viewTitle="组织信息" :className="{ 'view-container': true, 'default-mode-view': true, 'degridview': true, 'ormorgorg-tree-grid-view': true }" layoutMode="VIEW" :isShowUserInfo="isDefaultView()" :openMode="openMode" @close-view="closeView($event)">
+  <app-layout viewName="ormorgorgtreegridview" viewTitle="组织管理" :className="{ 'view-container': true, 'default-mode-view': true, 'degridview': true, 'ormorgorg-tree-grid-view': true }" layoutMode="VIEW" :isShowUserInfo="isDefaultView()" :openMode="openMode" @close-view="closeView($event)">
     <template slot="headerLeft">
       <div class="view-header-left">
 
@@ -77,7 +77,7 @@ import CodeListService from "@service/app/codelist-service";
 
 
 /**
- * 组织信息基类
+ * 组织管理基类
  *
  * @export
  * @class ORMORGOrgTreeGridViewBase

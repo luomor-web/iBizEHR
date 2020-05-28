@@ -1,5 +1,5 @@
 <template>
-  <app-layout viewName="ormbmkqdzeditview" viewTitle="部门考勤地址维护" :className="{ 'view-container': true, 'default-mode-view': true, 'deeditview': true, 'ormbmkqdzedit-view': true }" layoutMode="VIEW" :isShowUserInfo="isDefaultView()" :openMode="openMode" @close-view="closeView($event)">
+  <app-layout viewName="ormbmkqdzeditview" viewTitle="考勤地址信息" :className="{ 'view-container': true, 'default-mode-view': true, 'deeditview': true, 'ormbmkqdzedit-view': true }" layoutMode="VIEW" :isShowUserInfo="isDefaultView()" :openMode="openMode" @close-view="closeView($event)">
     <template slot="headerLeft">
       <div class="view-header-left">
 
@@ -53,7 +53,7 @@ import EditViewEngine from '@engine/view/edit-view-engine';
 
 
 /**
- * 部门考勤地址维护基类
+ * 考勤地址信息基类
  *
  * @export
  * @class ORMBMKQDZEditViewBase

@@ -99,8 +99,8 @@
         "memo": ""
     },
     "ormorgeditview9_editmode": {
-        "title": "组织信息",
-        "caption": "组织信息",
+        "title": "组织管理",
+        "caption": "组织管理",
         "viewtype": "DEEDITVIEW9",
         "viewmodule": "ORM",
         "viewname": "ORMORGEditView9_EditMode",
@@ -198,8 +198,8 @@
         "memo": ""
     },
     "ormbmkqdzeditview": {
-        "title": "部门考勤地址维护",
-        "caption": "部门考勤地址维护",
+        "title": "考勤地址信息",
+        "caption": "考勤地址信息",
         "viewtype": "DEEDITVIEW",
         "viewmodule": "ORM",
         "viewname": "ORMBMKQDZEditView",
@@ -1377,8 +1377,8 @@
         "memo": ""
     },
     "ormorgsectoreditview9": {
-        "title": "部门/项目部信息",
-        "caption": "部门/项目部信息",
+        "title": "部门/项目部管理",
+        "caption": "部门/项目部管理",
         "viewtype": "DEEDITVIEW9",
         "viewmodule": "ORM",
         "viewname": "ORMORGSECTOREditView9",
@@ -1422,8 +1422,8 @@
         "memo": ""
     },
     "ormorgeditview9": {
-        "title": "组织信息",
-        "caption": "组织信息",
+        "title": "组织管理",
+        "caption": "组织管理",
         "viewtype": "DEEDITVIEW9",
         "viewmodule": "ORM",
         "viewname": "ORMORGEditView9",
@@ -1521,8 +1521,8 @@
         "memo": ""
     },
     "ormorgsectorgridview": {
-        "title": "部门/项目部信息",
-        "caption": "部门/项目部信息",
+        "title": "部门/项目部管理",
+        "caption": "部门/项目部管理",
         "viewtype": "DEGRIDVIEW",
         "viewmodule": "ORM",
         "viewname": "ORMORGSECTORGridView",
@@ -1890,8 +1890,8 @@
         "memo": ""
     },
     "ormbmkqdzgridview": {
-        "title": "部门考勤地址维护",
-        "caption": "部门考勤地址维护",
+        "title": "考勤地址信息",
+        "caption": "考勤地址信息",
         "viewtype": "DEGRIDVIEW",
         "viewmodule": "ORM",
         "viewname": "ORMBMKQDZGridView",
@@ -1917,8 +1917,8 @@
         "memo": ""
     },
     "ormorgorgtreegridview": {
-        "title": "组织信息",
-        "caption": "组织信息",
+        "title": "组织管理",
+        "caption": "组织管理",
         "viewtype": "DEGRIDVIEW",
         "viewmodule": "ORM",
         "viewname": "ORMORGOrgTreeGridView",
@@ -2241,8 +2241,8 @@
         "memo": ""
     },
     "ormorgsectoreditview9_editmode": {
-        "title": "部门/项目部信息",
-        "caption": "部门/项目部信息",
+        "title": "部门/项目部管理",
+        "caption": "部门/项目部管理",
         "viewtype": "DEEDITVIEW9",
         "viewmodule": "ORM",
         "viewname": "ORMORGSECTOREditView9_EditMode",

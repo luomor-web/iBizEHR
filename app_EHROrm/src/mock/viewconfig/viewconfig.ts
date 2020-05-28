@@ -96,8 +96,8 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewtag": "07f5aba18665e67110b05f8c81b40d25"
         },
         "ormorgeditview9_editmode": {
-            "title": "组织信息",
-            "caption": "组织信息",
+            "title": "组织管理",
+            "caption": "组织管理",
             "viewtype": "DEEDITVIEW9",
             "viewmodule": "ORM",
             "viewname": "ORMORGEditView9_EditMode",
@@ -184,8 +184,8 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewtag": "10f8f030c7711a08f5d0663ecf2180b7"
         },
         "ormbmkqdzeditview": {
-            "title": "部门考勤地址维护",
-            "caption": "部门考勤地址维护",
+            "title": "考勤地址信息",
+            "caption": "考勤地址信息",
             "viewtype": "DEEDITVIEW",
             "viewmodule": "ORM",
             "viewname": "ORMBMKQDZEditView",
@@ -1232,8 +1232,8 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewtag": "917714c6b3de7ed13424d76ca50070e2"
         },
         "ormorgsectoreditview9": {
-            "title": "部门/项目部信息",
-            "caption": "部门/项目部信息",
+            "title": "部门/项目部管理",
+            "caption": "部门/项目部管理",
             "viewtype": "DEEDITVIEW9",
             "viewmodule": "ORM",
             "viewname": "ORMORGSECTOREditView9",
@@ -1272,8 +1272,8 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewtag": "95aacaf44febff28c01f69ca936f8fd1"
         },
         "ormorgeditview9": {
-            "title": "组织信息",
-            "caption": "组织信息",
+            "title": "组织管理",
+            "caption": "组织管理",
             "viewtype": "DEEDITVIEW9",
             "viewmodule": "ORM",
             "viewname": "ORMORGEditView9",
@@ -1360,8 +1360,8 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewtag": "9e36a0160fadc5393ac7a39def748e83"
         },
         "ormorgsectorgridview": {
-            "title": "部门/项目部信息",
-            "caption": "部门/项目部信息",
+            "title": "部门/项目部管理",
+            "caption": "部门/项目部管理",
             "viewtype": "DEGRIDVIEW",
             "viewmodule": "ORM",
             "viewname": "ORMORGSECTORGridView",
@@ -1688,8 +1688,8 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewtag": "d008fe2ad1da3e0f5c0b47a989edd018"
         },
         "ormbmkqdzgridview": {
-            "title": "部门考勤地址维护",
-            "caption": "部门考勤地址维护",
+            "title": "考勤地址信息",
+            "caption": "考勤地址信息",
             "viewtype": "DEGRIDVIEW",
             "viewmodule": "ORM",
             "viewname": "ORMBMKQDZGridView",
@@ -1712,8 +1712,8 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewtag": "d3d98ee89379969df1fd76a2982d659d"
         },
         "ormorgorgtreegridview": {
-            "title": "组织信息",
-            "caption": "组织信息",
+            "title": "组织管理",
+            "caption": "组织管理",
             "viewtype": "DEGRIDVIEW",
             "viewmodule": "ORM",
             "viewname": "ORMORGOrgTreeGridView",
@@ -2000,8 +2000,8 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewtag": "f797c6c9c7b6410519ceb908dfd0a27f"
         },
         "ormorgsectoreditview9_editmode": {
-            "title": "部门/项目部信息",
-            "caption": "部门/项目部信息",
+            "title": "部门/项目部管理",
+            "caption": "部门/项目部管理",
             "viewtype": "DEEDITVIEW9",
             "viewmodule": "ORM",
             "viewname": "ORMORGSECTOREditView9_EditMode",

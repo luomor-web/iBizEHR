@@ -170,8 +170,8 @@ export default {
       title: '项目部管理',
 		},
 		editview9: {
-			caption: '部门/项目部信息',
-      title: '部门/项目部信息',
+			caption: '部门/项目部管理',
+      title: '部门/项目部管理',
 		},
 		xmbmeditview: {
 			caption: '项目部',
@@ -182,8 +182,8 @@ export default {
       title: '项目部选择',
 		},
 		gridview: {
-			caption: '部门/项目部信息',
-      title: '部门/项目部信息',
+			caption: '部门/项目部管理',
+      title: '部门/项目部管理',
 		},
 		xmbbzglcxeditview: {
 			caption: '项目部管理',
@@ -214,8 +214,8 @@ export default {
       title: '部门选择',
 		},
 		editview9_editmode: {
-			caption: '部门/项目部信息',
-      title: '部门/项目部信息',
+			caption: '部门/项目部管理',
+      title: '部门/项目部管理',
 		},
 	},
 	main_form: {

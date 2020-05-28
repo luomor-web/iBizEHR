@@ -18,8 +18,8 @@ export default {
   },
 	views: {
 		editview: {
-			caption: "部门考勤地址维护",
-      title: '部门考勤地址维护',
+			caption: "考勤地址信息",
+      title: '考勤地址信息',
 		},
 		pickupgridview: {
 			caption: "部门地址维护",
@@ -42,8 +42,8 @@ export default {
       title: '部门考勤地址',
 		},
 		gridview: {
-			caption: "部门考勤地址维护",
-      title: '部门考勤地址维护',
+			caption: "考勤地址信息",
+      title: '考勤地址信息',
 		},
 		redirectview: {
 			caption: "部门地址维护",
@@ -179,7 +179,7 @@ export default {
 			tip: "Save And Close Window",
 		},
 	},
-	gridviewtoolbar2_toolbar: {
+	gridviewtoolbar_toolbar: {
 		deuiaction1: {
 			caption: "新建",
 			tip: "新建",
@@ -199,32 +199,6 @@ export default {
 		deuiaction5: {
 			caption: "Export",
 			tip: "Export {0} Data To Excel",
-		},
-	},
-	gridviewtoolbar_toolbar: {
-		tbitem3: {
-			caption: "New",
-			tip: "New",
-		},
-		tbitem8: {
-			caption: "Remove",
-			tip: "Remove {0}",
-		},
-		deuiaction1: {
-			caption: "开启行编辑",
-			tip: "开启行编辑",
-		},
-		tbitem16: {
-			caption: "其它",
-			tip: "其它",
-		},
-		tbitem13: {
-			caption: "Export",
-			tip: "Export {0} Data To Excel",
-		},
-		tbitem23: {
-			caption: "数据导入",
-			tip: "数据导入",
 		},
 	},
 	editview2toolbar_toolbar: {

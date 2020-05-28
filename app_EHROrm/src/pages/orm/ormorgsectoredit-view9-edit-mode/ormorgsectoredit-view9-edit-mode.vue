@@ -5,7 +5,7 @@ import ORMORGSECTOREditView9_EditModeBase from './ormorgsectoredit-view9-edit-mo
 import view_form from '@widgets/ormorgsector/bmbzgl-form/bmbzgl-form.vue';
 
 /**
- * 部门/项目部信息
+ * 部门/项目部管理
  *
  * @export
  * @class ORMORGSECTOREditView9_EditMode

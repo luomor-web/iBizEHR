@@ -670,7 +670,12 @@ export default class ORMBMKQDZBMKQDZGridViewBase extends GridViewBase {
         if(args.length >0){
             Object.assign(curViewParam,args[0]);
         }
-        const deResParameters: any[] = [];
+        let deResParameters: any[] = [];
+        if(curViewParam.ormorgsector && true){
+            deResParameters = [
+            { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
+            ]
+        }
         const parameters: any[] = [
             { pathName: 'ormbmkqdzs', parameterName: 'ormbmkqdz' },
         ];
@@ -713,7 +718,12 @@ export default class ORMBMKQDZBMKQDZGridViewBase extends GridViewBase {
         if(args.length >0){
             Object.assign(curViewParam,args[0]);
         }
-        const deResParameters: any[] = [];
+        let deResParameters: any[] = [];
+        if(curViewParam.ormorgsector && true){
+            deResParameters = [
+            { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
+            ]
+        }
         const parameters: any[] = [
             { pathName: 'ormbmkqdzs', parameterName: 'ormbmkqdz' },
         ];

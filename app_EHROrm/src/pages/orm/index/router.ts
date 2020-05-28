@@ -296,6 +296,39 @@ const router = new Router({
                     component: () => import('@pages/orm/ormorgsjorg-pickup-view/ormorgsjorg-pickup-view.vue'),
                 },
                 {
+                    path: 'ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/ormbmkqdzs/:ormbmkqdz?/bmkqdzgridview/:bmkqdzgridview?',
+                    meta: {
+                        caption: 'entities.ormbmkqdz.views.bmkqdzgridview.caption',
+                        imgPath: '../../../img/zzgl/1/bumenguanli.png',
+                        iconCls: '',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'ormorgs', parameterName: 'ormorg' },
+                            { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
+                            { pathName: 'ormbmkqdzs', parameterName: 'ormbmkqdz' },
+                            { pathName: 'bmkqdzgridview', parameterName: 'bmkqdzgridview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/orm/ormbmkqdzbmkqdzgrid-view/ormbmkqdzbmkqdzgrid-view.vue'),
+                },
+                {
+                    path: 'ormorgsectors/:ormorgsector?/ormbmkqdzs/:ormbmkqdz?/bmkqdzgridview/:bmkqdzgridview?',
+                    meta: {
+                        caption: 'entities.ormbmkqdz.views.bmkqdzgridview.caption',
+                        imgPath: '../../../img/zzgl/1/bumenguanli.png',
+                        iconCls: '',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
+                            { pathName: 'ormbmkqdzs', parameterName: 'ormbmkqdz' },
+                            { pathName: 'bmkqdzgridview', parameterName: 'bmkqdzgridview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/orm/ormbmkqdzbmkqdzgrid-view/ormbmkqdzbmkqdzgrid-view.vue'),
+                },
+                {
                     path: 'ormbmkqdzs/:ormbmkqdz?/bmkqdzgridview/:bmkqdzgridview?',
                     meta: {
                         caption: 'entities.ormbmkqdz.views.bmkqdzgridview.caption',
@@ -350,6 +383,39 @@ const router = new Router({
                         requireAuth: true,
                     },
                     component: () => import('@pages/orm/ormpost-details-edit-view/ormpost-details-edit-view.vue'),
+                },
+                {
+                    path: 'ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/ormbmkqdzs/:ormbmkqdz?/bmkqdzeditview/:bmkqdzeditview?',
+                    meta: {
+                        caption: 'entities.ormbmkqdz.views.bmkqdzeditview.caption',
+                        imgPath: '../../../img/zzgl/1/bumenguanli.png',
+                        iconCls: '',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'ormorgs', parameterName: 'ormorg' },
+                            { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
+                            { pathName: 'ormbmkqdzs', parameterName: 'ormbmkqdz' },
+                            { pathName: 'bmkqdzeditview', parameterName: 'bmkqdzeditview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/orm/ormbmkqdzbmkqdzedit-view/ormbmkqdzbmkqdzedit-view.vue'),
+                },
+                {
+                    path: 'ormorgsectors/:ormorgsector?/ormbmkqdzs/:ormbmkqdz?/bmkqdzeditview/:bmkqdzeditview?',
+                    meta: {
+                        caption: 'entities.ormbmkqdz.views.bmkqdzeditview.caption',
+                        imgPath: '../../../img/zzgl/1/bumenguanli.png',
+                        iconCls: '',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
+                            { pathName: 'ormbmkqdzs', parameterName: 'ormbmkqdz' },
+                            { pathName: 'bmkqdzeditview', parameterName: 'bmkqdzeditview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/orm/ormbmkqdzbmkqdzedit-view/ormbmkqdzbmkqdzedit-view.vue'),
                 },
                 {
                     path: 'ormbmkqdzs/:ormbmkqdz?/bmkqdzeditview/:bmkqdzeditview?',
@@ -1158,6 +1224,33 @@ const router = new Router({
         component: () => import('@pages/orm/pimpersonpickup-grid-view/pimpersonpickup-grid-view.vue'),
     },
     {
+        path: '/ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/ormbmkqdzs/:ormbmkqdz?/editview/:editview?',
+        meta: {
+            caption: 'entities.ormbmkqdz.views.editview.caption',
+            parameters: [
+                { pathName: 'ormorgs', parameterName: 'ormorg' },
+                { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
+                { pathName: 'ormbmkqdzs', parameterName: 'ormbmkqdz' },
+                { pathName: 'editview', parameterName: 'editview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/orm/ormbmkqdzedit-view/ormbmkqdzedit-view.vue'),
+    },
+    {
+        path: '/ormorgsectors/:ormorgsector?/ormbmkqdzs/:ormbmkqdz?/editview/:editview?',
+        meta: {
+            caption: 'entities.ormbmkqdz.views.editview.caption',
+            parameters: [
+                { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
+                { pathName: 'ormbmkqdzs', parameterName: 'ormbmkqdz' },
+                { pathName: 'editview', parameterName: 'editview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/orm/ormbmkqdzedit-view/ormbmkqdzedit-view.vue'),
+    },
+    {
         path: '/ormbmkqdzs/:ormbmkqdz?/editview/:editview?',
         meta: {
             caption: 'entities.ormbmkqdz.views.editview.caption',
@@ -1565,6 +1658,37 @@ const router = new Router({
             requireAuth: true,
         },
         component: () => import('@pages/orm/ormxmbqgrid-view/ormxmbqgrid-view.vue'),
+    },
+    {
+        path: '/ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/ormbmkqdzs/:ormbmkqdz?/bmkqdzgridview/:bmkqdzgridview?',
+        meta: {
+            caption: 'entities.ormbmkqdz.views.bmkqdzgridview.caption',
+            imgPath: '../../../img/zzgl/1/bumenguanli.png',
+            iconCls: '',
+            parameters: [
+                { pathName: 'ormorgs', parameterName: 'ormorg' },
+                { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
+                { pathName: 'ormbmkqdzs', parameterName: 'ormbmkqdz' },
+                { pathName: 'bmkqdzgridview', parameterName: 'bmkqdzgridview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/orm/ormbmkqdzbmkqdzgrid-view/ormbmkqdzbmkqdzgrid-view.vue'),
+    },
+    {
+        path: '/ormorgsectors/:ormorgsector?/ormbmkqdzs/:ormbmkqdz?/bmkqdzgridview/:bmkqdzgridview?',
+        meta: {
+            caption: 'entities.ormbmkqdz.views.bmkqdzgridview.caption',
+            imgPath: '../../../img/zzgl/1/bumenguanli.png',
+            iconCls: '',
+            parameters: [
+                { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
+                { pathName: 'ormbmkqdzs', parameterName: 'ormbmkqdz' },
+                { pathName: 'bmkqdzgridview', parameterName: 'bmkqdzgridview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/orm/ormbmkqdzbmkqdzgrid-view/ormbmkqdzbmkqdzgrid-view.vue'),
     },
     {
         path: '/ormbmkqdzs/:ormbmkqdz?/bmkqdzgridview/:bmkqdzgridview?',
@@ -2092,6 +2216,37 @@ const router = new Router({
             requireAuth: true,
         },
         component: () => import('@pages/orm/ormrelation-edit-view/ormrelation-edit-view.vue'),
+    },
+    {
+        path: '/ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/ormbmkqdzs/:ormbmkqdz?/bmkqdzeditview/:bmkqdzeditview?',
+        meta: {
+            caption: 'entities.ormbmkqdz.views.bmkqdzeditview.caption',
+            imgPath: '../../../img/zzgl/1/bumenguanli.png',
+            iconCls: '',
+            parameters: [
+                { pathName: 'ormorgs', parameterName: 'ormorg' },
+                { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
+                { pathName: 'ormbmkqdzs', parameterName: 'ormbmkqdz' },
+                { pathName: 'bmkqdzeditview', parameterName: 'bmkqdzeditview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/orm/ormbmkqdzbmkqdzedit-view/ormbmkqdzbmkqdzedit-view.vue'),
+    },
+    {
+        path: '/ormorgsectors/:ormorgsector?/ormbmkqdzs/:ormbmkqdz?/bmkqdzeditview/:bmkqdzeditview?',
+        meta: {
+            caption: 'entities.ormbmkqdz.views.bmkqdzeditview.caption',
+            imgPath: '../../../img/zzgl/1/bumenguanli.png',
+            iconCls: '',
+            parameters: [
+                { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
+                { pathName: 'ormbmkqdzs', parameterName: 'ormbmkqdz' },
+                { pathName: 'bmkqdzeditview', parameterName: 'bmkqdzeditview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/orm/ormbmkqdzbmkqdzedit-view/ormbmkqdzbmkqdzedit-view.vue'),
     },
     {
         path: '/ormbmkqdzs/:ormbmkqdz?/bmkqdzeditview/:bmkqdzeditview?',

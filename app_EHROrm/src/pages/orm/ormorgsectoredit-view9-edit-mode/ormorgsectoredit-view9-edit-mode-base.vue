@@ -1,5 +1,5 @@
 <template>
-  <app-layout viewName="ormorgsectoreditview9_editmode" viewTitle="部门/项目部信息" :className="{ 'view-container': true, 'default-mode-view': true, 'deeditview9': true, 'ormorgsectoredit-view9-edit-mode': true }" layoutMode="VIEW" :isShowUserInfo="isDefaultView()" :openMode="openMode" @close-view="closeView($event)">
+  <app-layout viewName="ormorgsectoreditview9_editmode" viewTitle="部门/项目部管理" :className="{ 'view-container': true, 'default-mode-view': true, 'deeditview9': true, 'ormorgsectoredit-view9-edit-mode': true }" layoutMode="VIEW" :isShowUserInfo="isDefaultView()" :openMode="openMode" @close-view="closeView($event)">
     <template slot="headerLeft">
       <div class="view-header-left">
 
@@ -53,7 +53,7 @@ import EditView9Engine from '@engine/view/edit-view9-engine';
 
 
 /**
- * 部门/项目部信息基类
+ * 部门/项目部管理基类
  *
  * @export
  * @class ORMORGSECTOREditView9_EditModeBase

@@ -6,7 +6,7 @@ import view_grid from '@widgets/ormorg/org-tree-grid/org-tree-grid.vue';
 import view_searchform from '@widgets/ormorg/default-searchform/default-searchform.vue';
 
 /**
- * 组织信息
+ * 组织管理
  *
  * @export
  * @class ORMORGOrgTreeGridView

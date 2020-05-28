@@ -5,7 +5,7 @@ import ORMORGSECTOREditView9Base from './ormorgsectoredit-view9-base.vue';
 import view_form from '@widgets/ormorgsector/main2-form/main2-form.vue';
 
 /**
- * 部门/项目部信息
+ * 部门/项目部管理
  *
  * @export
  * @class ORMORGSECTOREditView9

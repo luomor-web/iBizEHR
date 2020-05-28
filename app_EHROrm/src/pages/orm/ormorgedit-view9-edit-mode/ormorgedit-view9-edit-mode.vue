@@ -5,7 +5,7 @@ import ORMORGEditView9_EditModeBase from './ormorgedit-view9-edit-mode-base.vue'
 import view_form from '@widgets/ormorg/main-form/main-form.vue';
 
 /**
- * 组织信息
+ * 组织管理
  *
  * @export
  * @class ORMORGEditView9_EditMode

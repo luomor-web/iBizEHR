@@ -35,8 +35,8 @@ export default {
       title: '组织选择表格视图',
 		},
 		editview9_editmode: {
-			caption: "组织信息",
-      title: '组织信息',
+			caption: "组织管理",
+      title: '组织管理',
 		},
 		qbzzpickupview: {
 			caption: "组织管理",
@@ -123,8 +123,8 @@ export default {
       title: '组织管理',
 		},
 		editview9: {
-			caption: "组织信息",
-      title: '组织信息',
+			caption: "组织管理",
+      title: '组织管理',
 		},
 		sjyxzzqxpickupgridview: {
 			caption: "组织选择",
@@ -147,8 +147,8 @@ export default {
       title: '组织选择表格视图',
 		},
 		orgtreegridview: {
-			caption: "组织信息",
-      title: '组织信息',
+			caption: "组织管理",
+      title: '组织管理',
 		},
 		pickupgridview: {
 			caption: "组织管理",

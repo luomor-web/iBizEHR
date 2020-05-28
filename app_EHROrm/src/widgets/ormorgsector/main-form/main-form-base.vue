@@ -145,6 +145,7 @@
     paramItem='ormorgsector' 
     :parentdata='{"srfparentdefname":"ORMORGSECTORID","srfparentdename":"ORMORGSECTOR","SRFPARENTTYPE":"DER1N","srfparentmode":"DER1N_ORMBMKQDZ_ORMORGSECTOR_ORMORGSECTORID","SRFDER1NID":"DER1N_ORMBMKQDZ_ORMORGSECTOR_ORMORGSECTORID"}'
     :parameters="[
+        { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
     ]"
     :context="context"
     :viewparams="viewparams"

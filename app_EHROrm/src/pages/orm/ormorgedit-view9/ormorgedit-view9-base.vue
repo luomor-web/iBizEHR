@@ -1,5 +1,5 @@
 <template>
-  <app-layout viewName="ormorgeditview9" viewTitle="组织信息" :className="{ 'view-container': true, 'default-mode-view': true, 'deeditview9': true, 'ormorgedit-view9': true }" layoutMode="VIEW" :isShowUserInfo="isDefaultView()" :openMode="openMode" @close-view="closeView($event)">
+  <app-layout viewName="ormorgeditview9" viewTitle="组织管理" :className="{ 'view-container': true, 'default-mode-view': true, 'deeditview9': true, 'ormorgedit-view9': true }" layoutMode="VIEW" :isShowUserInfo="isDefaultView()" :openMode="openMode" @close-view="closeView($event)">
     <template slot="headerLeft">
       <div class="view-header-left">
 
@@ -54,7 +54,7 @@ import EditView9Engine from '@engine/view/edit-view9-engine';
 import ORMORGUIService from '@/uiservice/ormorg/ormorg-ui-service';
 
 /**
- * 组织信息基类
+ * 组织管理基类
  *
  * @export
  * @class ORMORGEditView9Base
