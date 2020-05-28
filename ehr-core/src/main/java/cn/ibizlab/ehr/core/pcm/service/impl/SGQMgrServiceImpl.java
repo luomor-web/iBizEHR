@@ -38,7 +38,7 @@ import com.alibaba.fastjson.JSONObject;
 import org.springframework.util.StringUtils;
 
 /**
- * 实体[试岗期管理（弃用）] 服务对象接口实现
+ * 实体[试岗期管理（停用）] 服务对象接口实现
  */
 @Slf4j
 @Service("SGQMgrServiceImpl")

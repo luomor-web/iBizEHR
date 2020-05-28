@@ -27,7 +27,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 
 
 /**
- * 实体[试岗期管理（弃用）]
+ * 实体[试岗期管理（停用）]
  */
 @Builder
 @Getter
