@@ -48,7 +48,22 @@
             <template v-if="getColumnState('attendancerange')">
                 <el-table-column show-overflow-tooltip :prop="'attendancerange'" :label="$t('entities.ormbmkqdz.main_2_grid.columns.attendancerange')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
-                        <template >
+                        <template v-if="actualIsOpenEdit">
+                            <i-form style="height:100%;" :model="row">
+                                <app-form-item :name="column.property" :itemRules="rules[column.property]">
+                                    <input-box 
+              :disabled="row.srfuf === 1 ? (3 & 2) !== 2 : (3 & 1) !== 1" 
+              v-model="row[column.property]" 
+              style=""
+              type="text"
+              
+              
+              @change="($event)=>{gridEditItemChange(row, column.property, $event)}">
+            </input-box>
+                                </app-form-item>
+                            </i-form>
+                        </template>
+                        <template v-if="!actualIsOpenEdit">
             <codelist :value="row.attendancerange" tag='ATTCL_Range' codelistType='STATIC' ></codelist>
                         </template>
                     </template>
@@ -589,6 +604,10 @@ export default class Main_2Base extends Vue implements ControlInterface {
         ormorgdzid: [
              { required: false, validator: (rule:any, value:any, callback:any) => { return (rule.required && (value === null || value === undefined || value === "")) ? false : true;}, message: '组织地址ID 值不能为空', trigger: 'change' },
             { required: false, validator: (rule:any, value:any, callback:any) => { return (rule.required && (value === null || value === undefined || value === "")) ? false : true;}, message: '组织地址ID 值不能为空', trigger: 'blur' },
+        ],
+        attendancerange: [
+             { required: false, validator: (rule:any, value:any, callback:any) => { return (rule.required && (value === null || value === undefined || value === "")) ? false : true;}, message: '考勤范围 值不能为空', trigger: 'change' },
+            { required: false, validator: (rule:any, value:any, callback:any) => { return (rule.required && (value === null || value === undefined || value === "")) ? false : true;}, message: '考勤范围 值不能为空', trigger: 'blur' },
         ],
         srfkey: [
              { required: false, validator: (rule:any, value:any, callback:any) => { return (rule.required && (value === null || value === undefined || value === "")) ? false : true;}, message: '部门地址维护标识 值不能为空', trigger: 'change' },
