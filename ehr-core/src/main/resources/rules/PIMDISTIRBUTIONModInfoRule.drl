@@ -33,6 +33,8 @@ rule "prepareparam1"
 ruleflow-group "pimdistirbutionmodinfoprepareparam1"
     when
     then
+    pimdistirbutionmodinfopimperson.set("zw",pimdistirbutionmodinfodefault.get("ormdutyid"));
+    pimdistirbutionmodinfopimperson.set("gw",pimdistirbutionmodinfodefault.get("ormpostid"));
     pimdistirbutionmodinfopimperson.set("pimpersonid",pimdistirbutionmodinfodefault.get("pimpersonid"));
     pimdistirbutionmodinfopimperson.set("ormorgid",pimdistirbutionmodinfodefault.get("ormorgid"));
     pimdistirbutionmodinfopimperson.set("ormorgname",pimdistirbutionmodinfodefault.get("ormorgname"));
