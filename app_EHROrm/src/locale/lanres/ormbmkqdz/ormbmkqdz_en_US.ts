@@ -102,8 +102,6 @@ export default {
 		columns: {
 			ormbmkqdzname: "部门地址",
 			range: "考勤范围",
-			lng: "经度",
-			lat: "纬度",
 			updateman: "更新人",
 			updatedate: "更新时间",
 		},

@@ -37,7 +37,7 @@
                 loaddraftAction=""
                 loadAction=""
                 createAction=""
-                fetchAction="FetchKZSJZZXZ"
+                fetchAction="FetchDefault"
                 name="grid"  
                 ref='grid' 
                 @selectionchange="grid_selectionchange($event)"  

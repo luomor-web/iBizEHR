@@ -61,20 +61,6 @@
                     </template>
                 </el-table-column>
             </template>
-            <template v-if="getColumnState('lng')">
-                <el-table-column show-overflow-tooltip :prop="'lng'" :label="$t('entities.ormbmkqdz.main_2_grid.columns.lng')" :width="150"  :align="'left'" :sortable="'custom'">
-                    <template v-slot="{row,column}">
-                            <app-format-data dataType="FLOAT" precision="0" :data="row.lng"></app-format-data>
-                    </template>
-                </el-table-column>
-            </template>
-            <template v-if="getColumnState('lat')">
-                <el-table-column show-overflow-tooltip :prop="'lat'" :label="$t('entities.ormbmkqdz.main_2_grid.columns.lat')" :width="150"  :align="'left'" :sortable="'custom'">
-                    <template v-slot="{row,column}">
-                            <app-format-data dataType="FLOAT" precision="0" :data="row.lat"></app-format-data>
-                    </template>
-                </el-table-column>
-            </template>
             <template v-if="getColumnState('updateman')">
                 <el-table-column show-overflow-tooltip :prop="'updateman'" :label="$t('entities.ormbmkqdz.main_2_grid.columns.updateman')" :width="180"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
@@ -577,20 +563,6 @@ export default class Main_2Base extends Vue implements ControlInterface {
             name: 'range',
             label: '考勤范围',
             langtag: 'entities.ormbmkqdz.main_2_grid.columns.range',
-            show: true,
-            util: 'PX'
-        },
-        {
-            name: 'lng',
-            label: '经度',
-            langtag: 'entities.ormbmkqdz.main_2_grid.columns.lng',
-            show: true,
-            util: 'PX'
-        },
-        {
-            name: 'lat',
-            label: '纬度',
-            langtag: 'entities.ormbmkqdz.main_2_grid.columns.lat',
             show: true,
             util: 'PX'
         },

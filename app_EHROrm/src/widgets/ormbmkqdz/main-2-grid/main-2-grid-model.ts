@@ -47,11 +47,6 @@ export default class Main_2Model {
           dataType: 'TEXT',
         },
         {
-          name: 'lng',
-          prop: 'lng',
-          dataType: 'FLOAT',
-        },
-        {
           name: 'updatedate',
           prop: 'updatedate',
           dataType: 'DATE',
@@ -70,11 +65,6 @@ export default class Main_2Model {
           name: 'srfkey',
           prop: 'ormbmkqdzid',
           dataType: 'GUID',
-        },
-        {
-          name: 'lat',
-          prop: 'lat',
-          dataType: 'FLOAT',
         },
         {
           name: 'ormorgsectorname',
