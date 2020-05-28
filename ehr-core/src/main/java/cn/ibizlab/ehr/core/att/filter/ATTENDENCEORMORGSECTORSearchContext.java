@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.att.domain.ATTENDENCEORMORGSECTOR;
  * 关系型数据实体[ATTENDENCEORMORGSECTOR] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class ATTENDENCEORMORGSECTORSearchContext extends QueryWrapperContext<ATTENDENCEORMORGSECTOR> {
 
 	private String n_attendenceormorgsectorname_like;//[考勤部门名称]
@@ -87,7 +84,9 @@ public class ATTENDENCEORMORGSECTORSearchContext extends QueryWrapperContext<ATT
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("attendenceormorgsectorname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("attendenceormorgsectorname", query)   
+            );
 		 }
 	}
 }

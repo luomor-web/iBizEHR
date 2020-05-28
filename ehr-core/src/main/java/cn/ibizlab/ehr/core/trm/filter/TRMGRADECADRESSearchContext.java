@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.trm.domain.TRMGRADECADRES;
  * 关系型数据实体[TRMGRADECADRES] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class TRMGRADECADRESSearchContext extends QueryWrapperContext<TRMGRADECADRES> {
 
 	private String n_trmgradecadresname_like;//[优秀青年干部推荐名称]
@@ -213,7 +210,9 @@ public class TRMGRADECADRESSearchContext extends QueryWrapperContext<TRMGRADECAD
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("trmgradecadresname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("trmgradecadresname", query)   
+            );
 		 }
 	}
 }

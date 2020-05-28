@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.pim.domain.PIMDISTIRBUTION;
  * 关系型数据实体[PIMDISTIRBUTION] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class PIMDISTIRBUTIONSearchContext extends QueryWrapperContext<PIMDISTIRBUTION> {
 
 	private String n_fpzt_eq;//[分配状态]
@@ -255,8 +252,10 @@ public class PIMDISTIRBUTIONSearchContext extends QueryWrapperContext<PIMDISTIRB
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("pimpersonname",query);
-			this.getSelectCond().or().like("ygbh",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("pimpersonname", query)   
+                        .or().like("ygbh", query)            
+            );
 		 }
 	}
 }

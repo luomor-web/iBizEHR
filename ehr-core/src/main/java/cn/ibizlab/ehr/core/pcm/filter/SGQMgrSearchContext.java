@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.pcm.domain.SGQMgr;
  * 关系型数据实体[SGQMgr] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class SGQMgrSearchContext extends QueryWrapperContext<SGQMgr> {
 
 	private String n_sgqmgrname_like;//[试岗期管理名称]
@@ -73,7 +70,9 @@ public class SGQMgrSearchContext extends QueryWrapperContext<SGQMgr> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("sgqmgrname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("sgqmgrname", query)   
+            );
 		 }
 	}
 }

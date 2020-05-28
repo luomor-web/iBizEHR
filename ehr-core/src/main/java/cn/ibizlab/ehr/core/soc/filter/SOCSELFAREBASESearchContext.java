@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.soc.domain.SOCSELFAREBASE;
  * 关系型数据实体[SOCSELFAREBASE] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class SOCSELFAREBASESearchContext extends QueryWrapperContext<SOCSELFAREBASE> {
 
 	private String n_socselfarebasename_like;//[参保地名称]
@@ -87,7 +84,9 @@ public class SOCSELFAREBASESearchContext extends QueryWrapperContext<SOCSELFAREB
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("socselfarebasename",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("socselfarebasename", query)   
+            );
 		 }
 	}
 }

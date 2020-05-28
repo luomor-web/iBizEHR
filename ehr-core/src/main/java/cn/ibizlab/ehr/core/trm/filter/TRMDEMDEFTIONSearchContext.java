@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.trm.domain.TRMDEMDEFTION;
  * 关系型数据实体[TRMDEMDEFTION] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class TRMDEMDEFTIONSearchContext extends QueryWrapperContext<TRMDEMDEFTION> {
 
 	private String n_dcbjb_eq;//[调查表级别]
@@ -238,7 +235,9 @@ public class TRMDEMDEFTIONSearchContext extends QueryWrapperContext<TRMDEMDEFTIO
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("trmdemdeftionname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("trmdemdeftionname", query)   
+            );
 		 }
 	}
 }

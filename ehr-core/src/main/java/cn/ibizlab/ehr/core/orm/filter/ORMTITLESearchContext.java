@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.orm.domain.ORMTITLE;
  * 关系型数据实体[ORMTITLE] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class ORMTITLESearchContext extends QueryWrapperContext<ORMTITLE> {
 
 	private String n_titletype_eq;//[头衔类型]
@@ -52,7 +49,9 @@ public class ORMTITLESearchContext extends QueryWrapperContext<ORMTITLE> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("ormtitlename",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("ormtitlename", query)   
+            );
 		 }
 	}
 }

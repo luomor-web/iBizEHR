@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.par.domain.PARJXBZGLMX;
  * 关系型数据实体[PARJXBZGLMX] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class PARJXBZGLMXSearchContext extends QueryWrapperContext<PARJXBZGLMX> {
 
 	private String n_parjxbzglmxname_like;//[绩效标准管理明细名称]
@@ -87,7 +84,9 @@ public class PARJXBZGLMXSearchContext extends QueryWrapperContext<PARJXBZGLMX> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("parjxbzglmxname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("parjxbzglmxname", query)   
+            );
 		 }
 	}
 }

@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.pim.domain.PIMWorkflow;
  * 关系型数据实体[PIMWorkflow] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class PIMWorkflowSearchContext extends QueryWrapperContext<PIMWorkflow> {
 
 	private String n_pimworkflowname_like;//[流程配置]
@@ -66,7 +63,9 @@ public class PIMWorkflowSearchContext extends QueryWrapperContext<PIMWorkflow> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("pimworkflowname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("pimworkflowname", query)   
+            );
 		 }
 	}
 }

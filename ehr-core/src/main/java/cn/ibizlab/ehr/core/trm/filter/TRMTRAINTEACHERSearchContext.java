@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.trm.domain.TRMTRAINTEACHER;
  * 关系型数据实体[TRMTRAINTEACHER] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class TRMTRAINTEACHERSearchContext extends QueryWrapperContext<TRMTRAINTEACHER> {
 
 	private String n_pxjsjb_eq;//[培训讲师级别]
@@ -129,7 +126,9 @@ public class TRMTRAINTEACHERSearchContext extends QueryWrapperContext<TRMTRAINTE
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("trmtrainteachername",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("trmtrainteachername", query)   
+            );
 		 }
 	}
 }

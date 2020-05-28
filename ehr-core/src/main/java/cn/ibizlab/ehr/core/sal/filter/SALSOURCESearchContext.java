@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.sal.domain.SALSOURCE;
  * 关系型数据实体[SALSOURCE] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class SALSOURCESearchContext extends QueryWrapperContext<SALSOURCE> {
 
 	private String n_salsourcename_like;//[薪酬计算源名称]
@@ -45,7 +42,9 @@ public class SALSOURCESearchContext extends QueryWrapperContext<SALSOURCE> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("salsourcename",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("salsourcename", query)   
+            );
 		 }
 	}
 }

@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.pcm.domain.PCMAWARDSWONS;
  * 关系型数据实体[PCMAWARDSWONS] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class PCMAWARDSWONSSearchContext extends QueryWrapperContext<PCMAWARDSWONS> {
 
 	private String n_awardlevel_eq;//[获奖等级]
@@ -80,7 +77,9 @@ public class PCMAWARDSWONSSearchContext extends QueryWrapperContext<PCMAWARDSWON
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("pcmawardswonsname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("pcmawardswonsname", query)   
+            );
 		 }
 	}
 }

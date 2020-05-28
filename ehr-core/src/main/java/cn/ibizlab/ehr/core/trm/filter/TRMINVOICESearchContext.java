@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.trm.domain.TRMINVOICE;
  * 关系型数据实体[TRMINVOICE] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class TRMINVOICESearchContext extends QueryWrapperContext<TRMINVOICE> {
 
 	private String n_kplx_eq;//[开票类型]
@@ -73,7 +70,9 @@ public class TRMINVOICESearchContext extends QueryWrapperContext<TRMINVOICE> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("trminvoicename",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("trminvoicename", query)   
+            );
 		 }
 	}
 }

@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.orm.domain.ORMORGDZ;
  * 关系型数据实体[ORMORGDZ] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class ORMORGDZSearchContext extends QueryWrapperContext<ORMORGDZ> {
 
 	private String n_deforgaddress_eq;//[默认组织地址]
@@ -73,7 +70,9 @@ public class ORMORGDZSearchContext extends QueryWrapperContext<ORMORGDZ> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("ormorgdzname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("ormorgdzname", query)   
+            );
 		 }
 	}
 }

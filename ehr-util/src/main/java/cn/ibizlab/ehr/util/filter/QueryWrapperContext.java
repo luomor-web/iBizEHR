@@ -17,10 +17,7 @@ import java.util.Iterator;
 import java.util.List;
 
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class QueryWrapperContext<T> extends SearchContextBase implements ISearchContext{
 
     @JsonIgnore

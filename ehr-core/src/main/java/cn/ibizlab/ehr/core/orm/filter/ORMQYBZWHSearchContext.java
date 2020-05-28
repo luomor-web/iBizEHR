@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.orm.domain.ORMQYBZWH;
  * 关系型数据实体[ORMQYBZWH] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class ORMQYBZWHSearchContext extends QueryWrapperContext<ORMQYBZWH> {
 
 	private String n_ormqybzwhname_eq;//[区域选择]
@@ -73,7 +70,9 @@ public class ORMQYBZWHSearchContext extends QueryWrapperContext<ORMQYBZWH> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("ormqybzwhname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("ormqybzwhname", query)   
+            );
 		 }
 	}
 }

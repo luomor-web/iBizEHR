@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.sal.domain.SALSCHEME;
  * 关系型数据实体[SALSCHEME] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class SALSCHEMESearchContext extends QueryWrapperContext<SALSCHEME> {
 
 	private String n_saltype_eq;//[薪酬类型]
@@ -73,7 +70,9 @@ public class SALSCHEMESearchContext extends QueryWrapperContext<SALSCHEME> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("salschemename",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("salschemename", query)   
+            );
 		 }
 	}
 }

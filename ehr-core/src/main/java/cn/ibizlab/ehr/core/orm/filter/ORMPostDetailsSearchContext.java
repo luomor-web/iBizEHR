@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.orm.domain.ORMPostDetails;
  * 关系型数据实体[ORMPostDetails] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class ORMPostDetailsSearchContext extends QueryWrapperContext<ORMPostDetails> {
 
 	private String n_ormpostdetailsname_like;//[岗位明细]
@@ -87,8 +84,10 @@ public class ORMPostDetailsSearchContext extends QueryWrapperContext<ORMPostDeta
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("ormpostdetailsname",query);
-			this.getSelectCond().or().like("ormpostlibname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("ormpostdetailsname", query)   
+                        .or().like("ormpostlibname", query)            
+            );
 		 }
 	}
 }

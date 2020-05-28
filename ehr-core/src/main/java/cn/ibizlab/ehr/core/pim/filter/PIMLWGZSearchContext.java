@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.pim.domain.PIMLWGZ;
  * 关系型数据实体[PIMLWGZ] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class PIMLWGZSearchContext extends QueryWrapperContext<PIMLWGZ> {
 
 	private String n_pimlwgzname_like;//[轮岗规则名称]
@@ -45,7 +42,9 @@ public class PIMLWGZSearchContext extends QueryWrapperContext<PIMLWGZ> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("pimlwgzname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("pimlwgzname", query)   
+            );
 		 }
 	}
 }

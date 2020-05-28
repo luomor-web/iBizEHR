@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.trm.domain.TRMLGBCOST;
  * 关系型数据实体[TRMLGBCOST] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class TRMLGBCOSTSearchContext extends QueryWrapperContext<TRMLGBCOST> {
 
 	private String n_trmlgbcostname_like;//[活动]
@@ -66,7 +63,9 @@ public class TRMLGBCOSTSearchContext extends QueryWrapperContext<TRMLGBCOST> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("trmlgbcostname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("trmlgbcostname", query)   
+            );
 		 }
 	}
 }

@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.orm.domain.ORMUSER;
  * 关系型数据实体[ORMUSER] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class ORMUSERSearchContext extends QueryWrapperContext<ORMUSER> {
 
 	private String n_usercode_eq;//[用户编号]
@@ -94,7 +91,9 @@ public class ORMUSERSearchContext extends QueryWrapperContext<ORMUSER> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("orgusername",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("orgusername", query)   
+            );
 		 }
 	}
 }

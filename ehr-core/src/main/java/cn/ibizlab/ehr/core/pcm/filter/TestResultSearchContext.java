@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.pcm.domain.TestResult;
  * 关系型数据实体[TestResult] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class TestResultSearchContext extends QueryWrapperContext<TestResult> {
 
 	private String n_testresultname_like;//[测评结果信息名称]
@@ -80,7 +77,9 @@ public class TestResultSearchContext extends QueryWrapperContext<TestResult> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("testresultname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("testresultname", query)   
+            );
 		 }
 	}
 }

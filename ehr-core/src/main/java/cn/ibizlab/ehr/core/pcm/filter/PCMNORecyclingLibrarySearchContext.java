@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.pcm.domain.PCMNORecyclingLibrary;
  * 关系型数据实体[PCMNORecyclingLibrary] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class PCMNORecyclingLibrarySearchContext extends QueryWrapperContext<PCMNORecyclingLibrary> {
 
 	private String n_pcmnorecyclinglibraryname_like;//[员工编号回收库名称]
@@ -45,7 +42,9 @@ public class PCMNORecyclingLibrarySearchContext extends QueryWrapperContext<PCMN
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("pcmnorecyclinglibraryname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("pcmnorecyclinglibraryname", query)   
+            );
 		 }
 	}
 }

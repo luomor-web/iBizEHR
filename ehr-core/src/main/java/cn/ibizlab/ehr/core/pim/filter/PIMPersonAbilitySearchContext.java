@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.pim.domain.PIMPersonAbility;
  * 关系型数据实体[PIMPersonAbility] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class PIMPersonAbilitySearchContext extends QueryWrapperContext<PIMPersonAbility> {
 
 	private String n_pimpersonabilityname_like;//[员工能力名称]
@@ -66,7 +63,9 @@ public class PIMPersonAbilitySearchContext extends QueryWrapperContext<PIMPerson
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("pimpersonabilityname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("pimpersonabilityname", query)   
+            );
 		 }
 	}
 }

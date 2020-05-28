@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.pim.domain.PIMLANGUAGEABILITY;
  * 关系型数据实体[PIMLANGUAGEABILITY] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class PIMLANGUAGEABILITYSearchContext extends QueryWrapperContext<PIMLANGUAGEABILITY> {
 
 	private String n_wyyz_eq;//[语种]
@@ -87,7 +84,9 @@ public class PIMLANGUAGEABILITYSearchContext extends QueryWrapperContext<PIMLANG
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("pimlanguageabilityname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("pimlanguageabilityname", query)   
+            );
 		 }
 	}
 }

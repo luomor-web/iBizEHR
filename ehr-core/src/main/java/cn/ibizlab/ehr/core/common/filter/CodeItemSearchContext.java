@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.common.domain.CodeItem;
  * 关系型数据实体[CodeItem] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class CodeItemSearchContext extends QueryWrapperContext<CodeItem> {
 
 	private String n_codeitemname_like;//[代码项名称]
@@ -87,7 +84,9 @@ public class CodeItemSearchContext extends QueryWrapperContext<CodeItem> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("codeitemname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("codeitemname", query)   
+            );
 		 }
 	}
 }

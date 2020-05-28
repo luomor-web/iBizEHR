@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.sal.domain.SALITEMSUB;
  * 关系型数据实体[SALITEMSUB] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class SALITEMSUBSearchContext extends QueryWrapperContext<SALITEMSUB> {
 
 	private String n_salitemsubname_like;//[薪酬要素项维护名称]
@@ -108,7 +105,9 @@ public class SALITEMSUBSearchContext extends QueryWrapperContext<SALITEMSUB> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("salitemsubname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("salitemsubname", query)   
+            );
 		 }
 	}
 }

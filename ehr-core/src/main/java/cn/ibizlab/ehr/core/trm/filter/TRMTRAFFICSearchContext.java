@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.trm.domain.TRMTRAFFIC;
  * 关系型数据实体[TRMTRAFFIC] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class TRMTRAFFICSearchContext extends QueryWrapperContext<TRMTRAFFIC> {
 
 	private String n_jtfs_eq;//[交通方式]
@@ -73,7 +70,9 @@ public class TRMTRAFFICSearchContext extends QueryWrapperContext<TRMTRAFFIC> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("trmtrafficname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("trmtrafficname", query)   
+            );
 		 }
 	}
 }

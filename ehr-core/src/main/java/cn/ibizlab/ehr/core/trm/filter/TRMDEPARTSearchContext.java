@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.trm.domain.TRMDEPART;
  * 关系型数据实体[TRMDEPART] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class TRMDEPARTSearchContext extends QueryWrapperContext<TRMDEPART> {
 
 	private String n_trmdepartname_like;//[需求通知]
@@ -150,7 +147,9 @@ public class TRMDEPARTSearchContext extends QueryWrapperContext<TRMDEPART> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("trmdepartname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("trmdepartname", query)   
+            );
 		 }
 	}
 }

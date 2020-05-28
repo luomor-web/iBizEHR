@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.sal.domain.SALSALARYDETAIL;
  * 关系型数据实体[SALSALARYDETAIL] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class SALSALARYDETAILSearchContext extends QueryWrapperContext<SALSALARYDETAIL> {
 
 	private String n_salsalarydetailname_like;//[员工薪酬明细名称]
@@ -87,7 +84,9 @@ public class SALSALARYDETAILSearchContext extends QueryWrapperContext<SALSALARYD
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("salsalarydetailname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("salsalarydetailname", query)   
+            );
 		 }
 	}
 }

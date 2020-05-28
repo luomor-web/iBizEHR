@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.pcm.domain.PCMGBHMC;
  * 关系型数据实体[PCMGBHMC] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class PCMGBHMCSearchContext extends QueryWrapperContext<PCMGBHMC> {
 
 	private Integer n_isleaderteam_eq;//[是否属于领导班子]
@@ -136,8 +133,10 @@ public class PCMGBHMCSearchContext extends QueryWrapperContext<PCMGBHMC> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("pimpersonname",query);
-			this.getSelectCond().or().like("ygbh",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("pimpersonname", query)   
+                        .or().like("ygbh", query)            
+            );
 		 }
 	}
 }

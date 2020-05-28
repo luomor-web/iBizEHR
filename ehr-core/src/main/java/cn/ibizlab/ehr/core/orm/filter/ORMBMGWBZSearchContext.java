@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.orm.domain.ORMBMGWBZ;
  * 关系型数据实体[ORMBMGWBZ] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class ORMBMGWBZSearchContext extends QueryWrapperContext<ORMBMGWBZ> {
 
 	private String n_ormbmgwbzname_like;//[部门岗位编制名称]
@@ -87,8 +84,10 @@ public class ORMBMGWBZSearchContext extends QueryWrapperContext<ORMBMGWBZ> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("ormbmgwbzname",query);
-			this.getSelectCond().or().like("ormpostname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("ormbmgwbzname", query)   
+                        .or().like("ormpostname", query)            
+            );
 		 }
 	}
 }

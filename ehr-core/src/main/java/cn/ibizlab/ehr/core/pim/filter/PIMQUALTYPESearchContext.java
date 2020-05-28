@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.pim.domain.PIMQUALTYPE;
  * 关系型数据实体[PIMQUALTYPE] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class PIMQUALTYPESearchContext extends QueryWrapperContext<PIMQUALTYPE> {
 
 	private String n_pimqualtypeid_like;//[岗位（技能）证书目录ID]
@@ -52,7 +49,9 @@ public class PIMQUALTYPESearchContext extends QueryWrapperContext<PIMQUALTYPE> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("pimqualtypename",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("pimqualtypename", query)   
+            );
 		 }
 	}
 }

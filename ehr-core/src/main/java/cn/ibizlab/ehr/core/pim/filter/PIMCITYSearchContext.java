@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.pim.domain.PIMCITY;
  * 关系型数据实体[PIMCITY] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class PIMCITYSearchContext extends QueryWrapperContext<PIMCITY> {
 
 	private String n_protype_eq;//[类型]
@@ -52,7 +49,9 @@ public class PIMCITYSearchContext extends QueryWrapperContext<PIMCITY> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("pimcityname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("pimcityname", query)   
+            );
 		 }
 	}
 }

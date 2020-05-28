@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.att.domain.ATTENDANCESUMMARYMX;
  * 关系型数据实体[ATTENDANCESUMMARYMX] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class ATTENDANCESUMMARYMXSearchContext extends QueryWrapperContext<ATTENDANCESUMMARYMX> {
 
 	private String n_attensummarymxname_like;//[考勤汇总明细名称]
@@ -52,7 +49,9 @@ public class ATTENDANCESUMMARYMXSearchContext extends QueryWrapperContext<ATTEND
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("attensummarymxname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("attensummarymxname", query)   
+            );
 		 }
 	}
 }

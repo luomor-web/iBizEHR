@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.pcm.domain.PCMPROFILEINITNUMBER;
  * 关系型数据实体[PCMPROFILEINITNUMBER] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class PCMPROFILEINITNUMBERSearchContext extends QueryWrapperContext<PCMPROFILEINITNUMBER> {
 
 	private String n_yglx_eq;//[员工类型]
@@ -73,7 +70,9 @@ public class PCMPROFILEINITNUMBERSearchContext extends QueryWrapperContext<PCMPR
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("pcmprofileinitnumbername",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("pcmprofileinitnumbername", query)   
+            );
 		 }
 	}
 }

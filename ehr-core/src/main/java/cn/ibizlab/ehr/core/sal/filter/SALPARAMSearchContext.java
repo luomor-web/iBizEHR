@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.sal.domain.SALPARAM;
  * 关系型数据实体[SALPARAM] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class SALPARAMSearchContext extends QueryWrapperContext<SALPARAM> {
 
 	private String n_salparamname_like;//[薪酬计算指标名称]
@@ -66,7 +63,9 @@ public class SALPARAMSearchContext extends QueryWrapperContext<SALPARAM> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("salparamname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("salparamname", query)   
+            );
 		 }
 	}
 }

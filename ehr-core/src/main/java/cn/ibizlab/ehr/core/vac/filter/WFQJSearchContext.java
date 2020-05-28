@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.vac.domain.WFQJ;
  * 关系型数据实体[WFQJ] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class WFQJSearchContext extends QueryWrapperContext<WFQJ> {
 
 	private String n_qjstate_eq;//[请销假状态]
@@ -52,7 +49,9 @@ public class WFQJSearchContext extends QueryWrapperContext<WFQJ> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("wfqjname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("wfqjname", query)   
+            );
 		 }
 	}
 }

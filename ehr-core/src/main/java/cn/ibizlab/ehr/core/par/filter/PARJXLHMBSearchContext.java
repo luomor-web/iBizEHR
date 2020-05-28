@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.par.domain.PARJXLHMB;
  * 关系型数据实体[PARJXLHMB] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class PARJXLHMBSearchContext extends QueryWrapperContext<PARJXLHMB> {
 
 	private String n_khlx_eq;//[考核类型]
@@ -80,7 +77,9 @@ public class PARJXLHMBSearchContext extends QueryWrapperContext<PARJXLHMB> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("parjxlhmbname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("parjxlhmbname", query)   
+            );
 		 }
 	}
 }

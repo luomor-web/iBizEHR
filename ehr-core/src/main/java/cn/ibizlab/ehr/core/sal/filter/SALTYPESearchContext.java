@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.sal.domain.SALTYPE;
  * 关系型数据实体[SALTYPE] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class SALTYPESearchContext extends QueryWrapperContext<SALTYPE> {
 
 	private String n_saltypename_like;//[薪酬类型名称]
@@ -45,7 +42,9 @@ public class SALTYPESearchContext extends QueryWrapperContext<SALTYPE> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("saltypename",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("saltypename", query)   
+            );
 		 }
 	}
 }

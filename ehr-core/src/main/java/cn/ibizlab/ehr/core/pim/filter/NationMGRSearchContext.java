@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.pim.domain.NationMGR;
  * 关系型数据实体[NationMGR] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class NationMGRSearchContext extends QueryWrapperContext<NationMGR> {
 
 	private String n_nationmgrname_like;//[民族管理名称]
@@ -45,7 +42,9 @@ public class NationMGRSearchContext extends QueryWrapperContext<NationMGR> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("nationmgrname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("nationmgrname", query)   
+            );
 		 }
 	}
 }

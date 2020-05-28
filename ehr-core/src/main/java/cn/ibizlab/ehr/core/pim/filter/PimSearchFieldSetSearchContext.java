@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.pim.domain.PimSearchFieldSet;
  * 关系型数据实体[PimSearchFieldSet] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class PimSearchFieldSetSearchContext extends QueryWrapperContext<PimSearchFieldSet> {
 
 	private String n_columnname_like;//[列名称]
@@ -80,7 +77,9 @@ public class PimSearchFieldSetSearchContext extends QueryWrapperContext<PimSearc
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("pimsearchfieldsetname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("pimsearchfieldsetname", query)   
+            );
 		 }
 	}
 }

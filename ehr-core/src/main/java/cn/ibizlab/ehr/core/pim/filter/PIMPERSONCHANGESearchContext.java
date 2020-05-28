@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.pim.domain.PIMPERSONCHANGE;
  * 关系型数据实体[PIMPERSONCHANGE] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class PIMPERSONCHANGESearchContext extends QueryWrapperContext<PIMPERSONCHANGE> {
 
 	private String n_zt_eq;//[审批状态]
@@ -80,7 +77,9 @@ public class PIMPERSONCHANGESearchContext extends QueryWrapperContext<PIMPERSONC
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("pimpersonname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("pimpersonname", query)   
+            );
 		 }
 	}
 }

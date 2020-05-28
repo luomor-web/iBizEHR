@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.att.domain.AttendRecordDetail;
  * 关系型数据实体[AttendRecordDetail] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class AttendRecordDetailSearchContext extends QueryWrapperContext<AttendRecordDetail> {
 
 	private String n_attendrecorddetailname_like;//[考勤记录明细名称]
@@ -66,7 +63,9 @@ public class AttendRecordDetailSearchContext extends QueryWrapperContext<AttendR
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("attendrecorddetailname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("attendrecorddetailname", query)   
+            );
 		 }
 	}
 }

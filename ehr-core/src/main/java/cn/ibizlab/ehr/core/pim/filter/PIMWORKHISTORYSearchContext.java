@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.pim.domain.PIMWORKHISTORY;
  * 关系型数据实体[PIMWORKHISTORY] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class PIMWORKHISTORYSearchContext extends QueryWrapperContext<PIMWORKHISTORY> {
 
 	private String n_pimworkhistoryname_like;//[工作履历名称]
@@ -115,7 +112,9 @@ public class PIMWORKHISTORYSearchContext extends QueryWrapperContext<PIMWORKHIST
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("pimworkhistoryname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("pimworkhistoryname", query)   
+            );
 		 }
 	}
 }

@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.par.domain.PARKHFA;
  * 关系型数据实体[PARKHFA] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class PARKHFASearchContext extends QueryWrapperContext<PARKHFA> {
 
 	private String n_parkhfaname_like;//[考核对象]
@@ -52,7 +49,9 @@ public class PARKHFASearchContext extends QueryWrapperContext<PARKHFA> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("parkhfaname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("parkhfaname", query)   
+            );
 		 }
 	}
 }

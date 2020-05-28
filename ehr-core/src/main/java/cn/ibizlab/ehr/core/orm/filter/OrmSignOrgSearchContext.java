@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.orm.domain.OrmSignOrg;
  * 关系型数据实体[OrmSignOrg] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class OrmSignOrgSearchContext extends QueryWrapperContext<OrmSignOrg> {
 
 	private String n_orgcode_like;//[组织编号]
@@ -52,7 +49,9 @@ public class OrmSignOrgSearchContext extends QueryWrapperContext<OrmSignOrg> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("ormsignorgname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("ormsignorgname", query)   
+            );
 		 }
 	}
 }

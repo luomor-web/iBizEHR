@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.vac.domain.VACSYNJCX;
  * 关系型数据实体[VACSYNJCX] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class VACSYNJCXSearchContext extends QueryWrapperContext<VACSYNJCX> {
 
 	private String n_vacsynjcxname_like;//[年休假查询名称]
@@ -87,7 +84,9 @@ public class VACSYNJCXSearchContext extends QueryWrapperContext<VACSYNJCX> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("vacsynjcxname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("vacsynjcxname", query)   
+            );
 		 }
 	}
 }

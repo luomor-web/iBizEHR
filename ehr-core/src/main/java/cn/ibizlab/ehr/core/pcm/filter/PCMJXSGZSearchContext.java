@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.pcm.domain.PCMJXSGZ;
  * 关系型数据实体[PCMJXSGZ] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class PCMJXSGZSearchContext extends QueryWrapperContext<PCMJXSGZ> {
 
 	private String n_xllx_eq;//[学历类型]
@@ -59,7 +56,9 @@ public class PCMJXSGZSearchContext extends QueryWrapperContext<PCMJXSGZ> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("pcmjxsgzname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("pcmjxsgzname", query)   
+            );
 		 }
 	}
 }

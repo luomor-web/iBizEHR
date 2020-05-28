@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.par.domain.PARXMBPJBZ;
  * 关系型数据实体[PARXMBPJBZ] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class PARXMBPJBZSearchContext extends QueryWrapperContext<PARXMBPJBZ> {
 
 	private String n_gwlx_eq;//[岗位类型]
@@ -101,7 +98,9 @@ public class PARXMBPJBZSearchContext extends QueryWrapperContext<PARXMBPJBZ> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("parxmbpjbzname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("parxmbpjbzname", query)   
+            );
 		 }
 	}
 }

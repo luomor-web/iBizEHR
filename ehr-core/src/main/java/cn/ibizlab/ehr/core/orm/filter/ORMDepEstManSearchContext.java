@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.orm.domain.ORMDepEstMan;
  * 关系型数据实体[ORMDepEstMan] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class ORMDepEstManSearchContext extends QueryWrapperContext<ORMDepEstMan> {
 
 	private String n_ormdepestmanname_like;//[部门编制管理名称]
@@ -87,8 +84,10 @@ public class ORMDepEstManSearchContext extends QueryWrapperContext<ORMDepEstMan>
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("ormdepestmanname",query);
-			this.getSelectCond().or().like("ormdutyname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("ormdepestmanname", query)   
+                        .or().like("ormdutyname", query)            
+            );
 		 }
 	}
 }

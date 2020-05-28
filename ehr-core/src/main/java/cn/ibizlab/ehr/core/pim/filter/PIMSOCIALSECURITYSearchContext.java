@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.pim.domain.PIMSOCIALSECURITY;
  * 关系型数据实体[PIMSOCIALSECURITY] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class PIMSOCIALSECURITYSearchContext extends QueryWrapperContext<PIMSOCIALSECURITY> {
 
 	private String n_pimsocialsecurityname_like;//[社保信息名称]
@@ -80,7 +77,9 @@ public class PIMSOCIALSECURITYSearchContext extends QueryWrapperContext<PIMSOCIA
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("pimsocialsecurityname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("pimsocialsecurityname", query)   
+            );
 		 }
 	}
 }

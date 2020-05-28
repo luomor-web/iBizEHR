@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.vac.domain.VACSYSTEMHISTORY;
  * 关系型数据实体[VACSYSTEMHISTORY] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class VACSYSTEMHISTORYSearchContext extends QueryWrapperContext<VACSYSTEMHISTORY> {
 
 	private String n_vacsystemhistoryname_like;//[制度历史名称]
@@ -87,7 +84,9 @@ public class VACSYSTEMHISTORYSearchContext extends QueryWrapperContext<VACSYSTEM
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("vacsystemhistoryname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("vacsystemhistoryname", query)   
+            );
 		 }
 	}
 }

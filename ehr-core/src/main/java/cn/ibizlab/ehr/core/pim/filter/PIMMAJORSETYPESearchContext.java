@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.pim.domain.PIMMAJORSETYPE;
  * 关系型数据实体[PIMMAJORSETYPE] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class PIMMAJORSETYPESearchContext extends QueryWrapperContext<PIMMAJORSETYPE> {
 
 	private String n_pimmajorsetypename_like;//[专业序列类型]
@@ -45,7 +42,9 @@ public class PIMMAJORSETYPESearchContext extends QueryWrapperContext<PIMMAJORSET
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("pimmajorsetypename",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("pimmajorsetypename", query)   
+            );
 		 }
 	}
 }

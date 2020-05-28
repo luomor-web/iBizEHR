@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.orm.domain.ORMPOST;
  * 关系型数据实体[ORMPOST] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class ORMPOSTSearchContext extends QueryWrapperContext<ORMPOST> {
 
 	private String n_istemp_eq;//[是否临时数据]
@@ -115,7 +112,9 @@ public class ORMPOSTSearchContext extends QueryWrapperContext<ORMPOST> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("ormpostname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("ormpostname", query)   
+            );
 		 }
 	}
 }

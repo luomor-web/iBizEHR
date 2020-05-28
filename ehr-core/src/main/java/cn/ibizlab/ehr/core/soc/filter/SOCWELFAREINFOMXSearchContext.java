@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.soc.domain.SOCWELFAREINFOMX;
  * 关系型数据实体[SOCWELFAREINFOMX] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class SOCWELFAREINFOMXSearchContext extends QueryWrapperContext<SOCWELFAREINFOMX> {
 
 	private String n_socwelfareinfomxname_like;//[个人社保福利明细名称]
@@ -73,7 +70,9 @@ public class SOCWELFAREINFOMXSearchContext extends QueryWrapperContext<SOCWELFAR
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("socwelfareinfomxname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("socwelfareinfomxname", query)   
+            );
 		 }
 	}
 }

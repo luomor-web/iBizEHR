@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.pcm.domain.PCMPROFILEAPPROVAL;
  * 关系型数据实体[PCMPROFILEAPPROVAL] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class PCMPROFILEAPPROVALSearchContext extends QueryWrapperContext<PCMPROFILEAPPROVAL> {
 
 	private String n_fastate_eq;//[审批阶段（非A类员工）]
@@ -108,7 +105,9 @@ public class PCMPROFILEAPPROVALSearchContext extends QueryWrapperContext<PCMPROF
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("pcmprofileapprovalname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("pcmprofileapprovalname", query)   
+            );
 		 }
 	}
 }

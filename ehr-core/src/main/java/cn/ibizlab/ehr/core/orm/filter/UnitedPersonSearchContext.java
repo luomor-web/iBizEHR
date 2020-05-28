@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.orm.domain.UnitedPerson;
  * 关系型数据实体[UnitedPerson] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class UnitedPersonSearchContext extends QueryWrapperContext<UnitedPerson> {
 
 	private String n_unitedpersonname_like;//[身份名称]
@@ -66,9 +63,11 @@ public class UnitedPersonSearchContext extends QueryWrapperContext<UnitedPerson>
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("unitedpersonname",query);
-			this.getSelectCond().or().like("employeename",query);
-			this.getSelectCond().or().like("employeenumber",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("unitedpersonname", query)   
+                        .or().like("employeename", query)            
+                        .or().like("employeenumber", query)            
+            );
 		 }
 	}
 }

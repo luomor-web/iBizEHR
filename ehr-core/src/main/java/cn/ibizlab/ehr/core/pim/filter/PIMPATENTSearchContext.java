@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.pim.domain.PIMPATENT;
  * 关系型数据实体[PIMPATENT] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class PIMPATENTSearchContext extends QueryWrapperContext<PIMPATENT> {
 
 	private String n_pimpatentname_like;//[专利名称(*)]
@@ -73,7 +70,9 @@ public class PIMPATENTSearchContext extends QueryWrapperContext<PIMPATENT> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("pimpatentname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("pimpatentname", query)   
+            );
 		 }
 	}
 }

@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.pcm.domain.PCMYDJZMX;
  * 关系型数据实体[PCMYDJZMX] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class PCMYDJZMXSearchContext extends QueryWrapperContext<PCMYDJZMX> {
 
 	private String n_sfdq_eq;//[是否到期]
@@ -157,9 +154,11 @@ public class PCMYDJZMXSearchContext extends QueryWrapperContext<PCMYDJZMX> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("pimpersonname",query);
-			this.getSelectCond().or().like("pcmydjzmxname",query);
-			this.getSelectCond().or().like("ygbh",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("pimpersonname", query)   
+                        .or().like("pcmydjzmxname", query)            
+                        .or().like("ygbh", query)            
+            );
 		 }
 	}
 }

@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.pim.domain.PIMARCHIVESCHANGE;
  * 关系型数据实体[PIMARCHIVESCHANGE] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class PIMARCHIVESCHANGESearchContext extends QueryWrapperContext<PIMARCHIVESCHANGE> {
 
 	private String n_pimarchiveschangename_like;//[归档地变更记录]
@@ -143,7 +140,9 @@ public class PIMARCHIVESCHANGESearchContext extends QueryWrapperContext<PIMARCHI
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("pimarchiveschangename",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("pimarchiveschangename", query)   
+            );
 		 }
 	}
 }

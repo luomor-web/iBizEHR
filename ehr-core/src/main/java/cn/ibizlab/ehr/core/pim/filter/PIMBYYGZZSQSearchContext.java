@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.pim.domain.PIMBYYGZZSQ;
  * 关系型数据实体[PIMBYYGZZSQ] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class PIMBYYGZZSQSearchContext extends QueryWrapperContext<PIMBYYGZZSQ> {
 
 	private String n_zzlx_eq;//[转正类型]
@@ -52,7 +49,9 @@ public class PIMBYYGZZSQSearchContext extends QueryWrapperContext<PIMBYYGZZSQ> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("pimbyygzzsqname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("pimbyygzzsqname", query)   
+            );
 		 }
 	}
 }

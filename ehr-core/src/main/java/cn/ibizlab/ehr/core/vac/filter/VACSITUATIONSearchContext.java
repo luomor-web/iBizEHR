@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.vac.domain.VACSITUATION;
  * 关系型数据实体[VACSITUATION] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class VACSITUATIONSearchContext extends QueryWrapperContext<VACSITUATION> {
 
 	private String n_vacsituationname_like;//[用户休假情况名称]
@@ -66,7 +63,9 @@ public class VACSITUATIONSearchContext extends QueryWrapperContext<VACSITUATION>
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("vacsituationname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("vacsituationname", query)   
+            );
 		 }
 	}
 }

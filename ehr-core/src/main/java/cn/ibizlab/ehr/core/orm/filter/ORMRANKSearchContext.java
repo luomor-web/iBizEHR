@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.orm.domain.ORMRANK;
  * 关系型数据实体[ORMRANK] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class ORMRANKSearchContext extends QueryWrapperContext<ORMRANK> {
 
 	private String n_ormrankname_like;//[职级]
@@ -45,7 +42,9 @@ public class ORMRANKSearchContext extends QueryWrapperContext<ORMRANK> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("ormrankname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("ormrankname", query)   
+            );
 		 }
 	}
 }

@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.sal.domain.SALSCHEMEITEM;
  * 关系型数据实体[SALSCHEMEITEM] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class SALSCHEMEITEMSearchContext extends QueryWrapperContext<SALSCHEMEITEM> {
 
 	private String n_sitemtype_eq;//[要素项类型]
@@ -122,7 +119,9 @@ public class SALSCHEMEITEMSearchContext extends QueryWrapperContext<SALSCHEMEITE
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("salitemname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("salitemname", query)   
+            );
 		 }
 	}
 }

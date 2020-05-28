@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.sal.domain.SALSTDZC;
  * 关系型数据实体[SALSTDZC] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class SALSTDZCSearchContext extends QueryWrapperContext<SALSTDZC> {
 
 	private String n_salstdzcname_like;//[技术津贴标准名称]
@@ -73,7 +70,9 @@ public class SALSTDZCSearchContext extends QueryWrapperContext<SALSTDZC> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("salstdzcname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("salstdzcname", query)   
+            );
 		 }
 	}
 }

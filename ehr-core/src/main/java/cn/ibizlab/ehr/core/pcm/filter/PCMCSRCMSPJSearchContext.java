@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.pcm.domain.PCMCSRCMSPJ;
  * 关系型数据实体[PCMCSRCMSPJ] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class PCMCSRCMSPJSearchContext extends QueryWrapperContext<PCMCSRCMSPJ> {
 
 	private String n_pcmcsrcmspjname_like;//[成熟人才面试评价名称]
@@ -45,7 +42,9 @@ public class PCMCSRCMSPJSearchContext extends QueryWrapperContext<PCMCSRCMSPJ> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("pcmcsrcmspjname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("pcmcsrcmspjname", query)   
+            );
 		 }
 	}
 }

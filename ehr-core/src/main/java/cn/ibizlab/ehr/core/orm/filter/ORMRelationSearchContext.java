@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.orm.domain.ORMRelation;
  * 关系型数据实体[ORMRelation] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class ORMRelationSearchContext extends QueryWrapperContext<ORMRelation> {
 
 	private String n_ormrelationname_like;//[组织名称]
@@ -45,7 +42,9 @@ public class ORMRelationSearchContext extends QueryWrapperContext<ORMRelation> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("ormrelationname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("ormrelationname", query)   
+            );
 		 }
 	}
 }

@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.pim.domain.PIMEXITANDENTRY;
  * 关系型数据实体[PIMEXITANDENTRY] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class PIMEXITANDENTRYSearchContext extends QueryWrapperContext<PIMEXITANDENTRY> {
 
 	private String n_lx_eq;//[类型]
@@ -94,7 +91,9 @@ public class PIMEXITANDENTRYSearchContext extends QueryWrapperContext<PIMEXITAND
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("pimexitandentryname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("pimexitandentryname", query)   
+            );
 		 }
 	}
 }

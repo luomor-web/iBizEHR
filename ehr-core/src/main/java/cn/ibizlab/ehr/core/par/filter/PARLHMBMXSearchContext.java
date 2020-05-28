@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.par.domain.PARLHMBMX;
  * 关系型数据实体[PARLHMBMX] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class PARLHMBMXSearchContext extends QueryWrapperContext<PARLHMBMX> {
 
 	private String n_parlhmbmxname_like;//[量化目标]
@@ -66,7 +63,9 @@ public class PARLHMBMXSearchContext extends QueryWrapperContext<PARLHMBMX> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("parlhmbmxname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("parlhmbmxname", query)   
+            );
 		 }
 	}
 }

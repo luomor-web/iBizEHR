@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.att.domain.ATTENMEMBWES;
  * 关系型数据实体[ATTENMEMBWES] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class ATTENMEMBWESSearchContext extends QueryWrapperContext<ATTENMEMBWES> {
 
 	private String n_attenmembwesname_like;//[考勤员名称]
@@ -45,7 +42,9 @@ public class ATTENMEMBWESSearchContext extends QueryWrapperContext<ATTENMEMBWES>
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("attenmembwesname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("attenmembwesname", query)   
+            );
 		 }
 	}
 }

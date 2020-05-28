@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.trm.domain.TRMTRAINOUTAPPLY;
  * 关系型数据实体[TRMTRAINOUTAPPLY] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class TRMTRAINOUTAPPLYSearchContext extends QueryWrapperContext<TRMTRAINOUTAPPLY> {
 
 	private String n_wbpxjg_eq;//[外部培训机构]
@@ -94,7 +91,9 @@ public class TRMTRAINOUTAPPLYSearchContext extends QueryWrapperContext<TRMTRAINO
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("trmtrainoutapplyname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("trmtrainoutapplyname", query)   
+            );
 		 }
 	}
 }

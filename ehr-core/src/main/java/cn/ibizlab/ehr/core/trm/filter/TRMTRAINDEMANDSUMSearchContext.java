@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.trm.domain.TRMTRAINDEMANDSUM;
  * 关系型数据实体[TRMTRAINDEMANDSUM] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class TRMTRAINDEMANDSUMSearchContext extends QueryWrapperContext<TRMTRAINDEMANDSUM> {
 
 	private String n_trmtraindemandsumname_like;//[培训需求汇总明细名称]
@@ -108,7 +105,9 @@ public class TRMTRAINDEMANDSUMSearchContext extends QueryWrapperContext<TRMTRAIN
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("trmtraindemandsumname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("trmtraindemandsumname", query)   
+            );
 		 }
 	}
 }

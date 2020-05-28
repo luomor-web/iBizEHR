@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.pim.domain.PIMARMYCADRES;
  * 关系型数据实体[PIMARMYCADRES] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class PIMARMYCADRESSearchContext extends QueryWrapperContext<PIMARMYCADRES> {
 
 	private String n_pimarmycadresname_like;//[军转干部名称]
@@ -80,7 +77,9 @@ public class PIMARMYCADRESSearchContext extends QueryWrapperContext<PIMARMYCADRE
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("pimarmycadresname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("pimarmycadresname", query)   
+            );
 		 }
 	}
 }

@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.pcm.domain.PCMNotice;
  * 关系型数据实体[PCMNotice] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class PCMNoticeSearchContext extends QueryWrapperContext<PCMNotice> {
 
 	private String n_noticetype_eq;//[提醒类型]
@@ -150,7 +147,9 @@ public class PCMNoticeSearchContext extends QueryWrapperContext<PCMNotice> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("pcmnoticename",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("pcmnoticename", query)   
+            );
 		 }
 	}
 }

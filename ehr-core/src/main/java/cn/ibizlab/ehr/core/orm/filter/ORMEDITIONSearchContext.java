@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.orm.domain.ORMEDITION;
  * 关系型数据实体[ORMEDITION] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class ORMEDITIONSearchContext extends QueryWrapperContext<ORMEDITION> {
 
 	private String n_ormeditionname_like;//[版本对照表名称]
@@ -45,7 +42,9 @@ public class ORMEDITIONSearchContext extends QueryWrapperContext<ORMEDITION> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("ormeditionname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("ormeditionname", query)   
+            );
 		 }
 	}
 }

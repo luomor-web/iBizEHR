@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.pim.domain.PIMFAMINFO;
  * 关系型数据实体[PIMFAMINFO] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class PIMFAMINFOSearchContext extends QueryWrapperContext<PIMFAMINFO> {
 
 	private String n_jlss_eq;//[记录所属]
@@ -108,7 +105,9 @@ public class PIMFAMINFOSearchContext extends QueryWrapperContext<PIMFAMINFO> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("pimfaminfoname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("pimfaminfoname", query)   
+            );
 		 }
 	}
 }

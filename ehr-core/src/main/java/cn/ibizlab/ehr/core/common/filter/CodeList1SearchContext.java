@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.common.domain.CodeList1;
  * 关系型数据实体[CodeList1] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class CodeList1SearchContext extends QueryWrapperContext<CodeList1> {
 
 	private String n_ormode_eq;//[或模式]
@@ -52,7 +49,9 @@ public class CodeList1SearchContext extends QueryWrapperContext<CodeList1> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("codelistname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("codelistname", query)   
+            );
 		 }
 	}
 }

@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.sal.domain.SALSTDZYZG;
  * 关系型数据实体[SALSTDZYZG] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class SALSTDZYZGSearchContext extends QueryWrapperContext<SALSTDZYZG> {
 
 	private String n_salstdzyzgname_like;//[执业资格津贴标准名称]
@@ -80,7 +77,9 @@ public class SALSTDZYZGSearchContext extends QueryWrapperContext<SALSTDZYZG> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("salstdzyzgname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("salstdzyzgname", query)   
+            );
 		 }
 	}
 }

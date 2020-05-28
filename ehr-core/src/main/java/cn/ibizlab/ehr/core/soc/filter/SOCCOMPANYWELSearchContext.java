@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.soc.domain.SOCCOMPANYWEL;
  * 关系型数据实体[SOCCOMPANYWEL] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class SOCCOMPANYWELSearchContext extends QueryWrapperContext<SOCCOMPANYWEL> {
 
 	private String n_soccompanywelname_like;//[单位社保账户]
@@ -87,7 +84,9 @@ public class SOCCOMPANYWELSearchContext extends QueryWrapperContext<SOCCOMPANYWE
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("soccompanywelname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("soccompanywelname", query)   
+            );
 		 }
 	}
 }

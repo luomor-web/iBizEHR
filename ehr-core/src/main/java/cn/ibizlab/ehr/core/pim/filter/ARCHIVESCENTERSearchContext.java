@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.pim.domain.ARCHIVESCENTER;
  * 关系型数据实体[ARCHIVESCENTER] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class ARCHIVESCENTERSearchContext extends QueryWrapperContext<ARCHIVESCENTER> {
 
 	private String n_position_like;//[档案存放位置]
@@ -80,7 +77,9 @@ public class ARCHIVESCENTERSearchContext extends QueryWrapperContext<ARCHIVESCEN
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("position",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("position", query)   
+            );
 		 }
 	}
 }

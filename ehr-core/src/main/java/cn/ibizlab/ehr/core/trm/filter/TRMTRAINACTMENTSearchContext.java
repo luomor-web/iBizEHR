@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.trm.domain.TRMTRAINACTMENT;
  * 关系型数据实体[TRMTRAINACTMENT] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class TRMTRAINACTMENTSearchContext extends QueryWrapperContext<TRMTRAINACTMENT> {
 
 	private String n_trmtrainactmentname_like;//[培训活动评估名称]
@@ -66,7 +63,9 @@ public class TRMTRAINACTMENTSearchContext extends QueryWrapperContext<TRMTRAINAC
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("trmtrainactmentname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("trmtrainactmentname", query)   
+            );
 		 }
 	}
 }

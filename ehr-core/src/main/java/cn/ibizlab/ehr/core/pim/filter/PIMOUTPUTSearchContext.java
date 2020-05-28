@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.pim.domain.PIMOUTPUT;
  * 关系型数据实体[PIMOUTPUT] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class PIMOUTPUTSearchContext extends QueryWrapperContext<PIMOUTPUT> {
 
 	private String n_yd_eq;//[月度]
@@ -80,7 +77,9 @@ public class PIMOUTPUTSearchContext extends QueryWrapperContext<PIMOUTPUT> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("pimoutputname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("pimoutputname", query)   
+            );
 		 }
 	}
 }

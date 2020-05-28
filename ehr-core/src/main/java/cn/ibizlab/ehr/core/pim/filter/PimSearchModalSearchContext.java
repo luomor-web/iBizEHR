@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.pim.domain.PimSearchModal;
  * 关系型数据实体[PimSearchModal] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class PimSearchModalSearchContext extends QueryWrapperContext<PimSearchModal> {
 
 	private String n_pimsearchmodalname_like;//[组合查询模版名称]
@@ -45,7 +42,9 @@ public class PimSearchModalSearchContext extends QueryWrapperContext<PimSearchMo
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("pimsearchmodalname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("pimsearchmodalname", query)   
+            );
 		 }
 	}
 }

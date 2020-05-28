@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.par.domain.PARZNBMMX;
  * 关系型数据实体[PARZNBMMX] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class PARZNBMMXSearchContext extends QueryWrapperContext<PARZNBMMX> {
 
 	private String n_parznbmmxname_like;//[通知选择职能部门明细名称]
@@ -87,7 +84,9 @@ public class PARZNBMMXSearchContext extends QueryWrapperContext<PARZNBMMX> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("parznbmmxname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("parznbmmxname", query)   
+            );
 		 }
 	}
 }

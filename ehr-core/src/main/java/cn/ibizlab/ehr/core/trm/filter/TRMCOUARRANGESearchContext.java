@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.trm.domain.TRMCOUARRANGE;
  * 关系型数据实体[TRMCOUARRANGE] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class TRMCOUARRANGESearchContext extends QueryWrapperContext<TRMCOUARRANGE> {
 
 	private String n_trmcouarrangename_like;//[课程安排名称]
@@ -255,7 +252,9 @@ public class TRMCOUARRANGESearchContext extends QueryWrapperContext<TRMCOUARRANG
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("trmcouarrangename",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("trmcouarrangename", query)   
+            );
 		 }
 	}
 }

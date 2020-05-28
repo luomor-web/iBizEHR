@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.pcm.domain.PCMEducationExperience;
  * 关系型数据实体[PCMEducationExperience] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class PCMEducationExperienceSearchContext extends QueryWrapperContext<PCMEducationExperience> {
 
 	private String n_flag_eq;//[是否有效]
@@ -122,7 +119,9 @@ public class PCMEducationExperienceSearchContext extends QueryWrapperContext<PCM
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("pcmeducationexperiencename",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("pcmeducationexperiencename", query)   
+            );
 		 }
 	}
 }

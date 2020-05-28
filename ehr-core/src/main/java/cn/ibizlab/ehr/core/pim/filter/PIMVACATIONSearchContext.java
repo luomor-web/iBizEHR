@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.pim.domain.PIMVACATION;
  * 关系型数据实体[PIMVACATION] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class PIMVACATIONSearchContext extends QueryWrapperContext<PIMVACATION> {
 
 	private String n_pimvacationname_like;//[休假信息名称]
@@ -73,7 +70,9 @@ public class PIMVACATIONSearchContext extends QueryWrapperContext<PIMVACATION> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("pimvacationname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("pimvacationname", query)   
+            );
 		 }
 	}
 }

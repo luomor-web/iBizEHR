@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.vac.domain.VACHOLIDAYRULES;
  * 关系型数据实体[VACHOLIDAYRULES] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class VACHOLIDAYRULESSearchContext extends QueryWrapperContext<VACHOLIDAYRULES> {
 
 	private String n_nd_eq;//[年度]
@@ -94,7 +91,9 @@ public class VACHOLIDAYRULESSearchContext extends QueryWrapperContext<VACHOLIDAY
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("vacholidayrulesname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("vacholidayrulesname", query)   
+            );
 		 }
 	}
 }

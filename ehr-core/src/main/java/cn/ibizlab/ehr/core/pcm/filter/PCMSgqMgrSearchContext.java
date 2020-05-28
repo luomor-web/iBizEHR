@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.pcm.domain.PCMSgqMgr;
  * 关系型数据实体[PCMSgqMgr] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class PCMSgqMgrSearchContext extends QueryWrapperContext<PCMSgqMgr> {
 
 	private String n_sgzt_eq;//[试岗状态]
@@ -80,7 +77,9 @@ public class PCMSgqMgrSearchContext extends QueryWrapperContext<PCMSgqMgr> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("pcmsgqmgrname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("pcmsgqmgrname", query)   
+            );
 		 }
 	}
 }

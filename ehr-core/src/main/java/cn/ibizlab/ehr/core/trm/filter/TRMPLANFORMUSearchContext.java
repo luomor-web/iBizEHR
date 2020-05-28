@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.trm.domain.TRMPLANFORMU;
  * 关系型数据实体[TRMPLANFORMU] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class TRMPLANFORMUSearchContext extends QueryWrapperContext<TRMPLANFORMU> {
 
 	private String n_jd_eq;//[季度]
@@ -129,7 +126,9 @@ public class TRMPLANFORMUSearchContext extends QueryWrapperContext<TRMPLANFORMU>
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("trmplanformuname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("trmplanformuname", query)   
+            );
 		 }
 	}
 }

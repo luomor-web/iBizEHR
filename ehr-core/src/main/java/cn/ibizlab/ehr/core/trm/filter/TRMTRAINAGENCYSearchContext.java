@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.trm.domain.TRMTRAINAGENCY;
  * 关系型数据实体[TRMTRAINAGENCY] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class TRMTRAINAGENCYSearchContext extends QueryWrapperContext<TRMTRAINAGENCY> {
 
 	private String n_jgdj_eq;//[机构等级]
@@ -171,7 +168,9 @@ public class TRMTRAINAGENCYSearchContext extends QueryWrapperContext<TRMTRAINAGE
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("trmtrainagencyname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("trmtrainagencyname", query)   
+            );
 		 }
 	}
 }

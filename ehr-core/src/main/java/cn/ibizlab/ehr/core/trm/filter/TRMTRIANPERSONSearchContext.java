@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.trm.domain.TRMTRIANPERSON;
  * 关系型数据实体[TRMTRIANPERSON] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class TRMTRIANPERSONSearchContext extends QueryWrapperContext<TRMTRIANPERSON> {
 
 	private String n_trmtrianpersonname_like;//[参培人员]
@@ -87,7 +84,9 @@ public class TRMTRIANPERSONSearchContext extends QueryWrapperContext<TRMTRIANPER
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("trmtrianpersonname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("trmtrianpersonname", query)   
+            );
 		 }
 	}
 }

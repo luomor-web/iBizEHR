@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.orm.domain.ORMORG;
  * 关系型数据实体[ORMORG] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class ORMORGSearchContext extends QueryWrapperContext<ORMORG> {
 
 	private String n_btqy_eq;//[区域补贴]
@@ -136,7 +133,9 @@ public class ORMORGSearchContext extends QueryWrapperContext<ORMORG> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("orgname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("orgname", query)   
+            );
 		 }
 	}
 }

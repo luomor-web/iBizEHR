@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.par.domain.PARDJBZ;
  * 关系型数据实体[PARDJBZ] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class PARDJBZSearchContext extends QueryWrapperContext<PARDJBZ> {
 
 	private String n_khpgdj_eq;//[考核评估等级]
@@ -52,7 +49,9 @@ public class PARDJBZSearchContext extends QueryWrapperContext<PARDJBZ> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("pardjbzname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("pardjbzname", query)   
+            );
 		 }
 	}
 }

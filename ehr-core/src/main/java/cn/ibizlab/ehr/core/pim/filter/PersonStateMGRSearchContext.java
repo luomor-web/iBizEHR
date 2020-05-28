@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.pim.domain.PersonStateMGR;
  * 关系型数据实体[PersonStateMGR] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class PersonStateMGRSearchContext extends QueryWrapperContext<PersonStateMGR> {
 
 	private String n_personstatemgrname_like;//[员工状态管理名称]
@@ -45,7 +42,9 @@ public class PersonStateMGRSearchContext extends QueryWrapperContext<PersonState
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("personstatemgrname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("personstatemgrname", query)   
+            );
 		 }
 	}
 }

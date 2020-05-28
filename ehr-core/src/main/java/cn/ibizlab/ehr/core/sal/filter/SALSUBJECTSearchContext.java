@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.sal.domain.SALSUBJECT;
  * 关系型数据实体[SALSUBJECT] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class SALSUBJECTSearchContext extends QueryWrapperContext<SALSUBJECT> {
 
 	private String n_salsubjectname_like;//[财务科目名称]
@@ -45,7 +42,9 @@ public class SALSUBJECTSearchContext extends QueryWrapperContext<SALSUBJECT> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("salsubjectname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("salsubjectname", query)   
+            );
 		 }
 	}
 }

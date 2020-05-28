@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.att.domain.ATTENDANCERECORDTEMP;
  * 关系型数据实体[ATTENDANCERECORDTEMP] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class ATTENDANCERECORDTEMPSearchContext extends QueryWrapperContext<ATTENDANCERECORDTEMP> {
 
 	private String n_kqlx_eq;//[考勤类型]
@@ -136,7 +133,9 @@ public class ATTENDANCERECORDTEMPSearchContext extends QueryWrapperContext<ATTEN
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("attendancerecordtempname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("attendancerecordtempname", query)   
+            );
 		 }
 	}
 }

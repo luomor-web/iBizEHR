@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.pcm.domain.PCMRCXL;
  * 关系型数据实体[PCMRCXL] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class PCMRCXLSearchContext extends QueryWrapperContext<PCMRCXL> {
 
 	private String n_rcxlmc_like;//[人才序列名称]
@@ -80,7 +77,9 @@ public class PCMRCXLSearchContext extends QueryWrapperContext<PCMRCXL> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("rcxlmc",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("rcxlmc", query)   
+            );
 		 }
 	}
 }

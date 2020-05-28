@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.trm.domain.TRMSTAFFNODES;
  * 关系型数据实体[TRMSTAFFNODES] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class TRMSTAFFNODESSearchContext extends QueryWrapperContext<TRMSTAFFNODES> {
 
 	private String n_bz_eq;//[备注]
@@ -143,7 +140,9 @@ public class TRMSTAFFNODESSearchContext extends QueryWrapperContext<TRMSTAFFNODE
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("trmstaffnodesname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("trmstaffnodesname", query)   
+            );
 		 }
 	}
 }

@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.vac.domain.VACUSENXJMX;
  * 关系型数据实体[VACUSENXJMX] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class VACUSENXJMXSearchContext extends QueryWrapperContext<VACUSENXJMX> {
 
 	private String n_nd_eq;//[年度]
@@ -66,7 +63,9 @@ public class VACUSENXJMXSearchContext extends QueryWrapperContext<VACUSENXJMX> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("vacusenxjmxname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("vacusenxjmxname", query)   
+            );
 		 }
 	}
 }

@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.orm.domain.ORMPostLib;
  * 关系型数据实体[ORMPostLib] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class ORMPostLibSearchContext extends QueryWrapperContext<ORMPostLib> {
 
 	private String n_postnature_eq;//[岗位性质]
@@ -73,8 +70,10 @@ public class ORMPostLibSearchContext extends QueryWrapperContext<ORMPostLib> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("gwtype",query);
-			this.getSelectCond().or().like("ormpostlibname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("gwtype", query)   
+                        .or().like("ormpostlibname", query)            
+            );
 		 }
 	}
 }

@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.sal.domain.SALSTDXMGZ;
  * 关系型数据实体[SALSTDXMGZ] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class SALSTDXMGZSearchContext extends QueryWrapperContext<SALSTDXMGZ> {
 
 	private String n_dj_eq;//[工资档级]
@@ -101,7 +98,9 @@ public class SALSTDXMGZSearchContext extends QueryWrapperContext<SALSTDXMGZ> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("salstdxmgzname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("salstdxmgzname", query)   
+            );
 		 }
 	}
 }

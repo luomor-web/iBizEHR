@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.orm.domain.ORMXMGL;
  * 关系型数据实体[ORMXMGL] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class ORMXMGLSearchContext extends QueryWrapperContext<ORMXMGL> {
 
 	private String n_isdirectlymanage_eq;//[是否局直管]
@@ -101,7 +98,9 @@ public class ORMXMGLSearchContext extends QueryWrapperContext<ORMXMGL> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("project_name",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("project_name", query)   
+            );
 		 }
 	}
 }

@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.trm.domain.TRMSTAY;
  * 关系型数据实体[TRMSTAY] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class TRMSTAYSearchContext extends QueryWrapperContext<TRMSTAY> {
 
 	private String n_trmstayname_like;//[名称]
@@ -73,7 +70,9 @@ public class TRMSTAYSearchContext extends QueryWrapperContext<TRMSTAY> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("trmstayname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("trmstayname", query)   
+            );
 		 }
 	}
 }

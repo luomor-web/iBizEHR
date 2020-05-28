@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.pcm.domain.PCMSYQGZ;
  * 关系型数据实体[PCMSYQGZ] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class PCMSYQGZSearchContext extends QueryWrapperContext<PCMSYQGZ> {
 
 	private String n_duration_eq;//[试用期限]
@@ -80,7 +77,9 @@ public class PCMSYQGZSearchContext extends QueryWrapperContext<PCMSYQGZ> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("pcmsyqgzname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("pcmsyqgzname", query)   
+            );
 		 }
 	}
 }

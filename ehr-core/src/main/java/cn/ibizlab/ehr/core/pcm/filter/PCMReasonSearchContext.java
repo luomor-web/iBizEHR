@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.pcm.domain.PCMReason;
  * 关系型数据实体[PCMReason] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class PCMReasonSearchContext extends QueryWrapperContext<PCMReason> {
 
 	private String n_lx_eq;//[类型]
@@ -52,7 +49,9 @@ public class PCMReasonSearchContext extends QueryWrapperContext<PCMReason> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("pcmreasonname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("pcmreasonname", query)   
+            );
 		 }
 	}
 }

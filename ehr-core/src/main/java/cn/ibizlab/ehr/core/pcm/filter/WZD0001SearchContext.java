@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.pcm.domain.WZD0001;
  * 关系型数据实体[WZD0001] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class WZD0001SearchContext extends QueryWrapperContext<WZD0001> {
 
 	private String n_shyy_eq;//[审核原因]
@@ -73,7 +70,9 @@ public class WZD0001SearchContext extends QueryWrapperContext<WZD0001> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("wzd0001name",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("wzd0001name", query)   
+            );
 		 }
 	}
 }

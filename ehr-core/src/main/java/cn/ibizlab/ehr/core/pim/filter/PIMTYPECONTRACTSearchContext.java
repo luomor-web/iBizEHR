@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.pim.domain.PIMTYPECONTRACT;
  * 关系型数据实体[PIMTYPECONTRACT] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class PIMTYPECONTRACTSearchContext extends QueryWrapperContext<PIMTYPECONTRACT> {
 
 	private String n_pimtypecontractname_like;//[合同类型名称]
@@ -45,7 +42,9 @@ public class PIMTYPECONTRACTSearchContext extends QueryWrapperContext<PIMTYPECON
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("pimtypecontractname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("pimtypecontractname", query)   
+            );
 		 }
 	}
 }

@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.pim.domain.PIMCONTRACT;
  * 关系型数据实体[PIMCONTRACT] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class PIMCONTRACTSearchContext extends QueryWrapperContext<PIMCONTRACT> {
 
 	private String n_sslwpqgs_eq;//[劳务派遣公司]
@@ -226,7 +223,9 @@ public class PIMCONTRACTSearchContext extends QueryWrapperContext<PIMCONTRACT> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("pimpersonname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("pimpersonname", query)   
+            );
 		 }
 	}
 }

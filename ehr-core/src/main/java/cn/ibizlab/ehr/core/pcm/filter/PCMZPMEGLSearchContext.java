@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.pcm.domain.PCMZPMEGL;
  * 关系型数据实体[PCMZPMEGL] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class PCMZPMEGLSearchContext extends QueryWrapperContext<PCMZPMEGL> {
 
 	private String n_nd_eq;//[年度]
@@ -73,7 +70,9 @@ public class PCMZPMEGLSearchContext extends QueryWrapperContext<PCMZPMEGL> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("pcmzpmeglname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("pcmzpmeglname", query)   
+            );
 		 }
 	}
 }

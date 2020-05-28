@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.pim.domain.PIMREWARDPUNISHMENT;
  * 关系型数据实体[PIMREWARDPUNISHMENT] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class PIMREWARDPUNISHMENTSearchContext extends QueryWrapperContext<PIMREWARDPUNISHMENT> {
 
 	private String n_jlczz_eq;//[记录操作者]
@@ -115,7 +112,9 @@ public class PIMREWARDPUNISHMENTSearchContext extends QueryWrapperContext<PIMREW
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("pimrewardpunishmentname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("pimrewardpunishmentname", query)   
+            );
 		 }
 	}
 }

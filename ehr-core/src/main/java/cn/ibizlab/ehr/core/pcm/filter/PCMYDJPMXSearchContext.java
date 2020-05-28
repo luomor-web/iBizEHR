@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.pcm.domain.PCMYDJPMX;
  * 关系型数据实体[PCMYDJPMX] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class PCMYDJPMXSearchContext extends QueryWrapperContext<PCMYDJPMX> {
 
 	private String n_ldzytype_eq;//[劳动争议类型]
@@ -87,9 +84,11 @@ public class PCMYDJPMXSearchContext extends QueryWrapperContext<PCMYDJPMX> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("ygbh",query);
-			this.getSelectCond().or().like("pimpersonname",query);
-			this.getSelectCond().or().like("pcmydjpmxname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("ygbh", query)   
+                        .or().like("pimpersonname", query)            
+                        .or().like("pcmydjpmxname", query)            
+            );
 		 }
 	}
 }

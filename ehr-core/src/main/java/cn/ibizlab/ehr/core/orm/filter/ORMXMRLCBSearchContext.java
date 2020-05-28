@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.orm.domain.ORMXMRLCB;
  * 关系型数据实体[ORMXMRLCB] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class ORMXMRLCBSearchContext extends QueryWrapperContext<ORMXMRLCB> {
 
 	private String n_ormxmrlcbname_like;//[项目人力成本名称]
@@ -45,7 +42,9 @@ public class ORMXMRLCBSearchContext extends QueryWrapperContext<ORMXMRLCB> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("ormxmrlcbname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("ormxmrlcbname", query)   
+            );
 		 }
 	}
 }

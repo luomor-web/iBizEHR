@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.pim.domain.PIMRESEARCHFINDINGS;
  * 关系型数据实体[PIMRESEARCHFINDINGS] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class PIMRESEARCHFINDINGSSearchContext extends QueryWrapperContext<PIMRESEARCHFINDINGS> {
 
 	private String n_pimresearchfindingsname_like;//[科研成果名称]
@@ -66,7 +63,9 @@ public class PIMRESEARCHFINDINGSSearchContext extends QueryWrapperContext<PIMRES
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("pimresearchfindingsname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("pimresearchfindingsname", query)   
+            );
 		 }
 	}
 }

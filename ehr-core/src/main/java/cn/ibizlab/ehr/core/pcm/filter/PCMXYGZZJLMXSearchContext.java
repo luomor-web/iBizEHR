@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.pcm.domain.PCMXYGZZJLMX;
  * 关系型数据实体[PCMXYGZZJLMX] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class PCMXYGZZJLMXSearchContext extends QueryWrapperContext<PCMXYGZZJLMX> {
 
 	private String n_pcmxygzzjlmxname_like;//[试用期员工转正结果引用明细名称]
@@ -129,9 +126,11 @@ public class PCMXYGZZJLMXSearchContext extends QueryWrapperContext<PCMXYGZZJLMX>
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("pcmxygzzjlmxname",query);
-			this.getSelectCond().or().like("pimpersonname",query);
-			this.getSelectCond().or().like("ygbh",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("pcmxygzzjlmxname", query)   
+                        .or().like("pimpersonname", query)            
+                        .or().like("ygbh", query)            
+            );
 		 }
 	}
 }

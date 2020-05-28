@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.pcm.domain.PCMGXXKTEMP;
  * 关系型数据实体[PCMGXXKTEMP] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class PCMGXXKTEMPSearchContext extends QueryWrapperContext<PCMGXXKTEMP> {
 
 	private String n_pcmgxxktempname_like;//[高校学科中间表名称]
@@ -87,7 +84,9 @@ public class PCMGXXKTEMPSearchContext extends QueryWrapperContext<PCMGXXKTEMP> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("pcmgxxktempname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("pcmgxxktempname", query)   
+            );
 		 }
 	}
 }

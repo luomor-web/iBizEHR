@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.sal.domain.SALSTDGW;
  * 关系型数据实体[SALSTDGW] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class SALSTDGWSearchContext extends QueryWrapperContext<SALSTDGW> {
 
 	private String n_salstdgwname_like;//[高温津贴标准名称]
@@ -66,7 +63,9 @@ public class SALSTDGWSearchContext extends QueryWrapperContext<SALSTDGW> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("salstdgwname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("salstdgwname", query)   
+            );
 		 }
 	}
 }

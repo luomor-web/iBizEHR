@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.pim.domain.ARCHIVALCATALOGUE;
  * 关系型数据实体[ARCHIVALCATALOGUE] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class ARCHIVALCATALOGUESearchContext extends QueryWrapperContext<ARCHIVALCATALOGUE> {
 
 	private String n_archivalcataloguename_like;//[档案目录名称]
@@ -66,7 +63,9 @@ public class ARCHIVALCATALOGUESearchContext extends QueryWrapperContext<ARCHIVAL
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("archivalcataloguename",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("archivalcataloguename", query)   
+            );
 		 }
 	}
 }

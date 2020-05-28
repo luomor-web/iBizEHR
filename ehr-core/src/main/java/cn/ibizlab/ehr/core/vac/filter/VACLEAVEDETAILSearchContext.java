@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.vac.domain.VACLEAVEDETAIL;
  * 关系型数据实体[VACLEAVEDETAIL] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class VACLEAVEDETAILSearchContext extends QueryWrapperContext<VACLEAVEDETAIL> {
 
 	private String n_hyzk_eq;//[婚姻状况]
@@ -115,7 +112,9 @@ public class VACLEAVEDETAILSearchContext extends QueryWrapperContext<VACLEAVEDET
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("vacleavedetailname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("vacleavedetailname", query)   
+            );
 		 }
 	}
 }

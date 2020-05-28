@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.att.domain.ATTENDANCESETTINGS;
  * 关系型数据实体[ATTENDANCESETTINGS] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class ATTENDANCESETTINGSSearchContext extends QueryWrapperContext<ATTENDANCESETTINGS> {
 
 	private String n_attendancesettingsname_like;//[考勤人员名称]
@@ -101,9 +98,11 @@ public class ATTENDANCESETTINGSSearchContext extends QueryWrapperContext<ATTENDA
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("attendancesettingsname",query);
-			this.getSelectCond().or().like("ygbh",query);
-			this.getSelectCond().or().like("pimpersonname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("attendancesettingsname", query)   
+                        .or().like("ygbh", query)            
+                        .or().like("pimpersonname", query)            
+            );
 		 }
 	}
 }

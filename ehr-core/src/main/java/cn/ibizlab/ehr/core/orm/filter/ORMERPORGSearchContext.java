@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.orm.domain.ORMERPORG;
  * 关系型数据实体[ORMERPORG] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class ORMERPORGSearchContext extends QueryWrapperContext<ORMERPORG> {
 
 	private String n_yyflag_eq;//[引用标志]
@@ -59,7 +56,9 @@ public class ORMERPORGSearchContext extends QueryWrapperContext<ORMERPORG> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("ormerporgname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("ormerporgname", query)   
+            );
 		 }
 	}
 }

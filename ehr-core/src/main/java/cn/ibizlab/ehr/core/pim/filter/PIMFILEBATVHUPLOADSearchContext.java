@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.pim.domain.PIMFILEBATVHUPLOAD;
  * 关系型数据实体[PIMFILEBATVHUPLOAD] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class PIMFILEBATVHUPLOADSearchContext extends QueryWrapperContext<PIMFILEBATVHUPLOAD> {
 
 	private String n_pimfilebatvhuploadname_like;//[附件批量上传名称]
@@ -45,7 +42,9 @@ public class PIMFILEBATVHUPLOADSearchContext extends QueryWrapperContext<PIMFILE
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("pimfilebatvhuploadname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("pimfilebatvhuploadname", query)   
+            );
 		 }
 	}
 }

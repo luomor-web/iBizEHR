@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.pcm.domain.PCMZSGL;
  * 关系型数据实体[PCMZSGL] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class PCMZSGLSearchContext extends QueryWrapperContext<PCMZSGL> {
 
 	private String n_zjname_eq;//[职级]
@@ -52,7 +49,9 @@ public class PCMZSGLSearchContext extends QueryWrapperContext<PCMZSGL> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("pcmzsglname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("pcmzsglname", query)   
+            );
 		 }
 	}
 }

@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.pcm.domain.PCMCERTOFREG;
  * 关系型数据实体[PCMCERTOFREG] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class PCMCERTOFREGSearchContext extends QueryWrapperContext<PCMCERTOFREG> {
 
 	private String n_lx_eq;//[证书类型]
@@ -94,7 +91,9 @@ public class PCMCERTOFREGSearchContext extends QueryWrapperContext<PCMCERTOFREG>
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("pcmcertofregname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("pcmcertofregname", query)   
+            );
 		 }
 	}
 }

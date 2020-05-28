@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.att.domain.ATTENSUMMARY;
  * 关系型数据实体[ATTENSUMMARY] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class ATTENSUMMARYSearchContext extends QueryWrapperContext<ATTENSUMMARY> {
 
     @JsonFormat(pattern="yyyy-MM-dd", timezone="GMT+8")
@@ -125,9 +122,11 @@ public class ATTENSUMMARYSearchContext extends QueryWrapperContext<ATTENSUMMARY>
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("attensummaryname",query);
-			this.getSelectCond().or().like("ormorgname",query);
-			this.getSelectCond().or().like("pimpersonname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("attensummaryname", query)   
+                        .or().like("ormorgname", query)            
+                        .or().like("pimpersonname", query)            
+            );
 		 }
 	}
 }

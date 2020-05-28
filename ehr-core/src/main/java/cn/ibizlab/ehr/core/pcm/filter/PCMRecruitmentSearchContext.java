@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.pcm.domain.PCMRecruitment;
  * 关系型数据实体[PCMRecruitment] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class PCMRecruitmentSearchContext extends QueryWrapperContext<PCMRecruitment> {
 
 	private String n_pcmrecruitmentname_like;//[内部招聘信息名称]
@@ -136,7 +133,9 @@ public class PCMRecruitmentSearchContext extends QueryWrapperContext<PCMRecruitm
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("pcmrecruitmentname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("pcmrecruitmentname", query)   
+            );
 		 }
 	}
 }

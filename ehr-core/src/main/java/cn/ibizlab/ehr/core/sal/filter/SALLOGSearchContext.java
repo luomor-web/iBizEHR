@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.sal.domain.SALLOG;
  * 关系型数据实体[SALLOG] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class SALLOGSearchContext extends QueryWrapperContext<SALLOG> {
 
 	private String n_sallogname_like;//[操作类型]
@@ -87,7 +84,9 @@ public class SALLOGSearchContext extends QueryWrapperContext<SALLOG> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("sallogname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("sallogname", query)   
+            );
 		 }
 	}
 }

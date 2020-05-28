@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.att.domain.ATTENDANCEDATE;
  * 关系型数据实体[ATTENDANCEDATE] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class ATTENDANCEDATESearchContext extends QueryWrapperContext<ATTENDANCEDATE> {
 
 	private String n_attendancedatename_like;//[考勤日期名称]
@@ -45,7 +42,9 @@ public class ATTENDANCEDATESearchContext extends QueryWrapperContext<ATTENDANCED
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("attendancedatename",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("attendancedatename", query)   
+            );
 		 }
 	}
 }

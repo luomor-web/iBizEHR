@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.pcm.domain.PCMXKML;
  * 关系型数据实体[PCMXKML] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class PCMXKMLSearchContext extends QueryWrapperContext<PCMXKML> {
 
 	private String n_nd_eq;//[年度]
@@ -59,7 +56,9 @@ public class PCMXKMLSearchContext extends QueryWrapperContext<PCMXKML> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("pcmxkmlname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("pcmxkmlname", query)   
+            );
 		 }
 	}
 }

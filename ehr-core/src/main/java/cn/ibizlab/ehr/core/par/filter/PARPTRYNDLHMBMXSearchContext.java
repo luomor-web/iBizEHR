@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.par.domain.PARPTRYNDLHMBMX;
  * 关系型数据实体[PARPTRYNDLHMBMX] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class PARPTRYNDLHMBMXSearchContext extends QueryWrapperContext<PARPTRYNDLHMBMX> {
 
 	private String n_spzt_eq;//[审批状态]
@@ -80,7 +77,9 @@ public class PARPTRYNDLHMBMXSearchContext extends QueryWrapperContext<PARPTRYNDL
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("parptryndlhmbmxname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("parptryndlhmbmxname", query)   
+            );
 		 }
 	}
 }

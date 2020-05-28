@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.sal.domain.SALITEM;
  * 关系型数据实体[SALITEM] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class SALITEMSearchContext extends QueryWrapperContext<SALITEM> {
 
 	private String n_salitemname_like;//[要素项]
@@ -66,7 +63,9 @@ public class SALITEMSearchContext extends QueryWrapperContext<SALITEM> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("salitemname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("salitemname", query)   
+            );
 		 }
 	}
 }

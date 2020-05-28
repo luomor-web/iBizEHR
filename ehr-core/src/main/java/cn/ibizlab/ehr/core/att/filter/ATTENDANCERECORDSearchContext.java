@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.att.domain.ATTENDANCERECORD;
  * 关系型数据实体[ATTENDANCERECORD] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class ATTENDANCERECORDSearchContext extends QueryWrapperContext<ATTENDANCERECORD> {
 
 	private String n_dkfs_eq;//[考勤方式]
@@ -164,7 +161,9 @@ public class ATTENDANCERECORDSearchContext extends QueryWrapperContext<ATTENDANC
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("attendancerecordname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("attendancerecordname", query)   
+            );
 		 }
 	}
 }

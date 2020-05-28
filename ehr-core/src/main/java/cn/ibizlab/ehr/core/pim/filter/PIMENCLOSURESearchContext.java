@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.pim.domain.PIMENCLOSURE;
  * 关系型数据实体[PIMENCLOSURE] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class PIMENCLOSURESearchContext extends QueryWrapperContext<PIMENCLOSURE> {
 
 	private String n_pimenclosurename_like;//[附件信息名称]
@@ -73,7 +70,9 @@ public class PIMENCLOSURESearchContext extends QueryWrapperContext<PIMENCLOSURE>
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("pimenclosurename",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("pimenclosurename", query)   
+            );
 		 }
 	}
 }

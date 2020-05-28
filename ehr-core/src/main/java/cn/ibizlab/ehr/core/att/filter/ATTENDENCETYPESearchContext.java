@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.att.domain.ATTENDENCETYPE;
  * 关系型数据实体[ATTENDENCETYPE] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class ATTENDENCETYPESearchContext extends QueryWrapperContext<ATTENDENCETYPE> {
 
 	private String n_typecode_like;//[考勤类型代码]
@@ -52,7 +49,9 @@ public class ATTENDENCETYPESearchContext extends QueryWrapperContext<ATTENDENCET
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("attendencetypename",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("attendencetypename", query)   
+            );
 		 }
 	}
 }

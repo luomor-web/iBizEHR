@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.pim.domain.PCMDETAIL;
  * 关系型数据实体[PCMDETAIL] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class PCMDETAILSearchContext extends QueryWrapperContext<PCMDETAIL> {
 
 	private String n_lxdh_like;//[联系方式]
@@ -552,8 +549,10 @@ public class PCMDETAILSearchContext extends QueryWrapperContext<PCMDETAIL> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("pimpersonname",query);
-			this.getSelectCond().or().like("ygbh",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("pimpersonname", query)   
+                        .or().like("ygbh", query)            
+            );
 		 }
 	}
 }

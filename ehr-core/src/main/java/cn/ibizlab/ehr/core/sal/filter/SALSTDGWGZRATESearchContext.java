@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.sal.domain.SALSTDGWGZRATE;
  * 关系型数据实体[SALSTDGWGZRATE] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class SALSTDGWGZRATESearchContext extends QueryWrapperContext<SALSTDGWGZRATE> {
 
 	private String n_khjl_eq;//[绩效考核结论]
@@ -73,7 +70,9 @@ public class SALSTDGWGZRATESearchContext extends QueryWrapperContext<SALSTDGWGZR
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("salstdgwgzratename",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("salstdgwgzratename", query)   
+            );
 		 }
 	}
 }

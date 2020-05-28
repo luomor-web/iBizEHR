@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.pim.domain.QUESTIONS;
  * 关系型数据实体[QUESTIONS] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class QUESTIONSSearchContext extends QueryWrapperContext<QUESTIONS> {
 
 	private String n_createman_like;//[建立人]
@@ -148,7 +145,9 @@ public class QUESTIONSSearchContext extends QueryWrapperContext<QUESTIONS> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("questionsname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("questionsname", query)   
+            );
 		 }
 	}
 }

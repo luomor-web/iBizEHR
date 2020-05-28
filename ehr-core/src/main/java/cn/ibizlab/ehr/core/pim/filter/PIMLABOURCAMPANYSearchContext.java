@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.pim.domain.PIMLABOURCAMPANY;
  * 关系型数据实体[PIMLABOURCAMPANY] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class PIMLABOURCAMPANYSearchContext extends QueryWrapperContext<PIMLABOURCAMPANY> {
 
 	private String n_pimlabourcampanyname_like;//[公司名称]
@@ -94,7 +91,9 @@ public class PIMLABOURCAMPANYSearchContext extends QueryWrapperContext<PIMLABOUR
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("pimlabourcampanyname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("pimlabourcampanyname", query)   
+            );
 		 }
 	}
 }

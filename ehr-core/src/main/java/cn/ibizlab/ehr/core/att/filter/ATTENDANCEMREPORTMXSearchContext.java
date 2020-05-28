@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.att.domain.ATTENDANCEMREPORTMX;
  * 关系型数据实体[ATTENDANCEMREPORTMX] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class ATTENDANCEMREPORTMXSearchContext extends QueryWrapperContext<ATTENDANCEMREPORTMX> {
 
 	private String n_day14_eq;//[14]
@@ -304,8 +301,10 @@ public class ATTENDANCEMREPORTMXSearchContext extends QueryWrapperContext<ATTEND
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("attendancemreportmxname",query);
-			this.getSelectCond().or().like("pimpersonname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("attendancemreportmxname", query)   
+                        .or().like("pimpersonname", query)            
+            );
 		 }
 	}
 }

@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.pim.domain.PIMGWTYPE;
  * 关系型数据实体[PIMGWTYPE] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class PIMGWTYPESearchContext extends QueryWrapperContext<PIMGWTYPE> {
 
 	private String n_pimgwtypename_like;//[岗位类型对照表名称]
@@ -52,8 +49,10 @@ public class PIMGWTYPESearchContext extends QueryWrapperContext<PIMGWTYPE> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("pimgwtypename",query);
-			this.getSelectCond().or().like("gwlx",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("pimgwtypename", query)   
+                        .or().like("gwlx", query)            
+            );
 		 }
 	}
 }

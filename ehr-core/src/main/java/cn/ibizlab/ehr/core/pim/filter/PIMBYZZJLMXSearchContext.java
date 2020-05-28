@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.pim.domain.PIMBYZZJLMX;
  * 关系型数据实体[PIMBYZZJLMX] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class PIMBYZZJLMXSearchContext extends QueryWrapperContext<PIMBYZZJLMX> {
 
 	private String n_nzzyglx_eq;//[拟申请员工编号类型]
@@ -178,9 +175,11 @@ public class PIMBYZZJLMXSearchContext extends QueryWrapperContext<PIMBYZZJLMX> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("pimbyzzjlmxname",query);
-			this.getSelectCond().or().like("ygbh",query);
-			this.getSelectCond().or().like("pimpersonname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("pimbyzzjlmxname", query)   
+                        .or().like("ygbh", query)            
+                        .or().like("pimpersonname", query)            
+            );
 		 }
 	}
 }

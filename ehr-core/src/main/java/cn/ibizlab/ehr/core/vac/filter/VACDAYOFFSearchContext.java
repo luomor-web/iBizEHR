@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.vac.domain.VACDAYOFF;
  * 关系型数据实体[VACDAYOFF] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class VACDAYOFFSearchContext extends QueryWrapperContext<VACDAYOFF> {
 
 	private String n_vacdayoffname_like;//[调休上班名称]
@@ -45,7 +42,9 @@ public class VACDAYOFFSearchContext extends QueryWrapperContext<VACDAYOFF> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("vacdayoffname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("vacdayoffname", query)   
+            );
 		 }
 	}
 }

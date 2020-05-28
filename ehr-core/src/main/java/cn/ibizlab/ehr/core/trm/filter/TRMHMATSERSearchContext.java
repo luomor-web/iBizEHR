@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.trm.domain.TRMHMATSER;
  * 关系型数据实体[TRMHMATSER] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class TRMHMATSERSearchContext extends QueryWrapperContext<TRMHMATSER> {
 
 	private String n_trmhmatsername_like;//[班主任名称]
@@ -108,7 +105,9 @@ public class TRMHMATSERSearchContext extends QueryWrapperContext<TRMHMATSER> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("trmhmatsername",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("trmhmatsername", query)   
+            );
 		 }
 	}
 }

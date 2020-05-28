@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.pim.domain.PIMEXAMINATIONRESULTS;
  * 关系型数据实体[PIMEXAMINATIONRESULTS] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class PIMEXAMINATIONRESULTSSearchContext extends QueryWrapperContext<PIMEXAMINATIONRESULTS> {
 
 	private String n_pj_eq;//[评价]
@@ -52,7 +49,9 @@ public class PIMEXAMINATIONRESULTSSearchContext extends QueryWrapperContext<PIME
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("pimexaminationresultsname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("pimexaminationresultsname", query)   
+            );
 		 }
 	}
 }

@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.trm.domain.TRMDUTYCADRES;
  * 关系型数据实体[TRMDUTYCADRES] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class TRMDUTYCADRESSearchContext extends QueryWrapperContext<TRMDUTYCADRES> {
 
 	private String n_cstype_eq;//[产生方式]
@@ -220,7 +217,9 @@ public class TRMDUTYCADRESSearchContext extends QueryWrapperContext<TRMDUTYCADRE
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("trmdutycadresname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("trmdutycadresname", query)   
+            );
 		 }
 	}
 }

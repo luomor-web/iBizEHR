@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.pim.domain.PIMVOCATIONALCATALOG;
  * 关系型数据实体[PIMVOCATIONALCATALOG] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class PIMVOCATIONALCATALOGSearchContext extends QueryWrapperContext<PIMVOCATIONALCATALOG> {
 
 	private String n_dh_eq;//[资格证书代码]
@@ -52,7 +49,9 @@ public class PIMVOCATIONALCATALOGSearchContext extends QueryWrapperContext<PIMVO
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("pimvocationalcatalogname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("pimvocationalcatalogname", query)   
+            );
 		 }
 	}
 }

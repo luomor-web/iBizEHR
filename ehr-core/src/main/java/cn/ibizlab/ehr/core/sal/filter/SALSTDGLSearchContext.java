@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.sal.domain.SALSTDGL;
  * 关系型数据实体[SALSTDGL] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class SALSTDGLSearchContext extends QueryWrapperContext<SALSTDGL> {
 
 	private String n_salstdglname_like;//[工龄工资标准名称]
@@ -66,7 +63,9 @@ public class SALSTDGLSearchContext extends QueryWrapperContext<SALSTDGL> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("salstdglname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("salstdglname", query)   
+            );
 		 }
 	}
 }

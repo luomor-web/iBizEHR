@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.orm.domain.ORMDUTY;
  * 关系型数据实体[ORMDUTY] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class ORMDUTYSearchContext extends QueryWrapperContext<ORMDUTY> {
 
 	private String n_fglx_like;//[职务编码]
@@ -80,7 +77,9 @@ public class ORMDUTYSearchContext extends QueryWrapperContext<ORMDUTY> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("ormdutyname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("ormdutyname", query)   
+            );
 		 }
 	}
 }

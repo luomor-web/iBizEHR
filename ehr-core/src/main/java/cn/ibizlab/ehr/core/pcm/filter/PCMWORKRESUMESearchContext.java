@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.pcm.domain.PCMWORKRESUME;
  * 关系型数据实体[PCMWORKRESUME] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class PCMWORKRESUMESearchContext extends QueryWrapperContext<PCMWORKRESUME> {
 
 	private String n_pcmworkresumename_like;//[工作履历名称]
@@ -66,7 +63,9 @@ public class PCMWORKRESUMESearchContext extends QueryWrapperContext<PCMWORKRESUM
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("pcmworkresumename",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("pcmworkresumename", query)   
+            );
 		 }
 	}
 }

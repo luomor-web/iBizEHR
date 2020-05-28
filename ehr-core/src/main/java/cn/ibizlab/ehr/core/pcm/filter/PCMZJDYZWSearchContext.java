@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.pcm.domain.PCMZJDYZW;
  * 关系型数据实体[PCMZJDYZW] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class PCMZJDYZWSearchContext extends QueryWrapperContext<PCMZJDYZW> {
 
 	private String n_pcmzjdyzwname_like;//[职级和职务对应关系名称]
@@ -87,7 +84,9 @@ public class PCMZJDYZWSearchContext extends QueryWrapperContext<PCMZJDYZW> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("pcmzjdyzwname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("pcmzjdyzwname", query)   
+            );
 		 }
 	}
 }

@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.orm.domain.ORMQYGL;
  * 关系型数据实体[ORMQYGL] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class ORMQYGLSearchContext extends QueryWrapperContext<ORMQYGL> {
 
 	private String n_ormqyglname_like;//[区域名称]
@@ -66,7 +63,9 @@ public class ORMQYGLSearchContext extends QueryWrapperContext<ORMQYGL> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("ormqyglname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("ormqyglname", query)   
+            );
 		 }
 	}
 }

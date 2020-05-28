@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.trm.domain.TRMZZOBM;
  * 关系型数据实体[TRMZZOBM] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class TRMZZOBMSearchContext extends QueryWrapperContext<TRMZZOBM> {
 
 	private String n_lx_eq;//[类型]
@@ -52,7 +49,9 @@ public class TRMZZOBMSearchContext extends QueryWrapperContext<TRMZZOBM> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("trmzzobmname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("trmzzobmname", query)   
+            );
 		 }
 	}
 }

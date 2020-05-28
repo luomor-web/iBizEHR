@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.pim.domain.PIMARCHIVES;
  * 关系型数据实体[PIMARCHIVES] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class PIMARCHIVESSearchContext extends QueryWrapperContext<PIMARCHIVES> {
 
 	private String n_zt_eq;//[档案借阅状态]
@@ -199,7 +196,9 @@ public class PIMARCHIVESSearchContext extends QueryWrapperContext<PIMARCHIVES> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("pimpersonname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("pimpersonname", query)   
+            );
 		 }
 	}
 }

@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.par.domain.PARLDNDLHMB;
  * 关系型数据实体[PARLDNDLHMB] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class PARLDNDLHMBSearchContext extends QueryWrapperContext<PARLDNDLHMB> {
 
 	private String n_parldndlhmbname_like;//[年度量化目标（助理总经理级领导 ）名称]
@@ -80,7 +77,9 @@ public class PARLDNDLHMBSearchContext extends QueryWrapperContext<PARLDNDLHMB> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("parldndlhmbname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("parldndlhmbname", query)   
+            );
 		 }
 	}
 }

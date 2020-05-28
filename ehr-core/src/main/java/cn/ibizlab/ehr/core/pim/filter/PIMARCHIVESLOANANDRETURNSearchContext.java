@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.pim.domain.PIMARCHIVESLOANANDRETURN;
  * 关系型数据实体[PIMARCHIVESLOANANDRETURN] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class PIMARCHIVESLOANANDRETURNSearchContext extends QueryWrapperContext<PIMARCHIVESLOANANDRETURN> {
 
 	private String n_zt_eq;//[状态]
@@ -136,7 +133,9 @@ public class PIMARCHIVESLOANANDRETURNSearchContext extends QueryWrapperContext<P
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("pimarchivesloanandreturnname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("pimarchivesloanandreturnname", query)   
+            );
 		 }
 	}
 }

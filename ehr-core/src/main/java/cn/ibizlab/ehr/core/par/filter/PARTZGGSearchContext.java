@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.par.domain.PARTZGG;
  * 关系型数据实体[PARTZGG] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class PARTZGGSearchContext extends QueryWrapperContext<PARTZGG> {
 
 	private String n_zqlx_eq;//[周期类型]
@@ -73,7 +70,9 @@ public class PARTZGGSearchContext extends QueryWrapperContext<PARTZGG> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("partzggname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("partzggname", query)   
+            );
 		 }
 	}
 }

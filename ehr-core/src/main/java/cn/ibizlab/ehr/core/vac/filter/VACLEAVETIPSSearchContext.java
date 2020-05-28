@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.vac.domain.VACLEAVETIPS;
  * 关系型数据实体[VACLEAVETIPS] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class VACLEAVETIPSSearchContext extends QueryWrapperContext<VACLEAVETIPS> {
 
 	private String n_qjzl_eq;//[请假种类]
@@ -73,7 +70,9 @@ public class VACLEAVETIPSSearchContext extends QueryWrapperContext<VACLEAVETIPS>
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("vacleavetipsname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("vacleavetipsname", query)   
+            );
 		 }
 	}
 }

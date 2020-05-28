@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.pcm.domain.PCMYDMX;
  * 关系型数据实体[PCMYDMX] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class PCMYDMXSearchContext extends QueryWrapperContext<PCMYDMX> {
 
 	private String n_pcmydmxname_like;//[异动明细名称]
@@ -143,7 +140,9 @@ public class PCMYDMXSearchContext extends QueryWrapperContext<PCMYDMX> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("pcmydmxname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("pcmydmxname", query)   
+            );
 		 }
 	}
 }

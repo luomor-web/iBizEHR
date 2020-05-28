@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.trm.domain.TRMLGBDETAIL;
  * 关系型数据实体[TRMLGBDETAIL] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class TRMLGBDETAILSearchContext extends QueryWrapperContext<TRMLGBDETAIL> {
 
 	private String n_trmlgbdetailname_like;//[老干部明细名称]
@@ -87,7 +84,9 @@ public class TRMLGBDETAILSearchContext extends QueryWrapperContext<TRMLGBDETAIL>
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("trmlgbdetailname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("trmlgbdetailname", query)   
+            );
 		 }
 	}
 }

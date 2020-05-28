@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.pim.domain.DateRule;
  * 关系型数据实体[DateRule] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class DateRuleSearchContext extends QueryWrapperContext<DateRule> {
 
 	private String n_daterulename_like;//[生效日期规则名称]
@@ -66,7 +63,9 @@ public class DateRuleSearchContext extends QueryWrapperContext<DateRule> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("daterulename",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("daterulename", query)   
+            );
 		 }
 	}
 }

@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.orm.domain.ORMORGSECTOR;
  * 关系型数据实体[ORMORGSECTOR] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class ORMORGSECTORSearchContext extends QueryWrapperContext<ORMORGSECTOR> {
 
 	private String n_qy_eq;//[补贴标准]
@@ -262,7 +259,9 @@ public class ORMORGSECTORSearchContext extends QueryWrapperContext<ORMORGSECTOR>
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("orgsectorname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("orgsectorname", query)   
+            );
 		 }
 	}
 }

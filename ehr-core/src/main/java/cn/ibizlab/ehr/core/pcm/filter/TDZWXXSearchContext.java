@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.pcm.domain.TDZWXX;
  * 关系型数据实体[TDZWXX] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class TDZWXXSearchContext extends QueryWrapperContext<TDZWXX> {
 
 	private String n_flag_eq;//[是否有效]
@@ -73,7 +70,9 @@ public class TDZWXXSearchContext extends QueryWrapperContext<TDZWXX> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("tdzwxxname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("tdzwxxname", query)   
+            );
 		 }
 	}
 }

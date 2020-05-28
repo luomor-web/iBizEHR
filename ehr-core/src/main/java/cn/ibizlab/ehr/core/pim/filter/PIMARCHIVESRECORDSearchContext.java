@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.pim.domain.PIMARCHIVESRECORD;
  * 关系型数据实体[PIMARCHIVESRECORD] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class PIMARCHIVESRECORDSearchContext extends QueryWrapperContext<PIMARCHIVESRECORD> {
 
 	private String n_pimarchivesrecordname_like;//[档案目录缺失记录名称]
@@ -87,7 +84,9 @@ public class PIMARCHIVESRECORDSearchContext extends QueryWrapperContext<PIMARCHI
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("pimarchivesrecordname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("pimarchivesrecordname", query)   
+            );
 		 }
 	}
 }

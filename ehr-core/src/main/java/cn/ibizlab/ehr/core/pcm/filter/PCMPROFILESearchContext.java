@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.pcm.domain.PCMPROFILE;
  * 关系型数据实体[PCMPROFILE] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class PCMPROFILESearchContext extends QueryWrapperContext<PCMPROFILE> {
 
 	private String n_gwlb_eq;//[岗位类别]
@@ -402,8 +399,10 @@ public class PCMPROFILESearchContext extends QueryWrapperContext<PCMPROFILE> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("pcmprofilename",query);
-			this.getSelectCond().or().like("ygbh",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("pcmprofilename", query)   
+                        .or().like("ygbh", query)            
+            );
 		 }
 	}
 }

@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.pcm.domain.PCMMonth;
  * 关系型数据实体[PCMMonth] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class PCMMonthSearchContext extends QueryWrapperContext<PCMMonth> {
 
 	private String n_pcmmonthname_like;//[月份名称]
@@ -45,7 +42,9 @@ public class PCMMonthSearchContext extends QueryWrapperContext<PCMMonth> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("pcmmonthname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("pcmmonthname", query)   
+            );
 		 }
 	}
 }

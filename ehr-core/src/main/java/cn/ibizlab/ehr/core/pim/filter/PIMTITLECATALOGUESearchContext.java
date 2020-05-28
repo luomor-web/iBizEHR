@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.pim.domain.PIMTITLECATALOGUE;
  * 关系型数据实体[PIMTITLECATALOGUE] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class PIMTITLECATALOGUESearchContext extends QueryWrapperContext<PIMTITLECATALOGUE> {
 
 	private String n_dh_eq;//[职称代码]
@@ -101,7 +98,9 @@ public class PIMTITLECATALOGUESearchContext extends QueryWrapperContext<PIMTITLE
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("pimtitlecataloguename",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("pimtitlecataloguename", query)   
+            );
 		 }
 	}
 }

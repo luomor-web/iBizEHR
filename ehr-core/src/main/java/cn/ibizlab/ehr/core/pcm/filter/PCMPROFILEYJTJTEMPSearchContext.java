@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.pcm.domain.PCMPROFILEYJTJTEMP;
  * 关系型数据实体[PCMPROFILEYJTJTEMP] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class PCMPROFILEYJTJTEMPSearchContext extends QueryWrapperContext<PCMPROFILEYJTJTEMP> {
 
 	private String n_pcmprofileyjtjtempname_like;//[应聘者引进条件中间表名称]
@@ -45,7 +42,9 @@ public class PCMPROFILEYJTJTEMPSearchContext extends QueryWrapperContext<PCMPROF
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("pcmprofileyjtjtempname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("pcmprofileyjtjtempname", query)   
+            );
 		 }
 	}
 }

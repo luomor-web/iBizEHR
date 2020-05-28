@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.pim.domain.PIMCORRECTIONAPPLY;
  * 关系型数据实体[PIMCORRECTIONAPPLY] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class PIMCORRECTIONAPPLYSearchContext extends QueryWrapperContext<PIMCORRECTIONAPPLY> {
 
 	private String n_pimcorrectionapplyname_like;//[B/Y类员工转正申请明细名称]
@@ -87,7 +84,9 @@ public class PIMCORRECTIONAPPLYSearchContext extends QueryWrapperContext<PIMCORR
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("pimcorrectionapplyname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("pimcorrectionapplyname", query)   
+            );
 		 }
 	}
 }

@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.sal.domain.SALPLAN;
  * 关系型数据实体[SALPLAN] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class SALPLANSearchContext extends QueryWrapperContext<SALPLAN> {
 
 	private Integer n_nyear_eq;//[年]
@@ -108,7 +105,9 @@ public class SALPLANSearchContext extends QueryWrapperContext<SALPLAN> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("salplanname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("salplanname", query)   
+            );
 		 }
 	}
 }

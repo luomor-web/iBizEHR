@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.pim.domain.PIMSTAFFTYPE;
  * 关系型数据实体[PIMSTAFFTYPE] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class PIMSTAFFTYPESearchContext extends QueryWrapperContext<PIMSTAFFTYPE> {
 
 	private String n_pimstafftypeid_eq;//[员工类型管理标识]
@@ -59,7 +56,9 @@ public class PIMSTAFFTYPESearchContext extends QueryWrapperContext<PIMSTAFFTYPE>
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("pimstafftypename",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("pimstafftypename", query)   
+            );
 		 }
 	}
 }

@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.pim.domain.PIMPAPER;
  * 关系型数据实体[PIMPAPER] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class PIMPAPERSearchContext extends QueryWrapperContext<PIMPAPER> {
 
 	private String n_pimpapername_like;//[论文名称(*)]
@@ -66,7 +63,9 @@ public class PIMPAPERSearchContext extends QueryWrapperContext<PIMPAPER> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("pimpapername",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("pimpapername", query)   
+            );
 		 }
 	}
 }

@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.pim.domain.PIMPROVINCE;
  * 关系型数据实体[PIMPROVINCE] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class PIMPROVINCESearchContext extends QueryWrapperContext<PIMPROVINCE> {
 
 	private String n_pimprovincename_like;//[省名称]
@@ -45,7 +42,9 @@ public class PIMPROVINCESearchContext extends QueryWrapperContext<PIMPROVINCE> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("pimprovincename",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("pimprovincename", query)   
+            );
 		 }
 	}
 }

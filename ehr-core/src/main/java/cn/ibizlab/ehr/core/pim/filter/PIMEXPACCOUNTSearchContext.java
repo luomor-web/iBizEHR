@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.pim.domain.PIMEXPACCOUNT;
  * 关系型数据实体[PIMEXPACCOUNT] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class PIMEXPACCOUNTSearchContext extends QueryWrapperContext<PIMEXPACCOUNT> {
 
 	private String n_pimexpaccountname_like;//[费用台账名称]
@@ -73,7 +70,9 @@ public class PIMEXPACCOUNTSearchContext extends QueryWrapperContext<PIMEXPACCOUN
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("pimexpaccountname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("pimexpaccountname", query)   
+            );
 		 }
 	}
 }

@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.pcm.domain.PCMPROFILENUMBEPREFIX;
  * 关系型数据实体[PCMPROFILENUMBEPREFIX] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class PCMPROFILENUMBEPREFIXSearchContext extends QueryWrapperContext<PCMPROFILENUMBEPREFIX> {
 
 	private String n_pcmprofilenumbeprefixname_like;//[应聘者编号前缀名称]
@@ -66,8 +63,10 @@ public class PCMPROFILENUMBEPREFIXSearchContext extends QueryWrapperContext<PCMP
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("pcmprofilenumbeprefixname",query);
-			this.getSelectCond().or().like("zzdzs",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("pcmprofilenumbeprefixname", query)   
+                        .or().like("zzdzs", query)            
+            );
 		 }
 	}
 }

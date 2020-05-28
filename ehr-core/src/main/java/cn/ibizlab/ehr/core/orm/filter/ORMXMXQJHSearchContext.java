@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.orm.domain.ORMXMXQJH;
  * 关系型数据实体[ORMXMXQJH] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class ORMXMXQJHSearchContext extends QueryWrapperContext<ORMXMXQJH> {
 
 	private String n_approvalstatus_eq;//[审批状态]
@@ -115,7 +112,9 @@ public class ORMXMXQJHSearchContext extends QueryWrapperContext<ORMXMXQJH> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("ormxmxqjhname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("ormxmxqjhname", query)   
+            );
 		 }
 	}
 }

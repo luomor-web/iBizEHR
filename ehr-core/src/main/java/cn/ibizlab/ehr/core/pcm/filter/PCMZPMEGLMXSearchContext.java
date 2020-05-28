@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.pcm.domain.PCMZPMEGLMX;
  * 关系型数据实体[PCMZPMEGLMX] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class PCMZPMEGLMXSearchContext extends QueryWrapperContext<PCMZPMEGLMX> {
 
 	private String n_pcmzpmeglmxname_like;//[招聘名额管理明细名称]
@@ -66,7 +63,9 @@ public class PCMZPMEGLMXSearchContext extends QueryWrapperContext<PCMZPMEGLMX> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("pcmzpmeglmxname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("pcmzpmeglmxname", query)   
+            );
 		 }
 	}
 }

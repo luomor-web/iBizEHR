@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.pim.domain.PIMTITLE;
  * 关系型数据实体[PIMTITLE] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class PIMTITLESearchContext extends QueryWrapperContext<PIMTITLE> {
 
 	private Integer n_sfzgzc_eq;//[是否最高职称]
@@ -143,8 +140,10 @@ public class PIMTITLESearchContext extends QueryWrapperContext<PIMTITLE> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("pimpersonname",query);
-			this.getSelectCond().or().like("ygbh",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("pimpersonname", query)   
+                        .or().like("ygbh", query)            
+            );
 		 }
 	}
 }

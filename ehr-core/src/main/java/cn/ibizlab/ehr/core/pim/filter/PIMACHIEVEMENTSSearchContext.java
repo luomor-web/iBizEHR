@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.pim.domain.PIMACHIEVEMENTS;
  * 关系型数据实体[PIMACHIEVEMENTS] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class PIMACHIEVEMENTSSearchContext extends QueryWrapperContext<PIMACHIEVEMENTS> {
 
 	private String n_khjl_eq;//[考核结论]
@@ -108,7 +105,9 @@ public class PIMACHIEVEMENTSSearchContext extends QueryWrapperContext<PIMACHIEVE
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("pimachievementsname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("pimachievementsname", query)   
+            );
 		 }
 	}
 }

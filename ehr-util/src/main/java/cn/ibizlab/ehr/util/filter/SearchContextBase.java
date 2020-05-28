@@ -17,10 +17,7 @@ import java.util.List;
 import java.util.Map;
 
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class SearchContextBase implements ISearchContext{
 
     /**

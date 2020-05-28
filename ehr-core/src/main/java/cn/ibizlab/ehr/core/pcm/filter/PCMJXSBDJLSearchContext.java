@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.pcm.domain.PCMJXSBDJL;
  * 关系型数据实体[PCMJXSBDJL] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class PCMJXSBDJLSearchContext extends QueryWrapperContext<PCMJXSBDJL> {
 
 	private String n_pcmjxsbdjlname_like;//[见习生变动记录名称]
@@ -129,7 +126,9 @@ public class PCMJXSBDJLSearchContext extends QueryWrapperContext<PCMJXSBDJL> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("pcmjxsbdjlname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("pcmjxsbdjlname", query)   
+            );
 		 }
 	}
 }

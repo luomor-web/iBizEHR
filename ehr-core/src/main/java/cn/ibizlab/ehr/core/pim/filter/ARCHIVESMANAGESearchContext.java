@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.pim.domain.ARCHIVESMANAGE;
  * 关系型数据实体[ARCHIVESMANAGE] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class ARCHIVESMANAGESearchContext extends QueryWrapperContext<ARCHIVESMANAGE> {
 
 	private String n_archivesmanagename_like;//[档案管理名称]
@@ -45,7 +42,9 @@ public class ARCHIVESMANAGESearchContext extends QueryWrapperContext<ARCHIVESMAN
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("archivesmanagename",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("archivesmanagename", query)   
+            );
 		 }
 	}
 }

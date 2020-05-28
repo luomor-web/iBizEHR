@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.pcm.domain.PCMPROFILESPYY;
  * 关系型数据实体[PCMPROFILESPYY] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class PCMPROFILESPYYSearchContext extends QueryWrapperContext<PCMPROFILESPYY> {
 
 	private String n_pcmprofilespyyname_like;//[应聘者审批原因名称]
@@ -45,7 +42,9 @@ public class PCMPROFILESPYYSearchContext extends QueryWrapperContext<PCMPROFILES
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("pcmprofilespyyname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("pcmprofilespyyname", query)   
+            );
 		 }
 	}
 }

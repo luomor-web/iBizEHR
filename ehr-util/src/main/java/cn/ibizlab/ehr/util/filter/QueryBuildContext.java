@@ -7,10 +7,7 @@ import lombok.*;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class QueryBuildContext extends SearchContextBase implements ISearchContext{
 
     @JsonIgnore

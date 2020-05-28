@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.vac.domain.VACOVERALLTION;
  * 关系型数据实体[VACOVERALLTION] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class VACOVERALLTIONSearchContext extends QueryWrapperContext<VACOVERALLTION> {
 
 	private String n_xjlx_eq;//[休假类型]
@@ -94,7 +91,9 @@ public class VACOVERALLTIONSearchContext extends QueryWrapperContext<VACOVERALLT
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("vacoveralltionname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("vacoveralltionname", query)   
+            );
 		 }
 	}
 }

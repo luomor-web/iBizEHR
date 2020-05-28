@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.orm.domain.ORMXMSFHZ;
  * 关系型数据实体[ORMXMSFHZ] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class ORMXMSFHZSearchContext extends QueryWrapperContext<ORMXMSFHZ> {
 
 	private String n_month_eq;//[月份]
@@ -150,10 +147,12 @@ public class ORMXMSFHZSearchContext extends QueryWrapperContext<ORMXMSFHZ> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("gw",query);
-			this.getSelectCond().or().like("ormxmsfhzname",query);
-			this.getSelectCond().or().like("zz",query);
-			this.getSelectCond().or().like("nd",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("gw", query)   
+                        .or().like("ormxmsfhzname", query)            
+                        .or().like("zz", query)            
+                        .or().like("nd", query)            
+            );
 		 }
 	}
 }

@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.vac.domain.VACLEAVESYSTEM;
  * 关系型数据实体[VACLEAVESYSTEM] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class VACLEAVESYSTEMSearchContext extends QueryWrapperContext<VACLEAVESYSTEM> {
 
 	private String n_vacleavesystemname_like;//[休假制度名称]
@@ -80,7 +77,9 @@ public class VACLEAVESYSTEMSearchContext extends QueryWrapperContext<VACLEAVESYS
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("vacleavesystemname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("vacleavesystemname", query)   
+            );
 		 }
 	}
 }

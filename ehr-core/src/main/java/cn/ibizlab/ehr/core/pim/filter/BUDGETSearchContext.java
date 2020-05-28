@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.pim.domain.BUDGET;
  * 关系型数据实体[BUDGET] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class BUDGETSearchContext extends QueryWrapperContext<BUDGET> {
 
 	private String n_year_eq;//[年度]
@@ -73,7 +70,9 @@ public class BUDGETSearchContext extends QueryWrapperContext<BUDGET> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("budgetname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("budgetname", query)   
+            );
 		 }
 	}
 }

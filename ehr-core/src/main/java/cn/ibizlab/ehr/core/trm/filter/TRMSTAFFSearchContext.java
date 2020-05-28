@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.trm.domain.TRMSTAFF;
  * 关系型数据实体[TRMSTAFF] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class TRMSTAFFSearchContext extends QueryWrapperContext<TRMSTAFF> {
 
 	private String n_trmstaffname_like;//[员工需求调查表名称]
@@ -129,7 +126,9 @@ public class TRMSTAFFSearchContext extends QueryWrapperContext<TRMSTAFF> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("trmstaffname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("trmstaffname", query)   
+            );
 		 }
 	}
 }

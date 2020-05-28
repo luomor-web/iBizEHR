@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.pim.domain.PIMEDUCATION;
  * 关系型数据实体[PIMEDUCATION] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class PIMEDUCATIONSearchContext extends QueryWrapperContext<PIMEDUCATION> {
 
 	private String n_xkml_eq;//[一级学科]
@@ -108,7 +105,9 @@ public class PIMEDUCATIONSearchContext extends QueryWrapperContext<PIMEDUCATION>
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("pimeducationname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("pimeducationname", query)   
+            );
 		 }
 	}
 }

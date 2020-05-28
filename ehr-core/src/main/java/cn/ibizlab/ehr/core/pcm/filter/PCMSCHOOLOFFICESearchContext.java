@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.pcm.domain.PCMSCHOOLOFFICE;
  * 关系型数据实体[PCMSCHOOLOFFICE] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class PCMSCHOOLOFFICESearchContext extends QueryWrapperContext<PCMSCHOOLOFFICE> {
 
 	private String n_pcmschoolofficename_like;//[在校职务名称]
@@ -73,7 +70,9 @@ public class PCMSCHOOLOFFICESearchContext extends QueryWrapperContext<PCMSCHOOLO
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("pcmschoolofficename",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("pcmschoolofficename", query)   
+            );
 		 }
 	}
 }

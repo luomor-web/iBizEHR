@@ -24,10 +24,7 @@ import cn.ibizlab.ehr.core.pim.domain.ContractSignORG;
  * 关系型数据实体[ContractSignORG] 查询条件对象
  */
 @Slf4j
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class ContractSignORGSearchContext extends QueryWrapperContext<ContractSignORG> {
 
 	private String n_contractsignorgname_like;//[签约主体单位名称]
@@ -87,8 +84,10 @@ public class ContractSignORGSearchContext extends QueryWrapperContext<ContractSi
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("contractsignorgname",query);
-			this.getSelectCond().or().like("ormorgname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("contractsignorgname", query)   
+                        .or().like("ormorgname", query)            
+            );
 		 }
 	}
 }
