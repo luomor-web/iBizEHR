@@ -8899,7 +8899,7 @@
 
 
     <!--输出实体[CODEITEM]数据结构 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="tab-codeitem-6-228">
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-codeitem-7-228">
         <createTable tableName="T_SRFCODEITEM">
                 <column name="ORDERVALUE" remarks="" type="INT">
                 </column>
@@ -13086,10 +13086,10 @@
        <addForeignKeyConstraint baseColumnNames="PARLDNDLHMBID" baseTableName="T_PARLDNDLHMBMX" constraintName="DER1N_PARLDNDLHMBMX_PARLDNDLHM" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="PARLDNDLHMBID" referencedTableName="T_PARLDNDLHMB" validate="true"/>
     </changeSet>
         <!--输出实体[CODEITEM]外键关系 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-codeitem-6-621">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-codeitem-7-621">
        <addForeignKeyConstraint baseColumnNames="PCODEITEMID" baseTableName="T_SRFCODEITEM" constraintName="DER1N_CODEITEM_CODEITEM_PCODEI" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="CODEITEMID" referencedTableName="T_SRFCODEITEM" validate="true"/>
     </changeSet>
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-codeitem-6-622">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-codeitem-7-622">
        <addForeignKeyConstraint baseColumnNames="CODELISTID" baseTableName="T_SRFCODEITEM" constraintName="DER1N_CODEITEM_CODELIST_CODELI" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="CODELISTID" referencedTableName="T_SRFCODELIST" validate="true"/>
     </changeSet>
         <!--输出实体[ORMXMBQ]外键关系 -->
