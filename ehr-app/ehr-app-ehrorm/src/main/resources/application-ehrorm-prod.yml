@@ -27,6 +27,10 @@ zuul:
       path: /ormorginfos/**
       serviceId: ehr-webapi
       stripPrefix: false
+    codelist:
+      path: /codelist1s/**
+      serviceId: ehr-webapi
+      stripPrefix: false
     ormedition:
       path: /ormeditions/**
       serviceId: ehr-webapi
@@ -81,6 +85,10 @@ zuul:
       stripPrefix: false
     ormduty:
       path: /ormduties/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    codeitem:
+      path: /codeitems/**
       serviceId: ehr-webapi
       stripPrefix: false
     ormtitle:
