@@ -1,0 +1,60 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext",
+    "strict": true,
+    "jsx": "preserve",
+    "importHelpers": true,
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "sourceMap": true,
+    "baseUrl": ".",
+    "types": [
+      "webpack-env"
+    ],
+    "paths": {
+      "@/*": [
+        "src/*"
+      ],
+      "@utils": ["src/utils"],
+      "@utils/*": ["src/utils/*"],
+      "@engine": ["src/engine"],
+      "@engine/*": ["src/engine/*"],
+      "@pages": ["src/pages"],
+      "@pages/*": ["src/pages/*"],
+      "@widgets": ["src/widgets"],
+      "@widgets/*": ["src/widgets/*"],
+      "@components": ["src/components"],
+      "@components/*": ["src/components/*"],
+      "@locale": ["src/locale"],
+      "@locale/*": ["src/locale/*"],
+      "@mock": ["src/mock"],
+      "@mock/*": ["src/mock/*"],
+      "@service": ["src/service"],
+      "@service/*": ["src/service/*"],
+      "@codelist": ["src/codelist"],
+      "@codelist/*": ["src/codelist/*"],
+    },
+    "lib": [
+      "esnext",
+      "dom",
+      "dom.iterable",
+      "scripthost",
+      "es6",
+      "es7"
+    ]
+  },
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue",
+    "src/**/*.jsx",
+    "tests/**/*.ts",
+    "tests/**/*.tsx",
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
