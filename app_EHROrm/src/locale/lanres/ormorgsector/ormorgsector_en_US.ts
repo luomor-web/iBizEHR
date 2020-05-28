@@ -4,7 +4,7 @@ export default {
     xmjbqk: '项目基本情况',
     updateman: '更新人',
     ordervalue: '排序号',
-    qy: '地区分类',
+    qy: '补贴标准',
     edition: '版本',
     sbsj: '上班时间',
     xbsj: '下班时间',

@@ -90,6 +90,21 @@ export default class ORMORGSECTORServiceBase extends EntityService {
             return Http.getInstance().post(`/ormorgs/${context.ormorg}/ormorgsectors`,data,isloading);
         }
         let masterData:any = {};
+        let ormdepestmenData:any = [];
+        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_ormdepestmen'),'undefined')){
+            ormdepestmenData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_ormdepestmen') as any);
+            if(ormdepestmenData && ormdepestmenData.length && ormdepestmenData.length > 0){
+                ormdepestmenData.forEach((item:any) => {
+                    if(item.srffrontuf){
+                        if(Object.is(item.srffrontuf,"0")){
+                            item.ormdepestmanid = null;
+                        }
+                        delete item.srffrontuf;
+                    }
+                });
+            }
+        }
+        masterData.ormdepestmen = ormdepestmenData;
         let ormbmkqdzsData:any = [];
         if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_ormbmkqdzs'),'undefined')){
             ormbmkqdzsData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_ormbmkqdzs') as any);
@@ -120,21 +135,6 @@ export default class ORMORGSECTORServiceBase extends EntityService {
             }
         }
         masterData.ormxmbmxes = ormxmbmxesData;
-        let ormdepestmenData:any = [];
-        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_ormdepestmen'),'undefined')){
-            ormdepestmenData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_ormdepestmen') as any);
-            if(ormdepestmenData && ormdepestmenData.length && ormdepestmenData.length > 0){
-                ormdepestmenData.forEach((item:any) => {
-                    if(item.srffrontuf){
-                        if(Object.is(item.srffrontuf,"0")){
-                            item.ormdepestmanid = null;
-                        }
-                        delete item.srffrontuf;
-                    }
-                });
-            }
-        }
-        masterData.ormdepestmen = ormdepestmenData;
         let ormbmgwbzsData:any = [];
         if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_ormbmgwbzs'),'undefined')){
             ormbmgwbzsData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_ormbmgwbzs') as any);
@@ -159,9 +159,9 @@ export default class ORMORGSECTORServiceBase extends EntityService {
         }
         let tempContext:any = JSON.parse(JSON.stringify(context));
         let res:any = await Http.getInstance().post(`/ormorgsectors`,data,isloading);
+        this.tempStorage.setItem(tempContext.srfsessionkey+'_ormdepestmen',JSON.stringify(res.data.ormdepestmen));
         this.tempStorage.setItem(tempContext.srfsessionkey+'_ormbmkqdzs',JSON.stringify(res.data.ormbmkqdzs));
         this.tempStorage.setItem(tempContext.srfsessionkey+'_ormxmbmxes',JSON.stringify(res.data.ormxmbmxes));
-        this.tempStorage.setItem(tempContext.srfsessionkey+'_ormdepestmen',JSON.stringify(res.data.ormdepestmen));
         this.tempStorage.setItem(tempContext.srfsessionkey+'_ormbmgwbzs',JSON.stringify(res.data.ormbmgwbzs));
         return res;
     }
@@ -228,6 +228,21 @@ export default class ORMORGSECTORServiceBase extends EntityService {
             return Http.getInstance().post(`/ormorgs/${context.ormorg}/ormorgsectors/${context.ormorgsector}/save`,data,isloading);
         }
         let masterData:any = {};
+        let ormdepestmenData:any = [];
+        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_ormdepestmen'),'undefined')){
+            ormdepestmenData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_ormdepestmen') as any);
+            if(ormdepestmenData && ormdepestmenData.length && ormdepestmenData.length > 0){
+                ormdepestmenData.forEach((item:any) => {
+                    if(item.srffrontuf){
+                        if(Object.is(item.srffrontuf,"0")){
+                            item.ormdepestmanid = null;
+                        }
+                        delete item.srffrontuf;
+                    }
+                });
+            }
+        }
+        masterData.ormdepestmen = ormdepestmenData;
         let ormbmkqdzsData:any = [];
         if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_ormbmkqdzs'),'undefined')){
             ormbmkqdzsData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_ormbmkqdzs') as any);
@@ -258,21 +273,6 @@ export default class ORMORGSECTORServiceBase extends EntityService {
             }
         }
         masterData.ormxmbmxes = ormxmbmxesData;
-        let ormdepestmenData:any = [];
-        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_ormdepestmen'),'undefined')){
-            ormdepestmenData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_ormdepestmen') as any);
-            if(ormdepestmenData && ormdepestmenData.length && ormdepestmenData.length > 0){
-                ormdepestmenData.forEach((item:any) => {
-                    if(item.srffrontuf){
-                        if(Object.is(item.srffrontuf,"0")){
-                            item.ormdepestmanid = null;
-                        }
-                        delete item.srffrontuf;
-                    }
-                });
-            }
-        }
-        masterData.ormdepestmen = ormdepestmenData;
         let ormbmgwbzsData:any = [];
         if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_ormbmgwbzs'),'undefined')){
             ormbmgwbzsData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_ormbmgwbzs') as any);
@@ -290,9 +290,9 @@ export default class ORMORGSECTORServiceBase extends EntityService {
         masterData.ormbmgwbzs = ormbmgwbzsData;
         Object.assign(data,masterData);
             let res:any = await  Http.getInstance().post(`/ormorgsectors/${context.ormorgsector}/save`,data,isloading);
+            this.tempStorage.setItem(context.srfsessionkey+'_ormdepestmen',JSON.stringify(res.data.ormdepestmen));
             this.tempStorage.setItem(context.srfsessionkey+'_ormbmkqdzs',JSON.stringify(res.data.ormbmkqdzs));
             this.tempStorage.setItem(context.srfsessionkey+'_ormxmbmxes',JSON.stringify(res.data.ormxmbmxes));
-            this.tempStorage.setItem(context.srfsessionkey+'_ormdepestmen',JSON.stringify(res.data.ormdepestmen));
             this.tempStorage.setItem(context.srfsessionkey+'_ormbmgwbzs',JSON.stringify(res.data.ormbmgwbzs));
             return res;
     }
@@ -312,9 +312,9 @@ export default class ORMORGSECTORServiceBase extends EntityService {
         }
         let res:any = await  Http.getInstance().get(`/ormorgsectors/getdraft`,isloading);
         res.data.ormorgsector = data.ormorgsector;
+            this.tempStorage.setItem(context.srfsessionkey+'_ormdepestmen',JSON.stringify(res.data.ormdepestmen));
             this.tempStorage.setItem(context.srfsessionkey+'_ormbmkqdzs',JSON.stringify(res.data.ormbmkqdzs));
             this.tempStorage.setItem(context.srfsessionkey+'_ormxmbmxes',JSON.stringify(res.data.ormxmbmxes));
-            this.tempStorage.setItem(context.srfsessionkey+'_ormdepestmen',JSON.stringify(res.data.ormdepestmen));
             this.tempStorage.setItem(context.srfsessionkey+'_ormbmgwbzs',JSON.stringify(res.data.ormbmgwbzs));
         return res;
     }
@@ -349,6 +349,21 @@ export default class ORMORGSECTORServiceBase extends EntityService {
             return Http.getInstance().put(`/ormorgs/${context.ormorg}/ormorgsectors/${context.ormorgsector}`,data,isloading);
         }
         let masterData:any = {};
+        let ormdepestmenData:any = [];
+        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_ormdepestmen'),'undefined')){
+            ormdepestmenData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_ormdepestmen') as any);
+            if(ormdepestmenData && ormdepestmenData.length && ormdepestmenData.length > 0){
+                ormdepestmenData.forEach((item:any) => {
+                    if(item.srffrontuf){
+                        if(Object.is(item.srffrontuf,"0")){
+                            item.ormdepestmanid = null;
+                        }
+                        delete item.srffrontuf;
+                    }
+                });
+            }
+        }
+        masterData.ormdepestmen = ormdepestmenData;
         let ormbmkqdzsData:any = [];
         if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_ormbmkqdzs'),'undefined')){
             ormbmkqdzsData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_ormbmkqdzs') as any);
@@ -379,21 +394,6 @@ export default class ORMORGSECTORServiceBase extends EntityService {
             }
         }
         masterData.ormxmbmxes = ormxmbmxesData;
-        let ormdepestmenData:any = [];
-        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_ormdepestmen'),'undefined')){
-            ormdepestmenData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_ormdepestmen') as any);
-            if(ormdepestmenData && ormdepestmenData.length && ormdepestmenData.length > 0){
-                ormdepestmenData.forEach((item:any) => {
-                    if(item.srffrontuf){
-                        if(Object.is(item.srffrontuf,"0")){
-                            item.ormdepestmanid = null;
-                        }
-                        delete item.srffrontuf;
-                    }
-                });
-            }
-        }
-        masterData.ormdepestmen = ormdepestmenData;
         let ormbmgwbzsData:any = [];
         if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_ormbmgwbzs'),'undefined')){
             ormbmgwbzsData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_ormbmgwbzs') as any);
@@ -411,9 +411,9 @@ export default class ORMORGSECTORServiceBase extends EntityService {
         masterData.ormbmgwbzs = ormbmgwbzsData;
         Object.assign(data,masterData);
             let res:any = await  Http.getInstance().put(`/ormorgsectors/${context.ormorgsector}`,data,isloading);
+            this.tempStorage.setItem(context.srfsessionkey+'_ormdepestmen',JSON.stringify(res.data.ormdepestmen));
             this.tempStorage.setItem(context.srfsessionkey+'_ormbmkqdzs',JSON.stringify(res.data.ormbmkqdzs));
             this.tempStorage.setItem(context.srfsessionkey+'_ormxmbmxes',JSON.stringify(res.data.ormxmbmxes));
-            this.tempStorage.setItem(context.srfsessionkey+'_ormdepestmen',JSON.stringify(res.data.ormdepestmen));
             this.tempStorage.setItem(context.srfsessionkey+'_ormbmgwbzs',JSON.stringify(res.data.ormbmgwbzs));
             return res;
     }
@@ -432,9 +432,9 @@ export default class ORMORGSECTORServiceBase extends EntityService {
             return Http.getInstance().get(`/ormorgs/${context.ormorg}/ormorgsectors/${context.ormorgsector}`,isloading);
         }
             let res:any = await Http.getInstance().get(`/ormorgsectors/${context.ormorgsector}`,isloading);
+            this.tempStorage.setItem(context.srfsessionkey+'_ormdepestmen',JSON.stringify(res.data.ormdepestmen));
             this.tempStorage.setItem(context.srfsessionkey+'_ormbmkqdzs',JSON.stringify(res.data.ormbmkqdzs));
             this.tempStorage.setItem(context.srfsessionkey+'_ormxmbmxes',JSON.stringify(res.data.ormxmbmxes));
-            this.tempStorage.setItem(context.srfsessionkey+'_ormdepestmen',JSON.stringify(res.data.ormdepestmen));
             this.tempStorage.setItem(context.srfsessionkey+'_ormbmgwbzs',JSON.stringify(res.data.ormbmgwbzs));
             return res;
 
