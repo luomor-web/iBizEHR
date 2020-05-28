@@ -58,6 +58,7 @@ export default class SSQY {
      * @memberof SSQY
      */
     public queryParamNames:any ={
+        sort: 'ordervalue,asc'
     }
 
     /**

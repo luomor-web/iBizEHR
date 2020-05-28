@@ -192,7 +192,7 @@ export default class PCMPROFILEYRDWCS_CSRCYJGridViewBase extends GridViewBase {
      * @memberof PCMPROFILEYRDWCS_CSRCYJGridView
      */
     public toolBarModels: any = {
-        tbitem1_gssp: { name: 'tbitem1_gssp', caption: '同意','isShowCaption':true,'isShowIcon':true, tooltip: '同意', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: 'SRFUR__YRDWCSCZAN', uiaction: { tag: 'GSSP', target: 'MULTIKEY' }, class: '' },
+        tbitem1_gssp: { name: 'tbitem1_gssp', caption: '同意','isShowCaption':true,'isShowIcon':true, tooltip: '同意', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: '', uiaction: { tag: 'GSSP', target: 'MULTIKEY' }, class: '' },
 
         tbitem13: { name: 'tbitem13', caption: '导出','isShowCaption':true,'isShowIcon':true, tooltip: '导出', iconcls: 'fa fa-file-excel-o', icon: '', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: '', uiaction: { tag: 'ExportExcel', target: '' }, MaxRowCount: 5000, class: '' },
 
