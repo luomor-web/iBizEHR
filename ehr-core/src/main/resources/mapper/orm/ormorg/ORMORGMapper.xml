@@ -278,14 +278,12 @@
     <!--数据查询[KZSJZZXZ]-->
     <sql id="KZSJZZXZ" databaseId="mysql">
        <![CDATA[	SELECT t1.`BTQY`, t1.`COMPANYFLAG`, t1.`CORRESPONDINGORG`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ERPORGID`, t1.`GSSS`, t1.`LEGALENTITY`, t1.`LEVELCODE`, t1.`ORGCODE`, t1.`ORGID`, t1.`ORGNAME`, t1.`PORGID`, t11.`ORGNAME` AS `PORGNAME`, t1.`PX`, t1.`SHORTNAME`, t1.`SSOU`, t1.`STARTSTOPSIGN`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XN`, t1.`ZZCJSJ`, t1.`ZZDZBM`, t1.`ZZDZE`, t1.`ZZDZS`, t1.`ZZDZY`, t1.`ZZLX` FROM `T_SRFORG` t1  LEFT JOIN T_SRFORG t11 ON t1.PORGID = t11.ORGID  
-				 WHERE 	( ( t1.orgcode in ( substr(#{srf.datacontext.orgcode')},1,3) )  OR  t1.orgid in (select a.orgid from t_srforg a where a.orgid = #{srf.sessioncontext.SRFORGID')})  OR  t1.orgcode in (case when substr(#{srf.datacontext.orgcode')},1,3)  = '101' then 'BG'  end)  OR  t1.orgcode in (case when #{srf.datacontext.orgcode')}  in  ('181','182','183')  then  '10101'  end)  OR  'ibzadmin' = (select t.loginaccountname from t_srfloginaccount t where t.loginaccountid = #{srf.sessioncontext.SRFPERSONID')}) ) )
 			]]>
     </sql>
 
     <!--数据查询[KZXLXZ]-->
     <sql id="KZXLXZ" databaseId="mysql">
        <![CDATA[	SELECT t1.`BTQY`, t1.`COMPANYFLAG`, t1.`CORRESPONDINGORG`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ERPORGID`, t1.`GSSS`, t1.`LEGALENTITY`, t1.`LEVELCODE`, t1.`ORGCODE`, t1.`ORGID`, t1.`ORGNAME`, t1.`PORGID`, t11.`ORGNAME` AS `PORGNAME`, t1.`PX`, t1.`SHORTNAME`, t1.`SSOU`, t1.`STARTSTOPSIGN`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XN`, t1.`ZZCJSJ`, t1.`ZZDZBM`, t1.`ZZDZE`, t1.`ZZDZS`, t1.`ZZDZY`, t1.`ZZLX` FROM `T_SRFORG` t1  LEFT JOIN T_SRFORG t11 ON t1.PORGID = t11.ORGID  
-				 WHERE 	( ( t1.`ORGID` =  #{srf.sessioncontext.SRFORGID}  OR  instr(t1.levelcode, ( select a.levelcode from t_srforg a where a.orgid = #{srf.sessioncontext.SRFORGID')} ) )=1  OR  'ibzadmin' = (select t.loginaccountname from t_srfloginaccount t where t.loginaccountid = #{srf.sessioncontext.SRFPERSONID')}) ) )
 			]]>
     </sql>
 
