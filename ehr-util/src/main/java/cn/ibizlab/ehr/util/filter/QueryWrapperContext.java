@@ -5,7 +5,7 @@ import com.alibaba.fastjson.annotation.JSONField;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.Data;
+import lombok.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Sort;
 import org.springframework.util.ObjectUtils;
@@ -17,7 +17,10 @@ import java.util.Iterator;
 import java.util.List;
 
 @Slf4j
-@Data
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class QueryWrapperContext<T> extends SearchContextBase implements ISearchContext{
 
     @JsonIgnore

@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.HashMap;
 
-import lombok.Data;
+import lombok.*;
 import lombok.extern.slf4j.Slf4j;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.alibaba.fastjson.annotation.JSONField;
@@ -24,7 +24,10 @@ import cn.ibizlab.ehr.core.pcm.domain.PCMPROFILENUMBEPREFIX;
  * 关系型数据实体[PCMPROFILENUMBEPREFIX] 查询条件对象
  */
 @Slf4j
-@Data
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class PCMPROFILENUMBEPREFIXSearchContext extends QueryWrapperContext<PCMPROFILENUMBEPREFIX> {
 
 	private String n_pcmprofilenumbeprefixname_like;//[应聘者编号前缀名称]

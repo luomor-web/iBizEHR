@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.HashMap;
 
-import lombok.Data;
+import lombok.*;
 import lombok.extern.slf4j.Slf4j;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.alibaba.fastjson.annotation.JSONField;
@@ -24,7 +24,10 @@ import cn.ibizlab.ehr.core.par.domain.PARBMFZJYX;
  * 关系型数据实体[PARBMFZJYX] 查询条件对象
  */
 @Slf4j
-@Data
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class PARBMFZJYXSearchContext extends QueryWrapperContext<PARBMFZJYX> {
 
 	private String n_parbmfzjyxname_like;//[通知选择部门副职及以下名称]

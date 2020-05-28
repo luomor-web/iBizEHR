@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.HashMap;
 
-import lombok.Data;
+import lombok.*;
 import lombok.extern.slf4j.Slf4j;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.alibaba.fastjson.annotation.JSONField;
@@ -24,7 +24,10 @@ import cn.ibizlab.ehr.core.pcm.domain.PCMCSRCMSPJ;
  * 关系型数据实体[PCMCSRCMSPJ] 查询条件对象
  */
 @Slf4j
-@Data
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class PCMCSRCMSPJSearchContext extends QueryWrapperContext<PCMCSRCMSPJ> {
 
 	private String n_pcmcsrcmspjname_like;//[成熟人才面试评价名称]
