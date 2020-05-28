@@ -124,8 +124,8 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
         "srfkey": "ORMCL_ProCapitalAtt",
         "emptytext": "",
         "codelisttype":"dynamic",
-        "appdataentity":"",
-        "appdedataset":"",
+        "appdataentity":"CodeItem",
+        "appdedataset":"FetchCurCL",
         "items": []
     },
     {
@@ -199,8 +199,8 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
         "srfkey": "ORMCL_IsDirectlyManage",
         "emptytext": "",
         "codelisttype":"dynamic",
-        "appdataentity":"",
-        "appdedataset":"",
+        "appdataentity":"CodeItem",
+        "appdedataset":"FetchCurCL",
         "items": []
     },
     {
@@ -236,8 +236,8 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
         "srfkey": "ORMCL_EngineeringScale",
         "emptytext": "",
         "codelisttype":"dynamic",
-        "appdataentity":"",
-        "appdedataset":"",
+        "appdataentity":"CodeItem",
+        "appdedataset":"FetchCurCL",
         "items": []
     },
     {
@@ -360,16 +360,16 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
         "srfkey": "ORMCL_EngineeringPurpose",
         "emptytext": "",
         "codelisttype":"dynamic",
-        "appdataentity":"",
-        "appdedataset":"",
+        "appdataentity":"CodeItem",
+        "appdedataset":"FetchCurCL",
         "items": []
     },
     {
         "srfkey": "ORMCL_EngineeringBusType",
         "emptytext": "",
         "codelisttype":"dynamic",
-        "appdataentity":"",
-        "appdedataset":"",
+        "appdataentity":"CodeItem",
+        "appdedataset":"FetchCurCL",
         "items": []
     },
     {
@@ -403,8 +403,8 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
         "srfkey": "SSQY",
         "emptytext": "",
         "codelisttype":"dynamic",
-        "appdataentity":"",
-        "appdedataset":"",
+        "appdataentity":"CodeItem",
+        "appdedataset":"FetchCurCL",
         "items": []
     },
     {
@@ -523,8 +523,8 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
         "srfkey": "ORMCL_GWTYPE",
         "emptytext": "",
         "codelisttype":"dynamic",
-        "appdataentity":"",
-        "appdedataset":"",
+        "appdataentity":"CodeItem",
+        "appdedataset":"FetchCurCL",
         "items": []
     },
     {

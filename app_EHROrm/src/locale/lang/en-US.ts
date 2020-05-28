@@ -4,6 +4,7 @@ import ormsignorg_en_US from '@locale/lanres/orm-sign-org/orm-sign-org_en_US';
 import ormerporg_en_US from '@locale/lanres/ormerporg/ormerporg_en_US';
 import ormxmbmx_en_US from '@locale/lanres/ormxmbmx/ormxmbmx_en_US';
 import ormorginfo_en_US from '@locale/lanres/ormorginfo/ormorginfo_en_US';
+import codelist1_en_US from '@locale/lanres/code-list1/code-list1_en_US';
 import ormedition_en_US from '@locale/lanres/ormedition/ormedition_en_US';
 import ormorgdz_en_US from '@locale/lanres/ormorgdz/ormorgdz_en_US';
 import contractsignorg_en_US from '@locale/lanres/contract-sign-org/contract-sign-org_en_US';
@@ -18,6 +19,7 @@ import pimperson_en_US from '@locale/lanres/pimperson/pimperson_en_US';
 import ormorg_en_US from '@locale/lanres/ormorg/ormorg_en_US';
 import ormqybzwh_en_US from '@locale/lanres/ormqybzwh/ormqybzwh_en_US';
 import ormduty_en_US from '@locale/lanres/ormduty/ormduty_en_US';
+import codeitem_en_US from '@locale/lanres/code-item/code-item_en_US';
 import ormtitle_en_US from '@locale/lanres/ormtitle/ormtitle_en_US';
 import ormxmgl_en_US from '@locale/lanres/ormxmgl/ormxmgl_en_US';
 import ormxmbq_en_US from '@locale/lanres/ormxmbq/ormxmbq_en_US';
@@ -114,6 +116,7 @@ export default {
         ormerporg: ormerporg_en_US,
         ormxmbmx: ormxmbmx_en_US,
         ormorginfo: ormorginfo_en_US,
+        codelist1: codelist1_en_US,
         ormedition: ormedition_en_US,
         ormorgdz: ormorgdz_en_US,
         contractsignorg: contractsignorg_en_US,
@@ -128,6 +131,7 @@ export default {
         ormorg: ormorg_en_US,
         ormqybzwh: ormqybzwh_en_US,
         ormduty: ormduty_en_US,
+        codeitem: codeitem_en_US,
         ormtitle: ormtitle_en_US,
         ormxmgl: ormxmgl_en_US,
         ormxmbq: ormxmbq_en_US,

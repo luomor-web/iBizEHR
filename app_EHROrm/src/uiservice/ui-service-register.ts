@@ -45,6 +45,7 @@ export class UIServiceRegister {
         this.allUIService.set('ormerporg', () => import('@/uiservice/ormerporg/ormerporg-ui-service'));
         this.allUIService.set('ormxmbmx', () => import('@/uiservice/ormxmbmx/ormxmbmx-ui-service'));
         this.allUIService.set('ormorginfo', () => import('@/uiservice/ormorginfo/ormorginfo-ui-service'));
+        this.allUIService.set('codelist1', () => import('@/uiservice/code-list1/code-list1-ui-service'));
         this.allUIService.set('ormedition', () => import('@/uiservice/ormedition/ormedition-ui-service'));
         this.allUIService.set('ormorgdz', () => import('@/uiservice/ormorgdz/ormorgdz-ui-service'));
         this.allUIService.set('contractsignorg', () => import('@/uiservice/contract-sign-org/contract-sign-org-ui-service'));
@@ -59,6 +60,7 @@ export class UIServiceRegister {
         this.allUIService.set('ormorg', () => import('@/uiservice/ormorg/ormorg-ui-service'));
         this.allUIService.set('ormqybzwh', () => import('@/uiservice/ormqybzwh/ormqybzwh-ui-service'));
         this.allUIService.set('ormduty', () => import('@/uiservice/ormduty/ormduty-ui-service'));
+        this.allUIService.set('codeitem', () => import('@/uiservice/code-item/code-item-ui-service'));
         this.allUIService.set('ormtitle', () => import('@/uiservice/ormtitle/ormtitle-ui-service'));
         this.allUIService.set('ormxmgl', () => import('@/uiservice/ormxmgl/ormxmgl-ui-service'));
         this.allUIService.set('ormxmbq', () => import('@/uiservice/ormxmbq/ormxmbq-ui-service'));

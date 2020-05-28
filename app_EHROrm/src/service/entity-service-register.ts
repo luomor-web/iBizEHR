@@ -45,6 +45,7 @@ export class EntityServiceRegister {
         this.allEntityService.set('ormerporg', () => import('@/service/ormerporg/ormerporg-service'));
         this.allEntityService.set('ormxmbmx', () => import('@/service/ormxmbmx/ormxmbmx-service'));
         this.allEntityService.set('ormorginfo', () => import('@/service/ormorginfo/ormorginfo-service'));
+        this.allEntityService.set('codelist1', () => import('@/service/code-list1/code-list1-service'));
         this.allEntityService.set('ormedition', () => import('@/service/ormedition/ormedition-service'));
         this.allEntityService.set('ormorgdz', () => import('@/service/ormorgdz/ormorgdz-service'));
         this.allEntityService.set('contractsignorg', () => import('@/service/contract-sign-org/contract-sign-org-service'));
@@ -59,6 +60,7 @@ export class EntityServiceRegister {
         this.allEntityService.set('ormorg', () => import('@/service/ormorg/ormorg-service'));
         this.allEntityService.set('ormqybzwh', () => import('@/service/ormqybzwh/ormqybzwh-service'));
         this.allEntityService.set('ormduty', () => import('@/service/ormduty/ormduty-service'));
+        this.allEntityService.set('codeitem', () => import('@/service/code-item/code-item-service'));
         this.allEntityService.set('ormtitle', () => import('@/service/ormtitle/ormtitle-service'));
         this.allEntityService.set('ormxmgl', () => import('@/service/ormxmgl/ormxmgl-service'));
         this.allEntityService.set('ormxmbq', () => import('@/service/ormxmbq/ormxmbq-service'));

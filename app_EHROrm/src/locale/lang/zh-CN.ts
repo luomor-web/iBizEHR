@@ -4,6 +4,7 @@ import ormsignorg_zh_CN from '@locale/lanres/orm-sign-org/orm-sign-org_zh_CN';
 import ormerporg_zh_CN from '@locale/lanres/ormerporg/ormerporg_zh_CN';
 import ormxmbmx_zh_CN from '@locale/lanres/ormxmbmx/ormxmbmx_zh_CN';
 import ormorginfo_zh_CN from '@locale/lanres/ormorginfo/ormorginfo_zh_CN';
+import codelist1_zh_CN from '@locale/lanres/code-list1/code-list1_zh_CN';
 import ormedition_zh_CN from '@locale/lanres/ormedition/ormedition_zh_CN';
 import ormorgdz_zh_CN from '@locale/lanres/ormorgdz/ormorgdz_zh_CN';
 import contractsignorg_zh_CN from '@locale/lanres/contract-sign-org/contract-sign-org_zh_CN';
@@ -18,6 +19,7 @@ import pimperson_zh_CN from '@locale/lanres/pimperson/pimperson_zh_CN';
 import ormorg_zh_CN from '@locale/lanres/ormorg/ormorg_zh_CN';
 import ormqybzwh_zh_CN from '@locale/lanres/ormqybzwh/ormqybzwh_zh_CN';
 import ormduty_zh_CN from '@locale/lanres/ormduty/ormduty_zh_CN';
+import codeitem_zh_CN from '@locale/lanres/code-item/code-item_zh_CN';
 import ormtitle_zh_CN from '@locale/lanres/ormtitle/ormtitle_zh_CN';
 import ormxmgl_zh_CN from '@locale/lanres/ormxmgl/ormxmgl_zh_CN';
 import ormxmbq_zh_CN from '@locale/lanres/ormxmbq/ormxmbq_zh_CN';
@@ -114,6 +116,7 @@ export default {
         ormerporg: ormerporg_zh_CN,
         ormxmbmx: ormxmbmx_zh_CN,
         ormorginfo: ormorginfo_zh_CN,
+        codelist1: codelist1_zh_CN,
         ormedition: ormedition_zh_CN,
         ormorgdz: ormorgdz_zh_CN,
         contractsignorg: contractsignorg_zh_CN,
@@ -128,6 +131,7 @@ export default {
         ormorg: ormorg_zh_CN,
         ormqybzwh: ormqybzwh_zh_CN,
         ormduty: ormduty_zh_CN,
+        codeitem: codeitem_zh_CN,
         ormtitle: ormtitle_zh_CN,
         ormxmgl: ormxmgl_zh_CN,
         ormxmbq: ormxmbq_zh_CN,
