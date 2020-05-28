@@ -99,6 +99,7 @@
     paramItem='ormorg' 
     :parentdata='{"srfparentdefname":"ORMORGID","srfparentdename":"ORMORG","SRFPARENTTYPE":"DER1N","srfparentmode":"DER1N_ORMORGDZ_ORMORG_ORMORGID","SRFDER1NID":"DER1N_ORMORGDZ_ORMORG_ORMORGID"}'
     :parameters="[
+        { pathName: 'ormorgs', parameterName: 'ormorg' },
     ]"
     :context="context"
     :viewparams="viewparams"

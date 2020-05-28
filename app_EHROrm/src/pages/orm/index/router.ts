@@ -104,6 +104,20 @@ const router = new Router({
                     component: () => import('@pages/orm/ormorgorg-tree-exp-view/ormorgorg-tree-exp-view.vue'),
                 },
                 {
+                    path: 'ormorgs/:ormorg?/ormorgdzs/:ormorgdz?/editview/:editview?',
+                    meta: {
+                        caption: 'entities.ormorgdz.views.editview.caption',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'ormorgs', parameterName: 'ormorg' },
+                            { pathName: 'ormorgdzs', parameterName: 'ormorgdz' },
+                            { pathName: 'editview', parameterName: 'editview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/orm/ormorgdzedit-view/ormorgdzedit-view.vue'),
+                },
+                {
                     path: 'ormorgdzs/:ormorgdz?/editview/:editview?',
                     meta: {
                         caption: 'entities.ormorgdz.views.editview.caption',
@@ -208,6 +222,22 @@ const router = new Router({
                         requireAuth: true,
                     },
                     component: () => import('@pages/orm/ormpost-lib-edit-view/ormpost-lib-edit-view.vue'),
+                },
+                {
+                    path: 'ormorgs/:ormorg?/ormorgdzs/:ormorgdz?/gridview/:gridview?',
+                    meta: {
+                        caption: 'entities.ormorgdz.views.gridview.caption',
+                        imgPath: '../../../img/pzgl/1/rencaixulie.png',
+                        iconCls: '',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'ormorgs', parameterName: 'ormorg' },
+                            { pathName: 'ormorgdzs', parameterName: 'ormorgdz' },
+                            { pathName: 'gridview', parameterName: 'gridview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/orm/ormorgdzgrid-view/ormorgdzgrid-view.vue'),
                 },
                 {
                     path: 'ormorgdzs/:ormorgdz?/gridview/:gridview?',
@@ -1587,6 +1617,21 @@ const router = new Router({
         component: () => import('@pages/orm/ormorgsjorg-pickup-grid-view/ormorgsjorg-pickup-grid-view.vue'),
     },
     {
+        path: '/ormorgs/:ormorg?/ormorgdzs/:ormorgdz?/gridview/:gridview?',
+        meta: {
+            caption: 'entities.ormorgdz.views.gridview.caption',
+            imgPath: '../../../img/pzgl/1/rencaixulie.png',
+            iconCls: '',
+            parameters: [
+                { pathName: 'ormorgs', parameterName: 'ormorg' },
+                { pathName: 'ormorgdzs', parameterName: 'ormorgdz' },
+                { pathName: 'gridview', parameterName: 'gridview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/orm/ormorgdzgrid-view/ormorgdzgrid-view.vue'),
+    },
+    {
         path: '/ormorgdzs/:ormorgdz?/gridview/:gridview?',
         meta: {
             caption: 'entities.ormorgdz.views.gridview.caption',
@@ -1646,6 +1691,19 @@ const router = new Router({
             requireAuth: true,
         },
         component: () => import('@pages/orm/contract-sign-orgedit-view/contract-sign-orgedit-view.vue'),
+    },
+    {
+        path: '/ormorgs/:ormorg?/ormorgdzs/:ormorgdz?/editview/:editview?',
+        meta: {
+            caption: 'entities.ormorgdz.views.editview.caption',
+            parameters: [
+                { pathName: 'ormorgs', parameterName: 'ormorg' },
+                { pathName: 'ormorgdzs', parameterName: 'ormorgdz' },
+                { pathName: 'editview', parameterName: 'editview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/orm/ormorgdzedit-view/ormorgdzedit-view.vue'),
     },
     {
         path: '/ormorgdzs/:ormorgdz?/editview/:editview?',

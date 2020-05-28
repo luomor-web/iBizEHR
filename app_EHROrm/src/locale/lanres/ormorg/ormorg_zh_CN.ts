@@ -297,21 +297,17 @@ export default {
 		},
 	},
 	orgtreegridviewtoolbar_toolbar: {
-		deuiaction1: {
+		tbitem3: {
 			caption: '新建',
 			tip: '新建',
 		},
-		deuiaction3: {
-			caption: '删除',
-			tip: '删除',
+		deuiaction1: {
+			caption: '编辑',
+			tip: '编辑',
 		},
-		deuiaction4: {
-			caption: '导入',
-			tip: '导入',
-		},
-		deuiaction5: {
-			caption: '导出',
-			tip: '导出',
+		tbitem19: {
+			caption: '过滤',
+			tip: '过滤',
 		},
 	},
 	editview9toolbar_toolbar: {

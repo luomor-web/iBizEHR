@@ -298,21 +298,17 @@ export default {
 		},
 	},
 	orgtreegridviewtoolbar_toolbar: {
-		deuiaction1: {
+		tbitem3: {
 			caption: "New",
 			tip: "New",
 		},
-		deuiaction3: {
-			caption: "Remove",
-			tip: "Remove {0}",
+		deuiaction1: {
+			caption: "Edit",
+			tip: "Edit {0}",
 		},
-		deuiaction4: {
-			caption: "导入",
-			tip: "导入",
-		},
-		deuiaction5: {
-			caption: "Export",
-			tip: "Export {0} Data To Excel",
+		tbitem19: {
+			caption: "Filter",
+			tip: "Filter",
 		},
 	},
 	editview9toolbar_toolbar: {

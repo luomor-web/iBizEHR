@@ -22,8 +22,8 @@ export default {
       title: '组织地址维护',
 		},
 		gridview: {
-			caption: "组织地址维护",
-      title: '组织地址维护',
+			caption: "地址信息",
+      title: '地址信息',
 		},
 		mpickupview: {
 			caption: "组织地址维护",
@@ -105,7 +105,7 @@ export default {
 			tip: "Help",
 		},
 	},
-	gridviewtoolbar2_toolbar: {
+	gridviewtoolbar_toolbar: {
 		deuiaction1: {
 			caption: "新建",
 			tip: "新建",
@@ -125,32 +125,6 @@ export default {
 		deuiaction5: {
 			caption: "Export",
 			tip: "Export {0} Data To Excel",
-		},
-	},
-	gridviewtoolbar_toolbar: {
-		tbitem3: {
-			caption: "New",
-			tip: "New",
-		},
-		tbitem8: {
-			caption: "Remove",
-			tip: "Remove {0}",
-		},
-		deuiaction1: {
-			caption: "开启行编辑",
-			tip: "开启行编辑",
-		},
-		tbitem16: {
-			caption: "其它",
-			tip: "其它",
-		},
-		tbitem13: {
-			caption: "Export",
-			tip: "Export {0} Data To Excel",
-		},
-		tbitem23: {
-			caption: "数据导入",
-			tip: "数据导入",
 		},
 	},
 	editviewtoolbar_toolbar: {
