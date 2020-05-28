@@ -700,7 +700,7 @@ export default class Main2Base extends Vue implements ControlInterface {
 , 
         startstopsign: new FormItemModel({ caption: '启停标识', detailType: 'FORMITEM', name: 'startstopsign', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
-        belongou: new FormItemModel({ caption: '所属OU', detailType: 'FORMITEM', name: 'belongou', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 0 })
+        belongou: new FormItemModel({ caption: '所属OU', detailType: 'FORMITEM', name: 'belongou', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
         validflag: new FormItemModel({ caption: '启用标志', detailType: 'FORMITEM', name: 'validflag', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
@@ -1092,11 +1092,6 @@ export default class Main2Base extends Vue implements ControlInterface {
 
 
 
-
-        if(Object.is(name, 'orgname')){
-            const details: string[] = ['belongregion', 'ordervalue', 'qy'];
-            this.updateFormItems('SynOrgSec', this.data, details, true);
-        }
     }
 
     /**

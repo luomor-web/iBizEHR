@@ -525,8 +525,8 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
         orgcode: [
             { type: 'string', message: '编号 值必须为字符串类型', trigger: 'change' },
             { type: 'string', message: '编号 值必须为字符串类型', trigger: 'blur' },
-            { required: false, type: 'string', message: '编号 值不能为空', trigger: 'change' },
-            { required: false, type: 'string', message: '编号 值不能为空', trigger: 'blur' },
+            { required: true, type: 'string', message: '编号 值不能为空', trigger: 'change' },
+            { required: true, type: 'string', message: '编号 值不能为空', trigger: 'blur' },
         ],
         shortname: [
             { type: 'string', message: '简称 值必须为字符串类型', trigger: 'change' },
@@ -549,14 +549,14 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
         belongregion: [
             { type: 'string', message: '所属区域 值必须为字符串类型', trigger: 'change' },
             { type: 'string', message: '所属区域 值必须为字符串类型', trigger: 'blur' },
-            { required: true, type: 'string', message: '所属区域 值不能为空', trigger: 'change' },
-            { required: true, type: 'string', message: '所属区域 值不能为空', trigger: 'blur' },
+            { required: false, type: 'string', message: '所属区域 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '所属区域 值不能为空', trigger: 'blur' },
         ],
         qy: [
             { type: 'string', message: '补贴标准 值必须为字符串类型', trigger: 'change' },
             { type: 'string', message: '补贴标准 值必须为字符串类型', trigger: 'blur' },
-            { required: true, type: 'string', message: '补贴标准 值不能为空', trigger: 'change' },
-            { required: true, type: 'string', message: '补贴标准 值不能为空', trigger: 'blur' },
+            { required: false, type: 'string', message: '补贴标准 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '补贴标准 值不能为空', trigger: 'blur' },
         ],
         gkjz: [
             { type: 'string', message: '编制控制 值必须为字符串类型', trigger: 'change' },
@@ -579,8 +579,8 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
         startstopsign: [
             { type: 'string', message: '启停标识 值必须为字符串类型', trigger: 'change' },
             { type: 'string', message: '启停标识 值必须为字符串类型', trigger: 'blur' },
-            { required: true, type: 'string', message: '启停标识 值不能为空', trigger: 'change' },
-            { required: true, type: 'string', message: '启停标识 值不能为空', trigger: 'blur' },
+            { required: false, type: 'string', message: '启停标识 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '启停标识 值不能为空', trigger: 'blur' },
         ],
         belongou: [
             { type: 'string', message: '所属OU 值必须为字符串类型', trigger: 'change' },
@@ -1087,11 +1087,6 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
 
 
 
-
-        if(Object.is(name, 'orgname')){
-            const details: string[] = ['qy', 'ordervalue', 'belongregion'];
-            this.updateFormItems('SynOrgSec', this.data, details, true);
-        }
     }
 
     /**
