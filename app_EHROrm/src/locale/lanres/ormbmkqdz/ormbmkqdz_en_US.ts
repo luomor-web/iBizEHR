@@ -30,8 +30,8 @@ export default {
       title: '部门地址维护',
 		},
 		bmkqdzgridview: {
-			caption: "部门考勤地址维护",
-      title: '部门考勤地址维护',
+			caption: "考勤地址信息",
+      title: '考勤地址信息',
 		},
 		pickupview: {
 			caption: "部门地址维护",
@@ -127,10 +127,10 @@ export default {
 		uiactions: {
 		},
 	},
-	bmkqdzgridviewtoolbar2_toolbar: {
+	bmkqdzgridviewtoolbar_toolbar: {
 		deuiaction1: {
-			caption: "New",
-			tip: "New",
+			caption: "新建",
+			tip: "新建",
 		},
 		deuiaction2: {
 			caption: "保存",
@@ -140,29 +140,11 @@ export default {
 			caption: "Remove",
 			tip: "Remove {0}",
 		},
-	},
-	bmkqdzgridviewtoolbar_toolbar: {
-		tbitem3: {
-			caption: "New",
-			tip: "New",
-		},
-		tbitem8: {
-			caption: "Remove",
-			tip: "Remove {0}",
-		},
-		deuiaction2: {
-			caption: "Filter",
-			tip: "Filter",
-		},
-		deuiaction1: {
-			caption: "开启行编辑",
-			tip: "开启行编辑",
-		},
-		deuiaction3: {
+		deuiaction4: {
 			caption: "导入",
 			tip: "导入",
 		},
-		tbitem13: {
+		deuiaction5: {
 			caption: "Export",
 			tip: "Export {0} Data To Excel",
 		},

@@ -832,8 +832,8 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewtag": "5a8a13f0da64a45fdf433bd381077cda"
         },
         "ormbmkqdzbmkqdzgridview": {
-            "title": "部门考勤地址维护",
-            "caption": "部门考勤地址维护",
+            "title": "考勤地址信息",
+            "caption": "考勤地址信息",
             "viewtype": "DEGRIDVIEW",
             "viewmodule": "ORM",
             "viewname": "ORMBMKQDZBMKQDZGridView",

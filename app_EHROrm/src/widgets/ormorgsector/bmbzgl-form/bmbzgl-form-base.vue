@@ -4,7 +4,7 @@
     <row >
             
 <i-col v-show="detailsModel.group1.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
-    <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' :uiActionGroup="detailsModel.group1.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.ormorgsector.bmbzgl_form.details.group1')" :isShowCaption="true" uiStyle="DEFAULT" :titleBarCloseMode="0" :isInfoGroupMode="false" >    
+    <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' :uiActionGroup="detailsModel.group1.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.ormorgsector.bmbzgl_form.details.group1')" :isShowCaption="true" uiStyle="DEFAULT" :titleBarCloseMode="1" :isInfoGroupMode="false" >    
     <row>
         <i-col v-show="detailsModel.ordervalue.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='ordervalue' :itemRules="this.rules.ordervalue" class='' :caption="$t('entities.ormorgsector.bmbzgl_form.details.ordervalue')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.ordervalue.error" :isEmptyCaption="false" labelPos="LEFT">
@@ -95,38 +95,6 @@
     <app-form-item name='belongou' :itemRules="this.rules.belongou" class='' :caption="$t('entities.ormorgsector.bmbzgl_form.details.belongou')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.belongou.error" :isEmptyCaption="false" labelPos="LEFT">
     <input-box v-model="data.belongou"  @enter="onEnter($event)"   unit=""  :disabled="detailsModel.belongou.disabled" type='text'  style=""></input-box>
 </app-form-item>
-
-</i-col>
-    
-    </row>
-</app-form-group>
-
-</i-col>
-<i-col v-show="detailsModel.grouppanel1.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
-    <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' :uiActionGroup="detailsModel.grouppanel1.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.ormorgsector.bmbzgl_form.details.grouppanel1')" :isShowCaption="false" uiStyle="DEFAULT" :titleBarCloseMode="0" :isInfoGroupMode="false" >    
-    <row>
-        <i-col v-show="detailsModel.druipart3.visible" :style="{'height': '400px !important',}"  :lg="{ span: 24, offset: 0 }">
-    <app-form-druipart
-    
-    :formState="formState"
-    :isForbidLoad="this.data.srfuf === '0'"
-    paramItem='ormorgsector' 
-    :parentdata='{"srfparentdefname":"ORMORGSECTORID","srfparentdename":"ORMORGSECTOR","SRFPARENTTYPE":"DER1N","srfparentmode":"DER1N_ORMBMKQDZ_ORMORGSECTOR_ORMORGSECTORID","SRFDER1NID":"DER1N_ORMBMKQDZ_ORMORGSECTOR_ORMORGSECTORID"}'
-    :parameters="[
-        { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
-    ]"
-    :context="context"
-    :viewparams="viewparams"
-    parameterName='ormorgsector'
-    parentName="ORMORGSECTOR"  
-    refviewtype='DEGRIDVIEW' 
-    refreshitems='' 
-    :ignorefieldvaluechange="ignorefieldvaluechange"
-    viewname='ormbmkqdzbmkqdzgrid-view' 
-    :data="JSON.stringify(this.data)" 
-    @drdatasaved="drdatasaved($event)"
-    style="height:400px;overflow: auto;">
-</app-form-druipart>
 
 </i-col>
     
@@ -661,10 +629,6 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
     public detailsModel: any = {
         group1: new FormGroupPanelModel({ caption: '部门/项目部信息', detailType: 'GROUPPANEL', name: 'group1', visible: true, isShowCaption: true, form: this, uiActionGroup: { caption: '', langbase: 'entities.ormorgsector.bmbzgl_form', extractMode: 'ITEM', details: [] } })
 , 
-        druipart3: new FormDRUIPartModel({ caption: '考勤地址信息', detailType: 'DRUIPART', name: 'druipart3', visible: true, isShowCaption: true, form: this })
-, 
-        grouppanel1: new FormGroupPanelModel({ caption: '考勤地址', detailType: 'GROUPPANEL', name: 'grouppanel1', visible: true, isShowCaption: false, form: this, uiActionGroup: { caption: '', langbase: 'entities.ormorgsector.bmbzgl_form', extractMode: 'ITEM', details: [] } })
-, 
         formpage1: new FormPageModel({ caption: '部门信息', detailType: 'FORMPAGE', name: 'formpage1', visible: true, isShowCaption: true, form: this })
 , 
         srfupdatedate: new FormItemModel({ caption: '更新时间', detailType: 'FORMITEM', name: 'srfupdatedate', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
@@ -707,7 +671,7 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
 , 
         startstopsign: new FormItemModel({ caption: '启停标识', detailType: 'FORMITEM', name: 'startstopsign', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
-        belongou: new FormItemModel({ caption: '所属OU', detailType: 'FORMITEM', name: 'belongou', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 0 })
+        belongou: new FormItemModel({ caption: '所属OU', detailType: 'FORMITEM', name: 'belongou', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
         validflag: new FormItemModel({ caption: '启用标志', detailType: 'FORMITEM', name: 'validflag', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
@@ -1069,8 +1033,6 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
      */
     public formLogic({ name, newVal, oldVal }: { name: string, newVal: any, oldVal: any }): void {
                 
-
-
 
 
 
@@ -1653,7 +1615,7 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
             Object.assign(arg, data);
             Object.assign(arg, this.context);
             if (ifStateNext) {
-                this.drcounter = 1;
+                this.drcounter = 0;
                 if(this.drcounter !== 0){
                     this.drsaveopt = opt;
                     this.formState.next({ type: 'beforesave', data: arg });//先通知关系界面保存

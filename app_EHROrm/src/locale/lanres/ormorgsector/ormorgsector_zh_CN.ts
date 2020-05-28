@@ -274,8 +274,6 @@ export default {
 	bmbzgl_form: {
 		details: {
 			group1: '部门/项目部信息', 
-			druipart3: '考勤地址信息', 
-			grouppanel1: '考勤地址', 
 			formpage1: '部门信息', 
 			srfupdatedate: '更新时间', 
 			srforikey: '', 

@@ -4,7 +4,7 @@
     <row >
             
 <i-col v-show="detailsModel.group1.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
-    <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' :uiActionGroup="detailsModel.group1.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.ormorgsector.main2_form.details.group1')" :isShowCaption="true" uiStyle="DEFAULT" :titleBarCloseMode="0" :isInfoGroupMode="true" >    
+    <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' :uiActionGroup="detailsModel.group1.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.ormorgsector.main2_form.details.group1')" :isShowCaption="true" uiStyle="DEFAULT" :titleBarCloseMode="1" :isInfoGroupMode="true" >    
     <row>
         <i-col v-show="detailsModel.ordervalue.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='ordervalue' :itemRules="this.rules.ordervalue" class='' :caption="$t('entities.ormorgsector.main2_form.details.ordervalue')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.ordervalue.error" :isEmptyCaption="false" labelPos="LEFT">
