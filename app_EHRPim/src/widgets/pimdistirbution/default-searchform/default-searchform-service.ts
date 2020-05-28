@@ -2,8 +2,8 @@ import { Http,Util,Errorlog } from '@/utils';
 import ControlService from '@/widgets/control-service';
 import PIMDISTIRBUTIONService from '@/service/pimdistirbution/pimdistirbution-service';
 import DefaultModel from './default-searchform-model';
-import ORMORGService from '@/service/ormorg/ormorg-service';
-import ORMORGSECTORService from '@/service/ormorgsector/ormorgsector-service';
+import OrmOrgService from '@/service/orm-org/orm-org-service';
+import OrmOrgsectorService from '@/service/orm-orgsector/orm-orgsector-service';
 import ORMDUTYService from '@/service/ormduty/ormduty-service';
 import ORMPOSTService from '@/service/ormpost/ormpost-service';
 
@@ -48,18 +48,18 @@ export default class DefaultService extends ControlService {
     /**
      * 组织管理服务对象
      *
-     * @type {ORMORGService}
+     * @type {OrmOrgService}
      * @memberof DefaultService
      */
-    public ormorgService: ORMORGService = new ORMORGService();
+    public ormorgService: OrmOrgService = new OrmOrgService();
 
     /**
      * 部门管理服务对象
      *
-     * @type {ORMORGSECTORService}
+     * @type {OrmOrgsectorService}
      * @memberof DefaultService
      */
-    public ormorgsectorService: ORMORGSECTORService = new ORMORGSECTORService();
+    public ormorgsectorService: OrmOrgsectorService = new OrmOrgsectorService();
 
     /**
      * 职务管理服务对象
@@ -116,10 +116,10 @@ export default class DefaultService extends ControlService {
      */
     @Errorlog
     public getItems(serviceName: string, interfaceName: string, context: any = {}, data: any, isloading?: boolean): Promise<any[]> {
-        if (Object.is(serviceName, 'ORMORGService') && Object.is(interfaceName, 'FetchDefault')) {
+        if (Object.is(serviceName, 'OrmOrgService') && Object.is(interfaceName, 'FetchDefault')) {
             return this.doItems(this.ormorgService.FetchDefault(JSON.parse(JSON.stringify(context)),data, isloading), 'orgid', 'ormorg');
         }
-        if (Object.is(serviceName, 'ORMORGSECTORService') && Object.is(interfaceName, 'FetchCURORG')) {
+        if (Object.is(serviceName, 'OrmOrgsectorService') && Object.is(interfaceName, 'FetchCURORG')) {
             return this.doItems(this.ormorgsectorService.FetchCURORG(JSON.parse(JSON.stringify(context)),data, isloading), 'orgsectorid', 'ormorgsector');
         }
         if (Object.is(serviceName, 'ORMDUTYService') && Object.is(interfaceName, 'FetchCurOrmorgsector')) {

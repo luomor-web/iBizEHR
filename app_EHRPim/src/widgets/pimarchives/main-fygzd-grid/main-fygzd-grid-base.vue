@@ -60,7 +60,7 @@
                 <el-table-column show-overflow-tooltip :prop="'dastate'" :label="$t('entities.pimarchives.main_fygzd_grid.columns.dastate')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot="{row,column}">
                         <template >
-            <codelist :value="row.dastate" tag='DASTATE' codelistType='STATIC' renderMode="STR" valueSeparator=";" textSeparator="、" ></codelist>
+            <codelist :value="row.dastate" tag='EhrCodeListDastate' codelistType='STATIC' renderMode="STR" valueSeparator=";" textSeparator="、" ></codelist>
                         </template>
                     </template>
                 </el-table-column>
@@ -1009,7 +1009,7 @@ export default class Main_FYGZDBase extends Vue implements ControlInterface {
         let codelistColumns:Array<any> = [
           {
             name: 'dastate',
-            srfkey: 'DASTATE',
+            srfkey: 'EhrCodeListDastate',
             codelistType : 'STATIC',
             textSeparator: '、',
             renderMode: 'string',

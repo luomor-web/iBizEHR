@@ -238,6 +238,26 @@ public class PCMEducationExperienceServiceImpl extends ServiceImpl<PCMEducationE
         return true;
     }
 
+    @Override
+    public List<PCMEducationExperience> getPcmeducationexperienceByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<PCMEducationExperience> getPcmeducationexperienceByEntities(List<PCMEducationExperience> entities) {
+        List ids =new ArrayList();
+        for(PCMEducationExperience entity : entities){
+            Serializable id=entity.getPcmeducationexperienceid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

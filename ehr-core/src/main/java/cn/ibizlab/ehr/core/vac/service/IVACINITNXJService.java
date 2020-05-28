@@ -54,6 +54,9 @@ public interface IVACINITNXJService extends IService<VACINITNXJ>{
      */
     boolean execute(String sql, Map param);
 
+    List<VACINITNXJ> getVacinitnxjByIds(List<String> ids) ;
+    List<VACINITNXJ> getVacinitnxjByEntities(List<VACINITNXJ> entities) ;
+
 }
 
 

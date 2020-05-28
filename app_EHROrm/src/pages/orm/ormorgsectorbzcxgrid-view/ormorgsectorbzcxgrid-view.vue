@@ -2,8 +2,8 @@
 import { Component } from 'vue-property-decorator';
 import ORMORGSECTORBZCXGridViewBase from './ormorgsectorbzcxgrid-view-base.vue';
 
-import view_grid from '@widgets/ormorgsector/bzcx-grid/bzcx-grid.vue';
-import view_searchform from '@widgets/ormorgsector/bzcx-searchform/bzcx-searchform.vue';
+import view_grid from '@widgets/orm-orgsector/bzcx-grid/bzcx-grid.vue';
+import view_searchform from '@widgets/orm-orgsector/bzcx-searchform/bzcx-searchform.vue';
 
 /**
  * 编制查询

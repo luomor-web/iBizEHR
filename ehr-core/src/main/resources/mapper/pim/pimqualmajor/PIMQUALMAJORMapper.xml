@@ -4,6 +4,9 @@
 <mapper	namespace="cn.ibizlab.ehr.core.pim.mapper.PIMQUALMAJORMapper">
 
     <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
+	<select id="selectById"  resultMap="PIMQUALMAJORResultMap" databaseId="mysql">
+        <![CDATA[select t1.* from (SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t1.`GWLX`, t1.`GWTYPE`, t1.`GWZS`, t1.`ORMORGID` AS `ORGID`, t1.`ORMORGID`, t1.`PIMQUALMAJORID`, t1.`PIMQUALMAJORNAME`, t1.`PIMQUALTYPEID`, t11.`PIMQUALTYPENAME`, t1.`PROFESSIONALTYPE`, t1.`QUALEVEL`, t1.`QUAMAJOR`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`ZYJSZW`, concat(t1.`QUALEVEL`, t1.`PIMQUALMAJORNAME`, t1.`QUAMAJOR`) AS `ZYZGZY` FROM `T_PIMQUALMAJOR` t1  LEFT JOIN T_PIMQUALTYPE t11 ON t1.PIMQUALTYPEID = t11.PIMQUALTYPEID  ) t1 where pimqualmajorid=#{id}]]>
+    </select>
 
     <!--通过mybatis将查询结果注入到entity中,通过配置autoMapping="true"由mybatis自动处理映射关系 -->
     <resultMap id="PIMQUALMAJORResultMap" type="cn.ibizlab.ehr.core.pim.domain.PIMQUALMAJOR" autoMapping="true">
@@ -13,7 +16,7 @@
             
 		
 		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
-		<association property="ormorg" javaType="cn.ibizlab.ehr.core.orm.domain.ORMORG" column="ormorgid" select="cn.ibizlab.ehr.core.orm.mapper.ORMORGMapper.selectById" fetchType="lazy"></association>
+		<association property="ormorg" javaType="cn.ibizlab.ehr.core.orm.domain.OrmOrg" column="ormorgid" select="cn.ibizlab.ehr.core.orm.mapper.OrmOrgMapper.selectById" fetchType="lazy"></association>
 		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
 		<association property="pimqualtype" javaType="cn.ibizlab.ehr.core.pim.domain.PIMQUALTYPE" column="pimqualtypeid" select="cn.ibizlab.ehr.core.pim.mapper.PIMQUALTYPEMapper.selectById" fetchType="lazy"></association>
     </resultMap>
@@ -58,9 +61,9 @@
 			]]>
     </sql>
 
-    <!--数据查询[Default]-->
-    <sql id="Default" databaseId="oracle">
-       <![CDATA[	SELECT t1.CREATEDATE, t1.CREATEMAN, t1.ENABLE, t1.GWLX, t1.GWTYPE, t1.GWZS, t1.ORMORGID AS ORGID, t1.ORMORGID, t1.PIMQUALMAJORID, t1.PIMQUALMAJORNAME, t1.PIMQUALTYPEID, t11.PIMQUALTYPENAME, t1.PROFESSIONALTYPE, t1.QUALEVEL, t1.QUAMAJOR, t1.UPDATEDATE, t1.UPDATEMAN, t1.ZYJSZW, concat(t1.QUALEVEL, t1.PIMQUALMAJORNAME, t1.QUAMAJOR) AS ZYZGZY FROM T_PIMQUALMAJOR t1  LEFT JOIN T_PIMQUALTYPE t11 ON t1.PIMQUALTYPEID = t11.PIMQUALTYPEID  
+    <!--数据查询[View]-->
+    <sql id="View" databaseId="mysql">
+       <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t1.`GWLX`, t1.`GWTYPE`, t1.`GWZS`, t1.`ORMORGID` AS `ORGID`, t1.`ORMORGID`, t1.`PIMQUALMAJORID`, t1.`PIMQUALMAJORNAME`, t1.`PIMQUALTYPEID`, t11.`PIMQUALTYPENAME`, t1.`PROFESSIONALTYPE`, t1.`QUALEVEL`, t1.`QUAMAJOR`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`ZYJSZW`, concat(t1.`QUALEVEL`, t1.`PIMQUALMAJORNAME`, t1.`QUAMAJOR`) AS `ZYZGZY` FROM `T_PIMQUALMAJOR` t1  LEFT JOIN T_PIMQUALTYPE t11 ON t1.PIMQUALTYPEID = t11.PIMQUALTYPEID  
 				 WHERE 	t1.ENABLE = 1
 			]]>
     </sql>
@@ -68,13 +71,6 @@
     <!--数据查询[XZZGZY]-->
     <sql id="XZZGZY" databaseId="mysql">
        <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t1.`GWLX`, t1.`GWTYPE`, t1.`GWZS`, t1.`ORMORGID` AS `ORGID`, t1.`ORMORGID`, t1.`PIMQUALMAJORID`, t1.`PIMQUALMAJORNAME`, t1.`PIMQUALTYPEID`, t11.`PIMQUALTYPENAME`, t1.`PROFESSIONALTYPE`, t1.`QUALEVEL`, t1.`QUAMAJOR`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`ZYJSZW`, concat(t1.`QUALEVEL`, t1.`PIMQUALMAJORNAME`, t1.`QUAMAJOR`) AS `ZYZGZY` FROM `T_PIMQUALMAJOR` t1  LEFT JOIN T_PIMQUALTYPE t11 ON t1.PIMQUALTYPEID = t11.PIMQUALTYPEID  
-				 WHERE 	t1.ENABLE = 1
-			]]>
-    </sql>
-
-    <!--数据查询[XZZGZY]-->
-    <sql id="XZZGZY" databaseId="oracle">
-       <![CDATA[	SELECT t1.CREATEDATE, t1.CREATEMAN, t1.ENABLE, t1.GWLX, t1.GWTYPE, t1.GWZS, t1.ORMORGID AS ORGID, t1.ORMORGID, t1.PIMQUALMAJORID, t1.PIMQUALMAJORNAME, t1.PIMQUALTYPEID, t11.PIMQUALTYPENAME, t1.PROFESSIONALTYPE, t1.QUALEVEL, t1.QUAMAJOR, t1.UPDATEDATE, t1.UPDATEMAN, t1.ZYJSZW, concat(t1.QUALEVEL, t1.PIMQUALMAJORNAME, t1.QUAMAJOR) AS ZYZGZY FROM T_PIMQUALMAJOR t1  LEFT JOIN T_PIMQUALTYPE t11 ON t1.PIMQUALTYPEID = t11.PIMQUALTYPEID  
 				 WHERE 	t1.ENABLE = 1
 			]]>
     </sql>

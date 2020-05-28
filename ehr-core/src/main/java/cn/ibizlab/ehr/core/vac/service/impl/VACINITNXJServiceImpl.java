@@ -46,7 +46,7 @@ public class VACINITNXJServiceImpl extends ServiceImpl<VACINITNXJMapper, VACINIT
 
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.orm.service.IORMORGService ormorgService;
+    private cn.ibizlab.ehr.core.orm.service.IOrmOrgService ormorgService;
 
     private int batchSize = 500;
 
@@ -181,9 +181,9 @@ public class VACINITNXJServiceImpl extends ServiceImpl<VACINITNXJMapper, VACINIT
     private void fillParentData(VACINITNXJ et){
         //实体关系[DER1N_VACINITNXJ_ORMORG_ORMORGID]
         if(!ObjectUtils.isEmpty(et.getOrmorgid())){
-            cn.ibizlab.ehr.core.orm.domain.ORMORG ormorg=et.getOrmorg();
+            cn.ibizlab.ehr.core.orm.domain.OrmOrg ormorg=et.getOrmorg();
             if(ObjectUtils.isEmpty(ormorg)){
-                cn.ibizlab.ehr.core.orm.domain.ORMORG majorEntity=ormorgService.get(et.getOrmorgid());
+                cn.ibizlab.ehr.core.orm.domain.OrmOrg majorEntity=ormorgService.get(et.getOrmorgid());
                 et.setOrmorg(majorEntity);
                 ormorg=majorEntity;
             }
@@ -213,6 +213,26 @@ public class VACINITNXJServiceImpl extends ServiceImpl<VACINITNXJMapper, VACINIT
         }
         log.warn("暂未支持的SQL语法");
         return true;
+    }
+
+    @Override
+    public List<VACINITNXJ> getVacinitnxjByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<VACINITNXJ> getVacinitnxjByEntities(List<VACINITNXJ> entities) {
+        List ids =new ArrayList();
+        for(VACINITNXJ entity : entities){
+            Serializable id=entity.getVacinitnxjid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
     }
 
 }

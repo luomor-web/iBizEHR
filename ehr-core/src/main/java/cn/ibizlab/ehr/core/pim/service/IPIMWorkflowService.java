@@ -55,6 +55,9 @@ public interface IPIMWorkflowService extends IService<PIMWorkflow>{
      */
     boolean execute(String sql, Map param);
 
+    List<PIMWorkflow> getPimworkflowByIds(List<String> ids) ;
+    List<PIMWorkflow> getPimworkflowByEntities(List<PIMWorkflow> entities) ;
+
 }
 
 

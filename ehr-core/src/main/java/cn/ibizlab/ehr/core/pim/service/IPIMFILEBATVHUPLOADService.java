@@ -52,6 +52,9 @@ public interface IPIMFILEBATVHUPLOADService extends IService<PIMFILEBATVHUPLOAD>
      */
     boolean execute(String sql, Map param);
 
+    List<PIMFILEBATVHUPLOAD> getPimfilebatvhuploadByIds(List<String> ids) ;
+    List<PIMFILEBATVHUPLOAD> getPimfilebatvhuploadByEntities(List<PIMFILEBATVHUPLOAD> entities) ;
+
 }
 
 

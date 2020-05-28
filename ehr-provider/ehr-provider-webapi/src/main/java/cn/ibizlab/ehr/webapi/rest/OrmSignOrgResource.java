@@ -22,6 +22,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.access.prepost.PostAuthorize;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -39,22 +40,19 @@ import cn.ibizlab.ehr.core.orm.filter.OrmSignOrgSearchContext;
 public class OrmSignOrgResource {
 
     @Autowired
-    private IOrmSignOrgService ormsignorgService;
+    public IOrmSignOrgService ormsignorgService;
 
     @Autowired
     @Lazy
     public OrmSignOrgMapping ormsignorgMapping;
 
-    public OrmSignOrgDTO permissionDTO=new OrmSignOrgDTO();
-
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmSignOrg-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"OrmSignOrg" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormsignorgs/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody OrmSignOrgDTO ormsignorgdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(ormsignorgService.checkKey(ormsignorgMapping.toDomain(ormsignorgdto)));
     }
 
-    @PreAuthorize("hasPermission(#ormsignorg_id,'Update',{'Sql',this.ormsignorgMapping,#ormsignorgdto})")
+    @PreAuthorize("hasPermission(this.ormsignorgService.get(#ormsignorg_id),'ehr-OrmSignOrg-Update')")
     @ApiOperation(value = "Update", tags = {"OrmSignOrg" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/ormsignorgs/{ormsignorg_id}")
     @Transactional
@@ -66,7 +64,7 @@ public class OrmSignOrgResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.ormsignorgMapping,#ormsignorgdtos})")
+    @PreAuthorize("hasPermission(this.ormsignorgService.getOrmsignorgByEntities(this.ormsignorgMapping.toDomain(#ormsignorgdtos)),'ehr-OrmSignOrg-Update')")
     @ApiOperation(value = "UpdateBatch", tags = {"OrmSignOrg" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/ormsignorgs/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<OrmSignOrgDTO> ormsignorgdtos) {
@@ -74,14 +72,14 @@ public class OrmSignOrgResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('','Save',{'Sql',this.ormsignorgMapping,#ormsignorgdto})")
+    @PreAuthorize("hasPermission(this.ormsignorgMapping.toDomain(#ormsignorgdto),'ehr-OrmSignOrg-Save')")
     @ApiOperation(value = "Save", tags = {"OrmSignOrg" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormsignorgs/save")
     public ResponseEntity<Boolean> save(@RequestBody OrmSignOrgDTO ormsignorgdto) {
         return ResponseEntity.status(HttpStatus.OK).body(ormsignorgService.save(ormsignorgMapping.toDomain(ormsignorgdto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.ormsignorgMapping,#ormsignorgdtos})")
+    @PreAuthorize("hasPermission(this.ormsignorgMapping.toDomain(#ormsignorgdtos),'ehr-OrmSignOrg-Save')")
     @ApiOperation(value = "SaveBatch", tags = {"OrmSignOrg" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormsignorgs/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<OrmSignOrgDTO> ormsignorgdtos) {
@@ -89,14 +87,13 @@ public class OrmSignOrgResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmSignOrg-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"OrmSignOrg" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/ormsignorgs/getdraft")
     public ResponseEntity<OrmSignOrgDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(ormsignorgMapping.toDto(ormsignorgService.getDraft(new OrmSignOrg())));
     }
 
-    @PreAuthorize("hasPermission(#ormsignorg_id,'Get',{'Sql',this.ormsignorgMapping,this.permissionDTO})")
+    @PostAuthorize("hasPermission(this.ormsignorgMapping.toDomain(returnObject.body),'ehr-OrmSignOrg-Get')")
     @ApiOperation(value = "Get", tags = {"OrmSignOrg" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/ormsignorgs/{ormsignorg_id}")
     public ResponseEntity<OrmSignOrgDTO> get(@PathVariable("ormsignorg_id") String ormsignorg_id) {
@@ -105,7 +102,7 @@ public class OrmSignOrgResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('','Create',{'Sql',this.ormsignorgMapping,#ormsignorgdto})")
+    @PreAuthorize("hasPermission(this.ormsignorgMapping.toDomain(#ormsignorgdto),'ehr-OrmSignOrg-Create')")
     @ApiOperation(value = "Create", tags = {"OrmSignOrg" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormsignorgs")
     @Transactional
@@ -116,7 +113,7 @@ public class OrmSignOrgResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.ormsignorgMapping,#ormsignorgdtos})")
+    @PreAuthorize("hasPermission(this.ormsignorgMapping.toDomain(#ormsignorgdtos),'ehr-OrmSignOrg-Create')")
     @ApiOperation(value = "createBatch", tags = {"OrmSignOrg" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormsignorgs/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<OrmSignOrgDTO> ormsignorgdtos) {
@@ -124,7 +121,7 @@ public class OrmSignOrgResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission(#ormsignorg_id,'Remove',{'Sql',this.ormsignorgMapping,this.permissionDTO})")
+    @PreAuthorize("hasPermission(this.ormsignorgService.get(#ormsignorg_id),'ehr-OrmSignOrg-Remove')")
     @ApiOperation(value = "Remove", tags = {"OrmSignOrg" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/ormsignorgs/{ormsignorg_id}")
     @Transactional
@@ -132,7 +129,7 @@ public class OrmSignOrgResource {
          return ResponseEntity.status(HttpStatus.OK).body(ormsignorgService.remove(ormsignorg_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.ormsignorgMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission(this.ormsignorgService.getOrmsignorgByIds(#ids),'ehr-OrmSignOrg-Remove')")
     @ApiOperation(value = "RemoveBatch", tags = {"OrmSignOrg" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/ormsignorgs/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -204,3 +201,4 @@ public class OrmSignOrgResource {
                 .body(new PageImpl(ormsignorgMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 }
+

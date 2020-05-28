@@ -179,6 +179,26 @@ public class PARKHFAServiceImpl extends ServiceImpl<PARKHFAMapper, PARKHFA> impl
         return true;
     }
 
+    @Override
+    public List<PARKHFA> getParkhfaByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<PARKHFA> getParkhfaByEntities(List<PARKHFA> entities) {
+        List ids =new ArrayList();
+        for(PARKHFA entity : entities){
+            Serializable id=entity.getParkhfaid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

@@ -2,7 +2,7 @@
 import { Component } from 'vue-property-decorator';
 import ORMORGDZEditViewBase from './ormorgdzedit-view-base.vue';
 
-import view_form from '@widgets/ormorgdz/main-form/main-form.vue';
+import view_form from '@widgets/orm-orgdz/main-form/main-form.vue';
 
 /**
  * 组织地址维护编辑视图

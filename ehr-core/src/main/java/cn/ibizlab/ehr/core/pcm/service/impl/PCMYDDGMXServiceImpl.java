@@ -46,7 +46,7 @@ public class PCMYDDGMXServiceImpl extends ServiceImpl<PCMYDDGMXMapper, PCMYDDGMX
 
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.orm.service.IORMORGSECTORService ormorgsectorService;
+    private cn.ibizlab.ehr.core.orm.service.IOrmOrgsectorService ormorgsectorService;
 
     private int batchSize = 500;
 
@@ -213,9 +213,9 @@ public class PCMYDDGMXServiceImpl extends ServiceImpl<PCMYDDGMXMapper, PCMYDDGMX
     private void fillParentData(PCMYDDGMX et){
         //实体关系[DER1N_PCMYDDGMX_ORMORGSECTOR_ORMORGSECTORID]
         if(!ObjectUtils.isEmpty(et.getOrmorgsectorid())){
-            cn.ibizlab.ehr.core.orm.domain.ORMORGSECTOR ormorgsector=et.getOrmorgsector();
+            cn.ibizlab.ehr.core.orm.domain.OrmOrgsector ormorgsector=et.getOrmorgsector();
             if(ObjectUtils.isEmpty(ormorgsector)){
-                cn.ibizlab.ehr.core.orm.domain.ORMORGSECTOR majorEntity=ormorgsectorService.get(et.getOrmorgsectorid());
+                cn.ibizlab.ehr.core.orm.domain.OrmOrgsector majorEntity=ormorgsectorService.get(et.getOrmorgsectorid());
                 et.setOrmorgsector(majorEntity);
                 ormorgsector=majorEntity;
             }
@@ -246,6 +246,26 @@ public class PCMYDDGMXServiceImpl extends ServiceImpl<PCMYDDGMXMapper, PCMYDDGMX
         }
         log.warn("暂未支持的SQL语法");
         return true;
+    }
+
+    @Override
+    public List<PCMYDDGMX> getPcmyddgmxByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<PCMYDDGMX> getPcmyddgmxByEntities(List<PCMYDDGMX> entities) {
+        List ids =new ArrayList();
+        for(PCMYDDGMX entity : entities){
+            Serializable id=entity.getPcmyddgmxid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
     }
 
 }

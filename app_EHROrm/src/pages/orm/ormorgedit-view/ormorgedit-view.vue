@@ -2,10 +2,10 @@
 import { Component } from 'vue-property-decorator';
 import ORMORGEditViewBase from './ormorgedit-view-base.vue';
 
-import view_form from '@widgets/ormorg/main-form/main-form.vue';
+import view_form from '@widgets/orm-org/main-form/main-form.vue';
 
 /**
- * 组织管理
+ * 组织信息
  *
  * @export
  * @class ORMORGEditView

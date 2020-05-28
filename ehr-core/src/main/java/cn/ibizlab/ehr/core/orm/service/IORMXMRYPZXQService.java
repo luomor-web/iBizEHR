@@ -89,6 +89,9 @@ public interface IORMXMRYPZXQService extends IService<ORMXMRYPZXQ>{
      */
     boolean execute(String sql, Map param);
 
+    List<ORMXMRYPZXQ> getOrmxmrypzxqByIds(List<String> ids) ;
+    List<ORMXMRYPZXQ> getOrmxmrypzxqByEntities(List<ORMXMRYPZXQ> entities) ;
+
 }
 
 

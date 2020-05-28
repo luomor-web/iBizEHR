@@ -65,6 +65,9 @@ public interface IPCMNoticeService extends IService<PCMNotice>{
      */
     boolean execute(String sql, Map param);
 
+    List<PCMNotice> getPcmnoticeByIds(List<String> ids) ;
+    List<PCMNotice> getPcmnoticeByEntities(List<PCMNotice> entities) ;
+
 }
 
 

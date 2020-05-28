@@ -56,6 +56,9 @@ public interface IPIMPATENTService extends IService<PIMPATENT>{
      */
     boolean execute(String sql, Map param);
 
+    List<PIMPATENT> getPimpatentByIds(List<String> ids) ;
+    List<PIMPATENT> getPimpatentByEntities(List<PIMPATENT> entities) ;
+
 }
 
 

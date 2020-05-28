@@ -62,6 +62,9 @@ public interface IPIMWORKHISTORYService extends IService<PIMWORKHISTORY>{
      */
     boolean execute(String sql, Map param);
 
+    List<PIMWORKHISTORY> getPimworkhistoryByIds(List<String> ids) ;
+    List<PIMWORKHISTORY> getPimworkhistoryByEntities(List<PIMWORKHISTORY> entities) ;
+
 }
 
 

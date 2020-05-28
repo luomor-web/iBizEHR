@@ -188,6 +188,26 @@ public class PIMSTAFFTYPEServiceImpl extends ServiceImpl<PIMSTAFFTYPEMapper, PIM
         return true;
     }
 
+    @Override
+    public List<PIMSTAFFTYPE> getPimstafftypeByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<PIMSTAFFTYPE> getPimstafftypeByEntities(List<PIMSTAFFTYPE> entities) {
+        List ids =new ArrayList();
+        for(PIMSTAFFTYPE entity : entities){
+            Serializable id=entity.getPimstafftypeid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

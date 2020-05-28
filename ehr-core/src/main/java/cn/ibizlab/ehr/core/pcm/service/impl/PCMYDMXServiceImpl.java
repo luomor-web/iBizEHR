@@ -46,10 +46,10 @@ public class PCMYDMXServiceImpl extends ServiceImpl<PCMYDMXMapper, PCMYDMX> impl
 
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.orm.service.IORMORGSECTORService ormorgsectorService;
+    private cn.ibizlab.ehr.core.orm.service.IOrmOrgsectorService ormorgsectorService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.orm.service.IORMORGService ormorgService;
+    private cn.ibizlab.ehr.core.orm.service.IOrmOrgService ormorgService;
     @Autowired
     @Lazy
     private cn.ibizlab.ehr.core.pim.service.IPIMPERSONService pimpersonService;
@@ -227,9 +227,9 @@ public class PCMYDMXServiceImpl extends ServiceImpl<PCMYDMXMapper, PCMYDMX> impl
     private void fillParentData(PCMYDMX et){
         //实体关系[DER1N_PCMYDMX_ORMORGSECTOR_BMID]
         if(!ObjectUtils.isEmpty(et.getBmid())){
-            cn.ibizlab.ehr.core.orm.domain.ORMORGSECTOR ssbm=et.getSsbm();
+            cn.ibizlab.ehr.core.orm.domain.OrmOrgsector ssbm=et.getSsbm();
             if(ObjectUtils.isEmpty(ssbm)){
-                cn.ibizlab.ehr.core.orm.domain.ORMORGSECTOR majorEntity=ormorgsectorService.get(et.getBmid());
+                cn.ibizlab.ehr.core.orm.domain.OrmOrgsector majorEntity=ormorgsectorService.get(et.getBmid());
                 et.setSsbm(majorEntity);
                 ssbm=majorEntity;
             }
@@ -238,9 +238,9 @@ public class PCMYDMXServiceImpl extends ServiceImpl<PCMYDMXMapper, PCMYDMX> impl
         }
         //实体关系[DER1N_PCMYDMX_ORMORG_ZZID]
         if(!ObjectUtils.isEmpty(et.getZzid())){
-            cn.ibizlab.ehr.core.orm.domain.ORMORG sszz=et.getSszz();
+            cn.ibizlab.ehr.core.orm.domain.OrmOrg sszz=et.getSszz();
             if(ObjectUtils.isEmpty(sszz)){
-                cn.ibizlab.ehr.core.orm.domain.ORMORG majorEntity=ormorgService.get(et.getZzid());
+                cn.ibizlab.ehr.core.orm.domain.OrmOrg majorEntity=ormorgService.get(et.getZzid());
                 et.setSszz(majorEntity);
                 sszz=majorEntity;
             }
@@ -286,6 +286,26 @@ public class PCMYDMXServiceImpl extends ServiceImpl<PCMYDMXMapper, PCMYDMX> impl
         }
         log.warn("暂未支持的SQL语法");
         return true;
+    }
+
+    @Override
+    public List<PCMYDMX> getPcmydmxByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<PCMYDMX> getPcmydmxByEntities(List<PCMYDMX> entities) {
+        List ids =new ArrayList();
+        for(PCMYDMX entity : entities){
+            Serializable id=entity.getPcmydmxid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
     }
 
 }

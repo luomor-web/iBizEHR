@@ -22,6 +22,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.access.prepost.PostAuthorize;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -39,15 +40,13 @@ import cn.ibizlab.ehr.core.orm.filter.ORMUSERSearchContext;
 public class ORMUSERResource {
 
     @Autowired
-    private IORMUSERService ormuserService;
+    public IORMUSERService ormuserService;
 
     @Autowired
     @Lazy
     public ORMUSERMapping ormuserMapping;
 
-    public ORMUSERDTO permissionDTO=new ORMUSERDTO();
-
-    @PreAuthorize("hasPermission(#ormuser_id,'Get',{'Sql',this.ormuserMapping,this.permissionDTO})")
+    @PostAuthorize("hasPermission(this.ormuserMapping.toDomain(returnObject.body),'ehr-ORMUSER-Get')")
     @ApiOperation(value = "Get", tags = {"ORMUSER" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/ormusers/{ormuser_id}")
     public ResponseEntity<ORMUSERDTO> get(@PathVariable("ormuser_id") String ormuser_id) {
@@ -56,7 +55,7 @@ public class ORMUSERResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('','Create',{'Sql',this.ormuserMapping,#ormuserdto})")
+    @PreAuthorize("hasPermission(this.ormuserMapping.toDomain(#ormuserdto),'ehr-ORMUSER-Create')")
     @ApiOperation(value = "Create", tags = {"ORMUSER" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormusers")
     @Transactional
@@ -67,7 +66,7 @@ public class ORMUSERResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.ormuserMapping,#ormuserdtos})")
+    @PreAuthorize("hasPermission(this.ormuserMapping.toDomain(#ormuserdtos),'ehr-ORMUSER-Create')")
     @ApiOperation(value = "createBatch", tags = {"ORMUSER" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormusers/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<ORMUSERDTO> ormuserdtos) {
@@ -75,7 +74,7 @@ public class ORMUSERResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission(#ormuser_id,'Remove',{'Sql',this.ormuserMapping,this.permissionDTO})")
+    @PreAuthorize("hasPermission(this.ormuserService.get(#ormuser_id),'ehr-ORMUSER-Remove')")
     @ApiOperation(value = "Remove", tags = {"ORMUSER" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/ormusers/{ormuser_id}")
     @Transactional
@@ -83,7 +82,7 @@ public class ORMUSERResource {
          return ResponseEntity.status(HttpStatus.OK).body(ormuserService.remove(ormuser_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.ormuserMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission(this.ormuserService.getOrmuserByIds(#ids),'ehr-ORMUSER-Remove')")
     @ApiOperation(value = "RemoveBatch", tags = {"ORMUSER" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/ormusers/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -91,7 +90,7 @@ public class ORMUSERResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission(#ormuser_id,'Update',{'Sql',this.ormuserMapping,#ormuserdto})")
+    @PreAuthorize("hasPermission(this.ormuserService.get(#ormuser_id),'ehr-ORMUSER-Update')")
     @ApiOperation(value = "Update", tags = {"ORMUSER" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/ormusers/{ormuser_id}")
     @Transactional
@@ -103,7 +102,7 @@ public class ORMUSERResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.ormuserMapping,#ormuserdtos})")
+    @PreAuthorize("hasPermission(this.ormuserService.getOrmuserByEntities(this.ormuserMapping.toDomain(#ormuserdtos)),'ehr-ORMUSER-Update')")
     @ApiOperation(value = "UpdateBatch", tags = {"ORMUSER" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/ormusers/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<ORMUSERDTO> ormuserdtos) {
@@ -111,21 +110,20 @@ public class ORMUSERResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMUSER-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"ORMUSER" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormusers/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody ORMUSERDTO ormuserdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(ormuserService.checkKey(ormuserMapping.toDomain(ormuserdto)));
     }
 
-    @PreAuthorize("hasPermission('','Save',{'Sql',this.ormuserMapping,#ormuserdto})")
+    @PreAuthorize("hasPermission(this.ormuserMapping.toDomain(#ormuserdto),'ehr-ORMUSER-Save')")
     @ApiOperation(value = "Save", tags = {"ORMUSER" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormusers/save")
     public ResponseEntity<Boolean> save(@RequestBody ORMUSERDTO ormuserdto) {
         return ResponseEntity.status(HttpStatus.OK).body(ormuserService.save(ormuserMapping.toDomain(ormuserdto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.ormuserMapping,#ormuserdtos})")
+    @PreAuthorize("hasPermission(this.ormuserMapping.toDomain(#ormuserdtos),'ehr-ORMUSER-Save')")
     @ApiOperation(value = "SaveBatch", tags = {"ORMUSER" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormusers/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<ORMUSERDTO> ormuserdtos) {
@@ -133,7 +131,6 @@ public class ORMUSERResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMUSER-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"ORMUSER" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/ormusers/getdraft")
     public ResponseEntity<ORMUSERDTO> getDraft() {
@@ -183,3 +180,4 @@ public class ORMUSERResource {
                 .body(new PageImpl(ormuserMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 }
+

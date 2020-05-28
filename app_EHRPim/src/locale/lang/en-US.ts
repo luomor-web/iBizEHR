@@ -26,9 +26,9 @@ import archivescenter_en_US from '@locale/lanres/archivescenter/archivescenter_e
 import pimdistirbution_en_US from '@locale/lanres/pimdistirbution/pimdistirbution_en_US';
 import dynadashboard_en_US from '@locale/lanres/dyna-dashboard/dyna-dashboard_en_US';
 import pimmajorsetype_en_US from '@locale/lanres/pimmajorsetype/pimmajorsetype_en_US';
-import ormorgsector_en_US from '@locale/lanres/ormorgsector/ormorgsector_en_US';
+import ormorgsector_en_US from '@locale/lanres/orm-orgsector/orm-orgsector_en_US';
 import dynachart_en_US from '@locale/lanres/dyna-chart/dyna-chart_en_US';
-import ormorg_en_US from '@locale/lanres/ormorg/ormorg_en_US';
+import ormorg_en_US from '@locale/lanres/orm-org/orm-org_en_US';
 import codeitem_en_US from '@locale/lanres/code-item/code-item_en_US';
 import pimcontracttype_en_US from '@locale/lanres/pimcontracttype/pimcontracttype_en_US';
 import pcmjxsgz_en_US from '@locale/lanres/pcmjxsgz/pcmjxsgz_en_US';

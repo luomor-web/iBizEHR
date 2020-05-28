@@ -215,6 +215,26 @@ public class PARLHMBKHMXServiceImpl extends ServiceImpl<PARLHMBKHMXMapper, PARLH
         return true;
     }
 
+    @Override
+    public List<PARLHMBKHMX> getParlhmbkhmxByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<PARLHMBKHMX> getParlhmbkhmxByEntities(List<PARLHMBKHMX> entities) {
+        List ids =new ArrayList();
+        for(PARLHMBKHMX entity : entities){
+            Serializable id=entity.getParlhmbkhmxid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

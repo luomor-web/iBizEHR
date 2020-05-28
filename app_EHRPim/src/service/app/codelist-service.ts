@@ -32,7 +32,7 @@ import PIMCL_XXXZ from '@/codelist/pimcl-xxxz';
 import NATIVEPLACE from '@/codelist/nativeplace';   
 import ORMCL_ZW from '@/codelist/ormcl-zw';   
 import ORMCL_GW from '@/codelist/ormcl-gw';   
-import SSQY from '@/codelist/ssqy';   
+import EhrCodeListSsqy from '@/codelist/ehr-code-list-ssqy';   
 import PIMCL_XB from '@/codelist/pimcl-xb';   
 import PIMCL_LEVEL from '@/codelist/pimcl-level';   
 import PIMCL_YBRGX from '@/codelist/pimcl-ybrgx';   
@@ -358,10 +358,10 @@ export default class CodeListService {
     /**
      * 代码表--所属区域
      *
-     * @type {SSQY}
+     * @type {EhrCodeListSsqy}
      * @memberof CodeListService
      */
-    public SSQY: SSQY = new SSQY();
+    public EhrCodeListSsqy: EhrCodeListSsqy = new EhrCodeListSsqy();
 
     /**
      * 代码表--性别

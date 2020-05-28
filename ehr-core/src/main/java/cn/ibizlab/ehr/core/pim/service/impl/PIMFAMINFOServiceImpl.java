@@ -286,6 +286,26 @@ public class PIMFAMINFOServiceImpl extends ServiceImpl<PIMFAMINFOMapper, PIMFAMI
         return true;
     }
 
+    @Override
+    public List<PIMFAMINFO> getPimfaminfoByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<PIMFAMINFO> getPimfaminfoByEntities(List<PIMFAMINFO> entities) {
+        List ids =new ArrayList();
+        for(PIMFAMINFO entity : entities){
+            Serializable id=entity.getPimfaminfoid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

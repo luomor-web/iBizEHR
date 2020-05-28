@@ -22,6 +22,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.access.prepost.PostAuthorize;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -39,15 +40,13 @@ import cn.ibizlab.ehr.core.pim.filter.PIMQUALTYPESearchContext;
 public class PIMQUALTYPEResource {
 
     @Autowired
-    private IPIMQUALTYPEService pimqualtypeService;
+    public IPIMQUALTYPEService pimqualtypeService;
 
     @Autowired
     @Lazy
     public PIMQUALTYPEMapping pimqualtypeMapping;
 
-    public PIMQUALTYPEDTO permissionDTO=new PIMQUALTYPEDTO();
-
-    @PreAuthorize("hasPermission('','Create',{'Sql',this.pimqualtypeMapping,#pimqualtypedto})")
+    @PreAuthorize("hasPermission(this.pimqualtypeMapping.toDomain(#pimqualtypedto),'ehr-PIMQUALTYPE-Create')")
     @ApiOperation(value = "Create", tags = {"PIMQUALTYPE" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimqualtypes")
     @Transactional
@@ -58,7 +57,7 @@ public class PIMQUALTYPEResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.pimqualtypeMapping,#pimqualtypedtos})")
+    @PreAuthorize("hasPermission(this.pimqualtypeMapping.toDomain(#pimqualtypedtos),'ehr-PIMQUALTYPE-Create')")
     @ApiOperation(value = "createBatch", tags = {"PIMQUALTYPE" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimqualtypes/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PIMQUALTYPEDTO> pimqualtypedtos) {
@@ -66,14 +65,14 @@ public class PIMQUALTYPEResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('','Save',{'Sql',this.pimqualtypeMapping,#pimqualtypedto})")
+    @PreAuthorize("hasPermission(this.pimqualtypeMapping.toDomain(#pimqualtypedto),'ehr-PIMQUALTYPE-Save')")
     @ApiOperation(value = "Save", tags = {"PIMQUALTYPE" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimqualtypes/save")
     public ResponseEntity<Boolean> save(@RequestBody PIMQUALTYPEDTO pimqualtypedto) {
         return ResponseEntity.status(HttpStatus.OK).body(pimqualtypeService.save(pimqualtypeMapping.toDomain(pimqualtypedto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.pimqualtypeMapping,#pimqualtypedtos})")
+    @PreAuthorize("hasPermission(this.pimqualtypeMapping.toDomain(#pimqualtypedtos),'ehr-PIMQUALTYPE-Save')")
     @ApiOperation(value = "SaveBatch", tags = {"PIMQUALTYPE" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimqualtypes/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PIMQUALTYPEDTO> pimqualtypedtos) {
@@ -81,14 +80,13 @@ public class PIMQUALTYPEResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMQUALTYPE-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"PIMQUALTYPE" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimqualtypes/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PIMQUALTYPEDTO pimqualtypedto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pimqualtypeService.checkKey(pimqualtypeMapping.toDomain(pimqualtypedto)));
     }
 
-    @PreAuthorize("hasPermission(#pimqualtype_id,'Update',{'Sql',this.pimqualtypeMapping,#pimqualtypedto})")
+    @PreAuthorize("hasPermission(this.pimqualtypeService.get(#pimqualtype_id),'ehr-PIMQUALTYPE-Update')")
     @ApiOperation(value = "Update", tags = {"PIMQUALTYPE" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimqualtypes/{pimqualtype_id}")
     @Transactional
@@ -100,7 +98,7 @@ public class PIMQUALTYPEResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.pimqualtypeMapping,#pimqualtypedtos})")
+    @PreAuthorize("hasPermission(this.pimqualtypeService.getPimqualtypeByEntities(this.pimqualtypeMapping.toDomain(#pimqualtypedtos)),'ehr-PIMQUALTYPE-Update')")
     @ApiOperation(value = "UpdateBatch", tags = {"PIMQUALTYPE" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimqualtypes/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PIMQUALTYPEDTO> pimqualtypedtos) {
@@ -108,7 +106,7 @@ public class PIMQUALTYPEResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission(#pimqualtype_id,'Remove',{'Sql',this.pimqualtypeMapping,this.permissionDTO})")
+    @PreAuthorize("hasPermission(this.pimqualtypeService.get(#pimqualtype_id),'ehr-PIMQUALTYPE-Remove')")
     @ApiOperation(value = "Remove", tags = {"PIMQUALTYPE" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimqualtypes/{pimqualtype_id}")
     @Transactional
@@ -116,7 +114,7 @@ public class PIMQUALTYPEResource {
          return ResponseEntity.status(HttpStatus.OK).body(pimqualtypeService.remove(pimqualtype_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.pimqualtypeMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission(this.pimqualtypeService.getPimqualtypeByIds(#ids),'ehr-PIMQUALTYPE-Remove')")
     @ApiOperation(value = "RemoveBatch", tags = {"PIMQUALTYPE" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimqualtypes/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -124,7 +122,7 @@ public class PIMQUALTYPEResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission(#pimqualtype_id,'Get',{'Sql',this.pimqualtypeMapping,this.permissionDTO})")
+    @PostAuthorize("hasPermission(this.pimqualtypeMapping.toDomain(returnObject.body),'ehr-PIMQUALTYPE-Get')")
     @ApiOperation(value = "Get", tags = {"PIMQUALTYPE" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimqualtypes/{pimqualtype_id}")
     public ResponseEntity<PIMQUALTYPEDTO> get(@PathVariable("pimqualtype_id") String pimqualtype_id) {
@@ -133,7 +131,6 @@ public class PIMQUALTYPEResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMQUALTYPE-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"PIMQUALTYPE" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimqualtypes/getdraft")
     public ResponseEntity<PIMQUALTYPEDTO> getDraft() {
@@ -162,3 +159,4 @@ public class PIMQUALTYPEResource {
                 .body(new PageImpl(pimqualtypeMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 }
+

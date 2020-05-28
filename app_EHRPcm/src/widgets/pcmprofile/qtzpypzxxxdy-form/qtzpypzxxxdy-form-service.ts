@@ -3,7 +3,7 @@ import ControlService from '@/widgets/control-service';
 import PCMPROFILEService from '@/service/pcmprofile/pcmprofile-service';
 import QTZPYPZXXXDYModel from './qtzpypzxxxdy-form-model';
 import PIMCITYService from '@/service/pimcity/pimcity-service';
-import ORMORGService from '@/service/ormorg/ormorg-service';
+import OrmOrgService from '@/service/orm-org/orm-org-service';
 
 
 /**
@@ -54,10 +54,10 @@ export default class QTZPYPZXXXDYService extends ControlService {
     /**
      * 组织管理服务对象
      *
-     * @type {ORMORGService}
+     * @type {OrmOrgService}
      * @memberof QTZPYPZXXXDYService
      */
-    public ormorgService: ORMORGService = new ORMORGService();
+    public ormorgService: OrmOrgService = new OrmOrgService();
 
     /**
      * 处理数据
@@ -101,7 +101,7 @@ export default class QTZPYPZXXXDYService extends ControlService {
         if (Object.is(serviceName, 'PIMCITYService') && Object.is(interfaceName, 'FetchDefault')) {
             return this.doItems(this.pimcityService.FetchDefault(JSON.parse(JSON.stringify(context)),data, isloading), 'pimcityid', 'pimcity');
         }
-        if (Object.is(serviceName, 'ORMORGService') && Object.is(interfaceName, 'FetchOrglist_Profile')) {
+        if (Object.is(serviceName, 'OrmOrgService') && Object.is(interfaceName, 'FetchOrglist_Profile')) {
             return this.doItems(this.ormorgService.FetchOrglist_Profile(JSON.parse(JSON.stringify(context)),data, isloading), 'orgid', 'ormorg');
         }
 

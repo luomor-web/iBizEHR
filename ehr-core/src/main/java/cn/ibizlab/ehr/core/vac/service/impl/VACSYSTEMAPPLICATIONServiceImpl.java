@@ -46,7 +46,7 @@ public class VACSYSTEMAPPLICATIONServiceImpl extends ServiceImpl<VACSYSTEMAPPLIC
 
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.orm.service.IORMORGSECTORService ormorgsectorService;
+    private cn.ibizlab.ehr.core.orm.service.IOrmOrgsectorService ormorgsectorService;
     @Autowired
     @Lazy
     private cn.ibizlab.ehr.core.pim.service.IPIMPERSONService pimpersonService;
@@ -207,9 +207,9 @@ public class VACSYSTEMAPPLICATIONServiceImpl extends ServiceImpl<VACSYSTEMAPPLIC
     private void fillParentData(VACSYSTEMAPPLICATION et){
         //实体关系[DER1N_VACSYSTEMAPPLICATION_ORMORGSECTOR_ORMORGSECTORID]
         if(!ObjectUtils.isEmpty(et.getOrmorgsectorid())){
-            cn.ibizlab.ehr.core.orm.domain.ORMORGSECTOR ormorgsector=et.getOrmorgsector();
+            cn.ibizlab.ehr.core.orm.domain.OrmOrgsector ormorgsector=et.getOrmorgsector();
             if(ObjectUtils.isEmpty(ormorgsector)){
-                cn.ibizlab.ehr.core.orm.domain.ORMORGSECTOR majorEntity=ormorgsectorService.get(et.getOrmorgsectorid());
+                cn.ibizlab.ehr.core.orm.domain.OrmOrgsector majorEntity=ormorgsectorService.get(et.getOrmorgsectorid());
                 et.setOrmorgsector(majorEntity);
                 ormorgsector=majorEntity;
             }
@@ -259,6 +259,26 @@ public class VACSYSTEMAPPLICATIONServiceImpl extends ServiceImpl<VACSYSTEMAPPLIC
         }
         log.warn("暂未支持的SQL语法");
         return true;
+    }
+
+    @Override
+    public List<VACSYSTEMAPPLICATION> getVacsystemapplicationByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<VACSYSTEMAPPLICATION> getVacsystemapplicationByEntities(List<VACSYSTEMAPPLICATION> entities) {
+        List ids =new ArrayList();
+        for(VACSYSTEMAPPLICATION entity : entities){
+            Serializable id=entity.getVacsystemapplicationid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
     }
 
 }

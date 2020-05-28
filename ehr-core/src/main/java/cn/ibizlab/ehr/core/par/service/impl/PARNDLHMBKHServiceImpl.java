@@ -182,6 +182,26 @@ public class PARNDLHMBKHServiceImpl extends ServiceImpl<PARNDLHMBKHMapper, PARND
         return true;
     }
 
+    @Override
+    public List<PARNDLHMBKH> getParndlhmbkhByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<PARNDLHMBKH> getParndlhmbkhByEntities(List<PARNDLHMBKH> entities) {
+        List ids =new ArrayList();
+        for(PARNDLHMBKH entity : entities){
+            Serializable id=entity.getParndlhmbkhid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

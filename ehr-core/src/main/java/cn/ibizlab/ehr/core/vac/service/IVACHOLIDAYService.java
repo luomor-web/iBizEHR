@@ -56,6 +56,9 @@ public interface IVACHOLIDAYService extends IService<VACHOLIDAY>{
      */
     boolean execute(String sql, Map param);
 
+    List<VACHOLIDAY> getVacholidayByIds(List<String> ids) ;
+    List<VACHOLIDAY> getVacholidayByEntities(List<VACHOLIDAY> entities) ;
+
 }
 
 

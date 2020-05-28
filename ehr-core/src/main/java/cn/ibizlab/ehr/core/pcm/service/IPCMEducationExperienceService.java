@@ -57,6 +57,9 @@ public interface IPCMEducationExperienceService extends IService<PCMEducationExp
      */
     boolean execute(String sql, Map param);
 
+    List<PCMEducationExperience> getPcmeducationexperienceByIds(List<String> ids) ;
+    List<PCMEducationExperience> getPcmeducationexperienceByEntities(List<PCMEducationExperience> entities) ;
+
 }
 
 

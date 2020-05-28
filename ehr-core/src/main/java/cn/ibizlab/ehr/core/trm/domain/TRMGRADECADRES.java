@@ -18,7 +18,7 @@ import cn.ibizlab.ehr.util.annotation.DEField;
 import cn.ibizlab.ehr.util.enums.DEPredefinedFieldType;
 import cn.ibizlab.ehr.util.enums.DEFieldDefaultValueType;
 import java.io.Serializable;
-import lombok.Data;
+import lombok.*;
 import org.springframework.data.annotation.Transient;
 
 
@@ -29,7 +29,11 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 /**
  * 实体[优秀青年干部推荐]
  */
-@Data
+@Builder
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @TableName(value = "T_TRMGRADECADRES",resultMap = "TRMGRADECADRESResultMap")
 public class TRMGRADECADRES extends EntityMP implements Serializable {
 
@@ -227,7 +231,7 @@ public class TRMGRADECADRES extends EntityMP implements Serializable {
     @JsonIgnore
     @JSONField(serialize = false)
     @TableField(exist = false)
-    private cn.ibizlab.ehr.core.orm.domain.ORMORGSECTOR ormorgsector;
+    private cn.ibizlab.ehr.core.orm.domain.OrmOrgsector ormorgsector;
 
     /**
      * 后备干部部门
@@ -235,7 +239,7 @@ public class TRMGRADECADRES extends EntityMP implements Serializable {
     @JsonIgnore
     @JSONField(serialize = false)
     @TableField(exist = false)
-    private cn.ibizlab.ehr.core.orm.domain.ORMORGSECTOR ormorgsector2;
+    private cn.ibizlab.ehr.core.orm.domain.OrmOrgsector ormorgsector2;
 
     /**
      * 组织
@@ -243,7 +247,7 @@ public class TRMGRADECADRES extends EntityMP implements Serializable {
     @JsonIgnore
     @JSONField(serialize = false)
     @TableField(exist = false)
-    private cn.ibizlab.ehr.core.orm.domain.ORMORG ormorg;
+    private cn.ibizlab.ehr.core.orm.domain.OrmOrg ormorg;
 
     /**
      * 后备干部组织
@@ -251,7 +255,7 @@ public class TRMGRADECADRES extends EntityMP implements Serializable {
     @JsonIgnore
     @JSONField(serialize = false)
     @TableField(exist = false)
-    private cn.ibizlab.ehr.core.orm.domain.ORMORG ormorg2;
+    private cn.ibizlab.ehr.core.orm.domain.OrmOrg ormorg2;
 
     /**
      * 职级

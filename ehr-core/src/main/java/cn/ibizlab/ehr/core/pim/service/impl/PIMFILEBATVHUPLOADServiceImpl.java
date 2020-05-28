@@ -179,6 +179,26 @@ public class PIMFILEBATVHUPLOADServiceImpl extends ServiceImpl<PIMFILEBATVHUPLOA
         return true;
     }
 
+    @Override
+    public List<PIMFILEBATVHUPLOAD> getPimfilebatvhuploadByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<PIMFILEBATVHUPLOAD> getPimfilebatvhuploadByEntities(List<PIMFILEBATVHUPLOAD> entities) {
+        List ids =new ArrayList();
+        for(PIMFILEBATVHUPLOAD entity : entities){
+            Serializable id=entity.getPimfilebatvhuploadid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

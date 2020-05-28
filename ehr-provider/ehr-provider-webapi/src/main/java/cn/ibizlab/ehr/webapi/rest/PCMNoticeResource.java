@@ -22,6 +22,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.access.prepost.PostAuthorize;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -39,15 +40,13 @@ import cn.ibizlab.ehr.core.pcm.filter.PCMNoticeSearchContext;
 public class PCMNoticeResource {
 
     @Autowired
-    private IPCMNoticeService pcmnoticeService;
+    public IPCMNoticeService pcmnoticeService;
 
     @Autowired
     @Lazy
     public PCMNoticeMapping pcmnoticeMapping;
 
-    public PCMNoticeDTO permissionDTO=new PCMNoticeDTO();
-
-    @PreAuthorize("hasPermission('','Create',{'Sql',this.pcmnoticeMapping,#pcmnoticedto})")
+    @PreAuthorize("hasPermission(this.pcmnoticeMapping.toDomain(#pcmnoticedto),'ehr-PCMNotice-Create')")
     @ApiOperation(value = "Create", tags = {"PCMNotice" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmnotices")
     @Transactional
@@ -58,7 +57,7 @@ public class PCMNoticeResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.pcmnoticeMapping,#pcmnoticedtos})")
+    @PreAuthorize("hasPermission(this.pcmnoticeMapping.toDomain(#pcmnoticedtos),'ehr-PCMNotice-Create')")
     @ApiOperation(value = "createBatch", tags = {"PCMNotice" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmnotices/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PCMNoticeDTO> pcmnoticedtos) {
@@ -66,7 +65,7 @@ public class PCMNoticeResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission(#pcmnotice_id,'Update',{'Sql',this.pcmnoticeMapping,#pcmnoticedto})")
+    @PreAuthorize("hasPermission(this.pcmnoticeService.get(#pcmnotice_id),'ehr-PCMNotice-Update')")
     @ApiOperation(value = "Update", tags = {"PCMNotice" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmnotices/{pcmnotice_id}")
     @Transactional
@@ -78,7 +77,7 @@ public class PCMNoticeResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.pcmnoticeMapping,#pcmnoticedtos})")
+    @PreAuthorize("hasPermission(this.pcmnoticeService.getPcmnoticeByEntities(this.pcmnoticeMapping.toDomain(#pcmnoticedtos)),'ehr-PCMNotice-Update')")
     @ApiOperation(value = "UpdateBatch", tags = {"PCMNotice" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmnotices/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PCMNoticeDTO> pcmnoticedtos) {
@@ -86,14 +85,14 @@ public class PCMNoticeResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('','Save',{'Sql',this.pcmnoticeMapping,#pcmnoticedto})")
+    @PreAuthorize("hasPermission(this.pcmnoticeMapping.toDomain(#pcmnoticedto),'ehr-PCMNotice-Save')")
     @ApiOperation(value = "Save", tags = {"PCMNotice" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmnotices/save")
     public ResponseEntity<Boolean> save(@RequestBody PCMNoticeDTO pcmnoticedto) {
         return ResponseEntity.status(HttpStatus.OK).body(pcmnoticeService.save(pcmnoticeMapping.toDomain(pcmnoticedto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.pcmnoticeMapping,#pcmnoticedtos})")
+    @PreAuthorize("hasPermission(this.pcmnoticeMapping.toDomain(#pcmnoticedtos),'ehr-PCMNotice-Save')")
     @ApiOperation(value = "SaveBatch", tags = {"PCMNotice" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmnotices/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PCMNoticeDTO> pcmnoticedtos) {
@@ -101,7 +100,7 @@ public class PCMNoticeResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission(#pcmnotice_id,'Get',{'Sql',this.pcmnoticeMapping,this.permissionDTO})")
+    @PostAuthorize("hasPermission(this.pcmnoticeMapping.toDomain(returnObject.body),'ehr-PCMNotice-Get')")
     @ApiOperation(value = "Get", tags = {"PCMNotice" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmnotices/{pcmnotice_id}")
     public ResponseEntity<PCMNoticeDTO> get(@PathVariable("pcmnotice_id") String pcmnotice_id) {
@@ -110,21 +109,19 @@ public class PCMNoticeResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMNotice-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"PCMNotice" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmnotices/getdraft")
     public ResponseEntity<PCMNoticeDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(pcmnoticeMapping.toDto(pcmnoticeService.getDraft(new PCMNotice())));
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMNotice-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"PCMNotice" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmnotices/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PCMNoticeDTO pcmnoticedto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pcmnoticeService.checkKey(pcmnoticeMapping.toDomain(pcmnoticedto)));
     }
 
-    @PreAuthorize("hasPermission(#pcmnotice_id,'Remove',{'Sql',this.pcmnoticeMapping,this.permissionDTO})")
+    @PreAuthorize("hasPermission(this.pcmnoticeService.get(#pcmnotice_id),'ehr-PCMNotice-Remove')")
     @ApiOperation(value = "Remove", tags = {"PCMNotice" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmnotices/{pcmnotice_id}")
     @Transactional
@@ -132,7 +129,7 @@ public class PCMNoticeResource {
          return ResponseEntity.status(HttpStatus.OK).body(pcmnoticeService.remove(pcmnotice_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.pcmnoticeMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission(this.pcmnoticeService.getPcmnoticeByIds(#ids),'ehr-PCMNotice-Remove')")
     @ApiOperation(value = "RemoveBatch", tags = {"PCMNotice" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmnotices/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -267,3 +264,4 @@ public class PCMNoticeResource {
                 .body(new PageImpl(pcmnoticeMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 }
+

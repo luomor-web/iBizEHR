@@ -56,6 +56,9 @@ public interface IPCMYDNTMXService extends IService<PCMYDNTMX>{
      */
     boolean execute(String sql, Map param);
 
+    List<PCMYDNTMX> getPcmydntmxByIds(List<String> ids) ;
+    List<PCMYDNTMX> getPcmydntmxByEntities(List<PCMYDNTMX> entities) ;
+
 }
 
 

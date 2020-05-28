@@ -188,6 +188,26 @@ public class PCMPROFILEFJServiceImpl extends ServiceImpl<PCMPROFILEFJMapper, PCM
         return true;
     }
 
+    @Override
+    public List<PCMPROFILEFJ> getPcmprofilefjByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<PCMPROFILEFJ> getPcmprofilefjByEntities(List<PCMPROFILEFJ> entities) {
+        List ids =new ArrayList();
+        for(PCMPROFILEFJ entity : entities){
+            Serializable id=entity.getPcmprofilefjid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

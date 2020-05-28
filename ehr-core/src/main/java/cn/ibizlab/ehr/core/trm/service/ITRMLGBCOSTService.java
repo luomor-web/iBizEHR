@@ -54,6 +54,9 @@ public interface ITRMLGBCOSTService extends IService<TRMLGBCOST>{
      */
     boolean execute(String sql, Map param);
 
+    List<TRMLGBCOST> getTrmlgbcostByIds(List<String> ids) ;
+    List<TRMLGBCOST> getTrmlgbcostByEntities(List<TRMLGBCOST> entities) ;
+
 }
 
 

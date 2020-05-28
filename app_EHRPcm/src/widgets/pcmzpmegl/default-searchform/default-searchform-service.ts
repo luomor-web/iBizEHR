@@ -2,7 +2,7 @@ import { Http,Util,Errorlog } from '@/utils';
 import ControlService from '@/widgets/control-service';
 import PCMZPMEGLService from '@/service/pcmzpmegl/pcmzpmegl-service';
 import DefaultModel from './default-searchform-model';
-import ORMORGService from '@/service/ormorg/ormorg-service';
+import OrmOrgService from '@/service/orm-org/orm-org-service';
 
 
 /**
@@ -45,10 +45,10 @@ export default class DefaultService extends ControlService {
     /**
      * 组织管理服务对象
      *
-     * @type {ORMORGService}
+     * @type {OrmOrgService}
      * @memberof DefaultService
      */
-    public ormorgService: ORMORGService = new ORMORGService();
+    public ormorgService: OrmOrgService = new OrmOrgService();
 
     /**
      * 处理数据
@@ -89,7 +89,7 @@ export default class DefaultService extends ControlService {
      */
     @Errorlog
     public getItems(serviceName: string, interfaceName: string, context: any = {}, data: any, isloading?: boolean): Promise<any[]> {
-        if (Object.is(serviceName, 'ORMORGService') && Object.is(interfaceName, 'FetchOrglist_Profile')) {
+        if (Object.is(serviceName, 'OrmOrgService') && Object.is(interfaceName, 'FetchOrglist_Profile')) {
             return this.doItems(this.ormorgService.FetchOrglist_Profile(JSON.parse(JSON.stringify(context)),data, isloading), 'orgid', 'ormorg');
         }
 

@@ -52,6 +52,9 @@ public interface IPARJXJGService extends IService<PARJXJG>{
      */
     boolean execute(String sql, Map param);
 
+    List<PARJXJG> getParjxjgByIds(List<String> ids) ;
+    List<PARJXJG> getParjxjgByEntities(List<PARJXJG> entities) ;
+
 }
 
 

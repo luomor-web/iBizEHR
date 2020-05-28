@@ -195,6 +195,26 @@ public class PimSearchFieldSetServiceImpl extends ServiceImpl<PimSearchFieldSetM
         return true;
     }
 
+    @Override
+    public List<PimSearchFieldSet> getPimsearchfieldsetByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<PimSearchFieldSet> getPimsearchfieldsetByEntities(List<PimSearchFieldSet> entities) {
+        List ids =new ArrayList();
+        for(PimSearchFieldSet entity : entities){
+            Serializable id=entity.getPimsearchfieldsetid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

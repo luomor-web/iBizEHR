@@ -215,6 +215,26 @@ public class TRMSTAYServiceImpl extends ServiceImpl<TRMSTAYMapper, TRMSTAY> impl
         return true;
     }
 
+    @Override
+    public List<TRMSTAY> getTrmstayByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<TRMSTAY> getTrmstayByEntities(List<TRMSTAY> entities) {
+        List ids =new ArrayList();
+        for(TRMSTAY entity : entities){
+            Serializable id=entity.getTrmstayid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

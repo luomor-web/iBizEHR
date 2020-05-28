@@ -21,7 +21,7 @@ mock.onGet('v7/indexappmenu').reply((config: any) => {
 	separator: false,
 	hidden: false,
 	hidesidebar: false,
-	opendefault: true,
+	opendefault: false,
 	iconcls: '',
 	icon: '../../../img/pzgl/1/daigangguanli.png',
 	textcls: '',

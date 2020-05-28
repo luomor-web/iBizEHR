@@ -54,6 +54,9 @@ public interface ISALSCHEMEService extends IService<SALSCHEME>{
      */
     boolean execute(String sql, Map param);
 
+    List<SALSCHEME> getSalschemeByIds(List<String> ids) ;
+    List<SALSCHEME> getSalschemeByEntities(List<SALSCHEME> entities) ;
+
 }
 
 

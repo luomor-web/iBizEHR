@@ -243,6 +243,26 @@ public class PIMCORRECTIONAPPLYServiceImpl extends ServiceImpl<PIMCORRECTIONAPPL
         return true;
     }
 
+    @Override
+    public List<PIMCORRECTIONAPPLY> getPimcorrectionapplyByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<PIMCORRECTIONAPPLY> getPimcorrectionapplyByEntities(List<PIMCORRECTIONAPPLY> entities) {
+        List ids =new ArrayList();
+        for(PIMCORRECTIONAPPLY entity : entities){
+            Serializable id=entity.getPimcorrectionapplyid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

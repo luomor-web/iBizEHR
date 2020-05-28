@@ -52,6 +52,9 @@ public interface ISALSOURCEService extends IService<SALSOURCE>{
      */
     boolean execute(String sql, Map param);
 
+    List<SALSOURCE> getSalsourceByIds(List<String> ids) ;
+    List<SALSOURCE> getSalsourceByEntities(List<SALSOURCE> entities) ;
+
 }
 
 

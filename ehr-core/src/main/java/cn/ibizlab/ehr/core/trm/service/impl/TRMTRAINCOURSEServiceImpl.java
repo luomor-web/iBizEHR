@@ -67,7 +67,7 @@ public class TRMTRAINCOURSEServiceImpl extends ServiceImpl<TRMTRAINCOURSEMapper,
     private cn.ibizlab.ehr.core.trm.service.ITRMTRAINPLANTERMService trmtrainplantermService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.orm.service.IORMORGService ormorgService;
+    private cn.ibizlab.ehr.core.orm.service.IOrmOrgService ormorgService;
     @Autowired
     @Lazy
     private cn.ibizlab.ehr.core.trm.service.ITRMCOURSESYSTEMService trmcoursesystemService;
@@ -228,9 +228,9 @@ public class TRMTRAINCOURSEServiceImpl extends ServiceImpl<TRMTRAINCOURSEMapper,
     private void fillParentData(TRMTRAINCOURSE et){
         //实体关系[DER1N_TRMTRAINCOURSE_ORMORG_ORMORGID]
         if(!ObjectUtils.isEmpty(et.getOrmorgid())){
-            cn.ibizlab.ehr.core.orm.domain.ORMORG ormorg=et.getOrmorg();
+            cn.ibizlab.ehr.core.orm.domain.OrmOrg ormorg=et.getOrmorg();
             if(ObjectUtils.isEmpty(ormorg)){
-                cn.ibizlab.ehr.core.orm.domain.ORMORG majorEntity=ormorgService.get(et.getOrmorgid());
+                cn.ibizlab.ehr.core.orm.domain.OrmOrg majorEntity=ormorgService.get(et.getOrmorgid());
                 et.setOrmorg(majorEntity);
                 ormorg=majorEntity;
             }
@@ -281,6 +281,26 @@ public class TRMTRAINCOURSEServiceImpl extends ServiceImpl<TRMTRAINCOURSEMapper,
         }
         log.warn("暂未支持的SQL语法");
         return true;
+    }
+
+    @Override
+    public List<TRMTRAINCOURSE> getTrmtraincourseByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<TRMTRAINCOURSE> getTrmtraincourseByEntities(List<TRMTRAINCOURSE> entities) {
+        List ids =new ArrayList();
+        for(TRMTRAINCOURSE entity : entities){
+            Serializable id=entity.getTrmtraincourseid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
     }
 
 }

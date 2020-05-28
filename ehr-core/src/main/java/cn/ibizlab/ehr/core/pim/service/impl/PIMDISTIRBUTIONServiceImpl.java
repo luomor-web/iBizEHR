@@ -58,10 +58,10 @@ public class PIMDISTIRBUTIONServiceImpl extends ServiceImpl<PIMDISTIRBUTIONMappe
     private cn.ibizlab.ehr.core.orm.service.IORMDUTYService ormdutyService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.orm.service.IORMORGSECTORService ormorgsectorService;
+    private cn.ibizlab.ehr.core.orm.service.IOrmOrgsectorService ormorgsectorService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.orm.service.IORMORGService ormorgService;
+    private cn.ibizlab.ehr.core.orm.service.IOrmOrgService ormorgService;
     @Autowired
     @Lazy
     private cn.ibizlab.ehr.core.orm.service.IORMPOSTService ormpostService;
@@ -438,9 +438,9 @@ public class PIMDISTIRBUTIONServiceImpl extends ServiceImpl<PIMDISTIRBUTIONMappe
         }
         //实体关系[DER1N_PIMDISTIRBUTION_ORMORGSECTOR_ORMORGSECTORID]
         if(!ObjectUtils.isEmpty(et.getOrmorgsectorid())){
-            cn.ibizlab.ehr.core.orm.domain.ORMORGSECTOR ormorgsector=et.getOrmorgsector();
+            cn.ibizlab.ehr.core.orm.domain.OrmOrgsector ormorgsector=et.getOrmorgsector();
             if(ObjectUtils.isEmpty(ormorgsector)){
-                cn.ibizlab.ehr.core.orm.domain.ORMORGSECTOR majorEntity=ormorgsectorService.get(et.getOrmorgsectorid());
+                cn.ibizlab.ehr.core.orm.domain.OrmOrgsector majorEntity=ormorgsectorService.get(et.getOrmorgsectorid());
                 et.setOrmorgsector(majorEntity);
                 ormorgsector=majorEntity;
             }
@@ -449,9 +449,9 @@ public class PIMDISTIRBUTIONServiceImpl extends ServiceImpl<PIMDISTIRBUTIONMappe
         }
         //实体关系[DER1N_PIMDISTIRBUTION_ORMORGSECTOR_YBMID]
         if(!ObjectUtils.isEmpty(et.getYbmid())){
-            cn.ibizlab.ehr.core.orm.domain.ORMORGSECTOR ormorgsectorYbm=et.getOrmorgsectorYbm();
+            cn.ibizlab.ehr.core.orm.domain.OrmOrgsector ormorgsectorYbm=et.getOrmorgsectorYbm();
             if(ObjectUtils.isEmpty(ormorgsectorYbm)){
-                cn.ibizlab.ehr.core.orm.domain.ORMORGSECTOR majorEntity=ormorgsectorService.get(et.getYbmid());
+                cn.ibizlab.ehr.core.orm.domain.OrmOrgsector majorEntity=ormorgsectorService.get(et.getYbmid());
                 et.setOrmorgsectorYbm(majorEntity);
                 ormorgsectorYbm=majorEntity;
             }
@@ -460,9 +460,9 @@ public class PIMDISTIRBUTIONServiceImpl extends ServiceImpl<PIMDISTIRBUTIONMappe
         }
         //实体关系[DER1N_PIMDISTIRBUTION_ORMORG_ORMORGID]
         if(!ObjectUtils.isEmpty(et.getOrmorgid())){
-            cn.ibizlab.ehr.core.orm.domain.ORMORG ormorg=et.getOrmorg();
+            cn.ibizlab.ehr.core.orm.domain.OrmOrg ormorg=et.getOrmorg();
             if(ObjectUtils.isEmpty(ormorg)){
-                cn.ibizlab.ehr.core.orm.domain.ORMORG majorEntity=ormorgService.get(et.getOrmorgid());
+                cn.ibizlab.ehr.core.orm.domain.OrmOrg majorEntity=ormorgService.get(et.getOrmorgid());
                 et.setOrmorg(majorEntity);
                 ormorg=majorEntity;
             }
@@ -471,9 +471,9 @@ public class PIMDISTIRBUTIONServiceImpl extends ServiceImpl<PIMDISTIRBUTIONMappe
         }
         //实体关系[DER1N_PIMDISTIRBUTION_ORMORG_YZZID]
         if(!ObjectUtils.isEmpty(et.getYzzid())){
-            cn.ibizlab.ehr.core.orm.domain.ORMORG ormorgYzz=et.getOrmorgYzz();
+            cn.ibizlab.ehr.core.orm.domain.OrmOrg ormorgYzz=et.getOrmorgYzz();
             if(ObjectUtils.isEmpty(ormorgYzz)){
-                cn.ibizlab.ehr.core.orm.domain.ORMORG majorEntity=ormorgService.get(et.getYzzid());
+                cn.ibizlab.ehr.core.orm.domain.OrmOrg majorEntity=ormorgService.get(et.getYzzid());
                 et.setOrmorgYzz(majorEntity);
                 ormorgYzz=majorEntity;
             }
@@ -543,6 +543,26 @@ public class PIMDISTIRBUTIONServiceImpl extends ServiceImpl<PIMDISTIRBUTIONMappe
         }
         log.warn("暂未支持的SQL语法");
         return true;
+    }
+
+    @Override
+    public List<PIMDISTIRBUTION> getPimdistirbutionByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<PIMDISTIRBUTION> getPimdistirbutionByEntities(List<PIMDISTIRBUTION> entities) {
+        List ids =new ArrayList();
+        for(PIMDISTIRBUTION entity : entities){
+            Serializable id=entity.getPimdistirbutionid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
     }
 
 }

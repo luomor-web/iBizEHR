@@ -238,6 +238,26 @@ public class ATTENSUMMARYServiceImpl extends ServiceImpl<ATTENSUMMARYMapper, ATT
         return true;
     }
 
+    @Override
+    public List<ATTENSUMMARY> getAttensummaryByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<ATTENSUMMARY> getAttensummaryByEntities(List<ATTENSUMMARY> entities) {
+        List ids =new ArrayList();
+        for(ATTENSUMMARY entity : entities){
+            Serializable id=entity.getAttensummaryid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

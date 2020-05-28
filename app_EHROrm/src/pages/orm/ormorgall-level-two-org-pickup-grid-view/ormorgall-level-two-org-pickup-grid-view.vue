@@ -2,8 +2,8 @@
 import { Component } from 'vue-property-decorator';
 import ORMORGAllLevelTwoOrgPickupGridViewBase from './ormorgall-level-two-org-pickup-grid-view-base.vue';
 
-import view_grid from '@widgets/ormorg/main-grid/main-grid.vue';
-import view_searchform from '@widgets/ormorg/default-searchform/default-searchform.vue';
+import view_grid from '@widgets/orm-org/main-grid/main-grid.vue';
+import view_searchform from '@widgets/orm-org/default-searchform/default-searchform.vue';
 
 /**
  * 管理单位

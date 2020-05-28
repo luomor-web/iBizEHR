@@ -57,6 +57,9 @@ public interface IPIMQUALMAJORService extends IService<PIMQUALMAJOR>{
      */
     boolean execute(String sql, Map param);
 
+    List<PIMQUALMAJOR> getPimqualmajorByIds(List<String> ids) ;
+    List<PIMQUALMAJOR> getPimqualmajorByEntities(List<PIMQUALMAJOR> entities) ;
+
 }
 
 

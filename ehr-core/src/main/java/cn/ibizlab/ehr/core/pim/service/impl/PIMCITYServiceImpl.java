@@ -182,6 +182,26 @@ public class PIMCITYServiceImpl extends ServiceImpl<PIMCITYMapper, PIMCITY> impl
         return true;
     }
 
+    @Override
+    public List<PIMCITY> getPimcityByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<PIMCITY> getPimcityByEntities(List<PIMCITY> entities) {
+        List ids =new ArrayList();
+        for(PIMCITY entity : entities){
+            Serializable id=entity.getPimcityid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

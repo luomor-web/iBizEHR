@@ -200,7 +200,7 @@ export default {
         '40': '年度',
         empty: '',
     },
-    DASTATE: {
+    EhrCodeListDastate: {
         '10': '有效',
         '20': '失效',
         empty: '',
@@ -307,7 +307,7 @@ export default {
         '5': '岗位（技能）证书',
         empty: '',
     },
-    SSQY: {
+    EhrCodeListSsqy: {
         empty: '',
     },
     PIMCL_XB: {

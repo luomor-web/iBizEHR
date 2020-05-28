@@ -40,22 +40,9 @@
 			]]>
     </sql>
 
-    <!--数据查询[Default]-->
-    <sql id="Default" databaseId="oracle">
-       <![CDATA[	SELECT t1.CREATEDATE, t1.CREATEMAN, t1.FJ, t1.FJNAME, t1.PCMPROFILEFJID, t1.PCMPROFILEFJNAME, t1.UPDATEDATE, t1.UPDATEMAN FROM T_PCMPROFILEFJ t1  
-			]]>
-    </sql>
-
     <!--数据查询[PROFILEFJ]-->
     <sql id="PROFILEFJ" databaseId="mysql">
        <![CDATA[	
-			]]>
-    </sql>
-
-    <!--数据查询[PROFILEFJ]-->
-    <sql id="PROFILEFJ" databaseId="oracle">
-       <![CDATA[	select  t.*  from V_PCMPROFILE_FJ  t
-				 WHERE 	pcmprofileid=#{srf.webcontext.srfparentkey')}
 			]]>
     </sql>
 

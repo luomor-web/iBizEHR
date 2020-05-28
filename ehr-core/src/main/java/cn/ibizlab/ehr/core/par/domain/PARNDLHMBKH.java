@@ -18,7 +18,7 @@ import cn.ibizlab.ehr.util.annotation.DEField;
 import cn.ibizlab.ehr.util.enums.DEPredefinedFieldType;
 import cn.ibizlab.ehr.util.enums.DEFieldDefaultValueType;
 import java.io.Serializable;
-import lombok.Data;
+import lombok.*;
 import org.springframework.data.annotation.Transient;
 
 
@@ -29,7 +29,11 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 /**
  * 实体[量化目标考核]
  */
-@Data
+@Builder
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @TableName(value = "T_PARNDLHMBKH",resultMap = "PARNDLHMBKHResultMap")
 public class PARNDLHMBKH extends EntityMP implements Serializable {
 

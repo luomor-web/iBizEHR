@@ -3,7 +3,7 @@ package cn.ibizlab.ehr.util.filter;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.mongodb.QueryBuilder;
-import lombok.Data;
+import lombok.*;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j

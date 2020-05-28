@@ -2,7 +2,7 @@
 import { Component } from 'vue-property-decorator';
 import ORMERPORGLegalMPickupViewBase from './ormerporglegal-mpickup-view-base.vue';
 
-import view_pickupviewpanel from '@widgets/ormerporg/legal-mpickup-viewpickupviewpanel-pickupviewpanel/legal-mpickup-viewpickupviewpanel-pickupviewpanel.vue';
+import view_pickupviewpanel from '@widgets/orm-erporg/legal-mpickup-viewpickupviewpanel-pickupviewpanel/legal-mpickup-viewpickupviewpanel-pickupviewpanel.vue';
 
 /**
  * 管理单位

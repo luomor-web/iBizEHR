@@ -51,10 +51,10 @@ public class TRMTRAINFILLINServiceImpl extends ServiceImpl<TRMTRAINFILLINMapper,
     private cn.ibizlab.ehr.core.trm.service.ITRMTRAINFILLINService trmtrainfillinService = this;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.orm.service.IORMORGSECTORService ormorgsectorService;
+    private cn.ibizlab.ehr.core.orm.service.IOrmOrgsectorService ormorgsectorService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.orm.service.IORMORGService ormorgService;
+    private cn.ibizlab.ehr.core.orm.service.IOrmOrgService ormorgService;
     @Autowired
     @Lazy
     private cn.ibizlab.ehr.core.trm.service.ITRMDEPARTService trmdepartService;
@@ -222,9 +222,9 @@ public class TRMTRAINFILLINServiceImpl extends ServiceImpl<TRMTRAINFILLINMapper,
     private void fillParentData(TRMTRAINFILLIN et){
         //实体关系[DER1N_TRMTRAINFILLIN_ORMORGSECTOR_ORMORGSECTORID]
         if(!ObjectUtils.isEmpty(et.getOrmorgsectorid())){
-            cn.ibizlab.ehr.core.orm.domain.ORMORGSECTOR ormorgsector=et.getOrmorgsector();
+            cn.ibizlab.ehr.core.orm.domain.OrmOrgsector ormorgsector=et.getOrmorgsector();
             if(ObjectUtils.isEmpty(ormorgsector)){
-                cn.ibizlab.ehr.core.orm.domain.ORMORGSECTOR majorEntity=ormorgsectorService.get(et.getOrmorgsectorid());
+                cn.ibizlab.ehr.core.orm.domain.OrmOrgsector majorEntity=ormorgsectorService.get(et.getOrmorgsectorid());
                 et.setOrmorgsector(majorEntity);
                 ormorgsector=majorEntity;
             }
@@ -233,9 +233,9 @@ public class TRMTRAINFILLINServiceImpl extends ServiceImpl<TRMTRAINFILLINMapper,
         }
         //实体关系[DER1N_TRMTRAINFILLIN_ORMORG_ORMORGID]
         if(!ObjectUtils.isEmpty(et.getOrmorgid())){
-            cn.ibizlab.ehr.core.orm.domain.ORMORG ormorg=et.getOrmorg();
+            cn.ibizlab.ehr.core.orm.domain.OrmOrg ormorg=et.getOrmorg();
             if(ObjectUtils.isEmpty(ormorg)){
-                cn.ibizlab.ehr.core.orm.domain.ORMORG majorEntity=ormorgService.get(et.getOrmorgid());
+                cn.ibizlab.ehr.core.orm.domain.OrmOrg majorEntity=ormorgService.get(et.getOrmorgid());
                 et.setOrmorg(majorEntity);
                 ormorg=majorEntity;
             }
@@ -289,6 +289,26 @@ public class TRMTRAINFILLINServiceImpl extends ServiceImpl<TRMTRAINFILLINMapper,
         }
         log.warn("暂未支持的SQL语法");
         return true;
+    }
+
+    @Override
+    public List<TRMTRAINFILLIN> getTrmtrainfillinByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<TRMTRAINFILLIN> getTrmtrainfillinByEntities(List<TRMTRAINFILLIN> entities) {
+        List ids =new ArrayList();
+        for(TRMTRAINFILLIN entity : entities){
+            Serializable id=entity.getTrmtrainfillinid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
     }
 
 }

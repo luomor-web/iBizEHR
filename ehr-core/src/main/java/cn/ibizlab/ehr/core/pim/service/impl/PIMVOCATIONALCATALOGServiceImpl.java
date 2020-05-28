@@ -182,6 +182,26 @@ public class PIMVOCATIONALCATALOGServiceImpl extends ServiceImpl<PIMVOCATIONALCA
         return true;
     }
 
+    @Override
+    public List<PIMVOCATIONALCATALOG> getPimvocationalcatalogByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<PIMVOCATIONALCATALOG> getPimvocationalcatalogByEntities(List<PIMVOCATIONALCATALOG> entities) {
+        List ids =new ArrayList();
+        for(PIMVOCATIONALCATALOG entity : entities){
+            Serializable id=entity.getPimvocationalcatalogid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

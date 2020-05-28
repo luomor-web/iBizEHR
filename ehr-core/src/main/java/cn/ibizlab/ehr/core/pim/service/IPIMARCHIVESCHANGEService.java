@@ -62,6 +62,9 @@ public interface IPIMARCHIVESCHANGEService extends IService<PIMARCHIVESCHANGE>{
      */
     boolean execute(String sql, Map param);
 
+    List<PIMARCHIVESCHANGE> getPimarchiveschangeByIds(List<String> ids) ;
+    List<PIMARCHIVESCHANGE> getPimarchiveschangeByEntities(List<PIMARCHIVESCHANGE> entities) ;
+
 }
 
 

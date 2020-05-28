@@ -179,6 +179,26 @@ public class PCMNORecyclingLibraryServiceImpl extends ServiceImpl<PCMNORecycling
         return true;
     }
 
+    @Override
+    public List<PCMNORecyclingLibrary> getPcmnorecyclinglibraryByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<PCMNORecyclingLibrary> getPcmnorecyclinglibraryByEntities(List<PCMNORecyclingLibrary> entities) {
+        List ids =new ArrayList();
+        for(PCMNORecyclingLibrary entity : entities){
+            Serializable id=entity.getPcmnorecyclinglibraryid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

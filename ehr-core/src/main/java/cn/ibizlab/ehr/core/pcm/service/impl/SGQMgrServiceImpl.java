@@ -38,7 +38,7 @@ import com.alibaba.fastjson.JSONObject;
 import org.springframework.util.StringUtils;
 
 /**
- * 实体[试岗期管理（弃用）] 服务对象接口实现
+ * 实体[试岗期管理（停用）] 服务对象接口实现
  */
 @Slf4j
 @Service("SGQMgrServiceImpl")
@@ -203,6 +203,26 @@ public class SGQMgrServiceImpl extends ServiceImpl<SGQMgrMapper, SGQMgr> impleme
         }
         log.warn("暂未支持的SQL语法");
         return true;
+    }
+
+    @Override
+    public List<SGQMgr> getSgqmgrByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<SGQMgr> getSgqmgrByEntities(List<SGQMgr> entities) {
+        List ids =new ArrayList();
+        for(SGQMgr entity : entities){
+            Serializable id=entity.getSgqmgrid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
     }
 
 }

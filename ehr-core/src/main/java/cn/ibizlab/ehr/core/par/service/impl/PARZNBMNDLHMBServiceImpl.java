@@ -49,7 +49,7 @@ public class PARZNBMNDLHMBServiceImpl extends ServiceImpl<PARZNBMNDLHMBMapper, P
     private cn.ibizlab.ehr.core.par.service.IPARZNBMNDLHMBMXService parznbmndlhmbmxService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.orm.service.IORMORGSECTORService ormorgsectorService;
+    private cn.ibizlab.ehr.core.orm.service.IOrmOrgsectorService ormorgsectorService;
 
     private int batchSize = 500;
 
@@ -184,9 +184,9 @@ public class PARZNBMNDLHMBServiceImpl extends ServiceImpl<PARZNBMNDLHMBMapper, P
     private void fillParentData(PARZNBMNDLHMB et){
         //实体关系[DER1N_PARZNBMNDLHMB_ORMORGSECTOR_ORMORGSECTORID]
         if(!ObjectUtils.isEmpty(et.getOrmorgsectorid())){
-            cn.ibizlab.ehr.core.orm.domain.ORMORGSECTOR ormorgsector=et.getOrmorgsector();
+            cn.ibizlab.ehr.core.orm.domain.OrmOrgsector ormorgsector=et.getOrmorgsector();
             if(ObjectUtils.isEmpty(ormorgsector)){
-                cn.ibizlab.ehr.core.orm.domain.ORMORGSECTOR majorEntity=ormorgsectorService.get(et.getOrmorgsectorid());
+                cn.ibizlab.ehr.core.orm.domain.OrmOrgsector majorEntity=ormorgsectorService.get(et.getOrmorgsectorid());
                 et.setOrmorgsector(majorEntity);
                 ormorgsector=majorEntity;
             }
@@ -217,6 +217,26 @@ public class PARZNBMNDLHMBServiceImpl extends ServiceImpl<PARZNBMNDLHMBMapper, P
         }
         log.warn("暂未支持的SQL语法");
         return true;
+    }
+
+    @Override
+    public List<PARZNBMNDLHMB> getParznbmndlhmbByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<PARZNBMNDLHMB> getParznbmndlhmbByEntities(List<PARZNBMNDLHMB> entities) {
+        List ids =new ArrayList();
+        for(PARZNBMNDLHMB entity : entities){
+            Serializable id=entity.getParznbmndlhmbid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
     }
 
 }

@@ -61,6 +61,9 @@ public interface IATTENDANCERECORDService extends IService<ATTENDANCERECORD>{
      */
     boolean execute(String sql, Map param);
 
+    List<ATTENDANCERECORD> getAttendancerecordByIds(List<String> ids) ;
+    List<ATTENDANCERECORD> getAttendancerecordByEntities(List<ATTENDANCERECORD> entities) ;
+
 }
 
 

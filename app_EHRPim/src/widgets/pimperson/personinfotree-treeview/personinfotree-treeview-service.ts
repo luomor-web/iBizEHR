@@ -4,8 +4,8 @@ import PIMPERSONService from '@/service/pimperson/pimperson-service';
 import PERSONINFOTREEModel from './personinfotree-treeview-model';
 import CodeListService from '@service/app/codelist-service';
 import i18n from '@/locale';
-import ORMORGService from '@service/ormorg/ormorg-service';
-import ORMORGSECTORService from '@service/ormorgsector/ormorgsector-service';
+import OrmOrgService from '@service/orm-org/orm-org-service';
+import OrmOrgsectorService from '@service/orm-orgsector/orm-orgsector-service';
 
 
 /**
@@ -58,18 +58,18 @@ export default class PERSONINFOTREEService extends ControlService {
     /**
      * 组织管理服务对象
      *
-     * @type {ORMORGService}
+     * @type {OrmOrgService}
      * @memberof PERSONINFOTREEService
      */
-    public ormorgService: ORMORGService = new ORMORGService({ $store: this.getStore() });
+    public ormorgService: OrmOrgService = new OrmOrgService({ $store: this.getStore() });
 
     /**
      * 部门管理服务对象
      *
-     * @type {ORMORGSECTORService}
+     * @type {OrmOrgsectorService}
      * @memberof PERSONINFOTREEService
      */
-    public ormorgsectorService: ORMORGSECTORService = new ORMORGSECTORService({ $store: this.getStore() });
+    public ormorgsectorService: OrmOrgsectorService = new OrmOrgsectorService({ $store: this.getStore() });
 
     /**
      * 节点分隔符号
@@ -253,9 +253,9 @@ export default class PERSONINFOTREEService extends ControlService {
                         // 整理context
                         let strId: string = entity.orgid;
                         let strText: string = entity.shortname;
-                        Object.assign(treeNode,{srfparentdename:'ORMORG',srfparentkey:entity.orgid});
+                        Object.assign(treeNode,{srfparentdename:'OrmOrg',srfparentkey:entity.orgid});
                         let tempContext:any = JSON.parse(JSON.stringify(context));
-                        Object.assign(tempContext,{srfparentdename:'ORMORG',srfparentkey:entity.orgid,ormorg:strId})
+                        Object.assign(tempContext,{srfparentdename:'OrmOrg',srfparentkey:entity.orgid,ormorg:strId})
                         Object.assign(treeNode,{srfappctx:tempContext});
                         Object.assign(treeNode,{'ormorg':strId});
                         Object.assign(treeNode, { srfkey: strId });
@@ -411,9 +411,9 @@ export default class PERSONINFOTREEService extends ControlService {
                         // 整理context
                         let strId: string = entity.orgid;
                         let strText: string = entity.shortname;
-                        Object.assign(treeNode,{srfparentdename:'ORMORG',srfparentkey:entity.orgid});
+                        Object.assign(treeNode,{srfparentdename:'OrmOrg',srfparentkey:entity.orgid});
                         let tempContext:any = JSON.parse(JSON.stringify(context));
-                        Object.assign(tempContext,{srfparentdename:'ORMORG',srfparentkey:entity.orgid,ormorg:strId})
+                        Object.assign(tempContext,{srfparentdename:'OrmOrg',srfparentkey:entity.orgid,ormorg:strId})
                         Object.assign(treeNode,{srfappctx:tempContext});
                         Object.assign(treeNode,{'ormorg':strId});
                         Object.assign(treeNode, { srfkey: strId });
@@ -570,9 +570,9 @@ export default class PERSONINFOTREEService extends ControlService {
                         // 整理context
                         let strId: string = entity.orgid;
                         let strText: string = entity.shortname;
-                        Object.assign(treeNode,{srfparentdename:'ORMORG',srfparentkey:entity.orgid});
+                        Object.assign(treeNode,{srfparentdename:'OrmOrg',srfparentkey:entity.orgid});
                         let tempContext:any = JSON.parse(JSON.stringify(context));
-                        Object.assign(tempContext,{srfparentdename:'ORMORG',srfparentkey:entity.orgid,ormorg:strId})
+                        Object.assign(tempContext,{srfparentdename:'OrmOrg',srfparentkey:entity.orgid,ormorg:strId})
                         Object.assign(treeNode,{srfappctx:tempContext});
                         Object.assign(treeNode,{'ormorg':strId});
                         Object.assign(treeNode, { srfkey: strId });
@@ -713,9 +713,9 @@ export default class PERSONINFOTREEService extends ControlService {
                         // 整理context
                         let strId: string = entity.orgsectorid;
                         let strText: string = entity.shortname;
-                        Object.assign(treeNode,{srfparentdename:'ORMORGSECTOR',srfparentkey:entity.orgsectorid});
+                        Object.assign(treeNode,{srfparentdename:'OrmOrgsector',srfparentkey:entity.orgsectorid});
                         let tempContext:any = JSON.parse(JSON.stringify(context));
-                        Object.assign(tempContext,{srfparentdename:'ORMORGSECTOR',srfparentkey:entity.orgsectorid,ormorgsector:strId})
+                        Object.assign(tempContext,{srfparentdename:'OrmOrgsector',srfparentkey:entity.orgsectorid,ormorgsector:strId})
                         Object.assign(treeNode,{srfappctx:tempContext});
                         Object.assign(treeNode,{'ormorgsector':strId});
                         Object.assign(treeNode, { srfkey: strId });

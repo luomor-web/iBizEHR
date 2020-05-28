@@ -179,6 +179,26 @@ public class PimSearchModalServiceImpl extends ServiceImpl<PimSearchModalMapper,
         return true;
     }
 
+    @Override
+    public List<PimSearchModal> getPimsearchmodalByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<PimSearchModal> getPimsearchmodalByEntities(List<PimSearchModal> entities) {
+        List ids =new ArrayList();
+        for(PimSearchModal entity : entities){
+            Serializable id=entity.getPimsearchmodalid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

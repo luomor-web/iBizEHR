@@ -52,6 +52,9 @@ public interface IPIMQUALTYPEService extends IService<PIMQUALTYPE>{
      */
     boolean execute(String sql, Map param);
 
+    List<PIMQUALTYPE> getPimqualtypeByIds(List<String> ids) ;
+    List<PIMQUALTYPE> getPimqualtypeByEntities(List<PIMQUALTYPE> entities) ;
+
 }
 
 

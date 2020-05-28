@@ -216,6 +216,26 @@ public class TestResultServiceImpl extends ServiceImpl<TestResultMapper, TestRes
         return true;
     }
 
+    @Override
+    public List<TestResult> getTestresultByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<TestResult> getTestresultByEntities(List<TestResult> entities) {
+        List ids =new ArrayList();
+        for(TestResult entity : entities){
+            Serializable id=entity.getTestresultid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

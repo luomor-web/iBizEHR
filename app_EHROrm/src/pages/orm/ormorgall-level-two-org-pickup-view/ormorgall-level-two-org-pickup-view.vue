@@ -2,7 +2,7 @@
 import { Component } from 'vue-property-decorator';
 import ORMORGAllLevelTwoOrgPickupViewBase from './ormorgall-level-two-org-pickup-view-base.vue';
 
-import view_pickupviewpanel from '@widgets/ormorg/all-level-two-org-pickup-viewpickupviewpanel-pickupviewpanel/all-level-two-org-pickup-viewpickupviewpanel-pickupviewpanel.vue';
+import view_pickupviewpanel from '@widgets/orm-org/all-level-two-org-pickup-viewpickupviewpanel-pickupviewpanel/all-level-two-org-pickup-viewpickupviewpanel-pickupviewpanel.vue';
 
 /**
  * 管理单位

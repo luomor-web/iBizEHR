@@ -42,7 +42,7 @@ export class UIServiceRegister {
                 this.allUIService.set('pcmworkresume', () => import('@/uiservice/pcmworkresume/pcmworkresume-ui-service'));
         this.allUIService.set('pcmprofileapproval', () => import('@/uiservice/pcmprofileapproval/pcmprofileapproval-ui-service'));
         this.allUIService.set('pcmgxml', () => import('@/uiservice/pcmgxml/pcmgxml-ui-service'));
-        this.allUIService.set('ormorg', () => import('@/uiservice/ormorg/ormorg-ui-service'));
+        this.allUIService.set('ormorg', () => import('@/uiservice/orm-org/orm-org-ui-service'));
         this.allUIService.set('pcmpracticeexperience', () => import('@/uiservice/pcmpracticeexperience/pcmpracticeexperience-ui-service'));
         this.allUIService.set('ormduty', () => import('@/uiservice/ormduty/ormduty-ui-service'));
         this.allUIService.set('pimcity', () => import('@/uiservice/pimcity/pimcity-ui-service'));
@@ -60,7 +60,7 @@ export class UIServiceRegister {
         this.allUIService.set('pcmcertofreg', () => import('@/uiservice/pcmcertofreg/pcmcertofreg-ui-service'));
         this.allUIService.set('tdzwxx', () => import('@/uiservice/tdzwxx/tdzwxx-ui-service'));
         this.allUIService.set('codelist1', () => import('@/uiservice/code-list1/code-list1-ui-service'));
-        this.allUIService.set('ormorgsector', () => import('@/uiservice/ormorgsector/ormorgsector-ui-service'));
+        this.allUIService.set('ormorgsector', () => import('@/uiservice/orm-orgsector/orm-orgsector-ui-service'));
         this.allUIService.set('pcmschooloffice', () => import('@/uiservice/pcmschooloffice/pcmschooloffice-ui-service'));
         this.allUIService.set('testresult', () => import('@/uiservice/test-result/test-result-ui-service'));
         this.allUIService.set('pcmzpmegl', () => import('@/uiservice/pcmzpmegl/pcmzpmegl-ui-service'));

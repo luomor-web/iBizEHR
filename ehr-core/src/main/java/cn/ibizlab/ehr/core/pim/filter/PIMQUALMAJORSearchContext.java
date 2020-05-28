@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.HashMap;
 
-import lombok.Data;
+import lombok.*;
 import lombok.extern.slf4j.Slf4j;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.alibaba.fastjson.annotation.JSONField;
@@ -39,6 +39,13 @@ public class PIMQUALMAJORSearchContext extends QueryWrapperContext<PIMQUALMAJOR>
         this.n_pimqualmajorid_like = n_pimqualmajorid_like;
         if(!ObjectUtils.isEmpty(this.n_pimqualmajorid_like)){
             this.getSelectCond().like("pimqualmajorid", n_pimqualmajorid_like);
+        }
+    }
+	private String n_zyzgzy_like;//[执业资格名称]
+	public void setN_zyzgzy_like(String n_zyzgzy_like) {
+        this.n_zyzgzy_like = n_zyzgzy_like;
+        if(!ObjectUtils.isEmpty(this.n_zyzgzy_like)){
+            this.getSelectCond().like("zyzgzy", n_zyzgzy_like);
         }
     }
 	private String n_pimqualmajorname_like;//[执业资格]
@@ -91,8 +98,10 @@ public class PIMQUALMAJORSearchContext extends QueryWrapperContext<PIMQUALMAJOR>
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("gwzs",query);
-			this.getSelectCond().or().like("zyzgzy",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("gwzs", query)   
+                        .or().like("zyzgzy", query)            
+            );
 		 }
 	}
 }

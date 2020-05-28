@@ -340,6 +340,26 @@ public class TRMTRAINPLANTERMServiceImpl extends ServiceImpl<TRMTRAINPLANTERMMap
         return true;
     }
 
+    @Override
+    public List<TRMTRAINPLANTERM> getTrmtrainplantermByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<TRMTRAINPLANTERM> getTrmtrainplantermByEntities(List<TRMTRAINPLANTERM> entities) {
+        List ids =new ArrayList();
+        for(TRMTRAINPLANTERM entity : entities){
+            Serializable id=entity.getTrmtrainplantermid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

@@ -56,6 +56,9 @@ public interface IPIMARMYCADRESService extends IService<PIMARMYCADRES>{
      */
     boolean execute(String sql, Map param);
 
+    List<PIMARMYCADRES> getPimarmycadresByIds(List<String> ids) ;
+    List<PIMARMYCADRES> getPimarmycadresByEntities(List<PIMARMYCADRES> entities) ;
+
 }
 
 

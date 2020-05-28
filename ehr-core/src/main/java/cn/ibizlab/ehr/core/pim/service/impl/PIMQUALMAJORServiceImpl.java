@@ -52,7 +52,7 @@ public class PIMQUALMAJORServiceImpl extends ServiceImpl<PIMQUALMAJORMapper, PIM
     private cn.ibizlab.ehr.core.pim.service.IPIMVOCATIONALService pimvocationalService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.orm.service.IORMORGService ormorgService;
+    private cn.ibizlab.ehr.core.orm.service.IOrmOrgService ormorgService;
     @Autowired
     @Lazy
     private cn.ibizlab.ehr.core.pim.service.IPIMQUALTYPEService pimqualtypeService;
@@ -218,6 +218,26 @@ public class PIMQUALMAJORServiceImpl extends ServiceImpl<PIMQUALMAJORMapper, PIM
         }
         log.warn("暂未支持的SQL语法");
         return true;
+    }
+
+    @Override
+    public List<PIMQUALMAJOR> getPimqualmajorByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<PIMQUALMAJOR> getPimqualmajorByEntities(List<PIMQUALMAJOR> entities) {
+        List ids =new ArrayList();
+        for(PIMQUALMAJOR entity : entities){
+            Serializable id=entity.getPimqualmajorid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
     }
 
 }

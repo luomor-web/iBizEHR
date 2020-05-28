@@ -49,7 +49,7 @@ public class PIMWorkflowServiceImpl extends ServiceImpl<PIMWorkflowMapper, PIMWo
     private cn.ibizlab.ehr.core.pim.service.IPIMWorkflowRefService pimworkflowrefService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.orm.service.IORMORGService ormorgService;
+    private cn.ibizlab.ehr.core.orm.service.IOrmOrgService ormorgService;
 
     private int batchSize = 500;
 
@@ -191,9 +191,9 @@ public class PIMWorkflowServiceImpl extends ServiceImpl<PIMWorkflowMapper, PIMWo
     private void fillParentData(PIMWorkflow et){
         //实体关系[DER1N_PIMWORKFLOW_ORMORG_ORMORGID]
         if(!ObjectUtils.isEmpty(et.getOrmorgid())){
-            cn.ibizlab.ehr.core.orm.domain.ORMORG ormorg=et.getOrmorg();
+            cn.ibizlab.ehr.core.orm.domain.OrmOrg ormorg=et.getOrmorg();
             if(ObjectUtils.isEmpty(ormorg)){
-                cn.ibizlab.ehr.core.orm.domain.ORMORG majorEntity=ormorgService.get(et.getOrmorgid());
+                cn.ibizlab.ehr.core.orm.domain.OrmOrg majorEntity=ormorgService.get(et.getOrmorgid());
                 et.setOrmorg(majorEntity);
                 ormorg=majorEntity;
             }
@@ -223,6 +223,26 @@ public class PIMWorkflowServiceImpl extends ServiceImpl<PIMWorkflowMapper, PIMWo
         }
         log.warn("暂未支持的SQL语法");
         return true;
+    }
+
+    @Override
+    public List<PIMWorkflow> getPimworkflowByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<PIMWorkflow> getPimworkflowByEntities(List<PIMWorkflow> entities) {
+        List ids =new ArrayList();
+        for(PIMWorkflow entity : entities){
+            Serializable id=entity.getPimworkflowid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
     }
 
 }

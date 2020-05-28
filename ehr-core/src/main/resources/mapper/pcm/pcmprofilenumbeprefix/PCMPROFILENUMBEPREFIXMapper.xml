@@ -15,7 +15,7 @@
             
 		
 		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
-		<association property="ormorg" javaType="cn.ibizlab.ehr.core.orm.domain.ORMORG" column="ormorgid" select="cn.ibizlab.ehr.core.orm.mapper.ORMORGMapper.selectById" fetchType="lazy"></association>
+		<association property="ormorg" javaType="cn.ibizlab.ehr.core.orm.domain.OrmOrg" column="ormorgid" select="cn.ibizlab.ehr.core.orm.mapper.OrmOrgMapper.selectById" fetchType="lazy"></association>
     </resultMap>
 
 	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_PCMPROFILENUMBEPREFIX_ORMORG_ORMORGID] -->
@@ -38,12 +38,6 @@
     <!--数据查询[Default]-->
     <sql id="Default" databaseId="mysql">
        <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`NUMBERPREFIX`, t1.`ORMORGID`, t11.`ORGNAME` AS `ORMORGNAME`, t1.`PCMPROFILENUMBEPREFIXID`, t1.`PCMPROFILENUMBEPREFIXNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t11.`ZZDZS` FROM `T_PCMPROFILENUMBEPREFIX` t1  LEFT JOIN T_SRFORG t11 ON t1.ORMORGID = t11.ORGID  
-			]]>
-    </sql>
-
-    <!--数据查询[Default]-->
-    <sql id="Default" databaseId="oracle">
-       <![CDATA[	SELECT t1.CREATEDATE, t1.CREATEMAN, t1.NUMBERPREFIX, t1.ORMORGID, t11.ORGNAME AS ORMORGNAME, t1.PCMPROFILENUMBEPREFIXID, t1.PCMPROFILENUMBEPREFIXNAME, t1.UPDATEDATE, t1.UPDATEMAN, t11.ZZDZS FROM T_PCMPROFILENUMBEPREFIX t1  LEFT JOIN T_SRFORG t11 ON t1.ORMORGID = t11.ORGID  
 			]]>
     </sql>
 

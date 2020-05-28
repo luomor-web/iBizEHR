@@ -238,6 +238,26 @@ public class SALLOGServiceImpl extends ServiceImpl<SALLOGMapper, SALLOG> impleme
         return true;
     }
 
+    @Override
+    public List<SALLOG> getSallogByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<SALLOG> getSallogByEntities(List<SALLOG> entities) {
+        List ids =new ArrayList();
+        for(SALLOG entity : entities){
+            Serializable id=entity.getSallogid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

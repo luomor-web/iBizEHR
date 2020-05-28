@@ -1,6 +1,5 @@
 import { Http,Util } from '@/utils';
 import EntityService from '../entity-service';
-import EnsureHighestTechLogic from '@/service/pimtitle/ensure-highest-tech-logic';
 
 
 

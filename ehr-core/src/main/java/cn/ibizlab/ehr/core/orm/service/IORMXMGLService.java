@@ -54,6 +54,9 @@ public interface IORMXMGLService extends IService<ORMXMGL>{
      */
     boolean execute(String sql, Map param);
 
+    List<ORMXMGL> getOrmxmglByIds(List<String> ids) ;
+    List<ORMXMGL> getOrmxmglByEntities(List<ORMXMGL> entities) ;
+
 }
 
 

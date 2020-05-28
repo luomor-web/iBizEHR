@@ -1,7 +1,7 @@
 import pcmworkresume_en_US from '@locale/lanres/pcmworkresume/pcmworkresume_en_US';
 import pcmprofileapproval_en_US from '@locale/lanres/pcmprofileapproval/pcmprofileapproval_en_US';
 import pcmgxml_en_US from '@locale/lanres/pcmgxml/pcmgxml_en_US';
-import ormorg_en_US from '@locale/lanres/ormorg/ormorg_en_US';
+import ormorg_en_US from '@locale/lanres/orm-org/orm-org_en_US';
 import pcmpracticeexperience_en_US from '@locale/lanres/pcmpracticeexperience/pcmpracticeexperience_en_US';
 import ormduty_en_US from '@locale/lanres/ormduty/ormduty_en_US';
 import pimcity_en_US from '@locale/lanres/pimcity/pimcity_en_US';
@@ -19,7 +19,7 @@ import pcmprofilenumbeprefix_en_US from '@locale/lanres/pcmprofilenumbeprefix/pc
 import pcmcertofreg_en_US from '@locale/lanres/pcmcertofreg/pcmcertofreg_en_US';
 import tdzwxx_en_US from '@locale/lanres/tdzwxx/tdzwxx_en_US';
 import codelist1_en_US from '@locale/lanres/code-list1/code-list1_en_US';
-import ormorgsector_en_US from '@locale/lanres/ormorgsector/ormorgsector_en_US';
+import ormorgsector_en_US from '@locale/lanres/orm-orgsector/orm-orgsector_en_US';
 import pcmschooloffice_en_US from '@locale/lanres/pcmschooloffice/pcmschooloffice_en_US';
 import testresult_en_US from '@locale/lanres/test-result/test-result_en_US';
 import pcmzpmegl_en_US from '@locale/lanres/pcmzpmegl/pcmzpmegl_en_US';
@@ -77,8 +77,8 @@ export default {
         // 非实体视图
         views: {
             index: {
-                caption: '招聘管理',
-                title: '招聘管理',
+                caption: 'EHR—招聘管理',
+                title: 'EHR—招聘管理',
             },
         },
         utilview:{

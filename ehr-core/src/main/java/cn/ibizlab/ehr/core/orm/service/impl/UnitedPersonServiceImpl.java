@@ -204,6 +204,26 @@ public class UnitedPersonServiceImpl extends ServiceImpl<UnitedPersonMapper, Uni
         return true;
     }
 
+    @Override
+    public List<UnitedPerson> getUnitedpersonByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<UnitedPerson> getUnitedpersonByEntities(List<UnitedPerson> entities) {
+        List ids =new ArrayList();
+        for(UnitedPerson entity : entities){
+            Serializable id=entity.getUnitedpersonid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

@@ -53,6 +53,9 @@ public interface IPCMPROFILESZYJTJService extends IService<PCMPROFILESZYJTJ>{
      */
     boolean execute(String sql, Map param);
 
+    List<PCMPROFILESZYJTJ> getPcmprofileszyjtjByIds(List<String> ids) ;
+    List<PCMPROFILESZYJTJ> getPcmprofileszyjtjByEntities(List<PCMPROFILESZYJTJ> entities) ;
+
 }
 
 

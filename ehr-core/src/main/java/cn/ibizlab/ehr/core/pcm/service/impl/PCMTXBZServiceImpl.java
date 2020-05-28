@@ -179,6 +179,26 @@ public class PCMTXBZServiceImpl extends ServiceImpl<PCMTXBZMapper, PCMTXBZ> impl
         return true;
     }
 
+    @Override
+    public List<PCMTXBZ> getPcmtxbzByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<PCMTXBZ> getPcmtxbzByEntities(List<PCMTXBZ> entities) {
+        List ids =new ArrayList();
+        for(PCMTXBZ entity : entities){
+            Serializable id=entity.getPcmtxbzid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

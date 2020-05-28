@@ -64,6 +64,9 @@ public interface IVACLEAVEMANAGEService extends IService<VACLEAVEMANAGE>{
      */
     boolean execute(String sql, Map param);
 
+    List<VACLEAVEMANAGE> getVacleavemanageByIds(List<String> ids) ;
+    List<VACLEAVEMANAGE> getVacleavemanageByEntities(List<VACLEAVEMANAGE> entities) ;
+
 }
 
 

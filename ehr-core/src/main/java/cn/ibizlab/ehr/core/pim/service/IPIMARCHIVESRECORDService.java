@@ -56,6 +56,9 @@ public interface IPIMARCHIVESRECORDService extends IService<PIMARCHIVESRECORD>{
      */
     boolean execute(String sql, Map param);
 
+    List<PIMARCHIVESRECORD> getPimarchivesrecordByIds(List<String> ids) ;
+    List<PIMARCHIVESRECORD> getPimarchivesrecordByEntities(List<PIMARCHIVESRECORD> entities) ;
+
 }
 
 

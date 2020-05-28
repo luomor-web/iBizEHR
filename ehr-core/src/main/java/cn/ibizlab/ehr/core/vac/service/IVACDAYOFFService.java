@@ -52,6 +52,9 @@ public interface IVACDAYOFFService extends IService<VACDAYOFF>{
      */
     boolean execute(String sql, Map param);
 
+    List<VACDAYOFF> getVacdayoffByIds(List<String> ids) ;
+    List<VACDAYOFF> getVacdayoffByEntities(List<VACDAYOFF> entities) ;
+
 }
 
 

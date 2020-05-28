@@ -67,9 +67,9 @@ export class EntityServiceRegister {
         this.allEntityService.set('pimdistirbution', () => import('@/service/pimdistirbution/pimdistirbution-service'));
         this.allEntityService.set('dynadashboard', () => import('@/service/dyna-dashboard/dyna-dashboard-service'));
         this.allEntityService.set('pimmajorsetype', () => import('@/service/pimmajorsetype/pimmajorsetype-service'));
-        this.allEntityService.set('ormorgsector', () => import('@/service/ormorgsector/ormorgsector-service'));
+        this.allEntityService.set('ormorgsector', () => import('@/service/orm-orgsector/orm-orgsector-service'));
         this.allEntityService.set('dynachart', () => import('@/service/dyna-chart/dyna-chart-service'));
-        this.allEntityService.set('ormorg', () => import('@/service/ormorg/ormorg-service'));
+        this.allEntityService.set('ormorg', () => import('@/service/orm-org/orm-org-service'));
         this.allEntityService.set('codeitem', () => import('@/service/code-item/code-item-service'));
         this.allEntityService.set('pimcontracttype', () => import('@/service/pimcontracttype/pimcontracttype-service'));
         this.allEntityService.set('pcmjxsgz', () => import('@/service/pcmjxsgz/pcmjxsgz-service'));

@@ -56,6 +56,9 @@ public interface ITRMDEPARTNEEDSService extends IService<TRMDEPARTNEEDS>{
      */
     boolean execute(String sql, Map param);
 
+    List<TRMDEPARTNEEDS> getTrmdepartneedsByIds(List<String> ids) ;
+    List<TRMDEPARTNEEDS> getTrmdepartneedsByEntities(List<TRMDEPARTNEEDS> entities) ;
+
 }
 
 

@@ -54,6 +54,9 @@ public interface ISOCSELFAREBASEService extends IService<SOCSELFAREBASE>{
      */
     boolean execute(String sql, Map param);
 
+    List<SOCSELFAREBASE> getSocselfarebaseByIds(List<String> ids) ;
+    List<SOCSELFAREBASE> getSocselfarebaseByEntities(List<SOCSELFAREBASE> entities) ;
+
 }
 
 

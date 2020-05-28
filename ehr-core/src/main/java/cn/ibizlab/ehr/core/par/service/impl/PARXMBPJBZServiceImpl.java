@@ -48,7 +48,7 @@ public class PARXMBPJBZServiceImpl extends ServiceImpl<PARXMBPJBZMapper, PARXMBP
     private cn.ibizlab.ehr.core.par.service.IPARXMBPJBZService parxmbpjbzService = this;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.orm.service.IORMORGService ormorgService;
+    private cn.ibizlab.ehr.core.orm.service.IOrmOrgService ormorgService;
 
     private int batchSize = 500;
 
@@ -193,9 +193,9 @@ public class PARXMBPJBZServiceImpl extends ServiceImpl<PARXMBPJBZMapper, PARXMBP
     private void fillParentData(PARXMBPJBZ et){
         //实体关系[DER1N_PARXMBPJBZ_ORMORG_ORMORGID]
         if(!ObjectUtils.isEmpty(et.getOrmorgid())){
-            cn.ibizlab.ehr.core.orm.domain.ORMORG ormorg=et.getOrmorg();
+            cn.ibizlab.ehr.core.orm.domain.OrmOrg ormorg=et.getOrmorg();
             if(ObjectUtils.isEmpty(ormorg)){
-                cn.ibizlab.ehr.core.orm.domain.ORMORG majorEntity=ormorgService.get(et.getOrmorgid());
+                cn.ibizlab.ehr.core.orm.domain.OrmOrg majorEntity=ormorgService.get(et.getOrmorgid());
                 et.setOrmorg(majorEntity);
                 ormorg=majorEntity;
             }
@@ -235,6 +235,26 @@ public class PARXMBPJBZServiceImpl extends ServiceImpl<PARXMBPJBZMapper, PARXMBP
         }
         log.warn("暂未支持的SQL语法");
         return true;
+    }
+
+    @Override
+    public List<PARXMBPJBZ> getParxmbpjbzByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<PARXMBPJBZ> getParxmbpjbzByEntities(List<PARXMBPJBZ> entities) {
+        List ids =new ArrayList();
+        for(PARXMBPJBZ entity : entities){
+            Serializable id=entity.getParxmbpjbzid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
     }
 
 }

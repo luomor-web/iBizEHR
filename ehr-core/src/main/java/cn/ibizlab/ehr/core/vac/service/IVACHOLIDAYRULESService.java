@@ -56,6 +56,9 @@ public interface IVACHOLIDAYRULESService extends IService<VACHOLIDAYRULES>{
      */
     boolean execute(String sql, Map param);
 
+    List<VACHOLIDAYRULES> getVacholidayrulesByIds(List<String> ids) ;
+    List<VACHOLIDAYRULES> getVacholidayrulesByEntities(List<VACHOLIDAYRULES> entities) ;
+
 }
 
 

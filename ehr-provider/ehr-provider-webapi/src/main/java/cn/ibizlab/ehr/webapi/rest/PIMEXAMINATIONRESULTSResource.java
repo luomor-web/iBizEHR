@@ -22,6 +22,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.access.prepost.PostAuthorize;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -39,15 +40,13 @@ import cn.ibizlab.ehr.core.pim.filter.PIMEXAMINATIONRESULTSSearchContext;
 public class PIMEXAMINATIONRESULTSResource {
 
     @Autowired
-    private IPIMEXAMINATIONRESULTSService pimexaminationresultsService;
+    public IPIMEXAMINATIONRESULTSService pimexaminationresultsService;
 
     @Autowired
     @Lazy
     public PIMEXAMINATIONRESULTSMapping pimexaminationresultsMapping;
 
-    public PIMEXAMINATIONRESULTSDTO permissionDTO=new PIMEXAMINATIONRESULTSDTO();
-
-    @PreAuthorize("hasPermission(#pimexaminationresults_id,'Update',{'Sql',this.pimexaminationresultsMapping,#pimexaminationresultsdto})")
+    @PreAuthorize("hasPermission(this.pimexaminationresultsService.get(#pimexaminationresults_id),'ehr-PIMEXAMINATIONRESULTS-Update')")
     @ApiOperation(value = "Update", tags = {"PIMEXAMINATIONRESULTS" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimexaminationresults/{pimexaminationresults_id}")
     @Transactional
@@ -59,7 +58,7 @@ public class PIMEXAMINATIONRESULTSResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.pimexaminationresultsMapping,#pimexaminationresultsdtos})")
+    @PreAuthorize("hasPermission(this.pimexaminationresultsService.getPimexaminationresultsByEntities(this.pimexaminationresultsMapping.toDomain(#pimexaminationresultsdtos)),'ehr-PIMEXAMINATIONRESULTS-Update')")
     @ApiOperation(value = "UpdateBatch", tags = {"PIMEXAMINATIONRESULTS" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimexaminationresults/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PIMEXAMINATIONRESULTSDTO> pimexaminationresultsdtos) {
@@ -67,14 +66,14 @@ public class PIMEXAMINATIONRESULTSResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('','Save',{'Sql',this.pimexaminationresultsMapping,#pimexaminationresultsdto})")
+    @PreAuthorize("hasPermission(this.pimexaminationresultsMapping.toDomain(#pimexaminationresultsdto),'ehr-PIMEXAMINATIONRESULTS-Save')")
     @ApiOperation(value = "Save", tags = {"PIMEXAMINATIONRESULTS" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimexaminationresults/save")
     public ResponseEntity<Boolean> save(@RequestBody PIMEXAMINATIONRESULTSDTO pimexaminationresultsdto) {
         return ResponseEntity.status(HttpStatus.OK).body(pimexaminationresultsService.save(pimexaminationresultsMapping.toDomain(pimexaminationresultsdto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.pimexaminationresultsMapping,#pimexaminationresultsdtos})")
+    @PreAuthorize("hasPermission(this.pimexaminationresultsMapping.toDomain(#pimexaminationresultsdtos),'ehr-PIMEXAMINATIONRESULTS-Save')")
     @ApiOperation(value = "SaveBatch", tags = {"PIMEXAMINATIONRESULTS" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimexaminationresults/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PIMEXAMINATIONRESULTSDTO> pimexaminationresultsdtos) {
@@ -82,14 +81,13 @@ public class PIMEXAMINATIONRESULTSResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMEXAMINATIONRESULTS-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"PIMEXAMINATIONRESULTS" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimexaminationresults/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PIMEXAMINATIONRESULTSDTO pimexaminationresultsdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pimexaminationresultsService.checkKey(pimexaminationresultsMapping.toDomain(pimexaminationresultsdto)));
     }
 
-    @PreAuthorize("hasPermission('','Create',{'Sql',this.pimexaminationresultsMapping,#pimexaminationresultsdto})")
+    @PreAuthorize("hasPermission(this.pimexaminationresultsMapping.toDomain(#pimexaminationresultsdto),'ehr-PIMEXAMINATIONRESULTS-Create')")
     @ApiOperation(value = "Create", tags = {"PIMEXAMINATIONRESULTS" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimexaminationresults")
     @Transactional
@@ -100,7 +98,7 @@ public class PIMEXAMINATIONRESULTSResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.pimexaminationresultsMapping,#pimexaminationresultsdtos})")
+    @PreAuthorize("hasPermission(this.pimexaminationresultsMapping.toDomain(#pimexaminationresultsdtos),'ehr-PIMEXAMINATIONRESULTS-Create')")
     @ApiOperation(value = "createBatch", tags = {"PIMEXAMINATIONRESULTS" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimexaminationresults/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PIMEXAMINATIONRESULTSDTO> pimexaminationresultsdtos) {
@@ -108,7 +106,7 @@ public class PIMEXAMINATIONRESULTSResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission(#pimexaminationresults_id,'Remove',{'Sql',this.pimexaminationresultsMapping,this.permissionDTO})")
+    @PreAuthorize("hasPermission(this.pimexaminationresultsService.get(#pimexaminationresults_id),'ehr-PIMEXAMINATIONRESULTS-Remove')")
     @ApiOperation(value = "Remove", tags = {"PIMEXAMINATIONRESULTS" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimexaminationresults/{pimexaminationresults_id}")
     @Transactional
@@ -116,7 +114,7 @@ public class PIMEXAMINATIONRESULTSResource {
          return ResponseEntity.status(HttpStatus.OK).body(pimexaminationresultsService.remove(pimexaminationresults_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.pimexaminationresultsMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission(this.pimexaminationresultsService.getPimexaminationresultsByIds(#ids),'ehr-PIMEXAMINATIONRESULTS-Remove')")
     @ApiOperation(value = "RemoveBatch", tags = {"PIMEXAMINATIONRESULTS" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimexaminationresults/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -124,14 +122,13 @@ public class PIMEXAMINATIONRESULTSResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMEXAMINATIONRESULTS-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"PIMEXAMINATIONRESULTS" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimexaminationresults/getdraft")
     public ResponseEntity<PIMEXAMINATIONRESULTSDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(pimexaminationresultsMapping.toDto(pimexaminationresultsService.getDraft(new PIMEXAMINATIONRESULTS())));
     }
 
-    @PreAuthorize("hasPermission(#pimexaminationresults_id,'Get',{'Sql',this.pimexaminationresultsMapping,this.permissionDTO})")
+    @PostAuthorize("hasPermission(this.pimexaminationresultsMapping.toDomain(returnObject.body),'ehr-PIMEXAMINATIONRESULTS-Get')")
     @ApiOperation(value = "Get", tags = {"PIMEXAMINATIONRESULTS" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimexaminationresults/{pimexaminationresults_id}")
     public ResponseEntity<PIMEXAMINATIONRESULTSDTO> get(@PathVariable("pimexaminationresults_id") String pimexaminationresults_id) {
@@ -162,3 +159,4 @@ public class PIMEXAMINATIONRESULTSResource {
                 .body(new PageImpl(pimexaminationresultsMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 }
+

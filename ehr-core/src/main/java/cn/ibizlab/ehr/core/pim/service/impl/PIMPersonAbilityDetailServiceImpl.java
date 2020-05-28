@@ -192,6 +192,26 @@ public class PIMPersonAbilityDetailServiceImpl extends ServiceImpl<PIMPersonAbil
         return true;
     }
 
+    @Override
+    public List<PIMPersonAbilityDetail> getPimpersonabilitydetailByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<PIMPersonAbilityDetail> getPimpersonabilitydetailByEntities(List<PIMPersonAbilityDetail> entities) {
+        List ids =new ArrayList();
+        for(PIMPersonAbilityDetail entity : entities){
+            Serializable id=entity.getPimpersonabilitydetailid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

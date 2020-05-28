@@ -56,6 +56,9 @@ public interface IPIMOUTPUTService extends IService<PIMOUTPUT>{
      */
     boolean execute(String sql, Map param);
 
+    List<PIMOUTPUT> getPimoutputByIds(List<String> ids) ;
+    List<PIMOUTPUT> getPimoutputByEntities(List<PIMOUTPUT> entities) ;
+
 }
 
 

@@ -4,6 +4,9 @@
 <mapper	namespace="cn.ibizlab.ehr.core.orm.mapper.ORMZWDQGZMapper">
 
     <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
+	<select id="selectById"  resultMap="ORMZWDQGZResultMap" databaseId="mysql">
+        <![CDATA[select t1.* from (SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`NL`, t1.`ORMORGID` AS `ORGID`, t1.`ORMDUTYID`, t31.`ORMDUTYNAME`, t1.`ORMORGID`, t21.`ORGNAME` AS `ORMORGNAME`, t1.`ORMRANKID`, t11.`ORMRANKNAME`, t1.`ORMZWDQGZID`, t1.`ORMZWDQGZNAME`, t1.`SFMRDQNL`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XB`, t1.`ZWBM`, t1.`ZWLX`, t21.`ZZDZS` FROM `T_ORMZWDQGZ` t1  LEFT JOIN T_ORMRANK t11 ON t1.ORMRANKID = t11.ORMRANKID  LEFT JOIN T_SRFORG t21 ON t1.ORMORGID = t21.ORGID  LEFT JOIN T_ORMDUTY t31 ON t1.ORMDUTYID = t31.ORMDUTYID  ) t1 where ormzwdqgzid=#{id}]]>
+    </select>
 
     <!--通过mybatis将查询结果注入到entity中,通过配置autoMapping="true"由mybatis自动处理映射关系 -->
     <resultMap id="ORMZWDQGZResultMap" type="cn.ibizlab.ehr.core.orm.domain.ORMZWDQGZ" autoMapping="true">
@@ -16,7 +19,7 @@
 		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
 		<association property="ormduty" javaType="cn.ibizlab.ehr.core.orm.domain.ORMDUTY" column="ormdutyid" select="cn.ibizlab.ehr.core.orm.mapper.ORMDUTYMapper.selectById" fetchType="lazy"></association>
 		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
-		<association property="ormorg" javaType="cn.ibizlab.ehr.core.orm.domain.ORMORG" column="ormorgid" select="cn.ibizlab.ehr.core.orm.mapper.ORMORGMapper.selectById" fetchType="lazy"></association>
+		<association property="ormorg" javaType="cn.ibizlab.ehr.core.orm.domain.OrmOrg" column="ormorgid" select="cn.ibizlab.ehr.core.orm.mapper.OrmOrgMapper.selectById" fetchType="lazy"></association>
 		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
 		<association property="ormrank" javaType="cn.ibizlab.ehr.core.orm.domain.ORMRANK" column="ormrankid" select="cn.ibizlab.ehr.core.orm.mapper.ORMRANKMapper.selectById" fetchType="lazy"></association>
     </resultMap>
@@ -67,21 +70,15 @@
 			]]>
     </sql>
 
-    <!--数据查询[Default]-->
-    <sql id="Default" databaseId="oracle">
-       <![CDATA[	SELECT t1.CREATEDATE, t1.CREATEMAN, t1.NL, t1.ORMORGID AS ORGID, t1.ORMDUTYID, t31.ORMDUTYNAME, t1.ORMORGID, t21.ORGNAME AS ORMORGNAME, t1.ORMRANKID, t11.ORMRANKNAME, t1.ORMZWDQGZID, t1.ORMZWDQGZNAME, t1.SFMRDQNL, t1.UPDATEDATE, t1.UPDATEMAN, t1.XB, t1.ZWBM, t1.ZWLX, t21.ZZDZS FROM T_ORMZWDQGZ t1  LEFT JOIN T_ORMRANK t11 ON t1.ORMRANKID = t11.ORMRANKID  LEFT JOIN T_SRFORG t21 ON t1.ORMORGID = t21.ORGID  LEFT JOIN T_ORMDUTY t31 ON t1.ORMDUTYID = t31.ORMDUTYID  
-			]]>
-    </sql>
-
     <!--数据查询[DQYHZZ]-->
     <sql id="DQYHZZ" databaseId="mysql">
        <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`NL`, t1.`ORMORGID` AS `ORGID`, t1.`ORMDUTYID`, t31.`ORMDUTYNAME`, t1.`ORMORGID`, t21.`ORGNAME` AS `ORMORGNAME`, t1.`ORMRANKID`, t11.`ORMRANKNAME`, t1.`ORMZWDQGZID`, t1.`ORMZWDQGZNAME`, t1.`SFMRDQNL`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XB`, t1.`ZWBM`, t1.`ZWLX`, t21.`ZZDZS` FROM `T_ORMZWDQGZ` t1  LEFT JOIN T_ORMRANK t11 ON t1.ORMRANKID = t11.ORMRANKID  LEFT JOIN T_SRFORG t21 ON t1.ORMORGID = t21.ORGID  LEFT JOIN T_ORMDUTY t31 ON t1.ORMDUTYID = t31.ORMDUTYID  
 			]]>
     </sql>
 
-    <!--数据查询[DQYHZZ]-->
-    <sql id="DQYHZZ" databaseId="oracle">
-       <![CDATA[	SELECT t1.CREATEDATE, t1.CREATEMAN, t1.NL, t1.ORMORGID AS ORGID, t1.ORMDUTYID, t31.ORMDUTYNAME, t1.ORMORGID, t21.ORGNAME AS ORMORGNAME, t1.ORMRANKID, t11.ORMRANKNAME, t1.ORMZWDQGZID, t1.ORMZWDQGZNAME, t1.SFMRDQNL, t1.UPDATEDATE, t1.UPDATEMAN, t1.XB, t1.ZWBM, t1.ZWLX, t21.ZZDZS FROM T_ORMZWDQGZ t1  LEFT JOIN T_ORMRANK t11 ON t1.ORMRANKID = t11.ORMRANKID  LEFT JOIN T_SRFORG t21 ON t1.ORMORGID = t21.ORGID  LEFT JOIN T_ORMDUTY t31 ON t1.ORMDUTYID = t31.ORMDUTYID  
+    <!--数据查询[View]-->
+    <sql id="View" databaseId="mysql">
+       <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`NL`, t1.`ORMORGID` AS `ORGID`, t1.`ORMDUTYID`, t31.`ORMDUTYNAME`, t1.`ORMORGID`, t21.`ORGNAME` AS `ORMORGNAME`, t1.`ORMRANKID`, t11.`ORMRANKNAME`, t1.`ORMZWDQGZID`, t1.`ORMZWDQGZNAME`, t1.`SFMRDQNL`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XB`, t1.`ZWBM`, t1.`ZWLX`, t21.`ZZDZS` FROM `T_ORMZWDQGZ` t1  LEFT JOIN T_ORMRANK t11 ON t1.ORMRANKID = t11.ORMRANKID  LEFT JOIN T_SRFORG t21 ON t1.ORMORGID = t21.ORGID  LEFT JOIN T_ORMDUTY t31 ON t1.ORMDUTYID = t31.ORMDUTYID  
 			]]>
     </sql>
 

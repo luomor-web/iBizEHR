@@ -49,7 +49,7 @@ public class SALPLANServiceImpl extends ServiceImpl<SALPLANMapper, SALPLAN> impl
     private cn.ibizlab.ehr.core.sal.service.ISALSALARYService salsalaryService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.orm.service.IORMORGService ormorgService;
+    private cn.ibizlab.ehr.core.orm.service.IOrmOrgService ormorgService;
     @Autowired
     @Lazy
     private cn.ibizlab.ehr.core.sal.service.ISALSCHEMEService salschemeService;
@@ -197,9 +197,9 @@ public class SALPLANServiceImpl extends ServiceImpl<SALPLANMapper, SALPLAN> impl
     private void fillParentData(SALPLAN et){
         //实体关系[DER1N_SALPLAN_ORMORG_ORMORGID]
         if(!ObjectUtils.isEmpty(et.getOrmorgid())){
-            cn.ibizlab.ehr.core.orm.domain.ORMORG ormorg=et.getOrmorg();
+            cn.ibizlab.ehr.core.orm.domain.OrmOrg ormorg=et.getOrmorg();
             if(ObjectUtils.isEmpty(ormorg)){
-                cn.ibizlab.ehr.core.orm.domain.ORMORG majorEntity=ormorgService.get(et.getOrmorgid());
+                cn.ibizlab.ehr.core.orm.domain.OrmOrg majorEntity=ormorgService.get(et.getOrmorgid());
                 et.setOrmorg(majorEntity);
                 ormorg=majorEntity;
             }
@@ -239,6 +239,26 @@ public class SALPLANServiceImpl extends ServiceImpl<SALPLANMapper, SALPLAN> impl
         }
         log.warn("暂未支持的SQL语法");
         return true;
+    }
+
+    @Override
+    public List<SALPLAN> getSalplanByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<SALPLAN> getSalplanByEntities(List<SALPLAN> entities) {
+        List ids =new ArrayList();
+        for(SALPLAN entity : entities){
+            Serializable id=entity.getSalplanid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
     }
 
 }

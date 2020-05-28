@@ -25,7 +25,7 @@
   deMajorField='orgname'
   deKeyField='ormorg'
   :service="service"
-  :acParams="{ serviceName: 'ORMORGService', interfaceName: 'FetchGSGWZY'}"
+  :acParams="{ serviceName: 'OrmOrgService', interfaceName: 'FetchGSGWZY'}"
   valueitem='ormorgid3' 
   :value="data.ormorgname3" 
   editortype="" 
@@ -151,7 +151,7 @@
 </i-col>
 <i-col v-show="detailsModel.dastate.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='dastate' :itemRules="this.rules.dastate" class='' :caption="$t('entities.pimarchives.main_form.details.dastate')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.dastate.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.dastate" :data="data" :itemParam="{}" :disabled="detailsModel.dastate.disabled"  tag='DASTATE' codelistType='STATIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list v-model="data.dastate" :data="data" :itemParam="{}" :disabled="detailsModel.dastate.disabled"  tag='EhrCodeListDastate' codelistType='STATIC' placeholder='请选择...' style=""></dropdown-list>
 </app-form-item>
 
 </i-col>

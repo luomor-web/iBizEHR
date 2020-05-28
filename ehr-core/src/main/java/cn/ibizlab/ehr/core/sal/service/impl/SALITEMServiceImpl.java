@@ -221,6 +221,26 @@ public class SALITEMServiceImpl extends ServiceImpl<SALITEMMapper, SALITEM> impl
         return true;
     }
 
+    @Override
+    public List<SALITEM> getSalitemByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<SALITEM> getSalitemByEntities(List<SALITEM> entities) {
+        List ids =new ArrayList();
+        for(SALITEM entity : entities){
+            Serializable id=entity.getSalitemid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

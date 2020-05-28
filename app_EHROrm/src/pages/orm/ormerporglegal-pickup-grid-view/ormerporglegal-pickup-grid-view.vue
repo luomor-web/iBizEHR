@@ -2,8 +2,8 @@
 import { Component } from 'vue-property-decorator';
 import ORMERPORGLegalPickupGridViewBase from './ormerporglegal-pickup-grid-view-base.vue';
 
-import view_grid from '@widgets/ormerporg/mag-unit-grid-grid/mag-unit-grid-grid.vue';
-import view_searchform from '@widgets/ormerporg/default-searchform/default-searchform.vue';
+import view_grid from '@widgets/orm-erporg/mag-unit-grid-grid/mag-unit-grid-grid.vue';
+import view_searchform from '@widgets/orm-erporg/default-searchform/default-searchform.vue';
 
 /**
  * 管理单位

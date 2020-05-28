@@ -179,6 +179,26 @@ public class VACSITUATIONDETAILServiceImpl extends ServiceImpl<VACSITUATIONDETAI
         return true;
     }
 
+    @Override
+    public List<VACSITUATIONDETAIL> getVacsituationdetailByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<VACSITUATIONDETAIL> getVacsituationdetailByEntities(List<VACSITUATIONDETAIL> entities) {
+        List ids =new ArrayList();
+        for(VACSITUATIONDETAIL entity : entities){
+            Serializable id=entity.getVacsituationdetailid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

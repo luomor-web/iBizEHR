@@ -1069,7 +1069,7 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
         "srfkey": "ORMCL_LEVEL2ORG",
         "emptytext": "",
         "codelisttype":"dynamic",
-        "appdataentity":"ORMORG",
+        "appdataentity":"OrmOrg",
         "appdedataset":"FetchAllLevelTwoOrg",
         "items": []
     },
@@ -1216,7 +1216,7 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
         ]
     },
     {
-        srfkey: 'DASTATE',
+        srfkey: 'EhrCodeListDastate',
         emptytext: '未定义',
         "codelisttype":"static",
         items: [
@@ -1664,7 +1664,7 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
         ]
     },
     {
-        "srfkey": "SSQY",
+        "srfkey": "EhrCodeListSsqy",
         "emptytext": "",
         "codelisttype":"dynamic",
         "appdataentity":"CodeItem",

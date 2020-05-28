@@ -46,10 +46,10 @@ public class PCMJXSBDJLServiceImpl extends ServiceImpl<PCMJXSBDJLMapper, PCMJXSB
 
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.orm.service.IORMORGSECTORService ormorgsectorService;
+    private cn.ibizlab.ehr.core.orm.service.IOrmOrgsectorService ormorgsectorService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.orm.service.IORMORGService ormorgService;
+    private cn.ibizlab.ehr.core.orm.service.IOrmOrgService ormorgService;
     @Autowired
     @Lazy
     private cn.ibizlab.ehr.core.orm.service.IORMPOSTService ormpostService;
@@ -238,9 +238,9 @@ public class PCMJXSBDJLServiceImpl extends ServiceImpl<PCMJXSBDJLMapper, PCMJXSB
     private void fillParentData(PCMJXSBDJL et){
         //实体关系[DER1N_PCMJXSBDJL_ORMORGSECTOR_ORMORGSECTORID]
         if(!ObjectUtils.isEmpty(et.getOrmorgsectorid())){
-            cn.ibizlab.ehr.core.orm.domain.ORMORGSECTOR ormorgsector=et.getOrmorgsector();
+            cn.ibizlab.ehr.core.orm.domain.OrmOrgsector ormorgsector=et.getOrmorgsector();
             if(ObjectUtils.isEmpty(ormorgsector)){
-                cn.ibizlab.ehr.core.orm.domain.ORMORGSECTOR majorEntity=ormorgsectorService.get(et.getOrmorgsectorid());
+                cn.ibizlab.ehr.core.orm.domain.OrmOrgsector majorEntity=ormorgsectorService.get(et.getOrmorgsectorid());
                 et.setOrmorgsector(majorEntity);
                 ormorgsector=majorEntity;
             }
@@ -248,9 +248,9 @@ public class PCMJXSBDJLServiceImpl extends ServiceImpl<PCMJXSBDJLMapper, PCMJXSB
         }
         //实体关系[DER1N_PCMJXSBDJL_ORMORG_ORMORGID]
         if(!ObjectUtils.isEmpty(et.getOrmorgid())){
-            cn.ibizlab.ehr.core.orm.domain.ORMORG ormorg=et.getOrmorg();
+            cn.ibizlab.ehr.core.orm.domain.OrmOrg ormorg=et.getOrmorg();
             if(ObjectUtils.isEmpty(ormorg)){
-                cn.ibizlab.ehr.core.orm.domain.ORMORG majorEntity=ormorgService.get(et.getOrmorgid());
+                cn.ibizlab.ehr.core.orm.domain.OrmOrg majorEntity=ormorgService.get(et.getOrmorgid());
                 et.setOrmorg(majorEntity);
                 ormorg=majorEntity;
             }
@@ -304,6 +304,26 @@ public class PCMJXSBDJLServiceImpl extends ServiceImpl<PCMJXSBDJLMapper, PCMJXSB
         }
         log.warn("暂未支持的SQL语法");
         return true;
+    }
+
+    @Override
+    public List<PCMJXSBDJL> getPcmjxsbdjlByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<PCMJXSBDJL> getPcmjxsbdjlByEntities(List<PCMJXSBDJL> entities) {
+        List ids =new ArrayList();
+        for(PCMJXSBDJL entity : entities){
+            Serializable id=entity.getPcmjxsbdjlid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
     }
 
 }

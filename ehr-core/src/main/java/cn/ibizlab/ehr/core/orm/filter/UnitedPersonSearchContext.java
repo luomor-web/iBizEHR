@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.HashMap;
 
-import lombok.Data;
+import lombok.*;
 import lombok.extern.slf4j.Slf4j;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.alibaba.fastjson.annotation.JSONField;
@@ -63,9 +63,11 @@ public class UnitedPersonSearchContext extends QueryWrapperContext<UnitedPerson>
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("unitedpersonname",query);
-			this.getSelectCond().or().like("employeename",query);
-			this.getSelectCond().or().like("employeenumber",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("unitedpersonname", query)   
+                        .or().like("employeename", query)            
+                        .or().like("employeenumber", query)            
+            );
 		 }
 	}
 }

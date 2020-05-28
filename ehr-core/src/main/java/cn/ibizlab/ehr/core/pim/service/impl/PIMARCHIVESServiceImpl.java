@@ -61,7 +61,7 @@ public class PIMARCHIVESServiceImpl extends ServiceImpl<PIMARCHIVESMapper, PIMAR
     private cn.ibizlab.ehr.core.pim.service.IARCHIVESCENTERService archivescenterService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.orm.service.IORMORGService ormorgService;
+    private cn.ibizlab.ehr.core.orm.service.IOrmOrgService ormorgService;
     @Autowired
     @Lazy
     private cn.ibizlab.ehr.core.pim.service.IPIMPERSONService pimpersonService;
@@ -304,9 +304,9 @@ public class PIMARCHIVESServiceImpl extends ServiceImpl<PIMARCHIVESMapper, PIMAR
         }
         //实体关系[DER1N_PIMARCHIVES_ORMORG_ORMORGID2]
         if(!ObjectUtils.isEmpty(et.getOrmorgid2())){
-            cn.ibizlab.ehr.core.orm.domain.ORMORG ormorg=et.getOrmorg();
+            cn.ibizlab.ehr.core.orm.domain.OrmOrg ormorg=et.getOrmorg();
             if(ObjectUtils.isEmpty(ormorg)){
-                cn.ibizlab.ehr.core.orm.domain.ORMORG majorEntity=ormorgService.get(et.getOrmorgid2());
+                cn.ibizlab.ehr.core.orm.domain.OrmOrg majorEntity=ormorgService.get(et.getOrmorgid2());
                 et.setOrmorg(majorEntity);
                 ormorg=majorEntity;
             }
@@ -314,9 +314,9 @@ public class PIMARCHIVESServiceImpl extends ServiceImpl<PIMARCHIVESMapper, PIMAR
         }
         //实体关系[DER1N_PIMARCHIVES_ORMORG_ORMORGID3]
         if(!ObjectUtils.isEmpty(et.getOrmorgid3())){
-            cn.ibizlab.ehr.core.orm.domain.ORMORG ormorg3=et.getOrmorg3();
+            cn.ibizlab.ehr.core.orm.domain.OrmOrg ormorg3=et.getOrmorg3();
             if(ObjectUtils.isEmpty(ormorg3)){
-                cn.ibizlab.ehr.core.orm.domain.ORMORG majorEntity=ormorgService.get(et.getOrmorgid3());
+                cn.ibizlab.ehr.core.orm.domain.OrmOrg majorEntity=ormorgService.get(et.getOrmorgid3());
                 et.setOrmorg3(majorEntity);
                 ormorg3=majorEntity;
             }
@@ -367,6 +367,26 @@ public class PIMARCHIVESServiceImpl extends ServiceImpl<PIMARCHIVESMapper, PIMAR
         }
         log.warn("暂未支持的SQL语法");
         return true;
+    }
+
+    @Override
+    public List<PIMARCHIVES> getPimarchivesByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<PIMARCHIVES> getPimarchivesByEntities(List<PIMARCHIVES> entities) {
+        List ids =new ArrayList();
+        for(PIMARCHIVES entity : entities){
+            Serializable id=entity.getPimarchivesid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
     }
 
 }

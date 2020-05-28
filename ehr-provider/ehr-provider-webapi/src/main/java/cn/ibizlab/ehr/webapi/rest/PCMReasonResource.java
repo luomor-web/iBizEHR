@@ -22,6 +22,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.access.prepost.PostAuthorize;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -39,22 +40,19 @@ import cn.ibizlab.ehr.core.pcm.filter.PCMReasonSearchContext;
 public class PCMReasonResource {
 
     @Autowired
-    private IPCMReasonService pcmreasonService;
+    public IPCMReasonService pcmreasonService;
 
     @Autowired
     @Lazy
     public PCMReasonMapping pcmreasonMapping;
 
-    public PCMReasonDTO permissionDTO=new PCMReasonDTO();
-
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMReason-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"PCMReason" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmreasons/getdraft")
     public ResponseEntity<PCMReasonDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(pcmreasonMapping.toDto(pcmreasonService.getDraft(new PCMReason())));
     }
 
-    @PreAuthorize("hasPermission(#pcmreason_id,'Remove',{'Sql',this.pcmreasonMapping,this.permissionDTO})")
+    @PreAuthorize("hasPermission(this.pcmreasonService.get(#pcmreason_id),'ehr-PCMReason-Remove')")
     @ApiOperation(value = "Remove", tags = {"PCMReason" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmreasons/{pcmreason_id}")
     @Transactional
@@ -62,7 +60,7 @@ public class PCMReasonResource {
          return ResponseEntity.status(HttpStatus.OK).body(pcmreasonService.remove(pcmreason_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.pcmreasonMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission(this.pcmreasonService.getPcmreasonByIds(#ids),'ehr-PCMReason-Remove')")
     @ApiOperation(value = "RemoveBatch", tags = {"PCMReason" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmreasons/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -70,7 +68,7 @@ public class PCMReasonResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission(#pcmreason_id,'Update',{'Sql',this.pcmreasonMapping,#pcmreasondto})")
+    @PreAuthorize("hasPermission(this.pcmreasonService.get(#pcmreason_id),'ehr-PCMReason-Update')")
     @ApiOperation(value = "Update", tags = {"PCMReason" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmreasons/{pcmreason_id}")
     @Transactional
@@ -82,7 +80,7 @@ public class PCMReasonResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.pcmreasonMapping,#pcmreasondtos})")
+    @PreAuthorize("hasPermission(this.pcmreasonService.getPcmreasonByEntities(this.pcmreasonMapping.toDomain(#pcmreasondtos)),'ehr-PCMReason-Update')")
     @ApiOperation(value = "UpdateBatch", tags = {"PCMReason" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmreasons/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PCMReasonDTO> pcmreasondtos) {
@@ -90,7 +88,7 @@ public class PCMReasonResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission(#pcmreason_id,'Get',{'Sql',this.pcmreasonMapping,this.permissionDTO})")
+    @PostAuthorize("hasPermission(this.pcmreasonMapping.toDomain(returnObject.body),'ehr-PCMReason-Get')")
     @ApiOperation(value = "Get", tags = {"PCMReason" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmreasons/{pcmreason_id}")
     public ResponseEntity<PCMReasonDTO> get(@PathVariable("pcmreason_id") String pcmreason_id) {
@@ -99,7 +97,7 @@ public class PCMReasonResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('','Create',{'Sql',this.pcmreasonMapping,#pcmreasondto})")
+    @PreAuthorize("hasPermission(this.pcmreasonMapping.toDomain(#pcmreasondto),'ehr-PCMReason-Create')")
     @ApiOperation(value = "Create", tags = {"PCMReason" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmreasons")
     @Transactional
@@ -110,7 +108,7 @@ public class PCMReasonResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.pcmreasonMapping,#pcmreasondtos})")
+    @PreAuthorize("hasPermission(this.pcmreasonMapping.toDomain(#pcmreasondtos),'ehr-PCMReason-Create')")
     @ApiOperation(value = "createBatch", tags = {"PCMReason" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmreasons/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PCMReasonDTO> pcmreasondtos) {
@@ -118,21 +116,20 @@ public class PCMReasonResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMReason-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"PCMReason" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmreasons/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PCMReasonDTO pcmreasondto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pcmreasonService.checkKey(pcmreasonMapping.toDomain(pcmreasondto)));
     }
 
-    @PreAuthorize("hasPermission('','Save',{'Sql',this.pcmreasonMapping,#pcmreasondto})")
+    @PreAuthorize("hasPermission(this.pcmreasonMapping.toDomain(#pcmreasondto),'ehr-PCMReason-Save')")
     @ApiOperation(value = "Save", tags = {"PCMReason" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmreasons/save")
     public ResponseEntity<Boolean> save(@RequestBody PCMReasonDTO pcmreasondto) {
         return ResponseEntity.status(HttpStatus.OK).body(pcmreasonService.save(pcmreasonMapping.toDomain(pcmreasondto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.pcmreasonMapping,#pcmreasondtos})")
+    @PreAuthorize("hasPermission(this.pcmreasonMapping.toDomain(#pcmreasondtos),'ehr-PCMReason-Save')")
     @ApiOperation(value = "SaveBatch", tags = {"PCMReason" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmreasons/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PCMReasonDTO> pcmreasondtos) {
@@ -162,3 +159,4 @@ public class PCMReasonResource {
                 .body(new PageImpl(pcmreasonMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 }
+

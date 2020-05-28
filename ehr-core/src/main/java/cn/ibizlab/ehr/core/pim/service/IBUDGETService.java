@@ -54,6 +54,9 @@ public interface IBUDGETService extends IService<BUDGET>{
      */
     boolean execute(String sql, Map param);
 
+    List<BUDGET> getBudgetByIds(List<String> ids) ;
+    List<BUDGET> getBudgetByEntities(List<BUDGET> entities) ;
+
 }
 
 

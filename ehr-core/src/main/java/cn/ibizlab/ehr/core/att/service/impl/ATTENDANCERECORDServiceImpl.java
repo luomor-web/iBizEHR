@@ -52,7 +52,7 @@ public class ATTENDANCERECORDServiceImpl extends ServiceImpl<ATTENDANCERECORDMap
     private cn.ibizlab.ehr.core.att.service.IATTENDANCEMREPORTMXService attendancemreportmxService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.orm.service.IORMBMKQDZService ormbmkqdzService;
+    private cn.ibizlab.ehr.core.orm.service.IOrmBmkqdzService ormbmkqdzService;
     @Autowired
     @Lazy
     private cn.ibizlab.ehr.core.pim.service.IPIMPERSONService pimpersonService;
@@ -240,9 +240,9 @@ public class ATTENDANCERECORDServiceImpl extends ServiceImpl<ATTENDANCERECORDMap
         }
         //实体关系[DER1N_ATTENDANCERECORD_ORMBMKQDZ_ORMBMKQDZID]
         if(!ObjectUtils.isEmpty(et.getOrmbmkqdzid())){
-            cn.ibizlab.ehr.core.orm.domain.ORMBMKQDZ ormbmkqdz=et.getOrmbmkqdz();
+            cn.ibizlab.ehr.core.orm.domain.OrmBmkqdz ormbmkqdz=et.getOrmbmkqdz();
             if(ObjectUtils.isEmpty(ormbmkqdz)){
-                cn.ibizlab.ehr.core.orm.domain.ORMBMKQDZ majorEntity=ormbmkqdzService.get(et.getOrmbmkqdzid());
+                cn.ibizlab.ehr.core.orm.domain.OrmBmkqdz majorEntity=ormbmkqdzService.get(et.getOrmbmkqdzid());
                 et.setOrmbmkqdz(majorEntity);
                 ormbmkqdz=majorEntity;
             }
@@ -299,6 +299,26 @@ public class ATTENDANCERECORDServiceImpl extends ServiceImpl<ATTENDANCERECORDMap
         }
         log.warn("暂未支持的SQL语法");
         return true;
+    }
+
+    @Override
+    public List<ATTENDANCERECORD> getAttendancerecordByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<ATTENDANCERECORD> getAttendancerecordByEntities(List<ATTENDANCERECORD> entities) {
+        List ids =new ArrayList();
+        for(ATTENDANCERECORD entity : entities){
+            Serializable id=entity.getAttendancerecordid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
     }
 
 }

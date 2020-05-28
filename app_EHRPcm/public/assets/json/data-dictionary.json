@@ -442,8 +442,8 @@
             }
             , {
                 "id": "30",
-                "label": "待局总部初审",
-                "text": "待局总部初审",
+                "label": "待总部初审",
+                "text": "待总部初审",
                 "data":"",
                 "codename":"Item_30",
                 "color": "Blue",
@@ -453,8 +453,8 @@
             }
             , {
                 "id": "50",
-                "label": "局总部初审不通过",
-                "text": "局总部初审不通过",
+                "label": "总部初审不通过",
+                "text": "总部初审不通过",
                 "data":"",
                 "codename":"Item_50",
                 "color": "Red",
@@ -464,8 +464,8 @@
             }
             , {
                 "id": "55",
-                "label": "待局总部审核",
-                "text": "待局总部审核",
+                "label": "待总部审核",
+                "text": "待总部审核",
                 "data":"",
                 "codename":"Item_55",
                 "color": "Blue",
@@ -475,8 +475,8 @@
             }
             , {
                 "id": "58",
-                "label": "局总部审核通过",
-                "text": "局总部审核通过",
+                "label": "总部审核通过",
+                "text": "总部审核通过",
                 "data":"",
                 "codename":"Item_58",
                 "color": "Blue",
@@ -486,8 +486,8 @@
             }
             , {
                 "id": "60",
-                "label": "局总部审核不通过",
-                "text": "局总部审核不通过",
+                "label": "总部审核不通过",
+                "text": "总部审核不通过",
                 "data":"",
                 "codename":"Item_60",
                 "color": "Red",
@@ -497,8 +497,8 @@
             }
             , {
                 "id": "61",
-                "label": "待局总部审批",
-                "text": "待局总部审批",
+                "label": "待总部审批",
+                "text": "待总部审批",
                 "data":"",
                 "codename":"Item_61",
                 "color": "Blue",
@@ -519,8 +519,8 @@
             }
             , {
                 "id": "63",
-                "label": "局总部审批不通过",
-                "text": "局总部审批不通过",
+                "label": "总部审批不通过",
+                "text": "总部审批不通过",
                 "data":"",
                 "codename":"Item_63",
                 "color": "Red",
@@ -1052,7 +1052,7 @@
         "srfkey": "ORMCL_LEVELTWOORG",
         "emptytext": "",
         "codelisttype":"dynamic",
-        "appdataentity":"ORMORG",
+        "appdataentity":"OrmOrg",
         "appdedataset":"FetchAllLevelTwoOrg2",
         "items": []
     }, 
@@ -1084,7 +1084,7 @@
         ]
     }, 
     {
-        "srfkey": "SSQY",
+        "srfkey": "EhrCodeListSsqy",
         "emptytext": "",
         "codelisttype":"dynamic",
         "appdataentity":"CodeItem",

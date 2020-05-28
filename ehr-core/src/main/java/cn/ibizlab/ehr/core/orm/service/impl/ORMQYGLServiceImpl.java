@@ -46,7 +46,7 @@ public class ORMQYGLServiceImpl extends ServiceImpl<ORMQYGLMapper, ORMQYGL> impl
 
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.orm.service.IORMORGService ormorgService;
+    private cn.ibizlab.ehr.core.orm.service.IOrmOrgService ormorgService;
 
     private int batchSize = 500;
 
@@ -181,9 +181,9 @@ public class ORMQYGLServiceImpl extends ServiceImpl<ORMQYGLMapper, ORMQYGL> impl
     private void fillParentData(ORMQYGL et){
         //实体关系[DER1N_ORMQYGL_ORMORG_ORMORGID]
         if(!ObjectUtils.isEmpty(et.getOrmorgid())){
-            cn.ibizlab.ehr.core.orm.domain.ORMORG ormorg=et.getOrmorg();
+            cn.ibizlab.ehr.core.orm.domain.OrmOrg ormorg=et.getOrmorg();
             if(ObjectUtils.isEmpty(ormorg)){
-                cn.ibizlab.ehr.core.orm.domain.ORMORG majorEntity=ormorgService.get(et.getOrmorgid());
+                cn.ibizlab.ehr.core.orm.domain.OrmOrg majorEntity=ormorgService.get(et.getOrmorgid());
                 et.setOrmorg(majorEntity);
                 ormorg=majorEntity;
             }
@@ -213,6 +213,26 @@ public class ORMQYGLServiceImpl extends ServiceImpl<ORMQYGLMapper, ORMQYGL> impl
         }
         log.warn("暂未支持的SQL语法");
         return true;
+    }
+
+    @Override
+    public List<ORMQYGL> getOrmqyglByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<ORMQYGL> getOrmqyglByEntities(List<ORMQYGL> entities) {
+        List ids =new ArrayList();
+        for(ORMQYGL entity : entities){
+            Serializable id=entity.getOrmqyglid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
     }
 
 }

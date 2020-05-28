@@ -49,7 +49,7 @@ public class PCMZPMEGLServiceImpl extends ServiceImpl<PCMZPMEGLMapper, PCMZPMEGL
     private cn.ibizlab.ehr.core.pcm.service.IPCMZPMEGLMXService pcmzpmeglmxService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.orm.service.IORMORGService ormorgService;
+    private cn.ibizlab.ehr.core.orm.service.IOrmOrgService ormorgService;
 
     private int batchSize = 500;
 
@@ -193,9 +193,9 @@ public class PCMZPMEGLServiceImpl extends ServiceImpl<PCMZPMEGLMapper, PCMZPMEGL
     private void fillParentData(PCMZPMEGL et){
         //实体关系[DER1N_PCMZPMEGL_ORMORG_ORMORGID]
         if(!ObjectUtils.isEmpty(et.getOrmorgid())){
-            cn.ibizlab.ehr.core.orm.domain.ORMORG ormorg=et.getOrmorg();
+            cn.ibizlab.ehr.core.orm.domain.OrmOrg ormorg=et.getOrmorg();
             if(ObjectUtils.isEmpty(ormorg)){
-                cn.ibizlab.ehr.core.orm.domain.ORMORG majorEntity=ormorgService.get(et.getOrmorgid());
+                cn.ibizlab.ehr.core.orm.domain.OrmOrg majorEntity=ormorgService.get(et.getOrmorgid());
                 et.setOrmorg(majorEntity);
                 ormorg=majorEntity;
             }
@@ -226,6 +226,26 @@ public class PCMZPMEGLServiceImpl extends ServiceImpl<PCMZPMEGLMapper, PCMZPMEGL
         }
         log.warn("暂未支持的SQL语法");
         return true;
+    }
+
+    @Override
+    public List<PCMZPMEGL> getPcmzpmeglByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<PCMZPMEGL> getPcmzpmeglByEntities(List<PCMZPMEGL> entities) {
+        List ids =new ArrayList();
+        for(PCMZPMEGL entity : entities){
+            Serializable id=entity.getPcmzpmeglid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
     }
 
 }

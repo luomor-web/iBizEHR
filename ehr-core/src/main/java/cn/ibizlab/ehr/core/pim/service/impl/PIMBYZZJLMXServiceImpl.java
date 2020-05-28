@@ -533,6 +533,26 @@ public class PIMBYZZJLMXServiceImpl extends ServiceImpl<PIMBYZZJLMXMapper, PIMBY
         return true;
     }
 
+    @Override
+    public List<PIMBYZZJLMX> getPimbyzzjlmxByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<PIMBYZZJLMX> getPimbyzzjlmxByEntities(List<PIMBYZZJLMX> entities) {
+        List ids =new ArrayList();
+        for(PIMBYZZJLMX entity : entities){
+            Serializable id=entity.getPimbyzzjlmxid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

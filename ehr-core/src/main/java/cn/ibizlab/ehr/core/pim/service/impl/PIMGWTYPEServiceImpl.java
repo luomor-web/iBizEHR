@@ -179,6 +179,26 @@ public class PIMGWTYPEServiceImpl extends ServiceImpl<PIMGWTYPEMapper, PIMGWTYPE
         return true;
     }
 
+    @Override
+    public List<PIMGWTYPE> getPimgwtypeByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<PIMGWTYPE> getPimgwtypeByEntities(List<PIMGWTYPE> entities) {
+        List ids =new ArrayList();
+        for(PIMGWTYPE entity : entities){
+            Serializable id=entity.getPimgwtypeid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

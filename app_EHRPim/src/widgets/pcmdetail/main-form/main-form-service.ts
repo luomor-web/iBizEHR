@@ -2,7 +2,7 @@ import { Http,Util,Errorlog } from '@/utils';
 import ControlService from '@/widgets/control-service';
 import PCMDETAILService from '@/service/pcmdetail/pcmdetail-service';
 import MainModel from './main-form-model';
-import ORMORGSECTORService from '@/service/ormorgsector/ormorgsector-service';
+import OrmOrgsectorService from '@/service/orm-orgsector/orm-orgsector-service';
 
 
 /**
@@ -45,10 +45,10 @@ export default class MainService extends ControlService {
     /**
      * 部门管理服务对象
      *
-     * @type {ORMORGSECTORService}
+     * @type {OrmOrgsectorService}
      * @memberof MainService
      */
-    public ormorgsectorService: ORMORGSECTORService = new ORMORGSECTORService();
+    public ormorgsectorService: OrmOrgsectorService = new OrmOrgsectorService();
 
     /**
      * 处理数据
@@ -89,7 +89,7 @@ export default class MainService extends ControlService {
      */
     @Errorlog
     public getItems(serviceName: string, interfaceName: string, context: any = {}, data: any, isloading?: boolean): Promise<any[]> {
-        if (Object.is(serviceName, 'ORMORGSECTORService') && Object.is(interfaceName, 'FetchDefault')) {
+        if (Object.is(serviceName, 'OrmOrgsectorService') && Object.is(interfaceName, 'FetchDefault')) {
             return this.doItems(this.ormorgsectorService.FetchDefault(JSON.parse(JSON.stringify(context)),data, isloading), 'orgsectorid', 'ormorgsector');
         }
 

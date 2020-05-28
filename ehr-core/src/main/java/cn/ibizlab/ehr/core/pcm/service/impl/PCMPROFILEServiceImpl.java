@@ -79,10 +79,10 @@ public class PCMPROFILEServiceImpl extends ServiceImpl<PCMPROFILEMapper, PCMPROF
     private cn.ibizlab.ehr.core.orm.service.IORMDUTYService ormdutyService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.orm.service.IORMORGSECTORService ormorgsectorService;
+    private cn.ibizlab.ehr.core.orm.service.IOrmOrgsectorService ormorgsectorService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.orm.service.IORMORGService ormorgService;
+    private cn.ibizlab.ehr.core.orm.service.IOrmOrgService ormorgService;
     @Autowired
     @Lazy
     private cn.ibizlab.ehr.core.orm.service.IORMPOSTService ormpostService;
@@ -90,20 +90,60 @@ public class PCMPROFILEServiceImpl extends ServiceImpl<PCMPROFILEMapper, PCMPROF
     @Lazy
     private cn.ibizlab.ehr.core.pim.service.IPIMPERSONService pimpersonService;
 
+    @Autowired
+    @Lazy
+    private cn.ibizlab.ehr.core.pcm.service.logic.IPCMPROFILEGroupConfirmLogic groupconfirmLogic;
+
+    @Autowired
+    @Lazy
+    private cn.ibizlab.ehr.core.pcm.service.logic.IPCMPROFILEForwardLogic forwardLogic;
+
+    @Autowired
+    @Lazy
+    private cn.ibizlab.ehr.core.pcm.service.logic.IPCMPROFILECheckInLogic checkinLogic;
+
+    @Autowired
+    @Lazy
+    private cn.ibizlab.ehr.core.pcm.service.logic.IPCMPROFILECompanyConfirmLogic companyconfirmLogic;
+
+    @Autowired
+    @Lazy
+    private cn.ibizlab.ehr.core.pcm.service.logic.IPCMPROFILEInvalidLogic invalidLogic;
+
+    @Autowired
+    @Lazy
+    private cn.ibizlab.ehr.core.pcm.service.logic.IPCMPROFILECompanyRejectLogic companyrejectLogic;
+
+    @Autowired
+    @Lazy
+    private cn.ibizlab.ehr.core.pcm.service.logic.IPCMPROFILEGroupRejectLogic grouprejectLogic;
+
+    @Autowired
+    @Lazy
+    private cn.ibizlab.ehr.core.pcm.service.logic.IPCMPROFILEPreCheckInLogic precheckinLogic;
+
+    @Autowired
+    @Lazy
+    private cn.ibizlab.ehr.core.pcm.service.logic.IPCMPROFILESubmitLogic submitLogic;
+
+    @Autowired
+    @Lazy
+    private cn.ibizlab.ehr.core.pcm.service.logic.IPCMPROFILEUnCheckInLogic uncheckinLogic;
+
     private int batchSize = 500;
 
     @Override
     @Transactional
     public PCMPROFILE jZBTG(PCMPROFILE et) {
-        //自定义代码
-        return et;
+        groupconfirmLogic.execute(et);
+         return et ;
     }
 
     @Override
     @Transactional
     public PCMPROFILE sBJZB(PCMPROFILE et) {
-        //自定义代码
-        return et;
+        forwardLogic.execute(et);
+         return et ;
     }
 
     @Override
@@ -177,8 +217,8 @@ public class PCMPROFILEServiceImpl extends ServiceImpl<PCMPROFILEMapper, PCMPROF
     @Override
     @Transactional
     public PCMPROFILE bD(PCMPROFILE et) {
-        //自定义代码
-        return et;
+        checkinLogic.execute(et);
+         return et ;
     }
 
     @Override
@@ -198,8 +238,8 @@ public class PCMPROFILEServiceImpl extends ServiceImpl<PCMPROFILEMapper, PCMPROF
     @Override
     @Transactional
     public PCMPROFILE gSSP(PCMPROFILE et) {
-        //自定义代码
-        return et;
+        companyconfirmLogic.execute(et);
+         return et ;
     }
 
     @Override
@@ -251,8 +291,8 @@ public class PCMPROFILEServiceImpl extends ServiceImpl<PCMPROFILEMapper, PCMPROF
     @Override
     @Transactional
     public PCMPROFILE returnYPZ(PCMPROFILE et) {
-        //自定义代码
-        return et;
+        invalidLogic.execute(et);
+         return et ;
     }
 
     @Override
@@ -290,15 +330,15 @@ public class PCMPROFILEServiceImpl extends ServiceImpl<PCMPROFILEMapper, PCMPROF
     @Override
     @Transactional
     public PCMPROFILE invalid(PCMPROFILE et) {
-        //自定义代码
-        return et;
+        companyrejectLogic.execute(et);
+         return et ;
     }
 
     @Override
     @Transactional
     public PCMPROFILE jZBBTG(PCMPROFILE et) {
-        //自定义代码
-        return et;
+        grouprejectLogic.execute(et);
+         return et ;
     }
 
     @Override
@@ -318,8 +358,8 @@ public class PCMPROFILEServiceImpl extends ServiceImpl<PCMPROFILEMapper, PCMPROF
     @Override
     @Transactional
     public PCMPROFILE sCBH(PCMPROFILE et) {
-        //自定义代码
-        return et;
+        precheckinLogic.execute(et);
+         return et ;
     }
 
     @Override
@@ -338,8 +378,8 @@ public class PCMPROFILEServiceImpl extends ServiceImpl<PCMPROFILEMapper, PCMPROF
     @Override
     @Transactional
     public PCMPROFILE submit(PCMPROFILE et) {
-        //自定义代码
-        return et;
+        submitLogic.execute(et);
+         return et ;
     }
 
     @Override
@@ -366,8 +406,8 @@ public class PCMPROFILEServiceImpl extends ServiceImpl<PCMPROFILEMapper, PCMPROF
     @Override
     @Transactional
     public PCMPROFILE yQWBD(PCMPROFILE et) {
-        //自定义代码
-        return et;
+        uncheckinLogic.execute(et);
+         return et ;
     }
 
     @Override
@@ -695,9 +735,9 @@ public class PCMPROFILEServiceImpl extends ServiceImpl<PCMPROFILEMapper, PCMPROF
         }
         //实体关系[DER1N_PCMPROFILE_ORMORGSECTOR_ORMORGSECTORID]
         if(!ObjectUtils.isEmpty(et.getOrmorgsectorid())){
-            cn.ibizlab.ehr.core.orm.domain.ORMORGSECTOR ormorgsector=et.getOrmorgsector();
+            cn.ibizlab.ehr.core.orm.domain.OrmOrgsector ormorgsector=et.getOrmorgsector();
             if(ObjectUtils.isEmpty(ormorgsector)){
-                cn.ibizlab.ehr.core.orm.domain.ORMORGSECTOR majorEntity=ormorgsectorService.get(et.getOrmorgsectorid());
+                cn.ibizlab.ehr.core.orm.domain.OrmOrgsector majorEntity=ormorgsectorService.get(et.getOrmorgsectorid());
                 et.setOrmorgsector(majorEntity);
                 ormorgsector=majorEntity;
             }
@@ -705,9 +745,9 @@ public class PCMPROFILEServiceImpl extends ServiceImpl<PCMPROFILEMapper, PCMPROF
         }
         //实体关系[DER1N_PCMPROFILE_ORMORG_ORMORGID]
         if(!ObjectUtils.isEmpty(et.getOrmorgid())){
-            cn.ibizlab.ehr.core.orm.domain.ORMORG ormorg=et.getOrmorg();
+            cn.ibizlab.ehr.core.orm.domain.OrmOrg ormorg=et.getOrmorg();
             if(ObjectUtils.isEmpty(ormorg)){
-                cn.ibizlab.ehr.core.orm.domain.ORMORG majorEntity=ormorgService.get(et.getOrmorgid());
+                cn.ibizlab.ehr.core.orm.domain.OrmOrg majorEntity=ormorgService.get(et.getOrmorgid());
                 et.setOrmorg(majorEntity);
                 ormorg=majorEntity;
             }
@@ -758,6 +798,26 @@ public class PCMPROFILEServiceImpl extends ServiceImpl<PCMPROFILEMapper, PCMPROF
         }
         log.warn("暂未支持的SQL语法");
         return true;
+    }
+
+    @Override
+    public List<PCMPROFILE> getPcmprofileByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<PCMPROFILE> getPcmprofileByEntities(List<PCMPROFILE> entities) {
+        List ids =new ArrayList();
+        for(PCMPROFILE entity : entities){
+            Serializable id=entity.getPcmprofileid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
     }
 
 }

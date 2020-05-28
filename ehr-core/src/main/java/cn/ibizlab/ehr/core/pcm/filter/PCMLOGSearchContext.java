@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.HashMap;
 
-import lombok.Data;
+import lombok.*;
 import lombok.extern.slf4j.Slf4j;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.alibaba.fastjson.annotation.JSONField;
@@ -95,7 +95,9 @@ public class PCMLOGSearchContext extends QueryWrapperContext<PCMLOG> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("pcmlogname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("pcmlogname", query)   
+            );
 		 }
 	}
 }

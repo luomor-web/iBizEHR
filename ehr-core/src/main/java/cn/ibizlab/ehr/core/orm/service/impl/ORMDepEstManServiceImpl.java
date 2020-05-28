@@ -49,7 +49,7 @@ public class ORMDepEstManServiceImpl extends ServiceImpl<ORMDepEstManMapper, ORM
     private cn.ibizlab.ehr.core.orm.service.IORMDUTYService ormdutyService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.orm.service.IORMORGSECTORService ormorgsectorService;
+    private cn.ibizlab.ehr.core.orm.service.IOrmOrgsectorService ormorgsectorService;
 
     private int batchSize = 500;
 
@@ -204,9 +204,9 @@ public class ORMDepEstManServiceImpl extends ServiceImpl<ORMDepEstManMapper, ORM
         }
         //实体关系[DER1N_ORMDEPESTMAN_ORMORGSECTOR_ORMZWBZID]
         if(!ObjectUtils.isEmpty(et.getOrmzwbzid())){
-            cn.ibizlab.ehr.core.orm.domain.ORMORGSECTOR ormzwbz=et.getOrmzwbz();
+            cn.ibizlab.ehr.core.orm.domain.OrmOrgsector ormzwbz=et.getOrmzwbz();
             if(ObjectUtils.isEmpty(ormzwbz)){
-                cn.ibizlab.ehr.core.orm.domain.ORMORGSECTOR majorEntity=ormorgsectorService.get(et.getOrmzwbzid());
+                cn.ibizlab.ehr.core.orm.domain.OrmOrgsector majorEntity=ormorgsectorService.get(et.getOrmzwbzid());
                 et.setOrmzwbz(majorEntity);
                 ormzwbz=majorEntity;
             }
@@ -236,6 +236,26 @@ public class ORMDepEstManServiceImpl extends ServiceImpl<ORMDepEstManMapper, ORM
         }
         log.warn("暂未支持的SQL语法");
         return true;
+    }
+
+    @Override
+    public List<ORMDepEstMan> getOrmdepestmanByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<ORMDepEstMan> getOrmdepestmanByEntities(List<ORMDepEstMan> entities) {
+        List ids =new ArrayList();
+        for(ORMDepEstMan entity : entities){
+            Serializable id=entity.getOrmdepestmanid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
     }
 
 }

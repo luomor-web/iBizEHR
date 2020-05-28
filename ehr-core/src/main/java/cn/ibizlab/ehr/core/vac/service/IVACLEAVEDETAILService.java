@@ -57,6 +57,9 @@ public interface IVACLEAVEDETAILService extends IService<VACLEAVEDETAIL>{
      */
     boolean execute(String sql, Map param);
 
+    List<VACLEAVEDETAIL> getVacleavedetailByIds(List<String> ids) ;
+    List<VACLEAVEDETAIL> getVacleavedetailByEntities(List<VACLEAVEDETAIL> entities) ;
+
 }
 
 

@@ -4,7 +4,7 @@ import PIMARCHIVESService from '@/service/pimarchives/pimarchives-service';
 import PIMRecordModel from './pimrecord-treeview-model';
 import CodeListService from '@service/app/codelist-service';
 import i18n from '@/locale';
-import ORMORGService from '@service/ormorg/ormorg-service';
+import OrmOrgService from '@service/orm-org/orm-org-service';
 
 
 /**
@@ -57,10 +57,10 @@ export default class PIMRecordService extends ControlService {
     /**
      * 组织管理服务对象
      *
-     * @type {ORMORGService}
+     * @type {OrmOrgService}
      * @memberof PIMRecordService
      */
-    public ormorgService: ORMORGService = new ORMORGService({ $store: this.getStore() });
+    public ormorgService: OrmOrgService = new OrmOrgService({ $store: this.getStore() });
 
     /**
      * 节点分隔符号
@@ -294,9 +294,9 @@ export default class PIMRecordService extends ControlService {
                         // 整理context
                         let strId: string = entity.orgid;
                         let strText: string = entity.shortname;
-                        Object.assign(treeNode,{srfparentdename:'ORMORG',srfparentkey:entity.orgid});
+                        Object.assign(treeNode,{srfparentdename:'OrmOrg',srfparentkey:entity.orgid});
                         let tempContext:any = JSON.parse(JSON.stringify(context));
-                        Object.assign(tempContext,{srfparentdename:'ORMORG',srfparentkey:entity.orgid,ormorg:strId})
+                        Object.assign(tempContext,{srfparentdename:'OrmOrg',srfparentkey:entity.orgid,ormorg:strId})
                         Object.assign(treeNode,{srfappctx:tempContext});
                         Object.assign(treeNode,{'ormorg':strId});
                         Object.assign(treeNode, { srfkey: strId });
@@ -439,9 +439,9 @@ export default class PIMRecordService extends ControlService {
                         // 整理context
                         let strId: string = entity.orgid;
                         let strText: string = entity.shortname;
-                        Object.assign(treeNode,{srfparentdename:'ORMORG',srfparentkey:entity.orgid});
+                        Object.assign(treeNode,{srfparentdename:'OrmOrg',srfparentkey:entity.orgid});
                         let tempContext:any = JSON.parse(JSON.stringify(context));
-                        Object.assign(tempContext,{srfparentdename:'ORMORG',srfparentkey:entity.orgid,ormorg:strId})
+                        Object.assign(tempContext,{srfparentdename:'OrmOrg',srfparentkey:entity.orgid,ormorg:strId})
                         Object.assign(treeNode,{srfappctx:tempContext});
                         Object.assign(treeNode,{'ormorg':strId});
                         Object.assign(treeNode, { srfkey: strId });

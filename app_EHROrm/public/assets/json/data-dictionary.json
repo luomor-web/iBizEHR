@@ -116,8 +116,8 @@
         "srfkey": "ORMCL_ProCapitalAtt",
         "emptytext": "",
         "codelisttype":"dynamic",
-        "appdataentity":"",
-        "appdedataset":"",
+        "appdataentity":"CodeItem",
+        "appdedataset":"FetchCurCL",
         "items": []
     }, 
     {
@@ -191,8 +191,8 @@
         "srfkey": "ORMCL_IsDirectlyManage",
         "emptytext": "",
         "codelisttype":"dynamic",
-        "appdataentity":"",
-        "appdedataset":"",
+        "appdataentity":"CodeItem",
+        "appdedataset":"FetchCurCL",
         "items": []
     }, 
     {
@@ -228,8 +228,8 @@
         "srfkey": "ORMCL_EngineeringScale",
         "emptytext": "",
         "codelisttype":"dynamic",
-        "appdataentity":"",
-        "appdedataset":"",
+        "appdataentity":"CodeItem",
+        "appdedataset":"FetchCurCL",
         "items": []
     }, 
     {
@@ -352,16 +352,16 @@
         "srfkey": "ORMCL_EngineeringPurpose",
         "emptytext": "",
         "codelisttype":"dynamic",
-        "appdataentity":"",
-        "appdedataset":"",
+        "appdataentity":"CodeItem",
+        "appdedataset":"FetchCurCL",
         "items": []
     }, 
     {
         "srfkey": "ORMCL_EngineeringBusType",
         "emptytext": "",
         "codelisttype":"dynamic",
-        "appdataentity":"",
-        "appdedataset":"",
+        "appdataentity":"CodeItem",
+        "appdedataset":"FetchCurCL",
         "items": []
     }, 
     {
@@ -392,11 +392,11 @@
         ]
     }, 
     {
-        "srfkey": "SSQY",
+        "srfkey": "EhrCodeListSsqy",
         "emptytext": "",
         "codelisttype":"dynamic",
-        "appdataentity":"",
-        "appdedataset":"",
+        "appdataentity":"CodeItem",
+        "appdedataset":"FetchCurCL",
         "items": []
     }, 
     {
@@ -515,8 +515,8 @@
         "srfkey": "ORMCL_GWTYPE",
         "emptytext": "",
         "codelisttype":"dynamic",
-        "appdataentity":"",
-        "appdedataset":"",
+        "appdataentity":"CodeItem",
+        "appdedataset":"FetchCurCL",
         "items": []
     }, 
     {

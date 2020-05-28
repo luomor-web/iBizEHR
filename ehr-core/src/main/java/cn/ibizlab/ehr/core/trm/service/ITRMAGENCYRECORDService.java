@@ -54,6 +54,9 @@ public interface ITRMAGENCYRECORDService extends IService<TRMAGENCYRECORD>{
      */
     boolean execute(String sql, Map param);
 
+    List<TRMAGENCYRECORD> getTrmagencyrecordByIds(List<String> ids) ;
+    List<TRMAGENCYRECORD> getTrmagencyrecordByEntities(List<TRMAGENCYRECORD> entities) ;
+
 }
 
 

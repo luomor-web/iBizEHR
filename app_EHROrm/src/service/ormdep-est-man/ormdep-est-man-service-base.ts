@@ -48,6 +48,15 @@ export default class ORMDepEstManServiceBase extends EntityService {
      * @memberof ORMDepEstManServiceBase
      */
     public async Select(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.ormorg && context.ormorgsector && context.ormdepestman){
+            return Http.getInstance().get(`/ormorgs/${context.ormorg}/ormorgsectors/${context.ormorgsector}/ormdepestmen/${context.ormdepestman}/select`,isloading);
+        }
+        if(context.ormorgsector && context.ormdepestman){
+            return Http.getInstance().get(`/ormorgsectors/${context.ormorgsector}/ormdepestmen/${context.ormdepestman}/select`,isloading);
+        }
+        if(context.ormduty && context.ormdepestman){
+            return Http.getInstance().get(`/ormduties/${context.ormduty}/ormdepestmen/${context.ormdepestman}/select`,isloading);
+        }
             return Http.getInstance().get(`/ormdepestmen/${context.ormdepestman}/select`,isloading);
     }
 
@@ -61,6 +70,15 @@ export default class ORMDepEstManServiceBase extends EntityService {
      * @memberof ORMDepEstManServiceBase
      */
     public async GetDraft(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.ormorg && context.ormorgsector && true){
+            return Http.getInstance().get(`/ormorgs/${context.ormorg}/ormorgsectors/${context.ormorgsector}/ormdepestmen/getdraft`,isloading);
+        }
+        if(context.ormorgsector && true){
+            return Http.getInstance().get(`/ormorgsectors/${context.ormorgsector}/ormdepestmen/getdraft`,isloading);
+        }
+        if(context.ormduty && true){
+            return Http.getInstance().get(`/ormduties/${context.ormduty}/ormdepestmen/getdraft`,isloading);
+        }
         let res:any = await  Http.getInstance().get(`/ormdepestmen/getdraft`,isloading);
         res.data.ormdepestman = data.ormdepestman;
         return res;
@@ -76,6 +94,15 @@ export default class ORMDepEstManServiceBase extends EntityService {
      * @memberof ORMDepEstManServiceBase
      */
     public async CheckKey(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.ormorg && context.ormorgsector && context.ormdepestman){
+            return Http.getInstance().post(`/ormorgs/${context.ormorg}/ormorgsectors/${context.ormorgsector}/ormdepestmen/${context.ormdepestman}/checkkey`,data,isloading);
+        }
+        if(context.ormorgsector && context.ormdepestman){
+            return Http.getInstance().post(`/ormorgsectors/${context.ormorgsector}/ormdepestmen/${context.ormdepestman}/checkkey`,data,isloading);
+        }
+        if(context.ormduty && context.ormdepestman){
+            return Http.getInstance().post(`/ormduties/${context.ormduty}/ormdepestmen/${context.ormdepestman}/checkkey`,data,isloading);
+        }
             return Http.getInstance().post(`/ormdepestmen/${context.ormdepestman}/checkkey`,data,isloading);
     }
 
@@ -89,6 +116,33 @@ export default class ORMDepEstManServiceBase extends EntityService {
      * @memberof ORMDepEstManServiceBase
      */
     public async Create(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.ormorg && context.ormorgsector && true){
+            if(!data.srffrontuf || data.srffrontuf !== "1"){
+                data[this.APPDEKEY] = null;
+            }
+            if(data.srffrontuf){
+                delete data.srffrontuf;
+            }
+            return Http.getInstance().post(`/ormorgs/${context.ormorg}/ormorgsectors/${context.ormorgsector}/ormdepestmen`,data,isloading);
+        }
+        if(context.ormorgsector && true){
+            if(!data.srffrontuf || data.srffrontuf !== "1"){
+                data[this.APPDEKEY] = null;
+            }
+            if(data.srffrontuf){
+                delete data.srffrontuf;
+            }
+            return Http.getInstance().post(`/ormorgsectors/${context.ormorgsector}/ormdepestmen`,data,isloading);
+        }
+        if(context.ormduty && true){
+            if(!data.srffrontuf || data.srffrontuf !== "1"){
+                data[this.APPDEKEY] = null;
+            }
+            if(data.srffrontuf){
+                delete data.srffrontuf;
+            }
+            return Http.getInstance().post(`/ormduties/${context.ormduty}/ormdepestmen`,data,isloading);
+        }
         let masterData:any = {};
         Object.assign(data,masterData);
         if(!data.srffrontuf || data.srffrontuf !== "1"){
@@ -112,6 +166,15 @@ export default class ORMDepEstManServiceBase extends EntityService {
      * @memberof ORMDepEstManServiceBase
      */
     public async Get(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.ormorg && context.ormorgsector && context.ormdepestman){
+            return Http.getInstance().get(`/ormorgs/${context.ormorg}/ormorgsectors/${context.ormorgsector}/ormdepestmen/${context.ormdepestman}`,isloading);
+        }
+        if(context.ormorgsector && context.ormdepestman){
+            return Http.getInstance().get(`/ormorgsectors/${context.ormorgsector}/ormdepestmen/${context.ormdepestman}`,isloading);
+        }
+        if(context.ormduty && context.ormdepestman){
+            return Http.getInstance().get(`/ormduties/${context.ormduty}/ormdepestmen/${context.ormdepestman}`,isloading);
+        }
             let res:any = await Http.getInstance().get(`/ormdepestmen/${context.ormdepestman}`,isloading);
             return res;
 
@@ -127,6 +190,15 @@ export default class ORMDepEstManServiceBase extends EntityService {
      * @memberof ORMDepEstManServiceBase
      */
     public async Remove(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.ormorg && context.ormorgsector && context.ormdepestman){
+            return Http.getInstance().delete(`/ormorgs/${context.ormorg}/ormorgsectors/${context.ormorgsector}/ormdepestmen/${context.ormdepestman}`,isloading);
+        }
+        if(context.ormorgsector && context.ormdepestman){
+            return Http.getInstance().delete(`/ormorgsectors/${context.ormorgsector}/ormdepestmen/${context.ormdepestman}`,isloading);
+        }
+        if(context.ormduty && context.ormdepestman){
+            return Http.getInstance().delete(`/ormduties/${context.ormduty}/ormdepestmen/${context.ormdepestman}`,isloading);
+        }
             return Http.getInstance().delete(`/ormdepestmen/${context.ormdepestman}`,isloading);
 
     }
@@ -141,6 +213,15 @@ export default class ORMDepEstManServiceBase extends EntityService {
      * @memberof ORMDepEstManServiceBase
      */
     public async Update(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.ormorg && context.ormorgsector && context.ormdepestman){
+            return Http.getInstance().put(`/ormorgs/${context.ormorg}/ormorgsectors/${context.ormorgsector}/ormdepestmen/${context.ormdepestman}`,data,isloading);
+        }
+        if(context.ormorgsector && context.ormdepestman){
+            return Http.getInstance().put(`/ormorgsectors/${context.ormorgsector}/ormdepestmen/${context.ormdepestman}`,data,isloading);
+        }
+        if(context.ormduty && context.ormdepestman){
+            return Http.getInstance().put(`/ormduties/${context.ormduty}/ormdepestmen/${context.ormdepestman}`,data,isloading);
+        }
         let masterData:any = {};
         Object.assign(data,masterData);
             let res:any = await  Http.getInstance().put(`/ormdepestmen/${context.ormdepestman}`,data,isloading);
@@ -157,6 +238,15 @@ export default class ORMDepEstManServiceBase extends EntityService {
      * @memberof ORMDepEstManServiceBase
      */
     public async Save(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.ormorg && context.ormorgsector && context.ormdepestman){
+            return Http.getInstance().post(`/ormorgs/${context.ormorg}/ormorgsectors/${context.ormorgsector}/ormdepestmen/${context.ormdepestman}/save`,data,isloading);
+        }
+        if(context.ormorgsector && context.ormdepestman){
+            return Http.getInstance().post(`/ormorgsectors/${context.ormorgsector}/ormdepestmen/${context.ormdepestman}/save`,data,isloading);
+        }
+        if(context.ormduty && context.ormdepestman){
+            return Http.getInstance().post(`/ormduties/${context.ormduty}/ormdepestmen/${context.ormdepestman}/save`,data,isloading);
+        }
         let masterData:any = {};
         Object.assign(data,masterData);
             let res:any = await  Http.getInstance().post(`/ormdepestmen/${context.ormdepestman}/save`,data,isloading);
@@ -173,6 +263,18 @@ export default class ORMDepEstManServiceBase extends EntityService {
      * @memberof ORMDepEstManServiceBase
      */
     public async FetchDefault(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.ormorg && context.ormorgsector && true){
+            let tempData:any = JSON.parse(JSON.stringify(data));
+            return Http.getInstance().get(`/ormorgs/${context.ormorg}/ormorgsectors/${context.ormorgsector}/ormdepestmen/fetchdefault`,tempData,isloading);
+        }
+        if(context.ormorgsector && true){
+            let tempData:any = JSON.parse(JSON.stringify(data));
+            return Http.getInstance().get(`/ormorgsectors/${context.ormorgsector}/ormdepestmen/fetchdefault`,tempData,isloading);
+        }
+        if(context.ormduty && true){
+            let tempData:any = JSON.parse(JSON.stringify(data));
+            return Http.getInstance().get(`/ormduties/${context.ormduty}/ormdepestmen/fetchdefault`,tempData,isloading);
+        }
         let tempData:any = JSON.parse(JSON.stringify(data));
         return Http.getInstance().get(`/ormdepestmen/fetchdefault`,tempData,isloading);
     }

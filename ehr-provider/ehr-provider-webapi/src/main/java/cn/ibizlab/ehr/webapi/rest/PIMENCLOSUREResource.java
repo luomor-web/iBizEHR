@@ -22,6 +22,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.access.prepost.PostAuthorize;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -39,36 +40,32 @@ import cn.ibizlab.ehr.core.pim.filter.PIMENCLOSURESearchContext;
 public class PIMENCLOSUREResource {
 
     @Autowired
-    private IPIMENCLOSUREService pimenclosureService;
+    public IPIMENCLOSUREService pimenclosureService;
 
     @Autowired
     @Lazy
     public PIMENCLOSUREMapping pimenclosureMapping;
 
-    public PIMENCLOSUREDTO permissionDTO=new PIMENCLOSUREDTO();
-
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMENCLOSURE-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"PIMENCLOSURE" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimenclosures/getdraft")
     public ResponseEntity<PIMENCLOSUREDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(pimenclosureMapping.toDto(pimenclosureService.getDraft(new PIMENCLOSURE())));
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMENCLOSURE-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"PIMENCLOSURE" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimenclosures/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PIMENCLOSUREDTO pimenclosuredto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pimenclosureService.checkKey(pimenclosureMapping.toDomain(pimenclosuredto)));
     }
 
-    @PreAuthorize("hasPermission('','Save',{'Sql',this.pimenclosureMapping,#pimenclosuredto})")
+    @PreAuthorize("hasPermission(this.pimenclosureMapping.toDomain(#pimenclosuredto),'ehr-PIMENCLOSURE-Save')")
     @ApiOperation(value = "Save", tags = {"PIMENCLOSURE" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimenclosures/save")
     public ResponseEntity<Boolean> save(@RequestBody PIMENCLOSUREDTO pimenclosuredto) {
         return ResponseEntity.status(HttpStatus.OK).body(pimenclosureService.save(pimenclosureMapping.toDomain(pimenclosuredto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.pimenclosureMapping,#pimenclosuredtos})")
+    @PreAuthorize("hasPermission(this.pimenclosureMapping.toDomain(#pimenclosuredtos),'ehr-PIMENCLOSURE-Save')")
     @ApiOperation(value = "SaveBatch", tags = {"PIMENCLOSURE" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimenclosures/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PIMENCLOSUREDTO> pimenclosuredtos) {
@@ -76,7 +73,7 @@ public class PIMENCLOSUREResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission(#pimenclosure_id,'Update',{'Sql',this.pimenclosureMapping,#pimenclosuredto})")
+    @PreAuthorize("hasPermission(this.pimenclosureService.get(#pimenclosure_id),'ehr-PIMENCLOSURE-Update')")
     @ApiOperation(value = "Update", tags = {"PIMENCLOSURE" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimenclosures/{pimenclosure_id}")
     @Transactional
@@ -88,7 +85,7 @@ public class PIMENCLOSUREResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.pimenclosureMapping,#pimenclosuredtos})")
+    @PreAuthorize("hasPermission(this.pimenclosureService.getPimenclosureByEntities(this.pimenclosureMapping.toDomain(#pimenclosuredtos)),'ehr-PIMENCLOSURE-Update')")
     @ApiOperation(value = "UpdateBatch", tags = {"PIMENCLOSURE" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimenclosures/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PIMENCLOSUREDTO> pimenclosuredtos) {
@@ -96,7 +93,7 @@ public class PIMENCLOSUREResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission(#pimenclosure_id,'Remove',{'Sql',this.pimenclosureMapping,this.permissionDTO})")
+    @PreAuthorize("hasPermission(this.pimenclosureService.get(#pimenclosure_id),'ehr-PIMENCLOSURE-Remove')")
     @ApiOperation(value = "Remove", tags = {"PIMENCLOSURE" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimenclosures/{pimenclosure_id}")
     @Transactional
@@ -104,7 +101,7 @@ public class PIMENCLOSUREResource {
          return ResponseEntity.status(HttpStatus.OK).body(pimenclosureService.remove(pimenclosure_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.pimenclosureMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission(this.pimenclosureService.getPimenclosureByIds(#ids),'ehr-PIMENCLOSURE-Remove')")
     @ApiOperation(value = "RemoveBatch", tags = {"PIMENCLOSURE" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimenclosures/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -112,7 +109,7 @@ public class PIMENCLOSUREResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('','Create',{'Sql',this.pimenclosureMapping,#pimenclosuredto})")
+    @PreAuthorize("hasPermission(this.pimenclosureMapping.toDomain(#pimenclosuredto),'ehr-PIMENCLOSURE-Create')")
     @ApiOperation(value = "Create", tags = {"PIMENCLOSURE" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimenclosures")
     @Transactional
@@ -123,7 +120,7 @@ public class PIMENCLOSUREResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.pimenclosureMapping,#pimenclosuredtos})")
+    @PreAuthorize("hasPermission(this.pimenclosureMapping.toDomain(#pimenclosuredtos),'ehr-PIMENCLOSURE-Create')")
     @ApiOperation(value = "createBatch", tags = {"PIMENCLOSURE" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimenclosures/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PIMENCLOSUREDTO> pimenclosuredtos) {
@@ -131,7 +128,7 @@ public class PIMENCLOSUREResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission(#pimenclosure_id,'Get',{'Sql',this.pimenclosureMapping,this.permissionDTO})")
+    @PostAuthorize("hasPermission(this.pimenclosureMapping.toDomain(returnObject.body),'ehr-PIMENCLOSURE-Get')")
     @ApiOperation(value = "Get", tags = {"PIMENCLOSURE" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimenclosures/{pimenclosure_id}")
     public ResponseEntity<PIMENCLOSUREDTO> get(@PathVariable("pimenclosure_id") String pimenclosure_id) {
@@ -183,3 +180,4 @@ public class PIMENCLOSUREResource {
                 .body(new PageImpl(pimenclosureMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 }
+

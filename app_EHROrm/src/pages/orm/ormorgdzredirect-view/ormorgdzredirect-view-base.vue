@@ -10,7 +10,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, WizardViewBase } from '@/crm-core';
-import ORMORGDZService from '@/service/ormorgdz/ormorgdz-service';
+import OrmOrgdzService from '@/service/orm-orgdz/orm-orgdz-service';
 
 
 import UIService from '@/uiservice/ui-service';
@@ -30,10 +30,10 @@ export default class ORMORGDZRedirectViewBase extends WizardViewBase {
     /**
      * 实体服务对象
      *
-     * @type {ORMORGDZService}
+     * @type {OrmOrgdzService}
      * @memberof ORMORGDZRedirectViewBase
      */
-    public appEntityService: ORMORGDZService = new ORMORGDZService;
+    public appEntityService: OrmOrgdzService = new OrmOrgdzService;
 
 
     /**

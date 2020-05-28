@@ -52,6 +52,9 @@ public interface IPARKHFAService extends IService<PARKHFA>{
      */
     boolean execute(String sql, Map param);
 
+    List<PARKHFA> getParkhfaByIds(List<String> ids) ;
+    List<PARKHFA> getParkhfaByEntities(List<PARKHFA> entities) ;
+
 }
 
 

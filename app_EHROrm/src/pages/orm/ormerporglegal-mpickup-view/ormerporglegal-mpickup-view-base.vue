@@ -77,7 +77,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, MPickupViewBase } from '@/crm-core';
-import ORMERPORGService from '@/service/ormerporg/ormerporg-service';
+import OrmErporgService from '@/service/orm-erporg/orm-erporg-service';
 
 import MPickupViewEngine from '@engine/view/mpickup-view-engine';
 
@@ -96,10 +96,10 @@ export default class ORMERPORGLegalMPickupViewBase extends MPickupViewBase {
     /**
      * 实体服务对象
      *
-     * @type {ORMERPORGService}
+     * @type {OrmErporgService}
      * @memberof ORMERPORGLegalMPickupViewBase
      */
-    public appEntityService: ORMERPORGService = new ORMERPORGService;
+    public appEntityService: OrmErporgService = new OrmErporgService;
 
 
     /**

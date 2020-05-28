@@ -238,6 +238,26 @@ public class TRMDEPARTNEEDSServiceImpl extends ServiceImpl<TRMDEPARTNEEDSMapper,
         return true;
     }
 
+    @Override
+    public List<TRMDEPARTNEEDS> getTrmdepartneedsByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<TRMDEPARTNEEDS> getTrmdepartneedsByEntities(List<TRMDEPARTNEEDS> entities) {
+        List ids =new ArrayList();
+        for(TRMDEPARTNEEDS entity : entities){
+            Serializable id=entity.getTrmdepartneedsid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

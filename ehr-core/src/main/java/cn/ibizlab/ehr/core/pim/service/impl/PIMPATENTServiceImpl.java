@@ -236,6 +236,26 @@ public class PIMPATENTServiceImpl extends ServiceImpl<PIMPATENTMapper, PIMPATENT
         return true;
     }
 
+    @Override
+    public List<PIMPATENT> getPimpatentByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<PIMPATENT> getPimpatentByEntities(List<PIMPATENT> entities) {
+        List ids =new ArrayList();
+        for(PIMPATENT entity : entities){
+            Serializable id=entity.getPimpatentid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

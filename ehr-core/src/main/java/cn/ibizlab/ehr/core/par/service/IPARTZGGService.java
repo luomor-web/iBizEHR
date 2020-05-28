@@ -52,6 +52,9 @@ public interface IPARTZGGService extends IService<PARTZGG>{
      */
     boolean execute(String sql, Map param);
 
+    List<PARTZGG> getPartzggByIds(List<String> ids) ;
+    List<PARTZGG> getPartzggByEntities(List<PARTZGG> entities) ;
+
 }
 
 

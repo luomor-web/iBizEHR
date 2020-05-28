@@ -54,6 +54,9 @@ public interface IPCMZPMEGLMXService extends IService<PCMZPMEGLMX>{
      */
     boolean execute(String sql, Map param);
 
+    List<PCMZPMEGLMX> getPcmzpmeglmxByIds(List<String> ids) ;
+    List<PCMZPMEGLMX> getPcmzpmeglmxByEntities(List<PCMZPMEGLMX> entities) ;
+
 }
 
 

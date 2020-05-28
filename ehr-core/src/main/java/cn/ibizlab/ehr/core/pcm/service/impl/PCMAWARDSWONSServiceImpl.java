@@ -216,6 +216,26 @@ public class PCMAWARDSWONSServiceImpl extends ServiceImpl<PCMAWARDSWONSMapper, P
         return true;
     }
 
+    @Override
+    public List<PCMAWARDSWONS> getPcmawardswonsByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<PCMAWARDSWONS> getPcmawardswonsByEntities(List<PCMAWARDSWONS> entities) {
+        List ids =new ArrayList();
+        for(PCMAWARDSWONS entity : entities){
+            Serializable id=entity.getPcmawardswonsid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

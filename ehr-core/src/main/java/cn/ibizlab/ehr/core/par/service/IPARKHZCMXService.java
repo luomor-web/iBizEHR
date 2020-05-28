@@ -54,6 +54,9 @@ public interface IPARKHZCMXService extends IService<PARKHZCMX>{
      */
     boolean execute(String sql, Map param);
 
+    List<PARKHZCMX> getParkhzcmxByIds(List<String> ids) ;
+    List<PARKHZCMX> getParkhzcmxByEntities(List<PARKHZCMX> entities) ;
+
 }
 
 

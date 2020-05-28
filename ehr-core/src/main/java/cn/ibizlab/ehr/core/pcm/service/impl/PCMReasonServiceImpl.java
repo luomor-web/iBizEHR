@@ -179,6 +179,26 @@ public class PCMReasonServiceImpl extends ServiceImpl<PCMReasonMapper, PCMReason
         return true;
     }
 
+    @Override
+    public List<PCMReason> getPcmreasonByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<PCMReason> getPcmreasonByEntities(List<PCMReason> entities) {
+        List ids =new ArrayList();
+        for(PCMReason entity : entities){
+            Serializable id=entity.getPcmreasonid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

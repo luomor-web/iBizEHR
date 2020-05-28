@@ -222,6 +222,26 @@ public class PARKHZCMXServiceImpl extends ServiceImpl<PARKHZCMXMapper, PARKHZCMX
         return true;
     }
 
+    @Override
+    public List<PARKHZCMX> getParkhzcmxByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<PARKHZCMX> getParkhzcmxByEntities(List<PARKHZCMX> entities) {
+        List ids =new ArrayList();
+        for(PARKHZCMX entity : entities){
+            Serializable id=entity.getParkhzcmxid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

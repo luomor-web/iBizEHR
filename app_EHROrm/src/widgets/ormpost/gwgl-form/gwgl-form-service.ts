@@ -2,7 +2,7 @@ import { Http,Util,Errorlog } from '@/utils';
 import ControlService from '@/widgets/control-service';
 import ORMPOSTService from '@/service/ormpost/ormpost-service';
 import GWGLModel from './gwgl-form-model';
-import ORMORGService from '@/service/ormorg/ormorg-service';
+import OrmOrgService from '@/service/orm-org/orm-org-service';
 
 
 /**
@@ -45,10 +45,10 @@ export default class GWGLService extends ControlService {
     /**
      * 组织管理服务对象
      *
-     * @type {ORMORGService}
+     * @type {OrmOrgService}
      * @memberof GWGLService
      */
-    public ormorgService: ORMORGService = new ORMORGService();
+    public ormorgService: OrmOrgService = new OrmOrgService();
 
     /**
      * 处理数据
@@ -89,7 +89,7 @@ export default class GWGLService extends ControlService {
      */
     @Errorlog
     public getItems(serviceName: string, interfaceName: string, context: any = {}, data: any, isloading?: boolean): Promise<any[]> {
-        if (Object.is(serviceName, 'ORMORGService') && Object.is(interfaceName, 'FetchGSGWZY')) {
+        if (Object.is(serviceName, 'OrmOrgService') && Object.is(interfaceName, 'FetchGSGWZY')) {
             return this.doItems(this.ormorgService.FetchGSGWZY(JSON.parse(JSON.stringify(context)),data, isloading), 'orgid', 'ormorg');
         }
 

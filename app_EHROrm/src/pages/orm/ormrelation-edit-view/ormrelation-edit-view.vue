@@ -2,7 +2,7 @@
 import { Component } from 'vue-property-decorator';
 import ORMRelationEditViewBase from './ormrelation-edit-view-base.vue';
 
-import view_form from '@widgets/ormrelation/main-form/main-form.vue';
+import view_form from '@widgets/orm-relation/main-form/main-form.vue';
 
 /**
  * 组织管理关系表编辑视图

@@ -231,6 +231,26 @@ public class SOCSELFAREBASEMXServiceImpl extends ServiceImpl<SOCSELFAREBASEMXMap
         return true;
     }
 
+    @Override
+    public List<SOCSELFAREBASEMX> getSocselfarebasemxByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<SOCSELFAREBASEMX> getSocselfarebasemxByEntities(List<SOCSELFAREBASEMX> entities) {
+        List ids =new ArrayList();
+        for(SOCSELFAREBASEMX entity : entities){
+            Serializable id=entity.getSocselfarebasemxid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

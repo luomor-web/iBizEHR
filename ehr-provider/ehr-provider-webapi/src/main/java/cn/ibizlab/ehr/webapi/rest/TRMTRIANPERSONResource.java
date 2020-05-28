@@ -22,6 +22,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.access.prepost.PostAuthorize;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -39,29 +40,26 @@ import cn.ibizlab.ehr.core.trm.filter.TRMTRIANPERSONSearchContext;
 public class TRMTRIANPERSONResource {
 
     @Autowired
-    private ITRMTRIANPERSONService trmtrianpersonService;
+    public ITRMTRIANPERSONService trmtrianpersonService;
 
     @Autowired
     @Lazy
     public TRMTRIANPERSONMapping trmtrianpersonMapping;
 
-    public TRMTRIANPERSONDTO permissionDTO=new TRMTRIANPERSONDTO();
-
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMTRIANPERSON-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"TRMTRIANPERSON" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/trmtrianpeople/getdraft")
     public ResponseEntity<TRMTRIANPERSONDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(trmtrianpersonMapping.toDto(trmtrianpersonService.getDraft(new TRMTRIANPERSON())));
     }
 
-    @PreAuthorize("hasPermission('','Save',{'Sql',this.trmtrianpersonMapping,#trmtrianpersondto})")
+    @PreAuthorize("hasPermission(this.trmtrianpersonMapping.toDomain(#trmtrianpersondto),'ehr-TRMTRIANPERSON-Save')")
     @ApiOperation(value = "Save", tags = {"TRMTRIANPERSON" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmtrianpeople/save")
     public ResponseEntity<Boolean> save(@RequestBody TRMTRIANPERSONDTO trmtrianpersondto) {
         return ResponseEntity.status(HttpStatus.OK).body(trmtrianpersonService.save(trmtrianpersonMapping.toDomain(trmtrianpersondto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.trmtrianpersonMapping,#trmtrianpersondtos})")
+    @PreAuthorize("hasPermission(this.trmtrianpersonMapping.toDomain(#trmtrianpersondtos),'ehr-TRMTRIANPERSON-Save')")
     @ApiOperation(value = "SaveBatch", tags = {"TRMTRIANPERSON" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmtrianpeople/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<TRMTRIANPERSONDTO> trmtrianpersondtos) {
@@ -69,7 +67,7 @@ public class TRMTRIANPERSONResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission(#trmtrianperson_id,'Remove',{'Sql',this.trmtrianpersonMapping,this.permissionDTO})")
+    @PreAuthorize("hasPermission(this.trmtrianpersonService.get(#trmtrianperson_id),'ehr-TRMTRIANPERSON-Remove')")
     @ApiOperation(value = "Remove", tags = {"TRMTRIANPERSON" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/trmtrianpeople/{trmtrianperson_id}")
     @Transactional
@@ -77,7 +75,7 @@ public class TRMTRIANPERSONResource {
          return ResponseEntity.status(HttpStatus.OK).body(trmtrianpersonService.remove(trmtrianperson_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.trmtrianpersonMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission(this.trmtrianpersonService.getTrmtrianpersonByIds(#ids),'ehr-TRMTRIANPERSON-Remove')")
     @ApiOperation(value = "RemoveBatch", tags = {"TRMTRIANPERSON" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/trmtrianpeople/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -85,14 +83,13 @@ public class TRMTRIANPERSONResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMTRIANPERSON-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"TRMTRIANPERSON" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmtrianpeople/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody TRMTRIANPERSONDTO trmtrianpersondto) {
         return  ResponseEntity.status(HttpStatus.OK).body(trmtrianpersonService.checkKey(trmtrianpersonMapping.toDomain(trmtrianpersondto)));
     }
 
-    @PreAuthorize("hasPermission('','Create',{'Sql',this.trmtrianpersonMapping,#trmtrianpersondto})")
+    @PreAuthorize("hasPermission(this.trmtrianpersonMapping.toDomain(#trmtrianpersondto),'ehr-TRMTRIANPERSON-Create')")
     @ApiOperation(value = "Create", tags = {"TRMTRIANPERSON" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmtrianpeople")
     @Transactional
@@ -103,7 +100,7 @@ public class TRMTRIANPERSONResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.trmtrianpersonMapping,#trmtrianpersondtos})")
+    @PreAuthorize("hasPermission(this.trmtrianpersonMapping.toDomain(#trmtrianpersondtos),'ehr-TRMTRIANPERSON-Create')")
     @ApiOperation(value = "createBatch", tags = {"TRMTRIANPERSON" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmtrianpeople/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<TRMTRIANPERSONDTO> trmtrianpersondtos) {
@@ -111,7 +108,7 @@ public class TRMTRIANPERSONResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission(#trmtrianperson_id,'Get',{'Sql',this.trmtrianpersonMapping,this.permissionDTO})")
+    @PostAuthorize("hasPermission(this.trmtrianpersonMapping.toDomain(returnObject.body),'ehr-TRMTRIANPERSON-Get')")
     @ApiOperation(value = "Get", tags = {"TRMTRIANPERSON" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/trmtrianpeople/{trmtrianperson_id}")
     public ResponseEntity<TRMTRIANPERSONDTO> get(@PathVariable("trmtrianperson_id") String trmtrianperson_id) {
@@ -120,7 +117,7 @@ public class TRMTRIANPERSONResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#trmtrianperson_id,'Update',{'Sql',this.trmtrianpersonMapping,#trmtrianpersondto})")
+    @PreAuthorize("hasPermission(this.trmtrianpersonService.get(#trmtrianperson_id),'ehr-TRMTRIANPERSON-Update')")
     @ApiOperation(value = "Update", tags = {"TRMTRIANPERSON" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/trmtrianpeople/{trmtrianperson_id}")
     @Transactional
@@ -132,7 +129,7 @@ public class TRMTRIANPERSONResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.trmtrianpersonMapping,#trmtrianpersondtos})")
+    @PreAuthorize("hasPermission(this.trmtrianpersonService.getTrmtrianpersonByEntities(this.trmtrianpersonMapping.toDomain(#trmtrianpersondtos)),'ehr-TRMTRIANPERSON-Update')")
     @ApiOperation(value = "UpdateBatch", tags = {"TRMTRIANPERSON" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/trmtrianpeople/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<TRMTRIANPERSONDTO> trmtrianpersondtos) {
@@ -161,7 +158,6 @@ public class TRMTRIANPERSONResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(trmtrianpersonMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMTRIANPERSON-GetDraft-all')")
     @ApiOperation(value = "GetDraftByPIMPERSON", tags = {"TRMTRIANPERSON" },  notes = "GetDraftByPIMPERSON")
     @RequestMapping(method = RequestMethod.GET, value = "/pimpeople/{pimperson_id}/trmtrianpeople/getdraft")
     public ResponseEntity<TRMTRIANPERSONDTO> getDraftByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id) {
@@ -170,7 +166,7 @@ public class TRMTRIANPERSONResource {
         return ResponseEntity.status(HttpStatus.OK).body(trmtrianpersonMapping.toDto(trmtrianpersonService.getDraft(domain)));
     }
 
-    @PreAuthorize("hasPermission('','Save',{'Sql',this.trmtrianpersonMapping,#trmtrianpersondto})")
+    @PreAuthorize("hasPermission(this.trmtrianpersonMapping.toDomain(#trmtrianpersondto),'ehr-TRMTRIANPERSON-Save')")
     @ApiOperation(value = "SaveByPIMPERSON", tags = {"TRMTRIANPERSON" },  notes = "SaveByPIMPERSON")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/trmtrianpeople/save")
     public ResponseEntity<Boolean> saveByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody TRMTRIANPERSONDTO trmtrianpersondto) {
@@ -179,7 +175,7 @@ public class TRMTRIANPERSONResource {
         return ResponseEntity.status(HttpStatus.OK).body(trmtrianpersonService.save(domain));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.trmtrianpersonMapping,#trmtrianpersondtos})")
+    @PreAuthorize("hasPermission(this.trmtrianpersonMapping.toDomain(#trmtrianpersondtos),'ehr-TRMTRIANPERSON-Save')")
     @ApiOperation(value = "SaveBatchByPIMPERSON", tags = {"TRMTRIANPERSON" },  notes = "SaveBatchByPIMPERSON")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/trmtrianpeople/savebatch")
     public ResponseEntity<Boolean> saveBatchByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody List<TRMTRIANPERSONDTO> trmtrianpersondtos) {
@@ -191,7 +187,7 @@ public class TRMTRIANPERSONResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission(#trmtrianperson_id,'Remove',{'Sql',this.trmtrianpersonMapping,this.permissionDTO})")
+    @PreAuthorize("hasPermission(this.trmtrianpersonService.get(#trmtrianperson_id),'ehr-TRMTRIANPERSON-Remove')")
     @ApiOperation(value = "RemoveByPIMPERSON", tags = {"TRMTRIANPERSON" },  notes = "RemoveByPIMPERSON")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimpeople/{pimperson_id}/trmtrianpeople/{trmtrianperson_id}")
     @Transactional
@@ -199,7 +195,7 @@ public class TRMTRIANPERSONResource {
 		return ResponseEntity.status(HttpStatus.OK).body(trmtrianpersonService.remove(trmtrianperson_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.trmtrianpersonMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission(this.trmtrianpersonService.getTrmtrianpersonByIds(#ids),'ehr-TRMTRIANPERSON-Remove')")
     @ApiOperation(value = "RemoveBatchByPIMPERSON", tags = {"TRMTRIANPERSON" },  notes = "RemoveBatchByPIMPERSON")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimpeople/{pimperson_id}/trmtrianpeople/batch")
     public ResponseEntity<Boolean> removeBatchByPIMPERSON(@RequestBody List<String> ids) {
@@ -207,14 +203,13 @@ public class TRMTRIANPERSONResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMTRIANPERSON-CheckKey-all')")
     @ApiOperation(value = "CheckKeyByPIMPERSON", tags = {"TRMTRIANPERSON" },  notes = "CheckKeyByPIMPERSON")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/trmtrianpeople/checkkey")
     public ResponseEntity<Boolean> checkKeyByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody TRMTRIANPERSONDTO trmtrianpersondto) {
         return  ResponseEntity.status(HttpStatus.OK).body(trmtrianpersonService.checkKey(trmtrianpersonMapping.toDomain(trmtrianpersondto)));
     }
 
-    @PreAuthorize("hasPermission('','Create',{'Sql',this.trmtrianpersonMapping,#trmtrianpersondto})")
+    @PreAuthorize("hasPermission(this.trmtrianpersonMapping.toDomain(#trmtrianpersondto),'ehr-TRMTRIANPERSON-Create')")
     @ApiOperation(value = "CreateByPIMPERSON", tags = {"TRMTRIANPERSON" },  notes = "CreateByPIMPERSON")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/trmtrianpeople")
     @Transactional
@@ -226,7 +221,7 @@ public class TRMTRIANPERSONResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.trmtrianpersonMapping,#trmtrianpersondtos})")
+    @PreAuthorize("hasPermission(this.trmtrianpersonMapping.toDomain(#trmtrianpersondtos),'ehr-TRMTRIANPERSON-Create')")
     @ApiOperation(value = "createBatchByPIMPERSON", tags = {"TRMTRIANPERSON" },  notes = "createBatchByPIMPERSON")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/trmtrianpeople/batch")
     public ResponseEntity<Boolean> createBatchByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody List<TRMTRIANPERSONDTO> trmtrianpersondtos) {
@@ -238,7 +233,7 @@ public class TRMTRIANPERSONResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission(#trmtrianperson_id,'Get',{'Sql',this.trmtrianpersonMapping,this.permissionDTO})")
+    @PostAuthorize("hasPermission(this.trmtrianpersonMapping.toDomain(returnObject.body),'ehr-TRMTRIANPERSON-Get')")
     @ApiOperation(value = "GetByPIMPERSON", tags = {"TRMTRIANPERSON" },  notes = "GetByPIMPERSON")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimpeople/{pimperson_id}/trmtrianpeople/{trmtrianperson_id}")
     public ResponseEntity<TRMTRIANPERSONDTO> getByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("trmtrianperson_id") String trmtrianperson_id) {
@@ -247,7 +242,7 @@ public class TRMTRIANPERSONResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#trmtrianperson_id,'Update',{'Sql',this.trmtrianpersonMapping,#trmtrianpersondto})")
+    @PreAuthorize("hasPermission(this.trmtrianpersonService.get(#trmtrianperson_id),'ehr-TRMTRIANPERSON-Update')")
     @ApiOperation(value = "UpdateByPIMPERSON", tags = {"TRMTRIANPERSON" },  notes = "UpdateByPIMPERSON")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimpeople/{pimperson_id}/trmtrianpeople/{trmtrianperson_id}")
     @Transactional
@@ -260,7 +255,7 @@ public class TRMTRIANPERSONResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.trmtrianpersonMapping,#trmtrianpersondtos})")
+    @PreAuthorize("hasPermission(this.trmtrianpersonService.getTrmtrianpersonByEntities(this.trmtrianpersonMapping.toDomain(#trmtrianpersondtos)),'ehr-TRMTRIANPERSON-Update')")
     @ApiOperation(value = "UpdateBatchByPIMPERSON", tags = {"TRMTRIANPERSON" },  notes = "UpdateBatchByPIMPERSON")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimpeople/{pimperson_id}/trmtrianpeople/batch")
     public ResponseEntity<Boolean> updateBatchByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody List<TRMTRIANPERSONDTO> trmtrianpersondtos) {
@@ -296,3 +291,4 @@ public class TRMTRIANPERSONResource {
                 .body(new PageImpl(trmtrianpersonMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 }
+

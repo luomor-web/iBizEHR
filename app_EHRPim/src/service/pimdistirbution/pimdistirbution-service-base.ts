@@ -1,6 +1,5 @@
 import { Http,Util } from '@/utils';
 import EntityService from '../entity-service';
-import SetPIMDISTIRBUTIONNameLogic from '@/service/pimdistirbution/set-pimdistirbutionname-logic';
 
 
 

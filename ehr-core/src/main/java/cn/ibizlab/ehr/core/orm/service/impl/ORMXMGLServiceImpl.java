@@ -46,7 +46,7 @@ public class ORMXMGLServiceImpl extends ServiceImpl<ORMXMGLMapper, ORMXMGL> impl
 
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.orm.service.IORMORGSECTORService ormorgsectorService;
+    private cn.ibizlab.ehr.core.orm.service.IOrmOrgsectorService ormorgsectorService;
     @Autowired
     @Lazy
     private cn.ibizlab.ehr.core.orm.service.IORMXMXQJHService ormxmxqjhService;
@@ -199,6 +199,26 @@ public class ORMXMGLServiceImpl extends ServiceImpl<ORMXMGLMapper, ORMXMGL> impl
         }
         log.warn("暂未支持的SQL语法");
         return true;
+    }
+
+    @Override
+    public List<ORMXMGL> getOrmxmglByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<ORMXMGL> getOrmxmglByEntities(List<ORMXMGL> entities) {
+        List ids =new ArrayList();
+        for(ORMXMGL entity : entities){
+            Serializable id=entity.getOrmxmglid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
     }
 
 }

@@ -58,6 +58,9 @@ public interface ITRMSTAFFService extends IService<TRMSTAFF>{
      */
     boolean execute(String sql, Map param);
 
+    List<TRMSTAFF> getTrmstaffByIds(List<String> ids) ;
+    List<TRMSTAFF> getTrmstaffByEntities(List<TRMSTAFF> entities) ;
+
 }
 
 

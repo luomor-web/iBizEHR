@@ -239,6 +239,26 @@ public class PIMARCHIVESRECORDServiceImpl extends ServiceImpl<PIMARCHIVESRECORDM
         return true;
     }
 
+    @Override
+    public List<PIMARCHIVESRECORD> getPimarchivesrecordByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<PIMARCHIVESRECORD> getPimarchivesrecordByEntities(List<PIMARCHIVESRECORD> entities) {
+        List ids =new ArrayList();
+        for(PIMARCHIVESRECORD entity : entities){
+            Serializable id=entity.getPimarchivesrecordid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

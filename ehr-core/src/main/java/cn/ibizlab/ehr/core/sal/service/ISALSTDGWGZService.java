@@ -56,6 +56,9 @@ public interface ISALSTDGWGZService extends IService<SALSTDGWGZ>{
      */
     boolean execute(String sql, Map param);
 
+    List<SALSTDGWGZ> getSalstdgwgzByIds(List<String> ids) ;
+    List<SALSTDGWGZ> getSalstdgwgzByEntities(List<SALSTDGWGZ> entities) ;
+
 }
 
 

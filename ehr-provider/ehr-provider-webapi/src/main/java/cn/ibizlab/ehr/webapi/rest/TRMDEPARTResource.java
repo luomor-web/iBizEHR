@@ -22,6 +22,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.access.prepost.PostAuthorize;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -39,15 +40,13 @@ import cn.ibizlab.ehr.core.trm.filter.TRMDEPARTSearchContext;
 public class TRMDEPARTResource {
 
     @Autowired
-    private ITRMDEPARTService trmdepartService;
+    public ITRMDEPARTService trmdepartService;
 
     @Autowired
     @Lazy
     public TRMDEPARTMapping trmdepartMapping;
 
-    public TRMDEPARTDTO permissionDTO=new TRMDEPARTDTO();
-
-    @PreAuthorize("hasPermission(#trmdepart_id,'Get',{'Sql',this.trmdepartMapping,this.permissionDTO})")
+    @PostAuthorize("hasPermission(this.trmdepartMapping.toDomain(returnObject.body),'ehr-TRMDEPART-Get')")
     @ApiOperation(value = "Get", tags = {"TRMDEPART" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/trmdeparts/{trmdepart_id}")
     public ResponseEntity<TRMDEPARTDTO> get(@PathVariable("trmdepart_id") String trmdepart_id) {
@@ -56,14 +55,14 @@ public class TRMDEPARTResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('','Save',{'Sql',this.trmdepartMapping,#trmdepartdto})")
+    @PreAuthorize("hasPermission(this.trmdepartMapping.toDomain(#trmdepartdto),'ehr-TRMDEPART-Save')")
     @ApiOperation(value = "Save", tags = {"TRMDEPART" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmdeparts/save")
     public ResponseEntity<Boolean> save(@RequestBody TRMDEPARTDTO trmdepartdto) {
         return ResponseEntity.status(HttpStatus.OK).body(trmdepartService.save(trmdepartMapping.toDomain(trmdepartdto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.trmdepartMapping,#trmdepartdtos})")
+    @PreAuthorize("hasPermission(this.trmdepartMapping.toDomain(#trmdepartdtos),'ehr-TRMDEPART-Save')")
     @ApiOperation(value = "SaveBatch", tags = {"TRMDEPART" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmdeparts/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<TRMDEPARTDTO> trmdepartdtos) {
@@ -71,7 +70,7 @@ public class TRMDEPARTResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('','Create',{'Sql',this.trmdepartMapping,#trmdepartdto})")
+    @PreAuthorize("hasPermission(this.trmdepartMapping.toDomain(#trmdepartdto),'ehr-TRMDEPART-Create')")
     @ApiOperation(value = "Create", tags = {"TRMDEPART" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmdeparts")
     @Transactional
@@ -82,7 +81,7 @@ public class TRMDEPARTResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.trmdepartMapping,#trmdepartdtos})")
+    @PreAuthorize("hasPermission(this.trmdepartMapping.toDomain(#trmdepartdtos),'ehr-TRMDEPART-Create')")
     @ApiOperation(value = "createBatch", tags = {"TRMDEPART" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmdeparts/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<TRMDEPARTDTO> trmdepartdtos) {
@@ -90,7 +89,7 @@ public class TRMDEPARTResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission(#trmdepart_id,'Remove',{'Sql',this.trmdepartMapping,this.permissionDTO})")
+    @PreAuthorize("hasPermission(this.trmdepartService.get(#trmdepart_id),'ehr-TRMDEPART-Remove')")
     @ApiOperation(value = "Remove", tags = {"TRMDEPART" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/trmdeparts/{trmdepart_id}")
     @Transactional
@@ -98,7 +97,7 @@ public class TRMDEPARTResource {
          return ResponseEntity.status(HttpStatus.OK).body(trmdepartService.remove(trmdepart_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.trmdepartMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission(this.trmdepartService.getTrmdepartByIds(#ids),'ehr-TRMDEPART-Remove')")
     @ApiOperation(value = "RemoveBatch", tags = {"TRMDEPART" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/trmdeparts/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -106,14 +105,13 @@ public class TRMDEPARTResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMDEPART-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"TRMDEPART" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmdeparts/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody TRMDEPARTDTO trmdepartdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(trmdepartService.checkKey(trmdepartMapping.toDomain(trmdepartdto)));
     }
 
-    @PreAuthorize("hasPermission(#trmdepart_id,'Update',{'Sql',this.trmdepartMapping,#trmdepartdto})")
+    @PreAuthorize("hasPermission(this.trmdepartService.get(#trmdepart_id),'ehr-TRMDEPART-Update')")
     @ApiOperation(value = "Update", tags = {"TRMDEPART" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/trmdeparts/{trmdepart_id}")
     @Transactional
@@ -125,7 +123,7 @@ public class TRMDEPARTResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.trmdepartMapping,#trmdepartdtos})")
+    @PreAuthorize("hasPermission(this.trmdepartService.getTrmdepartByEntities(this.trmdepartMapping.toDomain(#trmdepartdtos)),'ehr-TRMDEPART-Update')")
     @ApiOperation(value = "UpdateBatch", tags = {"TRMDEPART" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/trmdeparts/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<TRMDEPARTDTO> trmdepartdtos) {
@@ -133,7 +131,6 @@ public class TRMDEPARTResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMDEPART-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"TRMDEPART" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/trmdeparts/getdraft")
     public ResponseEntity<TRMDEPARTDTO> getDraft() {
@@ -162,3 +159,4 @@ public class TRMDEPARTResource {
                 .body(new PageImpl(trmdepartMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 }
+

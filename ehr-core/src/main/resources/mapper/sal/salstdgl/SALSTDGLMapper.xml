@@ -4,6 +4,9 @@
 <mapper	namespace="cn.ibizlab.ehr.core.sal.mapper.SALSTDGLMapper">
 
     <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
+	<select id="selectById"  resultMap="SALSTDGLResultMap" databaseId="mysql">
+        <![CDATA[select t1.* from (SELECT t1.`BZ`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t1.`JSGL`, t1.`ORMORGID`, t11.`ORGNAME` AS `ORMORGNAME`, t1.`QSGL`, t1.`SALSTDGLID`, t1.`SALSTDGLNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN` FROM `T_SALSTDGL` t1  LEFT JOIN T_SRFORG t11 ON t1.ORMORGID = t11.ORGID  ) t1 where salstdglid=#{id}]]>
+    </select>
 
     <!--通过mybatis将查询结果注入到entity中,通过配置autoMapping="true"由mybatis自动处理映射关系 -->
     <resultMap id="SALSTDGLResultMap" type="cn.ibizlab.ehr.core.sal.domain.SALSTDGL" autoMapping="true">
@@ -12,7 +15,7 @@
             
 		
 		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
-		<association property="ormorg" javaType="cn.ibizlab.ehr.core.orm.domain.ORMORG" column="ormorgid" select="cn.ibizlab.ehr.core.orm.mapper.ORMORGMapper.selectById" fetchType="lazy"></association>
+		<association property="ormorg" javaType="cn.ibizlab.ehr.core.orm.domain.OrmOrg" column="ormorgid" select="cn.ibizlab.ehr.core.orm.mapper.OrmOrgMapper.selectById" fetchType="lazy"></association>
     </resultMap>
 
 	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_SALSTDGL_ORMORG_ORMORGID] -->
@@ -39,9 +42,9 @@
 			]]>
     </sql>
 
-    <!--数据查询[Default]-->
-    <sql id="Default" databaseId="oracle">
-       <![CDATA[	SELECT t1.BZ, t1.CREATEDATE, t1.CREATEMAN, t1.ENABLE, t1.JSGL, t1.ORMORGID, t11.ORGNAME AS ORMORGNAME, t1.QSGL, t1.SALSTDGLID, t1.SALSTDGLNAME, t1.UPDATEDATE, t1.UPDATEMAN FROM T_SALSTDGL t1  LEFT JOIN T_SRFORG t11 ON t1.ORMORGID = t11.ORGID  
+    <!--数据查询[View]-->
+    <sql id="View" databaseId="mysql">
+       <![CDATA[	SELECT t1.`BZ`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t1.`JSGL`, t1.`ORMORGID`, t11.`ORGNAME` AS `ORMORGNAME`, t1.`QSGL`, t1.`SALSTDGLID`, t1.`SALSTDGLNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN` FROM `T_SALSTDGL` t1  LEFT JOIN T_SRFORG t11 ON t1.ORMORGID = t11.ORGID  
 				 WHERE 	t1.ENABLE = 1
 			]]>
     </sql>

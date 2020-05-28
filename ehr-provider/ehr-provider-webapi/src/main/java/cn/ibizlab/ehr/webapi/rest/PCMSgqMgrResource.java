@@ -22,6 +22,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.access.prepost.PostAuthorize;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -39,15 +40,13 @@ import cn.ibizlab.ehr.core.pcm.filter.PCMSgqMgrSearchContext;
 public class PCMSgqMgrResource {
 
     @Autowired
-    private IPCMSgqMgrService pcmsgqmgrService;
+    public IPCMSgqMgrService pcmsgqmgrService;
 
     @Autowired
     @Lazy
     public PCMSgqMgrMapping pcmsgqmgrMapping;
 
-    public PCMSgqMgrDTO permissionDTO=new PCMSgqMgrDTO();
-
-    @PreAuthorize("hasPermission(#pcmsgqmgr_id,'Remove',{'Sql',this.pcmsgqmgrMapping,this.permissionDTO})")
+    @PreAuthorize("hasPermission(this.pcmsgqmgrService.get(#pcmsgqmgr_id),'ehr-PCMSgqMgr-Remove')")
     @ApiOperation(value = "Remove", tags = {"PCMSgqMgr" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmsgqmgrs/{pcmsgqmgr_id}")
     @Transactional
@@ -55,7 +54,7 @@ public class PCMSgqMgrResource {
          return ResponseEntity.status(HttpStatus.OK).body(pcmsgqmgrService.remove(pcmsgqmgr_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.pcmsgqmgrMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission(this.pcmsgqmgrService.getPcmsgqmgrByIds(#ids),'ehr-PCMSgqMgr-Remove')")
     @ApiOperation(value = "RemoveBatch", tags = {"PCMSgqMgr" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmsgqmgrs/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -75,7 +74,7 @@ public class PCMSgqMgrResource {
         return ResponseEntity.status(HttpStatus.OK).body(pcmsgqmgrdto);
     }
 
-    @PreAuthorize("hasPermission(#pcmsgqmgr_id,'Get',{'Sql',this.pcmsgqmgrMapping,this.permissionDTO})")
+    @PostAuthorize("hasPermission(this.pcmsgqmgrMapping.toDomain(returnObject.body),'ehr-PCMSgqMgr-Get')")
     @ApiOperation(value = "Get", tags = {"PCMSgqMgr" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmsgqmgrs/{pcmsgqmgr_id}")
     public ResponseEntity<PCMSgqMgrDTO> get(@PathVariable("pcmsgqmgr_id") String pcmsgqmgr_id) {
@@ -96,14 +95,13 @@ public class PCMSgqMgrResource {
         return ResponseEntity.status(HttpStatus.OK).body(pcmsgqmgrdto);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMSgqMgr-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"PCMSgqMgr" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmsgqmgrs/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PCMSgqMgrDTO pcmsgqmgrdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pcmsgqmgrService.checkKey(pcmsgqmgrMapping.toDomain(pcmsgqmgrdto)));
     }
 
-    @PreAuthorize("hasPermission(#pcmsgqmgr_id,'Update',{'Sql',this.pcmsgqmgrMapping,#pcmsgqmgrdto})")
+    @PreAuthorize("hasPermission(this.pcmsgqmgrService.get(#pcmsgqmgr_id),'ehr-PCMSgqMgr-Update')")
     @ApiOperation(value = "Update", tags = {"PCMSgqMgr" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmsgqmgrs/{pcmsgqmgr_id}")
     @Transactional
@@ -115,7 +113,7 @@ public class PCMSgqMgrResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.pcmsgqmgrMapping,#pcmsgqmgrdtos})")
+    @PreAuthorize("hasPermission(this.pcmsgqmgrService.getPcmsgqmgrByEntities(this.pcmsgqmgrMapping.toDomain(#pcmsgqmgrdtos)),'ehr-PCMSgqMgr-Update')")
     @ApiOperation(value = "UpdateBatch", tags = {"PCMSgqMgr" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmsgqmgrs/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PCMSgqMgrDTO> pcmsgqmgrdtos) {
@@ -123,7 +121,7 @@ public class PCMSgqMgrResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('','Create',{'Sql',this.pcmsgqmgrMapping,#pcmsgqmgrdto})")
+    @PreAuthorize("hasPermission(this.pcmsgqmgrMapping.toDomain(#pcmsgqmgrdto),'ehr-PCMSgqMgr-Create')")
     @ApiOperation(value = "Create", tags = {"PCMSgqMgr" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmsgqmgrs")
     @Transactional
@@ -134,7 +132,7 @@ public class PCMSgqMgrResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.pcmsgqmgrMapping,#pcmsgqmgrdtos})")
+    @PreAuthorize("hasPermission(this.pcmsgqmgrMapping.toDomain(#pcmsgqmgrdtos),'ehr-PCMSgqMgr-Create')")
     @ApiOperation(value = "createBatch", tags = {"PCMSgqMgr" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmsgqmgrs/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PCMSgqMgrDTO> pcmsgqmgrdtos) {
@@ -142,14 +140,14 @@ public class PCMSgqMgrResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('','Save',{'Sql',this.pcmsgqmgrMapping,#pcmsgqmgrdto})")
+    @PreAuthorize("hasPermission(this.pcmsgqmgrMapping.toDomain(#pcmsgqmgrdto),'ehr-PCMSgqMgr-Save')")
     @ApiOperation(value = "Save", tags = {"PCMSgqMgr" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmsgqmgrs/save")
     public ResponseEntity<Boolean> save(@RequestBody PCMSgqMgrDTO pcmsgqmgrdto) {
         return ResponseEntity.status(HttpStatus.OK).body(pcmsgqmgrService.save(pcmsgqmgrMapping.toDomain(pcmsgqmgrdto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.pcmsgqmgrMapping,#pcmsgqmgrdtos})")
+    @PreAuthorize("hasPermission(this.pcmsgqmgrMapping.toDomain(#pcmsgqmgrdtos),'ehr-PCMSgqMgr-Save')")
     @ApiOperation(value = "SaveBatch", tags = {"PCMSgqMgr" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmsgqmgrs/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PCMSgqMgrDTO> pcmsgqmgrdtos) {
@@ -157,7 +155,6 @@ public class PCMSgqMgrResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMSgqMgr-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"PCMSgqMgr" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmsgqmgrs/getdraft")
     public ResponseEntity<PCMSgqMgrDTO> getDraft() {
@@ -186,3 +183,4 @@ public class PCMSgqMgrResource {
                 .body(new PageImpl(pcmsgqmgrMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 }
+

@@ -288,6 +288,26 @@ public class PIMEDUCATIONServiceImpl extends ServiceImpl<PIMEDUCATIONMapper, PIM
         return true;
     }
 
+    @Override
+    public List<PIMEDUCATION> getPimeducationByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<PIMEDUCATION> getPimeducationByEntities(List<PIMEDUCATION> entities) {
+        List ids =new ArrayList();
+        for(PIMEDUCATION entity : entities){
+            Serializable id=entity.getPimeducationid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

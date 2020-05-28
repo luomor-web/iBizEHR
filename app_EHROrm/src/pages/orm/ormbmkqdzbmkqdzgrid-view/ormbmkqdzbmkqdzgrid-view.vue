@@ -2,11 +2,11 @@
 import { Component } from 'vue-property-decorator';
 import ORMBMKQDZBMKQDZGridViewBase from './ormbmkqdzbmkqdzgrid-view-base.vue';
 
-import view_grid from '@widgets/ormbmkqdz/main-2-grid/main-2-grid.vue';
-import view_searchform from '@widgets/ormbmkqdz/default-searchform/default-searchform.vue';
+import view_grid from '@widgets/orm-bmkqdz/main-2-grid/main-2-grid.vue';
+import view_searchform from '@widgets/orm-bmkqdz/default-searchform/default-searchform.vue';
 
 /**
- * 部门考勤地址维护
+ * 考勤地址信息
  *
  * @export
  * @class ORMBMKQDZBMKQDZGridView

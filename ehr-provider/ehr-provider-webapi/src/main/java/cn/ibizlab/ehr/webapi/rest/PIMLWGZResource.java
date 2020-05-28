@@ -22,6 +22,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.access.prepost.PostAuthorize;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -39,15 +40,13 @@ import cn.ibizlab.ehr.core.pim.filter.PIMLWGZSearchContext;
 public class PIMLWGZResource {
 
     @Autowired
-    private IPIMLWGZService pimlwgzService;
+    public IPIMLWGZService pimlwgzService;
 
     @Autowired
     @Lazy
     public PIMLWGZMapping pimlwgzMapping;
 
-    public PIMLWGZDTO permissionDTO=new PIMLWGZDTO();
-
-    @PreAuthorize("hasPermission('','Create',{'Sql',this.pimlwgzMapping,#pimlwgzdto})")
+    @PreAuthorize("hasPermission(this.pimlwgzMapping.toDomain(#pimlwgzdto),'ehr-PIMLWGZ-Create')")
     @ApiOperation(value = "Create", tags = {"PIMLWGZ" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimlwgzs")
     @Transactional
@@ -58,7 +57,7 @@ public class PIMLWGZResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.pimlwgzMapping,#pimlwgzdtos})")
+    @PreAuthorize("hasPermission(this.pimlwgzMapping.toDomain(#pimlwgzdtos),'ehr-PIMLWGZ-Create')")
     @ApiOperation(value = "createBatch", tags = {"PIMLWGZ" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimlwgzs/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PIMLWGZDTO> pimlwgzdtos) {
@@ -66,7 +65,7 @@ public class PIMLWGZResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission(#pimlwgz_id,'Get',{'Sql',this.pimlwgzMapping,this.permissionDTO})")
+    @PostAuthorize("hasPermission(this.pimlwgzMapping.toDomain(returnObject.body),'ehr-PIMLWGZ-Get')")
     @ApiOperation(value = "Get", tags = {"PIMLWGZ" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimlwgzs/{pimlwgz_id}")
     public ResponseEntity<PIMLWGZDTO> get(@PathVariable("pimlwgz_id") String pimlwgz_id) {
@@ -75,7 +74,7 @@ public class PIMLWGZResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#pimlwgz_id,'Remove',{'Sql',this.pimlwgzMapping,this.permissionDTO})")
+    @PreAuthorize("hasPermission(this.pimlwgzService.get(#pimlwgz_id),'ehr-PIMLWGZ-Remove')")
     @ApiOperation(value = "Remove", tags = {"PIMLWGZ" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimlwgzs/{pimlwgz_id}")
     @Transactional
@@ -83,7 +82,7 @@ public class PIMLWGZResource {
          return ResponseEntity.status(HttpStatus.OK).body(pimlwgzService.remove(pimlwgz_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.pimlwgzMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission(this.pimlwgzService.getPimlwgzByIds(#ids),'ehr-PIMLWGZ-Remove')")
     @ApiOperation(value = "RemoveBatch", tags = {"PIMLWGZ" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimlwgzs/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -91,21 +90,20 @@ public class PIMLWGZResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMLWGZ-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"PIMLWGZ" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimlwgzs/getdraft")
     public ResponseEntity<PIMLWGZDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(pimlwgzMapping.toDto(pimlwgzService.getDraft(new PIMLWGZ())));
     }
 
-    @PreAuthorize("hasPermission('','Save',{'Sql',this.pimlwgzMapping,#pimlwgzdto})")
+    @PreAuthorize("hasPermission(this.pimlwgzMapping.toDomain(#pimlwgzdto),'ehr-PIMLWGZ-Save')")
     @ApiOperation(value = "Save", tags = {"PIMLWGZ" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimlwgzs/save")
     public ResponseEntity<Boolean> save(@RequestBody PIMLWGZDTO pimlwgzdto) {
         return ResponseEntity.status(HttpStatus.OK).body(pimlwgzService.save(pimlwgzMapping.toDomain(pimlwgzdto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.pimlwgzMapping,#pimlwgzdtos})")
+    @PreAuthorize("hasPermission(this.pimlwgzMapping.toDomain(#pimlwgzdtos),'ehr-PIMLWGZ-Save')")
     @ApiOperation(value = "SaveBatch", tags = {"PIMLWGZ" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimlwgzs/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PIMLWGZDTO> pimlwgzdtos) {
@@ -113,7 +111,7 @@ public class PIMLWGZResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission(#pimlwgz_id,'Update',{'Sql',this.pimlwgzMapping,#pimlwgzdto})")
+    @PreAuthorize("hasPermission(this.pimlwgzService.get(#pimlwgz_id),'ehr-PIMLWGZ-Update')")
     @ApiOperation(value = "Update", tags = {"PIMLWGZ" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimlwgzs/{pimlwgz_id}")
     @Transactional
@@ -125,7 +123,7 @@ public class PIMLWGZResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.pimlwgzMapping,#pimlwgzdtos})")
+    @PreAuthorize("hasPermission(this.pimlwgzService.getPimlwgzByEntities(this.pimlwgzMapping.toDomain(#pimlwgzdtos)),'ehr-PIMLWGZ-Update')")
     @ApiOperation(value = "UpdateBatch", tags = {"PIMLWGZ" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimlwgzs/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PIMLWGZDTO> pimlwgzdtos) {
@@ -133,7 +131,6 @@ public class PIMLWGZResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMLWGZ-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"PIMLWGZ" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimlwgzs/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PIMLWGZDTO pimlwgzdto) {
@@ -162,3 +159,4 @@ public class PIMLWGZResource {
                 .body(new PageImpl(pimlwgzMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 }
+

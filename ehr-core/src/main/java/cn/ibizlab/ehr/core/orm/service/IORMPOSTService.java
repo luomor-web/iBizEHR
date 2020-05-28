@@ -63,6 +63,9 @@ public interface IORMPOSTService extends IService<ORMPOST>{
      */
     boolean execute(String sql, Map param);
 
+    List<ORMPOST> getOrmpostByIds(List<String> ids) ;
+    List<ORMPOST> getOrmpostByEntities(List<ORMPOST> entities) ;
+
 }
 
 

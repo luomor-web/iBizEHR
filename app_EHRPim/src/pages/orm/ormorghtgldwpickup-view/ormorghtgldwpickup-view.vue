@@ -2,7 +2,7 @@
 import { Component } from 'vue-property-decorator';
 import ORMORGHTGLDWPickupViewBase from './ormorghtgldwpickup-view-base.vue';
 
-import view_pickupviewpanel from '@widgets/ormorg/htgldwpickup-viewpickupviewpanel-pickupviewpanel/htgldwpickup-viewpickupviewpanel-pickupviewpanel.vue';
+import view_pickupviewpanel from '@widgets/orm-org/htgldwpickup-viewpickupviewpanel-pickupviewpanel/htgldwpickup-viewpickupviewpanel-pickupviewpanel.vue';
 
 /**
  * 组织选择

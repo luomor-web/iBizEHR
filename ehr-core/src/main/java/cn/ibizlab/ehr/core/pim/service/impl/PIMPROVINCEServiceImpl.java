@@ -179,6 +179,26 @@ public class PIMPROVINCEServiceImpl extends ServiceImpl<PIMPROVINCEMapper, PIMPR
         return true;
     }
 
+    @Override
+    public List<PIMPROVINCE> getPimprovinceByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<PIMPROVINCE> getPimprovinceByEntities(List<PIMPROVINCE> entities) {
+        List ids =new ArrayList();
+        for(PIMPROVINCE entity : entities){
+            Serializable id=entity.getPimprovinceid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

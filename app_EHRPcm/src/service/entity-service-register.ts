@@ -42,7 +42,7 @@ export class EntityServiceRegister {
                 this.allEntityService.set('pcmworkresume', () => import('@/service/pcmworkresume/pcmworkresume-service'));
         this.allEntityService.set('pcmprofileapproval', () => import('@/service/pcmprofileapproval/pcmprofileapproval-service'));
         this.allEntityService.set('pcmgxml', () => import('@/service/pcmgxml/pcmgxml-service'));
-        this.allEntityService.set('ormorg', () => import('@/service/ormorg/ormorg-service'));
+        this.allEntityService.set('ormorg', () => import('@/service/orm-org/orm-org-service'));
         this.allEntityService.set('pcmpracticeexperience', () => import('@/service/pcmpracticeexperience/pcmpracticeexperience-service'));
         this.allEntityService.set('ormduty', () => import('@/service/ormduty/ormduty-service'));
         this.allEntityService.set('pimcity', () => import('@/service/pimcity/pimcity-service'));
@@ -60,7 +60,7 @@ export class EntityServiceRegister {
         this.allEntityService.set('pcmcertofreg', () => import('@/service/pcmcertofreg/pcmcertofreg-service'));
         this.allEntityService.set('tdzwxx', () => import('@/service/tdzwxx/tdzwxx-service'));
         this.allEntityService.set('codelist1', () => import('@/service/code-list1/code-list1-service'));
-        this.allEntityService.set('ormorgsector', () => import('@/service/ormorgsector/ormorgsector-service'));
+        this.allEntityService.set('ormorgsector', () => import('@/service/orm-orgsector/orm-orgsector-service'));
         this.allEntityService.set('pcmschooloffice', () => import('@/service/pcmschooloffice/pcmschooloffice-service'));
         this.allEntityService.set('testresult', () => import('@/service/test-result/test-result-service'));
         this.allEntityService.set('pcmzpmegl', () => import('@/service/pcmzpmegl/pcmzpmegl-service'));

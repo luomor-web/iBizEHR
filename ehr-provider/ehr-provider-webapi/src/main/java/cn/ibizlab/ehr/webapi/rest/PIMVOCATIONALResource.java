@@ -22,6 +22,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.access.prepost.PostAuthorize;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -39,15 +40,13 @@ import cn.ibizlab.ehr.core.pim.filter.PIMVOCATIONALSearchContext;
 public class PIMVOCATIONALResource {
 
     @Autowired
-    private IPIMVOCATIONALService pimvocationalService;
+    public IPIMVOCATIONALService pimvocationalService;
 
     @Autowired
     @Lazy
     public PIMVOCATIONALMapping pimvocationalMapping;
 
-    public PIMVOCATIONALDTO permissionDTO=new PIMVOCATIONALDTO();
-
-    @PreAuthorize("hasPermission(#pimvocational_id,'Update',{'Sql',this.pimvocationalMapping,#pimvocationaldto})")
+    @PreAuthorize("hasPermission(this.pimvocationalService.get(#pimvocational_id),'ehr-PIMVOCATIONAL-Update')")
     @ApiOperation(value = "Update", tags = {"PIMVOCATIONAL" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimvocationals/{pimvocational_id}")
     @Transactional
@@ -59,7 +58,7 @@ public class PIMVOCATIONALResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.pimvocationalMapping,#pimvocationaldtos})")
+    @PreAuthorize("hasPermission(this.pimvocationalService.getPimvocationalByEntities(this.pimvocationalMapping.toDomain(#pimvocationaldtos)),'ehr-PIMVOCATIONAL-Update')")
     @ApiOperation(value = "UpdateBatch", tags = {"PIMVOCATIONAL" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimvocationals/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PIMVOCATIONALDTO> pimvocationaldtos) {
@@ -67,7 +66,7 @@ public class PIMVOCATIONALResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('','Create',{'Sql',this.pimvocationalMapping,#pimvocationaldto})")
+    @PreAuthorize("hasPermission(this.pimvocationalMapping.toDomain(#pimvocationaldto),'ehr-PIMVOCATIONAL-Create')")
     @ApiOperation(value = "Create", tags = {"PIMVOCATIONAL" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimvocationals")
     @Transactional
@@ -78,7 +77,7 @@ public class PIMVOCATIONALResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.pimvocationalMapping,#pimvocationaldtos})")
+    @PreAuthorize("hasPermission(this.pimvocationalMapping.toDomain(#pimvocationaldtos),'ehr-PIMVOCATIONAL-Create')")
     @ApiOperation(value = "createBatch", tags = {"PIMVOCATIONAL" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimvocationals/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PIMVOCATIONALDTO> pimvocationaldtos) {
@@ -86,14 +85,13 @@ public class PIMVOCATIONALResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMVOCATIONAL-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"PIMVOCATIONAL" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimvocationals/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PIMVOCATIONALDTO pimvocationaldto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pimvocationalService.checkKey(pimvocationalMapping.toDomain(pimvocationaldto)));
     }
 
-    @PreAuthorize("hasPermission(#pimvocational_id,'Remove',{'Sql',this.pimvocationalMapping,this.permissionDTO})")
+    @PreAuthorize("hasPermission(this.pimvocationalService.get(#pimvocational_id),'ehr-PIMVOCATIONAL-Remove')")
     @ApiOperation(value = "Remove", tags = {"PIMVOCATIONAL" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimvocationals/{pimvocational_id}")
     @Transactional
@@ -101,7 +99,7 @@ public class PIMVOCATIONALResource {
          return ResponseEntity.status(HttpStatus.OK).body(pimvocationalService.remove(pimvocational_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.pimvocationalMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission(this.pimvocationalService.getPimvocationalByIds(#ids),'ehr-PIMVOCATIONAL-Remove')")
     @ApiOperation(value = "RemoveBatch", tags = {"PIMVOCATIONAL" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimvocationals/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -109,14 +107,14 @@ public class PIMVOCATIONALResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('','Save',{'Sql',this.pimvocationalMapping,#pimvocationaldto})")
+    @PreAuthorize("hasPermission(this.pimvocationalMapping.toDomain(#pimvocationaldto),'ehr-PIMVOCATIONAL-Save')")
     @ApiOperation(value = "Save", tags = {"PIMVOCATIONAL" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimvocationals/save")
     public ResponseEntity<Boolean> save(@RequestBody PIMVOCATIONALDTO pimvocationaldto) {
         return ResponseEntity.status(HttpStatus.OK).body(pimvocationalService.save(pimvocationalMapping.toDomain(pimvocationaldto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.pimvocationalMapping,#pimvocationaldtos})")
+    @PreAuthorize("hasPermission(this.pimvocationalMapping.toDomain(#pimvocationaldtos),'ehr-PIMVOCATIONAL-Save')")
     @ApiOperation(value = "SaveBatch", tags = {"PIMVOCATIONAL" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimvocationals/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PIMVOCATIONALDTO> pimvocationaldtos) {
@@ -124,7 +122,7 @@ public class PIMVOCATIONALResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission(#pimvocational_id,'Get',{'Sql',this.pimvocationalMapping,this.permissionDTO})")
+    @PostAuthorize("hasPermission(this.pimvocationalMapping.toDomain(returnObject.body),'ehr-PIMVOCATIONAL-Get')")
     @ApiOperation(value = "Get", tags = {"PIMVOCATIONAL" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimvocationals/{pimvocational_id}")
     public ResponseEntity<PIMVOCATIONALDTO> get(@PathVariable("pimvocational_id") String pimvocational_id) {
@@ -133,7 +131,6 @@ public class PIMVOCATIONALResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMVOCATIONAL-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"PIMVOCATIONAL" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimvocationals/getdraft")
     public ResponseEntity<PIMVOCATIONALDTO> getDraft() {
@@ -244,7 +241,7 @@ public class PIMVOCATIONALResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimvocationalMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-    @PreAuthorize("hasPermission(#pimvocational_id,'Update',{'Sql',this.pimvocationalMapping,#pimvocationaldto})")
+    @PreAuthorize("hasPermission(this.pimvocationalService.get(#pimvocational_id),'ehr-PIMVOCATIONAL-Update')")
     @ApiOperation(value = "UpdateByPIMPERSON", tags = {"PIMVOCATIONAL" },  notes = "UpdateByPIMPERSON")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimpeople/{pimperson_id}/pimvocationals/{pimvocational_id}")
     @Transactional
@@ -257,7 +254,7 @@ public class PIMVOCATIONALResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.pimvocationalMapping,#pimvocationaldtos})")
+    @PreAuthorize("hasPermission(this.pimvocationalService.getPimvocationalByEntities(this.pimvocationalMapping.toDomain(#pimvocationaldtos)),'ehr-PIMVOCATIONAL-Update')")
     @ApiOperation(value = "UpdateBatchByPIMPERSON", tags = {"PIMVOCATIONAL" },  notes = "UpdateBatchByPIMPERSON")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimpeople/{pimperson_id}/pimvocationals/batch")
     public ResponseEntity<Boolean> updateBatchByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody List<PIMVOCATIONALDTO> pimvocationaldtos) {
@@ -269,7 +266,7 @@ public class PIMVOCATIONALResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('','Create',{'Sql',this.pimvocationalMapping,#pimvocationaldto})")
+    @PreAuthorize("hasPermission(this.pimvocationalMapping.toDomain(#pimvocationaldto),'ehr-PIMVOCATIONAL-Create')")
     @ApiOperation(value = "CreateByPIMPERSON", tags = {"PIMVOCATIONAL" },  notes = "CreateByPIMPERSON")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimvocationals")
     @Transactional
@@ -281,7 +278,7 @@ public class PIMVOCATIONALResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.pimvocationalMapping,#pimvocationaldtos})")
+    @PreAuthorize("hasPermission(this.pimvocationalMapping.toDomain(#pimvocationaldtos),'ehr-PIMVOCATIONAL-Create')")
     @ApiOperation(value = "createBatchByPIMPERSON", tags = {"PIMVOCATIONAL" },  notes = "createBatchByPIMPERSON")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimvocationals/batch")
     public ResponseEntity<Boolean> createBatchByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody List<PIMVOCATIONALDTO> pimvocationaldtos) {
@@ -293,14 +290,13 @@ public class PIMVOCATIONALResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMVOCATIONAL-CheckKey-all')")
     @ApiOperation(value = "CheckKeyByPIMPERSON", tags = {"PIMVOCATIONAL" },  notes = "CheckKeyByPIMPERSON")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimvocationals/checkkey")
     public ResponseEntity<Boolean> checkKeyByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMVOCATIONALDTO pimvocationaldto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pimvocationalService.checkKey(pimvocationalMapping.toDomain(pimvocationaldto)));
     }
 
-    @PreAuthorize("hasPermission(#pimvocational_id,'Remove',{'Sql',this.pimvocationalMapping,this.permissionDTO})")
+    @PreAuthorize("hasPermission(this.pimvocationalService.get(#pimvocational_id),'ehr-PIMVOCATIONAL-Remove')")
     @ApiOperation(value = "RemoveByPIMPERSON", tags = {"PIMVOCATIONAL" },  notes = "RemoveByPIMPERSON")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimpeople/{pimperson_id}/pimvocationals/{pimvocational_id}")
     @Transactional
@@ -308,7 +304,7 @@ public class PIMVOCATIONALResource {
 		return ResponseEntity.status(HttpStatus.OK).body(pimvocationalService.remove(pimvocational_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.pimvocationalMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission(this.pimvocationalService.getPimvocationalByIds(#ids),'ehr-PIMVOCATIONAL-Remove')")
     @ApiOperation(value = "RemoveBatchByPIMPERSON", tags = {"PIMVOCATIONAL" },  notes = "RemoveBatchByPIMPERSON")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimpeople/{pimperson_id}/pimvocationals/batch")
     public ResponseEntity<Boolean> removeBatchByPIMPERSON(@RequestBody List<String> ids) {
@@ -316,7 +312,7 @@ public class PIMVOCATIONALResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('','Save',{'Sql',this.pimvocationalMapping,#pimvocationaldto})")
+    @PreAuthorize("hasPermission(this.pimvocationalMapping.toDomain(#pimvocationaldto),'ehr-PIMVOCATIONAL-Save')")
     @ApiOperation(value = "SaveByPIMPERSON", tags = {"PIMVOCATIONAL" },  notes = "SaveByPIMPERSON")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimvocationals/save")
     public ResponseEntity<Boolean> saveByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMVOCATIONALDTO pimvocationaldto) {
@@ -325,7 +321,7 @@ public class PIMVOCATIONALResource {
         return ResponseEntity.status(HttpStatus.OK).body(pimvocationalService.save(domain));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.pimvocationalMapping,#pimvocationaldtos})")
+    @PreAuthorize("hasPermission(this.pimvocationalMapping.toDomain(#pimvocationaldtos),'ehr-PIMVOCATIONAL-Save')")
     @ApiOperation(value = "SaveBatchByPIMPERSON", tags = {"PIMVOCATIONAL" },  notes = "SaveBatchByPIMPERSON")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimvocationals/savebatch")
     public ResponseEntity<Boolean> saveBatchByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody List<PIMVOCATIONALDTO> pimvocationaldtos) {
@@ -337,7 +333,7 @@ public class PIMVOCATIONALResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission(#pimvocational_id,'Get',{'Sql',this.pimvocationalMapping,this.permissionDTO})")
+    @PostAuthorize("hasPermission(this.pimvocationalMapping.toDomain(returnObject.body),'ehr-PIMVOCATIONAL-Get')")
     @ApiOperation(value = "GetByPIMPERSON", tags = {"PIMVOCATIONAL" },  notes = "GetByPIMPERSON")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimpeople/{pimperson_id}/pimvocationals/{pimvocational_id}")
     public ResponseEntity<PIMVOCATIONALDTO> getByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimvocational_id") String pimvocational_id) {
@@ -346,7 +342,6 @@ public class PIMVOCATIONALResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMVOCATIONAL-GetDraft-all')")
     @ApiOperation(value = "GetDraftByPIMPERSON", tags = {"PIMVOCATIONAL" },  notes = "GetDraftByPIMPERSON")
     @RequestMapping(method = RequestMethod.GET, value = "/pimpeople/{pimperson_id}/pimvocationals/getdraft")
     public ResponseEntity<PIMVOCATIONALDTO> getDraftByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id) {
@@ -470,3 +465,4 @@ public class PIMVOCATIONALResource {
                 .body(new PageImpl(pimvocationalMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 }
+

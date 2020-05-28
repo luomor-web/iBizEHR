@@ -179,6 +179,26 @@ public class TRMZZOBMServiceImpl extends ServiceImpl<TRMZZOBMMapper, TRMZZOBM> i
         return true;
     }
 
+    @Override
+    public List<TRMZZOBM> getTrmzzobmByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<TRMZZOBM> getTrmzzobmByEntities(List<TRMZZOBM> entities) {
+        List ids =new ArrayList();
+        for(TRMZZOBM entity : entities){
+            Serializable id=entity.getTrmzzobmid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

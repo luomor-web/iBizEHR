@@ -242,6 +242,26 @@ public class PARDXKHNRMXServiceImpl extends ServiceImpl<PARDXKHNRMXMapper, PARDX
         return true;
     }
 
+    @Override
+    public List<PARDXKHNRMX> getPardxkhnrmxByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<PARDXKHNRMX> getPardxkhnrmxByEntities(List<PARDXKHNRMX> entities) {
+        List ids =new ArrayList();
+        for(PARDXKHNRMX entity : entities){
+            Serializable id=entity.getPardxkhnrmxid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

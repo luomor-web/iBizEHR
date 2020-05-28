@@ -52,6 +52,9 @@ public interface IPIMEXAMINATIONRESULTSService extends IService<PIMEXAMINATIONRE
      */
     boolean execute(String sql, Map param);
 
+    List<PIMEXAMINATIONRESULTS> getPimexaminationresultsByIds(List<String> ids) ;
+    List<PIMEXAMINATIONRESULTS> getPimexaminationresultsByEntities(List<PIMEXAMINATIONRESULTS> entities) ;
+
 }
 
 

@@ -4,6 +4,9 @@
 <mapper	namespace="cn.ibizlab.ehr.core.trm.mapper.TRMTRAINFILLINMapper">
 
     <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
+	<select id="selectById"  resultMap="TRMTRAINFILLINResultMap" databaseId="mysql">
+        <![CDATA[select t1.* from (SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t21.`JD`, t21.`JZRQ`, t21.`ND`, t1.`ORMORGID`, t31.`ORGNAME` AS `ORMORGNAME`, t1.`ORMORGSECTORID`, t41.`ORGSECTORNAME` AS `ORMORGSECTORNAME`, t41.`SHORTNAME`, t1.`TRMDEPARTID`, t21.`TRMDEPARTNAME`, t1.`TRMTRAINFILLINID`, t1.`TRMTRAINFILLINID2`, t1.`TRMTRAINFILLINNAME`, t11.`TRMTRAINFILLINNAME` AS `TRMTRAINFILLINNAME2`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t31.`ZZDZS` FROM `T_TRMTRAINFILLIN` t1  LEFT JOIN T_TRMTRAINFILLIN t11 ON t1.TRMTRAINFILLINID2 = t11.TRMTRAINFILLINID  LEFT JOIN T_TRMDEPART t21 ON t1.TRMDEPARTID = t21.TRMDEPARTID  LEFT JOIN T_SRFORG t31 ON t1.ORMORGID = t31.ORGID  LEFT JOIN T_SRFORGSECTOR t41 ON t1.ORMORGSECTORID = t41.ORGSECTORID  ) t1 where trmtrainfillinid=#{id}]]>
+    </select>
 
     <!--通过mybatis将查询结果注入到entity中,通过配置autoMapping="true"由mybatis自动处理映射关系 -->
     <resultMap id="TRMTRAINFILLINResultMap" type="cn.ibizlab.ehr.core.trm.domain.TRMTRAINFILLIN" autoMapping="true">
@@ -15,9 +18,9 @@
             
 		
 		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
-		<association property="ormorgsector" javaType="cn.ibizlab.ehr.core.orm.domain.ORMORGSECTOR" column="ormorgsectorid" select="cn.ibizlab.ehr.core.orm.mapper.ORMORGSECTORMapper.selectById" fetchType="lazy"></association>
+		<association property="ormorgsector" javaType="cn.ibizlab.ehr.core.orm.domain.OrmOrgsector" column="ormorgsectorid" select="cn.ibizlab.ehr.core.orm.mapper.OrmOrgsectorMapper.selectById" fetchType="lazy"></association>
 		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
-		<association property="ormorg" javaType="cn.ibizlab.ehr.core.orm.domain.ORMORG" column="ormorgid" select="cn.ibizlab.ehr.core.orm.mapper.ORMORGMapper.selectById" fetchType="lazy"></association>
+		<association property="ormorg" javaType="cn.ibizlab.ehr.core.orm.domain.OrmOrg" column="ormorgid" select="cn.ibizlab.ehr.core.orm.mapper.OrmOrgMapper.selectById" fetchType="lazy"></association>
 		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
 		<association property="trmdepart" javaType="cn.ibizlab.ehr.core.trm.domain.TRMDEPART" column="trmdepartid" select="cn.ibizlab.ehr.core.trm.mapper.TRMDEPARTMapper.selectById" fetchType="lazy"></association>
 		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
@@ -69,9 +72,9 @@
 			]]>
     </sql>
 
-    <!--数据查询[Default]-->
-    <sql id="Default" databaseId="oracle">
-       <![CDATA[	SELECT t1.CREATEDATE, t1.CREATEMAN, t1.ENABLE, t21.JD, t21.JZRQ, t21.ND, t1.ORMORGID, t31.ORGNAME AS ORMORGNAME, t1.ORMORGSECTORID, t41.ORGSECTORNAME AS ORMORGSECTORNAME, t41.SHORTNAME, t1.TRMDEPARTID, t21.TRMDEPARTNAME, t1.TRMTRAINFILLINID, t1.TRMTRAINFILLINID2, t1.TRMTRAINFILLINNAME, t11.TRMTRAINFILLINNAME AS TRMTRAINFILLINNAME2, t1.UPDATEDATE, t1.UPDATEMAN, t31.ZZDZS FROM T_TRMTRAINFILLIN t1  LEFT JOIN T_TRMTRAINFILLIN t11 ON t1.TRMTRAINFILLINID2 = t11.TRMTRAINFILLINID  LEFT JOIN T_TRMDEPART t21 ON t1.TRMDEPARTID = t21.TRMDEPARTID  LEFT JOIN T_SRFORG t31 ON t1.ORMORGID = t31.ORGID  LEFT JOIN T_SRFORGSECTOR t41 ON t1.ORMORGSECTORID = t41.ORGSECTORID  
+    <!--数据查询[View]-->
+    <sql id="View" databaseId="mysql">
+       <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t21.`JD`, t21.`JZRQ`, t21.`ND`, t1.`ORMORGID`, t31.`ORGNAME` AS `ORMORGNAME`, t1.`ORMORGSECTORID`, t41.`ORGSECTORNAME` AS `ORMORGSECTORNAME`, t41.`SHORTNAME`, t1.`TRMDEPARTID`, t21.`TRMDEPARTNAME`, t1.`TRMTRAINFILLINID`, t1.`TRMTRAINFILLINID2`, t1.`TRMTRAINFILLINNAME`, t11.`TRMTRAINFILLINNAME` AS `TRMTRAINFILLINNAME2`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t31.`ZZDZS` FROM `T_TRMTRAINFILLIN` t1  LEFT JOIN T_TRMTRAINFILLIN t11 ON t1.TRMTRAINFILLINID2 = t11.TRMTRAINFILLINID  LEFT JOIN T_TRMDEPART t21 ON t1.TRMDEPARTID = t21.TRMDEPARTID  LEFT JOIN T_SRFORG t31 ON t1.ORMORGID = t31.ORGID  LEFT JOIN T_SRFORGSECTOR t41 ON t1.ORMORGSECTORID = t41.ORGSECTORID  
 				 WHERE 	t1.ENABLE = 1
 			]]>
     </sql>

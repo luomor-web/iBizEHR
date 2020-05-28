@@ -52,6 +52,9 @@ public interface IATTENDANCEDATEService extends IService<ATTENDANCEDATE>{
      */
     boolean execute(String sql, Map param);
 
+    List<ATTENDANCEDATE> getAttendancedateByIds(List<String> ids) ;
+    List<ATTENDANCEDATE> getAttendancedateByEntities(List<ATTENDANCEDATE> entities) ;
+
 }
 
 

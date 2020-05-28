@@ -58,6 +58,9 @@ public interface IORMDUTYService extends IService<ORMDUTY>{
      */
     boolean execute(String sql, Map param);
 
+    List<ORMDUTY> getOrmdutyByIds(List<String> ids) ;
+    List<ORMDUTY> getOrmdutyByEntities(List<ORMDUTY> entities) ;
+
 }
 
 

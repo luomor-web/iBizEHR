@@ -52,6 +52,9 @@ public interface IPCMPROFILESPYYService extends IService<PCMPROFILESPYY>{
      */
     boolean execute(String sql, Map param);
 
+    List<PCMPROFILESPYY> getPcmprofilespyyByIds(List<String> ids) ;
+    List<PCMPROFILESPYY> getPcmprofilespyyByEntities(List<PCMPROFILESPYY> entities) ;
+
 }
 
 

@@ -4,6 +4,9 @@
 <mapper	namespace="cn.ibizlab.ehr.core.vac.mapper.VACLEAVESYSTEMDETAILMapper">
 
     <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
+	<select id="selectById"  resultMap="VACLEAVESYSTEMDETAILResultMap" databaseId="mysql">
+        <![CDATA[select t1.* from (SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`VACLEAVESYSTEMDETAILID`, t1.`VACLEAVESYSTEMDETAILNAME`, t1.`VACLEAVESYSTEMID`, t11.`VACLEAVESYSTEMNAME`, t1.`XJGZ`, t1.`XJGZGS`, t1.`XJLX` FROM `T_VACLEAVESYSTEMDETAIL` t1  LEFT JOIN T_VACLEAVESYSTEM t11 ON t1.VACLEAVESYSTEMID = t11.VACLEAVESYSTEMID  ) t1 where vacleavesystemdetailid=#{id}]]>
+    </select>
 
     <!--通过mybatis将查询结果注入到entity中,通过配置autoMapping="true"由mybatis自动处理映射关系 -->
     <resultMap id="VACLEAVESYSTEMDETAILResultMap" type="cn.ibizlab.ehr.core.vac.domain.VACLEAVESYSTEMDETAIL" autoMapping="true">
@@ -38,9 +41,9 @@
 			]]>
     </sql>
 
-    <!--数据查询[Default]-->
-    <sql id="Default" databaseId="oracle">
-       <![CDATA[	SELECT t1.CREATEDATE, t1.CREATEMAN, t1.ENABLE, t1.UPDATEDATE, t1.UPDATEMAN, t1.VACLEAVESYSTEMDETAILID, t1.VACLEAVESYSTEMDETAILNAME, t1.VACLEAVESYSTEMID, t11.VACLEAVESYSTEMNAME, t1.XJGZ, t1.XJGZGS, t1.XJLX FROM T_VACLEAVESYSTEMDETAIL t1  LEFT JOIN T_VACLEAVESYSTEM t11 ON t1.VACLEAVESYSTEMID = t11.VACLEAVESYSTEMID  
+    <!--数据查询[View]-->
+    <sql id="View" databaseId="mysql">
+       <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`VACLEAVESYSTEMDETAILID`, t1.`VACLEAVESYSTEMDETAILNAME`, t1.`VACLEAVESYSTEMID`, t11.`VACLEAVESYSTEMNAME`, t1.`XJGZ`, t1.`XJGZGS`, t1.`XJLX` FROM `T_VACLEAVESYSTEMDETAIL` t1  LEFT JOIN T_VACLEAVESYSTEM t11 ON t1.VACLEAVESYSTEMID = t11.VACLEAVESYSTEMID  
 			]]>
     </sql>
 

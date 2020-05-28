@@ -3,7 +3,7 @@ import ControlService from '@/widgets/control-service';
 import PIMARCHIVESService from '@/service/pimarchives/pimarchives-service';
 import AdminEditForm_2Model from './admin-edit-form-2-form-model';
 import PIMPERSONService from '@/service/pimperson/pimperson-service';
-import ORMORGService from '@/service/ormorg/ormorg-service';
+import OrmOrgService from '@/service/orm-org/orm-org-service';
 
 
 /**
@@ -54,10 +54,10 @@ export default class AdminEditForm_2Service extends ControlService {
     /**
      * 组织管理服务对象
      *
-     * @type {ORMORGService}
+     * @type {OrmOrgService}
      * @memberof AdminEditForm_2Service
      */
-    public ormorgService: ORMORGService = new ORMORGService();
+    public ormorgService: OrmOrgService = new OrmOrgService();
 
     /**
      * 处理数据
@@ -101,7 +101,7 @@ export default class AdminEditForm_2Service extends ControlService {
         if (Object.is(serviceName, 'PIMPERSONService') && Object.is(interfaceName, 'FetchAuthPerson')) {
             return this.doItems(this.pimpersonService.FetchAuthPerson(JSON.parse(JSON.stringify(context)),data, isloading), 'pimpersonid', 'pimperson');
         }
-        if (Object.is(serviceName, 'ORMORGService') && Object.is(interfaceName, 'FetchGSGWZY')) {
+        if (Object.is(serviceName, 'OrmOrgService') && Object.is(interfaceName, 'FetchGSGWZY')) {
             return this.doItems(this.ormorgService.FetchGSGWZY(JSON.parse(JSON.stringify(context)),data, isloading), 'orgid', 'ormorg');
         }
 

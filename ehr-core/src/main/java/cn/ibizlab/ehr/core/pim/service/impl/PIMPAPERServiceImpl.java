@@ -236,6 +236,26 @@ public class PIMPAPERServiceImpl extends ServiceImpl<PIMPAPERMapper, PIMPAPER> i
         return true;
     }
 
+    @Override
+    public List<PIMPAPER> getPimpaperByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<PIMPAPER> getPimpaperByEntities(List<PIMPAPER> entities) {
+        List ids =new ArrayList();
+        for(PIMPAPER entity : entities){
+            Serializable id=entity.getPimpaperid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

@@ -238,6 +238,26 @@ public class VACSYSTEMHISTORYServiceImpl extends ServiceImpl<VACSYSTEMHISTORYMap
         return true;
     }
 
+    @Override
+    public List<VACSYSTEMHISTORY> getVacsystemhistoryByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<VACSYSTEMHISTORY> getVacsystemhistoryByEntities(List<VACSYSTEMHISTORY> entities) {
+        List ids =new ArrayList();
+        for(VACSYSTEMHISTORY entity : entities){
+            Serializable id=entity.getVacsystemhistoryid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

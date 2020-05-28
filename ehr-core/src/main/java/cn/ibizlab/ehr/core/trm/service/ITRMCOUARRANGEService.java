@@ -72,6 +72,9 @@ public interface ITRMCOUARRANGEService extends IService<TRMCOUARRANGE>{
      */
     boolean execute(String sql, Map param);
 
+    List<TRMCOUARRANGE> getTrmcouarrangeByIds(List<String> ids) ;
+    List<TRMCOUARRANGE> getTrmcouarrangeByEntities(List<TRMCOUARRANGE> entities) ;
+
 }
 
 

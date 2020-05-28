@@ -56,6 +56,9 @@ public interface IPCMGXXKTEMPService extends IService<PCMGXXKTEMP>{
      */
     boolean execute(String sql, Map param);
 
+    List<PCMGXXKTEMP> getPcmgxxktempByIds(List<String> ids) ;
+    List<PCMGXXKTEMP> getPcmgxxktempByEntities(List<PCMGXXKTEMP> entities) ;
+
 }
 
 

@@ -2,7 +2,7 @@
 import { Component } from 'vue-property-decorator';
 import ORMORGFPXXPickupViewBase from './ormorgfpxxpickup-view-base.vue';
 
-import view_pickupviewpanel from '@widgets/ormorg/fpxxpickup-viewpickupviewpanel-pickupviewpanel/fpxxpickup-viewpickupviewpanel-pickupviewpanel.vue';
+import view_pickupviewpanel from '@widgets/orm-org/fpxxpickup-viewpickupviewpanel-pickupviewpanel/fpxxpickup-viewpickupviewpanel-pickupviewpanel.vue';
 
 /**
  * 组织数据选择视图

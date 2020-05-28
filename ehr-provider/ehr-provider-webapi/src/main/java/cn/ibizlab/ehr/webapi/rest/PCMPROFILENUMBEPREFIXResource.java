@@ -22,6 +22,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.access.prepost.PostAuthorize;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -39,15 +40,13 @@ import cn.ibizlab.ehr.core.pcm.filter.PCMPROFILENUMBEPREFIXSearchContext;
 public class PCMPROFILENUMBEPREFIXResource {
 
     @Autowired
-    private IPCMPROFILENUMBEPREFIXService pcmprofilenumbeprefixService;
+    public IPCMPROFILENUMBEPREFIXService pcmprofilenumbeprefixService;
 
     @Autowired
     @Lazy
     public PCMPROFILENUMBEPREFIXMapping pcmprofilenumbeprefixMapping;
 
-    public PCMPROFILENUMBEPREFIXDTO permissionDTO=new PCMPROFILENUMBEPREFIXDTO();
-
-    @PreAuthorize("hasPermission(#pcmprofilenumbeprefix_id,'Get',{'Sql',this.pcmprofilenumbeprefixMapping,this.permissionDTO})")
+    @PostAuthorize("hasPermission(this.pcmprofilenumbeprefixMapping.toDomain(returnObject.body),'ehr-PCMPROFILENUMBEPREFIX-Get')")
     @ApiOperation(value = "Get", tags = {"PCMPROFILENUMBEPREFIX" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmprofilenumbeprefixes/{pcmprofilenumbeprefix_id}")
     public ResponseEntity<PCMPROFILENUMBEPREFIXDTO> get(@PathVariable("pcmprofilenumbeprefix_id") String pcmprofilenumbeprefix_id) {
@@ -56,14 +55,14 @@ public class PCMPROFILENUMBEPREFIXResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('','Save',{'Sql',this.pcmprofilenumbeprefixMapping,#pcmprofilenumbeprefixdto})")
+    @PreAuthorize("hasPermission(this.pcmprofilenumbeprefixMapping.toDomain(#pcmprofilenumbeprefixdto),'ehr-PCMPROFILENUMBEPREFIX-Save')")
     @ApiOperation(value = "Save", tags = {"PCMPROFILENUMBEPREFIX" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofilenumbeprefixes/save")
     public ResponseEntity<Boolean> save(@RequestBody PCMPROFILENUMBEPREFIXDTO pcmprofilenumbeprefixdto) {
         return ResponseEntity.status(HttpStatus.OK).body(pcmprofilenumbeprefixService.save(pcmprofilenumbeprefixMapping.toDomain(pcmprofilenumbeprefixdto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.pcmprofilenumbeprefixMapping,#pcmprofilenumbeprefixdtos})")
+    @PreAuthorize("hasPermission(this.pcmprofilenumbeprefixMapping.toDomain(#pcmprofilenumbeprefixdtos),'ehr-PCMPROFILENUMBEPREFIX-Save')")
     @ApiOperation(value = "SaveBatch", tags = {"PCMPROFILENUMBEPREFIX" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofilenumbeprefixes/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PCMPROFILENUMBEPREFIXDTO> pcmprofilenumbeprefixdtos) {
@@ -71,7 +70,7 @@ public class PCMPROFILENUMBEPREFIXResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission(#pcmprofilenumbeprefix_id,'Update',{'Sql',this.pcmprofilenumbeprefixMapping,#pcmprofilenumbeprefixdto})")
+    @PreAuthorize("hasPermission(this.pcmprofilenumbeprefixService.get(#pcmprofilenumbeprefix_id),'ehr-PCMPROFILENUMBEPREFIX-Update')")
     @ApiOperation(value = "Update", tags = {"PCMPROFILENUMBEPREFIX" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmprofilenumbeprefixes/{pcmprofilenumbeprefix_id}")
     @Transactional
@@ -83,7 +82,7 @@ public class PCMPROFILENUMBEPREFIXResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.pcmprofilenumbeprefixMapping,#pcmprofilenumbeprefixdtos})")
+    @PreAuthorize("hasPermission(this.pcmprofilenumbeprefixService.getPcmprofilenumbeprefixByEntities(this.pcmprofilenumbeprefixMapping.toDomain(#pcmprofilenumbeprefixdtos)),'ehr-PCMPROFILENUMBEPREFIX-Update')")
     @ApiOperation(value = "UpdateBatch", tags = {"PCMPROFILENUMBEPREFIX" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmprofilenumbeprefixes/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PCMPROFILENUMBEPREFIXDTO> pcmprofilenumbeprefixdtos) {
@@ -91,7 +90,7 @@ public class PCMPROFILENUMBEPREFIXResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('','Create',{'Sql',this.pcmprofilenumbeprefixMapping,#pcmprofilenumbeprefixdto})")
+    @PreAuthorize("hasPermission(this.pcmprofilenumbeprefixMapping.toDomain(#pcmprofilenumbeprefixdto),'ehr-PCMPROFILENUMBEPREFIX-Create')")
     @ApiOperation(value = "Create", tags = {"PCMPROFILENUMBEPREFIX" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofilenumbeprefixes")
     @Transactional
@@ -102,7 +101,7 @@ public class PCMPROFILENUMBEPREFIXResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.pcmprofilenumbeprefixMapping,#pcmprofilenumbeprefixdtos})")
+    @PreAuthorize("hasPermission(this.pcmprofilenumbeprefixMapping.toDomain(#pcmprofilenumbeprefixdtos),'ehr-PCMPROFILENUMBEPREFIX-Create')")
     @ApiOperation(value = "createBatch", tags = {"PCMPROFILENUMBEPREFIX" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofilenumbeprefixes/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PCMPROFILENUMBEPREFIXDTO> pcmprofilenumbeprefixdtos) {
@@ -110,14 +109,13 @@ public class PCMPROFILENUMBEPREFIXResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILENUMBEPREFIX-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"PCMPROFILENUMBEPREFIX" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofilenumbeprefixes/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PCMPROFILENUMBEPREFIXDTO pcmprofilenumbeprefixdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pcmprofilenumbeprefixService.checkKey(pcmprofilenumbeprefixMapping.toDomain(pcmprofilenumbeprefixdto)));
     }
 
-    @PreAuthorize("hasPermission(#pcmprofilenumbeprefix_id,'Remove',{'Sql',this.pcmprofilenumbeprefixMapping,this.permissionDTO})")
+    @PreAuthorize("hasPermission(this.pcmprofilenumbeprefixService.get(#pcmprofilenumbeprefix_id),'ehr-PCMPROFILENUMBEPREFIX-Remove')")
     @ApiOperation(value = "Remove", tags = {"PCMPROFILENUMBEPREFIX" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmprofilenumbeprefixes/{pcmprofilenumbeprefix_id}")
     @Transactional
@@ -125,7 +123,7 @@ public class PCMPROFILENUMBEPREFIXResource {
          return ResponseEntity.status(HttpStatus.OK).body(pcmprofilenumbeprefixService.remove(pcmprofilenumbeprefix_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.pcmprofilenumbeprefixMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission(this.pcmprofilenumbeprefixService.getPcmprofilenumbeprefixByIds(#ids),'ehr-PCMPROFILENUMBEPREFIX-Remove')")
     @ApiOperation(value = "RemoveBatch", tags = {"PCMPROFILENUMBEPREFIX" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmprofilenumbeprefixes/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -133,7 +131,6 @@ public class PCMPROFILENUMBEPREFIXResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILENUMBEPREFIX-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"PCMPROFILENUMBEPREFIX" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmprofilenumbeprefixes/getdraft")
     public ResponseEntity<PCMPROFILENUMBEPREFIXDTO> getDraft() {
@@ -162,3 +159,4 @@ public class PCMPROFILENUMBEPREFIXResource {
                 .body(new PageImpl(pcmprofilenumbeprefixMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 }
+

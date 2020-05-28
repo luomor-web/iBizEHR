@@ -1,4 +1,4 @@
-import ORMORGService from '@service/ormorg/ormorg-service';
+import OrmOrgService from '@service/orm-org/orm-org-service';
 /**
  * 代码表--二级组织(无权限)
  *
@@ -63,10 +63,10 @@ export default class ORMCL_LEVELTWOORG {
     /**
      * 组织管理应用实体服务对象
      *
-     * @type {ORMORGService}
+     * @type {OrmOrgService}
      * @memberof ORMCL_LEVELTWOORG
      */
-    public ormorgService: ORMORGService = new ORMORGService();
+    public ormorgService: OrmOrgService = new OrmOrgService();
 
 
     /**

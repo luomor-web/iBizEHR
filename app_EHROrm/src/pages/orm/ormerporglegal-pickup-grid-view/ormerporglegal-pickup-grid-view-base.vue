@@ -62,7 +62,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, PickupViewBase } from '@/crm-core';
-import ORMERPORGService from '@/service/ormerporg/ormerporg-service';
+import OrmErporgService from '@/service/orm-erporg/orm-erporg-service';
 
 import PickupGridViewEngine from '@engine/view/pickup-grid-view-engine';
 
@@ -81,10 +81,10 @@ export default class ORMERPORGLegalPickupGridViewBase extends PickupViewBase {
     /**
      * 实体服务对象
      *
-     * @type {ORMERPORGService}
+     * @type {OrmErporgService}
      * @memberof ORMERPORGLegalPickupGridViewBase
      */
-    public appEntityService: ORMERPORGService = new ORMERPORGService;
+    public appEntityService: OrmErporgService = new OrmErporgService;
 
 
     /**

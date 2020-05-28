@@ -244,6 +244,26 @@ public class ORMPostDetailsServiceImpl extends ServiceImpl<ORMPostDetailsMapper,
         return true;
     }
 
+    @Override
+    public List<ORMPostDetails> getOrmpostdetailsByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<ORMPostDetails> getOrmpostdetailsByEntities(List<ORMPostDetails> entities) {
+        List ids =new ArrayList();
+        for(ORMPostDetails entity : entities){
+            Serializable id=entity.getOrmpostdetailsid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

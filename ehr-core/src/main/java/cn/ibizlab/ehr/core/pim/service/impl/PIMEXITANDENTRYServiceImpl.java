@@ -320,6 +320,26 @@ public class PIMEXITANDENTRYServiceImpl extends ServiceImpl<PIMEXITANDENTRYMappe
         return true;
     }
 
+    @Override
+    public List<PIMEXITANDENTRY> getPimexitandentryByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<PIMEXITANDENTRY> getPimexitandentryByEntities(List<PIMEXITANDENTRY> entities) {
+        List ids =new ArrayList();
+        for(PIMEXITANDENTRY entity : entities){
+            Serializable id=entity.getPimexitandentryid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

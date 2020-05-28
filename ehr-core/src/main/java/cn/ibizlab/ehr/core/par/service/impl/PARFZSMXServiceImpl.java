@@ -240,6 +240,26 @@ public class PARFZSMXServiceImpl extends ServiceImpl<PARFZSMXMapper, PARFZSMX> i
         return true;
     }
 
+    @Override
+    public List<PARFZSMX> getParfzsmxByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<PARFZSMX> getParfzsmxByEntities(List<PARFZSMX> entities) {
+        List ids =new ArrayList();
+        for(PARFZSMX entity : entities){
+            Serializable id=entity.getParfzsmxid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

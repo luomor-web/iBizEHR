@@ -1061,7 +1061,7 @@
         "srfkey": "ORMCL_LEVEL2ORG",
         "emptytext": "",
         "codelisttype":"dynamic",
-        "appdataentity":"ORMORG",
+        "appdataentity":"OrmOrg",
         "appdedataset":"FetchAllLevelTwoOrg",
         "items": []
     }, 
@@ -1208,7 +1208,7 @@
         ]
     }, 
     {
-        "srfkey": "DASTATE",
+        "srfkey": "EhrCodeListDastate",
         "emptytext": "未定义",
         "codelisttype":"static",
         "items": [
@@ -1656,7 +1656,7 @@
         ]
     }, 
     {
-        "srfkey": "SSQY",
+        "srfkey": "EhrCodeListSsqy",
         "emptytext": "",
         "codelisttype":"dynamic",
         "appdataentity":"CodeItem",

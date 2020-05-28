@@ -7,7 +7,7 @@ import SysOperator from '@/codelist/sys-operator';
 import ORMCL_GW from '@/codelist/ormcl-gw';   
 import ORMCL_EngineeringPurpose from '@/codelist/ormcl-engineering-purpose';   
 import ORMCL_EngineeringBusType from '@/codelist/ormcl-engineering-bus-type';   
-import SSQY from '@/codelist/ssqy';   
+import EhrCodeListSsqy from '@/codelist/ehr-code-list-ssqy';   
 import ORMCL_GWTYPE from '@/codelist/ormcl-gwtype';   
 import PIMCL_YGZT from '@/codelist/pimcl-ygzt';   
 import { Store } from 'vuex';
@@ -128,10 +128,10 @@ export default class CodeListService {
     /**
      * 代码表--所属区域
      *
-     * @type {SSQY}
+     * @type {EhrCodeListSsqy}
      * @memberof CodeListService
      */
-    public SSQY: SSQY = new SSQY();
+    public EhrCodeListSsqy: EhrCodeListSsqy = new EhrCodeListSsqy();
 
     /**
      * 代码表--岗位类型

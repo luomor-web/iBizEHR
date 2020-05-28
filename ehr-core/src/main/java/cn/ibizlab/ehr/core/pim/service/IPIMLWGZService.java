@@ -52,6 +52,9 @@ public interface IPIMLWGZService extends IService<PIMLWGZ>{
      */
     boolean execute(String sql, Map param);
 
+    List<PIMLWGZ> getPimlwgzByIds(List<String> ids) ;
+    List<PIMLWGZ> getPimlwgzByEntities(List<PIMLWGZ> entities) ;
+
 }
 
 

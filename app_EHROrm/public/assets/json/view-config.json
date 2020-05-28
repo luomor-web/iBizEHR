@@ -87,6 +87,14 @@
         "viewname": "ORMORGDZEditView2",
         "viewtag": "07f5aba18665e67110b05f8c81b40d25"
     },
+    "ormorgeditview9_editmode": {
+        "title": "组织管理",
+        "caption": "组织管理",
+        "viewtype": "DEEDITVIEW9",
+        "viewmodule": "ORM",
+        "viewname": "ORMORGEditView9_EditMode",
+        "viewtag": "0873c4b0b1d17e12e06877c537c308f6"
+    },
     "ormpostlibmpickupview": {
         "title": "标准岗位",
         "caption": "标准岗位",
@@ -168,8 +176,8 @@
         "viewtag": "10f8f030c7711a08f5d0663ecf2180b7"
     },
     "ormbmkqdzeditview": {
-        "title": "部门考勤地址维护",
-        "caption": "部门考勤地址维护",
+        "title": "考勤地址信息",
+        "caption": "考勤地址信息",
         "viewtype": "DEEDITVIEW",
         "viewmodule": "ORM",
         "viewname": "ORMBMKQDZEditView",
@@ -464,8 +472,8 @@
         "viewtag": "337991e5e3d2ae798ba40ee685f3197a"
     },
     "ormorgeditview": {
-        "title": "组织管理",
-        "caption": "组织管理",
+        "title": "组织信息",
+        "caption": "组织信息",
         "viewtype": "DEEDITVIEW",
         "viewmodule": "ORM",
         "viewname": "ORMORGEditView",
@@ -816,8 +824,8 @@
         "viewtag": "5a8a13f0da64a45fdf433bd381077cda"
     },
     "ormbmkqdzbmkqdzgridview": {
-        "title": "部门考勤地址维护",
-        "caption": "部门考勤地址维护",
+        "title": "考勤地址信息",
+        "caption": "考勤地址信息",
         "viewtype": "DEGRIDVIEW",
         "viewmodule": "ORM",
         "viewname": "ORMBMKQDZBMKQDZGridView",
@@ -944,8 +952,8 @@
         "viewtag": "69a6b5564f77c05b5861a64cce47232e"
     },
     "ormorgdzgridview": {
-        "title": "组织地址维护表格视图",
-        "caption": "组织地址维护",
+        "title": "地址信息",
+        "caption": "地址信息",
         "viewtype": "DEGRIDVIEW",
         "viewmodule": "ORM",
         "viewname": "ORMORGDZGridView",
@@ -1215,6 +1223,14 @@
         "viewname": "OrmSignOrgEditView",
         "viewtag": "917714c6b3de7ed13424d76ca50070e2"
     },
+    "ormorgsectoreditview9": {
+        "title": "部门/项目部管理",
+        "caption": "部门/项目部管理",
+        "viewtype": "DEEDITVIEW9",
+        "viewmodule": "ORM",
+        "viewname": "ORMORGSECTOREditView9",
+        "viewtag": "91d1827444477b9939c3989b4c924b82"
+    },
     "ormeditionredirectview": {
         "title": "版本对照表数据重定向视图",
         "caption": "版本对照表",
@@ -1246,6 +1262,14 @@
         "viewmodule": "ORM",
         "viewname": "ORMPostLibEditView2",
         "viewtag": "95aacaf44febff28c01f69ca936f8fd1"
+    },
+    "ormorgeditview9": {
+        "title": "组织管理",
+        "caption": "组织管理",
+        "viewtype": "DEEDITVIEW9",
+        "viewmodule": "ORM",
+        "viewname": "ORMORGEditView9",
+        "viewtag": "975252aa8b53de1912591cca23064124"
     },
     "ormqybzwhmpickupview": {
         "title": "区域标准维护数据多项选择视图",
@@ -1328,8 +1352,8 @@
         "viewtag": "9e36a0160fadc5393ac7a39def748e83"
     },
     "ormorgsectorgridview": {
-        "title": "部门",
-        "caption": "部门管理",
+        "title": "部门/项目部管理",
+        "caption": "部门/项目部管理",
         "viewtype": "DEGRIDVIEW",
         "viewmodule": "ORM",
         "viewname": "ORMORGSECTORGridView",
@@ -1656,8 +1680,8 @@
         "viewtag": "d008fe2ad1da3e0f5c0b47a989edd018"
     },
     "ormbmkqdzgridview": {
-        "title": "部门考勤地址维护",
-        "caption": "部门考勤地址维护",
+        "title": "考勤地址信息",
+        "caption": "考勤地址信息",
         "viewtype": "DEGRIDVIEW",
         "viewmodule": "ORM",
         "viewname": "ORMBMKQDZGridView",
@@ -1966,6 +1990,14 @@
         "viewmodule": "ORM",
         "viewname": "ORMORGHTGLDWQPickupGridView",
         "viewtag": "f797c6c9c7b6410519ceb908dfd0a27f"
+    },
+    "ormorgsectoreditview9_editmode": {
+        "title": "部门/项目部管理",
+        "caption": "部门/项目部管理",
+        "viewtype": "DEEDITVIEW9",
+        "viewmodule": "ORM",
+        "viewname": "ORMORGSECTOREditView9_EditMode",
+        "viewtag": "f8da0542fa59713cb39573af12afc068"
     },
     "ormxmbmxpickupgridview": {
         "title": "项目部明细选择表格视图",

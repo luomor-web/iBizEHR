@@ -1,5 +1,5 @@
 <template>
-  <app-layout viewName="ormbmkqdzeditview" viewTitle="部门考勤地址维护" :className="{ 'view-container': true, 'default-mode-view': true, 'deeditview': true, 'ormbmkqdzedit-view': true }" layoutMode="VIEW" :isShowUserInfo="isDefaultView()" :openMode="openMode" @close-view="closeView($event)">
+  <app-layout viewName="ormbmkqdzeditview" viewTitle="考勤地址信息" :className="{ 'view-container': true, 'default-mode-view': true, 'deeditview': true, 'ormbmkqdzedit-view': true }" layoutMode="VIEW" :isShowUserInfo="isDefaultView()" :openMode="openMode" @close-view="closeView($event)">
     <template slot="headerLeft">
       <div class="view-header-left">
 
@@ -47,13 +47,13 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, EditViewBase } from '@/crm-core';
-import ORMBMKQDZService from '@/service/ormbmkqdz/ormbmkqdz-service';
+import OrmBmkqdzService from '@/service/orm-bmkqdz/orm-bmkqdz-service';
 
 import EditViewEngine from '@engine/view/edit-view-engine';
 
 
 /**
- * 部门考勤地址维护基类
+ * 考勤地址信息基类
  *
  * @export
  * @class ORMBMKQDZEditViewBase
@@ -66,10 +66,10 @@ export default class ORMBMKQDZEditViewBase extends EditViewBase {
     /**
      * 实体服务对象
      *
-     * @type {ORMBMKQDZService}
+     * @type {OrmBmkqdzService}
      * @memberof ORMBMKQDZEditViewBase
      */
-    public appEntityService: ORMBMKQDZService = new ORMBMKQDZService;
+    public appEntityService: OrmBmkqdzService = new OrmBmkqdzService;
 
 
     /**
@@ -278,7 +278,7 @@ export default class ORMBMKQDZEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.SaveAndExit(datas, contextJO,paramJO,  $event, xData,this,"ORMBMKQDZ");
+        this.SaveAndExit(datas, contextJO,paramJO,  $event, xData,this,"OrmBmkqdz");
     }
 
     /**

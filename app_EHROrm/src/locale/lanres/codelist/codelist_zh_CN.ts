@@ -76,7 +76,7 @@ export default {
         0: '否',
         empty: '',
     },
-    SSQY: {
+    EhrCodeListSsqy: {
         empty: '',
     },
     PIMCL_BMLX: {

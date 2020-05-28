@@ -69,7 +69,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, GridViewBase } from '@/crm-core';
-import ORMORGSECTORService from '@/service/ormorgsector/ormorgsector-service';
+import OrmOrgsectorService from '@/service/orm-orgsector/orm-orgsector-service';
 
 import GridViewEngine from '@engine/view/grid-view-engine';
 
@@ -90,10 +90,10 @@ export default class ORMORGSECTORBZCXGridViewBase extends GridViewBase {
     /**
      * 实体服务对象
      *
-     * @type {ORMORGSECTORService}
+     * @type {OrmOrgsectorService}
      * @memberof ORMORGSECTORBZCXGridViewBase
      */
-    public appEntityService: ORMORGSECTORService = new ORMORGSECTORService;
+    public appEntityService: OrmOrgsectorService = new OrmOrgsectorService;
 
 
     /**
@@ -370,7 +370,7 @@ export default class ORMORGSECTORBZCXGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.ToggleFilter(datas, contextJO,paramJO,  $event, xData,this,"ORMORGSECTOR");
+        this.ToggleFilter(datas, contextJO,paramJO,  $event, xData,this,"OrmOrgsector");
     }
 
     /**
@@ -392,7 +392,12 @@ export default class ORMORGSECTORBZCXGridViewBase extends GridViewBase {
         if(args.length >0){
             Object.assign(curViewParam,args[0]);
         }
-        const deResParameters: any[] = [];
+        let deResParameters: any[] = [];
+        if(curViewParam.ormorg && true){
+            deResParameters = [
+            { pathName: 'ormorgs', parameterName: 'ormorg' },
+            ]
+        }
         const parameters: any[] = [
             { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
             { pathName: 'editview', parameterName: 'editview' },
@@ -424,7 +429,12 @@ export default class ORMORGSECTORBZCXGridViewBase extends GridViewBase {
         if(args.length >0){
             Object.assign(curViewParam,args[0]);
         }
-        const deResParameters: any[] = [];
+        let deResParameters: any[] = [];
+        if(curViewParam.ormorg && true){
+            deResParameters = [
+            { pathName: 'ormorgs', parameterName: 'ormorg' },
+            ]
+        }
         const parameters: any[] = [
             { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
             { pathName: 'editview', parameterName: 'editview' },

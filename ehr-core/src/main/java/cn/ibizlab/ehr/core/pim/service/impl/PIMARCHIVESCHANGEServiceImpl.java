@@ -46,7 +46,7 @@ public class PIMARCHIVESCHANGEServiceImpl extends ServiceImpl<PIMARCHIVESCHANGEM
 
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.orm.service.IORMORGService ormorgService;
+    private cn.ibizlab.ehr.core.orm.service.IOrmOrgService ormorgService;
     @Autowired
     @Lazy
     private cn.ibizlab.ehr.core.pim.service.IPIMARCHIVESService pimarchivesService;
@@ -237,9 +237,9 @@ public class PIMARCHIVESCHANGEServiceImpl extends ServiceImpl<PIMARCHIVESCHANGEM
     private void fillParentData(PIMARCHIVESCHANGE et){
         //实体关系[DER1N_PIMARCHIVESCHANGE_ORMORG_ORMORGID]
         if(!ObjectUtils.isEmpty(et.getOrmorgid())){
-            cn.ibizlab.ehr.core.orm.domain.ORMORG ormorg=et.getOrmorg();
+            cn.ibizlab.ehr.core.orm.domain.OrmOrg ormorg=et.getOrmorg();
             if(ObjectUtils.isEmpty(ormorg)){
-                cn.ibizlab.ehr.core.orm.domain.ORMORG majorEntity=ormorgService.get(et.getOrmorgid());
+                cn.ibizlab.ehr.core.orm.domain.OrmOrg majorEntity=ormorgService.get(et.getOrmorgid());
                 et.setOrmorg(majorEntity);
                 ormorg=majorEntity;
             }
@@ -247,9 +247,9 @@ public class PIMARCHIVESCHANGEServiceImpl extends ServiceImpl<PIMARCHIVESCHANGEM
         }
         //实体关系[DER1N_PIMARCHIVESCHANGE_ORMORG_ORMORGID2]
         if(!ObjectUtils.isEmpty(et.getOrmorgid2())){
-            cn.ibizlab.ehr.core.orm.domain.ORMORG ormorg2=et.getOrmorg2();
+            cn.ibizlab.ehr.core.orm.domain.OrmOrg ormorg2=et.getOrmorg2();
             if(ObjectUtils.isEmpty(ormorg2)){
-                cn.ibizlab.ehr.core.orm.domain.ORMORG majorEntity=ormorgService.get(et.getOrmorgid2());
+                cn.ibizlab.ehr.core.orm.domain.OrmOrg majorEntity=ormorgService.get(et.getOrmorgid2());
                 et.setOrmorg2(majorEntity);
                 ormorg2=majorEntity;
             }
@@ -291,6 +291,26 @@ public class PIMARCHIVESCHANGEServiceImpl extends ServiceImpl<PIMARCHIVESCHANGEM
         }
         log.warn("暂未支持的SQL语法");
         return true;
+    }
+
+    @Override
+    public List<PIMARCHIVESCHANGE> getPimarchiveschangeByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<PIMARCHIVESCHANGE> getPimarchiveschangeByEntities(List<PIMARCHIVESCHANGE> entities) {
+        List ids =new ArrayList();
+        for(PIMARCHIVESCHANGE entity : entities){
+            Serializable id=entity.getPimarchiveschangeid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
     }
 
 }

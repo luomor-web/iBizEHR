@@ -218,6 +218,26 @@ public class TRMAGENCYRECORDServiceImpl extends ServiceImpl<TRMAGENCYRECORDMappe
         return true;
     }
 
+    @Override
+    public List<TRMAGENCYRECORD> getTrmagencyrecordByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<TRMAGENCYRECORD> getTrmagencyrecordByEntities(List<TRMAGENCYRECORD> entities) {
+        List ids =new ArrayList();
+        for(TRMAGENCYRECORD entity : entities){
+            Serializable id=entity.getTrmagencyrecordid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

@@ -319,6 +319,20 @@ const router = new Router({
                     component: () => import('@pages/pcm/tdzwxxtdzw-wsswbjgrid-view/tdzwxxtdzw-wsswbjgrid-view.vue'),
                 },
                 {
+                    path: 'ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/ydbmpickupgridview/:ydbmpickupgridview?',
+                    meta: {
+                        caption: 'entities.ormorgsector.views.ydbmpickupgridview.caption',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'ormorgs', parameterName: 'ormorg' },
+                            { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
+                            { pathName: 'ydbmpickupgridview', parameterName: 'ydbmpickupgridview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/orm/ormorgsectorydbmpickup-grid-view/ormorgsectorydbmpickup-grid-view.vue'),
+                },
+                {
                     path: 'ormorgsectors/:ormorgsector?/ydbmpickupgridview/:ydbmpickupgridview?',
                     meta: {
                         caption: 'entities.ormorgsector.views.ydbmpickupgridview.caption',
@@ -600,6 +614,20 @@ const router = new Router({
                         requireAuth: true,
                     },
                     component: () => import('@pages/pcm/pcmawardswonsedit-view/pcmawardswonsedit-view.vue'),
+                },
+                {
+                    path: 'ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/ydbmpickupview/:ydbmpickupview?',
+                    meta: {
+                        caption: 'entities.ormorgsector.views.ydbmpickupview.caption',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'ormorgs', parameterName: 'ormorg' },
+                            { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
+                            { pathName: 'ydbmpickupview', parameterName: 'ydbmpickupview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/orm/ormorgsectorydbmpickup-view/ormorgsectorydbmpickup-view.vue'),
                 },
                 {
                     path: 'ormorgsectors/:ormorgsector?/ydbmpickupview/:ydbmpickupview?',
@@ -3151,6 +3179,19 @@ const router = new Router({
         component: () => import('@pages/pcm/pcmxkmlmpickup-view/pcmxkmlmpickup-view.vue'),
     },
     {
+        path: '/ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/ydbmpickupgridview/:ydbmpickupgridview?',
+        meta: {
+            caption: 'entities.ormorgsector.views.ydbmpickupgridview.caption',
+            parameters: [
+                { pathName: 'ormorgs', parameterName: 'ormorg' },
+                { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
+                { pathName: 'ydbmpickupgridview', parameterName: 'ydbmpickupgridview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/orm/ormorgsectorydbmpickup-grid-view/ormorgsectorydbmpickup-grid-view.vue'),
+    },
+    {
         path: '/ormorgsectors/:ormorgsector?/ydbmpickupgridview/:ydbmpickupgridview?',
         meta: {
             caption: 'entities.ormorgsector.views.ydbmpickupgridview.caption',
@@ -3342,6 +3383,19 @@ const router = new Router({
             requireAuth: true,
         },
         component: () => import('@pages/pcm/tdzwxxtdzwgrid-view/tdzwxxtdzwgrid-view.vue'),
+    },
+    {
+        path: '/ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/ydbmpickupview/:ydbmpickupview?',
+        meta: {
+            caption: 'entities.ormorgsector.views.ydbmpickupview.caption',
+            parameters: [
+                { pathName: 'ormorgs', parameterName: 'ormorg' },
+                { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
+                { pathName: 'ydbmpickupview', parameterName: 'ydbmpickupview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/orm/ormorgsectorydbmpickup-view/ormorgsectorydbmpickup-view.vue'),
     },
     {
         path: '/ormorgsectors/:ormorgsector?/ydbmpickupview/:ydbmpickupview?',

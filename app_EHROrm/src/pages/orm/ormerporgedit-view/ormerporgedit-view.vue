@@ -2,7 +2,7 @@
 import { Component } from 'vue-property-decorator';
 import ORMERPORGEditViewBase from './ormerporgedit-view-base.vue';
 
-import view_form from '@widgets/ormerporg/main-form/main-form.vue';
+import view_form from '@widgets/orm-erporg/main-form/main-form.vue';
 
 /**
  * ERP组织中间表编辑视图

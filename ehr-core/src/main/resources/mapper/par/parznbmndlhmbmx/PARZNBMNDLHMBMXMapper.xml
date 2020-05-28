@@ -4,6 +4,9 @@
 <mapper	namespace="cn.ibizlab.ehr.core.par.mapper.PARZNBMNDLHMBMXMapper">
 
     <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
+	<select id="selectById"  resultMap="PARZNBMNDLHMBMXResultMap" databaseId="mysql">
+        <![CDATA[select t1.* from (SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`FZQZ`, t1.`KHBZ`, t1.`KHZQ`, t1.`MBLHYQ`, t1.`MBLX`, t1.`PARZNBMNDLHMBID`, t1.`PARZNBMNDLHMBMXID`, t1.`PARZNBMNDLHMBMXNAME`, t11.`PARZNBMNDLHMBNAME`, t1.`SPZT`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`WCQK`, t1.`XGRZ`, t1.`ZMCL`, t1.`ZPFS`, t1.`ZT` FROM `T_PARZNBMNDLHMBMX` t1  LEFT JOIN T_PARZNBMNDLHMB t11 ON t1.PARZNBMNDLHMBID = t11.PARZNBMNDLHMBID  ) t1 where parznbmndlhmbmxid=#{id}]]>
+    </select>
 
     <!--通过mybatis将查询结果注入到entity中,通过配置autoMapping="true"由mybatis自动处理映射关系 -->
     <resultMap id="PARZNBMNDLHMBMXResultMap" type="cn.ibizlab.ehr.core.par.domain.PARZNBMNDLHMBMX" autoMapping="true">
@@ -38,9 +41,9 @@
 			]]>
     </sql>
 
-    <!--数据查询[Default]-->
-    <sql id="Default" databaseId="oracle">
-       <![CDATA[	SELECT t1.CREATEDATE, t1.CREATEMAN, t1.FZQZ, t1.KHBZ, t1.KHZQ, t1.MBLHYQ, t1.MBLX, t1.PARZNBMNDLHMBID, t1.PARZNBMNDLHMBMXID, t1.PARZNBMNDLHMBMXNAME, t11.PARZNBMNDLHMBNAME, t1.SPZT, t1.UPDATEDATE, t1.UPDATEMAN, t1.WCQK, t1.XGRZ, t1.ZMCL, t1.ZPFS, t1.ZT FROM T_PARZNBMNDLHMBMX t1  LEFT JOIN T_PARZNBMNDLHMB t11 ON t1.PARZNBMNDLHMBID = t11.PARZNBMNDLHMBID  
+    <!--数据查询[View]-->
+    <sql id="View" databaseId="mysql">
+       <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`FZQZ`, t1.`KHBZ`, t1.`KHZQ`, t1.`MBLHYQ`, t1.`MBLX`, t1.`PARZNBMNDLHMBID`, t1.`PARZNBMNDLHMBMXID`, t1.`PARZNBMNDLHMBMXNAME`, t11.`PARZNBMNDLHMBNAME`, t1.`SPZT`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`WCQK`, t1.`XGRZ`, t1.`ZMCL`, t1.`ZPFS`, t1.`ZT` FROM `T_PARZNBMNDLHMBMX` t1  LEFT JOIN T_PARZNBMNDLHMB t11 ON t1.PARZNBMNDLHMBID = t11.PARZNBMNDLHMBID  
 			]]>
     </sql>
 

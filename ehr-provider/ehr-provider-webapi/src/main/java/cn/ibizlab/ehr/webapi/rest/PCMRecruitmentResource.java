@@ -22,6 +22,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.access.prepost.PostAuthorize;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -39,22 +40,19 @@ import cn.ibizlab.ehr.core.pcm.filter.PCMRecruitmentSearchContext;
 public class PCMRecruitmentResource {
 
     @Autowired
-    private IPCMRecruitmentService pcmrecruitmentService;
+    public IPCMRecruitmentService pcmrecruitmentService;
 
     @Autowired
     @Lazy
     public PCMRecruitmentMapping pcmrecruitmentMapping;
 
-    public PCMRecruitmentDTO permissionDTO=new PCMRecruitmentDTO();
-
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMRecruitment-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"PCMRecruitment" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmrecruitments/getdraft")
     public ResponseEntity<PCMRecruitmentDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(pcmrecruitmentMapping.toDto(pcmrecruitmentService.getDraft(new PCMRecruitment())));
     }
 
-    @PreAuthorize("hasPermission(#pcmrecruitment_id,'Get',{'Sql',this.pcmrecruitmentMapping,this.permissionDTO})")
+    @PostAuthorize("hasPermission(this.pcmrecruitmentMapping.toDomain(returnObject.body),'ehr-PCMRecruitment-Get')")
     @ApiOperation(value = "Get", tags = {"PCMRecruitment" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmrecruitments/{pcmrecruitment_id}")
     public ResponseEntity<PCMRecruitmentDTO> get(@PathVariable("pcmrecruitment_id") String pcmrecruitment_id) {
@@ -63,14 +61,14 @@ public class PCMRecruitmentResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('','Save',{'Sql',this.pcmrecruitmentMapping,#pcmrecruitmentdto})")
+    @PreAuthorize("hasPermission(this.pcmrecruitmentMapping.toDomain(#pcmrecruitmentdto),'ehr-PCMRecruitment-Save')")
     @ApiOperation(value = "Save", tags = {"PCMRecruitment" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmrecruitments/save")
     public ResponseEntity<Boolean> save(@RequestBody PCMRecruitmentDTO pcmrecruitmentdto) {
         return ResponseEntity.status(HttpStatus.OK).body(pcmrecruitmentService.save(pcmrecruitmentMapping.toDomain(pcmrecruitmentdto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.pcmrecruitmentMapping,#pcmrecruitmentdtos})")
+    @PreAuthorize("hasPermission(this.pcmrecruitmentMapping.toDomain(#pcmrecruitmentdtos),'ehr-PCMRecruitment-Save')")
     @ApiOperation(value = "SaveBatch", tags = {"PCMRecruitment" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmrecruitments/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PCMRecruitmentDTO> pcmrecruitmentdtos) {
@@ -78,7 +76,7 @@ public class PCMRecruitmentResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('','Create',{'Sql',this.pcmrecruitmentMapping,#pcmrecruitmentdto})")
+    @PreAuthorize("hasPermission(this.pcmrecruitmentMapping.toDomain(#pcmrecruitmentdto),'ehr-PCMRecruitment-Create')")
     @ApiOperation(value = "Create", tags = {"PCMRecruitment" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmrecruitments")
     @Transactional
@@ -89,7 +87,7 @@ public class PCMRecruitmentResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.pcmrecruitmentMapping,#pcmrecruitmentdtos})")
+    @PreAuthorize("hasPermission(this.pcmrecruitmentMapping.toDomain(#pcmrecruitmentdtos),'ehr-PCMRecruitment-Create')")
     @ApiOperation(value = "createBatch", tags = {"PCMRecruitment" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmrecruitments/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PCMRecruitmentDTO> pcmrecruitmentdtos) {
@@ -97,14 +95,13 @@ public class PCMRecruitmentResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMRecruitment-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"PCMRecruitment" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmrecruitments/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PCMRecruitmentDTO pcmrecruitmentdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pcmrecruitmentService.checkKey(pcmrecruitmentMapping.toDomain(pcmrecruitmentdto)));
     }
 
-    @PreAuthorize("hasPermission(#pcmrecruitment_id,'Update',{'Sql',this.pcmrecruitmentMapping,#pcmrecruitmentdto})")
+    @PreAuthorize("hasPermission(this.pcmrecruitmentService.get(#pcmrecruitment_id),'ehr-PCMRecruitment-Update')")
     @ApiOperation(value = "Update", tags = {"PCMRecruitment" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmrecruitments/{pcmrecruitment_id}")
     @Transactional
@@ -116,7 +113,7 @@ public class PCMRecruitmentResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.pcmrecruitmentMapping,#pcmrecruitmentdtos})")
+    @PreAuthorize("hasPermission(this.pcmrecruitmentService.getPcmrecruitmentByEntities(this.pcmrecruitmentMapping.toDomain(#pcmrecruitmentdtos)),'ehr-PCMRecruitment-Update')")
     @ApiOperation(value = "UpdateBatch", tags = {"PCMRecruitment" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmrecruitments/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PCMRecruitmentDTO> pcmrecruitmentdtos) {
@@ -124,7 +121,7 @@ public class PCMRecruitmentResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission(#pcmrecruitment_id,'Remove',{'Sql',this.pcmrecruitmentMapping,this.permissionDTO})")
+    @PreAuthorize("hasPermission(this.pcmrecruitmentService.get(#pcmrecruitment_id),'ehr-PCMRecruitment-Remove')")
     @ApiOperation(value = "Remove", tags = {"PCMRecruitment" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmrecruitments/{pcmrecruitment_id}")
     @Transactional
@@ -132,7 +129,7 @@ public class PCMRecruitmentResource {
          return ResponseEntity.status(HttpStatus.OK).body(pcmrecruitmentService.remove(pcmrecruitment_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.pcmrecruitmentMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission(this.pcmrecruitmentService.getPcmrecruitmentByIds(#ids),'ehr-PCMRecruitment-Remove')")
     @ApiOperation(value = "RemoveBatch", tags = {"PCMRecruitment" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmrecruitments/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -183,3 +180,4 @@ public class PCMRecruitmentResource {
                 .body(new PageImpl(pcmrecruitmentMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 }
+

@@ -58,6 +58,9 @@ public interface ITRMPLANFORMUService extends IService<TRMPLANFORMU>{
      */
     boolean execute(String sql, Map param);
 
+    List<TRMPLANFORMU> getTrmplanformuByIds(List<String> ids) ;
+    List<TRMPLANFORMU> getTrmplanformuByEntities(List<TRMPLANFORMU> entities) ;
+
 }
 
 

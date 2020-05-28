@@ -56,6 +56,9 @@ public interface IORMDepEstManService extends IService<ORMDepEstMan>{
      */
     boolean execute(String sql, Map param);
 
+    List<ORMDepEstMan> getOrmdepestmanByIds(List<String> ids) ;
+    List<ORMDepEstMan> getOrmdepestmanByEntities(List<ORMDepEstMan> entities) ;
+
 }
 
 

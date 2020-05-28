@@ -1,3 +1,4 @@
+import CodeItemService from '@service/code-item/code-item-service';
 /**
  * 代码表--是否局直管
  *
@@ -59,18 +60,61 @@ export default class ORMCL_IsDirectlyManage {
     public queryParamNames:any ={
     }
 
+    /**
+     * 代码项应用实体服务对象
+     *
+     * @type {CodeItemService}
+     * @memberof ORMCL_IsDirectlyManage
+     */
+    public codeitemService: CodeItemService = new CodeItemService();
 
+
+    /**
+     * 处理数据
+     *
+     * @public
+     * @param {any[]} items
+     * @returns {any[]}
+     * @memberof ORMCL_IsDirectlyManage
+     */
+    public doItems(items: any[]): any[] {
+        let _items: any[] = [];
+        items.forEach((item: any) => {
+            let itemdata:any = {};
+            Object.assign(itemdata,{id:item.codeitemvalue});
+            Object.assign(itemdata,{value:item.codeitemvalue});
+            Object.assign(itemdata,{text:item.codeitemname});
+            
+            _items.push(itemdata);
+        });
+        return _items;
+    }
 
     /**
      * 获取数据项
      *
+     * @param {*} context
      * @param {*} data
      * @param {boolean} [isloading]
      * @returns {Promise<any>}
      * @memberof ORMCL_IsDirectlyManage
      */
-    public getItems(data: any={}, isloading?: boolean): Promise<any> {
-        return Promise.reject([]);
+    public getItems(context: any={}, data: any={}, isloading?: boolean): Promise<any> {
+        return new Promise((resolve, reject) => {
+            data = this.handleQueryParam(data);
+            const promise: Promise<any> = this.codeitemService.FetchCurCL(context, data, isloading);
+            promise.then((response: any) => {
+                if (response && response.status === 200) {
+                    const data =  response.data;
+                    resolve(this.doItems(data));
+                } else {
+                    resolve([]);
+                }
+            }).catch((response: any) => {
+                console.error(response);
+                reject(response);
+            });
+        });
     }
 
     /**

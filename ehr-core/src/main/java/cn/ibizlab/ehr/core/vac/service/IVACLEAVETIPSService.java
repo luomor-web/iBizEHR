@@ -56,6 +56,9 @@ public interface IVACLEAVETIPSService extends IService<VACLEAVETIPS>{
      */
     boolean execute(String sql, Map param);
 
+    List<VACLEAVETIPS> getVacleavetipsByIds(List<String> ids) ;
+    List<VACLEAVETIPS> getVacleavetipsByEntities(List<VACLEAVETIPS> entities) ;
+
 }
 
 

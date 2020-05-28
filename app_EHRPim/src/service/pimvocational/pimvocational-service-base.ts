@@ -1,6 +1,5 @@
 import { Http,Util } from '@/utils';
 import EntityService from '../entity-service';
-import GenerateFJLogic from '@/service/pimvocational/generate-fj-logic';
 
 
 

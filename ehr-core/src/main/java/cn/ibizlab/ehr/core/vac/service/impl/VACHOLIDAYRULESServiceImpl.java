@@ -55,7 +55,7 @@ public class VACHOLIDAYRULESServiceImpl extends ServiceImpl<VACHOLIDAYRULESMappe
     private cn.ibizlab.ehr.core.vac.service.IVACLEAVETIPSService vacleavetipsService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.orm.service.IORMORGService ormorgService;
+    private cn.ibizlab.ehr.core.orm.service.IOrmOrgService ormorgService;
 
     private int batchSize = 500;
 
@@ -206,9 +206,9 @@ public class VACHOLIDAYRULESServiceImpl extends ServiceImpl<VACHOLIDAYRULESMappe
     private void fillParentData(VACHOLIDAYRULES et){
         //实体关系[DER1N_VACHOLIDAYRULES_ORMORG_ORMORGID]
         if(!ObjectUtils.isEmpty(et.getOrmorgid())){
-            cn.ibizlab.ehr.core.orm.domain.ORMORG ormorg=et.getOrmorg();
+            cn.ibizlab.ehr.core.orm.domain.OrmOrg ormorg=et.getOrmorg();
             if(ObjectUtils.isEmpty(ormorg)){
-                cn.ibizlab.ehr.core.orm.domain.ORMORG majorEntity=ormorgService.get(et.getOrmorgid());
+                cn.ibizlab.ehr.core.orm.domain.OrmOrg majorEntity=ormorgService.get(et.getOrmorgid());
                 et.setOrmorg(majorEntity);
                 ormorg=majorEntity;
             }
@@ -239,6 +239,26 @@ public class VACHOLIDAYRULESServiceImpl extends ServiceImpl<VACHOLIDAYRULESMappe
         }
         log.warn("暂未支持的SQL语法");
         return true;
+    }
+
+    @Override
+    public List<VACHOLIDAYRULES> getVacholidayrulesByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<VACHOLIDAYRULES> getVacholidayrulesByEntities(List<VACHOLIDAYRULES> entities) {
+        List ids =new ArrayList();
+        for(VACHOLIDAYRULES entity : entities){
+            Serializable id=entity.getVacholidayrulesid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
     }
 
 }

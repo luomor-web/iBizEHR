@@ -261,6 +261,26 @@ public class PIMLANGUAGEABILITYServiceImpl extends ServiceImpl<PIMLANGUAGEABILIT
         return true;
     }
 
+    @Override
+    public List<PIMLANGUAGEABILITY> getPimlanguageabilityByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<PIMLANGUAGEABILITY> getPimlanguageabilityByEntities(List<PIMLANGUAGEABILITY> entities) {
+        List ids =new ArrayList();
+        for(PIMLANGUAGEABILITY entity : entities){
+            Serializable id=entity.getPimlanguageabilityid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

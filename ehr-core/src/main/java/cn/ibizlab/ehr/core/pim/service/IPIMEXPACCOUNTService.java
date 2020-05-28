@@ -54,6 +54,9 @@ public interface IPIMEXPACCOUNTService extends IService<PIMEXPACCOUNT>{
      */
     boolean execute(String sql, Map param);
 
+    List<PIMEXPACCOUNT> getPimexpaccountByIds(List<String> ids) ;
+    List<PIMEXPACCOUNT> getPimexpaccountByEntities(List<PIMEXPACCOUNT> entities) ;
+
 }
 
 

@@ -1,5 +1,5 @@
 <template>
-  <app-layout viewName="ormorgeditview" viewTitle="组织管理" :className="{ 'view-container': true, 'default-mode-view': true, 'deeditview': true, 'ormorgedit-view': true }" layoutMode="VIEW" :isShowUserInfo="isDefaultView()" :openMode="openMode" @close-view="closeView($event)">
+  <app-layout viewName="ormorgeditview" viewTitle="组织信息" :className="{ 'view-container': true, 'default-mode-view': true, 'deeditview': true, 'ormorgedit-view': true }" layoutMode="VIEW" :isShowUserInfo="isDefaultView()" :openMode="openMode" @close-view="closeView($event)">
     <template slot="headerLeft">
       <div class="view-header-left">
 
@@ -47,13 +47,13 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, EditViewBase } from '@/crm-core';
-import ORMORGService from '@/service/ormorg/ormorg-service';
+import OrmOrgService from '@/service/orm-org/orm-org-service';
 
 import EditViewEngine from '@engine/view/edit-view-engine';
 
 
 /**
- * 组织管理基类
+ * 组织信息基类
  *
  * @export
  * @class ORMORGEditViewBase
@@ -66,10 +66,10 @@ export default class ORMORGEditViewBase extends EditViewBase {
     /**
      * 实体服务对象
      *
-     * @type {ORMORGService}
+     * @type {OrmOrgService}
      * @memberof ORMORGEditViewBase
      */
-    public appEntityService: ORMORGService = new ORMORGService;
+    public appEntityService: OrmOrgService = new OrmOrgService;
 
 
     /**
@@ -278,7 +278,7 @@ export default class ORMORGEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.SaveAndExit(datas, contextJO,paramJO,  $event, xData,this,"ORMORG");
+        this.SaveAndExit(datas, contextJO,paramJO,  $event, xData,this,"OrmOrg");
     }
 
     /**

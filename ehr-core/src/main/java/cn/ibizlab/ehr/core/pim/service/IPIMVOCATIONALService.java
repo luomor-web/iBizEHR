@@ -70,6 +70,9 @@ public interface IPIMVOCATIONALService extends IService<PIMVOCATIONAL>{
      */
     boolean execute(String sql, Map param);
 
+    List<PIMVOCATIONAL> getPimvocationalByIds(List<String> ids) ;
+    List<PIMVOCATIONAL> getPimvocationalByEntities(List<PIMVOCATIONAL> entities) ;
+
 }
 
 

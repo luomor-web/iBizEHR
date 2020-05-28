@@ -22,6 +22,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.access.prepost.PostAuthorize;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -39,15 +40,13 @@ import cn.ibizlab.ehr.core.pcm.filter.TDZWXXSearchContext;
 public class TDZWXXResource {
 
     @Autowired
-    private ITDZWXXService tdzwxxService;
+    public ITDZWXXService tdzwxxService;
 
     @Autowired
     @Lazy
     public TDZWXXMapping tdzwxxMapping;
 
-    public TDZWXXDTO permissionDTO=new TDZWXXDTO();
-
-    @PreAuthorize("hasPermission('','Create',{'Sql',this.tdzwxxMapping,#tdzwxxdto})")
+    @PreAuthorize("hasPermission(this.tdzwxxMapping.toDomain(#tdzwxxdto),'ehr-TDZWXX-Create')")
     @ApiOperation(value = "Create", tags = {"TDZWXX" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/tdzwxxes")
     @Transactional
@@ -58,7 +57,7 @@ public class TDZWXXResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.tdzwxxMapping,#tdzwxxdtos})")
+    @PreAuthorize("hasPermission(this.tdzwxxMapping.toDomain(#tdzwxxdtos),'ehr-TDZWXX-Create')")
     @ApiOperation(value = "createBatch", tags = {"TDZWXX" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/tdzwxxes/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<TDZWXXDTO> tdzwxxdtos) {
@@ -66,14 +65,13 @@ public class TDZWXXResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TDZWXX-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"TDZWXX" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/tdzwxxes/getdraft")
     public ResponseEntity<TDZWXXDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(tdzwxxMapping.toDto(tdzwxxService.getDraft(new TDZWXX())));
     }
 
-    @PreAuthorize("hasPermission(#tdzwxx_id,'Remove',{'Sql',this.tdzwxxMapping,this.permissionDTO})")
+    @PreAuthorize("hasPermission(this.tdzwxxService.get(#tdzwxx_id),'ehr-TDZWXX-Remove')")
     @ApiOperation(value = "Remove", tags = {"TDZWXX" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/tdzwxxes/{tdzwxx_id}")
     @Transactional
@@ -81,7 +79,7 @@ public class TDZWXXResource {
          return ResponseEntity.status(HttpStatus.OK).body(tdzwxxService.remove(tdzwxx_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.tdzwxxMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission(this.tdzwxxService.getTdzwxxByIds(#ids),'ehr-TDZWXX-Remove')")
     @ApiOperation(value = "RemoveBatch", tags = {"TDZWXX" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/tdzwxxes/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -89,14 +87,14 @@ public class TDZWXXResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('','Save',{'Sql',this.tdzwxxMapping,#tdzwxxdto})")
+    @PreAuthorize("hasPermission(this.tdzwxxMapping.toDomain(#tdzwxxdto),'ehr-TDZWXX-Save')")
     @ApiOperation(value = "Save", tags = {"TDZWXX" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/tdzwxxes/save")
     public ResponseEntity<Boolean> save(@RequestBody TDZWXXDTO tdzwxxdto) {
         return ResponseEntity.status(HttpStatus.OK).body(tdzwxxService.save(tdzwxxMapping.toDomain(tdzwxxdto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.tdzwxxMapping,#tdzwxxdtos})")
+    @PreAuthorize("hasPermission(this.tdzwxxMapping.toDomain(#tdzwxxdtos),'ehr-TDZWXX-Save')")
     @ApiOperation(value = "SaveBatch", tags = {"TDZWXX" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/tdzwxxes/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<TDZWXXDTO> tdzwxxdtos) {
@@ -104,7 +102,7 @@ public class TDZWXXResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission(#tdzwxx_id,'Update',{'Sql',this.tdzwxxMapping,#tdzwxxdto})")
+    @PreAuthorize("hasPermission(this.tdzwxxService.get(#tdzwxx_id),'ehr-TDZWXX-Update')")
     @ApiOperation(value = "Update", tags = {"TDZWXX" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/tdzwxxes/{tdzwxx_id}")
     @Transactional
@@ -116,7 +114,7 @@ public class TDZWXXResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.tdzwxxMapping,#tdzwxxdtos})")
+    @PreAuthorize("hasPermission(this.tdzwxxService.getTdzwxxByEntities(this.tdzwxxMapping.toDomain(#tdzwxxdtos)),'ehr-TDZWXX-Update')")
     @ApiOperation(value = "UpdateBatch", tags = {"TDZWXX" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/tdzwxxes/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<TDZWXXDTO> tdzwxxdtos) {
@@ -124,14 +122,13 @@ public class TDZWXXResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TDZWXX-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"TDZWXX" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/tdzwxxes/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody TDZWXXDTO tdzwxxdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(tdzwxxService.checkKey(tdzwxxMapping.toDomain(tdzwxxdto)));
     }
 
-    @PreAuthorize("hasPermission(#tdzwxx_id,'Get',{'Sql',this.tdzwxxMapping,this.permissionDTO})")
+    @PostAuthorize("hasPermission(this.tdzwxxMapping.toDomain(returnObject.body),'ehr-TDZWXX-Get')")
     @ApiOperation(value = "Get", tags = {"TDZWXX" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/tdzwxxes/{tdzwxx_id}")
     public ResponseEntity<TDZWXXDTO> get(@PathVariable("tdzwxx_id") String tdzwxx_id) {
@@ -161,7 +158,7 @@ public class TDZWXXResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(tdzwxxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-    @PreAuthorize("hasPermission('','Create',{'Sql',this.tdzwxxMapping,#tdzwxxdto})")
+    @PreAuthorize("hasPermission(this.tdzwxxMapping.toDomain(#tdzwxxdto),'ehr-TDZWXX-Create')")
     @ApiOperation(value = "CreateByPCMPROFILE", tags = {"TDZWXX" },  notes = "CreateByPCMPROFILE")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/tdzwxxes")
     @Transactional
@@ -173,7 +170,7 @@ public class TDZWXXResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.tdzwxxMapping,#tdzwxxdtos})")
+    @PreAuthorize("hasPermission(this.tdzwxxMapping.toDomain(#tdzwxxdtos),'ehr-TDZWXX-Create')")
     @ApiOperation(value = "createBatchByPCMPROFILE", tags = {"TDZWXX" },  notes = "createBatchByPCMPROFILE")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/tdzwxxes/batch")
     public ResponseEntity<Boolean> createBatchByPCMPROFILE(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody List<TDZWXXDTO> tdzwxxdtos) {
@@ -185,7 +182,6 @@ public class TDZWXXResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TDZWXX-GetDraft-all')")
     @ApiOperation(value = "GetDraftByPCMPROFILE", tags = {"TDZWXX" },  notes = "GetDraftByPCMPROFILE")
     @RequestMapping(method = RequestMethod.GET, value = "/pcmprofiles/{pcmprofile_id}/tdzwxxes/getdraft")
     public ResponseEntity<TDZWXXDTO> getDraftByPCMPROFILE(@PathVariable("pcmprofile_id") String pcmprofile_id) {
@@ -194,7 +190,7 @@ public class TDZWXXResource {
         return ResponseEntity.status(HttpStatus.OK).body(tdzwxxMapping.toDto(tdzwxxService.getDraft(domain)));
     }
 
-    @PreAuthorize("hasPermission(#tdzwxx_id,'Remove',{'Sql',this.tdzwxxMapping,this.permissionDTO})")
+    @PreAuthorize("hasPermission(this.tdzwxxService.get(#tdzwxx_id),'ehr-TDZWXX-Remove')")
     @ApiOperation(value = "RemoveByPCMPROFILE", tags = {"TDZWXX" },  notes = "RemoveByPCMPROFILE")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmprofiles/{pcmprofile_id}/tdzwxxes/{tdzwxx_id}")
     @Transactional
@@ -202,7 +198,7 @@ public class TDZWXXResource {
 		return ResponseEntity.status(HttpStatus.OK).body(tdzwxxService.remove(tdzwxx_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.tdzwxxMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission(this.tdzwxxService.getTdzwxxByIds(#ids),'ehr-TDZWXX-Remove')")
     @ApiOperation(value = "RemoveBatchByPCMPROFILE", tags = {"TDZWXX" },  notes = "RemoveBatchByPCMPROFILE")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmprofiles/{pcmprofile_id}/tdzwxxes/batch")
     public ResponseEntity<Boolean> removeBatchByPCMPROFILE(@RequestBody List<String> ids) {
@@ -210,7 +206,7 @@ public class TDZWXXResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('','Save',{'Sql',this.tdzwxxMapping,#tdzwxxdto})")
+    @PreAuthorize("hasPermission(this.tdzwxxMapping.toDomain(#tdzwxxdto),'ehr-TDZWXX-Save')")
     @ApiOperation(value = "SaveByPCMPROFILE", tags = {"TDZWXX" },  notes = "SaveByPCMPROFILE")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/tdzwxxes/save")
     public ResponseEntity<Boolean> saveByPCMPROFILE(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody TDZWXXDTO tdzwxxdto) {
@@ -219,7 +215,7 @@ public class TDZWXXResource {
         return ResponseEntity.status(HttpStatus.OK).body(tdzwxxService.save(domain));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.tdzwxxMapping,#tdzwxxdtos})")
+    @PreAuthorize("hasPermission(this.tdzwxxMapping.toDomain(#tdzwxxdtos),'ehr-TDZWXX-Save')")
     @ApiOperation(value = "SaveBatchByPCMPROFILE", tags = {"TDZWXX" },  notes = "SaveBatchByPCMPROFILE")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/tdzwxxes/savebatch")
     public ResponseEntity<Boolean> saveBatchByPCMPROFILE(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody List<TDZWXXDTO> tdzwxxdtos) {
@@ -231,7 +227,7 @@ public class TDZWXXResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission(#tdzwxx_id,'Update',{'Sql',this.tdzwxxMapping,#tdzwxxdto})")
+    @PreAuthorize("hasPermission(this.tdzwxxService.get(#tdzwxx_id),'ehr-TDZWXX-Update')")
     @ApiOperation(value = "UpdateByPCMPROFILE", tags = {"TDZWXX" },  notes = "UpdateByPCMPROFILE")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmprofiles/{pcmprofile_id}/tdzwxxes/{tdzwxx_id}")
     @Transactional
@@ -244,7 +240,7 @@ public class TDZWXXResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.tdzwxxMapping,#tdzwxxdtos})")
+    @PreAuthorize("hasPermission(this.tdzwxxService.getTdzwxxByEntities(this.tdzwxxMapping.toDomain(#tdzwxxdtos)),'ehr-TDZWXX-Update')")
     @ApiOperation(value = "UpdateBatchByPCMPROFILE", tags = {"TDZWXX" },  notes = "UpdateBatchByPCMPROFILE")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmprofiles/{pcmprofile_id}/tdzwxxes/batch")
     public ResponseEntity<Boolean> updateBatchByPCMPROFILE(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody List<TDZWXXDTO> tdzwxxdtos) {
@@ -256,14 +252,13 @@ public class TDZWXXResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TDZWXX-CheckKey-all')")
     @ApiOperation(value = "CheckKeyByPCMPROFILE", tags = {"TDZWXX" },  notes = "CheckKeyByPCMPROFILE")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/tdzwxxes/checkkey")
     public ResponseEntity<Boolean> checkKeyByPCMPROFILE(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody TDZWXXDTO tdzwxxdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(tdzwxxService.checkKey(tdzwxxMapping.toDomain(tdzwxxdto)));
     }
 
-    @PreAuthorize("hasPermission(#tdzwxx_id,'Get',{'Sql',this.tdzwxxMapping,this.permissionDTO})")
+    @PostAuthorize("hasPermission(this.tdzwxxMapping.toDomain(returnObject.body),'ehr-TDZWXX-Get')")
     @ApiOperation(value = "GetByPCMPROFILE", tags = {"TDZWXX" },  notes = "GetByPCMPROFILE")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmprofiles/{pcmprofile_id}/tdzwxxes/{tdzwxx_id}")
     public ResponseEntity<TDZWXXDTO> getByPCMPROFILE(@PathVariable("pcmprofile_id") String pcmprofile_id, @PathVariable("tdzwxx_id") String tdzwxx_id) {
@@ -296,3 +291,4 @@ public class TDZWXXResource {
                 .body(new PageImpl(tdzwxxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 }
+

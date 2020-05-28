@@ -246,6 +246,26 @@ public class CodeItemServiceImpl extends ServiceImpl<CodeItemMapper, CodeItem> i
         return true;
     }
 
+    @Override
+    public List<CodeItem> getCodeitemByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<CodeItem> getCodeitemByEntities(List<CodeItem> entities) {
+        List ids =new ArrayList();
+        for(CodeItem entity : entities){
+            Serializable id=entity.getCodeitemid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

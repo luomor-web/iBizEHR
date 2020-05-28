@@ -4,6 +4,9 @@
 <mapper	namespace="cn.ibizlab.ehr.core.trm.mapper.TRMTRAINCOURSEMapper">
 
     <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
+	<select id="selectById"  resultMap="TRMTRAINCOURSEResultMap" databaseId="mysql">
+        <![CDATA[select t1.* from (SELECT t1.`BB`, t1.`BBH`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t1.`JB`, t1.`KCBM`, t1.`KCJS`, t1.`KCLB`, t1.`KCXS`, t31.`NR`, t1.`ORMORGID`, t11.`ORGNAME` AS `ORMORGNAME`, t1.`PXMB`, t1.`SFFC`, t1.`SFGX`, t1.`SKFS`, t1.`TRMCOURSESYSTEMID`, t31.`TRMCOURSESYSTEMNAME`, t1.`TRMTRAINAGENCYID`, t21.`TRMTRAINAGENCYNAME`, t1.`TRMTRAINCOURSEID`, t1.`TRMTRAINCOURSENAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN` FROM `T_TRMTRAINCOURSE` t1  LEFT JOIN T_SRFORG t11 ON t1.ORMORGID = t11.ORGID  LEFT JOIN T_TRMTRAINAGENCY t21 ON t1.TRMTRAINAGENCYID = t21.TRMTRAINAGENCYID  LEFT JOIN T_TRMCOURSESYSTEM t31 ON t1.TRMCOURSESYSTEMID = t31.TRMCOURSESYSTEMID  ) t1 where trmtraincourseid=#{id}]]>
+    </select>
 
     <!--通过mybatis将查询结果注入到entity中,通过配置autoMapping="true"由mybatis自动处理映射关系 -->
     <resultMap id="TRMTRAINCOURSEResultMap" type="cn.ibizlab.ehr.core.trm.domain.TRMTRAINCOURSE" autoMapping="true">
@@ -14,7 +17,7 @@
             
 		
 		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
-		<association property="ormorg" javaType="cn.ibizlab.ehr.core.orm.domain.ORMORG" column="ormorgid" select="cn.ibizlab.ehr.core.orm.mapper.ORMORGMapper.selectById" fetchType="lazy"></association>
+		<association property="ormorg" javaType="cn.ibizlab.ehr.core.orm.domain.OrmOrg" column="ormorgid" select="cn.ibizlab.ehr.core.orm.mapper.OrmOrgMapper.selectById" fetchType="lazy"></association>
 		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
 		<association property="trmcoursesystem" javaType="cn.ibizlab.ehr.core.trm.domain.TRMCOURSESYSTEM" column="trmcoursesystemid" select="cn.ibizlab.ehr.core.trm.mapper.TRMCOURSESYSTEMMapper.selectById" fetchType="lazy"></association>
 		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
@@ -59,9 +62,9 @@
 			]]>
     </sql>
 
-    <!--数据查询[Default]-->
-    <sql id="Default" databaseId="oracle">
-       <![CDATA[	SELECT t1.BB, t1.BBH, t1.CREATEDATE, t1.CREATEMAN, t1.ENABLE, t1.JB, t1.KCBM, t1.KCJS, t1.KCLB, t1.KCXS, t31.NR, t1.ORMORGID, t11.ORGNAME AS ORMORGNAME, t1.PXMB, t1.SFFC, t1.SFGX, t1.SKFS, t1.TRMCOURSESYSTEMID, t31.TRMCOURSESYSTEMNAME, t1.TRMTRAINAGENCYID, t21.TRMTRAINAGENCYNAME, t1.TRMTRAINCOURSEID, t1.TRMTRAINCOURSENAME, t1.UPDATEDATE, t1.UPDATEMAN FROM T_TRMTRAINCOURSE t1  LEFT JOIN T_SRFORG t11 ON t1.ORMORGID = t11.ORGID  LEFT JOIN T_TRMTRAINAGENCY t21 ON t1.TRMTRAINAGENCYID = t21.TRMTRAINAGENCYID  LEFT JOIN T_TRMCOURSESYSTEM t31 ON t1.TRMCOURSESYSTEMID = t31.TRMCOURSESYSTEMID  
+    <!--数据查询[View]-->
+    <sql id="View" databaseId="mysql">
+       <![CDATA[	SELECT t1.`BB`, t1.`BBH`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t1.`JB`, t1.`KCBM`, t1.`KCJS`, t1.`KCLB`, t1.`KCXS`, t31.`NR`, t1.`ORMORGID`, t11.`ORGNAME` AS `ORMORGNAME`, t1.`PXMB`, t1.`SFFC`, t1.`SFGX`, t1.`SKFS`, t1.`TRMCOURSESYSTEMID`, t31.`TRMCOURSESYSTEMNAME`, t1.`TRMTRAINAGENCYID`, t21.`TRMTRAINAGENCYNAME`, t1.`TRMTRAINCOURSEID`, t1.`TRMTRAINCOURSENAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN` FROM `T_TRMTRAINCOURSE` t1  LEFT JOIN T_SRFORG t11 ON t1.ORMORGID = t11.ORGID  LEFT JOIN T_TRMTRAINAGENCY t21 ON t1.TRMTRAINAGENCYID = t21.TRMTRAINAGENCYID  LEFT JOIN T_TRMCOURSESYSTEM t31 ON t1.TRMCOURSESYSTEMID = t31.TRMCOURSESYSTEMID  
 				 WHERE 	t1.ENABLE = 1
 			]]>
     </sql>

@@ -22,6 +22,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.access.prepost.PostAuthorize;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -39,22 +40,20 @@ import cn.ibizlab.ehr.core.pim.filter.PIMFILEBATVHUPLOADSearchContext;
 public class PIMFILEBATVHUPLOADResource {
 
     @Autowired
-    private IPIMFILEBATVHUPLOADService pimfilebatvhuploadService;
+    public IPIMFILEBATVHUPLOADService pimfilebatvhuploadService;
 
     @Autowired
     @Lazy
     public PIMFILEBATVHUPLOADMapping pimfilebatvhuploadMapping;
 
-    public PIMFILEBATVHUPLOADDTO permissionDTO=new PIMFILEBATVHUPLOADDTO();
-
-    @PreAuthorize("hasPermission('','Save',{'Sql',this.pimfilebatvhuploadMapping,#pimfilebatvhuploaddto})")
+    @PreAuthorize("hasPermission(this.pimfilebatvhuploadMapping.toDomain(#pimfilebatvhuploaddto),'ehr-PIMFILEBATVHUPLOAD-Save')")
     @ApiOperation(value = "Save", tags = {"PIMFILEBATVHUPLOAD" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimfilebatvhuploads/save")
     public ResponseEntity<Boolean> save(@RequestBody PIMFILEBATVHUPLOADDTO pimfilebatvhuploaddto) {
         return ResponseEntity.status(HttpStatus.OK).body(pimfilebatvhuploadService.save(pimfilebatvhuploadMapping.toDomain(pimfilebatvhuploaddto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.pimfilebatvhuploadMapping,#pimfilebatvhuploaddtos})")
+    @PreAuthorize("hasPermission(this.pimfilebatvhuploadMapping.toDomain(#pimfilebatvhuploaddtos),'ehr-PIMFILEBATVHUPLOAD-Save')")
     @ApiOperation(value = "SaveBatch", tags = {"PIMFILEBATVHUPLOAD" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimfilebatvhuploads/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PIMFILEBATVHUPLOADDTO> pimfilebatvhuploaddtos) {
@@ -62,7 +61,7 @@ public class PIMFILEBATVHUPLOADResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission(#pimfilebatvhupload_id,'Get',{'Sql',this.pimfilebatvhuploadMapping,this.permissionDTO})")
+    @PostAuthorize("hasPermission(this.pimfilebatvhuploadMapping.toDomain(returnObject.body),'ehr-PIMFILEBATVHUPLOAD-Get')")
     @ApiOperation(value = "Get", tags = {"PIMFILEBATVHUPLOAD" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimfilebatvhuploads/{pimfilebatvhupload_id}")
     public ResponseEntity<PIMFILEBATVHUPLOADDTO> get(@PathVariable("pimfilebatvhupload_id") String pimfilebatvhupload_id) {
@@ -71,14 +70,13 @@ public class PIMFILEBATVHUPLOADResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMFILEBATVHUPLOAD-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"PIMFILEBATVHUPLOAD" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimfilebatvhuploads/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PIMFILEBATVHUPLOADDTO pimfilebatvhuploaddto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pimfilebatvhuploadService.checkKey(pimfilebatvhuploadMapping.toDomain(pimfilebatvhuploaddto)));
     }
 
-    @PreAuthorize("hasPermission(#pimfilebatvhupload_id,'Update',{'Sql',this.pimfilebatvhuploadMapping,#pimfilebatvhuploaddto})")
+    @PreAuthorize("hasPermission(this.pimfilebatvhuploadService.get(#pimfilebatvhupload_id),'ehr-PIMFILEBATVHUPLOAD-Update')")
     @ApiOperation(value = "Update", tags = {"PIMFILEBATVHUPLOAD" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimfilebatvhuploads/{pimfilebatvhupload_id}")
     @Transactional
@@ -90,7 +88,7 @@ public class PIMFILEBATVHUPLOADResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.pimfilebatvhuploadMapping,#pimfilebatvhuploaddtos})")
+    @PreAuthorize("hasPermission(this.pimfilebatvhuploadService.getPimfilebatvhuploadByEntities(this.pimfilebatvhuploadMapping.toDomain(#pimfilebatvhuploaddtos)),'ehr-PIMFILEBATVHUPLOAD-Update')")
     @ApiOperation(value = "UpdateBatch", tags = {"PIMFILEBATVHUPLOAD" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimfilebatvhuploads/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PIMFILEBATVHUPLOADDTO> pimfilebatvhuploaddtos) {
@@ -98,7 +96,7 @@ public class PIMFILEBATVHUPLOADResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('','Create',{'Sql',this.pimfilebatvhuploadMapping,#pimfilebatvhuploaddto})")
+    @PreAuthorize("hasPermission(this.pimfilebatvhuploadMapping.toDomain(#pimfilebatvhuploaddto),'ehr-PIMFILEBATVHUPLOAD-Create')")
     @ApiOperation(value = "Create", tags = {"PIMFILEBATVHUPLOAD" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimfilebatvhuploads")
     @Transactional
@@ -109,7 +107,7 @@ public class PIMFILEBATVHUPLOADResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.pimfilebatvhuploadMapping,#pimfilebatvhuploaddtos})")
+    @PreAuthorize("hasPermission(this.pimfilebatvhuploadMapping.toDomain(#pimfilebatvhuploaddtos),'ehr-PIMFILEBATVHUPLOAD-Create')")
     @ApiOperation(value = "createBatch", tags = {"PIMFILEBATVHUPLOAD" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimfilebatvhuploads/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PIMFILEBATVHUPLOADDTO> pimfilebatvhuploaddtos) {
@@ -117,14 +115,13 @@ public class PIMFILEBATVHUPLOADResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMFILEBATVHUPLOAD-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"PIMFILEBATVHUPLOAD" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimfilebatvhuploads/getdraft")
     public ResponseEntity<PIMFILEBATVHUPLOADDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(pimfilebatvhuploadMapping.toDto(pimfilebatvhuploadService.getDraft(new PIMFILEBATVHUPLOAD())));
     }
 
-    @PreAuthorize("hasPermission(#pimfilebatvhupload_id,'Remove',{'Sql',this.pimfilebatvhuploadMapping,this.permissionDTO})")
+    @PreAuthorize("hasPermission(this.pimfilebatvhuploadService.get(#pimfilebatvhupload_id),'ehr-PIMFILEBATVHUPLOAD-Remove')")
     @ApiOperation(value = "Remove", tags = {"PIMFILEBATVHUPLOAD" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimfilebatvhuploads/{pimfilebatvhupload_id}")
     @Transactional
@@ -132,7 +129,7 @@ public class PIMFILEBATVHUPLOADResource {
          return ResponseEntity.status(HttpStatus.OK).body(pimfilebatvhuploadService.remove(pimfilebatvhupload_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.pimfilebatvhuploadMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission(this.pimfilebatvhuploadService.getPimfilebatvhuploadByIds(#ids),'ehr-PIMFILEBATVHUPLOAD-Remove')")
     @ApiOperation(value = "RemoveBatch", tags = {"PIMFILEBATVHUPLOAD" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimfilebatvhuploads/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -162,3 +159,4 @@ public class PIMFILEBATVHUPLOADResource {
                 .body(new PageImpl(pimfilebatvhuploadMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 }
+

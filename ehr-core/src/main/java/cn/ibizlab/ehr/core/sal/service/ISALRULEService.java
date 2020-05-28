@@ -54,6 +54,9 @@ public interface ISALRULEService extends IService<SALRULE>{
      */
     boolean execute(String sql, Map param);
 
+    List<SALRULE> getSalruleByIds(List<String> ids) ;
+    List<SALRULE> getSalruleByEntities(List<SALRULE> entities) ;
+
 }
 
 

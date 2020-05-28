@@ -54,6 +54,9 @@ public interface ITDZWXXService extends IService<TDZWXX>{
      */
     boolean execute(String sql, Map param);
 
+    List<TDZWXX> getTdzwxxByIds(List<String> ids) ;
+    List<TDZWXX> getTdzwxxByEntities(List<TDZWXX> entities) ;
+
 }
 
 

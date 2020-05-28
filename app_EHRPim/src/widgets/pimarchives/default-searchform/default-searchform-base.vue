@@ -30,7 +30,7 @@
           </i-col>
           <i-col v-show="detailsModel.n_dastate_eq.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
               <app-form-item name='n_dastate_eq' :itemRules="this.rules.n_dastate_eq" class='' :caption="$t('entities.pimarchives.default_searchform.details.n_dastate_eq')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.n_dastate_eq.error" :isEmptyCaption="false" labelPos="LEFT"> 
-               <dropdown-list v-model="data.n_dastate_eq" :data="data" :itemParam="{}" :disabled="detailsModel.n_dastate_eq.disabled"  tag='DASTATE' codelistType='STATIC' placeholder='请选择...' style=""></dropdown-list>
+               <dropdown-list v-model="data.n_dastate_eq" :data="data" :itemParam="{}" :disabled="detailsModel.n_dastate_eq.disabled"  tag='EhrCodeListDastate' codelistType='STATIC' placeholder='请选择...' style=""></dropdown-list>
           </app-form-item>
           
           </i-col>

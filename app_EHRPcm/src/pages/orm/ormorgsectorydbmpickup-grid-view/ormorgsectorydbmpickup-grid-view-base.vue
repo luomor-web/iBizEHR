@@ -57,7 +57,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, PickupViewBase } from '@/crm-core';
-import ORMORGSECTORService from '@/service/ormorgsector/ormorgsector-service';
+import OrmOrgsectorService from '@/service/orm-orgsector/orm-orgsector-service';
 
 import PickupGridViewEngine from '@engine/view/pickup-grid-view-engine';
 
@@ -76,10 +76,10 @@ export default class ORMORGSECTORYDBMPickupGridViewBase extends PickupViewBase {
     /**
      * 实体服务对象
      *
-     * @type {ORMORGSECTORService}
+     * @type {OrmOrgsectorService}
      * @memberof ORMORGSECTORYDBMPickupGridViewBase
      */
-    public appEntityService: ORMORGSECTORService = new ORMORGSECTORService;
+    public appEntityService: OrmOrgsectorService = new OrmOrgsectorService;
 
 
     /**

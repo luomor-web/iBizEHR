@@ -54,6 +54,9 @@ public interface IPARYDGZJHService extends IService<PARYDGZJH>{
      */
     boolean execute(String sql, Map param);
 
+    List<PARYDGZJH> getParydgzjhByIds(List<String> ids) ;
+    List<PARYDGZJH> getParydgzjhByEntities(List<PARYDGZJH> entities) ;
+
 }
 
 

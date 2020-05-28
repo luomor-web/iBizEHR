@@ -179,6 +179,26 @@ public class SALTYPEServiceImpl extends ServiceImpl<SALTYPEMapper, SALTYPE> impl
         return true;
     }
 
+    @Override
+    public List<SALTYPE> getSaltypeByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<SALTYPE> getSaltypeByEntities(List<SALTYPE> entities) {
+        List ids =new ArrayList();
+        for(SALTYPE entity : entities){
+            Serializable id=entity.getSaltypeid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

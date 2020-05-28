@@ -48,10 +48,10 @@ public class PARJGBMPJBZServiceImpl extends ServiceImpl<PARJGBMPJBZMapper, PARJG
     private cn.ibizlab.ehr.core.par.service.IPARJGBMPJBZService parjgbmpjbzService = this;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.orm.service.IORMORGSECTORService ormorgsectorService;
+    private cn.ibizlab.ehr.core.orm.service.IOrmOrgsectorService ormorgsectorService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.orm.service.IORMORGService ormorgService;
+    private cn.ibizlab.ehr.core.orm.service.IOrmOrgService ormorgService;
 
     private int batchSize = 500;
 
@@ -206,9 +206,9 @@ public class PARJGBMPJBZServiceImpl extends ServiceImpl<PARJGBMPJBZMapper, PARJG
     private void fillParentData(PARJGBMPJBZ et){
         //实体关系[DER1N_PARJGBMPJBZ_ORMORGSECTOR_ORMORGSECTORID]
         if(!ObjectUtils.isEmpty(et.getOrmorgsectorid())){
-            cn.ibizlab.ehr.core.orm.domain.ORMORGSECTOR ormorgsector=et.getOrmorgsector();
+            cn.ibizlab.ehr.core.orm.domain.OrmOrgsector ormorgsector=et.getOrmorgsector();
             if(ObjectUtils.isEmpty(ormorgsector)){
-                cn.ibizlab.ehr.core.orm.domain.ORMORGSECTOR majorEntity=ormorgsectorService.get(et.getOrmorgsectorid());
+                cn.ibizlab.ehr.core.orm.domain.OrmOrgsector majorEntity=ormorgsectorService.get(et.getOrmorgsectorid());
                 et.setOrmorgsector(majorEntity);
                 ormorgsector=majorEntity;
             }
@@ -216,9 +216,9 @@ public class PARJGBMPJBZServiceImpl extends ServiceImpl<PARJGBMPJBZMapper, PARJG
         }
         //实体关系[DER1N_PARJGBMPJBZ_ORMORG_ORMORGID]
         if(!ObjectUtils.isEmpty(et.getOrmorgid())){
-            cn.ibizlab.ehr.core.orm.domain.ORMORG ormorg=et.getOrmorg();
+            cn.ibizlab.ehr.core.orm.domain.OrmOrg ormorg=et.getOrmorg();
             if(ObjectUtils.isEmpty(ormorg)){
-                cn.ibizlab.ehr.core.orm.domain.ORMORG majorEntity=ormorgService.get(et.getOrmorgid());
+                cn.ibizlab.ehr.core.orm.domain.OrmOrg majorEntity=ormorgService.get(et.getOrmorgid());
                 et.setOrmorg(majorEntity);
                 ormorg=majorEntity;
             }
@@ -258,6 +258,26 @@ public class PARJGBMPJBZServiceImpl extends ServiceImpl<PARJGBMPJBZMapper, PARJG
         }
         log.warn("暂未支持的SQL语法");
         return true;
+    }
+
+    @Override
+    public List<PARJGBMPJBZ> getParjgbmpjbzByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<PARJGBMPJBZ> getParjgbmpjbzByEntities(List<PARJGBMPJBZ> entities) {
+        List ids =new ArrayList();
+        for(PARJGBMPJBZ entity : entities){
+            Serializable id=entity.getParjgbmpjbzid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
     }
 
 }

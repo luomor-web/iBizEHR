@@ -61,6 +61,9 @@ public interface IPCMRecruitmentService extends IService<PCMRecruitment>{
      */
     boolean execute(String sql, Map param);
 
+    List<PCMRecruitment> getPcmrecruitmentByIds(List<String> ids) ;
+    List<PCMRecruitment> getPcmrecruitmentByEntities(List<PCMRecruitment> entities) ;
+
 }
 
 

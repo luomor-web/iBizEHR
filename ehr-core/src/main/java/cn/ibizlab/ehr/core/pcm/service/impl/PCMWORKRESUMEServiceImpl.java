@@ -216,6 +216,26 @@ public class PCMWORKRESUMEServiceImpl extends ServiceImpl<PCMWORKRESUMEMapper, P
         return true;
     }
 
+    @Override
+    public List<PCMWORKRESUME> getPcmworkresumeByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<PCMWORKRESUME> getPcmworkresumeByEntities(List<PCMWORKRESUME> entities) {
+        List ids =new ArrayList();
+        for(PCMWORKRESUME entity : entities){
+            Serializable id=entity.getPcmworkresumeid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

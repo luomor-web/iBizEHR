@@ -3,7 +3,7 @@ import ControlService from '@/widgets/control-service';
 import PIMCONTRACTService from '@/service/pimcontract/pimcontract-service';
 import MainModel from './main-form-model';
 import PIMPERSONService from '@/service/pimperson/pimperson-service';
-import ORMORGService from '@/service/ormorg/ormorg-service';
+import OrmOrgService from '@/service/orm-org/orm-org-service';
 import OrmSignOrgService from '@/service/orm-sign-org/orm-sign-org-service';
 import PIMLABOURCAMPANYService from '@/service/pimlabourcampany/pimlabourcampany-service';
 
@@ -56,10 +56,10 @@ export default class MainService extends ControlService {
     /**
      * 组织管理服务对象
      *
-     * @type {ORMORGService}
+     * @type {OrmOrgService}
      * @memberof MainService
      */
-    public ormorgService: ORMORGService = new ORMORGService();
+    public ormorgService: OrmOrgService = new OrmOrgService();
 
     /**
      * 法人主体服务对象
@@ -119,7 +119,7 @@ export default class MainService extends ControlService {
         if (Object.is(serviceName, 'PIMPERSONService') && Object.is(interfaceName, 'FetchAuthPerson')) {
             return this.doItems(this.pimpersonService.FetchAuthPerson(JSON.parse(JSON.stringify(context)),data, isloading), 'pimpersonid', 'pimperson');
         }
-        if (Object.is(serviceName, 'ORMORGService') && Object.is(interfaceName, 'FetchDefault')) {
+        if (Object.is(serviceName, 'OrmOrgService') && Object.is(interfaceName, 'FetchDefault')) {
             return this.doItems(this.ormorgService.FetchDefault(JSON.parse(JSON.stringify(context)),data, isloading), 'orgid', 'ormorg');
         }
         if (Object.is(serviceName, 'OrmSignOrgService') && Object.is(interfaceName, 'FetchDefault')) {

@@ -179,6 +179,26 @@ public class ORMTITLEServiceImpl extends ServiceImpl<ORMTITLEMapper, ORMTITLE> i
         return true;
     }
 
+    @Override
+    public List<ORMTITLE> getOrmtitleByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<ORMTITLE> getOrmtitleByEntities(List<ORMTITLE> entities) {
+        List ids =new ArrayList();
+        for(ORMTITLE entity : entities){
+            Serializable id=entity.getOrmtitleid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

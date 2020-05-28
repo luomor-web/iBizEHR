@@ -52,6 +52,9 @@ public interface INationMGRService extends IService<NationMGR>{
      */
     boolean execute(String sql, Map param);
 
+    List<NationMGR> getNationmgrByIds(List<String> ids) ;
+    List<NationMGR> getNationmgrByEntities(List<NationMGR> entities) ;
+
 }
 
 

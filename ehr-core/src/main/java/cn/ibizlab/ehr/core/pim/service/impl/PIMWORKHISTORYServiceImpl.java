@@ -293,6 +293,26 @@ public class PIMWORKHISTORYServiceImpl extends ServiceImpl<PIMWORKHISTORYMapper,
         return true;
     }
 
+    @Override
+    public List<PIMWORKHISTORY> getPimworkhistoryByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<PIMWORKHISTORY> getPimworkhistoryByEntities(List<PIMWORKHISTORY> entities) {
+        List ids =new ArrayList();
+        for(PIMWORKHISTORY entity : entities){
+            Serializable id=entity.getPimworkhistoryid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

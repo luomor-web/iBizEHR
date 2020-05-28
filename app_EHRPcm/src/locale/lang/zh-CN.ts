@@ -1,7 +1,7 @@
 import pcmworkresume_zh_CN from '@locale/lanres/pcmworkresume/pcmworkresume_zh_CN';
 import pcmprofileapproval_zh_CN from '@locale/lanres/pcmprofileapproval/pcmprofileapproval_zh_CN';
 import pcmgxml_zh_CN from '@locale/lanres/pcmgxml/pcmgxml_zh_CN';
-import ormorg_zh_CN from '@locale/lanres/ormorg/ormorg_zh_CN';
+import ormorg_zh_CN from '@locale/lanres/orm-org/orm-org_zh_CN';
 import pcmpracticeexperience_zh_CN from '@locale/lanres/pcmpracticeexperience/pcmpracticeexperience_zh_CN';
 import ormduty_zh_CN from '@locale/lanres/ormduty/ormduty_zh_CN';
 import pimcity_zh_CN from '@locale/lanres/pimcity/pimcity_zh_CN';
@@ -19,7 +19,7 @@ import pcmprofilenumbeprefix_zh_CN from '@locale/lanres/pcmprofilenumbeprefix/pc
 import pcmcertofreg_zh_CN from '@locale/lanres/pcmcertofreg/pcmcertofreg_zh_CN';
 import tdzwxx_zh_CN from '@locale/lanres/tdzwxx/tdzwxx_zh_CN';
 import codelist1_zh_CN from '@locale/lanres/code-list1/code-list1_zh_CN';
-import ormorgsector_zh_CN from '@locale/lanres/ormorgsector/ormorgsector_zh_CN';
+import ormorgsector_zh_CN from '@locale/lanres/orm-orgsector/orm-orgsector_zh_CN';
 import pcmschooloffice_zh_CN from '@locale/lanres/pcmschooloffice/pcmschooloffice_zh_CN';
 import testresult_zh_CN from '@locale/lanres/test-result/test-result_zh_CN';
 import pcmzpmegl_zh_CN from '@locale/lanres/pcmzpmegl/pcmzpmegl_zh_CN';
@@ -77,8 +77,8 @@ export default {
         // 非实体视图
         views: {
             index: {
-                caption: '招聘管理',
-                title: '招聘管理',
+                caption: 'EHR—招聘管理',
+                title: 'EHR—招聘管理',
             },
         },
         utilview:{

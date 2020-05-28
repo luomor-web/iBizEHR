@@ -2,10 +2,10 @@
 import { Component } from 'vue-property-decorator';
 import ORMORGDZGridViewBase from './ormorgdzgrid-view-base.vue';
 
-import view_grid from '@widgets/ormorgdz/main-grid/main-grid.vue';
+import view_grid from '@widgets/orm-orgdz/main-grid/main-grid.vue';
 
 /**
- * 组织地址维护表格视图
+ * 地址信息
  *
  * @export
  * @class ORMORGDZGridView

@@ -54,6 +54,9 @@ public interface IPIMVACATIONService extends IService<PIMVACATION>{
      */
     boolean execute(String sql, Map param);
 
+    List<PIMVACATION> getPimvacationByIds(List<String> ids) ;
+    List<PIMVACATION> getPimvacationByEntities(List<PIMVACATION> entities) ;
+
 }
 
 

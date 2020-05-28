@@ -2,8 +2,8 @@
 import { Component } from 'vue-property-decorator';
 import ORMORGSECTORYDBMPickupGridViewBase from './ormorgsectorydbmpickup-grid-view-base.vue';
 
-import view_grid from '@widgets/ormorgsector/bmxmjc-grid/bmxmjc-grid.vue';
-import view_searchform from '@widgets/ormorgsector/default-searchform/default-searchform.vue';
+import view_grid from '@widgets/orm-orgsector/bmxmjc-grid/bmxmjc-grid.vue';
+import view_searchform from '@widgets/orm-orgsector/default-searchform/default-searchform.vue';
 
 /**
  * 部门选择

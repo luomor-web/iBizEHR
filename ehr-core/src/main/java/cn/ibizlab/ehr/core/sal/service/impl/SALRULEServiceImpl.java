@@ -221,6 +221,26 @@ public class SALRULEServiceImpl extends ServiceImpl<SALRULEMapper, SALRULE> impl
         return true;
     }
 
+    @Override
+    public List<SALRULE> getSalruleByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<SALRULE> getSalruleByEntities(List<SALRULE> entities) {
+        List ids =new ArrayList();
+        for(SALRULE entity : entities){
+            Serializable id=entity.getSalruleid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

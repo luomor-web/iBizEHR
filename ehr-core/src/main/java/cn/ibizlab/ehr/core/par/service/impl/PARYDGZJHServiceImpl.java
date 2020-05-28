@@ -49,7 +49,7 @@ public class PARYDGZJHServiceImpl extends ServiceImpl<PARYDGZJHMapper, PARYDGZJH
     private cn.ibizlab.ehr.core.par.service.IPARYDGZJHMXService parydgzjhmxService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.orm.service.IORMORGSECTORService ormorgsectorService;
+    private cn.ibizlab.ehr.core.orm.service.IOrmOrgsectorService ormorgsectorService;
 
     private int batchSize = 500;
 
@@ -184,9 +184,9 @@ public class PARYDGZJHServiceImpl extends ServiceImpl<PARYDGZJHMapper, PARYDGZJH
     private void fillParentData(PARYDGZJH et){
         //实体关系[DER1N_PARYDGZJH_ORMORGSECTOR_ORMORGSECTORID]
         if(!ObjectUtils.isEmpty(et.getOrmorgsectorid())){
-            cn.ibizlab.ehr.core.orm.domain.ORMORGSECTOR ormorgsector=et.getOrmorgsector();
+            cn.ibizlab.ehr.core.orm.domain.OrmOrgsector ormorgsector=et.getOrmorgsector();
             if(ObjectUtils.isEmpty(ormorgsector)){
-                cn.ibizlab.ehr.core.orm.domain.ORMORGSECTOR majorEntity=ormorgsectorService.get(et.getOrmorgsectorid());
+                cn.ibizlab.ehr.core.orm.domain.OrmOrgsector majorEntity=ormorgsectorService.get(et.getOrmorgsectorid());
                 et.setOrmorgsector(majorEntity);
                 ormorgsector=majorEntity;
             }
@@ -216,6 +216,26 @@ public class PARYDGZJHServiceImpl extends ServiceImpl<PARYDGZJHMapper, PARYDGZJH
         }
         log.warn("暂未支持的SQL语法");
         return true;
+    }
+
+    @Override
+    public List<PARYDGZJH> getParydgzjhByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<PARYDGZJH> getParydgzjhByEntities(List<PARYDGZJH> entities) {
+        List ids =new ArrayList();
+        for(PARYDGZJH entity : entities){
+            Serializable id=entity.getParydgzjhid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
     }
 
 }

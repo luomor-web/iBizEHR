@@ -185,6 +185,26 @@ public class PIMBYYGZZSQServiceImpl extends ServiceImpl<PIMBYYGZZSQMapper, PIMBY
         return true;
     }
 
+    @Override
+    public List<PIMBYYGZZSQ> getPimbyygzzsqByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<PIMBYYGZZSQ> getPimbyygzzsqByEntities(List<PIMBYYGZZSQ> entities) {
+        List ids =new ArrayList();
+        for(PIMBYYGZZSQ entity : entities){
+            Serializable id=entity.getPimbyygzzsqid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

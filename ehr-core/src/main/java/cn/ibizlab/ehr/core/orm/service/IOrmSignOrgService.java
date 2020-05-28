@@ -54,6 +54,9 @@ public interface IOrmSignOrgService extends IService<OrmSignOrg>{
      */
     boolean execute(String sql, Map param);
 
+    List<OrmSignOrg> getOrmsignorgByIds(List<String> ids) ;
+    List<OrmSignOrg> getOrmsignorgByEntities(List<OrmSignOrg> entities) ;
+
 }
 
 

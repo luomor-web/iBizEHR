@@ -54,6 +54,9 @@ public interface ITRMTRAINACTMENTService extends IService<TRMTRAINACTMENT>{
      */
     boolean execute(String sql, Map param);
 
+    List<TRMTRAINACTMENT> getTrmtrainactmentByIds(List<String> ids) ;
+    List<TRMTRAINACTMENT> getTrmtrainactmentByEntities(List<TRMTRAINACTMENT> entities) ;
+
 }
 
 

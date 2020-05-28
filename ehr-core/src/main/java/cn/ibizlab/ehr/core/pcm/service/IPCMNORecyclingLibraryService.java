@@ -52,6 +52,9 @@ public interface IPCMNORecyclingLibraryService extends IService<PCMNORecyclingLi
      */
     boolean execute(String sql, Map param);
 
+    List<PCMNORecyclingLibrary> getPcmnorecyclinglibraryByIds(List<String> ids) ;
+    List<PCMNORecyclingLibrary> getPcmnorecyclinglibraryByEntities(List<PCMNORecyclingLibrary> entities) ;
+
 }
 
 

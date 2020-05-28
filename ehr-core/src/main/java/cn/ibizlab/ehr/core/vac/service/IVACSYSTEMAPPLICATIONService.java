@@ -58,6 +58,9 @@ public interface IVACSYSTEMAPPLICATIONService extends IService<VACSYSTEMAPPLICAT
      */
     boolean execute(String sql, Map param);
 
+    List<VACSYSTEMAPPLICATION> getVacsystemapplicationByIds(List<String> ids) ;
+    List<VACSYSTEMAPPLICATION> getVacsystemapplicationByEntities(List<VACSYSTEMAPPLICATION> entities) ;
+
 }
 
 

@@ -54,6 +54,9 @@ public interface IPARJXBZGLService extends IService<PARJXBZGL>{
      */
     boolean execute(String sql, Map param);
 
+    List<PARJXBZGL> getParjxbzglByIds(List<String> ids) ;
+    List<PARJXBZGL> getParjxbzglByEntities(List<PARJXBZGL> entities) ;
+
 }
 
 

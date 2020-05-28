@@ -56,6 +56,9 @@ public interface IORMXMBMXService extends IService<ORMXMBMX>{
      */
     boolean execute(String sql, Map param);
 
+    List<ORMXMBMX> getOrmxmbmxByIds(List<String> ids) ;
+    List<ORMXMBMX> getOrmxmbmxByEntities(List<ORMXMBMX> entities) ;
+
 }
 
 

@@ -215,6 +215,26 @@ public class VACSITUATIONServiceImpl extends ServiceImpl<VACSITUATIONMapper, VAC
         return true;
     }
 
+    @Override
+    public List<VACSITUATION> getVacsituationByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<VACSITUATION> getVacsituationByEntities(List<VACSITUATION> entities) {
+        List ids =new ArrayList();
+        for(VACSITUATION entity : entities){
+            Serializable id=entity.getVacsituationid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

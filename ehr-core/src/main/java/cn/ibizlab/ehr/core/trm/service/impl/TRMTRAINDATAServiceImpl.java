@@ -46,7 +46,7 @@ public class TRMTRAINDATAServiceImpl extends ServiceImpl<TRMTRAINDATAMapper, TRM
 
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.orm.service.IORMORGService ormorgService;
+    private cn.ibizlab.ehr.core.orm.service.IOrmOrgService ormorgService;
     @Autowired
     @Lazy
     private cn.ibizlab.ehr.core.trm.service.ITRMTRAINAGENCYService trmtrainagencyService;
@@ -194,9 +194,9 @@ public class TRMTRAINDATAServiceImpl extends ServiceImpl<TRMTRAINDATAMapper, TRM
     private void fillParentData(TRMTRAINDATA et){
         //实体关系[DER1N_TRMTRAINDATA_ORMORG_ORMORGID]
         if(!ObjectUtils.isEmpty(et.getOrmorgid())){
-            cn.ibizlab.ehr.core.orm.domain.ORMORG ormorg=et.getOrmorg();
+            cn.ibizlab.ehr.core.orm.domain.OrmOrg ormorg=et.getOrmorg();
             if(ObjectUtils.isEmpty(ormorg)){
-                cn.ibizlab.ehr.core.orm.domain.ORMORG majorEntity=ormorgService.get(et.getOrmorgid());
+                cn.ibizlab.ehr.core.orm.domain.OrmOrg majorEntity=ormorgService.get(et.getOrmorgid());
                 et.setOrmorg(majorEntity);
                 ormorg=majorEntity;
             }
@@ -236,6 +236,26 @@ public class TRMTRAINDATAServiceImpl extends ServiceImpl<TRMTRAINDATAMapper, TRM
         }
         log.warn("暂未支持的SQL语法");
         return true;
+    }
+
+    @Override
+    public List<TRMTRAINDATA> getTrmtraindataByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<TRMTRAINDATA> getTrmtraindataByEntities(List<TRMTRAINDATA> entities) {
+        List ids =new ArrayList();
+        for(TRMTRAINDATA entity : entities){
+            Serializable id=entity.getTrmtraindataid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
     }
 
 }

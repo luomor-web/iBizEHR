@@ -234,6 +234,26 @@ public class VACHOLIDAYServiceImpl extends ServiceImpl<VACHOLIDAYMapper, VACHOLI
         return true;
     }
 
+    @Override
+    public List<VACHOLIDAY> getVacholidayByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<VACHOLIDAY> getVacholidayByEntities(List<VACHOLIDAY> entities) {
+        List ids =new ArrayList();
+        for(VACHOLIDAY entity : entities){
+            Serializable id=entity.getVacholidayid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

@@ -18,7 +18,7 @@ import cn.ibizlab.ehr.util.annotation.DEField;
 import cn.ibizlab.ehr.util.enums.DEPredefinedFieldType;
 import cn.ibizlab.ehr.util.enums.DEFieldDefaultValueType;
 import java.io.Serializable;
-import lombok.Data;
+import lombok.*;
 import org.springframework.data.annotation.Transient;
 
 
@@ -29,7 +29,11 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 /**
  * 实体[考勤部门]
  */
-@Data
+@Builder
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @TableName(value = "T_ATTENDENCEORMORGSECTOR",resultMap = "ATTENDENCEORMORGSECTORResultMap")
 public class ATTENDENCEORMORGSECTOR extends EntityMP implements Serializable {
 
@@ -155,7 +159,7 @@ public class ATTENDENCEORMORGSECTOR extends EntityMP implements Serializable {
     @JsonIgnore
     @JSONField(serialize = false)
     @TableField(exist = false)
-    private cn.ibizlab.ehr.core.orm.domain.ORMORGSECTOR ormorgsector;
+    private cn.ibizlab.ehr.core.orm.domain.OrmOrgsector ormorgsector;
 
 
 

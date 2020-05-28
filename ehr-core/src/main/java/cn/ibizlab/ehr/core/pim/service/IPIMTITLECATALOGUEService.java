@@ -58,6 +58,9 @@ public interface IPIMTITLECATALOGUEService extends IService<PIMTITLECATALOGUE>{
      */
     boolean execute(String sql, Map param);
 
+    List<PIMTITLECATALOGUE> getPimtitlecatalogueByIds(List<String> ids) ;
+    List<PIMTITLECATALOGUE> getPimtitlecatalogueByEntities(List<PIMTITLECATALOGUE> entities) ;
+
 }
 
 

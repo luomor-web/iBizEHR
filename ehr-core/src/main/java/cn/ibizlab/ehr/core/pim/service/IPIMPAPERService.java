@@ -56,6 +56,9 @@ public interface IPIMPAPERService extends IService<PIMPAPER>{
      */
     boolean execute(String sql, Map param);
 
+    List<PIMPAPER> getPimpaperByIds(List<String> ids) ;
+    List<PIMPAPER> getPimpaperByEntities(List<PIMPAPER> entities) ;
+
 }
 
 

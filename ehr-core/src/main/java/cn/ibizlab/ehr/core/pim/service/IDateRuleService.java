@@ -54,6 +54,9 @@ public interface IDateRuleService extends IService<DateRule>{
      */
     boolean execute(String sql, Map param);
 
+    List<DateRule> getDateruleByIds(List<String> ids) ;
+    List<DateRule> getDateruleByEntities(List<DateRule> entities) ;
+
 }
 
 

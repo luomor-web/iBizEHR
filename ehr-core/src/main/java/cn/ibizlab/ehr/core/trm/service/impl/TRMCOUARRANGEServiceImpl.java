@@ -425,6 +425,26 @@ public class TRMCOUARRANGEServiceImpl extends ServiceImpl<TRMCOUARRANGEMapper, T
         return true;
     }
 
+    @Override
+    public List<TRMCOUARRANGE> getTrmcouarrangeByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<TRMCOUARRANGE> getTrmcouarrangeByEntities(List<TRMCOUARRANGE> entities) {
+        List ids =new ArrayList();
+        for(TRMCOUARRANGE entity : entities){
+            Serializable id=entity.getTrmcouarrangeid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

@@ -22,6 +22,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.access.prepost.PostAuthorize;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -39,13 +40,11 @@ import cn.ibizlab.ehr.core.pcm.filter.PCMTXFPSQSearchContext;
 public class PCMTXFPSQResource {
 
     @Autowired
-    private IPCMTXFPSQService pcmtxfpsqService;
+    public IPCMTXFPSQService pcmtxfpsqService;
 
     @Autowired
     @Lazy
     public PCMTXFPSQMapping pcmtxfpsqMapping;
-
-    public PCMTXFPSQDTO permissionDTO=new PCMTXFPSQDTO();
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMTXFPSQ-FillPersonInfo-all')")
     @ApiOperation(value = "填充用户信息", tags = {"PCMTXFPSQ" },  notes = "填充用户信息")
@@ -59,7 +58,7 @@ public class PCMTXFPSQResource {
         return ResponseEntity.status(HttpStatus.OK).body(pcmtxfpsqdto);
     }
 
-    @PreAuthorize("hasPermission(#pcmtxfpsq_id,'Update',{'Sql',this.pcmtxfpsqMapping,#pcmtxfpsqdto})")
+    @PreAuthorize("hasPermission(this.pcmtxfpsqService.get(#pcmtxfpsq_id),'ehr-PCMTXFPSQ-Update')")
     @ApiOperation(value = "Update", tags = {"PCMTXFPSQ" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmtxfpsqs/{pcmtxfpsq_id}")
     @Transactional
@@ -71,7 +70,7 @@ public class PCMTXFPSQResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.pcmtxfpsqMapping,#pcmtxfpsqdtos})")
+    @PreAuthorize("hasPermission(this.pcmtxfpsqService.getPcmtxfpsqByEntities(this.pcmtxfpsqMapping.toDomain(#pcmtxfpsqdtos)),'ehr-PCMTXFPSQ-Update')")
     @ApiOperation(value = "UpdateBatch", tags = {"PCMTXFPSQ" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmtxfpsqs/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PCMTXFPSQDTO> pcmtxfpsqdtos) {
@@ -91,7 +90,7 @@ public class PCMTXFPSQResource {
         return ResponseEntity.status(HttpStatus.OK).body(pcmtxfpsqdto);
     }
 
-    @PreAuthorize("hasPermission(#pcmtxfpsq_id,'Get',{'Sql',this.pcmtxfpsqMapping,this.permissionDTO})")
+    @PostAuthorize("hasPermission(this.pcmtxfpsqMapping.toDomain(returnObject.body),'ehr-PCMTXFPSQ-Get')")
     @ApiOperation(value = "Get", tags = {"PCMTXFPSQ" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmtxfpsqs/{pcmtxfpsq_id}")
     public ResponseEntity<PCMTXFPSQDTO> get(@PathVariable("pcmtxfpsq_id") String pcmtxfpsq_id) {
@@ -112,7 +111,6 @@ public class PCMTXFPSQResource {
         return ResponseEntity.status(HttpStatus.OK).body(pcmtxfpsqdto);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMTXFPSQ-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"PCMTXFPSQ" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmtxfpsqs/getdraft")
     public ResponseEntity<PCMTXFPSQDTO> getDraft() {
@@ -143,21 +141,20 @@ public class PCMTXFPSQResource {
         return ResponseEntity.status(HttpStatus.OK).body(pcmtxfpsqdto);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMTXFPSQ-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"PCMTXFPSQ" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmtxfpsqs/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PCMTXFPSQDTO pcmtxfpsqdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pcmtxfpsqService.checkKey(pcmtxfpsqMapping.toDomain(pcmtxfpsqdto)));
     }
 
-    @PreAuthorize("hasPermission('','Save',{'Sql',this.pcmtxfpsqMapping,#pcmtxfpsqdto})")
+    @PreAuthorize("hasPermission(this.pcmtxfpsqMapping.toDomain(#pcmtxfpsqdto),'ehr-PCMTXFPSQ-Save')")
     @ApiOperation(value = "Save", tags = {"PCMTXFPSQ" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmtxfpsqs/save")
     public ResponseEntity<Boolean> save(@RequestBody PCMTXFPSQDTO pcmtxfpsqdto) {
         return ResponseEntity.status(HttpStatus.OK).body(pcmtxfpsqService.save(pcmtxfpsqMapping.toDomain(pcmtxfpsqdto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.pcmtxfpsqMapping,#pcmtxfpsqdtos})")
+    @PreAuthorize("hasPermission(this.pcmtxfpsqMapping.toDomain(#pcmtxfpsqdtos),'ehr-PCMTXFPSQ-Save')")
     @ApiOperation(value = "SaveBatch", tags = {"PCMTXFPSQ" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmtxfpsqs/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PCMTXFPSQDTO> pcmtxfpsqdtos) {
@@ -165,7 +162,7 @@ public class PCMTXFPSQResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('','Create',{'Sql',this.pcmtxfpsqMapping,#pcmtxfpsqdto})")
+    @PreAuthorize("hasPermission(this.pcmtxfpsqMapping.toDomain(#pcmtxfpsqdto),'ehr-PCMTXFPSQ-Create')")
     @ApiOperation(value = "Create", tags = {"PCMTXFPSQ" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmtxfpsqs")
     @Transactional
@@ -176,7 +173,7 @@ public class PCMTXFPSQResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.pcmtxfpsqMapping,#pcmtxfpsqdtos})")
+    @PreAuthorize("hasPermission(this.pcmtxfpsqMapping.toDomain(#pcmtxfpsqdtos),'ehr-PCMTXFPSQ-Create')")
     @ApiOperation(value = "createBatch", tags = {"PCMTXFPSQ" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmtxfpsqs/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PCMTXFPSQDTO> pcmtxfpsqdtos) {
@@ -184,7 +181,7 @@ public class PCMTXFPSQResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission(#pcmtxfpsq_id,'Remove',{'Sql',this.pcmtxfpsqMapping,this.permissionDTO})")
+    @PreAuthorize("hasPermission(this.pcmtxfpsqService.get(#pcmtxfpsq_id),'ehr-PCMTXFPSQ-Remove')")
     @ApiOperation(value = "Remove", tags = {"PCMTXFPSQ" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmtxfpsqs/{pcmtxfpsq_id}")
     @Transactional
@@ -192,7 +189,7 @@ public class PCMTXFPSQResource {
          return ResponseEntity.status(HttpStatus.OK).body(pcmtxfpsqService.remove(pcmtxfpsq_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.pcmtxfpsqMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission(this.pcmtxfpsqService.getPcmtxfpsqByIds(#ids),'ehr-PCMTXFPSQ-Remove')")
     @ApiOperation(value = "RemoveBatch", tags = {"PCMTXFPSQ" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmtxfpsqs/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -285,3 +282,4 @@ public class PCMTXFPSQResource {
                 .body(new PageImpl(pcmtxfpsqMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 }
+

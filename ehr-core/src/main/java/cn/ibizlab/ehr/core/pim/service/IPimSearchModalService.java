@@ -52,6 +52,9 @@ public interface IPimSearchModalService extends IService<PimSearchModal>{
      */
     boolean execute(String sql, Map param);
 
+    List<PimSearchModal> getPimsearchmodalByIds(List<String> ids) ;
+    List<PimSearchModal> getPimsearchmodalByEntities(List<PimSearchModal> entities) ;
+
 }
 
 

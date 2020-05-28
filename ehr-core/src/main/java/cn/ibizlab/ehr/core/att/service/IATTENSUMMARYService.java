@@ -56,6 +56,9 @@ public interface IATTENSUMMARYService extends IService<ATTENSUMMARY>{
      */
     boolean execute(String sql, Map param);
 
+    List<ATTENSUMMARY> getAttensummaryByIds(List<String> ids) ;
+    List<ATTENSUMMARY> getAttensummaryByEntities(List<ATTENSUMMARY> entities) ;
+
 }
 
 

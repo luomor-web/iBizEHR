@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.HashMap;
 
-import lombok.Data;
+import lombok.*;
 import lombok.extern.slf4j.Slf4j;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.alibaba.fastjson.annotation.JSONField;
@@ -27,6 +27,13 @@ import cn.ibizlab.ehr.core.pcm.domain.PCMYDNTMX;
 @Data
 public class PCMYDNTMXSearchContext extends QueryWrapperContext<PCMYDNTMX> {
 
+	private String n_pcmydntmxname_like;//[异动内退明细名称]
+	public void setN_pcmydntmxname_like(String n_pcmydntmxname_like) {
+        this.n_pcmydntmxname_like = n_pcmydntmxname_like;
+        if(!ObjectUtils.isEmpty(this.n_pcmydntmxname_like)){
+            this.getSelectCond().like("pcmydntmxname", n_pcmydntmxname_like);
+        }
+    }
 	private String n_ygbh_like;//[员工编号]
 	public void setN_ygbh_like(String n_ygbh_like) {
         this.n_ygbh_like = n_ygbh_like;
@@ -63,9 +70,11 @@ public class PCMYDNTMXSearchContext extends QueryWrapperContext<PCMYDNTMX> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("pcmydntmxname",query);
-			this.getSelectCond().or().like("ygbh",query);
-			this.getSelectCond().or().like("pimpersonname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("pcmydntmxname", query)   
+                        .or().like("ygbh", query)            
+                        .or().like("pimpersonname", query)            
+            );
 		 }
 	}
 }

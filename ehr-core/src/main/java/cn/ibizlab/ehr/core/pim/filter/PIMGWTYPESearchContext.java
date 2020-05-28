@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.HashMap;
 
-import lombok.Data;
+import lombok.*;
 import lombok.extern.slf4j.Slf4j;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.alibaba.fastjson.annotation.JSONField;
@@ -49,8 +49,10 @@ public class PIMGWTYPESearchContext extends QueryWrapperContext<PIMGWTYPE> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("pimgwtypename",query);
-			this.getSelectCond().or().like("gwlx",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("pimgwtypename", query)   
+                        .or().like("gwlx", query)            
+            );
 		 }
 	}
 }

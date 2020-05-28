@@ -60,6 +60,9 @@ public interface ITRMTEACHERTRAINService extends IService<TRMTEACHERTRAIN>{
      */
     boolean execute(String sql, Map param);
 
+    List<TRMTEACHERTRAIN> getTrmteachertrainByIds(List<String> ids) ;
+    List<TRMTEACHERTRAIN> getTrmteachertrainByEntities(List<TRMTEACHERTRAIN> entities) ;
+
 }
 
 

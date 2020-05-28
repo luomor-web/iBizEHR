@@ -22,6 +22,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.access.prepost.PostAuthorize;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -39,15 +40,13 @@ import cn.ibizlab.ehr.core.vac.filter.WFQJSearchContext;
 public class WFQJResource {
 
     @Autowired
-    private IWFQJService wfqjService;
+    public IWFQJService wfqjService;
 
     @Autowired
     @Lazy
     public WFQJMapping wfqjMapping;
 
-    public WFQJDTO permissionDTO=new WFQJDTO();
-
-    @PreAuthorize("hasPermission(#wfqj_id,'Update',{'Sql',this.wfqjMapping,#wfqjdto})")
+    @PreAuthorize("hasPermission(this.wfqjService.get(#wfqj_id),'ehr-WFQJ-Update')")
     @ApiOperation(value = "Update", tags = {"WFQJ" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/wfqjs/{wfqj_id}")
     @Transactional
@@ -59,7 +58,7 @@ public class WFQJResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.wfqjMapping,#wfqjdtos})")
+    @PreAuthorize("hasPermission(this.wfqjService.getWfqjByEntities(this.wfqjMapping.toDomain(#wfqjdtos)),'ehr-WFQJ-Update')")
     @ApiOperation(value = "UpdateBatch", tags = {"WFQJ" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/wfqjs/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<WFQJDTO> wfqjdtos) {
@@ -67,14 +66,13 @@ public class WFQJResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFQJ-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"WFQJ" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/wfqjs/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody WFQJDTO wfqjdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(wfqjService.checkKey(wfqjMapping.toDomain(wfqjdto)));
     }
 
-    @PreAuthorize("hasPermission('','Create',{'Sql',this.wfqjMapping,#wfqjdto})")
+    @PreAuthorize("hasPermission(this.wfqjMapping.toDomain(#wfqjdto),'ehr-WFQJ-Create')")
     @ApiOperation(value = "Create", tags = {"WFQJ" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/wfqjs")
     @Transactional
@@ -85,7 +83,7 @@ public class WFQJResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.wfqjMapping,#wfqjdtos})")
+    @PreAuthorize("hasPermission(this.wfqjMapping.toDomain(#wfqjdtos),'ehr-WFQJ-Create')")
     @ApiOperation(value = "createBatch", tags = {"WFQJ" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/wfqjs/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<WFQJDTO> wfqjdtos) {
@@ -93,14 +91,14 @@ public class WFQJResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('','Save',{'Sql',this.wfqjMapping,#wfqjdto})")
+    @PreAuthorize("hasPermission(this.wfqjMapping.toDomain(#wfqjdto),'ehr-WFQJ-Save')")
     @ApiOperation(value = "Save", tags = {"WFQJ" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/wfqjs/save")
     public ResponseEntity<Boolean> save(@RequestBody WFQJDTO wfqjdto) {
         return ResponseEntity.status(HttpStatus.OK).body(wfqjService.save(wfqjMapping.toDomain(wfqjdto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.wfqjMapping,#wfqjdtos})")
+    @PreAuthorize("hasPermission(this.wfqjMapping.toDomain(#wfqjdtos),'ehr-WFQJ-Save')")
     @ApiOperation(value = "SaveBatch", tags = {"WFQJ" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/wfqjs/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<WFQJDTO> wfqjdtos) {
@@ -108,14 +106,13 @@ public class WFQJResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFQJ-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"WFQJ" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/wfqjs/getdraft")
     public ResponseEntity<WFQJDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(wfqjMapping.toDto(wfqjService.getDraft(new WFQJ())));
     }
 
-    @PreAuthorize("hasPermission(#wfqj_id,'Remove',{'Sql',this.wfqjMapping,this.permissionDTO})")
+    @PreAuthorize("hasPermission(this.wfqjService.get(#wfqj_id),'ehr-WFQJ-Remove')")
     @ApiOperation(value = "Remove", tags = {"WFQJ" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/wfqjs/{wfqj_id}")
     @Transactional
@@ -123,7 +120,7 @@ public class WFQJResource {
          return ResponseEntity.status(HttpStatus.OK).body(wfqjService.remove(wfqj_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.wfqjMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission(this.wfqjService.getWfqjByIds(#ids),'ehr-WFQJ-Remove')")
     @ApiOperation(value = "RemoveBatch", tags = {"WFQJ" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/wfqjs/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -131,7 +128,7 @@ public class WFQJResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission(#wfqj_id,'Get',{'Sql',this.wfqjMapping,this.permissionDTO})")
+    @PostAuthorize("hasPermission(this.wfqjMapping.toDomain(returnObject.body),'ehr-WFQJ-Get')")
     @ApiOperation(value = "Get", tags = {"WFQJ" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/wfqjs/{wfqj_id}")
     public ResponseEntity<WFQJDTO> get(@PathVariable("wfqj_id") String wfqj_id) {
@@ -162,3 +159,4 @@ public class WFQJResource {
                 .body(new PageImpl(wfqjMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 }
+

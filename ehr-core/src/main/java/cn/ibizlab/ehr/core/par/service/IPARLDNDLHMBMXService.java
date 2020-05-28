@@ -54,6 +54,9 @@ public interface IPARLDNDLHMBMXService extends IService<PARLDNDLHMBMX>{
      */
     boolean execute(String sql, Map param);
 
+    List<PARLDNDLHMBMX> getParldndlhmbmxByIds(List<String> ids) ;
+    List<PARLDNDLHMBMX> getParldndlhmbmxByEntities(List<PARLDNDLHMBMX> entities) ;
+
 }
 
 

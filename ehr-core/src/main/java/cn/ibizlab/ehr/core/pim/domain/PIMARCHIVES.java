@@ -18,7 +18,7 @@ import cn.ibizlab.ehr.util.annotation.DEField;
 import cn.ibizlab.ehr.util.enums.DEPredefinedFieldType;
 import cn.ibizlab.ehr.util.enums.DEFieldDefaultValueType;
 import java.io.Serializable;
-import lombok.Data;
+import lombok.*;
 import org.springframework.data.annotation.Transient;
 
 
@@ -29,7 +29,11 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 /**
  * 实体[档案信息]
  */
-@Data
+@Builder
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @TableName(value = "T_PIMARCHIVES",resultMap = "PIMARCHIVESResultMap")
 public class PIMARCHIVES extends EntityMP implements Serializable {
 
@@ -437,7 +441,7 @@ public class PIMARCHIVES extends EntityMP implements Serializable {
     @JsonIgnore
     @JSONField(serialize = false)
     @TableField(exist = false)
-    private cn.ibizlab.ehr.core.orm.domain.ORMORG ormorg;
+    private cn.ibizlab.ehr.core.orm.domain.OrmOrg ormorg;
 
     /**
      * 档案管理单位
@@ -445,7 +449,7 @@ public class PIMARCHIVES extends EntityMP implements Serializable {
     @JsonIgnore
     @JSONField(serialize = false)
     @TableField(exist = false)
-    private cn.ibizlab.ehr.core.orm.domain.ORMORG ormorg3;
+    private cn.ibizlab.ehr.core.orm.domain.OrmOrg ormorg3;
 
     /**
      * 档案信息

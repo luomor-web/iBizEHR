@@ -54,6 +54,9 @@ public interface IPIMPersonAbilityDetailService extends IService<PIMPersonAbilit
      */
     boolean execute(String sql, Map param);
 
+    List<PIMPersonAbilityDetail> getPimpersonabilitydetailByIds(List<String> ids) ;
+    List<PIMPersonAbilityDetail> getPimpersonabilitydetailByEntities(List<PIMPersonAbilityDetail> entities) ;
+
 }
 
 

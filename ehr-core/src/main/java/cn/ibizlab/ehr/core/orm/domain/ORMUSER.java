@@ -18,7 +18,7 @@ import cn.ibizlab.ehr.util.annotation.DEField;
 import cn.ibizlab.ehr.util.enums.DEPredefinedFieldType;
 import cn.ibizlab.ehr.util.enums.DEFieldDefaultValueType;
 import java.io.Serializable;
-import lombok.Data;
+import lombok.*;
 import org.springframework.data.annotation.Transient;
 
 
@@ -29,7 +29,11 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 /**
  * 实体[用户管理]
  */
-@Data
+@Builder
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @TableName(value = "T_SRFORGUSER",resultMap = "ORMUSERResultMap")
 public class ORMUSER extends EntityMP implements Serializable {
 
@@ -159,7 +163,7 @@ public class ORMUSER extends EntityMP implements Serializable {
     @JsonIgnore
     @JSONField(serialize = false)
     @TableField(exist = false)
-    private cn.ibizlab.ehr.core.orm.domain.ORMORGSECTOR ormorgsector;
+    private cn.ibizlab.ehr.core.orm.domain.OrmOrgsector ormorgsector;
 
     /**
      * 组织
@@ -167,7 +171,7 @@ public class ORMUSER extends EntityMP implements Serializable {
     @JsonIgnore
     @JSONField(serialize = false)
     @TableField(exist = false)
-    private cn.ibizlab.ehr.core.orm.domain.ORMORG org;
+    private cn.ibizlab.ehr.core.orm.domain.OrmOrg org;
 
 
 

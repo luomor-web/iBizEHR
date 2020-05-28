@@ -215,6 +215,26 @@ public class PARLDNDLHMBMXServiceImpl extends ServiceImpl<PARLDNDLHMBMXMapper, P
         return true;
     }
 
+    @Override
+    public List<PARLDNDLHMBMX> getParldndlhmbmxByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<PARLDNDLHMBMX> getParldndlhmbmxByEntities(List<PARLDNDLHMBMX> entities) {
+        List ids =new ArrayList();
+        for(PARLDNDLHMBMX entity : entities){
+            Serializable id=entity.getParldndlhmbmxid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

@@ -47,7 +47,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, EditViewBase } from '@/crm-core';
-import ORMORGInfoService from '@/service/ormorginfo/ormorginfo-service';
+import OrmOrgInfoService from '@/service/orm-org-info/orm-org-info-service';
 
 import EditViewEngine from '@engine/view/edit-view-engine';
 
@@ -66,10 +66,10 @@ export default class ORMORGInfoEditViewBase extends EditViewBase {
     /**
      * 实体服务对象
      *
-     * @type {ORMORGInfoService}
+     * @type {OrmOrgInfoService}
      * @memberof ORMORGInfoEditViewBase
      */
-    public appEntityService: ORMORGInfoService = new ORMORGInfoService;
+    public appEntityService: OrmOrgInfoService = new OrmOrgInfoService;
 
 
     /**
@@ -304,7 +304,7 @@ export default class ORMORGInfoEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Save(datas, contextJO,paramJO,  $event, xData,this,"ORMORGInfo");
+        this.Save(datas, contextJO,paramJO,  $event, xData,this,"OrmOrgInfo");
     }
 
     /**
@@ -333,7 +333,7 @@ export default class ORMORGInfoEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.SaveAndNew(datas, contextJO,paramJO,  $event, xData,this,"ORMORGInfo");
+        this.SaveAndNew(datas, contextJO,paramJO,  $event, xData,this,"OrmOrgInfo");
     }
 
     /**
@@ -362,7 +362,7 @@ export default class ORMORGInfoEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.SaveAndExit(datas, contextJO,paramJO,  $event, xData,this,"ORMORGInfo");
+        this.SaveAndExit(datas, contextJO,paramJO,  $event, xData,this,"OrmOrgInfo");
     }
 
     /**
@@ -391,7 +391,7 @@ export default class ORMORGInfoEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.RemoveAndExit(datas, contextJO,paramJO,  $event, xData,this,"ORMORGInfo");
+        this.RemoveAndExit(datas, contextJO,paramJO,  $event, xData,this,"OrmOrgInfo");
     }
 
     /**
@@ -420,7 +420,7 @@ export default class ORMORGInfoEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.ViewWFStep(datas, contextJO,paramJO,  $event, xData,this,"ORMORGInfo");
+        this.ViewWFStep(datas, contextJO,paramJO,  $event, xData,this,"OrmOrgInfo");
     }
 
     /**
@@ -449,7 +449,7 @@ export default class ORMORGInfoEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Print(datas, contextJO,paramJO,  $event, xData,this,"ORMORGInfo");
+        this.Print(datas, contextJO,paramJO,  $event, xData,this,"OrmOrgInfo");
     }
 
     /**
@@ -478,7 +478,7 @@ export default class ORMORGInfoEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Help(datas, contextJO,paramJO,  $event, xData,this,"ORMORGInfo");
+        this.Help(datas, contextJO,paramJO,  $event, xData,this,"OrmOrgInfo");
     }
 
     /**

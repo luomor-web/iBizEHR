@@ -22,6 +22,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.access.prepost.PostAuthorize;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -39,22 +40,20 @@ import cn.ibizlab.ehr.core.sal.filter.SALPERSONSTDSearchContext;
 public class SALPERSONSTDResource {
 
     @Autowired
-    private ISALPERSONSTDService salpersonstdService;
+    public ISALPERSONSTDService salpersonstdService;
 
     @Autowired
     @Lazy
     public SALPERSONSTDMapping salpersonstdMapping;
 
-    public SALPERSONSTDDTO permissionDTO=new SALPERSONSTDDTO();
-
-    @PreAuthorize("hasPermission('','Save',{'Sql',this.salpersonstdMapping,#salpersonstddto})")
+    @PreAuthorize("hasPermission(this.salpersonstdMapping.toDomain(#salpersonstddto),'ehr-SALPERSONSTD-Save')")
     @ApiOperation(value = "Save", tags = {"SALPERSONSTD" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/salpersonstds/save")
     public ResponseEntity<Boolean> save(@RequestBody SALPERSONSTDDTO salpersonstddto) {
         return ResponseEntity.status(HttpStatus.OK).body(salpersonstdService.save(salpersonstdMapping.toDomain(salpersonstddto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.salpersonstdMapping,#salpersonstddtos})")
+    @PreAuthorize("hasPermission(this.salpersonstdMapping.toDomain(#salpersonstddtos),'ehr-SALPERSONSTD-Save')")
     @ApiOperation(value = "SaveBatch", tags = {"SALPERSONSTD" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/salpersonstds/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<SALPERSONSTDDTO> salpersonstddtos) {
@@ -62,14 +61,13 @@ public class SALPERSONSTDResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALPERSONSTD-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"SALPERSONSTD" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/salpersonstds/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody SALPERSONSTDDTO salpersonstddto) {
         return  ResponseEntity.status(HttpStatus.OK).body(salpersonstdService.checkKey(salpersonstdMapping.toDomain(salpersonstddto)));
     }
 
-    @PreAuthorize("hasPermission('','Create',{'Sql',this.salpersonstdMapping,#salpersonstddto})")
+    @PreAuthorize("hasPermission(this.salpersonstdMapping.toDomain(#salpersonstddto),'ehr-SALPERSONSTD-Create')")
     @ApiOperation(value = "Create", tags = {"SALPERSONSTD" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/salpersonstds")
     @Transactional
@@ -80,7 +78,7 @@ public class SALPERSONSTDResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.salpersonstdMapping,#salpersonstddtos})")
+    @PreAuthorize("hasPermission(this.salpersonstdMapping.toDomain(#salpersonstddtos),'ehr-SALPERSONSTD-Create')")
     @ApiOperation(value = "createBatch", tags = {"SALPERSONSTD" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/salpersonstds/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<SALPERSONSTDDTO> salpersonstddtos) {
@@ -88,7 +86,7 @@ public class SALPERSONSTDResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission(#salpersonstd_id,'Remove',{'Sql',this.salpersonstdMapping,this.permissionDTO})")
+    @PreAuthorize("hasPermission(this.salpersonstdService.get(#salpersonstd_id),'ehr-SALPERSONSTD-Remove')")
     @ApiOperation(value = "Remove", tags = {"SALPERSONSTD" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/salpersonstds/{salpersonstd_id}")
     @Transactional
@@ -96,7 +94,7 @@ public class SALPERSONSTDResource {
          return ResponseEntity.status(HttpStatus.OK).body(salpersonstdService.remove(salpersonstd_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.salpersonstdMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission(this.salpersonstdService.getSalpersonstdByIds(#ids),'ehr-SALPERSONSTD-Remove')")
     @ApiOperation(value = "RemoveBatch", tags = {"SALPERSONSTD" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/salpersonstds/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -104,14 +102,13 @@ public class SALPERSONSTDResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALPERSONSTD-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"SALPERSONSTD" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/salpersonstds/getdraft")
     public ResponseEntity<SALPERSONSTDDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(salpersonstdMapping.toDto(salpersonstdService.getDraft(new SALPERSONSTD())));
     }
 
-    @PreAuthorize("hasPermission(#salpersonstd_id,'Update',{'Sql',this.salpersonstdMapping,#salpersonstddto})")
+    @PreAuthorize("hasPermission(this.salpersonstdService.get(#salpersonstd_id),'ehr-SALPERSONSTD-Update')")
     @ApiOperation(value = "Update", tags = {"SALPERSONSTD" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/salpersonstds/{salpersonstd_id}")
     @Transactional
@@ -123,7 +120,7 @@ public class SALPERSONSTDResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.salpersonstdMapping,#salpersonstddtos})")
+    @PreAuthorize("hasPermission(this.salpersonstdService.getSalpersonstdByEntities(this.salpersonstdMapping.toDomain(#salpersonstddtos)),'ehr-SALPERSONSTD-Update')")
     @ApiOperation(value = "UpdateBatch", tags = {"SALPERSONSTD" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/salpersonstds/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<SALPERSONSTDDTO> salpersonstddtos) {
@@ -131,7 +128,7 @@ public class SALPERSONSTDResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission(#salpersonstd_id,'Get',{'Sql',this.salpersonstdMapping,this.permissionDTO})")
+    @PostAuthorize("hasPermission(this.salpersonstdMapping.toDomain(returnObject.body),'ehr-SALPERSONSTD-Get')")
     @ApiOperation(value = "Get", tags = {"SALPERSONSTD" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/salpersonstds/{salpersonstd_id}")
     public ResponseEntity<SALPERSONSTDDTO> get(@PathVariable("salpersonstd_id") String salpersonstd_id) {
@@ -162,3 +159,4 @@ public class SALPERSONSTDResource {
                 .body(new PageImpl(salpersonstdMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 }
+

@@ -54,6 +54,9 @@ public interface ITRMTRAFFICService extends IService<TRMTRAFFIC>{
      */
     boolean execute(String sql, Map param);
 
+    List<TRMTRAFFIC> getTrmtrafficByIds(List<String> ids) ;
+    List<TRMTRAFFIC> getTrmtrafficByEntities(List<TRMTRAFFIC> entities) ;
+
 }
 
 

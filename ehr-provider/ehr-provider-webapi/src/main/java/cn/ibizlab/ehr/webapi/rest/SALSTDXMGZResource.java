@@ -22,6 +22,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.access.prepost.PostAuthorize;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -39,22 +40,19 @@ import cn.ibizlab.ehr.core.sal.filter.SALSTDXMGZSearchContext;
 public class SALSTDXMGZResource {
 
     @Autowired
-    private ISALSTDXMGZService salstdxmgzService;
+    public ISALSTDXMGZService salstdxmgzService;
 
     @Autowired
     @Lazy
     public SALSTDXMGZMapping salstdxmgzMapping;
 
-    public SALSTDXMGZDTO permissionDTO=new SALSTDXMGZDTO();
-
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALSTDXMGZ-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"SALSTDXMGZ" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/salstdxmgzs/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody SALSTDXMGZDTO salstdxmgzdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(salstdxmgzService.checkKey(salstdxmgzMapping.toDomain(salstdxmgzdto)));
     }
 
-    @PreAuthorize("hasPermission(#salstdxmgz_id,'Remove',{'Sql',this.salstdxmgzMapping,this.permissionDTO})")
+    @PreAuthorize("hasPermission(this.salstdxmgzService.get(#salstdxmgz_id),'ehr-SALSTDXMGZ-Remove')")
     @ApiOperation(value = "Remove", tags = {"SALSTDXMGZ" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/salstdxmgzs/{salstdxmgz_id}")
     @Transactional
@@ -62,7 +60,7 @@ public class SALSTDXMGZResource {
          return ResponseEntity.status(HttpStatus.OK).body(salstdxmgzService.remove(salstdxmgz_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.salstdxmgzMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission(this.salstdxmgzService.getSalstdxmgzByIds(#ids),'ehr-SALSTDXMGZ-Remove')")
     @ApiOperation(value = "RemoveBatch", tags = {"SALSTDXMGZ" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/salstdxmgzs/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -70,7 +68,7 @@ public class SALSTDXMGZResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission(#salstdxmgz_id,'Update',{'Sql',this.salstdxmgzMapping,#salstdxmgzdto})")
+    @PreAuthorize("hasPermission(this.salstdxmgzService.get(#salstdxmgz_id),'ehr-SALSTDXMGZ-Update')")
     @ApiOperation(value = "Update", tags = {"SALSTDXMGZ" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/salstdxmgzs/{salstdxmgz_id}")
     @Transactional
@@ -82,7 +80,7 @@ public class SALSTDXMGZResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.salstdxmgzMapping,#salstdxmgzdtos})")
+    @PreAuthorize("hasPermission(this.salstdxmgzService.getSalstdxmgzByEntities(this.salstdxmgzMapping.toDomain(#salstdxmgzdtos)),'ehr-SALSTDXMGZ-Update')")
     @ApiOperation(value = "UpdateBatch", tags = {"SALSTDXMGZ" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/salstdxmgzs/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<SALSTDXMGZDTO> salstdxmgzdtos) {
@@ -90,21 +88,20 @@ public class SALSTDXMGZResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALSTDXMGZ-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"SALSTDXMGZ" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/salstdxmgzs/getdraft")
     public ResponseEntity<SALSTDXMGZDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(salstdxmgzMapping.toDto(salstdxmgzService.getDraft(new SALSTDXMGZ())));
     }
 
-    @PreAuthorize("hasPermission('','Save',{'Sql',this.salstdxmgzMapping,#salstdxmgzdto})")
+    @PreAuthorize("hasPermission(this.salstdxmgzMapping.toDomain(#salstdxmgzdto),'ehr-SALSTDXMGZ-Save')")
     @ApiOperation(value = "Save", tags = {"SALSTDXMGZ" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/salstdxmgzs/save")
     public ResponseEntity<Boolean> save(@RequestBody SALSTDXMGZDTO salstdxmgzdto) {
         return ResponseEntity.status(HttpStatus.OK).body(salstdxmgzService.save(salstdxmgzMapping.toDomain(salstdxmgzdto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.salstdxmgzMapping,#salstdxmgzdtos})")
+    @PreAuthorize("hasPermission(this.salstdxmgzMapping.toDomain(#salstdxmgzdtos),'ehr-SALSTDXMGZ-Save')")
     @ApiOperation(value = "SaveBatch", tags = {"SALSTDXMGZ" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/salstdxmgzs/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<SALSTDXMGZDTO> salstdxmgzdtos) {
@@ -112,7 +109,7 @@ public class SALSTDXMGZResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission(#salstdxmgz_id,'Get',{'Sql',this.salstdxmgzMapping,this.permissionDTO})")
+    @PostAuthorize("hasPermission(this.salstdxmgzMapping.toDomain(returnObject.body),'ehr-SALSTDXMGZ-Get')")
     @ApiOperation(value = "Get", tags = {"SALSTDXMGZ" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/salstdxmgzs/{salstdxmgz_id}")
     public ResponseEntity<SALSTDXMGZDTO> get(@PathVariable("salstdxmgz_id") String salstdxmgz_id) {
@@ -121,7 +118,7 @@ public class SALSTDXMGZResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('','Create',{'Sql',this.salstdxmgzMapping,#salstdxmgzdto})")
+    @PreAuthorize("hasPermission(this.salstdxmgzMapping.toDomain(#salstdxmgzdto),'ehr-SALSTDXMGZ-Create')")
     @ApiOperation(value = "Create", tags = {"SALSTDXMGZ" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/salstdxmgzs")
     @Transactional
@@ -132,7 +129,7 @@ public class SALSTDXMGZResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.salstdxmgzMapping,#salstdxmgzdtos})")
+    @PreAuthorize("hasPermission(this.salstdxmgzMapping.toDomain(#salstdxmgzdtos),'ehr-SALSTDXMGZ-Create')")
     @ApiOperation(value = "createBatch", tags = {"SALSTDXMGZ" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/salstdxmgzs/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<SALSTDXMGZDTO> salstdxmgzdtos) {
@@ -162,3 +159,4 @@ public class SALSTDXMGZResource {
                 .body(new PageImpl(salstdxmgzMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 }
+

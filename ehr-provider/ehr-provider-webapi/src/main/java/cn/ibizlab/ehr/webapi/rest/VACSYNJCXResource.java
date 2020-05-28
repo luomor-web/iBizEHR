@@ -22,6 +22,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.access.prepost.PostAuthorize;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -39,15 +40,13 @@ import cn.ibizlab.ehr.core.vac.filter.VACSYNJCXSearchContext;
 public class VACSYNJCXResource {
 
     @Autowired
-    private IVACSYNJCXService vacsynjcxService;
+    public IVACSYNJCXService vacsynjcxService;
 
     @Autowired
     @Lazy
     public VACSYNJCXMapping vacsynjcxMapping;
 
-    public VACSYNJCXDTO permissionDTO=new VACSYNJCXDTO();
-
-    @PreAuthorize("hasPermission(#vacsynjcx_id,'Remove',{'Sql',this.vacsynjcxMapping,this.permissionDTO})")
+    @PreAuthorize("hasPermission(this.vacsynjcxService.get(#vacsynjcx_id),'ehr-VACSYNJCX-Remove')")
     @ApiOperation(value = "Remove", tags = {"VACSYNJCX" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/vacsynjcxes/{vacsynjcx_id}")
     @Transactional
@@ -55,7 +54,7 @@ public class VACSYNJCXResource {
          return ResponseEntity.status(HttpStatus.OK).body(vacsynjcxService.remove(vacsynjcx_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.vacsynjcxMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission(this.vacsynjcxService.getVacsynjcxByIds(#ids),'ehr-VACSYNJCX-Remove')")
     @ApiOperation(value = "RemoveBatch", tags = {"VACSYNJCX" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/vacsynjcxes/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -63,7 +62,7 @@ public class VACSYNJCXResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission(#vacsynjcx_id,'Update',{'Sql',this.vacsynjcxMapping,#vacsynjcxdto})")
+    @PreAuthorize("hasPermission(this.vacsynjcxService.get(#vacsynjcx_id),'ehr-VACSYNJCX-Update')")
     @ApiOperation(value = "Update", tags = {"VACSYNJCX" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/vacsynjcxes/{vacsynjcx_id}")
     @Transactional
@@ -75,7 +74,7 @@ public class VACSYNJCXResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.vacsynjcxMapping,#vacsynjcxdtos})")
+    @PreAuthorize("hasPermission(this.vacsynjcxService.getVacsynjcxByEntities(this.vacsynjcxMapping.toDomain(#vacsynjcxdtos)),'ehr-VACSYNJCX-Update')")
     @ApiOperation(value = "UpdateBatch", tags = {"VACSYNJCX" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/vacsynjcxes/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<VACSYNJCXDTO> vacsynjcxdtos) {
@@ -83,14 +82,13 @@ public class VACSYNJCXResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACSYNJCX-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"VACSYNJCX" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacsynjcxes/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody VACSYNJCXDTO vacsynjcxdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(vacsynjcxService.checkKey(vacsynjcxMapping.toDomain(vacsynjcxdto)));
     }
 
-    @PreAuthorize("hasPermission(#vacsynjcx_id,'Get',{'Sql',this.vacsynjcxMapping,this.permissionDTO})")
+    @PostAuthorize("hasPermission(this.vacsynjcxMapping.toDomain(returnObject.body),'ehr-VACSYNJCX-Get')")
     @ApiOperation(value = "Get", tags = {"VACSYNJCX" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/vacsynjcxes/{vacsynjcx_id}")
     public ResponseEntity<VACSYNJCXDTO> get(@PathVariable("vacsynjcx_id") String vacsynjcx_id) {
@@ -99,14 +97,14 @@ public class VACSYNJCXResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('','Save',{'Sql',this.vacsynjcxMapping,#vacsynjcxdto})")
+    @PreAuthorize("hasPermission(this.vacsynjcxMapping.toDomain(#vacsynjcxdto),'ehr-VACSYNJCX-Save')")
     @ApiOperation(value = "Save", tags = {"VACSYNJCX" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacsynjcxes/save")
     public ResponseEntity<Boolean> save(@RequestBody VACSYNJCXDTO vacsynjcxdto) {
         return ResponseEntity.status(HttpStatus.OK).body(vacsynjcxService.save(vacsynjcxMapping.toDomain(vacsynjcxdto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.vacsynjcxMapping,#vacsynjcxdtos})")
+    @PreAuthorize("hasPermission(this.vacsynjcxMapping.toDomain(#vacsynjcxdtos),'ehr-VACSYNJCX-Save')")
     @ApiOperation(value = "SaveBatch", tags = {"VACSYNJCX" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacsynjcxes/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<VACSYNJCXDTO> vacsynjcxdtos) {
@@ -126,7 +124,7 @@ public class VACSYNJCXResource {
         return ResponseEntity.status(HttpStatus.OK).body(vacsynjcxdto);
     }
 
-    @PreAuthorize("hasPermission('','Create',{'Sql',this.vacsynjcxMapping,#vacsynjcxdto})")
+    @PreAuthorize("hasPermission(this.vacsynjcxMapping.toDomain(#vacsynjcxdto),'ehr-VACSYNJCX-Create')")
     @ApiOperation(value = "Create", tags = {"VACSYNJCX" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacsynjcxes")
     @Transactional
@@ -137,7 +135,7 @@ public class VACSYNJCXResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.vacsynjcxMapping,#vacsynjcxdtos})")
+    @PreAuthorize("hasPermission(this.vacsynjcxMapping.toDomain(#vacsynjcxdtos),'ehr-VACSYNJCX-Create')")
     @ApiOperation(value = "createBatch", tags = {"VACSYNJCX" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacsynjcxes/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<VACSYNJCXDTO> vacsynjcxdtos) {
@@ -145,7 +143,6 @@ public class VACSYNJCXResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACSYNJCX-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"VACSYNJCX" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/vacsynjcxes/getdraft")
     public ResponseEntity<VACSYNJCXDTO> getDraft() {
@@ -174,3 +171,4 @@ public class VACSYNJCXResource {
                 .body(new PageImpl(vacsynjcxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 }
+

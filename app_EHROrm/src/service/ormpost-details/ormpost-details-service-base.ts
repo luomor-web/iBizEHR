@@ -48,6 +48,12 @@ export default class ORMPostDetailsServiceBase extends EntityService {
      * @memberof ORMPostDetailsServiceBase
      */
     public async Select(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.ormpost && context.ormpostdetails){
+            return Http.getInstance().get(`/ormposts/${context.ormpost}/ormpostdetails/${context.ormpostdetails}/select`,isloading);
+        }
+        if(context.ormpostlib && context.ormpostdetails){
+            return Http.getInstance().get(`/ormpostlibs/${context.ormpostlib}/ormpostdetails/${context.ormpostdetails}/select`,isloading);
+        }
             return Http.getInstance().get(`/ormpostdetails/${context.ormpostdetails}/select`,isloading);
     }
 
@@ -61,6 +67,24 @@ export default class ORMPostDetailsServiceBase extends EntityService {
      * @memberof ORMPostDetailsServiceBase
      */
     public async Create(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.ormpost && true){
+            if(!data.srffrontuf || data.srffrontuf !== "1"){
+                data[this.APPDEKEY] = null;
+            }
+            if(data.srffrontuf){
+                delete data.srffrontuf;
+            }
+            return Http.getInstance().post(`/ormposts/${context.ormpost}/ormpostdetails`,data,isloading);
+        }
+        if(context.ormpostlib && true){
+            if(!data.srffrontuf || data.srffrontuf !== "1"){
+                data[this.APPDEKEY] = null;
+            }
+            if(data.srffrontuf){
+                delete data.srffrontuf;
+            }
+            return Http.getInstance().post(`/ormpostlibs/${context.ormpostlib}/ormpostdetails`,data,isloading);
+        }
         let masterData:any = {};
         Object.assign(data,masterData);
         if(!data.srffrontuf || data.srffrontuf !== "1"){
@@ -84,6 +108,12 @@ export default class ORMPostDetailsServiceBase extends EntityService {
      * @memberof ORMPostDetailsServiceBase
      */
     public async Get(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.ormpost && context.ormpostdetails){
+            return Http.getInstance().get(`/ormposts/${context.ormpost}/ormpostdetails/${context.ormpostdetails}`,isloading);
+        }
+        if(context.ormpostlib && context.ormpostdetails){
+            return Http.getInstance().get(`/ormpostlibs/${context.ormpostlib}/ormpostdetails/${context.ormpostdetails}`,isloading);
+        }
             let res:any = await Http.getInstance().get(`/ormpostdetails/${context.ormpostdetails}`,isloading);
             return res;
 
@@ -99,6 +129,12 @@ export default class ORMPostDetailsServiceBase extends EntityService {
      * @memberof ORMPostDetailsServiceBase
      */
     public async CheckKey(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.ormpost && context.ormpostdetails){
+            return Http.getInstance().post(`/ormposts/${context.ormpost}/ormpostdetails/${context.ormpostdetails}/checkkey`,data,isloading);
+        }
+        if(context.ormpostlib && context.ormpostdetails){
+            return Http.getInstance().post(`/ormpostlibs/${context.ormpostlib}/ormpostdetails/${context.ormpostdetails}/checkkey`,data,isloading);
+        }
             return Http.getInstance().post(`/ormpostdetails/${context.ormpostdetails}/checkkey`,data,isloading);
     }
 
@@ -112,6 +148,12 @@ export default class ORMPostDetailsServiceBase extends EntityService {
      * @memberof ORMPostDetailsServiceBase
      */
     public async Update(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.ormpost && context.ormpostdetails){
+            return Http.getInstance().put(`/ormposts/${context.ormpost}/ormpostdetails/${context.ormpostdetails}`,data,isloading);
+        }
+        if(context.ormpostlib && context.ormpostdetails){
+            return Http.getInstance().put(`/ormpostlibs/${context.ormpostlib}/ormpostdetails/${context.ormpostdetails}`,data,isloading);
+        }
         let masterData:any = {};
         Object.assign(data,masterData);
             let res:any = await  Http.getInstance().put(`/ormpostdetails/${context.ormpostdetails}`,data,isloading);
@@ -128,6 +170,12 @@ export default class ORMPostDetailsServiceBase extends EntityService {
      * @memberof ORMPostDetailsServiceBase
      */
     public async GetDraft(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.ormpost && true){
+            return Http.getInstance().get(`/ormposts/${context.ormpost}/ormpostdetails/getdraft`,isloading);
+        }
+        if(context.ormpostlib && true){
+            return Http.getInstance().get(`/ormpostlibs/${context.ormpostlib}/ormpostdetails/getdraft`,isloading);
+        }
         let res:any = await  Http.getInstance().get(`/ormpostdetails/getdraft`,isloading);
         res.data.ormpostdetails = data.ormpostdetails;
         return res;
@@ -143,6 +191,12 @@ export default class ORMPostDetailsServiceBase extends EntityService {
      * @memberof ORMPostDetailsServiceBase
      */
     public async Save(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.ormpost && context.ormpostdetails){
+            return Http.getInstance().post(`/ormposts/${context.ormpost}/ormpostdetails/${context.ormpostdetails}/save`,data,isloading);
+        }
+        if(context.ormpostlib && context.ormpostdetails){
+            return Http.getInstance().post(`/ormpostlibs/${context.ormpostlib}/ormpostdetails/${context.ormpostdetails}/save`,data,isloading);
+        }
         let masterData:any = {};
         Object.assign(data,masterData);
             let res:any = await  Http.getInstance().post(`/ormpostdetails/${context.ormpostdetails}/save`,data,isloading);
@@ -159,6 +213,12 @@ export default class ORMPostDetailsServiceBase extends EntityService {
      * @memberof ORMPostDetailsServiceBase
      */
     public async Remove(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.ormpost && context.ormpostdetails){
+            return Http.getInstance().delete(`/ormposts/${context.ormpost}/ormpostdetails/${context.ormpostdetails}`,isloading);
+        }
+        if(context.ormpostlib && context.ormpostdetails){
+            return Http.getInstance().delete(`/ormpostlibs/${context.ormpostlib}/ormpostdetails/${context.ormpostdetails}`,isloading);
+        }
             return Http.getInstance().delete(`/ormpostdetails/${context.ormpostdetails}`,isloading);
 
     }
@@ -173,6 +233,14 @@ export default class ORMPostDetailsServiceBase extends EntityService {
      * @memberof ORMPostDetailsServiceBase
      */
     public async FetchDefault(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.ormpost && true){
+            let tempData:any = JSON.parse(JSON.stringify(data));
+            return Http.getInstance().get(`/ormposts/${context.ormpost}/ormpostdetails/fetchdefault`,tempData,isloading);
+        }
+        if(context.ormpostlib && true){
+            let tempData:any = JSON.parse(JSON.stringify(data));
+            return Http.getInstance().get(`/ormpostlibs/${context.ormpostlib}/ormpostdetails/fetchdefault`,tempData,isloading);
+        }
         let tempData:any = JSON.parse(JSON.stringify(data));
         return Http.getInstance().get(`/ormpostdetails/fetchdefault`,tempData,isloading);
     }

@@ -188,6 +188,26 @@ public class PARTZGGServiceImpl extends ServiceImpl<PARTZGGMapper, PARTZGG> impl
         return true;
     }
 
+    @Override
+    public List<PARTZGG> getPartzggByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<PARTZGG> getPartzggByEntities(List<PARTZGG> entities) {
+        List ids =new ArrayList();
+        for(PARTZGG entity : entities){
+            Serializable id=entity.getPartzggid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

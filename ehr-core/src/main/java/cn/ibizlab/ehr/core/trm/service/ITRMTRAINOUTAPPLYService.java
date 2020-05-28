@@ -54,6 +54,9 @@ public interface ITRMTRAINOUTAPPLYService extends IService<TRMTRAINOUTAPPLY>{
      */
     boolean execute(String sql, Map param);
 
+    List<TRMTRAINOUTAPPLY> getTrmtrainoutapplyByIds(List<String> ids) ;
+    List<TRMTRAINOUTAPPLY> getTrmtrainoutapplyByEntities(List<TRMTRAINOUTAPPLY> entities) ;
+
 }
 
 

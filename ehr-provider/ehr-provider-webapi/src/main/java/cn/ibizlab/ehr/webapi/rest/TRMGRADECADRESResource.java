@@ -22,6 +22,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.access.prepost.PostAuthorize;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -39,15 +40,13 @@ import cn.ibizlab.ehr.core.trm.filter.TRMGRADECADRESSearchContext;
 public class TRMGRADECADRESResource {
 
     @Autowired
-    private ITRMGRADECADRESService trmgradecadresService;
+    public ITRMGRADECADRESService trmgradecadresService;
 
     @Autowired
     @Lazy
     public TRMGRADECADRESMapping trmgradecadresMapping;
 
-    public TRMGRADECADRESDTO permissionDTO=new TRMGRADECADRESDTO();
-
-    @PreAuthorize("hasPermission(#trmgradecadres_id,'Update',{'Sql',this.trmgradecadresMapping,#trmgradecadresdto})")
+    @PreAuthorize("hasPermission(this.trmgradecadresService.get(#trmgradecadres_id),'ehr-TRMGRADECADRES-Update')")
     @ApiOperation(value = "Update", tags = {"TRMGRADECADRES" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/trmgradecadres/{trmgradecadres_id}")
     @Transactional
@@ -59,7 +58,7 @@ public class TRMGRADECADRESResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.trmgradecadresMapping,#trmgradecadresdtos})")
+    @PreAuthorize("hasPermission(this.trmgradecadresService.getTrmgradecadresByEntities(this.trmgradecadresMapping.toDomain(#trmgradecadresdtos)),'ehr-TRMGRADECADRES-Update')")
     @ApiOperation(value = "UpdateBatch", tags = {"TRMGRADECADRES" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/trmgradecadres/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<TRMGRADECADRESDTO> trmgradecadresdtos) {
@@ -67,14 +66,13 @@ public class TRMGRADECADRESResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMGRADECADRES-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"TRMGRADECADRES" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmgradecadres/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody TRMGRADECADRESDTO trmgradecadresdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(trmgradecadresService.checkKey(trmgradecadresMapping.toDomain(trmgradecadresdto)));
     }
 
-    @PreAuthorize("hasPermission(#trmgradecadres_id,'Remove',{'Sql',this.trmgradecadresMapping,this.permissionDTO})")
+    @PreAuthorize("hasPermission(this.trmgradecadresService.get(#trmgradecadres_id),'ehr-TRMGRADECADRES-Remove')")
     @ApiOperation(value = "Remove", tags = {"TRMGRADECADRES" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/trmgradecadres/{trmgradecadres_id}")
     @Transactional
@@ -82,7 +80,7 @@ public class TRMGRADECADRESResource {
          return ResponseEntity.status(HttpStatus.OK).body(trmgradecadresService.remove(trmgradecadres_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.trmgradecadresMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission(this.trmgradecadresService.getTrmgradecadresByIds(#ids),'ehr-TRMGRADECADRES-Remove')")
     @ApiOperation(value = "RemoveBatch", tags = {"TRMGRADECADRES" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/trmgradecadres/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -90,7 +88,7 @@ public class TRMGRADECADRESResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('','Create',{'Sql',this.trmgradecadresMapping,#trmgradecadresdto})")
+    @PreAuthorize("hasPermission(this.trmgradecadresMapping.toDomain(#trmgradecadresdto),'ehr-TRMGRADECADRES-Create')")
     @ApiOperation(value = "Create", tags = {"TRMGRADECADRES" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmgradecadres")
     @Transactional
@@ -101,7 +99,7 @@ public class TRMGRADECADRESResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.trmgradecadresMapping,#trmgradecadresdtos})")
+    @PreAuthorize("hasPermission(this.trmgradecadresMapping.toDomain(#trmgradecadresdtos),'ehr-TRMGRADECADRES-Create')")
     @ApiOperation(value = "createBatch", tags = {"TRMGRADECADRES" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmgradecadres/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<TRMGRADECADRESDTO> trmgradecadresdtos) {
@@ -109,21 +107,20 @@ public class TRMGRADECADRESResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMGRADECADRES-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"TRMGRADECADRES" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/trmgradecadres/getdraft")
     public ResponseEntity<TRMGRADECADRESDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(trmgradecadresMapping.toDto(trmgradecadresService.getDraft(new TRMGRADECADRES())));
     }
 
-    @PreAuthorize("hasPermission('','Save',{'Sql',this.trmgradecadresMapping,#trmgradecadresdto})")
+    @PreAuthorize("hasPermission(this.trmgradecadresMapping.toDomain(#trmgradecadresdto),'ehr-TRMGRADECADRES-Save')")
     @ApiOperation(value = "Save", tags = {"TRMGRADECADRES" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmgradecadres/save")
     public ResponseEntity<Boolean> save(@RequestBody TRMGRADECADRESDTO trmgradecadresdto) {
         return ResponseEntity.status(HttpStatus.OK).body(trmgradecadresService.save(trmgradecadresMapping.toDomain(trmgradecadresdto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.trmgradecadresMapping,#trmgradecadresdtos})")
+    @PreAuthorize("hasPermission(this.trmgradecadresMapping.toDomain(#trmgradecadresdtos),'ehr-TRMGRADECADRES-Save')")
     @ApiOperation(value = "SaveBatch", tags = {"TRMGRADECADRES" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmgradecadres/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<TRMGRADECADRESDTO> trmgradecadresdtos) {
@@ -131,7 +128,7 @@ public class TRMGRADECADRESResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission(#trmgradecadres_id,'Get',{'Sql',this.trmgradecadresMapping,this.permissionDTO})")
+    @PostAuthorize("hasPermission(this.trmgradecadresMapping.toDomain(returnObject.body),'ehr-TRMGRADECADRES-Get')")
     @ApiOperation(value = "Get", tags = {"TRMGRADECADRES" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/trmgradecadres/{trmgradecadres_id}")
     public ResponseEntity<TRMGRADECADRESDTO> get(@PathVariable("trmgradecadres_id") String trmgradecadres_id) {
@@ -162,3 +159,4 @@ public class TRMGRADECADRESResource {
                 .body(new PageImpl(trmgradecadresMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 }
+

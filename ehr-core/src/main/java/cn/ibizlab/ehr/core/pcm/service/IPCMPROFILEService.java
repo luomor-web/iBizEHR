@@ -116,6 +116,9 @@ public interface IPCMPROFILEService extends IService<PCMPROFILE>{
      */
     boolean execute(String sql, Map param);
 
+    List<PCMPROFILE> getPcmprofileByIds(List<String> ids) ;
+    List<PCMPROFILE> getPcmprofileByEntities(List<PCMPROFILE> entities) ;
+
 }
 
 

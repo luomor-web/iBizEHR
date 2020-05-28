@@ -57,6 +57,9 @@ public interface IORMRANKService extends IService<ORMRANK>{
      */
     boolean execute(String sql, Map param);
 
+    List<ORMRANK> getOrmrankByIds(List<String> ids) ;
+    List<ORMRANK> getOrmrankByEntities(List<ORMRANK> entities) ;
+
 }
 
 

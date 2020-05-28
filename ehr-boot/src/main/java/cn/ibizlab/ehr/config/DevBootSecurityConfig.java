@@ -101,7 +101,10 @@ public class DevBootSecurityConfig extends WebSecurityConfigurerAdapter {
                         "/**/fonts/**",
                         "/**/js/**",
                         "/**/img/**",
-                        "/"
+                        "/",
+                        "webjars/**",
+                        "/swagger-resources/**",
+                        "/v2/**"
                 ).permitAll()
                     //放行登录请求
                    .antMatchers( HttpMethod.POST,"/"+loginPath).permitAll()

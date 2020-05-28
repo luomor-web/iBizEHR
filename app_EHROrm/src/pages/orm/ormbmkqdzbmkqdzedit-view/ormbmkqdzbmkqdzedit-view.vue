@@ -2,7 +2,7 @@
 import { Component } from 'vue-property-decorator';
 import ORMBMKQDZBMKQDZEditViewBase from './ormbmkqdzbmkqdzedit-view-base.vue';
 
-import view_form from '@widgets/ormbmkqdz/main-2-form/main-2-form.vue';
+import view_form from '@widgets/orm-bmkqdz/main-2-form/main-2-form.vue';
 
 /**
  * 部门考勤地址

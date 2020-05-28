@@ -49,7 +49,7 @@ public class ContractSignORGServiceImpl extends ServiceImpl<ContractSignORGMappe
     private cn.ibizlab.ehr.core.pim.service.IPIMCONTRACTService pimcontractService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.orm.service.IORMORGService ormorgService;
+    private cn.ibizlab.ehr.core.orm.service.IOrmOrgService ormorgService;
     @Autowired
     @Lazy
     private cn.ibizlab.ehr.core.orm.service.IOrmSignOrgService ormsignorgService;
@@ -206,9 +206,9 @@ public class ContractSignORGServiceImpl extends ServiceImpl<ContractSignORGMappe
     private void fillParentData(ContractSignORG et){
         //实体关系[DER1N_CONTRACTSIGNORG_ORMORG_ORMORGID]
         if(!ObjectUtils.isEmpty(et.getOrmorgid())){
-            cn.ibizlab.ehr.core.orm.domain.ORMORG ormorg=et.getOrmorg();
+            cn.ibizlab.ehr.core.orm.domain.OrmOrg ormorg=et.getOrmorg();
             if(ObjectUtils.isEmpty(ormorg)){
-                cn.ibizlab.ehr.core.orm.domain.ORMORG majorEntity=ormorgService.get(et.getOrmorgid());
+                cn.ibizlab.ehr.core.orm.domain.OrmOrg majorEntity=ormorgService.get(et.getOrmorgid());
                 et.setOrmorg(majorEntity);
                 ormorg=majorEntity;
             }
@@ -248,6 +248,26 @@ public class ContractSignORGServiceImpl extends ServiceImpl<ContractSignORGMappe
         }
         log.warn("暂未支持的SQL语法");
         return true;
+    }
+
+    @Override
+    public List<ContractSignORG> getContractsignorgByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<ContractSignORG> getContractsignorgByEntities(List<ContractSignORG> entities) {
+        List ids =new ArrayList();
+        for(ContractSignORG entity : entities){
+            Serializable id=entity.getContractsignorgid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
     }
 
 }

@@ -179,6 +179,26 @@ public class ATTENDANCEDATEServiceImpl extends ServiceImpl<ATTENDANCEDATEMapper,
         return true;
     }
 
+    @Override
+    public List<ATTENDANCEDATE> getAttendancedateByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<ATTENDANCEDATE> getAttendancedateByEntities(List<ATTENDANCEDATE> entities) {
+        List ids =new ArrayList();
+        for(ATTENDANCEDATE entity : entities){
+            Serializable id=entity.getAttendancedateid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

@@ -206,6 +206,26 @@ public class OrmSignOrgServiceImpl extends ServiceImpl<OrmSignOrgMapper, OrmSign
         return true;
     }
 
+    @Override
+    public List<OrmSignOrg> getOrmsignorgByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<OrmSignOrg> getOrmsignorgByEntities(List<OrmSignOrg> entities) {
+        List ids =new ArrayList();
+        for(OrmSignOrg entity : entities){
+            Serializable id=entity.getOrmsignorgid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

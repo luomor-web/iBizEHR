@@ -46,7 +46,7 @@ public class ORMXMBMXServiceImpl extends ServiceImpl<ORMXMBMXMapper, ORMXMBMX> i
 
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.orm.service.IORMORGSECTORService ormorgsectorService;
+    private cn.ibizlab.ehr.core.orm.service.IOrmOrgsectorService ormorgsectorService;
     @Autowired
     @Lazy
     private cn.ibizlab.ehr.core.pim.service.IPIMPERSONService pimpersonService;
@@ -194,9 +194,9 @@ public class ORMXMBMXServiceImpl extends ServiceImpl<ORMXMBMXMapper, ORMXMBMX> i
     private void fillParentData(ORMXMBMX et){
         //实体关系[DER1N_ORMXMBMX_ORMORGSECTOR_ORMORGSECTORID]
         if(!ObjectUtils.isEmpty(et.getOrmorgsectorid())){
-            cn.ibizlab.ehr.core.orm.domain.ORMORGSECTOR ormorgsector=et.getOrmorgsector();
+            cn.ibizlab.ehr.core.orm.domain.OrmOrgsector ormorgsector=et.getOrmorgsector();
             if(ObjectUtils.isEmpty(ormorgsector)){
-                cn.ibizlab.ehr.core.orm.domain.ORMORGSECTOR majorEntity=ormorgsectorService.get(et.getOrmorgsectorid());
+                cn.ibizlab.ehr.core.orm.domain.OrmOrgsector majorEntity=ormorgsectorService.get(et.getOrmorgsectorid());
                 et.setOrmorgsector(majorEntity);
                 ormorgsector=majorEntity;
             }
@@ -236,6 +236,26 @@ public class ORMXMBMXServiceImpl extends ServiceImpl<ORMXMBMXMapper, ORMXMBMX> i
         }
         log.warn("暂未支持的SQL语法");
         return true;
+    }
+
+    @Override
+    public List<ORMXMBMX> getOrmxmbmxByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<ORMXMBMX> getOrmxmbmxByEntities(List<ORMXMBMX> entities) {
+        List ids =new ArrayList();
+        for(ORMXMBMX entity : entities){
+            Serializable id=entity.getOrmxmbmxid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
     }
 
 }

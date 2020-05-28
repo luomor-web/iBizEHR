@@ -20,9 +20,9 @@
 		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
 		<association property="ormduty" javaType="cn.ibizlab.ehr.core.orm.domain.ORMDUTY" column="ormdutyid" select="cn.ibizlab.ehr.core.orm.mapper.ORMDUTYMapper.selectById" fetchType="lazy"></association>
 		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
-		<association property="ormorgsector" javaType="cn.ibizlab.ehr.core.orm.domain.ORMORGSECTOR" column="ormorgsectorid" select="cn.ibizlab.ehr.core.orm.mapper.ORMORGSECTORMapper.selectById" fetchType="lazy"></association>
+		<association property="ormorgsector" javaType="cn.ibizlab.ehr.core.orm.domain.OrmOrgsector" column="ormorgsectorid" select="cn.ibizlab.ehr.core.orm.mapper.OrmOrgsectorMapper.selectById" fetchType="lazy"></association>
 		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
-		<association property="ormorg" javaType="cn.ibizlab.ehr.core.orm.domain.ORMORG" column="ormorgid" select="cn.ibizlab.ehr.core.orm.mapper.ORMORGMapper.selectById" fetchType="lazy"></association>
+		<association property="ormorg" javaType="cn.ibizlab.ehr.core.orm.domain.OrmOrg" column="ormorgid" select="cn.ibizlab.ehr.core.orm.mapper.OrmOrgMapper.selectById" fetchType="lazy"></association>
 		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
 		<association property="ormpost" javaType="cn.ibizlab.ehr.core.orm.domain.ORMPOST" column="ormpostid" select="cn.ibizlab.ehr.core.orm.mapper.ORMPOSTMapper.selectById" fetchType="lazy"></association>
     </resultMap>
@@ -80,23 +80,10 @@
 			]]>
     </sql>
 
-    <!--数据查询[Default]-->
-    <sql id="Default" databaseId="oracle">
-       <![CDATA[	SELECT t1.CREATEDATE, t1.CREATEMAN, t1.ORMDUTYID, t41.ORMDUTYNAME, t1.ORMORGID, t21.ORGNAME AS ORMORGNAME, t1.ORMORGSECTORID, t31.ORGSECTORNAME AS ORMORGSECTORNAME, t1.ORMPOSTID, t11.ORMPOSTNAME, t1.PCMRECRUITMENTID, t1.PCMRECRUITMENTNAME, t1.RECRUITMENTTYPE, t1.REQUIREMENTS, t1.SFZPWC, t1.SJZPRS, t1.UPDATEDATE, t1.UPDATEMAN, t1.YJZPRS FROM T_PCMRECRUITMENT t1  LEFT JOIN T_ORMPOST t11 ON t1.ORMPOSTID = t11.ORMPOSTID  LEFT JOIN T_SRFORG t21 ON t1.ORMORGID = t21.ORGID  LEFT JOIN T_SRFORGSECTOR t31 ON t1.ORMORGSECTORID = t31.ORGSECTORID  LEFT JOIN T_ORMDUTY t41 ON t1.ORMDUTYID = t41.ORMDUTYID  
-			]]>
-    </sql>
-
     <!--数据查询[NBZP]-->
     <sql id="NBZP" databaseId="mysql">
        <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ORMDUTYID`, t41.`ORMDUTYNAME`, t1.`ORMORGID`, t21.`ORGNAME` AS `ORMORGNAME`, t1.`ORMORGSECTORID`, t31.`ORGSECTORNAME` AS `ORMORGSECTORNAME`, t1.`ORMPOSTID`, t11.`ORMPOSTNAME`, t1.`PCMRECRUITMENTID`, t1.`PCMRECRUITMENTNAME`, t1.`RECRUITMENTTYPE`, t1.`REQUIREMENTS`, t1.`SFZPWC`, t1.`SJZPRS`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`YJZPRS` FROM `T_PCMRECRUITMENT` t1  LEFT JOIN T_ORMPOST t11 ON t1.ORMPOSTID = t11.ORMPOSTID  LEFT JOIN T_SRFORG t21 ON t1.ORMORGID = t21.ORGID  LEFT JOIN T_SRFORGSECTOR t31 ON t1.ORMORGSECTORID = t31.ORGSECTORID  LEFT JOIN T_ORMDUTY t41 ON t1.ORMDUTYID = t41.ORMDUTYID  
 				 WHERE 	( t1.`RECRUITMENTTYPE` = '30' )
-			]]>
-    </sql>
-
-    <!--数据查询[NBZP]-->
-    <sql id="NBZP" databaseId="oracle">
-       <![CDATA[	SELECT t1.CREATEDATE, t1.CREATEMAN, t1.ORMDUTYID, t41.ORMDUTYNAME, t1.ORMORGID, t21.ORGNAME AS ORMORGNAME, t1.ORMORGSECTORID, t31.ORGSECTORNAME AS ORMORGSECTORNAME, t1.ORMPOSTID, t11.ORMPOSTNAME, t1.PCMRECRUITMENTID, t1.PCMRECRUITMENTNAME, t1.RECRUITMENTTYPE, t1.REQUIREMENTS, t1.SFZPWC, t1.SJZPRS, t1.UPDATEDATE, t1.UPDATEMAN, t1.YJZPRS FROM T_PCMRECRUITMENT t1  LEFT JOIN T_ORMPOST t11 ON t1.ORMPOSTID = t11.ORMPOSTID  LEFT JOIN T_SRFORG t21 ON t1.ORMORGID = t21.ORGID  LEFT JOIN T_SRFORGSECTOR t31 ON t1.ORMORGSECTORID = t31.ORGSECTORID  LEFT JOIN T_ORMDUTY t41 ON t1.ORMDUTYID = t41.ORMDUTYID  
-				 WHERE 	( t1.RECRUITMENTTYPE = '30' )
 			]]>
     </sql>
 

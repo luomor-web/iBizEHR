@@ -2,7 +2,7 @@
 import { Component } from 'vue-property-decorator';
 import ORMORGXjPickupViewBase from './ormorgxj-pickup-view-base.vue';
 
-import view_pickupviewpanel from '@widgets/ormorg/xj-pickup-viewpickupviewpanel-pickupviewpanel/xj-pickup-viewpickupviewpanel-pickupviewpanel.vue';
+import view_pickupviewpanel from '@widgets/orm-org/xj-pickup-viewpickupviewpanel-pickupviewpanel/xj-pickup-viewpickupviewpanel-pickupviewpanel.vue';
 
 /**
  * 组织管理数据选择视图

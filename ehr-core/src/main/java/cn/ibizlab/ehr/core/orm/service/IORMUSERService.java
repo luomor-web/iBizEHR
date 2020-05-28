@@ -57,6 +57,9 @@ public interface IORMUSERService extends IService<ORMUSER>{
      */
     boolean execute(String sql, Map param);
 
+    List<ORMUSER> getOrmuserByIds(List<String> ids) ;
+    List<ORMUSER> getOrmuserByEntities(List<ORMUSER> entities) ;
+
 }
 
 

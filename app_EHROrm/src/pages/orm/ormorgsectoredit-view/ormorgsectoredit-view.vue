@@ -2,7 +2,7 @@
 import { Component } from 'vue-property-decorator';
 import ORMORGSECTOREditViewBase from './ormorgsectoredit-view-base.vue';
 
-import view_form from '@widgets/ormorgsector/main-form/main-form.vue';
+import view_form from '@widgets/orm-orgsector/main-form/main-form.vue';
 
 /**
  * 部门

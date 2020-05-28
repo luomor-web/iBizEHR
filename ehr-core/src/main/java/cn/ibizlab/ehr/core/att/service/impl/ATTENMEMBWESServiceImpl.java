@@ -179,6 +179,26 @@ public class ATTENMEMBWESServiceImpl extends ServiceImpl<ATTENMEMBWESMapper, ATT
         return true;
     }
 
+    @Override
+    public List<ATTENMEMBWES> getAttenmembwesByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<ATTENMEMBWES> getAttenmembwesByEntities(List<ATTENMEMBWES> entities) {
+        List ids =new ArrayList();
+        for(ATTENMEMBWES entity : entities){
+            Serializable id=entity.getAttenmembwesid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

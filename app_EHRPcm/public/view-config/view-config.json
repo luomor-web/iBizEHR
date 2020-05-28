@@ -603,8 +603,8 @@
         "memo": "系统自动添加"
     },
     "index": {
-        "title": "招聘管理",
-        "caption": "招聘管理",
+        "title": "EHR—招聘管理",
+        "caption": "EHR—招聘管理",
         "viewtype": "APPINDEXVIEW",
         "viewmodule": "PCM",
         "viewname": "Index",

@@ -420,11 +420,11 @@ export default class ORMPostDetailsGridViewBase extends GridViewBase {
     public newdata(args: any[],fullargs?:any[], params?: any, $event?: any, xData?: any) {
         const batchAddPSAppViews=[
             {view:{viewname:'ormpostmpickup-view',height: 0,width: 0,title: '岗位管理数据多项选择视图'},
-            res:[],
-            'resAppKey':''},
+            res:['ORMPOST'],
+            'resAppKey':'ormpostid'},
             {view:{viewname:'ormpost-lib-mpickup-view',height: 0,width: 0,title: '标准岗位'},
-            res:[],
-            'resAppKey':''}
+            res:['ORMPostLib'],
+            'resAppKey':'ormpostlibid'}
         ];
         if(batchAddPSAppViews.length == 0 || !this.context.srfparentdename){
             this.$Notice.warning({ title: '错误', desc: '批量添加需添加N:N关系' });
@@ -481,7 +481,12 @@ export default class ORMPostDetailsGridViewBase extends GridViewBase {
         if(args.length >0){
             Object.assign(curViewParam,args[0]);
         }
-        const deResParameters: any[] = [];
+        let deResParameters: any[] = [];
+        if(curViewParam.ormpostlib && true){
+            deResParameters = [
+            { pathName: 'ormpostlibs', parameterName: 'ormpostlib' },
+            ]
+        }
         const parameters: any[] = [
             { pathName: 'ormpostdetails', parameterName: 'ormpostdetails' },
             { pathName: 'editview', parameterName: 'editview' },

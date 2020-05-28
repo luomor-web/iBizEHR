@@ -22,6 +22,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.access.prepost.PostAuthorize;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -39,22 +40,19 @@ import cn.ibizlab.ehr.core.att.filter.ATTENSUMMARYSearchContext;
 public class ATTENSUMMARYResource {
 
     @Autowired
-    private IATTENSUMMARYService attensummaryService;
+    public IATTENSUMMARYService attensummaryService;
 
     @Autowired
     @Lazy
     public ATTENSUMMARYMapping attensummaryMapping;
 
-    public ATTENSUMMARYDTO permissionDTO=new ATTENSUMMARYDTO();
-
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ATTENSUMMARY-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"ATTENSUMMARY" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/attensummaries/getdraft")
     public ResponseEntity<ATTENSUMMARYDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(attensummaryMapping.toDto(attensummaryService.getDraft(new ATTENSUMMARY())));
     }
 
-    @PreAuthorize("hasPermission('','Create',{'Sql',this.attensummaryMapping,#attensummarydto})")
+    @PreAuthorize("hasPermission(this.attensummaryMapping.toDomain(#attensummarydto),'ehr-ATTENSUMMARY-Create')")
     @ApiOperation(value = "Create", tags = {"ATTENSUMMARY" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/attensummaries")
     @Transactional
@@ -65,7 +63,7 @@ public class ATTENSUMMARYResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.attensummaryMapping,#attensummarydtos})")
+    @PreAuthorize("hasPermission(this.attensummaryMapping.toDomain(#attensummarydtos),'ehr-ATTENSUMMARY-Create')")
     @ApiOperation(value = "createBatch", tags = {"ATTENSUMMARY" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/attensummaries/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<ATTENSUMMARYDTO> attensummarydtos) {
@@ -73,7 +71,7 @@ public class ATTENSUMMARYResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission(#attensummary_id,'Remove',{'Sql',this.attensummaryMapping,this.permissionDTO})")
+    @PreAuthorize("hasPermission(this.attensummaryService.get(#attensummary_id),'ehr-ATTENSUMMARY-Remove')")
     @ApiOperation(value = "Remove", tags = {"ATTENSUMMARY" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/attensummaries/{attensummary_id}")
     @Transactional
@@ -81,7 +79,7 @@ public class ATTENSUMMARYResource {
          return ResponseEntity.status(HttpStatus.OK).body(attensummaryService.remove(attensummary_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.attensummaryMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission(this.attensummaryService.getAttensummaryByIds(#ids),'ehr-ATTENSUMMARY-Remove')")
     @ApiOperation(value = "RemoveBatch", tags = {"ATTENSUMMARY" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/attensummaries/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -89,7 +87,7 @@ public class ATTENSUMMARYResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission(#attensummary_id,'Update',{'Sql',this.attensummaryMapping,#attensummarydto})")
+    @PreAuthorize("hasPermission(this.attensummaryService.get(#attensummary_id),'ehr-ATTENSUMMARY-Update')")
     @ApiOperation(value = "Update", tags = {"ATTENSUMMARY" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/attensummaries/{attensummary_id}")
     @Transactional
@@ -101,7 +99,7 @@ public class ATTENSUMMARYResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.attensummaryMapping,#attensummarydtos})")
+    @PreAuthorize("hasPermission(this.attensummaryService.getAttensummaryByEntities(this.attensummaryMapping.toDomain(#attensummarydtos)),'ehr-ATTENSUMMARY-Update')")
     @ApiOperation(value = "UpdateBatch", tags = {"ATTENSUMMARY" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/attensummaries/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<ATTENSUMMARYDTO> attensummarydtos) {
@@ -109,7 +107,7 @@ public class ATTENSUMMARYResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission(#attensummary_id,'Get',{'Sql',this.attensummaryMapping,this.permissionDTO})")
+    @PostAuthorize("hasPermission(this.attensummaryMapping.toDomain(returnObject.body),'ehr-ATTENSUMMARY-Get')")
     @ApiOperation(value = "Get", tags = {"ATTENSUMMARY" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/attensummaries/{attensummary_id}")
     public ResponseEntity<ATTENSUMMARYDTO> get(@PathVariable("attensummary_id") String attensummary_id) {
@@ -118,14 +116,14 @@ public class ATTENSUMMARYResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('','Save',{'Sql',this.attensummaryMapping,#attensummarydto})")
+    @PreAuthorize("hasPermission(this.attensummaryMapping.toDomain(#attensummarydto),'ehr-ATTENSUMMARY-Save')")
     @ApiOperation(value = "Save", tags = {"ATTENSUMMARY" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/attensummaries/save")
     public ResponseEntity<Boolean> save(@RequestBody ATTENSUMMARYDTO attensummarydto) {
         return ResponseEntity.status(HttpStatus.OK).body(attensummaryService.save(attensummaryMapping.toDomain(attensummarydto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.attensummaryMapping,#attensummarydtos})")
+    @PreAuthorize("hasPermission(this.attensummaryMapping.toDomain(#attensummarydtos),'ehr-ATTENSUMMARY-Save')")
     @ApiOperation(value = "SaveBatch", tags = {"ATTENSUMMARY" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/attensummaries/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<ATTENSUMMARYDTO> attensummarydtos) {
@@ -133,7 +131,6 @@ public class ATTENSUMMARYResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ATTENSUMMARY-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"ATTENSUMMARY" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/attensummaries/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody ATTENSUMMARYDTO attensummarydto) {
@@ -195,3 +192,4 @@ public class ATTENSUMMARYResource {
                 .body(new PageImpl(attensummaryMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 }
+

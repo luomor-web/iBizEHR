@@ -216,6 +216,26 @@ public class PCMPRACTICEEXPERIENCEServiceImpl extends ServiceImpl<PCMPRACTICEEXP
         return true;
     }
 
+    @Override
+    public List<PCMPRACTICEEXPERIENCE> getPcmpracticeexperienceByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<PCMPRACTICEEXPERIENCE> getPcmpracticeexperienceByEntities(List<PCMPRACTICEEXPERIENCE> entities) {
+        List ids =new ArrayList();
+        for(PCMPRACTICEEXPERIENCE entity : entities){
+            Serializable id=entity.getPcmpracticeexperienceid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

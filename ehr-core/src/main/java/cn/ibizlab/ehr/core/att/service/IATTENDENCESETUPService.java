@@ -62,6 +62,9 @@ public interface IATTENDENCESETUPService extends IService<ATTENDENCESETUP>{
      */
     boolean execute(String sql, Map param);
 
+    List<ATTENDENCESETUP> getAttendencesetupByIds(List<String> ids) ;
+    List<ATTENDENCESETUP> getAttendencesetupByEntities(List<ATTENDENCESETUP> entities) ;
+
 }
 
 

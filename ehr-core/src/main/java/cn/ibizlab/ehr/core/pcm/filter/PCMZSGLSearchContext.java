@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.HashMap;
 
-import lombok.Data;
+import lombok.*;
 import lombok.extern.slf4j.Slf4j;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.alibaba.fastjson.annotation.JSONField;
@@ -27,6 +27,13 @@ import cn.ibizlab.ehr.core.pcm.domain.PCMZSGL;
 @Data
 public class PCMZSGLSearchContext extends QueryWrapperContext<PCMZSGL> {
 
+	private String n_zjname_eq;//[职级]
+	public void setN_zjname_eq(String n_zjname_eq) {
+        this.n_zjname_eq = n_zjname_eq;
+        if(!ObjectUtils.isEmpty(this.n_zjname_eq)){
+            this.getSelectCond().eq("zjname", n_zjname_eq);
+        }
+    }
 	private String n_pcmzsglname_like;//[职数管理名称]
 	public void setN_pcmzsglname_like(String n_pcmzsglname_like) {
         this.n_pcmzsglname_like = n_pcmzsglname_like;
@@ -42,7 +49,9 @@ public class PCMZSGLSearchContext extends QueryWrapperContext<PCMZSGL> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("pcmzsglname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("pcmzsglname", query)   
+            );
 		 }
 	}
 }

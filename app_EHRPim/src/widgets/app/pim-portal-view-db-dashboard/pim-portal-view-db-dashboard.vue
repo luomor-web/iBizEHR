@@ -5,7 +5,7 @@ import view_db_sysportlet5 from '@widgets/pimtitle/org-title-bar-portlet/org-tit
 import view_db_sysportlet4 from '@widgets/pimperson/org-person-age-funnel-portlet/org-person-age-funnel-portlet.vue';
 import view_db_sysportlet3 from '@widgets/pimeducation/org-edu-pie-portlet/org-edu-pie-portlet.vue';
 import view_db_sysportlet2 from '@widgets/pimoutput/org-out-put-line-portlet/org-out-put-line-portlet.vue';
-import view_db_sysportlet1 from '@widgets/ormorg/org-bar-portlet/org-bar-portlet.vue';
+import view_db_sysportlet1 from '@widgets/orm-org/org-bar-portlet/org-bar-portlet.vue';
 
  
 @Component({

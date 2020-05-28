@@ -60,6 +60,9 @@ public interface ITRMTRAINFILLINService extends IService<TRMTRAINFILLIN>{
      */
     boolean execute(String sql, Map param);
 
+    List<TRMTRAINFILLIN> getTrmtrainfillinByIds(List<String> ids) ;
+    List<TRMTRAINFILLIN> getTrmtrainfillinByEntities(List<TRMTRAINFILLIN> entities) ;
+
 }
 
 

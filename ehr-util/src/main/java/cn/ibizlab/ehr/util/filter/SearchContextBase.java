@@ -4,7 +4,7 @@ import cn.ibizlab.ehr.util.security.AuthenticationUser;
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Data;
+import lombok.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.PageRequest;
 import com.fasterxml.jackson.annotation.JsonIgnore;

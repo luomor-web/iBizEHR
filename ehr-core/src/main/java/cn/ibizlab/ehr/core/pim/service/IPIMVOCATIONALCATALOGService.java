@@ -52,6 +52,9 @@ public interface IPIMVOCATIONALCATALOGService extends IService<PIMVOCATIONALCATA
      */
     boolean execute(String sql, Map param);
 
+    List<PIMVOCATIONALCATALOG> getPimvocationalcatalogByIds(List<String> ids) ;
+    List<PIMVOCATIONALCATALOG> getPimvocationalcatalogByEntities(List<PIMVOCATIONALCATALOG> entities) ;
+
 }
 
 

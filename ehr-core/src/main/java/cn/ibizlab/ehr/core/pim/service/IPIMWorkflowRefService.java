@@ -54,6 +54,9 @@ public interface IPIMWorkflowRefService extends IService<PIMWorkflowRef>{
      */
     boolean execute(String sql, Map param);
 
+    List<PIMWorkflowRef> getPimworkflowrefByIds(List<String> ids) ;
+    List<PIMWorkflowRef> getPimworkflowrefByEntities(List<PIMWorkflowRef> entities) ;
+
 }
 
 

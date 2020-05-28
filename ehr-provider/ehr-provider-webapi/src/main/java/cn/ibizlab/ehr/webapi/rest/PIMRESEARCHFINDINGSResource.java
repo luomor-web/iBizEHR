@@ -22,6 +22,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.access.prepost.PostAuthorize;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -39,15 +40,13 @@ import cn.ibizlab.ehr.core.pim.filter.PIMRESEARCHFINDINGSSearchContext;
 public class PIMRESEARCHFINDINGSResource {
 
     @Autowired
-    private IPIMRESEARCHFINDINGSService pimresearchfindingsService;
+    public IPIMRESEARCHFINDINGSService pimresearchfindingsService;
 
     @Autowired
     @Lazy
     public PIMRESEARCHFINDINGSMapping pimresearchfindingsMapping;
 
-    public PIMRESEARCHFINDINGSDTO permissionDTO=new PIMRESEARCHFINDINGSDTO();
-
-    @PreAuthorize("hasPermission(#pimresearchfindings_id,'Update',{'Sql',this.pimresearchfindingsMapping,#pimresearchfindingsdto})")
+    @PreAuthorize("hasPermission(this.pimresearchfindingsService.get(#pimresearchfindings_id),'ehr-PIMRESEARCHFINDINGS-Update')")
     @ApiOperation(value = "Update", tags = {"PIMRESEARCHFINDINGS" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimresearchfindings/{pimresearchfindings_id}")
     @Transactional
@@ -59,7 +58,7 @@ public class PIMRESEARCHFINDINGSResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.pimresearchfindingsMapping,#pimresearchfindingsdtos})")
+    @PreAuthorize("hasPermission(this.pimresearchfindingsService.getPimresearchfindingsByEntities(this.pimresearchfindingsMapping.toDomain(#pimresearchfindingsdtos)),'ehr-PIMRESEARCHFINDINGS-Update')")
     @ApiOperation(value = "UpdateBatch", tags = {"PIMRESEARCHFINDINGS" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimresearchfindings/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PIMRESEARCHFINDINGSDTO> pimresearchfindingsdtos) {
@@ -67,7 +66,7 @@ public class PIMRESEARCHFINDINGSResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission(#pimresearchfindings_id,'Remove',{'Sql',this.pimresearchfindingsMapping,this.permissionDTO})")
+    @PreAuthorize("hasPermission(this.pimresearchfindingsService.get(#pimresearchfindings_id),'ehr-PIMRESEARCHFINDINGS-Remove')")
     @ApiOperation(value = "Remove", tags = {"PIMRESEARCHFINDINGS" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimresearchfindings/{pimresearchfindings_id}")
     @Transactional
@@ -75,7 +74,7 @@ public class PIMRESEARCHFINDINGSResource {
          return ResponseEntity.status(HttpStatus.OK).body(pimresearchfindingsService.remove(pimresearchfindings_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.pimresearchfindingsMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission(this.pimresearchfindingsService.getPimresearchfindingsByIds(#ids),'ehr-PIMRESEARCHFINDINGS-Remove')")
     @ApiOperation(value = "RemoveBatch", tags = {"PIMRESEARCHFINDINGS" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimresearchfindings/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -83,7 +82,7 @@ public class PIMRESEARCHFINDINGSResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission(#pimresearchfindings_id,'Get',{'Sql',this.pimresearchfindingsMapping,this.permissionDTO})")
+    @PostAuthorize("hasPermission(this.pimresearchfindingsMapping.toDomain(returnObject.body),'ehr-PIMRESEARCHFINDINGS-Get')")
     @ApiOperation(value = "Get", tags = {"PIMRESEARCHFINDINGS" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimresearchfindings/{pimresearchfindings_id}")
     public ResponseEntity<PIMRESEARCHFINDINGSDTO> get(@PathVariable("pimresearchfindings_id") String pimresearchfindings_id) {
@@ -92,28 +91,26 @@ public class PIMRESEARCHFINDINGSResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMRESEARCHFINDINGS-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"PIMRESEARCHFINDINGS" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimresearchfindings/getdraft")
     public ResponseEntity<PIMRESEARCHFINDINGSDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(pimresearchfindingsMapping.toDto(pimresearchfindingsService.getDraft(new PIMRESEARCHFINDINGS())));
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMRESEARCHFINDINGS-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"PIMRESEARCHFINDINGS" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimresearchfindings/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PIMRESEARCHFINDINGSDTO pimresearchfindingsdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pimresearchfindingsService.checkKey(pimresearchfindingsMapping.toDomain(pimresearchfindingsdto)));
     }
 
-    @PreAuthorize("hasPermission('','Save',{'Sql',this.pimresearchfindingsMapping,#pimresearchfindingsdto})")
+    @PreAuthorize("hasPermission(this.pimresearchfindingsMapping.toDomain(#pimresearchfindingsdto),'ehr-PIMRESEARCHFINDINGS-Save')")
     @ApiOperation(value = "Save", tags = {"PIMRESEARCHFINDINGS" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimresearchfindings/save")
     public ResponseEntity<Boolean> save(@RequestBody PIMRESEARCHFINDINGSDTO pimresearchfindingsdto) {
         return ResponseEntity.status(HttpStatus.OK).body(pimresearchfindingsService.save(pimresearchfindingsMapping.toDomain(pimresearchfindingsdto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.pimresearchfindingsMapping,#pimresearchfindingsdtos})")
+    @PreAuthorize("hasPermission(this.pimresearchfindingsMapping.toDomain(#pimresearchfindingsdtos),'ehr-PIMRESEARCHFINDINGS-Save')")
     @ApiOperation(value = "SaveBatch", tags = {"PIMRESEARCHFINDINGS" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimresearchfindings/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PIMRESEARCHFINDINGSDTO> pimresearchfindingsdtos) {
@@ -121,7 +118,7 @@ public class PIMRESEARCHFINDINGSResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('','Create',{'Sql',this.pimresearchfindingsMapping,#pimresearchfindingsdto})")
+    @PreAuthorize("hasPermission(this.pimresearchfindingsMapping.toDomain(#pimresearchfindingsdto),'ehr-PIMRESEARCHFINDINGS-Create')")
     @ApiOperation(value = "Create", tags = {"PIMRESEARCHFINDINGS" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimresearchfindings")
     @Transactional
@@ -132,7 +129,7 @@ public class PIMRESEARCHFINDINGSResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.pimresearchfindingsMapping,#pimresearchfindingsdtos})")
+    @PreAuthorize("hasPermission(this.pimresearchfindingsMapping.toDomain(#pimresearchfindingsdtos),'ehr-PIMRESEARCHFINDINGS-Create')")
     @ApiOperation(value = "createBatch", tags = {"PIMRESEARCHFINDINGS" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimresearchfindings/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PIMRESEARCHFINDINGSDTO> pimresearchfindingsdtos) {
@@ -203,7 +200,7 @@ public class PIMRESEARCHFINDINGSResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimresearchfindingsMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-    @PreAuthorize("hasPermission(#pimresearchfindings_id,'Update',{'Sql',this.pimresearchfindingsMapping,#pimresearchfindingsdto})")
+    @PreAuthorize("hasPermission(this.pimresearchfindingsService.get(#pimresearchfindings_id),'ehr-PIMRESEARCHFINDINGS-Update')")
     @ApiOperation(value = "UpdateByPIMPERSON", tags = {"PIMRESEARCHFINDINGS" },  notes = "UpdateByPIMPERSON")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimpeople/{pimperson_id}/pimresearchfindings/{pimresearchfindings_id}")
     @Transactional
@@ -216,7 +213,7 @@ public class PIMRESEARCHFINDINGSResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.pimresearchfindingsMapping,#pimresearchfindingsdtos})")
+    @PreAuthorize("hasPermission(this.pimresearchfindingsService.getPimresearchfindingsByEntities(this.pimresearchfindingsMapping.toDomain(#pimresearchfindingsdtos)),'ehr-PIMRESEARCHFINDINGS-Update')")
     @ApiOperation(value = "UpdateBatchByPIMPERSON", tags = {"PIMRESEARCHFINDINGS" },  notes = "UpdateBatchByPIMPERSON")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimpeople/{pimperson_id}/pimresearchfindings/batch")
     public ResponseEntity<Boolean> updateBatchByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody List<PIMRESEARCHFINDINGSDTO> pimresearchfindingsdtos) {
@@ -228,7 +225,7 @@ public class PIMRESEARCHFINDINGSResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission(#pimresearchfindings_id,'Remove',{'Sql',this.pimresearchfindingsMapping,this.permissionDTO})")
+    @PreAuthorize("hasPermission(this.pimresearchfindingsService.get(#pimresearchfindings_id),'ehr-PIMRESEARCHFINDINGS-Remove')")
     @ApiOperation(value = "RemoveByPIMPERSON", tags = {"PIMRESEARCHFINDINGS" },  notes = "RemoveByPIMPERSON")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimpeople/{pimperson_id}/pimresearchfindings/{pimresearchfindings_id}")
     @Transactional
@@ -236,7 +233,7 @@ public class PIMRESEARCHFINDINGSResource {
 		return ResponseEntity.status(HttpStatus.OK).body(pimresearchfindingsService.remove(pimresearchfindings_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.pimresearchfindingsMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission(this.pimresearchfindingsService.getPimresearchfindingsByIds(#ids),'ehr-PIMRESEARCHFINDINGS-Remove')")
     @ApiOperation(value = "RemoveBatchByPIMPERSON", tags = {"PIMRESEARCHFINDINGS" },  notes = "RemoveBatchByPIMPERSON")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimpeople/{pimperson_id}/pimresearchfindings/batch")
     public ResponseEntity<Boolean> removeBatchByPIMPERSON(@RequestBody List<String> ids) {
@@ -244,7 +241,7 @@ public class PIMRESEARCHFINDINGSResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission(#pimresearchfindings_id,'Get',{'Sql',this.pimresearchfindingsMapping,this.permissionDTO})")
+    @PostAuthorize("hasPermission(this.pimresearchfindingsMapping.toDomain(returnObject.body),'ehr-PIMRESEARCHFINDINGS-Get')")
     @ApiOperation(value = "GetByPIMPERSON", tags = {"PIMRESEARCHFINDINGS" },  notes = "GetByPIMPERSON")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimpeople/{pimperson_id}/pimresearchfindings/{pimresearchfindings_id}")
     public ResponseEntity<PIMRESEARCHFINDINGSDTO> getByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimresearchfindings_id") String pimresearchfindings_id) {
@@ -253,7 +250,6 @@ public class PIMRESEARCHFINDINGSResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMRESEARCHFINDINGS-GetDraft-all')")
     @ApiOperation(value = "GetDraftByPIMPERSON", tags = {"PIMRESEARCHFINDINGS" },  notes = "GetDraftByPIMPERSON")
     @RequestMapping(method = RequestMethod.GET, value = "/pimpeople/{pimperson_id}/pimresearchfindings/getdraft")
     public ResponseEntity<PIMRESEARCHFINDINGSDTO> getDraftByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id) {
@@ -262,14 +258,13 @@ public class PIMRESEARCHFINDINGSResource {
         return ResponseEntity.status(HttpStatus.OK).body(pimresearchfindingsMapping.toDto(pimresearchfindingsService.getDraft(domain)));
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMRESEARCHFINDINGS-CheckKey-all')")
     @ApiOperation(value = "CheckKeyByPIMPERSON", tags = {"PIMRESEARCHFINDINGS" },  notes = "CheckKeyByPIMPERSON")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimresearchfindings/checkkey")
     public ResponseEntity<Boolean> checkKeyByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMRESEARCHFINDINGSDTO pimresearchfindingsdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pimresearchfindingsService.checkKey(pimresearchfindingsMapping.toDomain(pimresearchfindingsdto)));
     }
 
-    @PreAuthorize("hasPermission('','Save',{'Sql',this.pimresearchfindingsMapping,#pimresearchfindingsdto})")
+    @PreAuthorize("hasPermission(this.pimresearchfindingsMapping.toDomain(#pimresearchfindingsdto),'ehr-PIMRESEARCHFINDINGS-Save')")
     @ApiOperation(value = "SaveByPIMPERSON", tags = {"PIMRESEARCHFINDINGS" },  notes = "SaveByPIMPERSON")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimresearchfindings/save")
     public ResponseEntity<Boolean> saveByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMRESEARCHFINDINGSDTO pimresearchfindingsdto) {
@@ -278,7 +273,7 @@ public class PIMRESEARCHFINDINGSResource {
         return ResponseEntity.status(HttpStatus.OK).body(pimresearchfindingsService.save(domain));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.pimresearchfindingsMapping,#pimresearchfindingsdtos})")
+    @PreAuthorize("hasPermission(this.pimresearchfindingsMapping.toDomain(#pimresearchfindingsdtos),'ehr-PIMRESEARCHFINDINGS-Save')")
     @ApiOperation(value = "SaveBatchByPIMPERSON", tags = {"PIMRESEARCHFINDINGS" },  notes = "SaveBatchByPIMPERSON")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimresearchfindings/savebatch")
     public ResponseEntity<Boolean> saveBatchByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody List<PIMRESEARCHFINDINGSDTO> pimresearchfindingsdtos) {
@@ -290,7 +285,7 @@ public class PIMRESEARCHFINDINGSResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('','Create',{'Sql',this.pimresearchfindingsMapping,#pimresearchfindingsdto})")
+    @PreAuthorize("hasPermission(this.pimresearchfindingsMapping.toDomain(#pimresearchfindingsdto),'ehr-PIMRESEARCHFINDINGS-Create')")
     @ApiOperation(value = "CreateByPIMPERSON", tags = {"PIMRESEARCHFINDINGS" },  notes = "CreateByPIMPERSON")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimresearchfindings")
     @Transactional
@@ -302,7 +297,7 @@ public class PIMRESEARCHFINDINGSResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.pimresearchfindingsMapping,#pimresearchfindingsdtos})")
+    @PreAuthorize("hasPermission(this.pimresearchfindingsMapping.toDomain(#pimresearchfindingsdtos),'ehr-PIMRESEARCHFINDINGS-Create')")
     @ApiOperation(value = "createBatchByPIMPERSON", tags = {"PIMRESEARCHFINDINGS" },  notes = "createBatchByPIMPERSON")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimresearchfindings/batch")
     public ResponseEntity<Boolean> createBatchByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody List<PIMRESEARCHFINDINGSDTO> pimresearchfindingsdtos) {
@@ -384,3 +379,4 @@ public class PIMRESEARCHFINDINGSResource {
                 .body(new PageImpl(pimresearchfindingsMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 }
+

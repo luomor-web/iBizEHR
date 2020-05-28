@@ -51,7 +51,7 @@ public class PIMTITLECATALOGUEServiceImpl extends ServiceImpl<PIMTITLECATALOGUEM
     private cn.ibizlab.ehr.core.pim.service.IPIMTITLEService pimtitleService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.orm.service.IORMORGService ormorgService;
+    private cn.ibizlab.ehr.core.orm.service.IOrmOrgService ormorgService;
 
     private int batchSize = 500;
 
@@ -223,6 +223,26 @@ public class PIMTITLECATALOGUEServiceImpl extends ServiceImpl<PIMTITLECATALOGUEM
         }
         log.warn("暂未支持的SQL语法");
         return true;
+    }
+
+    @Override
+    public List<PIMTITLECATALOGUE> getPimtitlecatalogueByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<PIMTITLECATALOGUE> getPimtitlecatalogueByEntities(List<PIMTITLECATALOGUE> entities) {
+        List ids =new ArrayList();
+        for(PIMTITLECATALOGUE entity : entities){
+            Serializable id=entity.getPimtitlecatalogueid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
     }
 
 }

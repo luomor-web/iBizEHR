@@ -3,7 +3,7 @@ import ControlService from '@/widgets/control-service';
 import ContractSignORGService from '@/service/contract-sign-org/contract-sign-org-service';
 import MainModel from './main-grid-model';
 import OrmSignOrgService from '@/service/orm-sign-org/orm-sign-org-service';
-import ORMORGService from '@/service/ormorg/ormorg-service';
+import OrmOrgService from '@/service/orm-org/orm-org-service';
 
 
 /**
@@ -55,10 +55,10 @@ export default class MainService extends ControlService {
     /**
      * 组织管理服务对象
      *
-     * @type {ORMORGService}
+     * @type {OrmOrgService}
      * @memberof MainService
      */
-    public ormorgService: ORMORGService = new ORMORGService();
+    public ormorgService: OrmOrgService = new OrmOrgService();
 
     /**
      * 处理数据

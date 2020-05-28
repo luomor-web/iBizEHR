@@ -56,6 +56,9 @@ public interface IPCMDETAILService extends IService<PCMDETAIL>{
      */
     boolean execute(String sql, Map param);
 
+    List<PCMDETAIL> getPcmdetailByIds(List<String> ids) ;
+    List<PCMDETAIL> getPcmdetailByEntities(List<PCMDETAIL> entities) ;
+
 }
 
 

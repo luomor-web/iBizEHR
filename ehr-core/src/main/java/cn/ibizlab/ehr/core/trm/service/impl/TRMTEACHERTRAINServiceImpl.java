@@ -287,6 +287,26 @@ public class TRMTEACHERTRAINServiceImpl extends ServiceImpl<TRMTEACHERTRAINMappe
         return true;
     }
 
+    @Override
+    public List<TRMTEACHERTRAIN> getTrmteachertrainByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<TRMTEACHERTRAIN> getTrmteachertrainByEntities(List<TRMTEACHERTRAIN> entities) {
+        List ids =new ArrayList();
+        for(TRMTEACHERTRAIN entity : entities){
+            Serializable id=entity.getTrmteachertrainid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

@@ -3,7 +3,7 @@ import ControlService from '@/widgets/control-service';
 import PIMCONTRACTService from '@/service/pimcontract/pimcontract-service';
 import LabServices_EditGridModel from './lab-services-edit-grid-form-model';
 import PIMPERSONService from '@/service/pimperson/pimperson-service';
-import ORMORGService from '@/service/ormorg/ormorg-service';
+import OrmOrgService from '@/service/orm-org/orm-org-service';
 import PIMLABOURCAMPANYService from '@/service/pimlabourcampany/pimlabourcampany-service';
 
 
@@ -55,10 +55,10 @@ export default class LabServices_EditGridService extends ControlService {
     /**
      * 组织管理服务对象
      *
-     * @type {ORMORGService}
+     * @type {OrmOrgService}
      * @memberof LabServices_EditGridService
      */
-    public ormorgService: ORMORGService = new ORMORGService();
+    public ormorgService: OrmOrgService = new OrmOrgService();
 
     /**
      * 劳务派遣公司管理服务对象
@@ -110,7 +110,7 @@ export default class LabServices_EditGridService extends ControlService {
         if (Object.is(serviceName, 'PIMPERSONService') && Object.is(interfaceName, 'FetchAuthPerson')) {
             return this.doItems(this.pimpersonService.FetchAuthPerson(JSON.parse(JSON.stringify(context)),data, isloading), 'pimpersonid', 'pimperson');
         }
-        if (Object.is(serviceName, 'ORMORGService') && Object.is(interfaceName, 'FetchDefault')) {
+        if (Object.is(serviceName, 'OrmOrgService') && Object.is(interfaceName, 'FetchDefault')) {
             return this.doItems(this.ormorgService.FetchDefault(JSON.parse(JSON.stringify(context)),data, isloading), 'orgid', 'ormorg');
         }
         if (Object.is(serviceName, 'PIMLABOURCAMPANYService') && Object.is(interfaceName, 'FetchDefault')) {

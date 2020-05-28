@@ -111,6 +111,9 @@ public interface IPIMPERSONService extends IService<PIMPERSON>{
      */
     boolean execute(String sql, Map param);
 
+    List<PIMPERSON> getPimpersonByIds(List<String> ids) ;
+    List<PIMPERSON> getPimpersonByEntities(List<PIMPERSON> entities) ;
+
 }
 
 

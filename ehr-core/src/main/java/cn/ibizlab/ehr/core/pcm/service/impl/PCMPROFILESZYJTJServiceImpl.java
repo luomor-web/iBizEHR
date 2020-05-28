@@ -188,6 +188,26 @@ public class PCMPROFILESZYJTJServiceImpl extends ServiceImpl<PCMPROFILESZYJTJMap
         return true;
     }
 
+    @Override
+    public List<PCMPROFILESZYJTJ> getPcmprofileszyjtjByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<PCMPROFILESZYJTJ> getPcmprofileszyjtjByEntities(List<PCMPROFILESZYJTJ> entities) {
+        List ids =new ArrayList();
+        for(PCMPROFILESZYJTJ entity : entities){
+            Serializable id=entity.getPcmprofileszyjtjid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

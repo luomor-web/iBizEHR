@@ -179,6 +179,26 @@ public class ARCHIVESMANAGEServiceImpl extends ServiceImpl<ARCHIVESMANAGEMapper,
         return true;
     }
 
+    @Override
+    public List<ARCHIVESMANAGE> getArchivesmanageByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<ARCHIVESMANAGE> getArchivesmanageByEntities(List<ARCHIVESMANAGE> entities) {
+        List ids =new ArrayList();
+        for(ARCHIVESMANAGE entity : entities){
+            Serializable id=entity.getArchivesmanageid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

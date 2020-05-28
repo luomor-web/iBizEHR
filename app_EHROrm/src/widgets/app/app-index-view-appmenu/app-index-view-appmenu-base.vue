@@ -86,9 +86,6 @@ export default class AppIndexViewBase extends AppMenusCtrlBase {
                 case 'Auto456': 
                     this.clickAuto456(item);
                     return;
-                case 'Auto497': 
-                    this.clickAuto497(item);
-                    return;
                 default:
                     console.warn('未指定应用功能');
             }
@@ -178,7 +175,7 @@ export default class AppIndexViewBase extends AppMenusCtrlBase {
         Object.assign(viewparam, {});
         const deResParameters: any[] = [];
         const parameters: any[] = [
-            { pathName: 'ormorginfos', parameterName: 'ormorginfo' },
+            { pathName: 'ormorgs', parameterName: 'ormorg' },
             { pathName: 'orgtreeexpview', parameterName: 'orgtreeexpview' },
         ];
         const path: string = this.$viewTool.buildUpRoutePath(this.$route, {}, deResParameters, parameters, [], viewparam);
@@ -233,24 +230,6 @@ export default class AppIndexViewBase extends AppMenusCtrlBase {
         const deResParameters: any[] = [];
         const parameters: any[] = [
             { pathName: 'ormxmbqs', parameterName: 'ormxmbq' },
-            { pathName: 'gridview', parameterName: 'gridview' },
-        ];
-        const path: string = this.$viewTool.buildUpRoutePath(this.$route, {}, deResParameters, parameters, [], viewparam);
-        this.$router.push(path);
-    }
-    
-    /**
-     * ERP项目<组织管理模块>
-     *
-     * @param {*} [item={}]
-     * @memberof AppIndexView
-     */
-    public clickAuto497(item: any = {}) {
-        const viewparam: any = {};
-        Object.assign(viewparam, {});
-        const deResParameters: any[] = [];
-        const parameters: any[] = [
-            { pathName: 'ormxmgls', parameterName: 'ormxmgl' },
             { pathName: 'gridview', parameterName: 'gridview' },
         ];
         const path: string = this.$viewTool.buildUpRoutePath(this.$route, {}, deResParameters, parameters, [], viewparam);

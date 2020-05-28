@@ -54,6 +54,9 @@ public interface IPCMPROFILENUMBEPREFIXService extends IService<PCMPROFILENUMBEP
      */
     boolean execute(String sql, Map param);
 
+    List<PCMPROFILENUMBEPREFIX> getPcmprofilenumbeprefixByIds(List<String> ids) ;
+    List<PCMPROFILENUMBEPREFIX> getPcmprofilenumbeprefixByEntities(List<PCMPROFILENUMBEPREFIX> entities) ;
+
 }
 
 

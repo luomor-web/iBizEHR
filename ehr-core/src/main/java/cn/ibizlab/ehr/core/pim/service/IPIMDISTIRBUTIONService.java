@@ -85,6 +85,9 @@ public interface IPIMDISTIRBUTIONService extends IService<PIMDISTIRBUTION>{
      */
     boolean execute(String sql, Map param);
 
+    List<PIMDISTIRBUTION> getPimdistirbutionByIds(List<String> ids) ;
+    List<PIMDISTIRBUTION> getPimdistirbutionByEntities(List<PIMDISTIRBUTION> entities) ;
+
 }
 
 

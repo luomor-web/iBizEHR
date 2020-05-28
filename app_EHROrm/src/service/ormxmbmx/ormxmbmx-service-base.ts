@@ -48,6 +48,15 @@ export default class ORMXMBMXServiceBase extends EntityService {
      * @memberof ORMXMBMXServiceBase
      */
     public async Select(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.ormorg && context.ormorgsector && context.ormxmbmx){
+            return Http.getInstance().get(`/ormorgs/${context.ormorg}/ormorgsectors/${context.ormorgsector}/ormxmbmxes/${context.ormxmbmx}/select`,isloading);
+        }
+        if(context.pimperson && context.ormxmbmx){
+            return Http.getInstance().get(`/pimpeople/${context.pimperson}/ormxmbmxes/${context.ormxmbmx}/select`,isloading);
+        }
+        if(context.ormorgsector && context.ormxmbmx){
+            return Http.getInstance().get(`/ormorgsectors/${context.ormorgsector}/ormxmbmxes/${context.ormxmbmx}/select`,isloading);
+        }
             return Http.getInstance().get(`/ormxmbmxes/${context.ormxmbmx}/select`,isloading);
     }
 
@@ -61,6 +70,15 @@ export default class ORMXMBMXServiceBase extends EntityService {
      * @memberof ORMXMBMXServiceBase
      */
     public async Save(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.ormorg && context.ormorgsector && context.ormxmbmx){
+            return Http.getInstance().post(`/ormorgs/${context.ormorg}/ormorgsectors/${context.ormorgsector}/ormxmbmxes/${context.ormxmbmx}/save`,data,isloading);
+        }
+        if(context.pimperson && context.ormxmbmx){
+            return Http.getInstance().post(`/pimpeople/${context.pimperson}/ormxmbmxes/${context.ormxmbmx}/save`,data,isloading);
+        }
+        if(context.ormorgsector && context.ormxmbmx){
+            return Http.getInstance().post(`/ormorgsectors/${context.ormorgsector}/ormxmbmxes/${context.ormxmbmx}/save`,data,isloading);
+        }
         let masterData:any = {};
         Object.assign(data,masterData);
             let res:any = await  Http.getInstance().post(`/ormxmbmxes/${context.ormxmbmx}/save`,data,isloading);
@@ -77,6 +95,15 @@ export default class ORMXMBMXServiceBase extends EntityService {
      * @memberof ORMXMBMXServiceBase
      */
     public async GetDraft(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.ormorg && context.ormorgsector && true){
+            return Http.getInstance().get(`/ormorgs/${context.ormorg}/ormorgsectors/${context.ormorgsector}/ormxmbmxes/getdraft`,isloading);
+        }
+        if(context.pimperson && true){
+            return Http.getInstance().get(`/pimpeople/${context.pimperson}/ormxmbmxes/getdraft`,isloading);
+        }
+        if(context.ormorgsector && true){
+            return Http.getInstance().get(`/ormorgsectors/${context.ormorgsector}/ormxmbmxes/getdraft`,isloading);
+        }
         let res:any = await  Http.getInstance().get(`/ormxmbmxes/getdraft`,isloading);
         res.data.ormxmbmx = data.ormxmbmx;
         return res;
@@ -92,6 +119,15 @@ export default class ORMXMBMXServiceBase extends EntityService {
      * @memberof ORMXMBMXServiceBase
      */
     public async Update(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.ormorg && context.ormorgsector && context.ormxmbmx){
+            return Http.getInstance().put(`/ormorgs/${context.ormorg}/ormorgsectors/${context.ormorgsector}/ormxmbmxes/${context.ormxmbmx}`,data,isloading);
+        }
+        if(context.pimperson && context.ormxmbmx){
+            return Http.getInstance().put(`/pimpeople/${context.pimperson}/ormxmbmxes/${context.ormxmbmx}`,data,isloading);
+        }
+        if(context.ormorgsector && context.ormxmbmx){
+            return Http.getInstance().put(`/ormorgsectors/${context.ormorgsector}/ormxmbmxes/${context.ormxmbmx}`,data,isloading);
+        }
         let masterData:any = {};
         Object.assign(data,masterData);
             let res:any = await  Http.getInstance().put(`/ormxmbmxes/${context.ormxmbmx}`,data,isloading);
@@ -108,6 +144,15 @@ export default class ORMXMBMXServiceBase extends EntityService {
      * @memberof ORMXMBMXServiceBase
      */
     public async Get(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.ormorg && context.ormorgsector && context.ormxmbmx){
+            return Http.getInstance().get(`/ormorgs/${context.ormorg}/ormorgsectors/${context.ormorgsector}/ormxmbmxes/${context.ormxmbmx}`,isloading);
+        }
+        if(context.pimperson && context.ormxmbmx){
+            return Http.getInstance().get(`/pimpeople/${context.pimperson}/ormxmbmxes/${context.ormxmbmx}`,isloading);
+        }
+        if(context.ormorgsector && context.ormxmbmx){
+            return Http.getInstance().get(`/ormorgsectors/${context.ormorgsector}/ormxmbmxes/${context.ormxmbmx}`,isloading);
+        }
             let res:any = await Http.getInstance().get(`/ormxmbmxes/${context.ormxmbmx}`,isloading);
             return res;
 
@@ -123,6 +168,15 @@ export default class ORMXMBMXServiceBase extends EntityService {
      * @memberof ORMXMBMXServiceBase
      */
     public async CheckKey(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.ormorg && context.ormorgsector && context.ormxmbmx){
+            return Http.getInstance().post(`/ormorgs/${context.ormorg}/ormorgsectors/${context.ormorgsector}/ormxmbmxes/${context.ormxmbmx}/checkkey`,data,isloading);
+        }
+        if(context.pimperson && context.ormxmbmx){
+            return Http.getInstance().post(`/pimpeople/${context.pimperson}/ormxmbmxes/${context.ormxmbmx}/checkkey`,data,isloading);
+        }
+        if(context.ormorgsector && context.ormxmbmx){
+            return Http.getInstance().post(`/ormorgsectors/${context.ormorgsector}/ormxmbmxes/${context.ormxmbmx}/checkkey`,data,isloading);
+        }
             return Http.getInstance().post(`/ormxmbmxes/${context.ormxmbmx}/checkkey`,data,isloading);
     }
 
@@ -136,6 +190,33 @@ export default class ORMXMBMXServiceBase extends EntityService {
      * @memberof ORMXMBMXServiceBase
      */
     public async Create(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.ormorg && context.ormorgsector && true){
+            if(!data.srffrontuf || data.srffrontuf !== "1"){
+                data[this.APPDEKEY] = null;
+            }
+            if(data.srffrontuf){
+                delete data.srffrontuf;
+            }
+            return Http.getInstance().post(`/ormorgs/${context.ormorg}/ormorgsectors/${context.ormorgsector}/ormxmbmxes`,data,isloading);
+        }
+        if(context.pimperson && true){
+            if(!data.srffrontuf || data.srffrontuf !== "1"){
+                data[this.APPDEKEY] = null;
+            }
+            if(data.srffrontuf){
+                delete data.srffrontuf;
+            }
+            return Http.getInstance().post(`/pimpeople/${context.pimperson}/ormxmbmxes`,data,isloading);
+        }
+        if(context.ormorgsector && true){
+            if(!data.srffrontuf || data.srffrontuf !== "1"){
+                data[this.APPDEKEY] = null;
+            }
+            if(data.srffrontuf){
+                delete data.srffrontuf;
+            }
+            return Http.getInstance().post(`/ormorgsectors/${context.ormorgsector}/ormxmbmxes`,data,isloading);
+        }
         let masterData:any = {};
         Object.assign(data,masterData);
         if(!data.srffrontuf || data.srffrontuf !== "1"){
@@ -159,6 +240,15 @@ export default class ORMXMBMXServiceBase extends EntityService {
      * @memberof ORMXMBMXServiceBase
      */
     public async Remove(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.ormorg && context.ormorgsector && context.ormxmbmx){
+            return Http.getInstance().delete(`/ormorgs/${context.ormorg}/ormorgsectors/${context.ormorgsector}/ormxmbmxes/${context.ormxmbmx}`,isloading);
+        }
+        if(context.pimperson && context.ormxmbmx){
+            return Http.getInstance().delete(`/pimpeople/${context.pimperson}/ormxmbmxes/${context.ormxmbmx}`,isloading);
+        }
+        if(context.ormorgsector && context.ormxmbmx){
+            return Http.getInstance().delete(`/ormorgsectors/${context.ormorgsector}/ormxmbmxes/${context.ormxmbmx}`,isloading);
+        }
             return Http.getInstance().delete(`/ormxmbmxes/${context.ormxmbmx}`,isloading);
 
     }
@@ -173,6 +263,18 @@ export default class ORMXMBMXServiceBase extends EntityService {
      * @memberof ORMXMBMXServiceBase
      */
     public async FetchDefault(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.ormorg && context.ormorgsector && true){
+            let tempData:any = JSON.parse(JSON.stringify(data));
+            return Http.getInstance().get(`/ormorgs/${context.ormorg}/ormorgsectors/${context.ormorgsector}/ormxmbmxes/fetchdefault`,tempData,isloading);
+        }
+        if(context.pimperson && true){
+            let tempData:any = JSON.parse(JSON.stringify(data));
+            return Http.getInstance().get(`/pimpeople/${context.pimperson}/ormxmbmxes/fetchdefault`,tempData,isloading);
+        }
+        if(context.ormorgsector && true){
+            let tempData:any = JSON.parse(JSON.stringify(data));
+            return Http.getInstance().get(`/ormorgsectors/${context.ormorgsector}/ormxmbmxes/fetchdefault`,tempData,isloading);
+        }
         let tempData:any = JSON.parse(JSON.stringify(data));
         return Http.getInstance().get(`/ormxmbmxes/fetchdefault`,tempData,isloading);
     }

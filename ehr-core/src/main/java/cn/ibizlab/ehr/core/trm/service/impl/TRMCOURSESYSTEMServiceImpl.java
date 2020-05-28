@@ -221,6 +221,26 @@ public class TRMCOURSESYSTEMServiceImpl extends ServiceImpl<TRMCOURSESYSTEMMappe
         return true;
     }
 
+    @Override
+    public List<TRMCOURSESYSTEM> getTrmcoursesystemByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<TRMCOURSESYSTEM> getTrmcoursesystemByEntities(List<TRMCOURSESYSTEM> entities) {
+        List ids =new ArrayList();
+        for(TRMCOURSESYSTEM entity : entities){
+            Serializable id=entity.getTrmcoursesystemid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

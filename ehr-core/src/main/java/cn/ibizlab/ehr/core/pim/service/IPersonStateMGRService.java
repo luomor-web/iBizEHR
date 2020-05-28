@@ -52,6 +52,9 @@ public interface IPersonStateMGRService extends IService<PersonStateMGR>{
      */
     boolean execute(String sql, Map param);
 
+    List<PersonStateMGR> getPersonstatemgrByIds(List<String> ids) ;
+    List<PersonStateMGR> getPersonstatemgrByEntities(List<PersonStateMGR> entities) ;
+
 }
 
 

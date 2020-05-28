@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.HashMap;
 
-import lombok.Data;
+import lombok.*;
 import lombok.extern.slf4j.Slf4j;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.alibaba.fastjson.annotation.JSONField;
@@ -48,6 +48,13 @@ public class PARJXJGSearchContext extends QueryWrapperContext<PARJXJG> {
             this.getSelectCond().eq("nd", n_nd_eq);
         }
     }
+	private String n_khlx_eq;//[考核对象]
+	public void setN_khlx_eq(String n_khlx_eq) {
+        this.n_khlx_eq = n_khlx_eq;
+        if(!ObjectUtils.isEmpty(this.n_khlx_eq)){
+            this.getSelectCond().eq("khlx", n_khlx_eq);
+        }
+    }
 
     /**
 	 * 启用快速搜索
@@ -56,7 +63,9 @@ public class PARJXJGSearchContext extends QueryWrapperContext<PARJXJG> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("parjxjgname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("parjxjgname", query)   
+            );
 		 }
 	}
 }

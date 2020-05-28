@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.HashMap;
 
-import lombok.Data;
+import lombok.*;
 import lombok.extern.slf4j.Slf4j;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.alibaba.fastjson.annotation.JSONField;
@@ -32,6 +32,13 @@ public class ORMPostLibSearchContext extends QueryWrapperContext<ORMPostLib> {
         this.n_postnature_eq = n_postnature_eq;
         if(!ObjectUtils.isEmpty(this.n_postnature_eq)){
             this.getSelectCond().eq("postnature", n_postnature_eq);
+        }
+    }
+	private String n_gwflag_eq;//[岗位标签]
+	public void setN_gwflag_eq(String n_gwflag_eq) {
+        this.n_gwflag_eq = n_gwflag_eq;
+        if(!ObjectUtils.isEmpty(this.n_gwflag_eq)){
+            this.getSelectCond().eq("gwflag", n_gwflag_eq);
         }
     }
 	private String n_gwtype_eq;//[岗位类型]
@@ -63,8 +70,10 @@ public class ORMPostLibSearchContext extends QueryWrapperContext<ORMPostLib> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-			this.getSelectCond().or().like("gwtype",query);
-			this.getSelectCond().or().like("ormpostlibname",query);
+            this.getSelectCond().and( wrapper ->
+                     wrapper.like("gwtype", query)   
+                        .or().like("ormpostlibname", query)            
+            );
 		 }
 	}
 }

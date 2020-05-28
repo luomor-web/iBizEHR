@@ -54,6 +54,9 @@ public interface IPCMWORKRESUMEService extends IService<PCMWORKRESUME>{
      */
     boolean execute(String sql, Map param);
 
+    List<PCMWORKRESUME> getPcmworkresumeByIds(List<String> ids) ;
+    List<PCMWORKRESUME> getPcmworkresumeByEntities(List<PCMWORKRESUME> entities) ;
+
 }
 
 

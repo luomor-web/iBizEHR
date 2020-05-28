@@ -22,6 +22,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.access.prepost.PostAuthorize;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -39,22 +40,19 @@ import cn.ibizlab.ehr.core.att.filter.ATTENDANCERECORDSearchContext;
 public class ATTENDANCERECORDResource {
 
     @Autowired
-    private IATTENDANCERECORDService attendancerecordService;
+    public IATTENDANCERECORDService attendancerecordService;
 
     @Autowired
     @Lazy
     public ATTENDANCERECORDMapping attendancerecordMapping;
 
-    public ATTENDANCERECORDDTO permissionDTO=new ATTENDANCERECORDDTO();
-
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ATTENDANCERECORD-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"ATTENDANCERECORD" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/attendancerecords/getdraft")
     public ResponseEntity<ATTENDANCERECORDDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(attendancerecordMapping.toDto(attendancerecordService.getDraft(new ATTENDANCERECORD())));
     }
 
-    @PreAuthorize("hasPermission('','Create',{'Sql',this.attendancerecordMapping,#attendancerecorddto})")
+    @PreAuthorize("hasPermission(this.attendancerecordMapping.toDomain(#attendancerecorddto),'ehr-ATTENDANCERECORD-Create')")
     @ApiOperation(value = "Create", tags = {"ATTENDANCERECORD" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/attendancerecords")
     @Transactional
@@ -65,7 +63,7 @@ public class ATTENDANCERECORDResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.attendancerecordMapping,#attendancerecorddtos})")
+    @PreAuthorize("hasPermission(this.attendancerecordMapping.toDomain(#attendancerecorddtos),'ehr-ATTENDANCERECORD-Create')")
     @ApiOperation(value = "createBatch", tags = {"ATTENDANCERECORD" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/attendancerecords/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<ATTENDANCERECORDDTO> attendancerecorddtos) {
@@ -73,7 +71,7 @@ public class ATTENDANCERECORDResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission(#attendancerecord_id,'Update',{'Sql',this.attendancerecordMapping,#attendancerecorddto})")
+    @PreAuthorize("hasPermission(this.attendancerecordService.get(#attendancerecord_id),'ehr-ATTENDANCERECORD-Update')")
     @ApiOperation(value = "Update", tags = {"ATTENDANCERECORD" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/attendancerecords/{attendancerecord_id}")
     @Transactional
@@ -85,7 +83,7 @@ public class ATTENDANCERECORDResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.attendancerecordMapping,#attendancerecorddtos})")
+    @PreAuthorize("hasPermission(this.attendancerecordService.getAttendancerecordByEntities(this.attendancerecordMapping.toDomain(#attendancerecorddtos)),'ehr-ATTENDANCERECORD-Update')")
     @ApiOperation(value = "UpdateBatch", tags = {"ATTENDANCERECORD" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/attendancerecords/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<ATTENDANCERECORDDTO> attendancerecorddtos) {
@@ -93,7 +91,7 @@ public class ATTENDANCERECORDResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission(#attendancerecord_id,'Remove',{'Sql',this.attendancerecordMapping,this.permissionDTO})")
+    @PreAuthorize("hasPermission(this.attendancerecordService.get(#attendancerecord_id),'ehr-ATTENDANCERECORD-Remove')")
     @ApiOperation(value = "Remove", tags = {"ATTENDANCERECORD" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/attendancerecords/{attendancerecord_id}")
     @Transactional
@@ -101,7 +99,7 @@ public class ATTENDANCERECORDResource {
          return ResponseEntity.status(HttpStatus.OK).body(attendancerecordService.remove(attendancerecord_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.attendancerecordMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission(this.attendancerecordService.getAttendancerecordByIds(#ids),'ehr-ATTENDANCERECORD-Remove')")
     @ApiOperation(value = "RemoveBatch", tags = {"ATTENDANCERECORD" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/attendancerecords/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -109,14 +107,14 @@ public class ATTENDANCERECORDResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('','Save',{'Sql',this.attendancerecordMapping,#attendancerecorddto})")
+    @PreAuthorize("hasPermission(this.attendancerecordMapping.toDomain(#attendancerecorddto),'ehr-ATTENDANCERECORD-Save')")
     @ApiOperation(value = "Save", tags = {"ATTENDANCERECORD" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/attendancerecords/save")
     public ResponseEntity<Boolean> save(@RequestBody ATTENDANCERECORDDTO attendancerecorddto) {
         return ResponseEntity.status(HttpStatus.OK).body(attendancerecordService.save(attendancerecordMapping.toDomain(attendancerecorddto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.attendancerecordMapping,#attendancerecorddtos})")
+    @PreAuthorize("hasPermission(this.attendancerecordMapping.toDomain(#attendancerecorddtos),'ehr-ATTENDANCERECORD-Save')")
     @ApiOperation(value = "SaveBatch", tags = {"ATTENDANCERECORD" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/attendancerecords/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<ATTENDANCERECORDDTO> attendancerecorddtos) {
@@ -124,7 +122,7 @@ public class ATTENDANCERECORDResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission(#attendancerecord_id,'Get',{'Sql',this.attendancerecordMapping,this.permissionDTO})")
+    @PostAuthorize("hasPermission(this.attendancerecordMapping.toDomain(returnObject.body),'ehr-ATTENDANCERECORD-Get')")
     @ApiOperation(value = "Get", tags = {"ATTENDANCERECORD" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/attendancerecords/{attendancerecord_id}")
     public ResponseEntity<ATTENDANCERECORDDTO> get(@PathVariable("attendancerecord_id") String attendancerecord_id) {
@@ -145,7 +143,6 @@ public class ATTENDANCERECORDResource {
         return ResponseEntity.status(HttpStatus.OK).body(attendancerecorddto);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ATTENDANCERECORD-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"ATTENDANCERECORD" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/attendancerecords/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody ATTENDANCERECORDDTO attendancerecorddto) {
@@ -173,7 +170,6 @@ public class ATTENDANCERECORDResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(attendancerecordMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ATTENDANCERECORD-GetDraft-all')")
     @ApiOperation(value = "GetDraftByPIMPERSON", tags = {"ATTENDANCERECORD" },  notes = "GetDraftByPIMPERSON")
     @RequestMapping(method = RequestMethod.GET, value = "/pimpeople/{pimperson_id}/attendancerecords/getdraft")
     public ResponseEntity<ATTENDANCERECORDDTO> getDraftByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id) {
@@ -182,7 +178,7 @@ public class ATTENDANCERECORDResource {
         return ResponseEntity.status(HttpStatus.OK).body(attendancerecordMapping.toDto(attendancerecordService.getDraft(domain)));
     }
 
-    @PreAuthorize("hasPermission('','Create',{'Sql',this.attendancerecordMapping,#attendancerecorddto})")
+    @PreAuthorize("hasPermission(this.attendancerecordMapping.toDomain(#attendancerecorddto),'ehr-ATTENDANCERECORD-Create')")
     @ApiOperation(value = "CreateByPIMPERSON", tags = {"ATTENDANCERECORD" },  notes = "CreateByPIMPERSON")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/attendancerecords")
     @Transactional
@@ -194,7 +190,7 @@ public class ATTENDANCERECORDResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.attendancerecordMapping,#attendancerecorddtos})")
+    @PreAuthorize("hasPermission(this.attendancerecordMapping.toDomain(#attendancerecorddtos),'ehr-ATTENDANCERECORD-Create')")
     @ApiOperation(value = "createBatchByPIMPERSON", tags = {"ATTENDANCERECORD" },  notes = "createBatchByPIMPERSON")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/attendancerecords/batch")
     public ResponseEntity<Boolean> createBatchByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody List<ATTENDANCERECORDDTO> attendancerecorddtos) {
@@ -206,7 +202,7 @@ public class ATTENDANCERECORDResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission(#attendancerecord_id,'Update',{'Sql',this.attendancerecordMapping,#attendancerecorddto})")
+    @PreAuthorize("hasPermission(this.attendancerecordService.get(#attendancerecord_id),'ehr-ATTENDANCERECORD-Update')")
     @ApiOperation(value = "UpdateByPIMPERSON", tags = {"ATTENDANCERECORD" },  notes = "UpdateByPIMPERSON")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimpeople/{pimperson_id}/attendancerecords/{attendancerecord_id}")
     @Transactional
@@ -219,7 +215,7 @@ public class ATTENDANCERECORDResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.attendancerecordMapping,#attendancerecorddtos})")
+    @PreAuthorize("hasPermission(this.attendancerecordService.getAttendancerecordByEntities(this.attendancerecordMapping.toDomain(#attendancerecorddtos)),'ehr-ATTENDANCERECORD-Update')")
     @ApiOperation(value = "UpdateBatchByPIMPERSON", tags = {"ATTENDANCERECORD" },  notes = "UpdateBatchByPIMPERSON")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimpeople/{pimperson_id}/attendancerecords/batch")
     public ResponseEntity<Boolean> updateBatchByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody List<ATTENDANCERECORDDTO> attendancerecorddtos) {
@@ -231,7 +227,7 @@ public class ATTENDANCERECORDResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission(#attendancerecord_id,'Remove',{'Sql',this.attendancerecordMapping,this.permissionDTO})")
+    @PreAuthorize("hasPermission(this.attendancerecordService.get(#attendancerecord_id),'ehr-ATTENDANCERECORD-Remove')")
     @ApiOperation(value = "RemoveByPIMPERSON", tags = {"ATTENDANCERECORD" },  notes = "RemoveByPIMPERSON")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimpeople/{pimperson_id}/attendancerecords/{attendancerecord_id}")
     @Transactional
@@ -239,7 +235,7 @@ public class ATTENDANCERECORDResource {
 		return ResponseEntity.status(HttpStatus.OK).body(attendancerecordService.remove(attendancerecord_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.attendancerecordMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission(this.attendancerecordService.getAttendancerecordByIds(#ids),'ehr-ATTENDANCERECORD-Remove')")
     @ApiOperation(value = "RemoveBatchByPIMPERSON", tags = {"ATTENDANCERECORD" },  notes = "RemoveBatchByPIMPERSON")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimpeople/{pimperson_id}/attendancerecords/batch")
     public ResponseEntity<Boolean> removeBatchByPIMPERSON(@RequestBody List<String> ids) {
@@ -247,7 +243,7 @@ public class ATTENDANCERECORDResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('','Save',{'Sql',this.attendancerecordMapping,#attendancerecorddto})")
+    @PreAuthorize("hasPermission(this.attendancerecordMapping.toDomain(#attendancerecorddto),'ehr-ATTENDANCERECORD-Save')")
     @ApiOperation(value = "SaveByPIMPERSON", tags = {"ATTENDANCERECORD" },  notes = "SaveByPIMPERSON")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/attendancerecords/save")
     public ResponseEntity<Boolean> saveByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody ATTENDANCERECORDDTO attendancerecorddto) {
@@ -256,7 +252,7 @@ public class ATTENDANCERECORDResource {
         return ResponseEntity.status(HttpStatus.OK).body(attendancerecordService.save(domain));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.attendancerecordMapping,#attendancerecorddtos})")
+    @PreAuthorize("hasPermission(this.attendancerecordMapping.toDomain(#attendancerecorddtos),'ehr-ATTENDANCERECORD-Save')")
     @ApiOperation(value = "SaveBatchByPIMPERSON", tags = {"ATTENDANCERECORD" },  notes = "SaveBatchByPIMPERSON")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/attendancerecords/savebatch")
     public ResponseEntity<Boolean> saveBatchByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody List<ATTENDANCERECORDDTO> attendancerecorddtos) {
@@ -268,7 +264,7 @@ public class ATTENDANCERECORDResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission(#attendancerecord_id,'Get',{'Sql',this.attendancerecordMapping,this.permissionDTO})")
+    @PostAuthorize("hasPermission(this.attendancerecordMapping.toDomain(returnObject.body),'ehr-ATTENDANCERECORD-Get')")
     @ApiOperation(value = "GetByPIMPERSON", tags = {"ATTENDANCERECORD" },  notes = "GetByPIMPERSON")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimpeople/{pimperson_id}/attendancerecords/{attendancerecord_id}")
     public ResponseEntity<ATTENDANCERECORDDTO> getByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("attendancerecord_id") String attendancerecord_id) {
@@ -289,7 +285,6 @@ public class ATTENDANCERECORDResource {
         return ResponseEntity.status(HttpStatus.OK).body(attendancerecorddto);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ATTENDANCERECORD-CheckKey-all')")
     @ApiOperation(value = "CheckKeyByPIMPERSON", tags = {"ATTENDANCERECORD" },  notes = "CheckKeyByPIMPERSON")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/attendancerecords/checkkey")
     public ResponseEntity<Boolean> checkKeyByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody ATTENDANCERECORDDTO attendancerecorddto) {
@@ -320,3 +315,4 @@ public class ATTENDANCERECORDResource {
                 .body(new PageImpl(attendancerecordMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 }
+

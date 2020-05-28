@@ -53,6 +53,9 @@ public interface IPIMSTAFFTYPEService extends IService<PIMSTAFFTYPE>{
      */
     boolean execute(String sql, Map param);
 
+    List<PIMSTAFFTYPE> getPimstafftypeByIds(List<String> ids) ;
+    List<PIMSTAFFTYPE> getPimstafftypeByEntities(List<PIMSTAFFTYPE> entities) ;
+
 }
 
 

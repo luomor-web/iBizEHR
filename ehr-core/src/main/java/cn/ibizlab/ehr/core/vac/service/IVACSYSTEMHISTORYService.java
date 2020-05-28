@@ -56,6 +56,9 @@ public interface IVACSYSTEMHISTORYService extends IService<VACSYSTEMHISTORY>{
      */
     boolean execute(String sql, Map param);
 
+    List<VACSYSTEMHISTORY> getVacsystemhistoryByIds(List<String> ids) ;
+    List<VACSYSTEMHISTORY> getVacsystemhistoryByEntities(List<VACSYSTEMHISTORY> entities) ;
+
 }
 
 

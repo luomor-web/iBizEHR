@@ -22,6 +22,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.access.prepost.PostAuthorize;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -39,15 +40,13 @@ import cn.ibizlab.ehr.core.pim.filter.PIMVACATIONSearchContext;
 public class PIMVACATIONResource {
 
     @Autowired
-    private IPIMVACATIONService pimvacationService;
+    public IPIMVACATIONService pimvacationService;
 
     @Autowired
     @Lazy
     public PIMVACATIONMapping pimvacationMapping;
 
-    public PIMVACATIONDTO permissionDTO=new PIMVACATIONDTO();
-
-    @PreAuthorize("hasPermission(#pimvacation_id,'Update',{'Sql',this.pimvacationMapping,#pimvacationdto})")
+    @PreAuthorize("hasPermission(this.pimvacationService.get(#pimvacation_id),'ehr-PIMVACATION-Update')")
     @ApiOperation(value = "Update", tags = {"PIMVACATION" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimvacations/{pimvacation_id}")
     @Transactional
@@ -59,7 +58,7 @@ public class PIMVACATIONResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.pimvacationMapping,#pimvacationdtos})")
+    @PreAuthorize("hasPermission(this.pimvacationService.getPimvacationByEntities(this.pimvacationMapping.toDomain(#pimvacationdtos)),'ehr-PIMVACATION-Update')")
     @ApiOperation(value = "UpdateBatch", tags = {"PIMVACATION" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimvacations/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PIMVACATIONDTO> pimvacationdtos) {
@@ -67,7 +66,7 @@ public class PIMVACATIONResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission(#pimvacation_id,'Remove',{'Sql',this.pimvacationMapping,this.permissionDTO})")
+    @PreAuthorize("hasPermission(this.pimvacationService.get(#pimvacation_id),'ehr-PIMVACATION-Remove')")
     @ApiOperation(value = "Remove", tags = {"PIMVACATION" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimvacations/{pimvacation_id}")
     @Transactional
@@ -75,7 +74,7 @@ public class PIMVACATIONResource {
          return ResponseEntity.status(HttpStatus.OK).body(pimvacationService.remove(pimvacation_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.pimvacationMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission(this.pimvacationService.getPimvacationByIds(#ids),'ehr-PIMVACATION-Remove')")
     @ApiOperation(value = "RemoveBatch", tags = {"PIMVACATION" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimvacations/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -83,21 +82,20 @@ public class PIMVACATIONResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMVACATION-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"PIMVACATION" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimvacations/getdraft")
     public ResponseEntity<PIMVACATIONDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(pimvacationMapping.toDto(pimvacationService.getDraft(new PIMVACATION())));
     }
 
-    @PreAuthorize("hasPermission('','Save',{'Sql',this.pimvacationMapping,#pimvacationdto})")
+    @PreAuthorize("hasPermission(this.pimvacationMapping.toDomain(#pimvacationdto),'ehr-PIMVACATION-Save')")
     @ApiOperation(value = "Save", tags = {"PIMVACATION" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimvacations/save")
     public ResponseEntity<Boolean> save(@RequestBody PIMVACATIONDTO pimvacationdto) {
         return ResponseEntity.status(HttpStatus.OK).body(pimvacationService.save(pimvacationMapping.toDomain(pimvacationdto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.pimvacationMapping,#pimvacationdtos})")
+    @PreAuthorize("hasPermission(this.pimvacationMapping.toDomain(#pimvacationdtos),'ehr-PIMVACATION-Save')")
     @ApiOperation(value = "SaveBatch", tags = {"PIMVACATION" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimvacations/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PIMVACATIONDTO> pimvacationdtos) {
@@ -105,7 +103,7 @@ public class PIMVACATIONResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('','Create',{'Sql',this.pimvacationMapping,#pimvacationdto})")
+    @PreAuthorize("hasPermission(this.pimvacationMapping.toDomain(#pimvacationdto),'ehr-PIMVACATION-Create')")
     @ApiOperation(value = "Create", tags = {"PIMVACATION" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimvacations")
     @Transactional
@@ -116,7 +114,7 @@ public class PIMVACATIONResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.pimvacationMapping,#pimvacationdtos})")
+    @PreAuthorize("hasPermission(this.pimvacationMapping.toDomain(#pimvacationdtos),'ehr-PIMVACATION-Create')")
     @ApiOperation(value = "createBatch", tags = {"PIMVACATION" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimvacations/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PIMVACATIONDTO> pimvacationdtos) {
@@ -124,14 +122,13 @@ public class PIMVACATIONResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMVACATION-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"PIMVACATION" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimvacations/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PIMVACATIONDTO pimvacationdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pimvacationService.checkKey(pimvacationMapping.toDomain(pimvacationdto)));
     }
 
-    @PreAuthorize("hasPermission(#pimvacation_id,'Get',{'Sql',this.pimvacationMapping,this.permissionDTO})")
+    @PostAuthorize("hasPermission(this.pimvacationMapping.toDomain(returnObject.body),'ehr-PIMVACATION-Get')")
     @ApiOperation(value = "Get", tags = {"PIMVACATION" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimvacations/{pimvacation_id}")
     public ResponseEntity<PIMVACATIONDTO> get(@PathVariable("pimvacation_id") String pimvacation_id) {
@@ -161,7 +158,7 @@ public class PIMVACATIONResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimvacationMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-    @PreAuthorize("hasPermission(#pimvacation_id,'Update',{'Sql',this.pimvacationMapping,#pimvacationdto})")
+    @PreAuthorize("hasPermission(this.pimvacationService.get(#pimvacation_id),'ehr-PIMVACATION-Update')")
     @ApiOperation(value = "UpdateByPIMPERSON", tags = {"PIMVACATION" },  notes = "UpdateByPIMPERSON")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimpeople/{pimperson_id}/pimvacations/{pimvacation_id}")
     @Transactional
@@ -174,7 +171,7 @@ public class PIMVACATIONResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.pimvacationMapping,#pimvacationdtos})")
+    @PreAuthorize("hasPermission(this.pimvacationService.getPimvacationByEntities(this.pimvacationMapping.toDomain(#pimvacationdtos)),'ehr-PIMVACATION-Update')")
     @ApiOperation(value = "UpdateBatchByPIMPERSON", tags = {"PIMVACATION" },  notes = "UpdateBatchByPIMPERSON")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimpeople/{pimperson_id}/pimvacations/batch")
     public ResponseEntity<Boolean> updateBatchByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody List<PIMVACATIONDTO> pimvacationdtos) {
@@ -186,7 +183,7 @@ public class PIMVACATIONResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission(#pimvacation_id,'Remove',{'Sql',this.pimvacationMapping,this.permissionDTO})")
+    @PreAuthorize("hasPermission(this.pimvacationService.get(#pimvacation_id),'ehr-PIMVACATION-Remove')")
     @ApiOperation(value = "RemoveByPIMPERSON", tags = {"PIMVACATION" },  notes = "RemoveByPIMPERSON")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimpeople/{pimperson_id}/pimvacations/{pimvacation_id}")
     @Transactional
@@ -194,7 +191,7 @@ public class PIMVACATIONResource {
 		return ResponseEntity.status(HttpStatus.OK).body(pimvacationService.remove(pimvacation_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.pimvacationMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission(this.pimvacationService.getPimvacationByIds(#ids),'ehr-PIMVACATION-Remove')")
     @ApiOperation(value = "RemoveBatchByPIMPERSON", tags = {"PIMVACATION" },  notes = "RemoveBatchByPIMPERSON")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimpeople/{pimperson_id}/pimvacations/batch")
     public ResponseEntity<Boolean> removeBatchByPIMPERSON(@RequestBody List<String> ids) {
@@ -202,7 +199,6 @@ public class PIMVACATIONResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMVACATION-GetDraft-all')")
     @ApiOperation(value = "GetDraftByPIMPERSON", tags = {"PIMVACATION" },  notes = "GetDraftByPIMPERSON")
     @RequestMapping(method = RequestMethod.GET, value = "/pimpeople/{pimperson_id}/pimvacations/getdraft")
     public ResponseEntity<PIMVACATIONDTO> getDraftByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id) {
@@ -211,7 +207,7 @@ public class PIMVACATIONResource {
         return ResponseEntity.status(HttpStatus.OK).body(pimvacationMapping.toDto(pimvacationService.getDraft(domain)));
     }
 
-    @PreAuthorize("hasPermission('','Save',{'Sql',this.pimvacationMapping,#pimvacationdto})")
+    @PreAuthorize("hasPermission(this.pimvacationMapping.toDomain(#pimvacationdto),'ehr-PIMVACATION-Save')")
     @ApiOperation(value = "SaveByPIMPERSON", tags = {"PIMVACATION" },  notes = "SaveByPIMPERSON")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimvacations/save")
     public ResponseEntity<Boolean> saveByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMVACATIONDTO pimvacationdto) {
@@ -220,7 +216,7 @@ public class PIMVACATIONResource {
         return ResponseEntity.status(HttpStatus.OK).body(pimvacationService.save(domain));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.pimvacationMapping,#pimvacationdtos})")
+    @PreAuthorize("hasPermission(this.pimvacationMapping.toDomain(#pimvacationdtos),'ehr-PIMVACATION-Save')")
     @ApiOperation(value = "SaveBatchByPIMPERSON", tags = {"PIMVACATION" },  notes = "SaveBatchByPIMPERSON")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimvacations/savebatch")
     public ResponseEntity<Boolean> saveBatchByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody List<PIMVACATIONDTO> pimvacationdtos) {
@@ -232,7 +228,7 @@ public class PIMVACATIONResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('','Create',{'Sql',this.pimvacationMapping,#pimvacationdto})")
+    @PreAuthorize("hasPermission(this.pimvacationMapping.toDomain(#pimvacationdto),'ehr-PIMVACATION-Create')")
     @ApiOperation(value = "CreateByPIMPERSON", tags = {"PIMVACATION" },  notes = "CreateByPIMPERSON")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimvacations")
     @Transactional
@@ -244,7 +240,7 @@ public class PIMVACATIONResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.pimvacationMapping,#pimvacationdtos})")
+    @PreAuthorize("hasPermission(this.pimvacationMapping.toDomain(#pimvacationdtos),'ehr-PIMVACATION-Create')")
     @ApiOperation(value = "createBatchByPIMPERSON", tags = {"PIMVACATION" },  notes = "createBatchByPIMPERSON")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimvacations/batch")
     public ResponseEntity<Boolean> createBatchByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody List<PIMVACATIONDTO> pimvacationdtos) {
@@ -256,14 +252,13 @@ public class PIMVACATIONResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMVACATION-CheckKey-all')")
     @ApiOperation(value = "CheckKeyByPIMPERSON", tags = {"PIMVACATION" },  notes = "CheckKeyByPIMPERSON")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimvacations/checkkey")
     public ResponseEntity<Boolean> checkKeyByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMVACATIONDTO pimvacationdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pimvacationService.checkKey(pimvacationMapping.toDomain(pimvacationdto)));
     }
 
-    @PreAuthorize("hasPermission(#pimvacation_id,'Get',{'Sql',this.pimvacationMapping,this.permissionDTO})")
+    @PostAuthorize("hasPermission(this.pimvacationMapping.toDomain(returnObject.body),'ehr-PIMVACATION-Get')")
     @ApiOperation(value = "GetByPIMPERSON", tags = {"PIMVACATION" },  notes = "GetByPIMPERSON")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimpeople/{pimperson_id}/pimvacations/{pimvacation_id}")
     public ResponseEntity<PIMVACATIONDTO> getByPIMPERSON(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimvacation_id") String pimvacation_id) {
@@ -296,3 +291,4 @@ public class PIMVACATIONResource {
                 .body(new PageImpl(pimvacationMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 }
+

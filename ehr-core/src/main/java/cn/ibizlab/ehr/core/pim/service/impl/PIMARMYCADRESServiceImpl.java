@@ -236,6 +236,26 @@ public class PIMARMYCADRESServiceImpl extends ServiceImpl<PIMARMYCADRESMapper, P
         return true;
     }
 
+    @Override
+    public List<PIMARMYCADRES> getPimarmycadresByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<PIMARMYCADRES> getPimarmycadresByEntities(List<PIMARMYCADRES> entities) {
+        List ids =new ArrayList();
+        for(PIMARMYCADRES entity : entities){
+            Serializable id=entity.getPimarmycadresid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

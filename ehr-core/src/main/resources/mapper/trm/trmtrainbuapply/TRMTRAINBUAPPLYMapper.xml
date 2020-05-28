@@ -4,6 +4,9 @@
 <mapper	namespace="cn.ibizlab.ehr.core.trm.mapper.TRMTRAINBUAPPLYMapper">
 
     <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
+	<select id="selectById"  resultMap="TRMTRAINBUAPPLYResultMap" databaseId="mysql">
+        <![CDATA[select t1.* from (SELECT t1.`BZ`, t1.`CDZJ`, t1.`CLF`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t1.`JFLX`, t1.`JGFY`, t1.`ND`, t1.`ORMORGID`, t21.`ORGNAME` AS `ORMORGNAME`, t1.`QTFY`, t1.`SZF`, t1.`TRMTRAINBUAPPLYID`, t1.`TRMTRAINBUAPPLYNAME`, t1.`TRMTRAINPLANTERMID`, t11.`TRMTRAINPLANTERMNAME`, t1.`TZJE`, t1.`TZYSXM`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`YSZJE` FROM `T_TRMTRAINBUAPPLY` t1  LEFT JOIN T_TRMTRAINPLANTERM t11 ON t1.TRMTRAINPLANTERMID = t11.TRMTRAINPLANTERMID  LEFT JOIN T_SRFORG t21 ON t1.ORMORGID = t21.ORGID  ) t1 where trmtrainbuapplyid=#{id}]]>
+    </select>
 
     <!--通过mybatis将查询结果注入到entity中,通过配置autoMapping="true"由mybatis自动处理映射关系 -->
     <resultMap id="TRMTRAINBUAPPLYResultMap" type="cn.ibizlab.ehr.core.trm.domain.TRMTRAINBUAPPLY" autoMapping="true">
@@ -13,7 +16,7 @@
             
 		
 		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
-		<association property="ormorg" javaType="cn.ibizlab.ehr.core.orm.domain.ORMORG" column="ormorgid" select="cn.ibizlab.ehr.core.orm.mapper.ORMORGMapper.selectById" fetchType="lazy"></association>
+		<association property="ormorg" javaType="cn.ibizlab.ehr.core.orm.domain.OrmOrg" column="ormorgid" select="cn.ibizlab.ehr.core.orm.mapper.OrmOrgMapper.selectById" fetchType="lazy"></association>
 		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
 		<association property="trmtrainplanterm" javaType="cn.ibizlab.ehr.core.trm.domain.TRMTRAINPLANTERM" column="trmtrainplantermid" select="cn.ibizlab.ehr.core.trm.mapper.TRMTRAINPLANTERMMapper.selectById" fetchType="lazy"></association>
     </resultMap>
@@ -49,9 +52,9 @@
 			]]>
     </sql>
 
-    <!--数据查询[Default]-->
-    <sql id="Default" databaseId="oracle">
-       <![CDATA[	SELECT t1.BZ, t1.CDZJ, t1.CLF, t1.CREATEDATE, t1.CREATEMAN, t1.ENABLE, t1.JFLX, t1.JGFY, t1.ND, t1.ORMORGID, t21.ORGNAME AS ORMORGNAME, t1.QTFY, t1.SZF, t1.TRMTRAINBUAPPLYID, t1.TRMTRAINBUAPPLYNAME, t1.TRMTRAINPLANTERMID, t11.TRMTRAINPLANTERMNAME, t1.TZJE, t1.TZYSXM, t1.UPDATEDATE, t1.UPDATEMAN, t1.YSZJE FROM T_TRMTRAINBUAPPLY t1  LEFT JOIN T_TRMTRAINPLANTERM t11 ON t1.TRMTRAINPLANTERMID = t11.TRMTRAINPLANTERMID  LEFT JOIN T_SRFORG t21 ON t1.ORMORGID = t21.ORGID  
+    <!--数据查询[View]-->
+    <sql id="View" databaseId="mysql">
+       <![CDATA[	SELECT t1.`BZ`, t1.`CDZJ`, t1.`CLF`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t1.`JFLX`, t1.`JGFY`, t1.`ND`, t1.`ORMORGID`, t21.`ORGNAME` AS `ORMORGNAME`, t1.`QTFY`, t1.`SZF`, t1.`TRMTRAINBUAPPLYID`, t1.`TRMTRAINBUAPPLYNAME`, t1.`TRMTRAINPLANTERMID`, t11.`TRMTRAINPLANTERMNAME`, t1.`TZJE`, t1.`TZYSXM`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`YSZJE` FROM `T_TRMTRAINBUAPPLY` t1  LEFT JOIN T_TRMTRAINPLANTERM t11 ON t1.TRMTRAINPLANTERMID = t11.TRMTRAINPLANTERMID  LEFT JOIN T_SRFORG t21 ON t1.ORMORGID = t21.ORGID  
 				 WHERE 	t1.ENABLE = 1
 			]]>
     </sql>

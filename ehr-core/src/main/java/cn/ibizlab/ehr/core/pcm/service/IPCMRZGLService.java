@@ -54,6 +54,9 @@ public interface IPCMRZGLService extends IService<PCMRZGL>{
      */
     boolean execute(String sql, Map param);
 
+    List<PCMRZGL> getPcmrzglByIds(List<String> ids) ;
+    List<PCMRZGL> getPcmrzglByEntities(List<PCMRZGL> entities) ;
+
 }
 
 

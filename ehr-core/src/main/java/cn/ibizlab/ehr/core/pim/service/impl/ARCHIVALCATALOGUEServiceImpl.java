@@ -218,6 +218,26 @@ public class ARCHIVALCATALOGUEServiceImpl extends ServiceImpl<ARCHIVALCATALOGUEM
         return true;
     }
 
+    @Override
+    public List<ARCHIVALCATALOGUE> getArchivalcatalogueByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<ARCHIVALCATALOGUE> getArchivalcatalogueByEntities(List<ARCHIVALCATALOGUE> entities) {
+        List ids =new ArrayList();
+        for(ARCHIVALCATALOGUE entity : entities){
+            Serializable id=entity.getArchivalcatalogueid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

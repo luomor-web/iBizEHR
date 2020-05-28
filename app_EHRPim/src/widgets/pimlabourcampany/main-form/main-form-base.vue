@@ -25,7 +25,7 @@
   deMajorField='orgname'
   deKeyField='ormorg'
   :service="service"
-  :acParams="{ serviceName: 'ORMORGService', interfaceName: 'FetchGSGWZY'}"
+  :acParams="{ serviceName: 'OrmOrgService', interfaceName: 'FetchGSGWZY'}"
   valueitem='ormorgid' 
   :value="data.ormorgname" 
   editortype="" 

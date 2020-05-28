@@ -348,7 +348,7 @@
   deMajorField='orgname'
   deKeyField='ormorg'
   :service="service"
-  :acParams="{ serviceName: 'ORMORGService', interfaceName: 'FetchOrglist_Profile'}"
+  :acParams="{ serviceName: 'OrmOrgService', interfaceName: 'FetchOrglist_Profile'}"
   valueitem='ormorgid' 
   :value="data.ormorgname" 
   editortype="" 
@@ -414,11 +414,11 @@
   deMajorField='orgsectorname'
   deKeyField='ormorgsector'
   :service="service"
-  :acParams="{ serviceName: 'ORMORGSECTORService', interfaceName: 'FetchCURORMORG'}"
+  :acParams="{ serviceName: 'OrmOrgsectorService', interfaceName: 'FetchCURORMORG'}"
   valueitem='ormorgsectorid' 
   :value="data.ormorgsectorname" 
   editortype="" 
-  :pickupView="{ viewname: 'ormorgsectorydbmpickup-view', title: $t('entities.ormorgsector.views.ydbmpickupview.title'), deResParameters: [], parameters: [{ pathName: 'ormorgsectors', parameterName: 'ormorgsector' }, { pathName: 'ydbmpickupview', parameterName: 'ydbmpickupview' } ], placement:'' }"
+  :pickupView="{ viewname: 'ormorgsectorydbmpickup-view', title: $t('entities.ormorgsector.views.ydbmpickupview.title'), deResParameters: [{ pathName: 'ormorgs', parameterName: 'ormorg' }, ], parameters: [{ pathName: 'ormorgsectors', parameterName: 'ormorgsector' }, { pathName: 'ydbmpickupview', parameterName: 'ydbmpickupview' } ], placement:'' }"
   style=""  
   @formitemvaluechange="onFormItemValueChange">
 </app-picker>

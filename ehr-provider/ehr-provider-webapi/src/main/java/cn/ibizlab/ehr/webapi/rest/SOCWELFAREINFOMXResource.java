@@ -22,6 +22,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.access.prepost.PostAuthorize;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -39,15 +40,13 @@ import cn.ibizlab.ehr.core.soc.filter.SOCWELFAREINFOMXSearchContext;
 public class SOCWELFAREINFOMXResource {
 
     @Autowired
-    private ISOCWELFAREINFOMXService socwelfareinfomxService;
+    public ISOCWELFAREINFOMXService socwelfareinfomxService;
 
     @Autowired
     @Lazy
     public SOCWELFAREINFOMXMapping socwelfareinfomxMapping;
 
-    public SOCWELFAREINFOMXDTO permissionDTO=new SOCWELFAREINFOMXDTO();
-
-    @PreAuthorize("hasPermission(#socwelfareinfomx_id,'Remove',{'Sql',this.socwelfareinfomxMapping,this.permissionDTO})")
+    @PreAuthorize("hasPermission(this.socwelfareinfomxService.get(#socwelfareinfomx_id),'ehr-SOCWELFAREINFOMX-Remove')")
     @ApiOperation(value = "Remove", tags = {"SOCWELFAREINFOMX" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/socwelfareinfomxes/{socwelfareinfomx_id}")
     @Transactional
@@ -55,7 +54,7 @@ public class SOCWELFAREINFOMXResource {
          return ResponseEntity.status(HttpStatus.OK).body(socwelfareinfomxService.remove(socwelfareinfomx_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.socwelfareinfomxMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission(this.socwelfareinfomxService.getSocwelfareinfomxByIds(#ids),'ehr-SOCWELFAREINFOMX-Remove')")
     @ApiOperation(value = "RemoveBatch", tags = {"SOCWELFAREINFOMX" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/socwelfareinfomxes/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -63,14 +62,14 @@ public class SOCWELFAREINFOMXResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('','Save',{'Sql',this.socwelfareinfomxMapping,#socwelfareinfomxdto})")
+    @PreAuthorize("hasPermission(this.socwelfareinfomxMapping.toDomain(#socwelfareinfomxdto),'ehr-SOCWELFAREINFOMX-Save')")
     @ApiOperation(value = "Save", tags = {"SOCWELFAREINFOMX" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/socwelfareinfomxes/save")
     public ResponseEntity<Boolean> save(@RequestBody SOCWELFAREINFOMXDTO socwelfareinfomxdto) {
         return ResponseEntity.status(HttpStatus.OK).body(socwelfareinfomxService.save(socwelfareinfomxMapping.toDomain(socwelfareinfomxdto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.socwelfareinfomxMapping,#socwelfareinfomxdtos})")
+    @PreAuthorize("hasPermission(this.socwelfareinfomxMapping.toDomain(#socwelfareinfomxdtos),'ehr-SOCWELFAREINFOMX-Save')")
     @ApiOperation(value = "SaveBatch", tags = {"SOCWELFAREINFOMX" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/socwelfareinfomxes/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<SOCWELFAREINFOMXDTO> socwelfareinfomxdtos) {
@@ -78,21 +77,19 @@ public class SOCWELFAREINFOMXResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SOCWELFAREINFOMX-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"SOCWELFAREINFOMX" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/socwelfareinfomxes/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody SOCWELFAREINFOMXDTO socwelfareinfomxdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(socwelfareinfomxService.checkKey(socwelfareinfomxMapping.toDomain(socwelfareinfomxdto)));
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SOCWELFAREINFOMX-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"SOCWELFAREINFOMX" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/socwelfareinfomxes/getdraft")
     public ResponseEntity<SOCWELFAREINFOMXDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(socwelfareinfomxMapping.toDto(socwelfareinfomxService.getDraft(new SOCWELFAREINFOMX())));
     }
 
-    @PreAuthorize("hasPermission('','Create',{'Sql',this.socwelfareinfomxMapping,#socwelfareinfomxdto})")
+    @PreAuthorize("hasPermission(this.socwelfareinfomxMapping.toDomain(#socwelfareinfomxdto),'ehr-SOCWELFAREINFOMX-Create')")
     @ApiOperation(value = "Create", tags = {"SOCWELFAREINFOMX" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/socwelfareinfomxes")
     @Transactional
@@ -103,7 +100,7 @@ public class SOCWELFAREINFOMXResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.socwelfareinfomxMapping,#socwelfareinfomxdtos})")
+    @PreAuthorize("hasPermission(this.socwelfareinfomxMapping.toDomain(#socwelfareinfomxdtos),'ehr-SOCWELFAREINFOMX-Create')")
     @ApiOperation(value = "createBatch", tags = {"SOCWELFAREINFOMX" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/socwelfareinfomxes/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<SOCWELFAREINFOMXDTO> socwelfareinfomxdtos) {
@@ -111,7 +108,7 @@ public class SOCWELFAREINFOMXResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission(#socwelfareinfomx_id,'Get',{'Sql',this.socwelfareinfomxMapping,this.permissionDTO})")
+    @PostAuthorize("hasPermission(this.socwelfareinfomxMapping.toDomain(returnObject.body),'ehr-SOCWELFAREINFOMX-Get')")
     @ApiOperation(value = "Get", tags = {"SOCWELFAREINFOMX" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/socwelfareinfomxes/{socwelfareinfomx_id}")
     public ResponseEntity<SOCWELFAREINFOMXDTO> get(@PathVariable("socwelfareinfomx_id") String socwelfareinfomx_id) {
@@ -120,7 +117,7 @@ public class SOCWELFAREINFOMXResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#socwelfareinfomx_id,'Update',{'Sql',this.socwelfareinfomxMapping,#socwelfareinfomxdto})")
+    @PreAuthorize("hasPermission(this.socwelfareinfomxService.get(#socwelfareinfomx_id),'ehr-SOCWELFAREINFOMX-Update')")
     @ApiOperation(value = "Update", tags = {"SOCWELFAREINFOMX" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/socwelfareinfomxes/{socwelfareinfomx_id}")
     @Transactional
@@ -132,7 +129,7 @@ public class SOCWELFAREINFOMXResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.socwelfareinfomxMapping,#socwelfareinfomxdtos})")
+    @PreAuthorize("hasPermission(this.socwelfareinfomxService.getSocwelfareinfomxByEntities(this.socwelfareinfomxMapping.toDomain(#socwelfareinfomxdtos)),'ehr-SOCWELFAREINFOMX-Update')")
     @ApiOperation(value = "UpdateBatch", tags = {"SOCWELFAREINFOMX" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/socwelfareinfomxes/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<SOCWELFAREINFOMXDTO> socwelfareinfomxdtos) {
@@ -162,3 +159,4 @@ public class SOCWELFAREINFOMXResource {
                 .body(new PageImpl(socwelfareinfomxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 }
+

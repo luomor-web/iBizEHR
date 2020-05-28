@@ -62,6 +62,9 @@ public interface IPIMARCHIVESLOANANDRETURNService extends IService<PIMARCHIVESLO
      */
     boolean execute(String sql, Map param);
 
+    List<PIMARCHIVESLOANANDRETURN> getPimarchivesloanandreturnByIds(List<String> ids) ;
+    List<PIMARCHIVESLOANANDRETURN> getPimarchivesloanandreturnByEntities(List<PIMARCHIVESLOANANDRETURN> entities) ;
+
 }
 
 

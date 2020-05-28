@@ -179,6 +179,26 @@ public class VACLEACETYPEServiceImpl extends ServiceImpl<VACLEACETYPEMapper, VAC
         return true;
     }
 
+    @Override
+    public List<VACLEACETYPE> getVacleacetypeByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<VACLEACETYPE> getVacleacetypeByEntities(List<VACLEACETYPE> entities) {
+        List ids =new ArrayList();
+        for(VACLEACETYPE entity : entities){
+            Serializable id=entity.getVacleacetypeid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

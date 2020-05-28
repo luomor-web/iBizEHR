@@ -52,6 +52,9 @@ public interface ISALTYPEService extends IService<SALTYPE>{
      */
     boolean execute(String sql, Map param);
 
+    List<SALTYPE> getSaltypeByIds(List<String> ids) ;
+    List<SALTYPE> getSaltypeByEntities(List<SALTYPE> entities) ;
+
 }
 
 

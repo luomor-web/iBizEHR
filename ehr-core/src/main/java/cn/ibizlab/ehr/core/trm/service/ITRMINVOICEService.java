@@ -54,6 +54,9 @@ public interface ITRMINVOICEService extends IService<TRMINVOICE>{
      */
     boolean execute(String sql, Map param);
 
+    List<TRMINVOICE> getTrminvoiceByIds(List<String> ids) ;
+    List<TRMINVOICE> getTrminvoiceByEntities(List<TRMINVOICE> entities) ;
+
 }
 
 

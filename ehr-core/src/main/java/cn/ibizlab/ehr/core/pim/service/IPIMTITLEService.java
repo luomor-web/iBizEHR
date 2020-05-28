@@ -61,6 +61,9 @@ public interface IPIMTITLEService extends IService<PIMTITLE>{
      */
     boolean execute(String sql, Map param);
 
+    List<PIMTITLE> getPimtitleByIds(List<String> ids) ;
+    List<PIMTITLE> getPimtitleByEntities(List<PIMTITLE> entities) ;
+
 }
 
 

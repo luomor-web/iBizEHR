@@ -58,6 +58,9 @@ public interface IPCMYDGZMXService extends IService<PCMYDGZMX>{
      */
     boolean execute(String sql, Map param);
 
+    List<PCMYDGZMX> getPcmydgzmxByIds(List<String> ids) ;
+    List<PCMYDGZMX> getPcmydgzmxByEntities(List<PCMYDGZMX> entities) ;
+
 }
 
 

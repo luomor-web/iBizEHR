@@ -57,6 +57,9 @@ public interface ICodeItemService extends IService<CodeItem>{
      */
     boolean execute(String sql, Map param);
 
+    List<CodeItem> getCodeitemByIds(List<String> ids) ;
+    List<CodeItem> getCodeitemByEntities(List<CodeItem> entities) ;
+
 }
 
 

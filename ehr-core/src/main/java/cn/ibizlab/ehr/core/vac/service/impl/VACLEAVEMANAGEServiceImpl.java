@@ -330,6 +330,26 @@ public class VACLEAVEMANAGEServiceImpl extends ServiceImpl<VACLEAVEMANAGEMapper,
         return true;
     }
 
+    @Override
+    public List<VACLEAVEMANAGE> getVacleavemanageByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<VACLEAVEMANAGE> getVacleavemanageByEntities(List<VACLEAVEMANAGE> entities) {
+        List ids =new ArrayList();
+        for(VACLEAVEMANAGE entity : entities){
+            Serializable id=entity.getVacleavemanageid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

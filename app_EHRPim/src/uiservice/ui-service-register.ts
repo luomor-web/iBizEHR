@@ -67,9 +67,9 @@ export class UIServiceRegister {
         this.allUIService.set('pimdistirbution', () => import('@/uiservice/pimdistirbution/pimdistirbution-ui-service'));
         this.allUIService.set('dynadashboard', () => import('@/uiservice/dyna-dashboard/dyna-dashboard-ui-service'));
         this.allUIService.set('pimmajorsetype', () => import('@/uiservice/pimmajorsetype/pimmajorsetype-ui-service'));
-        this.allUIService.set('ormorgsector', () => import('@/uiservice/ormorgsector/ormorgsector-ui-service'));
+        this.allUIService.set('ormorgsector', () => import('@/uiservice/orm-orgsector/orm-orgsector-ui-service'));
         this.allUIService.set('dynachart', () => import('@/uiservice/dyna-chart/dyna-chart-ui-service'));
-        this.allUIService.set('ormorg', () => import('@/uiservice/ormorg/ormorg-ui-service'));
+        this.allUIService.set('ormorg', () => import('@/uiservice/orm-org/orm-org-ui-service'));
         this.allUIService.set('codeitem', () => import('@/uiservice/code-item/code-item-ui-service'));
         this.allUIService.set('pimcontracttype', () => import('@/uiservice/pimcontracttype/pimcontracttype-ui-service'));
         this.allUIService.set('pcmjxsgz', () => import('@/uiservice/pcmjxsgz/pcmjxsgz-ui-service'));

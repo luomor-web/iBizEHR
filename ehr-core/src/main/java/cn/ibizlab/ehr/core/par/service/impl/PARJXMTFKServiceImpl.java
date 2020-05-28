@@ -217,6 +217,26 @@ public class PARJXMTFKServiceImpl extends ServiceImpl<PARJXMTFKMapper, PARJXMTFK
         return true;
     }
 
+    @Override
+    public List<PARJXMTFK> getParjxmtfkByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<PARJXMTFK> getParjxmtfkByEntities(List<PARJXMTFK> entities) {
+        List ids =new ArrayList();
+        for(PARJXMTFK entity : entities){
+            Serializable id=entity.getParjxmtfkid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

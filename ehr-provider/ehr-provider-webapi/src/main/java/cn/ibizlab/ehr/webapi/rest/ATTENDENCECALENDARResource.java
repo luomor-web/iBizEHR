@@ -22,6 +22,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.access.prepost.PostAuthorize;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -39,15 +40,13 @@ import cn.ibizlab.ehr.core.att.filter.ATTENDENCECALENDARSearchContext;
 public class ATTENDENCECALENDARResource {
 
     @Autowired
-    private IATTENDENCECALENDARService attendencecalendarService;
+    public IATTENDENCECALENDARService attendencecalendarService;
 
     @Autowired
     @Lazy
     public ATTENDENCECALENDARMapping attendencecalendarMapping;
 
-    public ATTENDENCECALENDARDTO permissionDTO=new ATTENDENCECALENDARDTO();
-
-    @PreAuthorize("hasPermission('','Create',{'Sql',this.attendencecalendarMapping,#attendencecalendardto})")
+    @PreAuthorize("hasPermission(this.attendencecalendarMapping.toDomain(#attendencecalendardto),'ehr-ATTENDENCECALENDAR-Create')")
     @ApiOperation(value = "Create", tags = {"ATTENDENCECALENDAR" },  notes = "Create")
 	@RequestMapping(method = RequestMethod.POST, value = "/attendencecalendars")
     @Transactional
@@ -58,7 +57,7 @@ public class ATTENDENCECALENDARResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Create',{'Sql',this.attendencecalendarMapping,#attendencecalendardtos})")
+    @PreAuthorize("hasPermission(this.attendencecalendarMapping.toDomain(#attendencecalendardtos),'ehr-ATTENDENCECALENDAR-Create')")
     @ApiOperation(value = "createBatch", tags = {"ATTENDENCECALENDAR" },  notes = "createBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/attendencecalendars/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<ATTENDENCECALENDARDTO> attendencecalendardtos) {
@@ -66,14 +65,14 @@ public class ATTENDENCECALENDARResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission('','Save',{'Sql',this.attendencecalendarMapping,#attendencecalendardto})")
+    @PreAuthorize("hasPermission(this.attendencecalendarMapping.toDomain(#attendencecalendardto),'ehr-ATTENDENCECALENDAR-Save')")
     @ApiOperation(value = "Save", tags = {"ATTENDENCECALENDAR" },  notes = "Save")
 	@RequestMapping(method = RequestMethod.POST, value = "/attendencecalendars/save")
     public ResponseEntity<Boolean> save(@RequestBody ATTENDENCECALENDARDTO attendencecalendardto) {
         return ResponseEntity.status(HttpStatus.OK).body(attendencecalendarService.save(attendencecalendarMapping.toDomain(attendencecalendardto)));
     }
 
-    @PreAuthorize("hasPermission('Save',{'Sql',this.attendencecalendarMapping,#attendencecalendardtos})")
+    @PreAuthorize("hasPermission(this.attendencecalendarMapping.toDomain(#attendencecalendardtos),'ehr-ATTENDENCECALENDAR-Save')")
     @ApiOperation(value = "SaveBatch", tags = {"ATTENDENCECALENDAR" },  notes = "SaveBatch")
 	@RequestMapping(method = RequestMethod.POST, value = "/attendencecalendars/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<ATTENDENCECALENDARDTO> attendencecalendardtos) {
@@ -81,7 +80,7 @@ public class ATTENDENCECALENDARResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasPermission(#attendencecalendar_id,'Update',{'Sql',this.attendencecalendarMapping,#attendencecalendardto})")
+    @PreAuthorize("hasPermission(this.attendencecalendarService.get(#attendencecalendar_id),'ehr-ATTENDENCECALENDAR-Update')")
     @ApiOperation(value = "Update", tags = {"ATTENDENCECALENDAR" },  notes = "Update")
 	@RequestMapping(method = RequestMethod.PUT, value = "/attendencecalendars/{attendencecalendar_id}")
     @Transactional
@@ -93,7 +92,7 @@ public class ATTENDENCECALENDARResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission('Update',{'Sql',this.attendencecalendarMapping,#attendencecalendardtos})")
+    @PreAuthorize("hasPermission(this.attendencecalendarService.getAttendencecalendarByEntities(this.attendencecalendarMapping.toDomain(#attendencecalendardtos)),'ehr-ATTENDENCECALENDAR-Update')")
     @ApiOperation(value = "UpdateBatch", tags = {"ATTENDENCECALENDAR" },  notes = "UpdateBatch")
 	@RequestMapping(method = RequestMethod.PUT, value = "/attendencecalendars/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<ATTENDENCECALENDARDTO> attendencecalendardtos) {
@@ -101,14 +100,13 @@ public class ATTENDENCECALENDARResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ATTENDENCECALENDAR-CheckKey-all')")
     @ApiOperation(value = "CheckKey", tags = {"ATTENDENCECALENDAR" },  notes = "CheckKey")
 	@RequestMapping(method = RequestMethod.POST, value = "/attendencecalendars/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody ATTENDENCECALENDARDTO attendencecalendardto) {
         return  ResponseEntity.status(HttpStatus.OK).body(attendencecalendarService.checkKey(attendencecalendarMapping.toDomain(attendencecalendardto)));
     }
 
-    @PreAuthorize("hasPermission(#attendencecalendar_id,'Get',{'Sql',this.attendencecalendarMapping,this.permissionDTO})")
+    @PostAuthorize("hasPermission(this.attendencecalendarMapping.toDomain(returnObject.body),'ehr-ATTENDENCECALENDAR-Get')")
     @ApiOperation(value = "Get", tags = {"ATTENDENCECALENDAR" },  notes = "Get")
 	@RequestMapping(method = RequestMethod.GET, value = "/attendencecalendars/{attendencecalendar_id}")
     public ResponseEntity<ATTENDENCECALENDARDTO> get(@PathVariable("attendencecalendar_id") String attendencecalendar_id) {
@@ -117,7 +115,7 @@ public class ATTENDENCECALENDARResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @PreAuthorize("hasPermission(#attendencecalendar_id,'Remove',{'Sql',this.attendencecalendarMapping,this.permissionDTO})")
+    @PreAuthorize("hasPermission(this.attendencecalendarService.get(#attendencecalendar_id),'ehr-ATTENDENCECALENDAR-Remove')")
     @ApiOperation(value = "Remove", tags = {"ATTENDENCECALENDAR" },  notes = "Remove")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/attendencecalendars/{attendencecalendar_id}")
     @Transactional
@@ -125,7 +123,7 @@ public class ATTENDENCECALENDARResource {
          return ResponseEntity.status(HttpStatus.OK).body(attendencecalendarService.remove(attendencecalendar_id));
     }
 
-    @PreAuthorize("hasPermission('Remove',{'Sql',this.attendencecalendarMapping,this.permissionDTO,#ids})")
+    @PreAuthorize("hasPermission(this.attendencecalendarService.getAttendencecalendarByIds(#ids),'ehr-ATTENDENCECALENDAR-Remove')")
     @ApiOperation(value = "RemoveBatch", tags = {"ATTENDENCECALENDAR" },  notes = "RemoveBatch")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/attendencecalendars/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
@@ -133,7 +131,6 @@ public class ATTENDENCECALENDARResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ATTENDENCECALENDAR-GetDraft-all')")
     @ApiOperation(value = "GetDraft", tags = {"ATTENDENCECALENDAR" },  notes = "GetDraft")
 	@RequestMapping(method = RequestMethod.GET, value = "/attendencecalendars/getdraft")
     public ResponseEntity<ATTENDENCECALENDARDTO> getDraft() {
@@ -162,3 +159,4 @@ public class ATTENDENCECALENDARResource {
                 .body(new PageImpl(attendencecalendarMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
 }
+

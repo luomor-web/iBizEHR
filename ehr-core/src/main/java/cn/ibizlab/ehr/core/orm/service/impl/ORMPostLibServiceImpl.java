@@ -182,6 +182,26 @@ public class ORMPostLibServiceImpl extends ServiceImpl<ORMPostLibMapper, ORMPost
         return true;
     }
 
+    @Override
+    public List<ORMPostLib> getOrmpostlibByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<ORMPostLib> getOrmpostlibByEntities(List<ORMPostLib> entities) {
+        List ids =new ArrayList();
+        for(ORMPostLib entity : entities){
+            Serializable id=entity.getOrmpostlibid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

@@ -55,6 +55,9 @@ public interface IUnitedPersonService extends IService<UnitedPerson>{
      */
     boolean execute(String sql, Map param);
 
+    List<UnitedPerson> getUnitedpersonByIds(List<String> ids) ;
+    List<UnitedPerson> getUnitedpersonByEntities(List<UnitedPerson> entities) ;
+
 }
 
 

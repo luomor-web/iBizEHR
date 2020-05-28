@@ -54,6 +54,9 @@ public interface IPCMAWARDSWONSService extends IService<PCMAWARDSWONS>{
      */
     boolean execute(String sql, Map param);
 
+    List<PCMAWARDSWONS> getPcmawardswonsByIds(List<String> ids) ;
+    List<PCMAWARDSWONS> getPcmawardswonsByEntities(List<PCMAWARDSWONS> entities) ;
+
 }
 
 

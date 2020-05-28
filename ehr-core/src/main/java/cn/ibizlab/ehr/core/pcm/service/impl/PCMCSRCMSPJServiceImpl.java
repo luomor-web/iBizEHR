@@ -179,6 +179,26 @@ public class PCMCSRCMSPJServiceImpl extends ServiceImpl<PCMCSRCMSPJMapper, PCMCS
         return true;
     }
 
+    @Override
+    public List<PCMCSRCMSPJ> getPcmcsrcmspjByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<PCMCSRCMSPJ> getPcmcsrcmspjByEntities(List<PCMCSRCMSPJ> entities) {
+        List ids =new ArrayList();
+        for(PCMCSRCMSPJ entity : entities){
+            Serializable id=entity.getPcmcsrcmspjid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

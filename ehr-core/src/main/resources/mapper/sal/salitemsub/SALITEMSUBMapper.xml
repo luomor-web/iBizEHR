@@ -4,6 +4,9 @@
 <mapper	namespace="cn.ibizlab.ehr.core.sal.mapper.SALITEMSUBMapper">
 
     <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
+	<select id="selectById"  resultMap="SALITEMSUBResultMap" databaseId="mysql">
+        <![CDATA[select t1.* from (SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ORMORGID`, t11.`ORGNAME` AS `ORMORGNAME`, t1.`SALITEMID`, t21.`SALITEMNAME`, t1.`SALITEMSUBID`, t1.`SALITEMSUBNAME`, t1.`SALSUBJECTID`, t31.`SALSUBJECTNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN` FROM `T_SALITEMSUB` t1  LEFT JOIN T_SRFORG t11 ON t1.ORMORGID = t11.ORGID  LEFT JOIN T_SALITEM t21 ON t1.SALITEMID = t21.SALITEMID  LEFT JOIN T_SALSUBJECT t31 ON t1.SALSUBJECTID = t31.SALSUBJECTID  ) t1 where salitemsubid=#{id}]]>
+    </select>
 
     <!--通过mybatis将查询结果注入到entity中,通过配置autoMapping="true"由mybatis自动处理映射关系 -->
     <resultMap id="SALITEMSUBResultMap" type="cn.ibizlab.ehr.core.sal.domain.SALITEMSUB" autoMapping="true">
@@ -14,7 +17,7 @@
             
 		
 		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
-		<association property="ormorg" javaType="cn.ibizlab.ehr.core.orm.domain.ORMORG" column="ormorgid" select="cn.ibizlab.ehr.core.orm.mapper.ORMORGMapper.selectById" fetchType="lazy"></association>
+		<association property="ormorg" javaType="cn.ibizlab.ehr.core.orm.domain.OrmOrg" column="ormorgid" select="cn.ibizlab.ehr.core.orm.mapper.OrmOrgMapper.selectById" fetchType="lazy"></association>
 		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
 		<association property="salitem" javaType="cn.ibizlab.ehr.core.sal.domain.SALITEM" column="salitemid" select="cn.ibizlab.ehr.core.sal.mapper.SALITEMMapper.selectById" fetchType="lazy"></association>
 		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
@@ -58,9 +61,9 @@
 			]]>
     </sql>
 
-    <!--数据查询[Default]-->
-    <sql id="Default" databaseId="oracle">
-       <![CDATA[	SELECT t1.CREATEDATE, t1.CREATEMAN, t1.ORMORGID, t11.ORGNAME AS ORMORGNAME, t1.SALITEMID, t21.SALITEMNAME, t1.SALITEMSUBID, t1.SALITEMSUBNAME, t1.SALSUBJECTID, t31.SALSUBJECTNAME, t1.UPDATEDATE, t1.UPDATEMAN FROM T_SALITEMSUB t1  LEFT JOIN T_SRFORG t11 ON t1.ORMORGID = t11.ORGID  LEFT JOIN T_SALITEM t21 ON t1.SALITEMID = t21.SALITEMID  LEFT JOIN T_SALSUBJECT t31 ON t1.SALSUBJECTID = t31.SALSUBJECTID  
+    <!--数据查询[View]-->
+    <sql id="View" databaseId="mysql">
+       <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ORMORGID`, t11.`ORGNAME` AS `ORMORGNAME`, t1.`SALITEMID`, t21.`SALITEMNAME`, t1.`SALITEMSUBID`, t1.`SALITEMSUBNAME`, t1.`SALSUBJECTID`, t31.`SALSUBJECTNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN` FROM `T_SALITEMSUB` t1  LEFT JOIN T_SRFORG t11 ON t1.ORMORGID = t11.ORGID  LEFT JOIN T_SALITEM t21 ON t1.SALITEMID = t21.SALITEMID  LEFT JOIN T_SALSUBJECT t31 ON t1.SALSUBJECTID = t31.SALSUBJECTID  
 			]]>
     </sql>
 

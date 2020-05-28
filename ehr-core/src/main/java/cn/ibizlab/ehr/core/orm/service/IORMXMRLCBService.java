@@ -53,6 +53,9 @@ public interface IORMXMRLCBService extends IService<ORMXMRLCB>{
      */
     boolean execute(String sql, Map param);
 
+    List<ORMXMRLCB> getOrmxmrlcbByIds(List<String> ids) ;
+    List<ORMXMRLCB> getOrmxmrlcbByEntities(List<ORMXMRLCB> entities) ;
+
 }
 
 

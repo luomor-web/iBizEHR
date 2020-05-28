@@ -16,7 +16,7 @@ import ORMCL_GW from '@/codelist/ormcl-gw';
 import PIMCL_HY from '@/codelist/pimcl-hy';   
 import PIMCL_ZZMM from '@/codelist/pimcl-zzmm';   
 import ORMCL_LEVELTWOORG from '@/codelist/ormcl-leveltwoorg';   
-import SSQY from '@/codelist/ssqy';   
+import EhrCodeListSsqy from '@/codelist/ehr-code-list-ssqy';   
 import PIMCL_XB from '@/codelist/pimcl-xb';   
 import PIMCL_RZLB from '@/codelist/pimcl-rzlb';   
 import PIMCL_XL from '@/codelist/pimcl-xl';   
@@ -213,10 +213,10 @@ export default class CodeListService {
     /**
      * 代码表--所属区域
      *
-     * @type {SSQY}
+     * @type {EhrCodeListSsqy}
      * @memberof CodeListService
      */
-    public SSQY: SSQY = new SSQY();
+    public EhrCodeListSsqy: EhrCodeListSsqy = new EhrCodeListSsqy();
 
     /**
      * 代码表--性别

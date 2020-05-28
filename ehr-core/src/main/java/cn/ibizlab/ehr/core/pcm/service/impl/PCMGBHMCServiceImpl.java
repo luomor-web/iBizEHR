@@ -227,6 +227,26 @@ public class PCMGBHMCServiceImpl extends ServiceImpl<PCMGBHMCMapper, PCMGBHMC> i
         return true;
     }
 
+    @Override
+    public List<PCMGBHMC> getPcmgbhmcByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<PCMGBHMC> getPcmgbhmcByEntities(List<PCMGBHMC> entities) {
+        List ids =new ArrayList();
+        for(PCMGBHMC entity : entities){
+            Serializable id=entity.getPimpersonid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 

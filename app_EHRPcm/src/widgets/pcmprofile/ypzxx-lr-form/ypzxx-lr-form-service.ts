@@ -4,8 +4,8 @@ import PCMPROFILEService from '@/service/pcmprofile/pcmprofile-service';
 import YPZXX_LRModel from './ypzxx-lr-form-model';
 import PIMPERSONService from '@/service/pimperson/pimperson-service';
 import PIMCITYService from '@/service/pimcity/pimcity-service';
-import ORMORGService from '@/service/ormorg/ormorg-service';
-import ORMORGSECTORService from '@/service/ormorgsector/ormorgsector-service';
+import OrmOrgService from '@/service/orm-org/orm-org-service';
+import OrmOrgsectorService from '@/service/orm-orgsector/orm-orgsector-service';
 import ORMPOSTService from '@/service/ormpost/ormpost-service';
 import ORMDUTYService from '@/service/ormduty/ormduty-service';
 
@@ -66,18 +66,18 @@ export default class YPZXX_LRService extends ControlService {
     /**
      * 组织管理服务对象
      *
-     * @type {ORMORGService}
+     * @type {OrmOrgService}
      * @memberof YPZXX_LRService
      */
-    public ormorgService: ORMORGService = new ORMORGService();
+    public ormorgService: OrmOrgService = new OrmOrgService();
 
     /**
      * 部门管理服务对象
      *
-     * @type {ORMORGSECTORService}
+     * @type {OrmOrgsectorService}
      * @memberof YPZXX_LRService
      */
-    public ormorgsectorService: ORMORGSECTORService = new ORMORGSECTORService();
+    public ormorgsectorService: OrmOrgsectorService = new OrmOrgsectorService();
 
     /**
      * 岗位集服务对象
@@ -140,10 +140,10 @@ export default class YPZXX_LRService extends ControlService {
         if (Object.is(serviceName, 'PIMCITYService') && Object.is(interfaceName, 'FetchDefault')) {
             return this.doItems(this.pimcityService.FetchDefault(JSON.parse(JSON.stringify(context)),data, isloading), 'pimcityid', 'pimcity');
         }
-        if (Object.is(serviceName, 'ORMORGService') && Object.is(interfaceName, 'FetchOrglist_Profile')) {
+        if (Object.is(serviceName, 'OrmOrgService') && Object.is(interfaceName, 'FetchOrglist_Profile')) {
             return this.doItems(this.ormorgService.FetchOrglist_Profile(JSON.parse(JSON.stringify(context)),data, isloading), 'orgid', 'ormorg');
         }
-        if (Object.is(serviceName, 'ORMORGSECTORService') && Object.is(interfaceName, 'FetchCURORMORG')) {
+        if (Object.is(serviceName, 'OrmOrgsectorService') && Object.is(interfaceName, 'FetchCURORMORG')) {
             return this.doItems(this.ormorgsectorService.FetchCURORMORG(JSON.parse(JSON.stringify(context)),data, isloading), 'orgsectorid', 'ormorgsector');
         }
         if (Object.is(serviceName, 'ORMPOSTService') && Object.is(interfaceName, 'FetchEJZZGW')) {

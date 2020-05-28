@@ -52,6 +52,9 @@ public interface ITRMZZOBMService extends IService<TRMZZOBM>{
      */
     boolean execute(String sql, Map param);
 
+    List<TRMZZOBM> getTrmzzobmByIds(List<String> ids) ;
+    List<TRMZZOBM> getTrmzzobmByEntities(List<TRMZZOBM> entities) ;
+
 }
 
 

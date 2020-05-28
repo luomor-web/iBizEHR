@@ -210,6 +210,26 @@ public class PIMSOCIALSECURITYServiceImpl extends ServiceImpl<PIMSOCIALSECURITYM
         return true;
     }
 
+    @Override
+    public List<PIMSOCIALSECURITY> getPimsocialsecurityByIds(List<String> ids) {
+         return this.listByIds(ids);
+    }
+
+    @Override
+    public List<PIMSOCIALSECURITY> getPimsocialsecurityByEntities(List<PIMSOCIALSECURITY> entities) {
+        List ids =new ArrayList();
+        for(PIMSOCIALSECURITY entity : entities){
+            Serializable id=entity.getPimsocialsecurityid();
+            if(!ObjectUtils.isEmpty(id)){
+                ids.add(id);
+            }
+        }
+        if(ids.size()>0)
+           return this.listByIds(ids);
+        else
+           return entities;
+    }
+
 }
 
 
