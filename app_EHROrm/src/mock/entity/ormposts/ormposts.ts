@@ -87,6 +87,35 @@ mock.onDelete(new RegExp(/^\/ormposts\/batch$/)).reply((config: any) => {
 });
 
 
+
+// Select
+mock.onGet(new RegExp(/^\/ormorgs\/([a-zA-Z0-9\-\;]{1,35})\/ormposts\/([a-zA-Z0-9\-\;]{1,35})\/select$/)).reply((config: any) => {
+    console.groupCollapsed("实体:ormpost 方法: Select");
+    console.table({url:config.url, method: config.method, data:config.data});
+    let status = MockAdapter.mockStatus(config);
+    if (status !== 200) {
+        return [status, null];
+    }
+    const paramArray:Array<any> = ['orgid','ormpostid'];
+    const matchArray:any = new RegExp(/^\/ormorgs\/([a-zA-Z0-9\-\;]{1,35})\/ormposts\/([a-zA-Z0-9\-\;]{1,35})\/select$/).exec(config.url);
+    let tempValue: any = {};
+    if(matchArray && matchArray.length >1 && paramArray && paramArray.length >0){
+        paramArray.forEach((item: any, index: number) => {
+            Object.defineProperty(tempValue, item, {
+                enumerable: true,
+                value: matchArray[index + 1]
+            });
+        });
+    }
+    let items = mockDatas ? mockDatas : [];
+    let _items = items.find((item: any) => Object.is(item.ormpostid, tempValue.ormpostid));
+    console.groupCollapsed("response数据  status: "+status+" data: ");
+    console.table(_items);
+    console.groupEnd();
+    console.groupEnd();
+    return [status, _items];
+});
+
 // Select
 mock.onGet(new RegExp(/^\/ormposts\/([a-zA-Z0-9\-\;]{1,35})\/select$/)).reply((config: any) => {
     console.groupCollapsed("实体:ormpost 方法: Select");
@@ -113,6 +142,33 @@ mock.onGet(new RegExp(/^\/ormposts\/([a-zA-Z0-9\-\;]{1,35})\/select$/)).reply((c
     console.groupEnd();
     console.groupEnd();
     return [status, _items];
+});
+
+    
+// Save
+mock.onPost(new RegExp(/^\/ormorgs\/([a-zA-Z0-9\-\;]{1,35})\/ormposts\/([a-zA-Z0-9\-\;]{1,35})\/save$/)).reply((config: any) => {
+    console.groupCollapsed("实体:ormpost 方法: Save");
+    console.table({url:config.url, method: config.method, data:config.data});
+    let status = MockAdapter.mockStatus(config);
+    if (status !== 200) {
+        return [status, null];
+    }
+    const paramArray:Array<any> = ['orgid','ormpostid'];
+    const matchArray:any = new RegExp(/^\/ormorgs\/([a-zA-Z0-9\-\;]{1,35})\/ormposts\/([a-zA-Z0-9\-\;]{1,35})\/save$/).exec(config.url);
+    let tempValue: any = {};
+    if(matchArray && matchArray.length >1 && paramArray && paramArray.length >0){
+        paramArray.forEach((item: any, index: number) => {
+            Object.defineProperty(tempValue, item, {
+                enumerable: true,
+                value: matchArray[index + 1]
+            });
+        });
+    }
+    console.groupCollapsed("response数据  status: "+status+" data: ");
+    console.table({});
+    console.groupEnd();
+    console.groupEnd();
+    return [status, {}];
 });
         
 // Save
@@ -152,6 +208,33 @@ mock.onPost(new RegExp(/^\/ormposts\/?([a-zA-Z0-9\-\;]{0,35})\/save$/)).reply((c
     console.groupEnd();
     return [status, data];
 });
+
+    
+// CheckKey
+mock.onPost(new RegExp(/^\/ormorgs\/([a-zA-Z0-9\-\;]{1,35})\/ormposts\/([a-zA-Z0-9\-\;]{1,35})\/checkkey$/)).reply((config: any) => {
+    console.groupCollapsed("实体:ormpost 方法: CheckKey");
+    console.table({url:config.url, method: config.method, data:config.data});
+    let status = MockAdapter.mockStatus(config);
+    if (status !== 200) {
+        return [status, null];
+    }
+    const paramArray:Array<any> = ['orgid','ormpostid'];
+    const matchArray:any = new RegExp(/^\/ormorgs\/([a-zA-Z0-9\-\;]{1,35})\/ormposts\/([a-zA-Z0-9\-\;]{1,35})\/checkkey$/).exec(config.url);
+    let tempValue: any = {};
+    if(matchArray && matchArray.length >1 && paramArray && paramArray.length >0){
+        paramArray.forEach((item: any, index: number) => {
+            Object.defineProperty(tempValue, item, {
+                enumerable: true,
+                value: matchArray[index + 1]
+            });
+        });
+    }
+    console.groupCollapsed("response数据  status: "+status+" data: ");
+    console.table({});
+    console.groupEnd();
+    console.groupEnd();
+    return [status, {}];
+});
         
 // CheckKey
 mock.onPost(new RegExp(/^\/ormposts\/?([a-zA-Z0-9\-\;]{0,35})\/checkkey$/)).reply((config: any) => {
@@ -190,6 +273,33 @@ mock.onPost(new RegExp(/^\/ormposts\/?([a-zA-Z0-9\-\;]{0,35})\/checkkey$/)).repl
     console.groupEnd();
     return [status, data];
 });
+
+    
+// Create
+mock.onPost(new RegExp(/^\/ormorgs\/([a-zA-Z0-9\-\;]{1,35})\/ormposts\/([a-zA-Z0-9\-\;]{1,35})$/)).reply((config: any) => {
+    console.groupCollapsed("实体:ormpost 方法: Create");
+    console.table({url:config.url, method: config.method, data:config.data});
+    let status = MockAdapter.mockStatus(config);
+    if (status !== 200) {
+        return [status, null];
+    }
+    const paramArray:Array<any> = ['orgid','ormpostid'];
+    const matchArray:any = new RegExp(/^\/ormorgs\/([a-zA-Z0-9\-\;]{1,35})\/ormposts\/([a-zA-Z0-9\-\;]{1,35})$/).exec(config.url);
+    let tempValue: any = {};
+    if(matchArray && matchArray.length >1 && paramArray && paramArray.length >0){
+        paramArray.forEach((item: any, index: number) => {
+            Object.defineProperty(tempValue, item, {
+                enumerable: true,
+                value: matchArray[index + 1]
+            });
+        });
+    }
+    console.groupCollapsed("response数据  status: "+status+" data: ");
+    console.table({});
+    console.groupEnd();
+    console.groupEnd();
+    return [status, {}];
+});
         
 // Create
 mock.onPost(new RegExp(/^\/ormposts\/?([a-zA-Z0-9\-\;]{0,35})$/)).reply((config: any) => {
@@ -215,6 +325,34 @@ mock.onPost(new RegExp(/^\/ormposts\/?([a-zA-Z0-9\-\;]{0,35})$/)).reply((config:
     console.groupEnd();
     console.groupEnd();
     return [status, mockDatas[0]];
+});
+
+
+    
+// SetGwJb
+mock.onPost(new RegExp(/^\/ormorgs\/([a-zA-Z0-9\-\;]{1,35})\/ormposts\/([a-zA-Z0-9\-\;]{1,35})\/setgwjb$/)).reply((config: any) => {
+    console.groupCollapsed("实体:ormpost 方法: SetGwJb");
+    console.table({url:config.url, method: config.method, data:config.data});
+    let status = MockAdapter.mockStatus(config);
+    if (status !== 200) {
+        return [status, null];
+    }
+    const paramArray:Array<any> = ['orgid','ormpostid'];
+    const matchArray:any = new RegExp(/^\/ormorgs\/([a-zA-Z0-9\-\;]{1,35})\/ormposts\/([a-zA-Z0-9\-\;]{1,35})\/setgwjb$/).exec(config.url);
+    let tempValue: any = {};
+    if(matchArray && matchArray.length >1 && paramArray && paramArray.length >0){
+        paramArray.forEach((item: any, index: number) => {
+            Object.defineProperty(tempValue, item, {
+                enumerable: true,
+                value: matchArray[index + 1]
+            });
+        });
+    }
+    console.groupCollapsed("response数据  status: "+status+" data: ");
+    console.table({});
+    console.groupEnd();
+    console.groupEnd();
+    return [status, {}];
 });
         
 // SetGwJb
@@ -253,6 +391,33 @@ mock.onPost(new RegExp(/^\/ormposts\/?([a-zA-Z0-9\-\;]{0,35})\/setgwjb$/)).reply
     console.groupEnd();
     console.groupEnd();
     return [status, data];
+});
+
+    
+// Update
+mock.onPut(new RegExp(/^\/ormorgs\/([a-zA-Z0-9\-\;]{1,35})\/ormposts\/([a-zA-Z0-9\-\;]{1,35})$/)).reply((config: any) => {
+    console.groupCollapsed("实体:ormpost 方法: Update");
+    console.table({url:config.url, method: config.method, data:config.data});
+    let status = MockAdapter.mockStatus(config);
+    if (status !== 200) {
+        return [status, null];
+    }
+    const paramArray:Array<any> = ['orgid','ormpostid'];
+    const matchArray:any = new RegExp(/^\/ormorgs\/([a-zA-Z0-9\-\;]{1,35})\/ormposts\/([a-zA-Z0-9\-\;]{1,35})$/).exec(config.url);
+    let tempValue: any = {};
+    if(matchArray && matchArray.length >1 && paramArray && paramArray.length >0){
+        paramArray.forEach((item: any, index: number) => {
+            Object.defineProperty(tempValue, item, {
+                enumerable: true,
+                value: matchArray[index + 1]
+            });
+        });
+    }
+    console.groupCollapsed("response数据  status: "+status+" data: ");
+    console.table({});
+    console.groupEnd();
+    console.groupEnd();
+    return [status, {}];
 });
         
 // Update
@@ -293,6 +458,24 @@ mock.onPut(new RegExp(/^\/ormposts\/?([a-zA-Z0-9\-\;]{0,35})$/)).reply((config: 
     return [status, data];
 });
 
+
+
+// GetDraft
+mock.onGet(new RegExp(/^\/ormorgs\/([a-zA-Z0-9\-\;]{1,35})\/ormposts\/getdraft$/)).reply((config: any) => {
+    console.groupCollapsed("实体:ormpost 方法: GetDraft");
+    console.table({url:config.url, method: config.method, data:config.data});
+    // GetDraft
+    let status = MockAdapter.mockStatus(config);
+    if (status !== 200) {
+        return [status, null];
+    }
+    console.groupCollapsed("response数据  status: "+status+" data: ");
+    console.table({});
+    console.groupEnd();
+    console.groupEnd();
+    return [status, {}];
+});
+
 // GetDraft
 mock.onGet(new RegExp(/^\/ormposts\/getdraft$/)).reply((config: any) => {
     console.groupCollapsed("实体:ormpost 方法: GetDraft");
@@ -307,6 +490,51 @@ mock.onGet(new RegExp(/^\/ormposts\/getdraft$/)).reply((config: any) => {
     console.groupEnd();
     console.groupEnd();
     return [status, {}];
+});
+
+
+// FetchEJZZGW
+mock.onGet(new RegExp(/^\/ormorgs\/([a-zA-Z0-9\-\;]{1,35})\/ormposts\/fetchejzzgw$/)).reply((config: any) => {
+    console.groupCollapsed("实体:ormpost 方法: FetchEJZZGW");
+    console.table({url:config.url, method: config.method, data:config.data});
+    let status = MockAdapter.mockStatus(config);
+    if (status !== 200) {
+        return [status, null];
+    }
+    const paramArray:Array<any> = ['orgid'];
+    let tempValue: any = {};
+    const matchArray:any = new RegExp(/^\/ormorgs\/([a-zA-Z0-9\-\;]{1,35})\/ormposts\/fetchejzzgw$/).exec(config.url);
+    if(matchArray && matchArray.length >1 && paramArray && paramArray.length >0){
+        paramArray.forEach((item: any, index: number) => {
+            Object.defineProperty(tempValue, item, {
+                enumerable: true,
+                value: matchArray[index + 1]
+            });
+        });
+    }
+    let items = mockDatas ? mockDatas : [];
+    if (items.length > 0 && paramArray.length > 0) {
+        paramArray.forEach((paramkey: any) => {
+            if (tempValue[paramkey] && tempValue[paramkey].indexOf(";") > 0) {
+                let keysGrounp: Array<any> = tempValue[paramkey].split(new RegExp(/[\;]/));
+                let tempArray: Array<any> = [];
+                keysGrounp.forEach((singlekey: any) => {
+                    let _items =  items.filter((item: any) => { return item[paramkey] == singlekey });
+                   if(_items.length >0){
+                    tempArray.push(..._items);
+                   }
+                })
+                items = tempArray;
+            } else {
+                items = items.filter((item: any) => { return item[paramkey] == tempValue[paramkey] });
+            }
+        })
+    }
+    console.groupCollapsed("response数据  status: "+status+" data: ");
+    console.table(items);
+    console.groupEnd();
+    console.groupEnd();
+    return [status, items];
 });
     
 // FetchEJZZGW
@@ -352,6 +580,51 @@ mock.onGet(new RegExp(/^\/ormposts\/fetchejzzgw(\?[\w-./?%&=,]*)*$/)).reply((con
     console.groupEnd();
     return [status, records ?  records : []];
 });
+
+
+// FetchAuthPost
+mock.onGet(new RegExp(/^\/ormorgs\/([a-zA-Z0-9\-\;]{1,35})\/ormposts\/fetchauthpost$/)).reply((config: any) => {
+    console.groupCollapsed("实体:ormpost 方法: FetchAuthPost");
+    console.table({url:config.url, method: config.method, data:config.data});
+    let status = MockAdapter.mockStatus(config);
+    if (status !== 200) {
+        return [status, null];
+    }
+    const paramArray:Array<any> = ['orgid'];
+    let tempValue: any = {};
+    const matchArray:any = new RegExp(/^\/ormorgs\/([a-zA-Z0-9\-\;]{1,35})\/ormposts\/fetchauthpost$/).exec(config.url);
+    if(matchArray && matchArray.length >1 && paramArray && paramArray.length >0){
+        paramArray.forEach((item: any, index: number) => {
+            Object.defineProperty(tempValue, item, {
+                enumerable: true,
+                value: matchArray[index + 1]
+            });
+        });
+    }
+    let items = mockDatas ? mockDatas : [];
+    if (items.length > 0 && paramArray.length > 0) {
+        paramArray.forEach((paramkey: any) => {
+            if (tempValue[paramkey] && tempValue[paramkey].indexOf(";") > 0) {
+                let keysGrounp: Array<any> = tempValue[paramkey].split(new RegExp(/[\;]/));
+                let tempArray: Array<any> = [];
+                keysGrounp.forEach((singlekey: any) => {
+                    let _items =  items.filter((item: any) => { return item[paramkey] == singlekey });
+                   if(_items.length >0){
+                    tempArray.push(..._items);
+                   }
+                })
+                items = tempArray;
+            } else {
+                items = items.filter((item: any) => { return item[paramkey] == tempValue[paramkey] });
+            }
+        })
+    }
+    console.groupCollapsed("response数据  status: "+status+" data: ");
+    console.table(items);
+    console.groupEnd();
+    console.groupEnd();
+    return [status, items];
+});
     
 // FetchAuthPost
 mock.onGet(new RegExp(/^\/ormposts\/fetchauthpost$/)).reply((config: any) => {
@@ -395,6 +668,51 @@ mock.onGet(new RegExp(/^\/ormposts\/fetchauthpost(\?[\w-./?%&=,]*)*$/)).reply((c
     console.groupEnd();
     console.groupEnd();
     return [status, records ?  records : []];
+});
+
+
+// FetchCurOrg
+mock.onGet(new RegExp(/^\/ormorgs\/([a-zA-Z0-9\-\;]{1,35})\/ormposts\/fetchcurorg$/)).reply((config: any) => {
+    console.groupCollapsed("实体:ormpost 方法: FetchCurOrg");
+    console.table({url:config.url, method: config.method, data:config.data});
+    let status = MockAdapter.mockStatus(config);
+    if (status !== 200) {
+        return [status, null];
+    }
+    const paramArray:Array<any> = ['orgid'];
+    let tempValue: any = {};
+    const matchArray:any = new RegExp(/^\/ormorgs\/([a-zA-Z0-9\-\;]{1,35})\/ormposts\/fetchcurorg$/).exec(config.url);
+    if(matchArray && matchArray.length >1 && paramArray && paramArray.length >0){
+        paramArray.forEach((item: any, index: number) => {
+            Object.defineProperty(tempValue, item, {
+                enumerable: true,
+                value: matchArray[index + 1]
+            });
+        });
+    }
+    let items = mockDatas ? mockDatas : [];
+    if (items.length > 0 && paramArray.length > 0) {
+        paramArray.forEach((paramkey: any) => {
+            if (tempValue[paramkey] && tempValue[paramkey].indexOf(";") > 0) {
+                let keysGrounp: Array<any> = tempValue[paramkey].split(new RegExp(/[\;]/));
+                let tempArray: Array<any> = [];
+                keysGrounp.forEach((singlekey: any) => {
+                    let _items =  items.filter((item: any) => { return item[paramkey] == singlekey });
+                   if(_items.length >0){
+                    tempArray.push(..._items);
+                   }
+                })
+                items = tempArray;
+            } else {
+                items = items.filter((item: any) => { return item[paramkey] == tempValue[paramkey] });
+            }
+        })
+    }
+    console.groupCollapsed("response数据  status: "+status+" data: ");
+    console.table(items);
+    console.groupEnd();
+    console.groupEnd();
+    return [status, items];
 });
     
 // FetchCurOrg
@@ -440,6 +758,51 @@ mock.onGet(new RegExp(/^\/ormposts\/fetchcurorg(\?[\w-./?%&=,]*)*$/)).reply((con
     console.groupEnd();
     return [status, records ?  records : []];
 });
+
+
+// FetchDQGW
+mock.onGet(new RegExp(/^\/ormorgs\/([a-zA-Z0-9\-\;]{1,35})\/ormposts\/fetchdqgw$/)).reply((config: any) => {
+    console.groupCollapsed("实体:ormpost 方法: FetchDQGW");
+    console.table({url:config.url, method: config.method, data:config.data});
+    let status = MockAdapter.mockStatus(config);
+    if (status !== 200) {
+        return [status, null];
+    }
+    const paramArray:Array<any> = ['orgid'];
+    let tempValue: any = {};
+    const matchArray:any = new RegExp(/^\/ormorgs\/([a-zA-Z0-9\-\;]{1,35})\/ormposts\/fetchdqgw$/).exec(config.url);
+    if(matchArray && matchArray.length >1 && paramArray && paramArray.length >0){
+        paramArray.forEach((item: any, index: number) => {
+            Object.defineProperty(tempValue, item, {
+                enumerable: true,
+                value: matchArray[index + 1]
+            });
+        });
+    }
+    let items = mockDatas ? mockDatas : [];
+    if (items.length > 0 && paramArray.length > 0) {
+        paramArray.forEach((paramkey: any) => {
+            if (tempValue[paramkey] && tempValue[paramkey].indexOf(";") > 0) {
+                let keysGrounp: Array<any> = tempValue[paramkey].split(new RegExp(/[\;]/));
+                let tempArray: Array<any> = [];
+                keysGrounp.forEach((singlekey: any) => {
+                    let _items =  items.filter((item: any) => { return item[paramkey] == singlekey });
+                   if(_items.length >0){
+                    tempArray.push(..._items);
+                   }
+                })
+                items = tempArray;
+            } else {
+                items = items.filter((item: any) => { return item[paramkey] == tempValue[paramkey] });
+            }
+        })
+    }
+    console.groupCollapsed("response数据  status: "+status+" data: ");
+    console.table(items);
+    console.groupEnd();
+    console.groupEnd();
+    return [status, items];
+});
     
 // FetchDQGW
 mock.onGet(new RegExp(/^\/ormposts\/fetchdqgw$/)).reply((config: any) => {
@@ -483,6 +846,51 @@ mock.onGet(new RegExp(/^\/ormposts\/fetchdqgw(\?[\w-./?%&=,]*)*$/)).reply((confi
     console.groupEnd();
     console.groupEnd();
     return [status, records ?  records : []];
+});
+
+
+// FetchDQORGGW
+mock.onGet(new RegExp(/^\/ormorgs\/([a-zA-Z0-9\-\;]{1,35})\/ormposts\/fetchdqorggw$/)).reply((config: any) => {
+    console.groupCollapsed("实体:ormpost 方法: FetchDQORGGW");
+    console.table({url:config.url, method: config.method, data:config.data});
+    let status = MockAdapter.mockStatus(config);
+    if (status !== 200) {
+        return [status, null];
+    }
+    const paramArray:Array<any> = ['orgid'];
+    let tempValue: any = {};
+    const matchArray:any = new RegExp(/^\/ormorgs\/([a-zA-Z0-9\-\;]{1,35})\/ormposts\/fetchdqorggw$/).exec(config.url);
+    if(matchArray && matchArray.length >1 && paramArray && paramArray.length >0){
+        paramArray.forEach((item: any, index: number) => {
+            Object.defineProperty(tempValue, item, {
+                enumerable: true,
+                value: matchArray[index + 1]
+            });
+        });
+    }
+    let items = mockDatas ? mockDatas : [];
+    if (items.length > 0 && paramArray.length > 0) {
+        paramArray.forEach((paramkey: any) => {
+            if (tempValue[paramkey] && tempValue[paramkey].indexOf(";") > 0) {
+                let keysGrounp: Array<any> = tempValue[paramkey].split(new RegExp(/[\;]/));
+                let tempArray: Array<any> = [];
+                keysGrounp.forEach((singlekey: any) => {
+                    let _items =  items.filter((item: any) => { return item[paramkey] == singlekey });
+                   if(_items.length >0){
+                    tempArray.push(..._items);
+                   }
+                })
+                items = tempArray;
+            } else {
+                items = items.filter((item: any) => { return item[paramkey] == tempValue[paramkey] });
+            }
+        })
+    }
+    console.groupCollapsed("response数据  status: "+status+" data: ");
+    console.table(items);
+    console.groupEnd();
+    console.groupEnd();
+    return [status, items];
 });
     
 // FetchDQORGGW
@@ -528,6 +936,51 @@ mock.onGet(new RegExp(/^\/ormposts\/fetchdqorggw(\?[\w-./?%&=,]*)*$/)).reply((co
     console.groupEnd();
     return [status, records ?  records : []];
 });
+
+
+// FetchGWXH
+mock.onGet(new RegExp(/^\/ormorgs\/([a-zA-Z0-9\-\;]{1,35})\/ormposts\/fetchgwxh$/)).reply((config: any) => {
+    console.groupCollapsed("实体:ormpost 方法: FetchGWXH");
+    console.table({url:config.url, method: config.method, data:config.data});
+    let status = MockAdapter.mockStatus(config);
+    if (status !== 200) {
+        return [status, null];
+    }
+    const paramArray:Array<any> = ['orgid'];
+    let tempValue: any = {};
+    const matchArray:any = new RegExp(/^\/ormorgs\/([a-zA-Z0-9\-\;]{1,35})\/ormposts\/fetchgwxh$/).exec(config.url);
+    if(matchArray && matchArray.length >1 && paramArray && paramArray.length >0){
+        paramArray.forEach((item: any, index: number) => {
+            Object.defineProperty(tempValue, item, {
+                enumerable: true,
+                value: matchArray[index + 1]
+            });
+        });
+    }
+    let items = mockDatas ? mockDatas : [];
+    if (items.length > 0 && paramArray.length > 0) {
+        paramArray.forEach((paramkey: any) => {
+            if (tempValue[paramkey] && tempValue[paramkey].indexOf(";") > 0) {
+                let keysGrounp: Array<any> = tempValue[paramkey].split(new RegExp(/[\;]/));
+                let tempArray: Array<any> = [];
+                keysGrounp.forEach((singlekey: any) => {
+                    let _items =  items.filter((item: any) => { return item[paramkey] == singlekey });
+                   if(_items.length >0){
+                    tempArray.push(..._items);
+                   }
+                })
+                items = tempArray;
+            } else {
+                items = items.filter((item: any) => { return item[paramkey] == tempValue[paramkey] });
+            }
+        })
+    }
+    console.groupCollapsed("response数据  status: "+status+" data: ");
+    console.table(items);
+    console.groupEnd();
+    console.groupEnd();
+    return [status, items];
+});
     
 // FetchGWXH
 mock.onGet(new RegExp(/^\/ormposts\/fetchgwxh$/)).reply((config: any) => {
@@ -571,6 +1024,51 @@ mock.onGet(new RegExp(/^\/ormposts\/fetchgwxh(\?[\w-./?%&=,]*)*$/)).reply((confi
     console.groupEnd();
     console.groupEnd();
     return [status, records ?  records : []];
+});
+
+
+// FetchDefault
+mock.onGet(new RegExp(/^\/ormorgs\/([a-zA-Z0-9\-\;]{1,35})\/ormposts\/fetchdefault$/)).reply((config: any) => {
+    console.groupCollapsed("实体:ormpost 方法: FetchDefault");
+    console.table({url:config.url, method: config.method, data:config.data});
+    let status = MockAdapter.mockStatus(config);
+    if (status !== 200) {
+        return [status, null];
+    }
+    const paramArray:Array<any> = ['orgid'];
+    let tempValue: any = {};
+    const matchArray:any = new RegExp(/^\/ormorgs\/([a-zA-Z0-9\-\;]{1,35})\/ormposts\/fetchdefault$/).exec(config.url);
+    if(matchArray && matchArray.length >1 && paramArray && paramArray.length >0){
+        paramArray.forEach((item: any, index: number) => {
+            Object.defineProperty(tempValue, item, {
+                enumerable: true,
+                value: matchArray[index + 1]
+            });
+        });
+    }
+    let items = mockDatas ? mockDatas : [];
+    if (items.length > 0 && paramArray.length > 0) {
+        paramArray.forEach((paramkey: any) => {
+            if (tempValue[paramkey] && tempValue[paramkey].indexOf(";") > 0) {
+                let keysGrounp: Array<any> = tempValue[paramkey].split(new RegExp(/[\;]/));
+                let tempArray: Array<any> = [];
+                keysGrounp.forEach((singlekey: any) => {
+                    let _items =  items.filter((item: any) => { return item[paramkey] == singlekey });
+                   if(_items.length >0){
+                    tempArray.push(..._items);
+                   }
+                })
+                items = tempArray;
+            } else {
+                items = items.filter((item: any) => { return item[paramkey] == tempValue[paramkey] });
+            }
+        })
+    }
+    console.groupCollapsed("response数据  status: "+status+" data: ");
+    console.table(items);
+    console.groupEnd();
+    console.groupEnd();
+    return [status, items];
 });
     
 // FetchDefault
@@ -616,6 +1114,51 @@ mock.onGet(new RegExp(/^\/ormposts\/fetchdefault(\?[\w-./?%&=,]*)*$/)).reply((co
     console.groupEnd();
     return [status, records ?  records : []];
 });
+
+
+// FetchJZBGWCX
+mock.onGet(new RegExp(/^\/ormorgs\/([a-zA-Z0-9\-\;]{1,35})\/ormposts\/fetchjzbgwcx$/)).reply((config: any) => {
+    console.groupCollapsed("实体:ormpost 方法: FetchJZBGWCX");
+    console.table({url:config.url, method: config.method, data:config.data});
+    let status = MockAdapter.mockStatus(config);
+    if (status !== 200) {
+        return [status, null];
+    }
+    const paramArray:Array<any> = ['orgid'];
+    let tempValue: any = {};
+    const matchArray:any = new RegExp(/^\/ormorgs\/([a-zA-Z0-9\-\;]{1,35})\/ormposts\/fetchjzbgwcx$/).exec(config.url);
+    if(matchArray && matchArray.length >1 && paramArray && paramArray.length >0){
+        paramArray.forEach((item: any, index: number) => {
+            Object.defineProperty(tempValue, item, {
+                enumerable: true,
+                value: matchArray[index + 1]
+            });
+        });
+    }
+    let items = mockDatas ? mockDatas : [];
+    if (items.length > 0 && paramArray.length > 0) {
+        paramArray.forEach((paramkey: any) => {
+            if (tempValue[paramkey] && tempValue[paramkey].indexOf(";") > 0) {
+                let keysGrounp: Array<any> = tempValue[paramkey].split(new RegExp(/[\;]/));
+                let tempArray: Array<any> = [];
+                keysGrounp.forEach((singlekey: any) => {
+                    let _items =  items.filter((item: any) => { return item[paramkey] == singlekey });
+                   if(_items.length >0){
+                    tempArray.push(..._items);
+                   }
+                })
+                items = tempArray;
+            } else {
+                items = items.filter((item: any) => { return item[paramkey] == tempValue[paramkey] });
+            }
+        })
+    }
+    console.groupCollapsed("response数据  status: "+status+" data: ");
+    console.table(items);
+    console.groupEnd();
+    console.groupEnd();
+    return [status, items];
+});
     
 // FetchJZBGWCX
 mock.onGet(new RegExp(/^\/ormposts\/fetchjzbgwcx$/)).reply((config: any) => {
@@ -659,6 +1202,51 @@ mock.onGet(new RegExp(/^\/ormposts\/fetchjzbgwcx(\?[\w-./?%&=,]*)*$/)).reply((co
     console.groupEnd();
     console.groupEnd();
     return [status, records ?  records : []];
+});
+
+
+// FetchCXGW
+mock.onGet(new RegExp(/^\/ormorgs\/([a-zA-Z0-9\-\;]{1,35})\/ormposts\/fetchcxgw$/)).reply((config: any) => {
+    console.groupCollapsed("实体:ormpost 方法: FetchCXGW");
+    console.table({url:config.url, method: config.method, data:config.data});
+    let status = MockAdapter.mockStatus(config);
+    if (status !== 200) {
+        return [status, null];
+    }
+    const paramArray:Array<any> = ['orgid'];
+    let tempValue: any = {};
+    const matchArray:any = new RegExp(/^\/ormorgs\/([a-zA-Z0-9\-\;]{1,35})\/ormposts\/fetchcxgw$/).exec(config.url);
+    if(matchArray && matchArray.length >1 && paramArray && paramArray.length >0){
+        paramArray.forEach((item: any, index: number) => {
+            Object.defineProperty(tempValue, item, {
+                enumerable: true,
+                value: matchArray[index + 1]
+            });
+        });
+    }
+    let items = mockDatas ? mockDatas : [];
+    if (items.length > 0 && paramArray.length > 0) {
+        paramArray.forEach((paramkey: any) => {
+            if (tempValue[paramkey] && tempValue[paramkey].indexOf(";") > 0) {
+                let keysGrounp: Array<any> = tempValue[paramkey].split(new RegExp(/[\;]/));
+                let tempArray: Array<any> = [];
+                keysGrounp.forEach((singlekey: any) => {
+                    let _items =  items.filter((item: any) => { return item[paramkey] == singlekey });
+                   if(_items.length >0){
+                    tempArray.push(..._items);
+                   }
+                })
+                items = tempArray;
+            } else {
+                items = items.filter((item: any) => { return item[paramkey] == tempValue[paramkey] });
+            }
+        })
+    }
+    console.groupCollapsed("response数据  status: "+status+" data: ");
+    console.table(items);
+    console.groupEnd();
+    console.groupEnd();
+    return [status, items];
 });
     
 // FetchCXGW
@@ -704,14 +1292,56 @@ mock.onGet(new RegExp(/^\/ormposts\/fetchcxgw(\?[\w-./?%&=,]*)*$/)).reply((confi
     console.groupEnd();
     return [status, records ?  records : []];
 });
-// URI参数传递情况未实现
-// URI参数传递情况未实现
-// URI参数传递情况未实现
-// URI参数传递情况未实现
-// URI参数传递情况未实现
+
 // URI参数传递情况未实现
 // URI参数传递情况未实现
 
+// URI参数传递情况未实现
+// URI参数传递情况未实现
+
+// URI参数传递情况未实现
+// URI参数传递情况未实现
+
+// URI参数传递情况未实现
+// URI参数传递情况未实现
+
+// URI参数传递情况未实现
+// URI参数传递情况未实现
+
+// URI参数传递情况未实现
+// URI参数传递情况未实现
+
+// URI参数传递情况未实现
+// URI参数传递情况未实现
+
+
+// Get
+mock.onGet(new RegExp(/^\/ormorgs\/([a-zA-Z0-9\-\;]{1,35})\/ormposts\/([a-zA-Z0-9\-\;]{1,35})$/)).reply((config: any) => {
+    console.groupCollapsed("实体:ormpost 方法: Get");
+    console.table({url:config.url, method: config.method, data:config.data});
+    let status = MockAdapter.mockStatus(config);
+    if (status !== 200) {
+        return [status, null];
+    }    
+    const paramArray:Array<any> = ['orgid','ormpostid'];
+    const matchArray:any = new RegExp(/^\/ormorgs\/([a-zA-Z0-9\-\;]{1,35})\/ormposts\/([a-zA-Z0-9\-\;]{1,35})$/).exec(config.url);
+    let tempValue: any = {};
+    if(matchArray && matchArray.length >1 && paramArray && paramArray.length >0){
+        paramArray.forEach((item: any, index: number) => {
+            Object.defineProperty(tempValue, item, {
+                enumerable: true,
+                value: matchArray[index + 1]
+            });
+        });
+    }
+    let items = mockDatas ? mockDatas : [];
+    let _items = items.find((item: any) => Object.is(item.ormpostid, tempValue.ormpostid));
+    console.groupCollapsed("response数据  status: "+status+" data: ");
+    console.table(_items?_items:{});
+    console.groupEnd();
+    console.groupEnd();
+    return [status, _items?_items:{}];
+});
 
 // Get
 mock.onGet(new RegExp(/^\/ormposts\/([a-zA-Z0-9\-\;]{1,35})$/)).reply((config: any) => {
@@ -723,6 +1353,34 @@ mock.onGet(new RegExp(/^\/ormposts\/([a-zA-Z0-9\-\;]{1,35})$/)).reply((config: a
     }    
     const paramArray:Array<any> = ['ormpostid'];
     const matchArray:any = new RegExp(/^\/ormposts\/([a-zA-Z0-9\-\;]{1,35})$/).exec(config.url);
+    let tempValue: any = {};
+    if(matchArray && matchArray.length >1 && paramArray && paramArray.length >0){
+        paramArray.forEach((item: any, index: number) => {
+            Object.defineProperty(tempValue, item, {
+                enumerable: true,
+                value: matchArray[index + 1]
+            });
+        });
+    }
+    let items = mockDatas ? mockDatas : [];
+    let _items = items.find((item: any) => Object.is(item.ormpostid, tempValue.ormpostid));
+    console.groupCollapsed("response数据  status: "+status+" data: ");
+    console.table(_items?_items:{});
+    console.groupEnd();
+    console.groupEnd();
+    return [status, _items?_items:{}];
+});
+
+// Remove
+mock.onDelete(new RegExp(/^\/ormorgs\/([a-zA-Z0-9\-\;]{1,35})\/ormposts\/([a-zA-Z0-9\-\;]{1,35})$/)).reply((config: any) => {
+    console.groupCollapsed("实体:ormpost 方法: Remove");
+    console.table({url:config.url, method: config.method, data:config.data});
+    let status = MockAdapter.mockStatus(config);
+    if (status !== 200) {
+        return [status, null];
+    }    
+    const paramArray:Array<any> = ['orgid','ormpostid'];
+    const matchArray:any = new RegExp(/^\/ormorgs\/([a-zA-Z0-9\-\;]{1,35})\/ormposts\/([a-zA-Z0-9\-\;]{1,35})$/).exec(config.url);
     let tempValue: any = {};
     if(matchArray && matchArray.length >1 && paramArray && paramArray.length >0){
         paramArray.forEach((item: any, index: number) => {

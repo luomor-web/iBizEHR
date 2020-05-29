@@ -48,6 +48,9 @@ export default class ORMBMGWBZServiceBase extends EntityService {
      * @memberof ORMBMGWBZServiceBase
      */
     public async Select(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.ormorg && context.ormpost && context.ormbmgwbz){
+            return Http.getInstance().get(`/ormorgs/${context.ormorg}/ormposts/${context.ormpost}/ormbmgwbzs/${context.ormbmgwbz}/select`,isloading);
+        }
         if(context.ormorg && context.ormorgsector && context.ormbmgwbz){
             return Http.getInstance().get(`/ormorgs/${context.ormorg}/ormorgsectors/${context.ormorgsector}/ormbmgwbzs/${context.ormbmgwbz}/select`,isloading);
         }
@@ -70,6 +73,15 @@ export default class ORMBMGWBZServiceBase extends EntityService {
      * @memberof ORMBMGWBZServiceBase
      */
     public async Create(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.ormorg && context.ormpost && true){
+            if(!data.srffrontuf || data.srffrontuf !== "1"){
+                data[this.APPDEKEY] = null;
+            }
+            if(data.srffrontuf){
+                delete data.srffrontuf;
+            }
+            return Http.getInstance().post(`/ormorgs/${context.ormorg}/ormposts/${context.ormpost}/ormbmgwbzs`,data,isloading);
+        }
         if(context.ormorg && context.ormorgsector && true){
             if(!data.srffrontuf || data.srffrontuf !== "1"){
                 data[this.APPDEKEY] = null;
@@ -120,6 +132,9 @@ export default class ORMBMGWBZServiceBase extends EntityService {
      * @memberof ORMBMGWBZServiceBase
      */
     public async CheckKey(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.ormorg && context.ormpost && context.ormbmgwbz){
+            return Http.getInstance().post(`/ormorgs/${context.ormorg}/ormposts/${context.ormpost}/ormbmgwbzs/${context.ormbmgwbz}/checkkey`,data,isloading);
+        }
         if(context.ormorg && context.ormorgsector && context.ormbmgwbz){
             return Http.getInstance().post(`/ormorgs/${context.ormorg}/ormorgsectors/${context.ormorgsector}/ormbmgwbzs/${context.ormbmgwbz}/checkkey`,data,isloading);
         }
@@ -142,6 +157,9 @@ export default class ORMBMGWBZServiceBase extends EntityService {
      * @memberof ORMBMGWBZServiceBase
      */
     public async Get(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.ormorg && context.ormpost && context.ormbmgwbz){
+            return Http.getInstance().get(`/ormorgs/${context.ormorg}/ormposts/${context.ormpost}/ormbmgwbzs/${context.ormbmgwbz}`,isloading);
+        }
         if(context.ormorg && context.ormorgsector && context.ormbmgwbz){
             return Http.getInstance().get(`/ormorgs/${context.ormorg}/ormorgsectors/${context.ormorgsector}/ormbmgwbzs/${context.ormbmgwbz}`,isloading);
         }
@@ -166,6 +184,9 @@ export default class ORMBMGWBZServiceBase extends EntityService {
      * @memberof ORMBMGWBZServiceBase
      */
     public async Save(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.ormorg && context.ormpost && context.ormbmgwbz){
+            return Http.getInstance().post(`/ormorgs/${context.ormorg}/ormposts/${context.ormpost}/ormbmgwbzs/${context.ormbmgwbz}/save`,data,isloading);
+        }
         if(context.ormorg && context.ormorgsector && context.ormbmgwbz){
             return Http.getInstance().post(`/ormorgs/${context.ormorg}/ormorgsectors/${context.ormorgsector}/ormbmgwbzs/${context.ormbmgwbz}/save`,data,isloading);
         }
@@ -191,6 +212,9 @@ export default class ORMBMGWBZServiceBase extends EntityService {
      * @memberof ORMBMGWBZServiceBase
      */
     public async Update(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.ormorg && context.ormpost && context.ormbmgwbz){
+            return Http.getInstance().put(`/ormorgs/${context.ormorg}/ormposts/${context.ormpost}/ormbmgwbzs/${context.ormbmgwbz}`,data,isloading);
+        }
         if(context.ormorg && context.ormorgsector && context.ormbmgwbz){
             return Http.getInstance().put(`/ormorgs/${context.ormorg}/ormorgsectors/${context.ormorgsector}/ormbmgwbzs/${context.ormbmgwbz}`,data,isloading);
         }
@@ -216,6 +240,9 @@ export default class ORMBMGWBZServiceBase extends EntityService {
      * @memberof ORMBMGWBZServiceBase
      */
     public async GetDraft(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.ormorg && context.ormpost && true){
+            return Http.getInstance().get(`/ormorgs/${context.ormorg}/ormposts/${context.ormpost}/ormbmgwbzs/getdraft`,isloading);
+        }
         if(context.ormorg && context.ormorgsector && true){
             return Http.getInstance().get(`/ormorgs/${context.ormorg}/ormorgsectors/${context.ormorgsector}/ormbmgwbzs/getdraft`,isloading);
         }
@@ -240,6 +267,9 @@ export default class ORMBMGWBZServiceBase extends EntityService {
      * @memberof ORMBMGWBZServiceBase
      */
     public async Remove(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.ormorg && context.ormpost && context.ormbmgwbz){
+            return Http.getInstance().delete(`/ormorgs/${context.ormorg}/ormposts/${context.ormpost}/ormbmgwbzs/${context.ormbmgwbz}`,isloading);
+        }
         if(context.ormorg && context.ormorgsector && context.ormbmgwbz){
             return Http.getInstance().delete(`/ormorgs/${context.ormorg}/ormorgsectors/${context.ormorgsector}/ormbmgwbzs/${context.ormbmgwbz}`,isloading);
         }
@@ -263,6 +293,10 @@ export default class ORMBMGWBZServiceBase extends EntityService {
      * @memberof ORMBMGWBZServiceBase
      */
     public async FetchDefault(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.ormorg && context.ormpost && true){
+            let tempData:any = JSON.parse(JSON.stringify(data));
+            return Http.getInstance().get(`/ormorgs/${context.ormorg}/ormposts/${context.ormpost}/ormbmgwbzs/fetchdefault`,tempData,isloading);
+        }
         if(context.ormorg && context.ormorgsector && true){
             let tempData:any = JSON.parse(JSON.stringify(data));
             return Http.getInstance().get(`/ormorgs/${context.ormorg}/ormorgsectors/${context.ormorgsector}/ormbmgwbzs/fetchdefault`,tempData,isloading);

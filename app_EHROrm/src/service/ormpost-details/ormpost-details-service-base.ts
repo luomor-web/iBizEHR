@@ -48,6 +48,9 @@ export default class ORMPostDetailsServiceBase extends EntityService {
      * @memberof ORMPostDetailsServiceBase
      */
     public async Select(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.ormorg && context.ormpost && context.ormpostdetails){
+            return Http.getInstance().get(`/ormorgs/${context.ormorg}/ormposts/${context.ormpost}/ormpostdetails/${context.ormpostdetails}/select`,isloading);
+        }
         if(context.ormpost && context.ormpostdetails){
             return Http.getInstance().get(`/ormposts/${context.ormpost}/ormpostdetails/${context.ormpostdetails}/select`,isloading);
         }
@@ -67,6 +70,15 @@ export default class ORMPostDetailsServiceBase extends EntityService {
      * @memberof ORMPostDetailsServiceBase
      */
     public async Create(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.ormorg && context.ormpost && true){
+            if(!data.srffrontuf || data.srffrontuf !== "1"){
+                data[this.APPDEKEY] = null;
+            }
+            if(data.srffrontuf){
+                delete data.srffrontuf;
+            }
+            return Http.getInstance().post(`/ormorgs/${context.ormorg}/ormposts/${context.ormpost}/ormpostdetails`,data,isloading);
+        }
         if(context.ormpost && true){
             if(!data.srffrontuf || data.srffrontuf !== "1"){
                 data[this.APPDEKEY] = null;
@@ -108,6 +120,9 @@ export default class ORMPostDetailsServiceBase extends EntityService {
      * @memberof ORMPostDetailsServiceBase
      */
     public async Get(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.ormorg && context.ormpost && context.ormpostdetails){
+            return Http.getInstance().get(`/ormorgs/${context.ormorg}/ormposts/${context.ormpost}/ormpostdetails/${context.ormpostdetails}`,isloading);
+        }
         if(context.ormpost && context.ormpostdetails){
             return Http.getInstance().get(`/ormposts/${context.ormpost}/ormpostdetails/${context.ormpostdetails}`,isloading);
         }
@@ -129,6 +144,9 @@ export default class ORMPostDetailsServiceBase extends EntityService {
      * @memberof ORMPostDetailsServiceBase
      */
     public async CheckKey(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.ormorg && context.ormpost && context.ormpostdetails){
+            return Http.getInstance().post(`/ormorgs/${context.ormorg}/ormposts/${context.ormpost}/ormpostdetails/${context.ormpostdetails}/checkkey`,data,isloading);
+        }
         if(context.ormpost && context.ormpostdetails){
             return Http.getInstance().post(`/ormposts/${context.ormpost}/ormpostdetails/${context.ormpostdetails}/checkkey`,data,isloading);
         }
@@ -148,6 +166,9 @@ export default class ORMPostDetailsServiceBase extends EntityService {
      * @memberof ORMPostDetailsServiceBase
      */
     public async Update(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.ormorg && context.ormpost && context.ormpostdetails){
+            return Http.getInstance().put(`/ormorgs/${context.ormorg}/ormposts/${context.ormpost}/ormpostdetails/${context.ormpostdetails}`,data,isloading);
+        }
         if(context.ormpost && context.ormpostdetails){
             return Http.getInstance().put(`/ormposts/${context.ormpost}/ormpostdetails/${context.ormpostdetails}`,data,isloading);
         }
@@ -170,6 +191,9 @@ export default class ORMPostDetailsServiceBase extends EntityService {
      * @memberof ORMPostDetailsServiceBase
      */
     public async GetDraft(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.ormorg && context.ormpost && true){
+            return Http.getInstance().get(`/ormorgs/${context.ormorg}/ormposts/${context.ormpost}/ormpostdetails/getdraft`,isloading);
+        }
         if(context.ormpost && true){
             return Http.getInstance().get(`/ormposts/${context.ormpost}/ormpostdetails/getdraft`,isloading);
         }
@@ -191,6 +215,9 @@ export default class ORMPostDetailsServiceBase extends EntityService {
      * @memberof ORMPostDetailsServiceBase
      */
     public async Save(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.ormorg && context.ormpost && context.ormpostdetails){
+            return Http.getInstance().post(`/ormorgs/${context.ormorg}/ormposts/${context.ormpost}/ormpostdetails/${context.ormpostdetails}/save`,data,isloading);
+        }
         if(context.ormpost && context.ormpostdetails){
             return Http.getInstance().post(`/ormposts/${context.ormpost}/ormpostdetails/${context.ormpostdetails}/save`,data,isloading);
         }
@@ -213,6 +240,9 @@ export default class ORMPostDetailsServiceBase extends EntityService {
      * @memberof ORMPostDetailsServiceBase
      */
     public async Remove(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.ormorg && context.ormpost && context.ormpostdetails){
+            return Http.getInstance().delete(`/ormorgs/${context.ormorg}/ormposts/${context.ormpost}/ormpostdetails/${context.ormpostdetails}`,isloading);
+        }
         if(context.ormpost && context.ormpostdetails){
             return Http.getInstance().delete(`/ormposts/${context.ormpost}/ormpostdetails/${context.ormpostdetails}`,isloading);
         }
@@ -233,6 +263,10 @@ export default class ORMPostDetailsServiceBase extends EntityService {
      * @memberof ORMPostDetailsServiceBase
      */
     public async FetchDefault(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.ormorg && context.ormpost && true){
+            let tempData:any = JSON.parse(JSON.stringify(data));
+            return Http.getInstance().get(`/ormorgs/${context.ormorg}/ormposts/${context.ormpost}/ormpostdetails/fetchdefault`,tempData,isloading);
+        }
         if(context.ormpost && true){
             let tempData:any = JSON.parse(JSON.stringify(data));
             return Http.getInstance().get(`/ormposts/${context.ormpost}/ormpostdetails/fetchdefault`,tempData,isloading);

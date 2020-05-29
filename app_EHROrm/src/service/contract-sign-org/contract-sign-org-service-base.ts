@@ -48,6 +48,12 @@ export default class ContractSignORGServiceBase extends EntityService {
      * @memberof ContractSignORGServiceBase
      */
     public async Select(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.ormsignorg && context.contractsignorg){
+            return Http.getInstance().get(`/ormsignorgs/${context.ormsignorg}/contractsignorgs/${context.contractsignorg}/select`,isloading);
+        }
+        if(context.ormorg && context.contractsignorg){
+            return Http.getInstance().get(`/ormorgs/${context.ormorg}/contractsignorgs/${context.contractsignorg}/select`,isloading);
+        }
             return Http.getInstance().get(`/contractsignorgs/${context.contractsignorg}/select`,isloading);
     }
 
@@ -61,6 +67,12 @@ export default class ContractSignORGServiceBase extends EntityService {
      * @memberof ContractSignORGServiceBase
      */
     public async Get(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.ormsignorg && context.contractsignorg){
+            return Http.getInstance().get(`/ormsignorgs/${context.ormsignorg}/contractsignorgs/${context.contractsignorg}`,isloading);
+        }
+        if(context.ormorg && context.contractsignorg){
+            return Http.getInstance().get(`/ormorgs/${context.ormorg}/contractsignorgs/${context.contractsignorg}`,isloading);
+        }
             let res:any = await Http.getInstance().get(`/contractsignorgs/${context.contractsignorg}`,isloading);
             return res;
 
@@ -76,6 +88,12 @@ export default class ContractSignORGServiceBase extends EntityService {
      * @memberof ContractSignORGServiceBase
      */
     public async CheckKey(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.ormsignorg && context.contractsignorg){
+            return Http.getInstance().post(`/ormsignorgs/${context.ormsignorg}/contractsignorgs/${context.contractsignorg}/checkkey`,data,isloading);
+        }
+        if(context.ormorg && context.contractsignorg){
+            return Http.getInstance().post(`/ormorgs/${context.ormorg}/contractsignorgs/${context.contractsignorg}/checkkey`,data,isloading);
+        }
             return Http.getInstance().post(`/contractsignorgs/${context.contractsignorg}/checkkey`,data,isloading);
     }
 
@@ -89,6 +107,12 @@ export default class ContractSignORGServiceBase extends EntityService {
      * @memberof ContractSignORGServiceBase
      */
     public async Update(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.ormsignorg && context.contractsignorg){
+            return Http.getInstance().put(`/ormsignorgs/${context.ormsignorg}/contractsignorgs/${context.contractsignorg}`,data,isloading);
+        }
+        if(context.ormorg && context.contractsignorg){
+            return Http.getInstance().put(`/ormorgs/${context.ormorg}/contractsignorgs/${context.contractsignorg}`,data,isloading);
+        }
         let masterData:any = {};
         Object.assign(data,masterData);
             let res:any = await  Http.getInstance().put(`/contractsignorgs/${context.contractsignorg}`,data,isloading);
@@ -105,6 +129,12 @@ export default class ContractSignORGServiceBase extends EntityService {
      * @memberof ContractSignORGServiceBase
      */
     public async Remove(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.ormsignorg && context.contractsignorg){
+            return Http.getInstance().delete(`/ormsignorgs/${context.ormsignorg}/contractsignorgs/${context.contractsignorg}`,isloading);
+        }
+        if(context.ormorg && context.contractsignorg){
+            return Http.getInstance().delete(`/ormorgs/${context.ormorg}/contractsignorgs/${context.contractsignorg}`,isloading);
+        }
             return Http.getInstance().delete(`/contractsignorgs/${context.contractsignorg}`,isloading);
 
     }
@@ -119,6 +149,24 @@ export default class ContractSignORGServiceBase extends EntityService {
      * @memberof ContractSignORGServiceBase
      */
     public async Create(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.ormsignorg && true){
+            if(!data.srffrontuf || data.srffrontuf !== "1"){
+                data[this.APPDEKEY] = null;
+            }
+            if(data.srffrontuf){
+                delete data.srffrontuf;
+            }
+            return Http.getInstance().post(`/ormsignorgs/${context.ormsignorg}/contractsignorgs`,data,isloading);
+        }
+        if(context.ormorg && true){
+            if(!data.srffrontuf || data.srffrontuf !== "1"){
+                data[this.APPDEKEY] = null;
+            }
+            if(data.srffrontuf){
+                delete data.srffrontuf;
+            }
+            return Http.getInstance().post(`/ormorgs/${context.ormorg}/contractsignorgs`,data,isloading);
+        }
         let masterData:any = {};
         Object.assign(data,masterData);
         if(!data.srffrontuf || data.srffrontuf !== "1"){
@@ -142,6 +190,12 @@ export default class ContractSignORGServiceBase extends EntityService {
      * @memberof ContractSignORGServiceBase
      */
     public async GetDraft(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.ormsignorg && true){
+            return Http.getInstance().get(`/ormsignorgs/${context.ormsignorg}/contractsignorgs/getdraft`,isloading);
+        }
+        if(context.ormorg && true){
+            return Http.getInstance().get(`/ormorgs/${context.ormorg}/contractsignorgs/getdraft`,isloading);
+        }
         let res:any = await  Http.getInstance().get(`/contractsignorgs/getdraft`,isloading);
         res.data.contractsignorg = data.contractsignorg;
         return res;
@@ -157,6 +211,12 @@ export default class ContractSignORGServiceBase extends EntityService {
      * @memberof ContractSignORGServiceBase
      */
     public async Save(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.ormsignorg && context.contractsignorg){
+            return Http.getInstance().post(`/ormsignorgs/${context.ormsignorg}/contractsignorgs/${context.contractsignorg}/save`,data,isloading);
+        }
+        if(context.ormorg && context.contractsignorg){
+            return Http.getInstance().post(`/ormorgs/${context.ormorg}/contractsignorgs/${context.contractsignorg}/save`,data,isloading);
+        }
         let masterData:any = {};
         Object.assign(data,masterData);
             let res:any = await  Http.getInstance().post(`/contractsignorgs/${context.contractsignorg}/save`,data,isloading);
@@ -173,6 +233,14 @@ export default class ContractSignORGServiceBase extends EntityService {
      * @memberof ContractSignORGServiceBase
      */
     public async FetchDefault(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.ormsignorg && true){
+            let tempData:any = JSON.parse(JSON.stringify(data));
+            return Http.getInstance().get(`/ormsignorgs/${context.ormsignorg}/contractsignorgs/fetchdefault`,tempData,isloading);
+        }
+        if(context.ormorg && true){
+            let tempData:any = JSON.parse(JSON.stringify(data));
+            return Http.getInstance().get(`/ormorgs/${context.ormorg}/contractsignorgs/fetchdefault`,tempData,isloading);
+        }
         let tempData:any = JSON.parse(JSON.stringify(data));
         return Http.getInstance().get(`/contractsignorgs/fetchdefault`,tempData,isloading);
     }
@@ -187,6 +255,14 @@ export default class ContractSignORGServiceBase extends EntityService {
      * @memberof ContractSignORGServiceBase
      */
     public async FetchDefault2(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.ormsignorg && true){
+            let tempData:any = JSON.parse(JSON.stringify(data));
+            return Http.getInstance().get(`/ormsignorgs/${context.ormsignorg}/contractsignorgs/fetchdefault2`,tempData,isloading);
+        }
+        if(context.ormorg && true){
+            let tempData:any = JSON.parse(JSON.stringify(data));
+            return Http.getInstance().get(`/ormorgs/${context.ormorg}/contractsignorgs/fetchdefault2`,tempData,isloading);
+        }
         let tempData:any = JSON.parse(JSON.stringify(data));
         return Http.getInstance().get(`/contractsignorgs/fetchdefault2`,tempData,isloading);
     }

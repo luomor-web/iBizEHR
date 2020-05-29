@@ -251,6 +251,7 @@ export default {
 			orgname: "组织名称",
 			shortname: "组织简称",
 			orgcode: "组织编号",
+			porgname: "上级组织",
 			gsss: "所属区域",
 			btqy: "补贴标准",
 			zzcjsj: "组织启用时间",

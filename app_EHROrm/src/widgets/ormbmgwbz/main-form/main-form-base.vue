@@ -23,7 +23,7 @@
   valueitem='ormpostid' 
   :value="data.ormpostname" 
   editortype="" 
-  :pickupView="{ viewname: 'ormpostpickup-view', title: $t('entities.ormpost.views.pickupview.title'), deResParameters: [], parameters: [{ pathName: 'ormposts', parameterName: 'ormpost' }, { pathName: 'pickupview', parameterName: 'pickupview' } ], placement:'' }"
+  :pickupView="{ viewname: 'ormpostpickup-view', title: $t('entities.ormpost.views.pickupview.title'), deResParameters: [{ pathName: 'ormorgs', parameterName: 'ormorg' }, ], parameters: [{ pathName: 'ormposts', parameterName: 'ormpost' }, { pathName: 'pickupview', parameterName: 'pickupview' } ], placement:'' }"
   style=""  
   @formitemvaluechange="onFormItemValueChange">
 </app-picker>

@@ -85,6 +85,25 @@
                     </template>
                 </el-table-column>
             </template>
+            <template v-if="getColumnState('porgname')">
+                <el-table-column show-overflow-tooltip :prop="'porgname'" :label="$t('entities.ormorg.main_grid.columns.porgname')" :width="300"  :align="'left'" :sortable="'custom'">
+                    <template v-slot:header="{column}">
+                      <span class="column-header ">
+                        {{$t('entities.ormorg.main_grid.columns.porgname')}}
+                      </span>
+                    </template>
+                    <template v-slot="{row,column,$index}">
+                        <app-column-link deKeyField='ormorg' :context="JSON.parse(JSON.stringify(context))" :viewparams="JSON.parse(JSON.stringify(viewparams))" :data="row" :linkview="{viewname: 'ormorgedit-view9', height: 0,width: 0,title: $t('entities.ormorg.views.editview9.title'),placement: 'DRAWER_TOP', isRedirectView: false,deResParameters: [
+            ]
+            ,parameters: [
+            { pathName: 'ormorgs', parameterName: 'ormorg' },
+            { pathName: 'editview9', parameterName: 'editview9' }
+            ]}" valueitem="porgid">
+                            <span>{{row.porgname}}</span>
+                        </app-column-link >
+                    </template>
+                </el-table-column>
+            </template>
             <template v-if="getColumnState('gsss')">
                 <el-table-column show-overflow-tooltip :prop="'gsss'" :label="$t('entities.ormorg.main_grid.columns.gsss')" :width="130"  :align="'left'" :sortable="'custom'">
                     <template v-slot:header="{column}">
@@ -616,6 +635,13 @@ export default class MainBase extends Vue implements ControlInterface {
             name: 'orgcode',
             label: '组织编号',
             langtag: 'entities.ormorg.main_grid.columns.orgcode',
+            show: true,
+            util: 'PX'
+        },
+        {
+            name: 'porgname',
+            label: '上级组织',
+            langtag: 'entities.ormorg.main_grid.columns.porgname',
             show: true,
             util: 'PX'
         },

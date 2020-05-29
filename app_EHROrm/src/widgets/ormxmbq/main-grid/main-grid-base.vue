@@ -70,7 +70,7 @@
               deMajorField='orgname'
               deKeyField='ormorg'
               :service="service"
-              :acParams="{ serviceName: 'OrmOrgService', interfaceName: 'FetchGSGWZY'}"
+              :acParams="{ }"
               valueitem='ormorgid' 
               :value="row[column.property]" 
               editortype="" 

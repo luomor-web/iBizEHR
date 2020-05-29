@@ -48,6 +48,9 @@ export default class ORMPOSTServiceBase extends EntityService {
      * @memberof ORMPOSTServiceBase
      */
     public async Select(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.ormorg && context.ormpost){
+            return Http.getInstance().get(`/ormorgs/${context.ormorg}/ormposts/${context.ormpost}/select`,isloading);
+        }
             return Http.getInstance().get(`/ormposts/${context.ormpost}/select`,isloading);
     }
 
@@ -61,6 +64,9 @@ export default class ORMPOSTServiceBase extends EntityService {
      * @memberof ORMPOSTServiceBase
      */
     public async Save(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.ormorg && context.ormpost){
+            return Http.getInstance().post(`/ormorgs/${context.ormorg}/ormposts/${context.ormpost}/save`,data,isloading);
+        }
         let masterData:any = {};
         let ormbmgwbzsData:any = [];
         if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_ormbmgwbzs'),'undefined')){
@@ -109,6 +115,9 @@ export default class ORMPOSTServiceBase extends EntityService {
      * @memberof ORMPOSTServiceBase
      */
     public async CheckKey(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.ormorg && context.ormpost){
+            return Http.getInstance().post(`/ormorgs/${context.ormorg}/ormposts/${context.ormpost}/checkkey`,data,isloading);
+        }
             return Http.getInstance().post(`/ormposts/${context.ormpost}/checkkey`,data,isloading);
     }
 
@@ -122,6 +131,15 @@ export default class ORMPOSTServiceBase extends EntityService {
      * @memberof ORMPOSTServiceBase
      */
     public async Create(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.ormorg && true){
+            if(!data.srffrontuf || data.srffrontuf !== "1"){
+                data[this.APPDEKEY] = null;
+            }
+            if(data.srffrontuf){
+                delete data.srffrontuf;
+            }
+            return Http.getInstance().post(`/ormorgs/${context.ormorg}/ormposts`,data,isloading);
+        }
         let masterData:any = {};
         let ormbmgwbzsData:any = [];
         if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_ormbmgwbzs'),'undefined')){
@@ -177,6 +195,9 @@ export default class ORMPOSTServiceBase extends EntityService {
      * @memberof ORMPOSTServiceBase
      */
     public async Get(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.ormorg && context.ormpost){
+            return Http.getInstance().get(`/ormorgs/${context.ormorg}/ormposts/${context.ormpost}`,isloading);
+        }
             let res:any = await Http.getInstance().get(`/ormposts/${context.ormpost}`,isloading);
             this.tempStorage.setItem(context.srfsessionkey+'_ormbmgwbzs',JSON.stringify(res.data.ormbmgwbzs));
             this.tempStorage.setItem(context.srfsessionkey+'_ormpostdetails',JSON.stringify(res.data.ormpostdetails));
@@ -194,6 +215,9 @@ export default class ORMPOSTServiceBase extends EntityService {
      * @memberof ORMPOSTServiceBase
      */
     public async SetGwJb(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.ormorg && context.ormpost){
+            return Http.getInstance().post(`/ormorgs/${context.ormorg}/ormposts/${context.ormpost}/setgwjb`,data,isloading);
+        }
             return Http.getInstance().post(`/ormposts/${context.ormpost}/setgwjb`,data,isloading);
     }
 
@@ -207,6 +231,9 @@ export default class ORMPOSTServiceBase extends EntityService {
      * @memberof ORMPOSTServiceBase
      */
     public async Update(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.ormorg && context.ormpost){
+            return Http.getInstance().put(`/ormorgs/${context.ormorg}/ormposts/${context.ormpost}`,data,isloading);
+        }
         let masterData:any = {};
         let ormbmgwbzsData:any = [];
         if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_ormbmgwbzs'),'undefined')){
@@ -255,6 +282,9 @@ export default class ORMPOSTServiceBase extends EntityService {
      * @memberof ORMPOSTServiceBase
      */
     public async Remove(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.ormorg && context.ormpost){
+            return Http.getInstance().delete(`/ormorgs/${context.ormorg}/ormposts/${context.ormpost}`,isloading);
+        }
             return Http.getInstance().delete(`/ormposts/${context.ormpost}`,isloading);
 
     }
@@ -269,6 +299,9 @@ export default class ORMPOSTServiceBase extends EntityService {
      * @memberof ORMPOSTServiceBase
      */
     public async GetDraft(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.ormorg && true){
+            return Http.getInstance().get(`/ormorgs/${context.ormorg}/ormposts/getdraft`,isloading);
+        }
         let res:any = await  Http.getInstance().get(`/ormposts/getdraft`,isloading);
         res.data.ormpost = data.ormpost;
             this.tempStorage.setItem(context.srfsessionkey+'_ormbmgwbzs',JSON.stringify(res.data.ormbmgwbzs));
@@ -286,6 +319,10 @@ export default class ORMPOSTServiceBase extends EntityService {
      * @memberof ORMPOSTServiceBase
      */
     public async FetchEJZZGW(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.ormorg && true){
+            let tempData:any = JSON.parse(JSON.stringify(data));
+            return Http.getInstance().get(`/ormorgs/${context.ormorg}/ormposts/fetchejzzgw`,tempData,isloading);
+        }
         let tempData:any = JSON.parse(JSON.stringify(data));
         return Http.getInstance().get(`/ormposts/fetchejzzgw`,tempData,isloading);
     }
@@ -300,6 +337,10 @@ export default class ORMPOSTServiceBase extends EntityService {
      * @memberof ORMPOSTServiceBase
      */
     public async FetchAuthPost(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.ormorg && true){
+            let tempData:any = JSON.parse(JSON.stringify(data));
+            return Http.getInstance().get(`/ormorgs/${context.ormorg}/ormposts/fetchauthpost`,tempData,isloading);
+        }
         let tempData:any = JSON.parse(JSON.stringify(data));
         return Http.getInstance().get(`/ormposts/fetchauthpost`,tempData,isloading);
     }
@@ -314,6 +355,10 @@ export default class ORMPOSTServiceBase extends EntityService {
      * @memberof ORMPOSTServiceBase
      */
     public async FetchCurOrg(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.ormorg && true){
+            let tempData:any = JSON.parse(JSON.stringify(data));
+            return Http.getInstance().get(`/ormorgs/${context.ormorg}/ormposts/fetchcurorg`,tempData,isloading);
+        }
         let tempData:any = JSON.parse(JSON.stringify(data));
         return Http.getInstance().get(`/ormposts/fetchcurorg`,tempData,isloading);
     }
@@ -328,6 +373,10 @@ export default class ORMPOSTServiceBase extends EntityService {
      * @memberof ORMPOSTServiceBase
      */
     public async FetchDQGW(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.ormorg && true){
+            let tempData:any = JSON.parse(JSON.stringify(data));
+            return Http.getInstance().get(`/ormorgs/${context.ormorg}/ormposts/fetchdqgw`,tempData,isloading);
+        }
         let tempData:any = JSON.parse(JSON.stringify(data));
         return Http.getInstance().get(`/ormposts/fetchdqgw`,tempData,isloading);
     }
@@ -342,6 +391,10 @@ export default class ORMPOSTServiceBase extends EntityService {
      * @memberof ORMPOSTServiceBase
      */
     public async FetchDQORGGW(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.ormorg && true){
+            let tempData:any = JSON.parse(JSON.stringify(data));
+            return Http.getInstance().get(`/ormorgs/${context.ormorg}/ormposts/fetchdqorggw`,tempData,isloading);
+        }
         let tempData:any = JSON.parse(JSON.stringify(data));
         return Http.getInstance().get(`/ormposts/fetchdqorggw`,tempData,isloading);
     }
@@ -356,6 +409,10 @@ export default class ORMPOSTServiceBase extends EntityService {
      * @memberof ORMPOSTServiceBase
      */
     public async FetchGWXH(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.ormorg && true){
+            let tempData:any = JSON.parse(JSON.stringify(data));
+            return Http.getInstance().get(`/ormorgs/${context.ormorg}/ormposts/fetchgwxh`,tempData,isloading);
+        }
         let tempData:any = JSON.parse(JSON.stringify(data));
         return Http.getInstance().get(`/ormposts/fetchgwxh`,tempData,isloading);
     }
@@ -370,6 +427,10 @@ export default class ORMPOSTServiceBase extends EntityService {
      * @memberof ORMPOSTServiceBase
      */
     public async FetchDefault(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.ormorg && true){
+            let tempData:any = JSON.parse(JSON.stringify(data));
+            return Http.getInstance().get(`/ormorgs/${context.ormorg}/ormposts/fetchdefault`,tempData,isloading);
+        }
         let tempData:any = JSON.parse(JSON.stringify(data));
         return Http.getInstance().get(`/ormposts/fetchdefault`,tempData,isloading);
     }
@@ -384,6 +445,10 @@ export default class ORMPOSTServiceBase extends EntityService {
      * @memberof ORMPOSTServiceBase
      */
     public async FetchJZBGWCX(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.ormorg && true){
+            let tempData:any = JSON.parse(JSON.stringify(data));
+            return Http.getInstance().get(`/ormorgs/${context.ormorg}/ormposts/fetchjzbgwcx`,tempData,isloading);
+        }
         let tempData:any = JSON.parse(JSON.stringify(data));
         return Http.getInstance().get(`/ormposts/fetchjzbgwcx`,tempData,isloading);
     }
@@ -398,6 +463,10 @@ export default class ORMPOSTServiceBase extends EntityService {
      * @memberof ORMPOSTServiceBase
      */
     public async FetchCXGW(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.ormorg && true){
+            let tempData:any = JSON.parse(JSON.stringify(data));
+            return Http.getInstance().get(`/ormorgs/${context.ormorg}/ormposts/fetchcxgw`,tempData,isloading);
+        }
         let tempData:any = JSON.parse(JSON.stringify(data));
         return Http.getInstance().get(`/ormposts/fetchcxgw`,tempData,isloading);
     }

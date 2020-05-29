@@ -37,6 +37,11 @@ export default class MainModel {
           dataType: 'PICKUP',
         },
         {
+          name: 'porgname',
+          prop: 'porgname',
+          dataType: 'PICKUPTEXT',
+        },
+        {
           name: 'btqy_text',
           prop: 'btqy',
           dataType: 'SSCODELIST',
@@ -67,14 +72,14 @@ export default class MainModel {
           dataType: 'TEXT',
         },
         {
-          name: 'orgcode',
-          prop: 'orgcode',
-          dataType: 'TEXT',
-        },
-        {
           name: 'startstopsign',
           prop: 'startstopsign',
           dataType: 'SSCODELIST',
+        },
+        {
+          name: 'orgcode',
+          prop: 'orgcode',
+          dataType: 'TEXT',
         },
         {
           name: 'btqy',

@@ -48,6 +48,9 @@ export default class ORMXMBQServiceBase extends EntityService {
      * @memberof ORMXMBQServiceBase
      */
     public async Select(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.ormorg && context.ormxmbq){
+            return Http.getInstance().get(`/ormorgs/${context.ormorg}/ormxmbqs/${context.ormxmbq}/select`,isloading);
+        }
             return Http.getInstance().get(`/ormxmbqs/${context.ormxmbq}/select`,isloading);
     }
 
@@ -61,6 +64,9 @@ export default class ORMXMBQServiceBase extends EntityService {
      * @memberof ORMXMBQServiceBase
      */
     public async Get(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.ormorg && context.ormxmbq){
+            return Http.getInstance().get(`/ormorgs/${context.ormorg}/ormxmbqs/${context.ormxmbq}`,isloading);
+        }
             let res:any = await Http.getInstance().get(`/ormxmbqs/${context.ormxmbq}`,isloading);
             return res;
 
@@ -76,6 +82,15 @@ export default class ORMXMBQServiceBase extends EntityService {
      * @memberof ORMXMBQServiceBase
      */
     public async Create(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.ormorg && true){
+            if(!data.srffrontuf || data.srffrontuf !== "1"){
+                data[this.APPDEKEY] = null;
+            }
+            if(data.srffrontuf){
+                delete data.srffrontuf;
+            }
+            return Http.getInstance().post(`/ormorgs/${context.ormorg}/ormxmbqs`,data,isloading);
+        }
         let masterData:any = {};
         Object.assign(data,masterData);
         if(!data.srffrontuf || data.srffrontuf !== "1"){
@@ -99,6 +114,9 @@ export default class ORMXMBQServiceBase extends EntityService {
      * @memberof ORMXMBQServiceBase
      */
     public async Save(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.ormorg && context.ormxmbq){
+            return Http.getInstance().post(`/ormorgs/${context.ormorg}/ormxmbqs/${context.ormxmbq}/save`,data,isloading);
+        }
         let masterData:any = {};
         Object.assign(data,masterData);
             let res:any = await  Http.getInstance().post(`/ormxmbqs/${context.ormxmbq}/save`,data,isloading);
@@ -115,6 +133,9 @@ export default class ORMXMBQServiceBase extends EntityService {
      * @memberof ORMXMBQServiceBase
      */
     public async CheckKey(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.ormorg && context.ormxmbq){
+            return Http.getInstance().post(`/ormorgs/${context.ormorg}/ormxmbqs/${context.ormxmbq}/checkkey`,data,isloading);
+        }
             return Http.getInstance().post(`/ormxmbqs/${context.ormxmbq}/checkkey`,data,isloading);
     }
 
@@ -128,6 +149,9 @@ export default class ORMXMBQServiceBase extends EntityService {
      * @memberof ORMXMBQServiceBase
      */
     public async GetDraft(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.ormorg && true){
+            return Http.getInstance().get(`/ormorgs/${context.ormorg}/ormxmbqs/getdraft`,isloading);
+        }
         let res:any = await  Http.getInstance().get(`/ormxmbqs/getdraft`,isloading);
         res.data.ormxmbq = data.ormxmbq;
         return res;
@@ -143,6 +167,9 @@ export default class ORMXMBQServiceBase extends EntityService {
      * @memberof ORMXMBQServiceBase
      */
     public async Remove(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.ormorg && context.ormxmbq){
+            return Http.getInstance().delete(`/ormorgs/${context.ormorg}/ormxmbqs/${context.ormxmbq}`,isloading);
+        }
             return Http.getInstance().delete(`/ormxmbqs/${context.ormxmbq}`,isloading);
 
     }
@@ -157,6 +184,9 @@ export default class ORMXMBQServiceBase extends EntityService {
      * @memberof ORMXMBQServiceBase
      */
     public async Update(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.ormorg && context.ormxmbq){
+            return Http.getInstance().put(`/ormorgs/${context.ormorg}/ormxmbqs/${context.ormxmbq}`,data,isloading);
+        }
         let masterData:any = {};
         Object.assign(data,masterData);
             let res:any = await  Http.getInstance().put(`/ormxmbqs/${context.ormxmbq}`,data,isloading);
@@ -173,6 +203,10 @@ export default class ORMXMBQServiceBase extends EntityService {
      * @memberof ORMXMBQServiceBase
      */
     public async FetchDefault(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.ormorg && true){
+            let tempData:any = JSON.parse(JSON.stringify(data));
+            return Http.getInstance().get(`/ormorgs/${context.ormorg}/ormxmbqs/fetchdefault`,tempData,isloading);
+        }
         let tempData:any = JSON.parse(JSON.stringify(data));
         return Http.getInstance().get(`/ormxmbqs/fetchdefault`,tempData,isloading);
     }
