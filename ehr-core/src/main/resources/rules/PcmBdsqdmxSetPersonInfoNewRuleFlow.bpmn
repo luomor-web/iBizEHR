@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+    <process id="cn.ibizlab.ehr.core.pcm.service.logic.pcmbdsqdmxsetpersoninfonew" isClosed="false" isExecutable="true" name="ScoreRule" processType="Private" tns:packageName="cn.ibizlab.ehr.core.pcm.service.logic.pcmbdsqdmxsetpersoninfonew">
+        <extensionElements>
+            <tns:import name="java.util.Map" />
+            <tns:import name="org.springframework.util.StringUtils"/>
+            <tns:import name="cn.ibizlab.ehr.util.helper.RuleUtils"/>
+        <tns:global identifier="pcmbdsqdmxsetpersoninfonewzjcodelist" type="cn.ibizlab.ehr.core.common.domain.CodeList1" />
+        <tns:global identifier="pcmbdsqdmxsetpersoninfonewpimperson" type="cn.ibizlab.ehr.core.pim.domain.PimPerson" />
+        <tns:global identifier="pcmbdsqdmxsetpersoninfonewdefault" type="cn.ibizlab.ehr.core.pcm.domain.PcmBdsqdmx" />
+        </extensionElements>
+     <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="pcmbdsqdmxsetpersoninfonewdeaction1" id="1f9568a6331f74f26b48d96db02ed256" implementation="http://www.jboss.org/drools/rule" name="获取人员的组织部门职级"/>
+     <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="pcmbdsqdmxsetpersoninfonewprepareparam1" id="b3d2f985d9061175926241b2b3e0b919" implementation="http://www.jboss.org/drools/rule" name="设置人员id"/>
+     <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="pcmbdsqdmxsetpersoninfonewdeaction2" id="f2a7f386981bf446b46bba05571cb158" implementation="http://www.jboss.org/drools/rule" name="刷新代码表"/>
+     <endEvent id="f2a7f386981bf446b46bba05571cb158_End" name="End"/>
+     <sequenceFlow id="f2a7f386981bf446b46bba05571cb158_End_Line" sourceRef="f2a7f386981bf446b46bba05571cb158" targetRef="f2a7f386981bf446b46bba05571cb158_End"/>
+     <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="pcmbdsqdmxsetpersoninfonewprepareparam2" id="7b6b15526b06875145b94a0ebe71dc8c" implementation="http://www.jboss.org/drools/rule" name="设置职级、部门、组织"/>
+     <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="pcmbdsqdmxsetpersoninfonewprepareparam3" id="3b80cb0397f76cc2a4f9c5e52266e19e" implementation="http://www.jboss.org/drools/rule" name="zjcodeList"/>
+     <startEvent id="2d2aa27fa925b7e79d1015beb068af12" isInterrupting="true"/>
+     <sequenceFlow id="aa0877f9185f2f580ded28074256a4c5" sourceRef="1f9568a6331f74f26b48d96db02ed256" targetRef="7b6b15526b06875145b94a0ebe71dc8c">
+     </sequenceFlow>
+     <sequenceFlow id="539ad0d6c68b417f2f423387fb7cb214" sourceRef="2d2aa27fa925b7e79d1015beb068af12" targetRef="b3d2f985d9061175926241b2b3e0b919">
+     </sequenceFlow>
+     <sequenceFlow id="18e1d0aa54270a7a9f699a6702388bc6" sourceRef="3b80cb0397f76cc2a4f9c5e52266e19e" targetRef="f2a7f386981bf446b46bba05571cb158">
+     </sequenceFlow>
+     <sequenceFlow id="c4fb44a09b39771a3f4d46dc5670b8db" sourceRef="7b6b15526b06875145b94a0ebe71dc8c" targetRef="3b80cb0397f76cc2a4f9c5e52266e19e">
+     </sequenceFlow>
+     <sequenceFlow id="eaa61a938ceb9969e96ffd39db8093e8" sourceRef="b3d2f985d9061175926241b2b3e0b919" targetRef="1f9568a6331f74f26b48d96db02ed256">
+     </sequenceFlow>
+    </process>
+</definitions>
+

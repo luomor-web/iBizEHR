@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+    <process id="cn.ibizlab.ehr.core.pcm.service.logic.pcmbdsqdmxzjcodelist" isClosed="false" isExecutable="true" name="ScoreRule" processType="Private" tns:packageName="cn.ibizlab.ehr.core.pcm.service.logic.pcmbdsqdmxzjcodelist">
+        <extensionElements>
+            <tns:import name="java.util.Map" />
+            <tns:import name="org.springframework.util.StringUtils"/>
+            <tns:import name="cn.ibizlab.ehr.util.helper.RuleUtils"/>
+        <tns:global identifier="pcmbdsqdmxzjcodelistzjcodelist" type="cn.ibizlab.ehr.core.common.domain.CodeList1" />
+        <tns:global identifier="pcmbdsqdmxzjcodelistdefault" type="cn.ibizlab.ehr.core.pcm.domain.PcmBdsqdmx" />
+        </extensionElements>
+     <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="pcmbdsqdmxzjcodelistdeaction1" id="63958171037bc998e7e772d243e92e14" implementation="http://www.jboss.org/drools/rule" name="刷新代码表"/>
+     <endEvent id="63958171037bc998e7e772d243e92e14_End" name="End"/>
+     <sequenceFlow id="63958171037bc998e7e772d243e92e14_End_Line" sourceRef="63958171037bc998e7e772d243e92e14" targetRef="63958171037bc998e7e772d243e92e14_End"/>
+     <startEvent id="d7e490757142a84b7553d6122238e783" isInterrupting="true"/>
+     <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="pcmbdsqdmxzjcodelistprepareparam1" id="c4db963718126f507704d2db1a0ed8ee" implementation="http://www.jboss.org/drools/rule" name="ZjcodeList"/>
+     <sequenceFlow id="37691499e62ffb88b082eaa65338d6fb" sourceRef="c4db963718126f507704d2db1a0ed8ee" targetRef="63958171037bc998e7e772d243e92e14">
+     </sequenceFlow>
+     <sequenceFlow id="4ef1b7c88cef7cc92d78b721d5b127f1" sourceRef="d7e490757142a84b7553d6122238e783" targetRef="c4db963718126f507704d2db1a0ed8ee">
+     </sequenceFlow>
+    </process>
+</definitions>
+

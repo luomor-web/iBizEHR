@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+    <process id="cn.ibizlab.ehr.core.pim.service.logic.pimarchivesloanandreturnupdatearchivestate" isClosed="false" isExecutable="true" name="ScoreRule" processType="Private" tns:packageName="cn.ibizlab.ehr.core.pim.service.logic.pimarchivesloanandreturnupdatearchivestate">
+        <extensionElements>
+            <tns:import name="java.util.Map" />
+            <tns:import name="org.springframework.util.StringUtils"/>
+            <tns:import name="cn.ibizlab.ehr.util.helper.RuleUtils"/>
+        <tns:global identifier="pimarchivesloanandreturnupdatearchivestatedefault" type="cn.ibizlab.ehr.core.pim.domain.PimArchiveSloanandreturn" />
+        </extensionElements>
+     <startEvent id="fc5898c25a9166f18bb7c3246fea86e8" isInterrupting="true"/>
+     <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="pimarchivesloanandreturnupdatearchivestatedeaction1" id="2f82a55593f86ef0500c9fae8253e566" implementation="http://www.jboss.org/drools/rule" name="更新档案信息归还状态"/>
+     <endEvent id="2f82a55593f86ef0500c9fae8253e566_End" name="End"/>
+     <sequenceFlow id="2f82a55593f86ef0500c9fae8253e566_End_Line" sourceRef="2f82a55593f86ef0500c9fae8253e566" targetRef="2f82a55593f86ef0500c9fae8253e566_End"/>
+     <sequenceFlow id="99493c0951a4ba527c55dc6f20c3f4c9" sourceRef="fc5898c25a9166f18bb7c3246fea86e8" targetRef="2f82a55593f86ef0500c9fae8253e566">
+     </sequenceFlow>
+    </process>
+</definitions>
+

@@ -1,0 +1,28 @@
+package cn.ibizlab.ehr.pim.logic.pimpersonlogic.personupdateinfo;
+
+import java.util.Map;
+import java.util.HashMap;
+import com.alibaba.fastjson.JSONObject;
+global cn.ibizlab.ehr.core.pim.domain.PimPerson pimpersonpersonupdateinfodefault;
+global cn.ibizlab.ehr.core.pim.service.IPimPersonService pimpersonservice;
+global cn.ibizlab.ehr.core.pim.service.IPimPersonService iBzSysPimpersonDefaultService;
+global cn.ibizlab.ehr.util.security.AuthenticationUser curuser;
+
+no-loop
+
+//逻辑处理节点[开始]
+rule "begin"
+ruleflow-group "pimpersonpersonupdateinfobegin"
+    when
+    then
+    end
+
+//逻辑处理节点[计算出生日期、性别、年龄]
+rule "deaction1"
+ruleflow-group "pimpersonpersonupdateinfodeaction1"
+    when
+    then
+    pimpersonservice.personUpdateInfo(pimpersonpersonupdateinfodefault);
+    update(pimpersonpersonupdateinfodefault);//更新fact中变量值
+    end
+

@@ -1,0 +1,37 @@
+package cn.ibizlab.ehr.trm.logic.trmdutycadreslogic.updatestatexx;
+
+import java.util.Map;
+import java.util.HashMap;
+import com.alibaba.fastjson.JSONObject;
+global cn.ibizlab.ehr.core.trm.domain.TrmDutyCadres trmdutycadresupdatestatexxdefault;
+global cn.ibizlab.ehr.core.trm.service.ITrmDutyCadresService trmdutycadresservice;
+global cn.ibizlab.ehr.core.trm.service.ITrmDutyCadresService iBzSysTrmdutycadresDefaultService;
+global cn.ibizlab.ehr.util.security.AuthenticationUser curuser;
+
+no-loop
+
+//逻辑处理节点[更新]
+rule "deaction1"
+ruleflow-group "trmdutycadresupdatestatexxdeaction1"
+    when
+    then
+    trmdutycadresservice.update(trmdutycadresupdatestatexxdefault);
+    update(trmdutycadresupdatestatexxdefault);//更新fact中变量值
+    end
+
+//逻辑处理节点[更新状态（失效）]
+rule "prepareparam1"
+ruleflow-group "trmdutycadresupdatestatexxprepareparam1"
+    when
+    then
+    trmdutycadresupdatestatexxdefault.set("status","40");
+    update(trmdutycadresupdatestatexxdefault);//更新fact中变量值
+    end
+
+//逻辑处理节点[开始]
+rule "begin"
+ruleflow-group "trmdutycadresupdatestatexxbegin"
+    when
+    then
+    end
+
