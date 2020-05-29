@@ -6823,7 +6823,7 @@
 
 
     <!--输出实体[ORMBMKQDZ]数据结构 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="tab-ormbmkqdz-47-174">
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-ormbmkqdz-50-174">
         <createTable tableName="T_ORMBMKQDZ">
                 <column name="ORMORGDZID" remarks="" type="VARCHAR(200)">
                 </column>
@@ -12804,7 +12804,7 @@
     </changeSet>
         <!--输出实体[PCMYDBXMX]外键关系 -->
         <!--输出实体[ORMBMKQDZ]外键关系 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-ormbmkqdz-47-541">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-ormbmkqdz-50-541">
        <addForeignKeyConstraint baseColumnNames="ORMORGSECTORID" baseTableName="T_ORMBMKQDZ" constraintName="DER1N_ORMBMKQDZ_ORMORGSECTOR_O" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="ORGSECTORID" referencedTableName="T_SRFORGSECTOR" validate="true"/>
     </changeSet>
         <!--输出实体[ARCHIVESMANAGE]外键关系 -->
