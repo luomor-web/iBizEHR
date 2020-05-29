@@ -62,7 +62,7 @@ public class ORMPOSTSearchContext extends QueryWrapperContext<ORMPOST> {
             this.getSelectCond().eq("isconfidential", n_isconfidential_eq);
         }
     }
-	private String n_ormpostname_like;//[岗位集名称]
+	private String n_ormpostname_like;//[岗位名称]
 	public void setN_ormpostname_like(String n_ormpostname_like) {
         this.n_ormpostname_like = n_ormpostname_like;
         if(!ObjectUtils.isEmpty(this.n_ormpostname_like)){

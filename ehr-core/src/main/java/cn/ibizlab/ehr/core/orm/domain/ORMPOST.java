@@ -114,7 +114,7 @@ public class ORMPOST extends EntityMP implements Serializable {
     @JsonProperty("xh")
     private Integer xh;
     /**
-     * 岗位集标识
+     * 岗位标识
      */
     @DEField(isKeyField=true)
     @TableId(value= "ormpostid",type=IdType.UUID)
@@ -152,7 +152,7 @@ public class ORMPOST extends EntityMP implements Serializable {
     @JsonProperty("updateman")
     private String updateman;
     /**
-     * 岗位集名称
+     * 岗位名称
      */
     @TableField(value = "ormpostname")
     @JSONField(name = "ormpostname")
@@ -278,7 +278,7 @@ public class ORMPOST extends EntityMP implements Serializable {
         this.modify("isconfidential",isconfidential);
     }
     /**
-     * 设置 [岗位集名称]
+     * 设置 [岗位名称]
      */
     public void setOrmpostname(String ormpostname){
         this.ormpostname = ormpostname ;
