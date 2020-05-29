@@ -37,7 +37,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('ormorgname')">
-                <el-table-column show-overflow-tooltip :prop="'ormorgname'" :label="$t('entities.ormpost.main_grid.columns.ormorgname')" :min-width="300"  :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'ormorgname'" :label="$t('entities.ormpost.main_grid.columns.ormorgname')" :width="300"  :align="'left'" :sortable="'custom'">
                     <template v-slot:header="{column}">
                       <span class="column-header ">
                         {{$t('entities.ormpost.main_grid.columns.ormorgname')}}
@@ -67,6 +67,20 @@
                     <template v-slot="{row,column,$index}">
                         <template >
                                 <app-span name='ormpostname' editorType="TEXTBOX" :value="row.ormpostname"></app-span>
+                        </template>
+                    </template>
+                </el-table-column>
+            </template>
+            <template v-if="getColumnState('gwfl')">
+                <el-table-column show-overflow-tooltip :prop="'gwfl'" :label="$t('entities.ormpost.main_grid.columns.gwfl')" :width="150"  :align="'left'" :sortable="'custom'">
+                    <template v-slot:header="{column}">
+                      <span class="column-header ">
+                        {{$t('entities.ormpost.main_grid.columns.gwfl')}}
+                      </span>
+                    </template>
+                    <template v-slot="{row,column,$index}">
+                        <template >
+            <codelist :value="row.gwfl" tag='ORMCL_GWFL' codelistType='STATIC' ></codelist>
                         </template>
                     </template>
                 </el-table-column>
@@ -631,12 +645,19 @@ export default class MainBase extends Vue implements ControlInterface {
             label: '组织',
             langtag: 'entities.ormpost.main_grid.columns.ormorgname',
             show: true,
-            util: 'STAR'
+            util: 'PX'
         },
         {
             name: 'ormpostname',
             label: '岗位集名称',
             langtag: 'entities.ormpost.main_grid.columns.ormpostname',
+            show: true,
+            util: 'PX'
+        },
+        {
+            name: 'gwfl',
+            label: '岗位分类',
+            langtag: 'entities.ormpost.main_grid.columns.gwfl',
             show: true,
             util: 'PX'
         },
@@ -706,7 +727,6 @@ export default class MainBase extends Vue implements ControlInterface {
           ormpostname: new FormItemModel(),
           ormorgid: new FormItemModel(),
           postnature: new FormItemModel(),
-          istemp: new FormItemModel(),
           gwfl: new FormItemModel(),
           bxjlnx: new FormItemModel(),
           isconfidential: new FormItemModel(),
@@ -746,10 +766,6 @@ export default class MainBase extends Vue implements ControlInterface {
         postnature: [
              { required: false, validator: (rule:any, value:any, callback:any) => { return (rule.required && (value === null || value === undefined || value === "")) ? false : true;}, message: '岗位性质 值不能为空', trigger: 'change' },
             { required: false, validator: (rule:any, value:any, callback:any) => { return (rule.required && (value === null || value === undefined || value === "")) ? false : true;}, message: '岗位性质 值不能为空', trigger: 'blur' },
-        ],
-        istemp: [
-             { required: false, validator: (rule:any, value:any, callback:any) => { return (rule.required && (value === null || value === undefined || value === "")) ? false : true;}, message: '是否临时数据 值不能为空', trigger: 'change' },
-            { required: false, validator: (rule:any, value:any, callback:any) => { return (rule.required && (value === null || value === undefined || value === "")) ? false : true;}, message: '是否临时数据 值不能为空', trigger: 'blur' },
         ],
         gwfl: [
              { required: false, validator: (rule:any, value:any, callback:any) => { return (rule.required && (value === null || value === undefined || value === "")) ? false : true;}, message: '岗位分类 值不能为空', trigger: 'change' },
@@ -1129,6 +1145,14 @@ export default class MainBase extends Vue implements ControlInterface {
      */
     public async formatExcelData(filterVal:any, jsonData:any) {
         let codelistColumns:Array<any> = [
+          {
+            name: 'gwfl',
+            srfkey: 'ORMCL_GWFL',
+            codelistType : 'STATIC',
+            renderMode: 'other',
+            textSeparator: '、',
+            valueSeparator: ',',
+          },
           {
             name: 'isconfidential',
             srfkey: 'PIMCL_SFLJ',

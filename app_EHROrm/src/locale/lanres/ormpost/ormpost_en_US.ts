@@ -167,6 +167,7 @@ export default {
 			xh: "排序",
 			ormorgname: "组织",
 			ormpostname: "岗位集名称",
+			gwfl: "岗位分类",
 			nx: "建议交流年限",
 			bxjlnx: "必须交流年限",
 			isconfidential: "是否保密岗",

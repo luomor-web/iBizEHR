@@ -36,7 +36,7 @@
     :context="context" 
     :isSingleSelect="isSingleSelect"
     :showBusyIndicator="true"
-    :isOpenEdit="false"
+    :isOpenEdit="true"
     :gridRowActiveMode="gridRowActiveMode"
     @save="onSave"
     updateAction="Update"

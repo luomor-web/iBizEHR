@@ -83,7 +83,7 @@ export default class AppIndexViewModel {
 	hidesidebar: false,
 	opendefault: false,
 	iconcls: '',
-	icon: '../../../img/zzgl/2/zuzhiguanli.png',
+	icon: '../../../img/jcgl/1/zhiyezigemuluguanli.png',
 	textcls: '',
 	appfunctag: '',
 	resourcetag: '',

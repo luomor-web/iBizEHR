@@ -86,7 +86,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('sjrs')">
-                <el-table-column show-overflow-tooltip :prop="'sjrs'" :label="$t('entities.ormorgsector.bzcx_grid.columns.sjrs')" :width="100"  :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'sjrs'" :label="$t('entities.ormorgsector.bzcx_grid.columns.sjrs')" :width="160"  :align="'left'" :sortable="'custom'">
                     <template v-slot:header="{column}">
                       <span class="column-header ">
                         {{$t('entities.ormorgsector.bzcx_grid.columns.sjrs')}}

@@ -47,11 +47,6 @@ export default class MainModel {
           dataType: 'PICKUP',
         },
         {
-          name: 'createdate',
-          prop: 'createdate',
-          dataType: 'DATETIME',
-        },
-        {
           name: 'gwfl',
           prop: 'gwfl',
           dataType: 'SSCODELIST',
@@ -102,19 +97,9 @@ export default class MainModel {
           dataType: 'SSCODELIST',
         },
         {
-          name: 'istemp',
-          prop: 'istemp',
-          dataType: 'SSCODELIST',
-        },
-        {
           name: 'bxjlnx',
           prop: 'bxjlnx',
           dataType: 'INT',
-        },
-        {
-          name: 'createman',
-          prop: 'createman',
-          dataType: 'TEXT',
         },
         {
           name: 'ormpost',
