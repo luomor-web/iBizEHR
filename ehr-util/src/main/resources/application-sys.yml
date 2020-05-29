@@ -1,0 +1,87 @@
+#nacos配置中心、数据源
+spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 172.16.240.110:38848
+  cache:
+    redis:
+      time-to-live: 3600
+    caffeine:
+      spec: initialCapacity=5,maximumSize=500,expireAfterWrite=3600s
+  redis:
+    host: 172.16.100.243
+    port: 6379
+    password:
+    database: 0
+    lettuce:
+      pool:
+        max-active: 32
+        max-wait: 300ms
+        max-idle: 16
+        min-idle: 8
+  datasource:
+    username: ibizehr
+    password: 'ibizehr'
+    url: jdbc:oracle:thin:@172.16.240.110:21512:xe
+    driver-class-name: oracle.jdbc.driver.OracleDriver
+    filters: stat,wall,log4j2
+    #配置初始化大小/最小/最大
+    initial-size: 1
+    min-idle: 1
+    max-active: 20
+    #获取连接等待超时时间
+    max-wait: 60000
+    #间隔多久进行一次检测，检测需要关闭的空闲连接
+    time-between-eviction-runs-millis: 60000
+    #一个连接在池中最小生存的时间
+    min-evictable-idle-time-millis: 300000
+    validation-query: SELECT 1 FROM DUAL
+    test-while-idle: true
+    test-on-borrow: false
+    test-on-return: false
+    #打开PSCache，并指定每个连接上PSCache的大小。oracle设为true，mysql设为false。分库分表较多推荐设置为false
+    pool-prepared-statements: false
+    max-pool-prepared-statement-per-connection-size: 20
+    isSyncDBSchema: false
+    defaultSchema: ibizehr
+    conf: classpath:liquibase/master.xml
+
+#Mybatis-plus配置
+mybatis-plus:
+  global-config:
+    refresh-mapper: true
+    db-config:
+      # 全局逻辑已删除默认值
+      logic-delete-value: 0
+      # 全局逻辑未删除默认值
+      logic-not-delete-value: 1
+  mapper-locations: classpath*:/mapper/*/*/*.xml
+  configuration:
+    jdbc-type-for-null: 'null'
+    map-underscore-to-camel-case: false
+
+#阿里sentinel熔断器
+feign:
+  httpclient:
+    enabled: true
+  sentinel:
+    enabled: true
+
+#Log配置
+logging:
+  level:
+    cn.ibizlab.ehr: debug
+    org.springframework.boot.autoconfigure: ERROR
+
+#zuul网关超时设置
+ribbon:
+  ReadTimeout: 60000
+  ConnectTimeout: 60000
+
+#系统是否开启权限验证、是否开启缓存
+#缓存级别：无缓存(无配置项)、一级缓存(L1)、二级缓存(L2)
+ibiz:
+  enablePermissionValid: false
+  cacheLevel: L1 #(L1)一级本地caffeine缓存;(L2)caffeine缓存+Redis缓存
+
