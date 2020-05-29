@@ -150,7 +150,7 @@ public class PIMWorkflowResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMWorkflow-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"流程配置" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"流程配置" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimworkflows/fetchdefault")
 	public ResponseEntity<List<PIMWorkflowDTO>> fetchDefault(PIMWorkflowSearchContext context) {
         Page<PIMWorkflow> domains = pimworkflowService.searchDefault(context) ;
@@ -163,7 +163,7 @@ public class PIMWorkflowResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMWorkflow-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"流程配置" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"流程配置" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pimworkflows/searchdefault")
 	public ResponseEntity<Page<PIMWorkflowDTO>> searchDefault(@RequestBody PIMWorkflowSearchContext context) {
         Page<PIMWorkflow> domains = pimworkflowService.searchDefault(context) ;

@@ -29,7 +29,6 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 /**
  * 实体[薪酬规则明细]
  */
-@Builder
 @Getter
 @Setter
 @NoArgsConstructor

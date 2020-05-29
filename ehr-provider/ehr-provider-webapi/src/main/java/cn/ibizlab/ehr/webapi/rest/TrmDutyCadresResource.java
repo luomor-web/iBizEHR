@@ -174,7 +174,7 @@ public class TrmDutyCadresResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TrmDutyCadres-CurCXFW-all')")
-	@ApiOperation(value = "获取数据范围选择", tags = {"优秀年轻干部梯队" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取数据范围选择", tags = {"优秀年轻干部梯队" } ,notes = "获取数据范围选择")
     @RequestMapping(method= RequestMethod.GET , value="/trmdutycadres/fetchcurcxfw")
 	public ResponseEntity<List<TrmDutyCadresDTO>> fetchCurCXFW(TrmDutyCadresSearchContext context) {
         Page<TrmDutyCadres> domains = trmdutycadresService.searchCurCXFW(context) ;
@@ -187,7 +187,7 @@ public class TrmDutyCadresResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TrmDutyCadres-CurCXFW-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"优秀年轻干部梯队" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询数据范围选择", tags = {"优秀年轻干部梯队" } ,notes = "查询数据范围选择")
     @RequestMapping(method= RequestMethod.POST , value="/trmdutycadres/searchcurcxfw")
 	public ResponseEntity<Page<TrmDutyCadresDTO>> searchCurCXFW(@RequestBody TrmDutyCadresSearchContext context) {
         Page<TrmDutyCadres> domains = trmdutycadresService.searchCurCXFW(context) ;
@@ -195,7 +195,7 @@ public class TrmDutyCadresResource {
                 .body(new PageImpl(trmdutycadresMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TrmDutyCadres-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"优秀年轻干部梯队" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"优秀年轻干部梯队" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/trmdutycadres/fetchdefault")
 	public ResponseEntity<List<TrmDutyCadresDTO>> fetchDefault(TrmDutyCadresSearchContext context) {
         Page<TrmDutyCadres> domains = trmdutycadresService.searchDefault(context) ;
@@ -208,7 +208,7 @@ public class TrmDutyCadresResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TrmDutyCadres-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"优秀年轻干部梯队" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"优秀年轻干部梯队" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/trmdutycadres/searchdefault")
 	public ResponseEntity<Page<TrmDutyCadresDTO>> searchDefault(@RequestBody TrmDutyCadresSearchContext context) {
         Page<TrmDutyCadres> domains = trmdutycadresService.searchDefault(context) ;

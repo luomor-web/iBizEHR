@@ -138,7 +138,7 @@ public class OrmOrgInfoResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmOrgInfo-SubOrgsector-all')")
-	@ApiOperation(value = "获取子部门查询", tags = {"组织信息" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取子部门查询", tags = {"组织信息" } ,notes = "获取子部门查询")
     @RequestMapping(method= RequestMethod.GET , value="/ormorginfos/fetchsuborgsector")
 	public ResponseEntity<List<OrmOrgInfoDTO>> fetchSubOrgsector(OrmOrgInfoSearchContext context) {
         Page<OrmOrgInfo> domains = ormorginfoService.searchSubOrgsector(context) ;
@@ -151,7 +151,7 @@ public class OrmOrgInfoResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmOrgInfo-SubOrgsector-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"组织信息" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询子部门查询", tags = {"组织信息" } ,notes = "查询子部门查询")
     @RequestMapping(method= RequestMethod.POST , value="/ormorginfos/searchsuborgsector")
 	public ResponseEntity<Page<OrmOrgInfoDTO>> searchSubOrgsector(@RequestBody OrmOrgInfoSearchContext context) {
         Page<OrmOrgInfo> domains = ormorginfoService.searchSubOrgsector(context) ;
@@ -159,7 +159,7 @@ public class OrmOrgInfoResource {
                 .body(new PageImpl(ormorginfoMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmOrgInfo-CX-all')")
-	@ApiOperation(value = "获取自定义查询", tags = {"组织信息" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取自定义查询", tags = {"组织信息" } ,notes = "获取自定义查询")
     @RequestMapping(method= RequestMethod.GET , value="/ormorginfos/fetchcx")
 	public ResponseEntity<List<OrmOrgInfoDTO>> fetchCX(OrmOrgInfoSearchContext context) {
         Page<OrmOrgInfo> domains = ormorginfoService.searchCX(context) ;
@@ -172,7 +172,7 @@ public class OrmOrgInfoResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmOrgInfo-CX-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"组织信息" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询自定义查询", tags = {"组织信息" } ,notes = "查询自定义查询")
     @RequestMapping(method= RequestMethod.POST , value="/ormorginfos/searchcx")
 	public ResponseEntity<Page<OrmOrgInfoDTO>> searchCX(@RequestBody OrmOrgInfoSearchContext context) {
         Page<OrmOrgInfo> domains = ormorginfoService.searchCX(context) ;
@@ -180,7 +180,7 @@ public class OrmOrgInfoResource {
                 .body(new PageImpl(ormorginfoMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmOrgInfo-CurOrgsector-all')")
-	@ApiOperation(value = "获取部门/项目部查询", tags = {"组织信息" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取部门/项目部查询", tags = {"组织信息" } ,notes = "获取部门/项目部查询")
     @RequestMapping(method= RequestMethod.GET , value="/ormorginfos/fetchcurorgsector")
 	public ResponseEntity<List<OrmOrgInfoDTO>> fetchCurOrgsector(OrmOrgInfoSearchContext context) {
         Page<OrmOrgInfo> domains = ormorginfoService.searchCurOrgsector(context) ;
@@ -193,7 +193,7 @@ public class OrmOrgInfoResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmOrgInfo-CurOrgsector-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"组织信息" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询部门/项目部查询", tags = {"组织信息" } ,notes = "查询部门/项目部查询")
     @RequestMapping(method= RequestMethod.POST , value="/ormorginfos/searchcurorgsector")
 	public ResponseEntity<Page<OrmOrgInfoDTO>> searchCurOrgsector(@RequestBody OrmOrgInfoSearchContext context) {
         Page<OrmOrgInfo> domains = ormorginfoService.searchCurOrgsector(context) ;
@@ -201,7 +201,7 @@ public class OrmOrgInfoResource {
                 .body(new PageImpl(ormorginfoMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmOrgInfo-CurChild-all')")
-	@ApiOperation(value = "获取子组织查询", tags = {"组织信息" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取子组织查询", tags = {"组织信息" } ,notes = "获取子组织查询")
     @RequestMapping(method= RequestMethod.GET , value="/ormorginfos/fetchcurchild")
 	public ResponseEntity<List<OrmOrgInfoDTO>> fetchCurChild(OrmOrgInfoSearchContext context) {
         Page<OrmOrgInfo> domains = ormorginfoService.searchCurChild(context) ;
@@ -214,7 +214,7 @@ public class OrmOrgInfoResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmOrgInfo-CurChild-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"组织信息" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询子组织查询", tags = {"组织信息" } ,notes = "查询子组织查询")
     @RequestMapping(method= RequestMethod.POST , value="/ormorginfos/searchcurchild")
 	public ResponseEntity<Page<OrmOrgInfoDTO>> searchCurChild(@RequestBody OrmOrgInfoSearchContext context) {
         Page<OrmOrgInfo> domains = ormorginfoService.searchCurChild(context) ;
@@ -222,7 +222,7 @@ public class OrmOrgInfoResource {
                 .body(new PageImpl(ormorginfoMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmOrgInfo-CurPorg-all')")
-	@ApiOperation(value = "获取根组织查询", tags = {"组织信息" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取根组织查询", tags = {"组织信息" } ,notes = "获取根组织查询")
     @RequestMapping(method= RequestMethod.GET , value="/ormorginfos/fetchcurporg")
 	public ResponseEntity<List<OrmOrgInfoDTO>> fetchCurPorg(OrmOrgInfoSearchContext context) {
         Page<OrmOrgInfo> domains = ormorginfoService.searchCurPorg(context) ;
@@ -235,7 +235,7 @@ public class OrmOrgInfoResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmOrgInfo-CurPorg-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"组织信息" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询根组织查询", tags = {"组织信息" } ,notes = "查询根组织查询")
     @RequestMapping(method= RequestMethod.POST , value="/ormorginfos/searchcurporg")
 	public ResponseEntity<Page<OrmOrgInfoDTO>> searchCurPorg(@RequestBody OrmOrgInfoSearchContext context) {
         Page<OrmOrgInfo> domains = ormorginfoService.searchCurPorg(context) ;
@@ -243,7 +243,7 @@ public class OrmOrgInfoResource {
                 .body(new PageImpl(ormorginfoMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmOrgInfo-SubPerson-all')")
-	@ApiOperation(value = "获取当前部门/项目部人员清单", tags = {"组织信息" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取当前部门/项目部人员清单", tags = {"组织信息" } ,notes = "获取当前部门/项目部人员清单")
     @RequestMapping(method= RequestMethod.GET , value="/ormorginfos/fetchsubperson")
 	public ResponseEntity<List<OrmOrgInfoDTO>> fetchSubPerson(OrmOrgInfoSearchContext context) {
         Page<OrmOrgInfo> domains = ormorginfoService.searchSubPerson(context) ;
@@ -256,7 +256,7 @@ public class OrmOrgInfoResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmOrgInfo-SubPerson-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"组织信息" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询当前部门/项目部人员清单", tags = {"组织信息" } ,notes = "查询当前部门/项目部人员清单")
     @RequestMapping(method= RequestMethod.POST , value="/ormorginfos/searchsubperson")
 	public ResponseEntity<Page<OrmOrgInfoDTO>> searchSubPerson(@RequestBody OrmOrgInfoSearchContext context) {
         Page<OrmOrgInfo> domains = ormorginfoService.searchSubPerson(context) ;
@@ -264,7 +264,7 @@ public class OrmOrgInfoResource {
                 .body(new PageImpl(ormorginfoMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmOrgInfo-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"组织信息" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"组织信息" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/ormorginfos/fetchdefault")
 	public ResponseEntity<List<OrmOrgInfoDTO>> fetchDefault(OrmOrgInfoSearchContext context) {
         Page<OrmOrgInfo> domains = ormorginfoService.searchDefault(context) ;
@@ -277,7 +277,7 @@ public class OrmOrgInfoResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmOrgInfo-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"组织信息" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"组织信息" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/ormorginfos/searchdefault")
 	public ResponseEntity<Page<OrmOrgInfoDTO>> searchDefault(@RequestBody OrmOrgInfoSearchContext context) {
         Page<OrmOrgInfo> domains = ormorginfoService.searchDefault(context) ;
@@ -285,7 +285,7 @@ public class OrmOrgInfoResource {
                 .body(new PageImpl(ormorginfoMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmOrgInfo-Suborg-all')")
-	@ApiOperation(value = "获取当前组织所包含的直接下级组织查询", tags = {"组织信息" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取当前组织所包含的直接下级组织查询", tags = {"组织信息" } ,notes = "获取当前组织所包含的直接下级组织查询")
     @RequestMapping(method= RequestMethod.GET , value="/ormorginfos/fetchsuborg")
 	public ResponseEntity<List<OrmOrgInfoDTO>> fetchSuborg(OrmOrgInfoSearchContext context) {
         Page<OrmOrgInfo> domains = ormorginfoService.searchSuborg(context) ;
@@ -298,7 +298,7 @@ public class OrmOrgInfoResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmOrgInfo-Suborg-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"组织信息" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询当前组织所包含的直接下级组织查询", tags = {"组织信息" } ,notes = "查询当前组织所包含的直接下级组织查询")
     @RequestMapping(method= RequestMethod.POST , value="/ormorginfos/searchsuborg")
 	public ResponseEntity<Page<OrmOrgInfoDTO>> searchSuborg(@RequestBody OrmOrgInfoSearchContext context) {
         Page<OrmOrgInfo> domains = ormorginfoService.searchSuborg(context) ;

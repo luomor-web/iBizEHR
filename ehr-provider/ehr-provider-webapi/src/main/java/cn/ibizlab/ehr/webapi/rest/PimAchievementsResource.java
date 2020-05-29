@@ -138,7 +138,7 @@ public class PimAchievementsResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimAchievements-JLSS-all')")
-	@ApiOperation(value = "获取记录所属和人员ID不符的", tags = {"绩效信息" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取记录所属和人员ID不符的", tags = {"绩效信息" } ,notes = "获取记录所属和人员ID不符的")
     @RequestMapping(method= RequestMethod.GET , value="/pimachievements/fetchjlss")
 	public ResponseEntity<List<PimAchievementsDTO>> fetchJLSS(PimAchievementsSearchContext context) {
         Page<PimAchievements> domains = pimachievementsService.searchJLSS(context) ;
@@ -151,7 +151,7 @@ public class PimAchievementsResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimAchievements-JLSS-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"绩效信息" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询记录所属和人员ID不符的", tags = {"绩效信息" } ,notes = "查询记录所属和人员ID不符的")
     @RequestMapping(method= RequestMethod.POST , value="/pimachievements/searchjlss")
 	public ResponseEntity<Page<PimAchievementsDTO>> searchJLSS(@RequestBody PimAchievementsSearchContext context) {
         Page<PimAchievements> domains = pimachievementsService.searchJLSS(context) ;
@@ -159,7 +159,7 @@ public class PimAchievementsResource {
                 .body(new PageImpl(pimachievementsMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimAchievements-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"绩效信息" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"绩效信息" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimachievements/fetchdefault")
 	public ResponseEntity<List<PimAchievementsDTO>> fetchDefault(PimAchievementsSearchContext context) {
         Page<PimAchievements> domains = pimachievementsService.searchDefault(context) ;
@@ -172,7 +172,7 @@ public class PimAchievementsResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimAchievements-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"绩效信息" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"绩效信息" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pimachievements/searchdefault")
 	public ResponseEntity<Page<PimAchievementsDTO>> searchDefault(@RequestBody PimAchievementsSearchContext context) {
         Page<PimAchievements> domains = pimachievementsService.searchDefault(context) ;
@@ -180,7 +180,7 @@ public class PimAchievementsResource {
                 .body(new PageImpl(pimachievementsMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimAchievements-ZIZHU-all')")
-	@ApiOperation(value = "获取自助(绩效信息)", tags = {"绩效信息" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取自助(绩效信息)", tags = {"绩效信息" } ,notes = "获取自助(绩效信息)")
     @RequestMapping(method= RequestMethod.GET , value="/pimachievements/fetchzizhu")
 	public ResponseEntity<List<PimAchievementsDTO>> fetchZIZHU(PimAchievementsSearchContext context) {
         Page<PimAchievements> domains = pimachievementsService.searchZIZHU(context) ;
@@ -193,7 +193,7 @@ public class PimAchievementsResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimAchievements-ZIZHU-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"绩效信息" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询自助(绩效信息)", tags = {"绩效信息" } ,notes = "查询自助(绩效信息)")
     @RequestMapping(method= RequestMethod.POST , value="/pimachievements/searchzizhu")
 	public ResponseEntity<Page<PimAchievementsDTO>> searchZIZHU(@RequestBody PimAchievementsSearchContext context) {
         Page<PimAchievements> domains = pimachievementsService.searchZIZHU(context) ;

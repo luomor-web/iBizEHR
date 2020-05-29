@@ -138,7 +138,7 @@ public class OrmZwdqgzResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmZwdqgz-DQYHZZ-all')")
-	@ApiOperation(value = "获取查看当前单位的职级到期规则", tags = {"职级到期规则" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取查看当前单位的职级到期规则", tags = {"职级到期规则" } ,notes = "获取查看当前单位的职级到期规则")
     @RequestMapping(method= RequestMethod.GET , value="/ormzwdqgzs/fetchdqyhzz")
 	public ResponseEntity<List<OrmZwdqgzDTO>> fetchDQYHZZ(OrmZwdqgzSearchContext context) {
         Page<OrmZwdqgz> domains = ormzwdqgzService.searchDQYHZZ(context) ;
@@ -151,7 +151,7 @@ public class OrmZwdqgzResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmZwdqgz-DQYHZZ-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"职级到期规则" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询查看当前单位的职级到期规则", tags = {"职级到期规则" } ,notes = "查询查看当前单位的职级到期规则")
     @RequestMapping(method= RequestMethod.POST , value="/ormzwdqgzs/searchdqyhzz")
 	public ResponseEntity<Page<OrmZwdqgzDTO>> searchDQYHZZ(@RequestBody OrmZwdqgzSearchContext context) {
         Page<OrmZwdqgz> domains = ormzwdqgzService.searchDQYHZZ(context) ;
@@ -159,7 +159,7 @@ public class OrmZwdqgzResource {
                 .body(new PageImpl(ormzwdqgzMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmZwdqgz-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"职级到期规则" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"职级到期规则" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/ormzwdqgzs/fetchdefault")
 	public ResponseEntity<List<OrmZwdqgzDTO>> fetchDefault(OrmZwdqgzSearchContext context) {
         Page<OrmZwdqgz> domains = ormzwdqgzService.searchDefault(context) ;
@@ -172,7 +172,7 @@ public class OrmZwdqgzResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmZwdqgz-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"职级到期规则" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"职级到期规则" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/ormzwdqgzs/searchdefault")
 	public ResponseEntity<Page<OrmZwdqgzDTO>> searchDefault(@RequestBody OrmZwdqgzSearchContext context) {
         Page<OrmZwdqgz> domains = ormzwdqgzService.searchDefault(context) ;

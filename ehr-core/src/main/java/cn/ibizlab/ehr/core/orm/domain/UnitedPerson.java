@@ -29,7 +29,6 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 /**
  * 实体[统一身份库]
  */
-@Builder
 @Getter
 @Setter
 @NoArgsConstructor

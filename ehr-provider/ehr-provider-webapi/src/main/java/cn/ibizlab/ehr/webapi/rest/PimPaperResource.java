@@ -138,7 +138,7 @@ public class PimPaperResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimPaper-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"论文信息" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"论文信息" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimpapers/fetchdefault")
 	public ResponseEntity<List<PimPaperDTO>> fetchDefault(PimPaperSearchContext context) {
         Page<PimPaper> domains = pimpaperService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class PimPaperResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimPaper-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"论文信息" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"论文信息" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pimpapers/searchdefault")
 	public ResponseEntity<Page<PimPaperDTO>> searchDefault(@RequestBody PimPaperSearchContext context) {
         Page<PimPaper> domains = pimpaperService.searchDefault(context) ;
@@ -159,7 +159,7 @@ public class PimPaperResource {
                 .body(new PageImpl(pimpaperMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimPaper-JLSSGR-all')")
-	@ApiOperation(value = "获取记录所属（个人）", tags = {"论文信息" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取记录所属（个人）", tags = {"论文信息" } ,notes = "获取记录所属（个人）")
     @RequestMapping(method= RequestMethod.GET , value="/pimpapers/fetchjlssgr")
 	public ResponseEntity<List<PimPaperDTO>> fetchJLSSGR(PimPaperSearchContext context) {
         Page<PimPaper> domains = pimpaperService.searchJLSSGR(context) ;
@@ -172,7 +172,7 @@ public class PimPaperResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimPaper-JLSSGR-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"论文信息" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询记录所属（个人）", tags = {"论文信息" } ,notes = "查询记录所属（个人）")
     @RequestMapping(method= RequestMethod.POST , value="/pimpapers/searchjlssgr")
 	public ResponseEntity<Page<PimPaperDTO>> searchJLSSGR(@RequestBody PimPaperSearchContext context) {
         Page<PimPaper> domains = pimpaperService.searchJLSSGR(context) ;
@@ -180,7 +180,7 @@ public class PimPaperResource {
                 .body(new PageImpl(pimpaperMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimPaper-JLSSGLY-all')")
-	@ApiOperation(value = "获取记录所属（管理员）", tags = {"论文信息" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取记录所属（管理员）", tags = {"论文信息" } ,notes = "获取记录所属（管理员）")
     @RequestMapping(method= RequestMethod.GET , value="/pimpapers/fetchjlssgly")
 	public ResponseEntity<List<PimPaperDTO>> fetchJLSSGLY(PimPaperSearchContext context) {
         Page<PimPaper> domains = pimpaperService.searchJLSSGLY(context) ;
@@ -193,7 +193,7 @@ public class PimPaperResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimPaper-JLSSGLY-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"论文信息" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询记录所属（管理员）", tags = {"论文信息" } ,notes = "查询记录所属（管理员）")
     @RequestMapping(method= RequestMethod.POST , value="/pimpapers/searchjlssgly")
 	public ResponseEntity<Page<PimPaperDTO>> searchJLSSGLY(@RequestBody PimPaperSearchContext context) {
         Page<PimPaper> domains = pimpaperService.searchJLSSGLY(context) ;

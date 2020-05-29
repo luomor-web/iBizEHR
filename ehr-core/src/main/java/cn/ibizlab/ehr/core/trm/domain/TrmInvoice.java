@@ -29,7 +29,6 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 /**
  * 实体[开票信息]
  */
-@Builder
 @Getter
 @Setter
 @NoArgsConstructor

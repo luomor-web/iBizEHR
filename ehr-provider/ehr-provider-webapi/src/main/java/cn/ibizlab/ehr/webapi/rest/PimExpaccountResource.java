@@ -138,7 +138,7 @@ public class PimExpaccountResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimExpaccount-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"费用台账" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"费用台账" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimexpaccounts/fetchdefault")
 	public ResponseEntity<List<PimExpaccountDTO>> fetchDefault(PimExpaccountSearchContext context) {
         Page<PimExpaccount> domains = pimexpaccountService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class PimExpaccountResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimExpaccount-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"费用台账" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"费用台账" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pimexpaccounts/searchdefault")
 	public ResponseEntity<Page<PimExpaccountDTO>> searchDefault(@RequestBody PimExpaccountSearchContext context) {
         Page<PimExpaccount> domains = pimexpaccountService.searchDefault(context) ;

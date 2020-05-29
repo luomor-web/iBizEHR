@@ -29,7 +29,6 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 /**
  * 实体[变动申请单（停用）]
  */
-@Builder
 @Getter
 @Setter
 @NoArgsConstructor

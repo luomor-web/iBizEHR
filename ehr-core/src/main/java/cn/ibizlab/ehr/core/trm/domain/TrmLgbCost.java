@@ -29,7 +29,6 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 /**
  * 实体[老干部费用]
  */
-@Builder
 @Getter
 @Setter
 @NoArgsConstructor

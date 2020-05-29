@@ -138,7 +138,7 @@ public class PimEnclosureResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimEnclosure-PCMPROFILE_FJ-all')")
-	@ApiOperation(value = "获取应聘者附件预览", tags = {"附件信息" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取应聘者附件预览", tags = {"附件信息" } ,notes = "获取应聘者附件预览")
     @RequestMapping(method= RequestMethod.GET , value="/pimenclosures/fetchpcmprofile_fj")
 	public ResponseEntity<List<PimEnclosureDTO>> fetchPCMPROFILE_FJ(PimEnclosureSearchContext context) {
         Page<PimEnclosure> domains = pimenclosureService.searchPCMPROFILE_FJ(context) ;
@@ -151,7 +151,7 @@ public class PimEnclosureResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimEnclosure-PCMPROFILE_FJ-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"附件信息" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询应聘者附件预览", tags = {"附件信息" } ,notes = "查询应聘者附件预览")
     @RequestMapping(method= RequestMethod.POST , value="/pimenclosures/searchpcmprofile_fj")
 	public ResponseEntity<Page<PimEnclosureDTO>> searchPCMPROFILE_FJ(@RequestBody PimEnclosureSearchContext context) {
         Page<PimEnclosure> domains = pimenclosureService.searchPCMPROFILE_FJ(context) ;
@@ -159,7 +159,7 @@ public class PimEnclosureResource {
                 .body(new PageImpl(pimenclosureMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimEnclosure-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"附件信息" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"附件信息" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimenclosures/fetchdefault")
 	public ResponseEntity<List<PimEnclosureDTO>> fetchDefault(PimEnclosureSearchContext context) {
         Page<PimEnclosure> domains = pimenclosureService.searchDefault(context) ;
@@ -172,7 +172,7 @@ public class PimEnclosureResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimEnclosure-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"附件信息" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"附件信息" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pimenclosures/searchdefault")
 	public ResponseEntity<Page<PimEnclosureDTO>> searchDefault(@RequestBody PimEnclosureSearchContext context) {
         Page<PimEnclosure> domains = pimenclosureService.searchDefault(context) ;

@@ -162,7 +162,7 @@ public class SocWelfareInfoResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SocWelfareInfo-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"个人社保福利" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"个人社保福利" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/socwelfareinfos/fetchdefault")
 	public ResponseEntity<List<SocWelfareInfoDTO>> fetchDefault(SocWelfareInfoSearchContext context) {
         Page<SocWelfareInfo> domains = socwelfareinfoService.searchDefault(context) ;
@@ -175,7 +175,7 @@ public class SocWelfareInfoResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SocWelfareInfo-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"个人社保福利" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"个人社保福利" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/socwelfareinfos/searchdefault")
 	public ResponseEntity<Page<SocWelfareInfoDTO>> searchDefault(@RequestBody SocWelfareInfoSearchContext context) {
         Page<SocWelfareInfo> domains = socwelfareinfoService.searchDefault(context) ;

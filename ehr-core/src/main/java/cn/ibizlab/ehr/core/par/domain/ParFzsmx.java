@@ -29,7 +29,6 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 /**
  * 实体[通知选择助总领导明细]
  */
-@Builder
 @Getter
 @Setter
 @NoArgsConstructor

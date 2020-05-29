@@ -29,7 +29,6 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 /**
  * 实体[B/Y员工转正考核结果记录]
  */
-@Builder
 @Getter
 @Setter
 @NoArgsConstructor

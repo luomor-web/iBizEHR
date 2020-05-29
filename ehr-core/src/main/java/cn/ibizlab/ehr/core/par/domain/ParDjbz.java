@@ -29,7 +29,6 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 /**
  * 实体[定级规则]
  */
-@Builder
 @Getter
 @Setter
 @NoArgsConstructor

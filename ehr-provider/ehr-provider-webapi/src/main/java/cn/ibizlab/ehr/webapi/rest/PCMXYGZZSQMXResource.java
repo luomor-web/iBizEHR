@@ -174,7 +174,7 @@ public class PCMXYGZZSQMXResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMXYGZZSQMX-WSHSQ-all')")
-	@ApiOperation(value = "获取未完成审核的申请", tags = {"试用期员工转正申请明细（停用）" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取未完成审核的申请", tags = {"试用期员工转正申请明细（停用）" } ,notes = "获取未完成审核的申请")
     @RequestMapping(method= RequestMethod.GET , value="/pcmxygzzsqmxes/fetchwshsq")
 	public ResponseEntity<List<PCMXYGZZSQMXDTO>> fetchWSHSQ(PCMXYGZZSQMXSearchContext context) {
         Page<PCMXYGZZSQMX> domains = pcmxygzzsqmxService.searchWSHSQ(context) ;
@@ -187,7 +187,7 @@ public class PCMXYGZZSQMXResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMXYGZZSQMX-WSHSQ-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"试用期员工转正申请明细（停用）" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询未完成审核的申请", tags = {"试用期员工转正申请明细（停用）" } ,notes = "查询未完成审核的申请")
     @RequestMapping(method= RequestMethod.POST , value="/pcmxygzzsqmxes/searchwshsq")
 	public ResponseEntity<Page<PCMXYGZZSQMXDTO>> searchWSHSQ(@RequestBody PCMXYGZZSQMXSearchContext context) {
         Page<PCMXYGZZSQMX> domains = pcmxygzzsqmxService.searchWSHSQ(context) ;
@@ -195,7 +195,7 @@ public class PCMXYGZZSQMXResource {
                 .body(new PageImpl(pcmxygzzsqmxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMXYGZZSQMX-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"试用期员工转正申请明细（停用）" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"试用期员工转正申请明细（停用）" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pcmxygzzsqmxes/fetchdefault")
 	public ResponseEntity<List<PCMXYGZZSQMXDTO>> fetchDefault(PCMXYGZZSQMXSearchContext context) {
         Page<PCMXYGZZSQMX> domains = pcmxygzzsqmxService.searchDefault(context) ;
@@ -208,7 +208,7 @@ public class PCMXYGZZSQMXResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMXYGZZSQMX-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"试用期员工转正申请明细（停用）" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"试用期员工转正申请明细（停用）" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pcmxygzzsqmxes/searchdefault")
 	public ResponseEntity<Page<PCMXYGZZSQMXDTO>> searchDefault(@RequestBody PCMXYGZZSQMXSearchContext context) {
         Page<PCMXYGZZSQMX> domains = pcmxygzzsqmxService.searchDefault(context) ;

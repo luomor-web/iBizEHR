@@ -150,7 +150,7 @@ public class OrmErporgResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmErporg-CXBM-all')")
-	@ApiOperation(value = "获取查询可用ERP部门", tags = {"ERP组织中间表" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取查询可用ERP部门", tags = {"ERP组织中间表" } ,notes = "获取查询可用ERP部门")
     @RequestMapping(method= RequestMethod.GET , value="/ormerporgs/fetchcxbm")
 	public ResponseEntity<List<OrmErporgDTO>> fetchCXBM(OrmErporgSearchContext context) {
         Page<OrmErporg> domains = ormerporgService.searchCXBM(context) ;
@@ -163,7 +163,7 @@ public class OrmErporgResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmErporg-CXBM-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"ERP组织中间表" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询查询可用ERP部门", tags = {"ERP组织中间表" } ,notes = "查询查询可用ERP部门")
     @RequestMapping(method= RequestMethod.POST , value="/ormerporgs/searchcxbm")
 	public ResponseEntity<Page<OrmErporgDTO>> searchCXBM(@RequestBody OrmErporgSearchContext context) {
         Page<OrmErporg> domains = ormerporgService.searchCXBM(context) ;
@@ -171,7 +171,7 @@ public class OrmErporgResource {
                 .body(new PageImpl(ormerporgMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmErporg-LegalChoice-all')")
-	@ApiOperation(value = "获取管理单位选择", tags = {"ERP组织中间表" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取管理单位选择", tags = {"ERP组织中间表" } ,notes = "获取管理单位选择")
     @RequestMapping(method= RequestMethod.GET , value="/ormerporgs/fetchlegalchoice")
 	public ResponseEntity<List<OrmErporgDTO>> fetchLegalChoice(OrmErporgSearchContext context) {
         Page<OrmErporg> domains = ormerporgService.searchLegalChoice(context) ;
@@ -184,7 +184,7 @@ public class OrmErporgResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmErporg-LegalChoice-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"ERP组织中间表" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询管理单位选择", tags = {"ERP组织中间表" } ,notes = "查询管理单位选择")
     @RequestMapping(method= RequestMethod.POST , value="/ormerporgs/searchlegalchoice")
 	public ResponseEntity<Page<OrmErporgDTO>> searchLegalChoice(@RequestBody OrmErporgSearchContext context) {
         Page<OrmErporg> domains = ormerporgService.searchLegalChoice(context) ;
@@ -192,7 +192,7 @@ public class OrmErporgResource {
                 .body(new PageImpl(ormerporgMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmErporg-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"ERP组织中间表" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"ERP组织中间表" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/ormerporgs/fetchdefault")
 	public ResponseEntity<List<OrmErporgDTO>> fetchDefault(OrmErporgSearchContext context) {
         Page<OrmErporg> domains = ormerporgService.searchDefault(context) ;
@@ -205,7 +205,7 @@ public class OrmErporgResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmErporg-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"ERP组织中间表" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"ERP组织中间表" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/ormerporgs/searchdefault")
 	public ResponseEntity<Page<OrmErporgDTO>> searchDefault(@RequestBody OrmErporgSearchContext context) {
         Page<OrmErporg> domains = ormerporgService.searchDefault(context) ;
@@ -213,7 +213,7 @@ public class OrmErporgResource {
                 .body(new PageImpl(ormerporgMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmErporg-CX-all')")
-	@ApiOperation(value = "获取查询可用ERP组织", tags = {"ERP组织中间表" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取查询可用ERP组织", tags = {"ERP组织中间表" } ,notes = "获取查询可用ERP组织")
     @RequestMapping(method= RequestMethod.GET , value="/ormerporgs/fetchcx")
 	public ResponseEntity<List<OrmErporgDTO>> fetchCX(OrmErporgSearchContext context) {
         Page<OrmErporg> domains = ormerporgService.searchCX(context) ;
@@ -226,7 +226,7 @@ public class OrmErporgResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmErporg-CX-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"ERP组织中间表" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询查询可用ERP组织", tags = {"ERP组织中间表" } ,notes = "查询查询可用ERP组织")
     @RequestMapping(method= RequestMethod.POST , value="/ormerporgs/searchcx")
 	public ResponseEntity<Page<OrmErporgDTO>> searchCX(@RequestBody OrmErporgSearchContext context) {
         Page<OrmErporg> domains = ormerporgService.searchCX(context) ;
@@ -234,7 +234,7 @@ public class OrmErporgResource {
                 .body(new PageImpl(ormerporgMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmErporg-CXZBM-all')")
-	@ApiOperation(value = "获取查询可用ERP部门", tags = {"ERP组织中间表" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取查询可用ERP部门", tags = {"ERP组织中间表" } ,notes = "获取查询可用ERP部门")
     @RequestMapping(method= RequestMethod.GET , value="/ormerporgs/fetchcxzbm")
 	public ResponseEntity<List<OrmErporgDTO>> fetchCXZBM(OrmErporgSearchContext context) {
         Page<OrmErporg> domains = ormerporgService.searchCXZBM(context) ;
@@ -247,7 +247,7 @@ public class OrmErporgResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmErporg-CXZBM-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"ERP组织中间表" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询查询可用ERP部门", tags = {"ERP组织中间表" } ,notes = "查询查询可用ERP部门")
     @RequestMapping(method= RequestMethod.POST , value="/ormerporgs/searchcxzbm")
 	public ResponseEntity<Page<OrmErporgDTO>> searchCXZBM(@RequestBody OrmErporgSearchContext context) {
         Page<OrmErporg> domains = ormerporgService.searchCXZBM(context) ;

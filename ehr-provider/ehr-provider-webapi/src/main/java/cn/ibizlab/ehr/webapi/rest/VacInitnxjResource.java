@@ -138,7 +138,7 @@ public class VacInitnxjResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VacInitnxj-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"初始化年休假" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"初始化年休假" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/vacinitnxjs/fetchdefault")
 	public ResponseEntity<List<VacInitnxjDTO>> fetchDefault(VacInitnxjSearchContext context) {
         Page<VacInitnxj> domains = vacinitnxjService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class VacInitnxjResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VacInitnxj-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"初始化年休假" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"初始化年休假" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/vacinitnxjs/searchdefault")
 	public ResponseEntity<Page<VacInitnxjDTO>> searchDefault(@RequestBody VacInitnxjSearchContext context) {
         Page<VacInitnxj> domains = vacinitnxjService.searchDefault(context) ;

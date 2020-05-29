@@ -128,7 +128,7 @@ public class DynaDashboardResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-	@ApiOperation(value = "获取DEFAULT", tags = {"动态数据看板" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"动态数据看板" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/dynadashboards/fetchdefault")
 	public ResponseEntity<List<DynaDashboardDTO>> fetchDefault(DynaDashboardSearchContext context) {
         Page<DynaDashboard> domains = dynadashboardService.searchDefault(context) ;
@@ -140,7 +140,7 @@ public class DynaDashboardResource {
                 .body(list);
 	}
 
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"动态数据看板" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"动态数据看板" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/dynadashboards/searchdefault")
 	public ResponseEntity<Page<DynaDashboardDTO>> searchDefault(@RequestBody DynaDashboardSearchContext context) {
         Page<DynaDashboard> domains = dynadashboardService.searchDefault(context) ;

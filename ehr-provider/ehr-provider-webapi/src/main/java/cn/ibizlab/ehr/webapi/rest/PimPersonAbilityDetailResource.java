@@ -138,7 +138,7 @@ public class PimPersonAbilityDetailResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimPersonAbilityDetail-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"员工能力明细" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"员工能力明细" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimpersonabilitydetails/fetchdefault")
 	public ResponseEntity<List<PimPersonAbilityDetailDTO>> fetchDefault(PimPersonAbilityDetailSearchContext context) {
         Page<PimPersonAbilityDetail> domains = pimpersonabilitydetailService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class PimPersonAbilityDetailResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimPersonAbilityDetail-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"员工能力明细" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"员工能力明细" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pimpersonabilitydetails/searchdefault")
 	public ResponseEntity<Page<PimPersonAbilityDetailDTO>> searchDefault(@RequestBody PimPersonAbilityDetailSearchContext context) {
         Page<PimPersonAbilityDetail> domains = pimpersonabilitydetailService.searchDefault(context) ;

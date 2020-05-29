@@ -138,7 +138,7 @@ public class PIMCITYResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMCITY-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"市" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"市" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimcities/fetchdefault")
 	public ResponseEntity<List<PIMCITYDTO>> fetchDefault(PIMCITYSearchContext context) {
         Page<PIMCITY> domains = pimcityService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class PIMCITYResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMCITY-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"市" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"市" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pimcities/searchdefault")
 	public ResponseEntity<Page<PIMCITYDTO>> searchDefault(@RequestBody PIMCITYSearchContext context) {
         Page<PIMCITY> domains = pimcityService.searchDefault(context) ;

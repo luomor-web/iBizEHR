@@ -162,7 +162,7 @@ public class PcmYdjdmxResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmYdjdmx-JDGLDQ-all')")
-	@ApiOperation(value = "获取借调管理查询", tags = {"异动借调明细" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取借调管理查询", tags = {"异动借调明细" } ,notes = "获取借调管理查询")
     @RequestMapping(method= RequestMethod.GET , value="/pcmydjdmxes/fetchjdgldq")
 	public ResponseEntity<List<PcmYdjdmxDTO>> fetchJDGLDQ(PcmYdjdmxSearchContext context) {
         Page<PcmYdjdmx> domains = pcmydjdmxService.searchJDGLDQ(context) ;
@@ -175,7 +175,7 @@ public class PcmYdjdmxResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmYdjdmx-JDGLDQ-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"异动借调明细" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询借调管理查询", tags = {"异动借调明细" } ,notes = "查询借调管理查询")
     @RequestMapping(method= RequestMethod.POST , value="/pcmydjdmxes/searchjdgldq")
 	public ResponseEntity<Page<PcmYdjdmxDTO>> searchJDGLDQ(@RequestBody PcmYdjdmxSearchContext context) {
         Page<PcmYdjdmx> domains = pcmydjdmxService.searchJDGLDQ(context) ;
@@ -183,7 +183,7 @@ public class PcmYdjdmxResource {
                 .body(new PageImpl(pcmydjdmxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmYdjdmx-JDLSJLDQ-all')")
-	@ApiOperation(value = "获取借调历史记录查询", tags = {"异动借调明细" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取借调历史记录查询", tags = {"异动借调明细" } ,notes = "获取借调历史记录查询")
     @RequestMapping(method= RequestMethod.GET , value="/pcmydjdmxes/fetchjdlsjldq")
 	public ResponseEntity<List<PcmYdjdmxDTO>> fetchJDLSJLDQ(PcmYdjdmxSearchContext context) {
         Page<PcmYdjdmx> domains = pcmydjdmxService.searchJDLSJLDQ(context) ;
@@ -196,7 +196,7 @@ public class PcmYdjdmxResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmYdjdmx-JDLSJLDQ-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"异动借调明细" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询借调历史记录查询", tags = {"异动借调明细" } ,notes = "查询借调历史记录查询")
     @RequestMapping(method= RequestMethod.POST , value="/pcmydjdmxes/searchjdlsjldq")
 	public ResponseEntity<Page<PcmYdjdmxDTO>> searchJDLSJLDQ(@RequestBody PcmYdjdmxSearchContext context) {
         Page<PcmYdjdmx> domains = pcmydjdmxService.searchJDLSJLDQ(context) ;
@@ -204,7 +204,7 @@ public class PcmYdjdmxResource {
                 .body(new PageImpl(pcmydjdmxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmYdjdmx-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"异动借调明细" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"异动借调明细" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pcmydjdmxes/fetchdefault")
 	public ResponseEntity<List<PcmYdjdmxDTO>> fetchDefault(PcmYdjdmxSearchContext context) {
         Page<PcmYdjdmx> domains = pcmydjdmxService.searchDefault(context) ;
@@ -217,7 +217,7 @@ public class PcmYdjdmxResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmYdjdmx-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"异动借调明细" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"异动借调明细" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pcmydjdmxes/searchdefault")
 	public ResponseEntity<Page<PcmYdjdmxDTO>> searchDefault(@RequestBody PcmYdjdmxSearchContext context) {
         Page<PcmYdjdmx> domains = pcmydjdmxService.searchDefault(context) ;

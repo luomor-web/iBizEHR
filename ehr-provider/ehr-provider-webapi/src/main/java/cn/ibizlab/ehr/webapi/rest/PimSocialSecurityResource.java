@@ -138,7 +138,7 @@ public class PimSocialSecurityResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimSocialSecurity-ZIZHU-all')")
-	@ApiOperation(value = "获取自助(社保信息)", tags = {"社保信息" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取自助(社保信息)", tags = {"社保信息" } ,notes = "获取自助(社保信息)")
     @RequestMapping(method= RequestMethod.GET , value="/pimsocialsecurities/fetchzizhu")
 	public ResponseEntity<List<PimSocialSecurityDTO>> fetchZIZHU(PimSocialSecuritySearchContext context) {
         Page<PimSocialSecurity> domains = pimsocialsecurityService.searchZIZHU(context) ;
@@ -151,7 +151,7 @@ public class PimSocialSecurityResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimSocialSecurity-ZIZHU-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"社保信息" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询自助(社保信息)", tags = {"社保信息" } ,notes = "查询自助(社保信息)")
     @RequestMapping(method= RequestMethod.POST , value="/pimsocialsecurities/searchzizhu")
 	public ResponseEntity<Page<PimSocialSecurityDTO>> searchZIZHU(@RequestBody PimSocialSecuritySearchContext context) {
         Page<PimSocialSecurity> domains = pimsocialsecurityService.searchZIZHU(context) ;
@@ -159,7 +159,7 @@ public class PimSocialSecurityResource {
                 .body(new PageImpl(pimsocialsecurityMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimSocialSecurity-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"社保信息" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"社保信息" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimsocialsecurities/fetchdefault")
 	public ResponseEntity<List<PimSocialSecurityDTO>> fetchDefault(PimSocialSecuritySearchContext context) {
         Page<PimSocialSecurity> domains = pimsocialsecurityService.searchDefault(context) ;
@@ -172,7 +172,7 @@ public class PimSocialSecurityResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimSocialSecurity-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"社保信息" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"社保信息" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pimsocialsecurities/searchdefault")
 	public ResponseEntity<Page<PimSocialSecurityDTO>> searchDefault(@RequestBody PimSocialSecuritySearchContext context) {
         Page<PimSocialSecurity> domains = pimsocialsecurityService.searchDefault(context) ;
@@ -180,7 +180,7 @@ public class PimSocialSecurityResource {
                 .body(new PageImpl(pimsocialsecurityMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimSocialSecurity-JLSS-all')")
-	@ApiOperation(value = "获取记录所属", tags = {"社保信息" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取记录所属", tags = {"社保信息" } ,notes = "获取记录所属")
     @RequestMapping(method= RequestMethod.GET , value="/pimsocialsecurities/fetchjlss")
 	public ResponseEntity<List<PimSocialSecurityDTO>> fetchJLSS(PimSocialSecuritySearchContext context) {
         Page<PimSocialSecurity> domains = pimsocialsecurityService.searchJLSS(context) ;
@@ -193,7 +193,7 @@ public class PimSocialSecurityResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimSocialSecurity-JLSS-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"社保信息" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询记录所属", tags = {"社保信息" } ,notes = "查询记录所属")
     @RequestMapping(method= RequestMethod.POST , value="/pimsocialsecurities/searchjlss")
 	public ResponseEntity<Page<PimSocialSecurityDTO>> searchJLSS(@RequestBody PimSocialSecuritySearchContext context) {
         Page<PimSocialSecurity> domains = pimsocialsecurityService.searchJLSS(context) ;

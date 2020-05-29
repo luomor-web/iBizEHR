@@ -138,7 +138,7 @@ public class BUDGETResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-BUDGET-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"年度预算" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"年度预算" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/budgets/fetchdefault")
 	public ResponseEntity<List<BUDGETDTO>> fetchDefault(BUDGETSearchContext context) {
         Page<BUDGET> domains = budgetService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class BUDGETResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-BUDGET-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"年度预算" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"年度预算" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/budgets/searchdefault")
 	public ResponseEntity<Page<BUDGETDTO>> searchDefault(@RequestBody BUDGETSearchContext context) {
         Page<BUDGET> domains = budgetService.searchDefault(context) ;

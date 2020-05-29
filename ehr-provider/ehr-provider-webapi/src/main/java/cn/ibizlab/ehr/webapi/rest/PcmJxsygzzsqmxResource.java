@@ -150,7 +150,7 @@ public class PcmJxsygzzsqmxResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmJxsygzzsqmx-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"见习生员工转正申请明细（停用）" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"见习生员工转正申请明细（停用）" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pcmjxsygzzsqmxes/fetchdefault")
 	public ResponseEntity<List<PcmJxsygzzsqmxDTO>> fetchDefault(PcmJxsygzzsqmxSearchContext context) {
         Page<PcmJxsygzzsqmx> domains = pcmjxsygzzsqmxService.searchDefault(context) ;
@@ -163,7 +163,7 @@ public class PcmJxsygzzsqmxResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmJxsygzzsqmx-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"见习生员工转正申请明细（停用）" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"见习生员工转正申请明细（停用）" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pcmjxsygzzsqmxes/searchdefault")
 	public ResponseEntity<Page<PcmJxsygzzsqmxDTO>> searchDefault(@RequestBody PcmJxsygzzsqmxSearchContext context) {
         Page<PcmJxsygzzsqmx> domains = pcmjxsygzzsqmxService.searchDefault(context) ;
@@ -171,7 +171,7 @@ public class PcmJxsygzzsqmxResource {
                 .body(new PageImpl(pcmjxsygzzsqmxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmJxsygzzsqmx-DSHSQ-all')")
-	@ApiOperation(value = "获取待审核申请", tags = {"见习生员工转正申请明细（停用）" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取待审核申请", tags = {"见习生员工转正申请明细（停用）" } ,notes = "获取待审核申请")
     @RequestMapping(method= RequestMethod.GET , value="/pcmjxsygzzsqmxes/fetchdshsq")
 	public ResponseEntity<List<PcmJxsygzzsqmxDTO>> fetchDSHSQ(PcmJxsygzzsqmxSearchContext context) {
         Page<PcmJxsygzzsqmx> domains = pcmjxsygzzsqmxService.searchDSHSQ(context) ;
@@ -184,7 +184,7 @@ public class PcmJxsygzzsqmxResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmJxsygzzsqmx-DSHSQ-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"见习生员工转正申请明细（停用）" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询待审核申请", tags = {"见习生员工转正申请明细（停用）" } ,notes = "查询待审核申请")
     @RequestMapping(method= RequestMethod.POST , value="/pcmjxsygzzsqmxes/searchdshsq")
 	public ResponseEntity<Page<PcmJxsygzzsqmxDTO>> searchDSHSQ(@RequestBody PcmJxsygzzsqmxSearchContext context) {
         Page<PcmJxsygzzsqmx> domains = pcmjxsygzzsqmxService.searchDSHSQ(context) ;

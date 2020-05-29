@@ -150,7 +150,7 @@ public class CodeList1Resource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-CodeList1-PersonUse-all')")
-	@ApiOperation(value = "获取用户使用", tags = {"代码表" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取用户使用", tags = {"代码表" } ,notes = "获取用户使用")
     @RequestMapping(method= RequestMethod.GET , value="/codelist1s/fetchpersonuse")
 	public ResponseEntity<List<CodeList1DTO>> fetchPersonUse(CodeList1SearchContext context) {
         Page<CodeList1> domains = codelist1Service.searchPersonUse(context) ;
@@ -163,7 +163,7 @@ public class CodeList1Resource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-CodeList1-PersonUse-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"代码表" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询用户使用", tags = {"代码表" } ,notes = "查询用户使用")
     @RequestMapping(method= RequestMethod.POST , value="/codelist1s/searchpersonuse")
 	public ResponseEntity<Page<CodeList1DTO>> searchPersonUse(@RequestBody CodeList1SearchContext context) {
         Page<CodeList1> domains = codelist1Service.searchPersonUse(context) ;
@@ -171,7 +171,7 @@ public class CodeList1Resource {
                 .body(new PageImpl(codelist1Mapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-CodeList1-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"代码表" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"代码表" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/codelist1s/fetchdefault")
 	public ResponseEntity<List<CodeList1DTO>> fetchDefault(CodeList1SearchContext context) {
         Page<CodeList1> domains = codelist1Service.searchDefault(context) ;
@@ -184,7 +184,7 @@ public class CodeList1Resource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-CodeList1-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"代码表" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"代码表" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/codelist1s/searchdefault")
 	public ResponseEntity<Page<CodeList1DTO>> searchDefault(@RequestBody CodeList1SearchContext context) {
         Page<CodeList1> domains = codelist1Service.searchDefault(context) ;

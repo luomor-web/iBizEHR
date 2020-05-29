@@ -29,7 +29,6 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 /**
  * 实体[面试评价信息]
  */
-@Builder
 @Getter
 @Setter
 @NoArgsConstructor

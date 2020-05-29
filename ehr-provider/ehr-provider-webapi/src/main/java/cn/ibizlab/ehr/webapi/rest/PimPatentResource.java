@@ -138,7 +138,7 @@ public class PimPatentResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimPatent-JLSSGLY-all')")
-	@ApiOperation(value = "获取记录所属（管理员）", tags = {"专利信息" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取记录所属（管理员）", tags = {"专利信息" } ,notes = "获取记录所属（管理员）")
     @RequestMapping(method= RequestMethod.GET , value="/pimpatents/fetchjlssgly")
 	public ResponseEntity<List<PimPatentDTO>> fetchJLSSGLY(PimPatentSearchContext context) {
         Page<PimPatent> domains = pimpatentService.searchJLSSGLY(context) ;
@@ -151,7 +151,7 @@ public class PimPatentResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimPatent-JLSSGLY-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"专利信息" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询记录所属（管理员）", tags = {"专利信息" } ,notes = "查询记录所属（管理员）")
     @RequestMapping(method= RequestMethod.POST , value="/pimpatents/searchjlssgly")
 	public ResponseEntity<Page<PimPatentDTO>> searchJLSSGLY(@RequestBody PimPatentSearchContext context) {
         Page<PimPatent> domains = pimpatentService.searchJLSSGLY(context) ;
@@ -159,7 +159,7 @@ public class PimPatentResource {
                 .body(new PageImpl(pimpatentMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimPatent-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"专利信息" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"专利信息" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimpatents/fetchdefault")
 	public ResponseEntity<List<PimPatentDTO>> fetchDefault(PimPatentSearchContext context) {
         Page<PimPatent> domains = pimpatentService.searchDefault(context) ;
@@ -172,7 +172,7 @@ public class PimPatentResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimPatent-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"专利信息" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"专利信息" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pimpatents/searchdefault")
 	public ResponseEntity<Page<PimPatentDTO>> searchDefault(@RequestBody PimPatentSearchContext context) {
         Page<PimPatent> domains = pimpatentService.searchDefault(context) ;
@@ -180,7 +180,7 @@ public class PimPatentResource {
                 .body(new PageImpl(pimpatentMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimPatent-JLSSGR-all')")
-	@ApiOperation(value = "获取记录所属（个人）", tags = {"专利信息" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取记录所属（个人）", tags = {"专利信息" } ,notes = "获取记录所属（个人）")
     @RequestMapping(method= RequestMethod.GET , value="/pimpatents/fetchjlssgr")
 	public ResponseEntity<List<PimPatentDTO>> fetchJLSSGR(PimPatentSearchContext context) {
         Page<PimPatent> domains = pimpatentService.searchJLSSGR(context) ;
@@ -193,7 +193,7 @@ public class PimPatentResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimPatent-JLSSGR-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"专利信息" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询记录所属（个人）", tags = {"专利信息" } ,notes = "查询记录所属（个人）")
     @RequestMapping(method= RequestMethod.POST , value="/pimpatents/searchjlssgr")
 	public ResponseEntity<Page<PimPatentDTO>> searchJLSSGR(@RequestBody PimPatentSearchContext context) {
         Page<PimPatent> domains = pimpatentService.searchJLSSGR(context) ;

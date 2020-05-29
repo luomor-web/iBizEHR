@@ -49,7 +49,7 @@ public class AttEndenceSetupServiceImpl extends ServiceImpl<AttEndenceSetupMappe
     private cn.ibizlab.ehr.core.att.service.IAttEndanceMreportService attendancemreportService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.att.service.IATTENDANCESETTINGSService attendancesettingsService;
+    private cn.ibizlab.ehr.core.att.service.IAttEndanceSettingsService attendancesettingsService;
     @Autowired
     @Lazy
     private cn.ibizlab.ehr.core.att.service.IAttEndenceOrmorgscetorService attendenceormorgscetorService;

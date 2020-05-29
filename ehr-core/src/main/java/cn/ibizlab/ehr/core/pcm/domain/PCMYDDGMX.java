@@ -29,7 +29,6 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 /**
  * 实体[异动待岗明细]
  */
-@Builder
 @Getter
 @Setter
 @NoArgsConstructor

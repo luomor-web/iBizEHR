@@ -138,7 +138,7 @@ public class TrmTrainTeacherResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TrmTrainTeacher-NBJS-all')")
-	@ApiOperation(value = "获取内部讲师", tags = {"培训讲师" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取内部讲师", tags = {"培训讲师" } ,notes = "获取内部讲师")
     @RequestMapping(method= RequestMethod.GET , value="/trmtrainteachers/fetchnbjs")
 	public ResponseEntity<List<TrmTrainTeacherDTO>> fetchNBJS(TrmTrainTeacherSearchContext context) {
         Page<TrmTrainTeacher> domains = trmtrainteacherService.searchNBJS(context) ;
@@ -151,7 +151,7 @@ public class TrmTrainTeacherResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TrmTrainTeacher-NBJS-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"培训讲师" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询内部讲师", tags = {"培训讲师" } ,notes = "查询内部讲师")
     @RequestMapping(method= RequestMethod.POST , value="/trmtrainteachers/searchnbjs")
 	public ResponseEntity<Page<TrmTrainTeacherDTO>> searchNBJS(@RequestBody TrmTrainTeacherSearchContext context) {
         Page<TrmTrainTeacher> domains = trmtrainteacherService.searchNBJS(context) ;
@@ -159,7 +159,7 @@ public class TrmTrainTeacherResource {
                 .body(new PageImpl(trmtrainteacherMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TrmTrainTeacher-WBJS-all')")
-	@ApiOperation(value = "获取外部讲师", tags = {"培训讲师" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取外部讲师", tags = {"培训讲师" } ,notes = "获取外部讲师")
     @RequestMapping(method= RequestMethod.GET , value="/trmtrainteachers/fetchwbjs")
 	public ResponseEntity<List<TrmTrainTeacherDTO>> fetchWBJS(TrmTrainTeacherSearchContext context) {
         Page<TrmTrainTeacher> domains = trmtrainteacherService.searchWBJS(context) ;
@@ -172,7 +172,7 @@ public class TrmTrainTeacherResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TrmTrainTeacher-WBJS-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"培训讲师" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询外部讲师", tags = {"培训讲师" } ,notes = "查询外部讲师")
     @RequestMapping(method= RequestMethod.POST , value="/trmtrainteachers/searchwbjs")
 	public ResponseEntity<Page<TrmTrainTeacherDTO>> searchWBJS(@RequestBody TrmTrainTeacherSearchContext context) {
         Page<TrmTrainTeacher> domains = trmtrainteacherService.searchWBJS(context) ;
@@ -180,7 +180,7 @@ public class TrmTrainTeacherResource {
                 .body(new PageImpl(trmtrainteacherMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TrmTrainTeacher-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"培训讲师" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"培训讲师" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/trmtrainteachers/fetchdefault")
 	public ResponseEntity<List<TrmTrainTeacherDTO>> fetchDefault(TrmTrainTeacherSearchContext context) {
         Page<TrmTrainTeacher> domains = trmtrainteacherService.searchDefault(context) ;
@@ -193,7 +193,7 @@ public class TrmTrainTeacherResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TrmTrainTeacher-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"培训讲师" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"培训讲师" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/trmtrainteachers/searchdefault")
 	public ResponseEntity<Page<TrmTrainTeacherDTO>> searchDefault(@RequestBody TrmTrainTeacherSearchContext context) {
         Page<TrmTrainTeacher> domains = trmtrainteacherService.searchDefault(context) ;

@@ -29,7 +29,6 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 /**
  * 实体[专项津贴标准]
  */
-@Builder
 @Getter
 @Setter
 @NoArgsConstructor

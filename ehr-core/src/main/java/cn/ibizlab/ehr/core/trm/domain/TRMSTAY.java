@@ -29,7 +29,6 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 /**
  * 实体[培训住宿]
  */
-@Builder
 @Getter
 @Setter
 @NoArgsConstructor

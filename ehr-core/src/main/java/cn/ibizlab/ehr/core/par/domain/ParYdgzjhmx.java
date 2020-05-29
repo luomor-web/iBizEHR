@@ -29,7 +29,6 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 /**
  * 实体[月度工作计划明细]
  */
-@Builder
 @Getter
 @Setter
 @NoArgsConstructor

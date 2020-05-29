@@ -138,7 +138,7 @@ public class PcmReasonResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmReason-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"配置原因代码表" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"配置原因代码表" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pcmreasons/fetchdefault")
 	public ResponseEntity<List<PcmReasonDTO>> fetchDefault(PcmReasonSearchContext context) {
         Page<PcmReason> domains = pcmreasonService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class PcmReasonResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmReason-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"配置原因代码表" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"配置原因代码表" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pcmreasons/searchdefault")
 	public ResponseEntity<Page<PcmReasonDTO>> searchDefault(@RequestBody PcmReasonSearchContext context) {
         Page<PcmReason> domains = pcmreasonService.searchDefault(context) ;

@@ -29,7 +29,6 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 /**
  * 实体[调休日管理（停用）]
  */
-@Builder
 @Getter
 @Setter
 @NoArgsConstructor

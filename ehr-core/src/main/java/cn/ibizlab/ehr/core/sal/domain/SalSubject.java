@@ -29,7 +29,6 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 /**
  * 实体[财务科目]
  */
-@Builder
 @Getter
 @Setter
 @NoArgsConstructor

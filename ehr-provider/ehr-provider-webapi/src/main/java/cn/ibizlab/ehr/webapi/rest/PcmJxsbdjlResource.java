@@ -138,7 +138,7 @@ public class PcmJxsbdjlResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmJxsbdjl-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"见习生变动记录" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"见习生变动记录" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pcmjxsbdjls/fetchdefault")
 	public ResponseEntity<List<PcmJxsbdjlDTO>> fetchDefault(PcmJxsbdjlSearchContext context) {
         Page<PcmJxsbdjl> domains = pcmjxsbdjlService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class PcmJxsbdjlResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmJxsbdjl-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"见习生变动记录" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"见习生变动记录" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pcmjxsbdjls/searchdefault")
 	public ResponseEntity<Page<PcmJxsbdjlDTO>> searchDefault(@RequestBody PcmJxsbdjlSearchContext context) {
         Page<PcmJxsbdjl> domains = pcmjxsbdjlService.searchDefault(context) ;
@@ -159,7 +159,7 @@ public class PcmJxsbdjlResource {
                 .body(new PageImpl(pcmjxsbdjlMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmJxsbdjl-ZIZHU-all')")
-	@ApiOperation(value = "获取自助(见习记录)", tags = {"见习生变动记录" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取自助(见习记录)", tags = {"见习生变动记录" } ,notes = "获取自助(见习记录)")
     @RequestMapping(method= RequestMethod.GET , value="/pcmjxsbdjls/fetchzizhu")
 	public ResponseEntity<List<PcmJxsbdjlDTO>> fetchZIZHU(PcmJxsbdjlSearchContext context) {
         Page<PcmJxsbdjl> domains = pcmjxsbdjlService.searchZIZHU(context) ;
@@ -172,7 +172,7 @@ public class PcmJxsbdjlResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmJxsbdjl-ZIZHU-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"见习生变动记录" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询自助(见习记录)", tags = {"见习生变动记录" } ,notes = "查询自助(见习记录)")
     @RequestMapping(method= RequestMethod.POST , value="/pcmjxsbdjls/searchzizhu")
 	public ResponseEntity<Page<PcmJxsbdjlDTO>> searchZIZHU(@RequestBody PcmJxsbdjlSearchContext context) {
         Page<PcmJxsbdjl> domains = pcmjxsbdjlService.searchZIZHU(context) ;
@@ -180,7 +180,7 @@ public class PcmJxsbdjlResource {
                 .body(new PageImpl(pcmjxsbdjlMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmJxsbdjl-JLSS-all')")
-	@ApiOperation(value = "获取记录所属和人员ID不符的", tags = {"见习生变动记录" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取记录所属和人员ID不符的", tags = {"见习生变动记录" } ,notes = "获取记录所属和人员ID不符的")
     @RequestMapping(method= RequestMethod.GET , value="/pcmjxsbdjls/fetchjlss")
 	public ResponseEntity<List<PcmJxsbdjlDTO>> fetchJLSS(PcmJxsbdjlSearchContext context) {
         Page<PcmJxsbdjl> domains = pcmjxsbdjlService.searchJLSS(context) ;
@@ -193,7 +193,7 @@ public class PcmJxsbdjlResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmJxsbdjl-JLSS-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"见习生变动记录" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询记录所属和人员ID不符的", tags = {"见习生变动记录" } ,notes = "查询记录所属和人员ID不符的")
     @RequestMapping(method= RequestMethod.POST , value="/pcmjxsbdjls/searchjlss")
 	public ResponseEntity<Page<PcmJxsbdjlDTO>> searchJLSS(@RequestBody PcmJxsbdjlSearchContext context) {
         Page<PcmJxsbdjl> domains = pcmjxsbdjlService.searchJLSS(context) ;

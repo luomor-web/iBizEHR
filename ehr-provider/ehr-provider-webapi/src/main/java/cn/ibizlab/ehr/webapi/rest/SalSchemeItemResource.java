@@ -138,7 +138,7 @@ public class SalSchemeItemResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SalSchemeItem-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"工资单要素项" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"工资单要素项" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/salschemeitems/fetchdefault")
 	public ResponseEntity<List<SalSchemeItemDTO>> fetchDefault(SalSchemeItemSearchContext context) {
         Page<SalSchemeItem> domains = salschemeitemService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class SalSchemeItemResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SalSchemeItem-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"工资单要素项" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"工资单要素项" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/salschemeitems/searchdefault")
 	public ResponseEntity<Page<SalSchemeItemDTO>> searchDefault(@RequestBody SalSchemeItemSearchContext context) {
         Page<SalSchemeItem> domains = salschemeitemService.searchDefault(context) ;

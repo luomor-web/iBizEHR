@@ -29,7 +29,6 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 /**
  * 实体[应聘者引进条件中间表（停用）]
  */
-@Builder
 @Getter
 @Setter
 @NoArgsConstructor

@@ -138,7 +138,7 @@ public class SALSTDXMGZRATEResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALSTDXMGZRATE-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"项目工资标准(绩效比例)" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"项目工资标准(绩效比例)" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/salstdxmgzrates/fetchdefault")
 	public ResponseEntity<List<SALSTDXMGZRATEDTO>> fetchDefault(SALSTDXMGZRATESearchContext context) {
         Page<SALSTDXMGZRATE> domains = salstdxmgzrateService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class SALSTDXMGZRATEResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALSTDXMGZRATE-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"项目工资标准(绩效比例)" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"项目工资标准(绩效比例)" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/salstdxmgzrates/searchdefault")
 	public ResponseEntity<Page<SALSTDXMGZRATEDTO>> searchDefault(@RequestBody SALSTDXMGZRATESearchContext context) {
         Page<SALSTDXMGZRATE> domains = salstdxmgzrateService.searchDefault(context) ;

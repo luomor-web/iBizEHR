@@ -198,7 +198,7 @@ public class VacLeaveManageResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VacLeaveManage-FormType-all')")
-	@ApiOperation(value = "获取FormType", tags = {"请假管理" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取FormType", tags = {"请假管理" } ,notes = "获取FormType")
     @RequestMapping(method= RequestMethod.GET , value="/vacleavemanages/fetchformtype")
 	public ResponseEntity<List<VacLeaveManageDTO>> fetchFormType(VacLeaveManageSearchContext context) {
         Page<VacLeaveManage> domains = vacleavemanageService.searchFormType(context) ;
@@ -211,7 +211,7 @@ public class VacLeaveManageResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VacLeaveManage-FormType-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"请假管理" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询FormType", tags = {"请假管理" } ,notes = "查询FormType")
     @RequestMapping(method= RequestMethod.POST , value="/vacleavemanages/searchformtype")
 	public ResponseEntity<Page<VacLeaveManageDTO>> searchFormType(@RequestBody VacLeaveManageSearchContext context) {
         Page<VacLeaveManage> domains = vacleavemanageService.searchFormType(context) ;
@@ -219,7 +219,7 @@ public class VacLeaveManageResource {
                 .body(new PageImpl(vacleavemanageMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VacLeaveManage-GR-all')")
-	@ApiOperation(value = "获取个人", tags = {"请假管理" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取个人", tags = {"请假管理" } ,notes = "获取个人")
     @RequestMapping(method= RequestMethod.GET , value="/vacleavemanages/fetchgr")
 	public ResponseEntity<List<VacLeaveManageDTO>> fetchGR(VacLeaveManageSearchContext context) {
         Page<VacLeaveManage> domains = vacleavemanageService.searchGR(context) ;
@@ -232,7 +232,7 @@ public class VacLeaveManageResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VacLeaveManage-GR-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"请假管理" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询个人", tags = {"请假管理" } ,notes = "查询个人")
     @RequestMapping(method= RequestMethod.POST , value="/vacleavemanages/searchgr")
 	public ResponseEntity<Page<VacLeaveManageDTO>> searchGR(@RequestBody VacLeaveManageSearchContext context) {
         Page<VacLeaveManage> domains = vacleavemanageService.searchGR(context) ;
@@ -240,7 +240,7 @@ public class VacLeaveManageResource {
                 .body(new PageImpl(vacleavemanageMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VacLeaveManage-MOBJLSS-all')")
-	@ApiOperation(value = "获取记录所属（移动端）", tags = {"请假管理" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取记录所属（移动端）", tags = {"请假管理" } ,notes = "获取记录所属（移动端）")
     @RequestMapping(method= RequestMethod.GET , value="/vacleavemanages/fetchmobjlss")
 	public ResponseEntity<List<VacLeaveManageDTO>> fetchMOBJLSS(VacLeaveManageSearchContext context) {
         Page<VacLeaveManage> domains = vacleavemanageService.searchMOBJLSS(context) ;
@@ -253,7 +253,7 @@ public class VacLeaveManageResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VacLeaveManage-MOBJLSS-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"请假管理" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询记录所属（移动端）", tags = {"请假管理" } ,notes = "查询记录所属（移动端）")
     @RequestMapping(method= RequestMethod.POST , value="/vacleavemanages/searchmobjlss")
 	public ResponseEntity<Page<VacLeaveManageDTO>> searchMOBJLSS(@RequestBody VacLeaveManageSearchContext context) {
         Page<VacLeaveManage> domains = vacleavemanageService.searchMOBJLSS(context) ;
@@ -261,7 +261,7 @@ public class VacLeaveManageResource {
                 .body(new PageImpl(vacleavemanageMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VacLeaveManage-JLSS-all')")
-	@ApiOperation(value = "获取记录所属和人员ID不符的", tags = {"请假管理" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取记录所属和人员ID不符的", tags = {"请假管理" } ,notes = "获取记录所属和人员ID不符的")
     @RequestMapping(method= RequestMethod.GET , value="/vacleavemanages/fetchjlss")
 	public ResponseEntity<List<VacLeaveManageDTO>> fetchJLSS(VacLeaveManageSearchContext context) {
         Page<VacLeaveManage> domains = vacleavemanageService.searchJLSS(context) ;
@@ -274,7 +274,7 @@ public class VacLeaveManageResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VacLeaveManage-JLSS-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"请假管理" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询记录所属和人员ID不符的", tags = {"请假管理" } ,notes = "查询记录所属和人员ID不符的")
     @RequestMapping(method= RequestMethod.POST , value="/vacleavemanages/searchjlss")
 	public ResponseEntity<Page<VacLeaveManageDTO>> searchJLSS(@RequestBody VacLeaveManageSearchContext context) {
         Page<VacLeaveManage> domains = vacleavemanageService.searchJLSS(context) ;
@@ -282,7 +282,7 @@ public class VacLeaveManageResource {
                 .body(new PageImpl(vacleavemanageMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VacLeaveManage-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"请假管理" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"请假管理" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/vacleavemanages/fetchdefault")
 	public ResponseEntity<List<VacLeaveManageDTO>> fetchDefault(VacLeaveManageSearchContext context) {
         Page<VacLeaveManage> domains = vacleavemanageService.searchDefault(context) ;
@@ -295,7 +295,7 @@ public class VacLeaveManageResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VacLeaveManage-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"请假管理" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"请假管理" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/vacleavemanages/searchdefault")
 	public ResponseEntity<Page<VacLeaveManageDTO>> searchDefault(@RequestBody VacLeaveManageSearchContext context) {
         Page<VacLeaveManage> domains = vacleavemanageService.searchDefault(context) ;
@@ -303,7 +303,7 @@ public class VacLeaveManageResource {
                 .body(new PageImpl(vacleavemanageMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VacLeaveManage-OnlySPTY-all')")
-	@ApiOperation(value = "获取只查看审批中、已同意的请假记录", tags = {"请假管理" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取只查看审批中、已同意的请假记录", tags = {"请假管理" } ,notes = "获取只查看审批中、已同意的请假记录")
     @RequestMapping(method= RequestMethod.GET , value="/vacleavemanages/fetchonlyspty")
 	public ResponseEntity<List<VacLeaveManageDTO>> fetchOnlySPTY(VacLeaveManageSearchContext context) {
         Page<VacLeaveManage> domains = vacleavemanageService.searchOnlySPTY(context) ;
@@ -316,7 +316,7 @@ public class VacLeaveManageResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VacLeaveManage-OnlySPTY-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"请假管理" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询只查看审批中、已同意的请假记录", tags = {"请假管理" } ,notes = "查询只查看审批中、已同意的请假记录")
     @RequestMapping(method= RequestMethod.POST , value="/vacleavemanages/searchonlyspty")
 	public ResponseEntity<Page<VacLeaveManageDTO>> searchOnlySPTY(@RequestBody VacLeaveManageSearchContext context) {
         Page<VacLeaveManage> domains = vacleavemanageService.searchOnlySPTY(context) ;

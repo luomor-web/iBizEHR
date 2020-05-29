@@ -150,7 +150,7 @@ public class VacHolidayRulesResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VacHolidayRules-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"考勤规则" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"考勤规则" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/vacholidayrules/fetchdefault")
 	public ResponseEntity<List<VacHolidayRulesDTO>> fetchDefault(VacHolidayRulesSearchContext context) {
         Page<VacHolidayRules> domains = vacholidayrulesService.searchDefault(context) ;
@@ -163,7 +163,7 @@ public class VacHolidayRulesResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VacHolidayRules-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"考勤规则" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"考勤规则" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/vacholidayrules/searchdefault")
 	public ResponseEntity<Page<VacHolidayRulesDTO>> searchDefault(@RequestBody VacHolidayRulesSearchContext context) {
         Page<VacHolidayRules> domains = vacholidayrulesService.searchDefault(context) ;
@@ -171,7 +171,7 @@ public class VacHolidayRulesResource {
                 .body(new PageImpl(vacholidayrulesMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VacHolidayRules-CurOrmorg-all')")
-	@ApiOperation(value = "获取当前组织下的假期规则", tags = {"考勤规则" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取当前组织下的假期规则", tags = {"考勤规则" } ,notes = "获取当前组织下的假期规则")
     @RequestMapping(method= RequestMethod.GET , value="/vacholidayrules/fetchcurormorg")
 	public ResponseEntity<List<VacHolidayRulesDTO>> fetchCurOrmorg(VacHolidayRulesSearchContext context) {
         Page<VacHolidayRules> domains = vacholidayrulesService.searchCurOrmorg(context) ;
@@ -184,7 +184,7 @@ public class VacHolidayRulesResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VacHolidayRules-CurOrmorg-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"考勤规则" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询当前组织下的假期规则", tags = {"考勤规则" } ,notes = "查询当前组织下的假期规则")
     @RequestMapping(method= RequestMethod.POST , value="/vacholidayrules/searchcurormorg")
 	public ResponseEntity<Page<VacHolidayRulesDTO>> searchCurOrmorg(@RequestBody VacHolidayRulesSearchContext context) {
         Page<VacHolidayRules> domains = vacholidayrulesService.searchCurOrmorg(context) ;

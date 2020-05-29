@@ -138,7 +138,7 @@ public class WFQJResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFQJ-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"请假（WF）" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"请假（WF）" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/wfqjs/fetchdefault")
 	public ResponseEntity<List<WFQJDTO>> fetchDefault(WFQJSearchContext context) {
         Page<WFQJ> domains = wfqjService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class WFQJResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFQJ-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"请假（WF）" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"请假（WF）" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/wfqjs/searchdefault")
 	public ResponseEntity<Page<WFQJDTO>> searchDefault(@RequestBody WFQJSearchContext context) {
         Page<WFQJ> domains = wfqjService.searchDefault(context) ;

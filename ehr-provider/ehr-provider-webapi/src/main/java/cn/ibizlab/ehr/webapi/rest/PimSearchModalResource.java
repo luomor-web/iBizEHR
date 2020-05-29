@@ -138,7 +138,7 @@ public class PimSearchModalResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimSearchModal-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"组合查询记录" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"组合查询记录" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimsearchmodals/fetchdefault")
 	public ResponseEntity<List<PimSearchModalDTO>> fetchDefault(PimSearchModalSearchContext context) {
         Page<PimSearchModal> domains = pimsearchmodalService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class PimSearchModalResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimSearchModal-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"组合查询记录" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"组合查询记录" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pimsearchmodals/searchdefault")
 	public ResponseEntity<Page<PimSearchModalDTO>> searchDefault(@RequestBody PimSearchModalSearchContext context) {
         Page<PimSearchModal> domains = pimsearchmodalService.searchDefault(context) ;

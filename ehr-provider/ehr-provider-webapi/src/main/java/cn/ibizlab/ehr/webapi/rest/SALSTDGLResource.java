@@ -138,7 +138,7 @@ public class SALSTDGLResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALSTDGL-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"工龄工资标准" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"工龄工资标准" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/salstdgls/fetchdefault")
 	public ResponseEntity<List<SALSTDGLDTO>> fetchDefault(SALSTDGLSearchContext context) {
         Page<SALSTDGL> domains = salstdglService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class SALSTDGLResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALSTDGL-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"工龄工资标准" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"工龄工资标准" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/salstdgls/searchdefault")
 	public ResponseEntity<Page<SALSTDGLDTO>> searchDefault(@RequestBody SALSTDGLSearchContext context) {
         Page<SALSTDGL> domains = salstdglService.searchDefault(context) ;

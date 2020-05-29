@@ -29,7 +29,6 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 /**
  * 实体[问题收集]
  */
-@Builder
 @Getter
 @Setter
 @NoArgsConstructor

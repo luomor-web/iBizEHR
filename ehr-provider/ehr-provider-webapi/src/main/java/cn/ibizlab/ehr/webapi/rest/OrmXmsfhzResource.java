@@ -138,7 +138,7 @@ public class OrmXmsfhzResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmXmsfhz-AccOrg-all')")
-	@ApiOperation(value = "获取根据组织定位查询", tags = {"项目人员缺口情况" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取根据组织定位查询", tags = {"项目人员缺口情况" } ,notes = "获取根据组织定位查询")
     @RequestMapping(method= RequestMethod.GET , value="/ormxmsfhzs/fetchaccorg")
 	public ResponseEntity<List<OrmXmsfhzDTO>> fetchAccOrg(OrmXmsfhzSearchContext context) {
         Page<OrmXmsfhz> domains = ormxmsfhzService.searchAccOrg(context) ;
@@ -151,7 +151,7 @@ public class OrmXmsfhzResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmXmsfhz-AccOrg-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"项目人员缺口情况" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询根据组织定位查询", tags = {"项目人员缺口情况" } ,notes = "查询根据组织定位查询")
     @RequestMapping(method= RequestMethod.POST , value="/ormxmsfhzs/searchaccorg")
 	public ResponseEntity<Page<OrmXmsfhzDTO>> searchAccOrg(@RequestBody OrmXmsfhzSearchContext context) {
         Page<OrmXmsfhz> domains = ormxmsfhzService.searchAccOrg(context) ;
@@ -159,7 +159,7 @@ public class OrmXmsfhzResource {
                 .body(new PageImpl(ormxmsfhzMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmXmsfhz-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"项目人员缺口情况" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"项目人员缺口情况" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/ormxmsfhzs/fetchdefault")
 	public ResponseEntity<List<OrmXmsfhzDTO>> fetchDefault(OrmXmsfhzSearchContext context) {
         Page<OrmXmsfhz> domains = ormxmsfhzService.searchDefault(context) ;
@@ -172,7 +172,7 @@ public class OrmXmsfhzResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmXmsfhz-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"项目人员缺口情况" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"项目人员缺口情况" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/ormxmsfhzs/searchdefault")
 	public ResponseEntity<Page<OrmXmsfhzDTO>> searchDefault(@RequestBody OrmXmsfhzSearchContext context) {
         Page<OrmXmsfhz> domains = ormxmsfhzService.searchDefault(context) ;

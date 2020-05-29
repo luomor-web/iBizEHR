@@ -29,7 +29,6 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 /**
  * 实体[统筹休假(暂时停用)]
  */
-@Builder
 @Getter
 @Setter
 @NoArgsConstructor

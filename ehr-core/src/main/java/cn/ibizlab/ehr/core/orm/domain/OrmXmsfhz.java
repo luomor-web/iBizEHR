@@ -29,7 +29,6 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 /**
  * 实体[项目人员缺口情况]
  */
-@Builder
 @Getter
 @Setter
 @NoArgsConstructor

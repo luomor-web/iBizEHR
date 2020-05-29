@@ -162,7 +162,7 @@ public class PimArchiveSloanandreturnResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimArchiveSloanandreturn-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"档案借阅及归还记录" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"档案借阅及归还记录" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimarchivesloanandreturns/fetchdefault")
 	public ResponseEntity<List<PimArchiveSloanandreturnDTO>> fetchDefault(PimArchiveSloanandreturnSearchContext context) {
         Page<PimArchiveSloanandreturn> domains = pimarchivesloanandreturnService.searchDefault(context) ;
@@ -175,7 +175,7 @@ public class PimArchiveSloanandreturnResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimArchiveSloanandreturn-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"档案借阅及归还记录" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"档案借阅及归还记录" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pimarchivesloanandreturns/searchdefault")
 	public ResponseEntity<Page<PimArchiveSloanandreturnDTO>> searchDefault(@RequestBody PimArchiveSloanandreturnSearchContext context) {
         Page<PimArchiveSloanandreturn> domains = pimarchivesloanandreturnService.searchDefault(context) ;

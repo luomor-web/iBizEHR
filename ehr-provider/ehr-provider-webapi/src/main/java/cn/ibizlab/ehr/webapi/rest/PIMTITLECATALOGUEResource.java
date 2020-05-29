@@ -138,7 +138,7 @@ public class PIMTITLECATALOGUEResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMTITLECATALOGUE-IsRootDQ-all')")
-	@ApiOperation(value = "获取查询没有上级职称的", tags = {"职称目录" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取查询没有上级职称的", tags = {"职称目录" } ,notes = "获取查询没有上级职称的")
     @RequestMapping(method= RequestMethod.GET , value="/pimtitlecatalogues/fetchisrootdq")
 	public ResponseEntity<List<PIMTITLECATALOGUEDTO>> fetchIsRootDQ(PIMTITLECATALOGUESearchContext context) {
         Page<PIMTITLECATALOGUE> domains = pimtitlecatalogueService.searchIsRootDQ(context) ;
@@ -151,7 +151,7 @@ public class PIMTITLECATALOGUEResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMTITLECATALOGUE-IsRootDQ-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"职称目录" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询查询没有上级职称的", tags = {"职称目录" } ,notes = "查询查询没有上级职称的")
     @RequestMapping(method= RequestMethod.POST , value="/pimtitlecatalogues/searchisrootdq")
 	public ResponseEntity<Page<PIMTITLECATALOGUEDTO>> searchIsRootDQ(@RequestBody PIMTITLECATALOGUESearchContext context) {
         Page<PIMTITLECATALOGUE> domains = pimtitlecatalogueService.searchIsRootDQ(context) ;
@@ -159,7 +159,7 @@ public class PIMTITLECATALOGUEResource {
                 .body(new PageImpl(pimtitlecatalogueMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMTITLECATALOGUE-NotRootDQ-all')")
-	@ApiOperation(value = "获取不查询没有上级职称的", tags = {"职称目录" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取不查询没有上级职称的", tags = {"职称目录" } ,notes = "获取不查询没有上级职称的")
     @RequestMapping(method= RequestMethod.GET , value="/pimtitlecatalogues/fetchnotrootdq")
 	public ResponseEntity<List<PIMTITLECATALOGUEDTO>> fetchNotRootDQ(PIMTITLECATALOGUESearchContext context) {
         Page<PIMTITLECATALOGUE> domains = pimtitlecatalogueService.searchNotRootDQ(context) ;
@@ -172,7 +172,7 @@ public class PIMTITLECATALOGUEResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMTITLECATALOGUE-NotRootDQ-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"职称目录" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询不查询没有上级职称的", tags = {"职称目录" } ,notes = "查询不查询没有上级职称的")
     @RequestMapping(method= RequestMethod.POST , value="/pimtitlecatalogues/searchnotrootdq")
 	public ResponseEntity<Page<PIMTITLECATALOGUEDTO>> searchNotRootDQ(@RequestBody PIMTITLECATALOGUESearchContext context) {
         Page<PIMTITLECATALOGUE> domains = pimtitlecatalogueService.searchNotRootDQ(context) ;
@@ -180,7 +180,7 @@ public class PIMTITLECATALOGUEResource {
                 .body(new PageImpl(pimtitlecatalogueMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMTITLECATALOGUE-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"职称目录" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"职称目录" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimtitlecatalogues/fetchdefault")
 	public ResponseEntity<List<PIMTITLECATALOGUEDTO>> fetchDefault(PIMTITLECATALOGUESearchContext context) {
         Page<PIMTITLECATALOGUE> domains = pimtitlecatalogueService.searchDefault(context) ;
@@ -193,7 +193,7 @@ public class PIMTITLECATALOGUEResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMTITLECATALOGUE-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"职称目录" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"职称目录" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pimtitlecatalogues/searchdefault")
 	public ResponseEntity<Page<PIMTITLECATALOGUEDTO>> searchDefault(@RequestBody PIMTITLECATALOGUESearchContext context) {
         Page<PIMTITLECATALOGUE> domains = pimtitlecatalogueService.searchDefault(context) ;

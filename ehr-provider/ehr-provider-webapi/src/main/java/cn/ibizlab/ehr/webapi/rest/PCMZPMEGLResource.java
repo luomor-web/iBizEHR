@@ -138,7 +138,7 @@ public class PCMZPMEGLResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMZPMEGL-CurND-all')")
-	@ApiOperation(value = "获取当前年度招聘名额", tags = {"招聘名额管理" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取当前年度招聘名额", tags = {"招聘名额管理" } ,notes = "获取当前年度招聘名额")
     @RequestMapping(method= RequestMethod.GET , value="/pcmzpmegls/fetchcurnd")
 	public ResponseEntity<List<PCMZPMEGLDTO>> fetchCurND(PCMZPMEGLSearchContext context) {
         Page<PCMZPMEGL> domains = pcmzpmeglService.searchCurND(context) ;
@@ -151,7 +151,7 @@ public class PCMZPMEGLResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMZPMEGL-CurND-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"招聘名额管理" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询当前年度招聘名额", tags = {"招聘名额管理" } ,notes = "查询当前年度招聘名额")
     @RequestMapping(method= RequestMethod.POST , value="/pcmzpmegls/searchcurnd")
 	public ResponseEntity<Page<PCMZPMEGLDTO>> searchCurND(@RequestBody PCMZPMEGLSearchContext context) {
         Page<PCMZPMEGL> domains = pcmzpmeglService.searchCurND(context) ;
@@ -159,7 +159,7 @@ public class PCMZPMEGLResource {
                 .body(new PageImpl(pcmzpmeglMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMZPMEGL-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"招聘名额管理" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"招聘名额管理" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pcmzpmegls/fetchdefault")
 	public ResponseEntity<List<PCMZPMEGLDTO>> fetchDefault(PCMZPMEGLSearchContext context) {
         Page<PCMZPMEGL> domains = pcmzpmeglService.searchDefault(context) ;
@@ -172,7 +172,7 @@ public class PCMZPMEGLResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMZPMEGL-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"招聘名额管理" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"招聘名额管理" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pcmzpmegls/searchdefault")
 	public ResponseEntity<Page<PCMZPMEGLDTO>> searchDefault(@RequestBody PCMZPMEGLSearchContext context) {
         Page<PCMZPMEGL> domains = pcmzpmeglService.searchDefault(context) ;

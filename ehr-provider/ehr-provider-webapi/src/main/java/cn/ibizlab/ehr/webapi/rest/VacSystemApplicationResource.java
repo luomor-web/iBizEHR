@@ -138,7 +138,7 @@ public class VacSystemApplicationResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VacSystemApplication-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"制度适用" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"制度适用" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/vacsystemapplications/fetchdefault")
 	public ResponseEntity<List<VacSystemApplicationDTO>> fetchDefault(VacSystemApplicationSearchContext context) {
         Page<VacSystemApplication> domains = vacsystemapplicationService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class VacSystemApplicationResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VacSystemApplication-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"制度适用" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"制度适用" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/vacsystemapplications/searchdefault")
 	public ResponseEntity<Page<VacSystemApplicationDTO>> searchDefault(@RequestBody VacSystemApplicationSearchContext context) {
         Page<VacSystemApplication> domains = vacsystemapplicationService.searchDefault(context) ;

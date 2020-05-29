@@ -354,7 +354,7 @@ public class PIMBYZZJLMXResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMBYZZJLMX-ZZWSHDS-all')")
-	@ApiOperation(value = "获取转正未审核", tags = {"B/Y类员工转正记录引用明细" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取转正未审核", tags = {"B/Y类员工转正记录引用明细" } ,notes = "获取转正未审核")
     @RequestMapping(method= RequestMethod.GET , value="/pimbyzzjlmxes/fetchzzwshds")
 	public ResponseEntity<List<PIMBYZZJLMXDTO>> fetchZZWSHDS(PIMBYZZJLMXSearchContext context) {
         Page<PIMBYZZJLMX> domains = pimbyzzjlmxService.searchZZWSHDS(context) ;
@@ -367,7 +367,7 @@ public class PIMBYZZJLMXResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMBYZZJLMX-ZZWSHDS-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"B/Y类员工转正记录引用明细" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询转正未审核", tags = {"B/Y类员工转正记录引用明细" } ,notes = "查询转正未审核")
     @RequestMapping(method= RequestMethod.POST , value="/pimbyzzjlmxes/searchzzwshds")
 	public ResponseEntity<Page<PIMBYZZJLMXDTO>> searchZZWSHDS(@RequestBody PIMBYZZJLMXSearchContext context) {
         Page<PIMBYZZJLMX> domains = pimbyzzjlmxService.searchZZWSHDS(context) ;
@@ -375,7 +375,7 @@ public class PIMBYZZJLMXResource {
                 .body(new PageImpl(pimbyzzjlmxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMBYZZJLMX-UnApproved-all')")
-	@ApiOperation(value = "获取待公司初审", tags = {"B/Y类员工转正记录引用明细" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取待公司初审", tags = {"B/Y类员工转正记录引用明细" } ,notes = "获取待公司初审")
     @RequestMapping(method= RequestMethod.GET , value="/pimbyzzjlmxes/fetchunapproved")
 	public ResponseEntity<List<PIMBYZZJLMXDTO>> fetchUnApproved(PIMBYZZJLMXSearchContext context) {
         Page<PIMBYZZJLMX> domains = pimbyzzjlmxService.searchUnApproved(context) ;
@@ -388,7 +388,7 @@ public class PIMBYZZJLMXResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMBYZZJLMX-UnApproved-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"B/Y类员工转正记录引用明细" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询待公司初审", tags = {"B/Y类员工转正记录引用明细" } ,notes = "查询待公司初审")
     @RequestMapping(method= RequestMethod.POST , value="/pimbyzzjlmxes/searchunapproved")
 	public ResponseEntity<Page<PIMBYZZJLMXDTO>> searchUnApproved(@RequestBody PIMBYZZJLMXSearchContext context) {
         Page<PIMBYZZJLMX> domains = pimbyzzjlmxService.searchUnApproved(context) ;
@@ -396,7 +396,7 @@ public class PIMBYZZJLMXResource {
                 .body(new PageImpl(pimbyzzjlmxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMBYZZJLMX-DDJZBSH-all')")
-	@ApiOperation(value = "获取待局总部审核", tags = {"B/Y类员工转正记录引用明细" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取待局总部审核", tags = {"B/Y类员工转正记录引用明细" } ,notes = "获取待局总部审核")
     @RequestMapping(method= RequestMethod.GET , value="/pimbyzzjlmxes/fetchddjzbsh")
 	public ResponseEntity<List<PIMBYZZJLMXDTO>> fetchDDJZBSH(PIMBYZZJLMXSearchContext context) {
         Page<PIMBYZZJLMX> domains = pimbyzzjlmxService.searchDDJZBSH(context) ;
@@ -409,7 +409,7 @@ public class PIMBYZZJLMXResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMBYZZJLMX-DDJZBSH-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"B/Y类员工转正记录引用明细" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询待局总部审核", tags = {"B/Y类员工转正记录引用明细" } ,notes = "查询待局总部审核")
     @RequestMapping(method= RequestMethod.POST , value="/pimbyzzjlmxes/searchddjzbsh")
 	public ResponseEntity<Page<PIMBYZZJLMXDTO>> searchDDJZBSH(@RequestBody PIMBYZZJLMXSearchContext context) {
         Page<PIMBYZZJLMX> domains = pimbyzzjlmxService.searchDDJZBSH(context) ;
@@ -417,7 +417,7 @@ public class PIMBYZZJLMXResource {
                 .body(new PageImpl(pimbyzzjlmxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMBYZZJLMX-BYLZZJL-all')")
-	@ApiOperation(value = "获取B/Y类员工转正记录", tags = {"B/Y类员工转正记录引用明细" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取B/Y类员工转正记录", tags = {"B/Y类员工转正记录引用明细" } ,notes = "获取B/Y类员工转正记录")
     @RequestMapping(method= RequestMethod.GET , value="/pimbyzzjlmxes/fetchbylzzjl")
 	public ResponseEntity<List<PIMBYZZJLMXDTO>> fetchBYLZZJL(PIMBYZZJLMXSearchContext context) {
         Page<PIMBYZZJLMX> domains = pimbyzzjlmxService.searchBYLZZJL(context) ;
@@ -430,7 +430,7 @@ public class PIMBYZZJLMXResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMBYZZJLMX-BYLZZJL-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"B/Y类员工转正记录引用明细" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询B/Y类员工转正记录", tags = {"B/Y类员工转正记录引用明细" } ,notes = "查询B/Y类员工转正记录")
     @RequestMapping(method= RequestMethod.POST , value="/pimbyzzjlmxes/searchbylzzjl")
 	public ResponseEntity<Page<PIMBYZZJLMXDTO>> searchBYLZZJL(@RequestBody PIMBYZZJLMXSearchContext context) {
         Page<PIMBYZZJLMX> domains = pimbyzzjlmxService.searchBYLZZJL(context) ;
@@ -438,7 +438,7 @@ public class PIMBYZZJLMXResource {
                 .body(new PageImpl(pimbyzzjlmxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMBYZZJLMX-DGSDSZSH-all')")
-	@ApiOperation(value = "获取待公司董事长审批", tags = {"B/Y类员工转正记录引用明细" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取待公司董事长审批", tags = {"B/Y类员工转正记录引用明细" } ,notes = "获取待公司董事长审批")
     @RequestMapping(method= RequestMethod.GET , value="/pimbyzzjlmxes/fetchdgsdszsh")
 	public ResponseEntity<List<PIMBYZZJLMXDTO>> fetchDGSDSZSH(PIMBYZZJLMXSearchContext context) {
         Page<PIMBYZZJLMX> domains = pimbyzzjlmxService.searchDGSDSZSH(context) ;
@@ -451,7 +451,7 @@ public class PIMBYZZJLMXResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMBYZZJLMX-DGSDSZSH-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"B/Y类员工转正记录引用明细" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询待公司董事长审批", tags = {"B/Y类员工转正记录引用明细" } ,notes = "查询待公司董事长审批")
     @RequestMapping(method= RequestMethod.POST , value="/pimbyzzjlmxes/searchdgsdszsh")
 	public ResponseEntity<Page<PIMBYZZJLMXDTO>> searchDGSDSZSH(@RequestBody PIMBYZZJLMXSearchContext context) {
         Page<PIMBYZZJLMX> domains = pimbyzzjlmxService.searchDGSDSZSH(context) ;
@@ -459,7 +459,7 @@ public class PIMBYZZJLMXResource {
                 .body(new PageImpl(pimbyzzjlmxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMBYZZJLMX-HTRY-all')")
-	@ApiOperation(value = "获取回退人员", tags = {"B/Y类员工转正记录引用明细" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取回退人员", tags = {"B/Y类员工转正记录引用明细" } ,notes = "获取回退人员")
     @RequestMapping(method= RequestMethod.GET , value="/pimbyzzjlmxes/fetchhtry")
 	public ResponseEntity<List<PIMBYZZJLMXDTO>> fetchHTRY(PIMBYZZJLMXSearchContext context) {
         Page<PIMBYZZJLMX> domains = pimbyzzjlmxService.searchHTRY(context) ;
@@ -472,7 +472,7 @@ public class PIMBYZZJLMXResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMBYZZJLMX-HTRY-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"B/Y类员工转正记录引用明细" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询回退人员", tags = {"B/Y类员工转正记录引用明细" } ,notes = "查询回退人员")
     @RequestMapping(method= RequestMethod.POST , value="/pimbyzzjlmxes/searchhtry")
 	public ResponseEntity<Page<PIMBYZZJLMXDTO>> searchHTRY(@RequestBody PIMBYZZJLMXSearchContext context) {
         Page<PIMBYZZJLMX> domains = pimbyzzjlmxService.searchHTRY(context) ;
@@ -480,7 +480,7 @@ public class PIMBYZZJLMXResource {
                 .body(new PageImpl(pimbyzzjlmxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMBYZZJLMX-DJZBSP-all')")
-	@ApiOperation(value = "获取待局总部审批", tags = {"B/Y类员工转正记录引用明细" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取待局总部审批", tags = {"B/Y类员工转正记录引用明细" } ,notes = "获取待局总部审批")
     @RequestMapping(method= RequestMethod.GET , value="/pimbyzzjlmxes/fetchdjzbsp")
 	public ResponseEntity<List<PIMBYZZJLMXDTO>> fetchDJZBSP(PIMBYZZJLMXSearchContext context) {
         Page<PIMBYZZJLMX> domains = pimbyzzjlmxService.searchDJZBSP(context) ;
@@ -493,7 +493,7 @@ public class PIMBYZZJLMXResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMBYZZJLMX-DJZBSP-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"B/Y类员工转正记录引用明细" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询待局总部审批", tags = {"B/Y类员工转正记录引用明细" } ,notes = "查询待局总部审批")
     @RequestMapping(method= RequestMethod.POST , value="/pimbyzzjlmxes/searchdjzbsp")
 	public ResponseEntity<Page<PIMBYZZJLMXDTO>> searchDJZBSP(@RequestBody PIMBYZZJLMXSearchContext context) {
         Page<PIMBYZZJLMX> domains = pimbyzzjlmxService.searchDJZBSP(context) ;
@@ -501,7 +501,7 @@ public class PIMBYZZJLMXResource {
                 .body(new PageImpl(pimbyzzjlmxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMBYZZJLMX-DSB-all')")
-	@ApiOperation(value = "获取待上报", tags = {"B/Y类员工转正记录引用明细" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取待上报", tags = {"B/Y类员工转正记录引用明细" } ,notes = "获取待上报")
     @RequestMapping(method= RequestMethod.GET , value="/pimbyzzjlmxes/fetchdsb")
 	public ResponseEntity<List<PIMBYZZJLMXDTO>> fetchDSB(PIMBYZZJLMXSearchContext context) {
         Page<PIMBYZZJLMX> domains = pimbyzzjlmxService.searchDSB(context) ;
@@ -514,7 +514,7 @@ public class PIMBYZZJLMXResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMBYZZJLMX-DSB-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"B/Y类员工转正记录引用明细" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询待上报", tags = {"B/Y类员工转正记录引用明细" } ,notes = "查询待上报")
     @RequestMapping(method= RequestMethod.POST , value="/pimbyzzjlmxes/searchdsb")
 	public ResponseEntity<Page<PIMBYZZJLMXDTO>> searchDSB(@RequestBody PIMBYZZJLMXSearchContext context) {
         Page<PIMBYZZJLMX> domains = pimbyzzjlmxService.searchDSB(context) ;
@@ -522,7 +522,7 @@ public class PIMBYZZJLMXResource {
                 .body(new PageImpl(pimbyzzjlmxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMBYZZJLMX-FinishYGBH-all')")
-	@ApiOperation(value = "获取已变更员工编号名单", tags = {"B/Y类员工转正记录引用明细" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取已变更员工编号名单", tags = {"B/Y类员工转正记录引用明细" } ,notes = "获取已变更员工编号名单")
     @RequestMapping(method= RequestMethod.GET , value="/pimbyzzjlmxes/fetchfinishygbh")
 	public ResponseEntity<List<PIMBYZZJLMXDTO>> fetchFinishYGBH(PIMBYZZJLMXSearchContext context) {
         Page<PIMBYZZJLMX> domains = pimbyzzjlmxService.searchFinishYGBH(context) ;
@@ -535,7 +535,7 @@ public class PIMBYZZJLMXResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMBYZZJLMX-FinishYGBH-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"B/Y类员工转正记录引用明细" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询已变更员工编号名单", tags = {"B/Y类员工转正记录引用明细" } ,notes = "查询已变更员工编号名单")
     @RequestMapping(method= RequestMethod.POST , value="/pimbyzzjlmxes/searchfinishygbh")
 	public ResponseEntity<Page<PIMBYZZJLMXDTO>> searchFinishYGBH(@RequestBody PIMBYZZJLMXSearchContext context) {
         Page<PIMBYZZJLMX> domains = pimbyzzjlmxService.searchFinishYGBH(context) ;
@@ -543,7 +543,7 @@ public class PIMBYZZJLMXResource {
                 .body(new PageImpl(pimbyzzjlmxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMBYZZJLMX-DJZBSH-all')")
-	@ApiOperation(value = "获取待局总部初审", tags = {"B/Y类员工转正记录引用明细" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取待局总部初审", tags = {"B/Y类员工转正记录引用明细" } ,notes = "获取待局总部初审")
     @RequestMapping(method= RequestMethod.GET , value="/pimbyzzjlmxes/fetchdjzbsh")
 	public ResponseEntity<List<PIMBYZZJLMXDTO>> fetchDJZBSH(PIMBYZZJLMXSearchContext context) {
         Page<PIMBYZZJLMX> domains = pimbyzzjlmxService.searchDJZBSH(context) ;
@@ -556,7 +556,7 @@ public class PIMBYZZJLMXResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMBYZZJLMX-DJZBSH-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"B/Y类员工转正记录引用明细" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询待局总部初审", tags = {"B/Y类员工转正记录引用明细" } ,notes = "查询待局总部初审")
     @RequestMapping(method= RequestMethod.POST , value="/pimbyzzjlmxes/searchdjzbsh")
 	public ResponseEntity<Page<PIMBYZZJLMXDTO>> searchDJZBSH(@RequestBody PIMBYZZJLMXSearchContext context) {
         Page<PIMBYZZJLMX> domains = pimbyzzjlmxService.searchDJZBSH(context) ;
@@ -564,7 +564,7 @@ public class PIMBYZZJLMXResource {
                 .body(new PageImpl(pimbyzzjlmxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMBYZZJLMX-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"B/Y类员工转正记录引用明细" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"B/Y类员工转正记录引用明细" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimbyzzjlmxes/fetchdefault")
 	public ResponseEntity<List<PIMBYZZJLMXDTO>> fetchDefault(PIMBYZZJLMXSearchContext context) {
         Page<PIMBYZZJLMX> domains = pimbyzzjlmxService.searchDefault(context) ;
@@ -577,7 +577,7 @@ public class PIMBYZZJLMXResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMBYZZJLMX-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"B/Y类员工转正记录引用明细" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"B/Y类员工转正记录引用明细" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pimbyzzjlmxes/searchdefault")
 	public ResponseEntity<Page<PIMBYZZJLMXDTO>> searchDefault(@RequestBody PIMBYZZJLMXSearchContext context) {
         Page<PIMBYZZJLMX> domains = pimbyzzjlmxService.searchDefault(context) ;

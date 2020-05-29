@@ -138,7 +138,7 @@ public class AttEndenceCalendarResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-AttEndenceCalendar-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"考勤日历" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"考勤日历" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/attendencecalendars/fetchdefault")
 	public ResponseEntity<List<AttEndenceCalendarDTO>> fetchDefault(AttEndenceCalendarSearchContext context) {
         Page<AttEndenceCalendar> domains = attendencecalendarService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class AttEndenceCalendarResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-AttEndenceCalendar-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"考勤日历" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"考勤日历" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/attendencecalendars/searchdefault")
 	public ResponseEntity<Page<AttEndenceCalendarDTO>> searchDefault(@RequestBody AttEndenceCalendarSearchContext context) {
         Page<AttEndenceCalendar> domains = attendencecalendarService.searchDefault(context) ;

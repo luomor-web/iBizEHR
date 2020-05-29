@@ -138,7 +138,7 @@ public class PimFilebatvhuploadResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimFilebatvhupload-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"附件批量上传" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"附件批量上传" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimfilebatvhuploads/fetchdefault")
 	public ResponseEntity<List<PimFilebatvhuploadDTO>> fetchDefault(PimFilebatvhuploadSearchContext context) {
         Page<PimFilebatvhupload> domains = pimfilebatvhuploadService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class PimFilebatvhuploadResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimFilebatvhupload-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"附件批量上传" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"附件批量上传" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pimfilebatvhuploads/searchdefault")
 	public ResponseEntity<Page<PimFilebatvhuploadDTO>> searchDefault(@RequestBody PimFilebatvhuploadSearchContext context) {
         Page<PimFilebatvhupload> domains = pimfilebatvhuploadService.searchDefault(context) ;

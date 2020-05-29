@@ -138,7 +138,7 @@ public class AttendRecordDetailResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-AttendRecordDetail-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"考勤记录明细" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"考勤记录明细" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/attendrecorddetails/fetchdefault")
 	public ResponseEntity<List<AttendRecordDetailDTO>> fetchDefault(AttendRecordDetailSearchContext context) {
         Page<AttendRecordDetail> domains = attendrecorddetailService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class AttendRecordDetailResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-AttendRecordDetail-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"考勤记录明细" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"考勤记录明细" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/attendrecorddetails/searchdefault")
 	public ResponseEntity<Page<AttendRecordDetailDTO>> searchDefault(@RequestBody AttendRecordDetailSearchContext context) {
         Page<AttendRecordDetail> domains = attendrecorddetailService.searchDefault(context) ;

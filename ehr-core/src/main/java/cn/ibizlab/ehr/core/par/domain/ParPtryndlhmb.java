@@ -29,7 +29,6 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 /**
  * 实体[年度量化目标（部门副职及以下人员）]
  */
-@Builder
 @Getter
 @Setter
 @NoArgsConstructor

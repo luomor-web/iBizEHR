@@ -354,7 +354,7 @@ public class PcmBdsqdmxResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmBdsqdmx-JPSQMX-all')")
-	@ApiOperation(value = "获取解聘申请（未审核）", tags = {"职级变动明细" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取解聘申请（未审核）", tags = {"职级变动明细" } ,notes = "获取解聘申请（未审核）")
     @RequestMapping(method= RequestMethod.GET , value="/pcmbdsqdmxes/fetchjpsqmx")
 	public ResponseEntity<List<PcmBdsqdmxDTO>> fetchJPSQMX(PcmBdsqdmxSearchContext context) {
         Page<PcmBdsqdmx> domains = pcmbdsqdmxService.searchJPSQMX(context) ;
@@ -367,7 +367,7 @@ public class PcmBdsqdmxResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmBdsqdmx-JPSQMX-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"职级变动明细" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询解聘申请（未审核）", tags = {"职级变动明细" } ,notes = "查询解聘申请（未审核）")
     @RequestMapping(method= RequestMethod.POST , value="/pcmbdsqdmxes/searchjpsqmx")
 	public ResponseEntity<Page<PcmBdsqdmxDTO>> searchJPSQMX(@RequestBody PcmBdsqdmxSearchContext context) {
         Page<PcmBdsqdmx> domains = pcmbdsqdmxService.searchJPSQMX(context) ;
@@ -375,7 +375,7 @@ public class PcmBdsqdmxResource {
                 .body(new PageImpl(pcmbdsqdmxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmBdsqdmx-NTSQMX-all')")
-	@ApiOperation(value = "获取内退申请明细（未审核）", tags = {"职级变动明细" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取内退申请明细（未审核）", tags = {"职级变动明细" } ,notes = "获取内退申请明细（未审核）")
     @RequestMapping(method= RequestMethod.GET , value="/pcmbdsqdmxes/fetchntsqmx")
 	public ResponseEntity<List<PcmBdsqdmxDTO>> fetchNTSQMX(PcmBdsqdmxSearchContext context) {
         Page<PcmBdsqdmx> domains = pcmbdsqdmxService.searchNTSQMX(context) ;
@@ -388,7 +388,7 @@ public class PcmBdsqdmxResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmBdsqdmx-NTSQMX-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"职级变动明细" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询内退申请明细（未审核）", tags = {"职级变动明细" } ,notes = "查询内退申请明细（未审核）")
     @RequestMapping(method= RequestMethod.POST , value="/pcmbdsqdmxes/searchntsqmx")
 	public ResponseEntity<Page<PcmBdsqdmxDTO>> searchNTSQMX(@RequestBody PcmBdsqdmxSearchContext context) {
         Page<PcmBdsqdmx> domains = pcmbdsqdmxService.searchNTSQMX(context) ;
@@ -396,7 +396,7 @@ public class PcmBdsqdmxResource {
                 .body(new PageImpl(pcmbdsqdmxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmBdsqdmx-NTSQMXGR-all')")
-	@ApiOperation(value = "获取内退申请明细（个人）", tags = {"职级变动明细" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取内退申请明细（个人）", tags = {"职级变动明细" } ,notes = "获取内退申请明细（个人）")
     @RequestMapping(method= RequestMethod.GET , value="/pcmbdsqdmxes/fetchntsqmxgr")
 	public ResponseEntity<List<PcmBdsqdmxDTO>> fetchNTSQMXGR(PcmBdsqdmxSearchContext context) {
         Page<PcmBdsqdmx> domains = pcmbdsqdmxService.searchNTSQMXGR(context) ;
@@ -409,7 +409,7 @@ public class PcmBdsqdmxResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmBdsqdmx-NTSQMXGR-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"职级变动明细" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询内退申请明细（个人）", tags = {"职级变动明细" } ,notes = "查询内退申请明细（个人）")
     @RequestMapping(method= RequestMethod.POST , value="/pcmbdsqdmxes/searchntsqmxgr")
 	public ResponseEntity<Page<PcmBdsqdmxDTO>> searchNTSQMXGR(@RequestBody PcmBdsqdmxSearchContext context) {
         Page<PcmBdsqdmx> domains = pcmbdsqdmxService.searchNTSQMXGR(context) ;
@@ -417,7 +417,7 @@ public class PcmBdsqdmxResource {
                 .body(new PageImpl(pcmbdsqdmxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmBdsqdmx-TXSQMX-all')")
-	@ApiOperation(value = "获取退休申请明细（未审核）", tags = {"职级变动明细" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取退休申请明细（未审核）", tags = {"职级变动明细" } ,notes = "获取退休申请明细（未审核）")
     @RequestMapping(method= RequestMethod.GET , value="/pcmbdsqdmxes/fetchtxsqmx")
 	public ResponseEntity<List<PcmBdsqdmxDTO>> fetchTXSQMX(PcmBdsqdmxSearchContext context) {
         Page<PcmBdsqdmx> domains = pcmbdsqdmxService.searchTXSQMX(context) ;
@@ -430,7 +430,7 @@ public class PcmBdsqdmxResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmBdsqdmx-TXSQMX-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"职级变动明细" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询退休申请明细（未审核）", tags = {"职级变动明细" } ,notes = "查询退休申请明细（未审核）")
     @RequestMapping(method= RequestMethod.POST , value="/pcmbdsqdmxes/searchtxsqmx")
 	public ResponseEntity<Page<PcmBdsqdmxDTO>> searchTXSQMX(@RequestBody PcmBdsqdmxSearchContext context) {
         Page<PcmBdsqdmx> domains = pcmbdsqdmxService.searchTXSQMX(context) ;
@@ -438,7 +438,7 @@ public class PcmBdsqdmxResource {
                 .body(new PageImpl(pcmbdsqdmxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmBdsqdmx-GZSQMX-all')")
-	@ApiOperation(value = "获取挂职申请明细（未审核）", tags = {"职级变动明细" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取挂职申请明细（未审核）", tags = {"职级变动明细" } ,notes = "获取挂职申请明细（未审核）")
     @RequestMapping(method= RequestMethod.GET , value="/pcmbdsqdmxes/fetchgzsqmx")
 	public ResponseEntity<List<PcmBdsqdmxDTO>> fetchGZSQMX(PcmBdsqdmxSearchContext context) {
         Page<PcmBdsqdmx> domains = pcmbdsqdmxService.searchGZSQMX(context) ;
@@ -451,7 +451,7 @@ public class PcmBdsqdmxResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmBdsqdmx-GZSQMX-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"职级变动明细" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询挂职申请明细（未审核）", tags = {"职级变动明细" } ,notes = "查询挂职申请明细（未审核）")
     @RequestMapping(method= RequestMethod.POST , value="/pcmbdsqdmxes/searchgzsqmx")
 	public ResponseEntity<Page<PcmBdsqdmxDTO>> searchGZSQMX(@RequestBody PcmBdsqdmxSearchContext context) {
         Page<PcmBdsqdmx> domains = pcmbdsqdmxService.searchGZSQMX(context) ;
@@ -459,7 +459,7 @@ public class PcmBdsqdmxResource {
                 .body(new PageImpl(pcmbdsqdmxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmBdsqdmx-ZJBDSQMX-all')")
-	@ApiOperation(value = "获取职级变动申请明细", tags = {"职级变动明细" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取职级变动申请明细", tags = {"职级变动明细" } ,notes = "获取职级变动申请明细")
     @RequestMapping(method= RequestMethod.GET , value="/pcmbdsqdmxes/fetchzjbdsqmx")
 	public ResponseEntity<List<PcmBdsqdmxDTO>> fetchZJBDSQMX(PcmBdsqdmxSearchContext context) {
         Page<PcmBdsqdmx> domains = pcmbdsqdmxService.searchZJBDSQMX(context) ;
@@ -472,7 +472,7 @@ public class PcmBdsqdmxResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmBdsqdmx-ZJBDSQMX-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"职级变动明细" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询职级变动申请明细", tags = {"职级变动明细" } ,notes = "查询职级变动申请明细")
     @RequestMapping(method= RequestMethod.POST , value="/pcmbdsqdmxes/searchzjbdsqmx")
 	public ResponseEntity<Page<PcmBdsqdmxDTO>> searchZJBDSQMX(@RequestBody PcmBdsqdmxSearchContext context) {
         Page<PcmBdsqdmx> domains = pcmbdsqdmxService.searchZJBDSQMX(context) ;
@@ -480,7 +480,7 @@ public class PcmBdsqdmxResource {
                 .body(new PageImpl(pcmbdsqdmxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmBdsqdmx-DGSQMX-all')")
-	@ApiOperation(value = "获取待岗申请明细", tags = {"职级变动明细" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取待岗申请明细", tags = {"职级变动明细" } ,notes = "获取待岗申请明细")
     @RequestMapping(method= RequestMethod.GET , value="/pcmbdsqdmxes/fetchdgsqmx")
 	public ResponseEntity<List<PcmBdsqdmxDTO>> fetchDGSQMX(PcmBdsqdmxSearchContext context) {
         Page<PcmBdsqdmx> domains = pcmbdsqdmxService.searchDGSQMX(context) ;
@@ -493,7 +493,7 @@ public class PcmBdsqdmxResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmBdsqdmx-DGSQMX-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"职级变动明细" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询待岗申请明细", tags = {"职级变动明细" } ,notes = "查询待岗申请明细")
     @RequestMapping(method= RequestMethod.POST , value="/pcmbdsqdmxes/searchdgsqmx")
 	public ResponseEntity<Page<PcmBdsqdmxDTO>> searchDGSQMX(@RequestBody PcmBdsqdmxSearchContext context) {
         Page<PcmBdsqdmx> domains = pcmbdsqdmxService.searchDGSQMX(context) ;
@@ -501,7 +501,7 @@ public class PcmBdsqdmxResource {
                 .body(new PageImpl(pcmbdsqdmxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmBdsqdmx-CQBXSQMXDS-all')")
-	@ApiOperation(value = "获取长期病休申请明细", tags = {"职级变动明细" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取长期病休申请明细", tags = {"职级变动明细" } ,notes = "获取长期病休申请明细")
     @RequestMapping(method= RequestMethod.GET , value="/pcmbdsqdmxes/fetchcqbxsqmxds")
 	public ResponseEntity<List<PcmBdsqdmxDTO>> fetchCQBXSQMXDS(PcmBdsqdmxSearchContext context) {
         Page<PcmBdsqdmx> domains = pcmbdsqdmxService.searchCQBXSQMXDS(context) ;
@@ -514,7 +514,7 @@ public class PcmBdsqdmxResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmBdsqdmx-CQBXSQMXDS-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"职级变动明细" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询长期病休申请明细", tags = {"职级变动明细" } ,notes = "查询长期病休申请明细")
     @RequestMapping(method= RequestMethod.POST , value="/pcmbdsqdmxes/searchcqbxsqmxds")
 	public ResponseEntity<Page<PcmBdsqdmxDTO>> searchCQBXSQMXDS(@RequestBody PcmBdsqdmxSearchContext context) {
         Page<PcmBdsqdmx> domains = pcmbdsqdmxService.searchCQBXSQMXDS(context) ;
@@ -522,7 +522,7 @@ public class PcmBdsqdmxResource {
                 .body(new PageImpl(pcmbdsqdmxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmBdsqdmx-LZSQMX-all')")
-	@ApiOperation(value = "获取离职申请明细", tags = {"职级变动明细" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取离职申请明细", tags = {"职级变动明细" } ,notes = "获取离职申请明细")
     @RequestMapping(method= RequestMethod.GET , value="/pcmbdsqdmxes/fetchlzsqmx")
 	public ResponseEntity<List<PcmBdsqdmxDTO>> fetchLZSQMX(PcmBdsqdmxSearchContext context) {
         Page<PcmBdsqdmx> domains = pcmbdsqdmxService.searchLZSQMX(context) ;
@@ -535,7 +535,7 @@ public class PcmBdsqdmxResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmBdsqdmx-LZSQMX-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"职级变动明细" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询离职申请明细", tags = {"职级变动明细" } ,notes = "查询离职申请明细")
     @RequestMapping(method= RequestMethod.POST , value="/pcmbdsqdmxes/searchlzsqmx")
 	public ResponseEntity<Page<PcmBdsqdmxDTO>> searchLZSQMX(@RequestBody PcmBdsqdmxSearchContext context) {
         Page<PcmBdsqdmx> domains = pcmbdsqdmxService.searchLZSQMX(context) ;
@@ -543,7 +543,7 @@ public class PcmBdsqdmxResource {
                 .body(new PageImpl(pcmbdsqdmxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmBdsqdmx-LZSQMXGR-all')")
-	@ApiOperation(value = "获取离职申请明细（个人）", tags = {"职级变动明细" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取离职申请明细（个人）", tags = {"职级变动明细" } ,notes = "获取离职申请明细（个人）")
     @RequestMapping(method= RequestMethod.GET , value="/pcmbdsqdmxes/fetchlzsqmxgr")
 	public ResponseEntity<List<PcmBdsqdmxDTO>> fetchLZSQMXGR(PcmBdsqdmxSearchContext context) {
         Page<PcmBdsqdmx> domains = pcmbdsqdmxService.searchLZSQMXGR(context) ;
@@ -556,7 +556,7 @@ public class PcmBdsqdmxResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmBdsqdmx-LZSQMXGR-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"职级变动明细" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询离职申请明细（个人）", tags = {"职级变动明细" } ,notes = "查询离职申请明细（个人）")
     @RequestMapping(method= RequestMethod.POST , value="/pcmbdsqdmxes/searchlzsqmxgr")
 	public ResponseEntity<Page<PcmBdsqdmxDTO>> searchLZSQMXGR(@RequestBody PcmBdsqdmxSearchContext context) {
         Page<PcmBdsqdmx> domains = pcmbdsqdmxService.searchLZSQMXGR(context) ;
@@ -564,7 +564,7 @@ public class PcmBdsqdmxResource {
                 .body(new PageImpl(pcmbdsqdmxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmBdsqdmx-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"职级变动明细" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"职级变动明细" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pcmbdsqdmxes/fetchdefault")
 	public ResponseEntity<List<PcmBdsqdmxDTO>> fetchDefault(PcmBdsqdmxSearchContext context) {
         Page<PcmBdsqdmx> domains = pcmbdsqdmxService.searchDefault(context) ;
@@ -577,7 +577,7 @@ public class PcmBdsqdmxResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmBdsqdmx-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"职级变动明细" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"职级变动明细" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pcmbdsqdmxes/searchdefault")
 	public ResponseEntity<Page<PcmBdsqdmxDTO>> searchDefault(@RequestBody PcmBdsqdmxSearchContext context) {
         Page<PcmBdsqdmx> domains = pcmbdsqdmxService.searchDefault(context) ;

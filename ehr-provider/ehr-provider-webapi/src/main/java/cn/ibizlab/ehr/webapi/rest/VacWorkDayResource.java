@@ -138,7 +138,7 @@ public class VacWorkDayResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VacWorkDay-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"工作日管理（停用）" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"工作日管理（停用）" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/vacworkdays/fetchdefault")
 	public ResponseEntity<List<VacWorkDayDTO>> fetchDefault(VacWorkDaySearchContext context) {
         Page<VacWorkDay> domains = vacworkdayService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class VacWorkDayResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VacWorkDay-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"工作日管理（停用）" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"工作日管理（停用）" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/vacworkdays/searchdefault")
 	public ResponseEntity<Page<VacWorkDayDTO>> searchDefault(@RequestBody VacWorkDaySearchContext context) {
         Page<VacWorkDay> domains = vacworkdayService.searchDefault(context) ;

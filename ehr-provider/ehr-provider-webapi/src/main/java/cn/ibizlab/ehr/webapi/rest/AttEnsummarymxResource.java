@@ -138,7 +138,7 @@ public class AttEnsummarymxResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-AttEnsummarymx-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"考勤汇总明细（停用）" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"考勤汇总明细（停用）" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/attensummarymxes/fetchdefault")
 	public ResponseEntity<List<AttEnsummarymxDTO>> fetchDefault(AttEnsummarymxSearchContext context) {
         Page<AttEnsummarymx> domains = attensummarymxService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class AttEnsummarymxResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-AttEnsummarymx-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"考勤汇总明细（停用）" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"考勤汇总明细（停用）" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/attensummarymxes/searchdefault")
 	public ResponseEntity<Page<AttEnsummarymxDTO>> searchDefault(@RequestBody AttEnsummarymxSearchContext context) {
         Page<AttEnsummarymx> domains = attensummarymxService.searchDefault(context) ;

@@ -138,7 +138,7 @@ public class ParTzggResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ParTzgg-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"通知发布" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"通知发布" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/partzggs/fetchdefault")
 	public ResponseEntity<List<ParTzggDTO>> fetchDefault(ParTzggSearchContext context) {
         Page<ParTzgg> domains = partzggService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class ParTzggResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ParTzgg-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"通知发布" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"通知发布" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/partzggs/searchdefault")
 	public ResponseEntity<Page<ParTzggDTO>> searchDefault(@RequestBody ParTzggSearchContext context) {
         Page<ParTzgg> domains = partzggService.searchDefault(context) ;

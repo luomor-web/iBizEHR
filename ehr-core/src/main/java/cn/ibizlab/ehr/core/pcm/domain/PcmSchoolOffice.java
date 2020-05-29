@@ -29,7 +29,6 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 /**
  * 实体[在校职务]
  */
-@Builder
 @Getter
 @Setter
 @NoArgsConstructor

@@ -150,7 +150,7 @@ public class WZD0001Resource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WZD0001-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"向导实体1" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"向导实体1" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/wzd0001s/fetchdefault")
 	public ResponseEntity<List<WZD0001DTO>> fetchDefault(WZD0001SearchContext context) {
         Page<WZD0001> domains = wzd0001Service.searchDefault(context) ;
@@ -163,7 +163,7 @@ public class WZD0001Resource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WZD0001-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"向导实体1" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"向导实体1" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/wzd0001s/searchdefault")
 	public ResponseEntity<Page<WZD0001DTO>> searchDefault(@RequestBody WZD0001SearchContext context) {
         Page<WZD0001> domains = wzd0001Service.searchDefault(context) ;

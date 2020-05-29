@@ -29,7 +29,6 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 /**
  * 实体[制度历史]
  */
-@Builder
 @Getter
 @Setter
 @NoArgsConstructor

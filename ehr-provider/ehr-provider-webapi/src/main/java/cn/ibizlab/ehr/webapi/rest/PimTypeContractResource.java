@@ -138,7 +138,7 @@ public class PimTypeContractResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimTypeContract-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"合同类型" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"合同类型" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimtypecontracts/fetchdefault")
 	public ResponseEntity<List<PimTypeContractDTO>> fetchDefault(PimTypeContractSearchContext context) {
         Page<PimTypeContract> domains = pimtypecontractService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class PimTypeContractResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimTypeContract-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"合同类型" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"合同类型" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pimtypecontracts/searchdefault")
 	public ResponseEntity<Page<PimTypeContractDTO>> searchDefault(@RequestBody PimTypeContractSearchContext context) {
         Page<PimTypeContract> domains = pimtypecontractService.searchDefault(context) ;

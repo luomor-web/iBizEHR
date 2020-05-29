@@ -138,7 +138,7 @@ public class AttEnmembwesResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-AttEnmembwes-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"考勤员(停用)" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"考勤员(停用)" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/attenmembwes/fetchdefault")
 	public ResponseEntity<List<AttEnmembwesDTO>> fetchDefault(AttEnmembwesSearchContext context) {
         Page<AttEnmembwes> domains = attenmembwesService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class AttEnmembwesResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-AttEnmembwes-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"考勤员(停用)" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"考勤员(停用)" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/attenmembwes/searchdefault")
 	public ResponseEntity<Page<AttEnmembwesDTO>> searchDefault(@RequestBody AttEnmembwesSearchContext context) {
         Page<AttEnmembwes> domains = attenmembwesService.searchDefault(context) ;

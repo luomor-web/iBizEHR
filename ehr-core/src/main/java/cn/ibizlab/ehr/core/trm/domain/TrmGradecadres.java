@@ -29,7 +29,6 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 /**
  * 实体[优秀青年干部推荐]
  */
-@Builder
 @Getter
 @Setter
 @NoArgsConstructor

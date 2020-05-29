@@ -29,7 +29,6 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 /**
  * 实体[法人主体]
  */
-@Builder
 @Getter
 @Setter
 @NoArgsConstructor

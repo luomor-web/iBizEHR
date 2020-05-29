@@ -138,7 +138,7 @@ public class SALPERSONSTDDETAILResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALPERSONSTDDETAIL-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"员工薪酬标准明细" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"员工薪酬标准明细" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/salpersonstddetails/fetchdefault")
 	public ResponseEntity<List<SALPERSONSTDDETAILDTO>> fetchDefault(SALPERSONSTDDETAILSearchContext context) {
         Page<SALPERSONSTDDETAIL> domains = salpersonstddetailService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class SALPERSONSTDDETAILResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALPERSONSTDDETAIL-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"员工薪酬标准明细" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"员工薪酬标准明细" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/salpersonstddetails/searchdefault")
 	public ResponseEntity<Page<SALPERSONSTDDETAILDTO>> searchDefault(@RequestBody SALPERSONSTDDETAILSearchContext context) {
         Page<SALPERSONSTDDETAIL> domains = salpersonstddetailService.searchDefault(context) ;

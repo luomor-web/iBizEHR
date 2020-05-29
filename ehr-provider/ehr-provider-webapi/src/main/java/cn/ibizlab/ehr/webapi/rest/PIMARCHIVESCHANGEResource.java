@@ -150,7 +150,7 @@ public class PIMARCHIVESCHANGEResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMARCHIVESCHANGE-DADCJL-all')")
-	@ApiOperation(value = "获取档案调出记录", tags = {"档案归档地变更记录" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取档案调出记录", tags = {"档案归档地变更记录" } ,notes = "获取档案调出记录")
     @RequestMapping(method= RequestMethod.GET , value="/pimarchiveschanges/fetchdadcjl")
 	public ResponseEntity<List<PIMARCHIVESCHANGEDTO>> fetchDADCJL(PIMARCHIVESCHANGESearchContext context) {
         Page<PIMARCHIVESCHANGE> domains = pimarchiveschangeService.searchDADCJL(context) ;
@@ -163,7 +163,7 @@ public class PIMARCHIVESCHANGEResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMARCHIVESCHANGE-DADCJL-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"档案归档地变更记录" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询档案调出记录", tags = {"档案归档地变更记录" } ,notes = "查询档案调出记录")
     @RequestMapping(method= RequestMethod.POST , value="/pimarchiveschanges/searchdadcjl")
 	public ResponseEntity<Page<PIMARCHIVESCHANGEDTO>> searchDADCJL(@RequestBody PIMARCHIVESCHANGESearchContext context) {
         Page<PIMARCHIVESCHANGE> domains = pimarchiveschangeService.searchDADCJL(context) ;
@@ -171,7 +171,7 @@ public class PIMARCHIVESCHANGEResource {
                 .body(new PageImpl(pimarchiveschangeMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMARCHIVESCHANGE-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"档案归档地变更记录" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"档案归档地变更记录" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimarchiveschanges/fetchdefault")
 	public ResponseEntity<List<PIMARCHIVESCHANGEDTO>> fetchDefault(PIMARCHIVESCHANGESearchContext context) {
         Page<PIMARCHIVESCHANGE> domains = pimarchiveschangeService.searchDefault(context) ;
@@ -184,7 +184,7 @@ public class PIMARCHIVESCHANGEResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMARCHIVESCHANGE-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"档案归档地变更记录" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"档案归档地变更记录" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pimarchiveschanges/searchdefault")
 	public ResponseEntity<Page<PIMARCHIVESCHANGEDTO>> searchDefault(@RequestBody PIMARCHIVESCHANGESearchContext context) {
         Page<PIMARCHIVESCHANGE> domains = pimarchiveschangeService.searchDefault(context) ;

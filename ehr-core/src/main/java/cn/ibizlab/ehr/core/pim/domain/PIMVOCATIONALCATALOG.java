@@ -29,7 +29,6 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 /**
  * 实体[执（职）业资格管理]
  */
-@Builder
 @Getter
 @Setter
 @NoArgsConstructor

@@ -138,7 +138,7 @@ public class PimArchivesCenterResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimArchivesCenter-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"档案室管理" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"档案室管理" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimarchivescenters/fetchdefault")
 	public ResponseEntity<List<PimArchivesCenterDTO>> fetchDefault(PimArchivesCenterSearchContext context) {
         Page<PimArchivesCenter> domains = pimarchivescenterService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class PimArchivesCenterResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimArchivesCenter-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"档案室管理" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"档案室管理" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pimarchivescenters/searchdefault")
 	public ResponseEntity<Page<PimArchivesCenterDTO>> searchDefault(@RequestBody PimArchivesCenterSearchContext context) {
         Page<PimArchivesCenter> domains = pimarchivescenterService.searchDefault(context) ;

@@ -29,7 +29,6 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 /**
  * 实体[应聘者起始编号（停用）]
  */
-@Builder
 @Getter
 @Setter
 @NoArgsConstructor

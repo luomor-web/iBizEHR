@@ -138,7 +138,7 @@ public class TrmTrainResmentResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TrmTrainResment-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"培训资源评估" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"培训资源评估" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/trmtrainresments/fetchdefault")
 	public ResponseEntity<List<TrmTrainResmentDTO>> fetchDefault(TrmTrainResmentSearchContext context) {
         Page<TrmTrainResment> domains = trmtrainresmentService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class TrmTrainResmentResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TrmTrainResment-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"培训资源评估" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"培训资源评估" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/trmtrainresments/searchdefault")
 	public ResponseEntity<Page<TrmTrainResmentDTO>> searchDefault(@RequestBody TrmTrainResmentSearchContext context) {
         Page<TrmTrainResment> domains = trmtrainresmentService.searchDefault(context) ;

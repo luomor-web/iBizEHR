@@ -210,7 +210,7 @@ public class OrmOrgsectorResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmOrgsector-CURORMORG-all')")
-	@ApiOperation(value = "获取通过当前组织过滤部门(ORMORGID)", tags = {"部门管理" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取通过当前组织过滤部门(ORMORGID)", tags = {"部门管理" } ,notes = "获取通过当前组织过滤部门(ORMORGID)")
     @RequestMapping(method= RequestMethod.GET , value="/ormorgsectors/fetchcurormorg")
 	public ResponseEntity<List<OrmOrgsectorDTO>> fetchCURORMORG(OrmOrgsectorSearchContext context) {
         Page<OrmOrgsector> domains = ormorgsectorService.searchCURORMORG(context) ;
@@ -223,7 +223,7 @@ public class OrmOrgsectorResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmOrgsector-CURORMORG-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"部门管理" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询通过当前组织过滤部门(ORMORGID)", tags = {"部门管理" } ,notes = "查询通过当前组织过滤部门(ORMORGID)")
     @RequestMapping(method= RequestMethod.POST , value="/ormorgsectors/searchcurormorg")
 	public ResponseEntity<Page<OrmOrgsectorDTO>> searchCURORMORG(@RequestBody OrmOrgsectorSearchContext context) {
         Page<OrmOrgsector> domains = ormorgsectorService.searchCURORMORG(context) ;
@@ -231,7 +231,7 @@ public class OrmOrgsectorResource {
                 .body(new PageImpl(ormorgsectorMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmOrgsector-XMBBZGL-all')")
-	@ApiOperation(value = "获取项目部编制管理", tags = {"部门管理" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取项目部编制管理", tags = {"部门管理" } ,notes = "获取项目部编制管理")
     @RequestMapping(method= RequestMethod.GET , value="/ormorgsectors/fetchxmbbzgl")
 	public ResponseEntity<List<OrmOrgsectorDTO>> fetchXMBBZGL(OrmOrgsectorSearchContext context) {
         Page<OrmOrgsector> domains = ormorgsectorService.searchXMBBZGL(context) ;
@@ -244,7 +244,7 @@ public class OrmOrgsectorResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmOrgsector-XMBBZGL-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"部门管理" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询项目部编制管理", tags = {"部门管理" } ,notes = "查询项目部编制管理")
     @RequestMapping(method= RequestMethod.POST , value="/ormorgsectors/searchxmbbzgl")
 	public ResponseEntity<Page<OrmOrgsectorDTO>> searchXMBBZGL(@RequestBody OrmOrgsectorSearchContext context) {
         Page<OrmOrgsector> domains = ormorgsectorService.searchXMBBZGL(context) ;
@@ -252,7 +252,7 @@ public class OrmOrgsectorResource {
                 .body(new PageImpl(ormorgsectorMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmOrgsector-JSYXMB-all')")
-	@ApiOperation(value = "获取局所有项目部选择（第一版规则）", tags = {"部门管理" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取局所有项目部选择（第一版规则）", tags = {"部门管理" } ,notes = "获取局所有项目部选择（第一版规则）")
     @RequestMapping(method= RequestMethod.GET , value="/ormorgsectors/fetchjsyxmb")
 	public ResponseEntity<List<OrmOrgsectorDTO>> fetchJSYXMB(OrmOrgsectorSearchContext context) {
         Page<OrmOrgsector> domains = ormorgsectorService.searchJSYXMB(context) ;
@@ -265,7 +265,7 @@ public class OrmOrgsectorResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmOrgsector-JSYXMB-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"部门管理" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询局所有项目部选择（第一版规则）", tags = {"部门管理" } ,notes = "查询局所有项目部选择（第一版规则）")
     @RequestMapping(method= RequestMethod.POST , value="/ormorgsectors/searchjsyxmb")
 	public ResponseEntity<Page<OrmOrgsectorDTO>> searchJSYXMB(@RequestBody OrmOrgsectorSearchContext context) {
         Page<OrmOrgsector> domains = ormorgsectorService.searchJSYXMB(context) ;
@@ -273,7 +273,7 @@ public class OrmOrgsectorResource {
                 .body(new PageImpl(ormorgsectorMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmOrgsector-CurZZBM-all')")
-	@ApiOperation(value = "获取当前组织下的部门", tags = {"部门管理" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取当前组织下的部门", tags = {"部门管理" } ,notes = "获取当前组织下的部门")
     @RequestMapping(method= RequestMethod.GET , value="/ormorgsectors/fetchcurzzbm")
 	public ResponseEntity<List<OrmOrgsectorDTO>> fetchCurZZBM(OrmOrgsectorSearchContext context) {
         Page<OrmOrgsector> domains = ormorgsectorService.searchCurZZBM(context) ;
@@ -286,7 +286,7 @@ public class OrmOrgsectorResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmOrgsector-CurZZBM-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"部门管理" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询当前组织下的部门", tags = {"部门管理" } ,notes = "查询当前组织下的部门")
     @RequestMapping(method= RequestMethod.POST , value="/ormorgsectors/searchcurzzbm")
 	public ResponseEntity<Page<OrmOrgsectorDTO>> searchCurZZBM(@RequestBody OrmOrgsectorSearchContext context) {
         Page<OrmOrgsector> domains = ormorgsectorService.searchCurZZBM(context) ;
@@ -294,7 +294,7 @@ public class OrmOrgsectorResource {
                 .body(new PageImpl(ormorgsectorMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmOrgsector-CurZZBM_KQSZ-all')")
-	@ApiOperation(value = "获取当前组织部门（考勤设置）", tags = {"部门管理" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取当前组织部门（考勤设置）", tags = {"部门管理" } ,notes = "获取当前组织部门（考勤设置）")
     @RequestMapping(method= RequestMethod.GET , value="/ormorgsectors/fetchcurzzbm_kqsz")
 	public ResponseEntity<List<OrmOrgsectorDTO>> fetchCurZZBM_KQSZ(OrmOrgsectorSearchContext context) {
         Page<OrmOrgsector> domains = ormorgsectorService.searchCurZZBM_KQSZ(context) ;
@@ -307,7 +307,7 @@ public class OrmOrgsectorResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmOrgsector-CurZZBM_KQSZ-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"部门管理" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询当前组织部门（考勤设置）", tags = {"部门管理" } ,notes = "查询当前组织部门（考勤设置）")
     @RequestMapping(method= RequestMethod.POST , value="/ormorgsectors/searchcurzzbm_kqsz")
 	public ResponseEntity<Page<OrmOrgsectorDTO>> searchCurZZBM_KQSZ(@RequestBody OrmOrgsectorSearchContext context) {
         Page<OrmOrgsector> domains = ormorgsectorService.searchCurZZBM_KQSZ(context) ;
@@ -315,7 +315,7 @@ public class OrmOrgsectorResource {
                 .body(new PageImpl(ormorgsectorMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmOrgsector-CURORG-all')")
-	@ApiOperation(value = "获取通过当前组织过滤部门", tags = {"部门管理" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取通过当前组织过滤部门", tags = {"部门管理" } ,notes = "获取通过当前组织过滤部门")
     @RequestMapping(method= RequestMethod.GET , value="/ormorgsectors/fetchcurorg")
 	public ResponseEntity<List<OrmOrgsectorDTO>> fetchCURORG(OrmOrgsectorSearchContext context) {
         Page<OrmOrgsector> domains = ormorgsectorService.searchCURORG(context) ;
@@ -328,7 +328,7 @@ public class OrmOrgsectorResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmOrgsector-CURORG-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"部门管理" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询通过当前组织过滤部门", tags = {"部门管理" } ,notes = "查询通过当前组织过滤部门")
     @RequestMapping(method= RequestMethod.POST , value="/ormorgsectors/searchcurorg")
 	public ResponseEntity<Page<OrmOrgsectorDTO>> searchCURORG(@RequestBody OrmOrgsectorSearchContext context) {
         Page<OrmOrgsector> domains = ormorgsectorService.searchCURORG(context) ;
@@ -336,7 +336,7 @@ public class OrmOrgsectorResource {
                 .body(new PageImpl(ormorgsectorMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmOrgsector-CurOrgSector-all')")
-	@ApiOperation(value = "获取当前部门", tags = {"部门管理" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取当前部门", tags = {"部门管理" } ,notes = "获取当前部门")
     @RequestMapping(method= RequestMethod.GET , value="/ormorgsectors/fetchcurorgsector")
 	public ResponseEntity<List<OrmOrgsectorDTO>> fetchCurOrgSector(OrmOrgsectorSearchContext context) {
         Page<OrmOrgsector> domains = ormorgsectorService.searchCurOrgSector(context) ;
@@ -349,7 +349,7 @@ public class OrmOrgsectorResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmOrgsector-CurOrgSector-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"部门管理" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询当前部门", tags = {"部门管理" } ,notes = "查询当前部门")
     @RequestMapping(method= RequestMethod.POST , value="/ormorgsectors/searchcurorgsector")
 	public ResponseEntity<Page<OrmOrgsectorDTO>> searchCurOrgSector(@RequestBody OrmOrgsectorSearchContext context) {
         Page<OrmOrgsector> domains = ormorgsectorService.searchCurOrgSector(context) ;
@@ -357,7 +357,7 @@ public class OrmOrgsectorResource {
                 .body(new PageImpl(ormorgsectorMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmOrgsector-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"部门管理" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"部门管理" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/ormorgsectors/fetchdefault")
 	public ResponseEntity<List<OrmOrgsectorDTO>> fetchDefault(OrmOrgsectorSearchContext context) {
         Page<OrmOrgsector> domains = ormorgsectorService.searchDefault(context) ;
@@ -370,7 +370,7 @@ public class OrmOrgsectorResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmOrgsector-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"部门管理" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"部门管理" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/ormorgsectors/searchdefault")
 	public ResponseEntity<Page<OrmOrgsectorDTO>> searchDefault(@RequestBody OrmOrgsectorSearchContext context) {
         Page<OrmOrgsector> domains = ormorgsectorService.searchDefault(context) ;
@@ -378,7 +378,7 @@ public class OrmOrgsectorResource {
                 .body(new PageImpl(ormorgsectorMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmOrgsector-BaseInfo-all')")
-	@ApiOperation(value = "获取项目人员需求", tags = {"部门管理" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取项目人员需求", tags = {"部门管理" } ,notes = "获取项目人员需求")
     @RequestMapping(method= RequestMethod.GET , value="/ormorgsectors/fetchbaseinfo")
 	public ResponseEntity<List<OrmOrgsectorDTO>> fetchBaseInfo(OrmOrgsectorSearchContext context) {
         Page<OrmOrgsector> domains = ormorgsectorService.searchBaseInfo(context) ;
@@ -391,7 +391,7 @@ public class OrmOrgsectorResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmOrgsector-BaseInfo-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"部门管理" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询项目人员需求", tags = {"部门管理" } ,notes = "查询项目人员需求")
     @RequestMapping(method= RequestMethod.POST , value="/ormorgsectors/searchbaseinfo")
 	public ResponseEntity<Page<OrmOrgsectorDTO>> searchBaseInfo(@RequestBody OrmOrgsectorSearchContext context) {
         Page<OrmOrgsector> domains = ormorgsectorService.searchBaseInfo(context) ;
@@ -399,7 +399,7 @@ public class OrmOrgsectorResource {
                 .body(new PageImpl(ormorgsectorMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmOrgsector-DQZZXBM-all')")
-	@ApiOperation(value = "获取当前组织（及下级组织）下部门", tags = {"部门管理" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取当前组织（及下级组织）下部门", tags = {"部门管理" } ,notes = "获取当前组织（及下级组织）下部门")
     @RequestMapping(method= RequestMethod.GET , value="/ormorgsectors/fetchdqzzxbm")
 	public ResponseEntity<List<OrmOrgsectorDTO>> fetchDQZZXBM(OrmOrgsectorSearchContext context) {
         Page<OrmOrgsector> domains = ormorgsectorService.searchDQZZXBM(context) ;
@@ -412,7 +412,7 @@ public class OrmOrgsectorResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmOrgsector-DQZZXBM-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"部门管理" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询当前组织（及下级组织）下部门", tags = {"部门管理" } ,notes = "查询当前组织（及下级组织）下部门")
     @RequestMapping(method= RequestMethod.POST , value="/ormorgsectors/searchdqzzxbm")
 	public ResponseEntity<Page<OrmOrgsectorDTO>> searchDQZZXBM(@RequestBody OrmOrgsectorSearchContext context) {
         Page<OrmOrgsector> domains = ormorgsectorService.searchDQZZXBM(context) ;
@@ -420,7 +420,7 @@ public class OrmOrgsectorResource {
                 .body(new PageImpl(ormorgsectorMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmOrgsector-RsshInfo-all')")
-	@ApiOperation(value = "获取设置项目负责人", tags = {"部门管理" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取设置项目负责人", tags = {"部门管理" } ,notes = "获取设置项目负责人")
     @RequestMapping(method= RequestMethod.GET , value="/ormorgsectors/fetchrsshinfo")
 	public ResponseEntity<List<OrmOrgsectorDTO>> fetchRsshInfo(OrmOrgsectorSearchContext context) {
         Page<OrmOrgsector> domains = ormorgsectorService.searchRsshInfo(context) ;
@@ -433,7 +433,7 @@ public class OrmOrgsectorResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmOrgsector-RsshInfo-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"部门管理" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询设置项目负责人", tags = {"部门管理" } ,notes = "查询设置项目负责人")
     @RequestMapping(method= RequestMethod.POST , value="/ormorgsectors/searchrsshinfo")
 	public ResponseEntity<Page<OrmOrgsectorDTO>> searchRsshInfo(@RequestBody OrmOrgsectorSearchContext context) {
         Page<OrmOrgsector> domains = ormorgsectorService.searchRsshInfo(context) ;
@@ -441,7 +441,7 @@ public class OrmOrgsectorResource {
                 .body(new PageImpl(ormorgsectorMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmOrgsector-SubOrgsector-all')")
-	@ApiOperation(value = "获取子组织部门/项目部（组织专用）", tags = {"部门管理" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取子组织部门/项目部（组织专用）", tags = {"部门管理" } ,notes = "获取子组织部门/项目部（组织专用）")
     @RequestMapping(method= RequestMethod.GET , value="/ormorgsectors/fetchsuborgsector")
 	public ResponseEntity<List<OrmOrgsectorDTO>> fetchSubOrgsector(OrmOrgsectorSearchContext context) {
         Page<OrmOrgsector> domains = ormorgsectorService.searchSubOrgsector(context) ;
@@ -454,7 +454,7 @@ public class OrmOrgsectorResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmOrgsector-SubOrgsector-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"部门管理" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询子组织部门/项目部（组织专用）", tags = {"部门管理" } ,notes = "查询子组织部门/项目部（组织专用）")
     @RequestMapping(method= RequestMethod.POST , value="/ormorgsectors/searchsuborgsector")
 	public ResponseEntity<Page<OrmOrgsectorDTO>> searchSubOrgsector(@RequestBody OrmOrgsectorSearchContext context) {
         Page<OrmOrgsector> domains = ormorgsectorService.searchSubOrgsector(context) ;
@@ -462,7 +462,7 @@ public class OrmOrgsectorResource {
                 .body(new PageImpl(ormorgsectorMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmOrgsector-PimpersonInfoOrgsector-all')")
-	@ApiOperation(value = "获取子组织部门/项目部（人员信息专用）", tags = {"部门管理" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取子组织部门/项目部（人员信息专用）", tags = {"部门管理" } ,notes = "获取子组织部门/项目部（人员信息专用）")
     @RequestMapping(method= RequestMethod.GET , value="/ormorgsectors/fetchpimpersoninfoorgsector")
 	public ResponseEntity<List<OrmOrgsectorDTO>> fetchPimpersonInfoOrgsector(OrmOrgsectorSearchContext context) {
         Page<OrmOrgsector> domains = ormorgsectorService.searchPimpersonInfoOrgsector(context) ;
@@ -475,7 +475,7 @@ public class OrmOrgsectorResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmOrgsector-PimpersonInfoOrgsector-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"部门管理" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询子组织部门/项目部（人员信息专用）", tags = {"部门管理" } ,notes = "查询子组织部门/项目部（人员信息专用）")
     @RequestMapping(method= RequestMethod.POST , value="/ormorgsectors/searchpimpersoninfoorgsector")
 	public ResponseEntity<Page<OrmOrgsectorDTO>> searchPimpersonInfoOrgsector(@RequestBody OrmOrgsectorSearchContext context) {
         Page<OrmOrgsector> domains = ormorgsectorService.searchPimpersonInfoOrgsector(context) ;
@@ -483,7 +483,7 @@ public class OrmOrgsectorResource {
                 .body(new PageImpl(ormorgsectorMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmOrgsector-HisInfo-all')")
-	@ApiOperation(value = "获取项目人员需求（历史版本）", tags = {"部门管理" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取项目人员需求（历史版本）", tags = {"部门管理" } ,notes = "获取项目人员需求（历史版本）")
     @RequestMapping(method= RequestMethod.GET , value="/ormorgsectors/fetchhisinfo")
 	public ResponseEntity<List<OrmOrgsectorDTO>> fetchHisInfo(OrmOrgsectorSearchContext context) {
         Page<OrmOrgsector> domains = ormorgsectorService.searchHisInfo(context) ;
@@ -496,7 +496,7 @@ public class OrmOrgsectorResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmOrgsector-HisInfo-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"部门管理" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询项目人员需求（历史版本）", tags = {"部门管理" } ,notes = "查询项目人员需求（历史版本）")
     @RequestMapping(method= RequestMethod.POST , value="/ormorgsectors/searchhisinfo")
 	public ResponseEntity<Page<OrmOrgsectorDTO>> searchHisInfo(@RequestBody OrmOrgsectorSearchContext context) {
         Page<OrmOrgsector> domains = ormorgsectorService.searchHisInfo(context) ;
@@ -504,7 +504,7 @@ public class OrmOrgsectorResource {
                 .body(new PageImpl(ormorgsectorMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmOrgsector-SubZZBM-all')")
-	@ApiOperation(value = "获取子组织部门", tags = {"部门管理" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取子组织部门", tags = {"部门管理" } ,notes = "获取子组织部门")
     @RequestMapping(method= RequestMethod.GET , value="/ormorgsectors/fetchsubzzbm")
 	public ResponseEntity<List<OrmOrgsectorDTO>> fetchSubZZBM(OrmOrgsectorSearchContext context) {
         Page<OrmOrgsector> domains = ormorgsectorService.searchSubZZBM(context) ;
@@ -517,7 +517,7 @@ public class OrmOrgsectorResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmOrgsector-SubZZBM-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"部门管理" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询子组织部门", tags = {"部门管理" } ,notes = "查询子组织部门")
     @RequestMapping(method= RequestMethod.POST , value="/ormorgsectors/searchsubzzbm")
 	public ResponseEntity<Page<OrmOrgsectorDTO>> searchSubZZBM(@RequestBody OrmOrgsectorSearchContext context) {
         Page<OrmOrgsector> domains = ormorgsectorService.searchSubZZBM(context) ;
@@ -525,7 +525,7 @@ public class OrmOrgsectorResource {
                 .body(new PageImpl(ormorgsectorMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmOrgsector-ProExpandInfo-all')")
-	@ApiOperation(value = "获取项目拓展信息", tags = {"部门管理" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取项目拓展信息", tags = {"部门管理" } ,notes = "获取项目拓展信息")
     @RequestMapping(method= RequestMethod.GET , value="/ormorgsectors/fetchproexpandinfo")
 	public ResponseEntity<List<OrmOrgsectorDTO>> fetchProExpandInfo(OrmOrgsectorSearchContext context) {
         Page<OrmOrgsector> domains = ormorgsectorService.searchProExpandInfo(context) ;
@@ -538,7 +538,7 @@ public class OrmOrgsectorResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmOrgsector-ProExpandInfo-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"部门管理" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询项目拓展信息", tags = {"部门管理" } ,notes = "查询项目拓展信息")
     @RequestMapping(method= RequestMethod.POST , value="/ormorgsectors/searchproexpandinfo")
 	public ResponseEntity<Page<OrmOrgsectorDTO>> searchProExpandInfo(@RequestBody OrmOrgsectorSearchContext context) {
         Page<OrmOrgsector> domains = ormorgsectorService.searchProExpandInfo(context) ;
@@ -546,7 +546,7 @@ public class OrmOrgsectorResource {
                 .body(new PageImpl(ormorgsectorMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmOrgsector-BMBZGL-all')")
-	@ApiOperation(value = "获取部门编制管理", tags = {"部门管理" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取部门编制管理", tags = {"部门管理" } ,notes = "获取部门编制管理")
     @RequestMapping(method= RequestMethod.GET , value="/ormorgsectors/fetchbmbzgl")
 	public ResponseEntity<List<OrmOrgsectorDTO>> fetchBMBZGL(OrmOrgsectorSearchContext context) {
         Page<OrmOrgsector> domains = ormorgsectorService.searchBMBZGL(context) ;
@@ -559,7 +559,7 @@ public class OrmOrgsectorResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmOrgsector-BMBZGL-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"部门管理" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询部门编制管理", tags = {"部门管理" } ,notes = "查询部门编制管理")
     @RequestMapping(method= RequestMethod.POST , value="/ormorgsectors/searchbmbzgl")
 	public ResponseEntity<Page<OrmOrgsectorDTO>> searchBMBZGL(@RequestBody OrmOrgsectorSearchContext context) {
         Page<OrmOrgsector> domains = ormorgsectorService.searchBMBZGL(context) ;

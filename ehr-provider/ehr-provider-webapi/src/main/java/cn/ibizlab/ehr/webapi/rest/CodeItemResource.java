@@ -138,7 +138,7 @@ public class CodeItemResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-CodeItem-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"代码项" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"代码项" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/codeitems/fetchdefault")
 	public ResponseEntity<List<CodeItemDTO>> fetchDefault(CodeItemSearchContext context) {
         Page<CodeItem> domains = codeitemService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class CodeItemResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-CodeItem-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"代码项" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"代码项" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/codeitems/searchdefault")
 	public ResponseEntity<Page<CodeItemDTO>> searchDefault(@RequestBody CodeItemSearchContext context) {
         Page<CodeItem> domains = codeitemService.searchDefault(context) ;
@@ -159,7 +159,7 @@ public class CodeItemResource {
                 .body(new PageImpl(codeitemMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-CodeItem-CurCL-all')")
-	@ApiOperation(value = "获取当前代码表", tags = {"代码项" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取当前代码表", tags = {"代码项" } ,notes = "获取当前代码表")
     @RequestMapping(method= RequestMethod.GET , value="/codeitems/fetchcurcl")
 	public ResponseEntity<List<CodeItemDTO>> fetchCurCL(CodeItemSearchContext context) {
         Page<CodeItem> domains = codeitemService.searchCurCL(context) ;
@@ -172,7 +172,7 @@ public class CodeItemResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-CodeItem-CurCL-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"代码项" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询当前代码表", tags = {"代码项" } ,notes = "查询当前代码表")
     @RequestMapping(method= RequestMethod.POST , value="/codeitems/searchcurcl")
 	public ResponseEntity<Page<CodeItemDTO>> searchCurCL(@RequestBody CodeItemSearchContext context) {
         Page<CodeItem> domains = codeitemService.searchCurCL(context) ;

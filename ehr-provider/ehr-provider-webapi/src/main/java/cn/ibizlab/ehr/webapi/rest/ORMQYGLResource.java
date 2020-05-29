@@ -138,7 +138,7 @@ public class ORMQYGLResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMQYGL-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"补贴标准" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"补贴标准" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/ormqygls/fetchdefault")
 	public ResponseEntity<List<ORMQYGLDTO>> fetchDefault(ORMQYGLSearchContext context) {
         Page<ORMQYGL> domains = ormqyglService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class ORMQYGLResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMQYGL-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"补贴标准" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"补贴标准" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/ormqygls/searchdefault")
 	public ResponseEntity<Page<ORMQYGLDTO>> searchDefault(@RequestBody ORMQYGLSearchContext context) {
         Page<ORMQYGL> domains = ormqyglService.searchDefault(context) ;

@@ -29,7 +29,6 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 /**
  * 实体[语言能力]
  */
-@Builder
 @Getter
 @Setter
 @NoArgsConstructor

@@ -162,7 +162,7 @@ public class PcmSgqMgrResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmSgqMgr-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"试岗期管理" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"试岗期管理" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pcmsgqmgrs/fetchdefault")
 	public ResponseEntity<List<PcmSgqMgrDTO>> fetchDefault(PcmSgqMgrSearchContext context) {
         Page<PcmSgqMgr> domains = pcmsgqmgrService.searchDefault(context) ;
@@ -175,7 +175,7 @@ public class PcmSgqMgrResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmSgqMgr-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"试岗期管理" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"试岗期管理" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pcmsgqmgrs/searchdefault")
 	public ResponseEntity<Page<PcmSgqMgrDTO>> searchDefault(@RequestBody PcmSgqMgrSearchContext context) {
         Page<PcmSgqMgr> domains = pcmsgqmgrService.searchDefault(context) ;

@@ -29,7 +29,6 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 /**
  * 实体[民族管理]
  */
-@Builder
 @Getter
 @Setter
 @NoArgsConstructor

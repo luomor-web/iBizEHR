@@ -150,7 +150,7 @@ public class PimEducationResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimEducation-FAZZSY-all')")
-	@ApiOperation(value = "获取教育信息（非A转正专用）", tags = {"教育信息" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取教育信息（非A转正专用）", tags = {"教育信息" } ,notes = "获取教育信息（非A转正专用）")
     @RequestMapping(method= RequestMethod.GET , value="/pimeducations/fetchfazzsy")
 	public ResponseEntity<List<PimEducationDTO>> fetchFAZZSY(PimEducationSearchContext context) {
         Page<PimEducation> domains = pimeducationService.searchFAZZSY(context) ;
@@ -163,7 +163,7 @@ public class PimEducationResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimEducation-FAZZSY-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"教育信息" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询教育信息（非A转正专用）", tags = {"教育信息" } ,notes = "查询教育信息（非A转正专用）")
     @RequestMapping(method= RequestMethod.POST , value="/pimeducations/searchfazzsy")
 	public ResponseEntity<Page<PimEducationDTO>> searchFAZZSY(@RequestBody PimEducationSearchContext context) {
         Page<PimEducation> domains = pimeducationService.searchFAZZSY(context) ;
@@ -171,7 +171,7 @@ public class PimEducationResource {
                 .body(new PageImpl(pimeducationMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimEducation-JLSS-all')")
-	@ApiOperation(value = "获取记录所属", tags = {"教育信息" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取记录所属", tags = {"教育信息" } ,notes = "获取记录所属")
     @RequestMapping(method= RequestMethod.GET , value="/pimeducations/fetchjlss")
 	public ResponseEntity<List<PimEducationDTO>> fetchJLSS(PimEducationSearchContext context) {
         Page<PimEducation> domains = pimeducationService.searchJLSS(context) ;
@@ -184,7 +184,7 @@ public class PimEducationResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimEducation-JLSS-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"教育信息" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询记录所属", tags = {"教育信息" } ,notes = "查询记录所属")
     @RequestMapping(method= RequestMethod.POST , value="/pimeducations/searchjlss")
 	public ResponseEntity<Page<PimEducationDTO>> searchJLSS(@RequestBody PimEducationSearchContext context) {
         Page<PimEducation> domains = pimeducationService.searchJLSS(context) ;
@@ -192,7 +192,7 @@ public class PimEducationResource {
                 .body(new PageImpl(pimeducationMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimEducation-ZIZHU-all')")
-	@ApiOperation(value = "获取自助(教育信息)", tags = {"教育信息" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取自助(教育信息)", tags = {"教育信息" } ,notes = "获取自助(教育信息)")
     @RequestMapping(method= RequestMethod.GET , value="/pimeducations/fetchzizhu")
 	public ResponseEntity<List<PimEducationDTO>> fetchZIZHU(PimEducationSearchContext context) {
         Page<PimEducation> domains = pimeducationService.searchZIZHU(context) ;
@@ -205,7 +205,7 @@ public class PimEducationResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimEducation-ZIZHU-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"教育信息" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询自助(教育信息)", tags = {"教育信息" } ,notes = "查询自助(教育信息)")
     @RequestMapping(method= RequestMethod.POST , value="/pimeducations/searchzizhu")
 	public ResponseEntity<Page<PimEducationDTO>> searchZIZHU(@RequestBody PimEducationSearchContext context) {
         Page<PimEducation> domains = pimeducationService.searchZIZHU(context) ;
@@ -213,7 +213,7 @@ public class PimEducationResource {
                 .body(new PageImpl(pimeducationMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimEducation-ADMDYZG-all')")
-	@ApiOperation(value = "获取第一学历和最高学历（管理员）", tags = {"教育信息" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取第一学历和最高学历（管理员）", tags = {"教育信息" } ,notes = "获取第一学历和最高学历（管理员）")
     @RequestMapping(method= RequestMethod.GET , value="/pimeducations/fetchadmdyzg")
 	public ResponseEntity<List<PimEducationDTO>> fetchADMDYZG(PimEducationSearchContext context) {
         Page<PimEducation> domains = pimeducationService.searchADMDYZG(context) ;
@@ -226,7 +226,7 @@ public class PimEducationResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimEducation-ADMDYZG-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"教育信息" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询第一学历和最高学历（管理员）", tags = {"教育信息" } ,notes = "查询第一学历和最高学历（管理员）")
     @RequestMapping(method= RequestMethod.POST , value="/pimeducations/searchadmdyzg")
 	public ResponseEntity<Page<PimEducationDTO>> searchADMDYZG(@RequestBody PimEducationSearchContext context) {
         Page<PimEducation> domains = pimeducationService.searchADMDYZG(context) ;
@@ -234,7 +234,7 @@ public class PimEducationResource {
                 .body(new PageImpl(pimeducationMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimEducation-PERSONAL-all')")
-	@ApiOperation(value = "获取记录所属（个人）", tags = {"教育信息" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取记录所属（个人）", tags = {"教育信息" } ,notes = "获取记录所属（个人）")
     @RequestMapping(method= RequestMethod.GET , value="/pimeducations/fetchpersonal")
 	public ResponseEntity<List<PimEducationDTO>> fetchPERSONAL(PimEducationSearchContext context) {
         Page<PimEducation> domains = pimeducationService.searchPERSONAL(context) ;
@@ -247,7 +247,7 @@ public class PimEducationResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimEducation-PERSONAL-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"教育信息" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询记录所属（个人）", tags = {"教育信息" } ,notes = "查询记录所属（个人）")
     @RequestMapping(method= RequestMethod.POST , value="/pimeducations/searchpersonal")
 	public ResponseEntity<Page<PimEducationDTO>> searchPERSONAL(@RequestBody PimEducationSearchContext context) {
         Page<PimEducation> domains = pimeducationService.searchPERSONAL(context) ;
@@ -255,7 +255,7 @@ public class PimEducationResource {
                 .body(new PageImpl(pimeducationMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimEducation-ADMSYSTEM-all')")
-	@ApiOperation(value = "获取记录所属（管理员）", tags = {"教育信息" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取记录所属（管理员）", tags = {"教育信息" } ,notes = "获取记录所属（管理员）")
     @RequestMapping(method= RequestMethod.GET , value="/pimeducations/fetchadmsystem")
 	public ResponseEntity<List<PimEducationDTO>> fetchADMSYSTEM(PimEducationSearchContext context) {
         Page<PimEducation> domains = pimeducationService.searchADMSYSTEM(context) ;
@@ -268,7 +268,7 @@ public class PimEducationResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimEducation-ADMSYSTEM-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"教育信息" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询记录所属（管理员）", tags = {"教育信息" } ,notes = "查询记录所属（管理员）")
     @RequestMapping(method= RequestMethod.POST , value="/pimeducations/searchadmsystem")
 	public ResponseEntity<Page<PimEducationDTO>> searchADMSYSTEM(@RequestBody PimEducationSearchContext context) {
         Page<PimEducation> domains = pimeducationService.searchADMSYSTEM(context) ;
@@ -276,7 +276,7 @@ public class PimEducationResource {
                 .body(new PageImpl(pimeducationMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimEducation-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"教育信息" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"教育信息" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimeducations/fetchdefault")
 	public ResponseEntity<List<PimEducationDTO>> fetchDefault(PimEducationSearchContext context) {
         Page<PimEducation> domains = pimeducationService.searchDefault(context) ;
@@ -289,7 +289,7 @@ public class PimEducationResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimEducation-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"教育信息" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"教育信息" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pimeducations/searchdefault")
 	public ResponseEntity<Page<PimEducationDTO>> searchDefault(@RequestBody PimEducationSearchContext context) {
         Page<PimEducation> domains = pimeducationService.searchDefault(context) ;
@@ -297,7 +297,7 @@ public class PimEducationResource {
                 .body(new PageImpl(pimeducationMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimEducation-REP_EDU-all')")
-	@ApiOperation(value = "获取图表_学历分布统计", tags = {"教育信息" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取图表_学历分布统计", tags = {"教育信息" } ,notes = "获取图表_学历分布统计")
     @RequestMapping(method= RequestMethod.GET , value="/pimeducations/fetchrep_edu")
 	public ResponseEntity<List<HashMap>> fetchREP_EDU(PimEducationSearchContext context) {
         Page<HashMap> domains = pimeducationService.searchREP_EDU(context) ;
@@ -309,7 +309,7 @@ public class PimEducationResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimEducation-REP_EDU-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"教育信息" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询图表_学历分布统计", tags = {"教育信息" } ,notes = "查询图表_学历分布统计")
     @RequestMapping(method= RequestMethod.POST , value="/pimeducations/searchrep_edu")
 	public ResponseEntity<Page<HashMap>> searchREP_EDU(@RequestBody PimEducationSearchContext context) {
         Page<HashMap> domains = pimeducationService.searchREP_EDU(context) ;

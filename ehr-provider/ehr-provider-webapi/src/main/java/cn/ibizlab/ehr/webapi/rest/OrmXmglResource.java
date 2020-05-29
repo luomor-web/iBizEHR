@@ -150,7 +150,7 @@ public class OrmXmglResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmXmgl-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"项目管理" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"项目管理" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/ormxmgls/fetchdefault")
 	public ResponseEntity<List<OrmXmglDTO>> fetchDefault(OrmXmglSearchContext context) {
         Page<OrmXmgl> domains = ormxmglService.searchDefault(context) ;
@@ -163,7 +163,7 @@ public class OrmXmglResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmXmgl-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"项目管理" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"项目管理" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/ormxmgls/searchdefault")
 	public ResponseEntity<Page<OrmXmglDTO>> searchDefault(@RequestBody OrmXmglSearchContext context) {
         Page<OrmXmgl> domains = ormxmglService.searchDefault(context) ;
@@ -171,7 +171,7 @@ public class OrmXmglResource {
                 .body(new PageImpl(ormxmglMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmXmgl-ValidPro-all')")
-	@ApiOperation(value = "获取有效项目", tags = {"项目管理" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取有效项目", tags = {"项目管理" } ,notes = "获取有效项目")
     @RequestMapping(method= RequestMethod.GET , value="/ormxmgls/fetchvalidpro")
 	public ResponseEntity<List<OrmXmglDTO>> fetchValidPro(OrmXmglSearchContext context) {
         Page<OrmXmgl> domains = ormxmglService.searchValidPro(context) ;
@@ -184,7 +184,7 @@ public class OrmXmglResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmXmgl-ValidPro-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"项目管理" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询有效项目", tags = {"项目管理" } ,notes = "查询有效项目")
     @RequestMapping(method= RequestMethod.POST , value="/ormxmgls/searchvalidpro")
 	public ResponseEntity<Page<OrmXmglDTO>> searchValidPro(@RequestBody OrmXmglSearchContext context) {
         Page<OrmXmgl> domains = ormxmglService.searchValidPro(context) ;

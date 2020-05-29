@@ -138,7 +138,7 @@ public class PIMVOCATIONALCATALOGResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMVOCATIONALCATALOG-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"执（职）业资格管理" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"执（职）业资格管理" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimvocationalcatalogs/fetchdefault")
 	public ResponseEntity<List<PIMVOCATIONALCATALOGDTO>> fetchDefault(PIMVOCATIONALCATALOGSearchContext context) {
         Page<PIMVOCATIONALCATALOG> domains = pimvocationalcatalogService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class PIMVOCATIONALCATALOGResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMVOCATIONALCATALOG-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"执（职）业资格管理" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"执（职）业资格管理" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pimvocationalcatalogs/searchdefault")
 	public ResponseEntity<Page<PIMVOCATIONALCATALOGDTO>> searchDefault(@RequestBody PIMVOCATIONALCATALOGSearchContext context) {
         Page<PIMVOCATIONALCATALOG> domains = pimvocationalcatalogService.searchDefault(context) ;

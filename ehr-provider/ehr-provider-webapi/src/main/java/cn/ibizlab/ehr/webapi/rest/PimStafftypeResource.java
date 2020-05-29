@@ -138,7 +138,7 @@ public class PimStafftypeResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimStafftype-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"员工类型管理" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"员工类型管理" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimstafftypes/fetchdefault")
 	public ResponseEntity<List<PimStafftypeDTO>> fetchDefault(PimStafftypeSearchContext context) {
         Page<PimStafftype> domains = pimstafftypeService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class PimStafftypeResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimStafftype-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"员工类型管理" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"员工类型管理" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pimstafftypes/searchdefault")
 	public ResponseEntity<Page<PimStafftypeDTO>> searchDefault(@RequestBody PimStafftypeSearchContext context) {
         Page<PimStafftype> domains = pimstafftypeService.searchDefault(context) ;
@@ -159,7 +159,7 @@ public class PimStafftypeResource {
                 .body(new PageImpl(pimstafftypeMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimStafftype-YPZ-all')")
-	@ApiOperation(value = "获取应聘者专用", tags = {"员工类型管理" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取应聘者专用", tags = {"员工类型管理" } ,notes = "获取应聘者专用")
     @RequestMapping(method= RequestMethod.GET , value="/pimstafftypes/fetchypz")
 	public ResponseEntity<List<PimStafftypeDTO>> fetchYPZ(PimStafftypeSearchContext context) {
         Page<PimStafftype> domains = pimstafftypeService.searchYPZ(context) ;
@@ -172,7 +172,7 @@ public class PimStafftypeResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimStafftype-YPZ-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"员工类型管理" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询应聘者专用", tags = {"员工类型管理" } ,notes = "查询应聘者专用")
     @RequestMapping(method= RequestMethod.POST , value="/pimstafftypes/searchypz")
 	public ResponseEntity<Page<PimStafftypeDTO>> searchYPZ(@RequestBody PimStafftypeSearchContext context) {
         Page<PimStafftype> domains = pimstafftypeService.searchYPZ(context) ;

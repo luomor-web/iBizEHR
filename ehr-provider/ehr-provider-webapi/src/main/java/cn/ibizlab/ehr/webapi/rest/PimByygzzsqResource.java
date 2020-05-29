@@ -138,7 +138,7 @@ public class PimByygzzsqResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimByygzzsq-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"B/Y类员工转正申请" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"B/Y类员工转正申请" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimbyygzzsqs/fetchdefault")
 	public ResponseEntity<List<PimByygzzsqDTO>> fetchDefault(PimByygzzsqSearchContext context) {
         Page<PimByygzzsq> domains = pimbyygzzsqService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class PimByygzzsqResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimByygzzsq-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"B/Y类员工转正申请" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"B/Y类员工转正申请" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pimbyygzzsqs/searchdefault")
 	public ResponseEntity<Page<PimByygzzsqDTO>> searchDefault(@RequestBody PimByygzzsqSearchContext context) {
         Page<PimByygzzsq> domains = pimbyygzzsqService.searchDefault(context) ;

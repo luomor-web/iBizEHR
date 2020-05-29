@@ -138,7 +138,7 @@ public class TestResultResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TestResult-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"测评结果摘要信息" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"测评结果摘要信息" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/testresults/fetchdefault")
 	public ResponseEntity<List<TestResultDTO>> fetchDefault(TestResultSearchContext context) {
         Page<TestResult> domains = testresultService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class TestResultResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TestResult-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"测评结果摘要信息" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"测评结果摘要信息" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/testresults/searchdefault")
 	public ResponseEntity<Page<TestResultDTO>> searchDefault(@RequestBody TestResultSearchContext context) {
         Page<TestResult> domains = testresultService.searchDefault(context) ;

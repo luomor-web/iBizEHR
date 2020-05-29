@@ -138,7 +138,7 @@ public class PcmMonthResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmMonth-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"月份参考表" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"月份参考表" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pcmmonths/fetchdefault")
 	public ResponseEntity<List<PcmMonthDTO>> fetchDefault(PcmMonthSearchContext context) {
         Page<PcmMonth> domains = pcmmonthService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class PcmMonthResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmMonth-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"月份参考表" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"月份参考表" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pcmmonths/searchdefault")
 	public ResponseEntity<Page<PcmMonthDTO>> searchDefault(@RequestBody PcmMonthSearchContext context) {
         Page<PcmMonth> domains = pcmmonthService.searchDefault(context) ;

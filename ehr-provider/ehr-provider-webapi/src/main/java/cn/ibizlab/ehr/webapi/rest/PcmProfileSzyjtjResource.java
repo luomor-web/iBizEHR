@@ -138,7 +138,7 @@ public class PcmProfileSzyjtjResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmProfileSzyjtj-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"应聘者社招引进条件" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"应聘者社招引进条件" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pcmprofileszyjtjs/fetchdefault")
 	public ResponseEntity<List<PcmProfileSzyjtjDTO>> fetchDefault(PcmProfileSzyjtjSearchContext context) {
         Page<PcmProfileSzyjtj> domains = pcmprofileszyjtjService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class PcmProfileSzyjtjResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmProfileSzyjtj-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"应聘者社招引进条件" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"应聘者社招引进条件" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pcmprofileszyjtjs/searchdefault")
 	public ResponseEntity<Page<PcmProfileSzyjtjDTO>> searchDefault(@RequestBody PcmProfileSzyjtjSearchContext context) {
         Page<PcmProfileSzyjtj> domains = pcmprofileszyjtjService.searchDefault(context) ;
@@ -159,7 +159,7 @@ public class PcmProfileSzyjtjResource {
                 .body(new PageImpl(pcmprofileszyjtjMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmProfileSzyjtj-YGLX-all')")
-	@ApiOperation(value = "获取通过申报类型过滤", tags = {"应聘者社招引进条件" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取通过申报类型过滤", tags = {"应聘者社招引进条件" } ,notes = "获取通过申报类型过滤")
     @RequestMapping(method= RequestMethod.GET , value="/pcmprofileszyjtjs/fetchyglx")
 	public ResponseEntity<List<PcmProfileSzyjtjDTO>> fetchYGLX(PcmProfileSzyjtjSearchContext context) {
         Page<PcmProfileSzyjtj> domains = pcmprofileszyjtjService.searchYGLX(context) ;
@@ -172,7 +172,7 @@ public class PcmProfileSzyjtjResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmProfileSzyjtj-YGLX-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"应聘者社招引进条件" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询通过申报类型过滤", tags = {"应聘者社招引进条件" } ,notes = "查询通过申报类型过滤")
     @RequestMapping(method= RequestMethod.POST , value="/pcmprofileszyjtjs/searchyglx")
 	public ResponseEntity<Page<PcmProfileSzyjtjDTO>> searchYGLX(@RequestBody PcmProfileSzyjtjSearchContext context) {
         Page<PcmProfileSzyjtj> domains = pcmprofileszyjtjService.searchYGLX(context) ;

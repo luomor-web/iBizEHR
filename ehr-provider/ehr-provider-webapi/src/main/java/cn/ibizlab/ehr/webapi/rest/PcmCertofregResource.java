@@ -138,7 +138,7 @@ public class PcmCertofregResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmCertofreg-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"注册证书" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"注册证书" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pcmcertofregs/fetchdefault")
 	public ResponseEntity<List<PcmCertofregDTO>> fetchDefault(PcmCertofregSearchContext context) {
         Page<PcmCertofreg> domains = pcmcertofregService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class PcmCertofregResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmCertofreg-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"注册证书" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"注册证书" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pcmcertofregs/searchdefault")
 	public ResponseEntity<Page<PcmCertofregDTO>> searchDefault(@RequestBody PcmCertofregSearchContext context) {
         Page<PcmCertofreg> domains = pcmcertofregService.searchDefault(context) ;

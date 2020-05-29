@@ -150,7 +150,7 @@ public class PimSearchFieldSetResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimSearchFieldSet-AllDATA-all')")
-	@ApiOperation(value = "获取全部数据", tags = {"组合查询条件设置" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取全部数据", tags = {"组合查询条件设置" } ,notes = "获取全部数据")
     @RequestMapping(method= RequestMethod.GET , value="/pimsearchfieldsets/fetchalldata")
 	public ResponseEntity<List<PimSearchFieldSetDTO>> fetchAllDATA(PimSearchFieldSetSearchContext context) {
         Page<PimSearchFieldSet> domains = pimsearchfieldsetService.searchAllDATA(context) ;
@@ -163,7 +163,7 @@ public class PimSearchFieldSetResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimSearchFieldSet-AllDATA-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"组合查询条件设置" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询全部数据", tags = {"组合查询条件设置" } ,notes = "查询全部数据")
     @RequestMapping(method= RequestMethod.POST , value="/pimsearchfieldsets/searchalldata")
 	public ResponseEntity<Page<PimSearchFieldSetDTO>> searchAllDATA(@RequestBody PimSearchFieldSetSearchContext context) {
         Page<PimSearchFieldSet> domains = pimsearchfieldsetService.searchAllDATA(context) ;
@@ -171,7 +171,7 @@ public class PimSearchFieldSetResource {
                 .body(new PageImpl(pimsearchfieldsetMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimSearchFieldSet-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"组合查询条件设置" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"组合查询条件设置" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimsearchfieldsets/fetchdefault")
 	public ResponseEntity<List<PimSearchFieldSetDTO>> fetchDefault(PimSearchFieldSetSearchContext context) {
         Page<PimSearchFieldSet> domains = pimsearchfieldsetService.searchDefault(context) ;
@@ -184,7 +184,7 @@ public class PimSearchFieldSetResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimSearchFieldSet-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"组合查询条件设置" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"组合查询条件设置" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pimsearchfieldsets/searchdefault")
 	public ResponseEntity<Page<PimSearchFieldSetDTO>> searchDefault(@RequestBody PimSearchFieldSetSearchContext context) {
         Page<PimSearchFieldSet> domains = pimsearchfieldsetService.searchDefault(context) ;

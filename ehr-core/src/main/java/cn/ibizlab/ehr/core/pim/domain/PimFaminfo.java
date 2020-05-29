@@ -29,7 +29,6 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 /**
  * 实体[家庭情况]
  */
-@Builder
 @Getter
 @Setter
 @NoArgsConstructor

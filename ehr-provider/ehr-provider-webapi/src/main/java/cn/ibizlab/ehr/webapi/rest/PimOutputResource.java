@@ -138,7 +138,7 @@ public class PimOutputResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimOutput-CurOrg-all')")
-	@ApiOperation(value = "获取当前组织范围", tags = {"产值表" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取当前组织范围", tags = {"产值表" } ,notes = "获取当前组织范围")
     @RequestMapping(method= RequestMethod.GET , value="/pimoutputs/fetchcurorg")
 	public ResponseEntity<List<PimOutputDTO>> fetchCurOrg(PimOutputSearchContext context) {
         Page<PimOutput> domains = pimoutputService.searchCurOrg(context) ;
@@ -151,7 +151,7 @@ public class PimOutputResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimOutput-CurOrg-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"产值表" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询当前组织范围", tags = {"产值表" } ,notes = "查询当前组织范围")
     @RequestMapping(method= RequestMethod.POST , value="/pimoutputs/searchcurorg")
 	public ResponseEntity<Page<PimOutputDTO>> searchCurOrg(@RequestBody PimOutputSearchContext context) {
         Page<PimOutput> domains = pimoutputService.searchCurOrg(context) ;
@@ -159,7 +159,7 @@ public class PimOutputResource {
                 .body(new PageImpl(pimoutputMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimOutput-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"产值表" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"产值表" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimoutputs/fetchdefault")
 	public ResponseEntity<List<PimOutputDTO>> fetchDefault(PimOutputSearchContext context) {
         Page<PimOutput> domains = pimoutputService.searchDefault(context) ;
@@ -172,7 +172,7 @@ public class PimOutputResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimOutput-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"产值表" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"产值表" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pimoutputs/searchdefault")
 	public ResponseEntity<Page<PimOutputDTO>> searchDefault(@RequestBody PimOutputSearchContext context) {
         Page<PimOutput> domains = pimoutputService.searchDefault(context) ;
@@ -180,7 +180,7 @@ public class PimOutputResource {
                 .body(new PageImpl(pimoutputMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimOutput-REP_OUTPUT-all')")
-	@ApiOperation(value = "获取人均产值", tags = {"产值表" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取人均产值", tags = {"产值表" } ,notes = "获取人均产值")
     @RequestMapping(method= RequestMethod.GET , value="/pimoutputs/fetchrep_output")
 	public ResponseEntity<List<HashMap>> fetchREP_OUTPUT(PimOutputSearchContext context) {
         Page<HashMap> domains = pimoutputService.searchREP_OUTPUT(context) ;
@@ -192,7 +192,7 @@ public class PimOutputResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimOutput-REP_OUTPUT-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"产值表" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询人均产值", tags = {"产值表" } ,notes = "查询人均产值")
     @RequestMapping(method= RequestMethod.POST , value="/pimoutputs/searchrep_output")
 	public ResponseEntity<Page<HashMap>> searchREP_OUTPUT(@RequestBody PimOutputSearchContext context) {
         Page<HashMap> domains = pimoutputService.searchREP_OUTPUT(context) ;

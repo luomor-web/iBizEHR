@@ -138,7 +138,7 @@ public class OrmRelationResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmRelation-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"组织管理关系表" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"组织管理关系表" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/ormrelations/fetchdefault")
 	public ResponseEntity<List<OrmRelationDTO>> fetchDefault(OrmRelationSearchContext context) {
         Page<OrmRelation> domains = ormrelationService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class OrmRelationResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmRelation-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"组织管理关系表" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"组织管理关系表" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/ormrelations/searchdefault")
 	public ResponseEntity<Page<OrmRelationDTO>> searchDefault(@RequestBody OrmRelationSearchContext context) {
         Page<OrmRelation> domains = ormrelationService.searchDefault(context) ;

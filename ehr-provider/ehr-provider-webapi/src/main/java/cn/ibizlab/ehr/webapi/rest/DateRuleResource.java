@@ -138,7 +138,7 @@ public class DateRuleResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DateRule-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"生效日期规则" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"生效日期规则" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/daterules/fetchdefault")
 	public ResponseEntity<List<DateRuleDTO>> fetchDefault(DateRuleSearchContext context) {
         Page<DateRule> domains = dateruleService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class DateRuleResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DateRule-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"生效日期规则" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"生效日期规则" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/daterules/searchdefault")
 	public ResponseEntity<Page<DateRuleDTO>> searchDefault(@RequestBody DateRuleSearchContext context) {
         Page<DateRule> domains = dateruleService.searchDefault(context) ;

@@ -29,7 +29,6 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 /**
  * 实体[档案借阅及归还记录]
  */
-@Builder
 @Getter
 @Setter
 @NoArgsConstructor

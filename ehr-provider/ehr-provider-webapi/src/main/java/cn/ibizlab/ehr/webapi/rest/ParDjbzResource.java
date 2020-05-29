@@ -138,7 +138,7 @@ public class ParDjbzResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ParDjbz-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"定级规则" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"定级规则" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pardjbzs/fetchdefault")
 	public ResponseEntity<List<ParDjbzDTO>> fetchDefault(ParDjbzSearchContext context) {
         Page<ParDjbz> domains = pardjbzService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class ParDjbzResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ParDjbz-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"定级规则" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"定级规则" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pardjbzs/searchdefault")
 	public ResponseEntity<Page<ParDjbzDTO>> searchDefault(@RequestBody ParDjbzSearchContext context) {
         Page<ParDjbz> domains = pardjbzService.searchDefault(context) ;

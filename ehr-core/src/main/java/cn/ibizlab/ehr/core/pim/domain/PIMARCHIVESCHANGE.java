@@ -29,7 +29,6 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 /**
  * 实体[档案归档地变更记录]
  */
-@Builder
 @Getter
 @Setter
 @NoArgsConstructor

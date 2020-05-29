@@ -138,7 +138,7 @@ public class PimGwTypeResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimGwType-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"岗位类型对照表" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"岗位类型对照表" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimgwtypes/fetchdefault")
 	public ResponseEntity<List<PimGwTypeDTO>> fetchDefault(PimGwTypeSearchContext context) {
         Page<PimGwType> domains = pimgwtypeService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class PimGwTypeResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimGwType-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"岗位类型对照表" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"岗位类型对照表" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pimgwtypes/searchdefault")
 	public ResponseEntity<Page<PimGwTypeDTO>> searchDefault(@RequestBody PimGwTypeSearchContext context) {
         Page<PimGwType> domains = pimgwtypeService.searchDefault(context) ;

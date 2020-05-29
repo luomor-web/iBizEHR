@@ -29,7 +29,6 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 /**
  * 实体[月份参考表]
  */
-@Builder
 @Getter
 @Setter
 @NoArgsConstructor

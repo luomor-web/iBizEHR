@@ -138,7 +138,7 @@ public class PcmRecruitmentResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmRecruitment-NBZP-all')")
-	@ApiOperation(value = "获取内部招聘信息", tags = {"内部招聘信息" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取内部招聘信息", tags = {"内部招聘信息" } ,notes = "获取内部招聘信息")
     @RequestMapping(method= RequestMethod.GET , value="/pcmrecruitments/fetchnbzp")
 	public ResponseEntity<List<PcmRecruitmentDTO>> fetchNBZP(PcmRecruitmentSearchContext context) {
         Page<PcmRecruitment> domains = pcmrecruitmentService.searchNBZP(context) ;
@@ -151,7 +151,7 @@ public class PcmRecruitmentResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmRecruitment-NBZP-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"内部招聘信息" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询内部招聘信息", tags = {"内部招聘信息" } ,notes = "查询内部招聘信息")
     @RequestMapping(method= RequestMethod.POST , value="/pcmrecruitments/searchnbzp")
 	public ResponseEntity<Page<PcmRecruitmentDTO>> searchNBZP(@RequestBody PcmRecruitmentSearchContext context) {
         Page<PcmRecruitment> domains = pcmrecruitmentService.searchNBZP(context) ;
@@ -159,7 +159,7 @@ public class PcmRecruitmentResource {
                 .body(new PageImpl(pcmrecruitmentMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmRecruitment-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"内部招聘信息" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"内部招聘信息" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pcmrecruitments/fetchdefault")
 	public ResponseEntity<List<PcmRecruitmentDTO>> fetchDefault(PcmRecruitmentSearchContext context) {
         Page<PcmRecruitment> domains = pcmrecruitmentService.searchDefault(context) ;
@@ -172,7 +172,7 @@ public class PcmRecruitmentResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmRecruitment-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"内部招聘信息" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"内部招聘信息" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pcmrecruitments/searchdefault")
 	public ResponseEntity<Page<PcmRecruitmentDTO>> searchDefault(@RequestBody PcmRecruitmentSearchContext context) {
         Page<PcmRecruitment> domains = pcmrecruitmentService.searchDefault(context) ;

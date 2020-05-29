@@ -29,7 +29,6 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 /**
  * 实体[劳务派遣公司管理]
  */
-@Builder
 @Getter
 @Setter
 @NoArgsConstructor

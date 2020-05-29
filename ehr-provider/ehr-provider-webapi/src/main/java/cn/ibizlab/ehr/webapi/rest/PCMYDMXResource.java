@@ -150,7 +150,7 @@ public class PCMYDMXResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMYDMX-IndexDER-all')")
-	@ApiOperation(value = "获取IndexDER", tags = {"异动明细" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取IndexDER", tags = {"异动明细" } ,notes = "获取IndexDER")
     @RequestMapping(method= RequestMethod.GET , value="/pcmydmxes/fetchindexder")
 	public ResponseEntity<List<PCMYDMXDTO>> fetchIndexDER(PCMYDMXSearchContext context) {
         Page<PCMYDMX> domains = pcmydmxService.searchIndexDER(context) ;
@@ -163,7 +163,7 @@ public class PCMYDMXResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMYDMX-IndexDER-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"异动明细" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询IndexDER", tags = {"异动明细" } ,notes = "查询IndexDER")
     @RequestMapping(method= RequestMethod.POST , value="/pcmydmxes/searchindexder")
 	public ResponseEntity<Page<PCMYDMXDTO>> searchIndexDER(@RequestBody PCMYDMXSearchContext context) {
         Page<PCMYDMX> domains = pcmydmxService.searchIndexDER(context) ;
@@ -171,7 +171,7 @@ public class PCMYDMXResource {
                 .body(new PageImpl(pcmydmxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMYDMX-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"异动明细" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"异动明细" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pcmydmxes/fetchdefault")
 	public ResponseEntity<List<PCMYDMXDTO>> fetchDefault(PCMYDMXSearchContext context) {
         Page<PCMYDMX> domains = pcmydmxService.searchDefault(context) ;
@@ -184,7 +184,7 @@ public class PCMYDMXResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMYDMX-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"异动明细" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"异动明细" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pcmydmxes/searchdefault")
 	public ResponseEntity<Page<PCMYDMXDTO>> searchDefault(@RequestBody PCMYDMXSearchContext context) {
         Page<PCMYDMX> domains = pcmydmxService.searchDefault(context) ;

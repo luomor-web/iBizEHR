@@ -29,7 +29,6 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 /**
  * 实体[职级和职务对应关系]
  */
-@Builder
 @Getter
 @Setter
 @NoArgsConstructor

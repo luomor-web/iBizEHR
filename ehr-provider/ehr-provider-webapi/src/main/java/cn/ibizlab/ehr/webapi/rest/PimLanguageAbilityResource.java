@@ -150,7 +150,7 @@ public class PimLanguageAbilityResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimLanguageAbility-JLSSGR-all')")
-	@ApiOperation(value = "获取记录所属（个人）", tags = {"语言能力" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取记录所属（个人）", tags = {"语言能力" } ,notes = "获取记录所属（个人）")
     @RequestMapping(method= RequestMethod.GET , value="/pimlanguageabilities/fetchjlssgr")
 	public ResponseEntity<List<PimLanguageAbilityDTO>> fetchJLSSGR(PimLanguageAbilitySearchContext context) {
         Page<PimLanguageAbility> domains = pimlanguageabilityService.searchJLSSGR(context) ;
@@ -163,7 +163,7 @@ public class PimLanguageAbilityResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimLanguageAbility-JLSSGR-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"语言能力" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询记录所属（个人）", tags = {"语言能力" } ,notes = "查询记录所属（个人）")
     @RequestMapping(method= RequestMethod.POST , value="/pimlanguageabilities/searchjlssgr")
 	public ResponseEntity<Page<PimLanguageAbilityDTO>> searchJLSSGR(@RequestBody PimLanguageAbilitySearchContext context) {
         Page<PimLanguageAbility> domains = pimlanguageabilityService.searchJLSSGR(context) ;
@@ -171,7 +171,7 @@ public class PimLanguageAbilityResource {
                 .body(new PageImpl(pimlanguageabilityMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimLanguageAbility-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"语言能力" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"语言能力" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimlanguageabilities/fetchdefault")
 	public ResponseEntity<List<PimLanguageAbilityDTO>> fetchDefault(PimLanguageAbilitySearchContext context) {
         Page<PimLanguageAbility> domains = pimlanguageabilityService.searchDefault(context) ;
@@ -184,7 +184,7 @@ public class PimLanguageAbilityResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimLanguageAbility-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"语言能力" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"语言能力" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pimlanguageabilities/searchdefault")
 	public ResponseEntity<Page<PimLanguageAbilityDTO>> searchDefault(@RequestBody PimLanguageAbilitySearchContext context) {
         Page<PimLanguageAbility> domains = pimlanguageabilityService.searchDefault(context) ;
@@ -192,7 +192,7 @@ public class PimLanguageAbilityResource {
                 .body(new PageImpl(pimlanguageabilityMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimLanguageAbility-JLSS-all')")
-	@ApiOperation(value = "获取记录所属", tags = {"语言能力" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取记录所属", tags = {"语言能力" } ,notes = "获取记录所属")
     @RequestMapping(method= RequestMethod.GET , value="/pimlanguageabilities/fetchjlss")
 	public ResponseEntity<List<PimLanguageAbilityDTO>> fetchJLSS(PimLanguageAbilitySearchContext context) {
         Page<PimLanguageAbility> domains = pimlanguageabilityService.searchJLSS(context) ;
@@ -205,7 +205,7 @@ public class PimLanguageAbilityResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimLanguageAbility-JLSS-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"语言能力" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询记录所属", tags = {"语言能力" } ,notes = "查询记录所属")
     @RequestMapping(method= RequestMethod.POST , value="/pimlanguageabilities/searchjlss")
 	public ResponseEntity<Page<PimLanguageAbilityDTO>> searchJLSS(@RequestBody PimLanguageAbilitySearchContext context) {
         Page<PimLanguageAbility> domains = pimlanguageabilityService.searchJLSS(context) ;
@@ -213,7 +213,7 @@ public class PimLanguageAbilityResource {
                 .body(new PageImpl(pimlanguageabilityMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimLanguageAbility-ZIZHU-all')")
-	@ApiOperation(value = "获取自助(语言能力)", tags = {"语言能力" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取自助(语言能力)", tags = {"语言能力" } ,notes = "获取自助(语言能力)")
     @RequestMapping(method= RequestMethod.GET , value="/pimlanguageabilities/fetchzizhu")
 	public ResponseEntity<List<PimLanguageAbilityDTO>> fetchZIZHU(PimLanguageAbilitySearchContext context) {
         Page<PimLanguageAbility> domains = pimlanguageabilityService.searchZIZHU(context) ;
@@ -226,7 +226,7 @@ public class PimLanguageAbilityResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimLanguageAbility-ZIZHU-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"语言能力" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询自助(语言能力)", tags = {"语言能力" } ,notes = "查询自助(语言能力)")
     @RequestMapping(method= RequestMethod.POST , value="/pimlanguageabilities/searchzizhu")
 	public ResponseEntity<Page<PimLanguageAbilityDTO>> searchZIZHU(@RequestBody PimLanguageAbilitySearchContext context) {
         Page<PimLanguageAbility> domains = pimlanguageabilityService.searchZIZHU(context) ;
@@ -234,7 +234,7 @@ public class PimLanguageAbilityResource {
                 .body(new PageImpl(pimlanguageabilityMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimLanguageAbility-JLSSGLY-all')")
-	@ApiOperation(value = "获取记录所属（管理员）", tags = {"语言能力" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取记录所属（管理员）", tags = {"语言能力" } ,notes = "获取记录所属（管理员）")
     @RequestMapping(method= RequestMethod.GET , value="/pimlanguageabilities/fetchjlssgly")
 	public ResponseEntity<List<PimLanguageAbilityDTO>> fetchJLSSGLY(PimLanguageAbilitySearchContext context) {
         Page<PimLanguageAbility> domains = pimlanguageabilityService.searchJLSSGLY(context) ;
@@ -247,7 +247,7 @@ public class PimLanguageAbilityResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimLanguageAbility-JLSSGLY-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"语言能力" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询记录所属（管理员）", tags = {"语言能力" } ,notes = "查询记录所属（管理员）")
     @RequestMapping(method= RequestMethod.POST , value="/pimlanguageabilities/searchjlssgly")
 	public ResponseEntity<Page<PimLanguageAbilityDTO>> searchJLSSGLY(@RequestBody PimLanguageAbilitySearchContext context) {
         Page<PimLanguageAbility> domains = pimlanguageabilityService.searchJLSSGLY(context) ;

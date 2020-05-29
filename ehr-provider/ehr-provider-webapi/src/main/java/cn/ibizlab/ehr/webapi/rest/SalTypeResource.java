@@ -138,7 +138,7 @@ public class SalTypeResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SalType-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"薪酬类型" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"薪酬类型" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/saltypes/fetchdefault")
 	public ResponseEntity<List<SalTypeDTO>> fetchDefault(SalTypeSearchContext context) {
         Page<SalType> domains = saltypeService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class SalTypeResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SalType-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"薪酬类型" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"薪酬类型" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/saltypes/searchdefault")
 	public ResponseEntity<Page<SalTypeDTO>> searchDefault(@RequestBody SalTypeSearchContext context) {
         Page<SalType> domains = saltypeService.searchDefault(context) ;

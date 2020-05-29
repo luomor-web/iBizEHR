@@ -150,7 +150,7 @@ public class OrmOrgResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmOrg-ALLSIGNORG-all')")
-	@ApiOperation(value = "获取全部法人主体", tags = {"组织管理" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取全部法人主体", tags = {"组织管理" } ,notes = "获取全部法人主体")
     @RequestMapping(method= RequestMethod.GET , value="/ormorgs/fetchallsignorg")
 	public ResponseEntity<List<OrmOrgDTO>> fetchALLSIGNORG(OrmOrgSearchContext context) {
         Page<OrmOrg> domains = ormorgService.searchALLSIGNORG(context) ;
@@ -163,7 +163,7 @@ public class OrmOrgResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmOrg-ALLSIGNORG-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"组织管理" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询全部法人主体", tags = {"组织管理" } ,notes = "查询全部法人主体")
     @RequestMapping(method= RequestMethod.POST , value="/ormorgs/searchallsignorg")
 	public ResponseEntity<Page<OrmOrgDTO>> searchALLSIGNORG(@RequestBody OrmOrgSearchContext context) {
         Page<OrmOrg> domains = ormorgService.searchALLSIGNORG(context) ;
@@ -171,7 +171,7 @@ public class OrmOrgResource {
                 .body(new PageImpl(ormorgMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmOrg-AllLevelTwoOrg2-all')")
-	@ApiOperation(value = "获取全部二级单位（无权限）", tags = {"组织管理" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取全部二级单位（无权限）", tags = {"组织管理" } ,notes = "获取全部二级单位（无权限）")
     @RequestMapping(method= RequestMethod.GET , value="/ormorgs/fetchallleveltwoorg2")
 	public ResponseEntity<List<OrmOrgDTO>> fetchAllLevelTwoOrg2(OrmOrgSearchContext context) {
         Page<OrmOrg> domains = ormorgService.searchAllLevelTwoOrg2(context) ;
@@ -184,7 +184,7 @@ public class OrmOrgResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmOrg-AllLevelTwoOrg2-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"组织管理" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询全部二级单位（无权限）", tags = {"组织管理" } ,notes = "查询全部二级单位（无权限）")
     @RequestMapping(method= RequestMethod.POST , value="/ormorgs/searchallleveltwoorg2")
 	public ResponseEntity<Page<OrmOrgDTO>> searchAllLevelTwoOrg2(@RequestBody OrmOrgSearchContext context) {
         Page<OrmOrg> domains = ormorgService.searchAllLevelTwoOrg2(context) ;
@@ -192,7 +192,7 @@ public class OrmOrgResource {
                 .body(new PageImpl(ormorgMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmOrg-Orglist_Profile-all')")
-	@ApiOperation(value = "获取当前可选择组织列表（应聘者信息使用）", tags = {"组织管理" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取当前可选择组织列表（应聘者信息使用）", tags = {"组织管理" } ,notes = "获取当前可选择组织列表（应聘者信息使用）")
     @RequestMapping(method= RequestMethod.GET , value="/ormorgs/fetchorglist_profile")
 	public ResponseEntity<List<OrmOrgDTO>> fetchOrglist_Profile(OrmOrgSearchContext context) {
         Page<OrmOrg> domains = ormorgService.searchOrglist_Profile(context) ;
@@ -205,7 +205,7 @@ public class OrmOrgResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmOrg-Orglist_Profile-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"组织管理" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询当前可选择组织列表（应聘者信息使用）", tags = {"组织管理" } ,notes = "查询当前可选择组织列表（应聘者信息使用）")
     @RequestMapping(method= RequestMethod.POST , value="/ormorgs/searchorglist_profile")
 	public ResponseEntity<Page<OrmOrgDTO>> searchOrglist_Profile(@RequestBody OrmOrgSearchContext context) {
         Page<OrmOrg> domains = ormorgService.searchOrglist_Profile(context) ;
@@ -213,7 +213,7 @@ public class OrmOrgResource {
                 .body(new PageImpl(ormorgMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmOrg-REP_ORG-all')")
-	@ApiOperation(value = "获取组织分布", tags = {"组织管理" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取组织分布", tags = {"组织管理" } ,notes = "获取组织分布")
     @RequestMapping(method= RequestMethod.GET , value="/ormorgs/fetchrep_org")
 	public ResponseEntity<List<HashMap>> fetchREP_ORG(OrmOrgSearchContext context) {
         Page<HashMap> domains = ormorgService.searchREP_ORG(context) ;
@@ -225,7 +225,7 @@ public class OrmOrgResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmOrg-REP_ORG-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"组织管理" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询组织分布", tags = {"组织管理" } ,notes = "查询组织分布")
     @RequestMapping(method= RequestMethod.POST , value="/ormorgs/searchrep_org")
 	public ResponseEntity<Page<HashMap>> searchREP_ORG(@RequestBody OrmOrgSearchContext context) {
         Page<HashMap> domains = ormorgService.searchREP_ORG(context) ;
@@ -233,7 +233,7 @@ public class OrmOrgResource {
                 .body(new PageImpl(domains.getContent(), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmOrg-AuthOrg-all')")
-	@ApiOperation(value = "获取显示组织(权限控制)", tags = {"组织管理" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取显示组织(权限控制)", tags = {"组织管理" } ,notes = "获取显示组织(权限控制)")
     @RequestMapping(method= RequestMethod.GET , value="/ormorgs/fetchauthorg")
 	public ResponseEntity<List<OrmOrgDTO>> fetchAuthOrg(OrmOrgSearchContext context) {
         Page<OrmOrg> domains = ormorgService.searchAuthOrg(context) ;
@@ -246,7 +246,7 @@ public class OrmOrgResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmOrg-AuthOrg-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"组织管理" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询显示组织(权限控制)", tags = {"组织管理" } ,notes = "查询显示组织(权限控制)")
     @RequestMapping(method= RequestMethod.POST , value="/ormorgs/searchauthorg")
 	public ResponseEntity<Page<OrmOrgDTO>> searchAuthOrg(@RequestBody OrmOrgSearchContext context) {
         Page<OrmOrg> domains = ormorgService.searchAuthOrg(context) ;
@@ -254,7 +254,7 @@ public class OrmOrgResource {
                 .body(new PageImpl(ormorgMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmOrg-GSGWZY-all')")
-	@ApiOperation(value = "获取用于控制当前用户选择视图下拉显示（公司级岗位专用）", tags = {"组织管理" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取用于控制当前用户选择视图下拉显示（公司级岗位专用）", tags = {"组织管理" } ,notes = "获取用于控制当前用户选择视图下拉显示（公司级岗位专用）")
     @RequestMapping(method= RequestMethod.GET , value="/ormorgs/fetchgsgwzy")
 	public ResponseEntity<List<OrmOrgDTO>> fetchGSGWZY(OrmOrgSearchContext context) {
         Page<OrmOrg> domains = ormorgService.searchGSGWZY(context) ;
@@ -267,7 +267,7 @@ public class OrmOrgResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmOrg-GSGWZY-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"组织管理" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询用于控制当前用户选择视图下拉显示（公司级岗位专用）", tags = {"组织管理" } ,notes = "查询用于控制当前用户选择视图下拉显示（公司级岗位专用）")
     @RequestMapping(method= RequestMethod.POST , value="/ormorgs/searchgsgwzy")
 	public ResponseEntity<Page<OrmOrgDTO>> searchGSGWZY(@RequestBody OrmOrgSearchContext context) {
         Page<OrmOrg> domains = ormorgService.searchGSGWZY(context) ;
@@ -275,7 +275,7 @@ public class OrmOrgResource {
                 .body(new PageImpl(ormorgMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmOrg-SubSubOrg-all')")
-	@ApiOperation(value = "获取显示当前组织下组织", tags = {"组织管理" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取显示当前组织下组织", tags = {"组织管理" } ,notes = "获取显示当前组织下组织")
     @RequestMapping(method= RequestMethod.GET , value="/ormorgs/fetchsubsuborg")
 	public ResponseEntity<List<OrmOrgDTO>> fetchSubSubOrg(OrmOrgSearchContext context) {
         Page<OrmOrg> domains = ormorgService.searchSubSubOrg(context) ;
@@ -288,7 +288,7 @@ public class OrmOrgResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmOrg-SubSubOrg-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"组织管理" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询显示当前组织下组织", tags = {"组织管理" } ,notes = "查询显示当前组织下组织")
     @RequestMapping(method= RequestMethod.POST , value="/ormorgs/searchsubsuborg")
 	public ResponseEntity<Page<OrmOrgDTO>> searchSubSubOrg(@RequestBody OrmOrgSearchContext context) {
         Page<OrmOrg> domains = ormorgService.searchSubSubOrg(context) ;
@@ -296,7 +296,7 @@ public class OrmOrgResource {
                 .body(new PageImpl(ormorgMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmOrg-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"组织管理" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"组织管理" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/ormorgs/fetchdefault")
 	public ResponseEntity<List<OrmOrgDTO>> fetchDefault(OrmOrgSearchContext context) {
         Page<OrmOrg> domains = ormorgService.searchDefault(context) ;
@@ -309,7 +309,7 @@ public class OrmOrgResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmOrg-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"组织管理" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"组织管理" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/ormorgs/searchdefault")
 	public ResponseEntity<Page<OrmOrgDTO>> searchDefault(@RequestBody OrmOrgSearchContext context) {
         Page<OrmOrg> domains = ormorgService.searchDefault(context) ;
@@ -317,7 +317,7 @@ public class OrmOrgResource {
                 .body(new PageImpl(ormorgMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmOrg-CurChild-all')")
-	@ApiOperation(value = "获取子组织查询", tags = {"组织管理" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取子组织查询", tags = {"组织管理" } ,notes = "获取子组织查询")
     @RequestMapping(method= RequestMethod.GET , value="/ormorgs/fetchcurchild")
 	public ResponseEntity<List<OrmOrgDTO>> fetchCurChild(OrmOrgSearchContext context) {
         Page<OrmOrg> domains = ormorgService.searchCurChild(context) ;
@@ -330,7 +330,7 @@ public class OrmOrgResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmOrg-CurChild-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"组织管理" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询子组织查询", tags = {"组织管理" } ,notes = "查询子组织查询")
     @RequestMapping(method= RequestMethod.POST , value="/ormorgs/searchcurchild")
 	public ResponseEntity<Page<OrmOrgDTO>> searchCurChild(@RequestBody OrmOrgSearchContext context) {
         Page<OrmOrg> domains = ormorgService.searchCurChild(context) ;
@@ -338,7 +338,7 @@ public class OrmOrgResource {
                 .body(new PageImpl(ormorgMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmOrg-SJYXZZ-all')")
-	@ApiOperation(value = "获取三级组织及以下组织", tags = {"组织管理" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取三级组织及以下组织", tags = {"组织管理" } ,notes = "获取三级组织及以下组织")
     @RequestMapping(method= RequestMethod.GET , value="/ormorgs/fetchsjyxzz")
 	public ResponseEntity<List<OrmOrgDTO>> fetchSJYXZZ(OrmOrgSearchContext context) {
         Page<OrmOrg> domains = ormorgService.searchSJYXZZ(context) ;
@@ -351,7 +351,7 @@ public class OrmOrgResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmOrg-SJYXZZ-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"组织管理" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询三级组织及以下组织", tags = {"组织管理" } ,notes = "查询三级组织及以下组织")
     @RequestMapping(method= RequestMethod.POST , value="/ormorgs/searchsjyxzz")
 	public ResponseEntity<Page<OrmOrgDTO>> searchSJYXZZ(@RequestBody OrmOrgSearchContext context) {
         Page<OrmOrg> domains = ormorgService.searchSJYXZZ(context) ;
@@ -359,7 +359,7 @@ public class OrmOrgResource {
                 .body(new PageImpl(ormorgMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmOrg-REP_ORGPNUM-all')")
-	@ApiOperation(value = "获取组织人员总数", tags = {"组织管理" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取组织人员总数", tags = {"组织管理" } ,notes = "获取组织人员总数")
     @RequestMapping(method= RequestMethod.GET , value="/ormorgs/fetchrep_orgpnum")
 	public ResponseEntity<List<HashMap>> fetchREP_ORGPNUM(OrmOrgSearchContext context) {
         Page<HashMap> domains = ormorgService.searchREP_ORGPNUM(context) ;
@@ -371,7 +371,7 @@ public class OrmOrgResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmOrg-REP_ORGPNUM-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"组织管理" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询组织人员总数", tags = {"组织管理" } ,notes = "查询组织人员总数")
     @RequestMapping(method= RequestMethod.POST , value="/ormorgs/searchrep_orgpnum")
 	public ResponseEntity<Page<HashMap>> searchREP_ORGPNUM(@RequestBody OrmOrgSearchContext context) {
         Page<HashMap> domains = ormorgService.searchREP_ORGPNUM(context) ;
@@ -379,7 +379,7 @@ public class OrmOrgResource {
                 .body(new PageImpl(domains.getContent(), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmOrg-KZSJZZXZ-all')")
-	@ApiOperation(value = "获取用于控制当前用户选择视图下拉显示（上级组织）", tags = {"组织管理" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取用于控制当前用户选择视图下拉显示（上级组织）", tags = {"组织管理" } ,notes = "获取用于控制当前用户选择视图下拉显示（上级组织）")
     @RequestMapping(method= RequestMethod.GET , value="/ormorgs/fetchkzsjzzxz")
 	public ResponseEntity<List<OrmOrgDTO>> fetchKZSJZZXZ(OrmOrgSearchContext context) {
         Page<OrmOrg> domains = ormorgService.searchKZSJZZXZ(context) ;
@@ -392,7 +392,7 @@ public class OrmOrgResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmOrg-KZSJZZXZ-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"组织管理" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询用于控制当前用户选择视图下拉显示（上级组织）", tags = {"组织管理" } ,notes = "查询用于控制当前用户选择视图下拉显示（上级组织）")
     @RequestMapping(method= RequestMethod.POST , value="/ormorgs/searchkzsjzzxz")
 	public ResponseEntity<Page<OrmOrgDTO>> searchKZSJZZXZ(@RequestBody OrmOrgSearchContext context) {
         Page<OrmOrg> domains = ormorgService.searchKZSJZZXZ(context) ;
@@ -400,7 +400,7 @@ public class OrmOrgResource {
                 .body(new PageImpl(ormorgMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmOrg-DanQian-all')")
-	@ApiOperation(value = "获取查询当前登录人组织下的组织（包含当前组织）", tags = {"组织管理" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取查询当前登录人组织下的组织（包含当前组织）", tags = {"组织管理" } ,notes = "获取查询当前登录人组织下的组织（包含当前组织）")
     @RequestMapping(method= RequestMethod.GET , value="/ormorgs/fetchdanqian")
 	public ResponseEntity<List<OrmOrgDTO>> fetchDanQian(OrmOrgSearchContext context) {
         Page<OrmOrg> domains = ormorgService.searchDanQian(context) ;
@@ -413,7 +413,7 @@ public class OrmOrgResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmOrg-DanQian-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"组织管理" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询查询当前登录人组织下的组织（包含当前组织）", tags = {"组织管理" } ,notes = "查询查询当前登录人组织下的组织（包含当前组织）")
     @RequestMapping(method= RequestMethod.POST , value="/ormorgs/searchdanqian")
 	public ResponseEntity<Page<OrmOrgDTO>> searchDanQian(@RequestBody OrmOrgSearchContext context) {
         Page<OrmOrg> domains = ormorgService.searchDanQian(context) ;
@@ -421,7 +421,7 @@ public class OrmOrgResource {
                 .body(new PageImpl(ormorgMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmOrg-AllLevelTwoOrg-all')")
-	@ApiOperation(value = "获取全部二级单位", tags = {"组织管理" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取全部二级单位", tags = {"组织管理" } ,notes = "获取全部二级单位")
     @RequestMapping(method= RequestMethod.GET , value="/ormorgs/fetchallleveltwoorg")
 	public ResponseEntity<List<OrmOrgDTO>> fetchAllLevelTwoOrg(OrmOrgSearchContext context) {
         Page<OrmOrg> domains = ormorgService.searchAllLevelTwoOrg(context) ;
@@ -434,7 +434,7 @@ public class OrmOrgResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmOrg-AllLevelTwoOrg-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"组织管理" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询全部二级单位", tags = {"组织管理" } ,notes = "查询全部二级单位")
     @RequestMapping(method= RequestMethod.POST , value="/ormorgs/searchallleveltwoorg")
 	public ResponseEntity<Page<OrmOrgDTO>> searchAllLevelTwoOrg(@RequestBody OrmOrgSearchContext context) {
         Page<OrmOrg> domains = ormorgService.searchAllLevelTwoOrg(context) ;
@@ -442,7 +442,7 @@ public class OrmOrgResource {
                 .body(new PageImpl(ormorgMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmOrg-SubOrg-all')")
-	@ApiOperation(value = "获取显示当前组织包含所有组织", tags = {"组织管理" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取显示当前组织包含所有组织", tags = {"组织管理" } ,notes = "获取显示当前组织包含所有组织")
     @RequestMapping(method= RequestMethod.GET , value="/ormorgs/fetchsuborg")
 	public ResponseEntity<List<OrmOrgDTO>> fetchSubOrg(OrmOrgSearchContext context) {
         Page<OrmOrg> domains = ormorgService.searchSubOrg(context) ;
@@ -455,7 +455,7 @@ public class OrmOrgResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmOrg-SubOrg-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"组织管理" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询显示当前组织包含所有组织", tags = {"组织管理" } ,notes = "查询显示当前组织包含所有组织")
     @RequestMapping(method= RequestMethod.POST , value="/ormorgs/searchsuborg")
 	public ResponseEntity<Page<OrmOrgDTO>> searchSubOrg(@RequestBody OrmOrgSearchContext context) {
         Page<OrmOrg> domains = ormorgService.searchSubOrg(context) ;
@@ -463,7 +463,7 @@ public class OrmOrgResource {
                 .body(new PageImpl(ormorgMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmOrg-HTGLDW-all')")
-	@ApiOperation(value = "获取合同管理单位", tags = {"组织管理" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取合同管理单位", tags = {"组织管理" } ,notes = "获取合同管理单位")
     @RequestMapping(method= RequestMethod.GET , value="/ormorgs/fetchhtgldw")
 	public ResponseEntity<List<OrmOrgDTO>> fetchHTGLDW(OrmOrgSearchContext context) {
         Page<OrmOrg> domains = ormorgService.searchHTGLDW(context) ;
@@ -476,7 +476,7 @@ public class OrmOrgResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmOrg-HTGLDW-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"组织管理" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询合同管理单位", tags = {"组织管理" } ,notes = "查询合同管理单位")
     @RequestMapping(method= RequestMethod.POST , value="/ormorgs/searchhtgldw")
 	public ResponseEntity<Page<OrmOrgDTO>> searchHTGLDW(@RequestBody OrmOrgSearchContext context) {
         Page<OrmOrg> domains = ormorgService.searchHTGLDW(context) ;
@@ -484,7 +484,7 @@ public class OrmOrgResource {
                 .body(new PageImpl(ormorgMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmOrg-KZXLXZ-all')")
-	@ApiOperation(value = "获取用于控制当前用户选择视图下拉显示（当前组织）", tags = {"组织管理" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取用于控制当前用户选择视图下拉显示（当前组织）", tags = {"组织管理" } ,notes = "获取用于控制当前用户选择视图下拉显示（当前组织）")
     @RequestMapping(method= RequestMethod.GET , value="/ormorgs/fetchkzxlxz")
 	public ResponseEntity<List<OrmOrgDTO>> fetchKZXLXZ(OrmOrgSearchContext context) {
         Page<OrmOrg> domains = ormorgService.searchKZXLXZ(context) ;
@@ -497,7 +497,7 @@ public class OrmOrgResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmOrg-KZXLXZ-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"组织管理" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询用于控制当前用户选择视图下拉显示（当前组织）", tags = {"组织管理" } ,notes = "查询用于控制当前用户选择视图下拉显示（当前组织）")
     @RequestMapping(method= RequestMethod.POST , value="/ormorgs/searchkzxlxz")
 	public ResponseEntity<Page<OrmOrgDTO>> searchKZXLXZ(@RequestBody OrmOrgSearchContext context) {
         Page<OrmOrg> domains = ormorgService.searchKZXLXZ(context) ;
@@ -505,7 +505,7 @@ public class OrmOrgResource {
                 .body(new PageImpl(ormorgMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmOrg-AuthSJYXZZ-all')")
-	@ApiOperation(value = "获取三级组织及以下组织（权限控制）", tags = {"组织管理" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取三级组织及以下组织（权限控制）", tags = {"组织管理" } ,notes = "获取三级组织及以下组织（权限控制）")
     @RequestMapping(method= RequestMethod.GET , value="/ormorgs/fetchauthsjyxzz")
 	public ResponseEntity<List<OrmOrgDTO>> fetchAuthSJYXZZ(OrmOrgSearchContext context) {
         Page<OrmOrg> domains = ormorgService.searchAuthSJYXZZ(context) ;
@@ -518,7 +518,7 @@ public class OrmOrgResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmOrg-AuthSJYXZZ-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"组织管理" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询三级组织及以下组织（权限控制）", tags = {"组织管理" } ,notes = "查询三级组织及以下组织（权限控制）")
     @RequestMapping(method= RequestMethod.POST , value="/ormorgs/searchauthsjyxzz")
 	public ResponseEntity<Page<OrmOrgDTO>> searchAuthSJYXZZ(@RequestBody OrmOrgSearchContext context) {
         Page<OrmOrg> domains = ormorgService.searchAuthSJYXZZ(context) ;
@@ -526,7 +526,7 @@ public class OrmOrgResource {
                 .body(new PageImpl(ormorgMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmOrg-UseByFP-all')")
-	@ApiOperation(value = "获取分配信息专用（组织过滤）", tags = {"组织管理" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取分配信息专用（组织过滤）", tags = {"组织管理" } ,notes = "获取分配信息专用（组织过滤）")
     @RequestMapping(method= RequestMethod.GET , value="/ormorgs/fetchusebyfp")
 	public ResponseEntity<List<OrmOrgDTO>> fetchUseByFP(OrmOrgSearchContext context) {
         Page<OrmOrg> domains = ormorgService.searchUseByFP(context) ;
@@ -539,7 +539,7 @@ public class OrmOrgResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmOrg-UseByFP-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"组织管理" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询分配信息专用（组织过滤）", tags = {"组织管理" } ,notes = "查询分配信息专用（组织过滤）")
     @RequestMapping(method= RequestMethod.POST , value="/ormorgs/searchusebyfp")
 	public ResponseEntity<Page<OrmOrgDTO>> searchUseByFP(@RequestBody OrmOrgSearchContext context) {
         Page<OrmOrg> domains = ormorgService.searchUseByFP(context) ;
@@ -547,7 +547,7 @@ public class OrmOrgResource {
                 .body(new PageImpl(ormorgMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmOrg-CurPorg-all')")
-	@ApiOperation(value = "获取根组织查询", tags = {"组织管理" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取根组织查询", tags = {"组织管理" } ,notes = "获取根组织查询")
     @RequestMapping(method= RequestMethod.GET , value="/ormorgs/fetchcurporg")
 	public ResponseEntity<List<OrmOrgDTO>> fetchCurPorg(OrmOrgSearchContext context) {
         Page<OrmOrg> domains = ormorgService.searchCurPorg(context) ;
@@ -560,7 +560,7 @@ public class OrmOrgResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmOrg-CurPorg-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"组织管理" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询根组织查询", tags = {"组织管理" } ,notes = "查询根组织查询")
     @RequestMapping(method= RequestMethod.POST , value="/ormorgs/searchcurporg")
 	public ResponseEntity<Page<OrmOrgDTO>> searchCurPorg(@RequestBody OrmOrgSearchContext context) {
         Page<OrmOrg> domains = ormorgService.searchCurPorg(context) ;

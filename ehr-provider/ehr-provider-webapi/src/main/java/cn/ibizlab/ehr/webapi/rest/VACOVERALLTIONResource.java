@@ -138,7 +138,7 @@ public class VACOVERALLTIONResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACOVERALLTION-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"统筹休假(暂时停用)" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"统筹休假(暂时停用)" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/vacoveralltions/fetchdefault")
 	public ResponseEntity<List<VACOVERALLTIONDTO>> fetchDefault(VACOVERALLTIONSearchContext context) {
         Page<VACOVERALLTION> domains = vacoveralltionService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class VACOVERALLTIONResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACOVERALLTION-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"统筹休假(暂时停用)" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"统筹休假(暂时停用)" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/vacoveralltions/searchdefault")
 	public ResponseEntity<Page<VACOVERALLTIONDTO>> searchDefault(@RequestBody VACOVERALLTIONSearchContext context) {
         Page<VACOVERALLTION> domains = vacoveralltionService.searchDefault(context) ;

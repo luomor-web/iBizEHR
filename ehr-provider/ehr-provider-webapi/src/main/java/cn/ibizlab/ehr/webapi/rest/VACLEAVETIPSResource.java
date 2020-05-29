@@ -162,7 +162,7 @@ public class VACLEAVETIPSResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACLEAVETIPS-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"请假提示" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"请假提示" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/vacleavetips/fetchdefault")
 	public ResponseEntity<List<VACLEAVETIPSDTO>> fetchDefault(VACLEAVETIPSSearchContext context) {
         Page<VACLEAVETIPS> domains = vacleavetipsService.searchDefault(context) ;
@@ -175,7 +175,7 @@ public class VACLEAVETIPSResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACLEAVETIPS-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"请假提示" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"请假提示" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/vacleavetips/searchdefault")
 	public ResponseEntity<Page<VACLEAVETIPSDTO>> searchDefault(@RequestBody VACLEAVETIPSSearchContext context) {
         Page<VACLEAVETIPS> domains = vacleavetipsService.searchDefault(context) ;

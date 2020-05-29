@@ -138,7 +138,7 @@ public class ContractSignORGResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ContractSignORG-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"签约主体单位" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"签约主体单位" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/contractsignorgs/fetchdefault")
 	public ResponseEntity<List<ContractSignORGDTO>> fetchDefault(ContractSignORGSearchContext context) {
         Page<ContractSignORG> domains = contractsignorgService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class ContractSignORGResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ContractSignORG-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"签约主体单位" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"签约主体单位" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/contractsignorgs/searchdefault")
 	public ResponseEntity<Page<ContractSignORGDTO>> searchDefault(@RequestBody ContractSignORGSearchContext context) {
         Page<ContractSignORG> domains = contractsignorgService.searchDefault(context) ;
@@ -159,7 +159,7 @@ public class ContractSignORGResource {
                 .body(new PageImpl(contractsignorgMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ContractSignORG-Default2-all')")
-	@ApiOperation(value = "获取DEFAULT2", tags = {"签约主体单位" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT2", tags = {"签约主体单位" } ,notes = "获取DEFAULT2")
     @RequestMapping(method= RequestMethod.GET , value="/contractsignorgs/fetchdefault2")
 	public ResponseEntity<List<ContractSignORGDTO>> fetchDefault2(ContractSignORGSearchContext context) {
         Page<ContractSignORG> domains = contractsignorgService.searchDefault2(context) ;
@@ -172,7 +172,7 @@ public class ContractSignORGResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ContractSignORG-Default2-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"签约主体单位" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT2", tags = {"签约主体单位" } ,notes = "查询DEFAULT2")
     @RequestMapping(method= RequestMethod.POST , value="/contractsignorgs/searchdefault2")
 	public ResponseEntity<Page<ContractSignORGDTO>> searchDefault2(@RequestBody ContractSignORGSearchContext context) {
         Page<ContractSignORG> domains = contractsignorgService.searchDefault2(context) ;

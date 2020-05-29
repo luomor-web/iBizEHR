@@ -138,7 +138,7 @@ public class PcmZsglResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmZsgl-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"职数管理" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"职数管理" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pcmzsgls/fetchdefault")
 	public ResponseEntity<List<PcmZsglDTO>> fetchDefault(PcmZsglSearchContext context) {
         Page<PcmZsgl> domains = pcmzsglService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class PcmZsglResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmZsgl-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"职数管理" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"职数管理" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pcmzsgls/searchdefault")
 	public ResponseEntity<Page<PcmZsglDTO>> searchDefault(@RequestBody PcmZsglSearchContext context) {
         Page<PcmZsgl> domains = pcmzsglService.searchDefault(context) ;

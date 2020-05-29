@@ -29,7 +29,6 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 /**
  * 实体[工作日管理（停用）]
  */
-@Builder
 @Getter
 @Setter
 @NoArgsConstructor

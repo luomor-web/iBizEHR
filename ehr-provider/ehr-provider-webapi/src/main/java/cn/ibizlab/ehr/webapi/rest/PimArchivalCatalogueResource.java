@@ -138,7 +138,7 @@ public class PimArchivalCatalogueResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimArchivalCatalogue-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"档案目录" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"档案目录" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimarchivalcatalogues/fetchdefault")
 	public ResponseEntity<List<PimArchivalCatalogueDTO>> fetchDefault(PimArchivalCatalogueSearchContext context) {
         Page<PimArchivalCatalogue> domains = pimarchivalcatalogueService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class PimArchivalCatalogueResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimArchivalCatalogue-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"档案目录" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"档案目录" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pimarchivalcatalogues/searchdefault")
 	public ResponseEntity<Page<PimArchivalCatalogueDTO>> searchDefault(@RequestBody PimArchivalCatalogueSearchContext context) {
         Page<PimArchivalCatalogue> domains = pimarchivalcatalogueService.searchDefault(context) ;

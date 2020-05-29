@@ -29,7 +29,6 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 /**
  * 实体[教育背景]
  */
-@Builder
 @Getter
 @Setter
 @NoArgsConstructor

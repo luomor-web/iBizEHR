@@ -29,7 +29,6 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 /**
  * 实体[考勤记录(中间表)]
  */
-@Builder
 @Getter
 @Setter
 @NoArgsConstructor

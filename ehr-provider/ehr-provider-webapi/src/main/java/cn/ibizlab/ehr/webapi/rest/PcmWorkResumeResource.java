@@ -138,7 +138,7 @@ public class PcmWorkResumeResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmWorkResume-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"工作履历" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"工作履历" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pcmworkresumes/fetchdefault")
 	public ResponseEntity<List<PcmWorkResumeDTO>> fetchDefault(PcmWorkResumeSearchContext context) {
         Page<PcmWorkResume> domains = pcmworkresumeService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class PcmWorkResumeResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmWorkResume-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"工作履历" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"工作履历" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pcmworkresumes/searchdefault")
 	public ResponseEntity<Page<PcmWorkResumeDTO>> searchDefault(@RequestBody PcmWorkResumeSearchContext context) {
         Page<PcmWorkResume> domains = pcmworkresumeService.searchDefault(context) ;

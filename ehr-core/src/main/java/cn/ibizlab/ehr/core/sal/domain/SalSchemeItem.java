@@ -29,7 +29,6 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 /**
  * 实体[工资单要素项]
  */
-@Builder
 @Getter
 @Setter
 @NoArgsConstructor

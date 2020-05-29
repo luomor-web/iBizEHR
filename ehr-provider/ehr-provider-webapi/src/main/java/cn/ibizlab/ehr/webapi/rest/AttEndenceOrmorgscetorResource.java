@@ -138,7 +138,7 @@ public class AttEndenceOrmorgscetorResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-AttEndenceOrmorgscetor-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"考勤部门" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"考勤部门" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/attendenceormorgscetors/fetchdefault")
 	public ResponseEntity<List<AttEndenceOrmorgscetorDTO>> fetchDefault(AttEndenceOrmorgscetorSearchContext context) {
         Page<AttEndenceOrmorgscetor> domains = attendenceormorgscetorService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class AttEndenceOrmorgscetorResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-AttEndenceOrmorgscetor-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"考勤部门" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"考勤部门" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/attendenceormorgscetors/searchdefault")
 	public ResponseEntity<Page<AttEndenceOrmorgscetorDTO>> searchDefault(@RequestBody AttEndenceOrmorgscetorSearchContext context) {
         Page<AttEndenceOrmorgscetor> domains = attendenceormorgscetorService.searchDefault(context) ;

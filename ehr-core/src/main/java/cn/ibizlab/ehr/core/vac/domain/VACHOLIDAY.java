@@ -29,7 +29,6 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 /**
  * 实体[节假日管理]
  */
-@Builder
 @Getter
 @Setter
 @NoArgsConstructor

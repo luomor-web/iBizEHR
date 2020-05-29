@@ -29,7 +29,6 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 /**
  * 实体[组合查询记录]
  */
-@Builder
 @Getter
 @Setter
 @NoArgsConstructor

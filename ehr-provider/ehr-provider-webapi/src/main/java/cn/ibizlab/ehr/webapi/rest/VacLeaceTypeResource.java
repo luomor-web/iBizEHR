@@ -138,7 +138,7 @@ public class VacLeaceTypeResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VacLeaceType-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"休假类型" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"休假类型" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/vacleacetypes/fetchdefault")
 	public ResponseEntity<List<VacLeaceTypeDTO>> fetchDefault(VacLeaceTypeSearchContext context) {
         Page<VacLeaceType> domains = vacleacetypeService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class VacLeaceTypeResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VacLeaceType-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"休假类型" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"休假类型" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/vacleacetypes/searchdefault")
 	public ResponseEntity<Page<VacLeaceTypeDTO>> searchDefault(@RequestBody VacLeaceTypeSearchContext context) {
         Page<VacLeaceType> domains = vacleacetypeService.searchDefault(context) ;

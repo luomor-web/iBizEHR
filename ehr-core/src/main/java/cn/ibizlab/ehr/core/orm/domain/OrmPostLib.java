@@ -29,7 +29,6 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 /**
  * 实体[岗位库]
  */
-@Builder
 @Getter
 @Setter
 @NoArgsConstructor

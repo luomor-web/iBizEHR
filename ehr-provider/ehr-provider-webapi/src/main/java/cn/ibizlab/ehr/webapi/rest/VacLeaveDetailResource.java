@@ -174,7 +174,7 @@ public class VacLeaveDetailResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VacLeaveDetail-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"请假明细" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"请假明细" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/vacleavedetails/fetchdefault")
 	public ResponseEntity<List<VacLeaveDetailDTO>> fetchDefault(VacLeaveDetailSearchContext context) {
         Page<VacLeaveDetail> domains = vacleavedetailService.searchDefault(context) ;
@@ -187,7 +187,7 @@ public class VacLeaveDetailResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VacLeaveDetail-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"请假明细" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"请假明细" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/vacleavedetails/searchdefault")
 	public ResponseEntity<Page<VacLeaveDetailDTO>> searchDefault(@RequestBody VacLeaveDetailSearchContext context) {
         Page<VacLeaveDetail> domains = vacleavedetailService.searchDefault(context) ;

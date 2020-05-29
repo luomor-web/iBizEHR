@@ -138,7 +138,7 @@ public class ORMXMRLCBResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMXMRLCB-CBCX-all')")
-	@ApiOperation(value = "获取项目人工成本查询", tags = {"项目人力成本" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取项目人工成本查询", tags = {"项目人力成本" } ,notes = "获取项目人工成本查询")
     @RequestMapping(method= RequestMethod.GET , value="/ormxmrlcbs/fetchcbcx")
 	public ResponseEntity<List<ORMXMRLCBDTO>> fetchCBCX(ORMXMRLCBSearchContext context) {
         Page<ORMXMRLCB> domains = ormxmrlcbService.searchCBCX(context) ;
@@ -151,7 +151,7 @@ public class ORMXMRLCBResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMXMRLCB-CBCX-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"项目人力成本" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询项目人工成本查询", tags = {"项目人力成本" } ,notes = "查询项目人工成本查询")
     @RequestMapping(method= RequestMethod.POST , value="/ormxmrlcbs/searchcbcx")
 	public ResponseEntity<Page<ORMXMRLCBDTO>> searchCBCX(@RequestBody ORMXMRLCBSearchContext context) {
         Page<ORMXMRLCB> domains = ormxmrlcbService.searchCBCX(context) ;
@@ -159,7 +159,7 @@ public class ORMXMRLCBResource {
                 .body(new PageImpl(ormxmrlcbMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMXMRLCB-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"项目人力成本" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"项目人力成本" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/ormxmrlcbs/fetchdefault")
 	public ResponseEntity<List<ORMXMRLCBDTO>> fetchDefault(ORMXMRLCBSearchContext context) {
         Page<ORMXMRLCB> domains = ormxmrlcbService.searchDefault(context) ;
@@ -172,7 +172,7 @@ public class ORMXMRLCBResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMXMRLCB-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"项目人力成本" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"项目人力成本" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/ormxmrlcbs/searchdefault")
 	public ResponseEntity<Page<ORMXMRLCBDTO>> searchDefault(@RequestBody ORMXMRLCBSearchContext context) {
         Page<ORMXMRLCB> domains = ormxmrlcbService.searchDefault(context) ;

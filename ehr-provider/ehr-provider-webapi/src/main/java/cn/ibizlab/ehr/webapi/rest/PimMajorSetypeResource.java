@@ -138,7 +138,7 @@ public class PimMajorSetypeResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimMajorSetype-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"专业序列类型" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"专业序列类型" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimmajorsetypes/fetchdefault")
 	public ResponseEntity<List<PimMajorSetypeDTO>> fetchDefault(PimMajorSetypeSearchContext context) {
         Page<PimMajorSetype> domains = pimmajorsetypeService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class PimMajorSetypeResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimMajorSetype-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"专业序列类型" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"专业序列类型" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pimmajorsetypes/searchdefault")
 	public ResponseEntity<Page<PimMajorSetypeDTO>> searchDefault(@RequestBody PimMajorSetypeSearchContext context) {
         Page<PimMajorSetype> domains = pimmajorsetypeService.searchDefault(context) ;

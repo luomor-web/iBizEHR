@@ -138,7 +138,7 @@ public class TrmEmployeeRetionResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TrmEmployeeRetion-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"员工培训报名" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"员工培训报名" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/trmemployeeretions/fetchdefault")
 	public ResponseEntity<List<TrmEmployeeRetionDTO>> fetchDefault(TrmEmployeeRetionSearchContext context) {
         Page<TrmEmployeeRetion> domains = trmemployeeretionService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class TrmEmployeeRetionResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TrmEmployeeRetion-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"员工培训报名" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"员工培训报名" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/trmemployeeretions/searchdefault")
 	public ResponseEntity<Page<TrmEmployeeRetionDTO>> searchDefault(@RequestBody TrmEmployeeRetionSearchContext context) {
         Page<TrmEmployeeRetion> domains = trmemployeeretionService.searchDefault(context) ;

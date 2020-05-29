@@ -29,7 +29,6 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 /**
  * 实体[应聘者审批原因]
  */
-@Builder
 @Getter
 @Setter
 @NoArgsConstructor

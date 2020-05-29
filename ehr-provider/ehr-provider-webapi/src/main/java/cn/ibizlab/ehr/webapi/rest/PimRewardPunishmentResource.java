@@ -138,7 +138,7 @@ public class PimRewardPunishmentResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimRewardPunishment-ZIZHU-all')")
-	@ApiOperation(value = "获取自助(奖惩信息)", tags = {"奖惩信息" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取自助(奖惩信息)", tags = {"奖惩信息" } ,notes = "获取自助(奖惩信息)")
     @RequestMapping(method= RequestMethod.GET , value="/pimrewardpunishments/fetchzizhu")
 	public ResponseEntity<List<PimRewardPunishmentDTO>> fetchZIZHU(PimRewardPunishmentSearchContext context) {
         Page<PimRewardPunishment> domains = pimrewardpunishmentService.searchZIZHU(context) ;
@@ -151,7 +151,7 @@ public class PimRewardPunishmentResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimRewardPunishment-ZIZHU-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"奖惩信息" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询自助(奖惩信息)", tags = {"奖惩信息" } ,notes = "查询自助(奖惩信息)")
     @RequestMapping(method= RequestMethod.POST , value="/pimrewardpunishments/searchzizhu")
 	public ResponseEntity<Page<PimRewardPunishmentDTO>> searchZIZHU(@RequestBody PimRewardPunishmentSearchContext context) {
         Page<PimRewardPunishment> domains = pimrewardpunishmentService.searchZIZHU(context) ;
@@ -159,7 +159,7 @@ public class PimRewardPunishmentResource {
                 .body(new PageImpl(pimrewardpunishmentMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimRewardPunishment-HONORARY-all')")
-	@ApiOperation(value = "获取公司及以上荣誉", tags = {"奖惩信息" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取公司及以上荣誉", tags = {"奖惩信息" } ,notes = "获取公司及以上荣誉")
     @RequestMapping(method= RequestMethod.GET , value="/pimrewardpunishments/fetchhonorary")
 	public ResponseEntity<List<PimRewardPunishmentDTO>> fetchHONORARY(PimRewardPunishmentSearchContext context) {
         Page<PimRewardPunishment> domains = pimrewardpunishmentService.searchHONORARY(context) ;
@@ -172,7 +172,7 @@ public class PimRewardPunishmentResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimRewardPunishment-HONORARY-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"奖惩信息" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询公司及以上荣誉", tags = {"奖惩信息" } ,notes = "查询公司及以上荣誉")
     @RequestMapping(method= RequestMethod.POST , value="/pimrewardpunishments/searchhonorary")
 	public ResponseEntity<Page<PimRewardPunishmentDTO>> searchHONORARY(@RequestBody PimRewardPunishmentSearchContext context) {
         Page<PimRewardPunishment> domains = pimrewardpunishmentService.searchHONORARY(context) ;
@@ -180,7 +180,7 @@ public class PimRewardPunishmentResource {
                 .body(new PageImpl(pimrewardpunishmentMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimRewardPunishment-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"奖惩信息" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"奖惩信息" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimrewardpunishments/fetchdefault")
 	public ResponseEntity<List<PimRewardPunishmentDTO>> fetchDefault(PimRewardPunishmentSearchContext context) {
         Page<PimRewardPunishment> domains = pimrewardpunishmentService.searchDefault(context) ;
@@ -193,7 +193,7 @@ public class PimRewardPunishmentResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimRewardPunishment-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"奖惩信息" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"奖惩信息" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pimrewardpunishments/searchdefault")
 	public ResponseEntity<Page<PimRewardPunishmentDTO>> searchDefault(@RequestBody PimRewardPunishmentSearchContext context) {
         Page<PimRewardPunishment> domains = pimrewardpunishmentService.searchDefault(context) ;
@@ -201,7 +201,7 @@ public class PimRewardPunishmentResource {
                 .body(new PageImpl(pimrewardpunishmentMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimRewardPunishment-JLSS-all')")
-	@ApiOperation(value = "获取记录所属", tags = {"奖惩信息" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取记录所属", tags = {"奖惩信息" } ,notes = "获取记录所属")
     @RequestMapping(method= RequestMethod.GET , value="/pimrewardpunishments/fetchjlss")
 	public ResponseEntity<List<PimRewardPunishmentDTO>> fetchJLSS(PimRewardPunishmentSearchContext context) {
         Page<PimRewardPunishment> domains = pimrewardpunishmentService.searchJLSS(context) ;
@@ -214,7 +214,7 @@ public class PimRewardPunishmentResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimRewardPunishment-JLSS-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"奖惩信息" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询记录所属", tags = {"奖惩信息" } ,notes = "查询记录所属")
     @RequestMapping(method= RequestMethod.POST , value="/pimrewardpunishments/searchjlss")
 	public ResponseEntity<Page<PimRewardPunishmentDTO>> searchJLSS(@RequestBody PimRewardPunishmentSearchContext context) {
         Page<PimRewardPunishment> domains = pimrewardpunishmentService.searchJLSS(context) ;

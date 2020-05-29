@@ -138,7 +138,7 @@ public class VACUSENXJMXResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACUSENXJMX-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"假期使用明细" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"假期使用明细" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/vacusenxjmxes/fetchdefault")
 	public ResponseEntity<List<VACUSENXJMXDTO>> fetchDefault(VACUSENXJMXSearchContext context) {
         Page<VACUSENXJMX> domains = vacusenxjmxService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class VACUSENXJMXResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACUSENXJMX-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"假期使用明细" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"假期使用明细" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/vacusenxjmxes/searchdefault")
 	public ResponseEntity<Page<VACUSENXJMXDTO>> searchDefault(@RequestBody VACUSENXJMXSearchContext context) {
         Page<VACUSENXJMX> domains = vacusenxjmxService.searchDefault(context) ;

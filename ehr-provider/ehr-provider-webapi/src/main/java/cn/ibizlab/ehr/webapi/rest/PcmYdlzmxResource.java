@@ -162,7 +162,7 @@ public class PcmYdlzmxResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmYdlzmx-GLDQ-all')")
-	@ApiOperation(value = "获取管理查询", tags = {"异动离职明细" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取管理查询", tags = {"异动离职明细" } ,notes = "获取管理查询")
     @RequestMapping(method= RequestMethod.GET , value="/pcmydlzmxes/fetchgldq")
 	public ResponseEntity<List<PcmYdlzmxDTO>> fetchGLDQ(PcmYdlzmxSearchContext context) {
         Page<PcmYdlzmx> domains = pcmydlzmxService.searchGLDQ(context) ;
@@ -175,7 +175,7 @@ public class PcmYdlzmxResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmYdlzmx-GLDQ-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"异动离职明细" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询管理查询", tags = {"异动离职明细" } ,notes = "查询管理查询")
     @RequestMapping(method= RequestMethod.POST , value="/pcmydlzmxes/searchgldq")
 	public ResponseEntity<Page<PcmYdlzmxDTO>> searchGLDQ(@RequestBody PcmYdlzmxSearchContext context) {
         Page<PcmYdlzmx> domains = pcmydlzmxService.searchGLDQ(context) ;
@@ -183,7 +183,7 @@ public class PcmYdlzmxResource {
                 .body(new PageImpl(pcmydlzmxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmYdlzmx-JLDQ-all')")
-	@ApiOperation(value = "获取记录查询", tags = {"异动离职明细" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取记录查询", tags = {"异动离职明细" } ,notes = "获取记录查询")
     @RequestMapping(method= RequestMethod.GET , value="/pcmydlzmxes/fetchjldq")
 	public ResponseEntity<List<PcmYdlzmxDTO>> fetchJLDQ(PcmYdlzmxSearchContext context) {
         Page<PcmYdlzmx> domains = pcmydlzmxService.searchJLDQ(context) ;
@@ -196,7 +196,7 @@ public class PcmYdlzmxResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmYdlzmx-JLDQ-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"异动离职明细" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询记录查询", tags = {"异动离职明细" } ,notes = "查询记录查询")
     @RequestMapping(method= RequestMethod.POST , value="/pcmydlzmxes/searchjldq")
 	public ResponseEntity<Page<PcmYdlzmxDTO>> searchJLDQ(@RequestBody PcmYdlzmxSearchContext context) {
         Page<PcmYdlzmx> domains = pcmydlzmxService.searchJLDQ(context) ;
@@ -204,7 +204,7 @@ public class PcmYdlzmxResource {
                 .body(new PageImpl(pcmydlzmxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmYdlzmx-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"异动离职明细" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"异动离职明细" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pcmydlzmxes/fetchdefault")
 	public ResponseEntity<List<PcmYdlzmxDTO>> fetchDefault(PcmYdlzmxSearchContext context) {
         Page<PcmYdlzmx> domains = pcmydlzmxService.searchDefault(context) ;
@@ -217,7 +217,7 @@ public class PcmYdlzmxResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmYdlzmx-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"异动离职明细" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"异动离职明细" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pcmydlzmxes/searchdefault")
 	public ResponseEntity<Page<PcmYdlzmxDTO>> searchDefault(@RequestBody PcmYdlzmxSearchContext context) {
         Page<PcmYdlzmx> domains = pcmydlzmxService.searchDefault(context) ;

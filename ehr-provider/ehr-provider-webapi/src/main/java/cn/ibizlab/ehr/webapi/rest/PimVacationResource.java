@@ -138,7 +138,7 @@ public class PimVacationResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimVacation-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"休假信息" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"休假信息" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimvacations/fetchdefault")
 	public ResponseEntity<List<PimVacationDTO>> fetchDefault(PimVacationSearchContext context) {
         Page<PimVacation> domains = pimvacationService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class PimVacationResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimVacation-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"休假信息" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"休假信息" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pimvacations/searchdefault")
 	public ResponseEntity<Page<PimVacationDTO>> searchDefault(@RequestBody PimVacationSearchContext context) {
         Page<PimVacation> domains = pimvacationService.searchDefault(context) ;

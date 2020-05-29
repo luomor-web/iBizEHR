@@ -29,7 +29,6 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 /**
  * 实体[通知选择部门副职及以下]
  */
-@Builder
 @Getter
 @Setter
 @NoArgsConstructor

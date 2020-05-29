@@ -138,7 +138,7 @@ public class PcmRzglResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmRzgl-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"任职管理" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"任职管理" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pcmrzgls/fetchdefault")
 	public ResponseEntity<List<PcmRzglDTO>> fetchDefault(PcmRzglSearchContext context) {
         Page<PcmRzgl> domains = pcmrzglService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class PcmRzglResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmRzgl-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"任职管理" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"任职管理" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pcmrzgls/searchdefault")
 	public ResponseEntity<Page<PcmRzglDTO>> searchDefault(@RequestBody PcmRzglSearchContext context) {
         Page<PcmRzgl> domains = pcmrzglService.searchDefault(context) ;
@@ -159,7 +159,7 @@ public class PcmRzglResource {
                 .body(new PageImpl(pcmrzglMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmRzgl-GBRZQXDQ-all')")
-	@ApiOperation(value = "获取干部任职期限查询", tags = {"任职管理" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取干部任职期限查询", tags = {"任职管理" } ,notes = "获取干部任职期限查询")
     @RequestMapping(method= RequestMethod.GET , value="/pcmrzgls/fetchgbrzqxdq")
 	public ResponseEntity<List<PcmRzglDTO>> fetchGBRZQXDQ(PcmRzglSearchContext context) {
         Page<PcmRzgl> domains = pcmrzglService.searchGBRZQXDQ(context) ;
@@ -172,7 +172,7 @@ public class PcmRzglResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmRzgl-GBRZQXDQ-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"任职管理" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询干部任职期限查询", tags = {"任职管理" } ,notes = "查询干部任职期限查询")
     @RequestMapping(method= RequestMethod.POST , value="/pcmrzgls/searchgbrzqxdq")
 	public ResponseEntity<Page<PcmRzglDTO>> searchGBRZQXDQ(@RequestBody PcmRzglSearchContext context) {
         Page<PcmRzgl> domains = pcmrzglService.searchGBRZQXDQ(context) ;
@@ -180,7 +180,7 @@ public class PcmRzglResource {
                 .body(new PageImpl(pcmrzglMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmRzgl-RQCX-all')")
-	@ApiOperation(value = "获取RQCX", tags = {"任职管理" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取RQCX", tags = {"任职管理" } ,notes = "获取RQCX")
     @RequestMapping(method= RequestMethod.GET , value="/pcmrzgls/fetchrqcx")
 	public ResponseEntity<List<PcmRzglDTO>> fetchRQCX(PcmRzglSearchContext context) {
         Page<PcmRzgl> domains = pcmrzglService.searchRQCX(context) ;
@@ -193,7 +193,7 @@ public class PcmRzglResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmRzgl-RQCX-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"任职管理" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询RQCX", tags = {"任职管理" } ,notes = "查询RQCX")
     @RequestMapping(method= RequestMethod.POST , value="/pcmrzgls/searchrqcx")
 	public ResponseEntity<Page<PcmRzglDTO>> searchRQCX(@RequestBody PcmRzglSearchContext context) {
         Page<PcmRzgl> domains = pcmrzglService.searchRQCX(context) ;

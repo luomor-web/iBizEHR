@@ -174,7 +174,7 @@ public class PcmEducationExperienceResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmEducationExperience-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"教育背景" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"教育背景" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pcmeducationexperiences/fetchdefault")
 	public ResponseEntity<List<PcmEducationExperienceDTO>> fetchDefault(PcmEducationExperienceSearchContext context) {
         Page<PcmEducationExperience> domains = pcmeducationexperienceService.searchDefault(context) ;
@@ -187,7 +187,7 @@ public class PcmEducationExperienceResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmEducationExperience-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"教育背景" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"教育背景" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pcmeducationexperiences/searchdefault")
 	public ResponseEntity<Page<PcmEducationExperienceDTO>> searchDefault(@RequestBody PcmEducationExperienceSearchContext context) {
         Page<PcmEducationExperience> domains = pcmeducationexperienceService.searchDefault(context) ;

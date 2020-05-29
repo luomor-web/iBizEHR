@@ -138,7 +138,7 @@ public class SocSelfarebasemxResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SocSelfarebasemx-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"社保明细" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"社保明细" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/socselfarebasemxes/fetchdefault")
 	public ResponseEntity<List<SocSelfarebasemxDTO>> fetchDefault(SocSelfarebasemxSearchContext context) {
         Page<SocSelfarebasemx> domains = socselfarebasemxService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class SocSelfarebasemxResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SocSelfarebasemx-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"社保明细" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"社保明细" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/socselfarebasemxes/searchdefault")
 	public ResponseEntity<Page<SocSelfarebasemxDTO>> searchDefault(@RequestBody SocSelfarebasemxSearchContext context) {
         Page<SocSelfarebasemx> domains = socselfarebasemxService.searchDefault(context) ;

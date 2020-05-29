@@ -138,7 +138,7 @@ public class PimQualTypeResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimQualType-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"岗位（技能）证书" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"岗位（技能）证书" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimqualtypes/fetchdefault")
 	public ResponseEntity<List<PimQualTypeDTO>> fetchDefault(PimQualTypeSearchContext context) {
         Page<PimQualType> domains = pimqualtypeService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class PimQualTypeResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimQualType-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"岗位（技能）证书" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"岗位（技能）证书" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pimqualtypes/searchdefault")
 	public ResponseEntity<Page<PimQualTypeDTO>> searchDefault(@RequestBody PimQualTypeSearchContext context) {
         Page<PimQualType> domains = pimqualtypeService.searchDefault(context) ;

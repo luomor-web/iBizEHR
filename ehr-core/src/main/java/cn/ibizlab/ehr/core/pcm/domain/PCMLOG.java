@@ -29,7 +29,6 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 /**
  * 实体[配置变动日志]
  */
-@Builder
 @Getter
 @Setter
 @NoArgsConstructor

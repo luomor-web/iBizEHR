@@ -138,7 +138,7 @@ public class PCMLOGResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMLOG-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"配置变动日志" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"配置变动日志" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pcmlogs/fetchdefault")
 	public ResponseEntity<List<PCMLOGDTO>> fetchDefault(PCMLOGSearchContext context) {
         Page<PCMLOG> domains = pcmlogService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class PCMLOGResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMLOG-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"配置变动日志" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"配置变动日志" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pcmlogs/searchdefault")
 	public ResponseEntity<Page<PCMLOGDTO>> searchDefault(@RequestBody PCMLOGSearchContext context) {
         Page<PCMLOG> domains = pcmlogService.searchDefault(context) ;

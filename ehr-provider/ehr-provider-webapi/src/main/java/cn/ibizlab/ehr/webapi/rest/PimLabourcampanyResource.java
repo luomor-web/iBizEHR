@@ -138,7 +138,7 @@ public class PimLabourcampanyResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimLabourcampany-AuthLab-all')")
-	@ApiOperation(value = "获取AuthLab", tags = {"劳务派遣公司管理" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取AuthLab", tags = {"劳务派遣公司管理" } ,notes = "获取AuthLab")
     @RequestMapping(method= RequestMethod.GET , value="/pimlabourcampanies/fetchauthlab")
 	public ResponseEntity<List<PimLabourcampanyDTO>> fetchAuthLab(PimLabourcampanySearchContext context) {
         Page<PimLabourcampany> domains = pimlabourcampanyService.searchAuthLab(context) ;
@@ -151,7 +151,7 @@ public class PimLabourcampanyResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimLabourcampany-AuthLab-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"劳务派遣公司管理" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询AuthLab", tags = {"劳务派遣公司管理" } ,notes = "查询AuthLab")
     @RequestMapping(method= RequestMethod.POST , value="/pimlabourcampanies/searchauthlab")
 	public ResponseEntity<Page<PimLabourcampanyDTO>> searchAuthLab(@RequestBody PimLabourcampanySearchContext context) {
         Page<PimLabourcampany> domains = pimlabourcampanyService.searchAuthLab(context) ;
@@ -159,7 +159,7 @@ public class PimLabourcampanyResource {
                 .body(new PageImpl(pimlabourcampanyMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimLabourcampany-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"劳务派遣公司管理" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"劳务派遣公司管理" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimlabourcampanies/fetchdefault")
 	public ResponseEntity<List<PimLabourcampanyDTO>> fetchDefault(PimLabourcampanySearchContext context) {
         Page<PimLabourcampany> domains = pimlabourcampanyService.searchDefault(context) ;
@@ -172,7 +172,7 @@ public class PimLabourcampanyResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimLabourcampany-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"劳务派遣公司管理" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"劳务派遣公司管理" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pimlabourcampanies/searchdefault")
 	public ResponseEntity<Page<PimLabourcampanyDTO>> searchDefault(@RequestBody PimLabourcampanySearchContext context) {
         Page<PimLabourcampany> domains = pimlabourcampanyService.searchDefault(context) ;

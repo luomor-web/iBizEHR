@@ -138,7 +138,7 @@ public class TRMSTAFFResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMSTAFF-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"员工需求填报" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"员工需求填报" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/trmstaffs/fetchdefault")
 	public ResponseEntity<List<TRMSTAFFDTO>> fetchDefault(TRMSTAFFSearchContext context) {
         Page<TRMSTAFF> domains = trmstaffService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class TRMSTAFFResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMSTAFF-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"员工需求填报" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"员工需求填报" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/trmstaffs/searchdefault")
 	public ResponseEntity<Page<TRMSTAFFDTO>> searchDefault(@RequestBody TRMSTAFFSearchContext context) {
         Page<TRMSTAFF> domains = trmstaffService.searchDefault(context) ;

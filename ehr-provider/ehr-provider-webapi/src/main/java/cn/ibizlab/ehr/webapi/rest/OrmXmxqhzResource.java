@@ -138,7 +138,7 @@ public class OrmXmxqhzResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmXmxqhz-XMRYQKMX-all')")
-	@ApiOperation(value = "获取项目人员缺口明细", tags = {"项目人员需求汇总" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取项目人员缺口明细", tags = {"项目人员需求汇总" } ,notes = "获取项目人员缺口明细")
     @RequestMapping(method= RequestMethod.GET , value="/ormxmxqhzs/fetchxmryqkmx")
 	public ResponseEntity<List<OrmXmxqhzDTO>> fetchXMRYQKMX(OrmXmxqhzSearchContext context) {
         Page<OrmXmxqhz> domains = ormxmxqhzService.searchXMRYQKMX(context) ;
@@ -151,7 +151,7 @@ public class OrmXmxqhzResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmXmxqhz-XMRYQKMX-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"项目人员需求汇总" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询项目人员缺口明细", tags = {"项目人员需求汇总" } ,notes = "查询项目人员缺口明细")
     @RequestMapping(method= RequestMethod.POST , value="/ormxmxqhzs/searchxmryqkmx")
 	public ResponseEntity<Page<OrmXmxqhzDTO>> searchXMRYQKMX(@RequestBody OrmXmxqhzSearchContext context) {
         Page<OrmXmxqhz> domains = ormxmxqhzService.searchXMRYQKMX(context) ;
@@ -159,7 +159,7 @@ public class OrmXmxqhzResource {
                 .body(new PageImpl(ormxmxqhzMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmXmxqhz-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"项目人员需求汇总" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"项目人员需求汇总" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/ormxmxqhzs/fetchdefault")
 	public ResponseEntity<List<OrmXmxqhzDTO>> fetchDefault(OrmXmxqhzSearchContext context) {
         Page<OrmXmxqhz> domains = ormxmxqhzService.searchDefault(context) ;
@@ -172,7 +172,7 @@ public class OrmXmxqhzResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmXmxqhz-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"项目人员需求汇总" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"项目人员需求汇总" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/ormxmxqhzs/searchdefault")
 	public ResponseEntity<Page<OrmXmxqhzDTO>> searchDefault(@RequestBody OrmXmxqhzSearchContext context) {
         Page<OrmXmxqhz> domains = ormxmxqhzService.searchDefault(context) ;

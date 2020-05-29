@@ -138,7 +138,7 @@ public class PIMVOCATIONALResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMVOCATIONAL-REP_VOCATIONAL-all')")
-	@ApiOperation(value = "获取REP_VOCATIONAL", tags = {"证书信息" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取REP_VOCATIONAL", tags = {"证书信息" } ,notes = "获取REP_VOCATIONAL")
     @RequestMapping(method= RequestMethod.GET , value="/pimvocationals/fetchrep_vocational")
 	public ResponseEntity<List<HashMap>> fetchREP_VOCATIONAL(PIMVOCATIONALSearchContext context) {
         Page<HashMap> domains = pimvocationalService.searchREP_VOCATIONAL(context) ;
@@ -150,7 +150,7 @@ public class PIMVOCATIONALResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMVOCATIONAL-REP_VOCATIONAL-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"证书信息" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询REP_VOCATIONAL", tags = {"证书信息" } ,notes = "查询REP_VOCATIONAL")
     @RequestMapping(method= RequestMethod.POST , value="/pimvocationals/searchrep_vocational")
 	public ResponseEntity<Page<HashMap>> searchREP_VOCATIONAL(@RequestBody PIMVOCATIONALSearchContext context) {
         Page<HashMap> domains = pimvocationalService.searchREP_VOCATIONAL(context) ;
@@ -158,7 +158,7 @@ public class PIMVOCATIONALResource {
                 .body(new PageImpl(domains.getContent(), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMVOCATIONAL-AscriptionSysDQ-all')")
-	@ApiOperation(value = "获取记录所属是管理员的", tags = {"证书信息" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取记录所属是管理员的", tags = {"证书信息" } ,notes = "获取记录所属是管理员的")
     @RequestMapping(method= RequestMethod.GET , value="/pimvocationals/fetchascriptionsysdq")
 	public ResponseEntity<List<PIMVOCATIONALDTO>> fetchAscriptionSysDQ(PIMVOCATIONALSearchContext context) {
         Page<PIMVOCATIONAL> domains = pimvocationalService.searchAscriptionSysDQ(context) ;
@@ -171,7 +171,7 @@ public class PIMVOCATIONALResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMVOCATIONAL-AscriptionSysDQ-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"证书信息" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询记录所属是管理员的", tags = {"证书信息" } ,notes = "查询记录所属是管理员的")
     @RequestMapping(method= RequestMethod.POST , value="/pimvocationals/searchascriptionsysdq")
 	public ResponseEntity<Page<PIMVOCATIONALDTO>> searchAscriptionSysDQ(@RequestBody PIMVOCATIONALSearchContext context) {
         Page<PIMVOCATIONAL> domains = pimvocationalService.searchAscriptionSysDQ(context) ;
@@ -179,7 +179,7 @@ public class PIMVOCATIONALResource {
                 .body(new PageImpl(pimvocationalMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMVOCATIONAL-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"证书信息" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"证书信息" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimvocationals/fetchdefault")
 	public ResponseEntity<List<PIMVOCATIONALDTO>> fetchDefault(PIMVOCATIONALSearchContext context) {
         Page<PIMVOCATIONAL> domains = pimvocationalService.searchDefault(context) ;
@@ -192,7 +192,7 @@ public class PIMVOCATIONALResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMVOCATIONAL-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"证书信息" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"证书信息" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pimvocationals/searchdefault")
 	public ResponseEntity<Page<PIMVOCATIONALDTO>> searchDefault(@RequestBody PIMVOCATIONALSearchContext context) {
         Page<PIMVOCATIONAL> domains = pimvocationalService.searchDefault(context) ;
@@ -200,7 +200,7 @@ public class PIMVOCATIONALResource {
                 .body(new PageImpl(pimvocationalMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMVOCATIONAL-JLSS-all')")
-	@ApiOperation(value = "获取记录所属于", tags = {"证书信息" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取记录所属于", tags = {"证书信息" } ,notes = "获取记录所属于")
     @RequestMapping(method= RequestMethod.GET , value="/pimvocationals/fetchjlss")
 	public ResponseEntity<List<PIMVOCATIONALDTO>> fetchJLSS(PIMVOCATIONALSearchContext context) {
         Page<PIMVOCATIONAL> domains = pimvocationalService.searchJLSS(context) ;
@@ -213,7 +213,7 @@ public class PIMVOCATIONALResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMVOCATIONAL-JLSS-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"证书信息" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询记录所属于", tags = {"证书信息" } ,notes = "查询记录所属于")
     @RequestMapping(method= RequestMethod.POST , value="/pimvocationals/searchjlss")
 	public ResponseEntity<Page<PIMVOCATIONALDTO>> searchJLSS(@RequestBody PIMVOCATIONALSearchContext context) {
         Page<PIMVOCATIONAL> domains = pimvocationalService.searchJLSS(context) ;
@@ -221,7 +221,7 @@ public class PIMVOCATIONALResource {
                 .body(new PageImpl(pimvocationalMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMVOCATIONAL-ZIZHU-all')")
-	@ApiOperation(value = "获取自助(证书信息)", tags = {"证书信息" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取自助(证书信息)", tags = {"证书信息" } ,notes = "获取自助(证书信息)")
     @RequestMapping(method= RequestMethod.GET , value="/pimvocationals/fetchzizhu")
 	public ResponseEntity<List<PIMVOCATIONALDTO>> fetchZIZHU(PIMVOCATIONALSearchContext context) {
         Page<PIMVOCATIONAL> domains = pimvocationalService.searchZIZHU(context) ;
@@ -234,7 +234,7 @@ public class PIMVOCATIONALResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMVOCATIONAL-ZIZHU-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"证书信息" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询自助(证书信息)", tags = {"证书信息" } ,notes = "查询自助(证书信息)")
     @RequestMapping(method= RequestMethod.POST , value="/pimvocationals/searchzizhu")
 	public ResponseEntity<Page<PIMVOCATIONALDTO>> searchZIZHU(@RequestBody PIMVOCATIONALSearchContext context) {
         Page<PIMVOCATIONAL> domains = pimvocationalService.searchZIZHU(context) ;

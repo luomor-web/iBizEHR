@@ -18,7 +18,7 @@
             
 		
 		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
-		<association property="attendancemreportmx" javaType="cn.ibizlab.ehr.core.att.domain.ATTENDANCEMREPORTMX" column="attendancemreportmxid" select="cn.ibizlab.ehr.core.att.mapper.ATTENDANCEMREPORTMXMapper.selectById" fetchType="lazy"></association>
+		<association property="attendancemreportmx" javaType="cn.ibizlab.ehr.core.att.domain.AttEndanceMreportmx" column="attendancemreportmxid" select="cn.ibizlab.ehr.core.att.mapper.AttEndanceMreportmxMapper.selectById" fetchType="lazy"></association>
 		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
 		<association property="ormbmkqdz" javaType="cn.ibizlab.ehr.core.orm.domain.OrmBmkqdz" column="ormbmkqdzid" select="cn.ibizlab.ehr.core.orm.mapper.OrmBmkqdzMapper.selectById" fetchType="lazy"></association>
 		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->

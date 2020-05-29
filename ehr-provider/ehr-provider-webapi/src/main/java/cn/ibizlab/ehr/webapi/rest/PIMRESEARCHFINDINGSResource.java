@@ -138,7 +138,7 @@ public class PIMRESEARCHFINDINGSResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMRESEARCHFINDINGS-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"科研成果" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"科研成果" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimresearchfindings/fetchdefault")
 	public ResponseEntity<List<PIMRESEARCHFINDINGSDTO>> fetchDefault(PIMRESEARCHFINDINGSSearchContext context) {
         Page<PIMRESEARCHFINDINGS> domains = pimresearchfindingsService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class PIMRESEARCHFINDINGSResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMRESEARCHFINDINGS-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"科研成果" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"科研成果" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pimresearchfindings/searchdefault")
 	public ResponseEntity<Page<PIMRESEARCHFINDINGSDTO>> searchDefault(@RequestBody PIMRESEARCHFINDINGSSearchContext context) {
         Page<PIMRESEARCHFINDINGS> domains = pimresearchfindingsService.searchDefault(context) ;
@@ -159,7 +159,7 @@ public class PIMRESEARCHFINDINGSResource {
                 .body(new PageImpl(pimresearchfindingsMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMRESEARCHFINDINGS-JLSSGLY-all')")
-	@ApiOperation(value = "获取记录所属（管理员）", tags = {"科研成果" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取记录所属（管理员）", tags = {"科研成果" } ,notes = "获取记录所属（管理员）")
     @RequestMapping(method= RequestMethod.GET , value="/pimresearchfindings/fetchjlssgly")
 	public ResponseEntity<List<PIMRESEARCHFINDINGSDTO>> fetchJLSSGLY(PIMRESEARCHFINDINGSSearchContext context) {
         Page<PIMRESEARCHFINDINGS> domains = pimresearchfindingsService.searchJLSSGLY(context) ;
@@ -172,7 +172,7 @@ public class PIMRESEARCHFINDINGSResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMRESEARCHFINDINGS-JLSSGLY-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"科研成果" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询记录所属（管理员）", tags = {"科研成果" } ,notes = "查询记录所属（管理员）")
     @RequestMapping(method= RequestMethod.POST , value="/pimresearchfindings/searchjlssgly")
 	public ResponseEntity<Page<PIMRESEARCHFINDINGSDTO>> searchJLSSGLY(@RequestBody PIMRESEARCHFINDINGSSearchContext context) {
         Page<PIMRESEARCHFINDINGS> domains = pimresearchfindingsService.searchJLSSGLY(context) ;
@@ -180,7 +180,7 @@ public class PIMRESEARCHFINDINGSResource {
                 .body(new PageImpl(pimresearchfindingsMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMRESEARCHFINDINGS-JLSSGR-all')")
-	@ApiOperation(value = "获取记录所属（个人）", tags = {"科研成果" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取记录所属（个人）", tags = {"科研成果" } ,notes = "获取记录所属（个人）")
     @RequestMapping(method= RequestMethod.GET , value="/pimresearchfindings/fetchjlssgr")
 	public ResponseEntity<List<PIMRESEARCHFINDINGSDTO>> fetchJLSSGR(PIMRESEARCHFINDINGSSearchContext context) {
         Page<PIMRESEARCHFINDINGS> domains = pimresearchfindingsService.searchJLSSGR(context) ;
@@ -193,7 +193,7 @@ public class PIMRESEARCHFINDINGSResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMRESEARCHFINDINGS-JLSSGR-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"科研成果" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询记录所属（个人）", tags = {"科研成果" } ,notes = "查询记录所属（个人）")
     @RequestMapping(method= RequestMethod.POST , value="/pimresearchfindings/searchjlssgr")
 	public ResponseEntity<Page<PIMRESEARCHFINDINGSDTO>> searchJLSSGR(@RequestBody PIMRESEARCHFINDINGSSearchContext context) {
         Page<PIMRESEARCHFINDINGS> domains = pimresearchfindingsService.searchJLSSGR(context) ;

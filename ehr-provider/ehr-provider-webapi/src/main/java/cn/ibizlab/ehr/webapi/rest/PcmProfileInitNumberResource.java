@@ -138,7 +138,7 @@ public class PcmProfileInitNumberResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmProfileInitNumber-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"应聘者起始编号（停用）" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"应聘者起始编号（停用）" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pcmprofileinitnumbers/fetchdefault")
 	public ResponseEntity<List<PcmProfileInitNumberDTO>> fetchDefault(PcmProfileInitNumberSearchContext context) {
         Page<PcmProfileInitNumber> domains = pcmprofileinitnumberService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class PcmProfileInitNumberResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmProfileInitNumber-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"应聘者起始编号（停用）" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"应聘者起始编号（停用）" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pcmprofileinitnumbers/searchdefault")
 	public ResponseEntity<Page<PcmProfileInitNumberDTO>> searchDefault(@RequestBody PcmProfileInitNumberSearchContext context) {
         Page<PcmProfileInitNumber> domains = pcmprofileinitnumberService.searchDefault(context) ;

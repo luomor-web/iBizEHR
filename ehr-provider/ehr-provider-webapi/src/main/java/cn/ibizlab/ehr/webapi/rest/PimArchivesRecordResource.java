@@ -138,7 +138,7 @@ public class PimArchivesRecordResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimArchivesRecord-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"档案目录缺失记录" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"档案目录缺失记录" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimarchivesrecords/fetchdefault")
 	public ResponseEntity<List<PimArchivesRecordDTO>> fetchDefault(PimArchivesRecordSearchContext context) {
         Page<PimArchivesRecord> domains = pimarchivesrecordService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class PimArchivesRecordResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimArchivesRecord-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"档案目录缺失记录" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"档案目录缺失记录" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pimarchivesrecords/searchdefault")
 	public ResponseEntity<Page<PimArchivesRecordDTO>> searchDefault(@RequestBody PimArchivesRecordSearchContext context) {
         Page<PimArchivesRecord> domains = pimarchivesrecordService.searchDefault(context) ;

@@ -258,7 +258,7 @@ public class PimQuestionsResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimQuestions-QUERYcurrentQUESTION-all')")
-	@ApiOperation(value = "获取查询当前页面问题", tags = {"问题收集" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取查询当前页面问题", tags = {"问题收集" } ,notes = "获取查询当前页面问题")
     @RequestMapping(method= RequestMethod.GET , value="/pimquestions/fetchquerycurrentquestion")
 	public ResponseEntity<List<PimQuestionsDTO>> fetchQUERYcurrentQUESTION(PimQuestionsSearchContext context) {
         Page<PimQuestions> domains = pimquestionsService.searchQUERYcurrentQUESTION(context) ;
@@ -271,7 +271,7 @@ public class PimQuestionsResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimQuestions-QUERYcurrentQUESTION-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"问题收集" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询查询当前页面问题", tags = {"问题收集" } ,notes = "查询查询当前页面问题")
     @RequestMapping(method= RequestMethod.POST , value="/pimquestions/searchquerycurrentquestion")
 	public ResponseEntity<Page<PimQuestionsDTO>> searchQUERYcurrentQUESTION(@RequestBody PimQuestionsSearchContext context) {
         Page<PimQuestions> domains = pimquestionsService.searchQUERYcurrentQUESTION(context) ;
@@ -279,7 +279,7 @@ public class PimQuestionsResource {
                 .body(new PageImpl(pimquestionsMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimQuestions-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"问题收集" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"问题收集" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimquestions/fetchdefault")
 	public ResponseEntity<List<PimQuestionsDTO>> fetchDefault(PimQuestionsSearchContext context) {
         Page<PimQuestions> domains = pimquestionsService.searchDefault(context) ;
@@ -292,7 +292,7 @@ public class PimQuestionsResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimQuestions-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"问题收集" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"问题收集" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pimquestions/searchdefault")
 	public ResponseEntity<Page<PimQuestionsDTO>> searchDefault(@RequestBody PimQuestionsSearchContext context) {
         Page<PimQuestions> domains = pimquestionsService.searchDefault(context) ;

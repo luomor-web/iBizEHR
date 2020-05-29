@@ -234,7 +234,7 @@ public class PimPersonResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimPerson-KFPRY-all')")
-	@ApiOperation(value = "获取可返聘人员", tags = {"人员信息" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取可返聘人员", tags = {"人员信息" } ,notes = "获取可返聘人员")
     @RequestMapping(method= RequestMethod.GET , value="/pimpeople/fetchkfpry")
 	public ResponseEntity<List<PimPersonDTO>> fetchKFPRY(PimPersonSearchContext context) {
         Page<PimPerson> domains = pimpersonService.searchKFPRY(context) ;
@@ -247,7 +247,7 @@ public class PimPersonResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimPerson-KFPRY-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"人员信息" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询可返聘人员", tags = {"人员信息" } ,notes = "查询可返聘人员")
     @RequestMapping(method= RequestMethod.POST , value="/pimpeople/searchkfpry")
 	public ResponseEntity<Page<PimPersonDTO>> searchKFPRY(@RequestBody PimPersonSearchContext context) {
         Page<PimPerson> domains = pimpersonService.searchKFPRY(context) ;
@@ -255,7 +255,7 @@ public class PimPersonResource {
                 .body(new PageImpl(pimpersonMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimPerson-YGXXGLY-all')")
-	@ApiOperation(value = "获取员工信息（管理员）", tags = {"人员信息" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取员工信息（管理员）", tags = {"人员信息" } ,notes = "获取员工信息（管理员）")
     @RequestMapping(method= RequestMethod.GET , value="/pimpeople/fetchygxxgly")
 	public ResponseEntity<List<PimPersonDTO>> fetchYGXXGLY(PimPersonSearchContext context) {
         Page<PimPerson> domains = pimpersonService.searchYGXXGLY(context) ;
@@ -268,7 +268,7 @@ public class PimPersonResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimPerson-YGXXGLY-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"人员信息" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询员工信息（管理员）", tags = {"人员信息" } ,notes = "查询员工信息（管理员）")
     @RequestMapping(method= RequestMethod.POST , value="/pimpeople/searchygxxgly")
 	public ResponseEntity<Page<PimPersonDTO>> searchYGXXGLY(@RequestBody PimPersonSearchContext context) {
         Page<PimPerson> domains = pimpersonService.searchYGXXGLY(context) ;
@@ -276,7 +276,7 @@ public class PimPersonResource {
                 .body(new PageImpl(pimpersonMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimPerson-XMBRYCX-all')")
-	@ApiOperation(value = "获取项目部人员查询", tags = {"人员信息" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取项目部人员查询", tags = {"人员信息" } ,notes = "获取项目部人员查询")
     @RequestMapping(method= RequestMethod.GET , value="/pimpeople/fetchxmbrycx")
 	public ResponseEntity<List<PimPersonDTO>> fetchXMBRYCX(PimPersonSearchContext context) {
         Page<PimPerson> domains = pimpersonService.searchXMBRYCX(context) ;
@@ -289,7 +289,7 @@ public class PimPersonResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimPerson-XMBRYCX-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"人员信息" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询项目部人员查询", tags = {"人员信息" } ,notes = "查询项目部人员查询")
     @RequestMapping(method= RequestMethod.POST , value="/pimpeople/searchxmbrycx")
 	public ResponseEntity<Page<PimPersonDTO>> searchXMBRYCX(@RequestBody PimPersonSearchContext context) {
         Page<PimPerson> domains = pimpersonService.searchXMBRYCX(context) ;
@@ -297,7 +297,7 @@ public class PimPersonResource {
                 .body(new PageImpl(pimpersonMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimPerson-CurOrgPerson-all')")
-	@ApiOperation(value = "获取当前组织实际可选人员", tags = {"人员信息" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取当前组织实际可选人员", tags = {"人员信息" } ,notes = "获取当前组织实际可选人员")
     @RequestMapping(method= RequestMethod.GET , value="/pimpeople/fetchcurorgperson")
 	public ResponseEntity<List<PimPersonDTO>> fetchCurOrgPerson(PimPersonSearchContext context) {
         Page<PimPerson> domains = pimpersonService.searchCurOrgPerson(context) ;
@@ -310,7 +310,7 @@ public class PimPersonResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimPerson-CurOrgPerson-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"人员信息" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询当前组织实际可选人员", tags = {"人员信息" } ,notes = "查询当前组织实际可选人员")
     @RequestMapping(method= RequestMethod.POST , value="/pimpeople/searchcurorgperson")
 	public ResponseEntity<Page<PimPersonDTO>> searchCurOrgPerson(@RequestBody PimPersonSearchContext context) {
         Page<PimPerson> domains = pimpersonService.searchCurOrgPerson(context) ;
@@ -318,7 +318,7 @@ public class PimPersonResource {
                 .body(new PageImpl(pimpersonMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimPerson-JLSSGR-all')")
-	@ApiOperation(value = "获取记录所属（个人）", tags = {"人员信息" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取记录所属（个人）", tags = {"人员信息" } ,notes = "获取记录所属（个人）")
     @RequestMapping(method= RequestMethod.GET , value="/pimpeople/fetchjlssgr")
 	public ResponseEntity<List<PimPersonDTO>> fetchJLSSGR(PimPersonSearchContext context) {
         Page<PimPerson> domains = pimpersonService.searchJLSSGR(context) ;
@@ -331,7 +331,7 @@ public class PimPersonResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimPerson-JLSSGR-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"人员信息" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询记录所属（个人）", tags = {"人员信息" } ,notes = "查询记录所属（个人）")
     @RequestMapping(method= RequestMethod.POST , value="/pimpeople/searchjlssgr")
 	public ResponseEntity<Page<PimPersonDTO>> searchJLSSGR(@RequestBody PimPersonSearchContext context) {
         Page<PimPerson> domains = pimpersonService.searchJLSSGR(context) ;
@@ -339,7 +339,7 @@ public class PimPersonResource {
                 .body(new PageImpl(pimpersonMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimPerson-CurLeader-all')")
-	@ApiOperation(value = "获取部门负责人选择范围", tags = {"人员信息" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取部门负责人选择范围", tags = {"人员信息" } ,notes = "获取部门负责人选择范围")
     @RequestMapping(method= RequestMethod.GET , value="/pimpeople/fetchcurleader")
 	public ResponseEntity<List<PimPersonDTO>> fetchCurLeader(PimPersonSearchContext context) {
         Page<PimPerson> domains = pimpersonService.searchCurLeader(context) ;
@@ -352,7 +352,7 @@ public class PimPersonResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimPerson-CurLeader-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"人员信息" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询部门负责人选择范围", tags = {"人员信息" } ,notes = "查询部门负责人选择范围")
     @RequestMapping(method= RequestMethod.POST , value="/pimpeople/searchcurleader")
 	public ResponseEntity<Page<PimPersonDTO>> searchCurLeader(@RequestBody PimPersonSearchContext context) {
         Page<PimPerson> domains = pimpersonService.searchCurLeader(context) ;
@@ -360,7 +360,7 @@ public class PimPersonResource {
                 .body(new PageImpl(pimpersonMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimPerson-SFHMD-all')")
-	@ApiOperation(value = "获取是否黑名单", tags = {"人员信息" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取是否黑名单", tags = {"人员信息" } ,notes = "获取是否黑名单")
     @RequestMapping(method= RequestMethod.GET , value="/pimpeople/fetchsfhmd")
 	public ResponseEntity<List<PimPersonDTO>> fetchSFHMD(PimPersonSearchContext context) {
         Page<PimPerson> domains = pimpersonService.searchSFHMD(context) ;
@@ -373,7 +373,7 @@ public class PimPersonResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimPerson-SFHMD-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"人员信息" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询是否黑名单", tags = {"人员信息" } ,notes = "查询是否黑名单")
     @RequestMapping(method= RequestMethod.POST , value="/pimpeople/searchsfhmd")
 	public ResponseEntity<Page<PimPersonDTO>> searchSFHMD(@RequestBody PimPersonSearchContext context) {
         Page<PimPerson> domains = pimpersonService.searchSFHMD(context) ;
@@ -381,7 +381,7 @@ public class PimPersonResource {
                 .body(new PageImpl(pimpersonMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimPerson-SSTRERSONINFO-all')")
-	@ApiOperation(value = "获取人员信息树视图", tags = {"人员信息" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取人员信息树视图", tags = {"人员信息" } ,notes = "获取人员信息树视图")
     @RequestMapping(method= RequestMethod.GET , value="/pimpeople/fetchsstrersoninfo")
 	public ResponseEntity<List<PimPersonDTO>> fetchSSTRERSONINFO(PimPersonSearchContext context) {
         Page<PimPerson> domains = pimpersonService.searchSSTRERSONINFO(context) ;
@@ -394,7 +394,7 @@ public class PimPersonResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimPerson-SSTRERSONINFO-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"人员信息" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询人员信息树视图", tags = {"人员信息" } ,notes = "查询人员信息树视图")
     @RequestMapping(method= RequestMethod.POST , value="/pimpeople/searchsstrersoninfo")
 	public ResponseEntity<Page<PimPersonDTO>> searchSSTRERSONINFO(@RequestBody PimPersonSearchContext context) {
         Page<PimPerson> domains = pimpersonService.searchSSTRERSONINFO(context) ;
@@ -402,7 +402,7 @@ public class PimPersonResource {
                 .body(new PageImpl(pimpersonMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimPerson-CurJHRY-all')")
-	@ApiOperation(value = "获取当前组织可选计划人员", tags = {"人员信息" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取当前组织可选计划人员", tags = {"人员信息" } ,notes = "获取当前组织可选计划人员")
     @RequestMapping(method= RequestMethod.GET , value="/pimpeople/fetchcurjhry")
 	public ResponseEntity<List<PimPersonDTO>> fetchCurJHRY(PimPersonSearchContext context) {
         Page<PimPerson> domains = pimpersonService.searchCurJHRY(context) ;
@@ -415,7 +415,7 @@ public class PimPersonResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimPerson-CurJHRY-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"人员信息" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询当前组织可选计划人员", tags = {"人员信息" } ,notes = "查询当前组织可选计划人员")
     @RequestMapping(method= RequestMethod.POST , value="/pimpeople/searchcurjhry")
 	public ResponseEntity<Page<PimPersonDTO>> searchCurJHRY(@RequestBody PimPersonSearchContext context) {
         Page<PimPerson> domains = pimpersonService.searchCurJHRY(context) ;
@@ -423,7 +423,7 @@ public class PimPersonResource {
                 .body(new PageImpl(pimpersonMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimPerson-KTXYG-all')")
-	@ApiOperation(value = "获取可退休人员", tags = {"人员信息" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取可退休人员", tags = {"人员信息" } ,notes = "获取可退休人员")
     @RequestMapping(method= RequestMethod.GET , value="/pimpeople/fetchktxyg")
 	public ResponseEntity<List<PimPersonDTO>> fetchKTXYG(PimPersonSearchContext context) {
         Page<PimPerson> domains = pimpersonService.searchKTXYG(context) ;
@@ -436,7 +436,7 @@ public class PimPersonResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimPerson-KTXYG-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"人员信息" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询可退休人员", tags = {"人员信息" } ,notes = "查询可退休人员")
     @RequestMapping(method= RequestMethod.POST , value="/pimpeople/searchktxyg")
 	public ResponseEntity<Page<PimPersonDTO>> searchKTXYG(@RequestBody PimPersonSearchContext context) {
         Page<PimPerson> domains = pimpersonService.searchKTXYG(context) ;
@@ -444,7 +444,7 @@ public class PimPersonResource {
                 .body(new PageImpl(pimpersonMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimPerson-BYLYG-all')")
-	@ApiOperation(value = "获取非A类员工", tags = {"人员信息" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取非A类员工", tags = {"人员信息" } ,notes = "获取非A类员工")
     @RequestMapping(method= RequestMethod.GET , value="/pimpeople/fetchbylyg")
 	public ResponseEntity<List<PimPersonDTO>> fetchBYLYG(PimPersonSearchContext context) {
         Page<PimPerson> domains = pimpersonService.searchBYLYG(context) ;
@@ -457,7 +457,7 @@ public class PimPersonResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimPerson-BYLYG-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"人员信息" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询非A类员工", tags = {"人员信息" } ,notes = "查询非A类员工")
     @RequestMapping(method= RequestMethod.POST , value="/pimpeople/searchbylyg")
 	public ResponseEntity<Page<PimPersonDTO>> searchBYLYG(@RequestBody PimPersonSearchContext context) {
         Page<PimPerson> domains = pimpersonService.searchBYLYG(context) ;
@@ -465,7 +465,7 @@ public class PimPersonResource {
                 .body(new PageImpl(pimpersonMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimPerson-GBHMC-all')")
-	@ApiOperation(value = "获取干部花名册", tags = {"人员信息" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取干部花名册", tags = {"人员信息" } ,notes = "获取干部花名册")
     @RequestMapping(method= RequestMethod.GET , value="/pimpeople/fetchgbhmc")
 	public ResponseEntity<List<PimPersonDTO>> fetchGBHMC(PimPersonSearchContext context) {
         Page<PimPerson> domains = pimpersonService.searchGBHMC(context) ;
@@ -478,7 +478,7 @@ public class PimPersonResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimPerson-GBHMC-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"人员信息" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询干部花名册", tags = {"人员信息" } ,notes = "查询干部花名册")
     @RequestMapping(method= RequestMethod.POST , value="/pimpeople/searchgbhmc")
 	public ResponseEntity<Page<PimPersonDTO>> searchGBHMC(@RequestBody PimPersonSearchContext context) {
         Page<PimPerson> domains = pimpersonService.searchGBHMC(context) ;
@@ -486,7 +486,7 @@ public class PimPersonResource {
                 .body(new PageImpl(pimpersonMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimPerson-GZDQGL-all')")
-	@ApiOperation(value = "获取挂职到期管理", tags = {"人员信息" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取挂职到期管理", tags = {"人员信息" } ,notes = "获取挂职到期管理")
     @RequestMapping(method= RequestMethod.GET , value="/pimpeople/fetchgzdqgl")
 	public ResponseEntity<List<PimPersonDTO>> fetchGZDQGL(PimPersonSearchContext context) {
         Page<PimPerson> domains = pimpersonService.searchGZDQGL(context) ;
@@ -499,7 +499,7 @@ public class PimPersonResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimPerson-GZDQGL-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"人员信息" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询挂职到期管理", tags = {"人员信息" } ,notes = "查询挂职到期管理")
     @RequestMapping(method= RequestMethod.POST , value="/pimpeople/searchgzdqgl")
 	public ResponseEntity<Page<PimPersonDTO>> searchGZDQGL(@RequestBody PimPersonSearchContext context) {
         Page<PimPerson> domains = pimpersonService.searchGZDQGL(context) ;
@@ -507,7 +507,7 @@ public class PimPersonResource {
                 .body(new PageImpl(pimpersonMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimPerson-KQJRYCX-all')")
-	@ApiOperation(value = "获取可请假员工查询", tags = {"人员信息" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取可请假员工查询", tags = {"人员信息" } ,notes = "获取可请假员工查询")
     @RequestMapping(method= RequestMethod.GET , value="/pimpeople/fetchkqjrycx")
 	public ResponseEntity<List<PimPersonDTO>> fetchKQJRYCX(PimPersonSearchContext context) {
         Page<PimPerson> domains = pimpersonService.searchKQJRYCX(context) ;
@@ -520,7 +520,7 @@ public class PimPersonResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimPerson-KQJRYCX-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"人员信息" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询可请假员工查询", tags = {"人员信息" } ,notes = "查询可请假员工查询")
     @RequestMapping(method= RequestMethod.POST , value="/pimpeople/searchkqjrycx")
 	public ResponseEntity<Page<PimPersonDTO>> searchKQJRYCX(@RequestBody PimPersonSearchContext context) {
         Page<PimPerson> domains = pimpersonService.searchKQJRYCX(context) ;
@@ -528,7 +528,7 @@ public class PimPersonResource {
                 .body(new PageImpl(pimpersonMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimPerson-LTXSTAFF-all')")
-	@ApiOperation(value = "获取离（退）休员工", tags = {"人员信息" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取离（退）休员工", tags = {"人员信息" } ,notes = "获取离（退）休员工")
     @RequestMapping(method= RequestMethod.GET , value="/pimpeople/fetchltxstaff")
 	public ResponseEntity<List<PimPersonDTO>> fetchLTXSTAFF(PimPersonSearchContext context) {
         Page<PimPerson> domains = pimpersonService.searchLTXSTAFF(context) ;
@@ -541,7 +541,7 @@ public class PimPersonResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimPerson-LTXSTAFF-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"人员信息" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询离（退）休员工", tags = {"人员信息" } ,notes = "查询离（退）休员工")
     @RequestMapping(method= RequestMethod.POST , value="/pimpeople/searchltxstaff")
 	public ResponseEntity<Page<PimPersonDTO>> searchLTXSTAFF(@RequestBody PimPersonSearchContext context) {
         Page<PimPerson> domains = pimpersonService.searchLTXSTAFF(context) ;
@@ -549,7 +549,7 @@ public class PimPersonResource {
                 .body(new PageImpl(pimpersonMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimPerson-REP_PERSONORGTYPE-all')")
-	@ApiOperation(value = "获取机关 项目人员分布", tags = {"人员信息" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取机关 项目人员分布", tags = {"人员信息" } ,notes = "获取机关 项目人员分布")
     @RequestMapping(method= RequestMethod.GET , value="/pimpeople/fetchrep_personorgtype")
 	public ResponseEntity<List<HashMap>> fetchREP_PERSONORGTYPE(PimPersonSearchContext context) {
         Page<HashMap> domains = pimpersonService.searchREP_PERSONORGTYPE(context) ;
@@ -561,7 +561,7 @@ public class PimPersonResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimPerson-REP_PERSONORGTYPE-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"人员信息" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询机关 项目人员分布", tags = {"人员信息" } ,notes = "查询机关 项目人员分布")
     @RequestMapping(method= RequestMethod.POST , value="/pimpeople/searchrep_personorgtype")
 	public ResponseEntity<Page<HashMap>> searchREP_PERSONORGTYPE(@RequestBody PimPersonSearchContext context) {
         Page<HashMap> domains = pimpersonService.searchREP_PERSONORGTYPE(context) ;
@@ -569,7 +569,7 @@ public class PimPersonResource {
                 .body(new PageImpl(domains.getContent(), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimPerson-AuthPerson-all')")
-	@ApiOperation(value = "获取显示人员（权限控制）", tags = {"人员信息" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取显示人员（权限控制）", tags = {"人员信息" } ,notes = "获取显示人员（权限控制）")
     @RequestMapping(method= RequestMethod.GET , value="/pimpeople/fetchauthperson")
 	public ResponseEntity<List<PimPersonDTO>> fetchAuthPerson(PimPersonSearchContext context) {
         Page<PimPerson> domains = pimpersonService.searchAuthPerson(context) ;
@@ -582,7 +582,7 @@ public class PimPersonResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimPerson-AuthPerson-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"人员信息" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询显示人员（权限控制）", tags = {"人员信息" } ,notes = "查询显示人员（权限控制）")
     @RequestMapping(method= RequestMethod.POST , value="/pimpeople/searchauthperson")
 	public ResponseEntity<Page<PimPersonDTO>> searchAuthPerson(@RequestBody PimPersonSearchContext context) {
         Page<PimPerson> domains = pimpersonService.searchAuthPerson(context) ;
@@ -590,7 +590,7 @@ public class PimPersonResource {
                 .body(new PageImpl(pimpersonMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimPerson-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"人员信息" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"人员信息" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimpeople/fetchdefault")
 	public ResponseEntity<List<PimPersonDTO>> fetchDefault(PimPersonSearchContext context) {
         Page<PimPerson> domains = pimpersonService.searchDefault(context) ;
@@ -603,7 +603,7 @@ public class PimPersonResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimPerson-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"人员信息" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"人员信息" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pimpeople/searchdefault")
 	public ResponseEntity<Page<PimPersonDTO>> searchDefault(@RequestBody PimPersonSearchContext context) {
         Page<PimPerson> domains = pimpersonService.searchDefault(context) ;
@@ -611,7 +611,7 @@ public class PimPersonResource {
                 .body(new PageImpl(pimpersonMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimPerson-KGZRY-all')")
-	@ApiOperation(value = "获取可挂职人员", tags = {"人员信息" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取可挂职人员", tags = {"人员信息" } ,notes = "获取可挂职人员")
     @RequestMapping(method= RequestMethod.GET , value="/pimpeople/fetchkgzry")
 	public ResponseEntity<List<PimPersonDTO>> fetchKGZRY(PimPersonSearchContext context) {
         Page<PimPerson> domains = pimpersonService.searchKGZRY(context) ;
@@ -624,7 +624,7 @@ public class PimPersonResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimPerson-KGZRY-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"人员信息" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询可挂职人员", tags = {"人员信息" } ,notes = "查询可挂职人员")
     @RequestMapping(method= RequestMethod.POST , value="/pimpeople/searchkgzry")
 	public ResponseEntity<Page<PimPersonDTO>> searchKGZRY(@RequestBody PimPersonSearchContext context) {
         Page<PimPerson> domains = pimpersonService.searchKGZRY(context) ;
@@ -632,7 +632,7 @@ public class PimPersonResource {
                 .body(new PageImpl(pimpersonMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimPerson-SELFHELPID-all')")
-	@ApiOperation(value = "获取员工自助登录人员ID", tags = {"人员信息" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取员工自助登录人员ID", tags = {"人员信息" } ,notes = "获取员工自助登录人员ID")
     @RequestMapping(method= RequestMethod.GET , value="/pimpeople/fetchselfhelpid")
 	public ResponseEntity<List<PimPersonDTO>> fetchSELFHELPID(PimPersonSearchContext context) {
         Page<PimPerson> domains = pimpersonService.searchSELFHELPID(context) ;
@@ -645,7 +645,7 @@ public class PimPersonResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimPerson-SELFHELPID-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"人员信息" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询员工自助登录人员ID", tags = {"人员信息" } ,notes = "查询员工自助登录人员ID")
     @RequestMapping(method= RequestMethod.POST , value="/pimpeople/searchselfhelpid")
 	public ResponseEntity<Page<PimPersonDTO>> searchSELFHELPID(@RequestBody PimPersonSearchContext context) {
         Page<PimPerson> domains = pimpersonService.searchSELFHELPID(context) ;
@@ -653,7 +653,7 @@ public class PimPersonResource {
                 .body(new PageImpl(pimpersonMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimPerson-SYQYGCX-all')")
-	@ApiOperation(value = "获取试用期员工查询", tags = {"人员信息" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取试用期员工查询", tags = {"人员信息" } ,notes = "获取试用期员工查询")
     @RequestMapping(method= RequestMethod.GET , value="/pimpeople/fetchsyqygcx")
 	public ResponseEntity<List<PimPersonDTO>> fetchSYQYGCX(PimPersonSearchContext context) {
         Page<PimPerson> domains = pimpersonService.searchSYQYGCX(context) ;
@@ -666,7 +666,7 @@ public class PimPersonResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimPerson-SYQYGCX-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"人员信息" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询试用期员工查询", tags = {"人员信息" } ,notes = "查询试用期员工查询")
     @RequestMapping(method= RequestMethod.POST , value="/pimpeople/searchsyqygcx")
 	public ResponseEntity<Page<PimPersonDTO>> searchSYQYGCX(@RequestBody PimPersonSearchContext context) {
         Page<PimPerson> domains = pimpersonService.searchSYQYGCX(context) ;
@@ -674,7 +674,7 @@ public class PimPersonResource {
                 .body(new PageImpl(pimpersonMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimPerson-LZRYHMC-all')")
-	@ApiOperation(value = "获取离职人员花名册", tags = {"人员信息" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取离职人员花名册", tags = {"人员信息" } ,notes = "获取离职人员花名册")
     @RequestMapping(method= RequestMethod.GET , value="/pimpeople/fetchlzryhmc")
 	public ResponseEntity<List<PimPersonDTO>> fetchLZRYHMC(PimPersonSearchContext context) {
         Page<PimPerson> domains = pimpersonService.searchLZRYHMC(context) ;
@@ -687,7 +687,7 @@ public class PimPersonResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimPerson-LZRYHMC-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"人员信息" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询离职人员花名册", tags = {"人员信息" } ,notes = "查询离职人员花名册")
     @RequestMapping(method= RequestMethod.POST , value="/pimpeople/searchlzryhmc")
 	public ResponseEntity<Page<PimPersonDTO>> searchLZRYHMC(@RequestBody PimPersonSearchContext context) {
         Page<PimPerson> domains = pimpersonService.searchLZRYHMC(context) ;
@@ -695,7 +695,7 @@ public class PimPersonResource {
                 .body(new PageImpl(pimpersonMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimPerson-TitleUse-all')")
-	@ApiOperation(value = "获取头衔专用", tags = {"人员信息" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取头衔专用", tags = {"人员信息" } ,notes = "获取头衔专用")
     @RequestMapping(method= RequestMethod.GET , value="/pimpeople/fetchtitleuse")
 	public ResponseEntity<List<PimPersonDTO>> fetchTitleUse(PimPersonSearchContext context) {
         Page<PimPerson> domains = pimpersonService.searchTitleUse(context) ;
@@ -708,7 +708,7 @@ public class PimPersonResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimPerson-TitleUse-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"人员信息" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询头衔专用", tags = {"人员信息" } ,notes = "查询头衔专用")
     @RequestMapping(method= RequestMethod.POST , value="/pimpeople/searchtitleuse")
 	public ResponseEntity<Page<PimPersonDTO>> searchTitleUse(@RequestBody PimPersonSearchContext context) {
         Page<PimPerson> domains = pimpersonService.searchTitleUse(context) ;
@@ -716,7 +716,7 @@ public class PimPersonResource {
                 .body(new PageImpl(pimpersonMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimPerson-JXQYGCX-all')")
-	@ApiOperation(value = "获取见习期员工查询", tags = {"人员信息" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取见习期员工查询", tags = {"人员信息" } ,notes = "获取见习期员工查询")
     @RequestMapping(method= RequestMethod.GET , value="/pimpeople/fetchjxqygcx")
 	public ResponseEntity<List<PimPersonDTO>> fetchJXQYGCX(PimPersonSearchContext context) {
         Page<PimPerson> domains = pimpersonService.searchJXQYGCX(context) ;
@@ -729,7 +729,7 @@ public class PimPersonResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimPerson-JXQYGCX-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"人员信息" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询见习期员工查询", tags = {"人员信息" } ,notes = "查询见习期员工查询")
     @RequestMapping(method= RequestMethod.POST , value="/pimpeople/searchjxqygcx")
 	public ResponseEntity<Page<PimPersonDTO>> searchJXQYGCX(@RequestBody PimPersonSearchContext context) {
         Page<PimPerson> domains = pimpersonService.searchJXQYGCX(context) ;
@@ -737,7 +737,7 @@ public class PimPersonResource {
                 .body(new PageImpl(pimpersonMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimPerson-YXZFPRYDS-all')")
-	@ApiOperation(value = "获取存在有效分配的主分配的人员", tags = {"人员信息" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取存在有效分配的主分配的人员", tags = {"人员信息" } ,notes = "获取存在有效分配的主分配的人员")
     @RequestMapping(method= RequestMethod.GET , value="/pimpeople/fetchyxzfpryds")
 	public ResponseEntity<List<PimPersonDTO>> fetchYXZFPRYDS(PimPersonSearchContext context) {
         Page<PimPerson> domains = pimpersonService.searchYXZFPRYDS(context) ;
@@ -750,7 +750,7 @@ public class PimPersonResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimPerson-YXZFPRYDS-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"人员信息" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询存在有效分配的主分配的人员", tags = {"人员信息" } ,notes = "查询存在有效分配的主分配的人员")
     @RequestMapping(method= RequestMethod.POST , value="/pimpeople/searchyxzfpryds")
 	public ResponseEntity<Page<PimPersonDTO>> searchYXZFPRYDS(@RequestBody PimPersonSearchContext context) {
         Page<PimPerson> domains = pimpersonService.searchYXZFPRYDS(context) ;
@@ -758,7 +758,7 @@ public class PimPersonResource {
                 .body(new PageImpl(pimpersonMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimPerson-RYZT_30-all')")
-	@ApiOperation(value = "获取在职人员", tags = {"人员信息" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取在职人员", tags = {"人员信息" } ,notes = "获取在职人员")
     @RequestMapping(method= RequestMethod.GET , value="/pimpeople/fetchryzt_30")
 	public ResponseEntity<List<PimPersonDTO>> fetchRYZT_30(PimPersonSearchContext context) {
         Page<PimPerson> domains = pimpersonService.searchRYZT_30(context) ;
@@ -771,7 +771,7 @@ public class PimPersonResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimPerson-RYZT_30-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"人员信息" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询在职人员", tags = {"人员信息" } ,notes = "查询在职人员")
     @RequestMapping(method= RequestMethod.POST , value="/pimpeople/searchryzt_30")
 	public ResponseEntity<Page<PimPersonDTO>> searchRYZT_30(@RequestBody PimPersonSearchContext context) {
         Page<PimPerson> domains = pimpersonService.searchRYZT_30(context) ;
@@ -779,7 +779,7 @@ public class PimPersonResource {
                 .body(new PageImpl(pimpersonMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimPerson-DTXYG-all')")
-	@ApiOperation(value = "获取待退休人员", tags = {"人员信息" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取待退休人员", tags = {"人员信息" } ,notes = "获取待退休人员")
     @RequestMapping(method= RequestMethod.GET , value="/pimpeople/fetchdtxyg")
 	public ResponseEntity<List<PimPersonDTO>> fetchDTXYG(PimPersonSearchContext context) {
         Page<PimPerson> domains = pimpersonService.searchDTXYG(context) ;
@@ -792,7 +792,7 @@ public class PimPersonResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimPerson-DTXYG-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"人员信息" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询待退休人员", tags = {"人员信息" } ,notes = "查询待退休人员")
     @RequestMapping(method= RequestMethod.POST , value="/pimpeople/searchdtxyg")
 	public ResponseEntity<Page<PimPersonDTO>> searchDTXYG(@RequestBody PimPersonSearchContext context) {
         Page<PimPerson> domains = pimpersonService.searchDTXYG(context) ;
@@ -800,7 +800,7 @@ public class PimPersonResource {
                 .body(new PageImpl(pimpersonMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimPerson-XZKQRY-all')")
-	@ApiOperation(value = "获取新增考勤人员（考勤设置）", tags = {"人员信息" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取新增考勤人员（考勤设置）", tags = {"人员信息" } ,notes = "获取新增考勤人员（考勤设置）")
     @RequestMapping(method= RequestMethod.GET , value="/pimpeople/fetchxzkqry")
 	public ResponseEntity<List<PimPersonDTO>> fetchXZKQRY(PimPersonSearchContext context) {
         Page<PimPerson> domains = pimpersonService.searchXZKQRY(context) ;
@@ -813,7 +813,7 @@ public class PimPersonResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimPerson-XZKQRY-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"人员信息" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询新增考勤人员（考勤设置）", tags = {"人员信息" } ,notes = "查询新增考勤人员（考勤设置）")
     @RequestMapping(method= RequestMethod.POST , value="/pimpeople/searchxzkqry")
 	public ResponseEntity<Page<PimPersonDTO>> searchXZKQRY(@RequestBody PimPersonSearchContext context) {
         Page<PimPerson> domains = pimpersonService.searchXZKQRY(context) ;
@@ -821,7 +821,7 @@ public class PimPersonResource {
                 .body(new PageImpl(pimpersonMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimPerson-REP_PERSONAGE-all')")
-	@ApiOperation(value = "获取年龄分布", tags = {"人员信息" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取年龄分布", tags = {"人员信息" } ,notes = "获取年龄分布")
     @RequestMapping(method= RequestMethod.GET , value="/pimpeople/fetchrep_personage")
 	public ResponseEntity<List<HashMap>> fetchREP_PERSONAGE(PimPersonSearchContext context) {
         Page<HashMap> domains = pimpersonService.searchREP_PERSONAGE(context) ;
@@ -833,7 +833,7 @@ public class PimPersonResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimPerson-REP_PERSONAGE-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"人员信息" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询年龄分布", tags = {"人员信息" } ,notes = "查询年龄分布")
     @RequestMapping(method= RequestMethod.POST , value="/pimpeople/searchrep_personage")
 	public ResponseEntity<Page<HashMap>> searchREP_PERSONAGE(@RequestBody PimPersonSearchContext context) {
         Page<HashMap> domains = pimpersonService.searchREP_PERSONAGE(context) ;
@@ -841,7 +841,7 @@ public class PimPersonResource {
                 .body(new PageImpl(domains.getContent(), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimPerson-SYQKZZRY-all')")
-	@ApiOperation(value = "获取试用期可转正人员", tags = {"人员信息" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取试用期可转正人员", tags = {"人员信息" } ,notes = "获取试用期可转正人员")
     @RequestMapping(method= RequestMethod.GET , value="/pimpeople/fetchsyqkzzry")
 	public ResponseEntity<List<PimPersonDTO>> fetchSYQKZZRY(PimPersonSearchContext context) {
         Page<PimPerson> domains = pimpersonService.searchSYQKZZRY(context) ;
@@ -854,7 +854,7 @@ public class PimPersonResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimPerson-SYQKZZRY-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"人员信息" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询试用期可转正人员", tags = {"人员信息" } ,notes = "查询试用期可转正人员")
     @RequestMapping(method= RequestMethod.POST , value="/pimpeople/searchsyqkzzry")
 	public ResponseEntity<Page<PimPersonDTO>> searchSYQKZZRY(@RequestBody PimPersonSearchContext context) {
         Page<PimPerson> domains = pimpersonService.searchSYQKZZRY(context) ;
@@ -862,7 +862,7 @@ public class PimPersonResource {
                 .body(new PageImpl(pimpersonMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimPerson-JXQKZZRY-all')")
-	@ApiOperation(value = "获取见习期可转正人员", tags = {"人员信息" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取见习期可转正人员", tags = {"人员信息" } ,notes = "获取见习期可转正人员")
     @RequestMapping(method= RequestMethod.GET , value="/pimpeople/fetchjxqkzzry")
 	public ResponseEntity<List<PimPersonDTO>> fetchJXQKZZRY(PimPersonSearchContext context) {
         Page<PimPerson> domains = pimpersonService.searchJXQKZZRY(context) ;
@@ -875,7 +875,7 @@ public class PimPersonResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimPerson-JXQKZZRY-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"人员信息" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询见习期可转正人员", tags = {"人员信息" } ,notes = "查询见习期可转正人员")
     @RequestMapping(method= RequestMethod.POST , value="/pimpeople/searchjxqkzzry")
 	public ResponseEntity<Page<PimPersonDTO>> searchJXQKZZRY(@RequestBody PimPersonSearchContext context) {
         Page<PimPerson> domains = pimpersonService.searchJXQKZZRY(context) ;
@@ -883,7 +883,7 @@ public class PimPersonResource {
                 .body(new PageImpl(pimpersonMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimPerson-TXGB-all')")
-	@ApiOperation(value = "获取退休干部", tags = {"人员信息" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取退休干部", tags = {"人员信息" } ,notes = "获取退休干部")
     @RequestMapping(method= RequestMethod.GET , value="/pimpeople/fetchtxgb")
 	public ResponseEntity<List<PimPersonDTO>> fetchTXGB(PimPersonSearchContext context) {
         Page<PimPerson> domains = pimpersonService.searchTXGB(context) ;
@@ -896,7 +896,7 @@ public class PimPersonResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimPerson-TXGB-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"人员信息" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询退休干部", tags = {"人员信息" } ,notes = "查询退休干部")
     @RequestMapping(method= RequestMethod.POST , value="/pimpeople/searchtxgb")
 	public ResponseEntity<Page<PimPersonDTO>> searchTXGB(@RequestBody PimPersonSearchContext context) {
         Page<PimPerson> domains = pimpersonService.searchTXGB(context) ;
@@ -904,7 +904,7 @@ public class PimPersonResource {
                 .body(new PageImpl(pimpersonMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimPerson-KZJBDRY-all')")
-	@ApiOperation(value = "获取可进行职级变动的人员", tags = {"人员信息" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取可进行职级变动的人员", tags = {"人员信息" } ,notes = "获取可进行职级变动的人员")
     @RequestMapping(method= RequestMethod.GET , value="/pimpeople/fetchkzjbdry")
 	public ResponseEntity<List<PimPersonDTO>> fetchKZJBDRY(PimPersonSearchContext context) {
         Page<PimPerson> domains = pimpersonService.searchKZJBDRY(context) ;
@@ -917,7 +917,7 @@ public class PimPersonResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimPerson-KZJBDRY-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"人员信息" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询可进行职级变动的人员", tags = {"人员信息" } ,notes = "查询可进行职级变动的人员")
     @RequestMapping(method= RequestMethod.POST , value="/pimpeople/searchkzjbdry")
 	public ResponseEntity<Page<PimPersonDTO>> searchKZJBDRY(@RequestBody PimPersonSearchContext context) {
         Page<PimPerson> domains = pimpersonService.searchKZJBDRY(context) ;
@@ -925,7 +925,7 @@ public class PimPersonResource {
                 .body(new PageImpl(pimpersonMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimPerson-CurOrgPimperson-all')")
-	@ApiOperation(value = "获取当前组织下人员", tags = {"人员信息" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取当前组织下人员", tags = {"人员信息" } ,notes = "获取当前组织下人员")
     @RequestMapping(method= RequestMethod.GET , value="/pimpeople/fetchcurorgpimperson")
 	public ResponseEntity<List<PimPersonDTO>> fetchCurOrgPimperson(PimPersonSearchContext context) {
         Page<PimPerson> domains = pimpersonService.searchCurOrgPimperson(context) ;
@@ -938,7 +938,7 @@ public class PimPersonResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimPerson-CurOrgPimperson-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"人员信息" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询当前组织下人员", tags = {"人员信息" } ,notes = "查询当前组织下人员")
     @RequestMapping(method= RequestMethod.POST , value="/pimpeople/searchcurorgpimperson")
 	public ResponseEntity<Page<PimPersonDTO>> searchCurOrgPimperson(@RequestBody PimPersonSearchContext context) {
         Page<PimPerson> domains = pimpersonService.searchCurOrgPimperson(context) ;
@@ -946,7 +946,7 @@ public class PimPersonResource {
                 .body(new PageImpl(pimpersonMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimPerson-TXRYCX-all')")
-	@ApiOperation(value = "获取退休员工查询", tags = {"人员信息" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取退休员工查询", tags = {"人员信息" } ,notes = "获取退休员工查询")
     @RequestMapping(method= RequestMethod.GET , value="/pimpeople/fetchtxrycx")
 	public ResponseEntity<List<PimPersonDTO>> fetchTXRYCX(PimPersonSearchContext context) {
         Page<PimPerson> domains = pimpersonService.searchTXRYCX(context) ;
@@ -959,7 +959,7 @@ public class PimPersonResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimPerson-TXRYCX-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"人员信息" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询退休员工查询", tags = {"人员信息" } ,notes = "查询退休员工查询")
     @RequestMapping(method= RequestMethod.POST , value="/pimpeople/searchtxrycx")
 	public ResponseEntity<Page<PimPersonDTO>> searchTXRYCX(@RequestBody PimPersonSearchContext context) {
         Page<PimPerson> domains = pimpersonService.searchTXRYCX(context) ;
@@ -967,7 +967,7 @@ public class PimPersonResource {
                 .body(new PageImpl(pimpersonMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimPerson-KXZSYQKZZRYDS-all')")
-	@ApiOperation(value = "获取申请单可选择试用期可转正人员", tags = {"人员信息" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取申请单可选择试用期可转正人员", tags = {"人员信息" } ,notes = "获取申请单可选择试用期可转正人员")
     @RequestMapping(method= RequestMethod.GET , value="/pimpeople/fetchkxzsyqkzzryds")
 	public ResponseEntity<List<PimPersonDTO>> fetchKXZSYQKZZRYDS(PimPersonSearchContext context) {
         Page<PimPerson> domains = pimpersonService.searchKXZSYQKZZRYDS(context) ;
@@ -980,7 +980,7 @@ public class PimPersonResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimPerson-KXZSYQKZZRYDS-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"人员信息" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询申请单可选择试用期可转正人员", tags = {"人员信息" } ,notes = "查询申请单可选择试用期可转正人员")
     @RequestMapping(method= RequestMethod.POST , value="/pimpeople/searchkxzsyqkzzryds")
 	public ResponseEntity<Page<PimPersonDTO>> searchKXZSYQKZZRYDS(@RequestBody PimPersonSearchContext context) {
         Page<PimPerson> domains = pimpersonService.searchKXZSYQKZZRYDS(context) ;

@@ -138,7 +138,7 @@ public class PCMXKMLResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMXKML-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"学科目录" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"学科目录" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pcmxkmls/fetchdefault")
 	public ResponseEntity<List<PCMXKMLDTO>> fetchDefault(PCMXKMLSearchContext context) {
         Page<PCMXKML> domains = pcmxkmlService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class PCMXKMLResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMXKML-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"学科目录" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"学科目录" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pcmxkmls/searchdefault")
 	public ResponseEntity<Page<PCMXKMLDTO>> searchDefault(@RequestBody PCMXKMLSearchContext context) {
         Page<PCMXKML> domains = pcmxkmlService.searchDefault(context) ;
@@ -159,7 +159,7 @@ public class PCMXKMLResource {
                 .body(new PageImpl(pcmxkmlMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMXKML-CurND-all')")
-	@ApiOperation(value = "获取当前年度", tags = {"学科目录" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取当前年度", tags = {"学科目录" } ,notes = "获取当前年度")
     @RequestMapping(method= RequestMethod.GET , value="/pcmxkmls/fetchcurnd")
 	public ResponseEntity<List<PCMXKMLDTO>> fetchCurND(PCMXKMLSearchContext context) {
         Page<PCMXKML> domains = pcmxkmlService.searchCurND(context) ;
@@ -172,7 +172,7 @@ public class PCMXKMLResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMXKML-CurND-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"学科目录" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询当前年度", tags = {"学科目录" } ,notes = "查询当前年度")
     @RequestMapping(method= RequestMethod.POST , value="/pcmxkmls/searchcurnd")
 	public ResponseEntity<Page<PCMXKMLDTO>> searchCurND(@RequestBody PCMXKMLSearchContext context) {
         Page<PCMXKML> domains = pcmxkmlService.searchCurND(context) ;

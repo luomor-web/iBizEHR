@@ -138,7 +138,7 @@ public class TrmDepartResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TrmDepart-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"培训需求通知" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"培训需求通知" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/trmdeparts/fetchdefault")
 	public ResponseEntity<List<TrmDepartDTO>> fetchDefault(TrmDepartSearchContext context) {
         Page<TrmDepart> domains = trmdepartService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class TrmDepartResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TrmDepart-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"培训需求通知" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"培训需求通知" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/trmdeparts/searchdefault")
 	public ResponseEntity<Page<TrmDepartDTO>> searchDefault(@RequestBody TrmDepartSearchContext context) {
         Page<TrmDepart> domains = trmdepartService.searchDefault(context) ;

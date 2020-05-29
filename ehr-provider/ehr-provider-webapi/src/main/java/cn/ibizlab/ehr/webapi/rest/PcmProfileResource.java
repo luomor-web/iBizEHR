@@ -522,7 +522,7 @@ public class PcmProfileResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmProfile-YRDWSH_CSRCYJ-all')")
-	@ApiOperation(value = "获取用人单位董事长审批（成熟人才引进）", tags = {"应聘者基本信息" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取用人单位董事长审批（成熟人才引进）", tags = {"应聘者基本信息" } ,notes = "获取用人单位董事长审批（成熟人才引进）")
     @RequestMapping(method= RequestMethod.GET , value="/pcmprofiles/fetchyrdwsh_csrcyj")
 	public ResponseEntity<List<PcmProfileDTO>> fetchYRDWSH_CSRCYJ(PcmProfileSearchContext context) {
         Page<PcmProfile> domains = pcmprofileService.searchYRDWSH_CSRCYJ(context) ;
@@ -535,7 +535,7 @@ public class PcmProfileResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmProfile-YRDWSH_CSRCYJ-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"应聘者基本信息" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询用人单位董事长审批（成熟人才引进）", tags = {"应聘者基本信息" } ,notes = "查询用人单位董事长审批（成熟人才引进）")
     @RequestMapping(method= RequestMethod.POST , value="/pcmprofiles/searchyrdwsh_csrcyj")
 	public ResponseEntity<Page<PcmProfileDTO>> searchYRDWSH_CSRCYJ(@RequestBody PcmProfileSearchContext context) {
         Page<PcmProfile> domains = pcmprofileService.searchYRDWSH_CSRCYJ(context) ;
@@ -543,7 +543,7 @@ public class PcmProfileResource {
                 .body(new PageImpl(pcmprofileMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmProfile-JLDSP-all')")
-	@ApiOperation(value = "获取局总部审核（校园招聘）", tags = {"应聘者基本信息" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取局总部审核（校园招聘）", tags = {"应聘者基本信息" } ,notes = "获取局总部审核（校园招聘）")
     @RequestMapping(method= RequestMethod.GET , value="/pcmprofiles/fetchjldsp")
 	public ResponseEntity<List<PcmProfileDTO>> fetchJLDSP(PcmProfileSearchContext context) {
         Page<PcmProfile> domains = pcmprofileService.searchJLDSP(context) ;
@@ -556,7 +556,7 @@ public class PcmProfileResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmProfile-JLDSP-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"应聘者基本信息" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询局总部审核（校园招聘）", tags = {"应聘者基本信息" } ,notes = "查询局总部审核（校园招聘）")
     @RequestMapping(method= RequestMethod.POST , value="/pcmprofiles/searchjldsp")
 	public ResponseEntity<Page<PcmProfileDTO>> searchJLDSP(@RequestBody PcmProfileSearchContext context) {
         Page<PcmProfile> domains = pcmprofileService.searchJLDSP(context) ;
@@ -564,7 +564,7 @@ public class PcmProfileResource {
                 .body(new PageImpl(pcmprofileMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmProfile-BD_CSRCYJ-all')")
-	@ApiOperation(value = "获取报到（成熟人才引进）", tags = {"应聘者基本信息" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取报到（成熟人才引进）", tags = {"应聘者基本信息" } ,notes = "获取报到（成熟人才引进）")
     @RequestMapping(method= RequestMethod.GET , value="/pcmprofiles/fetchbd_csrcyj")
 	public ResponseEntity<List<PcmProfileDTO>> fetchBD_CSRCYJ(PcmProfileSearchContext context) {
         Page<PcmProfile> domains = pcmprofileService.searchBD_CSRCYJ(context) ;
@@ -577,7 +577,7 @@ public class PcmProfileResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmProfile-BD_CSRCYJ-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"应聘者基本信息" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询报到（成熟人才引进）", tags = {"应聘者基本信息" } ,notes = "查询报到（成熟人才引进）")
     @RequestMapping(method= RequestMethod.POST , value="/pcmprofiles/searchbd_csrcyj")
 	public ResponseEntity<Page<PcmProfileDTO>> searchBD_CSRCYJ(@RequestBody PcmProfileSearchContext context) {
         Page<PcmProfile> domains = pcmprofileService.searchBD_CSRCYJ(context) ;
@@ -585,7 +585,7 @@ public class PcmProfileResource {
                 .body(new PageImpl(pcmprofileMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmProfile-YPZSPB_CSRCYJ-all')")
-	@ApiOperation(value = "获取应聘者审批表（成熟人才引进）", tags = {"应聘者基本信息" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取应聘者审批表（成熟人才引进）", tags = {"应聘者基本信息" } ,notes = "获取应聘者审批表（成熟人才引进）")
     @RequestMapping(method= RequestMethod.GET , value="/pcmprofiles/fetchypzspb_csrcyj")
 	public ResponseEntity<List<PcmProfileDTO>> fetchYPZSPB_CSRCYJ(PcmProfileSearchContext context) {
         Page<PcmProfile> domains = pcmprofileService.searchYPZSPB_CSRCYJ(context) ;
@@ -598,7 +598,7 @@ public class PcmProfileResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmProfile-YPZSPB_CSRCYJ-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"应聘者基本信息" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询应聘者审批表（成熟人才引进）", tags = {"应聘者基本信息" } ,notes = "查询应聘者审批表（成熟人才引进）")
     @RequestMapping(method= RequestMethod.POST , value="/pcmprofiles/searchypzspb_csrcyj")
 	public ResponseEntity<Page<PcmProfileDTO>> searchYPZSPB_CSRCYJ(@RequestBody PcmProfileSearchContext context) {
         Page<PcmProfile> domains = pcmprofileService.searchYPZSPB_CSRCYJ(context) ;
@@ -606,7 +606,7 @@ public class PcmProfileResource {
                 .body(new PageImpl(pcmprofileMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmProfile-ZPDWSH-all')")
-	@ApiOperation(value = "获取用人单位初审（校园招聘）", tags = {"应聘者基本信息" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取用人单位初审（校园招聘）", tags = {"应聘者基本信息" } ,notes = "获取用人单位初审（校园招聘）")
     @RequestMapping(method= RequestMethod.GET , value="/pcmprofiles/fetchzpdwsh")
 	public ResponseEntity<List<PcmProfileDTO>> fetchZPDWSH(PcmProfileSearchContext context) {
         Page<PcmProfile> domains = pcmprofileService.searchZPDWSH(context) ;
@@ -619,7 +619,7 @@ public class PcmProfileResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmProfile-ZPDWSH-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"应聘者基本信息" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询用人单位初审（校园招聘）", tags = {"应聘者基本信息" } ,notes = "查询用人单位初审（校园招聘）")
     @RequestMapping(method= RequestMethod.POST , value="/pcmprofiles/searchzpdwsh")
 	public ResponseEntity<Page<PcmProfileDTO>> searchZPDWSH(@RequestBody PcmProfileSearchContext context) {
         Page<PcmProfile> domains = pcmprofileService.searchZPDWSH(context) ;
@@ -627,7 +627,7 @@ public class PcmProfileResource {
                 .body(new PageImpl(pcmprofileMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmProfile-BD-all')")
-	@ApiOperation(value = "获取报到（校园招聘）", tags = {"应聘者基本信息" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取报到（校园招聘）", tags = {"应聘者基本信息" } ,notes = "获取报到（校园招聘）")
     @RequestMapping(method= RequestMethod.GET , value="/pcmprofiles/fetchbd")
 	public ResponseEntity<List<PcmProfileDTO>> fetchBD(PcmProfileSearchContext context) {
         Page<PcmProfile> domains = pcmprofileService.searchBD(context) ;
@@ -640,7 +640,7 @@ public class PcmProfileResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmProfile-BD-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"应聘者基本信息" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询报到（校园招聘）", tags = {"应聘者基本信息" } ,notes = "查询报到（校园招聘）")
     @RequestMapping(method= RequestMethod.POST , value="/pcmprofiles/searchbd")
 	public ResponseEntity<Page<PcmProfileDTO>> searchBD(@RequestBody PcmProfileSearchContext context) {
         Page<PcmProfile> domains = pcmprofileService.searchBD(context) ;
@@ -648,7 +648,7 @@ public class PcmProfileResource {
                 .body(new PageImpl(pcmprofileMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmProfile-BHSP-all')")
-	@ApiOperation(value = "获取编号审批（校园招聘）", tags = {"应聘者基本信息" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取编号审批（校园招聘）", tags = {"应聘者基本信息" } ,notes = "获取编号审批（校园招聘）")
     @RequestMapping(method= RequestMethod.GET , value="/pcmprofiles/fetchbhsp")
 	public ResponseEntity<List<PcmProfileDTO>> fetchBHSP(PcmProfileSearchContext context) {
         Page<PcmProfile> domains = pcmprofileService.searchBHSP(context) ;
@@ -661,7 +661,7 @@ public class PcmProfileResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmProfile-BHSP-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"应聘者基本信息" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询编号审批（校园招聘）", tags = {"应聘者基本信息" } ,notes = "查询编号审批（校园招聘）")
     @RequestMapping(method= RequestMethod.POST , value="/pcmprofiles/searchbhsp")
 	public ResponseEntity<Page<PcmProfileDTO>> searchBHSP(@RequestBody PcmProfileSearchContext context) {
         Page<PcmProfile> domains = pcmprofileService.searchBHSP(context) ;
@@ -669,7 +669,7 @@ public class PcmProfileResource {
                 .body(new PageImpl(pcmprofileMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmProfile-LR-all')")
-	@ApiOperation(value = "获取录入（校园招聘）", tags = {"应聘者基本信息" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取录入（校园招聘）", tags = {"应聘者基本信息" } ,notes = "获取录入（校园招聘）")
     @RequestMapping(method= RequestMethod.GET , value="/pcmprofiles/fetchlr")
 	public ResponseEntity<List<PcmProfileDTO>> fetchLR(PcmProfileSearchContext context) {
         Page<PcmProfile> domains = pcmprofileService.searchLR(context) ;
@@ -682,7 +682,7 @@ public class PcmProfileResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmProfile-LR-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"应聘者基本信息" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询录入（校园招聘）", tags = {"应聘者基本信息" } ,notes = "查询录入（校园招聘）")
     @RequestMapping(method= RequestMethod.POST , value="/pcmprofiles/searchlr")
 	public ResponseEntity<Page<PcmProfileDTO>> searchLR(@RequestBody PcmProfileSearchContext context) {
         Page<PcmProfile> domains = pcmprofileService.searchLR(context) ;
@@ -690,7 +690,7 @@ public class PcmProfileResource {
                 .body(new PageImpl(pcmprofileMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmProfile-RLSB-all')")
-	@ApiOperation(value = "获取人力上报（校园招聘）", tags = {"应聘者基本信息" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取人力上报（校园招聘）", tags = {"应聘者基本信息" } ,notes = "获取人力上报（校园招聘）")
     @RequestMapping(method= RequestMethod.GET , value="/pcmprofiles/fetchrlsb")
 	public ResponseEntity<List<PcmProfileDTO>> fetchRLSB(PcmProfileSearchContext context) {
         Page<PcmProfile> domains = pcmprofileService.searchRLSB(context) ;
@@ -703,7 +703,7 @@ public class PcmProfileResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmProfile-RLSB-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"应聘者基本信息" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询人力上报（校园招聘）", tags = {"应聘者基本信息" } ,notes = "查询人力上报（校园招聘）")
     @RequestMapping(method= RequestMethod.POST , value="/pcmprofiles/searchrlsb")
 	public ResponseEntity<Page<PcmProfileDTO>> searchRLSB(@RequestBody PcmProfileSearchContext context) {
         Page<PcmProfile> domains = pcmprofileService.searchRLSB(context) ;
@@ -711,7 +711,7 @@ public class PcmProfileResource {
                 .body(new PageImpl(pcmprofileMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmProfile-FormType-all')")
-	@ApiOperation(value = "获取FormType", tags = {"应聘者基本信息" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取FormType", tags = {"应聘者基本信息" } ,notes = "获取FormType")
     @RequestMapping(method= RequestMethod.GET , value="/pcmprofiles/fetchformtype")
 	public ResponseEntity<List<PcmProfileDTO>> fetchFormType(PcmProfileSearchContext context) {
         Page<PcmProfile> domains = pcmprofileService.searchFormType(context) ;
@@ -724,7 +724,7 @@ public class PcmProfileResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmProfile-FormType-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"应聘者基本信息" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询FormType", tags = {"应聘者基本信息" } ,notes = "查询FormType")
     @RequestMapping(method= RequestMethod.POST , value="/pcmprofiles/searchformtype")
 	public ResponseEntity<Page<PcmProfileDTO>> searchFormType(@RequestBody PcmProfileSearchContext context) {
         Page<PcmProfile> domains = pcmprofileService.searchFormType(context) ;
@@ -732,7 +732,7 @@ public class PcmProfileResource {
                 .body(new PageImpl(pcmprofileMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmProfile-HTRY_CSRCYJ-all')")
-	@ApiOperation(value = "获取回退人员（成熟人才引进）", tags = {"应聘者基本信息" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取回退人员（成熟人才引进）", tags = {"应聘者基本信息" } ,notes = "获取回退人员（成熟人才引进）")
     @RequestMapping(method= RequestMethod.GET , value="/pcmprofiles/fetchhtry_csrcyj")
 	public ResponseEntity<List<PcmProfileDTO>> fetchHTRY_CSRCYJ(PcmProfileSearchContext context) {
         Page<PcmProfile> domains = pcmprofileService.searchHTRY_CSRCYJ(context) ;
@@ -745,7 +745,7 @@ public class PcmProfileResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmProfile-HTRY_CSRCYJ-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"应聘者基本信息" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询回退人员（成熟人才引进）", tags = {"应聘者基本信息" } ,notes = "查询回退人员（成熟人才引进）")
     @RequestMapping(method= RequestMethod.POST , value="/pcmprofiles/searchhtry_csrcyj")
 	public ResponseEntity<Page<PcmProfileDTO>> searchHTRY_CSRCYJ(@RequestBody PcmProfileSearchContext context) {
         Page<PcmProfile> domains = pcmprofileService.searchHTRY_CSRCYJ(context) ;
@@ -753,7 +753,7 @@ public class PcmProfileResource {
                 .body(new PageImpl(pcmprofileMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmProfile-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"应聘者基本信息" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"应聘者基本信息" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pcmprofiles/fetchdefault")
 	public ResponseEntity<List<PcmProfileDTO>> fetchDefault(PcmProfileSearchContext context) {
         Page<PcmProfile> domains = pcmprofileService.searchDefault(context) ;
@@ -766,7 +766,7 @@ public class PcmProfileResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmProfile-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"应聘者基本信息" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"应聘者基本信息" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pcmprofiles/searchdefault")
 	public ResponseEntity<Page<PcmProfileDTO>> searchDefault(@RequestBody PcmProfileSearchContext context) {
         Page<PcmProfile> domains = pcmprofileService.searchDefault(context) ;
@@ -774,7 +774,7 @@ public class PcmProfileResource {
                 .body(new PageImpl(pcmprofileMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmProfile-JZBSP-all')")
-	@ApiOperation(value = "获取局总部审批（校园招聘）", tags = {"应聘者基本信息" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取局总部审批（校园招聘）", tags = {"应聘者基本信息" } ,notes = "获取局总部审批（校园招聘）")
     @RequestMapping(method= RequestMethod.GET , value="/pcmprofiles/fetchjzbsp")
 	public ResponseEntity<List<PcmProfileDTO>> fetchJZBSP(PcmProfileSearchContext context) {
         Page<PcmProfile> domains = pcmprofileService.searchJZBSP(context) ;
@@ -787,7 +787,7 @@ public class PcmProfileResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmProfile-JZBSP-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"应聘者基本信息" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询局总部审批（校园招聘）", tags = {"应聘者基本信息" } ,notes = "查询局总部审批（校园招聘）")
     @RequestMapping(method= RequestMethod.POST , value="/pcmprofiles/searchjzbsp")
 	public ResponseEntity<Page<PcmProfileDTO>> searchJZBSP(@RequestBody PcmProfileSearchContext context) {
         Page<PcmProfile> domains = pcmprofileService.searchJZBSP(context) ;
@@ -795,7 +795,7 @@ public class PcmProfileResource {
                 .body(new PageImpl(pcmprofileMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmProfile-RZSP_CSRCYJ-all')")
-	@ApiOperation(value = "获取局总部初审（成熟人才引进）", tags = {"应聘者基本信息" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取局总部初审（成熟人才引进）", tags = {"应聘者基本信息" } ,notes = "获取局总部初审（成熟人才引进）")
     @RequestMapping(method= RequestMethod.GET , value="/pcmprofiles/fetchrzsp_csrcyj")
 	public ResponseEntity<List<PcmProfileDTO>> fetchRZSP_CSRCYJ(PcmProfileSearchContext context) {
         Page<PcmProfile> domains = pcmprofileService.searchRZSP_CSRCYJ(context) ;
@@ -808,7 +808,7 @@ public class PcmProfileResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmProfile-RZSP_CSRCYJ-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"应聘者基本信息" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询局总部初审（成熟人才引进）", tags = {"应聘者基本信息" } ,notes = "查询局总部初审（成熟人才引进）")
     @RequestMapping(method= RequestMethod.POST , value="/pcmprofiles/searchrzsp_csrcyj")
 	public ResponseEntity<Page<PcmProfileDTO>> searchRZSP_CSRCYJ(@RequestBody PcmProfileSearchContext context) {
         Page<PcmProfile> domains = pcmprofileService.searchRZSP_CSRCYJ(context) ;
@@ -816,7 +816,7 @@ public class PcmProfileResource {
                 .body(new PageImpl(pcmprofileMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmProfile-JLDSP_CSRCYJ-all')")
-	@ApiOperation(value = "获取局总部审核（成熟人才引进）", tags = {"应聘者基本信息" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取局总部审核（成熟人才引进）", tags = {"应聘者基本信息" } ,notes = "获取局总部审核（成熟人才引进）")
     @RequestMapping(method= RequestMethod.GET , value="/pcmprofiles/fetchjldsp_csrcyj")
 	public ResponseEntity<List<PcmProfileDTO>> fetchJLDSP_CSRCYJ(PcmProfileSearchContext context) {
         Page<PcmProfile> domains = pcmprofileService.searchJLDSP_CSRCYJ(context) ;
@@ -829,7 +829,7 @@ public class PcmProfileResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmProfile-JLDSP_CSRCYJ-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"应聘者基本信息" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询局总部审核（成熟人才引进）", tags = {"应聘者基本信息" } ,notes = "查询局总部审核（成熟人才引进）")
     @RequestMapping(method= RequestMethod.POST , value="/pcmprofiles/searchjldsp_csrcyj")
 	public ResponseEntity<Page<PcmProfileDTO>> searchJLDSP_CSRCYJ(@RequestBody PcmProfileSearchContext context) {
         Page<PcmProfile> domains = pcmprofileService.searchJLDSP_CSRCYJ(context) ;
@@ -837,7 +837,7 @@ public class PcmProfileResource {
                 .body(new PageImpl(pcmprofileMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmProfile-BHSP_CSRCYJ-all')")
-	@ApiOperation(value = "获取编号审批（成熟人才引进）", tags = {"应聘者基本信息" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取编号审批（成熟人才引进）", tags = {"应聘者基本信息" } ,notes = "获取编号审批（成熟人才引进）")
     @RequestMapping(method= RequestMethod.GET , value="/pcmprofiles/fetchbhsp_csrcyj")
 	public ResponseEntity<List<PcmProfileDTO>> fetchBHSP_CSRCYJ(PcmProfileSearchContext context) {
         Page<PcmProfile> domains = pcmprofileService.searchBHSP_CSRCYJ(context) ;
@@ -850,7 +850,7 @@ public class PcmProfileResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmProfile-BHSP_CSRCYJ-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"应聘者基本信息" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询编号审批（成熟人才引进）", tags = {"应聘者基本信息" } ,notes = "查询编号审批（成熟人才引进）")
     @RequestMapping(method= RequestMethod.POST , value="/pcmprofiles/searchbhsp_csrcyj")
 	public ResponseEntity<Page<PcmProfileDTO>> searchBHSP_CSRCYJ(@RequestBody PcmProfileSearchContext context) {
         Page<PcmProfile> domains = pcmprofileService.searchBHSP_CSRCYJ(context) ;
@@ -858,7 +858,7 @@ public class PcmProfileResource {
                 .body(new PageImpl(pcmprofileMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmProfile-LR_CSRCYJ-all')")
-	@ApiOperation(value = "获取录入（成熟人才引进）", tags = {"应聘者基本信息" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取录入（成熟人才引进）", tags = {"应聘者基本信息" } ,notes = "获取录入（成熟人才引进）")
     @RequestMapping(method= RequestMethod.GET , value="/pcmprofiles/fetchlr_csrcyj")
 	public ResponseEntity<List<PcmProfileDTO>> fetchLR_CSRCYJ(PcmProfileSearchContext context) {
         Page<PcmProfile> domains = pcmprofileService.searchLR_CSRCYJ(context) ;
@@ -871,7 +871,7 @@ public class PcmProfileResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmProfile-LR_CSRCYJ-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"应聘者基本信息" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询录入（成熟人才引进）", tags = {"应聘者基本信息" } ,notes = "查询录入（成熟人才引进）")
     @RequestMapping(method= RequestMethod.POST , value="/pcmprofiles/searchlr_csrcyj")
 	public ResponseEntity<Page<PcmProfileDTO>> searchLR_CSRCYJ(@RequestBody PcmProfileSearchContext context) {
         Page<PcmProfile> domains = pcmprofileService.searchLR_CSRCYJ(context) ;
@@ -879,7 +879,7 @@ public class PcmProfileResource {
                 .body(new PageImpl(pcmprofileMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmProfile-YPZBB_READ-all')")
-	@ApiOperation(value = "获取应聘者查询", tags = {"应聘者基本信息" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取应聘者查询", tags = {"应聘者基本信息" } ,notes = "获取应聘者查询")
     @RequestMapping(method= RequestMethod.GET , value="/pcmprofiles/fetchypzbb_read")
 	public ResponseEntity<List<PcmProfileDTO>> fetchYPZBB_READ(PcmProfileSearchContext context) {
         Page<PcmProfile> domains = pcmprofileService.searchYPZBB_READ(context) ;
@@ -892,7 +892,7 @@ public class PcmProfileResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmProfile-YPZBB_READ-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"应聘者基本信息" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询应聘者查询", tags = {"应聘者基本信息" } ,notes = "查询应聘者查询")
     @RequestMapping(method= RequestMethod.POST , value="/pcmprofiles/searchypzbb_read")
 	public ResponseEntity<Page<PcmProfileDTO>> searchYPZBB_READ(@RequestBody PcmProfileSearchContext context) {
         Page<PcmProfile> domains = pcmprofileService.searchYPZBB_READ(context) ;
@@ -900,7 +900,7 @@ public class PcmProfileResource {
                 .body(new PageImpl(pcmprofileMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmProfile-HTRY-all')")
-	@ApiOperation(value = "获取回退人员（校园招聘）", tags = {"应聘者基本信息" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取回退人员（校园招聘）", tags = {"应聘者基本信息" } ,notes = "获取回退人员（校园招聘）")
     @RequestMapping(method= RequestMethod.GET , value="/pcmprofiles/fetchhtry")
 	public ResponseEntity<List<PcmProfileDTO>> fetchHTRY(PcmProfileSearchContext context) {
         Page<PcmProfile> domains = pcmprofileService.searchHTRY(context) ;
@@ -913,7 +913,7 @@ public class PcmProfileResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmProfile-HTRY-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"应聘者基本信息" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询回退人员（校园招聘）", tags = {"应聘者基本信息" } ,notes = "查询回退人员（校园招聘）")
     @RequestMapping(method= RequestMethod.POST , value="/pcmprofiles/searchhtry")
 	public ResponseEntity<Page<PcmProfileDTO>> searchHTRY(@RequestBody PcmProfileSearchContext context) {
         Page<PcmProfile> domains = pcmprofileService.searchHTRY(context) ;
@@ -921,7 +921,7 @@ public class PcmProfileResource {
                 .body(new PageImpl(pcmprofileMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmProfile-RZSP-all')")
-	@ApiOperation(value = "获取局总部初审（校园招聘）", tags = {"应聘者基本信息" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取局总部初审（校园招聘）", tags = {"应聘者基本信息" } ,notes = "获取局总部初审（校园招聘）")
     @RequestMapping(method= RequestMethod.GET , value="/pcmprofiles/fetchrzsp")
 	public ResponseEntity<List<PcmProfileDTO>> fetchRZSP(PcmProfileSearchContext context) {
         Page<PcmProfile> domains = pcmprofileService.searchRZSP(context) ;
@@ -934,7 +934,7 @@ public class PcmProfileResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmProfile-RZSP-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"应聘者基本信息" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询局总部初审（校园招聘）", tags = {"应聘者基本信息" } ,notes = "查询局总部初审（校园招聘）")
     @RequestMapping(method= RequestMethod.POST , value="/pcmprofiles/searchrzsp")
 	public ResponseEntity<Page<PcmProfileDTO>> searchRZSP(@RequestBody PcmProfileSearchContext context) {
         Page<PcmProfile> domains = pcmprofileService.searchRZSP(context) ;
@@ -942,7 +942,7 @@ public class PcmProfileResource {
                 .body(new PageImpl(pcmprofileMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmProfile-YRDWCS_CSRCYJ-all')")
-	@ApiOperation(value = "获取用人单位初审（成熟人才引进）", tags = {"应聘者基本信息" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取用人单位初审（成熟人才引进）", tags = {"应聘者基本信息" } ,notes = "获取用人单位初审（成熟人才引进）")
     @RequestMapping(method= RequestMethod.GET , value="/pcmprofiles/fetchyrdwcs_csrcyj")
 	public ResponseEntity<List<PcmProfileDTO>> fetchYRDWCS_CSRCYJ(PcmProfileSearchContext context) {
         Page<PcmProfile> domains = pcmprofileService.searchYRDWCS_CSRCYJ(context) ;
@@ -955,7 +955,7 @@ public class PcmProfileResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmProfile-YRDWCS_CSRCYJ-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"应聘者基本信息" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询用人单位初审（成熟人才引进）", tags = {"应聘者基本信息" } ,notes = "查询用人单位初审（成熟人才引进）")
     @RequestMapping(method= RequestMethod.POST , value="/pcmprofiles/searchyrdwcs_csrcyj")
 	public ResponseEntity<Page<PcmProfileDTO>> searchYRDWCS_CSRCYJ(@RequestBody PcmProfileSearchContext context) {
         Page<PcmProfile> domains = pcmprofileService.searchYRDWCS_CSRCYJ(context) ;
@@ -963,7 +963,7 @@ public class PcmProfileResource {
                 .body(new PageImpl(pcmprofileMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmProfile-JZBSP_CSRCYJ-all')")
-	@ApiOperation(value = "获取局总部审批（成熟人才引进）", tags = {"应聘者基本信息" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取局总部审批（成熟人才引进）", tags = {"应聘者基本信息" } ,notes = "获取局总部审批（成熟人才引进）")
     @RequestMapping(method= RequestMethod.GET , value="/pcmprofiles/fetchjzbsp_csrcyj")
 	public ResponseEntity<List<PcmProfileDTO>> fetchJZBSP_CSRCYJ(PcmProfileSearchContext context) {
         Page<PcmProfile> domains = pcmprofileService.searchJZBSP_CSRCYJ(context) ;
@@ -976,7 +976,7 @@ public class PcmProfileResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmProfile-JZBSP_CSRCYJ-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"应聘者基本信息" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询局总部审批（成熟人才引进）", tags = {"应聘者基本信息" } ,notes = "查询局总部审批（成熟人才引进）")
     @RequestMapping(method= RequestMethod.POST , value="/pcmprofiles/searchjzbsp_csrcyj")
 	public ResponseEntity<Page<PcmProfileDTO>> searchJZBSP_CSRCYJ(@RequestBody PcmProfileSearchContext context) {
         Page<PcmProfile> domains = pcmprofileService.searchJZBSP_CSRCYJ(context) ;
@@ -984,7 +984,7 @@ public class PcmProfileResource {
                 .body(new PageImpl(pcmprofileMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmProfile-RLSB_CSRCYJ-all')")
-	@ApiOperation(value = "获取人力上报（成熟人才引进）", tags = {"应聘者基本信息" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取人力上报（成熟人才引进）", tags = {"应聘者基本信息" } ,notes = "获取人力上报（成熟人才引进）")
     @RequestMapping(method= RequestMethod.GET , value="/pcmprofiles/fetchrlsb_csrcyj")
 	public ResponseEntity<List<PcmProfileDTO>> fetchRLSB_CSRCYJ(PcmProfileSearchContext context) {
         Page<PcmProfile> domains = pcmprofileService.searchRLSB_CSRCYJ(context) ;
@@ -997,7 +997,7 @@ public class PcmProfileResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmProfile-RLSB_CSRCYJ-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"应聘者基本信息" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询人力上报（成熟人才引进）", tags = {"应聘者基本信息" } ,notes = "查询人力上报（成熟人才引进）")
     @RequestMapping(method= RequestMethod.POST , value="/pcmprofiles/searchrlsb_csrcyj")
 	public ResponseEntity<Page<PcmProfileDTO>> searchRLSB_CSRCYJ(@RequestBody PcmProfileSearchContext context) {
         Page<PcmProfile> domains = pcmprofileService.searchRLSB_CSRCYJ(context) ;

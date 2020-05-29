@@ -29,7 +29,6 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 /**
  * 实体[绩效启动设置]
  */
-@Builder
 @Getter
 @Setter
 @NoArgsConstructor

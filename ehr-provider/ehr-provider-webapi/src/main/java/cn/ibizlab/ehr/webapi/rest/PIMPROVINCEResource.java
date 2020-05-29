@@ -138,7 +138,7 @@ public class PIMPROVINCEResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMPROVINCE-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"省" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"省" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimprovinces/fetchdefault")
 	public ResponseEntity<List<PIMPROVINCEDTO>> fetchDefault(PIMPROVINCESearchContext context) {
         Page<PIMPROVINCE> domains = pimprovinceService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class PIMPROVINCEResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMPROVINCE-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"省" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"省" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pimprovinces/searchdefault")
 	public ResponseEntity<Page<PIMPROVINCEDTO>> searchDefault(@RequestBody PIMPROVINCESearchContext context) {
         Page<PIMPROVINCE> domains = pimprovinceService.searchDefault(context) ;

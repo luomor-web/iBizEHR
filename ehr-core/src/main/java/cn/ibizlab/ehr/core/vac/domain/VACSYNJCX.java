@@ -29,7 +29,6 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 /**
  * 实体[年休假查询]
  */
-@Builder
 @Getter
 @Setter
 @NoArgsConstructor

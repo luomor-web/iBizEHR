@@ -138,7 +138,7 @@ public class PersonStateMgrResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PersonStateMgr-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"员工状态管理" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"员工状态管理" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/personstatemgrs/fetchdefault")
 	public ResponseEntity<List<PersonStateMgrDTO>> fetchDefault(PersonStateMgrSearchContext context) {
         Page<PersonStateMgr> domains = personstatemgrService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class PersonStateMgrResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PersonStateMgr-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"员工状态管理" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"员工状态管理" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/personstatemgrs/searchdefault")
 	public ResponseEntity<Page<PersonStateMgrDTO>> searchDefault(@RequestBody PersonStateMgrSearchContext context) {
         Page<PersonStateMgr> domains = personstatemgrService.searchDefault(context) ;

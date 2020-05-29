@@ -162,7 +162,7 @@ public class PimFaminfoResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimFaminfo-JLSSGR-all')")
-	@ApiOperation(value = "获取记录所属（个人）", tags = {"家庭情况" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取记录所属（个人）", tags = {"家庭情况" } ,notes = "获取记录所属（个人）")
     @RequestMapping(method= RequestMethod.GET , value="/pimfaminfos/fetchjlssgr")
 	public ResponseEntity<List<PimFaminfoDTO>> fetchJLSSGR(PimFaminfoSearchContext context) {
         Page<PimFaminfo> domains = pimfaminfoService.searchJLSSGR(context) ;
@@ -175,7 +175,7 @@ public class PimFaminfoResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimFaminfo-JLSSGR-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"家庭情况" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询记录所属（个人）", tags = {"家庭情况" } ,notes = "查询记录所属（个人）")
     @RequestMapping(method= RequestMethod.POST , value="/pimfaminfos/searchjlssgr")
 	public ResponseEntity<Page<PimFaminfoDTO>> searchJLSSGR(@RequestBody PimFaminfoSearchContext context) {
         Page<PimFaminfo> domains = pimfaminfoService.searchJLSSGR(context) ;
@@ -183,7 +183,7 @@ public class PimFaminfoResource {
                 .body(new PageImpl(pimfaminfoMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimFaminfo-JTLXR-all')")
-	@ApiOperation(value = "获取查询该人员的家庭联系人", tags = {"家庭情况" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取查询该人员的家庭联系人", tags = {"家庭情况" } ,notes = "获取查询该人员的家庭联系人")
     @RequestMapping(method= RequestMethod.GET , value="/pimfaminfos/fetchjtlxr")
 	public ResponseEntity<List<PimFaminfoDTO>> fetchJTLXR(PimFaminfoSearchContext context) {
         Page<PimFaminfo> domains = pimfaminfoService.searchJTLXR(context) ;
@@ -196,7 +196,7 @@ public class PimFaminfoResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimFaminfo-JTLXR-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"家庭情况" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询查询该人员的家庭联系人", tags = {"家庭情况" } ,notes = "查询查询该人员的家庭联系人")
     @RequestMapping(method= RequestMethod.POST , value="/pimfaminfos/searchjtlxr")
 	public ResponseEntity<Page<PimFaminfoDTO>> searchJTLXR(@RequestBody PimFaminfoSearchContext context) {
         Page<PimFaminfo> domains = pimfaminfoService.searchJTLXR(context) ;
@@ -204,7 +204,7 @@ public class PimFaminfoResource {
                 .body(new PageImpl(pimfaminfoMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimFaminfo-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"家庭情况" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"家庭情况" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimfaminfos/fetchdefault")
 	public ResponseEntity<List<PimFaminfoDTO>> fetchDefault(PimFaminfoSearchContext context) {
         Page<PimFaminfo> domains = pimfaminfoService.searchDefault(context) ;
@@ -217,7 +217,7 @@ public class PimFaminfoResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimFaminfo-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"家庭情况" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"家庭情况" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pimfaminfos/searchdefault")
 	public ResponseEntity<Page<PimFaminfoDTO>> searchDefault(@RequestBody PimFaminfoSearchContext context) {
         Page<PimFaminfo> domains = pimfaminfoService.searchDefault(context) ;
@@ -225,7 +225,7 @@ public class PimFaminfoResource {
                 .body(new PageImpl(pimfaminfoMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimFaminfo-JLSSGLY-all')")
-	@ApiOperation(value = "获取记录所属（管理员）", tags = {"家庭情况" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取记录所属（管理员）", tags = {"家庭情况" } ,notes = "获取记录所属（管理员）")
     @RequestMapping(method= RequestMethod.GET , value="/pimfaminfos/fetchjlssgly")
 	public ResponseEntity<List<PimFaminfoDTO>> fetchJLSSGLY(PimFaminfoSearchContext context) {
         Page<PimFaminfo> domains = pimfaminfoService.searchJLSSGLY(context) ;
@@ -238,7 +238,7 @@ public class PimFaminfoResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimFaminfo-JLSSGLY-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"家庭情况" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询记录所属（管理员）", tags = {"家庭情况" } ,notes = "查询记录所属（管理员）")
     @RequestMapping(method= RequestMethod.POST , value="/pimfaminfos/searchjlssgly")
 	public ResponseEntity<Page<PimFaminfoDTO>> searchJLSSGLY(@RequestBody PimFaminfoSearchContext context) {
         Page<PimFaminfo> domains = pimfaminfoService.searchJLSSGLY(context) ;
@@ -246,7 +246,7 @@ public class PimFaminfoResource {
                 .body(new PageImpl(pimfaminfoMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimFaminfo-FAZZSY-all')")
-	@ApiOperation(value = "获取非A类员工转正使用", tags = {"家庭情况" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取非A类员工转正使用", tags = {"家庭情况" } ,notes = "获取非A类员工转正使用")
     @RequestMapping(method= RequestMethod.GET , value="/pimfaminfos/fetchfazzsy")
 	public ResponseEntity<List<PimFaminfoDTO>> fetchFAZZSY(PimFaminfoSearchContext context) {
         Page<PimFaminfo> domains = pimfaminfoService.searchFAZZSY(context) ;
@@ -259,7 +259,7 @@ public class PimFaminfoResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimFaminfo-FAZZSY-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"家庭情况" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询非A类员工转正使用", tags = {"家庭情况" } ,notes = "查询非A类员工转正使用")
     @RequestMapping(method= RequestMethod.POST , value="/pimfaminfos/searchfazzsy")
 	public ResponseEntity<Page<PimFaminfoDTO>> searchFAZZSY(@RequestBody PimFaminfoSearchContext context) {
         Page<PimFaminfo> domains = pimfaminfoService.searchFAZZSY(context) ;
@@ -267,7 +267,7 @@ public class PimFaminfoResource {
                 .body(new PageImpl(pimfaminfoMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimFaminfo-ZIZHU-all')")
-	@ApiOperation(value = "获取自助(家庭情况)", tags = {"家庭情况" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取自助(家庭情况)", tags = {"家庭情况" } ,notes = "获取自助(家庭情况)")
     @RequestMapping(method= RequestMethod.GET , value="/pimfaminfos/fetchzizhu")
 	public ResponseEntity<List<PimFaminfoDTO>> fetchZIZHU(PimFaminfoSearchContext context) {
         Page<PimFaminfo> domains = pimfaminfoService.searchZIZHU(context) ;
@@ -280,7 +280,7 @@ public class PimFaminfoResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimFaminfo-ZIZHU-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"家庭情况" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询自助(家庭情况)", tags = {"家庭情况" } ,notes = "查询自助(家庭情况)")
     @RequestMapping(method= RequestMethod.POST , value="/pimfaminfos/searchzizhu")
 	public ResponseEntity<Page<PimFaminfoDTO>> searchZIZHU(@RequestBody PimFaminfoSearchContext context) {
         Page<PimFaminfo> domains = pimfaminfoService.searchZIZHU(context) ;
@@ -288,7 +288,7 @@ public class PimFaminfoResource {
                 .body(new PageImpl(pimfaminfoMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimFaminfo-JLSS-all')")
-	@ApiOperation(value = "获取记录所属", tags = {"家庭情况" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取记录所属", tags = {"家庭情况" } ,notes = "获取记录所属")
     @RequestMapping(method= RequestMethod.GET , value="/pimfaminfos/fetchjlss")
 	public ResponseEntity<List<PimFaminfoDTO>> fetchJLSS(PimFaminfoSearchContext context) {
         Page<PimFaminfo> domains = pimfaminfoService.searchJLSS(context) ;
@@ -301,7 +301,7 @@ public class PimFaminfoResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimFaminfo-JLSS-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"家庭情况" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询记录所属", tags = {"家庭情况" } ,notes = "查询记录所属")
     @RequestMapping(method= RequestMethod.POST , value="/pimfaminfos/searchjlss")
 	public ResponseEntity<Page<PimFaminfoDTO>> searchJLSS(@RequestBody PimFaminfoSearchContext context) {
         Page<PimFaminfo> domains = pimfaminfoService.searchJLSS(context) ;

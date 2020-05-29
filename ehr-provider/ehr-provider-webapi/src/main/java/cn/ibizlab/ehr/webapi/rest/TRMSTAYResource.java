@@ -138,7 +138,7 @@ public class TRMSTAYResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMSTAY-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"培训住宿" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"培训住宿" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/trmstays/fetchdefault")
 	public ResponseEntity<List<TRMSTAYDTO>> fetchDefault(TRMSTAYSearchContext context) {
         Page<TRMSTAY> domains = trmstayService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class TRMSTAYResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMSTAY-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"培训住宿" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"培训住宿" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/trmstays/searchdefault")
 	public ResponseEntity<Page<TRMSTAYDTO>> searchDefault(@RequestBody TRMSTAYSearchContext context) {
         Page<TRMSTAY> domains = trmstayService.searchDefault(context) ;

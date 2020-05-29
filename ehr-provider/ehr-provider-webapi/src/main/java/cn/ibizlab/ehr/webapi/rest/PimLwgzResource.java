@@ -138,7 +138,7 @@ public class PimLwgzResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimLwgz-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"轮岗规则" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"轮岗规则" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimlwgzs/fetchdefault")
 	public ResponseEntity<List<PimLwgzDTO>> fetchDefault(PimLwgzSearchContext context) {
         Page<PimLwgz> domains = pimlwgzService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class PimLwgzResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimLwgz-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"轮岗规则" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"轮岗规则" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pimlwgzs/searchdefault")
 	public ResponseEntity<Page<PimLwgzDTO>> searchDefault(@RequestBody PimLwgzSearchContext context) {
         Page<PimLwgz> domains = pimlwgzService.searchDefault(context) ;

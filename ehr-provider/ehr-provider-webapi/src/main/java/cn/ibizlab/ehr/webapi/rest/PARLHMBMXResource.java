@@ -138,7 +138,7 @@ public class PARLHMBMXResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PARLHMBMX-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"绩效量化目标明细" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"绩效量化目标明细" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/parlhmbmxes/fetchdefault")
 	public ResponseEntity<List<PARLHMBMXDTO>> fetchDefault(PARLHMBMXSearchContext context) {
         Page<PARLHMBMX> domains = parlhmbmxService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class PARLHMBMXResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PARLHMBMX-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"绩效量化目标明细" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"绩效量化目标明细" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/parlhmbmxes/searchdefault")
 	public ResponseEntity<Page<PARLHMBMXDTO>> searchDefault(@RequestBody PARLHMBMXSearchContext context) {
         Page<PARLHMBMX> domains = parlhmbmxService.searchDefault(context) ;

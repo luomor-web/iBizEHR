@@ -46,7 +46,7 @@ public class PimPersonServiceImpl extends ServiceImpl<PimPersonMapper, PimPerson
 
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.att.service.IATTENDANCEMREPORTMXService attendancemreportmxService;
+    private cn.ibizlab.ehr.core.att.service.IAttEndanceMreportmxService attendancemreportmxService;
     @Autowired
     @Lazy
     private cn.ibizlab.ehr.core.att.service.IAttEndanceRecordTempService attendancerecordtempService;
@@ -55,7 +55,7 @@ public class PimPersonServiceImpl extends ServiceImpl<PimPersonMapper, PimPerson
     private cn.ibizlab.ehr.core.att.service.IAttEndanceRecordService attendancerecordService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.att.service.IATTENDANCESETTINGSService attendancesettingsService;
+    private cn.ibizlab.ehr.core.att.service.IAttEndanceSettingsService attendancesettingsService;
     @Autowired
     @Lazy
     private cn.ibizlab.ehr.core.att.service.IAttEndenceSetupService attendencesetupService;

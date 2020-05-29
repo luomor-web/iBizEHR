@@ -138,7 +138,7 @@ public class SALRULEResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALRULE-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"薪酬规则" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"薪酬规则" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/salrules/fetchdefault")
 	public ResponseEntity<List<SALRULEDTO>> fetchDefault(SALRULESearchContext context) {
         Page<SALRULE> domains = salruleService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class SALRULEResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALRULE-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"薪酬规则" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"薪酬规则" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/salrules/searchdefault")
 	public ResponseEntity<Page<SALRULEDTO>> searchDefault(@RequestBody SALRULESearchContext context) {
         Page<SALRULE> domains = salruleService.searchDefault(context) ;

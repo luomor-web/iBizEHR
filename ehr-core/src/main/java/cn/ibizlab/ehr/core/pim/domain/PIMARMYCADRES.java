@@ -29,7 +29,6 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 /**
  * 实体[军转干部]
  */
-@Builder
 @Getter
 @Setter
 @NoArgsConstructor

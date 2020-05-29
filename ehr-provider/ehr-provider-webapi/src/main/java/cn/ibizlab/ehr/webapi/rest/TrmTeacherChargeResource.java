@@ -138,7 +138,7 @@ public class TrmTeacherChargeResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TrmTeacherCharge-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"讲师收费记录" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"讲师收费记录" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/trmteachercharges/fetchdefault")
 	public ResponseEntity<List<TrmTeacherChargeDTO>> fetchDefault(TrmTeacherChargeSearchContext context) {
         Page<TrmTeacherCharge> domains = trmteacherchargeService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class TrmTeacherChargeResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TrmTeacherCharge-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"讲师收费记录" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"讲师收费记录" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/trmteachercharges/searchdefault")
 	public ResponseEntity<Page<TrmTeacherChargeDTO>> searchDefault(@RequestBody TrmTeacherChargeSearchContext context) {
         Page<TrmTeacherCharge> domains = trmteacherchargeService.searchDefault(context) ;

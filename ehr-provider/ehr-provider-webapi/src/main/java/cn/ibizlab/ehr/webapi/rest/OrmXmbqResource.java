@@ -138,7 +138,7 @@ public class OrmXmbqResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmXmbq-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"项目标签" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"项目标签" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/ormxmbqs/fetchdefault")
 	public ResponseEntity<List<OrmXmbqDTO>> fetchDefault(OrmXmbqSearchContext context) {
         Page<OrmXmbq> domains = ormxmbqService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class OrmXmbqResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmXmbq-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"项目标签" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"项目标签" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/ormxmbqs/searchdefault")
 	public ResponseEntity<Page<OrmXmbqDTO>> searchDefault(@RequestBody OrmXmbqSearchContext context) {
         Page<OrmXmbq> domains = ormxmbqService.searchDefault(context) ;

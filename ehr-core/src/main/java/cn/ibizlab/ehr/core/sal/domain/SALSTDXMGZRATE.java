@@ -29,7 +29,6 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 /**
  * 实体[项目工资标准(绩效比例)]
  */
-@Builder
 @Getter
 @Setter
 @NoArgsConstructor

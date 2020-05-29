@@ -138,7 +138,7 @@ public class AttEndenceTypeResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-AttEndenceType-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"考勤类型" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"考勤类型" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/attendencetypes/fetchdefault")
 	public ResponseEntity<List<AttEndenceTypeDTO>> fetchDefault(AttEndenceTypeSearchContext context) {
         Page<AttEndenceType> domains = attendencetypeService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class AttEndenceTypeResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-AttEndenceType-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"考勤类型" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"考勤类型" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/attendencetypes/searchdefault")
 	public ResponseEntity<Page<AttEndenceTypeDTO>> searchDefault(@RequestBody AttEndenceTypeSearchContext context) {
         Page<AttEndenceType> domains = attendencetypeService.searchDefault(context) ;

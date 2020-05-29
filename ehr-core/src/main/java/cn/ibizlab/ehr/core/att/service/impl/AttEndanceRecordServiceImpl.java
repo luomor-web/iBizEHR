@@ -49,7 +49,7 @@ public class AttEndanceRecordServiceImpl extends ServiceImpl<AttEndanceRecordMap
     private cn.ibizlab.ehr.core.att.service.IAttendRecordDetailService attendrecorddetailService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.att.service.IATTENDANCEMREPORTMXService attendancemreportmxService;
+    private cn.ibizlab.ehr.core.att.service.IAttEndanceMreportmxService attendancemreportmxService;
     @Autowired
     @Lazy
     private cn.ibizlab.ehr.core.orm.service.IOrmBmkqdzService ormbmkqdzService;
@@ -230,9 +230,9 @@ public class AttEndanceRecordServiceImpl extends ServiceImpl<AttEndanceRecordMap
     private void fillParentData(AttEndanceRecord et){
         //实体关系[DER1N_ATTENDANCERECORD_ATTENDANCEMREPORTMX_ATTENDANCEMREPORTMXID]
         if(!ObjectUtils.isEmpty(et.getAttendancemreportid())){
-            cn.ibizlab.ehr.core.att.domain.ATTENDANCEMREPORTMX attendancemreportmx=et.getAttendancemreportmx();
+            cn.ibizlab.ehr.core.att.domain.AttEndanceMreportmx attendancemreportmx=et.getAttendancemreportmx();
             if(ObjectUtils.isEmpty(attendancemreportmx)){
-                cn.ibizlab.ehr.core.att.domain.ATTENDANCEMREPORTMX majorEntity=attendancemreportmxService.get(et.getAttendancemreportid());
+                cn.ibizlab.ehr.core.att.domain.AttEndanceMreportmx majorEntity=attendancemreportmxService.get(et.getAttendancemreportid());
                 et.setAttendancemreportmx(majorEntity);
                 attendancemreportmx=majorEntity;
             }

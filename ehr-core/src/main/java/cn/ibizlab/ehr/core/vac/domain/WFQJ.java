@@ -29,7 +29,6 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 /**
  * 实体[请假（WF）]
  */
-@Builder
 @Getter
 @Setter
 @NoArgsConstructor

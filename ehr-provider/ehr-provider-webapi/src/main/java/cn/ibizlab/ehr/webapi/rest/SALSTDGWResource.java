@@ -138,7 +138,7 @@ public class SALSTDGWResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALSTDGW-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"高温津贴标准" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"高温津贴标准" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/salstdgws/fetchdefault")
 	public ResponseEntity<List<SALSTDGWDTO>> fetchDefault(SALSTDGWSearchContext context) {
         Page<SALSTDGW> domains = salstdgwService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class SALSTDGWResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALSTDGW-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"高温津贴标准" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"高温津贴标准" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/salstdgws/searchdefault")
 	public ResponseEntity<Page<SALSTDGWDTO>> searchDefault(@RequestBody SALSTDGWSearchContext context) {
         Page<SALSTDGW> domains = salstdgwService.searchDefault(context) ;

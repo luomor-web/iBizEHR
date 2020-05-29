@@ -29,7 +29,6 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 /**
  * 实体[干部退出（优秀年轻干部梯队）]
  */
-@Builder
 @Getter
 @Setter
 @NoArgsConstructor

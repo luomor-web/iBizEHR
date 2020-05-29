@@ -138,7 +138,7 @@ public class ParJxkhxhzResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ParJxkhxhz-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"考核内容评分汇总" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"考核内容评分汇总" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/parjxkhxhzs/fetchdefault")
 	public ResponseEntity<List<ParJxkhxhzDTO>> fetchDefault(ParJxkhxhzSearchContext context) {
         Page<ParJxkhxhz> domains = parjxkhxhzService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class ParJxkhxhzResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ParJxkhxhz-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"考核内容评分汇总" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"考核内容评分汇总" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/parjxkhxhzs/searchdefault")
 	public ResponseEntity<Page<ParJxkhxhzDTO>> searchDefault(@RequestBody ParJxkhxhzSearchContext context) {
         Page<ParJxkhxhz> domains = parjxkhxhzService.searchDefault(context) ;

@@ -29,7 +29,6 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 /**
  * 实体[评分权重分配]
  */
-@Builder
 @Getter
 @Setter
 @NoArgsConstructor

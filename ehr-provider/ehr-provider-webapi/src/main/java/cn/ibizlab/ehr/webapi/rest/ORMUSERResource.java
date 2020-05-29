@@ -138,7 +138,7 @@ public class ORMUSERResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMUSER-DQZZJXJZZ-all')")
-	@ApiOperation(value = "获取当前组织及下级组织", tags = {"用户管理" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取当前组织及下级组织", tags = {"用户管理" } ,notes = "获取当前组织及下级组织")
     @RequestMapping(method= RequestMethod.GET , value="/ormusers/fetchdqzzjxjzz")
 	public ResponseEntity<List<ORMUSERDTO>> fetchDQZZJXJZZ(ORMUSERSearchContext context) {
         Page<ORMUSER> domains = ormuserService.searchDQZZJXJZZ(context) ;
@@ -151,7 +151,7 @@ public class ORMUSERResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMUSER-DQZZJXJZZ-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"用户管理" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询当前组织及下级组织", tags = {"用户管理" } ,notes = "查询当前组织及下级组织")
     @RequestMapping(method= RequestMethod.POST , value="/ormusers/searchdqzzjxjzz")
 	public ResponseEntity<Page<ORMUSERDTO>> searchDQZZJXJZZ(@RequestBody ORMUSERSearchContext context) {
         Page<ORMUSER> domains = ormuserService.searchDQZZJXJZZ(context) ;
@@ -159,7 +159,7 @@ public class ORMUSERResource {
                 .body(new PageImpl(ormuserMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMUSER-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"用户管理" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"用户管理" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/ormusers/fetchdefault")
 	public ResponseEntity<List<ORMUSERDTO>> fetchDefault(ORMUSERSearchContext context) {
         Page<ORMUSER> domains = ormuserService.searchDefault(context) ;
@@ -172,7 +172,7 @@ public class ORMUSERResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMUSER-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"用户管理" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"用户管理" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/ormusers/searchdefault")
 	public ResponseEntity<Page<ORMUSERDTO>> searchDefault(@RequestBody ORMUSERSearchContext context) {
         Page<ORMUSER> domains = ormuserService.searchDefault(context) ;

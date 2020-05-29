@@ -138,7 +138,7 @@ public class PCMGxxkTempResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMGxxkTemp-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"高校学科中间表" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"高校学科中间表" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pcmgxxktemps/fetchdefault")
 	public ResponseEntity<List<PCMGxxkTempDTO>> fetchDefault(PCMGxxkTempSearchContext context) {
         Page<PCMGxxkTemp> domains = pcmgxxktempService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class PCMGxxkTempResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMGxxkTemp-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"高校学科中间表" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"高校学科中间表" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pcmgxxktemps/searchdefault")
 	public ResponseEntity<Page<PCMGxxkTempDTO>> searchDefault(@RequestBody PCMGxxkTempSearchContext context) {
         Page<PCMGxxkTemp> domains = pcmgxxktempService.searchDefault(context) ;

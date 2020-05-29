@@ -138,7 +138,7 @@ public class NationMgrResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-NationMgr-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"民族管理" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"民族管理" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/nationmgrs/fetchdefault")
 	public ResponseEntity<List<NationMgrDTO>> fetchDefault(NationMgrSearchContext context) {
         Page<NationMgr> domains = nationmgrService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class NationMgrResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-NationMgr-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"民族管理" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"民族管理" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/nationmgrs/searchdefault")
 	public ResponseEntity<Page<NationMgrDTO>> searchDefault(@RequestBody NationMgrSearchContext context) {
         Page<NationMgr> domains = nationmgrService.searchDefault(context) ;

@@ -138,7 +138,7 @@ public class TrmStaffnodesResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TrmStaffnodes-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"员工需求明细" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"员工需求明细" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/trmstaffnodes/fetchdefault")
 	public ResponseEntity<List<TrmStaffnodesDTO>> fetchDefault(TrmStaffnodesSearchContext context) {
         Page<TrmStaffnodes> domains = trmstaffnodesService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class TrmStaffnodesResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TrmStaffnodes-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"员工需求明细" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"员工需求明细" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/trmstaffnodes/searchdefault")
 	public ResponseEntity<Page<TrmStaffnodesDTO>> searchDefault(@RequestBody TrmStaffnodesSearchContext context) {
         Page<TrmStaffnodes> domains = trmstaffnodesService.searchDefault(context) ;

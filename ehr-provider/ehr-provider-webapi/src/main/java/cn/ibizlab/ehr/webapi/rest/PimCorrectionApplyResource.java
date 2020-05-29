@@ -138,7 +138,7 @@ public class PimCorrectionApplyResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimCorrectionApply-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"B/Y类员工转正申请明细（停用）" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"B/Y类员工转正申请明细（停用）" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimcorrectionapplies/fetchdefault")
 	public ResponseEntity<List<PimCorrectionApplyDTO>> fetchDefault(PimCorrectionApplySearchContext context) {
         Page<PimCorrectionApply> domains = pimcorrectionapplyService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class PimCorrectionApplyResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimCorrectionApply-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"B/Y类员工转正申请明细（停用）" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"B/Y类员工转正申请明细（停用）" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pimcorrectionapplies/searchdefault")
 	public ResponseEntity<Page<PimCorrectionApplyDTO>> searchDefault(@RequestBody PimCorrectionApplySearchContext context) {
         Page<PimCorrectionApply> domains = pimcorrectionapplyService.searchDefault(context) ;

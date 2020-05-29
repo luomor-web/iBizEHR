@@ -150,7 +150,7 @@ public class OrmPostResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmPost-EJZZGW-all')")
-	@ApiOperation(value = "获取根据选择的组织所属的二级组织来获取岗位(ormorgid)", tags = {"岗位" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取根据选择的组织所属的二级组织来获取岗位(ormorgid)", tags = {"岗位" } ,notes = "获取根据选择的组织所属的二级组织来获取岗位(ormorgid)")
     @RequestMapping(method= RequestMethod.GET , value="/ormposts/fetchejzzgw")
 	public ResponseEntity<List<OrmPostDTO>> fetchEJZZGW(OrmPostSearchContext context) {
         Page<OrmPost> domains = ormpostService.searchEJZZGW(context) ;
@@ -163,7 +163,7 @@ public class OrmPostResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmPost-EJZZGW-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"岗位" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询根据选择的组织所属的二级组织来获取岗位(ormorgid)", tags = {"岗位" } ,notes = "查询根据选择的组织所属的二级组织来获取岗位(ormorgid)")
     @RequestMapping(method= RequestMethod.POST , value="/ormposts/searchejzzgw")
 	public ResponseEntity<Page<OrmPostDTO>> searchEJZZGW(@RequestBody OrmPostSearchContext context) {
         Page<OrmPost> domains = ormpostService.searchEJZZGW(context) ;
@@ -171,7 +171,7 @@ public class OrmPostResource {
                 .body(new PageImpl(ormpostMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmPost-AuthPost-all')")
-	@ApiOperation(value = "获取AuthPost", tags = {"岗位" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取AuthPost", tags = {"岗位" } ,notes = "获取AuthPost")
     @RequestMapping(method= RequestMethod.GET , value="/ormposts/fetchauthpost")
 	public ResponseEntity<List<OrmPostDTO>> fetchAuthPost(OrmPostSearchContext context) {
         Page<OrmPost> domains = ormpostService.searchAuthPost(context) ;
@@ -184,7 +184,7 @@ public class OrmPostResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmPost-AuthPost-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"岗位" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询AuthPost", tags = {"岗位" } ,notes = "查询AuthPost")
     @RequestMapping(method= RequestMethod.POST , value="/ormposts/searchauthpost")
 	public ResponseEntity<Page<OrmPostDTO>> searchAuthPost(@RequestBody OrmPostSearchContext context) {
         Page<OrmPost> domains = ormpostService.searchAuthPost(context) ;
@@ -192,7 +192,7 @@ public class OrmPostResource {
                 .body(new PageImpl(ormpostMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmPost-CurOrg-all')")
-	@ApiOperation(value = "获取根据当前操作人的身份选择岗位", tags = {"岗位" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取根据当前操作人的身份选择岗位", tags = {"岗位" } ,notes = "获取根据当前操作人的身份选择岗位")
     @RequestMapping(method= RequestMethod.GET , value="/ormposts/fetchcurorg")
 	public ResponseEntity<List<OrmPostDTO>> fetchCurOrg(OrmPostSearchContext context) {
         Page<OrmPost> domains = ormpostService.searchCurOrg(context) ;
@@ -205,7 +205,7 @@ public class OrmPostResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmPost-CurOrg-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"岗位" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询根据当前操作人的身份选择岗位", tags = {"岗位" } ,notes = "查询根据当前操作人的身份选择岗位")
     @RequestMapping(method= RequestMethod.POST , value="/ormposts/searchcurorg")
 	public ResponseEntity<Page<OrmPostDTO>> searchCurOrg(@RequestBody OrmPostSearchContext context) {
         Page<OrmPost> domains = ormpostService.searchCurOrg(context) ;
@@ -213,7 +213,7 @@ public class OrmPostResource {
                 .body(new PageImpl(ormpostMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmPost-DQGW-all')")
-	@ApiOperation(value = "获取根据当前组织过滤岗位", tags = {"岗位" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取根据当前组织过滤岗位", tags = {"岗位" } ,notes = "获取根据当前组织过滤岗位")
     @RequestMapping(method= RequestMethod.GET , value="/ormposts/fetchdqgw")
 	public ResponseEntity<List<OrmPostDTO>> fetchDQGW(OrmPostSearchContext context) {
         Page<OrmPost> domains = ormpostService.searchDQGW(context) ;
@@ -226,7 +226,7 @@ public class OrmPostResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmPost-DQGW-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"岗位" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询根据当前组织过滤岗位", tags = {"岗位" } ,notes = "查询根据当前组织过滤岗位")
     @RequestMapping(method= RequestMethod.POST , value="/ormposts/searchdqgw")
 	public ResponseEntity<Page<OrmPostDTO>> searchDQGW(@RequestBody OrmPostSearchContext context) {
         Page<OrmPost> domains = ormpostService.searchDQGW(context) ;
@@ -234,7 +234,7 @@ public class OrmPostResource {
                 .body(new PageImpl(ormpostMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmPost-DQORGGW-all')")
-	@ApiOperation(value = "获取根据当前组织过滤岗位(orgid)", tags = {"岗位" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取根据当前组织过滤岗位(orgid)", tags = {"岗位" } ,notes = "获取根据当前组织过滤岗位(orgid)")
     @RequestMapping(method= RequestMethod.GET , value="/ormposts/fetchdqorggw")
 	public ResponseEntity<List<OrmPostDTO>> fetchDQORGGW(OrmPostSearchContext context) {
         Page<OrmPost> domains = ormpostService.searchDQORGGW(context) ;
@@ -247,7 +247,7 @@ public class OrmPostResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmPost-DQORGGW-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"岗位" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询根据当前组织过滤岗位(orgid)", tags = {"岗位" } ,notes = "查询根据当前组织过滤岗位(orgid)")
     @RequestMapping(method= RequestMethod.POST , value="/ormposts/searchdqorggw")
 	public ResponseEntity<Page<OrmPostDTO>> searchDQORGGW(@RequestBody OrmPostSearchContext context) {
         Page<OrmPost> domains = ormpostService.searchDQORGGW(context) ;
@@ -255,7 +255,7 @@ public class OrmPostResource {
                 .body(new PageImpl(ormpostMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmPost-GWXH-all')")
-	@ApiOperation(value = "获取岗位查询", tags = {"岗位" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取岗位查询", tags = {"岗位" } ,notes = "获取岗位查询")
     @RequestMapping(method= RequestMethod.GET , value="/ormposts/fetchgwxh")
 	public ResponseEntity<List<OrmPostDTO>> fetchGWXH(OrmPostSearchContext context) {
         Page<OrmPost> domains = ormpostService.searchGWXH(context) ;
@@ -268,7 +268,7 @@ public class OrmPostResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmPost-GWXH-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"岗位" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询岗位查询", tags = {"岗位" } ,notes = "查询岗位查询")
     @RequestMapping(method= RequestMethod.POST , value="/ormposts/searchgwxh")
 	public ResponseEntity<Page<OrmPostDTO>> searchGWXH(@RequestBody OrmPostSearchContext context) {
         Page<OrmPost> domains = ormpostService.searchGWXH(context) ;
@@ -276,7 +276,7 @@ public class OrmPostResource {
                 .body(new PageImpl(ormpostMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmPost-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"岗位" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"岗位" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/ormposts/fetchdefault")
 	public ResponseEntity<List<OrmPostDTO>> fetchDefault(OrmPostSearchContext context) {
         Page<OrmPost> domains = ormpostService.searchDefault(context) ;
@@ -289,7 +289,7 @@ public class OrmPostResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmPost-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"岗位" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"岗位" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/ormposts/searchdefault")
 	public ResponseEntity<Page<OrmPostDTO>> searchDefault(@RequestBody OrmPostSearchContext context) {
         Page<OrmPost> domains = ormpostService.searchDefault(context) ;
@@ -297,7 +297,7 @@ public class OrmPostResource {
                 .body(new PageImpl(ormpostMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmPost-JZBGWCX-all')")
-	@ApiOperation(value = "获取局总部岗位查询", tags = {"岗位" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取局总部岗位查询", tags = {"岗位" } ,notes = "获取局总部岗位查询")
     @RequestMapping(method= RequestMethod.GET , value="/ormposts/fetchjzbgwcx")
 	public ResponseEntity<List<OrmPostDTO>> fetchJZBGWCX(OrmPostSearchContext context) {
         Page<OrmPost> domains = ormpostService.searchJZBGWCX(context) ;
@@ -310,7 +310,7 @@ public class OrmPostResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmPost-JZBGWCX-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"岗位" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询局总部岗位查询", tags = {"岗位" } ,notes = "查询局总部岗位查询")
     @RequestMapping(method= RequestMethod.POST , value="/ormposts/searchjzbgwcx")
 	public ResponseEntity<Page<OrmPostDTO>> searchJZBGWCX(@RequestBody OrmPostSearchContext context) {
         Page<OrmPost> domains = ormpostService.searchJZBGWCX(context) ;
@@ -318,7 +318,7 @@ public class OrmPostResource {
                 .body(new PageImpl(ormpostMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmPost-CXGW-all')")
-	@ApiOperation(value = "获取查询当前组织所属的二级单位岗位", tags = {"岗位" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取查询当前组织所属的二级单位岗位", tags = {"岗位" } ,notes = "获取查询当前组织所属的二级单位岗位")
     @RequestMapping(method= RequestMethod.GET , value="/ormposts/fetchcxgw")
 	public ResponseEntity<List<OrmPostDTO>> fetchCXGW(OrmPostSearchContext context) {
         Page<OrmPost> domains = ormpostService.searchCXGW(context) ;
@@ -331,7 +331,7 @@ public class OrmPostResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmPost-CXGW-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"岗位" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询查询当前组织所属的二级单位岗位", tags = {"岗位" } ,notes = "查询查询当前组织所属的二级单位岗位")
     @RequestMapping(method= RequestMethod.POST , value="/ormposts/searchcxgw")
 	public ResponseEntity<Page<OrmPostDTO>> searchCXGW(@RequestBody OrmPostSearchContext context) {
         Page<OrmPost> domains = ormpostService.searchCXGW(context) ;

@@ -29,7 +29,6 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 /**
  * 实体[奖惩信息]
  */
-@Builder
 @Getter
 @Setter
 @NoArgsConstructor

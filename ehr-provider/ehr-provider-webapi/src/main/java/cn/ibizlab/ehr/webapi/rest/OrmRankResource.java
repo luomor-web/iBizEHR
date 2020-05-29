@@ -138,7 +138,7 @@ public class OrmRankResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmRank-JZRANK-all')")
-	@ApiOperation(value = "获取JZRANK", tags = {"职级管理" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取JZRANK", tags = {"职级管理" } ,notes = "获取JZRANK")
     @RequestMapping(method= RequestMethod.GET , value="/ormranks/fetchjzrank")
 	public ResponseEntity<List<OrmRankDTO>> fetchJZRANK(OrmRankSearchContext context) {
         Page<OrmRank> domains = ormrankService.searchJZRANK(context) ;
@@ -151,7 +151,7 @@ public class OrmRankResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmRank-JZRANK-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"职级管理" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询JZRANK", tags = {"职级管理" } ,notes = "查询JZRANK")
     @RequestMapping(method= RequestMethod.POST , value="/ormranks/searchjzrank")
 	public ResponseEntity<Page<OrmRankDTO>> searchJZRANK(@RequestBody OrmRankSearchContext context) {
         Page<OrmRank> domains = ormrankService.searchJZRANK(context) ;
@@ -159,7 +159,7 @@ public class OrmRankResource {
                 .body(new PageImpl(ormrankMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmRank-JSRANK-all')")
-	@ApiOperation(value = "获取JSRANK", tags = {"职级管理" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取JSRANK", tags = {"职级管理" } ,notes = "获取JSRANK")
     @RequestMapping(method= RequestMethod.GET , value="/ormranks/fetchjsrank")
 	public ResponseEntity<List<OrmRankDTO>> fetchJSRANK(OrmRankSearchContext context) {
         Page<OrmRank> domains = ormrankService.searchJSRANK(context) ;
@@ -172,7 +172,7 @@ public class OrmRankResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmRank-JSRANK-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"职级管理" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询JSRANK", tags = {"职级管理" } ,notes = "查询JSRANK")
     @RequestMapping(method= RequestMethod.POST , value="/ormranks/searchjsrank")
 	public ResponseEntity<Page<OrmRankDTO>> searchJSRANK(@RequestBody OrmRankSearchContext context) {
         Page<OrmRank> domains = ormrankService.searchJSRANK(context) ;
@@ -180,7 +180,7 @@ public class OrmRankResource {
                 .body(new PageImpl(ormrankMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmRank-DJYX-all')")
-	@ApiOperation(value = "获取D级以下", tags = {"职级管理" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取D级以下", tags = {"职级管理" } ,notes = "获取D级以下")
     @RequestMapping(method= RequestMethod.GET , value="/ormranks/fetchdjyx")
 	public ResponseEntity<List<OrmRankDTO>> fetchDJYX(OrmRankSearchContext context) {
         Page<OrmRank> domains = ormrankService.searchDJYX(context) ;
@@ -193,7 +193,7 @@ public class OrmRankResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmRank-DJYX-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"职级管理" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询D级以下", tags = {"职级管理" } ,notes = "查询D级以下")
     @RequestMapping(method= RequestMethod.POST , value="/ormranks/searchdjyx")
 	public ResponseEntity<Page<OrmRankDTO>> searchDJYX(@RequestBody OrmRankSearchContext context) {
         Page<OrmRank> domains = ormrankService.searchDJYX(context) ;
@@ -201,7 +201,7 @@ public class OrmRankResource {
                 .body(new PageImpl(ormrankMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmRank-JSNRANK-all')")
-	@ApiOperation(value = "获取JSNRANK", tags = {"职级管理" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取JSNRANK", tags = {"职级管理" } ,notes = "获取JSNRANK")
     @RequestMapping(method= RequestMethod.GET , value="/ormranks/fetchjsnrank")
 	public ResponseEntity<List<OrmRankDTO>> fetchJSNRANK(OrmRankSearchContext context) {
         Page<OrmRank> domains = ormrankService.searchJSNRANK(context) ;
@@ -214,7 +214,7 @@ public class OrmRankResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmRank-JSNRANK-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"职级管理" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询JSNRANK", tags = {"职级管理" } ,notes = "查询JSNRANK")
     @RequestMapping(method= RequestMethod.POST , value="/ormranks/searchjsnrank")
 	public ResponseEntity<Page<OrmRankDTO>> searchJSNRANK(@RequestBody OrmRankSearchContext context) {
         Page<OrmRank> domains = ormrankService.searchJSNRANK(context) ;
@@ -222,7 +222,7 @@ public class OrmRankResource {
                 .body(new PageImpl(ormrankMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmRank-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"职级管理" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"职级管理" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/ormranks/fetchdefault")
 	public ResponseEntity<List<OrmRankDTO>> fetchDefault(OrmRankSearchContext context) {
         Page<OrmRank> domains = ormrankService.searchDefault(context) ;
@@ -235,7 +235,7 @@ public class OrmRankResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmRank-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"职级管理" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"职级管理" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/ormranks/searchdefault")
 	public ResponseEntity<Page<OrmRankDTO>> searchDefault(@RequestBody OrmRankSearchContext context) {
         Page<OrmRank> domains = ormrankService.searchDefault(context) ;
@@ -243,7 +243,7 @@ public class OrmRankResource {
                 .body(new PageImpl(ormrankMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmRank-CurRank-all')")
-	@ApiOperation(value = "获取根据登录人身份判定职级显示", tags = {"职级管理" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取根据登录人身份判定职级显示", tags = {"职级管理" } ,notes = "获取根据登录人身份判定职级显示")
     @RequestMapping(method= RequestMethod.GET , value="/ormranks/fetchcurrank")
 	public ResponseEntity<List<OrmRankDTO>> fetchCurRank(OrmRankSearchContext context) {
         Page<OrmRank> domains = ormrankService.searchCurRank(context) ;
@@ -256,7 +256,7 @@ public class OrmRankResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmRank-CurRank-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"职级管理" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询根据登录人身份判定职级显示", tags = {"职级管理" } ,notes = "查询根据登录人身份判定职级显示")
     @RequestMapping(method= RequestMethod.POST , value="/ormranks/searchcurrank")
 	public ResponseEntity<Page<OrmRankDTO>> searchCurRank(@RequestBody OrmRankSearchContext context) {
         Page<OrmRank> domains = ormrankService.searchCurRank(context) ;

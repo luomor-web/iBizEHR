@@ -150,7 +150,7 @@ public class AttEndanceRecordResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-AttEndanceRecord-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"考勤记录" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"考勤记录" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/attendancerecords/fetchdefault")
 	public ResponseEntity<List<AttEndanceRecordDTO>> fetchDefault(AttEndanceRecordSearchContext context) {
         Page<AttEndanceRecord> domains = attendancerecordService.searchDefault(context) ;
@@ -163,7 +163,7 @@ public class AttEndanceRecordResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-AttEndanceRecord-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"考勤记录" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"考勤记录" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/attendancerecords/searchdefault")
 	public ResponseEntity<Page<AttEndanceRecordDTO>> searchDefault(@RequestBody AttEndanceRecordSearchContext context) {
         Page<AttEndanceRecord> domains = attendancerecordService.searchDefault(context) ;

@@ -150,7 +150,7 @@ public class PimDistirbutionResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimDistirbution-GBYXZFP-all')")
-	@ApiOperation(value = "获取干部可调动的分配", tags = {"分配信息" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取干部可调动的分配", tags = {"分配信息" } ,notes = "获取干部可调动的分配")
     @RequestMapping(method= RequestMethod.GET , value="/pimdistirbutions/fetchgbyxzfp")
 	public ResponseEntity<List<PimDistirbutionDTO>> fetchGBYXZFP(PimDistirbutionSearchContext context) {
         Page<PimDistirbution> domains = pimdistirbutionService.searchGBYXZFP(context) ;
@@ -163,7 +163,7 @@ public class PimDistirbutionResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimDistirbution-GBYXZFP-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"分配信息" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询干部可调动的分配", tags = {"分配信息" } ,notes = "查询干部可调动的分配")
     @RequestMapping(method= RequestMethod.POST , value="/pimdistirbutions/searchgbyxzfp")
 	public ResponseEntity<Page<PimDistirbutionDTO>> searchGBYXZFP(@RequestBody PimDistirbutionSearchContext context) {
         Page<PimDistirbution> domains = pimdistirbutionService.searchGBYXZFP(context) ;
@@ -171,7 +171,7 @@ public class PimDistirbutionResource {
                 .body(new PageImpl(pimdistirbutionMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimDistirbution-LGTX-all')")
-	@ApiOperation(value = "获取轮岗查询", tags = {"分配信息" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取轮岗查询", tags = {"分配信息" } ,notes = "获取轮岗查询")
     @RequestMapping(method= RequestMethod.GET , value="/pimdistirbutions/fetchlgtx")
 	public ResponseEntity<List<PimDistirbutionDTO>> fetchLGTX(PimDistirbutionSearchContext context) {
         Page<PimDistirbution> domains = pimdistirbutionService.searchLGTX(context) ;
@@ -184,7 +184,7 @@ public class PimDistirbutionResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimDistirbution-LGTX-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"分配信息" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询轮岗查询", tags = {"分配信息" } ,notes = "查询轮岗查询")
     @RequestMapping(method= RequestMethod.POST , value="/pimdistirbutions/searchlgtx")
 	public ResponseEntity<Page<PimDistirbutionDTO>> searchLGTX(@RequestBody PimDistirbutionSearchContext context) {
         Page<PimDistirbution> domains = pimdistirbutionService.searchLGTX(context) ;
@@ -192,7 +192,7 @@ public class PimDistirbutionResource {
                 .body(new PageImpl(pimdistirbutionMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimDistirbution-ISOUTRECORD-all')")
-	@ApiOperation(value = "获取外单位履历为1的（支持增删改查）", tags = {"分配信息" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取外单位履历为1的（支持增删改查）", tags = {"分配信息" } ,notes = "获取外单位履历为1的（支持增删改查）")
     @RequestMapping(method= RequestMethod.GET , value="/pimdistirbutions/fetchisoutrecord")
 	public ResponseEntity<List<PimDistirbutionDTO>> fetchISOUTRECORD(PimDistirbutionSearchContext context) {
         Page<PimDistirbution> domains = pimdistirbutionService.searchISOUTRECORD(context) ;
@@ -205,7 +205,7 @@ public class PimDistirbutionResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimDistirbution-ISOUTRECORD-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"分配信息" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询外单位履历为1的（支持增删改查）", tags = {"分配信息" } ,notes = "查询外单位履历为1的（支持增删改查）")
     @RequestMapping(method= RequestMethod.POST , value="/pimdistirbutions/searchisoutrecord")
 	public ResponseEntity<Page<PimDistirbutionDTO>> searchISOUTRECORD(@RequestBody PimDistirbutionSearchContext context) {
         Page<PimDistirbution> domains = pimdistirbutionService.searchISOUTRECORD(context) ;
@@ -213,7 +213,7 @@ public class PimDistirbutionResource {
                 .body(new PageImpl(pimdistirbutionMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimDistirbution-YDCFP-all')")
-	@ApiOperation(value = "获取已调出分配", tags = {"分配信息" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取已调出分配", tags = {"分配信息" } ,notes = "获取已调出分配")
     @RequestMapping(method= RequestMethod.GET , value="/pimdistirbutions/fetchydcfp")
 	public ResponseEntity<List<PimDistirbutionDTO>> fetchYDCFP(PimDistirbutionSearchContext context) {
         Page<PimDistirbution> domains = pimdistirbutionService.searchYDCFP(context) ;
@@ -226,7 +226,7 @@ public class PimDistirbutionResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimDistirbution-YDCFP-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"分配信息" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询已调出分配", tags = {"分配信息" } ,notes = "查询已调出分配")
     @RequestMapping(method= RequestMethod.POST , value="/pimdistirbutions/searchydcfp")
 	public ResponseEntity<Page<PimDistirbutionDTO>> searchYDCFP(@RequestBody PimDistirbutionSearchContext context) {
         Page<PimDistirbution> domains = pimdistirbutionService.searchYDCFP(context) ;
@@ -234,7 +234,7 @@ public class PimDistirbutionResource {
                 .body(new PageImpl(pimdistirbutionMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimDistirbution-YXFP-all')")
-	@ApiOperation(value = "获取可调动的分配(有效分配)", tags = {"分配信息" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取可调动的分配(有效分配)", tags = {"分配信息" } ,notes = "获取可调动的分配(有效分配)")
     @RequestMapping(method= RequestMethod.GET , value="/pimdistirbutions/fetchyxfp")
 	public ResponseEntity<List<PimDistirbutionDTO>> fetchYXFP(PimDistirbutionSearchContext context) {
         Page<PimDistirbution> domains = pimdistirbutionService.searchYXFP(context) ;
@@ -247,7 +247,7 @@ public class PimDistirbutionResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimDistirbution-YXFP-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"分配信息" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询可调动的分配(有效分配)", tags = {"分配信息" } ,notes = "查询可调动的分配(有效分配)")
     @RequestMapping(method= RequestMethod.POST , value="/pimdistirbutions/searchyxfp")
 	public ResponseEntity<Page<PimDistirbutionDTO>> searchYXFP(@RequestBody PimDistirbutionSearchContext context) {
         Page<PimDistirbution> domains = pimdistirbutionService.searchYXFP(context) ;
@@ -255,7 +255,7 @@ public class PimDistirbutionResource {
                 .body(new PageImpl(pimdistirbutionMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimDistirbution-ZPCJFP-all')")
-	@ApiOperation(value = "获取招聘创建分配", tags = {"分配信息" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取招聘创建分配", tags = {"分配信息" } ,notes = "获取招聘创建分配")
     @RequestMapping(method= RequestMethod.GET , value="/pimdistirbutions/fetchzpcjfp")
 	public ResponseEntity<List<PimDistirbutionDTO>> fetchZPCJFP(PimDistirbutionSearchContext context) {
         Page<PimDistirbution> domains = pimdistirbutionService.searchZPCJFP(context) ;
@@ -268,7 +268,7 @@ public class PimDistirbutionResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimDistirbution-ZPCJFP-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"分配信息" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询招聘创建分配", tags = {"分配信息" } ,notes = "查询招聘创建分配")
     @RequestMapping(method= RequestMethod.POST , value="/pimdistirbutions/searchzpcjfp")
 	public ResponseEntity<Page<PimDistirbutionDTO>> searchZPCJFP(@RequestBody PimDistirbutionSearchContext context) {
         Page<PimDistirbution> domains = pimdistirbutionService.searchZPCJFP(context) ;
@@ -276,7 +276,7 @@ public class PimDistirbutionResource {
                 .body(new PageImpl(pimdistirbutionMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimDistirbution-YDWQX-all')")
-	@ApiOperation(value = "获取原单位权限", tags = {"分配信息" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取原单位权限", tags = {"分配信息" } ,notes = "获取原单位权限")
     @RequestMapping(method= RequestMethod.GET , value="/pimdistirbutions/fetchydwqx")
 	public ResponseEntity<List<PimDistirbutionDTO>> fetchYDWQX(PimDistirbutionSearchContext context) {
         Page<PimDistirbution> domains = pimdistirbutionService.searchYDWQX(context) ;
@@ -289,7 +289,7 @@ public class PimDistirbutionResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimDistirbution-YDWQX-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"分配信息" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询原单位权限", tags = {"分配信息" } ,notes = "查询原单位权限")
     @RequestMapping(method= RequestMethod.POST , value="/pimdistirbutions/searchydwqx")
 	public ResponseEntity<Page<PimDistirbutionDTO>> searchYDWQX(@RequestBody PimDistirbutionSearchContext context) {
         Page<PimDistirbution> domains = pimdistirbutionService.searchYDWQX(context) ;
@@ -297,7 +297,7 @@ public class PimDistirbutionResource {
                 .body(new PageImpl(pimdistirbutionMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimDistirbution-DQYXFP-all')")
-	@ApiOperation(value = "获取当前有效用户分配", tags = {"分配信息" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取当前有效用户分配", tags = {"分配信息" } ,notes = "获取当前有效用户分配")
     @RequestMapping(method= RequestMethod.GET , value="/pimdistirbutions/fetchdqyxfp")
 	public ResponseEntity<List<PimDistirbutionDTO>> fetchDQYXFP(PimDistirbutionSearchContext context) {
         Page<PimDistirbution> domains = pimdistirbutionService.searchDQYXFP(context) ;
@@ -310,7 +310,7 @@ public class PimDistirbutionResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimDistirbution-DQYXFP-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"分配信息" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询当前有效用户分配", tags = {"分配信息" } ,notes = "查询当前有效用户分配")
     @RequestMapping(method= RequestMethod.POST , value="/pimdistirbutions/searchdqyxfp")
 	public ResponseEntity<Page<PimDistirbutionDTO>> searchDQYXFP(@RequestBody PimDistirbutionSearchContext context) {
         Page<PimDistirbution> domains = pimdistirbutionService.searchDQYXFP(context) ;
@@ -318,7 +318,7 @@ public class PimDistirbutionResource {
                 .body(new PageImpl(pimdistirbutionMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimDistirbution-JDRYHMC-all')")
-	@ApiOperation(value = "获取借调人员花名册", tags = {"分配信息" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取借调人员花名册", tags = {"分配信息" } ,notes = "获取借调人员花名册")
     @RequestMapping(method= RequestMethod.GET , value="/pimdistirbutions/fetchjdryhmc")
 	public ResponseEntity<List<PimDistirbutionDTO>> fetchJDRYHMC(PimDistirbutionSearchContext context) {
         Page<PimDistirbution> domains = pimdistirbutionService.searchJDRYHMC(context) ;
@@ -331,7 +331,7 @@ public class PimDistirbutionResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimDistirbution-JDRYHMC-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"分配信息" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询借调人员花名册", tags = {"分配信息" } ,notes = "查询借调人员花名册")
     @RequestMapping(method= RequestMethod.POST , value="/pimdistirbutions/searchjdryhmc")
 	public ResponseEntity<Page<PimDistirbutionDTO>> searchJDRYHMC(@RequestBody PimDistirbutionSearchContext context) {
         Page<PimDistirbution> domains = pimdistirbutionService.searchJDRYHMC(context) ;
@@ -339,7 +339,7 @@ public class PimDistirbutionResource {
                 .body(new PageImpl(pimdistirbutionMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimDistirbution-JDDQ-all')")
-	@ApiOperation(value = "获取借调人员", tags = {"分配信息" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取借调人员", tags = {"分配信息" } ,notes = "获取借调人员")
     @RequestMapping(method= RequestMethod.GET , value="/pimdistirbutions/fetchjddq")
 	public ResponseEntity<List<PimDistirbutionDTO>> fetchJDDQ(PimDistirbutionSearchContext context) {
         Page<PimDistirbution> domains = pimdistirbutionService.searchJDDQ(context) ;
@@ -352,7 +352,7 @@ public class PimDistirbutionResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimDistirbution-JDDQ-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"分配信息" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询借调人员", tags = {"分配信息" } ,notes = "查询借调人员")
     @RequestMapping(method= RequestMethod.POST , value="/pimdistirbutions/searchjddq")
 	public ResponseEntity<Page<PimDistirbutionDTO>> searchJDDQ(@RequestBody PimDistirbutionSearchContext context) {
         Page<PimDistirbution> domains = pimdistirbutionService.searchJDDQ(context) ;
@@ -360,7 +360,7 @@ public class PimDistirbutionResource {
                 .body(new PageImpl(pimdistirbutionMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimDistirbution-EXPEREENCE-all')")
-	@ApiOperation(value = "获取是否主要经历（工作履历）", tags = {"分配信息" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取是否主要经历（工作履历）", tags = {"分配信息" } ,notes = "获取是否主要经历（工作履历）")
     @RequestMapping(method= RequestMethod.GET , value="/pimdistirbutions/fetchexpereence")
 	public ResponseEntity<List<PimDistirbutionDTO>> fetchEXPEREENCE(PimDistirbutionSearchContext context) {
         Page<PimDistirbution> domains = pimdistirbutionService.searchEXPEREENCE(context) ;
@@ -373,7 +373,7 @@ public class PimDistirbutionResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimDistirbution-EXPEREENCE-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"分配信息" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询是否主要经历（工作履历）", tags = {"分配信息" } ,notes = "查询是否主要经历（工作履历）")
     @RequestMapping(method= RequestMethod.POST , value="/pimdistirbutions/searchexpereence")
 	public ResponseEntity<Page<PimDistirbutionDTO>> searchEXPEREENCE(@RequestBody PimDistirbutionSearchContext context) {
         Page<PimDistirbution> domains = pimdistirbutionService.searchEXPEREENCE(context) ;
@@ -381,7 +381,7 @@ public class PimDistirbutionResource {
                 .body(new PageImpl(pimdistirbutionMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimDistirbution-JLSS-all')")
-	@ApiOperation(value = "获取记录所属和人员ID不符的", tags = {"分配信息" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取记录所属和人员ID不符的", tags = {"分配信息" } ,notes = "获取记录所属和人员ID不符的")
     @RequestMapping(method= RequestMethod.GET , value="/pimdistirbutions/fetchjlss")
 	public ResponseEntity<List<PimDistirbutionDTO>> fetchJLSS(PimDistirbutionSearchContext context) {
         Page<PimDistirbution> domains = pimdistirbutionService.searchJLSS(context) ;
@@ -394,7 +394,7 @@ public class PimDistirbutionResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimDistirbution-JLSS-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"分配信息" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询记录所属和人员ID不符的", tags = {"分配信息" } ,notes = "查询记录所属和人员ID不符的")
     @RequestMapping(method= RequestMethod.POST , value="/pimdistirbutions/searchjlss")
 	public ResponseEntity<Page<PimDistirbutionDTO>> searchJLSS(@RequestBody PimDistirbutionSearchContext context) {
         Page<PimDistirbution> domains = pimdistirbutionService.searchJLSS(context) ;
@@ -402,7 +402,7 @@ public class PimDistirbutionResource {
                 .body(new PageImpl(pimdistirbutionMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimDistirbution-ZIZHU-all')")
-	@ApiOperation(value = "获取自助(分配信息)", tags = {"分配信息" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取自助(分配信息)", tags = {"分配信息" } ,notes = "获取自助(分配信息)")
     @RequestMapping(method= RequestMethod.GET , value="/pimdistirbutions/fetchzizhu")
 	public ResponseEntity<List<PimDistirbutionDTO>> fetchZIZHU(PimDistirbutionSearchContext context) {
         Page<PimDistirbution> domains = pimdistirbutionService.searchZIZHU(context) ;
@@ -415,7 +415,7 @@ public class PimDistirbutionResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimDistirbution-ZIZHU-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"分配信息" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询自助(分配信息)", tags = {"分配信息" } ,notes = "查询自助(分配信息)")
     @RequestMapping(method= RequestMethod.POST , value="/pimdistirbutions/searchzizhu")
 	public ResponseEntity<Page<PimDistirbutionDTO>> searchZIZHU(@RequestBody PimDistirbutionSearchContext context) {
         Page<PimDistirbution> domains = pimdistirbutionService.searchZIZHU(context) ;
@@ -423,7 +423,7 @@ public class PimDistirbutionResource {
                 .body(new PageImpl(pimdistirbutionMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimDistirbution-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"分配信息" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"分配信息" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimdistirbutions/fetchdefault")
 	public ResponseEntity<List<PimDistirbutionDTO>> fetchDefault(PimDistirbutionSearchContext context) {
         Page<PimDistirbution> domains = pimdistirbutionService.searchDefault(context) ;
@@ -436,7 +436,7 @@ public class PimDistirbutionResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimDistirbution-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"分配信息" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"分配信息" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pimdistirbutions/searchdefault")
 	public ResponseEntity<Page<PimDistirbutionDTO>> searchDefault(@RequestBody PimDistirbutionSearchContext context) {
         Page<PimDistirbution> domains = pimdistirbutionService.searchDefault(context) ;
@@ -444,7 +444,7 @@ public class PimDistirbutionResource {
                 .body(new PageImpl(pimdistirbutionMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimDistirbution-DQFP-all')")
-	@ApiOperation(value = "获取当前分配", tags = {"分配信息" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取当前分配", tags = {"分配信息" } ,notes = "获取当前分配")
     @RequestMapping(method= RequestMethod.GET , value="/pimdistirbutions/fetchdqfp")
 	public ResponseEntity<List<PimDistirbutionDTO>> fetchDQFP(PimDistirbutionSearchContext context) {
         Page<PimDistirbution> domains = pimdistirbutionService.searchDQFP(context) ;
@@ -457,7 +457,7 @@ public class PimDistirbutionResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimDistirbution-DQFP-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"分配信息" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询当前分配", tags = {"分配信息" } ,notes = "查询当前分配")
     @RequestMapping(method= RequestMethod.POST , value="/pimdistirbutions/searchdqfp")
 	public ResponseEntity<Page<PimDistirbutionDTO>> searchDQFP(@RequestBody PimDistirbutionSearchContext context) {
         Page<PimDistirbution> domains = pimdistirbutionService.searchDQFP(context) ;
@@ -465,7 +465,7 @@ public class PimDistirbutionResource {
                 .body(new PageImpl(pimdistirbutionMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimDistirbution-MobDefault-all')")
-	@ApiOperation(value = "获取移动端默认查询", tags = {"分配信息" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取移动端默认查询", tags = {"分配信息" } ,notes = "获取移动端默认查询")
     @RequestMapping(method= RequestMethod.GET , value="/pimdistirbutions/fetchmobdefault")
 	public ResponseEntity<List<PimDistirbutionDTO>> fetchMobDefault(PimDistirbutionSearchContext context) {
         Page<PimDistirbution> domains = pimdistirbutionService.searchMobDefault(context) ;
@@ -478,7 +478,7 @@ public class PimDistirbutionResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimDistirbution-MobDefault-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"分配信息" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询移动端默认查询", tags = {"分配信息" } ,notes = "查询移动端默认查询")
     @RequestMapping(method= RequestMethod.POST , value="/pimdistirbutions/searchmobdefault")
 	public ResponseEntity<Page<PimDistirbutionDTO>> searchMobDefault(@RequestBody PimDistirbutionSearchContext context) {
         Page<PimDistirbution> domains = pimdistirbutionService.searchMobDefault(context) ;
@@ -486,7 +486,7 @@ public class PimDistirbutionResource {
                 .body(new PageImpl(pimdistirbutionMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimDistirbution-KDDYXZFP-all')")
-	@ApiOperation(value = "获取可调动的有效主分配", tags = {"分配信息" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取可调动的有效主分配", tags = {"分配信息" } ,notes = "获取可调动的有效主分配")
     @RequestMapping(method= RequestMethod.GET , value="/pimdistirbutions/fetchkddyxzfp")
 	public ResponseEntity<List<PimDistirbutionDTO>> fetchKDDYXZFP(PimDistirbutionSearchContext context) {
         Page<PimDistirbution> domains = pimdistirbutionService.searchKDDYXZFP(context) ;
@@ -499,7 +499,7 @@ public class PimDistirbutionResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimDistirbution-KDDYXZFP-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"分配信息" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询可调动的有效主分配", tags = {"分配信息" } ,notes = "查询可调动的有效主分配")
     @RequestMapping(method= RequestMethod.POST , value="/pimdistirbutions/searchkddyxzfp")
 	public ResponseEntity<Page<PimDistirbutionDTO>> searchKDDYXZFP(@RequestBody PimDistirbutionSearchContext context) {
         Page<PimDistirbution> domains = pimdistirbutionService.searchKDDYXZFP(context) ;

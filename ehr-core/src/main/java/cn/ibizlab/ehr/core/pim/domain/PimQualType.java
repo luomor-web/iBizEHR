@@ -29,7 +29,6 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 /**
  * 实体[岗位（技能）证书]
  */
-@Builder
 @Getter
 @Setter
 @NoArgsConstructor

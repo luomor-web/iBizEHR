@@ -138,7 +138,7 @@ public class PARKHFAResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PARKHFA-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"考核对象" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"考核对象" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/parkhfas/fetchdefault")
 	public ResponseEntity<List<PARKHFADTO>> fetchDefault(PARKHFASearchContext context) {
         Page<PARKHFA> domains = parkhfaService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class PARKHFAResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PARKHFA-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"考核对象" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"考核对象" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/parkhfas/searchdefault")
 	public ResponseEntity<Page<PARKHFADTO>> searchDefault(@RequestBody PARKHFASearchContext context) {
         Page<PARKHFA> domains = parkhfaService.searchDefault(context) ;

@@ -138,7 +138,7 @@ public class PCMPROFILEAPPROVALResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILEAPPROVAL-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"应聘者审批表" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"应聘者审批表" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pcmprofileapprovals/fetchdefault")
 	public ResponseEntity<List<PCMPROFILEAPPROVALDTO>> fetchDefault(PCMPROFILEAPPROVALSearchContext context) {
         Page<PCMPROFILEAPPROVAL> domains = pcmprofileapprovalService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class PCMPROFILEAPPROVALResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILEAPPROVAL-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"应聘者审批表" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"应聘者审批表" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pcmprofileapprovals/searchdefault")
 	public ResponseEntity<Page<PCMPROFILEAPPROVALDTO>> searchDefault(@RequestBody PCMPROFILEAPPROVALSearchContext context) {
         Page<PCMPROFILEAPPROVAL> domains = pcmprofileapprovalService.searchDefault(context) ;
@@ -159,7 +159,7 @@ public class PCMPROFILEAPPROVALResource {
                 .body(new PageImpl(pcmprofileapprovalMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILEAPPROVAL-Disagree-all')")
-	@ApiOperation(value = "获取拒绝", tags = {"应聘者审批表" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取拒绝", tags = {"应聘者审批表" } ,notes = "获取拒绝")
     @RequestMapping(method= RequestMethod.GET , value="/pcmprofileapprovals/fetchdisagree")
 	public ResponseEntity<List<PCMPROFILEAPPROVALDTO>> fetchDisagree(PCMPROFILEAPPROVALSearchContext context) {
         Page<PCMPROFILEAPPROVAL> domains = pcmprofileapprovalService.searchDisagree(context) ;
@@ -172,7 +172,7 @@ public class PCMPROFILEAPPROVALResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILEAPPROVAL-Disagree-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"应聘者审批表" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询拒绝", tags = {"应聘者审批表" } ,notes = "查询拒绝")
     @RequestMapping(method= RequestMethod.POST , value="/pcmprofileapprovals/searchdisagree")
 	public ResponseEntity<Page<PCMPROFILEAPPROVALDTO>> searchDisagree(@RequestBody PCMPROFILEAPPROVALSearchContext context) {
         Page<PCMPROFILEAPPROVAL> domains = pcmprofileapprovalService.searchDisagree(context) ;

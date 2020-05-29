@@ -150,7 +150,7 @@ public class UnitedPersonResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UnitedPerson-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"统一身份库" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"统一身份库" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/unitedpeople/fetchdefault")
 	public ResponseEntity<List<UnitedPersonDTO>> fetchDefault(UnitedPersonSearchContext context) {
         Page<UnitedPerson> domains = unitedpersonService.searchDefault(context) ;
@@ -163,7 +163,7 @@ public class UnitedPersonResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UnitedPerson-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"统一身份库" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"统一身份库" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/unitedpeople/searchdefault")
 	public ResponseEntity<Page<UnitedPersonDTO>> searchDefault(@RequestBody UnitedPersonSearchContext context) {
         Page<UnitedPerson> domains = unitedpersonService.searchDefault(context) ;
@@ -171,7 +171,7 @@ public class UnitedPersonResource {
                 .body(new PageImpl(unitedpersonMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UnitedPerson-CXYH-all')")
-	@ApiOperation(value = "获取查询可用的OID用户", tags = {"统一身份库" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取查询可用的OID用户", tags = {"统一身份库" } ,notes = "获取查询可用的OID用户")
     @RequestMapping(method= RequestMethod.GET , value="/unitedpeople/fetchcxyh")
 	public ResponseEntity<List<UnitedPersonDTO>> fetchCXYH(UnitedPersonSearchContext context) {
         Page<UnitedPerson> domains = unitedpersonService.searchCXYH(context) ;
@@ -184,7 +184,7 @@ public class UnitedPersonResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UnitedPerson-CXYH-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"统一身份库" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询查询可用的OID用户", tags = {"统一身份库" } ,notes = "查询查询可用的OID用户")
     @RequestMapping(method= RequestMethod.POST , value="/unitedpeople/searchcxyh")
 	public ResponseEntity<Page<UnitedPersonDTO>> searchCXYH(@RequestBody UnitedPersonSearchContext context) {
         Page<UnitedPerson> domains = unitedpersonService.searchCXYH(context) ;
@@ -192,7 +192,7 @@ public class UnitedPersonResource {
                 .body(new PageImpl(unitedpersonMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UnitedPerson-CurFQXJYH-all')")
-	@ApiOperation(value = "获取新建用户", tags = {"统一身份库" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取新建用户", tags = {"统一身份库" } ,notes = "获取新建用户")
     @RequestMapping(method= RequestMethod.GET , value="/unitedpeople/fetchcurfqxjyh")
 	public ResponseEntity<List<UnitedPersonDTO>> fetchCurFQXJYH(UnitedPersonSearchContext context) {
         Page<UnitedPerson> domains = unitedpersonService.searchCurFQXJYH(context) ;
@@ -205,7 +205,7 @@ public class UnitedPersonResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UnitedPerson-CurFQXJYH-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"统一身份库" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询新建用户", tags = {"统一身份库" } ,notes = "查询新建用户")
     @RequestMapping(method= RequestMethod.POST , value="/unitedpeople/searchcurfqxjyh")
 	public ResponseEntity<Page<UnitedPersonDTO>> searchCurFQXJYH(@RequestBody UnitedPersonSearchContext context) {
         Page<UnitedPerson> domains = unitedpersonService.searchCurFQXJYH(context) ;

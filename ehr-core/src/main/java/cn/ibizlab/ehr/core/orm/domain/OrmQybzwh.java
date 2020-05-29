@@ -29,7 +29,6 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 /**
  * 实体[区域标准维护]
  */
-@Builder
 @Getter
 @Setter
 @NoArgsConstructor

@@ -29,7 +29,6 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 /**
  * 实体[教育经费]
  */
-@Builder
 @Getter
 @Setter
 @NoArgsConstructor

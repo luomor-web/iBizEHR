@@ -138,7 +138,7 @@ public class TrmTrafficResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TrmTraffic-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"交通" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"交通" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/trmtraffics/fetchdefault")
 	public ResponseEntity<List<TrmTrafficDTO>> fetchDefault(TrmTrafficSearchContext context) {
         Page<TrmTraffic> domains = trmtrafficService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class TrmTrafficResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TrmTraffic-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"交通" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"交通" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/trmtraffics/searchdefault")
 	public ResponseEntity<Page<TrmTrafficDTO>> searchDefault(@RequestBody TrmTrafficSearchContext context) {
         Page<TrmTraffic> domains = trmtrafficService.searchDefault(context) ;

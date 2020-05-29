@@ -29,7 +29,6 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 /**
  * 实体[考勤记录]
  */
-@Builder
 @Getter
 @Setter
 @NoArgsConstructor
@@ -269,7 +268,7 @@ public class AttEndanceRecord extends EntityMP implements Serializable {
     @JsonIgnore
     @JSONField(serialize = false)
     @TableField(exist = false)
-    private cn.ibizlab.ehr.core.att.domain.ATTENDANCEMREPORTMX attendancemreportmx;
+    private cn.ibizlab.ehr.core.att.domain.AttEndanceMreportmx attendancemreportmx;
 
     /**
      * 部门考勤地址

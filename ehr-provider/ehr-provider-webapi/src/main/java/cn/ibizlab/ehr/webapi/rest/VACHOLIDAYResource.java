@@ -162,7 +162,7 @@ public class VACHOLIDAYResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACHOLIDAY-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"节假日管理" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"节假日管理" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/vacholidays/fetchdefault")
 	public ResponseEntity<List<VACHOLIDAYDTO>> fetchDefault(VACHOLIDAYSearchContext context) {
         Page<VACHOLIDAY> domains = vacholidayService.searchDefault(context) ;
@@ -175,7 +175,7 @@ public class VACHOLIDAYResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACHOLIDAY-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"节假日管理" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"节假日管理" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/vacholidays/searchdefault")
 	public ResponseEntity<Page<VACHOLIDAYDTO>> searchDefault(@RequestBody VACHOLIDAYSearchContext context) {
         Page<VACHOLIDAY> domains = vacholidayService.searchDefault(context) ;

@@ -138,7 +138,7 @@ public class OrmEditionResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmEdition-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"版本对照表" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"版本对照表" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/ormeditions/fetchdefault")
 	public ResponseEntity<List<OrmEditionDTO>> fetchDefault(OrmEditionSearchContext context) {
         Page<OrmEdition> domains = ormeditionService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class OrmEditionResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmEdition-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"版本对照表" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"版本对照表" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/ormeditions/searchdefault")
 	public ResponseEntity<Page<OrmEditionDTO>> searchDefault(@RequestBody OrmEditionSearchContext context) {
         Page<OrmEdition> domains = ormeditionService.searchDefault(context) ;

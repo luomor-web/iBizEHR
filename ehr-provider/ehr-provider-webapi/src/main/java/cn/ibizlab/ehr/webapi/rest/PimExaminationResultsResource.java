@@ -138,7 +138,7 @@ public class PimExaminationResultsResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimExaminationResults-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"B/Y员工转正考核结果记录" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"B/Y员工转正考核结果记录" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimexaminationresults/fetchdefault")
 	public ResponseEntity<List<PimExaminationResultsDTO>> fetchDefault(PimExaminationResultsSearchContext context) {
         Page<PimExaminationResults> domains = pimexaminationresultsService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class PimExaminationResultsResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimExaminationResults-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"B/Y员工转正考核结果记录" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"B/Y员工转正考核结果记录" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pimexaminationresults/searchdefault")
 	public ResponseEntity<Page<PimExaminationResultsDTO>> searchDefault(@RequestBody PimExaminationResultsSearchContext context) {
         Page<PimExaminationResults> domains = pimexaminationresultsService.searchDefault(context) ;

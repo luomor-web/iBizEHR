@@ -138,7 +138,7 @@ public class VacSystemHistoryResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VacSystemHistory-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"制度历史" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"制度历史" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/vacsystemhistories/fetchdefault")
 	public ResponseEntity<List<VacSystemHistoryDTO>> fetchDefault(VacSystemHistorySearchContext context) {
         Page<VacSystemHistory> domains = vacsystemhistoryService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class VacSystemHistoryResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VacSystemHistory-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"制度历史" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"制度历史" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/vacsystemhistories/searchdefault")
 	public ResponseEntity<Page<VacSystemHistoryDTO>> searchDefault(@RequestBody VacSystemHistorySearchContext context) {
         Page<VacSystemHistory> domains = vacsystemhistoryService.searchDefault(context) ;

@@ -138,7 +138,7 @@ public class PCMPRACTICEEXPERIENCEResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPRACTICEEXPERIENCE-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"实习经验" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"实习经验" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pcmpracticeexperiences/fetchdefault")
 	public ResponseEntity<List<PCMPRACTICEEXPERIENCEDTO>> fetchDefault(PCMPRACTICEEXPERIENCESearchContext context) {
         Page<PCMPRACTICEEXPERIENCE> domains = pcmpracticeexperienceService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class PCMPRACTICEEXPERIENCEResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPRACTICEEXPERIENCE-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"实习经验" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"实习经验" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pcmpracticeexperiences/searchdefault")
 	public ResponseEntity<Page<PCMPRACTICEEXPERIENCEDTO>> searchDefault(@RequestBody PCMPRACTICEEXPERIENCESearchContext context) {
         Page<PCMPRACTICEEXPERIENCE> domains = pcmpracticeexperienceService.searchDefault(context) ;

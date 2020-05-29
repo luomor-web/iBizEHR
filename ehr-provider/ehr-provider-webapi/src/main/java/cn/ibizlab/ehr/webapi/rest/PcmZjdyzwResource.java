@@ -138,7 +138,7 @@ public class PcmZjdyzwResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmZjdyzw-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"职级和职务对应关系" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"职级和职务对应关系" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pcmzjdyzws/fetchdefault")
 	public ResponseEntity<List<PcmZjdyzwDTO>> fetchDefault(PcmZjdyzwSearchContext context) {
         Page<PcmZjdyzw> domains = pcmzjdyzwService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class PcmZjdyzwResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmZjdyzw-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"职级和职务对应关系" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"职级和职务对应关系" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pcmzjdyzws/searchdefault")
 	public ResponseEntity<Page<PcmZjdyzwDTO>> searchDefault(@RequestBody PcmZjdyzwSearchContext context) {
         Page<PcmZjdyzw> domains = pcmzjdyzwService.searchDefault(context) ;

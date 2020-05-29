@@ -138,7 +138,7 @@ public class PimQualMajorResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimQualMajor-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"执业资格专业" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"执业资格专业" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimqualmajors/fetchdefault")
 	public ResponseEntity<List<PimQualMajorDTO>> fetchDefault(PimQualMajorSearchContext context) {
         Page<PimQualMajor> domains = pimqualmajorService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class PimQualMajorResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimQualMajor-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"执业资格专业" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"执业资格专业" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pimqualmajors/searchdefault")
 	public ResponseEntity<Page<PimQualMajorDTO>> searchDefault(@RequestBody PimQualMajorSearchContext context) {
         Page<PimQualMajor> domains = pimqualmajorService.searchDefault(context) ;
@@ -159,7 +159,7 @@ public class PimQualMajorResource {
                 .body(new PageImpl(pimqualmajorMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimQualMajor-XZZGZY-all')")
-	@ApiOperation(value = "获取选择资格类别下对应的资格专业", tags = {"执业资格专业" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取选择资格类别下对应的资格专业", tags = {"执业资格专业" } ,notes = "获取选择资格类别下对应的资格专业")
     @RequestMapping(method= RequestMethod.GET , value="/pimqualmajors/fetchxzzgzy")
 	public ResponseEntity<List<PimQualMajorDTO>> fetchXZZGZY(PimQualMajorSearchContext context) {
         Page<PimQualMajor> domains = pimqualmajorService.searchXZZGZY(context) ;
@@ -172,7 +172,7 @@ public class PimQualMajorResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimQualMajor-XZZGZY-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"执业资格专业" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询选择资格类别下对应的资格专业", tags = {"执业资格专业" } ,notes = "查询选择资格类别下对应的资格专业")
     @RequestMapping(method= RequestMethod.POST , value="/pimqualmajors/searchxzzgzy")
 	public ResponseEntity<Page<PimQualMajorDTO>> searchXZZGZY(@RequestBody PimQualMajorSearchContext context) {
         Page<PimQualMajor> domains = pimqualmajorService.searchXZZGZY(context) ;

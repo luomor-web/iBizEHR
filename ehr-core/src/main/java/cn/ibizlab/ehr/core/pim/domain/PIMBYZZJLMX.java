@@ -29,7 +29,6 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 /**
  * 实体[B/Y类员工转正记录引用明细]
  */
-@Builder
 @Getter
 @Setter
 @NoArgsConstructor

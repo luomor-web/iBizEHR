@@ -138,7 +138,7 @@ public class ParJxndkhjgResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ParJxndkhjg-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"绩效年度考核结果" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"绩效年度考核结果" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/parjxndkhjgs/fetchdefault")
 	public ResponseEntity<List<ParJxndkhjgDTO>> fetchDefault(ParJxndkhjgSearchContext context) {
         Page<ParJxndkhjg> domains = parjxndkhjgService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class ParJxndkhjgResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ParJxndkhjg-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"绩效年度考核结果" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"绩效年度考核结果" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/parjxndkhjgs/searchdefault")
 	public ResponseEntity<Page<ParJxndkhjgDTO>> searchDefault(@RequestBody ParJxndkhjgSearchContext context) {
         Page<ParJxndkhjg> domains = parjxndkhjgService.searchDefault(context) ;
@@ -159,7 +159,7 @@ public class ParJxndkhjgResource {
                 .body(new PageImpl(parjxndkhjgMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ParJxndkhjg-LastTwoYear-all')")
-	@ApiOperation(value = "获取最近2年下半年考核成绩", tags = {"绩效年度考核结果" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取最近2年下半年考核成绩", tags = {"绩效年度考核结果" } ,notes = "获取最近2年下半年考核成绩")
     @RequestMapping(method= RequestMethod.GET , value="/parjxndkhjgs/fetchlasttwoyear")
 	public ResponseEntity<List<ParJxndkhjgDTO>> fetchLastTwoYear(ParJxndkhjgSearchContext context) {
         Page<ParJxndkhjg> domains = parjxndkhjgService.searchLastTwoYear(context) ;
@@ -172,7 +172,7 @@ public class ParJxndkhjgResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ParJxndkhjg-LastTwoYear-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"绩效年度考核结果" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询最近2年下半年考核成绩", tags = {"绩效年度考核结果" } ,notes = "查询最近2年下半年考核成绩")
     @RequestMapping(method= RequestMethod.POST , value="/parjxndkhjgs/searchlasttwoyear")
 	public ResponseEntity<Page<ParJxndkhjgDTO>> searchLastTwoYear(@RequestBody ParJxndkhjgSearchContext context) {
         Page<ParJxndkhjg> domains = parjxndkhjgService.searchLastTwoYear(context) ;

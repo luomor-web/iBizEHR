@@ -29,7 +29,6 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 /**
  * 实体[退休返聘申请]
  */
-@Builder
 @Getter
 @Setter
 @NoArgsConstructor

@@ -46,7 +46,7 @@ public class AttEndanceMreportServiceImpl extends ServiceImpl<AttEndanceMreportM
 
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.att.service.IATTENDANCEMREPORTMXService attendancemreportmxService;
+    private cn.ibizlab.ehr.core.att.service.IAttEndanceMreportmxService attendancemreportmxService;
     @Autowired
     @Lazy
     private cn.ibizlab.ehr.core.att.service.IAttEndenceSetupService attendencesetupService;

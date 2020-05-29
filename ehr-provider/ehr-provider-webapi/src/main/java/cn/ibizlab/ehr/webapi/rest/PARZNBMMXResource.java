@@ -138,7 +138,7 @@ public class PARZNBMMXResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PARZNBMMX-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"通知选择职能部门明细" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"通知选择职能部门明细" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/parznbmmxes/fetchdefault")
 	public ResponseEntity<List<PARZNBMMXDTO>> fetchDefault(PARZNBMMXSearchContext context) {
         Page<PARZNBMMX> domains = parznbmmxService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class PARZNBMMXResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PARZNBMMX-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"通知选择职能部门明细" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"通知选择职能部门明细" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/parznbmmxes/searchdefault")
 	public ResponseEntity<Page<PARZNBMMXDTO>> searchDefault(@RequestBody PARZNBMMXSearchContext context) {
         Page<PARZNBMMX> domains = parznbmmxService.searchDefault(context) ;

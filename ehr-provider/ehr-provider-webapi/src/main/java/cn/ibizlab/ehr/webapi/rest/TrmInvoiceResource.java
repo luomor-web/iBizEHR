@@ -138,7 +138,7 @@ public class TrmInvoiceResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TrmInvoice-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"开票信息" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"开票信息" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/trminvoices/fetchdefault")
 	public ResponseEntity<List<TrmInvoiceDTO>> fetchDefault(TrmInvoiceSearchContext context) {
         Page<TrmInvoice> domains = trminvoiceService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class TrmInvoiceResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TrmInvoice-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"开票信息" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"开票信息" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/trminvoices/searchdefault")
 	public ResponseEntity<Page<TrmInvoiceDTO>> searchDefault(@RequestBody TrmInvoiceSearchContext context) {
         Page<TrmInvoice> domains = trminvoiceService.searchDefault(context) ;

@@ -1,5 +1,7 @@
 package cn.ibizlab.ehr.util.rest;
 
+import cn.ibizlab.ehr.util.errors.BadRequestAlertException;
+import cn.ibizlab.ehr.util.service.IBZConfigService;
 import com.alibaba.fastjson.JSONObject;
 import cn.ibizlab.ehr.util.security.AuthenticationUser;
 import cn.ibizlab.ehr.util.service.AuthenticationUserService;
@@ -8,9 +10,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.*;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -23,7 +24,7 @@ public class AppController {
 	@Value("${ibiz.enablePermissionValid:false}")
     boolean enablePermissionValid;  //是否开启权限校验
 
-    @Value("${"ibiz.systemid:ehr'}")
+    @Value("${ibiz.systemid:ehr}")
 	private String systemId;
 
 
@@ -61,4 +62,23 @@ public class AppController {
 			userDetailsService.resetByUsername(AuthenticationUser.getAuthenticationUser().getUsername());
     	}
     }
+
+    @Autowired
+	private IBZConfigService ibzConfigService;
+
+	@RequestMapping(method = RequestMethod.PUT, value = "/configs/{configType}/{targetType}")
+	public ResponseEntity<Boolean> saveConfig(@PathVariable("configType") String configType, @PathVariable("targetType") String targetType, @RequestBody JSONObject config) {
+		String userId=AuthenticationUser.getAuthenticationUser().getUserid();
+		if(StringUtils.isEmpty(userId))
+			throw new BadRequestAlertException("保存配置失败，参数缺失","IBZConfig",configType);
+		return ResponseEntity.ok(ibzConfigService.saveConfig(configType,targetType,userId,config));
+	}
+
+	@RequestMapping(method = RequestMethod.GET, value = "/configs/{configType}/{targetType}")
+	public ResponseEntity<JSONObject> getConfig(@PathVariable("configType") String configType, @PathVariable("targetType") String targetType) {
+		String userId=AuthenticationUser.getAuthenticationUser().getUserid();
+		if(StringUtils.isEmpty(userId))
+			throw new BadRequestAlertException("获取配置失败，参数缺失","IBZConfig",configType);
+		return ResponseEntity.ok(ibzConfigService.getConfig(configType,targetType,userId));
+	}
 }

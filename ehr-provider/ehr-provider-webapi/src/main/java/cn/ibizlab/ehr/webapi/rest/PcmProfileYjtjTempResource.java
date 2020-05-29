@@ -138,7 +138,7 @@ public class PcmProfileYjtjTempResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmProfileYjtjTemp-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"应聘者引进条件中间表（停用）" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"应聘者引进条件中间表（停用）" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pcmprofileyjtjtemps/fetchdefault")
 	public ResponseEntity<List<PcmProfileYjtjTempDTO>> fetchDefault(PcmProfileYjtjTempSearchContext context) {
         Page<PcmProfileYjtjTemp> domains = pcmprofileyjtjtempService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class PcmProfileYjtjTempResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmProfileYjtjTemp-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"应聘者引进条件中间表（停用）" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"应聘者引进条件中间表（停用）" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pcmprofileyjtjtemps/searchdefault")
 	public ResponseEntity<Page<PcmProfileYjtjTempDTO>> searchDefault(@RequestBody PcmProfileYjtjTempSearchContext context) {
         Page<PcmProfileYjtjTemp> domains = pcmprofileyjtjtempService.searchDefault(context) ;

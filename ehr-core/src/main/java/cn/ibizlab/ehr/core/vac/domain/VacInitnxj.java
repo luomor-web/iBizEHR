@@ -29,7 +29,6 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 /**
  * 实体[初始化年休假]
  */
-@Builder
 @Getter
 @Setter
 @NoArgsConstructor

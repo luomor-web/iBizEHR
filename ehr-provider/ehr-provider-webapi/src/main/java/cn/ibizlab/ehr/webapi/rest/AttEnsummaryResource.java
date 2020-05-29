@@ -150,7 +150,7 @@ public class AttEnsummaryResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-AttEnsummary-CurZZKQHZ-all')")
-	@ApiOperation(value = "获取当前组织考勤汇总", tags = {"考勤汇总" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取当前组织考勤汇总", tags = {"考勤汇总" } ,notes = "获取当前组织考勤汇总")
     @RequestMapping(method= RequestMethod.GET , value="/attensummaries/fetchcurzzkqhz")
 	public ResponseEntity<List<AttEnsummaryDTO>> fetchCurZZKQHZ(AttEnsummarySearchContext context) {
         Page<AttEnsummary> domains = attensummaryService.searchCurZZKQHZ(context) ;
@@ -163,7 +163,7 @@ public class AttEnsummaryResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-AttEnsummary-CurZZKQHZ-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"考勤汇总" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询当前组织考勤汇总", tags = {"考勤汇总" } ,notes = "查询当前组织考勤汇总")
     @RequestMapping(method= RequestMethod.POST , value="/attensummaries/searchcurzzkqhz")
 	public ResponseEntity<Page<AttEnsummaryDTO>> searchCurZZKQHZ(@RequestBody AttEnsummarySearchContext context) {
         Page<AttEnsummary> domains = attensummaryService.searchCurZZKQHZ(context) ;
@@ -171,7 +171,7 @@ public class AttEnsummaryResource {
                 .body(new PageImpl(attensummaryMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-AttEnsummary-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"考勤汇总" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"考勤汇总" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/attensummaries/fetchdefault")
 	public ResponseEntity<List<AttEnsummaryDTO>> fetchDefault(AttEnsummarySearchContext context) {
         Page<AttEnsummary> domains = attensummaryService.searchDefault(context) ;
@@ -184,7 +184,7 @@ public class AttEnsummaryResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-AttEnsummary-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"考勤汇总" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"考勤汇总" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/attensummaries/searchdefault")
 	public ResponseEntity<Page<AttEnsummaryDTO>> searchDefault(@RequestBody AttEnsummarySearchContext context) {
         Page<AttEnsummary> domains = attensummaryService.searchDefault(context) ;

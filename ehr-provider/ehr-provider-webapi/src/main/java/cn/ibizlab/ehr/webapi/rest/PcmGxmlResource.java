@@ -138,7 +138,7 @@ public class PcmGxmlResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmGxml-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"高校名录" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"高校名录" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pcmgxmls/fetchdefault")
 	public ResponseEntity<List<PcmGxmlDTO>> fetchDefault(PcmGxmlSearchContext context) {
         Page<PcmGxml> domains = pcmgxmlService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class PcmGxmlResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmGxml-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"高校名录" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"高校名录" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pcmgxmls/searchdefault")
 	public ResponseEntity<Page<PcmGxmlDTO>> searchDefault(@RequestBody PcmGxmlSearchContext context) {
         Page<PcmGxml> domains = pcmgxmlService.searchDefault(context) ;
@@ -159,7 +159,7 @@ public class PcmGxmlResource {
                 .body(new PageImpl(pcmgxmlMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmGxml-CurND-all')")
-	@ApiOperation(value = "获取当前年度高校名录", tags = {"高校名录" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取当前年度高校名录", tags = {"高校名录" } ,notes = "获取当前年度高校名录")
     @RequestMapping(method= RequestMethod.GET , value="/pcmgxmls/fetchcurnd")
 	public ResponseEntity<List<PcmGxmlDTO>> fetchCurND(PcmGxmlSearchContext context) {
         Page<PcmGxml> domains = pcmgxmlService.searchCurND(context) ;
@@ -172,7 +172,7 @@ public class PcmGxmlResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmGxml-CurND-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"高校名录" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询当前年度高校名录", tags = {"高校名录" } ,notes = "查询当前年度高校名录")
     @RequestMapping(method= RequestMethod.POST , value="/pcmgxmls/searchcurnd")
 	public ResponseEntity<Page<PcmGxmlDTO>> searchCurND(@RequestBody PcmGxmlSearchContext context) {
         Page<PcmGxml> domains = pcmgxmlService.searchCurND(context) ;

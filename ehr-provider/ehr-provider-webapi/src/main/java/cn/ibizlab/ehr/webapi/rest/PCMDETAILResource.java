@@ -138,7 +138,7 @@ public class PCMDETAILResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMDETAIL-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"人员花名册" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"人员花名册" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pcmdetails/fetchdefault")
 	public ResponseEntity<List<PCMDETAILDTO>> fetchDefault(PCMDETAILSearchContext context) {
         Page<PCMDETAIL> domains = pcmdetailService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class PCMDETAILResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMDETAIL-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"人员花名册" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"人员花名册" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pcmdetails/searchdefault")
 	public ResponseEntity<Page<PCMDETAILDTO>> searchDefault(@RequestBody PCMDETAILSearchContext context) {
         Page<PCMDETAIL> domains = pcmdetailService.searchDefault(context) ;

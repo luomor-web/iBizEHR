@@ -138,7 +138,7 @@ public class PcmSchoolOfficeResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmSchoolOffice-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"在校职务" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"在校职务" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pcmschooloffices/fetchdefault")
 	public ResponseEntity<List<PcmSchoolOfficeDTO>> fetchDefault(PcmSchoolOfficeSearchContext context) {
         Page<PcmSchoolOffice> domains = pcmschoolofficeService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class PcmSchoolOfficeResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmSchoolOffice-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"在校职务" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"在校职务" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pcmschooloffices/searchdefault")
 	public ResponseEntity<Page<PcmSchoolOfficeDTO>> searchDefault(@RequestBody PcmSchoolOfficeSearchContext context) {
         Page<PcmSchoolOffice> domains = pcmschoolofficeService.searchDefault(context) ;

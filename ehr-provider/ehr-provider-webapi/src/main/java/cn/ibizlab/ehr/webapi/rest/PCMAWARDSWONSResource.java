@@ -138,7 +138,7 @@ public class PCMAWARDSWONSResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMAWARDSWONS-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"获奖情况" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"获奖情况" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pcmawardswons/fetchdefault")
 	public ResponseEntity<List<PCMAWARDSWONSDTO>> fetchDefault(PCMAWARDSWONSSearchContext context) {
         Page<PCMAWARDSWONS> domains = pcmawardswonsService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class PCMAWARDSWONSResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMAWARDSWONS-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"获奖情况" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"获奖情况" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pcmawardswons/searchdefault")
 	public ResponseEntity<Page<PCMAWARDSWONSDTO>> searchDefault(@RequestBody PCMAWARDSWONSSearchContext context) {
         Page<PCMAWARDSWONS> domains = pcmawardswonsService.searchDefault(context) ;

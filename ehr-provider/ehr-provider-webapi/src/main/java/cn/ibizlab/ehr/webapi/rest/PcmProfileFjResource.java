@@ -138,7 +138,7 @@ public class PcmProfileFjResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmProfileFj-PROFILEFJ-all')")
-	@ApiOperation(value = "获取应聘者附件", tags = {"应聘者附件" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取应聘者附件", tags = {"应聘者附件" } ,notes = "获取应聘者附件")
     @RequestMapping(method= RequestMethod.GET , value="/pcmprofilefjs/fetchprofilefj")
 	public ResponseEntity<List<PcmProfileFjDTO>> fetchPROFILEFJ(PcmProfileFjSearchContext context) {
         Page<PcmProfileFj> domains = pcmprofilefjService.searchPROFILEFJ(context) ;
@@ -151,7 +151,7 @@ public class PcmProfileFjResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmProfileFj-PROFILEFJ-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"应聘者附件" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询应聘者附件", tags = {"应聘者附件" } ,notes = "查询应聘者附件")
     @RequestMapping(method= RequestMethod.POST , value="/pcmprofilefjs/searchprofilefj")
 	public ResponseEntity<Page<PcmProfileFjDTO>> searchPROFILEFJ(@RequestBody PcmProfileFjSearchContext context) {
         Page<PcmProfileFj> domains = pcmprofilefjService.searchPROFILEFJ(context) ;
@@ -159,7 +159,7 @@ public class PcmProfileFjResource {
                 .body(new PageImpl(pcmprofilefjMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmProfileFj-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"应聘者附件" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"应聘者附件" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pcmprofilefjs/fetchdefault")
 	public ResponseEntity<List<PcmProfileFjDTO>> fetchDefault(PcmProfileFjSearchContext context) {
         Page<PcmProfileFj> domains = pcmprofilefjService.searchDefault(context) ;
@@ -172,7 +172,7 @@ public class PcmProfileFjResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmProfileFj-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"应聘者附件" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"应聘者附件" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pcmprofilefjs/searchdefault")
 	public ResponseEntity<Page<PcmProfileFjDTO>> searchDefault(@RequestBody PcmProfileFjSearchContext context) {
         Page<PcmProfileFj> domains = pcmprofilefjService.searchDefault(context) ;

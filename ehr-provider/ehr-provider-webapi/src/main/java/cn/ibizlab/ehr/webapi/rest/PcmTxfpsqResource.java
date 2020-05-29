@@ -198,7 +198,7 @@ public class PcmTxfpsqResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmTxfpsq-FPJL-all')")
-	@ApiOperation(value = "获取返聘记录", tags = {"退休返聘申请" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取返聘记录", tags = {"退休返聘申请" } ,notes = "获取返聘记录")
     @RequestMapping(method= RequestMethod.GET , value="/pcmtxfpsqs/fetchfpjl")
 	public ResponseEntity<List<PcmTxfpsqDTO>> fetchFPJL(PcmTxfpsqSearchContext context) {
         Page<PcmTxfpsq> domains = pcmtxfpsqService.searchFPJL(context) ;
@@ -211,7 +211,7 @@ public class PcmTxfpsqResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmTxfpsq-FPJL-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"退休返聘申请" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询返聘记录", tags = {"退休返聘申请" } ,notes = "查询返聘记录")
     @RequestMapping(method= RequestMethod.POST , value="/pcmtxfpsqs/searchfpjl")
 	public ResponseEntity<Page<PcmTxfpsqDTO>> searchFPJL(@RequestBody PcmTxfpsqSearchContext context) {
         Page<PcmTxfpsq> domains = pcmtxfpsqService.searchFPJL(context) ;
@@ -219,7 +219,7 @@ public class PcmTxfpsqResource {
                 .body(new PageImpl(pcmtxfpsqMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmTxfpsq-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"退休返聘申请" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"退休返聘申请" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pcmtxfpsqs/fetchdefault")
 	public ResponseEntity<List<PcmTxfpsqDTO>> fetchDefault(PcmTxfpsqSearchContext context) {
         Page<PcmTxfpsq> domains = pcmtxfpsqService.searchDefault(context) ;
@@ -232,7 +232,7 @@ public class PcmTxfpsqResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmTxfpsq-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"退休返聘申请" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"退休返聘申请" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pcmtxfpsqs/searchdefault")
 	public ResponseEntity<Page<PcmTxfpsqDTO>> searchDefault(@RequestBody PcmTxfpsqSearchContext context) {
         Page<PcmTxfpsq> domains = pcmtxfpsqService.searchDefault(context) ;
@@ -240,7 +240,7 @@ public class PcmTxfpsqResource {
                 .body(new PageImpl(pcmtxfpsqMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmTxfpsq-YXSQDS-all')")
-	@ApiOperation(value = "获取未审核申请", tags = {"退休返聘申请" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取未审核申请", tags = {"退休返聘申请" } ,notes = "获取未审核申请")
     @RequestMapping(method= RequestMethod.GET , value="/pcmtxfpsqs/fetchyxsqds")
 	public ResponseEntity<List<PcmTxfpsqDTO>> fetchYXSQDS(PcmTxfpsqSearchContext context) {
         Page<PcmTxfpsq> domains = pcmtxfpsqService.searchYXSQDS(context) ;
@@ -253,7 +253,7 @@ public class PcmTxfpsqResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmTxfpsq-YXSQDS-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"退休返聘申请" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询未审核申请", tags = {"退休返聘申请" } ,notes = "查询未审核申请")
     @RequestMapping(method= RequestMethod.POST , value="/pcmtxfpsqs/searchyxsqds")
 	public ResponseEntity<Page<PcmTxfpsqDTO>> searchYXSQDS(@RequestBody PcmTxfpsqSearchContext context) {
         Page<PcmTxfpsq> domains = pcmtxfpsqService.searchYXSQDS(context) ;
@@ -261,7 +261,7 @@ public class PcmTxfpsqResource {
                 .body(new PageImpl(pcmtxfpsqMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmTxfpsq-FPGL-all')")
-	@ApiOperation(value = "获取返聘管理", tags = {"退休返聘申请" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取返聘管理", tags = {"退休返聘申请" } ,notes = "获取返聘管理")
     @RequestMapping(method= RequestMethod.GET , value="/pcmtxfpsqs/fetchfpgl")
 	public ResponseEntity<List<PcmTxfpsqDTO>> fetchFPGL(PcmTxfpsqSearchContext context) {
         Page<PcmTxfpsq> domains = pcmtxfpsqService.searchFPGL(context) ;
@@ -274,7 +274,7 @@ public class PcmTxfpsqResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmTxfpsq-FPGL-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"退休返聘申请" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询返聘管理", tags = {"退休返聘申请" } ,notes = "查询返聘管理")
     @RequestMapping(method= RequestMethod.POST , value="/pcmtxfpsqs/searchfpgl")
 	public ResponseEntity<Page<PcmTxfpsqDTO>> searchFPGL(@RequestBody PcmTxfpsqSearchContext context) {
         Page<PcmTxfpsq> domains = pcmtxfpsqService.searchFPGL(context) ;

@@ -29,7 +29,6 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 /**
  * 实体[干部花名册]
  */
-@Builder
 @Getter
 @Setter
 @NoArgsConstructor

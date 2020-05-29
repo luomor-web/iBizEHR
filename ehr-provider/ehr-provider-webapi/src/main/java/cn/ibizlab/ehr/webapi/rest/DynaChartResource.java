@@ -128,7 +128,7 @@ public class DynaChartResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-	@ApiOperation(value = "获取DEFAULT", tags = {"动态图表" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"动态图表" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/dynacharts/fetchdefault")
 	public ResponseEntity<List<DynaChartDTO>> fetchDefault(DynaChartSearchContext context) {
         Page<DynaChart> domains = dynachartService.searchDefault(context) ;
@@ -140,7 +140,7 @@ public class DynaChartResource {
                 .body(list);
 	}
 
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"动态图表" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"动态图表" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/dynacharts/searchdefault")
 	public ResponseEntity<Page<DynaChartDTO>> searchDefault(@RequestBody DynaChartSearchContext context) {
         Page<DynaChart> domains = dynachartService.searchDefault(context) ;

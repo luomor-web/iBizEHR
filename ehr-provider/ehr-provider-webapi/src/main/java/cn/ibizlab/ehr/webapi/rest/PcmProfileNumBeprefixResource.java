@@ -138,7 +138,7 @@ public class PcmProfileNumBeprefixResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmProfileNumBeprefix-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"应聘者编号前缀" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"应聘者编号前缀" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pcmprofilenumbeprefixes/fetchdefault")
 	public ResponseEntity<List<PcmProfileNumBeprefixDTO>> fetchDefault(PcmProfileNumBeprefixSearchContext context) {
         Page<PcmProfileNumBeprefix> domains = pcmprofilenumbeprefixService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class PcmProfileNumBeprefixResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmProfileNumBeprefix-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"应聘者编号前缀" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"应聘者编号前缀" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pcmprofilenumbeprefixes/searchdefault")
 	public ResponseEntity<Page<PcmProfileNumBeprefixDTO>> searchDefault(@RequestBody PcmProfileNumBeprefixSearchContext context) {
         Page<PcmProfileNumBeprefix> domains = pcmprofilenumbeprefixService.searchDefault(context) ;

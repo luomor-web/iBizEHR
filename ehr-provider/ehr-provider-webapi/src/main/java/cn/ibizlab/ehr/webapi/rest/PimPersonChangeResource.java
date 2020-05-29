@@ -174,7 +174,7 @@ public class PimPersonChangeResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimPersonChange-HistoryRec-all')")
-	@ApiOperation(value = "获取历史审批记录", tags = {"人员信息变更审核" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取历史审批记录", tags = {"人员信息变更审核" } ,notes = "获取历史审批记录")
     @RequestMapping(method= RequestMethod.GET , value="/pimpersonchanges/fetchhistoryrec")
 	public ResponseEntity<List<PimPersonChangeDTO>> fetchHistoryRec(PimPersonChangeSearchContext context) {
         Page<PimPersonChange> domains = pimpersonchangeService.searchHistoryRec(context) ;
@@ -187,7 +187,7 @@ public class PimPersonChangeResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimPersonChange-HistoryRec-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"人员信息变更审核" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询历史审批记录", tags = {"人员信息变更审核" } ,notes = "查询历史审批记录")
     @RequestMapping(method= RequestMethod.POST , value="/pimpersonchanges/searchhistoryrec")
 	public ResponseEntity<Page<PimPersonChangeDTO>> searchHistoryRec(@RequestBody PimPersonChangeSearchContext context) {
         Page<PimPersonChange> domains = pimpersonchangeService.searchHistoryRec(context) ;
@@ -195,7 +195,7 @@ public class PimPersonChangeResource {
                 .body(new PageImpl(pimpersonchangeMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimPersonChange-PIMCL_NOTAPPROVAL-all')")
-	@ApiOperation(value = "获取PIMCL_NOTAPPROVAL", tags = {"人员信息变更审核" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取PIMCL_NOTAPPROVAL", tags = {"人员信息变更审核" } ,notes = "获取PIMCL_NOTAPPROVAL")
     @RequestMapping(method= RequestMethod.GET , value="/pimpersonchanges/fetchpimcl_notapproval")
 	public ResponseEntity<List<PimPersonChangeDTO>> fetchPIMCL_NOTAPPROVAL(PimPersonChangeSearchContext context) {
         Page<PimPersonChange> domains = pimpersonchangeService.searchPIMCL_NOTAPPROVAL(context) ;
@@ -208,7 +208,7 @@ public class PimPersonChangeResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimPersonChange-PIMCL_NOTAPPROVAL-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"人员信息变更审核" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询PIMCL_NOTAPPROVAL", tags = {"人员信息变更审核" } ,notes = "查询PIMCL_NOTAPPROVAL")
     @RequestMapping(method= RequestMethod.POST , value="/pimpersonchanges/searchpimcl_notapproval")
 	public ResponseEntity<Page<PimPersonChangeDTO>> searchPIMCL_NOTAPPROVAL(@RequestBody PimPersonChangeSearchContext context) {
         Page<PimPersonChange> domains = pimpersonchangeService.searchPIMCL_NOTAPPROVAL(context) ;
@@ -216,7 +216,7 @@ public class PimPersonChangeResource {
                 .body(new PageImpl(pimpersonchangeMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimPersonChange-HeadRed-all')")
-	@ApiOperation(value = "获取总部记录", tags = {"人员信息变更审核" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取总部记录", tags = {"人员信息变更审核" } ,notes = "获取总部记录")
     @RequestMapping(method= RequestMethod.GET , value="/pimpersonchanges/fetchheadred")
 	public ResponseEntity<List<PimPersonChangeDTO>> fetchHeadRed(PimPersonChangeSearchContext context) {
         Page<PimPersonChange> domains = pimpersonchangeService.searchHeadRed(context) ;
@@ -229,7 +229,7 @@ public class PimPersonChangeResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimPersonChange-HeadRed-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"人员信息变更审核" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询总部记录", tags = {"人员信息变更审核" } ,notes = "查询总部记录")
     @RequestMapping(method= RequestMethod.POST , value="/pimpersonchanges/searchheadred")
 	public ResponseEntity<Page<PimPersonChangeDTO>> searchHeadRed(@RequestBody PimPersonChangeSearchContext context) {
         Page<PimPersonChange> domains = pimpersonchangeService.searchHeadRed(context) ;
@@ -237,7 +237,7 @@ public class PimPersonChangeResource {
                 .body(new PageImpl(pimpersonchangeMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimPersonChange-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"人员信息变更审核" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"人员信息变更审核" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimpersonchanges/fetchdefault")
 	public ResponseEntity<List<PimPersonChangeDTO>> fetchDefault(PimPersonChangeSearchContext context) {
         Page<PimPersonChange> domains = pimpersonchangeService.searchDefault(context) ;
@@ -250,7 +250,7 @@ public class PimPersonChangeResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimPersonChange-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"人员信息变更审核" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"人员信息变更审核" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pimpersonchanges/searchdefault")
 	public ResponseEntity<Page<PimPersonChangeDTO>> searchDefault(@RequestBody PimPersonChangeSearchContext context) {
         Page<PimPersonChange> domains = pimpersonchangeService.searchDefault(context) ;

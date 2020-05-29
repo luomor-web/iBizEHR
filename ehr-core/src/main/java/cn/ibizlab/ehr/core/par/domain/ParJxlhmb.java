@@ -29,7 +29,6 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 /**
  * 实体[绩效量化目标]
  */
-@Builder
 @Getter
 @Setter
 @NoArgsConstructor

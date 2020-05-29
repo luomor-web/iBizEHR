@@ -138,7 +138,7 @@ public class ParJxlhmbResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ParJxlhmb-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"绩效量化目标" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"绩效量化目标" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/parjxlhmbs/fetchdefault")
 	public ResponseEntity<List<ParJxlhmbDTO>> fetchDefault(ParJxlhmbSearchContext context) {
         Page<ParJxlhmb> domains = parjxlhmbService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class ParJxlhmbResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ParJxlhmb-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"绩效量化目标" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"绩效量化目标" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/parjxlhmbs/searchdefault")
 	public ResponseEntity<Page<ParJxlhmbDTO>> searchDefault(@RequestBody ParJxlhmbSearchContext context) {
         Page<ParJxlhmb> domains = parjxlhmbService.searchDefault(context) ;

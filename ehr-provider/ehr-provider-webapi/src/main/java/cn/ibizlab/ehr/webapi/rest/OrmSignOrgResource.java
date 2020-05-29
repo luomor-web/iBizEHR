@@ -138,7 +138,7 @@ public class OrmSignOrgResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmSignOrg-HTQDDW-all')")
-	@ApiOperation(value = "获取合同签订单位", tags = {"法人主体" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取合同签订单位", tags = {"法人主体" } ,notes = "获取合同签订单位")
     @RequestMapping(method= RequestMethod.GET , value="/ormsignorgs/fetchhtqddw")
 	public ResponseEntity<List<OrmSignOrgDTO>> fetchHTQDDW(OrmSignOrgSearchContext context) {
         Page<OrmSignOrg> domains = ormsignorgService.searchHTQDDW(context) ;
@@ -151,7 +151,7 @@ public class OrmSignOrgResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmSignOrg-HTQDDW-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"法人主体" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询合同签订单位", tags = {"法人主体" } ,notes = "查询合同签订单位")
     @RequestMapping(method= RequestMethod.POST , value="/ormsignorgs/searchhtqddw")
 	public ResponseEntity<Page<OrmSignOrgDTO>> searchHTQDDW(@RequestBody OrmSignOrgSearchContext context) {
         Page<OrmSignOrg> domains = ormsignorgService.searchHTQDDW(context) ;
@@ -159,7 +159,7 @@ public class OrmSignOrgResource {
                 .body(new PageImpl(ormsignorgMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmSignOrg-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"法人主体" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"法人主体" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/ormsignorgs/fetchdefault")
 	public ResponseEntity<List<OrmSignOrgDTO>> fetchDefault(OrmSignOrgSearchContext context) {
         Page<OrmSignOrg> domains = ormsignorgService.searchDefault(context) ;
@@ -172,7 +172,7 @@ public class OrmSignOrgResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmSignOrg-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"法人主体" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"法人主体" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/ormsignorgs/searchdefault")
 	public ResponseEntity<Page<OrmSignOrgDTO>> searchDefault(@RequestBody OrmSignOrgSearchContext context) {
         Page<OrmSignOrg> domains = ormsignorgService.searchDefault(context) ;
@@ -180,7 +180,7 @@ public class OrmSignOrgResource {
                 .body(new PageImpl(ormsignorgMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmSignOrg-CKBDWDFRZT-all')")
-	@ApiOperation(value = "获取证书注册单位", tags = {"法人主体" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取证书注册单位", tags = {"法人主体" } ,notes = "获取证书注册单位")
     @RequestMapping(method= RequestMethod.GET , value="/ormsignorgs/fetchckbdwdfrzt")
 	public ResponseEntity<List<OrmSignOrgDTO>> fetchCKBDWDFRZT(OrmSignOrgSearchContext context) {
         Page<OrmSignOrg> domains = ormsignorgService.searchCKBDWDFRZT(context) ;
@@ -193,7 +193,7 @@ public class OrmSignOrgResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmSignOrg-CKBDWDFRZT-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"法人主体" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询证书注册单位", tags = {"法人主体" } ,notes = "查询证书注册单位")
     @RequestMapping(method= RequestMethod.POST , value="/ormsignorgs/searchckbdwdfrzt")
 	public ResponseEntity<Page<OrmSignOrgDTO>> searchCKBDWDFRZT(@RequestBody OrmSignOrgSearchContext context) {
         Page<OrmSignOrg> domains = ormsignorgService.searchCKBDWDFRZT(context) ;

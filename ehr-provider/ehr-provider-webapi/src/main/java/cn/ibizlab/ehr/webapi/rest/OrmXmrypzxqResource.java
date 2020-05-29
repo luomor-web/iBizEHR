@@ -318,7 +318,7 @@ public class OrmXmrypzxqResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmXmrypzxq-RSSH-all')")
-	@ApiOperation(value = "获取人事审核", tags = {"项目人员需求" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取人事审核", tags = {"项目人员需求" } ,notes = "获取人事审核")
     @RequestMapping(method= RequestMethod.GET , value="/ormxmrypzxqs/fetchrssh")
 	public ResponseEntity<List<OrmXmrypzxqDTO>> fetchRSSH(OrmXmrypzxqSearchContext context) {
         Page<OrmXmrypzxq> domains = ormxmrypzxqService.searchRSSH(context) ;
@@ -331,7 +331,7 @@ public class OrmXmrypzxqResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmXmrypzxq-RSSH-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"项目人员需求" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询人事审核", tags = {"项目人员需求" } ,notes = "查询人事审核")
     @RequestMapping(method= RequestMethod.POST , value="/ormxmrypzxqs/searchrssh")
 	public ResponseEntity<Page<OrmXmrypzxqDTO>> searchRSSH(@RequestBody OrmXmrypzxqSearchContext context) {
         Page<OrmXmrypzxq> domains = ormxmrypzxqService.searchRSSH(context) ;
@@ -339,7 +339,7 @@ public class OrmXmrypzxqResource {
                 .body(new PageImpl(ormxmrypzxqMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmXmrypzxq-CURFQTP-all')")
-	@ApiOperation(value = "获取判定调配", tags = {"项目人员需求" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取判定调配", tags = {"项目人员需求" } ,notes = "获取判定调配")
     @RequestMapping(method= RequestMethod.GET , value="/ormxmrypzxqs/fetchcurfqtp")
 	public ResponseEntity<List<OrmXmrypzxqDTO>> fetchCURFQTP(OrmXmrypzxqSearchContext context) {
         Page<OrmXmrypzxq> domains = ormxmrypzxqService.searchCURFQTP(context) ;
@@ -352,7 +352,7 @@ public class OrmXmrypzxqResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmXmrypzxq-CURFQTP-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"项目人员需求" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询判定调配", tags = {"项目人员需求" } ,notes = "查询判定调配")
     @RequestMapping(method= RequestMethod.POST , value="/ormxmrypzxqs/searchcurfqtp")
 	public ResponseEntity<Page<OrmXmrypzxqDTO>> searchCURFQTP(@RequestBody OrmXmrypzxqSearchContext context) {
         Page<OrmXmrypzxq> domains = ormxmrypzxqService.searchCURFQTP(context) ;
@@ -360,7 +360,7 @@ public class OrmXmrypzxqResource {
                 .body(new PageImpl(ormxmrypzxqMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmXmrypzxq-CXSJ-all')")
-	@ApiOperation(value = "获取查询调配数据", tags = {"项目人员需求" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取查询调配数据", tags = {"项目人员需求" } ,notes = "获取查询调配数据")
     @RequestMapping(method= RequestMethod.GET , value="/ormxmrypzxqs/fetchcxsj")
 	public ResponseEntity<List<OrmXmrypzxqDTO>> fetchCXSJ(OrmXmrypzxqSearchContext context) {
         Page<OrmXmrypzxq> domains = ormxmrypzxqService.searchCXSJ(context) ;
@@ -373,7 +373,7 @@ public class OrmXmrypzxqResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmXmrypzxq-CXSJ-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"项目人员需求" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询查询调配数据", tags = {"项目人员需求" } ,notes = "查询查询调配数据")
     @RequestMapping(method= RequestMethod.POST , value="/ormxmrypzxqs/searchcxsj")
 	public ResponseEntity<Page<OrmXmrypzxqDTO>> searchCXSJ(@RequestBody OrmXmrypzxqSearchContext context) {
         Page<OrmXmrypzxq> domains = ormxmrypzxqService.searchCXSJ(context) ;
@@ -381,7 +381,7 @@ public class OrmXmrypzxqResource {
                 .body(new PageImpl(ormxmrypzxqMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmXmrypzxq-KZXMQX-all')")
-	@ApiOperation(value = "获取控制项目人员需求（修改、删除）权限", tags = {"项目人员需求" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取控制项目人员需求（修改、删除）权限", tags = {"项目人员需求" } ,notes = "获取控制项目人员需求（修改、删除）权限")
     @RequestMapping(method= RequestMethod.GET , value="/ormxmrypzxqs/fetchkzxmqx")
 	public ResponseEntity<List<OrmXmrypzxqDTO>> fetchKZXMQX(OrmXmrypzxqSearchContext context) {
         Page<OrmXmrypzxq> domains = ormxmrypzxqService.searchKZXMQX(context) ;
@@ -394,7 +394,7 @@ public class OrmXmrypzxqResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmXmrypzxq-KZXMQX-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"项目人员需求" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询控制项目人员需求（修改、删除）权限", tags = {"项目人员需求" } ,notes = "查询控制项目人员需求（修改、删除）权限")
     @RequestMapping(method= RequestMethod.POST , value="/ormxmrypzxqs/searchkzxmqx")
 	public ResponseEntity<Page<OrmXmrypzxqDTO>> searchKZXMQX(@RequestBody OrmXmrypzxqSearchContext context) {
         Page<OrmXmrypzxq> domains = ormxmrypzxqService.searchKZXMQX(context) ;
@@ -402,7 +402,7 @@ public class OrmXmrypzxqResource {
                 .body(new PageImpl(ormxmrypzxqMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmXmrypzxq-SFSH-all')")
-	@ApiOperation(value = "获取释放台账", tags = {"项目人员需求" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取释放台账", tags = {"项目人员需求" } ,notes = "获取释放台账")
     @RequestMapping(method= RequestMethod.GET , value="/ormxmrypzxqs/fetchsfsh")
 	public ResponseEntity<List<OrmXmrypzxqDTO>> fetchSFSH(OrmXmrypzxqSearchContext context) {
         Page<OrmXmrypzxq> domains = ormxmrypzxqService.searchSFSH(context) ;
@@ -415,7 +415,7 @@ public class OrmXmrypzxqResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmXmrypzxq-SFSH-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"项目人员需求" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询释放台账", tags = {"项目人员需求" } ,notes = "查询释放台账")
     @RequestMapping(method= RequestMethod.POST , value="/ormxmrypzxqs/searchsfsh")
 	public ResponseEntity<Page<OrmXmrypzxqDTO>> searchSFSH(@RequestBody OrmXmrypzxqSearchContext context) {
         Page<OrmXmrypzxq> domains = ormxmrypzxqService.searchSFSH(context) ;
@@ -423,7 +423,7 @@ public class OrmXmrypzxqResource {
                 .body(new PageImpl(ormxmrypzxqMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmXmrypzxq-CURFQSF-all')")
-	@ApiOperation(value = "获取判定释放", tags = {"项目人员需求" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取判定释放", tags = {"项目人员需求" } ,notes = "获取判定释放")
     @RequestMapping(method= RequestMethod.GET , value="/ormxmrypzxqs/fetchcurfqsf")
 	public ResponseEntity<List<OrmXmrypzxqDTO>> fetchCURFQSF(OrmXmrypzxqSearchContext context) {
         Page<OrmXmrypzxq> domains = ormxmrypzxqService.searchCURFQSF(context) ;
@@ -436,7 +436,7 @@ public class OrmXmrypzxqResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmXmrypzxq-CURFQSF-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"项目人员需求" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询判定释放", tags = {"项目人员需求" } ,notes = "查询判定释放")
     @RequestMapping(method= RequestMethod.POST , value="/ormxmrypzxqs/searchcurfqsf")
 	public ResponseEntity<Page<OrmXmrypzxqDTO>> searchCURFQSF(@RequestBody OrmXmrypzxqSearchContext context) {
         Page<OrmXmrypzxq> domains = ormxmrypzxqService.searchCURFQSF(context) ;
@@ -444,7 +444,7 @@ public class OrmXmrypzxqResource {
                 .body(new PageImpl(ormxmrypzxqMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmXmrypzxq-TPSH-all')")
-	@ApiOperation(value = "获取调配审核", tags = {"项目人员需求" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取调配审核", tags = {"项目人员需求" } ,notes = "获取调配审核")
     @RequestMapping(method= RequestMethod.GET , value="/ormxmrypzxqs/fetchtpsh")
 	public ResponseEntity<List<OrmXmrypzxqDTO>> fetchTPSH(OrmXmrypzxqSearchContext context) {
         Page<OrmXmrypzxq> domains = ormxmrypzxqService.searchTPSH(context) ;
@@ -457,7 +457,7 @@ public class OrmXmrypzxqResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmXmrypzxq-TPSH-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"项目人员需求" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询调配审核", tags = {"项目人员需求" } ,notes = "查询调配审核")
     @RequestMapping(method= RequestMethod.POST , value="/ormxmrypzxqs/searchtpsh")
 	public ResponseEntity<Page<OrmXmrypzxqDTO>> searchTPSH(@RequestBody OrmXmrypzxqSearchContext context) {
         Page<OrmXmrypzxq> domains = ormxmrypzxqService.searchTPSH(context) ;
@@ -465,7 +465,7 @@ public class OrmXmrypzxqResource {
                 .body(new PageImpl(ormxmrypzxqMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmXmrypzxq-SFCXSJ-all')")
-	@ApiOperation(value = "获取释放数据查询", tags = {"项目人员需求" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取释放数据查询", tags = {"项目人员需求" } ,notes = "获取释放数据查询")
     @RequestMapping(method= RequestMethod.GET , value="/ormxmrypzxqs/fetchsfcxsj")
 	public ResponseEntity<List<OrmXmrypzxqDTO>> fetchSFCXSJ(OrmXmrypzxqSearchContext context) {
         Page<OrmXmrypzxq> domains = ormxmrypzxqService.searchSFCXSJ(context) ;
@@ -478,7 +478,7 @@ public class OrmXmrypzxqResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmXmrypzxq-SFCXSJ-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"项目人员需求" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询释放数据查询", tags = {"项目人员需求" } ,notes = "查询释放数据查询")
     @RequestMapping(method= RequestMethod.POST , value="/ormxmrypzxqs/searchsfcxsj")
 	public ResponseEntity<Page<OrmXmrypzxqDTO>> searchSFCXSJ(@RequestBody OrmXmrypzxqSearchContext context) {
         Page<OrmXmrypzxq> domains = ormxmrypzxqService.searchSFCXSJ(context) ;
@@ -486,7 +486,7 @@ public class OrmXmrypzxqResource {
                 .body(new PageImpl(ormxmrypzxqMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmXmrypzxq-MODSPSH-all')")
-	@ApiOperation(value = "获取拟用人员变更审核", tags = {"项目人员需求" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取拟用人员变更审核", tags = {"项目人员需求" } ,notes = "获取拟用人员变更审核")
     @RequestMapping(method= RequestMethod.GET , value="/ormxmrypzxqs/fetchmodspsh")
 	public ResponseEntity<List<OrmXmrypzxqDTO>> fetchMODSPSH(OrmXmrypzxqSearchContext context) {
         Page<OrmXmrypzxq> domains = ormxmrypzxqService.searchMODSPSH(context) ;
@@ -499,7 +499,7 @@ public class OrmXmrypzxqResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmXmrypzxq-MODSPSH-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"项目人员需求" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询拟用人员变更审核", tags = {"项目人员需求" } ,notes = "查询拟用人员变更审核")
     @RequestMapping(method= RequestMethod.POST , value="/ormxmrypzxqs/searchmodspsh")
 	public ResponseEntity<Page<OrmXmrypzxqDTO>> searchMODSPSH(@RequestBody OrmXmrypzxqSearchContext context) {
         Page<OrmXmrypzxq> domains = ormxmrypzxqService.searchMODSPSH(context) ;
@@ -507,7 +507,7 @@ public class OrmXmrypzxqResource {
                 .body(new PageImpl(ormxmrypzxqMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmXmrypzxq-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"项目人员需求" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"项目人员需求" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/ormxmrypzxqs/fetchdefault")
 	public ResponseEntity<List<OrmXmrypzxqDTO>> fetchDefault(OrmXmrypzxqSearchContext context) {
         Page<OrmXmrypzxq> domains = ormxmrypzxqService.searchDefault(context) ;
@@ -520,7 +520,7 @@ public class OrmXmrypzxqResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmXmrypzxq-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"项目人员需求" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"项目人员需求" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/ormxmrypzxqs/searchdefault")
 	public ResponseEntity<Page<OrmXmrypzxqDTO>> searchDefault(@RequestBody OrmXmrypzxqSearchContext context) {
         Page<OrmXmrypzxq> domains = ormxmrypzxqService.searchDefault(context) ;
@@ -528,7 +528,7 @@ public class OrmXmrypzxqResource {
                 .body(new PageImpl(ormxmrypzxqMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmXmrypzxq-XMCBMX-all')")
-	@ApiOperation(value = "获取项目人力成本明细", tags = {"项目人员需求" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取项目人力成本明细", tags = {"项目人员需求" } ,notes = "获取项目人力成本明细")
     @RequestMapping(method= RequestMethod.GET , value="/ormxmrypzxqs/fetchxmcbmx")
 	public ResponseEntity<List<OrmXmrypzxqDTO>> fetchXMCBMX(OrmXmrypzxqSearchContext context) {
         Page<OrmXmrypzxq> domains = ormxmrypzxqService.searchXMCBMX(context) ;
@@ -541,7 +541,7 @@ public class OrmXmrypzxqResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmXmrypzxq-XMCBMX-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"项目人员需求" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询项目人力成本明细", tags = {"项目人员需求" } ,notes = "查询项目人力成本明细")
     @RequestMapping(method= RequestMethod.POST , value="/ormxmrypzxqs/searchxmcbmx")
 	public ResponseEntity<Page<OrmXmrypzxqDTO>> searchXMCBMX(@RequestBody OrmXmrypzxqSearchContext context) {
         Page<OrmXmrypzxq> domains = ormxmrypzxqService.searchXMCBMX(context) ;

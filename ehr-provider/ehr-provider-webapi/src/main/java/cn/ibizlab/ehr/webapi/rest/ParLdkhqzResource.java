@@ -138,7 +138,7 @@ public class ParLdkhqzResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ParLdkhqz-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"评分权重分配" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"评分权重分配" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/parldkhqzs/fetchdefault")
 	public ResponseEntity<List<ParLdkhqzDTO>> fetchDefault(ParLdkhqzSearchContext context) {
         Page<ParLdkhqz> domains = parldkhqzService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class ParLdkhqzResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ParLdkhqz-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"评分权重分配" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"评分权重分配" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/parldkhqzs/searchdefault")
 	public ResponseEntity<Page<ParLdkhqzDTO>> searchDefault(@RequestBody ParLdkhqzSearchContext context) {
         Page<ParLdkhqz> domains = parldkhqzService.searchDefault(context) ;

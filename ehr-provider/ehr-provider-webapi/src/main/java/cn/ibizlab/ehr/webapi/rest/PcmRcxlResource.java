@@ -138,7 +138,7 @@ public class PcmRcxlResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmRcxl-Current-all')")
-	@ApiOperation(value = "获取查询当前人才序列下的序列", tags = {"人才序列" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取查询当前人才序列下的序列", tags = {"人才序列" } ,notes = "获取查询当前人才序列下的序列")
     @RequestMapping(method= RequestMethod.GET , value="/pcmrcxls/fetchcurrent")
 	public ResponseEntity<List<PcmRcxlDTO>> fetchCurrent(PcmRcxlSearchContext context) {
         Page<PcmRcxl> domains = pcmrcxlService.searchCurrent(context) ;
@@ -151,7 +151,7 @@ public class PcmRcxlResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmRcxl-Current-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"人才序列" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询查询当前人才序列下的序列", tags = {"人才序列" } ,notes = "查询查询当前人才序列下的序列")
     @RequestMapping(method= RequestMethod.POST , value="/pcmrcxls/searchcurrent")
 	public ResponseEntity<Page<PcmRcxlDTO>> searchCurrent(@RequestBody PcmRcxlSearchContext context) {
         Page<PcmRcxl> domains = pcmrcxlService.searchCurrent(context) ;
@@ -159,7 +159,7 @@ public class PcmRcxlResource {
                 .body(new PageImpl(pcmrcxlMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmRcxl-RCXLPPXLLX-all')")
-	@ApiOperation(value = "获取人才序列匹配人才序列类型", tags = {"人才序列" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取人才序列匹配人才序列类型", tags = {"人才序列" } ,notes = "获取人才序列匹配人才序列类型")
     @RequestMapping(method= RequestMethod.GET , value="/pcmrcxls/fetchrcxlppxllx")
 	public ResponseEntity<List<PcmRcxlDTO>> fetchRCXLPPXLLX(PcmRcxlSearchContext context) {
         Page<PcmRcxl> domains = pcmrcxlService.searchRCXLPPXLLX(context) ;
@@ -172,7 +172,7 @@ public class PcmRcxlResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmRcxl-RCXLPPXLLX-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"人才序列" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询人才序列匹配人才序列类型", tags = {"人才序列" } ,notes = "查询人才序列匹配人才序列类型")
     @RequestMapping(method= RequestMethod.POST , value="/pcmrcxls/searchrcxlppxllx")
 	public ResponseEntity<Page<PcmRcxlDTO>> searchRCXLPPXLLX(@RequestBody PcmRcxlSearchContext context) {
         Page<PcmRcxl> domains = pcmrcxlService.searchRCXLPPXLLX(context) ;
@@ -180,7 +180,7 @@ public class PcmRcxlResource {
                 .body(new PageImpl(pcmrcxlMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmRcxl-ZiDQ-all')")
-	@ApiOperation(value = "获取子查询", tags = {"人才序列" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取子查询", tags = {"人才序列" } ,notes = "获取子查询")
     @RequestMapping(method= RequestMethod.GET , value="/pcmrcxls/fetchzidq")
 	public ResponseEntity<List<PcmRcxlDTO>> fetchZiDQ(PcmRcxlSearchContext context) {
         Page<PcmRcxl> domains = pcmrcxlService.searchZiDQ(context) ;
@@ -193,7 +193,7 @@ public class PcmRcxlResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmRcxl-ZiDQ-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"人才序列" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询子查询", tags = {"人才序列" } ,notes = "查询子查询")
     @RequestMapping(method= RequestMethod.POST , value="/pcmrcxls/searchzidq")
 	public ResponseEntity<Page<PcmRcxlDTO>> searchZiDQ(@RequestBody PcmRcxlSearchContext context) {
         Page<PcmRcxl> domains = pcmrcxlService.searchZiDQ(context) ;
@@ -201,7 +201,7 @@ public class PcmRcxlResource {
                 .body(new PageImpl(pcmrcxlMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmRcxl-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"人才序列" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"人才序列" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pcmrcxls/fetchdefault")
 	public ResponseEntity<List<PcmRcxlDTO>> fetchDefault(PcmRcxlSearchContext context) {
         Page<PcmRcxl> domains = pcmrcxlService.searchDefault(context) ;
@@ -214,7 +214,7 @@ public class PcmRcxlResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmRcxl-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"人才序列" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"人才序列" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pcmrcxls/searchdefault")
 	public ResponseEntity<Page<PcmRcxlDTO>> searchDefault(@RequestBody PcmRcxlSearchContext context) {
         Page<PcmRcxl> domains = pcmrcxlService.searchDefault(context) ;
@@ -222,7 +222,7 @@ public class PcmRcxlResource {
                 .body(new PageImpl(pcmrcxlMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmRcxl-GenDQ-all')")
-	@ApiOperation(value = "获取根查询", tags = {"人才序列" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取根查询", tags = {"人才序列" } ,notes = "获取根查询")
     @RequestMapping(method= RequestMethod.GET , value="/pcmrcxls/fetchgendq")
 	public ResponseEntity<List<PcmRcxlDTO>> fetchGenDQ(PcmRcxlSearchContext context) {
         Page<PcmRcxl> domains = pcmrcxlService.searchGenDQ(context) ;
@@ -235,7 +235,7 @@ public class PcmRcxlResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmRcxl-GenDQ-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"人才序列" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询根查询", tags = {"人才序列" } ,notes = "查询根查询")
     @RequestMapping(method= RequestMethod.POST , value="/pcmrcxls/searchgendq")
 	public ResponseEntity<Page<PcmRcxlDTO>> searchGenDQ(@RequestBody PcmRcxlSearchContext context) {
         Page<PcmRcxl> domains = pcmrcxlService.searchGenDQ(context) ;

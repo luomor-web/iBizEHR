@@ -138,7 +138,7 @@ public class OrmPostLibResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmPostLib-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"岗位库" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"岗位库" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/ormpostlibs/fetchdefault")
 	public ResponseEntity<List<OrmPostLibDTO>> fetchDefault(OrmPostLibSearchContext context) {
         Page<OrmPostLib> domains = ormpostlibService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class OrmPostLibResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmPostLib-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"岗位库" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"岗位库" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/ormpostlibs/searchdefault")
 	public ResponseEntity<Page<OrmPostLibDTO>> searchDefault(@RequestBody OrmPostLibSearchContext context) {
         Page<OrmPostLib> domains = ormpostlibService.searchDefault(context) ;

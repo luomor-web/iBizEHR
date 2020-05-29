@@ -29,7 +29,6 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 /**
  * 实体[通知发布]
  */
-@Builder
 @Getter
 @Setter
 @NoArgsConstructor

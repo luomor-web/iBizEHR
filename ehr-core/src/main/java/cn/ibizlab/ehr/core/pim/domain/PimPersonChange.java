@@ -29,7 +29,6 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 /**
  * 实体[人员信息变更审核]
  */
-@Builder
 @Getter
 @Setter
 @NoArgsConstructor

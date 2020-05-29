@@ -29,7 +29,6 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 /**
  * 实体[职级到期规则]
  */
-@Builder
 @Getter
 @Setter
 @NoArgsConstructor

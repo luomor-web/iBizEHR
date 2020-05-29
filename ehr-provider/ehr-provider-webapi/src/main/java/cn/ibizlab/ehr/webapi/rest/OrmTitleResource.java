@@ -138,7 +138,7 @@ public class OrmTitleResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmTitle-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"头衔管理" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"头衔管理" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/ormtitles/fetchdefault")
 	public ResponseEntity<List<OrmTitleDTO>> fetchDefault(OrmTitleSearchContext context) {
         Page<OrmTitle> domains = ormtitleService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class OrmTitleResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmTitle-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"头衔管理" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"头衔管理" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/ormtitles/searchdefault")
 	public ResponseEntity<Page<OrmTitleDTO>> searchDefault(@RequestBody OrmTitleSearchContext context) {
         Page<OrmTitle> domains = ormtitleService.searchDefault(context) ;

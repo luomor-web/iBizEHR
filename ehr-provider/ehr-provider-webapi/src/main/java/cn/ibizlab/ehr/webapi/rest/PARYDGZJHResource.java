@@ -138,7 +138,7 @@ public class PARYDGZJHResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PARYDGZJH-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"月度工作计划" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"月度工作计划" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/parydgzjhs/fetchdefault")
 	public ResponseEntity<List<PARYDGZJHDTO>> fetchDefault(PARYDGZJHSearchContext context) {
         Page<PARYDGZJH> domains = parydgzjhService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class PARYDGZJHResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PARYDGZJH-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"月度工作计划" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"月度工作计划" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/parydgzjhs/searchdefault")
 	public ResponseEntity<Page<PARYDGZJHDTO>> searchDefault(@RequestBody PARYDGZJHSearchContext context) {
         Page<PARYDGZJH> domains = parydgzjhService.searchDefault(context) ;

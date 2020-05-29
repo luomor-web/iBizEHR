@@ -138,7 +138,7 @@ public class AttEndenceSetupResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-AttEndenceSetup-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"考勤设置" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"考勤设置" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/attendencesetups/fetchdefault")
 	public ResponseEntity<List<AttEndenceSetupDTO>> fetchDefault(AttEndenceSetupSearchContext context) {
         Page<AttEndenceSetup> domains = attendencesetupService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class AttEndenceSetupResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-AttEndenceSetup-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"考勤设置" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"考勤设置" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/attendencesetups/searchdefault")
 	public ResponseEntity<Page<AttEndenceSetupDTO>> searchDefault(@RequestBody AttEndenceSetupSearchContext context) {
         Page<AttEndenceSetup> domains = attendencesetupService.searchDefault(context) ;
@@ -159,7 +159,7 @@ public class AttEndenceSetupResource {
                 .body(new PageImpl(attendencesetupMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-AttEndenceSetup-CurOrgKQSZ-all')")
-	@ApiOperation(value = "获取当前组织下的考勤设置", tags = {"考勤设置" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取当前组织下的考勤设置", tags = {"考勤设置" } ,notes = "获取当前组织下的考勤设置")
     @RequestMapping(method= RequestMethod.GET , value="/attendencesetups/fetchcurorgkqsz")
 	public ResponseEntity<List<AttEndenceSetupDTO>> fetchCurOrgKQSZ(AttEndenceSetupSearchContext context) {
         Page<AttEndenceSetup> domains = attendencesetupService.searchCurOrgKQSZ(context) ;
@@ -172,7 +172,7 @@ public class AttEndenceSetupResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-AttEndenceSetup-CurOrgKQSZ-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"考勤设置" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询当前组织下的考勤设置", tags = {"考勤设置" } ,notes = "查询当前组织下的考勤设置")
     @RequestMapping(method= RequestMethod.POST , value="/attendencesetups/searchcurorgkqsz")
 	public ResponseEntity<Page<AttEndenceSetupDTO>> searchCurOrgKQSZ(@RequestBody AttEndenceSetupSearchContext context) {
         Page<AttEndenceSetup> domains = attendencesetupService.searchCurOrgKQSZ(context) ;
@@ -180,7 +180,7 @@ public class AttEndenceSetupResource {
                 .body(new PageImpl(attendencesetupMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-AttEndenceSetup-KQYBXKQB-all')")
-	@ApiOperation(value = "获取考勤月报中选考勤表", tags = {"考勤设置" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取考勤月报中选考勤表", tags = {"考勤设置" } ,notes = "获取考勤月报中选考勤表")
     @RequestMapping(method= RequestMethod.GET , value="/attendencesetups/fetchkqybxkqb")
 	public ResponseEntity<List<AttEndenceSetupDTO>> fetchKQYBXKQB(AttEndenceSetupSearchContext context) {
         Page<AttEndenceSetup> domains = attendencesetupService.searchKQYBXKQB(context) ;
@@ -193,7 +193,7 @@ public class AttEndenceSetupResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-AttEndenceSetup-KQYBXKQB-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"考勤设置" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询考勤月报中选考勤表", tags = {"考勤设置" } ,notes = "查询考勤月报中选考勤表")
     @RequestMapping(method= RequestMethod.POST , value="/attendencesetups/searchkqybxkqb")
 	public ResponseEntity<Page<AttEndenceSetupDTO>> searchKQYBXKQB(@RequestBody AttEndenceSetupSearchContext context) {
         Page<AttEndenceSetup> domains = attendencesetupService.searchKQYBXKQB(context) ;
@@ -201,7 +201,7 @@ public class AttEndenceSetupResource {
                 .body(new PageImpl(attendencesetupMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-AttEndenceSetup-KQYCZKQSZ-all')")
-	@ApiOperation(value = "获取考勤员操作考勤设置", tags = {"考勤设置" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取考勤员操作考勤设置", tags = {"考勤设置" } ,notes = "获取考勤员操作考勤设置")
     @RequestMapping(method= RequestMethod.GET , value="/attendencesetups/fetchkqyczkqsz")
 	public ResponseEntity<List<AttEndenceSetupDTO>> fetchKQYCZKQSZ(AttEndenceSetupSearchContext context) {
         Page<AttEndenceSetup> domains = attendencesetupService.searchKQYCZKQSZ(context) ;
@@ -214,7 +214,7 @@ public class AttEndenceSetupResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-AttEndenceSetup-KQYCZKQSZ-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"考勤设置" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询考勤员操作考勤设置", tags = {"考勤设置" } ,notes = "查询考勤员操作考勤设置")
     @RequestMapping(method= RequestMethod.POST , value="/attendencesetups/searchkqyczkqsz")
 	public ResponseEntity<Page<AttEndenceSetupDTO>> searchKQYCZKQSZ(@RequestBody AttEndenceSetupSearchContext context) {
         Page<AttEndenceSetup> domains = attendencesetupService.searchKQYCZKQSZ(context) ;

@@ -138,7 +138,7 @@ public class TrmGradecadresResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TrmGradecadres-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"优秀青年干部推荐" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"优秀青年干部推荐" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/trmgradecadres/fetchdefault")
 	public ResponseEntity<List<TrmGradecadresDTO>> fetchDefault(TrmGradecadresSearchContext context) {
         Page<TrmGradecadres> domains = trmgradecadresService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class TrmGradecadresResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TrmGradecadres-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"优秀青年干部推荐" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"优秀青年干部推荐" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/trmgradecadres/searchdefault")
 	public ResponseEntity<Page<TrmGradecadresDTO>> searchDefault(@RequestBody TrmGradecadresSearchContext context) {
         Page<TrmGradecadres> domains = trmgradecadresService.searchDefault(context) ;

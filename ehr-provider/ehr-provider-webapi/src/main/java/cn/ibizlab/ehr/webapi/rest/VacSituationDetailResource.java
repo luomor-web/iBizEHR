@@ -138,7 +138,7 @@ public class VacSituationDetailResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VacSituationDetail-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"休假明细" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"休假明细" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/vacsituationdetails/fetchdefault")
 	public ResponseEntity<List<VacSituationDetailDTO>> fetchDefault(VacSituationDetailSearchContext context) {
         Page<VacSituationDetail> domains = vacsituationdetailService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class VacSituationDetailResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VacSituationDetail-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"休假明细" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"休假明细" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/vacsituationdetails/searchdefault")
 	public ResponseEntity<Page<VacSituationDetailDTO>> searchDefault(@RequestBody VacSituationDetailSearchContext context) {
         Page<VacSituationDetail> domains = vacsituationdetailService.searchDefault(context) ;

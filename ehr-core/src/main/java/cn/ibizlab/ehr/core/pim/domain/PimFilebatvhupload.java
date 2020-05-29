@@ -29,7 +29,6 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 /**
  * 实体[附件批量上传]
  */
-@Builder
 @Getter
 @Setter
 @NoArgsConstructor

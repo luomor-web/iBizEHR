@@ -29,7 +29,6 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 /**
  * 实体[集中述职评审结果]
  */
-@Builder
 @Getter
 @Setter
 @NoArgsConstructor

@@ -29,7 +29,6 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 /**
  * 实体[ERP组织中间表]
  */
-@Builder
 @Getter
 @Setter
 @NoArgsConstructor

@@ -138,7 +138,7 @@ public class ParZnbmndlhmbResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ParZnbmndlhmb-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"年度量化目标（职能部门级）" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"年度量化目标（职能部门级）" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/parznbmndlhmbs/fetchdefault")
 	public ResponseEntity<List<ParZnbmndlhmbDTO>> fetchDefault(ParZnbmndlhmbSearchContext context) {
         Page<ParZnbmndlhmb> domains = parznbmndlhmbService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class ParZnbmndlhmbResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ParZnbmndlhmb-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"年度量化目标（职能部门级）" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"年度量化目标（职能部门级）" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/parznbmndlhmbs/searchdefault")
 	public ResponseEntity<Page<ParZnbmndlhmbDTO>> searchDefault(@RequestBody ParZnbmndlhmbSearchContext context) {
         Page<ParZnbmndlhmb> domains = parznbmndlhmbService.searchDefault(context) ;

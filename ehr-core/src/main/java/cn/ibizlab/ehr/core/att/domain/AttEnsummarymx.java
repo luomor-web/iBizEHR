@@ -29,7 +29,6 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 /**
  * 实体[考勤汇总明细（停用）]
  */
-@Builder
 @Getter
 @Setter
 @NoArgsConstructor

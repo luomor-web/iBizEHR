@@ -29,7 +29,6 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 /**
  * 实体[见习生规则]
  */
-@Builder
 @Getter
 @Setter
 @NoArgsConstructor

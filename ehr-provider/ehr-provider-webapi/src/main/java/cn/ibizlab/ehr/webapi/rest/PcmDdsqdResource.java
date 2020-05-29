@@ -150,7 +150,7 @@ public class PcmDdsqdResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmDdsqd-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"调动申请单" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"调动申请单" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pcmddsqds/fetchdefault")
 	public ResponseEntity<List<PcmDdsqdDTO>> fetchDefault(PcmDdsqdSearchContext context) {
         Page<PcmDdsqd> domains = pcmddsqdService.searchDefault(context) ;
@@ -163,7 +163,7 @@ public class PcmDdsqdResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmDdsqd-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"调动申请单" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"调动申请单" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pcmddsqds/searchdefault")
 	public ResponseEntity<Page<PcmDdsqdDTO>> searchDefault(@RequestBody PcmDdsqdSearchContext context) {
         Page<PcmDdsqd> domains = pcmddsqdService.searchDefault(context) ;

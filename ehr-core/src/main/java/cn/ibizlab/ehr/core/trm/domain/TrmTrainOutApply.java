@@ -29,7 +29,6 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 /**
  * 实体[外部培训申请]
  */
-@Builder
 @Getter
 @Setter
 @NoArgsConstructor

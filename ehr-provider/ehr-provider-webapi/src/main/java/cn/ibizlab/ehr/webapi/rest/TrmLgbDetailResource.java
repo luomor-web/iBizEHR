@@ -138,7 +138,7 @@ public class TrmLgbDetailResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TrmLgbDetail-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"老干部明细" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"老干部明细" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/trmlgbdetails/fetchdefault")
 	public ResponseEntity<List<TrmLgbDetailDTO>> fetchDefault(TrmLgbDetailSearchContext context) {
         Page<TrmLgbDetail> domains = trmlgbdetailService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class TrmLgbDetailResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TrmLgbDetail-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"老干部明细" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"老干部明细" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/trmlgbdetails/searchdefault")
 	public ResponseEntity<Page<TrmLgbDetailDTO>> searchDefault(@RequestBody TrmLgbDetailSearchContext context) {
         Page<TrmLgbDetail> domains = trmlgbdetailService.searchDefault(context) ;

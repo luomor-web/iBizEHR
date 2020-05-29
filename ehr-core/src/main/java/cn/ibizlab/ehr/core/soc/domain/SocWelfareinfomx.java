@@ -29,7 +29,6 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 /**
  * 实体[个人社保福利明细]
  */
-@Builder
 @Getter
 @Setter
 @NoArgsConstructor

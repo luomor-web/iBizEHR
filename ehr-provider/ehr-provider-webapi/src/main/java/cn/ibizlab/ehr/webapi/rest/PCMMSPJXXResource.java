@@ -138,7 +138,7 @@ public class PCMMSPJXXResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMMSPJXX-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"面试评价信息" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"面试评价信息" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pcmmspjxxes/fetchdefault")
 	public ResponseEntity<List<PCMMSPJXXDTO>> fetchDefault(PCMMSPJXXSearchContext context) {
         Page<PCMMSPJXX> domains = pcmmspjxxService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class PCMMSPJXXResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMMSPJXX-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"面试评价信息" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"面试评价信息" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pcmmspjxxes/searchdefault")
 	public ResponseEntity<Page<PCMMSPJXXDTO>> searchDefault(@RequestBody PCMMSPJXXSearchContext context) {
         Page<PCMMSPJXX> domains = pcmmspjxxService.searchDefault(context) ;

@@ -138,7 +138,7 @@ public class OrmQybzwhResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmQybzwh-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"区域标准维护" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"区域标准维护" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/ormqybzwhs/fetchdefault")
 	public ResponseEntity<List<OrmQybzwhDTO>> fetchDefault(OrmQybzwhSearchContext context) {
         Page<OrmQybzwh> domains = ormqybzwhService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class OrmQybzwhResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmQybzwh-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"区域标准维护" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"区域标准维护" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/ormqybzwhs/searchdefault")
 	public ResponseEntity<Page<OrmQybzwhDTO>> searchDefault(@RequestBody OrmQybzwhSearchContext context) {
         Page<OrmQybzwh> domains = ormqybzwhService.searchDefault(context) ;

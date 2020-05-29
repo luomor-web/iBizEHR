@@ -138,7 +138,7 @@ public class OrmDepEstManResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmDepEstMan-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"部门职务编制" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"部门职务编制" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/ormdepestmen/fetchdefault")
 	public ResponseEntity<List<OrmDepEstManDTO>> fetchDefault(OrmDepEstManSearchContext context) {
         Page<OrmDepEstMan> domains = ormdepestmanService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class OrmDepEstManResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmDepEstMan-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"部门职务编制" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"部门职务编制" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/ormdepestmen/searchdefault")
 	public ResponseEntity<Page<OrmDepEstManDTO>> searchDefault(@RequestBody OrmDepEstManSearchContext context) {
         Page<OrmDepEstMan> domains = ormdepestmanService.searchDefault(context) ;

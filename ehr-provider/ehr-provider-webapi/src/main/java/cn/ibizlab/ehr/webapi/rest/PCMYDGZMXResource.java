@@ -162,7 +162,7 @@ public class PCMYDGZMXResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMYDGZMX-GZCRYDQ-all')")
-	@ApiOperation(value = "获取挂职出人员查询", tags = {"异动挂职明细" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取挂职出人员查询", tags = {"异动挂职明细" } ,notes = "获取挂职出人员查询")
     @RequestMapping(method= RequestMethod.GET , value="/pcmydgzmxes/fetchgzcrydq")
 	public ResponseEntity<List<PCMYDGZMXDTO>> fetchGZCRYDQ(PCMYDGZMXSearchContext context) {
         Page<PCMYDGZMX> domains = pcmydgzmxService.searchGZCRYDQ(context) ;
@@ -175,7 +175,7 @@ public class PCMYDGZMXResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMYDGZMX-GZCRYDQ-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"异动挂职明细" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询挂职出人员查询", tags = {"异动挂职明细" } ,notes = "查询挂职出人员查询")
     @RequestMapping(method= RequestMethod.POST , value="/pcmydgzmxes/searchgzcrydq")
 	public ResponseEntity<Page<PCMYDGZMXDTO>> searchGZCRYDQ(@RequestBody PCMYDGZMXSearchContext context) {
         Page<PCMYDGZMX> domains = pcmydgzmxService.searchGZCRYDQ(context) ;
@@ -183,7 +183,7 @@ public class PCMYDGZMXResource {
                 .body(new PageImpl(pcmydgzmxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMYDGZMX-GZJLSJLDQ-all')")
-	@ApiOperation(value = "获取挂职进历史记录查询", tags = {"异动挂职明细" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取挂职进历史记录查询", tags = {"异动挂职明细" } ,notes = "获取挂职进历史记录查询")
     @RequestMapping(method= RequestMethod.GET , value="/pcmydgzmxes/fetchgzjlsjldq")
 	public ResponseEntity<List<PCMYDGZMXDTO>> fetchGZJLSJLDQ(PCMYDGZMXSearchContext context) {
         Page<PCMYDGZMX> domains = pcmydgzmxService.searchGZJLSJLDQ(context) ;
@@ -196,7 +196,7 @@ public class PCMYDGZMXResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMYDGZMX-GZJLSJLDQ-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"异动挂职明细" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询挂职进历史记录查询", tags = {"异动挂职明细" } ,notes = "查询挂职进历史记录查询")
     @RequestMapping(method= RequestMethod.POST , value="/pcmydgzmxes/searchgzjlsjldq")
 	public ResponseEntity<Page<PCMYDGZMXDTO>> searchGZJLSJLDQ(@RequestBody PCMYDGZMXSearchContext context) {
         Page<PCMYDGZMX> domains = pcmydgzmxService.searchGZJLSJLDQ(context) ;
@@ -204,7 +204,7 @@ public class PCMYDGZMXResource {
                 .body(new PageImpl(pcmydgzmxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMYDGZMX-GZJRY-all')")
-	@ApiOperation(value = "获取挂职进人员", tags = {"异动挂职明细" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取挂职进人员", tags = {"异动挂职明细" } ,notes = "获取挂职进人员")
     @RequestMapping(method= RequestMethod.GET , value="/pcmydgzmxes/fetchgzjry")
 	public ResponseEntity<List<PCMYDGZMXDTO>> fetchGZJRY(PCMYDGZMXSearchContext context) {
         Page<PCMYDGZMX> domains = pcmydgzmxService.searchGZJRY(context) ;
@@ -217,7 +217,7 @@ public class PCMYDGZMXResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMYDGZMX-GZJRY-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"异动挂职明细" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询挂职进人员", tags = {"异动挂职明细" } ,notes = "查询挂职进人员")
     @RequestMapping(method= RequestMethod.POST , value="/pcmydgzmxes/searchgzjry")
 	public ResponseEntity<Page<PCMYDGZMXDTO>> searchGZJRY(@RequestBody PCMYDGZMXSearchContext context) {
         Page<PCMYDGZMX> domains = pcmydgzmxService.searchGZJRY(context) ;
@@ -225,7 +225,7 @@ public class PCMYDGZMXResource {
                 .body(new PageImpl(pcmydgzmxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMYDGZMX-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"异动挂职明细" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取DEFAULT", tags = {"异动挂职明细" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pcmydgzmxes/fetchdefault")
 	public ResponseEntity<List<PCMYDGZMXDTO>> fetchDefault(PCMYDGZMXSearchContext context) {
         Page<PCMYDGZMX> domains = pcmydgzmxService.searchDefault(context) ;
@@ -238,7 +238,7 @@ public class PCMYDGZMXResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMYDGZMX-Default-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"异动挂职明细" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询DEFAULT", tags = {"异动挂职明细" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pcmydgzmxes/searchdefault")
 	public ResponseEntity<Page<PCMYDGZMXDTO>> searchDefault(@RequestBody PCMYDGZMXSearchContext context) {
         Page<PCMYDGZMX> domains = pcmydgzmxService.searchDefault(context) ;
@@ -246,7 +246,7 @@ public class PCMYDGZMXResource {
                 .body(new PageImpl(pcmydgzmxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMYDGZMX-GZCLSJLDQ-all')")
-	@ApiOperation(value = "获取挂职出历史记录查询", tags = {"异动挂职明细" } ,notes = "获取{deds.getLogicName()}")
+	@ApiOperation(value = "获取挂职出历史记录查询", tags = {"异动挂职明细" } ,notes = "获取挂职出历史记录查询")
     @RequestMapping(method= RequestMethod.GET , value="/pcmydgzmxes/fetchgzclsjldq")
 	public ResponseEntity<List<PCMYDGZMXDTO>> fetchGZCLSJLDQ(PCMYDGZMXSearchContext context) {
         Page<PCMYDGZMX> domains = pcmydgzmxService.searchGZCLSJLDQ(context) ;
@@ -259,7 +259,7 @@ public class PCMYDGZMXResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMYDGZMX-GZCLSJLDQ-all')")
-	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"异动挂职明细" } ,notes = "查询{deds.getLogicName()}")
+	@ApiOperation(value = "查询挂职出历史记录查询", tags = {"异动挂职明细" } ,notes = "查询挂职出历史记录查询")
     @RequestMapping(method= RequestMethod.POST , value="/pcmydgzmxes/searchgzclsjldq")
 	public ResponseEntity<Page<PCMYDGZMXDTO>> searchGZCLSJLDQ(@RequestBody PCMYDGZMXSearchContext context) {
         Page<PCMYDGZMX> domains = pcmydgzmxService.searchGZCLSJLDQ(context) ;
