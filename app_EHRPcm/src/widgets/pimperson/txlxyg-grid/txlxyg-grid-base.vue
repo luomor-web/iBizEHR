@@ -1,6 +1,7 @@
 <template>
 <div class='grid' style="height:100%;">
-        <el-table v-if="isDisplay === true"
+      <i-form style="height:100%">
+    <el-table v-if="isDisplay === true"
         :default-sort="{ prop: minorSortPSDEF, order: Object.is(minorSortDir, 'ASC') ? 'ascending' : Object.is(minorSortDir, 'DESC') ? 'descending' : '' }"  
         @sort-change="onSortChange($event)"  
         :border="isDragendCol"
@@ -23,21 +24,36 @@
             </template>
             <template v-if="getColumnState('ygbh')">
                 <el-table-column show-overflow-tooltip :prop="'ygbh'" :label="$t('entities.pimperson.txlxyg_grid.columns.ygbh')" :width="150"  :align="'left'" :sortable="'custom'">
-                    <template v-slot="{row,column}">
+                    <template v-slot:header="{column}">
+                      <span class="column-header ">
+                        {{$t('entities.pimperson.txlxyg_grid.columns.ygbh')}}
+                      </span>
+                    </template>
+                    <template v-slot="{row,column,$index}">
                         <span>{{row.ygbh}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('pimpersonname')">
                 <el-table-column show-overflow-tooltip :prop="'pimpersonname'" :label="$t('entities.pimperson.txlxyg_grid.columns.pimpersonname')" :width="150"  :align="'left'" :sortable="'custom'">
-                    <template v-slot="{row,column}">
+                    <template v-slot:header="{column}">
+                      <span class="column-header ">
+                        {{$t('entities.pimperson.txlxyg_grid.columns.pimpersonname')}}
+                      </span>
+                    </template>
+                    <template v-slot="{row,column,$index}">
                         <span>{{row.pimpersonname}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('xb')">
                 <el-table-column show-overflow-tooltip :prop="'xb'" :label="$t('entities.pimperson.txlxyg_grid.columns.xb')" :width="150"  :align="'left'" :sortable="'custom'">
-                    <template v-slot="{row,column}">
+                    <template v-slot:header="{column}">
+                      <span class="column-header ">
+                        {{$t('entities.pimperson.txlxyg_grid.columns.xb')}}
+                      </span>
+                    </template>
+                    <template v-slot="{row,column,$index}">
                         <template >
             <codelist :value="row.xb" tag='PIMCL_XB' codelistType='DYNAMIC' ></codelist>
                         </template>
@@ -46,56 +62,96 @@
             </template>
             <template v-if="getColumnState('nj')">
                 <el-table-column show-overflow-tooltip :prop="'nj'" :label="$t('entities.pimperson.txlxyg_grid.columns.nj')" :width="150"  :align="'left'" :sortable="'custom'">
-                    <template v-slot="{row,column}">
+                    <template v-slot:header="{column}">
+                      <span class="column-header ">
+                        {{$t('entities.pimperson.txlxyg_grid.columns.nj')}}
+                      </span>
+                    </template>
+                    <template v-slot="{row,column,$index}">
                         <span>{{row.nj}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('postaladdress')">
                 <el-table-column show-overflow-tooltip :prop="'postaladdress'" :label="$t('entities.pimperson.txlxyg_grid.columns.postaladdress')" :width="150"  :align="'left'" :sortable="'custom'">
-                    <template v-slot="{row,column}">
+                    <template v-slot:header="{column}">
+                      <span class="column-header ">
+                        {{$t('entities.pimperson.txlxyg_grid.columns.postaladdress')}}
+                      </span>
+                    </template>
+                    <template v-slot="{row,column,$index}">
                         <span>{{row.postaladdress}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('retiplace')">
                 <el-table-column show-overflow-tooltip :prop="'retiplace'" :label="$t('entities.pimperson.txlxyg_grid.columns.retiplace')" :width="150"  :align="'left'" :sortable="'custom'">
-                    <template v-slot="{row,column}">
+                    <template v-slot:header="{column}">
+                      <span class="column-header ">
+                        {{$t('entities.pimperson.txlxyg_grid.columns.retiplace')}}
+                      </span>
+                    </template>
+                    <template v-slot="{row,column,$index}">
                         <span>{{row.retiplace}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('jtlxr')">
                 <el-table-column show-overflow-tooltip :prop="'jtlxr'" :label="$t('entities.pimperson.txlxyg_grid.columns.jtlxr')" :width="150"  :align="'left'" :sortable="'custom'">
-                    <template v-slot="{row,column}">
+                    <template v-slot:header="{column}">
+                      <span class="column-header ">
+                        {{$t('entities.pimperson.txlxyg_grid.columns.jtlxr')}}
+                      </span>
+                    </template>
+                    <template v-slot="{row,column,$index}">
                         <span>{{row.jtlxr}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('jtlxrdh')">
                 <el-table-column show-overflow-tooltip :prop="'jtlxrdh'" :label="$t('entities.pimperson.txlxyg_grid.columns.jtlxrdh')" :width="180"  :align="'left'" :sortable="'custom'">
-                    <template v-slot="{row,column}">
+                    <template v-slot:header="{column}">
+                      <span class="column-header ">
+                        {{$t('entities.pimperson.txlxyg_grid.columns.jtlxrdh')}}
+                      </span>
+                    </template>
+                    <template v-slot="{row,column,$index}">
                         <span>{{row.jtlxrdh}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('zzdzs')">
                 <el-table-column show-overflow-tooltip :prop="'zzdzs'" :label="$t('entities.pimperson.txlxyg_grid.columns.zzdzs')" :width="150"  :align="'left'" :sortable="'custom'">
-                    <template v-slot="{row,column}">
+                    <template v-slot:header="{column}">
+                      <span class="column-header ">
+                        {{$t('entities.pimperson.txlxyg_grid.columns.zzdzs')}}
+                      </span>
+                    </template>
+                    <template v-slot="{row,column,$index}">
                         <span>{{row.zzdzs}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('ormorgsectorname')">
                 <el-table-column show-overflow-tooltip :prop="'ormorgsectorname'" :label="$t('entities.pimperson.txlxyg_grid.columns.ormorgsectorname')" :width="150"  :align="'left'" :sortable="'custom'">
-                    <template v-slot="{row,column}">
+                    <template v-slot:header="{column}">
+                      <span class="column-header ">
+                        {{$t('entities.pimperson.txlxyg_grid.columns.ormorgsectorname')}}
+                      </span>
+                    </template>
+                    <template v-slot="{row,column,$index}">
                         <span>{{row.ormorgsectorname}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('rank')">
                 <el-table-column show-overflow-tooltip :prop="'rank'" :label="$t('entities.pimperson.txlxyg_grid.columns.rank')" :width="150"  :align="'left'" :sortable="'custom'">
-                    <template v-slot="{row,column}">
+                    <template v-slot:header="{column}">
+                      <span class="column-header ">
+                        {{$t('entities.pimperson.txlxyg_grid.columns.rank')}}
+                      </span>
+                    </template>
+                    <template v-slot="{row,column,$index}">
                         <template >
             <codelist :value="row.rank" tag='PIMCL_RANK' codelistType='DYNAMIC' renderMode="STR" valueSeparator=";" textSeparator="、" ></codelist>
                         </template>
@@ -104,7 +160,12 @@
             </template>
             <template v-if="getColumnState('zw')">
                 <el-table-column show-overflow-tooltip :prop="'zw'" :label="$t('entities.pimperson.txlxyg_grid.columns.zw')" :width="150"  :align="'left'" :sortable="'custom'">
-                    <template v-slot="{row,column}">
+                    <template v-slot:header="{column}">
+                      <span class="column-header ">
+                        {{$t('entities.pimperson.txlxyg_grid.columns.zw')}}
+                      </span>
+                    </template>
+                    <template v-slot="{row,column,$index}">
                         <template >
             <codelist :value="row.zw" tag='ORMCL_ZW' codelistType='DYNAMIC' renderMode="STR" valueSeparator=";" textSeparator="、" ></codelist>
                         </template>
@@ -113,7 +174,12 @@
             </template>
             <template v-if="getColumnState('gw')">
                 <el-table-column show-overflow-tooltip :prop="'gw'" :label="$t('entities.pimperson.txlxyg_grid.columns.gw')" :width="150"  :align="'left'" :sortable="'custom'">
-                    <template v-slot="{row,column}">
+                    <template v-slot:header="{column}">
+                      <span class="column-header ">
+                        {{$t('entities.pimperson.txlxyg_grid.columns.gw')}}
+                      </span>
+                    </template>
+                    <template v-slot="{row,column,$index}">
                         <template >
             <codelist :value="row.gw" tag='ORMCL_GW' codelistType='DYNAMIC' renderMode="STR" valueSeparator=";" textSeparator="、" ></codelist>
                         </template>
@@ -122,28 +188,48 @@
             </template>
             <template v-if="getColumnState('txdq')">
                 <el-table-column show-overflow-tooltip :prop="'txdq'" :label="$t('entities.pimperson.txlxyg_grid.columns.txdq')" :width="150"  :align="'left'" :sortable="'custom'">
-                    <template v-slot="{row,column}">
+                    <template v-slot:header="{column}">
+                      <span class="column-header ">
+                        {{$t('entities.pimperson.txlxyg_grid.columns.txdq')}}
+                      </span>
+                    </template>
+                    <template v-slot="{row,column,$index}">
                         <app-format-data format="YYYY-MM-DD" :data="row.txdq"></app-format-data>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('sjtxrq')">
                 <el-table-column show-overflow-tooltip :prop="'sjtxrq'" :label="$t('entities.pimperson.txlxyg_grid.columns.sjtxrq')" :width="150"  :align="'left'" :sortable="'custom'">
-                    <template v-slot="{row,column}">
+                    <template v-slot:header="{column}">
+                      <span class="column-header ">
+                        {{$t('entities.pimperson.txlxyg_grid.columns.sjtxrq')}}
+                      </span>
+                    </template>
+                    <template v-slot="{row,column,$index}">
                         <app-format-data format="YYYY-MM-DD" :data="row.sjtxrq"></app-format-data>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('lxdh')">
                 <el-table-column show-overflow-tooltip :prop="'lxdh'" :label="$t('entities.pimperson.txlxyg_grid.columns.lxdh')" :width="150"  :align="'left'" :sortable="'custom'">
-                    <template v-slot="{row,column}">
+                    <template v-slot:header="{column}">
+                      <span class="column-header ">
+                        {{$t('entities.pimperson.txlxyg_grid.columns.lxdh')}}
+                      </span>
+                    </template>
+                    <template v-slot="{row,column,$index}">
                         <span>{{row.lxdh}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('spdylje')">
                 <el-table-column show-overflow-tooltip :prop="'spdylje'" :label="$t('entities.pimperson.txlxyg_grid.columns.spdylje')" :width="180"  :align="'left'" :sortable="'custom'">
-                    <template v-slot="{row,column}">
+                    <template v-slot:header="{column}">
+                      <span class="column-header ">
+                        {{$t('entities.pimperson.txlxyg_grid.columns.spdylje')}}
+                      </span>
+                    </template>
+                    <template v-slot="{row,column,$index}">
                             <app-format-data dataType="FLOAT" precision="0" :data="row.spdylje"></app-format-data>
                     </template>
                 </el-table-column>
@@ -152,6 +238,7 @@
                 <el-table-column></el-table-column>
             </template>
     </el-table>
+  
     <row class='grid-pagination' v-show="items.length > 0">
         <page class='pull-right' @on-change="pageOnChange($event)" 
             @on-page-size-change="onPageSizeChange($event)"
@@ -187,6 +274,7 @@
             </span>
         </page>
     </row>
+  </i-form>
 </div>
 </template>
 <script lang='tsx'>
@@ -199,6 +287,7 @@ import PIMPERSONService from '@/service/pimperson/pimperson-service';
 import TXLXYGService from './txlxyg-grid-service';
 
 import CodeListService from "@service/app/codelist-service";
+import { FormItemModel } from '@/model/form-detail';
 
 
 @Component({
@@ -731,6 +820,26 @@ export default class TXLXYGBase extends Vue implements ControlInterface {
     ]
 
     /**
+     * 表格模型集合
+     *
+     * @type {*}
+     * @memberof TXLXYG
+     */
+    public gridItemsModel: any[] = [];
+
+    /**
+     * 获取表格行模型
+     *
+     * @type {*}
+     * @memberof TXLXYG
+     */
+    public getGridRowModel(){
+        return {
+          srfkey: new FormItemModel(),
+        }
+    }
+
+    /**
      * 属性值规则
      *
      * @type {*}
@@ -741,6 +850,50 @@ export default class TXLXYGBase extends Vue implements ControlInterface {
              { required: false, validator: (rule:any, value:any, callback:any) => { return (rule.required && (value === null || value === undefined || value === "")) ? false : true;}, message: '人员信息标识 值不能为空', trigger: 'change' },
             { required: false, validator: (rule:any, value:any, callback:any) => { return (rule.required && (value === null || value === undefined || value === "")) ? false : true;}, message: '人员信息标识 值不能为空', trigger: 'blur' },
         ],
+    }
+
+    /**
+     * 表格行编辑项校验
+     *
+     * @param {string} property 属性名
+     * @param {*} data 行数据
+     * @param {number} rowIndex 行索引
+     * @returns Promise<any>
+     * 
+     * @memberof TXLXYG
+     */
+    public validate(property:string, data:any, rowIndex:number):Promise<any>{
+        return new Promise((resolve, reject) => {
+            this.$util.validateItem(property,data,this.rules).then(()=>{
+                this.gridItemsModel[rowIndex][property].setError(null);
+                resolve(true);
+            }).catch(({ errors, fields }) => {
+                this.gridItemsModel[rowIndex][property].setError(errors[0].message);
+                resolve(false);
+            });
+        });
+    }
+
+    /**
+     * 校验所有修改过的编辑项
+     *
+     * @returns Promise<any>
+     * @memberof TXLXYG
+     */
+    public async validateAll(){
+        let validateState = true;
+        let index = -1;
+        for(let item of this.items){
+          index++;
+          if(item.rowDataState === "create" || item.rowDataState === "update"){
+            for(let property of Object.keys(this.rules)){
+              if(!await this.validate(property,item,index)){
+                validateState = false;
+              }
+            }
+          }
+        }
+        return validateState;
     }
 
     /**
@@ -785,8 +938,10 @@ export default class TXLXYGBase extends Vue implements ControlInterface {
             const data: any = response.data;
             this.totalrow = response.total;
             this.items = JSON.parse(JSON.stringify(data));
-            // 清空selections
+            // 清空selections,gridItemsModel
             this.selections = [];
+            this.gridItemsModel = [];
+            this.items.forEach(()=>{this.gridItemsModel.push(this.getGridRowModel())});
             this.$emit('load', this.items);
             // 设置默认选中
             let _this = this;
@@ -835,6 +990,7 @@ export default class TXLXYGBase extends Vue implements ControlInterface {
                 this.items.some((val: any, num: number) =>{
                     if(JSON.stringify(val) == JSON.stringify(record)){
                         this.items.splice(num,1);
+                        this.gridItemsModel.splice(num,1);
                         return true;
                     }
                 }); 
@@ -870,8 +1026,9 @@ export default class TXLXYGBase extends Vue implements ControlInterface {
                 keys.push(data.srfkey);
             });
             let _removeAction = keys.length > 1 ? 'removeBatch' : this.removeAction ;
+            let _keys = keys.length > 1 ? keys : keys[0] ;
             const context:any = JSON.parse(JSON.stringify(this.context));
-            const post: Promise<any> = this.service.delete(_removeAction,Object.assign(context,{ pimperson: keys.join(';') }),Object.assign({ pimperson: keys.join(';') },{viewparams:this.viewparams}), this.showBusyIndicator);
+            const post: Promise<any> = this.service.delete(_removeAction,Object.assign(context,{ pimperson: _keys }),Object.assign({ pimperson: _keys },{viewparams:this.viewparams}), this.showBusyIndicator);
             return new Promise((resolve: any, reject: any) => {
                 post.then((response: any) => {
                     if (!response || response.status !== 200) {
@@ -883,9 +1040,10 @@ export default class TXLXYGBase extends Vue implements ControlInterface {
                     //删除items中已删除的项
                     console.log(this.items);
                     _datas.forEach((data: any) => {
-                      this.items.some((item:any,index:number)=>{
-                        if(Object.is(item.srfkey,data.srfkey)){
-                          this.items.splice(index,1);
+                        this.items.some((item:any,index:number)=>{
+                            if(Object.is(item.srfkey,data.srfkey)){
+                                this.items.splice(index,1);
+                                this.gridItemsModel.splice(index,1);
                                 return true;
                             }
                         });
@@ -1480,41 +1638,56 @@ export default class TXLXYGBase extends Vue implements ControlInterface {
      * 保存
      *
      * @param {*} $event
-     * @returns {void}
+     * @returns {Promise<any>}
      * @memberof TXLXYG
      */
-    public save(args: any[], params?: any, $event?: any, xData?: any): void {
+    public async save(args: any[], params?: any, $event?: any, xData?: any){
         let _this = this;
-        let promises:any = [];
-        _this.items.forEach((item:any)=>{
-            if(!item.rowDataState){
-                return;
-            } else if(Object.is(item.rowDataState, 'create')){
-                if(!this.createAction){
-                    this.$Notice.error({ title: '错误', desc: 'PIMPERSONTXRYPickupGridView视图表格createAction参数未配置' });
-                    return;
+        if(!await this.validateAll()){
+            this.$Notice.error({ title: '错误', desc: '值规则校验异常' });
+            return [];
+        }
+        let successItems:any = [];
+        let errorItems:any = [];
+        let errorMessage:any = [];
+        for (const item of _this.items) {
+            try {
+                if(Object.is(item.rowDataState, 'create')){
+                    if(!this.createAction){
+                        this.$Notice.error({ title: '错误', desc: 'PIMPERSONTXRYPickupGridView视图表格createAction参数未配置' });
+                    }else{
+                      Object.assign(item,{viewparams:this.viewparams});
+                      let response = await this.service.add(this.createAction, JSON.parse(JSON.stringify(this.context)),item, this.showBusyIndicator);
+                      successItems.push(JSON.parse(JSON.stringify(response.data)));
+                    }
+                }else if(Object.is(item.rowDataState, 'update')){
+                    if(!this.updateAction){
+                        this.$Notice.error({ title: '错误', desc: 'PIMPERSONTXRYPickupGridView视图表格updateAction参数未配置' });
+                    }else{
+                        Object.assign(item,{viewparams:this.viewparams});
+                        if(item.pimperson){
+                            Object.assign(this.context,{pimperson:item.pimperson});
+                        }
+                        let response = await this.service.add(this.updateAction,JSON.parse(JSON.stringify(this.context)),item, this.showBusyIndicator);
+                        successItems.push(JSON.parse(JSON.stringify(response.data)));
+                    }
                 }
-                Object.assign(item,{viewparams:this.viewparams});
-                promises.push(this.service.add(this.createAction, JSON.parse(JSON.stringify(this.context)),item, this.showBusyIndicator));
-            }else if(Object.is(item.rowDataState, 'update')){
-                if(!this.updateAction){
-                    this.$Notice.error({ title: '错误', desc: 'PIMPERSONTXRYPickupGridView视图表格updateAction参数未配置' });
-                    return;
-                }
-                Object.assign(item,{viewparams:this.viewparams});
-                if(item.pimperson){
-                    Object.assign(this.context,{pimperson:item.pimperson})
-                }
-                promises.push(this.service.add(this.updateAction,JSON.parse(JSON.stringify(this.context)),item, this.showBusyIndicator));
+            } catch (error) {
+                errorItems.push(JSON.parse(JSON.stringify(item)));
+                errorMessage.push(error);
             }
-        });
-        Promise.all(promises).then((response: any) => {
-            this.$emit('save', response);
+        }
+        this.$emit('save', successItems);
+        this.refresh([]);
+        if(errorItems.length === 0){
             this.$Notice.success({ title: '', desc: '保存成功!' });
-            this.refresh([]);
-        }).catch((response: any) => {
-            this.$Notice.error({ title: '错误', desc: '系统异常' });
-        });
+        }else{
+          errorItems.forEach((item:any,index:number)=>{
+            this.$Notice.error({ title: '保存失败', desc: item.majorentityname+'保存失败！' });
+            console.error(errorMessage[index]);
+          });
+        }
+        return successItems;
     }
 
 

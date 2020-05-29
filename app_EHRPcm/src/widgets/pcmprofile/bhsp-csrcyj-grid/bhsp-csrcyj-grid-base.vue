@@ -1,6 +1,7 @@
 <template>
 <div class='grid' style="height:100%;">
-        <el-table v-if="isDisplay === true"
+      <i-form style="height:100%">
+    <el-table v-if="isDisplay === true"
         :default-sort="{ prop: minorSortPSDEF, order: Object.is(minorSortDir, 'ASC') ? 'ascending' : Object.is(minorSortDir, 'DESC') ? 'descending' : '' }"  
         @sort-change="onSortChange($event)"  
         :border="isDragendCol"
@@ -23,28 +24,48 @@
             </template>
             <template v-if="getColumnState('zzdzs')">
                 <el-table-column show-overflow-tooltip :prop="'zzdzs'" :label="$t('entities.pcmprofile.bhsp_csrcyj_grid.columns.zzdzs')" :width="150"  :align="'left'" :sortable="'custom'">
-                    <template v-slot="{row,column}">
+                    <template v-slot:header="{column}">
+                      <span class="column-header ">
+                        {{$t('entities.pcmprofile.bhsp_csrcyj_grid.columns.zzdzs')}}
+                      </span>
+                    </template>
+                    <template v-slot="{row,column,$index}">
                         <span>{{row.zzdzs}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('pcmprofilename')">
                 <el-table-column show-overflow-tooltip :prop="'pcmprofilename'" :label="$t('entities.pcmprofile.bhsp_csrcyj_grid.columns.pcmprofilename')" :width="150"  :align="'left'" :sortable="'custom'">
-                    <template v-slot="{row,column}">
+                    <template v-slot:header="{column}">
+                      <span class="column-header ">
+                        {{$t('entities.pcmprofile.bhsp_csrcyj_grid.columns.pcmprofilename')}}
+                      </span>
+                    </template>
+                    <template v-slot="{row,column,$index}">
                         <span>{{row.pcmprofilename}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('ygbh')">
                 <el-table-column show-overflow-tooltip :prop="'ygbh'" :label="$t('entities.pcmprofile.bhsp_csrcyj_grid.columns.ygbh')" :width="150"  :align="'left'" :sortable="'custom'">
-                    <template v-slot="{row,column}">
+                    <template v-slot:header="{column}">
+                      <span class="column-header ">
+                        {{$t('entities.pcmprofile.bhsp_csrcyj_grid.columns.ygbh')}}
+                      </span>
+                    </template>
+                    <template v-slot="{row,column,$index}">
                         <span>{{row.ygbh}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('rzqd')">
                 <el-table-column show-overflow-tooltip :prop="'rzqd'" :label="$t('entities.pcmprofile.bhsp_csrcyj_grid.columns.rzqd')" :width="150"  :align="'left'" :sortable="'custom'">
-                    <template v-slot="{row,column}">
+                    <template v-slot:header="{column}">
+                      <span class="column-header ">
+                        {{$t('entities.pcmprofile.bhsp_csrcyj_grid.columns.rzqd')}}
+                      </span>
+                    </template>
+                    <template v-slot="{row,column,$index}">
                         <template >
             <codelist :value="row.rzqd" tag='PIMCL_RZLB' codelistType='DYNAMIC' ></codelist>
                         </template>
@@ -53,7 +74,12 @@
             </template>
             <template v-if="getColumnState('xznf')">
                 <el-table-column show-overflow-tooltip :prop="'xznf'" :label="$t('entities.pcmprofile.bhsp_csrcyj_grid.columns.xznf')" :width="150"  :align="'left'" :sortable="'custom'">
-                    <template v-slot="{row,column}">
+                    <template v-slot:header="{column}">
+                      <span class="column-header ">
+                        {{$t('entities.pcmprofile.bhsp_csrcyj_grid.columns.xznf')}}
+                      </span>
+                    </template>
+                    <template v-slot="{row,column,$index}">
                         <template >
             <codelist :value="row.xznf" tag='PIMCL_ND2' codelistType='STATIC' renderMode="STR" valueSeparator=";" textSeparator="、" ></codelist>
                         </template>
@@ -62,7 +88,12 @@
             </template>
             <template v-if="getColumnState('yglx')">
                 <el-table-column show-overflow-tooltip :prop="'yglx'" :label="$t('entities.pcmprofile.bhsp_csrcyj_grid.columns.yglx')" :width="120"  :align="'left'" :sortable="'custom'">
-                    <template v-slot="{row,column}">
+                    <template v-slot:header="{column}">
+                      <span class="column-header ">
+                        {{$t('entities.pcmprofile.bhsp_csrcyj_grid.columns.yglx')}}
+                      </span>
+                    </template>
+                    <template v-slot="{row,column,$index}">
                         <template >
             <codelist :value="row.yglx" tag='PCMCL_SBLX' codelistType='DYNAMIC' renderMode="STR" valueSeparator=";" textSeparator="、" ></codelist>
                         </template>
@@ -71,7 +102,12 @@
             </template>
             <template v-if="getColumnState('gwlb')">
                 <el-table-column show-overflow-tooltip :prop="'gwlb'" :label="$t('entities.pcmprofile.bhsp_csrcyj_grid.columns.gwlb')" :width="200"  :align="'left'" :sortable="'custom'">
-                    <template v-slot="{row,column}">
+                    <template v-slot:header="{column}">
+                      <span class="column-header ">
+                        {{$t('entities.pcmprofile.bhsp_csrcyj_grid.columns.gwlb')}}
+                      </span>
+                    </template>
+                    <template v-slot="{row,column,$index}">
                         <template >
             <codelist :value="row.gwlb" tag='PCMCL_YPZGWLB' codelistType='STATIC' ></codelist>
                         </template>
@@ -80,7 +116,12 @@
             </template>
             <template v-if="getColumnState('educationlevel')">
                 <el-table-column show-overflow-tooltip :prop="'educationlevel'" :label="$t('entities.pcmprofile.bhsp_csrcyj_grid.columns.educationlevel')" :width="150"  :align="'left'" :sortable="'custom'">
-                    <template v-slot="{row,column}">
+                    <template v-slot:header="{column}">
+                      <span class="column-header ">
+                        {{$t('entities.pcmprofile.bhsp_csrcyj_grid.columns.educationlevel')}}
+                      </span>
+                    </template>
+                    <template v-slot="{row,column,$index}">
                         <template >
             <codelist :value="row.educationlevel" tag='PIM_XL2' codelistType='DYNAMIC' renderMode="STR" valueSeparator=";" textSeparator="、" ></codelist>
                         </template>
@@ -89,14 +130,24 @@
             </template>
             <template v-if="getColumnState('r_lastschool')">
                 <el-table-column show-overflow-tooltip :prop="'r_lastschool'" :label="$t('entities.pcmprofile.bhsp_csrcyj_grid.columns.r_lastschool')" :width="150"  :align="'left'" :sortable="'custom'">
-                    <template v-slot="{row,column}">
+                    <template v-slot:header="{column}">
+                      <span class="column-header ">
+                        {{$t('entities.pcmprofile.bhsp_csrcyj_grid.columns.r_lastschool')}}
+                      </span>
+                    </template>
+                    <template v-slot="{row,column,$index}">
                         <span>{{row.r_lastschool}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('xkml')">
                 <el-table-column show-overflow-tooltip :prop="'xkml'" :label="$t('entities.pcmprofile.bhsp_csrcyj_grid.columns.xkml')" :width="150"  :align="'left'" :sortable="'custom'">
-                    <template v-slot="{row,column}">
+                    <template v-slot:header="{column}">
+                      <span class="column-header ">
+                        {{$t('entities.pcmprofile.bhsp_csrcyj_grid.columns.xkml')}}
+                      </span>
+                    </template>
+                    <template v-slot="{row,column,$index}">
                         <template >
             <codelist :value="row.xkml" tag='PCMCL_XKML' codelistType='DYNAMIC' ></codelist>
                         </template>
@@ -105,14 +156,24 @@
             </template>
             <template v-if="getColumnState('r_lastdiscipline')">
                 <el-table-column show-overflow-tooltip :prop="'r_lastdiscipline'" :label="$t('entities.pcmprofile.bhsp_csrcyj_grid.columns.r_lastdiscipline')" :width="150"  :align="'left'" :sortable="'custom'">
-                    <template v-slot="{row,column}">
+                    <template v-slot:header="{column}">
+                      <span class="column-header ">
+                        {{$t('entities.pcmprofile.bhsp_csrcyj_grid.columns.r_lastdiscipline')}}
+                      </span>
+                    </template>
+                    <template v-slot="{row,column,$index}">
                         <span>{{row.r_lastdiscipline}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('xxxz')">
                 <el-table-column show-overflow-tooltip :prop="'xxxz'" :label="$t('entities.pcmprofile.bhsp_csrcyj_grid.columns.xxxz')" :width="150"  :align="'left'" :sortable="'custom'">
-                    <template v-slot="{row,column}">
+                    <template v-slot:header="{column}">
+                      <span class="column-header ">
+                        {{$t('entities.pcmprofile.bhsp_csrcyj_grid.columns.xxxz')}}
+                      </span>
+                    </template>
+                    <template v-slot="{row,column,$index}">
                         <template >
             <codelist :value="row.xxxz" tag='PIMCL_XXXZ' codelistType='DYNAMIC' renderMode="STR" valueSeparator=";" textSeparator="、" ></codelist>
                         </template>
@@ -121,7 +182,12 @@
             </template>
             <template v-if="getColumnState('certificatetype')">
                 <el-table-column show-overflow-tooltip :prop="'certificatetype'" :label="$t('entities.pcmprofile.bhsp_csrcyj_grid.columns.certificatetype')" :width="120"  :align="'left'" :sortable="'custom'">
-                    <template v-slot="{row,column}">
+                    <template v-slot:header="{column}">
+                      <span class="column-header ">
+                        {{$t('entities.pcmprofile.bhsp_csrcyj_grid.columns.certificatetype')}}
+                      </span>
+                    </template>
+                    <template v-slot="{row,column,$index}">
                         <template >
             <codelist :value="row.certificatetype" tag='PIMCL_ZJLX' codelistType='DYNAMIC' ></codelist>
                         </template>
@@ -130,14 +196,24 @@
             </template>
             <template v-if="getColumnState('certificatenumber')">
                 <el-table-column show-overflow-tooltip :prop="'certificatenumber'" :label="$t('entities.pcmprofile.bhsp_csrcyj_grid.columns.certificatenumber')" :width="200"  :align="'left'" :sortable="'custom'">
-                    <template v-slot="{row,column}">
+                    <template v-slot:header="{column}">
+                      <span class="column-header ">
+                        {{$t('entities.pcmprofile.bhsp_csrcyj_grid.columns.certificatenumber')}}
+                      </span>
+                    </template>
+                    <template v-slot="{row,column,$index}">
                         <span>{{row.certificatenumber}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('gender')">
                 <el-table-column show-overflow-tooltip :prop="'gender'" :label="$t('entities.pcmprofile.bhsp_csrcyj_grid.columns.gender')" :width="90"  :align="'left'" :sortable="'custom'">
-                    <template v-slot="{row,column}">
+                    <template v-slot:header="{column}">
+                      <span class="column-header ">
+                        {{$t('entities.pcmprofile.bhsp_csrcyj_grid.columns.gender')}}
+                      </span>
+                    </template>
+                    <template v-slot="{row,column,$index}">
                         <template >
             <codelist :value="row.gender" tag='PIMCL_XB' codelistType='DYNAMIC' ></codelist>
                         </template>
@@ -146,28 +222,48 @@
             </template>
             <template v-if="getColumnState('nl')">
                 <el-table-column show-overflow-tooltip :prop="'nl'" :label="$t('entities.pcmprofile.bhsp_csrcyj_grid.columns.nl')" :width="150"  :align="'left'" :sortable="'custom'">
-                    <template v-slot="{row,column}">
+                    <template v-slot:header="{column}">
+                      <span class="column-header ">
+                        {{$t('entities.pcmprofile.bhsp_csrcyj_grid.columns.nl')}}
+                      </span>
+                    </template>
+                    <template v-slot="{row,column,$index}">
                         <span>{{row.nl}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('mobile')">
                 <el-table-column show-overflow-tooltip :prop="'mobile'" :label="$t('entities.pcmprofile.bhsp_csrcyj_grid.columns.mobile')" :width="150"  :align="'left'" :sortable="'custom'">
-                    <template v-slot="{row,column}">
+                    <template v-slot:header="{column}">
+                      <span class="column-header ">
+                        {{$t('entities.pcmprofile.bhsp_csrcyj_grid.columns.mobile')}}
+                      </span>
+                    </template>
+                    <template v-slot="{row,column,$index}">
                         <span>{{row.mobile}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('email')">
                 <el-table-column show-overflow-tooltip :prop="'email'" :label="$t('entities.pcmprofile.bhsp_csrcyj_grid.columns.email')" :width="180"  :align="'left'" :sortable="'custom'">
-                    <template v-slot="{row,column}">
+                    <template v-slot:header="{column}">
+                      <span class="column-header ">
+                        {{$t('entities.pcmprofile.bhsp_csrcyj_grid.columns.email')}}
+                      </span>
+                    </template>
+                    <template v-slot="{row,column,$index}">
                         <span>{{row.email}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('profiletype')">
                 <el-table-column show-overflow-tooltip :prop="'profiletype'" :label="$t('entities.pcmprofile.bhsp_csrcyj_grid.columns.profiletype')" :width="150"  :align="'left'" :sortable="'custom'">
-                    <template v-slot="{row,column}">
+                    <template v-slot:header="{column}">
+                      <span class="column-header ">
+                        {{$t('entities.pcmprofile.bhsp_csrcyj_grid.columns.profiletype')}}
+                      </span>
+                    </template>
+                    <template v-slot="{row,column,$index}">
                         <template >
             <codelist :value="row.profiletype" tag='PCMCL_PROFILEType' codelistType='STATIC' ></codelist>
                         </template>
@@ -178,6 +274,7 @@
                 <el-table-column></el-table-column>
             </template>
     </el-table>
+  
     <row class='grid-pagination' v-show="items.length > 0">
         <page class='pull-right' @on-change="pageOnChange($event)" 
             @on-page-size-change="onPageSizeChange($event)"
@@ -213,6 +310,7 @@
             </span>
         </page>
     </row>
+  </i-form>
 </div>
 </template>
 <script lang='tsx'>
@@ -225,6 +323,7 @@ import PCMPROFILEService from '@/service/pcmprofile/pcmprofile-service';
 import BHSP_CSRCYJService from './bhsp-csrcyj-grid-service';
 
 import CodeListService from "@service/app/codelist-service";
+import { FormItemModel } from '@/model/form-detail';
 
 
 @Component({
@@ -785,6 +884,26 @@ export default class BHSP_CSRCYJBase extends Vue implements ControlInterface {
     ]
 
     /**
+     * 表格模型集合
+     *
+     * @type {*}
+     * @memberof BHSP_CSRCYJ
+     */
+    public gridItemsModel: any[] = [];
+
+    /**
+     * 获取表格行模型
+     *
+     * @type {*}
+     * @memberof BHSP_CSRCYJ
+     */
+    public getGridRowModel(){
+        return {
+          srfkey: new FormItemModel(),
+        }
+    }
+
+    /**
      * 属性值规则
      *
      * @type {*}
@@ -795,6 +914,50 @@ export default class BHSP_CSRCYJBase extends Vue implements ControlInterface {
              { required: false, validator: (rule:any, value:any, callback:any) => { return (rule.required && (value === null || value === undefined || value === "")) ? false : true;}, message: '应聘者ID 值不能为空', trigger: 'change' },
             { required: false, validator: (rule:any, value:any, callback:any) => { return (rule.required && (value === null || value === undefined || value === "")) ? false : true;}, message: '应聘者ID 值不能为空', trigger: 'blur' },
         ],
+    }
+
+    /**
+     * 表格行编辑项校验
+     *
+     * @param {string} property 属性名
+     * @param {*} data 行数据
+     * @param {number} rowIndex 行索引
+     * @returns Promise<any>
+     * 
+     * @memberof BHSP_CSRCYJ
+     */
+    public validate(property:string, data:any, rowIndex:number):Promise<any>{
+        return new Promise((resolve, reject) => {
+            this.$util.validateItem(property,data,this.rules).then(()=>{
+                this.gridItemsModel[rowIndex][property].setError(null);
+                resolve(true);
+            }).catch(({ errors, fields }) => {
+                this.gridItemsModel[rowIndex][property].setError(errors[0].message);
+                resolve(false);
+            });
+        });
+    }
+
+    /**
+     * 校验所有修改过的编辑项
+     *
+     * @returns Promise<any>
+     * @memberof BHSP_CSRCYJ
+     */
+    public async validateAll(){
+        let validateState = true;
+        let index = -1;
+        for(let item of this.items){
+          index++;
+          if(item.rowDataState === "create" || item.rowDataState === "update"){
+            for(let property of Object.keys(this.rules)){
+              if(!await this.validate(property,item,index)){
+                validateState = false;
+              }
+            }
+          }
+        }
+        return validateState;
     }
 
     /**
@@ -839,8 +1002,10 @@ export default class BHSP_CSRCYJBase extends Vue implements ControlInterface {
             const data: any = response.data;
             this.totalrow = response.total;
             this.items = JSON.parse(JSON.stringify(data));
-            // 清空selections
+            // 清空selections,gridItemsModel
             this.selections = [];
+            this.gridItemsModel = [];
+            this.items.forEach(()=>{this.gridItemsModel.push(this.getGridRowModel())});
             this.$emit('load', this.items);
             // 设置默认选中
             let _this = this;
@@ -889,6 +1054,7 @@ export default class BHSP_CSRCYJBase extends Vue implements ControlInterface {
                 this.items.some((val: any, num: number) =>{
                     if(JSON.stringify(val) == JSON.stringify(record)){
                         this.items.splice(num,1);
+                        this.gridItemsModel.splice(num,1);
                         return true;
                     }
                 }); 
@@ -924,8 +1090,9 @@ export default class BHSP_CSRCYJBase extends Vue implements ControlInterface {
                 keys.push(data.srfkey);
             });
             let _removeAction = keys.length > 1 ? 'removeBatch' : this.removeAction ;
+            let _keys = keys.length > 1 ? keys : keys[0] ;
             const context:any = JSON.parse(JSON.stringify(this.context));
-            const post: Promise<any> = this.service.delete(_removeAction,Object.assign(context,{ pcmprofile: keys.join(';') }),Object.assign({ pcmprofile: keys.join(';') },{viewparams:this.viewparams}), this.showBusyIndicator);
+            const post: Promise<any> = this.service.delete(_removeAction,Object.assign(context,{ pcmprofile: _keys }),Object.assign({ pcmprofile: _keys },{viewparams:this.viewparams}), this.showBusyIndicator);
             return new Promise((resolve: any, reject: any) => {
                 post.then((response: any) => {
                     if (!response || response.status !== 200) {
@@ -937,9 +1104,10 @@ export default class BHSP_CSRCYJBase extends Vue implements ControlInterface {
                     //删除items中已删除的项
                     console.log(this.items);
                     _datas.forEach((data: any) => {
-                      this.items.some((item:any,index:number)=>{
-                        if(Object.is(item.srfkey,data.srfkey)){
-                          this.items.splice(index,1);
+                        this.items.some((item:any,index:number)=>{
+                            if(Object.is(item.srfkey,data.srfkey)){
+                                this.items.splice(index,1);
+                                this.gridItemsModel.splice(index,1);
                                 return true;
                             }
                         });
@@ -1582,41 +1750,56 @@ export default class BHSP_CSRCYJBase extends Vue implements ControlInterface {
      * 保存
      *
      * @param {*} $event
-     * @returns {void}
+     * @returns {Promise<any>}
      * @memberof BHSP_CSRCYJ
      */
-    public save(args: any[], params?: any, $event?: any, xData?: any): void {
+    public async save(args: any[], params?: any, $event?: any, xData?: any){
         let _this = this;
-        let promises:any = [];
-        _this.items.forEach((item:any)=>{
-            if(!item.rowDataState){
-                return;
-            } else if(Object.is(item.rowDataState, 'create')){
-                if(!this.createAction){
-                    this.$Notice.error({ title: '错误', desc: 'PCMPROFILEBHSP_CSRCYJGridView视图表格createAction参数未配置' });
-                    return;
+        if(!await this.validateAll()){
+            this.$Notice.error({ title: '错误', desc: '值规则校验异常' });
+            return [];
+        }
+        let successItems:any = [];
+        let errorItems:any = [];
+        let errorMessage:any = [];
+        for (const item of _this.items) {
+            try {
+                if(Object.is(item.rowDataState, 'create')){
+                    if(!this.createAction){
+                        this.$Notice.error({ title: '错误', desc: 'PCMPROFILEBHSP_CSRCYJGridView视图表格createAction参数未配置' });
+                    }else{
+                      Object.assign(item,{viewparams:this.viewparams});
+                      let response = await this.service.add(this.createAction, JSON.parse(JSON.stringify(this.context)),item, this.showBusyIndicator);
+                      successItems.push(JSON.parse(JSON.stringify(response.data)));
+                    }
+                }else if(Object.is(item.rowDataState, 'update')){
+                    if(!this.updateAction){
+                        this.$Notice.error({ title: '错误', desc: 'PCMPROFILEBHSP_CSRCYJGridView视图表格updateAction参数未配置' });
+                    }else{
+                        Object.assign(item,{viewparams:this.viewparams});
+                        if(item.pcmprofile){
+                            Object.assign(this.context,{pcmprofile:item.pcmprofile});
+                        }
+                        let response = await this.service.add(this.updateAction,JSON.parse(JSON.stringify(this.context)),item, this.showBusyIndicator);
+                        successItems.push(JSON.parse(JSON.stringify(response.data)));
+                    }
                 }
-                Object.assign(item,{viewparams:this.viewparams});
-                promises.push(this.service.add(this.createAction, JSON.parse(JSON.stringify(this.context)),item, this.showBusyIndicator));
-            }else if(Object.is(item.rowDataState, 'update')){
-                if(!this.updateAction){
-                    this.$Notice.error({ title: '错误', desc: 'PCMPROFILEBHSP_CSRCYJGridView视图表格updateAction参数未配置' });
-                    return;
-                }
-                Object.assign(item,{viewparams:this.viewparams});
-                if(item.pcmprofile){
-                    Object.assign(this.context,{pcmprofile:item.pcmprofile})
-                }
-                promises.push(this.service.add(this.updateAction,JSON.parse(JSON.stringify(this.context)),item, this.showBusyIndicator));
+            } catch (error) {
+                errorItems.push(JSON.parse(JSON.stringify(item)));
+                errorMessage.push(error);
             }
-        });
-        Promise.all(promises).then((response: any) => {
-            this.$emit('save', response);
+        }
+        this.$emit('save', successItems);
+        this.refresh([]);
+        if(errorItems.length === 0){
             this.$Notice.success({ title: '', desc: '保存成功!' });
-            this.refresh([]);
-        }).catch((response: any) => {
-            this.$Notice.error({ title: '错误', desc: '系统异常' });
-        });
+        }else{
+          errorItems.forEach((item:any,index:number)=>{
+            this.$Notice.error({ title: '保存失败', desc: item.majorentityname+'保存失败！' });
+            console.error(errorMessage[index]);
+          });
+        }
+        return successItems;
     }
 
 

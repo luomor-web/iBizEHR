@@ -1,6 +1,7 @@
 <template>
 <div class='grid' style="height:100%;">
-        <el-table v-if="isDisplay === true"
+      <i-form style="height:100%">
+    <el-table v-if="isDisplay === true"
         :default-sort="{ prop: minorSortPSDEF, order: Object.is(minorSortDir, 'ASC') ? 'ascending' : Object.is(minorSortDir, 'DESC') ? 'descending' : '' }"  
         @sort-change="onSortChange($event)"  
         :border="isDragendCol"
@@ -23,13 +24,16 @@
             </template>
             <template v-if="getColumnState('xl')">
                 <el-table-column show-overflow-tooltip :prop="'xl'" :label="$t('entities.pcmeducationexperience.main_grid.columns.xl')" :width="160"  :align="'left'" :sortable="'custom'">
-                    <template v-slot="{row,column}">
+                    <template v-slot:header="{column}">
+                      <span class="column-header ">
+                        {{$t('entities.pcmeducationexperience.main_grid.columns.xl')}}
+                      </span>
+                    </template>
+                    <template v-slot="{row,column,$index}">
                         <template v-if="actualIsOpenEdit">
-                            <i-form style="height:100%;" :model="row">
-                                <app-form-item :name="column.property" :itemRules="rules[column.property]">
-                                     <dropdown-list v-model="row[column.property]" :disabled="row.srfuf === 1 ? (3 & 2) !== 2 : (3 & 1) !== 1" tag='PIM_XL2' codelistType='DYNAMIC' placeholder='请选择...' style="" @change="($event)=>{gridEditItemChange(row, column.property, $event)}"></dropdown-list>
-                                </app-form-item>
-                            </i-form>
+                            <app-form-item :error="gridItemsModel[$index][column.property].error">
+                                 <dropdown-list v-model="row[column.property]" :disabled="row.srfuf === 1 ? (3 & 2) !== 2 : (3 & 1) !== 1" tag='PIM_XL2' codelistType='DYNAMIC' placeholder='请选择...' style="" @change="($event)=>{gridEditItemChange(row, column.property, $event, $index)}"></dropdown-list>
+                            </app-form-item>
                         </template>
                         <template v-if="!actualIsOpenEdit">
             <codelist :value="row.xl" tag='PIM_XL2' codelistType='DYNAMIC' renderMode="STR" valueSeparator=";" textSeparator="、" ></codelist>
@@ -39,13 +43,16 @@
             </template>
             <template v-if="getColumnState('starttime')">
                 <el-table-column show-overflow-tooltip :prop="'starttime'" :label="$t('entities.pcmeducationexperience.main_grid.columns.starttime')" :width="140"  :align="'left'" :sortable="'custom'">
-                    <template v-slot="{row,column}">
+                    <template v-slot:header="{column}">
+                      <span class="column-header ">
+                        {{$t('entities.pcmeducationexperience.main_grid.columns.starttime')}}
+                      </span>
+                    </template>
+                    <template v-slot="{row,column,$index}">
                         <template v-if="actualIsOpenEdit">
-                            <i-form style="height:100%;" :model="row">
-                                <app-form-item :name="column.property" :itemRules="rules[column.property]">
-                                    <date-picker type="date" :transfer="true" format="yyyy-MM-dd" placeholder="请选择时间..." :disabled="row.srfuf === 1 ? (3 & 2) !== 2 : (3 & 1) !== 1" :value="row[column.property]" style="" @on-change="(val1, val2) => { row[column.property] = val1; gridEditItemChange(row, column.property, val1)}"></date-picker>
-                                </app-form-item>
-                            </i-form>
+                            <app-form-item :error="gridItemsModel[$index][column.property].error">
+                                <date-picker type="date" :transfer="true" format="yyyy-MM-dd" placeholder="请选择时间..." :disabled="row.srfuf === 1 ? (3 & 2) !== 2 : (3 & 1) !== 1" :value="row[column.property]" style="" @on-change="(val1, val2) => { row[column.property] = val1; gridEditItemChange(row, column.property, val1, $index)}"></date-picker>
+                            </app-form-item>
                         </template>
                         <template v-if="!actualIsOpenEdit">
                                 <app-span name='starttime' editorType="DATEPICKER" :value="row.starttime"></app-span>
@@ -55,13 +62,16 @@
             </template>
             <template v-if="getColumnState('endtime')">
                 <el-table-column show-overflow-tooltip :prop="'endtime'" :label="$t('entities.pcmeducationexperience.main_grid.columns.endtime')" :width="140"  :align="'left'" :sortable="'custom'">
-                    <template v-slot="{row,column}">
+                    <template v-slot:header="{column}">
+                      <span class="column-header ">
+                        {{$t('entities.pcmeducationexperience.main_grid.columns.endtime')}}
+                      </span>
+                    </template>
+                    <template v-slot="{row,column,$index}">
                         <template v-if="actualIsOpenEdit">
-                            <i-form style="height:100%;" :model="row">
-                                <app-form-item :name="column.property" :itemRules="rules[column.property]">
-                                    <date-picker type="date" :transfer="true" format="yyyy-MM-dd" placeholder="请选择时间..." :disabled="row.srfuf === 1 ? (3 & 2) !== 2 : (3 & 1) !== 1" :value="row[column.property]" style="" @on-change="(val1, val2) => { row[column.property] = val1; gridEditItemChange(row, column.property, val1)}"></date-picker>
-                                </app-form-item>
-                            </i-form>
+                            <app-form-item :error="gridItemsModel[$index][column.property].error">
+                                <date-picker type="date" :transfer="true" format="yyyy-MM-dd" placeholder="请选择时间..." :disabled="row.srfuf === 1 ? (3 & 2) !== 2 : (3 & 1) !== 1" :value="row[column.property]" style="" @on-change="(val1, val2) => { row[column.property] = val1; gridEditItemChange(row, column.property, val1, $index)}"></date-picker>
+                            </app-form-item>
                         </template>
                         <template v-if="!actualIsOpenEdit">
                                 <app-span name='endtime' editorType="DATEPICKER" :value="row.endtime"></app-span>
@@ -71,21 +81,24 @@
             </template>
             <template v-if="getColumnState('schoolname')">
                 <el-table-column show-overflow-tooltip :prop="'schoolname'" :label="$t('entities.pcmeducationexperience.main_grid.columns.schoolname')" :width="200"  :align="'left'" :sortable="'custom'">
-                    <template v-slot="{row,column}">
+                    <template v-slot:header="{column}">
+                      <span class="column-header ">
+                        {{$t('entities.pcmeducationexperience.main_grid.columns.schoolname')}}
+                      </span>
+                    </template>
+                    <template v-slot="{row,column,$index}">
                         <template v-if="actualIsOpenEdit">
-                            <i-form style="height:100%;" :model="row">
-                                <app-form-item :name="column.property" :itemRules="rules[column.property]">
-                                    <input-box 
+                            <app-form-item :error="gridItemsModel[$index][column.property].error">
+                                <input-box 
               :disabled="row.srfuf === 1 ? (3 & 2) !== 2 : (3 & 1) !== 1" 
               v-model="row[column.property]" 
               style=""
               type="text"
               
               
-              @change="($event)=>{gridEditItemChange(row, column.property, $event)}">
+              @change="($event)=>{gridEditItemChange(row, column.property, $event, $index)}">
             </input-box>
-                                </app-form-item>
-                            </i-form>
+                            </app-form-item>
                         </template>
                         <template v-if="!actualIsOpenEdit">
                                 <app-span name='schoolname' editorType="TEXTBOX" :value="row.schoolname"></app-span>
@@ -95,13 +108,16 @@
             </template>
             <template v-if="getColumnState('xkml')">
                 <el-table-column show-overflow-tooltip :prop="'xkml'" :label="$t('entities.pcmeducationexperience.main_grid.columns.xkml')" :width="150"  :align="'left'" :sortable="'custom'">
-                    <template v-slot="{row,column}">
+                    <template v-slot:header="{column}">
+                      <span class="column-header ">
+                        {{$t('entities.pcmeducationexperience.main_grid.columns.xkml')}}
+                      </span>
+                    </template>
+                    <template v-slot="{row,column,$index}">
                         <template v-if="actualIsOpenEdit">
-                            <i-form style="height:100%;" :model="row">
-                                <app-form-item :name="column.property" :itemRules="rules[column.property]">
-                                     <dropdown-list v-model="row[column.property]" :disabled="row.srfuf === 1 ? (3 & 2) !== 2 : (3 & 1) !== 1" tag='PCMCL_XKML' codelistType='DYNAMIC' placeholder='请选择...' style="" @change="($event)=>{gridEditItemChange(row, column.property, $event)}"></dropdown-list>
-                                </app-form-item>
-                            </i-form>
+                            <app-form-item :error="gridItemsModel[$index][column.property].error">
+                                 <dropdown-list v-model="row[column.property]" :disabled="row.srfuf === 1 ? (3 & 2) !== 2 : (3 & 1) !== 1" tag='PCMCL_XKML' codelistType='DYNAMIC' placeholder='请选择...' style="" @change="($event)=>{gridEditItemChange(row, column.property, $event, $index)}"></dropdown-list>
+                            </app-form-item>
                         </template>
                         <template v-if="!actualIsOpenEdit">
             <codelist :value="row.xkml" tag='PCMCL_XKML' codelistType='DYNAMIC' ></codelist>
@@ -111,21 +127,24 @@
             </template>
             <template v-if="getColumnState('majorname')">
                 <el-table-column show-overflow-tooltip :prop="'majorname'" :label="$t('entities.pcmeducationexperience.main_grid.columns.majorname')" :width="150"  :align="'left'" :sortable="'custom'">
-                    <template v-slot="{row,column}">
+                    <template v-slot:header="{column}">
+                      <span class="column-header ">
+                        {{$t('entities.pcmeducationexperience.main_grid.columns.majorname')}}
+                      </span>
+                    </template>
+                    <template v-slot="{row,column,$index}">
                         <template v-if="actualIsOpenEdit">
-                            <i-form style="height:100%;" :model="row">
-                                <app-form-item :name="column.property" :itemRules="rules[column.property]">
-                                    <input-box 
+                            <app-form-item :error="gridItemsModel[$index][column.property].error">
+                                <input-box 
               :disabled="row.srfuf === 1 ? (3 & 2) !== 2 : (3 & 1) !== 1" 
               v-model="row[column.property]" 
               style=""
               type="text"
               
               
-              @change="($event)=>{gridEditItemChange(row, column.property, $event)}">
+              @change="($event)=>{gridEditItemChange(row, column.property, $event, $index)}">
             </input-box>
-                                </app-form-item>
-                            </i-form>
+                            </app-form-item>
                         </template>
                         <template v-if="!actualIsOpenEdit">
                                 <app-span name='majorname' editorType="TEXTBOX" :value="row.majorname"></app-span>
@@ -135,13 +154,16 @@
             </template>
             <template v-if="getColumnState('xxxz')">
                 <el-table-column show-overflow-tooltip :prop="'xxxz'" :label="$t('entities.pcmeducationexperience.main_grid.columns.xxxz')" :width="150"  :align="'left'" :sortable="'custom'">
-                    <template v-slot="{row,column}">
+                    <template v-slot:header="{column}">
+                      <span class="column-header ">
+                        {{$t('entities.pcmeducationexperience.main_grid.columns.xxxz')}}
+                      </span>
+                    </template>
+                    <template v-slot="{row,column,$index}">
                         <template v-if="actualIsOpenEdit">
-                            <i-form style="height:100%;" :model="row">
-                                <app-form-item :name="column.property" :itemRules="rules[column.property]">
-                                     <dropdown-list v-model="row[column.property]" :disabled="row.srfuf === 1 ? (3 & 2) !== 2 : (3 & 1) !== 1" tag='PIMCL_XXXZ' codelistType='DYNAMIC' placeholder='请选择...' style="" @change="($event)=>{gridEditItemChange(row, column.property, $event)}"></dropdown-list>
-                                </app-form-item>
-                            </i-form>
+                            <app-form-item :error="gridItemsModel[$index][column.property].error">
+                                 <dropdown-list v-model="row[column.property]" :disabled="row.srfuf === 1 ? (3 & 2) !== 2 : (3 & 1) !== 1" tag='PIMCL_XXXZ' codelistType='DYNAMIC' placeholder='请选择...' style="" @change="($event)=>{gridEditItemChange(row, column.property, $event, $index)}"></dropdown-list>
+                            </app-form-item>
                         </template>
                         <template v-if="!actualIsOpenEdit">
             <codelist :value="row.xxxz" tag='PIMCL_XXXZ' codelistType='DYNAMIC' renderMode="STR" valueSeparator=";" textSeparator="、" ></codelist>
@@ -151,13 +173,16 @@
             </template>
             <template v-if="getColumnState('formsoflearning')">
                 <el-table-column show-overflow-tooltip :prop="'formsoflearning'" :label="$t('entities.pcmeducationexperience.main_grid.columns.formsoflearning')" :width="180"  :align="'left'" :sortable="'custom'">
-                    <template v-slot="{row,column}">
+                    <template v-slot:header="{column}">
+                      <span class="column-header ">
+                        {{$t('entities.pcmeducationexperience.main_grid.columns.formsoflearning')}}
+                      </span>
+                    </template>
+                    <template v-slot="{row,column,$index}">
                         <template v-if="actualIsOpenEdit">
-                            <i-form style="height:100%;" :model="row">
-                                <app-form-item :name="column.property" :itemRules="rules[column.property]">
-                                     <dropdown-list v-model="row[column.property]" :disabled="row.srfuf === 1 ? (3 & 2) !== 2 : (3 & 1) !== 1" tag='PIMCL_XL' codelistType='DYNAMIC' placeholder='请选择...' style="" @change="($event)=>{gridEditItemChange(row, column.property, $event)}"></dropdown-list>
-                                </app-form-item>
-                            </i-form>
+                            <app-form-item :error="gridItemsModel[$index][column.property].error">
+                                 <dropdown-list v-model="row[column.property]" :disabled="row.srfuf === 1 ? (3 & 2) !== 2 : (3 & 1) !== 1" tag='PIMCL_XL' codelistType='DYNAMIC' placeholder='请选择...' style="" @change="($event)=>{gridEditItemChange(row, column.property, $event, $index)}"></dropdown-list>
+                            </app-form-item>
                         </template>
                         <template v-if="!actualIsOpenEdit">
             <codelist :value="row.formsoflearning" tag='PIMCL_XL' codelistType='DYNAMIC' renderMode="STR" valueSeparator=";" textSeparator="、" ></codelist>
@@ -167,13 +192,16 @@
             </template>
             <template v-if="getColumnState('firstxl')">
                 <el-table-column show-overflow-tooltip :prop="'firstxl'" :label="$t('entities.pcmeducationexperience.main_grid.columns.firstxl')" :width="140"  :align="'left'" :sortable="'custom'">
-                    <template v-slot="{row,column}">
+                    <template v-slot:header="{column}">
+                      <span class="column-header ">
+                        {{$t('entities.pcmeducationexperience.main_grid.columns.firstxl')}}
+                      </span>
+                    </template>
+                    <template v-slot="{row,column,$index}">
                         <template v-if="actualIsOpenEdit">
-                            <i-form style="height:100%;" :model="row">
-                                <app-form-item :name="column.property" :itemRules="rules[column.property]">
-                                     <dropdown-list v-model="row[column.property]" :disabled="row.srfuf === 1 ? (3 & 2) !== 2 : (3 & 1) !== 1" tag='YesNo' codelistType='STATIC' placeholder='请选择...' style="" @change="($event)=>{gridEditItemChange(row, column.property, $event)}"></dropdown-list>
-                                </app-form-item>
-                            </i-form>
+                            <app-form-item :error="gridItemsModel[$index][column.property].error">
+                                 <dropdown-list v-model="row[column.property]" :disabled="row.srfuf === 1 ? (3 & 2) !== 2 : (3 & 1) !== 1" tag='YesNo' codelistType='STATIC' placeholder='请选择...' style="" @change="($event)=>{gridEditItemChange(row, column.property, $event, $index)}"></dropdown-list>
+                            </app-form-item>
                         </template>
                         <template v-if="!actualIsOpenEdit">
             <codelist :value="row.firstxl" tag='YesNo' codelistType='STATIC' ></codelist>
@@ -183,13 +211,16 @@
             </template>
             <template v-if="getColumnState('higestxl')">
                 <el-table-column show-overflow-tooltip :prop="'higestxl'" :label="$t('entities.pcmeducationexperience.main_grid.columns.higestxl')" :width="140"  :align="'left'" :sortable="'custom'">
-                    <template v-slot="{row,column}">
+                    <template v-slot:header="{column}">
+                      <span class="column-header ">
+                        {{$t('entities.pcmeducationexperience.main_grid.columns.higestxl')}}
+                      </span>
+                    </template>
+                    <template v-slot="{row,column,$index}">
                         <template v-if="actualIsOpenEdit">
-                            <i-form style="height:100%;" :model="row">
-                                <app-form-item :name="column.property" :itemRules="rules[column.property]">
-                                     <dropdown-list v-model="row[column.property]" :disabled="row.srfuf === 1 ? (3 & 2) !== 2 : (3 & 1) !== 1" tag='YesNo' codelistType='STATIC' placeholder='请选择...' style="" @change="($event)=>{gridEditItemChange(row, column.property, $event)}"></dropdown-list>
-                                </app-form-item>
-                            </i-form>
+                            <app-form-item :error="gridItemsModel[$index][column.property].error">
+                                 <dropdown-list v-model="row[column.property]" :disabled="row.srfuf === 1 ? (3 & 2) !== 2 : (3 & 1) !== 1" tag='YesNo' codelistType='STATIC' placeholder='请选择...' style="" @change="($event)=>{gridEditItemChange(row, column.property, $event, $index)}"></dropdown-list>
+                            </app-form-item>
                         </template>
                         <template v-if="!actualIsOpenEdit">
             <codelist :value="row.higestxl" tag='YesNo' codelistType='STATIC' ></codelist>
@@ -199,21 +230,24 @@
             </template>
             <template v-if="getColumnState('byz')">
                 <el-table-column show-overflow-tooltip :prop="'byz'" :label="$t('entities.pcmeducationexperience.main_grid.columns.byz')" :width="190"  :align="'left'" :sortable="'custom'">
-                    <template v-slot="{row,column}">
+                    <template v-slot:header="{column}">
+                      <span class="column-header ">
+                        {{$t('entities.pcmeducationexperience.main_grid.columns.byz')}}
+                      </span>
+                    </template>
+                    <template v-slot="{row,column,$index}">
                         <template v-if="actualIsOpenEdit">
-                            <i-form style="height:100%;" :model="row">
-                                <app-form-item :name="column.property" :itemRules="rules[column.property]">
-                                    <input-box 
+                            <app-form-item :error="gridItemsModel[$index][column.property].error">
+                                <input-box 
               :disabled="row.srfuf === 1 ? (3 & 2) !== 2 : (3 & 1) !== 1" 
               v-model="row[column.property]" 
               style=""
               type="text"
               
               
-              @change="($event)=>{gridEditItemChange(row, column.property, $event)}">
+              @change="($event)=>{gridEditItemChange(row, column.property, $event, $index)}">
             </input-box>
-                                </app-form-item>
-                            </i-form>
+                            </app-form-item>
                         </template>
                         <template v-if="!actualIsOpenEdit">
                                 <app-span name='byz' editorType="TEXTBOX" :value="row.byz"></app-span>
@@ -223,21 +257,24 @@
             </template>
             <template v-if="getColumnState('xwz')">
                 <el-table-column show-overflow-tooltip :prop="'xwz'" :label="$t('entities.pcmeducationexperience.main_grid.columns.xwz')" :width="190"  :align="'left'" :sortable="'custom'">
-                    <template v-slot="{row,column}">
+                    <template v-slot:header="{column}">
+                      <span class="column-header ">
+                        {{$t('entities.pcmeducationexperience.main_grid.columns.xwz')}}
+                      </span>
+                    </template>
+                    <template v-slot="{row,column,$index}">
                         <template v-if="actualIsOpenEdit">
-                            <i-form style="height:100%;" :model="row">
-                                <app-form-item :name="column.property" :itemRules="rules[column.property]">
-                                    <input-box 
+                            <app-form-item :error="gridItemsModel[$index][column.property].error">
+                                <input-box 
               :disabled="row.srfuf === 1 ? (3 & 2) !== 2 : (3 & 1) !== 1" 
               v-model="row[column.property]" 
               style=""
               type="text"
               
               
-              @change="($event)=>{gridEditItemChange(row, column.property, $event)}">
+              @change="($event)=>{gridEditItemChange(row, column.property, $event, $index)}">
             </input-box>
-                                </app-form-item>
-                            </i-form>
+                            </app-form-item>
                         </template>
                         <template v-if="!actualIsOpenEdit">
                                 <app-span name='xwz' editorType="TEXTBOX" :value="row.xwz"></app-span>
@@ -247,21 +284,24 @@
             </template>
             <template v-if="getColumnState('xlyz')">
                 <el-table-column show-overflow-tooltip :prop="'xlyz'" :label="$t('entities.pcmeducationexperience.main_grid.columns.xlyz')" :width="190"  :align="'left'" :sortable="'custom'">
-                    <template v-slot="{row,column}">
+                    <template v-slot:header="{column}">
+                      <span class="column-header ">
+                        {{$t('entities.pcmeducationexperience.main_grid.columns.xlyz')}}
+                      </span>
+                    </template>
+                    <template v-slot="{row,column,$index}">
                         <template v-if="actualIsOpenEdit">
-                            <i-form style="height:100%;" :model="row">
-                                <app-form-item :name="column.property" :itemRules="rules[column.property]">
-                                    <input-box 
+                            <app-form-item :error="gridItemsModel[$index][column.property].error">
+                                <input-box 
               :disabled="row.srfuf === 1 ? (3 & 2) !== 2 : (3 & 1) !== 1" 
               v-model="row[column.property]" 
               style=""
               type="text"
               
               
-              @change="($event)=>{gridEditItemChange(row, column.property, $event)}">
+              @change="($event)=>{gridEditItemChange(row, column.property, $event, $index)}">
             </input-box>
-                                </app-form-item>
-                            </i-form>
+                            </app-form-item>
                         </template>
                         <template v-if="!actualIsOpenEdit">
                                 <app-span name='xlyz' editorType="TEXTBOX" :value="row.xlyz"></app-span>
@@ -273,6 +313,8 @@
                 <el-table-column></el-table-column>
             </template>
     </el-table>
+  
+  </i-form>
 </div>
 </template>
 <script lang='tsx'>
@@ -285,6 +327,7 @@ import PCMEducationExperienceService from '@/service/pcmeducation-experience/pcm
 import MainService from './main-grid-service';
 
 import CodeListService from "@service/app/codelist-service";
+import { FormItemModel } from '@/model/form-detail';
 
 
 @Component({
@@ -803,6 +846,40 @@ export default class MainBase extends Vue implements ControlInterface {
     ]
 
     /**
+     * 表格模型集合
+     *
+     * @type {*}
+     * @memberof Main
+     */
+    public gridItemsModel: any[] = [];
+
+    /**
+     * 获取表格行模型
+     *
+     * @type {*}
+     * @memberof Main
+     */
+    public getGridRowModel(){
+        return {
+          xwz: new FormItemModel(),
+          firstxl: new FormItemModel(),
+          endtime: new FormItemModel(),
+          schoolname: new FormItemModel(),
+          starttime: new FormItemModel(),
+          xkml: new FormItemModel(),
+          xl: new FormItemModel(),
+          higestxl: new FormItemModel(),
+          formsoflearning: new FormItemModel(),
+          xxxz: new FormItemModel(),
+          xlyz: new FormItemModel(),
+          majorname: new FormItemModel(),
+          byz: new FormItemModel(),
+          pcmprofileid: new FormItemModel(),
+          srfkey: new FormItemModel(),
+        }
+    }
+
+    /**
      * 属性值规则
      *
      * @type {*}
@@ -872,6 +949,50 @@ export default class MainBase extends Vue implements ControlInterface {
     }
 
     /**
+     * 表格行编辑项校验
+     *
+     * @param {string} property 属性名
+     * @param {*} data 行数据
+     * @param {number} rowIndex 行索引
+     * @returns Promise<any>
+     * 
+     * @memberof Main
+     */
+    public validate(property:string, data:any, rowIndex:number):Promise<any>{
+        return new Promise((resolve, reject) => {
+            this.$util.validateItem(property,data,this.rules).then(()=>{
+                this.gridItemsModel[rowIndex][property].setError(null);
+                resolve(true);
+            }).catch(({ errors, fields }) => {
+                this.gridItemsModel[rowIndex][property].setError(errors[0].message);
+                resolve(false);
+            });
+        });
+    }
+
+    /**
+     * 校验所有修改过的编辑项
+     *
+     * @returns Promise<any>
+     * @memberof Main
+     */
+    public async validateAll(){
+        let validateState = true;
+        let index = -1;
+        for(let item of this.items){
+          index++;
+          if(item.rowDataState === "create" || item.rowDataState === "update"){
+            for(let property of Object.keys(this.rules)){
+              if(!await this.validate(property,item,index)){
+                validateState = false;
+              }
+            }
+          }
+        }
+        return validateState;
+    }
+
+    /**
      * 表格数据加载
      *
      * @param {*} [arg={}]
@@ -913,8 +1034,10 @@ export default class MainBase extends Vue implements ControlInterface {
             const data: any = response.data;
             this.totalrow = response.total;
             this.items = JSON.parse(JSON.stringify(data));
-            // 清空selections
+            // 清空selections,gridItemsModel
             this.selections = [];
+            this.gridItemsModel = [];
+            this.items.forEach(()=>{this.gridItemsModel.push(this.getGridRowModel())});
             this.$emit('load', this.items);
             // 设置默认选中
             let _this = this;
@@ -963,6 +1086,7 @@ export default class MainBase extends Vue implements ControlInterface {
                 this.items.some((val: any, num: number) =>{
                     if(JSON.stringify(val) == JSON.stringify(record)){
                         this.items.splice(num,1);
+                        this.gridItemsModel.splice(num,1);
                         return true;
                     }
                 }); 
@@ -998,8 +1122,9 @@ export default class MainBase extends Vue implements ControlInterface {
                 keys.push(data.srfkey);
             });
             let _removeAction = keys.length > 1 ? 'removeBatch' : this.removeAction ;
+            let _keys = keys.length > 1 ? keys : keys[0] ;
             const context:any = JSON.parse(JSON.stringify(this.context));
-            const post: Promise<any> = this.service.delete(_removeAction,Object.assign(context,{ pcmeducationexperience: keys.join(';') }),Object.assign({ pcmeducationexperience: keys.join(';') },{viewparams:this.viewparams}), this.showBusyIndicator);
+            const post: Promise<any> = this.service.delete(_removeAction,Object.assign(context,{ pcmeducationexperience: _keys }),Object.assign({ pcmeducationexperience: _keys },{viewparams:this.viewparams}), this.showBusyIndicator);
             return new Promise((resolve: any, reject: any) => {
                 post.then((response: any) => {
                     if (!response || response.status !== 200) {
@@ -1011,9 +1136,10 @@ export default class MainBase extends Vue implements ControlInterface {
                     //删除items中已删除的项
                     console.log(this.items);
                     _datas.forEach((data: any) => {
-                      this.items.some((item:any,index:number)=>{
-                        if(Object.is(item.srfkey,data.srfkey)){
-                          this.items.splice(index,1);
+                        this.items.some((item:any,index:number)=>{
+                            if(Object.is(item.srfkey,data.srfkey)){
+                                this.items.splice(index,1);
+                                this.gridItemsModel.splice(index,1);
                                 return true;
                             }
                         });
@@ -1624,41 +1750,56 @@ export default class MainBase extends Vue implements ControlInterface {
      * 保存
      *
      * @param {*} $event
-     * @returns {void}
+     * @returns {Promise<any>}
      * @memberof Main
      */
-    public save(args: any[], params?: any, $event?: any, xData?: any): void {
+    public async save(args: any[], params?: any, $event?: any, xData?: any){
         let _this = this;
-        let promises:any = [];
-        _this.items.forEach((item:any)=>{
-            if(!item.rowDataState){
-                return;
-            } else if(Object.is(item.rowDataState, 'create')){
-                if(!this.createAction){
-                    this.$Notice.error({ title: '错误', desc: 'PCMEducationExperienceJYBJGridView视图表格createAction参数未配置' });
-                    return;
+        if(!await this.validateAll()){
+            this.$Notice.error({ title: '错误', desc: '值规则校验异常' });
+            return [];
+        }
+        let successItems:any = [];
+        let errorItems:any = [];
+        let errorMessage:any = [];
+        for (const item of _this.items) {
+            try {
+                if(Object.is(item.rowDataState, 'create')){
+                    if(!this.createAction){
+                        this.$Notice.error({ title: '错误', desc: 'PCMEducationExperienceJYBJGridView视图表格createAction参数未配置' });
+                    }else{
+                      Object.assign(item,{viewparams:this.viewparams});
+                      let response = await this.service.add(this.createAction, JSON.parse(JSON.stringify(this.context)),item, this.showBusyIndicator);
+                      successItems.push(JSON.parse(JSON.stringify(response.data)));
+                    }
+                }else if(Object.is(item.rowDataState, 'update')){
+                    if(!this.updateAction){
+                        this.$Notice.error({ title: '错误', desc: 'PCMEducationExperienceJYBJGridView视图表格updateAction参数未配置' });
+                    }else{
+                        Object.assign(item,{viewparams:this.viewparams});
+                        if(item.pcmeducationexperience){
+                            Object.assign(this.context,{pcmeducationexperience:item.pcmeducationexperience});
+                        }
+                        let response = await this.service.add(this.updateAction,JSON.parse(JSON.stringify(this.context)),item, this.showBusyIndicator);
+                        successItems.push(JSON.parse(JSON.stringify(response.data)));
+                    }
                 }
-                Object.assign(item,{viewparams:this.viewparams});
-                promises.push(this.service.add(this.createAction, JSON.parse(JSON.stringify(this.context)),item, this.showBusyIndicator));
-            }else if(Object.is(item.rowDataState, 'update')){
-                if(!this.updateAction){
-                    this.$Notice.error({ title: '错误', desc: 'PCMEducationExperienceJYBJGridView视图表格updateAction参数未配置' });
-                    return;
-                }
-                Object.assign(item,{viewparams:this.viewparams});
-                if(item.pcmeducationexperience){
-                    Object.assign(this.context,{pcmeducationexperience:item.pcmeducationexperience})
-                }
-                promises.push(this.service.add(this.updateAction,JSON.parse(JSON.stringify(this.context)),item, this.showBusyIndicator));
+            } catch (error) {
+                errorItems.push(JSON.parse(JSON.stringify(item)));
+                errorMessage.push(error);
             }
-        });
-        Promise.all(promises).then((response: any) => {
-            this.$emit('save', response);
+        }
+        this.$emit('save', successItems);
+        this.refresh([]);
+        if(errorItems.length === 0){
             this.$Notice.success({ title: '', desc: '保存成功!' });
-            this.refresh([]);
-        }).catch((response: any) => {
-            this.$Notice.error({ title: '错误', desc: '系统异常' });
-        });
+        }else{
+          errorItems.forEach((item:any,index:number)=>{
+            this.$Notice.error({ title: '保存失败', desc: item.majorentityname+'保存失败！' });
+            console.error(errorMessage[index]);
+          });
+        }
+        return successItems;
     }
 
     /**
@@ -1686,6 +1827,7 @@ export default class MainBase extends Vue implements ControlInterface {
             const data = response.data;
             data.rowDataState = "create";
             _this.items.push(data);
+            _this.gridItemsModel.push(_this.getGridRowModel());
         }).catch((response: any) => {
             if (response && response.status === 401) {
                 return;
@@ -1705,7 +1847,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * @returns {void}
      * @memberof Main
      */
-    public onGridItemValueChange(row: any,$event: { name: string, value: any }): void {
+    public onGridItemValueChange(row: any,$event: { name: string, value: any },rowIndex: number): void {
         if (!$event) {
             return;
         }
@@ -1713,7 +1855,7 @@ export default class MainBase extends Vue implements ControlInterface {
             return;
         }
         row[$event.name] = $event.value;
-        this.gridEditItemChange(row, $event.name, $event.value);
+        this.gridEditItemChange(row, $event.name, $event.value, rowIndex);
     }
 
     /**
@@ -1726,8 +1868,9 @@ export default class MainBase extends Vue implements ControlInterface {
      * @returns {void}
      * @memberof Main
      */
-    public gridEditItemChange(row: any, property: string, value: any){
+    public gridEditItemChange(row: any, property: string, value: any, rowIndex: number){
         row.rowDataState = row.rowDataState ? row.rowDataState : "update" ;
+        this.validate(property,row,rowIndex);
         if(Object.is(property, 'endtime')){
             const details: string[] = ['endtime', 'starttime'];
             this.updateGridEditItem('CheckTime', row, details, true);

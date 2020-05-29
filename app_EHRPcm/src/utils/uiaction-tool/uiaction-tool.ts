@@ -41,6 +41,7 @@ export class UIActionTool {
         if (Object.is(actionTarget, 'SINGLEKEY')) {
             let [arg] = args;
             Object.keys(_params).forEach((name: string) => {
+                let hasProperty = true;
                 if (!name) {
                     return;
                 }
@@ -50,13 +51,16 @@ export class UIActionTool {
                     if (arg && arg.hasOwnProperty(key)) {
                         value = (arg[key] !== null && arg[key] !== undefined) ? arg[key] : null;
                     } else {
-                        value = null;
+                        hasProperty = false;
                     }
                 }
-                Object.assign(_data, { [name]: value });
+                if(hasProperty){
+                    Object.assign(_data, { [name]: value });
+                }
             });
         } else if (Object.is(actionTarget, 'MULTIKEY')) {
             Object.keys(_params).forEach((name: string) => {
+                let noPropertyNum = 0;
                 if (!name) {
                     return;
                 }
@@ -69,11 +73,14 @@ export class UIActionTool {
                             value = (arg[key] !== null && arg[key] !== undefined) ? arg[key] : null;
                         } else {
                             value = null;
+                            noPropertyNum++;
                         }
                         values.push(value);
                     });
                 }
-                Object.assign(_data, { [name]: values.length > 0 ? values.join(';') : value });
+                if(values.length !== noPropertyNum){
+                    Object.assign(_data, { [name]: values.length > 0 ? values.join(';') : value });
+                }
             });
         }
         return _data;

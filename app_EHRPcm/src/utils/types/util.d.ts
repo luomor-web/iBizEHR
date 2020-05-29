@@ -138,6 +138,17 @@ export declare interface Util {
      * @memberof Util
      */
     dateFormat(date: any,fmt?: string):string
+
+    /**
+     * 表单项校验
+     * 
+     * @param property 表单项属性名
+     * @param data 表单数据
+     * @param rules 表单值规则
+     * @returns {Promise}
+     * @memberof Util
+     */
+    validateItem(property: string, data:any, rules:any): Promise<any>
 }
 
 declare module "vue/types/vue" {

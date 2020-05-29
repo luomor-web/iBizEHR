@@ -1,5 +1,5 @@
 <template>
-    <i-form :model="this.data" class='app-form' ref='form'  id='form' style="">
+    <i-form :model="this.data" class='app-form' ref='form'  id='pcmprofile_bhsp_csrcyj' style="">
     <input style="display:none;" />
     <row >
             
@@ -902,6 +902,12 @@ export default class BHSP_CSRCYJBase extends Vue implements ControlInterface {
     }
 
 
+    /**
+     * 工作流审批意见控件绑定值
+     *
+     * @memberof BHSP_CSRCYJ
+     */
+    public srfwfmemo:string = "";
     
     /**
      * 获取多项数据
@@ -3065,7 +3071,7 @@ export default class BHSP_CSRCYJBase extends Vue implements ControlInterface {
      */
     public print(){
         let _this:any = this;
-        _this.$print({id:'form',popTitle:'编号审批（成熟人才引进）'});
+        _this.$print({id:'pcmprofile_bhsp_csrcyj',popTitle:'编号审批（成熟人才引进）'});
     }
 
     /**
@@ -3437,6 +3443,10 @@ export default class BHSP_CSRCYJBase extends Vue implements ControlInterface {
                 // 准备提交参数
                 if(this.viewparams){
                     Object.assign(arg,{viewparams:this.viewparams});
+                }
+                // 强制补充srfwfmemo
+                if(this.srfwfmemo){
+                    Object.assign(arg,{srfwfmemo:this.srfwfmemo});
                 }
                 const result: Promise<any> = this.service.wfsubmit(_this.WFSubmitAction, JSON.parse(JSON.stringify(this.context)),arg, this.showBusyIndicator,localdata);
                 result.then((response: any) => {

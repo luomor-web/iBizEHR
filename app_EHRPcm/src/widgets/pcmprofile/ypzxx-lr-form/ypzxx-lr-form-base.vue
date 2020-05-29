@@ -1,5 +1,5 @@
 <template>
-    <i-form :model="this.data" class='app-form' ref='form'  id='form' style="">
+    <i-form :model="this.data" class='app-form' ref='form'  id='pcmprofile_ypzxx_lr' style="">
     <input style="display:none;" />
     <row >
             
@@ -1015,6 +1015,12 @@ export default class YPZXX_LRBase extends Vue implements ControlInterface {
     }
 
 
+    /**
+     * 工作流审批意见控件绑定值
+     *
+     * @memberof YPZXX_LR
+     */
+    public srfwfmemo:string = "";
     
     /**
      * 获取多项数据
@@ -3579,7 +3585,7 @@ export default class YPZXX_LRBase extends Vue implements ControlInterface {
      */
     public print(){
         let _this:any = this;
-        _this.$print({id:'form',popTitle:'应聘者信息（校园招聘）（主信息）'});
+        _this.$print({id:'pcmprofile_ypzxx_lr',popTitle:'应聘者信息（校园招聘）（主信息）'});
     }
 
     /**
@@ -3951,6 +3957,10 @@ export default class YPZXX_LRBase extends Vue implements ControlInterface {
                 // 准备提交参数
                 if(this.viewparams){
                     Object.assign(arg,{viewparams:this.viewparams});
+                }
+                // 强制补充srfwfmemo
+                if(this.srfwfmemo){
+                    Object.assign(arg,{srfwfmemo:this.srfwfmemo});
                 }
                 const result: Promise<any> = this.service.wfsubmit(_this.WFSubmitAction, JSON.parse(JSON.stringify(this.context)),arg, this.showBusyIndicator,localdata);
                 result.then((response: any) => {
