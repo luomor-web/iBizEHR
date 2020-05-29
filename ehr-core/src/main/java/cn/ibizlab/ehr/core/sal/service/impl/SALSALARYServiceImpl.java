@@ -61,7 +61,7 @@ public class SALSALARYServiceImpl extends ServiceImpl<SALSALARYMapper, SALSALARY
     private cn.ibizlab.ehr.core.orm.service.IOrmOrgService ormorgService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.orm.service.IORMPOSTService ormpostService;
+    private cn.ibizlab.ehr.core.orm.service.IOrmPostService ormpostService;
     @Autowired
     @Lazy
     private cn.ibizlab.ehr.core.pim.service.IPIMPERSONService pimpersonService;
@@ -295,9 +295,9 @@ public class SALSALARYServiceImpl extends ServiceImpl<SALSALARYMapper, SALSALARY
         }
         //实体关系[DER1N_SALSALARY_ORMPOST_ORMPOSTID]
         if(!ObjectUtils.isEmpty(et.getOrmpostid())){
-            cn.ibizlab.ehr.core.orm.domain.ORMPOST ormpost=et.getOrmpost();
+            cn.ibizlab.ehr.core.orm.domain.OrmPost ormpost=et.getOrmpost();
             if(ObjectUtils.isEmpty(ormpost)){
-                cn.ibizlab.ehr.core.orm.domain.ORMPOST majorEntity=ormpostService.get(et.getOrmpostid());
+                cn.ibizlab.ehr.core.orm.domain.OrmPost majorEntity=ormpostService.get(et.getOrmpostid());
                 et.setOrmpost(majorEntity);
                 ormpost=majorEntity;
             }

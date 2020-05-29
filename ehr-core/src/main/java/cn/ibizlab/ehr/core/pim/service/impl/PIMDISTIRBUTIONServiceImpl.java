@@ -64,7 +64,7 @@ public class PIMDISTIRBUTIONServiceImpl extends ServiceImpl<PIMDISTIRBUTIONMappe
     private cn.ibizlab.ehr.core.orm.service.IOrmOrgService ormorgService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.orm.service.IORMPOSTService ormpostService;
+    private cn.ibizlab.ehr.core.orm.service.IOrmPostService ormpostService;
     @Autowired
     @Lazy
     private cn.ibizlab.ehr.core.pim.service.IPIMPERSONService pimpersonService;
@@ -482,9 +482,9 @@ public class PIMDISTIRBUTIONServiceImpl extends ServiceImpl<PIMDISTIRBUTIONMappe
         }
         //实体关系[DER1N_PIMDISTIRBUTION_ORMPOST_ORMPOSTID]
         if(!ObjectUtils.isEmpty(et.getOrmpostid())){
-            cn.ibizlab.ehr.core.orm.domain.ORMPOST ormpost=et.getOrmpost();
+            cn.ibizlab.ehr.core.orm.domain.OrmPost ormpost=et.getOrmpost();
             if(ObjectUtils.isEmpty(ormpost)){
-                cn.ibizlab.ehr.core.orm.domain.ORMPOST majorEntity=ormpostService.get(et.getOrmpostid());
+                cn.ibizlab.ehr.core.orm.domain.OrmPost majorEntity=ormpostService.get(et.getOrmpostid());
                 et.setOrmpost(majorEntity);
                 ormpost=majorEntity;
             }
@@ -493,9 +493,9 @@ public class PIMDISTIRBUTIONServiceImpl extends ServiceImpl<PIMDISTIRBUTIONMappe
         }
         //实体关系[DER1N_PIMDISTIRBUTION_ORMPOST_ORMPOSTID1]
         if(!ObjectUtils.isEmpty(et.getOrmpostid1())){
-            cn.ibizlab.ehr.core.orm.domain.ORMPOST ormpost1=et.getOrmpost1();
+            cn.ibizlab.ehr.core.orm.domain.OrmPost ormpost1=et.getOrmpost1();
             if(ObjectUtils.isEmpty(ormpost1)){
-                cn.ibizlab.ehr.core.orm.domain.ORMPOST majorEntity=ormpostService.get(et.getOrmpostid1());
+                cn.ibizlab.ehr.core.orm.domain.OrmPost majorEntity=ormpostService.get(et.getOrmpostid1());
                 et.setOrmpost1(majorEntity);
                 ormpost1=majorEntity;
             }

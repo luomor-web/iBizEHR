@@ -1849,7 +1849,7 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"ORMPostDetails",
+    "dename":"OrmPostDetails",
     "delogicname":"岗位明细",
     "sysmoudle":{"id":"ORM","name":"组织管理"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
@@ -1889,7 +1889,7 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"ORMPostLib",
+    "dename":"OrmPostLib",
     "delogicname":"岗位库",
     "sysmoudle":{"id":"ORM","name":"组织管理"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
@@ -2417,8 +2417,8 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"ORMPOST",
-    "delogicname":"岗位集",
+    "dename":"OrmPost",
+    "delogicname":"岗位",
     "sysmoudle":{"id":"ORM","name":"组织管理"},
     "dedataset":[{"id":"EJZZGW" , "name":"根据选择的组织所属的二级组织来获取岗位(ormorgid)"},{"id":"AuthPost" , "name":"AuthPost"},{"id":"CurOrg" , "name":"根据当前操作人的身份选择岗位"},{"id":"DQGW" , "name":"根据当前组织过滤岗位"},{"id":"DQORGGW" , "name":"根据当前组织过滤岗位(orgid)"},{"id":"GWXH" , "name":"岗位查询"},{"id":"Default" , "name":"DEFAULT"},{"id":"JZBGWCX" , "name":"局总部岗位查询"},{"id":"CXGW" , "name":"查询当前组织所属的二级单位岗位"}],
     "deaction":[{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"SetGwJb" , "name":"计算岗位分类级别" , "type":"USERCUSTOM" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" }],

@@ -490,7 +490,7 @@ public class PIMDISTIRBUTION extends EntityMP implements Serializable {
     @JsonIgnore
     @JSONField(serialize = false)
     @TableField(exist = false)
-    private cn.ibizlab.ehr.core.orm.domain.ORMPOST ormpost;
+    private cn.ibizlab.ehr.core.orm.domain.OrmPost ormpost;
 
     /**
      * 汇报关系
@@ -498,7 +498,7 @@ public class PIMDISTIRBUTION extends EntityMP implements Serializable {
     @JsonIgnore
     @JSONField(serialize = false)
     @TableField(exist = false)
-    private cn.ibizlab.ehr.core.orm.domain.ORMPOST ormpost1;
+    private cn.ibizlab.ehr.core.orm.domain.OrmPost ormpost1;
 
     /**
      * 分配信息

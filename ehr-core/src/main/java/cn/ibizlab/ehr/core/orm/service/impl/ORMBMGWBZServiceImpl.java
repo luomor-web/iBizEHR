@@ -49,7 +49,7 @@ public class ORMBMGWBZServiceImpl extends ServiceImpl<ORMBMGWBZMapper, ORMBMGWBZ
     private cn.ibizlab.ehr.core.orm.service.IOrmOrgsectorService ormorgsectorService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.orm.service.IORMPOSTService ormpostService;
+    private cn.ibizlab.ehr.core.orm.service.IOrmPostService ormpostService;
 
     private int batchSize = 500;
 
@@ -204,9 +204,9 @@ public class ORMBMGWBZServiceImpl extends ServiceImpl<ORMBMGWBZMapper, ORMBMGWBZ
         }
         //实体关系[DER1N_ORMBMGWBZ_ORMPOST_ORMPOSTID]
         if(!ObjectUtils.isEmpty(et.getOrmpostid())){
-            cn.ibizlab.ehr.core.orm.domain.ORMPOST ormpost=et.getOrmpost();
+            cn.ibizlab.ehr.core.orm.domain.OrmPost ormpost=et.getOrmpost();
             if(ObjectUtils.isEmpty(ormpost)){
-                cn.ibizlab.ehr.core.orm.domain.ORMPOST majorEntity=ormpostService.get(et.getOrmpostid());
+                cn.ibizlab.ehr.core.orm.domain.OrmPost majorEntity=ormpostService.get(et.getOrmpostid());
                 et.setOrmpost(majorEntity);
                 ormpost=majorEntity;
             }

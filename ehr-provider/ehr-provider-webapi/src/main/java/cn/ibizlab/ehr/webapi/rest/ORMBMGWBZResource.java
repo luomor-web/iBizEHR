@@ -291,10 +291,10 @@ public class ORMBMGWBZResource {
                 .body(new PageImpl(ormbmgwbzMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasPermission(this.ormbmgwbzMapping.toDomain(#ormbmgwbzdto),'ehr-ORMBMGWBZ-Create')")
-    @ApiOperation(value = "CreateByORMPOST", tags = {"ORMBMGWBZ" },  notes = "CreateByORMPOST")
+    @ApiOperation(value = "CreateByOrmPost", tags = {"ORMBMGWBZ" },  notes = "CreateByOrmPost")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormposts/{ormpost_id}/ormbmgwbzs")
     @Transactional
-    public ResponseEntity<ORMBMGWBZDTO> createByORMPOST(@PathVariable("ormpost_id") String ormpost_id, @RequestBody ORMBMGWBZDTO ormbmgwbzdto) {
+    public ResponseEntity<ORMBMGWBZDTO> createByOrmPost(@PathVariable("ormpost_id") String ormpost_id, @RequestBody ORMBMGWBZDTO ormbmgwbzdto) {
         ORMBMGWBZ domain = ormbmgwbzMapping.toDomain(ormbmgwbzdto);
         domain.setOrmpostid(ormpost_id);
 		ormbmgwbzService.create(domain);
@@ -303,9 +303,9 @@ public class ORMBMGWBZResource {
     }
 
     @PreAuthorize("hasPermission(this.ormbmgwbzMapping.toDomain(#ormbmgwbzdtos),'ehr-ORMBMGWBZ-Create')")
-    @ApiOperation(value = "createBatchByORMPOST", tags = {"ORMBMGWBZ" },  notes = "createBatchByORMPOST")
+    @ApiOperation(value = "createBatchByOrmPost", tags = {"ORMBMGWBZ" },  notes = "createBatchByOrmPost")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormposts/{ormpost_id}/ormbmgwbzs/batch")
-    public ResponseEntity<Boolean> createBatchByORMPOST(@PathVariable("ormpost_id") String ormpost_id, @RequestBody List<ORMBMGWBZDTO> ormbmgwbzdtos) {
+    public ResponseEntity<Boolean> createBatchByOrmPost(@PathVariable("ormpost_id") String ormpost_id, @RequestBody List<ORMBMGWBZDTO> ormbmgwbzdtos) {
         List<ORMBMGWBZ> domainlist=ormbmgwbzMapping.toDomain(ormbmgwbzdtos);
         for(ORMBMGWBZ domain:domainlist){
             domain.setOrmpostid(ormpost_id);
@@ -314,34 +314,34 @@ public class ORMBMGWBZResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "CheckKeyByORMPOST", tags = {"ORMBMGWBZ" },  notes = "CheckKeyByORMPOST")
+    @ApiOperation(value = "CheckKeyByOrmPost", tags = {"ORMBMGWBZ" },  notes = "CheckKeyByOrmPost")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormposts/{ormpost_id}/ormbmgwbzs/checkkey")
-    public ResponseEntity<Boolean> checkKeyByORMPOST(@PathVariable("ormpost_id") String ormpost_id, @RequestBody ORMBMGWBZDTO ormbmgwbzdto) {
+    public ResponseEntity<Boolean> checkKeyByOrmPost(@PathVariable("ormpost_id") String ormpost_id, @RequestBody ORMBMGWBZDTO ormbmgwbzdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(ormbmgwbzService.checkKey(ormbmgwbzMapping.toDomain(ormbmgwbzdto)));
     }
 
     @PostAuthorize("hasPermission(this.ormbmgwbzMapping.toDomain(returnObject.body),'ehr-ORMBMGWBZ-Get')")
-    @ApiOperation(value = "GetByORMPOST", tags = {"ORMBMGWBZ" },  notes = "GetByORMPOST")
+    @ApiOperation(value = "GetByOrmPost", tags = {"ORMBMGWBZ" },  notes = "GetByOrmPost")
 	@RequestMapping(method = RequestMethod.GET, value = "/ormposts/{ormpost_id}/ormbmgwbzs/{ormbmgwbz_id}")
-    public ResponseEntity<ORMBMGWBZDTO> getByORMPOST(@PathVariable("ormpost_id") String ormpost_id, @PathVariable("ormbmgwbz_id") String ormbmgwbz_id) {
+    public ResponseEntity<ORMBMGWBZDTO> getByOrmPost(@PathVariable("ormpost_id") String ormpost_id, @PathVariable("ormbmgwbz_id") String ormbmgwbz_id) {
         ORMBMGWBZ domain = ormbmgwbzService.get(ormbmgwbz_id);
         ORMBMGWBZDTO dto = ormbmgwbzMapping.toDto(domain);
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
     @PreAuthorize("hasPermission(this.ormbmgwbzMapping.toDomain(#ormbmgwbzdto),'ehr-ORMBMGWBZ-Save')")
-    @ApiOperation(value = "SaveByORMPOST", tags = {"ORMBMGWBZ" },  notes = "SaveByORMPOST")
+    @ApiOperation(value = "SaveByOrmPost", tags = {"ORMBMGWBZ" },  notes = "SaveByOrmPost")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormposts/{ormpost_id}/ormbmgwbzs/save")
-    public ResponseEntity<Boolean> saveByORMPOST(@PathVariable("ormpost_id") String ormpost_id, @RequestBody ORMBMGWBZDTO ormbmgwbzdto) {
+    public ResponseEntity<Boolean> saveByOrmPost(@PathVariable("ormpost_id") String ormpost_id, @RequestBody ORMBMGWBZDTO ormbmgwbzdto) {
         ORMBMGWBZ domain = ormbmgwbzMapping.toDomain(ormbmgwbzdto);
         domain.setOrmpostid(ormpost_id);
         return ResponseEntity.status(HttpStatus.OK).body(ormbmgwbzService.save(domain));
     }
 
     @PreAuthorize("hasPermission(this.ormbmgwbzMapping.toDomain(#ormbmgwbzdtos),'ehr-ORMBMGWBZ-Save')")
-    @ApiOperation(value = "SaveBatchByORMPOST", tags = {"ORMBMGWBZ" },  notes = "SaveBatchByORMPOST")
+    @ApiOperation(value = "SaveBatchByOrmPost", tags = {"ORMBMGWBZ" },  notes = "SaveBatchByOrmPost")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormposts/{ormpost_id}/ormbmgwbzs/savebatch")
-    public ResponseEntity<Boolean> saveBatchByORMPOST(@PathVariable("ormpost_id") String ormpost_id, @RequestBody List<ORMBMGWBZDTO> ormbmgwbzdtos) {
+    public ResponseEntity<Boolean> saveBatchByOrmPost(@PathVariable("ormpost_id") String ormpost_id, @RequestBody List<ORMBMGWBZDTO> ormbmgwbzdtos) {
         List<ORMBMGWBZ> domainlist=ormbmgwbzMapping.toDomain(ormbmgwbzdtos);
         for(ORMBMGWBZ domain:domainlist){
              domain.setOrmpostid(ormpost_id);
@@ -351,10 +351,10 @@ public class ORMBMGWBZResource {
     }
 
     @PreAuthorize("hasPermission(this.ormbmgwbzService.get(#ormbmgwbz_id),'ehr-ORMBMGWBZ-Update')")
-    @ApiOperation(value = "UpdateByORMPOST", tags = {"ORMBMGWBZ" },  notes = "UpdateByORMPOST")
+    @ApiOperation(value = "UpdateByOrmPost", tags = {"ORMBMGWBZ" },  notes = "UpdateByOrmPost")
 	@RequestMapping(method = RequestMethod.PUT, value = "/ormposts/{ormpost_id}/ormbmgwbzs/{ormbmgwbz_id}")
     @Transactional
-    public ResponseEntity<ORMBMGWBZDTO> updateByORMPOST(@PathVariable("ormpost_id") String ormpost_id, @PathVariable("ormbmgwbz_id") String ormbmgwbz_id, @RequestBody ORMBMGWBZDTO ormbmgwbzdto) {
+    public ResponseEntity<ORMBMGWBZDTO> updateByOrmPost(@PathVariable("ormpost_id") String ormpost_id, @PathVariable("ormbmgwbz_id") String ormbmgwbz_id, @RequestBody ORMBMGWBZDTO ormbmgwbzdto) {
         ORMBMGWBZ domain = ormbmgwbzMapping.toDomain(ormbmgwbzdto);
         domain.setOrmpostid(ormpost_id);
         domain.setOrmbmgwbzid(ormbmgwbz_id);
@@ -364,9 +364,9 @@ public class ORMBMGWBZResource {
     }
 
     @PreAuthorize("hasPermission(this.ormbmgwbzService.getOrmbmgwbzByEntities(this.ormbmgwbzMapping.toDomain(#ormbmgwbzdtos)),'ehr-ORMBMGWBZ-Update')")
-    @ApiOperation(value = "UpdateBatchByORMPOST", tags = {"ORMBMGWBZ" },  notes = "UpdateBatchByORMPOST")
+    @ApiOperation(value = "UpdateBatchByOrmPost", tags = {"ORMBMGWBZ" },  notes = "UpdateBatchByOrmPost")
 	@RequestMapping(method = RequestMethod.PUT, value = "/ormposts/{ormpost_id}/ormbmgwbzs/batch")
-    public ResponseEntity<Boolean> updateBatchByORMPOST(@PathVariable("ormpost_id") String ormpost_id, @RequestBody List<ORMBMGWBZDTO> ormbmgwbzdtos) {
+    public ResponseEntity<Boolean> updateBatchByOrmPost(@PathVariable("ormpost_id") String ormpost_id, @RequestBody List<ORMBMGWBZDTO> ormbmgwbzdtos) {
         List<ORMBMGWBZ> domainlist=ormbmgwbzMapping.toDomain(ormbmgwbzdtos);
         for(ORMBMGWBZ domain:domainlist){
             domain.setOrmpostid(ormpost_id);
@@ -375,34 +375,34 @@ public class ORMBMGWBZResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "GetDraftByORMPOST", tags = {"ORMBMGWBZ" },  notes = "GetDraftByORMPOST")
+    @ApiOperation(value = "GetDraftByOrmPost", tags = {"ORMBMGWBZ" },  notes = "GetDraftByOrmPost")
     @RequestMapping(method = RequestMethod.GET, value = "/ormposts/{ormpost_id}/ormbmgwbzs/getdraft")
-    public ResponseEntity<ORMBMGWBZDTO> getDraftByORMPOST(@PathVariable("ormpost_id") String ormpost_id) {
+    public ResponseEntity<ORMBMGWBZDTO> getDraftByOrmPost(@PathVariable("ormpost_id") String ormpost_id) {
         ORMBMGWBZ domain = new ORMBMGWBZ();
         domain.setOrmpostid(ormpost_id);
         return ResponseEntity.status(HttpStatus.OK).body(ormbmgwbzMapping.toDto(ormbmgwbzService.getDraft(domain)));
     }
 
     @PreAuthorize("hasPermission(this.ormbmgwbzService.get(#ormbmgwbz_id),'ehr-ORMBMGWBZ-Remove')")
-    @ApiOperation(value = "RemoveByORMPOST", tags = {"ORMBMGWBZ" },  notes = "RemoveByORMPOST")
+    @ApiOperation(value = "RemoveByOrmPost", tags = {"ORMBMGWBZ" },  notes = "RemoveByOrmPost")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/ormposts/{ormpost_id}/ormbmgwbzs/{ormbmgwbz_id}")
     @Transactional
-    public ResponseEntity<Boolean> removeByORMPOST(@PathVariable("ormpost_id") String ormpost_id, @PathVariable("ormbmgwbz_id") String ormbmgwbz_id) {
+    public ResponseEntity<Boolean> removeByOrmPost(@PathVariable("ormpost_id") String ormpost_id, @PathVariable("ormbmgwbz_id") String ormbmgwbz_id) {
 		return ResponseEntity.status(HttpStatus.OK).body(ormbmgwbzService.remove(ormbmgwbz_id));
     }
 
     @PreAuthorize("hasPermission(this.ormbmgwbzService.getOrmbmgwbzByIds(#ids),'ehr-ORMBMGWBZ-Remove')")
-    @ApiOperation(value = "RemoveBatchByORMPOST", tags = {"ORMBMGWBZ" },  notes = "RemoveBatchByORMPOST")
+    @ApiOperation(value = "RemoveBatchByOrmPost", tags = {"ORMBMGWBZ" },  notes = "RemoveBatchByOrmPost")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/ormposts/{ormpost_id}/ormbmgwbzs/batch")
-    public ResponseEntity<Boolean> removeBatchByORMPOST(@RequestBody List<String> ids) {
+    public ResponseEntity<Boolean> removeBatchByOrmPost(@RequestBody List<String> ids) {
         ormbmgwbzService.removeBatch(ids);
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMBMGWBZ-Default-all')")
-	@ApiOperation(value = "fetchDEFAULTByORMPOST", tags = {"ORMBMGWBZ" } ,notes = "fetchDEFAULTByORMPOST")
+	@ApiOperation(value = "fetchDEFAULTByOrmPost", tags = {"ORMBMGWBZ" } ,notes = "fetchDEFAULTByOrmPost")
     @RequestMapping(method= RequestMethod.GET , value="/ormposts/{ormpost_id}/ormbmgwbzs/fetchdefault")
-	public ResponseEntity<List<ORMBMGWBZDTO>> fetchORMBMGWBZDefaultByORMPOST(@PathVariable("ormpost_id") String ormpost_id,ORMBMGWBZSearchContext context) {
+	public ResponseEntity<List<ORMBMGWBZDTO>> fetchORMBMGWBZDefaultByOrmPost(@PathVariable("ormpost_id") String ormpost_id,ORMBMGWBZSearchContext context) {
         context.setN_ormpostid_eq(ormpost_id);
         Page<ORMBMGWBZ> domains = ormbmgwbzService.searchDefault(context) ;
         List<ORMBMGWBZDTO> list = ormbmgwbzMapping.toDto(domains.getContent());
@@ -414,9 +414,9 @@ public class ORMBMGWBZResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMBMGWBZ-Default-all')")
-	@ApiOperation(value = "searchDEFAULTByORMPOST", tags = {"ORMBMGWBZ" } ,notes = "searchDEFAULTByORMPOST")
+	@ApiOperation(value = "searchDEFAULTByOrmPost", tags = {"ORMBMGWBZ" } ,notes = "searchDEFAULTByOrmPost")
     @RequestMapping(method= RequestMethod.POST , value="/ormposts/{ormpost_id}/ormbmgwbzs/searchdefault")
-	public ResponseEntity<Page<ORMBMGWBZDTO>> searchORMBMGWBZDefaultByORMPOST(@PathVariable("ormpost_id") String ormpost_id, @RequestBody ORMBMGWBZSearchContext context) {
+	public ResponseEntity<Page<ORMBMGWBZDTO>> searchORMBMGWBZDefaultByOrmPost(@PathVariable("ormpost_id") String ormpost_id, @RequestBody ORMBMGWBZSearchContext context) {
         context.setN_ormpostid_eq(ormpost_id);
         Page<ORMBMGWBZ> domains = ormbmgwbzService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
@@ -555,10 +555,10 @@ public class ORMBMGWBZResource {
                 .body(new PageImpl(ormbmgwbzMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasPermission(this.ormbmgwbzMapping.toDomain(#ormbmgwbzdto),'ehr-ORMBMGWBZ-Create')")
-    @ApiOperation(value = "CreateByOrmOrgORMPOST", tags = {"ORMBMGWBZ" },  notes = "CreateByOrmOrgORMPOST")
+    @ApiOperation(value = "CreateByOrmOrgOrmPost", tags = {"ORMBMGWBZ" },  notes = "CreateByOrmOrgOrmPost")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormorgs/{ormorg_id}/ormposts/{ormpost_id}/ormbmgwbzs")
     @Transactional
-    public ResponseEntity<ORMBMGWBZDTO> createByOrmOrgORMPOST(@PathVariable("ormorg_id") String ormorg_id, @PathVariable("ormpost_id") String ormpost_id, @RequestBody ORMBMGWBZDTO ormbmgwbzdto) {
+    public ResponseEntity<ORMBMGWBZDTO> createByOrmOrgOrmPost(@PathVariable("ormorg_id") String ormorg_id, @PathVariable("ormpost_id") String ormpost_id, @RequestBody ORMBMGWBZDTO ormbmgwbzdto) {
         ORMBMGWBZ domain = ormbmgwbzMapping.toDomain(ormbmgwbzdto);
         domain.setOrmpostid(ormpost_id);
 		ormbmgwbzService.create(domain);
@@ -567,9 +567,9 @@ public class ORMBMGWBZResource {
     }
 
     @PreAuthorize("hasPermission(this.ormbmgwbzMapping.toDomain(#ormbmgwbzdtos),'ehr-ORMBMGWBZ-Create')")
-    @ApiOperation(value = "createBatchByOrmOrgORMPOST", tags = {"ORMBMGWBZ" },  notes = "createBatchByOrmOrgORMPOST")
+    @ApiOperation(value = "createBatchByOrmOrgOrmPost", tags = {"ORMBMGWBZ" },  notes = "createBatchByOrmOrgOrmPost")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormorgs/{ormorg_id}/ormposts/{ormpost_id}/ormbmgwbzs/batch")
-    public ResponseEntity<Boolean> createBatchByOrmOrgORMPOST(@PathVariable("ormorg_id") String ormorg_id, @PathVariable("ormpost_id") String ormpost_id, @RequestBody List<ORMBMGWBZDTO> ormbmgwbzdtos) {
+    public ResponseEntity<Boolean> createBatchByOrmOrgOrmPost(@PathVariable("ormorg_id") String ormorg_id, @PathVariable("ormpost_id") String ormpost_id, @RequestBody List<ORMBMGWBZDTO> ormbmgwbzdtos) {
         List<ORMBMGWBZ> domainlist=ormbmgwbzMapping.toDomain(ormbmgwbzdtos);
         for(ORMBMGWBZ domain:domainlist){
             domain.setOrmpostid(ormpost_id);
@@ -578,34 +578,34 @@ public class ORMBMGWBZResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "CheckKeyByOrmOrgORMPOST", tags = {"ORMBMGWBZ" },  notes = "CheckKeyByOrmOrgORMPOST")
+    @ApiOperation(value = "CheckKeyByOrmOrgOrmPost", tags = {"ORMBMGWBZ" },  notes = "CheckKeyByOrmOrgOrmPost")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormorgs/{ormorg_id}/ormposts/{ormpost_id}/ormbmgwbzs/checkkey")
-    public ResponseEntity<Boolean> checkKeyByOrmOrgORMPOST(@PathVariable("ormorg_id") String ormorg_id, @PathVariable("ormpost_id") String ormpost_id, @RequestBody ORMBMGWBZDTO ormbmgwbzdto) {
+    public ResponseEntity<Boolean> checkKeyByOrmOrgOrmPost(@PathVariable("ormorg_id") String ormorg_id, @PathVariable("ormpost_id") String ormpost_id, @RequestBody ORMBMGWBZDTO ormbmgwbzdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(ormbmgwbzService.checkKey(ormbmgwbzMapping.toDomain(ormbmgwbzdto)));
     }
 
     @PostAuthorize("hasPermission(this.ormbmgwbzMapping.toDomain(returnObject.body),'ehr-ORMBMGWBZ-Get')")
-    @ApiOperation(value = "GetByOrmOrgORMPOST", tags = {"ORMBMGWBZ" },  notes = "GetByOrmOrgORMPOST")
+    @ApiOperation(value = "GetByOrmOrgOrmPost", tags = {"ORMBMGWBZ" },  notes = "GetByOrmOrgOrmPost")
 	@RequestMapping(method = RequestMethod.GET, value = "/ormorgs/{ormorg_id}/ormposts/{ormpost_id}/ormbmgwbzs/{ormbmgwbz_id}")
-    public ResponseEntity<ORMBMGWBZDTO> getByOrmOrgORMPOST(@PathVariable("ormorg_id") String ormorg_id, @PathVariable("ormpost_id") String ormpost_id, @PathVariable("ormbmgwbz_id") String ormbmgwbz_id) {
+    public ResponseEntity<ORMBMGWBZDTO> getByOrmOrgOrmPost(@PathVariable("ormorg_id") String ormorg_id, @PathVariable("ormpost_id") String ormpost_id, @PathVariable("ormbmgwbz_id") String ormbmgwbz_id) {
         ORMBMGWBZ domain = ormbmgwbzService.get(ormbmgwbz_id);
         ORMBMGWBZDTO dto = ormbmgwbzMapping.toDto(domain);
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
     @PreAuthorize("hasPermission(this.ormbmgwbzMapping.toDomain(#ormbmgwbzdto),'ehr-ORMBMGWBZ-Save')")
-    @ApiOperation(value = "SaveByOrmOrgORMPOST", tags = {"ORMBMGWBZ" },  notes = "SaveByOrmOrgORMPOST")
+    @ApiOperation(value = "SaveByOrmOrgOrmPost", tags = {"ORMBMGWBZ" },  notes = "SaveByOrmOrgOrmPost")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormorgs/{ormorg_id}/ormposts/{ormpost_id}/ormbmgwbzs/save")
-    public ResponseEntity<Boolean> saveByOrmOrgORMPOST(@PathVariable("ormorg_id") String ormorg_id, @PathVariable("ormpost_id") String ormpost_id, @RequestBody ORMBMGWBZDTO ormbmgwbzdto) {
+    public ResponseEntity<Boolean> saveByOrmOrgOrmPost(@PathVariable("ormorg_id") String ormorg_id, @PathVariable("ormpost_id") String ormpost_id, @RequestBody ORMBMGWBZDTO ormbmgwbzdto) {
         ORMBMGWBZ domain = ormbmgwbzMapping.toDomain(ormbmgwbzdto);
         domain.setOrmpostid(ormpost_id);
         return ResponseEntity.status(HttpStatus.OK).body(ormbmgwbzService.save(domain));
     }
 
     @PreAuthorize("hasPermission(this.ormbmgwbzMapping.toDomain(#ormbmgwbzdtos),'ehr-ORMBMGWBZ-Save')")
-    @ApiOperation(value = "SaveBatchByOrmOrgORMPOST", tags = {"ORMBMGWBZ" },  notes = "SaveBatchByOrmOrgORMPOST")
+    @ApiOperation(value = "SaveBatchByOrmOrgOrmPost", tags = {"ORMBMGWBZ" },  notes = "SaveBatchByOrmOrgOrmPost")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormorgs/{ormorg_id}/ormposts/{ormpost_id}/ormbmgwbzs/savebatch")
-    public ResponseEntity<Boolean> saveBatchByOrmOrgORMPOST(@PathVariable("ormorg_id") String ormorg_id, @PathVariable("ormpost_id") String ormpost_id, @RequestBody List<ORMBMGWBZDTO> ormbmgwbzdtos) {
+    public ResponseEntity<Boolean> saveBatchByOrmOrgOrmPost(@PathVariable("ormorg_id") String ormorg_id, @PathVariable("ormpost_id") String ormpost_id, @RequestBody List<ORMBMGWBZDTO> ormbmgwbzdtos) {
         List<ORMBMGWBZ> domainlist=ormbmgwbzMapping.toDomain(ormbmgwbzdtos);
         for(ORMBMGWBZ domain:domainlist){
              domain.setOrmpostid(ormpost_id);
@@ -615,10 +615,10 @@ public class ORMBMGWBZResource {
     }
 
     @PreAuthorize("hasPermission(this.ormbmgwbzService.get(#ormbmgwbz_id),'ehr-ORMBMGWBZ-Update')")
-    @ApiOperation(value = "UpdateByOrmOrgORMPOST", tags = {"ORMBMGWBZ" },  notes = "UpdateByOrmOrgORMPOST")
+    @ApiOperation(value = "UpdateByOrmOrgOrmPost", tags = {"ORMBMGWBZ" },  notes = "UpdateByOrmOrgOrmPost")
 	@RequestMapping(method = RequestMethod.PUT, value = "/ormorgs/{ormorg_id}/ormposts/{ormpost_id}/ormbmgwbzs/{ormbmgwbz_id}")
     @Transactional
-    public ResponseEntity<ORMBMGWBZDTO> updateByOrmOrgORMPOST(@PathVariable("ormorg_id") String ormorg_id, @PathVariable("ormpost_id") String ormpost_id, @PathVariable("ormbmgwbz_id") String ormbmgwbz_id, @RequestBody ORMBMGWBZDTO ormbmgwbzdto) {
+    public ResponseEntity<ORMBMGWBZDTO> updateByOrmOrgOrmPost(@PathVariable("ormorg_id") String ormorg_id, @PathVariable("ormpost_id") String ormpost_id, @PathVariable("ormbmgwbz_id") String ormbmgwbz_id, @RequestBody ORMBMGWBZDTO ormbmgwbzdto) {
         ORMBMGWBZ domain = ormbmgwbzMapping.toDomain(ormbmgwbzdto);
         domain.setOrmpostid(ormpost_id);
         domain.setOrmbmgwbzid(ormbmgwbz_id);
@@ -628,9 +628,9 @@ public class ORMBMGWBZResource {
     }
 
     @PreAuthorize("hasPermission(this.ormbmgwbzService.getOrmbmgwbzByEntities(this.ormbmgwbzMapping.toDomain(#ormbmgwbzdtos)),'ehr-ORMBMGWBZ-Update')")
-    @ApiOperation(value = "UpdateBatchByOrmOrgORMPOST", tags = {"ORMBMGWBZ" },  notes = "UpdateBatchByOrmOrgORMPOST")
+    @ApiOperation(value = "UpdateBatchByOrmOrgOrmPost", tags = {"ORMBMGWBZ" },  notes = "UpdateBatchByOrmOrgOrmPost")
 	@RequestMapping(method = RequestMethod.PUT, value = "/ormorgs/{ormorg_id}/ormposts/{ormpost_id}/ormbmgwbzs/batch")
-    public ResponseEntity<Boolean> updateBatchByOrmOrgORMPOST(@PathVariable("ormorg_id") String ormorg_id, @PathVariable("ormpost_id") String ormpost_id, @RequestBody List<ORMBMGWBZDTO> ormbmgwbzdtos) {
+    public ResponseEntity<Boolean> updateBatchByOrmOrgOrmPost(@PathVariable("ormorg_id") String ormorg_id, @PathVariable("ormpost_id") String ormpost_id, @RequestBody List<ORMBMGWBZDTO> ormbmgwbzdtos) {
         List<ORMBMGWBZ> domainlist=ormbmgwbzMapping.toDomain(ormbmgwbzdtos);
         for(ORMBMGWBZ domain:domainlist){
             domain.setOrmpostid(ormpost_id);
@@ -639,34 +639,34 @@ public class ORMBMGWBZResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "GetDraftByOrmOrgORMPOST", tags = {"ORMBMGWBZ" },  notes = "GetDraftByOrmOrgORMPOST")
+    @ApiOperation(value = "GetDraftByOrmOrgOrmPost", tags = {"ORMBMGWBZ" },  notes = "GetDraftByOrmOrgOrmPost")
     @RequestMapping(method = RequestMethod.GET, value = "/ormorgs/{ormorg_id}/ormposts/{ormpost_id}/ormbmgwbzs/getdraft")
-    public ResponseEntity<ORMBMGWBZDTO> getDraftByOrmOrgORMPOST(@PathVariable("ormorg_id") String ormorg_id, @PathVariable("ormpost_id") String ormpost_id) {
+    public ResponseEntity<ORMBMGWBZDTO> getDraftByOrmOrgOrmPost(@PathVariable("ormorg_id") String ormorg_id, @PathVariable("ormpost_id") String ormpost_id) {
         ORMBMGWBZ domain = new ORMBMGWBZ();
         domain.setOrmpostid(ormpost_id);
         return ResponseEntity.status(HttpStatus.OK).body(ormbmgwbzMapping.toDto(ormbmgwbzService.getDraft(domain)));
     }
 
     @PreAuthorize("hasPermission(this.ormbmgwbzService.get(#ormbmgwbz_id),'ehr-ORMBMGWBZ-Remove')")
-    @ApiOperation(value = "RemoveByOrmOrgORMPOST", tags = {"ORMBMGWBZ" },  notes = "RemoveByOrmOrgORMPOST")
+    @ApiOperation(value = "RemoveByOrmOrgOrmPost", tags = {"ORMBMGWBZ" },  notes = "RemoveByOrmOrgOrmPost")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/ormorgs/{ormorg_id}/ormposts/{ormpost_id}/ormbmgwbzs/{ormbmgwbz_id}")
     @Transactional
-    public ResponseEntity<Boolean> removeByOrmOrgORMPOST(@PathVariable("ormorg_id") String ormorg_id, @PathVariable("ormpost_id") String ormpost_id, @PathVariable("ormbmgwbz_id") String ormbmgwbz_id) {
+    public ResponseEntity<Boolean> removeByOrmOrgOrmPost(@PathVariable("ormorg_id") String ormorg_id, @PathVariable("ormpost_id") String ormpost_id, @PathVariable("ormbmgwbz_id") String ormbmgwbz_id) {
 		return ResponseEntity.status(HttpStatus.OK).body(ormbmgwbzService.remove(ormbmgwbz_id));
     }
 
     @PreAuthorize("hasPermission(this.ormbmgwbzService.getOrmbmgwbzByIds(#ids),'ehr-ORMBMGWBZ-Remove')")
-    @ApiOperation(value = "RemoveBatchByOrmOrgORMPOST", tags = {"ORMBMGWBZ" },  notes = "RemoveBatchByOrmOrgORMPOST")
+    @ApiOperation(value = "RemoveBatchByOrmOrgOrmPost", tags = {"ORMBMGWBZ" },  notes = "RemoveBatchByOrmOrgOrmPost")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/ormorgs/{ormorg_id}/ormposts/{ormpost_id}/ormbmgwbzs/batch")
-    public ResponseEntity<Boolean> removeBatchByOrmOrgORMPOST(@RequestBody List<String> ids) {
+    public ResponseEntity<Boolean> removeBatchByOrmOrgOrmPost(@RequestBody List<String> ids) {
         ormbmgwbzService.removeBatch(ids);
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMBMGWBZ-Default-all')")
-	@ApiOperation(value = "fetchDEFAULTByOrmOrgORMPOST", tags = {"ORMBMGWBZ" } ,notes = "fetchDEFAULTByOrmOrgORMPOST")
+	@ApiOperation(value = "fetchDEFAULTByOrmOrgOrmPost", tags = {"ORMBMGWBZ" } ,notes = "fetchDEFAULTByOrmOrgOrmPost")
     @RequestMapping(method= RequestMethod.GET , value="/ormorgs/{ormorg_id}/ormposts/{ormpost_id}/ormbmgwbzs/fetchdefault")
-	public ResponseEntity<List<ORMBMGWBZDTO>> fetchORMBMGWBZDefaultByOrmOrgORMPOST(@PathVariable("ormorg_id") String ormorg_id, @PathVariable("ormpost_id") String ormpost_id,ORMBMGWBZSearchContext context) {
+	public ResponseEntity<List<ORMBMGWBZDTO>> fetchORMBMGWBZDefaultByOrmOrgOrmPost(@PathVariable("ormorg_id") String ormorg_id, @PathVariable("ormpost_id") String ormpost_id,ORMBMGWBZSearchContext context) {
         context.setN_ormpostid_eq(ormpost_id);
         Page<ORMBMGWBZ> domains = ormbmgwbzService.searchDefault(context) ;
         List<ORMBMGWBZDTO> list = ormbmgwbzMapping.toDto(domains.getContent());
@@ -678,9 +678,9 @@ public class ORMBMGWBZResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMBMGWBZ-Default-all')")
-	@ApiOperation(value = "searchDEFAULTByOrmOrgORMPOST", tags = {"ORMBMGWBZ" } ,notes = "searchDEFAULTByOrmOrgORMPOST")
+	@ApiOperation(value = "searchDEFAULTByOrmOrgOrmPost", tags = {"ORMBMGWBZ" } ,notes = "searchDEFAULTByOrmOrgOrmPost")
     @RequestMapping(method= RequestMethod.POST , value="/ormorgs/{ormorg_id}/ormposts/{ormpost_id}/ormbmgwbzs/searchdefault")
-	public ResponseEntity<Page<ORMBMGWBZDTO>> searchORMBMGWBZDefaultByOrmOrgORMPOST(@PathVariable("ormorg_id") String ormorg_id, @PathVariable("ormpost_id") String ormpost_id, @RequestBody ORMBMGWBZSearchContext context) {
+	public ResponseEntity<Page<ORMBMGWBZDTO>> searchORMBMGWBZDefaultByOrmOrgOrmPost(@PathVariable("ormorg_id") String ormorg_id, @PathVariable("ormpost_id") String ormpost_id, @RequestBody ORMBMGWBZSearchContext context) {
         context.setN_ormpostid_eq(ormpost_id);
         Page<ORMBMGWBZ> domains = ormbmgwbzService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)

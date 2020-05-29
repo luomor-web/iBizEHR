@@ -315,7 +315,7 @@ public class PCMDDSQDMX extends EntityMP implements Serializable {
     @JsonIgnore
     @JSONField(serialize = false)
     @TableField(exist = false)
-    private cn.ibizlab.ehr.core.orm.domain.ORMPOST ormpost;
+    private cn.ibizlab.ehr.core.orm.domain.OrmPost ormpost;
 
     /**
      * 调动申请单

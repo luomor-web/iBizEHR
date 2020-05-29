@@ -78,7 +78,7 @@ public class OrmOrgServiceImpl extends ServiceImpl<OrmOrgMapper, OrmOrg> impleme
     private cn.ibizlab.ehr.core.orm.service.IOrmOrgService ormorgService = this;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.orm.service.IORMPOSTService ormpostService;
+    private cn.ibizlab.ehr.core.orm.service.IOrmPostService ormpostService;
     @Autowired
     @Lazy
     private cn.ibizlab.ehr.core.orm.service.IORMQYBZWHService ormqybzwhService;
