@@ -429,16 +429,16 @@ export default class GWGLBase extends Vue implements ControlInterface {
             { required: false, type: 'string', message: ' 值不能为空', trigger: 'blur' },
         ],
         srfkey: [
-            { type: 'string', message: '岗位集标识 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '岗位集标识 值必须为字符串类型', trigger: 'blur' },
-            { required: false, type: 'string', message: '岗位集标识 值不能为空', trigger: 'change' },
-            { required: false, type: 'string', message: '岗位集标识 值不能为空', trigger: 'blur' },
+            { type: 'string', message: '岗位标识 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '岗位标识 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '岗位标识 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '岗位标识 值不能为空', trigger: 'blur' },
         ],
         srfmajortext: [
-            { type: 'string', message: '岗位集名称 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '岗位集名称 值必须为字符串类型', trigger: 'blur' },
-            { required: false, type: 'string', message: '岗位集名称 值不能为空', trigger: 'change' },
-            { required: false, type: 'string', message: '岗位集名称 值不能为空', trigger: 'blur' },
+            { type: 'string', message: '岗位名称 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '岗位名称 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '岗位名称 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '岗位名称 值不能为空', trigger: 'blur' },
         ],
         srftempmode: [
             { type: 'string', message: ' 值必须为字符串类型', trigger: 'change' },
@@ -507,10 +507,10 @@ export default class GWGLBase extends Vue implements ControlInterface {
             { required: false, type: 'number', message: '强制轮岗年限 值不能为空', trigger: 'blur' },
         ],
         ormpostid: [
-            { type: 'string', message: '岗位集标识 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '岗位集标识 值必须为字符串类型', trigger: 'blur' },
-            { required: false, type: 'string', message: '岗位集标识 值不能为空', trigger: 'change' },
-            { required: false, type: 'string', message: '岗位集标识 值不能为空', trigger: 'blur' },
+            { type: 'string', message: '岗位标识 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '岗位标识 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '岗位标识 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '岗位标识 值不能为空', trigger: 'blur' },
         ],
     }
 
@@ -529,9 +529,9 @@ export default class GWGLBase extends Vue implements ControlInterface {
 , 
         srforikey: new FormItemModel({ caption: '', detailType: 'FORMITEM', name: 'srforikey', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
-        srfkey: new FormItemModel({ caption: '岗位集标识', detailType: 'FORMITEM', name: 'srfkey', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+        srfkey: new FormItemModel({ caption: '岗位标识', detailType: 'FORMITEM', name: 'srfkey', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
-        srfmajortext: new FormItemModel({ caption: '岗位集名称', detailType: 'FORMITEM', name: 'srfmajortext', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+        srfmajortext: new FormItemModel({ caption: '岗位名称', detailType: 'FORMITEM', name: 'srfmajortext', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
         srftempmode: new FormItemModel({ caption: '', detailType: 'FORMITEM', name: 'srftempmode', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
@@ -555,7 +555,7 @@ export default class GWGLBase extends Vue implements ControlInterface {
 , 
         qzlgnx: new FormItemModel({ caption: '强制轮岗年限', detailType: 'FORMITEM', name: 'qzlgnx', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
-        ormpostid: new FormItemModel({ caption: '岗位集标识', detailType: 'FORMITEM', name: 'ormpostid', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+        ormpostid: new FormItemModel({ caption: '岗位标识', detailType: 'FORMITEM', name: 'ormpostid', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
     };
 

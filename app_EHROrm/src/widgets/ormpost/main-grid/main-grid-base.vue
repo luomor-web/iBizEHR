@@ -649,7 +649,7 @@ export default class MainBase extends Vue implements ControlInterface {
         },
         {
             name: 'ormpostname',
-            label: '岗位集名称',
+            label: '岗位名称',
             langtag: 'entities.ormpost.main_grid.columns.ormpostname',
             show: true,
             util: 'PX'
@@ -756,8 +756,8 @@ export default class MainBase extends Vue implements ControlInterface {
             { required: false, validator: (rule:any, value:any, callback:any) => { return (rule.required && (value === null || value === undefined || value === "")) ? false : true;}, message: '是否关键岗位 值不能为空', trigger: 'blur' },
         ],
         ormpostname: [
-             { required: false, validator: (rule:any, value:any, callback:any) => { return (rule.required && (value === null || value === undefined || value === "")) ? false : true;}, message: '岗位集名称 值不能为空', trigger: 'change' },
-            { required: false, validator: (rule:any, value:any, callback:any) => { return (rule.required && (value === null || value === undefined || value === "")) ? false : true;}, message: '岗位集名称 值不能为空', trigger: 'blur' },
+             { required: false, validator: (rule:any, value:any, callback:any) => { return (rule.required && (value === null || value === undefined || value === "")) ? false : true;}, message: '岗位名称 值不能为空', trigger: 'change' },
+            { required: false, validator: (rule:any, value:any, callback:any) => { return (rule.required && (value === null || value === undefined || value === "")) ? false : true;}, message: '岗位名称 值不能为空', trigger: 'blur' },
         ],
         ormorgid: [
              { required: false, validator: (rule:any, value:any, callback:any) => { return (rule.required && (value === null || value === undefined || value === "")) ? false : true;}, message: '值不能为空', trigger: 'change' },
@@ -784,8 +784,8 @@ export default class MainBase extends Vue implements ControlInterface {
             { required: false, validator: (rule:any, value:any, callback:any) => { return (rule.required && (value === null || value === undefined || value === "")) ? false : true;}, message: '建议交流年限 值不能为空', trigger: 'blur' },
         ],
         srfkey: [
-             { required: false, validator: (rule:any, value:any, callback:any) => { return (rule.required && (value === null || value === undefined || value === "")) ? false : true;}, message: '岗位集标识 值不能为空', trigger: 'change' },
-            { required: false, validator: (rule:any, value:any, callback:any) => { return (rule.required && (value === null || value === undefined || value === "")) ? false : true;}, message: '岗位集标识 值不能为空', trigger: 'blur' },
+             { required: false, validator: (rule:any, value:any, callback:any) => { return (rule.required && (value === null || value === undefined || value === "")) ? false : true;}, message: '岗位标识 值不能为空', trigger: 'change' },
+            { required: false, validator: (rule:any, value:any, callback:any) => { return (rule.required && (value === null || value === undefined || value === "")) ? false : true;}, message: '岗位标识 值不能为空', trigger: 'blur' },
         ],
         ormorgname: [
              { required: false, validator: (rule:any, value:any, callback:any) => { return (rule.required && (value === null || value === undefined || value === "")) ? false : true;}, message: '组织 值不能为空', trigger: 'change' },
