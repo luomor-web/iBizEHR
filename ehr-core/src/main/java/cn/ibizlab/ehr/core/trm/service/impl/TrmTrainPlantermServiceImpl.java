@@ -46,7 +46,7 @@ public class TrmTrainPlantermServiceImpl extends ServiceImpl<TrmTrainPlantermMap
 
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.att.service.IATTENDANCERECORDService attendancerecordService;
+    private cn.ibizlab.ehr.core.att.service.IAttEndanceRecordService attendancerecordService;
     @Autowired
     @Lazy
     private cn.ibizlab.ehr.core.trm.service.ITRMCOUARRANGEService trmcouarrangeService;

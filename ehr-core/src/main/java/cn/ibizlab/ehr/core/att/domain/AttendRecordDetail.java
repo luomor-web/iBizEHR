@@ -138,7 +138,7 @@ public class AttendRecordDetail extends EntityMP implements Serializable {
     @JsonIgnore
     @JSONField(serialize = false)
     @TableField(exist = false)
-    private cn.ibizlab.ehr.core.att.domain.ATTENDANCERECORD attendancerecord;
+    private cn.ibizlab.ehr.core.att.domain.AttEndanceRecord attendancerecord;
 
 
 

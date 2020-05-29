@@ -132,7 +132,7 @@ public class OrmOrgServiceImpl extends ServiceImpl<OrmOrgMapper, OrmOrg> impleme
     private cn.ibizlab.ehr.core.pcm.service.IPCMPROFILEINITNUMBERService pcmprofileinitnumberService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.pcm.service.IPCMPROFILENUMBEPREFIXService pcmprofilenumbeprefixService;
+    private cn.ibizlab.ehr.core.pcm.service.IPcmProfileNumBeprefixService pcmprofilenumbeprefixService;
     @Autowired
     @Lazy
     private cn.ibizlab.ehr.core.pcm.service.IPcmProfileService pcmprofileService;
@@ -144,7 +144,7 @@ public class OrmOrgServiceImpl extends ServiceImpl<OrmOrgMapper, OrmOrg> impleme
     private cn.ibizlab.ehr.core.pcm.service.IPcmSyqgzService pcmsyqgzService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.pcm.service.IPCMYDJDMXService pcmydjdmxService;
+    private cn.ibizlab.ehr.core.pcm.service.IPcmYdjdmxService pcmydjdmxService;
     @Autowired
     @Lazy
     private cn.ibizlab.ehr.core.pcm.service.IPcmYdjzmxService pcmydjzmxService;

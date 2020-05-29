@@ -673,7 +673,7 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"PIMMAJORSETYPE",
+    "dename":"PimMajorSetype",
     "delogicname":"专业序列类型",
     "sysmoudle":{"id":"PIM","name":"基础管理"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
@@ -961,7 +961,7 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"ORMTITLE",
+    "dename":"OrmTitle",
     "delogicname":"头衔管理",
     "sysmoudle":{"id":"ORM","name":"组织管理"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
@@ -1673,7 +1673,7 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"curorg","name":"当前单位"},{"id":"porg","name":"上级单位"},{"id":"sorg","name":"下级单位"} , {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"PCMYDJDMX",
+    "dename":"PcmYdjdmx",
     "delogicname":"异动借调明细",
     "sysmoudle":{"id":"PCM","name":"配置管理"},
     "dedataset":[{"id":"JDGLDQ" , "name":"借调管理查询"},{"id":"JDLSJLDQ" , "name":"借调历史记录查询"},{"id":"Default" , "name":"DEFAULT"}],
@@ -2073,7 +2073,7 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"ATTENDANCERECORD",
+    "dename":"AttEndanceRecord",
     "delogicname":"考勤记录",
     "sysmoudle":{"id":"ATT","name":"考勤管理"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
@@ -2545,7 +2545,7 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"TRMZZOBM",
+    "dename":"TrmZzobm",
     "delogicname":"单位/部门",
     "sysmoudle":{"id":"TRM","name":"培训管理"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
@@ -2721,7 +2721,7 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"PCMPROFILENUMBEPREFIX",
+    "dename":"PcmProfileNumBeprefix",
     "delogicname":"应聘者编号前缀",
     "sysmoudle":{"id":"PCM","name":"配置管理"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
@@ -2777,7 +2777,7 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"PIMFILEBATVHUPLOAD",
+    "dename":"PimFilebatvhupload",
     "delogicname":"附件批量上传",
     "sysmoudle":{"id":"PIM","name":"基础管理"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],

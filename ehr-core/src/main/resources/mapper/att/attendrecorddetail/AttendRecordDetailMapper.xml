@@ -15,7 +15,7 @@
             
 		
 		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
-		<association property="attendancerecord" javaType="cn.ibizlab.ehr.core.att.domain.ATTENDANCERECORD" column="attendancerecordid" select="cn.ibizlab.ehr.core.att.mapper.ATTENDANCERECORDMapper.selectById" fetchType="lazy"></association>
+		<association property="attendancerecord" javaType="cn.ibizlab.ehr.core.att.domain.AttEndanceRecord" column="attendancerecordid" select="cn.ibizlab.ehr.core.att.mapper.AttEndanceRecordMapper.selectById" fetchType="lazy"></association>
     </resultMap>
 
 	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_ATTENDRECORDDETAIL_ATTENDANCERECORD_ATTENDANCERECORDID] -->

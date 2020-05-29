@@ -52,7 +52,7 @@ public class PIMPERSONServiceImpl extends ServiceImpl<PIMPERSONMapper, PIMPERSON
     private cn.ibizlab.ehr.core.att.service.IAttEndanceRecordTempService attendancerecordtempService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.att.service.IATTENDANCERECORDService attendancerecordService;
+    private cn.ibizlab.ehr.core.att.service.IAttEndanceRecordService attendancerecordService;
     @Autowired
     @Lazy
     private cn.ibizlab.ehr.core.att.service.IATTENDANCESETTINGSService attendancesettingsService;
@@ -309,7 +309,7 @@ public class PIMPERSONServiceImpl extends ServiceImpl<PIMPERSONMapper, PIMPERSON
     private cn.ibizlab.ehr.core.pim.service.IPIMCITYService pimcityService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.pim.service.IPIMMAJORSETYPEService pimmajorsetypeService;
+    private cn.ibizlab.ehr.core.pim.service.IPimMajorSetypeService pimmajorsetypeService;
 
     @Autowired
     @Lazy
@@ -939,9 +939,9 @@ public class PIMPERSONServiceImpl extends ServiceImpl<PIMPERSONMapper, PIMPERSON
         }
         //实体关系[DER1N_PIMPERSON_PIMMAJORSETYPE_PIMMAJORSETYPEID]
         if(!ObjectUtils.isEmpty(et.getPimmajorsetypeid())){
-            cn.ibizlab.ehr.core.pim.domain.PIMMAJORSETYPE pimmajorsetype=et.getPimmajorsetype();
+            cn.ibizlab.ehr.core.pim.domain.PimMajorSetype pimmajorsetype=et.getPimmajorsetype();
             if(ObjectUtils.isEmpty(pimmajorsetype)){
-                cn.ibizlab.ehr.core.pim.domain.PIMMAJORSETYPE majorEntity=pimmajorsetypeService.get(et.getPimmajorsetypeid());
+                cn.ibizlab.ehr.core.pim.domain.PimMajorSetype majorEntity=pimmajorsetypeService.get(et.getPimmajorsetypeid());
                 et.setPimmajorsetype(majorEntity);
                 pimmajorsetype=majorEntity;
             }

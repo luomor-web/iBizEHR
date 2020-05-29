@@ -70,7 +70,7 @@ public class OrmPostServiceImpl extends ServiceImpl<OrmPostMapper, OrmPost> impl
     private cn.ibizlab.ehr.core.pcm.service.IPcmRecruitmentService pcmrecruitmentService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.pcm.service.IPCMYDJDMXService pcmydjdmxService;
+    private cn.ibizlab.ehr.core.pcm.service.IPcmYdjdmxService pcmydjdmxService;
     @Autowired
     @Lazy
     private cn.ibizlab.ehr.core.pcm.service.IPcmYdjzmxService pcmydjzmxService;

@@ -52,7 +52,7 @@ public class PIMDISTIRBUTIONServiceImpl extends ServiceImpl<PIMDISTIRBUTIONMappe
     private cn.ibizlab.ehr.core.pcm.service.IPCMNoticeService pcmnoticeService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.pcm.service.IPCMYDJDMXService pcmydjdmxService;
+    private cn.ibizlab.ehr.core.pcm.service.IPcmYdjdmxService pcmydjdmxService;
     @Autowired
     @Lazy
     private cn.ibizlab.ehr.core.orm.service.IORMDUTYService ormdutyService;

@@ -108,7 +108,7 @@ public class OrmOrgsectorServiceImpl extends ServiceImpl<OrmOrgsectorMapper, Orm
     private cn.ibizlab.ehr.core.pcm.service.IPCMYDDGMXService pcmyddgmxService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.pcm.service.IPCMYDJDMXService pcmydjdmxService;
+    private cn.ibizlab.ehr.core.pcm.service.IPcmYdjdmxService pcmydjdmxService;
     @Autowired
     @Lazy
     private cn.ibizlab.ehr.core.pcm.service.IPcmYdjzmxService pcmydjzmxService;
