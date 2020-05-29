@@ -4614,7 +4614,7 @@
 
 
     <!--输出实体[ORMORG]数据结构 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="tab-ormorg-319-116">
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-ormorg-320-116">
         <createTable tableName="T_SRFORG">
                 <column name="BTQY" remarks="" type="VARCHAR(60)">
                 </column>
@@ -5378,7 +5378,7 @@
 
 
     <!--输出实体[ORMORGSECTOR]数据结构 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="tab-ormorgsector-213-135">
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-ormorgsector-221-135">
         <createTable tableName="T_SRFORGSECTOR">
                 <column name="XMJBQK" remarks="" type="VARCHAR(2000)">
                 </column>
@@ -5748,7 +5748,7 @@
 
 
     <!--输出实体[ORMPOST]数据结构 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="tab-ormpost-26-143">
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-ormpost-42-143">
         <createTable tableName="T_ORMPOST">
                 <column name="CREATEMAN" remarks="" type="VARCHAR(60)">
                 </column>
@@ -8931,7 +8931,7 @@
 
 
     <!--输出实体[ORMXMBQ]数据结构 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="tab-ormxmbq-11-229">
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-ormxmbq-16-229">
         <createTable tableName="T_ORMXMBQ">
                 <column name="UPDATEMAN" remarks="" type="VARCHAR(60)">
                 </column>
@@ -9521,7 +9521,7 @@
 
 
     <!--输出实体[ORMDUTY]数据结构 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="tab-ormduty-32-246">
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-ormduty-41-246">
         <createTable tableName="T_ORMDUTY">
                 <column name="ORMDUTYID" remarks="" type="VARCHAR(100)">
                     <constraints primaryKey="true" primaryKeyName="PK_ORMDUTY_ORMDUTYID"/>
@@ -9727,7 +9727,7 @@
 
 
     <!--输出实体[CONTRACTSIGNORG]数据结构 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="tab-contractsignorg-2-250">
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-contractsignorg-4-250">
         <createTable tableName="T_CONTRACTSIGNORG">
                 <column name="UPDATEMAN" remarks="" type="VARCHAR(60)">
                 </column>
@@ -11393,7 +11393,7 @@
 
 
     <!--输出实体[ORMSIGNORG]数据结构 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="tab-ormsignorg-3-289">
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-ormsignorg-8-289">
         <createTable tableName="T_ORMSIGNORG">
                 <column name="ORGCODE" remarks="" type="VARCHAR(100)">
                 </column>
@@ -12554,7 +12554,7 @@
        <addForeignKeyConstraint baseColumnNames="ORMORGID" baseTableName="T_SALSTDZX" constraintName="DER1N_SALSTDZX_ORMORG_ORMORGID" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="ORGID" referencedTableName="T_SRFORG" validate="true"/>
     </changeSet>
         <!--输出实体[ORMORG]外键关系 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-ormorg-319-474">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-ormorg-320-474">
        <addForeignKeyConstraint baseColumnNames="PORGID" baseTableName="T_SRFORG" constraintName="DER1N_ORMORG_ORMORG_PORGID" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="ORGID" referencedTableName="T_SRFORG" validate="true"/>
     </changeSet>
         <!--输出实体[PARPTRYNDLHMBMX]外键关系 -->
@@ -12630,16 +12630,16 @@
         <!--输出实体[PCMXYGZZKHJGJL]外键关系 -->
         <!--输出实体[PCMCSRCMSPJ]外键关系 -->
         <!--输出实体[ORMORGSECTOR]外键关系 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-ormorgsector-213-493">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-ormorgsector-221-493">
        <addForeignKeyConstraint baseColumnNames="PORGSECTORID" baseTableName="T_SRFORGSECTOR" constraintName="DER1N_ORMORGSECTOR_ORMORGSECTO" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="ORGSECTORID" referencedTableName="T_SRFORGSECTOR" validate="true"/>
     </changeSet>
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-ormorgsector-213-495">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-ormorgsector-221-495">
        <addForeignKeyConstraint baseColumnNames="ORGID" baseTableName="T_SRFORGSECTOR" constraintName="DER1N_ORMORGSECTOR_ORMORG_ORGI" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="ORGID" referencedTableName="T_SRFORG" validate="true"/>
     </changeSet>
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-ormorgsector-213-496">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-ormorgsector-221-496">
        <addForeignKeyConstraint baseColumnNames="ORMXMGLID" baseTableName="T_SRFORGSECTOR" constraintName="DER1N_ORMORGSECTOR_ORMXMGL_ORM" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="ORMXMGLID" referencedTableName="T_ORMXMGL" validate="true"/>
     </changeSet>
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-ormorgsector-213-497">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-ormorgsector-221-497">
        <addForeignKeyConstraint baseColumnNames="PIMPERSONID" baseTableName="T_SRFORGSECTOR" constraintName="DER1N_ORMORGSECTOR_PIMPERSON_P" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="PIMPERSONID" referencedTableName="T_PIMPERSON" validate="true"/>
     </changeSet>
         <!--输出实体[PARJXQDSZ]外键关系 -->
@@ -12671,7 +12671,7 @@
        <addForeignKeyConstraint baseColumnNames="PIMPERSONID" baseTableName="T_PIMRESEARCHFINDINGS" constraintName="DER1N_PIMRESEARCHFINDINGS_PIMP" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="PIMPERSONID" referencedTableName="T_PIMPERSON" validate="true"/>
     </changeSet>
         <!--输出实体[ORMPOST]外键关系 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-ormpost-26-506">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-ormpost-42-506">
        <addForeignKeyConstraint baseColumnNames="ORMORGID" baseTableName="T_ORMPOST" constraintName="DER1N_ORMPOST_ORMORG_ORMORGID" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="ORGID" referencedTableName="T_SRFORG" validate="true"/>
     </changeSet>
         <!--输出实体[PCMRECRUITMENT]外键关系 -->
@@ -13093,7 +13093,7 @@
        <addForeignKeyConstraint baseColumnNames="CODELISTID" baseTableName="T_SRFCODEITEM" constraintName="DER1N_CODEITEM_CODELIST_CODELI" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="CODELISTID" referencedTableName="T_SRFCODELIST" validate="true"/>
     </changeSet>
         <!--输出实体[ORMXMBQ]外键关系 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-ormxmbq-11-623">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-ormxmbq-16-623">
        <addForeignKeyConstraint baseColumnNames="ORMORGID" baseTableName="T_ORMXMBQ" constraintName="DER1N_ORMXMBQ_ORMORG_ORMORGID" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="ORGID" referencedTableName="T_SRFORG" validate="true"/>
     </changeSet>
         <!--输出实体[PARJXKHMB]外键关系 -->
@@ -13180,10 +13180,10 @@
        <addForeignKeyConstraint baseColumnNames="PIMPERSONID" baseTableName="T_PIMPAPER" constraintName="DER1N_PIMPAPER_PIMPERSON_PIMPE" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="PIMPERSONID" referencedTableName="T_PIMPERSON" validate="true"/>
     </changeSet>
         <!--输出实体[CONTRACTSIGNORG]外键关系 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-contractsignorg-2-646">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-contractsignorg-4-646">
        <addForeignKeyConstraint baseColumnNames="ORMORGID" baseTableName="T_CONTRACTSIGNORG" constraintName="DER1N_CONTRACTSIGNORG_ORMORG_O" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="ORGID" referencedTableName="T_SRFORG" validate="true"/>
     </changeSet>
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-contractsignorg-2-647">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-contractsignorg-4-647">
        <addForeignKeyConstraint baseColumnNames="ORMSIGNORGID" baseTableName="T_CONTRACTSIGNORG" constraintName="DER1N_CONTRACTSIGNORG_ORMSIGNO" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="ORMSIGNORGID" referencedTableName="T_ORMSIGNORG" validate="true"/>
     </changeSet>
         <!--输出实体[ORMXMRYPZXQ]外键关系 -->
