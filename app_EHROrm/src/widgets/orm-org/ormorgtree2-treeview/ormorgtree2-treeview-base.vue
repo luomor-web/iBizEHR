@@ -756,6 +756,7 @@ export default class ORMORGTree2Base extends Vue implements ControlInterface {
             const data: any = node.data;
             const tags: string[] = data.id.split(';');
         }
+        this.$emit('nodedblclick', this.selectedNodes);
     }
 
 }

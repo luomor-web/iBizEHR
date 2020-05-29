@@ -240,7 +240,7 @@ export default class AppFormDRUIPart extends Vue {
         }
         const formData: any = data?data:JSON.parse(this.data);
         const _paramitem = formData[this.paramItem];
-        let viewdata = {srfparentdename:this.parentName,srfparentkey:_paramitem};
+        let viewdata = {};
         Object.assign(viewdata, this.$viewTool.getIndexViewParam());
         const _parameters: any[] = [...this.$viewTool.getIndexParameters(), ...this.parameters];
         _parameters.forEach((parameter: any) => {
@@ -252,6 +252,7 @@ export default class AppFormDRUIPart extends Vue {
         Object.assign(viewdata, { [this.paramItem]: _paramitem });
         //设置顶层视图唯一标识
         Object.assign(viewdata,this.context);
+        Object.assign(viewdata,{srfparentdename:this.parentName,srfparentkey:_paramitem});
         this.viewdata = JSON.stringify(viewdata);
         this.viewparam = JSON.stringify(this.viewparams);
         if (this.isRelationalData) {

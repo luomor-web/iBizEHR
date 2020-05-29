@@ -63,16 +63,6 @@ export const viewstate: any = {
             ],
         },
         {
-            viewtag: '0a73019b4898b090e1b0888e7243e623',
-            viewmodule: 'ORM',
-            viewname: 'ORMPostLibMPickupView',
-            viewaction: '',
-            viewdatachange: false,
-            refviews: [
-                'ff9c16f0bcce15390c48b09827d63916',
-            ],
-        },
-        {
             viewtag: '0d0168d0e6cb4ad17054b601763ca5c2',
             viewmodule: 'ORM',
             viewname: 'PIMPERSONPickupGridView',
@@ -262,28 +252,6 @@ export const viewstate: any = {
             ],
         },
         {
-            viewtag: '3c77de98c2fdb19e58c87284875a8d0a',
-            viewmodule: 'ORM',
-            viewname: 'ORMPostDetailsGridView',
-            viewaction: '',
-            viewdatachange: false,
-            refviews: [
-                '0a73019b4898b090e1b0888e7243e623',
-                '3cf4b1f3290d18a0f40dd4438ef76d35',
-                '4c23c804046de5b0f9af83bda3c44d65',
-            ],
-        },
-        {
-            viewtag: '3cf4b1f3290d18a0f40dd4438ef76d35',
-            viewmodule: 'ORM',
-            viewname: 'ORMPOSTMPickupView',
-            viewaction: '',
-            viewdatachange: false,
-            refviews: [
-                '855de99194a1f051419ad4cb529588b8',
-            ],
-        },
-        {
             viewtag: '49057ccfd5bf31ffbfa836f8f778d6aa',
             viewmodule: 'ORM',
             viewname: 'ORMORGRedirectView',
@@ -301,7 +269,6 @@ export const viewstate: any = {
             viewdatachange: false,
             refviews: [
                 '2b2d9880ef43097b9378bde74e87788d',
-                '3c77de98c2fdb19e58c87284875a8d0a',
             ],
         },
         {
@@ -391,16 +358,6 @@ export const viewstate: any = {
             viewdatachange: false,
             refviews: [
                 '7da4fb21031e6fe44577c63910d52141',
-            ],
-        },
-        {
-            viewtag: '6fcc75caf7850e6ca18c135f0916f948',
-            viewmodule: 'ORM',
-            viewname: 'ORMPostLibGridView',
-            viewaction: '',
-            viewdatachange: false,
-            refviews: [
-                'def85fb885bc5ea11c35f98f9a134761',
             ],
         },
         {
@@ -630,7 +587,6 @@ export const viewstate: any = {
             viewaction: '',
             viewdatachange: false,
             refviews: [
-                '6fcc75caf7850e6ca18c135f0916f948',
                 '1c14464d67d8176e1e3836cbe5f262b9',
                 '59540c7e4db29bd446ff4a470ac24af5',
                 '73b7461f2c4789cb2e1c310295ea0d0f',

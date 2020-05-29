@@ -219,59 +219,6 @@ export default {
       title: '部门/项目部管理',
 		},
 	},
-	main_form: {
-		details: {
-			group1: "部门", 
-			formpage1: "部门基本信息", 
-			druipart1: "", 
-			formpage2: "部门地址维护", 
-			srfupdatedate: "更新时间", 
-			srforikey: "", 
-			srfkey: "部门标识", 
-			srfmajortext: "部门名称", 
-			srftempmode: "", 
-			srfuf: "", 
-			srfdeid: "", 
-			srfsourcekey: "", 
-			pimpersonid: "部门负责人ID", 
-			ordervalue: "排序号", 
-			orgsectorname: "部门名称", 
-			orgcode: "部门编号", 
-			shortname: "部门简称", 
-			bmlx: "类型", 
-			orgname: "所属组织", 
-			qy: "地区分类", 
-			bmbzrs: "计划编制人数", 
-			gkjz: "管控机制", 
-			pimpersonname: "部门负责人", 
-			validflag: "启用标志", 
-			orgsectorid: "部门标识", 
-			orgid: "组织机构标识", 
-		},
-		uiactions: {
-		},
-	},
-	bmkqsz_form: {
-		details: {
-			group1: "部门考勤设置", 
-			druipart1: "", 
-			grouppanel1: "部门考勤地址", 
-			formpage1: "部门考勤设置", 
-			srfupdatedate: "更新时间", 
-			srforikey: "", 
-			srfkey: "部门标识", 
-			srfmajortext: "部门名称", 
-			srftempmode: "", 
-			srfuf: "", 
-			srfdeid: "", 
-			srfsourcekey: "", 
-			zzdzs: "组织", 
-			orgsectorname: "部门/项目部", 
-			orgsectorid: "部门标识", 
-		},
-		uiactions: {
-		},
-	},
 	bmbzgl_form: {
 		details: {
 			group1: "部门/项目部信息", 
@@ -336,6 +283,59 @@ export default {
 			referjoblevel: "参照职务层级", 
 			orgtype: "组织类型", 
 			orgsectorid: "部门标识", 
+		},
+		uiactions: {
+		},
+	},
+	bmkqsz_form: {
+		details: {
+			group1: "部门考勤设置", 
+			druipart1: "", 
+			grouppanel1: "部门考勤地址", 
+			formpage1: "部门考勤设置", 
+			srfupdatedate: "更新时间", 
+			srforikey: "", 
+			srfkey: "部门标识", 
+			srfmajortext: "部门名称", 
+			srftempmode: "", 
+			srfuf: "", 
+			srfdeid: "", 
+			srfsourcekey: "", 
+			zzdzs: "组织", 
+			orgsectorname: "部门/项目部", 
+			orgsectorid: "部门标识", 
+		},
+		uiactions: {
+		},
+	},
+	main_form: {
+		details: {
+			group1: "部门", 
+			formpage1: "部门基本信息", 
+			druipart1: "", 
+			formpage2: "部门地址维护", 
+			srfupdatedate: "更新时间", 
+			srforikey: "", 
+			srfkey: "部门标识", 
+			srfmajortext: "部门名称", 
+			srftempmode: "", 
+			srfuf: "", 
+			srfdeid: "", 
+			srfsourcekey: "", 
+			pimpersonid: "部门负责人ID", 
+			ordervalue: "排序号", 
+			orgsectorname: "部门名称", 
+			orgcode: "部门编号", 
+			shortname: "部门简称", 
+			bmlx: "类型", 
+			orgname: "所属组织", 
+			qy: "地区分类", 
+			bmbzrs: "计划编制人数", 
+			gkjz: "管控机制", 
+			pimpersonname: "部门负责人", 
+			validflag: "启用标志", 
+			orgsectorid: "部门标识", 
+			orgid: "组织机构标识", 
 		},
 		uiactions: {
 		},
@@ -512,6 +512,21 @@ export default {
 		uiactions: {
 		},
 	},
+	main_grid: {
+		columns: {
+			bmlx: "类型",
+			ordervalue: "排序",
+			orgsectorname: "名称",
+			orgcode: "编号",
+			shortname: "简称",
+			orgname: "所属组织",
+			qy: "补贴标准",
+			belongregion: "所属区域",
+			startstopsign: "启停标识",
+		},
+		uiactions: {
+		},
+	},
 	xmbchoice_grid: {
 		columns: {
 			ordervalue: "排序",
@@ -530,21 +545,6 @@ export default {
 			orgname: "组织机构",
 			zzdzs: "组织简称",
 			orgsectorname: "部门/项目部",
-		},
-		uiactions: {
-		},
-	},
-	main_grid: {
-		columns: {
-			bmlx: "类型",
-			ordervalue: "排序",
-			orgsectorname: "名称",
-			orgcode: "编号",
-			shortname: "简称",
-			orgname: "所属组织",
-			qy: "补贴标准",
-			belongregion: "所属区域",
-			startstopsign: "启停标识",
 		},
 		uiactions: {
 		},
@@ -609,7 +609,7 @@ export default {
 			orgsectorname: "部门/项目部名称",
 			orgcode: "部门编号",
 			bmbzrs: "人数编制",
-			sjbzrs: "实际编制人数",
+			sjrs: "实际编制人数",
 		},
 		uiactions: {
 		},
@@ -641,6 +641,22 @@ export default {
 		uiactions: {
 		},
 	},
+	editview9_editmodetoolbar_toolbar: {
+		tbitem3: {
+			caption: "Save",
+			tip: "Save",
+		},
+		tbitem5: {
+			caption: "Save And Close",
+			tip: "Save And Close Window",
+		},
+	},
+	editview9toolbar_toolbar: {
+		deuiaction1: {
+			caption: "编辑",
+			tip: "编辑",
+		},
+	},
 	bmkqszgridviewtoolbar_toolbar: {
 		tbitem3: {
 			caption: "New",
@@ -667,16 +683,6 @@ export default {
 		deuiaction1: {
 			caption: "关闭",
 			tip: "关闭",
-		},
-	},
-	editviewtoolbar_toolbar: {
-		tbitem3: {
-			caption: "Save",
-			tip: "Save",
-		},
-		tbitem5: {
-			caption: "Save And Close",
-			tip: "Save And Close Window",
 		},
 	},
 	editview2toolbar_toolbar: {
@@ -743,22 +749,6 @@ export default {
 		tbitem18: {
 			caption: "Help",
 			tip: "Help",
-		},
-	},
-	editview9_editmodetoolbar_toolbar: {
-		tbitem3: {
-			caption: "Save",
-			tip: "Save",
-		},
-		tbitem5: {
-			caption: "Save And Close",
-			tip: "Save And Close Window",
-		},
-	},
-	editview9toolbar_toolbar: {
-		deuiaction1: {
-			caption: "编辑",
-			tip: "编辑",
 		},
 	},
 	bmbzglgridviewtoolbar_toolbar: {
@@ -832,6 +822,16 @@ export default {
 		},
 	},
 	xmrlzyeditviewtoolbar_toolbar: {
+		tbitem3: {
+			caption: "Save",
+			tip: "Save",
+		},
+		tbitem5: {
+			caption: "Save And Close",
+			tip: "Save And Close Window",
+		},
+	},
+	editviewtoolbar_toolbar: {
 		tbitem3: {
 			caption: "Save",
 			tip: "Save",

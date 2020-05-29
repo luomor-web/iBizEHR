@@ -4,12 +4,14 @@ import VueRouter from 'vue-router';
 import App from '@/App.vue';
 import ElementUi from 'element-ui';
 import ViewUI from 'view-design';
+import ibizLab from 'ibiz-vue-lib';
 import { Interceptors } from '@/utils';
 import  {Print} from '@/utils/print';
 import i18n from '@/locale'
 
 import 'element-ui/lib/theme-chalk/index.css';
 import 'view-design/dist/styles/iview.css';
+import 'ibiz-vue-lib/lib/ibiz-vue-lib.css';
 
 import '@/styles/default.less';
 
@@ -30,7 +32,8 @@ Vue.config.errorHandler = function (err: any, vm: any, info: any) {
   console.log(err);
 }
 Vue.config.productionTip = false;
-Vue.use(Print) 
+Vue.use(Print);
+Vue.use(ibizLab);
 Vue.use(Vuex);
 Vue.use(VueRouter);;
 Vue.use(ElementUi, {

@@ -1,5 +1,5 @@
 <template>
-    <i-form :model="this.data" class='app-form' ref='form'  id='form' style="">
+    <i-form :model="this.data" class='app-form' ref='form'  id='ormpost_gwgl' style="">
     <input style="display:none;" />
     <row >
             
@@ -25,7 +25,7 @@
   deMajorField='orgname'
   deKeyField='ormorg'
   :service="service"
-  :acParams="{ serviceName: 'OrmOrgService', interfaceName: 'FetchGSGWZY'}"
+  :acParams="{ serviceName: 'OrmOrgService', interfaceName: 'FetchDefault'}"
   valueitem='ormorgid' 
   :value="data.ormorgname" 
   editortype="" 
@@ -193,6 +193,12 @@ export default class GWGLBase extends Vue implements ControlInterface {
     }
 
 
+    /**
+     * 工作流审批意见控件绑定值
+     *
+     * @memberof GWGL
+     */
+    public srfwfmemo:string = "";
     
     /**
      * 获取多项数据
@@ -1118,7 +1124,7 @@ export default class GWGLBase extends Vue implements ControlInterface {
      */
     public print(){
         let _this:any = this;
-        _this.$print({id:'form',popTitle:'标准岗位'});
+        _this.$print({id:'ormpost_gwgl',popTitle:'标准岗位'});
     }
 
     /**
@@ -1490,6 +1496,10 @@ export default class GWGLBase extends Vue implements ControlInterface {
                 // 准备提交参数
                 if(this.viewparams){
                     Object.assign(arg,{viewparams:this.viewparams});
+                }
+                // 强制补充srfwfmemo
+                if(this.srfwfmemo){
+                    Object.assign(arg,{srfwfmemo:this.srfwfmemo});
                 }
                 const result: Promise<any> = this.service.wfsubmit(_this.WFSubmitAction, JSON.parse(JSON.stringify(this.context)),arg, this.showBusyIndicator,localdata);
                 result.then((response: any) => {

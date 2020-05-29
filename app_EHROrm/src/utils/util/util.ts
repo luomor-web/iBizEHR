@@ -1,5 +1,6 @@
 import qs from 'qs';
 import { Route } from 'vue-router';
+import Schema from "async-validator";
 
 /**
  * 平台工具类
@@ -362,4 +363,23 @@ export class Util {
         return FirstOBJ;
     }
 
+    
+    /**
+     * 表单项校验
+     * 
+     * @param property 表单项属性名
+     * @param data 表单数据
+     * @param rules 表单值规则
+     * @returns {Promise}
+     * @memberof Util
+     */
+    public static validateItem(property: string, data:any, rules:any) {
+        // 1.获取数值和规则
+        const value = data[property];
+        const rule = rules[property];
+        // 2.创建校验规则
+        const schema = new Schema({ [property]: rule })
+        // 校验返回Promise
+        return schema.validate({ [property]: value })
+    }
 }

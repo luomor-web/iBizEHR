@@ -297,7 +297,7 @@
         "memo": ""
     },
     "contractsignorggridview": {
-        "title": "法人主体设置表格视图",
+        "title": "法人主体设置",
         "caption": "法人主体设置",
         "viewtype": "DEGRIDVIEW",
         "viewmodule": "ORM",
@@ -1161,8 +1161,8 @@
         "memo": ""
     },
     "ormpostgwxhwhgridview": {
-        "title": "岗位集设置",
-        "caption": "岗位集设置",
+        "title": "岗位设置",
+        "caption": "岗位设置",
         "viewtype": "DEGRIDVIEW",
         "viewmodule": "ORM",
         "viewname": "ORMPOSTGWXHWHGridView",
@@ -1458,8 +1458,8 @@
         "memo": ""
     },
     "ormsignorggridview": {
-        "title": "法人主体表格视图",
-        "caption": "法人主体",
+        "title": "法人主体维护",
+        "caption": "法人主体维护",
         "viewtype": "DEGRIDVIEW",
         "viewmodule": "ORM",
         "viewname": "OrmSignOrgGridView",

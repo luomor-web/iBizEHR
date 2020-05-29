@@ -6,7 +6,7 @@ import view_grid from '@widgets/contract-sign-org/main-grid/main-grid.vue';
 import view_searchform from '@widgets/contract-sign-org/default-searchform/default-searchform.vue';
 
 /**
- * 法人主体设置表格视图
+ * 法人主体设置
  *
  * @export
  * @class ContractSignORGGridView

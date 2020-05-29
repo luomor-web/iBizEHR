@@ -281,12 +281,6 @@ export default {
 		uiactions: {
 		},
 	},
-	editviewtoolbar_toolbar: {
-		tbitem5: {
-			caption: "Save And Close",
-			tip: "Save And Close Window",
-		},
-	},
 	editview9_editmodetoolbar_toolbar: {
 		tbitem3: {
 			caption: "Save",
@@ -295,6 +289,12 @@ export default {
 		tbitem5: {
 			caption: "Save And Close",
 			tip: "Save And Close Window",
+		},
+	},
+	editview9toolbar_toolbar: {
+		deuiaction1: {
+			caption: "编辑",
+			tip: "编辑",
 		},
 	},
 	orgtreegridviewtoolbar_toolbar: {
@@ -309,12 +309,6 @@ export default {
 		tbitem19: {
 			caption: "Filter",
 			tip: "Filter",
-		},
-	},
-	editview9toolbar_toolbar: {
-		deuiaction1: {
-			caption: "编辑",
-			tip: "编辑",
 		},
 	},
 	gridviewtoolbar2_toolbar: {
@@ -363,6 +357,12 @@ export default {
 		tbitem23: {
 			caption: "数据导入",
 			tip: "数据导入",
+		},
+	},
+	editviewtoolbar_toolbar: {
+		tbitem5: {
+			caption: "Save And Close",
+			tip: "Save And Close Window",
 		},
 	},
 	editview2toolbar_toolbar: {

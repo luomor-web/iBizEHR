@@ -272,7 +272,7 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewtag": "1bae30eba13afd1729c5850bcbae2822"
         },
         "contractsignorggridview": {
-            "title": "法人主体设置表格视图",
+            "title": "法人主体设置",
             "caption": "法人主体设置",
             "viewtype": "DEGRIDVIEW",
             "viewmodule": "ORM",
@@ -1040,8 +1040,8 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewtag": "7122bd5b3c427253c1e1f52017141c4a"
         },
         "ormpostgwxhwhgridview": {
-            "title": "岗位集设置",
-            "caption": "岗位集设置",
+            "title": "岗位设置",
+            "caption": "岗位设置",
             "viewtype": "DEGRIDVIEW",
             "viewmodule": "ORM",
             "viewname": "ORMPOSTGWXHWHGridView",
@@ -1304,8 +1304,8 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewtag": "9851f29e3a4f62727ef164d964f3c2fd"
         },
         "ormsignorggridview": {
-            "title": "法人主体表格视图",
-            "caption": "法人主体",
+            "title": "法人主体维护",
+            "caption": "法人主体维护",
             "viewtype": "DEGRIDVIEW",
             "viewmodule": "ORM",
             "viewname": "OrmSignOrgGridView",

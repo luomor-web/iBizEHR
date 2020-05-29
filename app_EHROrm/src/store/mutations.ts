@@ -266,3 +266,27 @@ export const addCopyData = (state: any, args: {srfkey: string,copyData: any}) =>
       state.copyDataMap[args.srfkey] = JSON.parse(JSON.stringify(args.copyData));
   }
 }
+
+/**
+ * 添加单位数据
+ * 
+ * @param state 
+ * @param args 
+ */
+export const addOrgData = (state: any, args: {srfkey: string,orgData: any}) => {
+    if(args && args.srfkey && args.orgData){
+        state.orgDataMap[args.srfkey] = JSON.parse(JSON.stringify(args.orgData));
+    }
+  }
+
+/**
+ * 添加部门数据
+ * 
+ * @param state 
+ * @param args 
+ */
+export const addDepData = (state: any, args: {srfkey: string,depData: any}) => {
+    if(args && args.srfkey && args.depData){
+        state.depDataMap[args.srfkey] = JSON.parse(JSON.stringify(args.depData));
+    }
+}

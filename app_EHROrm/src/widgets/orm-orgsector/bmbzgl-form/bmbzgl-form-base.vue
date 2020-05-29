@@ -1,5 +1,5 @@
 <template>
-    <i-form :model="this.data" class='app-form' ref='form'  id='form' style="">
+    <i-form :model="this.data" class='app-form' ref='form'  id='ormorgsector_bmbzgl' style="">
     <input style="display:none;" />
     <row >
             
@@ -235,6 +235,12 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
     }
 
 
+    /**
+     * 工作流审批意见控件绑定值
+     *
+     * @memberof BMBZGL
+     */
+    public srfwfmemo:string = "";
     
     /**
      * 获取多项数据
@@ -1384,7 +1390,7 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
      */
     public print(){
         let _this:any = this;
-        _this.$print({id:'form',popTitle:'部门/项目部信息<主编辑>'});
+        _this.$print({id:'ormorgsector_bmbzgl',popTitle:'部门/项目部信息<主编辑>'});
     }
 
     /**
@@ -1756,6 +1762,10 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
                 // 准备提交参数
                 if(this.viewparams){
                     Object.assign(arg,{viewparams:this.viewparams});
+                }
+                // 强制补充srfwfmemo
+                if(this.srfwfmemo){
+                    Object.assign(arg,{srfwfmemo:this.srfwfmemo});
                 }
                 const result: Promise<any> = this.service.wfsubmit(_this.WFSubmitAction, JSON.parse(JSON.stringify(this.context)),arg, this.showBusyIndicator,localdata);
                 result.then((response: any) => {

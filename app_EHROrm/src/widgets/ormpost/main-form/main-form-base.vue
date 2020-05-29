@@ -1,10 +1,10 @@
 <template>
-    <i-form :model="this.data" class='app-form' ref='form'  id='form' style="">
+    <i-form :model="this.data" class='app-form' ref='form'  id='ormpost_main' style="">
     <input style="display:none;" />
     <row >
             
 <i-col v-show="detailsModel.group1.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
-    <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' :uiActionGroup="detailsModel.group1.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.ormpost.main_form.details.group1')" :isShowCaption="false" uiStyle="DEFAULT" :titleBarCloseMode="0" :isInfoGroupMode="false" >    
+    <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' :uiActionGroup="detailsModel.group1.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.ormpost.main_form.details.group1')" :isShowCaption="true" uiStyle="DEFAULT" :titleBarCloseMode="0" :isInfoGroupMode="false" >    
     <row>
         <i-col v-show="detailsModel.xh.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='xh' :itemRules="this.rules.xh" class='' :caption="$t('entities.ormpost.main_form.details.xh')" uiStyle="DEFAULT" :labelWidth="160" :isShowCaption="true" :error="detailsModel.xh.error" :isEmptyCaption="false" labelPos="LEFT">
@@ -25,7 +25,7 @@
   deMajorField='orgname'
   deKeyField='ormorg'
   :service="service"
-  :acParams="{ serviceName: 'OrmOrgService', interfaceName: 'FetchGSGWZY'}"
+  :acParams="{ serviceName: 'OrmOrgService', interfaceName: 'FetchDefault'}"
   valueitem='ormorgid' 
   :value="data.ormorgname" 
   editortype="" 
@@ -77,38 +77,6 @@
     <app-form-item name='startstopsign' :itemRules="this.rules.startstopsign" class='' :caption="$t('entities.ormpost.main_form.details.startstopsign')" uiStyle="DEFAULT" :labelWidth="160" :isShowCaption="true" :error="detailsModel.startstopsign.error" :isEmptyCaption="false" labelPos="LEFT">
     <app-radio-group v-model="data.startstopsign"  :disabled="detailsModel.startstopsign.disabled"  name="startstopsign" tag='ORMCL_QTBS' codelistType='STATIC'  style=""></app-radio-group>
 </app-form-item>
-
-</i-col>
-    
-    </row>
-</app-form-group>
-
-</i-col>
-<i-col v-show="detailsModel.grouppanel1.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
-    <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' :uiActionGroup="detailsModel.grouppanel1.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.ormpost.main_form.details.grouppanel1')" :isShowCaption="false" uiStyle="DEFAULT" :titleBarCloseMode="0" :isInfoGroupMode="false" >    
-    <row>
-        <i-col v-show="detailsModel.druipart1.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
-    <app-form-druipart
-    
-    :formState="formState"
-    :isForbidLoad="this.data.srfuf === '0'"
-    paramItem='ormpost' 
-    :parentdata='{"srfparentdefname":"ORMPOSTID","srfparentdename":"ORMPOST","SRFPARENTTYPE":"DER1N","srfparentmode":"DER1N_ORMPOSTDETAILS_ORMPOST_ORMPOSTID","SRFDER1NID":"DER1N_ORMPOSTDETAILS_ORMPOST_ORMPOSTID"}'
-    :parameters="[
-        { pathName: 'ormpostlibs', parameterName: 'ormpostlib' },
-    ]"
-    :context="context"
-    :viewparams="viewparams"
-    parameterName='ormpost'
-    parentName="ORMPOST"  
-    refviewtype='DEGRIDVIEW' 
-    refreshitems='' 
-    :ignorefieldvaluechange="ignorefieldvaluechange"
-    viewname='ormpost-details-grid-view' 
-    :data="JSON.stringify(this.data)" 
-    @drdatasaved="drdatasaved($event)"
-    style=";overflow: auto;">
-</app-form-druipart>
 
 </i-col>
     
@@ -249,6 +217,12 @@ export default class MainBase extends Vue implements ControlInterface {
     }
 
 
+    /**
+     * 工作流审批意见控件绑定值
+     *
+     * @memberof Main
+     */
+    public srfwfmemo:string = "";
     
     /**
      * 获取多项数据
@@ -606,11 +580,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * @memberof Main
      */
     public detailsModel: any = {
-        group1: new FormGroupPanelModel({ caption: '岗位维护', detailType: 'GROUPPANEL', name: 'group1', visible: true, isShowCaption: false, form: this, uiActionGroup: { caption: '', langbase: 'entities.ormpost.main_form', extractMode: 'ITEM', details: [] } })
-, 
-        druipart1: new FormDRUIPartModel({ caption: '', detailType: 'DRUIPART', name: 'druipart1', visible: true, isShowCaption: true, form: this })
-, 
-        grouppanel1: new FormGroupPanelModel({ caption: '岗位明细', detailType: 'GROUPPANEL', name: 'grouppanel1', visible: true, isShowCaption: false, form: this, uiActionGroup: { caption: '', langbase: 'entities.ormpost.main_form', extractMode: 'ITEM', details: [] } })
+        group1: new FormGroupPanelModel({ caption: '岗位设置', detailType: 'GROUPPANEL', name: 'group1', visible: true, isShowCaption: true, form: this, uiActionGroup: { caption: '', langbase: 'entities.ormpost.main_form', extractMode: 'ITEM', details: [] } })
 , 
         formpage1: new FormPageModel({ caption: '基本信息', detailType: 'FORMPAGE', name: 'formpage1', visible: true, isShowCaption: true, form: this })
 , 
@@ -969,8 +939,6 @@ export default class MainBase extends Vue implements ControlInterface {
 
 
 
-
-
     }
 
     /**
@@ -1290,7 +1258,7 @@ export default class MainBase extends Vue implements ControlInterface {
      */
     public print(){
         let _this:any = this;
-        _this.$print({id:'form',popTitle:'岗位集使用'});
+        _this.$print({id:'ormpost_main',popTitle:'岗位集使用'});
     }
 
     /**
@@ -1494,7 +1462,7 @@ export default class MainBase extends Vue implements ControlInterface {
             Object.assign(arg, data);
             Object.assign(arg, this.context);
             if (ifStateNext) {
-                this.drcounter = 1;
+                this.drcounter = 0;
                 if(this.drcounter !== 0){
                     this.drsaveopt = opt;
                     this.formState.next({ type: 'beforesave', data: arg });//先通知关系界面保存
@@ -1662,6 +1630,10 @@ export default class MainBase extends Vue implements ControlInterface {
                 // 准备提交参数
                 if(this.viewparams){
                     Object.assign(arg,{viewparams:this.viewparams});
+                }
+                // 强制补充srfwfmemo
+                if(this.srfwfmemo){
+                    Object.assign(arg,{srfwfmemo:this.srfwfmemo});
                 }
                 const result: Promise<any> = this.service.wfsubmit(_this.WFSubmitAction, JSON.parse(JSON.stringify(this.context)),arg, this.showBusyIndicator,localdata);
                 result.then((response: any) => {

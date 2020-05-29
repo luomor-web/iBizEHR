@@ -6,7 +6,7 @@ import view_grid from '@widgets/orm-sign-org/main-grid/main-grid.vue';
 import view_searchform from '@widgets/orm-sign-org/default-searchform/default-searchform.vue';
 
 /**
- * 法人主体表格视图
+ * 法人主体维护
  *
  * @export
  * @class OrmSignOrgGridView

@@ -49,8 +49,8 @@ export default {
       title: '岗位集',
 		},
 		gwxhwhgridview: {
-			caption: "岗位集设置",
-      title: '岗位集设置',
+			caption: "岗位设置",
+      title: '岗位设置',
 		},
 		jzbgwpickupview: {
 			caption: "局总部岗位",
@@ -135,9 +135,7 @@ export default {
 	},
 	main_form: {
 		details: {
-			group1: "岗位维护", 
-			druipart1: "", 
-			grouppanel1: "岗位明细", 
+			group1: "岗位设置", 
 			formpage1: "基本信息", 
 			srfupdatedate: "更新时间", 
 			srforikey: "", 
@@ -253,40 +251,26 @@ export default {
 			tip: "Help",
 		},
 	},
-	gwxhwhgridviewtoolbar2_toolbar: {
+	gwxhwhgridviewtoolbar_toolbar: {
 		deuiaction1: {
-			caption: "New",
-			tip: "New",
+			caption: "新建",
+			tip: "新建",
 		},
 		deuiaction2: {
 			caption: "保存",
 			tip: "保存",
 		},
 		deuiaction3: {
-			caption: "关闭行编辑",
-			tip: "关闭行编辑",
-		},
-	},
-	gwxhwhgridviewtoolbar_toolbar: {
-		tbitem3: {
-			caption: "New",
-			tip: "New",
-		},
-		tbitem8: {
 			caption: "Remove",
 			tip: "Remove {0}",
 		},
-		deuiaction1: {
-			caption: "开启行编辑",
-			tip: "开启行编辑",
+		deuiaction4: {
+			caption: "导入",
+			tip: "导入",
 		},
-		tbitem13: {
+		deuiaction5: {
 			caption: "Export",
 			tip: "Export {0} Data To Excel",
-		},
-		deuiaction2: {
-			caption: "Filter",
-			tip: "Filter",
 		},
 	},
 	gridviewtoolbar2_toolbar: {

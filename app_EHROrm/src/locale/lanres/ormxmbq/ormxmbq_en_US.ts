@@ -117,10 +117,10 @@ export default {
 			tip: "Help",
 		},
 	},
-	gridviewtoolbar2_toolbar: {
+	gridviewtoolbar_toolbar: {
 		deuiaction1: {
-			caption: "New",
-			tip: "New",
+			caption: "新建",
+			tip: "新建",
 		},
 		deuiaction2: {
 			caption: "保存",
@@ -130,35 +130,13 @@ export default {
 			caption: "Remove",
 			tip: "Remove {0}",
 		},
-	},
-	gridviewtoolbar_toolbar: {
-		tbitem3: {
-			caption: "New",
-			tip: "New",
+		deuiaction4: {
+			caption: "导入",
+			tip: "导入",
 		},
-		tbitem8: {
-			caption: "Remove",
-			tip: "Remove {0}",
-		},
-		deuiaction2: {
-			caption: "Filter",
-			tip: "Filter",
-		},
-		deuiaction1: {
-			caption: "开启行编辑",
-			tip: "开启行编辑",
-		},
-		tbitem16: {
-			caption: "其它",
-			tip: "其它",
-		},
-		tbitem13: {
+		deuiaction5: {
 			caption: "Export",
 			tip: "Export {0} Data To Excel",
-		},
-		tbitem23: {
-			caption: "数据导入",
-			tip: "数据导入",
 		},
 	},
 };

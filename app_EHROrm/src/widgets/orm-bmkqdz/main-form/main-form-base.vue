@@ -1,5 +1,5 @@
 <template>
-    <i-form :model="this.data" class='app-form' ref='form'  id='form' style="">
+    <i-form :model="this.data" class='app-form' ref='form'  id='ormbmkqdz_main' style="">
     <input style="display:none;" />
     <row >
             
@@ -156,6 +156,12 @@ export default class MainBase extends Vue implements ControlInterface {
     }
 
 
+    /**
+     * 工作流审批意见控件绑定值
+     *
+     * @memberof Main
+     */
+    public srfwfmemo:string = "";
     
     /**
      * 获取多项数据
@@ -1059,7 +1065,7 @@ export default class MainBase extends Vue implements ControlInterface {
      */
     public print(){
         let _this:any = this;
-        _this.$print({id:'form',popTitle:'主编辑表单'});
+        _this.$print({id:'ormbmkqdz_main',popTitle:'主编辑表单'});
     }
 
     /**
@@ -1431,6 +1437,10 @@ export default class MainBase extends Vue implements ControlInterface {
                 // 准备提交参数
                 if(this.viewparams){
                     Object.assign(arg,{viewparams:this.viewparams});
+                }
+                // 强制补充srfwfmemo
+                if(this.srfwfmemo){
+                    Object.assign(arg,{srfwfmemo:this.srfwfmemo});
                 }
                 const result: Promise<any> = this.service.wfsubmit(_this.WFSubmitAction, JSON.parse(JSON.stringify(this.context)),arg, this.showBusyIndicator,localdata);
                 result.then((response: any) => {

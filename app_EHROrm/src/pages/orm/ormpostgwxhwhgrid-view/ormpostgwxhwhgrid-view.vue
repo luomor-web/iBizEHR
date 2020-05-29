@@ -6,7 +6,7 @@ import view_grid from '@widgets/ormpost/main-grid/main-grid.vue';
 import view_searchform from '@widgets/ormpost/default-searchform/default-searchform.vue';
 
 /**
- * 岗位集设置
+ * 岗位设置
  *
  * @export
  * @class ORMPOSTGWXHWHGridView

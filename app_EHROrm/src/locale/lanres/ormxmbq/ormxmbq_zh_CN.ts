@@ -116,7 +116,7 @@ export default {
 			tip: '帮助',
 		},
 	},
-	gridviewtoolbar2_toolbar: {
+	gridviewtoolbar_toolbar: {
 		deuiaction1: {
 			caption: '新建',
 			tip: '新建',
@@ -129,35 +129,13 @@ export default {
 			caption: '删除',
 			tip: '删除',
 		},
-	},
-	gridviewtoolbar_toolbar: {
-		tbitem3: {
-			caption: '新建',
-			tip: '新建',
+		deuiaction4: {
+			caption: '导入',
+			tip: '导入',
 		},
-		tbitem8: {
-			caption: '删除',
-			tip: '删除',
-		},
-		deuiaction2: {
-			caption: '过滤',
-			tip: '过滤',
-		},
-		deuiaction1: {
-			caption: '开启行编辑',
-			tip: '开启行编辑',
-		},
-		tbitem16: {
-			caption: '其它',
-			tip: '其它',
-		},
-		tbitem13: {
-			caption: '导出数据',
-			tip: '导出数据',
-		},
-		tbitem23: {
-			caption: '数据导入',
-			tip: '数据导入',
+		deuiaction5: {
+			caption: '导出',
+			tip: '导出',
 		},
 	},
 };

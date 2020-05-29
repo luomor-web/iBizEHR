@@ -280,12 +280,6 @@ export default {
 		uiactions: {
 		},
 	},
-	editviewtoolbar_toolbar: {
-		tbitem5: {
-			caption: '保存',
-			tip: '保存',
-		},
-	},
 	editview9_editmodetoolbar_toolbar: {
 		tbitem3: {
 			caption: '保存',
@@ -294,6 +288,12 @@ export default {
 		tbitem5: {
 			caption: '保存并关闭',
 			tip: '保存并关闭',
+		},
+	},
+	editview9toolbar_toolbar: {
+		deuiaction1: {
+			caption: '编辑',
+			tip: '编辑',
 		},
 	},
 	orgtreegridviewtoolbar_toolbar: {
@@ -308,12 +308,6 @@ export default {
 		tbitem19: {
 			caption: '过滤',
 			tip: '过滤',
-		},
-	},
-	editview9toolbar_toolbar: {
-		deuiaction1: {
-			caption: '编辑',
-			tip: '编辑',
 		},
 	},
 	gridviewtoolbar2_toolbar: {
@@ -362,6 +356,12 @@ export default {
 		tbitem23: {
 			caption: '数据导入',
 			tip: '数据导入',
+		},
+	},
+	editviewtoolbar_toolbar: {
+		tbitem5: {
+			caption: '保存',
+			tip: '保存',
 		},
 	},
 	editview2toolbar_toolbar: {
